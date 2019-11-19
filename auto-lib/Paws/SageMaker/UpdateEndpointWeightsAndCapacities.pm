@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::UpdateEndpointWeightsAndCapacities;
-  use Moose;
-  has DesiredWeightsAndCapacities => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::DesiredWeightAndCapacity]', required => 1);
-  has EndpointName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_DesiredWeightAndCapacity/;
+  has DesiredWeightsAndCapacities => (is => 'ro', isa => ArrayRef[SageMaker_DesiredWeightAndCapacity], required => 1, predicate => 1);
+  has EndpointName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEndpointWeightsAndCapacities');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::UpdateEndpointWeightsAndCapacitiesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateEndpointWeightsAndCapacities');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::UpdateEndpointWeightsAndCapacitiesOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DesiredWeightsAndCapacities' => 1,
+                    'EndpointName' => 1
+                  },
+  'types' => {
+               'EndpointName' => {
+                                   'type' => 'Str'
+                                 },
+               'DesiredWeightsAndCapacities' => {
+                                                  'class' => 'Paws::SageMaker::DesiredWeightAndCapacity',
+                                                  'type' => 'ArrayRef[SageMaker_DesiredWeightAndCapacity]'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DesiredWeightsAndCapacities => ArrayRef[L<Paws::SageMaker::DesiredWeightAndCapacity>]
+=head2 B<REQUIRED> DesiredWeightsAndCapacities => ArrayRef[SageMaker_DesiredWeightAndCapacity]
 
 An object that provides new capacity and weight values for a variant.
 

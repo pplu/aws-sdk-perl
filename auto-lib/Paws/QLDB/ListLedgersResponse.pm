@@ -1,10 +1,31 @@
 
 package Paws::QLDB::ListLedgersResponse;
-  use Moose;
-  has Ledgers => (is => 'ro', isa => 'ArrayRef[Paws::QLDB::LedgerSummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::QLDB::Types qw/QLDB_LedgerSummary/;
+  has Ledgers => (is => 'ro', isa => ArrayRef[QLDB_LedgerSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ledgers' => {
+                              'type' => 'ArrayRef[QLDB_LedgerSummary]',
+                              'class' => 'Paws::QLDB::LedgerSummary'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::QLDB::ListLedgersResponse
 =head1 ATTRIBUTES
 
 
-=head2 Ledgers => ArrayRef[L<Paws::QLDB::LedgerSummary>]
+=head2 Ledgers => ArrayRef[QLDB_LedgerSummary]
 
 The array of ledger summaries that are associated with the current AWS
 account and Region.

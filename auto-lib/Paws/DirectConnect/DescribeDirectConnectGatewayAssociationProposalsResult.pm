@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::DescribeDirectConnectGatewayAssociationProposalsResult;
-  use Moose;
-  has DirectConnectGatewayAssociationProposals => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::DirectConnectGatewayAssociationProposal]', traits => ['NameInRequest'], request_name => 'directConnectGatewayAssociationProposals' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_DirectConnectGatewayAssociationProposal/;
+  has DirectConnectGatewayAssociationProposals => (is => 'ro', isa => ArrayRef[DirectConnect_DirectConnectGatewayAssociationProposal]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DirectConnectGatewayAssociationProposals' => {
+                                                               'type' => 'ArrayRef[DirectConnect_DirectConnectGatewayAssociationProposal]',
+                                                               'class' => 'Paws::DirectConnect::DirectConnectGatewayAssociationProposal'
+                                                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'DirectConnectGatewayAssociationProposals' => 'directConnectGatewayAssociationProposals'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::DirectConnect::DescribeDirectConnectGatewayAssociationProposalsResult
 =head1 ATTRIBUTES
 
 
-=head2 DirectConnectGatewayAssociationProposals => ArrayRef[L<Paws::DirectConnect::DirectConnectGatewayAssociationProposal>]
+=head2 DirectConnectGatewayAssociationProposals => ArrayRef[DirectConnect_DirectConnectGatewayAssociationProposal]
 
 Describes the Direct Connect gateway association proposals.
 

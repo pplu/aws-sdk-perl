@@ -1,20 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchEvents::PutRule;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has EventBusName => (is => 'ro', isa => 'Str');
-  has EventPattern => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has ScheduleExpression => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_Tag/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has EventBusName => (is => 'ro', isa => Str, predicate => 1);
+  has EventPattern => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has ScheduleExpression => (is => 'ro', isa => Str, predicate => 1);
+  has State => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CloudWatchEvents_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutRule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchEvents::PutRuleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutRule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchEvents::PutRuleResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'EventPattern' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ScheduleExpression' => {
+                                         'type' => 'Str'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'EventBusName' => {
+                                   'type' => 'Str'
+                                 },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Tags' => {
+                           'type' => 'ArrayRef[CloudWatchEvents_Tag]',
+                           'class' => 'Paws::CloudWatchEvents::Tag'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -113,7 +154,7 @@ Indicates whether the rule is enabled or disabled.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
 
-=head2 Tags => ArrayRef[L<Paws::CloudWatchEvents::Tag>]
+=head2 Tags => ArrayRef[CloudWatchEvents_Tag]
 
 The list of key-value pairs to associate with the rule.
 

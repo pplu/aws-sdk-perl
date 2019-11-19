@@ -1,28 +1,114 @@
+# Generated from default/object.tt
 package Paws::DMS::ReplicationInstance;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has DnsNameServers => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has FreeUntil => (is => 'ro', isa => 'Str');
-  has InstanceCreateTime => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has PendingModifiedValues => (is => 'ro', isa => 'Paws::DMS::ReplicationPendingModifiedValues');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has ReplicationInstanceArn => (is => 'ro', isa => 'Str');
-  has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
-  has ReplicationInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has ReplicationInstancePrivateIpAddress => (is => 'ro', isa => 'Str');
-  has ReplicationInstancePrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ReplicationInstancePublicIpAddress => (is => 'ro', isa => 'Str');
-  has ReplicationInstancePublicIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ReplicationInstanceStatus => (is => 'ro', isa => 'Str');
-  has ReplicationSubnetGroup => (is => 'ro', isa => 'Paws::DMS::ReplicationSubnetGroup');
-  has SecondaryAvailabilityZone => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DMS::VpcSecurityGroupMembership]');
+  use Moo;
+  use Types::Standard qw/Int Bool Str ArrayRef Undef/;
+  use Paws::DMS::Types qw/DMS_VpcSecurityGroupMembership DMS_ReplicationSubnetGroup DMS_ReplicationPendingModifiedValues/;
+  has AllocatedStorage => (is => 'ro', isa => Int);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has DnsNameServers => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has FreeUntil => (is => 'ro', isa => Str);
+  has InstanceCreateTime => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has MultiAZ => (is => 'ro', isa => Bool);
+  has PendingModifiedValues => (is => 'ro', isa => DMS_ReplicationPendingModifiedValues);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has PubliclyAccessible => (is => 'ro', isa => Bool);
+  has ReplicationInstanceArn => (is => 'ro', isa => Str);
+  has ReplicationInstanceClass => (is => 'ro', isa => Str);
+  has ReplicationInstanceIdentifier => (is => 'ro', isa => Str);
+  has ReplicationInstancePrivateIpAddress => (is => 'ro', isa => Str);
+  has ReplicationInstancePrivateIpAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ReplicationInstancePublicIpAddress => (is => 'ro', isa => Str);
+  has ReplicationInstancePublicIpAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ReplicationInstanceStatus => (is => 'ro', isa => Str);
+  has ReplicationSubnetGroup => (is => 'ro', isa => DMS_ReplicationSubnetGroup);
+  has SecondaryAvailabilityZone => (is => 'ro', isa => Str);
+  has VpcSecurityGroups => (is => 'ro', isa => ArrayRef[DMS_VpcSecurityGroupMembership]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationInstanceClass' => {
+                                               'type' => 'Str'
+                                             },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'SecondaryAvailabilityZone' => {
+                                                'type' => 'Str'
+                                              },
+               'DnsNameServers' => {
+                                     'type' => 'Str'
+                                   },
+               'ReplicationSubnetGroup' => {
+                                             'class' => 'Paws::DMS::ReplicationSubnetGroup',
+                                             'type' => 'DMS_ReplicationSubnetGroup'
+                                           },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'ReplicationInstanceIdentifier' => {
+                                                    'type' => 'Str'
+                                                  },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'ReplicationInstancePrivateIpAddresses' => {
+                                                            'type' => 'ArrayRef[Str|Undef]'
+                                                          },
+               'ReplicationInstanceStatus' => {
+                                                'type' => 'Str'
+                                              },
+               'VpcSecurityGroups' => {
+                                        'type' => 'ArrayRef[DMS_VpcSecurityGroupMembership]',
+                                        'class' => 'Paws::DMS::VpcSecurityGroupMembership'
+                                      },
+               'ReplicationInstancePublicIpAddress' => {
+                                                         'type' => 'Str'
+                                                       },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceCreateTime' => {
+                                         'type' => 'Str'
+                                       },
+               'ReplicationInstancePrivateIpAddress' => {
+                                                          'type' => 'Str'
+                                                        },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'ReplicationInstancePublicIpAddresses' => {
+                                                           'type' => 'ArrayRef[Str|Undef]'
+                                                         },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'ReplicationInstanceArn' => {
+                                             'type' => 'Str'
+                                           },
+               'FreeUntil' => {
+                                'type' => 'Str'
+                              },
+               'PendingModifiedValues' => {
+                                            'class' => 'Paws::DMS::ReplicationPendingModifiedValues',
+                                            'type' => 'DMS_ReplicationPendingModifiedValues'
+                                          },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -115,7 +201,7 @@ You cannot set the C<AvailabilityZone> parameter if the Multi-AZ
 parameter is set to C<true>.
 
 
-=head2 PendingModifiedValues => L<Paws::DMS::ReplicationPendingModifiedValues>
+=head2 PendingModifiedValues => DMS_ReplicationPendingModifiedValues
 
   The pending modification values.
 
@@ -198,7 +284,7 @@ Example: C<myrepinstance>
   The status of the replication instance.
 
 
-=head2 ReplicationSubnetGroup => L<Paws::DMS::ReplicationSubnetGroup>
+=head2 ReplicationSubnetGroup => DMS_ReplicationSubnetGroup
 
   The subnet group for the replication instance.
 
@@ -209,7 +295,7 @@ Example: C<myrepinstance>
 deployment.
 
 
-=head2 VpcSecurityGroups => ArrayRef[L<Paws::DMS::VpcSecurityGroupMembership>]
+=head2 VpcSecurityGroups => ArrayRef[DMS_VpcSecurityGroupMembership]
 
   The VPC security group for the instance.
 

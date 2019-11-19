@@ -1,21 +1,71 @@
 
 package Paws::S3::RestoreObject;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has RestoreRequest => (is => 'ro', isa => 'Paws::S3::RestoreRequest');
-  has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_RestoreRequest/;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RequestPayer => (is => 'ro', isa => Str, predicate => 1);
+  has RestoreRequest => (is => 'ro', isa => S3_RestoreRequest, predicate => 1);
+  has VersionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreObject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}?restore');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::RestoreObjectOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreObject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}?restore');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::RestoreObjectOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'VersionId' => 'versionId'
+                    },
+  'IsRequired' => {
+                    'Key' => 1,
+                    'Bucket' => 1
+                  },
+  'types' => {
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'ContentMD5' => {
+                                 'type' => 'Str'
+                               },
+               'RestoreRequest' => {
+                                     'type' => 'S3_RestoreRequest',
+                                     'class' => 'Paws::S3::RestoreRequest'
+                                   },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'RequestPayer' => {
+                                   'type' => 'Str'
+                                 },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'AutoInHeader' => {
+                      'ContentMD5' => {
+                                        'header_name' => 'Content-MD5',
+                                        'auto' => 'MD5'
+                                      }
+                    },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket',
+                    'Key' => 'Key'
+                  },
+  'ParamInHeader' => {
+                       'RequestPayer' => 'x-amz-request-payer'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +94,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Days                 => 1,                  # OPTIONAL
         Description          => 'MyDescription',    # OPTIONAL
         GlacierJobParameters => {
-          Tier => 'Standard',    # values: Standard, Bulk, Expedited
+          Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
 
         },    # OPTIONAL
         OutputLocation => {
@@ -130,7 +180,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },    # OPTIONAL
-        Tier => 'Standard',    # values: Standard, Bulk, Expedited
+        Tier => 'Standard',    # values: Standard, Bulk, Expedited; OPTIONAL
         Type => 'SELECT',      # values: SELECT; OPTIONAL
       },    # OPTIONAL
       VersionId => 'MyObjectVersionId',    # OPTIONAL
@@ -172,7 +222,7 @@ Object key for which the operation was initiated.
 
 Valid values are: C<"requester">
 
-=head2 RestoreRequest => L<Paws::S3::RestoreRequest>
+=head2 RestoreRequest => S3_RestoreRequest
 
 
 

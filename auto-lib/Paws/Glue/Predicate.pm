@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Glue::Predicate;
-  use Moose;
-  has Conditions => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Condition]');
-  has Logical => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Glue::Types qw/Glue_Condition/;
+  has Conditions => (is => 'ro', isa => ArrayRef[Glue_Condition]);
+  has Logical => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Conditions' => {
+                                 'class' => 'Paws::Glue::Condition',
+                                 'type' => 'ArrayRef[Glue_Condition]'
+                               },
+               'Logical' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Defines the predicate of the trigger, which determines when it fires.
 =head1 ATTRIBUTES
 
 
-=head2 Conditions => ArrayRef[L<Paws::Glue::Condition>]
+=head2 Conditions => ArrayRef[Glue_Condition]
 
   A list of the conditions that determine when the trigger will fire.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SSO::RoleInfo;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has RoleName => (is => 'ro', isa => 'Str', request_name => 'roleName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSO::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has RoleName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AccountId' => 'accountId',
+                       'RoleName' => 'roleName'
+                     },
+  'types' => {
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

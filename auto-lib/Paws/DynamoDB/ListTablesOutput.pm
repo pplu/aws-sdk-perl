@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::ListTablesOutput;
-  use Moose;
-  has LastEvaluatedTableName => (is => 'ro', isa => 'Str');
-  has TableNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::DynamoDB::Types qw//;
+  has LastEvaluatedTableName => (is => 'ro', isa => Str);
+  has TableNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TableNames' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'LastEvaluatedTableName' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

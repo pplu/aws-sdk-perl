@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::Discovery::ExportFilter;
-  use Moose;
-  has Condition => (is => 'ro', isa => 'Str', request_name => 'condition', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'values', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Discovery::Types qw//;
+  has Condition => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Condition' => 1,
+                    'Values' => 1,
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'Values' => 'values',
+                       'Condition' => 'condition',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'Condition' => {
+                                'type' => 'Str'
+                              },
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

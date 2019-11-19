@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::ECS::ResourceRequirement;
-  use Moose;
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has Type => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Value' => 1,
+                    'Type' => 1
+                  },
+  'NameInRequest' => {
+                       'Value' => 'value',
+                       'Type' => 'type'
+                     },
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

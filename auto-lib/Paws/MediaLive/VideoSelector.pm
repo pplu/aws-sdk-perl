@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::MediaLive::VideoSelector;
-  use Moose;
-  has ColorSpace => (is => 'ro', isa => 'Str', request_name => 'colorSpace', traits => ['NameInRequest']);
-  has ColorSpaceUsage => (is => 'ro', isa => 'Str', request_name => 'colorSpaceUsage', traits => ['NameInRequest']);
-  has SelectorSettings => (is => 'ro', isa => 'Paws::MediaLive::VideoSelectorSettings', request_name => 'selectorSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_VideoSelectorSettings/;
+  has ColorSpace => (is => 'ro', isa => Str);
+  has ColorSpaceUsage => (is => 'ro', isa => Str);
+  has SelectorSettings => (is => 'ro', isa => MediaLive_VideoSelectorSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ColorSpaceUsage' => 'colorSpaceUsage',
+                       'SelectorSettings' => 'selectorSettings',
+                       'ColorSpace' => 'colorSpace'
+                     },
+  'types' => {
+               'ColorSpaceUsage' => {
+                                      'type' => 'Str'
+                                    },
+               'ColorSpace' => {
+                                 'type' => 'Str'
+                               },
+               'SelectorSettings' => {
+                                       'class' => 'Paws::MediaLive::VideoSelectorSettings',
+                                       'type' => 'MediaLive_VideoSelectorSettings'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +88,7 @@ Choose force if your input usually has no color space data or might
 have unreliable color space data.
 
 
-=head2 SelectorSettings => L<Paws::MediaLive::VideoSelectorSettings>
+=head2 SelectorSettings => MediaLive_VideoSelectorSettings
 
   The video selector settings.
 

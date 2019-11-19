@@ -1,15 +1,41 @@
 
 package Paws::ResourceGroups::Tag;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Arn', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::ResourceGroups::Tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ResourceGroups::Types qw/ResourceGroups_Tags/;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ResourceGroups_Tags, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Tag');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/resources/{Arn}/tags');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ResourceGroups::TagOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Tag');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/resources/{Arn}/tags');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ResourceGroups::TagOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Arn' => 'Arn'
+                  },
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'type' => 'ResourceGroups_Tags',
+                           'class' => 'Paws::ResourceGroups::Tags'
+                         }
+             },
+  'IsRequired' => {
+                    'Arn' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +81,7 @@ The ARN of the resource to which to add tags.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::ResourceGroups::Tags>
+=head2 B<REQUIRED> Tags => ResourceGroups_Tags
 
 The tags to add to the specified resource. A tag is a string-to-string
 map of key-value pairs. Tag keys can have a maximum character length of

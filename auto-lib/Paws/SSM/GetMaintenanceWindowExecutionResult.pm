@@ -1,14 +1,47 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetMaintenanceWindowExecutionResult;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusDetails => (is => 'ro', isa => 'Str');
-  has TaskIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has WindowExecutionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::SSM::Types qw//;
+  has EndTime => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetails => (is => 'ro', isa => Str);
+  has TaskIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has WindowExecutionId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusDetails' => {
+                                    'type' => 'Str'
+                                  },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'TaskIds' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'WindowExecutionId' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

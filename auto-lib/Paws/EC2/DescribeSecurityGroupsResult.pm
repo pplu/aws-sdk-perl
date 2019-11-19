@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeSecurityGroupsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SecurityGroup]', request_name => 'securityGroupInfo', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_SecurityGroup/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[EC2_SecurityGroup]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[EC2_SecurityGroup]',
+                                     'class' => 'Paws::EC2::SecurityGroup'
+                                   }
+             },
+  'NameInRequest' => {
+                       'SecurityGroups' => 'securityGroupInfo',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +48,7 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 SecurityGroups => ArrayRef[L<Paws::EC2::SecurityGroup>]
+=head2 SecurityGroups => ArrayRef[EC2_SecurityGroup]
 
 Information about the security groups.
 

@@ -1,7 +1,29 @@
 package Paws::EC2::CapacityReservationSpecificationResponse;
-  use Moose;
-  has CapacityReservationPreference => (is => 'ro', isa => 'Str', request_name => 'capacityReservationPreference', traits => ['NameInRequest']);
-  has CapacityReservationTarget => (is => 'ro', isa => 'Paws::EC2::CapacityReservationTargetResponse', request_name => 'capacityReservationTarget', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_CapacityReservationTargetResponse/;
+  has CapacityReservationPreference => (is => 'ro', isa => Str);
+  has CapacityReservationTarget => (is => 'ro', isa => EC2_CapacityReservationTargetResponse);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CapacityReservationTarget' => {
+                                                'type' => 'EC2_CapacityReservationTargetResponse',
+                                                'class' => 'Paws::EC2::CapacityReservationTargetResponse'
+                                              },
+               'CapacityReservationPreference' => {
+                                                    'type' => 'Str'
+                                                  }
+             },
+  'NameInRequest' => {
+                       'CapacityReservationTarget' => 'capacityReservationTarget',
+                       'CapacityReservationPreference' => 'capacityReservationPreference'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +80,7 @@ one is available. The instance runs in On-Demand capacity.
 
 
 
-=head2 CapacityReservationTarget => L<Paws::EC2::CapacityReservationTargetResponse>
+=head2 CapacityReservationTarget => EC2_CapacityReservationTargetResponse
 
   Information about the targeted Capacity Reservation.
 

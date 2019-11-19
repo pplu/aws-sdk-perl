@@ -1,9 +1,44 @@
+# Generated from default/object.tt
 package Paws::StepFunctions::ActivityScheduledEventDetails;
-  use Moose;
-  has HeartbeatInSeconds => (is => 'ro', isa => 'Int', request_name => 'heartbeatInSeconds', traits => ['NameInRequest']);
-  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
-  has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest'], required => 1);
-  has TimeoutInSeconds => (is => 'ro', isa => 'Int', request_name => 'timeoutInSeconds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::StepFunctions::Types qw//;
+  has HeartbeatInSeconds => (is => 'ro', isa => Int);
+  has Input => (is => 'ro', isa => Str);
+  has Resource => (is => 'ro', isa => Str, required => 1);
+  has TimeoutInSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Input' => 'input',
+                       'HeartbeatInSeconds' => 'heartbeatInSeconds',
+                       'TimeoutInSeconds' => 'timeoutInSeconds',
+                       'Resource' => 'resource'
+                     },
+  'IsRequired' => {
+                    'Resource' => 1
+                  },
+  'types' => {
+               'TimeoutInSeconds' => {
+                                       'type' => 'Int'
+                                     },
+               'Resource' => {
+                               'type' => 'Str'
+                             },
+               'Input' => {
+                            'type' => 'Str'
+                          },
+               'HeartbeatInSeconds' => {
+                                         'type' => 'Int'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,41 @@
+# Generated from default/object.tt
 package Paws::XRay::EdgeStatistics;
-  use Moose;
-  has ErrorStatistics => (is => 'ro', isa => 'Paws::XRay::ErrorStatistics');
-  has FaultStatistics => (is => 'ro', isa => 'Paws::XRay::FaultStatistics');
-  has OkCount => (is => 'ro', isa => 'Int');
-  has TotalCount => (is => 'ro', isa => 'Int');
-  has TotalResponseTime => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Int Num/;
+  use Paws::XRay::Types qw/XRay_FaultStatistics XRay_ErrorStatistics/;
+  has ErrorStatistics => (is => 'ro', isa => XRay_ErrorStatistics);
+  has FaultStatistics => (is => 'ro', isa => XRay_FaultStatistics);
+  has OkCount => (is => 'ro', isa => Int);
+  has TotalCount => (is => 'ro', isa => Int);
+  has TotalResponseTime => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OkCount' => {
+                              'type' => 'Int'
+                            },
+               'TotalResponseTime' => {
+                                        'type' => 'Num'
+                                      },
+               'ErrorStatistics' => {
+                                      'type' => 'XRay_ErrorStatistics',
+                                      'class' => 'Paws::XRay::ErrorStatistics'
+                                    },
+               'TotalCount' => {
+                                 'type' => 'Int'
+                               },
+               'FaultStatistics' => {
+                                      'type' => 'XRay_FaultStatistics',
+                                      'class' => 'Paws::XRay::FaultStatistics'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,13 +71,13 @@ Response statistics for an edge.
 =head1 ATTRIBUTES
 
 
-=head2 ErrorStatistics => L<Paws::XRay::ErrorStatistics>
+=head2 ErrorStatistics => XRay_ErrorStatistics
 
   Information about requests that failed with a 4xx Client Error status
 code.
 
 
-=head2 FaultStatistics => L<Paws::XRay::FaultStatistics>
+=head2 FaultStatistics => XRay_FaultStatistics
 
   Information about requests that failed with a 5xx Server Error status
 code.

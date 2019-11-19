@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Athena::WorkGroupConfiguration;
-  use Moose;
-  has BytesScannedCutoffPerQuery => (is => 'ro', isa => 'Int');
-  has EnforceWorkGroupConfiguration => (is => 'ro', isa => 'Bool');
-  has PublishCloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool');
-  has RequesterPaysEnabled => (is => 'ro', isa => 'Bool');
-  has ResultConfiguration => (is => 'ro', isa => 'Paws::Athena::ResultConfiguration');
+  use Moo;
+  use Types::Standard qw/Int Bool/;
+  use Paws::Athena::Types qw/Athena_ResultConfiguration/;
+  has BytesScannedCutoffPerQuery => (is => 'ro', isa => Int);
+  has EnforceWorkGroupConfiguration => (is => 'ro', isa => Bool);
+  has PublishCloudWatchMetricsEnabled => (is => 'ro', isa => Bool);
+  has RequesterPaysEnabled => (is => 'ro', isa => Bool);
+  has ResultConfiguration => (is => 'ro', isa => Athena_ResultConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EnforceWorkGroupConfiguration' => {
+                                                    'type' => 'Bool'
+                                                  },
+               'ResultConfiguration' => {
+                                          'type' => 'Athena_ResultConfiguration',
+                                          'class' => 'Paws::Athena::ResultConfiguration'
+                                        },
+               'BytesScannedCutoffPerQuery' => {
+                                                 'type' => 'Int'
+                                               },
+               'RequesterPaysEnabled' => {
+                                           'type' => 'Bool'
+                                         },
+               'PublishCloudWatchMetricsEnabled' => {
+                                                      'type' => 'Bool'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +110,7 @@ buckets, see Requester Pays Buckets
 in the I<Amazon Simple Storage Service Developer Guide>.
 
 
-=head2 ResultConfiguration => L<Paws::Athena::ResultConfiguration>
+=head2 ResultConfiguration => Athena_ResultConfiguration
 
   The configuration for the workgroup, which includes the location in
 Amazon S3 where query results are stored and the encryption option, if

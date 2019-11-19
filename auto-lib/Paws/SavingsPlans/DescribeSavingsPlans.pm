@@ -1,19 +1,58 @@
 
 package Paws::SavingsPlans::DescribeSavingsPlans;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SavingsPlans::SavingsPlanFilter]', traits => ['NameInRequest'], request_name => 'filters');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has SavingsPlanArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'savingsPlanArns');
-  has SavingsPlanIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'savingsPlanIds');
-  has States => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'states');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Undef/;
+  use Paws::SavingsPlans::Types qw/SavingsPlans_SavingsPlanFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[SavingsPlans_SavingsPlanFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SavingsPlanArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SavingsPlanIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has States => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSavingsPlans');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/DescribeSavingsPlans');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SavingsPlans::DescribeSavingsPlansResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeSavingsPlans');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/DescribeSavingsPlans');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SavingsPlans::DescribeSavingsPlansResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SavingsPlanArns' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'States' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Filters' => {
+                              'class' => 'Paws::SavingsPlans::SavingsPlanFilter',
+                              'type' => 'ArrayRef[SavingsPlans_SavingsPlanFilter]'
+                            },
+               'SavingsPlanIds' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'NameInRequest' => {
+                       'States' => 'states',
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults',
+                       'SavingsPlanIds' => 'savingsPlanIds',
+                       'Filters' => 'filters',
+                       'SavingsPlanArns' => 'savingsPlanArns'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +103,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sav
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::SavingsPlans::SavingsPlanFilter>]
+=head2 Filters => ArrayRef[SavingsPlans_SavingsPlanFilter]
 
 The filters.
 

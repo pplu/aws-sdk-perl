@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::DocumentSuggesterOptions;
-  use Moose;
-  has FuzzyMatching => (is => 'ro', isa => 'Str');
-  has SortExpression => (is => 'ro', isa => 'Str');
-  has SourceField => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearch::Types qw//;
+  has FuzzyMatching => (is => 'ro', isa => Str);
+  has SortExpression => (is => 'ro', isa => Str);
+  has SourceField => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SourceField' => 1
+                  },
+  'types' => {
+               'SortExpression' => {
+                                     'type' => 'Str'
+                                   },
+               'FuzzyMatching' => {
+                                    'type' => 'Str'
+                                  },
+               'SourceField' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

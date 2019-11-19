@@ -1,12 +1,54 @@
+# Generated from default/object.tt
 package Paws::Config::OrganizationConformancePack;
-  use Moose;
-  has ConformancePackInputParameters => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConformancePackInputParameter]');
-  has DeliveryS3Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has DeliveryS3KeyPrefix => (is => 'ro', isa => 'Str');
-  has ExcludedAccounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has LastUpdateTime => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationConformancePackArn => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationConformancePackName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Undef/;
+  use Paws::Config::Types qw/Config_ConformancePackInputParameter/;
+  has ConformancePackInputParameters => (is => 'ro', isa => ArrayRef[Config_ConformancePackInputParameter]);
+  has DeliveryS3Bucket => (is => 'ro', isa => Str, required => 1);
+  has DeliveryS3KeyPrefix => (is => 'ro', isa => Str);
+  has ExcludedAccounts => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LastUpdateTime => (is => 'ro', isa => Str, required => 1);
+  has OrganizationConformancePackArn => (is => 'ro', isa => Str, required => 1);
+  has OrganizationConformancePackName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationConformancePackArn' => {
+                                                     'type' => 'Str'
+                                                   },
+               'ExcludedAccounts' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'OrganizationConformancePackName' => {
+                                                      'type' => 'Str'
+                                                    },
+               'ConformancePackInputParameters' => {
+                                                     'class' => 'Paws::Config::ConformancePackInputParameter',
+                                                     'type' => 'ArrayRef[Config_ConformancePackInputParameter]'
+                                                   },
+               'DeliveryS3KeyPrefix' => {
+                                          'type' => 'Str'
+                                        },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'DeliveryS3Bucket' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'LastUpdateTime' => 1,
+                    'OrganizationConformancePackName' => 1,
+                    'DeliveryS3Bucket' => 1,
+                    'OrganizationConformancePackArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +85,7 @@ packs that AWS Config creates in member accounts.
 =head1 ATTRIBUTES
 
 
-=head2 ConformancePackInputParameters => ArrayRef[L<Paws::Config::ConformancePackInputParameter>]
+=head2 ConformancePackInputParameters => ArrayRef[Config_ConformancePackInputParameter]
 
   A list of C<ConformancePackInputParameter> objects.
 

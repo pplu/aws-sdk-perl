@@ -1,9 +1,27 @@
 
 package Paws::CognitoSync::GetCognitoEventsResponse;
-  use Moose;
-  has Events => (is => 'ro', isa => 'Paws::CognitoSync::Events');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoSync::Types qw/CognitoSync_Events/;
+  has Events => (is => 'ro', isa => CognitoSync_Events);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Events' => {
+                             'class' => 'Paws::CognitoSync::Events',
+                             'type' => 'CognitoSync_Events'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::CognitoSync::GetCognitoEventsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Events => L<Paws::CognitoSync::Events>
+=head2 Events => CognitoSync_Events
 
 The Cognito Events returned from the GetCognitoEvents request
 

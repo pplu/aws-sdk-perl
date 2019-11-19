@@ -1,12 +1,60 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionExecutionInput;
-  use Moose;
-  has ActionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', request_name => 'actionTypeId', traits => ['NameInRequest']);
-  has Configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap', request_name => 'configuration', traits => ['NameInRequest']);
-  has InputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ArtifactDetail]', request_name => 'inputArtifacts', traits => ['NameInRequest']);
-  has Namespace => (is => 'ro', isa => 'Str', request_name => 'namespace', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
-  has ResolvedConfiguration => (is => 'ro', isa => 'Paws::CodePipeline::ResolvedActionConfigurationMap', request_name => 'resolvedConfiguration', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ActionConfigurationMap CodePipeline_ActionTypeId CodePipeline_ResolvedActionConfigurationMap CodePipeline_ArtifactDetail/;
+  has ActionTypeId => (is => 'ro', isa => CodePipeline_ActionTypeId);
+  has Configuration => (is => 'ro', isa => CodePipeline_ActionConfigurationMap);
+  has InputArtifacts => (is => 'ro', isa => ArrayRef[CodePipeline_ArtifactDetail]);
+  has Namespace => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has ResolvedConfiguration => (is => 'ro', isa => CodePipeline_ResolvedActionConfigurationMap);
+  has RoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Namespace' => 'namespace',
+                       'Configuration' => 'configuration',
+                       'InputArtifacts' => 'inputArtifacts',
+                       'Region' => 'region',
+                       'ActionTypeId' => 'actionTypeId',
+                       'RoleArn' => 'roleArn',
+                       'ResolvedConfiguration' => 'resolvedConfiguration'
+                     },
+  'types' => {
+               'InputArtifacts' => {
+                                     'type' => 'ArrayRef[CodePipeline_ArtifactDetail]',
+                                     'class' => 'Paws::CodePipeline::ArtifactDetail'
+                                   },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'Configuration' => {
+                                    'class' => 'Paws::CodePipeline::ActionConfigurationMap',
+                                    'type' => 'CodePipeline_ActionConfigurationMap'
+                                  },
+               'ResolvedConfiguration' => {
+                                            'class' => 'Paws::CodePipeline::ResolvedActionConfigurationMap',
+                                            'type' => 'CodePipeline_ResolvedActionConfigurationMap'
+                                          },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ActionTypeId' => {
+                                   'class' => 'Paws::CodePipeline::ActionTypeId',
+                                   'type' => 'CodePipeline_ActionTypeId'
+                                 },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,17 +90,17 @@ Input information used for an action execution.
 =head1 ATTRIBUTES
 
 
-=head2 ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
+=head2 ActionTypeId => CodePipeline_ActionTypeId
 
   
 
 
-=head2 Configuration => L<Paws::CodePipeline::ActionConfigurationMap>
+=head2 Configuration => CodePipeline_ActionConfigurationMap
 
   Configuration data for an action execution.
 
 
-=head2 InputArtifacts => ArrayRef[L<Paws::CodePipeline::ArtifactDetail>]
+=head2 InputArtifacts => ArrayRef[CodePipeline_ArtifactDetail]
 
   Details of input artifacts of the action that correspond to the action
 execution.
@@ -69,7 +117,7 @@ produced as output by this action fall under this namespace.
   The AWS Region for the action, such as us-east-1.
 
 
-=head2 ResolvedConfiguration => L<Paws::CodePipeline::ResolvedActionConfigurationMap>
+=head2 ResolvedConfiguration => CodePipeline_ResolvedActionConfigurationMap
 
   Configuration data for an action execution with all variable references
 replaced with their real values for the execution.

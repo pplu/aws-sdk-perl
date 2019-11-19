@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::LabelParameterVersionResult;
-  use Moose;
-  has InvalidLabels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ParameterVersion => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::SSM::Types qw//;
+  has InvalidLabels => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ParameterVersion => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InvalidLabels' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ParameterVersion' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,15 +1,40 @@
 
 package Paws::SESv2::PutDedicatedIpInPool;
-  use Moose;
-  has DestinationPoolName => (is => 'ro', isa => 'Str', required => 1);
-  has Ip => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IP', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw//;
+  has DestinationPoolName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Ip => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutDedicatedIpInPool');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/dedicated-ips/{IP}/pool');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::PutDedicatedIpInPoolResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutDedicatedIpInPool');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/dedicated-ips/{IP}/pool');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::PutDedicatedIpInPoolResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DestinationPoolName' => 1,
+                    'Ip' => 1
+                  },
+  'types' => {
+               'Ip' => {
+                         'type' => 'Str'
+                       },
+               'DestinationPoolName' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'ParamInURI' => {
+                    'Ip' => 'IP'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

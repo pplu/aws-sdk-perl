@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::Inspector::TelemetryMetadata;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest'], required => 1);
-  has DataSize => (is => 'ro', isa => 'Int', request_name => 'dataSize', traits => ['NameInRequest']);
-  has MessageType => (is => 'ro', isa => 'Str', request_name => 'messageType', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Inspector::Types qw//;
+  has Count => (is => 'ro', isa => Int, required => 1);
+  has DataSize => (is => 'ro', isa => Int);
+  has MessageType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MessageType' => 1,
+                    'Count' => 1
+                  },
+  'NameInRequest' => {
+                       'Count' => 'count',
+                       'MessageType' => 'messageType',
+                       'DataSize' => 'dataSize'
+                     },
+  'types' => {
+               'DataSize' => {
+                               'type' => 'Int'
+                             },
+               'MessageType' => {
+                                  'type' => 'Str'
+                                },
+               'Count' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

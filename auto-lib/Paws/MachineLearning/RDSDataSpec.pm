@@ -1,16 +1,75 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::RDSDataSpec;
-  use Moose;
-  has DatabaseCredentials => (is => 'ro', isa => 'Paws::MachineLearning::RDSDatabaseCredentials', required => 1);
-  has DatabaseInformation => (is => 'ro', isa => 'Paws::MachineLearning::RDSDatabase', required => 1);
-  has DataRearrangement => (is => 'ro', isa => 'Str');
-  has DataSchema => (is => 'ro', isa => 'Str');
-  has DataSchemaUri => (is => 'ro', isa => 'Str');
-  has ResourceRole => (is => 'ro', isa => 'Str', required => 1);
-  has S3StagingLocation => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has SelectSqlQuery => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceRole => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MachineLearning::Types qw/MachineLearning_RDSDatabase MachineLearning_RDSDatabaseCredentials/;
+  has DatabaseCredentials => (is => 'ro', isa => MachineLearning_RDSDatabaseCredentials, required => 1);
+  has DatabaseInformation => (is => 'ro', isa => MachineLearning_RDSDatabase, required => 1);
+  has DataRearrangement => (is => 'ro', isa => Str);
+  has DataSchema => (is => 'ro', isa => Str);
+  has DataSchemaUri => (is => 'ro', isa => Str);
+  has ResourceRole => (is => 'ro', isa => Str, required => 1);
+  has S3StagingLocation => (is => 'ro', isa => Str, required => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has SelectSqlQuery => (is => 'ro', isa => Str, required => 1);
+  has ServiceRole => (is => 'ro', isa => Str, required => 1);
+  has SubnetId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataSchemaUri' => {
+                                    'type' => 'Str'
+                                  },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'DataRearrangement' => {
+                                        'type' => 'Str'
+                                      },
+               'DatabaseInformation' => {
+                                          'class' => 'Paws::MachineLearning::RDSDatabase',
+                                          'type' => 'MachineLearning_RDSDatabase'
+                                        },
+               'DatabaseCredentials' => {
+                                          'class' => 'Paws::MachineLearning::RDSDatabaseCredentials',
+                                          'type' => 'MachineLearning_RDSDatabaseCredentials'
+                                        },
+               'ResourceRole' => {
+                                   'type' => 'Str'
+                                 },
+               'DataSchema' => {
+                                 'type' => 'Str'
+                               },
+               'SelectSqlQuery' => {
+                                     'type' => 'Str'
+                                   },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'S3StagingLocation' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'ResourceRole' => 1,
+                    'SubnetId' => 1,
+                    'SecurityGroupIds' => 1,
+                    'DatabaseInformation' => 1,
+                    'DatabaseCredentials' => 1,
+                    'ServiceRole' => 1,
+                    'S3StagingLocation' => 1,
+                    'SelectSqlQuery' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,13 +106,13 @@ RDS) C<DataSource>.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DatabaseCredentials => L<Paws::MachineLearning::RDSDatabaseCredentials>
+=head2 B<REQUIRED> DatabaseCredentials => MachineLearning_RDSDatabaseCredentials
 
   The AWS Identity and Access Management (IAM) credentials that are used
 connect to the Amazon RDS database.
 
 
-=head2 B<REQUIRED> DatabaseInformation => L<Paws::MachineLearning::RDSDatabase>
+=head2 B<REQUIRED> DatabaseInformation => MachineLearning_RDSDatabase
 
   Describes the C<DatabaseName> and C<InstanceIdentifier> of an Amazon
 RDS database.

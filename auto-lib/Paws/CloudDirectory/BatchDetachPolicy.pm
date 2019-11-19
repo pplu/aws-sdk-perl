@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchDetachPolicy;
-  use Moose;
-  has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has PolicyReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference/;
+  has ObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+  has PolicyReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ObjectReference' => 1,
+                    'PolicyReference' => 1
+                  },
+  'types' => {
+               'PolicyReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    },
+               'ObjectReference' => {
+                                      'type' => 'CloudDirectory_ObjectReference',
+                                      'class' => 'Paws::CloudDirectory::ObjectReference'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,13 +65,13 @@ BatchWriteRequest$Operations.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ObjectReference => CloudDirectory_ObjectReference
 
   Reference that identifies the object whose policy object will be
 detached.
 
 
-=head2 B<REQUIRED> PolicyReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> PolicyReference => CloudDirectory_ObjectReference
 
   Reference that identifies the policy object.
 

@@ -1,11 +1,41 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECR::PutImageScanningConfigurationResponse;
-  use Moose;
-  has ImageScanningConfiguration => (is => 'ro', isa => 'Paws::ECR::ImageScanningConfiguration', traits => ['NameInRequest'], request_name => 'imageScanningConfiguration' );
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw/ECR_ImageScanningConfiguration/;
+  has ImageScanningConfiguration => (is => 'ro', isa => ECR_ImageScanningConfiguration);
+  has RegistryId => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RegistryId' => 'registryId',
+                       'RepositoryName' => 'repositoryName',
+                       'ImageScanningConfiguration' => 'imageScanningConfiguration'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'ImageScanningConfiguration' => {
+                                                 'class' => 'Paws::ECR::ImageScanningConfiguration',
+                                                 'type' => 'ECR_ImageScanningConfiguration'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +46,7 @@ Paws::ECR::PutImageScanningConfigurationResponse
 =head1 ATTRIBUTES
 
 
-=head2 ImageScanningConfiguration => L<Paws::ECR::ImageScanningConfiguration>
+=head2 ImageScanningConfiguration => ECR_ImageScanningConfiguration
 
 The image scanning configuration setting for the repository.
 

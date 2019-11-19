@@ -1,17 +1,38 @@
 
 package Paws::Route53::CreateQueryLoggingConfig;
-  use Moose;
-  has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str', required => 1);
-  has HostedZoneId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw//;
+  has CloudWatchLogsLogGroupArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has HostedZoneId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateQueryLoggingConfig');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/queryloggingconfig');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::CreateQueryLoggingConfigResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateQueryLoggingConfig');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/queryloggingconfig');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::CreateQueryLoggingConfigResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CloudWatchLogsLogGroupArn' => 1,
+                    'HostedZoneId' => 1
+                  },
+  'types' => {
+               'CloudWatchLogsLogGroupArn' => {
+                                                'type' => 'Str'
+                                              },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

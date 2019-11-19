@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::Glue::CrawlerMetrics;
-  use Moose;
-  has CrawlerName => (is => 'ro', isa => 'Str');
-  has LastRuntimeSeconds => (is => 'ro', isa => 'Num');
-  has MedianRuntimeSeconds => (is => 'ro', isa => 'Num');
-  has StillEstimating => (is => 'ro', isa => 'Bool');
-  has TablesCreated => (is => 'ro', isa => 'Int');
-  has TablesDeleted => (is => 'ro', isa => 'Int');
-  has TablesUpdated => (is => 'ro', isa => 'Int');
-  has TimeLeftSeconds => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Num Bool Int/;
+  use Paws::Glue::Types qw//;
+  has CrawlerName => (is => 'ro', isa => Str);
+  has LastRuntimeSeconds => (is => 'ro', isa => Num);
+  has MedianRuntimeSeconds => (is => 'ro', isa => Num);
+  has StillEstimating => (is => 'ro', isa => Bool);
+  has TablesCreated => (is => 'ro', isa => Int);
+  has TablesDeleted => (is => 'ro', isa => Int);
+  has TablesUpdated => (is => 'ro', isa => Int);
+  has TimeLeftSeconds => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CrawlerName' => {
+                                  'type' => 'Str'
+                                },
+               'TablesDeleted' => {
+                                    'type' => 'Int'
+                                  },
+               'LastRuntimeSeconds' => {
+                                         'type' => 'Num'
+                                       },
+               'MedianRuntimeSeconds' => {
+                                           'type' => 'Num'
+                                         },
+               'TablesCreated' => {
+                                    'type' => 'Int'
+                                  },
+               'TimeLeftSeconds' => {
+                                      'type' => 'Num'
+                                    },
+               'TablesUpdated' => {
+                                    'type' => 'Int'
+                                  },
+               'StillEstimating' => {
+                                      'type' => 'Bool'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

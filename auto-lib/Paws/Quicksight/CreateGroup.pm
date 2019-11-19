@@ -1,17 +1,50 @@
 
 package Paws::Quicksight::CreateGroup;
-  use Moose;
-  has AwsAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'AwsAccountId', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Namespace', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Quicksight::Types qw//;
+  has AwsAccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{AwsAccountId}/namespaces/{Namespace}/groups');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Quicksight::CreateGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{AwsAccountId}/namespaces/{Namespace}/groups');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Quicksight::CreateGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'AwsAccountId' => 'AwsAccountId',
+                    'Namespace' => 'Namespace'
+                  },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AwsAccountId' => {
+                                   'type' => 'Str'
+                                 },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'Namespace' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Namespace' => 1,
+                    'GroupName' => 1,
+                    'AwsAccountId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

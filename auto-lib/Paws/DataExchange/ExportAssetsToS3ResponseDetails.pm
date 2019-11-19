@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::DataExchange::ExportAssetsToS3ResponseDetails;
-  use Moose;
-  has AssetDestinations => (is => 'ro', isa => 'ArrayRef[Paws::DataExchange::AssetDestinationEntry]', required => 1);
-  has DataSetId => (is => 'ro', isa => 'Str', required => 1);
-  has RevisionId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::DataExchange::Types qw/DataExchange_AssetDestinationEntry/;
+  has AssetDestinations => (is => 'ro', isa => ArrayRef[DataExchange_AssetDestinationEntry], required => 1);
+  has DataSetId => (is => 'ro', isa => Str, required => 1);
+  has RevisionId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'DataSetId' => {
+                                'type' => 'Str'
+                              },
+               'AssetDestinations' => {
+                                        'type' => 'ArrayRef[DataExchange_AssetDestinationEntry]',
+                                        'class' => 'Paws::DataExchange::AssetDestinationEntry'
+                                      }
+             },
+  'IsRequired' => {
+                    'DataSetId' => 1,
+                    'RevisionId' => 1,
+                    'AssetDestinations' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ Details about the export to Amazon S3 response.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AssetDestinations => ArrayRef[L<Paws::DataExchange::AssetDestinationEntry>]
+=head2 B<REQUIRED> AssetDestinations => ArrayRef[DataExchange_AssetDestinationEntry]
 
   The destination in Amazon S3 where the asset is exported.
 

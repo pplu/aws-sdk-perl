@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::Personalize::S3DataConfig;
-  use Moose;
-  has KmsKeyArn => (is => 'ro', isa => 'Str', request_name => 'kmsKeyArn', traits => ['NameInRequest']);
-  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has KmsKeyArn => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Path' => 1
+                  },
+  'NameInRequest' => {
+                       'Path' => 'path',
+                       'KmsKeyArn' => 'kmsKeyArn'
+                     },
+  'types' => {
+               'KmsKeyArn' => {
+                                'type' => 'Str'
+                              },
+               'Path' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

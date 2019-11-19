@@ -1,16 +1,81 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Scte35SegmentationDescriptor;
-  use Moose;
-  has DeliveryRestrictions => (is => 'ro', isa => 'Paws::MediaLive::Scte35DeliveryRestrictions', request_name => 'deliveryRestrictions', traits => ['NameInRequest']);
-  has SegmentationCancelIndicator => (is => 'ro', isa => 'Str', request_name => 'segmentationCancelIndicator', traits => ['NameInRequest'], required => 1);
-  has SegmentationDuration => (is => 'ro', isa => 'Int', request_name => 'segmentationDuration', traits => ['NameInRequest']);
-  has SegmentationEventId => (is => 'ro', isa => 'Int', request_name => 'segmentationEventId', traits => ['NameInRequest'], required => 1);
-  has SegmentationTypeId => (is => 'ro', isa => 'Int', request_name => 'segmentationTypeId', traits => ['NameInRequest']);
-  has SegmentationUpid => (is => 'ro', isa => 'Str', request_name => 'segmentationUpid', traits => ['NameInRequest']);
-  has SegmentationUpidType => (is => 'ro', isa => 'Int', request_name => 'segmentationUpidType', traits => ['NameInRequest']);
-  has SegmentNum => (is => 'ro', isa => 'Int', request_name => 'segmentNum', traits => ['NameInRequest']);
-  has SegmentsExpected => (is => 'ro', isa => 'Int', request_name => 'segmentsExpected', traits => ['NameInRequest']);
-  has SubSegmentNum => (is => 'ro', isa => 'Int', request_name => 'subSegmentNum', traits => ['NameInRequest']);
-  has SubSegmentsExpected => (is => 'ro', isa => 'Int', request_name => 'subSegmentsExpected', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaLive::Types qw/MediaLive_Scte35DeliveryRestrictions/;
+  has DeliveryRestrictions => (is => 'ro', isa => MediaLive_Scte35DeliveryRestrictions);
+  has SegmentationCancelIndicator => (is => 'ro', isa => Str, required => 1);
+  has SegmentationDuration => (is => 'ro', isa => Int);
+  has SegmentationEventId => (is => 'ro', isa => Int, required => 1);
+  has SegmentationTypeId => (is => 'ro', isa => Int);
+  has SegmentationUpid => (is => 'ro', isa => Str);
+  has SegmentationUpidType => (is => 'ro', isa => Int);
+  has SegmentNum => (is => 'ro', isa => Int);
+  has SegmentsExpected => (is => 'ro', isa => Int);
+  has SubSegmentNum => (is => 'ro', isa => Int);
+  has SubSegmentsExpected => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SegmentationUpid' => 'segmentationUpid',
+                       'SegmentationCancelIndicator' => 'segmentationCancelIndicator',
+                       'SegmentNum' => 'segmentNum',
+                       'SegmentationUpidType' => 'segmentationUpidType',
+                       'SegmentationEventId' => 'segmentationEventId',
+                       'DeliveryRestrictions' => 'deliveryRestrictions',
+                       'SegmentsExpected' => 'segmentsExpected',
+                       'SegmentationDuration' => 'segmentationDuration',
+                       'SubSegmentNum' => 'subSegmentNum',
+                       'SegmentationTypeId' => 'segmentationTypeId',
+                       'SubSegmentsExpected' => 'subSegmentsExpected'
+                     },
+  'IsRequired' => {
+                    'SegmentationCancelIndicator' => 1,
+                    'SegmentationEventId' => 1
+                  },
+  'types' => {
+               'SegmentationTypeId' => {
+                                         'type' => 'Int'
+                                       },
+               'SubSegmentNum' => {
+                                    'type' => 'Int'
+                                  },
+               'SegmentationDuration' => {
+                                           'type' => 'Int'
+                                         },
+               'SubSegmentsExpected' => {
+                                          'type' => 'Int'
+                                        },
+               'DeliveryRestrictions' => {
+                                           'class' => 'Paws::MediaLive::Scte35DeliveryRestrictions',
+                                           'type' => 'MediaLive_Scte35DeliveryRestrictions'
+                                         },
+               'SegmentsExpected' => {
+                                       'type' => 'Int'
+                                     },
+               'SegmentationCancelIndicator' => {
+                                                  'type' => 'Str'
+                                                },
+               'SegmentNum' => {
+                                 'type' => 'Int'
+                               },
+               'SegmentationEventId' => {
+                                          'type' => 'Int'
+                                        },
+               'SegmentationUpidType' => {
+                                           'type' => 'Int'
+                                         },
+               'SegmentationUpid' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +111,7 @@ Corresponds to SCTE-35 segmentation_descriptor.
 =head1 ATTRIBUTES
 
 
-=head2 DeliveryRestrictions => L<Paws::MediaLive::Scte35DeliveryRestrictions>
+=head2 DeliveryRestrictions => MediaLive_Scte35DeliveryRestrictions
 
   Holds the four SCTE-35 delivery restriction parameters.
 

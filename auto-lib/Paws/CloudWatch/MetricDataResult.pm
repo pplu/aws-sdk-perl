@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::CloudWatch::MetricDataResult;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Label => (is => 'ro', isa => 'Str');
-  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::MessageData]');
-  has StatusCode => (is => 'ro', isa => 'Str');
-  has Timestamps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Values => (is => 'ro', isa => 'ArrayRef[Num]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Num/;
+  use Paws::CloudWatch::Types qw/CloudWatch_MessageData/;
+  has Id => (is => 'ro', isa => Str);
+  has Label => (is => 'ro', isa => Str);
+  has Messages => (is => 'ro', isa => ArrayRef[CloudWatch_MessageData]);
+  has StatusCode => (is => 'ro', isa => Str);
+  has Timestamps => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Values => (is => 'ro', isa => ArrayRef[Num]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Values' => {
+                             'type' => 'ArrayRef[Num]'
+                           },
+               'Timestamps' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'Messages' => {
+                               'type' => 'ArrayRef[CloudWatch_MessageData]',
+                               'class' => 'Paws::CloudWatch::MessageData'
+                             },
+               'Label' => {
+                            'type' => 'Str'
+                          },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +87,7 @@ identifying information.
   The human-readable label associated with the data.
 
 
-=head2 Messages => ArrayRef[L<Paws::CloudWatch::MessageData>]
+=head2 Messages => ArrayRef[CloudWatch_MessageData]
 
   A list of messages with additional information about the data returned.
 

@@ -1,19 +1,77 @@
+# Generated from default/object.tt
 package Paws::ComprehendMedical::ComprehendMedicalAsyncJobProperties;
-  use Moose;
-  has DataAccessRoleArn => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has ExpirationTime => (is => 'ro', isa => 'Str');
-  has InputDataConfig => (is => 'ro', isa => 'Paws::ComprehendMedical::InputDataConfig');
-  has JobId => (is => 'ro', isa => 'Str');
-  has JobName => (is => 'ro', isa => 'Str');
-  has JobStatus => (is => 'ro', isa => 'Str');
-  has KMSKey => (is => 'ro', isa => 'Str');
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has ManifestFilePath => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has ModelVersion => (is => 'ro', isa => 'Str');
-  has OutputDataConfig => (is => 'ro', isa => 'Paws::ComprehendMedical::OutputDataConfig');
-  has SubmitTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ComprehendMedical::Types qw/ComprehendMedical_InputDataConfig ComprehendMedical_OutputDataConfig/;
+  has DataAccessRoleArn => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has ExpirationTime => (is => 'ro', isa => Str);
+  has InputDataConfig => (is => 'ro', isa => ComprehendMedical_InputDataConfig);
+  has JobId => (is => 'ro', isa => Str);
+  has JobName => (is => 'ro', isa => Str);
+  has JobStatus => (is => 'ro', isa => Str);
+  has KMSKey => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has ManifestFilePath => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has ModelVersion => (is => 'ro', isa => Str);
+  has OutputDataConfig => (is => 'ro', isa => ComprehendMedical_OutputDataConfig);
+  has SubmitTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ManifestFilePath' => {
+                                       'type' => 'Str'
+                                     },
+               'OutputDataConfig' => {
+                                       'type' => 'ComprehendMedical_OutputDataConfig',
+                                       'class' => 'Paws::ComprehendMedical::OutputDataConfig'
+                                     },
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               'InputDataConfig' => {
+                                      'class' => 'Paws::ComprehendMedical::InputDataConfig',
+                                      'type' => 'ComprehendMedical_InputDataConfig'
+                                    },
+               'KMSKey' => {
+                             'type' => 'Str'
+                           },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'SubmitTime' => {
+                                 'type' => 'Str'
+                               },
+               'ModelVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'DataAccessRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'ExpirationTime' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +126,7 @@ deleted, the job will no longer appear in the results of the
 C<ListEntitiesDetectionV2Job> or the C<ListPHIDetectionJobs> operation.
 
 
-=head2 InputDataConfig => L<Paws::ComprehendMedical::InputDataConfig>
+=head2 InputDataConfig => ComprehendMedical_InputDataConfig
 
   The input data configuration that you supplied when you created the
 detection job.
@@ -118,7 +176,7 @@ number looks like X.X.X. You can use this information to track the
 model used for a particular batch of documents.
 
 
-=head2 OutputDataConfig => L<Paws::ComprehendMedical::OutputDataConfig>
+=head2 OutputDataConfig => ComprehendMedical_OutputDataConfig
 
   The output data configuration that you supplied when you created the
 detection job.

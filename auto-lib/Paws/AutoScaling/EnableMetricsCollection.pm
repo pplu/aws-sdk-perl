@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::EnableMetricsCollection;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Granularity => (is => 'ro', isa => 'Str', required => 1);
-  has Metrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Granularity => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Metrics => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableMetricsCollection');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'EnableMetricsCollection');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AutoScalingGroupName' => 1,
+                    'Granularity' => 1
+                  },
+  'types' => {
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'Metrics' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Granularity' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

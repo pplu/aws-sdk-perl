@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdentity::DeleteIdentitiesResponse;
-  use Moose;
-  has UnprocessedIdentityIds => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::UnprocessedIdentityId]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdentity::Types qw/CognitoIdentity_UnprocessedIdentityId/;
+  has UnprocessedIdentityIds => (is => 'ro', isa => ArrayRef[CognitoIdentity_UnprocessedIdentityId]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UnprocessedIdentityIds' => {
+                                             'type' => 'ArrayRef[CognitoIdentity_UnprocessedIdentityId]',
+                                             'class' => 'Paws::CognitoIdentity::UnprocessedIdentityId'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::CognitoIdentity::DeleteIdentitiesResponse
 =head1 ATTRIBUTES
 
 
-=head2 UnprocessedIdentityIds => ArrayRef[L<Paws::CognitoIdentity::UnprocessedIdentityId>]
+=head2 UnprocessedIdentityIds => ArrayRef[CognitoIdentity_UnprocessedIdentityId]
 
 An array of UnprocessedIdentityId objects, each of which contains an
 ErrorCode and IdentityId.

@@ -1,17 +1,77 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::ApplicationDetail;
-  use Moose;
-  has ApplicationARN => (is => 'ro', isa => 'Str', required => 1);
-  has ApplicationCode => (is => 'ro', isa => 'Str');
-  has ApplicationDescription => (is => 'ro', isa => 'Str');
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has ApplicationStatus => (is => 'ro', isa => 'Str', required => 1);
-  has ApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
-  has CloudWatchLoggingOptionDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::CloudWatchLoggingOptionDescription]');
-  has CreateTimestamp => (is => 'ro', isa => 'Str');
-  has InputDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::InputDescription]');
-  has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
-  has OutputDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::OutputDescription]');
-  has ReferenceDataSourceDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::ReferenceDataSourceDescription]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_InputDescription KinesisAnalytics_ReferenceDataSourceDescription KinesisAnalytics_CloudWatchLoggingOptionDescription KinesisAnalytics_OutputDescription/;
+  has ApplicationARN => (is => 'ro', isa => Str, required => 1);
+  has ApplicationCode => (is => 'ro', isa => Str);
+  has ApplicationDescription => (is => 'ro', isa => Str);
+  has ApplicationName => (is => 'ro', isa => Str, required => 1);
+  has ApplicationStatus => (is => 'ro', isa => Str, required => 1);
+  has ApplicationVersionId => (is => 'ro', isa => Int, required => 1);
+  has CloudWatchLoggingOptionDescriptions => (is => 'ro', isa => ArrayRef[KinesisAnalytics_CloudWatchLoggingOptionDescription]);
+  has CreateTimestamp => (is => 'ro', isa => Str);
+  has InputDescriptions => (is => 'ro', isa => ArrayRef[KinesisAnalytics_InputDescription]);
+  has LastUpdateTimestamp => (is => 'ro', isa => Str);
+  has OutputDescriptions => (is => 'ro', isa => ArrayRef[KinesisAnalytics_OutputDescription]);
+  has ReferenceDataSourceDescriptions => (is => 'ro', isa => ArrayRef[KinesisAnalytics_ReferenceDataSourceDescription]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ApplicationName' => 1,
+                    'ApplicationARN' => 1,
+                    'ApplicationVersionId' => 1,
+                    'ApplicationStatus' => 1
+                  },
+  'types' => {
+               'ApplicationCode' => {
+                                      'type' => 'Str'
+                                    },
+               'OutputDescriptions' => {
+                                         'class' => 'Paws::KinesisAnalytics::OutputDescription',
+                                         'type' => 'ArrayRef[KinesisAnalytics_OutputDescription]'
+                                       },
+               'ApplicationARN' => {
+                                     'type' => 'Str'
+                                   },
+               'CreateTimestamp' => {
+                                      'type' => 'Str'
+                                    },
+               'CloudWatchLoggingOptionDescriptions' => {
+                                                          'type' => 'ArrayRef[KinesisAnalytics_CloudWatchLoggingOptionDescription]',
+                                                          'class' => 'Paws::KinesisAnalytics::CloudWatchLoggingOptionDescription'
+                                                        },
+               'InputDescriptions' => {
+                                        'class' => 'Paws::KinesisAnalytics::InputDescription',
+                                        'type' => 'ArrayRef[KinesisAnalytics_InputDescription]'
+                                      },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'ApplicationDescription' => {
+                                             'type' => 'Str'
+                                           },
+               'ApplicationStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'ApplicationVersionId' => {
+                                           'type' => 'Int'
+                                         },
+               'LastUpdateTimestamp' => {
+                                          'type' => 'Str'
+                                        },
+               'ReferenceDataSourceDescriptions' => {
+                                                      'class' => 'Paws::KinesisAnalytics::ReferenceDataSourceDescription',
+                                                      'type' => 'ArrayRef[KinesisAnalytics_ReferenceDataSourceDescription]'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +145,7 @@ on any of the in-application streams in your application.
   Provides the current application version.
 
 
-=head2 CloudWatchLoggingOptionDescriptions => ArrayRef[L<Paws::KinesisAnalytics::CloudWatchLoggingOptionDescription>]
+=head2 CloudWatchLoggingOptionDescriptions => ArrayRef[KinesisAnalytics_CloudWatchLoggingOptionDescription]
 
   Describes the CloudWatch log streams that are configured to receive
 application messages. For more information about using CloudWatch log
@@ -99,7 +159,7 @@ Amazon CloudWatch Logs
   Time stamp when the application version was created.
 
 
-=head2 InputDescriptions => ArrayRef[L<Paws::KinesisAnalytics::InputDescription>]
+=head2 InputDescriptions => ArrayRef[KinesisAnalytics_InputDescription]
 
   Describes the application input configuration. For more information,
 see Configuring Application Input
@@ -111,14 +171,14 @@ see Configuring Application Input
   Time stamp when the application was last updated.
 
 
-=head2 OutputDescriptions => ArrayRef[L<Paws::KinesisAnalytics::OutputDescription>]
+=head2 OutputDescriptions => ArrayRef[KinesisAnalytics_OutputDescription]
 
   Describes the application output configuration. For more information,
 see Configuring Application Output
 (https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 
 
-=head2 ReferenceDataSourceDescriptions => ArrayRef[L<Paws::KinesisAnalytics::ReferenceDataSourceDescription>]
+=head2 ReferenceDataSourceDescriptions => ArrayRef[KinesisAnalytics_ReferenceDataSourceDescription]
 
   Describes reference data sources configured for the application. For
 more information, see Configuring Application Input

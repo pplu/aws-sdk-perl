@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::S3DestinationSettings;
-  use Moose;
-  has AccessControl => (is => 'ro', isa => 'Paws::MediaConvert::S3DestinationAccessControl', request_name => 'accessControl', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::S3EncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaConvert::Types qw/MediaConvert_S3EncryptionSettings MediaConvert_S3DestinationAccessControl/;
+  has AccessControl => (is => 'ro', isa => MediaConvert_S3DestinationAccessControl);
+  has Encryption => (is => 'ro', isa => MediaConvert_S3EncryptionSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Encryption' => 'encryption',
+                       'AccessControl' => 'accessControl'
+                     },
+  'types' => {
+               'Encryption' => {
+                                 'class' => 'Paws::MediaConvert::S3EncryptionSettings',
+                                 'type' => 'MediaConvert_S3EncryptionSettings'
+                               },
+               'AccessControl' => {
+                                    'type' => 'MediaConvert_S3DestinationAccessControl',
+                                    'class' => 'Paws::MediaConvert::S3DestinationAccessControl'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +63,7 @@ Settings associated with S3 destination
 =head1 ATTRIBUTES
 
 
-=head2 AccessControl => L<Paws::MediaConvert::S3DestinationAccessControl>
+=head2 AccessControl => MediaConvert_S3DestinationAccessControl
 
   Optional. Have MediaConvert automatically apply Amazon S3 access
 control for the outputs in this output group. When you don't use this
@@ -45,7 +71,7 @@ setting, S3 automatically applies the default access control list
 PRIVATE.
 
 
-=head2 Encryption => L<Paws::MediaConvert::S3EncryptionSettings>
+=head2 Encryption => MediaConvert_S3EncryptionSettings
 
   Settings for how your job outputs are encrypted as they are uploaded to
 Amazon S3.

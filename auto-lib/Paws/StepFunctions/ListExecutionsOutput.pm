@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StepFunctions::ListExecutionsOutput;
-  use Moose;
-  has Executions => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::ExecutionListItem]', traits => ['NameInRequest'], request_name => 'executions' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StepFunctions::Types qw/StepFunctions_ExecutionListItem/;
+  has Executions => (is => 'ro', isa => ArrayRef[StepFunctions_ExecutionListItem], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Executions' => {
+                                 'class' => 'Paws::StepFunctions::ExecutionListItem',
+                                 'type' => 'ArrayRef[StepFunctions_ExecutionListItem]'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Executions' => 1
+                  },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Executions' => 'executions'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +44,7 @@ Paws::StepFunctions::ListExecutionsOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Executions => ArrayRef[L<Paws::StepFunctions::ExecutionListItem>]
+=head2 B<REQUIRED> Executions => ArrayRef[StepFunctions_ExecutionListItem]
 
 The list of matching executions.
 

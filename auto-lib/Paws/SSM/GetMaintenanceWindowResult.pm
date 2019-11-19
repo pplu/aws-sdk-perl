@@ -1,22 +1,79 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetMaintenanceWindowResult;
-  use Moose;
-  has AllowUnassociatedTargets => (is => 'ro', isa => 'Bool');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Cutoff => (is => 'ro', isa => 'Int');
-  has Description => (is => 'ro', isa => 'Str');
-  has Duration => (is => 'ro', isa => 'Int');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has EndDate => (is => 'ro', isa => 'Str');
-  has ModifiedDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has NextExecutionTime => (is => 'ro', isa => 'Str');
-  has Schedule => (is => 'ro', isa => 'Str');
-  has ScheduleTimezone => (is => 'ro', isa => 'Str');
-  has StartDate => (is => 'ro', isa => 'Str');
-  has WindowId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::SSM::Types qw//;
+  has AllowUnassociatedTargets => (is => 'ro', isa => Bool);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has Cutoff => (is => 'ro', isa => Int);
+  has Description => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has Enabled => (is => 'ro', isa => Bool);
+  has EndDate => (is => 'ro', isa => Str);
+  has ModifiedDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has NextExecutionTime => (is => 'ro', isa => Str);
+  has Schedule => (is => 'ro', isa => Str);
+  has ScheduleTimezone => (is => 'ro', isa => Str);
+  has StartDate => (is => 'ro', isa => Str);
+  has WindowId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ModifiedDate' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'Schedule' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextExecutionTime' => {
+                                        'type' => 'Str'
+                                      },
+               'AllowUnassociatedTargets' => {
+                                               'type' => 'Bool'
+                                             },
+               'StartDate' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'WindowId' => {
+                               'type' => 'Str'
+                             },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'ScheduleTimezone' => {
+                                       'type' => 'Str'
+                                     },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'Cutoff' => {
+                             'type' => 'Int'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

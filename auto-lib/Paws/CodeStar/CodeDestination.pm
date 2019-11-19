@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CodeStar::CodeDestination;
-  use Moose;
-  has CodeCommit => (is => 'ro', isa => 'Paws::CodeStar::CodeCommitCodeDestination', request_name => 'codeCommit', traits => ['NameInRequest']);
-  has GitHub => (is => 'ro', isa => 'Paws::CodeStar::GitHubCodeDestination', request_name => 'gitHub', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CodeStar::Types qw/CodeStar_CodeCommitCodeDestination CodeStar_GitHubCodeDestination/;
+  has CodeCommit => (is => 'ro', isa => CodeStar_CodeCommitCodeDestination);
+  has GitHub => (is => 'ro', isa => CodeStar_GitHubCodeDestination);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CodeCommit' => 'codeCommit',
+                       'GitHub' => 'gitHub'
+                     },
+  'types' => {
+               'GitHub' => {
+                             'class' => 'Paws::CodeStar::GitHubCodeDestination',
+                             'type' => 'CodeStar_GitHubCodeDestination'
+                           },
+               'CodeCommit' => {
+                                 'type' => 'CodeStar_CodeCommitCodeDestination',
+                                 'class' => 'Paws::CodeStar::CodeCommitCodeDestination'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,14 +66,14 @@ the repository.
 =head1 ATTRIBUTES
 
 
-=head2 CodeCommit => L<Paws::CodeStar::CodeCommitCodeDestination>
+=head2 CodeCommit => CodeStar_CodeCommitCodeDestination
 
   Information about the AWS CodeCommit repository to be created in AWS
 CodeStar. This is where the source code files provided with the project
 request will be uploaded after project creation.
 
 
-=head2 GitHub => L<Paws::CodeStar::GitHubCodeDestination>
+=head2 GitHub => CodeStar_GitHubCodeDestination
 
   Information about the GitHub repository to be created in AWS CodeStar.
 This is where the source code files provided with the project request

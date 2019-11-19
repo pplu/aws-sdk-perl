@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::FSX;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'fsx' }
   sub signing_name { 'fsx' }
   sub version { '2018-03-01' }
   sub target_prefix { 'AWSSimbaAPIService_v20180301' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -186,7 +188,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fsx
 
 =item [ClientRequestToken => Str]
 
-=item [Tags => ArrayRef[L<Paws::FSX::Tag>]]
+=item [Tags => ArrayRef[FSX_Tag]]
 
 
 =back
@@ -248,13 +250,13 @@ backup state along with other information.
 
 =item [KmsKeyId => Str]
 
-=item [LustreConfiguration => L<Paws::FSX::CreateFileSystemLustreConfiguration>]
+=item [LustreConfiguration => FSX_CreateFileSystemLustreConfiguration]
 
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
 
-=item [Tags => ArrayRef[L<Paws::FSX::Tag>]]
+=item [Tags => ArrayRef[FSX_Tag]]
 
-=item [WindowsConfiguration => L<Paws::FSX::CreateFileSystemWindowsConfiguration>]
+=item [WindowsConfiguration => FSX_CreateFileSystemWindowsConfiguration]
 
 
 =back
@@ -316,9 +318,9 @@ file system state along with other information.
 
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
 
-=item [Tags => ArrayRef[L<Paws::FSX::Tag>]]
+=item [Tags => ArrayRef[FSX_Tag]]
 
-=item [WindowsConfiguration => L<Paws::FSX::CreateFileSystemWindowsConfiguration>]
+=item [WindowsConfiguration => FSX_CreateFileSystemWindowsConfiguration]
 
 
 =back
@@ -404,7 +406,7 @@ any means.
 
 =item [ClientRequestToken => Str]
 
-=item [WindowsConfiguration => L<Paws::FSX::DeleteFileSystemWindowsConfiguration>]
+=item [WindowsConfiguration => FSX_DeleteFileSystemWindowsConfiguration]
 
 
 =back
@@ -439,7 +441,7 @@ recovered by any means.
 
 =item [BackupIds => ArrayRef[Str|Undef]]
 
-=item [Filters => ArrayRef[L<Paws::FSX::Filter>]]
+=item [Filters => ArrayRef[FSX_Filter]]
 
 =item [MaxResults => Int]
 
@@ -600,7 +602,7 @@ responses of a multi-call iteration is unspecified.
 
 =item ResourceARN => Str
 
-=item Tags => ArrayRef[L<Paws::FSX::Tag>]
+=item Tags => ArrayRef[FSX_Tag]
 
 
 =back
@@ -638,9 +640,9 @@ This action removes a tag from an Amazon FSx resource.
 
 =item [ClientRequestToken => Str]
 
-=item [LustreConfiguration => L<Paws::FSX::UpdateFileSystemLustreConfiguration>]
+=item [LustreConfiguration => FSX_UpdateFileSystemLustreConfiguration]
 
-=item [WindowsConfiguration => L<Paws::FSX::UpdateFileSystemWindowsConfiguration>]
+=item [WindowsConfiguration => FSX_UpdateFileSystemWindowsConfiguration]
 
 
 =back
@@ -658,9 +660,9 @@ Updates a file system configuration.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllBackups(sub { },[BackupIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::FSX::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllBackups(sub { },[BackupIds => ArrayRef[Str|Undef], Filters => ArrayRef[FSX_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllBackups([BackupIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::FSX::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllBackups([BackupIds => ArrayRef[Str|Undef], Filters => ArrayRef[FSX_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

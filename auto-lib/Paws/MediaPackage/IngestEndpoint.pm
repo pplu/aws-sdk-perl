@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::IngestEndpoint;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Password => (is => 'ro', isa => 'Str', request_name => 'password', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
-  has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackage::Types qw//;
+  has Id => (is => 'ro', isa => Str);
+  has Password => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+  has Username => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'Url' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Username' => 'username',
+                       'Url' => 'url',
+                       'Password' => 'password'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

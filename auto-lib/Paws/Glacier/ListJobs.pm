@@ -1,19 +1,63 @@
 
 package Paws::Glacier::ListJobs;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has Completed => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'completed');
-  has Limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
-  has Statuscode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'statuscode');
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Completed => (is => 'ro', isa => Str, predicate => 1);
+  has Limit => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has Statuscode => (is => 'ro', isa => Str, predicate => 1);
+  has VaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListJobs');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ListJobsOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListJobs');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{accountId}/vaults/{vaultName}/jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glacier::ListJobsOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'AccountId' => 'accountId',
+                    'VaultName' => 'vaultName'
+                  },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Completed' => {
+                                'type' => 'Str'
+                              },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Limit' => {
+                            'type' => 'Str'
+                          },
+               'VaultName' => {
+                                'type' => 'Str'
+                              },
+               'Statuscode' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInQuery' => {
+                      'Completed' => 'completed',
+                      'Marker' => 'marker',
+                      'Limit' => 'limit',
+                      'Statuscode' => 'statuscode'
+                    },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'VaultName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::ListCollectionsResponse;
-  use Moose;
-  has CollectionIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has FaceModelVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Rekognition::Types qw//;
+  has CollectionIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has FaceModelVersions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CollectionIds' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'FaceModelVersions' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

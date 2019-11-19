@@ -1,18 +1,55 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudWatch::GetMetricData;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', required => 1);
-  has MaxDatapoints => (is => 'ro', isa => 'Int');
-  has MetricDataQueries => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::MetricDataQuery]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ScanBy => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::CloudWatch::Types qw/CloudWatch_MetricDataQuery/;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxDatapoints => (is => 'ro', isa => Int, predicate => 1);
+  has MetricDataQueries => (is => 'ro', isa => ArrayRef[CloudWatch_MetricDataQuery], required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ScanBy => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMetricData');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatch::GetMetricDataOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetMetricDataResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetMetricData');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatch::GetMetricDataOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetMetricDataResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'EndTime' => 1,
+                    'StartTime' => 1,
+                    'MetricDataQueries' => 1
+                  },
+  'types' => {
+               'MaxDatapoints' => {
+                                    'type' => 'Int'
+                                  },
+               'MetricDataQueries' => {
+                                        'type' => 'ArrayRef[CloudWatch_MetricDataQuery]',
+                                        'class' => 'Paws::CloudWatch::MetricDataQuery'
+                                      },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ScanBy' => {
+                             'type' => 'Str'
+                           },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,12 +89,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               MetricName => 'MyMetricName',       # min: 1, max: 255; OPTIONAL
               Namespace  => 'MyNamespace',        # min: 1, max: 255; OPTIONAL
             },
-            Period => 1,                          # min: 1
+            Period => 1,                          # min: 1; OPTIONAL
             Stat   => 'MyStat',
             Unit   => 'Seconds'
             , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
           },    # OPTIONAL
-          Period     => 1,    # min: 1
+          Period     => 1,    # min: 1; OPTIONAL
           ReturnData => 1,    # OPTIONAL
         },
         ...
@@ -103,7 +140,7 @@ paginating. If you omit this, the default of 100,800 is used.
 
 
 
-=head2 B<REQUIRED> MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>]
+=head2 B<REQUIRED> MetricDataQueries => ArrayRef[CloudWatch_MetricDataQuery]
 
 The metric queries to be returned. A single C<GetMetricData> call can
 include as many as 100 C<MetricDataQuery> structures. Each of these

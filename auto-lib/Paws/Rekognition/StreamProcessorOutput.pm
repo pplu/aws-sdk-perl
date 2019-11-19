@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Rekognition::StreamProcessorOutput;
-  use Moose;
-  has KinesisDataStream => (is => 'ro', isa => 'Paws::Rekognition::KinesisDataStream');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Rekognition::Types qw/Rekognition_KinesisDataStream/;
+  has KinesisDataStream => (is => 'ro', isa => Rekognition_KinesisDataStream);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KinesisDataStream' => {
+                                        'type' => 'Rekognition_KinesisDataStream',
+                                        'class' => 'Paws::Rekognition::KinesisDataStream'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +57,7 @@ Amazon Rekognition Developer Guide.
 =head1 ATTRIBUTES
 
 
-=head2 KinesisDataStream => L<Paws::Rekognition::KinesisDataStream>
+=head2 KinesisDataStream => Rekognition_KinesisDataStream
 
   The Amazon Kinesis Data Streams stream to which the Amazon Rekognition
 stream processor streams the analysis results.

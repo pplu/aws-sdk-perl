@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::CreateTransitVirtualInterface;
-  use Moose;
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
-  has NewTransitVirtualInterface => (is => 'ro', isa => 'Paws::DirectConnect::NewTransitVirtualInterface', traits => ['NameInRequest'], request_name => 'newTransitVirtualInterface' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw/DirectConnect_NewTransitVirtualInterface/;
+  has ConnectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NewTransitVirtualInterface => (is => 'ro', isa => DirectConnect_NewTransitVirtualInterface, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTransitVirtualInterface');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::CreateTransitVirtualInterfaceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTransitVirtualInterface');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::CreateTransitVirtualInterfaceResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NewTransitVirtualInterface' => 'newTransitVirtualInterface',
+                       'ConnectionId' => 'connectionId'
+                     },
+  'IsRequired' => {
+                    'NewTransitVirtualInterface' => 1,
+                    'ConnectionId' => 1
+                  },
+  'types' => {
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 },
+               'NewTransitVirtualInterface' => {
+                                                 'class' => 'Paws::DirectConnect::NewTransitVirtualInterface',
+                                                 'type' => 'DirectConnect_NewTransitVirtualInterface'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +98,7 @@ The ID of the connection.
 
 
 
-=head2 B<REQUIRED> NewTransitVirtualInterface => L<Paws::DirectConnect::NewTransitVirtualInterface>
+=head2 B<REQUIRED> NewTransitVirtualInterface => DirectConnect_NewTransitVirtualInterface
 
 Information about the transit virtual interface.
 

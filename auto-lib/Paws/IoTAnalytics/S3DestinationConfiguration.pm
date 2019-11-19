@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::S3DestinationConfiguration;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest'], required => 1);
-  has GlueConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::GlueConfiguration', request_name => 'glueConfiguration', traits => ['NameInRequest']);
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_GlueConfiguration/;
+  has Bucket => (is => 'ro', isa => Str, required => 1);
+  has GlueConfiguration => (is => 'ro', isa => IoTAnalytics_GlueConfiguration);
+  has Key => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GlueConfiguration' => {
+                                        'type' => 'IoTAnalytics_GlueConfiguration',
+                                        'class' => 'Paws::IoTAnalytics::GlueConfiguration'
+                                      },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'GlueConfiguration' => 'glueConfiguration',
+                       'Key' => 'key',
+                       'Bucket' => 'bucket',
+                       'RoleArn' => 'roleArn'
+                     },
+  'IsRequired' => {
+                    'Key' => 1,
+                    'Bucket' => 1,
+                    'RoleArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +84,7 @@ S3.
 delivered.
 
 
-=head2 GlueConfiguration => L<Paws::IoTAnalytics::GlueConfiguration>
+=head2 GlueConfiguration => IoTAnalytics_GlueConfiguration
 
   Configuration information for coordination with the AWS Glue ETL
 (extract, transform and load) service.

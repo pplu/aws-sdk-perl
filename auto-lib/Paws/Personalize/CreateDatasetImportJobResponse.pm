@@ -1,9 +1,30 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Personalize::CreateDatasetImportJobResponse;
-  use Moose;
-  has DatasetImportJobArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'datasetImportJobArn' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has DatasetImportJobArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DatasetImportJobArn' => 'datasetImportJobArn'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DatasetImportJobArn' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

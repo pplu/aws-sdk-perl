@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::ResetTimerAction;
-  use Moose;
-  has TimerName => (is => 'ro', isa => 'Str', request_name => 'timerName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw//;
+  has TimerName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TimerName' => 'timerName'
+                     },
+  'IsRequired' => {
+                    'TimerName' => 1
+                  },
+  'types' => {
+               'TimerName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

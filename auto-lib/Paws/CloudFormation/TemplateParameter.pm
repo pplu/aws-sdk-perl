@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::TemplateParameter;
-  use Moose;
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has NoEcho => (is => 'ro', isa => 'Bool');
-  has ParameterKey => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudFormation::Types qw//;
+  has DefaultValue => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has NoEcho => (is => 'ro', isa => Bool);
+  has ParameterKey => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NoEcho' => {
+                             'type' => 'Bool'
+                           },
+               'ParameterKey' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DefaultValue' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

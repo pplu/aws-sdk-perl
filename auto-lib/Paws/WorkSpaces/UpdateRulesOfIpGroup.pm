@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::UpdateRulesOfIpGroup;
-  use Moose;
-  has GroupId => (is => 'ro', isa => 'Str', required => 1);
-  has UserRules => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::IpRuleItem]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_IpRuleItem/;
+  has GroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserRules => (is => 'ro', isa => ArrayRef[WorkSpaces_IpRuleItem], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRulesOfIpGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::UpdateRulesOfIpGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRulesOfIpGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::UpdateRulesOfIpGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserRules' => {
+                                'type' => 'ArrayRef[WorkSpaces_IpRuleItem]',
+                                'class' => 'Paws::WorkSpaces::IpRuleItem'
+                              },
+               'GroupId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'UserRules' => 1,
+                    'GroupId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +76,7 @@ The identifier of the group.
 
 
 
-=head2 B<REQUIRED> UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]
+=head2 B<REQUIRED> UserRules => ArrayRef[WorkSpaces_IpRuleItem]
 
 One or more rules.
 

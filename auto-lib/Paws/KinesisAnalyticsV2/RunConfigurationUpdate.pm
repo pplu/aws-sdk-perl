@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::RunConfigurationUpdate;
-  use Moose;
-  has ApplicationRestoreConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_ApplicationRestoreConfiguration/;
+  has ApplicationRestoreConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_ApplicationRestoreConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationRestoreConfiguration' => {
+                                                      'type' => 'KinesisAnalyticsV2_ApplicationRestoreConfiguration',
+                                                      'class' => 'Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ Analytics application.
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationRestoreConfiguration => L<Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration>
+=head2 ApplicationRestoreConfiguration => KinesisAnalyticsV2_ApplicationRestoreConfiguration
 
   Describes updates to the restore behavior of a restarting application.
 

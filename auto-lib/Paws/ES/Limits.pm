@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::ES::Limits;
-  use Moose;
-  has AdditionalLimits => (is => 'ro', isa => 'ArrayRef[Paws::ES::AdditionalLimit]');
-  has InstanceLimits => (is => 'ro', isa => 'Paws::ES::InstanceLimits');
-  has StorageTypes => (is => 'ro', isa => 'ArrayRef[Paws::ES::StorageType]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::ES::Types qw/ES_AdditionalLimit ES_InstanceLimits ES_StorageType/;
+  has AdditionalLimits => (is => 'ro', isa => ArrayRef[ES_AdditionalLimit]);
+  has InstanceLimits => (is => 'ro', isa => ES_InstanceLimits);
+  has StorageTypes => (is => 'ro', isa => ArrayRef[ES_StorageType]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AdditionalLimits' => {
+                                       'type' => 'ArrayRef[ES_AdditionalLimit]',
+                                       'class' => 'Paws::ES::AdditionalLimit'
+                                     },
+               'StorageTypes' => {
+                                   'class' => 'Paws::ES::StorageType',
+                                   'type' => 'ArrayRef[ES_StorageType]'
+                                 },
+               'InstanceLimits' => {
+                                     'class' => 'Paws::ES::InstanceLimits',
+                                     'type' => 'ES_InstanceLimits'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,18 +67,18 @@ AdditionalLimits>
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalLimits => ArrayRef[L<Paws::ES::AdditionalLimit>]
+=head2 AdditionalLimits => ArrayRef[ES_AdditionalLimit]
 
   List of additional limits that are specific to a given InstanceType and
 for each of it's C< InstanceRole > .
 
 
-=head2 InstanceLimits => L<Paws::ES::InstanceLimits>
+=head2 InstanceLimits => ES_InstanceLimits
 
   
 
 
-=head2 StorageTypes => ArrayRef[L<Paws::ES::StorageType>]
+=head2 StorageTypes => ArrayRef[ES_StorageType]
 
   StorageType represents the list of storage related types and attributes
 that are available for given InstanceType.

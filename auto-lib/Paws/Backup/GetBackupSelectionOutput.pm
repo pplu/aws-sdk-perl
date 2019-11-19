@@ -1,13 +1,43 @@
 
 package Paws::Backup::GetBackupSelectionOutput;
-  use Moose;
-  has BackupPlanId => (is => 'ro', isa => 'Str');
-  has BackupSelection => (is => 'ro', isa => 'Paws::Backup::BackupSelection');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has CreatorRequestId => (is => 'ro', isa => 'Str');
-  has SelectionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw/Backup_BackupSelection/;
+  has BackupPlanId => (is => 'ro', isa => Str);
+  has BackupSelection => (is => 'ro', isa => Backup_BackupSelection);
+  has CreationDate => (is => 'ro', isa => Str);
+  has CreatorRequestId => (is => 'ro', isa => Str);
+  has SelectionId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupPlanId' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SelectionId' => {
+                                  'type' => 'Str'
+                                },
+               'BackupSelection' => {
+                                      'type' => 'Backup_BackupSelection',
+                                      'class' => 'Paws::Backup::BackupSelection'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +54,7 @@ Paws::Backup::GetBackupSelectionOutput
 Uniquely identifies a backup plan.
 
 
-=head2 BackupSelection => L<Paws::Backup::BackupSelection>
+=head2 BackupSelection => Backup_BackupSelection
 
 Specifies the body of a request to assign a set of resources to a
 backup plan.

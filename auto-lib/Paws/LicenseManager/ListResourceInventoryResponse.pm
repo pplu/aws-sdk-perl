@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::LicenseManager::ListResourceInventoryResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ResourceInventoryList => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::ResourceInventory]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LicenseManager::Types qw/LicenseManager_ResourceInventory/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ResourceInventoryList => (is => 'ro', isa => ArrayRef[LicenseManager_ResourceInventory]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceInventoryList' => {
+                                            'class' => 'Paws::LicenseManager::ResourceInventory',
+                                            'type' => 'ArrayRef[LicenseManager_ResourceInventory]'
+                                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +42,7 @@ Paws::LicenseManager::ListResourceInventoryResponse
 Token for the next set of results.
 
 
-=head2 ResourceInventoryList => ArrayRef[L<Paws::LicenseManager::ResourceInventory>]
+=head2 ResourceInventoryList => ArrayRef[LicenseManager_ResourceInventory]
 
 The detailed list of resources.
 

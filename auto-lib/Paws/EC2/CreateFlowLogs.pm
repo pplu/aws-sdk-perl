@@ -1,22 +1,72 @@
 
 package Paws::EC2::CreateFlowLogs;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has DeliverLogsPermissionArn => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has LogDestination => (is => 'ro', isa => 'Str');
-  has LogDestinationType => (is => 'ro', isa => 'Str');
-  has LogFormat => (is => 'ro', isa => 'Str');
-  has LogGroupName => (is => 'ro', isa => 'Str');
-  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::EC2::Types qw//;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DeliverLogsPermissionArn => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has LogDestination => (is => 'ro', isa => Str, predicate => 1);
+  has LogDestinationType => (is => 'ro', isa => Str, predicate => 1);
+  has LogFormat => (is => 'ro', isa => Str, predicate => 1);
+  has LogGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TrafficType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFlowLogs');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateFlowLogsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFlowLogs');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateFlowLogsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrafficType' => {
+                                  'type' => 'Str'
+                                },
+               'DeliverLogsPermissionArn' => {
+                                               'type' => 'Str'
+                                             },
+               'LogDestinationType' => {
+                                         'type' => 'Str'
+                                       },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'LogFormat' => {
+                                'type' => 'Str'
+                              },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'LogDestination' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'ResourceIds' => 1,
+                    'TrafficType' => 1,
+                    'ResourceType' => 1
+                  },
+  'NameInRequest' => {
+                       'ResourceIds' => 'ResourceId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

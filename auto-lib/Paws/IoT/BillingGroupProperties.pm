@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::IoT::BillingGroupProperties;
-  use Moose;
-  has BillingGroupDescription => (is => 'ro', isa => 'Str', request_name => 'billingGroupDescription', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has BillingGroupDescription => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'BillingGroupDescription' => 'billingGroupDescription'
+                     },
+  'types' => {
+               'BillingGroupDescription' => {
+                                              'type' => 'Str'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

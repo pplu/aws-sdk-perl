@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::RemixSettings;
-  use Moose;
-  has ChannelMapping => (is => 'ro', isa => 'Paws::MediaConvert::ChannelMapping', request_name => 'channelMapping', traits => ['NameInRequest']);
-  has ChannelsIn => (is => 'ro', isa => 'Int', request_name => 'channelsIn', traits => ['NameInRequest']);
-  has ChannelsOut => (is => 'ro', isa => 'Int', request_name => 'channelsOut', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_ChannelMapping/;
+  has ChannelMapping => (is => 'ro', isa => MediaConvert_ChannelMapping);
+  has ChannelsIn => (is => 'ro', isa => Int);
+  has ChannelsOut => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChannelMapping' => {
+                                     'type' => 'MediaConvert_ChannelMapping',
+                                     'class' => 'Paws::MediaConvert::ChannelMapping'
+                                   },
+               'ChannelsOut' => {
+                                  'type' => 'Int'
+                                },
+               'ChannelsIn' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'ChannelMapping' => 'channelMapping',
+                       'ChannelsOut' => 'channelsOut',
+                       'ChannelsIn' => 'channelsIn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +70,7 @@ provides.
 =head1 ATTRIBUTES
 
 
-=head2 ChannelMapping => L<Paws::MediaConvert::ChannelMapping>
+=head2 ChannelMapping => MediaConvert_ChannelMapping
 
   Channel mapping (ChannelMapping) contains the group of fields that hold
 the remixing value for each channel. Units are in dB. Acceptable values

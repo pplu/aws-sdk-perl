@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::SES::Message;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Paws::SES::Body', required => 1);
-  has Subject => (is => 'ro', isa => 'Paws::SES::Content', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SES::Types qw/SES_Body SES_Content/;
+  has Body => (is => 'ro', isa => SES_Body, required => 1);
+  has Subject => (is => 'ro', isa => SES_Content, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Subject' => 1,
+                    'Body' => 1
+                  },
+  'types' => {
+               'Body' => {
+                           'type' => 'SES_Body',
+                           'class' => 'Paws::SES::Body'
+                         },
+               'Subject' => {
+                              'type' => 'SES_Content',
+                              'class' => 'Paws::SES::Content'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Represents the message to be sent, composed of a subject and a body.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Body => L<Paws::SES::Body>
+=head2 B<REQUIRED> Body => SES_Body
 
   The message body.
 
 
-=head2 B<REQUIRED> Subject => L<Paws::SES::Content>
+=head2 B<REQUIRED> Subject => SES_Content
 
   The subject of the message: A short summary of the content, which will
 appear in the recipient's inbox.

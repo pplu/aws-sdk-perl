@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::CloudFront::FieldLevelEncryptionList;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::FieldLevelEncryptionSummary]', request_name => 'FieldLevelEncryptionSummary', traits => ['NameInRequest']);
-  has MaxItems => (is => 'ro', isa => 'Int', required => 1);
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Str/;
+  use Paws::CloudFront::Types qw/CloudFront_FieldLevelEncryptionSummary/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_FieldLevelEncryptionSummary]);
+  has MaxItems => (is => 'ro', isa => Int, required => 1);
+  has NextMarker => (is => 'ro', isa => Str);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MaxItems' => 1,
+                    'Quantity' => 1
+                  },
+  'NameInRequest' => {
+                       'Items' => 'FieldLevelEncryptionSummary'
+                     },
+  'types' => {
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'Items' => {
+                            'class' => 'Paws::CloudFront::FieldLevelEncryptionSummary',
+                            'type' => 'ArrayRef[CloudFront_FieldLevelEncryptionSummary]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +73,7 @@ List of field-level encrpytion configurations.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::FieldLevelEncryptionSummary>]
+=head2 Items => ArrayRef[CloudFront_FieldLevelEncryptionSummary]
 
   An array of field-level encryption items.
 

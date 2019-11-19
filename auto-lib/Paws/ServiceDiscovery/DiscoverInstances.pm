@@ -1,17 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceDiscovery::DiscoverInstances;
-  use Moose;
-  has HealthStatus => (is => 'ro', isa => 'Str');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NamespaceName => (is => 'ro', isa => 'Str', required => 1);
-  has QueryParameters => (is => 'ro', isa => 'Paws::ServiceDiscovery::Attributes');
-  has ServiceName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_Attributes/;
+  has HealthStatus => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NamespaceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has QueryParameters => (is => 'ro', isa => ServiceDiscovery_Attributes, predicate => 1);
+  has ServiceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DiscoverInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceDiscovery::DiscoverInstancesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DiscoverInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceDiscovery::DiscoverInstancesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'HealthStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'QueryParameters' => {
+                                      'type' => 'ServiceDiscovery_Attributes',
+                                      'class' => 'Paws::ServiceDiscovery::Attributes'
+                                    },
+               'NamespaceName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'NamespaceName' => 1,
+                    'ServiceName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +106,7 @@ instance.
 
 
 
-=head2 QueryParameters => L<Paws::ServiceDiscovery::Attributes>
+=head2 QueryParameters => ServiceDiscovery_Attributes
 
 A string map that contains attributes with values that you can use to
 filter instances by any custom attribute that you specified when you

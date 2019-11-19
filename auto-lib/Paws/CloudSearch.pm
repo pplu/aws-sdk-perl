@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::CloudSearch;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'cloudsearch' }
   sub signing_name { 'cloudsearch' }
   sub version { '2013-01-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
        sub { defined $_[0]->http_status and $_[0]->http_status == 509 and $_[0]->code eq 'BandwidthLimitExceeded' },
   ] });
 
@@ -237,7 +239,7 @@ in the I<Amazon CloudSearch Developer Guide>.
 
 =over
 
-=item AnalysisScheme => L<Paws::CloudSearch::AnalysisScheme>
+=item AnalysisScheme => CloudSearch_AnalysisScheme
 
 =item DomainName => Str
 
@@ -261,7 +263,7 @@ in the I<Amazon CloudSearch Developer Guide>.
 
 =item DomainName => Str
 
-=item Expression => L<Paws::CloudSearch::Expression>
+=item Expression => CloudSearch_Expression
 
 
 =back
@@ -284,7 +286,7 @@ in the I<Amazon CloudSearch Developer Guide>.
 
 =item DomainName => Str
 
-=item IndexField => L<Paws::CloudSearch::IndexField>
+=item IndexField => CloudSearch_IndexField
 
 
 =back
@@ -311,7 +313,7 @@ in the I<Amazon CloudSearch Developer Guide>.
 
 =item DomainName => Str
 
-=item Suggester => L<Paws::CloudSearch::Suggester>
+=item Suggester => CloudSearch_Suggester
 
 
 =back
@@ -717,7 +719,7 @@ in the I<Amazon CloudSearch Developer Guide>.
 
 =over
 
-=item DomainEndpointOptions => L<Paws::CloudSearch::DomainEndpointOptions>
+=item DomainEndpointOptions => CloudSearch_DomainEndpointOptions
 
 =item DomainName => Str
 
@@ -741,7 +743,7 @@ in the I<Amazon CloudSearch Developer Guide>.
 
 =item DomainName => Str
 
-=item ScalingParameters => L<Paws::CloudSearch::ScalingParameters>
+=item ScalingParameters => CloudSearch_ScalingParameters
 
 
 =back

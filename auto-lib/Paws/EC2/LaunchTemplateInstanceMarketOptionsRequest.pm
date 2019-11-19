@@ -1,7 +1,25 @@
 package Paws::EC2::LaunchTemplateInstanceMarketOptionsRequest;
-  use Moose;
-  has MarketType => (is => 'ro', isa => 'Str');
-  has SpotOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateSpotMarketOptionsRequest');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_LaunchTemplateSpotMarketOptionsRequest/;
+  has MarketType => (is => 'ro', isa => Str);
+  has SpotOptions => (is => 'ro', isa => EC2_LaunchTemplateSpotMarketOptionsRequest);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MarketType' => {
+                                 'type' => 'Str'
+                               },
+               'SpotOptions' => {
+                                  'class' => 'Paws::EC2::LaunchTemplateSpotMarketOptionsRequest',
+                                  'type' => 'EC2_LaunchTemplateSpotMarketOptionsRequest'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +60,7 @@ This class has no description
   The market type.
 
 
-=head2 SpotOptions => L<Paws::EC2::LaunchTemplateSpotMarketOptionsRequest>
+=head2 SpotOptions => EC2_LaunchTemplateSpotMarketOptionsRequest
 
   The options for Spot Instances.
 

@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::RemoveAction;
-  use Moose;
-  has MemberId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has MemberId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MemberId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'MemberId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

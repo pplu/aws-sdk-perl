@@ -1,16 +1,62 @@
 
 package Paws::Glacier::GetJobOutputOutput;
-  use Moose;
-  has AcceptRanges => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Accept-Ranges');
-  has ArchiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-archive-description');
-  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sha256-tree-hash');
-  has ContentRange => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Range');
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has Status => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'status');
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Int/;
+  use Paws::Glacier::Types qw//;
+  has AcceptRanges => (is => 'ro', isa => Str);
+  has ArchiveDescription => (is => 'ro', isa => Str);
+  has Body => (is => 'ro', isa => Str);
+  has Checksum => (is => 'ro', isa => Str);
+  has ContentRange => (is => 'ro', isa => Str);
+  has ContentType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Int);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'AcceptRanges' => 'Accept-Ranges',
+                       'ContentRange' => 'Content-Range',
+                       'Checksum' => 'x-amz-sha256-tree-hash',
+                       'ContentType' => 'Content-Type',
+                       'ArchiveDescription' => 'x-amz-archive-description'
+                     },
+  'types' => {
+               'ArchiveDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'Checksum' => {
+                               'type' => 'Str'
+                             },
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Int'
+                           },
+               'AcceptRanges' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentRange' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'Body' => 'body'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

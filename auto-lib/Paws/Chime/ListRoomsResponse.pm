@@ -1,10 +1,31 @@
 
 package Paws::Chime::ListRoomsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Rooms => (is => 'ro', isa => 'ArrayRef[Paws::Chime::Room]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Chime::Types qw/Chime_Room/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Rooms => (is => 'ro', isa => ArrayRef[Chime_Room]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Rooms' => {
+                            'type' => 'ArrayRef[Chime_Room]',
+                            'class' => 'Paws::Chime::Room'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +42,7 @@ Paws::Chime::ListRoomsResponse
 The token to use to retrieve the next page of results.
 
 
-=head2 Rooms => ArrayRef[L<Paws::Chime::Room>]
+=head2 Rooms => ArrayRef[Chime_Room]
 
 The room details.
 

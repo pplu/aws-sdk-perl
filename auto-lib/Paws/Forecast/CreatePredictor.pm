@@ -1,23 +1,81 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Forecast::CreatePredictor;
-  use Moose;
-  has AlgorithmArn => (is => 'ro', isa => 'Str');
-  has EncryptionConfig => (is => 'ro', isa => 'Paws::Forecast::EncryptionConfig');
-  has EvaluationParameters => (is => 'ro', isa => 'Paws::Forecast::EvaluationParameters');
-  has FeaturizationConfig => (is => 'ro', isa => 'Paws::Forecast::FeaturizationConfig', required => 1);
-  has ForecastHorizon => (is => 'ro', isa => 'Int', required => 1);
-  has HPOConfig => (is => 'ro', isa => 'Paws::Forecast::HyperParameterTuningJobConfig');
-  has InputDataConfig => (is => 'ro', isa => 'Paws::Forecast::InputDataConfig', required => 1);
-  has PerformAutoML => (is => 'ro', isa => 'Bool');
-  has PerformHPO => (is => 'ro', isa => 'Bool');
-  has PredictorName => (is => 'ro', isa => 'Str', required => 1);
-  has TrainingParameters => (is => 'ro', isa => 'Paws::Forecast::TrainingParameters');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::Forecast::Types qw/Forecast_InputDataConfig Forecast_EvaluationParameters Forecast_EncryptionConfig Forecast_TrainingParameters Forecast_FeaturizationConfig Forecast_HyperParameterTuningJobConfig/;
+  has AlgorithmArn => (is => 'ro', isa => Str, predicate => 1);
+  has EncryptionConfig => (is => 'ro', isa => Forecast_EncryptionConfig, predicate => 1);
+  has EvaluationParameters => (is => 'ro', isa => Forecast_EvaluationParameters, predicate => 1);
+  has FeaturizationConfig => (is => 'ro', isa => Forecast_FeaturizationConfig, required => 1, predicate => 1);
+  has ForecastHorizon => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has HPOConfig => (is => 'ro', isa => Forecast_HyperParameterTuningJobConfig, predicate => 1);
+  has InputDataConfig => (is => 'ro', isa => Forecast_InputDataConfig, required => 1, predicate => 1);
+  has PerformAutoML => (is => 'ro', isa => Bool, predicate => 1);
+  has PerformHPO => (is => 'ro', isa => Bool, predicate => 1);
+  has PredictorName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TrainingParameters => (is => 'ro', isa => Forecast_TrainingParameters, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePredictor');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Forecast::CreatePredictorResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePredictor');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Forecast::CreatePredictorResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InputDataConfig' => 1,
+                    'ForecastHorizon' => 1,
+                    'FeaturizationConfig' => 1,
+                    'PredictorName' => 1
+                  },
+  'types' => {
+               'PredictorName' => {
+                                    'type' => 'Str'
+                                  },
+               'TrainingParameters' => {
+                                         'class' => 'Paws::Forecast::TrainingParameters',
+                                         'type' => 'Forecast_TrainingParameters'
+                                       },
+               'InputDataConfig' => {
+                                      'type' => 'Forecast_InputDataConfig',
+                                      'class' => 'Paws::Forecast::InputDataConfig'
+                                    },
+               'FeaturizationConfig' => {
+                                          'class' => 'Paws::Forecast::FeaturizationConfig',
+                                          'type' => 'Forecast_FeaturizationConfig'
+                                        },
+               'ForecastHorizon' => {
+                                      'type' => 'Int'
+                                    },
+               'EncryptionConfig' => {
+                                       'type' => 'Forecast_EncryptionConfig',
+                                       'class' => 'Paws::Forecast::EncryptionConfig'
+                                     },
+               'HPOConfig' => {
+                                'class' => 'Paws::Forecast::HyperParameterTuningJobConfig',
+                                'type' => 'Forecast_HyperParameterTuningJobConfig'
+                              },
+               'PerformHPO' => {
+                                 'type' => 'Bool'
+                               },
+               'AlgorithmArn' => {
+                                   'type' => 'Str'
+                                 },
+               'EvaluationParameters' => {
+                                           'type' => 'Forecast_EvaluationParameters',
+                                           'class' => 'Paws::Forecast::EvaluationParameters'
+                                         },
+               'PerformAutoML' => {
+                                    'type' => 'Bool'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -171,7 +229,7 @@ C<arn:aws:forecast:::algorithm/Prophet>
 
 
 
-=head2 EncryptionConfig => L<Paws::Forecast::EncryptionConfig>
+=head2 EncryptionConfig => Forecast_EncryptionConfig
 
 An AWS Key Management Service (KMS) key and the AWS Identity and Access
 Management (IAM) role that Amazon Forecast can assume to access the
@@ -179,7 +237,7 @@ key.
 
 
 
-=head2 EvaluationParameters => L<Paws::Forecast::EvaluationParameters>
+=head2 EvaluationParameters => Forecast_EvaluationParameters
 
 Used to override the default evaluation parameters of the specified
 algorithm. Amazon Forecast evaluates a predictor by splitting a dataset
@@ -188,7 +246,7 @@ how to perform the split and the number of iterations.
 
 
 
-=head2 B<REQUIRED> FeaturizationConfig => L<Paws::Forecast::FeaturizationConfig>
+=head2 B<REQUIRED> FeaturizationConfig => Forecast_FeaturizationConfig
 
 The featurization configuration.
 
@@ -206,7 +264,7 @@ and set the forecast horizon to 10, the model returns predictions for
 
 
 
-=head2 HPOConfig => L<Paws::Forecast::HyperParameterTuningJobConfig>
+=head2 HPOConfig => Forecast_HyperParameterTuningJobConfig
 
 Provides hyperparameter override values for the algorithm. If you don't
 provide this parameter, Amazon Forecast uses default values. The
@@ -216,7 +274,7 @@ aws-forecast-choosing-recipes.
 
 
 
-=head2 B<REQUIRED> InputDataConfig => L<Paws::Forecast::InputDataConfig>
+=head2 B<REQUIRED> InputDataConfig => Forecast_InputDataConfig
 
 Describes the dataset group that contains the data to use to train the
 predictor.
@@ -268,7 +326,7 @@ A name for the predictor.
 
 
 
-=head2 TrainingParameters => L<Paws::Forecast::TrainingParameters>
+=head2 TrainingParameters => Forecast_TrainingParameters
 
 The training parameters to override for model training. The parameters
 that you can override are listed in the individual algorithms in

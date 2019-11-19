@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchLogs::TagLogGroup;
-  use Moose;
-  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::CloudWatchLogs::Tags', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_Tags/;
+  has LogGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => CloudWatchLogs_Tags, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagLogGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagLogGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LogGroupName' => 'logGroupName',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'LogGroupName' => 1
+                  },
+  'types' => {
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::CloudWatchLogs::Tags',
+                           'type' => 'CloudWatchLogs_Tags'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +76,7 @@ The name of the log group.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::CloudWatchLogs::Tags>
+=head2 B<REQUIRED> Tags => CloudWatchLogs_Tags
 
 The key-value pairs to use for the tags.
 

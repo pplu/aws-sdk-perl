@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchDetachObjectResponse;
-  use Moose;
-  has DetachedObjectIdentifier => (is => 'ro', isa => 'Str', request_name => 'detachedObjectIdentifier', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw//;
+  has DetachedObjectIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DetachedObjectIdentifier' => 'detachedObjectIdentifier'
+                     },
+  'types' => {
+               'DetachedObjectIdentifier' => {
+                                               'type' => 'Str'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,35 @@
 
 package Paws::Robomaker::DeleteRobot;
-  use Moose;
-  has Robot => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'robot', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw//;
+  has Robot => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRobot');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/deleteRobot');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Robomaker::DeleteRobotResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteRobot');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/deleteRobot');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Robomaker::DeleteRobotResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Robot' => 'robot'
+                     },
+  'IsRequired' => {
+                    'Robot' => 1
+                  },
+  'types' => {
+               'Robot' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

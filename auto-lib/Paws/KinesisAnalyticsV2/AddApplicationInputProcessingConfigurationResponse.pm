@@ -1,12 +1,40 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KinesisAnalyticsV2::AddApplicationInputProcessingConfigurationResponse;
-  use Moose;
-  has ApplicationARN => (is => 'ro', isa => 'Str');
-  has ApplicationVersionId => (is => 'ro', isa => 'Int');
-  has InputId => (is => 'ro', isa => 'Str');
-  has InputProcessingConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::InputProcessingConfigurationDescription');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_InputProcessingConfigurationDescription/;
+  has ApplicationARN => (is => 'ro', isa => Str);
+  has ApplicationVersionId => (is => 'ro', isa => Int);
+  has InputId => (is => 'ro', isa => Str);
+  has InputProcessingConfigurationDescription => (is => 'ro', isa => KinesisAnalyticsV2_InputProcessingConfigurationDescription);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationVersionId' => {
+                                           'type' => 'Int'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InputProcessingConfigurationDescription' => {
+                                                              'class' => 'Paws::KinesisAnalyticsV2::InputProcessingConfigurationDescription',
+                                                              'type' => 'KinesisAnalyticsV2_InputProcessingConfigurationDescription'
+                                                            },
+               'InputId' => {
+                              'type' => 'Str'
+                            },
+               'ApplicationARN' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -34,7 +62,7 @@ ID that Amazon Kinesis Data Analytics assigns to each input
 configuration that you add to your application.
 
 
-=head2 InputProcessingConfigurationDescription => L<Paws::KinesisAnalyticsV2::InputProcessingConfigurationDescription>
+=head2 InputProcessingConfigurationDescription => KinesisAnalyticsV2_InputProcessingConfigurationDescription
 
 The description of the preprocessor that executes on records in this
 input before the application's code is run.

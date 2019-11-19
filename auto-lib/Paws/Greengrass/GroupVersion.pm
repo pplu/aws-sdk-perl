@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::Greengrass::GroupVersion;
-  use Moose;
-  has ConnectorDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has CoreDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has DeviceDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has FunctionDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has LoggerDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has ResourceDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has SubscriptionDefinitionVersionArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has ConnectorDefinitionVersionArn => (is => 'ro', isa => Str);
+  has CoreDefinitionVersionArn => (is => 'ro', isa => Str);
+  has DeviceDefinitionVersionArn => (is => 'ro', isa => Str);
+  has FunctionDefinitionVersionArn => (is => 'ro', isa => Str);
+  has LoggerDefinitionVersionArn => (is => 'ro', isa => Str);
+  has ResourceDefinitionVersionArn => (is => 'ro', isa => Str);
+  has SubscriptionDefinitionVersionArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoggerDefinitionVersionArn' => {
+                                                 'type' => 'Str'
+                                               },
+               'CoreDefinitionVersionArn' => {
+                                               'type' => 'Str'
+                                             },
+               'FunctionDefinitionVersionArn' => {
+                                                   'type' => 'Str'
+                                                 },
+               'DeviceDefinitionVersionArn' => {
+                                                 'type' => 'Str'
+                                               },
+               'ConnectorDefinitionVersionArn' => {
+                                                    'type' => 'Str'
+                                                  },
+               'SubscriptionDefinitionVersionArn' => {
+                                                       'type' => 'Str'
+                                                     },
+               'ResourceDefinitionVersionArn' => {
+                                                   'type' => 'Str'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

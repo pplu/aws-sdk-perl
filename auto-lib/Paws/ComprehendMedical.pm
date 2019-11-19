@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::ComprehendMedical;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'comprehendmedical' }
   sub signing_name { 'comprehendmedical' }
   sub version { '2018-10-30' }
   sub target_prefix { 'ComprehendMedical_20181030' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -216,7 +218,7 @@ information.
 
 =over
 
-=item [Filter => L<Paws::ComprehendMedical::ComprehendMedicalAsyncJobFilter>]
+=item [Filter => ComprehendMedical_ComprehendMedicalAsyncJobFilter]
 
 =item [MaxResults => Int]
 
@@ -236,7 +238,7 @@ Gets a list of medical entity detection jobs that you have submitted.
 
 =over
 
-=item [Filter => L<Paws::ComprehendMedical::ComprehendMedicalAsyncJobFilter>]
+=item [Filter => ComprehendMedical_ComprehendMedicalAsyncJobFilter]
 
 =item [MaxResults => Int]
 
@@ -259,11 +261,11 @@ you have submitted.
 
 =item DataAccessRoleArn => Str
 
-=item InputDataConfig => L<Paws::ComprehendMedical::InputDataConfig>
+=item InputDataConfig => ComprehendMedical_InputDataConfig
 
 =item LanguageCode => Str
 
-=item OutputDataConfig => L<Paws::ComprehendMedical::OutputDataConfig>
+=item OutputDataConfig => ComprehendMedical_OutputDataConfig
 
 =item [ClientRequestToken => Str]
 
@@ -289,11 +291,11 @@ the status of a job.
 
 =item DataAccessRoleArn => Str
 
-=item InputDataConfig => L<Paws::ComprehendMedical::InputDataConfig>
+=item InputDataConfig => ComprehendMedical_InputDataConfig
 
 =item LanguageCode => Str
 
-=item OutputDataConfig => L<Paws::ComprehendMedical::OutputDataConfig>
+=item OutputDataConfig => ComprehendMedical_OutputDataConfig
 
 =item [ClientRequestToken => Str]
 

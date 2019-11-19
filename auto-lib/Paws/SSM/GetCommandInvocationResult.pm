@@ -1,25 +1,92 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetCommandInvocationResult;
-  use Moose;
-  has CloudWatchOutputConfig => (is => 'ro', isa => 'Paws::SSM::CloudWatchOutputConfig');
-  has CommandId => (is => 'ro', isa => 'Str');
-  has Comment => (is => 'ro', isa => 'Str');
-  has DocumentName => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has ExecutionElapsedTime => (is => 'ro', isa => 'Str');
-  has ExecutionEndDateTime => (is => 'ro', isa => 'Str');
-  has ExecutionStartDateTime => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has PluginName => (is => 'ro', isa => 'Str');
-  has ResponseCode => (is => 'ro', isa => 'Int');
-  has StandardErrorContent => (is => 'ro', isa => 'Str');
-  has StandardErrorUrl => (is => 'ro', isa => 'Str');
-  has StandardOutputContent => (is => 'ro', isa => 'Str');
-  has StandardOutputUrl => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusDetails => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSM::Types qw/SSM_CloudWatchOutputConfig/;
+  has CloudWatchOutputConfig => (is => 'ro', isa => SSM_CloudWatchOutputConfig);
+  has CommandId => (is => 'ro', isa => Str);
+  has Comment => (is => 'ro', isa => Str);
+  has DocumentName => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has ExecutionElapsedTime => (is => 'ro', isa => Str);
+  has ExecutionEndDateTime => (is => 'ro', isa => Str);
+  has ExecutionStartDateTime => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has PluginName => (is => 'ro', isa => Str);
+  has ResponseCode => (is => 'ro', isa => Int);
+  has StandardErrorContent => (is => 'ro', isa => Str);
+  has StandardErrorUrl => (is => 'ro', isa => Str);
+  has StandardOutputContent => (is => 'ro', isa => Str);
+  has StandardOutputUrl => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetails => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExecutionElapsedTime' => {
+                                           'type' => 'Str'
+                                         },
+               'DocumentName' => {
+                                   'type' => 'Str'
+                                 },
+               'StandardOutputUrl' => {
+                                        'type' => 'Str'
+                                      },
+               'ResponseCode' => {
+                                   'type' => 'Int'
+                                 },
+               'CloudWatchOutputConfig' => {
+                                             'type' => 'SSM_CloudWatchOutputConfig',
+                                             'class' => 'Paws::SSM::CloudWatchOutputConfig'
+                                           },
+               'PluginName' => {
+                                 'type' => 'Str'
+                               },
+               'CommandId' => {
+                                'type' => 'Str'
+                              },
+               'StandardOutputContent' => {
+                                            'type' => 'Str'
+                                          },
+               'StatusDetails' => {
+                                    'type' => 'Str'
+                                  },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'StandardErrorContent' => {
+                                           'type' => 'Str'
+                                         },
+               'ExecutionEndDateTime' => {
+                                           'type' => 'Str'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StandardErrorUrl' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'ExecutionStartDateTime' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -30,7 +97,7 @@ Paws::SSM::GetCommandInvocationResult
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchOutputConfig => L<Paws::SSM::CloudWatchOutputConfig>
+=head2 CloudWatchOutputConfig => SSM_CloudWatchOutputConfig
 
 CloudWatch Logs information where Systems Manager sent the command
 output.

@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::STS::GetSessionTokenResponse;
-  use Moose;
-  has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::STS::Types qw/STS_Credentials/;
+  has Credentials => (is => 'ro', isa => STS_Credentials);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Credentials' => {
+                                  'class' => 'Paws::STS::Credentials',
+                                  'type' => 'STS_Credentials'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::STS::GetSessionTokenResponse
 =head1 ATTRIBUTES
 
 
-=head2 Credentials => L<Paws::STS::Credentials>
+=head2 Credentials => STS_Credentials
 
 The temporary security credentials, which include an access key ID, a
 secret access key, and a security (or session) token.

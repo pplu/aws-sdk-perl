@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::IAM::Position;
-  use Moose;
-  has Column => (is => 'ro', isa => 'Int');
-  has Line => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::IAM::Types qw//;
+  has Column => (is => 'ro', isa => Int);
+  has Line => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Column' => {
+                             'type' => 'Int'
+                           },
+               'Line' => {
+                           'type' => 'Int'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

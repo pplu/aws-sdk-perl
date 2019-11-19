@@ -1,12 +1,59 @@
+# Generated from default/object.tt
 package Paws::Signer::SigningProfile;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has PlatformId => (is => 'ro', isa => 'Str', request_name => 'platformId', traits => ['NameInRequest']);
-  has ProfileName => (is => 'ro', isa => 'Str', request_name => 'profileName', traits => ['NameInRequest']);
-  has SigningMaterial => (is => 'ro', isa => 'Paws::Signer::SigningMaterial', request_name => 'signingMaterial', traits => ['NameInRequest']);
-  has SigningParameters => (is => 'ro', isa => 'Paws::Signer::SigningParameters', request_name => 'signingParameters', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::Signer::TagMap', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Signer::Types qw/Signer_TagMap Signer_SigningMaterial Signer_SigningParameters/;
+  has Arn => (is => 'ro', isa => Str);
+  has PlatformId => (is => 'ro', isa => Str);
+  has ProfileName => (is => 'ro', isa => Str);
+  has SigningMaterial => (is => 'ro', isa => Signer_SigningMaterial);
+  has SigningParameters => (is => 'ro', isa => Signer_SigningParameters);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => Signer_TagMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'Signer_TagMap',
+                           'class' => 'Paws::Signer::TagMap'
+                         },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'PlatformId' => {
+                                 'type' => 'Str'
+                               },
+               'SigningMaterial' => {
+                                      'type' => 'Signer_SigningMaterial',
+                                      'class' => 'Paws::Signer::SigningMaterial'
+                                    },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'SigningParameters' => {
+                                        'class' => 'Paws::Signer::SigningParameters',
+                                        'type' => 'Signer_SigningParameters'
+                                      },
+               'ProfileName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'SigningMaterial' => 'signingMaterial',
+                       'Arn' => 'arn',
+                       'Tags' => 'tags',
+                       'Status' => 'status',
+                       'PlatformId' => 'platformId',
+                       'SigningParameters' => 'signingParameters',
+                       'ProfileName' => 'profileName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,12 +105,12 @@ configuration parameters that can be used by a given code signing user.
   The name of the signing profile.
 
 
-=head2 SigningMaterial => L<Paws::Signer::SigningMaterial>
+=head2 SigningMaterial => Signer_SigningMaterial
 
   The ACM certificate that is available for use by a signing profile.
 
 
-=head2 SigningParameters => L<Paws::Signer::SigningParameters>
+=head2 SigningParameters => Signer_SigningParameters
 
   The parameters that are available for use by a code signing user.
 
@@ -73,7 +120,7 @@ configuration parameters that can be used by a given code signing user.
   The status of a code signing profile.
 
 
-=head2 Tags => L<Paws::Signer::TagMap>
+=head2 Tags => Signer_TagMap
 
   A list of tags associated with the signing profile.
 

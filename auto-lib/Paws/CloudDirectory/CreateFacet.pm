@@ -1,18 +1,53 @@
 
 package Paws::CloudDirectory::CreateFacet;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::FacetAttribute]');
-  has FacetStyle => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ObjectType => (is => 'ro', isa => 'Str');
-  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_FacetAttribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[CloudDirectory_FacetAttribute], predicate => 1);
+  has FacetStyle => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ObjectType => (is => 'ro', isa => Str, predicate => 1);
+  has SchemaArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFacet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/facet/create');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::CreateFacetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFacet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/facet/create');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::CreateFacetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'SchemaArn' => 'x-amz-data-partition'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ObjectType' => {
+                                 'type' => 'Str'
+                               },
+               'FacetStyle' => {
+                                 'type' => 'Str'
+                               },
+               'SchemaArn' => {
+                                'type' => 'Str'
+                              },
+               'Attributes' => {
+                                 'type' => 'ArrayRef[CloudDirectory_FacetAttribute]',
+                                 'class' => 'Paws::CloudDirectory::FacetAttribute'
+                               }
+             },
+  'IsRequired' => {
+                    'SchemaArn' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +114,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::CloudDirectory::FacetAttribute>]
+=head2 Attributes => ArrayRef[CloudDirectory_FacetAttribute]
 
 The attributes that are associated with the Facet.
 

@@ -1,9 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DataPipeline::CreatePipelineOutput;
-  use Moose;
-  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataPipeline::Types qw//;
+  has PipelineId => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PipelineId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'PipelineId' => 1
+                  },
+  'NameInRequest' => {
+                       'PipelineId' => 'pipelineId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

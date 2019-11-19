@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeVpcClassicLinkDnsSupportResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has Vpcs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClassicLinkDnsSupport]', request_name => 'vpcs', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ClassicLinkDnsSupport/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Vpcs => (is => 'ro', isa => ArrayRef[EC2_ClassicLinkDnsSupport]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Vpcs' => {
+                           'class' => 'Paws::EC2::ClassicLinkDnsSupport',
+                           'type' => 'ArrayRef[EC2_ClassicLinkDnsSupport]'
+                         }
+             },
+  'NameInRequest' => {
+                       'Vpcs' => 'vpcs',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +48,7 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 Vpcs => ArrayRef[L<Paws::EC2::ClassicLinkDnsSupport>]
+=head2 Vpcs => ArrayRef[EC2_ClassicLinkDnsSupport]
 
 Information about the ClassicLink DNS support status of the VPCs.
 

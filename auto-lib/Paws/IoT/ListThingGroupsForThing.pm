@@ -1,16 +1,47 @@
 
 package Paws::IoT::ListThingGroupsForThing;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListThingGroupsForThing');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}/thing-groups');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListThingGroupsForThingResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListThingGroupsForThing');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/things/{thingName}/thing-groups');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListThingGroupsForThingResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ThingName' => 1
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults'
+                    },
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ThingName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'ThingName' => 'thingName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

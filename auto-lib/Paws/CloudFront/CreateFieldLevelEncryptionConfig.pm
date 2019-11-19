@@ -1,16 +1,34 @@
 
 package Paws::CloudFront::CreateFieldLevelEncryptionConfig;
-  use Moose;
-  has FieldLevelEncryptionConfig => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_FieldLevelEncryptionConfig/;
+  has FieldLevelEncryptionConfig => (is => 'ro', isa => CloudFront_FieldLevelEncryptionConfig, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFieldLevelEncryptionConfig');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/field-level-encryption');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateFieldLevelEncryptionConfigResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFieldLevelEncryptionConfig');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2019-03-26/field-level-encryption');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFront::CreateFieldLevelEncryptionConfigResult');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FieldLevelEncryptionConfig' => 1
+                  },
+  'types' => {
+               'FieldLevelEncryptionConfig' => {
+                                                 'type' => 'CloudFront_FieldLevelEncryptionConfig',
+                                                 'class' => 'Paws::CloudFront::FieldLevelEncryptionConfig'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -81,7 +99,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FieldLevelEncryptionConfig => L<Paws::CloudFront::FieldLevelEncryptionConfig>
+=head2 B<REQUIRED> FieldLevelEncryptionConfig => CloudFront_FieldLevelEncryptionConfig
 
 The request to create a new field-level encryption configuration.
 

@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::SES::IdentityDkimAttributes;
-  use Moose;
-  has DkimEnabled => (is => 'ro', isa => 'Bool', required => 1);
-  has DkimTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DkimVerificationStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef Undef/;
+  use Paws::SES::Types qw//;
+  has DkimEnabled => (is => 'ro', isa => Bool, required => 1);
+  has DkimTokens => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DkimVerificationStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DkimTokens' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'DkimEnabled' => {
+                                  'type' => 'Bool'
+                                },
+               'DkimVerificationStatus' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'DkimVerificationStatus' => 1,
+                    'DkimEnabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

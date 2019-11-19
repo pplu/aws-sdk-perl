@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::XRay::Trace;
-  use Moose;
-  has Duration => (is => 'ro', isa => 'Num');
-  has Id => (is => 'ro', isa => 'Str');
-  has Segments => (is => 'ro', isa => 'ArrayRef[Paws::XRay::Segment]');
+  use Moo;
+  use Types::Standard qw/Num Str ArrayRef/;
+  use Paws::XRay::Types qw/XRay_Segment/;
+  has Duration => (is => 'ro', isa => Num);
+  has Id => (is => 'ro', isa => Str);
+  has Segments => (is => 'ro', isa => ArrayRef[XRay_Segment]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Segments' => {
+                               'class' => 'Paws::XRay::Segment',
+                               'type' => 'ArrayRef[XRay_Segment]'
+                             },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Duration' => {
+                               'type' => 'Num'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +74,7 @@ segment and the end time of the last segment that completed.
 segments and subsegments.
 
 
-=head2 Segments => ArrayRef[L<Paws::XRay::Segment>]
+=head2 Segments => ArrayRef[XRay_Segment]
 
   Segment documents for the segments and subsegments that comprise the
 trace.

@@ -1,20 +1,67 @@
 
 package Paws::GroundStation::UpdateMissionProfile;
-  use Moose;
-  has ContactPostPassDurationSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'contactPostPassDurationSeconds');
-  has ContactPrePassDurationSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'contactPrePassDurationSeconds');
-  has DataflowEdges => (is => 'ro', isa => 'ArrayRef[ArrayRef[Str|Undef]]', traits => ['NameInRequest'], request_name => 'dataflowEdges');
-  has MinimumViableContactDurationSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumViableContactDurationSeconds');
-  has MissionProfileId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'missionProfileId', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has TrackingConfigArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'trackingConfigArn');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::GroundStation::Types qw//;
+  has ContactPostPassDurationSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has ContactPrePassDurationSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has DataflowEdges => (is => 'ro', isa => ArrayRef[ArrayRef[Str|Undef]], predicate => 1);
+  has MinimumViableContactDurationSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has MissionProfileId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has TrackingConfigArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMissionProfile');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/missionprofile/{missionProfileId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GroundStation::MissionProfileIdResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateMissionProfile');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/missionprofile/{missionProfileId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GroundStation::MissionProfileIdResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'MissionProfileId' => 'missionProfileId'
+                  },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'ContactPostPassDurationSeconds' => 'contactPostPassDurationSeconds',
+                       'DataflowEdges' => 'dataflowEdges',
+                       'TrackingConfigArn' => 'trackingConfigArn',
+                       'ContactPrePassDurationSeconds' => 'contactPrePassDurationSeconds',
+                       'MinimumViableContactDurationSeconds' => 'minimumViableContactDurationSeconds'
+                     },
+  'IsRequired' => {
+                    'MissionProfileId' => 1
+                  },
+  'types' => {
+               'MinimumViableContactDurationSeconds' => {
+                                                          'type' => 'Int'
+                                                        },
+               'ContactPrePassDurationSeconds' => {
+                                                    'type' => 'Int'
+                                                  },
+               'ContactPostPassDurationSeconds' => {
+                                                     'type' => 'Int'
+                                                   },
+               'TrackingConfigArn' => {
+                                        'type' => 'Str'
+                                      },
+               'DataflowEdges' => {
+                                    'type' => 'ArrayRef[ArrayRef[Str|Undef]]'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MissionProfileId' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

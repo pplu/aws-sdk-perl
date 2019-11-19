@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::DescribeEventSubscriptionsResponse;
-  use Moose;
-  has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Paws::DMS::EventSubscription]');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_EventSubscription/;
+  has EventSubscriptionsList => (is => 'ro', isa => ArrayRef[DMS_EventSubscription]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventSubscriptionsList' => {
+                                             'class' => 'Paws::DMS::EventSubscription',
+                                             'type' => 'ArrayRef[DMS_EventSubscription]'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::DMS::DescribeEventSubscriptionsResponse
 =head1 ATTRIBUTES
 
 
-=head2 EventSubscriptionsList => ArrayRef[L<Paws::DMS::EventSubscription>]
+=head2 EventSubscriptionsList => ArrayRef[DMS_EventSubscription]
 
 A list of event subscriptions.
 

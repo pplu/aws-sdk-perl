@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ApplicationAutoScaling::DeleteScheduledAction;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
-  has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationAutoScaling::Types qw//;
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ScalableDimension => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ScheduledActionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteScheduledAction');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApplicationAutoScaling::DeleteScheduledActionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteScheduledAction');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApplicationAutoScaling::DeleteScheduledActionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'ScheduledActionName' => 1,
+                    'ScalableDimension' => 1,
+                    'ServiceNamespace' => 1
+                  },
+  'types' => {
+               'ScalableDimension' => {
+                                        'type' => 'Str'
+                                      },
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'ScheduledActionName' => {
+                                          'type' => 'Str'
+                                        },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

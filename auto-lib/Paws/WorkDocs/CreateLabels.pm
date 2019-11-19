@@ -1,16 +1,47 @@
 
 package Paws::WorkDocs::CreateLabels;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has Labels => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLabels');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/resources/{ResourceId}/labels');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::CreateLabelsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLabels');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/resources/{ResourceId}/labels');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::CreateLabelsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ResourceId' => 'ResourceId'
+                  },
+  'IsRequired' => {
+                    'Labels' => 1,
+                    'ResourceId' => 1
+                  },
+  'types' => {
+               'Labels' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

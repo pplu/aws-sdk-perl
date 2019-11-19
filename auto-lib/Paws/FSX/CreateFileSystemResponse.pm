@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::FSX::CreateFileSystemResponse;
-  use Moose;
-  has FileSystem => (is => 'ro', isa => 'Paws::FSX::FileSystem');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::FSX::Types qw/FSX_FileSystem/;
+  has FileSystem => (is => 'ro', isa => FSX_FileSystem);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileSystem' => {
+                                 'class' => 'Paws::FSX::FileSystem',
+                                 'type' => 'FSX_FileSystem'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::FSX::CreateFileSystemResponse
 =head1 ATTRIBUTES
 
 
-=head2 FileSystem => L<Paws::FSX::FileSystem>
+=head2 FileSystem => FSX_FileSystem
 
 The configuration of the file system that was created.
 

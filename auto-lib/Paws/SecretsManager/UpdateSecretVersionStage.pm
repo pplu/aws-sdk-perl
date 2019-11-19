@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SecretsManager::UpdateSecretVersionStage;
-  use Moose;
-  has MoveToVersionId => (is => 'ro', isa => 'Str');
-  has RemoveFromVersionId => (is => 'ro', isa => 'Str');
-  has SecretId => (is => 'ro', isa => 'Str', required => 1);
-  has VersionStage => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecretsManager::Types qw//;
+  has MoveToVersionId => (is => 'ro', isa => Str, predicate => 1);
+  has RemoveFromVersionId => (is => 'ro', isa => Str, predicate => 1);
+  has SecretId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VersionStage => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSecretVersionStage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecretsManager::UpdateSecretVersionStageResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateSecretVersionStage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecretsManager::UpdateSecretVersionStageResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VersionStage' => {
+                                   'type' => 'Str'
+                                 },
+               'MoveToVersionId' => {
+                                      'type' => 'Str'
+                                    },
+               'RemoveFromVersionId' => {
+                                          'type' => 'Str'
+                                        },
+               'SecretId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'VersionStage' => 1,
+                    'SecretId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

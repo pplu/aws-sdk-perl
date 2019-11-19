@@ -1,20 +1,68 @@
 
 package Paws::CognitoSync::UpdateRecords;
-  use Moose;
-  has ClientContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-Client-Context');
-  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName', required => 1);
-  has DeviceId => (is => 'ro', isa => 'Str');
-  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId', required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
-  has RecordPatches => (is => 'ro', isa => 'ArrayRef[Paws::CognitoSync::RecordPatch]');
-  has SyncSessionToken => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoSync::Types qw/CognitoSync_RecordPatch/;
+  has ClientContext => (is => 'ro', isa => Str, predicate => 1);
+  has DatasetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeviceId => (is => 'ro', isa => Str, predicate => 1);
+  has IdentityId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RecordPatches => (is => 'ro', isa => ArrayRef[CognitoSync_RecordPatch], predicate => 1);
+  has SyncSessionToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRecords');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::UpdateRecordsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRecords');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoSync::UpdateRecordsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'ClientContext' => 'x-amz-Client-Context'
+                     },
+  'IsRequired' => {
+                    'DatasetName' => 1,
+                    'SyncSessionToken' => 1,
+                    'IdentityPoolId' => 1,
+                    'IdentityId' => 1
+                  },
+  'types' => {
+               'RecordPatches' => {
+                                    'type' => 'ArrayRef[CognitoSync_RecordPatch]',
+                                    'class' => 'Paws::CognitoSync::RecordPatch'
+                                  },
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   },
+               'ClientContext' => {
+                                    'type' => 'Str'
+                                  },
+               'SyncSessionToken' => {
+                                       'type' => 'Str'
+                                     },
+               'DeviceId' => {
+                               'type' => 'Str'
+                             },
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'IdentityPoolId' => 'IdentityPoolId',
+                    'IdentityId' => 'IdentityId',
+                    'DatasetName' => 'DatasetName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -101,7 +149,7 @@ Cognito. GUID generation is unique within a region.
 
 
 
-=head2 RecordPatches => ArrayRef[L<Paws::CognitoSync::RecordPatch>]
+=head2 RecordPatches => ArrayRef[CognitoSync_RecordPatch]
 
 A list of patch operations.
 

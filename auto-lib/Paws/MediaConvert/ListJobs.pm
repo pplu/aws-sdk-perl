@@ -1,18 +1,52 @@
 
 package Paws::MediaConvert::ListJobs;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has Order => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'order');
-  has Queue => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'queue');
-  has Status => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Order => (is => 'ro', isa => Str, predicate => 1);
+  has Queue => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListJobs');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConvert::ListJobsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListJobs');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-08-29/jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConvert::ListJobsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'Order' => 'order',
+                      'Queue' => 'queue',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults',
+                      'Status' => 'status'
+                    },
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Order' => {
+                            'type' => 'Str'
+                          },
+               'Queue' => {
+                            'type' => 'Str'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

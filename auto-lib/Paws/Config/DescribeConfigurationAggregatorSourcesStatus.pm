@@ -1,16 +1,44 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::DescribeConfigurationAggregatorSourcesStatus;
-  use Moose;
-  has ConfigurationAggregatorName => (is => 'ro', isa => 'Str', required => 1);
-  has Limit => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has UpdateStatus => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::Config::Types qw//;
+  has ConfigurationAggregatorName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has UpdateStatus => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationAggregatorSourcesStatus');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::DescribeConfigurationAggregatorSourcesStatusResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeConfigurationAggregatorSourcesStatus');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::DescribeConfigurationAggregatorSourcesStatusResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationAggregatorName' => {
+                                                  'type' => 'Str'
+                                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'UpdateStatus' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 }
+             },
+  'IsRequired' => {
+                    'ConfigurationAggregatorName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::HlsIngest;
-  use Moose;
-  has IngestEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackage::IngestEndpoint]', request_name => 'ingestEndpoints', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::MediaPackage::Types qw/MediaPackage_IngestEndpoint/;
+  has IngestEndpoints => (is => 'ro', isa => ArrayRef[MediaPackage_IngestEndpoint]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IngestEndpoints' => {
+                                      'class' => 'Paws::MediaPackage::IngestEndpoint',
+                                      'type' => 'ArrayRef[MediaPackage_IngestEndpoint]'
+                                    }
+             },
+  'NameInRequest' => {
+                       'IngestEndpoints' => 'ingestEndpoints'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ An HTTP Live Streaming (HLS) ingest resource configuration.
 =head1 ATTRIBUTES
 
 
-=head2 IngestEndpoints => ArrayRef[L<Paws::MediaPackage::IngestEndpoint>]
+=head2 IngestEndpoints => ArrayRef[MediaPackage_IngestEndpoint]
 
   A list of endpoints to which the source stream should be sent.
 

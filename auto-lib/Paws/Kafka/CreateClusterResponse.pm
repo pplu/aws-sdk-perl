@@ -1,11 +1,39 @@
 
 package Paws::Kafka::CreateClusterResponse;
-  use Moose;
-  has ClusterArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clusterArn');
-  has ClusterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clusterName');
-  has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kafka::Types qw//;
+  has ClusterArn => (is => 'ro', isa => Str);
+  has ClusterName => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ClusterName' => 'clusterName',
+                       'State' => 'state',
+                       'ClusterArn' => 'clusterArn'
+                     },
+  'types' => {
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ClusterName' => {
+                                  'type' => 'Str'
+                                },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

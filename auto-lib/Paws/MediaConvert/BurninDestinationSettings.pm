@@ -1,22 +1,106 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::BurninDestinationSettings;
-  use Moose;
-  has Alignment => (is => 'ro', isa => 'Str', request_name => 'alignment', traits => ['NameInRequest']);
-  has BackgroundColor => (is => 'ro', isa => 'Str', request_name => 'backgroundColor', traits => ['NameInRequest']);
-  has BackgroundOpacity => (is => 'ro', isa => 'Int', request_name => 'backgroundOpacity', traits => ['NameInRequest']);
-  has FontColor => (is => 'ro', isa => 'Str', request_name => 'fontColor', traits => ['NameInRequest']);
-  has FontOpacity => (is => 'ro', isa => 'Int', request_name => 'fontOpacity', traits => ['NameInRequest']);
-  has FontResolution => (is => 'ro', isa => 'Int', request_name => 'fontResolution', traits => ['NameInRequest']);
-  has FontScript => (is => 'ro', isa => 'Str', request_name => 'fontScript', traits => ['NameInRequest']);
-  has FontSize => (is => 'ro', isa => 'Int', request_name => 'fontSize', traits => ['NameInRequest']);
-  has OutlineColor => (is => 'ro', isa => 'Str', request_name => 'outlineColor', traits => ['NameInRequest']);
-  has OutlineSize => (is => 'ro', isa => 'Int', request_name => 'outlineSize', traits => ['NameInRequest']);
-  has ShadowColor => (is => 'ro', isa => 'Str', request_name => 'shadowColor', traits => ['NameInRequest']);
-  has ShadowOpacity => (is => 'ro', isa => 'Int', request_name => 'shadowOpacity', traits => ['NameInRequest']);
-  has ShadowXOffset => (is => 'ro', isa => 'Int', request_name => 'shadowXOffset', traits => ['NameInRequest']);
-  has ShadowYOffset => (is => 'ro', isa => 'Int', request_name => 'shadowYOffset', traits => ['NameInRequest']);
-  has TeletextSpacing => (is => 'ro', isa => 'Str', request_name => 'teletextSpacing', traits => ['NameInRequest']);
-  has XPosition => (is => 'ro', isa => 'Int', request_name => 'xPosition', traits => ['NameInRequest']);
-  has YPosition => (is => 'ro', isa => 'Int', request_name => 'yPosition', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw//;
+  has Alignment => (is => 'ro', isa => Str);
+  has BackgroundColor => (is => 'ro', isa => Str);
+  has BackgroundOpacity => (is => 'ro', isa => Int);
+  has FontColor => (is => 'ro', isa => Str);
+  has FontOpacity => (is => 'ro', isa => Int);
+  has FontResolution => (is => 'ro', isa => Int);
+  has FontScript => (is => 'ro', isa => Str);
+  has FontSize => (is => 'ro', isa => Int);
+  has OutlineColor => (is => 'ro', isa => Str);
+  has OutlineSize => (is => 'ro', isa => Int);
+  has ShadowColor => (is => 'ro', isa => Str);
+  has ShadowOpacity => (is => 'ro', isa => Int);
+  has ShadowXOffset => (is => 'ro', isa => Int);
+  has ShadowYOffset => (is => 'ro', isa => Int);
+  has TeletextSpacing => (is => 'ro', isa => Str);
+  has XPosition => (is => 'ro', isa => Int);
+  has YPosition => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FontResolution' => 'fontResolution',
+                       'FontOpacity' => 'fontOpacity',
+                       'XPosition' => 'xPosition',
+                       'ShadowColor' => 'shadowColor',
+                       'FontSize' => 'fontSize',
+                       'OutlineSize' => 'outlineSize',
+                       'Alignment' => 'alignment',
+                       'FontScript' => 'fontScript',
+                       'BackgroundColor' => 'backgroundColor',
+                       'ShadowOpacity' => 'shadowOpacity',
+                       'BackgroundOpacity' => 'backgroundOpacity',
+                       'FontColor' => 'fontColor',
+                       'YPosition' => 'yPosition',
+                       'ShadowYOffset' => 'shadowYOffset',
+                       'OutlineColor' => 'outlineColor',
+                       'TeletextSpacing' => 'teletextSpacing',
+                       'ShadowXOffset' => 'shadowXOffset'
+                     },
+  'types' => {
+               'ShadowColor' => {
+                                  'type' => 'Str'
+                                },
+               'XPosition' => {
+                                'type' => 'Int'
+                              },
+               'FontResolution' => {
+                                     'type' => 'Int'
+                                   },
+               'FontOpacity' => {
+                                  'type' => 'Int'
+                                },
+               'FontScript' => {
+                                 'type' => 'Str'
+                               },
+               'Alignment' => {
+                                'type' => 'Str'
+                              },
+               'OutlineSize' => {
+                                  'type' => 'Int'
+                                },
+               'FontSize' => {
+                               'type' => 'Int'
+                             },
+               'BackgroundOpacity' => {
+                                        'type' => 'Int'
+                                      },
+               'FontColor' => {
+                                'type' => 'Str'
+                              },
+               'ShadowOpacity' => {
+                                    'type' => 'Int'
+                                  },
+               'BackgroundColor' => {
+                                      'type' => 'Str'
+                                    },
+               'ShadowXOffset' => {
+                                    'type' => 'Int'
+                                  },
+               'TeletextSpacing' => {
+                                      'type' => 'Str'
+                                    },
+               'OutlineColor' => {
+                                   'type' => 'Str'
+                                 },
+               'ShadowYOffset' => {
+                                    'type' => 'Int'
+                                  },
+               'YPosition' => {
+                                'type' => 'Int'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

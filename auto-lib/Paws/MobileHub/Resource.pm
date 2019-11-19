@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::MobileHub::Resource;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Attributes => (is => 'ro', isa => 'Paws::MobileHub::Attributes', request_name => 'attributes', traits => ['NameInRequest']);
-  has Feature => (is => 'ro', isa => 'Str', request_name => 'feature', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MobileHub::Types qw/MobileHub_Attributes/;
+  has Arn => (is => 'ro', isa => Str);
+  has Attributes => (is => 'ro', isa => MobileHub_Attributes);
+  has Feature => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Feature' => {
+                              'type' => 'Str'
+                            },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Attributes' => {
+                                 'type' => 'MobileHub_Attributes',
+                                 'class' => 'Paws::MobileHub::Attributes'
+                               }
+             },
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'Type' => 'type',
+                       'Feature' => 'feature',
+                       'Name' => 'name',
+                       'Attributes' => 'attributes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +83,7 @@ project.
   
 
 
-=head2 Attributes => L<Paws::MobileHub::Attributes>
+=head2 Attributes => MobileHub_Attributes
 
   
 

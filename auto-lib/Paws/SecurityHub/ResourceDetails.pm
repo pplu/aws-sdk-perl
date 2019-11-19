@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::ResourceDetails;
-  use Moose;
-  has AwsEc2Instance => (is => 'ro', isa => 'Paws::SecurityHub::AwsEc2InstanceDetails');
-  has AwsIamAccessKey => (is => 'ro', isa => 'Paws::SecurityHub::AwsIamAccessKeyDetails');
-  has AwsS3Bucket => (is => 'ro', isa => 'Paws::SecurityHub::AwsS3BucketDetails');
-  has Container => (is => 'ro', isa => 'Paws::SecurityHub::ContainerDetails');
-  has Other => (is => 'ro', isa => 'Paws::SecurityHub::FieldMap');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SecurityHub::Types qw/SecurityHub_AwsIamAccessKeyDetails SecurityHub_FieldMap SecurityHub_AwsS3BucketDetails SecurityHub_AwsEc2InstanceDetails SecurityHub_ContainerDetails/;
+  has AwsEc2Instance => (is => 'ro', isa => SecurityHub_AwsEc2InstanceDetails);
+  has AwsIamAccessKey => (is => 'ro', isa => SecurityHub_AwsIamAccessKeyDetails);
+  has AwsS3Bucket => (is => 'ro', isa => SecurityHub_AwsS3BucketDetails);
+  has Container => (is => 'ro', isa => SecurityHub_ContainerDetails);
+  has Other => (is => 'ro', isa => SecurityHub_FieldMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Other' => {
+                            'type' => 'SecurityHub_FieldMap',
+                            'class' => 'Paws::SecurityHub::FieldMap'
+                          },
+               'Container' => {
+                                'type' => 'SecurityHub_ContainerDetails',
+                                'class' => 'Paws::SecurityHub::ContainerDetails'
+                              },
+               'AwsS3Bucket' => {
+                                  'class' => 'Paws::SecurityHub::AwsS3BucketDetails',
+                                  'type' => 'SecurityHub_AwsS3BucketDetails'
+                                },
+               'AwsIamAccessKey' => {
+                                      'class' => 'Paws::SecurityHub::AwsIamAccessKeyDetails',
+                                      'type' => 'SecurityHub_AwsIamAccessKeyDetails'
+                                    },
+               'AwsEc2Instance' => {
+                                     'type' => 'SecurityHub_AwsEc2InstanceDetails',
+                                     'class' => 'Paws::SecurityHub::AwsEc2InstanceDetails'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,27 +74,27 @@ Additional details about a resource related to a finding.
 =head1 ATTRIBUTES
 
 
-=head2 AwsEc2Instance => L<Paws::SecurityHub::AwsEc2InstanceDetails>
+=head2 AwsEc2Instance => SecurityHub_AwsEc2InstanceDetails
 
   Details about an Amazon EC2 instance related to a finding.
 
 
-=head2 AwsIamAccessKey => L<Paws::SecurityHub::AwsIamAccessKeyDetails>
+=head2 AwsIamAccessKey => SecurityHub_AwsIamAccessKeyDetails
 
   Details about an IAM access key related to a finding.
 
 
-=head2 AwsS3Bucket => L<Paws::SecurityHub::AwsS3BucketDetails>
+=head2 AwsS3Bucket => SecurityHub_AwsS3BucketDetails
 
   Details about an Amazon S3 Bucket related to a finding.
 
 
-=head2 Container => L<Paws::SecurityHub::ContainerDetails>
+=head2 Container => SecurityHub_ContainerDetails
 
   Details about a container resource related to a finding.
 
 
-=head2 Other => L<Paws::SecurityHub::FieldMap>
+=head2 Other => SecurityHub_FieldMap
 
   Details about a resource that doesn't have a specific type defined.
 

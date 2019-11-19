@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::MarketplaceCatalog::ChangeSummary;
-  use Moose;
-  has ChangeType => (is => 'ro', isa => 'Str');
-  has Entity => (is => 'ro', isa => 'Paws::MarketplaceCatalog::Entity');
-  has ErrorDetailList => (is => 'ro', isa => 'ArrayRef[Paws::MarketplaceCatalog::ErrorDetail]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MarketplaceCatalog::Types qw/MarketplaceCatalog_Entity MarketplaceCatalog_ErrorDetail/;
+  has ChangeType => (is => 'ro', isa => Str);
+  has Entity => (is => 'ro', isa => MarketplaceCatalog_Entity);
+  has ErrorDetailList => (is => 'ro', isa => ArrayRef[MarketplaceCatalog_ErrorDetail]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeType' => {
+                                 'type' => 'Str'
+                               },
+               'Entity' => {
+                             'type' => 'MarketplaceCatalog_Entity',
+                             'class' => 'Paws::MarketplaceCatalog::Entity'
+                           },
+               'ErrorDetailList' => {
+                                      'class' => 'Paws::MarketplaceCatalog::ErrorDetail',
+                                      'type' => 'ArrayRef[MarketplaceCatalog_ErrorDetail]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,12 +69,12 @@ change. The summary doesn't contain the whole change structure.
   The type of the change.
 
 
-=head2 Entity => L<Paws::MarketplaceCatalog::Entity>
+=head2 Entity => MarketplaceCatalog_Entity
 
   The entity to be changed.
 
 
-=head2 ErrorDetailList => ArrayRef[L<Paws::MarketplaceCatalog::ErrorDetail>]
+=head2 ErrorDetailList => ArrayRef[MarketplaceCatalog_ErrorDetail]
 
   An array of C<ErrorDetail> objects associated with the change.
 

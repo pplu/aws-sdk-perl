@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::Kinesis::PutRecordsRequestEntry;
-  use Moose;
-  has Data => (is => 'ro', isa => 'Str', required => 1);
-  has ExplicitHashKey => (is => 'ro', isa => 'Str');
-  has PartitionKey => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kinesis::Types qw//;
+  has Data => (is => 'ro', isa => Str, required => 1);
+  has ExplicitHashKey => (is => 'ro', isa => Str);
+  has PartitionKey => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExplicitHashKey' => {
+                                      'type' => 'Str'
+                                    },
+               'PartitionKey' => {
+                                   'type' => 'Str'
+                                 },
+               'Data' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'PartitionKey' => 1,
+                    'Data' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

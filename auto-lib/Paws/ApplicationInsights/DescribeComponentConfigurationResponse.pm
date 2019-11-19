@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ApplicationInsights::DescribeComponentConfigurationResponse;
-  use Moose;
-  has ComponentConfiguration => (is => 'ro', isa => 'Str');
-  has Monitor => (is => 'ro', isa => 'Bool');
-  has Tier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApplicationInsights::Types qw//;
+  has ComponentConfiguration => (is => 'ro', isa => Str);
+  has Monitor => (is => 'ro', isa => Bool);
+  has Tier => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tier' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Monitor' => {
+                              'type' => 'Bool'
+                            },
+               'ComponentConfiguration' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

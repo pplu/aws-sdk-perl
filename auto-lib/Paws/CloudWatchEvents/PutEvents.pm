@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchEvents::PutEvents;
-  use Moose;
-  has Entries => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::PutEventsRequestEntry]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_PutEventsRequestEntry/;
+  has Entries => (is => 'ro', isa => ArrayRef[CloudWatchEvents_PutEventsRequestEntry], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutEvents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchEvents::PutEventsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutEvents');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchEvents::PutEventsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Entries' => 1
+                  },
+  'types' => {
+               'Entries' => {
+                              'class' => 'Paws::CloudWatchEvents::PutEventsRequestEntry',
+                              'type' => 'ArrayRef[CloudWatchEvents_PutEventsRequestEntry]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Entries => ArrayRef[L<Paws::CloudWatchEvents::PutEventsRequestEntry>]
+=head2 B<REQUIRED> Entries => ArrayRef[CloudWatchEvents_PutEventsRequestEntry]
 
 The entry that defines an event in your system. You can specify several
 parameters for the entry such as the source and type of the event,

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::MapFilter;
-  use Moose;
-  has Comparison => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw//;
+  has Comparison => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Comparison' => {
+                                 'type' => 'Str'
+                               },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Value' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

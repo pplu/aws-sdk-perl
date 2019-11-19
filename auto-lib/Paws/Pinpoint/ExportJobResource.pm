@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::ExportJobResource;
-  use Moose;
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has S3UrlPrefix => (is => 'ro', isa => 'Str', required => 1);
-  has SegmentId => (is => 'ro', isa => 'Str');
-  has SegmentVersion => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Pinpoint::Types qw//;
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has S3UrlPrefix => (is => 'ro', isa => Str, required => 1);
+  has SegmentId => (is => 'ro', isa => Str);
+  has SegmentVersion => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'S3UrlPrefix' => 1
+                  },
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'S3UrlPrefix' => {
+                                  'type' => 'Str'
+                                },
+               'SegmentVersion' => {
+                                     'type' => 'Int'
+                                   },
+               'SegmentId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

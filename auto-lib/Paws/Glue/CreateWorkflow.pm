@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::CreateWorkflow;
-  use Moose;
-  has DefaultRunProperties => (is => 'ro', isa => 'Paws::Glue::WorkflowRunProperties');
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Glue::TagsMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_WorkflowRunProperties Glue_TagsMap/;
+  has DefaultRunProperties => (is => 'ro', isa => Glue_WorkflowRunProperties, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Glue_TagsMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateWorkflow');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::CreateWorkflowResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateWorkflow');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::CreateWorkflowResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DefaultRunProperties' => {
+                                           'type' => 'Glue_WorkflowRunProperties',
+                                           'class' => 'Paws::Glue::WorkflowRunProperties'
+                                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Tags' => {
+                           'type' => 'Glue_TagsMap',
+                           'class' => 'Paws::Glue::TagsMap'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +82,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head1 ATTRIBUTES
 
 
-=head2 DefaultRunProperties => L<Paws::Glue::WorkflowRunProperties>
+=head2 DefaultRunProperties => Glue_WorkflowRunProperties
 
 A collection of properties to be used as part of each execution of the
 workflow.
@@ -72,7 +102,7 @@ your account.
 
 
 
-=head2 Tags => L<Paws::Glue::TagsMap>
+=head2 Tags => Glue_TagsMap
 
 The tags to be used with this workflow.
 

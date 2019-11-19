@@ -1,14 +1,35 @@
 
 package Paws::MediaPackageVod::DescribePackagingGroup;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackageVod::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePackagingGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/packaging_groups/{id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaPackageVod::DescribePackagingGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribePackagingGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/packaging_groups/{id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaPackageVod::DescribePackagingGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'IsRequired' => {
+                    'Id' => 1
+                  },
+  'ParamInURI' => {
+                    'Id' => 'id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

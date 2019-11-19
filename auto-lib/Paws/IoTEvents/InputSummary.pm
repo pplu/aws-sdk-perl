@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::InputSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has InputArn => (is => 'ro', isa => 'Str', request_name => 'inputArn', traits => ['NameInRequest']);
-  has InputDescription => (is => 'ro', isa => 'Str', request_name => 'inputDescription', traits => ['NameInRequest']);
-  has InputName => (is => 'ro', isa => 'Str', request_name => 'inputName', traits => ['NameInRequest']);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has InputArn => (is => 'ro', isa => Str);
+  has InputDescription => (is => 'ro', isa => Str);
+  has InputName => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'InputDescription' => {
+                                       'type' => 'Str'
+                                     },
+               'InputName' => {
+                                'type' => 'Str'
+                              },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'InputArn' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'InputDescription' => 'inputDescription',
+                       'InputName' => 'inputName',
+                       'CreationTime' => 'creationTime',
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'InputArn' => 'inputArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::PointInTimeRecoverySpecification;
-  use Moose;
-  has PointInTimeRecoveryEnabled => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::DynamoDB::Types qw//;
+  has PointInTimeRecoveryEnabled => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PointInTimeRecoveryEnabled' => {
+                                                 'type' => 'Bool'
+                                               }
+             },
+  'IsRequired' => {
+                    'PointInTimeRecoveryEnabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

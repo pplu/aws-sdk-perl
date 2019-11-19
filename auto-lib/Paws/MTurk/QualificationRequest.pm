@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::MTurk::QualificationRequest;
-  use Moose;
-  has Answer => (is => 'ro', isa => 'Str');
-  has QualificationRequestId => (is => 'ro', isa => 'Str');
-  has QualificationTypeId => (is => 'ro', isa => 'Str');
-  has SubmitTime => (is => 'ro', isa => 'Str');
-  has Test => (is => 'ro', isa => 'Str');
-  has WorkerId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw//;
+  has Answer => (is => 'ro', isa => Str);
+  has QualificationRequestId => (is => 'ro', isa => Str);
+  has QualificationTypeId => (is => 'ro', isa => Str);
+  has SubmitTime => (is => 'ro', isa => Str);
+  has Test => (is => 'ro', isa => Str);
+  has WorkerId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Test' => {
+                           'type' => 'Str'
+                         },
+               'SubmitTime' => {
+                                 'type' => 'Str'
+                               },
+               'WorkerId' => {
+                               'type' => 'Str'
+                             },
+               'QualificationRequestId' => {
+                                             'type' => 'Str'
+                                           },
+               'Answer' => {
+                             'type' => 'Str'
+                           },
+               'QualificationTypeId' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

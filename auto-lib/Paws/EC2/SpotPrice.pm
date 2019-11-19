@@ -1,10 +1,43 @@
 package Paws::EC2::SpotPrice;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has ProductDescription => (is => 'ro', isa => 'Str', request_name => 'productDescription', traits => ['NameInRequest']);
-  has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
-  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has ProductDescription => (is => 'ro', isa => Str);
+  has SpotPrice => (is => 'ro', isa => Str);
+  has Timestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AvailabilityZone' => 'availabilityZone',
+                       'InstanceType' => 'instanceType',
+                       'SpotPrice' => 'spotPrice',
+                       'Timestamp' => 'timestamp',
+                       'ProductDescription' => 'productDescription'
+                     },
+  'types' => {
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'SpotPrice' => {
+                                'type' => 'Str'
+                              },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'ProductDescription' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

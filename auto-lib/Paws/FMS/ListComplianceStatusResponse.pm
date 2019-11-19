@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::FMS::ListComplianceStatusResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PolicyComplianceStatusList => (is => 'ro', isa => 'ArrayRef[Paws::FMS::PolicyComplianceStatus]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::FMS::Types qw/FMS_PolicyComplianceStatus/;
+  has NextToken => (is => 'ro', isa => Str);
+  has PolicyComplianceStatusList => (is => 'ro', isa => ArrayRef[FMS_PolicyComplianceStatus]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'PolicyComplianceStatusList' => {
+                                                 'type' => 'ArrayRef[FMS_PolicyComplianceStatus]',
+                                                 'class' => 'Paws::FMS::PolicyComplianceStatus'
+                                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -25,7 +47,7 @@ C<NextToken> value from the response in the C<NextToken> value in the
 next request.
 
 
-=head2 PolicyComplianceStatusList => ArrayRef[L<Paws::FMS::PolicyComplianceStatus>]
+=head2 PolicyComplianceStatusList => ArrayRef[FMS_PolicyComplianceStatus]
 
 An array of C<PolicyComplianceStatus> objects.
 

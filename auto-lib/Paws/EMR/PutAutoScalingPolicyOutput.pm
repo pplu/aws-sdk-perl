@@ -1,12 +1,40 @@
+# Generated from json/callresult_class.tt
 
 package Paws::EMR::PutAutoScalingPolicyOutput;
-  use Moose;
-  has AutoScalingPolicy => (is => 'ro', isa => 'Paws::EMR::AutoScalingPolicyDescription');
-  has ClusterArn => (is => 'ro', isa => 'Str');
-  has ClusterId => (is => 'ro', isa => 'Str');
-  has InstanceGroupId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_AutoScalingPolicyDescription/;
+  has AutoScalingPolicy => (is => 'ro', isa => EMR_AutoScalingPolicyDescription);
+  has ClusterArn => (is => 'ro', isa => Str);
+  has ClusterId => (is => 'ro', isa => Str);
+  has InstanceGroupId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               },
+               'ClusterId' => {
+                                'type' => 'Str'
+                              },
+               'AutoScalingPolicy' => {
+                                        'class' => 'Paws::EMR::AutoScalingPolicyDescription',
+                                        'type' => 'EMR_AutoScalingPolicyDescription'
+                                      },
+               'InstanceGroupId' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -17,7 +45,7 @@ Paws::EMR::PutAutoScalingPolicyOutput
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingPolicy => L<Paws::EMR::AutoScalingPolicyDescription>
+=head2 AutoScalingPolicy => EMR_AutoScalingPolicyDescription
 
 The automatic scaling policy definition.
 

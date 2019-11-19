@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::SES::CloudWatchDestination;
-  use Moose;
-  has DimensionConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SES::CloudWatchDimensionConfiguration]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::SES::Types qw/SES_CloudWatchDimensionConfiguration/;
+  has DimensionConfigurations => (is => 'ro', isa => ArrayRef[SES_CloudWatchDimensionConfiguration], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DimensionConfigurations' => 1
+                  },
+  'types' => {
+               'DimensionConfigurations' => {
+                                              'class' => 'Paws::SES::CloudWatchDimensionConfiguration',
+                                              'type' => 'ArrayRef[SES_CloudWatchDimensionConfiguration]'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ Developer Guide
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DimensionConfigurations => ArrayRef[L<Paws::SES::CloudWatchDimensionConfiguration>]
+=head2 B<REQUIRED> DimensionConfigurations => ArrayRef[SES_CloudWatchDimensionConfiguration]
 
   A list of dimensions upon which to categorize your emails when you
 publish email sending events to Amazon CloudWatch.

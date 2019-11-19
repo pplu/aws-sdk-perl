@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::RDSData::ResultFrame;
-  use Moose;
-  has Records => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::Record]', request_name => 'records', traits => ['NameInRequest']);
-  has ResultSetMetadata => (is => 'ro', isa => 'Paws::RDSData::ResultSetMetadata', request_name => 'resultSetMetadata', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::RDSData::Types qw/RDSData_ResultSetMetadata RDSData_Record/;
+  has Records => (is => 'ro', isa => ArrayRef[RDSData_Record]);
+  has ResultSetMetadata => (is => 'ro', isa => RDSData_ResultSetMetadata);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResultSetMetadata' => {
+                                        'type' => 'RDSData_ResultSetMetadata',
+                                        'class' => 'Paws::RDSData::ResultSetMetadata'
+                                      },
+               'Records' => {
+                              'class' => 'Paws::RDSData::Record',
+                              'type' => 'ArrayRef[RDSData_Record]'
+                            }
+             },
+  'NameInRequest' => {
+                       'ResultSetMetadata' => 'resultSetMetadata',
+                       'Records' => 'records'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ The result set returned by a SQL statement.
 =head1 ATTRIBUTES
 
 
-=head2 Records => ArrayRef[L<Paws::RDSData::Record>]
+=head2 Records => ArrayRef[RDSData_Record]
 
   The records in the result set.
 
 
-=head2 ResultSetMetadata => L<Paws::RDSData::ResultSetMetadata>
+=head2 ResultSetMetadata => RDSData_ResultSetMetadata
 
   The result-set metadata in the result set.
 

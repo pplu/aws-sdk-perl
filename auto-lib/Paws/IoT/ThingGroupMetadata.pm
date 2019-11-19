@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::IoT::ThingGroupMetadata;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has ParentGroupName => (is => 'ro', isa => 'Str', request_name => 'parentGroupName', traits => ['NameInRequest']);
-  has RootToParentThingGroups => (is => 'ro', isa => 'ArrayRef[Paws::IoT::GroupNameAndArn]', request_name => 'rootToParentThingGroups', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_GroupNameAndArn/;
+  has CreationDate => (is => 'ro', isa => Str);
+  has ParentGroupName => (is => 'ro', isa => Str);
+  has RootToParentThingGroups => (is => 'ro', isa => ArrayRef[IoT_GroupNameAndArn]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ParentGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'RootToParentThingGroups' => {
+                                              'class' => 'Paws::IoT::GroupNameAndArn',
+                                              'type' => 'ArrayRef[IoT_GroupNameAndArn]'
+                                            }
+             },
+  'NameInRequest' => {
+                       'RootToParentThingGroups' => 'rootToParentThingGroups',
+                       'CreationDate' => 'creationDate',
+                       'ParentGroupName' => 'parentGroupName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +77,7 @@ Thing group metadata.
   The parent thing group name.
 
 
-=head2 RootToParentThingGroups => ArrayRef[L<Paws::IoT::GroupNameAndArn>]
+=head2 RootToParentThingGroups => ArrayRef[IoT_GroupNameAndArn]
 
   The root parent thing group.
 

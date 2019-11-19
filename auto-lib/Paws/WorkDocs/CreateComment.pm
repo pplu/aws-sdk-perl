@@ -1,21 +1,69 @@
 
 package Paws::WorkDocs::CreateComment;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId', required => 1);
-  has NotifyCollaborators => (is => 'ro', isa => 'Bool');
-  has ParentId => (is => 'ro', isa => 'Str');
-  has Text => (is => 'ro', isa => 'Str', required => 1);
-  has ThreadId => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'VersionId', required => 1);
-  has Visibility => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NotifyCollaborators => (is => 'ro', isa => Bool, predicate => 1);
+  has ParentId => (is => 'ro', isa => Str, predicate => 1);
+  has Text => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ThreadId => (is => 'ro', isa => Str, predicate => 1);
+  has VersionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Visibility => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateComment');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/documents/{DocumentId}/versions/{VersionId}/comment');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::CreateCommentResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateComment');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/documents/{DocumentId}/versions/{VersionId}/comment');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::CreateCommentResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'VersionId' => 1,
+                    'DocumentId' => 1,
+                    'Text' => 1
+                  },
+  'types' => {
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'NotifyCollaborators' => {
+                                          'type' => 'Bool'
+                                        },
+               'DocumentId' => {
+                                 'type' => 'Str'
+                               },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'ParentId' => {
+                               'type' => 'Str'
+                             },
+               'Text' => {
+                           'type' => 'Str'
+                         },
+               'ThreadId' => {
+                               'type' => 'Str'
+                             },
+               'Visibility' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'DocumentId' => 'DocumentId',
+                    'VersionId' => 'VersionId'
+                  },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

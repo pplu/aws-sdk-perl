@@ -1,16 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeStar::UpdateTeamMember;
-  use Moose;
-  has ProjectId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectId' , required => 1);
-  has ProjectRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectRole' );
-  has RemoteAccessAllowed => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'remoteAccessAllowed' );
-  has UserArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeStar::Types qw//;
+  has ProjectId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProjectRole => (is => 'ro', isa => Str, predicate => 1);
+  has RemoteAccessAllowed => (is => 'ro', isa => Bool, predicate => 1);
+  has UserArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTeamMember');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStar::UpdateTeamMemberResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateTeamMember');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStar::UpdateTeamMemberResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserArn' => {
+                              'type' => 'Str'
+                            },
+               'RemoteAccessAllowed' => {
+                                          'type' => 'Bool'
+                                        },
+               'ProjectRole' => {
+                                  'type' => 'Str'
+                                },
+               'ProjectId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'ProjectId' => 1,
+                    'UserArn' => 1
+                  },
+  'NameInRequest' => {
+                       'UserArn' => 'userArn',
+                       'RemoteAccessAllowed' => 'remoteAccessAllowed',
+                       'ProjectRole' => 'projectRole',
+                       'ProjectId' => 'projectId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

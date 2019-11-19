@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::Personalize::DatasetSummary;
-  use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has DatasetArn => (is => 'ro', isa => 'Str', request_name => 'datasetArn', traits => ['NameInRequest']);
-  has DatasetType => (is => 'ro', isa => 'Str', request_name => 'datasetType', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has DatasetArn => (is => 'ro', isa => Str);
+  has DatasetType => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CreationDateTime' => 'creationDateTime',
+                       'Name' => 'name',
+                       'DatasetArn' => 'datasetArn',
+                       'DatasetType' => 'datasetType',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime',
+                       'Status' => 'status'
+                     },
+  'types' => {
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DatasetType' => {
+                                  'type' => 'Str'
+                                },
+               'DatasetArn' => {
+                                 'type' => 'Str'
+                               },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

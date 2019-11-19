@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::Config::AggregateResourceIdentifier;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceName => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
-  has SourceAccountId => (is => 'ro', isa => 'Str', required => 1);
-  has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has ResourceId => (is => 'ro', isa => Str, required => 1);
+  has ResourceName => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str, required => 1);
+  has SourceAccountId => (is => 'ro', isa => Str, required => 1);
+  has SourceRegion => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'SourceAccountId' => 1,
+                    'SourceRegion' => 1,
+                    'ResourceType' => 1
+                  },
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceName' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceAccountId' => {
+                                      'type' => 'Str'
+                                    },
+               'SourceRegion' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

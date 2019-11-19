@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::RegexPatternSet;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has RegexPatternSetId => (is => 'ro', isa => 'Str', required => 1);
-  has RegexPatternStrings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::WAFRegional::Types qw//;
+  has Name => (is => 'ro', isa => Str);
+  has RegexPatternSetId => (is => 'ro', isa => Str, required => 1);
+  has RegexPatternStrings => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RegexPatternSetId' => 1,
+                    'RegexPatternStrings' => 1
+                  },
+  'types' => {
+               'RegexPatternSetId' => {
+                                        'type' => 'Str'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RegexPatternStrings' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

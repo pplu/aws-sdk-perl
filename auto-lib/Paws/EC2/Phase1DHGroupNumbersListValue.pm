@@ -1,6 +1,23 @@
 package Paws::EC2::Phase1DHGroupNumbersListValue;
-  use Moose;
-  has Value => (is => 'ro', isa => 'Int', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int/;
+  use Paws::EC2::Types qw//;
+  has Value => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Value' => 'value'
+                     },
+  'types' => {
+               'Value' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

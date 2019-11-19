@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Comprehend::SyntaxToken;
-  use Moose;
-  has BeginOffset => (is => 'ro', isa => 'Int');
-  has EndOffset => (is => 'ro', isa => 'Int');
-  has PartOfSpeech => (is => 'ro', isa => 'Paws::Comprehend::PartOfSpeechTag');
-  has Text => (is => 'ro', isa => 'Str');
-  has TokenId => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Comprehend::Types qw/Comprehend_PartOfSpeechTag/;
+  has BeginOffset => (is => 'ro', isa => Int);
+  has EndOffset => (is => 'ro', isa => Int);
+  has PartOfSpeech => (is => 'ro', isa => Comprehend_PartOfSpeechTag);
+  has Text => (is => 'ro', isa => Str);
+  has TokenId => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BeginOffset' => {
+                                  'type' => 'Int'
+                                },
+               'PartOfSpeech' => {
+                                   'class' => 'Paws::Comprehend::PartOfSpeechTag',
+                                   'type' => 'Comprehend_PartOfSpeechTag'
+                                 },
+               'Text' => {
+                           'type' => 'Str'
+                         },
+               'TokenId' => {
+                              'type' => 'Int'
+                            },
+               'EndOffset' => {
+                                'type' => 'Int'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +84,7 @@ first character in the word.
 character in the word.
 
 
-=head2 PartOfSpeech => L<Paws::Comprehend::PartOfSpeechTag>
+=head2 PartOfSpeech => Comprehend_PartOfSpeechTag
 
   Provides the part of speech label and the confidence level that Amazon
 Comprehend has that the part of speech was correctly identified. For

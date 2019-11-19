@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::ModifyWorkspaceProperties;
-  use Moose;
-  has WorkspaceId => (is => 'ro', isa => 'Str', required => 1);
-  has WorkspaceProperties => (is => 'ro', isa => 'Paws::WorkSpaces::WorkspaceProperties', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_WorkspaceProperties/;
+  has WorkspaceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WorkspaceProperties => (is => 'ro', isa => WorkSpaces_WorkspaceProperties, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyWorkspaceProperties');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::ModifyWorkspacePropertiesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyWorkspaceProperties');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::ModifyWorkspacePropertiesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'WorkspaceProperties' => 1,
+                    'WorkspaceId' => 1
+                  },
+  'types' => {
+               'WorkspaceId' => {
+                                  'type' => 'Str'
+                                },
+               'WorkspaceProperties' => {
+                                          'class' => 'Paws::WorkSpaces::WorkspaceProperties',
+                                          'type' => 'WorkSpaces_WorkspaceProperties'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +78,7 @@ The identifier of the WorkSpace.
 
 
 
-=head2 B<REQUIRED> WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>
+=head2 B<REQUIRED> WorkspaceProperties => WorkSpaces_WorkspaceProperties
 
 The properties of the WorkSpace.
 

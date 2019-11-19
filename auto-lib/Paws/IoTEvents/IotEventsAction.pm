@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::IotEventsAction;
-  use Moose;
-  has InputName => (is => 'ro', isa => 'Str', request_name => 'inputName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw//;
+  has InputName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InputName' => 1
+                  },
+  'NameInRequest' => {
+                       'InputName' => 'inputName'
+                     },
+  'types' => {
+               'InputName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

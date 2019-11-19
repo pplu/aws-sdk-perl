@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::ECR::ImageScanFinding;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECR::Attribute]', request_name => 'attributes', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Severity => (is => 'ro', isa => 'Str', request_name => 'severity', traits => ['NameInRequest']);
-  has Uri => (is => 'ro', isa => 'Str', request_name => 'uri', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ECR::Types qw/ECR_Attribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[ECR_Attribute]);
+  has Description => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Severity => (is => 'ro', isa => Str);
+  has Uri => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Uri' => 'uri',
+                       'Name' => 'name',
+                       'Severity' => 'severity',
+                       'Attributes' => 'attributes',
+                       'Description' => 'description'
+                     },
+  'types' => {
+               'Uri' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Severity' => {
+                               'type' => 'Str'
+                             },
+               'Attributes' => {
+                                 'class' => 'Paws::ECR::Attribute',
+                                 'type' => 'ArrayRef[ECR_Attribute]'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +77,7 @@ Contains information about an image scan finding.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::ECR::Attribute>]
+=head2 Attributes => ArrayRef[ECR_Attribute]
 
   A collection of attributes of the host from which the finding is
 generated.

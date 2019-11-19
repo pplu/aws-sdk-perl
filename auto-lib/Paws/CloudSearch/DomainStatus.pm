@@ -1,18 +1,79 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::DomainStatus;
-  use Moose;
-  has ARN => (is => 'ro', isa => 'Str');
-  has Created => (is => 'ro', isa => 'Bool');
-  has Deleted => (is => 'ro', isa => 'Bool');
-  has DocService => (is => 'ro', isa => 'Paws::CloudSearch::ServiceEndpoint');
-  has DomainId => (is => 'ro', isa => 'Str', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Limits => (is => 'ro', isa => 'Paws::CloudSearch::Limits');
-  has Processing => (is => 'ro', isa => 'Bool');
-  has RequiresIndexDocuments => (is => 'ro', isa => 'Bool', required => 1);
-  has SearchInstanceCount => (is => 'ro', isa => 'Int');
-  has SearchInstanceType => (is => 'ro', isa => 'Str');
-  has SearchPartitionCount => (is => 'ro', isa => 'Int');
-  has SearchService => (is => 'ro', isa => 'Paws::CloudSearch::ServiceEndpoint');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::CloudSearch::Types qw/CloudSearch_Limits CloudSearch_ServiceEndpoint/;
+  has ARN => (is => 'ro', isa => Str);
+  has Created => (is => 'ro', isa => Bool);
+  has Deleted => (is => 'ro', isa => Bool);
+  has DocService => (is => 'ro', isa => CloudSearch_ServiceEndpoint);
+  has DomainId => (is => 'ro', isa => Str, required => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has Limits => (is => 'ro', isa => CloudSearch_Limits);
+  has Processing => (is => 'ro', isa => Bool);
+  has RequiresIndexDocuments => (is => 'ro', isa => Bool, required => 1);
+  has SearchInstanceCount => (is => 'ro', isa => Int);
+  has SearchInstanceType => (is => 'ro', isa => Str);
+  has SearchPartitionCount => (is => 'ro', isa => Int);
+  has SearchService => (is => 'ro', isa => CloudSearch_ServiceEndpoint);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RequiresIndexDocuments' => 1,
+                    'DomainName' => 1,
+                    'DomainId' => 1
+                  },
+  'types' => {
+               'DocService' => {
+                                 'type' => 'CloudSearch_ServiceEndpoint',
+                                 'class' => 'Paws::CloudSearch::ServiceEndpoint'
+                               },
+               'Processing' => {
+                                 'type' => 'Bool'
+                               },
+               'SearchPartitionCount' => {
+                                           'type' => 'Int'
+                                         },
+               'DomainId' => {
+                               'type' => 'Str'
+                             },
+               'Created' => {
+                              'type' => 'Bool'
+                            },
+               'SearchService' => {
+                                    'type' => 'CloudSearch_ServiceEndpoint',
+                                    'class' => 'Paws::CloudSearch::ServiceEndpoint'
+                                  },
+               'RequiresIndexDocuments' => {
+                                             'type' => 'Bool'
+                                           },
+               'Deleted' => {
+                              'type' => 'Bool'
+                            },
+               'Limits' => {
+                             'class' => 'Paws::CloudSearch::Limits',
+                             'type' => 'CloudSearch_Limits'
+                           },
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               'SearchInstanceType' => {
+                                         'type' => 'Str'
+                                       },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'SearchInstanceCount' => {
+                                          'type' => 'Int'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +131,7 @@ true value for IsDeleted for several minutes until resource cleanup is
 complete.
 
 
-=head2 DocService => L<Paws::CloudSearch::ServiceEndpoint>
+=head2 DocService => CloudSearch_ServiceEndpoint
 
   The service endpoint for updating documents in a search domain.
 
@@ -85,7 +146,7 @@ complete.
   
 
 
-=head2 Limits => L<Paws::CloudSearch::Limits>
+=head2 Limits => CloudSearch_Limits
 
   
 
@@ -118,7 +179,7 @@ requests.
   The number of partitions across which the search index is spread.
 
 
-=head2 SearchService => L<Paws::CloudSearch::ServiceEndpoint>
+=head2 SearchService => CloudSearch_ServiceEndpoint
 
   The service endpoint for requesting search results from a search
 domain.

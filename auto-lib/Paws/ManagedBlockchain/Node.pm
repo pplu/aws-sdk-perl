@@ -1,13 +1,52 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::Node;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has FrameworkAttributes => (is => 'ro', isa => 'Paws::ManagedBlockchain::NodeFrameworkAttributes');
-  has Id => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has MemberId => (is => 'ro', isa => 'Str');
-  has NetworkId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_NodeFrameworkAttributes/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has FrameworkAttributes => (is => 'ro', isa => ManagedBlockchain_NodeFrameworkAttributes);
+  has Id => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has MemberId => (is => 'ro', isa => Str);
+  has NetworkId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'FrameworkAttributes' => {
+                                          'class' => 'Paws::ManagedBlockchain::NodeFrameworkAttributes',
+                                          'type' => 'ManagedBlockchain_NodeFrameworkAttributes'
+                                        },
+               'NetworkId' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'MemberId' => {
+                               'type' => 'Str'
+                             },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +92,7 @@ Configuration properties of a peer node.
   The date and time that the node was created.
 
 
-=head2 FrameworkAttributes => L<Paws::ManagedBlockchain::NodeFrameworkAttributes>
+=head2 FrameworkAttributes => ManagedBlockchain_NodeFrameworkAttributes
 
   Attributes of the blockchain framework being used.
 

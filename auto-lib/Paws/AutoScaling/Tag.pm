@@ -1,10 +1,42 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::Tag;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Str', required => 1);
-  has PropagateAtLaunch => (is => 'ro', isa => 'Bool');
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::AutoScaling::Types qw//;
+  has Key => (is => 'ro', isa => Str, required => 1);
+  has PropagateAtLaunch => (is => 'ro', isa => Bool);
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Key' => 1
+                  },
+  'types' => {
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'PropagateAtLaunch' => {
+                                        'type' => 'Bool'
+                                      },
+               'Value' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

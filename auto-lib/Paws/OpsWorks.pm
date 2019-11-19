@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::OpsWorks;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'opsworks' }
   sub signing_name { 'opsworks' }
   sub version { '2013-02-18' }
   sub target_prefix { 'OpsWorks_20130218' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -725,17 +727,17 @@ permissions, see Managing User Permissions
 
 =item [AgentVersion => Str]
 
-=item [Attributes => L<Paws::OpsWorks::StackAttributes>]
+=item [Attributes => OpsWorks_StackAttributes]
 
-=item [ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>]
+=item [ChefConfiguration => OpsWorks_ChefConfiguration]
 
 =item [CloneAppIds => ArrayRef[Str|Undef]]
 
 =item [ClonePermissions => Bool]
 
-=item [ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>]
+=item [ConfigurationManager => OpsWorks_StackConfigurationManager]
 
-=item [CustomCookbooksSource => L<Paws::OpsWorks::Source>]
+=item [CustomCookbooksSource => OpsWorks_Source]
 
 =item [CustomJson => Str]
 
@@ -792,11 +794,11 @@ information about user permissions, see Managing User Permissions
 
 =item Type => Str
 
-=item [AppSource => L<Paws::OpsWorks::Source>]
+=item [AppSource => OpsWorks_Source]
 
-=item [Attributes => L<Paws::OpsWorks::AppAttributes>]
+=item [Attributes => OpsWorks_AppAttributes]
 
-=item [DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>]]
+=item [DataSources => ArrayRef[OpsWorks_DataSource]]
 
 =item [Description => Str]
 
@@ -804,11 +806,11 @@ information about user permissions, see Managing User Permissions
 
 =item [EnableSsl => Bool]
 
-=item [Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>]]
+=item [Environment => ArrayRef[OpsWorks_EnvironmentVariable]]
 
 =item [Shortname => Str]
 
-=item [SslConfiguration => L<Paws::OpsWorks::SslConfiguration>]
+=item [SslConfiguration => OpsWorks_SslConfiguration]
 
 
 =back
@@ -832,7 +834,7 @@ permissions, see Managing User Permissions
 
 =over
 
-=item Command => L<Paws::OpsWorks::DeploymentCommand>
+=item Command => OpsWorks_DeploymentCommand
 
 =item StackId => Str
 
@@ -886,7 +888,7 @@ permissions, see Managing User Permissions
 
 =item [AvailabilityZone => Str]
 
-=item [BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>]]
+=item [BlockDeviceMappings => ArrayRef[OpsWorks_BlockDeviceMapping]]
 
 =item [EbsOptimized => Bool]
 
@@ -936,19 +938,19 @@ permissions, see Managing User Permissions
 
 =item Type => Str
 
-=item [Attributes => L<Paws::OpsWorks::LayerAttributes>]
+=item [Attributes => OpsWorks_LayerAttributes]
 
 =item [AutoAssignElasticIps => Bool]
 
 =item [AutoAssignPublicIps => Bool]
 
-=item [CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>]
+=item [CloudWatchLogsConfiguration => OpsWorks_CloudWatchLogsConfiguration]
 
 =item [CustomInstanceProfileArn => Str]
 
 =item [CustomJson => Str]
 
-=item [CustomRecipes => L<Paws::OpsWorks::Recipes>]
+=item [CustomRecipes => OpsWorks_Recipes]
 
 =item [CustomSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -956,13 +958,13 @@ permissions, see Managing User Permissions
 
 =item [InstallUpdatesOnBoot => Bool]
 
-=item [LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>]
+=item [LifecycleEventConfiguration => OpsWorks_LifecycleEventConfiguration]
 
 =item [Packages => ArrayRef[Str|Undef]]
 
 =item [UseEbsOptimizedInstances => Bool]
 
-=item [VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]]
+=item [VolumeConfigurations => ArrayRef[OpsWorks_VolumeConfiguration]]
 
 
 =back
@@ -1002,13 +1004,13 @@ permissions, see Managing User Permissions
 
 =item [AgentVersion => Str]
 
-=item [Attributes => L<Paws::OpsWorks::StackAttributes>]
+=item [Attributes => OpsWorks_StackAttributes]
 
-=item [ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>]
+=item [ChefConfiguration => OpsWorks_ChefConfiguration]
 
-=item [ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>]
+=item [ConfigurationManager => OpsWorks_StackConfigurationManager]
 
-=item [CustomCookbooksSource => L<Paws::OpsWorks::Source>]
+=item [CustomCookbooksSource => OpsWorks_Source]
 
 =item [CustomJson => Str]
 
@@ -1321,7 +1323,7 @@ permissions, see Managing User Permissions
 
 =over
 
-=item [ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>]
+=item [ConfigurationManager => OpsWorks_StackConfigurationManager]
 
 =item [StackId => Str]
 
@@ -2076,7 +2078,7 @@ permissions, see Managing User Permissions
 
 =item [Hostname => Str]
 
-=item [InstanceIdentity => L<Paws::OpsWorks::InstanceIdentity>]
+=item [InstanceIdentity => OpsWorks_InstanceIdentity]
 
 =item [PrivateIp => Str]
 
@@ -2182,11 +2184,11 @@ permissions, see Managing User Permissions
 
 =item LayerId => Str
 
-=item [DownScaling => L<Paws::OpsWorks::AutoScalingThresholds>]
+=item [DownScaling => OpsWorks_AutoScalingThresholds]
 
 =item [Enable => Bool]
 
-=item [UpScaling => L<Paws::OpsWorks::AutoScalingThresholds>]
+=item [UpScaling => OpsWorks_AutoScalingThresholds]
 
 
 =back
@@ -2250,7 +2252,7 @@ permissions, see Managing User Permissions
 
 =item InstanceId => Str
 
-=item [AutoScalingSchedule => L<Paws::OpsWorks::WeeklyAutoScalingSchedule>]
+=item [AutoScalingSchedule => OpsWorks_WeeklyAutoScalingSchedule]
 
 
 =back
@@ -2373,7 +2375,7 @@ permissions, see Managing User Permissions
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::OpsWorks::Tags>
+=item Tags => OpsWorks_Tags
 
 
 =back
@@ -2461,11 +2463,11 @@ Removes tags from a specified stack or layer.
 
 =item AppId => Str
 
-=item [AppSource => L<Paws::OpsWorks::Source>]
+=item [AppSource => OpsWorks_Source]
 
-=item [Attributes => L<Paws::OpsWorks::AppAttributes>]
+=item [Attributes => OpsWorks_AppAttributes]
 
-=item [DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>]]
+=item [DataSources => ArrayRef[OpsWorks_DataSource]]
 
 =item [Description => Str]
 
@@ -2473,11 +2475,11 @@ Removes tags from a specified stack or layer.
 
 =item [EnableSsl => Bool]
 
-=item [Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>]]
+=item [Environment => ArrayRef[OpsWorks_EnvironmentVariable]]
 
 =item [Name => Str]
 
-=item [SslConfiguration => L<Paws::OpsWorks::SslConfiguration>]
+=item [SslConfiguration => OpsWorks_SslConfiguration]
 
 =item [Type => Str]
 
@@ -2573,19 +2575,19 @@ permissions, see Managing User Permissions
 
 =item LayerId => Str
 
-=item [Attributes => L<Paws::OpsWorks::LayerAttributes>]
+=item [Attributes => OpsWorks_LayerAttributes]
 
 =item [AutoAssignElasticIps => Bool]
 
 =item [AutoAssignPublicIps => Bool]
 
-=item [CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>]
+=item [CloudWatchLogsConfiguration => OpsWorks_CloudWatchLogsConfiguration]
 
 =item [CustomInstanceProfileArn => Str]
 
 =item [CustomJson => Str]
 
-=item [CustomRecipes => L<Paws::OpsWorks::Recipes>]
+=item [CustomRecipes => OpsWorks_Recipes]
 
 =item [CustomSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -2593,7 +2595,7 @@ permissions, see Managing User Permissions
 
 =item [InstallUpdatesOnBoot => Bool]
 
-=item [LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>]
+=item [LifecycleEventConfiguration => OpsWorks_LifecycleEventConfiguration]
 
 =item [Name => Str]
 
@@ -2603,7 +2605,7 @@ permissions, see Managing User Permissions
 
 =item [UseEbsOptimizedInstances => Bool]
 
-=item [VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]]
+=item [VolumeConfigurations => ArrayRef[OpsWorks_VolumeConfiguration]]
 
 
 =back
@@ -2677,13 +2679,13 @@ permissions, see Managing User Permissions
 
 =item [AgentVersion => Str]
 
-=item [Attributes => L<Paws::OpsWorks::StackAttributes>]
+=item [Attributes => OpsWorks_StackAttributes]
 
-=item [ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>]
+=item [ChefConfiguration => OpsWorks_ChefConfiguration]
 
-=item [ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>]
+=item [ConfigurationManager => OpsWorks_StackConfigurationManager]
 
-=item [CustomCookbooksSource => L<Paws::OpsWorks::Source>]
+=item [CustomCookbooksSource => OpsWorks_Source]
 
 =item [CustomJson => Str]
 

@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::S3::BucketLoggingStatus;
-  use Moose;
-  has LoggingEnabled => (is => 'ro', isa => 'Paws::S3::LoggingEnabled');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_LoggingEnabled/;
+  has LoggingEnabled => (is => 'ro', isa => S3_LoggingEnabled);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoggingEnabled' => {
+                                     'type' => 'S3_LoggingEnabled',
+                                     'class' => 'Paws::S3::LoggingEnabled'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Container for logging status information.
 =head1 ATTRIBUTES
 
 
-=head2 LoggingEnabled => L<Paws::S3::LoggingEnabled>
+=head2 LoggingEnabled => S3_LoggingEnabled
 
   
 

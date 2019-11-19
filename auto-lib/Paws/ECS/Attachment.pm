@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::ECS::Attachment;
-  use Moose;
-  has Details => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'details', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ECS::Types qw/ECS_KeyValuePair/;
+  has Details => (is => 'ro', isa => ArrayRef[ECS_KeyValuePair]);
+  has Id => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Details' => {
+                              'class' => 'Paws::ECS::KeyValuePair',
+                              'type' => 'ArrayRef[ECS_KeyValuePair]'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Id' => 'id',
+                       'Details' => 'details',
+                       'Status' => 'status'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +72,7 @@ An object representing a container instance or task attachment.
 =head1 ATTRIBUTES
 
 
-=head2 Details => ArrayRef[L<Paws::ECS::KeyValuePair>]
+=head2 Details => ArrayRef[ECS_KeyValuePair]
 
   Details of the attachment. For elastic network interfaces, this
 includes the network interface ID, the MAC address, the subnet ID, and

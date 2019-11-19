@@ -1,25 +1,114 @@
 
 package Paws::ApiGateway::Stage;
-  use Moose;
-  has AccessLogSettings => (is => 'ro', isa => 'Paws::ApiGateway::AccessLogSettings', traits => ['NameInRequest'], request_name => 'accessLogSettings');
-  has CacheClusterEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'cacheClusterEnabled');
-  has CacheClusterSize => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheClusterSize');
-  has CacheClusterStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheClusterStatus');
-  has CanarySettings => (is => 'ro', isa => 'Paws::ApiGateway::CanarySettings', traits => ['NameInRequest'], request_name => 'canarySettings');
-  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientCertificateId');
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
-  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has DocumentationVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documentationVersion');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
-  has MethodSettings => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodSettings', traits => ['NameInRequest'], request_name => 'methodSettings');
-  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
-  has TracingEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'tracingEnabled');
-  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'variables');
-  has WebAclArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'webAclArn');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString ApiGateway_CanarySettings ApiGateway_AccessLogSettings ApiGateway_MapOfMethodSettings/;
+  has AccessLogSettings => (is => 'ro', isa => ApiGateway_AccessLogSettings);
+  has CacheClusterEnabled => (is => 'ro', isa => Bool);
+  has CacheClusterSize => (is => 'ro', isa => Str);
+  has CacheClusterStatus => (is => 'ro', isa => Str);
+  has CanarySettings => (is => 'ro', isa => ApiGateway_CanarySettings);
+  has ClientCertificateId => (is => 'ro', isa => Str);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has DeploymentId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DocumentationVersion => (is => 'ro', isa => Str);
+  has LastUpdatedDate => (is => 'ro', isa => Str);
+  has MethodSettings => (is => 'ro', isa => ApiGateway_MapOfMethodSettings);
+  has StageName => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has TracingEnabled => (is => 'ro', isa => Bool);
+  has Variables => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has WebAclArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'DocumentationVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'MethodSettings' => {
+                                     'type' => 'ApiGateway_MapOfMethodSettings',
+                                     'class' => 'Paws::ApiGateway::MapOfMethodSettings'
+                                   },
+               'ClientCertificateId' => {
+                                          'type' => 'Str'
+                                        },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::ApiGateway::MapOfStringToString',
+                           'type' => 'ApiGateway_MapOfStringToString'
+                         },
+               'CacheClusterEnabled' => {
+                                          'type' => 'Bool'
+                                        },
+               'StageName' => {
+                                'type' => 'Str'
+                              },
+               'CacheClusterStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'Variables' => {
+                                'type' => 'ApiGateway_MapOfStringToString',
+                                'class' => 'Paws::ApiGateway::MapOfStringToString'
+                              },
+               'LastUpdatedDate' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'TracingEnabled' => {
+                                     'type' => 'Bool'
+                                   },
+               'AccessLogSettings' => {
+                                        'type' => 'ApiGateway_AccessLogSettings',
+                                        'class' => 'Paws::ApiGateway::AccessLogSettings'
+                                      },
+               'WebAclArn' => {
+                                'type' => 'Str'
+                              },
+               'CacheClusterSize' => {
+                                       'type' => 'Str'
+                                     },
+               'CanarySettings' => {
+                                     'type' => 'ApiGateway_CanarySettings',
+                                     'class' => 'Paws::ApiGateway::CanarySettings'
+                                   }
+             },
+  'NameInRequest' => {
+                       'CreatedDate' => 'createdDate',
+                       'ClientCertificateId' => 'clientCertificateId',
+                       'MethodSettings' => 'methodSettings',
+                       'DeploymentId' => 'deploymentId',
+                       'DocumentationVersion' => 'documentationVersion',
+                       'CanarySettings' => 'canarySettings',
+                       'CacheClusterSize' => 'cacheClusterSize',
+                       'WebAclArn' => 'webAclArn',
+                       'AccessLogSettings' => 'accessLogSettings',
+                       'Description' => 'description',
+                       'TracingEnabled' => 'tracingEnabled',
+                       'LastUpdatedDate' => 'lastUpdatedDate',
+                       'Variables' => 'variables',
+                       'CacheClusterStatus' => 'cacheClusterStatus',
+                       'StageName' => 'stageName',
+                       'CacheClusterEnabled' => 'cacheClusterEnabled',
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +120,7 @@ Paws::ApiGateway::Stage
 =head1 ATTRIBUTES
 
 
-=head2 AccessLogSettings => L<Paws::ApiGateway::AccessLogSettings>
+=head2 AccessLogSettings => ApiGateway_AccessLogSettings
 
 Settings for logging access in this stage.
 
@@ -51,7 +140,7 @@ Valid values are: C<"0.5">, C<"1.6">, C<"6.1">, C<"13.5">, C<"28.4">, C<"58.2">,
 The status of the cache cluster for the stage, if enabled.
 
 Valid values are: C<"CREATE_IN_PROGRESS">, C<"AVAILABLE">, C<"DELETE_IN_PROGRESS">, C<"NOT_AVAILABLE">, C<"FLUSH_IN_PROGRESS">
-=head2 CanarySettings => L<Paws::ApiGateway::CanarySettings>
+=head2 CanarySettings => ApiGateway_CanarySettings
 
 Settings for the canary deployment in this stage.
 
@@ -86,7 +175,7 @@ The version of the associated API documentation.
 The timestamp when the stage last updated.
 
 
-=head2 MethodSettings => L<Paws::ApiGateway::MapOfMethodSettings>
+=head2 MethodSettings => ApiGateway_MapOfMethodSettings
 
 A map that defines the method settings for a Stage resource. Keys
 (designated as C</{method_setting_key> below) are method paths defined
@@ -102,7 +191,7 @@ alphanumeric characters, hyphens, and underscores. Maximum length is
 128 characters.
 
 
-=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Tags => ApiGateway_MapOfStringToString
 
 The collection of tags. Each tag element is associated with a given
 resource.
@@ -113,7 +202,7 @@ resource.
 Specifies whether active tracing with X-ray is enabled for the Stage.
 
 
-=head2 Variables => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Variables => ApiGateway_MapOfStringToString
 
 A map that defines the stage variables for a Stage resource. Variable
 names can have alphanumeric and underscore characters, and the values

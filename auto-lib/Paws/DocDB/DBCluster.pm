@@ -1,34 +1,144 @@
+# Generated from default/object.tt
 package Paws::DocDB::DBCluster;
-  use Moose;
-  has AssociatedRoles => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::DBClusterRole]', request_name => 'DBClusterRole', traits => ['NameInRequest']);
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has ClusterCreateTime => (is => 'ro', isa => 'Str');
-  has DBClusterArn => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has DBClusterMembers => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::DBClusterMember]', request_name => 'DBClusterMember', traits => ['NameInRequest']);
-  has DBClusterParameterGroup => (is => 'ro', isa => 'Str');
-  has DbClusterResourceId => (is => 'ro', isa => 'Str');
-  has DBSubnetGroup => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has EarliestRestorableTime => (is => 'ro', isa => 'Str');
-  has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Endpoint => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has HostedZoneId => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LatestRestorableTime => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has PercentProgress => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ReaderEndpoint => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Undef Int Bool/;
+  use Paws::DocDB::Types qw/DocDB_DBClusterMember DocDB_VpcSecurityGroupMembership DocDB_DBClusterRole/;
+  has AssociatedRoles => (is => 'ro', isa => ArrayRef[DocDB_DBClusterRole]);
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int);
+  has ClusterCreateTime => (is => 'ro', isa => Str);
+  has DBClusterArn => (is => 'ro', isa => Str);
+  has DBClusterIdentifier => (is => 'ro', isa => Str);
+  has DBClusterMembers => (is => 'ro', isa => ArrayRef[DocDB_DBClusterMember]);
+  has DBClusterParameterGroup => (is => 'ro', isa => Str);
+  has DbClusterResourceId => (is => 'ro', isa => Str);
+  has DBSubnetGroup => (is => 'ro', isa => Str);
+  has DeletionProtection => (is => 'ro', isa => Bool);
+  has EarliestRestorableTime => (is => 'ro', isa => Str);
+  has EnabledCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Endpoint => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has HostedZoneId => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LatestRestorableTime => (is => 'ro', isa => Str);
+  has MasterUsername => (is => 'ro', isa => Str);
+  has MultiAZ => (is => 'ro', isa => Bool);
+  has PercentProgress => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has PreferredBackupWindow => (is => 'ro', isa => Str);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has ReaderEndpoint => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StorageEncrypted => (is => 'ro', isa => Bool);
+  has VpcSecurityGroups => (is => 'ro', isa => ArrayRef[DocDB_VpcSecurityGroupMembership]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReaderEndpoint' => {
+                                     'type' => 'Str'
+                                   },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'DBClusterArn' => {
+                                   'type' => 'Str'
+                                 },
+               'DBSubnetGroup' => {
+                                    'type' => 'Str'
+                                  },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'AssociatedRoles' => {
+                                      'class' => 'Paws::DocDB::DBClusterRole',
+                                      'type' => 'ArrayRef[DocDB_DBClusterRole]'
+                                    },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'PercentProgress' => {
+                                      'type' => 'Str'
+                                    },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'EnabledCloudwatchLogsExports' => {
+                                                   'type' => 'ArrayRef[Str|Undef]'
+                                                 },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'ClusterCreateTime' => {
+                                        'type' => 'Str'
+                                      },
+               'EarliestRestorableTime' => {
+                                             'type' => 'Str'
+                                           },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 },
+               'DBClusterParameterGroup' => {
+                                              'type' => 'Str'
+                                            },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'LatestRestorableTime' => {
+                                           'type' => 'Str'
+                                         },
+               'VpcSecurityGroups' => {
+                                        'type' => 'ArrayRef[DocDB_VpcSecurityGroupMembership]',
+                                        'class' => 'Paws::DocDB::VpcSecurityGroupMembership'
+                                      },
+               'DbClusterResourceId' => {
+                                          'type' => 'Str'
+                                        },
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'DBClusterMembers' => {
+                                       'type' => 'ArrayRef[DocDB_DBClusterMember]',
+                                       'class' => 'Paws::DocDB::DBClusterMember'
+                                     }
+             },
+  'NameInRequest' => {
+                       'AvailabilityZones' => 'AvailabilityZone',
+                       'DBClusterMembers' => 'DBClusterMember',
+                       'VpcSecurityGroups' => 'VpcSecurityGroupMembership',
+                       'AssociatedRoles' => 'DBClusterRole'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +174,7 @@ Detailed information about a DB cluster.
 =head1 ATTRIBUTES
 
 
-=head2 AssociatedRoles => ArrayRef[L<Paws::DocDB::DBClusterRole>]
+=head2 AssociatedRoles => ArrayRef[DocDB_DBClusterRole]
 
   Provides a list of the AWS Identity and Access Management (IAM) roles
 that are associated with the DB cluster. IAM roles that are associated
@@ -101,7 +211,7 @@ Coordinated Time (UTC).
 unique key that identifies a DB cluster.
 
 
-=head2 DBClusterMembers => ArrayRef[L<Paws::DocDB::DBClusterMember>]
+=head2 DBClusterMembers => ArrayRef[DocDB_DBClusterMember]
 
   Provides the list of instances that make up the DB cluster.
 
@@ -242,7 +352,7 @@ reader endpoint.
   Specifies whether the DB cluster is encrypted.
 
 
-=head2 VpcSecurityGroups => ArrayRef[L<Paws::DocDB::VpcSecurityGroupMembership>]
+=head2 VpcSecurityGroups => ArrayRef[DocDB_VpcSecurityGroupMembership]
 
   Provides a list of virtual private cloud (VPC) security groups that the
 DB cluster belongs to.

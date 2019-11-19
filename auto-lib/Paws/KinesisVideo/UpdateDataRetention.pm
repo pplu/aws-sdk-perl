@@ -1,18 +1,50 @@
 
 package Paws::KinesisVideo::UpdateDataRetention;
-  use Moose;
-  has CurrentVersion => (is => 'ro', isa => 'Str', required => 1);
-  has DataRetentionChangeInHours => (is => 'ro', isa => 'Int', required => 1);
-  has Operation => (is => 'ro', isa => 'Str', required => 1);
-  has StreamARN => (is => 'ro', isa => 'Str');
-  has StreamName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisVideo::Types qw//;
+  has CurrentVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DataRetentionChangeInHours => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Operation => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StreamARN => (is => 'ro', isa => Str, predicate => 1);
+  has StreamName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDataRetention');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/updateDataRetention');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisVideo::UpdateDataRetentionOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDataRetention');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/updateDataRetention');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisVideo::UpdateDataRetentionOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CurrentVersion' => 1,
+                    'Operation' => 1,
+                    'DataRetentionChangeInHours' => 1
+                  },
+  'types' => {
+               'Operation' => {
+                                'type' => 'Str'
+                              },
+               'DataRetentionChangeInHours' => {
+                                                 'type' => 'Int'
+                                               },
+               'StreamARN' => {
+                                'type' => 'Str'
+                              },
+               'CurrentVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

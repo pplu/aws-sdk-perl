@@ -1,17 +1,50 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UploadServerCertificate;
-  use Moose;
-  has CertificateBody => (is => 'ro', isa => 'Str', required => 1);
-  has CertificateChain => (is => 'ro', isa => 'Str');
-  has Path => (is => 'ro', isa => 'Str');
-  has PrivateKey => (is => 'ro', isa => 'Str', required => 1);
-  has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has CertificateBody => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CertificateChain => (is => 'ro', isa => Str, predicate => 1);
+  has Path => (is => 'ro', isa => Str, predicate => 1);
+  has PrivateKey => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServerCertificateName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadServerCertificate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::UploadServerCertificateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadServerCertificateResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UploadServerCertificate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::UploadServerCertificateResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UploadServerCertificateResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerCertificateName' => {
+                                            'type' => 'Str'
+                                          },
+               'CertificateChain' => {
+                                       'type' => 'Str'
+                                     },
+               'PrivateKey' => {
+                                 'type' => 'Str'
+                               },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'CertificateBody' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'PrivateKey' => 1,
+                    'CertificateBody' => 1,
+                    'ServerCertificateName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

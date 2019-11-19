@@ -1,14 +1,15 @@
 package Paws::LexModels;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'models.lex' }
   sub signing_name { 'lex' }
   sub version { '2017-04-19' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -1329,11 +1330,11 @@ action.
 
 =item Name => Str
 
-=item [AbortStatement => L<Paws::LexModels::Statement>]
+=item [AbortStatement => LexModels_Statement]
 
 =item [Checksum => Str]
 
-=item [ClarificationPrompt => L<Paws::LexModels::Prompt>]
+=item [ClarificationPrompt => LexModels_Prompt]
 
 =item [CreateVersion => Bool]
 
@@ -1341,7 +1342,7 @@ action.
 
 =item [IdleSessionTTLInSeconds => Int]
 
-=item [Intents => ArrayRef[L<Paws::LexModels::Intent>]]
+=item [Intents => ArrayRef[LexModels_Intent]]
 
 =item [ProcessBehavior => Str]
 
@@ -1411,27 +1412,27 @@ This operation requires permissions for the C<lex:PutBotAlias> action.
 
 =item [Checksum => Str]
 
-=item [ConclusionStatement => L<Paws::LexModels::Statement>]
+=item [ConclusionStatement => LexModels_Statement]
 
-=item [ConfirmationPrompt => L<Paws::LexModels::Prompt>]
+=item [ConfirmationPrompt => LexModels_Prompt]
 
 =item [CreateVersion => Bool]
 
 =item [Description => Str]
 
-=item [DialogCodeHook => L<Paws::LexModels::CodeHook>]
+=item [DialogCodeHook => LexModels_CodeHook]
 
-=item [FollowUpPrompt => L<Paws::LexModels::FollowUpPrompt>]
+=item [FollowUpPrompt => LexModels_FollowUpPrompt]
 
-=item [FulfillmentActivity => L<Paws::LexModels::FulfillmentActivity>]
+=item [FulfillmentActivity => LexModels_FulfillmentActivity]
 
 =item [ParentIntentSignature => Str]
 
-=item [RejectionStatement => L<Paws::LexModels::Statement>]
+=item [RejectionStatement => LexModels_Statement]
 
 =item [SampleUtterances => ArrayRef[Str|Undef]]
 
-=item [Slots => ArrayRef[L<Paws::LexModels::Slot>]]
+=item [Slots => ArrayRef[LexModels_Slot]]
 
 
 =back
@@ -1524,7 +1525,7 @@ This operation requires permissions for the C<lex:PutIntent> action.
 
 =item [Description => Str]
 
-=item [EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>]]
+=item [EnumerationValues => ArrayRef[LexModels_EnumerationValue]]
 
 =item [ValueSelectionStrategy => Str]
 

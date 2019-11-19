@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::NetworkProfileData;
-  use Moose;
-  has CertificateAuthorityArn => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EapMethod => (is => 'ro', isa => 'Str');
-  has NetworkProfileArn => (is => 'ro', isa => 'Str');
-  has NetworkProfileName => (is => 'ro', isa => 'Str');
-  has SecurityType => (is => 'ro', isa => 'Str');
-  has Ssid => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has CertificateAuthorityArn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EapMethod => (is => 'ro', isa => Str);
+  has NetworkProfileArn => (is => 'ro', isa => Str);
+  has NetworkProfileName => (is => 'ro', isa => Str);
+  has SecurityType => (is => 'ro', isa => Str);
+  has Ssid => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ssid' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'SecurityType' => {
+                                   'type' => 'Str'
+                                 },
+               'CertificateAuthorityArn' => {
+                                              'type' => 'Str'
+                                            },
+               'EapMethod' => {
+                                'type' => 'Str'
+                              },
+               'NetworkProfileArn' => {
+                                        'type' => 'Str'
+                                      },
+               'NetworkProfileName' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::SecretsManager;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'secretsmanager' }
   sub signing_name { 'secretsmanager' }
   sub version { '2017-10-17' }
   sub target_prefix { 'secretsmanager' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -342,7 +344,7 @@ ListSecretVersionIds.
 
 =item [SecretString => Str]
 
-=item [Tags => ArrayRef[L<Paws::SecretsManager::Tag>]]
+=item [Tags => ArrayRef[SecretsManager_Tag]]
 
 
 =back
@@ -1167,7 +1169,7 @@ To delete a secret, use DeleteSecret.
 
 =item [RotationLambdaARN => Str]
 
-=item [RotationRules => L<Paws::SecretsManager::RotationRulesType>]
+=item [RotationRules => SecretsManager_RotationRulesType]
 
 
 =back
@@ -1274,7 +1276,7 @@ a secret, use UpdateSecretVersionStage.
 
 =item SecretId => Str
 
-=item Tags => ArrayRef[L<Paws::SecretsManager::Tag>]
+=item Tags => ArrayRef[SecretsManager_Tag]
 
 
 =back

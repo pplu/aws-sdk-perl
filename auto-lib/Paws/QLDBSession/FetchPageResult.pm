@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::QLDBSession::FetchPageResult;
-  use Moose;
-  has Page => (is => 'ro', isa => 'Paws::QLDBSession::Page');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::QLDBSession::Types qw/QLDBSession_Page/;
+  has Page => (is => 'ro', isa => QLDBSession_Page);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Page' => {
+                           'type' => 'QLDBSession_Page',
+                           'class' => 'Paws::QLDBSession::Page'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Contains the page that was fetched.
 =head1 ATTRIBUTES
 
 
-=head2 Page => L<Paws::QLDBSession::Page>
+=head2 Page => QLDBSession_Page
 
   Contains details of the fetched page.
 

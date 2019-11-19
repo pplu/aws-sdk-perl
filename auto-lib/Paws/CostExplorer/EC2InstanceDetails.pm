@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::EC2InstanceDetails;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has CurrentGeneration => (is => 'ro', isa => 'Bool');
-  has Family => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has SizeFlexEligible => (is => 'ro', isa => 'Bool');
-  has Tenancy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CostExplorer::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has CurrentGeneration => (is => 'ro', isa => Bool);
+  has Family => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has SizeFlexEligible => (is => 'ro', isa => Bool);
+  has Tenancy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'Tenancy' => {
+                              'type' => 'Str'
+                            },
+               'Family' => {
+                             'type' => 'Str'
+                           },
+               'SizeFlexEligible' => {
+                                       'type' => 'Bool'
+                                     },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'CurrentGeneration' => {
+                                        'type' => 'Bool'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

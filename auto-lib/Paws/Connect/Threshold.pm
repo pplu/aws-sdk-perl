@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Connect::Threshold;
-  use Moose;
-  has Comparison => (is => 'ro', isa => 'Str');
-  has ThresholdValue => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::Connect::Types qw//;
+  has Comparison => (is => 'ro', isa => Str);
+  has ThresholdValue => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThresholdValue' => {
+                                     'type' => 'Num'
+                                   },
+               'Comparison' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

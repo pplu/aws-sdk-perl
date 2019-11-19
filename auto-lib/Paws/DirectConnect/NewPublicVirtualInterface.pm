@@ -1,14 +1,73 @@
+# Generated from default/object.tt
 package Paws::DirectConnect::NewPublicVirtualInterface;
-  use Moose;
-  has AddressFamily => (is => 'ro', isa => 'Str', request_name => 'addressFamily', traits => ['NameInRequest']);
-  has AmazonAddress => (is => 'ro', isa => 'Str', request_name => 'amazonAddress', traits => ['NameInRequest']);
-  has Asn => (is => 'ro', isa => 'Int', request_name => 'asn', traits => ['NameInRequest'], required => 1);
-  has AuthKey => (is => 'ro', isa => 'Str', request_name => 'authKey', traits => ['NameInRequest']);
-  has CustomerAddress => (is => 'ro', isa => 'Str', request_name => 'customerAddress', traits => ['NameInRequest']);
-  has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', request_name => 'routeFilterPrefixes', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', request_name => 'tags', traits => ['NameInRequest']);
-  has VirtualInterfaceName => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceName', traits => ['NameInRequest'], required => 1);
-  has Vlan => (is => 'ro', isa => 'Int', request_name => 'vlan', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_RouteFilterPrefix DirectConnect_Tag/;
+  has AddressFamily => (is => 'ro', isa => Str);
+  has AmazonAddress => (is => 'ro', isa => Str);
+  has Asn => (is => 'ro', isa => Int, required => 1);
+  has AuthKey => (is => 'ro', isa => Str);
+  has CustomerAddress => (is => 'ro', isa => Str);
+  has RouteFilterPrefixes => (is => 'ro', isa => ArrayRef[DirectConnect_RouteFilterPrefix]);
+  has Tags => (is => 'ro', isa => ArrayRef[DirectConnect_Tag]);
+  has VirtualInterfaceName => (is => 'ro', isa => Str, required => 1);
+  has Vlan => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'VirtualInterfaceName' => 'virtualInterfaceName',
+                       'CustomerAddress' => 'customerAddress',
+                       'AmazonAddress' => 'amazonAddress',
+                       'Tags' => 'tags',
+                       'Vlan' => 'vlan',
+                       'RouteFilterPrefixes' => 'routeFilterPrefixes',
+                       'Asn' => 'asn',
+                       'AuthKey' => 'authKey',
+                       'AddressFamily' => 'addressFamily'
+                     },
+  'IsRequired' => {
+                    'Asn' => 1,
+                    'Vlan' => 1,
+                    'VirtualInterfaceName' => 1
+                  },
+  'types' => {
+               'RouteFilterPrefixes' => {
+                                          'type' => 'ArrayRef[DirectConnect_RouteFilterPrefix]',
+                                          'class' => 'Paws::DirectConnect::RouteFilterPrefix'
+                                        },
+               'Asn' => {
+                          'type' => 'Int'
+                        },
+               'Vlan' => {
+                           'type' => 'Int'
+                         },
+               'AuthKey' => {
+                              'type' => 'Str'
+                            },
+               'AddressFamily' => {
+                                    'type' => 'Str'
+                                  },
+               'CustomerAddress' => {
+                                      'type' => 'Str'
+                                    },
+               'AmazonAddress' => {
+                                    'type' => 'Str'
+                                  },
+               'VirtualInterfaceName' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'type' => 'ArrayRef[DirectConnect_Tag]',
+                           'class' => 'Paws::DirectConnect::Tag'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,13 +132,13 @@ length of 6 characters and and a maximun lenth of 80 characters.
   The IP address assigned to the customer interface.
 
 
-=head2 RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
+=head2 RouteFilterPrefixes => ArrayRef[DirectConnect_RouteFilterPrefix]
 
   The routes to be advertised to the AWS network in this Region. Applies
 to public virtual interfaces.
 
 
-=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+=head2 Tags => ArrayRef[DirectConnect_Tag]
 
   The tags associated with the public virtual interface.
 

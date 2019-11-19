@@ -1,24 +1,73 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::UpdateProfile;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Str');
-  has DistanceUnit => (is => 'ro', isa => 'Str');
-  has IsDefault => (is => 'ro', isa => 'Bool');
-  has Locale => (is => 'ro', isa => 'Str');
-  has MaxVolumeLimit => (is => 'ro', isa => 'Int');
-  has ProfileArn => (is => 'ro', isa => 'Str');
-  has ProfileName => (is => 'ro', isa => 'Str');
-  has PSTNEnabled => (is => 'ro', isa => 'Bool');
-  has SetupModeDisabled => (is => 'ro', isa => 'Bool');
-  has TemperatureUnit => (is => 'ro', isa => 'Str');
-  has Timezone => (is => 'ro', isa => 'Str');
-  has WakeWord => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has Address => (is => 'ro', isa => Str, predicate => 1);
+  has DistanceUnit => (is => 'ro', isa => Str, predicate => 1);
+  has IsDefault => (is => 'ro', isa => Bool, predicate => 1);
+  has Locale => (is => 'ro', isa => Str, predicate => 1);
+  has MaxVolumeLimit => (is => 'ro', isa => Int, predicate => 1);
+  has ProfileArn => (is => 'ro', isa => Str, predicate => 1);
+  has ProfileName => (is => 'ro', isa => Str, predicate => 1);
+  has PSTNEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has SetupModeDisabled => (is => 'ro', isa => Bool, predicate => 1);
+  has TemperatureUnit => (is => 'ro', isa => Str, predicate => 1);
+  has Timezone => (is => 'ro', isa => Str, predicate => 1);
+  has WakeWord => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateProfile');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::UpdateProfileResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateProfile');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::UpdateProfileResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProfileArn' => {
+                                 'type' => 'Str'
+                               },
+               'PSTNEnabled' => {
+                                  'type' => 'Bool'
+                                },
+               'SetupModeDisabled' => {
+                                        'type' => 'Bool'
+                                      },
+               'Address' => {
+                              'type' => 'Str'
+                            },
+               'ProfileName' => {
+                                  'type' => 'Str'
+                                },
+               'WakeWord' => {
+                               'type' => 'Str'
+                             },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'TemperatureUnit' => {
+                                      'type' => 'Str'
+                                    },
+               'DistanceUnit' => {
+                                   'type' => 'Str'
+                                 },
+               'IsDefault' => {
+                                'type' => 'Bool'
+                              },
+               'MaxVolumeLimit' => {
+                                     'type' => 'Int'
+                                   },
+               'Timezone' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

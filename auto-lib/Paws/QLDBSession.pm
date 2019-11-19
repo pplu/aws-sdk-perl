@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::QLDBSession;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'session.qldb' }
   sub signing_name { 'qldb' }
   sub version { '2019-07-11' }
   sub target_prefix { 'QLDBSession' }
   sub json_version { "1.0" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -62,21 +64,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ses
 
 =over
 
-=item [AbortTransaction => L<Paws::QLDBSession::AbortTransactionRequest>]
+=item [AbortTransaction => QLDBSession_AbortTransactionRequest]
 
-=item [CommitTransaction => L<Paws::QLDBSession::CommitTransactionRequest>]
+=item [CommitTransaction => QLDBSession_CommitTransactionRequest]
 
-=item [EndSession => L<Paws::QLDBSession::EndSessionRequest>]
+=item [EndSession => QLDBSession_EndSessionRequest]
 
-=item [ExecuteStatement => L<Paws::QLDBSession::ExecuteStatementRequest>]
+=item [ExecuteStatement => QLDBSession_ExecuteStatementRequest]
 
-=item [FetchPage => L<Paws::QLDBSession::FetchPageRequest>]
+=item [FetchPage => QLDBSession_FetchPageRequest]
 
 =item [SessionToken => Str]
 
-=item [StartSession => L<Paws::QLDBSession::StartSessionRequest>]
+=item [StartSession => QLDBSession_StartSessionRequest]
 
-=item [StartTransaction => L<Paws::QLDBSession::StartTransactionRequest>]
+=item [StartTransaction => QLDBSession_StartTransactionRequest]
 
 
 =back

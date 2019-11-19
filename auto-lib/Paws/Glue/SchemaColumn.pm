@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glue::SchemaColumn;
-  use Moose;
-  has DataType => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has DataType => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataType' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

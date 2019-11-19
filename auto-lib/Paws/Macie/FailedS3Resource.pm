@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::Macie::FailedS3Resource;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
-  has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
-  has FailedItem => (is => 'ro', isa => 'Paws::Macie::S3Resource', request_name => 'failedItem', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Macie::Types qw/Macie_S3Resource/;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has FailedItem => (is => 'ro', isa => Macie_S3Resource);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailedItem' => {
+                                 'class' => 'Paws::Macie::S3Resource',
+                                 'type' => 'Macie_S3Resource'
+                               },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ErrorCode' => 'errorCode',
+                       'ErrorMessage' => 'errorMessage',
+                       'FailedItem' => 'failedItem'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +77,7 @@ Includes details about the failed S3 resources.
   The error message of a failed item.
 
 
-=head2 FailedItem => L<Paws::Macie::S3Resource>
+=head2 FailedItem => Macie_S3Resource
 
   The failed S3 resources.
 

@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::Insight;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'Paws::SecurityHub::AwsSecurityFindingFilters', required => 1);
-  has GroupByAttribute => (is => 'ro', isa => 'Str', required => 1);
-  has InsightArn => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw/SecurityHub_AwsSecurityFindingFilters/;
+  has Filters => (is => 'ro', isa => SecurityHub_AwsSecurityFindingFilters, required => 1);
+  has GroupByAttribute => (is => 'ro', isa => Str, required => 1);
+  has InsightArn => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'GroupByAttribute' => 1,
+                    'Filters' => 1,
+                    'InsightArn' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'InsightArn' => {
+                                 'type' => 'Str'
+                               },
+               'Filters' => {
+                              'type' => 'SecurityHub_AwsSecurityFindingFilters',
+                              'class' => 'Paws::SecurityHub::AwsSecurityFindingFilters'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'GroupByAttribute' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +72,7 @@ Contains information about a Security Hub insight.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>
+=head2 B<REQUIRED> Filters => SecurityHub_AwsSecurityFindingFilters
 
   One or more attributes used to filter the findings included in the
 insight. Only findings that match the criteria defined in the filters

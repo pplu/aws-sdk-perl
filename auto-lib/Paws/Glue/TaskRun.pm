@@ -1,15 +1,60 @@
+# Generated from default/object.tt
 package Paws::Glue::TaskRun;
-  use Moose;
-  has CompletedOn => (is => 'ro', isa => 'Str');
-  has ErrorString => (is => 'ro', isa => 'Str');
-  has ExecutionTime => (is => 'ro', isa => 'Int');
-  has LastModifiedOn => (is => 'ro', isa => 'Str');
-  has LogGroupName => (is => 'ro', isa => 'Str');
-  has Properties => (is => 'ro', isa => 'Paws::Glue::TaskRunProperties');
-  has StartedOn => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TaskRunId => (is => 'ro', isa => 'Str');
-  has TransformId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Glue::Types qw/Glue_TaskRunProperties/;
+  has CompletedOn => (is => 'ro', isa => Str);
+  has ErrorString => (is => 'ro', isa => Str);
+  has ExecutionTime => (is => 'ro', isa => Int);
+  has LastModifiedOn => (is => 'ro', isa => Str);
+  has LogGroupName => (is => 'ro', isa => Str);
+  has Properties => (is => 'ro', isa => Glue_TaskRunProperties);
+  has StartedOn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TaskRunId => (is => 'ro', isa => Str);
+  has TransformId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastModifiedOn' => {
+                                     'type' => 'Str'
+                                   },
+               'CompletedOn' => {
+                                  'type' => 'Str'
+                                },
+               'ExecutionTime' => {
+                                    'type' => 'Int'
+                                  },
+               'TransformId' => {
+                                  'type' => 'Str'
+                                },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'ErrorString' => {
+                                  'type' => 'Str'
+                                },
+               'StartedOn' => {
+                                'type' => 'Str'
+                              },
+               'TaskRunId' => {
+                                'type' => 'Str'
+                              },
+               'Properties' => {
+                                 'class' => 'Paws::Glue::TaskRunProperties',
+                                 'type' => 'Glue_TaskRunProperties'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +117,7 @@ transform.
 task run.
 
 
-=head2 Properties => L<Paws::Glue::TaskRunProperties>
+=head2 Properties => Glue_TaskRunProperties
 
   Specifies configuration properties associated with this task run.
 

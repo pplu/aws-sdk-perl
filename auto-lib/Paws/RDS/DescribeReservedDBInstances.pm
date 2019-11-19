@@ -1,23 +1,70 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::DescribeReservedDBInstances;
-  use Moose;
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has Duration => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
-  has LeaseId => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has OfferingType => (is => 'ro', isa => 'Str');
-  has ProductDescription => (is => 'ro', isa => 'Str');
-  has ReservedDBInstanceId => (is => 'ro', isa => 'Str');
-  has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Bool/;
+  use Paws::RDS::Types qw/RDS_Filter/;
+  has DBInstanceClass => (is => 'ro', isa => Str, predicate => 1);
+  has Duration => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[RDS_Filter], predicate => 1);
+  has LeaseId => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has MultiAZ => (is => 'ro', isa => Bool, predicate => 1);
+  has OfferingType => (is => 'ro', isa => Str, predicate => 1);
+  has ProductDescription => (is => 'ro', isa => Str, predicate => 1);
+  has ReservedDBInstanceId => (is => 'ro', isa => Str, predicate => 1);
+  has ReservedDBInstancesOfferingId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::ReservedDBInstanceMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeReservedDBInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::ReservedDBInstanceMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeReservedDBInstancesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'type' => 'ArrayRef[RDS_Filter]',
+                              'class' => 'Paws::RDS::Filter'
+                            },
+               'OfferingType' => {
+                                   'type' => 'Str'
+                                 },
+               'ReservedDBInstanceId' => {
+                                           'type' => 'Str'
+                                         },
+               'ReservedDBInstancesOfferingId' => {
+                                                    'type' => 'Str'
+                                                  },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Duration' => {
+                               'type' => 'Str'
+                             },
+               'ProductDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'LeaseId' => {
+                              'type' => 'Str'
+                            },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +119,7 @@ Valid Values: C<1 | 3 | 31536000 | 94608000>
 
 
 
-=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
+=head2 Filters => ArrayRef[RDS_Filter]
 
 This parameter isn't currently supported.
 

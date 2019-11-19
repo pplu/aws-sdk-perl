@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::S3DataSpec;
-  use Moose;
-  has DataLocationS3 => (is => 'ro', isa => 'Str', required => 1);
-  has DataRearrangement => (is => 'ro', isa => 'Str');
-  has DataSchema => (is => 'ro', isa => 'Str');
-  has DataSchemaLocationS3 => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MachineLearning::Types qw//;
+  has DataLocationS3 => (is => 'ro', isa => Str, required => 1);
+  has DataRearrangement => (is => 'ro', isa => Str);
+  has DataSchema => (is => 'ro', isa => Str);
+  has DataSchemaLocationS3 => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DataLocationS3' => 1
+                  },
+  'types' => {
+               'DataSchemaLocationS3' => {
+                                           'type' => 'Str'
+                                         },
+               'DataLocationS3' => {
+                                     'type' => 'Str'
+                                   },
+               'DataRearrangement' => {
+                                        'type' => 'Str'
+                                      },
+               'DataSchema' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

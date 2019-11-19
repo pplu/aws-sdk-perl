@@ -1,11 +1,38 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::BatchGetItemOutput;
-  use Moose;
-  has ConsumedCapacity => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ConsumedCapacity]');
-  has Responses => (is => 'ro', isa => 'Paws::DynamoDB::BatchGetResponseMap');
-  has UnprocessedKeys => (is => 'ro', isa => 'Paws::DynamoDB::BatchGetRequestMap');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_BatchGetRequestMap DynamoDB_BatchGetResponseMap DynamoDB_ConsumedCapacity/;
+  has ConsumedCapacity => (is => 'ro', isa => ArrayRef[DynamoDB_ConsumedCapacity]);
+  has Responses => (is => 'ro', isa => DynamoDB_BatchGetResponseMap);
+  has UnprocessedKeys => (is => 'ro', isa => DynamoDB_BatchGetRequestMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Responses' => {
+                                'class' => 'Paws::DynamoDB::BatchGetResponseMap',
+                                'type' => 'DynamoDB_BatchGetResponseMap'
+                              },
+               'UnprocessedKeys' => {
+                                      'type' => 'DynamoDB_BatchGetRequestMap',
+                                      'class' => 'Paws::DynamoDB::BatchGetRequestMap'
+                                    },
+               'ConsumedCapacity' => {
+                                       'type' => 'ArrayRef[DynamoDB_ConsumedCapacity]',
+                                       'class' => 'Paws::DynamoDB::ConsumedCapacity'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +43,7 @@ Paws::DynamoDB::BatchGetItemOutput
 =head1 ATTRIBUTES
 
 
-=head2 ConsumedCapacity => ArrayRef[L<Paws::DynamoDB::ConsumedCapacity>]
+=head2 ConsumedCapacity => ArrayRef[DynamoDB_ConsumedCapacity]
 
 The read capacity units consumed by the entire C<BatchGetItem>
 operation.
@@ -37,14 +64,14 @@ C<CapacityUnits> - The total number of capacity units consumed.
 
 
 
-=head2 Responses => L<Paws::DynamoDB::BatchGetResponseMap>
+=head2 Responses => DynamoDB_BatchGetResponseMap
 
 A map of table name to a list of items. Each object in C<Responses>
 consists of a table name, along with a map of attribute data consisting
 of the data type and attribute value.
 
 
-=head2 UnprocessedKeys => L<Paws::DynamoDB::BatchGetRequestMap>
+=head2 UnprocessedKeys => DynamoDB_BatchGetRequestMap
 
 A map of tables and their respective keys that were not processed with
 the current response. The C<UnprocessedKeys> value is in the same form

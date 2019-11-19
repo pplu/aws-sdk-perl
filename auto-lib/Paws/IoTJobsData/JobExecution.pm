@@ -1,16 +1,77 @@
+# Generated from default/object.tt
 package Paws::IoTJobsData::JobExecution;
-  use Moose;
-  has ApproximateSecondsBeforeTimedOut => (is => 'ro', isa => 'Int', request_name => 'approximateSecondsBeforeTimedOut', traits => ['NameInRequest']);
-  has ExecutionNumber => (is => 'ro', isa => 'Int', request_name => 'executionNumber', traits => ['NameInRequest']);
-  has JobDocument => (is => 'ro', isa => 'Str', request_name => 'jobDocument', traits => ['NameInRequest']);
-  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Int', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has QueuedAt => (is => 'ro', isa => 'Int', request_name => 'queuedAt', traits => ['NameInRequest']);
-  has StartedAt => (is => 'ro', isa => 'Int', request_name => 'startedAt', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusDetails => (is => 'ro', isa => 'Paws::IoTJobsData::DetailsMap', request_name => 'statusDetails', traits => ['NameInRequest']);
-  has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
-  has VersionNumber => (is => 'ro', isa => 'Int', request_name => 'versionNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::IoTJobsData::Types qw/IoTJobsData_DetailsMap/;
+  has ApproximateSecondsBeforeTimedOut => (is => 'ro', isa => Int);
+  has ExecutionNumber => (is => 'ro', isa => Int);
+  has JobDocument => (is => 'ro', isa => Str);
+  has JobId => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Int);
+  has QueuedAt => (is => 'ro', isa => Int);
+  has StartedAt => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetails => (is => 'ro', isa => IoTJobsData_DetailsMap);
+  has ThingName => (is => 'ro', isa => Str);
+  has VersionNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartedAt' => {
+                                'type' => 'Int'
+                              },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'VersionNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'JobDocument' => {
+                                  'type' => 'Str'
+                                },
+               'QueuedAt' => {
+                               'type' => 'Int'
+                             },
+               'LastUpdatedAt' => {
+                                    'type' => 'Int'
+                                  },
+               'StatusDetails' => {
+                                    'type' => 'IoTJobsData_DetailsMap',
+                                    'class' => 'Paws::IoTJobsData::DetailsMap'
+                                  },
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'ApproximateSecondsBeforeTimedOut' => {
+                                                       'type' => 'Int'
+                                                     },
+               'ExecutionNumber' => {
+                                      'type' => 'Int'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'ExecutionNumber' => 'executionNumber',
+                       'ApproximateSecondsBeforeTimedOut' => 'approximateSecondsBeforeTimedOut',
+                       'ThingName' => 'thingName',
+                       'StatusDetails' => 'statusDetails',
+                       'Status' => 'status',
+                       'JobId' => 'jobId',
+                       'StartedAt' => 'startedAt',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'QueuedAt' => 'queuedAt',
+                       'JobDocument' => 'jobDocument',
+                       'VersionNumber' => 'versionNumber'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +155,7 @@ started.
 "REMOVED".
 
 
-=head2 StatusDetails => L<Paws::IoTJobsData::DetailsMap>
+=head2 StatusDetails => IoTJobsData_DetailsMap
 
   A collection of name/value pairs that describe the status of the job
 execution.

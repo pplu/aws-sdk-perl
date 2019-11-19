@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::KMS::CustomKeyStoresListEntry;
-  use Moose;
-  has CloudHsmClusterId => (is => 'ro', isa => 'Str');
-  has ConnectionErrorCode => (is => 'ro', isa => 'Str');
-  has ConnectionState => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has CustomKeyStoreId => (is => 'ro', isa => 'Str');
-  has CustomKeyStoreName => (is => 'ro', isa => 'Str');
-  has TrustAnchorCertificate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KMS::Types qw//;
+  has CloudHsmClusterId => (is => 'ro', isa => Str);
+  has ConnectionErrorCode => (is => 'ro', isa => Str);
+  has ConnectionState => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has CustomKeyStoreId => (is => 'ro', isa => Str);
+  has CustomKeyStoreName => (is => 'ro', isa => Str);
+  has TrustAnchorCertificate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomKeyStoreId' => {
+                                       'type' => 'Str'
+                                     },
+               'ConnectionState' => {
+                                      'type' => 'Str'
+                                    },
+               'TrustAnchorCertificate' => {
+                                             'type' => 'Str'
+                                           },
+               'ConnectionErrorCode' => {
+                                          'type' => 'Str'
+                                        },
+               'CustomKeyStoreName' => {
+                                         'type' => 'Str'
+                                       },
+               'CloudHsmClusterId' => {
+                                        'type' => 'Str'
+                                      },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::CreateDatabase;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has DatabaseInput => (is => 'ro', isa => 'Paws::Glue::DatabaseInput', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_DatabaseInput/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has DatabaseInput => (is => 'ro', isa => Glue_DatabaseInput, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDatabase');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::CreateDatabaseResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDatabase');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::CreateDatabaseResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CatalogId' => {
+                                'type' => 'Str'
+                              },
+               'DatabaseInput' => {
+                                    'class' => 'Paws::Glue::DatabaseInput',
+                                    'type' => 'Glue_DatabaseInput'
+                                  }
+             },
+  'IsRequired' => {
+                    'DatabaseInput' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +90,7 @@ provided, the AWS account ID is used by default.
 
 
 
-=head2 B<REQUIRED> DatabaseInput => L<Paws::Glue::DatabaseInput>
+=head2 B<REQUIRED> DatabaseInput => Glue_DatabaseInput
 
 The metadata for the database.
 

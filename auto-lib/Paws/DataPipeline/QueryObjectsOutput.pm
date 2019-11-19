@@ -1,11 +1,40 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DataPipeline::QueryObjectsOutput;
-  use Moose;
-  has HasMoreResults => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'hasMoreResults' );
-  has Ids => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ids' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'marker' );
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::DataPipeline::Types qw//;
+  has HasMoreResults => (is => 'ro', isa => Bool);
+  has Ids => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Marker' => 'marker',
+                       'Ids' => 'ids',
+                       'HasMoreResults' => 'hasMoreResults'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'HasMoreResults' => {
+                                     'type' => 'Bool'
+                                   },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Ids' => {
+                          'type' => 'ArrayRef[Str|Undef]'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

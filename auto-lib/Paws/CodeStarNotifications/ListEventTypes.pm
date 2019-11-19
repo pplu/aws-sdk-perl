@@ -1,16 +1,38 @@
 
 package Paws::CodeStarNotifications::ListEventTypes;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::CodeStarNotifications::ListEventTypesFilter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::CodeStarNotifications::Types qw/CodeStarNotifications_ListEventTypesFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[CodeStarNotifications_ListEventTypesFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListEventTypes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/listEventTypes');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStarNotifications::ListEventTypesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListEventTypes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/listEventTypes');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStarNotifications::ListEventTypesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'class' => 'Paws::CodeStarNotifications::ListEventTypesFilter',
+                              'type' => 'ArrayRef[CodeStarNotifications_ListEventTypesFilter]'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::CodeStarNotifications::ListEventTypesFilter>]
+=head2 Filters => ArrayRef[CodeStarNotifications_ListEventTypesFilter]
 
 The filters to use to return information by service or resource type.
 

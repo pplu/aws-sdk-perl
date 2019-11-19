@@ -1,25 +1,79 @@
 
 package Paws::Polly::StartSpeechSynthesisTask;
-  use Moose;
-  has Engine => (is => 'ro', isa => 'Str');
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has LexiconNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has OutputFormat => (is => 'ro', isa => 'Str', required => 1);
-  has OutputS3BucketName => (is => 'ro', isa => 'Str', required => 1);
-  has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
-  has SampleRate => (is => 'ro', isa => 'Str');
-  has SnsTopicArn => (is => 'ro', isa => 'Str');
-  has SpeechMarkTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Text => (is => 'ro', isa => 'Str', required => 1);
-  has TextType => (is => 'ro', isa => 'Str');
-  has VoiceId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Polly::Types qw//;
+  has Engine => (is => 'ro', isa => Str, predicate => 1);
+  has LanguageCode => (is => 'ro', isa => Str, predicate => 1);
+  has LexiconNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has OutputFormat => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OutputS3BucketName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OutputS3KeyPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has SampleRate => (is => 'ro', isa => Str, predicate => 1);
+  has SnsTopicArn => (is => 'ro', isa => Str, predicate => 1);
+  has SpeechMarkTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Text => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TextType => (is => 'ro', isa => Str, predicate => 1);
+  has VoiceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartSpeechSynthesisTask');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/synthesisTasks');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Polly::StartSpeechSynthesisTaskOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartSpeechSynthesisTask');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/synthesisTasks');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Polly::StartSpeechSynthesisTaskOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Text' => {
+                           'type' => 'Str'
+                         },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'SnsTopicArn' => {
+                                  'type' => 'Str'
+                                },
+               'OutputS3BucketName' => {
+                                         'type' => 'Str'
+                                       },
+               'LexiconNames' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'SpeechMarkTypes' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'OutputFormat' => {
+                                   'type' => 'Str'
+                                 },
+               'TextType' => {
+                               'type' => 'Str'
+                             },
+               'SampleRate' => {
+                                 'type' => 'Str'
+                               },
+               'VoiceId' => {
+                              'type' => 'Str'
+                            },
+               'OutputS3KeyPrefix' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'OutputFormat' => 1,
+                    'Text' => 1,
+                    'OutputS3BucketName' => 1,
+                    'VoiceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

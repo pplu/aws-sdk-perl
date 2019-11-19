@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::RemoveSourceIdentifierFromSubscription;
-  use Moose;
-  has SourceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has SourceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubscriptionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveSourceIdentifierFromSubscription');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RemoveSourceIdentifierFromSubscriptionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveSourceIdentifierFromSubscriptionResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RemoveSourceIdentifierFromSubscription');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::RemoveSourceIdentifierFromSubscriptionResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RemoveSourceIdentifierFromSubscriptionResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'SubscriptionName' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'SubscriptionName' => 1,
+                    'SourceIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

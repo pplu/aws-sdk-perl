@@ -1,8 +1,33 @@
 package Paws::EC2::SpotPlacement;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
-  has Tenancy => (is => 'ro', isa => 'Str', request_name => 'tenancy', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has GroupName => (is => 'ro', isa => Str);
+  has Tenancy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'Tenancy' => {
+                              'type' => 'Str'
+                            },
+               'GroupName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'AvailabilityZone' => 'availabilityZone',
+                       'GroupName' => 'groupName',
+                       'Tenancy' => 'tenancy'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

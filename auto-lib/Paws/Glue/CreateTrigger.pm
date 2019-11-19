@@ -1,21 +1,69 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::CreateTrigger;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Action]', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Predicate => (is => 'ro', isa => 'Paws::Glue::Predicate');
-  has Schedule => (is => 'ro', isa => 'Str');
-  has StartOnCreation => (is => 'ro', isa => 'Bool');
-  has Tags => (is => 'ro', isa => 'Paws::Glue::TagsMap');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
-  has WorkflowName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::Glue::Types qw/Glue_TagsMap Glue_Action Glue_Predicate/;
+  has Actions => (is => 'ro', isa => ArrayRef[Glue_Action], required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Predicate => (is => 'ro', isa => Glue_Predicate, predicate => 1);
+  has Schedule => (is => 'ro', isa => Str, predicate => 1);
+  has StartOnCreation => (is => 'ro', isa => Bool, predicate => 1);
+  has Tags => (is => 'ro', isa => Glue_TagsMap, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WorkflowName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTrigger');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::CreateTriggerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTrigger');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::CreateTriggerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkflowName' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'type' => 'Glue_TagsMap',
+                           'class' => 'Paws::Glue::TagsMap'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Schedule' => {
+                               'type' => 'Str'
+                             },
+               'Predicate' => {
+                                'class' => 'Paws::Glue::Predicate',
+                                'type' => 'Glue_Predicate'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Actions' => {
+                              'class' => 'Paws::Glue::Action',
+                              'type' => 'ArrayRef[Glue_Action]'
+                            },
+               'StartOnCreation' => {
+                                      'type' => 'Bool'
+                                    },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Name' => 1,
+                    'Actions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +134,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Actions => ArrayRef[L<Paws::Glue::Action>]
+=head2 B<REQUIRED> Actions => ArrayRef[Glue_Action]
 
 The actions initiated by this trigger when it fires.
 
@@ -104,7 +152,7 @@ The name of the trigger.
 
 
 
-=head2 Predicate => L<Paws::Glue::Predicate>
+=head2 Predicate => Glue_Predicate
 
 A predicate to specify when the new trigger should fire.
 
@@ -131,7 +179,7 @@ created. True is not supported for C<ON_DEMAND> triggers.
 
 
 
-=head2 Tags => L<Paws::Glue::TagsMap>
+=head2 Tags => Glue_TagsMap
 
 The tags to use with this trigger. You may use tags to limit access to
 the trigger. For more information about tags in AWS Glue, see AWS Tags

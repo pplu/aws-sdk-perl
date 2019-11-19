@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::FailedScheduledUpdateGroupActionRequest;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AutoScaling::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has ScheduledActionName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ScheduledActionName' => 1
+                  },
+  'types' => {
+               'ScheduledActionName' => {
+                                          'type' => 'Str'
+                                        },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

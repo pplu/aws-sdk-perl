@@ -1,14 +1,47 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::DescribeMaintenanceStartTimeOutput;
-  use Moose;
-  has DayOfMonth => (is => 'ro', isa => 'Int');
-  has DayOfWeek => (is => 'ro', isa => 'Int');
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has HourOfDay => (is => 'ro', isa => 'Int');
-  has MinuteOfHour => (is => 'ro', isa => 'Int');
-  has Timezone => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::StorageGateway::Types qw//;
+  has DayOfMonth => (is => 'ro', isa => Int);
+  has DayOfWeek => (is => 'ro', isa => Int);
+  has GatewayARN => (is => 'ro', isa => Str);
+  has HourOfDay => (is => 'ro', isa => Int);
+  has MinuteOfHour => (is => 'ro', isa => Int);
+  has Timezone => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HourOfDay' => {
+                                'type' => 'Int'
+                              },
+               'MinuteOfHour' => {
+                                   'type' => 'Int'
+                                 },
+               'DayOfMonth' => {
+                                 'type' => 'Int'
+                               },
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DayOfWeek' => {
+                                'type' => 'Int'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

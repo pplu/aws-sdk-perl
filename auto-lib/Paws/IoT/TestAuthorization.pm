@@ -1,19 +1,63 @@
 
 package Paws::IoT::TestAuthorization;
-  use Moose;
-  has AuthInfos => (is => 'ro', isa => 'ArrayRef[Paws::IoT::AuthInfo]', traits => ['NameInRequest'], request_name => 'authInfos', required => 1);
-  has ClientId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'clientId');
-  has CognitoIdentityPoolId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cognitoIdentityPoolId');
-  has PolicyNamesToAdd => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'policyNamesToAdd');
-  has PolicyNamesToSkip => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'policyNamesToSkip');
-  has Principal => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'principal');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IoT::Types qw/IoT_AuthInfo/;
+  has AuthInfos => (is => 'ro', isa => ArrayRef[IoT_AuthInfo], required => 1, predicate => 1);
+  has ClientId => (is => 'ro', isa => Str, predicate => 1);
+  has CognitoIdentityPoolId => (is => 'ro', isa => Str, predicate => 1);
+  has PolicyNamesToAdd => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has PolicyNamesToSkip => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Principal => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TestAuthorization');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/test-authorization');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::TestAuthorizationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TestAuthorization');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/test-authorization');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::TestAuthorizationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CognitoIdentityPoolId' => 'cognitoIdentityPoolId',
+                       'PolicyNamesToSkip' => 'policyNamesToSkip',
+                       'AuthInfos' => 'authInfos',
+                       'Principal' => 'principal',
+                       'PolicyNamesToAdd' => 'policyNamesToAdd'
+                     },
+  'ParamInQuery' => {
+                      'ClientId' => 'clientId'
+                    },
+  'IsRequired' => {
+                    'AuthInfos' => 1
+                  },
+  'types' => {
+               'Principal' => {
+                                'type' => 'Str'
+                              },
+               'CognitoIdentityPoolId' => {
+                                            'type' => 'Str'
+                                          },
+               'PolicyNamesToSkip' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'AuthInfos' => {
+                                'class' => 'Paws::IoT::AuthInfo',
+                                'type' => 'ArrayRef[IoT_AuthInfo]'
+                              },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'PolicyNamesToAdd' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +108,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AuthInfos => ArrayRef[L<Paws::IoT::AuthInfo>]
+=head2 B<REQUIRED> AuthInfos => ArrayRef[IoT_AuthInfo]
 
 A list of authorization info objects. Simulating authorization will
 create a response for each C<authInfo> object in the list.

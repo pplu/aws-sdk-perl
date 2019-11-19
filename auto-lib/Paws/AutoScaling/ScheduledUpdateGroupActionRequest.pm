@@ -1,12 +1,50 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::ScheduledUpdateGroupActionRequest;
-  use Moose;
-  has DesiredCapacity => (is => 'ro', isa => 'Int');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has MaxSize => (is => 'ro', isa => 'Int');
-  has MinSize => (is => 'ro', isa => 'Int');
-  has Recurrence => (is => 'ro', isa => 'Str');
-  has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::AutoScaling::Types qw//;
+  has DesiredCapacity => (is => 'ro', isa => Int);
+  has EndTime => (is => 'ro', isa => Str);
+  has MaxSize => (is => 'ro', isa => Int);
+  has MinSize => (is => 'ro', isa => Int);
+  has Recurrence => (is => 'ro', isa => Str);
+  has ScheduledActionName => (is => 'ro', isa => Str, required => 1);
+  has StartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ScheduledActionName' => 1
+                  },
+  'types' => {
+               'ScheduledActionName' => {
+                                          'type' => 'Str'
+                                        },
+               'Recurrence' => {
+                                 'type' => 'Str'
+                               },
+               'MinSize' => {
+                              'type' => 'Int'
+                            },
+               'MaxSize' => {
+                              'type' => 'Int'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'DesiredCapacity' => {
+                                      'type' => 'Int'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

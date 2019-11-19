@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::DocDB::DBClusterSnapshotAttribute;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str');
-  has AttributeValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AttributeValue', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::DocDB::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str);
+  has AttributeValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AttributeValues' => 'AttributeValue'
+                     },
+  'types' => {
+               'AttributeValues' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

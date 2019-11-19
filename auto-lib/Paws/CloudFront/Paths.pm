@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CloudFront::Paths;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Path', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str Int/;
+  use Paws::CloudFront::Types qw//;
+  has Items => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Quantity' => 1
+                  },
+  'NameInRequest' => {
+                       'Items' => 'Path'
+                     },
+  'types' => {
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'Items' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

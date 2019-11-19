@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Lightsail::PendingModifiedRelationalDatabaseValues;
-  use Moose;
-  has BackupRetentionEnabled => (is => 'ro', isa => 'Bool', request_name => 'backupRetentionEnabled', traits => ['NameInRequest']);
-  has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
-  has MasterUserPassword => (is => 'ro', isa => 'Str', request_name => 'masterUserPassword', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::Lightsail::Types qw//;
+  has BackupRetentionEnabled => (is => 'ro', isa => Bool);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has MasterUserPassword => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'BackupRetentionEnabled' => {
+                                             'type' => 'Bool'
+                                           }
+             },
+  'NameInRequest' => {
+                       'EngineVersion' => 'engineVersion',
+                       'BackupRetentionEnabled' => 'backupRetentionEnabled',
+                       'MasterUserPassword' => 'masterUserPassword'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

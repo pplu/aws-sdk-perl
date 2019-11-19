@@ -1,6 +1,24 @@
 package Paws::EC2::ClassicLoadBalancersConfig;
-  use Moose;
-  has ClassicLoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClassicLoadBalancer]', request_name => 'classicLoadBalancers', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ClassicLoadBalancer/;
+  has ClassicLoadBalancers => (is => 'ro', isa => ArrayRef[EC2_ClassicLoadBalancer]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ClassicLoadBalancers' => 'classicLoadBalancers'
+                     },
+  'types' => {
+               'ClassicLoadBalancers' => {
+                                           'class' => 'Paws::EC2::ClassicLoadBalancer',
+                                           'type' => 'ArrayRef[EC2_ClassicLoadBalancer]'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ClassicLoadBalancers => ArrayRef[L<Paws::EC2::ClassicLoadBalancer>]
+=head2 ClassicLoadBalancers => ArrayRef[EC2_ClassicLoadBalancer]
 
   One or more Classic Load Balancers.
 

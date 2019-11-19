@@ -1,14 +1,15 @@
 package Paws::Connect;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'connect' }
   sub signing_name { 'connect' }
   sub version { '2017-08-08' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -417,7 +418,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 =item InstanceId => Str
 
-=item PhoneConfig => L<Paws::Connect::UserPhoneConfig>
+=item PhoneConfig => Connect_UserPhoneConfig
 
 =item RoutingProfileId => Str
 
@@ -429,11 +430,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 =item [HierarchyGroupId => Str]
 
-=item [IdentityInfo => L<Paws::Connect::UserIdentityInfo>]
+=item [IdentityInfo => Connect_UserIdentityInfo]
 
 =item [Password => Str]
 
-=item [Tags => L<Paws::Connect::TagMap>]
+=item [Tags => Connect_TagMap]
 
 
 =back
@@ -541,9 +542,9 @@ Retrieves the contact attributes for the specified contact.
 
 =over
 
-=item CurrentMetrics => ArrayRef[L<Paws::Connect::CurrentMetric>]
+=item CurrentMetrics => ArrayRef[Connect_CurrentMetric]
 
-=item Filters => L<Paws::Connect::Filters>
+=item Filters => Connect_Filters
 
 =item InstanceId => Str
 
@@ -590,9 +591,9 @@ Retrieves a token for federation.
 
 =item EndTime => Str
 
-=item Filters => L<Paws::Connect::Filters>
+=item Filters => Connect_Filters
 
-=item HistoricalMetrics => ArrayRef[L<Paws::Connect::HistoricalMetric>]
+=item HistoricalMetrics => ArrayRef[Connect_HistoricalMetric]
 
 =item InstanceId => Str
 
@@ -820,7 +821,7 @@ Connect instance.
 
 =item InstanceId => Str
 
-=item [Attributes => L<Paws::Connect::Attributes>]
+=item [Attributes => Connect_Attributes]
 
 =item [ClientToken => Str]
 
@@ -865,7 +866,7 @@ Ends the specified contact.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::Connect::TagMap>
+=item Tags => Connect_TagMap
 
 
 =back
@@ -901,7 +902,7 @@ Removes the specified tags from the specified resource.
 
 =over
 
-=item Attributes => L<Paws::Connect::Attributes>
+=item Attributes => Connect_Attributes
 
 =item InitialContactId => Str
 
@@ -962,7 +963,7 @@ Assigns the specified hierarchy group to the specified user.
 
 =over
 
-=item IdentityInfo => L<Paws::Connect::UserIdentityInfo>
+=item IdentityInfo => Connect_UserIdentityInfo
 
 =item InstanceId => Str
 
@@ -984,7 +985,7 @@ Updates the identity information for the specified user.
 
 =item InstanceId => Str
 
-=item PhoneConfig => L<Paws::Connect::UserPhoneConfig>
+=item PhoneConfig => Connect_UserPhoneConfig
 
 =item UserId => Str
 
@@ -1044,9 +1045,9 @@ Assigns the specified security profiles to the specified user.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 GetAllMetricData(sub { },EndTime => Str, Filters => L<Paws::Connect::Filters>, HistoricalMetrics => ArrayRef[L<Paws::Connect::HistoricalMetric>], InstanceId => Str, StartTime => Str, [Groupings => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 GetAllMetricData(sub { },EndTime => Str, Filters => Connect_Filters, HistoricalMetrics => ArrayRef[Connect_HistoricalMetric], InstanceId => Str, StartTime => Str, [Groupings => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 GetAllMetricData(EndTime => Str, Filters => L<Paws::Connect::Filters>, HistoricalMetrics => ArrayRef[L<Paws::Connect::HistoricalMetric>], InstanceId => Str, StartTime => Str, [Groupings => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 GetAllMetricData(EndTime => Str, Filters => Connect_Filters, HistoricalMetrics => ArrayRef[Connect_HistoricalMetric], InstanceId => Str, StartTime => Str, [Groupings => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

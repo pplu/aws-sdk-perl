@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Forecast::ListForecastExportJobsResponse;
-  use Moose;
-  has ForecastExportJobs => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::ForecastExportJobSummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Forecast::Types qw/Forecast_ForecastExportJobSummary/;
+  has ForecastExportJobs => (is => 'ro', isa => ArrayRef[Forecast_ForecastExportJobSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ForecastExportJobs' => {
+                                         'type' => 'ArrayRef[Forecast_ForecastExportJobSummary]',
+                                         'class' => 'Paws::Forecast::ForecastExportJobSummary'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Forecast::ListForecastExportJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 ForecastExportJobs => ArrayRef[L<Paws::Forecast::ForecastExportJobSummary>]
+=head2 ForecastExportJobs => ArrayRef[Forecast_ForecastExportJobSummary]
 
 An array of objects that summarize each export job's properties.
 

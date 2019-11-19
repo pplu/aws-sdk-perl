@@ -1,17 +1,52 @@
 
 package Paws::IoT::ListJobExecutionsForJob;
-  use Moose;
-  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has Status => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListJobExecutionsForJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/jobs/{jobId}/things');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListJobExecutionsForJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListJobExecutionsForJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/jobs/{jobId}/things');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListJobExecutionsForJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'JobId' => 1
+                  },
+  'ParamInQuery' => {
+                      'Status' => 'status',
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken'
+                    },
+  'types' => {
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInURI' => {
+                    'JobId' => 'jobId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

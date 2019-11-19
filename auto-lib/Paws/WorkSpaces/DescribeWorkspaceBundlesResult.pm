@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WorkSpaces::DescribeWorkspaceBundlesResult;
-  use Moose;
-  has Bundles => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceBundle]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_WorkspaceBundle/;
+  has Bundles => (is => 'ro', isa => ArrayRef[WorkSpaces_WorkspaceBundle]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Bundles' => {
+                              'class' => 'Paws::WorkSpaces::WorkspaceBundle',
+                              'type' => 'ArrayRef[WorkSpaces_WorkspaceBundle]'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::WorkSpaces::DescribeWorkspaceBundlesResult
 =head1 ATTRIBUTES
 
 
-=head2 Bundles => ArrayRef[L<Paws::WorkSpaces::WorkspaceBundle>]
+=head2 Bundles => ArrayRef[WorkSpaces_WorkspaceBundle]
 
 Information about the bundles.
 

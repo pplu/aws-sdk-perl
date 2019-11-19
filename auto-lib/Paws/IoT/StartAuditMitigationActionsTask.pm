@@ -1,17 +1,57 @@
 
 package Paws::IoT::StartAuditMitigationActionsTask;
-  use Moose;
-  has AuditCheckToActionsMapping => (is => 'ro', isa => 'Paws::IoT::AuditCheckToActionsMapping', traits => ['NameInRequest'], request_name => 'auditCheckToActionsMapping', required => 1);
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken', required => 1);
-  has Target => (is => 'ro', isa => 'Paws::IoT::AuditMitigationActionsTaskTarget', traits => ['NameInRequest'], request_name => 'target', required => 1);
-  has TaskId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'taskId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_AuditCheckToActionsMapping IoT_AuditMitigationActionsTaskTarget/;
+  has AuditCheckToActionsMapping => (is => 'ro', isa => IoT_AuditCheckToActionsMapping, required => 1, predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Target => (is => 'ro', isa => IoT_AuditMitigationActionsTaskTarget, required => 1, predicate => 1);
+  has TaskId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartAuditMitigationActionsTask');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/audit/mitigationactions/tasks/{taskId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::StartAuditMitigationActionsTaskResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartAuditMitigationActionsTask');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/audit/mitigationactions/tasks/{taskId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::StartAuditMitigationActionsTaskResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'Target' => 'target',
+                       'AuditCheckToActionsMapping' => 'auditCheckToActionsMapping'
+                     },
+  'IsRequired' => {
+                    'TaskId' => 1,
+                    'AuditCheckToActionsMapping' => 1,
+                    'Target' => 1,
+                    'ClientRequestToken' => 1
+                  },
+  'types' => {
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'AuditCheckToActionsMapping' => {
+                                                 'type' => 'IoT_AuditCheckToActionsMapping',
+                                                 'class' => 'Paws::IoT::AuditCheckToActionsMapping'
+                                               },
+               'Target' => {
+                             'type' => 'IoT_AuditMitigationActionsTaskTarget',
+                             'class' => 'Paws::IoT::AuditMitigationActionsTaskTarget'
+                           },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'ParamInURI' => {
+                    'TaskId' => 'taskId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +104,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AuditCheckToActionsMapping => L<Paws::IoT::AuditCheckToActionsMapping>
+=head2 B<REQUIRED> AuditCheckToActionsMapping => IoT_AuditCheckToActionsMapping
 
 For an audit check, specifies which mitigation actions to apply. Those
 actions must be defined in your AWS account.
@@ -80,7 +120,7 @@ request token is generated automatically.
 
 
 
-=head2 B<REQUIRED> Target => L<Paws::IoT::AuditMitigationActionsTaskTarget>
+=head2 B<REQUIRED> Target => IoT_AuditMitigationActionsTaskTarget
 
 Specifies the audit findings to which the mitigation actions are
 applied. You can apply them to a type of audit check, to all findings

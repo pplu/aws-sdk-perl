@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MTurk::NotifyWorkers;
-  use Moose;
-  has MessageText => (is => 'ro', isa => 'Str', required => 1);
-  has Subject => (is => 'ro', isa => 'Str', required => 1);
-  has WorkerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MTurk::Types qw//;
+  has MessageText => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Subject => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WorkerIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'NotifyWorkers');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MTurk::NotifyWorkersResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'NotifyWorkers');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MTurk::NotifyWorkersResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'WorkerIds' => 1,
+                    'Subject' => 1,
+                    'MessageText' => 1
+                  },
+  'types' => {
+               'MessageText' => {
+                                  'type' => 'Str'
+                                },
+               'Subject' => {
+                              'type' => 'Str'
+                            },
+               'WorkerIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

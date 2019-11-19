@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::UpdateCodeRepository;
-  use Moose;
-  has CodeRepositoryName => (is => 'ro', isa => 'Str', required => 1);
-  has GitConfig => (is => 'ro', isa => 'Paws::SageMaker::GitConfigForUpdate');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_GitConfigForUpdate/;
+  has CodeRepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GitConfig => (is => 'ro', isa => SageMaker_GitConfigForUpdate, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCodeRepository');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::UpdateCodeRepositoryOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateCodeRepository');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::UpdateCodeRepositoryOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GitConfig' => {
+                                'type' => 'SageMaker_GitConfigForUpdate',
+                                'class' => 'Paws::SageMaker::GitConfigForUpdate'
+                              },
+               'CodeRepositoryName' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'CodeRepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +75,7 @@ The name of the Git repository to update.
 
 
 
-=head2 GitConfig => L<Paws::SageMaker::GitConfigForUpdate>
+=head2 GitConfig => SageMaker_GitConfigForUpdate
 
 The configuration of the git repository, including the URL and the
 Amazon Resource Name (ARN) of the AWS Secrets Manager secret that

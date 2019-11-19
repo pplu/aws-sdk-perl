@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::Support::Communication;
-  use Moose;
-  has AttachmentSet => (is => 'ro', isa => 'ArrayRef[Paws::Support::AttachmentDetails]', request_name => 'attachmentSet', traits => ['NameInRequest']);
-  has Body => (is => 'ro', isa => 'Str', request_name => 'body', traits => ['NameInRequest']);
-  has CaseId => (is => 'ro', isa => 'Str', request_name => 'caseId', traits => ['NameInRequest']);
-  has SubmittedBy => (is => 'ro', isa => 'Str', request_name => 'submittedBy', traits => ['NameInRequest']);
-  has TimeCreated => (is => 'ro', isa => 'Str', request_name => 'timeCreated', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Support::Types qw/Support_AttachmentDetails/;
+  has AttachmentSet => (is => 'ro', isa => ArrayRef[Support_AttachmentDetails]);
+  has Body => (is => 'ro', isa => Str);
+  has CaseId => (is => 'ro', isa => Str);
+  has SubmittedBy => (is => 'ro', isa => Str);
+  has TimeCreated => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubmittedBy' => {
+                                  'type' => 'Str'
+                                },
+               'CaseId' => {
+                             'type' => 'Str'
+                           },
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'TimeCreated' => {
+                                  'type' => 'Str'
+                                },
+               'AttachmentSet' => {
+                                    'type' => 'ArrayRef[Support_AttachmentDetails]',
+                                    'class' => 'Paws::Support::AttachmentDetails'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Body' => 'body',
+                       'TimeCreated' => 'timeCreated',
+                       'AttachmentSet' => 'attachmentSet',
+                       'SubmittedBy' => 'submittedBy',
+                       'CaseId' => 'caseId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +80,7 @@ communication.
 =head1 ATTRIBUTES
 
 
-=head2 AttachmentSet => ArrayRef[L<Paws::Support::AttachmentDetails>]
+=head2 AttachmentSet => ArrayRef[Support_AttachmentDetails]
 
   Information about the attachments to the case communication.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SageMaker::VpcConfig;
-  use Moose;
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::SageMaker::Types qw//;
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Subnets => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subnets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             },
+  'IsRequired' => {
+                    'Subnets' => 1,
+                    'SecurityGroupIds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

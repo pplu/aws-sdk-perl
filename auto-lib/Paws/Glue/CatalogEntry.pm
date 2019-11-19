@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Glue::CatalogEntry;
-  use Moose;
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has DatabaseName => (is => 'ro', isa => Str, required => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DatabaseName' => 1,
+                    'TableName' => 1
+                  },
+  'types' => {
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'TableName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

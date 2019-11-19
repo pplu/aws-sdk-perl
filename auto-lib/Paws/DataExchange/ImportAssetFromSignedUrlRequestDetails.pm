@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::DataExchange::ImportAssetFromSignedUrlRequestDetails;
-  use Moose;
-  has AssetName => (is => 'ro', isa => 'Str', required => 1);
-  has DataSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Md5Hash => (is => 'ro', isa => 'Str', required => 1);
-  has RevisionId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw//;
+  has AssetName => (is => 'ro', isa => Str, required => 1);
+  has DataSetId => (is => 'ro', isa => Str, required => 1);
+  has Md5Hash => (is => 'ro', isa => Str, required => 1);
+  has RevisionId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AssetName' => 1,
+                    'Md5Hash' => 1,
+                    'RevisionId' => 1,
+                    'DataSetId' => 1
+                  },
+  'types' => {
+               'AssetName' => {
+                                'type' => 'Str'
+                              },
+               'Md5Hash' => {
+                              'type' => 'Str'
+                            },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'DataSetId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

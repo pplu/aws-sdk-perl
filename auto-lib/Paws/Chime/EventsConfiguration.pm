@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Chime::EventsConfiguration;
-  use Moose;
-  has BotId => (is => 'ro', isa => 'Str');
-  has LambdaFunctionArn => (is => 'ro', isa => 'Str');
-  has OutboundEventsHTTPSEndpoint => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw//;
+  has BotId => (is => 'ro', isa => Str);
+  has LambdaFunctionArn => (is => 'ro', isa => Str);
+  has OutboundEventsHTTPSEndpoint => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BotId' => {
+                            'type' => 'Str'
+                          },
+               'OutboundEventsHTTPSEndpoint' => {
+                                                  'type' => 'Str'
+                                                },
+               'LambdaFunctionArn' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

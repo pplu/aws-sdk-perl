@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::AutoRollbackConfiguration;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
-  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'events', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef Undef/;
+  use Paws::CodeDeploy::Types qw//;
+  has Enabled => (is => 'ro', isa => Bool);
+  has Events => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Events' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             },
+  'NameInRequest' => {
+                       'Events' => 'events',
+                       'Enabled' => 'enabled'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

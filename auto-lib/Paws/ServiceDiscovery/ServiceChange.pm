@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::ServiceChange;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DnsConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsConfigChange', required => 1);
-  has HealthCheckConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_HealthCheckConfig ServiceDiscovery_DnsConfigChange/;
+  has Description => (is => 'ro', isa => Str);
+  has DnsConfig => (is => 'ro', isa => ServiceDiscovery_DnsConfigChange, required => 1);
+  has HealthCheckConfig => (is => 'ro', isa => ServiceDiscovery_HealthCheckConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DnsConfig' => 1
+                  },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DnsConfig' => {
+                                'type' => 'ServiceDiscovery_DnsConfigChange',
+                                'class' => 'Paws::ServiceDiscovery::DnsConfigChange'
+                              },
+               'HealthCheckConfig' => {
+                                        'type' => 'ServiceDiscovery_HealthCheckConfig',
+                                        'class' => 'Paws::ServiceDiscovery::HealthCheckConfig'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,13 +71,13 @@ A complex type that contains changes to an existing service.
   A description for the service.
 
 
-=head2 B<REQUIRED> DnsConfig => L<Paws::ServiceDiscovery::DnsConfigChange>
+=head2 B<REQUIRED> DnsConfig => ServiceDiscovery_DnsConfigChange
 
   A complex type that contains information about the Route 53 DNS records
 that you want AWS Cloud Map to create when you register an instance.
 
 
-=head2 HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>
+=head2 HealthCheckConfig => ServiceDiscovery_HealthCheckConfig
 
   
 

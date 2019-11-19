@@ -1,15 +1,44 @@
 
 package Paws::EC2::CancelConversionTask;
-  use Moose;
-  has ConversionTaskId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'conversionTaskId' , required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has ReasonMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reasonMessage' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has ConversionTaskId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has ReasonMessage => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelConversionTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CancelConversionTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ReasonMessage' => 'reasonMessage',
+                       'ConversionTaskId' => 'conversionTaskId',
+                       'DryRun' => 'dryRun'
+                     },
+  'IsRequired' => {
+                    'ConversionTaskId' => 1
+                  },
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ConversionTaskId' => {
+                                       'type' => 'Str'
+                                     },
+               'ReasonMessage' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

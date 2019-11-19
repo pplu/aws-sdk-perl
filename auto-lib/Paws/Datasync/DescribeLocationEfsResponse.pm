@@ -1,12 +1,40 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Datasync::DescribeLocationEfsResponse;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Ec2Config => (is => 'ro', isa => 'Paws::Datasync::Ec2Config');
-  has LocationArn => (is => 'ro', isa => 'Str');
-  has LocationUri => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Datasync::Types qw/Datasync_Ec2Config/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has Ec2Config => (is => 'ro', isa => Datasync_Ec2Config);
+  has LocationArn => (is => 'ro', isa => Str);
+  has LocationUri => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ec2Config' => {
+                                'class' => 'Paws::Datasync::Ec2Config',
+                                'type' => 'Datasync_Ec2Config'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LocationUri' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LocationArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +50,7 @@ Paws::Datasync::DescribeLocationEfsResponse
 The time that the EFS location was created.
 
 
-=head2 Ec2Config => L<Paws::Datasync::Ec2Config>
+=head2 Ec2Config => Datasync_Ec2Config
 
 
 

@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::RedShift::OrderableClusterOption;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::AvailabilityZone]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
-  has ClusterType => (is => 'ro', isa => 'Str');
-  has ClusterVersion => (is => 'ro', isa => 'Str');
-  has NodeType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::RedShift::Types qw/RedShift_AvailabilityZone/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[RedShift_AvailabilityZone]);
+  has ClusterType => (is => 'ro', isa => Str);
+  has ClusterVersion => (is => 'ro', isa => Str);
+  has NodeType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'ClusterType' => {
+                                  'type' => 'Str'
+                                },
+               'AvailabilityZones' => {
+                                        'class' => 'Paws::RedShift::AvailabilityZone',
+                                        'type' => 'ArrayRef[RedShift_AvailabilityZone]'
+                                      },
+               'NodeType' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'AvailabilityZones' => 'AvailabilityZone'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +69,7 @@ Describes an orderable cluster option.
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[L<Paws::RedShift::AvailabilityZone>]
+=head2 AvailabilityZones => ArrayRef[RedShift_AvailabilityZone]
 
   A list of availability zones for the orderable cluster.
 

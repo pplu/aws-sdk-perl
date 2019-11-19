@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Batch::MountPoint;
-  use Moose;
-  has ContainerPath => (is => 'ro', isa => 'Str', request_name => 'containerPath', traits => ['NameInRequest']);
-  has ReadOnly => (is => 'ro', isa => 'Bool', request_name => 'readOnly', traits => ['NameInRequest']);
-  has SourceVolume => (is => 'ro', isa => 'Str', request_name => 'sourceVolume', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Batch::Types qw//;
+  has ContainerPath => (is => 'ro', isa => Str);
+  has ReadOnly => (is => 'ro', isa => Bool);
+  has SourceVolume => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContainerPath' => {
+                                    'type' => 'Str'
+                                  },
+               'SourceVolume' => {
+                                   'type' => 'Str'
+                                 },
+               'ReadOnly' => {
+                               'type' => 'Bool'
+                             }
+             },
+  'NameInRequest' => {
+                       'ReadOnly' => 'readOnly',
+                       'SourceVolume' => 'sourceVolume',
+                       'ContainerPath' => 'containerPath'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

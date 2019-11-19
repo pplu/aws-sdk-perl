@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Datasync::Ec2Config;
-  use Moose;
-  has SecurityGroupArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has SubnetArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::Datasync::Types qw//;
+  has SecurityGroupArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has SubnetArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SecurityGroupArns' => 1,
+                    'SubnetArn' => 1
+                  },
+  'types' => {
+               'SecurityGroupArns' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'SubnetArn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

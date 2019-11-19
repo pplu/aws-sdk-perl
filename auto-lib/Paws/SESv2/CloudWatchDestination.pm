@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::SESv2::CloudWatchDestination;
-  use Moose;
-  has DimensionConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::CloudWatchDimensionConfiguration]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::SESv2::Types qw/SESv2_CloudWatchDimensionConfiguration/;
+  has DimensionConfigurations => (is => 'ro', isa => ArrayRef[SESv2_CloudWatchDimensionConfiguration], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DimensionConfigurations' => 1
+                  },
+  'types' => {
+               'DimensionConfigurations' => {
+                                              'type' => 'ArrayRef[SESv2_CloudWatchDimensionConfiguration]',
+                                              'class' => 'Paws::SESv2::CloudWatchDimensionConfiguration'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ your email sending metrics.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DimensionConfigurations => ArrayRef[L<Paws::SESv2::CloudWatchDimensionConfiguration>]
+=head2 B<REQUIRED> DimensionConfigurations => ArrayRef[SESv2_CloudWatchDimensionConfiguration]
 
   An array of objects that define the dimensions to use when you send
 email events to Amazon CloudWatch.

@@ -1,9 +1,31 @@
 
 package Paws::EC2::DescribeReservedInstancesResult;
-  use Moose;
-  has ReservedInstances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstances]', request_name => 'reservedInstancesSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ReservedInstances/;
+  has ReservedInstances => (is => 'ro', isa => ArrayRef[EC2_ReservedInstances]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ReservedInstances' => {
+                                        'type' => 'ArrayRef[EC2_ReservedInstances]',
+                                        'class' => 'Paws::EC2::ReservedInstances'
+                                      }
+             },
+  'NameInRequest' => {
+                       'ReservedInstances' => 'reservedInstancesSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::DescribeReservedInstancesResult
 =head1 ATTRIBUTES
 
 
-=head2 ReservedInstances => ArrayRef[L<Paws::EC2::ReservedInstances>]
+=head2 ReservedInstances => ArrayRef[EC2_ReservedInstances]
 
 A list of Reserved Instances.
 

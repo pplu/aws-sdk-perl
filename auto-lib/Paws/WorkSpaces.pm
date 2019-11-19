@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::WorkSpaces;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'workspaces' }
   sub signing_name { 'workspaces' }
   sub version { '2015-04-08' }
   sub target_prefix { 'WorkspacesService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -465,7 +467,7 @@ directory.
 
 =item GroupId => Str
 
-=item UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]
+=item UserRules => ArrayRef[WorkSpaces_IpRuleItem]
 
 
 =back
@@ -492,7 +494,7 @@ CIDR address ranges specified in the rules.
 
 =item [Description => Str]
 
-=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
+=item [Tags => ArrayRef[WorkSpaces_Tag]]
 
 
 =back
@@ -513,9 +515,9 @@ Region.
 
 =item [GroupDesc => Str]
 
-=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
+=item [Tags => ArrayRef[WorkSpaces_Tag]]
 
-=item [UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]]
+=item [UserRules => ArrayRef[WorkSpaces_IpRuleItem]]
 
 
 =back
@@ -546,7 +548,7 @@ your directory.
 
 =item ResourceId => Str
 
-=item Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
+=item Tags => ArrayRef[WorkSpaces_Tag]
 
 
 =back
@@ -562,7 +564,7 @@ Creates the specified tags for the specified WorkSpaces resource.
 
 =over
 
-=item Workspaces => ArrayRef[L<Paws::WorkSpaces::WorkspaceRequest>]
+=item Workspaces => ArrayRef[WorkSpaces_WorkspaceRequest]
 
 
 =back
@@ -896,7 +898,7 @@ directory.
 
 =item IngestionProcess => Str
 
-=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
+=item [Tags => ArrayRef[WorkSpaces_Tag]]
 
 
 =back
@@ -961,7 +963,7 @@ specified account.
 
 =over
 
-=item ClientProperties => L<Paws::WorkSpaces::ClientProperties>
+=item ClientProperties => WorkSpaces_ClientProperties
 
 =item ResourceId => Str
 
@@ -981,7 +983,7 @@ Modifies the properties of the specified Amazon WorkSpaces clients.
 
 =item ResourceId => Str
 
-=item SelfservicePermissions => L<Paws::WorkSpaces::SelfservicePermissions>
+=item SelfservicePermissions => WorkSpaces_SelfservicePermissions
 
 
 =back
@@ -1002,7 +1004,7 @@ Management Capabilities for Your Users
 
 =item ResourceId => Str
 
-=item WorkspaceAccessProperties => L<Paws::WorkSpaces::WorkspaceAccessProperties>
+=item WorkspaceAccessProperties => WorkSpaces_WorkspaceAccessProperties
 
 
 =back
@@ -1022,7 +1024,7 @@ their Workspaces. For more information, see Control Device Access
 
 =item ResourceId => Str
 
-=item WorkspaceCreationProperties => L<Paws::WorkSpaces::WorkspaceCreationProperties>
+=item WorkspaceCreationProperties => WorkSpaces_WorkspaceCreationProperties
 
 
 =back
@@ -1040,7 +1042,7 @@ Modify the default properties used to create WorkSpaces.
 
 =item WorkspaceId => Str
 
-=item WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>
+=item WorkspaceProperties => WorkSpaces_WorkspaceProperties
 
 
 =back
@@ -1080,7 +1082,7 @@ WorkSpace in the C<ADMIN_MAINTENANCE> state.
 
 =over
 
-=item RebootWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebootRequest>]
+=item RebootWorkspaceRequests => ArrayRef[WorkSpaces_RebootRequest]
 
 
 =back
@@ -1102,7 +1104,7 @@ rebooted.
 
 =over
 
-=item RebuildWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebuildRequest>]
+=item RebuildWorkspaceRequests => ArrayRef[WorkSpaces_RebuildRequest]
 
 
 =back
@@ -1137,7 +1139,7 @@ been completely rebuilt.
 
 =item [SubnetIds => ArrayRef[Str|Undef]]
 
-=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
+=item [Tags => ArrayRef[WorkSpaces_Tag]]
 
 =item [Tenancy => Str]
 
@@ -1205,7 +1207,7 @@ Removes one or more rules from the specified IP access control group.
 
 =over
 
-=item StartWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::StartRequest>]
+=item StartWorkspaceRequests => ArrayRef[WorkSpaces_StartRequest]
 
 
 =back
@@ -1224,7 +1226,7 @@ C<AutoStop> and a state of C<STOPPED>.
 
 =over
 
-=item StopWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::StopRequest>]
+=item StopWorkspaceRequests => ArrayRef[WorkSpaces_StopRequest]
 
 
 =back
@@ -1243,7 +1245,7 @@ and a state of C<AVAILABLE>, C<IMPAIRED>, C<UNHEALTHY>, or C<ERROR>.
 
 =over
 
-=item TerminateWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::TerminateRequest>]
+=item TerminateWorkspaceRequests => ArrayRef[WorkSpaces_TerminateRequest]
 
 
 =back
@@ -1270,7 +1272,7 @@ been completely terminated.
 
 =item GroupId => Str
 
-=item UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]
+=item UserRules => ArrayRef[WorkSpaces_IpRuleItem]
 
 
 =back

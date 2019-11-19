@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::ECS::TaskOverride;
-  use Moose;
-  has ContainerOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerOverride]', request_name => 'containerOverrides', traits => ['NameInRequest']);
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str', request_name => 'executionRoleArn', traits => ['NameInRequest']);
-  has InferenceAcceleratorOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::InferenceAcceleratorOverride]', request_name => 'inferenceAcceleratorOverrides', traits => ['NameInRequest']);
-  has TaskRoleArn => (is => 'ro', isa => 'Str', request_name => 'taskRoleArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ECS::Types qw/ECS_InferenceAcceleratorOverride ECS_ContainerOverride/;
+  has ContainerOverrides => (is => 'ro', isa => ArrayRef[ECS_ContainerOverride]);
+  has ExecutionRoleArn => (is => 'ro', isa => Str);
+  has InferenceAcceleratorOverrides => (is => 'ro', isa => ArrayRef[ECS_InferenceAcceleratorOverride]);
+  has TaskRoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InferenceAcceleratorOverrides' => {
+                                                    'type' => 'ArrayRef[ECS_InferenceAcceleratorOverride]',
+                                                    'class' => 'Paws::ECS::InferenceAcceleratorOverride'
+                                                  },
+               'ContainerOverrides' => {
+                                         'class' => 'Paws::ECS::ContainerOverride',
+                                         'type' => 'ArrayRef[ECS_ContainerOverride]'
+                                       },
+               'TaskRoleArn' => {
+                                  'type' => 'Str'
+                                },
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'ExecutionRoleArn' => 'executionRoleArn',
+                       'TaskRoleArn' => 'taskRoleArn',
+                       'InferenceAcceleratorOverrides' => 'inferenceAcceleratorOverrides',
+                       'ContainerOverrides' => 'containerOverrides'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +73,7 @@ The overrides associated with a task.
 =head1 ATTRIBUTES
 
 
-=head2 ContainerOverrides => ArrayRef[L<Paws::ECS::ContainerOverride>]
+=head2 ContainerOverrides => ArrayRef[ECS_ContainerOverride]
 
   One or more container overrides sent to a task.
 
@@ -50,7 +84,7 @@ The overrides associated with a task.
 Amazon ECS container agent and the Docker daemon can assume.
 
 
-=head2 InferenceAcceleratorOverrides => ArrayRef[L<Paws::ECS::InferenceAcceleratorOverride>]
+=head2 InferenceAcceleratorOverrides => ArrayRef[ECS_InferenceAcceleratorOverride]
 
   The Elastic Inference accelerator override for the task.
 

@@ -1,16 +1,47 @@
 
 package Paws::Pinpoint::GetExportJobs;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has PageSize => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'page-size');
-  has Token => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'token');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PageSize => (is => 'ro', isa => Str, predicate => 1);
+  has Token => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetExportJobs');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/jobs/export');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::GetExportJobsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetExportJobs');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/jobs/export');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::GetExportJobsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Token' => {
+                            'type' => 'Str'
+                          },
+               'PageSize' => {
+                               'type' => 'Str'
+                             },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1
+                  },
+  'ParamInQuery' => {
+                      'Token' => 'token',
+                      'PageSize' => 'page-size'
+                    },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

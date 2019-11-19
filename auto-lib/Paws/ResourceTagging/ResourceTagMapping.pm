@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::ResourceTagging::ResourceTagMapping;
-  use Moose;
-  has ResourceARN => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ResourceTagging::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ResourceTagging::Types qw/ResourceTagging_Tag/;
+  has ResourceARN => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[ResourceTagging_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'ArrayRef[ResourceTagging_Tag]',
+                           'class' => 'Paws::ResourceTagging::Tag'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ associated with each.
   The ARN of the resource.
 
 
-=head2 Tags => ArrayRef[L<Paws::ResourceTagging::Tag>]
+=head2 Tags => ArrayRef[ResourceTagging_Tag]
 
   The tags that have been applied to one or more AWS resources.
 

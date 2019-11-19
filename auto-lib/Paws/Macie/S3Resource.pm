@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::Macie::S3Resource;
-  use Moose;
-  has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest'], required => 1);
-  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Macie::Types qw//;
+  has BucketName => (is => 'ro', isa => Str, required => 1);
+  has Prefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Prefix' => 'prefix',
+                       'BucketName' => 'bucketName'
+                     },
+  'IsRequired' => {
+                    'BucketName' => 1
+                  },
+  'types' => {
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'Prefix' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

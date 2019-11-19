@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Athena::ResultSetMetadata;
-  use Moose;
-  has ColumnInfo => (is => 'ro', isa => 'ArrayRef[Paws::Athena::ColumnInfo]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Athena::Types qw/Athena_ColumnInfo/;
+  has ColumnInfo => (is => 'ro', isa => ArrayRef[Athena_ColumnInfo]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ColumnInfo' => {
+                                 'type' => 'ArrayRef[Athena_ColumnInfo]',
+                                 'class' => 'Paws::Athena::ColumnInfo'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ table of query results.
 =head1 ATTRIBUTES
 
 
-=head2 ColumnInfo => ArrayRef[L<Paws::Athena::ColumnInfo>]
+=head2 ColumnInfo => ArrayRef[Athena_ColumnInfo]
 
   Information about the columns returned in a query result metadata.
 

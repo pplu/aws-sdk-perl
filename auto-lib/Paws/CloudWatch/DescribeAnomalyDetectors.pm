@@ -1,17 +1,46 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudWatch::DescribeAnomalyDetectors;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has MetricName => (is => 'ro', isa => 'Str');
-  has Namespace => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::CloudWatch::Types qw/CloudWatch_Dimension/;
+  has Dimensions => (is => 'ro', isa => ArrayRef[CloudWatch_Dimension], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAnomalyDetectors');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatch::DescribeAnomalyDetectorsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAnomalyDetectorsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAnomalyDetectors');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatch::DescribeAnomalyDetectorsOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeAnomalyDetectorsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'Dimensions' => {
+                                 'class' => 'Paws::CloudWatch::Dimension',
+                                 'type' => 'ArrayRef[CloudWatch_Dimension]'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +87,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
+=head2 Dimensions => ArrayRef[CloudWatch_Dimension]
 
 Limits the results to only the anomaly detection models that are
 associated with the specified metric dimensions. If there are multiple

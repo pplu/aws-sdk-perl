@@ -1,13 +1,63 @@
+# Generated from default/object.tt
 package Paws::IoT::TopicRule;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Action]', request_name => 'actions', traits => ['NameInRequest']);
-  has AwsIotSqlVersion => (is => 'ro', isa => 'Str', request_name => 'awsIotSqlVersion', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has ErrorAction => (is => 'ro', isa => 'Paws::IoT::Action', request_name => 'errorAction', traits => ['NameInRequest']);
-  has RuleDisabled => (is => 'ro', isa => 'Bool', request_name => 'ruleDisabled', traits => ['NameInRequest']);
-  has RuleName => (is => 'ro', isa => 'Str', request_name => 'ruleName', traits => ['NameInRequest']);
-  has Sql => (is => 'ro', isa => 'Str', request_name => 'sql', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Bool/;
+  use Paws::IoT::Types qw/IoT_Action/;
+  has Actions => (is => 'ro', isa => ArrayRef[IoT_Action]);
+  has AwsIotSqlVersion => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ErrorAction => (is => 'ro', isa => IoT_Action);
+  has RuleDisabled => (is => 'ro', isa => Bool);
+  has RuleName => (is => 'ro', isa => Str);
+  has Sql => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AwsIotSqlVersion' => {
+                                       'type' => 'Str'
+                                     },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Actions' => {
+                              'class' => 'Paws::IoT::Action',
+                              'type' => 'ArrayRef[IoT_Action]'
+                            },
+               'RuleDisabled' => {
+                                   'type' => 'Bool'
+                                 },
+               'Sql' => {
+                          'type' => 'Str'
+                        },
+               'ErrorAction' => {
+                                  'class' => 'Paws::IoT::Action',
+                                  'type' => 'IoT_Action'
+                                },
+               'RuleName' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'CreatedAt' => 'createdAt',
+                       'Actions' => 'actions',
+                       'AwsIotSqlVersion' => 'awsIotSqlVersion',
+                       'Description' => 'description',
+                       'RuleName' => 'ruleName',
+                       'ErrorAction' => 'errorAction',
+                       'RuleDisabled' => 'ruleDisabled',
+                       'Sql' => 'sql'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +93,7 @@ Describes a rule.
 =head1 ATTRIBUTES
 
 
-=head2 Actions => ArrayRef[L<Paws::IoT::Action>]
+=head2 Actions => ArrayRef[IoT_Action]
 
   The actions associated with the rule.
 
@@ -63,7 +113,7 @@ Describes a rule.
   The description of the rule.
 
 
-=head2 ErrorAction => L<Paws::IoT::Action>
+=head2 ErrorAction => IoT_Action
 
   The action to perform when an error occurs.
 

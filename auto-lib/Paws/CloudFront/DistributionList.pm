@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::CloudFront::DistributionList;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::DistributionSummary]', request_name => 'DistributionSummary', traits => ['NameInRequest']);
-  has Marker => (is => 'ro', isa => 'Str', required => 1);
-  has MaxItems => (is => 'ro', isa => 'Int', required => 1);
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Str Int/;
+  use Paws::CloudFront::Types qw/CloudFront_DistributionSummary/;
+  has IsTruncated => (is => 'ro', isa => Bool, required => 1);
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_DistributionSummary]);
+  has Marker => (is => 'ro', isa => Str, required => 1);
+  has MaxItems => (is => 'ro', isa => Int, required => 1);
+  has NextMarker => (is => 'ro', isa => Str);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MaxItems' => 1,
+                    'Marker' => 1,
+                    'Quantity' => 1,
+                    'IsTruncated' => 1
+                  },
+  'NameInRequest' => {
+                       'Items' => 'DistributionSummary'
+                     },
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Items' => {
+                            'class' => 'Paws::CloudFront::DistributionSummary',
+                            'type' => 'ArrayRef[CloudFront_DistributionSummary]'
+                          },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +91,7 @@ request using the C<Marker> request parameter to retrieve more
 distributions in the list.
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::DistributionSummary>]
+=head2 Items => ArrayRef[CloudFront_DistributionSummary]
 
   A complex type that contains one C<DistributionSummary> element for
 each distribution that was created by the current AWS account.

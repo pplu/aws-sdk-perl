@@ -1,14 +1,35 @@
 
 package Paws::SESv2::GetConfigurationSetEventDestinations;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ConfigurationSetName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw//;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetConfigurationSetEventDestinations');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/configuration-sets/{ConfigurationSetName}/event-destinations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::GetConfigurationSetEventDestinationsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetConfigurationSetEventDestinations');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/configuration-sets/{ConfigurationSetName}/event-destinations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::GetConfigurationSetEventDestinationsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1
+                  },
+  'ParamInURI' => {
+                    'ConfigurationSetName' => 'ConfigurationSetName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Rekognition::ContentModerationDetection;
-  use Moose;
-  has ModerationLabel => (is => 'ro', isa => 'Paws::Rekognition::ModerationLabel');
-  has Timestamp => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Rekognition::Types qw/Rekognition_ModerationLabel/;
+  has ModerationLabel => (is => 'ro', isa => Rekognition_ModerationLabel);
+  has Timestamp => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Int'
+                              },
+               'ModerationLabel' => {
+                                      'type' => 'Rekognition_ModerationLabel',
+                                      'class' => 'Paws::Rekognition::ModerationLabel'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Information about an unsafe content label detection in a stored video.
 =head1 ATTRIBUTES
 
 
-=head2 ModerationLabel => L<Paws::Rekognition::ModerationLabel>
+=head2 ModerationLabel => Rekognition_ModerationLabel
 
   The unsafe content label detected by in the stored video.
 

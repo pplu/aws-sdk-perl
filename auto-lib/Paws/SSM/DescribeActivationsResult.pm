@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribeActivationsResult;
-  use Moose;
-  has ActivationList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Activation]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Activation/;
+  has ActivationList => (is => 'ro', isa => ArrayRef[SSM_Activation]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ActivationList' => {
+                                     'type' => 'ArrayRef[SSM_Activation]',
+                                     'class' => 'Paws::SSM::Activation'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::DescribeActivationsResult
 =head1 ATTRIBUTES
 
 
-=head2 ActivationList => ArrayRef[L<Paws::SSM::Activation>]
+=head2 ActivationList => ArrayRef[SSM_Activation]
 
 A list of activations for your AWS account.
 

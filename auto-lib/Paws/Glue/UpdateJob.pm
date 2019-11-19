@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::UpdateJob;
-  use Moose;
-  has JobName => (is => 'ro', isa => 'Str', required => 1);
-  has JobUpdate => (is => 'ro', isa => 'Paws::Glue::JobUpdate', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_JobUpdate/;
+  has JobName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has JobUpdate => (is => 'ro', isa => Glue_JobUpdate, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::UpdateJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::UpdateJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'JobUpdate' => {
+                                'type' => 'Glue_JobUpdate',
+                                'class' => 'Paws::Glue::JobUpdate'
+                              }
+             },
+  'IsRequired' => {
+                    'JobUpdate' => 1,
+                    'JobName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +103,7 @@ The name of the job definition to update.
 
 
 
-=head2 B<REQUIRED> JobUpdate => L<Paws::Glue::JobUpdate>
+=head2 B<REQUIRED> JobUpdate => Glue_JobUpdate
 
 Specifies the values with which to update the job definition.
 

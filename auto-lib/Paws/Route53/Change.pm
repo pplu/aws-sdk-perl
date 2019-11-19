@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::Route53::Change;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceRecordSet => (is => 'ro', isa => 'Paws::Route53::ResourceRecordSet', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw/Route53_ResourceRecordSet/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has ResourceRecordSet => (is => 'ro', isa => Route53_ResourceRecordSet, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Action' => 1,
+                    'ResourceRecordSet' => 1
+                  },
+  'types' => {
+               'ResourceRecordSet' => {
+                                        'type' => 'Route53_ResourceRecordSet',
+                                        'class' => 'Paws::Route53::ResourceRecordSet'
+                                      },
+               'Action' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +95,7 @@ with the values in the request.
 
 
 
-=head2 B<REQUIRED> ResourceRecordSet => L<Paws::Route53::ResourceRecordSet>
+=head2 B<REQUIRED> ResourceRecordSet => Route53_ResourceRecordSet
 
   Information about the resource record set to create, delete, or update.
 

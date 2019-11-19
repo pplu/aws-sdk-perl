@@ -1,16 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Health::DescribeEventTypes;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::Health::EventTypeFilter', traits => ['NameInRequest'], request_name => 'filter' );
-  has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Health::Types qw/Health_EventTypeFilter/;
+  has Filter => (is => 'ro', isa => Health_EventTypeFilter, predicate => 1);
+  has Locale => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventTypes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Health::DescribeEventTypesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEventTypes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Health::DescribeEventTypesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Locale' => 'locale',
+                       'Filter' => 'filter',
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'Filter' => {
+                             'class' => 'Paws::Health::EventTypeFilter',
+                             'type' => 'Health_EventTypeFilter'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +92,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/hea
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::Health::EventTypeFilter>
+=head2 Filter => Health_EventTypeFilter
 
 Values to narrow the results returned.
 

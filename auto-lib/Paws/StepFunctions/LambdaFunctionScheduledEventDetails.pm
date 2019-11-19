@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::StepFunctions::LambdaFunctionScheduledEventDetails;
-  use Moose;
-  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
-  has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest'], required => 1);
-  has TimeoutInSeconds => (is => 'ro', isa => 'Int', request_name => 'timeoutInSeconds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::StepFunctions::Types qw//;
+  has Input => (is => 'ro', isa => Str);
+  has Resource => (is => 'ro', isa => Str, required => 1);
+  has TimeoutInSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Input' => {
+                            'type' => 'Str'
+                          },
+               'TimeoutInSeconds' => {
+                                       'type' => 'Int'
+                                     },
+               'Resource' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'Resource' => 1
+                  },
+  'NameInRequest' => {
+                       'Input' => 'input',
+                       'Resource' => 'resource',
+                       'TimeoutInSeconds' => 'timeoutInSeconds'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

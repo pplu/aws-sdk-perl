@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Glacier::CSVInput;
-  use Moose;
-  has Comments => (is => 'ro', isa => 'Str');
-  has FieldDelimiter => (is => 'ro', isa => 'Str');
-  has FileHeaderInfo => (is => 'ro', isa => 'Str');
-  has QuoteCharacter => (is => 'ro', isa => 'Str');
-  has QuoteEscapeCharacter => (is => 'ro', isa => 'Str');
-  has RecordDelimiter => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has Comments => (is => 'ro', isa => Str);
+  has FieldDelimiter => (is => 'ro', isa => Str);
+  has FileHeaderInfo => (is => 'ro', isa => Str);
+  has QuoteCharacter => (is => 'ro', isa => Str);
+  has QuoteEscapeCharacter => (is => 'ro', isa => Str);
+  has RecordDelimiter => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FieldDelimiter' => {
+                                     'type' => 'Str'
+                                   },
+               'RecordDelimiter' => {
+                                      'type' => 'Str'
+                                    },
+               'Comments' => {
+                               'type' => 'Str'
+                             },
+               'QuoteCharacter' => {
+                                     'type' => 'Str'
+                                   },
+               'QuoteEscapeCharacter' => {
+                                           'type' => 'Str'
+                                         },
+               'FileHeaderInfo' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::DataExchange::ImportAssetsFromS3ResponseDetails;
-  use Moose;
-  has AssetSources => (is => 'ro', isa => 'ArrayRef[Paws::DataExchange::AssetSourceEntry]', required => 1);
-  has DataSetId => (is => 'ro', isa => 'Str', required => 1);
-  has RevisionId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::DataExchange::Types qw/DataExchange_AssetSourceEntry/;
+  has AssetSources => (is => 'ro', isa => ArrayRef[DataExchange_AssetSourceEntry], required => 1);
+  has DataSetId => (is => 'ro', isa => Str, required => 1);
+  has RevisionId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'AssetSources' => {
+                                   'class' => 'Paws::DataExchange::AssetSourceEntry',
+                                   'type' => 'ArrayRef[DataExchange_AssetSourceEntry]'
+                                 },
+               'DataSetId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'RevisionId' => 1,
+                    'AssetSources' => 1,
+                    'DataSetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ Details from an import from Amazon S3 response.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AssetSources => ArrayRef[L<Paws::DataExchange::AssetSourceEntry>]
+=head2 B<REQUIRED> AssetSources => ArrayRef[DataExchange_AssetSourceEntry]
 
   Is a list of Amazon S3 bucket and object key pairs.
 

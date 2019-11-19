@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::MergePullRequestByThreeWayOutput;
-  use Moose;
-  has PullRequest => (is => 'ro', isa => 'Paws::CodeCommit::PullRequest', traits => ['NameInRequest'], request_name => 'pullRequest' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_PullRequest/;
+  has PullRequest => (is => 'ro', isa => CodeCommit_PullRequest);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PullRequest' => {
+                                  'type' => 'CodeCommit_PullRequest',
+                                  'class' => 'Paws::CodeCommit::PullRequest'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'PullRequest' => 'pullRequest'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CodeCommit::MergePullRequestByThreeWayOutput
 =head1 ATTRIBUTES
 
 
-=head2 PullRequest => L<Paws::CodeCommit::PullRequest>
+=head2 PullRequest => CodeCommit_PullRequest
 
 
 

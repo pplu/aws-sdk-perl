@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::SMS::VmServer;
-  use Moose;
-  has VmManagerName => (is => 'ro', isa => 'Str', request_name => 'vmManagerName', traits => ['NameInRequest']);
-  has VmManagerType => (is => 'ro', isa => 'Str', request_name => 'vmManagerType', traits => ['NameInRequest']);
-  has VmName => (is => 'ro', isa => 'Str', request_name => 'vmName', traits => ['NameInRequest']);
-  has VmPath => (is => 'ro', isa => 'Str', request_name => 'vmPath', traits => ['NameInRequest']);
-  has VmServerAddress => (is => 'ro', isa => 'Paws::SMS::VmServerAddress', request_name => 'vmServerAddress', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SMS::Types qw/SMS_VmServerAddress/;
+  has VmManagerName => (is => 'ro', isa => Str);
+  has VmManagerType => (is => 'ro', isa => Str);
+  has VmName => (is => 'ro', isa => Str);
+  has VmPath => (is => 'ro', isa => Str);
+  has VmServerAddress => (is => 'ro', isa => SMS_VmServerAddress);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'VmName' => 'vmName',
+                       'VmManagerType' => 'vmManagerType',
+                       'VmPath' => 'vmPath',
+                       'VmManagerName' => 'vmManagerName',
+                       'VmServerAddress' => 'vmServerAddress'
+                     },
+  'types' => {
+               'VmPath' => {
+                             'type' => 'Str'
+                           },
+               'VmServerAddress' => {
+                                      'type' => 'SMS_VmServerAddress',
+                                      'class' => 'Paws::SMS::VmServerAddress'
+                                    },
+               'VmManagerName' => {
+                                    'type' => 'Str'
+                                  },
+               'VmName' => {
+                             'type' => 'Str'
+                           },
+               'VmManagerType' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +98,7 @@ Represents a VM server.
 tree.
 
 
-=head2 VmServerAddress => L<Paws::SMS::VmServerAddress>
+=head2 VmServerAddress => SMS_VmServerAddress
 
   Information about the VM server location.
 

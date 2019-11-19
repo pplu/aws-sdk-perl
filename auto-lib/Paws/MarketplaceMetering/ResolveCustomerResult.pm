@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MarketplaceMetering::ResolveCustomerResult;
-  use Moose;
-  has CustomerIdentifier => (is => 'ro', isa => 'Str');
-  has ProductCode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MarketplaceMetering::Types qw//;
+  has CustomerIdentifier => (is => 'ro', isa => Str);
+  has ProductCode => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomerIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ProductCode' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

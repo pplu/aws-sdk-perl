@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::OriginEndpointList;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
-  has OriginEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackage::OriginEndpoint]', request_name => 'originEndpoints', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaPackage::Types qw/MediaPackage_OriginEndpoint/;
+  has NextToken => (is => 'ro', isa => Str);
+  has OriginEndpoints => (is => 'ro', isa => ArrayRef[MediaPackage_OriginEndpoint]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'OriginEndpoints' => {
+                                      'type' => 'ArrayRef[MediaPackage_OriginEndpoint]',
+                                      'class' => 'Paws::MediaPackage::OriginEndpoint'
+                                    }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'OriginEndpoints' => 'originEndpoints'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +68,7 @@ A collection of OriginEndpoint records.
 collection.
 
 
-=head2 OriginEndpoints => ArrayRef[L<Paws::MediaPackage::OriginEndpoint>]
+=head2 OriginEndpoints => ArrayRef[MediaPackage_OriginEndpoint]
 
   A list of OriginEndpoint records.
 

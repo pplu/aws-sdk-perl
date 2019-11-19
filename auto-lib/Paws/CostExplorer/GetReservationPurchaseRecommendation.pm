@@ -1,21 +1,65 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CostExplorer::GetReservationPurchaseRecommendation;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has AccountScope => (is => 'ro', isa => 'Str');
-  has LookbackPeriodInDays => (is => 'ro', isa => 'Str');
-  has NextPageToken => (is => 'ro', isa => 'Str');
-  has PageSize => (is => 'ro', isa => 'Int');
-  has PaymentOption => (is => 'ro', isa => 'Str');
-  has Service => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceSpecification => (is => 'ro', isa => 'Paws::CostExplorer::ServiceSpecification');
-  has TermInYears => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CostExplorer::Types qw/CostExplorer_ServiceSpecification/;
+  has AccountId => (is => 'ro', isa => Str, predicate => 1);
+  has AccountScope => (is => 'ro', isa => Str, predicate => 1);
+  has LookbackPeriodInDays => (is => 'ro', isa => Str, predicate => 1);
+  has NextPageToken => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has PaymentOption => (is => 'ro', isa => Str, predicate => 1);
+  has Service => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServiceSpecification => (is => 'ro', isa => CostExplorer_ServiceSpecification, predicate => 1);
+  has TermInYears => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetReservationPurchaseRecommendation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CostExplorer::GetReservationPurchaseRecommendationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetReservationPurchaseRecommendation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CostExplorer::GetReservationPurchaseRecommendationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LookbackPeriodInDays' => {
+                                           'type' => 'Str'
+                                         },
+               'TermInYears' => {
+                                  'type' => 'Str'
+                                },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'ServiceSpecification' => {
+                                           'type' => 'CostExplorer_ServiceSpecification',
+                                           'class' => 'Paws::CostExplorer::ServiceSpecification'
+                                         },
+               'Service' => {
+                              'type' => 'Str'
+                            },
+               'PaymentOption' => {
+                                    'type' => 'Str'
+                                  },
+               'AccountScope' => {
+                                   'type' => 'Str'
+                                 },
+               'PageSize' => {
+                               'type' => 'Int'
+                             }
+             },
+  'IsRequired' => {
+                    'Service' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -117,7 +161,7 @@ The specific service that you want recommendations for.
 
 
 
-=head2 ServiceSpecification => L<Paws::CostExplorer::ServiceSpecification>
+=head2 ServiceSpecification => CostExplorer_ServiceSpecification
 
 The hardware specifications for the service instances that you want
 recommendations for, such as standard or convertible Amazon EC2

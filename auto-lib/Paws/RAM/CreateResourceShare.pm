@@ -1,19 +1,61 @@
 
 package Paws::RAM::CreateResourceShare;
-  use Moose;
-  has AllowExternalPrincipals => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'allowExternalPrincipals');
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'principals');
-  has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceArns');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RAM::Tag]', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::RAM::Types qw/RAM_Tag/;
+  has AllowExternalPrincipals => (is => 'ro', isa => Bool, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Principals => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RAM_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateResourceShare');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/createresourceshare');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RAM::CreateResourceShareResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateResourceShare');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/createresourceshare');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RAM::CreateResourceShareResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[RAM_Tag]',
+                           'class' => 'Paws::RAM::Tag'
+                         },
+               'ResourceArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'AllowExternalPrincipals' => {
+                                              'type' => 'Bool'
+                                            },
+               'Principals' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'AllowExternalPrincipals' => 'allowExternalPrincipals',
+                       'ResourceArns' => 'resourceArns',
+                       'ClientToken' => 'clientToken',
+                       'Principals' => 'principals',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +137,7 @@ resource share.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RAM::Tag>]
+=head2 Tags => ArrayRef[RAM_Tag]
 
 One or more tags.
 

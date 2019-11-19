@@ -1,15 +1,41 @@
 
 package Paws::Backup::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceArn', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Backup::Tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw/Backup_Tags/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Backup_Tags, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tags/{resourceArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tags/{resourceArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Backup::Tags',
+                           'type' => 'Backup_Tags'
+                         }
+             },
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'Tags' => 1
+                  },
+  'ParamInURI' => {
+                    'ResourceArn' => 'resourceArn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +74,7 @@ depends on the type of the tagged resource.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::Backup::Tags>
+=head2 B<REQUIRED> Tags => Backup_Tags
 
 Key-value pairs that are used to help organize your resources. You can
 assign your own metadata to the resources you create.

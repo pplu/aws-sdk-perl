@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::UpdateGameSessionOutput;
-  use Moose;
-  has GameSession => (is => 'ro', isa => 'Paws::GameLift::GameSession');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_GameSession/;
+  has GameSession => (is => 'ro', isa => GameLift_GameSession);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GameSession' => {
+                                  'type' => 'GameLift_GameSession',
+                                  'class' => 'Paws::GameLift::GameSession'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::GameLift::UpdateGameSessionOutput
 =head1 ATTRIBUTES
 
 
-=head2 GameSession => L<Paws::GameLift::GameSession>
+=head2 GameSession => GameLift_GameSession
 
 Object that contains the updated game session metadata.
 

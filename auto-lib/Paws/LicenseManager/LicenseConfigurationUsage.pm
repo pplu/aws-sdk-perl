@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::LicenseManager::LicenseConfigurationUsage;
-  use Moose;
-  has AssociationTime => (is => 'ro', isa => 'Str');
-  has ConsumedLicenses => (is => 'ro', isa => 'Int');
-  has ResourceArn => (is => 'ro', isa => 'Str');
-  has ResourceOwnerId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::LicenseManager::Types qw//;
+  has AssociationTime => (is => 'ro', isa => Str);
+  has ConsumedLicenses => (is => 'ro', isa => Int);
+  has ResourceArn => (is => 'ro', isa => Str);
+  has ResourceOwnerId => (is => 'ro', isa => Str);
+  has ResourceStatus => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceOwnerId' => {
+                                      'type' => 'Str'
+                                    },
+               'ConsumedLicenses' => {
+                                       'type' => 'Int'
+                                     },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'AssociationTime' => {
+                                      'type' => 'Str'
+                                    },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceStatus' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

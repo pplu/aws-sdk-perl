@@ -1,16 +1,47 @@
 
 package Paws::Kafka::ListConfigurationRevisions;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'arn', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Kafka::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListConfigurationRevisions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/configurations/{arn}/revisions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kafka::ListConfigurationRevisionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListConfigurationRevisions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/configurations/{arn}/revisions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Kafka::ListConfigurationRevisionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken'
+                    },
+  'IsRequired' => {
+                    'Arn' => 1
+                  },
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'ParamInURI' => {
+                    'Arn' => 'arn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,66 @@
 
 package Paws::Robomaker::SyncDeploymentJobResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has CreatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdAt');
-  has DeploymentApplicationConfigs => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::DeploymentApplicationConfig]', traits => ['NameInRequest'], request_name => 'deploymentApplicationConfigs');
-  has DeploymentConfig => (is => 'ro', isa => 'Paws::Robomaker::DeploymentConfig', traits => ['NameInRequest'], request_name => 'deploymentConfig');
-  has FailureCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureCode');
-  has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
-  has Fleet => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fleet');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_DeploymentConfig Robomaker_DeploymentApplicationConfig/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DeploymentApplicationConfigs => (is => 'ro', isa => ArrayRef[Robomaker_DeploymentApplicationConfig]);
+  has DeploymentConfig => (is => 'ro', isa => Robomaker_DeploymentConfig);
+  has FailureCode => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has Fleet => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailureCode' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Fleet' => {
+                            'type' => 'Str'
+                          },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'DeploymentApplicationConfigs' => {
+                                                   'class' => 'Paws::Robomaker::DeploymentApplicationConfig',
+                                                   'type' => 'ArrayRef[Robomaker_DeploymentApplicationConfig]'
+                                                 },
+               'DeploymentConfig' => {
+                                       'class' => 'Paws::Robomaker::DeploymentConfig',
+                                       'type' => 'Robomaker_DeploymentConfig'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'Arn' => 'arn',
+                       'FailureCode' => 'failureCode',
+                       'DeploymentConfig' => 'deploymentConfig',
+                       'FailureReason' => 'failureReason',
+                       'Fleet' => 'fleet',
+                       'CreatedAt' => 'createdAt',
+                       'DeploymentApplicationConfigs' => 'deploymentApplicationConfigs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -32,12 +82,12 @@ The Amazon Resource Name (ARN) of the synchronization request.
 The time, in milliseconds since the epoch, when the fleet was created.
 
 
-=head2 DeploymentApplicationConfigs => ArrayRef[L<Paws::Robomaker::DeploymentApplicationConfig>]
+=head2 DeploymentApplicationConfigs => ArrayRef[Robomaker_DeploymentApplicationConfig]
 
 Information about the deployment application configurations.
 
 
-=head2 DeploymentConfig => L<Paws::Robomaker::DeploymentConfig>
+=head2 DeploymentConfig => Robomaker_DeploymentConfig
 
 Information about the deployment configuration.
 

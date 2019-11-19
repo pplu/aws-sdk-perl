@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::UpdateBaiduChannel;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has BaiduChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::BaiduChannelRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_BaiduChannelRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BaiduChannelRequest => (is => 'ro', isa => Pinpoint_BaiduChannelRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'BaiduChannelRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBaiduChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/baidu');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateBaiduChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateBaiduChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/channels/baidu');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::UpdateBaiduChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'BaiduChannelRequest' => 1,
+                    'ApplicationId' => 1
+                  },
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'BaiduChannelRequest' => {
+                                          'type' => 'Pinpoint_BaiduChannelRequest',
+                                          'class' => 'Paws::Pinpoint::BaiduChannelRequest'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +84,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> BaiduChannelRequest => L<Paws::Pinpoint::BaiduChannelRequest>
+=head2 B<REQUIRED> BaiduChannelRequest => Pinpoint_BaiduChannelRequest
 
 
 

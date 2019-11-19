@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::AppMesh::GrpcRouteMatch;
-  use Moose;
-  has Metadata => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::GrpcRouteMetadata]', request_name => 'metadata', traits => ['NameInRequest']);
-  has MethodName => (is => 'ro', isa => 'Str', request_name => 'methodName', traits => ['NameInRequest']);
-  has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::AppMesh::Types qw/AppMesh_GrpcRouteMetadata/;
+  has Metadata => (is => 'ro', isa => ArrayRef[AppMesh_GrpcRouteMetadata]);
+  has MethodName => (is => 'ro', isa => Str);
+  has ServiceName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MethodName' => 'methodName',
+                       'ServiceName' => 'serviceName',
+                       'Metadata' => 'metadata'
+                     },
+  'types' => {
+               'MethodName' => {
+                                 'type' => 'Str'
+                               },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'Metadata' => {
+                               'class' => 'Paws::AppMesh::GrpcRouteMetadata',
+                               'type' => 'ArrayRef[AppMesh_GrpcRouteMetadata]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ An object that represents the criteria for determining a request match.
 =head1 ATTRIBUTES
 
 
-=head2 Metadata => ArrayRef[L<Paws::AppMesh::GrpcRouteMetadata>]
+=head2 Metadata => ArrayRef[AppMesh_GrpcRouteMetadata]
 
   An object that represents the data to match from the request.
 

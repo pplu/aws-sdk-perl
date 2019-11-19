@@ -1,19 +1,61 @@
 
 package Paws::EC2::CreateFpgaImage;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has InputStorageLocation => (is => 'ro', isa => 'Paws::EC2::StorageLocation', required => 1);
-  has LogsStorageLocation => (is => 'ro', isa => 'Paws::EC2::StorageLocation');
-  has Name => (is => 'ro', isa => 'Str');
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_StorageLocation EC2_TagSpecification/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has InputStorageLocation => (is => 'ro', isa => EC2_StorageLocation, required => 1, predicate => 1);
+  has LogsStorageLocation => (is => 'ro', isa => EC2_StorageLocation, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_TagSpecification], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFpgaImage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateFpgaImageResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFpgaImage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateFpgaImageResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagSpecifications' => {
+                                        'type' => 'ArrayRef[EC2_TagSpecification]',
+                                        'class' => 'Paws::EC2::TagSpecification'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'InputStorageLocation' => {
+                                           'class' => 'Paws::EC2::StorageLocation',
+                                           'type' => 'EC2_StorageLocation'
+                                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'LogsStorageLocation' => {
+                                          'type' => 'EC2_StorageLocation',
+                                          'class' => 'Paws::EC2::StorageLocation'
+                                        }
+             },
+  'IsRequired' => {
+                    'InputStorageLocation' => 1
+                  },
+  'NameInRequest' => {
+                       'TagSpecifications' => 'TagSpecification'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -98,14 +140,14 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> InputStorageLocation => L<Paws::EC2::StorageLocation>
+=head2 B<REQUIRED> InputStorageLocation => EC2_StorageLocation
 
 The location of the encrypted design checkpoint in Amazon S3. The input
 must be a tarball.
 
 
 
-=head2 LogsStorageLocation => L<Paws::EC2::StorageLocation>
+=head2 LogsStorageLocation => EC2_StorageLocation
 
 The location in Amazon S3 for the output logs.
 
@@ -117,7 +159,7 @@ A name for the AFI.
 
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_TagSpecification]
 
 The tags to apply to the FPGA image during creation.
 

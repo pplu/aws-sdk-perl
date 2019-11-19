@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::GetAggregateResourceConfig;
-  use Moose;
-  has ConfigurationAggregatorName => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceIdentifier => (is => 'ro', isa => 'Paws::Config::AggregateResourceIdentifier', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_AggregateResourceIdentifier/;
+  has ConfigurationAggregatorName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceIdentifier => (is => 'ro', isa => Config_AggregateResourceIdentifier, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAggregateResourceConfig');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::GetAggregateResourceConfigResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetAggregateResourceConfig');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::GetAggregateResourceConfigResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceIdentifier' => {
+                                         'type' => 'Config_AggregateResourceIdentifier',
+                                         'class' => 'Paws::Config::AggregateResourceIdentifier'
+                                       },
+               'ConfigurationAggregatorName' => {
+                                                  'type' => 'Str'
+                                                }
+             },
+  'IsRequired' => {
+                    'ConfigurationAggregatorName' => 1,
+                    'ResourceIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +84,7 @@ The name of the configuration aggregator.
 
 
 
-=head2 B<REQUIRED> ResourceIdentifier => L<Paws::Config::AggregateResourceIdentifier>
+=head2 B<REQUIRED> ResourceIdentifier => Config_AggregateResourceIdentifier
 
 An object that identifies aggregate resource.
 

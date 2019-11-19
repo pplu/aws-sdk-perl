@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Config::ConformancePackComplianceFilters;
-  use Moose;
-  has ComplianceType => (is => 'ro', isa => 'Str');
-  has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Config::Types qw//;
+  has ComplianceType => (is => 'ro', isa => Str);
+  has ConfigRuleNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComplianceType' => {
+                                     'type' => 'Str'
+                                   },
+               'ConfigRuleNames' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

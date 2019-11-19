@@ -1,13 +1,54 @@
 
 package Paws::EC2::DescribeNetworkInterfaceAttributeResult;
-  use Moose;
-  has Attachment => (is => 'ro', isa => 'Paws::EC2::NetworkInterfaceAttachment', request_name => 'attachment', traits => ['NameInRequest',]);
-  has Description => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'description', traits => ['NameInRequest',]);
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest',]);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest',]);
-  has SourceDestCheck => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', request_name => 'sourceDestCheck', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_NetworkInterfaceAttachment EC2_GroupIdentifier EC2_AttributeBooleanValue EC2_AttributeValue/;
+  has Attachment => (is => 'ro', isa => EC2_NetworkInterfaceAttachment);
+  has Description => (is => 'ro', isa => EC2_AttributeValue);
+  has Groups => (is => 'ro', isa => ArrayRef[EC2_GroupIdentifier]);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has SourceDestCheck => (is => 'ro', isa => EC2_AttributeBooleanValue);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attachment' => {
+                                 'type' => 'EC2_NetworkInterfaceAttachment',
+                                 'class' => 'Paws::EC2::NetworkInterfaceAttachment'
+                               },
+               'Groups' => {
+                             'class' => 'Paws::EC2::GroupIdentifier',
+                             'type' => 'ArrayRef[EC2_GroupIdentifier]'
+                           },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'class' => 'Paws::EC2::AttributeValue',
+                                  'type' => 'EC2_AttributeValue'
+                                },
+               'SourceDestCheck' => {
+                                      'class' => 'Paws::EC2::AttributeBooleanValue',
+                                      'type' => 'EC2_AttributeBooleanValue'
+                                    }
+             },
+  'NameInRequest' => {
+                       'Groups' => 'groupSet',
+                       'Attachment' => 'attachment',
+                       'Description' => 'description',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'SourceDestCheck' => 'sourceDestCheck'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -19,17 +60,17 @@ Paws::EC2::DescribeNetworkInterfaceAttributeResult
 =head1 ATTRIBUTES
 
 
-=head2 Attachment => L<Paws::EC2::NetworkInterfaceAttachment>
+=head2 Attachment => EC2_NetworkInterfaceAttachment
 
 The attachment (if any) of the network interface.
 
 
-=head2 Description => L<Paws::EC2::AttributeValue>
+=head2 Description => EC2_AttributeValue
 
 The description of the network interface.
 
 
-=head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
+=head2 Groups => ArrayRef[EC2_GroupIdentifier]
 
 The security groups associated with the network interface.
 
@@ -39,7 +80,7 @@ The security groups associated with the network interface.
 The ID of the network interface.
 
 
-=head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
+=head2 SourceDestCheck => EC2_AttributeBooleanValue
 
 Indicates whether source/destination checking is enabled.
 

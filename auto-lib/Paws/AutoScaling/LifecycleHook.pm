@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::LifecycleHook;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str');
-  has DefaultResult => (is => 'ro', isa => 'Str');
-  has GlobalTimeout => (is => 'ro', isa => 'Int');
-  has HeartbeatTimeout => (is => 'ro', isa => 'Int');
-  has LifecycleHookName => (is => 'ro', isa => 'Str');
-  has LifecycleTransition => (is => 'ro', isa => 'Str');
-  has NotificationMetadata => (is => 'ro', isa => 'Str');
-  has NotificationTargetARN => (is => 'ro', isa => 'Str');
-  has RoleARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str);
+  has DefaultResult => (is => 'ro', isa => Str);
+  has GlobalTimeout => (is => 'ro', isa => Int);
+  has HeartbeatTimeout => (is => 'ro', isa => Int);
+  has LifecycleHookName => (is => 'ro', isa => Str);
+  has LifecycleTransition => (is => 'ro', isa => Str);
+  has NotificationMetadata => (is => 'ro', isa => Str);
+  has NotificationTargetARN => (is => 'ro', isa => Str);
+  has RoleARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DefaultResult' => {
+                                    'type' => 'Str'
+                                  },
+               'NotificationMetadata' => {
+                                           'type' => 'Str'
+                                         },
+               'GlobalTimeout' => {
+                                    'type' => 'Int'
+                                  },
+               'HeartbeatTimeout' => {
+                                       'type' => 'Int'
+                                     },
+               'LifecycleTransition' => {
+                                          'type' => 'Str'
+                                        },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'LifecycleHookName' => {
+                                        'type' => 'Str'
+                                      },
+               'NotificationTargetARN' => {
+                                            'type' => 'Str'
+                                          },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

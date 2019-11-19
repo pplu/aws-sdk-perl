@@ -1,13 +1,59 @@
+# Generated from default/object.tt
 package Paws::ELBv2::Action;
-  use Moose;
-  has AuthenticateCognitoConfig => (is => 'ro', isa => 'Paws::ELBv2::AuthenticateCognitoActionConfig');
-  has AuthenticateOidcConfig => (is => 'ro', isa => 'Paws::ELBv2::AuthenticateOidcActionConfig');
-  has FixedResponseConfig => (is => 'ro', isa => 'Paws::ELBv2::FixedResponseActionConfig');
-  has ForwardConfig => (is => 'ro', isa => 'Paws::ELBv2::ForwardActionConfig');
-  has Order => (is => 'ro', isa => 'Int');
-  has RedirectConfig => (is => 'ro', isa => 'Paws::ELBv2::RedirectActionConfig');
-  has TargetGroupArn => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::ELBv2::Types qw/ELBv2_ForwardActionConfig ELBv2_FixedResponseActionConfig ELBv2_AuthenticateCognitoActionConfig ELBv2_AuthenticateOidcActionConfig ELBv2_RedirectActionConfig/;
+  has AuthenticateCognitoConfig => (is => 'ro', isa => ELBv2_AuthenticateCognitoActionConfig);
+  has AuthenticateOidcConfig => (is => 'ro', isa => ELBv2_AuthenticateOidcActionConfig);
+  has FixedResponseConfig => (is => 'ro', isa => ELBv2_FixedResponseActionConfig);
+  has ForwardConfig => (is => 'ro', isa => ELBv2_ForwardActionConfig);
+  has Order => (is => 'ro', isa => Int);
+  has RedirectConfig => (is => 'ro', isa => ELBv2_RedirectActionConfig);
+  has TargetGroupArn => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthenticateCognitoConfig' => {
+                                                'type' => 'ELBv2_AuthenticateCognitoActionConfig',
+                                                'class' => 'Paws::ELBv2::AuthenticateCognitoActionConfig'
+                                              },
+               'FixedResponseConfig' => {
+                                          'type' => 'ELBv2_FixedResponseActionConfig',
+                                          'class' => 'Paws::ELBv2::FixedResponseActionConfig'
+                                        },
+               'ForwardConfig' => {
+                                    'type' => 'ELBv2_ForwardActionConfig',
+                                    'class' => 'Paws::ELBv2::ForwardActionConfig'
+                                  },
+               'Order' => {
+                            'type' => 'Int'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'TargetGroupArn' => {
+                                     'type' => 'Str'
+                                   },
+               'AuthenticateOidcConfig' => {
+                                             'class' => 'Paws::ELBv2::AuthenticateOidcActionConfig',
+                                             'type' => 'ELBv2_AuthenticateOidcActionConfig'
+                                           },
+               'RedirectConfig' => {
+                                     'class' => 'Paws::ELBv2::RedirectActionConfig',
+                                     'type' => 'ELBv2_RedirectActionConfig'
+                                   }
+             },
+  'IsRequired' => {
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,27 +89,27 @@ Information about an action.
 =head1 ATTRIBUTES
 
 
-=head2 AuthenticateCognitoConfig => L<Paws::ELBv2::AuthenticateCognitoActionConfig>
+=head2 AuthenticateCognitoConfig => ELBv2_AuthenticateCognitoActionConfig
 
   [HTTPS listeners] Information for using Amazon Cognito to authenticate
 users. Specify only when C<Type> is C<authenticate-cognito>.
 
 
-=head2 AuthenticateOidcConfig => L<Paws::ELBv2::AuthenticateOidcActionConfig>
+=head2 AuthenticateOidcConfig => ELBv2_AuthenticateOidcActionConfig
 
   [HTTPS listeners] Information about an identity provider that is
 compliant with OpenID Connect (OIDC). Specify only when C<Type> is
 C<authenticate-oidc>.
 
 
-=head2 FixedResponseConfig => L<Paws::ELBv2::FixedResponseActionConfig>
+=head2 FixedResponseConfig => ELBv2_FixedResponseActionConfig
 
   [Application Load Balancer] Information for creating an action that
 returns a custom HTTP response. Specify only when C<Type> is
 C<fixed-response>.
 
 
-=head2 ForwardConfig => L<Paws::ELBv2::ForwardActionConfig>
+=head2 ForwardConfig => ELBv2_ForwardActionConfig
 
   Information for creating an action that distributes requests among one
 or more target groups. For Network Load Balancers, you can specify a
@@ -82,7 +128,7 @@ following types of actions: a C<forward>, C<fixed-response>, or
 C<redirect>.
 
 
-=head2 RedirectConfig => L<Paws::ELBv2::RedirectActionConfig>
+=head2 RedirectConfig => ELBv2_RedirectActionConfig
 
   [Application Load Balancer] Information for creating a redirect action.
 Specify only when C<Type> is C<redirect>.

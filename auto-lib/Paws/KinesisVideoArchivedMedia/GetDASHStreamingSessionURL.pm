@@ -1,21 +1,58 @@
 
 package Paws::KinesisVideoArchivedMedia::GetDASHStreamingSessionURL;
-  use Moose;
-  has DASHFragmentSelector => (is => 'ro', isa => 'Paws::KinesisVideoArchivedMedia::DASHFragmentSelector');
-  has DisplayFragmentNumber => (is => 'ro', isa => 'Str');
-  has DisplayFragmentTimestamp => (is => 'ro', isa => 'Str');
-  has Expires => (is => 'ro', isa => 'Int');
-  has MaxManifestFragmentResults => (is => 'ro', isa => 'Int');
-  has PlaybackMode => (is => 'ro', isa => 'Str');
-  has StreamARN => (is => 'ro', isa => 'Str');
-  has StreamName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisVideoArchivedMedia::Types qw/KinesisVideoArchivedMedia_DASHFragmentSelector/;
+  has DASHFragmentSelector => (is => 'ro', isa => KinesisVideoArchivedMedia_DASHFragmentSelector, predicate => 1);
+  has DisplayFragmentNumber => (is => 'ro', isa => Str, predicate => 1);
+  has DisplayFragmentTimestamp => (is => 'ro', isa => Str, predicate => 1);
+  has Expires => (is => 'ro', isa => Int, predicate => 1);
+  has MaxManifestFragmentResults => (is => 'ro', isa => Int, predicate => 1);
+  has PlaybackMode => (is => 'ro', isa => Str, predicate => 1);
+  has StreamARN => (is => 'ro', isa => Str, predicate => 1);
+  has StreamName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDASHStreamingSessionURL');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/getDASHStreamingSessionURL');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisVideoArchivedMedia::GetDASHStreamingSessionURLOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDASHStreamingSessionURL');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/getDASHStreamingSessionURL');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisVideoArchivedMedia::GetDASHStreamingSessionURLOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DASHFragmentSelector' => {
+                                           'class' => 'Paws::KinesisVideoArchivedMedia::DASHFragmentSelector',
+                                           'type' => 'KinesisVideoArchivedMedia_DASHFragmentSelector'
+                                         },
+               'StreamARN' => {
+                                'type' => 'Str'
+                              },
+               'DisplayFragmentTimestamp' => {
+                                               'type' => 'Str'
+                                             },
+               'MaxManifestFragmentResults' => {
+                                                 'type' => 'Int'
+                                               },
+               'DisplayFragmentNumber' => {
+                                            'type' => 'Str'
+                                          },
+               'Expires' => {
+                              'type' => 'Int'
+                            },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               },
+               'PlaybackMode' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +103,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 =head1 ATTRIBUTES
 
 
-=head2 DASHFragmentSelector => L<Paws::KinesisVideoArchivedMedia::DASHFragmentSelector>
+=head2 DASHFragmentSelector => KinesisVideoArchivedMedia_DASHFragmentSelector
 
 The time range of the requested fragment and the source of the
 timestamps.

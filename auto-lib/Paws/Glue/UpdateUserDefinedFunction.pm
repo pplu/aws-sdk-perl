@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::UpdateUserDefinedFunction;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
-  has FunctionInput => (is => 'ro', isa => 'Paws::Glue::UserDefinedFunctionInput', required => 1);
-  has FunctionName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_UserDefinedFunctionInput/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FunctionInput => (is => 'ro', isa => Glue_UserDefinedFunctionInput, required => 1, predicate => 1);
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUserDefinedFunction');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::UpdateUserDefinedFunctionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateUserDefinedFunction');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::UpdateUserDefinedFunctionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DatabaseName' => 1,
+                    'FunctionName' => 1,
+                    'FunctionInput' => 1
+                  },
+  'types' => {
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              },
+               'FunctionInput' => {
+                                    'class' => 'Paws::Glue::UserDefinedFunctionInput',
+                                    'type' => 'Glue_UserDefinedFunctionInput'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +100,7 @@ located.
 
 
 
-=head2 B<REQUIRED> FunctionInput => L<Paws::Glue::UserDefinedFunctionInput>
+=head2 B<REQUIRED> FunctionInput => Glue_UserDefinedFunctionInput
 
 A C<FunctionInput> object that redefines the function in the Data
 Catalog.

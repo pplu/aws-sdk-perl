@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::Chime::LoggingConfiguration;
-  use Moose;
-  has EnableSIPLogs => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::Chime::Types qw//;
+  has EnableSIPLogs => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EnableSIPLogs' => {
+                                    'type' => 'Bool'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

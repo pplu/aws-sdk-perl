@@ -1,9 +1,33 @@
 package Paws::EC2::ScheduledInstancesBlockDeviceMapping;
-  use Moose;
-  has DeviceName => (is => 'ro', isa => 'Str');
-  has Ebs => (is => 'ro', isa => 'Paws::EC2::ScheduledInstancesEbs');
-  has NoDevice => (is => 'ro', isa => 'Str');
-  has VirtualName => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ScheduledInstancesEbs/;
+  has DeviceName => (is => 'ro', isa => Str);
+  has Ebs => (is => 'ro', isa => EC2_ScheduledInstancesEbs);
+  has NoDevice => (is => 'ro', isa => Str);
+  has VirtualName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'NoDevice' => {
+                               'type' => 'Str'
+                             },
+               'VirtualName' => {
+                                  'type' => 'Str'
+                                },
+               'Ebs' => {
+                          'class' => 'Paws::EC2::ScheduledInstancesEbs',
+                          'type' => 'EC2_ScheduledInstancesEbs'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +68,7 @@ This class has no description
   The device name (for example, C</dev/sdh> or C<xvdh>).
 
 
-=head2 Ebs => L<Paws::EC2::ScheduledInstancesEbs>
+=head2 Ebs => EC2_ScheduledInstancesEbs
 
   Parameters used to set up EBS volumes automatically when the instance
 is launched.

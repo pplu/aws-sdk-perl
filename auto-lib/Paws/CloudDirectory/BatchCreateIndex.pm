@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchCreateIndex;
-  use Moose;
-  has BatchReferenceName => (is => 'ro', isa => 'Str');
-  has IsUnique => (is => 'ro', isa => 'Bool', required => 1);
-  has LinkName => (is => 'ro', isa => 'Str');
-  has OrderedIndexedAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKey]', required => 1);
-  has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_AttributeKey CloudDirectory_ObjectReference/;
+  has BatchReferenceName => (is => 'ro', isa => Str);
+  has IsUnique => (is => 'ro', isa => Bool, required => 1);
+  has LinkName => (is => 'ro', isa => Str);
+  has OrderedIndexedAttributeList => (is => 'ro', isa => ArrayRef[CloudDirectory_AttributeKey], required => 1);
+  has ParentReference => (is => 'ro', isa => CloudDirectory_ObjectReference);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'OrderedIndexedAttributeList' => 1,
+                    'IsUnique' => 1
+                  },
+  'types' => {
+               'ParentReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    },
+               'LinkName' => {
+                               'type' => 'Str'
+                             },
+               'BatchReferenceName' => {
+                                         'type' => 'Str'
+                                       },
+               'OrderedIndexedAttributeList' => {
+                                                  'class' => 'Paws::CloudDirectory::AttributeKey',
+                                                  'type' => 'ArrayRef[CloudDirectory_AttributeKey]'
+                                                },
+               'IsUnique' => {
+                               'type' => 'Bool'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,13 +94,13 @@ or not.
   The name of the link between the parent object and the index object.
 
 
-=head2 B<REQUIRED> OrderedIndexedAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKey>]
+=head2 B<REQUIRED> OrderedIndexedAttributeList => ArrayRef[CloudDirectory_AttributeKey]
 
   Specifies the attributes that should be indexed on. Currently only a
 single attribute is supported.
 
 
-=head2 ParentReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 ParentReference => CloudDirectory_ObjectReference
 
   A reference to the parent object that contains the index object.
 

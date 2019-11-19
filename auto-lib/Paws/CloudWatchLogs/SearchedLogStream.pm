@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::SearchedLogStream;
-  use Moose;
-  has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
-  has SearchedCompletely => (is => 'ro', isa => 'Bool', request_name => 'searchedCompletely', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has LogStreamName => (is => 'ro', isa => Str);
+  has SearchedCompletely => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LogStreamName' => 'logStreamName',
+                       'SearchedCompletely' => 'searchedCompletely'
+                     },
+  'types' => {
+               'LogStreamName' => {
+                                    'type' => 'Str'
+                                  },
+               'SearchedCompletely' => {
+                                         'type' => 'Bool'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

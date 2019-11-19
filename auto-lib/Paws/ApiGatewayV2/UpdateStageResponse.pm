@@ -1,19 +1,84 @@
 
 package Paws::ApiGatewayV2::UpdateStageResponse;
-  use Moose;
-  has AccessLogSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::AccessLogSettings', traits => ['NameInRequest'], request_name => 'accessLogSettings');
-  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientCertificateId');
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
-  has DefaultRouteSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteSettings', traits => ['NameInRequest'], request_name => 'defaultRouteSettings');
-  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
-  has RouteSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteSettingsMap', traits => ['NameInRequest'], request_name => 'routeSettings');
-  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName');
-  has StageVariables => (is => 'ro', isa => 'Paws::ApiGatewayV2::StageVariablesMap', traits => ['NameInRequest'], request_name => 'stageVariables');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_RouteSettings ApiGatewayV2_AccessLogSettings ApiGatewayV2_RouteSettingsMap ApiGatewayV2_Tags ApiGatewayV2_StageVariablesMap/;
+  has AccessLogSettings => (is => 'ro', isa => ApiGatewayV2_AccessLogSettings);
+  has ClientCertificateId => (is => 'ro', isa => Str);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has DefaultRouteSettings => (is => 'ro', isa => ApiGatewayV2_RouteSettings);
+  has DeploymentId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LastUpdatedDate => (is => 'ro', isa => Str);
+  has RouteSettings => (is => 'ro', isa => ApiGatewayV2_RouteSettingsMap);
+  has StageName => (is => 'ro', isa => Str);
+  has StageVariables => (is => 'ro', isa => ApiGatewayV2_StageVariablesMap);
+  has Tags => (is => 'ro', isa => ApiGatewayV2_Tags);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'ApiGatewayV2_Tags',
+                           'class' => 'Paws::ApiGatewayV2::Tags'
+                         },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'StageName' => {
+                                'type' => 'Str'
+                              },
+               'DefaultRouteSettings' => {
+                                           'type' => 'ApiGatewayV2_RouteSettings',
+                                           'class' => 'Paws::ApiGatewayV2::RouteSettings'
+                                         },
+               'ClientCertificateId' => {
+                                          'type' => 'Str'
+                                        },
+               'LastUpdatedDate' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'StageVariables' => {
+                                     'class' => 'Paws::ApiGatewayV2::StageVariablesMap',
+                                     'type' => 'ApiGatewayV2_StageVariablesMap'
+                                   },
+               'AccessLogSettings' => {
+                                        'class' => 'Paws::ApiGatewayV2::AccessLogSettings',
+                                        'type' => 'ApiGatewayV2_AccessLogSettings'
+                                      },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'RouteSettings' => {
+                                    'class' => 'Paws::ApiGatewayV2::RouteSettingsMap',
+                                    'type' => 'ApiGatewayV2_RouteSettingsMap'
+                                  }
+             },
+  'NameInRequest' => {
+                       'RouteSettings' => 'routeSettings',
+                       'StageVariables' => 'stageVariables',
+                       'Description' => 'description',
+                       'CreatedDate' => 'createdDate',
+                       'AccessLogSettings' => 'accessLogSettings',
+                       'StageName' => 'stageName',
+                       'ClientCertificateId' => 'clientCertificateId',
+                       'LastUpdatedDate' => 'lastUpdatedDate',
+                       'DefaultRouteSettings' => 'defaultRouteSettings',
+                       'Tags' => 'tags',
+                       'DeploymentId' => 'deploymentId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +90,7 @@ Paws::ApiGatewayV2::UpdateStageResponse
 =head1 ATTRIBUTES
 
 
-=head2 AccessLogSettings => L<Paws::ApiGatewayV2::AccessLogSettings>
+=head2 AccessLogSettings => ApiGatewayV2_AccessLogSettings
 
 Settings for logging access in this stage.
 
@@ -40,7 +105,7 @@ The identifier of a client certificate for a Stage.
 The timestamp when the stage was created.
 
 
-=head2 DefaultRouteSettings => L<Paws::ApiGatewayV2::RouteSettings>
+=head2 DefaultRouteSettings => ApiGatewayV2_RouteSettings
 
 Default route settings for the stage.
 
@@ -60,7 +125,7 @@ The description of the stage.
 The timestamp when the stage was last updated.
 
 
-=head2 RouteSettings => L<Paws::ApiGatewayV2::RouteSettingsMap>
+=head2 RouteSettings => ApiGatewayV2_RouteSettingsMap
 
 Route settings for the stage.
 
@@ -70,14 +135,14 @@ Route settings for the stage.
 The name of the stage.
 
 
-=head2 StageVariables => L<Paws::ApiGatewayV2::StageVariablesMap>
+=head2 StageVariables => ApiGatewayV2_StageVariablesMap
 
 A map that defines the stage variables for a stage resource. Variable
 names can have alphanumeric and underscore characters, and the values
 must match [A-Za-z0-9-._~:/?#&=,]+.
 
 
-=head2 Tags => L<Paws::ApiGatewayV2::Tags>
+=head2 Tags => ApiGatewayV2_Tags
 
 The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not

@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::DeleteBGPPeer;
-  use Moose;
-  has Asn => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'asn' );
-  has BgpPeerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bgpPeerId' );
-  has CustomerAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customerAddress' );
-  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DirectConnect::Types qw//;
+  has Asn => (is => 'ro', isa => Int, predicate => 1);
+  has BgpPeerId => (is => 'ro', isa => Str, predicate => 1);
+  has CustomerAddress => (is => 'ro', isa => Str, predicate => 1);
+  has VirtualInterfaceId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteBGPPeer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::DeleteBGPPeerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteBGPPeer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::DeleteBGPPeerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VirtualInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'CustomerAddress' => {
+                                      'type' => 'Str'
+                                    },
+               'Asn' => {
+                          'type' => 'Int'
+                        },
+               'BgpPeerId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'VirtualInterfaceId' => 'virtualInterfaceId',
+                       'CustomerAddress' => 'customerAddress',
+                       'Asn' => 'asn',
+                       'BgpPeerId' => 'bgpPeerId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

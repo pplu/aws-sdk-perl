@@ -1,14 +1,15 @@
 package Paws::RAM;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'ram' }
   sub signing_name { 'ram' }
   sub version { '2018-01-04' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -338,7 +339,7 @@ and resources.
 
 =item [ResourceArns => ArrayRef[Str|Undef]]
 
-=item [Tags => ArrayRef[L<Paws::RAM::Tag>]]
+=item [Tags => ArrayRef[RAM_Tag]]
 
 
 =back
@@ -496,7 +497,7 @@ Gets the invitations for resource sharing that you've received.
 
 =item [ResourceShareStatus => Str]
 
-=item [TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]]
+=item [TagFilters => ArrayRef[RAM_TagFilter]]
 
 
 =back
@@ -612,7 +613,7 @@ Rejects an invitation to a resource share from another AWS account.
 
 =item ResourceShareArn => Str
 
-=item Tags => ArrayRef[L<Paws::RAM::Tag>]
+=item Tags => ArrayRef[RAM_Tag]
 
 
 =back
@@ -707,9 +708,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RAM::GetResourceShareInvitationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllResourceShares(sub { },ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]])
+=head2 GetAllResourceShares(sub { },ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[RAM_TagFilter]])
 
-=head2 GetAllResourceShares(ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]])
+=head2 GetAllResourceShares(ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[RAM_TagFilter]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

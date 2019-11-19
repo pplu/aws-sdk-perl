@@ -1,17 +1,48 @@
 
 package Paws::EC2::PurchaseHostReservation;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has CurrencyCode => (is => 'ro', isa => 'Str');
-  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has LimitPrice => (is => 'ro', isa => 'Str');
-  has OfferingId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EC2::Types qw//;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has CurrencyCode => (is => 'ro', isa => Str, predicate => 1);
+  has HostIdSet => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has LimitPrice => (is => 'ro', isa => Str, predicate => 1);
+  has OfferingId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseHostReservation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::PurchaseHostReservationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PurchaseHostReservation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::PurchaseHostReservationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'HostIdSet' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'LimitPrice' => {
+                                 'type' => 'Str'
+                               },
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'OfferingId' => 1,
+                    'HostIdSet' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

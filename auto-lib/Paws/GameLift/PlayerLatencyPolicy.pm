@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::GameLift::PlayerLatencyPolicy;
-  use Moose;
-  has MaximumIndividualPlayerLatencyMilliseconds => (is => 'ro', isa => 'Int');
-  has PolicyDurationSeconds => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::GameLift::Types qw//;
+  has MaximumIndividualPlayerLatencyMilliseconds => (is => 'ro', isa => Int);
+  has PolicyDurationSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyDurationSeconds' => {
+                                            'type' => 'Int'
+                                          },
+               'MaximumIndividualPlayerLatencyMilliseconds' => {
+                                                                 'type' => 'Int'
+                                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

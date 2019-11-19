@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::IAM::AccessDetail;
-  use Moose;
-  has EntityPath => (is => 'ro', isa => 'Str');
-  has LastAuthenticatedTime => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has ServiceName => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
-  has TotalAuthenticatedEntities => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IAM::Types qw//;
+  has EntityPath => (is => 'ro', isa => Str);
+  has LastAuthenticatedTime => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has ServiceName => (is => 'ro', isa => Str, required => 1);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1);
+  has TotalAuthenticatedEntities => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'LastAuthenticatedTime' => {
+                                            'type' => 'Str'
+                                          },
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'TotalAuthenticatedEntities' => {
+                                                 'type' => 'Int'
+                                               },
+               'EntityPath' => {
+                                 'type' => 'Str'
+                               },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ServiceNamespace' => 1,
+                    'ServiceName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

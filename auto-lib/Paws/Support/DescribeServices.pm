@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Support::DescribeServices;
-  use Moose;
-  has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' );
-  has ServiceCodeList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'serviceCodeList' );
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Support::Types qw//;
+  has Language => (is => 'ro', isa => Str, predicate => 1);
+  has ServiceCodeList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeServices');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::DescribeServicesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeServices');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Support::DescribeServicesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceCodeList' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'Language' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'ServiceCodeList' => 'serviceCodeList',
+                       'Language' => 'language'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

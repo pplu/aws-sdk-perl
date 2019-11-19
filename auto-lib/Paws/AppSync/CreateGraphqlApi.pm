@@ -1,20 +1,71 @@
 
 package Paws::AppSync::CreateGraphqlApi;
-  use Moose;
-  has AdditionalAuthenticationProviders => (is => 'ro', isa => 'ArrayRef[Paws::AppSync::AdditionalAuthenticationProvider]', traits => ['NameInRequest'], request_name => 'additionalAuthenticationProviders');
-  has AuthenticationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authenticationType', required => 1);
-  has LogConfig => (is => 'ro', isa => 'Paws::AppSync::LogConfig', traits => ['NameInRequest'], request_name => 'logConfig');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has OpenIDConnectConfig => (is => 'ro', isa => 'Paws::AppSync::OpenIDConnectConfig', traits => ['NameInRequest'], request_name => 'openIDConnectConfig');
-  has Tags => (is => 'ro', isa => 'Paws::AppSync::TagMap', traits => ['NameInRequest'], request_name => 'tags');
-  has UserPoolConfig => (is => 'ro', isa => 'Paws::AppSync::UserPoolConfig', traits => ['NameInRequest'], request_name => 'userPoolConfig');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppSync::Types qw/AppSync_AdditionalAuthenticationProvider AppSync_TagMap AppSync_UserPoolConfig AppSync_LogConfig AppSync_OpenIDConnectConfig/;
+  has AdditionalAuthenticationProviders => (is => 'ro', isa => ArrayRef[AppSync_AdditionalAuthenticationProvider], predicate => 1);
+  has AuthenticationType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LogConfig => (is => 'ro', isa => AppSync_LogConfig, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OpenIDConnectConfig => (is => 'ro', isa => AppSync_OpenIDConnectConfig, predicate => 1);
+  has Tags => (is => 'ro', isa => AppSync_TagMap, predicate => 1);
+  has UserPoolConfig => (is => 'ro', isa => AppSync_UserPoolConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGraphqlApi');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apis');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppSync::CreateGraphqlApiResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateGraphqlApi');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apis');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppSync::CreateGraphqlApiResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AuthenticationType' => 1,
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'UserPoolConfig' => 'userPoolConfig',
+                       'OpenIDConnectConfig' => 'openIDConnectConfig',
+                       'LogConfig' => 'logConfig',
+                       'Tags' => 'tags',
+                       'AuthenticationType' => 'authenticationType',
+                       'Name' => 'name',
+                       'AdditionalAuthenticationProviders' => 'additionalAuthenticationProviders'
+                     },
+  'types' => {
+               'AdditionalAuthenticationProviders' => {
+                                                        'type' => 'ArrayRef[AppSync_AdditionalAuthenticationProvider]',
+                                                        'class' => 'Paws::AppSync::AdditionalAuthenticationProvider'
+                                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AuthenticationType' => {
+                                         'type' => 'Str'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::AppSync::TagMap',
+                           'type' => 'AppSync_TagMap'
+                         },
+               'OpenIDConnectConfig' => {
+                                          'type' => 'AppSync_OpenIDConnectConfig',
+                                          'class' => 'Paws::AppSync::OpenIDConnectConfig'
+                                        },
+               'LogConfig' => {
+                                'type' => 'AppSync_LogConfig',
+                                'class' => 'Paws::AppSync::LogConfig'
+                              },
+               'UserPoolConfig' => {
+                                     'class' => 'Paws::AppSync::UserPoolConfig',
+                                     'type' => 'AppSync_UserPoolConfig'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -88,7 +139,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalAuthenticationProviders => ArrayRef[L<Paws::AppSync::AdditionalAuthenticationProvider>]
+=head2 AdditionalAuthenticationProviders => ArrayRef[AppSync_AdditionalAuthenticationProvider]
 
 A list of additional authentication providers for the C<GraphqlApi>
 API.
@@ -102,7 +153,7 @@ pools.
 
 Valid values are: C<"API_KEY">, C<"AWS_IAM">, C<"AMAZON_COGNITO_USER_POOLS">, C<"OPENID_CONNECT">
 
-=head2 LogConfig => L<Paws::AppSync::LogConfig>
+=head2 LogConfig => AppSync_LogConfig
 
 The Amazon CloudWatch Logs configuration.
 
@@ -114,19 +165,19 @@ A user-supplied name for the C<GraphqlApi>.
 
 
 
-=head2 OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>
+=head2 OpenIDConnectConfig => AppSync_OpenIDConnectConfig
 
 The OpenID Connect configuration.
 
 
 
-=head2 Tags => L<Paws::AppSync::TagMap>
+=head2 Tags => AppSync_TagMap
 
 A C<TagMap> object.
 
 
 
-=head2 UserPoolConfig => L<Paws::AppSync::UserPoolConfig>
+=head2 UserPoolConfig => AppSync_UserPoolConfig
 
 The Amazon Cognito user pool configuration.
 

@@ -1,18 +1,75 @@
 
 package Paws::GroundStation::GetMissionProfileResponse;
-  use Moose;
-  has ContactPostPassDurationSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'contactPostPassDurationSeconds');
-  has ContactPrePassDurationSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'contactPrePassDurationSeconds');
-  has DataflowEdges => (is => 'ro', isa => 'ArrayRef[ArrayRef[Str|Undef]]', traits => ['NameInRequest'], request_name => 'dataflowEdges');
-  has MinimumViableContactDurationSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumViableContactDurationSeconds');
-  has MissionProfileArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'missionProfileArn');
-  has MissionProfileId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'missionProfileId');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region');
-  has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', traits => ['NameInRequest'], request_name => 'tags');
-  has TrackingConfigArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'trackingConfigArn');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::GroundStation::Types qw/GroundStation_TagsMap/;
+  has ContactPostPassDurationSeconds => (is => 'ro', isa => Int);
+  has ContactPrePassDurationSeconds => (is => 'ro', isa => Int);
+  has DataflowEdges => (is => 'ro', isa => ArrayRef[ArrayRef[Str|Undef]]);
+  has MinimumViableContactDurationSeconds => (is => 'ro', isa => Int);
+  has MissionProfileArn => (is => 'ro', isa => Str);
+  has MissionProfileId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => GroundStation_TagsMap);
+  has TrackingConfigArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MissionProfileId' => {
+                                       'type' => 'Str'
+                                     },
+               'DataflowEdges' => {
+                                    'type' => 'ArrayRef[ArrayRef[Str|Undef]]'
+                                  },
+               'Tags' => {
+                           'type' => 'GroundStation_TagsMap',
+                           'class' => 'Paws::GroundStation::TagsMap'
+                         },
+               'TrackingConfigArn' => {
+                                        'type' => 'Str'
+                                      },
+               'ContactPostPassDurationSeconds' => {
+                                                     'type' => 'Int'
+                                                   },
+               'MinimumViableContactDurationSeconds' => {
+                                                          'type' => 'Int'
+                                                        },
+               'ContactPrePassDurationSeconds' => {
+                                                    'type' => 'Int'
+                                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MissionProfileArn' => {
+                                        'type' => 'Str'
+                                      },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Region' => 'region',
+                       'MissionProfileArn' => 'missionProfileArn',
+                       'ContactPostPassDurationSeconds' => 'contactPostPassDurationSeconds',
+                       'ContactPrePassDurationSeconds' => 'contactPrePassDurationSeconds',
+                       'MinimumViableContactDurationSeconds' => 'minimumViableContactDurationSeconds',
+                       'MissionProfileId' => 'missionProfileId',
+                       'Name' => 'name',
+                       'DataflowEdges' => 'dataflowEdges',
+                       'Tags' => 'tags',
+                       'TrackingConfigArn' => 'trackingConfigArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +126,7 @@ Name of a mission profile.
 Region of a mission profile.
 
 
-=head2 Tags => L<Paws::GroundStation::TagsMap>
+=head2 Tags => GroundStation_TagsMap
 
 Tags assigned to a mission profile.
 

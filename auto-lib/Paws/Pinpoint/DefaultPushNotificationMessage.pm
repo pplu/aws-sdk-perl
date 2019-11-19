@@ -1,12 +1,49 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::DefaultPushNotificationMessage;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has Body => (is => 'ro', isa => 'Str');
-  has Data => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
-  has SilentPush => (is => 'ro', isa => 'Bool');
-  has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
-  has Title => (is => 'ro', isa => 'Str');
-  has Url => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string Pinpoint_MapOfListOf__string/;
+  has Action => (is => 'ro', isa => Str);
+  has Body => (is => 'ro', isa => Str);
+  has Data => (is => 'ro', isa => Pinpoint_MapOf__string);
+  has SilentPush => (is => 'ro', isa => Bool);
+  has Substitutions => (is => 'ro', isa => Pinpoint_MapOfListOf__string);
+  has Title => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Substitutions' => {
+                                    'type' => 'Pinpoint_MapOfListOf__string',
+                                    'class' => 'Paws::Pinpoint::MapOfListOf__string'
+                                  },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'SilentPush' => {
+                                 'type' => 'Bool'
+                               },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'Data' => {
+                           'type' => 'Pinpoint_MapOf__string',
+                           'class' => 'Paws::Pinpoint::MapOf__string'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +112,7 @@ loads the web page at a URL that you specify.
   The default body of the notification message.
 
 
-=head2 Data => L<Paws::Pinpoint::MapOf__string>
+=head2 Data => Pinpoint_MapOf__string
 
   The JSON data payload to use for the default push notification, if the
 notification is a silent push notification. This payload is added to
@@ -91,7 +128,7 @@ such as updating an app's configuration or delivering messages to an
 in-app notification center.
 
 
-=head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
+=head2 Substitutions => Pinpoint_MapOfListOf__string
 
   The default message variables to use in the notification message. You
 can override the default variables with individual address variables.

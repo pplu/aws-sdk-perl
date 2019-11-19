@@ -1,11 +1,41 @@
 
 package Paws::EC2::DescribeSpotFleetInstancesResponse;
-  use Moose;
-  has ActiveInstances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ActiveInstance]', request_name => 'activeInstanceSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ActiveInstance/;
+  has ActiveInstances => (is => 'ro', isa => ArrayRef[EC2_ActiveInstance]);
+  has NextToken => (is => 'ro', isa => Str);
+  has SpotFleetRequestId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'SpotFleetRequestId' => 'spotFleetRequestId',
+                       'ActiveInstances' => 'activeInstanceSet'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SpotFleetRequestId' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ActiveInstances' => {
+                                      'class' => 'Paws::EC2::ActiveInstance',
+                                      'type' => 'ArrayRef[EC2_ActiveInstance]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +47,7 @@ Paws::EC2::DescribeSpotFleetInstancesResponse
 =head1 ATTRIBUTES
 
 
-=head2 ActiveInstances => ArrayRef[L<Paws::EC2::ActiveInstance>]
+=head2 ActiveInstances => ArrayRef[EC2_ActiveInstance]
 
 The running instances. This list is refreshed periodically and might be
 out of date.

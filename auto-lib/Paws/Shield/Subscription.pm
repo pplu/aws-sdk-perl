@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Shield::Subscription;
-  use Moose;
-  has AutoRenew => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has Limits => (is => 'ro', isa => 'ArrayRef[Paws::Shield::Limit]');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has TimeCommitmentInSeconds => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Shield::Types qw/Shield_Limit/;
+  has AutoRenew => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has Limits => (is => 'ro', isa => ArrayRef[Shield_Limit]);
+  has StartTime => (is => 'ro', isa => Str);
+  has TimeCommitmentInSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoRenew' => {
+                                'type' => 'Str'
+                              },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Limits' => {
+                             'type' => 'ArrayRef[Shield_Limit]',
+                             'class' => 'Paws::Shield::Limit'
+                           },
+               'TimeCommitmentInSeconds' => {
+                                              'type' => 'Int'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +87,7 @@ unchanged.
   The date and time your subscription will end.
 
 
-=head2 Limits => ArrayRef[L<Paws::Shield::Limit>]
+=head2 Limits => ArrayRef[Shield_Limit]
 
   Specifies how many protections of a given type you can create.
 

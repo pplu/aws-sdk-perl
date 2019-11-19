@@ -1,14 +1,35 @@
 
 package Paws::SESv2::DeleteEmailIdentity;
-  use Moose;
-  has EmailIdentity => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'EmailIdentity', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw//;
+  has EmailIdentity => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteEmailIdentity');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/identities/{EmailIdentity}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::DeleteEmailIdentityResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteEmailIdentity');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/identities/{EmailIdentity}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::DeleteEmailIdentityResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'EmailIdentity' => 'EmailIdentity'
+                  },
+  'types' => {
+               'EmailIdentity' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'EmailIdentity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

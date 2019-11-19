@@ -1,22 +1,73 @@
 
 package Paws::EC2::CreateVpcEndpoint;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has PolicyDocument => (is => 'ro', isa => 'Str');
-  has PrivateDnsEnabled => (is => 'ro', isa => 'Bool');
-  has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RouteTableId' );
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
-  has ServiceName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SubnetId' );
-  has VpcEndpointType => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::EC2::Types qw//;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has PolicyDocument => (is => 'ro', isa => Str, predicate => 1);
+  has PrivateDnsEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has RouteTableIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ServiceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has VpcEndpointType => (is => 'ro', isa => Str, predicate => 1);
+  has VpcId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpcEndpoint');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateVpcEndpointResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateVpcEndpoint');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateVpcEndpointResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrivateDnsEnabled' => {
+                                        'type' => 'Bool'
+                                      },
+               'VpcEndpointType' => {
+                                      'type' => 'Str'
+                                    },
+               'RouteTableIds' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ServiceName' => 1,
+                    'VpcId' => 1
+                  },
+  'NameInRequest' => {
+                       'SubnetIds' => 'SubnetId',
+                       'SecurityGroupIds' => 'SecurityGroupId',
+                       'RouteTableIds' => 'RouteTableId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

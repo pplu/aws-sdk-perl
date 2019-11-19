@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::LakeFormation::BatchPermissionsRequestEntry;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Permissions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PermissionsWithGrantOption => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Principal => (is => 'ro', isa => 'Paws::LakeFormation::DataLakePrincipal');
-  has Resource => (is => 'ro', isa => 'Paws::LakeFormation::Resource');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::LakeFormation::Types qw/LakeFormation_Resource LakeFormation_DataLakePrincipal/;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Permissions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has PermissionsWithGrantOption => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Principal => (is => 'ro', isa => LakeFormation_DataLakePrincipal);
+  has Resource => (is => 'ro', isa => LakeFormation_Resource);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Resource' => {
+                               'type' => 'LakeFormation_Resource',
+                               'class' => 'Paws::LakeFormation::Resource'
+                             },
+               'Principal' => {
+                                'type' => 'LakeFormation_DataLakePrincipal',
+                                'class' => 'Paws::LakeFormation::DataLakePrincipal'
+                              },
+               'PermissionsWithGrantOption' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Permissions' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             },
+  'IsRequired' => {
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,12 +89,12 @@ A permission to a resource granted by batch operation to the principal.
   Indicates if the option to pass permissions is granted.
 
 
-=head2 Principal => L<Paws::LakeFormation::DataLakePrincipal>
+=head2 Principal => LakeFormation_DataLakePrincipal
 
   The principal to be granted a permission.
 
 
-=head2 Resource => L<Paws::LakeFormation::Resource>
+=head2 Resource => LakeFormation_Resource
 
   The resource to which the principal is to be granted a permission.
 

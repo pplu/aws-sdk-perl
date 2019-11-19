@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::SESv2::VolumeStatistics;
-  use Moose;
-  has InboxRawCount => (is => 'ro', isa => 'Int');
-  has ProjectedInbox => (is => 'ro', isa => 'Int');
-  has ProjectedSpam => (is => 'ro', isa => 'Int');
-  has SpamRawCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SESv2::Types qw//;
+  has InboxRawCount => (is => 'ro', isa => Int);
+  has ProjectedInbox => (is => 'ro', isa => Int);
+  has ProjectedSpam => (is => 'ro', isa => Int);
+  has SpamRawCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpamRawCount' => {
+                                   'type' => 'Int'
+                                 },
+               'ProjectedInbox' => {
+                                     'type' => 'Int'
+                                   },
+               'ProjectedSpam' => {
+                                    'type' => 'Int'
+                                  },
+               'InboxRawCount' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::PinpointSMSVoice::SnsDestination;
-  use Moose;
-  has TopicArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointSMSVoice::Types qw//;
+  has TopicArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TopicArn' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,12 +1,45 @@
 
 package Paws::MQ::ListConfigurationRevisionsResponse;
-  use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'configurationId');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Revisions => (is => 'ro', isa => 'ArrayRef[Paws::MQ::ConfigurationRevision]', traits => ['NameInRequest'], request_name => 'revisions');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::MQ::Types qw/MQ_ConfigurationRevision/;
+  has ConfigurationId => (is => 'ro', isa => Str);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
+  has Revisions => (is => 'ro', isa => ArrayRef[MQ_ConfigurationRevision]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults',
+                       'ConfigurationId' => 'configurationId',
+                       'Revisions' => 'revisions'
+                     },
+  'types' => {
+               'Revisions' => {
+                                'type' => 'ArrayRef[MQ_ConfigurationRevision]',
+                                'class' => 'Paws::MQ::ConfigurationRevision'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ConfigurationId' => {
+                                      'type' => 'Str'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +68,7 @@ The token that specifies the next page of results Amazon MQ should
 return. To request the first page, leave nextToken empty.
 
 
-=head2 Revisions => ArrayRef[L<Paws::MQ::ConfigurationRevision>]
+=head2 Revisions => ArrayRef[MQ_ConfigurationRevision]
 
 The list of all revisions for the specified configuration.
 

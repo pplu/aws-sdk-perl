@@ -1,11 +1,35 @@
 
 package Paws::SESv2::CreateEmailIdentityResponse;
-  use Moose;
-  has DkimAttributes => (is => 'ro', isa => 'Paws::SESv2::DkimAttributes');
-  has IdentityType => (is => 'ro', isa => 'Str');
-  has VerifiedForSendingStatus => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SESv2::Types qw/SESv2_DkimAttributes/;
+  has DkimAttributes => (is => 'ro', isa => SESv2_DkimAttributes);
+  has IdentityType => (is => 'ro', isa => Str);
+  has VerifiedForSendingStatus => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DkimAttributes' => {
+                                     'type' => 'SESv2_DkimAttributes',
+                                     'class' => 'Paws::SESv2::DkimAttributes'
+                                   },
+               'IdentityType' => {
+                                   'type' => 'Str'
+                                 },
+               'VerifiedForSendingStatus' => {
+                                               'type' => 'Bool'
+                                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +41,7 @@ Paws::SESv2::CreateEmailIdentityResponse
 =head1 ATTRIBUTES
 
 
-=head2 DkimAttributes => L<Paws::SESv2::DkimAttributes>
+=head2 DkimAttributes => SESv2_DkimAttributes
 
 An object that contains information about the DKIM attributes for the
 identity. This object includes the tokens that you use to create the

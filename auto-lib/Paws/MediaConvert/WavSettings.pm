@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::WavSettings;
-  use Moose;
-  has BitDepth => (is => 'ro', isa => 'Int', request_name => 'bitDepth', traits => ['NameInRequest']);
-  has Channels => (is => 'ro', isa => 'Int', request_name => 'channels', traits => ['NameInRequest']);
-  has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest']);
-  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaConvert::Types qw//;
+  has BitDepth => (is => 'ro', isa => Int);
+  has Channels => (is => 'ro', isa => Int);
+  has Format => (is => 'ro', isa => Str);
+  has SampleRate => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Channels' => 'channels',
+                       'SampleRate' => 'sampleRate',
+                       'BitDepth' => 'bitDepth',
+                       'Format' => 'format'
+                     },
+  'types' => {
+               'SampleRate' => {
+                                 'type' => 'Int'
+                               },
+               'BitDepth' => {
+                               'type' => 'Int'
+                             },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'Channels' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

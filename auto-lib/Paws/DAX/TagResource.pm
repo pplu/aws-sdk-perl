@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DAX::TagResource;
-  use Moose;
-  has ResourceName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DAX::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DAX::Types qw/DAX_Tag/;
+  has ResourceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DAX_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DAX::TagResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DAX::TagResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[DAX_Tag]',
+                           'class' => 'Paws::DAX::Tag'
+                         },
+               'ResourceName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'ResourceName' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +81,7 @@ The name of the DAX resource to which tags should be added.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::DAX::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[DAX_Tag]
 
 The tags to be assigned to the DAX resource.
 

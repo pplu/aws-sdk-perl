@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::JobWatermark;
-  use Moose;
-  has Encryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
-  has InputKey => (is => 'ro', isa => 'Str');
-  has PresetWatermarkId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_Encryption/;
+  has Encryption => (is => 'ro', isa => ElasticTranscoder_Encryption);
+  has InputKey => (is => 'ro', isa => Str);
+  has PresetWatermarkId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Encryption' => {
+                                 'type' => 'ElasticTranscoder_Encryption',
+                                 'class' => 'Paws::ElasticTranscoder::Encryption'
+                               },
+               'PresetWatermarkId' => {
+                                        'type' => 'Str'
+                                      },
+               'InputKey' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +64,7 @@ transparency.
 =head1 ATTRIBUTES
 
 
-=head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
+=head2 Encryption => ElasticTranscoder_Encryption
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your watermarks.

@@ -1,15 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::UpdateGatewayGroup;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has GatewayGroupArn => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has GatewayGroupArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGatewayGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::UpdateGatewayGroupResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateGatewayGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::UpdateGatewayGroupResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'GatewayGroupArn' => 1
+                  },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'GatewayGroupArn' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,53 @@
+# Generated from default/object.tt
 package Paws::AppMesh::ResourceMetadata;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest'], required => 1);
-  has Uid => (is => 'ro', isa => 'Str', request_name => 'uid', traits => ['NameInRequest'], required => 1);
-  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AppMesh::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has CreatedAt => (is => 'ro', isa => Str, required => 1);
+  has LastUpdatedAt => (is => 'ro', isa => Str, required => 1);
+  has Uid => (is => 'ro', isa => Str, required => 1);
+  has Version => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'CreatedAt' => 'createdAt',
+                       'Version' => 'version',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'Uid' => 'uid'
+                     },
+  'IsRequired' => {
+                    'Version' => 1,
+                    'CreatedAt' => 1,
+                    'Arn' => 1,
+                    'Uid' => 1,
+                    'LastUpdatedAt' => 1
+                  },
+  'types' => {
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'Uid' => {
+                          'type' => 'Str'
+                        },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Version' => {
+                              'type' => 'Int'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

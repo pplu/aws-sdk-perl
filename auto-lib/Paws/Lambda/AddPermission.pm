@@ -1,22 +1,73 @@
 
 package Paws::Lambda::AddPermission;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has EventSourceToken => (is => 'ro', isa => 'Str');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
-  has Principal => (is => 'ro', isa => 'Str', required => 1);
-  has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier');
-  has RevisionId => (is => 'ro', isa => 'Str');
-  has SourceAccount => (is => 'ro', isa => 'Str');
-  has SourceArn => (is => 'ro', isa => 'Str');
-  has StatementId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw//;
+  has Action => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EventSourceToken => (is => 'ro', isa => Str, predicate => 1);
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Principal => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Qualifier => (is => 'ro', isa => Str, predicate => 1);
+  has RevisionId => (is => 'ro', isa => Str, predicate => 1);
+  has SourceAccount => (is => 'ro', isa => Str, predicate => 1);
+  has SourceArn => (is => 'ro', isa => Str, predicate => 1);
+  has StatementId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddPermission');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/policy');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::AddPermissionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddPermission');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-03-31/functions/{FunctionName}/policy');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::AddPermissionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StatementId' => 1,
+                    'FunctionName' => 1,
+                    'Principal' => 1,
+                    'Action' => 1
+                  },
+  'ParamInQuery' => {
+                      'Qualifier' => 'Qualifier'
+                    },
+  'types' => {
+               'SourceArn' => {
+                                'type' => 'Str'
+                              },
+               'StatementId' => {
+                                  'type' => 'Str'
+                                },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'SourceAccount' => {
+                                    'type' => 'Str'
+                                  },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'Principal' => {
+                                'type' => 'Str'
+                              },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'Qualifier' => {
+                                'type' => 'Str'
+                              },
+               'EventSourceToken' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'ParamInURI' => {
+                    'FunctionName' => 'FunctionName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

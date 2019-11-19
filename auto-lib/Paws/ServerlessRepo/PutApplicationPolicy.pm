@@ -1,15 +1,44 @@
 
 package Paws::ServerlessRepo::PutApplicationPolicy;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
-  has Statements => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationPolicyStatement]', traits => ['NameInRequest'], request_name => 'statements', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServerlessRepo::Types qw/ServerlessRepo_ApplicationPolicyStatement/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Statements => (is => 'ro', isa => ArrayRef[ServerlessRepo_ApplicationPolicyStatement], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutApplicationPolicy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/applications/{applicationId}/policy');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServerlessRepo::PutApplicationPolicyResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutApplicationPolicy');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/applications/{applicationId}/policy');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServerlessRepo::PutApplicationPolicyResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApplicationId' => 'applicationId'
+                  },
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Statements' => {
+                                 'type' => 'ArrayRef[ServerlessRepo_ApplicationPolicyStatement]',
+                                 'class' => 'Paws::ServerlessRepo::ApplicationPolicyStatement'
+                               }
+             },
+  'IsRequired' => {
+                    'Statements' => 1,
+                    'ApplicationId' => 1
+                  },
+  'NameInRequest' => {
+                       'Statements' => 'statements'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +88,7 @@ The Amazon Resource Name (ARN) of the application.
 
 
 
-=head2 B<REQUIRED> Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]
+=head2 B<REQUIRED> Statements => ArrayRef[ServerlessRepo_ApplicationPolicyStatement]
 
 An array of policy statements applied to the application.
 

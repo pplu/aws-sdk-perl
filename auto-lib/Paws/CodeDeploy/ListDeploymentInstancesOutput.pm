@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::ListDeploymentInstancesOutput;
-  use Moose;
-  has InstancesList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instancesList' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeDeploy::Types qw//;
+  has InstancesList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InstancesList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'InstancesList' => 'instancesList',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

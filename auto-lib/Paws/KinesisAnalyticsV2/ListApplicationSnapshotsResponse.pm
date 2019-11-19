@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KinesisAnalyticsV2::ListApplicationSnapshotsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SnapshotSummaries => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::SnapshotDetails]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_SnapshotDetails/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SnapshotSummaries => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_SnapshotDetails]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SnapshotSummaries' => {
+                                        'type' => 'ArrayRef[KinesisAnalyticsV2_SnapshotDetails]',
+                                        'class' => 'Paws::KinesisAnalyticsV2::SnapshotDetails'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The token for the next set of results, or C<null> if there are no
 additional results.
 
 
-=head2 SnapshotSummaries => ArrayRef[L<Paws::KinesisAnalyticsV2::SnapshotDetails>]
+=head2 SnapshotSummaries => ArrayRef[KinesisAnalyticsV2_SnapshotDetails]
 
 A collection of objects containing information about the application
 snapshots.

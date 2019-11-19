@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IAM::EntityDetails;
-  use Moose;
-  has EntityInfo => (is => 'ro', isa => 'Paws::IAM::EntityInfo', required => 1);
-  has LastAuthenticated => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_EntityInfo/;
+  has EntityInfo => (is => 'ro', isa => IAM_EntityInfo, required => 1);
+  has LastAuthenticated => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'EntityInfo' => 1
+                  },
+  'types' => {
+               'EntityInfo' => {
+                                 'class' => 'Paws::IAM::EntityInfo',
+                                 'type' => 'IAM_EntityInfo'
+                               },
+               'LastAuthenticated' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +66,7 @@ GetServiceLastAccessedDetailsWithEntities operation.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EntityInfo => L<Paws::IAM::EntityInfo>
+=head2 B<REQUIRED> EntityInfo => IAM_EntityInfo
 
   The C<EntityInfo> object that contains details about the entity (user
 or role).

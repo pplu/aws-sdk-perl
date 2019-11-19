@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::SSM::OpsFilter;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::SSM::Types qw//;
+  has Key => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Values' => 1,
+                    'Key' => 1
+                  },
+  'types' => {
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

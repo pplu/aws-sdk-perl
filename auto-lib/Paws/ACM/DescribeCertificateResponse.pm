@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ACM::DescribeCertificateResponse;
-  use Moose;
-  has Certificate => (is => 'ro', isa => 'Paws::ACM::CertificateDetail');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACM::Types qw/ACM_CertificateDetail/;
+  has Certificate => (is => 'ro', isa => ACM_CertificateDetail);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Certificate' => {
+                                  'class' => 'Paws::ACM::CertificateDetail',
+                                  'type' => 'ACM_CertificateDetail'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::ACM::DescribeCertificateResponse
 =head1 ATTRIBUTES
 
 
-=head2 Certificate => L<Paws::ACM::CertificateDetail>
+=head2 Certificate => ACM_CertificateDetail
 
 Metadata about an ACM certificate.
 

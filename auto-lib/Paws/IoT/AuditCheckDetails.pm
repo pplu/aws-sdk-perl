@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::IoT::AuditCheckDetails;
-  use Moose;
-  has CheckCompliant => (is => 'ro', isa => 'Bool', request_name => 'checkCompliant', traits => ['NameInRequest']);
-  has CheckRunStatus => (is => 'ro', isa => 'Str', request_name => 'checkRunStatus', traits => ['NameInRequest']);
-  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has NonCompliantResourcesCount => (is => 'ro', isa => 'Int', request_name => 'nonCompliantResourcesCount', traits => ['NameInRequest']);
-  has TotalResourcesCount => (is => 'ro', isa => 'Int', request_name => 'totalResourcesCount', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str Int/;
+  use Paws::IoT::Types qw//;
+  has CheckCompliant => (is => 'ro', isa => Bool);
+  has CheckRunStatus => (is => 'ro', isa => Str);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has NonCompliantResourcesCount => (is => 'ro', isa => Int);
+  has TotalResourcesCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NonCompliantResourcesCount' => 'nonCompliantResourcesCount',
+                       'Message' => 'message',
+                       'CheckRunStatus' => 'checkRunStatus',
+                       'ErrorCode' => 'errorCode',
+                       'TotalResourcesCount' => 'totalResourcesCount',
+                       'CheckCompliant' => 'checkCompliant'
+                     },
+  'types' => {
+               'TotalResourcesCount' => {
+                                          'type' => 'Int'
+                                        },
+               'CheckCompliant' => {
+                                     'type' => 'Bool'
+                                   },
+               'NonCompliantResourcesCount' => {
+                                                 'type' => 'Int'
+                                               },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'CheckRunStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

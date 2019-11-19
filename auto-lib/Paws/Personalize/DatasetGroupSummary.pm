@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::Personalize::DatasetGroupSummary;
-  use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has DatasetGroupArn => (is => 'ro', isa => 'Str', request_name => 'datasetGroupArn', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has DatasetGroupArn => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DatasetGroupArn' => 'datasetGroupArn',
+                       'Status' => 'status',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime',
+                       'CreationDateTime' => 'creationDateTime',
+                       'Name' => 'name',
+                       'FailureReason' => 'failureReason'
+                     },
+  'types' => {
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'DatasetGroupArn' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

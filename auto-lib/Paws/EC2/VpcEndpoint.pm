@@ -1,21 +1,101 @@
 package Paws::EC2::VpcEndpoint;
-  use Moose;
-  has CreationTimestamp => (is => 'ro', isa => 'Str', request_name => 'creationTimestamp', traits => ['NameInRequest']);
-  has DnsEntries => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DnsEntry]', request_name => 'dnsEntrySet', traits => ['NameInRequest']);
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SecurityGroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest']);
-  has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'networkInterfaceIdSet', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has PolicyDocument => (is => 'ro', isa => 'Str', request_name => 'policyDocument', traits => ['NameInRequest']);
-  has PrivateDnsEnabled => (is => 'ro', isa => 'Bool', request_name => 'privateDnsEnabled', traits => ['NameInRequest']);
-  has RequesterManaged => (is => 'ro', isa => 'Bool', request_name => 'requesterManaged', traits => ['NameInRequest']);
-  has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'routeTableIdSet', traits => ['NameInRequest']);
-  has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIdSet', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VpcEndpointId => (is => 'ro', isa => 'Str', request_name => 'vpcEndpointId', traits => ['NameInRequest']);
-  has VpcEndpointType => (is => 'ro', isa => 'Str', request_name => 'vpcEndpointType', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::EC2::Types qw/EC2_DnsEntry EC2_Tag EC2_SecurityGroupIdentifier/;
+  has CreationTimestamp => (is => 'ro', isa => Str);
+  has DnsEntries => (is => 'ro', isa => ArrayRef[EC2_DnsEntry]);
+  has Groups => (is => 'ro', isa => ArrayRef[EC2_SecurityGroupIdentifier]);
+  has NetworkInterfaceIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has OwnerId => (is => 'ro', isa => Str);
+  has PolicyDocument => (is => 'ro', isa => Str);
+  has PrivateDnsEnabled => (is => 'ro', isa => Bool);
+  has RequesterManaged => (is => 'ro', isa => Bool);
+  has RouteTableIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ServiceName => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VpcEndpointId => (is => 'ro', isa => Str);
+  has VpcEndpointType => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Groups' => {
+                             'class' => 'Paws::EC2::SecurityGroupIdentifier',
+                             'type' => 'ArrayRef[EC2_SecurityGroupIdentifier]'
+                           },
+               'RequesterManaged' => {
+                                       'type' => 'Bool'
+                                     },
+               'NetworkInterfaceIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'PrivateDnsEnabled' => {
+                                        'type' => 'Bool'
+                                      },
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   },
+               'RouteTableIds' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'VpcEndpointId' => {
+                                    'type' => 'Str'
+                                  },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'DnsEntries' => {
+                                 'class' => 'Paws::EC2::DnsEntry',
+                                 'type' => 'ArrayRef[EC2_DnsEntry]'
+                               },
+               'VpcEndpointType' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'State' => 'state',
+                       'RequesterManaged' => 'requesterManaged',
+                       'Groups' => 'groupSet',
+                       'PrivateDnsEnabled' => 'privateDnsEnabled',
+                       'PolicyDocument' => 'policyDocument',
+                       'RouteTableIds' => 'routeTableIdSet',
+                       'NetworkInterfaceIds' => 'networkInterfaceIdSet',
+                       'SubnetIds' => 'subnetIdSet',
+                       'OwnerId' => 'ownerId',
+                       'VpcId' => 'vpcId',
+                       'ServiceName' => 'serviceName',
+                       'VpcEndpointId' => 'vpcEndpointId',
+                       'CreationTimestamp' => 'creationTimestamp',
+                       'Tags' => 'tagSet',
+                       'DnsEntries' => 'dnsEntrySet',
+                       'VpcEndpointType' => 'vpcEndpointType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,12 +136,12 @@ This class has no description
   The date and time the VPC endpoint was created.
 
 
-=head2 DnsEntries => ArrayRef[L<Paws::EC2::DnsEntry>]
+=head2 DnsEntries => ArrayRef[EC2_DnsEntry]
 
   (Interface endpoint) The DNS entries for the endpoint.
 
 
-=head2 Groups => ArrayRef[L<Paws::EC2::SecurityGroupIdentifier>]
+=head2 Groups => ArrayRef[EC2_SecurityGroupIdentifier]
 
   (Interface endpoint) Information about the security groups associated
 with the network interface.
@@ -115,7 +195,7 @@ endpoint.
 located.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the VPC endpoint.
 

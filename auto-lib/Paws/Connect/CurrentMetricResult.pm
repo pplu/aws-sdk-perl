@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Connect::CurrentMetricResult;
-  use Moose;
-  has Collections => (is => 'ro', isa => 'ArrayRef[Paws::Connect::CurrentMetricData]');
-  has Dimensions => (is => 'ro', isa => 'Paws::Connect::Dimensions');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Connect::Types qw/Connect_CurrentMetricData Connect_Dimensions/;
+  has Collections => (is => 'ro', isa => ArrayRef[Connect_CurrentMetricData]);
+  has Dimensions => (is => 'ro', isa => Connect_Dimensions);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Collections' => {
+                                  'type' => 'ArrayRef[Connect_CurrentMetricData]',
+                                  'class' => 'Paws::Connect::CurrentMetricData'
+                                },
+               'Dimensions' => {
+                                 'type' => 'Connect_Dimensions',
+                                 'class' => 'Paws::Connect::Dimensions'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +59,12 @@ Contains information about a set of real-time metrics.
 =head1 ATTRIBUTES
 
 
-=head2 Collections => ArrayRef[L<Paws::Connect::CurrentMetricData>]
+=head2 Collections => ArrayRef[Connect_CurrentMetricData]
 
   The set of metrics.
 
 
-=head2 Dimensions => L<Paws::Connect::Dimensions>
+=head2 Dimensions => Connect_Dimensions
 
   The dimensions for the metrics.
 

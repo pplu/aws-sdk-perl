@@ -1,16 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::GetMLTransforms;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::Glue::TransformFilterCriteria');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Sort => (is => 'ro', isa => 'Paws::Glue::TransformSortCriteria');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Glue::Types qw/Glue_TransformSortCriteria Glue_TransformFilterCriteria/;
+  has Filter => (is => 'ro', isa => Glue_TransformFilterCriteria, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Sort => (is => 'ro', isa => Glue_TransformSortCriteria, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMLTransforms');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::GetMLTransformsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetMLTransforms');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::GetMLTransformsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filter' => {
+                             'type' => 'Glue_TransformFilterCriteria',
+                             'class' => 'Paws::Glue::TransformFilterCriteria'
+                           },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Sort' => {
+                           'class' => 'Paws::Glue::TransformSortCriteria',
+                           'type' => 'Glue_TransformSortCriteria'
+                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +96,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::Glue::TransformFilterCriteria>
+=head2 Filter => Glue_TransformFilterCriteria
 
 The filter transformation criteria.
 
@@ -87,7 +114,7 @@ A paginated token to offset the results.
 
 
 
-=head2 Sort => L<Paws::Glue::TransformSortCriteria>
+=head2 Sort => Glue_TransformSortCriteria
 
 The sorting criteria.
 

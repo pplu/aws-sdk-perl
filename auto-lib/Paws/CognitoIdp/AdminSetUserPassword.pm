@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::AdminSetUserPassword;
-  use Moose;
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has Permanent => (is => 'ro', isa => 'Bool');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CognitoIdp::Types qw//;
+  has Password => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Permanent => (is => 'ro', isa => Bool, predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AdminSetUserPassword');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::AdminSetUserPasswordResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AdminSetUserPassword');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::AdminSetUserPasswordResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Password' => 1,
+                    'UserPoolId' => 1,
+                    'Username' => 1
+                  },
+  'types' => {
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'Permanent' => {
+                                'type' => 'Bool'
+                              },
+               'Password' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

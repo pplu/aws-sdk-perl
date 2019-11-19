@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalyticsV2::AddApplicationOutput;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
-  has Output => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::Output', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_Output/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CurrentApplicationVersionId => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Output => (is => 'ro', isa => KinesisAnalyticsV2_Output, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddApplicationOutput');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalyticsV2::AddApplicationOutputResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddApplicationOutput');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalyticsV2::AddApplicationOutputResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Output' => 1,
+                    'CurrentApplicationVersionId' => 1,
+                    'ApplicationName' => 1
+                  },
+  'types' => {
+               'CurrentApplicationVersionId' => {
+                                                  'type' => 'Int'
+                                                },
+               'Output' => {
+                             'class' => 'Paws::KinesisAnalyticsV2::Output',
+                             'type' => 'KinesisAnalyticsV2_Output'
+                           },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +112,7 @@ current version, the C<ConcurrentModificationException> is returned.
 
 
 
-=head2 B<REQUIRED> Output => L<Paws::KinesisAnalyticsV2::Output>
+=head2 B<REQUIRED> Output => KinesisAnalyticsV2_Output
 
 An array of objects, each describing one output configuration. In the
 output configuration, you specify the name of an in-application stream,

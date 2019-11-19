@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::ES::ZoneAwarenessConfig;
-  use Moose;
-  has AvailabilityZoneCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::ES::Types qw//;
+  has AvailabilityZoneCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailabilityZoneCount' => {
+                                            'type' => 'Int'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

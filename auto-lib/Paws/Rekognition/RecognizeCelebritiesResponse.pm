@@ -1,11 +1,37 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::RecognizeCelebritiesResponse;
-  use Moose;
-  has CelebrityFaces => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Celebrity]');
-  has OrientationCorrection => (is => 'ro', isa => 'Str');
-  has UnrecognizedFaces => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::ComparedFace]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_ComparedFace Rekognition_Celebrity/;
+  has CelebrityFaces => (is => 'ro', isa => ArrayRef[Rekognition_Celebrity]);
+  has OrientationCorrection => (is => 'ro', isa => Str);
+  has UnrecognizedFaces => (is => 'ro', isa => ArrayRef[Rekognition_ComparedFace]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CelebrityFaces' => {
+                                     'type' => 'ArrayRef[Rekognition_Celebrity]',
+                                     'class' => 'Paws::Rekognition::Celebrity'
+                                   },
+               'OrientationCorrection' => {
+                                            'type' => 'Str'
+                                          },
+               'UnrecognizedFaces' => {
+                                        'type' => 'ArrayRef[Rekognition_ComparedFace]',
+                                        'class' => 'Paws::Rekognition::ComparedFace'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +42,7 @@ Paws::Rekognition::RecognizeCelebritiesResponse
 =head1 ATTRIBUTES
 
 
-=head2 CelebrityFaces => ArrayRef[L<Paws::Rekognition::Celebrity>]
+=head2 CelebrityFaces => ArrayRef[Rekognition_Celebrity]
 
 Details about each celebrity found in the image. Amazon Rekognition can
 detect a maximum of 15 celebrities in an image.
@@ -39,7 +65,7 @@ locations after Exif metadata is used to correct the image orientation.
 Images in .png format don't contain Exif metadata.
 
 Valid values are: C<"ROTATE_0">, C<"ROTATE_90">, C<"ROTATE_180">, C<"ROTATE_270">
-=head2 UnrecognizedFaces => ArrayRef[L<Paws::Rekognition::ComparedFace>]
+=head2 UnrecognizedFaces => ArrayRef[Rekognition_ComparedFace]
 
 Details about each unrecognized face in the image.
 

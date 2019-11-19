@@ -1,19 +1,89 @@
 package Paws::EC2::HostReservation;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
-  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
-  has Duration => (is => 'ro', isa => 'Int', request_name => 'duration', traits => ['NameInRequest']);
-  has End => (is => 'ro', isa => 'Str', request_name => 'end', traits => ['NameInRequest']);
-  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'hostIdSet', traits => ['NameInRequest']);
-  has HostReservationId => (is => 'ro', isa => 'Str', request_name => 'hostReservationId', traits => ['NameInRequest']);
-  has HourlyPrice => (is => 'ro', isa => 'Str', request_name => 'hourlyPrice', traits => ['NameInRequest']);
-  has InstanceFamily => (is => 'ro', isa => 'Str', request_name => 'instanceFamily', traits => ['NameInRequest']);
-  has OfferingId => (is => 'ro', isa => 'Str', request_name => 'offeringId', traits => ['NameInRequest']);
-  has PaymentOption => (is => 'ro', isa => 'Str', request_name => 'paymentOption', traits => ['NameInRequest']);
-  has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has UpfrontPrice => (is => 'ro', isa => 'Str', request_name => 'upfrontPrice', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_Tag/;
+  has Count => (is => 'ro', isa => Int);
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has End => (is => 'ro', isa => Str);
+  has HostIdSet => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has HostReservationId => (is => 'ro', isa => Str);
+  has HourlyPrice => (is => 'ro', isa => Str);
+  has InstanceFamily => (is => 'ro', isa => Str);
+  has OfferingId => (is => 'ro', isa => Str);
+  has PaymentOption => (is => 'ro', isa => Str);
+  has Start => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has UpfrontPrice => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HostReservationId' => {
+                                        'type' => 'Str'
+                                      },
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'PaymentOption' => {
+                                    'type' => 'Str'
+                                  },
+               'HostIdSet' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'HourlyPrice' => {
+                                  'type' => 'Str'
+                                },
+               'Start' => {
+                            'type' => 'Str'
+                          },
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'UpfrontPrice' => {
+                                   'type' => 'Str'
+                                 },
+               'End' => {
+                          'type' => 'Str'
+                        },
+               'InstanceFamily' => {
+                                     'type' => 'Str'
+                                   },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Start' => 'start',
+                       'HourlyPrice' => 'hourlyPrice',
+                       'HostIdSet' => 'hostIdSet',
+                       'PaymentOption' => 'paymentOption',
+                       'State' => 'state',
+                       'OfferingId' => 'offeringId',
+                       'HostReservationId' => 'hostReservationId',
+                       'CurrencyCode' => 'currencyCode',
+                       'InstanceFamily' => 'instanceFamily',
+                       'End' => 'end',
+                       'UpfrontPrice' => 'upfrontPrice',
+                       'Duration' => 'duration',
+                       'Tags' => 'tagSet',
+                       'Count' => 'count'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -115,7 +185,7 @@ Dedicated Hosts are associated with it.
   The state of the reservation.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the Dedicated Host Reservation.
 

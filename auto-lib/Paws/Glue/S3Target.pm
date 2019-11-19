@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glue::S3Target;
-  use Moose;
-  has Exclusions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Path => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Glue::Types qw//;
+  has Exclusions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Path => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Exclusions' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

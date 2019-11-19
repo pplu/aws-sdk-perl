@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::ApplicationSummary;
-  use Moose;
-  has ApplicationARN => (is => 'ro', isa => 'Str', required => 1);
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has ApplicationStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw//;
+  has ApplicationARN => (is => 'ro', isa => Str, required => 1);
+  has ApplicationName => (is => 'ro', isa => Str, required => 1);
+  has ApplicationStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationARN' => {
+                                     'type' => 'Str'
+                                   },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'ApplicationStatus' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'ApplicationARN' => 1,
+                    'ApplicationName' => 1,
+                    'ApplicationStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SSM::PatchStatus;
-  use Moose;
-  has ApprovalDate => (is => 'ro', isa => 'Str');
-  has ComplianceLevel => (is => 'ro', isa => 'Str');
-  has DeploymentStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has ApprovalDate => (is => 'ro', isa => Str);
+  has ComplianceLevel => (is => 'ro', isa => Str);
+  has DeploymentStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComplianceLevel' => {
+                                      'type' => 'Str'
+                                    },
+               'DeploymentStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'ApprovalDate' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

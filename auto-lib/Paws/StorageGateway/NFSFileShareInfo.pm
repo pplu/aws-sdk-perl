@@ -1,23 +1,93 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::NFSFileShareInfo;
-  use Moose;
-  has ClientList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DefaultStorageClass => (is => 'ro', isa => 'Str');
-  has FileShareARN => (is => 'ro', isa => 'Str');
-  has FileShareId => (is => 'ro', isa => 'Str');
-  has FileShareStatus => (is => 'ro', isa => 'Str');
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has GuessMIMETypeEnabled => (is => 'ro', isa => 'Bool');
-  has KMSEncrypted => (is => 'ro', isa => 'Bool');
-  has KMSKey => (is => 'ro', isa => 'Str');
-  has LocationARN => (is => 'ro', isa => 'Str');
-  has NFSFileShareDefaults => (is => 'ro', isa => 'Paws::StorageGateway::NFSFileShareDefaults');
-  has ObjectACL => (is => 'ro', isa => 'Str');
-  has Path => (is => 'ro', isa => 'Str');
-  has ReadOnly => (is => 'ro', isa => 'Bool');
-  has RequesterPays => (is => 'ro', isa => 'Bool');
-  has Role => (is => 'ro', isa => 'Str');
-  has Squash => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str Bool/;
+  use Paws::StorageGateway::Types qw/StorageGateway_Tag StorageGateway_NFSFileShareDefaults/;
+  has ClientList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DefaultStorageClass => (is => 'ro', isa => Str);
+  has FileShareARN => (is => 'ro', isa => Str);
+  has FileShareId => (is => 'ro', isa => Str);
+  has FileShareStatus => (is => 'ro', isa => Str);
+  has GatewayARN => (is => 'ro', isa => Str);
+  has GuessMIMETypeEnabled => (is => 'ro', isa => Bool);
+  has KMSEncrypted => (is => 'ro', isa => Bool);
+  has KMSKey => (is => 'ro', isa => Str);
+  has LocationARN => (is => 'ro', isa => Str);
+  has NFSFileShareDefaults => (is => 'ro', isa => StorageGateway_NFSFileShareDefaults);
+  has ObjectACL => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str);
+  has ReadOnly => (is => 'ro', isa => Bool);
+  has RequesterPays => (is => 'ro', isa => Bool);
+  has Role => (is => 'ro', isa => Str);
+  has Squash => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[StorageGateway_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileShareId' => {
+                                  'type' => 'Str'
+                                },
+               'GuessMIMETypeEnabled' => {
+                                           'type' => 'Bool'
+                                         },
+               'DefaultStorageClass' => {
+                                          'type' => 'Str'
+                                        },
+               'Squash' => {
+                             'type' => 'Str'
+                           },
+               'FileShareARN' => {
+                                   'type' => 'Str'
+                                 },
+               'ReadOnly' => {
+                               'type' => 'Bool'
+                             },
+               'NFSFileShareDefaults' => {
+                                           'class' => 'Paws::StorageGateway::NFSFileShareDefaults',
+                                           'type' => 'StorageGateway_NFSFileShareDefaults'
+                                         },
+               'LocationARN' => {
+                                  'type' => 'Str'
+                                },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'RequesterPays' => {
+                                    'type' => 'Bool'
+                                  },
+               'KMSEncrypted' => {
+                                   'type' => 'Bool'
+                                 },
+               'FileShareStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'ObjectACL' => {
+                                'type' => 'Str'
+                              },
+               'KMSKey' => {
+                             'type' => 'Str'
+                           },
+               'ClientList' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'type' => 'ArrayRef[StorageGateway_Tag]',
+                           'class' => 'Paws::StorageGateway::Tag'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -111,7 +181,7 @@ or false to use a key managed by Amazon S3. Optional.
   
 
 
-=head2 NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>
+=head2 NFSFileShareDefaults => StorageGateway_NFSFileShareDefaults
 
   
 
@@ -155,7 +225,7 @@ the same as the S3 bucket configuration.
   
 
 
-=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+=head2 Tags => ArrayRef[StorageGateway_Tag]
 
   A list of up to 50 tags assigned to the NFS file share, sorted
 alphabetically by key name. Each tag is a key-value pair. For a gateway

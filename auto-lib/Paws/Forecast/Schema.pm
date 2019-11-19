@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Forecast::Schema;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::SchemaAttribute]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Forecast::Types qw/Forecast_SchemaAttribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[Forecast_SchemaAttribute]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::Forecast::SchemaAttribute',
+                                 'type' => 'ArrayRef[Forecast_SchemaAttribute]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ CreateDataset request.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::Forecast::SchemaAttribute>]
+=head2 Attributes => ArrayRef[Forecast_SchemaAttribute]
 
   An array of attributes specifying the name and type of each field in a
 dataset.

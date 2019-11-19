@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::PhaseContext;
-  use Moose;
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has StatusCode => (is => 'ro', isa => 'Str', request_name => 'statusCode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeBuild::Types qw//;
+  has Message => (is => 'ro', isa => Str);
+  has StatusCode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Message' => 'message',
+                       'StatusCode' => 'statusCode'
+                     },
+  'types' => {
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,58 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::Preset;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Audio => (is => 'ro', isa => 'Paws::ElasticTranscoder::AudioParameters');
-  has Container => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Thumbnails => (is => 'ro', isa => 'Paws::ElasticTranscoder::Thumbnails');
-  has Type => (is => 'ro', isa => 'Str');
-  has Video => (is => 'ro', isa => 'Paws::ElasticTranscoder::VideoParameters');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_VideoParameters ElasticTranscoder_Thumbnails ElasticTranscoder_AudioParameters/;
+  has Arn => (is => 'ro', isa => Str);
+  has Audio => (is => 'ro', isa => ElasticTranscoder_AudioParameters);
+  has Container => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Thumbnails => (is => 'ro', isa => ElasticTranscoder_Thumbnails);
+  has Type => (is => 'ro', isa => Str);
+  has Video => (is => 'ro', isa => ElasticTranscoder_VideoParameters);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Video' => {
+                            'class' => 'Paws::ElasticTranscoder::VideoParameters',
+                            'type' => 'ElasticTranscoder_VideoParameters'
+                          },
+               'Container' => {
+                                'type' => 'Str'
+                              },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Thumbnails' => {
+                                 'class' => 'Paws::ElasticTranscoder::Thumbnails',
+                                 'type' => 'ElasticTranscoder_Thumbnails'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Audio' => {
+                            'type' => 'ElasticTranscoder_AudioParameters',
+                            'class' => 'Paws::ElasticTranscoder::AudioParameters'
+                          },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +98,7 @@ want to use when you create a job.
   The Amazon Resource Name (ARN) for the preset.
 
 
-=head2 Audio => L<Paws::ElasticTranscoder::AudioParameters>
+=head2 Audio => ElasticTranscoder_AudioParameters
 
   A section of the response body that provides information about the
 audio preset values.
@@ -83,7 +127,7 @@ the preset or to delete it.
   The name of the preset.
 
 
-=head2 Thumbnails => L<Paws::ElasticTranscoder::Thumbnails>
+=head2 Thumbnails => ElasticTranscoder_Thumbnails
 
   A section of the response body that provides information about the
 thumbnail preset values, if any.
@@ -95,7 +139,7 @@ thumbnail preset values, if any.
 (C<System>) or a preset that you have defined (C<Custom>).
 
 
-=head2 Video => L<Paws::ElasticTranscoder::VideoParameters>
+=head2 Video => ElasticTranscoder_VideoParameters
 
   A section of the response body that provides information about the
 video preset values.

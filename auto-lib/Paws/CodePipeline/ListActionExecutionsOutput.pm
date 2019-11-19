@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodePipeline::ListActionExecutionsOutput;
-  use Moose;
-  has ActionExecutionDetails => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionExecutionDetail]', traits => ['NameInRequest'], request_name => 'actionExecutionDetails' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ActionExecutionDetail/;
+  has ActionExecutionDetails => (is => 'ro', isa => ArrayRef[CodePipeline_ActionExecutionDetail]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ActionExecutionDetails' => 'actionExecutionDetails',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ActionExecutionDetails' => {
+                                             'type' => 'ArrayRef[CodePipeline_ActionExecutionDetail]',
+                                             'class' => 'Paws::CodePipeline::ActionExecutionDetail'
+                                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::CodePipeline::ListActionExecutionsOutput
 =head1 ATTRIBUTES
 
 
-=head2 ActionExecutionDetails => ArrayRef[L<Paws::CodePipeline::ActionExecutionDetail>]
+=head2 ActionExecutionDetails => ArrayRef[CodePipeline_ActionExecutionDetail]
 
 The details for a list of recent executions, such as action execution
 ID.

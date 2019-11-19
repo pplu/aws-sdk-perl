@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::CreateSegmentResponse;
-  use Moose;
-  has SegmentResponse => (is => 'ro', isa => 'Paws::Pinpoint::SegmentResponse', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_SegmentResponse/;
+  has SegmentResponse => (is => 'ro', isa => Pinpoint_SegmentResponse, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SegmentResponse' => {
+                                      'class' => 'Paws::Pinpoint::SegmentResponse',
+                                      'type' => 'Pinpoint_SegmentResponse'
+                                    }
+             },
+  'IsRequired' => {
+                    'SegmentResponse' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SegmentResponse => L<Paws::Pinpoint::SegmentResponse>
+=head2 B<REQUIRED> SegmentResponse => Pinpoint_SegmentResponse
 
   
 

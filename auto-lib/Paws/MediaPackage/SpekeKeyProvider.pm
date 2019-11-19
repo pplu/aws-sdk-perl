@@ -1,10 +1,52 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::SpekeKeyProvider;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has SystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'systemIds', traits => ['NameInRequest'], required => 1);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::MediaPackage::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has SystemIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Url => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CertificateArn' => 'certificateArn',
+                       'Url' => 'url',
+                       'ResourceId' => 'resourceId',
+                       'RoleArn' => 'roleArn',
+                       'SystemIds' => 'systemIds'
+                     },
+  'IsRequired' => {
+                    'Url' => 1,
+                    'ResourceId' => 1,
+                    'SystemIds' => 1,
+                    'RoleArn' => 1
+                  },
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'SystemIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'Url' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

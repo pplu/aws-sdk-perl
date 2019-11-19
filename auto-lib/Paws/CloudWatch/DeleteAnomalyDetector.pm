@@ -1,16 +1,47 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudWatch::DeleteAnomalyDetector;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', required => 1);
-  has Stat => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatch::Types qw/CloudWatch_Dimension/;
+  has Dimensions => (is => 'ro', isa => ArrayRef[CloudWatch_Dimension], predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Stat => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAnomalyDetector');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatch::DeleteAnomalyDetectorOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAnomalyDetectorResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteAnomalyDetector');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatch::DeleteAnomalyDetectorOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DeleteAnomalyDetectorResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MetricName' => 1,
+                    'Stat' => 1,
+                    'Namespace' => 1
+                  },
+  'types' => {
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'Dimensions' => {
+                                 'class' => 'Paws::CloudWatch::Dimension',
+                                 'type' => 'ArrayRef[CloudWatch_Dimension]'
+                               },
+               'Stat' => {
+                           'type' => 'Str'
+                         },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +81,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
+=head2 Dimensions => ArrayRef[CloudWatch_Dimension]
 
 The metric dimensions associated with the anomaly detection model to
 delete.

@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::ELBv2;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'elasticloadbalancing' }
   sub signing_name { 'elasticloadbalancing' }
   sub version { '2015-12-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -417,7 +419,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =over
 
-=item Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
+=item Certificates => ArrayRef[ELBv2_Certificate]
 
 =item ListenerArn => Str
 
@@ -450,7 +452,7 @@ in the I<Application Load Balancers Guide>.
 
 =item ResourceArns => ArrayRef[Str|Undef]
 
-=item Tags => ArrayRef[L<Paws::ELBv2::Tag>]
+=item Tags => ArrayRef[ELBv2_Tag]
 
 
 =back
@@ -474,7 +476,7 @@ remove tags from your resources, use RemoveTags.
 
 =over
 
-=item DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
+=item DefaultActions => ArrayRef[ELBv2_Action]
 
 =item LoadBalancerArn => Str
 
@@ -482,7 +484,7 @@ remove tags from your resources, use RemoveTags.
 
 =item Protocol => Str
 
-=item [Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]]
+=item [Certificates => ArrayRef[ELBv2_Certificate]]
 
 =item [SslPolicy => Str]
 
@@ -525,11 +527,11 @@ in the I<Network Load Balancers Guide>.
 
 =item [SecurityGroups => ArrayRef[Str|Undef]]
 
-=item [SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>]]
+=item [SubnetMappings => ArrayRef[ELBv2_SubnetMapping]]
 
 =item [Subnets => ArrayRef[Str|Undef]]
 
-=item [Tags => ArrayRef[L<Paws::ELBv2::Tag>]]
+=item [Tags => ArrayRef[ELBv2_Tag]]
 
 =item [Type => Str]
 
@@ -574,9 +576,9 @@ in the I<Network Load Balancers Guide>.
 
 =over
 
-=item Actions => ArrayRef[L<Paws::ELBv2::Action>]
+=item Actions => ArrayRef[ELBv2_Action]
 
-=item Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
+=item Conditions => ArrayRef[ELBv2_RuleCondition]
 
 =item ListenerArn => Str
 
@@ -624,7 +626,7 @@ To delete a rule, use DeleteRule.
 
 =item [HealthyThresholdCount => Int]
 
-=item [Matcher => L<Paws::ELBv2::Matcher>]
+=item [Matcher => ELBv2_Matcher]
 
 =item [Port => Int]
 
@@ -754,7 +756,7 @@ Deleting a target group also deletes any associated health checks.
 
 =item TargetGroupArn => Str
 
-=item Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>]
+=item Targets => ArrayRef[ELBv2_TargetDescription]
 
 
 =back
@@ -1026,7 +1028,7 @@ DescribeTargetGroupAttributes.
 
 =item TargetGroupArn => Str
 
-=item [Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>]]
+=item [Targets => ArrayRef[ELBv2_TargetDescription]]
 
 
 =back
@@ -1044,9 +1046,9 @@ Describes the health of the specified targets or all of your targets.
 
 =item ListenerArn => Str
 
-=item [Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]]
+=item [Certificates => ArrayRef[ELBv2_Certificate]]
 
-=item [DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]]
+=item [DefaultActions => ArrayRef[ELBv2_Action]]
 
 =item [Port => Int]
 
@@ -1078,7 +1080,7 @@ action, specify a list with the current actions plus the new action.
 
 =over
 
-=item Attributes => ArrayRef[L<Paws::ELBv2::LoadBalancerAttribute>]
+=item Attributes => ArrayRef[ELBv2_LoadBalancerAttribute]
 
 =item LoadBalancerArn => Str
 
@@ -1103,9 +1105,9 @@ current values.
 
 =item RuleArn => Str
 
-=item [Actions => ArrayRef[L<Paws::ELBv2::Action>]]
+=item [Actions => ArrayRef[ELBv2_Action]]
 
-=item [Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]]
+=item [Conditions => ArrayRef[ELBv2_RuleCondition]]
 
 
 =back
@@ -1144,7 +1146,7 @@ To modify the actions for the default rule, use ModifyListener.
 
 =item [HealthyThresholdCount => Int]
 
-=item [Matcher => L<Paws::ELBv2::Matcher>]
+=item [Matcher => ELBv2_Matcher]
 
 =item [UnhealthyThresholdCount => Int]
 
@@ -1165,7 +1167,7 @@ To monitor the health of the targets, use DescribeTargetHealth.
 
 =over
 
-=item Attributes => ArrayRef[L<Paws::ELBv2::TargetGroupAttribute>]
+=item Attributes => ArrayRef[ELBv2_TargetGroupAttribute]
 
 =item TargetGroupArn => Str
 
@@ -1185,7 +1187,7 @@ Modifies the specified attributes of the specified target group.
 
 =item TargetGroupArn => Str
 
-=item Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>]
+=item Targets => ArrayRef[ELBv2_TargetDescription]
 
 
 =back
@@ -1217,7 +1219,7 @@ To remove a target from a target group, use DeregisterTargets.
 
 =over
 
-=item Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
+=item Certificates => ArrayRef[ELBv2_Certificate]
 
 =item ListenerArn => Str
 
@@ -1282,7 +1284,7 @@ Application Load Balancer or Network Load Balancer.
 
 =over
 
-=item RulePriorities => ArrayRef[L<Paws::ELBv2::RulePriorityPair>]
+=item RulePriorities => ArrayRef[ELBv2_RulePriorityPair]
 
 
 =back
@@ -1326,7 +1328,7 @@ You can't specify a security group for a Network Load Balancer.
 
 =item LoadBalancerArn => Str
 
-=item [SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>]]
+=item [SubnetMappings => ArrayRef[ELBv2_SubnetMapping]]
 
 =item [Subnets => ArrayRef[Str|Undef]]
 

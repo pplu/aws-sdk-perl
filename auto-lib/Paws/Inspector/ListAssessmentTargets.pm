@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Inspector::ListAssessmentTargets;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::Inspector::AssessmentTargetFilter', traits => ['NameInRequest'], request_name => 'filter' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Inspector::Types qw/Inspector_AssessmentTargetFilter/;
+  has Filter => (is => 'ro', isa => Inspector_AssessmentTargetFilter, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAssessmentTargets');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Inspector::ListAssessmentTargetsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAssessmentTargets');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Inspector::ListAssessmentTargetsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filter' => {
+                             'type' => 'Inspector_AssessmentTargetFilter',
+                             'class' => 'Paws::Inspector::AssessmentTargetFilter'
+                           }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults',
+                       'Filter' => 'filter'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ins
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::Inspector::AssessmentTargetFilter>
+=head2 Filter => Inspector_AssessmentTargetFilter
 
 You can use this parameter to specify a subset of data to be included
 in the action's response.

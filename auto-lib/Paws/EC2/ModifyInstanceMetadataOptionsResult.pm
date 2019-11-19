@@ -1,10 +1,36 @@
 
 package Paws::EC2::ModifyInstanceMetadataOptionsResult;
-  use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest',]);
-  has InstanceMetadataOptions => (is => 'ro', isa => 'Paws::EC2::InstanceMetadataOptionsResponse', request_name => 'instanceMetadataOptions', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_InstanceMetadataOptionsResponse/;
+  has InstanceId => (is => 'ro', isa => Str);
+  has InstanceMetadataOptions => (is => 'ro', isa => EC2_InstanceMetadataOptionsResponse);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InstanceMetadataOptions' => {
+                                              'type' => 'EC2_InstanceMetadataOptionsResponse',
+                                              'class' => 'Paws::EC2::InstanceMetadataOptionsResponse'
+                                            },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'InstanceMetadataOptions' => 'instanceMetadataOptions',
+                       'InstanceId' => 'instanceId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +47,7 @@ Paws::EC2::ModifyInstanceMetadataOptionsResult
 The ID of the instance.
 
 
-=head2 InstanceMetadataOptions => L<Paws::EC2::InstanceMetadataOptionsResponse>
+=head2 InstanceMetadataOptions => EC2_InstanceMetadataOptionsResponse
 
 The metadata options for the instance.
 

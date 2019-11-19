@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoT::IotAnalyticsAction;
-  use Moose;
-  has ChannelArn => (is => 'ro', isa => 'Str', request_name => 'channelArn', traits => ['NameInRequest']);
-  has ChannelName => (is => 'ro', isa => 'Str', request_name => 'channelName', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has ChannelArn => (is => 'ro', isa => Str);
+  has ChannelName => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ChannelName' => 'channelName',
+                       'ChannelArn' => 'channelArn',
+                       'RoleArn' => 'roleArn'
+                     },
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ChannelArn' => {
+                                 'type' => 'Str'
+                               },
+               'ChannelName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

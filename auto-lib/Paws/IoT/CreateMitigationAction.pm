@@ -1,17 +1,56 @@
 
 package Paws::IoT::CreateMitigationAction;
-  use Moose;
-  has ActionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'actionName', required => 1);
-  has ActionParams => (is => 'ro', isa => 'Paws::IoT::MitigationActionParams', traits => ['NameInRequest'], request_name => 'actionParams', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_Tag IoT_MitigationActionParams/;
+  has ActionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ActionParams => (is => 'ro', isa => IoT_MitigationActionParams, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoT_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMitigationAction');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/mitigationactions/actions/{actionName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateMitigationActionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateMitigationAction');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/mitigationactions/actions/{actionName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateMitigationActionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ActionName' => 'actionName'
+                  },
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[IoT_Tag]',
+                           'class' => 'Paws::IoT::Tag'
+                         },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ActionName' => {
+                                 'type' => 'Str'
+                               },
+               'ActionParams' => {
+                                   'type' => 'IoT_MitigationActionParams',
+                                   'class' => 'Paws::IoT::MitigationActionParams'
+                                 }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'ActionParams' => 'actionParams',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'ActionName' => 1,
+                    'RoleArn' => 1,
+                    'ActionParams' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -91,7 +130,7 @@ describes the action (for example, C<EnableLoggingAction>).
 
 
 
-=head2 B<REQUIRED> ActionParams => L<Paws::IoT::MitigationActionParams>
+=head2 B<REQUIRED> ActionParams => IoT_MitigationActionParams
 
 Defines the type of action and the parameters for that action.
 
@@ -103,7 +142,7 @@ The ARN of the IAM role that is used to apply the mitigation action.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+=head2 Tags => ArrayRef[IoT_Tag]
 
 Metadata that can be used to manage the mitigation action.
 

@@ -1,22 +1,103 @@
+# Generated from default/object.tt
 package Paws::CloudFront::DistributionConfig;
-  use Moose;
-  has Aliases => (is => 'ro', isa => 'Paws::CloudFront::Aliases');
-  has CacheBehaviors => (is => 'ro', isa => 'Paws::CloudFront::CacheBehaviors');
-  has CallerReference => (is => 'ro', isa => 'Str', required => 1);
-  has Comment => (is => 'ro', isa => 'Str', required => 1);
-  has CustomErrorResponses => (is => 'ro', isa => 'Paws::CloudFront::CustomErrorResponses');
-  has DefaultCacheBehavior => (is => 'ro', isa => 'Paws::CloudFront::DefaultCacheBehavior', required => 1);
-  has DefaultRootObject => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has HttpVersion => (is => 'ro', isa => 'Str');
-  has IsIPV6Enabled => (is => 'ro', isa => 'Bool');
-  has Logging => (is => 'ro', isa => 'Paws::CloudFront::LoggingConfig');
-  has OriginGroups => (is => 'ro', isa => 'Paws::CloudFront::OriginGroups');
-  has Origins => (is => 'ro', isa => 'Paws::CloudFront::Origins', required => 1);
-  has PriceClass => (is => 'ro', isa => 'Str');
-  has Restrictions => (is => 'ro', isa => 'Paws::CloudFront::Restrictions');
-  has ViewerCertificate => (is => 'ro', isa => 'Paws::CloudFront::ViewerCertificate');
-  has WebACLId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudFront::Types qw/CloudFront_OriginGroups CloudFront_ViewerCertificate CloudFront_LoggingConfig CloudFront_CustomErrorResponses CloudFront_Origins CloudFront_Aliases CloudFront_DefaultCacheBehavior CloudFront_Restrictions CloudFront_CacheBehaviors/;
+  has Aliases => (is => 'ro', isa => CloudFront_Aliases);
+  has CacheBehaviors => (is => 'ro', isa => CloudFront_CacheBehaviors);
+  has CallerReference => (is => 'ro', isa => Str, required => 1);
+  has Comment => (is => 'ro', isa => Str, required => 1);
+  has CustomErrorResponses => (is => 'ro', isa => CloudFront_CustomErrorResponses);
+  has DefaultCacheBehavior => (is => 'ro', isa => CloudFront_DefaultCacheBehavior, required => 1);
+  has DefaultRootObject => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has HttpVersion => (is => 'ro', isa => Str);
+  has IsIPV6Enabled => (is => 'ro', isa => Bool);
+  has Logging => (is => 'ro', isa => CloudFront_LoggingConfig);
+  has OriginGroups => (is => 'ro', isa => CloudFront_OriginGroups);
+  has Origins => (is => 'ro', isa => CloudFront_Origins, required => 1);
+  has PriceClass => (is => 'ro', isa => Str);
+  has Restrictions => (is => 'ro', isa => CloudFront_Restrictions);
+  has ViewerCertificate => (is => 'ro', isa => CloudFront_ViewerCertificate);
+  has WebACLId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ViewerCertificate' => {
+                                        'class' => 'Paws::CloudFront::ViewerCertificate',
+                                        'type' => 'CloudFront_ViewerCertificate'
+                                      },
+               'DefaultCacheBehavior' => {
+                                           'class' => 'Paws::CloudFront::DefaultCacheBehavior',
+                                           'type' => 'CloudFront_DefaultCacheBehavior'
+                                         },
+               'CallerReference' => {
+                                      'type' => 'Str'
+                                    },
+               'CustomErrorResponses' => {
+                                           'type' => 'CloudFront_CustomErrorResponses',
+                                           'class' => 'Paws::CloudFront::CustomErrorResponses'
+                                         },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'Logging' => {
+                              'class' => 'Paws::CloudFront::LoggingConfig',
+                              'type' => 'CloudFront_LoggingConfig'
+                            },
+               'OriginGroups' => {
+                                   'type' => 'CloudFront_OriginGroups',
+                                   'class' => 'Paws::CloudFront::OriginGroups'
+                                 },
+               'Restrictions' => {
+                                   'type' => 'CloudFront_Restrictions',
+                                   'class' => 'Paws::CloudFront::Restrictions'
+                                 },
+               'IsIPV6Enabled' => {
+                                    'type' => 'Bool'
+                                  },
+               'HttpVersion' => {
+                                  'type' => 'Str'
+                                },
+               'DefaultRootObject' => {
+                                        'type' => 'Str'
+                                      },
+               'Aliases' => {
+                              'type' => 'CloudFront_Aliases',
+                              'class' => 'Paws::CloudFront::Aliases'
+                            },
+               'WebACLId' => {
+                               'type' => 'Str'
+                             },
+               'PriceClass' => {
+                                 'type' => 'Str'
+                               },
+               'CacheBehaviors' => {
+                                     'class' => 'Paws::CloudFront::CacheBehaviors',
+                                     'type' => 'CloudFront_CacheBehaviors'
+                                   },
+               'Origins' => {
+                              'type' => 'CloudFront_Origins',
+                              'class' => 'Paws::CloudFront::Origins'
+                            },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             },
+  'IsRequired' => {
+                    'DefaultCacheBehavior' => 1,
+                    'CallerReference' => 1,
+                    'Origins' => 1,
+                    'Enabled' => 1,
+                    'Comment' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,13 +133,13 @@ A distribution configuration.
 =head1 ATTRIBUTES
 
 
-=head2 Aliases => L<Paws::CloudFront::Aliases>
+=head2 Aliases => CloudFront_Aliases
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this distribution.
 
 
-=head2 CacheBehaviors => L<Paws::CloudFront::CacheBehaviors>
+=head2 CacheBehaviors => CloudFront_CacheBehaviors
 
   A complex type that contains zero or more C<CacheBehavior> elements.
 
@@ -91,7 +172,7 @@ To add or change a comment, update the distribution configuration and
 specify the new comment.
 
 
-=head2 CustomErrorResponses => L<Paws::CloudFront::CustomErrorResponses>
+=head2 CustomErrorResponses => CloudFront_CustomErrorResponses
 
   A complex type that controls the following:
 
@@ -114,7 +195,7 @@ Responses
 in the I<Amazon CloudFront Developer Guide>.
 
 
-=head2 B<REQUIRED> DefaultCacheBehavior => L<Paws::CloudFront::DefaultCacheBehavior>
+=head2 B<REQUIRED> DefaultCacheBehavior => CloudFront_DefaultCacheBehavior
 
   A complex type that describes the default cache behavior if you don't
 specify a C<CacheBehavior> element or if files don't match any of the
@@ -218,7 +299,7 @@ CNAME record will route traffic to your distribution regardless of the
 IP address format of the viewer request.
 
 
-=head2 Logging => L<Paws::CloudFront::LoggingConfig>
+=head2 Logging => CloudFront_LoggingConfig
 
   A complex type that controls whether access logs are written for the
 distribution.
@@ -228,13 +309,13 @@ For more information about logging, see Access Logs
 in the I<Amazon CloudFront Developer Guide>.
 
 
-=head2 OriginGroups => L<Paws::CloudFront::OriginGroups>
+=head2 OriginGroups => CloudFront_OriginGroups
 
   A complex type that contains information about origin groups for this
 distribution.
 
 
-=head2 B<REQUIRED> Origins => L<Paws::CloudFront::Origins>
+=head2 B<REQUIRED> Origins => CloudFront_Origins
 
   A complex type that contains information about origins for this
 distribution.
@@ -263,13 +344,13 @@ CloudFront pricing, including how price classes (such as Price Class
 information, scroll down to see the table at the bottom of the page.
 
 
-=head2 Restrictions => L<Paws::CloudFront::Restrictions>
+=head2 Restrictions => CloudFront_Restrictions
 
   A complex type that identifies ways in which you want to restrict
 distribution of your content.
 
 
-=head2 ViewerCertificate => L<Paws::CloudFront::ViewerCertificate>
+=head2 ViewerCertificate => CloudFront_ViewerCertificate
 
   A complex type that specifies whether you want viewers to use HTTP or
 HTTPS to request your objects, whether you're using an alternate domain

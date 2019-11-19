@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::AutoScaling::DescribeNotificationConfigurationsAnswer;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has NotificationConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::NotificationConfiguration]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_NotificationConfiguration/;
+  has NextToken => (is => 'ro', isa => Str);
+  has NotificationConfigurations => (is => 'ro', isa => ArrayRef[AutoScaling_NotificationConfiguration], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'NotificationConfigurations' => {
+                                                 'type' => 'ArrayRef[AutoScaling_NotificationConfiguration]',
+                                                 'class' => 'Paws::AutoScaling::NotificationConfiguration'
+                                               }
+             },
+  'IsRequired' => {
+                    'NotificationConfigurations' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +49,7 @@ this string for the C<NextToken> value when requesting the next set of
 items. This value is null when there are no more items to return.
 
 
-=head2 B<REQUIRED> NotificationConfigurations => ArrayRef[L<Paws::AutoScaling::NotificationConfiguration>]
+=head2 B<REQUIRED> NotificationConfigurations => ArrayRef[AutoScaling_NotificationConfiguration]
 
 The notification configurations.
 

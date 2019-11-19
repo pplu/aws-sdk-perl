@@ -1,9 +1,28 @@
 
 package Paws::S3Control::DescribeJobResult;
-  use Moose;
-  has Job => (is => 'ro', isa => 'Paws::S3Control::JobDescriptor');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::S3Control::Types qw/S3Control_JobDescriptor/;
+  has Job => (is => 'ro', isa => S3Control_JobDescriptor);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Job' => {
+                          'type' => 'S3Control_JobDescriptor',
+                          'class' => 'Paws::S3Control::JobDescriptor'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::S3Control::DescribeJobResult
 =head1 ATTRIBUTES
 
 
-=head2 Job => L<Paws::S3Control::JobDescriptor>
+=head2 Job => S3Control_JobDescriptor
 
 Contains the configuration parameters and status for the job specified
 in the C<Describe Job> request.

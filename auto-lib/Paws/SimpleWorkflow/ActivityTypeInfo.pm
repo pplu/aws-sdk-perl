@@ -1,10 +1,52 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ActivityTypeInfo;
-  use Moose;
-  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', request_name => 'activityType', traits => ['NameInRequest'], required => 1);
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest'], required => 1);
-  has DeprecationDate => (is => 'ro', isa => 'Str', request_name => 'deprecationDate', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_ActivityType/;
+  has ActivityType => (is => 'ro', isa => SimpleWorkflow_ActivityType, required => 1);
+  has CreationDate => (is => 'ro', isa => Str, required => 1);
+  has DeprecationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DeprecationDate' => 'deprecationDate',
+                       'Status' => 'status',
+                       'Description' => 'description',
+                       'ActivityType' => 'activityType',
+                       'CreationDate' => 'creationDate'
+                     },
+  'IsRequired' => {
+                    'ActivityType' => 1,
+                    'CreationDate' => 1,
+                    'Status' => 1
+                  },
+  'types' => {
+               'DeprecationDate' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ActivityType' => {
+                                   'type' => 'SimpleWorkflow_ActivityType',
+                                   'class' => 'Paws::SimpleWorkflow::ActivityType'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +82,7 @@ Detailed information about an activity type.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
+=head2 B<REQUIRED> ActivityType => SimpleWorkflow_ActivityType
 
   The ActivityType type structure representing the activity type.
 

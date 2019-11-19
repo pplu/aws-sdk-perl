@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::PutConfigurationRecorder;
-  use Moose;
-  has ConfigurationRecorder => (is => 'ro', isa => 'Paws::Config::ConfigurationRecorder', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_ConfigurationRecorder/;
+  has ConfigurationRecorder => (is => 'ro', isa => Config_ConfigurationRecorder, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutConfigurationRecorder');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutConfigurationRecorder');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfigurationRecorder' => 1
+                  },
+  'types' => {
+               'ConfigurationRecorder' => {
+                                            'class' => 'Paws::Config::ConfigurationRecorder',
+                                            'type' => 'Config_ConfigurationRecorder'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +69,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ConfigurationRecorder => L<Paws::Config::ConfigurationRecorder>
+=head2 B<REQUIRED> ConfigurationRecorder => Config_ConfigurationRecorder
 
 The configuration recorder object that records each configuration
 change made to the resources.

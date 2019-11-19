@@ -1,16 +1,48 @@
 
 package Paws::EC2::SearchTransitGatewayRoutes;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' , required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has TransitGatewayRouteTableId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::EC2::Types qw/EC2_Filter/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[EC2_Filter], required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has TransitGatewayRouteTableId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SearchTransitGatewayRoutes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::SearchTransitGatewayRoutesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SearchTransitGatewayRoutes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::SearchTransitGatewayRoutesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'class' => 'Paws::EC2::Filter',
+                              'type' => 'ArrayRef[EC2_Filter]'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'TransitGatewayRouteTableId' => {
+                                                 'type' => 'Str'
+                                               },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             },
+  'IsRequired' => {
+                    'Filters' => 1,
+                    'TransitGatewayRouteTableId' => 1
+                  },
+  'NameInRequest' => {
+                       'Filters' => 'Filter'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -33,8 +65,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SearchTransitGatewayRoutesResult = $ec2->SearchTransitGatewayRoutes(
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
       ],
@@ -65,7 +99,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> Filters => ArrayRef[L<Paws::EC2::Filter>]
+=head2 B<REQUIRED> Filters => ArrayRef[EC2_Filter]
 
 One or more filters. The possible values are:
 

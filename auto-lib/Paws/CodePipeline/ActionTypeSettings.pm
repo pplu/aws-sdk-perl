@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionTypeSettings;
-  use Moose;
-  has EntityUrlTemplate => (is => 'ro', isa => 'Str', request_name => 'entityUrlTemplate', traits => ['NameInRequest']);
-  has ExecutionUrlTemplate => (is => 'ro', isa => 'Str', request_name => 'executionUrlTemplate', traits => ['NameInRequest']);
-  has RevisionUrlTemplate => (is => 'ro', isa => 'Str', request_name => 'revisionUrlTemplate', traits => ['NameInRequest']);
-  has ThirdPartyConfigurationUrl => (is => 'ro', isa => 'Str', request_name => 'thirdPartyConfigurationUrl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has EntityUrlTemplate => (is => 'ro', isa => Str);
+  has ExecutionUrlTemplate => (is => 'ro', isa => Str);
+  has RevisionUrlTemplate => (is => 'ro', isa => Str);
+  has ThirdPartyConfigurationUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ThirdPartyConfigurationUrl' => 'thirdPartyConfigurationUrl',
+                       'EntityUrlTemplate' => 'entityUrlTemplate',
+                       'RevisionUrlTemplate' => 'revisionUrlTemplate',
+                       'ExecutionUrlTemplate' => 'executionUrlTemplate'
+                     },
+  'types' => {
+               'EntityUrlTemplate' => {
+                                        'type' => 'Str'
+                                      },
+               'ThirdPartyConfigurationUrl' => {
+                                                 'type' => 'Str'
+                                               },
+               'RevisionUrlTemplate' => {
+                                          'type' => 'Str'
+                                        },
+               'ExecutionUrlTemplate' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

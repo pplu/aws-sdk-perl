@@ -1,17 +1,68 @@
+# Generated from default/object.tt
 package Paws::IAM::ManagedPolicyDetail;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has AttachmentCount => (is => 'ro', isa => 'Int');
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has DefaultVersionId => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has IsAttachable => (is => 'ro', isa => 'Bool');
-  has Path => (is => 'ro', isa => 'Str');
-  has PermissionsBoundaryUsageCount => (is => 'ro', isa => 'Int');
-  has PolicyId => (is => 'ro', isa => 'Str');
-  has PolicyName => (is => 'ro', isa => 'Str');
-  has PolicyVersionList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyVersion]');
-  has UpdateDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef/;
+  use Paws::IAM::Types qw/IAM_PolicyVersion/;
+  has Arn => (is => 'ro', isa => Str);
+  has AttachmentCount => (is => 'ro', isa => Int);
+  has CreateDate => (is => 'ro', isa => Str);
+  has DefaultVersionId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IsAttachable => (is => 'ro', isa => Bool);
+  has Path => (is => 'ro', isa => Str);
+  has PermissionsBoundaryUsageCount => (is => 'ro', isa => Int);
+  has PolicyId => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str);
+  has PolicyVersionList => (is => 'ro', isa => ArrayRef[IAM_PolicyVersion]);
+  has UpdateDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DefaultVersionId' => {
+                                       'type' => 'Str'
+                                     },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'UpdateDate' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'PermissionsBoundaryUsageCount' => {
+                                                    'type' => 'Int'
+                                                  },
+               'PolicyVersionList' => {
+                                        'class' => 'Paws::IAM::PolicyVersion',
+                                        'type' => 'ArrayRef[IAM_PolicyVersion]'
+                                      },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'IsAttachable' => {
+                                   'type' => 'Bool'
+                                 },
+               'AttachmentCount' => {
+                                      'type' => 'Int'
+                                    },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'PolicyId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -130,7 +181,7 @@ in the I<IAM User Guide>.
   The friendly name (not ARN) identifying the policy.
 
 
-=head2 PolicyVersionList => ArrayRef[L<Paws::IAM::PolicyVersion>]
+=head2 PolicyVersionList => ArrayRef[IAM_PolicyVersion]
 
   A list containing information about the versions of the policy.
 

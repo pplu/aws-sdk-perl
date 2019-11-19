@@ -1,17 +1,49 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ApplicationInsights::UpdateComponentConfiguration;
-  use Moose;
-  has ComponentConfiguration => (is => 'ro', isa => 'Str');
-  has ComponentName => (is => 'ro', isa => 'Str', required => 1);
-  has Monitor => (is => 'ro', isa => 'Bool');
-  has ResourceGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Tier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApplicationInsights::Types qw//;
+  has ComponentConfiguration => (is => 'ro', isa => Str, predicate => 1);
+  has ComponentName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Monitor => (is => 'ro', isa => Bool, predicate => 1);
+  has ResourceGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tier => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateComponentConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApplicationInsights::UpdateComponentConfigurationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateComponentConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApplicationInsights::UpdateComponentConfigurationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tier' => {
+                           'type' => 'Str'
+                         },
+               'Monitor' => {
+                              'type' => 'Bool'
+                            },
+               'ComponentConfiguration' => {
+                                             'type' => 'Str'
+                                           },
+               'ResourceGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'ComponentName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ComponentName' => 1,
+                    'ResourceGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

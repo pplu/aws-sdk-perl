@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EventItemResponse;
-  use Moose;
-  has Message => (is => 'ro', isa => 'Str');
-  has StatusCode => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Pinpoint::Types qw//;
+  has Message => (is => 'ro', isa => Str);
+  has StatusCode => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'StatusCode' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

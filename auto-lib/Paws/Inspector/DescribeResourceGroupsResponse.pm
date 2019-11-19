@@ -1,10 +1,41 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Inspector::DescribeResourceGroupsResponse;
-  use Moose;
-  has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['NameInRequest'], request_name => 'failedItems' , required => 1);
-  has ResourceGroups => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::ResourceGroup]', traits => ['NameInRequest'], request_name => 'resourceGroups' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Inspector::Types qw/Inspector_FailedItems Inspector_ResourceGroup/;
+  has FailedItems => (is => 'ro', isa => Inspector_FailedItems, required => 1);
+  has ResourceGroups => (is => 'ro', isa => ArrayRef[Inspector_ResourceGroup], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ResourceGroups' => 'resourceGroups',
+                       'FailedItems' => 'failedItems'
+                     },
+  'IsRequired' => {
+                    'ResourceGroups' => 1,
+                    'FailedItems' => 1
+                  },
+  'types' => {
+               'FailedItems' => {
+                                  'type' => 'Inspector_FailedItems',
+                                  'class' => 'Paws::Inspector::FailedItems'
+                                },
+               'ResourceGroups' => {
+                                     'type' => 'ArrayRef[Inspector_ResourceGroup]',
+                                     'class' => 'Paws::Inspector::ResourceGroup'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,13 +46,13 @@ Paws::Inspector::DescribeResourceGroupsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FailedItems => L<Paws::Inspector::FailedItems>
+=head2 B<REQUIRED> FailedItems => Inspector_FailedItems
 
 Resource group details that cannot be described. An error code is
 provided for each failed item.
 
 
-=head2 B<REQUIRED> ResourceGroups => ArrayRef[L<Paws::Inspector::ResourceGroup>]
+=head2 B<REQUIRED> ResourceGroups => ArrayRef[Inspector_ResourceGroup]
 
 Information about a resource group.
 

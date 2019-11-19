@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::OutputGroupDetail;
-  use Moose;
-  has OutputDetails => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputDetail]', request_name => 'outputDetails', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_OutputDetail/;
+  has OutputDetails => (is => 'ro', isa => ArrayRef[MediaConvert_OutputDetail]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputDetails' => {
+                                    'class' => 'Paws::MediaConvert::OutputDetail',
+                                    'type' => 'ArrayRef[MediaConvert_OutputDetail]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'OutputDetails' => 'outputDetails'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Contains details about the output groups specified in the job settings.
 =head1 ATTRIBUTES
 
 
-=head2 OutputDetails => ArrayRef[L<Paws::MediaConvert::OutputDetail>]
+=head2 OutputDetails => ArrayRef[MediaConvert_OutputDetail]
 
   Details about the output
 

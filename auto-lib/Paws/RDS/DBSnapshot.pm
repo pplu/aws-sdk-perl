@@ -1,33 +1,135 @@
+# Generated from default/object.tt
 package Paws::RDS::DBSnapshot;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has DbiResourceId => (is => 'ro', isa => 'Str');
-  has DBSnapshotArn => (is => 'ro', isa => 'Str');
-  has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
-  has InstanceCreateTime => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has PercentProgress => (is => 'ro', isa => 'Int');
-  has Port => (is => 'ro', isa => 'Int');
-  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]', request_name => 'ProcessorFeature', traits => ['NameInRequest']);
-  has SnapshotCreateTime => (is => 'ro', isa => 'Str');
-  has SnapshotType => (is => 'ro', isa => 'Str');
-  has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
-  has SourceRegion => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StorageType => (is => 'ro', isa => 'Str');
-  has TdeCredentialArn => (is => 'ro', isa => 'Str');
-  has Timezone => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str Bool ArrayRef/;
+  use Paws::RDS::Types qw/RDS_ProcessorFeature/;
+  has AllocatedStorage => (is => 'ro', isa => Int);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str);
+  has DbiResourceId => (is => 'ro', isa => Str);
+  has DBSnapshotArn => (is => 'ro', isa => Str);
+  has DBSnapshotIdentifier => (is => 'ro', isa => Str);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => Bool);
+  has InstanceCreateTime => (is => 'ro', isa => Str);
+  has Iops => (is => 'ro', isa => Int);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LicenseModel => (is => 'ro', isa => Str);
+  has MasterUsername => (is => 'ro', isa => Str);
+  has OptionGroupName => (is => 'ro', isa => Str);
+  has PercentProgress => (is => 'ro', isa => Int);
+  has Port => (is => 'ro', isa => Int);
+  has ProcessorFeatures => (is => 'ro', isa => ArrayRef[RDS_ProcessorFeature]);
+  has SnapshotCreateTime => (is => 'ro', isa => Str);
+  has SnapshotType => (is => 'ro', isa => Str);
+  has SourceDBSnapshotIdentifier => (is => 'ro', isa => Str);
+  has SourceRegion => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StorageType => (is => 'ro', isa => Str);
+  has TdeCredentialArn => (is => 'ro', isa => Str);
+  has Timezone => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'TdeCredentialArn' => {
+                                       'type' => 'Str'
+                                     },
+               'ProcessorFeatures' => {
+                                        'type' => 'ArrayRef[RDS_ProcessorFeature]',
+                                        'class' => 'Paws::RDS::ProcessorFeature'
+                                      },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'InstanceCreateTime' => {
+                                         'type' => 'Str'
+                                       },
+               'DBSnapshotIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'SnapshotCreateTime' => {
+                                         'type' => 'Str'
+                                       },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'IAMDatabaseAuthenticationEnabled' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'SnapshotType' => {
+                                   'type' => 'Str'
+                                 },
+               'DBSnapshotArn' => {
+                                    'type' => 'Str'
+                                  },
+               'DbiResourceId' => {
+                                    'type' => 'Str'
+                                  },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'SourceDBSnapshotIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'SourceRegion' => {
+                                   'type' => 'Str'
+                                 },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'PercentProgress' => {
+                                      'type' => 'Int'
+                                    },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ProcessorFeatures' => 'ProcessorFeature'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -164,7 +266,7 @@ DB snapshot.
 time of the snapshot.
 
 
-=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+=head2 ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]
 
   The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance when the DB snapshot was created.

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::ListByteMatchSetsResponse;
-  use Moose;
-  has ByteMatchSets => (is => 'ro', isa => 'ArrayRef[Paws::WAF::ByteMatchSetSummary]');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_ByteMatchSetSummary/;
+  has ByteMatchSets => (is => 'ro', isa => ArrayRef[WAF_ByteMatchSetSummary]);
+  has NextMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'ByteMatchSets' => {
+                                    'class' => 'Paws::WAF::ByteMatchSetSummary',
+                                    'type' => 'ArrayRef[WAF_ByteMatchSetSummary]'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::WAF::ListByteMatchSetsResponse
 =head1 ATTRIBUTES
 
 
-=head2 ByteMatchSets => ArrayRef[L<Paws::WAF::ByteMatchSetSummary>]
+=head2 ByteMatchSets => ArrayRef[WAF_ByteMatchSetSummary]
 
 An array of ByteMatchSetSummary objects.
 

@@ -1,16 +1,49 @@
 
 package Paws::IoT::UpdateBillingGroup;
-  use Moose;
-  has BillingGroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'billingGroupName', required => 1);
-  has BillingGroupProperties => (is => 'ro', isa => 'Paws::IoT::BillingGroupProperties', traits => ['NameInRequest'], request_name => 'billingGroupProperties', required => 1);
-  has ExpectedVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'expectedVersion');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw/IoT_BillingGroupProperties/;
+  has BillingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BillingGroupProperties => (is => 'ro', isa => IoT_BillingGroupProperties, required => 1, predicate => 1);
+  has ExpectedVersion => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBillingGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/billing-groups/{billingGroupName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::UpdateBillingGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateBillingGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/billing-groups/{billingGroupName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::UpdateBillingGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BillingGroupName' => 1,
+                    'BillingGroupProperties' => 1
+                  },
+  'NameInRequest' => {
+                       'ExpectedVersion' => 'expectedVersion',
+                       'BillingGroupProperties' => 'billingGroupProperties'
+                     },
+  'types' => {
+               'ExpectedVersion' => {
+                                      'type' => 'Int'
+                                    },
+               'BillingGroupName' => {
+                                       'type' => 'Str'
+                                     },
+               'BillingGroupProperties' => {
+                                             'type' => 'IoT_BillingGroupProperties',
+                                             'class' => 'Paws::IoT::BillingGroupProperties'
+                                           }
+             },
+  'ParamInURI' => {
+                    'BillingGroupName' => 'billingGroupName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +89,7 @@ The name of the billing group.
 
 
 
-=head2 B<REQUIRED> BillingGroupProperties => L<Paws::IoT::BillingGroupProperties>
+=head2 B<REQUIRED> BillingGroupProperties => IoT_BillingGroupProperties
 
 The properties of the billing group.
 

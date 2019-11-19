@@ -1,17 +1,52 @@
 
 package Paws::CloudDirectory::AttachObject;
-  use Moose;
-  has ChildReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has LinkName => (is => 'ro', isa => 'Str', required => 1);
-  has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference/;
+  has ChildReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1, predicate => 1);
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LinkName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ParentReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachObject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/object/attach');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::AttachObjectResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AttachObject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/object/attach');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::AttachObjectResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'LinkName' => {
+                               'type' => 'Str'
+                             },
+               'ChildReference' => {
+                                     'class' => 'Paws::CloudDirectory::ObjectReference',
+                                     'type' => 'CloudDirectory_ObjectReference'
+                                   },
+               'ParentReference' => {
+                                      'type' => 'CloudDirectory_ObjectReference',
+                                      'class' => 'Paws::CloudDirectory::ObjectReference'
+                                    }
+             },
+  'IsRequired' => {
+                    'DirectoryArn' => 1,
+                    'LinkName' => 1,
+                    'ParentReference' => 1,
+                    'ChildReference' => 1
+                  },
+  'ParamInHeader' => {
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +90,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ChildReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ChildReference => CloudDirectory_ObjectReference
 
 The child object reference to be attached to the object.
 
@@ -74,7 +109,7 @@ The link name with which the child object is attached to the parent.
 
 
 
-=head2 B<REQUIRED> ParentReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ParentReference => CloudDirectory_ObjectReference
 
 The parent object reference.
 

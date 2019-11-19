@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::FileSourceSettings;
-  use Moose;
-  has Convert608To708 => (is => 'ro', isa => 'Str', request_name => 'convert608To708', traits => ['NameInRequest']);
-  has SourceFile => (is => 'ro', isa => 'Str', request_name => 'sourceFile', traits => ['NameInRequest']);
-  has TimeDelta => (is => 'ro', isa => 'Int', request_name => 'timeDelta', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw//;
+  has Convert608To708 => (is => 'ro', isa => Str);
+  has SourceFile => (is => 'ro', isa => Str);
+  has TimeDelta => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceFile' => {
+                                 'type' => 'Str'
+                               },
+               'Convert608To708' => {
+                                      'type' => 'Str'
+                                    },
+               'TimeDelta' => {
+                                'type' => 'Int'
+                              }
+             },
+  'NameInRequest' => {
+                       'SourceFile' => 'sourceFile',
+                       'Convert608To708' => 'convert608To708',
+                       'TimeDelta' => 'timeDelta'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

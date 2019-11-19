@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Kinesis::HashKeyRange;
-  use Moose;
-  has EndingHashKey => (is => 'ro', isa => 'Str', required => 1);
-  has StartingHashKey => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kinesis::Types qw//;
+  has EndingHashKey => (is => 'ro', isa => Str, required => 1);
+  has StartingHashKey => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'EndingHashKey' => 1,
+                    'StartingHashKey' => 1
+                  },
+  'types' => {
+               'StartingHashKey' => {
+                                      'type' => 'Str'
+                                    },
+               'EndingHashKey' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

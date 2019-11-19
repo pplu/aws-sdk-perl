@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::DS::SchemaExtensionInfo;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DirectoryId => (is => 'ro', isa => 'Str');
-  has EndDateTime => (is => 'ro', isa => 'Str');
-  has SchemaExtensionId => (is => 'ro', isa => 'Str');
-  has SchemaExtensionStatus => (is => 'ro', isa => 'Str');
-  has SchemaExtensionStatusReason => (is => 'ro', isa => 'Str');
-  has StartDateTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DS::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has DirectoryId => (is => 'ro', isa => Str);
+  has EndDateTime => (is => 'ro', isa => Str);
+  has SchemaExtensionId => (is => 'ro', isa => Str);
+  has SchemaExtensionStatus => (is => 'ro', isa => Str);
+  has SchemaExtensionStatusReason => (is => 'ro', isa => Str);
+  has StartDateTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SchemaExtensionId' => {
+                                        'type' => 'Str'
+                                      },
+               'SchemaExtensionStatusReason' => {
+                                                  'type' => 'Str'
+                                                },
+               'StartDateTime' => {
+                                    'type' => 'Str'
+                                  },
+               'EndDateTime' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'SchemaExtensionStatus' => {
+                                            'type' => 'Str'
+                                          },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

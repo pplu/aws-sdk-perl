@@ -1,15 +1,42 @@
 
 package Paws::IoTAnalytics::RunPipelineActivity;
-  use Moose;
-  has Payloads => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'payloads', required => 1);
-  has PipelineActivity => (is => 'ro', isa => 'Paws::IoTAnalytics::PipelineActivity', traits => ['NameInRequest'], request_name => 'pipelineActivity', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_PipelineActivity/;
+  has Payloads => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has PipelineActivity => (is => 'ro', isa => IoTAnalytics_PipelineActivity, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RunPipelineActivity');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/pipelineactivities/run');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTAnalytics::RunPipelineActivityResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RunPipelineActivity');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/pipelineactivities/run');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTAnalytics::RunPipelineActivityResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PipelineActivity' => 'pipelineActivity',
+                       'Payloads' => 'payloads'
+                     },
+  'IsRequired' => {
+                    'PipelineActivity' => 1,
+                    'Payloads' => 1
+                  },
+  'types' => {
+               'Payloads' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'PipelineActivity' => {
+                                       'class' => 'Paws::IoTAnalytics::PipelineActivity',
+                                       'type' => 'IoTAnalytics_PipelineActivity'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -117,7 +144,7 @@ The sample message payloads on which the pipeline activity is run.
 
 
 
-=head2 B<REQUIRED> PipelineActivity => L<Paws::IoTAnalytics::PipelineActivity>
+=head2 B<REQUIRED> PipelineActivity => IoTAnalytics_PipelineActivity
 
 The pipeline activity that is run. This must not be a 'channel'
 activity or a 'datastore' activity because these activities are used in

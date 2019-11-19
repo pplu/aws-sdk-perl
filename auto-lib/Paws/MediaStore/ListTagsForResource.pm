@@ -1,13 +1,32 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MediaStore::ListTagsForResource;
-  use Moose;
-  has Resource => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaStore::Types qw//;
+  has Resource => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTagsForResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaStore::ListTagsForResourceOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTagsForResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaStore::ListTagsForResourceOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Resource' => 1
+                  },
+  'types' => {
+               'Resource' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

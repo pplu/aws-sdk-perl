@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::TimeBasedLinear;
-  use Moose;
-  has LinearInterval => (is => 'ro', isa => 'Int', request_name => 'linearInterval', traits => ['NameInRequest']);
-  has LinearPercentage => (is => 'ro', isa => 'Int', request_name => 'linearPercentage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::CodeDeploy::Types qw//;
+  has LinearInterval => (is => 'ro', isa => Int);
+  has LinearPercentage => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LinearInterval' => 'linearInterval',
+                       'LinearPercentage' => 'linearPercentage'
+                     },
+  'types' => {
+               'LinearInterval' => {
+                                     'type' => 'Int'
+                                   },
+               'LinearPercentage' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

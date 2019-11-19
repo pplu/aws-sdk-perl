@@ -1,12 +1,39 @@
+# Generated from callresult_class.tt
 
 package Paws::ElasticBeanstalk::ApplyEnvironmentManagedActionResult;
-  use Moose;
-  has ActionDescription => (is => 'ro', isa => 'Str');
-  has ActionId => (is => 'ro', isa => 'Str');
-  has ActionType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ActionDescription => (is => 'ro', isa => Str);
+  has ActionId => (is => 'ro', isa => Str);
+  has ActionType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ActionType' => {
+                                 'type' => 'Str'
+                               },
+               'ActionId' => {
+                               'type' => 'Str'
+                             },
+               'ActionDescription' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

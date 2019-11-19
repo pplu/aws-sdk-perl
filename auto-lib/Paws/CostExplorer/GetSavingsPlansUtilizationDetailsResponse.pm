@@ -1,12 +1,46 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CostExplorer::GetSavingsPlansUtilizationDetailsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SavingsPlansUtilizationDetails => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::SavingsPlansUtilizationDetail]', required => 1);
-  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
-  has Total => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansUtilizationAggregates');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CostExplorer::Types qw/CostExplorer_DateInterval CostExplorer_SavingsPlansUtilizationAggregates CostExplorer_SavingsPlansUtilizationDetail/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SavingsPlansUtilizationDetails => (is => 'ro', isa => ArrayRef[CostExplorer_SavingsPlansUtilizationDetail], required => 1);
+  has TimePeriod => (is => 'ro', isa => CostExplorer_DateInterval, required => 1);
+  has Total => (is => 'ro', isa => CostExplorer_SavingsPlansUtilizationAggregates);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SavingsPlansUtilizationDetails' => 1,
+                    'TimePeriod' => 1
+                  },
+  'types' => {
+               'TimePeriod' => {
+                                 'type' => 'CostExplorer_DateInterval',
+                                 'class' => 'Paws::CostExplorer::DateInterval'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Total' => {
+                            'type' => 'CostExplorer_SavingsPlansUtilizationAggregates',
+                            'class' => 'Paws::CostExplorer::SavingsPlansUtilizationAggregates'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SavingsPlansUtilizationDetails' => {
+                                                     'type' => 'ArrayRef[CostExplorer_SavingsPlansUtilizationDetail]',
+                                                     'class' => 'Paws::CostExplorer::SavingsPlansUtilizationDetail'
+                                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,18 +58,18 @@ provides the token when the response from a previous call has more
 results than the maximum page size.
 
 
-=head2 B<REQUIRED> SavingsPlansUtilizationDetails => ArrayRef[L<Paws::CostExplorer::SavingsPlansUtilizationDetail>]
+=head2 B<REQUIRED> SavingsPlansUtilizationDetails => ArrayRef[CostExplorer_SavingsPlansUtilizationDetail]
 
 Retrieves a single daily or monthly Savings Plans utilization rate and
 details for your account.
 
 
-=head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
+=head2 B<REQUIRED> TimePeriod => CostExplorer_DateInterval
 
 
 
 
-=head2 Total => L<Paws::CostExplorer::SavingsPlansUtilizationAggregates>
+=head2 Total => CostExplorer_SavingsPlansUtilizationAggregates
 
 The total Savings Plans utilization, regardless of time period.
 

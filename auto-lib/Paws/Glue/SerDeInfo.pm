@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Glue::SerDeInfo;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
-  has SerializationLibrary => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_ParametersMap/;
+  has Name => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => Glue_ParametersMap);
+  has SerializationLibrary => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::Glue::ParametersMap',
+                                 'type' => 'Glue_ParametersMap'
+                               },
+               'SerializationLibrary' => {
+                                           'type' => 'Str'
+                                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +68,7 @@ serves as an extractor and loader.
   Name of the SerDe.
 
 
-=head2 Parameters => L<Paws::Glue::ParametersMap>
+=head2 Parameters => Glue_ParametersMap
 
   These key-value pairs define initialization parameters for the SerDe.
 

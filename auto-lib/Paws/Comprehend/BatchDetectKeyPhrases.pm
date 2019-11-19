@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Comprehend::BatchDetectKeyPhrases;
-  use Moose;
-  has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
-  has TextList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Comprehend::Types qw//;
+  has LanguageCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TextList => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchDetectKeyPhrases');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::BatchDetectKeyPhrasesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchDetectKeyPhrases');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Comprehend::BatchDetectKeyPhrasesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TextList' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'TextList' => 1,
+                    'LanguageCode' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

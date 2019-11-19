@@ -1,16 +1,68 @@
 
 package Paws::Signer::GetSigningProfileResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has Overrides => (is => 'ro', isa => 'Paws::Signer::SigningPlatformOverrides', traits => ['NameInRequest'], request_name => 'overrides');
-  has PlatformId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformId');
-  has ProfileName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'profileName');
-  has SigningMaterial => (is => 'ro', isa => 'Paws::Signer::SigningMaterial', traits => ['NameInRequest'], request_name => 'signingMaterial');
-  has SigningParameters => (is => 'ro', isa => 'Paws::Signer::SigningParameters', traits => ['NameInRequest'], request_name => 'signingParameters');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has Tags => (is => 'ro', isa => 'Paws::Signer::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Signer::Types qw/Signer_SigningParameters Signer_SigningPlatformOverrides Signer_TagMap Signer_SigningMaterial/;
+  has Arn => (is => 'ro', isa => Str);
+  has Overrides => (is => 'ro', isa => Signer_SigningPlatformOverrides);
+  has PlatformId => (is => 'ro', isa => Str);
+  has ProfileName => (is => 'ro', isa => Str);
+  has SigningMaterial => (is => 'ro', isa => Signer_SigningMaterial);
+  has SigningParameters => (is => 'ro', isa => Signer_SigningParameters);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => Signer_TagMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SigningParameters' => {
+                                        'type' => 'Signer_SigningParameters',
+                                        'class' => 'Paws::Signer::SigningParameters'
+                                      },
+               'ProfileName' => {
+                                  'type' => 'Str'
+                                },
+               'Overrides' => {
+                                'class' => 'Paws::Signer::SigningPlatformOverrides',
+                                'type' => 'Signer_SigningPlatformOverrides'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::Signer::TagMap',
+                           'type' => 'Signer_TagMap'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'PlatformId' => {
+                                 'type' => 'Str'
+                               },
+               'SigningMaterial' => {
+                                      'type' => 'Signer_SigningMaterial',
+                                      'class' => 'Paws::Signer::SigningMaterial'
+                                    },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Overrides' => 'overrides',
+                       'SigningParameters' => 'signingParameters',
+                       'ProfileName' => 'profileName',
+                       'SigningMaterial' => 'signingMaterial',
+                       'Arn' => 'arn',
+                       'PlatformId' => 'platformId',
+                       'Tags' => 'tags',
+                       'Status' => 'status'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +79,7 @@ Paws::Signer::GetSigningProfileResponse
 The Amazon Resource Name (ARN) for the signing profile.
 
 
-=head2 Overrides => L<Paws::Signer::SigningPlatformOverrides>
+=head2 Overrides => Signer_SigningPlatformOverrides
 
 A list of overrides applied by the target signing profile for signing
 operations.
@@ -43,13 +95,13 @@ The ID of the platform that is used by the target signing profile.
 The name of the target signing profile.
 
 
-=head2 SigningMaterial => L<Paws::Signer::SigningMaterial>
+=head2 SigningMaterial => Signer_SigningMaterial
 
 The ARN of the certificate that the target profile uses for signing
 operations.
 
 
-=head2 SigningParameters => L<Paws::Signer::SigningParameters>
+=head2 SigningParameters => Signer_SigningParameters
 
 A map of key-value pairs for signing operations that is attached to the
 target signing profile.
@@ -60,7 +112,7 @@ target signing profile.
 The status of the target signing profile.
 
 Valid values are: C<"Active">, C<"Canceled">
-=head2 Tags => L<Paws::Signer::TagMap>
+=head2 Tags => Signer_TagMap
 
 A list of tags associated with the signing profile.
 

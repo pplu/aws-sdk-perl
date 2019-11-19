@@ -1,12 +1,52 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::VolumeConfiguration;
-  use Moose;
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has Iops => (is => 'ro', isa => 'Int');
-  has MountPoint => (is => 'ro', isa => 'Str', required => 1);
-  has NumberOfDisks => (is => 'ro', isa => 'Int', required => 1);
-  has RaidLevel => (is => 'ro', isa => 'Int');
-  has Size => (is => 'ro', isa => 'Int', required => 1);
-  has VolumeType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Int Str/;
+  use Paws::OpsWorks::Types qw//;
+  has Encrypted => (is => 'ro', isa => Bool);
+  has Iops => (is => 'ro', isa => Int);
+  has MountPoint => (is => 'ro', isa => Str, required => 1);
+  has NumberOfDisks => (is => 'ro', isa => Int, required => 1);
+  has RaidLevel => (is => 'ro', isa => Int);
+  has Size => (is => 'ro', isa => Int, required => 1);
+  has VolumeType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MountPoint' => {
+                                 'type' => 'Str'
+                               },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               },
+               'NumberOfDisks' => {
+                                    'type' => 'Int'
+                                  },
+               'RaidLevel' => {
+                                'type' => 'Int'
+                              },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'Size' => {
+                           'type' => 'Int'
+                         }
+             },
+  'IsRequired' => {
+                    'NumberOfDisks' => 1,
+                    'MountPoint' => 1,
+                    'Size' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

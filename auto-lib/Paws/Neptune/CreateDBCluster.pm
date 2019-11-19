@@ -1,35 +1,122 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::CreateDBCluster;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CharacterSetName => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str', required => 1);
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PreSignedUrl => (is => 'ro', isa => 'Str');
-  has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Tag]');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int Bool/;
+  use Paws::Neptune::Types qw/Neptune_Tag/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has CharacterSetName => (is => 'ro', isa => Str, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUsername => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreSignedUrl => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationSourceIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has StorageEncrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Neptune_Tag], predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::CreateDBClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDBCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::CreateDBClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateDBClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DBClusterIdentifier' => 1,
+                    'Engine' => 1
+                  },
+  'types' => {
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          },
+               'CharacterSetName' => {
+                                       'type' => 'Str'
+                                     },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'PreSignedUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'Tags' => {
+                           'type' => 'ArrayRef[Neptune_Tag]',
+                           'class' => 'Paws::Neptune::Tag'
+                         },
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'ReplicationSourceIdentifier' => {
+                                                  'type' => 'Str'
+                                                },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -391,7 +478,7 @@ Specifies whether the DB cluster is encrypted.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
+=head2 Tags => ArrayRef[Neptune_Tag]
 
 The tags to assign to the new DB cluster.
 

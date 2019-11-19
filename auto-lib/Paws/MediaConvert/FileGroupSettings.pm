@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::FileGroupSettings;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
-  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_DestinationSettings/;
+  has Destination => (is => 'ro', isa => Str);
+  has DestinationSettings => (is => 'ro', isa => MediaConvert_DestinationSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Destination' => 'destination',
+                       'DestinationSettings' => 'destinationSettings'
+                     },
+  'types' => {
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'DestinationSettings' => {
+                                          'type' => 'MediaConvert_DestinationSettings',
+                                          'class' => 'Paws::MediaConvert::DestinationSettings'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +72,7 @@ filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
 
 
-=head2 DestinationSettings => L<Paws::MediaConvert::DestinationSettings>
+=head2 DestinationSettings => MediaConvert_DestinationSettings
 
   Settings associated with the destination. Will vary based on the type
 of destination

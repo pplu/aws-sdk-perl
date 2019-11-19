@@ -1,12 +1,57 @@
+# Generated from default/object.tt
 package Paws::ECR::Repository;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has ImageScanningConfiguration => (is => 'ro', isa => 'Paws::ECR::ImageScanningConfiguration', request_name => 'imageScanningConfiguration', traits => ['NameInRequest']);
-  has ImageTagMutability => (is => 'ro', isa => 'Str', request_name => 'imageTagMutability', traits => ['NameInRequest']);
-  has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
-  has RepositoryArn => (is => 'ro', isa => 'Str', request_name => 'repositoryArn', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
-  has RepositoryUri => (is => 'ro', isa => 'Str', request_name => 'repositoryUri', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw/ECR_ImageScanningConfiguration/;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has ImageScanningConfiguration => (is => 'ro', isa => ECR_ImageScanningConfiguration);
+  has ImageTagMutability => (is => 'ro', isa => Str);
+  has RegistryId => (is => 'ro', isa => Str);
+  has RepositoryArn => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+  has RepositoryUri => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RepositoryUri' => {
+                                    'type' => 'Str'
+                                  },
+               'ImageScanningConfiguration' => {
+                                                 'type' => 'ECR_ImageScanningConfiguration',
+                                                 'class' => 'Paws::ECR::ImageScanningConfiguration'
+                                               },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'RepositoryArn' => {
+                                    'type' => 'Str'
+                                  },
+               'ImageTagMutability' => {
+                                         'type' => 'Str'
+                                       },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'ImageTagMutability' => 'imageTagMutability',
+                       'RepositoryName' => 'repositoryName',
+                       'RepositoryArn' => 'repositoryArn',
+                       'RegistryId' => 'registryId',
+                       'RepositoryUri' => 'repositoryUri',
+                       'ImageScanningConfiguration' => 'imageScanningConfiguration',
+                       'CreatedAt' => 'createdAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +93,7 @@ An object representing a repository.
 created.
 
 
-=head2 ImageScanningConfiguration => L<Paws::ECR::ImageScanningConfiguration>
+=head2 ImageScanningConfiguration => ECR_ImageScanningConfiguration
 
   
 

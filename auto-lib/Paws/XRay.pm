@@ -1,14 +1,15 @@
 package Paws::XRay;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'xray' }
   sub signing_name { 'xray' }
   sub version { '2016-04-12' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -379,7 +380,7 @@ Creates a group resource with a name and a filter expression.
 
 =over
 
-=item SamplingRule => L<Paws::XRay::SamplingRule>
+=item SamplingRule => XRay_SamplingRule
 
 
 =back
@@ -519,7 +520,7 @@ rules.
 
 =over
 
-=item SamplingStatisticsDocuments => ArrayRef[L<Paws::XRay::SamplingStatisticsDocument>]
+=item SamplingStatisticsDocuments => ArrayRef[XRay_SamplingStatisticsDocument]
 
 
 =back
@@ -622,7 +623,7 @@ Retrieves a service graph for one or more specific trace IDs.
 
 =item [Sampling => Bool]
 
-=item [SamplingStrategy => L<Paws::XRay::SamplingStrategy>]
+=item [SamplingStrategy => XRay_SamplingStrategy]
 
 =item [TimeRangeType => Str]
 
@@ -677,7 +678,7 @@ Updates the encryption configuration for X-Ray data.
 
 =over
 
-=item TelemetryRecords => ArrayRef[L<Paws::XRay::TelemetryRecord>]
+=item TelemetryRecords => ArrayRef[XRay_TelemetryRecord]
 
 =item [EC2InstanceId => Str]
 
@@ -809,7 +810,7 @@ Updates a group resource.
 
 =over
 
-=item SamplingRuleUpdate => L<Paws::XRay::SamplingRuleUpdate>
+=item SamplingRuleUpdate => XRay_SamplingRuleUpdate
 
 
 =back
@@ -911,9 +912,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::XRay::GetTraceGraphResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllTraceSummaries(sub { },EndTime => Str, StartTime => Str, [FilterExpression => Str, NextToken => Str, Sampling => Bool, SamplingStrategy => L<Paws::XRay::SamplingStrategy>, TimeRangeType => Str])
+=head2 GetAllTraceSummaries(sub { },EndTime => Str, StartTime => Str, [FilterExpression => Str, NextToken => Str, Sampling => Bool, SamplingStrategy => XRay_SamplingStrategy, TimeRangeType => Str])
 
-=head2 GetAllTraceSummaries(EndTime => Str, StartTime => Str, [FilterExpression => Str, NextToken => Str, Sampling => Bool, SamplingStrategy => L<Paws::XRay::SamplingStrategy>, TimeRangeType => Str])
+=head2 GetAllTraceSummaries(EndTime => Str, StartTime => Str, [FilterExpression => Str, NextToken => Str, Sampling => Bool, SamplingStrategy => XRay_SamplingStrategy, TimeRangeType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

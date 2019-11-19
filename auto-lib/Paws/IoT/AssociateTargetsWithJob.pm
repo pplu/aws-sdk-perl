@@ -1,16 +1,48 @@
 
 package Paws::IoT::AssociateTargetsWithJob;
-  use Moose;
-  has Comment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'comment');
-  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
-  has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targets', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::IoT::Types qw//;
+  has Comment => (is => 'ro', isa => Str, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateTargetsWithJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/jobs/{jobId}/targets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::AssociateTargetsWithJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateTargetsWithJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/jobs/{jobId}/targets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::AssociateTargetsWithJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'JobId' => 'jobId'
+                  },
+  'types' => {
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'Targets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            }
+             },
+  'NameInRequest' => {
+                       'Comment' => 'comment',
+                       'Targets' => 'targets'
+                     },
+  'IsRequired' => {
+                    'Targets' => 1,
+                    'JobId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

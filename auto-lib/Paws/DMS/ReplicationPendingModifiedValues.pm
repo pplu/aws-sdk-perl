@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::DMS::ReplicationPendingModifiedValues;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str Bool/;
+  use Paws::DMS::Types qw//;
+  has AllocatedStorage => (is => 'ro', isa => Int);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has MultiAZ => (is => 'ro', isa => Bool);
+  has ReplicationInstanceClass => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'ReplicationInstanceClass' => {
+                                               'type' => 'Str'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,57 @@
+# Generated from default/object.tt
 package Paws::IoT::MitigationActionParams;
-  use Moose;
-  has AddThingsToThingGroupParams => (is => 'ro', isa => 'Paws::IoT::AddThingsToThingGroupParams', request_name => 'addThingsToThingGroupParams', traits => ['NameInRequest']);
-  has EnableIoTLoggingParams => (is => 'ro', isa => 'Paws::IoT::EnableIoTLoggingParams', request_name => 'enableIoTLoggingParams', traits => ['NameInRequest']);
-  has PublishFindingToSnsParams => (is => 'ro', isa => 'Paws::IoT::PublishFindingToSnsParams', request_name => 'publishFindingToSnsParams', traits => ['NameInRequest']);
-  has ReplaceDefaultPolicyVersionParams => (is => 'ro', isa => 'Paws::IoT::ReplaceDefaultPolicyVersionParams', request_name => 'replaceDefaultPolicyVersionParams', traits => ['NameInRequest']);
-  has UpdateCACertificateParams => (is => 'ro', isa => 'Paws::IoT::UpdateCACertificateParams', request_name => 'updateCACertificateParams', traits => ['NameInRequest']);
-  has UpdateDeviceCertificateParams => (is => 'ro', isa => 'Paws::IoT::UpdateDeviceCertificateParams', request_name => 'updateDeviceCertificateParams', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoT::Types qw/IoT_AddThingsToThingGroupParams IoT_ReplaceDefaultPolicyVersionParams IoT_UpdateCACertificateParams IoT_UpdateDeviceCertificateParams IoT_EnableIoTLoggingParams IoT_PublishFindingToSnsParams/;
+  has AddThingsToThingGroupParams => (is => 'ro', isa => IoT_AddThingsToThingGroupParams);
+  has EnableIoTLoggingParams => (is => 'ro', isa => IoT_EnableIoTLoggingParams);
+  has PublishFindingToSnsParams => (is => 'ro', isa => IoT_PublishFindingToSnsParams);
+  has ReplaceDefaultPolicyVersionParams => (is => 'ro', isa => IoT_ReplaceDefaultPolicyVersionParams);
+  has UpdateCACertificateParams => (is => 'ro', isa => IoT_UpdateCACertificateParams);
+  has UpdateDeviceCertificateParams => (is => 'ro', isa => IoT_UpdateDeviceCertificateParams);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PublishFindingToSnsParams' => {
+                                                'class' => 'Paws::IoT::PublishFindingToSnsParams',
+                                                'type' => 'IoT_PublishFindingToSnsParams'
+                                              },
+               'UpdateDeviceCertificateParams' => {
+                                                    'class' => 'Paws::IoT::UpdateDeviceCertificateParams',
+                                                    'type' => 'IoT_UpdateDeviceCertificateParams'
+                                                  },
+               'AddThingsToThingGroupParams' => {
+                                                  'class' => 'Paws::IoT::AddThingsToThingGroupParams',
+                                                  'type' => 'IoT_AddThingsToThingGroupParams'
+                                                },
+               'UpdateCACertificateParams' => {
+                                                'type' => 'IoT_UpdateCACertificateParams',
+                                                'class' => 'Paws::IoT::UpdateCACertificateParams'
+                                              },
+               'ReplaceDefaultPolicyVersionParams' => {
+                                                        'class' => 'Paws::IoT::ReplaceDefaultPolicyVersionParams',
+                                                        'type' => 'IoT_ReplaceDefaultPolicyVersionParams'
+                                                      },
+               'EnableIoTLoggingParams' => {
+                                             'type' => 'IoT_EnableIoTLoggingParams',
+                                             'class' => 'Paws::IoT::EnableIoTLoggingParams'
+                                           }
+             },
+  'NameInRequest' => {
+                       'PublishFindingToSnsParams' => 'publishFindingToSnsParams',
+                       'EnableIoTLoggingParams' => 'enableIoTLoggingParams',
+                       'UpdateDeviceCertificateParams' => 'updateDeviceCertificateParams',
+                       'UpdateCACertificateParams' => 'updateCACertificateParams',
+                       'ReplaceDefaultPolicyVersionParams' => 'replaceDefaultPolicyVersionParams',
+                       'AddThingsToThingGroupParams' => 'addThingsToThingGroupParams'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,39 +89,39 @@ for each defined mitigation action).
 =head1 ATTRIBUTES
 
 
-=head2 AddThingsToThingGroupParams => L<Paws::IoT::AddThingsToThingGroupParams>
+=head2 AddThingsToThingGroupParams => IoT_AddThingsToThingGroupParams
 
   Parameters to define a mitigation action that moves devices associated
 with a certificate to one or more specified thing groups, typically for
 quarantine.
 
 
-=head2 EnableIoTLoggingParams => L<Paws::IoT::EnableIoTLoggingParams>
+=head2 EnableIoTLoggingParams => IoT_EnableIoTLoggingParams
 
   Parameters to define a mitigation action that enables AWS IoT logging
 at a specified level of detail.
 
 
-=head2 PublishFindingToSnsParams => L<Paws::IoT::PublishFindingToSnsParams>
+=head2 PublishFindingToSnsParams => IoT_PublishFindingToSnsParams
 
   Parameters to define a mitigation action that publishes findings to
 Amazon SNS. You can implement your own custom actions in response to
 the Amazon SNS messages.
 
 
-=head2 ReplaceDefaultPolicyVersionParams => L<Paws::IoT::ReplaceDefaultPolicyVersionParams>
+=head2 ReplaceDefaultPolicyVersionParams => IoT_ReplaceDefaultPolicyVersionParams
 
   Parameters to define a mitigation action that adds a blank policy to
 restrict permissions.
 
 
-=head2 UpdateCACertificateParams => L<Paws::IoT::UpdateCACertificateParams>
+=head2 UpdateCACertificateParams => IoT_UpdateCACertificateParams
 
   Parameters to define a mitigation action that changes the state of the
 CA certificate to inactive.
 
 
-=head2 UpdateDeviceCertificateParams => L<Paws::IoT::UpdateDeviceCertificateParams>
+=head2 UpdateDeviceCertificateParams => IoT_UpdateDeviceCertificateParams
 
   Parameters to define a mitigation action that changes the state of the
 device certificate to inactive.

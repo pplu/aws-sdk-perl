@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::ES::DomainEndpointOptionsStatus;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Paws::ES::DomainEndpointOptions', required => 1);
-  has Status => (is => 'ro', isa => 'Paws::ES::OptionStatus', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ES::Types qw/ES_OptionStatus ES_DomainEndpointOptions/;
+  has Options => (is => 'ro', isa => ES_DomainEndpointOptions, required => 1);
+  has Status => (is => 'ro', isa => ES_OptionStatus, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Status' => 1,
+                    'Options' => 1
+                  },
+  'types' => {
+               'Status' => {
+                             'class' => 'Paws::ES::OptionStatus',
+                             'type' => 'ES_OptionStatus'
+                           },
+               'Options' => {
+                              'type' => 'ES_DomainEndpointOptions',
+                              'class' => 'Paws::ES::DomainEndpointOptions'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +64,12 @@ status.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Options => L<Paws::ES::DomainEndpointOptions>
+=head2 B<REQUIRED> Options => ES_DomainEndpointOptions
 
   Options to configure endpoint for the Elasticsearch domain.
 
 
-=head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
+=head2 B<REQUIRED> Status => ES_OptionStatus
 
   The status of the endpoint options for the Elasticsearch domain. See
 C<OptionStatus> for the status information that's included.

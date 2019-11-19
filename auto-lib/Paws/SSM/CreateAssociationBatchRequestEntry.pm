@@ -1,17 +1,73 @@
+# Generated from default/object.tt
 package Paws::SSM::CreateAssociationBatchRequestEntry;
-  use Moose;
-  has AssociationName => (is => 'ro', isa => 'Str');
-  has AutomationTargetParameterName => (is => 'ro', isa => 'Str');
-  has ComplianceSeverity => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has MaxConcurrency => (is => 'ro', isa => 'Str');
-  has MaxErrors => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has OutputLocation => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputLocation');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
-  has ScheduleExpression => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Target SSM_Parameters SSM_InstanceAssociationOutputLocation/;
+  has AssociationName => (is => 'ro', isa => Str);
+  has AutomationTargetParameterName => (is => 'ro', isa => Str);
+  has ComplianceSeverity => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has MaxConcurrency => (is => 'ro', isa => Str);
+  has MaxErrors => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has OutputLocation => (is => 'ro', isa => SSM_InstanceAssociationOutputLocation);
+  has Parameters => (is => 'ro', isa => SSM_Parameters);
+  has ScheduleExpression => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Targets' => {
+                              'type' => 'ArrayRef[SSM_Target]',
+                              'class' => 'Paws::SSM::Target'
+                            },
+               'Parameters' => {
+                                 'class' => 'Paws::SSM::Parameters',
+                                 'type' => 'SSM_Parameters'
+                               },
+               'MaxErrors' => {
+                                'type' => 'Str'
+                              },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'ScheduleExpression' => {
+                                         'type' => 'Str'
+                                       },
+               'ComplianceSeverity' => {
+                                         'type' => 'Str'
+                                       },
+               'MaxConcurrency' => {
+                                     'type' => 'Str'
+                                   },
+               'AutomationTargetParameterName' => {
+                                                    'type' => 'Str'
+                                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'AssociationName' => {
+                                      'type' => 'Str'
+                                    },
+               'OutputLocation' => {
+                                     'class' => 'Paws::SSM::InstanceAssociationOutputLocation',
+                                     'type' => 'SSM_InstanceAssociationOutputLocation'
+                                   }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -131,13 +187,13 @@ account, you only need to specify the document name. For example,
 C<AWS-ApplyPatchBaseline> or C<My-Document>.
 
 
-=head2 OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>
+=head2 OutputLocation => SSM_InstanceAssociationOutputLocation
 
   An Amazon S3 bucket where you want to store the results of this
 request.
 
 
-=head2 Parameters => L<Paws::SSM::Parameters>
+=head2 Parameters => SSM_Parameters
 
   A description of the parameters for a document.
 
@@ -147,7 +203,7 @@ request.
   A cron expression that specifies a schedule when the association runs.
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
   The instances targeted by the request.
 

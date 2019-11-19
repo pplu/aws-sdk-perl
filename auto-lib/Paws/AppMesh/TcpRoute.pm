@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::AppMesh::TcpRoute;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Paws::AppMesh::TcpRouteAction', request_name => 'action', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_TcpRouteAction/;
+  has Action => (is => 'ro', isa => AppMesh_TcpRouteAction, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Action' => {
+                             'class' => 'Paws::AppMesh::TcpRouteAction',
+                             'type' => 'AppMesh_TcpRouteAction'
+                           }
+             },
+  'IsRequired' => {
+                    'Action' => 1
+                  },
+  'NameInRequest' => {
+                       'Action' => 'action'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ An object that represents a TCP route type.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Action => L<Paws::AppMesh::TcpRouteAction>
+=head2 B<REQUIRED> Action => AppMesh_TcpRouteAction
 
   The action to take if a match is determined.
 

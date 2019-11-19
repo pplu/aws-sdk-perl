@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KMS::TagResource;
-  use Moose;
-  has KeyId => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::KMS::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::KMS::Types qw/KMS_Tag/;
+  has KeyId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[KMS_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyId' => {
+                            'type' => 'Str'
+                          },
+               'Tags' => {
+                           'class' => 'Paws::KMS::Tag',
+                           'type' => 'ArrayRef[KMS_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'KeyId' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +96,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::KMS::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[KMS_Tag]
 
 One or more tags. Each tag consists of a tag key and a tag value.
 

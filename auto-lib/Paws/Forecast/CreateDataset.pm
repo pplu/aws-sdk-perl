@@ -1,18 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Forecast::CreateDataset;
-  use Moose;
-  has DataFrequency => (is => 'ro', isa => 'Str');
-  has DatasetName => (is => 'ro', isa => 'Str', required => 1);
-  has DatasetType => (is => 'ro', isa => 'Str', required => 1);
-  has Domain => (is => 'ro', isa => 'Str', required => 1);
-  has EncryptionConfig => (is => 'ro', isa => 'Paws::Forecast::EncryptionConfig');
-  has Schema => (is => 'ro', isa => 'Paws::Forecast::Schema', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw/Forecast_Schema Forecast_EncryptionConfig/;
+  has DataFrequency => (is => 'ro', isa => Str, predicate => 1);
+  has DatasetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DatasetType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EncryptionConfig => (is => 'ro', isa => Forecast_EncryptionConfig, predicate => 1);
+  has Schema => (is => 'ro', isa => Forecast_Schema, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDataset');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Forecast::CreateDatasetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDataset');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Forecast::CreateDatasetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DatasetName' => 1,
+                    'Schema' => 1,
+                    'DatasetType' => 1,
+                    'Domain' => 1
+                  },
+  'types' => {
+               'DataFrequency' => {
+                                    'type' => 'Str'
+                                  },
+               'DatasetType' => {
+                                  'type' => 'Str'
+                                },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'EncryptionConfig' => {
+                                       'class' => 'Paws::Forecast::EncryptionConfig',
+                                       'type' => 'Forecast_EncryptionConfig'
+                                     },
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                },
+               'Schema' => {
+                             'type' => 'Forecast_Schema',
+                             'class' => 'Paws::Forecast::Schema'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +139,7 @@ information, see howitworks-datasets-groups.
 
 Valid values are: C<"RETAIL">, C<"CUSTOM">, C<"INVENTORY_PLANNING">, C<"EC2_CAPACITY">, C<"WORK_FORCE">, C<"WEB_TRAFFIC">, C<"METRICS">
 
-=head2 EncryptionConfig => L<Paws::Forecast::EncryptionConfig>
+=head2 EncryptionConfig => Forecast_EncryptionConfig
 
 An AWS Key Management Service (KMS) key and the AWS Identity and Access
 Management (IAM) role that Amazon Forecast can assume to access the
@@ -108,7 +147,7 @@ key.
 
 
 
-=head2 B<REQUIRED> Schema => L<Paws::Forecast::Schema>
+=head2 B<REQUIRED> Schema => Forecast_Schema
 
 The schema for the dataset. The schema attributes and their order must
 match the fields in your data. The dataset C<Domain> and C<DatasetType>

@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::GlobalSecondaryIndexInfo;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str');
-  has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]');
-  has Projection => (is => 'ro', isa => 'Paws::DynamoDB::Projection');
-  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_Projection DynamoDB_KeySchemaElement DynamoDB_ProvisionedThroughput/;
+  has IndexName => (is => 'ro', isa => Str);
+  has KeySchema => (is => 'ro', isa => ArrayRef[DynamoDB_KeySchemaElement]);
+  has Projection => (is => 'ro', isa => DynamoDB_Projection);
+  has ProvisionedThroughput => (is => 'ro', isa => DynamoDB_ProvisionedThroughput);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Projection' => {
+                                 'class' => 'Paws::DynamoDB::Projection',
+                                 'type' => 'DynamoDB_Projection'
+                               },
+               'KeySchema' => {
+                                'class' => 'Paws::DynamoDB::KeySchemaElement',
+                                'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
+                              },
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'ProvisionedThroughput' => {
+                                            'class' => 'Paws::DynamoDB::ProvisionedThroughput',
+                                            'type' => 'DynamoDB_ProvisionedThroughput'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +74,7 @@ when the backup was created.
   The name of the global secondary index.
 
 
-=head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
+=head2 KeySchema => ArrayRef[DynamoDB_KeySchemaElement]
 
   The complete key schema for a global secondary index, which consists of
 one or more pairs of attribute names and key types:
@@ -73,14 +102,14 @@ the same partition key physically close together, in sorted order by
 the sort key value.
 
 
-=head2 Projection => L<Paws::DynamoDB::Projection>
+=head2 Projection => DynamoDB_Projection
 
   Represents attributes that are copied (projected) from the table into
 the global secondary index. These are in addition to the primary key
 attributes and index key attributes, which are automatically projected.
 
 
-=head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
+=head2 ProvisionedThroughput => DynamoDB_ProvisionedThroughput
 
   Represents the provisioned throughput settings for the specified global
 secondary index.

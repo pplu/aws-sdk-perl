@@ -1,14 +1,56 @@
 
 package Paws::IoT::DescribeBillingGroupResponse;
-  use Moose;
-  has BillingGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'billingGroupArn');
-  has BillingGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'billingGroupId');
-  has BillingGroupMetadata => (is => 'ro', isa => 'Paws::IoT::BillingGroupMetadata', traits => ['NameInRequest'], request_name => 'billingGroupMetadata');
-  has BillingGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'billingGroupName');
-  has BillingGroupProperties => (is => 'ro', isa => 'Paws::IoT::BillingGroupProperties', traits => ['NameInRequest'], request_name => 'billingGroupProperties');
-  has Version => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw/IoT_BillingGroupProperties IoT_BillingGroupMetadata/;
+  has BillingGroupArn => (is => 'ro', isa => Str);
+  has BillingGroupId => (is => 'ro', isa => Str);
+  has BillingGroupMetadata => (is => 'ro', isa => IoT_BillingGroupMetadata);
+  has BillingGroupName => (is => 'ro', isa => Str);
+  has BillingGroupProperties => (is => 'ro', isa => IoT_BillingGroupProperties);
+  has Version => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BillingGroupProperties' => {
+                                             'class' => 'Paws::IoT::BillingGroupProperties',
+                                             'type' => 'IoT_BillingGroupProperties'
+                                           },
+               'BillingGroupName' => {
+                                       'type' => 'Str'
+                                     },
+               'BillingGroupMetadata' => {
+                                           'class' => 'Paws::IoT::BillingGroupMetadata',
+                                           'type' => 'IoT_BillingGroupMetadata'
+                                         },
+               'BillingGroupArn' => {
+                                      'type' => 'Str'
+                                    },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BillingGroupId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'BillingGroupName' => 'billingGroupName',
+                       'BillingGroupProperties' => 'billingGroupProperties',
+                       'BillingGroupMetadata' => 'billingGroupMetadata',
+                       'BillingGroupArn' => 'billingGroupArn',
+                       'Version' => 'version',
+                       'BillingGroupId' => 'billingGroupId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +72,7 @@ The ARN of the billing group.
 The ID of the billing group.
 
 
-=head2 BillingGroupMetadata => L<Paws::IoT::BillingGroupMetadata>
+=head2 BillingGroupMetadata => IoT_BillingGroupMetadata
 
 Additional information about the billing group.
 
@@ -40,7 +82,7 @@ Additional information about the billing group.
 The name of the billing group.
 
 
-=head2 BillingGroupProperties => L<Paws::IoT::BillingGroupProperties>
+=head2 BillingGroupProperties => IoT_BillingGroupProperties
 
 The properties of the billing group.
 

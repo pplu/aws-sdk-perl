@@ -1,18 +1,58 @@
 
 package Paws::ManagedBlockchain::ListNodes;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has MemberId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'memberId', required => 1);
-  has NetworkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'networkId', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has Status => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has MemberId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NetworkId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListNodes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/members/{memberId}/nodes');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::ListNodesOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListNodes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/networks/{networkId}/members/{memberId}/nodes');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ManagedBlockchain::ListNodesOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'MemberId' => 'memberId',
+                    'NetworkId' => 'networkId'
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults',
+                      'Status' => 'status'
+                    },
+  'IsRequired' => {
+                    'NetworkId' => 1,
+                    'MemberId' => 1
+                  },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'MemberId' => {
+                               'type' => 'Str'
+                             },
+               'NetworkId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

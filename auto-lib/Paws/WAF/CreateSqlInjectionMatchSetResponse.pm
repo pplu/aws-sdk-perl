@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::CreateSqlInjectionMatchSetResponse;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str');
-  has SqlInjectionMatchSet => (is => 'ro', isa => 'Paws::WAF::SqlInjectionMatchSet');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_SqlInjectionMatchSet/;
+  has ChangeToken => (is => 'ro', isa => Str);
+  has SqlInjectionMatchSet => (is => 'ro', isa => WAF_SqlInjectionMatchSet);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SqlInjectionMatchSet' => {
+                                           'class' => 'Paws::WAF::SqlInjectionMatchSet',
+                                           'type' => 'WAF_SqlInjectionMatchSet'
+                                         },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +45,7 @@ query the status of the request. For more information, see
 GetChangeTokenStatus.
 
 
-=head2 SqlInjectionMatchSet => L<Paws::WAF::SqlInjectionMatchSet>
+=head2 SqlInjectionMatchSet => WAF_SqlInjectionMatchSet
 
 A SqlInjectionMatchSet.
 

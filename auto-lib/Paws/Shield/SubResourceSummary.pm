@@ -1,9 +1,37 @@
+# Generated from default/object.tt
 package Paws::Shield::SubResourceSummary;
-  use Moose;
-  has AttackVectors => (is => 'ro', isa => 'ArrayRef[Paws::Shield::SummarizedAttackVector]');
-  has Counters => (is => 'ro', isa => 'ArrayRef[Paws::Shield::SummarizedCounter]');
-  has Id => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Shield::Types qw/Shield_SummarizedCounter Shield_SummarizedAttackVector/;
+  has AttackVectors => (is => 'ro', isa => ArrayRef[Shield_SummarizedAttackVector]);
+  has Counters => (is => 'ro', isa => ArrayRef[Shield_SummarizedCounter]);
+  has Id => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'AttackVectors' => {
+                                    'class' => 'Paws::Shield::SummarizedAttackVector',
+                                    'type' => 'ArrayRef[Shield_SummarizedAttackVector]'
+                                  },
+               'Counters' => {
+                               'type' => 'ArrayRef[Shield_SummarizedCounter]',
+                               'class' => 'Paws::Shield::SummarizedCounter'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,12 +67,12 @@ The attack information for the specified SubResource.
 =head1 ATTRIBUTES
 
 
-=head2 AttackVectors => ArrayRef[L<Paws::Shield::SummarizedAttackVector>]
+=head2 AttackVectors => ArrayRef[Shield_SummarizedAttackVector]
 
   The list of attack types and associated counters.
 
 
-=head2 Counters => ArrayRef[L<Paws::Shield::SummarizedCounter>]
+=head2 Counters => ArrayRef[Shield_SummarizedCounter]
 
   The counters that describe the details of the attack.
 

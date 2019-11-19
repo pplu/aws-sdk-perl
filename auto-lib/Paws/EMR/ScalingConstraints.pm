@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::EMR::ScalingConstraints;
-  use Moose;
-  has MaxCapacity => (is => 'ro', isa => 'Int', required => 1);
-  has MinCapacity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::EMR::Types qw//;
+  has MaxCapacity => (is => 'ro', isa => Int, required => 1);
+  has MinCapacity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MinCapacity' => 1,
+                    'MaxCapacity' => 1
+                  },
+  'types' => {
+               'MaxCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'MinCapacity' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

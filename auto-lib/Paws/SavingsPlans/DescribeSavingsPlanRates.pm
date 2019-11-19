@@ -1,17 +1,51 @@
 
 package Paws::SavingsPlans::DescribeSavingsPlanRates;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SavingsPlans::SavingsPlanRateFilter]', traits => ['NameInRequest'], request_name => 'filters');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has SavingsPlanId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'savingsPlanId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::SavingsPlans::Types qw/SavingsPlans_SavingsPlanRateFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[SavingsPlans_SavingsPlanRateFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SavingsPlanId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSavingsPlanRates');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/DescribeSavingsPlanRates');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SavingsPlans::DescribeSavingsPlanRatesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeSavingsPlanRates');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/DescribeSavingsPlanRates');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SavingsPlans::DescribeSavingsPlanRatesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filters' => {
+                              'class' => 'Paws::SavingsPlans::SavingsPlanRateFilter',
+                              'type' => 'ArrayRef[SavingsPlans_SavingsPlanRateFilter]'
+                            },
+               'SavingsPlanId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'SavingsPlanId' => 1
+                  },
+  'NameInRequest' => {
+                       'Filters' => 'filters',
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken',
+                       'SavingsPlanId' => 'savingsPlanId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +93,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sav
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::SavingsPlans::SavingsPlanRateFilter>]
+=head2 Filters => ArrayRef[SavingsPlans_SavingsPlanRateFilter]
 
 The filters.
 

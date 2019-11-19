@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::DLM::Schedule;
-  use Moose;
-  has CopyTags => (is => 'ro', isa => 'Bool');
-  has CreateRule => (is => 'ro', isa => 'Paws::DLM::CreateRule');
-  has Name => (is => 'ro', isa => 'Str');
-  has RetainRule => (is => 'ro', isa => 'Paws::DLM::RetainRule');
-  has TagsToAdd => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
-  has VariableTags => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef/;
+  use Paws::DLM::Types qw/DLM_Tag DLM_RetainRule DLM_CreateRule/;
+  has CopyTags => (is => 'ro', isa => Bool);
+  has CreateRule => (is => 'ro', isa => DLM_CreateRule);
+  has Name => (is => 'ro', isa => Str);
+  has RetainRule => (is => 'ro', isa => DLM_RetainRule);
+  has TagsToAdd => (is => 'ro', isa => ArrayRef[DLM_Tag]);
+  has VariableTags => (is => 'ro', isa => ArrayRef[DLM_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RetainRule' => {
+                                 'class' => 'Paws::DLM::RetainRule',
+                                 'type' => 'DLM_RetainRule'
+                               },
+               'CopyTags' => {
+                               'type' => 'Bool'
+                             },
+               'TagsToAdd' => {
+                                'type' => 'ArrayRef[DLM_Tag]',
+                                'class' => 'Paws::DLM::Tag'
+                              },
+               'CreateRule' => {
+                                 'type' => 'DLM_CreateRule',
+                                 'class' => 'Paws::DLM::CreateRule'
+                               },
+               'VariableTags' => {
+                                   'class' => 'Paws::DLM::Tag',
+                                   'type' => 'ArrayRef[DLM_Tag]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +83,7 @@ Specifies a schedule.
 volume created by this policy.
 
 
-=head2 CreateRule => L<Paws::DLM::CreateRule>
+=head2 CreateRule => DLM_CreateRule
 
   The create rule.
 
@@ -57,18 +93,18 @@ volume created by this policy.
   The name of the schedule.
 
 
-=head2 RetainRule => L<Paws::DLM::RetainRule>
+=head2 RetainRule => DLM_RetainRule
 
   The retain rule.
 
 
-=head2 TagsToAdd => ArrayRef[L<Paws::DLM::Tag>]
+=head2 TagsToAdd => ArrayRef[DLM_Tag]
 
   The tags to apply to policy-created resources. These user-defined tags
 are in addition to the AWS-added lifecycle tags.
 
 
-=head2 VariableTags => ArrayRef[L<Paws::DLM::Tag>]
+=head2 VariableTags => ArrayRef[DLM_Tag]
 
   A collection of key/value pairs with values determined dynamically when
 the policy is executed. Keys may be any valid Amazon EC2 tag key.

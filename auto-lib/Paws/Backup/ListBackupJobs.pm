@@ -1,21 +1,67 @@
 
 package Paws::Backup::ListBackupJobs;
-  use Moose;
-  has ByBackupVaultName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'backupVaultName');
-  has ByCreatedAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'createdAfter');
-  has ByCreatedBefore => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'createdBefore');
-  has ByResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resourceArn');
-  has ByResourceType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resourceType');
-  has ByState => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'state');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Backup::Types qw//;
+  has ByBackupVaultName => (is => 'ro', isa => Str, predicate => 1);
+  has ByCreatedAfter => (is => 'ro', isa => Str, predicate => 1);
+  has ByCreatedBefore => (is => 'ro', isa => Str, predicate => 1);
+  has ByResourceArn => (is => 'ro', isa => Str, predicate => 1);
+  has ByResourceType => (is => 'ro', isa => Str, predicate => 1);
+  has ByState => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListBackupJobs');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup-jobs/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::ListBackupJobsOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListBackupJobs');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup-jobs/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::ListBackupJobsOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ByResourceArn' => {
+                                    'type' => 'Str'
+                                  },
+               'ByResourceType' => {
+                                     'type' => 'Str'
+                                   },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ByCreatedBefore' => {
+                                      'type' => 'Str'
+                                    },
+               'ByBackupVaultName' => {
+                                        'type' => 'Str'
+                                      },
+               'ByCreatedAfter' => {
+                                     'type' => 'Str'
+                                   },
+               'ByState' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInQuery' => {
+                      'ByState' => 'state',
+                      'ByCreatedAfter' => 'createdAfter',
+                      'ByResourceType' => 'resourceType',
+                      'ByResourceArn' => 'resourceArn',
+                      'ByBackupVaultName' => 'backupVaultName',
+                      'ByCreatedBefore' => 'createdBefore',
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

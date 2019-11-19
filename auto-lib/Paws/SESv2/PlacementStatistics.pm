@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::SESv2::PlacementStatistics;
-  use Moose;
-  has DkimPercentage => (is => 'ro', isa => 'Num');
-  has InboxPercentage => (is => 'ro', isa => 'Num');
-  has MissingPercentage => (is => 'ro', isa => 'Num');
-  has SpamPercentage => (is => 'ro', isa => 'Num');
-  has SpfPercentage => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::SESv2::Types qw//;
+  has DkimPercentage => (is => 'ro', isa => Num);
+  has InboxPercentage => (is => 'ro', isa => Num);
+  has MissingPercentage => (is => 'ro', isa => Num);
+  has SpamPercentage => (is => 'ro', isa => Num);
+  has SpfPercentage => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DkimPercentage' => {
+                                     'type' => 'Num'
+                                   },
+               'InboxPercentage' => {
+                                      'type' => 'Num'
+                                    },
+               'SpamPercentage' => {
+                                     'type' => 'Num'
+                                   },
+               'SpfPercentage' => {
+                                    'type' => 'Num'
+                                  },
+               'MissingPercentage' => {
+                                        'type' => 'Num'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

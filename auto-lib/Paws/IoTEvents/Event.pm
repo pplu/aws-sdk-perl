@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::Event;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Action]', request_name => 'actions', traits => ['NameInRequest']);
-  has Condition => (is => 'ro', isa => 'Str', request_name => 'condition', traits => ['NameInRequest']);
-  has EventName => (is => 'ro', isa => 'Str', request_name => 'eventName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::IoTEvents::Types qw/IoTEvents_Action/;
+  has Actions => (is => 'ro', isa => ArrayRef[IoTEvents_Action]);
+  has Condition => (is => 'ro', isa => Str);
+  has EventName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Condition' => 'condition',
+                       'EventName' => 'eventName',
+                       'Actions' => 'actions'
+                     },
+  'IsRequired' => {
+                    'EventName' => 1
+                  },
+  'types' => {
+               'Condition' => {
+                                'type' => 'Str'
+                              },
+               'Actions' => {
+                              'class' => 'Paws::IoTEvents::Action',
+                              'type' => 'ArrayRef[IoTEvents_Action]'
+                            },
+               'EventName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +71,7 @@ evaluates to TRUE.
 =head1 ATTRIBUTES
 
 
-=head2 Actions => ArrayRef[L<Paws::IoTEvents::Action>]
+=head2 Actions => ArrayRef[IoTEvents_Action]
 
   The actions to be performed.
 

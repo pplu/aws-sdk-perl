@@ -1,15 +1,43 @@
 
 package Paws::EC2::DeleteFleets;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has FleetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'FleetId' , required => 1);
-  has TerminateInstances => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::EC2::Types qw//;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has FleetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has TerminateInstances => (is => 'ro', isa => Bool, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteFleets');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DeleteFleetsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteFleets');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DeleteFleetsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FleetIds' => 1,
+                    'TerminateInstances' => 1
+                  },
+  'NameInRequest' => {
+                       'FleetIds' => 'FleetId'
+                     },
+  'types' => {
+               'TerminateInstances' => {
+                                         'type' => 'Bool'
+                                       },
+               'FleetIds' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

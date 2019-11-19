@@ -1,16 +1,44 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::ListAttachedGroupPolicies;
-  use Moose;
-  has GroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxItems => (is => 'ro', isa => 'Int');
-  has PathPrefix => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IAM::Types qw//;
+  has GroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
+  has PathPrefix => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAttachedGroupPolicies');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::ListAttachedGroupPoliciesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListAttachedGroupPoliciesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAttachedGroupPolicies');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::ListAttachedGroupPoliciesResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListAttachedGroupPoliciesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'PathPrefix' => {
+                                 'type' => 'Str'
+                               },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'GroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

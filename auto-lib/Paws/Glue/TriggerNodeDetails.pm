@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Glue::TriggerNodeDetails;
-  use Moose;
-  has Trigger => (is => 'ro', isa => 'Paws::Glue::Trigger');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Glue::Types qw/Glue_Trigger/;
+  has Trigger => (is => 'ro', isa => Glue_Trigger);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Trigger' => {
+                              'type' => 'Glue_Trigger',
+                              'class' => 'Paws::Glue::Trigger'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ The details of a Trigger node present in the workflow.
 =head1 ATTRIBUTES
 
 
-=head2 Trigger => L<Paws::Glue::Trigger>
+=head2 Trigger => Glue_Trigger
 
   The information of the trigger represented by the trigger node.
 

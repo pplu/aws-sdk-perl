@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::ApplicationVersionLifecycleConfig;
-  use Moose;
-  has MaxAgeRule => (is => 'ro', isa => 'Paws::ElasticBeanstalk::MaxAgeRule');
-  has MaxCountRule => (is => 'ro', isa => 'Paws::ElasticBeanstalk::MaxCountRule');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_MaxCountRule ElasticBeanstalk_MaxAgeRule/;
+  has MaxAgeRule => (is => 'ro', isa => ElasticBeanstalk_MaxAgeRule);
+  has MaxCountRule => (is => 'ro', isa => ElasticBeanstalk_MaxCountRule);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxCountRule' => {
+                                   'class' => 'Paws::ElasticBeanstalk::MaxCountRule',
+                                   'type' => 'ElasticBeanstalk_MaxCountRule'
+                                 },
+               'MaxAgeRule' => {
+                                 'class' => 'Paws::ElasticBeanstalk::MaxAgeRule',
+                                 'type' => 'ElasticBeanstalk_MaxAgeRule'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,13 +66,13 @@ source bundle remains in S3 unless you configure the rule to delete it.
 =head1 ATTRIBUTES
 
 
-=head2 MaxAgeRule => L<Paws::ElasticBeanstalk::MaxAgeRule>
+=head2 MaxAgeRule => ElasticBeanstalk_MaxAgeRule
 
   Specify a max age rule to restrict the length of time that application
 versions are retained for an application.
 
 
-=head2 MaxCountRule => L<Paws::ElasticBeanstalk::MaxCountRule>
+=head2 MaxCountRule => ElasticBeanstalk_MaxCountRule
 
   Specify a max count rule to restrict the number of application versions
 that are retained for an application.

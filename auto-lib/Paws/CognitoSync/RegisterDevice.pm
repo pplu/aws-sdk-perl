@@ -1,17 +1,51 @@
 
 package Paws::CognitoSync::RegisterDevice;
-  use Moose;
-  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId', required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
-  has Platform => (is => 'ro', isa => 'Str', required => 1);
-  has Token => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoSync::Types qw//;
+  has IdentityId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Platform => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Token => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterDevice');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/identity/{IdentityId}/device');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::RegisterDeviceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterDevice');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/identitypools/{IdentityPoolId}/identity/{IdentityId}/device');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoSync::RegisterDeviceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   },
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               },
+               'Token' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'IdentityId' => 1,
+                    'IdentityPoolId' => 1,
+                    'Platform' => 1,
+                    'Token' => 1
+                  },
+  'ParamInURI' => {
+                    'IdentityId' => 'IdentityId',
+                    'IdentityPoolId' => 'IdentityPoolId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

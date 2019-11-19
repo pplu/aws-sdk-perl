@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Forecast::EvaluationParameters;
-  use Moose;
-  has BackTestWindowOffset => (is => 'ro', isa => 'Int');
-  has NumberOfBacktestWindows => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Forecast::Types qw//;
+  has BackTestWindowOffset => (is => 'ro', isa => Int);
+  has NumberOfBacktestWindows => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackTestWindowOffset' => {
+                                           'type' => 'Int'
+                                         },
+               'NumberOfBacktestWindows' => {
+                                              'type' => 'Int'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

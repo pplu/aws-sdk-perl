@@ -1,20 +1,75 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::ListOpenWorkflowExecutions;
-  use Moose;
-  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
-  has ExecutionFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionFilter', traits => ['NameInRequest'], request_name => 'executionFilter' );
-  has MaximumPageSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maximumPageSize' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
-  has ReverseOrder => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reverseOrder' );
-  has StartTimeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExecutionTimeFilter', traits => ['NameInRequest'], request_name => 'startTimeFilter' , required => 1);
-  has TagFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::TagFilter', traits => ['NameInRequest'], request_name => 'tagFilter' );
-  has TypeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeFilter', traits => ['NameInRequest'], request_name => 'typeFilter' );
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowExecutionFilter SimpleWorkflow_WorkflowTypeFilter SimpleWorkflow_TagFilter SimpleWorkflow_ExecutionTimeFilter/;
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExecutionFilter => (is => 'ro', isa => SimpleWorkflow_WorkflowExecutionFilter, predicate => 1);
+  has MaximumPageSize => (is => 'ro', isa => Int, predicate => 1);
+  has NextPageToken => (is => 'ro', isa => Str, predicate => 1);
+  has ReverseOrder => (is => 'ro', isa => Bool, predicate => 1);
+  has StartTimeFilter => (is => 'ro', isa => SimpleWorkflow_ExecutionTimeFilter, required => 1, predicate => 1);
+  has TagFilter => (is => 'ro', isa => SimpleWorkflow_TagFilter, predicate => 1);
+  has TypeFilter => (is => 'ro', isa => SimpleWorkflow_WorkflowTypeFilter, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListOpenWorkflowExecutions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::WorkflowExecutionInfos');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListOpenWorkflowExecutions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SimpleWorkflow::WorkflowExecutionInfos');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Domain' => 'domain',
+                       'NextPageToken' => 'nextPageToken',
+                       'StartTimeFilter' => 'startTimeFilter',
+                       'TagFilter' => 'tagFilter',
+                       'MaximumPageSize' => 'maximumPageSize',
+                       'TypeFilter' => 'typeFilter',
+                       'ReverseOrder' => 'reverseOrder',
+                       'ExecutionFilter' => 'executionFilter'
+                     },
+  'IsRequired' => {
+                    'StartTimeFilter' => 1,
+                    'Domain' => 1
+                  },
+  'types' => {
+               'StartTimeFilter' => {
+                                      'class' => 'Paws::SimpleWorkflow::ExecutionTimeFilter',
+                                      'type' => 'SimpleWorkflow_ExecutionTimeFilter'
+                                    },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'TagFilter' => {
+                                'type' => 'SimpleWorkflow_TagFilter',
+                                'class' => 'Paws::SimpleWorkflow::TagFilter'
+                              },
+               'MaximumPageSize' => {
+                                      'type' => 'Int'
+                                    },
+               'TypeFilter' => {
+                                 'type' => 'SimpleWorkflow_WorkflowTypeFilter',
+                                 'class' => 'Paws::SimpleWorkflow::WorkflowTypeFilter'
+                               },
+               'ExecutionFilter' => {
+                                      'type' => 'SimpleWorkflow_WorkflowExecutionFilter',
+                                      'class' => 'Paws::SimpleWorkflow::WorkflowExecutionFilter'
+                                    },
+               'ReverseOrder' => {
+                                   'type' => 'Bool'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +130,7 @@ The name of the domain that contains the workflow executions to list.
 
 
 
-=head2 ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>
+=head2 ExecutionFilter => SimpleWorkflow_WorkflowExecutionFilter
 
 If specified, only workflow executions matching the workflow ID
 specified in the filter are returned.
@@ -114,7 +169,7 @@ executions.
 
 
 
-=head2 B<REQUIRED> StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
+=head2 B<REQUIRED> StartTimeFilter => SimpleWorkflow_ExecutionTimeFilter
 
 Workflow executions are included in the returned results based on
 whether their start times are within the range specified by this
@@ -122,7 +177,7 @@ filter.
 
 
 
-=head2 TagFilter => L<Paws::SimpleWorkflow::TagFilter>
+=head2 TagFilter => SimpleWorkflow_TagFilter
 
 If specified, only executions that have the matching tag are listed.
 
@@ -131,7 +186,7 @@ exclusive. You can specify at most one of these in a request.
 
 
 
-=head2 TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>
+=head2 TypeFilter => SimpleWorkflow_WorkflowTypeFilter
 
 If specified, only executions of the type specified in the filter are
 returned.

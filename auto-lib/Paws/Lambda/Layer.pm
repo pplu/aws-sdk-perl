@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Lambda::Layer;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CodeSize => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lambda::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CodeSize => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'CodeSize' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

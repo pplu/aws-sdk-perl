@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::LicenseManager::ManagedResourceSummary;
-  use Moose;
-  has AssociationCount => (is => 'ro', isa => 'Int');
-  has ResourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::LicenseManager::Types qw//;
+  has AssociationCount => (is => 'ro', isa => Int);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'AssociationCount' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,43 @@
 
 package Paws::ApiGatewayV2::UpdateDomainName;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
-  has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', traits => ['NameInRequest'], request_name => 'domainNameConfigurations');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_DomainNameConfiguration/;
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DomainNameConfigurations => (is => 'ro', isa => ArrayRef[ApiGatewayV2_DomainNameConfiguration], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDomainName');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/domainnames/{domainName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::UpdateDomainNameResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDomainName');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/domainnames/{domainName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::UpdateDomainNameResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DomainNameConfigurations' => 'domainNameConfigurations'
+                     },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  },
+  'types' => {
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'DomainNameConfigurations' => {
+                                               'class' => 'Paws::ApiGatewayV2::DomainNameConfiguration',
+                                               'type' => 'ArrayRef[ApiGatewayV2_DomainNameConfiguration]'
+                                             }
+             },
+  'ParamInURI' => {
+                    'DomainName' => 'domainName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +98,7 @@ The domain name.
 
 
 
-=head2 DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]
+=head2 DomainNameConfigurations => ArrayRef[ApiGatewayV2_DomainNameConfiguration]
 
 The domain name configurations.
 

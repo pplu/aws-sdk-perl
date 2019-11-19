@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::RuleGroupUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has ActivatedRule => (is => 'ro', isa => 'Paws::WAFRegional::ActivatedRule', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_ActivatedRule/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has ActivatedRule => (is => 'ro', isa => WAFRegional_ActivatedRule, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'ActivatedRule' => {
+                                    'class' => 'Paws::WAFRegional::ActivatedRule',
+                                    'type' => 'WAFRegional_ActivatedRule'
+                                  }
+             },
+  'IsRequired' => {
+                    'Action' => 1,
+                    'ActivatedRule' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +69,7 @@ to a C<RuleGroup> or delete it from a C<RuleGroup>.
 C<DELETE> to remove an C<ActivatedRule> from a C<RuleGroup>.
 
 
-=head2 B<REQUIRED> ActivatedRule => L<Paws::WAFRegional::ActivatedRule>
+=head2 B<REQUIRED> ActivatedRule => WAFRegional_ActivatedRule
 
   The C<ActivatedRule> object specifies a C<Rule> that you want to insert
 or delete, the priority of the C<Rule> in the C<WebACL>, and the action

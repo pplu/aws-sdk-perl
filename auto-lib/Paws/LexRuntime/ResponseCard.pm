@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::LexRuntime::ResponseCard;
-  use Moose;
-  has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest']);
-  has GenericAttachments => (is => 'ro', isa => 'ArrayRef[Paws::LexRuntime::GenericAttachment]', request_name => 'genericAttachments', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LexRuntime::Types qw/LexRuntime_GenericAttachment/;
+  has ContentType => (is => 'ro', isa => Str);
+  has GenericAttachments => (is => 'ro', isa => ArrayRef[LexRuntime_GenericAttachment]);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'GenericAttachments' => 'genericAttachments',
+                       'Version' => 'version',
+                       'ContentType' => 'contentType'
+                     },
+  'types' => {
+               'GenericAttachments' => {
+                                         'type' => 'ArrayRef[LexRuntime_GenericAttachment]',
+                                         'class' => 'Paws::LexRuntime::GenericAttachment'
+                                       },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'Version' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +75,7 @@ function ( C<dialogCodeHook> and C<fulfillmentActivity> on an intent).
   The content type of the response.
 
 
-=head2 GenericAttachments => ArrayRef[L<Paws::LexRuntime::GenericAttachment>]
+=head2 GenericAttachments => ArrayRef[LexRuntime_GenericAttachment]
 
   An array of attachment objects representing options.
 

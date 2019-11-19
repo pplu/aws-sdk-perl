@@ -1,14 +1,66 @@
+# Generated from default/object.tt
 package Paws::RAM::ResourceShareAssociation;
-  use Moose;
-  has AssociatedEntity => (is => 'ro', isa => 'Str', request_name => 'associatedEntity', traits => ['NameInRequest']);
-  has AssociationType => (is => 'ro', isa => 'Str', request_name => 'associationType', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has External => (is => 'ro', isa => 'Bool', request_name => 'external', traits => ['NameInRequest']);
-  has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
-  has ResourceShareArn => (is => 'ro', isa => 'Str', request_name => 'resourceShareArn', traits => ['NameInRequest']);
-  has ResourceShareName => (is => 'ro', isa => 'Str', request_name => 'resourceShareName', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::RAM::Types qw//;
+  has AssociatedEntity => (is => 'ro', isa => Str);
+  has AssociationType => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has External => (is => 'ro', isa => Bool);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has ResourceShareArn => (is => 'ro', isa => Str);
+  has ResourceShareName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ResourceShareName' => 'resourceShareName',
+                       'StatusMessage' => 'statusMessage',
+                       'ResourceShareArn' => 'resourceShareArn',
+                       'CreationTime' => 'creationTime',
+                       'LastUpdatedTime' => 'lastUpdatedTime',
+                       'Status' => 'status',
+                       'AssociationType' => 'associationType',
+                       'AssociatedEntity' => 'associatedEntity',
+                       'External' => 'external'
+                     },
+  'types' => {
+               'External' => {
+                               'type' => 'Bool'
+                             },
+               'AssociatedEntity' => {
+                                       'type' => 'Str'
+                                     },
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'AssociationType' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ResourceShareArn' => {
+                                       'type' => 'Str'
+                                     },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceShareName' => {
+                                        'type' => 'Str'
+                                      },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

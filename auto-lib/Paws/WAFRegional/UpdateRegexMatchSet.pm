@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAFRegional::UpdateRegexMatchSet;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has RegexMatchSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::RegexMatchSetUpdate]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_RegexMatchSetUpdate/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RegexMatchSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAFRegional_RegexMatchSetUpdate], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRegexMatchSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAFRegional::UpdateRegexMatchSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRegexMatchSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAFRegional::UpdateRegexMatchSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RegexMatchSetId' => 1,
+                    'Updates' => 1,
+                    'ChangeToken' => 1
+                  },
+  'types' => {
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'Updates' => {
+                              'class' => 'Paws::WAFRegional::RegexMatchSetUpdate',
+                              'type' => 'ArrayRef[WAFRegional_RegexMatchSetUpdate]'
+                            },
+               'RegexMatchSetId' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +106,7 @@ ListRegexMatchSets.
 
 
 
-=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAFRegional::RegexMatchSetUpdate>]
+=head2 B<REQUIRED> Updates => ArrayRef[WAFRegional_RegexMatchSetUpdate]
 
 An array of C<RegexMatchSetUpdate> objects that you want to insert into
 or delete from a RegexMatchSet. For more information, see

@@ -1,21 +1,63 @@
 
 package Paws::WorkDocs::InitiateDocumentVersionUpload;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has ContentCreatedTimestamp => (is => 'ro', isa => 'Str');
-  has ContentModifiedTimestamp => (is => 'ro', isa => 'Str');
-  has ContentType => (is => 'ro', isa => 'Str');
-  has DocumentSizeInBytes => (is => 'ro', isa => 'Int');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ParentFolderId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has ContentCreatedTimestamp => (is => 'ro', isa => Str, predicate => 1);
+  has ContentModifiedTimestamp => (is => 'ro', isa => Str, predicate => 1);
+  has ContentType => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentSizeInBytes => (is => 'ro', isa => Int, predicate => 1);
+  has Id => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has ParentFolderId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'InitiateDocumentVersionUpload');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/documents');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::InitiateDocumentVersionUploadResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'InitiateDocumentVersionUpload');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/documents');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::InitiateDocumentVersionUploadResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ParentFolderId' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'ContentModifiedTimestamp' => {
+                                               'type' => 'Str'
+                                             },
+               'ContentCreatedTimestamp' => {
+                                              'type' => 'Str'
+                                            },
+               'DocumentSizeInBytes' => {
+                                          'type' => 'Int'
+                                        },
+               'ParentFolderId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

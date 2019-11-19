@@ -1,24 +1,76 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::UpdateMaintenanceWindow;
-  use Moose;
-  has AllowUnassociatedTargets => (is => 'ro', isa => 'Bool');
-  has Cutoff => (is => 'ro', isa => 'Int');
-  has Description => (is => 'ro', isa => 'Str');
-  has Duration => (is => 'ro', isa => 'Int');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has EndDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Replace => (is => 'ro', isa => 'Bool');
-  has Schedule => (is => 'ro', isa => 'Str');
-  has ScheduleTimezone => (is => 'ro', isa => 'Str');
-  has StartDate => (is => 'ro', isa => 'Str');
-  has WindowId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::SSM::Types qw//;
+  has AllowUnassociatedTargets => (is => 'ro', isa => Bool, predicate => 1);
+  has Cutoff => (is => 'ro', isa => Int, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Duration => (is => 'ro', isa => Int, predicate => 1);
+  has Enabled => (is => 'ro', isa => Bool, predicate => 1);
+  has EndDate => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Replace => (is => 'ro', isa => Bool, predicate => 1);
+  has Schedule => (is => 'ro', isa => Str, predicate => 1);
+  has ScheduleTimezone => (is => 'ro', isa => Str, predicate => 1);
+  has StartDate => (is => 'ro', isa => Str, predicate => 1);
+  has WindowId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMaintenanceWindow');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::UpdateMaintenanceWindowResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateMaintenanceWindow');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::UpdateMaintenanceWindowResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Schedule' => {
+                               'type' => 'Str'
+                             },
+               'Replace' => {
+                              'type' => 'Bool'
+                            },
+               'AllowUnassociatedTargets' => {
+                                               'type' => 'Bool'
+                                             },
+               'StartDate' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'WindowId' => {
+                               'type' => 'Str'
+                             },
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'ScheduleTimezone' => {
+                                       'type' => 'Str'
+                                     },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'Cutoff' => {
+                             'type' => 'Int'
+                           }
+             },
+  'IsRequired' => {
+                    'WindowId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

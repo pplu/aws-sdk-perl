@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::CloudFront::InvalidationBatch;
-  use Moose;
-  has CallerReference => (is => 'ro', isa => 'Str', required => 1);
-  has Paths => (is => 'ro', isa => 'Paws::CloudFront::Paths', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_Paths/;
+  has CallerReference => (is => 'ro', isa => Str, required => 1);
+  has Paths => (is => 'ro', isa => CloudFront_Paths, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CallerReference' => 1,
+                    'Paths' => 1
+                  },
+  'types' => {
+               'Paths' => {
+                            'type' => 'CloudFront_Paths',
+                            'class' => 'Paws::CloudFront::Paths'
+                          },
+               'CallerReference' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +84,7 @@ from the original request, CloudFront returns an
 C<InvalidationBatchAlreadyExists> error.
 
 
-=head2 B<REQUIRED> Paths => L<Paws::CloudFront::Paths>
+=head2 B<REQUIRED> Paths => CloudFront_Paths
 
   A complex type that contains information about the objects that you
 want to invalidate. For more information, see Specifying the Objects to

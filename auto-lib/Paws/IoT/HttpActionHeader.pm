@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoT::HttpActionHeader;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has Key => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Key' => 'key',
+                       'Value' => 'value'
+                     },
+  'IsRequired' => {
+                    'Key' => 1,
+                    'Value' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

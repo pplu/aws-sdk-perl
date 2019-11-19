@@ -1,16 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Discovery::DescribeExportTasks;
-  use Moose;
-  has ExportIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'exportIds' );
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ExportFilter]', traits => ['NameInRequest'], request_name => 'filters' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int/;
+  use Paws::Discovery::Types qw/Discovery_ExportFilter/;
+  has ExportIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[Discovery_ExportFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeExportTasks');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Discovery::DescribeExportTasksResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeExportTasks');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Discovery::DescribeExportTasksResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExportIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::Discovery::ExportFilter',
+                              'type' => 'ArrayRef[Discovery_ExportFilter]'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'ExportIds' => 'exportIds',
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken',
+                       'Filters' => 'filters'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $discovery = Paws->service('Discovery');
     my $DescribeExportTasksResponse = $discovery->DescribeExportTasks(
       ExportIds => [ 'MyConfigurationsExportId', ... ],    # OPTIONAL
-      Filters => [
+      Filters   => [
         {
           Condition => 'MyCondition',
           Name      => 'MyFilterName',
@@ -64,7 +96,7 @@ request.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::Discovery::ExportFilter>]
+=head2 Filters => ArrayRef[Discovery_ExportFilter]
 
 One or more filters.
 

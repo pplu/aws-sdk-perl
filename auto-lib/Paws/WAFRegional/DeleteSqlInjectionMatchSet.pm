@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAFRegional::DeleteSqlInjectionMatchSet;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has SqlInjectionMatchSetId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw//;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SqlInjectionMatchSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSqlInjectionMatchSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAFRegional::DeleteSqlInjectionMatchSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteSqlInjectionMatchSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAFRegional::DeleteSqlInjectionMatchSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SqlInjectionMatchSetId' => 1,
+                    'ChangeToken' => 1
+                  },
+  'types' => {
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'SqlInjectionMatchSetId' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

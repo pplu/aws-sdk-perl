@@ -1,12 +1,52 @@
+# Generated from default/object.tt
 package Paws::AutoScalingPlans::TargetTrackingConfiguration;
-  use Moose;
-  has CustomizedScalingMetricSpecification => (is => 'ro', isa => 'Paws::AutoScalingPlans::CustomizedScalingMetricSpecification');
-  has DisableScaleIn => (is => 'ro', isa => 'Bool');
-  has EstimatedInstanceWarmup => (is => 'ro', isa => 'Int');
-  has PredefinedScalingMetricSpecification => (is => 'ro', isa => 'Paws::AutoScalingPlans::PredefinedScalingMetricSpecification');
-  has ScaleInCooldown => (is => 'ro', isa => 'Int');
-  has ScaleOutCooldown => (is => 'ro', isa => 'Int');
-  has TargetValue => (is => 'ro', isa => 'Num', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Int Num/;
+  use Paws::AutoScalingPlans::Types qw/AutoScalingPlans_CustomizedScalingMetricSpecification AutoScalingPlans_PredefinedScalingMetricSpecification/;
+  has CustomizedScalingMetricSpecification => (is => 'ro', isa => AutoScalingPlans_CustomizedScalingMetricSpecification);
+  has DisableScaleIn => (is => 'ro', isa => Bool);
+  has EstimatedInstanceWarmup => (is => 'ro', isa => Int);
+  has PredefinedScalingMetricSpecification => (is => 'ro', isa => AutoScalingPlans_PredefinedScalingMetricSpecification);
+  has ScaleInCooldown => (is => 'ro', isa => Int);
+  has ScaleOutCooldown => (is => 'ro', isa => Int);
+  has TargetValue => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScaleOutCooldown' => {
+                                       'type' => 'Int'
+                                     },
+               'EstimatedInstanceWarmup' => {
+                                              'type' => 'Int'
+                                            },
+               'DisableScaleIn' => {
+                                     'type' => 'Bool'
+                                   },
+               'PredefinedScalingMetricSpecification' => {
+                                                           'type' => 'AutoScalingPlans_PredefinedScalingMetricSpecification',
+                                                           'class' => 'Paws::AutoScalingPlans::PredefinedScalingMetricSpecification'
+                                                         },
+               'TargetValue' => {
+                                  'type' => 'Num'
+                                },
+               'CustomizedScalingMetricSpecification' => {
+                                                           'type' => 'AutoScalingPlans_CustomizedScalingMetricSpecification',
+                                                           'class' => 'Paws::AutoScalingPlans::CustomizedScalingMetricSpecification'
+                                                         },
+               'ScaleInCooldown' => {
+                                      'type' => 'Int'
+                                    }
+             },
+  'IsRequired' => {
+                    'TargetValue' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +83,7 @@ Used with ScalingInstruction and ScalingPolicy.
 =head1 ATTRIBUTES
 
 
-=head2 CustomizedScalingMetricSpecification => L<Paws::AutoScalingPlans::CustomizedScalingMetricSpecification>
+=head2 CustomizedScalingMetricSpecification => AutoScalingPlans_CustomizedScalingMetricSpecification
 
   A customized metric. You can specify either a predefined metric or a
 customized metric.
@@ -67,7 +107,7 @@ contribute to the CloudWatch metrics. This value is used only if the
 resource is an Auto Scaling group.
 
 
-=head2 PredefinedScalingMetricSpecification => L<Paws::AutoScalingPlans::PredefinedScalingMetricSpecification>
+=head2 PredefinedScalingMetricSpecification => AutoScalingPlans_PredefinedScalingMetricSpecification
 
   A predefined metric. You can specify either a predefined metric or a
 customized metric.

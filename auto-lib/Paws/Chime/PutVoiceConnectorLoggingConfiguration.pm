@@ -1,15 +1,41 @@
 
 package Paws::Chime::PutVoiceConnectorLoggingConfiguration;
-  use Moose;
-  has LoggingConfiguration => (is => 'ro', isa => 'Paws::Chime::LoggingConfiguration', required => 1);
-  has VoiceConnectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'voiceConnectorId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw/Chime_LoggingConfiguration/;
+  has LoggingConfiguration => (is => 'ro', isa => Chime_LoggingConfiguration, required => 1, predicate => 1);
+  has VoiceConnectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutVoiceConnectorLoggingConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/voice-connectors/{voiceConnectorId}/logging-configuration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::PutVoiceConnectorLoggingConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutVoiceConnectorLoggingConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/voice-connectors/{voiceConnectorId}/logging-configuration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::PutVoiceConnectorLoggingConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoggingConfiguration' => {
+                                           'type' => 'Chime_LoggingConfiguration',
+                                           'class' => 'Paws::Chime::LoggingConfiguration'
+                                         },
+               'VoiceConnectorId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'VoiceConnectorId' => 1,
+                    'LoggingConfiguration' => 1
+                  },
+  'ParamInURI' => {
+                    'VoiceConnectorId' => 'voiceConnectorId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +76,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LoggingConfiguration => L<Paws::Chime::LoggingConfiguration>
+=head2 B<REQUIRED> LoggingConfiguration => Chime_LoggingConfiguration
 
 The logging configuration details to add.
 

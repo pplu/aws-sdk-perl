@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaLive::FrameCaptureOutputSettings;
-  use Moose;
-  has NameModifier => (is => 'ro', isa => 'Str', request_name => 'nameModifier', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has NameModifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NameModifier' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'NameModifier' => 'nameModifier'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

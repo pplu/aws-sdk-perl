@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::ClusterSubnetGroupMessage;
-  use Moose;
-  has ClusterSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterSubnetGroup]', request_name => 'ClusterSubnetGroup', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_ClusterSubnetGroup/;
+  has ClusterSubnetGroups => (is => 'ro', isa => ArrayRef[RedShift_ClusterSubnetGroup]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ClusterSubnetGroups' => 'ClusterSubnetGroup'
+                     },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ClusterSubnetGroups' => {
+                                          'class' => 'Paws::RedShift::ClusterSubnetGroup',
+                                          'type' => 'ArrayRef[RedShift_ClusterSubnetGroup]'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RedShift::ClusterSubnetGroupMessage
 =head1 ATTRIBUTES
 
 
-=head2 ClusterSubnetGroups => ArrayRef[L<Paws::RedShift::ClusterSubnetGroup>]
+=head2 ClusterSubnetGroups => ArrayRef[RedShift_ClusterSubnetGroup]
 
 A list of ClusterSubnetGroup instances.
 

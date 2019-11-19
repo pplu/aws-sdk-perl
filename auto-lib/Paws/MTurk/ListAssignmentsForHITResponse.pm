@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MTurk::ListAssignmentsForHITResponse;
-  use Moose;
-  has Assignments => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::Assignment]');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has NumResults => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::MTurk::Types qw/MTurk_Assignment/;
+  has Assignments => (is => 'ro', isa => ArrayRef[MTurk_Assignment]);
+  has NextToken => (is => 'ro', isa => Str);
+  has NumResults => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Assignments' => {
+                                  'class' => 'Paws::MTurk::Assignment',
+                                  'type' => 'ArrayRef[MTurk_Assignment]'
+                                },
+               'NumResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::MTurk::ListAssignmentsForHITResponse
 =head1 ATTRIBUTES
 
 
-=head2 Assignments => ArrayRef[L<Paws::MTurk::Assignment>]
+=head2 Assignments => ArrayRef[MTurk_Assignment]
 
 The collection of Assignment data structures returned by this call.
 

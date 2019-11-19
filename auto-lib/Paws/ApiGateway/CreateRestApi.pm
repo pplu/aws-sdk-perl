@@ -1,23 +1,82 @@
 
 package Paws::ApiGateway::CreateRestApi;
-  use Moose;
-  has ApiKeySource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiKeySource');
-  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'binaryMediaTypes');
-  has CloneFrom => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cloneFrom');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
-  has MinimumCompressionSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumCompressionSize');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Policy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policy');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::ApiGateway::Types qw/ApiGateway_EndpointConfiguration ApiGateway_MapOfStringToString/;
+  has ApiKeySource => (is => 'ro', isa => Str, predicate => 1);
+  has BinaryMediaTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has CloneFrom => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has EndpointConfiguration => (is => 'ro', isa => ApiGateway_EndpointConfiguration, predicate => 1);
+  has MinimumCompressionSize => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Policy => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has Version => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRestApi');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::RestApi');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRestApi');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::RestApi');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'EndpointConfiguration' => 'endpointConfiguration',
+                       'CloneFrom' => 'cloneFrom',
+                       'Tags' => 'tags',
+                       'Name' => 'name',
+                       'MinimumCompressionSize' => 'minimumCompressionSize',
+                       'ApiKeySource' => 'apiKeySource',
+                       'Policy' => 'policy',
+                       'Description' => 'description',
+                       'BinaryMediaTypes' => 'binaryMediaTypes',
+                       'Version' => 'version'
+                     },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'BinaryMediaTypes' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Policy' => {
+                             'type' => 'Str'
+                           },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Tags' => {
+                           'type' => 'ApiGateway_MapOfStringToString',
+                           'class' => 'Paws::ApiGateway::MapOfStringToString'
+                         },
+               'EndpointConfiguration' => {
+                                            'type' => 'ApiGateway_EndpointConfiguration',
+                                            'class' => 'Paws::ApiGateway::EndpointConfiguration'
+                                          },
+               'CloneFrom' => {
+                                'type' => 'Str'
+                              },
+               'MinimumCompressionSize' => {
+                                             'type' => 'Int'
+                                           },
+               'ApiKeySource' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -114,7 +173,7 @@ The description of the RestApi.
 
 
 
-=head2 EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>
+=head2 EndpointConfiguration => ApiGateway_EndpointConfiguration
 
 The endpoint configuration of this RestApi showing the endpoint types
 of the API.
@@ -145,7 +204,7 @@ regardless of the caller and Method configuration.
 
 
 
-=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Tags => ApiGateway_MapOfStringToString
 
 The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not

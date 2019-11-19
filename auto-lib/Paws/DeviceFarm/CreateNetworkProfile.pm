@@ -1,24 +1,91 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::CreateNetworkProfile;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has DownlinkBandwidthBits => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'downlinkBandwidthBits' );
-  has DownlinkDelayMs => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'downlinkDelayMs' );
-  has DownlinkJitterMs => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'downlinkJitterMs' );
-  has DownlinkLossPercent => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'downlinkLossPercent' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
-  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' );
-  has UplinkBandwidthBits => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'uplinkBandwidthBits' );
-  has UplinkDelayMs => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'uplinkDelayMs' );
-  has UplinkJitterMs => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'uplinkJitterMs' );
-  has UplinkLossPercent => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'uplinkLossPercent' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DeviceFarm::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DownlinkBandwidthBits => (is => 'ro', isa => Int, predicate => 1);
+  has DownlinkDelayMs => (is => 'ro', isa => Int, predicate => 1);
+  has DownlinkJitterMs => (is => 'ro', isa => Int, predicate => 1);
+  has DownlinkLossPercent => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProjectArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Type => (is => 'ro', isa => Str, predicate => 1);
+  has UplinkBandwidthBits => (is => 'ro', isa => Int, predicate => 1);
+  has UplinkDelayMs => (is => 'ro', isa => Int, predicate => 1);
+  has UplinkJitterMs => (is => 'ro', isa => Int, predicate => 1);
+  has UplinkLossPercent => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNetworkProfile');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::CreateNetworkProfileResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateNetworkProfile');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::CreateNetworkProfileResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DownlinkJitterMs' => {
+                                       'type' => 'Int'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'UplinkLossPercent' => {
+                                        'type' => 'Int'
+                                      },
+               'DownlinkLossPercent' => {
+                                          'type' => 'Int'
+                                        },
+               'ProjectArn' => {
+                                 'type' => 'Str'
+                               },
+               'UplinkBandwidthBits' => {
+                                          'type' => 'Int'
+                                        },
+               'UplinkJitterMs' => {
+                                     'type' => 'Int'
+                                   },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'UplinkDelayMs' => {
+                                    'type' => 'Int'
+                                  },
+               'DownlinkBandwidthBits' => {
+                                            'type' => 'Int'
+                                          },
+               'DownlinkDelayMs' => {
+                                      'type' => 'Int'
+                                    },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'UplinkBandwidthBits' => 'uplinkBandwidthBits',
+                       'UplinkJitterMs' => 'uplinkJitterMs',
+                       'Description' => 'description',
+                       'UplinkDelayMs' => 'uplinkDelayMs',
+                       'DownlinkBandwidthBits' => 'downlinkBandwidthBits',
+                       'DownlinkDelayMs' => 'downlinkDelayMs',
+                       'Type' => 'type',
+                       'DownlinkJitterMs' => 'downlinkJitterMs',
+                       'Name' => 'name',
+                       'UplinkLossPercent' => 'uplinkLossPercent',
+                       'DownlinkLossPercent' => 'downlinkLossPercent',
+                       'ProjectArn' => 'projectArn'
+                     },
+  'IsRequired' => {
+                    'ProjectArn' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

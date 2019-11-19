@@ -1,9 +1,27 @@
 
 package Paws::ES::DescribeElasticsearchInstanceTypeLimitsResponse;
-  use Moose;
-  has LimitsByRole => (is => 'ro', isa => 'Paws::ES::LimitsByRole');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ES::Types qw/ES_LimitsByRole/;
+  has LimitsByRole => (is => 'ro', isa => ES_LimitsByRole);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LimitsByRole' => {
+                                   'class' => 'Paws::ES::LimitsByRole',
+                                   'type' => 'ES_LimitsByRole'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::ES::DescribeElasticsearchInstanceTypeLimitsResponse
 =head1 ATTRIBUTES
 
 
-=head2 LimitsByRole => L<Paws::ES::LimitsByRole>
+=head2 LimitsByRole => ES_LimitsByRole
 
 
 

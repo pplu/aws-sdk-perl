@@ -1,18 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::CopySnapshot;
-  use Moose;
-  has RestoreDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'restoreDate' );
-  has SourceRegion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceRegion' , required => 1);
-  has SourceResourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceResourceName' );
-  has SourceSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceSnapshotName' );
-  has TargetSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetSnapshotName' , required => 1);
-  has UseLatestRestorableAutoSnapshot => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'useLatestRestorableAutoSnapshot' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Lightsail::Types qw//;
+  has RestoreDate => (is => 'ro', isa => Str, predicate => 1);
+  has SourceRegion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceResourceName => (is => 'ro', isa => Str, predicate => 1);
+  has SourceSnapshotName => (is => 'ro', isa => Str, predicate => 1);
+  has TargetSnapshotName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UseLatestRestorableAutoSnapshot => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopySnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::CopySnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopySnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::CopySnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceSnapshotName' => {
+                                         'type' => 'Str'
+                                       },
+               'RestoreDate' => {
+                                  'type' => 'Str'
+                                },
+               'TargetSnapshotName' => {
+                                         'type' => 'Str'
+                                       },
+               'SourceResourceName' => {
+                                         'type' => 'Str'
+                                       },
+               'UseLatestRestorableAutoSnapshot' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'SourceRegion' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'SourceRegion' => 1,
+                    'TargetSnapshotName' => 1
+                  },
+  'NameInRequest' => {
+                       'TargetSnapshotName' => 'targetSnapshotName',
+                       'RestoreDate' => 'restoreDate',
+                       'SourceSnapshotName' => 'sourceSnapshotName',
+                       'UseLatestRestorableAutoSnapshot' => 'useLatestRestorableAutoSnapshot',
+                       'SourceRegion' => 'sourceRegion',
+                       'SourceResourceName' => 'sourceResourceName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

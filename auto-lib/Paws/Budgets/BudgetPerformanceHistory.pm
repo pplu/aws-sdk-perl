@@ -1,11 +1,46 @@
+# Generated from default/object.tt
 package Paws::Budgets::BudgetPerformanceHistory;
-  use Moose;
-  has BudgetedAndActualAmountsList => (is => 'ro', isa => 'ArrayRef[Paws::Budgets::BudgetedAndActualAmounts]');
-  has BudgetName => (is => 'ro', isa => 'Str');
-  has BudgetType => (is => 'ro', isa => 'Str');
-  has CostFilters => (is => 'ro', isa => 'Paws::Budgets::CostFilters');
-  has CostTypes => (is => 'ro', isa => 'Paws::Budgets::CostTypes');
-  has TimeUnit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Budgets::Types qw/Budgets_CostTypes Budgets_BudgetedAndActualAmounts Budgets_CostFilters/;
+  has BudgetedAndActualAmountsList => (is => 'ro', isa => ArrayRef[Budgets_BudgetedAndActualAmounts]);
+  has BudgetName => (is => 'ro', isa => Str);
+  has BudgetType => (is => 'ro', isa => Str);
+  has CostFilters => (is => 'ro', isa => Budgets_CostFilters);
+  has CostTypes => (is => 'ro', isa => Budgets_CostTypes);
+  has TimeUnit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CostFilters' => {
+                                  'type' => 'Budgets_CostFilters',
+                                  'class' => 'Paws::Budgets::CostFilters'
+                                },
+               'BudgetedAndActualAmountsList' => {
+                                                   'type' => 'ArrayRef[Budgets_BudgetedAndActualAmounts]',
+                                                   'class' => 'Paws::Budgets::BudgetedAndActualAmounts'
+                                                 },
+               'TimeUnit' => {
+                               'type' => 'Str'
+                             },
+               'CostTypes' => {
+                                'type' => 'Budgets_CostTypes',
+                                'class' => 'Paws::Budgets::CostTypes'
+                              },
+               'BudgetType' => {
+                                 'type' => 'Str'
+                               },
+               'BudgetName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +77,7 @@ time period.
 =head1 ATTRIBUTES
 
 
-=head2 BudgetedAndActualAmountsList => ArrayRef[L<Paws::Budgets::BudgetedAndActualAmounts>]
+=head2 BudgetedAndActualAmountsList => ArrayRef[Budgets_BudgetedAndActualAmounts]
 
   A list of amounts of cost or usage that you created budgets for,
 compared to your actual costs or usage.
@@ -58,13 +93,13 @@ compared to your actual costs or usage.
   
 
 
-=head2 CostFilters => L<Paws::Budgets::CostFilters>
+=head2 CostFilters => Budgets_CostFilters
 
   The history of the cost filters for a budget during the specified time
 period.
 
 
-=head2 CostTypes => L<Paws::Budgets::CostTypes>
+=head2 CostTypes => Budgets_CostTypes
 
   The history of the cost types for a budget during the specified time
 period.

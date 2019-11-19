@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Glue::PropertyPredicate;
-  use Moose;
-  has Comparator => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has Comparator => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Comparator' => {
+                                 'type' => 'Str'
+                               },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

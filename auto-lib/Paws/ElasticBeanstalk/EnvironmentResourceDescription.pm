@@ -1,13 +1,58 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::EnvironmentResourceDescription;
-  use Moose;
-  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::AutoScalingGroup]');
-  has EnvironmentName => (is => 'ro', isa => 'Str');
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Instance]');
-  has LaunchConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::LaunchConfiguration]');
-  has LaunchTemplates => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::LaunchTemplate]');
-  has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::LoadBalancer]');
-  has Queues => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Queue]');
-  has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Trigger]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_Instance ElasticBeanstalk_LoadBalancer ElasticBeanstalk_AutoScalingGroup ElasticBeanstalk_Trigger ElasticBeanstalk_Queue ElasticBeanstalk_LaunchConfiguration ElasticBeanstalk_LaunchTemplate/;
+  has AutoScalingGroups => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_AutoScalingGroup]);
+  has EnvironmentName => (is => 'ro', isa => Str);
+  has Instances => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_Instance]);
+  has LaunchConfigurations => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_LaunchConfiguration]);
+  has LaunchTemplates => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_LaunchTemplate]);
+  has LoadBalancers => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_LoadBalancer]);
+  has Queues => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_Queue]);
+  has Triggers => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_Trigger]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Queues' => {
+                             'type' => 'ArrayRef[ElasticBeanstalk_Queue]',
+                             'class' => 'Paws::ElasticBeanstalk::Queue'
+                           },
+               'Instances' => {
+                                'class' => 'Paws::ElasticBeanstalk::Instance',
+                                'type' => 'ArrayRef[ElasticBeanstalk_Instance]'
+                              },
+               'LaunchTemplates' => {
+                                      'type' => 'ArrayRef[ElasticBeanstalk_LaunchTemplate]',
+                                      'class' => 'Paws::ElasticBeanstalk::LaunchTemplate'
+                                    },
+               'LaunchConfigurations' => {
+                                           'type' => 'ArrayRef[ElasticBeanstalk_LaunchConfiguration]',
+                                           'class' => 'Paws::ElasticBeanstalk::LaunchConfiguration'
+                                         },
+               'EnvironmentName' => {
+                                      'type' => 'Str'
+                                    },
+               'LoadBalancers' => {
+                                    'class' => 'Paws::ElasticBeanstalk::LoadBalancer',
+                                    'type' => 'ArrayRef[ElasticBeanstalk_LoadBalancer]'
+                                  },
+               'AutoScalingGroups' => {
+                                        'type' => 'ArrayRef[ElasticBeanstalk_AutoScalingGroup]',
+                                        'class' => 'Paws::ElasticBeanstalk::AutoScalingGroup'
+                                      },
+               'Triggers' => {
+                               'type' => 'ArrayRef[ElasticBeanstalk_Trigger]',
+                               'class' => 'Paws::ElasticBeanstalk::Trigger'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +89,7 @@ live.
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingGroups => ArrayRef[L<Paws::ElasticBeanstalk::AutoScalingGroup>]
+=head2 AutoScalingGroups => ArrayRef[ElasticBeanstalk_AutoScalingGroup]
 
   The C<AutoScalingGroups> used by this environment.
 
@@ -54,32 +99,32 @@ live.
   The name of the environment.
 
 
-=head2 Instances => ArrayRef[L<Paws::ElasticBeanstalk::Instance>]
+=head2 Instances => ArrayRef[ElasticBeanstalk_Instance]
 
   The Amazon EC2 instances used by this environment.
 
 
-=head2 LaunchConfigurations => ArrayRef[L<Paws::ElasticBeanstalk::LaunchConfiguration>]
+=head2 LaunchConfigurations => ArrayRef[ElasticBeanstalk_LaunchConfiguration]
 
   The Auto Scaling launch configurations in use by this environment.
 
 
-=head2 LaunchTemplates => ArrayRef[L<Paws::ElasticBeanstalk::LaunchTemplate>]
+=head2 LaunchTemplates => ArrayRef[ElasticBeanstalk_LaunchTemplate]
 
   The Amazon EC2 launch templates in use by this environment.
 
 
-=head2 LoadBalancers => ArrayRef[L<Paws::ElasticBeanstalk::LoadBalancer>]
+=head2 LoadBalancers => ArrayRef[ElasticBeanstalk_LoadBalancer]
 
   The LoadBalancers in use by this environment.
 
 
-=head2 Queues => ArrayRef[L<Paws::ElasticBeanstalk::Queue>]
+=head2 Queues => ArrayRef[ElasticBeanstalk_Queue]
 
   The queues used by this environment.
 
 
-=head2 Triggers => ArrayRef[L<Paws::ElasticBeanstalk::Trigger>]
+=head2 Triggers => ArrayRef[ElasticBeanstalk_Trigger]
 
   The C<AutoScaling> triggers in use by this environment.
 

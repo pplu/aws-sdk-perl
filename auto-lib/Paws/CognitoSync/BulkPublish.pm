@@ -1,14 +1,35 @@
 
 package Paws::CognitoSync::BulkPublish;
-  use Moose;
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoSync::Types qw//;
+  has IdentityPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BulkPublish');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/bulkpublish');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::BulkPublishResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BulkPublish');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/identitypools/{IdentityPoolId}/bulkpublish');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoSync::BulkPublishResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'IdentityPoolId' => 'IdentityPoolId'
+                  },
+  'IsRequired' => {
+                    'IdentityPoolId' => 1
+                  },
+  'types' => {
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::BatchGetPartition;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
-  has PartitionsToGet => (is => 'ro', isa => 'ArrayRef[Paws::Glue::PartitionValueList]', required => 1);
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_PartitionValueList/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PartitionsToGet => (is => 'ro', isa => ArrayRef[Glue_PartitionValueList], required => 1, predicate => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchGetPartition');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::BatchGetPartitionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchGetPartition');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::BatchGetPartitionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DatabaseName' => 1,
+                    'PartitionsToGet' => 1,
+                    'TableName' => 1
+                  },
+  'types' => {
+               'PartitionsToGet' => {
+                                      'type' => 'ArrayRef[Glue_PartitionValueList]',
+                                      'class' => 'Paws::Glue::PartitionValueList'
+                                    },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +101,7 @@ The name of the catalog database where the partitions reside.
 
 
 
-=head2 B<REQUIRED> PartitionsToGet => ArrayRef[L<Paws::Glue::PartitionValueList>]
+=head2 B<REQUIRED> PartitionsToGet => ArrayRef[Glue_PartitionValueList]
 
 A list of partition values identifying the partitions to retrieve.
 

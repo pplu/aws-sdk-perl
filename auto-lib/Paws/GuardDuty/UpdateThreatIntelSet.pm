@@ -1,18 +1,58 @@
 
 package Paws::GuardDuty::UpdateThreatIntelSet;
-  use Moose;
-  has Activate => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'activate');
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has ThreatIntelSetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'threatIntelSetId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::GuardDuty::Types qw//;
+  has Activate => (is => 'ro', isa => Bool, predicate => 1);
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Location => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has ThreatIntelSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateThreatIntelSet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/threatintelset/{threatIntelSetId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::UpdateThreatIntelSetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateThreatIntelSet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/threatintelset/{threatIntelSetId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::UpdateThreatIntelSetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ThreatIntelSetId' => {
+                                       'type' => 'Str'
+                                     },
+               'Activate' => {
+                               'type' => 'Bool'
+                             },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'Location' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'DetectorId' => 1,
+                    'ThreatIntelSetId' => 1
+                  },
+  'NameInRequest' => {
+                       'Activate' => 'activate',
+                       'Name' => 'name',
+                       'Location' => 'location'
+                     },
+  'ParamInURI' => {
+                    'ThreatIntelSetId' => 'threatIntelSetId',
+                    'DetectorId' => 'detectorId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

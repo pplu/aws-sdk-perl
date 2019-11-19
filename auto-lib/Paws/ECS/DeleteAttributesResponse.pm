@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECS::DeleteAttributesResponse;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', traits => ['NameInRequest'], request_name => 'attributes' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECS::Types qw/ECS_Attribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[ECS_Attribute]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Attributes' => 'attributes'
+                     },
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::ECS::Attribute',
+                                 'type' => 'ArrayRef[ECS_Attribute]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::ECS::DeleteAttributesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
+=head2 Attributes => ArrayRef[ECS_Attribute]
 
 A list of attribute objects that were successfully deleted from your
 resource.

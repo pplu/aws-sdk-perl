@@ -1,13 +1,32 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::DeleteBusinessReportSchedule;
-  use Moose;
-  has ScheduleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has ScheduleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteBusinessReportSchedule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::DeleteBusinessReportScheduleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteBusinessReportSchedule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::DeleteBusinessReportScheduleResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ScheduleArn' => 1
+                  },
+  'types' => {
+               'ScheduleArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

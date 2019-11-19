@@ -1,17 +1,51 @@
 
 package Paws::QLDB::GetRevision;
-  use Moose;
-  has BlockAddress => (is => 'ro', isa => 'Paws::QLDB::ValueHolder', required => 1);
-  has DigestTipAddress => (is => 'ro', isa => 'Paws::QLDB::ValueHolder');
-  has DocumentId => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::QLDB::Types qw/QLDB_ValueHolder/;
+  has BlockAddress => (is => 'ro', isa => QLDB_ValueHolder, required => 1, predicate => 1);
+  has DigestTipAddress => (is => 'ro', isa => QLDB_ValueHolder, predicate => 1);
+  has DocumentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRevision');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/ledgers/{name}/revision');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::QLDB::GetRevisionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetRevision');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/ledgers/{name}/revision');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::QLDB::GetRevisionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Name' => 'name'
+                  },
+  'types' => {
+               'DocumentId' => {
+                                 'type' => 'Str'
+                               },
+               'BlockAddress' => {
+                                   'type' => 'QLDB_ValueHolder',
+                                   'class' => 'Paws::QLDB::ValueHolder'
+                                 },
+               'DigestTipAddress' => {
+                                       'type' => 'QLDB_ValueHolder',
+                                       'class' => 'Paws::QLDB::ValueHolder'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'DocumentId' => 1,
+                    'BlockAddress' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +88,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qld
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> BlockAddress => L<Paws::QLDB::ValueHolder>
+=head2 B<REQUIRED> BlockAddress => QLDB_ValueHolder
 
 The block location of the document revision to be verified. An address
 is an Amazon Ion structure that has two fields: C<strandId> and
@@ -64,7 +98,7 @@ For example: C<{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}>
 
 
 
-=head2 DigestTipAddress => L<Paws::QLDB::ValueHolder>
+=head2 DigestTipAddress => QLDB_ValueHolder
 
 The latest block location covered by the digest for which to request a
 proof. An address is an Amazon Ion structure that has two fields:

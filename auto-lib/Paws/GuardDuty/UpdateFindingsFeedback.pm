@@ -1,17 +1,54 @@
 
 package Paws::GuardDuty::UpdateFindingsFeedback;
-  use Moose;
-  has Comments => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'comments');
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has Feedback => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'feedback', required => 1);
-  has FindingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingIds', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GuardDuty::Types qw//;
+  has Comments => (is => 'ro', isa => Str, predicate => 1);
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Feedback => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FindingIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFindingsFeedback');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/findings/feedback');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::UpdateFindingsFeedbackResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFindingsFeedback');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/findings/feedback');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::UpdateFindingsFeedbackResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Feedback' => 1,
+                    'FindingIds' => 1,
+                    'DetectorId' => 1
+                  },
+  'NameInRequest' => {
+                       'Comments' => 'comments',
+                       'FindingIds' => 'findingIds',
+                       'Feedback' => 'feedback'
+                     },
+  'types' => {
+               'Comments' => {
+                               'type' => 'Str'
+                             },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'FindingIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'Feedback' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

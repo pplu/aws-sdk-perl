@@ -1,7 +1,29 @@
 package Paws::EC2::PrincipalIdFormat;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Statuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IdFormat]', request_name => 'statusSet', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_IdFormat/;
+  has Arn => (is => 'ro', isa => Str);
+  has Statuses => (is => 'ro', isa => ArrayRef[EC2_IdFormat]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Statuses' => 'statusSet',
+                       'Arn' => 'arn'
+                     },
+  'types' => {
+               'Statuses' => {
+                               'class' => 'Paws::EC2::IdFormat',
+                               'type' => 'ArrayRef[EC2_IdFormat]'
+                             },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +64,7 @@ This class has no description
   PrincipalIdFormatARN description
 
 
-=head2 Statuses => ArrayRef[L<Paws::EC2::IdFormat>]
+=head2 Statuses => ArrayRef[EC2_IdFormat]
 
   PrincipalIdFormatStatuses description
 

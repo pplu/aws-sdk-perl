@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::LoggingConfig;
-  use Moose;
-  has LogGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has LogRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has LogGroupName => (is => 'ro', isa => Str, required => 1);
+  has LogRoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'LogRoleArn' => 1,
+                    'LogGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

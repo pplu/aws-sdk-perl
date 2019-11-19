@@ -1,16 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Inspector::ListAssessmentRunAgents;
-  use Moose;
-  has AssessmentRunArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentRunArn' , required => 1);
-  has Filter => (is => 'ro', isa => 'Paws::Inspector::AgentFilter', traits => ['NameInRequest'], request_name => 'filter' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Inspector::Types qw/Inspector_AgentFilter/;
+  has AssessmentRunArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Filter => (is => 'ro', isa => Inspector_AgentFilter, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAssessmentRunAgents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Inspector::ListAssessmentRunAgentsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAssessmentRunAgents');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Inspector::ListAssessmentRunAgentsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AssessmentRunArn' => 1
+                  },
+  'NameInRequest' => {
+                       'AssessmentRunArn' => 'assessmentRunArn',
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults',
+                       'Filter' => 'filter'
+                     },
+  'types' => {
+               'Filter' => {
+                             'type' => 'Inspector_AgentFilter',
+                             'class' => 'Paws::Inspector::AgentFilter'
+                           },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'AssessmentRunArn' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +94,7 @@ list.
 
 
 
-=head2 Filter => L<Paws::Inspector::AgentFilter>
+=head2 Filter => Inspector_AgentFilter
 
 You can use this parameter to specify a subset of data to be included
 in the action's response.

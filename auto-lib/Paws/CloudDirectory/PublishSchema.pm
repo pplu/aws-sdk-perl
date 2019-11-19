@@ -1,17 +1,48 @@
 
 package Paws::CloudDirectory::PublishSchema;
-  use Moose;
-  has DevelopmentSchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has MinorVersion => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw//;
+  has DevelopmentSchemaArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MinorVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Version => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PublishSchema');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/schema/publish');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::PublishSchemaResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PublishSchema');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/schema/publish');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::PublishSchemaResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'DevelopmentSchemaArn' => 'x-amz-data-partition'
+                     },
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MinorVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'DevelopmentSchemaArn' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'DevelopmentSchemaArn' => 1,
+                    'Version' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

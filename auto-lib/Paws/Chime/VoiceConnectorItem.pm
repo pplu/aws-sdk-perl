@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Chime::VoiceConnectorItem;
-  use Moose;
-  has Priority => (is => 'ro', isa => 'Int', required => 1);
-  has VoiceConnectorId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Chime::Types qw//;
+  has Priority => (is => 'ro', isa => Int, required => 1);
+  has VoiceConnectorId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VoiceConnectorId' => {
+                                       'type' => 'Str'
+                                     },
+               'Priority' => {
+                               'type' => 'Int'
+                             }
+             },
+  'IsRequired' => {
+                    'Priority' => 1,
+                    'VoiceConnectorId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

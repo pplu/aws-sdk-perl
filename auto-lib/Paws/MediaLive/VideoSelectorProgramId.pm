@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaLive::VideoSelectorProgramId;
-  use Moose;
-  has ProgramId => (is => 'ro', isa => 'Int', request_name => 'programId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaLive::Types qw//;
+  has ProgramId => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProgramId' => {
+                                'type' => 'Int'
+                              }
+             },
+  'NameInRequest' => {
+                       'ProgramId' => 'programId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

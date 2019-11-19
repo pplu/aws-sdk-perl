@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::SavingsPlans::ParentSavingsPlanOffering;
-  use Moose;
-  has Currency => (is => 'ro', isa => 'Str', request_name => 'currency', traits => ['NameInRequest']);
-  has DurationSeconds => (is => 'ro', isa => 'Int', request_name => 'durationSeconds', traits => ['NameInRequest']);
-  has OfferingId => (is => 'ro', isa => 'Str', request_name => 'offeringId', traits => ['NameInRequest']);
-  has PaymentOption => (is => 'ro', isa => 'Str', request_name => 'paymentOption', traits => ['NameInRequest']);
-  has PlanDescription => (is => 'ro', isa => 'Str', request_name => 'planDescription', traits => ['NameInRequest']);
-  has PlanType => (is => 'ro', isa => 'Str', request_name => 'planType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SavingsPlans::Types qw//;
+  has Currency => (is => 'ro', isa => Str);
+  has DurationSeconds => (is => 'ro', isa => Int);
+  has OfferingId => (is => 'ro', isa => Str);
+  has PaymentOption => (is => 'ro', isa => Str);
+  has PlanDescription => (is => 'ro', isa => Str);
+  has PlanType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DurationSeconds' => 'durationSeconds',
+                       'OfferingId' => 'offeringId',
+                       'PlanType' => 'planType',
+                       'Currency' => 'currency',
+                       'PlanDescription' => 'planDescription',
+                       'PaymentOption' => 'paymentOption'
+                     },
+  'types' => {
+               'Currency' => {
+                               'type' => 'Str'
+                             },
+               'PlanType' => {
+                               'type' => 'Str'
+                             },
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               },
+               'DurationSeconds' => {
+                                      'type' => 'Int'
+                                    },
+               'PaymentOption' => {
+                                    'type' => 'Str'
+                                  },
+               'PlanDescription' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

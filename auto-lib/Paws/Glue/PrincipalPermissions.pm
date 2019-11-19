@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Glue::PrincipalPermissions;
-  use Moose;
-  has Permissions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Principal => (is => 'ro', isa => 'Paws::Glue::DataLakePrincipal');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::Glue::Types qw/Glue_DataLakePrincipal/;
+  has Permissions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Principal => (is => 'ro', isa => Glue_DataLakePrincipal);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Principal' => {
+                                'class' => 'Paws::Glue::DataLakePrincipal',
+                                'type' => 'Glue_DataLakePrincipal'
+                              },
+               'Permissions' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Permissions granted to a principal.
   The permissions that are granted to the principal.
 
 
-=head2 Principal => L<Paws::Glue::DataLakePrincipal>
+=head2 Principal => Glue_DataLakePrincipal
 
   The principal who is granted permissions.
 

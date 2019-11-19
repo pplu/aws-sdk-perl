@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::LicenseManager::LicenseConfigurationAssociation;
-  use Moose;
-  has AssociationTime => (is => 'ro', isa => 'Str');
-  has ResourceArn => (is => 'ro', isa => 'Str');
-  has ResourceOwnerId => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LicenseManager::Types qw//;
+  has AssociationTime => (is => 'ro', isa => Str);
+  has ResourceArn => (is => 'ro', isa => Str);
+  has ResourceOwnerId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AssociationTime' => {
+                                      'type' => 'Str'
+                                    },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceOwnerId' => {
+                                      'type' => 'Str'
+                                    },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

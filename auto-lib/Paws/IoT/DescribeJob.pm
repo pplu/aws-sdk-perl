@@ -1,14 +1,35 @@
 
 package Paws::IoT::DescribeJob;
-  use Moose;
-  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/jobs/{jobId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DescribeJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/jobs/{jobId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DescribeJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'JobId' => 1
+                  },
+  'ParamInURI' => {
+                    'JobId' => 'jobId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

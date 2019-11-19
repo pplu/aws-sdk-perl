@@ -1,15 +1,37 @@
 
 package Paws::Chime::CreateVoiceConnectorGroup;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has VoiceConnectorItems => (is => 'ro', isa => 'ArrayRef[Paws::Chime::VoiceConnectorItem]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Chime::Types qw/Chime_VoiceConnectorItem/;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VoiceConnectorItems => (is => 'ro', isa => ArrayRef[Chime_VoiceConnectorItem], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVoiceConnectorGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/voice-connector-groups');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::CreateVoiceConnectorGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateVoiceConnectorGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/voice-connector-groups');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::CreateVoiceConnectorGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'VoiceConnectorItems' => {
+                                          'type' => 'ArrayRef[Chime_VoiceConnectorItem]',
+                                          'class' => 'Paws::Chime::VoiceConnectorItem'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +81,7 @@ The name of the Amazon Chime Voice Connector group.
 
 
 
-=head2 VoiceConnectorItems => ArrayRef[L<Paws::Chime::VoiceConnectorItem>]
+=head2 VoiceConnectorItems => ArrayRef[Chime_VoiceConnectorItem]
 
 The Amazon Chime Voice Connectors to route inbound calls to.
 

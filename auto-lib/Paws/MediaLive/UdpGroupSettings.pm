@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaLive::UdpGroupSettings;
-  use Moose;
-  has InputLossAction => (is => 'ro', isa => 'Str', request_name => 'inputLossAction', traits => ['NameInRequest']);
-  has TimedMetadataId3Frame => (is => 'ro', isa => 'Str', request_name => 'timedMetadataId3Frame', traits => ['NameInRequest']);
-  has TimedMetadataId3Period => (is => 'ro', isa => 'Int', request_name => 'timedMetadataId3Period', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaLive::Types qw//;
+  has InputLossAction => (is => 'ro', isa => Str);
+  has TimedMetadataId3Frame => (is => 'ro', isa => Str);
+  has TimedMetadataId3Period => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimedMetadataId3Period' => {
+                                             'type' => 'Int'
+                                           },
+               'InputLossAction' => {
+                                      'type' => 'Str'
+                                    },
+               'TimedMetadataId3Frame' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'NameInRequest' => {
+                       'TimedMetadataId3Period' => 'timedMetadataId3Period',
+                       'TimedMetadataId3Frame' => 'timedMetadataId3Frame',
+                       'InputLossAction' => 'inputLossAction'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,61 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::AttributeValue;
-  use Moose;
-  has B => (is => 'ro', isa => 'Str');
-  has BOOL => (is => 'ro', isa => 'Bool');
-  has BS => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has L => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeValue]');
-  has M => (is => 'ro', isa => 'Paws::DynamoDB::MapAttributeValue');
-  has N => (is => 'ro', isa => 'Str');
-  has NS => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NULL => (is => 'ro', isa => 'Bool');
-  has S => (is => 'ro', isa => 'Str');
-  has SS => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_MapAttributeValue DynamoDB_AttributeValue/;
+  has B => (is => 'ro', isa => Str);
+  has BOOL => (is => 'ro', isa => Bool);
+  has BS => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has L => (is => 'ro', isa => ArrayRef[DynamoDB_AttributeValue]);
+  has M => (is => 'ro', isa => DynamoDB_MapAttributeValue);
+  has N => (is => 'ro', isa => Str);
+  has NS => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NULL => (is => 'ro', isa => Bool);
+  has S => (is => 'ro', isa => Str);
+  has SS => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S' => {
+                        'type' => 'Str'
+                      },
+               'BS' => {
+                         'type' => 'ArrayRef[Str|Undef]'
+                       },
+               'B' => {
+                        'type' => 'Str'
+                      },
+               'BOOL' => {
+                           'type' => 'Bool'
+                         },
+               'SS' => {
+                         'type' => 'ArrayRef[Str|Undef]'
+                       },
+               'L' => {
+                        'class' => 'Paws::DynamoDB::AttributeValue',
+                        'type' => 'ArrayRef[DynamoDB_AttributeValue]'
+                      },
+               'NULL' => {
+                           'type' => 'Bool'
+                         },
+               'N' => {
+                        'type' => 'Str'
+                      },
+               'M' => {
+                        'type' => 'DynamoDB_MapAttributeValue',
+                        'class' => 'Paws::DynamoDB::MapAttributeValue'
+                      },
+               'NS' => {
+                         'type' => 'ArrayRef[Str|Undef]'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,14 +119,14 @@ C<"BOOL": true>
 C<"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]>
 
 
-=head2 L => ArrayRef[L<Paws::DynamoDB::AttributeValue>]
+=head2 L => ArrayRef[DynamoDB_AttributeValue]
 
   An attribute of type List. For example:
 
 C<"L": [ {"S": "Cookies"} , {"S": "Coffee"}, {"N", "3.14159"}]>
 
 
-=head2 M => L<Paws::DynamoDB::MapAttributeValue>
+=head2 M => DynamoDB_MapAttributeValue
 
   An attribute of type Map. For example:
 

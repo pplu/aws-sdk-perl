@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::KMS::GrantConstraints;
-  use Moose;
-  has EncryptionContextEquals => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
-  has EncryptionContextSubset => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::KMS::Types qw/KMS_EncryptionContextType/;
+  has EncryptionContextEquals => (is => 'ro', isa => KMS_EncryptionContextType);
+  has EncryptionContextSubset => (is => 'ro', isa => KMS_EncryptionContextType);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EncryptionContextSubset' => {
+                                              'type' => 'KMS_EncryptionContextType',
+                                              'class' => 'Paws::KMS::EncryptionContextType'
+                                            },
+               'EncryptionContextEquals' => {
+                                              'class' => 'Paws::KMS::EncryptionContextType',
+                                              'type' => 'KMS_EncryptionContextType'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +108,7 @@ in the I< I<AWS Key Management Service Developer Guide> >.
 =head1 ATTRIBUTES
 
 
-=head2 EncryptionContextEquals => L<Paws::KMS::EncryptionContextType>
+=head2 EncryptionContextEquals => KMS_EncryptionContextType
 
   A list of key-value pairs that must match the encryption context in the
 cryptographic operation request. The grant allows the operation only
@@ -94,7 +116,7 @@ when the encryption context in the request is the same as the
 encryption context specified in this constraint.
 
 
-=head2 EncryptionContextSubset => L<Paws::KMS::EncryptionContextType>
+=head2 EncryptionContextSubset => KMS_EncryptionContextType
 
   A list of key-value pairs that must be included in the encryption
 context of the cryptographic operation request. The grant allows the

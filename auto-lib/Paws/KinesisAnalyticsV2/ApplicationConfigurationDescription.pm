@@ -1,11 +1,49 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::ApplicationConfigurationDescription;
-  use Moose;
-  has ApplicationCodeConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationCodeConfigurationDescription');
-  has ApplicationSnapshotConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationSnapshotConfigurationDescription');
-  has EnvironmentPropertyDescriptions => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::EnvironmentPropertyDescriptions');
-  has FlinkApplicationConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::FlinkApplicationConfigurationDescription');
-  has RunConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::RunConfigurationDescription');
-  has SqlApplicationConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::SqlApplicationConfigurationDescription');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_ApplicationCodeConfigurationDescription KinesisAnalyticsV2_FlinkApplicationConfigurationDescription KinesisAnalyticsV2_EnvironmentPropertyDescriptions KinesisAnalyticsV2_RunConfigurationDescription KinesisAnalyticsV2_SqlApplicationConfigurationDescription KinesisAnalyticsV2_ApplicationSnapshotConfigurationDescription/;
+  has ApplicationCodeConfigurationDescription => (is => 'ro', isa => KinesisAnalyticsV2_ApplicationCodeConfigurationDescription);
+  has ApplicationSnapshotConfigurationDescription => (is => 'ro', isa => KinesisAnalyticsV2_ApplicationSnapshotConfigurationDescription);
+  has EnvironmentPropertyDescriptions => (is => 'ro', isa => KinesisAnalyticsV2_EnvironmentPropertyDescriptions);
+  has FlinkApplicationConfigurationDescription => (is => 'ro', isa => KinesisAnalyticsV2_FlinkApplicationConfigurationDescription);
+  has RunConfigurationDescription => (is => 'ro', isa => KinesisAnalyticsV2_RunConfigurationDescription);
+  has SqlApplicationConfigurationDescription => (is => 'ro', isa => KinesisAnalyticsV2_SqlApplicationConfigurationDescription);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationSnapshotConfigurationDescription' => {
+                                                                  'type' => 'KinesisAnalyticsV2_ApplicationSnapshotConfigurationDescription',
+                                                                  'class' => 'Paws::KinesisAnalyticsV2::ApplicationSnapshotConfigurationDescription'
+                                                                },
+               'SqlApplicationConfigurationDescription' => {
+                                                             'class' => 'Paws::KinesisAnalyticsV2::SqlApplicationConfigurationDescription',
+                                                             'type' => 'KinesisAnalyticsV2_SqlApplicationConfigurationDescription'
+                                                           },
+               'EnvironmentPropertyDescriptions' => {
+                                                      'class' => 'Paws::KinesisAnalyticsV2::EnvironmentPropertyDescriptions',
+                                                      'type' => 'KinesisAnalyticsV2_EnvironmentPropertyDescriptions'
+                                                    },
+               'FlinkApplicationConfigurationDescription' => {
+                                                               'class' => 'Paws::KinesisAnalyticsV2::FlinkApplicationConfigurationDescription',
+                                                               'type' => 'KinesisAnalyticsV2_FlinkApplicationConfigurationDescription'
+                                                             },
+               'ApplicationCodeConfigurationDescription' => {
+                                                              'type' => 'KinesisAnalyticsV2_ApplicationCodeConfigurationDescription',
+                                                              'class' => 'Paws::KinesisAnalyticsV2::ApplicationCodeConfigurationDescription'
+                                                            },
+               'RunConfigurationDescription' => {
+                                                  'type' => 'KinesisAnalyticsV2_RunConfigurationDescription',
+                                                  'class' => 'Paws::KinesisAnalyticsV2::RunConfigurationDescription'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,36 +80,36 @@ for an Amazon Kinesis Data Analytics application.
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationCodeConfigurationDescription => L<Paws::KinesisAnalyticsV2::ApplicationCodeConfigurationDescription>
+=head2 ApplicationCodeConfigurationDescription => KinesisAnalyticsV2_ApplicationCodeConfigurationDescription
 
   The details about the application code for a Java-based Kinesis Data
 Analytics application.
 
 
-=head2 ApplicationSnapshotConfigurationDescription => L<Paws::KinesisAnalyticsV2::ApplicationSnapshotConfigurationDescription>
+=head2 ApplicationSnapshotConfigurationDescription => KinesisAnalyticsV2_ApplicationSnapshotConfigurationDescription
 
   Describes whether snapshots are enabled for a Java-based Kinesis Data
 Analytics application.
 
 
-=head2 EnvironmentPropertyDescriptions => L<Paws::KinesisAnalyticsV2::EnvironmentPropertyDescriptions>
+=head2 EnvironmentPropertyDescriptions => KinesisAnalyticsV2_EnvironmentPropertyDescriptions
 
   Describes execution properties for a Java-based Kinesis Data Analytics
 application.
 
 
-=head2 FlinkApplicationConfigurationDescription => L<Paws::KinesisAnalyticsV2::FlinkApplicationConfigurationDescription>
+=head2 FlinkApplicationConfigurationDescription => KinesisAnalyticsV2_FlinkApplicationConfigurationDescription
 
   The details about a Java-based Kinesis Data Analytics application.
 
 
-=head2 RunConfigurationDescription => L<Paws::KinesisAnalyticsV2::RunConfigurationDescription>
+=head2 RunConfigurationDescription => KinesisAnalyticsV2_RunConfigurationDescription
 
   The details about the starting properties for a Kinesis Data Analytics
 application.
 
 
-=head2 SqlApplicationConfigurationDescription => L<Paws::KinesisAnalyticsV2::SqlApplicationConfigurationDescription>
+=head2 SqlApplicationConfigurationDescription => KinesisAnalyticsV2_SqlApplicationConfigurationDescription
 
   The details about inputs, outputs, and reference data sources for an
 SQL-based Kinesis Data Analytics application.

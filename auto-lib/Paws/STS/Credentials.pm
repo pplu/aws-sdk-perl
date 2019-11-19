@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::STS::Credentials;
-  use Moose;
-  has AccessKeyId => (is => 'ro', isa => 'Str', required => 1);
-  has Expiration => (is => 'ro', isa => 'Str', required => 1);
-  has SecretAccessKey => (is => 'ro', isa => 'Str', required => 1);
-  has SessionToken => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::STS::Types qw//;
+  has AccessKeyId => (is => 'ro', isa => Str, required => 1);
+  has Expiration => (is => 'ro', isa => Str, required => 1);
+  has SecretAccessKey => (is => 'ro', isa => Str, required => 1);
+  has SessionToken => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AccessKeyId' => 1,
+                    'SecretAccessKey' => 1,
+                    'Expiration' => 1,
+                    'SessionToken' => 1
+                  },
+  'types' => {
+               'SecretAccessKey' => {
+                                      'type' => 'Str'
+                                    },
+               'AccessKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'Expiration' => {
+                                 'type' => 'Str'
+                               },
+               'SessionToken' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

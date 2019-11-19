@@ -1,18 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::Search;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Resource => (is => 'ro', isa => 'Str', required => 1);
-  has SearchExpression => (is => 'ro', isa => 'Paws::SageMaker::SearchExpression');
-  has SortBy => (is => 'ro', isa => 'Str');
-  has SortOrder => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SageMaker::Types qw/SageMaker_SearchExpression/;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Resource => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SearchExpression => (is => 'ro', isa => SageMaker_SearchExpression, predicate => 1);
+  has SortBy => (is => 'ro', isa => Str, predicate => 1);
+  has SortOrder => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Search');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::SearchResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Search');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::SearchResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SearchExpression' => {
+                                       'type' => 'SageMaker_SearchExpression',
+                                       'class' => 'Paws::SageMaker::SearchExpression'
+                                     },
+               'SortOrder' => {
+                                'type' => 'Str'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Resource' => {
+                               'type' => 'Str'
+                             },
+               'SortBy' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Resource' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -105,7 +140,7 @@ only valid C<Resource> value is C<TrainingJob>.
 
 Valid values are: C<"TrainingJob">
 
-=head2 SearchExpression => L<Paws::SageMaker::SearchExpression>
+=head2 SearchExpression => SageMaker_SearchExpression
 
 A Boolean conditional statement. Resource objects must satisfy this
 condition to be included in search results. You must provide at least

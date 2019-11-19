@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::RepositoryNameIdPair;
-  use Moose;
-  has RepositoryId => (is => 'ro', isa => 'Str', request_name => 'repositoryId', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has RepositoryId => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RepositoryId' => {
+                                   'type' => 'Str'
+                                 },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'RepositoryId' => 'repositoryId',
+                       'RepositoryName' => 'repositoryName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::Snowball::JobListEntry;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has IsMaster => (is => 'ro', isa => 'Bool');
-  has JobId => (is => 'ro', isa => 'Str');
-  has JobState => (is => 'ro', isa => 'Str');
-  has JobType => (is => 'ro', isa => 'Str');
-  has SnowballType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Snowball::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IsMaster => (is => 'ro', isa => Bool);
+  has JobId => (is => 'ro', isa => Str);
+  has JobState => (is => 'ro', isa => Str);
+  has JobType => (is => 'ro', isa => Str);
+  has SnowballType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobState' => {
+                               'type' => 'Str'
+                             },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'IsMaster' => {
+                               'type' => 'Bool'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'JobType' => {
+                              'type' => 'Str'
+                            },
+               'SnowballType' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

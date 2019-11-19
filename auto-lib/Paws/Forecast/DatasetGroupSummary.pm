@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Forecast::DatasetGroupSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DatasetGroupArn => (is => 'ro', isa => 'Str');
-  has DatasetGroupName => (is => 'ro', isa => 'Str');
-  has LastModificationTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DatasetGroupArn => (is => 'ro', isa => Str);
+  has DatasetGroupName => (is => 'ro', isa => Str);
+  has LastModificationTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DatasetGroupName' => {
+                                       'type' => 'Str'
+                                     },
+               'LastModificationTime' => {
+                                           'type' => 'Str'
+                                         },
+               'DatasetGroupArn' => {
+                                      'type' => 'Str'
+                                    },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

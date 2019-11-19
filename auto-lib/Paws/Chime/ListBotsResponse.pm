@@ -1,10 +1,31 @@
 
 package Paws::Chime::ListBotsResponse;
-  use Moose;
-  has Bots => (is => 'ro', isa => 'ArrayRef[Paws::Chime::Bot]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Chime::Types qw/Chime_Bot/;
+  has Bots => (is => 'ro', isa => ArrayRef[Chime_Bot]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Bots' => {
+                           'type' => 'ArrayRef[Chime_Bot]',
+                           'class' => 'Paws::Chime::Bot'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Chime::ListBotsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Bots => ArrayRef[L<Paws::Chime::Bot>]
+=head2 Bots => ArrayRef[Chime_Bot]
 
 List of bots and bot details.
 

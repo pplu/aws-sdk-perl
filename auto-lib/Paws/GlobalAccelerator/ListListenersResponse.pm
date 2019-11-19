@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GlobalAccelerator::ListListenersResponse;
-  use Moose;
-  has Listeners => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::Listener]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GlobalAccelerator::Types qw/GlobalAccelerator_Listener/;
+  has Listeners => (is => 'ro', isa => ArrayRef[GlobalAccelerator_Listener]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Listeners' => {
+                                'type' => 'ArrayRef[GlobalAccelerator_Listener]',
+                                'class' => 'Paws::GlobalAccelerator::Listener'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::GlobalAccelerator::ListListenersResponse
 =head1 ATTRIBUTES
 
 
-=head2 Listeners => ArrayRef[L<Paws::GlobalAccelerator::Listener>]
+=head2 Listeners => ArrayRef[GlobalAccelerator_Listener]
 
 The list of listeners for an accelerator.
 

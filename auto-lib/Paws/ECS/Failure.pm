@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ECS::Failure;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Reason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Reason' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Reason' => 'reason',
+                       'Arn' => 'arn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

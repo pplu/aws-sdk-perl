@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeStar::ListTeamMembersResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has TeamMembers => (is => 'ro', isa => 'ArrayRef[Paws::CodeStar::TeamMember]', traits => ['NameInRequest'], request_name => 'teamMembers' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeStar::Types qw/CodeStar_TeamMember/;
+  has NextToken => (is => 'ro', isa => Str);
+  has TeamMembers => (is => 'ro', isa => ArrayRef[CodeStar_TeamMember], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'TeamMembers' => 'teamMembers'
+                     },
+  'IsRequired' => {
+                    'TeamMembers' => 1
+                  },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TeamMembers' => {
+                                  'type' => 'ArrayRef[CodeStar_TeamMember]',
+                                  'class' => 'Paws::CodeStar::TeamMember'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +50,7 @@ The continuation token to use when requesting the next set of results,
 if there are more results to be returned.
 
 
-=head2 B<REQUIRED> TeamMembers => ArrayRef[L<Paws::CodeStar::TeamMember>]
+=head2 B<REQUIRED> TeamMembers => ArrayRef[CodeStar_TeamMember]
 
 A list of team member objects for the project.
 

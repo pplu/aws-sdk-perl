@@ -1,17 +1,47 @@
 
 package Paws::DataExchange::ListJobs;
-  use Moose;
-  has DataSetId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'dataSetId');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has RevisionId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'revisionId');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DataExchange::Types qw//;
+  has DataSetId => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has RevisionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListJobs');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataExchange::ListJobsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListJobs');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataExchange::ListJobsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'DataSetId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInQuery' => {
+                      'DataSetId' => 'dataSetId',
+                      'RevisionId' => 'revisionId',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

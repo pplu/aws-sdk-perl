@@ -1,20 +1,115 @@
+# Generated from default/object.tt
 package Paws::Inspector::AssessmentRun;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has AssessmentTemplateArn => (is => 'ro', isa => 'Str', request_name => 'assessmentTemplateArn', traits => ['NameInRequest'], required => 1);
-  has CompletedAt => (is => 'ro', isa => 'Str', request_name => 'completedAt', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
-  has DataCollected => (is => 'ro', isa => 'Bool', request_name => 'dataCollected', traits => ['NameInRequest'], required => 1);
-  has DurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'durationInSeconds', traits => ['NameInRequest'], required => 1);
-  has FindingCounts => (is => 'ro', isa => 'Paws::Inspector::AssessmentRunFindingCounts', request_name => 'findingCounts', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRunNotification]', request_name => 'notifications', traits => ['NameInRequest'], required => 1);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest'], required => 1);
-  has StartedAt => (is => 'ro', isa => 'Str', request_name => 'startedAt', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest'], required => 1);
-  has StateChangedAt => (is => 'ro', isa => 'Str', request_name => 'stateChangedAt', traits => ['NameInRequest'], required => 1);
-  has StateChanges => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRunStateChange]', request_name => 'stateChanges', traits => ['NameInRequest'], required => 1);
-  has UserAttributesForFindings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'userAttributesForFindings', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::Inspector::Types qw/Inspector_AssessmentRunStateChange Inspector_AssessmentRunFindingCounts Inspector_Attribute Inspector_AssessmentRunNotification/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has AssessmentTemplateArn => (is => 'ro', isa => Str, required => 1);
+  has CompletedAt => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str, required => 1);
+  has DataCollected => (is => 'ro', isa => Bool, required => 1);
+  has DurationInSeconds => (is => 'ro', isa => Int, required => 1);
+  has FindingCounts => (is => 'ro', isa => Inspector_AssessmentRunFindingCounts, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Notifications => (is => 'ro', isa => ArrayRef[Inspector_AssessmentRunNotification], required => 1);
+  has RulesPackageArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has StartedAt => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str, required => 1);
+  has StateChangedAt => (is => 'ro', isa => Str, required => 1);
+  has StateChanges => (is => 'ro', isa => ArrayRef[Inspector_AssessmentRunStateChange], required => 1);
+  has UserAttributesForFindings => (is => 'ro', isa => ArrayRef[Inspector_Attribute], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StateChangedAt' => {
+                                     'type' => 'Str'
+                                   },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'AssessmentTemplateArn' => {
+                                            'type' => 'Str'
+                                          },
+               'DataCollected' => {
+                                    'type' => 'Bool'
+                                  },
+               'Notifications' => {
+                                    'type' => 'ArrayRef[Inspector_AssessmentRunNotification]',
+                                    'class' => 'Paws::Inspector::AssessmentRunNotification'
+                                  },
+               'RulesPackageArns' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'StartedAt' => {
+                                'type' => 'Str'
+                              },
+               'FindingCounts' => {
+                                    'class' => 'Paws::Inspector::AssessmentRunFindingCounts',
+                                    'type' => 'Inspector_AssessmentRunFindingCounts'
+                                  },
+               'CompletedAt' => {
+                                  'type' => 'Str'
+                                },
+               'DurationInSeconds' => {
+                                        'type' => 'Int'
+                                      },
+               'StateChanges' => {
+                                   'class' => 'Paws::Inspector::AssessmentRunStateChange',
+                                   'type' => 'ArrayRef[Inspector_AssessmentRunStateChange]'
+                                 },
+               'UserAttributesForFindings' => {
+                                                'class' => 'Paws::Inspector::Attribute',
+                                                'type' => 'ArrayRef[Inspector_Attribute]'
+                                              },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'DataCollected' => 1,
+                    'RulesPackageArns' => 1,
+                    'Notifications' => 1,
+                    'FindingCounts' => 1,
+                    'DurationInSeconds' => 1,
+                    'State' => 1,
+                    'UserAttributesForFindings' => 1,
+                    'StateChanges' => 1,
+                    'Name' => 1,
+                    'StateChangedAt' => 1,
+                    'CreatedAt' => 1,
+                    'Arn' => 1,
+                    'AssessmentTemplateArn' => 1
+                  },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'State' => 'state',
+                       'UserAttributesForFindings' => 'userAttributesForFindings',
+                       'StateChanges' => 'stateChanges',
+                       'RulesPackageArns' => 'rulesPackageArns',
+                       'Notifications' => 'notifications',
+                       'DataCollected' => 'dataCollected',
+                       'DurationInSeconds' => 'durationInSeconds',
+                       'CompletedAt' => 'completedAt',
+                       'StartedAt' => 'startedAt',
+                       'FindingCounts' => 'findingCounts',
+                       'AssessmentTemplateArn' => 'assessmentTemplateArn',
+                       'Arn' => 'arn',
+                       'StateChangedAt' => 'stateChangedAt',
+                       'CreatedAt' => 'createdAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +181,7 @@ collecting data from the agents is completed.
   The duration of the assessment run.
 
 
-=head2 B<REQUIRED> FindingCounts => L<Paws::Inspector::AssessmentRunFindingCounts>
+=head2 B<REQUIRED> FindingCounts => Inspector_AssessmentRunFindingCounts
 
   Provides a total count of generated findings per severity.
 
@@ -96,7 +191,7 @@ collecting data from the agents is completed.
   The auto-generated name for the assessment run.
 
 
-=head2 B<REQUIRED> Notifications => ArrayRef[L<Paws::Inspector::AssessmentRunNotification>]
+=head2 B<REQUIRED> Notifications => ArrayRef[Inspector_AssessmentRunNotification]
 
   A list of notifications for the event subscriptions. A notification
 about a particular generated finding is added to this list only once.
@@ -122,12 +217,12 @@ about a particular generated finding is added to this list only once.
   The last time when the assessment run's state changed.
 
 
-=head2 B<REQUIRED> StateChanges => ArrayRef[L<Paws::Inspector::AssessmentRunStateChange>]
+=head2 B<REQUIRED> StateChanges => ArrayRef[Inspector_AssessmentRunStateChange]
 
   A list of the assessment run state changes.
 
 
-=head2 B<REQUIRED> UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 B<REQUIRED> UserAttributesForFindings => ArrayRef[Inspector_Attribute]
 
   The user-defined attributes that are assigned to every generated
 finding.

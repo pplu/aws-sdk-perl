@@ -1,12 +1,58 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::LambdaTarget;
-  use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
-  has LambdaFunctionInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LambdaFunctionInfo', request_name => 'lambdaFunctionInfo', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has LifecycleEvents => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::LifecycleEvent]', request_name => 'lifecycleEvents', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest']);
-  has TargetId => (is => 'ro', isa => 'Str', request_name => 'targetId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_LambdaFunctionInfo CodeDeploy_LifecycleEvent/;
+  has DeploymentId => (is => 'ro', isa => Str);
+  has LambdaFunctionInfo => (is => 'ro', isa => CodeDeploy_LambdaFunctionInfo);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has LifecycleEvents => (is => 'ro', isa => ArrayRef[CodeDeploy_LifecycleEvent]);
+  has Status => (is => 'ro', isa => Str);
+  has TargetArn => (is => 'ro', isa => Str);
+  has TargetId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TargetArn' => 'targetArn',
+                       'LambdaFunctionInfo' => 'lambdaFunctionInfo',
+                       'DeploymentId' => 'deploymentId',
+                       'Status' => 'status',
+                       'TargetId' => 'targetId',
+                       'LifecycleEvents' => 'lifecycleEvents',
+                       'LastUpdatedAt' => 'lastUpdatedAt'
+                     },
+  'types' => {
+               'TargetArn' => {
+                                'type' => 'Str'
+                              },
+               'LambdaFunctionInfo' => {
+                                         'class' => 'Paws::CodeDeploy::LambdaFunctionInfo',
+                                         'type' => 'CodeDeploy_LambdaFunctionInfo'
+                                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'LifecycleEvents' => {
+                                      'class' => 'Paws::CodeDeploy::LifecycleEvent',
+                                      'type' => 'ArrayRef[CodeDeploy_LifecycleEvent]'
+                                    },
+               'TargetId' => {
+                               'type' => 'Str'
+                             },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +94,7 @@ deployment.
   The unique ID of a deployment.
 
 
-=head2 LambdaFunctionInfo => L<Paws::CodeDeploy::LambdaFunctionInfo>
+=head2 LambdaFunctionInfo => CodeDeploy_LambdaFunctionInfo
 
   A C<LambdaFunctionInfo> object that describes a target Lambda function.
 
@@ -59,7 +105,7 @@ deployment.
 deployment.
 
 
-=head2 LifecycleEvents => ArrayRef[L<Paws::CodeDeploy::LifecycleEvent>]
+=head2 LifecycleEvents => ArrayRef[CodeDeploy_LifecycleEvent]
 
   The lifecycle events of the deployment to this target Lambda function.
 

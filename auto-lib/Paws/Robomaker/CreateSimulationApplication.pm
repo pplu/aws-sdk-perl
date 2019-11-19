@@ -1,19 +1,68 @@
 
 package Paws::Robomaker::CreateSimulationApplication;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has RenderingEngine => (is => 'ro', isa => 'Paws::Robomaker::RenderingEngine', traits => ['NameInRequest'], request_name => 'renderingEngine');
-  has RobotSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::RobotSoftwareSuite', traits => ['NameInRequest'], request_name => 'robotSoftwareSuite', required => 1);
-  has SimulationSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::SimulationSoftwareSuite', traits => ['NameInRequest'], request_name => 'simulationSoftwareSuite', required => 1);
-  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SourceConfig]', traits => ['NameInRequest'], request_name => 'sources', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_SimulationSoftwareSuite Robomaker_RenderingEngine Robomaker_SourceConfig Robomaker_RobotSoftwareSuite Robomaker_TagMap/;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RenderingEngine => (is => 'ro', isa => Robomaker_RenderingEngine, predicate => 1);
+  has RobotSoftwareSuite => (is => 'ro', isa => Robomaker_RobotSoftwareSuite, required => 1, predicate => 1);
+  has SimulationSoftwareSuite => (is => 'ro', isa => Robomaker_SimulationSoftwareSuite, required => 1, predicate => 1);
+  has Sources => (is => 'ro', isa => ArrayRef[Robomaker_SourceConfig], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Robomaker_TagMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSimulationApplication');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/createSimulationApplication');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Robomaker::CreateSimulationApplicationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSimulationApplication');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/createSimulationApplication');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Robomaker::CreateSimulationApplicationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SimulationSoftwareSuite' => {
+                                              'class' => 'Paws::Robomaker::SimulationSoftwareSuite',
+                                              'type' => 'Robomaker_SimulationSoftwareSuite'
+                                            },
+               'RenderingEngine' => {
+                                      'type' => 'Robomaker_RenderingEngine',
+                                      'class' => 'Paws::Robomaker::RenderingEngine'
+                                    },
+               'Sources' => {
+                              'class' => 'Paws::Robomaker::SourceConfig',
+                              'type' => 'ArrayRef[Robomaker_SourceConfig]'
+                            },
+               'Tags' => {
+                           'class' => 'Paws::Robomaker::TagMap',
+                           'type' => 'Robomaker_TagMap'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RobotSoftwareSuite' => {
+                                         'type' => 'Robomaker_RobotSoftwareSuite',
+                                         'class' => 'Paws::Robomaker::RobotSoftwareSuite'
+                                       }
+             },
+  'IsRequired' => {
+                    'Sources' => 1,
+                    'SimulationSoftwareSuite' => 1,
+                    'RobotSoftwareSuite' => 1,
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'RobotSoftwareSuite' => 'robotSoftwareSuite',
+                       'Name' => 'name',
+                       'Tags' => 'tags',
+                       'SimulationSoftwareSuite' => 'simulationSoftwareSuite',
+                       'Sources' => 'sources',
+                       'RenderingEngine' => 'renderingEngine'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -89,31 +138,31 @@ The name of the simulation application.
 
 
 
-=head2 RenderingEngine => L<Paws::Robomaker::RenderingEngine>
+=head2 RenderingEngine => Robomaker_RenderingEngine
 
 The rendering engine for the simulation application.
 
 
 
-=head2 B<REQUIRED> RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
+=head2 B<REQUIRED> RobotSoftwareSuite => Robomaker_RobotSoftwareSuite
 
 The robot software suite of the simulation application.
 
 
 
-=head2 B<REQUIRED> SimulationSoftwareSuite => L<Paws::Robomaker::SimulationSoftwareSuite>
+=head2 B<REQUIRED> SimulationSoftwareSuite => Robomaker_SimulationSoftwareSuite
 
 The simulation software suite used by the simulation application.
 
 
 
-=head2 B<REQUIRED> Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
+=head2 B<REQUIRED> Sources => ArrayRef[Robomaker_SourceConfig]
 
 The sources of the simulation application.
 
 
 
-=head2 Tags => L<Paws::Robomaker::TagMap>
+=head2 Tags => Robomaker_TagMap
 
 A map that contains tag keys and tag values that are attached to the
 simulation application.

@@ -1,20 +1,67 @@
 
 package Paws::ServerlessRepo::UpdateApplication;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
-  has Author => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'author');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has HomePageUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'homePageUrl');
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'labels');
-  has ReadmeBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeBody');
-  has ReadmeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeUrl');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ServerlessRepo::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Author => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has HomePageUrl => (is => 'ro', isa => Str, predicate => 1);
+  has Labels => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ReadmeBody => (is => 'ro', isa => Str, predicate => 1);
+  has ReadmeUrl => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplication');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/applications/{applicationId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServerlessRepo::UpdateApplicationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateApplication');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/applications/{applicationId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServerlessRepo::UpdateApplicationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApplicationId' => 'applicationId'
+                  },
+  'types' => {
+               'ReadmeBody' => {
+                                 'type' => 'Str'
+                               },
+               'Labels' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Author' => {
+                             'type' => 'Str'
+                           },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'HomePageUrl' => {
+                                  'type' => 'Str'
+                                },
+               'ReadmeUrl' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1
+                  },
+  'NameInRequest' => {
+                       'ReadmeBody' => 'readmeBody',
+                       'Labels' => 'labels',
+                       'Description' => 'description',
+                       'Author' => 'author',
+                       'HomePageUrl' => 'homePageUrl',
+                       'ReadmeUrl' => 'readmeUrl'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,57 @@
+# Generated from default/object.tt
 package Paws::ELBv2::AuthenticateCognitoActionConfig;
-  use Moose;
-  has AuthenticationRequestExtraParams => (is => 'ro', isa => 'Paws::ELBv2::AuthenticateCognitoActionAuthenticationRequestExtraParams');
-  has OnUnauthenticatedRequest => (is => 'ro', isa => 'Str');
-  has Scope => (is => 'ro', isa => 'Str');
-  has SessionCookieName => (is => 'ro', isa => 'Str');
-  has SessionTimeout => (is => 'ro', isa => 'Int');
-  has UserPoolArn => (is => 'ro', isa => 'Str', required => 1);
-  has UserPoolClientId => (is => 'ro', isa => 'Str', required => 1);
-  has UserPoolDomain => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ELBv2::Types qw/ELBv2_AuthenticateCognitoActionAuthenticationRequestExtraParams/;
+  has AuthenticationRequestExtraParams => (is => 'ro', isa => ELBv2_AuthenticateCognitoActionAuthenticationRequestExtraParams);
+  has OnUnauthenticatedRequest => (is => 'ro', isa => Str);
+  has Scope => (is => 'ro', isa => Str);
+  has SessionCookieName => (is => 'ro', isa => Str);
+  has SessionTimeout => (is => 'ro', isa => Int);
+  has UserPoolArn => (is => 'ro', isa => Str, required => 1);
+  has UserPoolClientId => (is => 'ro', isa => Str, required => 1);
+  has UserPoolDomain => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPoolClientId' => {
+                                       'type' => 'Str'
+                                     },
+               'AuthenticationRequestExtraParams' => {
+                                                       'class' => 'Paws::ELBv2::AuthenticateCognitoActionAuthenticationRequestExtraParams',
+                                                       'type' => 'ELBv2_AuthenticateCognitoActionAuthenticationRequestExtraParams'
+                                                     },
+               'SessionCookieName' => {
+                                        'type' => 'Str'
+                                      },
+               'SessionTimeout' => {
+                                     'type' => 'Int'
+                                   },
+               'Scope' => {
+                            'type' => 'Str'
+                          },
+               'UserPoolDomain' => {
+                                     'type' => 'Str'
+                                   },
+               'OnUnauthenticatedRequest' => {
+                                               'type' => 'Str'
+                                             },
+               'UserPoolArn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'UserPoolArn' => 1,
+                    'UserPoolDomain' => 1,
+                    'UserPoolClientId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +88,7 @@ authenticate users.
 =head1 ATTRIBUTES
 
 
-=head2 AuthenticationRequestExtraParams => L<Paws::ELBv2::AuthenticateCognitoActionAuthenticationRequestExtraParams>
+=head2 AuthenticationRequestExtraParams => ELBv2_AuthenticateCognitoActionAuthenticationRequestExtraParams
 
   The query parameters (up to 10) to include in the redirect request to
 the authorization endpoint.

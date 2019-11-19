@@ -1,28 +1,100 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MTurk::CreateHIT;
-  use Moose;
-  has AssignmentDurationInSeconds => (is => 'ro', isa => 'Int', required => 1);
-  has AssignmentReviewPolicy => (is => 'ro', isa => 'Paws::MTurk::ReviewPolicy');
-  has AutoApprovalDelayInSeconds => (is => 'ro', isa => 'Int');
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has HITLayoutId => (is => 'ro', isa => 'Str');
-  has HITLayoutParameters => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::HITLayoutParameter]');
-  has HITReviewPolicy => (is => 'ro', isa => 'Paws::MTurk::ReviewPolicy');
-  has Keywords => (is => 'ro', isa => 'Str');
-  has LifetimeInSeconds => (is => 'ro', isa => 'Int', required => 1);
-  has MaxAssignments => (is => 'ro', isa => 'Int');
-  has QualificationRequirements => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::QualificationRequirement]');
-  has Question => (is => 'ro', isa => 'Str');
-  has RequesterAnnotation => (is => 'ro', isa => 'Str');
-  has Reward => (is => 'ro', isa => 'Str', required => 1);
-  has Title => (is => 'ro', isa => 'Str', required => 1);
-  has UniqueRequestToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::MTurk::Types qw/MTurk_ReviewPolicy MTurk_QualificationRequirement MTurk_HITLayoutParameter/;
+  has AssignmentDurationInSeconds => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has AssignmentReviewPolicy => (is => 'ro', isa => MTurk_ReviewPolicy, predicate => 1);
+  has AutoApprovalDelayInSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has HITLayoutId => (is => 'ro', isa => Str, predicate => 1);
+  has HITLayoutParameters => (is => 'ro', isa => ArrayRef[MTurk_HITLayoutParameter], predicate => 1);
+  has HITReviewPolicy => (is => 'ro', isa => MTurk_ReviewPolicy, predicate => 1);
+  has Keywords => (is => 'ro', isa => Str, predicate => 1);
+  has LifetimeInSeconds => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has MaxAssignments => (is => 'ro', isa => Int, predicate => 1);
+  has QualificationRequirements => (is => 'ro', isa => ArrayRef[MTurk_QualificationRequirement], predicate => 1);
+  has Question => (is => 'ro', isa => Str, predicate => 1);
+  has RequesterAnnotation => (is => 'ro', isa => Str, predicate => 1);
+  has Reward => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Title => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UniqueRequestToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHIT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MTurk::CreateHITResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateHIT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MTurk::CreateHITResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QualificationRequirements' => {
+                                                'type' => 'ArrayRef[MTurk_QualificationRequirement]',
+                                                'class' => 'Paws::MTurk::QualificationRequirement'
+                                              },
+               'LifetimeInSeconds' => {
+                                        'type' => 'Int'
+                                      },
+               'Reward' => {
+                             'type' => 'Str'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Question' => {
+                               'type' => 'Str'
+                             },
+               'Keywords' => {
+                               'type' => 'Str'
+                             },
+               'HITLayoutId' => {
+                                  'type' => 'Str'
+                                },
+               'HITReviewPolicy' => {
+                                      'class' => 'Paws::MTurk::ReviewPolicy',
+                                      'type' => 'MTurk_ReviewPolicy'
+                                    },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'AssignmentReviewPolicy' => {
+                                             'type' => 'MTurk_ReviewPolicy',
+                                             'class' => 'Paws::MTurk::ReviewPolicy'
+                                           },
+               'UniqueRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'HITLayoutParameters' => {
+                                          'class' => 'Paws::MTurk::HITLayoutParameter',
+                                          'type' => 'ArrayRef[MTurk_HITLayoutParameter]'
+                                        },
+               'AutoApprovalDelayInSeconds' => {
+                                                 'type' => 'Int'
+                                               },
+               'MaxAssignments' => {
+                                     'type' => 'Int'
+                                   },
+               'RequesterAnnotation' => {
+                                          'type' => 'Str'
+                                        },
+               'AssignmentDurationInSeconds' => {
+                                                  'type' => 'Int'
+                                                }
+             },
+  'IsRequired' => {
+                    'Title' => 1,
+                    'Description' => 1,
+                    'LifetimeInSeconds' => 1,
+                    'AssignmentDurationInSeconds' => 1,
+                    'Reward' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -139,7 +211,7 @@ assignment becomes available for other users to find and accept.
 
 
 
-=head2 AssignmentReviewPolicy => L<Paws::MTurk::ReviewPolicy>
+=head2 AssignmentReviewPolicy => MTurk_ReviewPolicy
 
 The Assignment-level Review Policy applies to the assignments under the
 HIT. You can specify for Mechanical Turk to take various actions based
@@ -177,7 +249,7 @@ must be provided.
 
 
 
-=head2 HITLayoutParameters => ArrayRef[L<Paws::MTurk::HITLayoutParameter>]
+=head2 HITLayoutParameters => ArrayRef[MTurk_HITLayoutParameter]
 
 If the HITLayoutId is provided, any placeholder values must be filled
 in with values using the HITLayoutParameter structure. For more
@@ -185,7 +257,7 @@ information, see HITLayout.
 
 
 
-=head2 HITReviewPolicy => L<Paws::MTurk::ReviewPolicy>
+=head2 HITReviewPolicy => MTurk_ReviewPolicy
 
 The HIT-level Review Policy applies to the HIT. You can specify for
 Mechanical Turk to take various actions based on the policy.
@@ -215,7 +287,7 @@ HIT becomes unavailable.
 
 
 
-=head2 QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>]
+=head2 QualificationRequirements => ArrayRef[MTurk_QualificationRequirement]
 
 Conditions that a Worker's Qualifications must meet in order to accept
 the HIT. A HIT can have between zero and ten Qualification

@@ -1,9 +1,38 @@
 package Paws::EC2::ActiveInstance;
-  use Moose;
-  has InstanceHealth => (is => 'ro', isa => 'Str', request_name => 'instanceHealth', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has SpotInstanceRequestId => (is => 'ro', isa => 'Str', request_name => 'spotInstanceRequestId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has InstanceHealth => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has SpotInstanceRequestId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InstanceType' => 'instanceType',
+                       'SpotInstanceRequestId' => 'spotInstanceRequestId',
+                       'InstanceId' => 'instanceId',
+                       'InstanceHealth' => 'instanceHealth'
+                     },
+  'types' => {
+               'InstanceHealth' => {
+                                     'type' => 'Str'
+                                   },
+               'SpotInstanceRequestId' => {
+                                            'type' => 'Str'
+                                          },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CloudFront::EncryptionEntities;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::EncryptionEntity]', request_name => 'EncryptionEntity', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::CloudFront::Types qw/CloudFront_EncryptionEntity/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_EncryptionEntity]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'Items' => {
+                            'class' => 'Paws::CloudFront::EncryptionEntity',
+                            'type' => 'ArrayRef[CloudFront_EncryptionEntity]'
+                          }
+             },
+  'IsRequired' => {
+                    'Quantity' => 1
+                  },
+  'NameInRequest' => {
+                       'Items' => 'EncryptionEntity'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +65,7 @@ of the encryption entities.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::EncryptionEntity>]
+=head2 Items => ArrayRef[CloudFront_EncryptionEntity]
 
   An array of field patterns in a field-level encryption content
 type-profile mapping.

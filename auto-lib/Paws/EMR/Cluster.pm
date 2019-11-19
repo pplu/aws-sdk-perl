@@ -1,31 +1,129 @@
+# Generated from default/object.tt
 package Paws::EMR::Cluster;
-  use Moose;
-  has Applications => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Application]');
-  has AutoScalingRole => (is => 'ro', isa => 'Str');
-  has AutoTerminate => (is => 'ro', isa => 'Bool');
-  has ClusterArn => (is => 'ro', isa => 'Str');
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
-  has CustomAmiId => (is => 'ro', isa => 'Str');
-  has EbsRootVolumeSize => (is => 'ro', isa => 'Int');
-  has Ec2InstanceAttributes => (is => 'ro', isa => 'Paws::EMR::Ec2InstanceAttributes');
-  has Id => (is => 'ro', isa => 'Str');
-  has InstanceCollectionType => (is => 'ro', isa => 'Str');
-  has KerberosAttributes => (is => 'ro', isa => 'Paws::EMR::KerberosAttributes');
-  has LogUri => (is => 'ro', isa => 'Str');
-  has MasterPublicDnsName => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has NormalizedInstanceHours => (is => 'ro', isa => 'Int');
-  has ReleaseLabel => (is => 'ro', isa => 'Str');
-  has RepoUpgradeOnBoot => (is => 'ro', isa => 'Str');
-  has RequestedAmiVersion => (is => 'ro', isa => 'Str');
-  has RunningAmiVersion => (is => 'ro', isa => 'Str');
-  has ScaleDownBehavior => (is => 'ro', isa => 'Str');
-  has SecurityConfiguration => (is => 'ro', isa => 'Str');
-  has ServiceRole => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Paws::EMR::ClusterStatus');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Tag]');
-  has TerminationProtected => (is => 'ro', isa => 'Bool');
-  has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Bool Int/;
+  use Paws::EMR::Types qw/EMR_Ec2InstanceAttributes EMR_Application EMR_KerberosAttributes EMR_Tag EMR_ClusterStatus EMR_Configuration/;
+  has Applications => (is => 'ro', isa => ArrayRef[EMR_Application]);
+  has AutoScalingRole => (is => 'ro', isa => Str);
+  has AutoTerminate => (is => 'ro', isa => Bool);
+  has ClusterArn => (is => 'ro', isa => Str);
+  has Configurations => (is => 'ro', isa => ArrayRef[EMR_Configuration]);
+  has CustomAmiId => (is => 'ro', isa => Str);
+  has EbsRootVolumeSize => (is => 'ro', isa => Int);
+  has Ec2InstanceAttributes => (is => 'ro', isa => EMR_Ec2InstanceAttributes);
+  has Id => (is => 'ro', isa => Str);
+  has InstanceCollectionType => (is => 'ro', isa => Str);
+  has KerberosAttributes => (is => 'ro', isa => EMR_KerberosAttributes);
+  has LogUri => (is => 'ro', isa => Str);
+  has MasterPublicDnsName => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has NormalizedInstanceHours => (is => 'ro', isa => Int);
+  has ReleaseLabel => (is => 'ro', isa => Str);
+  has RepoUpgradeOnBoot => (is => 'ro', isa => Str);
+  has RequestedAmiVersion => (is => 'ro', isa => Str);
+  has RunningAmiVersion => (is => 'ro', isa => Str);
+  has ScaleDownBehavior => (is => 'ro', isa => Str);
+  has SecurityConfiguration => (is => 'ro', isa => Str);
+  has ServiceRole => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => EMR_ClusterStatus);
+  has Tags => (is => 'ro', isa => ArrayRef[EMR_Tag]);
+  has TerminationProtected => (is => 'ro', isa => Bool);
+  has VisibleToAllUsers => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RunningAmiVersion' => {
+                                        'type' => 'Str'
+                                      },
+               'AutoTerminate' => {
+                                    'type' => 'Bool'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'InstanceCollectionType' => {
+                                             'type' => 'Str'
+                                           },
+               'ScaleDownBehavior' => {
+                                        'type' => 'Str'
+                                      },
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               },
+               'TerminationProtected' => {
+                                           'type' => 'Bool'
+                                         },
+               'LogUri' => {
+                             'type' => 'Str'
+                           },
+               'EbsRootVolumeSize' => {
+                                        'type' => 'Int'
+                                      },
+               'ReleaseLabel' => {
+                                   'type' => 'Str'
+                                 },
+               'Configurations' => {
+                                     'type' => 'ArrayRef[EMR_Configuration]',
+                                     'class' => 'Paws::EMR::Configuration'
+                                   },
+               'RepoUpgradeOnBoot' => {
+                                        'type' => 'Str'
+                                      },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'class' => 'Paws::EMR::ClusterStatus',
+                             'type' => 'EMR_ClusterStatus'
+                           },
+               'Applications' => {
+                                   'class' => 'Paws::EMR::Application',
+                                   'type' => 'ArrayRef[EMR_Application]'
+                                 },
+               'MasterPublicDnsName' => {
+                                          'type' => 'Str'
+                                        },
+               'VisibleToAllUsers' => {
+                                        'type' => 'Bool'
+                                      },
+               'KerberosAttributes' => {
+                                         'type' => 'EMR_KerberosAttributes',
+                                         'class' => 'Paws::EMR::KerberosAttributes'
+                                       },
+               'SecurityConfiguration' => {
+                                            'type' => 'Str'
+                                          },
+               'Tags' => {
+                           'class' => 'Paws::EMR::Tag',
+                           'type' => 'ArrayRef[EMR_Tag]'
+                         },
+               'RequestedAmiVersion' => {
+                                          'type' => 'Str'
+                                        },
+               'AutoScalingRole' => {
+                                      'type' => 'Str'
+                                    },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Ec2InstanceAttributes' => {
+                                            'class' => 'Paws::EMR::Ec2InstanceAttributes',
+                                            'type' => 'EMR_Ec2InstanceAttributes'
+                                          },
+               'NormalizedInstanceHours' => {
+                                              'type' => 'Int'
+                                            },
+               'CustomAmiId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +159,7 @@ The detailed description of the cluster.
 =head1 ATTRIBUTES
 
 
-=head2 Applications => ArrayRef[L<Paws::EMR::Application>]
+=head2 Applications => ArrayRef[EMR_Application]
 
   The applications installed on this cluster.
 
@@ -85,7 +183,7 @@ steps.
   The Amazon Resource Name of the cluster.
 
 
-=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
+=head2 Configurations => ArrayRef[EMR_Configuration]
 
   Applies only to Amazon EMR releases 4.x and later. The list of
 Configurations supplied to the EMR cluster.
@@ -104,7 +202,7 @@ is used for each EC2 instance. Available in Amazon EMR version 4.x and
 later.
 
 
-=head2 Ec2InstanceAttributes => L<Paws::EMR::Ec2InstanceAttributes>
+=head2 Ec2InstanceAttributes => EMR_Ec2InstanceAttributes
 
   Provides information about the EC2 instances in a cluster grouped by
 category. For example, key name, subnet ID, IAM instance profile, and
@@ -126,7 +224,7 @@ C<INSTANCE_GROUP> indicates a uniform instance group configuration. A
 value of C<INSTANCE_FLEET> indicates an instance fleets configuration.
 
 
-=head2 KerberosAttributes => L<Paws::EMR::KerberosAttributes>
+=head2 KerberosAttributes => EMR_KerberosAttributes
 
   Attributes for Kerberos configuration when Kerberos authentication is
 enabled using a security configuration. For more information see Use
@@ -222,12 +320,12 @@ than 5.1.0.
 AWS resources on your behalf.
 
 
-=head2 Status => L<Paws::EMR::ClusterStatus>
+=head2 Status => EMR_ClusterStatus
 
   The current status details about the cluster.
 
 
-=head2 Tags => ArrayRef[L<Paws::EMR::Tag>]
+=head2 Tags => ArrayRef[EMR_Tag]
 
   A list of tags associated with a cluster.
 

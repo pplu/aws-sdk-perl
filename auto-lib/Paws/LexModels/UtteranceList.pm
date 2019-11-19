@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::LexModels::UtteranceList;
-  use Moose;
-  has BotVersion => (is => 'ro', isa => 'Str', request_name => 'botVersion', traits => ['NameInRequest']);
-  has Utterances => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::UtteranceData]', request_name => 'utterances', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LexModels::Types qw/LexModels_UtteranceData/;
+  has BotVersion => (is => 'ro', isa => Str);
+  has Utterances => (is => 'ro', isa => ArrayRef[LexModels_UtteranceData]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Utterances' => 'utterances',
+                       'BotVersion' => 'botVersion'
+                     },
+  'types' => {
+               'Utterances' => {
+                                 'class' => 'Paws::LexModels::UtteranceData',
+                                 'type' => 'ArrayRef[LexModels_UtteranceData]'
+                               },
+               'BotVersion' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +68,7 @@ of your bot. The list contains a maximum of 100 utterances.
   The version of the bot that processed the list.
 
 
-=head2 Utterances => ArrayRef[L<Paws::LexModels::UtteranceData>]
+=head2 Utterances => ArrayRef[LexModels_UtteranceData]
 
   One or more UtteranceData objects that contain information about the
 utterances that have been made to a bot. The maximum number of object

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::Result;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has ProcessingResult => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has ProcessingResult => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'ProcessingResult' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

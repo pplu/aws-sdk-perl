@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Glacier::Grant;
-  use Moose;
-  has Grantee => (is => 'ro', isa => 'Paws::Glacier::Grantee');
-  has Permission => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw/Glacier_Grantee/;
+  has Grantee => (is => 'ro', isa => Glacier_Grantee);
+  has Permission => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Grantee' => {
+                              'type' => 'Glacier_Grantee',
+                              'class' => 'Paws::Glacier::Grantee'
+                            },
+               'Permission' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Contains information about a grant.
 =head1 ATTRIBUTES
 
 
-=head2 Grantee => L<Paws::Glacier::Grantee>
+=head2 Grantee => Glacier_Grantee
 
   The grantee.
 

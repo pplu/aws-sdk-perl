@@ -1,18 +1,48 @@
 
 package Paws::Route53::ListVPCAssociationAuthorizations;
-  use Moose;
-  has HostedZoneId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
-  has MaxResults => (is => 'ro', isa => 'Str', query_name => 'maxresults', traits => ['ParamInQuery']);
-  has NextToken => (is => 'ro', isa => 'Str', query_name => 'nexttoken', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw//;
+  has HostedZoneId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListVPCAssociationAuthorizations');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/hostedzone/{Id}/authorizevpcassociation');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListVPCAssociationAuthorizationsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListVPCAssociationAuthorizations');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/hostedzone/{Id}/authorizevpcassociation');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::ListVPCAssociationAuthorizationsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'HostedZoneId' => 1
+                  },
+  'ParamInQuery' => {
+                      'MaxResults' => 'maxresults',
+                      'NextToken' => 'nexttoken'
+                    },
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Str'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'HostedZoneId' => 'Id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

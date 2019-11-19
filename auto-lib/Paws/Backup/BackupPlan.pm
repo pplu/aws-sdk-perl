@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::Backup::BackupPlan;
-  use Moose;
-  has BackupPlanName => (is => 'ro', isa => 'Str', required => 1);
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::Backup::BackupRule]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Backup::Types qw/Backup_BackupRule/;
+  has BackupPlanName => (is => 'ro', isa => Str, required => 1);
+  has Rules => (is => 'ro', isa => ArrayRef[Backup_BackupRule], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Rules' => {
+                            'type' => 'ArrayRef[Backup_BackupRule]',
+                            'class' => 'Paws::Backup::BackupRule'
+                          },
+               'BackupPlanName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'Rules' => 1,
+                    'BackupPlanName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +70,7 @@ different selection of AWS resources.
   The display name of a backup plan.
 
 
-=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::Backup::BackupRule>]
+=head2 B<REQUIRED> Rules => ArrayRef[Backup_BackupRule]
 
   An array of C<BackupRule> objects, each of which specifies a scheduled
 task that is used to back up a selection of resources.

@@ -1,9 +1,46 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
-  has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest'], required => 1);
-  has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
-  has TimeoutType => (is => 'ro', isa => 'Str', request_name => 'timeoutType', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Details => (is => 'ro', isa => Str);
+  has ScheduledEventId => (is => 'ro', isa => Int, required => 1);
+  has StartedEventId => (is => 'ro', isa => Int, required => 1);
+  has TimeoutType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeoutType' => {
+                                  'type' => 'Str'
+                                },
+               'ScheduledEventId' => {
+                                       'type' => 'Int'
+                                     },
+               'StartedEventId' => {
+                                     'type' => 'Int'
+                                   },
+               'Details' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'TimeoutType' => 1,
+                    'StartedEventId' => 1,
+                    'ScheduledEventId' => 1
+                  },
+  'NameInRequest' => {
+                       'TimeoutType' => 'timeoutType',
+                       'StartedEventId' => 'startedEventId',
+                       'Details' => 'details',
+                       'ScheduledEventId' => 'scheduledEventId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

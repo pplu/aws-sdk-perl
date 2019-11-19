@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AppStream::BatchAssociateUserStackResult;
-  use Moose;
-  has Errors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::UserStackAssociationError]', traits => ['NameInRequest'], request_name => 'errors' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppStream::Types qw/AppStream_UserStackAssociationError/;
+  has Errors => (is => 'ro', isa => ArrayRef[AppStream_UserStackAssociationError]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Errors' => {
+                             'class' => 'Paws::AppStream::UserStackAssociationError',
+                             'type' => 'ArrayRef[AppStream_UserStackAssociationError]'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Errors' => 'errors'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::AppStream::BatchAssociateUserStackResult
 =head1 ATTRIBUTES
 
 
-=head2 Errors => ArrayRef[L<Paws::AppStream::UserStackAssociationError>]
+=head2 Errors => ArrayRef[AppStream_UserStackAssociationError]
 
 The list of UserStackAssociationError objects.
 

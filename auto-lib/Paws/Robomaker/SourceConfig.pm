@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Robomaker::SourceConfig;
-  use Moose;
-  has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
-  has S3Bucket => (is => 'ro', isa => 'Str', request_name => 's3Bucket', traits => ['NameInRequest']);
-  has S3Key => (is => 'ro', isa => 'Str', request_name => 's3Key', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw//;
+  has Architecture => (is => 'ro', isa => Str);
+  has S3Bucket => (is => 'ro', isa => Str);
+  has S3Key => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'S3Bucket' => 's3Bucket',
+                       'Architecture' => 'architecture',
+                       'S3Key' => 's3Key'
+                     },
+  'types' => {
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 },
+               'S3Key' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

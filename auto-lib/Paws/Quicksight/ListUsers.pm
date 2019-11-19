@@ -1,17 +1,53 @@
 
 package Paws::Quicksight::ListUsers;
-  use Moose;
-  has AwsAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'AwsAccountId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-results');
-  has Namespace => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Namespace', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'next-token');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Quicksight::Types qw//;
+  has AwsAccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListUsers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{AwsAccountId}/namespaces/{Namespace}/users');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Quicksight::ListUsersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListUsers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{AwsAccountId}/namespaces/{Namespace}/users');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Quicksight::ListUsersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'AwsAccountId' => 'AwsAccountId',
+                    'Namespace' => 'Namespace'
+                  },
+  'types' => {
+               'AwsAccountId' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Namespace' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'AwsAccountId' => 1,
+                    'Namespace' => 1
+                  },
+  'ParamInQuery' => {
+                      'MaxResults' => 'max-results',
+                      'NextToken' => 'next-token'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

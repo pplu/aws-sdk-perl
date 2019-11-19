@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::SESv2::CloudWatchDimensionConfiguration;
-  use Moose;
-  has DefaultDimensionValue => (is => 'ro', isa => 'Str', required => 1);
-  has DimensionName => (is => 'ro', isa => 'Str', required => 1);
-  has DimensionValueSource => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw//;
+  has DefaultDimensionValue => (is => 'ro', isa => Str, required => 1);
+  has DimensionName => (is => 'ro', isa => Str, required => 1);
+  has DimensionValueSource => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DefaultDimensionValue' => {
+                                            'type' => 'Str'
+                                          },
+               'DimensionValueSource' => {
+                                           'type' => 'Str'
+                                         },
+               'DimensionName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'DimensionName' => 1,
+                    'DefaultDimensionValue' => 1,
+                    'DimensionValueSource' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

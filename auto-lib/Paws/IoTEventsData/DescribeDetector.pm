@@ -1,15 +1,42 @@
 
 package Paws::IoTEventsData::DescribeDetector;
-  use Moose;
-  has DetectorModelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorModelName', required => 1);
-  has KeyValue => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'keyValue');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEventsData::Types qw//;
+  has DetectorModelName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KeyValue => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDetector');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detectors/{detectorModelName}/keyValues/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTEventsData::DescribeDetectorResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDetector');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detectors/{detectorModelName}/keyValues/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTEventsData::DescribeDetectorResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DetectorModelName' => 'detectorModelName'
+                  },
+  'IsRequired' => {
+                    'DetectorModelName' => 1
+                  },
+  'ParamInQuery' => {
+                      'KeyValue' => 'keyValue'
+                    },
+  'types' => {
+               'KeyValue' => {
+                               'type' => 'Str'
+                             },
+               'DetectorModelName' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

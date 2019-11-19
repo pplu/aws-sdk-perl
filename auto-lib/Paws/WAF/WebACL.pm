@@ -1,11 +1,50 @@
+# Generated from default/object.tt
 package Paws::WAF::WebACL;
-  use Moose;
-  has DefaultAction => (is => 'ro', isa => 'Paws::WAF::WafAction', required => 1);
-  has MetricName => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::WAF::ActivatedRule]', required => 1);
-  has WebACLArn => (is => 'ro', isa => 'Str');
-  has WebACLId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_ActivatedRule WAF_WafAction/;
+  has DefaultAction => (is => 'ro', isa => WAF_WafAction, required => 1);
+  has MetricName => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Rules => (is => 'ro', isa => ArrayRef[WAF_ActivatedRule], required => 1);
+  has WebACLArn => (is => 'ro', isa => Str);
+  has WebACLId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DefaultAction' => {
+                                    'class' => 'Paws::WAF::WafAction',
+                                    'type' => 'WAF_WafAction'
+                                  },
+               'WebACLId' => {
+                               'type' => 'Str'
+                             },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'WebACLArn' => {
+                                'type' => 'Str'
+                              },
+               'Rules' => {
+                            'type' => 'ArrayRef[WAF_ActivatedRule]',
+                            'class' => 'Paws::WAF::ActivatedRule'
+                          }
+             },
+  'IsRequired' => {
+                    'DefaultAction' => 1,
+                    'WebACLId' => 1,
+                    'Rules' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +89,7 @@ information, see UpdateWebACL.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DefaultAction => L<Paws::WAF::WafAction>
+=head2 B<REQUIRED> DefaultAction => WAF_WafAction
 
   The action to perform if none of the C<Rules> contained in the
 C<WebACL> match. The action is specified by the WafAction object.
@@ -72,7 +111,7 @@ C<WebACL>.
 name of a C<WebACL> after you create it.
 
 
-=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::WAF::ActivatedRule>]
+=head2 B<REQUIRED> Rules => ArrayRef[WAF_ActivatedRule]
 
   An array that contains the action for each C<Rule> in a C<WebACL>, the
 priority of the C<Rule>, and the ID of the C<Rule>.

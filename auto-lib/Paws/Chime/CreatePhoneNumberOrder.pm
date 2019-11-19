@@ -1,15 +1,37 @@
 
 package Paws::Chime::CreatePhoneNumberOrder;
-  use Moose;
-  has E164PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has ProductType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Chime::Types qw//;
+  has E164PhoneNumbers => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has ProductType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePhoneNumberOrder');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/phone-number-orders');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::CreatePhoneNumberOrderResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePhoneNumberOrder');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/phone-number-orders');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::CreatePhoneNumberOrderResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProductType' => {
+                                  'type' => 'Str'
+                                },
+               'E164PhoneNumbers' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             },
+  'IsRequired' => {
+                    'ProductType' => 1,
+                    'E164PhoneNumbers' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

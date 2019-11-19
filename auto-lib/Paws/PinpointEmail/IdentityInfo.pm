@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::IdentityInfo;
-  use Moose;
-  has IdentityName => (is => 'ro', isa => 'Str');
-  has IdentityType => (is => 'ro', isa => 'Str');
-  has SendingEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::PinpointEmail::Types qw//;
+  has IdentityName => (is => 'ro', isa => Str);
+  has IdentityType => (is => 'ro', isa => Str);
+  has SendingEnabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IdentityName' => {
+                                   'type' => 'Str'
+                                 },
+               'SendingEnabled' => {
+                                     'type' => 'Bool'
+                                   },
+               'IdentityType' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::AppMesh::AwsCloudMapServiceDiscovery;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::AwsCloudMapInstanceAttribute]', request_name => 'attributes', traits => ['NameInRequest']);
-  has NamespaceName => (is => 'ro', isa => 'Str', request_name => 'namespaceName', traits => ['NameInRequest'], required => 1);
-  has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::AppMesh::Types qw/AppMesh_AwsCloudMapInstanceAttribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[AppMesh_AwsCloudMapInstanceAttribute]);
+  has NamespaceName => (is => 'ro', isa => Str, required => 1);
+  has ServiceName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'type' => 'ArrayRef[AppMesh_AwsCloudMapInstanceAttribute]',
+                                 'class' => 'Paws::AppMesh::AwsCloudMapInstanceAttribute'
+                               },
+               'NamespaceName' => {
+                                    'type' => 'Str'
+                                  },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'NamespaceName' => 1,
+                    'ServiceName' => 1
+                  },
+  'NameInRequest' => {
+                       'Attributes' => 'attributes',
+                       'NamespaceName' => 'namespaceName',
+                       'ServiceName' => 'serviceName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +72,7 @@ information for your virtual node.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::AppMesh::AwsCloudMapInstanceAttribute>]
+=head2 Attributes => ArrayRef[AppMesh_AwsCloudMapInstanceAttribute]
 
   A string map that contains attributes with values that you can use to
 filter instances by any custom attribute that you specified when you

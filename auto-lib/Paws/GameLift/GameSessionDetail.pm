@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::GameLift::GameSessionDetail;
-  use Moose;
-  has GameSession => (is => 'ro', isa => 'Paws::GameLift::GameSession');
-  has ProtectionPolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_GameSession/;
+  has GameSession => (is => 'ro', isa => GameLift_GameSession);
+  has ProtectionPolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProtectionPolicy' => {
+                                       'type' => 'Str'
+                                     },
+               'GameSession' => {
+                                  'type' => 'GameLift_GameSession',
+                                  'class' => 'Paws::GameLift::GameSession'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ force.
 =head1 ATTRIBUTES
 
 
-=head2 GameSession => L<Paws::GameLift::GameSession>
+=head2 GameSession => GameLift_GameSession
 
   Object that describes a game session.
 

@@ -1,19 +1,64 @@
 
 package Paws::IoT::UpdateDynamicThingGroup;
-  use Moose;
-  has ExpectedVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'expectedVersion');
-  has IndexName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'indexName');
-  has QueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryString');
-  has QueryVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryVersion');
-  has ThingGroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingGroupName', required => 1);
-  has ThingGroupProperties => (is => 'ro', isa => 'Paws::IoT::ThingGroupProperties', traits => ['NameInRequest'], request_name => 'thingGroupProperties', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw/IoT_ThingGroupProperties/;
+  has ExpectedVersion => (is => 'ro', isa => Int, predicate => 1);
+  has IndexName => (is => 'ro', isa => Str, predicate => 1);
+  has QueryString => (is => 'ro', isa => Str, predicate => 1);
+  has QueryVersion => (is => 'ro', isa => Str, predicate => 1);
+  has ThingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ThingGroupProperties => (is => 'ro', isa => IoT_ThingGroupProperties, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDynamicThingGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/dynamic-thing-groups/{thingGroupName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::UpdateDynamicThingGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDynamicThingGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/dynamic-thing-groups/{thingGroupName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::UpdateDynamicThingGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QueryVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'ThingGroupProperties' => {
+                                           'type' => 'IoT_ThingGroupProperties',
+                                           'class' => 'Paws::IoT::ThingGroupProperties'
+                                         },
+               'ThingGroupName' => {
+                                     'type' => 'Str'
+                                   },
+               'ExpectedVersion' => {
+                                      'type' => 'Int'
+                                    },
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'QueryString' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ThingGroupName' => 1,
+                    'ThingGroupProperties' => 1
+                  },
+  'NameInRequest' => {
+                       'QueryVersion' => 'queryVersion',
+                       'ThingGroupProperties' => 'thingGroupProperties',
+                       'IndexName' => 'indexName',
+                       'ExpectedVersion' => 'expectedVersion',
+                       'QueryString' => 'queryString'
+                     },
+  'ParamInURI' => {
+                    'ThingGroupName' => 'thingGroupName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -98,7 +143,7 @@ The name of the dynamic thing group to update.
 
 
 
-=head2 B<REQUIRED> ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>
+=head2 B<REQUIRED> ThingGroupProperties => IoT_ThingGroupProperties
 
 The dynamic thing group properties to update.
 

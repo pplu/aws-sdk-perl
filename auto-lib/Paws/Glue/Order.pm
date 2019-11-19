@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Glue::Order;
-  use Moose;
-  has Column => (is => 'ro', isa => 'Str', required => 1);
-  has SortOrder => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Glue::Types qw//;
+  has Column => (is => 'ro', isa => Str, required => 1);
+  has SortOrder => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Column' => 1,
+                    'SortOrder' => 1
+                  },
+  'types' => {
+               'Column' => {
+                             'type' => 'Str'
+                           },
+               'SortOrder' => {
+                                'type' => 'Int'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

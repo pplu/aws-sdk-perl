@@ -1,21 +1,111 @@
+# Generated from default/object.tt
 package Paws::Batch::ComputeResource;
-  use Moose;
-  has AllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'allocationStrategy', traits => ['NameInRequest']);
-  has BidPercentage => (is => 'ro', isa => 'Int', request_name => 'bidPercentage', traits => ['NameInRequest']);
-  has DesiredvCpus => (is => 'ro', isa => 'Int', request_name => 'desiredvCpus', traits => ['NameInRequest']);
-  has Ec2KeyPair => (is => 'ro', isa => 'Str', request_name => 'ec2KeyPair', traits => ['NameInRequest']);
-  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
-  has InstanceRole => (is => 'ro', isa => 'Str', request_name => 'instanceRole', traits => ['NameInRequest'], required => 1);
-  has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'instanceTypes', traits => ['NameInRequest'], required => 1);
-  has LaunchTemplate => (is => 'ro', isa => 'Paws::Batch::LaunchTemplateSpecification', request_name => 'launchTemplate', traits => ['NameInRequest']);
-  has MaxvCpus => (is => 'ro', isa => 'Int', request_name => 'maxvCpus', traits => ['NameInRequest'], required => 1);
-  has MinvCpus => (is => 'ro', isa => 'Int', request_name => 'minvCpus', traits => ['NameInRequest'], required => 1);
-  has PlacementGroup => (is => 'ro', isa => 'Str', request_name => 'placementGroup', traits => ['NameInRequest']);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
-  has SpotIamFleetRole => (is => 'ro', isa => 'Str', request_name => 'spotIamFleetRole', traits => ['NameInRequest']);
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Batch::TagsMap', request_name => 'tags', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::Batch::Types qw/Batch_LaunchTemplateSpecification Batch_TagsMap/;
+  has AllocationStrategy => (is => 'ro', isa => Str);
+  has BidPercentage => (is => 'ro', isa => Int);
+  has DesiredvCpus => (is => 'ro', isa => Int);
+  has Ec2KeyPair => (is => 'ro', isa => Str);
+  has ImageId => (is => 'ro', isa => Str);
+  has InstanceRole => (is => 'ro', isa => Str, required => 1);
+  has InstanceTypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has LaunchTemplate => (is => 'ro', isa => Batch_LaunchTemplateSpecification);
+  has MaxvCpus => (is => 'ro', isa => Int, required => 1);
+  has MinvCpus => (is => 'ro', isa => Int, required => 1);
+  has PlacementGroup => (is => 'ro', isa => Str);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SpotIamFleetRole => (is => 'ro', isa => Str);
+  has Subnets => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Tags => (is => 'ro', isa => Batch_TagsMap);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Type' => 1,
+                    'MinvCpus' => 1,
+                    'InstanceTypes' => 1,
+                    'InstanceRole' => 1,
+                    'MaxvCpus' => 1,
+                    'Subnets' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'ImageId' => 'imageId',
+                       'Subnets' => 'subnets',
+                       'DesiredvCpus' => 'desiredvCpus',
+                       'LaunchTemplate' => 'launchTemplate',
+                       'AllocationStrategy' => 'allocationStrategy',
+                       'PlacementGroup' => 'placementGroup',
+                       'Type' => 'type',
+                       'InstanceRole' => 'instanceRole',
+                       'InstanceTypes' => 'instanceTypes',
+                       'Ec2KeyPair' => 'ec2KeyPair',
+                       'MaxvCpus' => 'maxvCpus',
+                       'SecurityGroupIds' => 'securityGroupIds',
+                       'BidPercentage' => 'bidPercentage',
+                       'MinvCpus' => 'minvCpus',
+                       'SpotIamFleetRole' => 'spotIamFleetRole'
+                     },
+  'types' => {
+               'SpotIamFleetRole' => {
+                                       'type' => 'Str'
+                                     },
+               'BidPercentage' => {
+                                    'type' => 'Int'
+                                  },
+               'MinvCpus' => {
+                               'type' => 'Int'
+                             },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'MaxvCpus' => {
+                               'type' => 'Int'
+                             },
+               'InstanceRole' => {
+                                   'type' => 'Str'
+                                 },
+               'Ec2KeyPair' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceTypes' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'PlacementGroup' => {
+                                     'type' => 'Str'
+                                   },
+               'AllocationStrategy' => {
+                                         'type' => 'Str'
+                                       },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'Subnets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'DesiredvCpus' => {
+                                   'type' => 'Int'
+                                 },
+               'LaunchTemplate' => {
+                                     'type' => 'Batch_LaunchTemplateSpecification',
+                                     'class' => 'Paws::Batch::LaunchTemplateSpecification'
+                                   },
+               'Tags' => {
+                           'class' => 'Paws::Batch::TagsMap',
+                           'type' => 'Batch_TagsMap'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -120,7 +210,7 @@ instance types (from the C, M, and R instance families) on the fly that
 match the demand of your job queues.
 
 
-=head2 LaunchTemplate => L<Paws::Batch::LaunchTemplateSpecification>
+=head2 LaunchTemplate => Batch_LaunchTemplateSpecification
 
   The launch template to use for your compute resources. Any other
 compute resource parameters that you specify in a
@@ -183,7 +273,7 @@ information, see VPCs and Subnets
 the I<Amazon VPC User Guide>.
 
 
-=head2 Tags => L<Paws::Batch::TagsMap>
+=head2 Tags => Batch_TagsMap
 
   Key-value pair tags to be applied to resources that are launched in the
 compute environment. For AWS Batch, these take the form of "String1":

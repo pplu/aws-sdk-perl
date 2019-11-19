@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::AppMesh::VirtualServiceBackend;
-  use Moose;
-  has VirtualServiceName => (is => 'ro', isa => 'Str', request_name => 'virtualServiceName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw//;
+  has VirtualServiceName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VirtualServiceName' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'VirtualServiceName' => 1
+                  },
+  'NameInRequest' => {
+                       'VirtualServiceName' => 'virtualServiceName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

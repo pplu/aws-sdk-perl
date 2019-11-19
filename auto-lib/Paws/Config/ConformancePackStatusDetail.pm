@@ -1,13 +1,59 @@
+# Generated from default/object.tt
 package Paws::Config::ConformancePackStatusDetail;
-  use Moose;
-  has ConformancePackArn => (is => 'ro', isa => 'Str', required => 1);
-  has ConformancePackId => (is => 'ro', isa => 'Str', required => 1);
-  has ConformancePackName => (is => 'ro', isa => 'Str', required => 1);
-  has ConformancePackState => (is => 'ro', isa => 'Str', required => 1);
-  has ConformancePackStatusReason => (is => 'ro', isa => 'Str');
-  has LastUpdateCompletedTime => (is => 'ro', isa => 'Str');
-  has LastUpdateRequestedTime => (is => 'ro', isa => 'Str', required => 1);
-  has StackArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has ConformancePackArn => (is => 'ro', isa => Str, required => 1);
+  has ConformancePackId => (is => 'ro', isa => Str, required => 1);
+  has ConformancePackName => (is => 'ro', isa => Str, required => 1);
+  has ConformancePackState => (is => 'ro', isa => Str, required => 1);
+  has ConformancePackStatusReason => (is => 'ro', isa => Str);
+  has LastUpdateCompletedTime => (is => 'ro', isa => Str);
+  has LastUpdateRequestedTime => (is => 'ro', isa => Str, required => 1);
+  has StackArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackArn' => {
+                               'type' => 'Str'
+                             },
+               'ConformancePackId' => {
+                                        'type' => 'Str'
+                                      },
+               'LastUpdateRequestedTime' => {
+                                              'type' => 'Str'
+                                            },
+               'ConformancePackState' => {
+                                           'type' => 'Str'
+                                         },
+               'LastUpdateCompletedTime' => {
+                                              'type' => 'Str'
+                                            },
+               'ConformancePackArn' => {
+                                         'type' => 'Str'
+                                       },
+               'ConformancePackStatusReason' => {
+                                                  'type' => 'Str'
+                                                },
+               'ConformancePackName' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'ConformancePackArn' => 1,
+                    'ConformancePackName' => 1,
+                    'ConformancePackState' => 1,
+                    'ConformancePackId' => 1,
+                    'LastUpdateRequestedTime' => 1,
+                    'StackArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

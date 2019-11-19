@@ -1,16 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StepFunctions::GetExecutionHistory;
-  use Moose;
-  has ExecutionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionArn' , required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has ReverseOrder => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reverseOrder' );
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::StepFunctions::Types qw//;
+  has ExecutionArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ReverseOrder => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetExecutionHistory');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StepFunctions::GetExecutionHistoryOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetExecutionHistory');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StepFunctions::GetExecutionHistoryOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReverseOrder' => {
+                                   'type' => 'Bool'
+                                 },
+               'ExecutionArn' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'ExecutionArn' => 1
+                  },
+  'NameInRequest' => {
+                       'ExecutionArn' => 'executionArn',
+                       'ReverseOrder' => 'reverseOrder',
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

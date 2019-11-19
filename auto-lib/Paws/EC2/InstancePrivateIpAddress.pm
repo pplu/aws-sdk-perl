@@ -1,9 +1,39 @@
 package Paws::EC2::InstancePrivateIpAddress;
-  use Moose;
-  has Association => (is => 'ro', isa => 'Paws::EC2::InstanceNetworkInterfaceAssociation', request_name => 'association', traits => ['NameInRequest']);
-  has Primary => (is => 'ro', isa => 'Bool', request_name => 'primary', traits => ['NameInRequest']);
-  has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool Str/;
+  use Paws::EC2::Types qw/EC2_InstanceNetworkInterfaceAssociation/;
+  has Association => (is => 'ro', isa => EC2_InstanceNetworkInterfaceAssociation);
+  has Primary => (is => 'ro', isa => Bool);
+  has PrivateDnsName => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Association' => 'association',
+                       'Primary' => 'primary',
+                       'PrivateIpAddress' => 'privateIpAddress',
+                       'PrivateDnsName' => 'privateDnsName'
+                     },
+  'types' => {
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'Primary' => {
+                              'type' => 'Bool'
+                            },
+               'Association' => {
+                                  'class' => 'Paws::EC2::InstanceNetworkInterfaceAssociation',
+                                  'type' => 'EC2_InstanceNetworkInterfaceAssociation'
+                                },
+               'PrivateDnsName' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +69,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Association => L<Paws::EC2::InstanceNetworkInterfaceAssociation>
+=head2 Association => EC2_InstanceNetworkInterfaceAssociation
 
   The association information for an Elastic IP address for the network
 interface.

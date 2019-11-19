@@ -1,10 +1,35 @@
 
 package Paws::MediaConvert::ListJobsResponse;
-  use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Job]', traits => ['NameInRequest'], request_name => 'jobs');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_Job/;
+  has Jobs => (is => 'ro', isa => ArrayRef[MediaConvert_Job]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Jobs' => 'jobs',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Jobs' => {
+                           'class' => 'Paws::MediaConvert::Job',
+                           'type' => 'ArrayRef[MediaConvert_Job]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::MediaConvert::ListJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Jobs => ArrayRef[L<Paws::MediaConvert::Job>]
+=head2 Jobs => ArrayRef[MediaConvert_Job]
 
 List of jobs
 

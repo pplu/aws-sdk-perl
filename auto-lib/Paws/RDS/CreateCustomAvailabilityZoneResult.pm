@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::CreateCustomAvailabilityZoneResult;
-  use Moose;
-  has CustomAvailabilityZone => (is => 'ro', isa => 'Paws::RDS::CustomAvailabilityZone');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw/RDS_CustomAvailabilityZone/;
+  has CustomAvailabilityZone => (is => 'ro', isa => RDS_CustomAvailabilityZone);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomAvailabilityZone' => {
+                                             'class' => 'Paws::RDS::CustomAvailabilityZone',
+                                             'type' => 'RDS_CustomAvailabilityZone'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::RDS::CreateCustomAvailabilityZoneResult
 =head1 ATTRIBUTES
 
 
-=head2 CustomAvailabilityZone => L<Paws::RDS::CustomAvailabilityZone>
+=head2 CustomAvailabilityZone => RDS_CustomAvailabilityZone
 
 
 

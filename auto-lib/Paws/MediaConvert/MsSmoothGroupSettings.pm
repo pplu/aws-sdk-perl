@@ -1,12 +1,59 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::MsSmoothGroupSettings;
-  use Moose;
-  has AdditionalManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::MsSmoothAdditionalManifest]', request_name => 'additionalManifests', traits => ['NameInRequest']);
-  has AudioDeduplication => (is => 'ro', isa => 'Str', request_name => 'audioDeduplication', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
-  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::MsSmoothEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
-  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
-  has ManifestEncoding => (is => 'ro', isa => 'Str', request_name => 'manifestEncoding', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_MsSmoothAdditionalManifest MediaConvert_DestinationSettings MediaConvert_MsSmoothEncryptionSettings/;
+  has AdditionalManifests => (is => 'ro', isa => ArrayRef[MediaConvert_MsSmoothAdditionalManifest]);
+  has AudioDeduplication => (is => 'ro', isa => Str);
+  has Destination => (is => 'ro', isa => Str);
+  has DestinationSettings => (is => 'ro', isa => MediaConvert_DestinationSettings);
+  has Encryption => (is => 'ro', isa => MediaConvert_MsSmoothEncryptionSettings);
+  has FragmentLength => (is => 'ro', isa => Int);
+  has ManifestEncoding => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Destination' => 'destination',
+                       'ManifestEncoding' => 'manifestEncoding',
+                       'AdditionalManifests' => 'additionalManifests',
+                       'AudioDeduplication' => 'audioDeduplication',
+                       'FragmentLength' => 'fragmentLength',
+                       'Encryption' => 'encryption',
+                       'DestinationSettings' => 'destinationSettings'
+                     },
+  'types' => {
+               'ManifestEncoding' => {
+                                       'type' => 'Str'
+                                     },
+               'AdditionalManifests' => {
+                                          'class' => 'Paws::MediaConvert::MsSmoothAdditionalManifest',
+                                          'type' => 'ArrayRef[MediaConvert_MsSmoothAdditionalManifest]'
+                                        },
+               'AudioDeduplication' => {
+                                         'type' => 'Str'
+                                       },
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'FragmentLength' => {
+                                     'type' => 'Int'
+                                   },
+               'Encryption' => {
+                                 'type' => 'MediaConvert_MsSmoothEncryptionSettings',
+                                 'class' => 'Paws::MediaConvert::MsSmoothEncryptionSettings'
+                               },
+               'DestinationSettings' => {
+                                          'type' => 'MediaConvert_DestinationSettings',
+                                          'class' => 'Paws::MediaConvert::DestinationSettings'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +90,7 @@ Required when you set (Type) under
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalManifests => ArrayRef[L<Paws::MediaConvert::MsSmoothAdditionalManifest>]
+=head2 AdditionalManifests => ArrayRef[MediaConvert_MsSmoothAdditionalManifest]
 
   By default, the service creates one .ism Microsoft Smooth Streaming
 manifest for each Microsoft Smooth Streaming output group in your job.
@@ -67,13 +114,13 @@ filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
 
 
-=head2 DestinationSettings => L<Paws::MediaConvert::DestinationSettings>
+=head2 DestinationSettings => MediaConvert_DestinationSettings
 
   Settings associated with the destination. Will vary based on the type
 of destination
 
 
-=head2 Encryption => L<Paws::MediaConvert::MsSmoothEncryptionSettings>
+=head2 Encryption => MediaConvert_MsSmoothEncryptionSettings
 
   If you are using DRM, set DRM System (MsSmoothEncryptionSettings) to
 specify the value SpekeKeyProvider.

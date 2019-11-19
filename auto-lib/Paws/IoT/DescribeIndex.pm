@@ -1,14 +1,35 @@
 
 package Paws::IoT::DescribeIndex;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'indexName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has IndexName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeIndex');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/indices/{indexName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DescribeIndexResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeIndex');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/indices/{indexName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DescribeIndexResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'IndexName' => 1
+                  },
+  'types' => {
+               'IndexName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'IndexName' => 'indexName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

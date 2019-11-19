@@ -1,25 +1,81 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::UpdateMatchmakingConfiguration;
-  use Moose;
-  has AcceptanceRequired => (is => 'ro', isa => 'Bool');
-  has AcceptanceTimeoutSeconds => (is => 'ro', isa => 'Int');
-  has AdditionalPlayerCount => (is => 'ro', isa => 'Int');
-  has BackfillMode => (is => 'ro', isa => 'Str');
-  has CustomEventData => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
-  has GameSessionData => (is => 'ro', isa => 'Str');
-  has GameSessionQueueArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NotificationTarget => (is => 'ro', isa => 'Str');
-  has RequestTimeoutSeconds => (is => 'ro', isa => 'Int');
-  has RuleSetName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::GameLift::Types qw/GameLift_GameProperty/;
+  has AcceptanceRequired => (is => 'ro', isa => Bool, predicate => 1);
+  has AcceptanceTimeoutSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has AdditionalPlayerCount => (is => 'ro', isa => Int, predicate => 1);
+  has BackfillMode => (is => 'ro', isa => Str, predicate => 1);
+  has CustomEventData => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has GameProperties => (is => 'ro', isa => ArrayRef[GameLift_GameProperty], predicate => 1);
+  has GameSessionData => (is => 'ro', isa => Str, predicate => 1);
+  has GameSessionQueueArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NotificationTarget => (is => 'ro', isa => Str, predicate => 1);
+  has RequestTimeoutSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has RuleSetName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMatchmakingConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::UpdateMatchmakingConfigurationOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateMatchmakingConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::UpdateMatchmakingConfigurationOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AcceptanceRequired' => {
+                                         'type' => 'Bool'
+                                       },
+               'RequestTimeoutSeconds' => {
+                                            'type' => 'Int'
+                                          },
+               'BackfillMode' => {
+                                   'type' => 'Str'
+                                 },
+               'GameProperties' => {
+                                     'type' => 'ArrayRef[GameLift_GameProperty]',
+                                     'class' => 'Paws::GameLift::GameProperty'
+                                   },
+               'NotificationTarget' => {
+                                         'type' => 'Str'
+                                       },
+               'AdditionalPlayerCount' => {
+                                            'type' => 'Int'
+                                          },
+               'GameSessionData' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AcceptanceTimeoutSeconds' => {
+                                               'type' => 'Int'
+                                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CustomEventData' => {
+                                      'type' => 'Str'
+                                    },
+               'GameSessionQueueArns' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'RuleSetName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -126,7 +182,7 @@ Descriptive label that is associated with matchmaking configuration.
 
 
 
-=head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
+=head2 GameProperties => ArrayRef[GameLift_GameProperty]
 
 Set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the

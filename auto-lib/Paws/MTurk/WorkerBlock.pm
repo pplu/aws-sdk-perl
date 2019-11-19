@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::MTurk::WorkerBlock;
-  use Moose;
-  has Reason => (is => 'ro', isa => 'Str');
-  has WorkerId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw//;
+  has Reason => (is => 'ro', isa => Str);
+  has WorkerId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'WorkerId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

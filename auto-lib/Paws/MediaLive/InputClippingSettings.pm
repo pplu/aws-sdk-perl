@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputClippingSettings;
-  use Moose;
-  has InputTimecodeSource => (is => 'ro', isa => 'Str', request_name => 'inputTimecodeSource', traits => ['NameInRequest'], required => 1);
-  has StartTimecode => (is => 'ro', isa => 'Paws::MediaLive::StartTimecode', request_name => 'startTimecode', traits => ['NameInRequest']);
-  has StopTimecode => (is => 'ro', isa => 'Paws::MediaLive::StopTimecode', request_name => 'stopTimecode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_StopTimecode MediaLive_StartTimecode/;
+  has InputTimecodeSource => (is => 'ro', isa => Str, required => 1);
+  has StartTimecode => (is => 'ro', isa => MediaLive_StartTimecode);
+  has StopTimecode => (is => 'ro', isa => MediaLive_StopTimecode);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StopTimecode' => {
+                                   'class' => 'Paws::MediaLive::StopTimecode',
+                                   'type' => 'MediaLive_StopTimecode'
+                                 },
+               'InputTimecodeSource' => {
+                                          'type' => 'Str'
+                                        },
+               'StartTimecode' => {
+                                    'type' => 'MediaLive_StartTimecode',
+                                    'class' => 'Paws::MediaLive::StartTimecode'
+                                  }
+             },
+  'NameInRequest' => {
+                       'StopTimecode' => 'stopTimecode',
+                       'StartTimecode' => 'startTimecode',
+                       'InputTimecodeSource' => 'inputTimecodeSource'
+                     },
+  'IsRequired' => {
+                    'InputTimecodeSource' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,12 +77,12 @@ the input to ingest only a portion of the file.
   The source of the timecodes in the source being clipped.
 
 
-=head2 StartTimecode => L<Paws::MediaLive::StartTimecode>
+=head2 StartTimecode => MediaLive_StartTimecode
 
   Settings to identify the start of the clip.
 
 
-=head2 StopTimecode => L<Paws::MediaLive::StopTimecode>
+=head2 StopTimecode => MediaLive_StopTimecode
 
   Settings to identify the end of the clip.
 

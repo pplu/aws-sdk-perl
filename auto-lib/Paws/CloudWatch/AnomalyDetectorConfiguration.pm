@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudWatch::AnomalyDetectorConfiguration;
-  use Moose;
-  has ExcludedTimeRanges => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Range]');
-  has MetricTimezone => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CloudWatch::Types qw/CloudWatch_Range/;
+  has ExcludedTimeRanges => (is => 'ro', isa => ArrayRef[CloudWatch_Range]);
+  has MetricTimezone => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExcludedTimeRanges' => {
+                                         'type' => 'ArrayRef[CloudWatch_Range]',
+                                         'class' => 'Paws::CloudWatch::Range'
+                                       },
+               'MetricTimezone' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +60,7 @@ training the model and the time zone to use for the metric.
 =head1 ATTRIBUTES
 
 
-=head2 ExcludedTimeRanges => ArrayRef[L<Paws::CloudWatch::Range>]
+=head2 ExcludedTimeRanges => ArrayRef[CloudWatch_Range]
 
   An array of time ranges to exclude from use when the anomaly detection
 model is trained. Use this to make sure that events that could cause

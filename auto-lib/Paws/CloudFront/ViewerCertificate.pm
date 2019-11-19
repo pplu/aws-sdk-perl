@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::CloudFront::ViewerCertificate;
-  use Moose;
-  has ACMCertificateArn => (is => 'ro', isa => 'Str');
-  has Certificate => (is => 'ro', isa => 'Str');
-  has CertificateSource => (is => 'ro', isa => 'Str');
-  has CloudFrontDefaultCertificate => (is => 'ro', isa => 'Bool');
-  has IAMCertificateId => (is => 'ro', isa => 'Str');
-  has MinimumProtocolVersion => (is => 'ro', isa => 'Str');
-  has SSLSupportMethod => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudFront::Types qw//;
+  has ACMCertificateArn => (is => 'ro', isa => Str);
+  has Certificate => (is => 'ro', isa => Str);
+  has CertificateSource => (is => 'ro', isa => Str);
+  has CloudFrontDefaultCertificate => (is => 'ro', isa => Bool);
+  has IAMCertificateId => (is => 'ro', isa => Str);
+  has MinimumProtocolVersion => (is => 'ro', isa => Str);
+  has SSLSupportMethod => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IAMCertificateId' => {
+                                       'type' => 'Str'
+                                     },
+               'CloudFrontDefaultCertificate' => {
+                                                   'type' => 'Bool'
+                                                 },
+               'Certificate' => {
+                                  'type' => 'Str'
+                                },
+               'SSLSupportMethod' => {
+                                       'type' => 'Str'
+                                     },
+               'CertificateSource' => {
+                                        'type' => 'Str'
+                                      },
+               'ACMCertificateArn' => {
+                                        'type' => 'Str'
+                                      },
+               'MinimumProtocolVersion' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

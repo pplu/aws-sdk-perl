@@ -1,14 +1,35 @@
 
 package Paws::Pinpoint::GetApplicationSettings;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetApplicationSettings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/settings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::ApplicationSettingsResource');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetApplicationSettings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/settings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::ApplicationSettingsResource');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1
+                  },
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

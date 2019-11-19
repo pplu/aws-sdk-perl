@@ -1,15 +1,41 @@
 
 package Paws::LexModels::DeleteSlotTypeVersion;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has Version => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'version', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Version => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSlotTypeVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/slottypes/{name}/version/{version}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteSlotTypeVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/slottypes/{name}/version/{version}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Name' => 'name',
+                    'Version' => 'version'
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Version' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Version' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

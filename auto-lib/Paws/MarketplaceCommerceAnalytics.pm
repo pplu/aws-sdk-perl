@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::MarketplaceCommerceAnalytics;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'marketplacecommerceanalytics' }
   sub signing_name { 'marketplacecommerceanalytics' }
   sub version { '2015-07-01' }
   sub target_prefix { 'MarketplaceCommerceAnalytics20150701' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -77,7 +79,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplace/lat
 
 =item SnsTopicArn => Str
 
-=item [CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>]
+=item [CustomerDefinedValues => MarketplaceCommerceAnalytics_CustomerDefinedValues]
 
 =item [DestinationS3Prefix => Str]
 
@@ -116,7 +118,7 @@ sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 
 =item SnsTopicArn => Str
 
-=item [CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>]
+=item [CustomerDefinedValues => MarketplaceCommerceAnalytics_CustomerDefinedValues]
 
 =item [DestinationS3Prefix => Str]
 

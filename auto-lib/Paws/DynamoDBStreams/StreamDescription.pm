@@ -1,14 +1,57 @@
+# Generated from default/object.tt
 package Paws::DynamoDBStreams::StreamDescription;
-  use Moose;
-  has CreationRequestDateTime => (is => 'ro', isa => 'Str');
-  has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::KeySchemaElement]');
-  has LastEvaluatedShardId => (is => 'ro', isa => 'Str');
-  has Shards => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::Shard]');
-  has StreamArn => (is => 'ro', isa => 'Str');
-  has StreamLabel => (is => 'ro', isa => 'Str');
-  has StreamStatus => (is => 'ro', isa => 'Str');
-  has StreamViewType => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DynamoDBStreams::Types qw/DynamoDBStreams_KeySchemaElement DynamoDBStreams_Shard/;
+  has CreationRequestDateTime => (is => 'ro', isa => Str);
+  has KeySchema => (is => 'ro', isa => ArrayRef[DynamoDBStreams_KeySchemaElement]);
+  has LastEvaluatedShardId => (is => 'ro', isa => Str);
+  has Shards => (is => 'ro', isa => ArrayRef[DynamoDBStreams_Shard]);
+  has StreamArn => (is => 'ro', isa => Str);
+  has StreamLabel => (is => 'ro', isa => Str);
+  has StreamStatus => (is => 'ro', isa => Str);
+  has StreamViewType => (is => 'ro', isa => Str);
+  has TableName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationRequestDateTime' => {
+                                              'type' => 'Str'
+                                            },
+               'StreamViewType' => {
+                                     'type' => 'Str'
+                                   },
+               'StreamStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'Shards' => {
+                             'type' => 'ArrayRef[DynamoDBStreams_Shard]',
+                             'class' => 'Paws::DynamoDBStreams::Shard'
+                           },
+               'KeySchema' => {
+                                'type' => 'ArrayRef[DynamoDBStreams_KeySchemaElement]',
+                                'class' => 'Paws::DynamoDBStreams::KeySchemaElement'
+                              },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'StreamArn' => {
+                                'type' => 'Str'
+                              },
+               'StreamLabel' => {
+                                  'type' => 'Str'
+                                },
+               'LastEvaluatedShardId' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +92,7 @@ Represents all of the data describing a particular stream.
   The date and time when the request to create this stream was issued.
 
 
-=head2 KeySchema => ArrayRef[L<Paws::DynamoDBStreams::KeySchemaElement>]
+=head2 KeySchema => ArrayRef[DynamoDBStreams_KeySchemaElement]
 
   The key attribute(s) of the stream's DynamoDB table.
 
@@ -69,7 +112,7 @@ you have reached the end of the result set is when
 C<LastEvaluatedShardId> is empty.
 
 
-=head2 Shards => ArrayRef[L<Paws::DynamoDBStreams::Shard>]
+=head2 Shards => ArrayRef[DynamoDBStreams_Shard]
 
   The shards that comprise the stream.
 

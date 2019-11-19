@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::BatchGetDeploymentInstancesOutput;
-  use Moose;
-  has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'errorMessage' );
-  has InstancesSummary => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::InstanceSummary]', traits => ['NameInRequest'], request_name => 'instancesSummary' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_InstanceSummary/;
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has InstancesSummary => (is => 'ro', isa => ArrayRef[CodeDeploy_InstanceSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ErrorMessage' => 'errorMessage',
+                       'InstancesSummary' => 'instancesSummary'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InstancesSummary' => {
+                                       'class' => 'Paws::CodeDeploy::InstanceSummary',
+                                       'type' => 'ArrayRef[CodeDeploy_InstanceSummary]'
+                                     },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +46,7 @@ Paws::CodeDeploy::BatchGetDeploymentInstancesOutput
 Information about errors that might have occurred during the API call.
 
 
-=head2 InstancesSummary => ArrayRef[L<Paws::CodeDeploy::InstanceSummary>]
+=head2 InstancesSummary => ArrayRef[CodeDeploy_InstanceSummary]
 
 Information about the instance.
 

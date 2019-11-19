@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetServiceLinkedRoleDeletionStatusResponse;
-  use Moose;
-  has Reason => (is => 'ro', isa => 'Paws::IAM::DeletionTaskFailureReasonType');
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_DeletionTaskFailureReasonType/;
+  has Reason => (is => 'ro', isa => IAM_DeletionTaskFailureReasonType);
+  has Status => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Status' => 1
+                  },
+  'types' => {
+               'Reason' => {
+                             'type' => 'IAM_DeletionTaskFailureReasonType',
+                             'class' => 'Paws::IAM::DeletionTaskFailureReasonType'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::IAM::GetServiceLinkedRoleDeletionStatusResponse
 =head1 ATTRIBUTES
 
 
-=head2 Reason => L<Paws::IAM::DeletionTaskFailureReasonType>
+=head2 Reason => IAM_DeletionTaskFailureReasonType
 
 An object that contains details about the reason the deletion failed.
 

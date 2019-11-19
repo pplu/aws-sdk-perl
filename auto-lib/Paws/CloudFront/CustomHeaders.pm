@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CloudFront::CustomHeaders;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::OriginCustomHeader]', request_name => 'OriginCustomHeader', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::CloudFront::Types qw/CloudFront_OriginCustomHeader/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_OriginCustomHeader]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'type' => 'ArrayRef[CloudFront_OriginCustomHeader]',
+                            'class' => 'Paws::CloudFront::OriginCustomHeader'
+                          },
+               'Quantity' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'Items' => 'OriginCustomHeader'
+                     },
+  'IsRequired' => {
+                    'Quantity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +65,7 @@ origin.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::OriginCustomHeader>]
+=head2 Items => ArrayRef[CloudFront_OriginCustomHeader]
 
   B<Optional>: A list that contains one C<OriginCustomHeader> element for
 each custom header that you want CloudFront to forward to the origin.

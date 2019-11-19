@@ -1,15 +1,71 @@
+# Generated from default/object.tt
 package Paws::ApplicationAutoScaling::ScalingPolicy;
-  use Moose;
-  has Alarms => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationAutoScaling::Alarm]');
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyARN => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyType => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
-  has StepScalingPolicyConfiguration => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration');
-  has TargetTrackingScalingPolicyConfiguration => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ApplicationAutoScaling::Types qw/ApplicationAutoScaling_Alarm ApplicationAutoScaling_StepScalingPolicyConfiguration ApplicationAutoScaling_TargetTrackingScalingPolicyConfiguration/;
+  has Alarms => (is => 'ro', isa => ArrayRef[ApplicationAutoScaling_Alarm]);
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has PolicyARN => (is => 'ro', isa => Str, required => 1);
+  has PolicyName => (is => 'ro', isa => Str, required => 1);
+  has PolicyType => (is => 'ro', isa => Str, required => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1);
+  has ScalableDimension => (is => 'ro', isa => Str, required => 1);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1);
+  has StepScalingPolicyConfiguration => (is => 'ro', isa => ApplicationAutoScaling_StepScalingPolicyConfiguration);
+  has TargetTrackingScalingPolicyConfiguration => (is => 'ro', isa => ApplicationAutoScaling_TargetTrackingScalingPolicyConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'PolicyARN' => {
+                                'type' => 'Str'
+                              },
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'TargetTrackingScalingPolicyConfiguration' => {
+                                                               'class' => 'Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration',
+                                                               'type' => 'ApplicationAutoScaling_TargetTrackingScalingPolicyConfiguration'
+                                                             },
+               'StepScalingPolicyConfiguration' => {
+                                                     'class' => 'Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration',
+                                                     'type' => 'ApplicationAutoScaling_StepScalingPolicyConfiguration'
+                                                   },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyType' => {
+                                 'type' => 'Str'
+                               },
+               'ScalableDimension' => {
+                                        'type' => 'Str'
+                                      },
+               'Alarms' => {
+                             'type' => 'ArrayRef[ApplicationAutoScaling_Alarm]',
+                             'class' => 'Paws::ApplicationAutoScaling::Alarm'
+                           },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'PolicyARN' => 1,
+                    'CreationTime' => 1,
+                    'ServiceNamespace' => 1,
+                    'ResourceId' => 1,
+                    'PolicyName' => 1,
+                    'ScalableDimension' => 1,
+                    'PolicyType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +101,7 @@ Represents a scaling policy to use with Application Auto Scaling.
 =head1 ATTRIBUTES
 
 
-=head2 Alarms => ArrayRef[L<Paws::ApplicationAutoScaling::Alarm>]
+=head2 Alarms => ArrayRef[ApplicationAutoScaling_Alarm]
 
   The CloudWatch alarms associated with the scaling policy.
 
@@ -209,12 +265,12 @@ service. For more information, see AWS Service Namespaces
 in the I<Amazon Web Services General Reference>.
 
 
-=head2 StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>
+=head2 StepScalingPolicyConfiguration => ApplicationAutoScaling_StepScalingPolicyConfiguration
 
   A step scaling policy.
 
 
-=head2 TargetTrackingScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration>
+=head2 TargetTrackingScalingPolicyConfiguration => ApplicationAutoScaling_TargetTrackingScalingPolicyConfiguration
 
   A target tracking scaling policy.
 

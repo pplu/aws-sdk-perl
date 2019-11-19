@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudSearchDomain::Bucket;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::CloudSearchDomain::Types qw//;
+  has Count => (is => 'ro', isa => Int);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Count' => 'count',
+                       'Value' => 'value'
+                     },
+  'types' => {
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'Value' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

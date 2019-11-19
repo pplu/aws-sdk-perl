@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Personalize::CreateSchema;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Schema => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSchema');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Personalize::CreateSchemaResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSchema');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Personalize::CreateSchemaResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Schema' => 'schema'
+                     },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Schema' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Schema' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

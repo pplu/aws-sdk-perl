@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::Config::AggregateComplianceByConfigRule;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has AwsRegion => (is => 'ro', isa => 'Str');
-  has Compliance => (is => 'ro', isa => 'Paws::Config::Compliance');
-  has ConfigRuleName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_Compliance/;
+  has AccountId => (is => 'ro', isa => Str);
+  has AwsRegion => (is => 'ro', isa => Str);
+  has Compliance => (is => 'ro', isa => Config_Compliance);
+  has ConfigRuleName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigRuleName' => {
+                                     'type' => 'Str'
+                                   },
+               'Compliance' => {
+                                 'class' => 'Paws::Config::Compliance',
+                                 'type' => 'Config_Compliance'
+                               },
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +81,7 @@ comply.
   The source region from where the data is aggregated.
 
 
-=head2 Compliance => L<Paws::Config::Compliance>
+=head2 Compliance => Config_Compliance
 
   Indicates whether an AWS resource or AWS Config rule is compliant and
 provides the number of contributors that affect the compliance.

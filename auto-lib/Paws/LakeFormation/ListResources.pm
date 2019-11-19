@@ -1,15 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::LakeFormation::ListResources;
-  use Moose;
-  has FilterConditionList => (is => 'ro', isa => 'ArrayRef[Paws::LakeFormation::FilterCondition]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::LakeFormation::Types qw/LakeFormation_FilterCondition/;
+  has FilterConditionList => (is => 'ro', isa => ArrayRef[LakeFormation_FilterCondition], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListResources');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LakeFormation::ListResourcesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListResources');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LakeFormation::ListResourcesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'FilterConditionList' => {
+                                          'type' => 'ArrayRef[LakeFormation_FilterCondition]',
+                                          'class' => 'Paws::LakeFormation::FilterCondition'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +79,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lak
 =head1 ATTRIBUTES
 
 
-=head2 FilterConditionList => ArrayRef[L<Paws::LakeFormation::FilterCondition>]
+=head2 FilterConditionList => ArrayRef[LakeFormation_FilterCondition]
 
 Any applicable row-level and/or column-level filtering conditions for
 the resources.

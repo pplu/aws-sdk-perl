@@ -1,17 +1,68 @@
+# Generated from default/object.tt
 package Paws::SSM::InstanceAssociationStatusInfo;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str');
-  has AssociationName => (is => 'ro', isa => 'Str');
-  has AssociationVersion => (is => 'ro', isa => 'Str');
-  has DetailedStatus => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ExecutionDate => (is => 'ro', isa => 'Str');
-  has ExecutionSummary => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OutputUrl => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputUrl');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_InstanceAssociationOutputUrl/;
+  has AssociationId => (is => 'ro', isa => Str);
+  has AssociationName => (is => 'ro', isa => Str);
+  has AssociationVersion => (is => 'ro', isa => Str);
+  has DetailedStatus => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ExecutionDate => (is => 'ro', isa => Str);
+  has ExecutionSummary => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OutputUrl => (is => 'ro', isa => SSM_InstanceAssociationOutputUrl);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'OutputUrl' => {
+                                'class' => 'Paws::SSM::InstanceAssociationOutputUrl',
+                                'type' => 'SSM_InstanceAssociationOutputUrl'
+                              },
+               'DetailedStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'AssociationVersion' => {
+                                         'type' => 'Str'
+                                       },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'AssociationName' => {
+                                      'type' => 'Str'
+                                    },
+               'ExecutionSummary' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'ExecutionDate' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -97,7 +148,7 @@ Status information about the instance association.
   The name of the association.
 
 
-=head2 OutputUrl => L<Paws::SSM::InstanceAssociationOutputUrl>
+=head2 OutputUrl => SSM_InstanceAssociationOutputUrl
 
   A URL for an Amazon S3 bucket where you want to store the results of
 this request.

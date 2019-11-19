@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudWatch::PutMetricData;
-  use Moose;
-  has MetricData => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::MetricDatum]', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatch::Types qw/CloudWatch_MetricDatum/;
+  has MetricData => (is => 'ro', isa => ArrayRef[CloudWatch_MetricDatum], required => 1, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutMetricData');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutMetricData');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Namespace' => 1,
+                    'MetricData' => 1
+                  },
+  'types' => {
+               'MetricData' => {
+                                 'type' => 'ArrayRef[CloudWatch_MetricDatum]',
+                                 'class' => 'Paws::CloudWatch::MetricDatum'
+                               },
+               'Namespace' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +91,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> MetricData => ArrayRef[L<Paws::CloudWatch::MetricDatum>]
+=head2 B<REQUIRED> MetricData => ArrayRef[CloudWatch_MetricDatum]
 
 The data for the metric. The array can include no more than 20 metrics
 per call.

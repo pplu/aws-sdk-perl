@@ -1,9 +1,46 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::HlsPackage;
-  use Moose;
-  has Encryption => (is => 'ro', isa => 'Paws::MediaPackageVod::HlsEncryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has HlsManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::HlsManifest]', request_name => 'hlsManifests', traits => ['NameInRequest'], required => 1);
-  has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
-  has UseAudioRenditionGroup => (is => 'ro', isa => 'Bool', request_name => 'useAudioRenditionGroup', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Bool/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_HlsManifest MediaPackageVod_HlsEncryption/;
+  has Encryption => (is => 'ro', isa => MediaPackageVod_HlsEncryption);
+  has HlsManifests => (is => 'ro', isa => ArrayRef[MediaPackageVod_HlsManifest], required => 1);
+  has SegmentDurationSeconds => (is => 'ro', isa => Int);
+  has UseAudioRenditionGroup => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'UseAudioRenditionGroup' => 'useAudioRenditionGroup',
+                       'Encryption' => 'encryption',
+                       'HlsManifests' => 'hlsManifests',
+                       'SegmentDurationSeconds' => 'segmentDurationSeconds'
+                     },
+  'IsRequired' => {
+                    'HlsManifests' => 1
+                  },
+  'types' => {
+               'Encryption' => {
+                                 'type' => 'MediaPackageVod_HlsEncryption',
+                                 'class' => 'Paws::MediaPackageVod::HlsEncryption'
+                               },
+               'UseAudioRenditionGroup' => {
+                                             'type' => 'Bool'
+                                           },
+               'HlsManifests' => {
+                                   'type' => 'ArrayRef[MediaPackageVod_HlsManifest]',
+                                   'class' => 'Paws::MediaPackageVod::HlsManifest'
+                                 },
+               'SegmentDurationSeconds' => {
+                                             'type' => 'Int'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,12 +76,12 @@ An HTTP Live Streaming (HLS) packaging configuration.
 =head1 ATTRIBUTES
 
 
-=head2 Encryption => L<Paws::MediaPackageVod::HlsEncryption>
+=head2 Encryption => MediaPackageVod_HlsEncryption
 
   
 
 
-=head2 B<REQUIRED> HlsManifests => ArrayRef[L<Paws::MediaPackageVod::HlsManifest>]
+=head2 B<REQUIRED> HlsManifests => ArrayRef[MediaPackageVod_HlsManifest]
 
   A list of HLS manifest configurations.
 

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::UserPoolClientDescription;
-  use Moose;
-  has ClientId => (is => 'ro', isa => 'Str');
-  has ClientName => (is => 'ro', isa => 'Str');
-  has UserPoolId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has ClientId => (is => 'ro', isa => Str);
+  has ClientName => (is => 'ro', isa => Str);
+  has UserPoolId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'ClientName' => {
+                                 'type' => 'Str'
+                               },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

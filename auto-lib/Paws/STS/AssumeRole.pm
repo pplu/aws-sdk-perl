@@ -1,20 +1,62 @@
+# Generated from callargs_class.tt
 
 package Paws::STS::AssumeRole;
-  use Moose;
-  has DurationSeconds => (is => 'ro', isa => 'Int');
-  has ExternalId => (is => 'ro', isa => 'Str');
-  has Policy => (is => 'ro', isa => 'Str');
-  has PolicyArns => (is => 'ro', isa => 'ArrayRef[Paws::STS::PolicyDescriptorType]');
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has RoleSessionName => (is => 'ro', isa => 'Str', required => 1);
-  has SerialNumber => (is => 'ro', isa => 'Str');
-  has TokenCode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::STS::Types qw/STS_PolicyDescriptorType/;
+  has DurationSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has ExternalId => (is => 'ro', isa => Str, predicate => 1);
+  has Policy => (is => 'ro', isa => Str, predicate => 1);
+  has PolicyArns => (is => 'ro', isa => ArrayRef[STS_PolicyDescriptorType], predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleSessionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SerialNumber => (is => 'ro', isa => Str, predicate => 1);
+  has TokenCode => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssumeRole');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::STS::AssumeRoleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssumeRole');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::STS::AssumeRoleResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'AssumeRoleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExternalId' => {
+                                 'type' => 'Str'
+                               },
+               'TokenCode' => {
+                                'type' => 'Str'
+                              },
+               'DurationSeconds' => {
+                                      'type' => 'Int'
+                                    },
+               'PolicyArns' => {
+                                 'class' => 'Paws::STS::PolicyDescriptorType',
+                                 'type' => 'ArrayRef[STS_PolicyDescriptorType]'
+                               },
+               'SerialNumber' => {
+                                   'type' => 'Str'
+                                 },
+               'RoleSessionName' => {
+                                      'type' => 'Str'
+                                    },
+               'Policy' => {
+                             'type' => 'Str'
+                           },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'RoleSessionName' => 1,
+                    'RoleArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -138,7 +180,7 @@ limit.
 
 
 
-=head2 PolicyArns => ArrayRef[L<Paws::STS::PolicyDescriptorType>]
+=head2 PolicyArns => ArrayRef[STS_PolicyDescriptorType]
 
 The Amazon Resource Names (ARNs) of the IAM managed policies that you
 want to use as managed session policies. The policies must exist in the

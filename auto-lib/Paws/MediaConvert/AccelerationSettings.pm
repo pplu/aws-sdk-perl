@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::AccelerationSettings;
-  use Moose;
-  has Mode => (is => 'ro', isa => 'Str', request_name => 'mode', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has Mode => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Mode' => 'mode'
+                     },
+  'IsRequired' => {
+                    'Mode' => 1
+                  },
+  'types' => {
+               'Mode' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

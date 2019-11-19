@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Snowball::CreateAddress;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Paws::Snowball::Address', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Snowball::Types qw/Snowball_Address/;
+  has Address => (is => 'ro', isa => Snowball_Address, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAddress');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Snowball::CreateAddressResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateAddress');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Snowball::CreateAddressResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Address' => 1
+                  },
+  'types' => {
+               'Address' => {
+                              'class' => 'Paws::Snowball::Address',
+                              'type' => 'Snowball_Address'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sno
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Address => L<Paws::Snowball::Address>
+=head2 B<REQUIRED> Address => Snowball_Address
 
 The address that you want the Snowball shipped to.
 

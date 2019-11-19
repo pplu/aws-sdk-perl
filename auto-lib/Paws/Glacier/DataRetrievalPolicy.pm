@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Glacier::DataRetrievalPolicy;
-  use Moose;
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::DataRetrievalRule]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Glacier::Types qw/Glacier_DataRetrievalRule/;
+  has Rules => (is => 'ro', isa => ArrayRef[Glacier_DataRetrievalRule]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Rules' => {
+                            'type' => 'ArrayRef[Glacier_DataRetrievalRule]',
+                            'class' => 'Paws::Glacier::DataRetrievalRule'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Data retrieval policy.
 =head1 ATTRIBUTES
 
 
-=head2 Rules => ArrayRef[L<Paws::Glacier::DataRetrievalRule>]
+=head2 Rules => ArrayRef[Glacier_DataRetrievalRule]
 
   The policy rule. Although this is a list type, currently there must be
 only one rule, which contains a Strategy field and optionally a

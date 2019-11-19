@@ -1,16 +1,50 @@
 
 package Paws::EC2::CreateInstanceExportTask;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has ExportToS3Task => (is => 'ro', isa => 'Paws::EC2::ExportToS3TaskSpecification', traits => ['NameInRequest'], request_name => 'exportToS3' );
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
-  has TargetEnvironment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetEnvironment' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ExportToS3TaskSpecification/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has ExportToS3Task => (is => 'ro', isa => EC2_ExportToS3TaskSpecification, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetEnvironment => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInstanceExportTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateInstanceExportTaskResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateInstanceExportTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateInstanceExportTaskResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ExportToS3Task' => {
+                                     'type' => 'EC2_ExportToS3TaskSpecification',
+                                     'class' => 'Paws::EC2::ExportToS3TaskSpecification'
+                                   },
+               'TargetEnvironment' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'InstanceId' => 1
+                  },
+  'NameInRequest' => {
+                       'InstanceId' => 'instanceId',
+                       'TargetEnvironment' => 'targetEnvironment',
+                       'ExportToS3Task' => 'exportToS3',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +94,7 @@ The maximum length is 255 bytes.
 
 
 
-=head2 ExportToS3Task => L<Paws::EC2::ExportToS3TaskSpecification>
+=head2 ExportToS3Task => EC2_ExportToS3TaskSpecification
 
 The format and location for an instance export task.
 

@@ -1,23 +1,89 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::StartWorkflowExecution;
-  use Moose;
-  has ChildPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'childPolicy' );
-  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
-  has ExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionStartToCloseTimeout' );
-  has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' );
-  has LambdaRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lambdaRole' );
-  has TagList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'tagList' );
-  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'taskList' );
-  has TaskPriority => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskPriority' );
-  has TaskStartToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskStartToCloseTimeout' );
-  has WorkflowId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workflowId' , required => 1);
-  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', traits => ['NameInRequest'], request_name => 'workflowType' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowType SimpleWorkflow_TaskList/;
+  has ChildPolicy => (is => 'ro', isa => Str, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExecutionStartToCloseTimeout => (is => 'ro', isa => Str, predicate => 1);
+  has Input => (is => 'ro', isa => Str, predicate => 1);
+  has LambdaRole => (is => 'ro', isa => Str, predicate => 1);
+  has TagList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has TaskList => (is => 'ro', isa => SimpleWorkflow_TaskList, predicate => 1);
+  has TaskPriority => (is => 'ro', isa => Str, predicate => 1);
+  has TaskStartToCloseTimeout => (is => 'ro', isa => Str, predicate => 1);
+  has WorkflowId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WorkflowType => (is => 'ro', isa => SimpleWorkflow_WorkflowType, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartWorkflowExecution');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::Run');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartWorkflowExecution');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SimpleWorkflow::Run');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChildPolicy' => {
+                                  'type' => 'Str'
+                                },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'Input' => {
+                            'type' => 'Str'
+                          },
+               'TaskPriority' => {
+                                   'type' => 'Str'
+                                 },
+               'WorkflowId' => {
+                                 'type' => 'Str'
+                               },
+               'TaskStartToCloseTimeout' => {
+                                              'type' => 'Str'
+                                            },
+               'WorkflowType' => {
+                                   'class' => 'Paws::SimpleWorkflow::WorkflowType',
+                                   'type' => 'SimpleWorkflow_WorkflowType'
+                                 },
+               'TaskList' => {
+                               'class' => 'Paws::SimpleWorkflow::TaskList',
+                               'type' => 'SimpleWorkflow_TaskList'
+                             },
+               'TagList' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'ExecutionStartToCloseTimeout' => {
+                                                   'type' => 'Str'
+                                                 },
+               'LambdaRole' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'WorkflowType' => 1,
+                    'Domain' => 1,
+                    'WorkflowId' => 1
+                  },
+  'NameInRequest' => {
+                       'LambdaRole' => 'lambdaRole',
+                       'TagList' => 'tagList',
+                       'ExecutionStartToCloseTimeout' => 'executionStartToCloseTimeout',
+                       'TaskList' => 'taskList',
+                       'WorkflowType' => 'workflowType',
+                       'TaskStartToCloseTimeout' => 'taskStartToCloseTimeout',
+                       'WorkflowId' => 'workflowId',
+                       'TaskPriority' => 'taskPriority',
+                       'Input' => 'input',
+                       'Domain' => 'domain',
+                       'ChildPolicy' => 'childPolicy'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -165,7 +231,7 @@ ListClosedWorkflowExecutions and specifying a TagFilter.
 
 
 
-=head2 TaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 TaskList => SimpleWorkflow_TaskList
 
 The task list to use for the decision tasks generated for this workflow
 execution. This overrides the C<defaultTaskList> specified when
@@ -233,7 +299,7 @@ not I<be> the literal string C<arn>.
 
 
 
-=head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=head2 B<REQUIRED> WorkflowType => SimpleWorkflow_WorkflowType
 
 The type of the workflow to start.
 

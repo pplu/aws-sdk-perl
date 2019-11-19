@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::PerformanceInsights;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'pi' }
   sub signing_name { 'pi' }
   sub version { '2018-02-27' }
   sub target_prefix { 'PerformanceInsightsv20180227' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -88,7 +90,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pi-
 
 =item EndTime => Str
 
-=item GroupBy => L<Paws::PerformanceInsights::DimensionGroup>
+=item GroupBy => PerformanceInsights_DimensionGroup
 
 =item Identifier => Str
 
@@ -98,13 +100,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pi-
 
 =item StartTime => Str
 
-=item [Filter => L<Paws::PerformanceInsights::MetricQueryFilterMap>]
+=item [Filter => PerformanceInsights_MetricQueryFilterMap]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [PartitionBy => L<Paws::PerformanceInsights::DimensionGroup>]
+=item [PartitionBy => PerformanceInsights_DimensionGroup]
 
 =item [PeriodInSeconds => Int]
 
@@ -127,7 +129,7 @@ metric.
 
 =item Identifier => Str
 
-=item MetricQueries => ArrayRef[L<Paws::PerformanceInsights::MetricQuery>]
+=item MetricQueries => ArrayRef[PerformanceInsights_MetricQuery]
 
 =item ServiceType => Str
 

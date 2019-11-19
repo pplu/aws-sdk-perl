@@ -1,19 +1,63 @@
 
 package Paws::EKS::UpdateNodegroupVersion;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
-  has ClusterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has Force => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'force');
-  has NodegroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'nodegroupName', required => 1);
-  has ReleaseVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'releaseVersion');
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EKS::Types qw//;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has ClusterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Force => (is => 'ro', isa => Bool, predicate => 1);
+  has NodegroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReleaseVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Version => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateNodegroupVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clusters/{name}/node-groups/{nodegroupName}/update-version');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EKS::UpdateNodegroupVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateNodegroupVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clusters/{name}/node-groups/{nodegroupName}/update-version');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EKS::UpdateNodegroupVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ClusterName' => 1,
+                    'NodegroupName' => 1
+                  },
+  'NameInRequest' => {
+                       'Version' => 'version',
+                       'Force' => 'force',
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'ReleaseVersion' => 'releaseVersion'
+                     },
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Force' => {
+                            'type' => 'Bool'
+                          },
+               'NodegroupName' => {
+                                    'type' => 'Str'
+                                  },
+               'ReleaseVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'ClusterName' => {
+                                  'type' => 'Str'
+                                },
+               'Version' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInURI' => {
+                    'NodegroupName' => 'nodegroupName',
+                    'ClusterName' => 'name'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

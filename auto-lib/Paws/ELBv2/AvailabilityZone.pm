@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::ELBv2::AvailabilityZone;
-  use Moose;
-  has LoadBalancerAddresses => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::LoadBalancerAddress]');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has ZoneName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ELBv2::Types qw/ELBv2_LoadBalancerAddress/;
+  has LoadBalancerAddresses => (is => 'ro', isa => ArrayRef[ELBv2_LoadBalancerAddress]);
+  has SubnetId => (is => 'ro', isa => Str);
+  has ZoneName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'LoadBalancerAddresses' => {
+                                            'type' => 'ArrayRef[ELBv2_LoadBalancerAddress]',
+                                            'class' => 'Paws::ELBv2::LoadBalancerAddress'
+                                          },
+               'ZoneName' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ Information about an Availability Zone.
 =head1 ATTRIBUTES
 
 
-=head2 LoadBalancerAddresses => ArrayRef[L<Paws::ELBv2::LoadBalancerAddress>]
+=head2 LoadBalancerAddresses => ArrayRef[ELBv2_LoadBalancerAddress]
 
   [Network Load Balancers] If you need static IP addresses for your load
 balancer, you can specify one Elastic IP address per Availability Zone

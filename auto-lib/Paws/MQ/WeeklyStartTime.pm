@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MQ::WeeklyStartTime;
-  use Moose;
-  has DayOfWeek => (is => 'ro', isa => 'Str', request_name => 'dayOfWeek', traits => ['NameInRequest']);
-  has TimeOfDay => (is => 'ro', isa => 'Str', request_name => 'timeOfDay', traits => ['NameInRequest']);
-  has TimeZone => (is => 'ro', isa => 'Str', request_name => 'timeZone', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has DayOfWeek => (is => 'ro', isa => Str);
+  has TimeOfDay => (is => 'ro', isa => Str);
+  has TimeZone => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DayOfWeek' => 'dayOfWeek',
+                       'TimeZone' => 'timeZone',
+                       'TimeOfDay' => 'timeOfDay'
+                     },
+  'types' => {
+               'TimeZone' => {
+                               'type' => 'Str'
+                             },
+               'DayOfWeek' => {
+                                'type' => 'Str'
+                              },
+               'TimeOfDay' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

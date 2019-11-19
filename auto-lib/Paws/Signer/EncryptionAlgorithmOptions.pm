@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Signer::EncryptionAlgorithmOptions;
-  use Moose;
-  has AllowedValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'allowedValues', traits => ['NameInRequest'], required => 1);
-  has DefaultValue => (is => 'ro', isa => 'Str', request_name => 'defaultValue', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::Signer::Types qw//;
+  has AllowedValues => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has DefaultValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DefaultValue' => 'defaultValue',
+                       'AllowedValues' => 'allowedValues'
+                     },
+  'IsRequired' => {
+                    'AllowedValues' => 1,
+                    'DefaultValue' => 1
+                  },
+  'types' => {
+               'DefaultValue' => {
+                                   'type' => 'Str'
+                                 },
+               'AllowedValues' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,84 @@
 package Paws::EC2::ScheduledInstanceAvailability;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has AvailableInstanceCount => (is => 'ro', isa => 'Int', request_name => 'availableInstanceCount', traits => ['NameInRequest']);
-  has FirstSlotStartTime => (is => 'ro', isa => 'Str', request_name => 'firstSlotStartTime', traits => ['NameInRequest']);
-  has HourlyPrice => (is => 'ro', isa => 'Str', request_name => 'hourlyPrice', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has MaxTermDurationInDays => (is => 'ro', isa => 'Int', request_name => 'maxTermDurationInDays', traits => ['NameInRequest']);
-  has MinTermDurationInDays => (is => 'ro', isa => 'Int', request_name => 'minTermDurationInDays', traits => ['NameInRequest']);
-  has NetworkPlatform => (is => 'ro', isa => 'Str', request_name => 'networkPlatform', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
-  has PurchaseToken => (is => 'ro', isa => 'Str', request_name => 'purchaseToken', traits => ['NameInRequest']);
-  has Recurrence => (is => 'ro', isa => 'Paws::EC2::ScheduledInstanceRecurrence', request_name => 'recurrence', traits => ['NameInRequest']);
-  has SlotDurationInHours => (is => 'ro', isa => 'Int', request_name => 'slotDurationInHours', traits => ['NameInRequest']);
-  has TotalScheduledInstanceHours => (is => 'ro', isa => 'Int', request_name => 'totalScheduledInstanceHours', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw/EC2_ScheduledInstanceRecurrence/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has AvailableInstanceCount => (is => 'ro', isa => Int);
+  has FirstSlotStartTime => (is => 'ro', isa => Str);
+  has HourlyPrice => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has MaxTermDurationInDays => (is => 'ro', isa => Int);
+  has MinTermDurationInDays => (is => 'ro', isa => Int);
+  has NetworkPlatform => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has PurchaseToken => (is => 'ro', isa => Str);
+  has Recurrence => (is => 'ro', isa => EC2_ScheduledInstanceRecurrence);
+  has SlotDurationInHours => (is => 'ro', isa => Int);
+  has TotalScheduledInstanceHours => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AvailabilityZone' => 'availabilityZone',
+                       'MaxTermDurationInDays' => 'maxTermDurationInDays',
+                       'Recurrence' => 'recurrence',
+                       'PurchaseToken' => 'purchaseToken',
+                       'TotalScheduledInstanceHours' => 'totalScheduledInstanceHours',
+                       'FirstSlotStartTime' => 'firstSlotStartTime',
+                       'MinTermDurationInDays' => 'minTermDurationInDays',
+                       'HourlyPrice' => 'hourlyPrice',
+                       'SlotDurationInHours' => 'slotDurationInHours',
+                       'AvailableInstanceCount' => 'availableInstanceCount',
+                       'NetworkPlatform' => 'networkPlatform',
+                       'Platform' => 'platform',
+                       'InstanceType' => 'instanceType'
+                     },
+  'types' => {
+               'TotalScheduledInstanceHours' => {
+                                                  'type' => 'Int'
+                                                },
+               'PurchaseToken' => {
+                                    'type' => 'Str'
+                                  },
+               'FirstSlotStartTime' => {
+                                         'type' => 'Str'
+                                       },
+               'MinTermDurationInDays' => {
+                                            'type' => 'Int'
+                                          },
+               'MaxTermDurationInDays' => {
+                                            'type' => 'Int'
+                                          },
+               'Recurrence' => {
+                                 'type' => 'EC2_ScheduledInstanceRecurrence',
+                                 'class' => 'Paws::EC2::ScheduledInstanceRecurrence'
+                               },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'NetworkPlatform' => {
+                                      'type' => 'Str'
+                                    },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'AvailableInstanceCount' => {
+                                             'type' => 'Int'
+                                           },
+               'HourlyPrice' => {
+                                  'type' => 'Str'
+                                },
+               'SlotDurationInHours' => {
+                                          'type' => 'Int'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -99,7 +165,7 @@ instance types.
   The purchase token. This token expires in two hours.
 
 
-=head2 Recurrence => L<Paws::EC2::ScheduledInstanceRecurrence>
+=head2 Recurrence => EC2_ScheduledInstanceRecurrence
 
   The schedule recurrence.
 

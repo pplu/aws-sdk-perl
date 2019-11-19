@@ -1,19 +1,62 @@
 
 package Paws::MediaConvert::CreateQueue;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has PricingPlan => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pricingPlan');
-  has ReservationPlanSettings => (is => 'ro', isa => 'Paws::MediaConvert::ReservationPlanSettings', traits => ['NameInRequest'], request_name => 'reservationPlanSettings');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has Tags => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert___mapOf__string MediaConvert_ReservationPlanSettings/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PricingPlan => (is => 'ro', isa => Str, predicate => 1);
+  has ReservationPlanSettings => (is => 'ro', isa => MediaConvert_ReservationPlanSettings, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => MediaConvert___mapOf__string, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateQueue');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/queues');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConvert::CreateQueueResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateQueue');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-08-29/queues');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConvert::CreateQueueResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Tags' => {
+                           'type' => 'MediaConvert___mapOf__string',
+                           'class' => 'Paws::MediaConvert::__mapOf__string'
+                         },
+               'PricingPlan' => {
+                                  'type' => 'Str'
+                                },
+               'ReservationPlanSettings' => {
+                                              'type' => 'MediaConvert_ReservationPlanSettings',
+                                              'class' => 'Paws::MediaConvert::ReservationPlanSettings'
+                                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'PricingPlan' => 'pricingPlan',
+                       'Tags' => 'tags',
+                       'Description' => 'description',
+                       'Status' => 'status',
+                       'Name' => 'name',
+                       'ReservationPlanSettings' => 'reservationPlanSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -81,7 +124,7 @@ a queue, the default is on-demand.
 
 Valid values are: C<"ON_DEMAND">, C<"RESERVED">
 
-=head2 ReservationPlanSettings => L<Paws::MediaConvert::ReservationPlanSettings>
+=head2 ReservationPlanSettings => MediaConvert_ReservationPlanSettings
 
 Details about the pricing plan for your reserved queue. Required for
 reserved queues and not applicable to on-demand queues.
@@ -95,7 +138,7 @@ that queue won't begin.
 
 Valid values are: C<"ACTIVE">, C<"PAUSED">
 
-=head2 Tags => L<Paws::MediaConvert::__mapOf__string>
+=head2 Tags => MediaConvert___mapOf__string
 
 The tags that you want to add to the resource. You can tag resources
 with a key-value pair or with only a key.

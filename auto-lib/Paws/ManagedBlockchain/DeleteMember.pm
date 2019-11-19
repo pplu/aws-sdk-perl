@@ -1,15 +1,41 @@
 
 package Paws::ManagedBlockchain::DeleteMember;
-  use Moose;
-  has MemberId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'memberId', required => 1);
-  has NetworkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'networkId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has MemberId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NetworkId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMember');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/members/{memberId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::DeleteMemberOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteMember');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/networks/{networkId}/members/{memberId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ManagedBlockchain::DeleteMemberOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MemberId' => 1,
+                    'NetworkId' => 1
+                  },
+  'types' => {
+               'MemberId' => {
+                               'type' => 'Str'
+                             },
+               'NetworkId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'MemberId' => 'memberId',
+                    'NetworkId' => 'networkId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

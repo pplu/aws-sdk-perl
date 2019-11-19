@@ -1,17 +1,51 @@
 
 package Paws::Quicksight::UpdateGroup;
-  use Moose;
-  has AwsAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'AwsAccountId', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupName', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Namespace', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Quicksight::Types qw//;
+  has AwsAccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{AwsAccountId}/namespaces/{Namespace}/groups/{GroupName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Quicksight::UpdateGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{AwsAccountId}/namespaces/{Namespace}/groups/{GroupName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Quicksight::UpdateGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AwsAccountId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'Namespace' => 1,
+                    'GroupName' => 1,
+                    'AwsAccountId' => 1
+                  },
+  'ParamInURI' => {
+                    'GroupName' => 'GroupName',
+                    'Namespace' => 'Namespace',
+                    'AwsAccountId' => 'AwsAccountId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

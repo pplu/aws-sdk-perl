@@ -1,11 +1,30 @@
 
 package Paws::S3::GetBucketMetricsConfigurationOutput;
-  use Moose;
-  has MetricsConfiguration => (is => 'ro', isa => 'Paws::S3::MetricsConfiguration');
+  use Moo;
 
-  use MooseX::ClassAttribute;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_MetricsConfiguration/;
+  has MetricsConfiguration => (is => 'ro', isa => S3_MetricsConfiguration);
+
+  use MooX::ClassAttribute;
   class_has _payload => (is => 'ro', default => 'MetricsConfiguration');
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricsConfiguration' => {
+                                           'type' => 'S3_MetricsConfiguration',
+                                           'class' => 'Paws::S3::MetricsConfiguration'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +36,7 @@ Paws::S3::GetBucketMetricsConfigurationOutput
 =head1 ATTRIBUTES
 
 
-=head2 MetricsConfiguration => L<Paws::S3::MetricsConfiguration>
+=head2 MetricsConfiguration => S3_MetricsConfiguration
 
 Specifies the metrics configuration.
 

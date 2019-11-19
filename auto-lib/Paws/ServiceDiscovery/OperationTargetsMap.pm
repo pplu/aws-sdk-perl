@@ -1,14 +1,31 @@
+# Generated from default/map_enum.tt
 package Paws::ServiceDiscovery::OperationTargetsMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Str/;
+  use Paws::ServiceDiscovery::Types qw//;
+  has INSTANCE => (is => 'ro', isa => Str);
+  has NAMESPACE => (is => 'ro', isa => Str);
+  has SERVICE => (is => 'ro', isa => Str);
 
-  has INSTANCE => (is => 'ro', isa => 'Str');
-  has NAMESPACE => (is => 'ro', isa => 'Str');
-  has SERVICE => (is => 'ro', isa => 'Str');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'INSTANCE' => {
+                                          type => 'Str',                                        },
+                               'NAMESPACE' => {
+                                          type => 'Str',                                        },
+                               'SERVICE' => {
+                                          type => 'Str',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,13 +61,13 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 INSTANCE => Str
+=head2 INSTANCE => 
 
 
-=head2 NAMESPACE => Str
+=head2 NAMESPACE => 
 
 
-=head2 SERVICE => Str
+=head2 SERVICE => 
 
 
 

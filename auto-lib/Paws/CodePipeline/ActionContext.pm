@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionContext;
-  use Moose;
-  has ActionExecutionId => (is => 'ro', isa => 'Str', request_name => 'actionExecutionId', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has ActionExecutionId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ActionExecutionId' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'ActionExecutionId' => 'actionExecutionId',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

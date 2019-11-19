@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::ECS::ServiceRegistry;
-  use Moose;
-  has ContainerName => (is => 'ro', isa => 'Str', request_name => 'containerName', traits => ['NameInRequest']);
-  has ContainerPort => (is => 'ro', isa => 'Int', request_name => 'containerPort', traits => ['NameInRequest']);
-  has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
-  has RegistryArn => (is => 'ro', isa => 'Str', request_name => 'registryArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ECS::Types qw//;
+  has ContainerName => (is => 'ro', isa => Str);
+  has ContainerPort => (is => 'ro', isa => Int);
+  has Port => (is => 'ro', isa => Int);
+  has RegistryArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistryArn' => {
+                                  'type' => 'Str'
+                                },
+               'ContainerPort' => {
+                                    'type' => 'Int'
+                                  },
+               'ContainerName' => {
+                                    'type' => 'Str'
+                                  },
+               'Port' => {
+                           'type' => 'Int'
+                         }
+             },
+  'NameInRequest' => {
+                       'RegistryArn' => 'registryArn',
+                       'ContainerName' => 'containerName',
+                       'ContainerPort' => 'containerPort',
+                       'Port' => 'port'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

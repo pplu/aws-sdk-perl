@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::LimitExceededException;
-  use Moose;
-  has LimitType => (is => 'ro', isa => 'Str', request_name => 'limitType', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has LimitType => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LimitType' => 'limitType',
+                       'Message' => 'message'
+                     },
+  'types' => {
+               'LimitType' => {
+                                'type' => 'Str'
+                              },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

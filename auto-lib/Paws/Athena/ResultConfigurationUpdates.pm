@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::Athena::ResultConfigurationUpdates;
-  use Moose;
-  has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Athena::EncryptionConfiguration');
-  has OutputLocation => (is => 'ro', isa => 'Str');
-  has RemoveEncryptionConfiguration => (is => 'ro', isa => 'Bool');
-  has RemoveOutputLocation => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Athena::Types qw/Athena_EncryptionConfiguration/;
+  has EncryptionConfiguration => (is => 'ro', isa => Athena_EncryptionConfiguration);
+  has OutputLocation => (is => 'ro', isa => Str);
+  has RemoveEncryptionConfiguration => (is => 'ro', isa => Bool);
+  has RemoveOutputLocation => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RemoveOutputLocation' => {
+                                           'type' => 'Bool'
+                                         },
+               'RemoveEncryptionConfiguration' => {
+                                                    'type' => 'Bool'
+                                                  },
+               'EncryptionConfiguration' => {
+                                              'class' => 'Paws::Athena::EncryptionConfiguration',
+                                              'type' => 'Athena_EncryptionConfiguration'
+                                            },
+               'OutputLocation' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +67,7 @@ location and encryption configuration for the query results.
 =head1 ATTRIBUTES
 
 
-=head2 EncryptionConfiguration => L<Paws::Athena::EncryptionConfiguration>
+=head2 EncryptionConfiguration => Athena_EncryptionConfiguration
 
   The encryption configuration for the query results.
 

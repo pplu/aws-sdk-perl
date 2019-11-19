@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Neptune::DBClusterSnapshotAttributesResult;
-  use Moose;
-  has DBClusterSnapshotAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBClusterSnapshotAttribute]', request_name => 'DBClusterSnapshotAttribute', traits => ['NameInRequest']);
-  has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Neptune::Types qw/Neptune_DBClusterSnapshotAttribute/;
+  has DBClusterSnapshotAttributes => (is => 'ro', isa => ArrayRef[Neptune_DBClusterSnapshotAttribute]);
+  has DBClusterSnapshotIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBClusterSnapshotAttributes' => {
+                                                  'class' => 'Paws::Neptune::DBClusterSnapshotAttribute',
+                                                  'type' => 'ArrayRef[Neptune_DBClusterSnapshotAttribute]'
+                                                },
+               'DBClusterSnapshotIdentifier' => {
+                                                  'type' => 'Str'
+                                                }
+             },
+  'NameInRequest' => {
+                       'DBClusterSnapshotAttributes' => 'DBClusterSnapshotAttribute'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +66,7 @@ information, see the ModifyDBClusterSnapshotAttribute API action.
 =head1 ATTRIBUTES
 
 
-=head2 DBClusterSnapshotAttributes => ArrayRef[L<Paws::Neptune::DBClusterSnapshotAttribute>]
+=head2 DBClusterSnapshotAttributes => ArrayRef[Neptune_DBClusterSnapshotAttribute]
 
   The list of attributes and values for the manual DB cluster snapshot.
 

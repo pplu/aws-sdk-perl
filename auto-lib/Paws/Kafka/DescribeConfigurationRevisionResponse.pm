@@ -1,13 +1,49 @@
 
 package Paws::Kafka::DescribeConfigurationRevisionResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has CreationTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationTime');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Revision => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'revision');
-  has ServerProperties => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serverProperties');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Kafka::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Revision => (is => 'ro', isa => Int);
+  has ServerProperties => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'Revision' => 'revision',
+                       'CreationTime' => 'creationTime',
+                       'ServerProperties' => 'serverProperties',
+                       'Arn' => 'arn'
+                     },
+  'types' => {
+               'ServerProperties' => {
+                                       'type' => 'Str'
+                                     },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Revision' => {
+                               'type' => 'Int'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

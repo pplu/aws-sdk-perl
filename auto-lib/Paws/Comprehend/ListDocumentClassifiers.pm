@@ -1,15 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Comprehend::ListDocumentClassifiers;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierFilter');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Comprehend::Types qw/Comprehend_DocumentClassifierFilter/;
+  has Filter => (is => 'ro', isa => Comprehend_DocumentClassifierFilter, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDocumentClassifiers');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::ListDocumentClassifiersResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDocumentClassifiers');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Comprehend::ListDocumentClassifiersResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filter' => {
+                             'class' => 'Paws::Comprehend::DocumentClassifierFilter',
+                             'type' => 'Comprehend_DocumentClassifierFilter'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +76,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/com
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::Comprehend::DocumentClassifierFilter>
+=head2 Filter => Comprehend_DocumentClassifierFilter
 
 Filters the jobs that are returned. You can filter jobs on their name,
 status, or the date and time that they were submitted. You can only set

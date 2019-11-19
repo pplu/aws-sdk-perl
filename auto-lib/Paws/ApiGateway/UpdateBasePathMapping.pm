@@ -1,16 +1,49 @@
 
 package Paws::ApiGateway::UpdateBasePathMapping;
-  use Moose;
-  has BasePath => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'base_path', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domain_name', required => 1);
-  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]', traits => ['NameInRequest'], request_name => 'patchOperations');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_PatchOperation/;
+  has BasePath => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PatchOperations => (is => 'ro', isa => ArrayRef[ApiGateway_PatchOperation], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBasePathMapping');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames/{domain_name}/basepathmappings/{base_path}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::BasePathMapping');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateBasePathMapping');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/domainnames/{domain_name}/basepathmappings/{base_path}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::BasePathMapping');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PatchOperations' => 'patchOperations'
+                     },
+  'IsRequired' => {
+                    'BasePath' => 1,
+                    'DomainName' => 1
+                  },
+  'types' => {
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'BasePath' => {
+                               'type' => 'Str'
+                             },
+               'PatchOperations' => {
+                                      'type' => 'ArrayRef[ApiGateway_PatchOperation]',
+                                      'class' => 'Paws::ApiGateway::PatchOperation'
+                                    }
+             },
+  'ParamInURI' => {
+                    'BasePath' => 'base_path',
+                    'DomainName' => 'domain_name'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +105,7 @@ To specify an empty base path, set this parameter to C<'(none)'>.
 
 
 
-=head2 PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]
+=head2 PatchOperations => ArrayRef[ApiGateway_PatchOperation]
 
 A list of update operations to be applied to the specified resource and
 in the order specified in this list.

@@ -1,17 +1,53 @@
 
 package Paws::Pinpoint::GetSegmentVersions;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has PageSize => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'page-size');
-  has SegmentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'segment-id', required => 1);
-  has Token => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'token');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PageSize => (is => 'ro', isa => Str, predicate => 1);
+  has SegmentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Token => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSegmentVersions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/segments/{segment-id}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::GetSegmentVersionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSegmentVersions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/segments/{segment-id}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::GetSegmentVersionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'SegmentId' => 'segment-id',
+                    'ApplicationId' => 'application-id'
+                  },
+  'ParamInQuery' => {
+                      'PageSize' => 'page-size',
+                      'Token' => 'token'
+                    },
+  'IsRequired' => {
+                    'SegmentId' => 1,
+                    'ApplicationId' => 1
+                  },
+  'types' => {
+               'Token' => {
+                            'type' => 'Str'
+                          },
+               'PageSize' => {
+                               'type' => 'Str'
+                             },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'SegmentId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

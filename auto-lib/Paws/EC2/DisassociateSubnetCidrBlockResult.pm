@@ -1,10 +1,36 @@
 
 package Paws::EC2::DisassociateSubnetCidrBlockResult;
-  use Moose;
-  has Ipv6CidrBlockAssociation => (is => 'ro', isa => 'Paws::EC2::SubnetIpv6CidrBlockAssociation', request_name => 'ipv6CidrBlockAssociation', traits => ['NameInRequest',]);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_SubnetIpv6CidrBlockAssociation/;
+  has Ipv6CidrBlockAssociation => (is => 'ro', isa => EC2_SubnetIpv6CidrBlockAssociation);
+  has SubnetId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Ipv6CidrBlockAssociation' => 'ipv6CidrBlockAssociation',
+                       'SubnetId' => 'subnetId'
+                     },
+  'types' => {
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Ipv6CidrBlockAssociation' => {
+                                               'class' => 'Paws::EC2::SubnetIpv6CidrBlockAssociation',
+                                               'type' => 'EC2_SubnetIpv6CidrBlockAssociation'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DisassociateSubnetCidrBlockResult
 =head1 ATTRIBUTES
 
 
-=head2 Ipv6CidrBlockAssociation => L<Paws::EC2::SubnetIpv6CidrBlockAssociation>
+=head2 Ipv6CidrBlockAssociation => EC2_SubnetIpv6CidrBlockAssociation
 
 Information about the IPv6 CIDR block association.
 

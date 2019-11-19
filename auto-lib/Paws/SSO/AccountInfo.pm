@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::SSO::AccountInfo;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has AccountName => (is => 'ro', isa => 'Str', request_name => 'accountName', traits => ['NameInRequest']);
-  has EmailAddress => (is => 'ro', isa => 'Str', request_name => 'emailAddress', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSO::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has AccountName => (is => 'ro', isa => Str);
+  has EmailAddress => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountName' => {
+                                  'type' => 'Str'
+                                },
+               'EmailAddress' => {
+                                   'type' => 'Str'
+                                 },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'EmailAddress' => 'emailAddress',
+                       'AccountName' => 'accountName',
+                       'AccountId' => 'accountId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

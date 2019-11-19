@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CloudFront::CloudFrontOriginAccessIdentitySummary;
-  use Moose;
-  has Comment => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has S3CanonicalUserId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw//;
+  has Comment => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has S3CanonicalUserId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'S3CanonicalUserId' => 1,
+                    'Id' => 1,
+                    'Comment' => 1
+                  },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'S3CanonicalUserId' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

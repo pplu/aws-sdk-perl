@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::UpdateVoiceChannel;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has VoiceChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::VoiceChannelRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_VoiceChannelRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VoiceChannelRequest => (is => 'ro', isa => Pinpoint_VoiceChannelRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'VoiceChannelRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateVoiceChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/voice');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateVoiceChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateVoiceChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/channels/voice');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::UpdateVoiceChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'VoiceChannelRequest' => {
+                                          'class' => 'Paws::Pinpoint::VoiceChannelRequest',
+                                          'type' => 'Pinpoint_VoiceChannelRequest'
+                                        }
+             },
+  'IsRequired' => {
+                    'VoiceChannelRequest' => 1,
+                    'ApplicationId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +82,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> VoiceChannelRequest => L<Paws::Pinpoint::VoiceChannelRequest>
+=head2 B<REQUIRED> VoiceChannelRequest => Pinpoint_VoiceChannelRequest
 
 
 

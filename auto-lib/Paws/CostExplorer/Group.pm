@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::Group;
-  use Moose;
-  has Keys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Metrics => (is => 'ro', isa => 'Paws::CostExplorer::Metrics');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::CostExplorer::Types qw/CostExplorer_Metrics/;
+  has Keys => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Metrics => (is => 'ro', isa => CostExplorer_Metrics);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Metrics' => {
+                              'type' => 'CostExplorer_Metrics',
+                              'class' => 'Paws::CostExplorer::Metrics'
+                            },
+               'Keys' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ One level of grouped data in the results.
   The keys that are included in this group.
 
 
-=head2 Metrics => L<Paws::CostExplorer::Metrics>
+=head2 Metrics => CostExplorer_Metrics
 
   The metrics that are included in this group.
 

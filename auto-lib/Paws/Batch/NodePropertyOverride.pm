@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Batch::NodePropertyOverride;
-  use Moose;
-  has ContainerOverrides => (is => 'ro', isa => 'Paws::Batch::ContainerOverrides', request_name => 'containerOverrides', traits => ['NameInRequest']);
-  has TargetNodes => (is => 'ro', isa => 'Str', request_name => 'targetNodes', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw/Batch_ContainerOverrides/;
+  has ContainerOverrides => (is => 'ro', isa => Batch_ContainerOverrides);
+  has TargetNodes => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TargetNodes' => 1
+                  },
+  'NameInRequest' => {
+                       'ContainerOverrides' => 'containerOverrides',
+                       'TargetNodes' => 'targetNodes'
+                     },
+  'types' => {
+               'TargetNodes' => {
+                                  'type' => 'Str'
+                                },
+               'ContainerOverrides' => {
+                                         'class' => 'Paws::Batch::ContainerOverrides',
+                                         'type' => 'Batch_ContainerOverrides'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +66,7 @@ in a SubmitJob API operation.
 =head1 ATTRIBUTES
 
 
-=head2 ContainerOverrides => L<Paws::Batch::ContainerOverrides>
+=head2 ContainerOverrides => Batch_ContainerOverrides
 
   The overrides that should be sent to a node range.
 

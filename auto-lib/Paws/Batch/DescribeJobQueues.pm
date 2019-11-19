@@ -1,16 +1,42 @@
 
 package Paws::Batch::DescribeJobQueues;
-  use Moose;
-  has JobQueues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'jobQueues');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int/;
+  use Paws::Batch::Types qw//;
+  has JobQueues => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeJobQueues');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/describejobqueues');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::DescribeJobQueuesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeJobQueues');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/describejobqueues');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Batch::DescribeJobQueuesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'JobQueues' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             },
+  'NameInRequest' => {
+                       'JobQueues' => 'jobQueues',
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

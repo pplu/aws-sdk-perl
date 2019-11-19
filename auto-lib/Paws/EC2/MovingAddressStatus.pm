@@ -1,7 +1,28 @@
 package Paws::EC2::MovingAddressStatus;
-  use Moose;
-  has MoveStatus => (is => 'ro', isa => 'Str', request_name => 'moveStatus', traits => ['NameInRequest']);
-  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has MoveStatus => (is => 'ro', isa => Str);
+  has PublicIp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MoveStatus' => 'moveStatus',
+                       'PublicIp' => 'publicIp'
+                     },
+  'types' => {
+               'PublicIp' => {
+                               'type' => 'Str'
+                             },
+               'MoveStatus' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

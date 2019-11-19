@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::Comprehend::ClassifierMetadata;
-  use Moose;
-  has EvaluationMetrics => (is => 'ro', isa => 'Paws::Comprehend::ClassifierEvaluationMetrics');
-  has NumberOfLabels => (is => 'ro', isa => 'Int');
-  has NumberOfTestDocuments => (is => 'ro', isa => 'Int');
-  has NumberOfTrainedDocuments => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Comprehend::Types qw/Comprehend_ClassifierEvaluationMetrics/;
+  has EvaluationMetrics => (is => 'ro', isa => Comprehend_ClassifierEvaluationMetrics);
+  has NumberOfLabels => (is => 'ro', isa => Int);
+  has NumberOfTestDocuments => (is => 'ro', isa => Int);
+  has NumberOfTrainedDocuments => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EvaluationMetrics' => {
+                                        'type' => 'Comprehend_ClassifierEvaluationMetrics',
+                                        'class' => 'Paws::Comprehend::ClassifierEvaluationMetrics'
+                                      },
+               'NumberOfLabels' => {
+                                     'type' => 'Int'
+                                   },
+               'NumberOfTrainedDocuments' => {
+                                               'type' => 'Int'
+                                             },
+               'NumberOfTestDocuments' => {
+                                            'type' => 'Int'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +66,7 @@ Provides information about a document classifier.
 =head1 ATTRIBUTES
 
 
-=head2 EvaluationMetrics => L<Paws::Comprehend::ClassifierEvaluationMetrics>
+=head2 EvaluationMetrics => Comprehend_ClassifierEvaluationMetrics
 
   Describes the result metrics for the test data associated with an
 documentation classifier.

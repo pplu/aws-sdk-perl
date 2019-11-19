@@ -1,10 +1,41 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SimpleWorkflow::WorkflowTypeDetail;
-  use Moose;
-  has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeConfiguration', traits => ['NameInRequest'], request_name => 'configuration' , required => 1);
-  has TypeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeInfo', traits => ['NameInRequest'], request_name => 'typeInfo' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowTypeConfiguration SimpleWorkflow_WorkflowTypeInfo/;
+  has Configuration => (is => 'ro', isa => SimpleWorkflow_WorkflowTypeConfiguration, required => 1);
+  has TypeInfo => (is => 'ro', isa => SimpleWorkflow_WorkflowTypeInfo, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configuration' => {
+                                    'type' => 'SimpleWorkflow_WorkflowTypeConfiguration',
+                                    'class' => 'Paws::SimpleWorkflow::WorkflowTypeConfiguration'
+                                  },
+               'TypeInfo' => {
+                               'class' => 'Paws::SimpleWorkflow::WorkflowTypeInfo',
+                               'type' => 'SimpleWorkflow_WorkflowTypeInfo'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'TypeInfo' => 'typeInfo',
+                       'Configuration' => 'configuration'
+                     },
+  'IsRequired' => {
+                    'TypeInfo' => 1,
+                    'Configuration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,13 +46,13 @@ Paws::SimpleWorkflow::WorkflowTypeDetail
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Configuration => L<Paws::SimpleWorkflow::WorkflowTypeConfiguration>
+=head2 B<REQUIRED> Configuration => SimpleWorkflow_WorkflowTypeConfiguration
 
 Configuration settings of the workflow type registered through
 RegisterWorkflowType
 
 
-=head2 B<REQUIRED> TypeInfo => L<Paws::SimpleWorkflow::WorkflowTypeInfo>
+=head2 B<REQUIRED> TypeInfo => SimpleWorkflow_WorkflowTypeInfo
 
 General information about the workflow type.
 

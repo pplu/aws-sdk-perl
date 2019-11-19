@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::DAX::NodeTypeSpecificValue;
-  use Moose;
-  has NodeType => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DAX::Types qw//;
+  has NodeType => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'NodeType' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

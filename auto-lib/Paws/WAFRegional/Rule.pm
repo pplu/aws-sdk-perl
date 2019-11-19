@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::Rule;
-  use Moose;
-  has MetricName => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Predicates => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::Predicate]', required => 1);
-  has RuleId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_Predicate/;
+  has MetricName => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Predicates => (is => 'ro', isa => ArrayRef[WAFRegional_Predicate], required => 1);
+  has RuleId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RuleId' => 1,
+                    'Predicates' => 1
+                  },
+  'types' => {
+               'RuleId' => {
+                             'type' => 'Str'
+                           },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'Predicates' => {
+                                 'type' => 'ArrayRef[WAFRegional_Predicate]',
+                                 'class' => 'Paws::WAFRegional::Predicate'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +107,7 @@ C<Rule>.
 name of a C<Rule> after you create it.
 
 
-=head2 B<REQUIRED> Predicates => ArrayRef[L<Paws::WAFRegional::Predicate>]
+=head2 B<REQUIRED> Predicates => ArrayRef[WAFRegional_Predicate]
 
   The C<Predicates> object contains one C<Predicate> element for each
 ByteMatchSet, IPSet, or SqlInjectionMatchSet object that you want to

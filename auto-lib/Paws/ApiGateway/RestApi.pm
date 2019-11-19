@@ -1,20 +1,86 @@
 
 package Paws::ApiGateway::RestApi;
-  use Moose;
-  has ApiKeySource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiKeySource');
-  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'binaryMediaTypes');
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
-  has MinimumCompressionSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumCompressionSize');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has Policy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policy');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'warnings');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString ApiGateway_EndpointConfiguration/;
+  has ApiKeySource => (is => 'ro', isa => Str);
+  has BinaryMediaTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EndpointConfiguration => (is => 'ro', isa => ApiGateway_EndpointConfiguration);
+  has Id => (is => 'ro', isa => Str);
+  has MinimumCompressionSize => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has Policy => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has Version => (is => 'ro', isa => Str);
+  has Warnings => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'Warnings' => 'warnings',
+                       'BinaryMediaTypes' => 'binaryMediaTypes',
+                       'Policy' => 'policy',
+                       'Version' => 'version',
+                       'Tags' => 'tags',
+                       'Id' => 'id',
+                       'MinimumCompressionSize' => 'minimumCompressionSize',
+                       'CreatedDate' => 'createdDate',
+                       'EndpointConfiguration' => 'endpointConfiguration',
+                       'ApiKeySource' => 'apiKeySource',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ApiKeySource' => {
+                                   'type' => 'Str'
+                                 },
+               'EndpointConfiguration' => {
+                                            'type' => 'ApiGateway_EndpointConfiguration',
+                                            'class' => 'Paws::ApiGateway::EndpointConfiguration'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'MinimumCompressionSize' => {
+                                             'type' => 'Int'
+                                           },
+               'Tags' => {
+                           'type' => 'ApiGateway_MapOfStringToString',
+                           'class' => 'Paws::ApiGateway::MapOfStringToString'
+                         },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Policy' => {
+                             'type' => 'Str'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Warnings' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'BinaryMediaTypes' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +125,7 @@ The timestamp when the API was created.
 The API's description.
 
 
-=head2 EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>
+=head2 EndpointConfiguration => ApiGateway_EndpointConfiguration
 
 The endpoint configuration of this RestApi showing the endpoint types
 of the API.
@@ -92,7 +158,7 @@ A stringified JSON policy document that applies to this RestApi
 regardless of the caller and Method configuration.
 
 
-=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Tags => ApiGateway_MapOfStringToString
 
 The collection of tags. Each tag element is associated with a given
 resource.

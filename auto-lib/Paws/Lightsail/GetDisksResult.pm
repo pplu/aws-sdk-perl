@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetDisksResult;
-  use Moose;
-  has Disks => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Disk]', traits => ['NameInRequest'], request_name => 'disks' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_Disk/;
+  has Disks => (is => 'ro', isa => ArrayRef[Lightsail_Disk]);
+  has NextPageToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Disks' => 'disks',
+                       'NextPageToken' => 'nextPageToken'
+                     },
+  'types' => {
+               'Disks' => {
+                            'class' => 'Paws::Lightsail::Disk',
+                            'type' => 'ArrayRef[Lightsail_Disk]'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Lightsail::GetDisksResult
 =head1 ATTRIBUTES
 
 
-=head2 Disks => ArrayRef[L<Paws::Lightsail::Disk>]
+=head2 Disks => ArrayRef[Lightsail_Disk]
 
 An array of objects containing information about all block storage
 disks.

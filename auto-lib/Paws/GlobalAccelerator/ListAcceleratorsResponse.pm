@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GlobalAccelerator::ListAcceleratorsResponse;
-  use Moose;
-  has Accelerators => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::Accelerator]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GlobalAccelerator::Types qw/GlobalAccelerator_Accelerator/;
+  has Accelerators => (is => 'ro', isa => ArrayRef[GlobalAccelerator_Accelerator]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Accelerators' => {
+                                   'type' => 'ArrayRef[GlobalAccelerator_Accelerator]',
+                                   'class' => 'Paws::GlobalAccelerator::Accelerator'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::GlobalAccelerator::ListAcceleratorsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Accelerators => ArrayRef[L<Paws::GlobalAccelerator::Accelerator>]
+=head2 Accelerators => ArrayRef[GlobalAccelerator_Accelerator]
 
 The list of accelerators for a customer account.
 

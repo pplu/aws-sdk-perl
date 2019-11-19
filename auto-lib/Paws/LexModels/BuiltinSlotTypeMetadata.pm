@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::LexModels::BuiltinSlotTypeMetadata;
-  use Moose;
-  has Signature => (is => 'ro', isa => 'Str', request_name => 'signature', traits => ['NameInRequest']);
-  has SupportedLocales => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedLocales', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::LexModels::Types qw//;
+  has Signature => (is => 'ro', isa => Str);
+  has SupportedLocales => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Signature' => 'signature',
+                       'SupportedLocales' => 'supportedLocales'
+                     },
+  'types' => {
+               'SupportedLocales' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Signature' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

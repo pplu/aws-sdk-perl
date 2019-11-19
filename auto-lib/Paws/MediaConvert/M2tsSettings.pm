@@ -1,41 +1,205 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::M2tsSettings;
-  use Moose;
-  has AudioBufferModel => (is => 'ro', isa => 'Str', request_name => 'audioBufferModel', traits => ['NameInRequest']);
-  has AudioFramesPerPes => (is => 'ro', isa => 'Int', request_name => 'audioFramesPerPes', traits => ['NameInRequest']);
-  has AudioPids => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'audioPids', traits => ['NameInRequest']);
-  has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
-  has BufferModel => (is => 'ro', isa => 'Str', request_name => 'bufferModel', traits => ['NameInRequest']);
-  has DvbNitSettings => (is => 'ro', isa => 'Paws::MediaConvert::DvbNitSettings', request_name => 'dvbNitSettings', traits => ['NameInRequest']);
-  has DvbSdtSettings => (is => 'ro', isa => 'Paws::MediaConvert::DvbSdtSettings', request_name => 'dvbSdtSettings', traits => ['NameInRequest']);
-  has DvbSubPids => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'dvbSubPids', traits => ['NameInRequest']);
-  has DvbTdtSettings => (is => 'ro', isa => 'Paws::MediaConvert::DvbTdtSettings', request_name => 'dvbTdtSettings', traits => ['NameInRequest']);
-  has DvbTeletextPid => (is => 'ro', isa => 'Int', request_name => 'dvbTeletextPid', traits => ['NameInRequest']);
-  has EbpAudioInterval => (is => 'ro', isa => 'Str', request_name => 'ebpAudioInterval', traits => ['NameInRequest']);
-  has EbpPlacement => (is => 'ro', isa => 'Str', request_name => 'ebpPlacement', traits => ['NameInRequest']);
-  has EsRateInPes => (is => 'ro', isa => 'Str', request_name => 'esRateInPes', traits => ['NameInRequest']);
-  has ForceTsVideoEbpOrder => (is => 'ro', isa => 'Str', request_name => 'forceTsVideoEbpOrder', traits => ['NameInRequest']);
-  has FragmentTime => (is => 'ro', isa => 'Num', request_name => 'fragmentTime', traits => ['NameInRequest']);
-  has MaxPcrInterval => (is => 'ro', isa => 'Int', request_name => 'maxPcrInterval', traits => ['NameInRequest']);
-  has MinEbpInterval => (is => 'ro', isa => 'Int', request_name => 'minEbpInterval', traits => ['NameInRequest']);
-  has NielsenId3 => (is => 'ro', isa => 'Str', request_name => 'nielsenId3', traits => ['NameInRequest']);
-  has NullPacketBitrate => (is => 'ro', isa => 'Num', request_name => 'nullPacketBitrate', traits => ['NameInRequest']);
-  has PatInterval => (is => 'ro', isa => 'Int', request_name => 'patInterval', traits => ['NameInRequest']);
-  has PcrControl => (is => 'ro', isa => 'Str', request_name => 'pcrControl', traits => ['NameInRequest']);
-  has PcrPid => (is => 'ro', isa => 'Int', request_name => 'pcrPid', traits => ['NameInRequest']);
-  has PmtInterval => (is => 'ro', isa => 'Int', request_name => 'pmtInterval', traits => ['NameInRequest']);
-  has PmtPid => (is => 'ro', isa => 'Int', request_name => 'pmtPid', traits => ['NameInRequest']);
-  has PrivateMetadataPid => (is => 'ro', isa => 'Int', request_name => 'privateMetadataPid', traits => ['NameInRequest']);
-  has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
-  has RateMode => (is => 'ro', isa => 'Str', request_name => 'rateMode', traits => ['NameInRequest']);
-  has Scte35Esam => (is => 'ro', isa => 'Paws::MediaConvert::M2tsScte35Esam', request_name => 'scte35Esam', traits => ['NameInRequest']);
-  has Scte35Pid => (is => 'ro', isa => 'Int', request_name => 'scte35Pid', traits => ['NameInRequest']);
-  has Scte35Source => (is => 'ro', isa => 'Str', request_name => 'scte35Source', traits => ['NameInRequest']);
-  has SegmentationMarkers => (is => 'ro', isa => 'Str', request_name => 'segmentationMarkers', traits => ['NameInRequest']);
-  has SegmentationStyle => (is => 'ro', isa => 'Str', request_name => 'segmentationStyle', traits => ['NameInRequest']);
-  has SegmentationTime => (is => 'ro', isa => 'Num', request_name => 'segmentationTime', traits => ['NameInRequest']);
-  has TimedMetadataPid => (is => 'ro', isa => 'Int', request_name => 'timedMetadataPid', traits => ['NameInRequest']);
-  has TransportStreamId => (is => 'ro', isa => 'Int', request_name => 'transportStreamId', traits => ['NameInRequest']);
-  has VideoPid => (is => 'ro', isa => 'Int', request_name => 'videoPid', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Num/;
+  use Paws::MediaConvert::Types qw/MediaConvert_M2tsScte35Esam MediaConvert_DvbSdtSettings MediaConvert_DvbNitSettings MediaConvert_DvbTdtSettings/;
+  has AudioBufferModel => (is => 'ro', isa => Str);
+  has AudioFramesPerPes => (is => 'ro', isa => Int);
+  has AudioPids => (is => 'ro', isa => ArrayRef[Int]);
+  has Bitrate => (is => 'ro', isa => Int);
+  has BufferModel => (is => 'ro', isa => Str);
+  has DvbNitSettings => (is => 'ro', isa => MediaConvert_DvbNitSettings);
+  has DvbSdtSettings => (is => 'ro', isa => MediaConvert_DvbSdtSettings);
+  has DvbSubPids => (is => 'ro', isa => ArrayRef[Int]);
+  has DvbTdtSettings => (is => 'ro', isa => MediaConvert_DvbTdtSettings);
+  has DvbTeletextPid => (is => 'ro', isa => Int);
+  has EbpAudioInterval => (is => 'ro', isa => Str);
+  has EbpPlacement => (is => 'ro', isa => Str);
+  has EsRateInPes => (is => 'ro', isa => Str);
+  has ForceTsVideoEbpOrder => (is => 'ro', isa => Str);
+  has FragmentTime => (is => 'ro', isa => Num);
+  has MaxPcrInterval => (is => 'ro', isa => Int);
+  has MinEbpInterval => (is => 'ro', isa => Int);
+  has NielsenId3 => (is => 'ro', isa => Str);
+  has NullPacketBitrate => (is => 'ro', isa => Num);
+  has PatInterval => (is => 'ro', isa => Int);
+  has PcrControl => (is => 'ro', isa => Str);
+  has PcrPid => (is => 'ro', isa => Int);
+  has PmtInterval => (is => 'ro', isa => Int);
+  has PmtPid => (is => 'ro', isa => Int);
+  has PrivateMetadataPid => (is => 'ro', isa => Int);
+  has ProgramNumber => (is => 'ro', isa => Int);
+  has RateMode => (is => 'ro', isa => Str);
+  has Scte35Esam => (is => 'ro', isa => MediaConvert_M2tsScte35Esam);
+  has Scte35Pid => (is => 'ro', isa => Int);
+  has Scte35Source => (is => 'ro', isa => Str);
+  has SegmentationMarkers => (is => 'ro', isa => Str);
+  has SegmentationStyle => (is => 'ro', isa => Str);
+  has SegmentationTime => (is => 'ro', isa => Num);
+  has TimedMetadataPid => (is => 'ro', isa => Int);
+  has TransportStreamId => (is => 'ro', isa => Int);
+  has VideoPid => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DvbTdtSettings' => 'dvbTdtSettings',
+                       'SegmentationTime' => 'segmentationTime',
+                       'AudioPids' => 'audioPids',
+                       'EbpPlacement' => 'ebpPlacement',
+                       'PcrControl' => 'pcrControl',
+                       'BufferModel' => 'bufferModel',
+                       'DvbSubPids' => 'dvbSubPids',
+                       'Scte35Esam' => 'scte35Esam',
+                       'PcrPid' => 'pcrPid',
+                       'AudioFramesPerPes' => 'audioFramesPerPes',
+                       'PatInterval' => 'patInterval',
+                       'PmtInterval' => 'pmtInterval',
+                       'Scte35Pid' => 'scte35Pid',
+                       'VideoPid' => 'videoPid',
+                       'MinEbpInterval' => 'minEbpInterval',
+                       'PrivateMetadataPid' => 'privateMetadataPid',
+                       'PmtPid' => 'pmtPid',
+                       'EsRateInPes' => 'esRateInPes',
+                       'TimedMetadataPid' => 'timedMetadataPid',
+                       'MaxPcrInterval' => 'maxPcrInterval',
+                       'DvbNitSettings' => 'dvbNitSettings',
+                       'Scte35Source' => 'scte35Source',
+                       'ProgramNumber' => 'programNumber',
+                       'NielsenId3' => 'nielsenId3',
+                       'TransportStreamId' => 'transportStreamId',
+                       'Bitrate' => 'bitrate',
+                       'AudioBufferModel' => 'audioBufferModel',
+                       'EbpAudioInterval' => 'ebpAudioInterval',
+                       'NullPacketBitrate' => 'nullPacketBitrate',
+                       'FragmentTime' => 'fragmentTime',
+                       'RateMode' => 'rateMode',
+                       'SegmentationStyle' => 'segmentationStyle',
+                       'DvbTeletextPid' => 'dvbTeletextPid',
+                       'DvbSdtSettings' => 'dvbSdtSettings',
+                       'SegmentationMarkers' => 'segmentationMarkers',
+                       'ForceTsVideoEbpOrder' => 'forceTsVideoEbpOrder'
+                     },
+  'types' => {
+               'PmtInterval' => {
+                                  'type' => 'Int'
+                                },
+               'PatInterval' => {
+                                  'type' => 'Int'
+                                },
+               'AudioFramesPerPes' => {
+                                        'type' => 'Int'
+                                      },
+               'Scte35Esam' => {
+                                 'type' => 'MediaConvert_M2tsScte35Esam',
+                                 'class' => 'Paws::MediaConvert::M2tsScte35Esam'
+                               },
+               'PcrPid' => {
+                             'type' => 'Int'
+                           },
+               'DvbSubPids' => {
+                                 'type' => 'ArrayRef[Int]'
+                               },
+               'PcrControl' => {
+                                 'type' => 'Str'
+                               },
+               'BufferModel' => {
+                                  'type' => 'Str'
+                                },
+               'EbpPlacement' => {
+                                   'type' => 'Str'
+                                 },
+               'AudioPids' => {
+                                'type' => 'ArrayRef[Int]'
+                              },
+               'DvbTdtSettings' => {
+                                     'class' => 'Paws::MediaConvert::DvbTdtSettings',
+                                     'type' => 'MediaConvert_DvbTdtSettings'
+                                   },
+               'SegmentationTime' => {
+                                       'type' => 'Num'
+                                     },
+               'TimedMetadataPid' => {
+                                       'type' => 'Int'
+                                     },
+               'EsRateInPes' => {
+                                  'type' => 'Str'
+                                },
+               'PmtPid' => {
+                             'type' => 'Int'
+                           },
+               'PrivateMetadataPid' => {
+                                         'type' => 'Int'
+                                       },
+               'MinEbpInterval' => {
+                                     'type' => 'Int'
+                                   },
+               'Scte35Pid' => {
+                                'type' => 'Int'
+                              },
+               'VideoPid' => {
+                               'type' => 'Int'
+                             },
+               'TransportStreamId' => {
+                                        'type' => 'Int'
+                                      },
+               'ProgramNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'NielsenId3' => {
+                                 'type' => 'Str'
+                               },
+               'Scte35Source' => {
+                                   'type' => 'Str'
+                                 },
+               'DvbNitSettings' => {
+                                     'type' => 'MediaConvert_DvbNitSettings',
+                                     'class' => 'Paws::MediaConvert::DvbNitSettings'
+                                   },
+               'MaxPcrInterval' => {
+                                     'type' => 'Int'
+                                   },
+               'ForceTsVideoEbpOrder' => {
+                                           'type' => 'Str'
+                                         },
+               'SegmentationMarkers' => {
+                                          'type' => 'Str'
+                                        },
+               'DvbSdtSettings' => {
+                                     'class' => 'Paws::MediaConvert::DvbSdtSettings',
+                                     'type' => 'MediaConvert_DvbSdtSettings'
+                                   },
+               'SegmentationStyle' => {
+                                        'type' => 'Str'
+                                      },
+               'DvbTeletextPid' => {
+                                     'type' => 'Int'
+                                   },
+               'RateMode' => {
+                               'type' => 'Str'
+                             },
+               'FragmentTime' => {
+                                   'type' => 'Num'
+                                 },
+               'NullPacketBitrate' => {
+                                        'type' => 'Num'
+                                      },
+               'EbpAudioInterval' => {
+                                       'type' => 'Str'
+                                     },
+               'AudioBufferModel' => {
+                                       'type' => 'Str'
+                                     },
+               'Bitrate' => {
+                              'type' => 'Int'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -113,13 +277,13 @@ lower latency, but low-memory devices may not be able to play back the
 stream without interruptions.
 
 
-=head2 DvbNitSettings => L<Paws::MediaConvert::DvbNitSettings>
+=head2 DvbNitSettings => MediaConvert_DvbNitSettings
 
   Inserts DVB Network Information Table (NIT) at the specified table
 repetition interval.
 
 
-=head2 DvbSdtSettings => L<Paws::MediaConvert::DvbSdtSettings>
+=head2 DvbSdtSettings => MediaConvert_DvbSdtSettings
 
   Inserts DVB Service Description Table (NIT) at the specified table
 repetition interval.
@@ -132,7 +296,7 @@ this output. Specify multiple PIDs as a JSON array. Default is the
 range 460-479.
 
 
-=head2 DvbTdtSettings => L<Paws::MediaConvert::DvbTdtSettings>
+=head2 DvbTdtSettings => MediaConvert_DvbTdtSettings
 
   Inserts DVB Time and Date Table (TDT) at the specified table repetition
 interval.
@@ -264,7 +428,7 @@ specified bitrate. When set to VBR, the bitrate setting acts as the
 maximum bitrate, but the output will not be padded up to that bitrate.
 
 
-=head2 Scte35Esam => L<Paws::MediaConvert::M2tsScte35Esam>
+=head2 Scte35Esam => MediaConvert_M2tsScte35Esam
 
   Include this in your job settings to put SCTE-35 markers in your HLS
 and transport stream outputs at the insertion points that you specify

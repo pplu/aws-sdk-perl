@@ -1,16 +1,47 @@
 
 package Paws::ApiGateway::GetBasePathMappings;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domain_name', required => 1);
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ApiGateway::Types qw//;
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Position => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetBasePathMappings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames/{domain_name}/basepathmappings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::BasePathMappings');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetBasePathMappings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/domainnames/{domain_name}/basepathmappings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::BasePathMappings');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'Position' => 'position',
+                      'Limit' => 'limit'
+                    },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  },
+  'types' => {
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'Position' => {
+                               'type' => 'Str'
+                             },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'DomainName' => 'domain_name'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

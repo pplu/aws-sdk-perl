@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::StartImportLabelsTaskRun;
-  use Moose;
-  has InputS3Path => (is => 'ro', isa => 'Str', required => 1);
-  has ReplaceAllLabels => (is => 'ro', isa => 'Bool');
-  has TransformId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Glue::Types qw//;
+  has InputS3Path => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplaceAllLabels => (is => 'ro', isa => Bool, predicate => 1);
+  has TransformId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartImportLabelsTaskRun');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::StartImportLabelsTaskRunResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartImportLabelsTaskRun');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::StartImportLabelsTaskRunResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TransformId' => {
+                                  'type' => 'Str'
+                                },
+               'ReplaceAllLabels' => {
+                                       'type' => 'Bool'
+                                     },
+               'InputS3Path' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'TransformId' => 1,
+                    'InputS3Path' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

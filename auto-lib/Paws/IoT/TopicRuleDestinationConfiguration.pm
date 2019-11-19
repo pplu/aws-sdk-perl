@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::IoT::TopicRuleDestinationConfiguration;
-  use Moose;
-  has HttpUrlConfiguration => (is => 'ro', isa => 'Paws::IoT::HttpUrlDestinationConfiguration', request_name => 'httpUrlConfiguration', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoT::Types qw/IoT_HttpUrlDestinationConfiguration/;
+  has HttpUrlConfiguration => (is => 'ro', isa => IoT_HttpUrlDestinationConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'HttpUrlConfiguration' => 'httpUrlConfiguration'
+                     },
+  'types' => {
+               'HttpUrlConfiguration' => {
+                                           'type' => 'IoT_HttpUrlDestinationConfiguration',
+                                           'class' => 'Paws::IoT::HttpUrlDestinationConfiguration'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Configuration of the topic rule destination.
 =head1 ATTRIBUTES
 
 
-=head2 HttpUrlConfiguration => L<Paws::IoT::HttpUrlDestinationConfiguration>
+=head2 HttpUrlConfiguration => IoT_HttpUrlDestinationConfiguration
 
   Configuration of the HTTP URL.
 

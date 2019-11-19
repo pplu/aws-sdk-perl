@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::XRay::TraceUser;
-  use Moose;
-  has ServiceIds => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ServiceId]');
-  has UserName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::XRay::Types qw/XRay_ServiceId/;
+  has ServiceIds => (is => 'ro', isa => ArrayRef[XRay_ServiceId]);
+  has UserName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'ServiceIds' => {
+                                 'class' => 'Paws::XRay::ServiceId',
+                                 'type' => 'ArrayRef[XRay_ServiceId]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Information about a user recorded in segment documents.
 =head1 ATTRIBUTES
 
 
-=head2 ServiceIds => ArrayRef[L<Paws::XRay::ServiceId>]
+=head2 ServiceIds => ArrayRef[XRay_ServiceId]
 
   Services that the user's request hit.
 

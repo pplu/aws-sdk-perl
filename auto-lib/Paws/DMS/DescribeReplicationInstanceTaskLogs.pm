@@ -1,15 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::DescribeReplicationInstanceTaskLogs;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has ReplicationInstanceArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DMS::Types qw//;
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has ReplicationInstanceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReplicationInstanceTaskLogs');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::DescribeReplicationInstanceTaskLogsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeReplicationInstanceTaskLogs');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::DescribeReplicationInstanceTaskLogsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ReplicationInstanceArn' => 1
+                  },
+  'types' => {
+               'ReplicationInstanceArn' => {
+                                             'type' => 'Str'
+                                           },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

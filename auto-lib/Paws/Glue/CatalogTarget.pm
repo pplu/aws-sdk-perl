@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Glue::CatalogTarget;
-  use Moose;
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
-  has Tables => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Glue::Types qw//;
+  has DatabaseName => (is => 'ro', isa => Str, required => 1);
+  has Tables => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DatabaseName' => 1,
+                    'Tables' => 1
+                  },
+  'types' => {
+               'Tables' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

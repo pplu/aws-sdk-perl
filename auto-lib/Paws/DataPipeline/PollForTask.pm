@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DataPipeline::PollForTask;
-  use Moose;
-  has Hostname => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostname' );
-  has InstanceIdentity => (is => 'ro', isa => 'Paws::DataPipeline::InstanceIdentity', traits => ['NameInRequest'], request_name => 'instanceIdentity' );
-  has WorkerGroup => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workerGroup' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataPipeline::Types qw/DataPipeline_InstanceIdentity/;
+  has Hostname => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceIdentity => (is => 'ro', isa => DataPipeline_InstanceIdentity, predicate => 1);
+  has WorkerGroup => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PollForTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::PollForTaskOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PollForTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataPipeline::PollForTaskOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkerGroup' => {
+                                  'type' => 'Str'
+                                },
+               'InstanceIdentity' => {
+                                       'type' => 'DataPipeline_InstanceIdentity',
+                                       'class' => 'Paws::DataPipeline::InstanceIdentity'
+                                     },
+               'Hostname' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'WorkerGroup' => 1
+                  },
+  'NameInRequest' => {
+                       'Hostname' => 'hostname',
+                       'WorkerGroup' => 'workerGroup',
+                       'InstanceIdentity' => 'instanceIdentity'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +86,7 @@ The public DNS name of the calling task runner.
 
 
 
-=head2 InstanceIdentity => L<Paws::DataPipeline::InstanceIdentity>
+=head2 InstanceIdentity => DataPipeline_InstanceIdentity
 
 Identity information for the EC2 instance that is hosting the task
 runner. You can get this value from the instance using

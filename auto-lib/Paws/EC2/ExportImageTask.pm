@@ -1,12 +1,54 @@
 package Paws::EC2::ExportImageTask;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has ExportImageTaskId => (is => 'ro', isa => 'Str', request_name => 'exportImageTaskId', traits => ['NameInRequest']);
-  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
-  has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
-  has S3ExportLocation => (is => 'ro', isa => 'Paws::EC2::ExportTaskS3Location', request_name => 's3ExportLocation', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ExportTaskS3Location/;
+  has Description => (is => 'ro', isa => Str);
+  has ExportImageTaskId => (is => 'ro', isa => Str);
+  has ImageId => (is => 'ro', isa => Str);
+  has Progress => (is => 'ro', isa => Str);
+  has S3ExportLocation => (is => 'ro', isa => EC2_ExportTaskS3Location);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'S3ExportLocation' => {
+                                       'type' => 'EC2_ExportTaskS3Location',
+                                       'class' => 'Paws::EC2::ExportTaskS3Location'
+                                     },
+               'Progress' => {
+                               'type' => 'Str'
+                             },
+               'ExportImageTaskId' => {
+                                        'type' => 'Str'
+                                      },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ImageId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'S3ExportLocation' => 's3ExportLocation',
+                       'ExportImageTaskId' => 'exportImageTaskId',
+                       'Progress' => 'progress',
+                       'Description' => 'description',
+                       'StatusMessage' => 'statusMessage',
+                       'Status' => 'status',
+                       'ImageId' => 'imageId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +104,7 @@ This class has no description
   The percent complete of the export image task.
 
 
-=head2 S3ExportLocation => L<Paws::EC2::ExportTaskS3Location>
+=head2 S3ExportLocation => EC2_ExportTaskS3Location
 
   Information about the destination S3 bucket.
 

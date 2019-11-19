@@ -1,14 +1,29 @@
 
 package Paws::XRay::GetSamplingStatisticSummaries;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::XRay::Types qw//;
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSamplingStatisticSummaries');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/SamplingStatisticSummaries');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::XRay::GetSamplingStatisticSummariesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSamplingStatisticSummaries');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/SamplingStatisticSummaries');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::XRay::GetSamplingStatisticSummariesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

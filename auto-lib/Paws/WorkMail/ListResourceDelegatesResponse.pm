@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WorkMail::ListResourceDelegatesResponse;
-  use Moose;
-  has Delegates => (is => 'ro', isa => 'ArrayRef[Paws::WorkMail::Delegate]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkMail::Types qw/WorkMail_Delegate/;
+  has Delegates => (is => 'ro', isa => ArrayRef[WorkMail_Delegate]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Delegates' => {
+                                'class' => 'Paws::WorkMail::Delegate',
+                                'type' => 'ArrayRef[WorkMail_Delegate]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::WorkMail::ListResourceDelegatesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Delegates => ArrayRef[L<Paws::WorkMail::Delegate>]
+=head2 Delegates => ArrayRef[WorkMail_Delegate]
 
 One page of the resource's delegates.
 

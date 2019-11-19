@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchListObjectAttributes;
-  use Moose;
-  has FacetFilter => (is => 'ro', isa => 'Paws::CloudDirectory::SchemaFacet');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference CloudDirectory_SchemaFacet/;
+  has FacetFilter => (is => 'ro', isa => CloudDirectory_SchemaFacet);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
+  has ObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'FacetFilter' => {
+                                  'class' => 'Paws::CloudDirectory::SchemaFacet',
+                                  'type' => 'CloudDirectory_SchemaFacet'
+                                },
+               'ObjectReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    }
+             },
+  'IsRequired' => {
+                    'ObjectReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +70,7 @@ Represents the output of a ListObjectAttributes operation.
 =head1 ATTRIBUTES
 
 
-=head2 FacetFilter => L<Paws::CloudDirectory::SchemaFacet>
+=head2 FacetFilter => CloudDirectory_SchemaFacet
 
   Used to filter the list of object attributes that are associated with a
 certain facet.
@@ -56,7 +87,7 @@ an approximate number.
   The pagination token.
 
 
-=head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ObjectReference => CloudDirectory_ObjectReference
 
   Reference of the object whose attributes need to be listed.
 

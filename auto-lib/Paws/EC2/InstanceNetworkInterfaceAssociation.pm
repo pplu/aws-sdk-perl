@@ -1,8 +1,33 @@
 package Paws::EC2::InstanceNetworkInterfaceAssociation;
-  use Moose;
-  has IpOwnerId => (is => 'ro', isa => 'Str', request_name => 'ipOwnerId', traits => ['NameInRequest']);
-  has PublicDnsName => (is => 'ro', isa => 'Str', request_name => 'publicDnsName', traits => ['NameInRequest']);
-  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has IpOwnerId => (is => 'ro', isa => Str);
+  has PublicDnsName => (is => 'ro', isa => Str);
+  has PublicIp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'IpOwnerId' => 'ipOwnerId',
+                       'PublicIp' => 'publicIp',
+                       'PublicDnsName' => 'publicDnsName'
+                     },
+  'types' => {
+               'PublicDnsName' => {
+                                    'type' => 'Str'
+                                  },
+               'PublicIp' => {
+                               'type' => 'Str'
+                             },
+               'IpOwnerId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

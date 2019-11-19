@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DBClusterEndpointMessage;
-  use Moose;
-  has DBClusterEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterEndpoint]', request_name => 'DBClusterEndpointList', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_DBClusterEndpoint/;
+  has DBClusterEndpoints => (is => 'ro', isa => ArrayRef[RDS_DBClusterEndpoint]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'DBClusterEndpoints' => {
+                                         'type' => 'ArrayRef[RDS_DBClusterEndpoint]',
+                                         'class' => 'Paws::RDS::DBClusterEndpoint'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DBClusterEndpoints' => 'DBClusterEndpointList'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RDS::DBClusterEndpointMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBClusterEndpoints => ArrayRef[L<Paws::RDS::DBClusterEndpoint>]
+=head2 DBClusterEndpoints => ArrayRef[RDS_DBClusterEndpoint]
 
 Contains the details of the endpoints associated with the cluster and
 matching any filter conditions.

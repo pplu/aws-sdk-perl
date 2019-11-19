@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::ListIPSetsResponse;
-  use Moose;
-  has IPSets => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::IPSetSummary]');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_IPSetSummary/;
+  has IPSets => (is => 'ro', isa => ArrayRef[WAFRegional_IPSetSummary]);
+  has NextMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IPSets' => {
+                             'type' => 'ArrayRef[WAFRegional_IPSetSummary]',
+                             'class' => 'Paws::WAFRegional::IPSetSummary'
+                           },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::WAFRegional::ListIPSetsResponse
 =head1 ATTRIBUTES
 
 
-=head2 IPSets => ArrayRef[L<Paws::WAFRegional::IPSetSummary>]
+=head2 IPSets => ArrayRef[WAFRegional_IPSetSummary]
 
 An array of IPSetSummary objects.
 

@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::RedShift::UpdateTarget;
-  use Moose;
-  has DatabaseVersion => (is => 'ro', isa => 'Str');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
-  has SupportedOperations => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SupportedOperation]', request_name => 'SupportedOperation', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_SupportedOperation/;
+  has DatabaseVersion => (is => 'ro', isa => Str);
+  has MaintenanceTrackName => (is => 'ro', isa => Str);
+  has SupportedOperations => (is => 'ro', isa => ArrayRef[RedShift_SupportedOperation]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SupportedOperations' => 'SupportedOperation'
+                     },
+  'types' => {
+               'MaintenanceTrackName' => {
+                                           'type' => 'Str'
+                                         },
+               'DatabaseVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'SupportedOperations' => {
+                                          'class' => 'Paws::RedShift::SupportedOperation',
+                                          'type' => 'ArrayRef[RedShift_SupportedOperation]'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +75,7 @@ A maintenance track that you can switch the current track to.
   The name of the new maintenance track.
 
 
-=head2 SupportedOperations => ArrayRef[L<Paws::RedShift::SupportedOperation>]
+=head2 SupportedOperations => ArrayRef[RedShift_SupportedOperation]
 
   A list of operations supported by the maintenance track.
 

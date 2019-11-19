@@ -1,16 +1,68 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EndpointRequest;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Str');
-  has Attributes => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
-  has ChannelType => (is => 'ro', isa => 'Str');
-  has Demographic => (is => 'ro', isa => 'Paws::Pinpoint::EndpointDemographic');
-  has EffectiveDate => (is => 'ro', isa => 'Str');
-  has EndpointStatus => (is => 'ro', isa => 'Str');
-  has Location => (is => 'ro', isa => 'Paws::Pinpoint::EndpointLocation');
-  has Metrics => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__double');
-  has OptOut => (is => 'ro', isa => 'Str');
-  has RequestId => (is => 'ro', isa => 'Str');
-  has User => (is => 'ro', isa => 'Paws::Pinpoint::EndpointUser');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EndpointUser Pinpoint_MapOf__double Pinpoint_EndpointDemographic Pinpoint_EndpointLocation Pinpoint_MapOfListOf__string/;
+  has Address => (is => 'ro', isa => Str);
+  has Attributes => (is => 'ro', isa => Pinpoint_MapOfListOf__string);
+  has ChannelType => (is => 'ro', isa => Str);
+  has Demographic => (is => 'ro', isa => Pinpoint_EndpointDemographic);
+  has EffectiveDate => (is => 'ro', isa => Str);
+  has EndpointStatus => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Pinpoint_EndpointLocation);
+  has Metrics => (is => 'ro', isa => Pinpoint_MapOf__double);
+  has OptOut => (is => 'ro', isa => Str);
+  has RequestId => (is => 'ro', isa => Str);
+  has User => (is => 'ro', isa => Pinpoint_EndpointUser);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Location' => {
+                               'class' => 'Paws::Pinpoint::EndpointLocation',
+                               'type' => 'Pinpoint_EndpointLocation'
+                             },
+               'OptOut' => {
+                             'type' => 'Str'
+                           },
+               'Attributes' => {
+                                 'type' => 'Pinpoint_MapOfListOf__string',
+                                 'class' => 'Paws::Pinpoint::MapOfListOf__string'
+                               },
+               'Metrics' => {
+                              'class' => 'Paws::Pinpoint::MapOf__double',
+                              'type' => 'Pinpoint_MapOf__double'
+                            },
+               'ChannelType' => {
+                                  'type' => 'Str'
+                                },
+               'Demographic' => {
+                                  'type' => 'Pinpoint_EndpointDemographic',
+                                  'class' => 'Paws::Pinpoint::EndpointDemographic'
+                                },
+               'Address' => {
+                              'type' => 'Str'
+                            },
+               'User' => {
+                           'type' => 'Pinpoint_EndpointUser',
+                           'class' => 'Paws::Pinpoint::EndpointUser'
+                         },
+               'EndpointStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'EffectiveDate' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +109,7 @@ For the SMS channel, use a phone number in E.164 format, such as
 +12065550100. For the email channel, use an email address.
 
 
-=head2 Attributes => L<Paws::Pinpoint::MapOfListOf__string>
+=head2 Attributes => Pinpoint_MapOfListOf__string
 
   One or more custom attributes that describe the endpoint by associating
 a name with an array of values. For example, the value of a custom
@@ -77,7 +129,7 @@ apply to attribute values.
 endpoint.
 
 
-=head2 Demographic => L<Paws::Pinpoint::EndpointDemographic>
+=head2 Demographic => Pinpoint_EndpointDemographic
 
   The demographic information for the endpoint, such as the time zone and
 platform.
@@ -93,12 +145,12 @@ platform.
   Not used.
 
 
-=head2 Location => L<Paws::Pinpoint::EndpointLocation>
+=head2 Location => Pinpoint_EndpointLocation
 
   The geographic information for the endpoint.
 
 
-=head2 Metrics => L<Paws::Pinpoint::MapOf__double>
+=head2 Metrics => Pinpoint_MapOf__double
 
   One or more custom metrics that your app reports to Amazon Pinpoint for
 the endpoint.
@@ -119,7 +171,7 @@ and wants to receive all messages and push notifications.
 endpoint.
 
 
-=head2 User => L<Paws::Pinpoint::EndpointUser>
+=head2 User => Pinpoint_EndpointUser
 
   One or more custom user attributes that describe the user who's
 associated with the endpoint.

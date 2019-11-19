@@ -1,14 +1,35 @@
 
 package Paws::MediaLive::DeleteInput;
-  use Moose;
-  has InputId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'inputId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has InputId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteInput');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/inputs/{inputId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::DeleteInputResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteInput');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/inputs/{inputId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::DeleteInputResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'InputId' => 'inputId'
+                  },
+  'IsRequired' => {
+                    'InputId' => 1
+                  },
+  'types' => {
+               'InputId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

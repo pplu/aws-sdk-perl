@@ -1,13 +1,53 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::IdentityProviderType;
-  use Moose;
-  has AttributeMapping => (is => 'ro', isa => 'Paws::CognitoIdp::AttributeMappingType');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has IdpIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has ProviderDetails => (is => 'ro', isa => 'Paws::CognitoIdp::ProviderDetailsType');
-  has ProviderName => (is => 'ro', isa => 'Str');
-  has ProviderType => (is => 'ro', isa => 'Str');
-  has UserPoolId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AttributeMappingType CognitoIdp_ProviderDetailsType/;
+  has AttributeMapping => (is => 'ro', isa => CognitoIdp_AttributeMappingType);
+  has CreationDate => (is => 'ro', isa => Str);
+  has IdpIdentifiers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has ProviderDetails => (is => 'ro', isa => CognitoIdp_ProviderDetailsType);
+  has ProviderName => (is => 'ro', isa => Str);
+  has ProviderType => (is => 'ro', isa => Str);
+  has UserPoolId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IdpIdentifiers' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'ProviderType' => {
+                                   'type' => 'Str'
+                                 },
+               'ProviderDetails' => {
+                                      'class' => 'Paws::CognitoIdp::ProviderDetailsType',
+                                      'type' => 'CognitoIdp_ProviderDetailsType'
+                                    },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'AttributeMapping' => {
+                                       'type' => 'CognitoIdp_AttributeMappingType',
+                                       'class' => 'Paws::CognitoIdp::AttributeMappingType'
+                                     },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ProviderName' => {
+                                   'type' => 'Str'
+                                 },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +83,7 @@ A container for information about an identity provider.
 =head1 ATTRIBUTES
 
 
-=head2 AttributeMapping => L<Paws::CognitoIdp::AttributeMappingType>
+=head2 AttributeMapping => CognitoIdp_AttributeMappingType
 
   A mapping of identity provider attributes to standard and custom user
 pool attributes.
@@ -64,7 +104,7 @@ pool attributes.
   The date the identity provider was last modified.
 
 
-=head2 ProviderDetails => L<Paws::CognitoIdp::ProviderDetailsType>
+=head2 ProviderDetails => CognitoIdp_ProviderDetailsType
 
   The identity provider details, such as C<MetadataURL> and
 C<MetadataFile>.

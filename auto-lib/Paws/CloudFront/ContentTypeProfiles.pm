@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CloudFront::ContentTypeProfiles;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::ContentTypeProfile]', request_name => 'ContentTypeProfile', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::CloudFront::Types qw/CloudFront_ContentTypeProfile/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_ContentTypeProfile]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::CloudFront::ContentTypeProfile',
+                            'type' => 'ArrayRef[CloudFront_ContentTypeProfile]'
+                          },
+               'Quantity' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'Items' => 'ContentTypeProfile'
+                     },
+  'IsRequired' => {
+                    'Quantity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +64,7 @@ Field-level encryption content type-profile.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::ContentTypeProfile>]
+=head2 Items => ArrayRef[CloudFront_ContentTypeProfile]
 
   Items in a field-level encryption content type-profile mapping.
 

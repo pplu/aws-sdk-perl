@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::FMS::GetAdminAccountResponse;
-  use Moose;
-  has AdminAccount => (is => 'ro', isa => 'Str');
-  has RoleStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::FMS::Types qw//;
+  has AdminAccount => (is => 'ro', isa => Str);
+  has RoleStatus => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AdminAccount' => {
+                                   'type' => 'Str'
+                                 },
+               'RoleStatus' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

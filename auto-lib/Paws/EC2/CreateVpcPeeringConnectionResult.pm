@@ -1,9 +1,31 @@
 
 package Paws::EC2::CreateVpcPeeringConnectionResult;
-  use Moose;
-  has VpcPeeringConnection => (is => 'ro', isa => 'Paws::EC2::VpcPeeringConnection', request_name => 'vpcPeeringConnection', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_VpcPeeringConnection/;
+  has VpcPeeringConnection => (is => 'ro', isa => EC2_VpcPeeringConnection);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'VpcPeeringConnection' => 'vpcPeeringConnection'
+                     },
+  'types' => {
+               'VpcPeeringConnection' => {
+                                           'type' => 'EC2_VpcPeeringConnection',
+                                           'class' => 'Paws::EC2::VpcPeeringConnection'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::CreateVpcPeeringConnectionResult
 =head1 ATTRIBUTES
 
 
-=head2 VpcPeeringConnection => L<Paws::EC2::VpcPeeringConnection>
+=head2 VpcPeeringConnection => EC2_VpcPeeringConnection
 
 Information about the VPC peering connection.
 

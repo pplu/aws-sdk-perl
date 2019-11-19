@@ -1,9 +1,38 @@
 package Paws::EC2::DiskImageDescription;
-  use Moose;
-  has Checksum => (is => 'ro', isa => 'Str', request_name => 'checksum', traits => ['NameInRequest']);
-  has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest']);
-  has ImportManifestUrl => (is => 'ro', isa => 'Str', request_name => 'importManifestUrl', traits => ['NameInRequest']);
-  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw//;
+  has Checksum => (is => 'ro', isa => Str);
+  has Format => (is => 'ro', isa => Str);
+  has ImportManifestUrl => (is => 'ro', isa => Str);
+  has Size => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Size' => 'size',
+                       'Checksum' => 'checksum',
+                       'ImportManifestUrl' => 'importManifestUrl',
+                       'Format' => 'format'
+                     },
+  'types' => {
+               'ImportManifestUrl' => {
+                                        'type' => 'Str'
+                                      },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'Checksum' => {
+                               'type' => 'Str'
+                             },
+               'Format' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

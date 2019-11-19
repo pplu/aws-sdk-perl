@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Datasync::PrivateLinkConfig;
-  use Moose;
-  has PrivateLinkEndpoint => (is => 'ro', isa => 'Str');
-  has SecurityGroupArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SubnetArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has VpcEndpointId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Datasync::Types qw//;
+  has PrivateLinkEndpoint => (is => 'ro', isa => Str);
+  has SecurityGroupArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SubnetArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has VpcEndpointId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcEndpointId' => {
+                                    'type' => 'Str'
+                                  },
+               'PrivateLinkEndpoint' => {
+                                          'type' => 'Str'
+                                        },
+               'SubnetArns' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'SecurityGroupArns' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

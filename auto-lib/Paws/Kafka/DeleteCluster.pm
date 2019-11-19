@@ -1,15 +1,42 @@
 
 package Paws::Kafka::DeleteCluster;
-  use Moose;
-  has ClusterArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'clusterArn', required => 1);
-  has CurrentVersion => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'currentVersion');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kafka::Types qw//;
+  has ClusterArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CurrentVersion => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCluster');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/clusters/{clusterArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kafka::DeleteClusterResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteCluster');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/clusters/{clusterArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Kafka::DeleteClusterResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ClusterArn' => 'clusterArn'
+                  },
+  'types' => {
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               },
+               'CurrentVersion' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'ParamInQuery' => {
+                      'CurrentVersion' => 'currentVersion'
+                    },
+  'IsRequired' => {
+                    'ClusterArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

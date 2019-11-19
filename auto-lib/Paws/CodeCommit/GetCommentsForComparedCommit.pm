@@ -1,17 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::GetCommentsForComparedCommit;
-  use Moose;
-  has AfterCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'afterCommitId' , required => 1);
-  has BeforeCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'beforeCommitId' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodeCommit::Types qw//;
+  has AfterCommitId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BeforeCommitId => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCommentsForComparedCommit');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::GetCommentsForComparedCommitOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetCommentsForComparedCommit');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::GetCommentsForComparedCommitOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AfterCommitId' => 'afterCommitId',
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults',
+                       'BeforeCommitId' => 'beforeCommitId',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'IsRequired' => {
+                    'RepositoryName' => 1,
+                    'AfterCommitId' => 1
+                  },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'BeforeCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'AfterCommitId' => {
+                                    'type' => 'Str'
+                                  },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

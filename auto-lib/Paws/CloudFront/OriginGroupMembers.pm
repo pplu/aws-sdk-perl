@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::CloudFront::OriginGroupMembers;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::OriginGroupMember]', request_name => 'OriginGroupMember', traits => ['NameInRequest'], required => 1);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::CloudFront::Types qw/CloudFront_OriginGroupMember/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_OriginGroupMember], required => 1);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::CloudFront::OriginGroupMember',
+                            'type' => 'ArrayRef[CloudFront_OriginGroupMember]'
+                          },
+               'Quantity' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'Items' => 'OriginGroupMember'
+                     },
+  'IsRequired' => {
+                    'Items' => 1,
+                    'Quantity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +65,7 @@ A complex data type for the origins included in an origin group.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Items => ArrayRef[L<Paws::CloudFront::OriginGroupMember>]
+=head2 B<REQUIRED> Items => ArrayRef[CloudFront_OriginGroupMember]
 
   Items (origins) in an origin group.
 

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoT::MitigationActionIdentifier;
-  use Moose;
-  has ActionArn => (is => 'ro', isa => 'Str', request_name => 'actionArn', traits => ['NameInRequest']);
-  has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has ActionArn => (is => 'ro', isa => Str);
+  has ActionName => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ActionArn' => 'actionArn',
+                       'ActionName' => 'actionName',
+                       'CreationDate' => 'creationDate'
+                     },
+  'types' => {
+               'ActionArn' => {
+                                'type' => 'Str'
+                              },
+               'ActionName' => {
+                                 'type' => 'Str'
+                               },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

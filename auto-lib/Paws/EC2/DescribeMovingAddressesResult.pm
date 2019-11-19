@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeMovingAddressesResult;
-  use Moose;
-  has MovingAddressStatuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::MovingAddressStatus]', request_name => 'movingAddressStatusSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_MovingAddressStatus/;
+  has MovingAddressStatuses => (is => 'ro', isa => ArrayRef[EC2_MovingAddressStatus]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MovingAddressStatuses' => {
+                                            'type' => 'ArrayRef[EC2_MovingAddressStatus]',
+                                            'class' => 'Paws::EC2::MovingAddressStatus'
+                                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'MovingAddressStatuses' => 'movingAddressStatusSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeMovingAddressesResult
 =head1 ATTRIBUTES
 
 
-=head2 MovingAddressStatuses => ArrayRef[L<Paws::EC2::MovingAddressStatus>]
+=head2 MovingAddressStatuses => ArrayRef[EC2_MovingAddressStatus]
 
 The status for each Elastic IP address.
 

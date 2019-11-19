@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::IoT::HttpUrlDestinationConfiguration;
-  use Moose;
-  has ConfirmationUrl => (is => 'ro', isa => 'Str', request_name => 'confirmationUrl', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has ConfirmationUrl => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfirmationUrl' => 1
+                  },
+  'NameInRequest' => {
+                       'ConfirmationUrl' => 'confirmationUrl'
+                     },
+  'types' => {
+               'ConfirmationUrl' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,17 +1,52 @@
 
 package Paws::AppMesh::CreateMesh;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has MeshName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'meshName', required => 1);
-  has Spec => (is => 'ro', isa => 'Paws::AppMesh::MeshSpec', traits => ['NameInRequest'], request_name => 'spec');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::TagRef]', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppMesh::Types qw/AppMesh_TagRef AppMesh_MeshSpec/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has MeshName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Spec => (is => 'ro', isa => AppMesh_MeshSpec, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[AppMesh_TagRef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMesh');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::CreateMeshOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateMesh');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20190125/meshes');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppMesh::CreateMeshOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Spec' => {
+                           'type' => 'AppMesh_MeshSpec',
+                           'class' => 'Paws::AppMesh::MeshSpec'
+                         },
+               'Tags' => {
+                           'type' => 'ArrayRef[AppMesh_TagRef]',
+                           'class' => 'Paws::AppMesh::TagRef'
+                         },
+               'MeshName' => {
+                               'type' => 'Str'
+                             },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ClientToken' => 'clientToken',
+                       'MeshName' => 'meshName',
+                       'Tags' => 'tags',
+                       'Spec' => 'spec'
+                     },
+  'IsRequired' => {
+                    'MeshName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,13 +109,13 @@ The name to use for the service mesh.
 
 
 
-=head2 Spec => L<Paws::AppMesh::MeshSpec>
+=head2 Spec => AppMesh_MeshSpec
 
 The service mesh specification to apply.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::AppMesh::TagRef>]
+=head2 Tags => ArrayRef[AppMesh_TagRef]
 
 Optional metadata that you can apply to the service mesh to assist with
 categorization and organization. Each tag consists of a key and an

@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Route53Domains::ListTagsForDomainResponse;
-  use Moose;
-  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53Domains::Types qw/Route53Domains_Tag/;
+  has TagList => (is => 'ro', isa => ArrayRef[Route53Domains_Tag], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TagList' => {
+                              'class' => 'Paws::Route53Domains::Tag',
+                              'type' => 'ArrayRef[Route53Domains_Tag]'
+                            }
+             },
+  'IsRequired' => {
+                    'TagList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Route53Domains::ListTagsForDomainResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> TagList => ArrayRef[L<Paws::Route53Domains::Tag>]
+=head2 B<REQUIRED> TagList => ArrayRef[Route53Domains_Tag]
 
 A list of the tags that are associated with the specified domain.
 

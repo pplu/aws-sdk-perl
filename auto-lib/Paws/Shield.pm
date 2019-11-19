@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Shield;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'shield' }
   sub signing_name { 'shield' }
   sub version { '2016-06-02' }
   sub target_prefix { 'AWSShield_20160616' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -510,7 +512,7 @@ Returns the C<SubscriptionState>, either C<Active> or C<Inactive>.
 
 =over
 
-=item [EndTime => L<Paws::Shield::TimeRange>]
+=item [EndTime => Shield_TimeRange]
 
 =item [MaxResults => Int]
 
@@ -518,7 +520,7 @@ Returns the C<SubscriptionState>, either C<Active> or C<Inactive>.
 
 =item [ResourceArns => ArrayRef[Str|Undef]]
 
-=item [StartTime => L<Paws::Shield::TimeRange>]
+=item [StartTime => Shield_TimeRange]
 
 
 =back
@@ -553,7 +555,7 @@ Lists all Protection objects for the account.
 
 =over
 
-=item [EmergencyContactList => ArrayRef[L<Paws::Shield::EmergencyContact>]]
+=item [EmergencyContactList => ArrayRef[Shield_EmergencyContact]]
 
 
 =back
@@ -589,9 +591,9 @@ parameters you want to change. Empty parameters are not updated.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllAttacks(sub { },[EndTime => L<Paws::Shield::TimeRange>, MaxResults => Int, NextToken => Str, ResourceArns => ArrayRef[Str|Undef], StartTime => L<Paws::Shield::TimeRange>])
+=head2 ListAllAttacks(sub { },[EndTime => Shield_TimeRange, MaxResults => Int, NextToken => Str, ResourceArns => ArrayRef[Str|Undef], StartTime => Shield_TimeRange])
 
-=head2 ListAllAttacks([EndTime => L<Paws::Shield::TimeRange>, MaxResults => Int, NextToken => Str, ResourceArns => ArrayRef[Str|Undef], StartTime => L<Paws::Shield::TimeRange>])
+=head2 ListAllAttacks([EndTime => Shield_TimeRange, MaxResults => Int, NextToken => Str, ResourceArns => ArrayRef[Str|Undef], StartTime => Shield_TimeRange])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

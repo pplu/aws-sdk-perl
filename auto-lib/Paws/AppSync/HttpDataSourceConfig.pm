@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::AppSync::HttpDataSourceConfig;
-  use Moose;
-  has AuthorizationConfig => (is => 'ro', isa => 'Paws::AppSync::AuthorizationConfig', request_name => 'authorizationConfig', traits => ['NameInRequest']);
-  has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw/AppSync_AuthorizationConfig/;
+  has AuthorizationConfig => (is => 'ro', isa => AppSync_AuthorizationConfig);
+  has Endpoint => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthorizationConfig' => {
+                                          'class' => 'Paws::AppSync::AuthorizationConfig',
+                                          'type' => 'AppSync_AuthorizationConfig'
+                                        },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Endpoint' => 'endpoint',
+                       'AuthorizationConfig' => 'authorizationConfig'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Describes an HTTP data source configuration.
 =head1 ATTRIBUTES
 
 
-=head2 AuthorizationConfig => L<Paws::AppSync::AuthorizationConfig>
+=head2 AuthorizationConfig => AppSync_AuthorizationConfig
 
   The authorization config in case the HTTP endpoint requires
 authorization.

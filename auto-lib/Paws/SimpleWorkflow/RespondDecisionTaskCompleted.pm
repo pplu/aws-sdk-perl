@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::RespondDecisionTaskCompleted;
-  use Moose;
-  has Decisions => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::Decision]', traits => ['NameInRequest'], request_name => 'decisions' );
-  has ExecutionContext => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionContext' );
-  has TaskToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskToken' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_Decision/;
+  has Decisions => (is => 'ro', isa => ArrayRef[SimpleWorkflow_Decision], predicate => 1);
+  has ExecutionContext => (is => 'ro', isa => Str, predicate => 1);
+  has TaskToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RespondDecisionTaskCompleted');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RespondDecisionTaskCompleted');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Decisions' => 'decisions',
+                       'TaskToken' => 'taskToken',
+                       'ExecutionContext' => 'executionContext'
+                     },
+  'IsRequired' => {
+                    'TaskToken' => 1
+                  },
+  'types' => {
+               'ExecutionContext' => {
+                                       'type' => 'Str'
+                                     },
+               'TaskToken' => {
+                                'type' => 'Str'
+                              },
+               'Decisions' => {
+                                'type' => 'ArrayRef[SimpleWorkflow_Decision]',
+                                'class' => 'Paws::SimpleWorkflow::Decision'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -161,7 +192,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf
 =head1 ATTRIBUTES
 
 
-=head2 Decisions => ArrayRef[L<Paws::SimpleWorkflow::Decision>]
+=head2 Decisions => ArrayRef[SimpleWorkflow_Decision]
 
 The list of decisions (possibly empty) made by the decider while
 processing this decision task. See the docs for the Decision structure

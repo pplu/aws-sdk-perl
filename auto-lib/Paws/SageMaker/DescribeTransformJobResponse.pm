@@ -1,25 +1,105 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::DescribeTransformJobResponse;
-  use Moose;
-  has BatchStrategy => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has DataProcessing => (is => 'ro', isa => 'Paws::SageMaker::DataProcessing');
-  has Environment => (is => 'ro', isa => 'Paws::SageMaker::TransformEnvironmentMap');
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has LabelingJobArn => (is => 'ro', isa => 'Str');
-  has MaxConcurrentTransforms => (is => 'ro', isa => 'Int');
-  has MaxPayloadInMB => (is => 'ro', isa => 'Int');
-  has ModelName => (is => 'ro', isa => 'Str', required => 1);
-  has TransformEndTime => (is => 'ro', isa => 'Str');
-  has TransformInput => (is => 'ro', isa => 'Paws::SageMaker::TransformInput', required => 1);
-  has TransformJobArn => (is => 'ro', isa => 'Str', required => 1);
-  has TransformJobName => (is => 'ro', isa => 'Str', required => 1);
-  has TransformJobStatus => (is => 'ro', isa => 'Str', required => 1);
-  has TransformOutput => (is => 'ro', isa => 'Paws::SageMaker::TransformOutput');
-  has TransformResources => (is => 'ro', isa => 'Paws::SageMaker::TransformResources', required => 1);
-  has TransformStartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SageMaker::Types qw/SageMaker_TransformOutput SageMaker_TransformEnvironmentMap SageMaker_TransformResources SageMaker_DataProcessing SageMaker_TransformInput/;
+  has BatchStrategy => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has DataProcessing => (is => 'ro', isa => SageMaker_DataProcessing);
+  has Environment => (is => 'ro', isa => SageMaker_TransformEnvironmentMap);
+  has FailureReason => (is => 'ro', isa => Str);
+  has LabelingJobArn => (is => 'ro', isa => Str);
+  has MaxConcurrentTransforms => (is => 'ro', isa => Int);
+  has MaxPayloadInMB => (is => 'ro', isa => Int);
+  has ModelName => (is => 'ro', isa => Str, required => 1);
+  has TransformEndTime => (is => 'ro', isa => Str);
+  has TransformInput => (is => 'ro', isa => SageMaker_TransformInput, required => 1);
+  has TransformJobArn => (is => 'ro', isa => Str, required => 1);
+  has TransformJobName => (is => 'ro', isa => Str, required => 1);
+  has TransformJobStatus => (is => 'ro', isa => Str, required => 1);
+  has TransformOutput => (is => 'ro', isa => SageMaker_TransformOutput);
+  has TransformResources => (is => 'ro', isa => SageMaker_TransformResources, required => 1);
+  has TransformStartTime => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BatchStrategy' => {
+                                    'type' => 'Str'
+                                  },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'ModelName' => {
+                                'type' => 'Str'
+                              },
+               'Environment' => {
+                                  'class' => 'Paws::SageMaker::TransformEnvironmentMap',
+                                  'type' => 'SageMaker_TransformEnvironmentMap'
+                                },
+               'TransformJobArn' => {
+                                      'type' => 'Str'
+                                    },
+               'DataProcessing' => {
+                                     'type' => 'SageMaker_DataProcessing',
+                                     'class' => 'Paws::SageMaker::DataProcessing'
+                                   },
+               'TransformJobName' => {
+                                       'type' => 'Str'
+                                     },
+               'LabelingJobArn' => {
+                                     'type' => 'Str'
+                                   },
+               'MaxConcurrentTransforms' => {
+                                              'type' => 'Int'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TransformEndTime' => {
+                                       'type' => 'Str'
+                                     },
+               'TransformInput' => {
+                                     'class' => 'Paws::SageMaker::TransformInput',
+                                     'type' => 'SageMaker_TransformInput'
+                                   },
+               'TransformStartTime' => {
+                                         'type' => 'Str'
+                                       },
+               'TransformJobStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'TransformOutput' => {
+                                      'type' => 'SageMaker_TransformOutput',
+                                      'class' => 'Paws::SageMaker::TransformOutput'
+                                    },
+               'MaxPayloadInMB' => {
+                                     'type' => 'Int'
+                                   },
+               'TransformResources' => {
+                                         'class' => 'Paws::SageMaker::TransformResources',
+                                         'type' => 'SageMaker_TransformResources'
+                                       }
+             },
+  'IsRequired' => {
+                    'TransformResources' => 1,
+                    'TransformJobStatus' => 1,
+                    'TransformJobName' => 1,
+                    'TransformInput' => 1,
+                    'TransformJobArn' => 1,
+                    'ModelName' => 1,
+                    'CreationTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -46,12 +126,12 @@ Valid values are: C<"MultiRecord">, C<"SingleRecord">
 A timestamp that shows when the transform Job was created.
 
 
-=head2 DataProcessing => L<Paws::SageMaker::DataProcessing>
+=head2 DataProcessing => SageMaker_DataProcessing
 
 
 
 
-=head2 Environment => L<Paws::SageMaker::TransformEnvironmentMap>
+=head2 Environment => SageMaker_TransformEnvironmentMap
 
 The environment variables to set in the Docker container. We support up
 to 16 key and values entries in the map.
@@ -95,7 +175,7 @@ failed. You are billed for the time interval between this time and the
 value of C<TransformStartTime>.
 
 
-=head2 B<REQUIRED> TransformInput => L<Paws::SageMaker::TransformInput>
+=head2 B<REQUIRED> TransformInput => SageMaker_TransformInput
 
 Describes the dataset to be transformed and the Amazon S3 location
 where it is stored.
@@ -117,13 +197,13 @@ The status of the transform job. If the transform job failed, the
 reason is returned in the C<FailureReason> field.
 
 Valid values are: C<"InProgress">, C<"Completed">, C<"Failed">, C<"Stopping">, C<"Stopped">
-=head2 TransformOutput => L<Paws::SageMaker::TransformOutput>
+=head2 TransformOutput => SageMaker_TransformOutput
 
 Identifies the Amazon S3 location where you want Amazon SageMaker to
 save the results from the transform job.
 
 
-=head2 B<REQUIRED> TransformResources => L<Paws::SageMaker::TransformResources>
+=head2 B<REQUIRED> TransformResources => SageMaker_TransformResources
 
 Describes the resources, including ML instance types and ML instance
 count, to use for the transform job.

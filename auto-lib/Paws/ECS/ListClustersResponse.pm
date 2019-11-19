@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECS::ListClustersResponse;
-  use Moose;
-  has ClusterArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'clusterArns' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ECS::Types qw//;
+  has ClusterArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterArns' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'ClusterArns' => 'clusterArns',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

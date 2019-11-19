@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::ACMPCA::RevocationConfiguration;
-  use Moose;
-  has CrlConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::CrlConfiguration');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ACMPCA::Types qw/ACMPCA_CrlConfiguration/;
+  has CrlConfiguration => (is => 'ro', isa => ACMPCA_CrlConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CrlConfiguration' => {
+                                       'type' => 'ACMPCA_CrlConfiguration',
+                                       'class' => 'Paws::ACMPCA::CrlConfiguration'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +59,7 @@ RevokeCertificate.
 =head1 ATTRIBUTES
 
 
-=head2 CrlConfiguration => L<Paws::ACMPCA::CrlConfiguration>
+=head2 CrlConfiguration => ACMPCA_CrlConfiguration
 
   Configuration of the certificate revocation list (CRL), if any,
 maintained by your private CA.

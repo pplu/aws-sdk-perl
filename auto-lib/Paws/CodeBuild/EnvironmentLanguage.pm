@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::EnvironmentLanguage;
-  use Moose;
-  has Images => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentImage]', request_name => 'images', traits => ['NameInRequest']);
-  has Language => (is => 'ro', isa => 'Str', request_name => 'language', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CodeBuild::Types qw/CodeBuild_EnvironmentImage/;
+  has Images => (is => 'ro', isa => ArrayRef[CodeBuild_EnvironmentImage]);
+  has Language => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Images' => {
+                             'class' => 'Paws::CodeBuild::EnvironmentImage',
+                             'type' => 'ArrayRef[CodeBuild_EnvironmentImage]'
+                           },
+               'Language' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Images' => 'images',
+                       'Language' => 'language'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +63,7 @@ managed by AWS CodeBuild.
 =head1 ATTRIBUTES
 
 
-=head2 Images => ArrayRef[L<Paws::CodeBuild::EnvironmentImage>]
+=head2 Images => ArrayRef[CodeBuild_EnvironmentImage]
 
   The list of Docker images that are related by the specified programming
 language.

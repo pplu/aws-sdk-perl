@@ -1,7 +1,29 @@
 package Paws::EC2::VpnConnectionOptions;
-  use Moose;
-  has StaticRoutesOnly => (is => 'ro', isa => 'Bool', request_name => 'staticRoutesOnly', traits => ['NameInRequest']);
-  has TunnelOptions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TunnelOption]', request_name => 'tunnelOptionSet', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_TunnelOption/;
+  has StaticRoutesOnly => (is => 'ro', isa => Bool);
+  has TunnelOptions => (is => 'ro', isa => ArrayRef[EC2_TunnelOption]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TunnelOptions' => {
+                                    'class' => 'Paws::EC2::TunnelOption',
+                                    'type' => 'ArrayRef[EC2_TunnelOption]'
+                                  },
+               'StaticRoutesOnly' => {
+                                       'type' => 'Bool'
+                                     }
+             },
+  'NameInRequest' => {
+                       'StaticRoutesOnly' => 'staticRoutesOnly',
+                       'TunnelOptions' => 'tunnelOptionSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +65,7 @@ This class has no description
 routes must be used for devices that don't support BGP.
 
 
-=head2 TunnelOptions => ArrayRef[L<Paws::EC2::TunnelOption>]
+=head2 TunnelOptions => ArrayRef[EC2_TunnelOption]
 
   Indicates the VPN tunnel options.
 

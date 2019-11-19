@@ -1,21 +1,68 @@
 
 package Paws::ManagedBlockchain::CreateNetwork;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has Framework => (is => 'ro', isa => 'Str', required => 1);
-  has FrameworkConfiguration => (is => 'ro', isa => 'Paws::ManagedBlockchain::NetworkFrameworkConfiguration');
-  has FrameworkVersion => (is => 'ro', isa => 'Str', required => 1);
-  has MemberConfiguration => (is => 'ro', isa => 'Paws::ManagedBlockchain::MemberConfiguration', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has VotingPolicy => (is => 'ro', isa => 'Paws::ManagedBlockchain::VotingPolicy', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_VotingPolicy ManagedBlockchain_NetworkFrameworkConfiguration ManagedBlockchain_MemberConfiguration/;
+  has ClientRequestToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Framework => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FrameworkConfiguration => (is => 'ro', isa => ManagedBlockchain_NetworkFrameworkConfiguration, predicate => 1);
+  has FrameworkVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MemberConfiguration => (is => 'ro', isa => ManagedBlockchain_MemberConfiguration, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VotingPolicy => (is => 'ro', isa => ManagedBlockchain_VotingPolicy, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNetwork');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::CreateNetworkOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateNetwork');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/networks');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ManagedBlockchain::CreateNetworkOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Framework' => {
+                                'type' => 'Str'
+                              },
+               'VotingPolicy' => {
+                                   'type' => 'ManagedBlockchain_VotingPolicy',
+                                   'class' => 'Paws::ManagedBlockchain::VotingPolicy'
+                                 },
+               'MemberConfiguration' => {
+                                          'type' => 'ManagedBlockchain_MemberConfiguration',
+                                          'class' => 'Paws::ManagedBlockchain::MemberConfiguration'
+                                        },
+               'FrameworkConfiguration' => {
+                                             'class' => 'Paws::ManagedBlockchain::NetworkFrameworkConfiguration',
+                                             'type' => 'ManagedBlockchain_NetworkFrameworkConfiguration'
+                                           },
+               'FrameworkVersion' => {
+                                       'type' => 'Str'
+                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'FrameworkVersion' => 1,
+                    'MemberConfiguration' => 1,
+                    'VotingPolicy' => 1,
+                    'Framework' => 1,
+                    'Name' => 1,
+                    'ClientRequestToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -102,7 +149,7 @@ The blockchain framework that the network uses.
 
 Valid values are: C<"HYPERLEDGER_FABRIC">
 
-=head2 FrameworkConfiguration => L<Paws::ManagedBlockchain::NetworkFrameworkConfiguration>
+=head2 FrameworkConfiguration => ManagedBlockchain_NetworkFrameworkConfiguration
 
 Configuration properties of the blockchain framework relevant to the
 network configuration.
@@ -115,7 +162,7 @@ The version of the blockchain framework that the network uses.
 
 
 
-=head2 B<REQUIRED> MemberConfiguration => L<Paws::ManagedBlockchain::MemberConfiguration>
+=head2 B<REQUIRED> MemberConfiguration => ManagedBlockchain_MemberConfiguration
 
 Configuration properties for the first member within the network.
 
@@ -127,7 +174,7 @@ The name of the network.
 
 
 
-=head2 B<REQUIRED> VotingPolicy => L<Paws::ManagedBlockchain::VotingPolicy>
+=head2 B<REQUIRED> VotingPolicy => ManagedBlockchain_VotingPolicy
 
 The voting rules used by the network to determine if a proposal is
 approved.

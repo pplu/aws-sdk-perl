@@ -1,19 +1,75 @@
+# Generated from default/object.tt
 package Paws::RedShift::TableRestoreStatus;
-  use Moose;
-  has ClusterIdentifier => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has NewTableName => (is => 'ro', isa => 'Str');
-  has ProgressInMegaBytes => (is => 'ro', isa => 'Int');
-  has RequestTime => (is => 'ro', isa => 'Str');
-  has SnapshotIdentifier => (is => 'ro', isa => 'Str');
-  has SourceDatabaseName => (is => 'ro', isa => 'Str');
-  has SourceSchemaName => (is => 'ro', isa => 'Str');
-  has SourceTableName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TableRestoreRequestId => (is => 'ro', isa => 'Str');
-  has TargetDatabaseName => (is => 'ro', isa => 'Str');
-  has TargetSchemaName => (is => 'ro', isa => 'Str');
-  has TotalDataInMegaBytes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::RedShift::Types qw//;
+  has ClusterIdentifier => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has NewTableName => (is => 'ro', isa => Str);
+  has ProgressInMegaBytes => (is => 'ro', isa => Int);
+  has RequestTime => (is => 'ro', isa => Str);
+  has SnapshotIdentifier => (is => 'ro', isa => Str);
+  has SourceDatabaseName => (is => 'ro', isa => Str);
+  has SourceSchemaName => (is => 'ro', isa => Str);
+  has SourceTableName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TableRestoreRequestId => (is => 'ro', isa => Str);
+  has TargetDatabaseName => (is => 'ro', isa => Str);
+  has TargetSchemaName => (is => 'ro', isa => Str);
+  has TotalDataInMegaBytes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetDatabaseName' => {
+                                         'type' => 'Str'
+                                       },
+               'SourceTableName' => {
+                                      'type' => 'Str'
+                                    },
+               'SourceSchemaName' => {
+                                       'type' => 'Str'
+                                     },
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'TableRestoreRequestId' => {
+                                            'type' => 'Str'
+                                          },
+               'NewTableName' => {
+                                   'type' => 'Str'
+                                 },
+               'TotalDataInMegaBytes' => {
+                                           'type' => 'Int'
+                                         },
+               'TargetSchemaName' => {
+                                       'type' => 'Str'
+                                     },
+               'SnapshotIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'RequestTime' => {
+                                  'type' => 'Str'
+                                },
+               'SourceDatabaseName' => {
+                                         'type' => 'Str'
+                                       },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'ProgressInMegaBytes' => {
+                                          'type' => 'Int'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

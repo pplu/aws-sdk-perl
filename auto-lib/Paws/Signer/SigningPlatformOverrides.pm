@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Signer::SigningPlatformOverrides;
-  use Moose;
-  has SigningConfiguration => (is => 'ro', isa => 'Paws::Signer::SigningConfigurationOverrides', request_name => 'signingConfiguration', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Signer::Types qw/Signer_SigningConfigurationOverrides/;
+  has SigningConfiguration => (is => 'ro', isa => Signer_SigningConfigurationOverrides);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SigningConfiguration' => {
+                                           'class' => 'Paws::Signer::SigningConfigurationOverrides',
+                                           'type' => 'Signer_SigningConfigurationOverrides'
+                                         }
+             },
+  'NameInRequest' => {
+                       'SigningConfiguration' => 'signingConfiguration'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ signing platform.
 =head1 ATTRIBUTES
 
 
-=head2 SigningConfiguration => L<Paws::Signer::SigningConfigurationOverrides>
+=head2 SigningConfiguration => Signer_SigningConfigurationOverrides
 
   A signing configuration that overrides the default encryption or hash
 algorithm of a signing job.

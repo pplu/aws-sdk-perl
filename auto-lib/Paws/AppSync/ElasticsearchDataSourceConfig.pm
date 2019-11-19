@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::AppSync::ElasticsearchDataSourceConfig;
-  use Moose;
-  has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest'], required => 1);
-  has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw//;
+  has AwsRegion => (is => 'ro', isa => Str, required => 1);
+  has Endpoint => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'AwsRegion' => 1,
+                    'Endpoint' => 1
+                  },
+  'NameInRequest' => {
+                       'Endpoint' => 'endpoint',
+                       'AwsRegion' => 'awsRegion'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,12 +1,45 @@
 
 package Paws::EC2::AllocateAddressResult;
-  use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest',]);
-  has Domain => (is => 'ro', isa => 'Str', request_name => 'domain', traits => ['NameInRequest',]);
-  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest',]);
-  has PublicIpv4Pool => (is => 'ro', isa => 'Str', request_name => 'publicIpv4Pool', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has AllocationId => (is => 'ro', isa => Str);
+  has Domain => (is => 'ro', isa => Str);
+  has PublicIp => (is => 'ro', isa => Str);
+  has PublicIpv4Pool => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PublicIp' => 'publicIp',
+                       'PublicIpv4Pool' => 'publicIpv4Pool',
+                       'AllocationId' => 'allocationId',
+                       'Domain' => 'domain'
+                     },
+  'types' => {
+               'PublicIp' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AllocationId' => {
+                                   'type' => 'Str'
+                                 },
+               'PublicIpv4Pool' => {
+                                     'type' => 'Str'
+                                   },
+               'Domain' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

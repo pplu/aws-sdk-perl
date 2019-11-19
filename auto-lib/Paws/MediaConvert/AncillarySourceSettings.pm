@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::AncillarySourceSettings;
-  use Moose;
-  has Convert608To708 => (is => 'ro', isa => 'Str', request_name => 'convert608To708', traits => ['NameInRequest']);
-  has SourceAncillaryChannelNumber => (is => 'ro', isa => 'Int', request_name => 'sourceAncillaryChannelNumber', traits => ['NameInRequest']);
-  has TerminateCaptions => (is => 'ro', isa => 'Str', request_name => 'terminateCaptions', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw//;
+  has Convert608To708 => (is => 'ro', isa => Str);
+  has SourceAncillaryChannelNumber => (is => 'ro', isa => Int);
+  has TerminateCaptions => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TerminateCaptions' => {
+                                        'type' => 'Str'
+                                      },
+               'Convert608To708' => {
+                                      'type' => 'Str'
+                                    },
+               'SourceAncillaryChannelNumber' => {
+                                                   'type' => 'Int'
+                                                 }
+             },
+  'NameInRequest' => {
+                       'Convert608To708' => 'convert608To708',
+                       'SourceAncillaryChannelNumber' => 'sourceAncillaryChannelNumber',
+                       'TerminateCaptions' => 'terminateCaptions'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

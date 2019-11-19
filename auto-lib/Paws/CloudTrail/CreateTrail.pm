@@ -1,24 +1,78 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudTrail::CreateTrail;
-  use Moose;
-  has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str');
-  has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
-  has EnableLogFileValidation => (is => 'ro', isa => 'Bool');
-  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
-  has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
-  has IsOrganizationTrail => (is => 'ro', isa => 'Bool');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
-  has S3KeyPrefix => (is => 'ro', isa => 'Str');
-  has SnsTopicName => (is => 'ro', isa => 'Str');
-  has TagsList => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::CloudTrail::Types qw/CloudTrail_Tag/;
+  has CloudWatchLogsLogGroupArn => (is => 'ro', isa => Str, predicate => 1);
+  has CloudWatchLogsRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has EnableLogFileValidation => (is => 'ro', isa => Bool, predicate => 1);
+  has IncludeGlobalServiceEvents => (is => 'ro', isa => Bool, predicate => 1);
+  has IsMultiRegionTrail => (is => 'ro', isa => Bool, predicate => 1);
+  has IsOrganizationTrail => (is => 'ro', isa => Bool, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3BucketName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3KeyPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has SnsTopicName => (is => 'ro', isa => Str, predicate => 1);
+  has TagsList => (is => 'ro', isa => ArrayRef[CloudTrail_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTrail');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudTrail::CreateTrailResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTrail');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudTrail::CreateTrailResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'S3BucketName' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'TagsList' => {
+                               'type' => 'ArrayRef[CloudTrail_Tag]',
+                               'class' => 'Paws::CloudTrail::Tag'
+                             },
+               'SnsTopicName' => {
+                                   'type' => 'Str'
+                                 },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'S3KeyPrefix' => {
+                                  'type' => 'Str'
+                                },
+               'CloudWatchLogsLogGroupArn' => {
+                                                'type' => 'Str'
+                                              },
+               'IncludeGlobalServiceEvents' => {
+                                                 'type' => 'Bool'
+                                               },
+               'IsMultiRegionTrail' => {
+                                         'type' => 'Bool'
+                                       },
+               'IsOrganizationTrail' => {
+                                          'type' => 'Bool'
+                                        },
+               'CloudWatchLogsRoleArn' => {
+                                            'type' => 'Str'
+                                          },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'EnableLogFileValidation' => {
+                                              'type' => 'Bool'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -235,7 +289,7 @@ log file delivery. The maximum length is 256 characters.
 
 
 
-=head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
+=head2 TagsList => ArrayRef[CloudTrail_Tag]
 
 
 

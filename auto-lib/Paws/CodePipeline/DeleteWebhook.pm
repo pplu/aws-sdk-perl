@@ -1,13 +1,35 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::DeleteWebhook;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteWebhook');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::DeleteWebhookOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteWebhook');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodePipeline::DeleteWebhookOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

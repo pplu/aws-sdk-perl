@@ -1,17 +1,47 @@
 
 package Paws::ResourceGroups::CreateGroup;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceQuery => (is => 'ro', isa => 'Paws::ResourceGroups::ResourceQuery', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::ResourceGroups::Tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ResourceGroups::Types qw/ResourceGroups_Tags ResourceGroups_ResourceQuery/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceQuery => (is => 'ro', isa => ResourceGroups_ResourceQuery, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ResourceGroups_Tags, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/groups');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ResourceGroups::CreateGroupOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/groups');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ResourceGroups::CreateGroupOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ResourceQuery' => {
+                                    'class' => 'Paws::ResourceGroups::ResourceQuery',
+                                    'type' => 'ResourceGroups_ResourceQuery'
+                                  },
+               'Tags' => {
+                           'type' => 'ResourceGroups_Tags',
+                           'class' => 'Paws::ResourceGroups::Tags'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'ResourceQuery' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,14 +107,14 @@ group name must be unique within your account.
 
 
 
-=head2 B<REQUIRED> ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
+=head2 B<REQUIRED> ResourceQuery => ResourceGroups_ResourceQuery
 
 The resource query that determines which AWS resources are members of
 this group.
 
 
 
-=head2 Tags => L<Paws::ResourceGroups::Tags>
+=head2 Tags => ResourceGroups_Tags
 
 The tags to add to the group. A tag is a string-to-string map of
 key-value pairs. Tag keys can have a maximum character length of 128

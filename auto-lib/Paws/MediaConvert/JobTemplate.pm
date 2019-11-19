@@ -1,17 +1,87 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::JobTemplate;
-  use Moose;
-  has AccelerationSettings => (is => 'ro', isa => 'Paws::MediaConvert::AccelerationSettings', request_name => 'accelerationSettings', traits => ['NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has LastUpdated => (is => 'ro', isa => 'Str', request_name => 'lastUpdated', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
-  has Queue => (is => 'ro', isa => 'Str', request_name => 'queue', traits => ['NameInRequest']);
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', request_name => 'settings', traits => ['NameInRequest'], required => 1);
-  has StatusUpdateInterval => (is => 'ro', isa => 'Str', request_name => 'statusUpdateInterval', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_JobTemplateSettings MediaConvert_AccelerationSettings/;
+  has AccelerationSettings => (is => 'ro', isa => MediaConvert_AccelerationSettings);
+  has Arn => (is => 'ro', isa => Str);
+  has Category => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LastUpdated => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Priority => (is => 'ro', isa => Int);
+  has Queue => (is => 'ro', isa => Str);
+  has Settings => (is => 'ro', isa => MediaConvert_JobTemplateSettings, required => 1);
+  has StatusUpdateInterval => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'Queue' => 'queue',
+                       'AccelerationSettings' => 'accelerationSettings',
+                       'CreatedAt' => 'createdAt',
+                       'Type' => 'type',
+                       'Priority' => 'priority',
+                       'Description' => 'description',
+                       'LastUpdated' => 'lastUpdated',
+                       'Name' => 'name',
+                       'Settings' => 'settings',
+                       'Category' => 'category',
+                       'StatusUpdateInterval' => 'statusUpdateInterval'
+                     },
+  'IsRequired' => {
+                    'Settings' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'Settings' => {
+                               'class' => 'Paws::MediaConvert::JobTemplateSettings',
+                               'type' => 'MediaConvert_JobTemplateSettings'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LastUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'StatusUpdateInterval' => {
+                                           'type' => 'Str'
+                                         },
+               'Queue' => {
+                            'type' => 'Str'
+                          },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'AccelerationSettings' => {
+                                           'type' => 'MediaConvert_AccelerationSettings',
+                                           'class' => 'Paws::MediaConvert::AccelerationSettings'
+                                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +118,7 @@ use to quickly create a job.
 =head1 ATTRIBUTES
 
 
-=head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
+=head2 AccelerationSettings => MediaConvert_AccelerationSettings
 
   Accelerated transcoding can significantly speed up jobs with long,
 visually complex content.
@@ -96,7 +166,7 @@ within your account.
 to. If you don't specify this, jobs will go to the default queue.
 
 
-=head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobTemplateSettings>
+=head2 B<REQUIRED> Settings => MediaConvert_JobTemplateSettings
 
   JobTemplateSettings contains all the transcode settings saved in the
 template that will be applied to jobs created from it.

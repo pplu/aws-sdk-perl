@@ -1,19 +1,59 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::GetItem;
-  use Moose;
-  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ConsistentRead => (is => 'ro', isa => 'Bool');
-  has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
-  has Key => (is => 'ro', isa => 'Paws::DynamoDB::Key', required => 1);
-  has ProjectionExpression => (is => 'ro', isa => 'Str');
-  has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::DynamoDB::Types qw/DynamoDB_Key DynamoDB_ExpressionAttributeNameMap/;
+  has AttributesToGet => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ConsistentRead => (is => 'ro', isa => Bool, predicate => 1);
+  has ExpressionAttributeNames => (is => 'ro', isa => DynamoDB_ExpressionAttributeNameMap, predicate => 1);
+  has Key => (is => 'ro', isa => DynamoDB_Key, required => 1, predicate => 1);
+  has ProjectionExpression => (is => 'ro', isa => Str, predicate => 1);
+  has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetItem');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::GetItemOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetItem');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::GetItemOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TableName' => 1,
+                    'Key' => 1
+                  },
+  'types' => {
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'ReturnConsumedCapacity' => {
+                                             'type' => 'Str'
+                                           },
+               'AttributesToGet' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'ExpressionAttributeNames' => {
+                                               'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
+                                               'type' => 'DynamoDB_ExpressionAttributeNameMap'
+                                             },
+               'ProjectionExpression' => {
+                                           'type' => 'Str'
+                                         },
+               'ConsistentRead' => {
+                                     'type' => 'Bool'
+                                   },
+               'Key' => {
+                          'class' => 'Paws::DynamoDB::Key',
+                          'type' => 'DynamoDB_Key'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +117,7 @@ eventually consistent reads.
 
 
 
-=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
+=head2 ExpressionAttributeNames => DynamoDB_ExpressionAttributeNameMap
 
 One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using C<ExpressionAttributeNames>:
@@ -148,7 +188,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
+=head2 B<REQUIRED> Key => DynamoDB_Key
 
 A map of attribute names to C<AttributeValue> objects, representing the
 primary key of the item to retrieve.

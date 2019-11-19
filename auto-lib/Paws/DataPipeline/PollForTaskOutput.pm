@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DataPipeline::PollForTaskOutput;
-  use Moose;
-  has TaskObject => (is => 'ro', isa => 'Paws::DataPipeline::TaskObject', traits => ['NameInRequest'], request_name => 'taskObject' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataPipeline::Types qw/DataPipeline_TaskObject/;
+  has TaskObject => (is => 'ro', isa => DataPipeline_TaskObject);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TaskObject' => 'taskObject'
+                     },
+  'types' => {
+               'TaskObject' => {
+                                 'class' => 'Paws::DataPipeline::TaskObject',
+                                 'type' => 'DataPipeline_TaskObject'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DataPipeline::PollForTaskOutput
 =head1 ATTRIBUTES
 
 
-=head2 TaskObject => L<Paws::DataPipeline::TaskObject>
+=head2 TaskObject => DataPipeline_TaskObject
 
 The information needed to complete the task that is being assigned to
 the task runner. One of the fields returned in this object is

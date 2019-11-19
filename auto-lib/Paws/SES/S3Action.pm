@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::SES::S3Action;
-  use Moose;
-  has BucketName => (is => 'ro', isa => 'Str', required => 1);
-  has KmsKeyArn => (is => 'ro', isa => 'Str');
-  has ObjectKeyPrefix => (is => 'ro', isa => 'Str');
-  has TopicArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has BucketName => (is => 'ro', isa => Str, required => 1);
+  has KmsKeyArn => (is => 'ro', isa => Str);
+  has ObjectKeyPrefix => (is => 'ro', isa => Str);
+  has TopicArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'TopicArn' => {
+                               'type' => 'Str'
+                             },
+               'ObjectKeyPrefix' => {
+                                      'type' => 'Str'
+                                    },
+               'KmsKeyArn' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'BucketName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

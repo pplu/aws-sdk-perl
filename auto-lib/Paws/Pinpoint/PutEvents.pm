@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::PutEvents;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has EventsRequest => (is => 'ro', isa => 'Paws::Pinpoint::EventsRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EventsRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EventsRequest => (is => 'ro', isa => Pinpoint_EventsRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'EventsRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutEvents');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/events');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::PutEventsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutEvents');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/events');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::PutEventsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'EventsRequest' => 1,
+                    'ApplicationId' => 1
+                  },
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'EventsRequest' => {
+                                    'type' => 'Pinpoint_EventsRequest',
+                                    'class' => 'Paws::Pinpoint::EventsRequest'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -118,7 +144,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> EventsRequest => L<Paws::Pinpoint::EventsRequest>
+=head2 B<REQUIRED> EventsRequest => Pinpoint_EventsRequest
 
 
 

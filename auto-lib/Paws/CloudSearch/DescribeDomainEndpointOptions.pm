@@ -1,14 +1,36 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudSearch::DescribeDomainEndpointOptions;
-  use Moose;
-  has Deployed => (is => 'ro', isa => 'Bool');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudSearch::Types qw//;
+  has Deployed => (is => 'ro', isa => Bool, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDomainEndpointOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearch::DescribeDomainEndpointOptionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDomainEndpointOptionsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDomainEndpointOptions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudSearch::DescribeDomainEndpointOptionsResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeDomainEndpointOptionsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DomainName' => 1
+                  },
+  'types' => {
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'Deployed' => {
+                               'type' => 'Bool'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

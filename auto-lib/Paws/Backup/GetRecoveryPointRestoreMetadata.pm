@@ -1,15 +1,41 @@
 
 package Paws::Backup::GetRecoveryPointRestoreMetadata;
-  use Moose;
-  has BackupVaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'backupVaultName', required => 1);
-  has RecoveryPointArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'recoveryPointArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw//;
+  has BackupVaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RecoveryPointArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRecoveryPointRestoreMetadata');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/restore-metadata');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::GetRecoveryPointRestoreMetadataOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetRecoveryPointRestoreMetadata');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/restore-metadata');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::GetRecoveryPointRestoreMetadataOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RecoveryPointArn' => {
+                                       'type' => 'Str'
+                                     },
+               'BackupVaultName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'RecoveryPointArn' => 1,
+                    'BackupVaultName' => 1
+                  },
+  'ParamInURI' => {
+                    'BackupVaultName' => 'backupVaultName',
+                    'RecoveryPointArn' => 'recoveryPointArn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,15 @@
 package Paws::DLM;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'dlm' }
   sub signing_name { 'dlm' }
   sub version { '2018-01-12' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -110,11 +111,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dlm
 
 =item ExecutionRoleArn => Str
 
-=item PolicyDetails => L<Paws::DLM::PolicyDetails>
+=item PolicyDetails => DLM_PolicyDetails
 
 =item State => Str
 
-=item [Tags => L<Paws::DLM::TagMap>]
+=item [Tags => DLM_TagMap]
 
 
 =back
@@ -209,7 +210,7 @@ Lists the tags for the specified resource.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::DLM::TagMap>
+=item Tags => DLM_TagMap
 
 
 =back
@@ -249,7 +250,7 @@ Removes the specified tags from the specified resource.
 
 =item [ExecutionRoleArn => Str]
 
-=item [PolicyDetails => L<Paws::DLM::PolicyDetails>]
+=item [PolicyDetails => DLM_PolicyDetails]
 
 =item [State => Str]
 

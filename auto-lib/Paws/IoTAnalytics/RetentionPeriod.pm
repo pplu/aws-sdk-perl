@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::RetentionPeriod;
-  use Moose;
-  has NumberOfDays => (is => 'ro', isa => 'Int', request_name => 'numberOfDays', traits => ['NameInRequest']);
-  has Unlimited => (is => 'ro', isa => 'Bool', request_name => 'unlimited', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Bool/;
+  use Paws::IoTAnalytics::Types qw//;
+  has NumberOfDays => (is => 'ro', isa => Int);
+  has Unlimited => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Unlimited' => 'unlimited',
+                       'NumberOfDays' => 'numberOfDays'
+                     },
+  'types' => {
+               'Unlimited' => {
+                                'type' => 'Bool'
+                              },
+               'NumberOfDays' => {
+                                   'type' => 'Int'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

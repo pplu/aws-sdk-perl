@@ -1,22 +1,86 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::ListClosedWorkflowExecutions;
-  use Moose;
-  has CloseStatusFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::CloseStatusFilter', traits => ['NameInRequest'], request_name => 'closeStatusFilter' );
-  has CloseTimeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExecutionTimeFilter', traits => ['NameInRequest'], request_name => 'closeTimeFilter' );
-  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
-  has ExecutionFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionFilter', traits => ['NameInRequest'], request_name => 'executionFilter' );
-  has MaximumPageSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maximumPageSize' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
-  has ReverseOrder => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reverseOrder' );
-  has StartTimeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExecutionTimeFilter', traits => ['NameInRequest'], request_name => 'startTimeFilter' );
-  has TagFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::TagFilter', traits => ['NameInRequest'], request_name => 'tagFilter' );
-  has TypeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeFilter', traits => ['NameInRequest'], request_name => 'typeFilter' );
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_CloseStatusFilter SimpleWorkflow_ExecutionTimeFilter SimpleWorkflow_TagFilter SimpleWorkflow_WorkflowTypeFilter SimpleWorkflow_WorkflowExecutionFilter/;
+  has CloseStatusFilter => (is => 'ro', isa => SimpleWorkflow_CloseStatusFilter, predicate => 1);
+  has CloseTimeFilter => (is => 'ro', isa => SimpleWorkflow_ExecutionTimeFilter, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExecutionFilter => (is => 'ro', isa => SimpleWorkflow_WorkflowExecutionFilter, predicate => 1);
+  has MaximumPageSize => (is => 'ro', isa => Int, predicate => 1);
+  has NextPageToken => (is => 'ro', isa => Str, predicate => 1);
+  has ReverseOrder => (is => 'ro', isa => Bool, predicate => 1);
+  has StartTimeFilter => (is => 'ro', isa => SimpleWorkflow_ExecutionTimeFilter, predicate => 1);
+  has TagFilter => (is => 'ro', isa => SimpleWorkflow_TagFilter, predicate => 1);
+  has TypeFilter => (is => 'ro', isa => SimpleWorkflow_WorkflowTypeFilter, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListClosedWorkflowExecutions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::WorkflowExecutionInfos');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListClosedWorkflowExecutions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SimpleWorkflow::WorkflowExecutionInfos');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Domain' => 1
+                  },
+  'NameInRequest' => {
+                       'Domain' => 'domain',
+                       'NextPageToken' => 'nextPageToken',
+                       'StartTimeFilter' => 'startTimeFilter',
+                       'CloseStatusFilter' => 'closeStatusFilter',
+                       'TagFilter' => 'tagFilter',
+                       'MaximumPageSize' => 'maximumPageSize',
+                       'TypeFilter' => 'typeFilter',
+                       'CloseTimeFilter' => 'closeTimeFilter',
+                       'ReverseOrder' => 'reverseOrder',
+                       'ExecutionFilter' => 'executionFilter'
+                     },
+  'types' => {
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'StartTimeFilter' => {
+                                      'class' => 'Paws::SimpleWorkflow::ExecutionTimeFilter',
+                                      'type' => 'SimpleWorkflow_ExecutionTimeFilter'
+                                    },
+               'CloseStatusFilter' => {
+                                        'type' => 'SimpleWorkflow_CloseStatusFilter',
+                                        'class' => 'Paws::SimpleWorkflow::CloseStatusFilter'
+                                      },
+               'TagFilter' => {
+                                'class' => 'Paws::SimpleWorkflow::TagFilter',
+                                'type' => 'SimpleWorkflow_TagFilter'
+                              },
+               'MaximumPageSize' => {
+                                      'type' => 'Int'
+                                    },
+               'TypeFilter' => {
+                                 'type' => 'SimpleWorkflow_WorkflowTypeFilter',
+                                 'class' => 'Paws::SimpleWorkflow::WorkflowTypeFilter'
+                               },
+               'ReverseOrder' => {
+                                   'type' => 'Bool'
+                                 },
+               'CloseTimeFilter' => {
+                                      'type' => 'SimpleWorkflow_ExecutionTimeFilter',
+                                      'class' => 'Paws::SimpleWorkflow::ExecutionTimeFilter'
+                                    },
+               'ExecutionFilter' => {
+                                      'class' => 'Paws::SimpleWorkflow::WorkflowExecutionFilter',
+                                      'type' => 'SimpleWorkflow_WorkflowExecutionFilter'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +144,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf
 =head1 ATTRIBUTES
 
 
-=head2 CloseStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>
+=head2 CloseStatusFilter => SimpleWorkflow_CloseStatusFilter
 
 If specified, only workflow executions that match this I<close status>
 are listed. For example, if TERMINATED is specified, then only
@@ -92,7 +156,7 @@ these in a request.
 
 
 
-=head2 CloseTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
+=head2 CloseTimeFilter => SimpleWorkflow_ExecutionTimeFilter
 
 If specified, the workflow executions are included in the returned
 results based on whether their close times are within the range
@@ -110,7 +174,7 @@ The name of the domain that contains the workflow executions to list.
 
 
 
-=head2 ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>
+=head2 ExecutionFilter => SimpleWorkflow_WorkflowExecutionFilter
 
 If specified, only workflow executions matching the workflow ID
 specified in the filter are returned.
@@ -150,7 +214,7 @@ time of the executions.
 
 
 
-=head2 StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
+=head2 StartTimeFilter => SimpleWorkflow_ExecutionTimeFilter
 
 If specified, the workflow executions are included in the returned
 results based on whether their start times are within the range
@@ -162,7 +226,7 @@ must specify one of these in a request but not both.
 
 
 
-=head2 TagFilter => L<Paws::SimpleWorkflow::TagFilter>
+=head2 TagFilter => SimpleWorkflow_TagFilter
 
 If specified, only executions that have the matching tag are listed.
 
@@ -172,7 +236,7 @@ these in a request.
 
 
 
-=head2 TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>
+=head2 TypeFilter => SimpleWorkflow_WorkflowTypeFilter
 
 If specified, only executions of the type specified in the filter are
 returned.

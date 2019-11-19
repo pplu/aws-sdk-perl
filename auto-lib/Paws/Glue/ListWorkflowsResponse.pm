@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::ListWorkflowsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Workflows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Glue::Types qw//;
+  has NextToken => (is => 'ro', isa => Str);
+  has Workflows => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Workflows' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

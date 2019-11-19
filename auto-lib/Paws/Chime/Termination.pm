@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::Chime::Termination;
-  use Moose;
-  has CallingRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CidrAllowedList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CpsLimit => (is => 'ro', isa => 'Int');
-  has DefaultPhoneNumber => (is => 'ro', isa => 'Str');
-  has Disabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int Bool/;
+  use Paws::Chime::Types qw//;
+  has CallingRegions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CidrAllowedList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CpsLimit => (is => 'ro', isa => Int);
+  has DefaultPhoneNumber => (is => 'ro', isa => Str);
+  has Disabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Disabled' => {
+                               'type' => 'Bool'
+                             },
+               'CpsLimit' => {
+                               'type' => 'Int'
+                             },
+               'DefaultPhoneNumber' => {
+                                         'type' => 'Str'
+                                       },
+               'CallingRegions' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'CidrAllowedList' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,17 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::SetRiskConfiguration;
-  use Moose;
-  has AccountTakeoverRiskConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::AccountTakeoverRiskConfigurationType');
-  has ClientId => (is => 'ro', isa => 'Str');
-  has CompromisedCredentialsRiskConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::CompromisedCredentialsRiskConfigurationType');
-  has RiskExceptionConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::RiskExceptionConfigurationType');
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_RiskExceptionConfigurationType CognitoIdp_AccountTakeoverRiskConfigurationType CognitoIdp_CompromisedCredentialsRiskConfigurationType/;
+  has AccountTakeoverRiskConfiguration => (is => 'ro', isa => CognitoIdp_AccountTakeoverRiskConfigurationType, predicate => 1);
+  has ClientId => (is => 'ro', isa => Str, predicate => 1);
+  has CompromisedCredentialsRiskConfiguration => (is => 'ro', isa => CognitoIdp_CompromisedCredentialsRiskConfigurationType, predicate => 1);
+  has RiskExceptionConfiguration => (is => 'ro', isa => CognitoIdp_RiskExceptionConfigurationType, predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetRiskConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::SetRiskConfigurationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetRiskConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::SetRiskConfigurationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RiskExceptionConfiguration' => {
+                                                 'class' => 'Paws::CognitoIdp::RiskExceptionConfigurationType',
+                                                 'type' => 'CognitoIdp_RiskExceptionConfigurationType'
+                                               },
+               'AccountTakeoverRiskConfiguration' => {
+                                                       'class' => 'Paws::CognitoIdp::AccountTakeoverRiskConfigurationType',
+                                                       'type' => 'CognitoIdp_AccountTakeoverRiskConfigurationType'
+                                                     },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'CompromisedCredentialsRiskConfiguration' => {
+                                                              'class' => 'Paws::CognitoIdp::CompromisedCredentialsRiskConfigurationType',
+                                                              'type' => 'CognitoIdp_CompromisedCredentialsRiskConfigurationType'
+                                                            },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'UserPoolId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -112,7 +146,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 AccountTakeoverRiskConfiguration => L<Paws::CognitoIdp::AccountTakeoverRiskConfigurationType>
+=head2 AccountTakeoverRiskConfiguration => CognitoIdp_AccountTakeoverRiskConfigurationType
 
 The account takeover risk configuration.
 
@@ -130,13 +164,13 @@ configuration for the client is used instead.
 
 
 
-=head2 CompromisedCredentialsRiskConfiguration => L<Paws::CognitoIdp::CompromisedCredentialsRiskConfigurationType>
+=head2 CompromisedCredentialsRiskConfiguration => CognitoIdp_CompromisedCredentialsRiskConfigurationType
 
 The compromised credentials risk configuration.
 
 
 
-=head2 RiskExceptionConfiguration => L<Paws::CognitoIdp::RiskExceptionConfigurationType>
+=head2 RiskExceptionConfiguration => CognitoIdp_RiskExceptionConfigurationType
 
 The configuration to override the risk decision.
 

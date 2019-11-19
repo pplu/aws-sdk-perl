@@ -1,15 +1,71 @@
+# Generated from default/object.tt
 package Paws::DataExchange::AssetEntry;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has AssetDetails => (is => 'ro', isa => 'Paws::DataExchange::AssetDetails', required => 1);
-  has AssetType => (is => 'ro', isa => 'Str', required => 1);
-  has CreatedAt => (is => 'ro', isa => 'Str', required => 1);
-  has DataSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RevisionId => (is => 'ro', isa => 'Str', required => 1);
-  has SourceId => (is => 'ro', isa => 'Str');
-  has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw/DataExchange_AssetDetails/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has AssetDetails => (is => 'ro', isa => DataExchange_AssetDetails, required => 1);
+  has AssetType => (is => 'ro', isa => Str, required => 1);
+  has CreatedAt => (is => 'ro', isa => Str, required => 1);
+  has DataSetId => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has RevisionId => (is => 'ro', isa => Str, required => 1);
+  has SourceId => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataSetId' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'AssetDetails' => {
+                                   'type' => 'DataExchange_AssetDetails',
+                                   'class' => 'Paws::DataExchange::AssetDetails'
+                                 },
+               'SourceId' => {
+                               'type' => 'Str'
+                             },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AssetType' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'AssetDetails' => 1,
+                    'DataSetId' => 1,
+                    'UpdatedAt' => 1,
+                    'CreatedAt' => 1,
+                    'AssetType' => 1,
+                    'RevisionId' => 1,
+                    'Id' => 1,
+                    'Arn' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +109,7 @@ you create an asset in AWS Data Exchange for each of those files.
   The ARN for the asset.
 
 
-=head2 B<REQUIRED> AssetDetails => L<Paws::DataExchange::AssetDetails>
+=head2 B<REQUIRED> AssetDetails => DataExchange_AssetDetails
 
   Information about the asset, including its size.
 

@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::UtilizationByTime;
-  use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::ReservationUtilizationGroup]');
-  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval');
-  has Total => (is => 'ro', isa => 'Paws::CostExplorer::ReservationAggregates');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CostExplorer::Types qw/CostExplorer_DateInterval CostExplorer_ReservationAggregates CostExplorer_ReservationUtilizationGroup/;
+  has Groups => (is => 'ro', isa => ArrayRef[CostExplorer_ReservationUtilizationGroup]);
+  has TimePeriod => (is => 'ro', isa => CostExplorer_DateInterval);
+  has Total => (is => 'ro', isa => CostExplorer_ReservationAggregates);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Groups' => {
+                             'class' => 'Paws::CostExplorer::ReservationUtilizationGroup',
+                             'type' => 'ArrayRef[CostExplorer_ReservationUtilizationGroup]'
+                           },
+               'TimePeriod' => {
+                                 'type' => 'CostExplorer_DateInterval',
+                                 'class' => 'Paws::CostExplorer::DateInterval'
+                               },
+               'Total' => {
+                            'type' => 'CostExplorer_ReservationAggregates',
+                            'class' => 'Paws::CostExplorer::ReservationAggregates'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +64,17 @@ The amount of utilization, in hours.
 =head1 ATTRIBUTES
 
 
-=head2 Groups => ArrayRef[L<Paws::CostExplorer::ReservationUtilizationGroup>]
+=head2 Groups => ArrayRef[CostExplorer_ReservationUtilizationGroup]
 
   The groups that this utilization result uses.
 
 
-=head2 TimePeriod => L<Paws::CostExplorer::DateInterval>
+=head2 TimePeriod => CostExplorer_DateInterval
 
   The period of time that this utilization was used for.
 
 
-=head2 Total => L<Paws::CostExplorer::ReservationAggregates>
+=head2 Total => CostExplorer_ReservationAggregates
 
   The total number of reservation hours that were used.
 

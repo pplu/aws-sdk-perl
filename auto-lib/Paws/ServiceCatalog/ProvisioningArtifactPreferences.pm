@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ProvisioningArtifactPreferences;
-  use Moose;
-  has StackSetAccounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has StackSetRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ServiceCatalog::Types qw//;
+  has StackSetAccounts => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has StackSetRegions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackSetRegions' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'StackSetAccounts' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

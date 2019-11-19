@@ -1,9 +1,38 @@
 package Paws::EC2::TransitGatewayRouteTableAssociation;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has TransitGatewayAttachmentId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayAttachmentId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has TransitGatewayAttachmentId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'TransitGatewayAttachmentId' => {
+                                                 'type' => 'Str'
+                                               }
+             },
+  'NameInRequest' => {
+                       'State' => 'state',
+                       'ResourceId' => 'resourceId',
+                       'TransitGatewayAttachmentId' => 'transitGatewayAttachmentId',
+                       'ResourceType' => 'resourceType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

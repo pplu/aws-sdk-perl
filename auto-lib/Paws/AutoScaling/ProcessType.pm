@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::ProcessType;
-  use Moose;
-  has ProcessName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AutoScaling::Types qw//;
+  has ProcessName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ProcessName' => 1
+                  },
+  'types' => {
+               'ProcessName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

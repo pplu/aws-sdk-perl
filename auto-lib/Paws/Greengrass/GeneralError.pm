@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Greengrass::GeneralError;
-  use Moose;
-  has ErrorDetails => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ErrorDetail]');
-  has Message => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Greengrass::Types qw/Greengrass_ErrorDetail/;
+  has ErrorDetails => (is => 'ro', isa => ArrayRef[Greengrass_ErrorDetail]);
+  has Message => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorDetails' => {
+                                   'type' => 'ArrayRef[Greengrass_ErrorDetail]',
+                                   'class' => 'Paws::Greengrass::ErrorDetail'
+                                 },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ General error information.
 =head1 ATTRIBUTES
 
 
-=head2 ErrorDetails => ArrayRef[L<Paws::Greengrass::ErrorDetail>]
+=head2 ErrorDetails => ArrayRef[Greengrass_ErrorDetail]
 
   Details about the error.
 

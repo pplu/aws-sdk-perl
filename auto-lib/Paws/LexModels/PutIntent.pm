@@ -1,26 +1,104 @@
 
 package Paws::LexModels::PutIntent;
-  use Moose;
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
-  has ConclusionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'conclusionStatement');
-  has ConfirmationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'confirmationPrompt');
-  has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has DialogCodeHook => (is => 'ro', isa => 'Paws::LexModels::CodeHook', traits => ['NameInRequest'], request_name => 'dialogCodeHook');
-  has FollowUpPrompt => (is => 'ro', isa => 'Paws::LexModels::FollowUpPrompt', traits => ['NameInRequest'], request_name => 'followUpPrompt');
-  has FulfillmentActivity => (is => 'ro', isa => 'Paws::LexModels::FulfillmentActivity', traits => ['NameInRequest'], request_name => 'fulfillmentActivity');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has ParentIntentSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentIntentSignature');
-  has RejectionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'rejectionStatement');
-  has SampleUtterances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'sampleUtterances');
-  has Slots => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Slot]', traits => ['NameInRequest'], request_name => 'slots');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::LexModels::Types qw/LexModels_Statement LexModels_FollowUpPrompt LexModels_Slot LexModels_CodeHook LexModels_Prompt LexModels_FulfillmentActivity/;
+  has Checksum => (is => 'ro', isa => Str, predicate => 1);
+  has ConclusionStatement => (is => 'ro', isa => LexModels_Statement, predicate => 1);
+  has ConfirmationPrompt => (is => 'ro', isa => LexModels_Prompt, predicate => 1);
+  has CreateVersion => (is => 'ro', isa => Bool, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DialogCodeHook => (is => 'ro', isa => LexModels_CodeHook, predicate => 1);
+  has FollowUpPrompt => (is => 'ro', isa => LexModels_FollowUpPrompt, predicate => 1);
+  has FulfillmentActivity => (is => 'ro', isa => LexModels_FulfillmentActivity, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ParentIntentSignature => (is => 'ro', isa => Str, predicate => 1);
+  has RejectionStatement => (is => 'ro', isa => LexModels_Statement, predicate => 1);
+  has SampleUtterances => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Slots => (is => 'ro', isa => ArrayRef[LexModels_Slot], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutIntent');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/intents/{name}/versions/$LATEST');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::PutIntentResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutIntent');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/intents/{name}/versions/$LATEST');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::PutIntentResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FollowUpPrompt' => {
+                                     'type' => 'LexModels_FollowUpPrompt',
+                                     'class' => 'Paws::LexModels::FollowUpPrompt'
+                                   },
+               'Slots' => {
+                            'type' => 'ArrayRef[LexModels_Slot]',
+                            'class' => 'Paws::LexModels::Slot'
+                          },
+               'CreateVersion' => {
+                                    'type' => 'Bool'
+                                  },
+               'ParentIntentSignature' => {
+                                            'type' => 'Str'
+                                          },
+               'SampleUtterances' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ConfirmationPrompt' => {
+                                         'type' => 'LexModels_Prompt',
+                                         'class' => 'Paws::LexModels::Prompt'
+                                       },
+               'Checksum' => {
+                               'type' => 'Str'
+                             },
+               'DialogCodeHook' => {
+                                     'class' => 'Paws::LexModels::CodeHook',
+                                     'type' => 'LexModels_CodeHook'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'FulfillmentActivity' => {
+                                          'type' => 'LexModels_FulfillmentActivity',
+                                          'class' => 'Paws::LexModels::FulfillmentActivity'
+                                        },
+               'RejectionStatement' => {
+                                         'type' => 'LexModels_Statement',
+                                         'class' => 'Paws::LexModels::Statement'
+                                       },
+               'ConclusionStatement' => {
+                                          'class' => 'Paws::LexModels::Statement',
+                                          'type' => 'LexModels_Statement'
+                                        }
+             },
+  'NameInRequest' => {
+                       'FulfillmentActivity' => 'fulfillmentActivity',
+                       'DialogCodeHook' => 'dialogCodeHook',
+                       'ConclusionStatement' => 'conclusionStatement',
+                       'RejectionStatement' => 'rejectionStatement',
+                       'Slots' => 'slots',
+                       'FollowUpPrompt' => 'followUpPrompt',
+                       'ConfirmationPrompt' => 'confirmationPrompt',
+                       'Checksum' => 'checksum',
+                       'CreateVersion' => 'createVersion',
+                       'ParentIntentSignature' => 'parentIntentSignature',
+                       'SampleUtterances' => 'sampleUtterances',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'ParamInURI' => {
+                    'Name' => 'name'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -196,7 +274,7 @@ exception.
 
 
 
-=head2 ConclusionStatement => L<Paws::LexModels::Statement>
+=head2 ConclusionStatement => LexModels_Statement
 
 The statement that you want Amazon Lex to convey to the user after the
 intent is successfully fulfilled by the Lambda function.
@@ -210,7 +288,7 @@ exclusive. You can specify only one.
 
 
 
-=head2 ConfirmationPrompt => L<Paws::LexModels::Prompt>
+=head2 ConfirmationPrompt => LexModels_Prompt
 
 Prompts the user to confirm the intent. This question should have a yes
 or no answer.
@@ -239,7 +317,7 @@ A description of the intent.
 
 
 
-=head2 DialogCodeHook => L<Paws::LexModels::CodeHook>
+=head2 DialogCodeHook => LexModels_CodeHook
 
 Specifies a Lambda function to invoke for each user input. You can
 invoke this Lambda function to personalize user interaction.
@@ -253,7 +331,7 @@ and set the corresponding session attribute.
 
 
 
-=head2 FollowUpPrompt => L<Paws::LexModels::FollowUpPrompt>
+=head2 FollowUpPrompt => LexModels_FollowUpPrompt
 
 Amazon Lex uses this prompt to solicit additional activity after
 fulfilling an intent. For example, after the C<OrderPizza> intent is
@@ -291,7 +369,7 @@ mutually exclusive. You can specify only one.
 
 
 
-=head2 FulfillmentActivity => L<Paws::LexModels::FulfillmentActivity>
+=head2 FulfillmentActivity => LexModels_FulfillmentActivity
 
 Required. Describes how the intent is fulfilled. For example, after a
 user provides all of the information for a pizza order,
@@ -329,7 +407,7 @@ in the I<Alexa Skills Kit>.
 
 
 
-=head2 RejectionStatement => L<Paws::LexModels::Statement>
+=head2 RejectionStatement => LexModels_Statement
 
 When the user answers "no" to the question defined in
 C<confirmationPrompt>, Amazon Lex responds with this statement to
@@ -350,7 +428,7 @@ In each utterance, a slot name is enclosed in curly braces.
 
 
 
-=head2 Slots => ArrayRef[L<Paws::LexModels::Slot>]
+=head2 Slots => ArrayRef[LexModels_Slot]
 
 An array of intent slots. At runtime, Amazon Lex elicits required slot
 values from the user using prompts defined in the slots. For more

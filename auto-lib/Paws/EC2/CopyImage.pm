@@ -1,20 +1,66 @@
 
 package Paws::EC2::CopyImage;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Encrypted => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'encrypted' );
-  has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kmsKeyId' );
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has SourceImageId => (is => 'ro', isa => 'Str', required => 1);
-  has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Encrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceImageId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceRegion => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyImage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CopyImageResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopyImage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CopyImageResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'SourceRegion' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'SourceImageId' => {
+                                    'type' => 'Str'
+                                  },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'SourceRegion' => 1,
+                    'Name' => 1,
+                    'SourceImageId' => 1
+                  },
+  'NameInRequest' => {
+                       'KmsKeyId' => 'kmsKeyId',
+                       'DryRun' => 'dryRun',
+                       'Encrypted' => 'encrypted'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

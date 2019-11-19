@@ -1,10 +1,31 @@
 
 package Paws::MarketplaceCatalog::ListChangeSetsResponse;
-  use Moose;
-  has ChangeSetSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::MarketplaceCatalog::ChangeSetSummaryListItem]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MarketplaceCatalog::Types qw/MarketplaceCatalog_ChangeSetSummaryListItem/;
+  has ChangeSetSummaryList => (is => 'ro', isa => ArrayRef[MarketplaceCatalog_ChangeSetSummaryListItem]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ChangeSetSummaryList' => {
+                                           'class' => 'Paws::MarketplaceCatalog::ChangeSetSummaryListItem',
+                                           'type' => 'ArrayRef[MarketplaceCatalog_ChangeSetSummaryListItem]'
+                                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::MarketplaceCatalog::ListChangeSetsResponse
 =head1 ATTRIBUTES
 
 
-=head2 ChangeSetSummaryList => ArrayRef[L<Paws::MarketplaceCatalog::ChangeSetSummaryListItem>]
+=head2 ChangeSetSummaryList => ArrayRef[MarketplaceCatalog_ChangeSetSummaryListItem]
 
 Array of C<ChangeSetSummaryListItem> objects.
 

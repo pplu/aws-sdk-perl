@@ -1,11 +1,44 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DataPipeline::DescribeObjectsOutput;
-  use Moose;
-  has HasMoreResults => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'hasMoreResults' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'marker' );
-  has PipelineObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineObject]', traits => ['NameInRequest'], request_name => 'pipelineObjects' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::DataPipeline::Types qw/DataPipeline_PipelineObject/;
+  has HasMoreResults => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
+  has PipelineObjects => (is => 'ro', isa => ArrayRef[DataPipeline_PipelineObject], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'PipelineObjects' => {
+                                      'class' => 'Paws::DataPipeline::PipelineObject',
+                                      'type' => 'ArrayRef[DataPipeline_PipelineObject]'
+                                    },
+               'HasMoreResults' => {
+                                     'type' => 'Bool'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'PipelineObjects' => 1
+                  },
+  'NameInRequest' => {
+                       'HasMoreResults' => 'hasMoreResults',
+                       'PipelineObjects' => 'pipelineObjects',
+                       'Marker' => 'marker'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -28,7 +61,7 @@ of results, call C<DescribeObjects> again with this marker value. If
 the value is null, there are no more results.
 
 
-=head2 B<REQUIRED> PipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>]
+=head2 B<REQUIRED> PipelineObjects => ArrayRef[DataPipeline_PipelineObject]
 
 An array of object definitions.
 

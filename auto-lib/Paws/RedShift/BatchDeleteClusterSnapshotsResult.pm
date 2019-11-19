@@ -1,10 +1,36 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::BatchDeleteClusterSnapshotsResult;
-  use Moose;
-  has Errors => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SnapshotErrorMessage]', request_name => 'SnapshotErrorMessage', traits => ['NameInRequest',]);
-  has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'String', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::RedShift::Types qw/RedShift_SnapshotErrorMessage/;
+  has Errors => (is => 'ro', isa => ArrayRef[RedShift_SnapshotErrorMessage]);
+  has Resources => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Resources' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Errors' => {
+                             'class' => 'Paws::RedShift::SnapshotErrorMessage',
+                             'type' => 'ArrayRef[RedShift_SnapshotErrorMessage]'
+                           }
+             },
+  'NameInRequest' => {
+                       'Errors' => 'SnapshotErrorMessage',
+                       'Resources' => 'String'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::RedShift::BatchDeleteClusterSnapshotsResult
 =head1 ATTRIBUTES
 
 
-=head2 Errors => ArrayRef[L<Paws::RedShift::SnapshotErrorMessage>]
+=head2 Errors => ArrayRef[RedShift_SnapshotErrorMessage]
 
 A list of any errors returned.
 

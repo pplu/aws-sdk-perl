@@ -1,10 +1,51 @@
+# Generated from default/object.tt
 package Paws::Discovery::NeighborConnectionDetail;
-  use Moose;
-  has ConnectionsCount => (is => 'ro', isa => 'Int', request_name => 'connectionsCount', traits => ['NameInRequest'], required => 1);
-  has DestinationPort => (is => 'ro', isa => 'Int', request_name => 'destinationPort', traits => ['NameInRequest']);
-  has DestinationServerId => (is => 'ro', isa => 'Str', request_name => 'destinationServerId', traits => ['NameInRequest'], required => 1);
-  has SourceServerId => (is => 'ro', isa => 'Str', request_name => 'sourceServerId', traits => ['NameInRequest'], required => 1);
-  has TransportProtocol => (is => 'ro', isa => 'Str', request_name => 'transportProtocol', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Discovery::Types qw//;
+  has ConnectionsCount => (is => 'ro', isa => Int, required => 1);
+  has DestinationPort => (is => 'ro', isa => Int);
+  has DestinationServerId => (is => 'ro', isa => Str, required => 1);
+  has SourceServerId => (is => 'ro', isa => Str, required => 1);
+  has TransportProtocol => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DestinationServerId' => {
+                                          'type' => 'Str'
+                                        },
+               'TransportProtocol' => {
+                                        'type' => 'Str'
+                                      },
+               'DestinationPort' => {
+                                      'type' => 'Int'
+                                    },
+               'SourceServerId' => {
+                                     'type' => 'Str'
+                                   },
+               'ConnectionsCount' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'IsRequired' => {
+                    'SourceServerId' => 1,
+                    'ConnectionsCount' => 1,
+                    'DestinationServerId' => 1
+                  },
+  'NameInRequest' => {
+                       'SourceServerId' => 'sourceServerId',
+                       'ConnectionsCount' => 'connectionsCount',
+                       'DestinationPort' => 'destinationPort',
+                       'TransportProtocol' => 'transportProtocol',
+                       'DestinationServerId' => 'destinationServerId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,45 @@
 
 package Paws::EC2::ImportKeyPair;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has KeyName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyName' , required => 1);
-  has PublicKeyMaterial => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'publicKeyMaterial' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has KeyName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PublicKeyMaterial => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportKeyPair');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ImportKeyPairResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportKeyPair');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ImportKeyPairResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'KeyName' => 1,
+                    'PublicKeyMaterial' => 1
+                  },
+  'NameInRequest' => {
+                       'PublicKeyMaterial' => 'publicKeyMaterial',
+                       'KeyName' => 'keyName',
+                       'DryRun' => 'dryRun'
+                     },
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'KeyName' => {
+                              'type' => 'Str'
+                            },
+               'PublicKeyMaterial' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

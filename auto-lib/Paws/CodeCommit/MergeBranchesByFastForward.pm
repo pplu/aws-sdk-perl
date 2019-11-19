@@ -1,16 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::MergeBranchesByFastForward;
-  use Moose;
-  has DestinationCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCommitSpecifier' , required => 1);
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has SourceCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCommitSpecifier' , required => 1);
-  has TargetBranch => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetBranch' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has DestinationCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetBranch => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'MergeBranchesByFastForward');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::MergeBranchesByFastForwardOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'MergeBranchesByFastForward');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::MergeBranchesByFastForwardOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RepositoryName' => 'repositoryName',
+                       'TargetBranch' => 'targetBranch',
+                       'DestinationCommitSpecifier' => 'destinationCommitSpecifier',
+                       'SourceCommitSpecifier' => 'sourceCommitSpecifier'
+                     },
+  'IsRequired' => {
+                    'DestinationCommitSpecifier' => 1,
+                    'SourceCommitSpecifier' => 1,
+                    'RepositoryName' => 1
+                  },
+  'types' => {
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'TargetBranch' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceCommitSpecifier' => {
+                                            'type' => 'Str'
+                                          },
+               'DestinationCommitSpecifier' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

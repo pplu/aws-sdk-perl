@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetConnectionResponse;
-  use Moose;
-  has Connection => (is => 'ro', isa => 'Paws::Glue::Connection');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_Connection/;
+  has Connection => (is => 'ro', isa => Glue_Connection);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Connection' => {
+                                 'type' => 'Glue_Connection',
+                                 'class' => 'Paws::Glue::Connection'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Glue::GetConnectionResponse
 =head1 ATTRIBUTES
 
 
-=head2 Connection => L<Paws::Glue::Connection>
+=head2 Connection => Glue_Connection
 
 The requested connection definition.
 

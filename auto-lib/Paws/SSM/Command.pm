@@ -1,28 +1,115 @@
+# Generated from default/object.tt
 package Paws::SSM::Command;
-  use Moose;
-  has CloudWatchOutputConfig => (is => 'ro', isa => 'Paws::SSM::CloudWatchOutputConfig');
-  has CommandId => (is => 'ro', isa => 'Str');
-  has Comment => (is => 'ro', isa => 'Str');
-  has CompletedCount => (is => 'ro', isa => 'Int');
-  has DeliveryTimedOutCount => (is => 'ro', isa => 'Int');
-  has DocumentName => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has ErrorCount => (is => 'ro', isa => 'Int');
-  has ExpiresAfter => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MaxConcurrency => (is => 'ro', isa => 'Str');
-  has MaxErrors => (is => 'ro', isa => 'Str');
-  has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
-  has OutputS3BucketName => (is => 'ro', isa => 'Str');
-  has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
-  has OutputS3Region => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
-  has RequestedDateTime => (is => 'ro', isa => 'Str');
-  has ServiceRole => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusDetails => (is => 'ro', isa => 'Str');
-  has TargetCount => (is => 'ro', isa => 'Int');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::SSM::Types qw/SSM_Parameters SSM_Target SSM_CloudWatchOutputConfig SSM_NotificationConfig/;
+  has CloudWatchOutputConfig => (is => 'ro', isa => SSM_CloudWatchOutputConfig);
+  has CommandId => (is => 'ro', isa => Str);
+  has Comment => (is => 'ro', isa => Str);
+  has CompletedCount => (is => 'ro', isa => Int);
+  has DeliveryTimedOutCount => (is => 'ro', isa => Int);
+  has DocumentName => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has ErrorCount => (is => 'ro', isa => Int);
+  has ExpiresAfter => (is => 'ro', isa => Str);
+  has InstanceIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has MaxConcurrency => (is => 'ro', isa => Str);
+  has MaxErrors => (is => 'ro', isa => Str);
+  has NotificationConfig => (is => 'ro', isa => SSM_NotificationConfig);
+  has OutputS3BucketName => (is => 'ro', isa => Str);
+  has OutputS3KeyPrefix => (is => 'ro', isa => Str);
+  has OutputS3Region => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => SSM_Parameters);
+  has RequestedDateTime => (is => 'ro', isa => Str);
+  has ServiceRole => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetails => (is => 'ro', isa => Str);
+  has TargetCount => (is => 'ro', isa => Int);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorCount' => {
+                                 'type' => 'Int'
+                               },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'TargetCount' => {
+                                  'type' => 'Int'
+                                },
+               'NotificationConfig' => {
+                                         'class' => 'Paws::SSM::NotificationConfig',
+                                         'type' => 'SSM_NotificationConfig'
+                                       },
+               'OutputS3Region' => {
+                                     'type' => 'Str'
+                                   },
+               'Parameters' => {
+                                 'class' => 'Paws::SSM::Parameters',
+                                 'type' => 'SSM_Parameters'
+                               },
+               'ExpiresAfter' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxConcurrency' => {
+                                     'type' => 'Str'
+                                   },
+               'StatusDetails' => {
+                                    'type' => 'Str'
+                                  },
+               'DeliveryTimedOutCount' => {
+                                            'type' => 'Int'
+                                          },
+               'OutputS3BucketName' => {
+                                         'type' => 'Str'
+                                       },
+               'CloudWatchOutputConfig' => {
+                                             'type' => 'SSM_CloudWatchOutputConfig',
+                                             'class' => 'Paws::SSM::CloudWatchOutputConfig'
+                                           },
+               'CompletedCount' => {
+                                     'type' => 'Int'
+                                   },
+               'CommandId' => {
+                                'type' => 'Str'
+                              },
+               'OutputS3KeyPrefix' => {
+                                        'type' => 'Str'
+                                      },
+               'RequestedDateTime' => {
+                                        'type' => 'Str'
+                                      },
+               'DocumentName' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               'MaxErrors' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +145,7 @@ Describes a command request.
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchOutputConfig => L<Paws::SSM::CloudWatchOutputConfig>
+=head2 CloudWatchOutputConfig => SSM_CloudWatchOutputConfig
 
   CloudWatch Logs information where you want Systems Manager to send the
 command output.
@@ -138,7 +225,7 @@ Commands Using Systems Manager Run Command
 in the I<AWS Systems Manager User Guide>.
 
 
-=head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
+=head2 NotificationConfig => SSM_NotificationConfig
 
   Configurations for sending notifications about command status changes.
 
@@ -163,7 +250,7 @@ ignores it. Instead, Systems Manager automatically determines the
 Amazon S3 bucket region.
 
 
-=head2 Parameters => L<Paws::SSM::Parameters>
+=head2 Parameters => SSM_Parameters
 
   The parameter values to be inserted in the document when running the
 command.
@@ -253,7 +340,7 @@ command before running it on any instance. This is a terminal state.
   The number of targets for the command.
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
   An array of search criteria that targets instances using a Key,Value
 combination that you specify. Targets is required if you don't provide

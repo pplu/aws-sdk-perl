@@ -1,23 +1,89 @@
 
 package Paws::AppSync::CreateDataSource;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has DynamodbConfig => (is => 'ro', isa => 'Paws::AppSync::DynamodbDataSourceConfig', traits => ['NameInRequest'], request_name => 'dynamodbConfig');
-  has ElasticsearchConfig => (is => 'ro', isa => 'Paws::AppSync::ElasticsearchDataSourceConfig', traits => ['NameInRequest'], request_name => 'elasticsearchConfig');
-  has HttpConfig => (is => 'ro', isa => 'Paws::AppSync::HttpDataSourceConfig', traits => ['NameInRequest'], request_name => 'httpConfig');
-  has LambdaConfig => (is => 'ro', isa => 'Paws::AppSync::LambdaDataSourceConfig', traits => ['NameInRequest'], request_name => 'lambdaConfig');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has RelationalDatabaseConfig => (is => 'ro', isa => 'Paws::AppSync::RelationalDatabaseDataSourceConfig', traits => ['NameInRequest'], request_name => 'relationalDatabaseConfig');
-  has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn');
-  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw/AppSync_RelationalDatabaseDataSourceConfig AppSync_DynamodbDataSourceConfig AppSync_HttpDataSourceConfig AppSync_LambdaDataSourceConfig AppSync_ElasticsearchDataSourceConfig/;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DynamodbConfig => (is => 'ro', isa => AppSync_DynamodbDataSourceConfig, predicate => 1);
+  has ElasticsearchConfig => (is => 'ro', isa => AppSync_ElasticsearchDataSourceConfig, predicate => 1);
+  has HttpConfig => (is => 'ro', isa => AppSync_HttpDataSourceConfig, predicate => 1);
+  has LambdaConfig => (is => 'ro', isa => AppSync_LambdaDataSourceConfig, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RelationalDatabaseConfig => (is => 'ro', isa => AppSync_RelationalDatabaseDataSourceConfig, predicate => 1);
+  has ServiceRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDataSource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apis/{apiId}/datasources');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppSync::CreateDataSourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDataSource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apis/{apiId}/datasources');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppSync::CreateDataSourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Name' => 1,
+                    'ApiId' => 1
+                  },
+  'NameInRequest' => {
+                       'HttpConfig' => 'httpConfig',
+                       'RelationalDatabaseConfig' => 'relationalDatabaseConfig',
+                       'Type' => 'type',
+                       'ElasticsearchConfig' => 'elasticsearchConfig',
+                       'LambdaConfig' => 'lambdaConfig',
+                       'ServiceRoleArn' => 'serviceRoleArn',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'DynamodbConfig' => 'dynamodbConfig'
+                     },
+  'types' => {
+               'RelationalDatabaseConfig' => {
+                                               'type' => 'AppSync_RelationalDatabaseDataSourceConfig',
+                                               'class' => 'Paws::AppSync::RelationalDatabaseDataSourceConfig'
+                                             },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'HttpConfig' => {
+                                 'type' => 'AppSync_HttpDataSourceConfig',
+                                 'class' => 'Paws::AppSync::HttpDataSourceConfig'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ServiceRoleArn' => {
+                                     'type' => 'Str'
+                                   },
+               'LambdaConfig' => {
+                                   'class' => 'Paws::AppSync::LambdaDataSourceConfig',
+                                   'type' => 'AppSync_LambdaDataSourceConfig'
+                                 },
+               'ElasticsearchConfig' => {
+                                          'class' => 'Paws::AppSync::ElasticsearchDataSourceConfig',
+                                          'type' => 'AppSync_ElasticsearchDataSourceConfig'
+                                        },
+               'DynamodbConfig' => {
+                                     'class' => 'Paws::AppSync::DynamodbDataSourceConfig',
+                                     'type' => 'AppSync_DynamodbDataSourceConfig'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ApiId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'ParamInURI' => {
+                    'ApiId' => 'apiId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -103,25 +169,25 @@ A description of the C<DataSource>.
 
 
 
-=head2 DynamodbConfig => L<Paws::AppSync::DynamodbDataSourceConfig>
+=head2 DynamodbConfig => AppSync_DynamodbDataSourceConfig
 
 Amazon DynamoDB settings.
 
 
 
-=head2 ElasticsearchConfig => L<Paws::AppSync::ElasticsearchDataSourceConfig>
+=head2 ElasticsearchConfig => AppSync_ElasticsearchDataSourceConfig
 
 Amazon Elasticsearch Service settings.
 
 
 
-=head2 HttpConfig => L<Paws::AppSync::HttpDataSourceConfig>
+=head2 HttpConfig => AppSync_HttpDataSourceConfig
 
 HTTP endpoint settings.
 
 
 
-=head2 LambdaConfig => L<Paws::AppSync::LambdaDataSourceConfig>
+=head2 LambdaConfig => AppSync_LambdaDataSourceConfig
 
 AWS Lambda settings.
 
@@ -133,7 +199,7 @@ A user-supplied name for the C<DataSource>.
 
 
 
-=head2 RelationalDatabaseConfig => L<Paws::AppSync::RelationalDatabaseDataSourceConfig>
+=head2 RelationalDatabaseConfig => AppSync_RelationalDatabaseDataSourceConfig
 
 Relational database settings.
 

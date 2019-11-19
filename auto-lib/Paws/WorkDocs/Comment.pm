@@ -1,14 +1,59 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::Comment;
-  use Moose;
-  has CommentId => (is => 'ro', isa => 'Str', required => 1);
-  has Contributor => (is => 'ro', isa => 'Paws::WorkDocs::User');
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has ParentId => (is => 'ro', isa => 'Str');
-  has RecipientId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Text => (is => 'ro', isa => 'Str');
-  has ThreadId => (is => 'ro', isa => 'Str');
-  has Visibility => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw/WorkDocs_User/;
+  has CommentId => (is => 'ro', isa => Str, required => 1);
+  has Contributor => (is => 'ro', isa => WorkDocs_User);
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has ParentId => (is => 'ro', isa => Str);
+  has RecipientId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Text => (is => 'ro', isa => Str);
+  has ThreadId => (is => 'ro', isa => Str);
+  has Visibility => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CommentId' => 1
+                  },
+  'types' => {
+               'ParentId' => {
+                               'type' => 'Str'
+                             },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'Visibility' => {
+                                 'type' => 'Str'
+                               },
+               'ThreadId' => {
+                               'type' => 'Str'
+                             },
+               'Text' => {
+                           'type' => 'Str'
+                         },
+               'Contributor' => {
+                                  'class' => 'Paws::WorkDocs::User',
+                                  'type' => 'WorkDocs_User'
+                                },
+               'CommentId' => {
+                                'type' => 'Str'
+                              },
+               'RecipientId' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +94,7 @@ Describes a comment.
   The ID of the comment.
 
 
-=head2 Contributor => L<Paws::WorkDocs::User>
+=head2 Contributor => WorkDocs_User
 
   The details of the user who made the comment.
 

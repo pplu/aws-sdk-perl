@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::ELBv2::SslPolicy;
-  use Moose;
-  has Ciphers => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Cipher]');
-  has Name => (is => 'ro', isa => 'Str');
-  has SslProtocols => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Undef/;
+  use Paws::ELBv2::Types qw/ELBv2_Cipher/;
+  has Ciphers => (is => 'ro', isa => ArrayRef[ELBv2_Cipher]);
+  has Name => (is => 'ro', isa => Str);
+  has SslProtocols => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ciphers' => {
+                              'class' => 'Paws::ELBv2::Cipher',
+                              'type' => 'ArrayRef[ELBv2_Cipher]'
+                            },
+               'SslProtocols' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ Information about a policy used for SSL negotiation.
 =head1 ATTRIBUTES
 
 
-=head2 Ciphers => ArrayRef[L<Paws::ELBv2::Cipher>]
+=head2 Ciphers => ArrayRef[ELBv2_Cipher]
 
   The ciphers.
 

@@ -1,19 +1,69 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Forecast::DescribeDatasetImportJobResponse;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DatasetArn => (is => 'ro', isa => 'Str');
-  has DatasetImportJobArn => (is => 'ro', isa => 'Str');
-  has DatasetImportJobName => (is => 'ro', isa => 'Str');
-  has DataSize => (is => 'ro', isa => 'Num');
-  has DataSource => (is => 'ro', isa => 'Paws::Forecast::DataSource');
-  has FieldStatistics => (is => 'ro', isa => 'Paws::Forecast::FieldStatistics');
-  has LastModificationTime => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TimestampFormat => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::Forecast::Types qw/Forecast_DataSource Forecast_FieldStatistics/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DatasetArn => (is => 'ro', isa => Str);
+  has DatasetImportJobArn => (is => 'ro', isa => Str);
+  has DatasetImportJobName => (is => 'ro', isa => Str);
+  has DataSize => (is => 'ro', isa => Num);
+  has DataSource => (is => 'ro', isa => Forecast_DataSource);
+  has FieldStatistics => (is => 'ro', isa => Forecast_FieldStatistics);
+  has LastModificationTime => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TimestampFormat => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimestampFormat' => {
+                                      'type' => 'Str'
+                                    },
+               'DatasetImportJobArn' => {
+                                          'type' => 'Str'
+                                        },
+               'LastModificationTime' => {
+                                           'type' => 'Str'
+                                         },
+               'DatasetArn' => {
+                                 'type' => 'Str'
+                               },
+               'DatasetImportJobName' => {
+                                           'type' => 'Str'
+                                         },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'DataSize' => {
+                               'type' => 'Num'
+                             },
+               'DataSource' => {
+                                 'class' => 'Paws::Forecast::DataSource',
+                                 'type' => 'Forecast_DataSource'
+                               },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'FieldStatistics' => {
+                                      'type' => 'Forecast_FieldStatistics',
+                                      'class' => 'Paws::Forecast::FieldStatistics'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -51,13 +101,13 @@ The size of the dataset in gigabytes (GB) after completion of the
 import job.
 
 
-=head2 DataSource => L<Paws::Forecast::DataSource>
+=head2 DataSource => Forecast_DataSource
 
 The location of the training data to import. The training data must be
 stored in an Amazon S3 bucket.
 
 
-=head2 FieldStatistics => L<Paws::Forecast::FieldStatistics>
+=head2 FieldStatistics => Forecast_FieldStatistics
 
 Statistical information about each field in the input data.
 

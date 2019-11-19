@@ -1,22 +1,71 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::PutScalingPolicy;
-  use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str');
-  has EvaluationPeriods => (is => 'ro', isa => 'Int');
-  has FleetId => (is => 'ro', isa => 'Str', required => 1);
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyType => (is => 'ro', isa => 'Str');
-  has ScalingAdjustment => (is => 'ro', isa => 'Int');
-  has ScalingAdjustmentType => (is => 'ro', isa => 'Str');
-  has TargetConfiguration => (is => 'ro', isa => 'Paws::GameLift::TargetConfiguration');
-  has Threshold => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::GameLift::Types qw/GameLift_TargetConfiguration/;
+  has ComparisonOperator => (is => 'ro', isa => Str, predicate => 1);
+  has EvaluationPeriods => (is => 'ro', isa => Int, predicate => 1);
+  has FleetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PolicyType => (is => 'ro', isa => Str, predicate => 1);
+  has ScalingAdjustment => (is => 'ro', isa => Int, predicate => 1);
+  has ScalingAdjustmentType => (is => 'ro', isa => Str, predicate => 1);
+  has TargetConfiguration => (is => 'ro', isa => GameLift_TargetConfiguration, predicate => 1);
+  has Threshold => (is => 'ro', isa => Num, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutScalingPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::PutScalingPolicyOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutScalingPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::PutScalingPolicyOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyType' => {
+                                 'type' => 'Str'
+                               },
+               'ScalingAdjustmentType' => {
+                                            'type' => 'Str'
+                                          },
+               'TargetConfiguration' => {
+                                          'class' => 'Paws::GameLift::TargetConfiguration',
+                                          'type' => 'GameLift_TargetConfiguration'
+                                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       },
+               'Threshold' => {
+                                'type' => 'Num'
+                              },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'ScalingAdjustment' => {
+                                        'type' => 'Int'
+                                      },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'EvaluationPeriods' => {
+                                        'type' => 'Int'
+                                      }
+             },
+  'IsRequired' => {
+                    'MetricName' => 1,
+                    'FleetId' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -210,7 +259,7 @@ scale up while negative values scale down; for example, a value of
 
 Valid values are: C<"ChangeInCapacity">, C<"ExactCapacity">, C<"PercentChangeInCapacity">
 
-=head2 TargetConfiguration => L<Paws::GameLift::TargetConfiguration>
+=head2 TargetConfiguration => GameLift_TargetConfiguration
 
 Object that contains settings for a target-based scaling policy.
 

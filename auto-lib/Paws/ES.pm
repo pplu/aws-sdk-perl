@@ -1,14 +1,15 @@
 package Paws::ES;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'es' }
   sub signing_name { 'es' }
   sub version { '2015-01-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -304,7 +305,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/elasticsearch-s
 
 =item ARN => Str
 
-=item TagList => ArrayRef[L<Paws::ES::Tag>]
+=item TagList => ArrayRef[ES_Tag]
 
 
 =back
@@ -346,27 +347,27 @@ and when the C<UpdateStatus> is in the C<PENDING_UPDATE> state.
 
 =item [AccessPolicies => Str]
 
-=item [AdvancedOptions => L<Paws::ES::AdvancedOptions>]
+=item [AdvancedOptions => ES_AdvancedOptions]
 
-=item [CognitoOptions => L<Paws::ES::CognitoOptions>]
+=item [CognitoOptions => ES_CognitoOptions]
 
-=item [DomainEndpointOptions => L<Paws::ES::DomainEndpointOptions>]
+=item [DomainEndpointOptions => ES_DomainEndpointOptions]
 
-=item [EBSOptions => L<Paws::ES::EBSOptions>]
+=item [EBSOptions => ES_EBSOptions]
 
-=item [ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>]
+=item [ElasticsearchClusterConfig => ES_ElasticsearchClusterConfig]
 
 =item [ElasticsearchVersion => Str]
 
-=item [EncryptionAtRestOptions => L<Paws::ES::EncryptionAtRestOptions>]
+=item [EncryptionAtRestOptions => ES_EncryptionAtRestOptions]
 
-=item [LogPublishingOptions => L<Paws::ES::LogPublishingOptions>]
+=item [LogPublishingOptions => ES_LogPublishingOptions]
 
-=item [NodeToNodeEncryptionOptions => L<Paws::ES::NodeToNodeEncryptionOptions>]
+=item [NodeToNodeEncryptionOptions => ES_NodeToNodeEncryptionOptions]
 
-=item [SnapshotOptions => L<Paws::ES::SnapshotOptions>]
+=item [SnapshotOptions => ES_SnapshotOptions]
 
-=item [VPCOptions => L<Paws::ES::VPCOptions>]
+=item [VPCOptions => ES_VPCOptions]
 
 
 =back
@@ -730,21 +731,21 @@ Schedules a service software update for an Amazon ES domain.
 
 =item [AccessPolicies => Str]
 
-=item [AdvancedOptions => L<Paws::ES::AdvancedOptions>]
+=item [AdvancedOptions => ES_AdvancedOptions]
 
-=item [CognitoOptions => L<Paws::ES::CognitoOptions>]
+=item [CognitoOptions => ES_CognitoOptions]
 
-=item [DomainEndpointOptions => L<Paws::ES::DomainEndpointOptions>]
+=item [DomainEndpointOptions => ES_DomainEndpointOptions]
 
-=item [EBSOptions => L<Paws::ES::EBSOptions>]
+=item [EBSOptions => ES_EBSOptions]
 
-=item [ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>]
+=item [ElasticsearchClusterConfig => ES_ElasticsearchClusterConfig]
 
-=item [LogPublishingOptions => L<Paws::ES::LogPublishingOptions>]
+=item [LogPublishingOptions => ES_LogPublishingOptions]
 
-=item [SnapshotOptions => L<Paws::ES::SnapshotOptions>]
+=item [SnapshotOptions => ES_SnapshotOptions]
 
-=item [VPCOptions => L<Paws::ES::VPCOptions>]
+=item [VPCOptions => ES_VPCOptions]
 
 
 =back

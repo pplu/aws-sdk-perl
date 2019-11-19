@@ -1,13 +1,61 @@
 package Paws::EC2::SecurityGroup;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'groupDescription', traits => ['NameInRequest']);
-  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
-  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
-  has IpPermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IpPermission]', request_name => 'ipPermissions', traits => ['NameInRequest']);
-  has IpPermissionsEgress => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IpPermission]', request_name => 'ipPermissionsEgress', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Tag EC2_IpPermission/;
+  has Description => (is => 'ro', isa => Str);
+  has GroupId => (is => 'ro', isa => Str);
+  has GroupName => (is => 'ro', isa => Str);
+  has IpPermissions => (is => 'ro', isa => ArrayRef[EC2_IpPermission]);
+  has IpPermissionsEgress => (is => 'ro', isa => ArrayRef[EC2_IpPermission]);
+  has OwnerId => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'IpPermissions' => {
+                                    'class' => 'Paws::EC2::IpPermission',
+                                    'type' => 'ArrayRef[EC2_IpPermission]'
+                                  },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'Tags' => {
+                           'type' => 'ArrayRef[EC2_Tag]',
+                           'class' => 'Paws::EC2::Tag'
+                         },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'IpPermissionsEgress' => {
+                                          'type' => 'ArrayRef[EC2_IpPermission]',
+                                          'class' => 'Paws::EC2::IpPermission'
+                                        },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'GroupId' => 'groupId',
+                       'OwnerId' => 'ownerId',
+                       'IpPermissions' => 'ipPermissions',
+                       'VpcId' => 'vpcId',
+                       'Tags' => 'tagSet',
+                       'GroupName' => 'groupName',
+                       'IpPermissionsEgress' => 'ipPermissionsEgress',
+                       'Description' => 'groupDescription'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,12 +106,12 @@ This class has no description
   The name of the security group.
 
 
-=head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
+=head2 IpPermissions => ArrayRef[EC2_IpPermission]
 
   The inbound rules associated with the security group.
 
 
-=head2 IpPermissionsEgress => ArrayRef[L<Paws::EC2::IpPermission>]
+=head2 IpPermissionsEgress => ArrayRef[EC2_IpPermission]
 
   [VPC only] The outbound rules associated with the security group.
 
@@ -73,7 +121,7 @@ This class has no description
   The AWS account ID of the owner of the security group.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the security group.
 

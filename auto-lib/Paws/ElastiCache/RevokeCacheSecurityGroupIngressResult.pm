@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::ElastiCache::RevokeCacheSecurityGroupIngressResult;
-  use Moose;
-  has CacheSecurityGroup => (is => 'ro', isa => 'Paws::ElastiCache::CacheSecurityGroup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw/ElastiCache_CacheSecurityGroup/;
+  has CacheSecurityGroup => (is => 'ro', isa => ElastiCache_CacheSecurityGroup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CacheSecurityGroup' => {
+                                         'type' => 'ElastiCache_CacheSecurityGroup',
+                                         'class' => 'Paws::ElastiCache::CacheSecurityGroup'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::ElastiCache::RevokeCacheSecurityGroupIngressResult
 =head1 ATTRIBUTES
 
 
-=head2 CacheSecurityGroup => L<Paws::ElastiCache::CacheSecurityGroup>
+=head2 CacheSecurityGroup => ElastiCache_CacheSecurityGroup
 
 
 

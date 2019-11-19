@@ -1,18 +1,71 @@
+# Generated from default/object.tt
 package Paws::ApplicationInsights::Observation;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has LineTime => (is => 'ro', isa => 'Str');
-  has LogFilter => (is => 'ro', isa => 'Str');
-  has LogGroup => (is => 'ro', isa => 'Str');
-  has LogText => (is => 'ro', isa => 'Str');
-  has MetricName => (is => 'ro', isa => 'Str');
-  has MetricNamespace => (is => 'ro', isa => 'Str');
-  has SourceARN => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Unit => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::ApplicationInsights::Types qw//;
+  has EndTime => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has LineTime => (is => 'ro', isa => Str);
+  has LogFilter => (is => 'ro', isa => Str);
+  has LogGroup => (is => 'ro', isa => Str);
+  has LogText => (is => 'ro', isa => Str);
+  has MetricName => (is => 'ro', isa => Str);
+  has MetricNamespace => (is => 'ro', isa => Str);
+  has SourceARN => (is => 'ro', isa => Str);
+  has SourceType => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Unit => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'LogText' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'LogGroup' => {
+                               'type' => 'Str'
+                             },
+               'LogFilter' => {
+                                'type' => 'Str'
+                              },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'Value' => {
+                            'type' => 'Num'
+                          },
+               'MetricNamespace' => {
+                                      'type' => 'Str'
+                                    },
+               'LineTime' => {
+                               'type' => 'Str'
+                             },
+               'SourceARN' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

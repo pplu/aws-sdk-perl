@@ -1,14 +1,53 @@
 
 package Paws::Route53::ListGeoLocationsResponse;
-  use Moose;
-  has GeoLocationDetailsList => (is => 'ro', isa => 'ArrayRef[Paws::Route53::GeoLocationDetails]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has MaxItems => (is => 'ro', isa => 'Str', required => 1);
-  has NextContinentCode => (is => 'ro', isa => 'Str');
-  has NextCountryCode => (is => 'ro', isa => 'Str');
-  has NextSubdivisionCode => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::Route53::Types qw/Route53_GeoLocationDetails/;
+  has GeoLocationDetailsList => (is => 'ro', isa => ArrayRef[Route53_GeoLocationDetails], required => 1);
+  has IsTruncated => (is => 'ro', isa => Bool, required => 1);
+  has MaxItems => (is => 'ro', isa => Str, required => 1);
+  has NextContinentCode => (is => 'ro', isa => Str);
+  has NextCountryCode => (is => 'ro', isa => Str);
+  has NextSubdivisionCode => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'IsTruncated' => 1,
+                    'MaxItems' => 1,
+                    'GeoLocationDetailsList' => 1
+                  },
+  'types' => {
+               'NextCountryCode' => {
+                                      'type' => 'Str'
+                                    },
+               'GeoLocationDetailsList' => {
+                                             'type' => 'ArrayRef[Route53_GeoLocationDetails]',
+                                             'class' => 'Paws::Route53::GeoLocationDetails'
+                                           },
+               'NextContinentCode' => {
+                                        'type' => 'Str'
+                                      },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'MaxItems' => {
+                               'type' => 'Str'
+                             },
+               'NextSubdivisionCode' => {
+                                          'type' => 'Str'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +59,7 @@ Paws::Route53::ListGeoLocationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> GeoLocationDetailsList => ArrayRef[L<Paws::Route53::GeoLocationDetails>]
+=head2 B<REQUIRED> GeoLocationDetailsList => ArrayRef[Route53_GeoLocationDetails]
 
 A complex type that contains one C<GeoLocationDetails> element for each
 location that Amazon Route 53 supports for geolocation.

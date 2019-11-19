@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayManagement::Identity;
-  use Moose;
-  has SourceIp => (is => 'ro', isa => 'Str', request_name => 'sourceIp', traits => ['NameInRequest'], required => 1);
-  has UserAgent => (is => 'ro', isa => 'Str', request_name => 'userAgent', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayManagement::Types qw//;
+  has SourceIp => (is => 'ro', isa => Str, required => 1);
+  has UserAgent => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceIp' => {
+                               'type' => 'Str'
+                             },
+               'UserAgent' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'UserAgent' => 1,
+                    'SourceIp' => 1
+                  },
+  'NameInRequest' => {
+                       'UserAgent' => 'userAgent',
+                       'SourceIp' => 'sourceIp'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

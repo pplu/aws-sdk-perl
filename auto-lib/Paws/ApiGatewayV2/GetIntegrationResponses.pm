@@ -1,17 +1,53 @@
 
 package Paws::ApiGatewayV2::GetIntegrationResponses;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has IntegrationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'integrationId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IntegrationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetIntegrationResponses');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/integrations/{integrationId}/integrationresponses');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::GetIntegrationResponsesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetIntegrationResponses');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/apis/{apiId}/integrations/{integrationId}/integrationresponses');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::GetIntegrationResponsesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'IntegrationId' => 'integrationId',
+                    'ApiId' => 'apiId'
+                  },
+  'types' => {
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'IntegrationId' => {
+                                    'type' => 'Str'
+                                  },
+               'MaxResults' => {
+                                 'type' => 'Str'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInQuery' => {
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken'
+                    },
+  'IsRequired' => {
+                    'ApiId' => 1,
+                    'IntegrationId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

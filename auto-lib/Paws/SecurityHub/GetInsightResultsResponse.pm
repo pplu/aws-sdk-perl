@@ -1,9 +1,30 @@
 
 package Paws::SecurityHub::GetInsightResultsResponse;
-  use Moose;
-  has InsightResults => (is => 'ro', isa => 'Paws::SecurityHub::InsightResults', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw/SecurityHub_InsightResults/;
+  has InsightResults => (is => 'ro', isa => SecurityHub_InsightResults, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InsightResults' => 1
+                  },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InsightResults' => {
+                                     'type' => 'SecurityHub_InsightResults',
+                                     'class' => 'Paws::SecurityHub::InsightResults'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::SecurityHub::GetInsightResultsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InsightResults => L<Paws::SecurityHub::InsightResults>
+=head2 B<REQUIRED> InsightResults => SecurityHub_InsightResults
 
 The insight results returned by the operation.
 

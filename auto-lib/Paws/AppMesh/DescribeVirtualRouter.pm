@@ -1,15 +1,41 @@
 
 package Paws::AppMesh::DescribeVirtualRouter;
-  use Moose;
-  has MeshName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meshName', required => 1);
-  has VirtualRouterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'virtualRouterName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw//;
+  has MeshName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VirtualRouterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVirtualRouter');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::DescribeVirtualRouterOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeVirtualRouter');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppMesh::DescribeVirtualRouterOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VirtualRouterName' => {
+                                        'type' => 'Str'
+                                      },
+               'MeshName' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'MeshName' => 1,
+                    'VirtualRouterName' => 1
+                  },
+  'ParamInURI' => {
+                    'VirtualRouterName' => 'virtualRouterName',
+                    'MeshName' => 'meshName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

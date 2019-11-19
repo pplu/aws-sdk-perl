@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::CampaignEventFilter;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'Paws::Pinpoint::EventDimensions', required => 1);
-  has FilterType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EventDimensions/;
+  has Dimensions => (is => 'ro', isa => Pinpoint_EventDimensions, required => 1);
+  has FilterType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Dimensions' => {
+                                 'type' => 'Pinpoint_EventDimensions',
+                                 'class' => 'Paws::Pinpoint::EventDimensions'
+                               },
+               'FilterType' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'FilterType' => 1,
+                    'Dimensions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Specifies the settings for events that cause a campaign to be sent.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Dimensions => L<Paws::Pinpoint::EventDimensions>
+=head2 B<REQUIRED> Dimensions => Pinpoint_EventDimensions
 
   The dimension settings of the event filter for the campaign.
 

@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetDefaultPatchBaselineResult;
-  use Moose;
-  has BaselineId => (is => 'ro', isa => 'Str');
-  has OperatingSystem => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has BaselineId => (is => 'ro', isa => Str);
+  has OperatingSystem => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BaselineId' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'OperatingSystem' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

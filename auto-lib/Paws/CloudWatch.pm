@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::CloudWatch;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'monitoring' }
   sub signing_name { 'monitoring' }
   sub version { '2010-08-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -327,7 +329,7 @@ operation. In the event of an error, no alarms are deleted.
 
 =item Stat => Str
 
-=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+=item [Dimensions => ArrayRef[CloudWatch_Dimension]]
 
 
 =back
@@ -424,7 +426,7 @@ alarm name, the alarm state, or a prefix for any action.
 
 =item Namespace => Str
 
-=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+=item [Dimensions => ArrayRef[CloudWatch_Dimension]]
 
 =item [ExtendedStatistic => Str]
 
@@ -449,7 +451,7 @@ specify a statistic, period, or unit.
 
 =over
 
-=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+=item [Dimensions => ArrayRef[CloudWatch_Dimension]]
 
 =item [MaxResults => Int]
 
@@ -532,7 +534,7 @@ dashboard when you call C<PutDashboard> to create the copy.
 
 =item EndTime => Str
 
-=item MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>]
+=item MetricDataQueries => ArrayRef[CloudWatch_MetricDataQuery]
 
 =item StartTime => Str
 
@@ -624,7 +626,7 @@ perform unit conversions.
 
 =item StartTime => Str
 
-=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+=item [Dimensions => ArrayRef[CloudWatch_Dimension]]
 
 =item [ExtendedStatistics => ArrayRef[Str|Undef]]
 
@@ -793,7 +795,7 @@ receive the next 1000 results.
 
 =over
 
-=item [Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>]]
+=item [Dimensions => ArrayRef[CloudWatch_DimensionFilter]]
 
 =item [MetricName => Str]
 
@@ -846,9 +848,9 @@ tagging.
 
 =item Stat => Str
 
-=item [Configuration => L<Paws::CloudWatch::AnomalyDetectorConfiguration>]
+=item [Configuration => CloudWatch_AnomalyDetectorConfiguration]
 
-=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+=item [Dimensions => ArrayRef[CloudWatch_Dimension]]
 
 
 =back
@@ -920,7 +922,7 @@ create the dashboard.
 
 =item [DatapointsToAlarm => Int]
 
-=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+=item [Dimensions => ArrayRef[CloudWatch_Dimension]]
 
 =item [EvaluateLowSampleCountPercentile => Str]
 
@@ -930,7 +932,7 @@ create the dashboard.
 
 =item [MetricName => Str]
 
-=item [Metrics => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>]]
+=item [Metrics => ArrayRef[CloudWatch_MetricDataQuery]]
 
 =item [Namespace => Str]
 
@@ -940,7 +942,7 @@ create the dashboard.
 
 =item [Statistic => Str]
 
-=item [Tags => ArrayRef[L<Paws::CloudWatch::Tag>]]
+=item [Tags => ArrayRef[CloudWatch_Tag]]
 
 =item [Threshold => Num]
 
@@ -1025,7 +1027,7 @@ AWS service-linked role
 
 =over
 
-=item MetricData => ArrayRef[L<Paws::CloudWatch::MetricDatum>]
+=item MetricData => ArrayRef[CloudWatch_MetricDatum]
 
 =item Namespace => Str
 
@@ -1128,7 +1130,7 @@ DescribeAlarmHistory.
 
 =item ResourceARN => Str
 
-=item Tags => ArrayRef[L<Paws::CloudWatch::Tag>]
+=item Tags => ArrayRef[CloudWatch_Tag]
 
 
 =back
@@ -1205,9 +1207,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudWatch::DescribeAlarmsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllMetricData(sub { },EndTime => Str, MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>], StartTime => Str, [MaxDatapoints => Int, NextToken => Str, ScanBy => Str])
+=head2 GetAllMetricData(sub { },EndTime => Str, MetricDataQueries => ArrayRef[CloudWatch_MetricDataQuery], StartTime => Str, [MaxDatapoints => Int, NextToken => Str, ScanBy => Str])
 
-=head2 GetAllMetricData(EndTime => Str, MetricDataQueries => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>], StartTime => Str, [MaxDatapoints => Int, NextToken => Str, ScanBy => Str])
+=head2 GetAllMetricData(EndTime => Str, MetricDataQueries => ArrayRef[CloudWatch_MetricDataQuery], StartTime => Str, [MaxDatapoints => Int, NextToken => Str, ScanBy => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1231,9 +1233,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudWatch::ListDashboardsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllMetrics(sub { },[Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>], MetricName => Str, Namespace => Str, NextToken => Str])
+=head2 ListAllMetrics(sub { },[Dimensions => ArrayRef[CloudWatch_DimensionFilter], MetricName => Str, Namespace => Str, NextToken => Str])
 
-=head2 ListAllMetrics([Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>], MetricName => Str, Namespace => Str, NextToken => Str])
+=head2 ListAllMetrics([Dimensions => ArrayRef[CloudWatch_DimensionFilter], MetricName => Str, Namespace => Str, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

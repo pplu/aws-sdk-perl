@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::Budgets::BudgetedAndActualAmounts;
-  use Moose;
-  has ActualAmount => (is => 'ro', isa => 'Paws::Budgets::Spend');
-  has BudgetedAmount => (is => 'ro', isa => 'Paws::Budgets::Spend');
-  has TimePeriod => (is => 'ro', isa => 'Paws::Budgets::TimePeriod');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Budgets::Types qw/Budgets_Spend Budgets_TimePeriod/;
+  has ActualAmount => (is => 'ro', isa => Budgets_Spend);
+  has BudgetedAmount => (is => 'ro', isa => Budgets_Spend);
+  has TimePeriod => (is => 'ro', isa => Budgets_TimePeriod);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimePeriod' => {
+                                 'type' => 'Budgets_TimePeriod',
+                                 'class' => 'Paws::Budgets::TimePeriod'
+                               },
+               'ActualAmount' => {
+                                   'type' => 'Budgets_Spend',
+                                   'class' => 'Paws::Budgets::Spend'
+                                 },
+               'BudgetedAmount' => {
+                                     'type' => 'Budgets_Spend',
+                                     'class' => 'Paws::Budgets::Spend'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,17 +65,17 @@ to your actual costs or usage.
 =head1 ATTRIBUTES
 
 
-=head2 ActualAmount => L<Paws::Budgets::Spend>
+=head2 ActualAmount => Budgets_Spend
 
   Your actual costs or usage for a budget period.
 
 
-=head2 BudgetedAmount => L<Paws::Budgets::Spend>
+=head2 BudgetedAmount => Budgets_Spend
 
   The amount of cost or usage that you created the budget for.
 
 
-=head2 TimePeriod => L<Paws::Budgets::TimePeriod>
+=head2 TimePeriod => Budgets_TimePeriod
 
   The time period covered by this budget comparison.
 

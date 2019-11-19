@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::TemporaryCredential;
-  use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has Password => (is => 'ro', isa => 'Str');
-  has Username => (is => 'ro', isa => 'Str');
-  has ValidForInMinutes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::OpsWorks::Types qw//;
+  has InstanceId => (is => 'ro', isa => Str);
+  has Password => (is => 'ro', isa => Str);
+  has Username => (is => 'ro', isa => Str);
+  has ValidForInMinutes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'ValidForInMinutes' => {
+                                        'type' => 'Int'
+                                      },
+               'Password' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

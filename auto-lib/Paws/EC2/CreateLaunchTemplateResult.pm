@@ -1,9 +1,31 @@
 
 package Paws::EC2::CreateLaunchTemplateResult;
-  use Moose;
-  has LaunchTemplate => (is => 'ro', isa => 'Paws::EC2::LaunchTemplate', request_name => 'launchTemplate', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_LaunchTemplate/;
+  has LaunchTemplate => (is => 'ro', isa => EC2_LaunchTemplate);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LaunchTemplate' => {
+                                     'type' => 'EC2_LaunchTemplate',
+                                     'class' => 'Paws::EC2::LaunchTemplate'
+                                   }
+             },
+  'NameInRequest' => {
+                       'LaunchTemplate' => 'launchTemplate'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::CreateLaunchTemplateResult
 =head1 ATTRIBUTES
 
 
-=head2 LaunchTemplate => L<Paws::EC2::LaunchTemplate>
+=head2 LaunchTemplate => EC2_LaunchTemplate
 
 Information about the launch template.
 

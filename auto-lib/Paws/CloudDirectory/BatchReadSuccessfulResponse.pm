@@ -1,19 +1,89 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchReadSuccessfulResponse;
-  use Moose;
-  has GetLinkAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchGetLinkAttributesResponse');
-  has GetObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchGetObjectAttributesResponse');
-  has GetObjectInformation => (is => 'ro', isa => 'Paws::CloudDirectory::BatchGetObjectInformationResponse');
-  has ListAttachedIndices => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListAttachedIndicesResponse');
-  has ListIncomingTypedLinks => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListIncomingTypedLinksResponse');
-  has ListIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListIndexResponse');
-  has ListObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListObjectAttributesResponse');
-  has ListObjectChildren => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListObjectChildrenResponse');
-  has ListObjectParentPaths => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListObjectParentPathsResponse');
-  has ListObjectParents => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListObjectParentsResponse');
-  has ListObjectPolicies => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListObjectPoliciesResponse');
-  has ListOutgoingTypedLinks => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListOutgoingTypedLinksResponse');
-  has ListPolicyAttachments => (is => 'ro', isa => 'Paws::CloudDirectory::BatchListPolicyAttachmentsResponse');
-  has LookupPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchLookupPolicyResponse');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_BatchLookupPolicyResponse CloudDirectory_BatchGetObjectInformationResponse CloudDirectory_BatchGetLinkAttributesResponse CloudDirectory_BatchListOutgoingTypedLinksResponse CloudDirectory_BatchListObjectAttributesResponse CloudDirectory_BatchListObjectChildrenResponse CloudDirectory_BatchListIndexResponse CloudDirectory_BatchListObjectParentsResponse CloudDirectory_BatchGetObjectAttributesResponse CloudDirectory_BatchListPolicyAttachmentsResponse CloudDirectory_BatchListObjectParentPathsResponse CloudDirectory_BatchListIncomingTypedLinksResponse CloudDirectory_BatchListAttachedIndicesResponse CloudDirectory_BatchListObjectPoliciesResponse/;
+  has GetLinkAttributes => (is => 'ro', isa => CloudDirectory_BatchGetLinkAttributesResponse);
+  has GetObjectAttributes => (is => 'ro', isa => CloudDirectory_BatchGetObjectAttributesResponse);
+  has GetObjectInformation => (is => 'ro', isa => CloudDirectory_BatchGetObjectInformationResponse);
+  has ListAttachedIndices => (is => 'ro', isa => CloudDirectory_BatchListAttachedIndicesResponse);
+  has ListIncomingTypedLinks => (is => 'ro', isa => CloudDirectory_BatchListIncomingTypedLinksResponse);
+  has ListIndex => (is => 'ro', isa => CloudDirectory_BatchListIndexResponse);
+  has ListObjectAttributes => (is => 'ro', isa => CloudDirectory_BatchListObjectAttributesResponse);
+  has ListObjectChildren => (is => 'ro', isa => CloudDirectory_BatchListObjectChildrenResponse);
+  has ListObjectParentPaths => (is => 'ro', isa => CloudDirectory_BatchListObjectParentPathsResponse);
+  has ListObjectParents => (is => 'ro', isa => CloudDirectory_BatchListObjectParentsResponse);
+  has ListObjectPolicies => (is => 'ro', isa => CloudDirectory_BatchListObjectPoliciesResponse);
+  has ListOutgoingTypedLinks => (is => 'ro', isa => CloudDirectory_BatchListOutgoingTypedLinksResponse);
+  has ListPolicyAttachments => (is => 'ro', isa => CloudDirectory_BatchListPolicyAttachmentsResponse);
+  has LookupPolicy => (is => 'ro', isa => CloudDirectory_BatchLookupPolicyResponse);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ListAttachedIndices' => {
+                                          'type' => 'CloudDirectory_BatchListAttachedIndicesResponse',
+                                          'class' => 'Paws::CloudDirectory::BatchListAttachedIndicesResponse'
+                                        },
+               'ListObjectChildren' => {
+                                         'type' => 'CloudDirectory_BatchListObjectChildrenResponse',
+                                         'class' => 'Paws::CloudDirectory::BatchListObjectChildrenResponse'
+                                       },
+               'ListPolicyAttachments' => {
+                                            'class' => 'Paws::CloudDirectory::BatchListPolicyAttachmentsResponse',
+                                            'type' => 'CloudDirectory_BatchListPolicyAttachmentsResponse'
+                                          },
+               'ListIndex' => {
+                                'class' => 'Paws::CloudDirectory::BatchListIndexResponse',
+                                'type' => 'CloudDirectory_BatchListIndexResponse'
+                              },
+               'ListObjectPolicies' => {
+                                         'type' => 'CloudDirectory_BatchListObjectPoliciesResponse',
+                                         'class' => 'Paws::CloudDirectory::BatchListObjectPoliciesResponse'
+                                       },
+               'GetObjectInformation' => {
+                                           'type' => 'CloudDirectory_BatchGetObjectInformationResponse',
+                                           'class' => 'Paws::CloudDirectory::BatchGetObjectInformationResponse'
+                                         },
+               'LookupPolicy' => {
+                                   'type' => 'CloudDirectory_BatchLookupPolicyResponse',
+                                   'class' => 'Paws::CloudDirectory::BatchLookupPolicyResponse'
+                                 },
+               'ListObjectAttributes' => {
+                                           'class' => 'Paws::CloudDirectory::BatchListObjectAttributesResponse',
+                                           'type' => 'CloudDirectory_BatchListObjectAttributesResponse'
+                                         },
+               'ListOutgoingTypedLinks' => {
+                                             'type' => 'CloudDirectory_BatchListOutgoingTypedLinksResponse',
+                                             'class' => 'Paws::CloudDirectory::BatchListOutgoingTypedLinksResponse'
+                                           },
+               'ListObjectParents' => {
+                                        'type' => 'CloudDirectory_BatchListObjectParentsResponse',
+                                        'class' => 'Paws::CloudDirectory::BatchListObjectParentsResponse'
+                                      },
+               'ListIncomingTypedLinks' => {
+                                             'class' => 'Paws::CloudDirectory::BatchListIncomingTypedLinksResponse',
+                                             'type' => 'CloudDirectory_BatchListIncomingTypedLinksResponse'
+                                           },
+               'GetObjectAttributes' => {
+                                          'class' => 'Paws::CloudDirectory::BatchGetObjectAttributesResponse',
+                                          'type' => 'CloudDirectory_BatchGetObjectAttributesResponse'
+                                        },
+               'GetLinkAttributes' => {
+                                        'class' => 'Paws::CloudDirectory::BatchGetLinkAttributesResponse',
+                                        'type' => 'CloudDirectory_BatchGetLinkAttributesResponse'
+                                      },
+               'ListObjectParentPaths' => {
+                                            'class' => 'Paws::CloudDirectory::BatchListObjectParentPathsResponse',
+                                            'type' => 'CloudDirectory_BatchListObjectParentPathsResponse'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,27 +119,27 @@ Represents the output of a C<BatchRead> success response operation.
 =head1 ATTRIBUTES
 
 
-=head2 GetLinkAttributes => L<Paws::CloudDirectory::BatchGetLinkAttributesResponse>
+=head2 GetLinkAttributes => CloudDirectory_BatchGetLinkAttributesResponse
 
   The list of attributes to retrieve from the typed link.
 
 
-=head2 GetObjectAttributes => L<Paws::CloudDirectory::BatchGetObjectAttributesResponse>
+=head2 GetObjectAttributes => CloudDirectory_BatchGetObjectAttributesResponse
 
   Retrieves attributes within a facet that are associated with an object.
 
 
-=head2 GetObjectInformation => L<Paws::CloudDirectory::BatchGetObjectInformationResponse>
+=head2 GetObjectInformation => CloudDirectory_BatchGetObjectInformationResponse
 
   Retrieves metadata about an object.
 
 
-=head2 ListAttachedIndices => L<Paws::CloudDirectory::BatchListAttachedIndicesResponse>
+=head2 ListAttachedIndices => CloudDirectory_BatchListAttachedIndicesResponse
 
   Lists indices attached to an object.
 
 
-=head2 ListIncomingTypedLinks => L<Paws::CloudDirectory::BatchListIncomingTypedLinksResponse>
+=head2 ListIncomingTypedLinks => CloudDirectory_BatchListIncomingTypedLinksResponse
 
   Returns a paginated list of all the incoming TypedLinkSpecifier
 information for an object. It also supports filtering by typed link
@@ -77,23 +147,23 @@ facet and identity attributes. For more information, see Typed Links
 (https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
-=head2 ListIndex => L<Paws::CloudDirectory::BatchListIndexResponse>
+=head2 ListIndex => CloudDirectory_BatchListIndexResponse
 
   Lists objects attached to the specified index.
 
 
-=head2 ListObjectAttributes => L<Paws::CloudDirectory::BatchListObjectAttributesResponse>
+=head2 ListObjectAttributes => CloudDirectory_BatchListObjectAttributesResponse
 
   Lists all attributes that are associated with an object.
 
 
-=head2 ListObjectChildren => L<Paws::CloudDirectory::BatchListObjectChildrenResponse>
+=head2 ListObjectChildren => CloudDirectory_BatchListObjectChildrenResponse
 
   Returns a paginated list of child objects that are associated with a
 given object.
 
 
-=head2 ListObjectParentPaths => L<Paws::CloudDirectory::BatchListObjectParentPathsResponse>
+=head2 ListObjectParentPaths => CloudDirectory_BatchListObjectParentPathsResponse
 
   Retrieves all available parent paths for any object type such as node,
 leaf node, policy node, and index node objects. For more information
@@ -101,17 +171,17 @@ about objects, see Directory Structure
 (https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html).
 
 
-=head2 ListObjectParents => L<Paws::CloudDirectory::BatchListObjectParentsResponse>
+=head2 ListObjectParents => CloudDirectory_BatchListObjectParentsResponse
 
   
 
 
-=head2 ListObjectPolicies => L<Paws::CloudDirectory::BatchListObjectPoliciesResponse>
+=head2 ListObjectPolicies => CloudDirectory_BatchListObjectPoliciesResponse
 
   Returns policies attached to an object in pagination fashion.
 
 
-=head2 ListOutgoingTypedLinks => L<Paws::CloudDirectory::BatchListOutgoingTypedLinksResponse>
+=head2 ListOutgoingTypedLinks => CloudDirectory_BatchListOutgoingTypedLinksResponse
 
   Returns a paginated list of all the outgoing TypedLinkSpecifier
 information for an object. It also supports filtering by typed link
@@ -119,13 +189,13 @@ facet and identity attributes. For more information, see Typed Links
 (https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
-=head2 ListPolicyAttachments => L<Paws::CloudDirectory::BatchListPolicyAttachmentsResponse>
+=head2 ListPolicyAttachments => CloudDirectory_BatchListPolicyAttachmentsResponse
 
   Returns all of the C<ObjectIdentifiers> to which a given policy is
 attached.
 
 
-=head2 LookupPolicy => L<Paws::CloudDirectory::BatchLookupPolicyResponse>
+=head2 LookupPolicy => CloudDirectory_BatchLookupPolicyResponse
 
   Lists all policies from the root of the Directory to the object
 specified. If there are no policies present, an empty list is returned.

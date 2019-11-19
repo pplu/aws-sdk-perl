@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::PipelineExecutionSummary;
-  use Moose;
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has PipelineExecutionId => (is => 'ro', isa => 'Str', request_name => 'pipelineExecutionId', traits => ['NameInRequest']);
-  has SourceRevisions => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::SourceRevision]', request_name => 'sourceRevisions', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Trigger => (is => 'ro', isa => 'Paws::CodePipeline::ExecutionTrigger', request_name => 'trigger', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ExecutionTrigger CodePipeline_SourceRevision/;
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has PipelineExecutionId => (is => 'ro', isa => Str);
+  has SourceRevisions => (is => 'ro', isa => ArrayRef[CodePipeline_SourceRevision]);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Trigger => (is => 'ro', isa => CodePipeline_ExecutionTrigger);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Trigger' => {
+                              'type' => 'CodePipeline_ExecutionTrigger',
+                              'class' => 'Paws::CodePipeline::ExecutionTrigger'
+                            },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'SourceRevisions' => {
+                                      'type' => 'ArrayRef[CodePipeline_SourceRevision]',
+                                      'class' => 'Paws::CodePipeline::SourceRevision'
+                                    },
+               'PipelineExecutionId' => {
+                                          'type' => 'Str'
+                                        },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'SourceRevisions' => 'sourceRevisions',
+                       'PipelineExecutionId' => 'pipelineExecutionId',
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'Trigger' => 'trigger',
+                       'StartTime' => 'startTime',
+                       'Status' => 'status'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +94,7 @@ timestamp format.
   The ID of the pipeline execution.
 
 
-=head2 SourceRevisions => ArrayRef[L<Paws::CodePipeline::SourceRevision>]
+=head2 SourceRevisions => ArrayRef[CodePipeline_SourceRevision]
 
   A list of the source artifact revisions that initiated a pipeline
 execution.
@@ -92,7 +134,7 @@ Failed: The pipeline execution was not completed successfully.
 
 
 
-=head2 Trigger => L<Paws::CodePipeline::ExecutionTrigger>
+=head2 Trigger => CodePipeline_ExecutionTrigger
 
   The interaction or event that started a pipeline execution, such as
 automated change detection or a C<StartPipelineExecution> API call.

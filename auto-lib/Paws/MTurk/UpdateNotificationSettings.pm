@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MTurk::UpdateNotificationSettings;
-  use Moose;
-  has Active => (is => 'ro', isa => 'Bool');
-  has HITTypeId => (is => 'ro', isa => 'Str', required => 1);
-  has Notification => (is => 'ro', isa => 'Paws::MTurk::NotificationSpecification');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::MTurk::Types qw/MTurk_NotificationSpecification/;
+  has Active => (is => 'ro', isa => Bool, predicate => 1);
+  has HITTypeId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Notification => (is => 'ro', isa => MTurk_NotificationSpecification, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateNotificationSettings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MTurk::UpdateNotificationSettingsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateNotificationSettings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MTurk::UpdateNotificationSettingsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'HITTypeId' => 1
+                  },
+  'types' => {
+               'Active' => {
+                             'type' => 'Bool'
+                           },
+               'Notification' => {
+                                   'type' => 'MTurk_NotificationSpecification',
+                                   'class' => 'Paws::MTurk::NotificationSpecification'
+                                 },
+               'HITTypeId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +93,7 @@ updated.
 
 
 
-=head2 Notification => L<Paws::MTurk::NotificationSpecification>
+=head2 Notification => MTurk_NotificationSpecification
 
 The notification specification for the HIT type.
 

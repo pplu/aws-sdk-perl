@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::Neptune::DBSubnetGroupMessage;
-  use Moose;
-  has DBSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBSubnetGroup]', request_name => 'DBSubnetGroup', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_DBSubnetGroup/;
+  has DBSubnetGroups => (is => 'ro', isa => ArrayRef[Neptune_DBSubnetGroup]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DBSubnetGroups' => {
+                                     'type' => 'ArrayRef[Neptune_DBSubnetGroup]',
+                                     'class' => 'Paws::Neptune::DBSubnetGroup'
+                                   }
+             },
+  'NameInRequest' => {
+                       'DBSubnetGroups' => 'DBSubnetGroup'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Neptune::DBSubnetGroupMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBSubnetGroups => ArrayRef[L<Paws::Neptune::DBSubnetGroup>]
+=head2 DBSubnetGroups => ArrayRef[Neptune_DBSubnetGroup]
 
 A list of DBSubnetGroup instances.
 

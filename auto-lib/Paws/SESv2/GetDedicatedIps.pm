@@ -1,16 +1,42 @@
 
 package Paws::SESv2::GetDedicatedIps;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
-  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'PageSize');
-  has PoolName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PoolName');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SESv2::Types qw//;
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has PoolName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDedicatedIps');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/dedicated-ips');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::GetDedicatedIpsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDedicatedIps');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/dedicated-ips');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::GetDedicatedIpsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'PoolName' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInQuery' => {
+                      'PoolName' => 'PoolName',
+                      'PageSize' => 'PageSize',
+                      'NextToken' => 'NextToken'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

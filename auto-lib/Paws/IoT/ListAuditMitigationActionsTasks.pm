@@ -1,20 +1,66 @@
 
 package Paws::IoT::ListAuditMitigationActionsTasks;
-  use Moose;
-  has AuditTaskId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'auditTaskId');
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'endTime', required => 1);
-  has FindingId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'findingId');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'startTime', required => 1);
-  has TaskStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'taskStatus');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has AuditTaskId => (is => 'ro', isa => Str, predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FindingId => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TaskStatus => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAuditMitigationActionsTasks');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/audit/mitigationactions/tasks');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListAuditMitigationActionsTasksResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAuditMitigationActionsTasks');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/audit/mitigationactions/tasks');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListAuditMitigationActionsTasksResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'TaskStatus' => {
+                                 'type' => 'Str'
+                               },
+               'FindingId' => {
+                                'type' => 'Str'
+                              },
+               'AuditTaskId' => {
+                                  'type' => 'Str'
+                                },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'EndTime' => 1,
+                    'StartTime' => 1
+                  },
+  'ParamInQuery' => {
+                      'StartTime' => 'startTime',
+                      'EndTime' => 'endTime',
+                      'FindingId' => 'findingId',
+                      'AuditTaskId' => 'auditTaskId',
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken',
+                      'TaskStatus' => 'taskStatus'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

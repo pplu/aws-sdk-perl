@@ -1,13 +1,32 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::DisableLogging;
-  use Moose;
-  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw//;
+  has ClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableLogging');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::LoggingStatus');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DisableLoggingResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisableLogging');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::LoggingStatus');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DisableLoggingResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ClusterIdentifier' => 1
+                  },
+  'types' => {
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

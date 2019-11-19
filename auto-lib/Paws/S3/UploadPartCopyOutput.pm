@@ -1,15 +1,60 @@
 
 package Paws::S3::UploadPartCopyOutput;
-  use Moose;
-  has CopyPartResult => (is => 'ro', isa => 'Paws::S3::CopyPartResult');
-  has CopySourceVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-version-id');
-  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
-  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_CopyPartResult/;
+  has CopyPartResult => (is => 'ro', isa => S3_CopyPartResult);
+  has CopySourceVersionId => (is => 'ro', isa => Str);
+  has RequestCharged => (is => 'ro', isa => Str);
+  has ServerSideEncryption => (is => 'ro', isa => Str);
+  has SSECustomerAlgorithm => (is => 'ro', isa => Str);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => Str);
+  has SSEKMSKeyId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SSECustomerAlgorithm' => {
+                                           'type' => 'Str'
+                                         },
+               'SSECustomerKeyMD5' => {
+                                        'type' => 'Str'
+                                      },
+               'RequestCharged' => {
+                                     'type' => 'Str'
+                                   },
+               'ServerSideEncryption' => {
+                                           'type' => 'Str'
+                                         },
+               'SSEKMSKeyId' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CopyPartResult' => {
+                                     'class' => 'Paws::S3::CopyPartResult',
+                                     'type' => 'S3_CopyPartResult'
+                                   },
+               'CopySourceVersionId' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'ParamInHeader' => {
+                       'SSEKMSKeyId' => 'x-amz-server-side-encryption-aws-kms-key-id',
+                       'CopySourceVersionId' => 'x-amz-copy-source-version-id',
+                       'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5',
+                       'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm',
+                       'ServerSideEncryption' => 'x-amz-server-side-encryption',
+                       'RequestCharged' => 'x-amz-request-charged'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +66,7 @@ Paws::S3::UploadPartCopyOutput
 =head1 ATTRIBUTES
 
 
-=head2 CopyPartResult => L<Paws::S3::CopyPartResult>
+=head2 CopyPartResult => S3_CopyPartResult
 
 Container for all response elements.
 

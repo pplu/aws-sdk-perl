@@ -1,9 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeStar::DeleteUserProfileResult;
-  use Moose;
-  has UserArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStar::Types qw//;
+  has UserArn => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'UserArn' => 1
+                  },
+  'NameInRequest' => {
+                       'UserArn' => 'userArn'
+                     },
+  'types' => {
+               'UserArn' => {
+                              'type' => 'Str'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

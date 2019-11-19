@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CUR::DescribeReportDefinitionsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ReportDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::CUR::ReportDefinition]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CUR::Types qw/CUR_ReportDefinition/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ReportDefinitions => (is => 'ro', isa => ArrayRef[CUR_ReportDefinition]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ReportDefinitions' => {
+                                        'type' => 'ArrayRef[CUR_ReportDefinition]',
+                                        'class' => 'Paws::CUR::ReportDefinition'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +42,7 @@ Paws::CUR::DescribeReportDefinitionsResponse
 
 
 
-=head2 ReportDefinitions => ArrayRef[L<Paws::CUR::ReportDefinition>]
+=head2 ReportDefinitions => ArrayRef[CUR_ReportDefinition]
 
 A list of AWS Cost and Usage reports owned by the account.
 

@@ -1,19 +1,69 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeStar::CreateProject;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has SourceCode => (is => 'ro', isa => 'ArrayRef[Paws::CodeStar::Code]', traits => ['NameInRequest'], request_name => 'sourceCode' );
-  has Tags => (is => 'ro', isa => 'Paws::CodeStar::Tags', traits => ['NameInRequest'], request_name => 'tags' );
-  has Toolchain => (is => 'ro', isa => 'Paws::CodeStar::Toolchain', traits => ['NameInRequest'], request_name => 'toolchain' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeStar::Types qw/CodeStar_Toolchain CodeStar_Code CodeStar_Tags/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceCode => (is => 'ro', isa => ArrayRef[CodeStar_Code], predicate => 1);
+  has Tags => (is => 'ro', isa => CodeStar_Tags, predicate => 1);
+  has Toolchain => (is => 'ro', isa => CodeStar_Toolchain, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateProject');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStar::CreateProjectResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateProject');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStar::CreateProjectResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Toolchain' => {
+                                'type' => 'CodeStar_Toolchain',
+                                'class' => 'Paws::CodeStar::Toolchain'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::CodeStar::Tags',
+                           'type' => 'CodeStar_Tags'
+                         },
+               'SourceCode' => {
+                                 'type' => 'ArrayRef[CodeStar_Code]',
+                                 'class' => 'Paws::CodeStar::Code'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'Name' => 'name',
+                       'Id' => 'id',
+                       'Toolchain' => 'toolchain',
+                       'Tags' => 'tags',
+                       'SourceCode' => 'sourceCode',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -126,7 +176,7 @@ The display name for the project to be created in AWS CodeStar.
 
 
 
-=head2 SourceCode => ArrayRef[L<Paws::CodeStar::Code>]
+=head2 SourceCode => ArrayRef[CodeStar_Code]
 
 A list of the Code objects submitted with the project request. If this
 parameter is specified, the request must also include the toolchain
@@ -134,13 +184,13 @@ parameter.
 
 
 
-=head2 Tags => L<Paws::CodeStar::Tags>
+=head2 Tags => CodeStar_Tags
 
 The tags created for the project.
 
 
 
-=head2 Toolchain => L<Paws::CodeStar::Toolchain>
+=head2 Toolchain => CodeStar_Toolchain
 
 The name of the toolchain template file submitted with the project
 request. If this parameter is specified, the request must also include

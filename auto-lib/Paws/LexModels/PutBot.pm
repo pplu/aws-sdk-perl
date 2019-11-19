@@ -1,25 +1,97 @@
 
 package Paws::LexModels::PutBot;
-  use Moose;
-  has AbortStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'abortStatement');
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
-  has ChildDirected => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'childDirected', required => 1);
-  has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'clarificationPrompt');
-  has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
-  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
-  has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has ProcessBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'processBehavior');
-  has VoiceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'voiceId');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::LexModels::Types qw/LexModels_Prompt LexModels_Intent LexModels_Statement/;
+  has AbortStatement => (is => 'ro', isa => LexModels_Statement, predicate => 1);
+  has Checksum => (is => 'ro', isa => Str, predicate => 1);
+  has ChildDirected => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has ClarificationPrompt => (is => 'ro', isa => LexModels_Prompt, predicate => 1);
+  has CreateVersion => (is => 'ro', isa => Bool, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has IdleSessionTTLInSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has Intents => (is => 'ro', isa => ArrayRef[LexModels_Intent], predicate => 1);
+  has Locale => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProcessBehavior => (is => 'ro', isa => Str, predicate => 1);
+  has VoiceId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutBot');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bots/{name}/versions/$LATEST');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::PutBotResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutBot');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/bots/{name}/versions/$LATEST');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::PutBotResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProcessBehavior' => {
+                                      'type' => 'Str'
+                                    },
+               'IdleSessionTTLInSeconds' => {
+                                              'type' => 'Int'
+                                            },
+               'ChildDirected' => {
+                                    'type' => 'Bool'
+                                  },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AbortStatement' => {
+                                     'type' => 'LexModels_Statement',
+                                     'class' => 'Paws::LexModels::Statement'
+                                   },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CreateVersion' => {
+                                    'type' => 'Bool'
+                                  },
+               'Checksum' => {
+                               'type' => 'Str'
+                             },
+               'ClarificationPrompt' => {
+                                          'class' => 'Paws::LexModels::Prompt',
+                                          'type' => 'LexModels_Prompt'
+                                        },
+               'VoiceId' => {
+                              'type' => 'Str'
+                            },
+               'Intents' => {
+                              'class' => 'Paws::LexModels::Intent',
+                              'type' => 'ArrayRef[LexModels_Intent]'
+                            }
+             },
+  'NameInRequest' => {
+                       'AbortStatement' => 'abortStatement',
+                       'Locale' => 'locale',
+                       'Intents' => 'intents',
+                       'VoiceId' => 'voiceId',
+                       'ChildDirected' => 'childDirected',
+                       'ClarificationPrompt' => 'clarificationPrompt',
+                       'IdleSessionTTLInSeconds' => 'idleSessionTTLInSeconds',
+                       'Checksum' => 'checksum',
+                       'CreateVersion' => 'createVersion',
+                       'Description' => 'description',
+                       'ProcessBehavior' => 'processBehavior'
+                     },
+  'IsRequired' => {
+                    'Locale' => 1,
+                    'Name' => 1,
+                    'ChildDirected' => 1
+                  },
+  'ParamInURI' => {
+                    'Name' => 'name'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -108,7 +180,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mod
 =head1 ATTRIBUTES
 
 
-=head2 AbortStatement => L<Paws::LexModels::Statement>
+=head2 AbortStatement => LexModels_Statement
 
 When Amazon Lex can't understand the user's input in context, it tries
 to elicit the information a few times. After that, Amazon Lex sends the
@@ -173,7 +245,7 @@ Lex FAQ. (https://aws.amazon.com/lex/faqs#data-security)
 
 
 
-=head2 ClarificationPrompt => L<Paws::LexModels::Prompt>
+=head2 ClarificationPrompt => LexModels_Prompt
 
 When Amazon Lex doesn't understand the user's intent, it uses this
 message to get clarification. To specify how many times Amazon Lex
@@ -222,7 +294,7 @@ The default is 300 seconds (5 minutes).
 
 
 
-=head2 Intents => ArrayRef[L<Paws::LexModels::Intent>]
+=head2 Intents => ArrayRef[LexModels_Intent]
 
 An array of C<Intent> objects. Each intent represents a command that a
 user can express. For example, a pizza ordering bot might support an

@@ -1,17 +1,48 @@
 
 package Paws::EC2::ModifyTransitGatewayVpcAttachment;
-  use Moose;
-  has AddSubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Options => (is => 'ro', isa => 'Paws::EC2::ModifyTransitGatewayVpcAttachmentRequestOptions');
-  has RemoveSubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TransitGatewayAttachmentId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_ModifyTransitGatewayVpcAttachmentRequestOptions/;
+  has AddSubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Options => (is => 'ro', isa => EC2_ModifyTransitGatewayVpcAttachmentRequestOptions, predicate => 1);
+  has RemoveSubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has TransitGatewayAttachmentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyTransitGatewayVpcAttachment');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyTransitGatewayVpcAttachmentResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyTransitGatewayVpcAttachment');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyTransitGatewayVpcAttachmentResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TransitGatewayAttachmentId' => 1
+                  },
+  'types' => {
+               'RemoveSubnetIds' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'Options' => {
+                              'type' => 'EC2_ModifyTransitGatewayVpcAttachmentRequestOptions',
+                              'class' => 'Paws::EC2::ModifyTransitGatewayVpcAttachmentRequestOptions'
+                            },
+               'TransitGatewayAttachmentId' => {
+                                                 'type' => 'Str'
+                                               },
+               'AddSubnetIds' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +102,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Options => L<Paws::EC2::ModifyTransitGatewayVpcAttachmentRequestOptions>
+=head2 Options => EC2_ModifyTransitGatewayVpcAttachmentRequestOptions
 
 The new VPC attachment options.
 

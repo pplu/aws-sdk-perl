@@ -1,9 +1,31 @@
 
 package Paws::EC2::DescribeBundleTasksResult;
-  use Moose;
-  has BundleTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BundleTask]', request_name => 'bundleInstanceTasksSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_BundleTask/;
+  has BundleTasks => (is => 'ro', isa => ArrayRef[EC2_BundleTask]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BundleTasks' => {
+                                  'class' => 'Paws::EC2::BundleTask',
+                                  'type' => 'ArrayRef[EC2_BundleTask]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'BundleTasks' => 'bundleInstanceTasksSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::DescribeBundleTasksResult
 =head1 ATTRIBUTES
 
 
-=head2 BundleTasks => ArrayRef[L<Paws::EC2::BundleTask>]
+=head2 BundleTasks => ArrayRef[EC2_BundleTask]
 
 Information about the bundle tasks.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::ApplicationCodeConfigurationDescription;
-  use Moose;
-  has CodeContentDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::CodeContentDescription');
-  has CodeContentType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_CodeContentDescription/;
+  has CodeContentDescription => (is => 'ro', isa => KinesisAnalyticsV2_CodeContentDescription);
+  has CodeContentType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CodeContentType' => 1
+                  },
+  'types' => {
+               'CodeContentDescription' => {
+                                             'class' => 'Paws::KinesisAnalyticsV2::CodeContentDescription',
+                                             'type' => 'KinesisAnalyticsV2_CodeContentDescription'
+                                           },
+               'CodeContentType' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ application.
 =head1 ATTRIBUTES
 
 
-=head2 CodeContentDescription => L<Paws::KinesisAnalyticsV2::CodeContentDescription>
+=head2 CodeContentDescription => KinesisAnalyticsV2_CodeContentDescription
 
   Describes details about the location and format of the application
 code.

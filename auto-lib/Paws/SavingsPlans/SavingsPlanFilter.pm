@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SavingsPlans::SavingsPlanFilter;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'values', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SavingsPlans::Types qw//;
+  has Name => (is => 'ro', isa => Str);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Values' => 'values'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

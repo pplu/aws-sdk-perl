@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::SqlInjectionMatchSet;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has SqlInjectionMatchSetId => (is => 'ro', isa => 'Str', required => 1);
-  has SqlInjectionMatchTuples => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::SqlInjectionMatchTuple]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_SqlInjectionMatchTuple/;
+  has Name => (is => 'ro', isa => Str);
+  has SqlInjectionMatchSetId => (is => 'ro', isa => Str, required => 1);
+  has SqlInjectionMatchTuples => (is => 'ro', isa => ArrayRef[WAFRegional_SqlInjectionMatchTuple], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SqlInjectionMatchSetId' => {
+                                             'type' => 'Str'
+                                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SqlInjectionMatchTuples' => {
+                                              'class' => 'Paws::WAFRegional::SqlInjectionMatchTuple',
+                                              'type' => 'ArrayRef[WAFRegional_SqlInjectionMatchTuple]'
+                                            }
+             },
+  'IsRequired' => {
+                    'SqlInjectionMatchTuples' => 1,
+                    'SqlInjectionMatchSetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +91,7 @@ C<SqlInjectionMatchSetId> is returned by CreateSqlInjectionMatchSet and
 by ListSqlInjectionMatchSets.
 
 
-=head2 B<REQUIRED> SqlInjectionMatchTuples => ArrayRef[L<Paws::WAFRegional::SqlInjectionMatchTuple>]
+=head2 B<REQUIRED> SqlInjectionMatchTuples => ArrayRef[WAFRegional_SqlInjectionMatchTuple]
 
   Specifies the parts of web requests that you want to inspect for
 snippets of malicious SQL code.

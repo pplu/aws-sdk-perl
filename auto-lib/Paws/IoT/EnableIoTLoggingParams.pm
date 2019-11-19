@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoT::EnableIoTLoggingParams;
-  use Moose;
-  has LogLevel => (is => 'ro', isa => 'Str', request_name => 'logLevel', traits => ['NameInRequest'], required => 1);
-  has RoleArnForLogging => (is => 'ro', isa => 'Str', request_name => 'roleArnForLogging', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has LogLevel => (is => 'ro', isa => Str, required => 1);
+  has RoleArnForLogging => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArnForLogging' => {
+                                        'type' => 'Str'
+                                      },
+               'LogLevel' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'LogLevel' => 1,
+                    'RoleArnForLogging' => 1
+                  },
+  'NameInRequest' => {
+                       'LogLevel' => 'logLevel',
+                       'RoleArnForLogging' => 'roleArnForLogging'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

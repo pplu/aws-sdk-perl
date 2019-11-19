@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::SslConfiguration;
-  use Moose;
-  has Certificate => (is => 'ro', isa => 'Str', required => 1);
-  has Chain => (is => 'ro', isa => 'Str');
-  has PrivateKey => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw//;
+  has Certificate => (is => 'ro', isa => Str, required => 1);
+  has Chain => (is => 'ro', isa => Str);
+  has PrivateKey => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrivateKey' => {
+                                 'type' => 'Str'
+                               },
+               'Chain' => {
+                            'type' => 'Str'
+                          },
+               'Certificate' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Certificate' => 1,
+                    'PrivateKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

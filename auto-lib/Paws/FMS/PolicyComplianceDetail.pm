@@ -1,12 +1,49 @@
+# Generated from default/object.tt
 package Paws::FMS::PolicyComplianceDetail;
-  use Moose;
-  has EvaluationLimitExceeded => (is => 'ro', isa => 'Bool');
-  has ExpiredAt => (is => 'ro', isa => 'Str');
-  has IssueInfoMap => (is => 'ro', isa => 'Paws::FMS::IssueInfoMap');
-  has MemberAccount => (is => 'ro', isa => 'Str');
-  has PolicyId => (is => 'ro', isa => 'Str');
-  has PolicyOwner => (is => 'ro', isa => 'Str');
-  has Violators => (is => 'ro', isa => 'ArrayRef[Paws::FMS::ComplianceViolator]');
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef/;
+  use Paws::FMS::Types qw/FMS_IssueInfoMap FMS_ComplianceViolator/;
+  has EvaluationLimitExceeded => (is => 'ro', isa => Bool);
+  has ExpiredAt => (is => 'ro', isa => Str);
+  has IssueInfoMap => (is => 'ro', isa => FMS_IssueInfoMap);
+  has MemberAccount => (is => 'ro', isa => Str);
+  has PolicyId => (is => 'ro', isa => Str);
+  has PolicyOwner => (is => 'ro', isa => Str);
+  has Violators => (is => 'ro', isa => ArrayRef[FMS_ComplianceViolator]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyId' => {
+                               'type' => 'Str'
+                             },
+               'Violators' => {
+                                'class' => 'Paws::FMS::ComplianceViolator',
+                                'type' => 'ArrayRef[FMS_ComplianceViolator]'
+                              },
+               'PolicyOwner' => {
+                                  'type' => 'Str'
+                                },
+               'IssueInfoMap' => {
+                                   'type' => 'FMS_IssueInfoMap',
+                                   'class' => 'Paws::FMS::IssueInfoMap'
+                                 },
+               'ExpiredAt' => {
+                                'type' => 'Str'
+                              },
+               'EvaluationLimitExceeded' => {
+                                              'type' => 'Bool'
+                                            },
+               'MemberAccount' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +94,7 @@ Manager policy.
 considered out of date.
 
 
-=head2 IssueInfoMap => L<Paws::FMS::IssueInfoMap>
+=head2 IssueInfoMap => FMS_IssueInfoMap
 
   Details about problems with dependent services, such as AWS WAF or AWS
 Config, that are causing a resource to be noncompliant. The details
@@ -80,7 +117,7 @@ received that indicates the problem with the service.
   The AWS account that created the AWS Firewall Manager policy.
 
 
-=head2 Violators => ArrayRef[L<Paws::FMS::ComplianceViolator>]
+=head2 Violators => ArrayRef[FMS_ComplianceViolator]
 
   An array of resources that aren't protected by the AWS WAF or Shield
 Advanced policy or that aren't in compliance with the security group

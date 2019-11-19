@@ -1,11 +1,50 @@
+# Generated from default/object.tt
 package Paws::CloudFront::Origin;
-  use Moose;
-  has CustomHeaders => (is => 'ro', isa => 'Paws::CloudFront::CustomHeaders');
-  has CustomOriginConfig => (is => 'ro', isa => 'Paws::CloudFront::CustomOriginConfig');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has OriginPath => (is => 'ro', isa => 'Str');
-  has S3OriginConfig => (is => 'ro', isa => 'Paws::CloudFront::S3OriginConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_S3OriginConfig CloudFront_CustomOriginConfig CloudFront_CustomHeaders/;
+  has CustomHeaders => (is => 'ro', isa => CloudFront_CustomHeaders);
+  has CustomOriginConfig => (is => 'ro', isa => CloudFront_CustomOriginConfig);
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has OriginPath => (is => 'ro', isa => Str);
+  has S3OriginConfig => (is => 'ro', isa => CloudFront_S3OriginConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3OriginConfig' => {
+                                     'class' => 'Paws::CloudFront::S3OriginConfig',
+                                     'type' => 'CloudFront_S3OriginConfig'
+                                   },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'CustomOriginConfig' => {
+                                         'class' => 'Paws::CloudFront::CustomOriginConfig',
+                                         'type' => 'CloudFront_CustomOriginConfig'
+                                       },
+               'OriginPath' => {
+                                 'type' => 'Str'
+                               },
+               'CustomHeaders' => {
+                                    'type' => 'CloudFront_CustomHeaders',
+                                    'class' => 'Paws::CloudFront::CustomHeaders'
+                                  }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,13 +89,13 @@ in the I<AWS General Reference>.
 =head1 ATTRIBUTES
 
 
-=head2 CustomHeaders => L<Paws::CloudFront::CustomHeaders>
+=head2 CustomHeaders => CloudFront_CustomHeaders
 
   A complex type that contains names and values for the custom headers
 that you want.
 
 
-=head2 CustomOriginConfig => L<Paws::CloudFront::CustomOriginConfig>
+=head2 CustomOriginConfig => CloudFront_CustomOriginConfig
 
   A complex type that contains information about a custom origin. If the
 origin is an Amazon S3 bucket, use the C<S3OriginConfig> element
@@ -172,7 +211,7 @@ CloudFront sends a request to Amazon S3 for
 C<myawsbucket/production/acme/index.html>.
 
 
-=head2 S3OriginConfig => L<Paws::CloudFront::S3OriginConfig>
+=head2 S3OriginConfig => CloudFront_S3OriginConfig
 
   A complex type that contains information about the Amazon S3 origin. If
 the origin is a custom origin, use the C<CustomOriginConfig> element

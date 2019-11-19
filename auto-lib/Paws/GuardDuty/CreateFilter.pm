@@ -1,21 +1,76 @@
 
 package Paws::GuardDuty::CreateFilter;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'action');
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has FindingCriteria => (is => 'ro', isa => 'Paws::GuardDuty::FindingCriteria', traits => ['NameInRequest'], request_name => 'findingCriteria', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Rank => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'rank');
-  has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::GuardDuty::Types qw/GuardDuty_FindingCriteria GuardDuty_TagMap/;
+  has Action => (is => 'ro', isa => Str, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FindingCriteria => (is => 'ro', isa => GuardDuty_FindingCriteria, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Rank => (is => 'ro', isa => Int, predicate => 1);
+  has Tags => (is => 'ro', isa => GuardDuty_TagMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFilter');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/filter');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::CreateFilterResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFilter');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/filter');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::CreateFilterResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  },
+  'types' => {
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'type' => 'GuardDuty_TagMap',
+                           'class' => 'Paws::GuardDuty::TagMap'
+                         },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Rank' => {
+                           'type' => 'Int'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'FindingCriteria' => {
+                                      'type' => 'GuardDuty_FindingCriteria',
+                                      'class' => 'Paws::GuardDuty::FindingCriteria'
+                                    }
+             },
+  'IsRequired' => {
+                    'DetectorId' => 1,
+                    'Name' => 1,
+                    'FindingCriteria' => 1
+                  },
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'FindingCriteria' => 'findingCriteria',
+                       'Tags' => 'tags',
+                       'Action' => 'action',
+                       'ClientToken' => 'clientToken',
+                       'Name' => 'name',
+                       'Rank' => 'rank'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -102,7 +157,7 @@ want to create a filter.
 
 
 
-=head2 B<REQUIRED> FindingCriteria => L<Paws::GuardDuty::FindingCriteria>
+=head2 B<REQUIRED> FindingCriteria => GuardDuty_FindingCriteria
 
 Represents the criteria to be used in the filter for querying findings.
 
@@ -122,7 +177,7 @@ findings.
 
 
 
-=head2 Tags => L<Paws::GuardDuty::TagMap>
+=head2 Tags => GuardDuty_TagMap
 
 The tags to be added to a new filter resource.
 

@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EndpointLocation;
-  use Moose;
-  has City => (is => 'ro', isa => 'Str');
-  has Country => (is => 'ro', isa => 'Str');
-  has Latitude => (is => 'ro', isa => 'Num');
-  has Longitude => (is => 'ro', isa => 'Num');
-  has PostalCode => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::Pinpoint::Types qw//;
+  has City => (is => 'ro', isa => Str);
+  has Country => (is => 'ro', isa => Str);
+  has Latitude => (is => 'ro', isa => Num);
+  has Longitude => (is => 'ro', isa => Num);
+  has PostalCode => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'City' => {
+                           'type' => 'Str'
+                         },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'Latitude' => {
+                               'type' => 'Num'
+                             },
+               'PostalCode' => {
+                                 'type' => 'Str'
+                               },
+               'Longitude' => {
+                                'type' => 'Num'
+                              },
+               'Country' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

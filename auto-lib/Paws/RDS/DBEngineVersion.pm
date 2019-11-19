@@ -1,20 +1,88 @@
+# Generated from default/object.tt
 package Paws::RDS::DBEngineVersion;
-  use Moose;
-  has DBEngineDescription => (is => 'ro', isa => 'Str');
-  has DBEngineVersionDescription => (is => 'ro', isa => 'Str');
-  has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has DefaultCharacterSet => (is => 'ro', isa => 'Paws::RDS::CharacterSet');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has ExportableLogTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Status => (is => 'ro', isa => 'Str');
-  has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Paws::RDS::CharacterSet]', request_name => 'CharacterSet', traits => ['NameInRequest']);
-  has SupportedEngineModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SupportedFeatureNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SupportedTimezones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Timezone]', request_name => 'Timezone', traits => ['NameInRequest']);
-  has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => 'Bool');
-  has SupportsReadReplica => (is => 'ro', isa => 'Bool');
-  has ValidUpgradeTarget => (is => 'ro', isa => 'ArrayRef[Paws::RDS::UpgradeTarget]', request_name => 'UpgradeTarget', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::RDS::Types qw/RDS_UpgradeTarget RDS_CharacterSet RDS_Timezone/;
+  has DBEngineDescription => (is => 'ro', isa => Str);
+  has DBEngineVersionDescription => (is => 'ro', isa => Str);
+  has DBParameterGroupFamily => (is => 'ro', isa => Str);
+  has DefaultCharacterSet => (is => 'ro', isa => RDS_CharacterSet);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has ExportableLogTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Status => (is => 'ro', isa => Str);
+  has SupportedCharacterSets => (is => 'ro', isa => ArrayRef[RDS_CharacterSet]);
+  has SupportedEngineModes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SupportedFeatureNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SupportedTimezones => (is => 'ro', isa => ArrayRef[RDS_Timezone]);
+  has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => Bool);
+  has SupportsReadReplica => (is => 'ro', isa => Bool);
+  has ValidUpgradeTarget => (is => 'ro', isa => ArrayRef[RDS_UpgradeTarget]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SupportedCharacterSets' => 'CharacterSet',
+                       'ValidUpgradeTarget' => 'UpgradeTarget',
+                       'SupportedTimezones' => 'Timezone'
+                     },
+  'types' => {
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'SupportsLogExportsToCloudwatchLogs' => {
+                                                         'type' => 'Bool'
+                                                       },
+               'DBEngineDescription' => {
+                                          'type' => 'Str'
+                                        },
+               'DefaultCharacterSet' => {
+                                          'class' => 'Paws::RDS::CharacterSet',
+                                          'type' => 'RDS_CharacterSet'
+                                        },
+               'SupportedCharacterSets' => {
+                                             'class' => 'Paws::RDS::CharacterSet',
+                                             'type' => 'ArrayRef[RDS_CharacterSet]'
+                                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SupportedEngineModes' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'SupportsReadReplica' => {
+                                          'type' => 'Bool'
+                                        },
+               'ValidUpgradeTarget' => {
+                                         'class' => 'Paws::RDS::UpgradeTarget',
+                                         'type' => 'ArrayRef[RDS_UpgradeTarget]'
+                                       },
+               'ExportableLogTypes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'DBEngineVersionDescription' => {
+                                                 'type' => 'Str'
+                                               },
+               'SupportedTimezones' => {
+                                         'class' => 'Paws::RDS::Timezone',
+                                         'type' => 'ArrayRef[RDS_Timezone]'
+                                       },
+               'SupportedFeatureNames' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'DBParameterGroupFamily' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +134,7 @@ C<DescribeDBEngineVersions>.
   The name of the DB parameter group family for the database engine.
 
 
-=head2 DefaultCharacterSet => L<Paws::RDS::CharacterSet>
+=head2 DefaultCharacterSet => RDS_CharacterSet
 
   The default character set for new instances of this engine version, if
 the C<CharacterSetName> parameter of the CreateDBInstance API isn't
@@ -95,7 +163,7 @@ CloudWatch Logs.
 C<deprecated>.
 
 
-=head2 SupportedCharacterSets => ArrayRef[L<Paws::RDS::CharacterSet>]
+=head2 SupportedCharacterSets => ArrayRef[RDS_CharacterSet]
 
   A list of the character sets supported by this engine for the
 C<CharacterSetName> parameter of the C<CreateDBInstance> action.
@@ -121,7 +189,7 @@ s3Import
 
 
 
-=head2 SupportedTimezones => ArrayRef[L<Paws::RDS::Timezone>]
+=head2 SupportedTimezones => ArrayRef[RDS_Timezone]
 
   A list of the time zones supported by this engine for the C<Timezone>
 parameter of the C<CreateDBInstance> action.
@@ -138,7 +206,7 @@ the log types specified by ExportableLogTypes to CloudWatch Logs.
   Indicates whether the database engine version supports Read Replicas.
 
 
-=head2 ValidUpgradeTarget => ArrayRef[L<Paws::RDS::UpgradeTarget>]
+=head2 ValidUpgradeTarget => ArrayRef[RDS_UpgradeTarget]
 
   A list of engine versions that this database engine version can be
 upgraded to.

@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::SSM::AssociationExecution;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str');
-  has AssociationVersion => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has DetailedStatus => (is => 'ro', isa => 'Str');
-  has ExecutionId => (is => 'ro', isa => 'Str');
-  has LastExecutionDate => (is => 'ro', isa => 'Str');
-  has ResourceCountByStatus => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has AssociationId => (is => 'ro', isa => Str);
+  has AssociationVersion => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has DetailedStatus => (is => 'ro', isa => Str);
+  has ExecutionId => (is => 'ro', isa => Str);
+  has LastExecutionDate => (is => 'ro', isa => Str);
+  has ResourceCountByStatus => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceCountByStatus' => {
+                                            'type' => 'Str'
+                                          },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LastExecutionDate' => {
+                                        'type' => 'Str'
+                                      },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'DetailedStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'AssociationVersion' => {
+                                         'type' => 'Str'
+                                       },
+               'ExecutionId' => {
+                                  'type' => 'Str'
+                                },
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

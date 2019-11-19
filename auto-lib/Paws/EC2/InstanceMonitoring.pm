@@ -1,7 +1,29 @@
 package Paws::EC2::InstanceMonitoring;
-  use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has Monitoring => (is => 'ro', isa => 'Paws::EC2::Monitoring', request_name => 'monitoring', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_Monitoring/;
+  has InstanceId => (is => 'ro', isa => Str);
+  has Monitoring => (is => 'ro', isa => EC2_Monitoring);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Monitoring' => {
+                                 'class' => 'Paws::EC2::Monitoring',
+                                 'type' => 'EC2_Monitoring'
+                               },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Monitoring' => 'monitoring',
+                       'InstanceId' => 'instanceId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +64,7 @@ This class has no description
   The ID of the instance.
 
 
-=head2 Monitoring => L<Paws::EC2::Monitoring>
+=head2 Monitoring => EC2_Monitoring
 
   The monitoring for the instance.
 

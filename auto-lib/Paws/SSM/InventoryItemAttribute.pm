@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SSM::InventoryItemAttribute;
-  use Moose;
-  has DataType => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has DataType => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DataType' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'DataType' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

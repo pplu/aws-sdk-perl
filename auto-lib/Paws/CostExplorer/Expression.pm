@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::Expression;
-  use Moose;
-  has And => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::Expression]');
-  has Dimensions => (is => 'ro', isa => 'Paws::CostExplorer::DimensionValues');
-  has Not => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
-  has Or => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::Expression]');
-  has Tags => (is => 'ro', isa => 'Paws::CostExplorer::TagValues');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CostExplorer::Types qw/CostExplorer_Expression CostExplorer_DimensionValues CostExplorer_TagValues/;
+  has And => (is => 'ro', isa => ArrayRef[CostExplorer_Expression]);
+  has Dimensions => (is => 'ro', isa => CostExplorer_DimensionValues);
+  has Not => (is => 'ro', isa => CostExplorer_Expression);
+  has Or => (is => 'ro', isa => ArrayRef[CostExplorer_Expression]);
+  has Tags => (is => 'ro', isa => CostExplorer_TagValues);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'And' => {
+                          'class' => 'Paws::CostExplorer::Expression',
+                          'type' => 'ArrayRef[CostExplorer_Expression]'
+                        },
+               'Dimensions' => {
+                                 'type' => 'CostExplorer_DimensionValues',
+                                 'class' => 'Paws::CostExplorer::DimensionValues'
+                               },
+               'Not' => {
+                          'type' => 'CostExplorer_Expression',
+                          'class' => 'Paws::CostExplorer::Expression'
+                        },
+               'Or' => {
+                         'type' => 'ArrayRef[CostExplorer_Expression]',
+                         'class' => 'Paws::CostExplorer::Expression'
+                       },
+               'Tags' => {
+                           'type' => 'CostExplorer_TagValues',
+                           'class' => 'Paws::CostExplorer::TagValues'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -86,27 +120,27 @@ also limited to C<LINKED_ACCOUNT>, C<REGION>, or C<RIGHTSIZING_TYPE>.
 =head1 ATTRIBUTES
 
 
-=head2 And => ArrayRef[L<Paws::CostExplorer::Expression>]
+=head2 And => ArrayRef[CostExplorer_Expression]
 
   Return results that match both C<Dimension> objects.
 
 
-=head2 Dimensions => L<Paws::CostExplorer::DimensionValues>
+=head2 Dimensions => CostExplorer_DimensionValues
 
   The specific C<Dimension> to use for C<Expression>.
 
 
-=head2 Not => L<Paws::CostExplorer::Expression>
+=head2 Not => CostExplorer_Expression
 
   Return results that don't match a C<Dimension> object.
 
 
-=head2 Or => ArrayRef[L<Paws::CostExplorer::Expression>]
+=head2 Or => ArrayRef[CostExplorer_Expression]
 
   Return results that match either C<Dimension> object.
 
 
-=head2 Tags => L<Paws::CostExplorer::TagValues>
+=head2 Tags => CostExplorer_TagValues
 
   The specific C<Tag> to use for C<Expression>.
 

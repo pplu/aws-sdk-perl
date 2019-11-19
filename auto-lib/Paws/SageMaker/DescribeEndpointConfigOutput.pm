@@ -1,13 +1,50 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::DescribeEndpointConfigOutput;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointConfigArn => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointConfigName => (is => 'ro', isa => 'Str', required => 1);
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has ProductionVariants => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ProductionVariant]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_ProductionVariant/;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has EndpointConfigArn => (is => 'ro', isa => Str, required => 1);
+  has EndpointConfigName => (is => 'ro', isa => Str, required => 1);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has ProductionVariants => (is => 'ro', isa => ArrayRef[SageMaker_ProductionVariant], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'EndpointConfigArn' => 1,
+                    'EndpointConfigName' => 1,
+                    'ProductionVariants' => 1
+                  },
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ProductionVariants' => {
+                                         'type' => 'ArrayRef[SageMaker_ProductionVariant]',
+                                         'class' => 'Paws::SageMaker::ProductionVariant'
+                                       },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'EndpointConfigName' => {
+                                         'type' => 'Str'
+                                       },
+               'EndpointConfigArn' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -39,7 +76,7 @@ AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on
 the ML storage volume attached to the instance.
 
 
-=head2 B<REQUIRED> ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariant>]
+=head2 B<REQUIRED> ProductionVariants => ArrayRef[SageMaker_ProductionVariant]
 
 An array of C<ProductionVariant> objects, one for each model that you
 want to host at this endpoint.

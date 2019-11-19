@@ -1,15 +1,41 @@
 
 package Paws::Lambda::DeleteAlias;
-  use Moose;
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Name', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw//;
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAlias');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/aliases/{Name}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteAlias');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-03-31/functions/{FunctionName}/aliases/{Name}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'FunctionName' => 'FunctionName',
+                    'Name' => 'Name'
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'FunctionName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

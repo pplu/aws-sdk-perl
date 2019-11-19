@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribeEffectivePatchesForPatchBaselineResult;
-  use Moose;
-  has EffectivePatches => (is => 'ro', isa => 'ArrayRef[Paws::SSM::EffectivePatch]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_EffectivePatch/;
+  has EffectivePatches => (is => 'ro', isa => ArrayRef[SSM_EffectivePatch]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'EffectivePatches' => {
+                                       'type' => 'ArrayRef[SSM_EffectivePatch]',
+                                       'class' => 'Paws::SSM::EffectivePatch'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::DescribeEffectivePatchesForPatchBaselineResult
 =head1 ATTRIBUTES
 
 
-=head2 EffectivePatches => ArrayRef[L<Paws::SSM::EffectivePatch>]
+=head2 EffectivePatches => ArrayRef[SSM_EffectivePatch]
 
 An array of patches and patch status.
 

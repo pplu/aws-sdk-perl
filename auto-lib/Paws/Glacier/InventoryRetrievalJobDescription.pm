@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::Glacier::InventoryRetrievalJobDescription;
-  use Moose;
-  has EndDate => (is => 'ro', isa => 'Str');
-  has Format => (is => 'ro', isa => 'Str');
-  has Limit => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has StartDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has EndDate => (is => 'ro', isa => Str);
+  has Format => (is => 'ro', isa => Str);
+  has Limit => (is => 'ro', isa => Str);
+  has Marker => (is => 'ro', isa => Str);
+  has StartDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Limit' => {
+                            'type' => 'Str'
+                          },
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'StartDate' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

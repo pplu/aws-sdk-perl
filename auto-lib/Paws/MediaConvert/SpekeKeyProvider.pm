@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::SpekeKeyProvider;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has SystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'systemIds', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::MediaConvert::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has SystemIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'SystemIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             },
+  'NameInRequest' => {
+                       'SystemIds' => 'systemIds',
+                       'ResourceId' => 'resourceId',
+                       'CertificateArn' => 'certificateArn',
+                       'Url' => 'url'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

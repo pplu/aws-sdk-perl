@@ -1,19 +1,92 @@
+# Generated from default/object.tt
 package Paws::Personalize::SolutionVersion;
-  use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has DatasetGroupArn => (is => 'ro', isa => 'Str', request_name => 'datasetGroupArn', traits => ['NameInRequest']);
-  has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has PerformAutoML => (is => 'ro', isa => 'Bool', request_name => 'performAutoML', traits => ['NameInRequest']);
-  has PerformHPO => (is => 'ro', isa => 'Bool', request_name => 'performHPO', traits => ['NameInRequest']);
-  has RecipeArn => (is => 'ro', isa => 'Str', request_name => 'recipeArn', traits => ['NameInRequest']);
-  has SolutionArn => (is => 'ro', isa => 'Str', request_name => 'solutionArn', traits => ['NameInRequest']);
-  has SolutionConfig => (is => 'ro', isa => 'Paws::Personalize::SolutionConfig', request_name => 'solutionConfig', traits => ['NameInRequest']);
-  has SolutionVersionArn => (is => 'ro', isa => 'Str', request_name => 'solutionVersionArn', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TrainingHours => (is => 'ro', isa => 'Num', request_name => 'trainingHours', traits => ['NameInRequest']);
-  has TrainingMode => (is => 'ro', isa => 'Str', request_name => 'trainingMode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool Num/;
+  use Paws::Personalize::Types qw/Personalize_SolutionConfig/;
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has DatasetGroupArn => (is => 'ro', isa => Str);
+  has EventType => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has PerformAutoML => (is => 'ro', isa => Bool);
+  has PerformHPO => (is => 'ro', isa => Bool);
+  has RecipeArn => (is => 'ro', isa => Str);
+  has SolutionArn => (is => 'ro', isa => Str);
+  has SolutionConfig => (is => 'ro', isa => Personalize_SolutionConfig);
+  has SolutionVersionArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TrainingHours => (is => 'ro', isa => Num);
+  has TrainingMode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PerformHPO' => 'performHPO',
+                       'RecipeArn' => 'recipeArn',
+                       'FailureReason' => 'failureReason',
+                       'SolutionVersionArn' => 'solutionVersionArn',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime',
+                       'PerformAutoML' => 'performAutoML',
+                       'CreationDateTime' => 'creationDateTime',
+                       'SolutionArn' => 'solutionArn',
+                       'Status' => 'status',
+                       'SolutionConfig' => 'solutionConfig',
+                       'TrainingHours' => 'trainingHours',
+                       'EventType' => 'eventType',
+                       'DatasetGroupArn' => 'datasetGroupArn',
+                       'TrainingMode' => 'trainingMode'
+                     },
+  'types' => {
+               'PerformAutoML' => {
+                                    'type' => 'Bool'
+                                  },
+               'SolutionVersionArn' => {
+                                         'type' => 'Str'
+                                       },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'PerformHPO' => {
+                                 'type' => 'Bool'
+                               },
+               'RecipeArn' => {
+                                'type' => 'Str'
+                              },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SolutionArn' => {
+                                  'type' => 'Str'
+                                },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'SolutionConfig' => {
+                                     'class' => 'Paws::Personalize::SolutionConfig',
+                                     'type' => 'Personalize_SolutionConfig'
+                                   },
+               'DatasetGroupArn' => {
+                                      'type' => 'Str'
+                                    },
+               'TrainingMode' => {
+                                   'type' => 'Str'
+                                 },
+               'EventType' => {
+                                'type' => 'Str'
+                              },
+               'TrainingHours' => {
+                                    'type' => 'Num'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -101,7 +174,7 @@ recipe. The default is C<false>.
   The ARN of the solution.
 
 
-=head2 SolutionConfig => L<Paws::Personalize::SolutionConfig>
+=head2 SolutionConfig => Personalize_SolutionConfig
 
   Describes the configuration properties for the solution.
 

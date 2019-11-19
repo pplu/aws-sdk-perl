@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::S3Control::S3SetObjectAclOperation;
-  use Moose;
-  has AccessControlPolicy => (is => 'ro', isa => 'Paws::S3Control::S3AccessControlPolicy');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3Control::Types qw/S3Control_S3AccessControlPolicy/;
+  has AccessControlPolicy => (is => 'ro', isa => S3Control_S3AccessControlPolicy);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccessControlPolicy' => {
+                                          'type' => 'S3Control_S3AccessControlPolicy',
+                                          'class' => 'Paws::S3Control::S3AccessControlPolicy'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +58,7 @@ operation, see PUT Object acl
 =head1 ATTRIBUTES
 
 
-=head2 AccessControlPolicy => L<Paws::S3Control::S3AccessControlPolicy>
+=head2 AccessControlPolicy => S3Control_S3AccessControlPolicy
 
   
 

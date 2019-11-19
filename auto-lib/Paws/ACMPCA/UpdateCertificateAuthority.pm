@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ACMPCA::UpdateCertificateAuthority;
-  use Moose;
-  has CertificateAuthorityArn => (is => 'ro', isa => 'Str', required => 1);
-  has RevocationConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::RevocationConfiguration');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACMPCA::Types qw/ACMPCA_RevocationConfiguration/;
+  has CertificateAuthorityArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RevocationConfiguration => (is => 'ro', isa => ACMPCA_RevocationConfiguration, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCertificateAuthority');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateCertificateAuthority');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'RevocationConfiguration' => {
+                                              'type' => 'ACMPCA_RevocationConfiguration',
+                                              'class' => 'Paws::ACMPCA::RevocationConfiguration'
+                                            },
+               'CertificateAuthorityArn' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'IsRequired' => {
+                    'CertificateAuthorityArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +83,7 @@ C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-123
 
 
 
-=head2 RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>
+=head2 RevocationConfiguration => ACMPCA_RevocationConfiguration
 
 Revocation information for your private CA.
 

@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::Glue::CodeGenEdge;
-  use Moose;
-  has Source => (is => 'ro', isa => 'Str', required => 1);
-  has Target => (is => 'ro', isa => 'Str', required => 1);
-  has TargetParameter => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has Source => (is => 'ro', isa => Str, required => 1);
+  has Target => (is => 'ro', isa => Str, required => 1);
+  has TargetParameter => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'TargetParameter' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'Source' => 1,
+                    'Target' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

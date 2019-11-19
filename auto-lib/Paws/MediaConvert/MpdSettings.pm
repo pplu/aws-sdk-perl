@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::MpdSettings;
-  use Moose;
-  has CaptionContainerType => (is => 'ro', isa => 'Str', request_name => 'captionContainerType', traits => ['NameInRequest']);
-  has Scte35Esam => (is => 'ro', isa => 'Str', request_name => 'scte35Esam', traits => ['NameInRequest']);
-  has Scte35Source => (is => 'ro', isa => 'Str', request_name => 'scte35Source', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has CaptionContainerType => (is => 'ro', isa => Str);
+  has Scte35Esam => (is => 'ro', isa => Str);
+  has Scte35Source => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CaptionContainerType' => {
+                                           'type' => 'Str'
+                                         },
+               'Scte35Source' => {
+                                   'type' => 'Str'
+                                 },
+               'Scte35Esam' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Scte35Esam' => 'scte35Esam',
+                       'Scte35Source' => 'scte35Source',
+                       'CaptionContainerType' => 'captionContainerType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

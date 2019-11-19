@@ -1,15 +1,37 @@
 
 package Paws::IoTAnalytics::ListPipelines;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTAnalytics::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListPipelines');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/pipelines');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTAnalytics::ListPipelinesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListPipelines');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/pipelines');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTAnalytics::ListPipelinesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken'
+                    },
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

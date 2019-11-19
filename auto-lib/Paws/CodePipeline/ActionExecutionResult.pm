@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionExecutionResult;
-  use Moose;
-  has ExternalExecutionId => (is => 'ro', isa => 'Str', request_name => 'externalExecutionId', traits => ['NameInRequest']);
-  has ExternalExecutionSummary => (is => 'ro', isa => 'Str', request_name => 'externalExecutionSummary', traits => ['NameInRequest']);
-  has ExternalExecutionUrl => (is => 'ro', isa => 'Str', request_name => 'externalExecutionUrl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has ExternalExecutionId => (is => 'ro', isa => Str);
+  has ExternalExecutionSummary => (is => 'ro', isa => Str);
+  has ExternalExecutionUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExternalExecutionUrl' => {
+                                           'type' => 'Str'
+                                         },
+               'ExternalExecutionId' => {
+                                          'type' => 'Str'
+                                        },
+               'ExternalExecutionSummary' => {
+                                               'type' => 'Str'
+                                             }
+             },
+  'NameInRequest' => {
+                       'ExternalExecutionSummary' => 'externalExecutionSummary',
+                       'ExternalExecutionId' => 'externalExecutionId',
+                       'ExternalExecutionUrl' => 'externalExecutionUrl'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

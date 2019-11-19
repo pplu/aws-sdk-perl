@@ -1,16 +1,44 @@
 
 package Paws::EC2::ProvisionByoipCidr;
-  use Moose;
-  has Cidr => (is => 'ro', isa => 'Str', required => 1);
-  has CidrAuthorizationContext => (is => 'ro', isa => 'Paws::EC2::CidrAuthorizationContext');
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw/EC2_CidrAuthorizationContext/;
+  has Cidr => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CidrAuthorizationContext => (is => 'ro', isa => EC2_CidrAuthorizationContext, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ProvisionByoipCidr');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ProvisionByoipCidrResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ProvisionByoipCidr');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ProvisionByoipCidrResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Cidr' => 1
+                  },
+  'types' => {
+               'Cidr' => {
+                           'type' => 'Str'
+                         },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'CidrAuthorizationContext' => {
+                                               'type' => 'EC2_CidrAuthorizationContext',
+                                               'class' => 'Paws::EC2::CidrAuthorizationContext'
+                                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +89,7 @@ Region.
 
 
 
-=head2 CidrAuthorizationContext => L<Paws::EC2::CidrAuthorizationContext>
+=head2 CidrAuthorizationContext => EC2_CidrAuthorizationContext
 
 A signed document that proves that you are authorized to bring the
 specified IP address range to Amazon using BYOIP.

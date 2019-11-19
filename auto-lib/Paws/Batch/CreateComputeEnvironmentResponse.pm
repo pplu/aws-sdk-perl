@@ -1,10 +1,34 @@
 
 package Paws::Batch::CreateComputeEnvironmentResponse;
-  use Moose;
-  has ComputeEnvironmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeEnvironmentArn');
-  has ComputeEnvironmentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeEnvironmentName');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw//;
+  has ComputeEnvironmentArn => (is => 'ro', isa => Str);
+  has ComputeEnvironmentName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComputeEnvironmentArn' => {
+                                            'type' => 'Str'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ComputeEnvironmentName' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'ComputeEnvironmentName' => 'computeEnvironmentName',
+                       'ComputeEnvironmentArn' => 'computeEnvironmentArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

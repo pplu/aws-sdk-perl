@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::RDS::ValidDBInstanceModificationsMessage;
-  use Moose;
-  has Storage => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ValidStorageOptions]', request_name => 'ValidStorageOptions', traits => ['NameInRequest']);
-  has ValidProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::AvailableProcessorFeature]', request_name => 'AvailableProcessorFeature', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::RDS::Types qw/RDS_ValidStorageOptions RDS_AvailableProcessorFeature/;
+  has Storage => (is => 'ro', isa => ArrayRef[RDS_ValidStorageOptions]);
+  has ValidProcessorFeatures => (is => 'ro', isa => ArrayRef[RDS_AvailableProcessorFeature]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Storage' => {
+                              'type' => 'ArrayRef[RDS_ValidStorageOptions]',
+                              'class' => 'Paws::RDS::ValidStorageOptions'
+                            },
+               'ValidProcessorFeatures' => {
+                                             'class' => 'Paws::RDS::AvailableProcessorFeature',
+                                             'type' => 'ArrayRef[RDS_AvailableProcessorFeature]'
+                                           }
+             },
+  'NameInRequest' => {
+                       'Storage' => 'ValidStorageOptions',
+                       'ValidProcessorFeatures' => 'AvailableProcessorFeature'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,12 +66,12 @@ information when you call C<ModifyDBInstance>.
 =head1 ATTRIBUTES
 
 
-=head2 Storage => ArrayRef[L<Paws::RDS::ValidStorageOptions>]
+=head2 Storage => ArrayRef[RDS_ValidStorageOptions]
 
   Valid storage options for your DB instance.
 
 
-=head2 ValidProcessorFeatures => ArrayRef[L<Paws::RDS::AvailableProcessorFeature>]
+=head2 ValidProcessorFeatures => ArrayRef[RDS_AvailableProcessorFeature]
 
   Valid processor features for your DB instance.
 

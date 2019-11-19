@@ -1,14 +1,35 @@
 
 package Paws::SESv2::GetDedicatedIp;
-  use Moose;
-  has Ip => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IP', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw//;
+  has Ip => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDedicatedIp');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/dedicated-ips/{IP}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::GetDedicatedIpResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDedicatedIp');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/dedicated-ips/{IP}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::GetDedicatedIpResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ip' => {
+                         'type' => 'Str'
+                       }
+             },
+  'IsRequired' => {
+                    'Ip' => 1
+                  },
+  'ParamInURI' => {
+                    'Ip' => 'IP'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

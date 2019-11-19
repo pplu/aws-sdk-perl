@@ -1,14 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Personalize::CreateSolutionVersion;
-  use Moose;
-  has SolutionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'solutionArn' , required => 1);
-  has TrainingMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'trainingMode' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has SolutionArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TrainingMode => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSolutionVersion');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Personalize::CreateSolutionVersionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSolutionVersion');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Personalize::CreateSolutionVersionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SolutionArn' => {
+                                  'type' => 'Str'
+                                },
+               'TrainingMode' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'SolutionArn' => 'solutionArn',
+                       'TrainingMode' => 'trainingMode'
+                     },
+  'IsRequired' => {
+                    'SolutionArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::ApplicationsResponse;
-  use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ApplicationResponse]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_ApplicationResponse/;
+  has Item => (is => 'ro', isa => ArrayRef[Pinpoint_ApplicationResponse]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Item' => {
+                           'type' => 'ArrayRef[Pinpoint_ApplicationResponse]',
+                           'class' => 'Paws::Pinpoint::ApplicationResponse'
+                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Provides information about all of your applications.
 =head1 ATTRIBUTES
 
 
-=head2 Item => ArrayRef[L<Paws::Pinpoint::ApplicationResponse>]
+=head2 Item => ArrayRef[Pinpoint_ApplicationResponse]
 
   An array of responses, one for each application that was returned.
 

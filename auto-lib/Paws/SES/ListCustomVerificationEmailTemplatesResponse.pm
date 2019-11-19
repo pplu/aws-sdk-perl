@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::SES::ListCustomVerificationEmailTemplatesResponse;
-  use Moose;
-  has CustomVerificationEmailTemplates => (is => 'ro', isa => 'ArrayRef[Paws::SES::CustomVerificationEmailTemplate]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SES::Types qw/SES_CustomVerificationEmailTemplate/;
+  has CustomVerificationEmailTemplates => (is => 'ro', isa => ArrayRef[SES_CustomVerificationEmailTemplate]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'CustomVerificationEmailTemplates' => {
+                                                       'class' => 'Paws::SES::CustomVerificationEmailTemplate',
+                                                       'type' => 'ArrayRef[SES_CustomVerificationEmailTemplate]'
+                                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +38,7 @@ Paws::SES::ListCustomVerificationEmailTemplatesResponse
 =head1 ATTRIBUTES
 
 
-=head2 CustomVerificationEmailTemplates => ArrayRef[L<Paws::SES::CustomVerificationEmailTemplate>]
+=head2 CustomVerificationEmailTemplates => ArrayRef[SES_CustomVerificationEmailTemplate]
 
 A list of the custom verification email templates that exist in your
 account.

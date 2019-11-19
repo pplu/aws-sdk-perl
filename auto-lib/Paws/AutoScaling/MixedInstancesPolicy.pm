@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::MixedInstancesPolicy;
-  use Moose;
-  has InstancesDistribution => (is => 'ro', isa => 'Paws::AutoScaling::InstancesDistribution');
-  has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplate');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AutoScaling::Types qw/AutoScaling_InstancesDistribution AutoScaling_LaunchTemplate/;
+  has InstancesDistribution => (is => 'ro', isa => AutoScaling_InstancesDistribution);
+  has LaunchTemplate => (is => 'ro', isa => AutoScaling_LaunchTemplate);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstancesDistribution' => {
+                                            'class' => 'Paws::AutoScaling::InstancesDistribution',
+                                            'type' => 'AutoScaling_InstancesDistribution'
+                                          },
+               'LaunchTemplate' => {
+                                     'class' => 'Paws::AutoScaling::LaunchTemplate',
+                                     'type' => 'AutoScaling_LaunchTemplate'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +71,7 @@ CreateAutoScalingGroup and UpdateAutoScalingGroup.
 =head1 ATTRIBUTES
 
 
-=head2 InstancesDistribution => L<Paws::AutoScaling::InstancesDistribution>
+=head2 InstancesDistribution => AutoScaling_InstancesDistribution
 
   The instances distribution to use.
 
@@ -57,7 +79,7 @@ If you leave this parameter unspecified, the value for each parameter
 in C<InstancesDistribution> uses a default value.
 
 
-=head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplate>
+=head2 LaunchTemplate => AutoScaling_LaunchTemplate
 
   The launch template and instance types (overrides).
 

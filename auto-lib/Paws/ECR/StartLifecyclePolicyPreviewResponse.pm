@@ -1,12 +1,45 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECR::StartLifecyclePolicyPreviewResponse;
-  use Moose;
-  has LifecyclePolicyText => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lifecyclePolicyText' );
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw//;
+  has LifecyclePolicyText => (is => 'ro', isa => Str);
+  has RegistryId => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'LifecyclePolicyText' => {
+                                          'type' => 'Str'
+                                        },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'LifecyclePolicyText' => 'lifecyclePolicyText',
+                       'RegistryId' => 'registryId',
+                       'RepositoryName' => 'repositoryName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

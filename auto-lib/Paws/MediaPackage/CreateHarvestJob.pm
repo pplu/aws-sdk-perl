@@ -1,18 +1,60 @@
 
 package Paws::MediaPackage::CreateHarvestJob;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime', required => 1);
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id', required => 1);
-  has OriginEndpointId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'originEndpointId', required => 1);
-  has S3Destination => (is => 'ro', isa => 'Paws::MediaPackage::S3Destination', traits => ['NameInRequest'], request_name => 's3Destination', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackage::Types qw/MediaPackage_S3Destination/;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OriginEndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3Destination => (is => 'ro', isa => MediaPackage_S3Destination, required => 1, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHarvestJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/harvest_jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaPackage::CreateHarvestJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateHarvestJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/harvest_jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaPackage::CreateHarvestJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Destination' => {
+                                    'type' => 'MediaPackage_S3Destination',
+                                    'class' => 'Paws::MediaPackage::S3Destination'
+                                  },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'OriginEndpointId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'S3Destination' => 1,
+                    'StartTime' => 1,
+                    'EndTime' => 1,
+                    'Id' => 1,
+                    'OriginEndpointId' => 1
+                  },
+  'NameInRequest' => {
+                       'OriginEndpointId' => 'originEndpointId',
+                       'Id' => 'id',
+                       'EndTime' => 'endTime',
+                       'StartTime' => 'startTime',
+                       'S3Destination' => 's3Destination'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +127,7 @@ This cannot be changed after the HarvestJob is submitted.
 
 
 
-=head2 B<REQUIRED> S3Destination => L<Paws::MediaPackage::S3Destination>
+=head2 B<REQUIRED> S3Destination => MediaPackage_S3Destination
 
 
 

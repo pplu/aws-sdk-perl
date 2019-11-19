@@ -1,17 +1,52 @@
 
 package Paws::Chime::ListUsers;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-results');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'next-token');
-  has UserEmail => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'user-email');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Chime::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has UserEmail => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListUsers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/users');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::ListUsersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListUsers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/users');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::ListUsersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'UserEmail' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'AccountId' => 1
+                  },
+  'ParamInQuery' => {
+                      'UserEmail' => 'user-email',
+                      'NextToken' => 'next-token',
+                      'MaxResults' => 'max-results'
+                    },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

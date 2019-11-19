@@ -1,16 +1,55 @@
 
 package Paws::MarketplaceCatalog::DescribeChangeSetResponse;
-  use Moose;
-  has ChangeSet => (is => 'ro', isa => 'ArrayRef[Paws::MarketplaceCatalog::ChangeSummary]');
-  has ChangeSetArn => (is => 'ro', isa => 'Str');
-  has ChangeSetId => (is => 'ro', isa => 'Str');
-  has ChangeSetName => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has FailureDescription => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MarketplaceCatalog::Types qw/MarketplaceCatalog_ChangeSummary/;
+  has ChangeSet => (is => 'ro', isa => ArrayRef[MarketplaceCatalog_ChangeSummary]);
+  has ChangeSetArn => (is => 'ro', isa => Str);
+  has ChangeSetId => (is => 'ro', isa => Str);
+  has ChangeSetName => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has FailureDescription => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeSetId' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ChangeSet' => {
+                                'class' => 'Paws::MarketplaceCatalog::ChangeSummary',
+                                'type' => 'ArrayRef[MarketplaceCatalog_ChangeSummary]'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'ChangeSetArn' => {
+                                   'type' => 'Str'
+                                 },
+               'FailureDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'ChangeSetName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +61,7 @@ Paws::MarketplaceCatalog::DescribeChangeSetResponse
 =head1 ATTRIBUTES
 
 
-=head2 ChangeSet => ArrayRef[L<Paws::MarketplaceCatalog::ChangeSummary>]
+=head2 ChangeSet => ArrayRef[MarketplaceCatalog_ChangeSummary]
 
 An array of C<ChangeSummary> objects.
 

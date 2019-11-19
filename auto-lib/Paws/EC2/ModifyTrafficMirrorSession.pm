@@ -1,21 +1,66 @@
 
 package Paws::EC2::ModifyTrafficMirrorSession;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has PacketLength => (is => 'ro', isa => 'Int');
-  has RemoveFields => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveField' );
-  has SessionNumber => (is => 'ro', isa => 'Int');
-  has TrafficMirrorFilterId => (is => 'ro', isa => 'Str');
-  has TrafficMirrorSessionId => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficMirrorTargetId => (is => 'ro', isa => 'Str');
-  has VirtualNetworkId => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int Undef ArrayRef/;
+  use Paws::EC2::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has PacketLength => (is => 'ro', isa => Int, predicate => 1);
+  has RemoveFields => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SessionNumber => (is => 'ro', isa => Int, predicate => 1);
+  has TrafficMirrorFilterId => (is => 'ro', isa => Str, predicate => 1);
+  has TrafficMirrorSessionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TrafficMirrorTargetId => (is => 'ro', isa => Str, predicate => 1);
+  has VirtualNetworkId => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyTrafficMirrorSession');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyTrafficMirrorSessionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyTrafficMirrorSession');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyTrafficMirrorSessionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RemoveFields' => 'RemoveField'
+                     },
+  'IsRequired' => {
+                    'TrafficMirrorSessionId' => 1
+                  },
+  'types' => {
+               'SessionNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'TrafficMirrorTargetId' => {
+                                            'type' => 'Str'
+                                          },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'TrafficMirrorFilterId' => {
+                                            'type' => 'Str'
+                                          },
+               'TrafficMirrorSessionId' => {
+                                             'type' => 'Str'
+                                           },
+               'VirtualNetworkId' => {
+                                       'type' => 'Int'
+                                     },
+               'PacketLength' => {
+                                   'type' => 'Int'
+                                 },
+               'RemoveFields' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

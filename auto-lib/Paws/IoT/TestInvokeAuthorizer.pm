@@ -1,16 +1,49 @@
 
 package Paws::IoT::TestInvokeAuthorizer;
-  use Moose;
-  has AuthorizerName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizerName', required => 1);
-  has Token => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'token', required => 1);
-  has TokenSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'tokenSignature', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has AuthorizerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Token => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TokenSignature => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TestInvokeAuthorizer');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/authorizer/{authorizerName}/test');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::TestInvokeAuthorizerResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TestInvokeAuthorizer');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/authorizer/{authorizerName}/test');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::TestInvokeAuthorizerResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TokenSignature' => 'tokenSignature',
+                       'Token' => 'token'
+                     },
+  'IsRequired' => {
+                    'AuthorizerName' => 1,
+                    'Token' => 1,
+                    'TokenSignature' => 1
+                  },
+  'types' => {
+               'AuthorizerName' => {
+                                     'type' => 'Str'
+                                   },
+               'TokenSignature' => {
+                                     'type' => 'Str'
+                                   },
+               'Token' => {
+                            'type' => 'Str'
+                          }
+             },
+  'ParamInURI' => {
+                    'AuthorizerName' => 'authorizerName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

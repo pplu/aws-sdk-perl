@@ -1,15 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::DescribeTapeArchives;
-  use Moose;
-  has Limit => (is => 'ro', isa => 'Int');
-  has Marker => (is => 'ro', isa => 'Str');
-  has TapeARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::StorageGateway::Types qw//;
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has TapeARNs => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTapeArchives');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::DescribeTapeArchivesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTapeArchives');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::DescribeTapeArchivesOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'TapeARNs' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

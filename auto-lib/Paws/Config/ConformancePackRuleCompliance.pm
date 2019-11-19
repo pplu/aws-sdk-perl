@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Config::ConformancePackRuleCompliance;
-  use Moose;
-  has ComplianceType => (is => 'ro', isa => 'Str');
-  has ConfigRuleName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has ComplianceType => (is => 'ro', isa => Str);
+  has ConfigRuleName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComplianceType' => {
+                                     'type' => 'Str'
+                                   },
+               'ConfigRuleName' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

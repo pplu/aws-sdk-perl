@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::ParameterNameValue;
-  use Moose;
-  has ParameterName => (is => 'ro', isa => 'Str');
-  has ParameterValue => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has ParameterName => (is => 'ro', isa => Str);
+  has ParameterValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterValue' => {
+                                     'type' => 'Str'
+                                   },
+               'ParameterName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

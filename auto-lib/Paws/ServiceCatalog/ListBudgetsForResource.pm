@@ -1,16 +1,44 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::ListBudgetsForResource;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has PageSize => (is => 'ro', isa => 'Int');
-  has PageToken => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ServiceCatalog::Types qw//;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has PageToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListBudgetsForResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::ListBudgetsForResourceOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListBudgetsForResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::ListBudgetsForResourceOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceId' => 1
+                  },
+  'types' => {
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'PageToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

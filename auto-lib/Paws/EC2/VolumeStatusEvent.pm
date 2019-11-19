@@ -1,10 +1,43 @@
 package Paws::EC2::VolumeStatusEvent;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has EventId => (is => 'ro', isa => 'Str', request_name => 'eventId', traits => ['NameInRequest']);
-  has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest']);
-  has NotAfter => (is => 'ro', isa => 'Str', request_name => 'notAfter', traits => ['NameInRequest']);
-  has NotBefore => (is => 'ro', isa => 'Str', request_name => 'notBefore', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has EventId => (is => 'ro', isa => Str);
+  has EventType => (is => 'ro', isa => Str);
+  has NotAfter => (is => 'ro', isa => Str);
+  has NotBefore => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'NotAfter' => {
+                               'type' => 'Str'
+                             },
+               'NotBefore' => {
+                                'type' => 'Str'
+                              },
+               'EventId' => {
+                              'type' => 'Str'
+                            },
+               'EventType' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'EventId' => 'eventId',
+                       'EventType' => 'eventType',
+                       'NotBefore' => 'notBefore',
+                       'NotAfter' => 'notAfter',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

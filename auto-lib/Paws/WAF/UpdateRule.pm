@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAF::UpdateRule;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has RuleId => (is => 'ro', isa => 'Str', required => 1);
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAF::RuleUpdate]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_RuleUpdate/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RuleId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAF_RuleUpdate], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAF::UpdateRuleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAF::UpdateRuleResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RuleId' => 1,
+                    'ChangeToken' => 1,
+                    'Updates' => 1
+                  },
+  'types' => {
+               'Updates' => {
+                              'class' => 'Paws::WAF::RuleUpdate',
+                              'type' => 'ArrayRef[WAF_RuleUpdate]'
+                            },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'RuleId' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +100,7 @@ returned by C<CreateRule> and by ListRules.
 
 
 
-=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::RuleUpdate>]
+=head2 B<REQUIRED> Updates => ArrayRef[WAF_RuleUpdate]
 
 An array of C<RuleUpdate> objects that you want to insert into or
 delete from a Rule. For more information, see the applicable data

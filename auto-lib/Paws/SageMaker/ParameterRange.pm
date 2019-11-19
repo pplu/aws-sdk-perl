@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ParameterRange;
-  use Moose;
-  has CategoricalParameterRangeSpecification => (is => 'ro', isa => 'Paws::SageMaker::CategoricalParameterRangeSpecification');
-  has ContinuousParameterRangeSpecification => (is => 'ro', isa => 'Paws::SageMaker::ContinuousParameterRangeSpecification');
-  has IntegerParameterRangeSpecification => (is => 'ro', isa => 'Paws::SageMaker::IntegerParameterRangeSpecification');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SageMaker::Types qw/SageMaker_IntegerParameterRangeSpecification SageMaker_CategoricalParameterRangeSpecification SageMaker_ContinuousParameterRangeSpecification/;
+  has CategoricalParameterRangeSpecification => (is => 'ro', isa => SageMaker_CategoricalParameterRangeSpecification);
+  has ContinuousParameterRangeSpecification => (is => 'ro', isa => SageMaker_ContinuousParameterRangeSpecification);
+  has IntegerParameterRangeSpecification => (is => 'ro', isa => SageMaker_IntegerParameterRangeSpecification);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IntegerParameterRangeSpecification' => {
+                                                         'type' => 'SageMaker_IntegerParameterRangeSpecification',
+                                                         'class' => 'Paws::SageMaker::IntegerParameterRangeSpecification'
+                                                       },
+               'CategoricalParameterRangeSpecification' => {
+                                                             'class' => 'Paws::SageMaker::CategoricalParameterRangeSpecification',
+                                                             'type' => 'SageMaker_CategoricalParameterRangeSpecification'
+                                                           },
+               'ContinuousParameterRangeSpecification' => {
+                                                            'type' => 'SageMaker_ContinuousParameterRangeSpecification',
+                                                            'class' => 'Paws::SageMaker::ContinuousParameterRangeSpecification'
+                                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,19 +65,19 @@ hyperparameters to be used by an algorithm.
 =head1 ATTRIBUTES
 
 
-=head2 CategoricalParameterRangeSpecification => L<Paws::SageMaker::CategoricalParameterRangeSpecification>
+=head2 CategoricalParameterRangeSpecification => SageMaker_CategoricalParameterRangeSpecification
 
   A C<CategoricalParameterRangeSpecification> object that defines the
 possible values for a categorical hyperparameter.
 
 
-=head2 ContinuousParameterRangeSpecification => L<Paws::SageMaker::ContinuousParameterRangeSpecification>
+=head2 ContinuousParameterRangeSpecification => SageMaker_ContinuousParameterRangeSpecification
 
   A C<ContinuousParameterRangeSpecification> object that defines the
 possible values for a continuous hyperparameter.
 
 
-=head2 IntegerParameterRangeSpecification => L<Paws::SageMaker::IntegerParameterRangeSpecification>
+=head2 IntegerParameterRangeSpecification => SageMaker_IntegerParameterRangeSpecification
 
   A C<IntegerParameterRangeSpecification> object that defines the
 possible values for an integer hyperparameter.

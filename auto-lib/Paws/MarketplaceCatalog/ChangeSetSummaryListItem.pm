@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::MarketplaceCatalog::ChangeSetSummaryListItem;
-  use Moose;
-  has ChangeSetArn => (is => 'ro', isa => 'Str');
-  has ChangeSetId => (is => 'ro', isa => 'Str');
-  has ChangeSetName => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has EntityIdList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::MarketplaceCatalog::Types qw//;
+  has ChangeSetArn => (is => 'ro', isa => Str);
+  has ChangeSetId => (is => 'ro', isa => Str);
+  has ChangeSetName => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has EntityIdList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeSetName' => {
+                                    'type' => 'Str'
+                                  },
+               'ChangeSetArn' => {
+                                   'type' => 'Str'
+                                 },
+               'EntityIdList' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ChangeSetId' => {
+                                  'type' => 'Str'
+                                },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

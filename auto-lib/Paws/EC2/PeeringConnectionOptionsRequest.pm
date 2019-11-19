@@ -1,8 +1,28 @@
 package Paws::EC2::PeeringConnectionOptionsRequest;
-  use Moose;
-  has AllowDnsResolutionFromRemoteVpc => (is => 'ro', isa => 'Bool');
-  has AllowEgressFromLocalClassicLinkToRemoteVpc => (is => 'ro', isa => 'Bool');
-  has AllowEgressFromLocalVpcToRemoteClassicLink => (is => 'ro', isa => 'Bool');
+  use Moo;  use Types::Standard qw/Bool/;
+  use Paws::EC2::Types qw//;
+  has AllowDnsResolutionFromRemoteVpc => (is => 'ro', isa => Bool);
+  has AllowEgressFromLocalClassicLinkToRemoteVpc => (is => 'ro', isa => Bool);
+  has AllowEgressFromLocalVpcToRemoteClassicLink => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AllowEgressFromLocalClassicLinkToRemoteVpc' => {
+                                                                 'type' => 'Bool'
+                                                               },
+               'AllowEgressFromLocalVpcToRemoteClassicLink' => {
+                                                                 'type' => 'Bool'
+                                                               },
+               'AllowDnsResolutionFromRemoteVpc' => {
+                                                      'type' => 'Bool'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

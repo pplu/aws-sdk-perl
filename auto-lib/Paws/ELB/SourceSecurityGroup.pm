@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ELB::SourceSecurityGroup;
-  use Moose;
-  has GroupName => (is => 'ro', isa => 'Str');
-  has OwnerAlias => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ELB::Types qw//;
+  has GroupName => (is => 'ro', isa => Str);
+  has OwnerAlias => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'OwnerAlias' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

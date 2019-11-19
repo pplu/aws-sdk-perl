@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::SuspendedProcess;
-  use Moose;
-  has ProcessName => (is => 'ro', isa => 'Str');
-  has SuspensionReason => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AutoScaling::Types qw//;
+  has ProcessName => (is => 'ro', isa => Str);
+  has SuspensionReason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProcessName' => {
+                                  'type' => 'Str'
+                                },
+               'SuspensionReason' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

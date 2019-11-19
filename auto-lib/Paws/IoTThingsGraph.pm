@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::IoTThingsGraph;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'iotthingsgraph' }
   sub signing_name { 'iotthingsgraph' }
   sub version { '2018-09-06' }
   sub target_prefix { 'IotThingsGraphFrontEndService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -498,7 +500,7 @@ be removed.
 
 =over
 
-=item Definition => L<Paws::IoTThingsGraph::DefinitionDocument>
+=item Definition => IoTThingsGraph_DefinitionDocument
 
 =item [CompatibleNamespaceVersion => Int]
 
@@ -521,7 +523,7 @@ request.
 
 =over
 
-=item Definition => L<Paws::IoTThingsGraph::DefinitionDocument>
+=item Definition => IoTThingsGraph_DefinitionDocument
 
 =item Target => Str
 
@@ -529,11 +531,11 @@ request.
 
 =item [GreengrassGroupName => Str]
 
-=item [MetricsConfiguration => L<Paws::IoTThingsGraph::MetricsConfiguration>]
+=item [MetricsConfiguration => IoTThingsGraph_MetricsConfiguration]
 
 =item [S3BucketName => Str]
 
-=item [Tags => ArrayRef[L<Paws::IoTThingsGraph::Tag>]]
+=item [Tags => ArrayRef[IoTThingsGraph_Tag]]
 
 
 =back
@@ -569,7 +571,7 @@ namespace, the latest version will be used by default.
 
 =over
 
-=item Definition => L<Paws::IoTThingsGraph::DefinitionDocument>
+=item Definition => IoTThingsGraph_DefinitionDocument
 
 =item [CompatibleNamespaceVersion => Int]
 
@@ -1004,7 +1006,7 @@ Lists all tags on an AWS IoT Things Graph resource.
 
 =item EntityTypes => ArrayRef[Str|Undef]
 
-=item [Filters => ArrayRef[L<Paws::IoTThingsGraph::EntityFilter>]]
+=item [Filters => ArrayRef[IoTThingsGraph_EntityFilter]]
 
 =item [MaxResults => Int]
 
@@ -1054,7 +1056,7 @@ Searches for AWS IoT Things Graph workflow execution instances.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::IoTThingsGraph::FlowTemplateFilter>]]
+=item [Filters => ArrayRef[IoTThingsGraph_FlowTemplateFilter]]
 
 =item [MaxResults => Int]
 
@@ -1074,7 +1076,7 @@ Searches for summary information about workflows.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::IoTThingsGraph::SystemInstanceFilter>]]
+=item [Filters => ArrayRef[IoTThingsGraph_SystemInstanceFilter]]
 
 =item [MaxResults => Int]
 
@@ -1094,7 +1096,7 @@ Searches for system instances in the user's account.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::IoTThingsGraph::SystemTemplateFilter>]]
+=item [Filters => ArrayRef[IoTThingsGraph_SystemTemplateFilter]]
 
 =item [MaxResults => Int]
 
@@ -1149,7 +1151,7 @@ matching.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::IoTThingsGraph::Tag>]
+=item Tags => ArrayRef[IoTThingsGraph_Tag]
 
 
 =back
@@ -1199,7 +1201,7 @@ Removes a tag from the specified resource.
 
 =over
 
-=item Definition => L<Paws::IoTThingsGraph::DefinitionDocument>
+=item Definition => IoTThingsGraph_DefinitionDocument
 
 =item Id => Str
 
@@ -1223,7 +1225,7 @@ workflow can contain only entities in the specified namespace.
 
 =over
 
-=item Definition => L<Paws::IoTThingsGraph::DefinitionDocument>
+=item Definition => IoTThingsGraph_DefinitionDocument
 
 =item Id => Str
 
@@ -1247,7 +1249,7 @@ changes in the system when it is redeployed.
 
 =item [DeprecateExistingEntities => Bool]
 
-=item [Document => L<Paws::IoTThingsGraph::DefinitionDocument>]
+=item [Document => IoTThingsGraph_DefinitionDocument]
 
 =item [SyncWithPublicNamespace => Bool]
 
@@ -1339,9 +1341,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoTThingsGraph::ListTagsForResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SearchAllEntities(sub { },EntityTypes => ArrayRef[Str|Undef], [Filters => ArrayRef[L<Paws::IoTThingsGraph::EntityFilter>], MaxResults => Int, NamespaceVersion => Int, NextToken => Str])
+=head2 SearchAllEntities(sub { },EntityTypes => ArrayRef[Str|Undef], [Filters => ArrayRef[IoTThingsGraph_EntityFilter], MaxResults => Int, NamespaceVersion => Int, NextToken => Str])
 
-=head2 SearchAllEntities(EntityTypes => ArrayRef[Str|Undef], [Filters => ArrayRef[L<Paws::IoTThingsGraph::EntityFilter>], MaxResults => Int, NamespaceVersion => Int, NextToken => Str])
+=head2 SearchAllEntities(EntityTypes => ArrayRef[Str|Undef], [Filters => ArrayRef[IoTThingsGraph_EntityFilter], MaxResults => Int, NamespaceVersion => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1363,9 +1365,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoTThingsGraph::SearchFlowExecutionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SearchAllFlowTemplates(sub { },[Filters => ArrayRef[L<Paws::IoTThingsGraph::FlowTemplateFilter>], MaxResults => Int, NextToken => Str])
+=head2 SearchAllFlowTemplates(sub { },[Filters => ArrayRef[IoTThingsGraph_FlowTemplateFilter], MaxResults => Int, NextToken => Str])
 
-=head2 SearchAllFlowTemplates([Filters => ArrayRef[L<Paws::IoTThingsGraph::FlowTemplateFilter>], MaxResults => Int, NextToken => Str])
+=head2 SearchAllFlowTemplates([Filters => ArrayRef[IoTThingsGraph_FlowTemplateFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1375,9 +1377,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoTThingsGraph::SearchFlowTemplatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SearchAllSystemInstances(sub { },[Filters => ArrayRef[L<Paws::IoTThingsGraph::SystemInstanceFilter>], MaxResults => Int, NextToken => Str])
+=head2 SearchAllSystemInstances(sub { },[Filters => ArrayRef[IoTThingsGraph_SystemInstanceFilter], MaxResults => Int, NextToken => Str])
 
-=head2 SearchAllSystemInstances([Filters => ArrayRef[L<Paws::IoTThingsGraph::SystemInstanceFilter>], MaxResults => Int, NextToken => Str])
+=head2 SearchAllSystemInstances([Filters => ArrayRef[IoTThingsGraph_SystemInstanceFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1387,9 +1389,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoTThingsGraph::SearchSystemInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SearchAllSystemTemplates(sub { },[Filters => ArrayRef[L<Paws::IoTThingsGraph::SystemTemplateFilter>], MaxResults => Int, NextToken => Str])
+=head2 SearchAllSystemTemplates(sub { },[Filters => ArrayRef[IoTThingsGraph_SystemTemplateFilter], MaxResults => Int, NextToken => Str])
 
-=head2 SearchAllSystemTemplates([Filters => ArrayRef[L<Paws::IoTThingsGraph::SystemTemplateFilter>], MaxResults => Int, NextToken => Str])
+=head2 SearchAllSystemTemplates([Filters => ArrayRef[IoTThingsGraph_SystemTemplateFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::SESv2::OverallVolume;
-  use Moose;
-  has DomainIspPlacements => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::DomainIspPlacement]');
-  has ReadRatePercent => (is => 'ro', isa => 'Num');
-  has VolumeStatistics => (is => 'ro', isa => 'Paws::SESv2::VolumeStatistics');
+  use Moo;
+  use Types::Standard qw/ArrayRef Num/;
+  use Paws::SESv2::Types qw/SESv2_DomainIspPlacement SESv2_VolumeStatistics/;
+  has DomainIspPlacements => (is => 'ro', isa => ArrayRef[SESv2_DomainIspPlacement]);
+  has ReadRatePercent => (is => 'ro', isa => Num);
+  has VolumeStatistics => (is => 'ro', isa => SESv2_VolumeStatistics);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeStatistics' => {
+                                       'type' => 'SESv2_VolumeStatistics',
+                                       'class' => 'Paws::SESv2::VolumeStatistics'
+                                     },
+               'ReadRatePercent' => {
+                                      'type' => 'Num'
+                                    },
+               'DomainIspPlacements' => {
+                                          'type' => 'ArrayRef[SESv2_DomainIspPlacement]',
+                                          'class' => 'Paws::SESv2::DomainIspPlacement'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +64,7 @@ selected domain.
 =head1 ATTRIBUTES
 
 
-=head2 DomainIspPlacements => ArrayRef[L<Paws::SESv2::DomainIspPlacement>]
+=head2 DomainIspPlacements => ArrayRef[SESv2_DomainIspPlacement]
 
   An object that contains inbox and junk mail placement metrics for
 individual email providers.
@@ -51,7 +76,7 @@ individual email providers.
 by their recipients.
 
 
-=head2 VolumeStatistics => L<Paws::SESv2::VolumeStatistics>
+=head2 VolumeStatistics => SESv2_VolumeStatistics
 
   An object that contains information about the numbers of messages that
 arrived in recipients' inboxes and junk mail folders.

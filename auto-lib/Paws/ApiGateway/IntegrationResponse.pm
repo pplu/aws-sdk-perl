@@ -1,13 +1,51 @@
 
 package Paws::ApiGateway::IntegrationResponse;
-  use Moose;
-  has ContentHandling => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandling');
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseParameters');
-  has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseTemplates');
-  has SelectionPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'selectionPattern');
-  has StatusCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusCode');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString/;
+  has ContentHandling => (is => 'ro', isa => Str);
+  has ResponseParameters => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has ResponseTemplates => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has SelectionPattern => (is => 'ro', isa => Str);
+  has StatusCode => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SelectionPattern' => 'selectionPattern',
+                       'ResponseParameters' => 'responseParameters',
+                       'ContentHandling' => 'contentHandling',
+                       'ResponseTemplates' => 'responseTemplates',
+                       'StatusCode' => 'statusCode'
+                     },
+  'types' => {
+               'ResponseParameters' => {
+                                         'type' => 'ApiGateway_MapOfStringToString',
+                                         'class' => 'Paws::ApiGateway::MapOfStringToString'
+                                       },
+               'SelectionPattern' => {
+                                       'type' => 'Str'
+                                     },
+               'ContentHandling' => {
+                                      'type' => 'Str'
+                                    },
+               'ResponseTemplates' => {
+                                        'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                        'type' => 'ApiGateway_MapOfStringToString'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +82,7 @@ through from the integration response to the method response without
 modification.
 
 Valid values are: C<"CONVERT_TO_BINARY">, C<"CONVERT_TO_TEXT">
-=head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseParameters => ApiGateway_MapOfStringToString
 
 A key-value map specifying response parameters that are passed to the
 method response from the back end. The key is a method response header
@@ -59,7 +97,7 @@ valid and unique response header name and C<JSON-expression> is a valid
 JSON expression without the C<$> prefix.
 
 
-=head2 ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseTemplates => ApiGateway_MapOfStringToString
 
 Specifies the templates used to transform the integration response
 body. Response templates are represented as a key/value map, with a

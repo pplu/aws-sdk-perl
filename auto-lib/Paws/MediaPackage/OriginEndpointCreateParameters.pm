@@ -1,18 +1,95 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::OriginEndpointCreateParameters;
-  use Moose;
-  has ChannelId => (is => 'ro', isa => 'Str', request_name => 'channelId', traits => ['NameInRequest'], required => 1);
-  has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackage::CmafPackageCreateOrUpdateParameters', request_name => 'cmafPackage', traits => ['NameInRequest']);
-  has DashPackage => (is => 'ro', isa => 'Paws::MediaPackage::DashPackage', request_name => 'dashPackage', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackage::HlsPackage', request_name => 'hlsPackage', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
-  has MssPackage => (is => 'ro', isa => 'Paws::MediaPackage::MssPackage', request_name => 'mssPackage', traits => ['NameInRequest']);
-  has Origination => (is => 'ro', isa => 'Str', request_name => 'origination', traits => ['NameInRequest']);
-  has StartoverWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'startoverWindowSeconds', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', request_name => 'tags', traits => ['NameInRequest']);
-  has TimeDelaySeconds => (is => 'ro', isa => 'Int', request_name => 'timeDelaySeconds', traits => ['NameInRequest']);
-  has Whitelist => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'whitelist', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::MediaPackage::Types qw/MediaPackage_DashPackage MediaPackage_HlsPackage MediaPackage_Tags MediaPackage_CmafPackageCreateOrUpdateParameters MediaPackage_MssPackage/;
+  has ChannelId => (is => 'ro', isa => Str, required => 1);
+  has CmafPackage => (is => 'ro', isa => MediaPackage_CmafPackageCreateOrUpdateParameters);
+  has DashPackage => (is => 'ro', isa => MediaPackage_DashPackage);
+  has Description => (is => 'ro', isa => Str);
+  has HlsPackage => (is => 'ro', isa => MediaPackage_HlsPackage);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has ManifestName => (is => 'ro', isa => Str);
+  has MssPackage => (is => 'ro', isa => MediaPackage_MssPackage);
+  has Origination => (is => 'ro', isa => Str);
+  has StartoverWindowSeconds => (is => 'ro', isa => Int);
+  has Tags => (is => 'ro', isa => MediaPackage_Tags);
+  has TimeDelaySeconds => (is => 'ro', isa => Int);
+  has Whitelist => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ManifestName' => {
+                                   'type' => 'Str'
+                                 },
+               'StartoverWindowSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'CmafPackage' => {
+                                  'class' => 'Paws::MediaPackage::CmafPackageCreateOrUpdateParameters',
+                                  'type' => 'MediaPackage_CmafPackageCreateOrUpdateParameters'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'HlsPackage' => {
+                                 'class' => 'Paws::MediaPackage::HlsPackage',
+                                 'type' => 'MediaPackage_HlsPackage'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'MssPackage' => {
+                                 'class' => 'Paws::MediaPackage::MssPackage',
+                                 'type' => 'MediaPackage_MssPackage'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::MediaPackage::Tags',
+                           'type' => 'MediaPackage_Tags'
+                         },
+               'DashPackage' => {
+                                  'class' => 'Paws::MediaPackage::DashPackage',
+                                  'type' => 'MediaPackage_DashPackage'
+                                },
+               'Origination' => {
+                                  'type' => 'Str'
+                                },
+               'ChannelId' => {
+                                'type' => 'Str'
+                              },
+               'Whitelist' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'TimeDelaySeconds' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'ChannelId' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'MssPackage' => 'mssPackage',
+                       'Origination' => 'origination',
+                       'DashPackage' => 'dashPackage',
+                       'Id' => 'id',
+                       'HlsPackage' => 'hlsPackage',
+                       'Description' => 'description',
+                       'ManifestName' => 'manifestName',
+                       'StartoverWindowSeconds' => 'startoverWindowSeconds',
+                       'CmafPackage' => 'cmafPackage',
+                       'ChannelId' => 'channelId',
+                       'TimeDelaySeconds' => 'timeDelaySeconds',
+                       'Whitelist' => 'whitelist'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,12 +131,12 @@ Configuration parameters for a new OriginEndpoint.
 This cannot be changed after the OriginEndpoint is created.
 
 
-=head2 CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>
+=head2 CmafPackage => MediaPackage_CmafPackageCreateOrUpdateParameters
 
   
 
 
-=head2 DashPackage => L<Paws::MediaPackage::DashPackage>
+=head2 DashPackage => MediaPackage_DashPackage
 
   
 
@@ -69,7 +146,7 @@ This cannot be changed after the OriginEndpoint is created.
   A short text description of the OriginEndpoint.
 
 
-=head2 HlsPackage => L<Paws::MediaPackage::HlsPackage>
+=head2 HlsPackage => MediaPackage_HlsPackage
 
   
 
@@ -86,7 +163,7 @@ and it cannot be changed after the OriginEndpoint is created.
 URL (defaults to "index").
 
 
-=head2 MssPackage => L<Paws::MediaPackage::MssPackage>
+=head2 MssPackage => MediaPackage_MssPackage
 
   
 
@@ -107,7 +184,7 @@ If not specified, startover playback will be disabled for the
 OriginEndpoint.
 
 
-=head2 Tags => L<Paws::MediaPackage::Tags>
+=head2 Tags => MediaPackage_Tags
 
   
 

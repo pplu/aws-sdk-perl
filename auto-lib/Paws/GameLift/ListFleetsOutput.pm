@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::ListFleetsOutput;
-  use Moose;
-  has FleetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GameLift::Types qw//;
+  has FleetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'FleetIds' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeAggregateIdFormatResult;
-  use Moose;
-  has Statuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IdFormat]', request_name => 'statusSet', traits => ['NameInRequest',]);
-  has UseLongIdsAggregated => (is => 'ro', isa => 'Bool', request_name => 'useLongIdsAggregated', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_IdFormat/;
+  has Statuses => (is => 'ro', isa => ArrayRef[EC2_IdFormat]);
+  has UseLongIdsAggregated => (is => 'ro', isa => Bool);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Statuses' => 'statusSet',
+                       'UseLongIdsAggregated' => 'useLongIdsAggregated'
+                     },
+  'types' => {
+               'UseLongIdsAggregated' => {
+                                           'type' => 'Bool'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Statuses' => {
+                               'type' => 'ArrayRef[EC2_IdFormat]',
+                               'class' => 'Paws::EC2::IdFormat'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeAggregateIdFormatResult
 =head1 ATTRIBUTES
 
 
-=head2 Statuses => ArrayRef[L<Paws::EC2::IdFormat>]
+=head2 Statuses => ArrayRef[EC2_IdFormat]
 
 Information about each resource's ID format.
 

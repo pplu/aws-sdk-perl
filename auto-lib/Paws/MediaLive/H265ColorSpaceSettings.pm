@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::MediaLive::H265ColorSpaceSettings;
-  use Moose;
-  has ColorSpacePassthroughSettings => (is => 'ro', isa => 'Paws::MediaLive::ColorSpacePassthroughSettings', request_name => 'colorSpacePassthroughSettings', traits => ['NameInRequest']);
-  has Hdr10Settings => (is => 'ro', isa => 'Paws::MediaLive::Hdr10Settings', request_name => 'hdr10Settings', traits => ['NameInRequest']);
-  has Rec601Settings => (is => 'ro', isa => 'Paws::MediaLive::Rec601Settings', request_name => 'rec601Settings', traits => ['NameInRequest']);
-  has Rec709Settings => (is => 'ro', isa => 'Paws::MediaLive::Rec709Settings', request_name => 'rec709Settings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_Hdr10Settings MediaLive_Rec709Settings MediaLive_Rec601Settings MediaLive_ColorSpacePassthroughSettings/;
+  has ColorSpacePassthroughSettings => (is => 'ro', isa => MediaLive_ColorSpacePassthroughSettings);
+  has Hdr10Settings => (is => 'ro', isa => MediaLive_Hdr10Settings);
+  has Rec601Settings => (is => 'ro', isa => MediaLive_Rec601Settings);
+  has Rec709Settings => (is => 'ro', isa => MediaLive_Rec709Settings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Rec601Settings' => {
+                                     'type' => 'MediaLive_Rec601Settings',
+                                     'class' => 'Paws::MediaLive::Rec601Settings'
+                                   },
+               'Rec709Settings' => {
+                                     'class' => 'Paws::MediaLive::Rec709Settings',
+                                     'type' => 'MediaLive_Rec709Settings'
+                                   },
+               'Hdr10Settings' => {
+                                    'class' => 'Paws::MediaLive::Hdr10Settings',
+                                    'type' => 'MediaLive_Hdr10Settings'
+                                  },
+               'ColorSpacePassthroughSettings' => {
+                                                    'type' => 'MediaLive_ColorSpacePassthroughSettings',
+                                                    'class' => 'Paws::MediaLive::ColorSpacePassthroughSettings'
+                                                  }
+             },
+  'NameInRequest' => {
+                       'Rec709Settings' => 'rec709Settings',
+                       'Rec601Settings' => 'rec601Settings',
+                       'ColorSpacePassthroughSettings' => 'colorSpacePassthroughSettings',
+                       'Hdr10Settings' => 'hdr10Settings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,22 +75,22 @@ H265 Color Space Settings
 =head1 ATTRIBUTES
 
 
-=head2 ColorSpacePassthroughSettings => L<Paws::MediaLive::ColorSpacePassthroughSettings>
+=head2 ColorSpacePassthroughSettings => MediaLive_ColorSpacePassthroughSettings
 
   
 
 
-=head2 Hdr10Settings => L<Paws::MediaLive::Hdr10Settings>
+=head2 Hdr10Settings => MediaLive_Hdr10Settings
 
   
 
 
-=head2 Rec601Settings => L<Paws::MediaLive::Rec601Settings>
+=head2 Rec601Settings => MediaLive_Rec601Settings
 
   
 
 
-=head2 Rec709Settings => L<Paws::MediaLive::Rec709Settings>
+=head2 Rec709Settings => MediaLive_Rec709Settings
 
   
 

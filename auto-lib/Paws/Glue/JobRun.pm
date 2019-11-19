@@ -1,27 +1,110 @@
+# Generated from default/object.tt
 package Paws::Glue::JobRun;
-  use Moose;
-  has AllocatedCapacity => (is => 'ro', isa => 'Int');
-  has Arguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
-  has Attempt => (is => 'ro', isa => 'Int');
-  has CompletedOn => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has ExecutionTime => (is => 'ro', isa => 'Int');
-  has GlueVersion => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has JobName => (is => 'ro', isa => 'Str');
-  has JobRunState => (is => 'ro', isa => 'Str');
-  has LastModifiedOn => (is => 'ro', isa => 'Str');
-  has LogGroupName => (is => 'ro', isa => 'Str');
-  has MaxCapacity => (is => 'ro', isa => 'Num');
-  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
-  has NumberOfWorkers => (is => 'ro', isa => 'Int');
-  has PredecessorRuns => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Predecessor]');
-  has PreviousRunId => (is => 'ro', isa => 'Str');
-  has SecurityConfiguration => (is => 'ro', isa => 'Str');
-  has StartedOn => (is => 'ro', isa => 'Str');
-  has Timeout => (is => 'ro', isa => 'Int');
-  has TriggerName => (is => 'ro', isa => 'Str');
-  has WorkerType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str Num ArrayRef/;
+  use Paws::Glue::Types qw/Glue_Predecessor Glue_GenericMap Glue_NotificationProperty/;
+  has AllocatedCapacity => (is => 'ro', isa => Int);
+  has Arguments => (is => 'ro', isa => Glue_GenericMap);
+  has Attempt => (is => 'ro', isa => Int);
+  has CompletedOn => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has ExecutionTime => (is => 'ro', isa => Int);
+  has GlueVersion => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has JobName => (is => 'ro', isa => Str);
+  has JobRunState => (is => 'ro', isa => Str);
+  has LastModifiedOn => (is => 'ro', isa => Str);
+  has LogGroupName => (is => 'ro', isa => Str);
+  has MaxCapacity => (is => 'ro', isa => Num);
+  has NotificationProperty => (is => 'ro', isa => Glue_NotificationProperty);
+  has NumberOfWorkers => (is => 'ro', isa => Int);
+  has PredecessorRuns => (is => 'ro', isa => ArrayRef[Glue_Predecessor]);
+  has PreviousRunId => (is => 'ro', isa => Str);
+  has SecurityConfiguration => (is => 'ro', isa => Str);
+  has StartedOn => (is => 'ro', isa => Str);
+  has Timeout => (is => 'ro', isa => Int);
+  has TriggerName => (is => 'ro', isa => Str);
+  has WorkerType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobRunState' => {
+                                  'type' => 'Str'
+                                },
+               'CompletedOn' => {
+                                  'type' => 'Str'
+                                },
+               'ExecutionTime' => {
+                                    'type' => 'Int'
+                                  },
+               'Arguments' => {
+                                'type' => 'Glue_GenericMap',
+                                'class' => 'Paws::Glue::GenericMap'
+                              },
+               'NumberOfWorkers' => {
+                                      'type' => 'Int'
+                                    },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxCapacity' => {
+                                  'type' => 'Num'
+                                },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'GlueVersion' => {
+                                  'type' => 'Str'
+                                },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Timeout' => {
+                              'type' => 'Int'
+                            },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'LastModifiedOn' => {
+                                     'type' => 'Str'
+                                   },
+               'WorkerType' => {
+                                 'type' => 'Str'
+                               },
+               'Attempt' => {
+                              'type' => 'Int'
+                            },
+               'PredecessorRuns' => {
+                                      'type' => 'ArrayRef[Glue_Predecessor]',
+                                      'class' => 'Paws::Glue::Predecessor'
+                                    },
+               'StartedOn' => {
+                                'type' => 'Str'
+                              },
+               'AllocatedCapacity' => {
+                                        'type' => 'Int'
+                                      },
+               'PreviousRunId' => {
+                                    'type' => 'Str'
+                                  },
+               'TriggerName' => {
+                                  'type' => 'Str'
+                                },
+               'NotificationProperty' => {
+                                           'class' => 'Paws::Glue::NotificationProperty',
+                                           'type' => 'Glue_NotificationProperty'
+                                         },
+               'SecurityConfiguration' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +151,7 @@ compute capacity and 16 GB of memory. For more information, see the AWS
 Glue pricing page (https://aws.amazon.com/glue/pricing/).
 
 
-=head2 Arguments => L<Paws::Glue::GenericMap>
+=head2 Arguments => Glue_GenericMap
 
   The job arguments associated with this run. For this job run, they
 replace the default arguments set in the job definition itself.
@@ -184,7 +267,7 @@ allocation.
 
 
 
-=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
+=head2 NotificationProperty => Glue_NotificationProperty
 
   Specifies configuration properties of a job run notification.
 
@@ -198,7 +281,7 @@ The maximum number of workers you can define are 299 for C<G.1X>, and
 149 for C<G.2X>.
 
 
-=head2 PredecessorRuns => ArrayRef[L<Paws::Glue::Predecessor>]
+=head2 PredecessorRuns => ArrayRef[Glue_Predecessor]
 
   A list of predecessors to this job run.
 

@@ -1,16 +1,42 @@
 
 package Paws::ResourceGroups::ListGroups;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::ResourceGroups::GroupFilter]');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::ResourceGroups::Types qw/ResourceGroups_GroupFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[ResourceGroups_GroupFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListGroups');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/groups-list');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ResourceGroups::ListGroupsOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListGroups');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/groups-list');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ResourceGroups::ListGroupsOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filters' => {
+                              'class' => 'Paws::ResourceGroups::GroupFilter',
+                              'type' => 'ArrayRef[ResourceGroups_GroupFilter]'
+                            }
+             },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +84,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/res
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::ResourceGroups::GroupFilter>]
+=head2 Filters => ArrayRef[ResourceGroups_GroupFilter]
 
 Filters, formatted as GroupFilter objects, that you want to apply to a
 ListGroups operation.

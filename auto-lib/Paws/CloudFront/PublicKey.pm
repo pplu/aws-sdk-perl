@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CloudFront::PublicKey;
-  use Moose;
-  has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has PublicKeyConfig => (is => 'ro', isa => 'Paws::CloudFront::PublicKeyConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_PublicKeyConfig/;
+  has CreatedTime => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has PublicKeyConfig => (is => 'ro', isa => CloudFront_PublicKeyConfig, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PublicKeyConfig' => 1,
+                    'CreatedTime' => 1,
+                    'Id' => 1
+                  },
+  'types' => {
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'PublicKeyConfig' => {
+                                      'type' => 'CloudFront_PublicKeyConfig',
+                                      'class' => 'Paws::CloudFront::PublicKeyConfig'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +78,7 @@ features like field-level encryption.
   A unique ID assigned to a public key you've added to CloudFront.
 
 
-=head2 B<REQUIRED> PublicKeyConfig => L<Paws::CloudFront::PublicKeyConfig>
+=head2 B<REQUIRED> PublicKeyConfig => CloudFront_PublicKeyConfig
 
   A complex data type for a public key you add to CloudFront to use with
 features like field-level encryption.

@@ -1,20 +1,81 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::VideoParameters;
-  use Moose;
-  has AspectRatio => (is => 'ro', isa => 'Str');
-  has BitRate => (is => 'ro', isa => 'Str');
-  has Codec => (is => 'ro', isa => 'Str');
-  has CodecOptions => (is => 'ro', isa => 'Paws::ElasticTranscoder::CodecOptions');
-  has DisplayAspectRatio => (is => 'ro', isa => 'Str');
-  has FixedGOP => (is => 'ro', isa => 'Str');
-  has FrameRate => (is => 'ro', isa => 'Str');
-  has KeyframesMaxDist => (is => 'ro', isa => 'Str');
-  has MaxFrameRate => (is => 'ro', isa => 'Str');
-  has MaxHeight => (is => 'ro', isa => 'Str');
-  has MaxWidth => (is => 'ro', isa => 'Str');
-  has PaddingPolicy => (is => 'ro', isa => 'Str');
-  has Resolution => (is => 'ro', isa => 'Str');
-  has SizingPolicy => (is => 'ro', isa => 'Str');
-  has Watermarks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::PresetWatermark]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_PresetWatermark ElasticTranscoder_CodecOptions/;
+  has AspectRatio => (is => 'ro', isa => Str);
+  has BitRate => (is => 'ro', isa => Str);
+  has Codec => (is => 'ro', isa => Str);
+  has CodecOptions => (is => 'ro', isa => ElasticTranscoder_CodecOptions);
+  has DisplayAspectRatio => (is => 'ro', isa => Str);
+  has FixedGOP => (is => 'ro', isa => Str);
+  has FrameRate => (is => 'ro', isa => Str);
+  has KeyframesMaxDist => (is => 'ro', isa => Str);
+  has MaxFrameRate => (is => 'ro', isa => Str);
+  has MaxHeight => (is => 'ro', isa => Str);
+  has MaxWidth => (is => 'ro', isa => Str);
+  has PaddingPolicy => (is => 'ro', isa => Str);
+  has Resolution => (is => 'ro', isa => Str);
+  has SizingPolicy => (is => 'ro', isa => Str);
+  has Watermarks => (is => 'ro', isa => ArrayRef[ElasticTranscoder_PresetWatermark]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AspectRatio' => {
+                                  'type' => 'Str'
+                                },
+               'PaddingPolicy' => {
+                                    'type' => 'Str'
+                                  },
+               'Resolution' => {
+                                 'type' => 'Str'
+                               },
+               'BitRate' => {
+                              'type' => 'Str'
+                            },
+               'MaxWidth' => {
+                               'type' => 'Str'
+                             },
+               'KeyframesMaxDist' => {
+                                       'type' => 'Str'
+                                     },
+               'Watermarks' => {
+                                 'class' => 'Paws::ElasticTranscoder::PresetWatermark',
+                                 'type' => 'ArrayRef[ElasticTranscoder_PresetWatermark]'
+                               },
+               'CodecOptions' => {
+                                   'class' => 'Paws::ElasticTranscoder::CodecOptions',
+                                   'type' => 'ElasticTranscoder_CodecOptions'
+                                 },
+               'MaxFrameRate' => {
+                                   'type' => 'Str'
+                                 },
+               'SizingPolicy' => {
+                                   'type' => 'Str'
+                                 },
+               'DisplayAspectRatio' => {
+                                         'type' => 'Str'
+                                       },
+               'FrameRate' => {
+                                'type' => 'Str'
+                              },
+               'MaxHeight' => {
+                                'type' => 'Str'
+                              },
+               'FixedGOP' => {
+                               'type' => 'Str'
+                             },
+               'Codec' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -142,7 +203,7 @@ C<vp9> when the container type is C<webm>, C<gif> when the container
 type is C<gif>, and C<mpeg2> when the container type is C<mpg>.
 
 
-=head2 CodecOptions => L<Paws::ElasticTranscoder::CodecOptions>
+=head2 CodecOptions => ElasticTranscoder_CodecOptions
 
   B<Profile (H.264/VP8/VP9 Only)>
 
@@ -700,7 +761,7 @@ the video up.
 
 
 
-=head2 Watermarks => ArrayRef[L<Paws::ElasticTranscoder::PresetWatermark>]
+=head2 Watermarks => ArrayRef[ElasticTranscoder_PresetWatermark]
 
   Settings for the size, location, and opacity of graphics that you want
 Elastic Transcoder to overlay over videos that are transcoded using

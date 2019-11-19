@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CUR;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'cur' }
   sub signing_name { 'cur' }
   sub version { '2017-01-06' }
   sub target_prefix { 'AWSOrigamiServiceGatewayService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -154,7 +156,7 @@ Lists the AWS Cost and Usage reports available to this account.
 
 =over
 
-=item ReportDefinition => L<Paws::CUR::ReportDefinition>
+=item ReportDefinition => CUR_ReportDefinition
 
 =item ReportName => Str
 
@@ -172,7 +174,7 @@ Allows you to programatically update your report preferences.
 
 =over
 
-=item ReportDefinition => L<Paws::CUR::ReportDefinition>
+=item ReportDefinition => CUR_ReportDefinition
 
 
 =back

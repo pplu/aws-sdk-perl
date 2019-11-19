@@ -1,7 +1,28 @@
 package Paws::EC2::LaunchPermission;
-  use Moose;
-  has Group => (is => 'ro', isa => 'Str', request_name => 'group', traits => ['NameInRequest']);
-  has UserId => (is => 'ro', isa => 'Str', request_name => 'userId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Group => (is => 'ro', isa => Str);
+  has UserId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Group' => {
+                            'type' => 'Str'
+                          },
+               'UserId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Group' => 'group',
+                       'UserId' => 'userId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

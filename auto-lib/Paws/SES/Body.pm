@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::SES::Body;
-  use Moose;
-  has Html => (is => 'ro', isa => 'Paws::SES::Content');
-  has Text => (is => 'ro', isa => 'Paws::SES::Content');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SES::Types qw/SES_Content/;
+  has Html => (is => 'ro', isa => SES_Content);
+  has Text => (is => 'ro', isa => SES_Content);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Text' => {
+                           'class' => 'Paws::SES::Content',
+                           'type' => 'SES_Content'
+                         },
+               'Html' => {
+                           'type' => 'SES_Content',
+                           'class' => 'Paws::SES::Content'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,14 +61,14 @@ widest variety of email clients.
 =head1 ATTRIBUTES
 
 
-=head2 Html => L<Paws::SES::Content>
+=head2 Html => SES_Content
 
   The content of the message, in HTML format. Use this for email clients
 that can process HTML. You can include clickable links, formatted text,
 and much more in an HTML message.
 
 
-=head2 Text => L<Paws::SES::Content>
+=head2 Text => SES_Content
 
   The content of the message, in text format. Use this for text-based
 email clients, or clients on high-latency networks (such as mobile

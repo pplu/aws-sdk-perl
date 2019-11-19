@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::SSM::InventoryItemSchema;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryItemAttribute]', required => 1);
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has TypeName => (is => 'ro', isa => 'Str', required => 1);
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::SSM::Types qw/SSM_InventoryItemAttribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[SSM_InventoryItemAttribute], required => 1);
+  has DisplayName => (is => 'ro', isa => Str);
+  has TypeName => (is => 'ro', isa => Str, required => 1);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'type' => 'ArrayRef[SSM_InventoryItemAttribute]',
+                                 'class' => 'Paws::SSM::InventoryItemAttribute'
+                               },
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Attributes' => 1,
+                    'TypeName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +71,7 @@ inventory query filters.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::SSM::InventoryItemAttribute>]
+=head2 B<REQUIRED> Attributes => ArrayRef[SSM_InventoryItemAttribute]
 
   The schema attributes for inventory. This contains data type and
 attribute name.

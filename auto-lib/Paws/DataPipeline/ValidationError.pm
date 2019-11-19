@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DataPipeline::ValidationError;
-  use Moose;
-  has Errors => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'errors', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::DataPipeline::Types qw//;
+  has Errors => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Id => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Errors' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             },
+  'NameInRequest' => {
+                       'Errors' => 'errors',
+                       'Id' => 'id'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

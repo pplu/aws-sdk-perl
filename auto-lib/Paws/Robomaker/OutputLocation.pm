@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Robomaker::OutputLocation;
-  use Moose;
-  has S3Bucket => (is => 'ro', isa => 'Str', request_name => 's3Bucket', traits => ['NameInRequest']);
-  has S3Prefix => (is => 'ro', isa => 'Str', request_name => 's3Prefix', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw//;
+  has S3Bucket => (is => 'ro', isa => Str);
+  has S3Prefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'S3Bucket' => 's3Bucket',
+                       'S3Prefix' => 's3Prefix'
+                     },
+  'types' => {
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             },
+               'S3Prefix' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MQ::BrokerInstance;
-  use Moose;
-  has ConsoleURL => (is => 'ro', isa => 'Str', request_name => 'consoleURL', traits => ['NameInRequest']);
-  has Endpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'endpoints', traits => ['NameInRequest']);
-  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::MQ::Types qw//;
+  has ConsoleURL => (is => 'ro', isa => Str);
+  has Endpoints => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has IpAddress => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Endpoints' => 'endpoints',
+                       'ConsoleURL' => 'consoleURL',
+                       'IpAddress' => 'ipAddress'
+                     },
+  'types' => {
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'ConsoleURL' => {
+                                 'type' => 'Str'
+                               },
+               'Endpoints' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

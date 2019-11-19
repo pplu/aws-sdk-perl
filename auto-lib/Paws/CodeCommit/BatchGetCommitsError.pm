@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::BatchGetCommitsError;
-  use Moose;
-  has CommitId => (is => 'ro', isa => 'Str', request_name => 'commitId', traits => ['NameInRequest']);
-  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
-  has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has CommitId => (is => 'ro', isa => Str);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CommitId' => {
+                               'type' => 'Str'
+                             },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'ErrorMessage' => 'errorMessage',
+                       'ErrorCode' => 'errorCode',
+                       'CommitId' => 'commitId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

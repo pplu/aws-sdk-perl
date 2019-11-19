@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Forecast::Metrics;
-  use Moose;
-  has RMSE => (is => 'ro', isa => 'Num');
-  has WeightedQuantileLosses => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::WeightedQuantileLoss]');
+  use Moo;
+  use Types::Standard qw/Num ArrayRef/;
+  use Paws::Forecast::Types qw/Forecast_WeightedQuantileLoss/;
+  has RMSE => (is => 'ro', isa => Num);
+  has WeightedQuantileLosses => (is => 'ro', isa => ArrayRef[Forecast_WeightedQuantileLoss]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RMSE' => {
+                           'type' => 'Num'
+                         },
+               'WeightedQuantileLosses' => {
+                                             'type' => 'ArrayRef[Forecast_WeightedQuantileLoss]',
+                                             'class' => 'Paws::Forecast::WeightedQuantileLoss'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ object is part of the WindowSummary object.
   The root mean square error (RMSE).
 
 
-=head2 WeightedQuantileLosses => ArrayRef[L<Paws::Forecast::WeightedQuantileLoss>]
+=head2 WeightedQuantileLosses => ArrayRef[Forecast_WeightedQuantileLoss]
 
   An array of weighted quantile losses. Quantiles divide a probability
 distribution into regions of equal probability. The distribution in

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Comprehend::DominantLanguage;
-  use Moose;
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has Score => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::Comprehend::Types qw//;
+  has LanguageCode => (is => 'ro', isa => Str);
+  has Score => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'Score' => {
+                            'type' => 'Num'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

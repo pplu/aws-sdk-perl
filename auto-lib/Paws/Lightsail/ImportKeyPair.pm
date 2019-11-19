@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::ImportKeyPair;
-  use Moose;
-  has KeyPairName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyPairName' , required => 1);
-  has PublicKeyBase64 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'publicKeyBase64' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has KeyPairName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PublicKeyBase64 => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportKeyPair');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::ImportKeyPairResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportKeyPair');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::ImportKeyPairResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PublicKeyBase64' => {
+                                      'type' => 'Str'
+                                    },
+               'KeyPairName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'KeyPairName' => 'keyPairName',
+                       'PublicKeyBase64' => 'publicKeyBase64'
+                     },
+  'IsRequired' => {
+                    'PublicKeyBase64' => 1,
+                    'KeyPairName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

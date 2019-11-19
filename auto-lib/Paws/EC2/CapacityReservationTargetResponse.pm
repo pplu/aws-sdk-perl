@@ -1,6 +1,23 @@
 package Paws::EC2::CapacityReservationTargetResponse;
-  use Moose;
-  has CapacityReservationId => (is => 'ro', isa => 'Str', request_name => 'capacityReservationId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has CapacityReservationId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CapacityReservationId' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'NameInRequest' => {
+                       'CapacityReservationId' => 'capacityReservationId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

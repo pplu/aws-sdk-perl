@@ -1,10 +1,41 @@
+# Generated from default/object.tt
 package Paws::GameLift::GameSessionQueue;
-  use Moose;
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameSessionQueueDestination]');
-  has GameSessionQueueArn => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has PlayerLatencyPolicies => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlayerLatencyPolicy]');
-  has TimeoutInSeconds => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int/;
+  use Paws::GameLift::Types qw/GameLift_PlayerLatencyPolicy GameLift_GameSessionQueueDestination/;
+  has Destinations => (is => 'ro', isa => ArrayRef[GameLift_GameSessionQueueDestination]);
+  has GameSessionQueueArn => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has PlayerLatencyPolicies => (is => 'ro', isa => ArrayRef[GameLift_PlayerLatencyPolicy]);
+  has TimeoutInSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GameSessionQueueArn' => {
+                                          'type' => 'Str'
+                                        },
+               'PlayerLatencyPolicies' => {
+                                            'type' => 'ArrayRef[GameLift_PlayerLatencyPolicy]',
+                                            'class' => 'Paws::GameLift::PlayerLatencyPolicy'
+                                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'TimeoutInSeconds' => {
+                                       'type' => 'Int'
+                                     },
+               'Destinations' => {
+                                   'class' => 'Paws::GameLift::GameSessionQueueDestination',
+                                   'type' => 'ArrayRef[GameLift_GameSessionQueueDestination]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +117,7 @@ DeleteGameSessionQueue
 =head1 ATTRIBUTES
 
 
-=head2 Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>]
+=head2 Destinations => ArrayRef[GameLift_GameSessionQueueDestination]
 
   List of fleets that can be used to fulfill game session placement
 requests in the queue. Fleets are identified by either a fleet ARN or a
@@ -108,7 +139,7 @@ accountE<gt>:gamesessionqueue/E<lt>queue nameE<gt>>.
 names must be unique within each region.
 
 
-=head2 PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]
+=head2 PlayerLatencyPolicies => ArrayRef[GameLift_PlayerLatencyPolicy]
 
   Collection of latency policies to apply when processing game sessions
 placement requests with player latency information. Multiple policies

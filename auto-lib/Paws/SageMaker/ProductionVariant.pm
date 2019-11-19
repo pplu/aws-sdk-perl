@@ -1,11 +1,49 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ProductionVariant;
-  use Moose;
-  has AcceleratorType => (is => 'ro', isa => 'Str');
-  has InitialInstanceCount => (is => 'ro', isa => 'Int', required => 1);
-  has InitialVariantWeight => (is => 'ro', isa => 'Num');
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has ModelName => (is => 'ro', isa => 'Str', required => 1);
-  has VariantName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::SageMaker::Types qw//;
+  has AcceleratorType => (is => 'ro', isa => Str);
+  has InitialInstanceCount => (is => 'ro', isa => Int, required => 1);
+  has InitialVariantWeight => (is => 'ro', isa => Num);
+  has InstanceType => (is => 'ro', isa => Str, required => 1);
+  has ModelName => (is => 'ro', isa => Str, required => 1);
+  has VariantName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VariantName' => {
+                                  'type' => 'Str'
+                                },
+               'InitialVariantWeight' => {
+                                           'type' => 'Num'
+                                         },
+               'AcceleratorType' => {
+                                      'type' => 'Str'
+                                    },
+               'ModelName' => {
+                                'type' => 'Str'
+                              },
+               'InitialInstanceCount' => {
+                                           'type' => 'Int'
+                                         },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'VariantName' => 1,
+                    'ModelName' => 1,
+                    'InstanceType' => 1,
+                    'InitialInstanceCount' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

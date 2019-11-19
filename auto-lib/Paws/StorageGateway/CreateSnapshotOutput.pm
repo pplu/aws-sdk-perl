@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::CreateSnapshotOutput;
-  use Moose;
-  has SnapshotId => (is => 'ro', isa => 'Str');
-  has VolumeARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StorageGateway::Types qw//;
+  has SnapshotId => (is => 'ro', isa => Str);
+  has VolumeARN => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeARN' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

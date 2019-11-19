@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::IoT::HttpAuthorization;
-  use Moose;
-  has Sigv4 => (is => 'ro', isa => 'Paws::IoT::SigV4Authorization', request_name => 'sigv4', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoT::Types qw/IoT_SigV4Authorization/;
+  has Sigv4 => (is => 'ro', isa => IoT_SigV4Authorization);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Sigv4' => 'sigv4'
+                     },
+  'types' => {
+               'Sigv4' => {
+                            'type' => 'IoT_SigV4Authorization',
+                            'class' => 'Paws::IoT::SigV4Authorization'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ The authorization method used to send messages.
 =head1 ATTRIBUTES
 
 
-=head2 Sigv4 => L<Paws::IoT::SigV4Authorization>
+=head2 Sigv4 => IoT_SigV4Authorization
 
   Use Sig V4 authorization. For more information, see Signature Version 4
 Signing Process

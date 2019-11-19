@@ -1,17 +1,47 @@
 
 package Paws::IoT::RemoveThingFromThingGroup;
-  use Moose;
-  has ThingArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingArn');
-  has ThingGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingGroupArn');
-  has ThingGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingGroupName');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingName');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has ThingArn => (is => 'ro', isa => Str, predicate => 1);
+  has ThingGroupArn => (is => 'ro', isa => Str, predicate => 1);
+  has ThingGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveThingFromThingGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/thing-groups/removeThingFromThingGroup');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::RemoveThingFromThingGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RemoveThingFromThingGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/thing-groups/removeThingFromThingGroup');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::RemoveThingFromThingGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingArn' => {
+                               'type' => 'Str'
+                             },
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'ThingGroupName' => {
+                                     'type' => 'Str'
+                                   },
+               'ThingGroupArn' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'ThingGroupArn' => 'thingGroupArn',
+                       'ThingName' => 'thingName',
+                       'ThingGroupName' => 'thingGroupName',
+                       'ThingArn' => 'thingArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

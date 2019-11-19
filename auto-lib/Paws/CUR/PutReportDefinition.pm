@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CUR::PutReportDefinition;
-  use Moose;
-  has ReportDefinition => (is => 'ro', isa => 'Paws::CUR::ReportDefinition', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CUR::Types qw/CUR_ReportDefinition/;
+  has ReportDefinition => (is => 'ro', isa => CUR_ReportDefinition, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutReportDefinition');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CUR::PutReportDefinitionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutReportDefinition');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CUR::PutReportDefinitionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ReportDefinition' => 1
+                  },
+  'types' => {
+               'ReportDefinition' => {
+                                       'type' => 'CUR_ReportDefinition',
+                                       'class' => 'Paws::CUR::ReportDefinition'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +76,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cur
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ReportDefinition => L<Paws::CUR::ReportDefinition>
+=head2 B<REQUIRED> ReportDefinition => CUR_ReportDefinition
 
 Represents the output of the PutReportDefinition operation. The content
 consists of the detailed metadata and data file information.

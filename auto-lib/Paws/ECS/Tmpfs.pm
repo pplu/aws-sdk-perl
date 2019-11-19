@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::ECS::Tmpfs;
-  use Moose;
-  has ContainerPath => (is => 'ro', isa => 'Str', request_name => 'containerPath', traits => ['NameInRequest'], required => 1);
-  has MountOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'mountOptions', traits => ['NameInRequest']);
-  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::ECS::Types qw//;
+  has ContainerPath => (is => 'ro', isa => Str, required => 1);
+  has MountOptions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Size => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ContainerPath' => 1,
+                    'Size' => 1
+                  },
+  'NameInRequest' => {
+                       'MountOptions' => 'mountOptions',
+                       'Size' => 'size',
+                       'ContainerPath' => 'containerPath'
+                     },
+  'types' => {
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'MountOptions' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'ContainerPath' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

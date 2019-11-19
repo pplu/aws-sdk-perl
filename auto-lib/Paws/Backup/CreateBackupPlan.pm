@@ -1,16 +1,42 @@
 
 package Paws::Backup::CreateBackupPlan;
-  use Moose;
-  has BackupPlan => (is => 'ro', isa => 'Paws::Backup::BackupPlanInput', required => 1);
-  has BackupPlanTags => (is => 'ro', isa => 'Paws::Backup::Tags');
-  has CreatorRequestId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw/Backup_BackupPlanInput Backup_Tags/;
+  has BackupPlan => (is => 'ro', isa => Backup_BackupPlanInput, required => 1, predicate => 1);
+  has BackupPlanTags => (is => 'ro', isa => Backup_Tags, predicate => 1);
+  has CreatorRequestId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBackupPlan');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup/plans/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::CreateBackupPlanOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBackupPlan');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup/plans/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::CreateBackupPlanOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BackupPlan' => 1
+                  },
+  'types' => {
+               'BackupPlanTags' => {
+                                     'type' => 'Backup_Tags',
+                                     'class' => 'Paws::Backup::Tags'
+                                   },
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     },
+               'BackupPlan' => {
+                                 'type' => 'Backup_BackupPlanInput',
+                                 'class' => 'Paws::Backup::BackupPlanInput'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,14 +94,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bac
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> BackupPlan => L<Paws::Backup::BackupPlanInput>
+=head2 B<REQUIRED> BackupPlan => Backup_BackupPlanInput
 
 Specifies the body of a backup plan. Includes a C<BackupPlanName> and
 one or more sets of C<Rules>.
 
 
 
-=head2 BackupPlanTags => L<Paws::Backup::Tags>
+=head2 BackupPlanTags => Backup_Tags
 
 To help organize your resources, you can assign your own metadata to
 the resources that you create. Each tag is a key-value pair. The

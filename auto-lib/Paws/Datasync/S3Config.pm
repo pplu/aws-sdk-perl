@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Datasync::S3Config;
-  use Moose;
-  has BucketAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Datasync::Types qw//;
+  has BucketAccessRoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BucketAccessRoleArn' => 1
+                  },
+  'types' => {
+               'BucketAccessRoleArn' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

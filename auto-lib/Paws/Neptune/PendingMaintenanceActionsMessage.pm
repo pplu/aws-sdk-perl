@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::Neptune::PendingMaintenanceActionsMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has PendingMaintenanceActions => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::ResourcePendingMaintenanceActions]', request_name => 'ResourcePendingMaintenanceActions', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_ResourcePendingMaintenanceActions/;
+  has Marker => (is => 'ro', isa => Str);
+  has PendingMaintenanceActions => (is => 'ro', isa => ArrayRef[Neptune_ResourcePendingMaintenanceActions]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'PendingMaintenanceActions' => {
+                                                'class' => 'Paws::Neptune::ResourcePendingMaintenanceActions',
+                                                'type' => 'ArrayRef[Neptune_ResourcePendingMaintenanceActions]'
+                                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'PendingMaintenanceActions' => 'ResourcePendingMaintenanceActions'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +49,7 @@ specified, the response includes only records beyond the marker, up to
 a number of records specified by C<MaxRecords>.
 
 
-=head2 PendingMaintenanceActions => ArrayRef[L<Paws::Neptune::ResourcePendingMaintenanceActions>]
+=head2 PendingMaintenanceActions => ArrayRef[Neptune_ResourcePendingMaintenanceActions]
 
 A list of the pending maintenance actions for the resource.
 

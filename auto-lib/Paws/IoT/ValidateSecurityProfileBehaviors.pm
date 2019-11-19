@@ -1,14 +1,36 @@
 
 package Paws::IoT::ValidateSecurityProfileBehaviors;
-  use Moose;
-  has Behaviors => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Behavior]', traits => ['NameInRequest'], request_name => 'behaviors', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_Behavior/;
+  has Behaviors => (is => 'ro', isa => ArrayRef[IoT_Behavior], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ValidateSecurityProfileBehaviors');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/security-profile-behaviors/validate');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ValidateSecurityProfileBehaviorsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ValidateSecurityProfileBehaviors');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/security-profile-behaviors/validate');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ValidateSecurityProfileBehaviorsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Behaviors' => {
+                                'type' => 'ArrayRef[IoT_Behavior]',
+                                'class' => 'Paws::IoT::Behavior'
+                              }
+             },
+  'NameInRequest' => {
+                       'Behaviors' => 'behaviors'
+                     },
+  'IsRequired' => {
+                    'Behaviors' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +94,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Behaviors => ArrayRef[L<Paws::IoT::Behavior>]
+=head2 B<REQUIRED> Behaviors => ArrayRef[IoT_Behavior]
 
 Specifies the behaviors that, when violated by a device (thing), cause
 an alert.

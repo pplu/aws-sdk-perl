@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EventDimensions;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::Pinpoint::MapOfAttributeDimension');
-  has EventType => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
-  has Metrics => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMetricDimension');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOfMetricDimension Pinpoint_MapOfAttributeDimension Pinpoint_SetDimension/;
+  has Attributes => (is => 'ro', isa => Pinpoint_MapOfAttributeDimension);
+  has EventType => (is => 'ro', isa => Pinpoint_SetDimension);
+  has Metrics => (is => 'ro', isa => Pinpoint_MapOfMetricDimension);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Metrics' => {
+                              'class' => 'Paws::Pinpoint::MapOfMetricDimension',
+                              'type' => 'Pinpoint_MapOfMetricDimension'
+                            },
+               'Attributes' => {
+                                 'class' => 'Paws::Pinpoint::MapOfAttributeDimension',
+                                 'type' => 'Pinpoint_MapOfAttributeDimension'
+                               },
+               'EventType' => {
+                                'class' => 'Paws::Pinpoint::SetDimension',
+                                'type' => 'Pinpoint_SetDimension'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,21 +65,21 @@ campaign is sent.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::Pinpoint::MapOfAttributeDimension>
+=head2 Attributes => Pinpoint_MapOfAttributeDimension
 
   One or more custom attributes that your app reports to Amazon Pinpoint.
 You can use these attributes as selection criteria when you create an
 event filter.
 
 
-=head2 EventType => L<Paws::Pinpoint::SetDimension>
+=head2 EventType => Pinpoint_SetDimension
 
   The name of the event that causes the campaign to be sent. This can be
 a standard type of event that Amazon Pinpoint generates, such as
 _session.start, or a custom event that's specific to your app.
 
 
-=head2 Metrics => L<Paws::Pinpoint::MapOfMetricDimension>
+=head2 Metrics => Pinpoint_MapOfMetricDimension
 
   One or more custom metrics that your app reports to Amazon Pinpoint.
 You can use these metrics as selection criteria when you create an

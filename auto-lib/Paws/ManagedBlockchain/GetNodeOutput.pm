@@ -1,9 +1,27 @@
 
 package Paws::ManagedBlockchain::GetNodeOutput;
-  use Moose;
-  has Node => (is => 'ro', isa => 'Paws::ManagedBlockchain::Node');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_Node/;
+  has Node => (is => 'ro', isa => ManagedBlockchain_Node);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Node' => {
+                           'class' => 'Paws::ManagedBlockchain::Node',
+                           'type' => 'ManagedBlockchain_Node'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::ManagedBlockchain::GetNodeOutput
 =head1 ATTRIBUTES
 
 
-=head2 Node => L<Paws::ManagedBlockchain::Node>
+=head2 Node => ManagedBlockchain_Node
 
 Properties of the node configuration.
 

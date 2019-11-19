@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::MTurk;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'mturk-requester' }
   sub signing_name { 'mturk-requester' }
   sub version { '2017-01-17' }
   sub target_prefix { 'MTurkRequesterServiceV20170117' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -622,21 +624,21 @@ result in an C<AWS.MechanicalTurk.HITTooOldForExtension> exception.
 
 =item Title => Str
 
-=item [AssignmentReviewPolicy => L<Paws::MTurk::ReviewPolicy>]
+=item [AssignmentReviewPolicy => MTurk_ReviewPolicy]
 
 =item [AutoApprovalDelayInSeconds => Int]
 
 =item [HITLayoutId => Str]
 
-=item [HITLayoutParameters => ArrayRef[L<Paws::MTurk::HITLayoutParameter>]]
+=item [HITLayoutParameters => ArrayRef[MTurk_HITLayoutParameter]]
 
-=item [HITReviewPolicy => L<Paws::MTurk::ReviewPolicy>]
+=item [HITReviewPolicy => MTurk_ReviewPolicy]
 
 =item [Keywords => Str]
 
 =item [MaxAssignments => Int]
 
-=item [QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>]]
+=item [QualificationRequirements => ArrayRef[MTurk_QualificationRequirement]]
 
 =item [Question => Str]
 
@@ -694,7 +696,7 @@ Pricing (https://requester.mturk.com/pricing).
 
 =item [Keywords => Str]
 
-=item [QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>]]
+=item [QualificationRequirements => ArrayRef[MTurk_QualificationRequirement]]
 
 
 =back
@@ -718,13 +720,13 @@ returned.
 
 =item LifetimeInSeconds => Int
 
-=item [AssignmentReviewPolicy => L<Paws::MTurk::ReviewPolicy>]
+=item [AssignmentReviewPolicy => MTurk_ReviewPolicy]
 
 =item [HITLayoutId => Str]
 
-=item [HITLayoutParameters => ArrayRef[L<Paws::MTurk::HITLayoutParameter>]]
+=item [HITLayoutParameters => ArrayRef[MTurk_HITLayoutParameter]]
 
-=item [HITReviewPolicy => L<Paws::MTurk::ReviewPolicy>]
+=item [HITReviewPolicy => MTurk_ReviewPolicy]
 
 =item [MaxAssignments => Int]
 
@@ -1425,7 +1427,7 @@ fees.
 
 =over
 
-=item Notification => L<Paws::MTurk::NotificationSpecification>
+=item Notification => MTurk_NotificationSpecification
 
 =item TestEventType => Str
 
@@ -1516,7 +1518,7 @@ ones.
 
 =item [Active => Bool]
 
-=item [Notification => L<Paws::MTurk::NotificationSpecification>]
+=item [Notification => MTurk_NotificationSpecification]
 
 
 =back

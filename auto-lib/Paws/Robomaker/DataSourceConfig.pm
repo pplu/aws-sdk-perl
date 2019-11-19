@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::Robomaker::DataSourceConfig;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has S3Bucket => (is => 'ro', isa => 'Str', request_name => 's3Bucket', traits => ['NameInRequest'], required => 1);
-  has S3Keys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 's3Keys', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Robomaker::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has S3Bucket => (is => 'ro', isa => Str, required => 1);
+  has S3Keys => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'S3Keys' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'S3Keys' => 's3Keys',
+                       'Name' => 'name',
+                       'S3Bucket' => 's3Bucket'
+                     },
+  'IsRequired' => {
+                    'S3Keys' => 1,
+                    'Name' => 1,
+                    'S3Bucket' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Firehose::ParquetSerDe;
-  use Moose;
-  has BlockSizeBytes => (is => 'ro', isa => 'Int');
-  has Compression => (is => 'ro', isa => 'Str');
-  has EnableDictionaryCompression => (is => 'ro', isa => 'Bool');
-  has MaxPaddingBytes => (is => 'ro', isa => 'Int');
-  has PageSizeBytes => (is => 'ro', isa => 'Int');
-  has WriterVersion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str Bool/;
+  use Paws::Firehose::Types qw//;
+  has BlockSizeBytes => (is => 'ro', isa => Int);
+  has Compression => (is => 'ro', isa => Str);
+  has EnableDictionaryCompression => (is => 'ro', isa => Bool);
+  has MaxPaddingBytes => (is => 'ro', isa => Int);
+  has PageSizeBytes => (is => 'ro', isa => Int);
+  has WriterVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BlockSizeBytes' => {
+                                     'type' => 'Int'
+                                   },
+               'WriterVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'PageSizeBytes' => {
+                                    'type' => 'Int'
+                                  },
+               'MaxPaddingBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'Compression' => {
+                                  'type' => 'Str'
+                                },
+               'EnableDictionaryCompression' => {
+                                                  'type' => 'Bool'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

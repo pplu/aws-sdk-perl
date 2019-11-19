@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::CPU;
-  use Moose;
-  has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
-  has Clock => (is => 'ro', isa => 'Num', request_name => 'clock', traits => ['NameInRequest']);
-  has Frequency => (is => 'ro', isa => 'Str', request_name => 'frequency', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::DeviceFarm::Types qw//;
+  has Architecture => (is => 'ro', isa => Str);
+  has Clock => (is => 'ro', isa => Num);
+  has Frequency => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Frequency' => 'frequency',
+                       'Architecture' => 'architecture',
+                       'Clock' => 'clock'
+                     },
+  'types' => {
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 },
+               'Frequency' => {
+                                'type' => 'Str'
+                              },
+               'Clock' => {
+                            'type' => 'Num'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

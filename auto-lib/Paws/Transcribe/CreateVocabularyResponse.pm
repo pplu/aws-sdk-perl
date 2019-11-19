@@ -1,13 +1,43 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Transcribe::CreateVocabularyResponse;
-  use Moose;
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has VocabularyName => (is => 'ro', isa => 'Str');
-  has VocabularyState => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Transcribe::Types qw//;
+  has FailureReason => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has VocabularyName => (is => 'ro', isa => Str);
+  has VocabularyState => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'VocabularyName' => {
+                                     'type' => 'Str'
+                                   },
+               'VocabularyState' => {
+                                      'type' => 'Str'
+                                    },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

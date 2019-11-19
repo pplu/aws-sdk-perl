@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::ElastiCache::DescribeEngineDefaultParametersResult;
-  use Moose;
-  has EngineDefaults => (is => 'ro', isa => 'Paws::ElastiCache::EngineDefaults');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw/ElastiCache_EngineDefaults/;
+  has EngineDefaults => (is => 'ro', isa => ElastiCache_EngineDefaults);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineDefaults' => {
+                                     'class' => 'Paws::ElastiCache::EngineDefaults',
+                                     'type' => 'ElastiCache_EngineDefaults'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::ElastiCache::DescribeEngineDefaultParametersResult
 =head1 ATTRIBUTES
 
 
-=head2 EngineDefaults => L<Paws::ElastiCache::EngineDefaults>
+=head2 EngineDefaults => ElastiCache_EngineDefaults
 
 
 

@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Glue::FindMatchesParameters;
-  use Moose;
-  has AccuracyCostTradeoff => (is => 'ro', isa => 'Num');
-  has EnforceProvidedLabels => (is => 'ro', isa => 'Bool');
-  has PrecisionRecallTradeoff => (is => 'ro', isa => 'Num');
-  has PrimaryKeyColumnName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Bool Str/;
+  use Paws::Glue::Types qw//;
+  has AccuracyCostTradeoff => (is => 'ro', isa => Num);
+  has EnforceProvidedLabels => (is => 'ro', isa => Bool);
+  has PrecisionRecallTradeoff => (is => 'ro', isa => Num);
+  has PrimaryKeyColumnName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccuracyCostTradeoff' => {
+                                           'type' => 'Num'
+                                         },
+               'PrecisionRecallTradeoff' => {
+                                              'type' => 'Num'
+                                            },
+               'EnforceProvidedLabels' => {
+                                            'type' => 'Bool'
+                                          },
+               'PrimaryKeyColumnName' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

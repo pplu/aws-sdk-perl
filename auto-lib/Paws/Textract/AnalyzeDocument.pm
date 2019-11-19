@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Textract::AnalyzeDocument;
-  use Moose;
-  has Document => (is => 'ro', isa => 'Paws::Textract::Document', required => 1);
-  has FeatureTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Textract::Types qw/Textract_Document/;
+  has Document => (is => 'ro', isa => Textract_Document, required => 1, predicate => 1);
+  has FeatureTypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AnalyzeDocument');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Textract::AnalyzeDocumentResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AnalyzeDocument');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Textract::AnalyzeDocumentResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FeatureTypes' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Document' => {
+                               'type' => 'Textract_Document',
+                               'class' => 'Paws::Textract::Document'
+                             }
+             },
+  'IsRequired' => {
+                    'FeatureTypes' => 1,
+                    'Document' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +79,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tex
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Document => L<Paws::Textract::Document>
+=head2 B<REQUIRED> Document => Textract_Document
 
 The input document as base64-encoded bytes or an Amazon S3 object. If
 you use the AWS CLI to call Amazon Textract operations, you can't pass

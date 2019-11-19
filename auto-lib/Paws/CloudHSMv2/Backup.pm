@@ -1,14 +1,58 @@
+# Generated from default/object.tt
 package Paws::CloudHSMv2::Backup;
-  use Moose;
-  has BackupId => (is => 'ro', isa => 'Str', required => 1);
-  has BackupState => (is => 'ro', isa => 'Str');
-  has ClusterId => (is => 'ro', isa => 'Str');
-  has CopyTimestamp => (is => 'ro', isa => 'Str');
-  has CreateTimestamp => (is => 'ro', isa => 'Str');
-  has DeleteTimestamp => (is => 'ro', isa => 'Str');
-  has SourceBackup => (is => 'ro', isa => 'Str');
-  has SourceCluster => (is => 'ro', isa => 'Str');
-  has SourceRegion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudHSMv2::Types qw//;
+  has BackupId => (is => 'ro', isa => Str, required => 1);
+  has BackupState => (is => 'ro', isa => Str);
+  has ClusterId => (is => 'ro', isa => Str);
+  has CopyTimestamp => (is => 'ro', isa => Str);
+  has CreateTimestamp => (is => 'ro', isa => Str);
+  has DeleteTimestamp => (is => 'ro', isa => Str);
+  has SourceBackup => (is => 'ro', isa => Str);
+  has SourceCluster => (is => 'ro', isa => Str);
+  has SourceRegion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BackupId' => 1
+                  },
+  'types' => {
+               'DeleteTimestamp' => {
+                                      'type' => 'Str'
+                                    },
+               'CopyTimestamp' => {
+                                    'type' => 'Str'
+                                  },
+               'SourceCluster' => {
+                                    'type' => 'Str'
+                                  },
+               'CreateTimestamp' => {
+                                      'type' => 'Str'
+                                    },
+               'BackupId' => {
+                               'type' => 'Str'
+                             },
+               'BackupState' => {
+                                  'type' => 'Str'
+                                },
+               'SourceRegion' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceBackup' => {
+                                   'type' => 'Str'
+                                 },
+               'ClusterId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

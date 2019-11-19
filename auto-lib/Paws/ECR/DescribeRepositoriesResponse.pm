@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECR::DescribeRepositoriesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Repositories => (is => 'ro', isa => 'ArrayRef[Paws::ECR::Repository]', traits => ['NameInRequest'], request_name => 'repositories' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECR::Types qw/ECR_Repository/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Repositories => (is => 'ro', isa => ArrayRef[ECR_Repository]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Repositories' => 'repositories',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'Repositories' => {
+                                   'class' => 'Paws::ECR::Repository',
+                                   'type' => 'ArrayRef[ECR_Repository]'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +50,7 @@ results. This value is C<null> when there are no more results to
 return.
 
 
-=head2 Repositories => ArrayRef[L<Paws::ECR::Repository>]
+=head2 Repositories => ArrayRef[ECR_Repository]
 
 A list of repository objects corresponding to valid repositories.
 

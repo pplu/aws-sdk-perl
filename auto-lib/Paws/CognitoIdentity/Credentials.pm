@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CognitoIdentity::Credentials;
-  use Moose;
-  has AccessKeyId => (is => 'ro', isa => 'Str');
-  has Expiration => (is => 'ro', isa => 'Str');
-  has SecretKey => (is => 'ro', isa => 'Str');
-  has SessionToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdentity::Types qw//;
+  has AccessKeyId => (is => 'ro', isa => Str);
+  has Expiration => (is => 'ro', isa => Str);
+  has SecretKey => (is => 'ro', isa => Str);
+  has SessionToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Expiration' => {
+                                 'type' => 'Str'
+                               },
+               'SessionToken' => {
+                                   'type' => 'Str'
+                                 },
+               'SecretKey' => {
+                                'type' => 'Str'
+                              },
+               'AccessKeyId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

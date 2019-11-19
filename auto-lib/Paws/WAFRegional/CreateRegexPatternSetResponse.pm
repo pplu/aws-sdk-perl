@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::CreateRegexPatternSetResponse;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str');
-  has RegexPatternSet => (is => 'ro', isa => 'Paws::WAFRegional::RegexPatternSet');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_RegexPatternSet/;
+  has ChangeToken => (is => 'ro', isa => Str);
+  has RegexPatternSet => (is => 'ro', isa => WAFRegional_RegexPatternSet);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RegexPatternSet' => {
+                                      'class' => 'Paws::WAFRegional::RegexPatternSet',
+                                      'type' => 'WAFRegional_RegexPatternSet'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ request. You can also use this value to query the status of the
 request. For more information, see GetChangeTokenStatus.
 
 
-=head2 RegexPatternSet => L<Paws::WAFRegional::RegexPatternSet>
+=head2 RegexPatternSet => WAFRegional_RegexPatternSet
 
 A RegexPatternSet that contains no objects.
 

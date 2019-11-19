@@ -1,22 +1,90 @@
 
 package Paws::S3::ListPartsOutput;
-  use Moose;
-  has AbortDate => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-abort-date');
-  has AbortRuleId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-abort-rule-id');
-  has Bucket => (is => 'ro', isa => 'Str');
-  has Initiator => (is => 'ro', isa => 'Paws::S3::Initiator');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Key => (is => 'ro', isa => 'Str');
-  has MaxParts => (is => 'ro', isa => 'Int');
-  has NextPartNumberMarker => (is => 'ro', isa => 'Int');
-  has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
-  has PartNumberMarker => (is => 'ro', isa => 'Int');
-  has Parts => (is => 'ro', isa => 'ArrayRef[Paws::S3::Part]', traits => ['NameInRequest'], request_name => 'Part');
-  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
-  has StorageClass => (is => 'ro', isa => 'Str');
-  has UploadId => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::S3::Types qw/S3_Initiator S3_Owner S3_Part/;
+  has AbortDate => (is => 'ro', isa => Str);
+  has AbortRuleId => (is => 'ro', isa => Str);
+  has Bucket => (is => 'ro', isa => Str);
+  has Initiator => (is => 'ro', isa => S3_Initiator);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Key => (is => 'ro', isa => Str);
+  has MaxParts => (is => 'ro', isa => Int);
+  has NextPartNumberMarker => (is => 'ro', isa => Int);
+  has Owner => (is => 'ro', isa => S3_Owner);
+  has PartNumberMarker => (is => 'ro', isa => Int);
+  has Parts => (is => 'ro', isa => ArrayRef[S3_Part]);
+  has RequestCharged => (is => 'ro', isa => Str);
+  has StorageClass => (is => 'ro', isa => Str);
+  has UploadId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'AbortRuleId' => 'x-amz-abort-rule-id',
+                       'AbortDate' => 'x-amz-abort-date',
+                       'RequestCharged' => 'x-amz-request-charged'
+                     },
+  'NameInRequest' => {
+                       'Parts' => 'Part'
+                     },
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxParts' => {
+                               'type' => 'Int'
+                             },
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               'Owner' => {
+                            'type' => 'S3_Owner',
+                            'class' => 'Paws::S3::Owner'
+                          },
+               'AbortRuleId' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Initiator' => {
+                                'class' => 'Paws::S3::Initiator',
+                                'type' => 'S3_Initiator'
+                              },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Parts' => {
+                            'class' => 'Paws::S3::Part',
+                            'type' => 'ArrayRef[S3_Part]'
+                          },
+               'NextPartNumberMarker' => {
+                                           'type' => 'Int'
+                                         },
+               'RequestCharged' => {
+                                     'type' => 'Str'
+                                   },
+               'PartNumberMarker' => {
+                                       'type' => 'Int'
+                                     },
+               'AbortDate' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +126,7 @@ Name of the bucket to which the multipart upload was initiated.
 
 
 
-=head2 Initiator => L<Paws::S3::Initiator>
+=head2 Initiator => S3_Initiator
 
 Container element that identifies who initiated the multipart upload.
 If the initiator is an AWS account, this element provides the same
@@ -95,7 +163,7 @@ parameter in a subsequent request.
 
 
 
-=head2 Owner => L<Paws::S3::Owner>
+=head2 Owner => S3_Owner
 
 Container element that identifies the object owner, after the object is
 created. If multipart upload is initiated by an IAM user, this element
@@ -111,7 +179,7 @@ parameter in a subsequent request.
 
 
 
-=head2 Parts => ArrayRef[L<Paws::S3::Part>]
+=head2 Parts => ArrayRef[S3_Part]
 
 Container for elements related to a particular part. A response can
 contain zero or more Part elements.

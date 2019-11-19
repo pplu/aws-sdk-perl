@@ -1,13 +1,32 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::DescribeTransformJob;
-  use Moose;
-  has TransformJobName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has TransformJobName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTransformJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::DescribeTransformJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTransformJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::DescribeTransformJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TransformJobName' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'TransformJobName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

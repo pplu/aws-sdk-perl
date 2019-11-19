@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::SavingsPlansCoverage;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::CostExplorer::Attributes');
-  has Coverage => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansCoverageData');
-  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CostExplorer::Types qw/CostExplorer_DateInterval CostExplorer_Attributes CostExplorer_SavingsPlansCoverageData/;
+  has Attributes => (is => 'ro', isa => CostExplorer_Attributes);
+  has Coverage => (is => 'ro', isa => CostExplorer_SavingsPlansCoverageData);
+  has TimePeriod => (is => 'ro', isa => CostExplorer_DateInterval);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimePeriod' => {
+                                 'class' => 'Paws::CostExplorer::DateInterval',
+                                 'type' => 'CostExplorer_DateInterval'
+                               },
+               'Attributes' => {
+                                 'type' => 'CostExplorer_Attributes',
+                                 'class' => 'Paws::CostExplorer::Attributes'
+                               },
+               'Coverage' => {
+                               'class' => 'Paws::CostExplorer::SavingsPlansCoverageData',
+                               'type' => 'CostExplorer_SavingsPlansCoverageData'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,18 +66,18 @@ Savings Plans usage.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::CostExplorer::Attributes>
+=head2 Attributes => CostExplorer_Attributes
 
   The attribute that applies to a specific C<Dimension>.
 
 
-=head2 Coverage => L<Paws::CostExplorer::SavingsPlansCoverageData>
+=head2 Coverage => CostExplorer_SavingsPlansCoverageData
 
   The amount of Savings Plans eligible usage that the Savings Plans
 covered.
 
 
-=head2 TimePeriod => L<Paws::CostExplorer::DateInterval>
+=head2 TimePeriod => CostExplorer_DateInterval
 
   
 

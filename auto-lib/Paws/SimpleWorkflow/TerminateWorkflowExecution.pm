@@ -1,18 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::TerminateWorkflowExecution;
-  use Moose;
-  has ChildPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'childPolicy' );
-  has Details => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'details' );
-  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
-  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
-  has RunId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'runId' );
-  has WorkflowId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workflowId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has ChildPolicy => (is => 'ro', isa => Str, predicate => 1);
+  has Details => (is => 'ro', isa => Str, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Reason => (is => 'ro', isa => Str, predicate => 1);
+  has RunId => (is => 'ro', isa => Str, predicate => 1);
+  has WorkflowId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateWorkflowExecution');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TerminateWorkflowExecution');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Reason' => 'reason',
+                       'WorkflowId' => 'workflowId',
+                       'Details' => 'details',
+                       'ChildPolicy' => 'childPolicy',
+                       'Domain' => 'domain',
+                       'RunId' => 'runId'
+                     },
+  'IsRequired' => {
+                    'Domain' => 1,
+                    'WorkflowId' => 1
+                  },
+  'types' => {
+               'RunId' => {
+                            'type' => 'Str'
+                          },
+               'ChildPolicy' => {
+                                  'type' => 'Str'
+                                },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'Details' => {
+                              'type' => 'Str'
+                            },
+               'WorkflowId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

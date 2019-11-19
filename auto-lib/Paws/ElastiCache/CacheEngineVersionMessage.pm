@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::ElastiCache::CacheEngineVersionMessage;
-  use Moose;
-  has CacheEngineVersions => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheEngineVersion]', request_name => 'CacheEngineVersion', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_CacheEngineVersion/;
+  has CacheEngineVersions => (is => 'ro', isa => ArrayRef[ElastiCache_CacheEngineVersion]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CacheEngineVersions' => 'CacheEngineVersion'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'CacheEngineVersions' => {
+                                          'class' => 'Paws::ElastiCache::CacheEngineVersion',
+                                          'type' => 'ArrayRef[ElastiCache_CacheEngineVersion]'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::ElastiCache::CacheEngineVersionMessage
 =head1 ATTRIBUTES
 
 
-=head2 CacheEngineVersions => ArrayRef[L<Paws::ElastiCache::CacheEngineVersion>]
+=head2 CacheEngineVersions => ArrayRef[ElastiCache_CacheEngineVersion]
 
 A list of cache engine version details. Each element in the list
 contains detailed information about one cache engine version.

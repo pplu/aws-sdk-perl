@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::ResourceGroups::Group;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has GroupArn => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ResourceGroups::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has GroupArn => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'GroupArn' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'GroupArn' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

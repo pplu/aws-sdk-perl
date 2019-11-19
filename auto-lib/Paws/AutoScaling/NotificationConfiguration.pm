@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::NotificationConfiguration;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str');
-  has NotificationType => (is => 'ro', isa => 'Str');
-  has TopicARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str);
+  has NotificationType => (is => 'ro', isa => Str);
+  has TopicARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TopicARN' => {
+                               'type' => 'Str'
+                             },
+               'NotificationType' => {
+                                       'type' => 'Str'
+                                     },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

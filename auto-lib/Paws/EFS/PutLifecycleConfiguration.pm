@@ -1,15 +1,41 @@
 
 package Paws::EFS::PutLifecycleConfiguration;
-  use Moose;
-  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FileSystemId', required => 1);
-  has LifecyclePolicies => (is => 'ro', isa => 'ArrayRef[Paws::EFS::LifecyclePolicy]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EFS::Types qw/EFS_LifecyclePolicy/;
+  has FileSystemId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LifecyclePolicies => (is => 'ro', isa => ArrayRef[EFS_LifecyclePolicy], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutLifecycleConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/file-systems/{FileSystemId}/lifecycle-configuration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EFS::LifecycleConfigurationDescription');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutLifecycleConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-02-01/file-systems/{FileSystemId}/lifecycle-configuration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EFS::LifecycleConfigurationDescription');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FileSystemId' => 1,
+                    'LifecyclePolicies' => 1
+                  },
+  'types' => {
+               'LifecyclePolicies' => {
+                                        'class' => 'Paws::EFS::LifecyclePolicy',
+                                        'type' => 'ArrayRef[EFS_LifecyclePolicy]'
+                                      },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'FileSystemId' => 'FileSystemId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -34,8 +60,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FileSystemId      => 'MyFileSystemId',
       LifecyclePolicies => [
         {
-          TransitionToIA => 'AFTER_14_DAYS'
-          , # values: AFTER_14_DAYS, AFTER_30_DAYS, AFTER_60_DAYS, AFTER_90_DAYS; OPTIONAL
+          TransitionToIA => 'AFTER_7_DAYS'
+          , # values: AFTER_7_DAYS, AFTER_14_DAYS, AFTER_30_DAYS, AFTER_60_DAYS, AFTER_90_DAYS; OPTIONAL
         },
         ...
       ],
@@ -61,7 +87,7 @@ C<LifecycleConfiguration> object (String).
 
 
 
-=head2 B<REQUIRED> LifecyclePolicies => ArrayRef[L<Paws::EFS::LifecyclePolicy>]
+=head2 B<REQUIRED> LifecyclePolicies => ArrayRef[EFS_LifecyclePolicy]
 
 An array of C<LifecyclePolicy> objects that define the file system's
 C<LifecycleConfiguration> object. A C<LifecycleConfiguration> object

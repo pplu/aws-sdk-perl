@@ -1,14 +1,56 @@
+# Generated from default/object.tt
 package Paws::SSM::Session;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Str');
-  has DocumentName => (is => 'ro', isa => 'Str');
-  has EndDate => (is => 'ro', isa => 'Str');
-  has OutputUrl => (is => 'ro', isa => 'Paws::SSM::SessionManagerOutputUrl');
-  has Owner => (is => 'ro', isa => 'Str');
-  has SessionId => (is => 'ro', isa => 'Str');
-  has StartDate => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Target => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_SessionManagerOutputUrl/;
+  has Details => (is => 'ro', isa => Str);
+  has DocumentName => (is => 'ro', isa => Str);
+  has EndDate => (is => 'ro', isa => Str);
+  has OutputUrl => (is => 'ro', isa => SSM_SessionManagerOutputUrl);
+  has Owner => (is => 'ro', isa => Str);
+  has SessionId => (is => 'ro', isa => Str);
+  has StartDate => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Target => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'SessionId' => {
+                                'type' => 'Str'
+                              },
+               'StartDate' => {
+                                'type' => 'Str'
+                              },
+               'Details' => {
+                              'type' => 'Str'
+                            },
+               'DocumentName' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'OutputUrl' => {
+                                'type' => 'SSM_SessionManagerOutputUrl',
+                                'class' => 'Paws::SSM::SessionManagerOutputUrl'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +104,7 @@ C<SSM-SessionManagerRunShell>.
 terminated.
 
 
-=head2 OutputUrl => L<Paws::SSM::SessionManagerOutputUrl>
+=head2 OutputUrl => SSM_SessionManagerOutputUrl
 
   Reserved for future use.
 

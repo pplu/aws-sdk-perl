@@ -1,17 +1,71 @@
 
 package Paws::EC2::ExportImageResult;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest',]);
-  has DiskImageFormat => (is => 'ro', isa => 'Str', request_name => 'diskImageFormat', traits => ['NameInRequest',]);
-  has ExportImageTaskId => (is => 'ro', isa => 'Str', request_name => 'exportImageTaskId', traits => ['NameInRequest',]);
-  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest',]);
-  has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest',]);
-  has RoleName => (is => 'ro', isa => 'Str', request_name => 'roleName', traits => ['NameInRequest',]);
-  has S3ExportLocation => (is => 'ro', isa => 'Paws::EC2::ExportTaskS3Location', request_name => 's3ExportLocation', traits => ['NameInRequest',]);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest',]);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ExportTaskS3Location/;
+  has Description => (is => 'ro', isa => Str);
+  has DiskImageFormat => (is => 'ro', isa => Str);
+  has ExportImageTaskId => (is => 'ro', isa => Str);
+  has ImageId => (is => 'ro', isa => Str);
+  has Progress => (is => 'ro', isa => Str);
+  has RoleName => (is => 'ro', isa => Str);
+  has S3ExportLocation => (is => 'ro', isa => EC2_ExportTaskS3Location);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'StatusMessage' => 'statusMessage',
+                       'Description' => 'description',
+                       'S3ExportLocation' => 's3ExportLocation',
+                       'Progress' => 'progress',
+                       'RoleName' => 'roleName',
+                       'ExportImageTaskId' => 'exportImageTaskId',
+                       'DiskImageFormat' => 'diskImageFormat',
+                       'Status' => 'status',
+                       'ImageId' => 'imageId'
+                     },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'ExportImageTaskId' => {
+                                        'type' => 'Str'
+                                      },
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'Progress' => {
+                               'type' => 'Str'
+                             },
+               'S3ExportLocation' => {
+                                       'class' => 'Paws::EC2::ExportTaskS3Location',
+                                       'type' => 'EC2_ExportTaskS3Location'
+                                     },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DiskImageFormat' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +108,7 @@ The name of the role that grants VM Import/Export permission to export
 images to your S3 bucket.
 
 
-=head2 S3ExportLocation => L<Paws::EC2::ExportTaskS3Location>
+=head2 S3ExportLocation => EC2_ExportTaskS3Location
 
 Information about the destination S3 bucket.
 

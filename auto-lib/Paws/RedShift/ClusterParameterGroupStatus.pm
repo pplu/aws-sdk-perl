@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::RedShift::ClusterParameterGroupStatus;
-  use Moose;
-  has ClusterParameterStatusList => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterParameterStatus]');
-  has ParameterApplyStatus => (is => 'ro', isa => 'Str');
-  has ParameterGroupName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::RedShift::Types qw/RedShift_ClusterParameterStatus/;
+  has ClusterParameterStatusList => (is => 'ro', isa => ArrayRef[RedShift_ClusterParameterStatus]);
+  has ParameterApplyStatus => (is => 'ro', isa => Str);
+  has ParameterGroupName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterApplyStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'ParameterGroupName' => {
+                                         'type' => 'Str'
+                                       },
+               'ClusterParameterStatusList' => {
+                                                 'type' => 'ArrayRef[RedShift_ClusterParameterStatus]',
+                                                 'class' => 'Paws::RedShift::ClusterParameterStatus'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ Describes the status of a parameter group.
 =head1 ATTRIBUTES
 
 
-=head2 ClusterParameterStatusList => ArrayRef[L<Paws::RedShift::ClusterParameterStatus>]
+=head2 ClusterParameterStatusList => ArrayRef[RedShift_ClusterParameterStatus]
 
   The list of parameter statuses.
 

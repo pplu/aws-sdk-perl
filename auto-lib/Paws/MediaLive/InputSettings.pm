@@ -1,14 +1,70 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputSettings;
-  use Moose;
-  has AudioSelectors => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::AudioSelector]', request_name => 'audioSelectors', traits => ['NameInRequest']);
-  has CaptionSelectors => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::CaptionSelector]', request_name => 'captionSelectors', traits => ['NameInRequest']);
-  has DeblockFilter => (is => 'ro', isa => 'Str', request_name => 'deblockFilter', traits => ['NameInRequest']);
-  has DenoiseFilter => (is => 'ro', isa => 'Str', request_name => 'denoiseFilter', traits => ['NameInRequest']);
-  has FilterStrength => (is => 'ro', isa => 'Int', request_name => 'filterStrength', traits => ['NameInRequest']);
-  has InputFilter => (is => 'ro', isa => 'Str', request_name => 'inputFilter', traits => ['NameInRequest']);
-  has NetworkInputSettings => (is => 'ro', isa => 'Paws::MediaLive::NetworkInputSettings', request_name => 'networkInputSettings', traits => ['NameInRequest']);
-  has SourceEndBehavior => (is => 'ro', isa => 'Str', request_name => 'sourceEndBehavior', traits => ['NameInRequest']);
-  has VideoSelector => (is => 'ro', isa => 'Paws::MediaLive::VideoSelector', request_name => 'videoSelector', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int/;
+  use Paws::MediaLive::Types qw/MediaLive_NetworkInputSettings MediaLive_VideoSelector MediaLive_CaptionSelector MediaLive_AudioSelector/;
+  has AudioSelectors => (is => 'ro', isa => ArrayRef[MediaLive_AudioSelector]);
+  has CaptionSelectors => (is => 'ro', isa => ArrayRef[MediaLive_CaptionSelector]);
+  has DeblockFilter => (is => 'ro', isa => Str);
+  has DenoiseFilter => (is => 'ro', isa => Str);
+  has FilterStrength => (is => 'ro', isa => Int);
+  has InputFilter => (is => 'ro', isa => Str);
+  has NetworkInputSettings => (is => 'ro', isa => MediaLive_NetworkInputSettings);
+  has SourceEndBehavior => (is => 'ro', isa => Str);
+  has VideoSelector => (is => 'ro', isa => MediaLive_VideoSelector);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NetworkInputSettings' => 'networkInputSettings',
+                       'SourceEndBehavior' => 'sourceEndBehavior',
+                       'DenoiseFilter' => 'denoiseFilter',
+                       'VideoSelector' => 'videoSelector',
+                       'DeblockFilter' => 'deblockFilter',
+                       'InputFilter' => 'inputFilter',
+                       'AudioSelectors' => 'audioSelectors',
+                       'CaptionSelectors' => 'captionSelectors',
+                       'FilterStrength' => 'filterStrength'
+                     },
+  'types' => {
+               'NetworkInputSettings' => {
+                                           'type' => 'MediaLive_NetworkInputSettings',
+                                           'class' => 'Paws::MediaLive::NetworkInputSettings'
+                                         },
+               'SourceEndBehavior' => {
+                                        'type' => 'Str'
+                                      },
+               'DenoiseFilter' => {
+                                    'type' => 'Str'
+                                  },
+               'DeblockFilter' => {
+                                    'type' => 'Str'
+                                  },
+               'VideoSelector' => {
+                                    'type' => 'MediaLive_VideoSelector',
+                                    'class' => 'Paws::MediaLive::VideoSelector'
+                                  },
+               'CaptionSelectors' => {
+                                       'class' => 'Paws::MediaLive::CaptionSelector',
+                                       'type' => 'ArrayRef[MediaLive_CaptionSelector]'
+                                     },
+               'FilterStrength' => {
+                                     'type' => 'Int'
+                                   },
+               'InputFilter' => {
+                                  'type' => 'Str'
+                                },
+               'AudioSelectors' => {
+                                     'type' => 'ArrayRef[MediaLive_AudioSelector]',
+                                     'class' => 'Paws::MediaLive::AudioSelector'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,13 +101,13 @@ Live Event.
 =head1 ATTRIBUTES
 
 
-=head2 AudioSelectors => ArrayRef[L<Paws::MediaLive::AudioSelector>]
+=head2 AudioSelectors => ArrayRef[MediaLive_AudioSelector]
 
   Used to select the audio stream to decode for inputs that have multiple
 available.
 
 
-=head2 CaptionSelectors => ArrayRef[L<Paws::MediaLive::CaptionSelector>]
+=head2 CaptionSelectors => ArrayRef[MediaLive_CaptionSelector]
 
   Used to select the caption input to use for inputs that have multiple
 available.
@@ -81,7 +137,7 @@ applied to the input 3) forced - filtering will be applied regardless
 of input type
 
 
-=head2 NetworkInputSettings => L<Paws::MediaLive::NetworkInputSettings>
+=head2 NetworkInputSettings => MediaLive_NetworkInputSettings
 
   Input settings.
 
@@ -92,7 +148,7 @@ of input type
 indefinitely.
 
 
-=head2 VideoSelector => L<Paws::MediaLive::VideoSelector>
+=head2 VideoSelector => MediaLive_VideoSelector
 
   Informs which video elementary stream to decode for input types that
 have multiple available.

@@ -1,17 +1,55 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::UpdateVPCEConfiguration;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
-  has ServiceDnsName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceDnsName' );
-  has VpceConfigurationDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpceConfigurationDescription' );
-  has VpceConfigurationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpceConfigurationName' );
-  has VpceServiceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpceServiceName' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServiceDnsName => (is => 'ro', isa => Str, predicate => 1);
+  has VpceConfigurationDescription => (is => 'ro', isa => Str, predicate => 1);
+  has VpceConfigurationName => (is => 'ro', isa => Str, predicate => 1);
+  has VpceServiceName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateVPCEConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::UpdateVPCEConfigurationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateVPCEConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::UpdateVPCEConfigurationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Arn' => 1
+                  },
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'VpceServiceName' => 'vpceServiceName',
+                       'VpceConfigurationDescription' => 'vpceConfigurationDescription',
+                       'VpceConfigurationName' => 'vpceConfigurationName',
+                       'ServiceDnsName' => 'serviceDnsName'
+                     },
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'VpceServiceName' => {
+                                      'type' => 'Str'
+                                    },
+               'VpceConfigurationName' => {
+                                            'type' => 'Str'
+                                          },
+               'VpceConfigurationDescription' => {
+                                                   'type' => 'Str'
+                                                 },
+               'ServiceDnsName' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

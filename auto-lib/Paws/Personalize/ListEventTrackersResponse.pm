@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Personalize::ListEventTrackersResponse;
-  use Moose;
-  has EventTrackers => (is => 'ro', isa => 'ArrayRef[Paws::Personalize::EventTrackerSummary]', traits => ['NameInRequest'], request_name => 'eventTrackers' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Personalize::Types qw/Personalize_EventTrackerSummary/;
+  has EventTrackers => (is => 'ro', isa => ArrayRef[Personalize_EventTrackerSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventTrackers' => {
+                                    'class' => 'Paws::Personalize::EventTrackerSummary',
+                                    'type' => 'ArrayRef[Personalize_EventTrackerSummary]'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'EventTrackers' => 'eventTrackers'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Personalize::ListEventTrackersResponse
 =head1 ATTRIBUTES
 
 
-=head2 EventTrackers => ArrayRef[L<Paws::Personalize::EventTrackerSummary>]
+=head2 EventTrackers => ArrayRef[Personalize_EventTrackerSummary]
 
 A list of event trackers.
 

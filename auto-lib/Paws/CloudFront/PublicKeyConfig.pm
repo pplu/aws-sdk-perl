@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::CloudFront::PublicKeyConfig;
-  use Moose;
-  has CallerReference => (is => 'ro', isa => 'Str', required => 1);
-  has Comment => (is => 'ro', isa => 'Str');
-  has EncodedKey => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw//;
+  has CallerReference => (is => 'ro', isa => Str, required => 1);
+  has Comment => (is => 'ro', isa => Str);
+  has EncodedKey => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CallerReference' => {
+                                      'type' => 'Str'
+                                    },
+               'EncodedKey' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'EncodedKey' => 1,
+                    'Name' => 1,
+                    'CallerReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

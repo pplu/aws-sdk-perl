@@ -1,22 +1,79 @@
 
 package Paws::ApiGateway::CreateDeployment;
-  use Moose;
-  has CacheClusterEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'cacheClusterEnabled');
-  has CacheClusterSize => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheClusterSize');
-  has CanarySettings => (is => 'ro', isa => 'Paws::ApiGateway::DeploymentCanarySettings', traits => ['NameInRequest'], request_name => 'canarySettings');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has StageDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageDescription');
-  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName');
-  has TracingEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'tracingEnabled');
-  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'variables');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApiGateway::Types qw/ApiGateway_DeploymentCanarySettings ApiGateway_MapOfStringToString/;
+  has CacheClusterEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has CacheClusterSize => (is => 'ro', isa => Str, predicate => 1);
+  has CanarySettings => (is => 'ro', isa => ApiGateway_DeploymentCanarySettings, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StageDescription => (is => 'ro', isa => Str, predicate => 1);
+  has StageName => (is => 'ro', isa => Str, predicate => 1);
+  has TracingEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has Variables => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeployment');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/deployments');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Deployment');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDeployment');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/deployments');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::Deployment');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TracingEnabled' => {
+                                     'type' => 'Bool'
+                                   },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CanarySettings' => {
+                                     'class' => 'Paws::ApiGateway::DeploymentCanarySettings',
+                                     'type' => 'ApiGateway_DeploymentCanarySettings'
+                                   },
+               'CacheClusterSize' => {
+                                       'type' => 'Str'
+                                     },
+               'CacheClusterEnabled' => {
+                                          'type' => 'Bool'
+                                        },
+               'StageDescription' => {
+                                       'type' => 'Str'
+                                     },
+               'Variables' => {
+                                'type' => 'ApiGateway_MapOfStringToString',
+                                'class' => 'Paws::ApiGateway::MapOfStringToString'
+                              },
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'StageName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'RestApiId' => 1
+                  },
+  'NameInRequest' => {
+                       'CacheClusterSize' => 'cacheClusterSize',
+                       'CanarySettings' => 'canarySettings',
+                       'TracingEnabled' => 'tracingEnabled',
+                       'Description' => 'description',
+                       'StageName' => 'stageName',
+                       'Variables' => 'variables',
+                       'StageDescription' => 'stageDescription',
+                       'CacheClusterEnabled' => 'cacheClusterEnabled'
+                     },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +136,7 @@ the input, if a cache cluster is enabled.
 
 Valid values are: C<"0.5">, C<"1.6">, C<"6.1">, C<"13.5">, C<"28.4">, C<"58.2">, C<"118">, C<"237">
 
-=head2 CanarySettings => L<Paws::ApiGateway::DeploymentCanarySettings>
+=head2 CanarySettings => ApiGateway_DeploymentCanarySettings
 
 The input configuration for the canary deployment when the deployment
 is a canary release deployment.
@@ -117,7 +174,7 @@ Specifies whether active tracing with X-ray is enabled for the Stage.
 
 
 
-=head2 Variables => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Variables => ApiGateway_MapOfStringToString
 
 A map that defines the stage variables for the Stage resource that is
 associated with the new deployment. Variable names can have

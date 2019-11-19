@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::BlockDeviceMapping;
-  use Moose;
-  has DeviceName => (is => 'ro', isa => 'Str');
-  has Ebs => (is => 'ro', isa => 'Paws::OpsWorks::EbsBlockDevice');
-  has NoDevice => (is => 'ro', isa => 'Str');
-  has VirtualName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw/OpsWorks_EbsBlockDevice/;
+  has DeviceName => (is => 'ro', isa => Str);
+  has Ebs => (is => 'ro', isa => OpsWorks_EbsBlockDevice);
+  has NoDevice => (is => 'ro', isa => Str);
+  has VirtualName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NoDevice' => {
+                               'type' => 'Str'
+                             },
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'VirtualName' => {
+                                  'type' => 'Str'
+                                },
+               'Ebs' => {
+                          'type' => 'OpsWorks_EbsBlockDevice',
+                          'class' => 'Paws::OpsWorks::EbsBlockDevice'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +77,7 @@ set this parameter to C<ROOT_DEVICE> and AWS OpsWorks Stacks will
 provide the correct device name.
 
 
-=head2 Ebs => L<Paws::OpsWorks::EbsBlockDevice>
+=head2 Ebs => OpsWorks_EbsBlockDevice
 
   An C<EBSBlockDevice> that defines how to configure an Amazon EBS volume
 when the instance is launched.

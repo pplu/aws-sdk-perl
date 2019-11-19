@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeStarNotifications::TargetSummary;
-  use Moose;
-  has TargetAddress => (is => 'ro', isa => 'Str');
-  has TargetStatus => (is => 'ro', isa => 'Str');
-  has TargetType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStarNotifications::Types qw//;
+  has TargetAddress => (is => 'ro', isa => Str);
+  has TargetStatus => (is => 'ro', isa => Str);
+  has TargetType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetAddress' => {
+                                    'type' => 'Str'
+                                  },
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'TargetStatus' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

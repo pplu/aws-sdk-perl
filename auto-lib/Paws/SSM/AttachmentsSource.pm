@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SSM::AttachmentsSource;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SSM::Types qw//;
+  has Key => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

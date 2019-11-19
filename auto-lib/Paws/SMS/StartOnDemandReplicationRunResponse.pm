@@ -1,9 +1,30 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SMS::StartOnDemandReplicationRunResponse;
-  use Moose;
-  has ReplicationRunId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'replicationRunId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SMS::Types qw//;
+  has ReplicationRunId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ReplicationRunId' => 'replicationRunId'
+                     },
+  'types' => {
+               'ReplicationRunId' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

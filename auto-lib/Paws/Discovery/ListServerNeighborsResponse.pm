@@ -1,11 +1,44 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Discovery::ListServerNeighborsResponse;
-  use Moose;
-  has KnownDependencyCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'knownDependencyCount' );
-  has Neighbors => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::NeighborConnectionDetail]', traits => ['NameInRequest'], request_name => 'neighbors' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::Discovery::Types qw/Discovery_NeighborConnectionDetail/;
+  has KnownDependencyCount => (is => 'ro', isa => Int);
+  has Neighbors => (is => 'ro', isa => ArrayRef[Discovery_NeighborConnectionDetail], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Neighbors' => {
+                                'class' => 'Paws::Discovery::NeighborConnectionDetail',
+                                'type' => 'ArrayRef[Discovery_NeighborConnectionDetail]'
+                              },
+               'KnownDependencyCount' => {
+                                           'type' => 'Int'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Neighbors' => 'neighbors',
+                       'KnownDependencyCount' => 'knownDependencyCount',
+                       'NextToken' => 'nextToken'
+                     },
+  'IsRequired' => {
+                    'Neighbors' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +54,7 @@ Paws::Discovery::ListServerNeighborsResponse
 Count of distinct servers that are one hop away from the given server.
 
 
-=head2 B<REQUIRED> Neighbors => ArrayRef[L<Paws::Discovery::NeighborConnectionDetail>]
+=head2 B<REQUIRED> Neighbors => ArrayRef[Discovery_NeighborConnectionDetail]
 
 List of distinct servers that are one hop away from the given server.
 

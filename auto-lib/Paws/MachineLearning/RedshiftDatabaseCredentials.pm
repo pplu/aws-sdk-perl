@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::RedshiftDatabaseCredentials;
-  use Moose;
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has Username => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MachineLearning::Types qw//;
+  has Password => (is => 'ro', isa => Str, required => 1);
+  has Username => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Username' => 1,
+                    'Password' => 1
+                  },
+  'types' => {
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'Username' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::Lightsail::AddOn;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has NextSnapshotTimeOfDay => (is => 'ro', isa => 'Str', request_name => 'nextSnapshotTimeOfDay', traits => ['NameInRequest']);
-  has SnapshotTimeOfDay => (is => 'ro', isa => 'Str', request_name => 'snapshotTimeOfDay', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has Name => (is => 'ro', isa => Str);
+  has NextSnapshotTimeOfDay => (is => 'ro', isa => Str);
+  has SnapshotTimeOfDay => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextSnapshotTimeOfDay' => 'nextSnapshotTimeOfDay',
+                       'Status' => 'status',
+                       'Name' => 'name',
+                       'SnapshotTimeOfDay' => 'snapshotTimeOfDay'
+                     },
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'NextSnapshotTimeOfDay' => {
+                                            'type' => 'Str'
+                                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SnapshotTimeOfDay' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

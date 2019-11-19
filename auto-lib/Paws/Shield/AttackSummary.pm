@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Shield::AttackSummary;
-  use Moose;
-  has AttackId => (is => 'ro', isa => 'Str');
-  has AttackVectors => (is => 'ro', isa => 'ArrayRef[Paws::Shield::AttackVectorDescription]');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has ResourceArn => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Shield::Types qw/Shield_AttackVectorDescription/;
+  has AttackId => (is => 'ro', isa => Str);
+  has AttackVectors => (is => 'ro', isa => ArrayRef[Shield_AttackVectorDescription]);
+  has EndTime => (is => 'ro', isa => Str);
+  has ResourceArn => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttackId' => {
+                               'type' => 'Str'
+                             },
+               'AttackVectors' => {
+                                    'class' => 'Paws::Shield::AttackVectorDescription',
+                                    'type' => 'ArrayRef[Shield_AttackVectorDescription]'
+                                  },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +75,7 @@ Summarizes all DDoS attacks for a specified time period.
   The unique identifier (ID) of the attack.
 
 
-=head2 AttackVectors => ArrayRef[L<Paws::Shield::AttackVectorDescription>]
+=head2 AttackVectors => ArrayRef[Shield_AttackVectorDescription]
 
   The list of attacks for a specified time period.
 

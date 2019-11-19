@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Kafka::StorageInfo;
-  use Moose;
-  has EbsStorageInfo => (is => 'ro', isa => 'Paws::Kafka::EBSStorageInfo', request_name => 'ebsStorageInfo', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Kafka::Types qw/Kafka_EBSStorageInfo/;
+  has EbsStorageInfo => (is => 'ro', isa => Kafka_EBSStorageInfo);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EbsStorageInfo' => 'ebsStorageInfo'
+                     },
+  'types' => {
+               'EbsStorageInfo' => {
+                                     'type' => 'Kafka_EBSStorageInfo',
+                                     'class' => 'Paws::Kafka::EBSStorageInfo'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ nodes.
 =head1 ATTRIBUTES
 
 
-=head2 EbsStorageInfo => L<Paws::Kafka::EBSStorageInfo>
+=head2 EbsStorageInfo => Kafka_EBSStorageInfo
 
   EBS volume information.
 

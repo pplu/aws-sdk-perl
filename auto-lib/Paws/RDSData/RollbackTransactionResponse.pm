@@ -1,9 +1,29 @@
 
 package Paws::RDSData::RollbackTransactionResponse;
-  use Moose;
-  has TransactionStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'transactionStatus');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDSData::Types qw//;
+  has TransactionStatus => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TransactionStatus' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'TransactionStatus' => 'transactionStatus'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

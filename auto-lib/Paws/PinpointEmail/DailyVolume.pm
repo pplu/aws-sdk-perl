@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::DailyVolume;
-  use Moose;
-  has DomainIspPlacements => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::DomainIspPlacement]');
-  has StartDate => (is => 'ro', isa => 'Str');
-  has VolumeStatistics => (is => 'ro', isa => 'Paws::PinpointEmail::VolumeStatistics');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_VolumeStatistics PinpointEmail_DomainIspPlacement/;
+  has DomainIspPlacements => (is => 'ro', isa => ArrayRef[PinpointEmail_DomainIspPlacement]);
+  has StartDate => (is => 'ro', isa => Str);
+  has VolumeStatistics => (is => 'ro', isa => PinpointEmail_VolumeStatistics);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeStatistics' => {
+                                       'type' => 'PinpointEmail_VolumeStatistics',
+                                       'class' => 'Paws::PinpointEmail::VolumeStatistics'
+                                     },
+               'DomainIspPlacements' => {
+                                          'type' => 'ArrayRef[PinpointEmail_DomainIspPlacement]',
+                                          'class' => 'Paws::PinpointEmail::DomainIspPlacement'
+                                        },
+               'StartDate' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +64,7 @@ each day of the analysis period.
 =head1 ATTRIBUTES
 
 
-=head2 DomainIspPlacements => ArrayRef[L<Paws::PinpointEmail::DomainIspPlacement>]
+=head2 DomainIspPlacements => ArrayRef[PinpointEmail_DomainIspPlacement]
 
   An object that contains inbox placement metrics for a specified day in
 the analysis period, broken out by the recipient's email provider.
@@ -50,7 +75,7 @@ the analysis period, broken out by the recipient's email provider.
   The date that the DailyVolume metrics apply to, in Unix time.
 
 
-=head2 VolumeStatistics => L<Paws::PinpointEmail::VolumeStatistics>
+=head2 VolumeStatistics => PinpointEmail_VolumeStatistics
 
   An object that contains inbox placement metrics for a specific day in
 the analysis period.

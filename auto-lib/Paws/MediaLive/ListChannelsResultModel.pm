@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ListChannelsResultModel;
-  use Moose;
-  has Channels => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ChannelSummary]', request_name => 'channels', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::MediaLive::Types qw/MediaLive_ChannelSummary/;
+  has Channels => (is => 'ro', isa => ArrayRef[MediaLive_ChannelSummary]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Channels' => 'channels'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Channels' => {
+                               'class' => 'Paws::MediaLive::ChannelSummary',
+                               'type' => 'ArrayRef[MediaLive_ChannelSummary]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Placeholder documentation for ListChannelsResultModel
 =head1 ATTRIBUTES
 
 
-=head2 Channels => ArrayRef[L<Paws::MediaLive::ChannelSummary>]
+=head2 Channels => ArrayRef[MediaLive_ChannelSummary]
 
   
 

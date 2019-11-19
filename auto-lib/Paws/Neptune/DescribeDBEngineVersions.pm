@@ -1,21 +1,62 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::DescribeDBEngineVersions;
-  use Moose;
-  has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has DefaultOnly => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Filter]');
-  has ListSupportedCharacterSets => (is => 'ro', isa => 'Bool');
-  has ListSupportedTimezones => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::Neptune::Types qw/Neptune_Filter/;
+  has DBParameterGroupFamily => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultOnly => (is => 'ro', isa => Bool, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[Neptune_Filter], predicate => 1);
+  has ListSupportedCharacterSets => (is => 'ro', isa => Bool, predicate => 1);
+  has ListSupportedTimezones => (is => 'ro', isa => Bool, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBEngineVersions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::DBEngineVersionMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBEngineVersionsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDBEngineVersions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::DBEngineVersionMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeDBEngineVersionsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ListSupportedCharacterSets' => {
+                                                 'type' => 'Bool'
+                                               },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'DefaultOnly' => {
+                                  'type' => 'Bool'
+                                },
+               'Filters' => {
+                              'class' => 'Paws::Neptune::Filter',
+                              'type' => 'ArrayRef[Neptune_Filter]'
+                            },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'ListSupportedTimezones' => {
+                                             'type' => 'Bool'
+                                           },
+               'DBParameterGroupFamily' => {
+                                             'type' => 'Str'
+                                           },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -104,7 +145,7 @@ Example: C<5.1.49>
 
 
 
-=head2 Filters => ArrayRef[L<Paws::Neptune::Filter>]
+=head2 Filters => ArrayRef[Neptune_Filter]
 
 Not currently supported.
 

@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MQ::DescribeConfigurationRevisionOutput;
-  use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', request_name => 'configurationId', traits => ['NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has Data => (is => 'ro', isa => 'Str', request_name => 'data', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has ConfigurationId => (is => 'ro', isa => Str);
+  has Created => (is => 'ro', isa => Str);
+  has Data => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Data' => {
+                           'type' => 'Str'
+                         },
+               'ConfigurationId' => {
+                                      'type' => 'Str'
+                                    },
+               'Created' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'ConfigurationId' => 'configurationId',
+                       'Data' => 'data',
+                       'Created' => 'created',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

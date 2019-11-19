@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::DvbSdtSettings;
-  use Moose;
-  has OutputSdt => (is => 'ro', isa => 'Str', request_name => 'outputSdt', traits => ['NameInRequest']);
-  has SdtInterval => (is => 'ro', isa => 'Int', request_name => 'sdtInterval', traits => ['NameInRequest']);
-  has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
-  has ServiceProviderName => (is => 'ro', isa => 'Str', request_name => 'serviceProviderName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw//;
+  has OutputSdt => (is => 'ro', isa => Str);
+  has SdtInterval => (is => 'ro', isa => Int);
+  has ServiceName => (is => 'ro', isa => Str);
+  has ServiceProviderName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SdtInterval' => {
+                                  'type' => 'Int'
+                                },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'OutputSdt' => {
+                                'type' => 'Str'
+                              },
+               'ServiceProviderName' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'ServiceProviderName' => 'serviceProviderName',
+                       'OutputSdt' => 'outputSdt',
+                       'SdtInterval' => 'sdtInterval',
+                       'ServiceName' => 'serviceName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

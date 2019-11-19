@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Forecast::DatasetSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DatasetArn => (is => 'ro', isa => 'Str');
-  has DatasetName => (is => 'ro', isa => 'Str');
-  has DatasetType => (is => 'ro', isa => 'Str');
-  has Domain => (is => 'ro', isa => 'Str');
-  has LastModificationTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DatasetArn => (is => 'ro', isa => Str);
+  has DatasetName => (is => 'ro', isa => Str);
+  has DatasetType => (is => 'ro', isa => Str);
+  has Domain => (is => 'ro', isa => Str);
+  has LastModificationTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                },
+               'LastModificationTime' => {
+                                           'type' => 'Str'
+                                         },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'DatasetType' => {
+                                  'type' => 'Str'
+                                },
+               'DatasetArn' => {
+                                 'type' => 'Str'
+                               },
+               'Domain' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

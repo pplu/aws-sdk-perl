@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Datasync::OnPremConfig;
-  use Moose;
-  has AgentArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Datasync::Types qw//;
+  has AgentArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AgentArns' => 1
+                  },
+  'types' => {
+               'AgentArns' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::EMR::SetTerminationProtection;
-  use Moose;
-  has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has TerminationProtected => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::EMR::Types qw//;
+  has JobFlowIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has TerminationProtected => (is => 'ro', isa => Bool, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetTerminationProtection');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetTerminationProtection');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'JobFlowIds' => 1,
+                    'TerminationProtected' => 1
+                  },
+  'types' => {
+               'TerminationProtected' => {
+                                           'type' => 'Bool'
+                                         },
+               'JobFlowIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

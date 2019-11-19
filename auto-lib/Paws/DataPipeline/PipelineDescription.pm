@@ -1,10 +1,53 @@
+# Generated from default/object.tt
 package Paws::DataPipeline::PipelineDescription;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]', request_name => 'fields', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has PipelineId => (is => 'ro', isa => 'Str', request_name => 'pipelineId', traits => ['NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DataPipeline::Types qw/DataPipeline_Tag DataPipeline_Field/;
+  has Description => (is => 'ro', isa => Str);
+  has Fields => (is => 'ro', isa => ArrayRef[DataPipeline_Field], required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has PipelineId => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DataPipeline_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'PipelineId' => 1,
+                    'Fields' => 1
+                  },
+  'NameInRequest' => {
+                       'PipelineId' => 'pipelineId',
+                       'Fields' => 'fields',
+                       'Description' => 'description',
+                       'Tags' => 'tags',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'PipelineId' => {
+                                 'type' => 'Str'
+                               },
+               'Fields' => {
+                             'type' => 'ArrayRef[DataPipeline_Field]',
+                             'class' => 'Paws::DataPipeline::Field'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::DataPipeline::Tag',
+                           'type' => 'ArrayRef[DataPipeline_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +88,7 @@ Contains pipeline metadata.
   Description of the pipeline.
 
 
-=head2 B<REQUIRED> Fields => ArrayRef[L<Paws::DataPipeline::Field>]
+=head2 B<REQUIRED> Fields => ArrayRef[DataPipeline_Field]
 
   A list of read-only fields that contain metadata about the pipeline:
 @userId, @accountId, and @pipelineState.
@@ -62,7 +105,7 @@ Contains pipeline metadata.
 a string of the form C<df-297EG78HU43EEXAMPLE>.
 
 
-=head2 Tags => ArrayRef[L<Paws::DataPipeline::Tag>]
+=head2 Tags => ArrayRef[DataPipeline_Tag]
 
   A list of tags to associated with a pipeline. Tags let you control
 access to pipelines. For more information, see Controlling User Access

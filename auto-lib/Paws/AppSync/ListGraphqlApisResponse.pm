@@ -1,10 +1,35 @@
 
 package Paws::AppSync::ListGraphqlApisResponse;
-  use Moose;
-  has GraphqlApis => (is => 'ro', isa => 'ArrayRef[Paws::AppSync::GraphqlApi]', traits => ['NameInRequest'], request_name => 'graphqlApis');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppSync::Types qw/AppSync_GraphqlApi/;
+  has GraphqlApis => (is => 'ro', isa => ArrayRef[AppSync_GraphqlApi]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'GraphqlApis' => {
+                                  'type' => 'ArrayRef[AppSync_GraphqlApi]',
+                                  'class' => 'Paws::AppSync::GraphqlApi'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'GraphqlApis' => 'graphqlApis'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::AppSync::ListGraphqlApisResponse
 =head1 ATTRIBUTES
 
 
-=head2 GraphqlApis => ArrayRef[L<Paws::AppSync::GraphqlApi>]
+=head2 GraphqlApis => ArrayRef[AppSync_GraphqlApi]
 
 The C<GraphqlApi> objects.
 

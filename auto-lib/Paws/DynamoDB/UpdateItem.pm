@@ -1,24 +1,82 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::UpdateItem;
-  use Moose;
-  has AttributeUpdates => (is => 'ro', isa => 'Paws::DynamoDB::AttributeUpdates');
-  has ConditionalOperator => (is => 'ro', isa => 'Str');
-  has ConditionExpression => (is => 'ro', isa => 'Str');
-  has Expected => (is => 'ro', isa => 'Paws::DynamoDB::ExpectedAttributeMap');
-  has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
-  has ExpressionAttributeValues => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeValueMap');
-  has Key => (is => 'ro', isa => 'Paws::DynamoDB::Key', required => 1);
-  has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
-  has ReturnItemCollectionMetrics => (is => 'ro', isa => 'Str');
-  has ReturnValues => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
-  has UpdateExpression => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ExpectedAttributeMap DynamoDB_AttributeUpdates DynamoDB_Key DynamoDB_ExpressionAttributeValueMap DynamoDB_ExpressionAttributeNameMap/;
+  has AttributeUpdates => (is => 'ro', isa => DynamoDB_AttributeUpdates, predicate => 1);
+  has ConditionalOperator => (is => 'ro', isa => Str, predicate => 1);
+  has ConditionExpression => (is => 'ro', isa => Str, predicate => 1);
+  has Expected => (is => 'ro', isa => DynamoDB_ExpectedAttributeMap, predicate => 1);
+  has ExpressionAttributeNames => (is => 'ro', isa => DynamoDB_ExpressionAttributeNameMap, predicate => 1);
+  has ExpressionAttributeValues => (is => 'ro', isa => DynamoDB_ExpressionAttributeValueMap, predicate => 1);
+  has Key => (is => 'ro', isa => DynamoDB_Key, required => 1, predicate => 1);
+  has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
+  has ReturnItemCollectionMetrics => (is => 'ro', isa => Str, predicate => 1);
+  has ReturnValues => (is => 'ro', isa => Str, predicate => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UpdateExpression => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateItem');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::UpdateItemOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateItem');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::UpdateItemOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TableName' => 1,
+                    'Key' => 1
+                  },
+  'types' => {
+               'ConditionExpression' => {
+                                          'type' => 'Str'
+                                        },
+               'ReturnItemCollectionMetrics' => {
+                                                  'type' => 'Str'
+                                                },
+               'Expected' => {
+                               'class' => 'Paws::DynamoDB::ExpectedAttributeMap',
+                               'type' => 'DynamoDB_ExpectedAttributeMap'
+                             },
+               'ReturnConsumedCapacity' => {
+                                             'type' => 'Str'
+                                           },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'ExpressionAttributeNames' => {
+                                               'type' => 'DynamoDB_ExpressionAttributeNameMap',
+                                               'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap'
+                                             },
+               'Key' => {
+                          'class' => 'Paws::DynamoDB::Key',
+                          'type' => 'DynamoDB_Key'
+                        },
+               'AttributeUpdates' => {
+                                       'type' => 'DynamoDB_AttributeUpdates',
+                                       'class' => 'Paws::DynamoDB::AttributeUpdates'
+                                     },
+               'ExpressionAttributeValues' => {
+                                                'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
+                                                'type' => 'DynamoDB_ExpressionAttributeValueMap'
+                                              },
+               'ReturnValues' => {
+                                   'type' => 'Str'
+                                 },
+               'ConditionalOperator' => {
+                                          'type' => 'Str'
+                                        },
+               'UpdateExpression' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +137,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 =head1 ATTRIBUTES
 
 
-=head2 AttributeUpdates => L<Paws::DynamoDB::AttributeUpdates>
+=head2 AttributeUpdates => DynamoDB_AttributeUpdates
 
 This is a legacy parameter. Use C<UpdateExpression> instead. For more
 information, see AttributeUpdates
@@ -131,7 +189,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 Expected => L<Paws::DynamoDB::ExpectedAttributeMap>
+=head2 Expected => DynamoDB_ExpectedAttributeMap
 
 This is a legacy parameter. Use C<ConditionExpression> instead. For
 more information, see Expected
@@ -140,7 +198,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
+=head2 ExpressionAttributeNames => DynamoDB_ExpressionAttributeNameMap
 
 One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using C<ExpressionAttributeNames>:
@@ -211,7 +269,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
+=head2 ExpressionAttributeValues => DynamoDB_ExpressionAttributeValueMap
 
 One or more values that can be substituted in an expression.
 
@@ -238,7 +296,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
+=head2 B<REQUIRED> Key => DynamoDB_Key
 
 The primary key of the item to be updated. Each element consists of an
 attribute name and a value for that attribute.

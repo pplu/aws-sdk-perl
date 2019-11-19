@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::DataExchange::ResponseDetails;
-  use Moose;
-  has ExportAssetsToS3 => (is => 'ro', isa => 'Paws::DataExchange::ExportAssetsToS3ResponseDetails');
-  has ExportAssetToSignedUrl => (is => 'ro', isa => 'Paws::DataExchange::ExportAssetToSignedUrlResponseDetails');
-  has ImportAssetFromSignedUrl => (is => 'ro', isa => 'Paws::DataExchange::ImportAssetFromSignedUrlResponseDetails');
-  has ImportAssetsFromS3 => (is => 'ro', isa => 'Paws::DataExchange::ImportAssetsFromS3ResponseDetails');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::DataExchange::Types qw/DataExchange_ExportAssetToSignedUrlResponseDetails DataExchange_ExportAssetsToS3ResponseDetails DataExchange_ImportAssetFromSignedUrlResponseDetails DataExchange_ImportAssetsFromS3ResponseDetails/;
+  has ExportAssetsToS3 => (is => 'ro', isa => DataExchange_ExportAssetsToS3ResponseDetails);
+  has ExportAssetToSignedUrl => (is => 'ro', isa => DataExchange_ExportAssetToSignedUrlResponseDetails);
+  has ImportAssetFromSignedUrl => (is => 'ro', isa => DataExchange_ImportAssetFromSignedUrlResponseDetails);
+  has ImportAssetsFromS3 => (is => 'ro', isa => DataExchange_ImportAssetsFromS3ResponseDetails);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImportAssetsFromS3' => {
+                                         'type' => 'DataExchange_ImportAssetsFromS3ResponseDetails',
+                                         'class' => 'Paws::DataExchange::ImportAssetsFromS3ResponseDetails'
+                                       },
+               'ImportAssetFromSignedUrl' => {
+                                               'class' => 'Paws::DataExchange::ImportAssetFromSignedUrlResponseDetails',
+                                               'type' => 'DataExchange_ImportAssetFromSignedUrlResponseDetails'
+                                             },
+               'ExportAssetToSignedUrl' => {
+                                             'type' => 'DataExchange_ExportAssetToSignedUrlResponseDetails',
+                                             'class' => 'Paws::DataExchange::ExportAssetToSignedUrlResponseDetails'
+                                           },
+               'ExportAssetsToS3' => {
+                                       'class' => 'Paws::DataExchange::ExportAssetsToS3ResponseDetails',
+                                       'type' => 'DataExchange_ExportAssetsToS3ResponseDetails'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,22 +69,22 @@ Details for the response.
 =head1 ATTRIBUTES
 
 
-=head2 ExportAssetsToS3 => L<Paws::DataExchange::ExportAssetsToS3ResponseDetails>
+=head2 ExportAssetsToS3 => DataExchange_ExportAssetsToS3ResponseDetails
 
   Details for the export to Amazon S3 response.
 
 
-=head2 ExportAssetToSignedUrl => L<Paws::DataExchange::ExportAssetToSignedUrlResponseDetails>
+=head2 ExportAssetToSignedUrl => DataExchange_ExportAssetToSignedUrlResponseDetails
 
   Details for the export to signed URL response.
 
 
-=head2 ImportAssetFromSignedUrl => L<Paws::DataExchange::ImportAssetFromSignedUrlResponseDetails>
+=head2 ImportAssetFromSignedUrl => DataExchange_ImportAssetFromSignedUrlResponseDetails
 
   Details for the import from signed URL response.
 
 
-=head2 ImportAssetsFromS3 => L<Paws::DataExchange::ImportAssetsFromS3ResponseDetails>
+=head2 ImportAssetsFromS3 => DataExchange_ImportAssetsFromS3ResponseDetails
 
   Details for the import from Amazon S3 response.
 

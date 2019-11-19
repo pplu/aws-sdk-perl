@@ -1,11 +1,48 @@
 package Paws::EC2::LaunchTemplatePlacement;
-  use Moose;
-  has Affinity => (is => 'ro', isa => 'Str', request_name => 'affinity', traits => ['NameInRequest']);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
-  has HostId => (is => 'ro', isa => 'Str', request_name => 'hostId', traits => ['NameInRequest']);
-  has SpreadDomain => (is => 'ro', isa => 'Str', request_name => 'spreadDomain', traits => ['NameInRequest']);
-  has Tenancy => (is => 'ro', isa => 'Str', request_name => 'tenancy', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Affinity => (is => 'ro', isa => Str);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has GroupName => (is => 'ro', isa => Str);
+  has HostId => (is => 'ro', isa => Str);
+  has SpreadDomain => (is => 'ro', isa => Str);
+  has Tenancy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'HostId' => 'hostId',
+                       'Affinity' => 'affinity',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'SpreadDomain' => 'spreadDomain',
+                       'Tenancy' => 'tenancy',
+                       'GroupName' => 'groupName'
+                     },
+  'types' => {
+               'Tenancy' => {
+                              'type' => 'Str'
+                            },
+               'SpreadDomain' => {
+                                   'type' => 'Str'
+                                 },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'Affinity' => {
+                               'type' => 'Str'
+                             },
+               'HostId' => {
+                             'type' => 'Str'
+                           },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

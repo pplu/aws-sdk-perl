@@ -1,16 +1,47 @@
 
 package Paws::Greengrass::ListDeployments;
-  use Moose;
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MaxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has GroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDeployments');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/groups/{GroupId}/deployments');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::ListDeploymentsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDeployments');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/groups/{GroupId}/deployments');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::ListDeploymentsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'GroupId' => 'GroupId'
+                  },
+  'types' => {
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Str'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'GroupId' => 1
+                  },
+  'ParamInQuery' => {
+                      'MaxResults' => 'MaxResults',
+                      'NextToken' => 'NextToken'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

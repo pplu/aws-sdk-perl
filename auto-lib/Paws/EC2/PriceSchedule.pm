@@ -1,9 +1,38 @@
 package Paws::EC2::PriceSchedule;
-  use Moose;
-  has Active => (is => 'ro', isa => 'Bool', request_name => 'active', traits => ['NameInRequest']);
-  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
-  has Price => (is => 'ro', isa => 'Num', request_name => 'price', traits => ['NameInRequest']);
-  has Term => (is => 'ro', isa => 'Int', request_name => 'term', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool Str Num Int/;
+  use Paws::EC2::Types qw//;
+  has Active => (is => 'ro', isa => Bool);
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has Price => (is => 'ro', isa => Num);
+  has Term => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Active' => 'active',
+                       'Price' => 'price',
+                       'Term' => 'term',
+                       'CurrencyCode' => 'currencyCode'
+                     },
+  'types' => {
+               'Active' => {
+                             'type' => 'Bool'
+                           },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'Term' => {
+                           'type' => 'Int'
+                         },
+               'Price' => {
+                            'type' => 'Num'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

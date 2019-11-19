@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::Config::OrganizationConformancePackStatus;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has LastUpdateTime => (is => 'ro', isa => 'Str');
-  has OrganizationConformancePackName => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has OrganizationConformancePackName => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'OrganizationConformancePackName' => {
+                                                      'type' => 'Str'
+                                                    }
+             },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'OrganizationConformancePackName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

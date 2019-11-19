@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::DS::DirectoryLimits;
-  use Moose;
-  has CloudOnlyDirectoriesCurrentCount => (is => 'ro', isa => 'Int');
-  has CloudOnlyDirectoriesLimit => (is => 'ro', isa => 'Int');
-  has CloudOnlyDirectoriesLimitReached => (is => 'ro', isa => 'Bool');
-  has CloudOnlyMicrosoftADCurrentCount => (is => 'ro', isa => 'Int');
-  has CloudOnlyMicrosoftADLimit => (is => 'ro', isa => 'Int');
-  has CloudOnlyMicrosoftADLimitReached => (is => 'ro', isa => 'Bool');
-  has ConnectedDirectoriesCurrentCount => (is => 'ro', isa => 'Int');
-  has ConnectedDirectoriesLimit => (is => 'ro', isa => 'Int');
-  has ConnectedDirectoriesLimitReached => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Int Bool/;
+  use Paws::DS::Types qw//;
+  has CloudOnlyDirectoriesCurrentCount => (is => 'ro', isa => Int);
+  has CloudOnlyDirectoriesLimit => (is => 'ro', isa => Int);
+  has CloudOnlyDirectoriesLimitReached => (is => 'ro', isa => Bool);
+  has CloudOnlyMicrosoftADCurrentCount => (is => 'ro', isa => Int);
+  has CloudOnlyMicrosoftADLimit => (is => 'ro', isa => Int);
+  has CloudOnlyMicrosoftADLimitReached => (is => 'ro', isa => Bool);
+  has ConnectedDirectoriesCurrentCount => (is => 'ro', isa => Int);
+  has ConnectedDirectoriesLimit => (is => 'ro', isa => Int);
+  has ConnectedDirectoriesLimitReached => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CloudOnlyDirectoriesLimit' => {
+                                                'type' => 'Int'
+                                              },
+               'ConnectedDirectoriesLimitReached' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'CloudOnlyDirectoriesLimitReached' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'CloudOnlyMicrosoftADLimit' => {
+                                                'type' => 'Int'
+                                              },
+               'CloudOnlyDirectoriesCurrentCount' => {
+                                                       'type' => 'Int'
+                                                     },
+               'CloudOnlyMicrosoftADLimitReached' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'ConnectedDirectoriesCurrentCount' => {
+                                                       'type' => 'Int'
+                                                     },
+               'CloudOnlyMicrosoftADCurrentCount' => {
+                                                       'type' => 'Int'
+                                                     },
+               'ConnectedDirectoriesLimit' => {
+                                                'type' => 'Int'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

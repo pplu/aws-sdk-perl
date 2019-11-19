@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::CloudFront::CustomErrorResponse;
-  use Moose;
-  has ErrorCachingMinTTL => (is => 'ro', isa => 'Int');
-  has ErrorCode => (is => 'ro', isa => 'Int', required => 1);
-  has ResponseCode => (is => 'ro', isa => 'Str');
-  has ResponsePagePath => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::CloudFront::Types qw//;
+  has ErrorCachingMinTTL => (is => 'ro', isa => Int);
+  has ErrorCode => (is => 'ro', isa => Int, required => 1);
+  has ResponseCode => (is => 'ro', isa => Str);
+  has ResponsePagePath => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorCachingMinTTL' => {
+                                         'type' => 'Int'
+                                       },
+               'ErrorCode' => {
+                                'type' => 'Int'
+                              },
+               'ResponseCode' => {
+                                   'type' => 'Str'
+                                 },
+               'ResponsePagePath' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'ErrorCode' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

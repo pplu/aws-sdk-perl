@@ -1,13 +1,63 @@
+# Generated from default/object.tt
 package Paws::S3::S3Location;
-  use Moose;
-  has AccessControlList => (is => 'ro', isa => 'ArrayRef[Paws::S3::Grant]', request_name => 'Grant', traits => ['NameInRequest']);
-  has BucketName => (is => 'ro', isa => 'Str', required => 1);
-  has CannedACL => (is => 'ro', isa => 'Str');
-  has Encryption => (is => 'ro', isa => 'Paws::S3::Encryption');
-  has Prefix => (is => 'ro', isa => 'Str', required => 1);
-  has StorageClass => (is => 'ro', isa => 'Str');
-  has Tagging => (is => 'ro', isa => 'Paws::S3::Tagging');
-  has UserMetadata => (is => 'ro', isa => 'ArrayRef[Paws::S3::MetadataEntry]', request_name => 'MetadataEntry', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::S3::Types qw/S3_MetadataEntry S3_Grant S3_Encryption S3_Tagging/;
+  has AccessControlList => (is => 'ro', isa => ArrayRef[S3_Grant]);
+  has BucketName => (is => 'ro', isa => Str, required => 1);
+  has CannedACL => (is => 'ro', isa => Str);
+  has Encryption => (is => 'ro', isa => S3_Encryption);
+  has Prefix => (is => 'ro', isa => Str, required => 1);
+  has StorageClass => (is => 'ro', isa => Str);
+  has Tagging => (is => 'ro', isa => S3_Tagging);
+  has UserMetadata => (is => 'ro', isa => ArrayRef[S3_MetadataEntry]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Encryption' => {
+                                 'class' => 'Paws::S3::Encryption',
+                                 'type' => 'S3_Encryption'
+                               },
+               'Tagging' => {
+                              'class' => 'Paws::S3::Tagging',
+                              'type' => 'S3_Tagging'
+                            },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 },
+               'CannedACL' => {
+                                'type' => 'Str'
+                              },
+               'AccessControlList' => {
+                                        'type' => 'ArrayRef[S3_Grant]',
+                                        'class' => 'Paws::S3::Grant'
+                                      },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'UserMetadata' => {
+                                   'type' => 'ArrayRef[S3_MetadataEntry]',
+                                   'class' => 'Paws::S3::MetadataEntry'
+                                 }
+             },
+  'IsRequired' => {
+                    'Prefix' => 1,
+                    'BucketName' => 1
+                  },
+  'NameInRequest' => {
+                       'AccessControlList' => 'Grant',
+                       'UserMetadata' => 'MetadataEntry'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +94,7 @@ request.
 =head1 ATTRIBUTES
 
 
-=head2 AccessControlList => ArrayRef[L<Paws::S3::Grant>]
+=head2 AccessControlList => ArrayRef[S3_Grant]
 
   A list of grants that control access to the staged results.
 
@@ -59,7 +109,7 @@ request.
   The canned ACL to apply to the restore results.
 
 
-=head2 Encryption => L<Paws::S3::Encryption>
+=head2 Encryption => S3_Encryption
 
   
 
@@ -74,12 +124,12 @@ request.
   The class of storage used to store the restore results.
 
 
-=head2 Tagging => L<Paws::S3::Tagging>
+=head2 Tagging => S3_Tagging
 
   The tag-set that is applied to the restore results.
 
 
-=head2 UserMetadata => ArrayRef[L<Paws::S3::MetadataEntry>]
+=head2 UserMetadata => ArrayRef[S3_MetadataEntry]
 
   A list of metadata to store with the restore results in S3.
 

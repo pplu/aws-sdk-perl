@@ -1,16 +1,47 @@
+# Generated from callargs_class.tt
 
 package Paws::SNS::AddPermission;
-  use Moose;
-  has ActionName => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has AWSAccountId => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Label => (is => 'ro', isa => 'Str', required => 1);
-  has TopicArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SNS::Types qw//;
+  has ActionName => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has AWSAccountId => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Label => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TopicArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddPermission');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddPermission');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Label' => {
+                            'type' => 'Str'
+                          },
+               'AWSAccountId' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'TopicArn' => {
+                               'type' => 'Str'
+                             },
+               'ActionName' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'IsRequired' => {
+                    'AWSAccountId' => 1,
+                    'Label' => 1,
+                    'ActionName' => 1,
+                    'TopicArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

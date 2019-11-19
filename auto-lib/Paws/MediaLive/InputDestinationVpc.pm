@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputDestinationVpc;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'AvailabilityZone' => 'availabilityZone'
+                     },
+  'types' => {
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

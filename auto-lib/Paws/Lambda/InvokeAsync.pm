@@ -1,15 +1,40 @@
 
 package Paws::Lambda::InvokeAsync;
-  use Moose;
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
-  has InvokeArgs => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw//;
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InvokeArgs => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'InvokeArgs');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'InvokeAsync');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2014-11-13/functions/{FunctionName}/invoke-async/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::InvokeAsyncResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'InvokeAsync');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2014-11-13/functions/{FunctionName}/invoke-async/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::InvokeAsyncResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FunctionName' => 1,
+                    'InvokeArgs' => 1
+                  },
+  'types' => {
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'InvokeArgs' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'FunctionName' => 'FunctionName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

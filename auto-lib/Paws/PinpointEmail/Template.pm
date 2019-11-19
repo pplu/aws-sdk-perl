@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::Template;
-  use Moose;
-  has TemplateArn => (is => 'ro', isa => 'Str');
-  has TemplateData => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has TemplateArn => (is => 'ro', isa => Str);
+  has TemplateData => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateArn' => {
+                                  'type' => 'Str'
+                                },
+               'TemplateData' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

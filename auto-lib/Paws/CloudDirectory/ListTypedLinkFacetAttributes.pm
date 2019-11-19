@@ -1,17 +1,48 @@
 
 package Paws::CloudDirectory::ListTypedLinkFacetAttributes;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudDirectory::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SchemaArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTypedLinkFacetAttributes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/facet/attributes');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::ListTypedLinkFacetAttributesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTypedLinkFacetAttributes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/facet/attributes');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::ListTypedLinkFacetAttributesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'SchemaArn' => 'x-amz-data-partition'
+                     },
+  'IsRequired' => {
+                    'SchemaArn' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'SchemaArn' => {
+                                'type' => 'Str'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

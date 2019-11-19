@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::RollbackConfiguration;
-  use Moose;
-  has MonitoringTimeInMinutes => (is => 'ro', isa => 'Int');
-  has RollbackTriggers => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::RollbackTrigger]');
+  use Moo;
+  use Types::Standard qw/Int ArrayRef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_RollbackTrigger/;
+  has MonitoringTimeInMinutes => (is => 'ro', isa => Int);
+  has RollbackTriggers => (is => 'ro', isa => ArrayRef[CloudFormation_RollbackTrigger]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RollbackTriggers' => {
+                                       'class' => 'Paws::CloudFormation::RollbackTrigger',
+                                       'type' => 'ArrayRef[CloudFormation_RollbackTrigger]'
+                                     },
+               'MonitoringTimeInMinutes' => {
+                                              'type' => 'Int'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +90,7 @@ operations. Then, for update operations, it begins disposing of old
 resources immediately once the operation completes.
 
 
-=head2 RollbackTriggers => ArrayRef[L<Paws::CloudFormation::RollbackTrigger>]
+=head2 RollbackTriggers => ArrayRef[CloudFormation_RollbackTrigger]
 
   The triggers to monitor during stack creation or update actions.
 

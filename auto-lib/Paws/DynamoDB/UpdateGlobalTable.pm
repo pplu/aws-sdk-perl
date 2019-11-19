@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::UpdateGlobalTable;
-  use Moose;
-  has GlobalTableName => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicaUpdates => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaUpdate]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ReplicaUpdate/;
+  has GlobalTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicaUpdates => (is => 'ro', isa => ArrayRef[DynamoDB_ReplicaUpdate], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGlobalTable');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::UpdateGlobalTableOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateGlobalTable');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::UpdateGlobalTableOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GlobalTableName' => {
+                                      'type' => 'Str'
+                                    },
+               'ReplicaUpdates' => {
+                                     'class' => 'Paws::DynamoDB::ReplicaUpdate',
+                                     'type' => 'ArrayRef[DynamoDB_ReplicaUpdate]'
+                                   }
+             },
+  'IsRequired' => {
+                    'ReplicaUpdates' => 1,
+                    'GlobalTableName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +88,7 @@ The global table name.
 
 
 
-=head2 B<REQUIRED> ReplicaUpdates => ArrayRef[L<Paws::DynamoDB::ReplicaUpdate>]
+=head2 B<REQUIRED> ReplicaUpdates => ArrayRef[DynamoDB_ReplicaUpdate]
 
 A list of Regions that should be added or removed from the global
 table.

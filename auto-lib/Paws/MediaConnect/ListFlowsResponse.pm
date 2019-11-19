@@ -1,10 +1,35 @@
 
 package Paws::MediaConnect::ListFlowsResponse;
-  use Moose;
-  has Flows => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::ListedFlow]', traits => ['NameInRequest'], request_name => 'flows');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaConnect::Types qw/MediaConnect_ListedFlow/;
+  has Flows => (is => 'ro', isa => ArrayRef[MediaConnect_ListedFlow]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Flows' => 'flows',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'Flows' => {
+                            'type' => 'ArrayRef[MediaConnect_ListedFlow]',
+                            'class' => 'Paws::MediaConnect::ListedFlow'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::MediaConnect::ListFlowsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Flows => ArrayRef[L<Paws::MediaConnect::ListedFlow>]
+=head2 Flows => ArrayRef[MediaConnect_ListedFlow]
 
 A list of flow summaries.
 

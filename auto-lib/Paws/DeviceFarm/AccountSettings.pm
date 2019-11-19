@@ -1,13 +1,65 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::AccountSettings;
-  use Moose;
-  has AwsAccountNumber => (is => 'ro', isa => 'Str', request_name => 'awsAccountNumber', traits => ['NameInRequest']);
-  has DefaultJobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'defaultJobTimeoutMinutes', traits => ['NameInRequest']);
-  has MaxJobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'maxJobTimeoutMinutes', traits => ['NameInRequest']);
-  has MaxSlots => (is => 'ro', isa => 'Paws::DeviceFarm::MaxSlotMap', request_name => 'maxSlots', traits => ['NameInRequest']);
-  has SkipAppResign => (is => 'ro', isa => 'Bool', request_name => 'skipAppResign', traits => ['NameInRequest']);
-  has TrialMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::TrialMinutes', request_name => 'trialMinutes', traits => ['NameInRequest']);
-  has UnmeteredDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', request_name => 'unmeteredDevices', traits => ['NameInRequest']);
-  has UnmeteredRemoteAccessDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', request_name => 'unmeteredRemoteAccessDevices', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_MaxSlotMap DeviceFarm_PurchasedDevicesMap DeviceFarm_TrialMinutes/;
+  has AwsAccountNumber => (is => 'ro', isa => Str);
+  has DefaultJobTimeoutMinutes => (is => 'ro', isa => Int);
+  has MaxJobTimeoutMinutes => (is => 'ro', isa => Int);
+  has MaxSlots => (is => 'ro', isa => DeviceFarm_MaxSlotMap);
+  has SkipAppResign => (is => 'ro', isa => Bool);
+  has TrialMinutes => (is => 'ro', isa => DeviceFarm_TrialMinutes);
+  has UnmeteredDevices => (is => 'ro', isa => DeviceFarm_PurchasedDevicesMap);
+  has UnmeteredRemoteAccessDevices => (is => 'ro', isa => DeviceFarm_PurchasedDevicesMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MaxSlots' => 'maxSlots',
+                       'TrialMinutes' => 'trialMinutes',
+                       'MaxJobTimeoutMinutes' => 'maxJobTimeoutMinutes',
+                       'SkipAppResign' => 'skipAppResign',
+                       'UnmeteredDevices' => 'unmeteredDevices',
+                       'DefaultJobTimeoutMinutes' => 'defaultJobTimeoutMinutes',
+                       'UnmeteredRemoteAccessDevices' => 'unmeteredRemoteAccessDevices',
+                       'AwsAccountNumber' => 'awsAccountNumber'
+                     },
+  'types' => {
+               'AwsAccountNumber' => {
+                                       'type' => 'Str'
+                                     },
+               'UnmeteredRemoteAccessDevices' => {
+                                                   'class' => 'Paws::DeviceFarm::PurchasedDevicesMap',
+                                                   'type' => 'DeviceFarm_PurchasedDevicesMap'
+                                                 },
+               'DefaultJobTimeoutMinutes' => {
+                                               'type' => 'Int'
+                                             },
+               'UnmeteredDevices' => {
+                                       'class' => 'Paws::DeviceFarm::PurchasedDevicesMap',
+                                       'type' => 'DeviceFarm_PurchasedDevicesMap'
+                                     },
+               'SkipAppResign' => {
+                                    'type' => 'Bool'
+                                  },
+               'MaxJobTimeoutMinutes' => {
+                                           'type' => 'Int'
+                                         },
+               'TrialMinutes' => {
+                                   'type' => 'DeviceFarm_TrialMinutes',
+                                   'class' => 'Paws::DeviceFarm::TrialMinutes'
+                                 },
+               'MaxSlots' => {
+                               'class' => 'Paws::DeviceFarm::MaxSlotMap',
+                               'type' => 'DeviceFarm_MaxSlotMap'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +112,7 @@ execute before it times out. The default value is 150 minutes.
 out.
 
 
-=head2 MaxSlots => L<Paws::DeviceFarm::MaxSlotMap>
+=head2 MaxSlots => DeviceFarm_MaxSlotMap
 
   The maximum number of device slots that the AWS account can purchase.
 Each maximum is expressed as an C<offering-id:number> pair, where the
@@ -79,17 +131,17 @@ you modify my app? (https://aws.amazon.com/device-farm/faq/) in the
 I<AWS Device Farm FAQs>.
 
 
-=head2 TrialMinutes => L<Paws::DeviceFarm::TrialMinutes>
+=head2 TrialMinutes => DeviceFarm_TrialMinutes
 
   Information about an AWS account's usage of free trial device minutes.
 
 
-=head2 UnmeteredDevices => L<Paws::DeviceFarm::PurchasedDevicesMap>
+=head2 UnmeteredDevices => DeviceFarm_PurchasedDevicesMap
 
   Returns the unmetered devices you have purchased or want to purchase.
 
 
-=head2 UnmeteredRemoteAccessDevices => L<Paws::DeviceFarm::PurchasedDevicesMap>
+=head2 UnmeteredRemoteAccessDevices => DeviceFarm_PurchasedDevicesMap
 
   Returns the unmetered remote access devices you have purchased or want
 to purchase.

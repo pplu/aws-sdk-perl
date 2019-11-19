@@ -1,11 +1,49 @@
 package Paws::EC2::StaleIpPermission;
-  use Moose;
-  has FromPort => (is => 'ro', isa => 'Int', request_name => 'fromPort', traits => ['NameInRequest']);
-  has IpProtocol => (is => 'ro', isa => 'Str', request_name => 'ipProtocol', traits => ['NameInRequest']);
-  has IpRanges => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipRanges', traits => ['NameInRequest']);
-  has PrefixListIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'prefixListIds', traits => ['NameInRequest']);
-  has ToPort => (is => 'ro', isa => 'Int', request_name => 'toPort', traits => ['NameInRequest']);
-  has UserIdGroupPairs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UserIdGroupPair]', request_name => 'groups', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str Undef ArrayRef/;
+  use Paws::EC2::Types qw/EC2_UserIdGroupPair/;
+  has FromPort => (is => 'ro', isa => Int);
+  has IpProtocol => (is => 'ro', isa => Str);
+  has IpRanges => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has PrefixListIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ToPort => (is => 'ro', isa => Int);
+  has UserIdGroupPairs => (is => 'ro', isa => ArrayRef[EC2_UserIdGroupPair]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IpRanges' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'UserIdGroupPairs' => {
+                                       'type' => 'ArrayRef[EC2_UserIdGroupPair]',
+                                       'class' => 'Paws::EC2::UserIdGroupPair'
+                                     },
+               'FromPort' => {
+                               'type' => 'Int'
+                             },
+               'PrefixListIds' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'ToPort' => {
+                             'type' => 'Int'
+                           },
+               'IpProtocol' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'FromPort' => 'fromPort',
+                       'PrefixListIds' => 'prefixListIds',
+                       'IpRanges' => 'ipRanges',
+                       'UserIdGroupPairs' => 'groups',
+                       'ToPort' => 'toPort',
+                       'IpProtocol' => 'ipProtocol'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +109,7 @@ security group rules.
 type number. A value of C<-1> indicates all ICMP types.
 
 
-=head2 UserIdGroupPairs => ArrayRef[L<Paws::EC2::UserIdGroupPair>]
+=head2 UserIdGroupPairs => ArrayRef[EC2_UserIdGroupPair]
 
   The security group pairs. Returns the ID of the referenced security
 group and VPC, and the ID and status of the VPC peering connection.

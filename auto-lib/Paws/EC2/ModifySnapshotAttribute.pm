@@ -1,19 +1,61 @@
 
 package Paws::EC2::ModifySnapshotAttribute;
-  use Moose;
-  has Attribute => (is => 'ro', isa => 'Str');
-  has CreateVolumePermission => (is => 'ro', isa => 'Paws::EC2::CreateVolumePermissionModifications');
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'UserGroup' );
-  has OperationType => (is => 'ro', isa => 'Str');
-  has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
-  has UserIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'UserId' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_CreateVolumePermissionModifications/;
+  has Attribute => (is => 'ro', isa => Str, predicate => 1);
+  has CreateVolumePermission => (is => 'ro', isa => EC2_CreateVolumePermissionModifications, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has GroupNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has OperationType => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifySnapshotAttribute');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifySnapshotAttribute');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'GroupNames' => 'UserGroup',
+                       'UserIds' => 'UserId',
+                       'DryRun' => 'dryRun'
+                     },
+  'IsRequired' => {
+                    'SnapshotId' => 1
+                  },
+  'types' => {
+               'Attribute' => {
+                                'type' => 'Str'
+                              },
+               'OperationType' => {
+                                    'type' => 'Str'
+                                  },
+               'CreateVolumePermission' => {
+                                             'class' => 'Paws::EC2::CreateVolumePermissionModifications',
+                                             'type' => 'EC2_CreateVolumePermissionModifications'
+                                           },
+               'UserIds' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'GroupNames' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +109,7 @@ be modified.
 
 Valid values are: C<"productCodes">, C<"createVolumePermission">
 
-=head2 CreateVolumePermission => L<Paws::EC2::CreateVolumePermissionModifications>
+=head2 CreateVolumePermission => EC2_CreateVolumePermissionModifications
 
 A JSON representation of the snapshot attribute modification.
 

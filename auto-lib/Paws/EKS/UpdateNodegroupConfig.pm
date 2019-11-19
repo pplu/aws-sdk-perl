@@ -1,18 +1,60 @@
 
 package Paws::EKS::UpdateNodegroupConfig;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
-  has ClusterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has Labels => (is => 'ro', isa => 'Paws::EKS::UpdateLabelsPayload', traits => ['NameInRequest'], request_name => 'labels');
-  has NodegroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'nodegroupName', required => 1);
-  has ScalingConfig => (is => 'ro', isa => 'Paws::EKS::NodegroupScalingConfig', traits => ['NameInRequest'], request_name => 'scalingConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EKS::Types qw/EKS_NodegroupScalingConfig EKS_UpdateLabelsPayload/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has ClusterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Labels => (is => 'ro', isa => EKS_UpdateLabelsPayload, predicate => 1);
+  has NodegroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ScalingConfig => (is => 'ro', isa => EKS_NodegroupScalingConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateNodegroupConfig');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clusters/{name}/node-groups/{nodegroupName}/update-config');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EKS::UpdateNodegroupConfigResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateNodegroupConfig');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clusters/{name}/node-groups/{nodegroupName}/update-config');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EKS::UpdateNodegroupConfigResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ClusterName' => 'name',
+                    'NodegroupName' => 'nodegroupName'
+                  },
+  'NameInRequest' => {
+                       'Labels' => 'labels',
+                       'ScalingConfig' => 'scalingConfig',
+                       'ClientRequestToken' => 'clientRequestToken'
+                     },
+  'IsRequired' => {
+                    'NodegroupName' => 1,
+                    'ClusterName' => 1
+                  },
+  'types' => {
+               'Labels' => {
+                             'type' => 'EKS_UpdateLabelsPayload',
+                             'class' => 'Paws::EKS::UpdateLabelsPayload'
+                           },
+               'NodegroupName' => {
+                                    'type' => 'Str'
+                                  },
+               'ClusterName' => {
+                                  'type' => 'Str'
+                                },
+               'ScalingConfig' => {
+                                    'type' => 'EKS_NodegroupScalingConfig',
+                                    'class' => 'Paws::EKS::NodegroupScalingConfig'
+                                  },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +117,7 @@ in.
 
 
 
-=head2 Labels => L<Paws::EKS::UpdateLabelsPayload>
+=head2 Labels => EKS_UpdateLabelsPayload
 
 The Kubernetes labels to be applied to the nodes in the node group
 after the update.
@@ -88,7 +130,7 @@ The name of the managed node group to update.
 
 
 
-=head2 ScalingConfig => L<Paws::EKS::NodegroupScalingConfig>
+=head2 ScalingConfig => EKS_NodegroupScalingConfig
 
 The scaling configuration details for the AutoScaling group after the
 update.

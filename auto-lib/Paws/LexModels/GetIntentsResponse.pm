@@ -1,10 +1,35 @@
 
 package Paws::LexModels::GetIntentsResponse;
-  use Moose;
-  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::IntentMetadata]', traits => ['NameInRequest'], request_name => 'intents');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LexModels::Types qw/LexModels_IntentMetadata/;
+  has Intents => (is => 'ro', isa => ArrayRef[LexModels_IntentMetadata]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Intents' => {
+                              'type' => 'ArrayRef[LexModels_IntentMetadata]',
+                              'class' => 'Paws::LexModels::IntentMetadata'
+                            }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Intents' => 'intents'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::LexModels::GetIntentsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Intents => ArrayRef[L<Paws::LexModels::IntentMetadata>]
+=head2 Intents => ArrayRef[LexModels_IntentMetadata]
 
 An array of C<Intent> objects. For more information, see PutBot.
 

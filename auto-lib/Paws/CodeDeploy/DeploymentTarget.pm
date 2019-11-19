@@ -1,9 +1,44 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::DeploymentTarget;
-  use Moose;
-  has DeploymentTargetType => (is => 'ro', isa => 'Str', request_name => 'deploymentTargetType', traits => ['NameInRequest']);
-  has EcsTarget => (is => 'ro', isa => 'Paws::CodeDeploy::ECSTarget', request_name => 'ecsTarget', traits => ['NameInRequest']);
-  has InstanceTarget => (is => 'ro', isa => 'Paws::CodeDeploy::InstanceTarget', request_name => 'instanceTarget', traits => ['NameInRequest']);
-  has LambdaTarget => (is => 'ro', isa => 'Paws::CodeDeploy::LambdaTarget', request_name => 'lambdaTarget', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_InstanceTarget CodeDeploy_ECSTarget CodeDeploy_LambdaTarget/;
+  has DeploymentTargetType => (is => 'ro', isa => Str);
+  has EcsTarget => (is => 'ro', isa => CodeDeploy_ECSTarget);
+  has InstanceTarget => (is => 'ro', isa => CodeDeploy_InstanceTarget);
+  has LambdaTarget => (is => 'ro', isa => CodeDeploy_LambdaTarget);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeploymentTargetType' => {
+                                           'type' => 'Str'
+                                         },
+               'InstanceTarget' => {
+                                     'type' => 'CodeDeploy_InstanceTarget',
+                                     'class' => 'Paws::CodeDeploy::InstanceTarget'
+                                   },
+               'EcsTarget' => {
+                                'class' => 'Paws::CodeDeploy::ECSTarget',
+                                'type' => 'CodeDeploy_ECSTarget'
+                              },
+               'LambdaTarget' => {
+                                   'type' => 'CodeDeploy_LambdaTarget',
+                                   'class' => 'Paws::CodeDeploy::LambdaTarget'
+                                 }
+             },
+  'NameInRequest' => {
+                       'InstanceTarget' => 'instanceTarget',
+                       'DeploymentTargetType' => 'deploymentTargetType',
+                       'LambdaTarget' => 'lambdaTarget',
+                       'EcsTarget' => 'ecsTarget'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,19 +80,19 @@ Information about the deployment target.
 platform.
 
 
-=head2 EcsTarget => L<Paws::CodeDeploy::ECSTarget>
+=head2 EcsTarget => CodeDeploy_ECSTarget
 
   Information about the target for a deployment that uses the Amazon ECS
 compute platform.
 
 
-=head2 InstanceTarget => L<Paws::CodeDeploy::InstanceTarget>
+=head2 InstanceTarget => CodeDeploy_InstanceTarget
 
   Information about the target for a deployment that uses the
 EC2/On-premises compute platform.
 
 
-=head2 LambdaTarget => L<Paws::CodeDeploy::LambdaTarget>
+=head2 LambdaTarget => CodeDeploy_LambdaTarget
 
   Information about the target for a deployment that uses the AWS Lambda
 compute platform.

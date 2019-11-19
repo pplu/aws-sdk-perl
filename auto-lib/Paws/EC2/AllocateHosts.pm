@@ -1,19 +1,66 @@
 
 package Paws::EC2::AllocateHosts;
-  use Moose;
-  has AutoPlacement => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'autoPlacement' );
-  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
-  has HostRecovery => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceType' , required => 1);
-  has Quantity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'quantity' , required => 1);
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::EC2::Types qw/EC2_TagSpecification/;
+  has AutoPlacement => (is => 'ro', isa => Str, predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has HostRecovery => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Quantity => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_TagSpecification], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AllocateHosts');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::AllocateHostsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AllocateHosts');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::AllocateHostsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TagSpecifications' => 'TagSpecification',
+                       'InstanceType' => 'instanceType',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'AutoPlacement' => 'autoPlacement',
+                       'Quantity' => 'quantity',
+                       'ClientToken' => 'clientToken'
+                     },
+  'IsRequired' => {
+                    'AvailabilityZone' => 1,
+                    'InstanceType' => 1,
+                    'Quantity' => 1
+                  },
+  'types' => {
+               'HostRecovery' => {
+                                   'type' => 'Str'
+                                 },
+               'AutoPlacement' => {
+                                    'type' => 'Str'
+                                  },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'TagSpecifications' => {
+                                        'class' => 'Paws::EC2::TagSpecification',
+                                        'type' => 'ArrayRef[EC2_TagSpecification]'
+                                      },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'Quantity' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -122,7 +169,7 @@ parameters.
 
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_TagSpecification]
 
 The tags to apply to the Dedicated Host during creation.
 

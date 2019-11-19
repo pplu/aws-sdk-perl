@@ -1,23 +1,88 @@
 
 package Paws::ApiGatewayV2::CreateStage;
-  use Moose;
-  has AccessLogSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::AccessLogSettings', traits => ['NameInRequest'], request_name => 'accessLogSettings');
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientCertificateId');
-  has DefaultRouteSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteSettings', traits => ['NameInRequest'], request_name => 'defaultRouteSettings');
-  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has RouteSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteSettingsMap', traits => ['NameInRequest'], request_name => 'routeSettings');
-  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName', required => 1);
-  has StageVariables => (is => 'ro', isa => 'Paws::ApiGatewayV2::StageVariablesMap', traits => ['NameInRequest'], request_name => 'stageVariables');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_AccessLogSettings ApiGatewayV2_RouteSettings ApiGatewayV2_StageVariablesMap ApiGatewayV2_Tags ApiGatewayV2_RouteSettingsMap/;
+  has AccessLogSettings => (is => 'ro', isa => ApiGatewayV2_AccessLogSettings, predicate => 1);
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientCertificateId => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultRouteSettings => (is => 'ro', isa => ApiGatewayV2_RouteSettings, predicate => 1);
+  has DeploymentId => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has RouteSettings => (is => 'ro', isa => ApiGatewayV2_RouteSettingsMap, predicate => 1);
+  has StageName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StageVariables => (is => 'ro', isa => ApiGatewayV2_StageVariablesMap, predicate => 1);
+  has Tags => (is => 'ro', isa => ApiGatewayV2_Tags, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStage');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/stages');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::CreateStageResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateStage');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/apis/{apiId}/stages');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::CreateStageResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApiId' => 'apiId'
+                  },
+  'NameInRequest' => {
+                       'StageVariables' => 'stageVariables',
+                       'Description' => 'description',
+                       'AccessLogSettings' => 'accessLogSettings',
+                       'RouteSettings' => 'routeSettings',
+                       'Tags' => 'tags',
+                       'DeploymentId' => 'deploymentId',
+                       'StageName' => 'stageName',
+                       'ClientCertificateId' => 'clientCertificateId',
+                       'DefaultRouteSettings' => 'defaultRouteSettings'
+                     },
+  'IsRequired' => {
+                    'ApiId' => 1,
+                    'StageName' => 1
+                  },
+  'types' => {
+               'AccessLogSettings' => {
+                                        'class' => 'Paws::ApiGatewayV2::AccessLogSettings',
+                                        'type' => 'ApiGatewayV2_AccessLogSettings'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'StageVariables' => {
+                                     'class' => 'Paws::ApiGatewayV2::StageVariablesMap',
+                                     'type' => 'ApiGatewayV2_StageVariablesMap'
+                                   },
+               'RouteSettings' => {
+                                    'type' => 'ApiGatewayV2_RouteSettingsMap',
+                                    'class' => 'Paws::ApiGatewayV2::RouteSettingsMap'
+                                  },
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'type' => 'ApiGatewayV2_Tags',
+                           'class' => 'Paws::ApiGatewayV2::Tags'
+                         },
+               'DefaultRouteSettings' => {
+                                           'class' => 'Paws::ApiGatewayV2::RouteSettings',
+                                           'type' => 'ApiGatewayV2_RouteSettings'
+                                         },
+               'ClientCertificateId' => {
+                                          'type' => 'Str'
+                                        },
+               'StageName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -90,7 +155,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 AccessLogSettings => L<Paws::ApiGatewayV2::AccessLogSettings>
+=head2 AccessLogSettings => ApiGatewayV2_AccessLogSettings
 
 Settings for logging access in this stage.
 
@@ -108,7 +173,7 @@ The identifier of a client certificate for a Stage.
 
 
 
-=head2 DefaultRouteSettings => L<Paws::ApiGatewayV2::RouteSettings>
+=head2 DefaultRouteSettings => ApiGatewayV2_RouteSettings
 
 The default route settings for the stage.
 
@@ -126,7 +191,7 @@ The description for the API stage.
 
 
 
-=head2 RouteSettings => L<Paws::ApiGatewayV2::RouteSettingsMap>
+=head2 RouteSettings => ApiGatewayV2_RouteSettingsMap
 
 Route settings for the stage.
 
@@ -138,7 +203,7 @@ The name of the stage.
 
 
 
-=head2 StageVariables => L<Paws::ApiGatewayV2::StageVariablesMap>
+=head2 StageVariables => ApiGatewayV2_StageVariablesMap
 
 A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
@@ -146,7 +211,7 @@ have alphanumeric and underscore characters, and the values must match
 
 
 
-=head2 Tags => L<Paws::ApiGatewayV2::Tags>
+=head2 Tags => ApiGatewayV2_Tags
 
 The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not

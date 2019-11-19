@@ -1,17 +1,54 @@
 
 package Paws::Signer::StartSigningJob;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken', required => 1);
-  has Destination => (is => 'ro', isa => 'Paws::Signer::Destination', traits => ['NameInRequest'], request_name => 'destination', required => 1);
-  has ProfileName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'profileName');
-  has Source => (is => 'ro', isa => 'Paws::Signer::Source', traits => ['NameInRequest'], request_name => 'source', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Signer::Types qw/Signer_Source Signer_Destination/;
+  has ClientRequestToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Destination => (is => 'ro', isa => Signer_Destination, required => 1, predicate => 1);
+  has ProfileName => (is => 'ro', isa => Str, predicate => 1);
+  has Source => (is => 'ro', isa => Signer_Source, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartSigningJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/signing-jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Signer::StartSigningJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartSigningJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/signing-jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Signer::StartSigningJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProfileName' => {
+                                  'type' => 'Str'
+                                },
+               'Destination' => {
+                                  'class' => 'Paws::Signer::Destination',
+                                  'type' => 'Signer_Destination'
+                                },
+               'Source' => {
+                             'class' => 'Paws::Signer::Source',
+                             'type' => 'Signer_Source'
+                           },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'Source' => 'source',
+                       'Destination' => 'destination',
+                       'ProfileName' => 'profileName'
+                     },
+  'IsRequired' => {
+                    'ClientRequestToken' => 1,
+                    'Source' => 1,
+                    'Destination' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +105,7 @@ that use this token return the same response as the first call.
 
 
 
-=head2 B<REQUIRED> Destination => L<Paws::Signer::Destination>
+=head2 B<REQUIRED> Destination => Signer_Destination
 
 The S3 bucket in which to save your signed object. The destination
 contains the name of your bucket and an optional prefix.
@@ -81,7 +118,7 @@ The name of the signing profile.
 
 
 
-=head2 B<REQUIRED> Source => L<Paws::Signer::Source>
+=head2 B<REQUIRED> Source => Signer_Source
 
 The S3 bucket that contains the object to sign or a BLOB that contains
 your raw code.

@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::ResourceUtilization;
-  use Moose;
-  has EC2ResourceUtilization => (is => 'ro', isa => 'Paws::CostExplorer::EC2ResourceUtilization');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CostExplorer::Types qw/CostExplorer_EC2ResourceUtilization/;
+  has EC2ResourceUtilization => (is => 'ro', isa => CostExplorer_EC2ResourceUtilization);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EC2ResourceUtilization' => {
+                                             'class' => 'Paws::CostExplorer::EC2ResourceUtilization',
+                                             'type' => 'CostExplorer_EC2ResourceUtilization'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Resource utilization of current resource.
 =head1 ATTRIBUTES
 
 
-=head2 EC2ResourceUtilization => L<Paws::CostExplorer::EC2ResourceUtilization>
+=head2 EC2ResourceUtilization => CostExplorer_EC2ResourceUtilization
 
   Utilization of current Amazon EC2 Instance
 

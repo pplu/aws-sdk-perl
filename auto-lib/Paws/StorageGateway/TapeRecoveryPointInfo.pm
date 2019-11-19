@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::TapeRecoveryPointInfo;
-  use Moose;
-  has TapeARN => (is => 'ro', isa => 'Str');
-  has TapeRecoveryPointTime => (is => 'ro', isa => 'Str');
-  has TapeSizeInBytes => (is => 'ro', isa => 'Int');
-  has TapeStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::StorageGateway::Types qw//;
+  has TapeARN => (is => 'ro', isa => Str);
+  has TapeRecoveryPointTime => (is => 'ro', isa => Str);
+  has TapeSizeInBytes => (is => 'ro', isa => Int);
+  has TapeStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TapeSizeInBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'TapeARN' => {
+                              'type' => 'Str'
+                            },
+               'TapeRecoveryPointTime' => {
+                                            'type' => 'Str'
+                                          },
+               'TapeStatus' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

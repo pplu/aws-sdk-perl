@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::SecretsManager::RotationRulesType;
-  use Moose;
-  has AutomaticallyAfterDays => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SecretsManager::Types qw//;
+  has AutomaticallyAfterDays => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutomaticallyAfterDays' => {
+                                             'type' => 'Int'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

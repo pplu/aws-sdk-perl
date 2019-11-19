@@ -1,10 +1,38 @@
 
 package Paws::Amplify::GetArtifactUrlResult;
-  use Moose;
-  has ArtifactId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'artifactId', required => 1);
-  has ArtifactUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'artifactUrl', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw//;
+  has ArtifactId => (is => 'ro', isa => Str, required => 1);
+  has ArtifactUrl => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ArtifactId' => {
+                                 'type' => 'Str'
+                               },
+               'ArtifactUrl' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ArtifactId' => 1,
+                    'ArtifactUrl' => 1
+                  },
+  'NameInRequest' => {
+                       'ArtifactId' => 'artifactId',
+                       'ArtifactUrl' => 'artifactUrl'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

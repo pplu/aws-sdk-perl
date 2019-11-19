@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAF::UpdateIPSet;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has IPSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAF::IPSetUpdate]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_IPSetUpdate/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IPSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAF_IPSetUpdate], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateIPSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAF::UpdateIPSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateIPSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAF::UpdateIPSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'IPSetId' => 1,
+                    'ChangeToken' => 1,
+                    'Updates' => 1
+                  },
+  'types' => {
+               'IPSetId' => {
+                              'type' => 'Str'
+                            },
+               'Updates' => {
+                              'type' => 'ArrayRef[WAF_IPSetUpdate]',
+                              'class' => 'Paws::WAF::IPSetUpdate'
+                            },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +99,7 @@ returned by CreateIPSet and by ListIPSets.
 
 
 
-=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::IPSetUpdate>]
+=head2 B<REQUIRED> Updates => ArrayRef[WAF_IPSetUpdate]
 
 An array of C<IPSetUpdate> objects that you want to insert into or
 delete from an IPSet. For more information, see the applicable data

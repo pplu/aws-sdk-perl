@@ -1,17 +1,54 @@
 
 package Paws::IoT::CancelJob;
-  use Moose;
-  has Comment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'comment');
-  has Force => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'force');
-  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
-  has ReasonCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reasonCode');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has Comment => (is => 'ro', isa => Str, predicate => 1);
+  has Force => (is => 'ro', isa => Bool, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReasonCode => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/jobs/{jobId}/cancel');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CancelJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CancelJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/jobs/{jobId}/cancel');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CancelJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'Force' => 'force'
+                    },
+  'IsRequired' => {
+                    'JobId' => 1
+                  },
+  'NameInRequest' => {
+                       'ReasonCode' => 'reasonCode',
+                       'Comment' => 'comment'
+                     },
+  'types' => {
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'Force' => {
+                            'type' => 'Bool'
+                          },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'ReasonCode' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'JobId' => 'jobId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

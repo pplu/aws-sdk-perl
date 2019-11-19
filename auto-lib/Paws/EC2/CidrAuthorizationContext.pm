@@ -1,7 +1,28 @@
 package Paws::EC2::CidrAuthorizationContext;
-  use Moose;
-  has Message => (is => 'ro', isa => 'Str', required => 1);
-  has Signature => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Message => (is => 'ro', isa => Str, required => 1);
+  has Signature => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Signature' => 1,
+                    'Message' => 1
+                  },
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Signature' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

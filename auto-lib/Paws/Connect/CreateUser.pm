@@ -1,23 +1,78 @@
 
 package Paws::Connect::CreateUser;
-  use Moose;
-  has DirectoryUserId => (is => 'ro', isa => 'Str');
-  has HierarchyGroupId => (is => 'ro', isa => 'Str');
-  has IdentityInfo => (is => 'ro', isa => 'Paws::Connect::UserIdentityInfo');
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceId', required => 1);
-  has Password => (is => 'ro', isa => 'Str');
-  has PhoneConfig => (is => 'ro', isa => 'Paws::Connect::UserPhoneConfig', required => 1);
-  has RoutingProfileId => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityProfileIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Connect::TagMap');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Connect::Types qw/Connect_UserIdentityInfo Connect_TagMap Connect_UserPhoneConfig/;
+  has DirectoryUserId => (is => 'ro', isa => Str, predicate => 1);
+  has HierarchyGroupId => (is => 'ro', isa => Str, predicate => 1);
+  has IdentityInfo => (is => 'ro', isa => Connect_UserIdentityInfo, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Password => (is => 'ro', isa => Str, predicate => 1);
+  has PhoneConfig => (is => 'ro', isa => Connect_UserPhoneConfig, required => 1, predicate => 1);
+  has RoutingProfileId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecurityProfileIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Connect_TagMap, predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUser');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/users/{InstanceId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Connect::CreateUserResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateUser');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/users/{InstanceId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Connect::CreateUserResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'InstanceId' => 'InstanceId'
+                  },
+  'types' => {
+               'HierarchyGroupId' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'IdentityInfo' => {
+                                   'type' => 'Connect_UserIdentityInfo',
+                                   'class' => 'Paws::Connect::UserIdentityInfo'
+                                 },
+               'DirectoryUserId' => {
+                                      'type' => 'Str'
+                                    },
+               'RoutingProfileId' => {
+                                       'type' => 'Str'
+                                     },
+               'SecurityProfileIds' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'PhoneConfig' => {
+                                  'type' => 'Connect_UserPhoneConfig',
+                                  'class' => 'Paws::Connect::UserPhoneConfig'
+                                },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::Connect::TagMap',
+                           'type' => 'Connect_TagMap'
+                         },
+               'Password' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'RoutingProfileId' => 1,
+                    'Username' => 1,
+                    'PhoneConfig' => 1,
+                    'SecurityProfileIds' => 1,
+                    'InstanceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +150,7 @@ The identifier of the hierarchy group for the user.
 
 
 
-=head2 IdentityInfo => L<Paws::Connect::UserIdentityInfo>
+=head2 IdentityInfo => Connect_UserIdentityInfo
 
 The information about the identity of the user.
 
@@ -115,7 +170,7 @@ to include a password.
 
 
 
-=head2 B<REQUIRED> PhoneConfig => L<Paws::Connect::UserPhoneConfig>
+=head2 B<REQUIRED> PhoneConfig => Connect_UserPhoneConfig
 
 The phone settings for the user.
 
@@ -133,7 +188,7 @@ The identifier of the security profile for the user.
 
 
 
-=head2 Tags => L<Paws::Connect::TagMap>
+=head2 Tags => Connect_TagMap
 
 One or more tags.
 

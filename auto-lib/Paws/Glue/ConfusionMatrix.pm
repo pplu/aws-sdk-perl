@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Glue::ConfusionMatrix;
-  use Moose;
-  has NumFalseNegatives => (is => 'ro', isa => 'Int');
-  has NumFalsePositives => (is => 'ro', isa => 'Int');
-  has NumTrueNegatives => (is => 'ro', isa => 'Int');
-  has NumTruePositives => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Glue::Types qw//;
+  has NumFalseNegatives => (is => 'ro', isa => Int);
+  has NumFalsePositives => (is => 'ro', isa => Int);
+  has NumTrueNegatives => (is => 'ro', isa => Int);
+  has NumTruePositives => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumTruePositives' => {
+                                       'type' => 'Int'
+                                     },
+               'NumFalsePositives' => {
+                                        'type' => 'Int'
+                                      },
+               'NumFalseNegatives' => {
+                                        'type' => 'Int'
+                                      },
+               'NumTrueNegatives' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Textract::DocumentLocation;
-  use Moose;
-  has S3Object => (is => 'ro', isa => 'Paws::Textract::S3Object');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Textract::Types qw/Textract_S3Object/;
+  has S3Object => (is => 'ro', isa => Textract_S3Object);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Object' => {
+                               'type' => 'Textract_S3Object',
+                               'class' => 'Paws::Textract::S3Object'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +58,7 @@ also be a file in PDF format.
 =head1 ATTRIBUTES
 
 
-=head2 S3Object => L<Paws::Textract::S3Object>
+=head2 S3Object => Textract_S3Object
 
   The Amazon S3 bucket that contains the input document.
 

@@ -1,19 +1,96 @@
+# Generated from default/object.tt
 package Paws::Kafka::ClusterInfo;
-  use Moose;
-  has ActiveOperationArn => (is => 'ro', isa => 'Str', request_name => 'activeOperationArn', traits => ['NameInRequest']);
-  has BrokerNodeGroupInfo => (is => 'ro', isa => 'Paws::Kafka::BrokerNodeGroupInfo', request_name => 'brokerNodeGroupInfo', traits => ['NameInRequest']);
-  has ClientAuthentication => (is => 'ro', isa => 'Paws::Kafka::ClientAuthentication', request_name => 'clientAuthentication', traits => ['NameInRequest']);
-  has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
-  has ClusterName => (is => 'ro', isa => 'Str', request_name => 'clusterName', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has CurrentBrokerSoftwareInfo => (is => 'ro', isa => 'Paws::Kafka::BrokerSoftwareInfo', request_name => 'currentBrokerSoftwareInfo', traits => ['NameInRequest']);
-  has CurrentVersion => (is => 'ro', isa => 'Str', request_name => 'currentVersion', traits => ['NameInRequest']);
-  has EncryptionInfo => (is => 'ro', isa => 'Paws::Kafka::EncryptionInfo', request_name => 'encryptionInfo', traits => ['NameInRequest']);
-  has EnhancedMonitoring => (is => 'ro', isa => 'Str', request_name => 'enhancedMonitoring', traits => ['NameInRequest']);
-  has NumberOfBrokerNodes => (is => 'ro', isa => 'Int', request_name => 'numberOfBrokerNodes', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::Kafka::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
-  has ZookeeperConnectString => (is => 'ro', isa => 'Str', request_name => 'zookeeperConnectString', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Kafka::Types qw/Kafka___mapOf__string Kafka_ClientAuthentication Kafka_BrokerNodeGroupInfo Kafka_EncryptionInfo Kafka_BrokerSoftwareInfo/;
+  has ActiveOperationArn => (is => 'ro', isa => Str);
+  has BrokerNodeGroupInfo => (is => 'ro', isa => Kafka_BrokerNodeGroupInfo);
+  has ClientAuthentication => (is => 'ro', isa => Kafka_ClientAuthentication);
+  has ClusterArn => (is => 'ro', isa => Str);
+  has ClusterName => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has CurrentBrokerSoftwareInfo => (is => 'ro', isa => Kafka_BrokerSoftwareInfo);
+  has CurrentVersion => (is => 'ro', isa => Str);
+  has EncryptionInfo => (is => 'ro', isa => Kafka_EncryptionInfo);
+  has EnhancedMonitoring => (is => 'ro', isa => Str);
+  has NumberOfBrokerNodes => (is => 'ro', isa => Int);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => Kafka___mapOf__string);
+  has ZookeeperConnectString => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::Kafka::__mapOf__string',
+                           'type' => 'Kafka___mapOf__string'
+                         },
+               'ActiveOperationArn' => {
+                                         'type' => 'Str'
+                                       },
+               'NumberOfBrokerNodes' => {
+                                          'type' => 'Int'
+                                        },
+               'CurrentVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'EncryptionInfo' => {
+                                     'type' => 'Kafka_EncryptionInfo',
+                                     'class' => 'Paws::Kafka::EncryptionInfo'
+                                   },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'EnhancedMonitoring' => {
+                                         'type' => 'Str'
+                                       },
+               'BrokerNodeGroupInfo' => {
+                                          'type' => 'Kafka_BrokerNodeGroupInfo',
+                                          'class' => 'Paws::Kafka::BrokerNodeGroupInfo'
+                                        },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ClientAuthentication' => {
+                                           'class' => 'Paws::Kafka::ClientAuthentication',
+                                           'type' => 'Kafka_ClientAuthentication'
+                                         },
+               'ZookeeperConnectString' => {
+                                             'type' => 'Str'
+                                           },
+               'ClusterName' => {
+                                  'type' => 'Str'
+                                },
+               'CurrentBrokerSoftwareInfo' => {
+                                                'type' => 'Kafka_BrokerSoftwareInfo',
+                                                'class' => 'Paws::Kafka::BrokerSoftwareInfo'
+                                              },
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'EnhancedMonitoring' => 'enhancedMonitoring',
+                       'EncryptionInfo' => 'encryptionInfo',
+                       'State' => 'state',
+                       'BrokerNodeGroupInfo' => 'brokerNodeGroupInfo',
+                       'ClusterName' => 'clusterName',
+                       'ZookeeperConnectString' => 'zookeeperConnectString',
+                       'ClientAuthentication' => 'clientAuthentication',
+                       'CreationTime' => 'creationTime',
+                       'ClusterArn' => 'clusterArn',
+                       'CurrentBrokerSoftwareInfo' => 'currentBrokerSoftwareInfo',
+                       'Tags' => 'tags',
+                       'NumberOfBrokerNodes' => 'numberOfBrokerNodes',
+                       'ActiveOperationArn' => 'activeOperationArn',
+                       'CurrentVersion' => 'currentVersion'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,12 +131,12 @@ Returns information about a cluster.
   Arn of active cluster operation.
 
 
-=head2 BrokerNodeGroupInfo => L<Paws::Kafka::BrokerNodeGroupInfo>
+=head2 BrokerNodeGroupInfo => Kafka_BrokerNodeGroupInfo
 
   Information about the broker nodes.
 
 
-=head2 ClientAuthentication => L<Paws::Kafka::ClientAuthentication>
+=head2 ClientAuthentication => Kafka_ClientAuthentication
 
   Includes all client authentication information.
 
@@ -79,7 +156,7 @@ Returns information about a cluster.
   The time when the cluster was created.
 
 
-=head2 CurrentBrokerSoftwareInfo => L<Paws::Kafka::BrokerSoftwareInfo>
+=head2 CurrentBrokerSoftwareInfo => Kafka_BrokerSoftwareInfo
 
   Information about the version of software currently deployed on the
 Kafka brokers in the cluster.
@@ -90,7 +167,7 @@ Kafka brokers in the cluster.
   The current version of the MSK cluster.
 
 
-=head2 EncryptionInfo => L<Paws::Kafka::EncryptionInfo>
+=head2 EncryptionInfo => Kafka_EncryptionInfo
 
   Includes all encryption-related information.
 
@@ -115,7 +192,7 @@ these three levels of monitoring, see Monitoring
 FAILED.
 
 
-=head2 Tags => L<Paws::Kafka::__mapOf__string>
+=head2 Tags => Kafka___mapOf__string
 
   Tags attached to the cluster.
 

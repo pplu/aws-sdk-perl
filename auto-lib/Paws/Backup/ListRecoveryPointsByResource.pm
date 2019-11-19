@@ -1,16 +1,47 @@
 
 package Paws::Backup::ListRecoveryPointsByResource;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Backup::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListRecoveryPointsByResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/resources/{resourceArn}/recovery-points/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::ListRecoveryPointsByResourceOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListRecoveryPointsByResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/resources/{resourceArn}/recovery-points/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::ListRecoveryPointsByResourceOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ResourceArn' => 'resourceArn'
+                  },
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults'
+                    },
+  'IsRequired' => {
+                    'ResourceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

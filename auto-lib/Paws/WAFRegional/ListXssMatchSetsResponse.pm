@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::ListXssMatchSetsResponse;
-  use Moose;
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has XssMatchSets => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::XssMatchSetSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_XssMatchSetSummary/;
+  has NextMarker => (is => 'ro', isa => Str);
+  has XssMatchSets => (is => 'ro', isa => ArrayRef[WAFRegional_XssMatchSetSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'XssMatchSets' => {
+                                   'class' => 'Paws::WAFRegional::XssMatchSetSummary',
+                                   'type' => 'ArrayRef[WAFRegional_XssMatchSetSummary]'
+                                 },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +46,7 @@ C<ListXssMatchSets> request, and specify the C<NextMarker> value from
 the response in the C<NextMarker> value in the next request.
 
 
-=head2 XssMatchSets => ArrayRef[L<Paws::WAFRegional::XssMatchSetSummary>]
+=head2 XssMatchSets => ArrayRef[WAFRegional_XssMatchSetSummary]
 
 An array of XssMatchSetSummary objects.
 

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Budgets;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'budgets' }
   sub signing_name { 'budgets' }
   sub version { '2016-10-20' }
   sub target_prefix { 'AWSBudgetServiceGateway' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -271,9 +273,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing
 
 =item AccountId => Str
 
-=item Budget => L<Paws::Budgets::Budget>
+=item Budget => Budgets_Budget
 
-=item [NotificationsWithSubscribers => ArrayRef[L<Paws::Budgets::NotificationWithSubscribers>]]
+=item [NotificationsWithSubscribers => ArrayRef[Budgets_NotificationWithSubscribers]]
 
 
 =back
@@ -300,9 +302,9 @@ section.
 
 =item BudgetName => Str
 
-=item Notification => L<Paws::Budgets::Notification>
+=item Notification => Budgets_Notification
 
-=item Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>]
+=item Subscribers => ArrayRef[Budgets_Subscriber]
 
 
 =back
@@ -323,9 +325,9 @@ the associated notification.
 
 =item BudgetName => Str
 
-=item Notification => L<Paws::Budgets::Notification>
+=item Notification => Budgets_Notification
 
-=item Subscriber => L<Paws::Budgets::Subscriber>
+=item Subscriber => Budgets_Subscriber
 
 
 =back
@@ -367,7 +369,7 @@ are associated with that budget.
 
 =item BudgetName => Str
 
-=item Notification => L<Paws::Budgets::Notification>
+=item Notification => Budgets_Notification
 
 
 =back
@@ -390,9 +392,9 @@ associated with the notification.
 
 =item BudgetName => Str
 
-=item Notification => L<Paws::Budgets::Notification>
+=item Notification => Budgets_Notification
 
-=item Subscriber => L<Paws::Budgets::Subscriber>
+=item Subscriber => Budgets_Subscriber
 
 
 =back
@@ -442,7 +444,7 @@ section.
 
 =item [NextToken => Str]
 
-=item [TimePeriod => L<Paws::Budgets::TimePeriod>]
+=item [TimePeriod => Budgets_TimePeriod]
 
 
 =back
@@ -510,7 +512,7 @@ Lists the notifications that are associated with a budget.
 
 =item BudgetName => Str
 
-=item Notification => L<Paws::Budgets::Notification>
+=item Notification => Budgets_Notification
 
 =item [MaxResults => Int]
 
@@ -532,7 +534,7 @@ Lists the subscribers that are associated with a notification.
 
 =item AccountId => Str
 
-=item NewBudget => L<Paws::Budgets::Budget>
+=item NewBudget => Budgets_Budget
 
 
 =back
@@ -562,9 +564,9 @@ section.
 
 =item BudgetName => Str
 
-=item NewNotification => L<Paws::Budgets::Notification>
+=item NewNotification => Budgets_Notification
 
-=item OldNotification => L<Paws::Budgets::Notification>
+=item OldNotification => Budgets_Notification
 
 
 =back
@@ -584,11 +586,11 @@ Updates a notification.
 
 =item BudgetName => Str
 
-=item NewSubscriber => L<Paws::Budgets::Subscriber>
+=item NewSubscriber => Budgets_Subscriber
 
-=item Notification => L<Paws::Budgets::Notification>
+=item Notification => Budgets_Notification
 
-=item OldSubscriber => L<Paws::Budgets::Subscriber>
+=item OldSubscriber => Budgets_Subscriber
 
 
 =back
@@ -630,9 +632,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Budgets::DescribeNotificationsForBudgetResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllSubscribersForNotification(sub { },AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, [MaxResults => Int, NextToken => Str])
+=head2 DescribeAllSubscribersForNotification(sub { },AccountId => Str, BudgetName => Str, Notification => Budgets_Notification, [MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllSubscribersForNotification(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, [MaxResults => Int, NextToken => Str])
+=head2 DescribeAllSubscribersForNotification(AccountId => Str, BudgetName => Str, Notification => Budgets_Notification, [MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

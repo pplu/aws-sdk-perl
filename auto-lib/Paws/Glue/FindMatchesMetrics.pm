@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Glue::FindMatchesMetrics;
-  use Moose;
-  has AreaUnderPRCurve => (is => 'ro', isa => 'Num');
-  has ConfusionMatrix => (is => 'ro', isa => 'Paws::Glue::ConfusionMatrix');
-  has F1 => (is => 'ro', isa => 'Num');
-  has Precision => (is => 'ro', isa => 'Num');
-  has Recall => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Glue::Types qw/Glue_ConfusionMatrix/;
+  has AreaUnderPRCurve => (is => 'ro', isa => Num);
+  has ConfusionMatrix => (is => 'ro', isa => Glue_ConfusionMatrix);
+  has F1 => (is => 'ro', isa => Num);
+  has Precision => (is => 'ro', isa => Num);
+  has Recall => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Precision' => {
+                                'type' => 'Num'
+                              },
+               'Recall' => {
+                             'type' => 'Num'
+                           },
+               'AreaUnderPRCurve' => {
+                                       'type' => 'Num'
+                                     },
+               'ConfusionMatrix' => {
+                                      'type' => 'Glue_ConfusionMatrix',
+                                      'class' => 'Paws::Glue::ConfusionMatrix'
+                                    },
+               'F1' => {
+                         'type' => 'Num'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +85,7 @@ For more information, see Precision and recall
 (https://en.wikipedia.org/wiki/Precision_and_recall) in Wikipedia.
 
 
-=head2 ConfusionMatrix => L<Paws::Glue::ConfusionMatrix>
+=head2 ConfusionMatrix => Glue_ConfusionMatrix
 
   The confusion matrix shows you what your transform is predicting
 accurately and what types of errors it is making.

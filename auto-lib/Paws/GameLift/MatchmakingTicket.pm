@@ -1,15 +1,61 @@
+# Generated from default/object.tt
 package Paws::GameLift::MatchmakingTicket;
-  use Moose;
-  has ConfigurationName => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has EstimatedWaitTime => (is => 'ro', isa => 'Int');
-  has GameSessionConnectionInfo => (is => 'ro', isa => 'Paws::GameLift::GameSessionConnectionInfo');
-  has Players => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Player]');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has StatusReason => (is => 'ro', isa => 'Str');
-  has TicketId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_Player GameLift_GameSessionConnectionInfo/;
+  has ConfigurationName => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has EstimatedWaitTime => (is => 'ro', isa => Int);
+  has GameSessionConnectionInfo => (is => 'ro', isa => GameLift_GameSessionConnectionInfo);
+  has Players => (is => 'ro', isa => ArrayRef[GameLift_Player]);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+  has TicketId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EstimatedWaitTime' => {
+                                        'type' => 'Int'
+                                      },
+               'ConfigurationName' => {
+                                        'type' => 'Str'
+                                      },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Players' => {
+                              'class' => 'Paws::GameLift::Player',
+                              'type' => 'ArrayRef[GameLift_Player]'
+                            },
+               'GameSessionConnectionInfo' => {
+                                                'type' => 'GameLift_GameSessionConnectionInfo',
+                                                'class' => 'Paws::GameLift::GameSessionConnectionInfo'
+                                              },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'TicketId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -70,14 +116,14 @@ for a match. If there is not enough recent data, this property may be
 empty.
 
 
-=head2 GameSessionConnectionInfo => L<Paws::GameLift::GameSessionConnectionInfo>
+=head2 GameSessionConnectionInfo => GameLift_GameSessionConnectionInfo
 
   Identifier and connection information of the game session created for
 the match. This information is added to the ticket only after the
 matchmaking request has been successfully completed.
 
 
-=head2 Players => ArrayRef[L<Paws::GameLift::Player>]
+=head2 Players => ArrayRef[GameLift_Player]
 
   A set of C<Player> objects, each representing a player to find matches
 for. Players are identified by a unique player ID and may include

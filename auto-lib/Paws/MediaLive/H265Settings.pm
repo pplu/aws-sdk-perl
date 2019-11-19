@@ -1,33 +1,166 @@
+# Generated from default/object.tt
 package Paws::MediaLive::H265Settings;
-  use Moose;
-  has AdaptiveQuantization => (is => 'ro', isa => 'Str', request_name => 'adaptiveQuantization', traits => ['NameInRequest']);
-  has AfdSignaling => (is => 'ro', isa => 'Str', request_name => 'afdSignaling', traits => ['NameInRequest']);
-  has AlternativeTransferFunction => (is => 'ro', isa => 'Str', request_name => 'alternativeTransferFunction', traits => ['NameInRequest']);
-  has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
-  has BufSize => (is => 'ro', isa => 'Int', request_name => 'bufSize', traits => ['NameInRequest']);
-  has ColorMetadata => (is => 'ro', isa => 'Str', request_name => 'colorMetadata', traits => ['NameInRequest']);
-  has ColorSpaceSettings => (is => 'ro', isa => 'Paws::MediaLive::H265ColorSpaceSettings', request_name => 'colorSpaceSettings', traits => ['NameInRequest']);
-  has FixedAfd => (is => 'ro', isa => 'Str', request_name => 'fixedAfd', traits => ['NameInRequest']);
-  has FlickerAq => (is => 'ro', isa => 'Str', request_name => 'flickerAq', traits => ['NameInRequest']);
-  has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest'], required => 1);
-  has FramerateNumerator => (is => 'ro', isa => 'Int', request_name => 'framerateNumerator', traits => ['NameInRequest'], required => 1);
-  has GopClosedCadence => (is => 'ro', isa => 'Int', request_name => 'gopClosedCadence', traits => ['NameInRequest']);
-  has GopSize => (is => 'ro', isa => 'Num', request_name => 'gopSize', traits => ['NameInRequest']);
-  has GopSizeUnits => (is => 'ro', isa => 'Str', request_name => 'gopSizeUnits', traits => ['NameInRequest']);
-  has Level => (is => 'ro', isa => 'Str', request_name => 'level', traits => ['NameInRequest']);
-  has LookAheadRateControl => (is => 'ro', isa => 'Str', request_name => 'lookAheadRateControl', traits => ['NameInRequest']);
-  has MaxBitrate => (is => 'ro', isa => 'Int', request_name => 'maxBitrate', traits => ['NameInRequest']);
-  has MinIInterval => (is => 'ro', isa => 'Int', request_name => 'minIInterval', traits => ['NameInRequest']);
-  has ParDenominator => (is => 'ro', isa => 'Int', request_name => 'parDenominator', traits => ['NameInRequest']);
-  has ParNumerator => (is => 'ro', isa => 'Int', request_name => 'parNumerator', traits => ['NameInRequest']);
-  has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
-  has QvbrQualityLevel => (is => 'ro', isa => 'Int', request_name => 'qvbrQualityLevel', traits => ['NameInRequest']);
-  has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
-  has ScanType => (is => 'ro', isa => 'Str', request_name => 'scanType', traits => ['NameInRequest']);
-  has SceneChangeDetect => (is => 'ro', isa => 'Str', request_name => 'sceneChangeDetect', traits => ['NameInRequest']);
-  has Slices => (is => 'ro', isa => 'Int', request_name => 'slices', traits => ['NameInRequest']);
-  has Tier => (is => 'ro', isa => 'Str', request_name => 'tier', traits => ['NameInRequest']);
-  has TimecodeInsertion => (is => 'ro', isa => 'Str', request_name => 'timecodeInsertion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::MediaLive::Types qw/MediaLive_H265ColorSpaceSettings/;
+  has AdaptiveQuantization => (is => 'ro', isa => Str);
+  has AfdSignaling => (is => 'ro', isa => Str);
+  has AlternativeTransferFunction => (is => 'ro', isa => Str);
+  has Bitrate => (is => 'ro', isa => Int);
+  has BufSize => (is => 'ro', isa => Int);
+  has ColorMetadata => (is => 'ro', isa => Str);
+  has ColorSpaceSettings => (is => 'ro', isa => MediaLive_H265ColorSpaceSettings);
+  has FixedAfd => (is => 'ro', isa => Str);
+  has FlickerAq => (is => 'ro', isa => Str);
+  has FramerateDenominator => (is => 'ro', isa => Int, required => 1);
+  has FramerateNumerator => (is => 'ro', isa => Int, required => 1);
+  has GopClosedCadence => (is => 'ro', isa => Int);
+  has GopSize => (is => 'ro', isa => Num);
+  has GopSizeUnits => (is => 'ro', isa => Str);
+  has Level => (is => 'ro', isa => Str);
+  has LookAheadRateControl => (is => 'ro', isa => Str);
+  has MaxBitrate => (is => 'ro', isa => Int);
+  has MinIInterval => (is => 'ro', isa => Int);
+  has ParDenominator => (is => 'ro', isa => Int);
+  has ParNumerator => (is => 'ro', isa => Int);
+  has Profile => (is => 'ro', isa => Str);
+  has QvbrQualityLevel => (is => 'ro', isa => Int);
+  has RateControlMode => (is => 'ro', isa => Str);
+  has ScanType => (is => 'ro', isa => Str);
+  has SceneChangeDetect => (is => 'ro', isa => Str);
+  has Slices => (is => 'ro', isa => Int);
+  has Tier => (is => 'ro', isa => Str);
+  has TimecodeInsertion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FramerateDenominator' => 1,
+                    'FramerateNumerator' => 1
+                  },
+  'NameInRequest' => {
+                       'GopSize' => 'gopSize',
+                       'GopClosedCadence' => 'gopClosedCadence',
+                       'AdaptiveQuantization' => 'adaptiveQuantization',
+                       'SceneChangeDetect' => 'sceneChangeDetect',
+                       'MinIInterval' => 'minIInterval',
+                       'BufSize' => 'bufSize',
+                       'GopSizeUnits' => 'gopSizeUnits',
+                       'QvbrQualityLevel' => 'qvbrQualityLevel',
+                       'FramerateNumerator' => 'framerateNumerator',
+                       'ParNumerator' => 'parNumerator',
+                       'FixedAfd' => 'fixedAfd',
+                       'AfdSignaling' => 'afdSignaling',
+                       'FlickerAq' => 'flickerAq',
+                       'Level' => 'level',
+                       'TimecodeInsertion' => 'timecodeInsertion',
+                       'ColorSpaceSettings' => 'colorSpaceSettings',
+                       'FramerateDenominator' => 'framerateDenominator',
+                       'LookAheadRateControl' => 'lookAheadRateControl',
+                       'ColorMetadata' => 'colorMetadata',
+                       'ParDenominator' => 'parDenominator',
+                       'MaxBitrate' => 'maxBitrate',
+                       'Bitrate' => 'bitrate',
+                       'Slices' => 'slices',
+                       'RateControlMode' => 'rateControlMode',
+                       'Profile' => 'profile',
+                       'AlternativeTransferFunction' => 'alternativeTransferFunction',
+                       'ScanType' => 'scanType',
+                       'Tier' => 'tier'
+                     },
+  'types' => {
+               'ParNumerator' => {
+                                   'type' => 'Int'
+                                 },
+               'FramerateNumerator' => {
+                                         'type' => 'Int'
+                                       },
+               'FixedAfd' => {
+                               'type' => 'Str'
+                             },
+               'AfdSignaling' => {
+                                   'type' => 'Str'
+                                 },
+               'TimecodeInsertion' => {
+                                        'type' => 'Str'
+                                      },
+               'Level' => {
+                            'type' => 'Str'
+                          },
+               'FlickerAq' => {
+                                'type' => 'Str'
+                              },
+               'GopClosedCadence' => {
+                                       'type' => 'Int'
+                                     },
+               'AdaptiveQuantization' => {
+                                           'type' => 'Str'
+                                         },
+               'GopSize' => {
+                              'type' => 'Num'
+                            },
+               'SceneChangeDetect' => {
+                                        'type' => 'Str'
+                                      },
+               'GopSizeUnits' => {
+                                   'type' => 'Str'
+                                 },
+               'QvbrQualityLevel' => {
+                                       'type' => 'Int'
+                                     },
+               'BufSize' => {
+                              'type' => 'Int'
+                            },
+               'MinIInterval' => {
+                                   'type' => 'Int'
+                                 },
+               'Slices' => {
+                             'type' => 'Int'
+                           },
+               'Bitrate' => {
+                              'type' => 'Int'
+                            },
+               'Tier' => {
+                           'type' => 'Str'
+                         },
+               'ScanType' => {
+                               'type' => 'Str'
+                             },
+               'AlternativeTransferFunction' => {
+                                                  'type' => 'Str'
+                                                },
+               'RateControlMode' => {
+                                      'type' => 'Str'
+                                    },
+               'Profile' => {
+                              'type' => 'Str'
+                            },
+               'ColorSpaceSettings' => {
+                                         'type' => 'MediaLive_H265ColorSpaceSettings',
+                                         'class' => 'Paws::MediaLive::H265ColorSpaceSettings'
+                                       },
+               'ColorMetadata' => {
+                                    'type' => 'Str'
+                                  },
+               'LookAheadRateControl' => {
+                                           'type' => 'Str'
+                                         },
+               'FramerateDenominator' => {
+                                           'type' => 'Int'
+                                         },
+               'ParDenominator' => {
+                                     'type' => 'Int'
+                                   },
+               'MaxBitrate' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -103,7 +236,7 @@ nearest multiple of 1000.
   Includes colorspace metadata in the output.
 
 
-=head2 ColorSpaceSettings => L<Paws::MediaLive::H265ColorSpaceSettings>
+=head2 ColorSpaceSettings => MediaLive_H265ColorSpaceSettings
 
   Color Space settings
 

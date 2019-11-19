@@ -1,10 +1,52 @@
+# Generated from default/object.tt
 package Paws::Lightsail::InstanceEntry;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest'], required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest'], required => 1);
-  has PortInfoSource => (is => 'ro', isa => 'Str', request_name => 'portInfoSource', traits => ['NameInRequest'], required => 1);
-  has SourceName => (is => 'ro', isa => 'Str', request_name => 'sourceName', traits => ['NameInRequest'], required => 1);
-  has UserData => (is => 'ro', isa => 'Str', request_name => 'userData', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str, required => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1);
+  has PortInfoSource => (is => 'ro', isa => Str, required => 1);
+  has SourceName => (is => 'ro', isa => Str, required => 1);
+  has UserData => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserData' => {
+                               'type' => 'Str'
+                             },
+               'PortInfoSource' => {
+                                     'type' => 'Str'
+                                   },
+               'SourceName' => {
+                                 'type' => 'Str'
+                               },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'PortInfoSource' => 'portInfoSource',
+                       'UserData' => 'userData',
+                       'InstanceType' => 'instanceType',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'SourceName' => 'sourceName'
+                     },
+  'IsRequired' => {
+                    'SourceName' => 1,
+                    'AvailabilityZone' => 1,
+                    'InstanceType' => 1,
+                    'PortInfoSource' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

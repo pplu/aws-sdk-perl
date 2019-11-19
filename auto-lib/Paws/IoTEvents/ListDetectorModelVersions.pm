@@ -1,16 +1,47 @@
 
 package Paws::IoTEvents::ListDetectorModelVersions;
-  use Moose;
-  has DetectorModelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorModelName', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTEvents::Types qw//;
+  has DetectorModelName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDetectorModelVersions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector-models/{detectorModelName}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTEvents::ListDetectorModelVersionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDetectorModelVersions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector-models/{detectorModelName}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTEvents::ListDetectorModelVersionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DetectorModelName' => 'detectorModelName'
+                  },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'DetectorModelName' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'DetectorModelName' => 1
+                  },
+  'ParamInQuery' => {
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

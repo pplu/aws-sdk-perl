@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SSM::NotificationConfig;
-  use Moose;
-  has NotificationArn => (is => 'ro', isa => 'Str');
-  has NotificationEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NotificationType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SSM::Types qw//;
+  has NotificationArn => (is => 'ro', isa => Str);
+  has NotificationEvents => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NotificationType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotificationEvents' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'NotificationType' => {
+                                       'type' => 'Str'
+                                     },
+               'NotificationArn' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

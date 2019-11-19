@@ -1,16 +1,43 @@
 
 package Paws::DataExchange::UpdateDataSet;
-  use Moose;
-  has DataSetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DataSetId', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw//;
+  has DataSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDataSet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/data-sets/{DataSetId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataExchange::UpdateDataSetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDataSet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/data-sets/{DataSetId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataExchange::UpdateDataSetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DataSetId' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DataSetId' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'DataSetId' => 'DataSetId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

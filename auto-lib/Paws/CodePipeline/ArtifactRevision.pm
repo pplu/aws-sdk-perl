@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ArtifactRevision;
-  use Moose;
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RevisionChangeIdentifier => (is => 'ro', isa => 'Str', request_name => 'revisionChangeIdentifier', traits => ['NameInRequest']);
-  has RevisionId => (is => 'ro', isa => 'Str', request_name => 'revisionId', traits => ['NameInRequest']);
-  has RevisionSummary => (is => 'ro', isa => 'Str', request_name => 'revisionSummary', traits => ['NameInRequest']);
-  has RevisionUrl => (is => 'ro', isa => 'Str', request_name => 'revisionUrl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has Created => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RevisionChangeIdentifier => (is => 'ro', isa => Str);
+  has RevisionId => (is => 'ro', isa => Str);
+  has RevisionSummary => (is => 'ro', isa => Str);
+  has RevisionUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RevisionChangeIdentifier' => {
+                                               'type' => 'Str'
+                                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'RevisionSummary' => {
+                                      'type' => 'Str'
+                                    },
+               'RevisionUrl' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Created' => 'created',
+                       'RevisionId' => 'revisionId',
+                       'Name' => 'name',
+                       'RevisionChangeIdentifier' => 'revisionChangeIdentifier',
+                       'RevisionUrl' => 'revisionUrl',
+                       'RevisionSummary' => 'revisionSummary'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

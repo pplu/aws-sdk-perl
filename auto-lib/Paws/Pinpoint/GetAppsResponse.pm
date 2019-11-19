@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::GetAppsResponse;
-  use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ApplicationResponse]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Pinpoint::Types qw/Pinpoint_ApplicationResponse/;
+  has Item => (is => 'ro', isa => ArrayRef[Pinpoint_ApplicationResponse]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Item' => {
+                           'class' => 'Paws::Pinpoint::ApplicationResponse',
+                           'type' => 'ArrayRef[Pinpoint_ApplicationResponse]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::GetAppsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Item => ArrayRef[L<Paws::Pinpoint::ApplicationResponse>]
+=head2 Item => ArrayRef[Pinpoint_ApplicationResponse]
 
 A list of applications
 

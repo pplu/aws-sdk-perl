@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Transfer::ListServersResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Servers => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::ListedServer]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Transfer::Types qw/Transfer_ListedServer/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Servers => (is => 'ro', isa => ArrayRef[Transfer_ListedServer], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Servers' => {
+                              'type' => 'ArrayRef[Transfer_ListedServer]',
+                              'class' => 'Paws::Transfer::ListedServer'
+                            }
+             },
+  'IsRequired' => {
+                    'Servers' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +48,7 @@ command, you can pass in the C<NextToken> parameter to continue listing
 additional servers.
 
 
-=head2 B<REQUIRED> Servers => ArrayRef[L<Paws::Transfer::ListedServer>]
+=head2 B<REQUIRED> Servers => ArrayRef[Transfer_ListedServer]
 
 An array of servers that were listed.
 

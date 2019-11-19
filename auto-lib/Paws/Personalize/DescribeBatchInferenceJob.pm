@@ -1,13 +1,35 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Personalize::DescribeBatchInferenceJob;
-  use Moose;
-  has BatchInferenceJobArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'batchInferenceJobArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has BatchInferenceJobArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBatchInferenceJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Personalize::DescribeBatchInferenceJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeBatchInferenceJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Personalize::DescribeBatchInferenceJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BatchInferenceJobArn' => 1
+                  },
+  'NameInRequest' => {
+                       'BatchInferenceJobArn' => 'batchInferenceJobArn'
+                     },
+  'types' => {
+               'BatchInferenceJobArn' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

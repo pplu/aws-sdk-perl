@@ -1,18 +1,63 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::PostCommentForComparedCommit;
-  use Moose;
-  has AfterCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'afterCommitId' , required => 1);
-  has BeforeCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'beforeCommitId' );
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
-  has Content => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'content' , required => 1);
-  has Location => (is => 'ro', isa => 'Paws::CodeCommit::Location', traits => ['NameInRequest'], request_name => 'location' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_Location/;
+  has AfterCommitId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BeforeCommitId => (is => 'ro', isa => Str, predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Content => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Location => (is => 'ro', isa => CodeCommit_Location, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PostCommentForComparedCommit');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::PostCommentForComparedCommitOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PostCommentForComparedCommit');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::PostCommentForComparedCommitOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Location' => {
+                               'type' => 'CodeCommit_Location',
+                               'class' => 'Paws::CodeCommit::Location'
+                             },
+               'Content' => {
+                              'type' => 'Str'
+                            },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'AfterCommitId' => {
+                                    'type' => 'Str'
+                                  },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'BeforeCommitId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Location' => 'location',
+                       'RepositoryName' => 'repositoryName',
+                       'Content' => 'content',
+                       'BeforeCommitId' => 'beforeCommitId',
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'AfterCommitId' => 'afterCommitId'
+                     },
+  'IsRequired' => {
+                    'AfterCommitId' => 1,
+                    'Content' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +141,7 @@ The content of the comment you want to make.
 
 
 
-=head2 Location => L<Paws::CodeCommit::Location>
+=head2 Location => CodeCommit_Location
 
 The location of the comparison where you want to comment.
 

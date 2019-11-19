@@ -1,14 +1,35 @@
 
 package Paws::PinpointEmail::GetDeliverabilityTestReport;
-  use Moose;
-  has ReportId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ReportId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has ReportId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDeliverabilityTestReport');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/deliverability-dashboard/test-reports/{ReportId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::GetDeliverabilityTestReportResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDeliverabilityTestReport');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/deliverability-dashboard/test-reports/{ReportId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::GetDeliverabilityTestReportResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ReportId' => 1
+                  },
+  'types' => {
+               'ReportId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'ReportId' => 'ReportId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

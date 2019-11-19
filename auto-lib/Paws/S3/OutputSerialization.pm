@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::S3::OutputSerialization;
-  use Moose;
-  has CSV => (is => 'ro', isa => 'Paws::S3::CSVOutput');
-  has JSON => (is => 'ro', isa => 'Paws::S3::JSONOutput');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_CSVOutput S3_JSONOutput/;
+  has CSV => (is => 'ro', isa => S3_CSVOutput);
+  has JSON => (is => 'ro', isa => S3_JSONOutput);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JSON' => {
+                           'class' => 'Paws::S3::JSONOutput',
+                           'type' => 'S3_JSONOutput'
+                         },
+               'CSV' => {
+                          'type' => 'S3_CSVOutput',
+                          'class' => 'Paws::S3::CSVOutput'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +59,12 @@ Describes how results of the Select job are serialized.
 =head1 ATTRIBUTES
 
 
-=head2 CSV => L<Paws::S3::CSVOutput>
+=head2 CSV => S3_CSVOutput
 
   Describes the serialization of CSV-encoded Select results.
 
 
-=head2 JSON => L<Paws::S3::JSONOutput>
+=head2 JSON => S3_JSONOutput
 
   Specifies JSON as request's output serialization format.
 

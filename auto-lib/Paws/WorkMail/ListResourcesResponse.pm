@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WorkMail::ListResourcesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::WorkMail::Resource]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkMail::Types qw/WorkMail_Resource/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Resources => (is => 'ro', isa => ArrayRef[WorkMail_Resource]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Resources' => {
+                                'type' => 'ArrayRef[WorkMail_Resource]',
+                                'class' => 'Paws::WorkMail::Resource'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ While results are still available, it has an associated value. When the
 last page is reached, the token is empty.
 
 
-=head2 Resources => ArrayRef[L<Paws::WorkMail::Resource>]
+=head2 Resources => ArrayRef[WorkMail_Resource]
 
 One page of the organization's resource representation.
 

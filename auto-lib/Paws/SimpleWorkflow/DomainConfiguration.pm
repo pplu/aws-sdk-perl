@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::DomainConfiguration;
-  use Moose;
-  has WorkflowExecutionRetentionPeriodInDays => (is => 'ro', isa => 'Str', request_name => 'workflowExecutionRetentionPeriodInDays', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has WorkflowExecutionRetentionPeriodInDays => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkflowExecutionRetentionPeriodInDays' => {
+                                                             'type' => 'Str'
+                                                           }
+             },
+  'IsRequired' => {
+                    'WorkflowExecutionRetentionPeriodInDays' => 1
+                  },
+  'NameInRequest' => {
+                       'WorkflowExecutionRetentionPeriodInDays' => 'workflowExecutionRetentionPeriodInDays'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

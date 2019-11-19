@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DataPipeline::Operator;
-  use Moose;
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'values', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::DataPipeline::Types qw//;
+  has Type => (is => 'ro', isa => Str);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Values' => 'values'
+                     },
+  'types' => {
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

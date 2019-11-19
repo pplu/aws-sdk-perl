@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECS::DeleteServiceResponse;
-  use Moose;
-  has Service => (is => 'ro', isa => 'Paws::ECS::Service', traits => ['NameInRequest'], request_name => 'service' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw/ECS_Service/;
+  has Service => (is => 'ro', isa => ECS_Service);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Service' => {
+                              'class' => 'Paws::ECS::Service',
+                              'type' => 'ECS_Service'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Service' => 'service'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::ECS::DeleteServiceResponse
 =head1 ATTRIBUTES
 
 
-=head2 Service => L<Paws::ECS::Service>
+=head2 Service => ECS_Service
 
 The full description of the deleted service.
 

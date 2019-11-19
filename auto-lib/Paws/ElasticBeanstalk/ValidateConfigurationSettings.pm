@@ -1,16 +1,46 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::ValidateConfigurationSettings;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has EnvironmentName => (is => 'ro', isa => 'Str');
-  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]', required => 1);
-  has TemplateName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_ConfigurationOptionSetting/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EnvironmentName => (is => 'ro', isa => Str, predicate => 1);
+  has OptionSettings => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting], required => 1, predicate => 1);
+  has TemplateName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ValidateConfigurationSettings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ConfigurationSettingsValidationMessages');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ValidateConfigurationSettingsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ValidateConfigurationSettings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::ConfigurationSettingsValidationMessages');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ValidateConfigurationSettingsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ApplicationName' => 1,
+                    'OptionSettings' => 1
+                  },
+  'types' => {
+               'EnvironmentName' => {
+                                      'type' => 'Str'
+                                    },
+               'OptionSettings' => {
+                                     'type' => 'ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]',
+                                     'class' => 'Paws::ElasticBeanstalk::ConfigurationOptionSetting'
+                                   },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +105,7 @@ name.
 
 
 
-=head2 B<REQUIRED> OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
+=head2 B<REQUIRED> OptionSettings => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]
 
 A list of the options and desired values to evaluate.
 

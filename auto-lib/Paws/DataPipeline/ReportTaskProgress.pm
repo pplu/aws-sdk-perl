@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DataPipeline::ReportTaskProgress;
-  use Moose;
-  has Fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]', traits => ['NameInRequest'], request_name => 'fields' );
-  has TaskId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DataPipeline::Types qw/DataPipeline_Field/;
+  has Fields => (is => 'ro', isa => ArrayRef[DataPipeline_Field], predicate => 1);
+  has TaskId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReportTaskProgress');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::ReportTaskProgressOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ReportTaskProgress');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataPipeline::ReportTaskProgressOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'Fields' => {
+                             'type' => 'ArrayRef[DataPipeline_Field]',
+                             'class' => 'Paws::DataPipeline::Field'
+                           }
+             },
+  'NameInRequest' => {
+                       'TaskId' => 'taskId',
+                       'Fields' => 'fields'
+                     },
+  'IsRequired' => {
+                    'TaskId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +78,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 =head1 ATTRIBUTES
 
 
-=head2 Fields => ArrayRef[L<Paws::DataPipeline::Field>]
+=head2 Fields => ArrayRef[DataPipeline_Field]
 
 Key-value pairs that define the properties of the
 ReportTaskProgressInput object.

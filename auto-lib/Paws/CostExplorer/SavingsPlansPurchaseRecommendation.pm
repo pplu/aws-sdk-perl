@@ -1,11 +1,45 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::SavingsPlansPurchaseRecommendation;
-  use Moose;
-  has LookbackPeriodInDays => (is => 'ro', isa => 'Str');
-  has PaymentOption => (is => 'ro', isa => 'Str');
-  has SavingsPlansPurchaseRecommendationDetails => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::SavingsPlansPurchaseRecommendationDetail]');
-  has SavingsPlansPurchaseRecommendationSummary => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansPurchaseRecommendationSummary');
-  has SavingsPlansType => (is => 'ro', isa => 'Str');
-  has TermInYears => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CostExplorer::Types qw/CostExplorer_SavingsPlansPurchaseRecommendationSummary CostExplorer_SavingsPlansPurchaseRecommendationDetail/;
+  has LookbackPeriodInDays => (is => 'ro', isa => Str);
+  has PaymentOption => (is => 'ro', isa => Str);
+  has SavingsPlansPurchaseRecommendationDetails => (is => 'ro', isa => ArrayRef[CostExplorer_SavingsPlansPurchaseRecommendationDetail]);
+  has SavingsPlansPurchaseRecommendationSummary => (is => 'ro', isa => CostExplorer_SavingsPlansPurchaseRecommendationSummary);
+  has SavingsPlansType => (is => 'ro', isa => Str);
+  has TermInYears => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SavingsPlansPurchaseRecommendationDetails' => {
+                                                                'class' => 'Paws::CostExplorer::SavingsPlansPurchaseRecommendationDetail',
+                                                                'type' => 'ArrayRef[CostExplorer_SavingsPlansPurchaseRecommendationDetail]'
+                                                              },
+               'SavingsPlansType' => {
+                                       'type' => 'Str'
+                                     },
+               'TermInYears' => {
+                                  'type' => 'Str'
+                                },
+               'SavingsPlansPurchaseRecommendationSummary' => {
+                                                                'type' => 'CostExplorer_SavingsPlansPurchaseRecommendationSummary',
+                                                                'class' => 'Paws::CostExplorer::SavingsPlansPurchaseRecommendationSummary'
+                                                              },
+               'LookbackPeriodInDays' => {
+                                           'type' => 'Str'
+                                         },
+               'PaymentOption' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,13 +86,13 @@ and Details.
   The payment option used to generate the recommendation.
 
 
-=head2 SavingsPlansPurchaseRecommendationDetails => ArrayRef[L<Paws::CostExplorer::SavingsPlansPurchaseRecommendationDetail>]
+=head2 SavingsPlansPurchaseRecommendationDetails => ArrayRef[CostExplorer_SavingsPlansPurchaseRecommendationDetail]
 
   Details for the Savings Plans we recommend you to purchase to cover
 existing, Savings Plans eligible workloads.
 
 
-=head2 SavingsPlansPurchaseRecommendationSummary => L<Paws::CostExplorer::SavingsPlansPurchaseRecommendationSummary>
+=head2 SavingsPlansPurchaseRecommendationSummary => CostExplorer_SavingsPlansPurchaseRecommendationSummary
 
   Summary metrics for your Savings Plans Recommendations.
 

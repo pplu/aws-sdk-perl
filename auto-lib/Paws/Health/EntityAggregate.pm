@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Health::EntityAggregate;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
-  has EventArn => (is => 'ro', isa => 'Str', request_name => 'eventArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Health::Types qw//;
+  has Count => (is => 'ro', isa => Int);
+  has EventArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EventArn' => 'eventArn',
+                       'Count' => 'count'
+                     },
+  'types' => {
+               'EventArn' => {
+                               'type' => 'Str'
+                             },
+               'Count' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,39 @@
 
 package Paws::IoT::CreateCertificateFromCsrResponse;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateArn');
-  has CertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateId');
-  has CertificatePem => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificatePem');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CertificateId => (is => 'ro', isa => Str);
+  has CertificatePem => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CertificateArn' => 'certificateArn',
+                       'CertificateId' => 'certificateId',
+                       'CertificatePem' => 'certificatePem'
+                     },
+  'types' => {
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'CertificateId' => {
+                                    'type' => 'Str'
+                                  },
+               'CertificatePem' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

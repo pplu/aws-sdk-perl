@@ -1,15 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::RefreshCache;
-  use Moose;
-  has FileShareARN => (is => 'ro', isa => 'Str', required => 1);
-  has FolderList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Recursive => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::StorageGateway::Types qw//;
+  has FileShareARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FolderList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Recursive => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RefreshCache');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::RefreshCacheOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RefreshCache');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::RefreshCacheOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Recursive' => {
+                                'type' => 'Bool'
+                              },
+               'FileShareARN' => {
+                                   'type' => 'Str'
+                                 },
+               'FolderList' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'IsRequired' => {
+                    'FileShareARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

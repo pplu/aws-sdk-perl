@@ -1,9 +1,30 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodePipeline::PutApprovalResultOutput;
-  use Moose;
-  has ApprovedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'approvedAt' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has ApprovedAt => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApprovedAt' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ApprovedAt' => 'approvedAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

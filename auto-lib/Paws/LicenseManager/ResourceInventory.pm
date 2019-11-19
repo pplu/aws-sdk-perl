@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::LicenseManager::ResourceInventory;
-  use Moose;
-  has Platform => (is => 'ro', isa => 'Str');
-  has PlatformVersion => (is => 'ro', isa => 'Str');
-  has ResourceArn => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has ResourceOwningAccountId => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LicenseManager::Types qw//;
+  has Platform => (is => 'ro', isa => Str);
+  has PlatformVersion => (is => 'ro', isa => Str);
+  has ResourceArn => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceOwningAccountId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'ResourceOwningAccountId' => {
+                                              'type' => 'Str'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

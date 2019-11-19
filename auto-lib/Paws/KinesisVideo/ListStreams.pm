@@ -1,16 +1,38 @@
 
 package Paws::KinesisVideo::ListStreams;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StreamNameCondition => (is => 'ro', isa => 'Paws::KinesisVideo::StreamNameCondition');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisVideo::Types qw/KinesisVideo_StreamNameCondition/;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StreamNameCondition => (is => 'ro', isa => KinesisVideo_StreamNameCondition, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListStreams');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/listStreams');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisVideo::ListStreamsOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListStreams');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/listStreams');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisVideo::ListStreamsOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamNameCondition' => {
+                                          'type' => 'KinesisVideo_StreamNameCondition',
+                                          'class' => 'Paws::KinesisVideo::StreamNameCondition'
+                                        },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +89,7 @@ next request.
 
 
 
-=head2 StreamNameCondition => L<Paws::KinesisVideo::StreamNameCondition>
+=head2 StreamNameCondition => KinesisVideo_StreamNameCondition
 
 Optional: Returns only streams that satisfy a specific condition.
 Currently, you can specify only the prefix of a stream name as a

@@ -1,11 +1,40 @@
 
 package Paws::SavingsPlans::DescribeSavingsPlanRatesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has SavingsPlanId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'savingsPlanId');
-  has SearchResults => (is => 'ro', isa => 'ArrayRef[Paws::SavingsPlans::SavingsPlanRate]', traits => ['NameInRequest'], request_name => 'searchResults');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SavingsPlans::Types qw/SavingsPlans_SavingsPlanRate/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SavingsPlanId => (is => 'ro', isa => Str);
+  has SearchResults => (is => 'ro', isa => ArrayRef[SavingsPlans_SavingsPlanRate]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SearchResults' => 'searchResults',
+                       'SavingsPlanId' => 'savingsPlanId',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SavingsPlanId' => {
+                                    'type' => 'Str'
+                                  },
+               'SearchResults' => {
+                                    'type' => 'ArrayRef[SavingsPlans_SavingsPlanRate]',
+                                    'class' => 'Paws::SavingsPlans::SavingsPlanRate'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +57,7 @@ null when there are no more results to return.
 The ID of the Savings Plan.
 
 
-=head2 SearchResults => ArrayRef[L<Paws::SavingsPlans::SavingsPlanRate>]
+=head2 SearchResults => ArrayRef[SavingsPlans_SavingsPlanRate]
 
 Information about the Savings Plans rates.
 

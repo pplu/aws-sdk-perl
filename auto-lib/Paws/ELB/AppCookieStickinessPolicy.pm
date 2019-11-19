@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ELB::AppCookieStickinessPolicy;
-  use Moose;
-  has CookieName => (is => 'ro', isa => 'Str');
-  has PolicyName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ELB::Types qw//;
+  has CookieName => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'CookieName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,62 @@
 
 package Paws::ApiGateway::GetExport;
-  use Moose;
-  has Accepts => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Accept');
-  has ExportType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'export_type', required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has StageName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'stage_name', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString/;
+  has Accepts => (is => 'ro', isa => Str, predicate => 1);
+  has ExportType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Parameters => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StageName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetExport');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/stages/{stage_name}/exports/{export_type}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::ExportResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetExport');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/stages/{stage_name}/exports/{export_type}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::ExportResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'Accepts' => 'Accept'
+                     },
+  'ParamInQuery' => {
+                      'Parameters' => 'parameters'
+                    },
+  'IsRequired' => {
+                    'ExportType' => 1,
+                    'RestApiId' => 1,
+                    'StageName' => 1
+                  },
+  'types' => {
+               'Accepts' => {
+                              'type' => 'Str'
+                            },
+               'ExportType' => {
+                                 'type' => 'Str'
+                               },
+               'StageName' => {
+                                'type' => 'Str'
+                              },
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'Parameters' => {
+                                 'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                 'type' => 'ApiGateway_MapOfStringToString'
+                               }
+             },
+  'ParamInURI' => {
+                    'StageName' => 'stage_name',
+                    'RestApiId' => 'restapi_id',
+                    'ExportType' => 'export_type'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +113,7 @@ OpenAPI 3.0.x and 'swagger' for Swagger/OpenAPI 2.0.
 
 
 
-=head2 Parameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Parameters => ApiGateway_MapOfStringToString
 
 A key-value map of query string parameters that specify properties of
 the export, depending on the requested C<exportType>. For C<exportType>

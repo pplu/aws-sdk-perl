@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::IoT::ThingTypeDefinition;
-  use Moose;
-  has ThingTypeArn => (is => 'ro', isa => 'Str', request_name => 'thingTypeArn', traits => ['NameInRequest']);
-  has ThingTypeMetadata => (is => 'ro', isa => 'Paws::IoT::ThingTypeMetadata', request_name => 'thingTypeMetadata', traits => ['NameInRequest']);
-  has ThingTypeName => (is => 'ro', isa => 'Str', request_name => 'thingTypeName', traits => ['NameInRequest']);
-  has ThingTypeProperties => (is => 'ro', isa => 'Paws::IoT::ThingTypeProperties', request_name => 'thingTypeProperties', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_ThingTypeProperties IoT_ThingTypeMetadata/;
+  has ThingTypeArn => (is => 'ro', isa => Str);
+  has ThingTypeMetadata => (is => 'ro', isa => IoT_ThingTypeMetadata);
+  has ThingTypeName => (is => 'ro', isa => Str);
+  has ThingTypeProperties => (is => 'ro', isa => IoT_ThingTypeProperties);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ThingTypeMetadata' => 'thingTypeMetadata',
+                       'ThingTypeArn' => 'thingTypeArn',
+                       'ThingTypeProperties' => 'thingTypeProperties',
+                       'ThingTypeName' => 'thingTypeName'
+                     },
+  'types' => {
+               'ThingTypeMetadata' => {
+                                        'type' => 'IoT_ThingTypeMetadata',
+                                        'class' => 'Paws::IoT::ThingTypeMetadata'
+                                      },
+               'ThingTypeArn' => {
+                                   'type' => 'Str'
+                                 },
+               'ThingTypeProperties' => {
+                                          'class' => 'Paws::IoT::ThingTypeProperties',
+                                          'type' => 'IoT_ThingTypeProperties'
+                                        },
+               'ThingTypeName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +79,7 @@ description.
   The thing type ARN.
 
 
-=head2 ThingTypeMetadata => L<Paws::IoT::ThingTypeMetadata>
+=head2 ThingTypeMetadata => IoT_ThingTypeMetadata
 
   The ThingTypeMetadata contains additional information about the thing
 type including: creation date and time, a value indicating whether the
@@ -57,7 +91,7 @@ thing type is deprecated, and a date and time when it was deprecated.
   The name of the thing type.
 
 
-=head2 ThingTypeProperties => L<Paws::IoT::ThingTypeProperties>
+=head2 ThingTypeProperties => IoT_ThingTypeProperties
 
   The ThingTypeProperties for the thing type.
 

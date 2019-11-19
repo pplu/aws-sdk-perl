@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::SavingsPlansUtilizationByTime;
-  use Moose;
-  has AmortizedCommitment => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansAmortizedCommitment');
-  has Savings => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansSavings');
-  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
-  has Utilization => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansUtilization', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CostExplorer::Types qw/CostExplorer_SavingsPlansAmortizedCommitment CostExplorer_SavingsPlansSavings CostExplorer_DateInterval CostExplorer_SavingsPlansUtilization/;
+  has AmortizedCommitment => (is => 'ro', isa => CostExplorer_SavingsPlansAmortizedCommitment);
+  has Savings => (is => 'ro', isa => CostExplorer_SavingsPlansSavings);
+  has TimePeriod => (is => 'ro', isa => CostExplorer_DateInterval, required => 1);
+  has Utilization => (is => 'ro', isa => CostExplorer_SavingsPlansUtilization, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AmortizedCommitment' => {
+                                          'class' => 'Paws::CostExplorer::SavingsPlansAmortizedCommitment',
+                                          'type' => 'CostExplorer_SavingsPlansAmortizedCommitment'
+                                        },
+               'Utilization' => {
+                                  'class' => 'Paws::CostExplorer::SavingsPlansUtilization',
+                                  'type' => 'CostExplorer_SavingsPlansUtilization'
+                                },
+               'TimePeriod' => {
+                                 'class' => 'Paws::CostExplorer::DateInterval',
+                                 'type' => 'CostExplorer_DateInterval'
+                               },
+               'Savings' => {
+                              'type' => 'CostExplorer_SavingsPlansSavings',
+                              'class' => 'Paws::CostExplorer::SavingsPlansSavings'
+                            }
+             },
+  'IsRequired' => {
+                    'Utilization' => 1,
+                    'TimePeriod' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,25 +73,25 @@ The amount of Savings Plans utilization, in hours.
 =head1 ATTRIBUTES
 
 
-=head2 AmortizedCommitment => L<Paws::CostExplorer::SavingsPlansAmortizedCommitment>
+=head2 AmortizedCommitment => CostExplorer_SavingsPlansAmortizedCommitment
 
   The total amortized commitment for a Savings Plans. This includes the
 sum of the upfront and recurring Savings Plans fees.
 
 
-=head2 Savings => L<Paws::CostExplorer::SavingsPlansSavings>
+=head2 Savings => CostExplorer_SavingsPlansSavings
 
   The amount saved by using existing Savings Plans. Savings returns both
 net savings from Savings Plans as well as the C<onDemandCostEquivalent>
 of the Savings Plans when considering the utilization rate.
 
 
-=head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
+=head2 B<REQUIRED> TimePeriod => CostExplorer_DateInterval
 
   
 
 
-=head2 B<REQUIRED> Utilization => L<Paws::CostExplorer::SavingsPlansUtilization>
+=head2 B<REQUIRED> Utilization => CostExplorer_SavingsPlansUtilization
 
   A ratio of your effectiveness of using existing Savings Plans to apply
 to workloads that are Savings Plans eligible.

@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::RightsizingRecommendationSummary;
-  use Moose;
-  has EstimatedTotalMonthlySavingsAmount => (is => 'ro', isa => 'Str');
-  has SavingsCurrencyCode => (is => 'ro', isa => 'Str');
-  has SavingsPercentage => (is => 'ro', isa => 'Str');
-  has TotalRecommendationCount => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has EstimatedTotalMonthlySavingsAmount => (is => 'ro', isa => Str);
+  has SavingsCurrencyCode => (is => 'ro', isa => Str);
+  has SavingsPercentage => (is => 'ro', isa => Str);
+  has TotalRecommendationCount => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TotalRecommendationCount' => {
+                                               'type' => 'Str'
+                                             },
+               'SavingsPercentage' => {
+                                        'type' => 'Str'
+                                      },
+               'EstimatedTotalMonthlySavingsAmount' => {
+                                                         'type' => 'Str'
+                                                       },
+               'SavingsCurrencyCode' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

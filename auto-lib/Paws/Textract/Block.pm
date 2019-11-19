@@ -1,18 +1,73 @@
+# Generated from default/object.tt
 package Paws::Textract::Block;
-  use Moose;
-  has BlockType => (is => 'ro', isa => 'Str');
-  has ColumnIndex => (is => 'ro', isa => 'Int');
-  has ColumnSpan => (is => 'ro', isa => 'Int');
-  has Confidence => (is => 'ro', isa => 'Num');
-  has EntityTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Geometry => (is => 'ro', isa => 'Paws::Textract::Geometry');
-  has Id => (is => 'ro', isa => 'Str');
-  has Page => (is => 'ro', isa => 'Int');
-  has Relationships => (is => 'ro', isa => 'ArrayRef[Paws::Textract::Relationship]');
-  has RowIndex => (is => 'ro', isa => 'Int');
-  has RowSpan => (is => 'ro', isa => 'Int');
-  has SelectionStatus => (is => 'ro', isa => 'Str');
-  has Text => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Num ArrayRef Undef/;
+  use Paws::Textract::Types qw/Textract_Relationship Textract_Geometry/;
+  has BlockType => (is => 'ro', isa => Str);
+  has ColumnIndex => (is => 'ro', isa => Int);
+  has ColumnSpan => (is => 'ro', isa => Int);
+  has Confidence => (is => 'ro', isa => Num);
+  has EntityTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Geometry => (is => 'ro', isa => Textract_Geometry);
+  has Id => (is => 'ro', isa => Str);
+  has Page => (is => 'ro', isa => Int);
+  has Relationships => (is => 'ro', isa => ArrayRef[Textract_Relationship]);
+  has RowIndex => (is => 'ro', isa => Int);
+  has RowSpan => (is => 'ro', isa => Int);
+  has SelectionStatus => (is => 'ro', isa => Str);
+  has Text => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Page' => {
+                           'type' => 'Int'
+                         },
+               'SelectionStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Relationships' => {
+                                    'type' => 'ArrayRef[Textract_Relationship]',
+                                    'class' => 'Paws::Textract::Relationship'
+                                  },
+               'ColumnIndex' => {
+                                  'type' => 'Int'
+                                },
+               'RowSpan' => {
+                              'type' => 'Int'
+                            },
+               'BlockType' => {
+                                'type' => 'Str'
+                              },
+               'EntityTypes' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'RowIndex' => {
+                               'type' => 'Int'
+                             },
+               'Confidence' => {
+                                 'type' => 'Num'
+                               },
+               'Geometry' => {
+                               'type' => 'Textract_Geometry',
+                               'class' => 'Paws::Textract::Geometry'
+                             },
+               'Text' => {
+                           'type' => 'Str'
+                         },
+               'ColumnSpan' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -175,7 +230,7 @@ C<EntityTypes> isn't returned by C<DetectDocumentText> and
 C<GetDocumentTextDetection>.
 
 
-=head2 Geometry => L<Paws::Textract::Geometry>
+=head2 Geometry => Textract_Geometry
 
   The location of the recognized text on the image. It includes an
 axis-aligned, coarse bounding box that surrounds the text, and a
@@ -199,7 +254,7 @@ always 1. Synchronous operations don't return C<Page> as every input
 document is considered to be a single-page document.
 
 
-=head2 Relationships => ArrayRef[L<Paws::Textract::Relationship>]
+=head2 Relationships => ArrayRef[Textract_Relationship]
 
   A list of child blocks of the current block. For example a LINE object
 has child blocks for each WORD block that's part of the line of text.

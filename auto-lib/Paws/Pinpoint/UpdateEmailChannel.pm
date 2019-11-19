@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::UpdateEmailChannel;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has EmailChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::EmailChannelRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EmailChannelRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EmailChannelRequest => (is => 'ro', isa => Pinpoint_EmailChannelRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'EmailChannelRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEmailChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/email');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateEmailChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateEmailChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/channels/email');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::UpdateEmailChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'EmailChannelRequest' => 1
+                  },
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'EmailChannelRequest' => {
+                                          'class' => 'Paws::Pinpoint::EmailChannelRequest',
+                                          'type' => 'Pinpoint_EmailChannelRequest'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +86,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> EmailChannelRequest => L<Paws::Pinpoint::EmailChannelRequest>
+=head2 B<REQUIRED> EmailChannelRequest => Pinpoint_EmailChannelRequest
 
 
 

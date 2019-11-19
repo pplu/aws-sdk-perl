@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::FMS::ComplianceViolator;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has ViolationReason => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::FMS::Types qw//;
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has ViolationReason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ViolationReason' => {
+                                      'type' => 'Str'
+                                    },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

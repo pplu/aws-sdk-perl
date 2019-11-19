@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::DescribeTapeArchivesOutput;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has TapeArchives => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::TapeArchive]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_TapeArchive/;
+  has Marker => (is => 'ro', isa => Str);
+  has TapeArchives => (is => 'ro', isa => ArrayRef[StorageGateway_TapeArchive]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TapeArchives' => {
+                                   'type' => 'ArrayRef[StorageGateway_TapeArchive]',
+                                   'class' => 'Paws::StorageGateway::TapeArchive'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +46,7 @@ shelf (VTS). If there are no more virtual tapes to describe, this field
 does not appear in the response.
 
 
-=head2 TapeArchives => ArrayRef[L<Paws::StorageGateway::TapeArchive>]
+=head2 TapeArchives => ArrayRef[StorageGateway_TapeArchive]
 
 An array of virtual tape objects in the virtual tape shelf (VTS). The
 description includes of the Amazon Resource Name (ARN) of the virtual

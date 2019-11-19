@@ -1,11 +1,35 @@
 
 package Paws::S3Control::UpdateJobStatusResult;
-  use Moose;
-  has JobId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusUpdateReason => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::S3Control::Types qw//;
+  has JobId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusUpdateReason => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusUpdateReason' => {
+                                         'type' => 'Str'
+                                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

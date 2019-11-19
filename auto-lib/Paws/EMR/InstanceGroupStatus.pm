@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceGroupStatus;
-  use Moose;
-  has State => (is => 'ro', isa => 'Str');
-  has StateChangeReason => (is => 'ro', isa => 'Paws::EMR::InstanceGroupStateChangeReason');
-  has Timeline => (is => 'ro', isa => 'Paws::EMR::InstanceGroupTimeline');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_InstanceGroupTimeline EMR_InstanceGroupStateChangeReason/;
+  has State => (is => 'ro', isa => Str);
+  has StateChangeReason => (is => 'ro', isa => EMR_InstanceGroupStateChangeReason);
+  has Timeline => (is => 'ro', isa => EMR_InstanceGroupTimeline);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timeline' => {
+                               'type' => 'EMR_InstanceGroupTimeline',
+                               'class' => 'Paws::EMR::InstanceGroupTimeline'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'StateChangeReason' => {
+                                        'type' => 'EMR_InstanceGroupStateChangeReason',
+                                        'class' => 'Paws::EMR::InstanceGroupStateChangeReason'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,12 +68,12 @@ The details of the instance group status.
   The current state of the instance group.
 
 
-=head2 StateChangeReason => L<Paws::EMR::InstanceGroupStateChangeReason>
+=head2 StateChangeReason => EMR_InstanceGroupStateChangeReason
 
   The status change reason details for the instance group.
 
 
-=head2 Timeline => L<Paws::EMR::InstanceGroupTimeline>
+=head2 Timeline => EMR_InstanceGroupTimeline
 
   The timeline of the instance group status over time.
 

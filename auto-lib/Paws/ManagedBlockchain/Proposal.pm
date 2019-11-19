@@ -1,17 +1,68 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::Proposal;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'Paws::ManagedBlockchain::ProposalActions');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExpirationDate => (is => 'ro', isa => 'Str');
-  has NetworkId => (is => 'ro', isa => 'Str');
-  has NoVoteCount => (is => 'ro', isa => 'Int');
-  has OutstandingVoteCount => (is => 'ro', isa => 'Int');
-  has ProposalId => (is => 'ro', isa => 'Str');
-  has ProposedByMemberId => (is => 'ro', isa => 'Str');
-  has ProposedByMemberName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has YesVoteCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_ProposalActions/;
+  has Actions => (is => 'ro', isa => ManagedBlockchain_ProposalActions);
+  has CreationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ExpirationDate => (is => 'ro', isa => Str);
+  has NetworkId => (is => 'ro', isa => Str);
+  has NoVoteCount => (is => 'ro', isa => Int);
+  has OutstandingVoteCount => (is => 'ro', isa => Int);
+  has ProposalId => (is => 'ro', isa => Str);
+  has ProposedByMemberId => (is => 'ro', isa => Str);
+  has ProposedByMemberName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has YesVoteCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'OutstandingVoteCount' => {
+                                           'type' => 'Int'
+                                         },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ProposedByMemberName' => {
+                                           'type' => 'Str'
+                                         },
+               'ProposedByMemberId' => {
+                                         'type' => 'Str'
+                                       },
+               'YesVoteCount' => {
+                                   'type' => 'Int'
+                                 },
+               'NetworkId' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'NoVoteCount' => {
+                                  'type' => 'Int'
+                                },
+               'ProposalId' => {
+                                 'type' => 'Str'
+                               },
+               'Actions' => {
+                              'type' => 'ManagedBlockchain_ProposalActions',
+                              'class' => 'Paws::ManagedBlockchain::ProposalActions'
+                            },
+               'ExpirationDate' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +98,7 @@ Properties of a proposal on a Managed Blockchain network.
 =head1 ATTRIBUTES
 
 
-=head2 Actions => L<Paws::ManagedBlockchain::ProposalActions>
+=head2 Actions => ManagedBlockchain_ProposalActions
 
   The actions to perform on the network if the proposal is C<APPROVED>.
 

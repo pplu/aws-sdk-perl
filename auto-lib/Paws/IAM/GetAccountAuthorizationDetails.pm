@@ -1,15 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::GetAccountAuthorizationDetails;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxItems => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int/;
+  use Paws::IAM::Types qw//;
+  has Filter => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAccountAuthorizationDetails');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetAccountAuthorizationDetailsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetAccountAuthorizationDetailsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetAccountAuthorizationDetails');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::GetAccountAuthorizationDetailsResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetAccountAuthorizationDetailsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Filter' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'MaxItems' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

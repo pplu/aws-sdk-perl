@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::S3::CompletedMultipartUpload;
-  use Moose;
-  has Parts => (is => 'ro', isa => 'ArrayRef[Paws::S3::CompletedPart]', request_name => 'Part', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::S3::Types qw/S3_CompletedPart/;
+  has Parts => (is => 'ro', isa => ArrayRef[S3_CompletedPart]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Parts' => 'Part'
+                     },
+  'types' => {
+               'Parts' => {
+                            'type' => 'ArrayRef[S3_CompletedPart]',
+                            'class' => 'Paws::S3::CompletedPart'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ The container for the completed multipart upload details.
 =head1 ATTRIBUTES
 
 
-=head2 Parts => ArrayRef[L<Paws::S3::CompletedPart>]
+=head2 Parts => ArrayRef[S3_CompletedPart]
 
   Array of CompletedPart data types.
 

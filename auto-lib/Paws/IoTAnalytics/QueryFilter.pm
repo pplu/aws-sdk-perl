@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::QueryFilter;
-  use Moose;
-  has DeltaTime => (is => 'ro', isa => 'Paws::IoTAnalytics::DeltaTime', request_name => 'deltaTime', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_DeltaTime/;
+  has DeltaTime => (is => 'ro', isa => IoTAnalytics_DeltaTime);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DeltaTime' => 'deltaTime'
+                     },
+  'types' => {
+               'DeltaTime' => {
+                                'type' => 'IoTAnalytics_DeltaTime',
+                                'class' => 'Paws::IoTAnalytics::DeltaTime'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ according to the time frame in which it arrives.
 =head1 ATTRIBUTES
 
 
-=head2 DeltaTime => L<Paws::IoTAnalytics::DeltaTime>
+=head2 DeltaTime => IoTAnalytics_DeltaTime
 
   Used to limit data to that which has arrived since the last execution
 of the action.

@@ -1,15 +1,37 @@
 
 package Paws::PinpointEmail::PutDeliverabilityDashboardOption;
-  use Moose;
-  has DashboardEnabled => (is => 'ro', isa => 'Bool', required => 1);
-  has SubscribedDomains => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::DomainDeliverabilityTrackingOption]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_DomainDeliverabilityTrackingOption/;
+  has DashboardEnabled => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has SubscribedDomains => (is => 'ro', isa => ArrayRef[PinpointEmail_DomainDeliverabilityTrackingOption], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutDeliverabilityDashboardOption');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/deliverability-dashboard');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::PutDeliverabilityDashboardOptionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutDeliverabilityDashboardOption');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/deliverability-dashboard');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::PutDeliverabilityDashboardOptionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubscribedDomains' => {
+                                        'type' => 'ArrayRef[PinpointEmail_DomainDeliverabilityTrackingOption]',
+                                        'class' => 'Paws::PinpointEmail::DomainDeliverabilityTrackingOption'
+                                      },
+               'DashboardEnabled' => {
+                                       'type' => 'Bool'
+                                     }
+             },
+  'IsRequired' => {
+                    'DashboardEnabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +81,7 @@ C<true>.
 
 
 
-=head2 SubscribedDomains => ArrayRef[L<Paws::PinpointEmail::DomainDeliverabilityTrackingOption>]
+=head2 SubscribedDomains => ArrayRef[PinpointEmail_DomainDeliverabilityTrackingOption]
 
 An array of objects, one for each verified domain that you use to send
 email and enabled the Deliverability dashboard for.

@@ -1,12 +1,25 @@
+# Generated from default/map_enum.tt
 package Paws::FMS::CustomerPolicyScopeMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::FMS::Types qw//;
+  has ACCOUNT => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has ACCOUNT => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'ACCOUNT' => {
+                                          type => 'ArrayRef[Str|Undef]',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +55,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ACCOUNT => ArrayRef[Str|Undef]
+=head2 ACCOUNT => 
 
 
 

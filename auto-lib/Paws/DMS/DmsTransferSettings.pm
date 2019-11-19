@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::DMS::DmsTransferSettings;
-  use Moose;
-  has BucketName => (is => 'ro', isa => 'Str');
-  has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw//;
+  has BucketName => (is => 'ro', isa => Str);
+  has ServiceAccessRoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceAccessRoleArn' => {
+                                           'type' => 'Str'
+                                         },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

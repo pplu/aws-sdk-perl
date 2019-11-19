@@ -1,12 +1,49 @@
+# Generated from default/object.tt
 package Paws::FMS::PolicyComplianceStatus;
-  use Moose;
-  has EvaluationResults => (is => 'ro', isa => 'ArrayRef[Paws::FMS::EvaluationResult]');
-  has IssueInfoMap => (is => 'ro', isa => 'Paws::FMS::IssueInfoMap');
-  has LastUpdated => (is => 'ro', isa => 'Str');
-  has MemberAccount => (is => 'ro', isa => 'Str');
-  has PolicyId => (is => 'ro', isa => 'Str');
-  has PolicyName => (is => 'ro', isa => 'Str');
-  has PolicyOwner => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::FMS::Types qw/FMS_IssueInfoMap FMS_EvaluationResult/;
+  has EvaluationResults => (is => 'ro', isa => ArrayRef[FMS_EvaluationResult]);
+  has IssueInfoMap => (is => 'ro', isa => FMS_IssueInfoMap);
+  has LastUpdated => (is => 'ro', isa => Str);
+  has MemberAccount => (is => 'ro', isa => Str);
+  has PolicyId => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str);
+  has PolicyOwner => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyId' => {
+                               'type' => 'Str'
+                             },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'IssueInfoMap' => {
+                                   'type' => 'FMS_IssueInfoMap',
+                                   'class' => 'Paws::FMS::IssueInfoMap'
+                                 },
+               'PolicyOwner' => {
+                                  'type' => 'Str'
+                                },
+               'LastUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'EvaluationResults' => {
+                                        'class' => 'Paws::FMS::EvaluationResult',
+                                        'type' => 'ArrayRef[FMS_EvaluationResult]'
+                                      },
+               'MemberAccount' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,12 +82,12 @@ or that are noncompliant with the policy, for security group policies.
 =head1 ATTRIBUTES
 
 
-=head2 EvaluationResults => ArrayRef[L<Paws::FMS::EvaluationResult>]
+=head2 EvaluationResults => ArrayRef[FMS_EvaluationResult]
 
   An array of C<EvaluationResult> objects.
 
 
-=head2 IssueInfoMap => L<Paws::FMS::IssueInfoMap>
+=head2 IssueInfoMap => FMS_IssueInfoMap
 
   Details about problems with dependent services, such as AWS WAF or AWS
 Config, that are causing a resource to be noncompliant. The details

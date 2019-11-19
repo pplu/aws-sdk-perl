@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Organizations::ListAWSServiceAccessForOrganizationResponse;
-  use Moose;
-  has EnabledServicePrincipals => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::EnabledServicePrincipal]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Organizations::Types qw/Organizations_EnabledServicePrincipal/;
+  has EnabledServicePrincipals => (is => 'ro', isa => ArrayRef[Organizations_EnabledServicePrincipal]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'EnabledServicePrincipals' => {
+                                               'class' => 'Paws::Organizations::EnabledServicePrincipal',
+                                               'type' => 'ArrayRef[Organizations_EnabledServicePrincipal]'
+                                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Organizations::ListAWSServiceAccessForOrganizationResponse
 =head1 ATTRIBUTES
 
 
-=head2 EnabledServicePrincipals => ArrayRef[L<Paws::Organizations::EnabledServicePrincipal>]
+=head2 EnabledServicePrincipals => ArrayRef[Organizations_EnabledServicePrincipal]
 
 A list of the service principals for the services that are enabled to
 integrate with your organization. Each principal is a structure that

@@ -1,22 +1,68 @@
 
 package Paws::S3::ListMultipartUploads;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has Delimiter => (is => 'ro', isa => 'Str', query_name => 'delimiter', traits => ['ParamInQuery']);
-  has EncodingType => (is => 'ro', isa => 'Str', query_name => 'encoding-type', traits => ['ParamInQuery']);
-  has KeyMarker => (is => 'ro', isa => 'Str', query_name => 'key-marker', traits => ['ParamInQuery']);
-  has MaxUploads => (is => 'ro', isa => 'Int', query_name => 'max-uploads', traits => ['ParamInQuery']);
-  has Prefix => (is => 'ro', isa => 'Str', query_name => 'prefix', traits => ['ParamInQuery']);
-  has UploadIdMarker => (is => 'ro', isa => 'Str', query_name => 'upload-id-marker', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Delimiter => (is => 'ro', isa => Str, predicate => 1);
+  has EncodingType => (is => 'ro', isa => Str, predicate => 1);
+  has KeyMarker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxUploads => (is => 'ro', isa => Int, predicate => 1);
+  has Prefix => (is => 'ro', isa => Str, predicate => 1);
+  has UploadIdMarker => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListMultipartUploads');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}?uploads');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::ListMultipartUploadsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListMultipartUploads');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}?uploads');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::ListMultipartUploadsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'UploadIdMarker' => 'upload-id-marker',
+                      'MaxUploads' => 'max-uploads',
+                      'KeyMarker' => 'key-marker',
+                      'Delimiter' => 'delimiter',
+                      'EncodingType' => 'encoding-type',
+                      'Prefix' => 'prefix'
+                    },
+  'IsRequired' => {
+                    'Bucket' => 1
+                  },
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'MaxUploads' => {
+                                 'type' => 'Int'
+                               },
+               'Delimiter' => {
+                                'type' => 'Str'
+                              },
+               'EncodingType' => {
+                                   'type' => 'Str'
+                                 },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'KeyMarker' => {
+                                'type' => 'Str'
+                              },
+               'UploadIdMarker' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

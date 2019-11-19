@@ -1,15 +1,42 @@
 
 package Paws::IoT::AcceptCertificateTransfer;
-  use Moose;
-  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId', required => 1);
-  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has CertificateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SetAsActive => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AcceptCertificateTransfer');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accept-certificate-transfer/{certificateId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AcceptCertificateTransfer');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accept-certificate-transfer/{certificateId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'CertificateId' => 'certificateId'
+                  },
+  'types' => {
+               'SetAsActive' => {
+                                  'type' => 'Bool'
+                                },
+               'CertificateId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'CertificateId' => 1
+                  },
+  'ParamInQuery' => {
+                      'SetAsActive' => 'setAsActive'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

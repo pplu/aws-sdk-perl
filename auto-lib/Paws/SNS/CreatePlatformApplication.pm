@@ -1,15 +1,43 @@
+# Generated from callargs_class.tt
 
 package Paws::SNS::CreatePlatformApplication;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Platform => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SNS::Types qw/SNS_MapStringToString/;
+  has Attributes => (is => 'ro', isa => SNS_MapStringToString, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Platform => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePlatformApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::CreatePlatformApplicationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePlatformApplicationResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePlatformApplication');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SNS::CreatePlatformApplicationResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreatePlatformApplicationResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Platform' => 1,
+                    'Attributes' => 1
+                  },
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::SNS::MapStringToString',
+                                 'type' => 'SNS_MapStringToString'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Platform' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +76,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => L<Paws::SNS::MapStringToString>
+=head2 B<REQUIRED> Attributes => SNS_MapStringToString
 
 For a list of attributes, see SetPlatformApplicationAttributes
 (https://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html)

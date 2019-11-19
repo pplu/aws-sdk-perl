@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MTurk::ListReviewableHITsResponse;
-  use Moose;
-  has HITs => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::HIT]');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has NumResults => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::MTurk::Types qw/MTurk_HIT/;
+  has HITs => (is => 'ro', isa => ArrayRef[MTurk_HIT]);
+  has NextToken => (is => 'ro', isa => Str);
+  has NumResults => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'NumResults' => {
+                                 'type' => 'Int'
+                               },
+               'HITs' => {
+                           'class' => 'Paws::MTurk::HIT',
+                           'type' => 'ArrayRef[MTurk_HIT]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::MTurk::ListReviewableHITsResponse
 =head1 ATTRIBUTES
 
 
-=head2 HITs => ArrayRef[L<Paws::MTurk::HIT>]
+=head2 HITs => ArrayRef[MTurk_HIT]
 
 The list of HIT elements returned by the query.
 

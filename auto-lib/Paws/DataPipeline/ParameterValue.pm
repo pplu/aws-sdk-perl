@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::DataPipeline::ParameterValue;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has StringValue => (is => 'ro', isa => 'Str', request_name => 'stringValue', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataPipeline::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has StringValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StringValue' => 1,
+                    'Id' => 1
+                  },
+  'NameInRequest' => {
+                       'StringValue' => 'stringValue',
+                       'Id' => 'id'
+                     },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'StringValue' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::ELBv2::AddTags;
-  use Moose;
-  has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ELBv2::Types qw/ELBv2_Tag/;
+  has ResourceArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ELBv2_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELBv2::AddTagsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AddTagsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddTags');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELBv2::AddTagsOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'AddTagsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'ResourceArns' => 1
+                  },
+  'types' => {
+               'ResourceArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Tags' => {
+                           'type' => 'ArrayRef[ELBv2_Tag]',
+                           'class' => 'Paws::ELBv2::Tag'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +85,7 @@ The Amazon Resource Name (ARN) of the resource.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::ELBv2::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[ELBv2_Tag]
 
 The tags. Each resource can have a maximum of 10 tags.
 

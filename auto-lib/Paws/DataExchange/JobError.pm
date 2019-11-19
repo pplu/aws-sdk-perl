@@ -1,12 +1,52 @@
+# Generated from default/object.tt
 package Paws::DataExchange::JobError;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Str', required => 1);
-  has Details => (is => 'ro', isa => 'Paws::DataExchange::Details');
-  has LimitName => (is => 'ro', isa => 'Str');
-  has LimitValue => (is => 'ro', isa => 'Num');
-  has Message => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::DataExchange::Types qw/DataExchange_Details/;
+  has Code => (is => 'ro', isa => Str, required => 1);
+  has Details => (is => 'ro', isa => DataExchange_Details);
+  has LimitName => (is => 'ro', isa => Str);
+  has LimitValue => (is => 'ro', isa => Num);
+  has Message => (is => 'ro', isa => Str, required => 1);
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Code' => 1,
+                    'Message' => 1
+                  },
+  'types' => {
+               'Details' => {
+                              'class' => 'Paws::DataExchange::Details',
+                              'type' => 'DataExchange_Details'
+                            },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'LimitName' => {
+                                'type' => 'Str'
+                              },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'LimitValue' => {
+                                 'type' => 'Num'
+                               },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'Code' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +87,7 @@ An error that occurred with the job request.
   The code for the job error.
 
 
-=head2 Details => L<Paws::DataExchange::Details>
+=head2 Details => DataExchange_Details
 
   
 

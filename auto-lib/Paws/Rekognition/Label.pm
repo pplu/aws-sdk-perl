@@ -1,9 +1,37 @@
+# Generated from default/object.tt
 package Paws::Rekognition::Label;
-  use Moose;
-  has Confidence => (is => 'ro', isa => 'Num');
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Instance]');
-  has Name => (is => 'ro', isa => 'Str');
-  has Parents => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Parent]');
+  use Moo;
+  use Types::Standard qw/Num ArrayRef Str/;
+  use Paws::Rekognition::Types qw/Rekognition_Parent Rekognition_Instance/;
+  has Confidence => (is => 'ro', isa => Num);
+  has Instances => (is => 'ro', isa => ArrayRef[Rekognition_Instance]);
+  has Name => (is => 'ro', isa => Str);
+  has Parents => (is => 'ro', isa => ArrayRef[Rekognition_Parent]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Instances' => {
+                                'type' => 'ArrayRef[Rekognition_Instance]',
+                                'class' => 'Paws::Rekognition::Instance'
+                              },
+               'Parents' => {
+                              'type' => 'ArrayRef[Rekognition_Parent]',
+                              'class' => 'Paws::Rekognition::Parent'
+                            },
+               'Confidence' => {
+                                 'type' => 'Num'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +73,7 @@ name, detected instances, parent labels, and level of confidence.
   Level of confidence.
 
 
-=head2 Instances => ArrayRef[L<Paws::Rekognition::Instance>]
+=head2 Instances => ArrayRef[Rekognition_Instance]
 
   If C<Label> represents an object, C<Instances> contains the bounding
 boxes for each instance of the detected object. Bounding boxes are
@@ -58,7 +86,7 @@ apparel or pets.
   The name (label) of the object or scene.
 
 
-=head2 Parents => ArrayRef[L<Paws::Rekognition::Parent>]
+=head2 Parents => ArrayRef[Rekognition_Parent]
 
   The parent labels for a label. The response includes all ancestor
 labels.

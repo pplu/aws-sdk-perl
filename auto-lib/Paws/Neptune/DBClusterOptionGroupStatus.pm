@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Neptune::DBClusterOptionGroupStatus;
-  use Moose;
-  has DBClusterOptionGroupName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Neptune::Types qw//;
+  has DBClusterOptionGroupName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBClusterOptionGroupName' => {
+                                               'type' => 'Str'
+                                             },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

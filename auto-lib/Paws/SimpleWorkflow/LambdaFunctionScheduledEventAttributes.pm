@@ -1,11 +1,56 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::LambdaFunctionScheduledEventAttributes;
-  use Moose;
-  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has StartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'startToCloseTimeout', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Control => (is => 'ro', isa => Str);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Input => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has StartToCloseTimeout => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Input' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Control' => {
+                              'type' => 'Str'
+                            },
+               'StartToCloseTimeout' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'DecisionTaskCompletedEventId' => 1,
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'StartToCloseTimeout' => 'startToCloseTimeout',
+                       'Control' => 'control',
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId',
+                       'Id' => 'id',
+                       'Name' => 'name',
+                       'Input' => 'input'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

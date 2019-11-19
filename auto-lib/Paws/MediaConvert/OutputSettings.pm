@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::OutputSettings;
-  use Moose;
-  has HlsSettings => (is => 'ro', isa => 'Paws::MediaConvert::HlsSettings', request_name => 'hlsSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaConvert::Types qw/MediaConvert_HlsSettings/;
+  has HlsSettings => (is => 'ro', isa => MediaConvert_HlsSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HlsSettings' => {
+                                  'class' => 'Paws::MediaConvert::HlsSettings',
+                                  'type' => 'MediaConvert_HlsSettings'
+                                }
+             },
+  'NameInRequest' => {
+                       'HlsSettings' => 'hlsSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Specific settings for this type of output.
 =head1 ATTRIBUTES
 
 
-=head2 HlsSettings => L<Paws::MediaConvert::HlsSettings>
+=head2 HlsSettings => MediaConvert_HlsSettings
 
   Settings for HLS output groups
 

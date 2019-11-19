@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::WorkMail::Permission;
-  use Moose;
-  has GranteeId => (is => 'ro', isa => 'Str', required => 1);
-  has GranteeType => (is => 'ro', isa => 'Str', required => 1);
-  has PermissionValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::WorkMail::Types qw//;
+  has GranteeId => (is => 'ro', isa => Str, required => 1);
+  has GranteeType => (is => 'ro', isa => Str, required => 1);
+  has PermissionValues => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'GranteeId' => 1,
+                    'GranteeType' => 1,
+                    'PermissionValues' => 1
+                  },
+  'types' => {
+               'GranteeType' => {
+                                  'type' => 'Str'
+                                },
+               'GranteeId' => {
+                                'type' => 'Str'
+                              },
+               'PermissionValues' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

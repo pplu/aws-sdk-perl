@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::RedShift::DeferredMaintenanceWindow;
-  use Moose;
-  has DeferMaintenanceEndTime => (is => 'ro', isa => 'Str');
-  has DeferMaintenanceIdentifier => (is => 'ro', isa => 'Str');
-  has DeferMaintenanceStartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw//;
+  has DeferMaintenanceEndTime => (is => 'ro', isa => Str);
+  has DeferMaintenanceIdentifier => (is => 'ro', isa => Str);
+  has DeferMaintenanceStartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeferMaintenanceStartTime' => {
+                                                'type' => 'Str'
+                                              },
+               'DeferMaintenanceIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'DeferMaintenanceEndTime' => {
+                                              'type' => 'Str'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

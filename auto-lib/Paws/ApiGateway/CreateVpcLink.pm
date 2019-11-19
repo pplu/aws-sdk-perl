@@ -1,17 +1,52 @@
 
 package Paws::ApiGateway::CreateVpcLink;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
-  has TargetArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targetArns', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has TargetArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpcLink');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/vpclinks');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::VpcLink');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateVpcLink');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/vpclinks');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::VpcLink');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'TargetArns' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'Tags' => {
+                           'type' => 'ApiGateway_MapOfStringToString',
+                           'class' => 'Paws::ApiGateway::MapOfStringToString'
+                         }
+             },
+  'IsRequired' => {
+                    'TargetArns' => 1,
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'TargetArns' => 'targetArns',
+                       'Description' => 'description',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +102,7 @@ The description of the VPC link.
 
 
 
-=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Tags => ApiGateway_MapOfStringToString
 
 The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not

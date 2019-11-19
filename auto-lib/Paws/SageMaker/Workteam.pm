@@ -1,14 +1,63 @@
+# Generated from default/object.tt
 package Paws::SageMaker::Workteam;
-  use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has LastUpdatedDate => (is => 'ro', isa => 'Str');
-  has MemberDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MemberDefinition]', required => 1);
-  has NotificationConfiguration => (is => 'ro', isa => 'Paws::SageMaker::NotificationConfiguration');
-  has ProductListingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SubDomain => (is => 'ro', isa => 'Str');
-  has WorkteamArn => (is => 'ro', isa => 'Str', required => 1);
-  has WorkteamName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SageMaker::Types qw/SageMaker_NotificationConfiguration SageMaker_MemberDefinition/;
+  has CreateDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has LastUpdatedDate => (is => 'ro', isa => Str);
+  has MemberDefinitions => (is => 'ro', isa => ArrayRef[SageMaker_MemberDefinition], required => 1);
+  has NotificationConfiguration => (is => 'ro', isa => SageMaker_NotificationConfiguration);
+  has ProductListingIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SubDomain => (is => 'ro', isa => Str);
+  has WorkteamArn => (is => 'ro', isa => Str, required => 1);
+  has WorkteamName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'NotificationConfiguration' => {
+                                                'class' => 'Paws::SageMaker::NotificationConfiguration',
+                                                'type' => 'SageMaker_NotificationConfiguration'
+                                              },
+               'MemberDefinitions' => {
+                                        'type' => 'ArrayRef[SageMaker_MemberDefinition]',
+                                        'class' => 'Paws::SageMaker::MemberDefinition'
+                                      },
+               'SubDomain' => {
+                                'type' => 'Str'
+                              },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'WorkteamArn' => {
+                                  'type' => 'Str'
+                                },
+               'WorkteamName' => {
+                                   'type' => 'Str'
+                                 },
+               'ProductListingIds' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'LastUpdatedDate' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'WorkteamName' => 1,
+                    'Description' => 1,
+                    'WorkteamArn' => 1,
+                    'MemberDefinitions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,12 +108,12 @@ Provides details about a labeling work team.
   The date and time that the work team was last updated (timestamp).
 
 
-=head2 B<REQUIRED> MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]
+=head2 B<REQUIRED> MemberDefinitions => ArrayRef[SageMaker_MemberDefinition]
 
   The Amazon Cognito user groups that make up the work team.
 
 
-=head2 NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>
+=head2 NotificationConfiguration => SageMaker_NotificationConfiguration
 
   Configures SNS notifications of available or expiring work items for
 work teams.

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Id3Insertion;
-  use Moose;
-  has Id3 => (is => 'ro', isa => 'Str', request_name => 'id3', traits => ['NameInRequest']);
-  has Timecode => (is => 'ro', isa => 'Str', request_name => 'timecode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has Id3 => (is => 'ro', isa => Str);
+  has Timecode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id3' => {
+                          'type' => 'Str'
+                        },
+               'Timecode' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Id3' => 'id3',
+                       'Timecode' => 'timecode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

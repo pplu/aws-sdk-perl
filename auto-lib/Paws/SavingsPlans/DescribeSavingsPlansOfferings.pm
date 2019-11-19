@@ -1,26 +1,93 @@
 
 package Paws::SavingsPlans::DescribeSavingsPlansOfferings;
-  use Moose;
-  has Currencies => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'currencies');
-  has Descriptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'descriptions');
-  has Durations => (is => 'ro', isa => 'ArrayRef[Int]', traits => ['NameInRequest'], request_name => 'durations');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SavingsPlans::SavingsPlanOfferingFilterElement]', traits => ['NameInRequest'], request_name => 'filters');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has OfferingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'offeringIds');
-  has Operations => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'operations');
-  has PaymentOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'paymentOptions');
-  has PlanTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'planTypes');
-  has ProductType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'productType');
-  has ServiceCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'serviceCodes');
-  has UsageTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'usageTypes');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int/;
+  use Paws::SavingsPlans::Types qw/SavingsPlans_SavingsPlanOfferingFilterElement/;
+  has Currencies => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Descriptions => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Durations => (is => 'ro', isa => ArrayRef[Int], predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[SavingsPlans_SavingsPlanOfferingFilterElement], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has OfferingIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Operations => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has PaymentOptions => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has PlanTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ProductType => (is => 'ro', isa => Str, predicate => 1);
+  has ServiceCodes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has UsageTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSavingsPlansOfferings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/DescribeSavingsPlansOfferings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SavingsPlans::DescribeSavingsPlansOfferingsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeSavingsPlansOfferings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/DescribeSavingsPlansOfferings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SavingsPlans::DescribeSavingsPlansOfferingsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PlanTypes' => 'planTypes',
+                       'ProductType' => 'productType',
+                       'NextToken' => 'nextToken',
+                       'Filters' => 'filters',
+                       'Currencies' => 'currencies',
+                       'ServiceCodes' => 'serviceCodes',
+                       'PaymentOptions' => 'paymentOptions',
+                       'Descriptions' => 'descriptions',
+                       'MaxResults' => 'maxResults',
+                       'Durations' => 'durations',
+                       'Operations' => 'operations',
+                       'OfferingIds' => 'offeringIds',
+                       'UsageTypes' => 'usageTypes'
+                     },
+  'types' => {
+               'Operations' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'UsageTypes' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'OfferingIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Durations' => {
+                                'type' => 'ArrayRef[Int]'
+                              },
+               'Descriptions' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'ServiceCodes' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'PaymentOptions' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'Currencies' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'type' => 'ArrayRef[SavingsPlans_SavingsPlanOfferingFilterElement]',
+                              'class' => 'Paws::SavingsPlans::SavingsPlanOfferingFilterElement'
+                            },
+               'PlanTypes' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'ProductType' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -105,7 +172,7 @@ The durations, in seconds.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::SavingsPlans::SavingsPlanOfferingFilterElement>]
+=head2 Filters => ArrayRef[SavingsPlans_SavingsPlanOfferingFilterElement]
 
 The filters.
 

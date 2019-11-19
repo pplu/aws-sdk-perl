@@ -1,7 +1,29 @@
 package Paws::EC2::UnsuccessfulInstanceCreditSpecificationItem;
-  use Moose;
-  has Error => (is => 'ro', isa => 'Paws::EC2::UnsuccessfulInstanceCreditSpecificationItemError', request_name => 'error', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_UnsuccessfulInstanceCreditSpecificationItemError/;
+  has Error => (is => 'ro', isa => EC2_UnsuccessfulInstanceCreditSpecificationItemError);
+  has InstanceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Error' => {
+                            'type' => 'EC2_UnsuccessfulInstanceCreditSpecificationItemError',
+                            'class' => 'Paws::EC2::UnsuccessfulInstanceCreditSpecificationItemError'
+                          }
+             },
+  'NameInRequest' => {
+                       'InstanceId' => 'instanceId',
+                       'Error' => 'error'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +59,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Error => L<Paws::EC2::UnsuccessfulInstanceCreditSpecificationItemError>
+=head2 Error => EC2_UnsuccessfulInstanceCreditSpecificationItemError
 
   The applicable error for the T2 or T3 instance whose credit option for
 CPU usage was not modified.

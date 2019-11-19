@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::Parameter;
-  use Moose;
-  has AllowedValues => (is => 'ro', isa => 'Str');
-  has ChangeType => (is => 'ro', isa => 'Str');
-  has DataType => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has IsModifiable => (is => 'ro', isa => 'Bool');
-  has MinimumEngineVersion => (is => 'ro', isa => 'Str');
-  has ParameterName => (is => 'ro', isa => 'Str');
-  has ParameterValue => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ElastiCache::Types qw//;
+  has AllowedValues => (is => 'ro', isa => Str);
+  has ChangeType => (is => 'ro', isa => Str);
+  has DataType => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IsModifiable => (is => 'ro', isa => Bool);
+  has MinimumEngineVersion => (is => 'ro', isa => Str);
+  has ParameterName => (is => 'ro', isa => Str);
+  has ParameterValue => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeType' => {
+                                 'type' => 'Str'
+                               },
+               'IsModifiable' => {
+                                   'type' => 'Bool'
+                                 },
+               'DataType' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ParameterValue' => {
+                                     'type' => 'Str'
+                                   },
+               'ParameterName' => {
+                                    'type' => 'Str'
+                                  },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'MinimumEngineVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'AllowedValues' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

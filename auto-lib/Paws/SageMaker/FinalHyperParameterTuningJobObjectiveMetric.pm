@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::SageMaker::FinalHyperParameterTuningJobObjectiveMetric;
-  use Moose;
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Num', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::SageMaker::Types qw//;
+  has MetricName => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Value' => 1,
+                    'MetricName' => 1
+                  },
+  'types' => {
+               'Value' => {
+                            'type' => 'Num'
+                          },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

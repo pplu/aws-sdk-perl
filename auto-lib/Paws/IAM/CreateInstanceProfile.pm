@@ -1,14 +1,36 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateInstanceProfile;
-  use Moose;
-  has InstanceProfileName => (is => 'ro', isa => 'Str', required => 1);
-  has Path => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has InstanceProfileName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Path => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInstanceProfile');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::CreateInstanceProfileResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateInstanceProfileResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateInstanceProfile');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::CreateInstanceProfileResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateInstanceProfileResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'InstanceProfileName' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'InstanceProfileName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

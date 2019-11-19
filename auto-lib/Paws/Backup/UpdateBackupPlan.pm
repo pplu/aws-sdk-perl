@@ -1,15 +1,41 @@
 
 package Paws::Backup::UpdateBackupPlan;
-  use Moose;
-  has BackupPlan => (is => 'ro', isa => 'Paws::Backup::BackupPlanInput', required => 1);
-  has BackupPlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'backupPlanId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw/Backup_BackupPlanInput/;
+  has BackupPlan => (is => 'ro', isa => Backup_BackupPlanInput, required => 1, predicate => 1);
+  has BackupPlanId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBackupPlan');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup/plans/{backupPlanId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::UpdateBackupPlanOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateBackupPlan');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup/plans/{backupPlanId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::UpdateBackupPlanOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BackupPlanId' => 1,
+                    'BackupPlan' => 1
+                  },
+  'types' => {
+               'BackupPlan' => {
+                                 'class' => 'Paws::Backup::BackupPlanInput',
+                                 'type' => 'Backup_BackupPlanInput'
+                               },
+               'BackupPlanId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'BackupPlanId' => 'backupPlanId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +93,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bac
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> BackupPlan => L<Paws::Backup::BackupPlanInput>
+=head2 B<REQUIRED> BackupPlan => Backup_BackupPlanInput
 
 Specifies the body of a backup plan. Includes a C<BackupPlanName> and
 one or more sets of C<Rules>.

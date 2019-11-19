@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::SSM::LoggingInfo;
-  use Moose;
-  has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
-  has S3KeyPrefix => (is => 'ro', isa => 'Str');
-  has S3Region => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has S3BucketName => (is => 'ro', isa => Str, required => 1);
+  has S3KeyPrefix => (is => 'ro', isa => Str);
+  has S3Region => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Region' => {
+                               'type' => 'Str'
+                             },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'S3KeyPrefix' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'S3Region' => 1,
+                    'S3BucketName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

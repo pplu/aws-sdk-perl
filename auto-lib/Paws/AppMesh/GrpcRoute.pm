@@ -1,8 +1,43 @@
+# Generated from default/object.tt
 package Paws::AppMesh::GrpcRoute;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Paws::AppMesh::GrpcRouteAction', request_name => 'action', traits => ['NameInRequest'], required => 1);
-  has Match => (is => 'ro', isa => 'Paws::AppMesh::GrpcRouteMatch', request_name => 'match', traits => ['NameInRequest'], required => 1);
-  has RetryPolicy => (is => 'ro', isa => 'Paws::AppMesh::GrpcRetryPolicy', request_name => 'retryPolicy', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_GrpcRouteAction AppMesh_GrpcRetryPolicy AppMesh_GrpcRouteMatch/;
+  has Action => (is => 'ro', isa => AppMesh_GrpcRouteAction, required => 1);
+  has Match => (is => 'ro', isa => AppMesh_GrpcRouteMatch, required => 1);
+  has RetryPolicy => (is => 'ro', isa => AppMesh_GrpcRetryPolicy);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Match' => {
+                            'type' => 'AppMesh_GrpcRouteMatch',
+                            'class' => 'Paws::AppMesh::GrpcRouteMatch'
+                          },
+               'Action' => {
+                             'class' => 'Paws::AppMesh::GrpcRouteAction',
+                             'type' => 'AppMesh_GrpcRouteAction'
+                           },
+               'RetryPolicy' => {
+                                  'type' => 'AppMesh_GrpcRetryPolicy',
+                                  'class' => 'Paws::AppMesh::GrpcRetryPolicy'
+                                }
+             },
+  'IsRequired' => {
+                    'Match' => 1,
+                    'Action' => 1
+                  },
+  'NameInRequest' => {
+                       'Match' => 'match',
+                       'Action' => 'action',
+                       'RetryPolicy' => 'retryPolicy'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +73,17 @@ An object that represents a GRPC route type.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Action => L<Paws::AppMesh::GrpcRouteAction>
+=head2 B<REQUIRED> Action => AppMesh_GrpcRouteAction
 
   An object that represents the action to take if a match is determined.
 
 
-=head2 B<REQUIRED> Match => L<Paws::AppMesh::GrpcRouteMatch>
+=head2 B<REQUIRED> Match => AppMesh_GrpcRouteMatch
 
   An object that represents the criteria for determining a request match.
 
 
-=head2 RetryPolicy => L<Paws::AppMesh::GrpcRetryPolicy>
+=head2 RetryPolicy => AppMesh_GrpcRetryPolicy
 
   An object that represents a retry policy.
 

@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::TagUser;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IAM::Types qw/IAM_Tag/;
+  has Tags => (is => 'ro', isa => ArrayRef[IAM_Tag], required => 1, predicate => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagUser');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagUser');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[IAM_Tag]',
+                           'class' => 'Paws::IAM::Tag'
+                         },
+               'UserName' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +71,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::IAM::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[IAM_Tag]
 
 The list of tags that you want to attach to the user. Each tag consists
 of a key name and an associated value.

@@ -1,12 +1,64 @@
+# Generated from default/object.tt
 package Paws::Inspector::AssessmentRunAgent;
-  use Moose;
-  has AgentHealth => (is => 'ro', isa => 'Str', request_name => 'agentHealth', traits => ['NameInRequest'], required => 1);
-  has AgentHealthCode => (is => 'ro', isa => 'Str', request_name => 'agentHealthCode', traits => ['NameInRequest'], required => 1);
-  has AgentHealthDetails => (is => 'ro', isa => 'Str', request_name => 'agentHealthDetails', traits => ['NameInRequest']);
-  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest'], required => 1);
-  has AssessmentRunArn => (is => 'ro', isa => 'Str', request_name => 'assessmentRunArn', traits => ['NameInRequest'], required => 1);
-  has AutoScalingGroup => (is => 'ro', isa => 'Str', request_name => 'autoScalingGroup', traits => ['NameInRequest']);
-  has TelemetryMetadata => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::TelemetryMetadata]', request_name => 'telemetryMetadata', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Inspector::Types qw/Inspector_TelemetryMetadata/;
+  has AgentHealth => (is => 'ro', isa => Str, required => 1);
+  has AgentHealthCode => (is => 'ro', isa => Str, required => 1);
+  has AgentHealthDetails => (is => 'ro', isa => Str);
+  has AgentId => (is => 'ro', isa => Str, required => 1);
+  has AssessmentRunArn => (is => 'ro', isa => Str, required => 1);
+  has AutoScalingGroup => (is => 'ro', isa => Str);
+  has TelemetryMetadata => (is => 'ro', isa => ArrayRef[Inspector_TelemetryMetadata], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AgentId' => {
+                              'type' => 'Str'
+                            },
+               'AutoScalingGroup' => {
+                                       'type' => 'Str'
+                                     },
+               'AgentHealthCode' => {
+                                      'type' => 'Str'
+                                    },
+               'TelemetryMetadata' => {
+                                        'class' => 'Paws::Inspector::TelemetryMetadata',
+                                        'type' => 'ArrayRef[Inspector_TelemetryMetadata]'
+                                      },
+               'AgentHealthDetails' => {
+                                         'type' => 'Str'
+                                       },
+               'AgentHealth' => {
+                                  'type' => 'Str'
+                                },
+               'AssessmentRunArn' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'TelemetryMetadata' => 1,
+                    'AgentHealthCode' => 1,
+                    'AssessmentRunArn' => 1,
+                    'AgentId' => 1,
+                    'AgentHealth' => 1
+                  },
+  'NameInRequest' => {
+                       'TelemetryMetadata' => 'telemetryMetadata',
+                       'AgentHealthCode' => 'agentHealthCode',
+                       'AutoScalingGroup' => 'autoScalingGroup',
+                       'AgentId' => 'agentId',
+                       'AssessmentRunArn' => 'assessmentRunArn',
+                       'AgentHealthDetails' => 'agentHealthDetails',
+                       'AgentHealth' => 'agentHealth'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +126,7 @@ used as a response element in the ListAssessmentRunAgents action.
 agent ID.
 
 
-=head2 B<REQUIRED> TelemetryMetadata => ArrayRef[L<Paws::Inspector::TelemetryMetadata>]
+=head2 B<REQUIRED> TelemetryMetadata => ArrayRef[Inspector_TelemetryMetadata]
 
   The Amazon Inspector application data metrics that are collected by the
 agent.

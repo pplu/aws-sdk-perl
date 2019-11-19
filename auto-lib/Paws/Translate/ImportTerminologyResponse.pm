@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Translate::ImportTerminologyResponse;
-  use Moose;
-  has TerminologyProperties => (is => 'ro', isa => 'Paws::Translate::TerminologyProperties');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Translate::Types qw/Translate_TerminologyProperties/;
+  has TerminologyProperties => (is => 'ro', isa => Translate_TerminologyProperties);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TerminologyProperties' => {
+                                            'type' => 'Translate_TerminologyProperties',
+                                            'class' => 'Paws::Translate::TerminologyProperties'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Translate::ImportTerminologyResponse
 =head1 ATTRIBUTES
 
 
-=head2 TerminologyProperties => L<Paws::Translate::TerminologyProperties>
+=head2 TerminologyProperties => Translate_TerminologyProperties
 
 The properties of the custom terminology being imported.
 

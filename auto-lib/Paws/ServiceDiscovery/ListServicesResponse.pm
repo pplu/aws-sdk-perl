@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceDiscovery::ListServicesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Services => (is => 'ro', isa => 'ArrayRef[Paws::ServiceDiscovery::ServiceSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_ServiceSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Services => (is => 'ro', isa => ArrayRef[ServiceDiscovery_ServiceSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Services' => {
+                               'type' => 'ArrayRef[ServiceDiscovery_ServiceSummary]',
+                               'class' => 'Paws::ServiceDiscovery::ServiceSummary'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -28,7 +50,7 @@ subsequent groups of C<MaxResults> services do contain services that
 match the criteria.
 
 
-=head2 Services => ArrayRef[L<Paws::ServiceDiscovery::ServiceSummary>]
+=head2 Services => ArrayRef[ServiceDiscovery_ServiceSummary]
 
 An array that contains one C<ServiceSummary> object for each service
 that matches the specified filter criteria.

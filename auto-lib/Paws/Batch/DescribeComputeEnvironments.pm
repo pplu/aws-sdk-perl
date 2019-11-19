@@ -1,16 +1,42 @@
 
 package Paws::Batch::DescribeComputeEnvironments;
-  use Moose;
-  has ComputeEnvironments => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'computeEnvironments');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int/;
+  use Paws::Batch::Types qw//;
+  has ComputeEnvironments => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeComputeEnvironments');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/describecomputeenvironments');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::DescribeComputeEnvironmentsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeComputeEnvironments');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/describecomputeenvironments');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Batch::DescribeComputeEnvironmentsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken',
+                       'ComputeEnvironments' => 'computeEnvironments'
+                     },
+  'types' => {
+               'ComputeEnvironments' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

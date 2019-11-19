@@ -1,14 +1,35 @@
 
 package Paws::DataExchange::ListTagsForResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource-arn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw//;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTagsForResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tags/{resource-arn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataExchange::ListTagsForResourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTagsForResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tags/{resource-arn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataExchange::ListTagsForResourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ResourceArn' => 1
+                  },
+  'ParamInURI' => {
+                    'ResourceArn' => 'resource-arn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

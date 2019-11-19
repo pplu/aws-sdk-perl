@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::S3::AccessControlTranslation;
-  use Moose;
-  has Owner => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has Owner => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Owner' => 1
+                  },
+  'types' => {
+               'Owner' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

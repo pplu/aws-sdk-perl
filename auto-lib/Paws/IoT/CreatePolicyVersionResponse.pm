@@ -1,12 +1,44 @@
 
 package Paws::IoT::CreatePolicyVersionResponse;
-  use Moose;
-  has IsDefaultVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'isDefaultVersion');
-  has PolicyArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyArn');
-  has PolicyDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyDocument');
-  has PolicyVersionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyVersionId');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has IsDefaultVersion => (is => 'ro', isa => Bool);
+  has PolicyArn => (is => 'ro', isa => Str);
+  has PolicyDocument => (is => 'ro', isa => Str);
+  has PolicyVersionId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyArn' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IsDefaultVersion' => {
+                                       'type' => 'Bool'
+                                     },
+               'PolicyVersionId' => {
+                                      'type' => 'Str'
+                                    },
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'PolicyVersionId' => 'policyVersionId',
+                       'PolicyDocument' => 'policyDocument',
+                       'IsDefaultVersion' => 'isDefaultVersion',
+                       'PolicyArn' => 'policyArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

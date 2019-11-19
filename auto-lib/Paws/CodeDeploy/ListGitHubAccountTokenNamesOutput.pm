@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::ListGitHubAccountTokenNamesOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has TokenNameList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'tokenNameList' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeDeploy::Types qw//;
+  has NextToken => (is => 'ro', isa => Str);
+  has TokenNameList => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'TokenNameList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'TokenNameList' => 'tokenNameList',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::DataExchange::Details;
-  use Moose;
-  has ImportAssetFromSignedUrlJobErrorDetails => (is => 'ro', isa => 'Paws::DataExchange::ImportAssetFromSignedUrlJobErrorDetails');
-  has ImportAssetsFromS3JobErrorDetails => (is => 'ro', isa => 'ArrayRef[Paws::DataExchange::AssetSourceEntry]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::DataExchange::Types qw/DataExchange_ImportAssetFromSignedUrlJobErrorDetails DataExchange_AssetSourceEntry/;
+  has ImportAssetFromSignedUrlJobErrorDetails => (is => 'ro', isa => DataExchange_ImportAssetFromSignedUrlJobErrorDetails);
+  has ImportAssetsFromS3JobErrorDetails => (is => 'ro', isa => ArrayRef[DataExchange_AssetSourceEntry]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImportAssetsFromS3JobErrorDetails' => {
+                                                        'type' => 'ArrayRef[DataExchange_AssetSourceEntry]',
+                                                        'class' => 'Paws::DataExchange::AssetSourceEntry'
+                                                      },
+               'ImportAssetFromSignedUrlJobErrorDetails' => {
+                                                              'type' => 'DataExchange_ImportAssetFromSignedUrlJobErrorDetails',
+                                                              'class' => 'Paws::DataExchange::ImportAssetFromSignedUrlJobErrorDetails'
+                                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +59,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ImportAssetFromSignedUrlJobErrorDetails => L<Paws::DataExchange::ImportAssetFromSignedUrlJobErrorDetails>
+=head2 ImportAssetFromSignedUrlJobErrorDetails => DataExchange_ImportAssetFromSignedUrlJobErrorDetails
 
   
 
 
-=head2 ImportAssetsFromS3JobErrorDetails => ArrayRef[L<Paws::DataExchange::AssetSourceEntry>]
+=head2 ImportAssetsFromS3JobErrorDetails => ArrayRef[DataExchange_AssetSourceEntry]
 
   
 

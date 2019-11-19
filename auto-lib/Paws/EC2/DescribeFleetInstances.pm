@@ -1,17 +1,51 @@
 
 package Paws::EC2::DescribeFleetInstances;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has FleetId => (is => 'ro', isa => 'Str', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::EC2::Types qw/EC2_Filter/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
+  has FleetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeFleetInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeFleetInstancesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeFleetInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeFleetInstancesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FleetId' => 1
+                  },
+  'NameInRequest' => {
+                       'Filters' => 'Filter'
+                     },
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::EC2::Filter',
+                              'type' => 'ArrayRef[EC2_Filter]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,13 +70,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,                     # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',         # OPTIONAL
+          Values => [
+            'MyString', ...             # OPTIONAL
+          ],                            # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyString',             # OPTIONAL
+      ],                                # OPTIONAL
+      MaxResults => 1,                  # OPTIONAL
+      NextToken  => 'MyString',         # OPTIONAL
     );
 
     # Results:
@@ -67,7 +103,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+=head2 Filters => ArrayRef[EC2_Filter]
 
 The filters.
 

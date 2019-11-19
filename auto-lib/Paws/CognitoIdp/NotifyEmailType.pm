@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::NotifyEmailType;
-  use Moose;
-  has HtmlBody => (is => 'ro', isa => 'Str');
-  has Subject => (is => 'ro', isa => 'Str', required => 1);
-  has TextBody => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has HtmlBody => (is => 'ro', isa => Str);
+  has Subject => (is => 'ro', isa => Str, required => 1);
+  has TextBody => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TextBody' => {
+                               'type' => 'Str'
+                             },
+               'HtmlBody' => {
+                               'type' => 'Str'
+                             },
+               'Subject' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'Subject' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

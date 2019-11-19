@@ -1,20 +1,81 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::Workspace;
-  use Moose;
-  has BundleId => (is => 'ro', isa => 'Str');
-  has ComputerName => (is => 'ro', isa => 'Str');
-  has DirectoryId => (is => 'ro', isa => 'Str');
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has IpAddress => (is => 'ro', isa => 'Str');
-  has ModificationStates => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::ModificationState]');
-  has RootVolumeEncryptionEnabled => (is => 'ro', isa => 'Bool');
-  has State => (is => 'ro', isa => 'Str');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has UserName => (is => 'ro', isa => 'Str');
-  has UserVolumeEncryptionEnabled => (is => 'ro', isa => 'Bool');
-  has VolumeEncryptionKey => (is => 'ro', isa => 'Str');
-  has WorkspaceId => (is => 'ro', isa => 'Str');
-  has WorkspaceProperties => (is => 'ro', isa => 'Paws::WorkSpaces::WorkspaceProperties');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_WorkspaceProperties WorkSpaces_ModificationState/;
+  has BundleId => (is => 'ro', isa => Str);
+  has ComputerName => (is => 'ro', isa => Str);
+  has DirectoryId => (is => 'ro', isa => Str);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has IpAddress => (is => 'ro', isa => Str);
+  has ModificationStates => (is => 'ro', isa => ArrayRef[WorkSpaces_ModificationState]);
+  has RootVolumeEncryptionEnabled => (is => 'ro', isa => Bool);
+  has State => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has UserName => (is => 'ro', isa => Str);
+  has UserVolumeEncryptionEnabled => (is => 'ro', isa => Bool);
+  has VolumeEncryptionKey => (is => 'ro', isa => Str);
+  has WorkspaceId => (is => 'ro', isa => Str);
+  has WorkspaceProperties => (is => 'ro', isa => WorkSpaces_WorkspaceProperties);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'WorkspaceId' => {
+                                  'type' => 'Str'
+                                },
+               'VolumeEncryptionKey' => {
+                                          'type' => 'Str'
+                                        },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'WorkspaceProperties' => {
+                                          'type' => 'WorkSpaces_WorkspaceProperties',
+                                          'class' => 'Paws::WorkSpaces::WorkspaceProperties'
+                                        },
+               'RootVolumeEncryptionEnabled' => {
+                                                  'type' => 'Bool'
+                                                },
+               'BundleId' => {
+                               'type' => 'Str'
+                             },
+               'ComputerName' => {
+                                   'type' => 'Str'
+                                 },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'ModificationStates' => {
+                                         'type' => 'ArrayRef[WorkSpaces_ModificationState]',
+                                         'class' => 'Paws::WorkSpaces::ModificationState'
+                                       },
+               'UserVolumeEncryptionEnabled' => {
+                                                  'type' => 'Bool'
+                                                },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +143,7 @@ be created.
   The IP address of the WorkSpace.
 
 
-=head2 ModificationStates => ArrayRef[L<Paws::WorkSpaces::ModificationState>]
+=head2 ModificationStates => ArrayRef[WorkSpaces_ModificationState]
 
   The modification states of the WorkSpace.
 
@@ -122,7 +183,7 @@ be created.
   The identifier of the WorkSpace.
 
 
-=head2 WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>
+=head2 WorkspaceProperties => WorkSpaces_WorkspaceProperties
 
   The properties of the WorkSpace.
 

@@ -1,15 +1,41 @@
 
 package Paws::ApiGateway::GetAuthorizer;
-  use Moose;
-  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizer_id', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has AuthorizerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAuthorizer');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/authorizers/{authorizer_id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Authorizer');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetAuthorizer');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/authorizers/{authorizer_id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::Authorizer');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AuthorizerId' => 1,
+                    'RestApiId' => 1
+                  },
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'AuthorizerId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id',
+                    'AuthorizerId' => 'authorizer_id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MQ::BrokerEngineType;
-  use Moose;
-  has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
-  has EngineVersions => (is => 'ro', isa => 'ArrayRef[Paws::MQ::EngineVersion]', request_name => 'engineVersions', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MQ::Types qw/MQ_EngineVersion/;
+  has EngineType => (is => 'ro', isa => Str);
+  has EngineVersions => (is => 'ro', isa => ArrayRef[MQ_EngineVersion]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EngineVersions' => 'engineVersions',
+                       'EngineType' => 'engineType'
+                     },
+  'types' => {
+               'EngineType' => {
+                                 'type' => 'Str'
+                               },
+               'EngineVersions' => {
+                                     'class' => 'Paws::MQ::EngineVersion',
+                                     'type' => 'ArrayRef[MQ_EngineVersion]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ Types of broker engines.
   The type of broker engine.
 
 
-=head2 EngineVersions => ArrayRef[L<Paws::MQ::EngineVersion>]
+=head2 EngineVersions => ArrayRef[MQ_EngineVersion]
 
   The list of engine versions.
 

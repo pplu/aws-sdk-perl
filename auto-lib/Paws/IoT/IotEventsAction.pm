@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::IoT::IotEventsAction;
-  use Moose;
-  has InputName => (is => 'ro', isa => 'Str', request_name => 'inputName', traits => ['NameInRequest'], required => 1);
-  has MessageId => (is => 'ro', isa => 'Str', request_name => 'messageId', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has InputName => (is => 'ro', isa => Str, required => 1);
+  has MessageId => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'MessageId' => {
+                                'type' => 'Str'
+                              },
+               'InputName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'InputName' => 1
+                  },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'InputName' => 'inputName',
+                       'MessageId' => 'messageId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

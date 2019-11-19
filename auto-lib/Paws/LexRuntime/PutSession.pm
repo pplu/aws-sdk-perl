@@ -1,20 +1,74 @@
 
 package Paws::LexRuntime::PutSession;
-  use Moose;
-  has Accept => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Accept');
-  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias', required => 1);
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
-  has DialogAction => (is => 'ro', isa => 'Paws::LexRuntime::DialogAction', traits => ['NameInRequest'], request_name => 'dialogAction');
-  has RecentIntentSummaryView => (is => 'ro', isa => 'ArrayRef[Paws::LexRuntime::IntentSummary]', traits => ['NameInRequest'], request_name => 'recentIntentSummaryView');
-  has SessionAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'sessionAttributes');
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LexRuntime::Types qw/LexRuntime_StringMap LexRuntime_DialogAction LexRuntime_IntentSummary/;
+  has Accept => (is => 'ro', isa => Str, predicate => 1);
+  has BotAlias => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BotName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DialogAction => (is => 'ro', isa => LexRuntime_DialogAction, predicate => 1);
+  has RecentIntentSummaryView => (is => 'ro', isa => ArrayRef[LexRuntime_IntentSummary], predicate => 1);
+  has SessionAttributes => (is => 'ro', isa => LexRuntime_StringMap, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutSession');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bot/{botName}/alias/{botAlias}/user/{userId}/session');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexRuntime::PutSessionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutSession');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/bot/{botName}/alias/{botAlias}/user/{userId}/session');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexRuntime::PutSessionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'Accept' => 'Accept'
+                     },
+  'types' => {
+               'BotName' => {
+                              'type' => 'Str'
+                            },
+               'SessionAttributes' => {
+                                        'type' => 'LexRuntime_StringMap',
+                                        'class' => 'Paws::LexRuntime::StringMap'
+                                      },
+               'BotAlias' => {
+                               'type' => 'Str'
+                             },
+               'Accept' => {
+                             'type' => 'Str'
+                           },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'DialogAction' => {
+                                   'type' => 'LexRuntime_DialogAction',
+                                   'class' => 'Paws::LexRuntime::DialogAction'
+                                 },
+               'RecentIntentSummaryView' => {
+                                              'type' => 'ArrayRef[LexRuntime_IntentSummary]',
+                                              'class' => 'Paws::LexRuntime::IntentSummary'
+                                            }
+             },
+  'NameInRequest' => {
+                       'SessionAttributes' => 'sessionAttributes',
+                       'DialogAction' => 'dialogAction',
+                       'RecentIntentSummaryView' => 'recentIntentSummaryView'
+                     },
+  'IsRequired' => {
+                    'BotName' => 1,
+                    'UserId' => 1,
+                    'BotAlias' => 1
+                  },
+  'ParamInURI' => {
+                    'UserId' => 'userId',
+                    'BotAlias' => 'botAlias',
+                    'BotName' => 'botName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -160,14 +214,14 @@ The name of the bot that contains the session data.
 
 
 
-=head2 DialogAction => L<Paws::LexRuntime::DialogAction>
+=head2 DialogAction => LexRuntime_DialogAction
 
 Sets the next action that the bot should take to fulfill the
 conversation.
 
 
 
-=head2 RecentIntentSummaryView => ArrayRef[L<Paws::LexRuntime::IntentSummary>]
+=head2 RecentIntentSummaryView => ArrayRef[LexRuntime_IntentSummary]
 
 A summary of the recent intents for the bot. You can use the intent
 summary view to set a checkpoint label on an intent and modify
@@ -203,7 +257,7 @@ intent.
 
 
 
-=head2 SessionAttributes => L<Paws::LexRuntime::StringMap>
+=head2 SessionAttributes => LexRuntime_StringMap
 
 Map of key/value pairs representing the session-specific context
 information. It contains application information passed between Amazon

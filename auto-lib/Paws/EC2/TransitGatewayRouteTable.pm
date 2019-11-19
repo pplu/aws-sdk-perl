@@ -1,12 +1,54 @@
 package Paws::EC2::TransitGatewayRouteTable;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has DefaultAssociationRouteTable => (is => 'ro', isa => 'Bool', request_name => 'defaultAssociationRouteTable', traits => ['NameInRequest']);
-  has DefaultPropagationRouteTable => (is => 'ro', isa => 'Bool', request_name => 'defaultPropagationRouteTable', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has TransitGatewayId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayId', traits => ['NameInRequest']);
-  has TransitGatewayRouteTableId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayRouteTableId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Tag/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DefaultAssociationRouteTable => (is => 'ro', isa => Bool);
+  has DefaultPropagationRouteTable => (is => 'ro', isa => Bool);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has TransitGatewayId => (is => 'ro', isa => Str);
+  has TransitGatewayRouteTableId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'TransitGatewayRouteTableId' => {
+                                                 'type' => 'Str'
+                                               },
+               'Tags' => {
+                           'type' => 'ArrayRef[EC2_Tag]',
+                           'class' => 'Paws::EC2::Tag'
+                         },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'DefaultAssociationRouteTable' => {
+                                                   'type' => 'Bool'
+                                                 },
+               'DefaultPropagationRouteTable' => {
+                                                   'type' => 'Bool'
+                                                 },
+               'TransitGatewayId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'State' => 'state',
+                       'TransitGatewayRouteTableId' => 'transitGatewayRouteTableId',
+                       'Tags' => 'tagSet',
+                       'CreationTime' => 'creationTime',
+                       'DefaultAssociationRouteTable' => 'defaultAssociationRouteTable',
+                       'DefaultPropagationRouteTable' => 'defaultPropagationRouteTable',
+                       'TransitGatewayId' => 'transitGatewayId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +106,7 @@ transit gateway.
   The state of the transit gateway route table.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the route table.
 

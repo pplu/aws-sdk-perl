@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::ResourceGroups::GroupQuery;
-  use Moose;
-  has GroupName => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceQuery => (is => 'ro', isa => 'Paws::ResourceGroups::ResourceQuery', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ResourceGroups::Types qw/ResourceGroups_ResourceQuery/;
+  has GroupName => (is => 'ro', isa => Str, required => 1);
+  has ResourceQuery => (is => 'ro', isa => ResourceGroups_ResourceQuery, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'ResourceQuery' => {
+                                    'class' => 'Paws::ResourceGroups::ResourceQuery',
+                                    'type' => 'ResourceGroups_ResourceQuery'
+                                  }
+             },
+  'IsRequired' => {
+                    'GroupName' => 1,
+                    'ResourceQuery' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +69,7 @@ query results are part of the group.
 resource query.
 
 
-=head2 B<REQUIRED> ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
+=head2 B<REQUIRED> ResourceQuery => ResourceGroups_ResourceQuery
 
   The resource query which determines which AWS resources are members of
 the associated resource group.

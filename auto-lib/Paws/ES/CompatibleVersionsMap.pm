@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ES::CompatibleVersionsMap;
-  use Moose;
-  has SourceVersion => (is => 'ro', isa => 'Str');
-  has TargetVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ES::Types qw//;
+  has SourceVersion => (is => 'ro', isa => Str);
+  has TargetVersions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetVersions' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'SourceVersion' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

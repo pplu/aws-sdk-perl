@@ -1,17 +1,52 @@
 
 package Paws::CloudDirectory::AddFacetToObject;
-  use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has ObjectAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]');
-  has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has SchemaFacet => (is => 'ro', isa => 'Paws::CloudDirectory::SchemaFacet', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_AttributeKeyAndValue CloudDirectory_ObjectReference CloudDirectory_SchemaFacet/;
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ObjectAttributeList => (is => 'ro', isa => ArrayRef[CloudDirectory_AttributeKeyAndValue], predicate => 1);
+  has ObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1, predicate => 1);
+  has SchemaFacet => (is => 'ro', isa => CloudDirectory_SchemaFacet, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddFacetToObject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/object/facets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::AddFacetToObjectResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddFacetToObject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/object/facets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::AddFacetToObjectResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     },
+  'types' => {
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'SchemaFacet' => {
+                                  'class' => 'Paws::CloudDirectory::SchemaFacet',
+                                  'type' => 'CloudDirectory_SchemaFacet'
+                                },
+               'ObjectAttributeList' => {
+                                          'class' => 'Paws::CloudDirectory::AttributeKeyAndValue',
+                                          'type' => 'ArrayRef[CloudDirectory_AttributeKeyAndValue]'
+                                        },
+               'ObjectReference' => {
+                                      'type' => 'CloudDirectory_ObjectReference',
+                                      'class' => 'Paws::CloudDirectory::ObjectReference'
+                                    }
+             },
+  'IsRequired' => {
+                    'DirectoryArn' => 1,
+                    'SchemaFacet' => 1,
+                    'ObjectReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,19 +109,19 @@ where the object resides. For more information, see arns.
 
 
 
-=head2 ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
+=head2 ObjectAttributeList => ArrayRef[CloudDirectory_AttributeKeyAndValue]
 
 Attributes on the facet that you are adding to the object.
 
 
 
-=head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ObjectReference => CloudDirectory_ObjectReference
 
 A reference to the object you are adding the specified facet to.
 
 
 
-=head2 B<REQUIRED> SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>
+=head2 B<REQUIRED> SchemaFacet => CloudDirectory_SchemaFacet
 
 Identifiers for the facet that you are adding to the object. See
 SchemaFacet for details.

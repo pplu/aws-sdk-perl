@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::ModifyWorkspaceCreationProperties;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has WorkspaceCreationProperties => (is => 'ro', isa => 'Paws::WorkSpaces::WorkspaceCreationProperties', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_WorkspaceCreationProperties/;
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WorkspaceCreationProperties => (is => 'ro', isa => WorkSpaces_WorkspaceCreationProperties, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyWorkspaceCreationProperties');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::ModifyWorkspaceCreationPropertiesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyWorkspaceCreationProperties');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::ModifyWorkspaceCreationPropertiesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'WorkspaceCreationProperties' => 1,
+                    'ResourceId' => 1
+                  },
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'WorkspaceCreationProperties' => {
+                                                  'type' => 'WorkSpaces_WorkspaceCreationProperties',
+                                                  'class' => 'Paws::WorkSpaces::WorkspaceCreationProperties'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +78,7 @@ The identifier of the directory.
 
 
 
-=head2 B<REQUIRED> WorkspaceCreationProperties => L<Paws::WorkSpaces::WorkspaceCreationProperties>
+=head2 B<REQUIRED> WorkspaceCreationProperties => WorkSpaces_WorkspaceCreationProperties
 
 The default properties for creating WorkSpaces.
 

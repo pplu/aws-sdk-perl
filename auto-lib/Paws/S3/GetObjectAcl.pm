@@ -1,19 +1,56 @@
 
 package Paws::S3::GetObjectAcl;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RequestPayer => (is => 'ro', isa => Str, predicate => 1);
+  has VersionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetObjectAcl');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}?acl');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::GetObjectAclOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetObjectAcl');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}?acl');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::GetObjectAclOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Key' => 'Key',
+                    'Bucket' => 'Bucket'
+                  },
+  'ParamInQuery' => {
+                      'VersionId' => 'versionId'
+                    },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'Key' => 1
+                  },
+  'types' => {
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'RequestPayer' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInHeader' => {
+                       'RequestPayer' => 'x-amz-request-payer'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

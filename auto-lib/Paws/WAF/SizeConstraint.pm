@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::WAF::SizeConstraint;
-  use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
-  has FieldToMatch => (is => 'ro', isa => 'Paws::WAF::FieldToMatch', required => 1);
-  has Size => (is => 'ro', isa => 'Int', required => 1);
-  has TextTransformation => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WAF::Types qw/WAF_FieldToMatch/;
+  has ComparisonOperator => (is => 'ro', isa => Str, required => 1);
+  has FieldToMatch => (is => 'ro', isa => WAF_FieldToMatch, required => 1);
+  has Size => (is => 'ro', isa => Int, required => 1);
+  has TextTransformation => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       },
+               'TextTransformation' => {
+                                         'type' => 'Str'
+                                       },
+               'FieldToMatch' => {
+                                   'class' => 'Paws::WAF::FieldToMatch',
+                                   'type' => 'WAF_FieldToMatch'
+                                 }
+             },
+  'IsRequired' => {
+                    'TextTransformation' => 1,
+                    'FieldToMatch' => 1,
+                    'ComparisonOperator' => 1,
+                    'Size' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +103,7 @@ B<GT>: Used to test if the C<Size> is strictly greater than the size of
 the C<FieldToMatch>
 
 
-=head2 B<REQUIRED> FieldToMatch => L<Paws::WAF::FieldToMatch>
+=head2 B<REQUIRED> FieldToMatch => WAF_FieldToMatch
 
   Specifies where in a web request to look for the size constraint.
 

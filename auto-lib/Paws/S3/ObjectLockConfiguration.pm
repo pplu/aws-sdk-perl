@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::S3::ObjectLockConfiguration;
-  use Moose;
-  has ObjectLockEnabled => (is => 'ro', isa => 'Str');
-  has Rule => (is => 'ro', isa => 'Paws::S3::ObjectLockRule');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_ObjectLockRule/;
+  has ObjectLockEnabled => (is => 'ro', isa => Str);
+  has Rule => (is => 'ro', isa => S3_ObjectLockRule);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObjectLockEnabled' => {
+                                        'type' => 'Str'
+                                      },
+               'Rule' => {
+                           'class' => 'Paws::S3::ObjectLockRule',
+                           'type' => 'S3_ObjectLockRule'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ The container element for Object Lock configuration parameters.
   Indicates whether this bucket has an Object Lock configuration enabled.
 
 
-=head2 Rule => L<Paws::S3::ObjectLockRule>
+=head2 Rule => S3_ObjectLockRule
 
   The Object Lock rule in place for the specified object.
 

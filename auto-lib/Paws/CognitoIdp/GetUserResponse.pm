@@ -1,13 +1,49 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::GetUserResponse;
-  use Moose;
-  has MFAOptions => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::MFAOptionType]');
-  has PreferredMfaSetting => (is => 'ro', isa => 'Str');
-  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]', required => 1);
-  has UserMFASettingList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AttributeType CognitoIdp_MFAOptionType/;
+  has MFAOptions => (is => 'ro', isa => ArrayRef[CognitoIdp_MFAOptionType]);
+  has PreferredMfaSetting => (is => 'ro', isa => Str);
+  has UserAttributes => (is => 'ro', isa => ArrayRef[CognitoIdp_AttributeType], required => 1);
+  has UserMFASettingList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Username => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserAttributes' => {
+                                     'class' => 'Paws::CognitoIdp::AttributeType',
+                                     'type' => 'ArrayRef[CognitoIdp_AttributeType]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UserMFASettingList' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'MFAOptions' => {
+                                 'class' => 'Paws::CognitoIdp::MFAOptionType',
+                                 'type' => 'ArrayRef[CognitoIdp_MFAOptionType]'
+                               },
+               'PreferredMfaSetting' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'UserAttributes' => 1,
+                    'Username' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -18,7 +54,7 @@ Paws::CognitoIdp::GetUserResponse
 =head1 ATTRIBUTES
 
 
-=head2 MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>]
+=head2 MFAOptions => ArrayRef[CognitoIdp_MFAOptionType]
 
 I<This response parameter is no longer supported.> It provides
 information only about SMS MFA configurations. It doesn't provide
@@ -32,7 +68,7 @@ GetUserResponse$UserMFASettingList response instead.
 The user's preferred MFA setting.
 
 
-=head2 B<REQUIRED> UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=head2 B<REQUIRED> UserAttributes => ArrayRef[CognitoIdp_AttributeType]
 
 An array of name-value pairs representing user attributes.
 

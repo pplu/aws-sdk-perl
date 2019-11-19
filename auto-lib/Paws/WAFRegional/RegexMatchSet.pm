@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::RegexMatchSet;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has RegexMatchSetId => (is => 'ro', isa => 'Str');
-  has RegexMatchTuples => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::RegexMatchTuple]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_RegexMatchTuple/;
+  has Name => (is => 'ro', isa => Str);
+  has RegexMatchSetId => (is => 'ro', isa => Str);
+  has RegexMatchTuples => (is => 'ro', isa => ArrayRef[WAFRegional_RegexMatchTuple]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RegexMatchTuples' => {
+                                       'type' => 'ArrayRef[WAFRegional_RegexMatchTuple]',
+                                       'class' => 'Paws::WAFRegional::RegexMatchTuple'
+                                     },
+               'RegexMatchSetId' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +90,7 @@ C<RegexMatchSetId> is returned by CreateRegexMatchSet and by
 ListRegexMatchSets.
 
 
-=head2 RegexMatchTuples => ArrayRef[L<Paws::WAFRegional::RegexMatchTuple>]
+=head2 RegexMatchTuples => ArrayRef[WAFRegional_RegexMatchTuple]
 
   Contains an array of RegexMatchTuple objects. Each C<RegexMatchTuple>
 object contains:

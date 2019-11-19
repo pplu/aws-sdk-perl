@@ -1,23 +1,82 @@
 
 package Paws::MediaLive::CreateInput;
-  use Moose;
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestinationRequest]', traits => ['NameInRequest'], request_name => 'destinations');
-  has InputSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'inputSecurityGroups');
-  has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlowRequest]', traits => ['NameInRequest'], request_name => 'mediaConnectFlows');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
-  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSourceRequest]', traits => ['NameInRequest'], request_name => 'sources');
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
-  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
-  has Vpc => (is => 'ro', isa => 'Paws::MediaLive::InputVpcRequest', traits => ['NameInRequest'], request_name => 'vpc');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaLive::Types qw/MediaLive_InputVpcRequest MediaLive_InputSourceRequest MediaLive_Tags MediaLive_MediaConnectFlowRequest MediaLive_InputDestinationRequest/;
+  has Destinations => (is => 'ro', isa => ArrayRef[MediaLive_InputDestinationRequest], predicate => 1);
+  has InputSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MediaConnectFlows => (is => 'ro', isa => ArrayRef[MediaLive_MediaConnectFlowRequest], predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has RequestId => (is => 'ro', isa => Str, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has Sources => (is => 'ro', isa => ArrayRef[MediaLive_InputSourceRequest], predicate => 1);
+  has Tags => (is => 'ro', isa => MediaLive_Tags, predicate => 1);
+  has Type => (is => 'ro', isa => Str, predicate => 1);
+  has Vpc => (is => 'ro', isa => MediaLive_InputVpcRequest, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInput');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/inputs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::CreateInputResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateInput');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/inputs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::CreateInputResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RequestId' => 'requestId',
+                       'Name' => 'name',
+                       'Destinations' => 'destinations',
+                       'InputSecurityGroups' => 'inputSecurityGroups',
+                       'Tags' => 'tags',
+                       'Vpc' => 'vpc',
+                       'MediaConnectFlows' => 'mediaConnectFlows',
+                       'RoleArn' => 'roleArn',
+                       'Type' => 'type',
+                       'Sources' => 'sources'
+                     },
+  'types' => {
+               'Tags' => {
+                           'type' => 'MediaLive_Tags',
+                           'class' => 'Paws::MediaLive::Tags'
+                         },
+               'Vpc' => {
+                          'type' => 'MediaLive_InputVpcRequest',
+                          'class' => 'Paws::MediaLive::InputVpcRequest'
+                        },
+               'Destinations' => {
+                                   'class' => 'Paws::MediaLive::InputDestinationRequest',
+                                   'type' => 'ArrayRef[MediaLive_InputDestinationRequest]'
+                                 },
+               'InputSecurityGroups' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'Sources' => {
+                              'type' => 'ArrayRef[MediaLive_InputSourceRequest]',
+                              'class' => 'Paws::MediaLive::InputSourceRequest'
+                            },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'MediaConnectFlows' => {
+                                        'class' => 'Paws::MediaLive::MediaConnectFlowRequest',
+                                        'type' => 'ArrayRef[MediaLive_MediaConnectFlowRequest]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -98,7 +157,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head1 ATTRIBUTES
 
 
-=head2 Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]
+=head2 Destinations => ArrayRef[MediaLive_InputDestinationRequest]
 
 Destination settings for PUSH type inputs.
 
@@ -110,7 +169,7 @@ A list of security groups referenced by IDs to attach to the input.
 
 
 
-=head2 MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlowRequest>]
+=head2 MediaConnectFlows => ArrayRef[MediaLive_MediaConnectFlowRequest]
 
 A list of the MediaConnect Flows that you want to use in this input.
 You can specify as few as one Flow and presently, as many as two. The
@@ -140,7 +199,7 @@ and after creation.
 
 
 
-=head2 Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>]
+=head2 Sources => ArrayRef[MediaLive_InputSourceRequest]
 
 The source URLs for a PULL-type input. Every PULL type input needs
 exactly two source URLs for redundancy. Only specify sources for PULL
@@ -148,7 +207,7 @@ type Inputs. Leave Destinations empty.
 
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
 A collection of key-value pairs.
 
@@ -160,7 +219,7 @@ A collection of key-value pairs.
 
 Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">, C<"MEDIACONNECT">
 
-=head2 Vpc => L<Paws::MediaLive::InputVpcRequest>
+=head2 Vpc => MediaLive_InputVpcRequest
 
 
 

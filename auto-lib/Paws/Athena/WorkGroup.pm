@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::Athena::WorkGroup;
-  use Moose;
-  has Configuration => (is => 'ro', isa => 'Paws::Athena::WorkGroupConfiguration');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Athena::Types qw/Athena_WorkGroupConfiguration/;
+  has Configuration => (is => 'ro', isa => Athena_WorkGroupConfiguration);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Configuration' => {
+                                    'type' => 'Athena_WorkGroupConfiguration',
+                                    'class' => 'Paws::Athena::WorkGroupConfiguration'
+                                  },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +83,7 @@ WorkGroupConfiguration$EnforceWorkGroupConfiguration.
 =head1 ATTRIBUTES
 
 
-=head2 Configuration => L<Paws::Athena::WorkGroupConfiguration>
+=head2 Configuration => Athena_WorkGroupConfiguration
 
   The configuration of the workgroup, which includes the location in
 Amazon S3 where query results are stored, the encryption configuration,

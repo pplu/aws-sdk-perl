@@ -1,23 +1,83 @@
 
 package Paws::ApiGatewayV2::UpdateAuthorizer;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has AuthorizerCredentialsArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerCredentialsArn');
-  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizerId', required => 1);
-  has AuthorizerResultTtlInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'authorizerResultTtlInSeconds');
-  has AuthorizerType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerType');
-  has AuthorizerUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerUri');
-  has IdentitySource => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'identitySource');
-  has IdentityValidationExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identityValidationExpression');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has ProviderArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'providerArns');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AuthorizerCredentialsArn => (is => 'ro', isa => Str, predicate => 1);
+  has AuthorizerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AuthorizerResultTtlInSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has AuthorizerType => (is => 'ro', isa => Str, predicate => 1);
+  has AuthorizerUri => (is => 'ro', isa => Str, predicate => 1);
+  has IdentitySource => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has IdentityValidationExpression => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has ProviderArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAuthorizer');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/authorizers/{authorizerId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::UpdateAuthorizerResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateAuthorizer');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/apis/{apiId}/authorizers/{authorizerId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::UpdateAuthorizerResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApiId' => 'apiId',
+                    'AuthorizerId' => 'authorizerId'
+                  },
+  'NameInRequest' => {
+                       'AuthorizerType' => 'authorizerType',
+                       'AuthorizerResultTtlInSeconds' => 'authorizerResultTtlInSeconds',
+                       'Name' => 'name',
+                       'IdentityValidationExpression' => 'identityValidationExpression',
+                       'AuthorizerCredentialsArn' => 'authorizerCredentialsArn',
+                       'IdentitySource' => 'identitySource',
+                       'AuthorizerUri' => 'authorizerUri',
+                       'ProviderArns' => 'providerArns'
+                     },
+  'IsRequired' => {
+                    'ApiId' => 1,
+                    'AuthorizerId' => 1
+                  },
+  'types' => {
+               'AuthorizerId' => {
+                                   'type' => 'Str'
+                                 },
+               'AuthorizerType' => {
+                                     'type' => 'Str'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AuthorizerResultTtlInSeconds' => {
+                                                   'type' => 'Int'
+                                                 },
+               'IdentityValidationExpression' => {
+                                                   'type' => 'Str'
+                                                 },
+               'AuthorizerUri' => {
+                                    'type' => 'Str'
+                                  },
+               'AuthorizerCredentialsArn' => {
+                                               'type' => 'Str'
+                                             },
+               'IdentitySource' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'ProviderArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

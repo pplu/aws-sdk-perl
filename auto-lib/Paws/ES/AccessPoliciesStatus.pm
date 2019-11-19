@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::ES::AccessPoliciesStatus;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Paws::ES::OptionStatus', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ES::Types qw/ES_OptionStatus/;
+  has Options => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => ES_OptionStatus, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'ES_OptionStatus',
+                             'class' => 'Paws::ES::OptionStatus'
+                           },
+               'Options' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'Options' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +72,7 @@ Access Policies
 more information.
 
 
-=head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
+=head2 B<REQUIRED> Status => ES_OptionStatus
 
   The status of the access policy for the Elasticsearch domain. See
 C<OptionStatus> for the status information that's included.

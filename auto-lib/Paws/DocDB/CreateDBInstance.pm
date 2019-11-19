@@ -1,21 +1,68 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::CreateDBInstance;
-  use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBInstanceClass => (is => 'ro', isa => 'Str', required => 1);
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Engine => (is => 'ro', isa => 'Str', required => 1);
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PromotionTier => (is => 'ro', isa => 'Int');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::DocDB::Types qw/DocDB_Tag/;
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBInstanceClass => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PromotionTier => (is => 'ro', isa => Int, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DocDB_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::CreateDBInstanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDBInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::CreateDBInstanceResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateDBInstanceResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'Tags' => {
+                           'class' => 'Paws::DocDB::Tag',
+                           'type' => 'ArrayRef[DocDB_Tag]'
+                         },
+               'PromotionTier' => {
+                                    'type' => 'Int'
+                                  },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'Engine' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'DBInstanceClass' => 1,
+                    'DBInstanceIdentifier' => 1,
+                    'DBClusterIdentifier' => 1,
+                    'Engine' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -165,7 +212,7 @@ Valid values: 0-15
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
+=head2 Tags => ArrayRef[DocDB_Tag]
 
 The tags to be assigned to the DB instance. You can assign up to 10
 tags to an instance.

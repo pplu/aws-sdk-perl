@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Snowball::ClusterListEntry;
-  use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str');
-  has ClusterState => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Snowball::Types qw//;
+  has ClusterId => (is => 'ro', isa => Str);
+  has ClusterState => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterState' => {
+                                   'type' => 'Str'
+                                 },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ClusterId' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

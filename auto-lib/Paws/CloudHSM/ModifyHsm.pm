@@ -1,18 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudHSM::ModifyHsm;
-  use Moose;
-  has EniIp => (is => 'ro', isa => 'Str');
-  has ExternalId => (is => 'ro', isa => 'Str');
-  has HsmArn => (is => 'ro', isa => 'Str', required => 1);
-  has IamRoleArn => (is => 'ro', isa => 'Str');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has SyslogIp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudHSM::Types qw//;
+  has EniIp => (is => 'ro', isa => Str, predicate => 1);
+  has ExternalId => (is => 'ro', isa => Str, predicate => 1);
+  has HsmArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IamRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has SubnetId => (is => 'ro', isa => Str, predicate => 1);
+  has SyslogIp => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyHsm');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::ModifyHsmResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyHsm');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudHSM::ModifyHsmResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HsmArn' => {
+                             'type' => 'Str'
+                           },
+               'SyslogIp' => {
+                               'type' => 'Str'
+                             },
+               'EniIp' => {
+                            'type' => 'Str'
+                          },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'ExternalId' => {
+                                 'type' => 'Str'
+                               },
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'HsmArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

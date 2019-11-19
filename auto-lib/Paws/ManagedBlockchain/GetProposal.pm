@@ -1,15 +1,41 @@
 
 package Paws::ManagedBlockchain::GetProposal;
-  use Moose;
-  has NetworkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'networkId', required => 1);
-  has ProposalId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'proposalId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has NetworkId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProposalId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetProposal');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/proposals/{proposalId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::GetProposalOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetProposal');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/networks/{networkId}/proposals/{proposalId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ManagedBlockchain::GetProposalOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NetworkId' => {
+                                'type' => 'Str'
+                              },
+               'ProposalId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ProposalId' => 1,
+                    'NetworkId' => 1
+                  },
+  'ParamInURI' => {
+                    'ProposalId' => 'proposalId',
+                    'NetworkId' => 'networkId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

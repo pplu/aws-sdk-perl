@@ -1,17 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::CreateDevicePool;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has MaxDevices => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxDevices' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Rule]', traits => ['NameInRequest'], request_name => 'rules' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Rule/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has MaxDevices => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProjectArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Rules => (is => 'ro', isa => ArrayRef[DeviceFarm_Rule], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDevicePool');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::CreateDevicePoolResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDevicePool');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::CreateDevicePoolResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MaxDevices' => {
+                                 'type' => 'Int'
+                               },
+               'ProjectArn' => {
+                                 'type' => 'Str'
+                               },
+               'Rules' => {
+                            'class' => 'Paws::DeviceFarm::Rule',
+                            'type' => 'ArrayRef[DeviceFarm_Rule]'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'MaxDevices' => 'maxDevices',
+                       'Name' => 'name',
+                       'Description' => 'description',
+                       'Rules' => 'rules',
+                       'ProjectArn' => 'projectArn'
+                     },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Rules' => 1,
+                    'ProjectArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +127,7 @@ The ARN of the project for the device pool.
 
 
 
-=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
+=head2 B<REQUIRED> Rules => ArrayRef[DeviceFarm_Rule]
 
 The device pool's rules.
 

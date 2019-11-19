@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MTurk::ReviewPolicy;
-  use Moose;
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::PolicyParameter]');
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::MTurk::Types qw/MTurk_PolicyParameter/;
+  has Parameters => (is => 'ro', isa => ArrayRef[MTurk_PolicyParameter]);
+  has PolicyName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'type' => 'ArrayRef[MTurk_PolicyParameter]',
+                                 'class' => 'Paws::MTurk::PolicyParameter'
+                               },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'PolicyName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ you specify when you create a HIT.
 =head1 ATTRIBUTES
 
 
-=head2 Parameters => ArrayRef[L<Paws::MTurk::PolicyParameter>]
+=head2 Parameters => ArrayRef[MTurk_PolicyParameter]
 
   Name of the parameter from the Review policy.
 

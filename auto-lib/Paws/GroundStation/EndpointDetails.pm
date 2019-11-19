@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::GroundStation::EndpointDetails;
-  use Moose;
-  has Endpoint => (is => 'ro', isa => 'Paws::GroundStation::DataflowEndpoint', request_name => 'endpoint', traits => ['NameInRequest']);
-  has SecurityDetails => (is => 'ro', isa => 'Paws::GroundStation::SecurityDetails', request_name => 'securityDetails', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::GroundStation::Types qw/GroundStation_SecurityDetails GroundStation_DataflowEndpoint/;
+  has Endpoint => (is => 'ro', isa => GroundStation_DataflowEndpoint);
+  has SecurityDetails => (is => 'ro', isa => GroundStation_SecurityDetails);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Endpoint' => 'endpoint',
+                       'SecurityDetails' => 'securityDetails'
+                     },
+  'types' => {
+               'Endpoint' => {
+                               'type' => 'GroundStation_DataflowEndpoint',
+                               'class' => 'Paws::GroundStation::DataflowEndpoint'
+                             },
+               'SecurityDetails' => {
+                                      'type' => 'GroundStation_SecurityDetails',
+                                      'class' => 'Paws::GroundStation::SecurityDetails'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Information about the endpoint details.
 =head1 ATTRIBUTES
 
 
-=head2 Endpoint => L<Paws::GroundStation::DataflowEndpoint>
+=head2 Endpoint => GroundStation_DataflowEndpoint
 
   A dataflow endpoint.
 
 
-=head2 SecurityDetails => L<Paws::GroundStation::SecurityDetails>
+=head2 SecurityDetails => GroundStation_SecurityDetails
 
   Endpoint security details.
 

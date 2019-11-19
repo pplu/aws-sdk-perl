@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::BatchGetCommits;
-  use Moose;
-  has CommitIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'commitIds' , required => 1);
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeCommit::Types qw//;
+  has CommitIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchGetCommits');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::BatchGetCommitsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchGetCommits');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::BatchGetCommitsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'CommitIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             },
+  'NameInRequest' => {
+                       'RepositoryName' => 'repositoryName',
+                       'CommitIds' => 'commitIds'
+                     },
+  'IsRequired' => {
+                    'CommitIds' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

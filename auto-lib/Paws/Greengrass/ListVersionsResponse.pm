@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Greengrass::ListVersionsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Versions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::VersionInformation]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_VersionInformation/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Versions => (is => 'ro', isa => ArrayRef[Greengrass_VersionInformation]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Versions' => {
+                               'type' => 'ArrayRef[Greengrass_VersionInformation]',
+                               'class' => 'Paws::Greengrass::VersionInformation'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ A list of versions.
 additional results.
 
 
-=head2 Versions => ArrayRef[L<Paws::Greengrass::VersionInformation>]
+=head2 Versions => ArrayRef[Greengrass_VersionInformation]
 
   Information about a version.
 

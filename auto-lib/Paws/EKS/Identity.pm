@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::EKS::Identity;
-  use Moose;
-  has Oidc => (is => 'ro', isa => 'Paws::EKS::OIDC', request_name => 'oidc', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::EKS::Types qw/EKS_OIDC/;
+  has Oidc => (is => 'ro', isa => EKS_OIDC);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Oidc' => 'oidc'
+                     },
+  'types' => {
+               'Oidc' => {
+                           'class' => 'Paws::EKS::OIDC',
+                           'type' => 'EKS_OIDC'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ credentials.
 =head1 ATTRIBUTES
 
 
-=head2 Oidc => L<Paws::EKS::OIDC>
+=head2 Oidc => EKS_OIDC
 
   The OpenID Connect (https://openid.net/connect/) identity provider
 information for the cluster.

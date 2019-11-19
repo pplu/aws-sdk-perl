@@ -1,16 +1,49 @@
 
 package Paws::IoT::UpdateThingGroup;
-  use Moose;
-  has ExpectedVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'expectedVersion');
-  has ThingGroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingGroupName', required => 1);
-  has ThingGroupProperties => (is => 'ro', isa => 'Paws::IoT::ThingGroupProperties', traits => ['NameInRequest'], request_name => 'thingGroupProperties', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw/IoT_ThingGroupProperties/;
+  has ExpectedVersion => (is => 'ro', isa => Int, predicate => 1);
+  has ThingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ThingGroupProperties => (is => 'ro', isa => IoT_ThingGroupProperties, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateThingGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/thing-groups/{thingGroupName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::UpdateThingGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateThingGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/thing-groups/{thingGroupName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::UpdateThingGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ThingGroupName' => 1,
+                    'ThingGroupProperties' => 1
+                  },
+  'NameInRequest' => {
+                       'ThingGroupProperties' => 'thingGroupProperties',
+                       'ExpectedVersion' => 'expectedVersion'
+                     },
+  'types' => {
+               'ThingGroupProperties' => {
+                                           'class' => 'Paws::IoT::ThingGroupProperties',
+                                           'type' => 'IoT_ThingGroupProperties'
+                                         },
+               'ThingGroupName' => {
+                                     'type' => 'Str'
+                                   },
+               'ExpectedVersion' => {
+                                      'type' => 'Int'
+                                    }
+             },
+  'ParamInURI' => {
+                    'ThingGroupName' => 'thingGroupName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +103,7 @@ The thing group to update.
 
 
 
-=head2 B<REQUIRED> ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>
+=head2 B<REQUIRED> ThingGroupProperties => IoT_ThingGroupProperties
 
 The thing group properties.
 

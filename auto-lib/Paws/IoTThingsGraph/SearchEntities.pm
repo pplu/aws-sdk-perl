@@ -1,17 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::IoTThingsGraph::SearchEntities;
-  use Moose;
-  has EntityTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'entityTypes' , required => 1);
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::IoTThingsGraph::EntityFilter]', traits => ['NameInRequest'], request_name => 'filters' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NamespaceVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'namespaceVersion' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_EntityFilter/;
+  has EntityTypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[IoTThingsGraph_EntityFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NamespaceVersion => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SearchEntities');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTThingsGraph::SearchEntitiesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SearchEntities');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTThingsGraph::SearchEntitiesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'EntityTypes' => 1
+                  },
+  'NameInRequest' => {
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken',
+                       'NamespaceVersion' => 'namespaceVersion',
+                       'Filters' => 'filters',
+                       'EntityTypes' => 'entityTypes'
+                     },
+  'types' => {
+               'EntityTypes' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NamespaceVersion' => {
+                                       'type' => 'Int'
+                                     },
+               'Filters' => {
+                              'type' => 'ArrayRef[IoTThingsGraph_EntityFilter]',
+                              'class' => 'Paws::IoTThingsGraph::EntityFilter'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +106,7 @@ The entity types for which to search.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::IoTThingsGraph::EntityFilter>]
+=head2 Filters => ArrayRef[IoTThingsGraph_EntityFilter]
 
 Optional filter to apply to the search. Valid filters are C<NAME>
 C<NAMESPACE>, C<SEMANTIC_TYPE_PATH> and C<REFERENCED_ENTITY_ID>.

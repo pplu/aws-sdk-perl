@@ -1,7 +1,30 @@
 package Paws::EC2::LaunchTemplateConfig;
-  use Moose;
-  has LaunchTemplateSpecification => (is => 'ro', isa => 'Paws::EC2::FleetLaunchTemplateSpecification', request_name => 'launchTemplateSpecification', traits => ['NameInRequest']);
-  has Overrides => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateOverrides]', request_name => 'overrides', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef/;
+  use Paws::EC2::Types qw/EC2_LaunchTemplateOverrides EC2_FleetLaunchTemplateSpecification/;
+  has LaunchTemplateSpecification => (is => 'ro', isa => EC2_FleetLaunchTemplateSpecification);
+  has Overrides => (is => 'ro', isa => ArrayRef[EC2_LaunchTemplateOverrides]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LaunchTemplateSpecification' => 'launchTemplateSpecification',
+                       'Overrides' => 'overrides'
+                     },
+  'types' => {
+               'LaunchTemplateSpecification' => {
+                                                  'class' => 'Paws::EC2::FleetLaunchTemplateSpecification',
+                                                  'type' => 'EC2_FleetLaunchTemplateSpecification'
+                                                },
+               'Overrides' => {
+                                'class' => 'Paws::EC2::LaunchTemplateOverrides',
+                                'type' => 'ArrayRef[EC2_LaunchTemplateOverrides]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +60,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 LaunchTemplateSpecification => L<Paws::EC2::FleetLaunchTemplateSpecification>
+=head2 LaunchTemplateSpecification => EC2_FleetLaunchTemplateSpecification
 
   The launch template.
 
 
-=head2 Overrides => ArrayRef[L<Paws::EC2::LaunchTemplateOverrides>]
+=head2 Overrides => ArrayRef[EC2_LaunchTemplateOverrides]
 
   Any parameters that you specify override the same parameters in the
 launch template.

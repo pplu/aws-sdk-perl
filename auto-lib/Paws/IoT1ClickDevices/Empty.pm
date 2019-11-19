@@ -1,5 +1,16 @@
+# Generated from default/object.tt
 package Paws::IoT1ClickDevices::Empty;
-  use Moose;
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoT1ClickDevices::Types qw//;
+
+    sub params_map {
+    our $Params_map ||= {}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

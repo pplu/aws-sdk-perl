@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::SSM::FailedCreateAssociation;
-  use Moose;
-  has Entry => (is => 'ro', isa => 'Paws::SSM::CreateAssociationBatchRequestEntry');
-  has Fault => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_CreateAssociationBatchRequestEntry/;
+  has Entry => (is => 'ro', isa => SSM_CreateAssociationBatchRequestEntry);
+  has Fault => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Entry' => {
+                            'type' => 'SSM_CreateAssociationBatchRequestEntry',
+                            'class' => 'Paws::SSM::CreateAssociationBatchRequestEntry'
+                          },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Fault' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ Describes a failed association.
 =head1 ATTRIBUTES
 
 
-=head2 Entry => L<Paws::SSM::CreateAssociationBatchRequestEntry>
+=head2 Entry => SSM_CreateAssociationBatchRequestEntry
 
   The association.
 

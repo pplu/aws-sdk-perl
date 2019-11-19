@@ -1,25 +1,83 @@
 
 package Paws::S3::CreateBucket;
-  use Moose;
-  has ACL => (is => 'ro', isa => 'Str', header_name => 'x-amz-acl', traits => ['ParamInHeader']);
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
-  has CreateBucketConfiguration => (is => 'ro', isa => 'Paws::S3::CreateBucketConfiguration');
-  has GrantFullControl => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-full-control', traits => ['ParamInHeader']);
-  has GrantRead => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read', traits => ['ParamInHeader']);
-  has GrantReadACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read-acp', traits => ['ParamInHeader']);
-  has GrantWrite => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-write', traits => ['ParamInHeader']);
-  has GrantWriteACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-write-acp', traits => ['ParamInHeader']);
-  has ObjectLockEnabledForBucket => (is => 'ro', isa => 'Bool', header_name => 'x-amz-bucket-object-lock-enabled', traits => ['ParamInHeader']);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::S3::Types qw/S3_CreateBucketConfiguration/;
+  has ACL => (is => 'ro', isa => Str, predicate => 1);
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentLength => (is => 'ro', isa => Int, predicate => 1);
+  has CreateBucketConfiguration => (is => 'ro', isa => S3_CreateBucketConfiguration, predicate => 1);
+  has GrantFullControl => (is => 'ro', isa => Str, predicate => 1);
+  has GrantRead => (is => 'ro', isa => Str, predicate => 1);
+  has GrantReadACP => (is => 'ro', isa => Str, predicate => 1);
+  has GrantWrite => (is => 'ro', isa => Str, predicate => 1);
+  has GrantWriteACP => (is => 'ro', isa => Str, predicate => 1);
+  has ObjectLockEnabledForBucket => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBucket');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::CreateBucketOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBucket');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::CreateBucketOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GrantWriteACP' => {
+                                    'type' => 'Str'
+                                  },
+               'GrantWrite' => {
+                                 'type' => 'Str'
+                               },
+               'ACL' => {
+                          'type' => 'Str'
+                        },
+               'GrantRead' => {
+                                'type' => 'Str'
+                              },
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'ObjectLockEnabledForBucket' => {
+                                                 'type' => 'Bool'
+                                               },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'GrantFullControl' => {
+                                       'type' => 'Str'
+                                     },
+               'GrantReadACP' => {
+                                   'type' => 'Str'
+                                 },
+               'CreateBucketConfiguration' => {
+                                                'type' => 'S3_CreateBucketConfiguration',
+                                                'class' => 'Paws::S3::CreateBucketConfiguration'
+                                              }
+             },
+  'IsRequired' => {
+                    'Bucket' => 1
+                  },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket'
+                  },
+  'ParamInHeader' => {
+                       'GrantReadACP' => 'x-amz-grant-read-acp',
+                       'ContentLength' => 'Content-Length',
+                       'GrantRead' => 'x-amz-grant-read',
+                       'ACL' => 'x-amz-acl',
+                       'GrantFullControl' => 'x-amz-grant-full-control',
+                       'GrantWrite' => 'x-amz-grant-write',
+                       'GrantWriteACP' => 'x-amz-grant-write-acp',
+                       'ObjectLockEnabledForBucket' => 'x-amz-bucket-object-lock-enabled'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +142,7 @@ Size of the body in bytes.
 
 
 
-=head2 CreateBucketConfiguration => L<Paws::S3::CreateBucketConfiguration>
+=head2 CreateBucketConfiguration => S3_CreateBucketConfiguration
 
 The configuration information for the bucket.
 

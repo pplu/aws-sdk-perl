@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::RollbackInfo;
-  use Moose;
-  has RollbackDeploymentId => (is => 'ro', isa => 'Str', request_name => 'rollbackDeploymentId', traits => ['NameInRequest']);
-  has RollbackMessage => (is => 'ro', isa => 'Str', request_name => 'rollbackMessage', traits => ['NameInRequest']);
-  has RollbackTriggeringDeploymentId => (is => 'ro', isa => 'Str', request_name => 'rollbackTriggeringDeploymentId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has RollbackDeploymentId => (is => 'ro', isa => Str);
+  has RollbackMessage => (is => 'ro', isa => Str);
+  has RollbackTriggeringDeploymentId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RollbackDeploymentId' => 'rollbackDeploymentId',
+                       'RollbackTriggeringDeploymentId' => 'rollbackTriggeringDeploymentId',
+                       'RollbackMessage' => 'rollbackMessage'
+                     },
+  'types' => {
+               'RollbackDeploymentId' => {
+                                           'type' => 'Str'
+                                         },
+               'RollbackTriggeringDeploymentId' => {
+                                                     'type' => 'Str'
+                                                   },
+               'RollbackMessage' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,19 +1,53 @@
 
 package Paws::CodeStarNotifications::UpdateNotificationRule;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has DetailType => (is => 'ro', isa => 'Str');
-  has EventTypeIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::CodeStarNotifications::Target]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeStarNotifications::Types qw/CodeStarNotifications_Target/;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DetailType => (is => 'ro', isa => Str, predicate => 1);
+  has EventTypeIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[CodeStarNotifications_Target], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateNotificationRule');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/updateNotificationRule');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStarNotifications::UpdateNotificationRuleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateNotificationRule');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/updateNotificationRule');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStarNotifications::UpdateNotificationRuleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DetailType' => {
+                                 'type' => 'Str'
+                               },
+               'Targets' => {
+                              'type' => 'ArrayRef[CodeStarNotifications_Target]',
+                              'class' => 'Paws::CodeStarNotifications::Target'
+                            },
+               'EventTypeIds' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +126,7 @@ The status of the notification rule. Valid statuses include enabled
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
 
-=head2 Targets => ArrayRef[L<Paws::CodeStarNotifications::Target>]
+=head2 Targets => ArrayRef[CodeStarNotifications_Target]
 
 The address and type of the targets to receive notifications from this
 notification rule.

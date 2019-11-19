@@ -1,14 +1,66 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::DomainNameConfiguration;
-  use Moose;
-  has ApiGatewayDomainName => (is => 'ro', isa => 'Str', request_name => 'apiGatewayDomainName', traits => ['NameInRequest']);
-  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
-  has CertificateName => (is => 'ro', isa => 'Str', request_name => 'certificateName', traits => ['NameInRequest']);
-  has CertificateUploadDate => (is => 'ro', isa => 'Str', request_name => 'certificateUploadDate', traits => ['NameInRequest']);
-  has DomainNameStatus => (is => 'ro', isa => 'Str', request_name => 'domainNameStatus', traits => ['NameInRequest']);
-  has DomainNameStatusMessage => (is => 'ro', isa => 'Str', request_name => 'domainNameStatusMessage', traits => ['NameInRequest']);
-  has EndpointType => (is => 'ro', isa => 'Str', request_name => 'endpointType', traits => ['NameInRequest']);
-  has HostedZoneId => (is => 'ro', isa => 'Str', request_name => 'hostedZoneId', traits => ['NameInRequest']);
-  has SecurityPolicy => (is => 'ro', isa => 'Str', request_name => 'securityPolicy', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ApiGatewayDomainName => (is => 'ro', isa => Str);
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CertificateName => (is => 'ro', isa => Str);
+  has CertificateUploadDate => (is => 'ro', isa => Str);
+  has DomainNameStatus => (is => 'ro', isa => Str);
+  has DomainNameStatusMessage => (is => 'ro', isa => Str);
+  has EndpointType => (is => 'ro', isa => Str);
+  has HostedZoneId => (is => 'ro', isa => Str);
+  has SecurityPolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DomainNameStatusMessage' => 'domainNameStatusMessage',
+                       'HostedZoneId' => 'hostedZoneId',
+                       'EndpointType' => 'endpointType',
+                       'SecurityPolicy' => 'securityPolicy',
+                       'CertificateName' => 'certificateName',
+                       'DomainNameStatus' => 'domainNameStatus',
+                       'ApiGatewayDomainName' => 'apiGatewayDomainName',
+                       'CertificateUploadDate' => 'certificateUploadDate',
+                       'CertificateArn' => 'certificateArn'
+                     },
+  'types' => {
+               'EndpointType' => {
+                                   'type' => 'Str'
+                                 },
+               'SecurityPolicy' => {
+                                     'type' => 'Str'
+                                   },
+               'CertificateName' => {
+                                      'type' => 'Str'
+                                    },
+               'DomainNameStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'ApiGatewayDomainName' => {
+                                           'type' => 'Str'
+                                         },
+               'CertificateUploadDate' => {
+                                            'type' => 'Str'
+                                          },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'DomainNameStatusMessage' => {
+                                              'type' => 'Str'
+                                            },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

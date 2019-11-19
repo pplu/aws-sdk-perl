@@ -1,15 +1,41 @@
 
 package Paws::ApiGateway::DeleteUsagePlanKey;
-  use Moose;
-  has KeyId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'keyId', required => 1);
-  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usageplanId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has KeyId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UsagePlanId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteUsagePlanKey');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/usageplans/{usageplanId}/keys/{keyId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteUsagePlanKey');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/usageplans/{usageplanId}/keys/{keyId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'KeyId' => 1,
+                    'UsagePlanId' => 1
+                  },
+  'types' => {
+               'UsagePlanId' => {
+                                  'type' => 'Str'
+                                },
+               'KeyId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'ParamInURI' => {
+                    'KeyId' => 'keyId',
+                    'UsagePlanId' => 'usageplanId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

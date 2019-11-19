@@ -1,9 +1,38 @@
 package Paws::EC2::VolumeStatusAction;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has EventId => (is => 'ro', isa => 'Str', request_name => 'eventId', traits => ['NameInRequest']);
-  has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Code => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EventId => (is => 'ro', isa => Str);
+  has EventType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EventId' => 'eventId',
+                       'EventType' => 'eventType',
+                       'Code' => 'code',
+                       'Description' => 'description'
+                     },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'EventId' => {
+                              'type' => 'Str'
+                            },
+               'EventType' => {
+                                'type' => 'Str'
+                              },
+               'Code' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

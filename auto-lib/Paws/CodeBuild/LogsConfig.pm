@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::LogsConfig;
-  use Moose;
-  has CloudWatchLogs => (is => 'ro', isa => 'Paws::CodeBuild::CloudWatchLogsConfig', request_name => 'cloudWatchLogs', traits => ['NameInRequest']);
-  has S3Logs => (is => 'ro', isa => 'Paws::CodeBuild::S3LogsConfig', request_name => 's3Logs', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CodeBuild::Types qw/CodeBuild_CloudWatchLogsConfig CodeBuild_S3LogsConfig/;
+  has CloudWatchLogs => (is => 'ro', isa => CodeBuild_CloudWatchLogsConfig);
+  has S3Logs => (is => 'ro', isa => CodeBuild_S3LogsConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'S3Logs' => 's3Logs',
+                       'CloudWatchLogs' => 'cloudWatchLogs'
+                     },
+  'types' => {
+               'CloudWatchLogs' => {
+                                     'type' => 'CodeBuild_CloudWatchLogsConfig',
+                                     'class' => 'Paws::CodeBuild::CloudWatchLogsConfig'
+                                   },
+               'S3Logs' => {
+                             'class' => 'Paws::CodeBuild::S3LogsConfig',
+                             'type' => 'CodeBuild_S3LogsConfig'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +64,13 @@ CloudWatch Logs, built in a specified S3 bucket, or both.
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchLogs => L<Paws::CodeBuild::CloudWatchLogsConfig>
+=head2 CloudWatchLogs => CodeBuild_CloudWatchLogsConfig
 
   Information about Amazon CloudWatch Logs for a build project. Amazon
 CloudWatch Logs are enabled by default.
 
 
-=head2 S3Logs => L<Paws::CodeBuild::S3LogsConfig>
+=head2 S3Logs => CodeBuild_S3LogsConfig
 
   Information about logs built to an S3 bucket for a build project. S3
 logs are not enabled by default.

@@ -1,16 +1,45 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::CopyClusterSnapshot;
-  use Moose;
-  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has SourceSnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
-  has SourceSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has TargetSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::RedShift::Types qw//;
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has SourceSnapshotClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has SourceSnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetSnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyClusterSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::CopyClusterSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyClusterSnapshotResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopyClusterSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::CopyClusterSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CopyClusterSnapshotResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SourceSnapshotIdentifier' => 1,
+                    'TargetSnapshotIdentifier' => 1
+                  },
+  'types' => {
+               'TargetSnapshotIdentifier' => {
+                                               'type' => 'Str'
+                                             },
+               'ManualSnapshotRetentionPeriod' => {
+                                                    'type' => 'Int'
+                                                  },
+               'SourceSnapshotIdentifier' => {
+                                               'type' => 'Str'
+                                             },
+               'SourceSnapshotClusterIdentifier' => {
+                                                      'type' => 'Str'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

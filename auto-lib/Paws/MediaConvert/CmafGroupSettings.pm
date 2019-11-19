@@ -1,23 +1,114 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::CmafGroupSettings;
-  use Moose;
-  has AdditionalManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::CmafAdditionalManifest]', request_name => 'additionalManifests', traits => ['NameInRequest']);
-  has BaseUrl => (is => 'ro', isa => 'Str', request_name => 'baseUrl', traits => ['NameInRequest']);
-  has ClientCache => (is => 'ro', isa => 'Str', request_name => 'clientCache', traits => ['NameInRequest']);
-  has CodecSpecification => (is => 'ro', isa => 'Str', request_name => 'codecSpecification', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
-  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::CmafEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
-  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
-  has ManifestCompression => (is => 'ro', isa => 'Str', request_name => 'manifestCompression', traits => ['NameInRequest']);
-  has ManifestDurationFormat => (is => 'ro', isa => 'Str', request_name => 'manifestDurationFormat', traits => ['NameInRequest']);
-  has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
-  has MinFinalSegmentLength => (is => 'ro', isa => 'Num', request_name => 'minFinalSegmentLength', traits => ['NameInRequest']);
-  has MpdProfile => (is => 'ro', isa => 'Str', request_name => 'mpdProfile', traits => ['NameInRequest']);
-  has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
-  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
-  has StreamInfResolution => (is => 'ro', isa => 'Str', request_name => 'streamInfResolution', traits => ['NameInRequest']);
-  has WriteDashManifest => (is => 'ro', isa => 'Str', request_name => 'writeDashManifest', traits => ['NameInRequest']);
-  has WriteHlsManifest => (is => 'ro', isa => 'Str', request_name => 'writeHlsManifest', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int Num/;
+  use Paws::MediaConvert::Types qw/MediaConvert_DestinationSettings MediaConvert_CmafEncryptionSettings MediaConvert_CmafAdditionalManifest/;
+  has AdditionalManifests => (is => 'ro', isa => ArrayRef[MediaConvert_CmafAdditionalManifest]);
+  has BaseUrl => (is => 'ro', isa => Str);
+  has ClientCache => (is => 'ro', isa => Str);
+  has CodecSpecification => (is => 'ro', isa => Str);
+  has Destination => (is => 'ro', isa => Str);
+  has DestinationSettings => (is => 'ro', isa => MediaConvert_DestinationSettings);
+  has Encryption => (is => 'ro', isa => MediaConvert_CmafEncryptionSettings);
+  has FragmentLength => (is => 'ro', isa => Int);
+  has ManifestCompression => (is => 'ro', isa => Str);
+  has ManifestDurationFormat => (is => 'ro', isa => Str);
+  has MinBufferTime => (is => 'ro', isa => Int);
+  has MinFinalSegmentLength => (is => 'ro', isa => Num);
+  has MpdProfile => (is => 'ro', isa => Str);
+  has SegmentControl => (is => 'ro', isa => Str);
+  has SegmentLength => (is => 'ro', isa => Int);
+  has StreamInfResolution => (is => 'ro', isa => Str);
+  has WriteDashManifest => (is => 'ro', isa => Str);
+  has WriteHlsManifest => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'WriteDashManifest' => 'writeDashManifest',
+                       'MpdProfile' => 'mpdProfile',
+                       'MinFinalSegmentLength' => 'minFinalSegmentLength',
+                       'StreamInfResolution' => 'streamInfResolution',
+                       'DestinationSettings' => 'destinationSettings',
+                       'CodecSpecification' => 'codecSpecification',
+                       'SegmentLength' => 'segmentLength',
+                       'Destination' => 'destination',
+                       'WriteHlsManifest' => 'writeHlsManifest',
+                       'MinBufferTime' => 'minBufferTime',
+                       'ManifestCompression' => 'manifestCompression',
+                       'ManifestDurationFormat' => 'manifestDurationFormat',
+                       'ClientCache' => 'clientCache',
+                       'Encryption' => 'encryption',
+                       'FragmentLength' => 'fragmentLength',
+                       'SegmentControl' => 'segmentControl',
+                       'BaseUrl' => 'baseUrl',
+                       'AdditionalManifests' => 'additionalManifests'
+                     },
+  'types' => {
+               'DestinationSettings' => {
+                                          'type' => 'MediaConvert_DestinationSettings',
+                                          'class' => 'Paws::MediaConvert::DestinationSettings'
+                                        },
+               'MpdProfile' => {
+                                 'type' => 'Str'
+                               },
+               'WriteDashManifest' => {
+                                        'type' => 'Str'
+                                      },
+               'StreamInfResolution' => {
+                                          'type' => 'Str'
+                                        },
+               'MinFinalSegmentLength' => {
+                                            'type' => 'Num'
+                                          },
+               'MinBufferTime' => {
+                                    'type' => 'Int'
+                                  },
+               'WriteHlsManifest' => {
+                                       'type' => 'Str'
+                                     },
+               'ManifestCompression' => {
+                                          'type' => 'Str'
+                                        },
+               'CodecSpecification' => {
+                                         'type' => 'Str'
+                                       },
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'SegmentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'Encryption' => {
+                                 'type' => 'MediaConvert_CmafEncryptionSettings',
+                                 'class' => 'Paws::MediaConvert::CmafEncryptionSettings'
+                               },
+               'ClientCache' => {
+                                  'type' => 'Str'
+                                },
+               'FragmentLength' => {
+                                     'type' => 'Int'
+                                   },
+               'SegmentControl' => {
+                                     'type' => 'Str'
+                                   },
+               'ManifestDurationFormat' => {
+                                             'type' => 'Str'
+                                           },
+               'AdditionalManifests' => {
+                                          'class' => 'Paws::MediaConvert::CmafAdditionalManifest',
+                                          'type' => 'ArrayRef[MediaConvert_CmafAdditionalManifest]'
+                                        },
+               'BaseUrl' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +147,7 @@ or caption output.
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalManifests => ArrayRef[L<Paws::MediaConvert::CmafAdditionalManifest>]
+=head2 AdditionalManifests => ArrayRef[MediaConvert_CmafAdditionalManifest]
 
   By default, the service creates one top-level .m3u8 HLS manifest and
 one top -level .mpd DASH manifest for each CMAF output group in your
@@ -95,13 +186,13 @@ filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
 
 
-=head2 DestinationSettings => L<Paws::MediaConvert::DestinationSettings>
+=head2 DestinationSettings => MediaConvert_DestinationSettings
 
   Settings associated with the destination. Will vary based on the type
 of destination
 
 
-=head2 Encryption => L<Paws::MediaConvert::CmafEncryptionSettings>
+=head2 Encryption => MediaConvert_CmafEncryptionSettings
 
   DRM settings.
 

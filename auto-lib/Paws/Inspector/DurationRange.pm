@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Inspector::DurationRange;
-  use Moose;
-  has MaxSeconds => (is => 'ro', isa => 'Int', request_name => 'maxSeconds', traits => ['NameInRequest']);
-  has MinSeconds => (is => 'ro', isa => 'Int', request_name => 'minSeconds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Inspector::Types qw//;
+  has MaxSeconds => (is => 'ro', isa => Int);
+  has MinSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MaxSeconds' => 'maxSeconds',
+                       'MinSeconds' => 'minSeconds'
+                     },
+  'types' => {
+               'MaxSeconds' => {
+                                 'type' => 'Int'
+                               },
+               'MinSeconds' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

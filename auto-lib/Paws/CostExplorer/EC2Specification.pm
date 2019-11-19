@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::EC2Specification;
-  use Moose;
-  has OfferingClass => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has OfferingClass => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OfferingClass' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

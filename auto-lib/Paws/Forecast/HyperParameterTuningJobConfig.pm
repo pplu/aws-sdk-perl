@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Forecast::HyperParameterTuningJobConfig;
-  use Moose;
-  has ParameterRanges => (is => 'ro', isa => 'Paws::Forecast::ParameterRanges');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Forecast::Types qw/Forecast_ParameterRanges/;
+  has ParameterRanges => (is => 'ro', isa => Forecast_ParameterRanges);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterRanges' => {
+                                      'type' => 'Forecast_ParameterRanges',
+                                      'class' => 'Paws::Forecast::ParameterRanges'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +66,7 @@ algorithm, the training data, and the given metric objective.
 =head1 ATTRIBUTES
 
 
-=head2 ParameterRanges => L<Paws::Forecast::ParameterRanges>
+=head2 ParameterRanges => Forecast_ParameterRanges
 
   Specifies the ranges of valid values for the hyperparameters.
 

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ServiceQuotas::ServiceInfo;
-  use Moose;
-  has ServiceCode => (is => 'ro', isa => 'Str');
-  has ServiceName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceQuotas::Types qw//;
+  has ServiceCode => (is => 'ro', isa => Str);
+  has ServiceName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

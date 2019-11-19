@@ -1,15 +1,66 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackResource;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DriftInformation => (is => 'ro', isa => 'Paws::CloudFormation::StackResourceDriftInformation');
-  has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceStatusReason => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
-  has StackId => (is => 'ro', isa => 'Str');
-  has StackName => (is => 'ro', isa => 'Str');
-  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackResourceDriftInformation/;
+  has Description => (is => 'ro', isa => Str);
+  has DriftInformation => (is => 'ro', isa => CloudFormation_StackResourceDriftInformation);
+  has LogicalResourceId => (is => 'ro', isa => Str, required => 1);
+  has PhysicalResourceId => (is => 'ro', isa => Str);
+  has ResourceStatus => (is => 'ro', isa => Str, required => 1);
+  has ResourceStatusReason => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str, required => 1);
+  has StackId => (is => 'ro', isa => Str);
+  has StackName => (is => 'ro', isa => Str);
+  has Timestamp => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceType' => 1,
+                    'LogicalResourceId' => 1,
+                    'Timestamp' => 1,
+                    'ResourceStatus' => 1
+                  },
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'StackName' => {
+                                'type' => 'Str'
+                              },
+               'LogicalResourceId' => {
+                                        'type' => 'Str'
+                                      },
+               'DriftInformation' => {
+                                       'type' => 'CloudFormation_StackResourceDriftInformation',
+                                       'class' => 'Paws::CloudFormation::StackResourceDriftInformation'
+                                     },
+               'PhysicalResourceId' => {
+                                         'type' => 'Str'
+                                       },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'ResourceStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceStatusReason' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +101,7 @@ The StackResource data type.
   User defined description associated with the resource.
 
 
-=head2 DriftInformation => L<Paws::CloudFormation::StackResourceDriftInformation>
+=head2 DriftInformation => CloudFormation_StackResourceDriftInformation
 
   Information about whether the resource's actual configuration differs,
 or has I<drifted>, from its expected configuration, as defined in the

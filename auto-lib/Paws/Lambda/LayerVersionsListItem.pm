@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Lambda::LayerVersionsListItem;
-  use Moose;
-  has CompatibleRuntimes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has LayerVersionArn => (is => 'ro', isa => 'Str');
-  has LicenseInfo => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::Lambda::Types qw//;
+  has CompatibleRuntimes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LayerVersionArn => (is => 'ro', isa => Str);
+  has LicenseInfo => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LicenseInfo' => {
+                                  'type' => 'Str'
+                                },
+               'LayerVersionArn' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'CompatibleRuntimes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'Version' => {
+                              'type' => 'Int'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

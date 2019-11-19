@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Firehose::SchemaConfiguration;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw//;
+  has CatalogId => (is => 'ro', isa => Str);
+  has DatabaseName => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has RoleARN => (is => 'ro', isa => Str);
+  has TableName => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,24 +1,96 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::ReservationPurchaseRecommendationDetail;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has AverageNormalizedUnitsUsedPerHour => (is => 'ro', isa => 'Str');
-  has AverageNumberOfInstancesUsedPerHour => (is => 'ro', isa => 'Str');
-  has AverageUtilization => (is => 'ro', isa => 'Str');
-  has CurrencyCode => (is => 'ro', isa => 'Str');
-  has EstimatedBreakEvenInMonths => (is => 'ro', isa => 'Str');
-  has EstimatedMonthlyOnDemandCost => (is => 'ro', isa => 'Str');
-  has EstimatedMonthlySavingsAmount => (is => 'ro', isa => 'Str');
-  has EstimatedMonthlySavingsPercentage => (is => 'ro', isa => 'Str');
-  has EstimatedReservationCostForLookbackPeriod => (is => 'ro', isa => 'Str');
-  has InstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::InstanceDetails');
-  has MaximumNormalizedUnitsUsedPerHour => (is => 'ro', isa => 'Str');
-  has MaximumNumberOfInstancesUsedPerHour => (is => 'ro', isa => 'Str');
-  has MinimumNormalizedUnitsUsedPerHour => (is => 'ro', isa => 'Str');
-  has MinimumNumberOfInstancesUsedPerHour => (is => 'ro', isa => 'Str');
-  has RecommendedNormalizedUnitsToPurchase => (is => 'ro', isa => 'Str');
-  has RecommendedNumberOfInstancesToPurchase => (is => 'ro', isa => 'Str');
-  has RecurringStandardMonthlyCost => (is => 'ro', isa => 'Str');
-  has UpfrontCost => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw/CostExplorer_InstanceDetails/;
+  has AccountId => (is => 'ro', isa => Str);
+  has AverageNormalizedUnitsUsedPerHour => (is => 'ro', isa => Str);
+  has AverageNumberOfInstancesUsedPerHour => (is => 'ro', isa => Str);
+  has AverageUtilization => (is => 'ro', isa => Str);
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has EstimatedBreakEvenInMonths => (is => 'ro', isa => Str);
+  has EstimatedMonthlyOnDemandCost => (is => 'ro', isa => Str);
+  has EstimatedMonthlySavingsAmount => (is => 'ro', isa => Str);
+  has EstimatedMonthlySavingsPercentage => (is => 'ro', isa => Str);
+  has EstimatedReservationCostForLookbackPeriod => (is => 'ro', isa => Str);
+  has InstanceDetails => (is => 'ro', isa => CostExplorer_InstanceDetails);
+  has MaximumNormalizedUnitsUsedPerHour => (is => 'ro', isa => Str);
+  has MaximumNumberOfInstancesUsedPerHour => (is => 'ro', isa => Str);
+  has MinimumNormalizedUnitsUsedPerHour => (is => 'ro', isa => Str);
+  has MinimumNumberOfInstancesUsedPerHour => (is => 'ro', isa => Str);
+  has RecommendedNormalizedUnitsToPurchase => (is => 'ro', isa => Str);
+  has RecommendedNumberOfInstancesToPurchase => (is => 'ro', isa => Str);
+  has RecurringStandardMonthlyCost => (is => 'ro', isa => Str);
+  has UpfrontCost => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UpfrontCost' => {
+                                  'type' => 'Str'
+                                },
+               'MinimumNormalizedUnitsUsedPerHour' => {
+                                                        'type' => 'Str'
+                                                      },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'EstimatedMonthlySavingsAmount' => {
+                                                    'type' => 'Str'
+                                                  },
+               'InstanceDetails' => {
+                                      'type' => 'CostExplorer_InstanceDetails',
+                                      'class' => 'Paws::CostExplorer::InstanceDetails'
+                                    },
+               'RecommendedNumberOfInstancesToPurchase' => {
+                                                             'type' => 'Str'
+                                                           },
+               'RecommendedNormalizedUnitsToPurchase' => {
+                                                           'type' => 'Str'
+                                                         },
+               'MaximumNumberOfInstancesUsedPerHour' => {
+                                                          'type' => 'Str'
+                                                        },
+               'MinimumNumberOfInstancesUsedPerHour' => {
+                                                          'type' => 'Str'
+                                                        },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'EstimatedMonthlyOnDemandCost' => {
+                                                   'type' => 'Str'
+                                                 },
+               'AverageNormalizedUnitsUsedPerHour' => {
+                                                        'type' => 'Str'
+                                                      },
+               'EstimatedBreakEvenInMonths' => {
+                                                 'type' => 'Str'
+                                               },
+               'AverageUtilization' => {
+                                         'type' => 'Str'
+                                       },
+               'EstimatedMonthlySavingsPercentage' => {
+                                                        'type' => 'Str'
+                                                      },
+               'AverageNumberOfInstancesUsedPerHour' => {
+                                                          'type' => 'Str'
+                                                        },
+               'RecurringStandardMonthlyCost' => {
+                                                   'type' => 'Str'
+                                                 },
+               'MaximumNormalizedUnitsUsedPerHour' => {
+                                                        'type' => 'Str'
+                                                      },
+               'EstimatedReservationCostForLookbackPeriod' => {
+                                                                'type' => 'Str'
+                                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -115,7 +187,7 @@ in a month, as a percentage of your overall costs.
 the specified historical period if you had a reservation.
 
 
-=head2 InstanceDetails => L<Paws::CostExplorer::InstanceDetails>
+=head2 InstanceDetails => CostExplorer_InstanceDetails
 
   Details about the instances that AWS recommends that you purchase.
 

@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionHistoryResult;
-  use Moose;
-  has ManagedActionHistoryItems => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ManagedActionHistoryItem]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_ManagedActionHistoryItem/;
+  has ManagedActionHistoryItems => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_ManagedActionHistoryItem]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ManagedActionHistoryItems' => {
+                                                'class' => 'Paws::ElasticBeanstalk::ManagedActionHistoryItem',
+                                                'type' => 'ArrayRef[ElasticBeanstalk_ManagedActionHistoryItem]'
+                                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +38,7 @@ Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionHistoryResult
 =head1 ATTRIBUTES
 
 
-=head2 ManagedActionHistoryItems => ArrayRef[L<Paws::ElasticBeanstalk::ManagedActionHistoryItem>]
+=head2 ManagedActionHistoryItems => ArrayRef[ElasticBeanstalk_ManagedActionHistoryItem]
 
 A list of completed and failed managed actions.
 

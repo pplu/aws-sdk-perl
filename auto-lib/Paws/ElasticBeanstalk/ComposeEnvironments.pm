@@ -1,15 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::ComposeEnvironments;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str');
-  has VersionLabels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ApplicationName => (is => 'ro', isa => Str, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, predicate => 1);
+  has VersionLabels => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ComposeEnvironments');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ComposeEnvironmentsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ComposeEnvironments');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ComposeEnvironmentsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'VersionLabels' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

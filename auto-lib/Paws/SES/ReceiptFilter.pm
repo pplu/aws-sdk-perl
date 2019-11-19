@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::SES::ReceiptFilter;
-  use Moose;
-  has IpFilter => (is => 'ro', isa => 'Paws::SES::ReceiptIpFilter', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw/SES_ReceiptIpFilter/;
+  has IpFilter => (is => 'ro', isa => SES_ReceiptIpFilter, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'IpFilter' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'IpFilter' => {
+                               'type' => 'SES_ReceiptIpFilter',
+                               'class' => 'Paws::SES::ReceiptIpFilter'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ Developer Guide
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> IpFilter => L<Paws::SES::ReceiptIpFilter>
+=head2 B<REQUIRED> IpFilter => SES_ReceiptIpFilter
 
   A structure that provides the IP addresses to block or allow, and
 whether to block or allow incoming mail from them.

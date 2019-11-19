@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::Route53::DelegationSet;
-  use Moose;
-  has CallerReference => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has NameServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'NameServer', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Route53::Types qw//;
+  has CallerReference => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has NameServers => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NameServers' => 'NameServer'
+                     },
+  'IsRequired' => {
+                    'NameServers' => 1
+                  },
+  'types' => {
+               'CallerReference' => {
+                                      'type' => 'Str'
+                                    },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'NameServers' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

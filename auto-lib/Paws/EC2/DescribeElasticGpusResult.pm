@@ -1,11 +1,41 @@
 
 package Paws::EC2::DescribeElasticGpusResult;
-  use Moose;
-  has ElasticGpuSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpus]', request_name => 'elasticGpuSet', traits => ['NameInRequest',]);
-  has MaxResults => (is => 'ro', isa => 'Int', request_name => 'maxResults', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::EC2::Types qw/EC2_ElasticGpus/;
+  has ElasticGpuSet => (is => 'ro', isa => ArrayRef[EC2_ElasticGpus]);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults',
+                       'ElasticGpuSet' => 'elasticGpuSet'
+                     },
+  'types' => {
+               'ElasticGpuSet' => {
+                                    'class' => 'Paws::EC2::ElasticGpus',
+                                    'type' => 'ArrayRef[EC2_ElasticGpus]'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +47,7 @@ Paws::EC2::DescribeElasticGpusResult
 =head1 ATTRIBUTES
 
 
-=head2 ElasticGpuSet => ArrayRef[L<Paws::EC2::ElasticGpus>]
+=head2 ElasticGpuSet => ArrayRef[EC2_ElasticGpus]
 
 Information about the Elastic Graphics accelerators.
 

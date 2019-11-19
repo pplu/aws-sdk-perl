@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ProvisioningArtifactProperties;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DisableTemplateValidation => (is => 'ro', isa => 'Bool');
-  has Info => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningArtifactInfo', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ProvisioningArtifactInfo/;
+  has Description => (is => 'ro', isa => Str);
+  has DisableTemplateValidation => (is => 'ro', isa => Bool);
+  has Info => (is => 'ro', isa => ServiceCatalog_ProvisioningArtifactInfo, required => 1);
+  has Name => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Info' => {
+                           'type' => 'ServiceCatalog_ProvisioningArtifactInfo',
+                           'class' => 'Paws::ServiceCatalog::ProvisioningArtifactInfo'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'DisableTemplateValidation' => {
+                                                'type' => 'Bool'
+                                              }
+             },
+  'IsRequired' => {
+                    'Info' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +86,7 @@ from the previous provisioning artifact.
 provisioning artifact even if it is invalid.
 
 
-=head2 B<REQUIRED> Info => L<Paws::ServiceCatalog::ProvisioningArtifactInfo>
+=head2 B<REQUIRED> Info => ServiceCatalog_ProvisioningArtifactInfo
 
   The URL of the CloudFormation template in Amazon S3. Specify the URL in
 JSON format as follows:

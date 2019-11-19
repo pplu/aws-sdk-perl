@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionRevision;
-  use Moose;
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest'], required => 1);
-  has RevisionChangeId => (is => 'ro', isa => 'Str', request_name => 'revisionChangeId', traits => ['NameInRequest'], required => 1);
-  has RevisionId => (is => 'ro', isa => 'Str', request_name => 'revisionId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has Created => (is => 'ro', isa => Str, required => 1);
+  has RevisionChangeId => (is => 'ro', isa => Str, required => 1);
+  has RevisionId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'RevisionChangeId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'RevisionChangeId' => 'revisionChangeId',
+                       'RevisionId' => 'revisionId',
+                       'Created' => 'created'
+                     },
+  'IsRequired' => {
+                    'RevisionChangeId' => 1,
+                    'RevisionId' => 1,
+                    'Created' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

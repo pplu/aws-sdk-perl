@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::GlobalAccelerator::Listener;
-  use Moose;
-  has ClientAffinity => (is => 'ro', isa => 'Str');
-  has ListenerArn => (is => 'ro', isa => 'Str');
-  has PortRanges => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::PortRange]');
-  has Protocol => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GlobalAccelerator::Types qw/GlobalAccelerator_PortRange/;
+  has ClientAffinity => (is => 'ro', isa => Str);
+  has ListenerArn => (is => 'ro', isa => Str);
+  has PortRanges => (is => 'ro', isa => ArrayRef[GlobalAccelerator_PortRange]);
+  has Protocol => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'ListenerArn' => {
+                                  'type' => 'Str'
+                                },
+               'PortRanges' => {
+                                 'class' => 'Paws::GlobalAccelerator::PortRange',
+                                 'type' => 'ArrayRef[GlobalAccelerator_PortRange]'
+                               },
+               'ClientAffinity' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +97,7 @@ The default value is C<NONE>.
   The Amazon Resource Name (ARN) of the listener.
 
 
-=head2 PortRanges => ArrayRef[L<Paws::GlobalAccelerator::PortRange>]
+=head2 PortRanges => ArrayRef[GlobalAccelerator_PortRange]
 
   The list of port ranges for the connections from clients to the
 accelerator.

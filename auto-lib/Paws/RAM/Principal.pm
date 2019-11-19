@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::RAM::Principal;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has External => (is => 'ro', isa => 'Bool', request_name => 'external', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
-  has ResourceShareArn => (is => 'ro', isa => 'Str', request_name => 'resourceShareArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::RAM::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has External => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has ResourceShareArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'Id' => 'id',
+                       'External' => 'external',
+                       'ResourceShareArn' => 'resourceShareArn',
+                       'LastUpdatedTime' => 'lastUpdatedTime'
+                     },
+  'types' => {
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'External' => {
+                               'type' => 'Bool'
+                             },
+               'ResourceShareArn' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

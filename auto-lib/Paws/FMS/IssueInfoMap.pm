@@ -1,15 +1,34 @@
+# Generated from default/map_enum.tt
 package Paws::FMS::IssueInfoMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Str/;
+  use Paws::FMS::Types qw//;
+  has AWSCONFIG => (is => 'ro', isa => Str);
+  has AWSSHIELD_ADVANCED => (is => 'ro', isa => Str);
+  has AWSVPC => (is => 'ro', isa => Str);
+  has AWSWAF => (is => 'ro', isa => Str);
 
-  has AWSCONFIG => (is => 'ro', isa => 'Str');
-  has AWSSHIELD_ADVANCED => (is => 'ro', isa => 'Str');
-  has AWSVPC => (is => 'ro', isa => 'Str');
-  has AWSWAF => (is => 'ro', isa => 'Str');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'AWSCONFIG' => {
+                                          type => 'Str',                                        },
+                               'AWSSHIELD_ADVANCED' => {
+                                          type => 'Str',                                        },
+                               'AWSVPC' => {
+                                          type => 'Str',                                        },
+                               'AWSWAF' => {
+                                          type => 'Str',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,16 +64,16 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 AWSCONFIG => Str
+=head2 AWSCONFIG => 
 
 
-=head2 AWSSHIELD_ADVANCED => Str
+=head2 AWSSHIELD_ADVANCED => 
 
 
-=head2 AWSVPC => Str
+=head2 AWSVPC => 
 
 
-=head2 AWSWAF => Str
+=head2 AWSWAF => 
 
 
 

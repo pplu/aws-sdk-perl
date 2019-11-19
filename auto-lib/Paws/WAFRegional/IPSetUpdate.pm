@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::IPSetUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has IPSetDescriptor => (is => 'ro', isa => 'Paws::WAFRegional::IPSetDescriptor', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_IPSetDescriptor/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has IPSetDescriptor => (is => 'ro', isa => WAFRegional_IPSetDescriptor, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Action' => 1,
+                    'IPSetDescriptor' => 1
+                  },
+  'types' => {
+               'IPSetDescriptor' => {
+                                      'type' => 'WAFRegional_IPSetDescriptor',
+                                      'class' => 'Paws::WAFRegional::IPSetDescriptor'
+                                    },
+               'Action' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ Specifies the type of update to perform to an IPSet with UpdateIPSet.
   Specifies whether to insert or delete an IP address with UpdateIPSet.
 
 
-=head2 B<REQUIRED> IPSetDescriptor => L<Paws::WAFRegional::IPSetDescriptor>
+=head2 B<REQUIRED> IPSetDescriptor => WAFRegional_IPSetDescriptor
 
   The IP address type (C<IPV4> or C<IPV6>) and the IP address range (in
 CIDR notation) that web requests originate from.

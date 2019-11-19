@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::UpdateTrigger;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has TriggerUpdate => (is => 'ro', isa => 'Paws::Glue::TriggerUpdate', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_TriggerUpdate/;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TriggerUpdate => (is => 'ro', isa => Glue_TriggerUpdate, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTrigger');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::UpdateTriggerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateTrigger');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::UpdateTriggerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'TriggerUpdate' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'TriggerUpdate' => {
+                                    'class' => 'Paws::Glue::TriggerUpdate',
+                                    'type' => 'Glue_TriggerUpdate'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -83,7 +107,7 @@ The name of the trigger to update.
 
 
 
-=head2 B<REQUIRED> TriggerUpdate => L<Paws::Glue::TriggerUpdate>
+=head2 B<REQUIRED> TriggerUpdate => Glue_TriggerUpdate
 
 The new values with which to update the trigger.
 

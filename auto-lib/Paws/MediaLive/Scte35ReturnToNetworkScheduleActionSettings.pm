@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Scte35ReturnToNetworkScheduleActionSettings;
-  use Moose;
-  has SpliceEventId => (is => 'ro', isa => 'Int', request_name => 'spliceEventId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaLive::Types qw//;
+  has SpliceEventId => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SpliceEventId' => 'spliceEventId'
+                     },
+  'IsRequired' => {
+                    'SpliceEventId' => 1
+                  },
+  'types' => {
+               'SpliceEventId' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

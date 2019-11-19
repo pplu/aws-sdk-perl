@@ -1,20 +1,68 @@
 
 package Paws::RDSData::BatchExecuteStatement;
-  use Moose;
-  has Database => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'database');
-  has ParameterSets => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::RDSData::SqlParameter]]', traits => ['NameInRequest'], request_name => 'parameterSets');
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn', required => 1);
-  has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema');
-  has SecretArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'secretArn', required => 1);
-  has Sql => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sql', required => 1);
-  has TransactionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'transactionId');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDSData::Types qw/RDSData_SqlParameter/;
+  has Database => (is => 'ro', isa => Str, predicate => 1);
+  has ParameterSets => (is => 'ro', isa => ArrayRef[ArrayRef[RDSData_SqlParameter]], predicate => 1);
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Schema => (is => 'ro', isa => Str, predicate => 1);
+  has SecretArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Sql => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TransactionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchExecuteStatement');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/BatchExecute');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDSData::BatchExecuteStatementResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchExecuteStatement');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/BatchExecute');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDSData::BatchExecuteStatementResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Schema' => 'schema',
+                       'ParameterSets' => 'parameterSets',
+                       'SecretArn' => 'secretArn',
+                       'Database' => 'database',
+                       'Sql' => 'sql',
+                       'ResourceArn' => 'resourceArn',
+                       'TransactionId' => 'transactionId'
+                     },
+  'IsRequired' => {
+                    'SecretArn' => 1,
+                    'ResourceArn' => 1,
+                    'Sql' => 1
+                  },
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'TransactionId' => {
+                                    'type' => 'Str'
+                                  },
+               'Sql' => {
+                          'type' => 'Str'
+                        },
+               'Database' => {
+                               'type' => 'Str'
+                             },
+               'SecretArn' => {
+                                'type' => 'Str'
+                              },
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'ParameterSets' => {
+                                    'type' => 'ArrayRef[ArrayRef[RDSData_SqlParameter]]',
+                                    'class' => 'Paws::RDSData::SqlParameter'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,10 +97,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 BooleanValues => [
                   1, ...                                   # OPTIONAL
                 ],                                         # OPTIONAL
-                DoubleValues => [
-                  1, ...                                   # OPTIONAL
-                ],                                         # OPTIONAL
-                LongValues => [
+                DoubleValues => [ 1, ... ],                # OPTIONAL
+                LongValues   => [
                   1, ...                                   # OPTIONAL
                 ],                                         # OPTIONAL
                 StringValues => [
@@ -61,7 +107,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               BlobValue    => 'BlobBlob',    # OPTIONAL
               BooleanValue => 1,             # OPTIONAL
-              DoubleValue  => 1,             # OPTIONAL
+              DoubleValue  => 1,
               IsNull       => 1,             # OPTIONAL
               LongValue    => 1,             # OPTIONAL
               StringValue  => 'MyString',    # OPTIONAL
@@ -92,7 +138,7 @@ The name of the database.
 
 
 
-=head2 ParameterSets => ArrayRef[L<ArrayRef[Paws::RDSData::SqlParameter]>]
+=head2 ParameterSets => ArrayRef[ArrayRef[RDSData_SqlParameter]]
 
 The parameter set for the batch operation.
 

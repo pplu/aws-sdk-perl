@@ -1,15 +1,75 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::OriginEndpointUpdateParameters;
-  use Moose;
-  has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackage::CmafPackageCreateOrUpdateParameters', request_name => 'cmafPackage', traits => ['NameInRequest']);
-  has DashPackage => (is => 'ro', isa => 'Paws::MediaPackage::DashPackage', request_name => 'dashPackage', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackage::HlsPackage', request_name => 'hlsPackage', traits => ['NameInRequest']);
-  has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
-  has MssPackage => (is => 'ro', isa => 'Paws::MediaPackage::MssPackage', request_name => 'mssPackage', traits => ['NameInRequest']);
-  has Origination => (is => 'ro', isa => 'Str', request_name => 'origination', traits => ['NameInRequest']);
-  has StartoverWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'startoverWindowSeconds', traits => ['NameInRequest']);
-  has TimeDelaySeconds => (is => 'ro', isa => 'Int', request_name => 'timeDelaySeconds', traits => ['NameInRequest']);
-  has Whitelist => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'whitelist', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::MediaPackage::Types qw/MediaPackage_DashPackage MediaPackage_HlsPackage MediaPackage_MssPackage MediaPackage_CmafPackageCreateOrUpdateParameters/;
+  has CmafPackage => (is => 'ro', isa => MediaPackage_CmafPackageCreateOrUpdateParameters);
+  has DashPackage => (is => 'ro', isa => MediaPackage_DashPackage);
+  has Description => (is => 'ro', isa => Str);
+  has HlsPackage => (is => 'ro', isa => MediaPackage_HlsPackage);
+  has ManifestName => (is => 'ro', isa => Str);
+  has MssPackage => (is => 'ro', isa => MediaPackage_MssPackage);
+  has Origination => (is => 'ro', isa => Str);
+  has StartoverWindowSeconds => (is => 'ro', isa => Int);
+  has TimeDelaySeconds => (is => 'ro', isa => Int);
+  has Whitelist => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TimeDelaySeconds' => 'timeDelaySeconds',
+                       'StartoverWindowSeconds' => 'startoverWindowSeconds',
+                       'CmafPackage' => 'cmafPackage',
+                       'Whitelist' => 'whitelist',
+                       'ManifestName' => 'manifestName',
+                       'HlsPackage' => 'hlsPackage',
+                       'Description' => 'description',
+                       'Origination' => 'origination',
+                       'DashPackage' => 'dashPackage',
+                       'MssPackage' => 'mssPackage'
+                     },
+  'types' => {
+               'HlsPackage' => {
+                                 'class' => 'Paws::MediaPackage::HlsPackage',
+                                 'type' => 'MediaPackage_HlsPackage'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'TimeDelaySeconds' => {
+                                       'type' => 'Int'
+                                     },
+               'CmafPackage' => {
+                                  'class' => 'Paws::MediaPackage::CmafPackageCreateOrUpdateParameters',
+                                  'type' => 'MediaPackage_CmafPackageCreateOrUpdateParameters'
+                                },
+               'StartoverWindowSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'Whitelist' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'ManifestName' => {
+                                   'type' => 'Str'
+                                 },
+               'Origination' => {
+                                  'type' => 'Str'
+                                },
+               'DashPackage' => {
+                                  'type' => 'MediaPackage_DashPackage',
+                                  'class' => 'Paws::MediaPackage::DashPackage'
+                                },
+               'MssPackage' => {
+                                 'type' => 'MediaPackage_MssPackage',
+                                 'class' => 'Paws::MediaPackage::MssPackage'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,12 +105,12 @@ Configuration parameters for updating an existing OriginEndpoint.
 =head1 ATTRIBUTES
 
 
-=head2 CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>
+=head2 CmafPackage => MediaPackage_CmafPackageCreateOrUpdateParameters
 
   
 
 
-=head2 DashPackage => L<Paws::MediaPackage::DashPackage>
+=head2 DashPackage => MediaPackage_DashPackage
 
   
 
@@ -60,7 +120,7 @@ Configuration parameters for updating an existing OriginEndpoint.
   A short text description of the OriginEndpoint.
 
 
-=head2 HlsPackage => L<Paws::MediaPackage::HlsPackage>
+=head2 HlsPackage => MediaPackage_HlsPackage
 
   
 
@@ -70,7 +130,7 @@ Configuration parameters for updating an existing OriginEndpoint.
   A short string that will be appended to the end of the Endpoint URL.
 
 
-=head2 MssPackage => L<Paws::MediaPackage::MssPackage>
+=head2 MssPackage => MediaPackage_MssPackage
 
   
 

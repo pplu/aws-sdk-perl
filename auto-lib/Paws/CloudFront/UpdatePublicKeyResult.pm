@@ -1,12 +1,37 @@
 
 package Paws::CloudFront::UpdatePublicKeyResult;
-  use Moose;
-  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
-  has PublicKey => (is => 'ro', isa => 'Paws::CloudFront::PublicKey');
+  use Moo;
 
-  use MooseX::ClassAttribute;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_PublicKey/;
+  has ETag => (is => 'ro', isa => Str);
+  has PublicKey => (is => 'ro', isa => CloudFront_PublicKey);
+
+  use MooX::ClassAttribute;
   class_has _payload => (is => 'ro', default => 'PublicKey');
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               'PublicKey' => {
+                                'type' => 'CloudFront_PublicKey',
+                                'class' => 'Paws::CloudFront::PublicKey'
+                              }
+             },
+  'ParamInHeader' => {
+                       'ETag' => 'ETag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +50,7 @@ C<E2QWRUHAPOMQZL>.
 
 
 
-=head2 PublicKey => L<Paws::CloudFront::PublicKey>
+=head2 PublicKey => CloudFront_PublicKey
 
 Return the results of updating the public key.
 

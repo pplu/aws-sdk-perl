@@ -1,14 +1,36 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::GetContextKeysForPrincipalPolicy;
-  use Moose;
-  has PolicyInputList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PolicySourceArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::IAM::Types qw//;
+  has PolicyInputList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has PolicySourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetContextKeysForPrincipalPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetContextKeysForPolicyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetContextKeysForPrincipalPolicyResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetContextKeysForPrincipalPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::GetContextKeysForPolicyResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetContextKeysForPrincipalPolicyResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PolicySourceArn' => 1
+                  },
+  'types' => {
+               'PolicyInputList' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'PolicySourceArn' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

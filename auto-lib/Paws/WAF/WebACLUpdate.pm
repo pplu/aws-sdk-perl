@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::WAF::WebACLUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has ActivatedRule => (is => 'ro', isa => 'Paws::WAF::ActivatedRule', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_ActivatedRule/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has ActivatedRule => (is => 'ro', isa => WAF_ActivatedRule, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActivatedRule' => {
+                                    'class' => 'Paws::WAF::ActivatedRule',
+                                    'type' => 'WAF_ActivatedRule'
+                                  },
+               'Action' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Action' => 1,
+                    'ActivatedRule' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +69,7 @@ C<WebACL>.
 C<WebACL>.
 
 
-=head2 B<REQUIRED> ActivatedRule => L<Paws::WAF::ActivatedRule>
+=head2 B<REQUIRED> ActivatedRule => WAF_ActivatedRule
 
   The C<ActivatedRule> object in an UpdateWebACL request specifies a
 C<Rule> that you want to insert or delete, the priority of the C<Rule>

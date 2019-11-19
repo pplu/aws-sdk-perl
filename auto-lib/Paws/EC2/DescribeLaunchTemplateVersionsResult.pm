@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeLaunchTemplateVersionsResult;
-  use Moose;
-  has LaunchTemplateVersions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateVersion]', request_name => 'launchTemplateVersionSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_LaunchTemplateVersion/;
+  has LaunchTemplateVersions => (is => 'ro', isa => ArrayRef[EC2_LaunchTemplateVersion]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'LaunchTemplateVersions' => {
+                                             'class' => 'Paws::EC2::LaunchTemplateVersion',
+                                             'type' => 'ArrayRef[EC2_LaunchTemplateVersion]'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'LaunchTemplateVersions' => 'launchTemplateVersionSet',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeLaunchTemplateVersionsResult
 =head1 ATTRIBUTES
 
 
-=head2 LaunchTemplateVersions => ArrayRef[L<Paws::EC2::LaunchTemplateVersion>]
+=head2 LaunchTemplateVersions => ArrayRef[EC2_LaunchTemplateVersion]
 
 Information about the launch template versions.
 

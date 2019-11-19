@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::AttributeKey;
-  use Moose;
-  has FacetName => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has SchemaArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw//;
+  has FacetName => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has SchemaArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'FacetName' => 1,
+                    'SchemaArn' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'FacetName' => {
+                                'type' => 'Str'
+                              },
+               'SchemaArn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

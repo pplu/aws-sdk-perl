@@ -1,16 +1,77 @@
+# Generated from default/object.tt
 package Paws::SavingsPlans::SavingsPlanOffering;
-  use Moose;
-  has Currency => (is => 'ro', isa => 'Str', request_name => 'currency', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has DurationSeconds => (is => 'ro', isa => 'Int', request_name => 'durationSeconds', traits => ['NameInRequest']);
-  has OfferingId => (is => 'ro', isa => 'Str', request_name => 'offeringId', traits => ['NameInRequest']);
-  has Operation => (is => 'ro', isa => 'Str', request_name => 'operation', traits => ['NameInRequest']);
-  has PaymentOption => (is => 'ro', isa => 'Str', request_name => 'paymentOption', traits => ['NameInRequest']);
-  has PlanType => (is => 'ro', isa => 'Str', request_name => 'planType', traits => ['NameInRequest']);
-  has ProductTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'productTypes', traits => ['NameInRequest']);
-  has Properties => (is => 'ro', isa => 'ArrayRef[Paws::SavingsPlans::SavingsPlanOfferingProperty]', request_name => 'properties', traits => ['NameInRequest']);
-  has ServiceCode => (is => 'ro', isa => 'Str', request_name => 'serviceCode', traits => ['NameInRequest']);
-  has UsageType => (is => 'ro', isa => 'Str', request_name => 'usageType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::SavingsPlans::Types qw/SavingsPlans_SavingsPlanOfferingProperty/;
+  has Currency => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DurationSeconds => (is => 'ro', isa => Int);
+  has OfferingId => (is => 'ro', isa => Str);
+  has Operation => (is => 'ro', isa => Str);
+  has PaymentOption => (is => 'ro', isa => Str);
+  has PlanType => (is => 'ro', isa => Str);
+  has ProductTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Properties => (is => 'ro', isa => ArrayRef[SavingsPlans_SavingsPlanOfferingProperty]);
+  has ServiceCode => (is => 'ro', isa => Str);
+  has UsageType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ServiceCode' => 'serviceCode',
+                       'DurationSeconds' => 'durationSeconds',
+                       'OfferingId' => 'offeringId',
+                       'Properties' => 'properties',
+                       'PlanType' => 'planType',
+                       'Currency' => 'currency',
+                       'UsageType' => 'usageType',
+                       'Operation' => 'operation',
+                       'Description' => 'description',
+                       'PaymentOption' => 'paymentOption',
+                       'ProductTypes' => 'productTypes'
+                     },
+  'types' => {
+               'Operation' => {
+                                'type' => 'Str'
+                              },
+               'UsageType' => {
+                                'type' => 'Str'
+                              },
+               'PaymentOption' => {
+                                    'type' => 'Str'
+                                  },
+               'ProductTypes' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                },
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               },
+               'Properties' => {
+                                 'type' => 'ArrayRef[SavingsPlans_SavingsPlanOfferingProperty]',
+                                 'class' => 'Paws::SavingsPlans::SavingsPlanOfferingProperty'
+                               },
+               'Currency' => {
+                               'type' => 'Str'
+                             },
+               'PlanType' => {
+                               'type' => 'Str'
+                             },
+               'DurationSeconds' => {
+                                      'type' => 'Int'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +147,7 @@ Information about a Savings Plan offering.
   The product type.
 
 
-=head2 Properties => ArrayRef[L<Paws::SavingsPlans::SavingsPlanOfferingProperty>]
+=head2 Properties => ArrayRef[SavingsPlans_SavingsPlanOfferingProperty]
 
   The properties.
 

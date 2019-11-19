@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::EnvironmentImage;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Versions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'versions', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::CodeBuild::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Versions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Versions' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Versions' => 'versions',
+                       'Name' => 'name',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

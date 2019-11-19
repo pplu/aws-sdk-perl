@@ -1,7 +1,29 @@
 package Paws::EC2::InstanceBlockDeviceMapping;
-  use Moose;
-  has DeviceName => (is => 'ro', isa => 'Str', request_name => 'deviceName', traits => ['NameInRequest']);
-  has Ebs => (is => 'ro', isa => 'Paws::EC2::EbsInstanceBlockDevice', request_name => 'ebs', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_EbsInstanceBlockDevice/;
+  has DeviceName => (is => 'ro', isa => Str);
+  has Ebs => (is => 'ro', isa => EC2_EbsInstanceBlockDevice);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Ebs' => 'ebs',
+                       'DeviceName' => 'deviceName'
+                     },
+  'types' => {
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'Ebs' => {
+                          'type' => 'EC2_EbsInstanceBlockDevice',
+                          'class' => 'Paws::EC2::EbsInstanceBlockDevice'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +64,7 @@ This class has no description
   The device name (for example, C</dev/sdh> or C<xvdh>).
 
 
-=head2 Ebs => L<Paws::EC2::EbsInstanceBlockDevice>
+=head2 Ebs => EC2_EbsInstanceBlockDevice
 
   Parameters used to automatically set up EBS volumes when the instance
 is launched.

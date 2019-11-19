@@ -1,15 +1,41 @@
 
 package Paws::ApiGateway::DeleteDocumentationPart;
-  use Moose;
-  has DocumentationPartId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'part_id', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has DocumentationPartId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDocumentationPart');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/documentation/parts/{part_id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteDocumentationPart');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/documentation/parts/{part_id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DocumentationPartId' => 'part_id',
+                    'RestApiId' => 'restapi_id'
+                  },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'DocumentationPartId' => 1
+                  },
+  'types' => {
+               'DocumentationPartId' => {
+                                          'type' => 'Str'
+                                        },
+               'RestApiId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::UpdateProject;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
-  has DefaultJobTimeoutMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'defaultJobTimeoutMinutes' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DeviceFarm::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DefaultJobTimeoutMinutes => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateProject');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::UpdateProjectResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateProject');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::UpdateProjectResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DefaultJobTimeoutMinutes' => {
+                                               'type' => 'Int'
+                                             },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'DefaultJobTimeoutMinutes' => 'defaultJobTimeoutMinutes',
+                       'Arn' => 'arn'
+                     },
+  'IsRequired' => {
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

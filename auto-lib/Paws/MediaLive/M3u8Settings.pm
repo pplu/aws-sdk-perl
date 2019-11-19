@@ -1,21 +1,101 @@
+# Generated from default/object.tt
 package Paws::MediaLive::M3u8Settings;
-  use Moose;
-  has AudioFramesPerPes => (is => 'ro', isa => 'Int', request_name => 'audioFramesPerPes', traits => ['NameInRequest']);
-  has AudioPids => (is => 'ro', isa => 'Str', request_name => 'audioPids', traits => ['NameInRequest']);
-  has EcmPid => (is => 'ro', isa => 'Str', request_name => 'ecmPid', traits => ['NameInRequest']);
-  has PatInterval => (is => 'ro', isa => 'Int', request_name => 'patInterval', traits => ['NameInRequest']);
-  has PcrControl => (is => 'ro', isa => 'Str', request_name => 'pcrControl', traits => ['NameInRequest']);
-  has PcrPeriod => (is => 'ro', isa => 'Int', request_name => 'pcrPeriod', traits => ['NameInRequest']);
-  has PcrPid => (is => 'ro', isa => 'Str', request_name => 'pcrPid', traits => ['NameInRequest']);
-  has PmtInterval => (is => 'ro', isa => 'Int', request_name => 'pmtInterval', traits => ['NameInRequest']);
-  has PmtPid => (is => 'ro', isa => 'Str', request_name => 'pmtPid', traits => ['NameInRequest']);
-  has ProgramNum => (is => 'ro', isa => 'Int', request_name => 'programNum', traits => ['NameInRequest']);
-  has Scte35Behavior => (is => 'ro', isa => 'Str', request_name => 'scte35Behavior', traits => ['NameInRequest']);
-  has Scte35Pid => (is => 'ro', isa => 'Str', request_name => 'scte35Pid', traits => ['NameInRequest']);
-  has TimedMetadataBehavior => (is => 'ro', isa => 'Str', request_name => 'timedMetadataBehavior', traits => ['NameInRequest']);
-  has TimedMetadataPid => (is => 'ro', isa => 'Str', request_name => 'timedMetadataPid', traits => ['NameInRequest']);
-  has TransportStreamId => (is => 'ro', isa => 'Int', request_name => 'transportStreamId', traits => ['NameInRequest']);
-  has VideoPid => (is => 'ro', isa => 'Str', request_name => 'videoPid', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaLive::Types qw//;
+  has AudioFramesPerPes => (is => 'ro', isa => Int);
+  has AudioPids => (is => 'ro', isa => Str);
+  has EcmPid => (is => 'ro', isa => Str);
+  has PatInterval => (is => 'ro', isa => Int);
+  has PcrControl => (is => 'ro', isa => Str);
+  has PcrPeriod => (is => 'ro', isa => Int);
+  has PcrPid => (is => 'ro', isa => Str);
+  has PmtInterval => (is => 'ro', isa => Int);
+  has PmtPid => (is => 'ro', isa => Str);
+  has ProgramNum => (is => 'ro', isa => Int);
+  has Scte35Behavior => (is => 'ro', isa => Str);
+  has Scte35Pid => (is => 'ro', isa => Str);
+  has TimedMetadataBehavior => (is => 'ro', isa => Str);
+  has TimedMetadataPid => (is => 'ro', isa => Str);
+  has TransportStreamId => (is => 'ro', isa => Int);
+  has VideoPid => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Scte35Behavior' => 'scte35Behavior',
+                       'AudioPids' => 'audioPids',
+                       'TransportStreamId' => 'transportStreamId',
+                       'PatInterval' => 'patInterval',
+                       'PmtInterval' => 'pmtInterval',
+                       'PcrControl' => 'pcrControl',
+                       'TimedMetadataBehavior' => 'timedMetadataBehavior',
+                       'AudioFramesPerPes' => 'audioFramesPerPes',
+                       'PcrPid' => 'pcrPid',
+                       'PmtPid' => 'pmtPid',
+                       'Scte35Pid' => 'scte35Pid',
+                       'VideoPid' => 'videoPid',
+                       'PcrPeriod' => 'pcrPeriod',
+                       'EcmPid' => 'ecmPid',
+                       'TimedMetadataPid' => 'timedMetadataPid',
+                       'ProgramNum' => 'programNum'
+                     },
+  'types' => {
+               'Scte35Behavior' => {
+                                     'type' => 'Str'
+                                   },
+               'AudioPids' => {
+                                'type' => 'Str'
+                              },
+               'TransportStreamId' => {
+                                        'type' => 'Int'
+                                      },
+               'PatInterval' => {
+                                  'type' => 'Int'
+                                },
+               'PmtInterval' => {
+                                  'type' => 'Int'
+                                },
+               'PcrControl' => {
+                                 'type' => 'Str'
+                               },
+               'TimedMetadataBehavior' => {
+                                            'type' => 'Str'
+                                          },
+               'AudioFramesPerPes' => {
+                                        'type' => 'Int'
+                                      },
+               'PcrPid' => {
+                             'type' => 'Str'
+                           },
+               'PmtPid' => {
+                             'type' => 'Str'
+                           },
+               'VideoPid' => {
+                               'type' => 'Str'
+                             },
+               'Scte35Pid' => {
+                                'type' => 'Str'
+                              },
+               'PcrPeriod' => {
+                                'type' => 'Int'
+                              },
+               'EcmPid' => {
+                             'type' => 'Str'
+                           },
+               'TimedMetadataPid' => {
+                                       'type' => 'Str'
+                                     },
+               'ProgramNum' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,20 +1,92 @@
 package Paws::EC2::ModifyVpnTunnelOptionsSpecification;
-  use Moose;
-  has DPDTimeoutSeconds => (is => 'ro', isa => 'Int');
-  has IKEVersions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IKEVersionsRequestListValue]', request_name => 'IKEVersion', traits => ['NameInRequest']);
-  has Phase1DHGroupNumbers => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Phase1DHGroupNumbersRequestListValue]', request_name => 'Phase1DHGroupNumber', traits => ['NameInRequest']);
-  has Phase1EncryptionAlgorithms => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Phase1EncryptionAlgorithmsRequestListValue]', request_name => 'Phase1EncryptionAlgorithm', traits => ['NameInRequest']);
-  has Phase1IntegrityAlgorithms => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Phase1IntegrityAlgorithmsRequestListValue]', request_name => 'Phase1IntegrityAlgorithm', traits => ['NameInRequest']);
-  has Phase1LifetimeSeconds => (is => 'ro', isa => 'Int');
-  has Phase2DHGroupNumbers => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Phase2DHGroupNumbersRequestListValue]', request_name => 'Phase2DHGroupNumber', traits => ['NameInRequest']);
-  has Phase2EncryptionAlgorithms => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Phase2EncryptionAlgorithmsRequestListValue]', request_name => 'Phase2EncryptionAlgorithm', traits => ['NameInRequest']);
-  has Phase2IntegrityAlgorithms => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Phase2IntegrityAlgorithmsRequestListValue]', request_name => 'Phase2IntegrityAlgorithm', traits => ['NameInRequest']);
-  has Phase2LifetimeSeconds => (is => 'ro', isa => 'Int');
-  has PreSharedKey => (is => 'ro', isa => 'Str');
-  has RekeyFuzzPercentage => (is => 'ro', isa => 'Int');
-  has RekeyMarginTimeSeconds => (is => 'ro', isa => 'Int');
-  has ReplayWindowSize => (is => 'ro', isa => 'Int');
-  has TunnelInsideCidr => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Int ArrayRef Str/;
+  use Paws::EC2::Types qw/EC2_Phase2EncryptionAlgorithmsRequestListValue EC2_IKEVersionsRequestListValue EC2_Phase1DHGroupNumbersRequestListValue EC2_Phase1EncryptionAlgorithmsRequestListValue EC2_Phase2IntegrityAlgorithmsRequestListValue EC2_Phase1IntegrityAlgorithmsRequestListValue EC2_Phase2DHGroupNumbersRequestListValue/;
+  has DPDTimeoutSeconds => (is => 'ro', isa => Int);
+  has IKEVersions => (is => 'ro', isa => ArrayRef[EC2_IKEVersionsRequestListValue]);
+  has Phase1DHGroupNumbers => (is => 'ro', isa => ArrayRef[EC2_Phase1DHGroupNumbersRequestListValue]);
+  has Phase1EncryptionAlgorithms => (is => 'ro', isa => ArrayRef[EC2_Phase1EncryptionAlgorithmsRequestListValue]);
+  has Phase1IntegrityAlgorithms => (is => 'ro', isa => ArrayRef[EC2_Phase1IntegrityAlgorithmsRequestListValue]);
+  has Phase1LifetimeSeconds => (is => 'ro', isa => Int);
+  has Phase2DHGroupNumbers => (is => 'ro', isa => ArrayRef[EC2_Phase2DHGroupNumbersRequestListValue]);
+  has Phase2EncryptionAlgorithms => (is => 'ro', isa => ArrayRef[EC2_Phase2EncryptionAlgorithmsRequestListValue]);
+  has Phase2IntegrityAlgorithms => (is => 'ro', isa => ArrayRef[EC2_Phase2IntegrityAlgorithmsRequestListValue]);
+  has Phase2LifetimeSeconds => (is => 'ro', isa => Int);
+  has PreSharedKey => (is => 'ro', isa => Str);
+  has RekeyFuzzPercentage => (is => 'ro', isa => Int);
+  has RekeyMarginTimeSeconds => (is => 'ro', isa => Int);
+  has ReplayWindowSize => (is => 'ro', isa => Int);
+  has TunnelInsideCidr => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Phase2DHGroupNumbers' => {
+                                           'class' => 'Paws::EC2::Phase2DHGroupNumbersRequestListValue',
+                                           'type' => 'ArrayRef[EC2_Phase2DHGroupNumbersRequestListValue]'
+                                         },
+               'ReplayWindowSize' => {
+                                       'type' => 'Int'
+                                     },
+               'DPDTimeoutSeconds' => {
+                                        'type' => 'Int'
+                                      },
+               'Phase1IntegrityAlgorithms' => {
+                                                'type' => 'ArrayRef[EC2_Phase1IntegrityAlgorithmsRequestListValue]',
+                                                'class' => 'Paws::EC2::Phase1IntegrityAlgorithmsRequestListValue'
+                                              },
+               'Phase1DHGroupNumbers' => {
+                                           'class' => 'Paws::EC2::Phase1DHGroupNumbersRequestListValue',
+                                           'type' => 'ArrayRef[EC2_Phase1DHGroupNumbersRequestListValue]'
+                                         },
+               'Phase2IntegrityAlgorithms' => {
+                                                'type' => 'ArrayRef[EC2_Phase2IntegrityAlgorithmsRequestListValue]',
+                                                'class' => 'Paws::EC2::Phase2IntegrityAlgorithmsRequestListValue'
+                                              },
+               'IKEVersions' => {
+                                  'class' => 'Paws::EC2::IKEVersionsRequestListValue',
+                                  'type' => 'ArrayRef[EC2_IKEVersionsRequestListValue]'
+                                },
+               'Phase1EncryptionAlgorithms' => {
+                                                 'type' => 'ArrayRef[EC2_Phase1EncryptionAlgorithmsRequestListValue]',
+                                                 'class' => 'Paws::EC2::Phase1EncryptionAlgorithmsRequestListValue'
+                                               },
+               'Phase1LifetimeSeconds' => {
+                                            'type' => 'Int'
+                                          },
+               'TunnelInsideCidr' => {
+                                       'type' => 'Str'
+                                     },
+               'RekeyFuzzPercentage' => {
+                                          'type' => 'Int'
+                                        },
+               'Phase2EncryptionAlgorithms' => {
+                                                 'class' => 'Paws::EC2::Phase2EncryptionAlgorithmsRequestListValue',
+                                                 'type' => 'ArrayRef[EC2_Phase2EncryptionAlgorithmsRequestListValue]'
+                                               },
+               'RekeyMarginTimeSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'PreSharedKey' => {
+                                   'type' => 'Str'
+                                 },
+               'Phase2LifetimeSeconds' => {
+                                            'type' => 'Int'
+                                          }
+             },
+  'NameInRequest' => {
+                       'Phase1DHGroupNumbers' => 'Phase1DHGroupNumber',
+                       'Phase1EncryptionAlgorithms' => 'Phase1EncryptionAlgorithm',
+                       'Phase2IntegrityAlgorithms' => 'Phase2IntegrityAlgorithm',
+                       'IKEVersions' => 'IKEVersion',
+                       'Phase1IntegrityAlgorithms' => 'Phase1IntegrityAlgorithm',
+                       'Phase2EncryptionAlgorithms' => 'Phase2EncryptionAlgorithm',
+                       'Phase2DHGroupNumbers' => 'Phase2DHGroupNumber'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,14 +131,14 @@ Constraints: A value between 0 and 30.
 Default: C<30>
 
 
-=head2 IKEVersions => ArrayRef[L<Paws::EC2::IKEVersionsRequestListValue>]
+=head2 IKEVersions => ArrayRef[EC2_IKEVersionsRequestListValue]
 
   The IKE versions that are permitted for the VPN tunnel.
 
 Valid values: C<ikev1> | C<ikev2>
 
 
-=head2 Phase1DHGroupNumbers => ArrayRef[L<Paws::EC2::Phase1DHGroupNumbersRequestListValue>]
+=head2 Phase1DHGroupNumbers => ArrayRef[EC2_Phase1DHGroupNumbersRequestListValue]
 
   One or more Diffie-Hellman group numbers that are permitted for the VPN
 tunnel for phase 1 IKE negotiations.
@@ -75,7 +147,7 @@ Valid values: C<2> | C<14> | C<15> | C<16> | C<17> | C<18> | C<22> |
 C<23> | C<24>
 
 
-=head2 Phase1EncryptionAlgorithms => ArrayRef[L<Paws::EC2::Phase1EncryptionAlgorithmsRequestListValue>]
+=head2 Phase1EncryptionAlgorithms => ArrayRef[EC2_Phase1EncryptionAlgorithmsRequestListValue]
 
   One or more encryption algorithms that are permitted for the VPN tunnel
 for phase 1 IKE negotiations.
@@ -83,7 +155,7 @@ for phase 1 IKE negotiations.
 Valid values: C<AES128> | C<AES256>
 
 
-=head2 Phase1IntegrityAlgorithms => ArrayRef[L<Paws::EC2::Phase1IntegrityAlgorithmsRequestListValue>]
+=head2 Phase1IntegrityAlgorithms => ArrayRef[EC2_Phase1IntegrityAlgorithmsRequestListValue]
 
   One or more integrity algorithms that are permitted for the VPN tunnel
 for phase 1 IKE negotiations.
@@ -100,7 +172,7 @@ Constraints: A value between 900 and 28,800.
 Default: C<28800>
 
 
-=head2 Phase2DHGroupNumbers => ArrayRef[L<Paws::EC2::Phase2DHGroupNumbersRequestListValue>]
+=head2 Phase2DHGroupNumbers => ArrayRef[EC2_Phase2DHGroupNumbersRequestListValue]
 
   One or more Diffie-Hellman group numbers that are permitted for the VPN
 tunnel for phase 2 IKE negotiations.
@@ -109,7 +181,7 @@ Valid values: C<2> | C<5> | C<14> | C<15> | C<16> | C<17> | C<18> |
 C<22> | C<23> | C<24>
 
 
-=head2 Phase2EncryptionAlgorithms => ArrayRef[L<Paws::EC2::Phase2EncryptionAlgorithmsRequestListValue>]
+=head2 Phase2EncryptionAlgorithms => ArrayRef[EC2_Phase2EncryptionAlgorithmsRequestListValue]
 
   One or more encryption algorithms that are permitted for the VPN tunnel
 for phase 2 IKE negotiations.
@@ -117,7 +189,7 @@ for phase 2 IKE negotiations.
 Valid values: C<AES128> | C<AES256>
 
 
-=head2 Phase2IntegrityAlgorithms => ArrayRef[L<Paws::EC2::Phase2IntegrityAlgorithmsRequestListValue>]
+=head2 Phase2IntegrityAlgorithms => ArrayRef[EC2_Phase2IntegrityAlgorithmsRequestListValue]
 
   One or more integrity algorithms that are permitted for the VPN tunnel
 for phase 2 IKE negotiations.

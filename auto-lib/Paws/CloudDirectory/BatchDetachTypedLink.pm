@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchDetachTypedLink;
-  use Moose;
-  has TypedLinkSpecifier => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSpecifier', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedLinkSpecifier/;
+  has TypedLinkSpecifier => (is => 'ro', isa => CloudDirectory_TypedLinkSpecifier, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TypedLinkSpecifier' => 1
+                  },
+  'types' => {
+               'TypedLinkSpecifier' => {
+                                         'class' => 'Paws::CloudDirectory::TypedLinkSpecifier',
+                                         'type' => 'CloudDirectory_TypedLinkSpecifier'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ BatchReadRequest$Operations.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>
+=head2 B<REQUIRED> TypedLinkSpecifier => CloudDirectory_TypedLinkSpecifier
 
   Used to accept a typed link specifier as input.
 

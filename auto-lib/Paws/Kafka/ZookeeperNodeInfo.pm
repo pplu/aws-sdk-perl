@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::Kafka::ZookeeperNodeInfo;
-  use Moose;
-  has AttachedENIId => (is => 'ro', isa => 'Str', request_name => 'attachedENIId', traits => ['NameInRequest']);
-  has ClientVpcIpAddress => (is => 'ro', isa => 'Str', request_name => 'clientVpcIpAddress', traits => ['NameInRequest']);
-  has Endpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'endpoints', traits => ['NameInRequest']);
-  has ZookeeperId => (is => 'ro', isa => 'Num', request_name => 'zookeeperId', traits => ['NameInRequest']);
-  has ZookeeperVersion => (is => 'ro', isa => 'Str', request_name => 'zookeeperVersion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Num/;
+  use Paws::Kafka::Types qw//;
+  has AttachedENIId => (is => 'ro', isa => Str);
+  has ClientVpcIpAddress => (is => 'ro', isa => Str);
+  has Endpoints => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ZookeeperId => (is => 'ro', isa => Num);
+  has ZookeeperVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ZookeeperVersion' => {
+                                       'type' => 'Str'
+                                     },
+               'AttachedENIId' => {
+                                    'type' => 'Str'
+                                  },
+               'ClientVpcIpAddress' => {
+                                         'type' => 'Str'
+                                       },
+               'Endpoints' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'ZookeeperId' => {
+                                  'type' => 'Num'
+                                }
+             },
+  'NameInRequest' => {
+                       'ZookeeperId' => 'zookeeperId',
+                       'ClientVpcIpAddress' => 'clientVpcIpAddress',
+                       'Endpoints' => 'endpoints',
+                       'AttachedENIId' => 'attachedENIId',
+                       'ZookeeperVersion' => 'zookeeperVersion'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

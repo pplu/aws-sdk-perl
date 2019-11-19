@@ -1,10 +1,37 @@
 
 package Paws::GuardDuty::ListFindingsResponse;
-  use Moose;
-  has FindingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingIds', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GuardDuty::Types qw//;
+  has FindingIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FindingIds' => 1
+                  },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'FindingIds' => 'findingIds'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FindingIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

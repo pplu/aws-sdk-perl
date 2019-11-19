@@ -1,13 +1,63 @@
+# Generated from default/object.tt
 package Paws::Signer::SigningPlatform;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
-  has DisplayName => (is => 'ro', isa => 'Str', request_name => 'displayName', traits => ['NameInRequest']);
-  has MaxSizeInMB => (is => 'ro', isa => 'Int', request_name => 'maxSizeInMB', traits => ['NameInRequest']);
-  has Partner => (is => 'ro', isa => 'Str', request_name => 'partner', traits => ['NameInRequest']);
-  has PlatformId => (is => 'ro', isa => 'Str', request_name => 'platformId', traits => ['NameInRequest']);
-  has SigningConfiguration => (is => 'ro', isa => 'Paws::Signer::SigningConfiguration', request_name => 'signingConfiguration', traits => ['NameInRequest']);
-  has SigningImageFormat => (is => 'ro', isa => 'Paws::Signer::SigningImageFormat', request_name => 'signingImageFormat', traits => ['NameInRequest']);
-  has Target => (is => 'ro', isa => 'Str', request_name => 'target', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Signer::Types qw/Signer_SigningImageFormat Signer_SigningConfiguration/;
+  has Category => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str);
+  has MaxSizeInMB => (is => 'ro', isa => Int);
+  has Partner => (is => 'ro', isa => Str);
+  has PlatformId => (is => 'ro', isa => Str);
+  has SigningConfiguration => (is => 'ro', isa => Signer_SigningConfiguration);
+  has SigningImageFormat => (is => 'ro', isa => Signer_SigningImageFormat);
+  has Target => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Target' => 'target',
+                       'MaxSizeInMB' => 'maxSizeInMB',
+                       'Partner' => 'partner',
+                       'PlatformId' => 'platformId',
+                       'Category' => 'category',
+                       'SigningImageFormat' => 'signingImageFormat',
+                       'DisplayName' => 'displayName',
+                       'SigningConfiguration' => 'signingConfiguration'
+                     },
+  'types' => {
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'SigningImageFormat' => {
+                                         'class' => 'Paws::Signer::SigningImageFormat',
+                                         'type' => 'Signer_SigningImageFormat'
+                                       },
+               'SigningConfiguration' => {
+                                           'class' => 'Paws::Signer::SigningConfiguration',
+                                           'type' => 'Signer_SigningConfiguration'
+                                         },
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'MaxSizeInMB' => {
+                                  'type' => 'Int'
+                                },
+               'Partner' => {
+                              'type' => 'Str'
+                            },
+               'PlatformId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -70,14 +120,14 @@ platform.
   The ID of a code signing; platform.
 
 
-=head2 SigningConfiguration => L<Paws::Signer::SigningConfiguration>
+=head2 SigningConfiguration => Signer_SigningConfiguration
 
   The configuration of a code signing platform. This includes the
 designated hash algorithm and encryption algorithm of a signing
 platform.
 
 
-=head2 SigningImageFormat => L<Paws::Signer::SigningImageFormat>
+=head2 SigningImageFormat => Signer_SigningImageFormat
 
   
 

@@ -1,9 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StepFunctions::StopExecutionOutput;
-  use Moose;
-  has StopDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stopDate' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has StopDate => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'StopDate' => 'stopDate'
+                     },
+  'IsRequired' => {
+                    'StopDate' => 1
+                  },
+  'types' => {
+               'StopDate' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

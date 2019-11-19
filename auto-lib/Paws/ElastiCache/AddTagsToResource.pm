@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::AddTagsToResource;
-  use Moose;
-  has ResourceName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_Tag/;
+  has ResourceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ElastiCache_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::TagListMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AddTagsToResourceResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddTagsToResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::TagListMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'AddTagsToResourceResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[ElastiCache_Tag]',
+                           'class' => 'Paws::ElastiCache::Tag'
+                         },
+               'ResourceName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'ResourceName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +89,7 @@ AWS Service Namespaces
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[ElastiCache_Tag]
 
 A list of cost allocation tags to be added to this resource. A tag is a
 key-value pair. A tag key must be accompanied by a tag value.

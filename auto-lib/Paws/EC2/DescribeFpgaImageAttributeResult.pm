@@ -1,9 +1,31 @@
 
 package Paws::EC2::DescribeFpgaImageAttributeResult;
-  use Moose;
-  has FpgaImageAttribute => (is => 'ro', isa => 'Paws::EC2::FpgaImageAttribute', request_name => 'fpgaImageAttribute', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_FpgaImageAttribute/;
+  has FpgaImageAttribute => (is => 'ro', isa => EC2_FpgaImageAttribute);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FpgaImageAttribute' => 'fpgaImageAttribute'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FpgaImageAttribute' => {
+                                         'type' => 'EC2_FpgaImageAttribute',
+                                         'class' => 'Paws::EC2::FpgaImageAttribute'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::DescribeFpgaImageAttributeResult
 =head1 ATTRIBUTES
 
 
-=head2 FpgaImageAttribute => L<Paws::EC2::FpgaImageAttribute>
+=head2 FpgaImageAttribute => EC2_FpgaImageAttribute
 
 Information about the attribute.
 

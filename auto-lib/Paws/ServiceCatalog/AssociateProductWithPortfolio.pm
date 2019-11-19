@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::AssociateProductWithPortfolio;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has PortfolioId => (is => 'ro', isa => 'Str', required => 1);
-  has ProductId => (is => 'ro', isa => 'Str', required => 1);
-  has SourcePortfolioId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has PortfolioId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProductId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourcePortfolioId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateProductWithPortfolio');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::AssociateProductWithPortfolioOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateProductWithPortfolio');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::AssociateProductWithPortfolioOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourcePortfolioId' => {
+                                        'type' => 'Str'
+                                      },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'PortfolioId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ProductId' => 1,
+                    'PortfolioId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

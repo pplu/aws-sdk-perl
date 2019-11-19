@@ -1,18 +1,49 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::DescribeSnapshotSchedules;
-  use Moose;
-  has ClusterIdentifier => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has ScheduleIdentifier => (is => 'ro', isa => 'Str');
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TagValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::RedShift::Types qw//;
+  has ClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has ScheduleIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has TagKeys => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has TagValues => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotSchedules');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::DescribeSnapshotSchedulesOutputMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotSchedulesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeSnapshotSchedules');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::DescribeSnapshotSchedulesOutputMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeSnapshotSchedulesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagValues' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'ScheduleIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'TagKeys' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

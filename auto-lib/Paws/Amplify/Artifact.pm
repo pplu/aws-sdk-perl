@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Amplify::Artifact;
-  use Moose;
-  has ArtifactFileName => (is => 'ro', isa => 'Str', request_name => 'artifactFileName', traits => ['NameInRequest'], required => 1);
-  has ArtifactId => (is => 'ro', isa => 'Str', request_name => 'artifactId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw//;
+  has ArtifactFileName => (is => 'ro', isa => Str, required => 1);
+  has ArtifactId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ArtifactId' => 1,
+                    'ArtifactFileName' => 1
+                  },
+  'NameInRequest' => {
+                       'ArtifactId' => 'artifactId',
+                       'ArtifactFileName' => 'artifactFileName'
+                     },
+  'types' => {
+               'ArtifactFileName' => {
+                                       'type' => 'Str'
+                                     },
+               'ArtifactId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

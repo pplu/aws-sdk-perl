@@ -1,16 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::CreateDeploymentConfig;
-  use Moose;
-  has ComputePlatform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computePlatform' );
-  has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' , required => 1);
-  has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', traits => ['NameInRequest'], request_name => 'minimumHealthyHosts' );
-  has TrafficRoutingConfig => (is => 'ro', isa => 'Paws::CodeDeploy::TrafficRoutingConfig', traits => ['NameInRequest'], request_name => 'trafficRoutingConfig' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_MinimumHealthyHosts CodeDeploy_TrafficRoutingConfig/;
+  has ComputePlatform => (is => 'ro', isa => Str, predicate => 1);
+  has DeploymentConfigName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MinimumHealthyHosts => (is => 'ro', isa => CodeDeploy_MinimumHealthyHosts, predicate => 1);
+  has TrafficRoutingConfig => (is => 'ro', isa => CodeDeploy_TrafficRoutingConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeploymentConfig');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::CreateDeploymentConfigOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDeploymentConfig');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::CreateDeploymentConfigOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MinimumHealthyHosts' => 'minimumHealthyHosts',
+                       'TrafficRoutingConfig' => 'trafficRoutingConfig',
+                       'DeploymentConfigName' => 'deploymentConfigName',
+                       'ComputePlatform' => 'computePlatform'
+                     },
+  'IsRequired' => {
+                    'DeploymentConfigName' => 1
+                  },
+  'types' => {
+               'DeploymentConfigName' => {
+                                           'type' => 'Str'
+                                         },
+               'ComputePlatform' => {
+                                      'type' => 'Str'
+                                    },
+               'TrafficRoutingConfig' => {
+                                           'type' => 'CodeDeploy_TrafficRoutingConfig',
+                                           'class' => 'Paws::CodeDeploy::TrafficRoutingConfig'
+                                         },
+               'MinimumHealthyHosts' => {
+                                          'type' => 'CodeDeploy_MinimumHealthyHosts',
+                                          'class' => 'Paws::CodeDeploy::MinimumHealthyHosts'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +111,7 @@ The name of the deployment configuration to create.
 
 
 
-=head2 MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
+=head2 MinimumHealthyHosts => CodeDeploy_MinimumHealthyHosts
 
 The minimum number of healthy instances that should be available at any
 time during the deployment. There are two parameters expected in the
@@ -107,7 +143,7 @@ of FLEET_PERCENT and a value of 95.
 
 
 
-=head2 TrafficRoutingConfig => L<Paws::CodeDeploy::TrafficRoutingConfig>
+=head2 TrafficRoutingConfig => CodeDeploy_TrafficRoutingConfig
 
 The configuration that specifies how the deployment traffic is routed.
 

@@ -1,15 +1,37 @@
 
 package Paws::SESv2::CreateDedicatedIpPool;
-  use Moose;
-  has PoolName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SESv2::Types qw/SESv2_Tag/;
+  has PoolName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SESv2_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDedicatedIpPool');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/dedicated-ip-pools');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::CreateDedicatedIpPoolResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDedicatedIpPool');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/dedicated-ip-pools');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::CreateDedicatedIpPoolResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PoolName' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'type' => 'ArrayRef[SESv2_Tag]',
+                           'class' => 'Paws::SESv2::Tag'
+                         }
+             },
+  'IsRequired' => {
+                    'PoolName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +75,7 @@ The name of the dedicated IP pool.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SESv2::Tag>]
+=head2 Tags => ArrayRef[SESv2_Tag]
 
 An object that defines the tags (keys and values) that you want to
 associate with the pool.

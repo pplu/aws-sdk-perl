@@ -1,18 +1,52 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::ListEntitiesForPolicy;
-  use Moose;
-  has EntityFilter => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxItems => (is => 'ro', isa => 'Int');
-  has PathPrefix => (is => 'ro', isa => 'Str');
-  has PolicyArn => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyUsageFilter => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IAM::Types qw//;
+  has EntityFilter => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
+  has PathPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has PolicyArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PolicyUsageFilter => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListEntitiesForPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::ListEntitiesForPolicyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListEntitiesForPolicyResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListEntitiesForPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::ListEntitiesForPolicyResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListEntitiesForPolicyResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PolicyArn' => 1
+                  },
+  'types' => {
+               'EntityFilter' => {
+                                   'type' => 'Str'
+                                 },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'PathPrefix' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyUsageFilter' => {
+                                        'type' => 'Str'
+                                      },
+               'PolicyArn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,34 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Support::DescribeTrustedAdvisorChecksResponse;
-  use Moose;
-  has Checks => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckDescription]', traits => ['NameInRequest'], request_name => 'checks' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Support::Types qw/Support_TrustedAdvisorCheckDescription/;
+  has Checks => (is => 'ro', isa => ArrayRef[Support_TrustedAdvisorCheckDescription], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Checks' => 'checks'
+                     },
+  'IsRequired' => {
+                    'Checks' => 1
+                  },
+  'types' => {
+               'Checks' => {
+                             'type' => 'ArrayRef[Support_TrustedAdvisorCheckDescription]',
+                             'class' => 'Paws::Support::TrustedAdvisorCheckDescription'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +39,7 @@ Paws::Support::DescribeTrustedAdvisorChecksResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Checks => ArrayRef[L<Paws::Support::TrustedAdvisorCheckDescription>]
+=head2 B<REQUIRED> Checks => ArrayRef[Support_TrustedAdvisorCheckDescription]
 
 Information about all available Trusted Advisor checks.
 

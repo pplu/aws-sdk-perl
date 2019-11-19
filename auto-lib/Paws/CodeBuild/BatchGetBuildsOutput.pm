@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeBuild::BatchGetBuildsOutput;
-  use Moose;
-  has Builds => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Build]', traits => ['NameInRequest'], request_name => 'builds' );
-  has BuildsNotFound => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'buildsNotFound' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeBuild::Types qw/CodeBuild_Build/;
+  has Builds => (is => 'ro', isa => ArrayRef[CodeBuild_Build]);
+  has BuildsNotFound => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BuildsNotFound' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'Builds' => {
+                             'type' => 'ArrayRef[CodeBuild_Build]',
+                             'class' => 'Paws::CodeBuild::Build'
+                           }
+             },
+  'NameInRequest' => {
+                       'Builds' => 'builds',
+                       'BuildsNotFound' => 'buildsNotFound'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::CodeBuild::BatchGetBuildsOutput
 =head1 ATTRIBUTES
 
 
-=head2 Builds => ArrayRef[L<Paws::CodeBuild::Build>]
+=head2 Builds => ArrayRef[CodeBuild_Build]
 
 Information about the requested builds.
 

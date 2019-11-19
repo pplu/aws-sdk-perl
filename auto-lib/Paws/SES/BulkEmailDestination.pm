@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::SES::BulkEmailDestination;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Paws::SES::Destination', required => 1);
-  has ReplacementTags => (is => 'ro', isa => 'ArrayRef[Paws::SES::MessageTag]');
-  has ReplacementTemplateData => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::SES::Types qw/SES_Destination SES_MessageTag/;
+  has Destination => (is => 'ro', isa => SES_Destination, required => 1);
+  has ReplacementTags => (is => 'ro', isa => ArrayRef[SES_MessageTag]);
+  has ReplacementTemplateData => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Destination' => {
+                                  'type' => 'SES_Destination',
+                                  'class' => 'Paws::SES::Destination'
+                                },
+               'ReplacementTemplateData' => {
+                                              'type' => 'Str'
+                                            },
+               'ReplacementTags' => {
+                                      'class' => 'Paws::SES::MessageTag',
+                                      'type' => 'ArrayRef[SES_MessageTag]'
+                                    }
+             },
+  'IsRequired' => {
+                    'Destination' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,12 +67,12 @@ and replacement data associated with each of those Destinations.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Destination => L<Paws::SES::Destination>
+=head2 B<REQUIRED> Destination => SES_Destination
 
   
 
 
-=head2 ReplacementTags => ArrayRef[L<Paws::SES::MessageTag>]
+=head2 ReplacementTags => ArrayRef[SES_MessageTag]
 
   A list of tags, in the form of name/value pairs, to apply to an email
 that you send using C<SendBulkTemplatedEmail>. Tags correspond to

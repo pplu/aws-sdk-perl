@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::CodeContentDescription;
-  use Moose;
-  has CodeMD5 => (is => 'ro', isa => 'Str');
-  has CodeSize => (is => 'ro', isa => 'Int');
-  has S3ApplicationCodeLocationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::S3ApplicationCodeLocationDescription');
-  has TextContent => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_S3ApplicationCodeLocationDescription/;
+  has CodeMD5 => (is => 'ro', isa => Str);
+  has CodeSize => (is => 'ro', isa => Int);
+  has S3ApplicationCodeLocationDescription => (is => 'ro', isa => KinesisAnalyticsV2_S3ApplicationCodeLocationDescription);
+  has TextContent => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CodeMD5' => {
+                              'type' => 'Str'
+                            },
+               'TextContent' => {
+                                  'type' => 'Str'
+                                },
+               'CodeSize' => {
+                               'type' => 'Int'
+                             },
+               'S3ApplicationCodeLocationDescription' => {
+                                                           'class' => 'Paws::KinesisAnalyticsV2::S3ApplicationCodeLocationDescription',
+                                                           'type' => 'KinesisAnalyticsV2_S3ApplicationCodeLocationDescription'
+                                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +78,7 @@ Data Analytics application.
 zip-format code.
 
 
-=head2 S3ApplicationCodeLocationDescription => L<Paws::KinesisAnalyticsV2::S3ApplicationCodeLocationDescription>
+=head2 S3ApplicationCodeLocationDescription => KinesisAnalyticsV2_S3ApplicationCodeLocationDescription
 
   The S3 bucket Amazon Resource Name (ARN), file key, and object version
 of the application code stored in Amazon S3.

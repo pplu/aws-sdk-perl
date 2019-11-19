@@ -1,26 +1,105 @@
+# Generated from default/object.tt
 package Paws::GameLift::FleetAttributes;
-  use Moose;
-  has BuildId => (is => 'ro', isa => 'Str');
-  has CertificateConfiguration => (is => 'ro', isa => 'Paws::GameLift::CertificateConfiguration');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has FleetArn => (is => 'ro', isa => 'Str');
-  has FleetId => (is => 'ro', isa => 'Str');
-  has FleetType => (is => 'ro', isa => 'Str');
-  has InstanceRoleArn => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MetricGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str');
-  has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
-  has OperatingSystem => (is => 'ro', isa => 'Str');
-  has ResourceCreationLimitPolicy => (is => 'ro', isa => 'Paws::GameLift::ResourceCreationLimitPolicy');
-  has ScriptId => (is => 'ro', isa => 'Str');
-  has ServerLaunchParameters => (is => 'ro', isa => 'Str');
-  has ServerLaunchPath => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StoppedActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TerminationTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GameLift::Types qw/GameLift_CertificateConfiguration GameLift_ResourceCreationLimitPolicy/;
+  has BuildId => (is => 'ro', isa => Str);
+  has CertificateConfiguration => (is => 'ro', isa => GameLift_CertificateConfiguration);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has FleetArn => (is => 'ro', isa => Str);
+  has FleetId => (is => 'ro', isa => Str);
+  has FleetType => (is => 'ro', isa => Str);
+  has InstanceRoleArn => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has LogPaths => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has MetricGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Name => (is => 'ro', isa => Str);
+  has NewGameSessionProtectionPolicy => (is => 'ro', isa => Str);
+  has OperatingSystem => (is => 'ro', isa => Str);
+  has ResourceCreationLimitPolicy => (is => 'ro', isa => GameLift_ResourceCreationLimitPolicy);
+  has ScriptId => (is => 'ro', isa => Str);
+  has ServerLaunchParameters => (is => 'ro', isa => Str);
+  has ServerLaunchPath => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StoppedActions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TerminationTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceRoleArn' => {
+                                      'type' => 'Str'
+                                    },
+               'ServerLaunchParameters' => {
+                                             'type' => 'Str'
+                                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'BuildId' => {
+                              'type' => 'Str'
+                            },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'TerminationTime' => {
+                                      'type' => 'Str'
+                                    },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'OperatingSystem' => {
+                                      'type' => 'Str'
+                                    },
+               'ServerLaunchPath' => {
+                                       'type' => 'Str'
+                                     },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'LogPaths' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'FleetType' => {
+                                'type' => 'Str'
+                              },
+               'ResourceCreationLimitPolicy' => {
+                                                  'class' => 'Paws::GameLift::ResourceCreationLimitPolicy',
+                                                  'type' => 'GameLift_ResourceCreationLimitPolicy'
+                                                },
+               'FleetArn' => {
+                               'type' => 'Str'
+                             },
+               'NewGameSessionProtectionPolicy' => {
+                                                     'type' => 'Str'
+                                                   },
+               'StoppedActions' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'CertificateConfiguration' => {
+                                               'type' => 'GameLift_CertificateConfiguration',
+                                               'class' => 'Paws::GameLift::CertificateConfiguration'
+                                             },
+               'MetricGroups' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'ScriptId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -154,7 +233,7 @@ StopFleetActions
   Unique identifier for a build.
 
 
-=head2 CertificateConfiguration => L<Paws::GameLift::CertificateConfiguration>
+=head2 CertificateConfiguration => GameLift_CertificateConfiguration
 
   
 
@@ -263,7 +342,7 @@ operating system depends on the OS specified for the build that is
 deployed on this fleet.
 
 
-=head2 ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>
+=head2 ResourceCreationLimitPolicy => GameLift_ResourceCreationLimitPolicy
 
   Fleet policy to limit the number of game sessions an individual player
 can create over a span of time.

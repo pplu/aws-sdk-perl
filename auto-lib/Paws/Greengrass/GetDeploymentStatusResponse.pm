@@ -1,13 +1,43 @@
 
 package Paws::Greengrass::GetDeploymentStatusResponse;
-  use Moose;
-  has DeploymentStatus => (is => 'ro', isa => 'Str');
-  has DeploymentType => (is => 'ro', isa => 'Str');
-  has ErrorDetails => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ErrorDetail]');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has UpdatedAt => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_ErrorDetail/;
+  has DeploymentStatus => (is => 'ro', isa => Str);
+  has DeploymentType => (is => 'ro', isa => Str);
+  has ErrorDetails => (is => 'ro', isa => ArrayRef[Greengrass_ErrorDetail]);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'ErrorDetails' => {
+                                   'type' => 'ArrayRef[Greengrass_ErrorDetail]',
+                                   'class' => 'Paws::Greengrass::ErrorDetail'
+                                 },
+               'DeploymentType' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'DeploymentStatus' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +60,7 @@ The status of the deployment: ''InProgress'', ''Building'',
 The type of the deployment.
 
 Valid values are: C<"NewDeployment">, C<"Redeployment">, C<"ResetDeployment">, C<"ForceResetDeployment">
-=head2 ErrorDetails => ArrayRef[L<Paws::Greengrass::ErrorDetail>]
+=head2 ErrorDetails => ArrayRef[Greengrass_ErrorDetail]
 
 Error details
 

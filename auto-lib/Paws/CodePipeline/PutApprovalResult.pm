@@ -1,17 +1,60 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::PutApprovalResult;
-  use Moose;
-  has ActionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'actionName' , required => 1);
-  has PipelineName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineName' , required => 1);
-  has Result => (is => 'ro', isa => 'Paws::CodePipeline::ApprovalResult', traits => ['NameInRequest'], request_name => 'result' , required => 1);
-  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName' , required => 1);
-  has Token => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'token' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ApprovalResult/;
+  has ActionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PipelineName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Result => (is => 'ro', isa => CodePipeline_ApprovalResult, required => 1, predicate => 1);
+  has StageName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Token => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutApprovalResult');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::PutApprovalResultOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutApprovalResult');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodePipeline::PutApprovalResultOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'StageName' => 'stageName',
+                       'ActionName' => 'actionName',
+                       'Token' => 'token',
+                       'Result' => 'result',
+                       'PipelineName' => 'pipelineName'
+                     },
+  'IsRequired' => {
+                    'ActionName' => 1,
+                    'StageName' => 1,
+                    'Result' => 1,
+                    'PipelineName' => 1,
+                    'Token' => 1
+                  },
+  'types' => {
+               'Result' => {
+                             'type' => 'CodePipeline_ApprovalResult',
+                             'class' => 'Paws::CodePipeline::ApprovalResult'
+                           },
+               'PipelineName' => {
+                                   'type' => 'Str'
+                                 },
+               'Token' => {
+                            'type' => 'Str'
+                          },
+               'StageName' => {
+                                'type' => 'Str'
+                              },
+               'ActionName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +110,7 @@ The name of the pipeline that contains the action.
 
 
 
-=head2 B<REQUIRED> Result => L<Paws::CodePipeline::ApprovalResult>
+=head2 B<REQUIRED> Result => CodePipeline_ApprovalResult
 
 Represents information about the result of the approval request.
 

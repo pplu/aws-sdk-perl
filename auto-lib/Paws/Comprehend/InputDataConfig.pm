@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::Comprehend::InputDataConfig;
-  use Moose;
-  has InputFormat => (is => 'ro', isa => 'Str');
-  has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw//;
+  has InputFormat => (is => 'ro', isa => Str);
+  has S3Uri => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'S3Uri' => 1
+                  },
+  'types' => {
+               'InputFormat' => {
+                                  'type' => 'Str'
+                                },
+               'S3Uri' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

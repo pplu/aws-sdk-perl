@@ -1,14 +1,74 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionDeclaration;
-  use Moose;
-  has ActionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', request_name => 'actionTypeId', traits => ['NameInRequest'], required => 1);
-  has Configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap', request_name => 'configuration', traits => ['NameInRequest']);
-  has InputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::InputArtifact]', request_name => 'inputArtifacts', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', request_name => 'namespace', traits => ['NameInRequest']);
-  has OutputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::OutputArtifact]', request_name => 'outputArtifacts', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has RunOrder => (is => 'ro', isa => 'Int', request_name => 'runOrder', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int/;
+  use Paws::CodePipeline::Types qw/CodePipeline_InputArtifact CodePipeline_ActionTypeId CodePipeline_ActionConfigurationMap CodePipeline_OutputArtifact/;
+  has ActionTypeId => (is => 'ro', isa => CodePipeline_ActionTypeId, required => 1);
+  has Configuration => (is => 'ro', isa => CodePipeline_ActionConfigurationMap);
+  has InputArtifacts => (is => 'ro', isa => ArrayRef[CodePipeline_InputArtifact]);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Namespace => (is => 'ro', isa => Str);
+  has OutputArtifacts => (is => 'ro', isa => ArrayRef[CodePipeline_OutputArtifact]);
+  has Region => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has RunOrder => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'OutputArtifacts' => {
+                                      'type' => 'ArrayRef[CodePipeline_OutputArtifact]',
+                                      'class' => 'Paws::CodePipeline::OutputArtifact'
+                                    },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'ActionTypeId' => {
+                                   'type' => 'CodePipeline_ActionTypeId',
+                                   'class' => 'Paws::CodePipeline::ActionTypeId'
+                                 },
+               'InputArtifacts' => {
+                                     'type' => 'ArrayRef[CodePipeline_InputArtifact]',
+                                     'class' => 'Paws::CodePipeline::InputArtifact'
+                                   },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'Configuration' => {
+                                    'class' => 'Paws::CodePipeline::ActionConfigurationMap',
+                                    'type' => 'CodePipeline_ActionConfigurationMap'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RunOrder' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'OutputArtifacts' => 'outputArtifacts',
+                       'Region' => 'region',
+                       'ActionTypeId' => 'actionTypeId',
+                       'RunOrder' => 'runOrder',
+                       'Namespace' => 'namespace',
+                       'Configuration' => 'configuration',
+                       'Name' => 'name',
+                       'InputArtifacts' => 'inputArtifacts'
+                     },
+  'IsRequired' => {
+                    'ActionTypeId' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,12 +104,12 @@ Represents information about an action declaration.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
+=head2 B<REQUIRED> ActionTypeId => CodePipeline_ActionTypeId
 
   Specifies the action type and the provider of the action.
 
 
-=head2 Configuration => L<Paws::CodePipeline::ActionConfigurationMap>
+=head2 Configuration => CodePipeline_ActionConfigurationMap
 
   The action's configuration. These are key-value pairs that specify
 input values for an action. For more information, see Action Structure
@@ -72,7 +132,7 @@ I<JSON:>
 C<"Configuration" : { Key : Value },>
 
 
-=head2 InputArtifacts => ArrayRef[L<Paws::CodePipeline::InputArtifact>]
+=head2 InputArtifacts => ArrayRef[CodePipeline_InputArtifact]
 
   The name or ID of the artifact consumed by the action, such as a test
 or build artifact.
@@ -89,7 +149,7 @@ or build artifact.
 produced as output by this action fall under this namespace.
 
 
-=head2 OutputArtifacts => ArrayRef[L<Paws::CodePipeline::OutputArtifact>]
+=head2 OutputArtifacts => ArrayRef[CodePipeline_OutputArtifact]
 
   The name or ID of the result of the action declaration, such as a test
 or build artifact.

@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::PullRequestMergedStateChangedEventMetadata;
-  use Moose;
-  has DestinationReference => (is => 'ro', isa => 'Str', request_name => 'destinationReference', traits => ['NameInRequest']);
-  has MergeMetadata => (is => 'ro', isa => 'Paws::CodeCommit::MergeMetadata', request_name => 'mergeMetadata', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_MergeMetadata/;
+  has DestinationReference => (is => 'ro', isa => Str);
+  has MergeMetadata => (is => 'ro', isa => CodeCommit_MergeMetadata);
+  has RepositoryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RepositoryName' => 'repositoryName',
+                       'MergeMetadata' => 'mergeMetadata',
+                       'DestinationReference' => 'destinationReference'
+                     },
+  'types' => {
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'DestinationReference' => {
+                                           'type' => 'Str'
+                                         },
+               'MergeMetadata' => {
+                                    'class' => 'Paws::CodeCommit::MergeMetadata',
+                                    'type' => 'CodeCommit_MergeMetadata'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +73,7 @@ request event.
   The name of the branch that the pull request will be merged into.
 
 
-=head2 MergeMetadata => L<Paws::CodeCommit::MergeMetadata>
+=head2 MergeMetadata => CodeCommit_MergeMetadata
 
   Information about the merge state change event.
 

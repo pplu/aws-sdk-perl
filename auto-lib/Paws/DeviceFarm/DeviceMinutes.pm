@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::DeviceMinutes;
-  use Moose;
-  has Metered => (is => 'ro', isa => 'Num', request_name => 'metered', traits => ['NameInRequest']);
-  has Total => (is => 'ro', isa => 'Num', request_name => 'total', traits => ['NameInRequest']);
-  has Unmetered => (is => 'ro', isa => 'Num', request_name => 'unmetered', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::DeviceFarm::Types qw//;
+  has Metered => (is => 'ro', isa => Num);
+  has Total => (is => 'ro', isa => Num);
+  has Unmetered => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Unmetered' => {
+                                'type' => 'Num'
+                              },
+               'Metered' => {
+                              'type' => 'Num'
+                            },
+               'Total' => {
+                            'type' => 'Num'
+                          }
+             },
+  'NameInRequest' => {
+                       'Unmetered' => 'unmetered',
+                       'Metered' => 'metered',
+                       'Total' => 'total'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

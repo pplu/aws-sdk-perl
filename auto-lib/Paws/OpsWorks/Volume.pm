@@ -1,19 +1,75 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::Volume;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has Device => (is => 'ro', isa => 'Str');
-  has Ec2VolumeId => (is => 'ro', isa => 'Str');
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has MountPoint => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has RaidArrayId => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has Size => (is => 'ro', isa => 'Int');
-  has Status => (is => 'ro', isa => 'Str');
-  has VolumeId => (is => 'ro', isa => 'Str');
-  has VolumeType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::OpsWorks::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has Device => (is => 'ro', isa => Str);
+  has Ec2VolumeId => (is => 'ro', isa => Str);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has InstanceId => (is => 'ro', isa => Str);
+  has Iops => (is => 'ro', isa => Int);
+  has MountPoint => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RaidArrayId => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has Size => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has VolumeId => (is => 'ro', isa => Str);
+  has VolumeType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'MountPoint' => {
+                                 'type' => 'Str'
+                               },
+               'VolumeId' => {
+                               'type' => 'Str'
+                             },
+               'RaidArrayId' => {
+                                  'type' => 'Str'
+                                },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'Ec2VolumeId' => {
+                                  'type' => 'Str'
+                                },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               },
+               'Device' => {
+                             'type' => 'Str'
+                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

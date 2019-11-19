@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::InstanceDetails;
-  use Moose;
-  has EC2InstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::EC2InstanceDetails');
-  has ElastiCacheInstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::ElastiCacheInstanceDetails');
-  has ESInstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::ESInstanceDetails');
-  has RDSInstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::RDSInstanceDetails');
-  has RedshiftInstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::RedshiftInstanceDetails');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CostExplorer::Types qw/CostExplorer_RDSInstanceDetails CostExplorer_RedshiftInstanceDetails CostExplorer_ElastiCacheInstanceDetails CostExplorer_ESInstanceDetails CostExplorer_EC2InstanceDetails/;
+  has EC2InstanceDetails => (is => 'ro', isa => CostExplorer_EC2InstanceDetails);
+  has ElastiCacheInstanceDetails => (is => 'ro', isa => CostExplorer_ElastiCacheInstanceDetails);
+  has ESInstanceDetails => (is => 'ro', isa => CostExplorer_ESInstanceDetails);
+  has RDSInstanceDetails => (is => 'ro', isa => CostExplorer_RDSInstanceDetails);
+  has RedshiftInstanceDetails => (is => 'ro', isa => CostExplorer_RedshiftInstanceDetails);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ESInstanceDetails' => {
+                                        'class' => 'Paws::CostExplorer::ESInstanceDetails',
+                                        'type' => 'CostExplorer_ESInstanceDetails'
+                                      },
+               'EC2InstanceDetails' => {
+                                         'class' => 'Paws::CostExplorer::EC2InstanceDetails',
+                                         'type' => 'CostExplorer_EC2InstanceDetails'
+                                       },
+               'ElastiCacheInstanceDetails' => {
+                                                 'class' => 'Paws::CostExplorer::ElastiCacheInstanceDetails',
+                                                 'type' => 'CostExplorer_ElastiCacheInstanceDetails'
+                                               },
+               'RDSInstanceDetails' => {
+                                         'class' => 'Paws::CostExplorer::RDSInstanceDetails',
+                                         'type' => 'CostExplorer_RDSInstanceDetails'
+                                       },
+               'RedshiftInstanceDetails' => {
+                                              'type' => 'CostExplorer_RedshiftInstanceDetails',
+                                              'class' => 'Paws::CostExplorer::RedshiftInstanceDetails'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,27 +74,27 @@ Details about the instances that AWS recommends that you purchase.
 =head1 ATTRIBUTES
 
 
-=head2 EC2InstanceDetails => L<Paws::CostExplorer::EC2InstanceDetails>
+=head2 EC2InstanceDetails => CostExplorer_EC2InstanceDetails
 
   The Amazon EC2 instances that AWS recommends that you purchase.
 
 
-=head2 ElastiCacheInstanceDetails => L<Paws::CostExplorer::ElastiCacheInstanceDetails>
+=head2 ElastiCacheInstanceDetails => CostExplorer_ElastiCacheInstanceDetails
 
   The ElastiCache instances that AWS recommends that you purchase.
 
 
-=head2 ESInstanceDetails => L<Paws::CostExplorer::ESInstanceDetails>
+=head2 ESInstanceDetails => CostExplorer_ESInstanceDetails
 
   The Amazon ES instances that AWS recommends that you purchase.
 
 
-=head2 RDSInstanceDetails => L<Paws::CostExplorer::RDSInstanceDetails>
+=head2 RDSInstanceDetails => CostExplorer_RDSInstanceDetails
 
   The Amazon RDS instances that AWS recommends that you purchase.
 
 
-=head2 RedshiftInstanceDetails => L<Paws::CostExplorer::RedshiftInstanceDetails>
+=head2 RedshiftInstanceDetails => CostExplorer_RedshiftInstanceDetails
 
   The Amazon Redshift instances that AWS recommends that you purchase.
 

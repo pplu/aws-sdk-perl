@@ -1,10 +1,32 @@
 
 package Paws::S3Control::ListJobsResult;
-  use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::JobListDescriptor]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::S3Control::Types qw/S3Control_JobListDescriptor/;
+  has Jobs => (is => 'ro', isa => ArrayRef[S3Control_JobListDescriptor]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Jobs' => {
+                           'type' => 'ArrayRef[S3Control_JobListDescriptor]',
+                           'class' => 'Paws::S3Control::JobListDescriptor'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +38,7 @@ Paws::S3Control::ListJobsResult
 =head1 ATTRIBUTES
 
 
-=head2 Jobs => ArrayRef[L<Paws::S3Control::JobListDescriptor>]
+=head2 Jobs => ArrayRef[S3Control_JobListDescriptor]
 
 The list of current jobs and jobs that have ended within the last 30
 days.

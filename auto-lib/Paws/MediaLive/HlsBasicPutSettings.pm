@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaLive::HlsBasicPutSettings;
-  use Moose;
-  has ConnectionRetryInterval => (is => 'ro', isa => 'Int', request_name => 'connectionRetryInterval', traits => ['NameInRequest']);
-  has FilecacheDuration => (is => 'ro', isa => 'Int', request_name => 'filecacheDuration', traits => ['NameInRequest']);
-  has NumRetries => (is => 'ro', isa => 'Int', request_name => 'numRetries', traits => ['NameInRequest']);
-  has RestartDelay => (is => 'ro', isa => 'Int', request_name => 'restartDelay', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaLive::Types qw//;
+  has ConnectionRetryInterval => (is => 'ro', isa => Int);
+  has FilecacheDuration => (is => 'ro', isa => Int);
+  has NumRetries => (is => 'ro', isa => Int);
+  has RestartDelay => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NumRetries' => 'numRetries',
+                       'RestartDelay' => 'restartDelay',
+                       'FilecacheDuration' => 'filecacheDuration',
+                       'ConnectionRetryInterval' => 'connectionRetryInterval'
+                     },
+  'types' => {
+               'RestartDelay' => {
+                                   'type' => 'Int'
+                                 },
+               'NumRetries' => {
+                                 'type' => 'Int'
+                               },
+               'ConnectionRetryInterval' => {
+                                              'type' => 'Int'
+                                            },
+               'FilecacheDuration' => {
+                                        'type' => 'Int'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

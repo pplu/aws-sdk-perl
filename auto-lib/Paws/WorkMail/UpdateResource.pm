@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkMail::UpdateResource;
-  use Moose;
-  has BookingOptions => (is => 'ro', isa => 'Paws::WorkMail::BookingOptions');
-  has Name => (is => 'ro', isa => 'Str');
-  has OrganizationId => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkMail::Types qw/WorkMail_BookingOptions/;
+  has BookingOptions => (is => 'ro', isa => WorkMail_BookingOptions, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has OrganizationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkMail::UpdateResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkMail::UpdateResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   },
+               'BookingOptions' => {
+                                     'type' => 'WorkMail_BookingOptions',
+                                     'class' => 'Paws::WorkMail::BookingOptions'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'OrganizationId' => 1,
+                    'ResourceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 =head1 ATTRIBUTES
 
 
-=head2 BookingOptions => L<Paws::WorkMail::BookingOptions>
+=head2 BookingOptions => WorkMail_BookingOptions
 
 The resource's booking options to be updated.
 

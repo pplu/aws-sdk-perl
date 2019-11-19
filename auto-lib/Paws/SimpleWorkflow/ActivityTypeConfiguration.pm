@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ActivityTypeConfiguration;
-  use Moose;
-  has DefaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskHeartbeatTimeout', traits => ['NameInRequest']);
-  has DefaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'defaultTaskList', traits => ['NameInRequest']);
-  has DefaultTaskPriority => (is => 'ro', isa => 'Str', request_name => 'defaultTaskPriority', traits => ['NameInRequest']);
-  has DefaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskScheduleToCloseTimeout', traits => ['NameInRequest']);
-  has DefaultTaskScheduleToStartTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskScheduleToStartTimeout', traits => ['NameInRequest']);
-  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskStartToCloseTimeout', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_TaskList/;
+  has DefaultTaskHeartbeatTimeout => (is => 'ro', isa => Str);
+  has DefaultTaskList => (is => 'ro', isa => SimpleWorkflow_TaskList);
+  has DefaultTaskPriority => (is => 'ro', isa => Str);
+  has DefaultTaskScheduleToCloseTimeout => (is => 'ro', isa => Str);
+  has DefaultTaskScheduleToStartTimeout => (is => 'ro', isa => Str);
+  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DefaultTaskScheduleToStartTimeout' => 'defaultTaskScheduleToStartTimeout',
+                       'DefaultTaskHeartbeatTimeout' => 'defaultTaskHeartbeatTimeout',
+                       'DefaultTaskPriority' => 'defaultTaskPriority',
+                       'DefaultTaskScheduleToCloseTimeout' => 'defaultTaskScheduleToCloseTimeout',
+                       'DefaultTaskStartToCloseTimeout' => 'defaultTaskStartToCloseTimeout',
+                       'DefaultTaskList' => 'defaultTaskList'
+                     },
+  'types' => {
+               'DefaultTaskHeartbeatTimeout' => {
+                                                  'type' => 'Str'
+                                                },
+               'DefaultTaskScheduleToStartTimeout' => {
+                                                        'type' => 'Str'
+                                                      },
+               'DefaultTaskList' => {
+                                      'type' => 'SimpleWorkflow_TaskList',
+                                      'class' => 'Paws::SimpleWorkflow::TaskList'
+                                    },
+               'DefaultTaskStartToCloseTimeout' => {
+                                                     'type' => 'Str'
+                                                   },
+               'DefaultTaskScheduleToCloseTimeout' => {
+                                                        'type' => 'Str'
+                                                      },
+               'DefaultTaskPriority' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +99,7 @@ The duration is specified in seconds, an integer greater than or equal
 to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
-=head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 DefaultTaskList => SimpleWorkflow_TaskList
 
   The default task list specified for this activity type at registration.
 This default is used if a task list isn't provided when a task is

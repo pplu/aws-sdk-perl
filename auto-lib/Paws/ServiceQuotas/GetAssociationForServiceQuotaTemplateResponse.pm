@@ -1,9 +1,27 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceQuotas::GetAssociationForServiceQuotaTemplateResponse;
-  use Moose;
-  has ServiceQuotaTemplateAssociationStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceQuotas::Types qw//;
+  has ServiceQuotaTemplateAssociationStatus => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceQuotaTemplateAssociationStatus' => {
+                                                            'type' => 'Str'
+                                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

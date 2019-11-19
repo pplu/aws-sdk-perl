@@ -1,18 +1,66 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::DescribeStreamProcessorResponse;
-  use Moose;
-  has CreationTimestamp => (is => 'ro', isa => 'Str');
-  has Input => (is => 'ro', isa => 'Paws::Rekognition::StreamProcessorInput');
-  has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Output => (is => 'ro', isa => 'Paws::Rekognition::StreamProcessorOutput');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has Settings => (is => 'ro', isa => 'Paws::Rekognition::StreamProcessorSettings');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has StreamProcessorArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Rekognition::Types qw/Rekognition_StreamProcessorOutput Rekognition_StreamProcessorInput Rekognition_StreamProcessorSettings/;
+  has CreationTimestamp => (is => 'ro', isa => Str);
+  has Input => (is => 'ro', isa => Rekognition_StreamProcessorInput);
+  has LastUpdateTimestamp => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Output => (is => 'ro', isa => Rekognition_StreamProcessorOutput);
+  has RoleArn => (is => 'ro', isa => Str);
+  has Settings => (is => 'ro', isa => Rekognition_StreamProcessorSettings);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has StreamProcessorArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'Output' => {
+                             'class' => 'Paws::Rekognition::StreamProcessorOutput',
+                             'type' => 'Rekognition_StreamProcessorOutput'
+                           },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'LastUpdateTimestamp' => {
+                                          'type' => 'Str'
+                                        },
+               'StreamProcessorArn' => {
+                                         'type' => 'Str'
+                                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Input' => {
+                            'type' => 'Rekognition_StreamProcessorInput',
+                            'class' => 'Paws::Rekognition::StreamProcessorInput'
+                          },
+               'Settings' => {
+                               'class' => 'Paws::Rekognition::StreamProcessorSettings',
+                               'type' => 'Rekognition_StreamProcessorSettings'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -28,7 +76,7 @@ Paws::Rekognition::DescribeStreamProcessorResponse
 Date and time the stream processor was created
 
 
-=head2 Input => L<Paws::Rekognition::StreamProcessorInput>
+=head2 Input => Rekognition_StreamProcessorInput
 
 Kinesis video stream that provides the source streaming video.
 
@@ -45,7 +93,7 @@ failed state, or when the user starts or stops the stream processor.
 Name of the stream processor.
 
 
-=head2 Output => L<Paws::Rekognition::StreamProcessorOutput>
+=head2 Output => Rekognition_StreamProcessorOutput
 
 Kinesis data stream to which Amazon Rekognition Video puts the analysis
 results.
@@ -56,7 +104,7 @@ results.
 ARN of the IAM role that allows access to the stream processor.
 
 
-=head2 Settings => L<Paws::Rekognition::StreamProcessorSettings>
+=head2 Settings => Rekognition_StreamProcessorSettings
 
 Face recognition input parameters that are being used by the stream
 processor. Includes the collection to use for face recognition and the

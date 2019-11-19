@@ -1,13 +1,49 @@
 
 package Paws::MediaStoreData::DescribeObjectResponse;
-  use Moose;
-  has CacheControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Cache-Control');
-  has ContentLength => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'Content-Length');
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
-  has LastModified => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Last-Modified');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaStoreData::Types qw//;
+  has CacheControl => (is => 'ro', isa => Str);
+  has ContentLength => (is => 'ro', isa => Int);
+  has ContentType => (is => 'ro', isa => Str);
+  has ETag => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'LastModified' => 'Last-Modified',
+                       'ETag' => 'ETag',
+                       'ContentLength' => 'Content-Length',
+                       'CacheControl' => 'Cache-Control',
+                       'ContentType' => 'Content-Type'
+                     },
+  'types' => {
+               'CacheControl' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

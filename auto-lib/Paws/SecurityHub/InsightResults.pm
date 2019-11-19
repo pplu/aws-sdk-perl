@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::InsightResults;
-  use Moose;
-  has GroupByAttribute => (is => 'ro', isa => 'Str', required => 1);
-  has InsightArn => (is => 'ro', isa => 'Str', required => 1);
-  has ResultValues => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::InsightResultValue]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SecurityHub::Types qw/SecurityHub_InsightResultValue/;
+  has GroupByAttribute => (is => 'ro', isa => Str, required => 1);
+  has InsightArn => (is => 'ro', isa => Str, required => 1);
+  has ResultValues => (is => 'ro', isa => ArrayRef[SecurityHub_InsightResultValue], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'GroupByAttribute' => 1,
+                    'ResultValues' => 1,
+                    'InsightArn' => 1
+                  },
+  'types' => {
+               'InsightArn' => {
+                                 'type' => 'Str'
+                               },
+               'GroupByAttribute' => {
+                                       'type' => 'Str'
+                                     },
+               'ResultValues' => {
+                                   'type' => 'ArrayRef[SecurityHub_InsightResultValue]',
+                                   'class' => 'Paws::SecurityHub::InsightResultValue'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +79,7 @@ results are returned by the C<GetInsightResults> operation.
 C<GetInsightResults> operation.
 
 
-=head2 B<REQUIRED> ResultValues => ArrayRef[L<Paws::SecurityHub::InsightResultValue>]
+=head2 B<REQUIRED> ResultValues => ArrayRef[SecurityHub_InsightResultValue]
 
   The list of insight result values returned by the C<GetInsightResults>
 operation.

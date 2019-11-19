@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::IoTThingsGraph::SearchFlowTemplatesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Summaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTThingsGraph::FlowTemplateSummary]', traits => ['NameInRequest'], request_name => 'summaries' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_FlowTemplateSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Summaries => (is => 'ro', isa => ArrayRef[IoTThingsGraph_FlowTemplateSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Summaries' => {
+                                'class' => 'Paws::IoTThingsGraph::FlowTemplateSummary',
+                                'type' => 'ArrayRef[IoTThingsGraph_FlowTemplateSummary]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Summaries' => 'summaries'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +47,7 @@ The string to specify as C<nextToken> when you request the next page of
 results.
 
 
-=head2 Summaries => ArrayRef[L<Paws::IoTThingsGraph::FlowTemplateSummary>]
+=head2 Summaries => ArrayRef[IoTThingsGraph_FlowTemplateSummary]
 
 An array of objects that contain summary information about each
 workflow in the result set.

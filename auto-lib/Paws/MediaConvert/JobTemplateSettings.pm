@@ -1,14 +1,74 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::JobTemplateSettings;
-  use Moose;
-  has AdAvailOffset => (is => 'ro', isa => 'Int', request_name => 'adAvailOffset', traits => ['NameInRequest']);
-  has AvailBlanking => (is => 'ro', isa => 'Paws::MediaConvert::AvailBlanking', request_name => 'availBlanking', traits => ['NameInRequest']);
-  has Esam => (is => 'ro', isa => 'Paws::MediaConvert::EsamSettings', request_name => 'esam', traits => ['NameInRequest']);
-  has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputTemplate]', request_name => 'inputs', traits => ['NameInRequest']);
-  has MotionImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::MotionImageInserter', request_name => 'motionImageInserter', traits => ['NameInRequest']);
-  has NielsenConfiguration => (is => 'ro', isa => 'Paws::MediaConvert::NielsenConfiguration', request_name => 'nielsenConfiguration', traits => ['NameInRequest']);
-  has OutputGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputGroup]', request_name => 'outputGroups', traits => ['NameInRequest']);
-  has TimecodeConfig => (is => 'ro', isa => 'Paws::MediaConvert::TimecodeConfig', request_name => 'timecodeConfig', traits => ['NameInRequest']);
-  has TimedMetadataInsertion => (is => 'ro', isa => 'Paws::MediaConvert::TimedMetadataInsertion', request_name => 'timedMetadataInsertion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int ArrayRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_MotionImageInserter MediaConvert_OutputGroup MediaConvert_TimedMetadataInsertion MediaConvert_InputTemplate MediaConvert_AvailBlanking MediaConvert_EsamSettings MediaConvert_NielsenConfiguration MediaConvert_TimecodeConfig/;
+  has AdAvailOffset => (is => 'ro', isa => Int);
+  has AvailBlanking => (is => 'ro', isa => MediaConvert_AvailBlanking);
+  has Esam => (is => 'ro', isa => MediaConvert_EsamSettings);
+  has Inputs => (is => 'ro', isa => ArrayRef[MediaConvert_InputTemplate]);
+  has MotionImageInserter => (is => 'ro', isa => MediaConvert_MotionImageInserter);
+  has NielsenConfiguration => (is => 'ro', isa => MediaConvert_NielsenConfiguration);
+  has OutputGroups => (is => 'ro', isa => ArrayRef[MediaConvert_OutputGroup]);
+  has TimecodeConfig => (is => 'ro', isa => MediaConvert_TimecodeConfig);
+  has TimedMetadataInsertion => (is => 'ro', isa => MediaConvert_TimedMetadataInsertion);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailBlanking' => {
+                                    'class' => 'Paws::MediaConvert::AvailBlanking',
+                                    'type' => 'MediaConvert_AvailBlanking'
+                                  },
+               'NielsenConfiguration' => {
+                                           'class' => 'Paws::MediaConvert::NielsenConfiguration',
+                                           'type' => 'MediaConvert_NielsenConfiguration'
+                                         },
+               'MotionImageInserter' => {
+                                          'type' => 'MediaConvert_MotionImageInserter',
+                                          'class' => 'Paws::MediaConvert::MotionImageInserter'
+                                        },
+               'AdAvailOffset' => {
+                                    'type' => 'Int'
+                                  },
+               'Esam' => {
+                           'type' => 'MediaConvert_EsamSettings',
+                           'class' => 'Paws::MediaConvert::EsamSettings'
+                         },
+               'OutputGroups' => {
+                                   'type' => 'ArrayRef[MediaConvert_OutputGroup]',
+                                   'class' => 'Paws::MediaConvert::OutputGroup'
+                                 },
+               'Inputs' => {
+                             'type' => 'ArrayRef[MediaConvert_InputTemplate]',
+                             'class' => 'Paws::MediaConvert::InputTemplate'
+                           },
+               'TimedMetadataInsertion' => {
+                                             'class' => 'Paws::MediaConvert::TimedMetadataInsertion',
+                                             'type' => 'MediaConvert_TimedMetadataInsertion'
+                                           },
+               'TimecodeConfig' => {
+                                     'class' => 'Paws::MediaConvert::TimecodeConfig',
+                                     'type' => 'MediaConvert_TimecodeConfig'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Esam' => 'esam',
+                       'AdAvailOffset' => 'adAvailOffset',
+                       'MotionImageInserter' => 'motionImageInserter',
+                       'NielsenConfiguration' => 'nielsenConfiguration',
+                       'AvailBlanking' => 'availBlanking',
+                       'TimecodeConfig' => 'timecodeConfig',
+                       'TimedMetadataInsertion' => 'timedMetadataInsertion',
+                       'Inputs' => 'inputs',
+                       'OutputGroups' => 'outputGroups'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,31 +111,31 @@ template that will be applied to jobs created from it.
 Avail PTS time.
 
 
-=head2 AvailBlanking => L<Paws::MediaConvert::AvailBlanking>
+=head2 AvailBlanking => MediaConvert_AvailBlanking
 
   Settings for ad avail blanking. Video can be blanked or overlaid with
 an image, and audio muted during SCTE-35 triggered ad avails.
 
 
-=head2 Esam => L<Paws::MediaConvert::EsamSettings>
+=head2 Esam => MediaConvert_EsamSettings
 
   Settings for Event Signaling And Messaging (ESAM).
 
 
-=head2 Inputs => ArrayRef[L<Paws::MediaConvert::InputTemplate>]
+=head2 Inputs => ArrayRef[MediaConvert_InputTemplate]
 
   Use Inputs (inputs) to define the source file used in the transcode
 job. There can only be one input in a job template. Using the API, you
 can include multiple inputs when referencing a job template.
 
 
-=head2 MotionImageInserter => L<Paws::MediaConvert::MotionImageInserter>
+=head2 MotionImageInserter => MediaConvert_MotionImageInserter
 
   Overlay motion graphics on top of your video. The motion graphics that
 you specify here appear on all outputs in all output groups.
 
 
-=head2 NielsenConfiguration => L<Paws::MediaConvert::NielsenConfiguration>
+=head2 NielsenConfiguration => MediaConvert_NielsenConfiguration
 
   Settings for your Nielsen configuration. If you don't do Nielsen
 measurement and analytics, ignore these settings. When you enable
@@ -87,7 +147,7 @@ include any children of nielsenConfiguration, you still enable the
 setting.
 
 
-=head2 OutputGroups => ArrayRef[L<Paws::MediaConvert::OutputGroup>]
+=head2 OutputGroups => ArrayRef[MediaConvert_OutputGroup]
 
   (OutputGroups) contains one group of settings for each set of outputs
 that share a common package type. All unpackaged files (MPEG-4, MPEG-2
@@ -102,13 +162,13 @@ MS_SMOOTH_GROUP_SETTINGS, MsSmoothGroupSettings * CMAF_GROUP_SETTINGS,
 CmafGroupSettings
 
 
-=head2 TimecodeConfig => L<Paws::MediaConvert::TimecodeConfig>
+=head2 TimecodeConfig => MediaConvert_TimecodeConfig
 
   Contains settings used to acquire and adjust timecode information from
 inputs.
 
 
-=head2 TimedMetadataInsertion => L<Paws::MediaConvert::TimedMetadataInsertion>
+=head2 TimedMetadataInsertion => MediaConvert_TimedMetadataInsertion
 
   Enable Timed metadata insertion (TimedMetadataInsertion) to include ID3
 tags in your job. To include timed metadata, you must enable it here,

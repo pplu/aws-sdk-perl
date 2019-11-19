@@ -1,17 +1,52 @@
 
 package Paws::EKS::ListUpdates;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has NodegroupName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nodegroupName');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::EKS::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has NodegroupName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListUpdates');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clusters/{name}/updates');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EKS::ListUpdatesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListUpdates');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clusters/{name}/updates');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EKS::ListUpdatesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults',
+                      'NodegroupName' => 'nodegroupName'
+                    },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'NodegroupName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'ParamInURI' => {
+                    'Name' => 'name'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

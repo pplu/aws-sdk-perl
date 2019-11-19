@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Health::DescribeEventTypesResponse;
-  use Moose;
-  has EventTypes => (is => 'ro', isa => 'ArrayRef[Paws::Health::EventType]', traits => ['NameInRequest'], request_name => 'eventTypes' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Health::Types qw/Health_EventType/;
+  has EventTypes => (is => 'ro', isa => ArrayRef[Health_EventType]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EventTypes' => 'eventTypes',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'EventTypes' => {
+                                 'class' => 'Paws::Health::EventType',
+                                 'type' => 'ArrayRef[Health_EventType]'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Health::DescribeEventTypesResponse
 =head1 ATTRIBUTES
 
 
-=head2 EventTypes => ArrayRef[L<Paws::Health::EventType>]
+=head2 EventTypes => ArrayRef[Health_EventType]
 
 A list of event types that match the filter criteria. Event types have
 a category (C<issue>, C<accountNotification>, or C<scheduledChange>), a

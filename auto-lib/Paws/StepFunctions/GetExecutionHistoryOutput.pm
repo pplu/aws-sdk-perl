@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StepFunctions::GetExecutionHistoryOutput;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::HistoryEvent]', traits => ['NameInRequest'], request_name => 'events' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StepFunctions::Types qw/StepFunctions_HistoryEvent/;
+  has Events => (is => 'ro', isa => ArrayRef[StepFunctions_HistoryEvent], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Events' => 1
+                  },
+  'NameInRequest' => {
+                       'Events' => 'events',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'Events' => {
+                             'type' => 'ArrayRef[StepFunctions_HistoryEvent]',
+                             'class' => 'Paws::StepFunctions::HistoryEvent'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +44,7 @@ Paws::StepFunctions::GetExecutionHistoryOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Events => ArrayRef[L<Paws::StepFunctions::HistoryEvent>]
+=head2 B<REQUIRED> Events => ArrayRef[StepFunctions_HistoryEvent]
 
 The list of events that occurred in the execution.
 

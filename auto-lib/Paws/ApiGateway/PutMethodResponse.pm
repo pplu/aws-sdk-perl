@@ -1,19 +1,67 @@
 
 package Paws::ApiGateway::PutMethodResponse;
-  use Moose;
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'http_method', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource_id', required => 1);
-  has ResponseModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseModels');
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean', traits => ['NameInRequest'], request_name => 'responseParameters');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has StatusCode => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'status_code', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString ApiGateway_MapOfStringToBoolean/;
+  has HttpMethod => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResponseModels => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has ResponseParameters => (is => 'ro', isa => ApiGateway_MapOfStringToBoolean, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StatusCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutMethodResponse');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::MethodResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutMethodResponse');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::MethodResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResponseParameters' => {
+                                         'type' => 'ApiGateway_MapOfStringToBoolean',
+                                         'class' => 'Paws::ApiGateway::MapOfStringToBoolean'
+                                       },
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ResponseModels' => {
+                                     'type' => 'ApiGateway_MapOfStringToString',
+                                     'class' => 'Paws::ApiGateway::MapOfStringToString'
+                                   },
+               'HttpMethod' => {
+                                 'type' => 'Str'
+                               },
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'ResponseModels' => 'responseModels',
+                       'ResponseParameters' => 'responseParameters'
+                     },
+  'IsRequired' => {
+                    'StatusCode' => 1,
+                    'HttpMethod' => 1,
+                    'ResourceId' => 1,
+                    'RestApiId' => 1
+                  },
+  'ParamInURI' => {
+                    'ResourceId' => 'resource_id',
+                    'RestApiId' => 'restapi_id',
+                    'StatusCode' => 'status_code',
+                    'HttpMethod' => 'http_method'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +115,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 
 
-=head2 ResponseModels => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseModels => ApiGateway_MapOfStringToString
 
 Specifies the Model resources used for the response's content type.
 Response models are represented as a key/value map, with a content type
@@ -75,7 +123,7 @@ as the key and a Model name as the value.
 
 
 
-=head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
+=head2 ResponseParameters => ApiGateway_MapOfStringToBoolean
 
 A key-value map specifying required or optional response parameters
 that API Gateway can send back to the caller. A key defines a method

@@ -1,10 +1,38 @@
 
 package Paws::GuardDuty::ListPublishingDestinationsResponse;
-  use Moose;
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::Destination]', traits => ['NameInRequest'], request_name => 'destinations', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GuardDuty::Types qw/GuardDuty_Destination/;
+  has Destinations => (is => 'ro', isa => ArrayRef[GuardDuty_Destination], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Destinations' => {
+                                   'class' => 'Paws::GuardDuty::Destination',
+                                   'type' => 'ArrayRef[GuardDuty_Destination]'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Destinations' => 'destinations',
+                       'NextToken' => 'nextToken'
+                     },
+  'IsRequired' => {
+                    'Destinations' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +44,7 @@ Paws::GuardDuty::ListPublishingDestinationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Destinations => ArrayRef[L<Paws::GuardDuty::Destination>]
+=head2 B<REQUIRED> Destinations => ArrayRef[GuardDuty_Destination]
 
 A C<Destinations> obect that includes information about each publishing
 destination returned.

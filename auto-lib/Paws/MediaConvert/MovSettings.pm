@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::MovSettings;
-  use Moose;
-  has ClapAtom => (is => 'ro', isa => 'Str', request_name => 'clapAtom', traits => ['NameInRequest']);
-  has CslgAtom => (is => 'ro', isa => 'Str', request_name => 'cslgAtom', traits => ['NameInRequest']);
-  has Mpeg2FourCCControl => (is => 'ro', isa => 'Str', request_name => 'mpeg2FourCCControl', traits => ['NameInRequest']);
-  has PaddingControl => (is => 'ro', isa => 'Str', request_name => 'paddingControl', traits => ['NameInRequest']);
-  has Reference => (is => 'ro', isa => 'Str', request_name => 'reference', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has ClapAtom => (is => 'ro', isa => Str);
+  has CslgAtom => (is => 'ro', isa => Str);
+  has Mpeg2FourCCControl => (is => 'ro', isa => Str);
+  has PaddingControl => (is => 'ro', isa => Str);
+  has Reference => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CslgAtom' => 'cslgAtom',
+                       'PaddingControl' => 'paddingControl',
+                       'Reference' => 'reference',
+                       'ClapAtom' => 'clapAtom',
+                       'Mpeg2FourCCControl' => 'mpeg2FourCCControl'
+                     },
+  'types' => {
+               'Reference' => {
+                                'type' => 'Str'
+                              },
+               'PaddingControl' => {
+                                     'type' => 'Str'
+                                   },
+               'CslgAtom' => {
+                               'type' => 'Str'
+                             },
+               'ClapAtom' => {
+                               'type' => 'Str'
+                             },
+               'Mpeg2FourCCControl' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

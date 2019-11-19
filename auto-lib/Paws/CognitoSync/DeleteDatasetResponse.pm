@@ -1,9 +1,27 @@
 
 package Paws::CognitoSync::DeleteDatasetResponse;
-  use Moose;
-  has Dataset => (is => 'ro', isa => 'Paws::CognitoSync::Dataset');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoSync::Types qw/CognitoSync_Dataset/;
+  has Dataset => (is => 'ro', isa => CognitoSync_Dataset);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Dataset' => {
+                              'type' => 'CognitoSync_Dataset',
+                              'class' => 'Paws::CognitoSync::Dataset'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::CognitoSync::DeleteDatasetResponse
 =head1 ATTRIBUTES
 
 
-=head2 Dataset => L<Paws::CognitoSync::Dataset>
+=head2 Dataset => CognitoSync_Dataset
 
 A collection of data for an identity pool. An identity pool can have
 multiple datasets. A dataset is per identity and can be general or

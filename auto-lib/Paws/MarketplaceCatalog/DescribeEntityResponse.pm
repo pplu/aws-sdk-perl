@@ -1,13 +1,42 @@
 
 package Paws::MarketplaceCatalog::DescribeEntityResponse;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Str');
-  has EntityArn => (is => 'ro', isa => 'Str');
-  has EntityIdentifier => (is => 'ro', isa => 'Str');
-  has EntityType => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MarketplaceCatalog::Types qw//;
+  has Details => (is => 'ro', isa => Str);
+  has EntityArn => (is => 'ro', isa => Str);
+  has EntityIdentifier => (is => 'ro', isa => Str);
+  has EntityType => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Details' => {
+                              'type' => 'Str'
+                            },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'EntityArn' => {
+                                'type' => 'Str'
+                              },
+               'EntityType' => {
+                                 'type' => 'Str'
+                               },
+               'EntityIdentifier' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

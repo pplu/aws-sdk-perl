@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::InstancesDistribution;
-  use Moose;
-  has OnDemandAllocationStrategy => (is => 'ro', isa => 'Str');
-  has OnDemandBaseCapacity => (is => 'ro', isa => 'Int');
-  has OnDemandPercentageAboveBaseCapacity => (is => 'ro', isa => 'Int');
-  has SpotAllocationStrategy => (is => 'ro', isa => 'Str');
-  has SpotInstancePools => (is => 'ro', isa => 'Int');
-  has SpotMaxPrice => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AutoScaling::Types qw//;
+  has OnDemandAllocationStrategy => (is => 'ro', isa => Str);
+  has OnDemandBaseCapacity => (is => 'ro', isa => Int);
+  has OnDemandPercentageAboveBaseCapacity => (is => 'ro', isa => Int);
+  has SpotAllocationStrategy => (is => 'ro', isa => Str);
+  has SpotInstancePools => (is => 'ro', isa => Int);
+  has SpotMaxPrice => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpotInstancePools' => {
+                                        'type' => 'Int'
+                                      },
+               'OnDemandPercentageAboveBaseCapacity' => {
+                                                          'type' => 'Int'
+                                                        },
+               'OnDemandBaseCapacity' => {
+                                           'type' => 'Int'
+                                         },
+               'SpotAllocationStrategy' => {
+                                             'type' => 'Str'
+                                           },
+               'SpotMaxPrice' => {
+                                   'type' => 'Str'
+                                 },
+               'OnDemandAllocationStrategy' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

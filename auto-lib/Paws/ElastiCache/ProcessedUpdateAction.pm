@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::ProcessedUpdateAction;
-  use Moose;
-  has CacheClusterId => (is => 'ro', isa => 'Str');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has ServiceUpdateName => (is => 'ro', isa => 'Str');
-  has UpdateActionStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheClusterId => (is => 'ro', isa => Str);
+  has ReplicationGroupId => (is => 'ro', isa => Str);
+  has ServiceUpdateName => (is => 'ro', isa => Str);
+  has UpdateActionStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'CacheClusterId' => {
+                                     'type' => 'Str'
+                                   },
+               'UpdateActionStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'ServiceUpdateName' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

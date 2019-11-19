@@ -1,17 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Discovery::ListConfigurations;
-  use Moose;
-  has ConfigurationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'configurationType' , required => 1);
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::Filter]', traits => ['NameInRequest'], request_name => 'filters' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has OrderBy => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::OrderByElement]', traits => ['NameInRequest'], request_name => 'orderBy' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Discovery::Types qw/Discovery_Filter Discovery_OrderByElement/;
+  has ConfigurationType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[Discovery_Filter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has OrderBy => (is => 'ro', isa => ArrayRef[Discovery_OrderByElement], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListConfigurations');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Discovery::ListConfigurationsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListConfigurations');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Discovery::ListConfigurationsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'type' => 'ArrayRef[Discovery_Filter]',
+                              'class' => 'Paws::Discovery::Filter'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'ConfigurationType' => {
+                                        'type' => 'Str'
+                                      },
+               'OrderBy' => {
+                              'class' => 'Paws::Discovery::OrderByElement',
+                              'type' => 'ArrayRef[Discovery_OrderByElement]'
+                            }
+             },
+  'IsRequired' => {
+                    'ConfigurationType' => 1
+                  },
+  'NameInRequest' => {
+                       'Filters' => 'filters',
+                       'OrderBy' => 'orderBy',
+                       'ConfigurationType' => 'configurationType',
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +111,7 @@ A valid configuration identified by Application Discovery Service.
 
 Valid values are: C<"SERVER">, C<"PROCESS">, C<"CONNECTION">, C<"APPLICATION">
 
-=head2 Filters => ArrayRef[L<Paws::Discovery::Filter>]
+=head2 Filters => ArrayRef[Discovery_Filter]
 
 You can filter the request using various logical operators and a
 I<key>-I<value> format. For example:
@@ -100,7 +140,7 @@ next set of 10.
 
 
 
-=head2 OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]
+=head2 OrderBy => ArrayRef[Discovery_OrderByElement]
 
 Certain filter criteria return output that can be sorted in ascending
 or descending order. For a list of output characteristics for each

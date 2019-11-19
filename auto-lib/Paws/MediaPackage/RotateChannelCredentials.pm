@@ -1,14 +1,35 @@
 
 package Paws::MediaPackage::RotateChannelCredentials;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackage::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RotateChannelCredentials');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/channels/{id}/credentials');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaPackage::RotateChannelCredentialsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RotateChannelCredentials');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/channels/{id}/credentials');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaPackage::RotateChannelCredentialsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'IsRequired' => {
+                    'Id' => 1
+                  },
+  'ParamInURI' => {
+                    'Id' => 'id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

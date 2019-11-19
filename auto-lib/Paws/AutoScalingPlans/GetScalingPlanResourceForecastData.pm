@@ -1,20 +1,67 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AutoScalingPlans::GetScalingPlanResourceForecastData;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', required => 1);
-  has ForecastDataType => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
-  has ScalingPlanName => (is => 'ro', isa => 'Str', required => 1);
-  has ScalingPlanVersion => (is => 'ro', isa => 'Int', required => 1);
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AutoScalingPlans::Types qw//;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ForecastDataType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ScalableDimension => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ScalingPlanName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ScalingPlanVersion => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetScalingPlanResourceForecastData');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScalingPlans::GetScalingPlanResourceForecastDataResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetScalingPlanResourceForecastData');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScalingPlans::GetScalingPlanResourceForecastDataResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ServiceNamespace' => 1,
+                    'ForecastDataType' => 1,
+                    'StartTime' => 1,
+                    'ScalableDimension' => 1,
+                    'ScalingPlanName' => 1,
+                    'EndTime' => 1,
+                    'ScalingPlanVersion' => 1,
+                    'ResourceId' => 1
+                  },
+  'types' => {
+               'ForecastDataType' => {
+                                       'type' => 'Str'
+                                     },
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ScalingPlanVersion' => {
+                                         'type' => 'Int'
+                                       },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'ScalableDimension' => {
+                                        'type' => 'Str'
+                                      },
+               'ScalingPlanName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

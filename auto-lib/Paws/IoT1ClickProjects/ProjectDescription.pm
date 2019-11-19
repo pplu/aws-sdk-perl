@@ -1,12 +1,63 @@
+# Generated from default/object.tt
 package Paws::IoT1ClickProjects::ProjectDescription;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest'], required => 1);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has PlacementTemplate => (is => 'ro', isa => 'Paws::IoT1ClickProjects::PlacementTemplate', request_name => 'placementTemplate', traits => ['NameInRequest']);
-  has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::IoT1ClickProjects::TagMap', request_name => 'tags', traits => ['NameInRequest']);
-  has UpdatedDate => (is => 'ro', isa => 'Str', request_name => 'updatedDate', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickProjects::Types qw/IoT1ClickProjects_PlacementTemplate IoT1ClickProjects_TagMap/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedDate => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str);
+  has PlacementTemplate => (is => 'ro', isa => IoT1ClickProjects_PlacementTemplate);
+  has ProjectName => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => IoT1ClickProjects_TagMap);
+  has UpdatedDate => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                },
+               'UpdatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'PlacementTemplate' => {
+                                        'type' => 'IoT1ClickProjects_PlacementTemplate',
+                                        'class' => 'Paws::IoT1ClickProjects::PlacementTemplate'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::IoT1ClickProjects::TagMap',
+                           'type' => 'IoT1ClickProjects_TagMap'
+                         }
+             },
+  'IsRequired' => {
+                    'CreatedDate' => 1,
+                    'UpdatedDate' => 1,
+                    'ProjectName' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'Arn' => 'arn',
+                       'Description' => 'description',
+                       'PlacementTemplate' => 'placementTemplate',
+                       'UpdatedDate' => 'updatedDate',
+                       'CreatedDate' => 'createdDate',
+                       'ProjectName' => 'projectName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +110,7 @@ format.
   The description of the project.
 
 
-=head2 PlacementTemplate => L<Paws::IoT1ClickProjects::PlacementTemplate>
+=head2 PlacementTemplate => IoT1ClickProjects_PlacementTemplate
 
   An object describing the project's placement specifications.
 
@@ -69,7 +120,7 @@ format.
   The name of the project for which to obtain information from.
 
 
-=head2 Tags => L<Paws::IoT1ClickProjects::TagMap>
+=head2 Tags => IoT1ClickProjects_TagMap
 
   The tags (metadata key/value pairs) associated with the project.
 

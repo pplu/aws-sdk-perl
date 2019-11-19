@@ -1,16 +1,47 @@
 
 package Paws::Glacier::CompleteVaultLock;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has LockId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'lockId', required => 1);
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LockId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CompleteVaultLock');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/lock-policy/{lockId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CompleteVaultLock');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{accountId}/vaults/{vaultName}/lock-policy/{lockId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'VaultName' => 1,
+                    'LockId' => 1
+                  },
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'VaultName' => {
+                                'type' => 'Str'
+                              },
+               'LockId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId',
+                    'LockId' => 'lockId',
+                    'VaultName' => 'vaultName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

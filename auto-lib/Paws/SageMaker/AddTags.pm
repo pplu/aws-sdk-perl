@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::AddTags;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_Tag/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SageMaker_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::AddTagsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddTags');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::AddTagsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'ResourceArn' => 1
+                  },
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'ArrayRef[SageMaker_Tag]',
+                           'class' => 'Paws::SageMaker::Tag'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +82,7 @@ The Amazon Resource Name (ARN) of the resource that you want to tag.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[SageMaker_Tag]
 
 An array of C<Tag> objects. Each tag is a key-value pair. Only the
 C<key> parameter is required. If you don't specify a value, Amazon

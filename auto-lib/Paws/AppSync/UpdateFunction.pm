@@ -1,21 +1,77 @@
 
 package Paws::AppSync::UpdateFunction;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has DataSourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSourceName', required => 1);
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has FunctionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'functionId', required => 1);
-  has FunctionVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'functionVersion', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has RequestMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestMappingTemplate', required => 1);
-  has ResponseMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'responseMappingTemplate');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DataSourceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has FunctionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FunctionVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RequestMappingTemplate => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResponseMappingTemplate => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFunction');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apis/{apiId}/functions/{functionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppSync::UpdateFunctionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFunction');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apis/{apiId}/functions/{functionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppSync::UpdateFunctionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataSourceName' => {
+                                     'type' => 'Str'
+                                   },
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'ResponseMappingTemplate' => {
+                                              'type' => 'Str'
+                                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'FunctionVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'FunctionId' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'RequestMappingTemplate' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'ResponseMappingTemplate' => 'responseMappingTemplate',
+                       'DataSourceName' => 'dataSourceName',
+                       'Name' => 'name',
+                       'Description' => 'description',
+                       'FunctionVersion' => 'functionVersion',
+                       'RequestMappingTemplate' => 'requestMappingTemplate'
+                     },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'ApiId' => 1,
+                    'DataSourceName' => 1,
+                    'RequestMappingTemplate' => 1,
+                    'FunctionId' => 1,
+                    'FunctionVersion' => 1
+                  },
+  'ParamInURI' => {
+                    'ApiId' => 'apiId',
+                    'FunctionId' => 'functionId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

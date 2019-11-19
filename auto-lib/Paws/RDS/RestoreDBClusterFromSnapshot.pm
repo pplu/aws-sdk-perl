@@ -1,32 +1,112 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::RestoreDBClusterFromSnapshot;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has BacktrackWindow => (is => 'ro', isa => 'Int');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str', required => 1);
-  has EngineMode => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has ScalingConfiguration => (is => 'ro', isa => 'Paws::RDS::ScalingConfiguration');
-  has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int Bool/;
+  use Paws::RDS::Types qw/RDS_Tag RDS_ScalingConfiguration/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has BacktrackWindow => (is => 'ro', isa => Int, predicate => 1);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EngineMode => (is => 'ro', isa => Str, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has ScalingConfiguration => (is => 'ro', isa => RDS_ScalingConfiguration, predicate => 1);
+  has SnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterFromSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RestoreDBClusterFromSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterFromSnapshotResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreDBClusterFromSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::RestoreDBClusterFromSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RestoreDBClusterFromSnapshotResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BacktrackWindow' => {
+                                      'type' => 'Int'
+                                    },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Tags' => {
+                           'type' => 'ArrayRef[RDS_Tag]',
+                           'class' => 'Paws::RDS::Tag'
+                         },
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'EngineMode' => {
+                                 'type' => 'Str'
+                               },
+               'ScalingConfiguration' => {
+                                           'class' => 'Paws::RDS::ScalingConfiguration',
+                                           'type' => 'RDS_ScalingConfiguration'
+                                         },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'SnapshotIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        }
+             },
+  'IsRequired' => {
+                    'SnapshotIdentifier' => 1,
+                    'DBClusterIdentifier' => 1,
+                    'Engine' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -306,7 +386,7 @@ Default: The same port as the original DB cluster.
 
 
 
-=head2 ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>
+=head2 ScalingConfiguration => RDS_ScalingConfiguration
 
 For DB clusters in C<serverless> DB engine mode, the scaling properties
 of the DB cluster.
@@ -335,7 +415,7 @@ Must match the identifier of an existing Snapshot.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 The tags to be assigned to the restored DB cluster.
 

@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KMS::DescribeCustomKeyStoresResponse;
-  use Moose;
-  has CustomKeyStores => (is => 'ro', isa => 'ArrayRef[Paws::KMS::CustomKeyStoresListEntry]');
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Truncated => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::KMS::Types qw/KMS_CustomKeyStoresListEntry/;
+  has CustomKeyStores => (is => 'ro', isa => ArrayRef[KMS_CustomKeyStoresListEntry]);
+  has NextMarker => (is => 'ro', isa => Str);
+  has Truncated => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Truncated' => {
+                                'type' => 'Bool'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'CustomKeyStores' => {
+                                      'type' => 'ArrayRef[KMS_CustomKeyStoresListEntry]',
+                                      'class' => 'Paws::KMS::CustomKeyStoresListEntry'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::KMS::DescribeCustomKeyStoresResponse
 =head1 ATTRIBUTES
 
 
-=head2 CustomKeyStores => ArrayRef[L<Paws::KMS::CustomKeyStoresListEntry>]
+=head2 CustomKeyStores => ArrayRef[KMS_CustomKeyStoresListEntry]
 
 Contains metadata about each custom key store.
 

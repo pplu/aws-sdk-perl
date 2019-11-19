@@ -1,17 +1,67 @@
+# Generated from default/object.tt
 package Paws::SSM::CommandPlugin;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has Output => (is => 'ro', isa => 'Str');
-  has OutputS3BucketName => (is => 'ro', isa => 'Str');
-  has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
-  has OutputS3Region => (is => 'ro', isa => 'Str');
-  has ResponseCode => (is => 'ro', isa => 'Int');
-  has ResponseFinishDateTime => (is => 'ro', isa => 'Str');
-  has ResponseStartDateTime => (is => 'ro', isa => 'Str');
-  has StandardErrorUrl => (is => 'ro', isa => 'Str');
-  has StandardOutputUrl => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusDetails => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSM::Types qw//;
+  has Name => (is => 'ro', isa => Str);
+  has Output => (is => 'ro', isa => Str);
+  has OutputS3BucketName => (is => 'ro', isa => Str);
+  has OutputS3KeyPrefix => (is => 'ro', isa => Str);
+  has OutputS3Region => (is => 'ro', isa => Str);
+  has ResponseCode => (is => 'ro', isa => Int);
+  has ResponseFinishDateTime => (is => 'ro', isa => Str);
+  has ResponseStartDateTime => (is => 'ro', isa => Str);
+  has StandardErrorUrl => (is => 'ro', isa => Str);
+  has StandardOutputUrl => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetails => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputS3KeyPrefix' => {
+                                        'type' => 'Str'
+                                      },
+               'OutputS3Region' => {
+                                     'type' => 'Str'
+                                   },
+               'StandardOutputUrl' => {
+                                        'type' => 'Str'
+                                      },
+               'ResponseFinishDateTime' => {
+                                             'type' => 'Str'
+                                           },
+               'ResponseCode' => {
+                                   'type' => 'Int'
+                                 },
+               'Output' => {
+                             'type' => 'Str'
+                           },
+               'StatusDetails' => {
+                                    'type' => 'Str'
+                                  },
+               'OutputS3BucketName' => {
+                                         'type' => 'Str'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'StandardErrorUrl' => {
+                                       'type' => 'Str'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ResponseStartDateTime' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

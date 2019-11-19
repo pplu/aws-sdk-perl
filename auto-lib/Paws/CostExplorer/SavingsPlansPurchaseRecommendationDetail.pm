@@ -1,21 +1,84 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::SavingsPlansPurchaseRecommendationDetail;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has CurrencyCode => (is => 'ro', isa => 'Str');
-  has CurrentAverageHourlyOnDemandSpend => (is => 'ro', isa => 'Str');
-  has CurrentMaximumHourlyOnDemandSpend => (is => 'ro', isa => 'Str');
-  has CurrentMinimumHourlyOnDemandSpend => (is => 'ro', isa => 'Str');
-  has EstimatedAverageUtilization => (is => 'ro', isa => 'Str');
-  has EstimatedMonthlySavingsAmount => (is => 'ro', isa => 'Str');
-  has EstimatedOnDemandCost => (is => 'ro', isa => 'Str');
-  has EstimatedOnDemandCostWithCurrentCommitment => (is => 'ro', isa => 'Str');
-  has EstimatedROI => (is => 'ro', isa => 'Str');
-  has EstimatedSavingsAmount => (is => 'ro', isa => 'Str');
-  has EstimatedSavingsPercentage => (is => 'ro', isa => 'Str');
-  has EstimatedSPCost => (is => 'ro', isa => 'Str');
-  has HourlyCommitmentToPurchase => (is => 'ro', isa => 'Str');
-  has SavingsPlansDetails => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansDetails');
-  has UpfrontCost => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw/CostExplorer_SavingsPlansDetails/;
+  has AccountId => (is => 'ro', isa => Str);
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has CurrentAverageHourlyOnDemandSpend => (is => 'ro', isa => Str);
+  has CurrentMaximumHourlyOnDemandSpend => (is => 'ro', isa => Str);
+  has CurrentMinimumHourlyOnDemandSpend => (is => 'ro', isa => Str);
+  has EstimatedAverageUtilization => (is => 'ro', isa => Str);
+  has EstimatedMonthlySavingsAmount => (is => 'ro', isa => Str);
+  has EstimatedOnDemandCost => (is => 'ro', isa => Str);
+  has EstimatedOnDemandCostWithCurrentCommitment => (is => 'ro', isa => Str);
+  has EstimatedROI => (is => 'ro', isa => Str);
+  has EstimatedSavingsAmount => (is => 'ro', isa => Str);
+  has EstimatedSavingsPercentage => (is => 'ro', isa => Str);
+  has EstimatedSPCost => (is => 'ro', isa => Str);
+  has HourlyCommitmentToPurchase => (is => 'ro', isa => Str);
+  has SavingsPlansDetails => (is => 'ro', isa => CostExplorer_SavingsPlansDetails);
+  has UpfrontCost => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrentAverageHourlyOnDemandSpend' => {
+                                                        'type' => 'Str'
+                                                      },
+               'EstimatedOnDemandCost' => {
+                                            'type' => 'Str'
+                                          },
+               'EstimatedSPCost' => {
+                                      'type' => 'Str'
+                                    },
+               'CurrentMaximumHourlyOnDemandSpend' => {
+                                                        'type' => 'Str'
+                                                      },
+               'EstimatedAverageUtilization' => {
+                                                  'type' => 'Str'
+                                                },
+               'SavingsPlansDetails' => {
+                                          'type' => 'CostExplorer_SavingsPlansDetails',
+                                          'class' => 'Paws::CostExplorer::SavingsPlansDetails'
+                                        },
+               'CurrentMinimumHourlyOnDemandSpend' => {
+                                                        'type' => 'Str'
+                                                      },
+               'EstimatedSavingsPercentage' => {
+                                                 'type' => 'Str'
+                                               },
+               'EstimatedROI' => {
+                                   'type' => 'Str'
+                                 },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'HourlyCommitmentToPurchase' => {
+                                                 'type' => 'Str'
+                                               },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'UpfrontCost' => {
+                                  'type' => 'Str'
+                                },
+               'EstimatedSavingsAmount' => {
+                                             'type' => 'Str'
+                                           },
+               'EstimatedOnDemandCostWithCurrentCommitment' => {
+                                                                 'type' => 'Str'
+                                                               },
+               'EstimatedMonthlySavingsAmount' => {
+                                                    'type' => 'Str'
+                                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -135,7 +198,7 @@ lookback period.
 configuration based on the usage during the lookback period.
 
 
-=head2 SavingsPlansDetails => L<Paws::CostExplorer::SavingsPlansDetails>
+=head2 SavingsPlansDetails => CostExplorer_SavingsPlansDetails
 
   Details for your recommended Savings Plans.
 

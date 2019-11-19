@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::Neptune::OrderableDBInstanceOptionsMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has OrderableDBInstanceOptions => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::OrderableDBInstanceOption]', request_name => 'OrderableDBInstanceOption', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_OrderableDBInstanceOption/;
+  has Marker => (is => 'ro', isa => Str);
+  has OrderableDBInstanceOptions => (is => 'ro', isa => ArrayRef[Neptune_OrderableDBInstanceOption]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'OrderableDBInstanceOptions' => 'OrderableDBInstanceOption'
+                     },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'OrderableDBInstanceOptions' => {
+                                                 'class' => 'Paws::Neptune::OrderableDBInstanceOption',
+                                                 'type' => 'ArrayRef[Neptune_OrderableDBInstanceOption]'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +49,7 @@ response includes only records beyond the marker, up to the value
 specified by C<MaxRecords> .
 
 
-=head2 OrderableDBInstanceOptions => ArrayRef[L<Paws::Neptune::OrderableDBInstanceOption>]
+=head2 OrderableDBInstanceOptions => ArrayRef[Neptune_OrderableDBInstanceOption]
 
 An OrderableDBInstanceOption structure containing information about
 orderable options for the DB instance.

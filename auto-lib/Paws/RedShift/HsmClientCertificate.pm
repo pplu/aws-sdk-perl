@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::RedShift::HsmClientCertificate;
-  use Moose;
-  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
-  has HsmClientCertificatePublicKey => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Tag/;
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => Str);
+  has HsmClientCertificatePublicKey => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HsmClientCertificatePublicKey' => {
+                                                    'type' => 'Str'
+                                                  },
+               'HsmClientCertificateIdentifier' => {
+                                                     'type' => 'Str'
+                                                   },
+               'Tags' => {
+                           'class' => 'Paws::RedShift::Tag',
+                           'type' => 'ArrayRef[RedShift_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'Tag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +78,7 @@ Amazon Redshift cluster to encrypt data files.
 the HSM. You must register the public key in the HSM.
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
   The list of tags for the HSM client certificate.
 

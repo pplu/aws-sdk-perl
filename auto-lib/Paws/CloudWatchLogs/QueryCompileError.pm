@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::QueryCompileError;
-  use Moose;
-  has Location => (is => 'ro', isa => 'Paws::CloudWatchLogs::QueryCompileErrorLocation', request_name => 'location', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_QueryCompileErrorLocation/;
+  has Location => (is => 'ro', isa => CloudWatchLogs_QueryCompileErrorLocation);
+  has Message => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Location' => {
+                               'class' => 'Paws::CloudWatchLogs::QueryCompileErrorLocation',
+                               'type' => 'CloudWatchLogs_QueryCompileErrorLocation'
+                             },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Location' => 'location',
+                       'Message' => 'message'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Reserved.
 =head1 ATTRIBUTES
 
 
-=head2 Location => L<Paws::CloudWatchLogs::QueryCompileErrorLocation>
+=head2 Location => CloudWatchLogs_QueryCompileErrorLocation
 
   Reserved.
 

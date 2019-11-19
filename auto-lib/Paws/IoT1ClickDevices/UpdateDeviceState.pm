@@ -1,15 +1,42 @@
 
 package Paws::IoT1ClickDevices::UpdateDeviceState;
-  use Moose;
-  has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'deviceId', required => 1);
-  has Enabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enabled');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT1ClickDevices::Types qw//;
+  has DeviceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Enabled => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDeviceState');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/devices/{deviceId}/state');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT1ClickDevices::UpdateDeviceStateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDeviceState');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/devices/{deviceId}/state');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT1ClickDevices::UpdateDeviceStateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Enabled' => 'enabled'
+                     },
+  'IsRequired' => {
+                    'DeviceId' => 1
+                  },
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'DeviceId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'DeviceId' => 'deviceId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

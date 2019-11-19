@@ -1,12 +1,58 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::Channel;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Storage => (is => 'ro', isa => 'Paws::IoTAnalytics::ChannelStorage', request_name => 'storage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_RetentionPeriod IoTAnalytics_ChannelStorage/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RetentionPeriod => (is => 'ro', isa => IoTAnalytics_RetentionPeriod);
+  has Status => (is => 'ro', isa => Str);
+  has Storage => (is => 'ro', isa => IoTAnalytics_ChannelStorage);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Storage' => {
+                              'type' => 'IoTAnalytics_ChannelStorage',
+                              'class' => 'Paws::IoTAnalytics::ChannelStorage'
+                            },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'RetentionPeriod' => {
+                                      'class' => 'Paws::IoTAnalytics::RetentionPeriod',
+                                      'type' => 'IoTAnalytics_RetentionPeriod'
+                                    },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'Arn' => 'arn',
+                       'Status' => 'status',
+                       'Storage' => 'storage',
+                       'CreationTime' => 'creationTime',
+                       'RetentionPeriod' => 'retentionPeriod'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +109,7 @@ unprocessed messages before publishing the data to a pipeline.
   The name of the channel.
 
 
-=head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
+=head2 RetentionPeriod => IoTAnalytics_RetentionPeriod
 
   How long, in days, message data is kept for the channel.
 
@@ -73,7 +119,7 @@ unprocessed messages before publishing the data to a pipeline.
   The status of the channel.
 
 
-=head2 Storage => L<Paws::IoTAnalytics::ChannelStorage>
+=head2 Storage => IoTAnalytics_ChannelStorage
 
   Where channel data is stored. You may choose one of "serviceManagedS3"
 or "customerManagedS3" storage. If not specified, the default is

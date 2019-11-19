@@ -1,23 +1,77 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::CreateMaintenanceWindow;
-  use Moose;
-  has AllowUnassociatedTargets => (is => 'ro', isa => 'Bool', required => 1);
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has Cutoff => (is => 'ro', isa => 'Int', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has Duration => (is => 'ro', isa => 'Int', required => 1);
-  has EndDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Schedule => (is => 'ro', isa => 'Str', required => 1);
-  has ScheduleTimezone => (is => 'ro', isa => 'Str');
-  has StartDate => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Tag/;
+  has AllowUnassociatedTargets => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Cutoff => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Duration => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has EndDate => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Schedule => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ScheduleTimezone => (is => 'ro', isa => Str, predicate => 1);
+  has StartDate => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SSM_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMaintenanceWindow');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreateMaintenanceWindowResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateMaintenanceWindow');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::CreateMaintenanceWindowResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Schedule' => 1,
+                    'Duration' => 1,
+                    'Cutoff' => 1,
+                    'AllowUnassociatedTargets' => 1
+                  },
+  'types' => {
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'ScheduleTimezone' => {
+                                       'type' => 'Str'
+                                     },
+               'Schedule' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'Tags' => {
+                           'type' => 'ArrayRef[SSM_Tag]',
+                           'class' => 'Paws::SSM::Tag'
+                         },
+               'Cutoff' => {
+                             'type' => 'Int'
+                           },
+               'AllowUnassociatedTargets' => {
+                                               'type' => 'Bool'
+                                             },
+               'StartDate' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'EndDate' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -147,7 +201,7 @@ activation of the maintenance window until the specified future date.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+=head2 Tags => ArrayRef[SSM_Tag]
 
 Optional metadata that you assign to a resource. Tags enable you to
 categorize a resource in different ways, such as by purpose, owner, or

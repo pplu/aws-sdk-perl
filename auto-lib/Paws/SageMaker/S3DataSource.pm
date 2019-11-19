@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::SageMaker::S3DataSource;
-  use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has S3DataDistributionType => (is => 'ro', isa => 'Str');
-  has S3DataType => (is => 'ro', isa => 'Str', required => 1);
-  has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SageMaker::Types qw//;
+  has AttributeNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has S3DataDistributionType => (is => 'ro', isa => Str);
+  has S3DataType => (is => 'ro', isa => Str, required => 1);
+  has S3Uri => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'S3Uri' => 1,
+                    'S3DataType' => 1
+                  },
+  'types' => {
+               'S3Uri' => {
+                            'type' => 'Str'
+                          },
+               'S3DataType' => {
+                                 'type' => 'Str'
+                               },
+               'S3DataDistributionType' => {
+                                             'type' => 'Str'
+                                           },
+               'AttributeNames' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::ELB::CreateLBCookieStickinessPolicy;
-  use Moose;
-  has CookieExpirationPeriod => (is => 'ro', isa => 'Int');
-  has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ELB::Types qw//;
+  has CookieExpirationPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PolicyName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLBCookieStickinessPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::CreateLBCookieStickinessPolicyOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLBCookieStickinessPolicyResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLBCookieStickinessPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELB::CreateLBCookieStickinessPolicyOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateLBCookieStickinessPolicyResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'CookieExpirationPeriod' => {
+                                             'type' => 'Int'
+                                           }
+             },
+  'IsRequired' => {
+                    'LoadBalancerName' => 1,
+                    'PolicyName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

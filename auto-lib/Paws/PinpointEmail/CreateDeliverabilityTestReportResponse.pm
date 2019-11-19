@@ -1,10 +1,34 @@
 
 package Paws::PinpointEmail::CreateDeliverabilityTestReportResponse;
-  use Moose;
-  has DeliverabilityTestStatus => (is => 'ro', isa => 'Str', required => 1);
-  has ReportId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has DeliverabilityTestStatus => (is => 'ro', isa => Str, required => 1);
+  has ReportId => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ReportId' => {
+                               'type' => 'Str'
+                             },
+               'DeliverabilityTestStatus' => {
+                                               'type' => 'Str'
+                                             }
+             },
+  'IsRequired' => {
+                    'DeliverabilityTestStatus' => 1,
+                    'ReportId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

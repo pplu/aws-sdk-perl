@@ -1,18 +1,43 @@
+# Generated from default/map_enum.tt
 package Paws::DeviceFarm::UniqueProblemsByExecutionResultMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_UniqueProblem/;
+  has ERRORED => (is => 'ro', isa => ArrayRef[DeviceFarm_UniqueProblem]);
+  has FAILED => (is => 'ro', isa => ArrayRef[DeviceFarm_UniqueProblem]);
+  has PASSED => (is => 'ro', isa => ArrayRef[DeviceFarm_UniqueProblem]);
+  has PENDING => (is => 'ro', isa => ArrayRef[DeviceFarm_UniqueProblem]);
+  has SKIPPED => (is => 'ro', isa => ArrayRef[DeviceFarm_UniqueProblem]);
+  has STOPPED => (is => 'ro', isa => ArrayRef[DeviceFarm_UniqueProblem]);
+  has WARNED => (is => 'ro', isa => ArrayRef[DeviceFarm_UniqueProblem]);
 
-  has ERRORED => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::UniqueProblem]');
-  has FAILED => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::UniqueProblem]');
-  has PASSED => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::UniqueProblem]');
-  has PENDING => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::UniqueProblem]');
-  has SKIPPED => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::UniqueProblem]');
-  has STOPPED => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::UniqueProblem]');
-  has WARNED => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::UniqueProblem]');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'ERRORED' => {
+                                          type => 'ArrayRef[DeviceFarm_UniqueProblem]',                                          class => 'Paws::DeviceFarm::UniqueProblem',                                        },
+                               'FAILED' => {
+                                          type => 'ArrayRef[DeviceFarm_UniqueProblem]',                                          class => 'Paws::DeviceFarm::UniqueProblem',                                        },
+                               'PASSED' => {
+                                          type => 'ArrayRef[DeviceFarm_UniqueProblem]',                                          class => 'Paws::DeviceFarm::UniqueProblem',                                        },
+                               'PENDING' => {
+                                          type => 'ArrayRef[DeviceFarm_UniqueProblem]',                                          class => 'Paws::DeviceFarm::UniqueProblem',                                        },
+                               'SKIPPED' => {
+                                          type => 'ArrayRef[DeviceFarm_UniqueProblem]',                                          class => 'Paws::DeviceFarm::UniqueProblem',                                        },
+                               'STOPPED' => {
+                                          type => 'ArrayRef[DeviceFarm_UniqueProblem]',                                          class => 'Paws::DeviceFarm::UniqueProblem',                                        },
+                               'WARNED' => {
+                                          type => 'ArrayRef[DeviceFarm_UniqueProblem]',                                          class => 'Paws::DeviceFarm::UniqueProblem',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,25 +73,25 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ERRORED => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+=head2 ERRORED => 
 
 
-=head2 FAILED => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+=head2 FAILED => 
 
 
-=head2 PASSED => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+=head2 PASSED => 
 
 
-=head2 PENDING => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+=head2 PENDING => 
 
 
-=head2 SKIPPED => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+=head2 SKIPPED => 
 
 
-=head2 STOPPED => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+=head2 STOPPED => 
 
 
-=head2 WARNED => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+=head2 WARNED => 
 
 
 

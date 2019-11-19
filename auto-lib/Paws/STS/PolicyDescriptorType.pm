@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::STS::PolicyDescriptorType;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::STS::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Arn' => 'arn'
+                     },
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

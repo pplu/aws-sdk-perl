@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::PipelineSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has PipelineName => (is => 'ro', isa => 'Str', request_name => 'pipelineName', traits => ['NameInRequest']);
-  has ReprocessingSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::ReprocessingSummary]', request_name => 'reprocessingSummaries', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_ReprocessingSummary/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has PipelineName => (is => 'ro', isa => Str);
+  has ReprocessingSummaries => (is => 'ro', isa => ArrayRef[IoTAnalytics_ReprocessingSummary]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'ReprocessingSummaries' => 'reprocessingSummaries',
+                       'PipelineName' => 'pipelineName'
+                     },
+  'types' => {
+               'PipelineName' => {
+                                   'type' => 'Str'
+                                 },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'ReprocessingSummaries' => {
+                                            'class' => 'Paws::IoTAnalytics::ReprocessingSummary',
+                                            'type' => 'ArrayRef[IoTAnalytics_ReprocessingSummary]'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +87,7 @@ A summary of information about a pipeline.
   The name of the pipeline.
 
 
-=head2 ReprocessingSummaries => ArrayRef[L<Paws::IoTAnalytics::ReprocessingSummary>]
+=head2 ReprocessingSummaries => ArrayRef[IoTAnalytics_ReprocessingSummary]
 
   A summary of information about the pipeline reprocessing.
 

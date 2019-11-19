@@ -1,7 +1,28 @@
 package Paws::EC2::AssociatedTargetNetwork;
-  use Moose;
-  has NetworkId => (is => 'ro', isa => 'Str', request_name => 'networkId', traits => ['NameInRequest']);
-  has NetworkType => (is => 'ro', isa => 'Str', request_name => 'networkType', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has NetworkId => (is => 'ro', isa => Str);
+  has NetworkType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NetworkType' => {
+                                  'type' => 'Str'
+                                },
+               'NetworkId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NetworkType' => 'networkType',
+                       'NetworkId' => 'networkId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

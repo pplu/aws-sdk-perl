@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::CodeDeliveryDetailsType;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str');
-  has DeliveryMedium => (is => 'ro', isa => 'Str');
-  has Destination => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str);
+  has DeliveryMedium => (is => 'ro', isa => Str);
+  has Destination => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  },
+               'DeliveryMedium' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::DisableStageTransition;
-  use Moose;
-  has PipelineName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineName' , required => 1);
-  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' , required => 1);
-  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName' , required => 1);
-  has TransitionType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'transitionType' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has PipelineName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Reason => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StageName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TransitionType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableStageTransition');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisableStageTransition');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Reason' => 1,
+                    'PipelineName' => 1,
+                    'TransitionType' => 1,
+                    'StageName' => 1
+                  },
+  'NameInRequest' => {
+                       'PipelineName' => 'pipelineName',
+                       'Reason' => 'reason',
+                       'TransitionType' => 'transitionType',
+                       'StageName' => 'stageName'
+                     },
+  'types' => {
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'PipelineName' => {
+                                   'type' => 'Str'
+                                 },
+               'TransitionType' => {
+                                     'type' => 'Str'
+                                   },
+               'StageName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

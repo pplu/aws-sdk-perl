@@ -1,16 +1,48 @@
 
 package Paws::EC2::CreateSecurityGroup;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'GroupDescription' , required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has GroupName => (is => 'ro', isa => 'Str', required => 1);
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VpcId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSecurityGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateSecurityGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSecurityGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateSecurityGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'Description' => 'GroupDescription'
+                     },
+  'IsRequired' => {
+                    'GroupName' => 1,
+                    'Description' => 1
+                  },
+  'types' => {
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'VpcId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

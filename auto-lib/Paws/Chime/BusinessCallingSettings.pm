@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::Chime::BusinessCallingSettings;
-  use Moose;
-  has CdrBucket => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw//;
+  has CdrBucket => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CdrBucket' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

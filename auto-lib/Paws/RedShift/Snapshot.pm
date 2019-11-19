@@ -1,38 +1,158 @@
+# Generated from default/object.tt
 package Paws::RedShift::Snapshot;
-  use Moose;
-  has AccountsWithRestoreAccess => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::AccountWithRestoreAccess]', request_name => 'AccountWithRestoreAccess', traits => ['NameInRequest']);
-  has ActualIncrementalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has BackupProgressInMegaBytes => (is => 'ro', isa => 'Num');
-  has ClusterCreateTime => (is => 'ro', isa => 'Str');
-  has ClusterIdentifier => (is => 'ro', isa => 'Str');
-  has ClusterVersion => (is => 'ro', isa => 'Str');
-  has CurrentBackupRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
-  has DBName => (is => 'ro', isa => 'Str');
-  has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has EncryptedWithHSM => (is => 'ro', isa => 'Bool');
-  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
-  has EstimatedSecondsToCompletion => (is => 'ro', isa => 'Int');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
-  has ManualSnapshotRemainingDays => (is => 'ro', isa => 'Int');
-  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has NodeType => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int');
-  has OwnerAccount => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has RestorableNodeTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'NodeType', traits => ['NameInRequest']);
-  has SnapshotCreateTime => (is => 'ro', isa => 'Str');
-  has SnapshotIdentifier => (is => 'ro', isa => 'Str');
-  has SnapshotRetentionStartTime => (is => 'ro', isa => 'Str');
-  has SnapshotType => (is => 'ro', isa => 'Str');
-  has SourceRegion => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
-  has TotalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Num Str Int Bool Undef/;
+  use Paws::RedShift::Types qw/RedShift_AccountWithRestoreAccess RedShift_Tag/;
+  has AccountsWithRestoreAccess => (is => 'ro', isa => ArrayRef[RedShift_AccountWithRestoreAccess]);
+  has ActualIncrementalBackupSizeInMegaBytes => (is => 'ro', isa => Num);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has BackupProgressInMegaBytes => (is => 'ro', isa => Num);
+  has ClusterCreateTime => (is => 'ro', isa => Str);
+  has ClusterIdentifier => (is => 'ro', isa => Str);
+  has ClusterVersion => (is => 'ro', isa => Str);
+  has CurrentBackupRateInMegaBytesPerSecond => (is => 'ro', isa => Num);
+  has DBName => (is => 'ro', isa => Str);
+  has ElapsedTimeInSeconds => (is => 'ro', isa => Int);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has EncryptedWithHSM => (is => 'ro', isa => Bool);
+  has EnhancedVpcRouting => (is => 'ro', isa => Bool);
+  has EstimatedSecondsToCompletion => (is => 'ro', isa => Int);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has MaintenanceTrackName => (is => 'ro', isa => Str);
+  has ManualSnapshotRemainingDays => (is => 'ro', isa => Int);
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => Int);
+  has MasterUsername => (is => 'ro', isa => Str);
+  has NodeType => (is => 'ro', isa => Str);
+  has NumberOfNodes => (is => 'ro', isa => Int);
+  has OwnerAccount => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has RestorableNodeTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SnapshotCreateTime => (is => 'ro', isa => Str);
+  has SnapshotIdentifier => (is => 'ro', isa => Str);
+  has SnapshotRetentionStartTime => (is => 'ro', isa => Str);
+  has SnapshotType => (is => 'ro', isa => Str);
+  has SourceRegion => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag]);
+  has TotalBackupSizeInMegaBytes => (is => 'ro', isa => Num);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'Tag',
+                       'AccountsWithRestoreAccess' => 'AccountWithRestoreAccess',
+                       'RestorableNodeTypes' => 'NodeType'
+                     },
+  'types' => {
+               'SnapshotType' => {
+                                   'type' => 'Str'
+                                 },
+               'DBName' => {
+                             'type' => 'Str'
+                           },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'RestorableNodeTypes' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'ActualIncrementalBackupSizeInMegaBytes' => {
+                                                             'type' => 'Num'
+                                                           },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'SnapshotRetentionStartTime' => {
+                                                 'type' => 'Str'
+                                               },
+               'ManualSnapshotRetentionPeriod' => {
+                                                    'type' => 'Int'
+                                                  },
+               'OwnerAccount' => {
+                                   'type' => 'Str'
+                                 },
+               'SnapshotIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'CurrentBackupRateInMegaBytesPerSecond' => {
+                                                            'type' => 'Num'
+                                                          },
+               'EnhancedVpcRouting' => {
+                                         'type' => 'Bool'
+                                       },
+               'SourceRegion' => {
+                                   'type' => 'Str'
+                                 },
+               'ClusterVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'EncryptedWithHSM' => {
+                                       'type' => 'Bool'
+                                     },
+               'NumberOfNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'ElapsedTimeInSeconds' => {
+                                           'type' => 'Int'
+                                         },
+               'Tags' => {
+                           'type' => 'ArrayRef[RedShift_Tag]',
+                           'class' => 'Paws::RedShift::Tag'
+                         },
+               'BackupProgressInMegaBytes' => {
+                                                'type' => 'Num'
+                                              },
+               'TotalBackupSizeInMegaBytes' => {
+                                                 'type' => 'Num'
+                                               },
+               'EstimatedSecondsToCompletion' => {
+                                                   'type' => 'Int'
+                                                 },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'NodeType' => {
+                               'type' => 'Str'
+                             },
+               'AccountsWithRestoreAccess' => {
+                                                'class' => 'Paws::RedShift::AccountWithRestoreAccess',
+                                                'type' => 'ArrayRef[RedShift_AccountWithRestoreAccess]'
+                                              },
+               'ClusterCreateTime' => {
+                                        'type' => 'Str'
+                                      },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'MaintenanceTrackName' => {
+                                           'type' => 'Str'
+                                         },
+               'ManualSnapshotRemainingDays' => {
+                                                  'type' => 'Int'
+                                                },
+               'SnapshotCreateTime' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +188,7 @@ Describes a snapshot.
 =head1 ATTRIBUTES
 
 
-=head2 AccountsWithRestoreAccess => ArrayRef[L<Paws::RedShift::AccountWithRestoreAccess>]
+=head2 AccountsWithRestoreAccess => ArrayRef[RedShift_AccountWithRestoreAccess]
 
   A list of the AWS customer accounts authorized to restore the snapshot.
 Returns C<null> if no accounts are authorized. Visible only to the
@@ -269,7 +389,7 @@ DeleteClusterSnapshot returns status as "deleted".
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
   The list of tags for the cluster snapshot.
 

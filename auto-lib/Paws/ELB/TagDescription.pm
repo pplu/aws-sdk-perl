@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::ELB::TagDescription;
-  use Moose;
-  has LoadBalancerName => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELB::Types qw/ELB_Tag/;
+  has LoadBalancerName => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[ELB_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'Tags' => {
+                           'type' => 'ArrayRef[ELB_Tag]',
+                           'class' => 'Paws::ELB::Tag'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ The tags associated with a load balancer.
   The name of the load balancer.
 
 
-=head2 Tags => ArrayRef[L<Paws::ELB::Tag>]
+=head2 Tags => ArrayRef[ELB_Tag]
 
   The tags.
 

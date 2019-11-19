@@ -1,9 +1,37 @@
+# Generated from default/object.tt
 package Paws::GameLift::Player;
-  use Moose;
-  has LatencyInMs => (is => 'ro', isa => 'Paws::GameLift::LatencyMap');
-  has PlayerAttributes => (is => 'ro', isa => 'Paws::GameLift::PlayerAttributeMap');
-  has PlayerId => (is => 'ro', isa => 'Str');
-  has Team => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_PlayerAttributeMap GameLift_LatencyMap/;
+  has LatencyInMs => (is => 'ro', isa => GameLift_LatencyMap);
+  has PlayerAttributes => (is => 'ro', isa => GameLift_PlayerAttributeMap);
+  has PlayerId => (is => 'ro', isa => Str);
+  has Team => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LatencyInMs' => {
+                                  'class' => 'Paws::GameLift::LatencyMap',
+                                  'type' => 'GameLift_LatencyMap'
+                                },
+               'PlayerId' => {
+                               'type' => 'Str'
+                             },
+               'Team' => {
+                           'type' => 'Str'
+                         },
+               'PlayerAttributes' => {
+                                       'class' => 'Paws::GameLift::PlayerAttributeMap',
+                                       'type' => 'GameLift_PlayerAttributeMap'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +70,7 @@ completed.
 =head1 ATTRIBUTES
 
 
-=head2 LatencyInMs => L<Paws::GameLift::LatencyMap>
+=head2 LatencyInMs => GameLift_LatencyMap
 
   Set of values, expressed in milliseconds, indicating the amount of
 latency that a player experiences when connected to AWS regions. If
@@ -55,7 +83,7 @@ this scenario, FlexMatch assumes that no regions are available to the
 player and the ticket is not matchable.
 
 
-=head2 PlayerAttributes => L<Paws::GameLift::PlayerAttributeMap>
+=head2 PlayerAttributes => GameLift_PlayerAttributeMap
 
   Collection of key:value pairs containing player information for use in
 matchmaking. Player attribute keys must match the I<playerAttributes>

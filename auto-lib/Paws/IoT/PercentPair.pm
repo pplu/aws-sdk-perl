@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoT::PercentPair;
-  use Moose;
-  has Percent => (is => 'ro', isa => 'Num', request_name => 'percent', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Num', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::IoT::Types qw//;
+  has Percent => (is => 'ro', isa => Num);
+  has Value => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Percent' => {
+                              'type' => 'Num'
+                            },
+               'Value' => {
+                            'type' => 'Num'
+                          }
+             },
+  'NameInRequest' => {
+                       'Percent' => 'percent',
+                       'Value' => 'value'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

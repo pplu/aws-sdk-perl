@@ -1,18 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::GetRelationalDatabaseLogEvents;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime' );
-  has LogStreamName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logStreamName' , required => 1);
-  has PageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pageToken' );
-  has RelationalDatabaseName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseName' , required => 1);
-  has StartFromHead => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'startFromHead' );
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Lightsail::Types qw//;
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has LogStreamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PageToken => (is => 'ro', isa => Str, predicate => 1);
+  has RelationalDatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartFromHead => (is => 'ro', isa => Bool, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRelationalDatabaseLogEvents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::GetRelationalDatabaseLogEventsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetRelationalDatabaseLogEvents');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::GetRelationalDatabaseLogEventsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RelationalDatabaseName' => {
+                                             'type' => 'Str'
+                                           },
+               'LogStreamName' => {
+                                    'type' => 'Str'
+                                  },
+               'PageToken' => {
+                                'type' => 'Str'
+                              },
+               'StartFromHead' => {
+                                    'type' => 'Bool'
+                                  },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'StartFromHead' => 'startFromHead',
+                       'StartTime' => 'startTime',
+                       'EndTime' => 'endTime',
+                       'PageToken' => 'pageToken',
+                       'RelationalDatabaseName' => 'relationalDatabaseName',
+                       'LogStreamName' => 'logStreamName'
+                     },
+  'IsRequired' => {
+                    'LogStreamName' => 1,
+                    'RelationalDatabaseName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

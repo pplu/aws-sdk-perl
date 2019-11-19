@@ -1,10 +1,35 @@
 
 package Paws::MediaLive::ListInputSecurityGroupsResponse;
-  use Moose;
-  has InputSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSecurityGroup]', traits => ['NameInRequest'], request_name => 'inputSecurityGroups');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_InputSecurityGroup/;
+  has InputSecurityGroups => (is => 'ro', isa => ArrayRef[MediaLive_InputSecurityGroup]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputSecurityGroups' => {
+                                          'class' => 'Paws::MediaLive::InputSecurityGroup',
+                                          'type' => 'ArrayRef[MediaLive_InputSecurityGroup]'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'InputSecurityGroups' => 'inputSecurityGroups'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::MediaLive::ListInputSecurityGroupsResponse
 =head1 ATTRIBUTES
 
 
-=head2 InputSecurityGroups => ArrayRef[L<Paws::MediaLive::InputSecurityGroup>]
+=head2 InputSecurityGroups => ArrayRef[MediaLive_InputSecurityGroup]
 
 List of input security groups
 

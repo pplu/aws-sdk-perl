@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAFRegional::UpdateRuleGroup;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has RuleGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::RuleGroupUpdate]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_RuleGroupUpdate/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RuleGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAFRegional_RuleGroupUpdate], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRuleGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAFRegional::UpdateRuleGroupResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRuleGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAFRegional::UpdateRuleGroupResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Updates' => {
+                              'type' => 'ArrayRef[WAFRegional_RuleGroupUpdate]',
+                              'class' => 'Paws::WAFRegional::RuleGroupUpdate'
+                            },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'RuleGroupId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Updates' => 1,
+                    'ChangeToken' => 1,
+                    'RuleGroupId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +114,7 @@ C<RuleGroupId> is returned by CreateRuleGroup and by ListRuleGroups.
 
 
 
-=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAFRegional::RuleGroupUpdate>]
+=head2 B<REQUIRED> Updates => ArrayRef[WAFRegional_RuleGroupUpdate]
 
 An array of C<RuleGroupUpdate> objects that you want to insert into or
 delete from a RuleGroup.

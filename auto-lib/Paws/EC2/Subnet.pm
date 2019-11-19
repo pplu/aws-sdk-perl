@@ -1,19 +1,90 @@
 package Paws::EC2::Subnet;
-  use Moose;
-  has AssignIpv6AddressOnCreation => (is => 'ro', isa => 'Bool', request_name => 'assignIpv6AddressOnCreation', traits => ['NameInRequest']);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has AvailabilityZoneId => (is => 'ro', isa => 'Str', request_name => 'availabilityZoneId', traits => ['NameInRequest']);
-  has AvailableIpAddressCount => (is => 'ro', isa => 'Int', request_name => 'availableIpAddressCount', traits => ['NameInRequest']);
-  has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
-  has DefaultForAz => (is => 'ro', isa => 'Bool', request_name => 'defaultForAz', traits => ['NameInRequest']);
-  has Ipv6CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SubnetIpv6CidrBlockAssociation]', request_name => 'ipv6CidrBlockAssociationSet', traits => ['NameInRequest']);
-  has MapPublicIpOnLaunch => (is => 'ro', isa => 'Bool', request_name => 'mapPublicIpOnLaunch', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has SubnetArn => (is => 'ro', isa => 'Str', request_name => 'subnetArn', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool Str Int ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Tag EC2_SubnetIpv6CidrBlockAssociation/;
+  has AssignIpv6AddressOnCreation => (is => 'ro', isa => Bool);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has AvailabilityZoneId => (is => 'ro', isa => Str);
+  has AvailableIpAddressCount => (is => 'ro', isa => Int);
+  has CidrBlock => (is => 'ro', isa => Str);
+  has DefaultForAz => (is => 'ro', isa => Bool);
+  has Ipv6CidrBlockAssociationSet => (is => 'ro', isa => ArrayRef[EC2_SubnetIpv6CidrBlockAssociation]);
+  has MapPublicIpOnLaunch => (is => 'ro', isa => Bool);
+  has OwnerId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has SubnetArn => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Ipv6CidrBlockAssociationSet' => 'ipv6CidrBlockAssociationSet',
+                       'AssignIpv6AddressOnCreation' => 'assignIpv6AddressOnCreation',
+                       'State' => 'state',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'DefaultForAz' => 'defaultForAz',
+                       'SubnetArn' => 'subnetArn',
+                       'MapPublicIpOnLaunch' => 'mapPublicIpOnLaunch',
+                       'SubnetId' => 'subnetId',
+                       'VpcId' => 'vpcId',
+                       'AvailabilityZoneId' => 'availabilityZoneId',
+                       'Tags' => 'tagSet',
+                       'OwnerId' => 'ownerId',
+                       'CidrBlock' => 'cidrBlock',
+                       'AvailableIpAddressCount' => 'availableIpAddressCount'
+                     },
+  'types' => {
+               'Ipv6CidrBlockAssociationSet' => {
+                                                  'type' => 'ArrayRef[EC2_SubnetIpv6CidrBlockAssociation]',
+                                                  'class' => 'Paws::EC2::SubnetIpv6CidrBlockAssociation'
+                                                },
+               'AssignIpv6AddressOnCreation' => {
+                                                  'type' => 'Bool'
+                                                },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'SubnetArn' => {
+                                'type' => 'Str'
+                              },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'DefaultForAz' => {
+                                   'type' => 'Bool'
+                                 },
+               'MapPublicIpOnLaunch' => {
+                                          'type' => 'Bool'
+                                        },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'AvailabilityZoneId' => {
+                                         'type' => 'Str'
+                                       },
+               'CidrBlock' => {
+                                'type' => 'Str'
+                              },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'AvailableIpAddressCount' => {
+                                              'type' => 'Int'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -81,7 +152,7 @@ addresses for any stopped instances are considered unavailable.
   Indicates whether this is the default subnet for the Availability Zone.
 
 
-=head2 Ipv6CidrBlockAssociationSet => ArrayRef[L<Paws::EC2::SubnetIpv6CidrBlockAssociation>]
+=head2 Ipv6CidrBlockAssociationSet => ArrayRef[EC2_SubnetIpv6CidrBlockAssociation]
 
   Information about the IPv6 CIDR blocks associated with the subnet.
 
@@ -112,7 +183,7 @@ IPv4 address.
   The ID of the subnet.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the subnet.
 

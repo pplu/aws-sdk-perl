@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SecretsManager::RotateSecret;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has RotationLambdaARN => (is => 'ro', isa => 'Str');
-  has RotationRules => (is => 'ro', isa => 'Paws::SecretsManager::RotationRulesType');
-  has SecretId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecretsManager::Types qw/SecretsManager_RotationRulesType/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has RotationLambdaARN => (is => 'ro', isa => Str, predicate => 1);
+  has RotationRules => (is => 'ro', isa => SecretsManager_RotationRulesType, predicate => 1);
+  has SecretId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RotateSecret');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecretsManager::RotateSecretResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RotateSecret');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecretsManager::RotateSecretResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SecretId' => 1
+                  },
+  'types' => {
+               'RotationLambdaARN' => {
+                                        'type' => 'Str'
+                                      },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'SecretId' => {
+                               'type' => 'Str'
+                             },
+               'RotationRules' => {
+                                    'type' => 'SecretsManager_RotationRulesType',
+                                    'class' => 'Paws::SecretsManager::RotationRulesType'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +114,7 @@ secret.
 
 
 
-=head2 RotationRules => L<Paws::SecretsManager::RotationRulesType>
+=head2 RotationRules => SecretsManager_RotationRulesType
 
 A structure that defines the rotation configuration for this secret.
 

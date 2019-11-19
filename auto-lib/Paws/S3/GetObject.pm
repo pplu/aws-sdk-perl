@@ -1,34 +1,131 @@
 
 package Paws::S3::GetObject;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
-  has IfModifiedSince => (is => 'ro', isa => 'Str', header_name => 'If-Modified-Since', traits => ['ParamInHeader']);
-  has IfNoneMatch => (is => 'ro', isa => 'Str', header_name => 'If-None-Match', traits => ['ParamInHeader']);
-  has IfUnmodifiedSince => (is => 'ro', isa => 'Str', header_name => 'If-Unmodified-Since', traits => ['ParamInHeader']);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has PartNumber => (is => 'ro', isa => 'Int', query_name => 'partNumber', traits => ['ParamInQuery']);
-  has Range => (is => 'ro', isa => 'Str', header_name => 'Range', traits => ['ParamInHeader']);
-  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has ResponseCacheControl => (is => 'ro', isa => 'Str', query_name => 'response-cache-control', traits => ['ParamInQuery']);
-  has ResponseContentDisposition => (is => 'ro', isa => 'Str', query_name => 'response-content-disposition', traits => ['ParamInQuery']);
-  has ResponseContentEncoding => (is => 'ro', isa => 'Str', query_name => 'response-content-encoding', traits => ['ParamInQuery']);
-  has ResponseContentLanguage => (is => 'ro', isa => 'Str', query_name => 'response-content-language', traits => ['ParamInQuery']);
-  has ResponseContentType => (is => 'ro', isa => 'Str', query_name => 'response-content-type', traits => ['ParamInQuery']);
-  has ResponseExpires => (is => 'ro', isa => 'Str', query_name => 'response-expires', traits => ['ParamInQuery']);
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
-  has SSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key', traits => ['ParamInHeader']);
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
-  has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IfMatch => (is => 'ro', isa => Str, predicate => 1);
+  has IfModifiedSince => (is => 'ro', isa => Str, predicate => 1);
+  has IfNoneMatch => (is => 'ro', isa => Str, predicate => 1);
+  has IfUnmodifiedSince => (is => 'ro', isa => Str, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PartNumber => (is => 'ro', isa => Int, predicate => 1);
+  has Range => (is => 'ro', isa => Str, predicate => 1);
+  has RequestPayer => (is => 'ro', isa => Str, predicate => 1);
+  has ResponseCacheControl => (is => 'ro', isa => Str, predicate => 1);
+  has ResponseContentDisposition => (is => 'ro', isa => Str, predicate => 1);
+  has ResponseContentEncoding => (is => 'ro', isa => Str, predicate => 1);
+  has ResponseContentLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has ResponseContentType => (is => 'ro', isa => Str, predicate => 1);
+  has ResponseExpires => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerAlgorithm => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKey => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has VersionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetObject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::GetObjectOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetObject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::GetObjectOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'IfModifiedSince' => 'If-Modified-Since',
+                       'RequestPayer' => 'x-amz-request-payer',
+                       'SSECustomerKey' => 'x-amz-server-side-encryption-customer-key',
+                       'Range' => 'Range',
+                       'IfMatch' => 'If-Match',
+                       'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5',
+                       'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm',
+                       'IfUnmodifiedSince' => 'If-Unmodified-Since',
+                       'IfNoneMatch' => 'If-None-Match'
+                     },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket',
+                    'Key' => 'Key'
+                  },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'Key' => 1
+                  },
+  'ParamInQuery' => {
+                      'ResponseCacheControl' => 'response-cache-control',
+                      'ResponseExpires' => 'response-expires',
+                      'VersionId' => 'versionId',
+                      'PartNumber' => 'partNumber',
+                      'ResponseContentType' => 'response-content-type',
+                      'ResponseContentLanguage' => 'response-content-language',
+                      'ResponseContentEncoding' => 'response-content-encoding',
+                      'ResponseContentDisposition' => 'response-content-disposition'
+                    },
+  'types' => {
+               'ResponseCacheControl' => {
+                                           'type' => 'Str'
+                                         },
+               'SSECustomerKey' => {
+                                     'type' => 'Str'
+                                   },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'IfModifiedSince' => {
+                                      'type' => 'Str'
+                                    },
+               'IfNoneMatch' => {
+                                  'type' => 'Str'
+                                },
+               'SSECustomerAlgorithm' => {
+                                           'type' => 'Str'
+                                         },
+               'IfUnmodifiedSince' => {
+                                        'type' => 'Str'
+                                      },
+               'Range' => {
+                            'type' => 'Str'
+                          },
+               'ResponseContentLanguage' => {
+                                              'type' => 'Str'
+                                            },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'ResponseContentDisposition' => {
+                                                 'type' => 'Str'
+                                               },
+               'ResponseExpires' => {
+                                      'type' => 'Str'
+                                    },
+               'RequestPayer' => {
+                                   'type' => 'Str'
+                                 },
+               'PartNumber' => {
+                                 'type' => 'Int'
+                               },
+               'IfMatch' => {
+                              'type' => 'Str'
+                            },
+               'SSECustomerKeyMD5' => {
+                                        'type' => 'Str'
+                                      },
+               'ResponseContentType' => {
+                                          'type' => 'Str'
+                                        },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'ResponseContentEncoding' => {
+                                              'type' => 'Str'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

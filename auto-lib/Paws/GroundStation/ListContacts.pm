@@ -1,21 +1,72 @@
 
 package Paws::GroundStation::ListContacts;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime', required => 1);
-  has GroundStation => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'groundStation');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has MissionProfileArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'missionProfileArn');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has SatelliteArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'satelliteArn');
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime', required => 1);
-  has StatusList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'statusList', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::GroundStation::Types qw//;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GroundStation => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has MissionProfileArn => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SatelliteArn => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StatusList => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListContacts');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/contacts');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GroundStation::ListContactsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListContacts');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/contacts');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GroundStation::ListContactsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'GroundStation' => 'groundStation',
+                       'StartTime' => 'startTime',
+                       'EndTime' => 'endTime',
+                       'StatusList' => 'statusList',
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults',
+                       'MissionProfileArn' => 'missionProfileArn',
+                       'SatelliteArn' => 'satelliteArn'
+                     },
+  'IsRequired' => {
+                    'EndTime' => 1,
+                    'StatusList' => 1,
+                    'StartTime' => 1
+                  },
+  'types' => {
+               'SatelliteArn' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MissionProfileArn' => {
+                                        'type' => 'Str'
+                                      },
+               'StatusList' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'GroundStation' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

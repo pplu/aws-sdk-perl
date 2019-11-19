@@ -1,15 +1,59 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::LambdaConfigType;
-  use Moose;
-  has CreateAuthChallenge => (is => 'ro', isa => 'Str');
-  has CustomMessage => (is => 'ro', isa => 'Str');
-  has DefineAuthChallenge => (is => 'ro', isa => 'Str');
-  has PostAuthentication => (is => 'ro', isa => 'Str');
-  has PostConfirmation => (is => 'ro', isa => 'Str');
-  has PreAuthentication => (is => 'ro', isa => 'Str');
-  has PreSignUp => (is => 'ro', isa => 'Str');
-  has PreTokenGeneration => (is => 'ro', isa => 'Str');
-  has UserMigration => (is => 'ro', isa => 'Str');
-  has VerifyAuthChallengeResponse => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has CreateAuthChallenge => (is => 'ro', isa => Str);
+  has CustomMessage => (is => 'ro', isa => Str);
+  has DefineAuthChallenge => (is => 'ro', isa => Str);
+  has PostAuthentication => (is => 'ro', isa => Str);
+  has PostConfirmation => (is => 'ro', isa => Str);
+  has PreAuthentication => (is => 'ro', isa => Str);
+  has PreSignUp => (is => 'ro', isa => Str);
+  has PreTokenGeneration => (is => 'ro', isa => Str);
+  has UserMigration => (is => 'ro', isa => Str);
+  has VerifyAuthChallengeResponse => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateAuthChallenge' => {
+                                          'type' => 'Str'
+                                        },
+               'PreAuthentication' => {
+                                        'type' => 'Str'
+                                      },
+               'PreSignUp' => {
+                                'type' => 'Str'
+                              },
+               'VerifyAuthChallengeResponse' => {
+                                                  'type' => 'Str'
+                                                },
+               'UserMigration' => {
+                                    'type' => 'Str'
+                                  },
+               'PostConfirmation' => {
+                                       'type' => 'Str'
+                                     },
+               'CustomMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'PreTokenGeneration' => {
+                                         'type' => 'Str'
+                                       },
+               'DefineAuthChallenge' => {
+                                          'type' => 'Str'
+                                        },
+               'PostAuthentication' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

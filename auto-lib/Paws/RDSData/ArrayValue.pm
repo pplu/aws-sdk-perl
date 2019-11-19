@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::RDSData::ArrayValue;
-  use Moose;
-  has ArrayValues => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::ArrayValue]', request_name => 'arrayValues', traits => ['NameInRequest']);
-  has BooleanValues => (is => 'ro', isa => 'ArrayRef[Bool]', request_name => 'booleanValues', traits => ['NameInRequest']);
-  has DoubleValues => (is => 'ro', isa => 'ArrayRef[Num]', request_name => 'doubleValues', traits => ['NameInRequest']);
-  has LongValues => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'longValues', traits => ['NameInRequest']);
-  has StringValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'stringValues', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Bool Num Int Str Undef/;
+  use Paws::RDSData::Types qw/RDSData_ArrayValue/;
+  has ArrayValues => (is => 'ro', isa => ArrayRef[RDSData_ArrayValue]);
+  has BooleanValues => (is => 'ro', isa => ArrayRef[Bool]);
+  has DoubleValues => (is => 'ro', isa => ArrayRef[Num]);
+  has LongValues => (is => 'ro', isa => ArrayRef[Int]);
+  has StringValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DoubleValues' => 'doubleValues',
+                       'ArrayValues' => 'arrayValues',
+                       'BooleanValues' => 'booleanValues',
+                       'StringValues' => 'stringValues',
+                       'LongValues' => 'longValues'
+                     },
+  'types' => {
+               'StringValues' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'LongValues' => {
+                                 'type' => 'ArrayRef[Int]'
+                               },
+               'BooleanValues' => {
+                                    'type' => 'ArrayRef[Bool]'
+                                  },
+               'DoubleValues' => {
+                                   'type' => 'ArrayRef[Num]'
+                                 },
+               'ArrayValues' => {
+                                  'type' => 'ArrayRef[RDSData_ArrayValue]',
+                                  'class' => 'Paws::RDSData::ArrayValue'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +77,7 @@ Contains an array.
 =head1 ATTRIBUTES
 
 
-=head2 ArrayValues => ArrayRef[L<Paws::RDSData::ArrayValue>]
+=head2 ArrayValues => ArrayRef[RDSData_ArrayValue]
 
   An array of arrays.
 

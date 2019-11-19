@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::ListedEntitlement;
-  use Moose;
-  has DataTransferSubscriberFeePercent => (is => 'ro', isa => 'Int', request_name => 'dataTransferSubscriberFeePercent', traits => ['NameInRequest']);
-  has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest'], required => 1);
-  has EntitlementName => (is => 'ro', isa => 'Str', request_name => 'entitlementName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaConnect::Types qw//;
+  has DataTransferSubscriberFeePercent => (is => 'ro', isa => Int);
+  has EntitlementArn => (is => 'ro', isa => Str, required => 1);
+  has EntitlementName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataTransferSubscriberFeePercent' => {
+                                                       'type' => 'Int'
+                                                     },
+               'EntitlementName' => {
+                                      'type' => 'Str'
+                                    },
+               'EntitlementArn' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'EntitlementName' => 'entitlementName',
+                       'EntitlementArn' => 'entitlementArn',
+                       'DataTransferSubscriberFeePercent' => 'dataTransferSubscriberFeePercent'
+                     },
+  'IsRequired' => {
+                    'EntitlementArn' => 1,
+                    'EntitlementName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

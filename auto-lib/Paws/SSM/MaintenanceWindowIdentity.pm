@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::SSM::MaintenanceWindowIdentity;
-  use Moose;
-  has Cutoff => (is => 'ro', isa => 'Int');
-  has Description => (is => 'ro', isa => 'Str');
-  has Duration => (is => 'ro', isa => 'Int');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has EndDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has NextExecutionTime => (is => 'ro', isa => 'Str');
-  has Schedule => (is => 'ro', isa => 'Str');
-  has ScheduleTimezone => (is => 'ro', isa => 'Str');
-  has StartDate => (is => 'ro', isa => 'Str');
-  has WindowId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str Bool/;
+  use Paws::SSM::Types qw//;
+  has Cutoff => (is => 'ro', isa => Int);
+  has Description => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has Enabled => (is => 'ro', isa => Bool);
+  has EndDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has NextExecutionTime => (is => 'ro', isa => Str);
+  has Schedule => (is => 'ro', isa => Str);
+  has ScheduleTimezone => (is => 'ro', isa => Str);
+  has StartDate => (is => 'ro', isa => Str);
+  has WindowId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextExecutionTime' => {
+                                        'type' => 'Str'
+                                      },
+               'Schedule' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Cutoff' => {
+                             'type' => 'Int'
+                           },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'ScheduleTimezone' => {
+                                       'type' => 'Str'
+                                     },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'WindowId' => {
+                               'type' => 'Str'
+                             },
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'StartDate' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

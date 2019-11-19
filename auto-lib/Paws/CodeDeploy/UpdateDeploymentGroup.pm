@@ -1,29 +1,127 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::UpdateDeploymentGroup;
-  use Moose;
-  has AlarmConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AlarmConfiguration', traits => ['NameInRequest'], request_name => 'alarmConfiguration' );
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
-  has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', traits => ['NameInRequest'], request_name => 'autoRollbackConfiguration' );
-  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'autoScalingGroups' );
-  has BlueGreenDeploymentConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::BlueGreenDeploymentConfiguration', traits => ['NameInRequest'], request_name => 'blueGreenDeploymentConfiguration' );
-  has CurrentDeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'currentDeploymentGroupName' , required => 1);
-  has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' );
-  has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', traits => ['NameInRequest'], request_name => 'deploymentStyle' );
-  has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', traits => ['NameInRequest'], request_name => 'ec2TagFilters' );
-  has Ec2TagSet => (is => 'ro', isa => 'Paws::CodeDeploy::EC2TagSet', traits => ['NameInRequest'], request_name => 'ec2TagSet' );
-  has EcsServices => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ECSService]', traits => ['NameInRequest'], request_name => 'ecsServices' );
-  has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', traits => ['NameInRequest'], request_name => 'loadBalancerInfo' );
-  has NewDeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'newDeploymentGroupName' );
-  has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
-  has OnPremisesTagSet => (is => 'ro', isa => 'Paws::CodeDeploy::OnPremisesTagSet', traits => ['NameInRequest'], request_name => 'onPremisesTagSet' );
-  has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' );
-  has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', traits => ['NameInRequest'], request_name => 'triggerConfigurations' );
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_LoadBalancerInfo CodeDeploy_DeploymentStyle CodeDeploy_EC2TagSet CodeDeploy_AutoRollbackConfiguration CodeDeploy_ECSService CodeDeploy_OnPremisesTagSet CodeDeploy_AlarmConfiguration CodeDeploy_TagFilter CodeDeploy_EC2TagFilter CodeDeploy_BlueGreenDeploymentConfiguration CodeDeploy_TriggerConfig/;
+  has AlarmConfiguration => (is => 'ro', isa => CodeDeploy_AlarmConfiguration, predicate => 1);
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AutoRollbackConfiguration => (is => 'ro', isa => CodeDeploy_AutoRollbackConfiguration, predicate => 1);
+  has AutoScalingGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has BlueGreenDeploymentConfiguration => (is => 'ro', isa => CodeDeploy_BlueGreenDeploymentConfiguration, predicate => 1);
+  has CurrentDeploymentGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeploymentConfigName => (is => 'ro', isa => Str, predicate => 1);
+  has DeploymentStyle => (is => 'ro', isa => CodeDeploy_DeploymentStyle, predicate => 1);
+  has Ec2TagFilters => (is => 'ro', isa => ArrayRef[CodeDeploy_EC2TagFilter], predicate => 1);
+  has Ec2TagSet => (is => 'ro', isa => CodeDeploy_EC2TagSet, predicate => 1);
+  has EcsServices => (is => 'ro', isa => ArrayRef[CodeDeploy_ECSService], predicate => 1);
+  has LoadBalancerInfo => (is => 'ro', isa => CodeDeploy_LoadBalancerInfo, predicate => 1);
+  has NewDeploymentGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has OnPremisesInstanceTagFilters => (is => 'ro', isa => ArrayRef[CodeDeploy_TagFilter], predicate => 1);
+  has OnPremisesTagSet => (is => 'ro', isa => CodeDeploy_OnPremisesTagSet, predicate => 1);
+  has ServiceRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has TriggerConfigurations => (is => 'ro', isa => ArrayRef[CodeDeploy_TriggerConfig], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDeploymentGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::UpdateDeploymentGroupOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDeploymentGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::UpdateDeploymentGroupOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ApplicationName' => 1,
+                    'CurrentDeploymentGroupName' => 1
+                  },
+  'NameInRequest' => {
+                       'ApplicationName' => 'applicationName',
+                       'BlueGreenDeploymentConfiguration' => 'blueGreenDeploymentConfiguration',
+                       'LoadBalancerInfo' => 'loadBalancerInfo',
+                       'AlarmConfiguration' => 'alarmConfiguration',
+                       'TriggerConfigurations' => 'triggerConfigurations',
+                       'CurrentDeploymentGroupName' => 'currentDeploymentGroupName',
+                       'EcsServices' => 'ecsServices',
+                       'DeploymentStyle' => 'deploymentStyle',
+                       'Ec2TagFilters' => 'ec2TagFilters',
+                       'AutoRollbackConfiguration' => 'autoRollbackConfiguration',
+                       'OnPremisesTagSet' => 'onPremisesTagSet',
+                       'AutoScalingGroups' => 'autoScalingGroups',
+                       'OnPremisesInstanceTagFilters' => 'onPremisesInstanceTagFilters',
+                       'Ec2TagSet' => 'ec2TagSet',
+                       'NewDeploymentGroupName' => 'newDeploymentGroupName',
+                       'DeploymentConfigName' => 'deploymentConfigName',
+                       'ServiceRoleArn' => 'serviceRoleArn'
+                     },
+  'types' => {
+               'EcsServices' => {
+                                  'type' => 'ArrayRef[CodeDeploy_ECSService]',
+                                  'class' => 'Paws::CodeDeploy::ECSService'
+                                },
+               'CurrentDeploymentGroupName' => {
+                                                 'type' => 'Str'
+                                               },
+               'TriggerConfigurations' => {
+                                            'type' => 'ArrayRef[CodeDeploy_TriggerConfig]',
+                                            'class' => 'Paws::CodeDeploy::TriggerConfig'
+                                          },
+               'AlarmConfiguration' => {
+                                         'class' => 'Paws::CodeDeploy::AlarmConfiguration',
+                                         'type' => 'CodeDeploy_AlarmConfiguration'
+                                       },
+               'LoadBalancerInfo' => {
+                                       'class' => 'Paws::CodeDeploy::LoadBalancerInfo',
+                                       'type' => 'CodeDeploy_LoadBalancerInfo'
+                                     },
+               'BlueGreenDeploymentConfiguration' => {
+                                                       'class' => 'Paws::CodeDeploy::BlueGreenDeploymentConfiguration',
+                                                       'type' => 'CodeDeploy_BlueGreenDeploymentConfiguration'
+                                                     },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'Ec2TagSet' => {
+                                'type' => 'CodeDeploy_EC2TagSet',
+                                'class' => 'Paws::CodeDeploy::EC2TagSet'
+                              },
+               'NewDeploymentGroupName' => {
+                                             'type' => 'Str'
+                                           },
+               'ServiceRoleArn' => {
+                                     'type' => 'Str'
+                                   },
+               'DeploymentConfigName' => {
+                                           'type' => 'Str'
+                                         },
+               'OnPremisesTagSet' => {
+                                       'class' => 'Paws::CodeDeploy::OnPremisesTagSet',
+                                       'type' => 'CodeDeploy_OnPremisesTagSet'
+                                     },
+               'AutoScalingGroups' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'OnPremisesInstanceTagFilters' => {
+                                                   'class' => 'Paws::CodeDeploy::TagFilter',
+                                                   'type' => 'ArrayRef[CodeDeploy_TagFilter]'
+                                                 },
+               'AutoRollbackConfiguration' => {
+                                                'type' => 'CodeDeploy_AutoRollbackConfiguration',
+                                                'class' => 'Paws::CodeDeploy::AutoRollbackConfiguration'
+                                              },
+               'Ec2TagFilters' => {
+                                    'type' => 'ArrayRef[CodeDeploy_EC2TagFilter]',
+                                    'class' => 'Paws::CodeDeploy::EC2TagFilter'
+                                  },
+               'DeploymentStyle' => {
+                                      'type' => 'CodeDeploy_DeploymentStyle',
+                                      'class' => 'Paws::CodeDeploy::DeploymentStyle'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -195,7 +293,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head1 ATTRIBUTES
 
 
-=head2 AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>
+=head2 AlarmConfiguration => CodeDeploy_AlarmConfiguration
 
 Information to add or change about Amazon CloudWatch alarms when the
 deployment group is updated.
@@ -209,7 +307,7 @@ update.
 
 
 
-=head2 AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>
+=head2 AutoRollbackConfiguration => CodeDeploy_AutoRollbackConfiguration
 
 Information for an automatic rollback configuration that is added or
 changed when a deployment group is updated.
@@ -225,7 +323,7 @@ any Auto Scaling group names.
 
 
 
-=head2 BlueGreenDeploymentConfiguration => L<Paws::CodeDeploy::BlueGreenDeploymentConfiguration>
+=head2 BlueGreenDeploymentConfiguration => CodeDeploy_BlueGreenDeploymentConfiguration
 
 Information about blue/green deployment options for a deployment group.
 
@@ -244,7 +342,7 @@ change it.
 
 
 
-=head2 DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>
+=head2 DeploymentStyle => CodeDeploy_DeploymentStyle
 
 Information about the type of deployment, either in-place or
 blue/green, you want to run and whether to route deployment traffic
@@ -252,7 +350,7 @@ behind a load balancer.
 
 
 
-=head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
+=head2 Ec2TagFilters => ArrayRef[CodeDeploy_EC2TagFilter]
 
 The replacement set of Amazon EC2 tags on which to filter, if you want
 to change them. To keep the existing tags, enter their names. To remove
@@ -260,7 +358,7 @@ tags, do not enter any tag names.
 
 
 
-=head2 Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>
+=head2 Ec2TagSet => CodeDeploy_EC2TagSet
 
 Information about groups of tags applied to on-premises instances. The
 deployment group includes only EC2 instances identified by all the tag
@@ -268,7 +366,7 @@ groups.
 
 
 
-=head2 EcsServices => ArrayRef[L<Paws::CodeDeploy::ECSService>]
+=head2 EcsServices => ArrayRef[CodeDeploy_ECSService]
 
 The target Amazon ECS services in the deployment group. This applies
 only to deployment groups that use the Amazon ECS compute platform. A
@@ -278,7 +376,7 @@ C<E<lt>clusternameE<gt>:E<lt>servicenameE<gt>>.
 
 
 
-=head2 LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>
+=head2 LoadBalancerInfo => CodeDeploy_LoadBalancerInfo
 
 Information about the load balancer used in a deployment.
 
@@ -290,7 +388,7 @@ The new name of the deployment group, if you want to change it.
 
 
 
-=head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
+=head2 OnPremisesInstanceTagFilters => ArrayRef[CodeDeploy_TagFilter]
 
 The replacement set of on-premises instance tags on which to filter, if
 you want to change them. To keep the existing tags, enter their names.
@@ -298,7 +396,7 @@ To remove tags, do not enter any tag names.
 
 
 
-=head2 OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>
+=head2 OnPremisesTagSet => CodeDeploy_OnPremisesTagSet
 
 Information about an on-premises instance tag set. The deployment group
 includes only on-premises instances identified by all the tag groups.
@@ -311,7 +409,7 @@ A replacement ARN for the service role, if you want to change it.
 
 
 
-=head2 TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]
+=head2 TriggerConfigurations => ArrayRef[CodeDeploy_TriggerConfig]
 
 Information about triggers to change when the deployment group is
 updated. For examples, see Modify Triggers in an AWS CodeDeploy

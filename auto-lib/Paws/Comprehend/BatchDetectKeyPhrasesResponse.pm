@@ -1,10 +1,37 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::BatchDetectKeyPhrasesResponse;
-  use Moose;
-  has ErrorList => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::BatchItemError]', required => 1);
-  has ResultList => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::BatchDetectKeyPhrasesItemResult]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_BatchItemError Comprehend_BatchDetectKeyPhrasesItemResult/;
+  has ErrorList => (is => 'ro', isa => ArrayRef[Comprehend_BatchItemError], required => 1);
+  has ResultList => (is => 'ro', isa => ArrayRef[Comprehend_BatchDetectKeyPhrasesItemResult], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ErrorList' => 1,
+                    'ResultList' => 1
+                  },
+  'types' => {
+               'ResultList' => {
+                                 'type' => 'ArrayRef[Comprehend_BatchDetectKeyPhrasesItemResult]',
+                                 'class' => 'Paws::Comprehend::BatchDetectKeyPhrasesItemResult'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ErrorList' => {
+                                'class' => 'Paws::Comprehend::BatchItemError',
+                                'type' => 'ArrayRef[Comprehend_BatchItemError]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +42,7 @@ Paws::Comprehend::BatchDetectKeyPhrasesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ErrorList => ArrayRef[L<Paws::Comprehend::BatchItemError>]
+=head2 B<REQUIRED> ErrorList => ArrayRef[Comprehend_BatchItemError]
 
 A list containing one object for each document that contained an error.
 The results are sorted in ascending order by the C<Index> field and
@@ -23,7 +50,7 @@ match the order of the documents in the input list. If there are no
 errors in the batch, the C<ErrorList> is empty.
 
 
-=head2 B<REQUIRED> ResultList => ArrayRef[L<Paws::Comprehend::BatchDetectKeyPhrasesItemResult>]
+=head2 B<REQUIRED> ResultList => ArrayRef[Comprehend_BatchDetectKeyPhrasesItemResult]
 
 A list of objects containing the results of the operation. The results
 are sorted in ascending order by the C<Index> field and match the order

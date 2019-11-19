@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Macie::DisassociateS3Resources;
-  use Moose;
-  has AssociatedS3Resources => (is => 'ro', isa => 'ArrayRef[Paws::Macie::S3Resource]', traits => ['NameInRequest'], request_name => 'associatedS3Resources' , required => 1);
-  has MemberAccountId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'memberAccountId' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Macie::Types qw/Macie_S3Resource/;
+  has AssociatedS3Resources => (is => 'ro', isa => ArrayRef[Macie_S3Resource], required => 1, predicate => 1);
+  has MemberAccountId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateS3Resources');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Macie::DisassociateS3ResourcesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisassociateS3Resources');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Macie::DisassociateS3ResourcesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MemberAccountId' => {
+                                      'type' => 'Str'
+                                    },
+               'AssociatedS3Resources' => {
+                                            'class' => 'Paws::Macie::S3Resource',
+                                            'type' => 'ArrayRef[Macie_S3Resource]'
+                                          }
+             },
+  'IsRequired' => {
+                    'AssociatedS3Resources' => 1
+                  },
+  'NameInRequest' => {
+                       'AssociatedS3Resources' => 'associatedS3Resources',
+                       'MemberAccountId' => 'memberAccountId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AssociatedS3Resources => ArrayRef[L<Paws::Macie::S3Resource>]
+=head2 B<REQUIRED> AssociatedS3Resources => ArrayRef[Macie_S3Resource]
 
 The S3 resources (buckets or prefixes) that you want to remove from
 being monitored and classified by Amazon Macie.

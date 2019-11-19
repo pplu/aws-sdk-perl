@@ -1,18 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::CreateActivation;
-  use Moose;
-  has DefaultInstanceName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExpirationDate => (is => 'ro', isa => 'Str');
-  has IamRole => (is => 'ro', isa => 'Str', required => 1);
-  has RegistrationLimit => (is => 'ro', isa => 'Int');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Tag/;
+  has DefaultInstanceName => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has ExpirationDate => (is => 'ro', isa => Str, predicate => 1);
+  has IamRole => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RegistrationLimit => (is => 'ro', isa => Int, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SSM_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateActivation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreateActivationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateActivation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::CreateActivationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpirationDate' => {
+                                     'type' => 'Str'
+                                   },
+               'IamRole' => {
+                              'type' => 'Str'
+                            },
+               'RegistrationLimit' => {
+                                        'type' => 'Int'
+                                      },
+               'DefaultInstanceName' => {
+                                          'type' => 'Str'
+                                        },
+               'Tags' => {
+                           'class' => 'Paws::SSM::Tag',
+                           'type' => 'ArrayRef[SSM_Tag]'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'IamRole' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +135,7 @@ The default value is 1 instance.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+=head2 Tags => ArrayRef[SSM_Tag]
 
 Optional metadata that you assign to a resource. Tags enable you to
 categorize a resource in different ways, such as by purpose, owner, or

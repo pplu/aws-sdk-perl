@@ -1,17 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::ListServices;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has SchedulingStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schedulingStrategy' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ECS::Types qw//;
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchType => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SchedulingStrategy => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListServices');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::ListServicesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListServices');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::ListServicesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SchedulingStrategy' => {
+                                         'type' => 'Str'
+                                       },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'LaunchType' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'LaunchType' => 'launchType',
+                       'Cluster' => 'cluster',
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults',
+                       'SchedulingStrategy' => 'schedulingStrategy'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

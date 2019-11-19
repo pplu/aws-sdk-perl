@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::PutConfigurationSetDeliveryOptions;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', required => 1);
-  has DeliveryOptions => (is => 'ro', isa => 'Paws::SES::DeliveryOptions');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw/SES_DeliveryOptions/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeliveryOptions => (is => 'ro', isa => SES_DeliveryOptions, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutConfigurationSetDeliveryOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::PutConfigurationSetDeliveryOptionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PutConfigurationSetDeliveryOptionsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutConfigurationSetDeliveryOptions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::PutConfigurationSetDeliveryOptionsResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'PutConfigurationSetDeliveryOptionsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1
+                  },
+  'types' => {
+               'DeliveryOptions' => {
+                                      'class' => 'Paws::SES::DeliveryOptions',
+                                      'type' => 'SES_DeliveryOptions'
+                                    },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +72,7 @@ options for.
 
 
 
-=head2 DeliveryOptions => L<Paws::SES::DeliveryOptions>
+=head2 DeliveryOptions => SES_DeliveryOptions
 
 Specifies whether messages that use the configuration set are required
 to use Transport Layer Security (TLS).

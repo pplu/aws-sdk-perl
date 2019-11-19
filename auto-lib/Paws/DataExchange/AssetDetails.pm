@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::DataExchange::AssetDetails;
-  use Moose;
-  has S3SnapshotAsset => (is => 'ro', isa => 'Paws::DataExchange::S3SnapshotAsset');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::DataExchange::Types qw/DataExchange_S3SnapshotAsset/;
+  has S3SnapshotAsset => (is => 'ro', isa => DataExchange_S3SnapshotAsset);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3SnapshotAsset' => {
+                                      'class' => 'Paws::DataExchange::S3SnapshotAsset',
+                                      'type' => 'DataExchange_S3SnapshotAsset'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 S3SnapshotAsset => L<Paws::DataExchange::S3SnapshotAsset>
+=head2 S3SnapshotAsset => DataExchange_S3SnapshotAsset
 
   
 

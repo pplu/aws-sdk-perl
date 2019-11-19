@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::Diagnostics;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
-  has LogTail => (is => 'ro', isa => 'Str', request_name => 'logTail', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has ScriptName => (is => 'ro', isa => 'Str', request_name => 'scriptName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has LogTail => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has ScriptName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LogTail' => 'logTail',
+                       'ScriptName' => 'scriptName',
+                       'ErrorCode' => 'errorCode',
+                       'Message' => 'message'
+                     },
+  'types' => {
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'LogTail' => {
+                              'type' => 'Str'
+                            },
+               'ScriptName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

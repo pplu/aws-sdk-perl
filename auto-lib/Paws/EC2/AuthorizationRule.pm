@@ -1,11 +1,49 @@
 package Paws::EC2::AuthorizationRule;
-  use Moose;
-  has AccessAll => (is => 'ro', isa => 'Bool', request_name => 'accessAll', traits => ['NameInRequest']);
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', request_name => 'clientVpnEndpointId', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has DestinationCidr => (is => 'ro', isa => 'Str', request_name => 'destinationCidr', traits => ['NameInRequest']);
-  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Paws::EC2::ClientVpnAuthorizationRuleStatus', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool Str/;
+  use Paws::EC2::Types qw/EC2_ClientVpnAuthorizationRuleStatus/;
+  has AccessAll => (is => 'ro', isa => Bool);
+  has ClientVpnEndpointId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DestinationCidr => (is => 'ro', isa => Str);
+  has GroupId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => EC2_ClientVpnAuthorizationRuleStatus);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DestinationCidr' => 'destinationCidr',
+                       'Description' => 'description',
+                       'AccessAll' => 'accessAll',
+                       'GroupId' => 'groupId',
+                       'ClientVpnEndpointId' => 'clientVpnEndpointId',
+                       'Status' => 'status'
+                     },
+  'types' => {
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        },
+               'Status' => {
+                             'type' => 'EC2_ClientVpnAuthorizationRuleStatus',
+                             'class' => 'Paws::EC2::ClientVpnAuthorizationRuleStatus'
+                           },
+               'AccessAll' => {
+                                'type' => 'Bool'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DestinationCidr' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +107,7 @@ authorization rule applies.
 grants access.
 
 
-=head2 Status => L<Paws::EC2::ClientVpnAuthorizationRuleStatus>
+=head2 Status => EC2_ClientVpnAuthorizationRuleStatus
 
   The current state of the authorization rule.
 

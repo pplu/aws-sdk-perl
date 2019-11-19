@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Shield::AttackProperty;
-  use Moose;
-  has AttackLayer => (is => 'ro', isa => 'Str');
-  has AttackPropertyIdentifier => (is => 'ro', isa => 'Str');
-  has TopContributors => (is => 'ro', isa => 'ArrayRef[Paws::Shield::Contributor]');
-  has Total => (is => 'ro', isa => 'Int');
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Shield::Types qw/Shield_Contributor/;
+  has AttackLayer => (is => 'ro', isa => Str);
+  has AttackPropertyIdentifier => (is => 'ro', isa => Str);
+  has TopContributors => (is => 'ro', isa => ArrayRef[Shield_Contributor]);
+  has Total => (is => 'ro', isa => Int);
+  has Unit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Total' => {
+                            'type' => 'Int'
+                          },
+               'AttackPropertyIdentifier' => {
+                                               'type' => 'Str'
+                                             },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'TopContributors' => {
+                                      'class' => 'Paws::Shield::Contributor',
+                                      'type' => 'ArrayRef[Shield_Contributor]'
+                                    },
+               'AttackLayer' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +84,7 @@ C<WORDPRESS_PINGBACK_REFLECTOR> and C<WORDPRESS_PINGBACK_SOURCE> values
 are valid only for WordPress reflective pingback DDoS attacks.
 
 
-=head2 TopContributors => ArrayRef[L<Paws::Shield::Contributor>]
+=head2 TopContributors => ArrayRef[Shield_Contributor]
 
   The array of Contributor objects that includes the top five
 contributors to an attack.

@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::ByteMatchTuple;
-  use Moose;
-  has FieldToMatch => (is => 'ro', isa => 'Paws::WAFRegional::FieldToMatch', required => 1);
-  has PositionalConstraint => (is => 'ro', isa => 'Str', required => 1);
-  has TargetString => (is => 'ro', isa => 'Str', required => 1);
-  has TextTransformation => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_FieldToMatch/;
+  has FieldToMatch => (is => 'ro', isa => WAFRegional_FieldToMatch, required => 1);
+  has PositionalConstraint => (is => 'ro', isa => Str, required => 1);
+  has TargetString => (is => 'ro', isa => Str, required => 1);
+  has TextTransformation => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FieldToMatch' => {
+                                   'class' => 'Paws::WAFRegional::FieldToMatch',
+                                   'type' => 'WAFRegional_FieldToMatch'
+                                 },
+               'PositionalConstraint' => {
+                                           'type' => 'Str'
+                                         },
+               'TextTransformation' => {
+                                         'type' => 'Str'
+                                       },
+               'TargetString' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'FieldToMatch' => 1,
+                    'TextTransformation' => 1,
+                    'TargetString' => 1,
+                    'PositionalConstraint' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +74,7 @@ requests that you want AWS WAF to search, and other settings.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FieldToMatch => L<Paws::WAFRegional::FieldToMatch>
+=head2 B<REQUIRED> FieldToMatch => WAFRegional_FieldToMatch
 
   The part of a web request that you want AWS WAF to search, such as a
 specified header or a query string. For more information, see

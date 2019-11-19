@@ -1,16 +1,54 @@
 
 package Paws::DataExchange::UpdateRevisionResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Comment => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has DataSetId => (is => 'ro', isa => 'Str');
-  has Finalized => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str');
-  has SourceId => (is => 'ro', isa => 'Str');
-  has UpdatedAt => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DataExchange::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Comment => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DataSetId => (is => 'ro', isa => Str);
+  has Finalized => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str);
+  has SourceId => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceId' => {
+                               'type' => 'Str'
+                             },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Finalized' => {
+                                'type' => 'Bool'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'DataSetId' => {
+                                'type' => 'Str'
+                              },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

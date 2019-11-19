@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::ListGroupsResponse;
-  use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::GroupType]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_GroupType/;
+  has Groups => (is => 'ro', isa => ArrayRef[CognitoIdp_GroupType]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Groups' => {
+                             'class' => 'Paws::CognitoIdp::GroupType',
+                             'type' => 'ArrayRef[CognitoIdp_GroupType]'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::CognitoIdp::ListGroupsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Groups => ArrayRef[L<Paws::CognitoIdp::GroupType>]
+=head2 Groups => ArrayRef[CognitoIdp_GroupType]
 
 The group objects for the groups.
 

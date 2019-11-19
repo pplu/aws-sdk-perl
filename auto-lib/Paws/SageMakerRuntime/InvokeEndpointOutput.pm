@@ -1,13 +1,47 @@
 
 package Paws::SageMakerRuntime::InvokeEndpointOutput;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str', required => 1);
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has CustomAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-SageMaker-Custom-Attributes');
-  has InvokedProductionVariant => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-Amzn-Invoked-Production-Variant');
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::SageMakerRuntime::Types qw//;
+  has Body => (is => 'ro', isa => Str, required => 1);
+  has ContentType => (is => 'ro', isa => Str);
+  has CustomAttributes => (is => 'ro', isa => Str);
+  has InvokedProductionVariant => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'InvokedProductionVariant' => 'x-Amzn-Invoked-Production-Variant',
+                       'CustomAttributes' => 'X-Amzn-SageMaker-Custom-Attributes',
+                       'ContentType' => 'Content-Type'
+                     },
+  'IsRequired' => {
+                    'Body' => 1
+                  },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'CustomAttributes' => {
+                                       'type' => 'Str'
+                                     },
+               'InvokedProductionVariant' => {
+                                               'type' => 'Str'
+                                             },
+               'Body' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

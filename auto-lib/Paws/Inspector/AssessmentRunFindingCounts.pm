@@ -1,16 +1,37 @@
+# Generated from default/map_enum.tt
 package Paws::Inspector::AssessmentRunFindingCounts;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Int/;
+  use Paws::Inspector::Types qw//;
+  has High => (is => 'ro', isa => Int);
+  has Informational => (is => 'ro', isa => Int);
+  has Low => (is => 'ro', isa => Int);
+  has Medium => (is => 'ro', isa => Int);
+  has Undefined => (is => 'ro', isa => Int);
 
-  has High => (is => 'ro', isa => 'Int');
-  has Informational => (is => 'ro', isa => 'Int');
-  has Low => (is => 'ro', isa => 'Int');
-  has Medium => (is => 'ro', isa => 'Int');
-  has Undefined => (is => 'ro', isa => 'Int');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'High' => {
+                                          type => 'Int',                                        },
+                               'Informational' => {
+                                          type => 'Int',                                        },
+                               'Low' => {
+                                          type => 'Int',                                        },
+                               'Medium' => {
+                                          type => 'Int',                                        },
+                               'Undefined' => {
+                                          type => 'Int',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -46,19 +67,19 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 High => Int
+=head2 High => 
 
 
-=head2 Informational => Int
+=head2 Informational => 
 
 
-=head2 Low => Int
+=head2 Low => 
 
 
-=head2 Medium => Int
+=head2 Medium => 
 
 
-=head2 Undefined => Int
+=head2 Undefined => 
 
 
 

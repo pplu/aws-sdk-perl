@@ -1,21 +1,68 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::CreateConfigurationTemplate;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has EnvironmentId => (is => 'ro', isa => 'Str');
-  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
-  has PlatformArn => (is => 'ro', isa => 'Str');
-  has SolutionStackName => (is => 'ro', isa => 'Str');
-  has SourceConfiguration => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SourceConfiguration');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Tag]');
-  has TemplateName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_ConfigurationOptionSetting ElasticBeanstalk_Tag ElasticBeanstalk_SourceConfiguration/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has EnvironmentId => (is => 'ro', isa => Str, predicate => 1);
+  has OptionSettings => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting], predicate => 1);
+  has PlatformArn => (is => 'ro', isa => Str, predicate => 1);
+  has SolutionStackName => (is => 'ro', isa => Str, predicate => 1);
+  has SourceConfiguration => (is => 'ro', isa => ElasticBeanstalk_SourceConfiguration, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_Tag], predicate => 1);
+  has TemplateName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConfigurationTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ConfigurationSettingsDescription');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateConfigurationTemplateResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateConfigurationTemplate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::ConfigurationSettingsDescription');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateConfigurationTemplateResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OptionSettings' => {
+                                     'type' => 'ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]',
+                                     'class' => 'Paws::ElasticBeanstalk::ConfigurationOptionSetting'
+                                   },
+               'EnvironmentId' => {
+                                    'type' => 'Str'
+                                  },
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'SolutionStackName' => {
+                                        'type' => 'Str'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'SourceConfiguration' => {
+                                          'type' => 'ElasticBeanstalk_SourceConfiguration',
+                                          'class' => 'Paws::ElasticBeanstalk::SourceConfiguration'
+                                        },
+               'PlatformArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::ElasticBeanstalk::Tag',
+                           'type' => 'ArrayRef[ElasticBeanstalk_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'ApplicationName' => 1,
+                    'TemplateName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -81,7 +128,7 @@ The ID of the environment used with this configuration template.
 
 
 
-=head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
+=head2 OptionSettings => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]
 
 If specified, AWS Elastic Beanstalk sets the specified configuration
 option to the requested value. The new value overrides the value
@@ -115,7 +162,7 @@ stack as the source configuration template.
 
 
 
-=head2 SourceConfiguration => L<Paws::ElasticBeanstalk::SourceConfiguration>
+=head2 SourceConfiguration => ElasticBeanstalk_SourceConfiguration
 
 If specified, AWS Elastic Beanstalk uses the configuration values from
 the specified configuration template to create a new configuration.
@@ -134,7 +181,7 @@ C<InvalidParameterCombination> error.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
+=head2 Tags => ArrayRef[ElasticBeanstalk_Tag]
 
 Specifies the tags applied to the configuration template.
 

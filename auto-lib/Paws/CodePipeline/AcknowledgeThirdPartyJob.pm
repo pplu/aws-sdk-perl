@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::AcknowledgeThirdPartyJob;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' , required => 1);
-  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
-  has Nonce => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nonce' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has ClientToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Nonce => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AcknowledgeThirdPartyJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::AcknowledgeThirdPartyJobOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AcknowledgeThirdPartyJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodePipeline::AcknowledgeThirdPartyJobOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Nonce' => 'nonce',
+                       'ClientToken' => 'clientToken',
+                       'JobId' => 'jobId'
+                     },
+  'IsRequired' => {
+                    'Nonce' => 1,
+                    'ClientToken' => 1,
+                    'JobId' => 1
+                  },
+  'types' => {
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'Nonce' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

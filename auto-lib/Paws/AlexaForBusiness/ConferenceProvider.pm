@@ -1,11 +1,46 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::ConferenceProvider;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has IPDialIn => (is => 'ro', isa => 'Paws::AlexaForBusiness::IPDialIn');
-  has MeetingSetting => (is => 'ro', isa => 'Paws::AlexaForBusiness::MeetingSetting');
-  has Name => (is => 'ro', isa => 'Str');
-  has PSTNDialIn => (is => 'ro', isa => 'Paws::AlexaForBusiness::PSTNDialIn');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_MeetingSetting AlexaForBusiness_PSTNDialIn AlexaForBusiness_IPDialIn/;
+  has Arn => (is => 'ro', isa => Str);
+  has IPDialIn => (is => 'ro', isa => AlexaForBusiness_IPDialIn);
+  has MeetingSetting => (is => 'ro', isa => AlexaForBusiness_MeetingSetting);
+  has Name => (is => 'ro', isa => Str);
+  has PSTNDialIn => (is => 'ro', isa => AlexaForBusiness_PSTNDialIn);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IPDialIn' => {
+                               'class' => 'Paws::AlexaForBusiness::IPDialIn',
+                               'type' => 'AlexaForBusiness_IPDialIn'
+                             },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'PSTNDialIn' => {
+                                 'class' => 'Paws::AlexaForBusiness::PSTNDialIn',
+                                 'type' => 'AlexaForBusiness_PSTNDialIn'
+                               },
+               'MeetingSetting' => {
+                                     'class' => 'Paws::AlexaForBusiness::MeetingSetting',
+                                     'type' => 'AlexaForBusiness_MeetingSetting'
+                                   },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,12 +84,12 @@ Amazon Chime, Zoom, Cisco, and Polycom.
   The ARN of the newly created conference provider.
 
 
-=head2 IPDialIn => L<Paws::AlexaForBusiness::IPDialIn>
+=head2 IPDialIn => AlexaForBusiness_IPDialIn
 
   The IP endpoint and protocol for calling.
 
 
-=head2 MeetingSetting => L<Paws::AlexaForBusiness::MeetingSetting>
+=head2 MeetingSetting => AlexaForBusiness_MeetingSetting
 
   The meeting settings for the conference provider.
 
@@ -64,7 +99,7 @@ Amazon Chime, Zoom, Cisco, and Polycom.
   The name of the conference provider.
 
 
-=head2 PSTNDialIn => L<Paws::AlexaForBusiness::PSTNDialIn>
+=head2 PSTNDialIn => AlexaForBusiness_PSTNDialIn
 
   The information for PSTN conferencing.
 

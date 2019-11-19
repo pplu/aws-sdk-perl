@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::IoT::AddThingsToThingGroupParams;
-  use Moose;
-  has OverrideDynamicGroups => (is => 'ro', isa => 'Bool', request_name => 'overrideDynamicGroups', traits => ['NameInRequest']);
-  has ThingGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'thingGroupNames', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Undef ArrayRef Str/;
+  use Paws::IoT::Types qw//;
+  has OverrideDynamicGroups => (is => 'ro', isa => Bool);
+  has ThingGroupNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ThingGroupNames' => 'thingGroupNames',
+                       'OverrideDynamicGroups' => 'overrideDynamicGroups'
+                     },
+  'IsRequired' => {
+                    'ThingGroupNames' => 1
+                  },
+  'types' => {
+               'OverrideDynamicGroups' => {
+                                            'type' => 'Bool'
+                                          },
+               'ThingGroupNames' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

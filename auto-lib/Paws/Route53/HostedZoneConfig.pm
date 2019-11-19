@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Route53::HostedZoneConfig;
-  use Moose;
-  has Comment => (is => 'ro', isa => 'Str');
-  has PrivateZone => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Route53::Types qw//;
+  has Comment => (is => 'ro', isa => Str);
+  has PrivateZone => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrivateZone' => {
+                                  'type' => 'Bool'
+                                },
+               'Comment' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

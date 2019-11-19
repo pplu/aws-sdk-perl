@@ -1,15 +1,59 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::Tape;
-  use Moose;
-  has KMSKey => (is => 'ro', isa => 'Str');
-  has PoolId => (is => 'ro', isa => 'Str');
-  has Progress => (is => 'ro', isa => 'Num');
-  has TapeARN => (is => 'ro', isa => 'Str');
-  has TapeBarcode => (is => 'ro', isa => 'Str');
-  has TapeCreatedDate => (is => 'ro', isa => 'Str');
-  has TapeSizeInBytes => (is => 'ro', isa => 'Int');
-  has TapeStatus => (is => 'ro', isa => 'Str');
-  has TapeUsedInBytes => (is => 'ro', isa => 'Int');
-  has VTLDevice => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Num Int/;
+  use Paws::StorageGateway::Types qw//;
+  has KMSKey => (is => 'ro', isa => Str);
+  has PoolId => (is => 'ro', isa => Str);
+  has Progress => (is => 'ro', isa => Num);
+  has TapeARN => (is => 'ro', isa => Str);
+  has TapeBarcode => (is => 'ro', isa => Str);
+  has TapeCreatedDate => (is => 'ro', isa => Str);
+  has TapeSizeInBytes => (is => 'ro', isa => Int);
+  has TapeStatus => (is => 'ro', isa => Str);
+  has TapeUsedInBytes => (is => 'ro', isa => Int);
+  has VTLDevice => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TapeBarcode' => {
+                                  'type' => 'Str'
+                                },
+               'TapeCreatedDate' => {
+                                      'type' => 'Str'
+                                    },
+               'TapeStatus' => {
+                                 'type' => 'Str'
+                               },
+               'TapeSizeInBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'KMSKey' => {
+                             'type' => 'Str'
+                           },
+               'TapeUsedInBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'VTLDevice' => {
+                                'type' => 'Str'
+                              },
+               'TapeARN' => {
+                              'type' => 'Str'
+                            },
+               'PoolId' => {
+                             'type' => 'Str'
+                           },
+               'Progress' => {
+                               'type' => 'Num'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

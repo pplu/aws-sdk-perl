@@ -1,20 +1,80 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::StorediSCSIVolume;
-  use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has KMSKey => (is => 'ro', isa => 'Str');
-  has PreservedExistingData => (is => 'ro', isa => 'Bool');
-  has SourceSnapshotId => (is => 'ro', isa => 'Str');
-  has TargetName => (is => 'ro', isa => 'Str');
-  has VolumeARN => (is => 'ro', isa => 'Str');
-  has VolumeAttachmentStatus => (is => 'ro', isa => 'Str');
-  has VolumeDiskId => (is => 'ro', isa => 'Str');
-  has VolumeId => (is => 'ro', isa => 'Str');
-  has VolumeiSCSIAttributes => (is => 'ro', isa => 'Paws::StorageGateway::VolumeiSCSIAttributes');
-  has VolumeProgress => (is => 'ro', isa => 'Num');
-  has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
-  has VolumeStatus => (is => 'ro', isa => 'Str');
-  has VolumeType => (is => 'ro', isa => 'Str');
-  has VolumeUsedInBytes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Num Int/;
+  use Paws::StorageGateway::Types qw/StorageGateway_VolumeiSCSIAttributes/;
+  has CreatedDate => (is => 'ro', isa => Str);
+  has KMSKey => (is => 'ro', isa => Str);
+  has PreservedExistingData => (is => 'ro', isa => Bool);
+  has SourceSnapshotId => (is => 'ro', isa => Str);
+  has TargetName => (is => 'ro', isa => Str);
+  has VolumeARN => (is => 'ro', isa => Str);
+  has VolumeAttachmentStatus => (is => 'ro', isa => Str);
+  has VolumeDiskId => (is => 'ro', isa => Str);
+  has VolumeId => (is => 'ro', isa => Str);
+  has VolumeiSCSIAttributes => (is => 'ro', isa => StorageGateway_VolumeiSCSIAttributes);
+  has VolumeProgress => (is => 'ro', isa => Num);
+  has VolumeSizeInBytes => (is => 'ro', isa => Int);
+  has VolumeStatus => (is => 'ro', isa => Str);
+  has VolumeType => (is => 'ro', isa => Str);
+  has VolumeUsedInBytes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'VolumeUsedInBytes' => {
+                                        'type' => 'Int'
+                                      },
+               'PreservedExistingData' => {
+                                            'type' => 'Bool'
+                                          },
+               'VolumeiSCSIAttributes' => {
+                                            'type' => 'StorageGateway_VolumeiSCSIAttributes',
+                                            'class' => 'Paws::StorageGateway::VolumeiSCSIAttributes'
+                                          },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               },
+               'VolumeARN' => {
+                                'type' => 'Str'
+                              },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'KMSKey' => {
+                             'type' => 'Str'
+                           },
+               'VolumeDiskId' => {
+                                   'type' => 'Str'
+                                 },
+               'VolumeId' => {
+                               'type' => 'Str'
+                             },
+               'VolumeSizeInBytes' => {
+                                        'type' => 'Int'
+                                      },
+               'VolumeProgress' => {
+                                     'type' => 'Num'
+                                   },
+               'VolumeAttachmentStatus' => {
+                                             'type' => 'Str'
+                                           },
+               'TargetName' => {
+                                 'type' => 'Str'
+                               },
+               'SourceSnapshotId' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -112,7 +172,7 @@ CreateStorediSCSIVolume operation.
   The unique identifier of the volume, e.g. vol-AE4B946D.
 
 
-=head2 VolumeiSCSIAttributes => L<Paws::StorageGateway::VolumeiSCSIAttributes>
+=head2 VolumeiSCSIAttributes => StorageGateway_VolumeiSCSIAttributes
 
   An VolumeiSCSIAttributes object that represents a collection of iSCSI
 attributes for one stored volume.

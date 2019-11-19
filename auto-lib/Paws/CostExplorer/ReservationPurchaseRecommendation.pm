@@ -1,12 +1,50 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::ReservationPurchaseRecommendation;
-  use Moose;
-  has AccountScope => (is => 'ro', isa => 'Str');
-  has LookbackPeriodInDays => (is => 'ro', isa => 'Str');
-  has PaymentOption => (is => 'ro', isa => 'Str');
-  has RecommendationDetails => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::ReservationPurchaseRecommendationDetail]');
-  has RecommendationSummary => (is => 'ro', isa => 'Paws::CostExplorer::ReservationPurchaseRecommendationSummary');
-  has ServiceSpecification => (is => 'ro', isa => 'Paws::CostExplorer::ServiceSpecification');
-  has TermInYears => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CostExplorer::Types qw/CostExplorer_ReservationPurchaseRecommendationSummary CostExplorer_ReservationPurchaseRecommendationDetail CostExplorer_ServiceSpecification/;
+  has AccountScope => (is => 'ro', isa => Str);
+  has LookbackPeriodInDays => (is => 'ro', isa => Str);
+  has PaymentOption => (is => 'ro', isa => Str);
+  has RecommendationDetails => (is => 'ro', isa => ArrayRef[CostExplorer_ReservationPurchaseRecommendationDetail]);
+  has RecommendationSummary => (is => 'ro', isa => CostExplorer_ReservationPurchaseRecommendationSummary);
+  has ServiceSpecification => (is => 'ro', isa => CostExplorer_ServiceSpecification);
+  has TermInYears => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountScope' => {
+                                   'type' => 'Str'
+                                 },
+               'RecommendationSummary' => {
+                                            'class' => 'Paws::CostExplorer::ReservationPurchaseRecommendationSummary',
+                                            'type' => 'CostExplorer_ReservationPurchaseRecommendationSummary'
+                                          },
+               'ServiceSpecification' => {
+                                           'type' => 'CostExplorer_ServiceSpecification',
+                                           'class' => 'Paws::CostExplorer::ServiceSpecification'
+                                         },
+               'RecommendationDetails' => {
+                                            'class' => 'Paws::CostExplorer::ReservationPurchaseRecommendationDetail',
+                                            'type' => 'ArrayRef[CostExplorer_ReservationPurchaseRecommendationDetail]'
+                                          },
+               'PaymentOption' => {
+                                    'type' => 'Str'
+                                  },
+               'LookbackPeriodInDays' => {
+                                           'type' => 'Str'
+                                         },
+               'TermInYears' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,17 +99,17 @@ recommendation.
 C<NoUpfront>.
 
 
-=head2 RecommendationDetails => ArrayRef[L<Paws::CostExplorer::ReservationPurchaseRecommendationDetail>]
+=head2 RecommendationDetails => ArrayRef[CostExplorer_ReservationPurchaseRecommendationDetail]
 
   Details about the recommended purchases.
 
 
-=head2 RecommendationSummary => L<Paws::CostExplorer::ReservationPurchaseRecommendationSummary>
+=head2 RecommendationSummary => CostExplorer_ReservationPurchaseRecommendationSummary
 
   A summary about the recommended purchase.
 
 
-=head2 ServiceSpecification => L<Paws::CostExplorer::ServiceSpecification>
+=head2 ServiceSpecification => CostExplorer_ServiceSpecification
 
   Hardware specifications for the service that you want recommendations
 for.

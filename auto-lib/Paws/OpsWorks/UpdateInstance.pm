@@ -1,24 +1,76 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorks::UpdateInstance;
-  use Moose;
-  has AgentVersion => (is => 'ro', isa => 'Str');
-  has AmiId => (is => 'ro', isa => 'Str');
-  has Architecture => (is => 'ro', isa => 'Str');
-  has AutoScalingType => (is => 'ro', isa => 'Str');
-  has EbsOptimized => (is => 'ro', isa => 'Bool');
-  has Hostname => (is => 'ro', isa => 'Str');
-  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Os => (is => 'ro', isa => 'Str');
-  has SshKeyName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::OpsWorks::Types qw//;
+  has AgentVersion => (is => 'ro', isa => Str, predicate => 1);
+  has AmiId => (is => 'ro', isa => Str, predicate => 1);
+  has Architecture => (is => 'ro', isa => Str, predicate => 1);
+  has AutoScalingType => (is => 'ro', isa => Str, predicate => 1);
+  has EbsOptimized => (is => 'ro', isa => Bool, predicate => 1);
+  has Hostname => (is => 'ro', isa => Str, predicate => 1);
+  has InstallUpdatesOnBoot => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, predicate => 1);
+  has LayerIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Os => (is => 'ro', isa => Str, predicate => 1);
+  has SshKeyName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Os' => {
+                         'type' => 'Str'
+                       },
+               'AmiId' => {
+                            'type' => 'Str'
+                          },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'LayerIds' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'AgentVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'InstallUpdatesOnBoot' => {
+                                           'type' => 'Bool'
+                                         },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 },
+               'SshKeyName' => {
+                                 'type' => 'Str'
+                               },
+               'Hostname' => {
+                               'type' => 'Str'
+                             },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 },
+               'AutoScalingType' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'InstanceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

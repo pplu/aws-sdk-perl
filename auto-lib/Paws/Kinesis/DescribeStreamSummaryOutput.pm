@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Kinesis::DescribeStreamSummaryOutput;
-  use Moose;
-  has StreamDescriptionSummary => (is => 'ro', isa => 'Paws::Kinesis::StreamDescriptionSummary', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kinesis::Types qw/Kinesis_StreamDescriptionSummary/;
+  has StreamDescriptionSummary => (is => 'ro', isa => Kinesis_StreamDescriptionSummary, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'StreamDescriptionSummary' => {
+                                               'type' => 'Kinesis_StreamDescriptionSummary',
+                                               'class' => 'Paws::Kinesis::StreamDescriptionSummary'
+                                             }
+             },
+  'IsRequired' => {
+                    'StreamDescriptionSummary' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Kinesis::DescribeStreamSummaryOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> StreamDescriptionSummary => L<Paws::Kinesis::StreamDescriptionSummary>
+=head2 B<REQUIRED> StreamDescriptionSummary => Kinesis_StreamDescriptionSummary
 
 A StreamDescriptionSummary containing information about the stream.
 

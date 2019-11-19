@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::DataExchange::ImportAssetFromSignedUrlJobErrorDetails;
-  use Moose;
-  has AssetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw//;
+  has AssetName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AssetName' => 1
+                  },
+  'types' => {
+               'AssetName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

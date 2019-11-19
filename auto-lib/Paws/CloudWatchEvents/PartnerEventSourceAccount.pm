@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CloudWatchEvents::PartnerEventSourceAccount;
-  use Moose;
-  has Account => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has ExpirationTime => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchEvents::Types qw//;
+  has Account => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has ExpirationTime => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Account' => {
+                              'type' => 'Str'
+                            },
+               'ExpirationTime' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

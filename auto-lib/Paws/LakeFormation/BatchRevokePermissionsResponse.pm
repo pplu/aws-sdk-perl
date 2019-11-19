@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::LakeFormation::BatchRevokePermissionsResponse;
-  use Moose;
-  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::LakeFormation::BatchPermissionsFailureEntry]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LakeFormation::Types qw/LakeFormation_BatchPermissionsFailureEntry/;
+  has Failures => (is => 'ro', isa => ArrayRef[LakeFormation_BatchPermissionsFailureEntry]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Failures' => {
+                               'type' => 'ArrayRef[LakeFormation_BatchPermissionsFailureEntry]',
+                               'class' => 'Paws::LakeFormation::BatchPermissionsFailureEntry'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::LakeFormation::BatchRevokePermissionsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Failures => ArrayRef[L<Paws::LakeFormation::BatchPermissionsFailureEntry>]
+=head2 Failures => ArrayRef[LakeFormation_BatchPermissionsFailureEntry]
 
 A list of failures to revoke permissions to the resources.
 

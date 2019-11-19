@@ -1,15 +1,37 @@
 
 package Paws::PinpointEmail::CreateDedicatedIpPool;
-  use Moose;
-  has PoolName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_Tag/;
+  has PoolName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[PinpointEmail_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDedicatedIpPool');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/dedicated-ip-pools');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::CreateDedicatedIpPoolResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDedicatedIpPool');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/dedicated-ip-pools');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::CreateDedicatedIpPoolResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PoolName' => 1
+                  },
+  'types' => {
+               'PoolName' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::PinpointEmail::Tag',
+                           'type' => 'ArrayRef[PinpointEmail_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +75,7 @@ The name of the dedicated IP pool.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+=head2 Tags => ArrayRef[PinpointEmail_Tag]
 
 An object that defines the tags (keys and values) that you want to
 associate with the pool.

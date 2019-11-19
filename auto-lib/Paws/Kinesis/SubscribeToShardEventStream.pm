@@ -1,15 +1,72 @@
+# Generated from default/object.tt
 package Paws::Kinesis::SubscribeToShardEventStream;
-  use Moose;
-  has InternalFailureException => (is => 'ro', isa => 'Paws::Kinesis::InternalFailureException');
-  has KMSAccessDeniedException => (is => 'ro', isa => 'Paws::Kinesis::KMSAccessDeniedException');
-  has KMSDisabledException => (is => 'ro', isa => 'Paws::Kinesis::KMSDisabledException');
-  has KMSInvalidStateException => (is => 'ro', isa => 'Paws::Kinesis::KMSInvalidStateException');
-  has KMSNotFoundException => (is => 'ro', isa => 'Paws::Kinesis::KMSNotFoundException');
-  has KMSOptInRequired => (is => 'ro', isa => 'Paws::Kinesis::KMSOptInRequired');
-  has KMSThrottlingException => (is => 'ro', isa => 'Paws::Kinesis::KMSThrottlingException');
-  has ResourceInUseException => (is => 'ro', isa => 'Paws::Kinesis::ResourceInUseException');
-  has ResourceNotFoundException => (is => 'ro', isa => 'Paws::Kinesis::ResourceNotFoundException');
-  has SubscribeToShardEvent => (is => 'ro', isa => 'Paws::Kinesis::SubscribeToShardEvent', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Kinesis::Types qw/Kinesis_KMSThrottlingException Kinesis_SubscribeToShardEvent Kinesis_InternalFailureException Kinesis_KMSNotFoundException Kinesis_KMSAccessDeniedException Kinesis_KMSDisabledException Kinesis_KMSInvalidStateException Kinesis_KMSOptInRequired Kinesis_ResourceInUseException Kinesis_ResourceNotFoundException/;
+  has InternalFailureException => (is => 'ro', isa => Kinesis_InternalFailureException);
+  has KMSAccessDeniedException => (is => 'ro', isa => Kinesis_KMSAccessDeniedException);
+  has KMSDisabledException => (is => 'ro', isa => Kinesis_KMSDisabledException);
+  has KMSInvalidStateException => (is => 'ro', isa => Kinesis_KMSInvalidStateException);
+  has KMSNotFoundException => (is => 'ro', isa => Kinesis_KMSNotFoundException);
+  has KMSOptInRequired => (is => 'ro', isa => Kinesis_KMSOptInRequired);
+  has KMSThrottlingException => (is => 'ro', isa => Kinesis_KMSThrottlingException);
+  has ResourceInUseException => (is => 'ro', isa => Kinesis_ResourceInUseException);
+  has ResourceNotFoundException => (is => 'ro', isa => Kinesis_ResourceNotFoundException);
+  has SubscribeToShardEvent => (is => 'ro', isa => Kinesis_SubscribeToShardEvent, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KMSAccessDeniedException' => {
+                                               'class' => 'Paws::Kinesis::KMSAccessDeniedException',
+                                               'type' => 'Kinesis_KMSAccessDeniedException'
+                                             },
+               'KMSNotFoundException' => {
+                                           'class' => 'Paws::Kinesis::KMSNotFoundException',
+                                           'type' => 'Kinesis_KMSNotFoundException'
+                                         },
+               'InternalFailureException' => {
+                                               'type' => 'Kinesis_InternalFailureException',
+                                               'class' => 'Paws::Kinesis::InternalFailureException'
+                                             },
+               'ResourceInUseException' => {
+                                             'class' => 'Paws::Kinesis::ResourceInUseException',
+                                             'type' => 'Kinesis_ResourceInUseException'
+                                           },
+               'SubscribeToShardEvent' => {
+                                            'class' => 'Paws::Kinesis::SubscribeToShardEvent',
+                                            'type' => 'Kinesis_SubscribeToShardEvent'
+                                          },
+               'KMSThrottlingException' => {
+                                             'type' => 'Kinesis_KMSThrottlingException',
+                                             'class' => 'Paws::Kinesis::KMSThrottlingException'
+                                           },
+               'ResourceNotFoundException' => {
+                                                'class' => 'Paws::Kinesis::ResourceNotFoundException',
+                                                'type' => 'Kinesis_ResourceNotFoundException'
+                                              },
+               'KMSInvalidStateException' => {
+                                               'type' => 'Kinesis_KMSInvalidStateException',
+                                               'class' => 'Paws::Kinesis::KMSInvalidStateException'
+                                             },
+               'KMSOptInRequired' => {
+                                       'class' => 'Paws::Kinesis::KMSOptInRequired',
+                                       'type' => 'Kinesis_KMSOptInRequired'
+                                     },
+               'KMSDisabledException' => {
+                                           'class' => 'Paws::Kinesis::KMSDisabledException',
+                                           'type' => 'Kinesis_KMSDisabledException'
+                                         }
+             },
+  'IsRequired' => {
+                    'SubscribeToShardEvent' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,52 +102,52 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 InternalFailureException => L<Paws::Kinesis::InternalFailureException>
+=head2 InternalFailureException => Kinesis_InternalFailureException
 
   
 
 
-=head2 KMSAccessDeniedException => L<Paws::Kinesis::KMSAccessDeniedException>
+=head2 KMSAccessDeniedException => Kinesis_KMSAccessDeniedException
 
   
 
 
-=head2 KMSDisabledException => L<Paws::Kinesis::KMSDisabledException>
+=head2 KMSDisabledException => Kinesis_KMSDisabledException
 
   
 
 
-=head2 KMSInvalidStateException => L<Paws::Kinesis::KMSInvalidStateException>
+=head2 KMSInvalidStateException => Kinesis_KMSInvalidStateException
 
   
 
 
-=head2 KMSNotFoundException => L<Paws::Kinesis::KMSNotFoundException>
+=head2 KMSNotFoundException => Kinesis_KMSNotFoundException
 
   
 
 
-=head2 KMSOptInRequired => L<Paws::Kinesis::KMSOptInRequired>
+=head2 KMSOptInRequired => Kinesis_KMSOptInRequired
 
   
 
 
-=head2 KMSThrottlingException => L<Paws::Kinesis::KMSThrottlingException>
+=head2 KMSThrottlingException => Kinesis_KMSThrottlingException
 
   
 
 
-=head2 ResourceInUseException => L<Paws::Kinesis::ResourceInUseException>
+=head2 ResourceInUseException => Kinesis_ResourceInUseException
 
   
 
 
-=head2 ResourceNotFoundException => L<Paws::Kinesis::ResourceNotFoundException>
+=head2 ResourceNotFoundException => Kinesis_ResourceNotFoundException
 
   
 
 
-=head2 B<REQUIRED> SubscribeToShardEvent => L<Paws::Kinesis::SubscribeToShardEvent>
+=head2 B<REQUIRED> SubscribeToShardEvent => Kinesis_SubscribeToShardEvent
 
   
 

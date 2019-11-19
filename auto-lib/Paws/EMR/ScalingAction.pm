@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::EMR::ScalingAction;
-  use Moose;
-  has Market => (is => 'ro', isa => 'Str');
-  has SimpleScalingPolicyConfiguration => (is => 'ro', isa => 'Paws::EMR::SimpleScalingPolicyConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_SimpleScalingPolicyConfiguration/;
+  has Market => (is => 'ro', isa => Str);
+  has SimpleScalingPolicyConfiguration => (is => 'ro', isa => EMR_SimpleScalingPolicyConfiguration, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SimpleScalingPolicyConfiguration' => 1
+                  },
+  'types' => {
+               'SimpleScalingPolicyConfiguration' => {
+                                                       'type' => 'EMR_SimpleScalingPolicyConfiguration',
+                                                       'class' => 'Paws::EMR::SimpleScalingPolicyConfiguration'
+                                                     },
+               'Market' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +68,7 @@ triggered, and the periodicity of the adjustment.
 specified for the group.
 
 
-=head2 B<REQUIRED> SimpleScalingPolicyConfiguration => L<Paws::EMR::SimpleScalingPolicyConfiguration>
+=head2 B<REQUIRED> SimpleScalingPolicyConfiguration => EMR_SimpleScalingPolicyConfiguration
 
   The type of adjustment the automatic scaling activity makes when
 triggered, and the periodicity of the adjustment.

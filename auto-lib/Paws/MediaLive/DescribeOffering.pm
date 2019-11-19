@@ -1,14 +1,35 @@
 
 package Paws::MediaLive::DescribeOffering;
-  use Moose;
-  has OfferingId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'offeringId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has OfferingId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOffering');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/offerings/{offeringId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::DescribeOfferingResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeOffering');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/offerings/{offeringId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::DescribeOfferingResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'OfferingId' => 'offeringId'
+                  },
+  'types' => {
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'OfferingId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

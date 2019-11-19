@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::SMS::ServerGroupLaunchConfiguration;
-  use Moose;
-  has LaunchOrder => (is => 'ro', isa => 'Int', request_name => 'launchOrder', traits => ['NameInRequest']);
-  has ServerGroupId => (is => 'ro', isa => 'Str', request_name => 'serverGroupId', traits => ['NameInRequest']);
-  has ServerLaunchConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ServerLaunchConfiguration]', request_name => 'serverLaunchConfigurations', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef/;
+  use Paws::SMS::Types qw/SMS_ServerLaunchConfiguration/;
+  has LaunchOrder => (is => 'ro', isa => Int);
+  has ServerGroupId => (is => 'ro', isa => Str);
+  has ServerLaunchConfigurations => (is => 'ro', isa => ArrayRef[SMS_ServerLaunchConfiguration]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerLaunchConfigurations' => {
+                                                 'class' => 'Paws::SMS::ServerLaunchConfiguration',
+                                                 'type' => 'ArrayRef[SMS_ServerLaunchConfiguration]'
+                                               },
+               'LaunchOrder' => {
+                                  'type' => 'Int'
+                                },
+               'ServerGroupId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'ServerGroupId' => 'serverGroupId',
+                       'LaunchOrder' => 'launchOrder',
+                       'ServerLaunchConfigurations' => 'serverLaunchConfigurations'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +78,7 @@ Launch configuration for a server group.
 with.
 
 
-=head2 ServerLaunchConfigurations => ArrayRef[L<Paws::SMS::ServerLaunchConfiguration>]
+=head2 ServerLaunchConfigurations => ArrayRef[SMS_ServerLaunchConfiguration]
 
   Launch configuration for servers in the server group.
 

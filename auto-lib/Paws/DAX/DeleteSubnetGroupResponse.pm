@@ -1,9 +1,27 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DAX::DeleteSubnetGroupResponse;
-  use Moose;
-  has DeletionMessage => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DAX::Types qw//;
+  has DeletionMessage => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DeletionMessage' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

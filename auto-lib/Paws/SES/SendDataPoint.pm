@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::SES::SendDataPoint;
-  use Moose;
-  has Bounces => (is => 'ro', isa => 'Int');
-  has Complaints => (is => 'ro', isa => 'Int');
-  has DeliveryAttempts => (is => 'ro', isa => 'Int');
-  has Rejects => (is => 'ro', isa => 'Int');
-  has Timestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::SES::Types qw//;
+  has Bounces => (is => 'ro', isa => Int);
+  has Complaints => (is => 'ro', isa => Int);
+  has DeliveryAttempts => (is => 'ro', isa => Int);
+  has Rejects => (is => 'ro', isa => Int);
+  has Timestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeliveryAttempts' => {
+                                       'type' => 'Int'
+                                     },
+               'Bounces' => {
+                              'type' => 'Int'
+                            },
+               'Rejects' => {
+                              'type' => 'Int'
+                            },
+               'Complaints' => {
+                                 'type' => 'Int'
+                               },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

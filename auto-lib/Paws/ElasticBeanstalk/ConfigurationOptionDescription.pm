@@ -1,16 +1,64 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::ConfigurationOptionDescription;
-  use Moose;
-  has ChangeSeverity => (is => 'ro', isa => 'Str');
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has MaxLength => (is => 'ro', isa => 'Int');
-  has MaxValue => (is => 'ro', isa => 'Int');
-  has MinValue => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str');
-  has Namespace => (is => 'ro', isa => 'Str');
-  has Regex => (is => 'ro', isa => 'Paws::ElasticBeanstalk::OptionRestrictionRegex');
-  has UserDefined => (is => 'ro', isa => 'Bool');
-  has ValueOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ValueType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef Undef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_OptionRestrictionRegex/;
+  has ChangeSeverity => (is => 'ro', isa => Str);
+  has DefaultValue => (is => 'ro', isa => Str);
+  has MaxLength => (is => 'ro', isa => Int);
+  has MaxValue => (is => 'ro', isa => Int);
+  has MinValue => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has Namespace => (is => 'ro', isa => Str);
+  has Regex => (is => 'ro', isa => ElasticBeanstalk_OptionRestrictionRegex);
+  has UserDefined => (is => 'ro', isa => Bool);
+  has ValueOptions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ValueType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Regex' => {
+                            'class' => 'Paws::ElasticBeanstalk::OptionRestrictionRegex',
+                            'type' => 'ElasticBeanstalk_OptionRestrictionRegex'
+                          },
+               'ValueType' => {
+                                'type' => 'Str'
+                              },
+               'DefaultValue' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxValue' => {
+                               'type' => 'Int'
+                             },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'MinValue' => {
+                               'type' => 'Int'
+                             },
+               'ChangeSeverity' => {
+                                     'type' => 'Str'
+                                   },
+               'ValueOptions' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'UserDefined' => {
+                                  'type' => 'Bool'
+                                },
+               'MaxLength' => {
+                                'type' => 'Int'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -107,7 +155,7 @@ than this value.
   A unique namespace identifying the option's associated AWS resource.
 
 
-=head2 Regex => L<Paws::ElasticBeanstalk::OptionRestrictionRegex>
+=head2 Regex => ElasticBeanstalk_OptionRestrictionRegex
 
   If specified, the configuration option must be a string value that
 satisfies this regular expression.

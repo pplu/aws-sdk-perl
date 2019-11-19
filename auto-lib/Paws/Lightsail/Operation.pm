@@ -1,17 +1,82 @@
+# Generated from default/object.tt
 package Paws::Lightsail::Operation;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
-  has ErrorDetails => (is => 'ro', isa => 'Str', request_name => 'errorDetails', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has IsTerminal => (is => 'ro', isa => 'Bool', request_name => 'isTerminal', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
-  has OperationDetails => (is => 'ro', isa => 'Str', request_name => 'operationDetails', traits => ['NameInRequest']);
-  has OperationType => (is => 'ro', isa => 'Str', request_name => 'operationType', traits => ['NameInRequest']);
-  has ResourceName => (is => 'ro', isa => 'Str', request_name => 'resourceName', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusChangedAt => (is => 'ro', isa => 'Str', request_name => 'statusChangedAt', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Lightsail::Types qw/Lightsail_ResourceLocation/;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorDetails => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has IsTerminal => (is => 'ro', isa => Bool);
+  has Location => (is => 'ro', isa => Lightsail_ResourceLocation);
+  has OperationDetails => (is => 'ro', isa => Str);
+  has OperationType => (is => 'ro', isa => Str);
+  has ResourceName => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusChangedAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ResourceType' => 'resourceType',
+                       'IsTerminal' => 'isTerminal',
+                       'Status' => 'status',
+                       'ResourceName' => 'resourceName',
+                       'ErrorDetails' => 'errorDetails',
+                       'ErrorCode' => 'errorCode',
+                       'Location' => 'location',
+                       'OperationDetails' => 'operationDetails',
+                       'CreatedAt' => 'createdAt',
+                       'StatusChangedAt' => 'statusChangedAt',
+                       'OperationType' => 'operationType',
+                       'Id' => 'id'
+                     },
+  'types' => {
+               'ErrorDetails' => {
+                                   'type' => 'Str'
+                                 },
+               'Location' => {
+                               'class' => 'Paws::Lightsail::ResourceLocation',
+                               'type' => 'Lightsail_ResourceLocation'
+                             },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'OperationDetails' => {
+                                       'type' => 'Str'
+                                     },
+               'StatusChangedAt' => {
+                                      'type' => 'Str'
+                                    },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'OperationType' => {
+                                    'type' => 'Str'
+                                  },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'IsTerminal' => {
+                                 'type' => 'Bool'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ResourceName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +138,7 @@ C<1479816991.349>).
   A Boolean value indicating whether the operation is terminal.
 
 
-=head2 Location => L<Paws::Lightsail::ResourceLocation>
+=head2 Location => Lightsail_ResourceLocation
 
   The AWS Region and Availability Zone.
 

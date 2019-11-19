@@ -1,17 +1,52 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::CreateOptionGroup;
-  use Moose;
-  has EngineName => (is => 'ro', isa => 'Str', required => 1);
-  has MajorEngineVersion => (is => 'ro', isa => 'Str', required => 1);
-  has OptionGroupDescription => (is => 'ro', isa => 'Str', required => 1);
-  has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Tag/;
+  has EngineName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MajorEngineVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OptionGroupDescription => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateOptionGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateOptionGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateOptionGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateOptionGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::CreateOptionGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateOptionGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'OptionGroupName' => 1,
+                    'EngineName' => 1,
+                    'MajorEngineVersion' => 1,
+                    'OptionGroupDescription' => 1
+                  },
+  'types' => {
+               'OptionGroupDescription' => {
+                                             'type' => 'Str'
+                                           },
+               'MajorEngineVersion' => {
+                                         'type' => 'Str'
+                                       },
+               'Tags' => {
+                           'type' => 'ArrayRef[RDS_Tag]',
+                           'class' => 'Paws::RDS::Tag'
+                         },
+               'EngineName' => {
+                                 'type' => 'Str'
+                               },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -93,7 +128,7 @@ Example: C<myoptiongroup>
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 Tags to assign to the option group.
 

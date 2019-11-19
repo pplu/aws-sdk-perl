@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::SageMaker::InputConfig;
-  use Moose;
-  has DataInputConfig => (is => 'ro', isa => 'Str', required => 1);
-  has Framework => (is => 'ro', isa => 'Str', required => 1);
-  has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has DataInputConfig => (is => 'ro', isa => Str, required => 1);
+  has Framework => (is => 'ro', isa => Str, required => 1);
+  has S3Uri => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Framework' => 1,
+                    'DataInputConfig' => 1,
+                    'S3Uri' => 1
+                  },
+  'types' => {
+               'Framework' => {
+                                'type' => 'Str'
+                              },
+               'DataInputConfig' => {
+                                      'type' => 'Str'
+                                    },
+               'S3Uri' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::SSM::PatchBaselineIdentity;
-  use Moose;
-  has BaselineDescription => (is => 'ro', isa => 'Str');
-  has BaselineId => (is => 'ro', isa => 'Str');
-  has BaselineName => (is => 'ro', isa => 'Str');
-  has DefaultBaseline => (is => 'ro', isa => 'Bool');
-  has OperatingSystem => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SSM::Types qw//;
+  has BaselineDescription => (is => 'ro', isa => Str);
+  has BaselineId => (is => 'ro', isa => Str);
+  has BaselineName => (is => 'ro', isa => Str);
+  has DefaultBaseline => (is => 'ro', isa => Bool);
+  has OperatingSystem => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BaselineName' => {
+                                   'type' => 'Str'
+                                 },
+               'BaselineDescription' => {
+                                          'type' => 'Str'
+                                        },
+               'BaselineId' => {
+                                 'type' => 'Str'
+                               },
+               'OperatingSystem' => {
+                                      'type' => 'Str'
+                                    },
+               'DefaultBaseline' => {
+                                      'type' => 'Bool'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

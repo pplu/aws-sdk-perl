@@ -1,18 +1,71 @@
+# Generated from default/object.tt
 package Paws::SSM::Patch;
-  use Moose;
-  has Classification => (is => 'ro', isa => 'Str');
-  has ContentUrl => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has KbNumber => (is => 'ro', isa => 'Str');
-  has Language => (is => 'ro', isa => 'Str');
-  has MsrcNumber => (is => 'ro', isa => 'Str');
-  has MsrcSeverity => (is => 'ro', isa => 'Str');
-  has Product => (is => 'ro', isa => 'Str');
-  has ProductFamily => (is => 'ro', isa => 'Str');
-  has ReleaseDate => (is => 'ro', isa => 'Str');
-  has Title => (is => 'ro', isa => 'Str');
-  has Vendor => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has Classification => (is => 'ro', isa => Str);
+  has ContentUrl => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has KbNumber => (is => 'ro', isa => Str);
+  has Language => (is => 'ro', isa => Str);
+  has MsrcNumber => (is => 'ro', isa => Str);
+  has MsrcSeverity => (is => 'ro', isa => Str);
+  has Product => (is => 'ro', isa => Str);
+  has ProductFamily => (is => 'ro', isa => Str);
+  has ReleaseDate => (is => 'ro', isa => Str);
+  has Title => (is => 'ro', isa => Str);
+  has Vendor => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MsrcSeverity' => {
+                                   'type' => 'Str'
+                                 },
+               'KbNumber' => {
+                               'type' => 'Str'
+                             },
+               'Vendor' => {
+                             'type' => 'Str'
+                           },
+               'Classification' => {
+                                     'type' => 'Str'
+                                   },
+               'ReleaseDate' => {
+                                  'type' => 'Str'
+                                },
+               'Language' => {
+                               'type' => 'Str'
+                             },
+               'ProductFamily' => {
+                                    'type' => 'Str'
+                                  },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'MsrcNumber' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Product' => {
+                              'type' => 'Str'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ContentUrl' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

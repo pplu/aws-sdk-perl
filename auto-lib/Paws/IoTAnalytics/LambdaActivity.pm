@@ -1,9 +1,46 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::LambdaActivity;
-  use Moose;
-  has BatchSize => (is => 'ro', isa => 'Int', request_name => 'batchSize', traits => ['NameInRequest'], required => 1);
-  has LambdaName => (is => 'ro', isa => 'Str', request_name => 'lambdaName', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Next => (is => 'ro', isa => 'Str', request_name => 'next', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has BatchSize => (is => 'ro', isa => Int, required => 1);
+  has LambdaName => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Next => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BatchSize' => {
+                                'type' => 'Int'
+                              },
+               'Next' => {
+                           'type' => 'Str'
+                         },
+               'LambdaName' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'LambdaName' => 'lambdaName',
+                       'Name' => 'name',
+                       'BatchSize' => 'batchSize',
+                       'Next' => 'next'
+                     },
+  'IsRequired' => {
+                    'LambdaName' => 1,
+                    'Name' => 1,
+                    'BatchSize' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

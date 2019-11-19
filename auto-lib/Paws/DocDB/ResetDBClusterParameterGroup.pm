@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::ResetDBClusterParameterGroup;
-  use Moose;
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Parameter]');
-  has ResetAllParameters => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::DocDB::Types qw/DocDB_Parameter/;
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Parameters => (is => 'ro', isa => ArrayRef[DocDB_Parameter], predicate => 1);
+  has ResetAllParameters => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetDBClusterParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::DBClusterParameterGroupNameMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ResetDBClusterParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ResetDBClusterParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::DBClusterParameterGroupNameMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ResetDBClusterParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResetAllParameters' => {
+                                         'type' => 'Bool'
+                                       },
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'Parameters' => {
+                                 'type' => 'ArrayRef[DocDB_Parameter]',
+                                 'class' => 'Paws::DocDB::Parameter'
+                               }
+             },
+  'IsRequired' => {
+                    'DBClusterParameterGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +94,7 @@ The name of the DB cluster parameter group to reset.
 
 
 
-=head2 Parameters => ArrayRef[L<Paws::DocDB::Parameter>]
+=head2 Parameters => ArrayRef[DocDB_Parameter]
 
 A list of parameter names in the DB cluster parameter group to reset to
 the default values. You can't use this parameter if the

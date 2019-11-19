@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Firehose::ProcessingConfiguration;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has Processors => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::Processor]');
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef/;
+  use Paws::Firehose::Types qw/Firehose_Processor/;
+  has Enabled => (is => 'ro', isa => Bool);
+  has Processors => (is => 'ro', isa => ArrayRef[Firehose_Processor]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Processors' => {
+                                 'type' => 'ArrayRef[Firehose_Processor]',
+                                 'class' => 'Paws::Firehose::Processor'
+                               },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Describes a data processing configuration.
   Enables or disables data processing.
 
 
-=head2 Processors => ArrayRef[L<Paws::Firehose::Processor>]
+=head2 Processors => ArrayRef[Firehose_Processor]
 
   The data processors.
 

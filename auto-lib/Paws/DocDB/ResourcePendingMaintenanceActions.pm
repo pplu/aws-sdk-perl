@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DocDB::ResourcePendingMaintenanceActions;
-  use Moose;
-  has PendingMaintenanceActionDetails => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::PendingMaintenanceAction]', request_name => 'PendingMaintenanceAction', traits => ['NameInRequest']);
-  has ResourceIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::DocDB::Types qw/DocDB_PendingMaintenanceAction/;
+  has PendingMaintenanceActionDetails => (is => 'ro', isa => ArrayRef[DocDB_PendingMaintenanceAction]);
+  has ResourceIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'PendingMaintenanceActionDetails' => {
+                                                      'class' => 'Paws::DocDB::PendingMaintenanceAction',
+                                                      'type' => 'ArrayRef[DocDB_PendingMaintenanceAction]'
+                                                    }
+             },
+  'NameInRequest' => {
+                       'PendingMaintenanceActionDetails' => 'PendingMaintenanceAction'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +61,7 @@ Represents the output of ApplyPendingMaintenanceAction.
 =head1 ATTRIBUTES
 
 
-=head2 PendingMaintenanceActionDetails => ArrayRef[L<Paws::DocDB::PendingMaintenanceAction>]
+=head2 PendingMaintenanceActionDetails => ArrayRef[DocDB_PendingMaintenanceAction]
 
   A list that provides details about the pending maintenance actions for
 the resource.

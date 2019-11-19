@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::ResourceServerType;
-  use Moose;
-  has Identifier => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Scopes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::ResourceServerScopeType]');
-  has UserPoolId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_ResourceServerScopeType/;
+  has Identifier => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Scopes => (is => 'ro', isa => ArrayRef[CognitoIdp_ResourceServerScopeType]);
+  has UserPoolId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Identifier' => {
+                                 'type' => 'Str'
+                               },
+               'Scopes' => {
+                             'class' => 'Paws::CognitoIdp::ResourceServerScopeType',
+                             'type' => 'ArrayRef[CognitoIdp_ResourceServerScopeType]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +76,7 @@ A container for information about a resource server for a user pool.
   The name of the resource server.
 
 
-=head2 Scopes => ArrayRef[L<Paws::CognitoIdp::ResourceServerScopeType>]
+=head2 Scopes => ArrayRef[CognitoIdp_ResourceServerScopeType]
 
   A list of scopes that are defined for the resource server.
 

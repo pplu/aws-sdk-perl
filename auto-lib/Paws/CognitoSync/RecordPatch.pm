@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::CognitoSync::RecordPatch;
-  use Moose;
-  has DeviceLastModifiedDate => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str', required => 1);
-  has Op => (is => 'ro', isa => 'Str', required => 1);
-  has SyncCount => (is => 'ro', isa => 'Int', required => 1);
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CognitoSync::Types qw//;
+  has DeviceLastModifiedDate => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str, required => 1);
+  has Op => (is => 'ro', isa => Str, required => 1);
+  has SyncCount => (is => 'ro', isa => Int, required => 1);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Key' => 1,
+                    'Op' => 1,
+                    'SyncCount' => 1
+                  },
+  'types' => {
+               'Op' => {
+                         'type' => 'Str'
+                       },
+               'DeviceLastModifiedDate' => {
+                                             'type' => 'Str'
+                                           },
+               'SyncCount' => {
+                                'type' => 'Int'
+                              },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

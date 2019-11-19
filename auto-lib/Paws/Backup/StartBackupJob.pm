@@ -1,21 +1,64 @@
 
 package Paws::Backup::StartBackupJob;
-  use Moose;
-  has BackupVaultName => (is => 'ro', isa => 'Str', required => 1);
-  has CompleteWindowMinutes => (is => 'ro', isa => 'Int');
-  has IamRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has IdempotencyToken => (is => 'ro', isa => 'Str');
-  has Lifecycle => (is => 'ro', isa => 'Paws::Backup::Lifecycle');
-  has RecoveryPointTags => (is => 'ro', isa => 'Paws::Backup::Tags');
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has StartWindowMinutes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Backup::Types qw/Backup_Tags Backup_Lifecycle/;
+  has BackupVaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CompleteWindowMinutes => (is => 'ro', isa => Int, predicate => 1);
+  has IamRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, predicate => 1);
+  has Lifecycle => (is => 'ro', isa => Backup_Lifecycle, predicate => 1);
+  has RecoveryPointTags => (is => 'ro', isa => Backup_Tags, predicate => 1);
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartWindowMinutes => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartBackupJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup-jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::StartBackupJobOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartBackupJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup-jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::StartBackupJobOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'CompleteWindowMinutes' => {
+                                            'type' => 'Int'
+                                          },
+               'Lifecycle' => {
+                                'class' => 'Paws::Backup::Lifecycle',
+                                'type' => 'Backup_Lifecycle'
+                              },
+               'BackupVaultName' => {
+                                      'type' => 'Str'
+                                    },
+               'StartWindowMinutes' => {
+                                         'type' => 'Int'
+                                       },
+               'RecoveryPointTags' => {
+                                        'type' => 'Backup_Tags',
+                                        'class' => 'Paws::Backup::Tags'
+                                      },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'IamRoleArn' => 1,
+                    'BackupVaultName' => 1,
+                    'ResourceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -97,7 +140,7 @@ requesting to start multiple backups.
 
 
 
-=head2 Lifecycle => L<Paws::Backup::Lifecycle>
+=head2 Lifecycle => Backup_Lifecycle
 
 The lifecycle defines when a protected resource is transitioned to cold
 storage and when it expires. AWS Backup will transition and expire
@@ -112,7 +155,7 @@ transitioned to cold.
 
 
 
-=head2 RecoveryPointTags => L<Paws::Backup::Tags>
+=head2 RecoveryPointTags => Backup_Tags
 
 To help organize your resources, you can assign your own metadata to
 the resources that you create. Each tag is a key-value pair.

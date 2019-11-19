@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::LogGroupField;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Percent => (is => 'ro', isa => 'Int', request_name => 'percent', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has Name => (is => 'ro', isa => Str);
+  has Percent => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Percent' => 'percent'
+                     },
+  'types' => {
+               'Percent' => {
+                              'type' => 'Int'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

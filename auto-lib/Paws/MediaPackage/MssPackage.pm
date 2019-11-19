@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::MssPackage;
-  use Moose;
-  has Encryption => (is => 'ro', isa => 'Paws::MediaPackage::MssEncryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has ManifestWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'manifestWindowSeconds', traits => ['NameInRequest']);
-  has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
-  has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackage::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaPackage::Types qw/MediaPackage_MssEncryption MediaPackage_StreamSelection/;
+  has Encryption => (is => 'ro', isa => MediaPackage_MssEncryption);
+  has ManifestWindowSeconds => (is => 'ro', isa => Int);
+  has SegmentDurationSeconds => (is => 'ro', isa => Int);
+  has StreamSelection => (is => 'ro', isa => MediaPackage_StreamSelection);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SegmentDurationSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'StreamSelection' => {
+                                      'class' => 'Paws::MediaPackage::StreamSelection',
+                                      'type' => 'MediaPackage_StreamSelection'
+                                    },
+               'Encryption' => {
+                                 'type' => 'MediaPackage_MssEncryption',
+                                 'class' => 'Paws::MediaPackage::MssEncryption'
+                               },
+               'ManifestWindowSeconds' => {
+                                            'type' => 'Int'
+                                          }
+             },
+  'NameInRequest' => {
+                       'ManifestWindowSeconds' => 'manifestWindowSeconds',
+                       'Encryption' => 'encryption',
+                       'SegmentDurationSeconds' => 'segmentDurationSeconds',
+                       'StreamSelection' => 'streamSelection'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +73,7 @@ A Microsoft Smooth Streaming (MSS) packaging configuration.
 =head1 ATTRIBUTES
 
 
-=head2 Encryption => L<Paws::MediaPackage::MssEncryption>
+=head2 Encryption => MediaPackage_MssEncryption
 
   
 
@@ -54,7 +88,7 @@ A Microsoft Smooth Streaming (MSS) packaging configuration.
   The duration (in seconds) of each segment.
 
 
-=head2 StreamSelection => L<Paws::MediaPackage::StreamSelection>
+=head2 StreamSelection => MediaPackage_StreamSelection
 
   
 

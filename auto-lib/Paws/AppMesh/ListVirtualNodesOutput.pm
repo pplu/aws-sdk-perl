@@ -1,10 +1,38 @@
 
 package Paws::AppMesh::ListVirtualNodesOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has VirtualNodes => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::VirtualNodeRef]', traits => ['NameInRequest'], request_name => 'virtualNodes', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppMesh::Types qw/AppMesh_VirtualNodeRef/;
+  has NextToken => (is => 'ro', isa => Str);
+  has VirtualNodes => (is => 'ro', isa => ArrayRef[AppMesh_VirtualNodeRef], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'VirtualNodes' => {
+                                   'type' => 'ArrayRef[AppMesh_VirtualNodeRef]',
+                                   'class' => 'Paws::AppMesh::VirtualNodeRef'
+                                 }
+             },
+  'NameInRequest' => {
+                       'VirtualNodes' => 'virtualNodes',
+                       'NextToken' => 'nextToken'
+                     },
+  'IsRequired' => {
+                    'VirtualNodes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +52,7 @@ C<limit>, you can use this value to retrieve the next page of results.
 This value is C<null> when there are no more results to return.
 
 
-=head2 B<REQUIRED> VirtualNodes => ArrayRef[L<Paws::AppMesh::VirtualNodeRef>]
+=head2 B<REQUIRED> VirtualNodes => ArrayRef[AppMesh_VirtualNodeRef]
 
 The list of existing virtual nodes for the specified service mesh.
 

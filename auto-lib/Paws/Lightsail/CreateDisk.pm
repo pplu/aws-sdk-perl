@@ -1,17 +1,59 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::CreateDisk;
-  use Moose;
-  has AddOns => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AddOnRequest]', traits => ['NameInRequest'], request_name => 'addOns' );
-  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
-  has DiskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskName' , required => 1);
-  has SizeInGb => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'sizeInGb' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Lightsail::Types qw/Lightsail_Tag Lightsail_AddOnRequest/;
+  has AddOns => (is => 'ro', isa => ArrayRef[Lightsail_AddOnRequest], predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DiskName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SizeInGb => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDisk');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::CreateDiskResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDisk');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::CreateDiskResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AddOns' => 'addOns',
+                       'DiskName' => 'diskName',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'SizeInGb' => 'sizeInGb',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'AvailabilityZone' => 1,
+                    'SizeInGb' => 1,
+                    'DiskName' => 1
+                  },
+  'types' => {
+               'DiskName' => {
+                               'type' => 'Str'
+                             },
+               'AddOns' => {
+                             'type' => 'ArrayRef[Lightsail_AddOnRequest]',
+                             'class' => 'Paws::Lightsail::AddOnRequest'
+                           },
+               'Tags' => {
+                           'class' => 'Paws::Lightsail::Tag',
+                           'type' => 'ArrayRef[Lightsail_Tag]'
+                         },
+               'SizeInGb' => {
+                               'type' => 'Int'
+                             },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +106,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 =head1 ATTRIBUTES
 
 
-=head2 AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]
+=head2 AddOns => ArrayRef[Lightsail_AddOnRequest]
 
 An array of objects that represent the add-ons to enable for the new
 disk.
@@ -94,7 +136,7 @@ The size of the disk in GB (e.g., C<32>).
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
 The tag keys and optional values to add to the resource during create.
 

@@ -1,25 +1,125 @@
 package Paws::EC2::FleetData;
-  use Moose;
-  has ActivityStatus => (is => 'ro', isa => 'Str', request_name => 'activityStatus', traits => ['NameInRequest']);
-  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
-  has Errors => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DescribeFleetError]', request_name => 'errorSet', traits => ['NameInRequest']);
-  has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', request_name => 'excessCapacityTerminationPolicy', traits => ['NameInRequest']);
-  has FleetId => (is => 'ro', isa => 'Str', request_name => 'fleetId', traits => ['NameInRequest']);
-  has FleetState => (is => 'ro', isa => 'Str', request_name => 'fleetState', traits => ['NameInRequest']);
-  has FulfilledCapacity => (is => 'ro', isa => 'Num', request_name => 'fulfilledCapacity', traits => ['NameInRequest']);
-  has FulfilledOnDemandCapacity => (is => 'ro', isa => 'Num', request_name => 'fulfilledOnDemandCapacity', traits => ['NameInRequest']);
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DescribeFleetsInstances]', request_name => 'fleetInstanceSet', traits => ['NameInRequest']);
-  has LaunchTemplateConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::FleetLaunchTemplateConfig]', request_name => 'launchTemplateConfigs', traits => ['NameInRequest']);
-  has OnDemandOptions => (is => 'ro', isa => 'Paws::EC2::OnDemandOptions', request_name => 'onDemandOptions', traits => ['NameInRequest']);
-  has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool', request_name => 'replaceUnhealthyInstances', traits => ['NameInRequest']);
-  has SpotOptions => (is => 'ro', isa => 'Paws::EC2::SpotOptions', request_name => 'spotOptions', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has TargetCapacitySpecification => (is => 'ro', isa => 'Paws::EC2::TargetCapacitySpecification', request_name => 'targetCapacitySpecification', traits => ['NameInRequest']);
-  has TerminateInstancesWithExpiration => (is => 'ro', isa => 'Bool', request_name => 'terminateInstancesWithExpiration', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has ValidFrom => (is => 'ro', isa => 'Str', request_name => 'validFrom', traits => ['NameInRequest']);
-  has ValidUntil => (is => 'ro', isa => 'Str', request_name => 'validUntil', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Num Bool/;
+  use Paws::EC2::Types qw/EC2_DescribeFleetError EC2_OnDemandOptions EC2_TargetCapacitySpecification EC2_FleetLaunchTemplateConfig EC2_SpotOptions EC2_DescribeFleetsInstances EC2_Tag/;
+  has ActivityStatus => (is => 'ro', isa => Str);
+  has ClientToken => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str);
+  has Errors => (is => 'ro', isa => ArrayRef[EC2_DescribeFleetError]);
+  has ExcessCapacityTerminationPolicy => (is => 'ro', isa => Str);
+  has FleetId => (is => 'ro', isa => Str);
+  has FleetState => (is => 'ro', isa => Str);
+  has FulfilledCapacity => (is => 'ro', isa => Num);
+  has FulfilledOnDemandCapacity => (is => 'ro', isa => Num);
+  has Instances => (is => 'ro', isa => ArrayRef[EC2_DescribeFleetsInstances]);
+  has LaunchTemplateConfigs => (is => 'ro', isa => ArrayRef[EC2_FleetLaunchTemplateConfig]);
+  has OnDemandOptions => (is => 'ro', isa => EC2_OnDemandOptions);
+  has ReplaceUnhealthyInstances => (is => 'ro', isa => Bool);
+  has SpotOptions => (is => 'ro', isa => EC2_SpotOptions);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has TargetCapacitySpecification => (is => 'ro', isa => EC2_TargetCapacitySpecification);
+  has TerminateInstancesWithExpiration => (is => 'ro', isa => Bool);
+  has Type => (is => 'ro', isa => Str);
+  has ValidFrom => (is => 'ro', isa => Str);
+  has ValidUntil => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SpotOptions' => 'spotOptions',
+                       'Type' => 'type',
+                       'LaunchTemplateConfigs' => 'launchTemplateConfigs',
+                       'CreateTime' => 'createTime',
+                       'TerminateInstancesWithExpiration' => 'terminateInstancesWithExpiration',
+                       'ActivityStatus' => 'activityStatus',
+                       'Tags' => 'tagSet',
+                       'OnDemandOptions' => 'onDemandOptions',
+                       'ReplaceUnhealthyInstances' => 'replaceUnhealthyInstances',
+                       'Instances' => 'fleetInstanceSet',
+                       'ValidUntil' => 'validUntil',
+                       'FleetState' => 'fleetState',
+                       'FleetId' => 'fleetId',
+                       'FulfilledOnDemandCapacity' => 'fulfilledOnDemandCapacity',
+                       'TargetCapacitySpecification' => 'targetCapacitySpecification',
+                       'ValidFrom' => 'validFrom',
+                       'ClientToken' => 'clientToken',
+                       'FulfilledCapacity' => 'fulfilledCapacity',
+                       'ExcessCapacityTerminationPolicy' => 'excessCapacityTerminationPolicy',
+                       'Errors' => 'errorSet'
+                     },
+  'types' => {
+               'FulfilledOnDemandCapacity' => {
+                                                'type' => 'Num'
+                                              },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'FleetState' => {
+                                 'type' => 'Str'
+                               },
+               'TargetCapacitySpecification' => {
+                                                  'type' => 'EC2_TargetCapacitySpecification',
+                                                  'class' => 'Paws::EC2::TargetCapacitySpecification'
+                                                },
+               'FulfilledCapacity' => {
+                                        'type' => 'Num'
+                                      },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'ValidFrom' => {
+                                'type' => 'Str'
+                              },
+               'Errors' => {
+                             'type' => 'ArrayRef[EC2_DescribeFleetError]',
+                             'class' => 'Paws::EC2::DescribeFleetError'
+                           },
+               'ExcessCapacityTerminationPolicy' => {
+                                                      'type' => 'Str'
+                                                    },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'TerminateInstancesWithExpiration' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'SpotOptions' => {
+                                  'type' => 'EC2_SpotOptions',
+                                  'class' => 'Paws::EC2::SpotOptions'
+                                },
+               'LaunchTemplateConfigs' => {
+                                            'type' => 'ArrayRef[EC2_FleetLaunchTemplateConfig]',
+                                            'class' => 'Paws::EC2::FleetLaunchTemplateConfig'
+                                          },
+               'ActivityStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'Instances' => {
+                                'class' => 'Paws::EC2::DescribeFleetsInstances',
+                                'type' => 'ArrayRef[EC2_DescribeFleetsInstances]'
+                              },
+               'ValidUntil' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'type' => 'ArrayRef[EC2_Tag]',
+                           'class' => 'Paws::EC2::Tag'
+                         },
+               'OnDemandOptions' => {
+                                      'class' => 'Paws::EC2::OnDemandOptions',
+                                      'type' => 'EC2_OnDemandOptions'
+                                    },
+               'ReplaceUnhealthyInstances' => {
+                                                'type' => 'Bool'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +179,7 @@ Constraints: Maximum 64 ASCII characters
   The creation date and time of the EC2 Fleet.
 
 
-=head2 Errors => ArrayRef[L<Paws::EC2::DescribeFleetError>]
+=head2 Errors => ArrayRef[EC2_DescribeFleetError]
 
   Information about the instances that could not be launched by the
 fleet. Valid only when B<Type> is set to C<instant>.
@@ -114,18 +214,18 @@ target capacity.
 target On-Demand capacity.
 
 
-=head2 Instances => ArrayRef[L<Paws::EC2::DescribeFleetsInstances>]
+=head2 Instances => ArrayRef[EC2_DescribeFleetsInstances]
 
   Information about the instances that were launched by the fleet. Valid
 only when B<Type> is set to C<instant>.
 
 
-=head2 LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::FleetLaunchTemplateConfig>]
+=head2 LaunchTemplateConfigs => ArrayRef[EC2_FleetLaunchTemplateConfig]
 
   The launch template and overrides.
 
 
-=head2 OnDemandOptions => L<Paws::EC2::OnDemandOptions>
+=head2 OnDemandOptions => EC2_OnDemandOptions
 
   The allocation strategy of On-Demand Instances in an EC2 Fleet.
 
@@ -135,17 +235,17 @@ only when B<Type> is set to C<instant>.
   Indicates whether EC2 Fleet should replace unhealthy instances.
 
 
-=head2 SpotOptions => L<Paws::EC2::SpotOptions>
+=head2 SpotOptions => EC2_SpotOptions
 
   The configuration of Spot Instances in an EC2 Fleet.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   The tags for an EC2 Fleet resource.
 
 
-=head2 TargetCapacitySpecification => L<Paws::EC2::TargetCapacitySpecification>
+=head2 TargetCapacitySpecification => EC2_TargetCapacitySpecification
 
   The number of units to request. You can choose to set the target
 capacity in terms of instances or a performance characteristic that is

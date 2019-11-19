@@ -1,11 +1,35 @@
 
 package Paws::EFS::DescribeMountTargetsResponse;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has MountTargets => (is => 'ro', isa => 'ArrayRef[Paws::EFS::MountTargetDescription]');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EFS::Types qw/EFS_MountTargetDescription/;
+  has Marker => (is => 'ro', isa => Str);
+  has MountTargets => (is => 'ro', isa => ArrayRef[EFS_MountTargetDescription]);
+  has NextMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MountTargets' => {
+                                   'class' => 'Paws::EFS::MountTargetDescription',
+                                   'type' => 'ArrayRef[EFS_MountTargetDescription]'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +47,7 @@ If the request included the C<Marker>, the response returns that value
 in this field.
 
 
-=head2 MountTargets => ArrayRef[L<Paws::EFS::MountTargetDescription>]
+=head2 MountTargets => ArrayRef[EFS_MountTargetDescription]
 
 Returns the file system's mount targets as an array of
 C<MountTargetDescription> objects.

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::DescribeEndpointsResponse;
-  use Moose;
-  has Endpoints => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Endpoint]');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_Endpoint/;
+  has Endpoints => (is => 'ro', isa => ArrayRef[DMS_Endpoint]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Endpoints' => {
+                                'type' => 'ArrayRef[DMS_Endpoint]',
+                                'class' => 'Paws::DMS::Endpoint'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::DMS::DescribeEndpointsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Endpoints => ArrayRef[L<Paws::DMS::Endpoint>]
+=head2 Endpoints => ArrayRef[DMS_Endpoint]
 
 Endpoint description.
 

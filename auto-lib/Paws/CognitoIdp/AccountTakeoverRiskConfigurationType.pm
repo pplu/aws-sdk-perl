@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::AccountTakeoverRiskConfigurationType;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'Paws::CognitoIdp::AccountTakeoverActionsType', required => 1);
-  has NotifyConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::NotifyConfigurationType');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AccountTakeoverActionsType CognitoIdp_NotifyConfigurationType/;
+  has Actions => (is => 'ro', isa => CognitoIdp_AccountTakeoverActionsType, required => 1);
+  has NotifyConfiguration => (is => 'ro', isa => CognitoIdp_NotifyConfigurationType);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotifyConfiguration' => {
+                                          'type' => 'CognitoIdp_NotifyConfigurationType',
+                                          'class' => 'Paws::CognitoIdp::NotifyConfigurationType'
+                                        },
+               'Actions' => {
+                              'type' => 'CognitoIdp_AccountTakeoverActionsType',
+                              'class' => 'Paws::CognitoIdp::AccountTakeoverActionsType'
+                            }
+             },
+  'IsRequired' => {
+                    'Actions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +63,12 @@ levels of risk detected for a potential account takeover.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Actions => L<Paws::CognitoIdp::AccountTakeoverActionsType>
+=head2 B<REQUIRED> Actions => CognitoIdp_AccountTakeoverActionsType
 
   Account takeover risk configuration actions
 
 
-=head2 NotifyConfiguration => L<Paws::CognitoIdp::NotifyConfigurationType>
+=head2 NotifyConfiguration => CognitoIdp_NotifyConfigurationType
 
   The notify configuration used to construct email notifications.
 

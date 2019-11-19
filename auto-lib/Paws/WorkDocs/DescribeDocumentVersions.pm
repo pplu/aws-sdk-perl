@@ -1,19 +1,64 @@
 
 package Paws::WorkDocs::DescribeDocumentVersions;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId', required => 1);
-  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields');
-  has Include => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'include');
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Fields => (is => 'ro', isa => Str, predicate => 1);
+  has Include => (is => 'ro', isa => Str, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDocumentVersions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/documents/{DocumentId}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::DescribeDocumentVersionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDocumentVersions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/documents/{DocumentId}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::DescribeDocumentVersionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     },
+  'IsRequired' => {
+                    'DocumentId' => 1
+                  },
+  'ParamInQuery' => {
+                      'Marker' => 'marker',
+                      'Limit' => 'limit',
+                      'Fields' => 'fields',
+                      'Include' => 'include'
+                    },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'Include' => {
+                              'type' => 'Str'
+                            },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'Fields' => {
+                             'type' => 'Str'
+                           },
+               'DocumentId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'DocumentId' => 'DocumentId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

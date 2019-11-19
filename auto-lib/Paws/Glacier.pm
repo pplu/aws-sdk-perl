@@ -1,14 +1,15 @@
 package Paws::Glacier;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'glacier' }
   sub signing_name { 'glacier' }
   sub version { '2012-06-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
        sub { defined $_[0]->http_status and $_[0]->http_status == 408 and $_[0]->code eq 'RequestTimeoutException' },
   ] });
 
@@ -440,7 +441,7 @@ state or if there is no policy associated with the vault.
 
 =item VaultName => Str
 
-=item [Tags => L<Paws::Glacier::TagMap>]
+=item [Tags => Glacier_TagMap]
 
 
 =back
@@ -1086,7 +1087,7 @@ in the I<Amazon Glacier Developer Guide>.
 
 =item VaultName => Str
 
-=item [JobParameters => L<Paws::Glacier::JobParameters>]
+=item [JobParameters => Glacier_JobParameters]
 
 
 =back
@@ -1171,7 +1172,7 @@ in the I<Amazon Glacier Developer Guide>.
 
 =item VaultName => Str
 
-=item [Policy => L<Paws::Glacier::VaultLockPolicy>]
+=item [Policy => Glacier_VaultLockPolicy]
 
 
 =back
@@ -1529,7 +1530,7 @@ there are no tags attached to the vault.
 
 =item AccountId => Str
 
-=item [Policy => L<Paws::Glacier::DataRetrievalPolicy>]
+=item [Policy => Glacier_DataRetrievalPolicy]
 
 
 =back
@@ -1557,7 +1558,7 @@ retrieval policies, see Amazon Glacier Data Retrieval Policies
 
 =item VaultName => Str
 
-=item [Policy => L<Paws::Glacier::VaultAccessPolicy>]
+=item [Policy => Glacier_VaultAccessPolicy]
 
 
 =back
@@ -1584,7 +1585,7 @@ policies, see Amazon Glacier Access Control with Vault Access Policies
 
 =item VaultName => Str
 
-=item [VaultNotificationConfig => L<Paws::Glacier::VaultNotificationConfig>]
+=item [VaultNotificationConfig => Glacier_VaultNotificationConfig]
 
 
 =back

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::RDS::DBSnapshotAttributesResult;
-  use Moose;
-  has DBSnapshotAttributes => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSnapshotAttribute]', request_name => 'DBSnapshotAttribute', traits => ['NameInRequest']);
-  has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::RDS::Types qw/RDS_DBSnapshotAttribute/;
+  has DBSnapshotAttributes => (is => 'ro', isa => ArrayRef[RDS_DBSnapshotAttribute]);
+  has DBSnapshotIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DBSnapshotAttributes' => 'DBSnapshotAttribute'
+                     },
+  'types' => {
+               'DBSnapshotAttributes' => {
+                                           'type' => 'ArrayRef[RDS_DBSnapshotAttribute]',
+                                           'class' => 'Paws::RDS::DBSnapshotAttribute'
+                                         },
+               'DBSnapshotIdentifier' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +66,7 @@ C<ModifyDBSnapshotAttribute> API action.
 =head1 ATTRIBUTES
 
 
-=head2 DBSnapshotAttributes => ArrayRef[L<Paws::RDS::DBSnapshotAttribute>]
+=head2 DBSnapshotAttributes => ArrayRef[RDS_DBSnapshotAttribute]
 
   The list of attributes and values for the manual DB snapshot.
 

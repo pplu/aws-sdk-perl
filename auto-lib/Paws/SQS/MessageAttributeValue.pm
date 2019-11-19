@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::SQS::MessageAttributeValue;
-  use Moose;
-  has BinaryListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'BinaryListValue', request_name => 'BinaryListValue', traits => ['NameInRequest','NameInRequest']);
-  has BinaryValue => (is => 'ro', isa => 'Str');
-  has DataType => (is => 'ro', isa => 'Str', required => 1);
-  has StringListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'StringListValue', request_name => 'StringListValue', traits => ['NameInRequest','NameInRequest']);
-  has StringValue => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::SQS::Types qw//;
+  has BinaryListValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BinaryValue => (is => 'ro', isa => Str);
+  has DataType => (is => 'ro', isa => Str, required => 1);
+  has StringListValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has StringValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataType' => {
+                               'type' => 'Str'
+                             },
+               'BinaryValue' => {
+                                  'type' => 'Str'
+                                },
+               'StringValue' => {
+                                  'type' => 'Str'
+                                },
+               'BinaryListValues' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'StringListValues' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             },
+  'NameInRequest' => {
+                       'StringListValues' => 'StringListValue',
+                       'BinaryListValues' => 'BinaryListValue'
+                     },
+  'IsRequired' => {
+                    'DataType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,61 @@
 
 package Paws::EC2::CreateImage;
-  use Moose;
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'blockDeviceMapping' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has NoReboot => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'noReboot' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_BlockDeviceMapping/;
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[EC2_BlockDeviceMapping], predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NoReboot => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateImage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateImageResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateImage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateImageResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'BlockDeviceMappings' => 'blockDeviceMapping',
+                       'NoReboot' => 'noReboot',
+                       'Name' => 'name',
+                       'InstanceId' => 'instanceId',
+                       'DryRun' => 'dryRun'
+                     },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'InstanceId' => 1
+                  },
+  'types' => {
+               'BlockDeviceMappings' => {
+                                          'type' => 'ArrayRef[EC2_BlockDeviceMapping]',
+                                          'class' => 'Paws::EC2::BlockDeviceMapping'
+                                        },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'NoReboot' => {
+                               'type' => 'Bool'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +112,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
+=head2 BlockDeviceMappings => ArrayRef[EC2_BlockDeviceMapping]
 
 The block device mappings. This parameter cannot be used to modify the
 encryption status of existing volumes or snapshots. To create an AMI

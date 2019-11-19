@@ -1,11 +1,58 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::InputConfiguration;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest'], required => 1);
-  has InputArn => (is => 'ro', isa => 'Str', request_name => 'inputArn', traits => ['NameInRequest'], required => 1);
-  has InputDescription => (is => 'ro', isa => 'Str', request_name => 'inputDescription', traits => ['NameInRequest']);
-  has InputName => (is => 'ro', isa => 'Str', request_name => 'inputName', traits => ['NameInRequest'], required => 1);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has InputArn => (is => 'ro', isa => Str, required => 1);
+  has InputDescription => (is => 'ro', isa => Str);
+  has InputName => (is => 'ro', isa => Str, required => 1);
+  has LastUpdateTime => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InputDescription' => 'inputDescription',
+                       'Status' => 'status',
+                       'InputArn' => 'inputArn',
+                       'CreationTime' => 'creationTime',
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'InputName' => 'inputName'
+                     },
+  'IsRequired' => {
+                    'InputName' => 1,
+                    'CreationTime' => 1,
+                    'LastUpdateTime' => 1,
+                    'InputArn' => 1,
+                    'Status' => 1
+                  },
+  'types' => {
+               'InputDescription' => {
+                                       'type' => 'Str'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'InputArn' => {
+                               'type' => 'Str'
+                             },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'InputName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

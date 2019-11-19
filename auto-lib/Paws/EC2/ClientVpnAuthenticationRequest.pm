@@ -1,8 +1,30 @@
 package Paws::EC2::ClientVpnAuthenticationRequest;
-  use Moose;
-  has ActiveDirectory => (is => 'ro', isa => 'Paws::EC2::DirectoryServiceAuthenticationRequest');
-  has MutualAuthentication => (is => 'ro', isa => 'Paws::EC2::CertificateAuthenticationRequest');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_CertificateAuthenticationRequest EC2_DirectoryServiceAuthenticationRequest/;
+  has ActiveDirectory => (is => 'ro', isa => EC2_DirectoryServiceAuthenticationRequest);
+  has MutualAuthentication => (is => 'ro', isa => EC2_CertificateAuthenticationRequest);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ActiveDirectory' => {
+                                      'type' => 'EC2_DirectoryServiceAuthenticationRequest',
+                                      'class' => 'Paws::EC2::DirectoryServiceAuthenticationRequest'
+                                    },
+               'MutualAuthentication' => {
+                                           'class' => 'Paws::EC2::CertificateAuthenticationRequest',
+                                           'type' => 'EC2_CertificateAuthenticationRequest'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -38,14 +60,14 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ActiveDirectory => L<Paws::EC2::DirectoryServiceAuthenticationRequest>
+=head2 ActiveDirectory => EC2_DirectoryServiceAuthenticationRequest
 
   Information about the Active Directory to be used, if applicable. You
 must provide this information if B<Type> is
 C<directory-service-authentication>.
 
 
-=head2 MutualAuthentication => L<Paws::EC2::CertificateAuthenticationRequest>
+=head2 MutualAuthentication => EC2_CertificateAuthenticationRequest
 
   Information about the authentication certificates to be used, if
 applicable. You must provide this information if B<Type> is

@@ -1,11 +1,57 @@
+# Generated from default/object.tt
 package Paws::MediaLive::CaptionSelectorSettings;
-  use Moose;
-  has AribSourceSettings => (is => 'ro', isa => 'Paws::MediaLive::AribSourceSettings', request_name => 'aribSourceSettings', traits => ['NameInRequest']);
-  has DvbSubSourceSettings => (is => 'ro', isa => 'Paws::MediaLive::DvbSubSourceSettings', request_name => 'dvbSubSourceSettings', traits => ['NameInRequest']);
-  has EmbeddedSourceSettings => (is => 'ro', isa => 'Paws::MediaLive::EmbeddedSourceSettings', request_name => 'embeddedSourceSettings', traits => ['NameInRequest']);
-  has Scte20SourceSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte20SourceSettings', request_name => 'scte20SourceSettings', traits => ['NameInRequest']);
-  has Scte27SourceSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte27SourceSettings', request_name => 'scte27SourceSettings', traits => ['NameInRequest']);
-  has TeletextSourceSettings => (is => 'ro', isa => 'Paws::MediaLive::TeletextSourceSettings', request_name => 'teletextSourceSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_TeletextSourceSettings MediaLive_Scte27SourceSettings MediaLive_Scte20SourceSettings MediaLive_DvbSubSourceSettings MediaLive_EmbeddedSourceSettings MediaLive_AribSourceSettings/;
+  has AribSourceSettings => (is => 'ro', isa => MediaLive_AribSourceSettings);
+  has DvbSubSourceSettings => (is => 'ro', isa => MediaLive_DvbSubSourceSettings);
+  has EmbeddedSourceSettings => (is => 'ro', isa => MediaLive_EmbeddedSourceSettings);
+  has Scte20SourceSettings => (is => 'ro', isa => MediaLive_Scte20SourceSettings);
+  has Scte27SourceSettings => (is => 'ro', isa => MediaLive_Scte27SourceSettings);
+  has TeletextSourceSettings => (is => 'ro', isa => MediaLive_TeletextSourceSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Scte27SourceSettings' => 'scte27SourceSettings',
+                       'TeletextSourceSettings' => 'teletextSourceSettings',
+                       'EmbeddedSourceSettings' => 'embeddedSourceSettings',
+                       'AribSourceSettings' => 'aribSourceSettings',
+                       'Scte20SourceSettings' => 'scte20SourceSettings',
+                       'DvbSubSourceSettings' => 'dvbSubSourceSettings'
+                     },
+  'types' => {
+               'Scte27SourceSettings' => {
+                                           'class' => 'Paws::MediaLive::Scte27SourceSettings',
+                                           'type' => 'MediaLive_Scte27SourceSettings'
+                                         },
+               'TeletextSourceSettings' => {
+                                             'class' => 'Paws::MediaLive::TeletextSourceSettings',
+                                             'type' => 'MediaLive_TeletextSourceSettings'
+                                           },
+               'Scte20SourceSettings' => {
+                                           'class' => 'Paws::MediaLive::Scte20SourceSettings',
+                                           'type' => 'MediaLive_Scte20SourceSettings'
+                                         },
+               'EmbeddedSourceSettings' => {
+                                             'type' => 'MediaLive_EmbeddedSourceSettings',
+                                             'class' => 'Paws::MediaLive::EmbeddedSourceSettings'
+                                           },
+               'AribSourceSettings' => {
+                                         'class' => 'Paws::MediaLive::AribSourceSettings',
+                                         'type' => 'MediaLive_AribSourceSettings'
+                                       },
+               'DvbSubSourceSettings' => {
+                                           'type' => 'MediaLive_DvbSubSourceSettings',
+                                           'class' => 'Paws::MediaLive::DvbSubSourceSettings'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,32 +87,32 @@ Caption Selector Settings
 =head1 ATTRIBUTES
 
 
-=head2 AribSourceSettings => L<Paws::MediaLive::AribSourceSettings>
+=head2 AribSourceSettings => MediaLive_AribSourceSettings
 
   
 
 
-=head2 DvbSubSourceSettings => L<Paws::MediaLive::DvbSubSourceSettings>
+=head2 DvbSubSourceSettings => MediaLive_DvbSubSourceSettings
 
   
 
 
-=head2 EmbeddedSourceSettings => L<Paws::MediaLive::EmbeddedSourceSettings>
+=head2 EmbeddedSourceSettings => MediaLive_EmbeddedSourceSettings
 
   
 
 
-=head2 Scte20SourceSettings => L<Paws::MediaLive::Scte20SourceSettings>
+=head2 Scte20SourceSettings => MediaLive_Scte20SourceSettings
 
   
 
 
-=head2 Scte27SourceSettings => L<Paws::MediaLive::Scte27SourceSettings>
+=head2 Scte27SourceSettings => MediaLive_Scte27SourceSettings
 
   
 
 
-=head2 TeletextSourceSettings => L<Paws::MediaLive::TeletextSourceSettings>
+=head2 TeletextSourceSettings => MediaLive_TeletextSourceSettings
 
   
 

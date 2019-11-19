@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::VTLDevice;
-  use Moose;
-  has DeviceiSCSIAttributes => (is => 'ro', isa => 'Paws::StorageGateway::DeviceiSCSIAttributes');
-  has VTLDeviceARN => (is => 'ro', isa => 'Str');
-  has VTLDeviceProductIdentifier => (is => 'ro', isa => 'Str');
-  has VTLDeviceType => (is => 'ro', isa => 'Str');
-  has VTLDeviceVendor => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StorageGateway::Types qw/StorageGateway_DeviceiSCSIAttributes/;
+  has DeviceiSCSIAttributes => (is => 'ro', isa => StorageGateway_DeviceiSCSIAttributes);
+  has VTLDeviceARN => (is => 'ro', isa => Str);
+  has VTLDeviceProductIdentifier => (is => 'ro', isa => Str);
+  has VTLDeviceType => (is => 'ro', isa => Str);
+  has VTLDeviceVendor => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VTLDeviceARN' => {
+                                   'type' => 'Str'
+                                 },
+               'DeviceiSCSIAttributes' => {
+                                            'type' => 'StorageGateway_DeviceiSCSIAttributes',
+                                            'class' => 'Paws::StorageGateway::DeviceiSCSIAttributes'
+                                          },
+               'VTLDeviceProductIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'VTLDeviceType' => {
+                                    'type' => 'Str'
+                                  },
+               'VTLDeviceVendor' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +70,7 @@ Represents a device object associated with a tape gateway.
 =head1 ATTRIBUTES
 
 
-=head2 DeviceiSCSIAttributes => L<Paws::StorageGateway::DeviceiSCSIAttributes>
+=head2 DeviceiSCSIAttributes => StorageGateway_DeviceiSCSIAttributes
 
   A list of iSCSI information about a VTL device.
 

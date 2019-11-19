@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::DetachInstancesFromLoadBalancer;
-  use Moose;
-  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loadBalancerName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Lightsail::Types qw//;
+  has InstanceNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachInstancesFromLoadBalancer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::DetachInstancesFromLoadBalancerResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DetachInstancesFromLoadBalancer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::DetachInstancesFromLoadBalancerResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceNames' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'InstanceNames' => 'instanceNames',
+                       'LoadBalancerName' => 'loadBalancerName'
+                     },
+  'IsRequired' => {
+                    'LoadBalancerName' => 1,
+                    'InstanceNames' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

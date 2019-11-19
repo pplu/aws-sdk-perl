@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::EmailContent;
-  use Moose;
-  has Raw => (is => 'ro', isa => 'Paws::PinpointEmail::RawMessage');
-  has Simple => (is => 'ro', isa => 'Paws::PinpointEmail::Message');
-  has Template => (is => 'ro', isa => 'Paws::PinpointEmail::Template');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_RawMessage PinpointEmail_Message PinpointEmail_Template/;
+  has Raw => (is => 'ro', isa => PinpointEmail_RawMessage);
+  has Simple => (is => 'ro', isa => PinpointEmail_Message);
+  has Template => (is => 'ro', isa => PinpointEmail_Template);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Simple' => {
+                             'class' => 'Paws::PinpointEmail::Message',
+                             'type' => 'PinpointEmail_Message'
+                           },
+               'Template' => {
+                               'type' => 'PinpointEmail_Template',
+                               'class' => 'Paws::PinpointEmail::Template'
+                             },
+               'Raw' => {
+                          'type' => 'PinpointEmail_RawMessage',
+                          'class' => 'Paws::PinpointEmail::RawMessage'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +69,7 @@ include attachments and custom headers.
 =head1 ATTRIBUTES
 
 
-=head2 Raw => L<Paws::PinpointEmail::RawMessage>
+=head2 Raw => PinpointEmail_RawMessage
 
   The raw email message. The message has to meet the following criteria:
 
@@ -88,13 +114,13 @@ characters. This restriction is defined in RFC 5321
 
 
 
-=head2 Simple => L<Paws::PinpointEmail::Message>
+=head2 Simple => PinpointEmail_Message
 
   The simple email message. The message consists of a subject and a
 message body.
 
 
-=head2 Template => L<Paws::PinpointEmail::Template>
+=head2 Template => PinpointEmail_Template
 
   The template to use for the email message.
 

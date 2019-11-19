@@ -1,14 +1,40 @@
 
 package Paws::EC2::AssociateSubnetCidrBlock;
-  use Moose;
-  has Ipv6CidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ipv6CidrBlock' , required => 1);
-  has SubnetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'subnetId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Ipv6CidrBlock => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubnetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateSubnetCidrBlock');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::AssociateSubnetCidrBlockResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateSubnetCidrBlock');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::AssociateSubnetCidrBlockResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ipv6CidrBlock' => {
+                                    'type' => 'Str'
+                                  },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'SubnetId' => 'subnetId',
+                       'Ipv6CidrBlock' => 'ipv6CidrBlock'
+                     },
+  'IsRequired' => {
+                    'Ipv6CidrBlock' => 1,
+                    'SubnetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

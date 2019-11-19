@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::OpsWorksCM::ServerEvent;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has LogUrl => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has ServerName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorksCM::Types qw//;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has LogUrl => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has ServerName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'LogUrl' => {
+                             'type' => 'Str'
+                           },
+               'ServerName' => {
+                                 'type' => 'Str'
+                               },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

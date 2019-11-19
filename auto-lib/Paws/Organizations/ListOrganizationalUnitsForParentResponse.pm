@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Organizations::ListOrganizationalUnitsForParentResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has OrganizationalUnits => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::OrganizationalUnit]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Organizations::Types qw/Organizations_OrganizationalUnit/;
+  has NextToken => (is => 'ro', isa => Str);
+  has OrganizationalUnits => (is => 'ro', isa => ArrayRef[Organizations_OrganizationalUnit]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationalUnits' => {
+                                          'type' => 'ArrayRef[Organizations_OrganizationalUnit]',
+                                          'class' => 'Paws::Organizations::OrganizationalUnit'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +46,7 @@ get the next part of the output. You should repeat this until the
 C<NextToken> response element comes back as C<null>.
 
 
-=head2 OrganizationalUnits => ArrayRef[L<Paws::Organizations::OrganizationalUnit>]
+=head2 OrganizationalUnits => ArrayRef[Organizations_OrganizationalUnit]
 
 A list of the OUs in the specified root or parent OU.
 

@@ -1,16 +1,37 @@
 
 package Paws::SecurityHub::GetEnabledStandards;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StandardsSubscriptionArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::SecurityHub::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StandardsSubscriptionArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetEnabledStandards');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/standards/get');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::GetEnabledStandardsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetEnabledStandards');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/standards/get');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::GetEnabledStandardsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'StandardsSubscriptionArns' => {
+                                                'type' => 'ArrayRef[Str|Undef]'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,56 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::SendBounce;
-  use Moose;
-  has BouncedRecipientInfoList => (is => 'ro', isa => 'ArrayRef[Paws::SES::BouncedRecipientInfo]', required => 1);
-  has BounceSender => (is => 'ro', isa => 'Str', required => 1);
-  has BounceSenderArn => (is => 'ro', isa => 'Str');
-  has Explanation => (is => 'ro', isa => 'Str');
-  has MessageDsn => (is => 'ro', isa => 'Paws::SES::MessageDsn');
-  has OriginalMessageId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SES::Types qw/SES_MessageDsn SES_BouncedRecipientInfo/;
+  has BouncedRecipientInfoList => (is => 'ro', isa => ArrayRef[SES_BouncedRecipientInfo], required => 1, predicate => 1);
+  has BounceSender => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BounceSenderArn => (is => 'ro', isa => Str, predicate => 1);
+  has Explanation => (is => 'ro', isa => Str, predicate => 1);
+  has MessageDsn => (is => 'ro', isa => SES_MessageDsn, predicate => 1);
+  has OriginalMessageId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendBounce');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::SendBounceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SendBounceResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendBounce');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::SendBounceResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'SendBounceResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MessageDsn' => {
+                                 'type' => 'SES_MessageDsn',
+                                 'class' => 'Paws::SES::MessageDsn'
+                               },
+               'BounceSender' => {
+                                   'type' => 'Str'
+                                 },
+               'Explanation' => {
+                                  'type' => 'Str'
+                                },
+               'BounceSenderArn' => {
+                                      'type' => 'Str'
+                                    },
+               'OriginalMessageId' => {
+                                        'type' => 'Str'
+                                      },
+               'BouncedRecipientInfoList' => {
+                                               'type' => 'ArrayRef[SES_BouncedRecipientInfo]',
+                                               'class' => 'Paws::SES::BouncedRecipientInfo'
+                                             }
+             },
+  'IsRequired' => {
+                    'OriginalMessageId' => 1,
+                    'BounceSender' => 1,
+                    'BouncedRecipientInfoList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -88,7 +126,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> BouncedRecipientInfoList => ArrayRef[L<Paws::SES::BouncedRecipientInfo>]
+=head2 B<REQUIRED> BouncedRecipientInfoList => ArrayRef[SES_BouncedRecipientInfo]
 
 A list of recipients of the bounced message, including the information
 required to create the Delivery Status Notifications (DSNs) for the
@@ -123,7 +161,7 @@ recipient information.
 
 
 
-=head2 MessageDsn => L<Paws::SES::MessageDsn>
+=head2 MessageDsn => SES_MessageDsn
 
 Message-related DSN fields. If not specified, Amazon SES will choose
 the values.

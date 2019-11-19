@@ -1,18 +1,55 @@
 
 package Paws::EC2::DescribeClientVpnTargetNetworks;
-  use Moose;
-  has AssociationIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool Int/;
+  use Paws::EC2::Types qw/EC2_Filter/;
+  has AssociationIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ClientVpnEndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClientVpnTargetNetworks');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeClientVpnTargetNetworksResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeClientVpnTargetNetworks');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeClientVpnTargetNetworksResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ClientVpnEndpointId' => 1
+                  },
+  'NameInRequest' => {
+                       'Filters' => 'Filter'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filters' => {
+                              'type' => 'ArrayRef[EC2_Filter]',
+                              'class' => 'Paws::EC2::Filter'
+                            },
+               'AssociationIds' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +119,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+=head2 Filters => ArrayRef[EC2_Filter]
 
 One or more filters. Filter names and values are case-sensitive.
 

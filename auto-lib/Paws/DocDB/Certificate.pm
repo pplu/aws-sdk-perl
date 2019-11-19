@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::DocDB::Certificate;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has CertificateIdentifier => (is => 'ro', isa => 'Str');
-  has CertificateType => (is => 'ro', isa => 'Str');
-  has Thumbprint => (is => 'ro', isa => 'Str');
-  has ValidFrom => (is => 'ro', isa => 'Str');
-  has ValidTill => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DocDB::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CertificateIdentifier => (is => 'ro', isa => Str);
+  has CertificateType => (is => 'ro', isa => Str);
+  has Thumbprint => (is => 'ro', isa => Str);
+  has ValidFrom => (is => 'ro', isa => Str);
+  has ValidTill => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'ValidTill' => {
+                                'type' => 'Str'
+                              },
+               'Thumbprint' => {
+                                 'type' => 'Str'
+                               },
+               'ValidFrom' => {
+                                'type' => 'Str'
+                              },
+               'CertificateType' => {
+                                      'type' => 'Str'
+                                    },
+               'CertificateIdentifier' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

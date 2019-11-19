@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::Subnet;
-  use Moose;
-  has SubnetAvailabilityZone => (is => 'ro', isa => 'Paws::ElastiCache::AvailabilityZone');
-  has SubnetIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw/ElastiCache_AvailabilityZone/;
+  has SubnetAvailabilityZone => (is => 'ro', isa => ElastiCache_AvailabilityZone);
+  has SubnetIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetAvailabilityZone' => {
+                                             'type' => 'ElastiCache_AvailabilityZone',
+                                             'class' => 'Paws::ElastiCache::AvailabilityZone'
+                                           },
+               'SubnetIdentifier' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +60,7 @@ used with ElastiCache.
 =head1 ATTRIBUTES
 
 
-=head2 SubnetAvailabilityZone => L<Paws::ElastiCache::AvailabilityZone>
+=head2 SubnetAvailabilityZone => ElastiCache_AvailabilityZone
 
   The Availability Zone associated with the subnet.
 

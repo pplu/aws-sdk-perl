@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputSpecification;
-  use Moose;
-  has Codec => (is => 'ro', isa => 'Str', request_name => 'codec', traits => ['NameInRequest']);
-  has MaximumBitrate => (is => 'ro', isa => 'Str', request_name => 'maximumBitrate', traits => ['NameInRequest']);
-  has Resolution => (is => 'ro', isa => 'Str', request_name => 'resolution', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has Codec => (is => 'ro', isa => Str);
+  has MaximumBitrate => (is => 'ro', isa => Str);
+  has Resolution => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaximumBitrate' => {
+                                     'type' => 'Str'
+                                   },
+               'Codec' => {
+                            'type' => 'Str'
+                          },
+               'Resolution' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Resolution' => 'resolution',
+                       'MaximumBitrate' => 'maximumBitrate',
+                       'Codec' => 'codec'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

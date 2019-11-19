@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeHostReservationsResult;
-  use Moose;
-  has HostReservationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HostReservation]', request_name => 'hostReservationSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_HostReservation/;
+  has HostReservationSet => (is => 'ro', isa => ArrayRef[EC2_HostReservation]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'HostReservationSet' => 'hostReservationSet'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'HostReservationSet' => {
+                                         'type' => 'ArrayRef[EC2_HostReservation]',
+                                         'class' => 'Paws::EC2::HostReservation'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeHostReservationsResult
 =head1 ATTRIBUTES
 
 
-=head2 HostReservationSet => ArrayRef[L<Paws::EC2::HostReservation>]
+=head2 HostReservationSet => ArrayRef[EC2_HostReservation]
 
 Details about the reservation's configuration.
 

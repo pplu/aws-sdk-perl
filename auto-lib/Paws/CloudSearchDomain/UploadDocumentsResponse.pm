@@ -1,12 +1,45 @@
 
 package Paws::CloudSearchDomain::UploadDocumentsResponse;
-  use Moose;
-  has Adds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'adds');
-  has Deletes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'deletes');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::DocumentServiceWarning]', traits => ['NameInRequest'], request_name => 'warnings');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::CloudSearchDomain::Types qw/CloudSearchDomain_DocumentServiceWarning/;
+  has Adds => (is => 'ro', isa => Int);
+  has Deletes => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has Warnings => (is => 'ro', isa => ArrayRef[CloudSearchDomain_DocumentServiceWarning]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Warnings' => 'warnings',
+                       'Status' => 'status',
+                       'Adds' => 'adds',
+                       'Deletes' => 'deletes'
+                     },
+  'types' => {
+               'Deletes' => {
+                              'type' => 'Int'
+                            },
+               'Adds' => {
+                           'type' => 'Int'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Warnings' => {
+                               'class' => 'Paws::CloudSearchDomain::DocumentServiceWarning',
+                               'type' => 'ArrayRef[CloudSearchDomain_DocumentServiceWarning]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -33,7 +66,7 @@ The number of documents that were deleted from the search domain.
 The status of an C<UploadDocumentsRequest>.
 
 
-=head2 Warnings => ArrayRef[L<Paws::CloudSearchDomain::DocumentServiceWarning>]
+=head2 Warnings => ArrayRef[CloudSearchDomain_DocumentServiceWarning]
 
 Any warnings returned by the document service about the documents being
 uploaded.

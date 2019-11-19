@@ -1,12 +1,51 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::LifecycleHookSpecification;
-  use Moose;
-  has DefaultResult => (is => 'ro', isa => 'Str');
-  has HeartbeatTimeout => (is => 'ro', isa => 'Int');
-  has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
-  has LifecycleTransition => (is => 'ro', isa => 'Str', required => 1);
-  has NotificationMetadata => (is => 'ro', isa => 'Str');
-  has NotificationTargetARN => (is => 'ro', isa => 'Str');
-  has RoleARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AutoScaling::Types qw//;
+  has DefaultResult => (is => 'ro', isa => Str);
+  has HeartbeatTimeout => (is => 'ro', isa => Int);
+  has LifecycleHookName => (is => 'ro', isa => Str, required => 1);
+  has LifecycleTransition => (is => 'ro', isa => Str, required => 1);
+  has NotificationMetadata => (is => 'ro', isa => Str);
+  has NotificationTargetARN => (is => 'ro', isa => Str);
+  has RoleARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LifecycleHookName' => 1,
+                    'LifecycleTransition' => 1
+                  },
+  'types' => {
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'NotificationTargetARN' => {
+                                            'type' => 'Str'
+                                          },
+               'LifecycleHookName' => {
+                                        'type' => 'Str'
+                                      },
+               'DefaultResult' => {
+                                    'type' => 'Str'
+                                  },
+               'NotificationMetadata' => {
+                                           'type' => 'Str'
+                                         },
+               'HeartbeatTimeout' => {
+                                       'type' => 'Int'
+                                     },
+               'LifecycleTransition' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

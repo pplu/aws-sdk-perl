@@ -1,17 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DataPipeline::QueryObjects;
-  use Moose;
-  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'marker' );
-  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
-  has Query => (is => 'ro', isa => 'Paws::DataPipeline::Query', traits => ['NameInRequest'], request_name => 'query' );
-  has Sphere => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sphere' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DataPipeline::Types qw/DataPipeline_Query/;
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has PipelineId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Query => (is => 'ro', isa => DataPipeline_Query, predicate => 1);
+  has Sphere => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'QueryObjects');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::QueryObjectsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'QueryObjects');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataPipeline::QueryObjectsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Query' => 'query',
+                       'Marker' => 'marker',
+                       'Limit' => 'limit',
+                       'PipelineId' => 'pipelineId',
+                       'Sphere' => 'sphere'
+                     },
+  'IsRequired' => {
+                    'PipelineId' => 1,
+                    'Sphere' => 1
+                  },
+  'types' => {
+               'Query' => {
+                            'class' => 'Paws::DataPipeline::Query',
+                            'type' => 'DataPipeline_Query'
+                          },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'PipelineId' => {
+                                 'type' => 'Str'
+                               },
+               'Sphere' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -87,7 +127,7 @@ The ID of the pipeline.
 
 
 
-=head2 Query => L<Paws::DataPipeline::Query>
+=head2 Query => DataPipeline_Query
 
 The query that defines the objects to be returned. The C<Query> object
 can contain a maximum of ten selectors. The conditions in the query are

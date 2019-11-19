@@ -1,12 +1,39 @@
 
 package Paws::Quicksight::ListGroupMembershipsResponse;
-  use Moose;
-  has GroupMemberList => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::GroupMember]');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has RequestId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Quicksight::Types qw/Quicksight_GroupMember/;
+  has GroupMemberList => (is => 'ro', isa => ArrayRef[Quicksight_GroupMember]);
+  has NextToken => (is => 'ro', isa => Str);
+  has RequestId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Int'
+                           },
+               'GroupMemberList' => {
+                                      'type' => 'ArrayRef[Quicksight_GroupMember]',
+                                      'class' => 'Paws::Quicksight::GroupMember'
+                                    },
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -18,7 +45,7 @@ Paws::Quicksight::ListGroupMembershipsResponse
 =head1 ATTRIBUTES
 
 
-=head2 GroupMemberList => ArrayRef[L<Paws::Quicksight::GroupMember>]
+=head2 GroupMemberList => ArrayRef[Quicksight_GroupMember]
 
 The list of the members of the group.
 

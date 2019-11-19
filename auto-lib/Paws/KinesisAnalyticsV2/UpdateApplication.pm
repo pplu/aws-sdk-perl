@@ -1,18 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalyticsV2::UpdateApplication;
-  use Moose;
-  has ApplicationConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate');
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has CloudWatchLoggingOptionUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionUpdate]');
-  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
-  has RunConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::RunConfigurationUpdate');
-  has ServiceExecutionRoleUpdate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_RunConfigurationUpdate KinesisAnalyticsV2_CloudWatchLoggingOptionUpdate KinesisAnalyticsV2_ApplicationConfigurationUpdate/;
+  has ApplicationConfigurationUpdate => (is => 'ro', isa => KinesisAnalyticsV2_ApplicationConfigurationUpdate, predicate => 1);
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CloudWatchLoggingOptionUpdates => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOptionUpdate], predicate => 1);
+  has CurrentApplicationVersionId => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has RunConfigurationUpdate => (is => 'ro', isa => KinesisAnalyticsV2_RunConfigurationUpdate, predicate => 1);
+  has ServiceExecutionRoleUpdate => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalyticsV2::UpdateApplicationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateApplication');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalyticsV2::UpdateApplicationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RunConfigurationUpdate' => {
+                                             'type' => 'KinesisAnalyticsV2_RunConfigurationUpdate',
+                                             'class' => 'Paws::KinesisAnalyticsV2::RunConfigurationUpdate'
+                                           },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'CloudWatchLoggingOptionUpdates' => {
+                                                     'class' => 'Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionUpdate',
+                                                     'type' => 'ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOptionUpdate]'
+                                                   },
+               'ServiceExecutionRoleUpdate' => {
+                                                 'type' => 'Str'
+                                               },
+               'ApplicationConfigurationUpdate' => {
+                                                     'class' => 'Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate',
+                                                     'type' => 'KinesisAnalyticsV2_ApplicationConfigurationUpdate'
+                                                   },
+               'CurrentApplicationVersionId' => {
+                                                  'type' => 'Int'
+                                                }
+             },
+  'IsRequired' => {
+                    'ApplicationName' => 1,
+                    'CurrentApplicationVersionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +89,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },    # OPTIONAL
         ApplicationSnapshotConfigurationUpdate => {
-          SnapshotsEnabledUpdate => 1,    # OPTIONAL
+          SnapshotsEnabledUpdate => 1,
 
         },    # OPTIONAL
         EnvironmentPropertyUpdates => {
@@ -71,7 +109,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         FlinkApplicationConfigurationUpdate => {
           CheckpointConfigurationUpdate => {
             CheckpointIntervalUpdate   => 1,    # OPTIONAL
-            CheckpointingEnabledUpdate => 1,    # OPTIONAL
+            CheckpointingEnabledUpdate => 1,
             ConfigurationTypeUpdate =>
               'DEFAULT',    # values: DEFAULT, CUSTOM; OPTIONAL
             MinPauseBetweenCheckpointsUpdate => 1,    # OPTIONAL
@@ -85,7 +123,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ,    # values: APPLICATION, TASK, OPERATOR, PARALLELISM; OPTIONAL
           },    # OPTIONAL
           ParallelismConfigurationUpdate => {
-            AutoScalingEnabledUpdate => 1,    # OPTIONAL
+            AutoScalingEnabledUpdate => 1,
             ConfigurationTypeUpdate =>
               'DEFAULT',    # values: DEFAULT, CUSTOM; OPTIONAL
             ParallelismPerKPUUpdate => 1,    # min: 1; OPTIONAL
@@ -236,7 +274,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationConfigurationUpdate => L<Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate>
+=head2 ApplicationConfigurationUpdate => KinesisAnalyticsV2_ApplicationConfigurationUpdate
 
 Describes application configuration updates.
 
@@ -248,7 +286,7 @@ The name of the application to update.
 
 
 
-=head2 CloudWatchLoggingOptionUpdates => ArrayRef[L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionUpdate>]
+=head2 CloudWatchLoggingOptionUpdates => ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOptionUpdate]
 
 Describes application Amazon CloudWatch logging option updates. You can
 only update existing CloudWatch logging options with this action. To
@@ -264,7 +302,7 @@ version ID using DescribeApplication.
 
 
 
-=head2 RunConfigurationUpdate => L<Paws::KinesisAnalyticsV2::RunConfigurationUpdate>
+=head2 RunConfigurationUpdate => KinesisAnalyticsV2_RunConfigurationUpdate
 
 Describes updates to the application's starting parameters.
 

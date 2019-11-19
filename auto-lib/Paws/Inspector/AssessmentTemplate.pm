@@ -1,14 +1,77 @@
+# Generated from default/object.tt
 package Paws::Inspector::AssessmentTemplate;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has AssessmentRunCount => (is => 'ro', isa => 'Int', request_name => 'assessmentRunCount', traits => ['NameInRequest'], required => 1);
-  has AssessmentTargetArn => (is => 'ro', isa => 'Str', request_name => 'assessmentTargetArn', traits => ['NameInRequest'], required => 1);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
-  has DurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'durationInSeconds', traits => ['NameInRequest'], required => 1);
-  has LastAssessmentRunArn => (is => 'ro', isa => 'Str', request_name => 'lastAssessmentRunArn', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest'], required => 1);
-  has UserAttributesForFindings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'userAttributesForFindings', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::Inspector::Types qw/Inspector_Attribute/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has AssessmentRunCount => (is => 'ro', isa => Int, required => 1);
+  has AssessmentTargetArn => (is => 'ro', isa => Str, required => 1);
+  has CreatedAt => (is => 'ro', isa => Str, required => 1);
+  has DurationInSeconds => (is => 'ro', isa => Int, required => 1);
+  has LastAssessmentRunArn => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has RulesPackageArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has UserAttributesForFindings => (is => 'ro', isa => ArrayRef[Inspector_Attribute], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RulesPackageArns' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'DurationInSeconds' => {
+                                        'type' => 'Int'
+                                      },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'LastAssessmentRunArn' => {
+                                           'type' => 'Str'
+                                         },
+               'UserAttributesForFindings' => {
+                                                'class' => 'Paws::Inspector::Attribute',
+                                                'type' => 'ArrayRef[Inspector_Attribute]'
+                                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'AssessmentTargetArn' => {
+                                          'type' => 'Str'
+                                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AssessmentRunCount' => {
+                                         'type' => 'Int'
+                                       }
+             },
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'UserAttributesForFindings' => 'userAttributesForFindings',
+                       'AssessmentTargetArn' => 'assessmentTargetArn',
+                       'Name' => 'name',
+                       'AssessmentRunCount' => 'assessmentRunCount',
+                       'LastAssessmentRunArn' => 'lastAssessmentRunArn',
+                       'DurationInSeconds' => 'durationInSeconds',
+                       'CreatedAt' => 'createdAt',
+                       'RulesPackageArns' => 'rulesPackageArns'
+                     },
+  'IsRequired' => {
+                    'Arn' => 1,
+                    'UserAttributesForFindings' => 1,
+                    'AssessmentTargetArn' => 1,
+                    'AssessmentRunCount' => 1,
+                    'Name' => 1,
+                    'RulesPackageArns' => 1,
+                    'DurationInSeconds' => 1,
+                    'CreatedAt' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +155,7 @@ the value of assessmentRunCount is greaterpa than zero.
   The rules packages that are specified for this assessment template.
 
 
-=head2 B<REQUIRED> UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 B<REQUIRED> UserAttributesForFindings => ArrayRef[Inspector_Attribute]
 
   The user-defined attributes that are assigned to every generated
 finding from the assessment run that uses this assessment template.

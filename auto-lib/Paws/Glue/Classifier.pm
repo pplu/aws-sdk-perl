@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::Glue::Classifier;
-  use Moose;
-  has CsvClassifier => (is => 'ro', isa => 'Paws::Glue::CsvClassifier');
-  has GrokClassifier => (is => 'ro', isa => 'Paws::Glue::GrokClassifier');
-  has JsonClassifier => (is => 'ro', isa => 'Paws::Glue::JsonClassifier');
-  has XMLClassifier => (is => 'ro', isa => 'Paws::Glue::XMLClassifier');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Glue::Types qw/Glue_GrokClassifier Glue_CsvClassifier Glue_JsonClassifier Glue_XMLClassifier/;
+  has CsvClassifier => (is => 'ro', isa => Glue_CsvClassifier);
+  has GrokClassifier => (is => 'ro', isa => Glue_GrokClassifier);
+  has JsonClassifier => (is => 'ro', isa => Glue_JsonClassifier);
+  has XMLClassifier => (is => 'ro', isa => Glue_XMLClassifier);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CsvClassifier' => {
+                                    'class' => 'Paws::Glue::CsvClassifier',
+                                    'type' => 'Glue_CsvClassifier'
+                                  },
+               'JsonClassifier' => {
+                                     'type' => 'Glue_JsonClassifier',
+                                     'class' => 'Paws::Glue::JsonClassifier'
+                                   },
+               'XMLClassifier' => {
+                                    'type' => 'Glue_XMLClassifier',
+                                    'class' => 'Paws::Glue::XMLClassifier'
+                                  },
+               'GrokClassifier' => {
+                                     'type' => 'Glue_GrokClassifier',
+                                     'class' => 'Paws::Glue::GrokClassifier'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,22 +79,22 @@ C<Classifier> object.
 =head1 ATTRIBUTES
 
 
-=head2 CsvClassifier => L<Paws::Glue::CsvClassifier>
+=head2 CsvClassifier => Glue_CsvClassifier
 
   A classifier for comma-separated values (CSV).
 
 
-=head2 GrokClassifier => L<Paws::Glue::GrokClassifier>
+=head2 GrokClassifier => Glue_GrokClassifier
 
   A classifier that uses C<grok>.
 
 
-=head2 JsonClassifier => L<Paws::Glue::JsonClassifier>
+=head2 JsonClassifier => Glue_JsonClassifier
 
   A classifier for JSON content.
 
 
-=head2 XMLClassifier => L<Paws::Glue::XMLClassifier>
+=head2 XMLClassifier => Glue_XMLClassifier
 
   A classifier for XML content.
 

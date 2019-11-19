@@ -1,21 +1,76 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetMaintenanceWindowExecutionTaskResult;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str');
-  has MaxConcurrency => (is => 'ro', isa => 'Str');
-  has MaxErrors => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Int');
-  has ServiceRole => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusDetails => (is => 'ro', isa => 'Str');
-  has TaskArn => (is => 'ro', isa => 'Str');
-  has TaskExecutionId => (is => 'ro', isa => 'Str');
-  has TaskParameters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::MaintenanceWindowTaskParameters]');
-  has Type => (is => 'ro', isa => 'Str');
-  has WindowExecutionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::SSM::Types qw/SSM_MaintenanceWindowTaskParameters/;
+  has EndTime => (is => 'ro', isa => Str);
+  has MaxConcurrency => (is => 'ro', isa => Str);
+  has MaxErrors => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Int);
+  has ServiceRole => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetails => (is => 'ro', isa => Str);
+  has TaskArn => (is => 'ro', isa => Str);
+  has TaskExecutionId => (is => 'ro', isa => Str);
+  has TaskParameters => (is => 'ro', isa => ArrayRef[SSM_MaintenanceWindowTaskParameters]);
+  has Type => (is => 'ro', isa => Str);
+  has WindowExecutionId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskParameters' => {
+                                     'class' => 'Paws::SSM::MaintenanceWindowTaskParameters',
+                                     'type' => 'ArrayRef[SSM_MaintenanceWindowTaskParameters]'
+                                   },
+               'TaskExecutionId' => {
+                                      'type' => 'Str'
+                                    },
+               'MaxErrors' => {
+                                'type' => 'Str'
+                              },
+               'MaxConcurrency' => {
+                                     'type' => 'Str'
+                                   },
+               'StatusDetails' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'WindowExecutionId' => {
+                                        'type' => 'Str'
+                                      },
+               'StartTime' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -80,7 +135,7 @@ The ID of the specific task execution in the maintenance window task
 that was retrieved.
 
 
-=head2 TaskParameters => ArrayRef[L<Paws::SSM::MaintenanceWindowTaskParameters>]
+=head2 TaskParameters => ArrayRef[SSM_MaintenanceWindowTaskParameters]
 
 The parameters passed to the task when it was run.
 

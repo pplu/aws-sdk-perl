@@ -1,17 +1,55 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Discovery::ListServerNeighbors;
-  use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'configurationId' , required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NeighborConfigurationIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'neighborConfigurationIds' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has PortInformationNeeded => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'portInformationNeeded' );
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef Bool/;
+  use Paws::Discovery::Types qw//;
+  has ConfigurationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NeighborConfigurationIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has PortInformationNeeded => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListServerNeighbors');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Discovery::ListServerNeighborsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListServerNeighbors');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Discovery::ListServerNeighborsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PortInformationNeeded' => 'portInformationNeeded',
+                       'NeighborConfigurationIds' => 'neighborConfigurationIds',
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken',
+                       'ConfigurationId' => 'configurationId'
+                     },
+  'IsRequired' => {
+                    'ConfigurationId' => 1
+                  },
+  'types' => {
+               'NeighborConfigurationIds' => {
+                                               'type' => 'ArrayRef[Str|Undef]'
+                                             },
+               'PortInformationNeeded' => {
+                                            'type' => 'Bool'
+                                          },
+               'ConfigurationId' => {
+                                      'type' => 'Str'
+                                    },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

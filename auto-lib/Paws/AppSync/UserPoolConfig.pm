@@ -1,9 +1,46 @@
+# Generated from default/object.tt
 package Paws::AppSync::UserPoolConfig;
-  use Moose;
-  has AppIdClientRegex => (is => 'ro', isa => 'Str', request_name => 'appIdClientRegex', traits => ['NameInRequest']);
-  has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest'], required => 1);
-  has DefaultAction => (is => 'ro', isa => 'Str', request_name => 'defaultAction', traits => ['NameInRequest'], required => 1);
-  has UserPoolId => (is => 'ro', isa => 'Str', request_name => 'userPoolId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw//;
+  has AppIdClientRegex => (is => 'ro', isa => Str);
+  has AwsRegion => (is => 'ro', isa => Str, required => 1);
+  has DefaultAction => (is => 'ro', isa => Str, required => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DefaultAction' => {
+                                    'type' => 'Str'
+                                  },
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'AppIdClientRegex' => {
+                                       'type' => 'Str'
+                                     },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'UserPoolId' => 1,
+                    'AwsRegion' => 1,
+                    'DefaultAction' => 1
+                  },
+  'NameInRequest' => {
+                       'AwsRegion' => 'awsRegion',
+                       'DefaultAction' => 'defaultAction',
+                       'UserPoolId' => 'userPoolId',
+                       'AppIdClientRegex' => 'appIdClientRegex'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

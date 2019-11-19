@@ -1,21 +1,88 @@
+# Generated from default/object.tt
 package Paws::Glue::JobUpdate;
-  use Moose;
-  has AllocatedCapacity => (is => 'ro', isa => 'Int');
-  has Command => (is => 'ro', isa => 'Paws::Glue::JobCommand');
-  has Connections => (is => 'ro', isa => 'Paws::Glue::ConnectionsList');
-  has DefaultArguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExecutionProperty => (is => 'ro', isa => 'Paws::Glue::ExecutionProperty');
-  has GlueVersion => (is => 'ro', isa => 'Str');
-  has LogUri => (is => 'ro', isa => 'Str');
-  has MaxCapacity => (is => 'ro', isa => 'Num');
-  has MaxRetries => (is => 'ro', isa => 'Int');
-  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
-  has NumberOfWorkers => (is => 'ro', isa => 'Int');
-  has Role => (is => 'ro', isa => 'Str');
-  has SecurityConfiguration => (is => 'ro', isa => 'Str');
-  has Timeout => (is => 'ro', isa => 'Int');
-  has WorkerType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str Num/;
+  use Paws::Glue::Types qw/Glue_JobCommand Glue_NotificationProperty Glue_ExecutionProperty Glue_ConnectionsList Glue_GenericMap/;
+  has AllocatedCapacity => (is => 'ro', isa => Int);
+  has Command => (is => 'ro', isa => Glue_JobCommand);
+  has Connections => (is => 'ro', isa => Glue_ConnectionsList);
+  has DefaultArguments => (is => 'ro', isa => Glue_GenericMap);
+  has Description => (is => 'ro', isa => Str);
+  has ExecutionProperty => (is => 'ro', isa => Glue_ExecutionProperty);
+  has GlueVersion => (is => 'ro', isa => Str);
+  has LogUri => (is => 'ro', isa => Str);
+  has MaxCapacity => (is => 'ro', isa => Num);
+  has MaxRetries => (is => 'ro', isa => Int);
+  has NotificationProperty => (is => 'ro', isa => Glue_NotificationProperty);
+  has NumberOfWorkers => (is => 'ro', isa => Int);
+  has Role => (is => 'ro', isa => Str);
+  has SecurityConfiguration => (is => 'ro', isa => Str);
+  has Timeout => (is => 'ro', isa => Int);
+  has WorkerType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumberOfWorkers' => {
+                                      'type' => 'Int'
+                                    },
+               'WorkerType' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Timeout' => {
+                              'type' => 'Int'
+                            },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'GlueVersion' => {
+                                  'type' => 'Str'
+                                },
+               'DefaultArguments' => {
+                                       'type' => 'Glue_GenericMap',
+                                       'class' => 'Paws::Glue::GenericMap'
+                                     },
+               'SecurityConfiguration' => {
+                                            'type' => 'Str'
+                                          },
+               'MaxRetries' => {
+                                 'type' => 'Int'
+                               },
+               'NotificationProperty' => {
+                                           'type' => 'Glue_NotificationProperty',
+                                           'class' => 'Paws::Glue::NotificationProperty'
+                                         },
+               'LogUri' => {
+                             'type' => 'Str'
+                           },
+               'AllocatedCapacity' => {
+                                        'type' => 'Int'
+                                      },
+               'ExecutionProperty' => {
+                                        'class' => 'Paws::Glue::ExecutionProperty',
+                                        'type' => 'Glue_ExecutionProperty'
+                                      },
+               'Command' => {
+                              'class' => 'Paws::Glue::JobCommand',
+                              'type' => 'Glue_JobCommand'
+                            },
+               'MaxCapacity' => {
+                                  'type' => 'Num'
+                                },
+               'Connections' => {
+                                  'class' => 'Paws::Glue::ConnectionsList',
+                                  'type' => 'Glue_ConnectionsList'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,17 +130,17 @@ compute capacity and 16 GB of memory. For more information, see the AWS
 Glue pricing page (https://aws.amazon.com/glue/pricing/).
 
 
-=head2 Command => L<Paws::Glue::JobCommand>
+=head2 Command => Glue_JobCommand
 
   The C<JobCommand> that executes this job (required).
 
 
-=head2 Connections => L<Paws::Glue::ConnectionsList>
+=head2 Connections => Glue_ConnectionsList
 
   The connections used for this job.
 
 
-=head2 DefaultArguments => L<Paws::Glue::GenericMap>
+=head2 DefaultArguments => Glue_GenericMap
 
   The default arguments for this job.
 
@@ -96,7 +163,7 @@ topic in the developer guide.
   Description of the job being defined.
 
 
-=head2 ExecutionProperty => L<Paws::Glue::ExecutionProperty>
+=head2 ExecutionProperty => Glue_ExecutionProperty
 
   An C<ExecutionProperty> specifying the maximum number of concurrent
 runs allowed for this job.
@@ -156,7 +223,7 @@ allocation.
   The maximum number of times to retry this job if it fails.
 
 
-=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
+=head2 NotificationProperty => Glue_NotificationProperty
 
   Specifies the configuration properties of a job notification.
 

@@ -1,15 +1,41 @@
 
 package Paws::ManagedBlockchain::GetMember;
-  use Moose;
-  has MemberId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'memberId', required => 1);
-  has NetworkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'networkId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has MemberId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NetworkId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMember');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/members/{memberId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::GetMemberOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetMember');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/networks/{networkId}/members/{memberId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ManagedBlockchain::GetMemberOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'NetworkId' => 'networkId',
+                    'MemberId' => 'memberId'
+                  },
+  'IsRequired' => {
+                    'MemberId' => 1,
+                    'NetworkId' => 1
+                  },
+  'types' => {
+               'NetworkId' => {
+                                'type' => 'Str'
+                              },
+               'MemberId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

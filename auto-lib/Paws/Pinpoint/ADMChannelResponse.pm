@@ -1,15 +1,62 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::ADMChannelResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has HasCredential => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str');
-  has IsArchived => (is => 'ro', isa => 'Bool');
-  has LastModifiedBy => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str', required => 1);
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has HasCredential => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str);
+  has IsArchived => (is => 'ro', isa => Bool);
+  has LastModifiedBy => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str, required => 1);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Platform' => 1
+                  },
+  'types' => {
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'LastModifiedBy' => {
+                                     'type' => 'Str'
+                                   },
+               'HasCredential' => {
+                                    'type' => 'Bool'
+                                  },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'IsArchived' => {
+                                 'type' => 'Bool'
+                               },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

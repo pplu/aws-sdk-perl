@@ -1,16 +1,47 @@
 
 package Paws::AppSync::CreateApiKey;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Expires => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'expires');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AppSync::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Expires => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApiKey');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apis/{apiId}/apikeys');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppSync::CreateApiKeyResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApiKey');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apis/{apiId}/apikeys');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppSync::CreateApiKeyResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Expires' => {
+                              'type' => 'Int'
+                            },
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'Expires' => 'expires'
+                     },
+  'IsRequired' => {
+                    'ApiId' => 1
+                  },
+  'ParamInURI' => {
+                    'ApiId' => 'apiId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeStar::TagProject;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' , required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::CodeStar::Tags', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStar::Types qw/CodeStar_Tags/;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => CodeStar_Tags, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagProject');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStar::TagProjectResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagProject');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStar::TagProjectResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'Id' => 'id'
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Tags' => 1
+                  },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Tags' => {
+                           'type' => 'CodeStar_Tags',
+                           'class' => 'Paws::CodeStar::Tags'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +81,7 @@ The ID of the project you want to add a tag to.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::CodeStar::Tags>
+=head2 B<REQUIRED> Tags => CodeStar_Tags
 
 The tags you want to add to the project.
 

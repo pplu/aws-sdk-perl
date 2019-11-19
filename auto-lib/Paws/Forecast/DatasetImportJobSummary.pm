@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::Forecast::DatasetImportJobSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DatasetImportJobArn => (is => 'ro', isa => 'Str');
-  has DatasetImportJobName => (is => 'ro', isa => 'Str');
-  has DataSource => (is => 'ro', isa => 'Paws::Forecast::DataSource');
-  has LastModificationTime => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw/Forecast_DataSource/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DatasetImportJobArn => (is => 'ro', isa => Str);
+  has DatasetImportJobName => (is => 'ro', isa => Str);
+  has DataSource => (is => 'ro', isa => Forecast_DataSource);
+  has LastModificationTime => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DatasetImportJobArn' => {
+                                          'type' => 'Str'
+                                        },
+               'LastModificationTime' => {
+                                           'type' => 'Str'
+                                         },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'DataSource' => {
+                                 'type' => 'Forecast_DataSource',
+                                 'class' => 'Paws::Forecast::DataSource'
+                               },
+               'DatasetImportJobName' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +96,7 @@ C<DatasetImportJobArn>.
   The name of the dataset import job.
 
 
-=head2 DataSource => L<Paws::Forecast::DataSource>
+=head2 DataSource => Forecast_DataSource
 
   The location of the Amazon S3 bucket that contains the training data.
 

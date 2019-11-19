@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Comprehend::KeyPhrase;
-  use Moose;
-  has BeginOffset => (is => 'ro', isa => 'Int');
-  has EndOffset => (is => 'ro', isa => 'Int');
-  has Score => (is => 'ro', isa => 'Num');
-  has Text => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Num Str/;
+  use Paws::Comprehend::Types qw//;
+  has BeginOffset => (is => 'ro', isa => Int);
+  has EndOffset => (is => 'ro', isa => Int);
+  has Score => (is => 'ro', isa => Num);
+  has Text => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Text' => {
+                           'type' => 'Str'
+                         },
+               'EndOffset' => {
+                                'type' => 'Int'
+                              },
+               'Score' => {
+                            'type' => 'Num'
+                          },
+               'BeginOffset' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

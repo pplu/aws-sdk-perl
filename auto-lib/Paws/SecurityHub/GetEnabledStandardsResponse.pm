@@ -1,10 +1,31 @@
 
 package Paws::SecurityHub::GetEnabledStandardsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StandardsSubscriptions => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StandardsSubscription]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SecurityHub::Types qw/SecurityHub_StandardsSubscription/;
+  has NextToken => (is => 'ro', isa => Str);
+  has StandardsSubscriptions => (is => 'ro', isa => ArrayRef[SecurityHub_StandardsSubscription]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'StandardsSubscriptions' => {
+                                             'type' => 'ArrayRef[SecurityHub_StandardsSubscription]',
+                                             'class' => 'Paws::SecurityHub::StandardsSubscription'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +42,7 @@ Paws::SecurityHub::GetEnabledStandardsResponse
 The token that is required for pagination.
 
 
-=head2 StandardsSubscriptions => ArrayRef[L<Paws::SecurityHub::StandardsSubscription>]
+=head2 StandardsSubscriptions => ArrayRef[SecurityHub_StandardsSubscription]
 
 A list of C<StandardsSubscriptions> objects that include information
 about the enabled standards.

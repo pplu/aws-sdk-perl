@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::SelfUserProfile;
-  use Moose;
-  has IamUserArn => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has SshPublicKey => (is => 'ro', isa => 'Str');
-  has SshUsername => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw//;
+  has IamUserArn => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has SshPublicKey => (is => 'ro', isa => Str);
+  has SshUsername => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IamUserArn' => {
+                                 'type' => 'Str'
+                               },
+               'SshUsername' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SshPublicKey' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

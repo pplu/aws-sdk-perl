@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionExecutionOutput;
-  use Moose;
-  has ExecutionResult => (is => 'ro', isa => 'Paws::CodePipeline::ActionExecutionResult', request_name => 'executionResult', traits => ['NameInRequest']);
-  has OutputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ArtifactDetail]', request_name => 'outputArtifacts', traits => ['NameInRequest']);
-  has OutputVariables => (is => 'ro', isa => 'Paws::CodePipeline::OutputVariablesMap', request_name => 'outputVariables', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ActionExecutionResult CodePipeline_ArtifactDetail CodePipeline_OutputVariablesMap/;
+  has ExecutionResult => (is => 'ro', isa => CodePipeline_ActionExecutionResult);
+  has OutputArtifacts => (is => 'ro', isa => ArrayRef[CodePipeline_ArtifactDetail]);
+  has OutputVariables => (is => 'ro', isa => CodePipeline_OutputVariablesMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputVariables' => {
+                                      'class' => 'Paws::CodePipeline::OutputVariablesMap',
+                                      'type' => 'CodePipeline_OutputVariablesMap'
+                                    },
+               'OutputArtifacts' => {
+                                      'type' => 'ArrayRef[CodePipeline_ArtifactDetail]',
+                                      'class' => 'Paws::CodePipeline::ArtifactDetail'
+                                    },
+               'ExecutionResult' => {
+                                      'type' => 'CodePipeline_ActionExecutionResult',
+                                      'class' => 'Paws::CodePipeline::ActionExecutionResult'
+                                    }
+             },
+  'NameInRequest' => {
+                       'OutputArtifacts' => 'outputArtifacts',
+                       'OutputVariables' => 'outputVariables',
+                       'ExecutionResult' => 'executionResult'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,19 +70,19 @@ execution result.
 =head1 ATTRIBUTES
 
 
-=head2 ExecutionResult => L<Paws::CodePipeline::ActionExecutionResult>
+=head2 ExecutionResult => CodePipeline_ActionExecutionResult
 
   Execution result information listed in the output details for an action
 execution.
 
 
-=head2 OutputArtifacts => ArrayRef[L<Paws::CodePipeline::ArtifactDetail>]
+=head2 OutputArtifacts => ArrayRef[CodePipeline_ArtifactDetail]
 
   Details of output artifacts of the action that correspond to the action
 execution.
 
 
-=head2 OutputVariables => L<Paws::CodePipeline::OutputVariablesMap>
+=head2 OutputVariables => CodePipeline_OutputVariablesMap
 
   The outputVariables field shows the key-value pairs that were output as
 part of that execution.

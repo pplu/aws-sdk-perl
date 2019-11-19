@@ -1,29 +1,98 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::RestoreDBClusterToPointInTime;
-  use Moose;
-  has BacktrackWindow => (is => 'ro', isa => 'Int');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has RestoreToTime => (is => 'ro', isa => 'Str');
-  has RestoreType => (is => 'ro', isa => 'Str');
-  has SourceDBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int Bool Undef ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Tag/;
+  has BacktrackWindow => (is => 'ro', isa => Int, predicate => 1);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has RestoreToTime => (is => 'ro', isa => Str, predicate => 1);
+  has RestoreType => (is => 'ro', isa => Str, predicate => 1);
+  has SourceDBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
+  has UseLatestRestorableTime => (is => 'ro', isa => Bool, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterToPointInTime');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RestoreDBClusterToPointInTimeResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterToPointInTimeResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreDBClusterToPointInTime');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::RestoreDBClusterToPointInTimeResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RestoreDBClusterToPointInTimeResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SourceDBClusterIdentifier' => 1,
+                    'DBClusterIdentifier' => 1
+                  },
+  'types' => {
+               'UseLatestRestorableTime' => {
+                                              'type' => 'Bool'
+                                            },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'RestoreToTime' => {
+                                    'type' => 'Str'
+                                  },
+               'RestoreType' => {
+                                  'type' => 'Str'
+                                },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'SourceDBClusterIdentifier' => {
+                                                'type' => 'Str'
+                                              },
+               'BacktrackWindow' => {
+                                      'type' => 'Int'
+                                    },
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'Tags' => {
+                           'type' => 'ArrayRef[RDS_Tag]',
+                           'class' => 'Paws::RDS::Tag'
+                         },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -322,7 +391,7 @@ Must match the identifier of an existing DBCluster.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 
 

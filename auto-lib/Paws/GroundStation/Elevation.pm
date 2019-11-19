@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::GroundStation::Elevation;
-  use Moose;
-  has Unit => (is => 'ro', isa => 'Str', request_name => 'unit', traits => ['NameInRequest'], required => 1);
-  has Value => (is => 'ro', isa => 'Num', request_name => 'value', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::GroundStation::Types qw//;
+  has Unit => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Value' => 'value',
+                       'Unit' => 'unit'
+                     },
+  'IsRequired' => {
+                    'Unit' => 1,
+                    'Value' => 1
+                  },
+  'types' => {
+               'Value' => {
+                            'type' => 'Num'
+                          },
+               'Unit' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

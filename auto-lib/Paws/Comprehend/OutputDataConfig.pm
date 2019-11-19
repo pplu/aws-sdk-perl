@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::Comprehend::OutputDataConfig;
-  use Moose;
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw//;
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has S3Uri => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'S3Uri' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'S3Uri' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

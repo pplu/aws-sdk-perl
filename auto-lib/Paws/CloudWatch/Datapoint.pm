@@ -1,13 +1,52 @@
+# Generated from default/object.tt
 package Paws::CloudWatch::Datapoint;
-  use Moose;
-  has Average => (is => 'ro', isa => 'Num');
-  has ExtendedStatistics => (is => 'ro', isa => 'Paws::CloudWatch::DatapointValueMap');
-  has Maximum => (is => 'ro', isa => 'Num');
-  has Minimum => (is => 'ro', isa => 'Num');
-  has SampleCount => (is => 'ro', isa => 'Num');
-  has Sum => (is => 'ro', isa => 'Num');
-  has Timestamp => (is => 'ro', isa => 'Str');
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Str/;
+  use Paws::CloudWatch::Types qw/CloudWatch_DatapointValueMap/;
+  has Average => (is => 'ro', isa => Num);
+  has ExtendedStatistics => (is => 'ro', isa => CloudWatch_DatapointValueMap);
+  has Maximum => (is => 'ro', isa => Num);
+  has Minimum => (is => 'ro', isa => Num);
+  has SampleCount => (is => 'ro', isa => Num);
+  has Sum => (is => 'ro', isa => Num);
+  has Timestamp => (is => 'ro', isa => Str);
+  has Unit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Average' => {
+                              'type' => 'Num'
+                            },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'ExtendedStatistics' => {
+                                         'class' => 'Paws::CloudWatch::DatapointValueMap',
+                                         'type' => 'CloudWatch_DatapointValueMap'
+                                       },
+               'SampleCount' => {
+                                  'type' => 'Num'
+                                },
+               'Sum' => {
+                          'type' => 'Num'
+                        },
+               'Maximum' => {
+                              'type' => 'Num'
+                            },
+               'Minimum' => {
+                              'type' => 'Num'
+                            },
+               'Unit' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +88,7 @@ data.
   The average of the metric values that correspond to the data point.
 
 
-=head2 ExtendedStatistics => L<Paws::CloudWatch::DatapointValueMap>
+=head2 ExtendedStatistics => CloudWatch_DatapointValueMap
 
   The percentile statistic for the data point.
 

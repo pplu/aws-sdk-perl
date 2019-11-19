@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::IAM::EntityInfo;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Path => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Path => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Path' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Arn' => 1,
+                    'Type' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

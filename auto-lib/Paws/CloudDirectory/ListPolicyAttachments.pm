@@ -1,18 +1,54 @@
 
 package Paws::CloudDirectory::ListPolicyAttachments;
-  use Moose;
-  has ConsistencyLevel => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-consistency-level');
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PolicyReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference/;
+  has ConsistencyLevel => (is => 'ro', isa => Str, predicate => 1);
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has PolicyReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListPolicyAttachments');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/policy/attachment');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::ListPolicyAttachmentsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListPolicyAttachments');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/policy/attachment');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::ListPolicyAttachmentsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'ConsistencyLevel' => 'x-amz-consistency-level',
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     },
+  'IsRequired' => {
+                    'DirectoryArn' => 1,
+                    'PolicyReference' => 1
+                  },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'ConsistencyLevel' => {
+                                       'type' => 'Str'
+                                     },
+               'PolicyReference' => {
+                                      'type' => 'CloudDirectory_ObjectReference',
+                                      'class' => 'Paws::CloudDirectory::ObjectReference'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +118,7 @@ The pagination token.
 
 
 
-=head2 B<REQUIRED> PolicyReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> PolicyReference => CloudDirectory_ObjectReference
 
 The reference that identifies the policy object.
 

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::ListBackupsOutput;
-  use Moose;
-  has BackupSummaries => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::BackupSummary]');
-  has LastEvaluatedBackupArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_BackupSummary/;
+  has BackupSummaries => (is => 'ro', isa => ArrayRef[DynamoDB_BackupSummary]);
+  has LastEvaluatedBackupArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastEvaluatedBackupArn' => {
+                                             'type' => 'Str'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BackupSummaries' => {
+                                      'type' => 'ArrayRef[DynamoDB_BackupSummary]',
+                                      'class' => 'Paws::DynamoDB::BackupSummary'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::DynamoDB::ListBackupsOutput
 =head1 ATTRIBUTES
 
 
-=head2 BackupSummaries => ArrayRef[L<Paws::DynamoDB::BackupSummary>]
+=head2 BackupSummaries => ArrayRef[DynamoDB_BackupSummary]
 
 List of C<BackupSummary> objects.
 

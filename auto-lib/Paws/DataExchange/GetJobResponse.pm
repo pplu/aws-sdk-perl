@@ -1,16 +1,56 @@
 
 package Paws::DataExchange::GetJobResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has Details => (is => 'ro', isa => 'Paws::DataExchange::ResponseDetails');
-  has Errors => (is => 'ro', isa => 'ArrayRef[Paws::DataExchange::JobError]');
-  has Id => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has UpdatedAt => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DataExchange::Types qw/DataExchange_ResponseDetails DataExchange_JobError/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Details => (is => 'ro', isa => DataExchange_ResponseDetails);
+  has Errors => (is => 'ro', isa => ArrayRef[DataExchange_JobError]);
+  has Id => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Errors' => {
+                             'class' => 'Paws::DataExchange::JobError',
+                             'type' => 'ArrayRef[DataExchange_JobError]'
+                           },
+               'Details' => {
+                              'class' => 'Paws::DataExchange::ResponseDetails',
+                              'type' => 'DataExchange_ResponseDetails'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -32,12 +72,12 @@ The ARN for the job.
 The date and time that the job was created, in ISO 8601 format.
 
 
-=head2 Details => L<Paws::DataExchange::ResponseDetails>
+=head2 Details => DataExchange_ResponseDetails
 
 Details about the job.
 
 
-=head2 Errors => ArrayRef[L<Paws::DataExchange::JobError>]
+=head2 Errors => ArrayRef[DataExchange_JobError]
 
 The errors associated with jobs.
 

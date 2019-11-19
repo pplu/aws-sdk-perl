@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Forecast::SchemaAttribute;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str');
-  has AttributeType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str);
+  has AttributeType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  },
+               'AttributeType' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

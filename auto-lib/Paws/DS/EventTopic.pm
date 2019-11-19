@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::DS::EventTopic;
-  use Moose;
-  has CreatedDateTime => (is => 'ro', isa => 'Str');
-  has DirectoryId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TopicArn => (is => 'ro', isa => 'Str');
-  has TopicName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DS::Types qw//;
+  has CreatedDateTime => (is => 'ro', isa => Str);
+  has DirectoryId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TopicArn => (is => 'ro', isa => Str);
+  has TopicName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'TopicArn' => {
+                               'type' => 'Str'
+                             },
+               'TopicName' => {
+                                'type' => 'Str'
+                              },
+               'CreatedDateTime' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

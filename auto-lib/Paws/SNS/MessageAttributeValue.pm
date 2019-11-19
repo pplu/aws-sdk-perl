@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::SNS::MessageAttributeValue;
-  use Moose;
-  has BinaryValue => (is => 'ro', isa => 'Str');
-  has DataType => (is => 'ro', isa => 'Str', required => 1);
-  has StringValue => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SNS::Types qw//;
+  has BinaryValue => (is => 'ro', isa => Str);
+  has DataType => (is => 'ro', isa => Str, required => 1);
+  has StringValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DataType' => 1
+                  },
+  'types' => {
+               'DataType' => {
+                               'type' => 'Str'
+                             },
+               'BinaryValue' => {
+                                  'type' => 'Str'
+                                },
+               'StringValue' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

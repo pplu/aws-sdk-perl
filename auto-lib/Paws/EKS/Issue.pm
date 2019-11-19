@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::EKS::Issue;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'resourceIds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EKS::Types qw//;
+  has Code => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has ResourceIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Code' => {
+                           'type' => 'Str'
+                         },
+               'ResourceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             },
+  'NameInRequest' => {
+                       'Message' => 'message',
+                       'Code' => 'code',
+                       'ResourceIds' => 'resourceIds'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

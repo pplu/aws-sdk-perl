@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::GameLift::DesiredPlayerSession;
-  use Moose;
-  has PlayerData => (is => 'ro', isa => 'Str');
-  has PlayerId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw//;
+  has PlayerData => (is => 'ro', isa => Str);
+  has PlayerId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlayerId' => {
+                               'type' => 'Str'
+                             },
+               'PlayerData' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

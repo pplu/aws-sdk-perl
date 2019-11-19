@@ -1,13 +1,68 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::CaptionDestinationSettings;
-  use Moose;
-  has BurninDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::BurninDestinationSettings', request_name => 'burninDestinationSettings', traits => ['NameInRequest']);
-  has DestinationType => (is => 'ro', isa => 'Str', request_name => 'destinationType', traits => ['NameInRequest']);
-  has DvbSubDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DvbSubDestinationSettings', request_name => 'dvbSubDestinationSettings', traits => ['NameInRequest']);
-  has EmbeddedDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::EmbeddedDestinationSettings', request_name => 'embeddedDestinationSettings', traits => ['NameInRequest']);
-  has ImscDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::ImscDestinationSettings', request_name => 'imscDestinationSettings', traits => ['NameInRequest']);
-  has SccDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::SccDestinationSettings', request_name => 'sccDestinationSettings', traits => ['NameInRequest']);
-  has TeletextDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::TeletextDestinationSettings', request_name => 'teletextDestinationSettings', traits => ['NameInRequest']);
-  has TtmlDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::TtmlDestinationSettings', request_name => 'ttmlDestinationSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_SccDestinationSettings MediaConvert_TtmlDestinationSettings MediaConvert_EmbeddedDestinationSettings MediaConvert_TeletextDestinationSettings MediaConvert_DvbSubDestinationSettings MediaConvert_BurninDestinationSettings MediaConvert_ImscDestinationSettings/;
+  has BurninDestinationSettings => (is => 'ro', isa => MediaConvert_BurninDestinationSettings);
+  has DestinationType => (is => 'ro', isa => Str);
+  has DvbSubDestinationSettings => (is => 'ro', isa => MediaConvert_DvbSubDestinationSettings);
+  has EmbeddedDestinationSettings => (is => 'ro', isa => MediaConvert_EmbeddedDestinationSettings);
+  has ImscDestinationSettings => (is => 'ro', isa => MediaConvert_ImscDestinationSettings);
+  has SccDestinationSettings => (is => 'ro', isa => MediaConvert_SccDestinationSettings);
+  has TeletextDestinationSettings => (is => 'ro', isa => MediaConvert_TeletextDestinationSettings);
+  has TtmlDestinationSettings => (is => 'ro', isa => MediaConvert_TtmlDestinationSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ImscDestinationSettings' => 'imscDestinationSettings',
+                       'DestinationType' => 'destinationType',
+                       'DvbSubDestinationSettings' => 'dvbSubDestinationSettings',
+                       'BurninDestinationSettings' => 'burninDestinationSettings',
+                       'TeletextDestinationSettings' => 'teletextDestinationSettings',
+                       'EmbeddedDestinationSettings' => 'embeddedDestinationSettings',
+                       'SccDestinationSettings' => 'sccDestinationSettings',
+                       'TtmlDestinationSettings' => 'ttmlDestinationSettings'
+                     },
+  'types' => {
+               'DvbSubDestinationSettings' => {
+                                                'type' => 'MediaConvert_DvbSubDestinationSettings',
+                                                'class' => 'Paws::MediaConvert::DvbSubDestinationSettings'
+                                              },
+               'ImscDestinationSettings' => {
+                                              'class' => 'Paws::MediaConvert::ImscDestinationSettings',
+                                              'type' => 'MediaConvert_ImscDestinationSettings'
+                                            },
+               'DestinationType' => {
+                                      'type' => 'Str'
+                                    },
+               'BurninDestinationSettings' => {
+                                                'type' => 'MediaConvert_BurninDestinationSettings',
+                                                'class' => 'Paws::MediaConvert::BurninDestinationSettings'
+                                              },
+               'EmbeddedDestinationSettings' => {
+                                                  'type' => 'MediaConvert_EmbeddedDestinationSettings',
+                                                  'class' => 'Paws::MediaConvert::EmbeddedDestinationSettings'
+                                                },
+               'TeletextDestinationSettings' => {
+                                                  'class' => 'Paws::MediaConvert::TeletextDestinationSettings',
+                                                  'type' => 'MediaConvert_TeletextDestinationSettings'
+                                                },
+               'TtmlDestinationSettings' => {
+                                              'class' => 'Paws::MediaConvert::TtmlDestinationSettings',
+                                              'type' => 'MediaConvert_TtmlDestinationSettings'
+                                            },
+               'SccDestinationSettings' => {
+                                             'class' => 'Paws::MediaConvert::SccDestinationSettings',
+                                             'type' => 'MediaConvert_SccDestinationSettings'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +100,7 @@ caption data is Embedded or Teletext.
 =head1 ATTRIBUTES
 
 
-=head2 BurninDestinationSettings => L<Paws::MediaConvert::BurninDestinationSettings>
+=head2 BurninDestinationSettings => MediaConvert_BurninDestinationSettings
 
   Burn-In Destination Settings.
 
@@ -62,33 +117,33 @@ captions come first, choose Embedded plus SCTE-20
 (EMBEDDED_PLUS_SCTE20).
 
 
-=head2 DvbSubDestinationSettings => L<Paws::MediaConvert::DvbSubDestinationSettings>
+=head2 DvbSubDestinationSettings => MediaConvert_DvbSubDestinationSettings
 
   DVB-Sub Destination Settings
 
 
-=head2 EmbeddedDestinationSettings => L<Paws::MediaConvert::EmbeddedDestinationSettings>
+=head2 EmbeddedDestinationSettings => MediaConvert_EmbeddedDestinationSettings
 
   Settings specific to embedded/ancillary caption outputs, including
 608/708 Channel destination number.
 
 
-=head2 ImscDestinationSettings => L<Paws::MediaConvert::ImscDestinationSettings>
+=head2 ImscDestinationSettings => MediaConvert_ImscDestinationSettings
 
   Settings specific to IMSC caption outputs.
 
 
-=head2 SccDestinationSettings => L<Paws::MediaConvert::SccDestinationSettings>
+=head2 SccDestinationSettings => MediaConvert_SccDestinationSettings
 
   Settings for SCC caption output.
 
 
-=head2 TeletextDestinationSettings => L<Paws::MediaConvert::TeletextDestinationSettings>
+=head2 TeletextDestinationSettings => MediaConvert_TeletextDestinationSettings
 
   Settings for Teletext caption output
 
 
-=head2 TtmlDestinationSettings => L<Paws::MediaConvert::TtmlDestinationSettings>
+=head2 TtmlDestinationSettings => MediaConvert_TtmlDestinationSettings
 
   Settings specific to TTML caption outputs, including Pass style
 information (TtmlStylePassthrough).

@@ -1,16 +1,51 @@
 
 package Paws::IoT::CreateTopicRule;
-  use Moose;
-  has RuleName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ruleName', required => 1);
-  has Tags => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-tagging');
-  has TopicRulePayload => (is => 'ro', isa => 'Paws::IoT::TopicRulePayload', traits => ['NameInRequest'], request_name => 'topicRulePayload', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_TopicRulePayload/;
+  has RuleName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Str, predicate => 1);
+  has TopicRulePayload => (is => 'ro', isa => IoT_TopicRulePayload, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'TopicRulePayload');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTopicRule');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/rules/{ruleName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTopicRule');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/rules/{ruleName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'Tags' => 'x-amz-tagging'
+                     },
+  'IsRequired' => {
+                    'TopicRulePayload' => 1,
+                    'RuleName' => 1
+                  },
+  'NameInRequest' => {
+                       'TopicRulePayload' => 'topicRulePayload'
+                     },
+  'types' => {
+               'RuleName' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'type' => 'Str'
+                         },
+               'TopicRulePayload' => {
+                                       'class' => 'Paws::IoT::TopicRulePayload',
+                                       'type' => 'IoT_TopicRulePayload'
+                                     }
+             },
+  'ParamInURI' => {
+                    'RuleName' => 'ruleName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -312,7 +347,7 @@ For the cli-input-json file use format: "tags":
 
 
 
-=head2 B<REQUIRED> TopicRulePayload => L<Paws::IoT::TopicRulePayload>
+=head2 B<REQUIRED> TopicRulePayload => IoT_TopicRulePayload
 
 The rule payload.
 

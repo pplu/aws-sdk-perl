@@ -1,16 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudHSMv2::DescribeBackups;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'Paws::CloudHSMv2::Filters');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SortAscending => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::CloudHSMv2::Types qw/CloudHSMv2_Filters/;
+  has Filters => (is => 'ro', isa => CloudHSMv2_Filters, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SortAscending => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBackups');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSMv2::DescribeBackupsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeBackups');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudHSMv2::DescribeBackupsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'type' => 'CloudHSMv2_Filters',
+                              'class' => 'Paws::CloudHSMv2::Filters'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SortAscending' => {
+                                    'type' => 'Bool'
+                                  },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 Filters => L<Paws::CloudHSMv2::Filters>
+=head2 Filters => CloudHSMv2_Filters
 
 One or more filters to limit the items returned in the response.
 

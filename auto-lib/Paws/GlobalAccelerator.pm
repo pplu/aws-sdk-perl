@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::GlobalAccelerator;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'globalaccelerator' }
   sub signing_name { 'globalaccelerator' }
   sub version { '2018-08-08' }
   sub target_prefix { 'GlobalAccelerator_V20180706' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -339,7 +341,7 @@ accelerators.
 
 =item ListenerArn => Str
 
-=item [EndpointConfigurations => ArrayRef[L<Paws::GlobalAccelerator::EndpointConfiguration>]]
+=item [EndpointConfigurations => ArrayRef[GlobalAccelerator_EndpointConfiguration]]
 
 =item [HealthCheckIntervalSeconds => Int]
 
@@ -373,7 +375,7 @@ example of creating an endpoint group, scroll down to B<Example>.
 
 =item IdempotencyToken => Str
 
-=item PortRanges => ArrayRef[L<Paws::GlobalAccelerator::PortRange>]
+=item PortRanges => ArrayRef[GlobalAccelerator_PortRange]
 
 =item Protocol => Str
 
@@ -620,7 +622,7 @@ updating an accelerator to enable flow logs, scroll down to B<Example>.
 
 =item EndpointGroupArn => Str
 
-=item [EndpointConfigurations => ArrayRef[L<Paws::GlobalAccelerator::EndpointConfiguration>]]
+=item [EndpointConfigurations => ArrayRef[GlobalAccelerator_EndpointConfiguration]]
 
 =item [HealthCheckIntervalSeconds => Int]
 
@@ -653,7 +655,7 @@ endpoint group, scroll down to B<Example>.
 
 =item [ClientAffinity => Str]
 
-=item [PortRanges => ArrayRef[L<Paws::GlobalAccelerator::PortRange>]]
+=item [PortRanges => ArrayRef[GlobalAccelerator_PortRange]]
 
 =item [Protocol => Str]
 

@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudWatch::PutDashboardOutput;
-  use Moose;
-  has DashboardValidationMessages => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::DashboardValidationMessage]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatch::Types qw/CloudWatch_DashboardValidationMessage/;
+  has DashboardValidationMessages => (is => 'ro', isa => ArrayRef[CloudWatch_DashboardValidationMessage]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DashboardValidationMessages' => {
+                                                  'class' => 'Paws::CloudWatch::DashboardValidationMessage',
+                                                  'type' => 'ArrayRef[CloudWatch_DashboardValidationMessage]'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::CloudWatch::PutDashboardOutput
 =head1 ATTRIBUTES
 
 
-=head2 DashboardValidationMessages => ArrayRef[L<Paws::CloudWatch::DashboardValidationMessage>]
+=head2 DashboardValidationMessages => ArrayRef[CloudWatch_DashboardValidationMessage]
 
 If the input for C<PutDashboard> was correct and the dashboard was
 successfully created or modified, this result is empty.

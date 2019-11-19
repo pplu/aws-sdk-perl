@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::EsamSettings;
-  use Moose;
-  has ManifestConfirmConditionNotification => (is => 'ro', isa => 'Paws::MediaConvert::EsamManifestConfirmConditionNotification', request_name => 'manifestConfirmConditionNotification', traits => ['NameInRequest']);
-  has ResponseSignalPreroll => (is => 'ro', isa => 'Int', request_name => 'responseSignalPreroll', traits => ['NameInRequest']);
-  has SignalProcessingNotification => (is => 'ro', isa => 'Paws::MediaConvert::EsamSignalProcessingNotification', request_name => 'signalProcessingNotification', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_EsamSignalProcessingNotification MediaConvert_EsamManifestConfirmConditionNotification/;
+  has ManifestConfirmConditionNotification => (is => 'ro', isa => MediaConvert_EsamManifestConfirmConditionNotification);
+  has ResponseSignalPreroll => (is => 'ro', isa => Int);
+  has SignalProcessingNotification => (is => 'ro', isa => MediaConvert_EsamSignalProcessingNotification);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ResponseSignalPreroll' => 'responseSignalPreroll',
+                       'ManifestConfirmConditionNotification' => 'manifestConfirmConditionNotification',
+                       'SignalProcessingNotification' => 'signalProcessingNotification'
+                     },
+  'types' => {
+               'ManifestConfirmConditionNotification' => {
+                                                           'class' => 'Paws::MediaConvert::EsamManifestConfirmConditionNotification',
+                                                           'type' => 'MediaConvert_EsamManifestConfirmConditionNotification'
+                                                         },
+               'ResponseSignalPreroll' => {
+                                            'type' => 'Int'
+                                          },
+               'SignalProcessingNotification' => {
+                                                   'type' => 'MediaConvert_EsamSignalProcessingNotification',
+                                                   'class' => 'Paws::MediaConvert::EsamSignalProcessingNotification'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +69,7 @@ insertion, you can ignore these settings.
 =head1 ATTRIBUTES
 
 
-=head2 ManifestConfirmConditionNotification => L<Paws::MediaConvert::EsamManifestConfirmConditionNotification>
+=head2 ManifestConfirmConditionNotification => MediaConvert_EsamManifestConfirmConditionNotification
 
   Specifies an ESAM ManifestConfirmConditionNotification XML as per
 OC-SP-ESAM-API-I03-131025. The transcoder uses the manifest
@@ -56,7 +86,7 @@ message is less than this value, then the transcoder places the SCTE-35
 marker at the beginning of the stream.
 
 
-=head2 SignalProcessingNotification => L<Paws::MediaConvert::EsamSignalProcessingNotification>
+=head2 SignalProcessingNotification => MediaConvert_EsamSignalProcessingNotification
 
   Specifies an ESAM SignalProcessingNotification XML as per
 OC-SP-ESAM-API-I03-131025. The transcoder uses the signal processing

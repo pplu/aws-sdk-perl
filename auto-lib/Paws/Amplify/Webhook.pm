@@ -1,12 +1,65 @@
+# Generated from default/object.tt
 package Paws::Amplify::Webhook;
-  use Moose;
-  has BranchName => (is => 'ro', isa => 'Str', request_name => 'branchName', traits => ['NameInRequest'], required => 1);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest'], required => 1);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
-  has UpdateTime => (is => 'ro', isa => 'Str', request_name => 'updateTime', traits => ['NameInRequest'], required => 1);
-  has WebhookArn => (is => 'ro', isa => 'Str', request_name => 'webhookArn', traits => ['NameInRequest'], required => 1);
-  has WebhookId => (is => 'ro', isa => 'Str', request_name => 'webhookId', traits => ['NameInRequest'], required => 1);
-  has WebhookUrl => (is => 'ro', isa => 'Str', request_name => 'webhookUrl', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw//;
+  has BranchName => (is => 'ro', isa => Str, required => 1);
+  has CreateTime => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has UpdateTime => (is => 'ro', isa => Str, required => 1);
+  has WebhookArn => (is => 'ro', isa => Str, required => 1);
+  has WebhookId => (is => 'ro', isa => Str, required => 1);
+  has WebhookUrl => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'BranchName' => 'branchName',
+                       'Description' => 'description',
+                       'WebhookUrl' => 'webhookUrl',
+                       'WebhookId' => 'webhookId',
+                       'WebhookArn' => 'webhookArn',
+                       'UpdateTime' => 'updateTime',
+                       'CreateTime' => 'createTime'
+                     },
+  'IsRequired' => {
+                    'CreateTime' => 1,
+                    'UpdateTime' => 1,
+                    'WebhookArn' => 1,
+                    'WebhookId' => 1,
+                    'WebhookUrl' => 1,
+                    'Description' => 1,
+                    'BranchName' => 1
+                  },
+  'types' => {
+               'WebhookArn' => {
+                                 'type' => 'Str'
+                               },
+               'WebhookId' => {
+                                'type' => 'Str'
+                              },
+               'UpdateTime' => {
+                                 'type' => 'Str'
+                               },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'BranchName' => {
+                                 'type' => 'Str'
+                               },
+               'WebhookUrl' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

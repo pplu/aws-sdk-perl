@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::RecurringCharge;
-  use Moose;
-  has Cost => (is => 'ro', isa => 'Paws::DeviceFarm::MonetaryAmount', request_name => 'cost', traits => ['NameInRequest']);
-  has Frequency => (is => 'ro', isa => 'Str', request_name => 'frequency', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_MonetaryAmount/;
+  has Cost => (is => 'ro', isa => DeviceFarm_MonetaryAmount);
+  has Frequency => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Frequency' => 'frequency',
+                       'Cost' => 'cost'
+                     },
+  'types' => {
+               'Cost' => {
+                           'type' => 'DeviceFarm_MonetaryAmount',
+                           'class' => 'Paws::DeviceFarm::MonetaryAmount'
+                         },
+               'Frequency' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Specifies whether charges for devices will be recurring.
 =head1 ATTRIBUTES
 
 
-=head2 Cost => L<Paws::DeviceFarm::MonetaryAmount>
+=head2 Cost => DeviceFarm_MonetaryAmount
 
   The cost of the recurring charge.
 

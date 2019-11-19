@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::Chime::UpdatePhoneNumberRequestItem;
-  use Moose;
-  has CallingName => (is => 'ro', isa => 'Str');
-  has PhoneNumberId => (is => 'ro', isa => 'Str', required => 1);
-  has ProductType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw//;
+  has CallingName => (is => 'ro', isa => Str);
+  has PhoneNumberId => (is => 'ro', isa => Str, required => 1);
+  has ProductType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PhoneNumberId' => 1
+                  },
+  'types' => {
+               'PhoneNumberId' => {
+                                    'type' => 'Str'
+                                  },
+               'CallingName' => {
+                                  'type' => 'Str'
+                                },
+               'ProductType' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

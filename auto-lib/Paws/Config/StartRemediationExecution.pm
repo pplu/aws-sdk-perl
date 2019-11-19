@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::StartRemediationExecution;
-  use Moose;
-  has ConfigRuleName => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceKeys => (is => 'ro', isa => 'ArrayRef[Paws::Config::ResourceKey]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_ResourceKey/;
+  has ConfigRuleName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceKeys => (is => 'ro', isa => ArrayRef[Config_ResourceKey], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartRemediationExecution');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::StartRemediationExecutionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartRemediationExecution');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::StartRemediationExecutionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfigRuleName' => 1,
+                    'ResourceKeys' => 1
+                  },
+  'types' => {
+               'ResourceKeys' => {
+                                   'class' => 'Paws::Config::ResourceKey',
+                                   'type' => 'ArrayRef[Config_ResourceKey]'
+                                 },
+               'ConfigRuleName' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +85,7 @@ execution for.
 
 
 
-=head2 B<REQUIRED> ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]
+=head2 B<REQUIRED> ResourceKeys => ArrayRef[Config_ResourceKey]
 
 A list of resource keys to be processed with the current request. Each
 element in the list consists of the resource type and resource ID.

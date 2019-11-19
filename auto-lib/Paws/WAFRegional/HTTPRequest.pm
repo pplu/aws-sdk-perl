@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::HTTPRequest;
-  use Moose;
-  has ClientIP => (is => 'ro', isa => 'Str');
-  has Country => (is => 'ro', isa => 'Str');
-  has Headers => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::HTTPHeader]');
-  has HTTPVersion => (is => 'ro', isa => 'Str');
-  has Method => (is => 'ro', isa => 'Str');
-  has URI => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_HTTPHeader/;
+  has ClientIP => (is => 'ro', isa => Str);
+  has Country => (is => 'ro', isa => Str);
+  has Headers => (is => 'ro', isa => ArrayRef[WAFRegional_HTTPHeader]);
+  has HTTPVersion => (is => 'ro', isa => Str);
+  has Method => (is => 'ro', isa => Str);
+  has URI => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Country' => {
+                              'type' => 'Str'
+                            },
+               'Headers' => {
+                              'class' => 'Paws::WAFRegional::HTTPHeader',
+                              'type' => 'ArrayRef[WAFRegional_HTTPHeader]'
+                            },
+               'URI' => {
+                          'type' => 'Str'
+                        },
+               'Method' => {
+                             'type' => 'Str'
+                           },
+               'ClientIP' => {
+                               'type' => 'Str'
+                             },
+               'HTTPVersion' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +106,7 @@ from. For a current list of country codes, see the Wikipedia entry ISO
 3166-1 alpha-2 (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 
 
-=head2 Headers => ArrayRef[L<Paws::WAFRegional::HTTPHeader>]
+=head2 Headers => ArrayRef[WAFRegional_HTTPHeader]
 
   A complex type that contains two values for each header in the sampled
 web request: the name of the header and the value of the header.

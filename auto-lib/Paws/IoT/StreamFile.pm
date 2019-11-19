@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::IoT::StreamFile;
-  use Moose;
-  has FileId => (is => 'ro', isa => 'Int', request_name => 'fileId', traits => ['NameInRequest']);
-  has S3Location => (is => 'ro', isa => 'Paws::IoT::S3Location', request_name => 's3Location', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::IoT::Types qw/IoT_S3Location/;
+  has FileId => (is => 'ro', isa => Int);
+  has S3Location => (is => 'ro', isa => IoT_S3Location);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileId' => {
+                             'type' => 'Int'
+                           },
+               'S3Location' => {
+                                 'class' => 'Paws::IoT::S3Location',
+                                 'type' => 'IoT_S3Location'
+                               }
+             },
+  'NameInRequest' => {
+                       'FileId' => 'fileId',
+                       'S3Location' => 's3Location'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ Represents a file to stream.
   The file ID.
 
 
-=head2 S3Location => L<Paws::IoT::S3Location>
+=head2 S3Location => IoT_S3Location
 
   The location of the file in S3.
 

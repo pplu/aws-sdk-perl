@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ApiGateway::EndpointConfiguration;
-  use Moose;
-  has Types => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'types', traits => ['NameInRequest']);
-  has VpcEndpointIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'vpcEndpointIds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::ApiGateway::Types qw//;
+  has Types => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has VpcEndpointIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcEndpointIds' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'Types' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          }
+             },
+  'NameInRequest' => {
+                       'VpcEndpointIds' => 'vpcEndpointIds',
+                       'Types' => 'types'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

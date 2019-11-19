@@ -1,17 +1,53 @@
 
 package Paws::EC2::PurchaseReservedInstancesOffering;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
-  has LimitPrice => (is => 'ro', isa => 'Paws::EC2::ReservedInstanceLimitPrice', traits => ['NameInRequest'], request_name => 'limitPrice' );
-  has PurchaseTime => (is => 'ro', isa => 'Str');
-  has ReservedInstancesOfferingId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::EC2::Types qw/EC2_ReservedInstanceLimitPrice/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceCount => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has LimitPrice => (is => 'ro', isa => EC2_ReservedInstanceLimitPrice, predicate => 1);
+  has PurchaseTime => (is => 'ro', isa => Str, predicate => 1);
+  has ReservedInstancesOfferingId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedInstancesOffering');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::PurchaseReservedInstancesOfferingResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PurchaseReservedInstancesOffering');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::PurchaseReservedInstancesOfferingResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InstanceCount' => 1,
+                    'ReservedInstancesOfferingId' => 1
+                  },
+  'NameInRequest' => {
+                       'LimitPrice' => 'limitPrice',
+                       'DryRun' => 'dryRun'
+                     },
+  'types' => {
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ReservedInstancesOfferingId' => {
+                                                  'type' => 'Str'
+                                                },
+               'PurchaseTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LimitPrice' => {
+                                 'class' => 'Paws::EC2::ReservedInstanceLimitPrice',
+                                 'type' => 'EC2_ReservedInstanceLimitPrice'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +106,7 @@ The number of Reserved Instances to purchase.
 
 
 
-=head2 LimitPrice => L<Paws::EC2::ReservedInstanceLimitPrice>
+=head2 LimitPrice => EC2_ReservedInstanceLimitPrice
 
 Specified for Reserved Instance Marketplace offerings to limit the
 total order and ensure that the Reserved Instances are not purchased at

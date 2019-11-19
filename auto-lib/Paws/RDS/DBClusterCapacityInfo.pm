@@ -1,13 +1,43 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DBClusterCapacityInfo;
-  use Moose;
-  has CurrentCapacity => (is => 'ro', isa => 'Int');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has PendingCapacity => (is => 'ro', isa => 'Int');
-  has SecondsBeforeTimeout => (is => 'ro', isa => 'Int');
-  has TimeoutAction => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::RDS::Types qw//;
+  has CurrentCapacity => (is => 'ro', isa => Int);
+  has DBClusterIdentifier => (is => 'ro', isa => Str);
+  has PendingCapacity => (is => 'ro', isa => Int);
+  has SecondsBeforeTimeout => (is => 'ro', isa => Int);
+  has TimeoutAction => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PendingCapacity' => {
+                                      'type' => 'Int'
+                                    },
+               'CurrentCapacity' => {
+                                      'type' => 'Int'
+                                    },
+               'SecondsBeforeTimeout' => {
+                                           'type' => 'Int'
+                                         },
+               'TimeoutAction' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::SSM::InventoryResultItem;
-  use Moose;
-  has CaptureTime => (is => 'ro', isa => 'Str');
-  has Content => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryItemEntry]', required => 1);
-  has ContentHash => (is => 'ro', isa => 'Str');
-  has SchemaVersion => (is => 'ro', isa => 'Str', required => 1);
-  has TypeName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_InventoryItemEntry/;
+  has CaptureTime => (is => 'ro', isa => Str);
+  has Content => (is => 'ro', isa => ArrayRef[SSM_InventoryItemEntry], required => 1);
+  has ContentHash => (is => 'ro', isa => Str);
+  has SchemaVersion => (is => 'ro', isa => Str, required => 1);
+  has TypeName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'CaptureTime' => {
+                                  'type' => 'Str'
+                                },
+               'Content' => {
+                              'type' => 'ArrayRef[SSM_InventoryItemEntry]',
+                              'class' => 'Paws::SSM::InventoryItemEntry'
+                            },
+               'ContentHash' => {
+                                  'type' => 'Str'
+                                },
+               'SchemaVersion' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'SchemaVersion' => 1,
+                    'Content' => 1,
+                    'TypeName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +80,7 @@ The inventory result item.
   The time inventory item data was captured.
 
 
-=head2 B<REQUIRED> Content => ArrayRef[L<Paws::SSM::InventoryItemEntry>]
+=head2 B<REQUIRED> Content => ArrayRef[SSM_InventoryItemEntry]
 
   Contains all the inventory data of the item type. Results include
 attribute names and values.

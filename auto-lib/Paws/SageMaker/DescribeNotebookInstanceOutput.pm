@@ -1,28 +1,103 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::DescribeNotebookInstanceOutput;
-  use Moose;
-  has AcceleratorTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AdditionalCodeRepositories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DefaultCodeRepository => (is => 'ro', isa => 'Str');
-  has DirectInternetAccess => (is => 'ro', isa => 'Str');
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str');
-  has NotebookInstanceArn => (is => 'ro', isa => 'Str');
-  has NotebookInstanceLifecycleConfigName => (is => 'ro', isa => 'Str');
-  has NotebookInstanceName => (is => 'ro', isa => 'Str');
-  has NotebookInstanceStatus => (is => 'ro', isa => 'Str');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has RootAccess => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has Url => (is => 'ro', isa => 'Str');
-  has VolumeSizeInGB => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int/;
+  use Paws::SageMaker::Types qw//;
+  has AcceleratorTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has AdditionalCodeRepositories => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CreationTime => (is => 'ro', isa => Str);
+  has DefaultCodeRepository => (is => 'ro', isa => Str);
+  has DirectInternetAccess => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has NotebookInstanceArn => (is => 'ro', isa => Str);
+  has NotebookInstanceLifecycleConfigName => (is => 'ro', isa => Str);
+  has NotebookInstanceName => (is => 'ro', isa => Str);
+  has NotebookInstanceStatus => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has RootAccess => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SubnetId => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+  has VolumeSizeInGB => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RootAccess' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'NotebookInstanceName' => {
+                                           'type' => 'Str'
+                                         },
+               'AdditionalCodeRepositories' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'NotebookInstanceArn' => {
+                                          'type' => 'Str'
+                                        },
+               'VolumeSizeInGB' => {
+                                     'type' => 'Int'
+                                   },
+               'AcceleratorTypes' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'NotebookInstanceLifecycleConfigName' => {
+                                                          'type' => 'Str'
+                                                        },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'NotebookInstanceStatus' => {
+                                             'type' => 'Str'
+                                           },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'DirectInternetAccess' => {
+                                           'type' => 'Str'
+                                         },
+               'DefaultCodeRepository' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

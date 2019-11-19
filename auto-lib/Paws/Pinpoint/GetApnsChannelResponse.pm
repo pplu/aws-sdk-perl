@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::GetApnsChannelResponse;
-  use Moose;
-  has APNSChannelResponse => (is => 'ro', isa => 'Paws::Pinpoint::APNSChannelResponse', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'APNSChannelResponse');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_APNSChannelResponse/;
+  has APNSChannelResponse => (is => 'ro', isa => Pinpoint_APNSChannelResponse, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'APNSChannelResponse' => {
+                                          'class' => 'Paws::Pinpoint::APNSChannelResponse',
+                                          'type' => 'Pinpoint_APNSChannelResponse'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'APNSChannelResponse' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::GetApnsChannelResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> APNSChannelResponse => L<Paws::Pinpoint::APNSChannelResponse>
+=head2 B<REQUIRED> APNSChannelResponse => Pinpoint_APNSChannelResponse
 
 
 

@@ -1,16 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::DeleteTaskSet;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' , required => 1);
-  has Force => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'force' );
-  has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
-  has TaskSet => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskSet' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ECS::Types qw//;
+  has Cluster => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Force => (is => 'ro', isa => Bool, predicate => 1);
+  has Service => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TaskSet => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTaskSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DeleteTaskSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteTaskSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::DeleteTaskSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Service' => 'service',
+                       'Force' => 'force',
+                       'TaskSet' => 'taskSet',
+                       'Cluster' => 'cluster'
+                     },
+  'IsRequired' => {
+                    'Service' => 1,
+                    'TaskSet' => 1,
+                    'Cluster' => 1
+                  },
+  'types' => {
+               'TaskSet' => {
+                              'type' => 'Str'
+                            },
+               'Force' => {
+                            'type' => 'Bool'
+                          },
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'Service' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

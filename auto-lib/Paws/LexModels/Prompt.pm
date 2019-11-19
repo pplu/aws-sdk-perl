@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::LexModels::Prompt;
-  use Moose;
-  has MaxAttempts => (is => 'ro', isa => 'Int', request_name => 'maxAttempts', traits => ['NameInRequest'], required => 1);
-  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Message]', request_name => 'messages', traits => ['NameInRequest'], required => 1);
-  has ResponseCard => (is => 'ro', isa => 'Str', request_name => 'responseCard', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int ArrayRef Str/;
+  use Paws::LexModels::Types qw/LexModels_Message/;
+  has MaxAttempts => (is => 'ro', isa => Int, required => 1);
+  has Messages => (is => 'ro', isa => ArrayRef[LexModels_Message], required => 1);
+  has ResponseCard => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MaxAttempts' => 1,
+                    'Messages' => 1
+                  },
+  'NameInRequest' => {
+                       'Messages' => 'messages',
+                       'ResponseCard' => 'responseCard',
+                       'MaxAttempts' => 'maxAttempts'
+                     },
+  'types' => {
+               'Messages' => {
+                               'type' => 'ArrayRef[LexModels_Message]',
+                               'class' => 'Paws::LexModels::Message'
+                             },
+               'ResponseCard' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxAttempts' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +80,7 @@ see how-it-works.
   The number of times to prompt the user for information.
 
 
-=head2 B<REQUIRED> Messages => ArrayRef[L<Paws::LexModels::Message>]
+=head2 B<REQUIRED> Messages => ArrayRef[LexModels_Message]
 
   An array of objects, each of which provides a message string and its
 type. You can specify the message string in plain text or in Speech

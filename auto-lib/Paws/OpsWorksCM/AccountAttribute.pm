@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::OpsWorksCM::AccountAttribute;
-  use Moose;
-  has Maximum => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str');
-  has Used => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::OpsWorksCM::Types qw//;
+  has Maximum => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has Used => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Maximum' => {
+                              'type' => 'Int'
+                            },
+               'Used' => {
+                           'type' => 'Int'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

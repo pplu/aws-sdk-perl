@@ -1,10 +1,35 @@
 
 package Paws::Signer::ListSigningProfilesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Profiles => (is => 'ro', isa => 'ArrayRef[Paws::Signer::SigningProfile]', traits => ['NameInRequest'], request_name => 'profiles');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Signer::Types qw/Signer_SigningProfile/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Profiles => (is => 'ro', isa => ArrayRef[Signer_SigningProfile]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Profiles' => {
+                               'type' => 'ArrayRef[Signer_SigningProfile]',
+                               'class' => 'Paws::Signer::SigningProfile'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Profiles' => 'profiles'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +46,7 @@ Paws::Signer::ListSigningProfilesResponse
 Value for specifying the next set of paginated results to return.
 
 
-=head2 Profiles => ArrayRef[L<Paws::Signer::SigningProfile>]
+=head2 Profiles => ArrayRef[Signer_SigningProfile]
 
 A list of profiles that are available in the AWS account. This includes
 profiles with the status of C<CANCELED> if the C<includeCanceled>

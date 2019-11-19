@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Route53Domains;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'route53domains' }
   sub signing_name { 'route53domains' }
   sub version { '2014-05-15' }
   sub target_prefix { 'Route53Domains_v20140515' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -532,15 +534,15 @@ might not immediately represent all issued operations.
 
 =over
 
-=item AdminContact => L<Paws::Route53Domains::ContactDetail>
+=item AdminContact => Route53Domains_ContactDetail
 
 =item DomainName => Str
 
 =item DurationInYears => Int
 
-=item RegistrantContact => L<Paws::Route53Domains::ContactDetail>
+=item RegistrantContact => Route53Domains_ContactDetail
 
-=item TechContact => L<Paws::Route53Domains::ContactDetail>
+=item TechContact => Route53Domains_ContactDetail
 
 =item [AutoRenew => Bool]
 
@@ -676,15 +678,15 @@ registrar.
 
 =over
 
-=item AdminContact => L<Paws::Route53Domains::ContactDetail>
+=item AdminContact => Route53Domains_ContactDetail
 
 =item DomainName => Str
 
 =item DurationInYears => Int
 
-=item RegistrantContact => L<Paws::Route53Domains::ContactDetail>
+=item RegistrantContact => Route53Domains_ContactDetail
 
-=item TechContact => L<Paws::Route53Domains::ContactDetail>
+=item TechContact => Route53Domains_ContactDetail
 
 =item [AuthCode => Str]
 
@@ -692,7 +694,7 @@ registrar.
 
 =item [IdnLangCode => Str]
 
-=item [Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>]]
+=item [Nameservers => ArrayRef[Route53Domains_Nameserver]]
 
 =item [PrivacyProtectAdminContact => Bool]
 
@@ -743,11 +745,11 @@ notified by email.
 
 =item DomainName => Str
 
-=item [AdminContact => L<Paws::Route53Domains::ContactDetail>]
+=item [AdminContact => Route53Domains_ContactDetail]
 
-=item [RegistrantContact => L<Paws::Route53Domains::ContactDetail>]
+=item [RegistrantContact => Route53Domains_ContactDetail]
 
-=item [TechContact => L<Paws::Route53Domains::ContactDetail>]
+=item [TechContact => Route53Domains_ContactDetail]
 
 
 =back
@@ -805,7 +807,7 @@ will be notified by email.
 
 =item DomainName => Str
 
-=item Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>]
+=item Nameservers => ArrayRef[Route53Domains_Nameserver]
 
 =item [FIAuthKey => Str]
 
@@ -833,7 +835,7 @@ email.
 
 =item DomainName => Str
 
-=item [TagsToUpdate => ArrayRef[L<Paws::Route53Domains::Tag>]]
+=item [TagsToUpdate => ArrayRef[Route53Domains_Tag]]
 
 
 =back

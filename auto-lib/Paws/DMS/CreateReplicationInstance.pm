@@ -1,26 +1,86 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::CreateReplicationInstance;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has DnsNameServers => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has ReplicationInstanceClass => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicationInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicationSubnetGroupIdentifier => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef Undef/;
+  use Paws::DMS::Types qw/DMS_Tag/;
+  has AllocatedStorage => (is => 'ro', isa => Int, predicate => 1);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has DnsNameServers => (is => 'ro', isa => Str, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has MultiAZ => (is => 'ro', isa => Bool, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has ReplicationInstanceClass => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicationInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicationSubnetGroupIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DMS_Tag], predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateReplicationInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::CreateReplicationInstanceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateReplicationInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::CreateReplicationInstanceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'DnsNameServers' => {
+                                     'type' => 'Str'
+                                   },
+               'ReplicationSubnetGroupIdentifier' => {
+                                                       'type' => 'Str'
+                                                     },
+               'Tags' => {
+                           'type' => 'ArrayRef[DMS_Tag]',
+                           'class' => 'Paws::DMS::Tag'
+                         },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'ReplicationInstanceClass' => {
+                                               'type' => 'Str'
+                                             },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'ReplicationInstanceIdentifier' => {
+                                                    'type' => 'Str'
+                                                  },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            }
+             },
+  'IsRequired' => {
+                    'ReplicationInstanceClass' => 1,
+                    'ReplicationInstanceIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -202,7 +262,7 @@ A subnet group to associate with the replication instance.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DMS::Tag>]
+=head2 Tags => ArrayRef[DMS_Tag]
 
 One or more tags to be assigned to the replication instance.
 

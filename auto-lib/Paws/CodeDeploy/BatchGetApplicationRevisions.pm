@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::BatchGetApplicationRevisions;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
-  has Revisions => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::RevisionLocation]', traits => ['NameInRequest'], request_name => 'revisions' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_RevisionLocation/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Revisions => (is => 'ro', isa => ArrayRef[CodeDeploy_RevisionLocation], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchGetApplicationRevisions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::BatchGetApplicationRevisionsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchGetApplicationRevisions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::BatchGetApplicationRevisionsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Revisions' => 1,
+                    'ApplicationName' => 1
+                  },
+  'NameInRequest' => {
+                       'Revisions' => 'revisions',
+                       'ApplicationName' => 'applicationName'
+                     },
+  'types' => {
+               'Revisions' => {
+                                'type' => 'ArrayRef[CodeDeploy_RevisionLocation]',
+                                'class' => 'Paws::CodeDeploy::RevisionLocation'
+                              },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +108,7 @@ information.
 
 
 
-=head2 B<REQUIRED> Revisions => ArrayRef[L<Paws::CodeDeploy::RevisionLocation>]
+=head2 B<REQUIRED> Revisions => ArrayRef[CodeDeploy_RevisionLocation]
 
 An array of C<RevisionLocation> objects that specify information to get
 about the application revisions, including type and location. The

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Deinterlacer;
-  use Moose;
-  has Algorithm => (is => 'ro', isa => 'Str', request_name => 'algorithm', traits => ['NameInRequest']);
-  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
-  has Mode => (is => 'ro', isa => 'Str', request_name => 'mode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has Algorithm => (is => 'ro', isa => Str);
+  has Control => (is => 'ro', isa => Str);
+  has Mode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Algorithm' => {
+                                'type' => 'Str'
+                              },
+               'Mode' => {
+                           'type' => 'Str'
+                         },
+               'Control' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Control' => 'control',
+                       'Mode' => 'mode',
+                       'Algorithm' => 'algorithm'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

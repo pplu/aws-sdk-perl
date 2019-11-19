@@ -1,15 +1,44 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::AdminLinkProviderForUser;
-  use Moose;
-  has DestinationUser => (is => 'ro', isa => 'Paws::CognitoIdp::ProviderUserIdentifierType', required => 1);
-  has SourceUser => (is => 'ro', isa => 'Paws::CognitoIdp::ProviderUserIdentifierType', required => 1);
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_ProviderUserIdentifierType/;
+  has DestinationUser => (is => 'ro', isa => CognitoIdp_ProviderUserIdentifierType, required => 1, predicate => 1);
+  has SourceUser => (is => 'ro', isa => CognitoIdp_ProviderUserIdentifierType, required => 1, predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AdminLinkProviderForUser');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::AdminLinkProviderForUserResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AdminLinkProviderForUser');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::AdminLinkProviderForUserResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DestinationUser' => 1,
+                    'UserPoolId' => 1,
+                    'SourceUser' => 1
+                  },
+  'types' => {
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'SourceUser' => {
+                                 'class' => 'Paws::CognitoIdp::ProviderUserIdentifierType',
+                                 'type' => 'CognitoIdp_ProviderUserIdentifierType'
+                               },
+               'DestinationUser' => {
+                                      'class' => 'Paws::CognitoIdp::ProviderUserIdentifierType',
+                                      'type' => 'CognitoIdp_ProviderUserIdentifierType'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +80,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DestinationUser => L<Paws::CognitoIdp::ProviderUserIdentifierType>
+=head2 B<REQUIRED> DestinationUser => CognitoIdp_ProviderUserIdentifierType
 
 The existing user in the user pool to be linked to the external
 identity provider user account. Can be a native (Username + Password)
@@ -71,7 +100,7 @@ user pools.
 
 
 
-=head2 B<REQUIRED> SourceUser => L<Paws::CognitoIdp::ProviderUserIdentifierType>
+=head2 B<REQUIRED> SourceUser => CognitoIdp_ProviderUserIdentifierType
 
 An external identity provider account for a user who does not currently
 exist yet in the user pool. This user must be a federated user (for

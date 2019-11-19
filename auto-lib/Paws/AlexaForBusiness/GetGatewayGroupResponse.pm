@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AlexaForBusiness::GetGatewayGroupResponse;
-  use Moose;
-  has GatewayGroup => (is => 'ro', isa => 'Paws::AlexaForBusiness::GatewayGroup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_GatewayGroup/;
+  has GatewayGroup => (is => 'ro', isa => AlexaForBusiness_GatewayGroup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'GatewayGroup' => {
+                                   'class' => 'Paws::AlexaForBusiness::GatewayGroup',
+                                   'type' => 'AlexaForBusiness_GatewayGroup'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::AlexaForBusiness::GetGatewayGroupResponse
 =head1 ATTRIBUTES
 
 
-=head2 GatewayGroup => L<Paws::AlexaForBusiness::GatewayGroup>
+=head2 GatewayGroup => AlexaForBusiness_GatewayGroup
 
 
 

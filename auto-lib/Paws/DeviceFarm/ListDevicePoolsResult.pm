@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListDevicePoolsResult;
-  use Moose;
-  has DevicePools => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePool]', traits => ['NameInRequest'], request_name => 'devicePools' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_DevicePool/;
+  has DevicePools => (is => 'ro', isa => ArrayRef[DeviceFarm_DevicePool]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'DevicePools' => 'devicePools'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DevicePools' => {
+                                  'type' => 'ArrayRef[DeviceFarm_DevicePool]',
+                                  'class' => 'Paws::DeviceFarm::DevicePool'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::DeviceFarm::ListDevicePoolsResult
 =head1 ATTRIBUTES
 
 
-=head2 DevicePools => ArrayRef[L<Paws::DeviceFarm::DevicePool>]
+=head2 DevicePools => ArrayRef[DeviceFarm_DevicePool]
 
 Information about the device pools.
 

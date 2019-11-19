@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaLive::PurchaseOfferingResultModel;
-  use Moose;
-  has Reservation => (is => 'ro', isa => 'Paws::MediaLive::Reservation', request_name => 'reservation', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_Reservation/;
+  has Reservation => (is => 'ro', isa => MediaLive_Reservation);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Reservation' => {
+                                  'class' => 'Paws::MediaLive::Reservation',
+                                  'type' => 'MediaLive_Reservation'
+                                }
+             },
+  'NameInRequest' => {
+                       'Reservation' => 'reservation'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ PurchaseOffering response
 =head1 ATTRIBUTES
 
 
-=head2 Reservation => L<Paws::MediaLive::Reservation>
+=head2 Reservation => MediaLive_Reservation
 
   
 

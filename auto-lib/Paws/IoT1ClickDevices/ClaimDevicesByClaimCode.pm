@@ -1,14 +1,35 @@
 
 package Paws::IoT1ClickDevices::ClaimDevicesByClaimCode;
-  use Moose;
-  has ClaimCode => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'claimCode', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickDevices::Types qw//;
+  has ClaimCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ClaimDevicesByClaimCode');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/claims/{claimCode}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT1ClickDevices::ClaimDevicesByClaimCodeResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ClaimDevicesByClaimCode');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/claims/{claimCode}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT1ClickDevices::ClaimDevicesByClaimCodeResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ClaimCode' => 'claimCode'
+                  },
+  'IsRequired' => {
+                    'ClaimCode' => 1
+                  },
+  'types' => {
+               'ClaimCode' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

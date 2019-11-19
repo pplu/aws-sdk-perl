@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Config::SourceDetail;
-  use Moose;
-  has EventSource => (is => 'ro', isa => 'Str');
-  has MaximumExecutionFrequency => (is => 'ro', isa => 'Str');
-  has MessageType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has EventSource => (is => 'ro', isa => Str);
+  has MaximumExecutionFrequency => (is => 'ro', isa => Str);
+  has MessageType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaximumExecutionFrequency' => {
+                                                'type' => 'Str'
+                                              },
+               'EventSource' => {
+                                  'type' => 'Str'
+                                },
+               'MessageType' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

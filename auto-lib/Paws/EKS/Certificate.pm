@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::EKS::Certificate;
-  use Moose;
-  has Data => (is => 'ro', isa => 'Str', request_name => 'data', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EKS::Types qw//;
+  has Data => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Data' => 'data'
+                     },
+  'types' => {
+               'Data' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

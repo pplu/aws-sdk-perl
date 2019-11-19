@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::EC2ResourceUtilization;
-  use Moose;
-  has MaxCpuUtilizationPercentage => (is => 'ro', isa => 'Str');
-  has MaxMemoryUtilizationPercentage => (is => 'ro', isa => 'Str');
-  has MaxStorageUtilizationPercentage => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has MaxCpuUtilizationPercentage => (is => 'ro', isa => Str);
+  has MaxMemoryUtilizationPercentage => (is => 'ro', isa => Str);
+  has MaxStorageUtilizationPercentage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxStorageUtilizationPercentage' => {
+                                                      'type' => 'Str'
+                                                    },
+               'MaxCpuUtilizationPercentage' => {
+                                                  'type' => 'Str'
+                                                },
+               'MaxMemoryUtilizationPercentage' => {
+                                                     'type' => 'Str'
+                                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

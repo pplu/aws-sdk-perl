@@ -1,23 +1,94 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::PlatformDescription;
-  use Moose;
-  has CustomAmiList => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::CustomAmi]');
-  has DateCreated => (is => 'ro', isa => 'Str');
-  has DateUpdated => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Frameworks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::PlatformFramework]');
-  has Maintainer => (is => 'ro', isa => 'Str');
-  has OperatingSystemName => (is => 'ro', isa => 'Str');
-  has OperatingSystemVersion => (is => 'ro', isa => 'Str');
-  has PlatformArn => (is => 'ro', isa => 'Str');
-  has PlatformCategory => (is => 'ro', isa => 'Str');
-  has PlatformName => (is => 'ro', isa => 'Str');
-  has PlatformOwner => (is => 'ro', isa => 'Str');
-  has PlatformStatus => (is => 'ro', isa => 'Str');
-  has PlatformVersion => (is => 'ro', isa => 'Str');
-  has ProgrammingLanguages => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::PlatformProgrammingLanguage]');
-  has SolutionStackName => (is => 'ro', isa => 'Str');
-  has SupportedAddonList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SupportedTierList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Undef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_PlatformProgrammingLanguage ElasticBeanstalk_CustomAmi ElasticBeanstalk_PlatformFramework/;
+  has CustomAmiList => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_CustomAmi]);
+  has DateCreated => (is => 'ro', isa => Str);
+  has DateUpdated => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Frameworks => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_PlatformFramework]);
+  has Maintainer => (is => 'ro', isa => Str);
+  has OperatingSystemName => (is => 'ro', isa => Str);
+  has OperatingSystemVersion => (is => 'ro', isa => Str);
+  has PlatformArn => (is => 'ro', isa => Str);
+  has PlatformCategory => (is => 'ro', isa => Str);
+  has PlatformName => (is => 'ro', isa => Str);
+  has PlatformOwner => (is => 'ro', isa => Str);
+  has PlatformStatus => (is => 'ro', isa => Str);
+  has PlatformVersion => (is => 'ro', isa => Str);
+  has ProgrammingLanguages => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_PlatformProgrammingLanguage]);
+  has SolutionStackName => (is => 'ro', isa => Str);
+  has SupportedAddonList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SupportedTierList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ProgrammingLanguages' => {
+                                           'class' => 'Paws::ElasticBeanstalk::PlatformProgrammingLanguage',
+                                           'type' => 'ArrayRef[ElasticBeanstalk_PlatformProgrammingLanguage]'
+                                         },
+               'Frameworks' => {
+                                 'type' => 'ArrayRef[ElasticBeanstalk_PlatformFramework]',
+                                 'class' => 'Paws::ElasticBeanstalk::PlatformFramework'
+                               },
+               'SolutionStackName' => {
+                                        'type' => 'Str'
+                                      },
+               'CustomAmiList' => {
+                                    'class' => 'Paws::ElasticBeanstalk::CustomAmi',
+                                    'type' => 'ArrayRef[ElasticBeanstalk_CustomAmi]'
+                                  },
+               'PlatformOwner' => {
+                                    'type' => 'Str'
+                                  },
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'SupportedAddonList' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'Maintainer' => {
+                                 'type' => 'Str'
+                               },
+               'DateUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'SupportedTierList' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'OperatingSystemVersion' => {
+                                             'type' => 'Str'
+                                           },
+               'PlatformStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'PlatformName' => {
+                                   'type' => 'Str'
+                                 },
+               'PlatformCategory' => {
+                                       'type' => 'Str'
+                                     },
+               'PlatformArn' => {
+                                  'type' => 'Str'
+                                },
+               'DateCreated' => {
+                                  'type' => 'Str'
+                                },
+               'OperatingSystemName' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +124,7 @@ Detailed information about a platform.
 =head1 ATTRIBUTES
 
 
-=head2 CustomAmiList => ArrayRef[L<Paws::ElasticBeanstalk::CustomAmi>]
+=head2 CustomAmiList => ArrayRef[ElasticBeanstalk_CustomAmi]
 
   The custom AMIs supported by the platform.
 
@@ -73,7 +144,7 @@ Detailed information about a platform.
   The description of the platform.
 
 
-=head2 Frameworks => ArrayRef[L<Paws::ElasticBeanstalk::PlatformFramework>]
+=head2 Frameworks => ArrayRef[ElasticBeanstalk_PlatformFramework]
 
   The frameworks supported by the platform.
 
@@ -123,7 +194,7 @@ Detailed information about a platform.
   The version of the platform.
 
 
-=head2 ProgrammingLanguages => ArrayRef[L<Paws::ElasticBeanstalk::PlatformProgrammingLanguage>]
+=head2 ProgrammingLanguages => ArrayRef[ElasticBeanstalk_PlatformProgrammingLanguage]
 
   The programming languages supported by the platform.
 

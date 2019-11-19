@@ -1,14 +1,56 @@
+# Generated from default/object.tt
 package Paws::GlobalAccelerator::Accelerator;
-  use Moose;
-  has AcceleratorArn => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has DnsName => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has IpAddressType => (is => 'ro', isa => 'Str');
-  has IpSets => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::IpSet]');
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::GlobalAccelerator::Types qw/GlobalAccelerator_IpSet/;
+  has AcceleratorArn => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has DnsName => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has IpAddressType => (is => 'ro', isa => Str);
+  has IpSets => (is => 'ro', isa => ArrayRef[GlobalAccelerator_IpSet]);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'IpSets' => {
+                             'type' => 'ArrayRef[GlobalAccelerator_IpSet]',
+                             'class' => 'Paws::GlobalAccelerator::IpSet'
+                           },
+               'AcceleratorArn' => {
+                                     'type' => 'Str'
+                                   },
+               'IpAddressType' => {
+                                    'type' => 'Str'
+                                  },
+               'DnsName' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -87,7 +129,7 @@ to false, accelerator can be deleted.
   The value for the address type must be IPv4.
 
 
-=head2 IpSets => ArrayRef[L<Paws::GlobalAccelerator::IpSet>]
+=head2 IpSets => ArrayRef[GlobalAccelerator_IpSet]
 
   The static IP addresses that Global Accelerator associates with the
 accelerator.

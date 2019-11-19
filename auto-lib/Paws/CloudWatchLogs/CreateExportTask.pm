@@ -1,19 +1,68 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchLogs::CreateExportTask;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destination' , required => 1);
-  has DestinationPrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationPrefix' );
-  has From => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'from' , required => 1);
-  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
-  has LogStreamNamePrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logStreamNamePrefix' );
-  has TaskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskName' );
-  has To => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'to' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has Destination => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DestinationPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has From => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has LogGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LogStreamNamePrefix => (is => 'ro', isa => Str, predicate => 1);
+  has TaskName => (is => 'ro', isa => Str, predicate => 1);
+  has To => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateExportTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::CreateExportTaskResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateExportTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchLogs::CreateExportTaskResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'To' => 1,
+                    'Destination' => 1,
+                    'LogGroupName' => 1,
+                    'From' => 1
+                  },
+  'NameInRequest' => {
+                       'To' => 'to',
+                       'Destination' => 'destination',
+                       'LogStreamNamePrefix' => 'logStreamNamePrefix',
+                       'From' => 'from',
+                       'LogGroupName' => 'logGroupName',
+                       'TaskName' => 'taskName',
+                       'DestinationPrefix' => 'destinationPrefix'
+                     },
+  'types' => {
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'DestinationPrefix' => {
+                                        'type' => 'Str'
+                                      },
+               'TaskName' => {
+                               'type' => 'Str'
+                             },
+               'To' => {
+                         'type' => 'Int'
+                       },
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'From' => {
+                           'type' => 'Int'
+                         },
+               'LogStreamNamePrefix' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

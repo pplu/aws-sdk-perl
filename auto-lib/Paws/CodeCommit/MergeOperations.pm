@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::MergeOperations;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
-  has Source => (is => 'ro', isa => 'Str', request_name => 'source', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has Destination => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'Destination' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Destination' => 'destination',
+                       'Source' => 'source'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

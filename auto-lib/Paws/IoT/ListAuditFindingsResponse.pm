@@ -1,10 +1,35 @@
 
 package Paws::IoT::ListAuditFindingsResponse;
-  use Moose;
-  has Findings => (is => 'ro', isa => 'ArrayRef[Paws::IoT::AuditFinding]', traits => ['NameInRequest'], request_name => 'findings');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_AuditFinding/;
+  has Findings => (is => 'ro', isa => ArrayRef[IoT_AuditFinding]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Findings' => 'findings',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Findings' => {
+                               'class' => 'Paws::IoT::AuditFinding',
+                               'type' => 'ArrayRef[IoT_AuditFinding]'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::IoT::ListAuditFindingsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Findings => ArrayRef[L<Paws::IoT::AuditFinding>]
+=head2 Findings => ArrayRef[IoT_AuditFinding]
 
 The findings (results) of the audit.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::Country;
-  use Moose;
-  has CountryCode => (is => 'ro', isa => 'Str', request_name => 'countryCode', traits => ['NameInRequest']);
-  has CountryName => (is => 'ro', isa => 'Str', request_name => 'countryName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has CountryCode => (is => 'ro', isa => Str);
+  has CountryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CountryName' => 'countryName',
+                       'CountryCode' => 'countryCode'
+                     },
+  'types' => {
+               'CountryCode' => {
+                                  'type' => 'Str'
+                                },
+               'CountryName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

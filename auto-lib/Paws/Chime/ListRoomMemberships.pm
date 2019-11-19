@@ -1,17 +1,53 @@
 
 package Paws::Chime::ListRoomMemberships;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-results');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'next-token');
-  has RoomId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'roomId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Chime::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has RoomId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListRoomMemberships');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/rooms/{roomId}/memberships');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::ListRoomMembershipsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListRoomMemberships');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/rooms/{roomId}/memberships');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::ListRoomMembershipsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'RoomId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInQuery' => {
+                      'MaxResults' => 'max-results',
+                      'NextToken' => 'next-token'
+                    },
+  'IsRequired' => {
+                    'RoomId' => 1,
+                    'AccountId' => 1
+                  },
+  'ParamInURI' => {
+                    'RoomId' => 'roomId',
+                    'AccountId' => 'accountId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

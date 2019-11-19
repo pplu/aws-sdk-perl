@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::ProjectSourceVersion;
-  use Moose;
-  has SourceIdentifier => (is => 'ro', isa => 'Str', request_name => 'sourceIdentifier', traits => ['NameInRequest'], required => 1);
-  has SourceVersion => (is => 'ro', isa => 'Str', request_name => 'sourceVersion', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeBuild::Types qw//;
+  has SourceIdentifier => (is => 'ro', isa => Str, required => 1);
+  has SourceVersion => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SourceVersion' => 1,
+                    'SourceIdentifier' => 1
+                  },
+  'NameInRequest' => {
+                       'SourceIdentifier' => 'sourceIdentifier',
+                       'SourceVersion' => 'sourceVersion'
+                     },
+  'types' => {
+               'SourceVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'SourceIdentifier' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

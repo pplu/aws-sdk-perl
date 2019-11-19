@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::PerformanceInsights::MetricKeyDataPoints;
-  use Moose;
-  has DataPoints => (is => 'ro', isa => 'ArrayRef[Paws::PerformanceInsights::DataPoint]');
-  has Key => (is => 'ro', isa => 'Paws::PerformanceInsights::ResponseResourceMetricKey');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::PerformanceInsights::Types qw/PerformanceInsights_DataPoint PerformanceInsights_ResponseResourceMetricKey/;
+  has DataPoints => (is => 'ro', isa => ArrayRef[PerformanceInsights_DataPoint]);
+  has Key => (is => 'ro', isa => PerformanceInsights_ResponseResourceMetricKey);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Key' => {
+                          'class' => 'Paws::PerformanceInsights::ResponseResourceMetricKey',
+                          'type' => 'PerformanceInsights_ResponseResourceMetricKey'
+                        },
+               'DataPoints' => {
+                                 'class' => 'Paws::PerformanceInsights::DataPoint',
+                                 'type' => 'ArrayRef[PerformanceInsights_DataPoint]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +60,13 @@ Performance Insights metric.
 =head1 ATTRIBUTES
 
 
-=head2 DataPoints => ArrayRef[L<Paws::PerformanceInsights::DataPoint>]
+=head2 DataPoints => ArrayRef[PerformanceInsights_DataPoint]
 
   An array of timestamp-value pairs, representing measurements over a
 period of time.
 
 
-=head2 Key => L<Paws::PerformanceInsights::ResponseResourceMetricKey>
+=head2 Key => PerformanceInsights_ResponseResourceMetricKey
 
   The dimension(s) to which the data points apply.
 

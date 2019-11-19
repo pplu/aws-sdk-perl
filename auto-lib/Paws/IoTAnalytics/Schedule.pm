@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::Schedule;
-  use Moose;
-  has Expression => (is => 'ro', isa => 'Str', request_name => 'expression', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has Expression => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Expression' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Expression' => 'expression'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

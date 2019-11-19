@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Glue::SkewedInfo;
-  use Moose;
-  has SkewedColumnNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SkewedColumnValueLocationMaps => (is => 'ro', isa => 'Paws::Glue::LocationMap');
-  has SkewedColumnValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Glue::Types qw/Glue_LocationMap/;
+  has SkewedColumnNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SkewedColumnValueLocationMaps => (is => 'ro', isa => Glue_LocationMap);
+  has SkewedColumnValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SkewedColumnValues' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'SkewedColumnNames' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'SkewedColumnValueLocationMaps' => {
+                                                    'type' => 'Glue_LocationMap',
+                                                    'class' => 'Paws::Glue::LocationMap'
+                                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +68,7 @@ with very high frequency.
   A list of names of columns that contain skewed values.
 
 
-=head2 SkewedColumnValueLocationMaps => L<Paws::Glue::LocationMap>
+=head2 SkewedColumnValueLocationMaps => Glue_LocationMap
 
   A mapping of skewed values to the columns that contain them.
 

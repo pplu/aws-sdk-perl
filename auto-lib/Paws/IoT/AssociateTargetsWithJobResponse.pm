@@ -1,11 +1,39 @@
 
 package Paws::IoT::AssociateTargetsWithJobResponse;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has JobArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobArn');
-  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has JobArn => (is => 'ro', isa => Str);
+  has JobId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobArn' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'JobId' => 'jobId',
+                       'JobArn' => 'jobArn',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

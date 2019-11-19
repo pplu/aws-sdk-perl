@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::FSX::SelfManagedActiveDirectoryConfigurationUpdates;
-  use Moose;
-  has DnsIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Password => (is => 'ro', isa => 'Str');
-  has UserName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::FSX::Types qw//;
+  has DnsIps => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Password => (is => 'ro', isa => Str);
+  has UserName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DnsIps' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Password' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

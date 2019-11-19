@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::FileShareInfo;
-  use Moose;
-  has FileShareARN => (is => 'ro', isa => 'Str');
-  has FileShareId => (is => 'ro', isa => 'Str');
-  has FileShareStatus => (is => 'ro', isa => 'Str');
-  has FileShareType => (is => 'ro', isa => 'Str');
-  has GatewayARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StorageGateway::Types qw//;
+  has FileShareARN => (is => 'ro', isa => Str);
+  has FileShareId => (is => 'ro', isa => Str);
+  has FileShareStatus => (is => 'ro', isa => Str);
+  has FileShareType => (is => 'ro', isa => Str);
+  has GatewayARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileShareType' => {
+                                    'type' => 'Str'
+                                  },
+               'FileShareStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'FileShareId' => {
+                                  'type' => 'Str'
+                                },
+               'FileShareARN' => {
+                                   'type' => 'Str'
+                                 },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

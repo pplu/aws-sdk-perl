@@ -1,13 +1,29 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudSearch::DescribeDomains;
-  use Moose;
-  has DomainNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudSearch::Types qw//;
+  has DomainNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDomains');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearch::DescribeDomainsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDomainsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDomains');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudSearch::DescribeDomainsResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeDomainsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DomainNames' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

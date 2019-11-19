@@ -1,16 +1,80 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::AddOutputRequest;
-  use Moose;
-  has CidrAllowList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'cidrAllowList', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has MaxLatency => (is => 'ro', isa => 'Int', request_name => 'maxLatency', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest'], required => 1);
-  has RemoteId => (is => 'ro', isa => 'Str', request_name => 'remoteId', traits => ['NameInRequest']);
-  has SmoothingLatency => (is => 'ro', isa => 'Int', request_name => 'smoothingLatency', traits => ['NameInRequest']);
-  has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::MediaConnect::Types qw/MediaConnect_Encryption/;
+  has CidrAllowList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Description => (is => 'ro', isa => Str);
+  has Destination => (is => 'ro', isa => Str);
+  has Encryption => (is => 'ro', isa => MediaConnect_Encryption);
+  has MaxLatency => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has Protocol => (is => 'ro', isa => Str, required => 1);
+  has RemoteId => (is => 'ro', isa => Str);
+  has SmoothingLatency => (is => 'ro', isa => Int);
+  has StreamId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxLatency' => {
+                                 'type' => 'Int'
+                               },
+               'SmoothingLatency' => {
+                                       'type' => 'Int'
+                                     },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaConnect::Encryption',
+                                 'type' => 'MediaConnect_Encryption'
+                               },
+               'RemoteId' => {
+                               'type' => 'Str'
+                             },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CidrAllowList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'StreamId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'Protocol' => 1
+                  },
+  'NameInRequest' => {
+                       'Port' => 'port',
+                       'RemoteId' => 'remoteId',
+                       'Encryption' => 'encryption',
+                       'CidrAllowList' => 'cidrAllowList',
+                       'Description' => 'description',
+                       'SmoothingLatency' => 'smoothingLatency',
+                       'MaxLatency' => 'maxLatency',
+                       'StreamId' => 'streamId',
+                       'Protocol' => 'protocol',
+                       'Name' => 'name',
+                       'Destination' => 'destination'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +128,7 @@ Elemental MediaConnect console and will not be seen by the end user.
   The IP address from which video will be sent to output destinations.
 
 
-=head2 Encryption => L<Paws::MediaConnect::Encryption>
+=head2 Encryption => MediaConnect_Encryption
 
   The type of key used for the encryption. If no keyType is provided, the
 service will use the default setting (static-key).

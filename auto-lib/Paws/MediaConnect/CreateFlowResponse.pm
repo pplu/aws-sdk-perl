@@ -1,9 +1,30 @@
 
 package Paws::MediaConnect::CreateFlowResponse;
-  use Moose;
-  has Flow => (is => 'ro', isa => 'Paws::MediaConnect::Flow', traits => ['NameInRequest'], request_name => 'flow');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConnect::Types qw/MediaConnect_Flow/;
+  has Flow => (is => 'ro', isa => MediaConnect_Flow);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Flow' => {
+                           'type' => 'MediaConnect_Flow',
+                           'class' => 'Paws::MediaConnect::Flow'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Flow' => 'flow'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::MediaConnect::CreateFlowResponse
 =head1 ATTRIBUTES
 
 
-=head2 Flow => L<Paws::MediaConnect::Flow>
+=head2 Flow => MediaConnect_Flow
 
 
 

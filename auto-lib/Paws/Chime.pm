@@ -1,14 +1,15 @@
 package Paws::Chime;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'chime' }
   sub signing_name { 'chime' }
   sub version { '2018-05-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -624,7 +625,7 @@ Associates a phone number with the specified Amazon Chime user.
 
 =item AccountId => Str
 
-=item MembershipItemList => ArrayRef[L<Paws::Chime::MembershipItem>]
+=item MembershipItemList => ArrayRef[Chime_MembershipItem]
 
 =item RoomId => Str
 
@@ -728,7 +729,7 @@ suspended are ignored.
 
 =over
 
-=item UpdatePhoneNumberRequestItems => ArrayRef[L<Paws::Chime::UpdatePhoneNumberRequestItem>]
+=item UpdatePhoneNumberRequestItems => ArrayRef[Chime_UpdatePhoneNumberRequestItem]
 
 
 =back
@@ -756,7 +757,7 @@ can request another update.
 
 =item AccountId => Str
 
-=item UpdateUserRequestItems => ArrayRef[L<Paws::Chime::UpdateUserRequestItem>]
+=item UpdateUserRequestItems => ArrayRef[Chime_UpdateUserRequestItem]
 
 
 =back
@@ -909,7 +910,7 @@ unencrypted outbound calls are blocked.
 
 =item Name => Str
 
-=item [VoiceConnectorItems => ArrayRef[L<Paws::Chime::VoiceConnectorItem>]]
+=item [VoiceConnectorItems => ArrayRef[Chime_VoiceConnectorItem]]
 
 
 =back
@@ -1811,7 +1812,7 @@ Lambda function ARN. For more information, see Bot.
 
 =over
 
-=item LoggingConfiguration => L<Paws::Chime::LoggingConfiguration>
+=item LoggingConfiguration => Chime_LoggingConfiguration
 
 =item VoiceConnectorId => Str
 
@@ -1831,7 +1832,7 @@ are enabled for sending to Amazon CloudWatch Logs.
 
 =over
 
-=item Origination => L<Paws::Chime::Origination>
+=item Origination => Chime_Origination
 
 =item VoiceConnectorId => Str
 
@@ -1850,7 +1851,7 @@ Connector.
 
 =over
 
-=item StreamingConfiguration => L<Paws::Chime::StreamingConfiguration>
+=item StreamingConfiguration => Chime_StreamingConfiguration
 
 =item VoiceConnectorId => Str
 
@@ -1871,7 +1872,7 @@ retention period, in hours, for the Amazon Kinesis data.
 
 =over
 
-=item Termination => L<Paws::Chime::Termination>
+=item Termination => Chime_Termination
 
 =item VoiceConnectorId => Str
 
@@ -1892,7 +1893,7 @@ Connector.
 
 =item VoiceConnectorId => Str
 
-=item [Credentials => ArrayRef[L<Paws::Chime::Credential>]]
+=item [Credentials => ArrayRef[Chime_Credential]]
 
 
 =back
@@ -2013,7 +2014,7 @@ Currently, only account name updates are supported for this action.
 
 =item AccountId => Str
 
-=item AccountSettings => L<Paws::Chime::AccountSettings>
+=item AccountSettings => Chime_AccountSettings
 
 
 =back
@@ -2055,9 +2056,9 @@ the bot from running in your Amazon Chime Enterprise account.
 
 =over
 
-=item BusinessCalling => L<Paws::Chime::BusinessCallingSettings>
+=item BusinessCalling => Chime_BusinessCallingSettings
 
-=item VoiceConnector => L<Paws::Chime::VoiceConnectorSettings>
+=item VoiceConnector => Chime_VoiceConnectorSettings
 
 
 =back
@@ -2193,7 +2194,7 @@ C<LicenseType> updates are supported for this action.
 
 =item UserId => Str
 
-=item UserSettings => L<Paws::Chime::UserSettings>
+=item UserSettings => Chime_UserSettings
 
 
 =back
@@ -2234,7 +2235,7 @@ Updates details for the specified Amazon Chime Voice Connector.
 
 =item VoiceConnectorGroupId => Str
 
-=item VoiceConnectorItems => ArrayRef[L<Paws::Chime::VoiceConnectorItem>]
+=item VoiceConnectorItems => ArrayRef[Chime_VoiceConnectorItem]
 
 
 =back

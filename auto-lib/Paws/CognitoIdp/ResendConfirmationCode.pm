@@ -1,18 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::ResendConfirmationCode;
-  use Moose;
-  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
-  has ClientId => (is => 'ro', isa => 'Str', required => 1);
-  has ClientMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::ClientMetadataType');
-  has SecretHash => (is => 'ro', isa => 'Str');
-  has UserContextData => (is => 'ro', isa => 'Paws::CognitoIdp::UserContextDataType');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_ClientMetadataType CognitoIdp_AnalyticsMetadataType CognitoIdp_UserContextDataType/;
+  has AnalyticsMetadata => (is => 'ro', isa => CognitoIdp_AnalyticsMetadataType, predicate => 1);
+  has ClientId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientMetadata => (is => 'ro', isa => CognitoIdp_ClientMetadataType, predicate => 1);
+  has SecretHash => (is => 'ro', isa => Str, predicate => 1);
+  has UserContextData => (is => 'ro', isa => CognitoIdp_UserContextDataType, predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResendConfirmationCode');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::ResendConfirmationCodeResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ResendConfirmationCode');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::ResendConfirmationCodeResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecretHash' => {
+                                 'type' => 'Str'
+                               },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'UserContextData' => {
+                                      'type' => 'CognitoIdp_UserContextDataType',
+                                      'class' => 'Paws::CognitoIdp::UserContextDataType'
+                                    },
+               'AnalyticsMetadata' => {
+                                        'type' => 'CognitoIdp_AnalyticsMetadataType',
+                                        'class' => 'Paws::CognitoIdp::AnalyticsMetadataType'
+                                      },
+               'ClientMetadata' => {
+                                     'class' => 'Paws::CognitoIdp::ClientMetadataType',
+                                     'type' => 'CognitoIdp_ClientMetadataType'
+                                   }
+             },
+  'IsRequired' => {
+                    'ClientId' => 1,
+                    'Username' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +97,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+=head2 AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType
 
 The Amazon Pinpoint analytics metadata for collecting metrics for
 C<ResendConfirmationCode> calls.
@@ -72,7 +110,7 @@ The ID of the client associated with the user pool.
 
 
 
-=head2 ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>
+=head2 ClientMetadata => CognitoIdp_ClientMetadataType
 
 A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -127,7 +165,7 @@ message.
 
 
 
-=head2 UserContextData => L<Paws::CognitoIdp::UserContextDataType>
+=head2 UserContextData => CognitoIdp_UserContextDataType
 
 Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon

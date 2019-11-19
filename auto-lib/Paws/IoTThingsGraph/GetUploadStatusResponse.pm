@@ -1,15 +1,65 @@
+# Generated from json/callresult_class.tt
 
 package Paws::IoTThingsGraph::GetUploadStatusResponse;
-  use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate' , required => 1);
-  has FailureReason => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'failureReason' );
-  has NamespaceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'namespaceArn' );
-  has NamespaceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'namespaceName' );
-  has NamespaceVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'namespaceVersion' );
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uploadId' , required => 1);
-  has UploadStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uploadStatus' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has CreatedDate => (is => 'ro', isa => Str, required => 1);
+  has FailureReason => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NamespaceArn => (is => 'ro', isa => Str);
+  has NamespaceName => (is => 'ro', isa => Str);
+  has NamespaceVersion => (is => 'ro', isa => Int);
+  has UploadId => (is => 'ro', isa => Str, required => 1);
+  has UploadStatus => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               'NamespaceVersion' => {
+                                       'type' => 'Int'
+                                     },
+               'FailureReason' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'NamespaceArn' => {
+                                   'type' => 'Str'
+                                 },
+               'NamespaceName' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'UploadStatus' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'NamespaceName' => 'namespaceName',
+                       'NamespaceArn' => 'namespaceArn',
+                       'UploadStatus' => 'uploadStatus',
+                       'CreatedDate' => 'createdDate',
+                       'UploadId' => 'uploadId',
+                       'FailureReason' => 'failureReason',
+                       'NamespaceVersion' => 'namespaceVersion'
+                     },
+  'IsRequired' => {
+                    'UploadStatus' => 1,
+                    'CreatedDate' => 1,
+                    'UploadId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

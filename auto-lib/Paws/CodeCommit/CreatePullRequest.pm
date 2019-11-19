@@ -1,16 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::CreatePullRequest;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::Target]', traits => ['NameInRequest'], request_name => 'targets' , required => 1);
-  has Title => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'title' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_Target/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[CodeCommit_Target], required => 1, predicate => 1);
+  has Title => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePullRequest');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::CreatePullRequestOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePullRequest');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::CreatePullRequestOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Targets' => 1,
+                    'Title' => 1
+                  },
+  'NameInRequest' => {
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'Targets' => 'targets',
+                       'Title' => 'title',
+                       'Description' => 'description'
+                     },
+  'types' => {
+               'Targets' => {
+                              'class' => 'Paws::CodeCommit::Target',
+                              'type' => 'ArrayRef[CodeCommit_Target]'
+                            },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +111,7 @@ A description of the pull request.
 
 
 
-=head2 B<REQUIRED> Targets => ArrayRef[L<Paws::CodeCommit::Target>]
+=head2 B<REQUIRED> Targets => ArrayRef[CodeCommit_Target]
 
 The targets for the pull request, including the source of the code to
 be reviewed (the source branch), and the destination where the creator

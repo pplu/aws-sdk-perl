@@ -1,16 +1,46 @@
 
 package Paws::Chime::UpdateVoiceConnectorGroup;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has VoiceConnectorGroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'voiceConnectorGroupId', required => 1);
-  has VoiceConnectorItems => (is => 'ro', isa => 'ArrayRef[Paws::Chime::VoiceConnectorItem]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Chime::Types qw/Chime_VoiceConnectorItem/;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VoiceConnectorGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VoiceConnectorItems => (is => 'ro', isa => ArrayRef[Chime_VoiceConnectorItem], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateVoiceConnectorGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/voice-connector-groups/{voiceConnectorGroupId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::UpdateVoiceConnectorGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateVoiceConnectorGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/voice-connector-groups/{voiceConnectorGroupId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::UpdateVoiceConnectorGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'VoiceConnectorGroupId' => 'voiceConnectorGroupId'
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'VoiceConnectorItems' => {
+                                          'type' => 'ArrayRef[Chime_VoiceConnectorItem]',
+                                          'class' => 'Paws::Chime::VoiceConnectorItem'
+                                        },
+               'VoiceConnectorGroupId' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'VoiceConnectorGroupId' => 1,
+                    'VoiceConnectorItems' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +98,7 @@ The Amazon Chime Voice Connector group ID.
 
 
 
-=head2 B<REQUIRED> VoiceConnectorItems => ArrayRef[L<Paws::Chime::VoiceConnectorItem>]
+=head2 B<REQUIRED> VoiceConnectorItems => ArrayRef[Chime_VoiceConnectorItem]
 
 The C<VoiceConnectorItems> to associate with the group.
 

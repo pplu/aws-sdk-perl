@@ -1,15 +1,41 @@
 
 package Paws::ApiGateway::GetStage;
-  use Moose;
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has StageName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'stage_name', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StageName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetStage');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/stages/{stage_name}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Stage');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetStage');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/stages/{stage_name}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::Stage');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'StageName' => 'stage_name',
+                    'RestApiId' => 'restapi_id'
+                  },
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'StageName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'StageName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

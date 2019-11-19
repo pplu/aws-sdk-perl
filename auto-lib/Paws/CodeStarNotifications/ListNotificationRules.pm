@@ -1,16 +1,38 @@
 
 package Paws::CodeStarNotifications::ListNotificationRules;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::CodeStarNotifications::ListNotificationRulesFilter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::CodeStarNotifications::Types qw/CodeStarNotifications_ListNotificationRulesFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[CodeStarNotifications_ListNotificationRulesFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListNotificationRules');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/listNotificationRules');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStarNotifications::ListNotificationRulesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListNotificationRules');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/listNotificationRules');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStarNotifications::ListNotificationRulesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'class' => 'Paws::CodeStarNotifications::ListNotificationRulesFilter',
+                              'type' => 'ArrayRef[CodeStarNotifications_ListNotificationRulesFilter]'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +79,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::CodeStarNotifications::ListNotificationRulesFilter>]
+=head2 Filters => ArrayRef[CodeStarNotifications_ListNotificationRulesFilter]
 
 The filters to use to return information by service or resource type.
 For valid values, see ListNotificationRulesFilter.

@@ -1,23 +1,115 @@
 package Paws::EC2::SpotFleetLaunchSpecification;
-  use Moose;
-  has AddressingType => (is => 'ro', isa => 'Str', request_name => 'addressingType', traits => ['NameInRequest']);
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest']);
-  has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
-  has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfileSpecification', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
-  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has KernelId => (is => 'ro', isa => 'Str', request_name => 'kernelId', traits => ['NameInRequest']);
-  has KeyName => (is => 'ro', isa => 'Str', request_name => 'keyName', traits => ['NameInRequest']);
-  has Monitoring => (is => 'ro', isa => 'Paws::EC2::SpotFleetMonitoring', request_name => 'monitoring', traits => ['NameInRequest']);
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceNetworkInterfaceSpecification]', request_name => 'networkInterfaceSet', traits => ['NameInRequest']);
-  has Placement => (is => 'ro', isa => 'Paws::EC2::SpotPlacement', request_name => 'placement', traits => ['NameInRequest']);
-  has RamdiskId => (is => 'ro', isa => 'Str', request_name => 'ramdiskId', traits => ['NameInRequest']);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest']);
-  has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetTagSpecification]', request_name => 'tagSpecificationSet', traits => ['NameInRequest']);
-  has UserData => (is => 'ro', isa => 'Str', request_name => 'userData', traits => ['NameInRequest']);
-  has WeightedCapacity => (is => 'ro', isa => 'Num', request_name => 'weightedCapacity', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Bool Num/;
+  use Paws::EC2::Types qw/EC2_IamInstanceProfileSpecification EC2_InstanceNetworkInterfaceSpecification EC2_GroupIdentifier EC2_SpotFleetTagSpecification EC2_SpotFleetMonitoring EC2_BlockDeviceMapping EC2_SpotPlacement/;
+  has AddressingType => (is => 'ro', isa => Str);
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[EC2_BlockDeviceMapping]);
+  has EbsOptimized => (is => 'ro', isa => Bool);
+  has IamInstanceProfile => (is => 'ro', isa => EC2_IamInstanceProfileSpecification);
+  has ImageId => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has KernelId => (is => 'ro', isa => Str);
+  has KeyName => (is => 'ro', isa => Str);
+  has Monitoring => (is => 'ro', isa => EC2_SpotFleetMonitoring);
+  has NetworkInterfaces => (is => 'ro', isa => ArrayRef[EC2_InstanceNetworkInterfaceSpecification]);
+  has Placement => (is => 'ro', isa => EC2_SpotPlacement);
+  has RamdiskId => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[EC2_GroupIdentifier]);
+  has SpotPrice => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_SpotFleetTagSpecification]);
+  has UserData => (is => 'ro', isa => Str);
+  has WeightedCapacity => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WeightedCapacity' => {
+                                       'type' => 'Num'
+                                     },
+               'RamdiskId' => {
+                                'type' => 'Str'
+                              },
+               'TagSpecifications' => {
+                                        'class' => 'Paws::EC2::SpotFleetTagSpecification',
+                                        'type' => 'ArrayRef[EC2_SpotFleetTagSpecification]'
+                                      },
+               'KernelId' => {
+                               'type' => 'Str'
+                             },
+               'Monitoring' => {
+                                 'class' => 'Paws::EC2::SpotFleetMonitoring',
+                                 'type' => 'EC2_SpotFleetMonitoring'
+                               },
+               'AddressingType' => {
+                                     'type' => 'Str'
+                                   },
+               'IamInstanceProfile' => {
+                                         'class' => 'Paws::EC2::IamInstanceProfileSpecification',
+                                         'type' => 'EC2_IamInstanceProfileSpecification'
+                                       },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 },
+               'SpotPrice' => {
+                                'type' => 'Str'
+                              },
+               'Placement' => {
+                                'type' => 'EC2_SpotPlacement',
+                                'class' => 'Paws::EC2::SpotPlacement'
+                              },
+               'UserData' => {
+                               'type' => 'Str'
+                             },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[EC2_GroupIdentifier]',
+                                     'class' => 'Paws::EC2::GroupIdentifier'
+                                   },
+               'KeyName' => {
+                              'type' => 'Str'
+                            },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'BlockDeviceMappings' => {
+                                          'type' => 'ArrayRef[EC2_BlockDeviceMapping]',
+                                          'class' => 'Paws::EC2::BlockDeviceMapping'
+                                        },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'NetworkInterfaces' => {
+                                        'type' => 'ArrayRef[EC2_InstanceNetworkInterfaceSpecification]',
+                                        'class' => 'Paws::EC2::InstanceNetworkInterfaceSpecification'
+                                      }
+             },
+  'NameInRequest' => {
+                       'RamdiskId' => 'ramdiskId',
+                       'WeightedCapacity' => 'weightedCapacity',
+                       'TagSpecifications' => 'tagSpecificationSet',
+                       'KernelId' => 'kernelId',
+                       'Monitoring' => 'monitoring',
+                       'AddressingType' => 'addressingType',
+                       'InstanceType' => 'instanceType',
+                       'IamInstanceProfile' => 'iamInstanceProfile',
+                       'EbsOptimized' => 'ebsOptimized',
+                       'SpotPrice' => 'spotPrice',
+                       'Placement' => 'placement',
+                       'UserData' => 'userData',
+                       'SecurityGroups' => 'groupSet',
+                       'KeyName' => 'keyName',
+                       'ImageId' => 'imageId',
+                       'SubnetId' => 'subnetId',
+                       'BlockDeviceMappings' => 'blockDeviceMapping',
+                       'NetworkInterfaces' => 'networkInterfaceSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +150,7 @@ This class has no description
   Deprecated.
 
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
+=head2 BlockDeviceMappings => ArrayRef[EC2_BlockDeviceMapping]
 
   One or more block devices that are mapped to the Spot Instances. You
 can't specify both a snapshot ID and an encryption value. This is
@@ -78,7 +170,7 @@ usage charges apply when using an EBS Optimized instance.
 Default: C<false>
 
 
-=head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>
+=head2 IamInstanceProfile => EC2_IamInstanceProfileSpecification
 
   The IAM instance profile.
 
@@ -103,19 +195,19 @@ Default: C<false>
   The name of the key pair.
 
 
-=head2 Monitoring => L<Paws::EC2::SpotFleetMonitoring>
+=head2 Monitoring => EC2_SpotFleetMonitoring
 
   Enable or disable monitoring for the instances.
 
 
-=head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
+=head2 NetworkInterfaces => ArrayRef[EC2_InstanceNetworkInterfaceSpecification]
 
   One or more network interfaces. If you specify a network interface, you
 must specify subnet IDs and security group IDs using the network
 interface.
 
 
-=head2 Placement => L<Paws::EC2::SpotPlacement>
+=head2 Placement => EC2_SpotPlacement
 
   The placement information.
 
@@ -128,7 +220,7 @@ need to specify a RAM disk. To find kernel requirements, refer to the
 AWS Resource Center and search for the kernel ID.
 
 
-=head2 SecurityGroups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
+=head2 SecurityGroups => ArrayRef[EC2_GroupIdentifier]
 
   One or more security groups. When requesting instances in a VPC, you
 must specify the IDs of the security groups. When requesting instances
@@ -151,7 +243,7 @@ multiple subnets, separate them using commas; for example,
 "subnet-1234abcdeexample1, subnet-0987cdef6example2".
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::SpotFleetTagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_SpotFleetTagSpecification]
 
   The tags to apply during creation.
 

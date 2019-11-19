@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::StackInstance;
-  use Moose;
-  has Account => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has StackInstanceStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has Account => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has StackInstanceStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackInstanceStatus' => {
+                                          'type' => 'Str'
+                                        },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'Account' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,20 +1,63 @@
 
 package Paws::CloudDirectory::ListOutgoingTypedLinks;
-  use Moose;
-  has ConsistencyLevel => (is => 'ro', isa => 'Str');
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has FilterAttributeRanges => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::TypedLinkAttributeRange]');
-  has FilterTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSchemaAndFacetName');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference CloudDirectory_TypedLinkSchemaAndFacetName CloudDirectory_TypedLinkAttributeRange/;
+  has ConsistencyLevel => (is => 'ro', isa => Str, predicate => 1);
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FilterAttributeRanges => (is => 'ro', isa => ArrayRef[CloudDirectory_TypedLinkAttributeRange], predicate => 1);
+  has FilterTypedLink => (is => 'ro', isa => CloudDirectory_TypedLinkSchemaAndFacetName, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListOutgoingTypedLinks');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/outgoing');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::ListOutgoingTypedLinksResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListOutgoingTypedLinks');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/outgoing');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::ListOutgoingTypedLinksResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     },
+  'IsRequired' => {
+                    'ObjectReference' => 1,
+                    'DirectoryArn' => 1
+                  },
+  'types' => {
+               'ObjectReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'FilterTypedLink' => {
+                                      'class' => 'Paws::CloudDirectory::TypedLinkSchemaAndFacetName',
+                                      'type' => 'CloudDirectory_TypedLinkSchemaAndFacetName'
+                                    },
+               'ConsistencyLevel' => {
+                                       'type' => 'Str'
+                                     },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'FilterAttributeRanges' => {
+                                            'class' => 'Paws::CloudDirectory::TypedLinkAttributeRange',
+                                            'type' => 'ArrayRef[CloudDirectory_TypedLinkAttributeRange]'
+                                          },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -102,7 +145,7 @@ the typed links.
 
 
 
-=head2 FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>]
+=head2 FilterAttributeRanges => ArrayRef[CloudDirectory_TypedLinkAttributeRange]
 
 Provides range filters for multiple attributes. When providing ranges
 to typed link selection, any inexact ranges must be specified at the
@@ -111,7 +154,7 @@ match the entire range.
 
 
 
-=head2 FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>
+=head2 FilterTypedLink => CloudDirectory_TypedLinkSchemaAndFacetName
 
 Filters are interpreted in the order of the attributes defined on the
 typed link facet, not the order they are supplied to any API calls.
@@ -130,7 +173,7 @@ The pagination token.
 
 
 
-=head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ObjectReference => CloudDirectory_ObjectReference
 
 A reference that identifies the object whose attributes will be listed.
 

@@ -1,15 +1,41 @@
 
 package Paws::CloudDirectory::CreateTypedLinkFacet;
-  use Moose;
-  has Facet => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkFacet', required => 1);
-  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedLinkFacet/;
+  has Facet => (is => 'ro', isa => CloudDirectory_TypedLinkFacet, required => 1, predicate => 1);
+  has SchemaArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTypedLinkFacet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/facet/create');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::CreateTypedLinkFacetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTypedLinkFacet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/facet/create');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::CreateTypedLinkFacetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Facet' => 1,
+                    'SchemaArn' => 1
+                  },
+  'types' => {
+               'SchemaArn' => {
+                                'type' => 'Str'
+                              },
+               'Facet' => {
+                            'class' => 'Paws::CloudDirectory::TypedLinkFacet',
+                            'type' => 'CloudDirectory_TypedLinkFacet'
+                          }
+             },
+  'ParamInHeader' => {
+                       'SchemaArn' => 'x-amz-data-partition'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +101,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Facet => L<Paws::CloudDirectory::TypedLinkFacet>
+=head2 B<REQUIRED> Facet => CloudDirectory_TypedLinkFacet
 
 Facet structure that is associated with the typed link facet.
 

@@ -1,10 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceCatalog::DescribeProductViewOutput;
-  use Moose;
-  has ProductViewSummary => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewSummary');
-  has ProvisioningArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisioningArtifact]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ProductViewSummary ServiceCatalog_ProvisioningArtifact/;
+  has ProductViewSummary => (is => 'ro', isa => ServiceCatalog_ProductViewSummary);
+  has ProvisioningArtifacts => (is => 'ro', isa => ArrayRef[ServiceCatalog_ProvisioningArtifact]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProductViewSummary' => {
+                                         'class' => 'Paws::ServiceCatalog::ProductViewSummary',
+                                         'type' => 'ServiceCatalog_ProductViewSummary'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ProvisioningArtifacts' => {
+                                            'class' => 'Paws::ServiceCatalog::ProvisioningArtifact',
+                                            'type' => 'ArrayRef[ServiceCatalog_ProvisioningArtifact]'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,12 +38,12 @@ Paws::ServiceCatalog::DescribeProductViewOutput
 =head1 ATTRIBUTES
 
 
-=head2 ProductViewSummary => L<Paws::ServiceCatalog::ProductViewSummary>
+=head2 ProductViewSummary => ServiceCatalog_ProductViewSummary
 
 Summary information about the product.
 
 
-=head2 ProvisioningArtifacts => ArrayRef[L<Paws::ServiceCatalog::ProvisioningArtifact>]
+=head2 ProvisioningArtifacts => ArrayRef[ServiceCatalog_ProvisioningArtifact]
 
 Information about the provisioning artifacts for the product.
 

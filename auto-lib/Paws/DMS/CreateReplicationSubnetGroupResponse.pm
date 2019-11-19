@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::CreateReplicationSubnetGroupResponse;
-  use Moose;
-  has ReplicationSubnetGroup => (is => 'ro', isa => 'Paws::DMS::ReplicationSubnetGroup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw/DMS_ReplicationSubnetGroup/;
+  has ReplicationSubnetGroup => (is => 'ro', isa => DMS_ReplicationSubnetGroup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationSubnetGroup' => {
+                                             'type' => 'DMS_ReplicationSubnetGroup',
+                                             'class' => 'Paws::DMS::ReplicationSubnetGroup'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DMS::CreateReplicationSubnetGroupResponse
 =head1 ATTRIBUTES
 
 
-=head2 ReplicationSubnetGroup => L<Paws::DMS::ReplicationSubnetGroup>
+=head2 ReplicationSubnetGroup => DMS_ReplicationSubnetGroup
 
 The replication subnet group that was created.
 

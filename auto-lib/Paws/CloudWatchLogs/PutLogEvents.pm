@@ -1,16 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchLogs::PutLogEvents;
-  use Moose;
-  has LogEvents => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::InputLogEvent]', traits => ['NameInRequest'], request_name => 'logEvents' , required => 1);
-  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
-  has LogStreamName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logStreamName' , required => 1);
-  has SequenceToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sequenceToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_InputLogEvent/;
+  has LogEvents => (is => 'ro', isa => ArrayRef[CloudWatchLogs_InputLogEvent], required => 1, predicate => 1);
+  has LogGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LogStreamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SequenceToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutLogEvents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::PutLogEventsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutLogEvents');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchLogs::PutLogEventsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LogStreamName' => 1,
+                    'LogGroupName' => 1,
+                    'LogEvents' => 1
+                  },
+  'NameInRequest' => {
+                       'SequenceToken' => 'sequenceToken',
+                       'LogEvents' => 'logEvents',
+                       'LogStreamName' => 'logStreamName',
+                       'LogGroupName' => 'logGroupName'
+                     },
+  'types' => {
+               'SequenceToken' => {
+                                    'type' => 'Str'
+                                  },
+               'LogEvents' => {
+                                'type' => 'ArrayRef[CloudWatchLogs_InputLogEvent]',
+                                'class' => 'Paws::CloudWatchLogs::InputLogEvent'
+                              },
+               'LogStreamName' => {
+                                    'type' => 'Str'
+                                  },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +93,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/log
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LogEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>]
+=head2 B<REQUIRED> LogEvents => ArrayRef[CloudWatchLogs_InputLogEvent]
 
 The log events.
 

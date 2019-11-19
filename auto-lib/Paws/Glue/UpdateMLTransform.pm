@@ -1,22 +1,69 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::UpdateMLTransform;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has MaxCapacity => (is => 'ro', isa => 'Num');
-  has MaxRetries => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str');
-  has NumberOfWorkers => (is => 'ro', isa => 'Int');
-  has Parameters => (is => 'ro', isa => 'Paws::Glue::TransformParameters');
-  has Role => (is => 'ro', isa => 'Str');
-  has Timeout => (is => 'ro', isa => 'Int');
-  has TransformId => (is => 'ro', isa => 'Str', required => 1);
-  has WorkerType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Num Int/;
+  use Paws::Glue::Types qw/Glue_TransformParameters/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has MaxCapacity => (is => 'ro', isa => Num, predicate => 1);
+  has MaxRetries => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has NumberOfWorkers => (is => 'ro', isa => Int, predicate => 1);
+  has Parameters => (is => 'ro', isa => Glue_TransformParameters, predicate => 1);
+  has Role => (is => 'ro', isa => Str, predicate => 1);
+  has Timeout => (is => 'ro', isa => Int, predicate => 1);
+  has TransformId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WorkerType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMLTransform');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::UpdateMLTransformResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateMLTransform');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::UpdateMLTransformResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TransformId' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MaxCapacity' => {
+                                  'type' => 'Num'
+                                },
+               'WorkerType' => {
+                                 'type' => 'Str'
+                               },
+               'Parameters' => {
+                                 'class' => 'Paws::Glue::TransformParameters',
+                                 'type' => 'Glue_TransformParameters'
+                               },
+               'NumberOfWorkers' => {
+                                      'type' => 'Int'
+                                    },
+               'Timeout' => {
+                              'type' => 'Int'
+                            },
+               'TransformId' => {
+                                  'type' => 'Str'
+                                },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'MaxRetries' => {
+                                 'type' => 'Int'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -109,7 +156,7 @@ when this task runs.
 
 
 
-=head2 Parameters => L<Paws::Glue::TransformParameters>
+=head2 Parameters => Glue_TransformParameters
 
 The configuration parameters that are specific to the transform type
 (algorithm) used. Conditionally dependent on the transform type.

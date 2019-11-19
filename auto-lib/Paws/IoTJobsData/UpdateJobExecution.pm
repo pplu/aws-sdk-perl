@@ -1,22 +1,80 @@
 
 package Paws::IoTJobsData::UpdateJobExecution;
-  use Moose;
-  has ExecutionNumber => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'executionNumber');
-  has ExpectedVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'expectedVersion');
-  has IncludeJobDocument => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeJobDocument');
-  has IncludeJobExecutionState => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeJobExecutionState');
-  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status', required => 1);
-  has StatusDetails => (is => 'ro', isa => 'Paws::IoTJobsData::DetailsMap', traits => ['NameInRequest'], request_name => 'statusDetails');
-  has StepTimeoutInMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'stepTimeoutInMinutes');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::IoTJobsData::Types qw/IoTJobsData_DetailsMap/;
+  has ExecutionNumber => (is => 'ro', isa => Int, predicate => 1);
+  has ExpectedVersion => (is => 'ro', isa => Int, predicate => 1);
+  has IncludeJobDocument => (is => 'ro', isa => Bool, predicate => 1);
+  has IncludeJobExecutionState => (is => 'ro', isa => Bool, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Status => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StatusDetails => (is => 'ro', isa => IoTJobsData_DetailsMap, predicate => 1);
+  has StepTimeoutInMinutes => (is => 'ro', isa => Int, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJobExecution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}/jobs/{jobId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTJobsData::UpdateJobExecutionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateJobExecution');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/things/{thingName}/jobs/{jobId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTJobsData::UpdateJobExecutionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'IncludeJobDocument' => 'includeJobDocument',
+                       'Status' => 'status',
+                       'ExecutionNumber' => 'executionNumber',
+                       'IncludeJobExecutionState' => 'includeJobExecutionState',
+                       'StepTimeoutInMinutes' => 'stepTimeoutInMinutes',
+                       'StatusDetails' => 'statusDetails',
+                       'ExpectedVersion' => 'expectedVersion'
+                     },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'ThingName' => 1,
+                    'JobId' => 1
+                  },
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'IncludeJobDocument' => {
+                                         'type' => 'Bool'
+                                       },
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'StatusDetails' => {
+                                    'type' => 'IoTJobsData_DetailsMap',
+                                    'class' => 'Paws::IoTJobsData::DetailsMap'
+                                  },
+               'ExecutionNumber' => {
+                                      'type' => 'Int'
+                                    },
+               'IncludeJobExecutionState' => {
+                                               'type' => 'Bool'
+                                             },
+               'StepTimeoutInMinutes' => {
+                                           'type' => 'Int'
+                                         },
+               'ExpectedVersion' => {
+                                      'type' => 'Int'
+                                    },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'ParamInURI' => {
+                    'ThingName' => 'thingName',
+                    'JobId' => 'jobId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -109,7 +167,7 @@ REJECTED). This must be specified on every update.
 
 Valid values are: C<"QUEUED">, C<"IN_PROGRESS">, C<"SUCCEEDED">, C<"FAILED">, C<"TIMED_OUT">, C<"REJECTED">, C<"REMOVED">, C<"CANCELED">
 
-=head2 StatusDetails => L<Paws::IoTJobsData::DetailsMap>
+=head2 StatusDetails => IoTJobsData_DetailsMap
 
 Optional. A collection of name/value pairs that describe the status of
 the job execution. If not specified, the statusDetails are unchanged.

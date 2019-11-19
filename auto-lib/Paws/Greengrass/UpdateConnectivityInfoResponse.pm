@@ -1,10 +1,33 @@
 
 package Paws::Greengrass::UpdateConnectivityInfoResponse;
-  use Moose;
-  has Message => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'message');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has Message => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Message' => 'message'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Version' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

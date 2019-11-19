@@ -1,31 +1,172 @@
+# Generated from default/object.tt
 package Paws::Amplify::Branch;
-  use Moose;
-  has ActiveJobId => (is => 'ro', isa => 'Str', request_name => 'activeJobId', traits => ['NameInRequest'], required => 1);
-  has AssociatedResources => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'associatedResources', traits => ['NameInRequest']);
-  has BackendEnvironmentArn => (is => 'ro', isa => 'Str', request_name => 'backendEnvironmentArn', traits => ['NameInRequest']);
-  has BasicAuthCredentials => (is => 'ro', isa => 'Str', request_name => 'basicAuthCredentials', traits => ['NameInRequest']);
-  has BranchArn => (is => 'ro', isa => 'Str', request_name => 'branchArn', traits => ['NameInRequest'], required => 1);
-  has BranchName => (is => 'ro', isa => 'Str', request_name => 'branchName', traits => ['NameInRequest'], required => 1);
-  has BuildSpec => (is => 'ro', isa => 'Str', request_name => 'buildSpec', traits => ['NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest'], required => 1);
-  has CustomDomains => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'customDomains', traits => ['NameInRequest'], required => 1);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
-  has DestinationBranch => (is => 'ro', isa => 'Str', request_name => 'destinationBranch', traits => ['NameInRequest']);
-  has DisplayName => (is => 'ro', isa => 'Str', request_name => 'displayName', traits => ['NameInRequest'], required => 1);
-  has EnableAutoBuild => (is => 'ro', isa => 'Bool', request_name => 'enableAutoBuild', traits => ['NameInRequest'], required => 1);
-  has EnableBasicAuth => (is => 'ro', isa => 'Bool', request_name => 'enableBasicAuth', traits => ['NameInRequest'], required => 1);
-  has EnableNotification => (is => 'ro', isa => 'Bool', request_name => 'enableNotification', traits => ['NameInRequest'], required => 1);
-  has EnablePullRequestPreview => (is => 'ro', isa => 'Bool', request_name => 'enablePullRequestPreview', traits => ['NameInRequest'], required => 1);
-  has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', request_name => 'environmentVariables', traits => ['NameInRequest'], required => 1);
-  has Framework => (is => 'ro', isa => 'Str', request_name => 'framework', traits => ['NameInRequest'], required => 1);
-  has PullRequestEnvironmentName => (is => 'ro', isa => 'Str', request_name => 'pullRequestEnvironmentName', traits => ['NameInRequest']);
-  has SourceBranch => (is => 'ro', isa => 'Str', request_name => 'sourceBranch', traits => ['NameInRequest']);
-  has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Amplify::TagMap', request_name => 'tags', traits => ['NameInRequest']);
-  has ThumbnailUrl => (is => 'ro', isa => 'Str', request_name => 'thumbnailUrl', traits => ['NameInRequest']);
-  has TotalNumberOfJobs => (is => 'ro', isa => 'Str', request_name => 'totalNumberOfJobs', traits => ['NameInRequest'], required => 1);
-  has Ttl => (is => 'ro', isa => 'Str', request_name => 'ttl', traits => ['NameInRequest'], required => 1);
-  has UpdateTime => (is => 'ro', isa => 'Str', request_name => 'updateTime', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::Amplify::Types qw/Amplify_TagMap Amplify_EnvironmentVariables/;
+  has ActiveJobId => (is => 'ro', isa => Str, required => 1);
+  has AssociatedResources => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BackendEnvironmentArn => (is => 'ro', isa => Str);
+  has BasicAuthCredentials => (is => 'ro', isa => Str);
+  has BranchArn => (is => 'ro', isa => Str, required => 1);
+  has BranchName => (is => 'ro', isa => Str, required => 1);
+  has BuildSpec => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str, required => 1);
+  has CustomDomains => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has DestinationBranch => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str, required => 1);
+  has EnableAutoBuild => (is => 'ro', isa => Bool, required => 1);
+  has EnableBasicAuth => (is => 'ro', isa => Bool, required => 1);
+  has EnableNotification => (is => 'ro', isa => Bool, required => 1);
+  has EnablePullRequestPreview => (is => 'ro', isa => Bool, required => 1);
+  has EnvironmentVariables => (is => 'ro', isa => Amplify_EnvironmentVariables, required => 1);
+  has Framework => (is => 'ro', isa => Str, required => 1);
+  has PullRequestEnvironmentName => (is => 'ro', isa => Str);
+  has SourceBranch => (is => 'ro', isa => Str);
+  has Stage => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => Amplify_TagMap);
+  has ThumbnailUrl => (is => 'ro', isa => Str);
+  has TotalNumberOfJobs => (is => 'ro', isa => Str, required => 1);
+  has Ttl => (is => 'ro', isa => Str, required => 1);
+  has UpdateTime => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'EnableNotification' => 1,
+                    'EnvironmentVariables' => 1,
+                    'Ttl' => 1,
+                    'TotalNumberOfJobs' => 1,
+                    'DisplayName' => 1,
+                    'CustomDomains' => 1,
+                    'EnableBasicAuth' => 1,
+                    'BranchName' => 1,
+                    'ActiveJobId' => 1,
+                    'Framework' => 1,
+                    'BranchArn' => 1,
+                    'UpdateTime' => 1,
+                    'Stage' => 1,
+                    'CreateTime' => 1,
+                    'EnableAutoBuild' => 1,
+                    'EnablePullRequestPreview' => 1,
+                    'Description' => 1
+                  },
+  'NameInRequest' => {
+                       'BackendEnvironmentArn' => 'backendEnvironmentArn',
+                       'Ttl' => 'ttl',
+                       'TotalNumberOfJobs' => 'totalNumberOfJobs',
+                       'DisplayName' => 'displayName',
+                       'CustomDomains' => 'customDomains',
+                       'BranchName' => 'branchName',
+                       'ActiveJobId' => 'activeJobId',
+                       'BuildSpec' => 'buildSpec',
+                       'DestinationBranch' => 'destinationBranch',
+                       'Framework' => 'framework',
+                       'Tags' => 'tags',
+                       'CreateTime' => 'createTime',
+                       'Description' => 'description',
+                       'EnableNotification' => 'enableNotification',
+                       'EnvironmentVariables' => 'environmentVariables',
+                       'SourceBranch' => 'sourceBranch',
+                       'AssociatedResources' => 'associatedResources',
+                       'BasicAuthCredentials' => 'basicAuthCredentials',
+                       'EnableBasicAuth' => 'enableBasicAuth',
+                       'PullRequestEnvironmentName' => 'pullRequestEnvironmentName',
+                       'BranchArn' => 'branchArn',
+                       'Stage' => 'stage',
+                       'UpdateTime' => 'updateTime',
+                       'EnableAutoBuild' => 'enableAutoBuild',
+                       'EnablePullRequestPreview' => 'enablePullRequestPreview',
+                       'ThumbnailUrl' => 'thumbnailUrl'
+                     },
+  'types' => {
+               'Ttl' => {
+                          'type' => 'Str'
+                        },
+               'BackendEnvironmentArn' => {
+                                            'type' => 'Str'
+                                          },
+               'BranchName' => {
+                                 'type' => 'Str'
+                               },
+               'CustomDomains' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'TotalNumberOfJobs' => {
+                                        'type' => 'Str'
+                                      },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'Framework' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::Amplify::TagMap',
+                           'type' => 'Amplify_TagMap'
+                         },
+               'BuildSpec' => {
+                                'type' => 'Str'
+                              },
+               'DestinationBranch' => {
+                                        'type' => 'Str'
+                                      },
+               'ActiveJobId' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'AssociatedResources' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'EnvironmentVariables' => {
+                                           'class' => 'Paws::Amplify::EnvironmentVariables',
+                                           'type' => 'Amplify_EnvironmentVariables'
+                                         },
+               'SourceBranch' => {
+                                   'type' => 'Str'
+                                 },
+               'EnableNotification' => {
+                                         'type' => 'Bool'
+                                       },
+               'PullRequestEnvironmentName' => {
+                                                 'type' => 'Str'
+                                               },
+               'EnableBasicAuth' => {
+                                      'type' => 'Bool'
+                                    },
+               'BasicAuthCredentials' => {
+                                           'type' => 'Str'
+                                         },
+               'BranchArn' => {
+                                'type' => 'Str'
+                              },
+               'EnablePullRequestPreview' => {
+                                               'type' => 'Bool'
+                                             },
+               'ThumbnailUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'UpdateTime' => {
+                                 'type' => 'Str'
+                               },
+               'Stage' => {
+                            'type' => 'Str'
+                          },
+               'EnableAutoBuild' => {
+                                      'type' => 'Bool'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -141,7 +282,7 @@ Branch for an Amplify App, which maps to a 3rd party repository branch.
   Enables Pull Request Preview for this branch.
 
 
-=head2 B<REQUIRED> EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
+=head2 B<REQUIRED> EnvironmentVariables => Amplify_EnvironmentVariables
 
   Environment Variables specific to a branch, part of an Amplify App.
 
@@ -166,7 +307,7 @@ Branch for an Amplify App, which maps to a 3rd party repository branch.
   Stage for a branch, part of an Amplify App.
 
 
-=head2 Tags => L<Paws::Amplify::TagMap>
+=head2 Tags => Amplify_TagMap
 
   Tag for branch for Amplify App.
 

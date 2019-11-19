@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::MetricDimension;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AutoScaling::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Value' => 1
+                  },
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

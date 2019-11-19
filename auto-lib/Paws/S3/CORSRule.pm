@@ -1,10 +1,49 @@
+# Generated from default/object.tt
 package Paws::S3::CORSRule;
-  use Moose;
-  has AllowedHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AllowedHeader', traits => ['NameInRequest']);
-  has AllowedMethods => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AllowedMethod', traits => ['NameInRequest'], required => 1);
-  has AllowedOrigins => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AllowedOrigin', traits => ['NameInRequest'], required => 1);
-  has ExposeHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ExposeHeader', traits => ['NameInRequest']);
-  has MaxAgeSeconds => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str Int/;
+  use Paws::S3::Types qw//;
+  has AllowedHeaders => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has AllowedMethods => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has AllowedOrigins => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has ExposeHeaders => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has MaxAgeSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AllowedOrigins' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'MaxAgeSeconds' => {
+                                    'type' => 'Int'
+                                  },
+               'AllowedHeaders' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'ExposeHeaders' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'AllowedMethods' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'NameInRequest' => {
+                       'ExposeHeaders' => 'ExposeHeader',
+                       'AllowedMethods' => 'AllowedMethod',
+                       'AllowedOrigins' => 'AllowedOrigin',
+                       'AllowedHeaders' => 'AllowedHeader'
+                     },
+  'IsRequired' => {
+                    'AllowedMethods' => 1,
+                    'AllowedOrigins' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

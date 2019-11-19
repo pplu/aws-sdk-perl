@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::IoT::ThingGroupProperties;
-  use Moose;
-  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload', request_name => 'attributePayload', traits => ['NameInRequest']);
-  has ThingGroupDescription => (is => 'ro', isa => 'Str', request_name => 'thingGroupDescription', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_AttributePayload/;
+  has AttributePayload => (is => 'ro', isa => IoT_AttributePayload);
+  has ThingGroupDescription => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributePayload' => {
+                                       'type' => 'IoT_AttributePayload',
+                                       'class' => 'Paws::IoT::AttributePayload'
+                                     },
+               'ThingGroupDescription' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'NameInRequest' => {
+                       'ThingGroupDescription' => 'thingGroupDescription',
+                       'AttributePayload' => 'attributePayload'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Thing group properties.
 =head1 ATTRIBUTES
 
 
-=head2 AttributePayload => L<Paws::IoT::AttributePayload>
+=head2 AttributePayload => IoT_AttributePayload
 
   The thing group attributes in JSON format.
 

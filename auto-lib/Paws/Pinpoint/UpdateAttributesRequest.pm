@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::UpdateAttributesRequest;
-  use Moose;
-  has Blacklist => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::Pinpoint::Types qw//;
+  has Blacklist => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Blacklist' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

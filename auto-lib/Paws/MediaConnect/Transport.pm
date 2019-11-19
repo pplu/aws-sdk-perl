@@ -1,12 +1,59 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::Transport;
-  use Moose;
-  has CidrAllowList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'cidrAllowList', traits => ['NameInRequest']);
-  has MaxBitrate => (is => 'ro', isa => 'Int', request_name => 'maxBitrate', traits => ['NameInRequest']);
-  has MaxLatency => (is => 'ro', isa => 'Int', request_name => 'maxLatency', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest'], required => 1);
-  has RemoteId => (is => 'ro', isa => 'Str', request_name => 'remoteId', traits => ['NameInRequest']);
-  has SmoothingLatency => (is => 'ro', isa => 'Int', request_name => 'smoothingLatency', traits => ['NameInRequest']);
-  has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::MediaConnect::Types qw//;
+  has CidrAllowList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has MaxBitrate => (is => 'ro', isa => Int);
+  has MaxLatency => (is => 'ro', isa => Int);
+  has Protocol => (is => 'ro', isa => Str, required => 1);
+  has RemoteId => (is => 'ro', isa => Str);
+  has SmoothingLatency => (is => 'ro', isa => Int);
+  has StreamId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RemoteId' => {
+                               'type' => 'Str'
+                             },
+               'StreamId' => {
+                               'type' => 'Str'
+                             },
+               'CidrAllowList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'SmoothingLatency' => {
+                                       'type' => 'Int'
+                                     },
+               'MaxLatency' => {
+                                 'type' => 'Int'
+                               },
+               'MaxBitrate' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'CidrAllowList' => 'cidrAllowList',
+                       'StreamId' => 'streamId',
+                       'RemoteId' => 'remoteId',
+                       'MaxBitrate' => 'maxBitrate',
+                       'SmoothingLatency' => 'smoothingLatency',
+                       'Protocol' => 'protocol',
+                       'MaxLatency' => 'maxLatency'
+                     },
+  'IsRequired' => {
+                    'Protocol' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

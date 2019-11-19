@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaLive::TtmlDestinationSettings;
-  use Moose;
-  has StyleControl => (is => 'ro', isa => 'Str', request_name => 'styleControl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has StyleControl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'StyleControl' => 'styleControl'
+                     },
+  'types' => {
+               'StyleControl' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

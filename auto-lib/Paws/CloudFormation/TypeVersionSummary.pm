@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::TypeVersionSummary;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has TimeCreated => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has TypeName => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has TimeCreated => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has TypeName => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'TimeCreated' => {
+                                  'type' => 'Str'
+                                },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

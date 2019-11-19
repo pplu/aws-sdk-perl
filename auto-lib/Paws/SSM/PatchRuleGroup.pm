@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::SSM::PatchRuleGroup;
-  use Moose;
-  has PatchRules => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchRule]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::SSM::Types qw/SSM_PatchRule/;
+  has PatchRules => (is => 'ro', isa => ArrayRef[SSM_PatchRule], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PatchRules' => {
+                                 'class' => 'Paws::SSM::PatchRule',
+                                 'type' => 'ArrayRef[SSM_PatchRule]'
+                               }
+             },
+  'IsRequired' => {
+                    'PatchRules' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ A set of rules defining the approval rules for a patch baseline.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> PatchRules => ArrayRef[L<Paws::SSM::PatchRule>]
+=head2 B<REQUIRED> PatchRules => ArrayRef[SSM_PatchRule]
 
   The rules that make up the rule group.
 

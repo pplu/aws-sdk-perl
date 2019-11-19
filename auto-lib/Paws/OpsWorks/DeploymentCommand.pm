@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::DeploymentCommand;
-  use Moose;
-  has Args => (is => 'ro', isa => 'Paws::OpsWorks::DeploymentCommandArgs');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw/OpsWorks_DeploymentCommandArgs/;
+  has Args => (is => 'ro', isa => OpsWorks_DeploymentCommandArgs);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Args' => {
+                           'type' => 'OpsWorks_DeploymentCommandArgs',
+                           'class' => 'Paws::OpsWorks::DeploymentCommandArgs'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +61,7 @@ Used to specify a stack or deployment command.
 =head1 ATTRIBUTES
 
 
-=head2 Args => L<Paws::OpsWorks::DeploymentCommandArgs>
+=head2 Args => OpsWorks_DeploymentCommandArgs
 
   The arguments of those commands that take arguments. It should be set
 to a JSON object with the following format:

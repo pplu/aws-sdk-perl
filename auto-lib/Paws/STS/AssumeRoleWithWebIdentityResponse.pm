@@ -1,14 +1,49 @@
+# Generated from callresult_class.tt
 
 package Paws::STS::AssumeRoleWithWebIdentityResponse;
-  use Moose;
-  has AssumedRoleUser => (is => 'ro', isa => 'Paws::STS::AssumedRoleUser');
-  has Audience => (is => 'ro', isa => 'Str');
-  has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');
-  has PackedPolicySize => (is => 'ro', isa => 'Int');
-  has Provider => (is => 'ro', isa => 'Str');
-  has SubjectFromWebIdentityToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::STS::Types qw/STS_Credentials STS_AssumedRoleUser/;
+  has AssumedRoleUser => (is => 'ro', isa => STS_AssumedRoleUser);
+  has Audience => (is => 'ro', isa => Str);
+  has Credentials => (is => 'ro', isa => STS_Credentials);
+  has PackedPolicySize => (is => 'ro', isa => Int);
+  has Provider => (is => 'ro', isa => Str);
+  has SubjectFromWebIdentityToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Credentials' => {
+                                  'class' => 'Paws::STS::Credentials',
+                                  'type' => 'STS_Credentials'
+                                },
+               'AssumedRoleUser' => {
+                                      'type' => 'STS_AssumedRoleUser',
+                                      'class' => 'Paws::STS::AssumedRoleUser'
+                                    },
+               'PackedPolicySize' => {
+                                       'type' => 'Int'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SubjectFromWebIdentityToken' => {
+                                                  'type' => 'Str'
+                                                },
+               'Provider' => {
+                               'type' => 'Str'
+                             },
+               'Audience' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +55,7 @@ Paws::STS::AssumeRoleWithWebIdentityResponse
 =head1 ATTRIBUTES
 
 
-=head2 AssumedRoleUser => L<Paws::STS::AssumedRoleUser>
+=head2 AssumedRoleUser => STS_AssumedRoleUser
 
 The Amazon Resource Name (ARN) and the assumed role ID, which are
 identifiers that you can use to refer to the resulting temporary
@@ -37,7 +72,7 @@ token. This is traditionally the client identifier issued to the
 application that requested the web identity token.
 
 
-=head2 Credentials => L<Paws::STS::Credentials>
+=head2 Credentials => STS_Credentials
 
 The temporary security credentials, which include an access key ID, a
 secret access key, and a security token.

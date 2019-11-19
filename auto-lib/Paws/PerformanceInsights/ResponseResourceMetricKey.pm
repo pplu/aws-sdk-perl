@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::PerformanceInsights::ResponseResourceMetricKey;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'Paws::PerformanceInsights::DimensionMap');
-  has Metric => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PerformanceInsights::Types qw/PerformanceInsights_DimensionMap/;
+  has Dimensions => (is => 'ro', isa => PerformanceInsights_DimensionMap);
+  has Metric => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Metric' => 1
+                  },
+  'types' => {
+               'Dimensions' => {
+                                 'class' => 'Paws::PerformanceInsights::DimensionMap',
+                                 'type' => 'PerformanceInsights_DimensionMap'
+                               },
+               'Metric' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ dimensions for that metric.
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => L<Paws::PerformanceInsights::DimensionMap>
+=head2 Dimensions => PerformanceInsights_DimensionMap
 
   The valid dimensions for the metric.
 

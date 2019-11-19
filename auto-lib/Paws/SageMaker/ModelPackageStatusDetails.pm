@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ModelPackageStatusDetails;
-  use Moose;
-  has ImageScanStatuses => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ModelPackageStatusItem]');
-  has ValidationStatuses => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ModelPackageStatusItem]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_ModelPackageStatusItem/;
+  has ImageScanStatuses => (is => 'ro', isa => ArrayRef[SageMaker_ModelPackageStatusItem]);
+  has ValidationStatuses => (is => 'ro', isa => ArrayRef[SageMaker_ModelPackageStatusItem], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImageScanStatuses' => {
+                                        'type' => 'ArrayRef[SageMaker_ModelPackageStatusItem]',
+                                        'class' => 'Paws::SageMaker::ModelPackageStatusItem'
+                                      },
+               'ValidationStatuses' => {
+                                         'class' => 'Paws::SageMaker::ModelPackageStatusItem',
+                                         'type' => 'ArrayRef[SageMaker_ModelPackageStatusItem]'
+                                       }
+             },
+  'IsRequired' => {
+                    'ValidationStatuses' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +62,13 @@ Specifies the validation and image scan statuses of the model package.
 =head1 ATTRIBUTES
 
 
-=head2 ImageScanStatuses => ArrayRef[L<Paws::SageMaker::ModelPackageStatusItem>]
+=head2 ImageScanStatuses => ArrayRef[SageMaker_ModelPackageStatusItem]
 
   The status of the scan of the Docker image container for the model
 package.
 
 
-=head2 B<REQUIRED> ValidationStatuses => ArrayRef[L<Paws::SageMaker::ModelPackageStatusItem>]
+=head2 B<REQUIRED> ValidationStatuses => ArrayRef[SageMaker_ModelPackageStatusItem]
 
   The validation status of the model package.
 

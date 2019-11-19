@@ -1,25 +1,93 @@
 
 package Paws::Backup::DescribeRecoveryPointOutput;
-  use Moose;
-  has BackupSizeInBytes => (is => 'ro', isa => 'Int');
-  has BackupVaultArn => (is => 'ro', isa => 'Str');
-  has BackupVaultName => (is => 'ro', isa => 'Str');
-  has CalculatedLifecycle => (is => 'ro', isa => 'Paws::Backup::CalculatedLifecycle');
-  has CompletionDate => (is => 'ro', isa => 'Str');
-  has CreatedBy => (is => 'ro', isa => 'Paws::Backup::RecoveryPointCreator');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has EncryptionKeyArn => (is => 'ro', isa => 'Str');
-  has IamRoleArn => (is => 'ro', isa => 'Str');
-  has IsEncrypted => (is => 'ro', isa => 'Bool');
-  has LastRestoreTime => (is => 'ro', isa => 'Str');
-  has Lifecycle => (is => 'ro', isa => 'Paws::Backup::Lifecycle');
-  has RecoveryPointArn => (is => 'ro', isa => 'Str');
-  has ResourceArn => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StorageClass => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::Backup::Types qw/Backup_Lifecycle Backup_CalculatedLifecycle Backup_RecoveryPointCreator/;
+  has BackupSizeInBytes => (is => 'ro', isa => Int);
+  has BackupVaultArn => (is => 'ro', isa => Str);
+  has BackupVaultName => (is => 'ro', isa => Str);
+  has CalculatedLifecycle => (is => 'ro', isa => Backup_CalculatedLifecycle);
+  has CompletionDate => (is => 'ro', isa => Str);
+  has CreatedBy => (is => 'ro', isa => Backup_RecoveryPointCreator);
+  has CreationDate => (is => 'ro', isa => Str);
+  has EncryptionKeyArn => (is => 'ro', isa => Str);
+  has IamRoleArn => (is => 'ro', isa => Str);
+  has IsEncrypted => (is => 'ro', isa => Bool);
+  has LastRestoreTime => (is => 'ro', isa => Str);
+  has Lifecycle => (is => 'ro', isa => Backup_Lifecycle);
+  has RecoveryPointArn => (is => 'ro', isa => Str);
+  has ResourceArn => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StorageClass => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CompletionDate' => {
+                                     'type' => 'Str'
+                                   },
+               'BackupVaultArn' => {
+                                     'type' => 'Str'
+                                   },
+               'Lifecycle' => {
+                                'class' => 'Paws::Backup::Lifecycle',
+                                'type' => 'Backup_Lifecycle'
+                              },
+               'BackupSizeInBytes' => {
+                                        'type' => 'Int'
+                                      },
+               'IsEncrypted' => {
+                                  'type' => 'Bool'
+                                },
+               'LastRestoreTime' => {
+                                      'type' => 'Str'
+                                    },
+               'EncryptionKeyArn' => {
+                                       'type' => 'Str'
+                                     },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupVaultName' => {
+                                      'type' => 'Str'
+                                    },
+               'CalculatedLifecycle' => {
+                                          'type' => 'Backup_CalculatedLifecycle',
+                                          'class' => 'Paws::Backup::CalculatedLifecycle'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'RecoveryPointArn' => {
+                                       'type' => 'Str'
+                                     },
+               'CreatedBy' => {
+                                'type' => 'Backup_RecoveryPointCreator',
+                                'class' => 'Paws::Backup::RecoveryPointCreator'
+                              },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +118,7 @@ them and the Region where they are created. They consist of lowercase
 letters, numbers, and hyphens.
 
 
-=head2 CalculatedLifecycle => L<Paws::Backup::CalculatedLifecycle>
+=head2 CalculatedLifecycle => Backup_CalculatedLifecycle
 
 A C<CalculatedLifecycle> object containing C<DeleteAt> and
 C<MoveToColdStorageAt> timestamps.
@@ -64,7 +132,7 @@ C<CompletionDate> is accurate to milliseconds. For example, the value
 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.
 
 
-=head2 CreatedBy => L<Paws::Backup::RecoveryPointCreator>
+=head2 CreatedBy => Backup_RecoveryPointCreator
 
 Contains identifying information about the creation of a recovery
 point, including the C<BackupPlanArn>, C<BackupPlanId>,
@@ -107,7 +175,7 @@ C<LastRestoreTime> is accurate to milliseconds. For example, the value
 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.
 
 
-=head2 Lifecycle => L<Paws::Backup::Lifecycle>
+=head2 Lifecycle => Backup_Lifecycle
 
 The lifecycle defines when a protected resource is transitioned to cold
 storage and when it expires. AWS Backup transitions and expires backups

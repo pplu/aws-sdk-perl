@@ -1,20 +1,61 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::DescribeOrderableDBInstanceOptions;
-  use Moose;
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str', required => 1);
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Filter]');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has Vpc => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Bool/;
+  use Paws::Neptune::Types qw/Neptune_Filter/;
+  has DBInstanceClass => (is => 'ro', isa => Str, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[Neptune_Filter], predicate => 1);
+  has LicenseModel => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has Vpc => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOrderableDBInstanceOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::OrderableDBInstanceOptionsMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOrderableDBInstanceOptionsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeOrderableDBInstanceOptions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::OrderableDBInstanceOptionsMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeOrderableDBInstanceOptionsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'Vpc' => {
+                          'type' => 'Bool'
+                        },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'Filters' => {
+                              'class' => 'Paws::Neptune::Filter',
+                              'type' => 'ArrayRef[Neptune_Filter]'
+                            },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'Engine' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Engine' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +127,7 @@ the available offerings matching the specified engine version.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::Neptune::Filter>]
+=head2 Filters => ArrayRef[Neptune_Filter]
 
 This parameter is not currently supported.
 

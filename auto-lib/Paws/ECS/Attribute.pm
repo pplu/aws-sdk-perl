@@ -1,9 +1,44 @@
+# Generated from default/object.tt
 package Paws::ECS::Attribute;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has TargetId => (is => 'ro', isa => 'Str', request_name => 'targetId', traits => ['NameInRequest']);
-  has TargetType => (is => 'ro', isa => 'Str', request_name => 'targetType', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has TargetId => (is => 'ro', isa => Str);
+  has TargetType => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'Value' => 'value',
+                       'TargetId' => 'targetId',
+                       'TargetType' => 'targetType',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'TargetId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

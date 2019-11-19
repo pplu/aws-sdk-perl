@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::IAM;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'iam' }
   sub signing_name { 'iam' }
   sub version { '2010-05-08' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -1918,7 +1920,7 @@ in the I<IAM User Guide>.
 
 =item [PermissionsBoundary => Str]
 
-=item [Tags => ArrayRef[L<Paws::IAM::Tag>]]
+=item [Tags => ArrayRef[IAM_Tag]]
 
 
 =back
@@ -2055,7 +2057,7 @@ in the I<IAM User Guide>.
 
 =item [PermissionsBoundary => Str]
 
-=item [Tags => ArrayRef[L<Paws::IAM::Tag>]]
+=item [Tags => ArrayRef[IAM_Tag]]
 
 
 =back
@@ -5074,7 +5076,7 @@ GetAccountSummary operation.
 
 =item [CallerArn => Str]
 
-=item [ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]]
+=item [ContextEntries => ArrayRef[IAM_ContextEntry]]
 
 =item [Marker => Str]
 
@@ -5127,7 +5129,7 @@ to paginate the results.
 
 =item [CallerArn => Str]
 
-=item [ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]]
+=item [ContextEntries => ArrayRef[IAM_ContextEntry]]
 
 =item [Marker => Str]
 
@@ -5189,7 +5191,7 @@ parameters to paginate the results.
 
 =item RoleName => Str
 
-=item Tags => ArrayRef[L<Paws::IAM::Tag>]
+=item Tags => ArrayRef[IAM_Tag]
 
 
 =back
@@ -5258,7 +5260,7 @@ I<IAM User Guide>.
 
 =over
 
-=item Tags => ArrayRef[L<Paws::IAM::Tag>]
+=item Tags => ArrayRef[IAM_Tag]
 
 =item UserName => Str
 
@@ -6213,9 +6215,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IAM::ListVirtualMFADevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SimulateAllCustomPolicies(sub { },ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateAllCustomPolicies(sub { },ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[IAM_ContextEntry], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
-=head2 SimulateAllCustomPolicies(ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateAllCustomPolicies(ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[IAM_ContextEntry], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -6225,9 +6227,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IAM::SimulatePolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SimulateAllPrincipalPolicies(sub { },ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateAllPrincipalPolicies(sub { },ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[IAM_ContextEntry], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
-=head2 SimulateAllPrincipalPolicies(ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateAllPrincipalPolicies(ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[IAM_ContextEntry], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

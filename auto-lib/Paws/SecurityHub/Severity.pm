@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::Severity;
-  use Moose;
-  has Normalized => (is => 'ro', isa => 'Int', required => 1);
-  has Product => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Int Num/;
+  use Paws::SecurityHub::Types qw//;
+  has Normalized => (is => 'ro', isa => Int, required => 1);
+  has Product => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Normalized' => 1
+                  },
+  'types' => {
+               'Product' => {
+                              'type' => 'Num'
+                            },
+               'Normalized' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

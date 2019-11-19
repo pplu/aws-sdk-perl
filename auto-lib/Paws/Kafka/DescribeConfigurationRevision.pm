@@ -1,15 +1,41 @@
 
 package Paws::Kafka::DescribeConfigurationRevision;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'arn', required => 1);
-  has Revision => (is => 'ro', isa => 'Int', traits => ['ParamInURI'], uri_name => 'revision', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Kafka::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Revision => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationRevision');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/configurations/{arn}/revisions/{revision}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kafka::DescribeConfigurationRevisionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeConfigurationRevision');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/configurations/{arn}/revisions/{revision}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Kafka::DescribeConfigurationRevisionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Revision' => {
+                               'type' => 'Int'
+                             }
+             },
+  'IsRequired' => {
+                    'Revision' => 1,
+                    'Arn' => 1
+                  },
+  'ParamInURI' => {
+                    'Arn' => 'arn',
+                    'Revision' => 'revision'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

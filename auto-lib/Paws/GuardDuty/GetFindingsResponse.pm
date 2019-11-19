@@ -1,9 +1,33 @@
 
 package Paws::GuardDuty::GetFindingsResponse;
-  use Moose;
-  has Findings => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::Finding]', traits => ['NameInRequest'], request_name => 'findings', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GuardDuty::Types qw/GuardDuty_Finding/;
+  has Findings => (is => 'ro', isa => ArrayRef[GuardDuty_Finding], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Findings' => {
+                               'type' => 'ArrayRef[GuardDuty_Finding]',
+                               'class' => 'Paws::GuardDuty::Finding'
+                             }
+             },
+  'IsRequired' => {
+                    'Findings' => 1
+                  },
+  'NameInRequest' => {
+                       'Findings' => 'findings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +39,7 @@ Paws::GuardDuty::GetFindingsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Findings => ArrayRef[L<Paws::GuardDuty::Finding>]
+=head2 B<REQUIRED> Findings => ArrayRef[GuardDuty_Finding]
 
 A list of findings.
 

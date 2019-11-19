@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::DMS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'dms' }
   sub signing_name { 'dms' }
   sub version { '2016-01-01' }
   sub target_prefix { 'AmazonDMSv20160101' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -606,7 +608,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::DMS::Tag>]
+=item Tags => ArrayRef[DMS_Tag]
 
 
 =back
@@ -657,29 +659,29 @@ replication instance).
 
 =item [DatabaseName => Str]
 
-=item [DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>]
+=item [DmsTransferSettings => DMS_DmsTransferSettings]
 
-=item [DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>]
+=item [DynamoDbSettings => DMS_DynamoDbSettings]
 
-=item [ElasticsearchSettings => L<Paws::DMS::ElasticsearchSettings>]
+=item [ElasticsearchSettings => DMS_ElasticsearchSettings]
 
 =item [ExternalTableDefinition => Str]
 
 =item [ExtraConnectionAttributes => Str]
 
-=item [KinesisSettings => L<Paws::DMS::KinesisSettings>]
+=item [KinesisSettings => DMS_KinesisSettings]
 
 =item [KmsKeyId => Str]
 
-=item [MongoDbSettings => L<Paws::DMS::MongoDbSettings>]
+=item [MongoDbSettings => DMS_MongoDbSettings]
 
 =item [Password => Str]
 
 =item [Port => Int]
 
-=item [RedshiftSettings => L<Paws::DMS::RedshiftSettings>]
+=item [RedshiftSettings => DMS_RedshiftSettings]
 
-=item [S3Settings => L<Paws::DMS::S3Settings>]
+=item [S3Settings => DMS_S3Settings]
 
 =item [ServerName => Str]
 
@@ -687,7 +689,7 @@ replication instance).
 
 =item [SslMode => Str]
 
-=item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+=item [Tags => ArrayRef[DMS_Tag]]
 
 =item [Username => Str]
 
@@ -717,7 +719,7 @@ Creates an endpoint using the provided settings.
 
 =item [SourceType => Str]
 
-=item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+=item [Tags => ArrayRef[DMS_Tag]]
 
 
 =back
@@ -775,7 +777,7 @@ the I<AWS Database Migration Service User Guide.>
 
 =item [ReplicationSubnetGroupIdentifier => Str]
 
-=item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+=item [Tags => ArrayRef[DMS_Tag]]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -808,7 +810,7 @@ to Use AWS DMS
 
 =item SubnetIds => ArrayRef[Str|Undef]
 
-=item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+=item [Tags => ArrayRef[DMS_Tag]]
 
 
 =back
@@ -845,7 +847,7 @@ VPC.
 
 =item [ReplicationTaskSettings => Str]
 
-=item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+=item [Tags => ArrayRef[DMS_Tag]]
 
 
 =back
@@ -1004,7 +1006,7 @@ This command does not take any parameters.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+=item [Filters => ArrayRef[DMS_Filter]]
 
 =item [Marker => Str]
 
@@ -1024,7 +1026,7 @@ Provides a description of the certificate.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+=item [Filters => ArrayRef[DMS_Filter]]
 
 =item [Marker => Str]
 
@@ -1046,7 +1048,7 @@ test an endpoint.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+=item [Filters => ArrayRef[DMS_Filter]]
 
 =item [Marker => Str]
 
@@ -1067,7 +1069,7 @@ region.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+=item [Filters => ArrayRef[DMS_Filter]]
 
 =item [Marker => Str]
 
@@ -1087,7 +1089,7 @@ Returns information about the type of endpoints available.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+=item [Filters => ArrayRef[DMS_Filter]]
 
 =item [SourceType => Str]
 
@@ -1115,7 +1117,7 @@ the I<AWS Database Migration Service User Guide.>
 
 =item [EventCategories => ArrayRef[Str|Undef]]
 
-=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+=item [Filters => ArrayRef[DMS_Filter]]
 
 =item [Marker => Str]
 
@@ -1145,7 +1147,7 @@ the I<AWS Database Migration User Guide.>
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+=item [Filters => ArrayRef[DMS_Filter]]
 
 =item [Marker => Str]
 
@@ -1192,7 +1194,7 @@ created in the specified region.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+=item [Filters => ArrayRef[DMS_Filter]]
 
 =item [Marker => Str]
 
@@ -1230,7 +1232,7 @@ Returns the status of the RefreshSchemas operation.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+=item [Filters => ArrayRef[DMS_Filter]]
 
 =item [Marker => Str]
 
@@ -1271,7 +1273,7 @@ Returns information about the task logs for the specified task.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+=item [Filters => ArrayRef[DMS_Filter]]
 
 =item [Marker => Str]
 
@@ -1312,7 +1314,7 @@ returns the latest results.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+=item [Filters => ArrayRef[DMS_Filter]]
 
 =item [Marker => Str]
 
@@ -1357,7 +1359,7 @@ Returns information about the schema for the specified endpoint.
 
 =item ReplicationTaskArn => Str
 
-=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+=item [Filters => ArrayRef[DMS_Filter]]
 
 =item [Marker => Str]
 
@@ -1388,7 +1390,7 @@ It does not indicate the time of the last update to the table.
 
 =item [CertificateWallet => Str]
 
-=item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+=item [Tags => ArrayRef[DMS_Tag]]
 
 
 =back
@@ -1426,11 +1428,11 @@ Lists all tags for an AWS DMS resource.
 
 =item [DatabaseName => Str]
 
-=item [DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>]
+=item [DmsTransferSettings => DMS_DmsTransferSettings]
 
-=item [DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>]
+=item [DynamoDbSettings => DMS_DynamoDbSettings]
 
-=item [ElasticsearchSettings => L<Paws::DMS::ElasticsearchSettings>]
+=item [ElasticsearchSettings => DMS_ElasticsearchSettings]
 
 =item [EndpointIdentifier => Str]
 
@@ -1442,17 +1444,17 @@ Lists all tags for an AWS DMS resource.
 
 =item [ExtraConnectionAttributes => Str]
 
-=item [KinesisSettings => L<Paws::DMS::KinesisSettings>]
+=item [KinesisSettings => DMS_KinesisSettings]
 
-=item [MongoDbSettings => L<Paws::DMS::MongoDbSettings>]
+=item [MongoDbSettings => DMS_MongoDbSettings]
 
 =item [Password => Str]
 
 =item [Port => Int]
 
-=item [RedshiftSettings => L<Paws::DMS::RedshiftSettings>]
+=item [RedshiftSettings => DMS_RedshiftSettings]
 
-=item [S3Settings => L<Paws::DMS::S3Settings>]
+=item [S3Settings => DMS_S3Settings]
 
 =item [ServerName => Str]
 
@@ -1640,7 +1642,7 @@ operation.
 
 =item ReplicationTaskArn => Str
 
-=item TablesToReload => ArrayRef[L<Paws::DMS::TableToReload>]
+=item TablesToReload => ArrayRef[DMS_TableToReload]
 
 =item [ReloadOption => Str]
 
@@ -1758,9 +1760,9 @@ Tests the connection between the replication instance and the endpoint.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllCertificates(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllCertificates(sub { },[Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllCertificates([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllCertificates([Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1770,9 +1772,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DMS::DescribeCertificatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllConnections(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllConnections(sub { },[Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllConnections([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllConnections([Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1782,9 +1784,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DMS::DescribeConnectionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEndpoints(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllEndpoints(sub { },[Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllEndpoints([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllEndpoints([Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1794,9 +1796,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DMS::DescribeEndpointsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEndpointTypes(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllEndpointTypes(sub { },[Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllEndpointTypes([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllEndpointTypes([Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1806,9 +1808,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DMS::DescribeEndpointTypesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
 
-=head2 DescribeAllEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeAllEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1818,9 +1820,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DMS::DescribeEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEventSubscriptions(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+=head2 DescribeAllEventSubscriptions(sub { },[Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
 
-=head2 DescribeAllEventSubscriptions([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+=head2 DescribeAllEventSubscriptions([Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1842,9 +1844,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DMS::DescribeOrderableReplicationInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllReplicationInstances(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllReplicationInstances(sub { },[Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllReplicationInstances([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllReplicationInstances([Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1854,9 +1856,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DMS::DescribeReplicationInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllReplicationSubnetGroups(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllReplicationSubnetGroups(sub { },[Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllReplicationSubnetGroups([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllReplicationSubnetGroups([Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1878,9 +1880,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DMS::DescribeReplicationTaskAssessmentResultsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllReplicationTasks(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, WithoutSettings => Bool])
+=head2 DescribeAllReplicationTasks(sub { },[Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int, WithoutSettings => Bool])
 
-=head2 DescribeAllReplicationTasks([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, WithoutSettings => Bool])
+=head2 DescribeAllReplicationTasks([Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int, WithoutSettings => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1902,9 +1904,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DMS::DescribeSchemasResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTableStatistics(sub { },ReplicationTaskArn => Str, [Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllTableStatistics(sub { },ReplicationTaskArn => Str, [Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllTableStatistics(ReplicationTaskArn => Str, [Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllTableStatistics(ReplicationTaskArn => Str, [Filters => ArrayRef[DMS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetSecurityConfigurationResponse;
-  use Moose;
-  has SecurityConfiguration => (is => 'ro', isa => 'Paws::Glue::SecurityConfiguration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_SecurityConfiguration/;
+  has SecurityConfiguration => (is => 'ro', isa => Glue_SecurityConfiguration);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SecurityConfiguration' => {
+                                            'type' => 'Glue_SecurityConfiguration',
+                                            'class' => 'Paws::Glue::SecurityConfiguration'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Glue::GetSecurityConfigurationResponse
 =head1 ATTRIBUTES
 
 
-=head2 SecurityConfiguration => L<Paws::Glue::SecurityConfiguration>
+=head2 SecurityConfiguration => Glue_SecurityConfiguration
 
 The requested security configuration.
 

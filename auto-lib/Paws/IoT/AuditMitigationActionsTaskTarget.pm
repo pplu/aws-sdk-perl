@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::IoT::AuditMitigationActionsTaskTarget;
-  use Moose;
-  has AuditCheckToReasonCodeFilter => (is => 'ro', isa => 'Paws::IoT::AuditCheckToReasonCodeFilter', request_name => 'auditCheckToReasonCodeFilter', traits => ['NameInRequest']);
-  has AuditTaskId => (is => 'ro', isa => 'Str', request_name => 'auditTaskId', traits => ['NameInRequest']);
-  has FindingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'findingIds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IoT::Types qw/IoT_AuditCheckToReasonCodeFilter/;
+  has AuditCheckToReasonCodeFilter => (is => 'ro', isa => IoT_AuditCheckToReasonCodeFilter);
+  has AuditTaskId => (is => 'ro', isa => Str);
+  has FindingIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FindingIds' => 'findingIds',
+                       'AuditCheckToReasonCodeFilter' => 'auditCheckToReasonCodeFilter',
+                       'AuditTaskId' => 'auditTaskId'
+                     },
+  'types' => {
+               'FindingIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'AuditCheckToReasonCodeFilter' => {
+                                                   'class' => 'Paws::IoT::AuditCheckToReasonCodeFilter',
+                                                   'type' => 'IoT_AuditCheckToReasonCodeFilter'
+                                                 },
+               'AuditTaskId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +69,7 @@ appears.
 =head1 ATTRIBUTES
 
 
-=head2 AuditCheckToReasonCodeFilter => L<Paws::IoT::AuditCheckToReasonCodeFilter>
+=head2 AuditCheckToReasonCodeFilter => IoT_AuditCheckToReasonCodeFilter
 
   Specifies a filter in the form of an audit check and set of reason
 codes that identify the findings from the audit to which the audit

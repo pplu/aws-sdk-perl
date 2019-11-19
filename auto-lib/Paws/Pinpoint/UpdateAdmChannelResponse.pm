@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::UpdateAdmChannelResponse;
-  use Moose;
-  has ADMChannelResponse => (is => 'ro', isa => 'Paws::Pinpoint::ADMChannelResponse', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'ADMChannelResponse');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_ADMChannelResponse/;
+  has ADMChannelResponse => (is => 'ro', isa => Pinpoint_ADMChannelResponse, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ADMChannelResponse' => {
+                                         'class' => 'Paws::Pinpoint::ADMChannelResponse',
+                                         'type' => 'Pinpoint_ADMChannelResponse'
+                                       }
+             },
+  'IsRequired' => {
+                    'ADMChannelResponse' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::UpdateAdmChannelResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ADMChannelResponse => L<Paws::Pinpoint::ADMChannelResponse>
+=head2 B<REQUIRED> ADMChannelResponse => Pinpoint_ADMChannelResponse
 
 
 

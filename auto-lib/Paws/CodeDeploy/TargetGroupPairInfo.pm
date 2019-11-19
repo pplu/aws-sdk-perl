@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::TargetGroupPairInfo;
-  use Moose;
-  has ProdTrafficRoute => (is => 'ro', isa => 'Paws::CodeDeploy::TrafficRoute', request_name => 'prodTrafficRoute', traits => ['NameInRequest']);
-  has TargetGroups => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TargetGroupInfo]', request_name => 'targetGroups', traits => ['NameInRequest']);
-  has TestTrafficRoute => (is => 'ro', isa => 'Paws::CodeDeploy::TrafficRoute', request_name => 'testTrafficRoute', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_TrafficRoute CodeDeploy_TargetGroupInfo/;
+  has ProdTrafficRoute => (is => 'ro', isa => CodeDeploy_TrafficRoute);
+  has TargetGroups => (is => 'ro', isa => ArrayRef[CodeDeploy_TargetGroupInfo]);
+  has TestTrafficRoute => (is => 'ro', isa => CodeDeploy_TrafficRoute);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ProdTrafficRoute' => 'prodTrafficRoute',
+                       'TestTrafficRoute' => 'testTrafficRoute',
+                       'TargetGroups' => 'targetGroups'
+                     },
+  'types' => {
+               'TargetGroups' => {
+                                   'type' => 'ArrayRef[CodeDeploy_TargetGroupInfo]',
+                                   'class' => 'Paws::CodeDeploy::TargetGroupInfo'
+                                 },
+               'ProdTrafficRoute' => {
+                                       'class' => 'Paws::CodeDeploy::TrafficRoute',
+                                       'type' => 'CodeDeploy_TrafficRoute'
+                                     },
+               'TestTrafficRoute' => {
+                                       'type' => 'CodeDeploy_TrafficRoute',
+                                       'class' => 'Paws::CodeDeploy::TrafficRoute'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,20 +70,20 @@ Amazon ECS deployment. An optional test traffic route can be specified.
 =head1 ATTRIBUTES
 
 
-=head2 ProdTrafficRoute => L<Paws::CodeDeploy::TrafficRoute>
+=head2 ProdTrafficRoute => CodeDeploy_TrafficRoute
 
   The path used by a load balancer to route production traffic when an
 Amazon ECS deployment is complete.
 
 
-=head2 TargetGroups => ArrayRef[L<Paws::CodeDeploy::TargetGroupInfo>]
+=head2 TargetGroups => ArrayRef[CodeDeploy_TargetGroupInfo]
 
   One pair of target groups. One is associated with the original task
 set. The second is associated with the task set that serves traffic
 after the deployment is complete.
 
 
-=head2 TestTrafficRoute => L<Paws::CodeDeploy::TrafficRoute>
+=head2 TestTrafficRoute => CodeDeploy_TrafficRoute
 
   An optional path used by a load balancer to route test traffic after an
 Amazon ECS deployment. Validation can occur while test traffic is

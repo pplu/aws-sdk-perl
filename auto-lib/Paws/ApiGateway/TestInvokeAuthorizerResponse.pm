@@ -1,15 +1,61 @@
 
 package Paws::ApiGateway::TestInvokeAuthorizerResponse;
-  use Moose;
-  has Authorization => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToList', traits => ['NameInRequest'], request_name => 'authorization');
-  has Claims => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'claims');
-  has ClientStatus => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'clientStatus');
-  has Latency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'latency');
-  has Log => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'log');
-  has Policy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policy');
-  has PrincipalId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'principalId');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToList ApiGateway_MapOfStringToString/;
+  has Authorization => (is => 'ro', isa => ApiGateway_MapOfStringToList);
+  has Claims => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has ClientStatus => (is => 'ro', isa => Int);
+  has Latency => (is => 'ro', isa => Int);
+  has Log => (is => 'ro', isa => Str);
+  has Policy => (is => 'ro', isa => Str);
+  has PrincipalId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Authorization' => 'authorization',
+                       'Claims' => 'claims',
+                       'ClientStatus' => 'clientStatus',
+                       'PrincipalId' => 'principalId',
+                       'Latency' => 'latency',
+                       'Log' => 'log',
+                       'Policy' => 'policy'
+                     },
+  'types' => {
+               'Claims' => {
+                             'class' => 'Paws::ApiGateway::MapOfStringToString',
+                             'type' => 'ApiGateway_MapOfStringToString'
+                           },
+               'Latency' => {
+                              'type' => 'Int'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ClientStatus' => {
+                                   'type' => 'Int'
+                                 },
+               'Authorization' => {
+                                    'class' => 'Paws::ApiGateway::MapOfStringToList',
+                                    'type' => 'ApiGateway_MapOfStringToList'
+                                  },
+               'Policy' => {
+                             'type' => 'Str'
+                           },
+               'Log' => {
+                          'type' => 'Str'
+                        },
+               'PrincipalId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,12 +67,12 @@ Paws::ApiGateway::TestInvokeAuthorizerResponse
 =head1 ATTRIBUTES
 
 
-=head2 Authorization => L<Paws::ApiGateway::MapOfStringToList>
+=head2 Authorization => ApiGateway_MapOfStringToList
 
 
 
 
-=head2 Claims => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Claims => ApiGateway_MapOfStringToString
 
 The open identity claims
 (https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims),

@@ -1,11 +1,48 @@
+# Generated from default/object.tt
 package Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration;
-  use Moose;
-  has CustomizedMetricSpecification => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::CustomizedMetricSpecification');
-  has DisableScaleIn => (is => 'ro', isa => 'Bool');
-  has PredefinedMetricSpecification => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::PredefinedMetricSpecification');
-  has ScaleInCooldown => (is => 'ro', isa => 'Int');
-  has ScaleOutCooldown => (is => 'ro', isa => 'Int');
-  has TargetValue => (is => 'ro', isa => 'Num', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Int Num/;
+  use Paws::ApplicationAutoScaling::Types qw/ApplicationAutoScaling_PredefinedMetricSpecification ApplicationAutoScaling_CustomizedMetricSpecification/;
+  has CustomizedMetricSpecification => (is => 'ro', isa => ApplicationAutoScaling_CustomizedMetricSpecification);
+  has DisableScaleIn => (is => 'ro', isa => Bool);
+  has PredefinedMetricSpecification => (is => 'ro', isa => ApplicationAutoScaling_PredefinedMetricSpecification);
+  has ScaleInCooldown => (is => 'ro', isa => Int);
+  has ScaleOutCooldown => (is => 'ro', isa => Int);
+  has TargetValue => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TargetValue' => 1
+                  },
+  'types' => {
+               'TargetValue' => {
+                                  'type' => 'Num'
+                                },
+               'DisableScaleIn' => {
+                                     'type' => 'Bool'
+                                   },
+               'ScaleInCooldown' => {
+                                      'type' => 'Int'
+                                    },
+               'ScaleOutCooldown' => {
+                                       'type' => 'Int'
+                                     },
+               'CustomizedMetricSpecification' => {
+                                                    'type' => 'ApplicationAutoScaling_CustomizedMetricSpecification',
+                                                    'class' => 'Paws::ApplicationAutoScaling::CustomizedMetricSpecification'
+                                                  },
+               'PredefinedMetricSpecification' => {
+                                                    'type' => 'ApplicationAutoScaling_PredefinedMetricSpecification',
+                                                    'class' => 'Paws::ApplicationAutoScaling::PredefinedMetricSpecification'
+                                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +79,7 @@ Application Auto Scaling.
 =head1 ATTRIBUTES
 
 
-=head2 CustomizedMetricSpecification => L<Paws::ApplicationAutoScaling::CustomizedMetricSpecification>
+=head2 CustomizedMetricSpecification => ApplicationAutoScaling_CustomizedMetricSpecification
 
   A customized metric. You can specify either a predefined metric or a
 customized metric.
@@ -58,7 +95,7 @@ scaling policy can remove capacity from the scalable resource. The
 default value is C<false>.
 
 
-=head2 PredefinedMetricSpecification => L<Paws::ApplicationAutoScaling::PredefinedMetricSpecification>
+=head2 PredefinedMetricSpecification => ApplicationAutoScaling_PredefinedMetricSpecification
 
   A predefined metric. You can specify either a predefined metric or a
 customized metric.

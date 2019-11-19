@@ -1,10 +1,44 @@
 package Paws::EC2::SpotFleetRequestConfig;
-  use Moose;
-  has ActivityStatus => (is => 'ro', isa => 'Str', request_name => 'activityStatus', traits => ['NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
-  has SpotFleetRequestConfig => (is => 'ro', isa => 'Paws::EC2::SpotFleetRequestConfigData', request_name => 'spotFleetRequestConfig', traits => ['NameInRequest']);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest']);
-  has SpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestState', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_SpotFleetRequestConfigData/;
+  has ActivityStatus => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str);
+  has SpotFleetRequestConfig => (is => 'ro', isa => EC2_SpotFleetRequestConfigData);
+  has SpotFleetRequestId => (is => 'ro', isa => Str);
+  has SpotFleetRequestState => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ActivityStatus' => 'activityStatus',
+                       'SpotFleetRequestConfig' => 'spotFleetRequestConfig',
+                       'SpotFleetRequestState' => 'spotFleetRequestState',
+                       'CreateTime' => 'createTime',
+                       'SpotFleetRequestId' => 'spotFleetRequestId'
+                     },
+  'types' => {
+               'ActivityStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'SpotFleetRequestState' => {
+                                            'type' => 'Str'
+                                          },
+               'SpotFleetRequestConfig' => {
+                                             'class' => 'Paws::EC2::SpotFleetRequestConfigData',
+                                             'type' => 'EC2_SpotFleetRequestConfigData'
+                                           },
+               'SpotFleetRequestId' => {
+                                         'type' => 'Str'
+                                       },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +89,7 @@ Instances are terminating.
   The creation date and time of the request.
 
 
-=head2 SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
+=head2 SpotFleetRequestConfig => EC2_SpotFleetRequestConfigData
 
   The configuration of the Spot Fleet request.
 

@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::Kafka::MutableClusterInfo;
-  use Moose;
-  has BrokerEBSVolumeInfo => (is => 'ro', isa => 'ArrayRef[Paws::Kafka::BrokerEBSVolumeInfo]', request_name => 'brokerEBSVolumeInfo', traits => ['NameInRequest']);
-  has ConfigurationInfo => (is => 'ro', isa => 'Paws::Kafka::ConfigurationInfo', request_name => 'configurationInfo', traits => ['NameInRequest']);
-  has NumberOfBrokerNodes => (is => 'ro', isa => 'Int', request_name => 'numberOfBrokerNodes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::Kafka::Types qw/Kafka_ConfigurationInfo Kafka_BrokerEBSVolumeInfo/;
+  has BrokerEBSVolumeInfo => (is => 'ro', isa => ArrayRef[Kafka_BrokerEBSVolumeInfo]);
+  has ConfigurationInfo => (is => 'ro', isa => Kafka_ConfigurationInfo);
+  has NumberOfBrokerNodes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumberOfBrokerNodes' => {
+                                          'type' => 'Int'
+                                        },
+               'BrokerEBSVolumeInfo' => {
+                                          'class' => 'Paws::Kafka::BrokerEBSVolumeInfo',
+                                          'type' => 'ArrayRef[Kafka_BrokerEBSVolumeInfo]'
+                                        },
+               'ConfigurationInfo' => {
+                                        'class' => 'Paws::Kafka::ConfigurationInfo',
+                                        'type' => 'Kafka_ConfigurationInfo'
+                                      }
+             },
+  'NameInRequest' => {
+                       'ConfigurationInfo' => 'configurationInfo',
+                       'BrokerEBSVolumeInfo' => 'brokerEBSVolumeInfo',
+                       'NumberOfBrokerNodes' => 'numberOfBrokerNodes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,13 +69,13 @@ APIs.
 =head1 ATTRIBUTES
 
 
-=head2 BrokerEBSVolumeInfo => ArrayRef[L<Paws::Kafka::BrokerEBSVolumeInfo>]
+=head2 BrokerEBSVolumeInfo => ArrayRef[Kafka_BrokerEBSVolumeInfo]
 
   Specifies the size of the EBS volume and the ID of the associated
 broker.
 
 
-=head2 ConfigurationInfo => L<Paws::Kafka::ConfigurationInfo>
+=head2 ConfigurationInfo => Kafka_ConfigurationInfo
 
   Information about the changes in the configuration of the brokers.
 

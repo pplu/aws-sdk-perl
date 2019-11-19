@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::DvbTdtSettings;
-  use Moose;
-  has TdtInterval => (is => 'ro', isa => 'Int', request_name => 'tdtInterval', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has TdtInterval => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TdtInterval' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'NameInRequest' => {
+                       'TdtInterval' => 'tdtInterval'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

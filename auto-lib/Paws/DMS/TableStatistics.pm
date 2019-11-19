@@ -1,21 +1,83 @@
+# Generated from default/object.tt
 package Paws::DMS::TableStatistics;
-  use Moose;
-  has Ddls => (is => 'ro', isa => 'Int');
-  has Deletes => (is => 'ro', isa => 'Int');
-  has FullLoadCondtnlChkFailedRows => (is => 'ro', isa => 'Int');
-  has FullLoadErrorRows => (is => 'ro', isa => 'Int');
-  has FullLoadRows => (is => 'ro', isa => 'Int');
-  has Inserts => (is => 'ro', isa => 'Int');
-  has LastUpdateTime => (is => 'ro', isa => 'Str');
-  has SchemaName => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str');
-  has TableState => (is => 'ro', isa => 'Str');
-  has Updates => (is => 'ro', isa => 'Int');
-  has ValidationFailedRecords => (is => 'ro', isa => 'Int');
-  has ValidationPendingRecords => (is => 'ro', isa => 'Int');
-  has ValidationState => (is => 'ro', isa => 'Str');
-  has ValidationStateDetails => (is => 'ro', isa => 'Str');
-  has ValidationSuspendedRecords => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::DMS::Types qw//;
+  has Ddls => (is => 'ro', isa => Int);
+  has Deletes => (is => 'ro', isa => Int);
+  has FullLoadCondtnlChkFailedRows => (is => 'ro', isa => Int);
+  has FullLoadErrorRows => (is => 'ro', isa => Int);
+  has FullLoadRows => (is => 'ro', isa => Int);
+  has Inserts => (is => 'ro', isa => Int);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has SchemaName => (is => 'ro', isa => Str);
+  has TableName => (is => 'ro', isa => Str);
+  has TableState => (is => 'ro', isa => Str);
+  has Updates => (is => 'ro', isa => Int);
+  has ValidationFailedRecords => (is => 'ro', isa => Int);
+  has ValidationPendingRecords => (is => 'ro', isa => Int);
+  has ValidationState => (is => 'ro', isa => Str);
+  has ValidationStateDetails => (is => 'ro', isa => Str);
+  has ValidationSuspendedRecords => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValidationStateDetails' => {
+                                             'type' => 'Str'
+                                           },
+               'ValidationState' => {
+                                      'type' => 'Str'
+                                    },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Updates' => {
+                              'type' => 'Int'
+                            },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'FullLoadErrorRows' => {
+                                        'type' => 'Int'
+                                      },
+               'SchemaName' => {
+                                 'type' => 'Str'
+                               },
+               'ValidationSuspendedRecords' => {
+                                                 'type' => 'Int'
+                                               },
+               'Deletes' => {
+                              'type' => 'Int'
+                            },
+               'TableState' => {
+                                 'type' => 'Str'
+                               },
+               'ValidationPendingRecords' => {
+                                               'type' => 'Int'
+                                             },
+               'ValidationFailedRecords' => {
+                                              'type' => 'Int'
+                                            },
+               'Inserts' => {
+                              'type' => 'Int'
+                            },
+               'Ddls' => {
+                           'type' => 'Int'
+                         },
+               'FullLoadCondtnlChkFailedRows' => {
+                                                   'type' => 'Int'
+                                                 },
+               'FullLoadRows' => {
+                                   'type' => 'Int'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

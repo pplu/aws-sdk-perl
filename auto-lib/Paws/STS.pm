@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::STS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'sts' }
   sub signing_name { 'sts' }
   sub version { '2011-06-15' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'IDPCommunicationError' },
   ] });
 
@@ -251,7 +253,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/iam/>
 
 =item [Policy => Str]
 
-=item [PolicyArns => ArrayRef[L<Paws::STS::PolicyDescriptorType>]]
+=item [PolicyArns => ArrayRef[STS_PolicyDescriptorType]]
 
 =item [SerialNumber => Str]
 
@@ -399,7 +401,7 @@ time-based one-time password (TOTP) that the MFA device produces.
 
 =item [Policy => Str]
 
-=item [PolicyArns => ArrayRef[L<Paws::STS::PolicyDescriptorType>]]
+=item [PolicyArns => ArrayRef[STS_PolicyDescriptorType]]
 
 
 =back
@@ -531,7 +533,7 @@ in the I<IAM User Guide>.
 
 =item [Policy => Str]
 
-=item [PolicyArns => ArrayRef[L<Paws::STS::PolicyDescriptorType>]]
+=item [PolicyArns => ArrayRef[STS_PolicyDescriptorType]]
 
 =item [ProviderId => Str]
 
@@ -818,7 +820,7 @@ iam:DeleteVirtualMFADevice
 
 =item [Policy => Str]
 
-=item [PolicyArns => ArrayRef[L<Paws::STS::PolicyDescriptorType>]]
+=item [PolicyArns => ArrayRef[STS_PolicyDescriptorType]]
 
 
 =back

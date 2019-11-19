@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::PutEventStream;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has WriteEventStream => (is => 'ro', isa => 'Paws::Pinpoint::WriteEventStream', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_WriteEventStream/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WriteEventStream => (is => 'ro', isa => Pinpoint_WriteEventStream, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'WriteEventStream');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutEventStream');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/eventstream');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::PutEventStreamResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutEventStream');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/eventstream');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::PutEventStreamResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'WriteEventStream' => 1,
+                    'ApplicationId' => 1
+                  },
+  'types' => {
+               'WriteEventStream' => {
+                                       'type' => 'Pinpoint_WriteEventStream',
+                                       'class' => 'Paws::Pinpoint::WriteEventStream'
+                                     },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +83,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> WriteEventStream => L<Paws::Pinpoint::WriteEventStream>
+=head2 B<REQUIRED> WriteEventStream => Pinpoint_WriteEventStream
 
 
 

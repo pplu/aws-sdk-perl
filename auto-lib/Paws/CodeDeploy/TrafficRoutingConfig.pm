@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::TrafficRoutingConfig;
-  use Moose;
-  has TimeBasedCanary => (is => 'ro', isa => 'Paws::CodeDeploy::TimeBasedCanary', request_name => 'timeBasedCanary', traits => ['NameInRequest']);
-  has TimeBasedLinear => (is => 'ro', isa => 'Paws::CodeDeploy::TimeBasedLinear', request_name => 'timeBasedLinear', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_TimeBasedCanary CodeDeploy_TimeBasedLinear/;
+  has TimeBasedCanary => (is => 'ro', isa => CodeDeploy_TimeBasedCanary);
+  has TimeBasedLinear => (is => 'ro', isa => CodeDeploy_TimeBasedLinear);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'TimeBasedCanary' => 'timeBasedCanary',
+                       'TimeBasedLinear' => 'timeBasedLinear'
+                     },
+  'types' => {
+               'TimeBasedLinear' => {
+                                      'type' => 'CodeDeploy_TimeBasedLinear',
+                                      'class' => 'Paws::CodeDeploy::TimeBasedLinear'
+                                    },
+               'TimeBasedCanary' => {
+                                      'type' => 'CodeDeploy_TimeBasedCanary',
+                                      'class' => 'Paws::CodeDeploy::TimeBasedCanary'
+                                    },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,14 +70,14 @@ deployment.
 =head1 ATTRIBUTES
 
 
-=head2 TimeBasedCanary => L<Paws::CodeDeploy::TimeBasedCanary>
+=head2 TimeBasedCanary => CodeDeploy_TimeBasedCanary
 
   A configuration that shifts traffic from one version of a Lambda
 function to another in two increments. The original and target Lambda
 function versions are specified in the deployment's AppSpec file.
 
 
-=head2 TimeBasedLinear => L<Paws::CodeDeploy::TimeBasedLinear>
+=head2 TimeBasedLinear => CodeDeploy_TimeBasedLinear
 
   A configuration that shifts traffic from one version of a Lambda
 function to another in equal increments, with an equal number of

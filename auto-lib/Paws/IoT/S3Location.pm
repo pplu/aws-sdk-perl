@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoT::S3Location;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has Bucket => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Key' => 'key',
+                       'Bucket' => 'bucket',
+                       'Version' => 'version'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

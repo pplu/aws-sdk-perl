@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::AddTagsToResource;
-  use Moose;
-  has ResourceName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Tag/;
+  has ResourceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddTagsToResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceName' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::RDS::Tag',
+                           'type' => 'ArrayRef[RDS_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'ResourceName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +82,7 @@ Constructing an RDS Amazon Resource Name (ARN)
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[RDS_Tag]
 
 The tags to be assigned to the Amazon RDS resource.
 

@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::IoT::ThingGroupIndexingConfiguration;
-  use Moose;
-  has CustomFields => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Field]', request_name => 'customFields', traits => ['NameInRequest']);
-  has ManagedFields => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Field]', request_name => 'managedFields', traits => ['NameInRequest']);
-  has ThingGroupIndexingMode => (is => 'ro', isa => 'Str', request_name => 'thingGroupIndexingMode', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::IoT::Types qw/IoT_Field/;
+  has CustomFields => (is => 'ro', isa => ArrayRef[IoT_Field]);
+  has ManagedFields => (is => 'ro', isa => ArrayRef[IoT_Field]);
+  has ThingGroupIndexingMode => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CustomFields' => 'customFields',
+                       'ManagedFields' => 'managedFields',
+                       'ThingGroupIndexingMode' => 'thingGroupIndexingMode'
+                     },
+  'IsRequired' => {
+                    'ThingGroupIndexingMode' => 1
+                  },
+  'types' => {
+               'CustomFields' => {
+                                   'class' => 'Paws::IoT::Field',
+                                   'type' => 'ArrayRef[IoT_Field]'
+                                 },
+               'ManagedFields' => {
+                                    'class' => 'Paws::IoT::Field',
+                                    'type' => 'ArrayRef[IoT_Field]'
+                                  },
+               'ThingGroupIndexingMode' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,14 +71,14 @@ Thing group indexing configuration.
 =head1 ATTRIBUTES
 
 
-=head2 CustomFields => ArrayRef[L<Paws::IoT::Field>]
+=head2 CustomFields => ArrayRef[IoT_Field]
 
   A list of thing group fields to index. This list cannot contain any
 managed fields. Use the GetIndexingConfiguration API to get a list of
 managed fields.
 
 
-=head2 ManagedFields => ArrayRef[L<Paws::IoT::Field>]
+=head2 ManagedFields => ArrayRef[IoT_Field]
 
   A list of automatically indexed thing group fields.
 

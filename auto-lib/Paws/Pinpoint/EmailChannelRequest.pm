@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EmailChannelRequest;
-  use Moose;
-  has ConfigurationSet => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has FromAddress => (is => 'ro', isa => 'Str', required => 1);
-  has Identity => (is => 'ro', isa => 'Str', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Pinpoint::Types qw//;
+  has ConfigurationSet => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has FromAddress => (is => 'ro', isa => Str, required => 1);
+  has Identity => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Identity' => 1,
+                    'FromAddress' => 1
+                  },
+  'types' => {
+               'FromAddress' => {
+                                  'type' => 'Str'
+                                },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ConfigurationSet' => {
+                                       'type' => 'Str'
+                                     },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Identity' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

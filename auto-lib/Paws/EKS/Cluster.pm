@@ -1,19 +1,96 @@
+# Generated from default/object.tt
 package Paws::EKS::Cluster;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CertificateAuthority => (is => 'ro', isa => 'Paws::EKS::Certificate', request_name => 'certificateAuthority', traits => ['NameInRequest']);
-  has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
-  has Identity => (is => 'ro', isa => 'Paws::EKS::Identity', request_name => 'identity', traits => ['NameInRequest']);
-  has Logging => (is => 'ro', isa => 'Paws::EKS::Logging', request_name => 'logging', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
-  has ResourcesVpcConfig => (is => 'ro', isa => 'Paws::EKS::VpcConfigResponse', request_name => 'resourcesVpcConfig', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::EKS::TagMap', request_name => 'tags', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EKS::Types qw/EKS_Identity EKS_VpcConfigResponse EKS_TagMap EKS_Certificate EKS_Logging/;
+  has Arn => (is => 'ro', isa => Str);
+  has CertificateAuthority => (is => 'ro', isa => EKS_Certificate);
+  has ClientRequestToken => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Endpoint => (is => 'ro', isa => Str);
+  has Identity => (is => 'ro', isa => EKS_Identity);
+  has Logging => (is => 'ro', isa => EKS_Logging);
+  has Name => (is => 'ro', isa => Str);
+  has PlatformVersion => (is => 'ro', isa => Str);
+  has ResourcesVpcConfig => (is => 'ro', isa => EKS_VpcConfigResponse);
+  has RoleArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => EKS_TagMap);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PlatformVersion' => 'platformVersion',
+                       'Tags' => 'tags',
+                       'Arn' => 'arn',
+                       'Identity' => 'identity',
+                       'Endpoint' => 'endpoint',
+                       'CertificateAuthority' => 'certificateAuthority',
+                       'RoleArn' => 'roleArn',
+                       'CreatedAt' => 'createdAt',
+                       'Version' => 'version',
+                       'Status' => 'status',
+                       'ResourcesVpcConfig' => 'resourcesVpcConfig',
+                       'Logging' => 'logging',
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ResourcesVpcConfig' => {
+                                         'type' => 'EKS_VpcConfigResponse',
+                                         'class' => 'Paws::EKS::VpcConfigResponse'
+                                       },
+               'Logging' => {
+                              'class' => 'Paws::EKS::Logging',
+                              'type' => 'EKS_Logging'
+                            },
+               'CertificateAuthority' => {
+                                           'type' => 'EKS_Certificate',
+                                           'class' => 'Paws::EKS::Certificate'
+                                         },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             },
+               'Identity' => {
+                               'type' => 'EKS_Identity',
+                               'class' => 'Paws::EKS::Identity'
+                             },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::EKS::TagMap',
+                           'type' => 'EKS_TagMap'
+                         },
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +131,7 @@ An object representing an Amazon EKS cluster.
   The Amazon Resource Name (ARN) of the cluster.
 
 
-=head2 CertificateAuthority => L<Paws::EKS::Certificate>
+=head2 CertificateAuthority => EKS_Certificate
 
   The C<certificate-authority-data> for your cluster.
 
@@ -75,12 +152,12 @@ idempotency of the request.
   The endpoint for your Kubernetes API server.
 
 
-=head2 Identity => L<Paws::EKS::Identity>
+=head2 Identity => EKS_Identity
 
   The identity provider information for the cluster.
 
 
-=head2 Logging => L<Paws::EKS::Logging>
+=head2 Logging => EKS_Logging
 
   The logging configuration for your cluster.
 
@@ -98,7 +175,7 @@ see Platform Versions
 in the I< I<Amazon EKS User Guide> >.
 
 
-=head2 ResourcesVpcConfig => L<Paws::EKS::VpcConfigResponse>
+=head2 ResourcesVpcConfig => EKS_VpcConfigResponse
 
   The VPC configuration used by the cluster control plane. Amazon EKS VPC
 resources have specific requirements to work properly with Kubernetes.
@@ -121,7 +198,7 @@ operations on your behalf.
   The current status of the cluster.
 
 
-=head2 Tags => L<Paws::EKS::TagMap>
+=head2 Tags => EKS_TagMap
 
   The metadata that you apply to the cluster to assist with
 categorization and organization. Each tag consists of a key and an

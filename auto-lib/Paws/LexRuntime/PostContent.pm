@@ -1,21 +1,78 @@
 
 package Paws::LexRuntime::PostContent;
-  use Moose;
-  has Accept => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Accept');
-  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias', required => 1);
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type', required => 1);
-  has InputStream => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputStream', required => 1);
-  has RequestAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-request-attributes');
-  has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-session-attributes');
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexRuntime::Types qw//;
+  has Accept => (is => 'ro', isa => Str, predicate => 1);
+  has BotAlias => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BotName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputStream => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RequestAttributes => (is => 'ro', isa => Str, predicate => 1);
+  has SessionAttributes => (is => 'ro', isa => Str, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'InputStream');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PostContent');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bot/{botName}/alias/{botAlias}/user/{userId}/content');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexRuntime::PostContentResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PostContent');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/bot/{botName}/alias/{botAlias}/user/{userId}/content');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexRuntime::PostContentResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BotName' => {
+                              'type' => 'Str'
+                            },
+               'BotAlias' => {
+                               'type' => 'Str'
+                             },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'SessionAttributes' => {
+                                        'type' => 'Str'
+                                      },
+               'Accept' => {
+                             'type' => 'Str'
+                           },
+               'RequestAttributes' => {
+                                        'type' => 'Str'
+                                      },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'InputStream' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'InputStream' => 'inputStream'
+                     },
+  'IsRequired' => {
+                    'UserId' => 1,
+                    'InputStream' => 1,
+                    'BotAlias' => 1,
+                    'ContentType' => 1,
+                    'BotName' => 1
+                  },
+  'ParamInURI' => {
+                    'UserId' => 'userId',
+                    'BotAlias' => 'botAlias',
+                    'BotName' => 'botName'
+                  },
+  'ParamInHeader' => {
+                       'SessionAttributes' => 'x-amz-lex-session-attributes',
+                       'RequestAttributes' => 'x-amz-lex-request-attributes',
+                       'ContentType' => 'Content-Type',
+                       'Accept' => 'Accept'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

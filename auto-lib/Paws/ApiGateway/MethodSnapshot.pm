@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ApiGateway::MethodSnapshot;
-  use Moose;
-  has ApiKeyRequired => (is => 'ro', isa => 'Bool', request_name => 'apiKeyRequired', traits => ['NameInRequest']);
-  has AuthorizationType => (is => 'ro', isa => 'Str', request_name => 'authorizationType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::ApiGateway::Types qw//;
+  has ApiKeyRequired => (is => 'ro', isa => Bool);
+  has AuthorizationType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthorizationType' => {
+                                        'type' => 'Str'
+                                      },
+               'ApiKeyRequired' => {
+                                     'type' => 'Bool'
+                                   }
+             },
+  'NameInRequest' => {
+                       'ApiKeyRequired' => 'apiKeyRequired',
+                       'AuthorizationType' => 'authorizationType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

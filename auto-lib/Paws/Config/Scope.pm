@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Config::Scope;
-  use Moose;
-  has ComplianceResourceId => (is => 'ro', isa => 'Str');
-  has ComplianceResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TagKey => (is => 'ro', isa => 'Str');
-  has TagValue => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Config::Types qw//;
+  has ComplianceResourceId => (is => 'ro', isa => Str);
+  has ComplianceResourceTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TagKey => (is => 'ro', isa => Str);
+  has TagValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagValue' => {
+                               'type' => 'Str'
+                             },
+               'TagKey' => {
+                             'type' => 'Str'
+                           },
+               'ComplianceResourceTypes' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'ComplianceResourceId' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

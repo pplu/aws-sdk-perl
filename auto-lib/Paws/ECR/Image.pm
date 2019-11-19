@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::ECR::Image;
-  use Moose;
-  has ImageId => (is => 'ro', isa => 'Paws::ECR::ImageIdentifier', request_name => 'imageId', traits => ['NameInRequest']);
-  has ImageManifest => (is => 'ro', isa => 'Str', request_name => 'imageManifest', traits => ['NameInRequest']);
-  has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw/ECR_ImageIdentifier/;
+  has ImageId => (is => 'ro', isa => ECR_ImageIdentifier);
+  has ImageManifest => (is => 'ro', isa => Str);
+  has RegistryId => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImageManifest' => {
+                                    'type' => 'Str'
+                                  },
+               'ImageId' => {
+                              'class' => 'Paws::ECR::ImageIdentifier',
+                              'type' => 'ECR_ImageIdentifier'
+                            },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'RegistryId' => 'registryId',
+                       'RepositoryName' => 'repositoryName',
+                       'ImageId' => 'imageId',
+                       'ImageManifest' => 'imageManifest'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +72,7 @@ An object representing an Amazon ECR image.
 =head1 ATTRIBUTES
 
 
-=head2 ImageId => L<Paws::ECR::ImageIdentifier>
+=head2 ImageId => ECR_ImageIdentifier
 
   An object containing the image tag and image digest associated with an
 image.

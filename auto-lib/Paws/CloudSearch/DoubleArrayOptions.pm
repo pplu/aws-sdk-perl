@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::DoubleArrayOptions;
-  use Moose;
-  has DefaultValue => (is => 'ro', isa => 'Num');
-  has FacetEnabled => (is => 'ro', isa => 'Bool');
-  has ReturnEnabled => (is => 'ro', isa => 'Bool');
-  has SearchEnabled => (is => 'ro', isa => 'Bool');
-  has SourceFields => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Bool Str/;
+  use Paws::CloudSearch::Types qw//;
+  has DefaultValue => (is => 'ro', isa => Num);
+  has FacetEnabled => (is => 'ro', isa => Bool);
+  has ReturnEnabled => (is => 'ro', isa => Bool);
+  has SearchEnabled => (is => 'ro', isa => Bool);
+  has SourceFields => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SearchEnabled' => {
+                                    'type' => 'Bool'
+                                  },
+               'FacetEnabled' => {
+                                   'type' => 'Bool'
+                                 },
+               'SourceFields' => {
+                                   'type' => 'Str'
+                                 },
+               'ReturnEnabled' => {
+                                    'type' => 'Bool'
+                                  },
+               'DefaultValue' => {
+                                   'type' => 'Num'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

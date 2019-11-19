@@ -1,26 +1,109 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::JobOutput;
-  use Moose;
-  has AlbumArt => (is => 'ro', isa => 'Paws::ElasticTranscoder::JobAlbumArt');
-  has AppliedColorSpaceConversion => (is => 'ro', isa => 'Str');
-  has Captions => (is => 'ro', isa => 'Paws::ElasticTranscoder::Captions');
-  has Composition => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Clip]');
-  has Duration => (is => 'ro', isa => 'Int');
-  has DurationMillis => (is => 'ro', isa => 'Int');
-  has Encryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
-  has FileSize => (is => 'ro', isa => 'Int');
-  has FrameRate => (is => 'ro', isa => 'Str');
-  has Height => (is => 'ro', isa => 'Int');
-  has Id => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str');
-  has PresetId => (is => 'ro', isa => 'Str');
-  has Rotate => (is => 'ro', isa => 'Str');
-  has SegmentDuration => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusDetail => (is => 'ro', isa => 'Str');
-  has ThumbnailEncryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
-  has ThumbnailPattern => (is => 'ro', isa => 'Str');
-  has Watermarks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::JobWatermark]');
-  has Width => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_Captions ElasticTranscoder_Clip ElasticTranscoder_Encryption ElasticTranscoder_JobWatermark ElasticTranscoder_JobAlbumArt/;
+  has AlbumArt => (is => 'ro', isa => ElasticTranscoder_JobAlbumArt);
+  has AppliedColorSpaceConversion => (is => 'ro', isa => Str);
+  has Captions => (is => 'ro', isa => ElasticTranscoder_Captions);
+  has Composition => (is => 'ro', isa => ArrayRef[ElasticTranscoder_Clip]);
+  has Duration => (is => 'ro', isa => Int);
+  has DurationMillis => (is => 'ro', isa => Int);
+  has Encryption => (is => 'ro', isa => ElasticTranscoder_Encryption);
+  has FileSize => (is => 'ro', isa => Int);
+  has FrameRate => (is => 'ro', isa => Str);
+  has Height => (is => 'ro', isa => Int);
+  has Id => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has PresetId => (is => 'ro', isa => Str);
+  has Rotate => (is => 'ro', isa => Str);
+  has SegmentDuration => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetail => (is => 'ro', isa => Str);
+  has ThumbnailEncryption => (is => 'ro', isa => ElasticTranscoder_Encryption);
+  has ThumbnailPattern => (is => 'ro', isa => Str);
+  has Watermarks => (is => 'ro', isa => ArrayRef[ElasticTranscoder_JobWatermark]);
+  has Width => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AlbumArt' => {
+                               'type' => 'ElasticTranscoder_JobAlbumArt',
+                               'class' => 'Paws::ElasticTranscoder::JobAlbumArt'
+                             },
+               'Captions' => {
+                               'type' => 'ElasticTranscoder_Captions',
+                               'class' => 'Paws::ElasticTranscoder::Captions'
+                             },
+               'FileSize' => {
+                               'type' => 'Int'
+                             },
+               'Height' => {
+                             'type' => 'Int'
+                           },
+               'DurationMillis' => {
+                                     'type' => 'Int'
+                                   },
+               'AppliedColorSpaceConversion' => {
+                                                  'type' => 'Str'
+                                                },
+               'FrameRate' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Width' => {
+                            'type' => 'Int'
+                          },
+               'Watermarks' => {
+                                 'type' => 'ArrayRef[ElasticTranscoder_JobWatermark]',
+                                 'class' => 'Paws::ElasticTranscoder::JobWatermark'
+                               },
+               'PresetId' => {
+                               'type' => 'Str'
+                             },
+               'StatusDetail' => {
+                                   'type' => 'Str'
+                                 },
+               'ThumbnailEncryption' => {
+                                          'type' => 'ElasticTranscoder_Encryption',
+                                          'class' => 'Paws::ElasticTranscoder::Encryption'
+                                        },
+               'SegmentDuration' => {
+                                      'type' => 'Str'
+                                    },
+               'Encryption' => {
+                                 'class' => 'Paws::ElasticTranscoder::Encryption',
+                                 'type' => 'ElasticTranscoder_Encryption'
+                               },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Rotate' => {
+                             'type' => 'Str'
+                           },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'Composition' => {
+                                  'class' => 'Paws::ElasticTranscoder::Clip',
+                                  'type' => 'ArrayRef[ElasticTranscoder_Clip]'
+                                },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ThumbnailPattern' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +144,7 @@ that is listed for the first output in the C<Outputs> object.
 =head1 ATTRIBUTES
 
 
-=head2 AlbumArt => L<Paws::ElasticTranscoder::JobAlbumArt>
+=head2 AlbumArt => ElasticTranscoder_JobAlbumArt
 
   The album art to be associated with the output file, if any.
 
@@ -75,7 +158,7 @@ was defined in the preset, this parameter is not be included in the job
 response.
 
 
-=head2 Captions => L<Paws::ElasticTranscoder::Captions>
+=head2 Captions => ElasticTranscoder_Captions
 
   You can configure Elastic Transcoder to transcode captions, or
 subtitles, from one format to another. All captions must be in UTF-8.
@@ -136,7 +219,7 @@ For more information on sidecar files, see the Extensible Metadata
 Platform and Sidecar file Wikipedia pages.
 
 
-=head2 Composition => ArrayRef[L<Paws::ElasticTranscoder::Clip>]
+=head2 Composition => ArrayRef[ElasticTranscoder_Clip]
 
   You can create an output file that contains an excerpt from the input
 file. This excerpt, called a clip, can come from the beginning, middle,
@@ -156,7 +239,7 @@ Composition object cannot be null.
   Duration of the output file, in milliseconds.
 
 
-=head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
+=head2 Encryption => ElasticTranscoder_Encryption
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your output files. If you choose to use encryption, you must
@@ -283,7 +366,7 @@ C<Progressing>, C<Complete>, C<Canceled>, or C<Error>.
   Information that further explains C<Status>.
 
 
-=head2 ThumbnailEncryption => L<Paws::ElasticTranscoder::Encryption>
+=head2 ThumbnailEncryption => ElasticTranscoder_Encryption
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your thumbnail.
@@ -336,7 +419,7 @@ specified in the C<PresetID> value of C<CreateJobOutput>. Elastic
 Transcoder also appends the applicable file name extension.
 
 
-=head2 Watermarks => ArrayRef[L<Paws::ElasticTranscoder::JobWatermark>]
+=head2 Watermarks => ArrayRef[ElasticTranscoder_JobWatermark]
 
   Information about the watermarks that you want Elastic Transcoder to
 add to the video during transcoding. You can specify up to four

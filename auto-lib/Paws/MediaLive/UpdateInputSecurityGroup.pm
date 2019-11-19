@@ -1,16 +1,49 @@
 
 package Paws::MediaLive::UpdateInputSecurityGroup;
-  use Moose;
-  has InputSecurityGroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'inputSecurityGroupId', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
-  has WhitelistRules => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputWhitelistRuleCidr]', traits => ['NameInRequest'], request_name => 'whitelistRules');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_InputWhitelistRuleCidr MediaLive_Tags/;
+  has InputSecurityGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => MediaLive_Tags, predicate => 1);
+  has WhitelistRules => (is => 'ro', isa => ArrayRef[MediaLive_InputWhitelistRuleCidr], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateInputSecurityGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/inputSecurityGroups/{inputSecurityGroupId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::UpdateInputSecurityGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateInputSecurityGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/inputSecurityGroups/{inputSecurityGroupId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::UpdateInputSecurityGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'WhitelistRules' => 'whitelistRules'
+                     },
+  'IsRequired' => {
+                    'InputSecurityGroupId' => 1
+                  },
+  'types' => {
+               'WhitelistRules' => {
+                                     'class' => 'Paws::MediaLive::InputWhitelistRuleCidr',
+                                     'type' => 'ArrayRef[MediaLive_InputWhitelistRuleCidr]'
+                                   },
+               'InputSecurityGroupId' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'class' => 'Paws::MediaLive::Tags',
+                           'type' => 'MediaLive_Tags'
+                         }
+             },
+  'ParamInURI' => {
+                    'InputSecurityGroupId' => 'inputSecurityGroupId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,13 +86,13 @@ The id of the Input Security Group to update.
 
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
 A collection of key-value pairs.
 
 
 
-=head2 WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]
+=head2 WhitelistRules => ArrayRef[MediaLive_InputWhitelistRuleCidr]
 
 List of IPv4 CIDR addresses to whitelist
 

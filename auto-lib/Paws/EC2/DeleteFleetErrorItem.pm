@@ -1,7 +1,29 @@
 package Paws::EC2::DeleteFleetErrorItem;
-  use Moose;
-  has Error => (is => 'ro', isa => 'Paws::EC2::DeleteFleetError', request_name => 'error', traits => ['NameInRequest']);
-  has FleetId => (is => 'ro', isa => 'Str', request_name => 'fleetId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_DeleteFleetError/;
+  has Error => (is => 'ro', isa => EC2_DeleteFleetError);
+  has FleetId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FleetId' => 'fleetId',
+                       'Error' => 'error'
+                     },
+  'types' => {
+               'Error' => {
+                            'class' => 'Paws::EC2::DeleteFleetError',
+                            'type' => 'EC2_DeleteFleetError'
+                          },
+               'FleetId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +59,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Error => L<Paws::EC2::DeleteFleetError>
+=head2 Error => EC2_DeleteFleetError
 
   The error.
 

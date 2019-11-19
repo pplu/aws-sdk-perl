@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::UpdateAssociationResult;
-  use Moose;
-  has AssociationDescription => (is => 'ro', isa => 'Paws::SSM::AssociationDescription');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_AssociationDescription/;
+  has AssociationDescription => (is => 'ro', isa => SSM_AssociationDescription);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AssociationDescription' => {
+                                             'type' => 'SSM_AssociationDescription',
+                                             'class' => 'Paws::SSM::AssociationDescription'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::SSM::UpdateAssociationResult
 =head1 ATTRIBUTES
 
 
-=head2 AssociationDescription => L<Paws::SSM::AssociationDescription>
+=head2 AssociationDescription => SSM_AssociationDescription
 
 The description of the association that was updated.
 

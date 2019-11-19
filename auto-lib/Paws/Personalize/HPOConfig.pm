@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::Personalize::HPOConfig;
-  use Moose;
-  has AlgorithmHyperParameterRanges => (is => 'ro', isa => 'Paws::Personalize::HyperParameterRanges', request_name => 'algorithmHyperParameterRanges', traits => ['NameInRequest']);
-  has HpoObjective => (is => 'ro', isa => 'Paws::Personalize::HPOObjective', request_name => 'hpoObjective', traits => ['NameInRequest']);
-  has HpoResourceConfig => (is => 'ro', isa => 'Paws::Personalize::HPOResourceConfig', request_name => 'hpoResourceConfig', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Personalize::Types qw/Personalize_HyperParameterRanges Personalize_HPOResourceConfig Personalize_HPOObjective/;
+  has AlgorithmHyperParameterRanges => (is => 'ro', isa => Personalize_HyperParameterRanges);
+  has HpoObjective => (is => 'ro', isa => Personalize_HPOObjective);
+  has HpoResourceConfig => (is => 'ro', isa => Personalize_HPOResourceConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HpoResourceConfig' => {
+                                        'class' => 'Paws::Personalize::HPOResourceConfig',
+                                        'type' => 'Personalize_HPOResourceConfig'
+                                      },
+               'HpoObjective' => {
+                                   'class' => 'Paws::Personalize::HPOObjective',
+                                   'type' => 'Personalize_HPOObjective'
+                                 },
+               'AlgorithmHyperParameterRanges' => {
+                                                    'class' => 'Paws::Personalize::HyperParameterRanges',
+                                                    'type' => 'Personalize_HyperParameterRanges'
+                                                  }
+             },
+  'NameInRequest' => {
+                       'AlgorithmHyperParameterRanges' => 'algorithmHyperParameterRanges',
+                       'HpoObjective' => 'hpoObjective',
+                       'HpoResourceConfig' => 'hpoResourceConfig'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,17 +71,17 @@ Personalize native recipes.
 =head1 ATTRIBUTES
 
 
-=head2 AlgorithmHyperParameterRanges => L<Paws::Personalize::HyperParameterRanges>
+=head2 AlgorithmHyperParameterRanges => Personalize_HyperParameterRanges
 
   The hyperparameters and their allowable ranges.
 
 
-=head2 HpoObjective => L<Paws::Personalize::HPOObjective>
+=head2 HpoObjective => Personalize_HPOObjective
 
   The metric to optimize during HPO.
 
 
-=head2 HpoResourceConfig => L<Paws::Personalize::HPOResourceConfig>
+=head2 HpoResourceConfig => Personalize_HPOResourceConfig
 
   Describes the resource configuration for HPO.
 

@@ -1,14 +1,35 @@
 
 package Paws::ResourceGroups::DeleteGroup;
-  use Moose;
-  has GroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ResourceGroups::Types qw//;
+  has GroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/groups/{GroupName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ResourceGroups::DeleteGroupOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/groups/{GroupName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ResourceGroups::DeleteGroupOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'GroupName' => 'GroupName'
+                  },
+  'types' => {
+               'GroupName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'GroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

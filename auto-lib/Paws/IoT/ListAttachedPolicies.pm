@@ -1,17 +1,52 @@
 
 package Paws::IoT::ListAttachedPolicies;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
-  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize');
-  has Recursive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'recursive');
-  has Target => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'target', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::IoT::Types qw//;
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has Recursive => (is => 'ro', isa => Bool, predicate => 1);
+  has Target => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAttachedPolicies');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/attached-policies/{target}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListAttachedPoliciesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAttachedPolicies');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/attached-policies/{target}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListAttachedPoliciesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Target' => 'target'
+                  },
+  'types' => {
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'Recursive' => {
+                                'type' => 'Bool'
+                              }
+             },
+  'IsRequired' => {
+                    'Target' => 1
+                  },
+  'ParamInQuery' => {
+                      'Recursive' => 'recursive',
+                      'PageSize' => 'pageSize',
+                      'Marker' => 'marker'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

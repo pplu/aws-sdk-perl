@@ -1,18 +1,59 @@
 
 package Paws::ApiGateway::CreateModel;
-  use Moose;
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentType', required => 1);
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has ContentType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Schema => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateModel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/models');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Model');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateModel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/models');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::Model');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ContentType' => 'contentType',
+                       'Name' => 'name',
+                       'Description' => 'description',
+                       'Schema' => 'schema'
+                     },
+  'IsRequired' => {
+                    'ContentType' => 1,
+                    'RestApiId' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

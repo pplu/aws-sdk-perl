@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::MergeBranchesByFastForwardOutput;
-  use Moose;
-  has CommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitId' );
-  has TreeId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'treeId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has CommitId => (is => 'ro', isa => Str);
+  has TreeId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TreeId' => 'treeId',
+                       'CommitId' => 'commitId'
+                     },
+  'types' => {
+               'CommitId' => {
+                               'type' => 'Str'
+                             },
+               'TreeId' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

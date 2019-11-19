@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ApplicationInsights::DescribeComponentConfigurationRecommendation;
-  use Moose;
-  has ComponentName => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Tier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationInsights::Types qw//;
+  has ComponentName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeComponentConfigurationRecommendation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApplicationInsights::DescribeComponentConfigurationRecommendationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeComponentConfigurationRecommendation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApplicationInsights::DescribeComponentConfigurationRecommendationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tier' => {
+                           'type' => 'Str'
+                         },
+               'ResourceGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'ComponentName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ComponentName' => 1,
+                    'ResourceGroupName' => 1,
+                    'Tier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

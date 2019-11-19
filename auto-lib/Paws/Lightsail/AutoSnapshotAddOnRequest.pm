@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Lightsail::AutoSnapshotAddOnRequest;
-  use Moose;
-  has SnapshotTimeOfDay => (is => 'ro', isa => 'Str', request_name => 'snapshotTimeOfDay', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has SnapshotTimeOfDay => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SnapshotTimeOfDay' => 'snapshotTimeOfDay'
+                     },
+  'types' => {
+               'SnapshotTimeOfDay' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

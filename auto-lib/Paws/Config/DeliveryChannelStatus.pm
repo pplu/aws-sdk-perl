@@ -1,9 +1,44 @@
+# Generated from default/object.tt
 package Paws::Config::DeliveryChannelStatus;
-  use Moose;
-  has ConfigHistoryDeliveryInfo => (is => 'ro', isa => 'Paws::Config::ConfigExportDeliveryInfo', request_name => 'configHistoryDeliveryInfo', traits => ['NameInRequest']);
-  has ConfigSnapshotDeliveryInfo => (is => 'ro', isa => 'Paws::Config::ConfigExportDeliveryInfo', request_name => 'configSnapshotDeliveryInfo', traits => ['NameInRequest']);
-  has ConfigStreamDeliveryInfo => (is => 'ro', isa => 'Paws::Config::ConfigStreamDeliveryInfo', request_name => 'configStreamDeliveryInfo', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_ConfigExportDeliveryInfo Config_ConfigStreamDeliveryInfo/;
+  has ConfigHistoryDeliveryInfo => (is => 'ro', isa => Config_ConfigExportDeliveryInfo);
+  has ConfigSnapshotDeliveryInfo => (is => 'ro', isa => Config_ConfigExportDeliveryInfo);
+  has ConfigStreamDeliveryInfo => (is => 'ro', isa => Config_ConfigStreamDeliveryInfo);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ConfigStreamDeliveryInfo' => {
+                                               'type' => 'Config_ConfigStreamDeliveryInfo',
+                                               'class' => 'Paws::Config::ConfigStreamDeliveryInfo'
+                                             },
+               'ConfigSnapshotDeliveryInfo' => {
+                                                 'class' => 'Paws::Config::ConfigExportDeliveryInfo',
+                                                 'type' => 'Config_ConfigExportDeliveryInfo'
+                                               },
+               'ConfigHistoryDeliveryInfo' => {
+                                                'class' => 'Paws::Config::ConfigExportDeliveryInfo',
+                                                'type' => 'Config_ConfigExportDeliveryInfo'
+                                              }
+             },
+  'NameInRequest' => {
+                       'ConfigHistoryDeliveryInfo' => 'configHistoryDeliveryInfo',
+                       'ConfigSnapshotDeliveryInfo' => 'configSnapshotDeliveryInfo',
+                       'ConfigStreamDeliveryInfo' => 'configStreamDeliveryInfo',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,19 +76,19 @@ Valid values: C<Success> | C<Failure>
 =head1 ATTRIBUTES
 
 
-=head2 ConfigHistoryDeliveryInfo => L<Paws::Config::ConfigExportDeliveryInfo>
+=head2 ConfigHistoryDeliveryInfo => Config_ConfigExportDeliveryInfo
 
   A list that contains the status of the delivery of the configuration
 history to the specified Amazon S3 bucket.
 
 
-=head2 ConfigSnapshotDeliveryInfo => L<Paws::Config::ConfigExportDeliveryInfo>
+=head2 ConfigSnapshotDeliveryInfo => Config_ConfigExportDeliveryInfo
 
   A list containing the status of the delivery of the snapshot to the
 specified Amazon S3 bucket.
 
 
-=head2 ConfigStreamDeliveryInfo => L<Paws::Config::ConfigStreamDeliveryInfo>
+=head2 ConfigStreamDeliveryInfo => Config_ConfigStreamDeliveryInfo
 
   A list containing the status of the delivery of the configuration
 stream notification to the specified Amazon SNS topic.

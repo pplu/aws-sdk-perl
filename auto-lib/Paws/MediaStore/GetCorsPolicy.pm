@@ -1,13 +1,32 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MediaStore::GetCorsPolicy;
-  use Moose;
-  has ContainerName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaStore::Types qw//;
+  has ContainerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCorsPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaStore::GetCorsPolicyOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetCorsPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaStore::GetCorsPolicyOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ContainerName' => 1
+                  },
+  'types' => {
+               'ContainerName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

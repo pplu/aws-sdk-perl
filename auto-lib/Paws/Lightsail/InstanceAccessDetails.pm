@@ -1,15 +1,73 @@
+# Generated from default/object.tt
 package Paws::Lightsail::InstanceAccessDetails;
-  use Moose;
-  has CertKey => (is => 'ro', isa => 'Str', request_name => 'certKey', traits => ['NameInRequest']);
-  has ExpiresAt => (is => 'ro', isa => 'Str', request_name => 'expiresAt', traits => ['NameInRequest']);
-  has HostKeys => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::HostKeyAttributes]', request_name => 'hostKeys', traits => ['NameInRequest']);
-  has InstanceName => (is => 'ro', isa => 'Str', request_name => 'instanceName', traits => ['NameInRequest']);
-  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
-  has Password => (is => 'ro', isa => 'Str', request_name => 'password', traits => ['NameInRequest']);
-  has PasswordData => (is => 'ro', isa => 'Paws::Lightsail::PasswordData', request_name => 'passwordData', traits => ['NameInRequest']);
-  has PrivateKey => (is => 'ro', isa => 'Str', request_name => 'privateKey', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
-  has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_HostKeyAttributes Lightsail_PasswordData/;
+  has CertKey => (is => 'ro', isa => Str);
+  has ExpiresAt => (is => 'ro', isa => Str);
+  has HostKeys => (is => 'ro', isa => ArrayRef[Lightsail_HostKeyAttributes]);
+  has InstanceName => (is => 'ro', isa => Str);
+  has IpAddress => (is => 'ro', isa => Str);
+  has Password => (is => 'ro', isa => Str);
+  has PasswordData => (is => 'ro', isa => Lightsail_PasswordData);
+  has PrivateKey => (is => 'ro', isa => Str);
+  has Protocol => (is => 'ro', isa => Str);
+  has Username => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpiresAt' => {
+                                'type' => 'Str'
+                              },
+               'InstanceName' => {
+                                   'type' => 'Str'
+                                 },
+               'PrivateKey' => {
+                                 'type' => 'Str'
+                               },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'HostKeys' => {
+                               'type' => 'ArrayRef[Lightsail_HostKeyAttributes]',
+                               'class' => 'Paws::Lightsail::HostKeyAttributes'
+                             },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'CertKey' => {
+                              'type' => 'Str'
+                            },
+               'PasswordData' => {
+                                   'type' => 'Lightsail_PasswordData',
+                                   'class' => 'Paws::Lightsail::PasswordData'
+                                 }
+             },
+  'NameInRequest' => {
+                       'PrivateKey' => 'privateKey',
+                       'ExpiresAt' => 'expiresAt',
+                       'InstanceName' => 'instanceName',
+                       'Password' => 'password',
+                       'CertKey' => 'certKey',
+                       'PasswordData' => 'passwordData',
+                       'HostKeys' => 'hostKeys',
+                       'Username' => 'username',
+                       'IpAddress' => 'ipAddress',
+                       'Protocol' => 'protocol'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +116,7 @@ C<tempkey-cert.pub>.
   For SSH access, the date on which the temporary keys expire.
 
 
-=head2 HostKeys => ArrayRef[L<Paws::Lightsail::HostKeyAttributes>]
+=head2 HostKeys => ArrayRef[Lightsail_HostKeyAttributes]
 
   Describes the public SSH host keys or the RDP certificate.
 
@@ -90,7 +148,7 @@ instance using RDP, you need to manually enter the Administrator
 password after changing it from the default.
 
 
-=head2 PasswordData => L<Paws::Lightsail::PasswordData>
+=head2 PasswordData => Lightsail_PasswordData
 
   For a Windows Server-based instance, an object with the data you can
 use to retrieve your password. This is only needed if C<password> is

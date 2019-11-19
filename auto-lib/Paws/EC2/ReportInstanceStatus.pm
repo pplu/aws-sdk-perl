@@ -1,19 +1,66 @@
 
 package Paws::EC2::ReportInstanceStatus;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime' );
-  has Instances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
-  has ReasonCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'reasonCode' , required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' );
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::EC2::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has Instances => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has ReasonCodes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReportInstanceStatus');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ReportInstanceStatus');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ReasonCodes' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Instances' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'ReasonCodes' => 'reasonCode',
+                       'Instances' => 'instanceId',
+                       'EndTime' => 'endTime',
+                       'Status' => 'status',
+                       'StartTime' => 'startTime',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'ReasonCodes' => 1,
+                    'Instances' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

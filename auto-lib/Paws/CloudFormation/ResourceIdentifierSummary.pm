@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::ResourceIdentifierSummary;
-  use Moose;
-  has LogicalResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ResourceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ResourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::CloudFormation::Types qw//;
+  has LogicalResourceIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ResourceIdentifiers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogicalResourceIds' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceIdentifiers' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

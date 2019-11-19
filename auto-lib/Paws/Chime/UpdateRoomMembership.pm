@@ -1,17 +1,51 @@
 
 package Paws::Chime::UpdateRoomMembership;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has MemberId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'memberId', required => 1);
-  has Role => (is => 'ro', isa => 'Str');
-  has RoomId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'roomId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MemberId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Role => (is => 'ro', isa => Str, predicate => 1);
+  has RoomId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRoomMembership');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/rooms/{roomId}/memberships/{memberId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::UpdateRoomMembershipResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRoomMembership');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/rooms/{roomId}/memberships/{memberId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::UpdateRoomMembershipResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'MemberId' => {
+                               'type' => 'Str'
+                             },
+               'RoomId' => {
+                             'type' => 'Str'
+                           },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'MemberId' => 1,
+                    'RoomId' => 1,
+                    'AccountId' => 1
+                  },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId',
+                    'MemberId' => 'memberId',
+                    'RoomId' => 'roomId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

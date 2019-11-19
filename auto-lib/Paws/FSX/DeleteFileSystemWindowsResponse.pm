@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::FSX::DeleteFileSystemWindowsResponse;
-  use Moose;
-  has FinalBackupId => (is => 'ro', isa => 'Str');
-  has FinalBackupTags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::FSX::Types qw/FSX_Tag/;
+  has FinalBackupId => (is => 'ro', isa => Str);
+  has FinalBackupTags => (is => 'ro', isa => ArrayRef[FSX_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FinalBackupId' => {
+                                    'type' => 'Str'
+                                  },
+               'FinalBackupTags' => {
+                                      'class' => 'Paws::FSX::Tag',
+                                      'type' => 'ArrayRef[FSX_Tag]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ C<DeleteFileSystem> operation.
   The ID of the final backup for this file system.
 
 
-=head2 FinalBackupTags => ArrayRef[L<Paws::FSX::Tag>]
+=head2 FinalBackupTags => ArrayRef[FSX_Tag]
 
   The set of tags applied to the final backup.
 

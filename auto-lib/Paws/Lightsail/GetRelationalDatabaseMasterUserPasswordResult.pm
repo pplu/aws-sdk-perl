@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetRelationalDatabaseMasterUserPasswordResult;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdAt' );
-  has MasterUserPassword => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'masterUserPassword' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has MasterUserPassword => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MasterUserPassword' => 'masterUserPassword',
+                       'CreatedAt' => 'createdAt'
+                     },
+  'types' => {
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

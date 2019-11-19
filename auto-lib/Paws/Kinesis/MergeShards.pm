@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Kinesis::MergeShards;
-  use Moose;
-  has AdjacentShardToMerge => (is => 'ro', isa => 'Str', required => 1);
-  has ShardToMerge => (is => 'ro', isa => 'Str', required => 1);
-  has StreamName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kinesis::Types qw//;
+  has AdjacentShardToMerge => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ShardToMerge => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StreamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'MergeShards');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'MergeShards');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AdjacentShardToMerge' => 1,
+                    'StreamName' => 1,
+                    'ShardToMerge' => 1
+                  },
+  'types' => {
+               'StreamName' => {
+                                 'type' => 'Str'
+                               },
+               'ShardToMerge' => {
+                                   'type' => 'Str'
+                                 },
+               'AdjacentShardToMerge' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

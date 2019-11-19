@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::Lags;
-  use Moose;
-  has Lags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Lag]', traits => ['NameInRequest'], request_name => 'lags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_Lag/;
+  has Lags => (is => 'ro', isa => ArrayRef[DirectConnect_Lag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Lags' => {
+                           'class' => 'Paws::DirectConnect::Lag',
+                           'type' => 'ArrayRef[DirectConnect_Lag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'Lags' => 'lags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DirectConnect::Lags
 =head1 ATTRIBUTES
 
 
-=head2 Lags => ArrayRef[L<Paws::DirectConnect::Lag>]
+=head2 Lags => ArrayRef[DirectConnect_Lag]
 
 The LAGs.
 

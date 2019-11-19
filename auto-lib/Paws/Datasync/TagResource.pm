@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Datasync::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TagListEntry]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Datasync::Types qw/Datasync_TagListEntry/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Datasync_TagListEntry], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Datasync::TagResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Datasync::TagResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'ArrayRef[Datasync_TagListEntry]',
+                           'class' => 'Paws::Datasync::TagListEntry'
+                         }
+             },
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +76,7 @@ The Amazon Resource Name (ARN) of the resource to apply the tag to.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]
+=head2 B<REQUIRED> Tags => ArrayRef[Datasync_TagListEntry]
 
 The tags to apply.
 

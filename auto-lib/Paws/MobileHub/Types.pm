@@ -1,0 +1,37 @@
+package Paws::MobileHub::Types;
+  use Type::Library qw/-base/;
+  use Type::Utils qw/class_type/;
+
+  class_type MobileHub_AccountActionRequiredException, { class => 'Paws::MobileHub::AccountActionRequiredException' };
+  class_type MobileHub_Attributes, { class => 'Paws::MobileHub::Attributes' };
+  class_type MobileHub_BadRequestException, { class => 'Paws::MobileHub::BadRequestException' };
+  class_type MobileHub_BundleDetails, { class => 'Paws::MobileHub::BundleDetails' };
+  class_type MobileHub_CreateProjectRequest, { class => 'Paws::MobileHub::CreateProjectRequest' };
+  class_type MobileHub_CreateProjectResult, { class => 'Paws::MobileHub::CreateProjectResult' };
+  class_type MobileHub_DeleteProjectRequest, { class => 'Paws::MobileHub::DeleteProjectRequest' };
+  class_type MobileHub_DeleteProjectResult, { class => 'Paws::MobileHub::DeleteProjectResult' };
+  class_type MobileHub_DescribeBundleRequest, { class => 'Paws::MobileHub::DescribeBundleRequest' };
+  class_type MobileHub_DescribeBundleResult, { class => 'Paws::MobileHub::DescribeBundleResult' };
+  class_type MobileHub_DescribeProjectRequest, { class => 'Paws::MobileHub::DescribeProjectRequest' };
+  class_type MobileHub_DescribeProjectResult, { class => 'Paws::MobileHub::DescribeProjectResult' };
+  class_type MobileHub_ExportBundleRequest, { class => 'Paws::MobileHub::ExportBundleRequest' };
+  class_type MobileHub_ExportBundleResult, { class => 'Paws::MobileHub::ExportBundleResult' };
+  class_type MobileHub_ExportProjectRequest, { class => 'Paws::MobileHub::ExportProjectRequest' };
+  class_type MobileHub_ExportProjectResult, { class => 'Paws::MobileHub::ExportProjectResult' };
+  class_type MobileHub_InternalFailureException, { class => 'Paws::MobileHub::InternalFailureException' };
+  class_type MobileHub_LimitExceededException, { class => 'Paws::MobileHub::LimitExceededException' };
+  class_type MobileHub_ListBundlesRequest, { class => 'Paws::MobileHub::ListBundlesRequest' };
+  class_type MobileHub_ListBundlesResult, { class => 'Paws::MobileHub::ListBundlesResult' };
+  class_type MobileHub_ListProjectsRequest, { class => 'Paws::MobileHub::ListProjectsRequest' };
+  class_type MobileHub_ListProjectsResult, { class => 'Paws::MobileHub::ListProjectsResult' };
+  class_type MobileHub_NotFoundException, { class => 'Paws::MobileHub::NotFoundException' };
+  class_type MobileHub_ProjectDetails, { class => 'Paws::MobileHub::ProjectDetails' };
+  class_type MobileHub_ProjectSummary, { class => 'Paws::MobileHub::ProjectSummary' };
+  class_type MobileHub_Resource, { class => 'Paws::MobileHub::Resource' };
+  class_type MobileHub_ServiceUnavailableException, { class => 'Paws::MobileHub::ServiceUnavailableException' };
+  class_type MobileHub_TooManyRequestsException, { class => 'Paws::MobileHub::TooManyRequestsException' };
+  class_type MobileHub_UnauthorizedException, { class => 'Paws::MobileHub::UnauthorizedException' };
+  class_type MobileHub_UpdateProjectRequest, { class => 'Paws::MobileHub::UpdateProjectRequest' };
+  class_type MobileHub_UpdateProjectResult, { class => 'Paws::MobileHub::UpdateProjectResult' };
+
+1;

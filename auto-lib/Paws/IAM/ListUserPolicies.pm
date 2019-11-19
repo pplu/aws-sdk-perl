@@ -1,15 +1,40 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::ListUserPolicies;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxItems => (is => 'ro', isa => 'Int');
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IAM::Types qw//;
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListUserPolicies');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::ListUserPoliciesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListUserPoliciesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListUserPolicies');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::ListUserPoliciesResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListUserPoliciesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'UserName' => 1
+                  },
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

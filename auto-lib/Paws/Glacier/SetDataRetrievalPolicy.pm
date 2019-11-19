@@ -1,15 +1,40 @@
 
 package Paws::Glacier::SetDataRetrievalPolicy;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has Policy => (is => 'ro', isa => 'Paws::Glacier::DataRetrievalPolicy');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw/Glacier_DataRetrievalPolicy/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Policy => (is => 'ro', isa => Glacier_DataRetrievalPolicy, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetDataRetrievalPolicy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/policies/data-retrieval');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetDataRetrievalPolicy');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{accountId}/policies/data-retrieval');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'AccountId' => 'accountId'
+                  },
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Policy' => {
+                             'type' => 'Glacier_DataRetrievalPolicy',
+                             'class' => 'Paws::Glacier::DataRetrievalPolicy'
+                           }
+             },
+  'IsRequired' => {
+                    'AccountId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +88,7 @@ ID.
 
 
 
-=head2 Policy => L<Paws::Glacier::DataRetrievalPolicy>
+=head2 Policy => Glacier_DataRetrievalPolicy
 
 The data retrieval policy in JSON format.
 

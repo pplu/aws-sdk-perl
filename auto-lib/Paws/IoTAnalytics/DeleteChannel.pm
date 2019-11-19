@@ -1,14 +1,35 @@
 
 package Paws::IoTAnalytics::DeleteChannel;
-  use Moose;
-  has ChannelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'channelName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has ChannelName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/channels/{channelName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/channels/{channelName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ChannelName' => 1
+                  },
+  'types' => {
+               'ChannelName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'ChannelName' => 'channelName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

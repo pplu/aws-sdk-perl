@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::SESv2::DedicatedIp;
-  use Moose;
-  has Ip => (is => 'ro', isa => 'Str', required => 1);
-  has PoolName => (is => 'ro', isa => 'Str');
-  has WarmupPercentage => (is => 'ro', isa => 'Int', required => 1);
-  has WarmupStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SESv2::Types qw//;
+  has Ip => (is => 'ro', isa => Str, required => 1);
+  has PoolName => (is => 'ro', isa => Str);
+  has WarmupPercentage => (is => 'ro', isa => Int, required => 1);
+  has WarmupStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WarmupStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'Ip' => {
+                         'type' => 'Str'
+                       },
+               'PoolName' => {
+                               'type' => 'Str'
+                             },
+               'WarmupPercentage' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'IsRequired' => {
+                    'WarmupStatus' => 1,
+                    'WarmupPercentage' => 1,
+                    'Ip' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

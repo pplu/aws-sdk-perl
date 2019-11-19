@@ -1,30 +1,120 @@
 
 package Paws::Amplify::CreateBranch;
-  use Moose;
-  has AppId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'appId', required => 1);
-  has BackendEnvironmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'backendEnvironmentArn');
-  has BasicAuthCredentials => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'basicAuthCredentials');
-  has BranchName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchName', required => 1);
-  has BuildSpec => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'buildSpec');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has DisplayName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'displayName');
-  has EnableAutoBuild => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableAutoBuild');
-  has EnableBasicAuth => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBasicAuth');
-  has EnableNotification => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableNotification');
-  has EnablePullRequestPreview => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enablePullRequestPreview');
-  has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', traits => ['NameInRequest'], request_name => 'environmentVariables');
-  has Framework => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'framework');
-  has PullRequestEnvironmentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullRequestEnvironmentName');
-  has Stage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stage');
-  has Tags => (is => 'ro', isa => 'Paws::Amplify::TagMap', traits => ['NameInRequest'], request_name => 'tags');
-  has Ttl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ttl');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Amplify::Types qw/Amplify_EnvironmentVariables Amplify_TagMap/;
+  has AppId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BackendEnvironmentArn => (is => 'ro', isa => Str, predicate => 1);
+  has BasicAuthCredentials => (is => 'ro', isa => Str, predicate => 1);
+  has BranchName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BuildSpec => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DisplayName => (is => 'ro', isa => Str, predicate => 1);
+  has EnableAutoBuild => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableBasicAuth => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableNotification => (is => 'ro', isa => Bool, predicate => 1);
+  has EnablePullRequestPreview => (is => 'ro', isa => Bool, predicate => 1);
+  has EnvironmentVariables => (is => 'ro', isa => Amplify_EnvironmentVariables, predicate => 1);
+  has Framework => (is => 'ro', isa => Str, predicate => 1);
+  has PullRequestEnvironmentName => (is => 'ro', isa => Str, predicate => 1);
+  has Stage => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => Amplify_TagMap, predicate => 1);
+  has Ttl => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBranch');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apps/{appId}/branches');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Amplify::CreateBranchResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBranch');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/apps/{appId}/branches');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Amplify::CreateBranchResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'AppId' => 'appId'
+                  },
+  'types' => {
+               'Ttl' => {
+                          'type' => 'Str'
+                        },
+               'EnvironmentVariables' => {
+                                           'class' => 'Paws::Amplify::EnvironmentVariables',
+                                           'type' => 'Amplify_EnvironmentVariables'
+                                         },
+               'EnableNotification' => {
+                                         'type' => 'Bool'
+                                       },
+               'BackendEnvironmentArn' => {
+                                            'type' => 'Str'
+                                          },
+               'PullRequestEnvironmentName' => {
+                                                 'type' => 'Str'
+                                               },
+               'BranchName' => {
+                                 'type' => 'Str'
+                               },
+               'EnableBasicAuth' => {
+                                      'type' => 'Bool'
+                                    },
+               'AppId' => {
+                            'type' => 'Str'
+                          },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'BasicAuthCredentials' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'type' => 'Amplify_TagMap',
+                           'class' => 'Paws::Amplify::TagMap'
+                         },
+               'Framework' => {
+                                'type' => 'Str'
+                              },
+               'BuildSpec' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'EnablePullRequestPreview' => {
+                                               'type' => 'Bool'
+                                             },
+               'EnableAutoBuild' => {
+                                      'type' => 'Bool'
+                                    },
+               'Stage' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'DisplayName' => 'displayName',
+                       'BasicAuthCredentials' => 'basicAuthCredentials',
+                       'EnableBasicAuth' => 'enableBasicAuth',
+                       'BranchName' => 'branchName',
+                       'PullRequestEnvironmentName' => 'pullRequestEnvironmentName',
+                       'BackendEnvironmentArn' => 'backendEnvironmentArn',
+                       'EnableNotification' => 'enableNotification',
+                       'EnvironmentVariables' => 'environmentVariables',
+                       'Ttl' => 'ttl',
+                       'Stage' => 'stage',
+                       'EnableAutoBuild' => 'enableAutoBuild',
+                       'EnablePullRequestPreview' => 'enablePullRequestPreview',
+                       'Description' => 'description',
+                       'BuildSpec' => 'buildSpec',
+                       'Framework' => 'framework',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'AppId' => 1,
+                    'BranchName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -145,7 +235,7 @@ Enables Pull Request Preview for this branch.
 
 
 
-=head2 EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
+=head2 EnvironmentVariables => Amplify_EnvironmentVariables
 
 Environment Variables for the branch.
 
@@ -169,7 +259,7 @@ Stage for the branch.
 
 Valid values are: C<"PRODUCTION">, C<"BETA">, C<"DEVELOPMENT">, C<"EXPERIMENTAL">, C<"PULL_REQUEST">
 
-=head2 Tags => L<Paws::Amplify::TagMap>
+=head2 Tags => Amplify_TagMap
 
 Tag for the branch.
 

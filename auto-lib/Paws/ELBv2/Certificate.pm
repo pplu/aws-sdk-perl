@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ELBv2::Certificate;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has IsDefault => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ELBv2::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has IsDefault => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsDefault' => {
+                                'type' => 'Bool'
+                              },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

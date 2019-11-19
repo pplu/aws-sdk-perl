@@ -1,15 +1,72 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::SetSourceRequest;
-  use Moose;
-  has Decryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'decryption', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest']);
-  has IngestPort => (is => 'ro', isa => 'Int', request_name => 'ingestPort', traits => ['NameInRequest']);
-  has MaxBitrate => (is => 'ro', isa => 'Int', request_name => 'maxBitrate', traits => ['NameInRequest']);
-  has MaxLatency => (is => 'ro', isa => 'Int', request_name => 'maxLatency', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
-  has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
-  has WhitelistCidr => (is => 'ro', isa => 'Str', request_name => 'whitelistCidr', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConnect::Types qw/MediaConnect_Encryption/;
+  has Decryption => (is => 'ro', isa => MediaConnect_Encryption);
+  has Description => (is => 'ro', isa => Str);
+  has EntitlementArn => (is => 'ro', isa => Str);
+  has IngestPort => (is => 'ro', isa => Int);
+  has MaxBitrate => (is => 'ro', isa => Int);
+  has MaxLatency => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has Protocol => (is => 'ro', isa => Str);
+  has StreamId => (is => 'ro', isa => Str);
+  has WhitelistCidr => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Decryption' => 'decryption',
+                       'Description' => 'description',
+                       'WhitelistCidr' => 'whitelistCidr',
+                       'StreamId' => 'streamId',
+                       'Protocol' => 'protocol',
+                       'Name' => 'name',
+                       'MaxLatency' => 'maxLatency',
+                       'EntitlementArn' => 'entitlementArn',
+                       'IngestPort' => 'ingestPort',
+                       'MaxBitrate' => 'maxBitrate'
+                     },
+  'types' => {
+               'Decryption' => {
+                                 'type' => 'MediaConnect_Encryption',
+                                 'class' => 'Paws::MediaConnect::Encryption'
+                               },
+               'WhitelistCidr' => {
+                                    'type' => 'Str'
+                                  },
+               'StreamId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'EntitlementArn' => {
+                                     'type' => 'Str'
+                                   },
+               'MaxLatency' => {
+                                 'type' => 'Int'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'MaxBitrate' => {
+                                 'type' => 'Int'
+                               },
+               'IngestPort' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +102,7 @@ The settings for the source of the flow.
 =head1 ATTRIBUTES
 
 
-=head2 Decryption => L<Paws::MediaConnect::Encryption>
+=head2 Decryption => MediaConnect_Encryption
 
   The type of encryption that is used on the content ingested from this
 source.

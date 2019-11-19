@@ -1,19 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::CopyProduct;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has CopyOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has IdempotencyToken => (is => 'ro', isa => 'Str', required => 1);
-  has SourceProductArn => (is => 'ro', isa => 'Str', required => 1);
-  has SourceProvisioningArtifactIdentifiers => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::SourceProvisioningArtifactPropertiesMap]');
-  has TargetProductId => (is => 'ro', isa => 'Str');
-  has TargetProductName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_SourceProvisioningArtifactPropertiesMap/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has CopyOptions => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceProductArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceProvisioningArtifactIdentifiers => (is => 'ro', isa => ArrayRef[ServiceCatalog_SourceProvisioningArtifactPropertiesMap], predicate => 1);
+  has TargetProductId => (is => 'ro', isa => Str, predicate => 1);
+  has TargetProductName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyProduct');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::CopyProductOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopyProduct');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::CopyProductOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'IdempotencyToken' => 1,
+                    'SourceProductArn' => 1
+                  },
+  'types' => {
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'CopyOptions' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'SourceProvisioningArtifactIdentifiers' => {
+                                                            'class' => 'Paws::ServiceCatalog::SourceProvisioningArtifactPropertiesMap',
+                                                            'type' => 'ArrayRef[ServiceCatalog_SourceProvisioningArtifactPropertiesMap]'
+                                                          },
+               'TargetProductId' => {
+                                      'type' => 'Str'
+                                    },
+               'SourceProductArn' => {
+                                       'type' => 'Str'
+                                     },
+               'TargetProductName' => {
+                                        'type' => 'Str'
+                                      },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -105,7 +144,7 @@ The Amazon Resource Name (ARN) of the source product.
 
 
 
-=head2 SourceProvisioningArtifactIdentifiers => ArrayRef[L<Paws::ServiceCatalog::SourceProvisioningArtifactPropertiesMap>]
+=head2 SourceProvisioningArtifactIdentifiers => ArrayRef[ServiceCatalog_SourceProvisioningArtifactPropertiesMap]
 
 The identifiers of the provisioning artifacts (also known as versions)
 of the product to copy. By default, all provisioning artifacts are

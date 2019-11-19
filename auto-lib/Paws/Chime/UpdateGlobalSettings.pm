@@ -1,15 +1,39 @@
 
 package Paws::Chime::UpdateGlobalSettings;
-  use Moose;
-  has BusinessCalling => (is => 'ro', isa => 'Paws::Chime::BusinessCallingSettings', required => 1);
-  has VoiceConnector => (is => 'ro', isa => 'Paws::Chime::VoiceConnectorSettings', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw/Chime_BusinessCallingSettings Chime_VoiceConnectorSettings/;
+  has BusinessCalling => (is => 'ro', isa => Chime_BusinessCallingSettings, required => 1, predicate => 1);
+  has VoiceConnector => (is => 'ro', isa => Chime_VoiceConnectorSettings, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGlobalSettings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/settings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateGlobalSettings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/settings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BusinessCalling' => 1,
+                    'VoiceConnector' => 1
+                  },
+  'types' => {
+               'VoiceConnector' => {
+                                     'class' => 'Paws::Chime::VoiceConnectorSettings',
+                                     'type' => 'Chime_VoiceConnectorSettings'
+                                   },
+               'BusinessCalling' => {
+                                      'type' => 'Chime_BusinessCallingSettings',
+                                      'class' => 'Paws::Chime::BusinessCallingSettings'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,13 +69,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> BusinessCalling => L<Paws::Chime::BusinessCallingSettings>
+=head2 B<REQUIRED> BusinessCalling => Chime_BusinessCallingSettings
 
 The Amazon Chime Business Calling settings.
 
 
 
-=head2 B<REQUIRED> VoiceConnector => L<Paws::Chime::VoiceConnectorSettings>
+=head2 B<REQUIRED> VoiceConnector => Chime_VoiceConnectorSettings
 
 The Amazon Chime Voice Connector settings.
 

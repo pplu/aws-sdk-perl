@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ProvisioningPreferences;
-  use Moose;
-  has StackSetAccounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has StackSetFailureToleranceCount => (is => 'ro', isa => 'Int');
-  has StackSetFailureTolerancePercentage => (is => 'ro', isa => 'Int');
-  has StackSetMaxConcurrencyCount => (is => 'ro', isa => 'Int');
-  has StackSetMaxConcurrencyPercentage => (is => 'ro', isa => 'Int');
-  has StackSetRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int/;
+  use Paws::ServiceCatalog::Types qw//;
+  has StackSetAccounts => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has StackSetFailureToleranceCount => (is => 'ro', isa => Int);
+  has StackSetFailureTolerancePercentage => (is => 'ro', isa => Int);
+  has StackSetMaxConcurrencyCount => (is => 'ro', isa => Int);
+  has StackSetMaxConcurrencyPercentage => (is => 'ro', isa => Int);
+  has StackSetRegions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackSetMaxConcurrencyPercentage' => {
+                                                       'type' => 'Int'
+                                                     },
+               'StackSetAccounts' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'StackSetFailureToleranceCount' => {
+                                                    'type' => 'Int'
+                                                  },
+               'StackSetMaxConcurrencyCount' => {
+                                                  'type' => 'Int'
+                                                },
+               'StackSetRegions' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'StackSetFailureTolerancePercentage' => {
+                                                         'type' => 'Int'
+                                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

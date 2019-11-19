@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Personalize::ListRecipesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Recipes => (is => 'ro', isa => 'ArrayRef[Paws::Personalize::RecipeSummary]', traits => ['NameInRequest'], request_name => 'recipes' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Personalize::Types qw/Personalize_RecipeSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Recipes => (is => 'ro', isa => ArrayRef[Personalize_RecipeSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Recipes' => {
+                              'class' => 'Paws::Personalize::RecipeSummary',
+                              'type' => 'ArrayRef[Personalize_RecipeSummary]'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Recipes' => 'recipes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +46,7 @@ Paws::Personalize::ListRecipesResponse
 A token for getting the next set of recipes.
 
 
-=head2 Recipes => ArrayRef[L<Paws::Personalize::RecipeSummary>]
+=head2 Recipes => ArrayRef[Personalize_RecipeSummary]
 
 The list of available recipes.
 

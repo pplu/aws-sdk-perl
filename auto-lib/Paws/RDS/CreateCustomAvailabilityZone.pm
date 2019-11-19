@@ -1,16 +1,44 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::CreateCustomAvailabilityZone;
-  use Moose;
-  has CustomAvailabilityZoneName => (is => 'ro', isa => 'Str', required => 1);
-  has ExistingVpnId => (is => 'ro', isa => 'Str');
-  has NewVpnTunnelName => (is => 'ro', isa => 'Str');
-  has VpnTunnelOriginatorIP => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has CustomAvailabilityZoneName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExistingVpnId => (is => 'ro', isa => Str, predicate => 1);
+  has NewVpnTunnelName => (is => 'ro', isa => Str, predicate => 1);
+  has VpnTunnelOriginatorIP => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCustomAvailabilityZone');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateCustomAvailabilityZoneResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCustomAvailabilityZoneResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCustomAvailabilityZone');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::CreateCustomAvailabilityZoneResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateCustomAvailabilityZoneResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CustomAvailabilityZoneName' => 1
+                  },
+  'types' => {
+               'ExistingVpnId' => {
+                                    'type' => 'Str'
+                                  },
+               'VpnTunnelOriginatorIP' => {
+                                            'type' => 'Str'
+                                          },
+               'CustomAvailabilityZoneName' => {
+                                                 'type' => 'Str'
+                                               },
+               'NewVpnTunnelName' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

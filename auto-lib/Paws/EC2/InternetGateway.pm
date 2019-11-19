@@ -1,9 +1,40 @@
 package Paws::EC2::InternetGateway;
-  use Moose;
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGatewayAttachment]', request_name => 'attachmentSet', traits => ['NameInRequest']);
-  has InternetGatewayId => (is => 'ro', isa => 'Str', request_name => 'internetGatewayId', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef Str/;
+  use Paws::EC2::Types qw/EC2_Tag EC2_InternetGatewayAttachment/;
+  has Attachments => (is => 'ro', isa => ArrayRef[EC2_InternetGatewayAttachment]);
+  has InternetGatewayId => (is => 'ro', isa => Str);
+  has OwnerId => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InternetGatewayId' => 'internetGatewayId',
+                       'Attachments' => 'attachmentSet',
+                       'OwnerId' => 'ownerId',
+                       'Tags' => 'tagSet'
+                     },
+  'types' => {
+               'InternetGatewayId' => {
+                                        'type' => 'Str'
+                                      },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'Attachments' => {
+                                  'type' => 'ArrayRef[EC2_InternetGatewayAttachment]',
+                                  'class' => 'Paws::EC2::InternetGatewayAttachment'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +70,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Attachments => ArrayRef[L<Paws::EC2::InternetGatewayAttachment>]
+=head2 Attachments => ArrayRef[EC2_InternetGatewayAttachment]
 
   Any VPCs attached to the internet gateway.
 
@@ -54,7 +85,7 @@ This class has no description
   The ID of the AWS account that owns the internet gateway.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the internet gateway.
 

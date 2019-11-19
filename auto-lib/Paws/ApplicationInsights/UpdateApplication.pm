@@ -1,16 +1,44 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ApplicationInsights::UpdateApplication;
-  use Moose;
-  has OpsCenterEnabled => (is => 'ro', isa => 'Bool');
-  has OpsItemSNSTopicArn => (is => 'ro', isa => 'Str');
-  has RemoveSNSTopic => (is => 'ro', isa => 'Bool');
-  has ResourceGroupName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApplicationInsights::Types qw//;
+  has OpsCenterEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has OpsItemSNSTopicArn => (is => 'ro', isa => Str, predicate => 1);
+  has RemoveSNSTopic => (is => 'ro', isa => Bool, predicate => 1);
+  has ResourceGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApplicationInsights::UpdateApplicationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateApplication');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApplicationInsights::UpdateApplicationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OpsItemSNSTopicArn' => {
+                                         'type' => 'Str'
+                                       },
+               'OpsCenterEnabled' => {
+                                       'type' => 'Bool'
+                                     },
+               'ResourceGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'RemoveSNSTopic' => {
+                                     'type' => 'Bool'
+                                   }
+             },
+  'IsRequired' => {
+                    'ResourceGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

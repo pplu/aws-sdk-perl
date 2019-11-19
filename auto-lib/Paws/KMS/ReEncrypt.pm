@@ -1,17 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KMS::ReEncrypt;
-  use Moose;
-  has CiphertextBlob => (is => 'ro', isa => 'Str', required => 1);
-  has DestinationEncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
-  has DestinationKeyId => (is => 'ro', isa => 'Str', required => 1);
-  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SourceEncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::KMS::Types qw/KMS_EncryptionContextType/;
+  has CiphertextBlob => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DestinationEncryptionContext => (is => 'ro', isa => KMS_EncryptionContextType, predicate => 1);
+  has DestinationKeyId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GrantTokens => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SourceEncryptionContext => (is => 'ro', isa => KMS_EncryptionContextType, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReEncrypt');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::ReEncryptResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ReEncrypt');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KMS::ReEncryptResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DestinationKeyId' => 1,
+                    'CiphertextBlob' => 1
+                  },
+  'types' => {
+               'SourceEncryptionContext' => {
+                                              'type' => 'KMS_EncryptionContextType',
+                                              'class' => 'Paws::KMS::EncryptionContextType'
+                                            },
+               'DestinationEncryptionContext' => {
+                                                   'class' => 'Paws::KMS::EncryptionContextType',
+                                                   'type' => 'KMS_EncryptionContextType'
+                                                 },
+               'GrantTokens' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'CiphertextBlob' => {
+                                     'type' => 'Str'
+                                   },
+               'DestinationKeyId' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +91,7 @@ Ciphertext of the data to reencrypt.
 
 
 
-=head2 DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>
+=head2 DestinationEncryptionContext => KMS_EncryptionContextType
 
 Encryption context to use when the data is reencrypted.
 
@@ -110,7 +144,7 @@ in the I<AWS Key Management Service Developer Guide>.
 
 
 
-=head2 SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>
+=head2 SourceEncryptionContext => KMS_EncryptionContextType
 
 Encryption context used to encrypt and decrypt the data specified in
 the C<CiphertextBlob> parameter.

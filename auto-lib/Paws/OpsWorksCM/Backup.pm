@@ -1,29 +1,115 @@
+# Generated from default/object.tt
 package Paws::OpsWorksCM::Backup;
-  use Moose;
-  has BackupArn => (is => 'ro', isa => 'Str');
-  has BackupId => (is => 'ro', isa => 'Str');
-  has BackupType => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineModel => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has InstanceProfileArn => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has KeyPair => (is => 'ro', isa => 'Str');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has S3DataSize => (is => 'ro', isa => 'Int');
-  has S3DataUrl => (is => 'ro', isa => 'Str');
-  has S3LogUrl => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ServerName => (is => 'ro', isa => 'Str');
-  has ServiceRoleArn => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusDescription => (is => 'ro', isa => 'Str');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ToolsVersion => (is => 'ro', isa => 'Str');
-  has UserArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::OpsWorksCM::Types qw//;
+  has BackupArn => (is => 'ro', isa => Str);
+  has BackupId => (is => 'ro', isa => Str);
+  has BackupType => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineModel => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has InstanceProfileArn => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has KeyPair => (is => 'ro', isa => Str);
+  has PreferredBackupWindow => (is => 'ro', isa => Str);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has S3DataSize => (is => 'ro', isa => Int);
+  has S3DataUrl => (is => 'ro', isa => Str);
+  has S3LogUrl => (is => 'ro', isa => Str);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ServerName => (is => 'ro', isa => Str);
+  has ServiceRoleArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDescription => (is => 'ro', isa => Str);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ToolsVersion => (is => 'ro', isa => Str);
+  has UserArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'BackupId' => {
+                               'type' => 'Str'
+                             },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'BackupArn' => {
+                                'type' => 'Str'
+                              },
+               'InstanceProfileArn' => {
+                                         'type' => 'Str'
+                                       },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'S3LogUrl' => {
+                               'type' => 'Str'
+                             },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'EngineModel' => {
+                                  'type' => 'Str'
+                                },
+               'ToolsVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupType' => {
+                                 'type' => 'Str'
+                               },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'KeyPair' => {
+                              'type' => 'Str'
+                            },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'UserArn' => {
+                              'type' => 'Str'
+                            },
+               'S3DataUrl' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'ServiceRoleArn' => {
+                                     'type' => 'Str'
+                                   },
+               'ServerName' => {
+                                 'type' => 'Str'
+                               },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'StatusDescription' => {
+                                        'type' => 'Str'
+                                      },
+               'S3DataSize' => {
+                                 'type' => 'Int'
+                               },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

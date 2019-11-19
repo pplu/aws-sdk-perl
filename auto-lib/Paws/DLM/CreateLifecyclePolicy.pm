@@ -1,18 +1,53 @@
 
 package Paws::DLM::CreateLifecyclePolicy;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyDetails => (is => 'ro', isa => 'Paws::DLM::PolicyDetails', required => 1);
-  has State => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::DLM::TagMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DLM::Types qw/DLM_PolicyDetails DLM_TagMap/;
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExecutionRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PolicyDetails => (is => 'ro', isa => DLM_PolicyDetails, required => 1, predicate => 1);
+  has State => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => DLM_TagMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLifecyclePolicy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/policies');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DLM::CreateLifecyclePolicyResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLifecyclePolicy');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/policies');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DLM::CreateLifecyclePolicyResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::DLM::TagMap',
+                           'type' => 'DLM_TagMap'
+                         },
+               'PolicyDetails' => {
+                                    'type' => 'DLM_PolicyDetails',
+                                    'class' => 'Paws::DLM::PolicyDetails'
+                                  },
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'PolicyDetails' => 1,
+                    'ExecutionRoleArn' => 1,
+                    'State' => 1,
+                    'Description' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -118,7 +153,7 @@ operations specified by the lifecycle policy.
 
 
 
-=head2 B<REQUIRED> PolicyDetails => L<Paws::DLM::PolicyDetails>
+=head2 B<REQUIRED> PolicyDetails => DLM_PolicyDetails
 
 The configuration details of the lifecycle policy.
 
@@ -130,7 +165,7 @@ The desired activation state of the lifecycle policy after creation.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
 
-=head2 Tags => L<Paws::DLM::TagMap>
+=head2 Tags => DLM_TagMap
 
 The tags to apply to the lifecycle policy during creation.
 

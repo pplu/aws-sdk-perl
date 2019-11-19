@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::UpdateFleetPortSettings;
-  use Moose;
-  has FleetId => (is => 'ro', isa => 'Str', required => 1);
-  has InboundPermissionAuthorizations => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::IpPermission]');
-  has InboundPermissionRevocations => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::IpPermission]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_IpPermission/;
+  has FleetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InboundPermissionAuthorizations => (is => 'ro', isa => ArrayRef[GameLift_IpPermission], predicate => 1);
+  has InboundPermissionRevocations => (is => 'ro', isa => ArrayRef[GameLift_IpPermission], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFleetPortSettings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::UpdateFleetPortSettingsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFleetPortSettings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::UpdateFleetPortSettingsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'InboundPermissionRevocations' => {
+                                                   'class' => 'Paws::GameLift::IpPermission',
+                                                   'type' => 'ArrayRef[GameLift_IpPermission]'
+                                                 },
+               'InboundPermissionAuthorizations' => {
+                                                      'type' => 'ArrayRef[GameLift_IpPermission]',
+                                                      'class' => 'Paws::GameLift::IpPermission'
+                                                    }
+             },
+  'IsRequired' => {
+                    'FleetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,13 +97,13 @@ Unique identifier for a fleet to update port settings for.
 
 
 
-=head2 InboundPermissionAuthorizations => ArrayRef[L<Paws::GameLift::IpPermission>]
+=head2 InboundPermissionAuthorizations => ArrayRef[GameLift_IpPermission]
 
 Collection of port settings to be added to the fleet record.
 
 
 
-=head2 InboundPermissionRevocations => ArrayRef[L<Paws::GameLift::IpPermission>]
+=head2 InboundPermissionRevocations => ArrayRef[GameLift_IpPermission]
 
 Collection of port settings to be removed from the fleet record.
 

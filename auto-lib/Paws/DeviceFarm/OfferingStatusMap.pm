@@ -1,8 +1,23 @@
 package Paws::DeviceFarm::OfferingStatusMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_OfferingStatus/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::DeviceFarm::OfferingStatus]');
+  has Map => (is => 'ro', isa => HashRef[DeviceFarm_OfferingStatus]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[DeviceFarm_OfferingStatus]',
+                                          class => 'Paws::DeviceFarm::OfferingStatus',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::DeviceFarm::OfferingStatus>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

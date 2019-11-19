@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoT::Stream;
-  use Moose;
-  has FileId => (is => 'ro', isa => 'Int', request_name => 'fileId', traits => ['NameInRequest']);
-  has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::IoT::Types qw//;
+  has FileId => (is => 'ro', isa => Int);
+  has StreamId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileId' => {
+                             'type' => 'Int'
+                           },
+               'StreamId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'StreamId' => 'streamId',
+                       'FileId' => 'fileId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

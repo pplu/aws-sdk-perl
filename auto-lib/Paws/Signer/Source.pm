@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Signer::Source;
-  use Moose;
-  has S3 => (is => 'ro', isa => 'Paws::Signer::S3Source', request_name => 's3', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Signer::Types qw/Signer_S3Source/;
+  has S3 => (is => 'ro', isa => Signer_S3Source);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3' => {
+                         'class' => 'Paws::Signer::S3Source',
+                         'type' => 'Signer_S3Source'
+                       }
+             },
+  'NameInRequest' => {
+                       'S3' => 's3'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ where you saved your unsigned code.
 =head1 ATTRIBUTES
 
 
-=head2 S3 => L<Paws::Signer::S3Source>
+=head2 S3 => Signer_S3Source
 
   The C<S3Source> object.
 

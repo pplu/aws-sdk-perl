@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::EMR::Configuration;
-  use Moose;
-  has Classification => (is => 'ro', isa => 'Str');
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
-  has Properties => (is => 'ro', isa => 'Paws::EMR::StringMap');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EMR::Types qw/EMR_StringMap EMR_Configuration/;
+  has Classification => (is => 'ro', isa => Str);
+  has Configurations => (is => 'ro', isa => ArrayRef[EMR_Configuration]);
+  has Properties => (is => 'ro', isa => EMR_StringMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Classification' => {
+                                     'type' => 'Str'
+                                   },
+               'Properties' => {
+                                 'type' => 'EMR_StringMap',
+                                 'class' => 'Paws::EMR::StringMap'
+                               },
+               'Configurations' => {
+                                     'class' => 'Paws::EMR::Configuration',
+                                     'type' => 'ArrayRef[EMR_Configuration]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,13 +77,13 @@ information, see Configuring Applications
   The classification within a configuration.
 
 
-=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
+=head2 Configurations => ArrayRef[EMR_Configuration]
 
   A list of additional configurations to apply within a configuration
 object.
 
 
-=head2 Properties => L<Paws::EMR::StringMap>
+=head2 Properties => EMR_StringMap
 
   A set of properties specified within a configuration classification.
 

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GlobalAccelerator::DescribeAcceleratorResponse;
-  use Moose;
-  has Accelerator => (is => 'ro', isa => 'Paws::GlobalAccelerator::Accelerator');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GlobalAccelerator::Types qw/GlobalAccelerator_Accelerator/;
+  has Accelerator => (is => 'ro', isa => GlobalAccelerator_Accelerator);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Accelerator' => {
+                                  'class' => 'Paws::GlobalAccelerator::Accelerator',
+                                  'type' => 'GlobalAccelerator_Accelerator'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::GlobalAccelerator::DescribeAcceleratorResponse
 =head1 ATTRIBUTES
 
 
-=head2 Accelerator => L<Paws::GlobalAccelerator::Accelerator>
+=head2 Accelerator => GlobalAccelerator_Accelerator
 
 The description of the accelerator.
 

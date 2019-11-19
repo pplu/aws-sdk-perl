@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::CSVMappingParameters;
-  use Moose;
-  has RecordColumnDelimiter => (is => 'ro', isa => 'Str', required => 1);
-  has RecordRowDelimiter => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has RecordColumnDelimiter => (is => 'ro', isa => Str, required => 1);
+  has RecordRowDelimiter => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RecordColumnDelimiter' => 1,
+                    'RecordRowDelimiter' => 1
+                  },
+  'types' => {
+               'RecordRowDelimiter' => {
+                                         'type' => 'Str'
+                                       },
+               'RecordColumnDelimiter' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ListInputsResultModel;
-  use Moose;
-  has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::Input]', request_name => 'inputs', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::MediaLive::Types qw/MediaLive_Input/;
+  has Inputs => (is => 'ro', isa => ArrayRef[MediaLive_Input]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Inputs' => {
+                             'type' => 'ArrayRef[MediaLive_Input]',
+                             'class' => 'Paws::MediaLive::Input'
+                           }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Inputs' => 'inputs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Placeholder documentation for ListInputsResultModel
 =head1 ATTRIBUTES
 
 
-=head2 Inputs => ArrayRef[L<Paws::MediaLive::Input>]
+=head2 Inputs => ArrayRef[MediaLive_Input]
 
   
 

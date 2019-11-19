@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::IoT::TimeoutConfig;
-  use Moose;
-  has InProgressTimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'inProgressTimeoutInMinutes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::IoT::Types qw//;
+  has InProgressTimeoutInMinutes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InProgressTimeoutInMinutes' => 'inProgressTimeoutInMinutes'
+                     },
+  'types' => {
+               'InProgressTimeoutInMinutes' => {
+                                                 'type' => 'Int'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

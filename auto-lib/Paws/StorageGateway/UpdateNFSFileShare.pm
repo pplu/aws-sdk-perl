@@ -1,23 +1,73 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::UpdateNFSFileShare;
-  use Moose;
-  has ClientList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DefaultStorageClass => (is => 'ro', isa => 'Str');
-  has FileShareARN => (is => 'ro', isa => 'Str', required => 1);
-  has GuessMIMETypeEnabled => (is => 'ro', isa => 'Bool');
-  has KMSEncrypted => (is => 'ro', isa => 'Bool');
-  has KMSKey => (is => 'ro', isa => 'Str');
-  has NFSFileShareDefaults => (is => 'ro', isa => 'Paws::StorageGateway::NFSFileShareDefaults');
-  has ObjectACL => (is => 'ro', isa => 'Str');
-  has ReadOnly => (is => 'ro', isa => 'Bool');
-  has RequesterPays => (is => 'ro', isa => 'Bool');
-  has Squash => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::StorageGateway::Types qw/StorageGateway_NFSFileShareDefaults/;
+  has ClientList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DefaultStorageClass => (is => 'ro', isa => Str, predicate => 1);
+  has FileShareARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GuessMIMETypeEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has KMSEncrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has KMSKey => (is => 'ro', isa => Str, predicate => 1);
+  has NFSFileShareDefaults => (is => 'ro', isa => StorageGateway_NFSFileShareDefaults, predicate => 1);
+  has ObjectACL => (is => 'ro', isa => Str, predicate => 1);
+  has ReadOnly => (is => 'ro', isa => Bool, predicate => 1);
+  has RequesterPays => (is => 'ro', isa => Bool, predicate => 1);
+  has Squash => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateNFSFileShare');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::UpdateNFSFileShareOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateNFSFileShare');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::UpdateNFSFileShareOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FileShareARN' => 1
+                  },
+  'types' => {
+               'ReadOnly' => {
+                               'type' => 'Bool'
+                             },
+               'NFSFileShareDefaults' => {
+                                           'class' => 'Paws::StorageGateway::NFSFileShareDefaults',
+                                           'type' => 'StorageGateway_NFSFileShareDefaults'
+                                         },
+               'GuessMIMETypeEnabled' => {
+                                           'type' => 'Bool'
+                                         },
+               'ObjectACL' => {
+                                'type' => 'Str'
+                              },
+               'RequesterPays' => {
+                                    'type' => 'Bool'
+                                  },
+               'DefaultStorageClass' => {
+                                          'type' => 'Str'
+                                        },
+               'KMSEncrypted' => {
+                                   'type' => 'Bool'
+                                 },
+               'Squash' => {
+                             'type' => 'Str'
+                           },
+               'KMSKey' => {
+                             'type' => 'Str'
+                           },
+               'ClientList' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'FileShareARN' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -112,7 +162,7 @@ true. Optional.
 
 
 
-=head2 NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>
+=head2 NFSFileShareDefaults => StorageGateway_NFSFileShareDefaults
 
 The default values for the file share. Optional.
 

@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::Support::RecentCaseCommunications;
-  use Moose;
-  has Communications => (is => 'ro', isa => 'ArrayRef[Paws::Support::Communication]', request_name => 'communications', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Support::Types qw/Support_Communication/;
+  has Communications => (is => 'ro', isa => ArrayRef[Support_Communication]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Communications' => {
+                                     'class' => 'Paws::Support::Communication',
+                                     'type' => 'ArrayRef[Support_Communication]'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Communications' => 'communications'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ The five most recent communications associated with the case.
 =head1 ATTRIBUTES
 
 
-=head2 Communications => ArrayRef[L<Paws::Support::Communication>]
+=head2 Communications => ArrayRef[Support_Communication]
 
   The five most recent communications associated with the case.
 

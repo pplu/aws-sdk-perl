@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::RDS::Subnet;
-  use Moose;
-  has SubnetAvailabilityZone => (is => 'ro', isa => 'Paws::RDS::AvailabilityZone');
-  has SubnetIdentifier => (is => 'ro', isa => 'Str');
-  has SubnetStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw/RDS_AvailabilityZone/;
+  has SubnetAvailabilityZone => (is => 'ro', isa => RDS_AvailabilityZone);
+  has SubnetIdentifier => (is => 'ro', isa => Str);
+  has SubnetStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'SubnetAvailabilityZone' => {
+                                             'type' => 'RDS_AvailabilityZone',
+                                             'class' => 'Paws::RDS::AvailabilityZone'
+                                           },
+               'SubnetIdentifier' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ C<DescribeDBSubnetGroups> action.
 =head1 ATTRIBUTES
 
 
-=head2 SubnetAvailabilityZone => L<Paws::RDS::AvailabilityZone>
+=head2 SubnetAvailabilityZone => RDS_AvailabilityZone
 
   
 

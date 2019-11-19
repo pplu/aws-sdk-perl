@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::RAM::TagFilter;
-  use Moose;
-  has TagKey => (is => 'ro', isa => 'Str', request_name => 'tagKey', traits => ['NameInRequest']);
-  has TagValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'tagValues', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::RAM::Types qw//;
+  has TagKey => (is => 'ro', isa => Str);
+  has TagValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TagKey' => 'tagKey',
+                       'TagValues' => 'tagValues'
+                     },
+  'types' => {
+               'TagValues' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'TagKey' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

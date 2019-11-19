@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ScheduleLambdaFunctionFailedEventAttributes;
-  use Moose;
-  has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest'], required => 1);
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Cause => (is => 'ro', isa => Str, required => 1);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Cause' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId',
+                       'Name' => 'name',
+                       'Cause' => 'cause'
+                     },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Cause' => 1,
+                    'Id' => 1,
+                    'DecisionTaskCompletedEventId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::XRay::TelemetryRecord;
-  use Moose;
-  has BackendConnectionErrors => (is => 'ro', isa => 'Paws::XRay::BackendConnectionErrors');
-  has SegmentsReceivedCount => (is => 'ro', isa => 'Int');
-  has SegmentsRejectedCount => (is => 'ro', isa => 'Int');
-  has SegmentsSentCount => (is => 'ro', isa => 'Int');
-  has SegmentsSpilloverCount => (is => 'ro', isa => 'Int');
-  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::XRay::Types qw/XRay_BackendConnectionErrors/;
+  has BackendConnectionErrors => (is => 'ro', isa => XRay_BackendConnectionErrors);
+  has SegmentsReceivedCount => (is => 'ro', isa => Int);
+  has SegmentsRejectedCount => (is => 'ro', isa => Int);
+  has SegmentsSentCount => (is => 'ro', isa => Int);
+  has SegmentsSpilloverCount => (is => 'ro', isa => Int);
+  has Timestamp => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Timestamp' => 1
+                  },
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'SegmentsReceivedCount' => {
+                                            'type' => 'Int'
+                                          },
+               'SegmentsRejectedCount' => {
+                                            'type' => 'Int'
+                                          },
+               'SegmentsSentCount' => {
+                                        'type' => 'Int'
+                                      },
+               'BackendConnectionErrors' => {
+                                              'class' => 'Paws::XRay::BackendConnectionErrors',
+                                              'type' => 'XRay_BackendConnectionErrors'
+                                            },
+               'SegmentsSpilloverCount' => {
+                                             'type' => 'Int'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +77,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 BackendConnectionErrors => L<Paws::XRay::BackendConnectionErrors>
+=head2 BackendConnectionErrors => XRay_BackendConnectionErrors
 
   
 

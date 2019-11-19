@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceDiscovery::CreateServiceResponse;
-  use Moose;
-  has Service => (is => 'ro', isa => 'Paws::ServiceDiscovery::Service');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_Service/;
+  has Service => (is => 'ro', isa => ServiceDiscovery_Service);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Service' => {
+                              'class' => 'Paws::ServiceDiscovery::Service',
+                              'type' => 'ServiceDiscovery_Service'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::ServiceDiscovery::CreateServiceResponse
 =head1 ATTRIBUTES
 
 
-=head2 Service => L<Paws::ServiceDiscovery::Service>
+=head2 Service => ServiceDiscovery_Service
 
 A complex type that contains information about the new service.
 

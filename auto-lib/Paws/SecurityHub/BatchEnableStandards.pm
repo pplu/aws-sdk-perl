@@ -1,14 +1,33 @@
 
 package Paws::SecurityHub::BatchEnableStandards;
-  use Moose;
-  has StandardsSubscriptionRequests => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::StandardsSubscriptionRequest]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SecurityHub::Types qw/SecurityHub_StandardsSubscriptionRequest/;
+  has StandardsSubscriptionRequests => (is => 'ro', isa => ArrayRef[SecurityHub_StandardsSubscriptionRequest], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchEnableStandards');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/standards/register');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::BatchEnableStandardsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchEnableStandards');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/standards/register');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::BatchEnableStandardsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StandardsSubscriptionRequests' => {
+                                                    'class' => 'Paws::SecurityHub::StandardsSubscriptionRequest',
+                                                    'type' => 'ArrayRef[SecurityHub_StandardsSubscriptionRequest]'
+                                                  }
+             },
+  'IsRequired' => {
+                    'StandardsSubscriptionRequests' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +71,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> StandardsSubscriptionRequests => ArrayRef[L<Paws::SecurityHub::StandardsSubscriptionRequest>]
+=head2 B<REQUIRED> StandardsSubscriptionRequests => ArrayRef[SecurityHub_StandardsSubscriptionRequest]
 
 The list of standards compliance checks to enable.
 

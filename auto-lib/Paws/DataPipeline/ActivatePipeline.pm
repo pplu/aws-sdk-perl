@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DataPipeline::ActivatePipeline;
-  use Moose;
-  has ParameterValues => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterValue]', traits => ['NameInRequest'], request_name => 'parameterValues' );
-  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
-  has StartTimestamp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTimestamp' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DataPipeline::Types qw/DataPipeline_ParameterValue/;
+  has ParameterValues => (is => 'ro', isa => ArrayRef[DataPipeline_ParameterValue], predicate => 1);
+  has PipelineId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartTimestamp => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ActivatePipeline');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::ActivatePipelineOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ActivatePipeline');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataPipeline::ActivatePipelineOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PipelineId' => {
+                                 'type' => 'Str'
+                               },
+               'StartTimestamp' => {
+                                     'type' => 'Str'
+                                   },
+               'ParameterValues' => {
+                                      'type' => 'ArrayRef[DataPipeline_ParameterValue]',
+                                      'class' => 'Paws::DataPipeline::ParameterValue'
+                                    }
+             },
+  'NameInRequest' => {
+                       'PipelineId' => 'pipelineId',
+                       'StartTimestamp' => 'startTimestamp',
+                       'ParameterValues' => 'parameterValues'
+                     },
+  'IsRequired' => {
+                    'PipelineId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +79,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 =head1 ATTRIBUTES
 
 
-=head2 ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]
+=head2 ParameterValues => ArrayRef[DataPipeline_ParameterValue]
 
 A list of parameter values to pass to the pipeline at activation.
 

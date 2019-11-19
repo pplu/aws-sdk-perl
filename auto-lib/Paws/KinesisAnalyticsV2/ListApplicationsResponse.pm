@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KinesisAnalyticsV2::ListApplicationsResponse;
-  use Moose;
-  has ApplicationSummaries => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::ApplicationSummary]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_ApplicationSummary/;
+  has ApplicationSummaries => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_ApplicationSummary], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ApplicationSummaries' => {
+                                           'class' => 'Paws::KinesisAnalyticsV2::ApplicationSummary',
+                                           'type' => 'ArrayRef[KinesisAnalyticsV2_ApplicationSummary]'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ApplicationSummaries' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +40,7 @@ Paws::KinesisAnalyticsV2::ListApplicationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ApplicationSummaries => ArrayRef[L<Paws::KinesisAnalyticsV2::ApplicationSummary>]
+=head2 B<REQUIRED> ApplicationSummaries => ArrayRef[KinesisAnalyticsV2_ApplicationSummary]
 
 A list of C<ApplicationSummary> objects.
 

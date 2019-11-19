@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Config::RecordingGroup;
-  use Moose;
-  has AllSupported => (is => 'ro', isa => 'Bool', request_name => 'allSupported', traits => ['NameInRequest']);
-  has IncludeGlobalResourceTypes => (is => 'ro', isa => 'Bool', request_name => 'includeGlobalResourceTypes', traits => ['NameInRequest']);
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'resourceTypes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Undef ArrayRef Str/;
+  use Paws::Config::Types qw//;
+  has AllSupported => (is => 'ro', isa => Bool);
+  has IncludeGlobalResourceTypes => (is => 'ro', isa => Bool);
+  has ResourceTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceTypes' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'IncludeGlobalResourceTypes' => {
+                                                 'type' => 'Bool'
+                                               },
+               'AllSupported' => {
+                                   'type' => 'Bool'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ResourceTypes' => 'resourceTypes',
+                       'IncludeGlobalResourceTypes' => 'includeGlobalResourceTypes',
+                       'AllSupported' => 'allSupported'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

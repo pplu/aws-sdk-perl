@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::RestoreSummary;
-  use Moose;
-  has RestoreDateTime => (is => 'ro', isa => 'Str', required => 1);
-  has RestoreInProgress => (is => 'ro', isa => 'Bool', required => 1);
-  has SourceBackupArn => (is => 'ro', isa => 'Str');
-  has SourceTableArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DynamoDB::Types qw//;
+  has RestoreDateTime => (is => 'ro', isa => Str, required => 1);
+  has RestoreInProgress => (is => 'ro', isa => Bool, required => 1);
+  has SourceBackupArn => (is => 'ro', isa => Str);
+  has SourceTableArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceBackupArn' => {
+                                      'type' => 'Str'
+                                    },
+               'RestoreDateTime' => {
+                                      'type' => 'Str'
+                                    },
+               'RestoreInProgress' => {
+                                        'type' => 'Bool'
+                                      },
+               'SourceTableArn' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'RestoreDateTime' => 1,
+                    'RestoreInProgress' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

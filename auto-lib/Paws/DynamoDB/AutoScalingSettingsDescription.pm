@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::AutoScalingSettingsDescription;
-  use Moose;
-  has AutoScalingDisabled => (is => 'ro', isa => 'Bool');
-  has AutoScalingRoleArn => (is => 'ro', isa => 'Str');
-  has MaximumUnits => (is => 'ro', isa => 'Int');
-  has MinimumUnits => (is => 'ro', isa => 'Int');
-  has ScalingPolicies => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AutoScalingPolicyDescription]');
+  use Moo;
+  use Types::Standard qw/Bool Str Int ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AutoScalingPolicyDescription/;
+  has AutoScalingDisabled => (is => 'ro', isa => Bool);
+  has AutoScalingRoleArn => (is => 'ro', isa => Str);
+  has MaximumUnits => (is => 'ro', isa => Int);
+  has MinimumUnits => (is => 'ro', isa => Int);
+  has ScalingPolicies => (is => 'ro', isa => ArrayRef[DynamoDB_AutoScalingPolicyDescription]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MinimumUnits' => {
+                                   'type' => 'Int'
+                                 },
+               'AutoScalingRoleArn' => {
+                                         'type' => 'Str'
+                                       },
+               'AutoScalingDisabled' => {
+                                          'type' => 'Bool'
+                                        },
+               'ScalingPolicies' => {
+                                      'type' => 'ArrayRef[DynamoDB_AutoScalingPolicyDescription]',
+                                      'class' => 'Paws::DynamoDB::AutoScalingPolicyDescription'
+                                    },
+               'MaximumUnits' => {
+                                   'type' => 'Int'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +93,7 @@ index should be scaled up to.
 index should be scaled down to.
 
 
-=head2 ScalingPolicies => ArrayRef[L<Paws::DynamoDB::AutoScalingPolicyDescription>]
+=head2 ScalingPolicies => ArrayRef[DynamoDB_AutoScalingPolicyDescription]
 
   Information about the scaling policies.
 

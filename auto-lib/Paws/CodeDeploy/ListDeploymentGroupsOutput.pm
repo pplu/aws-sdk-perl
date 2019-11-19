@@ -1,11 +1,40 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::ListDeploymentGroupsOutput;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
-  has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'deploymentGroups' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeDeploy::Types qw//;
+  has ApplicationName => (is => 'ro', isa => Str);
+  has DeploymentGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ApplicationName' => 'applicationName',
+                       'NextToken' => 'nextToken',
+                       'DeploymentGroups' => 'deploymentGroups'
+                     },
+  'types' => {
+               'DeploymentGroups' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

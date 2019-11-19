@@ -1,17 +1,48 @@
 
 package Paws::Robomaker::ListSimulationApplications;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::Filter]', traits => ['NameInRequest'], request_name => 'filters');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has VersionQualifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'versionQualifier');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Robomaker::Types qw/Robomaker_Filter/;
+  has Filters => (is => 'ro', isa => ArrayRef[Robomaker_Filter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has VersionQualifier => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSimulationApplications');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/listSimulationApplications');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Robomaker::ListSimulationApplicationsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListSimulationApplications');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/listSimulationApplications');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Robomaker::ListSimulationApplicationsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VersionQualifier' => {
+                                       'type' => 'Str'
+                                     },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filters' => {
+                              'type' => 'ArrayRef[Robomaker_Filter]',
+                              'class' => 'Paws::Robomaker::Filter'
+                            }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults',
+                       'Filters' => 'filters',
+                       'VersionQualifier' => 'versionQualifier'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -35,9 +66,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $robomaker->ListSimulationApplications(
       Filters => [
         {
-          Name   => 'MyName',    # min: 1, max: 255
+          Name   => 'MyName',    # min: 1, max: 255; OPTIONAL
           Values => [
-            'MyName', ...        # min: 1, max: 255
+            'MyName', ...        # min: 1, max: 255; OPTIONAL
           ],                     # min: 1, max: 1; OPTIONAL
         },
         ...
@@ -60,7 +91,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rob
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::Robomaker::Filter>]
+=head2 Filters => ArrayRef[Robomaker_Filter]
 
 Optional list of filters to limit results.
 

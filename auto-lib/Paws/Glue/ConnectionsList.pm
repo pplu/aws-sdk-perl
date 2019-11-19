@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::Glue::ConnectionsList;
-  use Moose;
-  has Connections => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::Glue::Types qw//;
+  has Connections => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Connections' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

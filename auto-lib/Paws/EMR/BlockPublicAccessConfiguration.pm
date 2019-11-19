@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::EMR::BlockPublicAccessConfiguration;
-  use Moose;
-  has BlockPublicSecurityGroupRules => (is => 'ro', isa => 'Bool', required => 1);
-  has PermittedPublicSecurityGroupRuleRanges => (is => 'ro', isa => 'ArrayRef[Paws::EMR::PortRange]');
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef/;
+  use Paws::EMR::Types qw/EMR_PortRange/;
+  has BlockPublicSecurityGroupRules => (is => 'ro', isa => Bool, required => 1);
+  has PermittedPublicSecurityGroupRuleRanges => (is => 'ro', isa => ArrayRef[EMR_PortRange]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PermittedPublicSecurityGroupRuleRanges' => {
+                                                             'type' => 'ArrayRef[EMR_PortRange]',
+                                                             'class' => 'Paws::EMR::PortRange'
+                                                           },
+               'BlockPublicSecurityGroupRules' => {
+                                                    'type' => 'Bool'
+                                                  }
+             },
+  'IsRequired' => {
+                    'BlockPublicSecurityGroupRules' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +74,7 @@ that have created EMR clusters before July 2019. For accounts created
 after this, the default is C<true>.
 
 
-=head2 PermittedPublicSecurityGroupRuleRanges => ArrayRef[L<Paws::EMR::PortRange>]
+=head2 PermittedPublicSecurityGroupRuleRanges => ArrayRef[EMR_PortRange]
 
   Specifies ports and port ranges that are permitted to have security
 group rules that allow inbound traffic from all public sources. For

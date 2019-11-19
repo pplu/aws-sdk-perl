@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaLive::EmbeddedSourceSettings;
-  use Moose;
-  has Convert608To708 => (is => 'ro', isa => 'Str', request_name => 'convert608To708', traits => ['NameInRequest']);
-  has Scte20Detection => (is => 'ro', isa => 'Str', request_name => 'scte20Detection', traits => ['NameInRequest']);
-  has Source608ChannelNumber => (is => 'ro', isa => 'Int', request_name => 'source608ChannelNumber', traits => ['NameInRequest']);
-  has Source608TrackNumber => (is => 'ro', isa => 'Int', request_name => 'source608TrackNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaLive::Types qw//;
+  has Convert608To708 => (is => 'ro', isa => Str);
+  has Scte20Detection => (is => 'ro', isa => Str);
+  has Source608ChannelNumber => (is => 'ro', isa => Int);
+  has Source608TrackNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Scte20Detection' => {
+                                      'type' => 'Str'
+                                    },
+               'Source608TrackNumber' => {
+                                           'type' => 'Int'
+                                         },
+               'Convert608To708' => {
+                                      'type' => 'Str'
+                                    },
+               'Source608ChannelNumber' => {
+                                             'type' => 'Int'
+                                           }
+             },
+  'NameInRequest' => {
+                       'Convert608To708' => 'convert608To708',
+                       'Source608ChannelNumber' => 'source608ChannelNumber',
+                       'Scte20Detection' => 'scte20Detection',
+                       'Source608TrackNumber' => 'source608TrackNumber'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

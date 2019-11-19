@@ -1,9 +1,26 @@
 
 package Paws::KinesisVideoArchivedMedia::GetHLSStreamingSessionURLOutput;
-  use Moose;
-  has HLSStreamingSessionURL => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisVideoArchivedMedia::Types qw//;
+  has HLSStreamingSessionURL => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HLSStreamingSessionURL' => {
+                                             'type' => 'Str'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

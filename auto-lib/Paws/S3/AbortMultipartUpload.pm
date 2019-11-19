@@ -1,19 +1,57 @@
 
 package Paws::S3::AbortMultipartUpload;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has UploadId => (is => 'ro', isa => 'Str', query_name => 'uploadId', traits => ['ParamInQuery'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RequestPayer => (is => 'ro', isa => Str, predicate => 1);
+  has UploadId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AbortMultipartUpload');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::AbortMultipartUploadOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AbortMultipartUpload');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::AbortMultipartUploadOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'RequestPayer' => 'x-amz-request-payer'
+                     },
+  'ParamInURI' => {
+                    'Key' => 'Key',
+                    'Bucket' => 'Bucket'
+                  },
+  'ParamInQuery' => {
+                      'UploadId' => 'uploadId'
+                    },
+  'IsRequired' => {
+                    'Key' => 1,
+                    'UploadId' => 1,
+                    'Bucket' => 1
+                  },
+  'types' => {
+               'RequestPayer' => {
+                                   'type' => 'Str'
+                                 },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'UploadId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

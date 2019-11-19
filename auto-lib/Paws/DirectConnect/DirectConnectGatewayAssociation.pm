@@ -1,15 +1,73 @@
+# Generated from default/object.tt
 package Paws::DirectConnect::DirectConnectGatewayAssociation;
-  use Moose;
-  has AllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', request_name => 'allowedPrefixesToDirectConnectGateway', traits => ['NameInRequest']);
-  has AssociatedGateway => (is => 'ro', isa => 'Paws::DirectConnect::AssociatedGateway', request_name => 'associatedGateway', traits => ['NameInRequest']);
-  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
-  has AssociationState => (is => 'ro', isa => 'Str', request_name => 'associationState', traits => ['NameInRequest']);
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayId', traits => ['NameInRequest']);
-  has DirectConnectGatewayOwnerAccount => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayOwnerAccount', traits => ['NameInRequest']);
-  has StateChangeError => (is => 'ro', isa => 'Str', request_name => 'stateChangeError', traits => ['NameInRequest']);
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayId', traits => ['NameInRequest']);
-  has VirtualGatewayOwnerAccount => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayOwnerAccount', traits => ['NameInRequest']);
-  has VirtualGatewayRegion => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayRegion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::DirectConnect::Types qw/DirectConnect_AssociatedGateway DirectConnect_RouteFilterPrefix/;
+  has AllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => ArrayRef[DirectConnect_RouteFilterPrefix]);
+  has AssociatedGateway => (is => 'ro', isa => DirectConnect_AssociatedGateway);
+  has AssociationId => (is => 'ro', isa => Str);
+  has AssociationState => (is => 'ro', isa => Str);
+  has DirectConnectGatewayId => (is => 'ro', isa => Str);
+  has DirectConnectGatewayOwnerAccount => (is => 'ro', isa => Str);
+  has StateChangeError => (is => 'ro', isa => Str);
+  has VirtualGatewayId => (is => 'ro', isa => Str);
+  has VirtualGatewayOwnerAccount => (is => 'ro', isa => Str);
+  has VirtualGatewayRegion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AssociationId' => 'associationId',
+                       'VirtualGatewayId' => 'virtualGatewayId',
+                       'DirectConnectGatewayId' => 'directConnectGatewayId',
+                       'StateChangeError' => 'stateChangeError',
+                       'AssociationState' => 'associationState',
+                       'AssociatedGateway' => 'associatedGateway',
+                       'VirtualGatewayRegion' => 'virtualGatewayRegion',
+                       'VirtualGatewayOwnerAccount' => 'virtualGatewayOwnerAccount',
+                       'AllowedPrefixesToDirectConnectGateway' => 'allowedPrefixesToDirectConnectGateway',
+                       'DirectConnectGatewayOwnerAccount' => 'directConnectGatewayOwnerAccount'
+                     },
+  'types' => {
+               'AllowedPrefixesToDirectConnectGateway' => {
+                                                            'class' => 'Paws::DirectConnect::RouteFilterPrefix',
+                                                            'type' => 'ArrayRef[DirectConnect_RouteFilterPrefix]'
+                                                          },
+               'DirectConnectGatewayOwnerAccount' => {
+                                                       'type' => 'Str'
+                                                     },
+               'AssociationState' => {
+                                       'type' => 'Str'
+                                     },
+               'VirtualGatewayRegion' => {
+                                           'type' => 'Str'
+                                         },
+               'VirtualGatewayOwnerAccount' => {
+                                                 'type' => 'Str'
+                                               },
+               'AssociatedGateway' => {
+                                        'class' => 'Paws::DirectConnect::AssociatedGateway',
+                                        'type' => 'DirectConnect_AssociatedGateway'
+                                      },
+               'VirtualGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'DirectConnectGatewayId' => {
+                                             'type' => 'Str'
+                                           },
+               'StateChangeError' => {
+                                       'type' => 'Str'
+                                     },
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,12 +104,12 @@ virtual private gateway or transit gateway.
 =head1 ATTRIBUTES
 
 
-=head2 AllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
+=head2 AllowedPrefixesToDirectConnectGateway => ArrayRef[DirectConnect_RouteFilterPrefix]
 
   The Amazon VPC prefixes to advertise to the Direct Connect gateway.
 
 
-=head2 AssociatedGateway => L<Paws::DirectConnect::AssociatedGateway>
+=head2 AssociatedGateway => DirectConnect_AssociatedGateway
 
   Information about the associated gateway.
 

@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetKeyPairResult;
-  use Moose;
-  has KeyPair => (is => 'ro', isa => 'Paws::Lightsail::KeyPair', traits => ['NameInRequest'], request_name => 'keyPair' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_KeyPair/;
+  has KeyPair => (is => 'ro', isa => Lightsail_KeyPair);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyPair' => {
+                              'type' => 'Lightsail_KeyPair',
+                              'class' => 'Paws::Lightsail::KeyPair'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'KeyPair' => 'keyPair'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Lightsail::GetKeyPairResult
 =head1 ATTRIBUTES
 
 
-=head2 KeyPair => L<Paws::Lightsail::KeyPair>
+=head2 KeyPair => Lightsail_KeyPair
 
 An array of key-value pairs containing information about the key pair.
 

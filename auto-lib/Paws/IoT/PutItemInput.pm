@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::IoT::PutItemInput;
-  use Moose;
-  has TableName => (is => 'ro', isa => 'Str', request_name => 'tableName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has TableName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TableName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'TableName' => 'tableName'
+                     },
+  'IsRequired' => {
+                    'TableName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

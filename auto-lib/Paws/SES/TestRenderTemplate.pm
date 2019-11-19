@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::TestRenderTemplate;
-  use Moose;
-  has TemplateData => (is => 'ro', isa => 'Str', required => 1);
-  has TemplateName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has TemplateData => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TemplateName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TestRenderTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::TestRenderTemplateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'TestRenderTemplateResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TestRenderTemplate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::TestRenderTemplateResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'TestRenderTemplateResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateData' => {
+                                   'type' => 'Str'
+                                 },
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'TemplateData' => 1,
+                    'TemplateName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

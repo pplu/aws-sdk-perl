@@ -1,19 +1,55 @@
 
 package Paws::MarketplaceCatalog::ListEntities;
-  use Moose;
-  has Catalog => (is => 'ro', isa => 'Str', required => 1);
-  has EntityType => (is => 'ro', isa => 'Str', required => 1);
-  has FilterList => (is => 'ro', isa => 'ArrayRef[Paws::MarketplaceCatalog::Filter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Sort => (is => 'ro', isa => 'Paws::MarketplaceCatalog::Sort');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::MarketplaceCatalog::Types qw/MarketplaceCatalog_Filter MarketplaceCatalog_Sort/;
+  has Catalog => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EntityType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FilterList => (is => 'ro', isa => ArrayRef[MarketplaceCatalog_Filter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Sort => (is => 'ro', isa => MarketplaceCatalog_Sort, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListEntities');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/ListEntities');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MarketplaceCatalog::ListEntitiesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListEntities');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/ListEntities');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MarketplaceCatalog::ListEntitiesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Catalog' => 1,
+                    'EntityType' => 1
+                  },
+  'types' => {
+               'Sort' => {
+                           'type' => 'MarketplaceCatalog_Sort',
+                           'class' => 'Paws::MarketplaceCatalog::Sort'
+                         },
+               'FilterList' => {
+                                 'type' => 'ArrayRef[MarketplaceCatalog_Filter]',
+                                 'class' => 'Paws::MarketplaceCatalog::Filter'
+                               },
+               'Catalog' => {
+                              'type' => 'Str'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'EntityType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +111,7 @@ The type of entities to retrieve.
 
 
 
-=head2 FilterList => ArrayRef[L<Paws::MarketplaceCatalog::Filter>]
+=head2 FilterList => ArrayRef[MarketplaceCatalog_Filter]
 
 An array of filter objects. Each filter object contains two attributes,
 C<filterName> and C<filterValues>.
@@ -96,7 +132,7 @@ results.
 
 
 
-=head2 Sort => L<Paws::MarketplaceCatalog::Sort>
+=head2 Sort => MarketplaceCatalog_Sort
 
 An object that contains two attributes, C<sortBy> and C<sortOrder>.
 

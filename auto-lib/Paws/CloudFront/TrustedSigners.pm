@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::CloudFront::TrustedSigners;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AwsAccountNumber', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str Int/;
+  use Paws::CloudFront::Types qw//;
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has Items => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Enabled' => 1,
+                    'Quantity' => 1
+                  },
+  'NameInRequest' => {
+                       'Items' => 'AwsAccountNumber'
+                     },
+  'types' => {
+               'Items' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Quantity' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

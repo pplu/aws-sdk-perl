@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::XRay::SamplingStrategy;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::XRay::Types qw//;
+  has Name => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Num'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

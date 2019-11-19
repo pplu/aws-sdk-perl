@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Shield::ListAttacksResponse;
-  use Moose;
-  has AttackSummaries => (is => 'ro', isa => 'ArrayRef[Paws::Shield::AttackSummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Shield::Types qw/Shield_AttackSummary/;
+  has AttackSummaries => (is => 'ro', isa => ArrayRef[Shield_AttackSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'AttackSummaries' => {
+                                      'class' => 'Paws::Shield::AttackSummary',
+                                      'type' => 'ArrayRef[Shield_AttackSummary]'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Shield::ListAttacksResponse
 =head1 ATTRIBUTES
 
 
-=head2 AttackSummaries => ArrayRef[L<Paws::Shield::AttackSummary>]
+=head2 AttackSummaries => ArrayRef[Shield_AttackSummary]
 
 The attack information for the specified time range.
 

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoT::PolicyVersion;
-  use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str', request_name => 'createDate', traits => ['NameInRequest']);
-  has IsDefaultVersion => (is => 'ro', isa => 'Bool', request_name => 'isDefaultVersion', traits => ['NameInRequest']);
-  has VersionId => (is => 'ro', isa => 'Str', request_name => 'versionId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has CreateDate => (is => 'ro', isa => Str);
+  has IsDefaultVersion => (is => 'ro', isa => Bool);
+  has VersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'VersionId' => 'versionId',
+                       'IsDefaultVersion' => 'isDefaultVersion',
+                       'CreateDate' => 'createDate'
+                     },
+  'types' => {
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'IsDefaultVersion' => {
+                                       'type' => 'Bool'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

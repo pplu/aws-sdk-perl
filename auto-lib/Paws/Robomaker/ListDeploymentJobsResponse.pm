@@ -1,10 +1,35 @@
 
 package Paws::Robomaker::ListDeploymentJobsResponse;
-  use Moose;
-  has DeploymentJobs => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::DeploymentJob]', traits => ['NameInRequest'], request_name => 'deploymentJobs');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_DeploymentJob/;
+  has DeploymentJobs => (is => 'ro', isa => ArrayRef[Robomaker_DeploymentJob]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DeploymentJobs' => {
+                                     'type' => 'ArrayRef[Robomaker_DeploymentJob]',
+                                     'class' => 'Paws::Robomaker::DeploymentJob'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DeploymentJobs' => 'deploymentJobs',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Robomaker::ListDeploymentJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 DeploymentJobs => ArrayRef[L<Paws::Robomaker::DeploymentJob>]
+=head2 DeploymentJobs => ArrayRef[Robomaker_DeploymentJob]
 
 A list of deployment jobs that meet the criteria of the request.
 

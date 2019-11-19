@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::DolbyVisionLevel6Metadata;
-  use Moose;
-  has MaxCll => (is => 'ro', isa => 'Int', request_name => 'maxCll', traits => ['NameInRequest']);
-  has MaxFall => (is => 'ro', isa => 'Int', request_name => 'maxFall', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has MaxCll => (is => 'ro', isa => Int);
+  has MaxFall => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxFall' => {
+                              'type' => 'Int'
+                            },
+               'MaxCll' => {
+                             'type' => 'Int'
+                           }
+             },
+  'NameInRequest' => {
+                       'MaxCll' => 'maxCll',
+                       'MaxFall' => 'maxFall'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

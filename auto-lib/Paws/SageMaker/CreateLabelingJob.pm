@@ -1,22 +1,79 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::CreateLabelingJob;
-  use Moose;
-  has HumanTaskConfig => (is => 'ro', isa => 'Paws::SageMaker::HumanTaskConfig', required => 1);
-  has InputConfig => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobInputConfig', required => 1);
-  has LabelAttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has LabelCategoryConfigS3Uri => (is => 'ro', isa => 'Str');
-  has LabelingJobAlgorithmsConfig => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobAlgorithmsConfig');
-  has LabelingJobName => (is => 'ro', isa => 'Str', required => 1);
-  has OutputConfig => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobOutputConfig', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has StoppingConditions => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobStoppingConditions');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_LabelingJobOutputConfig SageMaker_LabelingJobAlgorithmsConfig SageMaker_LabelingJobInputConfig SageMaker_Tag SageMaker_HumanTaskConfig SageMaker_LabelingJobStoppingConditions/;
+  has HumanTaskConfig => (is => 'ro', isa => SageMaker_HumanTaskConfig, required => 1, predicate => 1);
+  has InputConfig => (is => 'ro', isa => SageMaker_LabelingJobInputConfig, required => 1, predicate => 1);
+  has LabelAttributeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LabelCategoryConfigS3Uri => (is => 'ro', isa => Str, predicate => 1);
+  has LabelingJobAlgorithmsConfig => (is => 'ro', isa => SageMaker_LabelingJobAlgorithmsConfig, predicate => 1);
+  has LabelingJobName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OutputConfig => (is => 'ro', isa => SageMaker_LabelingJobOutputConfig, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StoppingConditions => (is => 'ro', isa => SageMaker_LabelingJobStoppingConditions, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SageMaker_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLabelingJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::CreateLabelingJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLabelingJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::CreateLabelingJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LabelAttributeName' => {
+                                         'type' => 'Str'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::SageMaker::Tag',
+                           'type' => 'ArrayRef[SageMaker_Tag]'
+                         },
+               'LabelingJobName' => {
+                                      'type' => 'Str'
+                                    },
+               'StoppingConditions' => {
+                                         'class' => 'Paws::SageMaker::LabelingJobStoppingConditions',
+                                         'type' => 'SageMaker_LabelingJobStoppingConditions'
+                                       },
+               'OutputConfig' => {
+                                   'type' => 'SageMaker_LabelingJobOutputConfig',
+                                   'class' => 'Paws::SageMaker::LabelingJobOutputConfig'
+                                 },
+               'InputConfig' => {
+                                  'type' => 'SageMaker_LabelingJobInputConfig',
+                                  'class' => 'Paws::SageMaker::LabelingJobInputConfig'
+                                },
+               'HumanTaskConfig' => {
+                                      'type' => 'SageMaker_HumanTaskConfig',
+                                      'class' => 'Paws::SageMaker::HumanTaskConfig'
+                                    },
+               'LabelCategoryConfigS3Uri' => {
+                                               'type' => 'Str'
+                                             },
+               'LabelingJobAlgorithmsConfig' => {
+                                                  'type' => 'SageMaker_LabelingJobAlgorithmsConfig',
+                                                  'class' => 'Paws::SageMaker::LabelingJobAlgorithmsConfig'
+                                                },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'HumanTaskConfig' => 1,
+                    'RoleArn' => 1,
+                    'InputConfig' => 1,
+                    'OutputConfig' => 1,
+                    'LabelingJobName' => 1,
+                    'LabelAttributeName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -122,14 +179,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HumanTaskConfig => L<Paws::SageMaker::HumanTaskConfig>
+=head2 B<REQUIRED> HumanTaskConfig => SageMaker_HumanTaskConfig
 
 Configures the information required for human workers to complete a
 labeling task.
 
 
 
-=head2 B<REQUIRED> InputConfig => L<Paws::SageMaker::LabelingJobInputConfig>
+=head2 B<REQUIRED> InputConfig => SageMaker_LabelingJobInputConfig
 
 Input data for the labeling job, such as the Amazon S3 location of the
 data objects and the location of the manifest file that describes the
@@ -187,7 +244,7 @@ C<}>
 
 
 
-=head2 LabelingJobAlgorithmsConfig => L<Paws::SageMaker::LabelingJobAlgorithmsConfig>
+=head2 LabelingJobAlgorithmsConfig => SageMaker_LabelingJobAlgorithmsConfig
 
 Configures the information required to perform automated data labeling.
 
@@ -200,7 +257,7 @@ a list of labeling jobs.
 
 
 
-=head2 B<REQUIRED> OutputConfig => L<Paws::SageMaker::LabelingJobOutputConfig>
+=head2 B<REQUIRED> OutputConfig => SageMaker_LabelingJobOutputConfig
 
 The location of the output data and the AWS Key Management Service key
 ID for the key used to encrypt the output data, if any.
@@ -216,7 +273,7 @@ successfully complete data labeling.
 
 
 
-=head2 StoppingConditions => L<Paws::SageMaker::LabelingJobStoppingConditions>
+=head2 StoppingConditions => SageMaker_LabelingJobStoppingConditions
 
 A set of conditions for stopping the labeling job. If any of the
 conditions are met, the job is automatically stopped. You can use these
@@ -224,7 +281,7 @@ conditions to control the cost of data labeling.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+=head2 Tags => ArrayRef[SageMaker_Tag]
 
 An array of key/value pairs. For more information, see Using Cost
 Allocation Tags

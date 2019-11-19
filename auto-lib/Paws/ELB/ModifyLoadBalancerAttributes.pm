@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::ELB::ModifyLoadBalancerAttributes;
-  use Moose;
-  has LoadBalancerAttributes => (is => 'ro', isa => 'Paws::ELB::LoadBalancerAttributes', required => 1);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ELB::Types qw/ELB_LoadBalancerAttributes/;
+  has LoadBalancerAttributes => (is => 'ro', isa => ELB_LoadBalancerAttributes, required => 1, predicate => 1);
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyLoadBalancerAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::ModifyLoadBalancerAttributesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyLoadBalancerAttributesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyLoadBalancerAttributes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELB::ModifyLoadBalancerAttributesOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyLoadBalancerAttributesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LoadBalancerName' => 1,
+                    'LoadBalancerAttributes' => 1
+                  },
+  'types' => {
+               'LoadBalancerAttributes' => {
+                                             'type' => 'ELB_LoadBalancerAttributes',
+                                             'class' => 'Paws::ELB::LoadBalancerAttributes'
+                                           },
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +99,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>
+=head2 B<REQUIRED> LoadBalancerAttributes => ELB_LoadBalancerAttributes
 
 The attributes for the load balancer.
 

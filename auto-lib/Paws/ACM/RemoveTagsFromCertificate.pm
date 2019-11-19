@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ACM::RemoveTagsFromCertificate;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ACM::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ACM::Types qw/ACM_Tag/;
+  has CertificateArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ACM_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTagsFromCertificate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RemoveTagsFromCertificate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::ACM::Tag',
+                           'type' => 'ArrayRef[ACM_Tag]'
+                         },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'CertificateArn' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +83,7 @@ AWS Service Namespaces
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::ACM::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[ACM_Tag]
 
 The key-value pair that defines the tag to remove.
 

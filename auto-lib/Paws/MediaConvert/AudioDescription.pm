@@ -1,15 +1,74 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::AudioDescription;
-  use Moose;
-  has AudioNormalizationSettings => (is => 'ro', isa => 'Paws::MediaConvert::AudioNormalizationSettings', request_name => 'audioNormalizationSettings', traits => ['NameInRequest']);
-  has AudioSourceName => (is => 'ro', isa => 'Str', request_name => 'audioSourceName', traits => ['NameInRequest']);
-  has AudioType => (is => 'ro', isa => 'Int', request_name => 'audioType', traits => ['NameInRequest']);
-  has AudioTypeControl => (is => 'ro', isa => 'Str', request_name => 'audioTypeControl', traits => ['NameInRequest']);
-  has CodecSettings => (is => 'ro', isa => 'Paws::MediaConvert::AudioCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest']);
-  has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
-  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
-  has LanguageCodeControl => (is => 'ro', isa => 'Str', request_name => 'languageCodeControl', traits => ['NameInRequest']);
-  has RemixSettings => (is => 'ro', isa => 'Paws::MediaConvert::RemixSettings', request_name => 'remixSettings', traits => ['NameInRequest']);
-  has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_AudioNormalizationSettings MediaConvert_RemixSettings MediaConvert_AudioCodecSettings/;
+  has AudioNormalizationSettings => (is => 'ro', isa => MediaConvert_AudioNormalizationSettings);
+  has AudioSourceName => (is => 'ro', isa => Str);
+  has AudioType => (is => 'ro', isa => Int);
+  has AudioTypeControl => (is => 'ro', isa => Str);
+  has CodecSettings => (is => 'ro', isa => MediaConvert_AudioCodecSettings);
+  has CustomLanguageCode => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has LanguageCodeControl => (is => 'ro', isa => Str);
+  has RemixSettings => (is => 'ro', isa => MediaConvert_RemixSettings);
+  has StreamName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LanguageCodeControl' => {
+                                          'type' => 'Str'
+                                        },
+               'AudioSourceName' => {
+                                      'type' => 'Str'
+                                    },
+               'AudioNormalizationSettings' => {
+                                                 'class' => 'Paws::MediaConvert::AudioNormalizationSettings',
+                                                 'type' => 'MediaConvert_AudioNormalizationSettings'
+                                               },
+               'CustomLanguageCode' => {
+                                         'type' => 'Str'
+                                       },
+               'RemixSettings' => {
+                                    'type' => 'MediaConvert_RemixSettings',
+                                    'class' => 'Paws::MediaConvert::RemixSettings'
+                                  },
+               'AudioTypeControl' => {
+                                       'type' => 'Str'
+                                     },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'AudioType' => {
+                                'type' => 'Int'
+                              },
+               'CodecSettings' => {
+                                    'type' => 'MediaConvert_AudioCodecSettings',
+                                    'class' => 'Paws::MediaConvert::AudioCodecSettings'
+                                  }
+             },
+  'NameInRequest' => {
+                       'CodecSettings' => 'codecSettings',
+                       'AudioType' => 'audioType',
+                       'RemixSettings' => 'remixSettings',
+                       'CustomLanguageCode' => 'customLanguageCode',
+                       'AudioNormalizationSettings' => 'audioNormalizationSettings',
+                       'LanguageCodeControl' => 'languageCodeControl',
+                       'AudioSourceName' => 'audioSourceName',
+                       'LanguageCode' => 'languageCode',
+                       'StreamName' => 'streamName',
+                       'AudioTypeControl' => 'audioTypeControl'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +104,7 @@ Description of audio output
 =head1 ATTRIBUTES
 
 
-=head2 AudioNormalizationSettings => L<Paws::MediaConvert::AudioNormalizationSettings>
+=head2 AudioNormalizationSettings => MediaConvert_AudioNormalizationSettings
 
   Advanced audio normalization settings. Ignore these settings unless you
 need to comply with a loudness standard.
@@ -84,7 +143,7 @@ Note that this field and audioType are both ignored if
 audioDescriptionBroadcasterMix is set to BROADCASTER_MIXED_AD.
 
 
-=head2 CodecSettings => L<Paws::MediaConvert::AudioCodecSettings>
+=head2 CodecSettings => MediaConvert_AudioCodecSettings
 
   Audio codec settings (CodecSettings) under (AudioDescriptions) contains
 the group of settings related to audio encoding. The settings in this
@@ -131,7 +190,7 @@ customLanguageCode). When you choose Use configured (USE_CONFIGURED),
 the service uses the language code that you specify.
 
 
-=head2 RemixSettings => L<Paws::MediaConvert::RemixSettings>
+=head2 RemixSettings => MediaConvert_RemixSettings
 
   Advanced audio remixing settings.
 

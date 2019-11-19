@@ -1,13 +1,67 @@
+# Generated from default/object.tt
 package Paws::Discovery::ExportInfo;
-  use Moose;
-  has ConfigurationsDownloadUrl => (is => 'ro', isa => 'Str', request_name => 'configurationsDownloadUrl', traits => ['NameInRequest']);
-  has ExportId => (is => 'ro', isa => 'Str', request_name => 'exportId', traits => ['NameInRequest'], required => 1);
-  has ExportRequestTime => (is => 'ro', isa => 'Str', request_name => 'exportRequestTime', traits => ['NameInRequest'], required => 1);
-  has ExportStatus => (is => 'ro', isa => 'Str', request_name => 'exportStatus', traits => ['NameInRequest'], required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Bool', request_name => 'isTruncated', traits => ['NameInRequest']);
-  has RequestedEndTime => (is => 'ro', isa => 'Str', request_name => 'requestedEndTime', traits => ['NameInRequest']);
-  has RequestedStartTime => (is => 'ro', isa => 'Str', request_name => 'requestedStartTime', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Discovery::Types qw//;
+  has ConfigurationsDownloadUrl => (is => 'ro', isa => Str);
+  has ExportId => (is => 'ro', isa => Str, required => 1);
+  has ExportRequestTime => (is => 'ro', isa => Str, required => 1);
+  has ExportStatus => (is => 'ro', isa => Str, required => 1);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has RequestedEndTime => (is => 'ro', isa => Str);
+  has RequestedStartTime => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ExportId' => 'exportId',
+                       'ConfigurationsDownloadUrl' => 'configurationsDownloadUrl',
+                       'ExportRequestTime' => 'exportRequestTime',
+                       'StatusMessage' => 'statusMessage',
+                       'RequestedStartTime' => 'requestedStartTime',
+                       'RequestedEndTime' => 'requestedEndTime',
+                       'IsTruncated' => 'isTruncated',
+                       'ExportStatus' => 'exportStatus'
+                     },
+  'IsRequired' => {
+                    'ExportStatus' => 1,
+                    'StatusMessage' => 1,
+                    'ExportRequestTime' => 1,
+                    'ExportId' => 1
+                  },
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'ExportStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'RequestedStartTime' => {
+                                         'type' => 'Str'
+                                       },
+               'RequestedEndTime' => {
+                                       'type' => 'Str'
+                                     },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'ConfigurationsDownloadUrl' => {
+                                                'type' => 'Str'
+                                              },
+               'ExportId' => {
+                               'type' => 'Str'
+                             },
+               'ExportRequestTime' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,17 +1,45 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::DescribePolicies;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PolicyTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has PolicyNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has PolicyTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePolicies');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::PoliciesType');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribePoliciesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribePolicies');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::PoliciesType');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribePoliciesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'PolicyTypes' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'PolicyNames' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

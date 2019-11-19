@@ -1,14 +1,32 @@
 
 package Paws::CodeStarNotifications::DescribeNotificationRule;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStarNotifications::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeNotificationRule');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/describeNotificationRule');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStarNotifications::DescribeNotificationRuleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeNotificationRule');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/describeNotificationRule');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStarNotifications::DescribeNotificationRuleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'IsRequired' => {
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

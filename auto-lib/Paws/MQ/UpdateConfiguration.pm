@@ -1,16 +1,47 @@
 
 package Paws::MQ::UpdateConfiguration;
-  use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'configuration-id', required => 1);
-  has Data => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'data');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has ConfigurationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Data => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/configurations/{configuration-id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MQ::UpdateConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/configurations/{configuration-id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MQ::UpdateConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfigurationId' => 1
+                  },
+  'NameInRequest' => {
+                       'Data' => 'data',
+                       'Description' => 'description'
+                     },
+  'types' => {
+               'Data' => {
+                           'type' => 'Str'
+                         },
+               'ConfigurationId' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'ConfigurationId' => 'configuration-id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

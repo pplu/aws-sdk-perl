@@ -1,13 +1,35 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Discovery::StartDataCollectionByAgentIds;
-  use Moose;
-  has AgentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'agentIds' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Discovery::Types qw//;
+  has AgentIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartDataCollectionByAgentIds');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Discovery::StartDataCollectionByAgentIdsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartDataCollectionByAgentIds');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Discovery::StartDataCollectionByAgentIdsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AgentIds' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             }
+             },
+  'NameInRequest' => {
+                       'AgentIds' => 'agentIds'
+                     },
+  'IsRequired' => {
+                    'AgentIds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

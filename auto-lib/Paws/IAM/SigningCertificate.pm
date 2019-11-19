@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::IAM::SigningCertificate;
-  use Moose;
-  has CertificateBody => (is => 'ro', isa => 'Str', required => 1);
-  has CertificateId => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has UploadDate => (is => 'ro', isa => 'Str');
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has CertificateBody => (is => 'ro', isa => Str, required => 1);
+  has CertificateId => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has UploadDate => (is => 'ro', isa => Str);
+  has UserName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'CertificateBody' => 1,
+                    'Status' => 1,
+                    'CertificateId' => 1
+                  },
+  'types' => {
+               'CertificateBody' => {
+                                      'type' => 'Str'
+                                    },
+               'UploadDate' => {
+                                 'type' => 'Str'
+                               },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'CertificateId' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

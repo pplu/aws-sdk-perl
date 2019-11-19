@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::EMR::ModifyInstanceFleet;
-  use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceFleet => (is => 'ro', isa => 'Paws::EMR::InstanceFleetModifyConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_InstanceFleetModifyConfig/;
+  has ClusterId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceFleet => (is => 'ro', isa => EMR_InstanceFleetModifyConfig, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyInstanceFleet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyInstanceFleet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceFleet' => {
+                                    'type' => 'EMR_InstanceFleetModifyConfig',
+                                    'class' => 'Paws::EMR::InstanceFleetModifyConfig'
+                                  },
+               'ClusterId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'ClusterId' => 1,
+                    'InstanceFleet' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +74,7 @@ The unique identifier of the cluster.
 
 
 
-=head2 B<REQUIRED> InstanceFleet => L<Paws::EMR::InstanceFleetModifyConfig>
+=head2 B<REQUIRED> InstanceFleet => EMR_InstanceFleetModifyConfig
 
 The unique identifier of the instance fleet.
 

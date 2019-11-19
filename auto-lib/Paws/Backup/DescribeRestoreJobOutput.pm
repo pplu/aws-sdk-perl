@@ -1,19 +1,66 @@
 
 package Paws::Backup::DescribeRestoreJobOutput;
-  use Moose;
-  has BackupSizeInBytes => (is => 'ro', isa => 'Int');
-  has CompletionDate => (is => 'ro', isa => 'Str');
-  has CreatedResourceArn => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has ExpectedCompletionTimeMinutes => (is => 'ro', isa => 'Int');
-  has IamRoleArn => (is => 'ro', isa => 'Str');
-  has PercentDone => (is => 'ro', isa => 'Str');
-  has RecoveryPointArn => (is => 'ro', isa => 'Str');
-  has RestoreJobId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Backup::Types qw//;
+  has BackupSizeInBytes => (is => 'ro', isa => Int);
+  has CompletionDate => (is => 'ro', isa => Str);
+  has CreatedResourceArn => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has ExpectedCompletionTimeMinutes => (is => 'ro', isa => Int);
+  has IamRoleArn => (is => 'ro', isa => Str);
+  has PercentDone => (is => 'ro', isa => Str);
+  has RecoveryPointArn => (is => 'ro', isa => Str);
+  has RestoreJobId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'RestoreJobId' => {
+                                   'type' => 'Str'
+                                 },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'RecoveryPointArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'PercentDone' => {
+                                  'type' => 'Str'
+                                },
+               'CompletionDate' => {
+                                     'type' => 'Str'
+                                   },
+               'ExpectedCompletionTimeMinutes' => {
+                                                    'type' => 'Int'
+                                                  },
+               'CreatedResourceArn' => {
+                                         'type' => 'Str'
+                                       },
+               'BackupSizeInBytes' => {
+                                        'type' => 'Int'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

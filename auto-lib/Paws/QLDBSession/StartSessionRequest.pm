@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::QLDBSession::StartSessionRequest;
-  use Moose;
-  has LedgerName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::QLDBSession::Types qw//;
+  has LedgerName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LedgerName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'LedgerName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

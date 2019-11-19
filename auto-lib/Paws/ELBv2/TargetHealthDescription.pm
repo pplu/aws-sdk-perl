@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::ELBv2::TargetHealthDescription;
-  use Moose;
-  has HealthCheckPort => (is => 'ro', isa => 'Str');
-  has Target => (is => 'ro', isa => 'Paws::ELBv2::TargetDescription');
-  has TargetHealth => (is => 'ro', isa => 'Paws::ELBv2::TargetHealth');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ELBv2::Types qw/ELBv2_TargetDescription ELBv2_TargetHealth/;
+  has HealthCheckPort => (is => 'ro', isa => Str);
+  has Target => (is => 'ro', isa => ELBv2_TargetDescription);
+  has TargetHealth => (is => 'ro', isa => ELBv2_TargetHealth);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetHealth' => {
+                                   'class' => 'Paws::ELBv2::TargetHealth',
+                                   'type' => 'ELBv2_TargetHealth'
+                                 },
+               'Target' => {
+                             'type' => 'ELBv2_TargetDescription',
+                             'class' => 'Paws::ELBv2::TargetDescription'
+                           },
+               'HealthCheckPort' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,12 +68,12 @@ Information about the health of a target.
   The port to use to connect with the target.
 
 
-=head2 Target => L<Paws::ELBv2::TargetDescription>
+=head2 Target => ELBv2_TargetDescription
 
   The description of the target.
 
 
-=head2 TargetHealth => L<Paws::ELBv2::TargetHealth>
+=head2 TargetHealth => ELBv2_TargetHealth
 
   The health information for the target.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Budgets::Subscriber;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Str', required => 1);
-  has SubscriptionType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Budgets::Types qw//;
+  has Address => (is => 'ro', isa => Str, required => 1);
+  has SubscriptionType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Address' => 1,
+                    'SubscriptionType' => 1
+                  },
+  'types' => {
+               'Address' => {
+                              'type' => 'Str'
+                            },
+               'SubscriptionType' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::AppMesh::VirtualNodeServiceProvider;
-  use Moose;
-  has VirtualNodeName => (is => 'ro', isa => 'Str', request_name => 'virtualNodeName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw//;
+  has VirtualNodeName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'VirtualNodeName' => 1
+                  },
+  'NameInRequest' => {
+                       'VirtualNodeName' => 'virtualNodeName'
+                     },
+  'types' => {
+               'VirtualNodeName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

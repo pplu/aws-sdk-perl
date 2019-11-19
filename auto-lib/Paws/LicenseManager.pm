@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::LicenseManager;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'license-manager' }
   sub signing_name { 'license-manager' }
   sub version { '2018-08-01' }
   sub target_prefix { 'AWSLicenseManager' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -269,7 +271,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 
 =item [LicenseRules => ArrayRef[Str|Undef]]
 
-=item [Tags => ArrayRef[L<Paws::LicenseManager::Tag>]]
+=item [Tags => ArrayRef[LicenseManager_Tag]]
 
 
 =back
@@ -363,7 +365,7 @@ resources associated with a license configuration.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::LicenseManager::Filter>]]
+=item [Filters => ArrayRef[LicenseManager_Filter]]
 
 =item [LicenseConfigurationArns => ArrayRef[Str|Undef]]
 
@@ -407,7 +409,7 @@ Returns the license configuration for a resource.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::LicenseManager::InventoryFilter>]]
+=item [Filters => ArrayRef[LicenseManager_InventoryFilter]]
 
 =item [MaxResults => Int]
 
@@ -445,7 +447,7 @@ Lists tags attached to a resource.
 
 =item LicenseConfigurationArn => Str
 
-=item [Filters => ArrayRef[L<Paws::LicenseManager::Filter>]]
+=item [Filters => ArrayRef[LicenseManager_Filter]]
 
 =item [MaxResults => Int]
 
@@ -470,7 +472,7 @@ license inventory and configuration.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::LicenseManager::Tag>]
+=item Tags => ArrayRef[LicenseManager_Tag]
 
 
 =back
@@ -540,9 +542,9 @@ used.
 
 =item ResourceArn => Str
 
-=item [AddLicenseSpecifications => ArrayRef[L<Paws::LicenseManager::LicenseSpecification>]]
+=item [AddLicenseSpecifications => ArrayRef[LicenseManager_LicenseSpecification]]
 
-=item [RemoveLicenseSpecifications => ArrayRef[L<Paws::LicenseManager::LicenseSpecification>]]
+=item [RemoveLicenseSpecifications => ArrayRef[LicenseManager_LicenseSpecification]]
 
 
 =back
@@ -565,7 +567,7 @@ such as C<RunInstances>.
 
 =item [EnableCrossAccountsDiscovery => Bool]
 
-=item [OrganizationConfiguration => L<Paws::LicenseManager::OrganizationConfiguration>]
+=item [OrganizationConfiguration => LicenseManager_OrganizationConfiguration]
 
 =item [S3BucketArn => Str]
 
@@ -599,9 +601,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::LicenseManager::ListAssociationsForLicenseConfigurationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllLicenseConfigurations(sub { },[Filters => ArrayRef[L<Paws::LicenseManager::Filter>], LicenseConfigurationArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 ListAllLicenseConfigurations(sub { },[Filters => ArrayRef[LicenseManager_Filter], LicenseConfigurationArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllLicenseConfigurations([Filters => ArrayRef[L<Paws::LicenseManager::Filter>], LicenseConfigurationArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 ListAllLicenseConfigurations([Filters => ArrayRef[LicenseManager_Filter], LicenseConfigurationArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -623,9 +625,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::LicenseManager::ListLicenseSpecificationsForResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllResourceInventory(sub { },[Filters => ArrayRef[L<Paws::LicenseManager::InventoryFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllResourceInventory(sub { },[Filters => ArrayRef[LicenseManager_InventoryFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllResourceInventory([Filters => ArrayRef[L<Paws::LicenseManager::InventoryFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllResourceInventory([Filters => ArrayRef[LicenseManager_InventoryFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -635,9 +637,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::LicenseManager::ListResourceInventoryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllUsageForLicenseConfiguration(sub { },LicenseConfigurationArn => Str, [Filters => ArrayRef[L<Paws::LicenseManager::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllUsageForLicenseConfiguration(sub { },LicenseConfigurationArn => Str, [Filters => ArrayRef[LicenseManager_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllUsageForLicenseConfiguration(LicenseConfigurationArn => Str, [Filters => ArrayRef[L<Paws::LicenseManager::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllUsageForLicenseConfiguration(LicenseConfigurationArn => Str, [Filters => ArrayRef[LicenseManager_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

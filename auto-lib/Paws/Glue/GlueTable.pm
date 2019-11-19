@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::Glue::GlueTable;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has ConnectionName => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has CatalogId => (is => 'ro', isa => Str);
+  has ConnectionName => (is => 'ro', isa => Str);
+  has DatabaseName => (is => 'ro', isa => Str, required => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'ConnectionName' => {
+                                     'type' => 'Str'
+                                   },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'DatabaseName' => 1,
+                    'TableName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

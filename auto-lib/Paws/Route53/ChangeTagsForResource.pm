@@ -1,19 +1,51 @@
 
 package Paws::Route53::ChangeTagsForResource;
-  use Moose;
-  has AddTags => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Tag]');
-  has RemoveTagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ResourceId => (is => 'ro', isa => 'Str', uri_name => 'ResourceId', traits => ['ParamInURI'], required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', uri_name => 'ResourceType', traits => ['ParamInURI'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Route53::Types qw/Route53_Tag/;
+  has AddTags => (is => 'ro', isa => ArrayRef[Route53_Tag], predicate => 1);
+  has RemoveTagKeys => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ChangeTagsForResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/tags/{ResourceType}/{ResourceId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ChangeTagsForResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ChangeTagsForResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/tags/{ResourceType}/{ResourceId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::ChangeTagsForResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'RemoveTagKeys' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'AddTags' => {
+                              'class' => 'Paws::Route53::Tag',
+                              'type' => 'ArrayRef[Route53_Tag]'
+                            },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'ResourceType' => 1
+                  },
+  'ParamInURI' => {
+                    'ResourceType' => 'ResourceType',
+                    'ResourceId' => 'ResourceId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +86,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head1 ATTRIBUTES
 
 
-=head2 AddTags => ArrayRef[L<Paws::Route53::Tag>]
+=head2 AddTags => ArrayRef[Route53_Tag]
 
 A complex type that contains a list of the tags that you want to add to
 the specified health check or hosted zone and/or the tags that you want

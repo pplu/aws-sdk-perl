@@ -1,17 +1,59 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchEvents::DescribeRuleResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EventBusName => (is => 'ro', isa => 'Str');
-  has EventPattern => (is => 'ro', isa => 'Str');
-  has ManagedBy => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has ScheduleExpression => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchEvents::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EventBusName => (is => 'ro', isa => Str);
+  has EventPattern => (is => 'ro', isa => Str);
+  has ManagedBy => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has ScheduleExpression => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ScheduleExpression' => {
+                                         'type' => 'Str'
+                                       },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'EventPattern' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ManagedBy' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'EventBusName' => {
+                                   'type' => 'Str'
+                                 },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

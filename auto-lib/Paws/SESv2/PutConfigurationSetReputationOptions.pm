@@ -1,15 +1,39 @@
 
 package Paws::SESv2::PutConfigurationSetReputationOptions;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ConfigurationSetName', required => 1);
-  has ReputationMetricsEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SESv2::Types qw//;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReputationMetricsEnabled => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutConfigurationSetReputationOptions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/configuration-sets/{ConfigurationSetName}/reputation-options');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::PutConfigurationSetReputationOptionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutConfigurationSetReputationOptions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/configuration-sets/{ConfigurationSetName}/reputation-options');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::PutConfigurationSetReputationOptionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ConfigurationSetName' => 'ConfigurationSetName'
+                  },
+  'types' => {
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'ReputationMetricsEnabled' => {
+                                               'type' => 'Bool'
+                                             }
+             },
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

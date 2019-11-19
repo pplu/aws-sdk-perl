@@ -1,22 +1,93 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::UpdateAction;
-  use Moose;
-  has CacheClusterId => (is => 'ro', isa => 'Str');
-  has CacheNodeUpdateStatus => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeUpdateStatus]', request_name => 'CacheNodeUpdateStatus', traits => ['NameInRequest']);
-  has Engine => (is => 'ro', isa => 'Str');
-  has EstimatedUpdateTime => (is => 'ro', isa => 'Str');
-  has NodeGroupUpdateStatus => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupUpdateStatus]', request_name => 'NodeGroupUpdateStatus', traits => ['NameInRequest']);
-  has NodesUpdated => (is => 'ro', isa => 'Str');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has ServiceUpdateName => (is => 'ro', isa => 'Str');
-  has ServiceUpdateRecommendedApplyByDate => (is => 'ro', isa => 'Str');
-  has ServiceUpdateReleaseDate => (is => 'ro', isa => 'Str');
-  has ServiceUpdateSeverity => (is => 'ro', isa => 'Str');
-  has ServiceUpdateStatus => (is => 'ro', isa => 'Str');
-  has ServiceUpdateType => (is => 'ro', isa => 'Str');
-  has SlaMet => (is => 'ro', isa => 'Str');
-  has UpdateActionAvailableDate => (is => 'ro', isa => 'Str');
-  has UpdateActionStatus => (is => 'ro', isa => 'Str');
-  has UpdateActionStatusModifiedDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_NodeGroupUpdateStatus ElastiCache_CacheNodeUpdateStatus/;
+  has CacheClusterId => (is => 'ro', isa => Str);
+  has CacheNodeUpdateStatus => (is => 'ro', isa => ArrayRef[ElastiCache_CacheNodeUpdateStatus]);
+  has Engine => (is => 'ro', isa => Str);
+  has EstimatedUpdateTime => (is => 'ro', isa => Str);
+  has NodeGroupUpdateStatus => (is => 'ro', isa => ArrayRef[ElastiCache_NodeGroupUpdateStatus]);
+  has NodesUpdated => (is => 'ro', isa => Str);
+  has ReplicationGroupId => (is => 'ro', isa => Str);
+  has ServiceUpdateName => (is => 'ro', isa => Str);
+  has ServiceUpdateRecommendedApplyByDate => (is => 'ro', isa => Str);
+  has ServiceUpdateReleaseDate => (is => 'ro', isa => Str);
+  has ServiceUpdateSeverity => (is => 'ro', isa => Str);
+  has ServiceUpdateStatus => (is => 'ro', isa => Str);
+  has ServiceUpdateType => (is => 'ro', isa => Str);
+  has SlaMet => (is => 'ro', isa => Str);
+  has UpdateActionAvailableDate => (is => 'ro', isa => Str);
+  has UpdateActionStatus => (is => 'ro', isa => Str);
+  has UpdateActionStatusModifiedDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CacheNodeUpdateStatus' => 'CacheNodeUpdateStatus',
+                       'NodeGroupUpdateStatus' => 'NodeGroupUpdateStatus'
+                     },
+  'types' => {
+               'ServiceUpdateName' => {
+                                        'type' => 'Str'
+                                      },
+               'ServiceUpdateStatus' => {
+                                          'type' => 'Str'
+                                        },
+               'UpdateActionAvailableDate' => {
+                                                'type' => 'Str'
+                                              },
+               'CacheClusterId' => {
+                                     'type' => 'Str'
+                                   },
+               'ServiceUpdateType' => {
+                                        'type' => 'Str'
+                                      },
+               'NodesUpdated' => {
+                                   'type' => 'Str'
+                                 },
+               'CacheNodeUpdateStatus' => {
+                                            'type' => 'ArrayRef[ElastiCache_CacheNodeUpdateStatus]',
+                                            'class' => 'Paws::ElastiCache::CacheNodeUpdateStatus'
+                                          },
+               'EstimatedUpdateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'NodeGroupUpdateStatus' => {
+                                            'class' => 'Paws::ElastiCache::NodeGroupUpdateStatus',
+                                            'type' => 'ArrayRef[ElastiCache_NodeGroupUpdateStatus]'
+                                          },
+               'UpdateActionStatusModifiedDate' => {
+                                                     'type' => 'Str'
+                                                   },
+               'ServiceUpdateSeverity' => {
+                                            'type' => 'Str'
+                                          },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'ServiceUpdateReleaseDate' => {
+                                               'type' => 'Str'
+                                             },
+               'UpdateActionStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'SlaMet' => {
+                             'type' => 'Str'
+                           },
+               'ServiceUpdateRecommendedApplyByDate' => {
+                                                          'type' => 'Str'
+                                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +128,7 @@ The status of the service update for a specific replication group
   The ID of the cache cluster
 
 
-=head2 CacheNodeUpdateStatus => ArrayRef[L<Paws::ElastiCache::CacheNodeUpdateStatus>]
+=head2 CacheNodeUpdateStatus => ArrayRef[ElastiCache_CacheNodeUpdateStatus]
 
   The status of the service update on the cache node
 
@@ -73,7 +144,7 @@ Memcached
   The estimated length of time for the update to complete
 
 
-=head2 NodeGroupUpdateStatus => ArrayRef[L<Paws::ElastiCache::NodeGroupUpdateStatus>]
+=head2 NodeGroupUpdateStatus => ArrayRef[ElastiCache_NodeGroupUpdateStatus]
 
   The status of the service update on the node group
 

@@ -1,19 +1,72 @@
 
 package Paws::CodeStarNotifications::DescribeNotificationRuleResult;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has CreatedBy => (is => 'ro', isa => 'Str');
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has DetailType => (is => 'ro', isa => 'Str');
-  has EventTypes => (is => 'ro', isa => 'ArrayRef[Paws::CodeStarNotifications::EventTypeSummary]');
-  has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Resource => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::CodeStarNotifications::Tags');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::CodeStarNotifications::TargetSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeStarNotifications::Types qw/CodeStarNotifications_TargetSummary CodeStarNotifications_EventTypeSummary CodeStarNotifications_Tags/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has CreatedBy => (is => 'ro', isa => Str);
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has DetailType => (is => 'ro', isa => Str);
+  has EventTypes => (is => 'ro', isa => ArrayRef[CodeStarNotifications_EventTypeSummary]);
+  has LastModifiedTimestamp => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Resource => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => CodeStarNotifications_Tags);
+  has Targets => (is => 'ro', isa => ArrayRef[CodeStarNotifications_TargetSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Arn' => 1
+                  },
+  'types' => {
+               'EventTypes' => {
+                                 'class' => 'Paws::CodeStarNotifications::EventTypeSummary',
+                                 'type' => 'ArrayRef[CodeStarNotifications_EventTypeSummary]'
+                               },
+               'LastModifiedTimestamp' => {
+                                            'type' => 'Str'
+                                          },
+               'Tags' => {
+                           'class' => 'Paws::CodeStarNotifications::Tags',
+                           'type' => 'CodeStarNotifications_Tags'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Targets' => {
+                              'type' => 'ArrayRef[CodeStarNotifications_TargetSummary]',
+                              'class' => 'Paws::CodeStarNotifications::TargetSummary'
+                            },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'Resource' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DetailType' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CreatedBy' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +104,7 @@ by AWS CodeStar Notifications and/or the service for the resource for
 which the notification is created.
 
 Valid values are: C<"BASIC">, C<"FULL">
-=head2 EventTypes => ArrayRef[L<Paws::CodeStarNotifications::EventTypeSummary>]
+=head2 EventTypes => ArrayRef[CodeStarNotifications_EventTypeSummary]
 
 A list of the event types associated with the notification rule.
 
@@ -79,12 +132,12 @@ The status of the notification rule. Valid statuses are on (sending
 notifications) or off (not sending notifications).
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
-=head2 Tags => L<Paws::CodeStarNotifications::Tags>
+=head2 Tags => CodeStarNotifications_Tags
 
 The tags associated with the notification rule.
 
 
-=head2 Targets => ArrayRef[L<Paws::CodeStarNotifications::TargetSummary>]
+=head2 Targets => ArrayRef[CodeStarNotifications_TargetSummary]
 
 A list of the SNS topics associated with the notification rule.
 

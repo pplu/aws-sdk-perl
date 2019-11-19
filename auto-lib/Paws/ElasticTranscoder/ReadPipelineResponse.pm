@@ -1,10 +1,32 @@
 
 package Paws::ElasticTranscoder::ReadPipelineResponse;
-  use Moose;
-  has Pipeline => (is => 'ro', isa => 'Paws::ElasticTranscoder::Pipeline');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Warning]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_Warning ElasticTranscoder_Pipeline/;
+  has Pipeline => (is => 'ro', isa => ElasticTranscoder_Pipeline);
+  has Warnings => (is => 'ro', isa => ArrayRef[ElasticTranscoder_Warning]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Pipeline' => {
+                               'type' => 'ElasticTranscoder_Pipeline',
+                               'class' => 'Paws::ElasticTranscoder::Pipeline'
+                             },
+               'Warnings' => {
+                               'type' => 'ArrayRef[ElasticTranscoder_Warning]',
+                               'class' => 'Paws::ElasticTranscoder::Warning'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,13 +38,13 @@ Paws::ElasticTranscoder::ReadPipelineResponse
 =head1 ATTRIBUTES
 
 
-=head2 Pipeline => L<Paws::ElasticTranscoder::Pipeline>
+=head2 Pipeline => ElasticTranscoder_Pipeline
 
 A section of the response body that provides information about the
 pipeline.
 
 
-=head2 Warnings => ArrayRef[L<Paws::ElasticTranscoder::Warning>]
+=head2 Warnings => ArrayRef[ElasticTranscoder_Warning]
 
 Elastic Transcoder returns a warning if the resources used by your
 pipeline are not in the same region as the pipeline.

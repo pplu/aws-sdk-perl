@@ -1,16 +1,47 @@
 
 package Paws::Greengrass::ListDeviceDefinitionVersions;
-  use Moose;
-  has DeviceDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceDefinitionId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MaxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has DeviceDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDeviceDefinitionVersions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/devices/{DeviceDefinitionId}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::ListDeviceDefinitionVersionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDeviceDefinitionVersions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/devices/{DeviceDefinitionId}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::ListDeviceDefinitionVersionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DeviceDefinitionId' => 'DeviceDefinitionId'
+                  },
+  'ParamInQuery' => {
+                      'MaxResults' => 'MaxResults',
+                      'NextToken' => 'NextToken'
+                    },
+  'IsRequired' => {
+                    'DeviceDefinitionId' => 1
+                  },
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Str'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DeviceDefinitionId' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

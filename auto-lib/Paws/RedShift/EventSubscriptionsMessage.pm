@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::EventSubscriptionsMessage;
-  use Moose;
-  has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EventSubscription]', request_name => 'EventSubscription', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_EventSubscription/;
+  has EventSubscriptionsList => (is => 'ro', isa => ArrayRef[RedShift_EventSubscription]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EventSubscriptionsList' => 'EventSubscription'
+                     },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'EventSubscriptionsList' => {
+                                             'class' => 'Paws::RedShift::EventSubscription',
+                                             'type' => 'ArrayRef[RedShift_EventSubscription]'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RedShift::EventSubscriptionsMessage
 =head1 ATTRIBUTES
 
 
-=head2 EventSubscriptionsList => ArrayRef[L<Paws::RedShift::EventSubscription>]
+=head2 EventSubscriptionsList => ArrayRef[RedShift_EventSubscription]
 
 A list of event subscriptions.
 

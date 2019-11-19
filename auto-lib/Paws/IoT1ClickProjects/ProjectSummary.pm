@@ -1,10 +1,52 @@
+# Generated from default/object.tt
 package Paws::IoT1ClickProjects::ProjectSummary;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest'], required => 1);
-  has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::IoT1ClickProjects::TagMap', request_name => 'tags', traits => ['NameInRequest']);
-  has UpdatedDate => (is => 'ro', isa => 'Str', request_name => 'updatedDate', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickProjects::Types qw/IoT1ClickProjects_TagMap/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedDate => (is => 'ro', isa => Str, required => 1);
+  has ProjectName => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => IoT1ClickProjects_TagMap);
+  has UpdatedDate => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'UpdatedDate' => 'updatedDate',
+                       'CreatedDate' => 'createdDate',
+                       'Tags' => 'tags',
+                       'ProjectName' => 'projectName',
+                       'Arn' => 'arn'
+                     },
+  'IsRequired' => {
+                    'UpdatedDate' => 1,
+                    'CreatedDate' => 1,
+                    'ProjectName' => 1
+                  },
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::IoT1ClickProjects::TagMap',
+                           'type' => 'IoT1ClickProjects_TagMap'
+                         },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'UpdatedDate' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +99,7 @@ format.
   The name of the project being summarized.
 
 
-=head2 Tags => L<Paws::IoT1ClickProjects::TagMap>
+=head2 Tags => IoT1ClickProjects_TagMap
 
   The tags (metadata key/value pairs) associated with the project.
 

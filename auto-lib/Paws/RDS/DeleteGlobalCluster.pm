@@ -1,13 +1,32 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::DeleteGlobalCluster;
-  use Moose;
-  has GlobalClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has GlobalClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteGlobalCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DeleteGlobalClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteGlobalClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteGlobalCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DeleteGlobalClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DeleteGlobalClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GlobalClusterIdentifier' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'IsRequired' => {
+                    'GlobalClusterIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

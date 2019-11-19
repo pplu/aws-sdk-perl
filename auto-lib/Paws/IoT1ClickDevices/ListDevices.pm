@@ -1,16 +1,42 @@
 
 package Paws::IoT1ClickDevices::ListDevices;
-  use Moose;
-  has DeviceType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'deviceType');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT1ClickDevices::Types qw//;
+  has DeviceType => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDevices');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/devices');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT1ClickDevices::ListDevicesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDevices');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/devices');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT1ClickDevices::ListDevicesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'DeviceType' => 'deviceType',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults'
+                    },
+  'types' => {
+               'DeviceType' => {
+                                 'type' => 'Str'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

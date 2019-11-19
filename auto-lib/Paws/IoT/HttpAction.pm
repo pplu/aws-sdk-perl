@@ -1,9 +1,46 @@
+# Generated from default/object.tt
 package Paws::IoT::HttpAction;
-  use Moose;
-  has Auth => (is => 'ro', isa => 'Paws::IoT::HttpAuthorization', request_name => 'auth', traits => ['NameInRequest']);
-  has ConfirmationUrl => (is => 'ro', isa => 'Str', request_name => 'confirmationUrl', traits => ['NameInRequest']);
-  has Headers => (is => 'ro', isa => 'ArrayRef[Paws::IoT::HttpActionHeader]', request_name => 'headers', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_HttpAuthorization IoT_HttpActionHeader/;
+  has Auth => (is => 'ro', isa => IoT_HttpAuthorization);
+  has ConfirmationUrl => (is => 'ro', isa => Str);
+  has Headers => (is => 'ro', isa => ArrayRef[IoT_HttpActionHeader]);
+  has Url => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Url' => 1
+                  },
+  'NameInRequest' => {
+                       'Auth' => 'auth',
+                       'Url' => 'url',
+                       'ConfirmationUrl' => 'confirmationUrl',
+                       'Headers' => 'headers'
+                     },
+  'types' => {
+               'Headers' => {
+                              'type' => 'ArrayRef[IoT_HttpActionHeader]',
+                              'class' => 'Paws::IoT::HttpActionHeader'
+                            },
+               'ConfirmationUrl' => {
+                                      'type' => 'Str'
+                                    },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'Auth' => {
+                           'type' => 'IoT_HttpAuthorization',
+                           'class' => 'Paws::IoT::HttpAuthorization'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +76,7 @@ Send data to an HTTPS endpoint.
 =head1 ATTRIBUTES
 
 
-=head2 Auth => L<Paws::IoT::HttpAuthorization>
+=head2 Auth => IoT_HttpAuthorization
 
   The authentication method to use when sending data to an HTTPS
 endpoint.
@@ -56,7 +93,7 @@ that match each possible value of the substituion template before
 traffic is allowed to your endpoint URL.
 
 
-=head2 Headers => ArrayRef[L<Paws::IoT::HttpActionHeader>]
+=head2 Headers => ArrayRef[IoT_HttpActionHeader]
 
   The HTTP headers to send with the message data.
 

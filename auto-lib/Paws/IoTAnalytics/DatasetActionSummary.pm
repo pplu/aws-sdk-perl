@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DatasetActionSummary;
-  use Moose;
-  has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest']);
-  has ActionType => (is => 'ro', isa => 'Str', request_name => 'actionType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has ActionName => (is => 'ro', isa => Str);
+  has ActionType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ActionType' => 'actionType',
+                       'ActionName' => 'actionName'
+                     },
+  'types' => {
+               'ActionName' => {
+                                 'type' => 'Str'
+                               },
+               'ActionType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

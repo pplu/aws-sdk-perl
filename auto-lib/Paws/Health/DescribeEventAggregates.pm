@@ -1,16 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Health::DescribeEventAggregates;
-  use Moose;
-  has AggregateField => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'aggregateField' , required => 1);
-  has Filter => (is => 'ro', isa => 'Paws::Health::EventFilter', traits => ['NameInRequest'], request_name => 'filter' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Health::Types qw/Health_EventFilter/;
+  has AggregateField => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Filter => (is => 'ro', isa => Health_EventFilter, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventAggregates');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Health::DescribeEventAggregatesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEventAggregates');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Health::DescribeEventAggregatesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filter' => {
+                             'class' => 'Paws::Health::EventFilter',
+                             'type' => 'Health_EventFilter'
+                           },
+               'AggregateField' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'AggregateField' => 1
+                  },
+  'NameInRequest' => {
+                       'Filter' => 'filter',
+                       'AggregateField' => 'aggregateField',
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -107,7 +142,7 @@ The only currently supported value is C<eventTypeCategory>.
 
 Valid values are: C<"eventTypeCategory">
 
-=head2 Filter => L<Paws::Health::EventFilter>
+=head2 Filter => Health_EventFilter
 
 Values to narrow the results returned.
 

@@ -1,15 +1,73 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionExecutionDetail;
-  use Moose;
-  has ActionExecutionId => (is => 'ro', isa => 'Str', request_name => 'actionExecutionId', traits => ['NameInRequest']);
-  has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest']);
-  has Input => (is => 'ro', isa => 'Paws::CodePipeline::ActionExecutionInput', request_name => 'input', traits => ['NameInRequest']);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has Output => (is => 'ro', isa => 'Paws::CodePipeline::ActionExecutionOutput', request_name => 'output', traits => ['NameInRequest']);
-  has PipelineExecutionId => (is => 'ro', isa => 'Str', request_name => 'pipelineExecutionId', traits => ['NameInRequest']);
-  has PipelineVersion => (is => 'ro', isa => 'Int', request_name => 'pipelineVersion', traits => ['NameInRequest']);
-  has StageName => (is => 'ro', isa => 'Str', request_name => 'stageName', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ActionExecutionInput CodePipeline_ActionExecutionOutput/;
+  has ActionExecutionId => (is => 'ro', isa => Str);
+  has ActionName => (is => 'ro', isa => Str);
+  has Input => (is => 'ro', isa => CodePipeline_ActionExecutionInput);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has Output => (is => 'ro', isa => CodePipeline_ActionExecutionOutput);
+  has PipelineExecutionId => (is => 'ro', isa => Str);
+  has PipelineVersion => (is => 'ro', isa => Int);
+  has StageName => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ActionName' => 'actionName',
+                       'ActionExecutionId' => 'actionExecutionId',
+                       'Output' => 'output',
+                       'Input' => 'input',
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'StageName' => 'stageName',
+                       'PipelineExecutionId' => 'pipelineExecutionId',
+                       'PipelineVersion' => 'pipelineVersion',
+                       'Status' => 'status',
+                       'StartTime' => 'startTime'
+                     },
+  'types' => {
+               'Output' => {
+                             'type' => 'CodePipeline_ActionExecutionOutput',
+                             'class' => 'Paws::CodePipeline::ActionExecutionOutput'
+                           },
+               'ActionName' => {
+                                 'type' => 'Str'
+                               },
+               'ActionExecutionId' => {
+                                        'type' => 'Str'
+                                      },
+               'PipelineVersion' => {
+                                      'type' => 'Int'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'Input' => {
+                            'class' => 'Paws::CodePipeline::ActionExecutionInput',
+                            'type' => 'CodePipeline_ActionExecutionInput'
+                          },
+               'PipelineExecutionId' => {
+                                          'type' => 'Str'
+                                        },
+               'StageName' => {
+                                'type' => 'Str'
+                              },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +114,7 @@ action execution ID, and the name, version, and timing of the action.
   The name of the action.
 
 
-=head2 Input => L<Paws::CodePipeline::ActionExecutionInput>
+=head2 Input => CodePipeline_ActionExecutionInput
 
   Input details for the action execution, such as role ARN, Region, and
 input artifacts.
@@ -67,7 +125,7 @@ input artifacts.
   The last update time of the action execution.
 
 
-=head2 Output => L<Paws::CodePipeline::ActionExecutionOutput>
+=head2 Output => CodePipeline_ActionExecutionOutput
 
   Output details for the action execution, such as the action execution
 result.

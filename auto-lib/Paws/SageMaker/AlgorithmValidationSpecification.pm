@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::SageMaker::AlgorithmValidationSpecification;
-  use Moose;
-  has ValidationProfiles => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::AlgorithmValidationProfile]', required => 1);
-  has ValidationRole => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::SageMaker::Types qw/SageMaker_AlgorithmValidationProfile/;
+  has ValidationProfiles => (is => 'ro', isa => ArrayRef[SageMaker_AlgorithmValidationProfile], required => 1);
+  has ValidationRole => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValidationRole' => {
+                                     'type' => 'Str'
+                                   },
+               'ValidationProfiles' => {
+                                         'type' => 'ArrayRef[SageMaker_AlgorithmValidationProfile]',
+                                         'class' => 'Paws::SageMaker::AlgorithmValidationProfile'
+                                       }
+             },
+  'IsRequired' => {
+                    'ValidationRole' => 1,
+                    'ValidationProfiles' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +63,7 @@ SageMaker runs to test the algorithm.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ValidationProfiles => ArrayRef[L<Paws::SageMaker::AlgorithmValidationProfile>]
+=head2 B<REQUIRED> ValidationProfiles => ArrayRef[SageMaker_AlgorithmValidationProfile]
 
   An array of C<AlgorithmValidationProfile> objects, each of which
 specifies a training job and batch transform job that Amazon SageMaker

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DS::ShareTarget;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DS::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

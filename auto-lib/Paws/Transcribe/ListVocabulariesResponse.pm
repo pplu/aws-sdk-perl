@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Transcribe::ListVocabulariesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Vocabularies => (is => 'ro', isa => 'ArrayRef[Paws::Transcribe::VocabularyInfo]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Transcribe::Types qw/Transcribe_VocabularyInfo/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Vocabularies => (is => 'ro', isa => ArrayRef[Transcribe_VocabularyInfo]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Vocabularies' => {
+                                   'class' => 'Paws::Transcribe::VocabularyInfo',
+                                   'type' => 'ArrayRef[Transcribe_VocabularyInfo]'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -31,7 +56,7 @@ next page of jobs.
 The requested vocabulary state.
 
 Valid values are: C<"IN_PROGRESS">, C<"FAILED">, C<"COMPLETED">
-=head2 Vocabularies => ArrayRef[L<Paws::Transcribe::VocabularyInfo>]
+=head2 Vocabularies => ArrayRef[Transcribe_VocabularyInfo]
 
 A list of objects that describe the vocabularies that match the search
 criteria in the request.

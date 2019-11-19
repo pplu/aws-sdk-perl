@@ -1,42 +1,172 @@
 
 package Paws::S3::CreateMultipartUpload;
-  use Moose;
-  has ACL => (is => 'ro', isa => 'Str', header_name => 'x-amz-acl', traits => ['ParamInHeader']);
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has CacheControl => (is => 'ro', isa => 'Str', header_name => 'Cache-Control', traits => ['ParamInHeader']);
-  has ContentDisposition => (is => 'ro', isa => 'Str', header_name => 'Content-Disposition', traits => ['ParamInHeader']);
-  has ContentEncoding => (is => 'ro', isa => 'Str', header_name => 'Content-Encoding', traits => ['ParamInHeader']);
-  has ContentLanguage => (is => 'ro', isa => 'Str', header_name => 'Content-Language', traits => ['ParamInHeader']);
-  has ContentType => (is => 'ro', isa => 'Str', header_name => 'Content-Type', traits => ['ParamInHeader']);
-  has Expires => (is => 'ro', isa => 'Str', header_name => 'Expires', traits => ['ParamInHeader']);
-  has GrantFullControl => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-full-control', traits => ['ParamInHeader']);
-  has GrantRead => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read', traits => ['ParamInHeader']);
-  has GrantReadACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read-acp', traits => ['ParamInHeader']);
-  has GrantWriteACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-write-acp', traits => ['ParamInHeader']);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', header_prefix => 'x-amz-meta-', traits => ['ParamInHeaders']);
-  has ObjectLockLegalHoldStatus => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-legal-hold', traits => ['ParamInHeader']);
-  has ObjectLockMode => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-mode', traits => ['ParamInHeader']);
-  has ObjectLockRetainUntilDate => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-retain-until-date', traits => ['ParamInHeader']);
-  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has ServerSideEncryption => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption', traits => ['ParamInHeader']);
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
-  has SSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key', traits => ['ParamInHeader']);
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
-  has SSEKMSEncryptionContext => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-context', traits => ['ParamInHeader']);
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-aws-kms-key-id', traits => ['ParamInHeader']);
-  has StorageClass => (is => 'ro', isa => 'Str', header_name => 'x-amz-storage-class', traits => ['ParamInHeader']);
-  has Tagging => (is => 'ro', isa => 'Str', header_name => 'x-amz-tagging', traits => ['ParamInHeader']);
-  has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', header_name => 'x-amz-website-redirect-location', traits => ['ParamInHeader']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_Metadata/;
+  has ACL => (is => 'ro', isa => Str, predicate => 1);
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CacheControl => (is => 'ro', isa => Str, predicate => 1);
+  has ContentDisposition => (is => 'ro', isa => Str, predicate => 1);
+  has ContentEncoding => (is => 'ro', isa => Str, predicate => 1);
+  has ContentLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has ContentType => (is => 'ro', isa => Str, predicate => 1);
+  has Expires => (is => 'ro', isa => Str, predicate => 1);
+  has GrantFullControl => (is => 'ro', isa => Str, predicate => 1);
+  has GrantRead => (is => 'ro', isa => Str, predicate => 1);
+  has GrantReadACP => (is => 'ro', isa => Str, predicate => 1);
+  has GrantWriteACP => (is => 'ro', isa => Str, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Metadata => (is => 'ro', isa => S3_Metadata, predicate => 1);
+  has ObjectLockLegalHoldStatus => (is => 'ro', isa => Str, predicate => 1);
+  has ObjectLockMode => (is => 'ro', isa => Str, predicate => 1);
+  has ObjectLockRetainUntilDate => (is => 'ro', isa => Str, predicate => 1);
+  has RequestPayer => (is => 'ro', isa => Str, predicate => 1);
+  has ServerSideEncryption => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerAlgorithm => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKey => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has SSEKMSEncryptionContext => (is => 'ro', isa => Str, predicate => 1);
+  has SSEKMSKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has StorageClass => (is => 'ro', isa => Str, predicate => 1);
+  has Tagging => (is => 'ro', isa => Str, predicate => 1);
+  has WebsiteRedirectLocation => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMultipartUpload');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}?uploads');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::CreateMultipartUploadOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateMultipartUpload');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}?uploads');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::CreateMultipartUploadOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'ObjectLockMode' => 'x-amz-object-lock-mode',
+                       'StorageClass' => 'x-amz-storage-class',
+                       'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm',
+                       'ContentDisposition' => 'Content-Disposition',
+                       'SSECustomerKey' => 'x-amz-server-side-encryption-customer-key',
+                       'ServerSideEncryption' => 'x-amz-server-side-encryption',
+                       'GrantReadACP' => 'x-amz-grant-read-acp',
+                       'WebsiteRedirectLocation' => 'x-amz-website-redirect-location',
+                       'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5',
+                       'ContentLanguage' => 'Content-Language',
+                       'Expires' => 'Expires',
+                       'ObjectLockRetainUntilDate' => 'x-amz-object-lock-retain-until-date',
+                       'SSEKMSEncryptionContext' => 'x-amz-server-side-encryption-context',
+                       'GrantWriteACP' => 'x-amz-grant-write-acp',
+                       'Tagging' => 'x-amz-tagging',
+                       'ContentEncoding' => 'Content-Encoding',
+                       'GrantFullControl' => 'x-amz-grant-full-control',
+                       'ObjectLockLegalHoldStatus' => 'x-amz-object-lock-legal-hold',
+                       'GrantRead' => 'x-amz-grant-read',
+                       'ContentType' => 'Content-Type',
+                       'CacheControl' => 'Cache-Control',
+                       'RequestPayer' => 'x-amz-request-payer',
+                       'ACL' => 'x-amz-acl',
+                       'SSEKMSKeyId' => 'x-amz-server-side-encryption-aws-kms-key-id'
+                     },
+  'ParamInURI' => {
+                    'Key' => 'Key',
+                    'Bucket' => 'Bucket'
+                  },
+  'ParamInHeaders' => {
+                        'Metadata' => 'x-amz-meta-'
+                      },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'Key' => 1
+                  },
+  'types' => {
+               'SSECustomerAlgorithm' => {
+                                           'type' => 'Str'
+                                         },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 },
+               'ObjectLockMode' => {
+                                     'type' => 'Str'
+                                   },
+               'SSECustomerKey' => {
+                                     'type' => 'Str'
+                                   },
+               'ContentDisposition' => {
+                                         'type' => 'Str'
+                                       },
+               'Expires' => {
+                              'type' => 'Str'
+                            },
+               'SSECustomerKeyMD5' => {
+                                        'type' => 'Str'
+                                      },
+               'ContentLanguage' => {
+                                      'type' => 'Str'
+                                    },
+               'WebsiteRedirectLocation' => {
+                                              'type' => 'Str'
+                                            },
+               'ServerSideEncryption' => {
+                                           'type' => 'Str'
+                                         },
+               'GrantReadACP' => {
+                                   'type' => 'Str'
+                                 },
+               'GrantWriteACP' => {
+                                    'type' => 'Str'
+                                  },
+               'SSEKMSEncryptionContext' => {
+                                              'type' => 'Str'
+                                            },
+               'ObjectLockRetainUntilDate' => {
+                                                'type' => 'Str'
+                                              },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'ObjectLockLegalHoldStatus' => {
+                                                'type' => 'Str'
+                                              },
+               'GrantFullControl' => {
+                                       'type' => 'Str'
+                                     },
+               'ContentEncoding' => {
+                                      'type' => 'Str'
+                                    },
+               'Tagging' => {
+                              'type' => 'Str'
+                            },
+               'CacheControl' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'GrantRead' => {
+                                'type' => 'Str'
+                              },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'SSEKMSKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'Metadata' => {
+                               'class' => 'Paws::S3::Metadata',
+                               'type' => 'S3_Metadata'
+                             },
+               'ACL' => {
+                          'type' => 'Str'
+                        },
+               'RequestPayer' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -191,7 +321,7 @@ Object key for which the multipart upload is to be initiated.
 
 
 
-=head2 Metadata => L<Paws::S3::Metadata>
+=head2 Metadata => S3_Metadata
 
 A map of metadata to store with the object in S3.
 

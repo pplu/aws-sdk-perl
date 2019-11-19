@@ -1,15 +1,71 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::Upload;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
-  has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has Metadata => (is => 'ro', isa => 'Str', request_name => 'metadata', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Category => (is => 'ro', isa => Str);
+  has ContentType => (is => 'ro', isa => Str);
+  has Created => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has Metadata => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'Metadata' => 'metadata',
+                       'Message' => 'message',
+                       'ContentType' => 'contentType',
+                       'Arn' => 'arn',
+                       'Name' => 'name',
+                       'Url' => 'url',
+                       'Type' => 'type',
+                       'Created' => 'created',
+                       'Category' => 'category'
+                     },
+  'types' => {
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Metadata' => {
+                               'type' => 'Str'
+                             },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,17 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::ListTaskDefinitions;
-  use Moose;
-  has FamilyPrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'familyPrefix' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Sort => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sort' );
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ECS::Types qw//;
+  has FamilyPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Sort => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTaskDefinitions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::ListTaskDefinitionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTaskDefinitions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::ListTaskDefinitionsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'NextToken' => 'nextToken',
+                       'Sort' => 'sort',
+                       'MaxResults' => 'maxResults',
+                       'FamilyPrefix' => 'familyPrefix'
+                     },
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Sort' => {
+                           'type' => 'Str'
+                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'FamilyPrefix' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

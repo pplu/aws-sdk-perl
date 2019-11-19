@@ -1,14 +1,15 @@
 package Paws::DataExchange;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'dataexchange' }
   sub signing_name { 'dataexchange' }
   sub version { '2017-07-25' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -302,7 +303,7 @@ in the WAITING state.
 
 =item Name => Str
 
-=item [Tags => L<Paws::DataExchange::MapOf__string>]
+=item [Tags => DataExchange_MapOf__string]
 
 
 =back
@@ -318,7 +319,7 @@ This operation creates a data set.
 
 =over
 
-=item Details => L<Paws::DataExchange::RequestDetails>
+=item Details => DataExchange_RequestDetails
 
 =item Type => Str
 
@@ -340,7 +341,7 @@ This operation creates a job.
 
 =item [Comment => Str]
 
-=item [Tags => L<Paws::DataExchange::MapOf__string>]
+=item [Tags => DataExchange_MapOf__string]
 
 
 =back
@@ -603,7 +604,7 @@ This operation starts a job.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::DataExchange::MapOf__string>
+=item Tags => DataExchange_MapOf__string
 
 
 =back

@@ -1,23 +1,110 @@
 package Paws::EC2::ReservedInstances;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
-  has Duration => (is => 'ro', isa => 'Int', request_name => 'duration', traits => ['NameInRequest']);
-  has End => (is => 'ro', isa => 'Str', request_name => 'end', traits => ['NameInRequest']);
-  has FixedPrice => (is => 'ro', isa => 'Num', request_name => 'fixedPrice', traits => ['NameInRequest']);
-  has InstanceCount => (is => 'ro', isa => 'Int', request_name => 'instanceCount', traits => ['NameInRequest']);
-  has InstanceTenancy => (is => 'ro', isa => 'Str', request_name => 'instanceTenancy', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has OfferingClass => (is => 'ro', isa => 'Str', request_name => 'offeringClass', traits => ['NameInRequest']);
-  has OfferingType => (is => 'ro', isa => 'Str', request_name => 'offeringType', traits => ['NameInRequest']);
-  has ProductDescription => (is => 'ro', isa => 'Str', request_name => 'productDescription', traits => ['NameInRequest']);
-  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RecurringCharge]', request_name => 'recurringCharges', traits => ['NameInRequest']);
-  has ReservedInstancesId => (is => 'ro', isa => 'Str', request_name => 'reservedInstancesId', traits => ['NameInRequest']);
-  has Scope => (is => 'ro', isa => 'Str', request_name => 'scope', traits => ['NameInRequest']);
-  has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has UsagePrice => (is => 'ro', isa => 'Num', request_name => 'usagePrice', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int Num ArrayRef/;
+  use Paws::EC2::Types qw/EC2_RecurringCharge EC2_Tag/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has End => (is => 'ro', isa => Str);
+  has FixedPrice => (is => 'ro', isa => Num);
+  has InstanceCount => (is => 'ro', isa => Int);
+  has InstanceTenancy => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has OfferingClass => (is => 'ro', isa => Str);
+  has OfferingType => (is => 'ro', isa => Str);
+  has ProductDescription => (is => 'ro', isa => Str);
+  has RecurringCharges => (is => 'ro', isa => ArrayRef[EC2_RecurringCharge]);
+  has ReservedInstancesId => (is => 'ro', isa => Str);
+  has Scope => (is => 'ro', isa => Str);
+  has Start => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has UsagePrice => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RecurringCharges' => {
+                                       'type' => 'ArrayRef[EC2_RecurringCharge]',
+                                       'class' => 'Paws::EC2::RecurringCharge'
+                                     },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'FixedPrice' => {
+                                 'type' => 'Num'
+                               },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'ProductDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'InstanceTenancy' => {
+                                      'type' => 'Str'
+                                    },
+               'End' => {
+                          'type' => 'Str'
+                        },
+               'ReservedInstancesId' => {
+                                          'type' => 'Str'
+                                        },
+               'Scope' => {
+                            'type' => 'Str'
+                          },
+               'Start' => {
+                            'type' => 'Str'
+                          },
+               'OfferingType' => {
+                                   'type' => 'Str'
+                                 },
+               'OfferingClass' => {
+                                    'type' => 'Str'
+                                  },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'UsagePrice' => {
+                                 'type' => 'Num'
+                               }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tagSet',
+                       'ProductDescription' => 'productDescription',
+                       'Duration' => 'duration',
+                       'InstanceTenancy' => 'instanceTenancy',
+                       'End' => 'end',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'RecurringCharges' => 'recurringCharges',
+                       'InstanceCount' => 'instanceCount',
+                       'FixedPrice' => 'fixedPrice',
+                       'CurrencyCode' => 'currencyCode',
+                       'InstanceType' => 'instanceType',
+                       'State' => 'state',
+                       'UsagePrice' => 'usagePrice',
+                       'ReservedInstancesId' => 'reservedInstancesId',
+                       'Scope' => 'scope',
+                       'OfferingType' => 'offeringType',
+                       'Start' => 'start',
+                       'OfferingClass' => 'offeringClass'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -110,7 +197,7 @@ C<USD>.
   The Reserved Instance product platform description.
 
 
-=head2 RecurringCharges => ArrayRef[L<Paws::EC2::RecurringCharge>]
+=head2 RecurringCharges => ArrayRef[EC2_RecurringCharge]
 
   The recurring charge tag assigned to the resource.
 
@@ -135,7 +222,7 @@ C<USD>.
   The state of the Reserved Instance purchase.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the resource.
 

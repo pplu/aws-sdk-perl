@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CloudHSMv2::DestinationBackup;
-  use Moose;
-  has CreateTimestamp => (is => 'ro', isa => 'Str');
-  has SourceBackup => (is => 'ro', isa => 'Str');
-  has SourceCluster => (is => 'ro', isa => 'Str');
-  has SourceRegion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudHSMv2::Types qw//;
+  has CreateTimestamp => (is => 'ro', isa => Str);
+  has SourceBackup => (is => 'ro', isa => Str);
+  has SourceCluster => (is => 'ro', isa => Str);
+  has SourceRegion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceCluster' => {
+                                    'type' => 'Str'
+                                  },
+               'SourceBackup' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceRegion' => {
+                                   'type' => 'Str'
+                                 },
+               'CreateTimestamp' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

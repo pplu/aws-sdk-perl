@@ -1,13 +1,44 @@
+# Generated from json/callresult_class.tt
 
 package Paws::PerformanceInsights::GetResourceMetricsResponse;
-  use Moose;
-  has AlignedEndTime => (is => 'ro', isa => 'Str');
-  has AlignedStartTime => (is => 'ro', isa => 'Str');
-  has Identifier => (is => 'ro', isa => 'Str');
-  has MetricList => (is => 'ro', isa => 'ArrayRef[Paws::PerformanceInsights::MetricKeyDataPoints]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::PerformanceInsights::Types qw/PerformanceInsights_MetricKeyDataPoints/;
+  has AlignedEndTime => (is => 'ro', isa => Str);
+  has AlignedStartTime => (is => 'ro', isa => Str);
+  has Identifier => (is => 'ro', isa => Str);
+  has MetricList => (is => 'ro', isa => ArrayRef[PerformanceInsights_MetricKeyDataPoints]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MetricList' => {
+                                 'type' => 'ArrayRef[PerformanceInsights_MetricKeyDataPoints]',
+                                 'class' => 'Paws::PerformanceInsights::MetricKeyDataPoints'
+                               },
+               'AlignedEndTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Identifier' => {
+                                 'type' => 'Str'
+                               },
+               'AlignedStartTime' => {
+                                       'type' => 'Str'
+                                     },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -41,7 +72,7 @@ To use an Amazon RDS instance as a data source, you specify its
 C<DbiResourceId> value - for example: C<db-FAIHNTYBKTGAUSUZQYPDS2GW4A>
 
 
-=head2 MetricList => ArrayRef[L<Paws::PerformanceInsights::MetricKeyDataPoints>]
+=head2 MetricList => ArrayRef[PerformanceInsights_MetricKeyDataPoints]
 
 An array of metric results,, where each array element contains all of
 the data points for a particular dimension.

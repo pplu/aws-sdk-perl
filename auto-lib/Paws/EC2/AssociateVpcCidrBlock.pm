@@ -1,15 +1,43 @@
 
 package Paws::EC2::AssociateVpcCidrBlock;
-  use Moose;
-  has AmazonProvidedIpv6CidrBlock => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'amazonProvidedIpv6CidrBlock' );
-  has CidrBlock => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has AmazonProvidedIpv6CidrBlock => (is => 'ro', isa => Bool, predicate => 1);
+  has CidrBlock => (is => 'ro', isa => Str, predicate => 1);
+  has VpcId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateVpcCidrBlock');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::AssociateVpcCidrBlockResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateVpcCidrBlock');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::AssociateVpcCidrBlockResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AmazonProvidedIpv6CidrBlock' => 'amazonProvidedIpv6CidrBlock',
+                       'VpcId' => 'vpcId'
+                     },
+  'IsRequired' => {
+                    'VpcId' => 1
+                  },
+  'types' => {
+               'CidrBlock' => {
+                                'type' => 'Str'
+                              },
+               'AmazonProvidedIpv6CidrBlock' => {
+                                                  'type' => 'Bool'
+                                                },
+               'VpcId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

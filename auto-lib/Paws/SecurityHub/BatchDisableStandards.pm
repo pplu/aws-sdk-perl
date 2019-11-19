@@ -1,14 +1,32 @@
 
 package Paws::SecurityHub::BatchDisableStandards;
-  use Moose;
-  has StandardsSubscriptionArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::SecurityHub::Types qw//;
+  has StandardsSubscriptionArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchDisableStandards');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/standards/deregister');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::BatchDisableStandardsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchDisableStandards');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/standards/deregister');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::BatchDisableStandardsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StandardsSubscriptionArns' => 1
+                  },
+  'types' => {
+               'StandardsSubscriptionArns' => {
+                                                'type' => 'ArrayRef[Str|Undef]'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

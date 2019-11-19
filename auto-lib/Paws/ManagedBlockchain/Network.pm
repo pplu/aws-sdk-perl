@@ -1,15 +1,61 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::Network;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Framework => (is => 'ro', isa => 'Str');
-  has FrameworkAttributes => (is => 'ro', isa => 'Paws::ManagedBlockchain::NetworkFrameworkAttributes');
-  has FrameworkVersion => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has VotingPolicy => (is => 'ro', isa => 'Paws::ManagedBlockchain::VotingPolicy');
-  has VpcEndpointServiceName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_NetworkFrameworkAttributes ManagedBlockchain_VotingPolicy/;
+  has CreationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Framework => (is => 'ro', isa => Str);
+  has FrameworkAttributes => (is => 'ro', isa => ManagedBlockchain_NetworkFrameworkAttributes);
+  has FrameworkVersion => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has VotingPolicy => (is => 'ro', isa => ManagedBlockchain_VotingPolicy);
+  has VpcEndpointServiceName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Framework' => {
+                                'type' => 'Str'
+                              },
+               'FrameworkAttributes' => {
+                                          'type' => 'ManagedBlockchain_NetworkFrameworkAttributes',
+                                          'class' => 'Paws::ManagedBlockchain::NetworkFrameworkAttributes'
+                                        },
+               'VpcEndpointServiceName' => {
+                                             'type' => 'Str'
+                                           },
+               'VotingPolicy' => {
+                                   'class' => 'Paws::ManagedBlockchain::VotingPolicy',
+                                   'type' => 'ManagedBlockchain_VotingPolicy'
+                                 },
+               'FrameworkVersion' => {
+                                       'type' => 'Str'
+                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +106,7 @@ Network configuration properties.
   The blockchain framework that the network uses.
 
 
-=head2 FrameworkAttributes => L<Paws::ManagedBlockchain::NetworkFrameworkAttributes>
+=head2 FrameworkAttributes => ManagedBlockchain_NetworkFrameworkAttributes
 
   Attributes of the blockchain framework that the network uses.
 
@@ -85,7 +131,7 @@ Network configuration properties.
   The current status of the network.
 
 
-=head2 VotingPolicy => L<Paws::ManagedBlockchain::VotingPolicy>
+=head2 VotingPolicy => ManagedBlockchain_VotingPolicy
 
   The voting rules for the network to decide if a proposal is accepted.
 

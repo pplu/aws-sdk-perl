@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::AppSync::PipelineConfig;
-  use Moose;
-  has Functions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'functions', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::AppSync::Types qw//;
+  has Functions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Functions' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             },
+  'NameInRequest' => {
+                       'Functions' => 'functions'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

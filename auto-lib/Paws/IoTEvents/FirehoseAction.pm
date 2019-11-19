@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::FirehoseAction;
-  use Moose;
-  has DeliveryStreamName => (is => 'ro', isa => 'Str', request_name => 'deliveryStreamName', traits => ['NameInRequest'], required => 1);
-  has Separator => (is => 'ro', isa => 'Str', request_name => 'separator', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw//;
+  has DeliveryStreamName => (is => 'ro', isa => Str, required => 1);
+  has Separator => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DeliveryStreamName' => 'deliveryStreamName',
+                       'Separator' => 'separator'
+                     },
+  'IsRequired' => {
+                    'DeliveryStreamName' => 1
+                  },
+  'types' => {
+               'Separator' => {
+                                'type' => 'Str'
+                              },
+               'DeliveryStreamName' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

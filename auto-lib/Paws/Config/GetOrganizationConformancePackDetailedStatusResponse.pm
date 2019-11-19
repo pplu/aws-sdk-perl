@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::GetOrganizationConformancePackDetailedStatusResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has OrganizationConformancePackDetailedStatuses => (is => 'ro', isa => 'ArrayRef[Paws::Config::OrganizationConformancePackDetailedStatus]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_OrganizationConformancePackDetailedStatus/;
+  has NextToken => (is => 'ro', isa => Str);
+  has OrganizationConformancePackDetailedStatuses => (is => 'ro', isa => ArrayRef[Config_OrganizationConformancePackDetailedStatus]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationConformancePackDetailedStatuses' => {
+                                                                  'class' => 'Paws::Config::OrganizationConformancePackDetailedStatus',
+                                                                  'type' => 'ArrayRef[Config_OrganizationConformancePackDetailedStatus]'
+                                                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The nextToken string returned on a previous page that you use to get
 the next page of results in a paginated response.
 
 
-=head2 OrganizationConformancePackDetailedStatuses => ArrayRef[L<Paws::Config::OrganizationConformancePackDetailedStatus>]
+=head2 OrganizationConformancePackDetailedStatuses => ArrayRef[Config_OrganizationConformancePackDetailedStatus]
 
 A list of C<OrganizationConformancePackDetailedStatus> objects.
 

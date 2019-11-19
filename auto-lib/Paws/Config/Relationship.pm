@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::Config::Relationship;
-  use Moose;
-  has RelationshipName => (is => 'ro', isa => 'Str', request_name => 'relationshipName', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has ResourceName => (is => 'ro', isa => 'Str', request_name => 'resourceName', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has RelationshipName => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceName => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RelationshipName' => {
+                                       'type' => 'Str'
+                                     },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceName' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ResourceType' => 'resourceType',
+                       'ResourceName' => 'resourceName',
+                       'ResourceId' => 'resourceId',
+                       'RelationshipName' => 'relationshipName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

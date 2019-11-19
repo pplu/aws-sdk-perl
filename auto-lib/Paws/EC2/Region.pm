@@ -1,8 +1,33 @@
 package Paws::EC2::Region;
-  use Moose;
-  has Endpoint => (is => 'ro', isa => 'Str', request_name => 'regionEndpoint', traits => ['NameInRequest']);
-  has OptInStatus => (is => 'ro', isa => 'Str', request_name => 'optInStatus', traits => ['NameInRequest']);
-  has RegionName => (is => 'ro', isa => 'Str', request_name => 'regionName', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Endpoint => (is => 'ro', isa => Str);
+  has OptInStatus => (is => 'ro', isa => Str);
+  has RegionName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Endpoint' => 'regionEndpoint',
+                       'OptInStatus' => 'optInStatus',
+                       'RegionName' => 'regionName'
+                     },
+  'types' => {
+               'RegionName' => {
+                                 'type' => 'Str'
+                               },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             },
+               'OptInStatus' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,15 @@
 package Paws::SecurityHub;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'securityhub' }
   sub signing_name { 'securityhub' }
   sub version { '2018-10-26' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -445,7 +446,7 @@ Supported in AWS Security Hub
 
 =over
 
-=item StandardsSubscriptionRequests => ArrayRef[L<Paws::SecurityHub::StandardsSubscriptionRequest>]
+=item StandardsSubscriptionRequests => ArrayRef[SecurityHub_StandardsSubscriptionRequest]
 
 
 =back
@@ -464,7 +465,7 @@ more information, see Standards Supported in AWS Security Hub
 
 =over
 
-=item Findings => ArrayRef[L<Paws::SecurityHub::AwsSecurityFinding>]
+=item Findings => ArrayRef[SecurityHub_AwsSecurityFinding]
 
 
 =back
@@ -506,7 +507,7 @@ actions in Amazon CloudWatch Events.
 
 =over
 
-=item Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>
+=item Filters => SecurityHub_AwsSecurityFindingFilters
 
 =item GroupByAttribute => Str
 
@@ -529,7 +530,7 @@ in the insight.
 
 =over
 
-=item [AccountDetails => ArrayRef[L<Paws::SecurityHub::AccountDetails>]]
+=item [AccountDetails => ArrayRef[SecurityHub_AccountDetails]]
 
 
 =back
@@ -797,7 +798,7 @@ product to send findings to Security Hub is applied.
 
 =over
 
-=item [Tags => L<Paws::SecurityHub::TagMap>]
+=item [Tags => SecurityHub_TagMap]
 
 
 =back
@@ -838,13 +839,13 @@ Returns a list of the standards that are currently enabled.
 
 =over
 
-=item [Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>]
+=item [Filters => SecurityHub_AwsSecurityFindingFilters]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [SortCriteria => ArrayRef[L<Paws::SecurityHub::SortCriterion>]]
+=item [SortCriteria => ArrayRef[SecurityHub_SortCriterion]]
 
 
 =back
@@ -1044,7 +1045,7 @@ Returns a list of tags associated with a resource.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::SecurityHub::TagMap>
+=item Tags => SecurityHub_TagMap
 
 
 =back
@@ -1099,9 +1100,9 @@ Hub.
 
 =over
 
-=item Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>
+=item Filters => SecurityHub_AwsSecurityFindingFilters
 
-=item [Note => L<Paws::SecurityHub::NoteUpdate>]
+=item [Note => SecurityHub_NoteUpdate]
 
 =item [RecordState => Str]
 
@@ -1123,7 +1124,7 @@ can view the finding also sees the update to the finding.
 
 =item InsightArn => Str
 
-=item [Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>]
+=item [Filters => SecurityHub_AwsSecurityFindingFilters]
 
 =item [GroupByAttribute => Str]
 
@@ -1157,9 +1158,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SecurityHub::GetEnabledStandardsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllFindings(sub { },[Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>, MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::SecurityHub::SortCriterion>]])
+=head2 GetAllFindings(sub { },[Filters => SecurityHub_AwsSecurityFindingFilters, MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[SecurityHub_SortCriterion]])
 
-=head2 GetAllFindings([Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>, MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::SecurityHub::SortCriterion>]])
+=head2 GetAllFindings([Filters => SecurityHub_AwsSecurityFindingFilters, MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[SecurityHub_SortCriterion]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

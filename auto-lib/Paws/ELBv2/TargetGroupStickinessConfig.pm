@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ELBv2::TargetGroupStickinessConfig;
-  use Moose;
-  has DurationSeconds => (is => 'ro', isa => 'Int');
-  has Enabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Int Bool/;
+  use Paws::ELBv2::Types qw//;
+  has DurationSeconds => (is => 'ro', isa => Int);
+  has Enabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DurationSeconds' => {
+                                      'type' => 'Int'
+                                    },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

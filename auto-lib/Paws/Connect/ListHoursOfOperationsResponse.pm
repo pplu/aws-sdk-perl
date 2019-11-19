@@ -1,10 +1,31 @@
 
 package Paws::Connect::ListHoursOfOperationsResponse;
-  use Moose;
-  has HoursOfOperationSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::Connect::HoursOfOperationSummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Connect::Types qw/Connect_HoursOfOperationSummary/;
+  has HoursOfOperationSummaryList => (is => 'ro', isa => ArrayRef[Connect_HoursOfOperationSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HoursOfOperationSummaryList' => {
+                                                  'class' => 'Paws::Connect::HoursOfOperationSummary',
+                                                  'type' => 'ArrayRef[Connect_HoursOfOperationSummary]'
+                                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Connect::ListHoursOfOperationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 HoursOfOperationSummaryList => ArrayRef[L<Paws::Connect::HoursOfOperationSummary>]
+=head2 HoursOfOperationSummaryList => ArrayRef[Connect_HoursOfOperationSummary]
 
 Information about the hours of operation.
 

@@ -1,10 +1,52 @@
+# Generated from default/object.tt
 package Paws::StepFunctions::TaskScheduledEventDetails;
-  use Moose;
-  has Parameters => (is => 'ro', isa => 'Str', request_name => 'parameters', traits => ['NameInRequest'], required => 1);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest'], required => 1);
-  has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest'], required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest'], required => 1);
-  has TimeoutInSeconds => (is => 'ro', isa => 'Int', request_name => 'timeoutInSeconds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::StepFunctions::Types qw//;
+  has Parameters => (is => 'ro', isa => Str, required => 1);
+  has Region => (is => 'ro', isa => Str, required => 1);
+  has Resource => (is => 'ro', isa => Str, required => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1);
+  has TimeoutInSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceType' => 1,
+                    'Resource' => 1,
+                    'Parameters' => 1,
+                    'Region' => 1
+                  },
+  'NameInRequest' => {
+                       'Region' => 'region',
+                       'Parameters' => 'parameters',
+                       'ResourceType' => 'resourceType',
+                       'Resource' => 'resource',
+                       'TimeoutInSeconds' => 'timeoutInSeconds'
+                     },
+  'types' => {
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'Parameters' => {
+                                 'type' => 'Str'
+                               },
+               'TimeoutInSeconds' => {
+                                       'type' => 'Int'
+                                     },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Resource' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

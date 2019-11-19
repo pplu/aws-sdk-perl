@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::GetGroupResponse;
-  use Moose;
-  has Group => (is => 'ro', isa => 'Paws::CognitoIdp::GroupType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_GroupType/;
+  has Group => (is => 'ro', isa => CognitoIdp_GroupType);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Group' => {
+                            'type' => 'CognitoIdp_GroupType',
+                            'class' => 'Paws::CognitoIdp::GroupType'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::CognitoIdp::GetGroupResponse
 =head1 ATTRIBUTES
 
 
-=head2 Group => L<Paws::CognitoIdp::GroupType>
+=head2 Group => CognitoIdp_GroupType
 
 The group object for the group.
 

@@ -1,17 +1,71 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeStar::DescribeProjectResult;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' );
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
-  has CreatedTimeStamp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdTimeStamp' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
-  has ProjectTemplateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectTemplateId' );
-  has StackId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stackId' );
-  has Status => (is => 'ro', isa => 'Paws::CodeStar::ProjectStatus', traits => ['NameInRequest'], request_name => 'status' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStar::Types qw/CodeStar_ProjectStatus/;
+  has Arn => (is => 'ro', isa => Str);
+  has ClientRequestToken => (is => 'ro', isa => Str);
+  has CreatedTimeStamp => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ProjectTemplateId => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => CodeStar_ProjectStatus);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'CodeStar_ProjectStatus',
+                             'class' => 'Paws::CodeStar::ProjectStatus'
+                           },
+               'CreatedTimeStamp' => {
+                                       'type' => 'Str'
+                                     },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ProjectTemplateId' => {
+                                        'type' => 'Str'
+                                      },
+               'StackId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'CreatedTimeStamp' => 'createdTimeStamp',
+                       'Name' => 'name',
+                       'Arn' => 'arn',
+                       'Id' => 'id',
+                       'Description' => 'description',
+                       'StackId' => 'stackId',
+                       'ProjectTemplateId' => 'projectTemplateId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -65,7 +119,7 @@ The ID of the primary stack in AWS CloudFormation used to generate
 resources for the project.
 
 
-=head2 Status => L<Paws::CodeStar::ProjectStatus>
+=head2 Status => CodeStar_ProjectStatus
 
 The project creation or deletion status.
 

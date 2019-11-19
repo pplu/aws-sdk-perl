@@ -1,17 +1,54 @@
 
 package Paws::Lambda::RemoveLayerVersionPermission;
-  use Moose;
-  has LayerName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LayerName', required => 1);
-  has RevisionId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'RevisionId');
-  has StatementId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'StatementId', required => 1);
-  has VersionNumber => (is => 'ro', isa => 'Int', traits => ['ParamInURI'], uri_name => 'VersionNumber', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lambda::Types qw//;
+  has LayerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RevisionId => (is => 'ro', isa => Str, predicate => 1);
+  has StatementId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VersionNumber => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveLayerVersionPermission');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy/{StatementId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RemoveLayerVersionPermission');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy/{StatementId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'StatementId' => 'StatementId',
+                    'VersionNumber' => 'VersionNumber',
+                    'LayerName' => 'LayerName'
+                  },
+  'ParamInQuery' => {
+                      'RevisionId' => 'RevisionId'
+                    },
+  'IsRequired' => {
+                    'StatementId' => 1,
+                    'VersionNumber' => 1,
+                    'LayerName' => 1
+                  },
+  'types' => {
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'LayerName' => {
+                                'type' => 'Str'
+                              },
+               'VersionNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'StatementId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

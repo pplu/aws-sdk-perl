@@ -1,15 +1,40 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::ModifyDBSnapshot;
-  use Moose;
-  has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has DBSnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::ModifyDBSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBSnapshotResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyDBSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::ModifyDBSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyDBSnapshotResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'DBSnapshotIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'DBSnapshotIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -87,6 +112,11 @@ C<11.2.0.4.v11> (supported for 11.2.0.3 DB snapshots)
 
 =back
 
+B<PostgreSQL>
+
+For the list of engine versions that are available for upgrading a DB
+snapshot, see Upgrading the PostgreSQL DB Engine for Amazon RDS
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.PostgreSQL.html#USER_UpgradeDBInstance.PostgreSQL.MajorVersion).
 
 
 

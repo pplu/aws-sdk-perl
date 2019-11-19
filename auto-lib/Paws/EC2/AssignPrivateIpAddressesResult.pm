@@ -1,10 +1,36 @@
 
 package Paws::EC2::AssignPrivateIpAddressesResult;
-  use Moose;
-  has AssignedPrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AssignedPrivateIpAddress]', request_name => 'assignedPrivateIpAddressesSet', traits => ['NameInRequest',]);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_AssignedPrivateIpAddress/;
+  has AssignedPrivateIpAddresses => (is => 'ro', isa => ArrayRef[EC2_AssignedPrivateIpAddress]);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'AssignedPrivateIpAddresses' => {
+                                                 'class' => 'Paws::EC2::AssignedPrivateIpAddress',
+                                                 'type' => 'ArrayRef[EC2_AssignedPrivateIpAddress]'
+                                               }
+             },
+  'NameInRequest' => {
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'AssignedPrivateIpAddresses' => 'assignedPrivateIpAddressesSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::AssignPrivateIpAddressesResult
 =head1 ATTRIBUTES
 
 
-=head2 AssignedPrivateIpAddresses => ArrayRef[L<Paws::EC2::AssignedPrivateIpAddress>]
+=head2 AssignedPrivateIpAddresses => ArrayRef[EC2_AssignedPrivateIpAddress]
 
 The private IP addresses assigned to the network interface.
 

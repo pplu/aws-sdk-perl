@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::IAM::PolicyVersion;
-  use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has Document => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute']);
-  has IsDefaultVersion => (is => 'ro', isa => 'Bool');
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+
+  use Types::Standard qw/Str Bool/;
+  use Paws::IAM::Types qw//;
+  has CreateDate => (is => 'ro', isa => Str);
+  has Document => (is => 'ro', isa => Str);
+  has Policy => ( is => 'lazy', builder => sub { my $self = shift;  return decode_json(URL::Encode::url_decode($self->Document)); });
+  has IsDefaultVersion => (is => 'ro', isa => Bool);
+  has VersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'IsDefaultVersion' => {
+                                       'type' => 'Bool'
+                                     },
+               'Document' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

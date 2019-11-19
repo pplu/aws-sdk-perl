@@ -1,17 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Athena::StartQueryExecution;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has QueryExecutionContext => (is => 'ro', isa => 'Paws::Athena::QueryExecutionContext');
-  has QueryString => (is => 'ro', isa => 'Str', required => 1);
-  has ResultConfiguration => (is => 'ro', isa => 'Paws::Athena::ResultConfiguration');
-  has WorkGroup => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Athena::Types qw/Athena_ResultConfiguration Athena_QueryExecutionContext/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has QueryExecutionContext => (is => 'ro', isa => Athena_QueryExecutionContext, predicate => 1);
+  has QueryString => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResultConfiguration => (is => 'ro', isa => Athena_ResultConfiguration, predicate => 1);
+  has WorkGroup => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartQueryExecution');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Athena::StartQueryExecutionOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartQueryExecution');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Athena::StartQueryExecutionOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'QueryString' => 1
+                  },
+  'types' => {
+               'QueryExecutionContext' => {
+                                            'type' => 'Athena_QueryExecutionContext',
+                                            'class' => 'Paws::Athena::QueryExecutionContext'
+                                          },
+               'QueryString' => {
+                                  'type' => 'Str'
+                                },
+               'WorkGroup' => {
+                                'type' => 'Str'
+                              },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'ResultConfiguration' => {
+                                          'class' => 'Paws::Athena::ResultConfiguration',
+                                          'type' => 'Athena_ResultConfiguration'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +106,7 @@ action will fail.
 
 
 
-=head2 QueryExecutionContext => L<Paws::Athena::QueryExecutionContext>
+=head2 QueryExecutionContext => Athena_QueryExecutionContext
 
 The database within which the query executes.
 
@@ -85,7 +118,7 @@ The SQL query statements to be executed.
 
 
 
-=head2 ResultConfiguration => L<Paws::Athena::ResultConfiguration>
+=head2 ResultConfiguration => Athena_ResultConfiguration
 
 Specifies information about where and how to save the results of the
 query execution. If the query runs in a workgroup, then workgroup's

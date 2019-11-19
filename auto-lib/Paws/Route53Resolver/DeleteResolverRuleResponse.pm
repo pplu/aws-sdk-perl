@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Route53Resolver::DeleteResolverRuleResponse;
-  use Moose;
-  has ResolverRule => (is => 'ro', isa => 'Paws::Route53Resolver::ResolverRule');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53Resolver::Types qw/Route53Resolver_ResolverRule/;
+  has ResolverRule => (is => 'ro', isa => Route53Resolver_ResolverRule);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResolverRule' => {
+                                   'type' => 'Route53Resolver_ResolverRule',
+                                   'class' => 'Paws::Route53Resolver::ResolverRule'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Route53Resolver::DeleteResolverRuleResponse
 =head1 ATTRIBUTES
 
 
-=head2 ResolverRule => L<Paws::Route53Resolver::ResolverRule>
+=head2 ResolverRule => Route53Resolver_ResolverRule
 
 Information about the C<DeleteResolverRule> request, including the
 status of the request.

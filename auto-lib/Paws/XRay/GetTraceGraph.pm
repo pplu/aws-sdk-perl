@@ -1,15 +1,36 @@
 
 package Paws::XRay::GetTraceGraph;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has TraceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::XRay::Types qw//;
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has TraceIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetTraceGraph');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/TraceGraph');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::XRay::GetTraceGraphResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetTraceGraph');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/TraceGraph');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::XRay::GetTraceGraphResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TraceIds' => 1
+                  },
+  'types' => {
+               'TraceIds' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

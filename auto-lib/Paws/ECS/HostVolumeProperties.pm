@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::ECS::HostVolumeProperties;
-  use Moose;
-  has SourcePath => (is => 'ro', isa => 'Str', request_name => 'sourcePath', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has SourcePath => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourcePath' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'SourcePath' => 'sourcePath'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

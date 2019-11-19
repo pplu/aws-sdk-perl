@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Rekognition::Landmark;
-  use Moose;
-  has Type => (is => 'ro', isa => 'Str');
-  has X => (is => 'ro', isa => 'Num');
-  has Y => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::Rekognition::Types qw//;
+  has Type => (is => 'ro', isa => Str);
+  has X => (is => 'ro', isa => Num);
+  has Y => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'X' => {
+                        'type' => 'Num'
+                      },
+               'Y' => {
+                        'type' => 'Num'
+                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

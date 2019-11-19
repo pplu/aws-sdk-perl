@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::CloudWatchEvents::NetworkConfiguration;
-  use Moose;
-  has AwsvpcConfiguration => (is => 'ro', isa => 'Paws::CloudWatchEvents::AwsVpcConfiguration', request_name => 'awsvpcConfiguration', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_AwsVpcConfiguration/;
+  has AwsvpcConfiguration => (is => 'ro', isa => CloudWatchEvents_AwsVpcConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AwsvpcConfiguration' => 'awsvpcConfiguration'
+                     },
+  'types' => {
+               'AwsvpcConfiguration' => {
+                                          'class' => 'Paws::CloudWatchEvents::AwsVpcConfiguration',
+                                          'type' => 'CloudWatchEvents_AwsVpcConfiguration'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ This structure specifies the network configuration for an ECS task.
 =head1 ATTRIBUTES
 
 
-=head2 AwsvpcConfiguration => L<Paws::CloudWatchEvents::AwsVpcConfiguration>
+=head2 AwsvpcConfiguration => CloudWatchEvents_AwsVpcConfiguration
 
   Use this structure to specify the VPC subnets and security groups for
 the task and whether a public IP address is to be used. This structure

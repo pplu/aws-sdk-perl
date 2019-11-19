@@ -1,10 +1,35 @@
 
 package Paws::AppSync::ListApiKeysResponse;
-  use Moose;
-  has ApiKeys => (is => 'ro', isa => 'ArrayRef[Paws::AppSync::ApiKey]', traits => ['NameInRequest'], request_name => 'apiKeys');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppSync::Types qw/AppSync_ApiKey/;
+  has ApiKeys => (is => 'ro', isa => ArrayRef[AppSync_ApiKey]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ApiKeys' => 'apiKeys',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ApiKeys' => {
+                              'type' => 'ArrayRef[AppSync_ApiKey]',
+                              'class' => 'Paws::AppSync::ApiKey'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::AppSync::ListApiKeysResponse
 =head1 ATTRIBUTES
 
 
-=head2 ApiKeys => ArrayRef[L<Paws::AppSync::ApiKey>]
+=head2 ApiKeys => ArrayRef[AppSync_ApiKey]
 
 The C<ApiKey> objects.
 

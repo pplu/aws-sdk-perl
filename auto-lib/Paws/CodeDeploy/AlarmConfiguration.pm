@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::AlarmConfiguration;
-  use Moose;
-  has Alarms => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Alarm]', request_name => 'alarms', traits => ['NameInRequest']);
-  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
-  has IgnorePollAlarmFailure => (is => 'ro', isa => 'Bool', request_name => 'ignorePollAlarmFailure', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Bool/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_Alarm/;
+  has Alarms => (is => 'ro', isa => ArrayRef[CodeDeploy_Alarm]);
+  has Enabled => (is => 'ro', isa => Bool);
+  has IgnorePollAlarmFailure => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Enabled' => 'enabled',
+                       'Alarms' => 'alarms',
+                       'IgnorePollAlarmFailure' => 'ignorePollAlarmFailure'
+                     },
+  'types' => {
+               'IgnorePollAlarmFailure' => {
+                                             'type' => 'Bool'
+                                           },
+               'Alarms' => {
+                             'class' => 'Paws::CodeDeploy::Alarm',
+                             'type' => 'ArrayRef[CodeDeploy_Alarm]'
+                           },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ Information about alarms associated with the deployment group.
 =head1 ATTRIBUTES
 
 
-=head2 Alarms => ArrayRef[L<Paws::CodeDeploy::Alarm>]
+=head2 Alarms => ArrayRef[CodeDeploy_Alarm]
 
   A list of alarms configured for the deployment group. A maximum of 10
 alarms can be added to a deployment group.

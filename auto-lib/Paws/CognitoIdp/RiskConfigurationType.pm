@@ -1,11 +1,46 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::RiskConfigurationType;
-  use Moose;
-  has AccountTakeoverRiskConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::AccountTakeoverRiskConfigurationType');
-  has ClientId => (is => 'ro', isa => 'Str');
-  has CompromisedCredentialsRiskConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::CompromisedCredentialsRiskConfigurationType');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has RiskExceptionConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::RiskExceptionConfigurationType');
-  has UserPoolId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_RiskExceptionConfigurationType CognitoIdp_AccountTakeoverRiskConfigurationType CognitoIdp_CompromisedCredentialsRiskConfigurationType/;
+  has AccountTakeoverRiskConfiguration => (is => 'ro', isa => CognitoIdp_AccountTakeoverRiskConfigurationType);
+  has ClientId => (is => 'ro', isa => Str);
+  has CompromisedCredentialsRiskConfiguration => (is => 'ro', isa => CognitoIdp_CompromisedCredentialsRiskConfigurationType);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has RiskExceptionConfiguration => (is => 'ro', isa => CognitoIdp_RiskExceptionConfigurationType);
+  has UserPoolId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountTakeoverRiskConfiguration' => {
+                                                       'class' => 'Paws::CognitoIdp::AccountTakeoverRiskConfigurationType',
+                                                       'type' => 'CognitoIdp_AccountTakeoverRiskConfigurationType'
+                                                     },
+               'RiskExceptionConfiguration' => {
+                                                 'type' => 'CognitoIdp_RiskExceptionConfigurationType',
+                                                 'class' => 'Paws::CognitoIdp::RiskExceptionConfigurationType'
+                                               },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'CompromisedCredentialsRiskConfiguration' => {
+                                                              'type' => 'CognitoIdp_CompromisedCredentialsRiskConfigurationType',
+                                                              'class' => 'Paws::CognitoIdp::CompromisedCredentialsRiskConfigurationType'
+                                                            },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +76,7 @@ The risk configuration type.
 =head1 ATTRIBUTES
 
 
-=head2 AccountTakeoverRiskConfiguration => L<Paws::CognitoIdp::AccountTakeoverRiskConfigurationType>
+=head2 AccountTakeoverRiskConfiguration => CognitoIdp_AccountTakeoverRiskConfigurationType
 
   The account takeover risk configuration object including the
 C<NotifyConfiguration> object and C<Actions> to take in the case of an
@@ -53,7 +88,7 @@ account takeover.
   The app client ID.
 
 
-=head2 CompromisedCredentialsRiskConfiguration => L<Paws::CognitoIdp::CompromisedCredentialsRiskConfigurationType>
+=head2 CompromisedCredentialsRiskConfiguration => CognitoIdp_CompromisedCredentialsRiskConfigurationType
 
   The compromised credentials risk configuration object including the
 C<EventFilter> and the C<EventAction>
@@ -64,7 +99,7 @@ C<EventFilter> and the C<EventAction>
   The last modified date.
 
 
-=head2 RiskExceptionConfiguration => L<Paws::CognitoIdp::RiskExceptionConfigurationType>
+=head2 RiskExceptionConfiguration => CognitoIdp_RiskExceptionConfigurationType
 
   The configuration to override the risk decision.
 

@@ -1,17 +1,53 @@
 
 package Paws::MediaConvert::UpdatePreset;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'category');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::PresetSettings', traits => ['NameInRequest'], request_name => 'settings');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_PresetSettings/;
+  has Category => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Settings => (is => 'ro', isa => MediaConvert_PresetSettings, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePreset');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/presets/{name}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConvert::UpdatePresetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdatePreset');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-08-29/presets/{name}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConvert::UpdatePresetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Name' => 'name'
+                  },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'Settings' => 'settings',
+                       'Category' => 'category',
+                       'Description' => 'description'
+                     },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'Settings' => {
+                               'type' => 'MediaConvert_PresetSettings',
+                               'class' => 'Paws::MediaConvert::PresetSettings'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -718,7 +754,7 @@ The name of the preset you are modifying.
 
 
 
-=head2 Settings => L<Paws::MediaConvert::PresetSettings>
+=head2 Settings => MediaConvert_PresetSettings
 
 Settings for preset
 

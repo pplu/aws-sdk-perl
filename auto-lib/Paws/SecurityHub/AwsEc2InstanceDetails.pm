@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::AwsEc2InstanceDetails;
-  use Moose;
-  has IamInstanceProfileArn => (is => 'ro', isa => 'Str');
-  has ImageId => (is => 'ro', isa => 'Str');
-  has IpV4Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has IpV6Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has KeyName => (is => 'ro', isa => 'Str');
-  has LaunchedAt => (is => 'ro', isa => 'Str');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::SecurityHub::Types qw//;
+  has IamInstanceProfileArn => (is => 'ro', isa => Str);
+  has ImageId => (is => 'ro', isa => Str);
+  has IpV4Addresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has IpV6Addresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has KeyName => (is => 'ro', isa => Str);
+  has LaunchedAt => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IpV4Addresses' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'IamInstanceProfileArn' => {
+                                            'type' => 'Str'
+                                          },
+               'IpV6Addresses' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'LaunchedAt' => {
+                                 'type' => 'Str'
+                               },
+               'KeyName' => {
+                              'type' => 'Str'
+                            },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

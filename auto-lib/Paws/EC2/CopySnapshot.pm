@@ -1,21 +1,73 @@
 
 package Paws::EC2::CopySnapshot;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DestinationRegion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationRegion' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Encrypted => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'encrypted' );
-  has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kmsKeyId' );
-  has PresignedUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'presignedUrl' );
-  has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
-  has SourceSnapshotId => (is => 'ro', isa => 'Str', required => 1);
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_TagSpecification/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationRegion => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Encrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has PresignedUrl => (is => 'ro', isa => Str, predicate => 1);
+  has SourceRegion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceSnapshotId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_TagSpecification], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopySnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CopySnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopySnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CopySnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SourceRegion' => 1,
+                    'SourceSnapshotId' => 1
+                  },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'PresignedUrl' => 'presignedUrl',
+                       'DestinationRegion' => 'destinationRegion',
+                       'Encrypted' => 'encrypted',
+                       'TagSpecifications' => 'TagSpecification',
+                       'KmsKeyId' => 'kmsKeyId'
+                     },
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'DestinationRegion' => {
+                                        'type' => 'Str'
+                                      },
+               'PresignedUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'SourceSnapshotId' => {
+                                       'type' => 'Str'
+                                     },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'TagSpecifications' => {
+                                        'type' => 'ArrayRef[EC2_TagSpecification]',
+                                        'class' => 'Paws::EC2::TagSpecification'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'SourceRegion' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -169,7 +221,7 @@ The ID of the EBS snapshot to copy.
 
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_TagSpecification]
 
 
 

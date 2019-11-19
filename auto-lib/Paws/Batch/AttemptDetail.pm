@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::Batch::AttemptDetail;
-  use Moose;
-  has Container => (is => 'ro', isa => 'Paws::Batch::AttemptContainerDetail', request_name => 'container', traits => ['NameInRequest']);
-  has StartedAt => (is => 'ro', isa => 'Int', request_name => 'startedAt', traits => ['NameInRequest']);
-  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
-  has StoppedAt => (is => 'ro', isa => 'Int', request_name => 'stoppedAt', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Batch::Types qw/Batch_AttemptContainerDetail/;
+  has Container => (is => 'ro', isa => Batch_AttemptContainerDetail);
+  has StartedAt => (is => 'ro', isa => Int);
+  has StatusReason => (is => 'ro', isa => Str);
+  has StoppedAt => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'StoppedAt' => 'stoppedAt',
+                       'StartedAt' => 'startedAt',
+                       'Container' => 'container',
+                       'StatusReason' => 'statusReason'
+                     },
+  'types' => {
+               'Container' => {
+                                'class' => 'Paws::Batch::AttemptContainerDetail',
+                                'type' => 'Batch_AttemptContainerDetail'
+                              },
+               'StoppedAt' => {
+                                'type' => 'Int'
+                              },
+               'StartedAt' => {
+                                'type' => 'Int'
+                              },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +72,7 @@ An object representing a job attempt.
 =head1 ATTRIBUTES
 
 
-=head2 Container => L<Paws::Batch::AttemptContainerDetail>
+=head2 Container => Batch_AttemptContainerDetail
 
   Details about the container in this job attempt.
 

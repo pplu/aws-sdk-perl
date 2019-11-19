@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::IAM::ServiceSpecificCredentialMetadata;
-  use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceName => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceSpecificCredentialId => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceUserName => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has CreateDate => (is => 'ro', isa => Str, required => 1);
+  has ServiceName => (is => 'ro', isa => Str, required => 1);
+  has ServiceSpecificCredentialId => (is => 'ro', isa => Str, required => 1);
+  has ServiceUserName => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceUserName' => {
+                                      'type' => 'Str'
+                                    },
+               'ServiceSpecificCredentialId' => {
+                                                  'type' => 'Str'
+                                                },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ServiceUserName' => 1,
+                    'ServiceSpecificCredentialId' => 1,
+                    'ServiceName' => 1,
+                    'UserName' => 1,
+                    'Status' => 1,
+                    'CreateDate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

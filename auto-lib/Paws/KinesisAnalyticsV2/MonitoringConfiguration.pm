@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::MonitoringConfiguration;
-  use Moose;
-  has ConfigurationType => (is => 'ro', isa => 'Str', required => 1);
-  has LogLevel => (is => 'ro', isa => 'Str');
-  has MetricsLevel => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has ConfigurationType => (is => 'ro', isa => Str, required => 1);
+  has LogLevel => (is => 'ro', isa => Str);
+  has MetricsLevel => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfigurationType' => 1
+                  },
+  'types' => {
+               'LogLevel' => {
+                               'type' => 'Str'
+                             },
+               'MetricsLevel' => {
+                                   'type' => 'Str'
+                                 },
+               'ConfigurationType' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

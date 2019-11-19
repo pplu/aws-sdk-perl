@@ -1,20 +1,66 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Datasync::CreateLocationSmb;
-  use Moose;
-  has AgentArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Domain => (is => 'ro', isa => 'Str');
-  has MountOptions => (is => 'ro', isa => 'Paws::Datasync::SmbMountOptions');
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has ServerHostname => (is => 'ro', isa => 'Str', required => 1);
-  has Subdirectory => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TagListEntry]');
-  has User => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Datasync::Types qw/Datasync_TagListEntry Datasync_SmbMountOptions/;
+  has AgentArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, predicate => 1);
+  has MountOptions => (is => 'ro', isa => Datasync_SmbMountOptions, predicate => 1);
+  has Password => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServerHostname => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Subdirectory => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Datasync_TagListEntry], predicate => 1);
+  has User => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLocationSmb');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Datasync::CreateLocationSmbResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLocationSmb');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Datasync::CreateLocationSmbResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Subdirectory' => 1,
+                    'User' => 1,
+                    'AgentArns' => 1,
+                    'Password' => 1,
+                    'ServerHostname' => 1
+                  },
+  'types' => {
+               'User' => {
+                           'type' => 'Str'
+                         },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'MountOptions' => {
+                                   'type' => 'Datasync_SmbMountOptions',
+                                   'class' => 'Paws::Datasync::SmbMountOptions'
+                                 },
+               'Subdirectory' => {
+                                   'type' => 'Str'
+                                 },
+               'ServerHostname' => {
+                                     'type' => 'Str'
+                                   },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'AgentArns' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Tags' => {
+                           'type' => 'ArrayRef[Datasync_TagListEntry]',
+                           'class' => 'Paws::Datasync::TagListEntry'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +125,7 @@ The name of the Windows domain that the SMB server belongs to.
 
 
 
-=head2 MountOptions => L<Paws::Datasync::SmbMountOptions>
+=head2 MountOptions => Datasync_SmbMountOptions
 
 The mount options used by DataSync to access the SMB server.
 
@@ -123,7 +169,7 @@ directories, you must additionally enable all execute access.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]
+=head2 Tags => ArrayRef[Datasync_TagListEntry]
 
 The key-value pair that represents the tag that you want to add to the
 location. The value can be an empty string. We recommend using tags to

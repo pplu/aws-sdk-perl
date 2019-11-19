@@ -1,19 +1,95 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Input;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has AttachedChannels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'attachedChannels', traits => ['NameInRequest']);
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestination]', request_name => 'destinations', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has InputClass => (is => 'ro', isa => 'Str', request_name => 'inputClass', traits => ['NameInRequest']);
-  has InputSourceType => (is => 'ro', isa => 'Str', request_name => 'inputSourceType', traits => ['NameInRequest']);
-  has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlow]', request_name => 'mediaConnectFlows', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
-  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSource]', request_name => 'sources', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaLive::Types qw/MediaLive_MediaConnectFlow MediaLive_InputSource MediaLive_InputDestination MediaLive_Tags/;
+  has Arn => (is => 'ro', isa => Str);
+  has AttachedChannels => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Destinations => (is => 'ro', isa => ArrayRef[MediaLive_InputDestination]);
+  has Id => (is => 'ro', isa => Str);
+  has InputClass => (is => 'ro', isa => Str);
+  has InputSourceType => (is => 'ro', isa => Str);
+  has MediaConnectFlows => (is => 'ro', isa => ArrayRef[MediaLive_MediaConnectFlow]);
+  has Name => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Sources => (is => 'ro', isa => ArrayRef[MediaLive_InputSource]);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => MediaLive_Tags);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Destinations' => {
+                                   'type' => 'ArrayRef[MediaLive_InputDestination]',
+                                   'class' => 'Paws::MediaLive::InputDestination'
+                                 },
+               'Tags' => {
+                           'type' => 'MediaLive_Tags',
+                           'class' => 'Paws::MediaLive::Tags'
+                         },
+               'AttachedChannels' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'InputClass' => {
+                                 'type' => 'Str'
+                               },
+               'Sources' => {
+                              'type' => 'ArrayRef[MediaLive_InputSource]',
+                              'class' => 'Paws::MediaLive::InputSource'
+                            },
+               'MediaConnectFlows' => {
+                                        'class' => 'Paws::MediaLive::MediaConnectFlow',
+                                        'type' => 'ArrayRef[MediaLive_MediaConnectFlow]'
+                                      },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'InputSourceType' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'Sources' => 'sources',
+                       'Type' => 'type',
+                       'RoleArn' => 'roleArn',
+                       'MediaConnectFlows' => 'mediaConnectFlows',
+                       'AttachedChannels' => 'attachedChannels',
+                       'Tags' => 'tags',
+                       'Destinations' => 'destinations',
+                       'InputClass' => 'inputClass',
+                       'Arn' => 'arn',
+                       'Id' => 'id',
+                       'SecurityGroups' => 'securityGroups',
+                       'InputSourceType' => 'inputSourceType',
+                       'State' => 'state',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +136,7 @@ Placeholder documentation for Input
 input can only be attached to one channel).
 
 
-=head2 Destinations => ArrayRef[L<Paws::MediaLive::InputDestination>]
+=head2 Destinations => ArrayRef[MediaLive_InputDestination]
 
   A list of the destinations of the input (PUSH-type).
 
@@ -89,7 +165,7 @@ their URL's dynamically changes during input switch actions. Presently,
 this functionality only works with MP4_FILE inputs.
 
 
-=head2 MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlow>]
+=head2 MediaConnectFlows => ArrayRef[MediaLive_MediaConnectFlow]
 
   A list of MediaConnect Flows for this input.
 
@@ -110,7 +186,7 @@ and after creation.
   A list of IDs for all the Input Security Groups attached to the input.
 
 
-=head2 Sources => ArrayRef[L<Paws::MediaLive::InputSource>]
+=head2 Sources => ArrayRef[MediaLive_InputSource]
 
   A list of the sources of the input (PULL-type).
 
@@ -120,7 +196,7 @@ and after creation.
   
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
   A collection of key-value pairs.
 

@@ -1,13 +1,62 @@
+# Generated from default/object.tt
 package Paws::DataExchange::JobEntry;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has CreatedAt => (is => 'ro', isa => 'Str', required => 1);
-  has Details => (is => 'ro', isa => 'Paws::DataExchange::ResponseDetails', required => 1);
-  has Errors => (is => 'ro', isa => 'ArrayRef[Paws::DataExchange::JobError]');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has State => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str', required => 1);
-  has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DataExchange::Types qw/DataExchange_ResponseDetails DataExchange_JobError/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has CreatedAt => (is => 'ro', isa => Str, required => 1);
+  has Details => (is => 'ro', isa => DataExchange_ResponseDetails, required => 1);
+  has Errors => (is => 'ro', isa => ArrayRef[DataExchange_JobError]);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has State => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+  has UpdatedAt => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Details' => {
+                              'class' => 'Paws::DataExchange::ResponseDetails',
+                              'type' => 'DataExchange_ResponseDetails'
+                            },
+               'Errors' => {
+                             'class' => 'Paws::DataExchange::JobError',
+                             'type' => 'ArrayRef[DataExchange_JobError]'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'CreatedAt' => 1,
+                    'UpdatedAt' => 1,
+                    'State' => 1,
+                    'Id' => 1,
+                    'Arn' => 1,
+                    'Details' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,13 +105,13 @@ only export. Jobs are deleted 90 days after they are created.
   The date and time that the job was created, in ISO 8601 format.
 
 
-=head2 B<REQUIRED> Details => L<Paws::DataExchange::ResponseDetails>
+=head2 B<REQUIRED> Details => DataExchange_ResponseDetails
 
   Details of the operation to be performed by the job, such as export
 destination details or import source details.
 
 
-=head2 Errors => ArrayRef[L<Paws::DataExchange::JobError>]
+=head2 Errors => ArrayRef[DataExchange_JobError]
 
   Errors for jobs.
 

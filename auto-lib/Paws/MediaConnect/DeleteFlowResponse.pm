@@ -1,10 +1,34 @@
 
 package Paws::MediaConnect::DeleteFlowResponse;
-  use Moose;
-  has FlowArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'flowArn');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConnect::Types qw//;
+  has FlowArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FlowArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'FlowArn' => 'flowArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchEvents::PutPartnerEventsResponse;
-  use Moose;
-  has Entries => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::PutPartnerEventsResultEntry]');
-  has FailedEntryCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_PutPartnerEventsResultEntry/;
+  has Entries => (is => 'ro', isa => ArrayRef[CloudWatchEvents_PutPartnerEventsResultEntry]);
+  has FailedEntryCount => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailedEntryCount' => {
+                                       'type' => 'Int'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Entries' => {
+                              'type' => 'ArrayRef[CloudWatchEvents_PutPartnerEventsResultEntry]',
+                              'class' => 'Paws::CloudWatchEvents::PutPartnerEventsResultEntry'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::CloudWatchEvents::PutPartnerEventsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Entries => ArrayRef[L<Paws::CloudWatchEvents::PutPartnerEventsResultEntry>]
+=head2 Entries => ArrayRef[CloudWatchEvents_PutPartnerEventsResultEntry]
 
 The list of events from this operation that were successfully written
 to the partner event bus.

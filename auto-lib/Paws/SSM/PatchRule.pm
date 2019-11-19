@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::SSM::PatchRule;
-  use Moose;
-  has ApproveAfterDays => (is => 'ro', isa => 'Int', required => 1);
-  has ComplianceLevel => (is => 'ro', isa => 'Str');
-  has EnableNonSecurity => (is => 'ro', isa => 'Bool');
-  has PatchFilterGroup => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str Bool/;
+  use Paws::SSM::Types qw/SSM_PatchFilterGroup/;
+  has ApproveAfterDays => (is => 'ro', isa => Int, required => 1);
+  has ComplianceLevel => (is => 'ro', isa => Str);
+  has EnableNonSecurity => (is => 'ro', isa => Bool);
+  has PatchFilterGroup => (is => 'ro', isa => SSM_PatchFilterGroup, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PatchFilterGroup' => 1,
+                    'ApproveAfterDays' => 1
+                  },
+  'types' => {
+               'EnableNonSecurity' => {
+                                        'type' => 'Bool'
+                                      },
+               'ComplianceLevel' => {
+                                      'type' => 'Str'
+                                    },
+               'PatchFilterGroup' => {
+                                       'type' => 'SSM_PatchFilterGroup',
+                                       'class' => 'Paws::SSM::PatchFilterGroup'
+                                     },
+               'ApproveAfterDays' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +93,7 @@ repository. The default value is 'false'. Applies to Linux instances
 only.
 
 
-=head2 B<REQUIRED> PatchFilterGroup => L<Paws::SSM::PatchFilterGroup>
+=head2 B<REQUIRED> PatchFilterGroup => SSM_PatchFilterGroup
 
   The patch filter group that defines the criteria for the rule.
 

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::WebhookAuthConfiguration;
-  use Moose;
-  has AllowedIPRange => (is => 'ro', isa => 'Str');
-  has SecretToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has AllowedIPRange => (is => 'ro', isa => Str);
+  has SecretToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecretToken' => {
+                                  'type' => 'Str'
+                                },
+               'AllowedIPRange' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

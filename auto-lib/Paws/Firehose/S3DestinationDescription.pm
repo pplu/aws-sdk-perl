@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::Firehose::S3DestinationDescription;
-  use Moose;
-  has BucketARN => (is => 'ro', isa => 'Str', required => 1);
-  has BufferingHints => (is => 'ro', isa => 'Paws::Firehose::BufferingHints', required => 1);
-  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
-  has CompressionFormat => (is => 'ro', isa => 'Str', required => 1);
-  has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::EncryptionConfiguration', required => 1);
-  has ErrorOutputPrefix => (is => 'ro', isa => 'Str');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw/Firehose_EncryptionConfiguration Firehose_CloudWatchLoggingOptions Firehose_BufferingHints/;
+  has BucketARN => (is => 'ro', isa => Str, required => 1);
+  has BufferingHints => (is => 'ro', isa => Firehose_BufferingHints, required => 1);
+  has CloudWatchLoggingOptions => (is => 'ro', isa => Firehose_CloudWatchLoggingOptions);
+  has CompressionFormat => (is => 'ro', isa => Str, required => 1);
+  has EncryptionConfiguration => (is => 'ro', isa => Firehose_EncryptionConfiguration, required => 1);
+  has ErrorOutputPrefix => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+  has RoleARN => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EncryptionConfiguration' => {
+                                              'class' => 'Paws::Firehose::EncryptionConfiguration',
+                                              'type' => 'Firehose_EncryptionConfiguration'
+                                            },
+               'CompressionFormat' => {
+                                        'type' => 'Str'
+                                      },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'ErrorOutputPrefix' => {
+                                        'type' => 'Str'
+                                      },
+               'BucketARN' => {
+                                'type' => 'Str'
+                              },
+               'CloudWatchLoggingOptions' => {
+                                               'type' => 'Firehose_CloudWatchLoggingOptions',
+                                               'class' => 'Paws::Firehose::CloudWatchLoggingOptions'
+                                             },
+               'BufferingHints' => {
+                                     'type' => 'Firehose_BufferingHints',
+                                     'class' => 'Paws::Firehose::BufferingHints'
+                                   }
+             },
+  'IsRequired' => {
+                    'RoleARN' => 1,
+                    'BufferingHints' => 1,
+                    'CompressionFormat' => 1,
+                    'BucketARN' => 1,
+                    'EncryptionConfiguration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,13 +98,13 @@ Names (ARNs) and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
-=head2 B<REQUIRED> BufferingHints => L<Paws::Firehose::BufferingHints>
+=head2 B<REQUIRED> BufferingHints => Firehose_BufferingHints
 
   The buffering option. If no value is specified, C<BufferingHints>
 object default values are used.
 
 
-=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+=head2 CloudWatchLoggingOptions => Firehose_CloudWatchLoggingOptions
 
   The Amazon CloudWatch logging options for your delivery stream.
 
@@ -67,7 +115,7 @@ object default values are used.
 C<UNCOMPRESSED>.
 
 
-=head2 B<REQUIRED> EncryptionConfiguration => L<Paws::Firehose::EncryptionConfiguration>
+=head2 B<REQUIRED> EncryptionConfiguration => Firehose_EncryptionConfiguration
 
   The encryption configuration. If no value is specified, the default is
 no encryption.

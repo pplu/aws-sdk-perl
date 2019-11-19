@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::IPSet;
-  use Moose;
-  has IPSetDescriptors => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::IPSetDescriptor]', required => 1);
-  has IPSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_IPSetDescriptor/;
+  has IPSetDescriptors => (is => 'ro', isa => ArrayRef[WAFRegional_IPSetDescriptor], required => 1);
+  has IPSetId => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'IPSetDescriptors' => 1,
+                    'IPSetId' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'IPSetId' => {
+                              'type' => 'Str'
+                            },
+               'IPSetDescriptors' => {
+                                       'type' => 'ArrayRef[WAFRegional_IPSetDescriptor]',
+                                       'class' => 'Paws::WAFRegional::IPSetDescriptor'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +77,7 @@ Classless Inter-Domain Routing
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> IPSetDescriptors => ArrayRef[L<Paws::WAFRegional::IPSetDescriptor>]
+=head2 B<REQUIRED> IPSetDescriptors => ArrayRef[WAFRegional_IPSetDescriptor]
 
   The IP address type (C<IPV4> or C<IPV6>) and the IP address range (in
 CIDR notation) that web requests originate from. If the C<WebACL> is

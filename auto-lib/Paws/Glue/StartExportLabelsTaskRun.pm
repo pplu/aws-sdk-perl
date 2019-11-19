@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::StartExportLabelsTaskRun;
-  use Moose;
-  has OutputS3Path => (is => 'ro', isa => 'Str', required => 1);
-  has TransformId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has OutputS3Path => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TransformId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartExportLabelsTaskRun');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::StartExportLabelsTaskRunResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartExportLabelsTaskRun');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::StartExportLabelsTaskRunResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TransformId' => 1,
+                    'OutputS3Path' => 1
+                  },
+  'types' => {
+               'OutputS3Path' => {
+                                   'type' => 'Str'
+                                 },
+               'TransformId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

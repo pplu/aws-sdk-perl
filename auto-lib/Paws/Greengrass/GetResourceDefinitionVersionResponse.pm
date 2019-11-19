@@ -1,13 +1,43 @@
 
 package Paws::Greengrass::GetResourceDefinitionVersionResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreationTimestamp => (is => 'ro', isa => 'Str');
-  has Definition => (is => 'ro', isa => 'Paws::Greengrass::ResourceDefinitionVersion');
-  has Id => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass_ResourceDefinitionVersion/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTimestamp => (is => 'ro', isa => Str);
+  has Definition => (is => 'ro', isa => Greengrass_ResourceDefinitionVersion);
+  has Id => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Definition' => {
+                                 'type' => 'Greengrass_ResourceDefinitionVersion',
+                                 'class' => 'Paws::Greengrass::ResourceDefinitionVersion'
+                               },
+               'CreationTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +60,7 @@ The time, in milliseconds since the epoch, when the resource definition
 version was created.
 
 
-=head2 Definition => L<Paws::Greengrass::ResourceDefinitionVersion>
+=head2 Definition => Greengrass_ResourceDefinitionVersion
 
 Information about the definition.
 

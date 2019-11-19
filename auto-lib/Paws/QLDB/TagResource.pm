@@ -1,15 +1,41 @@
 
 package Paws::QLDB::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceArn', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::QLDB::Tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::QLDB::Types qw/QLDB_Tags/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => QLDB_Tags, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tags/{resourceArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::QLDB::TagResourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tags/{resourceArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::QLDB::TagResourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'Tags' => 1
+                  },
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'QLDB_Tags',
+                           'class' => 'Paws::QLDB::Tags'
+                         }
+             },
+  'ParamInURI' => {
+                    'ResourceArn' => 'resourceArn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +78,7 @@ C<arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger>
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::QLDB::Tags>
+=head2 B<REQUIRED> Tags => QLDB_Tags
 
 The key-value pairs to add as tags to the specified QLDB resource. Tag
 keys are case sensitive. If you specify a key that already exists for

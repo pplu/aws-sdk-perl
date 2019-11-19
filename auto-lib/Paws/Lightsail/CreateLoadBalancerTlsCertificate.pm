@@ -1,17 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::CreateLoadBalancerTlsCertificate;
-  use Moose;
-  has CertificateAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'certificateAlternativeNames' );
-  has CertificateDomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateDomainName' , required => 1);
-  has CertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateName' , required => 1);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loadBalancerName' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_Tag/;
+  has CertificateAlternativeNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has CertificateDomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CertificateName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerTlsCertificate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::CreateLoadBalancerTlsCertificateResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLoadBalancerTlsCertificate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::CreateLoadBalancerTlsCertificateResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CertificateAlternativeNames' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'CertificateDomainName' => {
+                                            'type' => 'Str'
+                                          },
+               'Tags' => {
+                           'type' => 'ArrayRef[Lightsail_Tag]',
+                           'class' => 'Paws::Lightsail::Tag'
+                         },
+               'CertificateName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'CertificateDomainName' => 'certificateDomainName',
+                       'LoadBalancerName' => 'loadBalancerName',
+                       'CertificateAlternativeNames' => 'certificateAlternativeNames',
+                       'CertificateName' => 'certificateName',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'LoadBalancerName' => 1,
+                    'CertificateDomainName' => 1,
+                    'CertificateName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +133,7 @@ certificate.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
 The tag keys and optional values to add to the resource during create.
 

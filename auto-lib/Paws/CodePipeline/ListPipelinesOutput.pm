@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodePipeline::ListPipelinesOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Pipelines => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::PipelineSummary]', traits => ['NameInRequest'], request_name => 'pipelines' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_PipelineSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Pipelines => (is => 'ro', isa => ArrayRef[CodePipeline_PipelineSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Pipelines' => {
+                                'class' => 'Paws::CodePipeline::PipelineSummary',
+                                'type' => 'ArrayRef[CodePipeline_PipelineSummary]'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Pipelines' => 'pipelines'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +48,7 @@ identifier is also returned. It can be used in a subsequent list
 pipelines call to return the next set of pipelines in the list.
 
 
-=head2 Pipelines => ArrayRef[L<Paws::CodePipeline::PipelineSummary>]
+=head2 Pipelines => ArrayRef[CodePipeline_PipelineSummary]
 
 The list of pipelines.
 

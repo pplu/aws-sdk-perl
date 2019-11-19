@@ -1,13 +1,62 @@
+# Generated from default/object.tt
 package Paws::SavingsPlans::SavingsPlanRate;
-  use Moose;
-  has Currency => (is => 'ro', isa => 'Str', request_name => 'currency', traits => ['NameInRequest']);
-  has Operation => (is => 'ro', isa => 'Str', request_name => 'operation', traits => ['NameInRequest']);
-  has ProductType => (is => 'ro', isa => 'Str', request_name => 'productType', traits => ['NameInRequest']);
-  has Properties => (is => 'ro', isa => 'ArrayRef[Paws::SavingsPlans::SavingsPlanRateProperty]', request_name => 'properties', traits => ['NameInRequest']);
-  has Rate => (is => 'ro', isa => 'Str', request_name => 'rate', traits => ['NameInRequest']);
-  has ServiceCode => (is => 'ro', isa => 'Str', request_name => 'serviceCode', traits => ['NameInRequest']);
-  has Unit => (is => 'ro', isa => 'Str', request_name => 'unit', traits => ['NameInRequest']);
-  has UsageType => (is => 'ro', isa => 'Str', request_name => 'usageType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SavingsPlans::Types qw/SavingsPlans_SavingsPlanRateProperty/;
+  has Currency => (is => 'ro', isa => Str);
+  has Operation => (is => 'ro', isa => Str);
+  has ProductType => (is => 'ro', isa => Str);
+  has Properties => (is => 'ro', isa => ArrayRef[SavingsPlans_SavingsPlanRateProperty]);
+  has Rate => (is => 'ro', isa => Str);
+  has ServiceCode => (is => 'ro', isa => Str);
+  has Unit => (is => 'ro', isa => Str);
+  has UsageType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UsageType' => {
+                                'type' => 'Str'
+                              },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'Operation' => {
+                                'type' => 'Str'
+                              },
+               'ProductType' => {
+                                  'type' => 'Str'
+                                },
+               'Rate' => {
+                           'type' => 'Str'
+                         },
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                },
+               'Properties' => {
+                                 'class' => 'Paws::SavingsPlans::SavingsPlanRateProperty',
+                                 'type' => 'ArrayRef[SavingsPlans_SavingsPlanRateProperty]'
+                               },
+               'Currency' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'ServiceCode' => 'serviceCode',
+                       'Properties' => 'properties',
+                       'Currency' => 'currency',
+                       'Operation' => 'operation',
+                       'UsageType' => 'usageType',
+                       'Unit' => 'unit',
+                       'Rate' => 'rate',
+                       'ProductType' => 'productType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +107,7 @@ Information about a Savings Plan rate.
   The product type.
 
 
-=head2 Properties => ArrayRef[L<Paws::SavingsPlans::SavingsPlanRateProperty>]
+=head2 Properties => ArrayRef[SavingsPlans_SavingsPlanRateProperty]
 
   The properties.
 

@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::EMR::AutoScalingPolicy;
-  use Moose;
-  has Constraints => (is => 'ro', isa => 'Paws::EMR::ScalingConstraints', required => 1);
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::EMR::ScalingRule]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::EMR::Types qw/EMR_ScalingRule EMR_ScalingConstraints/;
+  has Constraints => (is => 'ro', isa => EMR_ScalingConstraints, required => 1);
+  has Rules => (is => 'ro', isa => ArrayRef[EMR_ScalingRule], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Constraints' => {
+                                  'type' => 'EMR_ScalingConstraints',
+                                  'class' => 'Paws::EMR::ScalingConstraints'
+                                },
+               'Rules' => {
+                            'type' => 'ArrayRef[EMR_ScalingRule]',
+                            'class' => 'Paws::EMR::ScalingRule'
+                          }
+             },
+  'IsRequired' => {
+                    'Constraints' => 1,
+                    'Rules' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,14 +66,14 @@ response to the value of a CloudWatch metric. See PutAutoScalingPolicy.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Constraints => L<Paws::EMR::ScalingConstraints>
+=head2 B<REQUIRED> Constraints => EMR_ScalingConstraints
 
   The upper and lower EC2 instance limits for an automatic scaling
 policy. Automatic scaling activity will not cause an instance group to
 grow above or below these limits.
 
 
-=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::EMR::ScalingRule>]
+=head2 B<REQUIRED> Rules => ArrayRef[EMR_ScalingRule]
 
   The scale-in and scale-out rules that comprise the automatic scaling
 policy.

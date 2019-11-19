@@ -1,18 +1,63 @@
 
 package Paws::DataExchange::UpdateAssetResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has AssetDetails => (is => 'ro', isa => 'Paws::DataExchange::AssetDetails');
-  has AssetType => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has DataSetId => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has RevisionId => (is => 'ro', isa => 'Str');
-  has SourceId => (is => 'ro', isa => 'Str');
-  has UpdatedAt => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw/DataExchange_AssetDetails/;
+  has Arn => (is => 'ro', isa => Str);
+  has AssetDetails => (is => 'ro', isa => DataExchange_AssetDetails);
+  has AssetType => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DataSetId => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RevisionId => (is => 'ro', isa => Str);
+  has SourceId => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'SourceId' => {
+                               'type' => 'Str'
+                             },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'AssetType' => {
+                                'type' => 'Str'
+                              },
+               'DataSetId' => {
+                                'type' => 'Str'
+                              },
+               'AssetDetails' => {
+                                   'type' => 'DataExchange_AssetDetails',
+                                   'class' => 'Paws::DataExchange::AssetDetails'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +74,7 @@ Paws::DataExchange::UpdateAssetResponse
 The ARN for the asset.
 
 
-=head2 AssetDetails => L<Paws::DataExchange::AssetDetails>
+=head2 AssetDetails => DataExchange_AssetDetails
 
 Information about the asset, including its size.
 

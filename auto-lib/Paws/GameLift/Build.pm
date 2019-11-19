@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::GameLift::Build;
-  use Moose;
-  has BuildId => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OperatingSystem => (is => 'ro', isa => 'Str');
-  has SizeOnDisk => (is => 'ro', isa => 'Int');
-  has Status => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::GameLift::Types qw//;
+  has BuildId => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OperatingSystem => (is => 'ro', isa => Str);
+  has SizeOnDisk => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SizeOnDisk' => {
+                                 'type' => 'Int'
+                               },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'OperatingSystem' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'BuildId' => {
+                              'type' => 'Str'
+                            },
+               'Version' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,21 +1,65 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::PutScheduledUpdateGroupAction;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has DesiredCapacity => (is => 'ro', isa => 'Int');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has MaxSize => (is => 'ro', isa => 'Int');
-  has MinSize => (is => 'ro', isa => 'Int');
-  has Recurrence => (is => 'ro', isa => 'Str');
-  has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Time => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DesiredCapacity => (is => 'ro', isa => Int, predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has MaxSize => (is => 'ro', isa => Int, predicate => 1);
+  has MinSize => (is => 'ro', isa => Int, predicate => 1);
+  has Recurrence => (is => 'ro', isa => Str, predicate => 1);
+  has ScheduledActionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
+  has Time => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutScheduledUpdateGroupAction');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutScheduledUpdateGroupAction');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AutoScalingGroupName' => 1,
+                    'ScheduledActionName' => 1
+                  },
+  'types' => {
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'MaxSize' => {
+                              'type' => 'Int'
+                            },
+               'DesiredCapacity' => {
+                                      'type' => 'Int'
+                                    },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Recurrence' => {
+                                 'type' => 'Str'
+                               },
+               'MinSize' => {
+                              'type' => 'Int'
+                            },
+               'ScheduledActionName' => {
+                                          'type' => 'Str'
+                                        },
+               'Time' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

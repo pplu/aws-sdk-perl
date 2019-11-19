@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetLoadBalancerResult;
-  use Moose;
-  has LoadBalancer => (is => 'ro', isa => 'Paws::Lightsail::LoadBalancer', traits => ['NameInRequest'], request_name => 'loadBalancer' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_LoadBalancer/;
+  has LoadBalancer => (is => 'ro', isa => Lightsail_LoadBalancer);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LoadBalancer' => {
+                                   'class' => 'Paws::Lightsail::LoadBalancer',
+                                   'type' => 'Lightsail_LoadBalancer'
+                                 }
+             },
+  'NameInRequest' => {
+                       'LoadBalancer' => 'loadBalancer'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Lightsail::GetLoadBalancerResult
 =head1 ATTRIBUTES
 
 
-=head2 LoadBalancer => L<Paws::Lightsail::LoadBalancer>
+=head2 LoadBalancer => Lightsail_LoadBalancer
 
 An object containing information about your load balancer.
 

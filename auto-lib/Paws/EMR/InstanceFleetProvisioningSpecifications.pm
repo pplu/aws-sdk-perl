@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceFleetProvisioningSpecifications;
-  use Moose;
-  has SpotSpecification => (is => 'ro', isa => 'Paws::EMR::SpotProvisioningSpecification', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::EMR::Types qw/EMR_SpotProvisioningSpecification/;
+  has SpotSpecification => (is => 'ro', isa => EMR_SpotProvisioningSpecification, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpotSpecification' => {
+                                        'class' => 'Paws::EMR::SpotProvisioningSpecification',
+                                        'type' => 'EMR_SpotProvisioningSpecification'
+                                      }
+             },
+  'IsRequired' => {
+                    'SpotSpecification' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +61,7 @@ versions 4.8.0 and later, excluding 5.0.x versions.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SpotSpecification => L<Paws::EMR::SpotProvisioningSpecification>
+=head2 B<REQUIRED> SpotSpecification => EMR_SpotProvisioningSpecification
 
   The launch specification for Spot instances in the fleet, which
 determines the defined duration and provisioning timeout behavior.

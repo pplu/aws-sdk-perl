@@ -1,17 +1,46 @@
 
 package Paws::MarketplaceCatalog::StartChangeSet;
-  use Moose;
-  has Catalog => (is => 'ro', isa => 'Str', required => 1);
-  has ChangeSet => (is => 'ro', isa => 'ArrayRef[Paws::MarketplaceCatalog::Change]', required => 1);
-  has ChangeSetName => (is => 'ro', isa => 'Str');
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MarketplaceCatalog::Types qw/MarketplaceCatalog_Change/;
+  has Catalog => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ChangeSet => (is => 'ro', isa => ArrayRef[MarketplaceCatalog_Change], required => 1, predicate => 1);
+  has ChangeSetName => (is => 'ro', isa => Str, predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartChangeSet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/StartChangeSet');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MarketplaceCatalog::StartChangeSetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartChangeSet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/StartChangeSet');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MarketplaceCatalog::StartChangeSetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeSetName' => {
+                                    'type' => 'Str'
+                                  },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'ChangeSet' => {
+                                'class' => 'Paws::MarketplaceCatalog::Change',
+                                'type' => 'ArrayRef[MarketplaceCatalog_Change]'
+                              },
+               'Catalog' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'ChangeSet' => 1,
+                    'Catalog' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +96,7 @@ The catalog related to the request. Fixed value: C<AWSMarketplace>
 
 
 
-=head2 B<REQUIRED> ChangeSet => ArrayRef[L<Paws::MarketplaceCatalog::Change>]
+=head2 B<REQUIRED> ChangeSet => ArrayRef[MarketplaceCatalog_Change]
 
 Array of C<change> object.
 

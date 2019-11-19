@@ -1,19 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::RespondToAuthChallenge;
-  use Moose;
-  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
-  has ChallengeName => (is => 'ro', isa => 'Str', required => 1);
-  has ChallengeResponses => (is => 'ro', isa => 'Paws::CognitoIdp::ChallengeResponsesType');
-  has ClientId => (is => 'ro', isa => 'Str', required => 1);
-  has ClientMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::ClientMetadataType');
-  has Session => (is => 'ro', isa => 'Str');
-  has UserContextData => (is => 'ro', isa => 'Paws::CognitoIdp::UserContextDataType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_ChallengeResponsesType CognitoIdp_UserContextDataType CognitoIdp_ClientMetadataType CognitoIdp_AnalyticsMetadataType/;
+  has AnalyticsMetadata => (is => 'ro', isa => CognitoIdp_AnalyticsMetadataType, predicate => 1);
+  has ChallengeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ChallengeResponses => (is => 'ro', isa => CognitoIdp_ChallengeResponsesType, predicate => 1);
+  has ClientId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientMetadata => (is => 'ro', isa => CognitoIdp_ClientMetadataType, predicate => 1);
+  has Session => (is => 'ro', isa => Str, predicate => 1);
+  has UserContextData => (is => 'ro', isa => CognitoIdp_UserContextDataType, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RespondToAuthChallenge');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::RespondToAuthChallengeResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RespondToAuthChallenge');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::RespondToAuthChallengeResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientMetadata' => {
+                                     'type' => 'CognitoIdp_ClientMetadataType',
+                                     'class' => 'Paws::CognitoIdp::ClientMetadataType'
+                                   },
+               'Session' => {
+                              'type' => 'Str'
+                            },
+               'AnalyticsMetadata' => {
+                                        'class' => 'Paws::CognitoIdp::AnalyticsMetadataType',
+                                        'type' => 'CognitoIdp_AnalyticsMetadataType'
+                                      },
+               'ChallengeName' => {
+                                    'type' => 'Str'
+                                  },
+               'ChallengeResponses' => {
+                                         'class' => 'Paws::CognitoIdp::ChallengeResponsesType',
+                                         'type' => 'CognitoIdp_ChallengeResponsesType'
+                                       },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'UserContextData' => {
+                                      'class' => 'Paws::CognitoIdp::UserContextDataType',
+                                      'type' => 'CognitoIdp_UserContextDataType'
+                                    }
+             },
+  'IsRequired' => {
+                    'ClientId' => 1,
+                    'ChallengeName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +109,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+=head2 AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType
 
 The Amazon Pinpoint analytics metadata for collecting metrics for
 C<RespondToAuthChallenge> calls.
@@ -82,7 +124,7 @@ C<ADMIN_NO_SRP_AUTH> is not a valid value.
 
 Valid values are: C<"SMS_MFA">, C<"SOFTWARE_TOKEN_MFA">, C<"SELECT_MFA_TYPE">, C<"MFA_SETUP">, C<"PASSWORD_VERIFIER">, C<"CUSTOM_CHALLENGE">, C<"DEVICE_SRP_AUTH">, C<"DEVICE_PASSWORD_VERIFIER">, C<"ADMIN_NO_SRP_AUTH">, C<"NEW_PASSWORD_REQUIRED">
 
-=head2 ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>
+=head2 ChallengeResponses => CognitoIdp_ChallengeResponsesType
 
 The challenge responses. These are inputs corresponding to the value of
 C<ChallengeName>, for example:
@@ -132,7 +174,7 @@ The app client ID.
 
 
 
-=head2 ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>
+=head2 ClientMetadata => CognitoIdp_ClientMetadataType
 
 A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -192,7 +234,7 @@ API call.
 
 
 
-=head2 UserContextData => L<Paws::CognitoIdp::UserContextDataType>
+=head2 UserContextData => CognitoIdp_UserContextDataType
 
 Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon

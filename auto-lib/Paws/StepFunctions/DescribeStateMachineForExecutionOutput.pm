@@ -1,13 +1,57 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StepFunctions::DescribeStateMachineForExecutionOutput;
-  use Moose;
-  has Definition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'definition' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
-  has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' , required => 1);
-  has UpdateDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'updateDate' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has Definition => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has StateMachineArn => (is => 'ro', isa => Str, required => 1);
+  has UpdateDate => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'StateMachineArn' => 1,
+                    'RoleArn' => 1,
+                    'Definition' => 1,
+                    'UpdateDate' => 1
+                  },
+  'NameInRequest' => {
+                       'Definition' => 'definition',
+                       'Name' => 'name',
+                       'StateMachineArn' => 'stateMachineArn',
+                       'RoleArn' => 'roleArn',
+                       'UpdateDate' => 'updateDate'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'UpdateDate' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Definition' => {
+                                 'type' => 'Str'
+                               },
+               'StateMachineArn' => {
+                                      'type' => 'Str'
+                                    },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

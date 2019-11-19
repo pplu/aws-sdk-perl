@@ -1,16 +1,69 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has DeletionTime => (is => 'ro', isa => 'Str');
-  has DriftInformation => (is => 'ro', isa => 'Paws::CloudFormation::StackDriftInformationSummary');
-  has LastUpdatedTime => (is => 'ro', isa => 'Str');
-  has ParentId => (is => 'ro', isa => 'Str');
-  has RootId => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
-  has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has StackStatus => (is => 'ro', isa => 'Str', required => 1);
-  has StackStatusReason => (is => 'ro', isa => 'Str');
-  has TemplateDescription => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackDriftInformationSummary/;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has DeletionTime => (is => 'ro', isa => Str);
+  has DriftInformation => (is => 'ro', isa => CloudFormation_StackDriftInformationSummary);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has ParentId => (is => 'ro', isa => Str);
+  has RootId => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+  has StackName => (is => 'ro', isa => Str, required => 1);
+  has StackStatus => (is => 'ro', isa => Str, required => 1);
+  has StackStatusReason => (is => 'ro', isa => Str);
+  has TemplateDescription => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StackStatus' => 1,
+                    'CreationTime' => 1,
+                    'StackName' => 1
+                  },
+  'types' => {
+               'RootId' => {
+                             'type' => 'Str'
+                           },
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'DriftInformation' => {
+                                       'class' => 'Paws::CloudFormation::StackDriftInformationSummary',
+                                       'type' => 'CloudFormation_StackDriftInformationSummary'
+                                     },
+               'StackName' => {
+                                'type' => 'Str'
+                              },
+               'DeletionTime' => {
+                                   'type' => 'Str'
+                                 },
+               'TemplateDescription' => {
+                                          'type' => 'Str'
+                                        },
+               'StackStatus' => {
+                                  'type' => 'Str'
+                                },
+               'StackStatusReason' => {
+                                        'type' => 'Str'
+                                      },
+               'ParentId' => {
+                               'type' => 'Str'
+                             },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +109,7 @@ The StackSummary Data Type
   The time the stack was deleted.
 
 
-=head2 DriftInformation => L<Paws::CloudFormation::StackDriftInformationSummary>
+=head2 DriftInformation => CloudFormation_StackDriftInformationSummary
 
   Summarizes information on whether a stack's actual configuration
 differs, or has I<drifted>, from it's expected configuration, as

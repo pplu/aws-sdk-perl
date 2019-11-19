@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::AutoScalingTargetTrackingScalingPolicyConfigurationDescription;
-  use Moose;
-  has DisableScaleIn => (is => 'ro', isa => 'Bool');
-  has ScaleInCooldown => (is => 'ro', isa => 'Int');
-  has ScaleOutCooldown => (is => 'ro', isa => 'Int');
-  has TargetValue => (is => 'ro', isa => 'Num', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Int Num/;
+  use Paws::DynamoDB::Types qw//;
+  has DisableScaleIn => (is => 'ro', isa => Bool);
+  has ScaleInCooldown => (is => 'ro', isa => Int);
+  has ScaleOutCooldown => (is => 'ro', isa => Int);
+  has TargetValue => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TargetValue' => 1
+                  },
+  'types' => {
+               'ScaleOutCooldown' => {
+                                       'type' => 'Int'
+                                     },
+               'DisableScaleIn' => {
+                                     'type' => 'Bool'
+                                   },
+               'ScaleInCooldown' => {
+                                      'type' => 'Int'
+                                    },
+               'TargetValue' => {
+                                  'type' => 'Num'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

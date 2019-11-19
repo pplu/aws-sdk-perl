@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Glue::TransformParameters;
-  use Moose;
-  has FindMatchesParameters => (is => 'ro', isa => 'Paws::Glue::FindMatchesParameters');
-  has TransformType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_FindMatchesParameters/;
+  has FindMatchesParameters => (is => 'ro', isa => Glue_FindMatchesParameters);
+  has TransformType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FindMatchesParameters' => {
+                                            'class' => 'Paws::Glue::FindMatchesParameters',
+                                            'type' => 'Glue_FindMatchesParameters'
+                                          },
+               'TransformType' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'TransformType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ learning transform.
 =head1 ATTRIBUTES
 
 
-=head2 FindMatchesParameters => L<Paws::Glue::FindMatchesParameters>
+=head2 FindMatchesParameters => Glue_FindMatchesParameters
 
   The parameters for the find matches algorithm.
 

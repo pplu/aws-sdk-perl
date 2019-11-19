@@ -1,15 +1,41 @@
 
 package Paws::LexModels::GetSlotType;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has Version => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'version', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Version => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSlotType');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/slottypes/{name}/versions/{version}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetSlotTypeResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSlotType');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/slottypes/{name}/versions/{version}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::GetSlotTypeResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Version' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'Name' => 'name',
+                    'Version' => 'version'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

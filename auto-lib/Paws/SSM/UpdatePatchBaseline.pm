@@ -1,24 +1,79 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::UpdatePatchBaseline;
-  use Moose;
-  has ApprovalRules => (is => 'ro', isa => 'Paws::SSM::PatchRuleGroup');
-  has ApprovedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ApprovedPatchesComplianceLevel => (is => 'ro', isa => 'Str');
-  has ApprovedPatchesEnableNonSecurity => (is => 'ro', isa => 'Bool');
-  has BaselineId => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has GlobalFilters => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup');
-  has Name => (is => 'ro', isa => 'Str');
-  has RejectedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RejectedPatchesAction => (is => 'ro', isa => 'Str');
-  has Replace => (is => 'ro', isa => 'Bool');
-  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchSource]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::SSM::Types qw/SSM_PatchFilterGroup SSM_PatchRuleGroup SSM_PatchSource/;
+  has ApprovalRules => (is => 'ro', isa => SSM_PatchRuleGroup, predicate => 1);
+  has ApprovedPatches => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ApprovedPatchesComplianceLevel => (is => 'ro', isa => Str, predicate => 1);
+  has ApprovedPatchesEnableNonSecurity => (is => 'ro', isa => Bool, predicate => 1);
+  has BaselineId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has GlobalFilters => (is => 'ro', isa => SSM_PatchFilterGroup, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has RejectedPatches => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has RejectedPatchesAction => (is => 'ro', isa => Str, predicate => 1);
+  has Replace => (is => 'ro', isa => Bool, predicate => 1);
+  has Sources => (is => 'ro', isa => ArrayRef[SSM_PatchSource], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePatchBaseline');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::UpdatePatchBaselineResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdatePatchBaseline');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::UpdatePatchBaselineResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Replace' => {
+                              'type' => 'Bool'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'BaselineId' => {
+                                 'type' => 'Str'
+                               },
+               'ApprovedPatchesComplianceLevel' => {
+                                                     'type' => 'Str'
+                                                   },
+               'RejectedPatches' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'RejectedPatchesAction' => {
+                                            'type' => 'Str'
+                                          },
+               'ApprovalRules' => {
+                                    'type' => 'SSM_PatchRuleGroup',
+                                    'class' => 'Paws::SSM::PatchRuleGroup'
+                                  },
+               'ApprovedPatchesEnableNonSecurity' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Sources' => {
+                              'class' => 'Paws::SSM::PatchSource',
+                              'type' => 'ArrayRef[SSM_PatchSource]'
+                            },
+               'ApprovedPatches' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'GlobalFilters' => {
+                                    'type' => 'SSM_PatchFilterGroup',
+                                    'class' => 'Paws::SSM::PatchFilterGroup'
+                                  }
+             },
+  'IsRequired' => {
+                    'BaselineId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -132,7 +187,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 ApprovalRules => L<Paws::SSM::PatchRuleGroup>
+=head2 ApprovalRules => SSM_PatchRuleGroup
 
 A set of rules used to include patches in the baseline.
 
@@ -176,7 +231,7 @@ A description of the patch baseline.
 
 
 
-=head2 GlobalFilters => L<Paws::SSM::PatchFilterGroup>
+=head2 GlobalFilters => SSM_PatchFilterGroup
 
 A set of global filters used to include patches in the baseline.
 
@@ -236,7 +291,7 @@ not specified are set to null.
 
 
 
-=head2 Sources => ArrayRef[L<Paws::SSM::PatchSource>]
+=head2 Sources => ArrayRef[SSM_PatchSource]
 
 Information about the patches to use to update the instances, including
 target operating systems and source repositories. Applies to Linux

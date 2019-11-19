@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Forecast::CreateForecastExportJob;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Paws::Forecast::DataDestination', required => 1);
-  has ForecastArn => (is => 'ro', isa => 'Str', required => 1);
-  has ForecastExportJobName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw/Forecast_DataDestination/;
+  has Destination => (is => 'ro', isa => Forecast_DataDestination, required => 1, predicate => 1);
+  has ForecastArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ForecastExportJobName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateForecastExportJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Forecast::CreateForecastExportJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateForecastExportJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Forecast::CreateForecastExportJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ForecastArn' => {
+                                  'type' => 'Str'
+                                },
+               'ForecastExportJobName' => {
+                                            'type' => 'Str'
+                                          },
+               'Destination' => {
+                                  'class' => 'Paws::Forecast::DataDestination',
+                                  'type' => 'Forecast_DataDestination'
+                                }
+             },
+  'IsRequired' => {
+                    'ForecastArn' => 1,
+                    'ForecastExportJobName' => 1,
+                    'Destination' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +83,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/for
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Destination => L<Paws::Forecast::DataDestination>
+=head2 B<REQUIRED> Destination => Forecast_DataDestination
 
 The path to the Amazon S3 bucket where you want to save the forecast
 and an AWS Identity and Access Management (IAM) role that Amazon

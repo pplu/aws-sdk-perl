@@ -1,16 +1,77 @@
+# Generated from default/object.tt
 package Paws::IoT::CACertificateDescription;
-  use Moose;
-  has AutoRegistrationStatus => (is => 'ro', isa => 'Str', request_name => 'autoRegistrationStatus', traits => ['NameInRequest']);
-  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
-  has CertificateId => (is => 'ro', isa => 'Str', request_name => 'certificateId', traits => ['NameInRequest']);
-  has CertificatePem => (is => 'ro', isa => 'Str', request_name => 'certificatePem', traits => ['NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has CustomerVersion => (is => 'ro', isa => 'Int', request_name => 'customerVersion', traits => ['NameInRequest']);
-  has GenerationId => (is => 'ro', isa => 'Str', request_name => 'generationId', traits => ['NameInRequest']);
-  has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
-  has OwnedBy => (is => 'ro', isa => 'Str', request_name => 'ownedBy', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Validity => (is => 'ro', isa => 'Paws::IoT::CertificateValidity', request_name => 'validity', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw/IoT_CertificateValidity/;
+  has AutoRegistrationStatus => (is => 'ro', isa => Str);
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CertificateId => (is => 'ro', isa => Str);
+  has CertificatePem => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has CustomerVersion => (is => 'ro', isa => Int);
+  has GenerationId => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has OwnedBy => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Validity => (is => 'ro', isa => IoT_CertificateValidity);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CreationDate' => 'creationDate',
+                       'CertificatePem' => 'certificatePem',
+                       'Status' => 'status',
+                       'Validity' => 'validity',
+                       'LastModifiedDate' => 'lastModifiedDate',
+                       'OwnedBy' => 'ownedBy',
+                       'GenerationId' => 'generationId',
+                       'CertificateId' => 'certificateId',
+                       'CertificateArn' => 'certificateArn',
+                       'AutoRegistrationStatus' => 'autoRegistrationStatus',
+                       'CustomerVersion' => 'customerVersion'
+                     },
+  'types' => {
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CertificatePem' => {
+                                     'type' => 'Str'
+                                   },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'Validity' => {
+                               'type' => 'IoT_CertificateValidity',
+                               'class' => 'Paws::IoT::CertificateValidity'
+                             },
+               'OwnedBy' => {
+                              'type' => 'Str'
+                            },
+               'CertificateId' => {
+                                    'type' => 'Str'
+                                  },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'GenerationId' => {
+                                   'type' => 'Str'
+                                 },
+               'CustomerVersion' => {
+                                      'type' => 'Int'
+                                    },
+               'AutoRegistrationStatus' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -97,7 +158,7 @@ certificates. Valid values are "ENABLE" and "DISABLE"
   The status of a CA certificate.
 
 
-=head2 Validity => L<Paws::IoT::CertificateValidity>
+=head2 Validity => IoT_CertificateValidity
 
   When the CA certificate is valid.
 

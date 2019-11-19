@@ -1,18 +1,59 @@
 
 package Paws::MediaConnect::UpdateFlowEntitlement;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::UpdateEncryption', traits => ['NameInRequest'], request_name => 'encryption');
-  has EntitlementArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'entitlementArn', required => 1);
-  has FlowArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'flowArn', required => 1);
-  has Subscribers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'subscribers');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaConnect::Types qw/MediaConnect_UpdateEncryption/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Encryption => (is => 'ro', isa => MediaConnect_UpdateEncryption, predicate => 1);
+  has EntitlementArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FlowArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Subscribers => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFlowEntitlement');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/flows/{flowArn}/entitlements/{entitlementArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConnect::UpdateFlowEntitlementResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFlowEntitlement');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/flows/{flowArn}/entitlements/{entitlementArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConnect::UpdateFlowEntitlementResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Subscribers' => 'subscribers',
+                       'Description' => 'description',
+                       'Encryption' => 'encryption'
+                     },
+  'IsRequired' => {
+                    'EntitlementArn' => 1,
+                    'FlowArn' => 1
+                  },
+  'types' => {
+               'Encryption' => {
+                                 'type' => 'MediaConnect_UpdateEncryption',
+                                 'class' => 'Paws::MediaConnect::UpdateEncryption'
+                               },
+               'EntitlementArn' => {
+                                     'type' => 'Str'
+                                   },
+               'Subscribers' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'FlowArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInURI' => {
+                    'EntitlementArn' => 'entitlementArn',
+                    'FlowArn' => 'flowArn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +111,7 @@ subscriber or end user.
 
 
 
-=head2 Encryption => L<Paws::MediaConnect::UpdateEncryption>
+=head2 Encryption => MediaConnect_UpdateEncryption
 
 The type of encryption that will be used on the output associated with
 this entitlement.

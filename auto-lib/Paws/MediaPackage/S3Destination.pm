@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::S3Destination;
-  use Moose;
-  has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest'], required => 1);
-  has ManifestKey => (is => 'ro', isa => 'Str', request_name => 'manifestKey', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackage::Types qw//;
+  has BucketName => (is => 'ro', isa => Str, required => 1);
+  has ManifestKey => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'BucketName' => 'bucketName',
+                       'ManifestKey' => 'manifestKey'
+                     },
+  'IsRequired' => {
+                    'ManifestKey' => 1,
+                    'BucketName' => 1,
+                    'RoleArn' => 1
+                  },
+  'types' => {
+               'ManifestKey' => {
+                                  'type' => 'Str'
+                                },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

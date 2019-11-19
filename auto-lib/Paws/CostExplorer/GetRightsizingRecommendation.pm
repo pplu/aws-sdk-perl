@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CostExplorer::GetRightsizingRecommendation;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
-  has NextPageToken => (is => 'ro', isa => 'Str');
-  has PageSize => (is => 'ro', isa => 'Int');
-  has Service => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CostExplorer::Types qw/CostExplorer_Expression/;
+  has Filter => (is => 'ro', isa => CostExplorer_Expression, predicate => 1);
+  has NextPageToken => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has Service => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRightsizingRecommendation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CostExplorer::GetRightsizingRecommendationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetRightsizingRecommendation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CostExplorer::GetRightsizingRecommendationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'Filter' => {
+                             'class' => 'Paws::CostExplorer::Expression',
+                             'type' => 'CostExplorer_Expression'
+                           },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'Service' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'Service' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::CostExplorer::Expression>
+=head2 Filter => CostExplorer_Expression
 
 
 

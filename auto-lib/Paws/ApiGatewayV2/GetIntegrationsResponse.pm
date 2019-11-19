@@ -1,10 +1,35 @@
 
 package Paws::ApiGatewayV2::GetIntegrationsResponse;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::Integration]', traits => ['NameInRequest'], request_name => 'items');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_Integration/;
+  has Items => (is => 'ro', isa => ArrayRef[ApiGatewayV2_Integration]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Items' => {
+                            'class' => 'Paws::ApiGatewayV2::Integration',
+                            'type' => 'ArrayRef[ApiGatewayV2_Integration]'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Items' => 'items'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::ApiGatewayV2::GetIntegrationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::ApiGatewayV2::Integration>]
+=head2 Items => ArrayRef[ApiGatewayV2_Integration]
 
 The elements from this collection.
 

@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::OutputFileUriValue;
-  use Moose;
-  has FileName => (is => 'ro', isa => 'Str', request_name => 'fileName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has FileName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileName' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'FileName' => 'fileName'
+                     },
+  'IsRequired' => {
+                    'FileName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

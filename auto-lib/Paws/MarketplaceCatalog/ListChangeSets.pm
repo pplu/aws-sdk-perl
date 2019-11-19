@@ -1,18 +1,50 @@
 
 package Paws::MarketplaceCatalog::ListChangeSets;
-  use Moose;
-  has Catalog => (is => 'ro', isa => 'Str', required => 1);
-  has FilterList => (is => 'ro', isa => 'ArrayRef[Paws::MarketplaceCatalog::Filter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Sort => (is => 'ro', isa => 'Paws::MarketplaceCatalog::Sort');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::MarketplaceCatalog::Types qw/MarketplaceCatalog_Sort MarketplaceCatalog_Filter/;
+  has Catalog => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FilterList => (is => 'ro', isa => ArrayRef[MarketplaceCatalog_Filter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Sort => (is => 'ro', isa => MarketplaceCatalog_Sort, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListChangeSets');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/ListChangeSets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MarketplaceCatalog::ListChangeSetsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListChangeSets');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/ListChangeSets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MarketplaceCatalog::ListChangeSetsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Sort' => {
+                           'type' => 'MarketplaceCatalog_Sort',
+                           'class' => 'Paws::MarketplaceCatalog::Sort'
+                         },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'FilterList' => {
+                                 'class' => 'Paws::MarketplaceCatalog::Filter',
+                                 'type' => 'ArrayRef[MarketplaceCatalog_Filter]'
+                               },
+               'Catalog' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'Catalog' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +99,7 @@ The catalog related to the request. Fixed value: C<AWSMarketplace>
 
 
 
-=head2 FilterList => ArrayRef[L<Paws::MarketplaceCatalog::Filter>]
+=head2 FilterList => ArrayRef[MarketplaceCatalog_Filter]
 
 An array of filter objects.
 
@@ -88,7 +120,7 @@ of results.
 
 
 
-=head2 Sort => L<Paws::MarketplaceCatalog::Sort>
+=head2 Sort => MarketplaceCatalog_Sort
 
 An object that contains two attributes, C<sortBy> and C<sortOrder>.
 

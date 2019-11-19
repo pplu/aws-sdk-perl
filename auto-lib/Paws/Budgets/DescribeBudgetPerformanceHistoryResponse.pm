@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Budgets::DescribeBudgetPerformanceHistoryResponse;
-  use Moose;
-  has BudgetPerformanceHistory => (is => 'ro', isa => 'Paws::Budgets::BudgetPerformanceHistory');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Budgets::Types qw/Budgets_BudgetPerformanceHistory/;
+  has BudgetPerformanceHistory => (is => 'ro', isa => Budgets_BudgetPerformanceHistory);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BudgetPerformanceHistory' => {
+                                               'class' => 'Paws::Budgets::BudgetPerformanceHistory',
+                                               'type' => 'Budgets_BudgetPerformanceHistory'
+                                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Budgets::DescribeBudgetPerformanceHistoryResponse
 =head1 ATTRIBUTES
 
 
-=head2 BudgetPerformanceHistory => L<Paws::Budgets::BudgetPerformanceHistory>
+=head2 BudgetPerformanceHistory => Budgets_BudgetPerformanceHistory
 
 The history of how often the budget has gone into an C<ALARM> state.
 

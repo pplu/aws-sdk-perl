@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::SMS::ServerGroup;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ServerGroupId => (is => 'ro', isa => 'Str', request_name => 'serverGroupId', traits => ['NameInRequest']);
-  has ServerList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::Server]', request_name => 'serverList', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SMS::Types qw/SMS_Server/;
+  has Name => (is => 'ro', isa => Str);
+  has ServerGroupId => (is => 'ro', isa => Str);
+  has ServerList => (is => 'ro', isa => ArrayRef[SMS_Server]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ServerList' => 'serverList',
+                       'ServerGroupId' => 'serverGroupId',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ServerGroupId' => {
+                                    'type' => 'Str'
+                                  },
+               'ServerList' => {
+                                 'class' => 'Paws::SMS::Server',
+                                 'type' => 'ArrayRef[SMS_Server]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +77,7 @@ A logical grouping of servers.
   Identifier of a server group.
 
 
-=head2 ServerList => ArrayRef[L<Paws::SMS::Server>]
+=head2 ServerList => ArrayRef[SMS_Server]
 
   List of servers belonging to a server group.
 

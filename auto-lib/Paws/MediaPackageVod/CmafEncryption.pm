@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::CmafEncryption;
-  use Moose;
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaPackageVod::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_SpekeKeyProvider/;
+  has SpekeKeyProvider => (is => 'ro', isa => MediaPackageVod_SpekeKeyProvider, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpekeKeyProvider' => {
+                                       'type' => 'MediaPackageVod_SpekeKeyProvider',
+                                       'class' => 'Paws::MediaPackageVod::SpekeKeyProvider'
+                                     }
+             },
+  'NameInRequest' => {
+                       'SpekeKeyProvider' => 'spekeKeyProvider'
+                     },
+  'IsRequired' => {
+                    'SpekeKeyProvider' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ A CMAF encryption configuration.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SpekeKeyProvider => L<Paws::MediaPackageVod::SpekeKeyProvider>
+=head2 B<REQUIRED> SpekeKeyProvider => MediaPackageVod_SpekeKeyProvider
 
   
 

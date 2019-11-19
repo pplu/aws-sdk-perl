@@ -1,15 +1,37 @@
 
 package Paws::WorkLink::DisassociateWebsiteCertificateAuthority;
-  use Moose;
-  has FleetArn => (is => 'ro', isa => 'Str', required => 1);
-  has WebsiteCaId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has FleetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WebsiteCaId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateWebsiteCertificateAuthority');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/disassociateWebsiteCertificateAuthority');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkLink::DisassociateWebsiteCertificateAuthorityResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisassociateWebsiteCertificateAuthority');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/disassociateWebsiteCertificateAuthority');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkLink::DisassociateWebsiteCertificateAuthorityResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FleetArn' => 1,
+                    'WebsiteCaId' => 1
+                  },
+  'types' => {
+               'WebsiteCaId' => {
+                                  'type' => 'Str'
+                                },
+               'FleetArn' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

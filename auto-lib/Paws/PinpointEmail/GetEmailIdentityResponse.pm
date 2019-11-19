@@ -1,14 +1,49 @@
 
 package Paws::PinpointEmail::GetEmailIdentityResponse;
-  use Moose;
-  has DkimAttributes => (is => 'ro', isa => 'Paws::PinpointEmail::DkimAttributes');
-  has FeedbackForwardingStatus => (is => 'ro', isa => 'Bool');
-  has IdentityType => (is => 'ro', isa => 'Str');
-  has MailFromAttributes => (is => 'ro', isa => 'Paws::PinpointEmail::MailFromAttributes');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::Tag]');
-  has VerifiedForSendingStatus => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_DkimAttributes PinpointEmail_Tag PinpointEmail_MailFromAttributes/;
+  has DkimAttributes => (is => 'ro', isa => PinpointEmail_DkimAttributes);
+  has FeedbackForwardingStatus => (is => 'ro', isa => Bool);
+  has IdentityType => (is => 'ro', isa => Str);
+  has MailFromAttributes => (is => 'ro', isa => PinpointEmail_MailFromAttributes);
+  has Tags => (is => 'ro', isa => ArrayRef[PinpointEmail_Tag]);
+  has VerifiedForSendingStatus => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VerifiedForSendingStatus' => {
+                                               'type' => 'Bool'
+                                             },
+               'MailFromAttributes' => {
+                                         'type' => 'PinpointEmail_MailFromAttributes',
+                                         'class' => 'Paws::PinpointEmail::MailFromAttributes'
+                                       },
+               'FeedbackForwardingStatus' => {
+                                               'type' => 'Bool'
+                                             },
+               'IdentityType' => {
+                                   'type' => 'Str'
+                                 },
+               'DkimAttributes' => {
+                                     'class' => 'Paws::PinpointEmail::DkimAttributes',
+                                     'type' => 'PinpointEmail_DkimAttributes'
+                                   },
+               'Tags' => {
+                           'type' => 'ArrayRef[PinpointEmail_Tag]',
+                           'class' => 'Paws::PinpointEmail::Tag'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +55,7 @@ Paws::PinpointEmail::GetEmailIdentityResponse
 =head1 ATTRIBUTES
 
 
-=head2 DkimAttributes => L<Paws::PinpointEmail::DkimAttributes>
+=head2 DkimAttributes => PinpointEmail_DkimAttributes
 
 An object that contains information about the DKIM attributes for the
 identity. This object includes the tokens that you use to create the
@@ -51,13 +86,13 @@ Amazon Pinpoint sends an email notification when these events occur
 The email identity type.
 
 Valid values are: C<"EMAIL_ADDRESS">, C<"DOMAIN">, C<"MANAGED_DOMAIN">
-=head2 MailFromAttributes => L<Paws::PinpointEmail::MailFromAttributes>
+=head2 MailFromAttributes => PinpointEmail_MailFromAttributes
 
 An object that contains information about the Mail-From attributes for
 the email identity.
 
 
-=head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+=head2 Tags => ArrayRef[PinpointEmail_Tag]
 
 An array of objects that define the tags (keys and values) that are
 associated with the email identity.

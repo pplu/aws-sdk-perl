@@ -1,17 +1,55 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Rekognition::CreateStreamProcessor;
-  use Moose;
-  has Input => (is => 'ro', isa => 'Paws::Rekognition::StreamProcessorInput', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Output => (is => 'ro', isa => 'Paws::Rekognition::StreamProcessorOutput', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has Settings => (is => 'ro', isa => 'Paws::Rekognition::StreamProcessorSettings', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Rekognition::Types qw/Rekognition_StreamProcessorInput Rekognition_StreamProcessorOutput Rekognition_StreamProcessorSettings/;
+  has Input => (is => 'ro', isa => Rekognition_StreamProcessorInput, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Output => (is => 'ro', isa => Rekognition_StreamProcessorOutput, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Settings => (is => 'ro', isa => Rekognition_StreamProcessorSettings, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStreamProcessor');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Rekognition::CreateStreamProcessorResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateStreamProcessor');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Rekognition::CreateStreamProcessorResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Output' => 1,
+                    'Settings' => 1,
+                    'Name' => 1,
+                    'RoleArn' => 1,
+                    'Input' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Input' => {
+                            'type' => 'Rekognition_StreamProcessorInput',
+                            'class' => 'Paws::Rekognition::StreamProcessorInput'
+                          },
+               'Settings' => {
+                               'class' => 'Paws::Rekognition::StreamProcessorSettings',
+                               'type' => 'Rekognition_StreamProcessorSettings'
+                             },
+               'Output' => {
+                             'type' => 'Rekognition_StreamProcessorOutput',
+                             'class' => 'Paws::Rekognition::StreamProcessorOutput'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +102,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Input => L<Paws::Rekognition::StreamProcessorInput>
+=head2 B<REQUIRED> Input => Rekognition_StreamProcessorInput
 
 Kinesis video stream stream that provides the source streaming video.
 If you are using the AWS CLI, the parameter name is
@@ -81,7 +119,7 @@ C<Name> is idempotent.
 
 
 
-=head2 B<REQUIRED> Output => L<Paws::Rekognition::StreamProcessorOutput>
+=head2 B<REQUIRED> Output => Rekognition_StreamProcessorOutput
 
 Kinesis data stream stream to which Amazon Rekognition Video puts the
 analysis results. If you are using the AWS CLI, the parameter name is
@@ -95,7 +133,7 @@ ARN of the IAM role that allows access to the stream processor.
 
 
 
-=head2 B<REQUIRED> Settings => L<Paws::Rekognition::StreamProcessorSettings>
+=head2 B<REQUIRED> Settings => Rekognition_StreamProcessorSettings
 
 Face recognition input parameters to be used by the stream processor.
 Includes the collection to use for face recognition and the face

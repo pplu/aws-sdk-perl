@@ -1,9 +1,29 @@
 
 package Paws::Glacier::InitiateVaultLockOutput;
-  use Moose;
-  has LockId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lock-id');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has LockId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'LockId' => 'x-amz-lock-id'
+                     },
+  'types' => {
+               'LockId' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

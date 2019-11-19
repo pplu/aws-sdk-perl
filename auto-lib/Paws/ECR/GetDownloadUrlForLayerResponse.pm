@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECR::GetDownloadUrlForLayerResponse;
-  use Moose;
-  has DownloadUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'downloadUrl' );
-  has LayerDigest => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'layerDigest' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw//;
+  has DownloadUrl => (is => 'ro', isa => Str);
+  has LayerDigest => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DownloadUrl' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LayerDigest' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'LayerDigest' => 'layerDigest',
+                       'DownloadUrl' => 'downloadUrl'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

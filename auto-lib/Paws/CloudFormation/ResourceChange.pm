@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::ResourceChange;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has Details => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ResourceChangeDetail]');
-  has LogicalResourceId => (is => 'ro', isa => 'Str');
-  has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has Replacement => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Scope => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_ResourceChangeDetail/;
+  has Action => (is => 'ro', isa => Str);
+  has Details => (is => 'ro', isa => ArrayRef[CloudFormation_ResourceChangeDetail]);
+  has LogicalResourceId => (is => 'ro', isa => Str);
+  has PhysicalResourceId => (is => 'ro', isa => Str);
+  has Replacement => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Scope => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogicalResourceId' => {
+                                        'type' => 'Str'
+                                      },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'Details' => {
+                              'class' => 'Paws::CloudFormation::ResourceChangeDetail',
+                              'type' => 'ArrayRef[CloudFormation_ResourceChangeDetail]'
+                            },
+               'Replacement' => {
+                                  'type' => 'Str'
+                                },
+               'PhysicalResourceId' => {
+                                         'type' => 'Str'
+                                       },
+               'Scope' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +87,7 @@ C<Add> (adds a new resource), C<Modify> (changes a resource), or
 C<Remove> (deletes a resource).
 
 
-=head2 Details => ArrayRef[L<Paws::CloudFormation::ResourceChangeDetail>]
+=head2 Details => ArrayRef[CloudFormation_ResourceChangeDetail]
 
   For the C<Modify> action, a list of C<ResourceChangeDetail> structures
 that describes the changes that AWS CloudFormation will make to the

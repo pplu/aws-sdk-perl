@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Lambda::AccountUsage;
-  use Moose;
-  has FunctionCount => (is => 'ro', isa => 'Int');
-  has TotalCodeSize => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Lambda::Types qw//;
+  has FunctionCount => (is => 'ro', isa => Int);
+  has TotalCodeSize => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TotalCodeSize' => {
+                                    'type' => 'Int'
+                                  },
+               'FunctionCount' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

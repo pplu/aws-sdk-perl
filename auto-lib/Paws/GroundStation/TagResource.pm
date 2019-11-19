@@ -1,15 +1,43 @@
 
 package Paws::GroundStation::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceArn', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw/GroundStation_TagsMap/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => GroundStation_TagsMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tags/{resourceArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GroundStation::TagResourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tags/{resourceArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GroundStation::TagResourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceArn' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'GroundStation_TagsMap',
+                           'class' => 'Paws::GroundStation::TagsMap'
+                         }
+             },
+  'ParamInURI' => {
+                    'ResourceArn' => 'resourceArn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +74,7 @@ ARN of a resource tag.
 
 
 
-=head2 Tags => L<Paws::GroundStation::TagsMap>
+=head2 Tags => GroundStation_TagsMap
 
 Tags assigned to a resource.
 

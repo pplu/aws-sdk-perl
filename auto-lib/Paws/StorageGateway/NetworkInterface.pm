@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::NetworkInterface;
-  use Moose;
-  has Ipv4Address => (is => 'ro', isa => 'Str');
-  has Ipv6Address => (is => 'ro', isa => 'Str');
-  has MacAddress => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StorageGateway::Types qw//;
+  has Ipv4Address => (is => 'ro', isa => Str);
+  has Ipv6Address => (is => 'ro', isa => Str);
+  has MacAddress => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ipv4Address' => {
+                                  'type' => 'Str'
+                                },
+               'Ipv6Address' => {
+                                  'type' => 'Str'
+                                },
+               'MacAddress' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

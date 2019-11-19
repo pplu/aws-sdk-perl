@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::IAM::VirtualMFADevice;
-  use Moose;
-  has Base32StringSeed => (is => 'ro', isa => 'Str');
-  has EnableDate => (is => 'ro', isa => 'Str');
-  has QRCodePNG => (is => 'ro', isa => 'Str');
-  has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
-  has User => (is => 'ro', isa => 'Paws::IAM::User');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_User/;
+  has Base32StringSeed => (is => 'ro', isa => Str);
+  has EnableDate => (is => 'ro', isa => Str);
+  has QRCodePNG => (is => 'ro', isa => Str);
+  has SerialNumber => (is => 'ro', isa => Str, required => 1);
+  has User => (is => 'ro', isa => IAM_User);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SerialNumber' => 1
+                  },
+  'types' => {
+               'SerialNumber' => {
+                                   'type' => 'Str'
+                                 },
+               'User' => {
+                           'class' => 'Paws::IAM::User',
+                           'type' => 'IAM_User'
+                         },
+               'QRCodePNG' => {
+                                'type' => 'Str'
+                              },
+               'EnableDate' => {
+                                 'type' => 'Str'
+                               },
+               'Base32StringSeed' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +100,7 @@ C<Base32String> value is base64-encoded.
   The serial number associated with C<VirtualMFADevice>.
 
 
-=head2 User => L<Paws::IAM::User>
+=head2 User => IAM_User
 
   The IAM user associated with this virtual MFA device.
 

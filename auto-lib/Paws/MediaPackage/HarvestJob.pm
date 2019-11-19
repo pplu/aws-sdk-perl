@@ -1,14 +1,67 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::HarvestJob;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has ChannelId => (is => 'ro', isa => 'Str', request_name => 'channelId', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has OriginEndpointId => (is => 'ro', isa => 'Str', request_name => 'originEndpointId', traits => ['NameInRequest']);
-  has S3Destination => (is => 'ro', isa => 'Paws::MediaPackage::S3Destination', request_name => 's3Destination', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackage::Types qw/MediaPackage_S3Destination/;
+  has Arn => (is => 'ro', isa => Str);
+  has ChannelId => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has OriginEndpointId => (is => 'ro', isa => Str);
+  has S3Destination => (is => 'ro', isa => MediaPackage_S3Destination);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'S3Destination' => 's3Destination',
+                       'Status' => 'status',
+                       'StartTime' => 'startTime',
+                       'EndTime' => 'endTime',
+                       'Id' => 'id',
+                       'Arn' => 'arn',
+                       'OriginEndpointId' => 'originEndpointId',
+                       'ChannelId' => 'channelId',
+                       'CreatedAt' => 'createdAt'
+                     },
+  'types' => {
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'ChannelId' => {
+                                'type' => 'Str'
+                              },
+               'OriginEndpointId' => {
+                                       'type' => 'Str'
+                                     },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'S3Destination' => {
+                                    'type' => 'MediaPackage_S3Destination',
+                                    'class' => 'Paws::MediaPackage::S3Destination'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartTime' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +129,7 @@ it cannot be changed after the HarvestJob is submitted.
 This cannot be changed after the HarvestJob is submitted.
 
 
-=head2 S3Destination => L<Paws::MediaPackage::S3Destination>
+=head2 S3Destination => MediaPackage_S3Destination
 
   
 

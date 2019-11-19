@@ -1,11 +1,36 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListAttachedGroupPoliciesResponse;
-  use Moose;
-  has AttachedPolicies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::AttachedPolicy]');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::IAM::Types qw/IAM_AttachedPolicy/;
+  has AttachedPolicies => (is => 'ro', isa => ArrayRef[IAM_AttachedPolicy]);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'AttachedPolicies' => {
+                                       'class' => 'Paws::IAM::AttachedPolicy',
+                                       'type' => 'ArrayRef[IAM_AttachedPolicy]'
+                                     },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +42,7 @@ Paws::IAM::ListAttachedGroupPoliciesResponse
 =head1 ATTRIBUTES
 
 
-=head2 AttachedPolicies => ArrayRef[L<Paws::IAM::AttachedPolicy>]
+=head2 AttachedPolicies => ArrayRef[IAM_AttachedPolicy]
 
 A list of the attached policies.
 

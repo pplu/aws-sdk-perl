@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::ThreatIntelligenceDetail;
-  use Moose;
-  has ThreatListName => (is => 'ro', isa => 'Str', request_name => 'threatListName', traits => ['NameInRequest']);
-  has ThreatNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'threatNames', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GuardDuty::Types qw//;
+  has ThreatListName => (is => 'ro', isa => Str);
+  has ThreatNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThreatNames' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'ThreatListName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'ThreatNames' => 'threatNames',
+                       'ThreatListName' => 'threatListName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

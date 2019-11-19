@@ -1,20 +1,84 @@
+# Generated from default/object.tt
 package Paws::RDS::PendingModifiedValues;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CACertificateIdentifier => (is => 'ro', isa => 'Str');
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has PendingCloudwatchLogsExports => (is => 'ro', isa => 'Paws::RDS::PendingCloudwatchLogsExports');
-  has Port => (is => 'ro', isa => 'Int');
-  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]', request_name => 'ProcessorFeature', traits => ['NameInRequest']);
-  has StorageType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str Bool ArrayRef/;
+  use Paws::RDS::Types qw/RDS_PendingCloudwatchLogsExports RDS_ProcessorFeature/;
+  has AllocatedStorage => (is => 'ro', isa => Int);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int);
+  has CACertificateIdentifier => (is => 'ro', isa => Str);
+  has DBInstanceClass => (is => 'ro', isa => Str);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str);
+  has DBSubnetGroupName => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has Iops => (is => 'ro', isa => Int);
+  has LicenseModel => (is => 'ro', isa => Str);
+  has MasterUserPassword => (is => 'ro', isa => Str);
+  has MultiAZ => (is => 'ro', isa => Bool);
+  has PendingCloudwatchLogsExports => (is => 'ro', isa => RDS_PendingCloudwatchLogsExports);
+  has Port => (is => 'ro', isa => Int);
+  has ProcessorFeatures => (is => 'ro', isa => ArrayRef[RDS_ProcessorFeature]);
+  has StorageType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ProcessorFeatures' => 'ProcessorFeature'
+                     },
+  'types' => {
+               'PendingCloudwatchLogsExports' => {
+                                                   'type' => 'RDS_PendingCloudwatchLogsExports',
+                                                   'class' => 'Paws::RDS::PendingCloudwatchLogsExports'
+                                                 },
+               'CACertificateIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'ProcessorFeatures' => {
+                                        'class' => 'Paws::RDS::ProcessorFeature',
+                                        'type' => 'ArrayRef[RDS_ProcessorFeature]'
+                                      },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -116,7 +180,7 @@ credentials for the DB instance.
 deployment.
 
 
-=head2 PendingCloudwatchLogsExports => L<Paws::RDS::PendingCloudwatchLogsExports>
+=head2 PendingCloudwatchLogsExports => RDS_PendingCloudwatchLogsExports
 
   
 
@@ -126,7 +190,7 @@ deployment.
   Specifies the pending port for the DB instance.
 
 
-=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+=head2 ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]
 
   The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.

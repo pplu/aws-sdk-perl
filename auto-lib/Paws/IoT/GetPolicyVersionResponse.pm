@@ -1,16 +1,64 @@
 
 package Paws::IoT::GetPolicyVersionResponse;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationDate');
-  has GenerationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'generationId');
-  has IsDefaultVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'isDefaultVersion');
-  has LastModifiedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastModifiedDate');
-  has PolicyArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyArn');
-  has PolicyDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyDocument');
-  has PolicyName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyName');
-  has PolicyVersionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyVersionId');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has GenerationId => (is => 'ro', isa => Str);
+  has IsDefaultVersion => (is => 'ro', isa => Bool);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has PolicyArn => (is => 'ro', isa => Str);
+  has PolicyDocument => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str);
+  has PolicyVersionId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'PolicyArn' => {
+                                'type' => 'Str'
+                              },
+               'IsDefaultVersion' => {
+                                       'type' => 'Bool'
+                                     },
+               'GenerationId' => {
+                                   'type' => 'Str'
+                                 },
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   },
+               'PolicyVersionId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'PolicyArn' => 'policyArn',
+                       'GenerationId' => 'generationId',
+                       'IsDefaultVersion' => 'isDefaultVersion',
+                       'PolicyVersionId' => 'policyVersionId',
+                       'PolicyDocument' => 'policyDocument',
+                       'LastModifiedDate' => 'lastModifiedDate',
+                       'PolicyName' => 'policyName',
+                       'CreationDate' => 'creationDate'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

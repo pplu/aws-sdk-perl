@@ -1,16 +1,69 @@
+# Generated from default/object.tt
 package Paws::Transfer::DescribedServer;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointDetails => (is => 'ro', isa => 'Paws::Transfer::EndpointDetails');
-  has EndpointType => (is => 'ro', isa => 'Str');
-  has HostKeyFingerprint => (is => 'ro', isa => 'Str');
-  has IdentityProviderDetails => (is => 'ro', isa => 'Paws::Transfer::IdentityProviderDetails');
-  has IdentityProviderType => (is => 'ro', isa => 'Str');
-  has LoggingRole => (is => 'ro', isa => 'Str');
-  has ServerId => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::Tag]');
-  has UserCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Transfer::Types qw/Transfer_EndpointDetails Transfer_Tag Transfer_IdentityProviderDetails/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has EndpointDetails => (is => 'ro', isa => Transfer_EndpointDetails);
+  has EndpointType => (is => 'ro', isa => Str);
+  has HostKeyFingerprint => (is => 'ro', isa => Str);
+  has IdentityProviderDetails => (is => 'ro', isa => Transfer_IdentityProviderDetails);
+  has IdentityProviderType => (is => 'ro', isa => Str);
+  has LoggingRole => (is => 'ro', isa => Str);
+  has ServerId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[Transfer_Tag]);
+  has UserCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Arn' => 1
+                  },
+  'types' => {
+               'UserCount' => {
+                                'type' => 'Int'
+                              },
+               'ServerId' => {
+                               'type' => 'Str'
+                             },
+               'IdentityProviderDetails' => {
+                                              'class' => 'Paws::Transfer::IdentityProviderDetails',
+                                              'type' => 'Transfer_IdentityProviderDetails'
+                                            },
+               'EndpointDetails' => {
+                                      'class' => 'Paws::Transfer::EndpointDetails',
+                                      'type' => 'Transfer_EndpointDetails'
+                                    },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'LoggingRole' => {
+                                  'type' => 'Str'
+                                },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'HostKeyFingerprint' => {
+                                         'type' => 'Str'
+                                       },
+               'EndpointType' => {
+                                   'type' => 'Str'
+                                 },
+               'IdentityProviderType' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'class' => 'Paws::Transfer::Tag',
+                           'type' => 'ArrayRef[Transfer_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +108,7 @@ ID and state, and assigned tags or metadata.
 described.
 
 
-=head2 EndpointDetails => L<Paws::Transfer::EndpointDetails>
+=head2 EndpointDetails => Transfer_EndpointDetails
 
   The virtual private cloud (VPC) endpoint settings that you configured
 for your SFTP server.
@@ -75,7 +128,7 @@ server's host key. This value is equivalent to the output of the
 C<ssh-keygen -l -E md5 -f my-new-server-key> command.
 
 
-=head2 IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>
+=head2 IdentityProviderDetails => Transfer_IdentityProviderDetails
 
   Specifies information to call a customer-supplied authentication API.
 This field is not populated when the C<IdentityProviderType> of the
@@ -119,7 +172,7 @@ fully offline. The values of C<START_FAILED> or C<STOP_FAILED> can
 indicate an error condition.
 
 
-=head2 Tags => ArrayRef[L<Paws::Transfer::Tag>]
+=head2 Tags => ArrayRef[Transfer_Tag]
 
   This property contains the key-value pairs that you can use to search
 for and group servers that were assigned to the server that was

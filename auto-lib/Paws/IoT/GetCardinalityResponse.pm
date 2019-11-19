@@ -1,9 +1,29 @@
 
 package Paws::IoT::GetCardinalityResponse;
-  use Moose;
-  has Cardinality => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'cardinality');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has Cardinality => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Cardinality' => 'cardinality'
+                     },
+  'types' => {
+               'Cardinality' => {
+                                  'type' => 'Int'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

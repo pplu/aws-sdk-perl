@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Batch::LaunchTemplateSpecification;
-  use Moose;
-  has LaunchTemplateId => (is => 'ro', isa => 'Str', request_name => 'launchTemplateId', traits => ['NameInRequest']);
-  has LaunchTemplateName => (is => 'ro', isa => 'Str', request_name => 'launchTemplateName', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw//;
+  has LaunchTemplateId => (is => 'ro', isa => Str);
+  has LaunchTemplateName => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LaunchTemplateId' => 'launchTemplateId',
+                       'LaunchTemplateName' => 'launchTemplateName',
+                       'Version' => 'version'
+                     },
+  'types' => {
+               'LaunchTemplateName' => {
+                                         'type' => 'Str'
+                                       },
+               'LaunchTemplateId' => {
+                                       'type' => 'Str'
+                                     },
+               'Version' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

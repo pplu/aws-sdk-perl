@@ -1,35 +1,176 @@
+# Generated from default/object.tt
 package Paws::ECS::Task;
-  use Moose;
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attachment]', request_name => 'attachments', traits => ['NameInRequest']);
-  has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
-  has Connectivity => (is => 'ro', isa => 'Str', request_name => 'connectivity', traits => ['NameInRequest']);
-  has ConnectivityAt => (is => 'ro', isa => 'Str', request_name => 'connectivityAt', traits => ['NameInRequest']);
-  has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
-  has Containers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Container]', request_name => 'containers', traits => ['NameInRequest']);
-  has Cpu => (is => 'ro', isa => 'Str', request_name => 'cpu', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has DesiredStatus => (is => 'ro', isa => 'Str', request_name => 'desiredStatus', traits => ['NameInRequest']);
-  has ExecutionStoppedAt => (is => 'ro', isa => 'Str', request_name => 'executionStoppedAt', traits => ['NameInRequest']);
-  has Group => (is => 'ro', isa => 'Str', request_name => 'group', traits => ['NameInRequest']);
-  has HealthStatus => (is => 'ro', isa => 'Str', request_name => 'healthStatus', traits => ['NameInRequest']);
-  has InferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::ECS::InferenceAccelerator]', request_name => 'inferenceAccelerators', traits => ['NameInRequest']);
-  has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
-  has LaunchType => (is => 'ro', isa => 'Str', request_name => 'launchType', traits => ['NameInRequest']);
-  has Memory => (is => 'ro', isa => 'Str', request_name => 'memory', traits => ['NameInRequest']);
-  has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', request_name => 'overrides', traits => ['NameInRequest']);
-  has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
-  has PullStartedAt => (is => 'ro', isa => 'Str', request_name => 'pullStartedAt', traits => ['NameInRequest']);
-  has PullStoppedAt => (is => 'ro', isa => 'Str', request_name => 'pullStoppedAt', traits => ['NameInRequest']);
-  has StartedAt => (is => 'ro', isa => 'Str', request_name => 'startedAt', traits => ['NameInRequest']);
-  has StartedBy => (is => 'ro', isa => 'Str', request_name => 'startedBy', traits => ['NameInRequest']);
-  has StopCode => (is => 'ro', isa => 'Str', request_name => 'stopCode', traits => ['NameInRequest']);
-  has StoppedAt => (is => 'ro', isa => 'Str', request_name => 'stoppedAt', traits => ['NameInRequest']);
-  has StoppedReason => (is => 'ro', isa => 'Str', request_name => 'stoppedReason', traits => ['NameInRequest']);
-  has StoppingAt => (is => 'ro', isa => 'Str', request_name => 'stoppingAt', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
-  has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
-  has TaskDefinitionArn => (is => 'ro', isa => 'Str', request_name => 'taskDefinitionArn', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int/;
+  use Paws::ECS::Types qw/ECS_Container ECS_Tag ECS_TaskOverride ECS_InferenceAccelerator ECS_Attachment/;
+  has Attachments => (is => 'ro', isa => ArrayRef[ECS_Attachment]);
+  has ClusterArn => (is => 'ro', isa => Str);
+  has Connectivity => (is => 'ro', isa => Str);
+  has ConnectivityAt => (is => 'ro', isa => Str);
+  has ContainerInstanceArn => (is => 'ro', isa => Str);
+  has Containers => (is => 'ro', isa => ArrayRef[ECS_Container]);
+  has Cpu => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DesiredStatus => (is => 'ro', isa => Str);
+  has ExecutionStoppedAt => (is => 'ro', isa => Str);
+  has Group => (is => 'ro', isa => Str);
+  has HealthStatus => (is => 'ro', isa => Str);
+  has InferenceAccelerators => (is => 'ro', isa => ArrayRef[ECS_InferenceAccelerator]);
+  has LastStatus => (is => 'ro', isa => Str);
+  has LaunchType => (is => 'ro', isa => Str);
+  has Memory => (is => 'ro', isa => Str);
+  has Overrides => (is => 'ro', isa => ECS_TaskOverride);
+  has PlatformVersion => (is => 'ro', isa => Str);
+  has PullStartedAt => (is => 'ro', isa => Str);
+  has PullStoppedAt => (is => 'ro', isa => Str);
+  has StartedAt => (is => 'ro', isa => Str);
+  has StartedBy => (is => 'ro', isa => Str);
+  has StopCode => (is => 'ro', isa => Str);
+  has StoppedAt => (is => 'ro', isa => Str);
+  has StoppedReason => (is => 'ro', isa => Str);
+  has StoppingAt => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[ECS_Tag]);
+  has TaskArn => (is => 'ro', isa => Str);
+  has TaskDefinitionArn => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Cpu' => {
+                          'type' => 'Str'
+                        },
+               'LaunchType' => {
+                                 'type' => 'Str'
+                               },
+               'ContainerInstanceArn' => {
+                                           'type' => 'Str'
+                                         },
+               'Memory' => {
+                             'type' => 'Str'
+                           },
+               'StartedAt' => {
+                                'type' => 'Str'
+                              },
+               'ExecutionStoppedAt' => {
+                                         'type' => 'Str'
+                                       },
+               'Group' => {
+                            'type' => 'Str'
+                          },
+               'LastStatus' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::ECS::Tag',
+                           'type' => 'ArrayRef[ECS_Tag]'
+                         },
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'ConnectivityAt' => {
+                                     'type' => 'Str'
+                                   },
+               'StoppingAt' => {
+                                 'type' => 'Str'
+                               },
+               'PullStartedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'Attachments' => {
+                                  'class' => 'Paws::ECS::Attachment',
+                                  'type' => 'ArrayRef[ECS_Attachment]'
+                                },
+               'StoppedAt' => {
+                                'type' => 'Str'
+                              },
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               },
+               'StoppedReason' => {
+                                    'type' => 'Str'
+                                  },
+               'Overrides' => {
+                                'class' => 'Paws::ECS::TaskOverride',
+                                'type' => 'ECS_TaskOverride'
+                              },
+               'TaskDefinitionArn' => {
+                                        'type' => 'Str'
+                                      },
+               'StartedBy' => {
+                                'type' => 'Str'
+                              },
+               'Containers' => {
+                                 'type' => 'ArrayRef[ECS_Container]',
+                                 'class' => 'Paws::ECS::Container'
+                               },
+               'StopCode' => {
+                               'type' => 'Str'
+                             },
+               'InferenceAccelerators' => {
+                                            'class' => 'Paws::ECS::InferenceAccelerator',
+                                            'type' => 'ArrayRef[ECS_InferenceAccelerator]'
+                                          },
+               'DesiredStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'HealthStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            },
+               'Connectivity' => {
+                                   'type' => 'Str'
+                                 },
+               'PullStoppedAt' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'HealthStatus' => 'healthStatus',
+                       'TaskArn' => 'taskArn',
+                       'DesiredStatus' => 'desiredStatus',
+                       'CreatedAt' => 'createdAt',
+                       'Connectivity' => 'connectivity',
+                       'PullStoppedAt' => 'pullStoppedAt',
+                       'StartedBy' => 'startedBy',
+                       'StopCode' => 'stopCode',
+                       'Containers' => 'containers',
+                       'InferenceAccelerators' => 'inferenceAccelerators',
+                       'StoppedAt' => 'stoppedAt',
+                       'TaskDefinitionArn' => 'taskDefinitionArn',
+                       'ClusterArn' => 'clusterArn',
+                       'StoppedReason' => 'stoppedReason',
+                       'Overrides' => 'overrides',
+                       'PullStartedAt' => 'pullStartedAt',
+                       'Attachments' => 'attachments',
+                       'ConnectivityAt' => 'connectivityAt',
+                       'Version' => 'version',
+                       'StoppingAt' => 'stoppingAt',
+                       'Group' => 'group',
+                       'Tags' => 'tags',
+                       'PlatformVersion' => 'platformVersion',
+                       'LastStatus' => 'lastStatus',
+                       'ExecutionStoppedAt' => 'executionStoppedAt',
+                       'StartedAt' => 'startedAt',
+                       'Memory' => 'memory',
+                       'LaunchType' => 'launchType',
+                       'Cpu' => 'cpu',
+                       'ContainerInstanceArn' => 'containerInstanceArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +206,7 @@ Details on a task in a cluster.
 =head1 ATTRIBUTES
 
 
-=head2 Attachments => ArrayRef[L<Paws::ECS::Attachment>]
+=head2 Attachments => ArrayRef[ECS_Attachment]
 
   The Elastic Network Adapter associated with the task if the task uses
 the C<awsvpc> network mode.
@@ -92,7 +233,7 @@ status.
   The ARN of the container instances that host the task.
 
 
-=head2 Containers => ArrayRef[L<Paws::ECS::Container>]
+=head2 Containers => ArrayRef[ECS_Container]
 
   The containers associated with the task.
 
@@ -185,7 +326,7 @@ specified in a container definition override any Docker health checks
 that exist in the container image.
 
 
-=head2 InferenceAccelerators => ArrayRef[L<Paws::ECS::InferenceAccelerator>]
+=head2 InferenceAccelerators => ArrayRef[ECS_InferenceAccelerator]
 
   The Elastic Inference accelerator associated with the task.
 
@@ -250,7 +391,7 @@ Available C<cpu> values: 4096 (4 vCPU)
 
 
 
-=head2 Overrides => L<Paws::ECS::TaskOverride>
+=head2 Overrides => ECS_TaskOverride
 
   One or more container overrides.
 
@@ -311,7 +452,7 @@ from the C<RUNNING> state to the C<STOPPED> state).
 C<RUNNING> state to C<STOPPED>).
 
 
-=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+=head2 Tags => ArrayRef[ECS_Tag]
 
   The metadata that you apply to the task to help you categorize and
 organize them. Each tag consists of a key and an optional value, both

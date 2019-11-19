@@ -1,5 +1,16 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Rec709Settings;
-  use Moose;
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw//;
+
+    sub params_map {
+    our $Params_map ||= {}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

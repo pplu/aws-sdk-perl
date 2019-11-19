@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::TestRepositoryTriggers;
-  use Moose;
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryTrigger]', traits => ['NameInRequest'], request_name => 'triggers' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_RepositoryTrigger/;
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Triggers => (is => 'ro', isa => ArrayRef[CodeCommit_RepositoryTrigger], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TestRepositoryTriggers');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::TestRepositoryTriggersOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TestRepositoryTriggers');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::TestRepositoryTriggersOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Triggers' => 'triggers',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'IsRequired' => {
+                    'RepositoryName' => 1,
+                    'Triggers' => 1
+                  },
+  'types' => {
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'Triggers' => {
+                               'class' => 'Paws::CodeCommit::RepositoryTrigger',
+                               'type' => 'ArrayRef[CodeCommit_RepositoryTrigger]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +95,7 @@ The name of the repository in which to test the triggers.
 
 
 
-=head2 B<REQUIRED> Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]
+=head2 B<REQUIRED> Triggers => ArrayRef[CodeCommit_RepositoryTrigger]
 
 The list of triggers to test.
 

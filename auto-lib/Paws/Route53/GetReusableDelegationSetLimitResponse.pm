@@ -1,10 +1,36 @@
 
 package Paws::Route53::GetReusableDelegationSetLimitResponse;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', required => 1);
-  has Limit => (is => 'ro', isa => 'Paws::Route53::ReusableDelegationSetLimit', required => 1);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Int/;
+  use Paws::Route53::Types qw/Route53_ReusableDelegationSetLimit/;
+  has Count => (is => 'ro', isa => Int, required => 1);
+  has Limit => (is => 'ro', isa => Route53_ReusableDelegationSetLimit, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Limit' => 1,
+                    'Count' => 1
+                  },
+  'types' => {
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'Limit' => {
+                            'class' => 'Paws::Route53::ReusableDelegationSetLimit',
+                            'type' => 'Route53_ReusableDelegationSetLimit'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +49,7 @@ specified reusable delegation set.
 
 
 
-=head2 B<REQUIRED> Limit => L<Paws::Route53::ReusableDelegationSetLimit>
+=head2 B<REQUIRED> Limit => Route53_ReusableDelegationSetLimit
 
 The current setting for the limit on hosted zones that you can
 associate with the specified reusable delegation set.

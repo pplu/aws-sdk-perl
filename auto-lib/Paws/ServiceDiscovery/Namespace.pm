@@ -1,14 +1,56 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::Namespace;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has CreatorRequestId => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Properties => (is => 'ro', isa => 'Paws::ServiceDiscovery::NamespaceProperties');
-  has ServiceCount => (is => 'ro', isa => 'Int');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_NamespaceProperties/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreateDate => (is => 'ro', isa => Str);
+  has CreatorRequestId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Properties => (is => 'ro', isa => ServiceDiscovery_NamespaceProperties);
+  has ServiceCount => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceCount' => {
+                                   'type' => 'Int'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'Properties' => {
+                                 'type' => 'ServiceDiscovery_NamespaceProperties',
+                                 'class' => 'Paws::ServiceDiscovery::NamespaceProperties'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +122,7 @@ twice.
   The name of the namespace, such as C<example.com>.
 
 
-=head2 Properties => L<Paws::ServiceDiscovery::NamespaceProperties>
+=head2 Properties => ServiceDiscovery_NamespaceProperties
 
   A complex type that contains information that's specific to the type of
 the namespace.

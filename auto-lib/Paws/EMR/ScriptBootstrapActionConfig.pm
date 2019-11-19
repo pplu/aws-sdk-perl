@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::EMR::ScriptBootstrapActionConfig;
-  use Moose;
-  has Args => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Path => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::EMR::Types qw//;
+  has Args => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Path => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Args' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         }
+             },
+  'IsRequired' => {
+                    'Path' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

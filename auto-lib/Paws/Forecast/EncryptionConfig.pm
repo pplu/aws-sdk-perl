@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Forecast::EncryptionConfig;
-  use Moose;
-  has KMSKeyArn => (is => 'ro', isa => 'Str', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw//;
+  has KMSKeyArn => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'KMSKeyArn' => 1,
+                    'RoleArn' => 1
+                  },
+  'types' => {
+               'KMSKeyArn' => {
+                                'type' => 'Str'
+                              },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

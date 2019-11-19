@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeBuild::CreateWebhook;
-  use Moose;
-  has BranchFilter => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchFilter' );
-  has FilterGroups => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeBuild::WebhookFilter]]', traits => ['NameInRequest'], request_name => 'filterGroups' );
-  has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeBuild::Types qw/CodeBuild_WebhookFilter/;
+  has BranchFilter => (is => 'ro', isa => Str, predicate => 1);
+  has FilterGroups => (is => 'ro', isa => ArrayRef[ArrayRef[CodeBuild_WebhookFilter]], predicate => 1);
+  has ProjectName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateWebhook');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeBuild::CreateWebhookOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateWebhook');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeBuild::CreateWebhookOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FilterGroups' => {
+                                   'type' => 'ArrayRef[ArrayRef[CodeBuild_WebhookFilter]]',
+                                   'class' => 'Paws::CodeBuild::WebhookFilter'
+                                 },
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                },
+               'BranchFilter' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'ProjectName' => 1
+                  },
+  'NameInRequest' => {
+                       'FilterGroups' => 'filterGroups',
+                       'ProjectName' => 'projectName',
+                       'BranchFilter' => 'branchFilter'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +100,7 @@ C<branchFilter>.
 
 
 
-=head2 FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]
+=head2 FilterGroups => ArrayRef[ArrayRef[CodeBuild_WebhookFilter]]
 
 An array of arrays of C<WebhookFilter> objects used to determine which
 webhooks are triggered. At least one C<WebhookFilter> in the array must

@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::AutoScalingThresholds;
-  use Moose;
-  has Alarms => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CpuThreshold => (is => 'ro', isa => 'Num');
-  has IgnoreMetricsTime => (is => 'ro', isa => 'Int');
-  has InstanceCount => (is => 'ro', isa => 'Int');
-  has LoadThreshold => (is => 'ro', isa => 'Num');
-  has MemoryThreshold => (is => 'ro', isa => 'Num');
-  has ThresholdsWaitTime => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str Num Int/;
+  use Paws::OpsWorks::Types qw//;
+  has Alarms => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CpuThreshold => (is => 'ro', isa => Num);
+  has IgnoreMetricsTime => (is => 'ro', isa => Int);
+  has InstanceCount => (is => 'ro', isa => Int);
+  has LoadThreshold => (is => 'ro', isa => Num);
+  has MemoryThreshold => (is => 'ro', isa => Num);
+  has ThresholdsWaitTime => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CpuThreshold' => {
+                                   'type' => 'Num'
+                                 },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'ThresholdsWaitTime' => {
+                                         'type' => 'Int'
+                                       },
+               'MemoryThreshold' => {
+                                      'type' => 'Num'
+                                    },
+               'IgnoreMetricsTime' => {
+                                        'type' => 'Int'
+                                      },
+               'Alarms' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'LoadThreshold' => {
+                                    'type' => 'Num'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

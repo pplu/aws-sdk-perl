@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::SageMaker::CheckpointConfig;
-  use Moose;
-  has LocalPath => (is => 'ro', isa => 'Str');
-  has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has LocalPath => (is => 'ro', isa => Str);
+  has S3Uri => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LocalPath' => {
+                                'type' => 'Str'
+                              },
+               'S3Uri' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'S3Uri' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

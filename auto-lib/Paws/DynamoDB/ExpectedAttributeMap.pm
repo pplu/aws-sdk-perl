@@ -1,8 +1,23 @@
 package Paws::DynamoDB::ExpectedAttributeMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ExpectedAttributeValue/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::ExpectedAttributeValue]');
+  has Map => (is => 'ro', isa => HashRef[DynamoDB_ExpectedAttributeValue]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[DynamoDB_ExpectedAttributeValue]',
+                                          class => 'Paws::DynamoDB::ExpectedAttributeValue',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::DynamoDB::ExpectedAttributeValue>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

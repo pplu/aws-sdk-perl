@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Firehose::PutRecord;
-  use Moose;
-  has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
-  has Record => (is => 'ro', isa => 'Paws::Firehose::Record', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw/Firehose_Record/;
+  has DeliveryStreamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Record => (is => 'ro', isa => Firehose_Record, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutRecord');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Firehose::PutRecordOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutRecord');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Firehose::PutRecordOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Record' => {
+                             'class' => 'Paws::Firehose::Record',
+                             'type' => 'Firehose_Record'
+                           },
+               'DeliveryStreamName' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'Record' => 1,
+                    'DeliveryStreamName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +79,7 @@ The name of the delivery stream.
 
 
 
-=head2 B<REQUIRED> Record => L<Paws::Firehose::Record>
+=head2 B<REQUIRED> Record => Firehose_Record
 
 The record.
 

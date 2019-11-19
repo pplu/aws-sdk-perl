@@ -1,25 +1,94 @@
 
 package Paws::EC2::RegisterImage;
-  use Moose;
-  has Architecture => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'architecture' );
-  has BillingProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'BillingProduct' );
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has EnaSupport => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enaSupport' );
-  has ImageLocation => (is => 'ro', isa => 'Str');
-  has KernelId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kernelId' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has RamdiskId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ramdiskId' );
-  has RootDeviceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'rootDeviceName' );
-  has SriovNetSupport => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sriovNetSupport' );
-  has VirtualizationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualizationType' );
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_BlockDeviceMapping/;
+  has Architecture => (is => 'ro', isa => Str, predicate => 1);
+  has BillingProducts => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[EC2_BlockDeviceMapping], predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has EnaSupport => (is => 'ro', isa => Bool, predicate => 1);
+  has ImageLocation => (is => 'ro', isa => Str, predicate => 1);
+  has KernelId => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RamdiskId => (is => 'ro', isa => Str, predicate => 1);
+  has RootDeviceName => (is => 'ro', isa => Str, predicate => 1);
+  has SriovNetSupport => (is => 'ro', isa => Str, predicate => 1);
+  has VirtualizationType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterImage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::RegisterImageResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterImage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::RegisterImageResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RamdiskId' => {
+                                'type' => 'Str'
+                              },
+               'VirtualizationType' => {
+                                         'type' => 'Str'
+                                       },
+               'BillingProducts' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'KernelId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ImageLocation' => {
+                                    'type' => 'Str'
+                                  },
+               'SriovNetSupport' => {
+                                      'type' => 'Str'
+                                    },
+               'BlockDeviceMappings' => {
+                                          'type' => 'ArrayRef[EC2_BlockDeviceMapping]',
+                                          'class' => 'Paws::EC2::BlockDeviceMapping'
+                                        },
+               'EnaSupport' => {
+                                 'type' => 'Bool'
+                               },
+               'RootDeviceName' => {
+                                     'type' => 'Str'
+                                   },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'RootDeviceName' => 'rootDeviceName',
+                       'Architecture' => 'architecture',
+                       'BlockDeviceMappings' => 'BlockDeviceMapping',
+                       'EnaSupport' => 'enaSupport',
+                       'SriovNetSupport' => 'sriovNetSupport',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'KernelId' => 'kernelId',
+                       'BillingProducts' => 'BillingProduct',
+                       'VirtualizationType' => 'virtualizationType',
+                       'RamdiskId' => 'ramdiskId'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +169,7 @@ bill for the use of an AMI.
 
 
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
+=head2 BlockDeviceMappings => ArrayRef[EC2_BlockDeviceMapping]
 
 The block device mapping entries.
 

@@ -1,11 +1,40 @@
 
 package Paws::ApiGatewayManagement::GetConnectionResponse;
-  use Moose;
-  has ConnectedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectedAt');
-  has Identity => (is => 'ro', isa => 'Paws::ApiGatewayManagement::Identity', traits => ['NameInRequest'], request_name => 'identity');
-  has LastActiveAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastActiveAt');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayManagement::Types qw/ApiGatewayManagement_Identity/;
+  has ConnectedAt => (is => 'ro', isa => Str);
+  has Identity => (is => 'ro', isa => ApiGatewayManagement_Identity);
+  has LastActiveAt => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastActiveAt' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ConnectedAt' => {
+                                  'type' => 'Str'
+                                },
+               'Identity' => {
+                               'type' => 'ApiGatewayManagement_Identity',
+                               'class' => 'Paws::ApiGatewayManagement::Identity'
+                             }
+             },
+  'NameInRequest' => {
+                       'LastActiveAt' => 'lastActiveAt',
+                       'Identity' => 'identity',
+                       'ConnectedAt' => 'connectedAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +51,7 @@ Paws::ApiGatewayManagement::GetConnectionResponse
 The time in ISO 8601 format for when the connection was established.
 
 
-=head2 Identity => L<Paws::ApiGatewayManagement::Identity>
+=head2 Identity => ApiGatewayManagement_Identity
 
 
 

@@ -1,14 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::DeleteInstance;
-  use Moose;
-  has ForceDeleteAddOns => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'forceDeleteAddOns' );
-  has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Lightsail::Types qw//;
+  has ForceDeleteAddOns => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::DeleteInstanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::DeleteInstanceResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InstanceName' => 1
+                  },
+  'NameInRequest' => {
+                       'InstanceName' => 'instanceName',
+                       'ForceDeleteAddOns' => 'forceDeleteAddOns'
+                     },
+  'types' => {
+               'InstanceName' => {
+                                   'type' => 'Str'
+                                 },
+               'ForceDeleteAddOns' => {
+                                        'type' => 'Bool'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

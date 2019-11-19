@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WorkMail::ListGroupsResponse;
-  use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::WorkMail::Group]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkMail::Types qw/WorkMail_Group/;
+  has Groups => (is => 'ro', isa => ArrayRef[WorkMail_Group]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Groups' => {
+                             'class' => 'Paws::WorkMail::Group',
+                             'type' => 'ArrayRef[WorkMail_Group]'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::WorkMail::ListGroupsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Groups => ArrayRef[L<Paws::WorkMail::Group>]
+=head2 Groups => ArrayRef[WorkMail_Group]
 
 The overview of groups for an organization.
 

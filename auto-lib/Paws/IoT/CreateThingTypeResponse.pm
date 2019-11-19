@@ -1,11 +1,39 @@
 
 package Paws::IoT::CreateThingTypeResponse;
-  use Moose;
-  has ThingTypeArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeArn');
-  has ThingTypeId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeId');
-  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has ThingTypeArn => (is => 'ro', isa => Str);
+  has ThingTypeId => (is => 'ro', isa => Str);
+  has ThingTypeName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ThingTypeArn' => {
+                                   'type' => 'Str'
+                                 },
+               'ThingTypeName' => {
+                                    'type' => 'Str'
+                                  },
+               'ThingTypeId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ThingTypeId' => 'thingTypeId',
+                       'ThingTypeName' => 'thingTypeName',
+                       'ThingTypeArn' => 'thingTypeArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

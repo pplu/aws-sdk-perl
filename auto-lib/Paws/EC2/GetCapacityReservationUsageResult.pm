@@ -1,15 +1,61 @@
 
 package Paws::EC2::GetCapacityReservationUsageResult;
-  use Moose;
-  has AvailableInstanceCount => (is => 'ro', isa => 'Int', request_name => 'availableInstanceCount', traits => ['NameInRequest',]);
-  has CapacityReservationId => (is => 'ro', isa => 'Str', request_name => 'capacityReservationId', traits => ['NameInRequest',]);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest',]);
-  has InstanceUsages => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceUsage]', request_name => 'instanceUsageSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest',]);
-  has TotalInstanceCount => (is => 'ro', isa => 'Int', request_name => 'totalInstanceCount', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::EC2::Types qw/EC2_InstanceUsage/;
+  has AvailableInstanceCount => (is => 'ro', isa => Int);
+  has CapacityReservationId => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has InstanceUsages => (is => 'ro', isa => ArrayRef[EC2_InstanceUsage]);
+  has NextToken => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has TotalInstanceCount => (is => 'ro', isa => Int);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceUsages' => {
+                                     'class' => 'Paws::EC2::InstanceUsage',
+                                     'type' => 'ArrayRef[EC2_InstanceUsage]'
+                                   },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'TotalInstanceCount' => {
+                                         'type' => 'Int'
+                                       },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CapacityReservationId' => {
+                                            'type' => 'Str'
+                                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'AvailableInstanceCount' => {
+                                             'type' => 'Int'
+                                           }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'AvailableInstanceCount' => 'availableInstanceCount',
+                       'InstanceUsages' => 'instanceUsageSet',
+                       'State' => 'state',
+                       'TotalInstanceCount' => 'totalInstanceCount',
+                       'CapacityReservationId' => 'capacityReservationId',
+                       'InstanceType' => 'instanceType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +84,7 @@ The type of instance for which the Capacity Reservation reserves
 capacity.
 
 
-=head2 InstanceUsages => ArrayRef[L<Paws::EC2::InstanceUsage>]
+=head2 InstanceUsages => ArrayRef[EC2_InstanceUsage]
 
 Information about the Capacity Reservation usage.
 

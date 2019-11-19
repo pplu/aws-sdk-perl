@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Personalize::CreateCampaign;
-  use Moose;
-  has MinProvisionedTPS => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minProvisionedTPS' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has SolutionVersionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'solutionVersionArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Personalize::Types qw//;
+  has MinProvisionedTPS => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SolutionVersionArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCampaign');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Personalize::CreateCampaignResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCampaign');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Personalize::CreateCampaignResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SolutionVersionArn' => {
+                                         'type' => 'Str'
+                                       },
+               'MinProvisionedTPS' => {
+                                        'type' => 'Int'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'MinProvisionedTPS' => 1,
+                    'Name' => 1,
+                    'SolutionVersionArn' => 1
+                  },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'MinProvisionedTPS' => 'minProvisionedTPS',
+                       'SolutionVersionArn' => 'solutionVersionArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,17 +1,58 @@
 
 package Paws::WorkLink::DescribeDeviceResponse;
-  use Moose;
-  has FirstAccessedTime => (is => 'ro', isa => 'Str');
-  has LastAccessedTime => (is => 'ro', isa => 'Str');
-  has Manufacturer => (is => 'ro', isa => 'Str');
-  has Model => (is => 'ro', isa => 'Str');
-  has OperatingSystem => (is => 'ro', isa => 'Str');
-  has OperatingSystemVersion => (is => 'ro', isa => 'Str');
-  has PatchLevel => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Username => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has FirstAccessedTime => (is => 'ro', isa => Str);
+  has LastAccessedTime => (is => 'ro', isa => Str);
+  has Manufacturer => (is => 'ro', isa => Str);
+  has Model => (is => 'ro', isa => Str);
+  has OperatingSystem => (is => 'ro', isa => Str);
+  has OperatingSystemVersion => (is => 'ro', isa => Str);
+  has PatchLevel => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Username => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastAccessedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Model' => {
+                            'type' => 'Str'
+                          },
+               'PatchLevel' => {
+                                 'type' => 'Str'
+                               },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'OperatingSystemVersion' => {
+                                             'type' => 'Str'
+                                           },
+               'Manufacturer' => {
+                                   'type' => 'Str'
+                                 },
+               'OperatingSystem' => {
+                                      'type' => 'Str'
+                                    },
+               'FirstAccessedTime' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

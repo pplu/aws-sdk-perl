@@ -1,10 +1,52 @@
+# Generated from default/object.tt
 package Paws::Inspector::AssessmentTarget;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has ResourceGroupArn => (is => 'ro', isa => 'Str', request_name => 'resourceGroupArn', traits => ['NameInRequest']);
-  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Inspector::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has CreatedAt => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has ResourceGroupArn => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Arn' => 1,
+                    'UpdatedAt' => 1,
+                    'CreatedAt' => 1,
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'UpdatedAt' => 'updatedAt',
+                       'Name' => 'name',
+                       'CreatedAt' => 'createdAt',
+                       'ResourceGroupArn' => 'resourceGroupArn'
+                     },
+  'types' => {
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'ResourceGroupArn' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

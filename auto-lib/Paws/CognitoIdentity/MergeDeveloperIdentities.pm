@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdentity::MergeDeveloperIdentities;
-  use Moose;
-  has DestinationUserIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DeveloperProviderName => (is => 'ro', isa => 'Str', required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has SourceUserIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdentity::Types qw//;
+  has DestinationUserIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeveloperProviderName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceUserIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'MergeDeveloperIdentities');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdentity::MergeDeveloperIdentitiesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'MergeDeveloperIdentities');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdentity::MergeDeveloperIdentitiesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DeveloperProviderName' => 1,
+                    'IdentityPoolId' => 1,
+                    'SourceUserIdentifier' => 1,
+                    'DestinationUserIdentifier' => 1
+                  },
+  'types' => {
+               'DeveloperProviderName' => {
+                                            'type' => 'Str'
+                                          },
+               'DestinationUserIdentifier' => {
+                                                'type' => 'Str'
+                                              },
+               'SourceUserIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

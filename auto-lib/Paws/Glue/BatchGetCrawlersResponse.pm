@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::BatchGetCrawlersResponse;
-  use Moose;
-  has Crawlers => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Crawler]');
-  has CrawlersNotFound => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Glue::Types qw/Glue_Crawler/;
+  has Crawlers => (is => 'ro', isa => ArrayRef[Glue_Crawler]);
+  has CrawlersNotFound => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CrawlersNotFound' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Crawlers' => {
+                               'type' => 'ArrayRef[Glue_Crawler]',
+                               'class' => 'Paws::Glue::Crawler'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Glue::BatchGetCrawlersResponse
 =head1 ATTRIBUTES
 
 
-=head2 Crawlers => ArrayRef[L<Paws::Glue::Crawler>]
+=head2 Crawlers => ArrayRef[Glue_Crawler]
 
 A list of crawler definitions.
 

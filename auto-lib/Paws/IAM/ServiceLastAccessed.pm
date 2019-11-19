@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::IAM::ServiceLastAccessed;
-  use Moose;
-  has LastAuthenticated => (is => 'ro', isa => 'Str');
-  has LastAuthenticatedEntity => (is => 'ro', isa => 'Str');
-  has ServiceName => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
-  has TotalAuthenticatedEntities => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IAM::Types qw//;
+  has LastAuthenticated => (is => 'ro', isa => Str);
+  has LastAuthenticatedEntity => (is => 'ro', isa => Str);
+  has ServiceName => (is => 'ro', isa => Str, required => 1);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1);
+  has TotalAuthenticatedEntities => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ServiceName' => 1,
+                    'ServiceNamespace' => 1
+                  },
+  'types' => {
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'TotalAuthenticatedEntities' => {
+                                                 'type' => 'Int'
+                                               },
+               'LastAuthenticated' => {
+                                        'type' => 'Str'
+                                      },
+               'LastAuthenticatedEntity' => {
+                                              'type' => 'Str'
+                                            },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

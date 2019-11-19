@@ -1,15 +1,70 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::RepositoryMetadata;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str');
-  has CloneUrlHttp => (is => 'ro', isa => 'Str', request_name => 'cloneUrlHttp', traits => ['NameInRequest']);
-  has CloneUrlSsh => (is => 'ro', isa => 'Str', request_name => 'cloneUrlSsh', traits => ['NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has DefaultBranch => (is => 'ro', isa => 'Str', request_name => 'defaultBranch', traits => ['NameInRequest']);
-  has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
-  has RepositoryDescription => (is => 'ro', isa => 'Str', request_name => 'repositoryDescription', traits => ['NameInRequest']);
-  has RepositoryId => (is => 'ro', isa => 'Str', request_name => 'repositoryId', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has CloneUrlHttp => (is => 'ro', isa => Str);
+  has CloneUrlSsh => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has DefaultBranch => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has RepositoryDescription => (is => 'ro', isa => Str);
+  has RepositoryId => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DefaultBranch' => 'defaultBranch',
+                       'RepositoryId' => 'repositoryId',
+                       'CloneUrlSsh' => 'cloneUrlSsh',
+                       'CreationDate' => 'creationDate',
+                       'AccountId' => 'accountId',
+                       'RepositoryName' => 'repositoryName',
+                       'LastModifiedDate' => 'lastModifiedDate',
+                       'CloneUrlHttp' => 'cloneUrlHttp',
+                       'RepositoryDescription' => 'repositoryDescription'
+                     },
+  'types' => {
+               'RepositoryDescription' => {
+                                            'type' => 'Str'
+                                          },
+               'CloneUrlHttp' => {
+                                   'type' => 'Str'
+                                 },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'DefaultBranch' => {
+                                    'type' => 'Str'
+                                  },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'RepositoryId' => {
+                                   'type' => 'Str'
+                                 },
+               'CloneUrlSsh' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

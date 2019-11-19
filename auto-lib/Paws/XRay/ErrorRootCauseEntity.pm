@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::XRay::ErrorRootCauseEntity;
-  use Moose;
-  has Exceptions => (is => 'ro', isa => 'ArrayRef[Paws::XRay::RootCauseException]');
-  has Name => (is => 'ro', isa => 'Str');
-  has Remote => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Bool/;
+  use Paws::XRay::Types qw/XRay_RootCauseException/;
+  has Exceptions => (is => 'ro', isa => ArrayRef[XRay_RootCauseException]);
+  has Name => (is => 'ro', isa => Str);
+  has Remote => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Exceptions' => {
+                                 'class' => 'Paws::XRay::RootCauseException',
+                                 'type' => 'ArrayRef[XRay_RootCauseException]'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Remote' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ trace summary error.
 =head1 ATTRIBUTES
 
 
-=head2 Exceptions => ArrayRef[L<Paws::XRay::RootCauseException>]
+=head2 Exceptions => ArrayRef[XRay_RootCauseException]
 
   The types and messages of the exceptions.
 

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Shield::Limit;
-  use Moose;
-  has Max => (is => 'ro', isa => 'Int');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Shield::Types qw//;
+  has Max => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Max' => {
+                          'type' => 'Int'
+                        },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

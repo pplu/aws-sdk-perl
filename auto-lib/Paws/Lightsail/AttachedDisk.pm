@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Lightsail::AttachedDisk;
-  use Moose;
-  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
-  has SizeInGb => (is => 'ro', isa => 'Int', request_name => 'sizeInGb', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lightsail::Types qw//;
+  has Path => (is => 'ro', isa => Str);
+  has SizeInGb => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SizeInGb' => {
+                               'type' => 'Int'
+                             },
+               'Path' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Path' => 'path',
+                       'SizeInGb' => 'sizeInGb'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

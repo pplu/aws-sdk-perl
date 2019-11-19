@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::BatchPutScheduledUpdateGroupAction;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has ScheduledUpdateGroupActions => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::ScheduledUpdateGroupActionRequest]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_ScheduledUpdateGroupActionRequest/;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ScheduledUpdateGroupActions => (is => 'ro', isa => ArrayRef[AutoScaling_ScheduledUpdateGroupActionRequest], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchPutScheduledUpdateGroupAction');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::BatchPutScheduledUpdateGroupActionAnswer');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'BatchPutScheduledUpdateGroupActionResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchPutScheduledUpdateGroupAction');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::BatchPutScheduledUpdateGroupActionAnswer');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'BatchPutScheduledUpdateGroupActionResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AutoScalingGroupName' => 1,
+                    'ScheduledUpdateGroupActions' => 1
+                  },
+  'types' => {
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'ScheduledUpdateGroupActions' => {
+                                                  'type' => 'ArrayRef[AutoScaling_ScheduledUpdateGroupActionRequest]',
+                                                  'class' => 'Paws::AutoScaling::ScheduledUpdateGroupActionRequest'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +89,7 @@ The name of the Auto Scaling group.
 
 
 
-=head2 B<REQUIRED> ScheduledUpdateGroupActions => ArrayRef[L<Paws::AutoScaling::ScheduledUpdateGroupActionRequest>]
+=head2 B<REQUIRED> ScheduledUpdateGroupActions => ArrayRef[AutoScaling_ScheduledUpdateGroupActionRequest]
 
 One or more scheduled actions. The maximum number allowed is 50.
 

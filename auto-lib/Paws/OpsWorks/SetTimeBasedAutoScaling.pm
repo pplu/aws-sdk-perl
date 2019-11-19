@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorks::SetTimeBasedAutoScaling;
-  use Moose;
-  has AutoScalingSchedule => (is => 'ro', isa => 'Paws::OpsWorks::WeeklyAutoScalingSchedule');
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw/OpsWorks_WeeklyAutoScalingSchedule/;
+  has AutoScalingSchedule => (is => 'ro', isa => OpsWorks_WeeklyAutoScalingSchedule, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetTimeBasedAutoScaling');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetTimeBasedAutoScaling');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InstanceId' => 1
+                  },
+  'types' => {
+               'AutoScalingSchedule' => {
+                                          'type' => 'OpsWorks_WeeklyAutoScalingSchedule',
+                                          'class' => 'Paws::OpsWorks::WeeklyAutoScalingSchedule'
+                                        },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +70,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ops
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingSchedule => L<Paws::OpsWorks::WeeklyAutoScalingSchedule>
+=head2 AutoScalingSchedule => OpsWorks_WeeklyAutoScalingSchedule
 
 An C<AutoScalingSchedule> with the instance schedule.
 

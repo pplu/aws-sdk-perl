@@ -1,9 +1,30 @@
 
 package Paws::EC2::CreateSecurityGroupResult;
-  use Moose;
-  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has GroupId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'GroupId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'GroupId' => 'groupId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

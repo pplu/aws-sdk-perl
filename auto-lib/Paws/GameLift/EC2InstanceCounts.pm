@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::GameLift::EC2InstanceCounts;
-  use Moose;
-  has ACTIVE => (is => 'ro', isa => 'Int');
-  has DESIRED => (is => 'ro', isa => 'Int');
-  has IDLE => (is => 'ro', isa => 'Int');
-  has MAXIMUM => (is => 'ro', isa => 'Int');
-  has MINIMUM => (is => 'ro', isa => 'Int');
-  has PENDING => (is => 'ro', isa => 'Int');
-  has TERMINATING => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::GameLift::Types qw//;
+  has ACTIVE => (is => 'ro', isa => Int);
+  has DESIRED => (is => 'ro', isa => Int);
+  has IDLE => (is => 'ro', isa => Int);
+  has MAXIMUM => (is => 'ro', isa => Int);
+  has MINIMUM => (is => 'ro', isa => Int);
+  has PENDING => (is => 'ro', isa => Int);
+  has TERMINATING => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DESIRED' => {
+                              'type' => 'Int'
+                            },
+               'MAXIMUM' => {
+                              'type' => 'Int'
+                            },
+               'ACTIVE' => {
+                             'type' => 'Int'
+                           },
+               'IDLE' => {
+                           'type' => 'Int'
+                         },
+               'TERMINATING' => {
+                                  'type' => 'Int'
+                                },
+               'PENDING' => {
+                              'type' => 'Int'
+                            },
+               'MINIMUM' => {
+                              'type' => 'Int'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SegmentLocation;
-  use Moose;
-  has Country => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
-  has GPSPoint => (is => 'ro', isa => 'Paws::Pinpoint::GPSPointDimension');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_SetDimension Pinpoint_GPSPointDimension/;
+  has Country => (is => 'ro', isa => Pinpoint_SetDimension);
+  has GPSPoint => (is => 'ro', isa => Pinpoint_GPSPointDimension);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GPSPoint' => {
+                               'type' => 'Pinpoint_GPSPointDimension',
+                               'class' => 'Paws::Pinpoint::GPSPointDimension'
+                             },
+               'Country' => {
+                              'class' => 'Paws::Pinpoint::SetDimension',
+                              'type' => 'Pinpoint_SetDimension'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +59,13 @@ Specifies geographical dimension settings for a segment.
 =head1 ATTRIBUTES
 
 
-=head2 Country => L<Paws::Pinpoint::SetDimension>
+=head2 Country => Pinpoint_SetDimension
 
   The country or region code, in ISO 3166-1 alpha-2 format, for the
 segment.
 
 
-=head2 GPSPoint => L<Paws::Pinpoint::GPSPointDimension>
+=head2 GPSPoint => Pinpoint_GPSPointDimension
 
   The GPS location and range for the segment.
 

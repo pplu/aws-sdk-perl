@@ -1,22 +1,81 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Datasync::DescribeTaskResponse;
-  use Moose;
-  has CloudWatchLogGroupArn => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has CurrentTaskExecutionArn => (is => 'ro', isa => 'Str');
-  has DestinationLocationArn => (is => 'ro', isa => 'Str');
-  has DestinationNetworkInterfaceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorDetail => (is => 'ro', isa => 'Str');
-  has Excludes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
-  has Name => (is => 'ro', isa => 'Str');
-  has Options => (is => 'ro', isa => 'Paws::Datasync::Options');
-  has SourceLocationArn => (is => 'ro', isa => 'Str');
-  has SourceNetworkInterfaceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Status => (is => 'ro', isa => 'Str');
-  has TaskArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Datasync::Types qw/Datasync_FilterRule Datasync_Options/;
+  has CloudWatchLogGroupArn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has CurrentTaskExecutionArn => (is => 'ro', isa => Str);
+  has DestinationLocationArn => (is => 'ro', isa => Str);
+  has DestinationNetworkInterfaceArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorDetail => (is => 'ro', isa => Str);
+  has Excludes => (is => 'ro', isa => ArrayRef[Datasync_FilterRule]);
+  has Name => (is => 'ro', isa => Str);
+  has Options => (is => 'ro', isa => Datasync_Options);
+  has SourceLocationArn => (is => 'ro', isa => Str);
+  has SourceNetworkInterfaceArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Status => (is => 'ro', isa => Str);
+  has TaskArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Excludes' => {
+                               'class' => 'Paws::Datasync::FilterRule',
+                               'type' => 'ArrayRef[Datasync_FilterRule]'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DestinationLocationArn' => {
+                                             'type' => 'Str'
+                                           },
+               'CurrentTaskExecutionArn' => {
+                                              'type' => 'Str'
+                                            },
+               'ErrorDetail' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'CloudWatchLogGroupArn' => {
+                                            'type' => 'Str'
+                                          },
+               'SourceLocationArn' => {
+                                        'type' => 'Str'
+                                      },
+               'Options' => {
+                              'class' => 'Paws::Datasync::Options',
+                              'type' => 'Datasync_Options'
+                            },
+               'DestinationNetworkInterfaceArns' => {
+                                                      'type' => 'ArrayRef[Str|Undef]'
+                                                    },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'SourceNetworkInterfaceArns' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -70,7 +129,7 @@ Detailed description of an error that was encountered during the task
 execution. You can use this information to help troubleshoot issues.
 
 
-=head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
+=head2 Excludes => ArrayRef[Datasync_FilterRule]
 
 A list of filter rules that determines which files to exclude from a
 task. The list should contain a single filter string that consists of
@@ -83,7 +142,7 @@ pipe), for example: C<"/folder1|/folder2">
 The name of the task that was described.
 
 
-=head2 Options => L<Paws::Datasync::Options>
+=head2 Options => Datasync_Options
 
 The set of configuration options that control the behavior of a single
 execution of the task that occurs when you call C<StartTaskExecution>.

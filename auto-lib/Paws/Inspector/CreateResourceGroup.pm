@@ -1,13 +1,36 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Inspector::CreateResourceGroup;
-  use Moose;
-  has ResourceGroupTags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::ResourceGroupTag]', traits => ['NameInRequest'], request_name => 'resourceGroupTags' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Inspector::Types qw/Inspector_ResourceGroupTag/;
+  has ResourceGroupTags => (is => 'ro', isa => ArrayRef[Inspector_ResourceGroupTag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateResourceGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Inspector::CreateResourceGroupResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateResourceGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Inspector::CreateResourceGroupResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceGroupTags' => 1
+                  },
+  'NameInRequest' => {
+                       'ResourceGroupTags' => 'resourceGroupTags'
+                     },
+  'types' => {
+               'ResourceGroupTags' => {
+                                        'class' => 'Paws::Inspector::ResourceGroupTag',
+                                        'type' => 'ArrayRef[Inspector_ResourceGroupTag]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +76,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ins
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ResourceGroupTags => ArrayRef[L<Paws::Inspector::ResourceGroupTag>]
+=head2 B<REQUIRED> ResourceGroupTags => ArrayRef[Inspector_ResourceGroupTag]
 
 A collection of keys and an array of possible values,
 '[{"key":"key1","values":["Value1","Value2"]},{"key":"Key2","values":["Value3"]}]'.

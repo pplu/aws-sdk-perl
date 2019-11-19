@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListUploadsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Uploads => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Upload]', traits => ['NameInRequest'], request_name => 'uploads' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Upload/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Uploads => (is => 'ro', isa => ArrayRef[DeviceFarm_Upload]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Uploads' => 'uploads',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'Uploads' => {
+                              'class' => 'Paws::DeviceFarm::Upload',
+                              'type' => 'ArrayRef[DeviceFarm_Upload]'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +49,7 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
-=head2 Uploads => ArrayRef[L<Paws::DeviceFarm::Upload>]
+=head2 Uploads => ArrayRef[DeviceFarm_Upload]
 
 Information about the uploads.
 

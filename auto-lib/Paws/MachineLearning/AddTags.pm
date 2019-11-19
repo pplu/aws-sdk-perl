@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MachineLearning::AddTags;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::MachineLearning::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MachineLearning::Types qw/MachineLearning_Tag/;
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[MachineLearning_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::AddTagsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddTags');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MachineLearning::AddTagsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'ResourceType' => 1,
+                    'ResourceId' => 1
+                  },
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::MachineLearning::Tag',
+                           'type' => 'ArrayRef[MachineLearning_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +94,7 @@ The type of the ML object to tag.
 
 Valid values are: C<"BatchPrediction">, C<"DataSource">, C<"Evaluation">, C<"MLModel">
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::MachineLearning::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[MachineLearning_Tag]
 
 The key-value pairs to use to create tags. If you specify a key without
 specifying a value, Amazon ML creates a tag with the specified key and

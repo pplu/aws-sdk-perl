@@ -1,22 +1,92 @@
+# Generated from default/object.tt
 package Paws::S3Control::JobDescriptor;
-  use Moose;
-  has ConfirmationRequired => (is => 'ro', isa => 'Bool');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has FailureReasons => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::JobFailure]');
-  has JobArn => (is => 'ro', isa => 'Str');
-  has JobId => (is => 'ro', isa => 'Str');
-  has Manifest => (is => 'ro', isa => 'Paws::S3Control::JobManifest');
-  has Operation => (is => 'ro', isa => 'Paws::S3Control::JobOperation');
-  has Priority => (is => 'ro', isa => 'Int');
-  has ProgressSummary => (is => 'ro', isa => 'Paws::S3Control::JobProgressSummary');
-  has Report => (is => 'ro', isa => 'Paws::S3Control::JobReport');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusUpdateReason => (is => 'ro', isa => 'Str');
-  has SuspendedCause => (is => 'ro', isa => 'Str');
-  has SuspendedDate => (is => 'ro', isa => 'Str');
-  has TerminationDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef Int/;
+  use Paws::S3Control::Types qw/S3Control_JobProgressSummary S3Control_JobFailure S3Control_JobManifest S3Control_JobOperation S3Control_JobReport/;
+  has ConfirmationRequired => (is => 'ro', isa => Bool);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has FailureReasons => (is => 'ro', isa => ArrayRef[S3Control_JobFailure]);
+  has JobArn => (is => 'ro', isa => Str);
+  has JobId => (is => 'ro', isa => Str);
+  has Manifest => (is => 'ro', isa => S3Control_JobManifest);
+  has Operation => (is => 'ro', isa => S3Control_JobOperation);
+  has Priority => (is => 'ro', isa => Int);
+  has ProgressSummary => (is => 'ro', isa => S3Control_JobProgressSummary);
+  has Report => (is => 'ro', isa => S3Control_JobReport);
+  has RoleArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusUpdateReason => (is => 'ro', isa => Str);
+  has SuspendedCause => (is => 'ro', isa => Str);
+  has SuspendedDate => (is => 'ro', isa => Str);
+  has TerminationDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Operation' => {
+                                'class' => 'Paws::S3Control::JobOperation',
+                                'type' => 'S3Control_JobOperation'
+                              },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'SuspendedDate' => {
+                                    'type' => 'Str'
+                                  },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'StatusUpdateReason' => {
+                                         'type' => 'Str'
+                                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ConfirmationRequired' => {
+                                           'type' => 'Bool'
+                                         },
+               'ProgressSummary' => {
+                                      'class' => 'Paws::S3Control::JobProgressSummary',
+                                      'type' => 'S3Control_JobProgressSummary'
+                                    },
+               'TerminationDate' => {
+                                      'type' => 'Str'
+                                    },
+               'JobArn' => {
+                             'type' => 'Str'
+                           },
+               'Manifest' => {
+                               'type' => 'S3Control_JobManifest',
+                               'class' => 'Paws::S3Control::JobManifest'
+                             },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'FailureReasons' => {
+                                     'type' => 'ArrayRef[S3Control_JobFailure]',
+                                     'class' => 'Paws::S3Control::JobFailure'
+                                   },
+               'Report' => {
+                             'class' => 'Paws::S3Control::JobReport',
+                             'type' => 'S3Control_JobReport'
+                           },
+               'SuspendedCause' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +141,7 @@ created through the Amazon S3 console.
 C<Create Job> request.
 
 
-=head2 FailureReasons => ArrayRef[L<Paws::S3Control::JobFailure>]
+=head2 FailureReasons => ArrayRef[S3Control_JobFailure]
 
   If the specified job failed, this field contains information describing
 the failure.
@@ -87,12 +157,12 @@ the failure.
   The ID for the specified job.
 
 
-=head2 Manifest => L<Paws::S3Control::JobManifest>
+=head2 Manifest => S3Control_JobManifest
 
   The configuration information for the specified job's manifest object.
 
 
-=head2 Operation => L<Paws::S3Control::JobOperation>
+=head2 Operation => S3Control_JobOperation
 
   The operation that the specified job is configured to execute on the
 objects listed in the manifest.
@@ -103,14 +173,14 @@ objects listed in the manifest.
   The priority of the specified job.
 
 
-=head2 ProgressSummary => L<Paws::S3Control::JobProgressSummary>
+=head2 ProgressSummary => S3Control_JobProgressSummary
 
   Describes the total number of tasks that the specified job has
 executed, the number of tasks that succeeded, and the number of tasks
 that failed.
 
 
-=head2 Report => L<Paws::S3Control::JobReport>
+=head2 Report => S3Control_JobReport
 
   Contains the configuration information for the job-completion report if
 you requested one in the C<Create Job> request.

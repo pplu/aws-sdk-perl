@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SegmentImportResource;
-  use Moose;
-  has ChannelCounts => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__integer');
-  has ExternalId => (is => 'ro', isa => 'Str', required => 1);
-  has Format => (is => 'ro', isa => 'Str', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has S3Url => (is => 'ro', isa => 'Str', required => 1);
-  has Size => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__integer/;
+  has ChannelCounts => (is => 'ro', isa => Pinpoint_MapOf__integer);
+  has ExternalId => (is => 'ro', isa => Str, required => 1);
+  has Format => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has S3Url => (is => 'ro', isa => Str, required => 1);
+  has Size => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Format' => 1,
+                    'Size' => 1,
+                    'RoleArn' => 1,
+                    'ExternalId' => 1,
+                    'S3Url' => 1
+                  },
+  'types' => {
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'ChannelCounts' => {
+                                    'class' => 'Paws::Pinpoint::MapOf__integer',
+                                    'type' => 'Pinpoint_MapOf__integer'
+                                  },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'S3Url' => {
+                            'type' => 'Str'
+                          },
+               'ExternalId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +83,7 @@ definitions.
 =head1 ATTRIBUTES
 
 
-=head2 ChannelCounts => L<Paws::Pinpoint::MapOf__integer>
+=head2 ChannelCounts => Pinpoint_MapOf__integer
 
   The number of channel types in the endpoint definitions that were
 imported to create the segment.

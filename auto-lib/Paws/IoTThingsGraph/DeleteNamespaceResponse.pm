@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::IoTThingsGraph::DeleteNamespaceResponse;
-  use Moose;
-  has NamespaceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'namespaceArn' );
-  has NamespaceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'namespaceName' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has NamespaceArn => (is => 'ro', isa => Str);
+  has NamespaceName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NamespaceArn' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NamespaceName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'NamespaceArn' => 'namespaceArn',
+                       'NamespaceName' => 'namespaceName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

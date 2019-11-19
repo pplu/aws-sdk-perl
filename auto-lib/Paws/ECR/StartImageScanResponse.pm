@@ -1,12 +1,47 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECR::StartImageScanResponse;
-  use Moose;
-  has ImageId => (is => 'ro', isa => 'Paws::ECR::ImageIdentifier', traits => ['NameInRequest'], request_name => 'imageId' );
-  has ImageScanStatus => (is => 'ro', isa => 'Paws::ECR::ImageScanStatus', traits => ['NameInRequest'], request_name => 'imageScanStatus' );
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw/ECR_ImageIdentifier ECR_ImageScanStatus/;
+  has ImageId => (is => 'ro', isa => ECR_ImageIdentifier);
+  has ImageScanStatus => (is => 'ro', isa => ECR_ImageScanStatus);
+  has RegistryId => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ImageScanStatus' => 'imageScanStatus',
+                       'RegistryId' => 'registryId',
+                       'ImageId' => 'imageId',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'types' => {
+               'ImageScanStatus' => {
+                                      'type' => 'ECR_ImageScanStatus',
+                                      'class' => 'Paws::ECR::ImageScanStatus'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'ImageId' => {
+                              'class' => 'Paws::ECR::ImageIdentifier',
+                              'type' => 'ECR_ImageIdentifier'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -17,12 +52,12 @@ Paws::ECR::StartImageScanResponse
 =head1 ATTRIBUTES
 
 
-=head2 ImageId => L<Paws::ECR::ImageIdentifier>
+=head2 ImageId => ECR_ImageIdentifier
 
 
 
 
-=head2 ImageScanStatus => L<Paws::ECR::ImageScanStatus>
+=head2 ImageScanStatus => ECR_ImageScanStatus
 
 The current state of the scan.
 

@@ -1,7 +1,26 @@
 package Paws::EC2::CreateVolumePermissionModifications;
-  use Moose;
-  has Add => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CreateVolumePermission]');
-  has Remove => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CreateVolumePermission]');
+  use Moo;  use Types::Standard qw/ArrayRef/;
+  use Paws::EC2::Types qw/EC2_CreateVolumePermission/;
+  has Add => (is => 'ro', isa => ArrayRef[EC2_CreateVolumePermission]);
+  has Remove => (is => 'ro', isa => ArrayRef[EC2_CreateVolumePermission]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Remove' => {
+                             'class' => 'Paws::EC2::CreateVolumePermission',
+                             'type' => 'ArrayRef[EC2_CreateVolumePermission]'
+                           },
+               'Add' => {
+                          'class' => 'Paws::EC2::CreateVolumePermission',
+                          'type' => 'ArrayRef[EC2_CreateVolumePermission]'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +56,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Add => ArrayRef[L<Paws::EC2::CreateVolumePermission>]
+=head2 Add => ArrayRef[EC2_CreateVolumePermission]
 
   Adds the specified AWS account ID or group to the list.
 
 
-=head2 Remove => ArrayRef[L<Paws::EC2::CreateVolumePermission>]
+=head2 Remove => ArrayRef[EC2_CreateVolumePermission]
 
   Removes the specified AWS account ID or group from the list.
 

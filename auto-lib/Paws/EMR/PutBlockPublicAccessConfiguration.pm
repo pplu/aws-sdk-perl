@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::EMR::PutBlockPublicAccessConfiguration;
-  use Moose;
-  has BlockPublicAccessConfiguration => (is => 'ro', isa => 'Paws::EMR::BlockPublicAccessConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_BlockPublicAccessConfiguration/;
+  has BlockPublicAccessConfiguration => (is => 'ro', isa => EMR_BlockPublicAccessConfiguration, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutBlockPublicAccessConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::PutBlockPublicAccessConfigurationOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutBlockPublicAccessConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EMR::PutBlockPublicAccessConfigurationOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BlockPublicAccessConfiguration' => 1
+                  },
+  'types' => {
+               'BlockPublicAccessConfiguration' => {
+                                                     'type' => 'EMR_BlockPublicAccessConfiguration',
+                                                     'class' => 'Paws::EMR::BlockPublicAccessConfiguration'
+                                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +68,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> BlockPublicAccessConfiguration => L<Paws::EMR::BlockPublicAccessConfiguration>
+=head2 B<REQUIRED> BlockPublicAccessConfiguration => EMR_BlockPublicAccessConfiguration
 
 A configuration for Amazon EMR block public access. The configuration
 applies to all clusters created in your account for the current Region.

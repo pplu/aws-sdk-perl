@@ -1,11 +1,39 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListVirtualMFADevicesResponse;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
-  has VirtualMFADevices => (is => 'ro', isa => 'ArrayRef[Paws::IAM::VirtualMFADevice]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::IAM::Types qw/IAM_VirtualMFADevice/;
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
+  has VirtualMFADevices => (is => 'ro', isa => ArrayRef[IAM_VirtualMFADevice], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'VirtualMFADevices' => 1
+                  },
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'VirtualMFADevices' => {
+                                        'type' => 'ArrayRef[IAM_VirtualMFADevice]',
+                                        'class' => 'Paws::IAM::VirtualMFADevice'
+                                      },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +63,7 @@ the value to use for the C<Marker> parameter in a subsequent pagination
 request.
 
 
-=head2 B<REQUIRED> VirtualMFADevices => ArrayRef[L<Paws::IAM::VirtualMFADevice>]
+=head2 B<REQUIRED> VirtualMFADevices => ArrayRef[IAM_VirtualMFADevice]
 
 The list of virtual MFA devices in the current account that match the
 C<AssignmentStatus> value that was passed in the request.

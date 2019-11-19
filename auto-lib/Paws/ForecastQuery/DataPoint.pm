@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ForecastQuery::DataPoint;
-  use Moose;
-  has Timestamp => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::ForecastQuery::Types qw//;
+  has Timestamp => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Num'
+                          },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AlexaForBusiness::GetAddressBookResponse;
-  use Moose;
-  has AddressBook => (is => 'ro', isa => 'Paws::AlexaForBusiness::AddressBook');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_AddressBook/;
+  has AddressBook => (is => 'ro', isa => AlexaForBusiness_AddressBook);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AddressBook' => {
+                                  'type' => 'AlexaForBusiness_AddressBook',
+                                  'class' => 'Paws::AlexaForBusiness::AddressBook'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::AlexaForBusiness::GetAddressBookResponse
 =head1 ATTRIBUTES
 
 
-=head2 AddressBook => L<Paws::AlexaForBusiness::AddressBook>
+=head2 AddressBook => AlexaForBusiness_AddressBook
 
 The details of the requested address book.
 

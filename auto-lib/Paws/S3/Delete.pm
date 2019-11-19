@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::S3::Delete;
-  use Moose;
-  has Objects => (is => 'ro', isa => 'ArrayRef[Paws::S3::ObjectIdentifier]', request_name => 'Object', traits => ['NameInRequest'], required => 1);
-  has Quiet => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/ArrayRef Bool/;
+  use Paws::S3::Types qw/S3_ObjectIdentifier/;
+  has Objects => (is => 'ro', isa => ArrayRef[S3_ObjectIdentifier], required => 1);
+  has Quiet => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Quiet' => {
+                            'type' => 'Bool'
+                          },
+               'Objects' => {
+                              'class' => 'Paws::S3::ObjectIdentifier',
+                              'type' => 'ArrayRef[S3_ObjectIdentifier]'
+                            }
+             },
+  'NameInRequest' => {
+                       'Objects' => 'Object'
+                     },
+  'IsRequired' => {
+                    'Objects' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +64,7 @@ Container for the objects to delete.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Objects => ArrayRef[L<Paws::S3::ObjectIdentifier>]
+=head2 B<REQUIRED> Objects => ArrayRef[S3_ObjectIdentifier]
 
   The objects to delete.
 

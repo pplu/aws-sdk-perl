@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Scte35DescriptorSettings;
-  use Moose;
-  has SegmentationDescriptorScte35DescriptorSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35SegmentationDescriptor', request_name => 'segmentationDescriptorScte35DescriptorSettings', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_Scte35SegmentationDescriptor/;
+  has SegmentationDescriptorScte35DescriptorSettings => (is => 'ro', isa => MediaLive_Scte35SegmentationDescriptor, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SegmentationDescriptorScte35DescriptorSettings' => 1
+                  },
+  'NameInRequest' => {
+                       'SegmentationDescriptorScte35DescriptorSettings' => 'segmentationDescriptorScte35DescriptorSettings'
+                     },
+  'types' => {
+               'SegmentationDescriptorScte35DescriptorSettings' => {
+                                                                     'class' => 'Paws::MediaLive::Scte35SegmentationDescriptor',
+                                                                     'type' => 'MediaLive_Scte35SegmentationDescriptor'
+                                                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ SCTE-35 Descriptor settings.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SegmentationDescriptorScte35DescriptorSettings => L<Paws::MediaLive::Scte35SegmentationDescriptor>
+=head2 B<REQUIRED> SegmentationDescriptorScte35DescriptorSettings => MediaLive_Scte35SegmentationDescriptor
 
   SCTE-35 Segmentation Descriptor.
 

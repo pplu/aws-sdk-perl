@@ -1,11 +1,40 @@
 
 package Paws::MQ::DescribeBrokerInstanceOptionsResponse;
-  use Moose;
-  has BrokerInstanceOptions => (is => 'ro', isa => 'ArrayRef[Paws::MQ::BrokerInstanceOption]', traits => ['NameInRequest'], request_name => 'brokerInstanceOptions');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::MQ::Types qw/MQ_BrokerInstanceOption/;
+  has BrokerInstanceOptions => (is => 'ro', isa => ArrayRef[MQ_BrokerInstanceOption]);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BrokerInstanceOptions' => {
+                                            'class' => 'Paws::MQ::BrokerInstanceOption',
+                                            'type' => 'ArrayRef[MQ_BrokerInstanceOption]'
+                                          },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'BrokerInstanceOptions' => 'brokerInstanceOptions',
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +46,7 @@ Paws::MQ::DescribeBrokerInstanceOptionsResponse
 =head1 ATTRIBUTES
 
 
-=head2 BrokerInstanceOptions => ArrayRef[L<Paws::MQ::BrokerInstanceOption>]
+=head2 BrokerInstanceOptions => ArrayRef[MQ_BrokerInstanceOption]
 
 List of available broker instance options.
 

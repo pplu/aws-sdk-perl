@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::IoT::ReplaceDefaultPolicyVersionParams;
-  use Moose;
-  has TemplateName => (is => 'ro', isa => 'Str', request_name => 'templateName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has TemplateName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TemplateName' => 'templateName'
+                     },
+  'IsRequired' => {
+                    'TemplateName' => 1
+                  },
+  'types' => {
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

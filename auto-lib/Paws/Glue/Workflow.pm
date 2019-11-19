@@ -1,12 +1,50 @@
+# Generated from default/object.tt
 package Paws::Glue::Workflow;
-  use Moose;
-  has CreatedOn => (is => 'ro', isa => 'Str');
-  has DefaultRunProperties => (is => 'ro', isa => 'Paws::Glue::WorkflowRunProperties');
-  has Description => (is => 'ro', isa => 'Str');
-  has Graph => (is => 'ro', isa => 'Paws::Glue::WorkflowGraph');
-  has LastModifiedOn => (is => 'ro', isa => 'Str');
-  has LastRun => (is => 'ro', isa => 'Paws::Glue::WorkflowRun');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_WorkflowRun Glue_WorkflowRunProperties Glue_WorkflowGraph/;
+  has CreatedOn => (is => 'ro', isa => Str);
+  has DefaultRunProperties => (is => 'ro', isa => Glue_WorkflowRunProperties);
+  has Description => (is => 'ro', isa => Str);
+  has Graph => (is => 'ro', isa => Glue_WorkflowGraph);
+  has LastModifiedOn => (is => 'ro', isa => Str);
+  has LastRun => (is => 'ro', isa => Glue_WorkflowRun);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastModifiedOn' => {
+                                     'type' => 'Str'
+                                   },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DefaultRunProperties' => {
+                                           'class' => 'Paws::Glue::WorkflowRunProperties',
+                                           'type' => 'Glue_WorkflowRunProperties'
+                                         },
+               'CreatedOn' => {
+                                'type' => 'Str'
+                              },
+               'LastRun' => {
+                              'class' => 'Paws::Glue::WorkflowRun',
+                              'type' => 'Glue_WorkflowRun'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Graph' => {
+                            'type' => 'Glue_WorkflowGraph',
+                            'class' => 'Paws::Glue::WorkflowGraph'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +86,7 @@ executed to complete a logical task.
   The date and time when the workflow was created.
 
 
-=head2 DefaultRunProperties => L<Paws::Glue::WorkflowRunProperties>
+=head2 DefaultRunProperties => Glue_WorkflowRunProperties
 
   A collection of properties to be used as part of each execution of the
 workflow.
@@ -59,7 +97,7 @@ workflow.
   A description of the workflow.
 
 
-=head2 Graph => L<Paws::Glue::WorkflowGraph>
+=head2 Graph => Glue_WorkflowGraph
 
   The graph representing all the AWS Glue components that belong to the
 workflow as nodes and directed connections between them as edges.
@@ -70,7 +108,7 @@ workflow as nodes and directed connections between them as edges.
   The date and time when the workflow was last modified.
 
 
-=head2 LastRun => L<Paws::Glue::WorkflowRun>
+=head2 LastRun => Glue_WorkflowRun
 
   The information about the last execution of the workflow.
 

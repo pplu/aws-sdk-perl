@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchEvents::PutTargets;
-  use Moose;
-  has EventBusName => (is => 'ro', isa => 'Str');
-  has Rule => (is => 'ro', isa => 'Str', required => 1);
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::Target]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_Target/;
+  has EventBusName => (is => 'ro', isa => Str, predicate => 1);
+  has Rule => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[CloudWatchEvents_Target], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutTargets');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchEvents::PutTargetsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutTargets');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchEvents::PutTargetsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventBusName' => {
+                                   'type' => 'Str'
+                                 },
+               'Targets' => {
+                              'type' => 'ArrayRef[CloudWatchEvents_Target]',
+                              'class' => 'Paws::CloudWatchEvents::Target'
+                            },
+               'Rule' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Targets' => 1,
+                    'Rule' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,8 +63,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Arn             => 'MyTargetArn',    # min: 1, max: 1600
           Id              => 'MyTargetId',     # min: 1, max: 64
           BatchParameters => {
-            JobDefinition   => 'MyString',
-            JobName         => 'MyString',
+            JobDefinition   => 'MyString',     # OPTIONAL
+            JobName         => 'MyString',     # OPTIONAL
             ArrayProperties => {
               Size => 1,                       # OPTIONAL
             },    # OPTIONAL
@@ -47,18 +74,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           EcsParameters => {
             TaskDefinitionArn    => 'MyArn',    # min: 1, max: 1600
-            Group                => 'MyString',
+            Group                => 'MyString', # OPTIONAL
             LaunchType           => 'EC2',      # values: EC2, FARGATE; OPTIONAL
             NetworkConfiguration => {
               AwsvpcConfiguration => {
-                Subnets => [ 'MyString', ... ],
+                Subnets => [
+                  'MyString', ...               # OPTIONAL
+                ],
                 AssignPublicIp =>
                   'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
-                SecurityGroups => [ 'MyString', ... ],
+                SecurityGroups => [
+                  'MyString', ...    # OPTIONAL
+                ],
               },    # OPTIONAL
             },    # OPTIONAL
-            PlatformVersion => 'MyString',
-            TaskCount       => 1,            # min: 1; OPTIONAL
+            PlatformVersion => 'MyString',    # OPTIONAL
+            TaskCount       => 1,             # min: 1; OPTIONAL
           },    # OPTIONAL
           Input            => 'MyTargetInput',        # max: 8192; OPTIONAL
           InputPath        => 'MyTargetInputPath',    # max: 256
@@ -121,7 +152,7 @@ The name of the rule.
 
 
 
-=head2 B<REQUIRED> Targets => ArrayRef[L<Paws::CloudWatchEvents::Target>]
+=head2 B<REQUIRED> Targets => ArrayRef[CloudWatchEvents_Target]
 
 The targets to update or add to the rule.
 

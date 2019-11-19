@@ -1,19 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::CreateModel;
-  use Moose;
-  has Containers => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ContainerDefinition]');
-  has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has ModelName => (is => 'ro', isa => 'Str', required => 1);
-  has PrimaryContainer => (is => 'ro', isa => 'Paws::SageMaker::ContainerDefinition');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
-  has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::SageMaker::Types qw/SageMaker_Tag SageMaker_VpcConfig SageMaker_ContainerDefinition/;
+  has Containers => (is => 'ro', isa => ArrayRef[SageMaker_ContainerDefinition], predicate => 1);
+  has EnableNetworkIsolation => (is => 'ro', isa => Bool, predicate => 1);
+  has ExecutionRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ModelName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PrimaryContainer => (is => 'ro', isa => SageMaker_ContainerDefinition, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SageMaker_Tag], predicate => 1);
+  has VpcConfig => (is => 'ro', isa => SageMaker_VpcConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateModel');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::CreateModelOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateModel');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::CreateModelOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::SageMaker::Tag',
+                           'type' => 'ArrayRef[SageMaker_Tag]'
+                         },
+               'Containers' => {
+                                 'type' => 'ArrayRef[SageMaker_ContainerDefinition]',
+                                 'class' => 'Paws::SageMaker::ContainerDefinition'
+                               },
+               'PrimaryContainer' => {
+                                       'class' => 'Paws::SageMaker::ContainerDefinition',
+                                       'type' => 'SageMaker_ContainerDefinition'
+                                     },
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     },
+               'ModelName' => {
+                                'type' => 'Str'
+                              },
+               'EnableNetworkIsolation' => {
+                                             'type' => 'Bool'
+                                           },
+               'VpcConfig' => {
+                                'class' => 'Paws::SageMaker::VpcConfig',
+                                'type' => 'SageMaker_VpcConfig'
+                              }
+             },
+  'IsRequired' => {
+                    'ExecutionRoleArn' => 1,
+                    'ModelName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +134,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 Containers => ArrayRef[L<Paws::SageMaker::ContainerDefinition>]
+=head2 Containers => ArrayRef[SageMaker_ContainerDefinition]
 
 Specifies the containers in the inference pipeline.
 
@@ -128,7 +170,7 @@ The name of the new model.
 
 
 
-=head2 PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>
+=head2 PrimaryContainer => SageMaker_ContainerDefinition
 
 The location of the primary docker image containing inference code,
 associated artifacts, and custom environment map that the inference
@@ -136,7 +178,7 @@ code uses when the model is deployed for predictions.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+=head2 Tags => ArrayRef[SageMaker_Tag]
 
 An array of key-value pairs. For more information, see Using Cost
 Allocation Tags
@@ -145,7 +187,7 @@ in the I<AWS Billing and Cost Management User Guide>.
 
 
 
-=head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
+=head2 VpcConfig => SageMaker_VpcConfig
 
 A VpcConfig
 (https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html)

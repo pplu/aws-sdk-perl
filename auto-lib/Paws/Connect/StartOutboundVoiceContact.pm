@@ -1,20 +1,59 @@
 
 package Paws::Connect::StartOutboundVoiceContact;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::Connect::Attributes');
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has ContactFlowId => (is => 'ro', isa => 'Str', required => 1);
-  has DestinationPhoneNumber => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has QueueId => (is => 'ro', isa => 'Str');
-  has SourcePhoneNumber => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Connect::Types qw/Connect_Attributes/;
+  has Attributes => (is => 'ro', isa => Connect_Attributes, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has ContactFlowId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DestinationPhoneNumber => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has QueueId => (is => 'ro', isa => Str, predicate => 1);
+  has SourcePhoneNumber => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartOutboundVoiceContact');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/contact/outbound-voice');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Connect::StartOutboundVoiceContactResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartOutboundVoiceContact');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/contact/outbound-voice');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Connect::StartOutboundVoiceContactResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InstanceId' => 1,
+                    'DestinationPhoneNumber' => 1,
+                    'ContactFlowId' => 1
+                  },
+  'types' => {
+               'ContactFlowId' => {
+                                    'type' => 'Str'
+                                  },
+               'SourcePhoneNumber' => {
+                                        'type' => 'Str'
+                                      },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Attributes' => {
+                                 'type' => 'Connect_Attributes',
+                                 'class' => 'Paws::Connect::Attributes'
+                               },
+               'DestinationPhoneNumber' => {
+                                             'type' => 'Str'
+                                           },
+               'QueueId' => {
+                              'type' => 'Str'
+                            },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +97,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::Connect::Attributes>
+=head2 Attributes => Connect_Attributes
 
 A custom key-value pair using an attribute map. The attributes are
 standard Amazon Connect attributes, and can be accessed in contact

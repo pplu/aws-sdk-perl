@@ -1,21 +1,74 @@
 
 package Paws::MediaConvert::UpdateJobTemplate;
-  use Moose;
-  has AccelerationSettings => (is => 'ro', isa => 'Paws::MediaConvert::AccelerationSettings', traits => ['NameInRequest'], request_name => 'accelerationSettings');
-  has Category => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'category');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has Priority => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'priority');
-  has Queue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queue');
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', traits => ['NameInRequest'], request_name => 'settings');
-  has StatusUpdateInterval => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusUpdateInterval');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_AccelerationSettings MediaConvert_JobTemplateSettings/;
+  has AccelerationSettings => (is => 'ro', isa => MediaConvert_AccelerationSettings, predicate => 1);
+  has Category => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Priority => (is => 'ro', isa => Int, predicate => 1);
+  has Queue => (is => 'ro', isa => Str, predicate => 1);
+  has Settings => (is => 'ro', isa => MediaConvert_JobTemplateSettings, predicate => 1);
+  has StatusUpdateInterval => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJobTemplate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/jobTemplates/{name}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConvert::UpdateJobTemplateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateJobTemplate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-08-29/jobTemplates/{name}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConvert::UpdateJobTemplateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Name' => 'name'
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Queue' => {
+                            'type' => 'Str'
+                          },
+               'Settings' => {
+                               'type' => 'MediaConvert_JobTemplateSettings',
+                               'class' => 'Paws::MediaConvert::JobTemplateSettings'
+                             },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AccelerationSettings' => {
+                                           'class' => 'Paws::MediaConvert::AccelerationSettings',
+                                           'type' => 'MediaConvert_AccelerationSettings'
+                                         },
+               'StatusUpdateInterval' => {
+                                           'type' => 'Str'
+                                         },
+               'Category' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'StatusUpdateInterval' => 'statusUpdateInterval',
+                       'Category' => 'category',
+                       'AccelerationSettings' => 'accelerationSettings',
+                       'Priority' => 'priority',
+                       'Description' => 'description',
+                       'Settings' => 'settings',
+                       'Queue' => 'queue'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -1319,7 +1372,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head1 ATTRIBUTES
 
 
-=head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
+=head2 AccelerationSettings => MediaConvert_AccelerationSettings
 
 Accelerated transcoding can significantly speed up jobs with long,
 visually complex content. Outputs that use this feature incur pro-tier
@@ -1362,7 +1415,7 @@ The new queue for the job template, if you are changing it.
 
 
 
-=head2 Settings => L<Paws::MediaConvert::JobTemplateSettings>
+=head2 Settings => MediaConvert_JobTemplateSettings
 
 JobTemplateSettings contains all the transcode settings saved in the
 template that will be applied to jobs created from it.

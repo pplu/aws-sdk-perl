@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::Datasync::TaskExecutionResultDetail;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorDetail => (is => 'ro', isa => 'Str');
-  has PrepareDuration => (is => 'ro', isa => 'Int');
-  has PrepareStatus => (is => 'ro', isa => 'Str');
-  has TransferDuration => (is => 'ro', isa => 'Int');
-  has TransferStatus => (is => 'ro', isa => 'Str');
-  has VerifyDuration => (is => 'ro', isa => 'Int');
-  has VerifyStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Datasync::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorDetail => (is => 'ro', isa => Str);
+  has PrepareDuration => (is => 'ro', isa => Int);
+  has PrepareStatus => (is => 'ro', isa => Str);
+  has TransferDuration => (is => 'ro', isa => Int);
+  has TransferStatus => (is => 'ro', isa => Str);
+  has VerifyDuration => (is => 'ro', isa => Int);
+  has VerifyStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VerifyStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'PrepareDuration' => {
+                                      'type' => 'Int'
+                                    },
+               'TransferStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'ErrorDetail' => {
+                                  'type' => 'Str'
+                                },
+               'TransferDuration' => {
+                                       'type' => 'Int'
+                                     },
+               'PrepareStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'VerifyDuration' => {
+                                     'type' => 'Int'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

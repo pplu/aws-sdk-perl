@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeStar::DeleteProject;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
-  has DeleteStack => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'deleteStack' );
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeStar::Types qw//;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has DeleteStack => (is => 'ro', isa => Bool, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteProject');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStar::DeleteProjectResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteProject');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStar::DeleteProjectResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Id' => 1
+                  },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'DeleteStack' => 'deleteStack'
+                     },
+  'types' => {
+               'DeleteStack' => {
+                                  'type' => 'Bool'
+                                },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

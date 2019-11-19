@@ -1,13 +1,65 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::PullRequestEvent;
-  use Moose;
-  has ActorArn => (is => 'ro', isa => 'Str', request_name => 'actorArn', traits => ['NameInRequest']);
-  has EventDate => (is => 'ro', isa => 'Str', request_name => 'eventDate', traits => ['NameInRequest']);
-  has PullRequestCreatedEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::PullRequestCreatedEventMetadata', request_name => 'pullRequestCreatedEventMetadata', traits => ['NameInRequest']);
-  has PullRequestEventType => (is => 'ro', isa => 'Str', request_name => 'pullRequestEventType', traits => ['NameInRequest']);
-  has PullRequestId => (is => 'ro', isa => 'Str', request_name => 'pullRequestId', traits => ['NameInRequest']);
-  has PullRequestMergedStateChangedEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::PullRequestMergedStateChangedEventMetadata', request_name => 'pullRequestMergedStateChangedEventMetadata', traits => ['NameInRequest']);
-  has PullRequestSourceReferenceUpdatedEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::PullRequestSourceReferenceUpdatedEventMetadata', request_name => 'pullRequestSourceReferenceUpdatedEventMetadata', traits => ['NameInRequest']);
-  has PullRequestStatusChangedEventMetadata => (is => 'ro', isa => 'Paws::CodeCommit::PullRequestStatusChangedEventMetadata', request_name => 'pullRequestStatusChangedEventMetadata', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_PullRequestMergedStateChangedEventMetadata CodeCommit_PullRequestStatusChangedEventMetadata CodeCommit_PullRequestSourceReferenceUpdatedEventMetadata CodeCommit_PullRequestCreatedEventMetadata/;
+  has ActorArn => (is => 'ro', isa => Str);
+  has EventDate => (is => 'ro', isa => Str);
+  has PullRequestCreatedEventMetadata => (is => 'ro', isa => CodeCommit_PullRequestCreatedEventMetadata);
+  has PullRequestEventType => (is => 'ro', isa => Str);
+  has PullRequestId => (is => 'ro', isa => Str);
+  has PullRequestMergedStateChangedEventMetadata => (is => 'ro', isa => CodeCommit_PullRequestMergedStateChangedEventMetadata);
+  has PullRequestSourceReferenceUpdatedEventMetadata => (is => 'ro', isa => CodeCommit_PullRequestSourceReferenceUpdatedEventMetadata);
+  has PullRequestStatusChangedEventMetadata => (is => 'ro', isa => CodeCommit_PullRequestStatusChangedEventMetadata);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PullRequestCreatedEventMetadata' => {
+                                                      'type' => 'CodeCommit_PullRequestCreatedEventMetadata',
+                                                      'class' => 'Paws::CodeCommit::PullRequestCreatedEventMetadata'
+                                                    },
+               'PullRequestMergedStateChangedEventMetadata' => {
+                                                                 'class' => 'Paws::CodeCommit::PullRequestMergedStateChangedEventMetadata',
+                                                                 'type' => 'CodeCommit_PullRequestMergedStateChangedEventMetadata'
+                                                               },
+               'PullRequestId' => {
+                                    'type' => 'Str'
+                                  },
+               'PullRequestEventType' => {
+                                           'type' => 'Str'
+                                         },
+               'PullRequestStatusChangedEventMetadata' => {
+                                                            'type' => 'CodeCommit_PullRequestStatusChangedEventMetadata',
+                                                            'class' => 'Paws::CodeCommit::PullRequestStatusChangedEventMetadata'
+                                                          },
+               'ActorArn' => {
+                               'type' => 'Str'
+                             },
+               'EventDate' => {
+                                'type' => 'Str'
+                              },
+               'PullRequestSourceReferenceUpdatedEventMetadata' => {
+                                                                     'class' => 'Paws::CodeCommit::PullRequestSourceReferenceUpdatedEventMetadata',
+                                                                     'type' => 'CodeCommit_PullRequestSourceReferenceUpdatedEventMetadata'
+                                                                   }
+             },
+  'NameInRequest' => {
+                       'EventDate' => 'eventDate',
+                       'ActorArn' => 'actorArn',
+                       'PullRequestSourceReferenceUpdatedEventMetadata' => 'pullRequestSourceReferenceUpdatedEventMetadata',
+                       'PullRequestStatusChangedEventMetadata' => 'pullRequestStatusChangedEventMetadata',
+                       'PullRequestEventType' => 'pullRequestEventType',
+                       'PullRequestMergedStateChangedEventMetadata' => 'pullRequestMergedStateChangedEventMetadata',
+                       'PullRequestId' => 'pullRequestId',
+                       'PullRequestCreatedEventMetadata' => 'pullRequestCreatedEventMetadata'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +107,7 @@ commits or changing the status of a pull request.
   The day and time of the pull request event, in timestamp format.
 
 
-=head2 PullRequestCreatedEventMetadata => L<Paws::CodeCommit::PullRequestCreatedEventMetadata>
+=head2 PullRequestCreatedEventMetadata => CodeCommit_PullRequestCreatedEventMetadata
 
   Information about the source and destination branches for the pull
 request.
@@ -73,18 +125,18 @@ request.
   The system-generated ID of the pull request.
 
 
-=head2 PullRequestMergedStateChangedEventMetadata => L<Paws::CodeCommit::PullRequestMergedStateChangedEventMetadata>
+=head2 PullRequestMergedStateChangedEventMetadata => CodeCommit_PullRequestMergedStateChangedEventMetadata
 
   Information about the change in mergability state for the pull request
 event.
 
 
-=head2 PullRequestSourceReferenceUpdatedEventMetadata => L<Paws::CodeCommit::PullRequestSourceReferenceUpdatedEventMetadata>
+=head2 PullRequestSourceReferenceUpdatedEventMetadata => CodeCommit_PullRequestSourceReferenceUpdatedEventMetadata
 
   Information about the updated source branch for the pull request event.
 
 
-=head2 PullRequestStatusChangedEventMetadata => L<Paws::CodeCommit::PullRequestStatusChangedEventMetadata>
+=head2 PullRequestStatusChangedEventMetadata => CodeCommit_PullRequestStatusChangedEventMetadata
 
   Information about the change in status for the pull request event.
 

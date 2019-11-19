@@ -1,15 +1,42 @@
 
 package Paws::IoT::DeleteBillingGroup;
-  use Moose;
-  has BillingGroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'billingGroupName', required => 1);
-  has ExpectedVersion => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'expectedVersion');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has BillingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExpectedVersion => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteBillingGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/billing-groups/{billingGroupName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DeleteBillingGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteBillingGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/billing-groups/{billingGroupName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DeleteBillingGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpectedVersion' => {
+                                      'type' => 'Int'
+                                    },
+               'BillingGroupName' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'ParamInQuery' => {
+                      'ExpectedVersion' => 'expectedVersion'
+                    },
+  'IsRequired' => {
+                    'BillingGroupName' => 1
+                  },
+  'ParamInURI' => {
+                    'BillingGroupName' => 'billingGroupName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

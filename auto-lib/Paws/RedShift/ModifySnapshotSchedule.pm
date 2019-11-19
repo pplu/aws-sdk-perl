@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::ModifySnapshotSchedule;
-  use Moose;
-  has ScheduleDefinitions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has ScheduleIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::RedShift::Types qw//;
+  has ScheduleDefinitions => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has ScheduleIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifySnapshotSchedule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::SnapshotSchedule');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifySnapshotScheduleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifySnapshotSchedule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::SnapshotSchedule');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifySnapshotScheduleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScheduleIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'ScheduleDefinitions' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        }
+             },
+  'IsRequired' => {
+                    'ScheduleIdentifier' => 1,
+                    'ScheduleDefinitions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,22 +1,93 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceGroup;
-  use Moose;
-  has AutoScalingPolicy => (is => 'ro', isa => 'Paws::EMR::AutoScalingPolicyDescription');
-  has BidPrice => (is => 'ro', isa => 'Str');
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
-  has ConfigurationsVersion => (is => 'ro', isa => 'Int');
-  has EbsBlockDevices => (is => 'ro', isa => 'ArrayRef[Paws::EMR::EbsBlockDevice]');
-  has EbsOptimized => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str');
-  has InstanceGroupType => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has LastSuccessfullyAppliedConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
-  has LastSuccessfullyAppliedConfigurationsVersion => (is => 'ro', isa => 'Int');
-  has Market => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has RequestedInstanceCount => (is => 'ro', isa => 'Int');
-  has RunningInstanceCount => (is => 'ro', isa => 'Int');
-  has ShrinkPolicy => (is => 'ro', isa => 'Paws::EMR::ShrinkPolicy');
-  has Status => (is => 'ro', isa => 'Paws::EMR::InstanceGroupStatus');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Bool/;
+  use Paws::EMR::Types qw/EMR_EbsBlockDevice EMR_ShrinkPolicy EMR_Configuration EMR_InstanceGroupStatus EMR_AutoScalingPolicyDescription/;
+  has AutoScalingPolicy => (is => 'ro', isa => EMR_AutoScalingPolicyDescription);
+  has BidPrice => (is => 'ro', isa => Str);
+  has Configurations => (is => 'ro', isa => ArrayRef[EMR_Configuration]);
+  has ConfigurationsVersion => (is => 'ro', isa => Int);
+  has EbsBlockDevices => (is => 'ro', isa => ArrayRef[EMR_EbsBlockDevice]);
+  has EbsOptimized => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str);
+  has InstanceGroupType => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has LastSuccessfullyAppliedConfigurations => (is => 'ro', isa => ArrayRef[EMR_Configuration]);
+  has LastSuccessfullyAppliedConfigurationsVersion => (is => 'ro', isa => Int);
+  has Market => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RequestedInstanceCount => (is => 'ro', isa => Int);
+  has RunningInstanceCount => (is => 'ro', isa => Int);
+  has ShrinkPolicy => (is => 'ro', isa => EMR_ShrinkPolicy);
+  has Status => (is => 'ro', isa => EMR_InstanceGroupStatus);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Market' => {
+                             'type' => 'Str'
+                           },
+               'RequestedInstanceCount' => {
+                                             'type' => 'Int'
+                                           },
+               'Status' => {
+                             'class' => 'Paws::EMR::InstanceGroupStatus',
+                             'type' => 'EMR_InstanceGroupStatus'
+                           },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ShrinkPolicy' => {
+                                   'class' => 'Paws::EMR::ShrinkPolicy',
+                                   'type' => 'EMR_ShrinkPolicy'
+                                 },
+               'AutoScalingPolicy' => {
+                                        'class' => 'Paws::EMR::AutoScalingPolicyDescription',
+                                        'type' => 'EMR_AutoScalingPolicyDescription'
+                                      },
+               'BidPrice' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LastSuccessfullyAppliedConfigurations' => {
+                                                            'type' => 'ArrayRef[EMR_Configuration]',
+                                                            'class' => 'Paws::EMR::Configuration'
+                                                          },
+               'RunningInstanceCount' => {
+                                           'type' => 'Int'
+                                         },
+               'EbsBlockDevices' => {
+                                      'type' => 'ArrayRef[EMR_EbsBlockDevice]',
+                                      'class' => 'Paws::EMR::EbsBlockDevice'
+                                    },
+               'InstanceGroupType' => {
+                                        'type' => 'Str'
+                                      },
+               'LastSuccessfullyAppliedConfigurationsVersion' => {
+                                                                   'type' => 'Int'
+                                                                 },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ConfigurationsVersion' => {
+                                            'type' => 'Int'
+                                          },
+               'Configurations' => {
+                                     'class' => 'Paws::EMR::Configuration',
+                                     'type' => 'ArrayRef[EMR_Configuration]'
+                                   },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +125,7 @@ HDFS.
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingPolicy => L<Paws::EMR::AutoScalingPolicyDescription>
+=head2 AutoScalingPolicy => EMR_AutoScalingPolicyDescription
 
   An automatic scaling policy for a core instance group or task instance
 group in an Amazon EMR cluster. The automatic scaling policy defines
@@ -70,7 +141,7 @@ C<BidPriceAsPercentageOfOnDemandPrice> is provided,
 C<BidPriceAsPercentageOfOnDemandPrice> defaults to 100%.
 
 
-=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
+=head2 Configurations => ArrayRef[EMR_Configuration]
 
   Amazon EMR releases 4.x or later.
 
@@ -85,7 +156,7 @@ You can specify a separate configuration for each instance group
 this instance group.
 
 
-=head2 EbsBlockDevices => ArrayRef[L<Paws::EMR::EbsBlockDevice>]
+=head2 EbsBlockDevices => ArrayRef[EMR_EbsBlockDevice]
 
   The EBS block devices that are mapped to this instance group.
 
@@ -112,7 +183,7 @@ dedicated capacity for Amazon EBS I/O.
   The EC2 instance type for all instances in the instance group.
 
 
-=head2 LastSuccessfullyAppliedConfigurations => ArrayRef[L<Paws::EMR::Configuration>]
+=head2 LastSuccessfullyAppliedConfigurations => ArrayRef[EMR_Configuration]
 
   A list of configurations that were successfully applied for an instance
 group last time.
@@ -145,12 +216,12 @@ ON_DEMAND or SPOT.
   The number of instances currently running in this instance group.
 
 
-=head2 ShrinkPolicy => L<Paws::EMR::ShrinkPolicy>
+=head2 ShrinkPolicy => EMR_ShrinkPolicy
 
   Policy for customizing shrink operations.
 
 
-=head2 Status => L<Paws::EMR::InstanceGroupStatus>
+=head2 Status => EMR_InstanceGroupStatus
 
   The current status of the instance group.
 

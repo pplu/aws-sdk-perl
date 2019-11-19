@@ -1,15 +1,40 @@
 
 package Paws::Greengrass::AssociateRoleToGroup;
-  use Moose;
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has GroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateRoleToGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/groups/{GroupId}/role');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::AssociateRoleToGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateRoleToGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/groups/{GroupId}/role');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::AssociateRoleToGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'GroupId' => 'GroupId'
+                  },
+  'IsRequired' => {
+                    'GroupId' => 1,
+                    'RoleArn' => 1
+                  },
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'GroupId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

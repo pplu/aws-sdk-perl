@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Signer::SignedObject;
-  use Moose;
-  has S3 => (is => 'ro', isa => 'Paws::Signer::S3SignedObject', request_name => 's3', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Signer::Types qw/Signer_S3SignedObject/;
+  has S3 => (is => 'ro', isa => Signer_S3SignedObject);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'S3' => 's3'
+                     },
+  'types' => {
+               'S3' => {
+                         'class' => 'Paws::Signer::S3SignedObject',
+                         'type' => 'Signer_S3SignedObject'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ your signed code image.
 =head1 ATTRIBUTES
 
 
-=head2 S3 => L<Paws::Signer::S3SignedObject>
+=head2 S3 => Signer_S3SignedObject
 
   The C<S3SignedObject>.
 

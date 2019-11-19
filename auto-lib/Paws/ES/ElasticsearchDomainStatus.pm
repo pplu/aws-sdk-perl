@@ -1,27 +1,125 @@
+# Generated from default/object.tt
 package Paws::ES::ElasticsearchDomainStatus;
-  use Moose;
-  has AccessPolicies => (is => 'ro', isa => 'Str');
-  has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
-  has ARN => (is => 'ro', isa => 'Str', required => 1);
-  has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
-  has Created => (is => 'ro', isa => 'Bool');
-  has Deleted => (is => 'ro', isa => 'Bool');
-  has DomainEndpointOptions => (is => 'ro', isa => 'Paws::ES::DomainEndpointOptions');
-  has DomainId => (is => 'ro', isa => 'Str', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
-  has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig', required => 1);
-  has ElasticsearchVersion => (is => 'ro', isa => 'Str');
-  has EncryptionAtRestOptions => (is => 'ro', isa => 'Paws::ES::EncryptionAtRestOptions');
-  has Endpoint => (is => 'ro', isa => 'Str');
-  has Endpoints => (is => 'ro', isa => 'Paws::ES::EndpointsMap');
-  has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
-  has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::ES::NodeToNodeEncryptionOptions');
-  has Processing => (is => 'ro', isa => 'Bool');
-  has ServiceSoftwareOptions => (is => 'ro', isa => 'Paws::ES::ServiceSoftwareOptions');
-  has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
-  has UpgradeProcessing => (is => 'ro', isa => 'Bool');
-  has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfo');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ES::Types qw/ES_NodeToNodeEncryptionOptions ES_EBSOptions ES_VPCDerivedInfo ES_AdvancedOptions ES_SnapshotOptions ES_EncryptionAtRestOptions ES_ServiceSoftwareOptions ES_DomainEndpointOptions ES_EndpointsMap ES_CognitoOptions ES_LogPublishingOptions ES_ElasticsearchClusterConfig/;
+  has AccessPolicies => (is => 'ro', isa => Str);
+  has AdvancedOptions => (is => 'ro', isa => ES_AdvancedOptions);
+  has ARN => (is => 'ro', isa => Str, required => 1);
+  has CognitoOptions => (is => 'ro', isa => ES_CognitoOptions);
+  has Created => (is => 'ro', isa => Bool);
+  has Deleted => (is => 'ro', isa => Bool);
+  has DomainEndpointOptions => (is => 'ro', isa => ES_DomainEndpointOptions);
+  has DomainId => (is => 'ro', isa => Str, required => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has EBSOptions => (is => 'ro', isa => ES_EBSOptions);
+  has ElasticsearchClusterConfig => (is => 'ro', isa => ES_ElasticsearchClusterConfig, required => 1);
+  has ElasticsearchVersion => (is => 'ro', isa => Str);
+  has EncryptionAtRestOptions => (is => 'ro', isa => ES_EncryptionAtRestOptions);
+  has Endpoint => (is => 'ro', isa => Str);
+  has Endpoints => (is => 'ro', isa => ES_EndpointsMap);
+  has LogPublishingOptions => (is => 'ro', isa => ES_LogPublishingOptions);
+  has NodeToNodeEncryptionOptions => (is => 'ro', isa => ES_NodeToNodeEncryptionOptions);
+  has Processing => (is => 'ro', isa => Bool);
+  has ServiceSoftwareOptions => (is => 'ro', isa => ES_ServiceSoftwareOptions);
+  has SnapshotOptions => (is => 'ro', isa => ES_SnapshotOptions);
+  has UpgradeProcessing => (is => 'ro', isa => Bool);
+  has VPCOptions => (is => 'ro', isa => ES_VPCDerivedInfo);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'EBSOptions' => {
+                                 'type' => 'ES_EBSOptions',
+                                 'class' => 'Paws::ES::EBSOptions'
+                               },
+               'Endpoints' => {
+                                'class' => 'Paws::ES::EndpointsMap',
+                                'type' => 'ES_EndpointsMap'
+                              },
+               'AccessPolicies' => {
+                                     'type' => 'Str'
+                                   },
+               'Deleted' => {
+                              'type' => 'Bool'
+                            },
+               'NodeToNodeEncryptionOptions' => {
+                                                  'type' => 'ES_NodeToNodeEncryptionOptions',
+                                                  'class' => 'Paws::ES::NodeToNodeEncryptionOptions'
+                                                },
+               'DomainEndpointOptions' => {
+                                            'type' => 'ES_DomainEndpointOptions',
+                                            'class' => 'Paws::ES::DomainEndpointOptions'
+                                          },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             },
+               'ElasticsearchClusterConfig' => {
+                                                 'class' => 'Paws::ES::ElasticsearchClusterConfig',
+                                                 'type' => 'ES_ElasticsearchClusterConfig'
+                                               },
+               'Created' => {
+                              'type' => 'Bool'
+                            },
+               'SnapshotOptions' => {
+                                      'class' => 'Paws::ES::SnapshotOptions',
+                                      'type' => 'ES_SnapshotOptions'
+                                    },
+               'CognitoOptions' => {
+                                     'class' => 'Paws::ES::CognitoOptions',
+                                     'type' => 'ES_CognitoOptions'
+                                   },
+               'ServiceSoftwareOptions' => {
+                                             'class' => 'Paws::ES::ServiceSoftwareOptions',
+                                             'type' => 'ES_ServiceSoftwareOptions'
+                                           },
+               'DomainId' => {
+                               'type' => 'Str'
+                             },
+               'LogPublishingOptions' => {
+                                           'class' => 'Paws::ES::LogPublishingOptions',
+                                           'type' => 'ES_LogPublishingOptions'
+                                         },
+               'EncryptionAtRestOptions' => {
+                                              'class' => 'Paws::ES::EncryptionAtRestOptions',
+                                              'type' => 'ES_EncryptionAtRestOptions'
+                                            },
+               'AdvancedOptions' => {
+                                      'class' => 'Paws::ES::AdvancedOptions',
+                                      'type' => 'ES_AdvancedOptions'
+                                    },
+               'ElasticsearchVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'Processing' => {
+                                 'type' => 'Bool'
+                               },
+               'UpgradeProcessing' => {
+                                        'type' => 'Bool'
+                                      },
+               'VPCOptions' => {
+                                 'type' => 'ES_VPCDerivedInfo',
+                                 'class' => 'Paws::ES::VPCDerivedInfo'
+                               }
+             },
+  'IsRequired' => {
+                    'ElasticsearchClusterConfig' => 1,
+                    'DomainName' => 1,
+                    'DomainId' => 1,
+                    'ARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +160,7 @@ The current status of an Elasticsearch domain.
   IAM access policy as a JSON-formatted string.
 
 
-=head2 AdvancedOptions => L<Paws::ES::AdvancedOptions>
+=head2 AdvancedOptions => ES_AdvancedOptions
 
   Specifies the status of the C<AdvancedOptions>
 
@@ -75,7 +173,7 @@ Identifiers for IAM Entities
 in I<Using AWS Identity and Access Management> for more information.
 
 
-=head2 CognitoOptions => L<Paws::ES::CognitoOptions>
+=head2 CognitoOptions => ES_CognitoOptions
 
   The C<CognitoOptions> for the specified domain. For more information,
 see Amazon Cognito Authentication for Kibana
@@ -96,7 +194,7 @@ C<False> if the domain has not been deleted. Once domain deletion is
 complete, the status of the domain is no longer returned.
 
 
-=head2 DomainEndpointOptions => L<Paws::ES::DomainEndpointOptions>
+=head2 DomainEndpointOptions => ES_DomainEndpointOptions
 
   The current status of the Elasticsearch domain's endpoint options.
 
@@ -114,7 +212,7 @@ with a letter or number and can contain the following characters: a-z
 (lowercase), 0-9, and - (hyphen).
 
 
-=head2 EBSOptions => L<Paws::ES::EBSOptions>
+=head2 EBSOptions => ES_EBSOptions
 
   The C<EBSOptions> for the specified domain. See Configuring EBS-based
 Storage
@@ -122,7 +220,7 @@ Storage
 for more information.
 
 
-=head2 B<REQUIRED> ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>
+=head2 B<REQUIRED> ElasticsearchClusterConfig => ES_ElasticsearchClusterConfig
 
   The type and number of instances in the domain cluster.
 
@@ -132,7 +230,7 @@ for more information.
   
 
 
-=head2 EncryptionAtRestOptions => L<Paws::ES::EncryptionAtRestOptions>
+=head2 EncryptionAtRestOptions => ES_EncryptionAtRestOptions
 
   Specifies the status of the C<EncryptionAtRestOptions>.
 
@@ -143,19 +241,19 @@ for more information.
 search requests.
 
 
-=head2 Endpoints => L<Paws::ES::EndpointsMap>
+=head2 Endpoints => ES_EndpointsMap
 
   Map containing the Elasticsearch domain endpoints used to submit index
 and search requests. Example C<key, value>:
 C<'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com'>.
 
 
-=head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptions>
+=head2 LogPublishingOptions => ES_LogPublishingOptions
 
   Log publishing options for the given domain.
 
 
-=head2 NodeToNodeEncryptionOptions => L<Paws::ES::NodeToNodeEncryptionOptions>
+=head2 NodeToNodeEncryptionOptions => ES_NodeToNodeEncryptionOptions
 
   Specifies the status of the C<NodeToNodeEncryptionOptions>.
 
@@ -167,12 +265,12 @@ Elasticsearch Service is processing configuration changes. C<False> if
 the configuration is active.
 
 
-=head2 ServiceSoftwareOptions => L<Paws::ES::ServiceSoftwareOptions>
+=head2 ServiceSoftwareOptions => ES_ServiceSoftwareOptions
 
   The current status of the Elasticsearch domain's service software.
 
 
-=head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
+=head2 SnapshotOptions => ES_SnapshotOptions
 
   Specifies the status of the C<SnapshotOptions>
 
@@ -184,7 +282,7 @@ Amazon Elasticsearch Service is undergoing a version upgrade. C<False>
 if the configuration is active.
 
 
-=head2 VPCOptions => L<Paws::ES::VPCDerivedInfo>
+=head2 VPCOptions => ES_VPCDerivedInfo
 
   The C<VPCOptions> for the specified domain. For more information, see
 VPC Endpoints for Amazon Elasticsearch Service Domains

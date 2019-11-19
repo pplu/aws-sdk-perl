@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::SSM::InstanceAssociationOutputLocation;
-  use Moose;
-  has S3Location => (is => 'ro', isa => 'Paws::SSM::S3OutputLocation');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SSM::Types qw/SSM_S3OutputLocation/;
+  has S3Location => (is => 'ro', isa => SSM_S3OutputLocation);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Location' => {
+                                 'type' => 'SSM_S3OutputLocation',
+                                 'class' => 'Paws::SSM::S3OutputLocation'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ request.
 =head1 ATTRIBUTES
 
 
-=head2 S3Location => L<Paws::SSM::S3OutputLocation>
+=head2 S3Location => SSM_S3OutputLocation
 
   An Amazon S3 bucket where you want to store the results of this
 request.

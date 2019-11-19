@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::DS::Snapshot;
-  use Moose;
-  has DirectoryId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has SnapshotId => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DS::Types qw//;
+  has DirectoryId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has SnapshotId => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::Attribute;
-  use Moose;
-  has JsonPath => (is => 'ro', isa => 'Str', request_name => 'jsonPath', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw//;
+  has JsonPath => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'JsonPath' => 1
+                  },
+  'NameInRequest' => {
+                       'JsonPath' => 'jsonPath'
+                     },
+  'types' => {
+               'JsonPath' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

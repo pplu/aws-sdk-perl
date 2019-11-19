@@ -1,7 +1,37 @@
+# Generated from default/object.tt
 package Paws::Signer::SigningConfiguration;
-  use Moose;
-  has EncryptionAlgorithmOptions => (is => 'ro', isa => 'Paws::Signer::EncryptionAlgorithmOptions', request_name => 'encryptionAlgorithmOptions', traits => ['NameInRequest'], required => 1);
-  has HashAlgorithmOptions => (is => 'ro', isa => 'Paws::Signer::HashAlgorithmOptions', request_name => 'hashAlgorithmOptions', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Signer::Types qw/Signer_HashAlgorithmOptions Signer_EncryptionAlgorithmOptions/;
+  has EncryptionAlgorithmOptions => (is => 'ro', isa => Signer_EncryptionAlgorithmOptions, required => 1);
+  has HashAlgorithmOptions => (is => 'ro', isa => Signer_HashAlgorithmOptions, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'HashAlgorithmOptions' => 1,
+                    'EncryptionAlgorithmOptions' => 1
+                  },
+  'NameInRequest' => {
+                       'HashAlgorithmOptions' => 'hashAlgorithmOptions',
+                       'EncryptionAlgorithmOptions' => 'encryptionAlgorithmOptions'
+                     },
+  'types' => {
+               'HashAlgorithmOptions' => {
+                                           'class' => 'Paws::Signer::HashAlgorithmOptions',
+                                           'type' => 'Signer_HashAlgorithmOptions'
+                                         },
+               'EncryptionAlgorithmOptions' => {
+                                                 'type' => 'Signer_EncryptionAlgorithmOptions',
+                                                 'class' => 'Paws::Signer::EncryptionAlgorithmOptions'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +67,13 @@ The configuration of a code signing operation.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EncryptionAlgorithmOptions => L<Paws::Signer::EncryptionAlgorithmOptions>
+=head2 B<REQUIRED> EncryptionAlgorithmOptions => Signer_EncryptionAlgorithmOptions
 
   The encryption algorithm options that are available for a code signing
 job.
 
 
-=head2 B<REQUIRED> HashAlgorithmOptions => L<Paws::Signer::HashAlgorithmOptions>
+=head2 B<REQUIRED> HashAlgorithmOptions => Signer_HashAlgorithmOptions
 
   The hash algorithm options that are available for a a code signing job.
 

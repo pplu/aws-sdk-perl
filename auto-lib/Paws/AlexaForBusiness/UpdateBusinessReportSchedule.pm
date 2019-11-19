@@ -1,18 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::UpdateBusinessReportSchedule;
-  use Moose;
-  has Format => (is => 'ro', isa => 'Str');
-  has Recurrence => (is => 'ro', isa => 'Paws::AlexaForBusiness::BusinessReportRecurrence');
-  has S3BucketName => (is => 'ro', isa => 'Str');
-  has S3KeyPrefix => (is => 'ro', isa => 'Str');
-  has ScheduleArn => (is => 'ro', isa => 'Str', required => 1);
-  has ScheduleName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_BusinessReportRecurrence/;
+  has Format => (is => 'ro', isa => Str, predicate => 1);
+  has Recurrence => (is => 'ro', isa => AlexaForBusiness_BusinessReportRecurrence, predicate => 1);
+  has S3BucketName => (is => 'ro', isa => Str, predicate => 1);
+  has S3KeyPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has ScheduleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ScheduleName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBusinessReportSchedule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::UpdateBusinessReportScheduleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateBusinessReportSchedule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::UpdateBusinessReportScheduleResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ScheduleArn' => 1
+                  },
+  'types' => {
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'Recurrence' => {
+                                 'class' => 'Paws::AlexaForBusiness::BusinessReportRecurrence',
+                                 'type' => 'AlexaForBusiness_BusinessReportRecurrence'
+                               },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'ScheduleArn' => {
+                                  'type' => 'Str'
+                                },
+               'S3KeyPrefix' => {
+                                  'type' => 'Str'
+                                },
+               'ScheduleName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +92,7 @@ files of individual files).
 
 Valid values are: C<"CSV">, C<"CSV_ZIP">
 
-=head2 Recurrence => L<Paws::AlexaForBusiness::BusinessReportRecurrence>
+=head2 Recurrence => AlexaForBusiness_BusinessReportRecurrence
 
 The recurrence of the reports.
 

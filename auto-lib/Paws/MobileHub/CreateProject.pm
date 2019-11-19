@@ -1,17 +1,49 @@
 
 package Paws::MobileHub::CreateProject;
-  use Moose;
-  has Contents => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contents');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name');
-  has Region => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'region');
-  has SnapshotId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'snapshotId');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MobileHub::Types qw//;
+  has Contents => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Region => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Contents');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateProject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/projects');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MobileHub::CreateProjectResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateProject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/projects');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MobileHub::CreateProjectResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Contents' => {
+                               'type' => 'Str'
+                             },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInQuery' => {
+                      'SnapshotId' => 'snapshotId',
+                      'Region' => 'region',
+                      'Name' => 'name'
+                    },
+  'NameInRequest' => {
+                       'Contents' => 'contents'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::GroundStation::FrequencyBandwidth;
-  use Moose;
-  has Units => (is => 'ro', isa => 'Str', request_name => 'units', traits => ['NameInRequest'], required => 1);
-  has Value => (is => 'ro', isa => 'Num', request_name => 'value', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::GroundStation::Types qw//;
+  has Units => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Value' => 1,
+                    'Units' => 1
+                  },
+  'NameInRequest' => {
+                       'Value' => 'value',
+                       'Units' => 'units'
+                     },
+  'types' => {
+               'Units' => {
+                            'type' => 'Str'
+                          },
+               'Value' => {
+                            'type' => 'Num'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

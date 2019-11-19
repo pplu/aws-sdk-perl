@@ -1,16 +1,47 @@
 
 package Paws::EC2::DescribeAvailabilityZones;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has ZoneIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ZoneId' );
-  has ZoneNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ZoneName' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_Filter/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
+  has ZoneIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ZoneNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityZones');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeAvailabilityZonesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAvailabilityZones');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeAvailabilityZonesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ZoneIds' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Filters' => {
+                              'type' => 'ArrayRef[EC2_Filter]',
+                              'class' => 'Paws::EC2::Filter'
+                            },
+               'ZoneNames' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             },
+  'NameInRequest' => {
+                       'ZoneIds' => 'ZoneId',
+                       'DryRun' => 'dryRun',
+                       'ZoneNames' => 'ZoneName',
+                       'Filters' => 'Filter'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +86,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+=head2 Filters => ArrayRef[EC2_Filter]
 
 The filters.
 

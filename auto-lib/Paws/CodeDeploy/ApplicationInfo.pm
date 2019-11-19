@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::ApplicationInfo;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest']);
-  has ApplicationName => (is => 'ro', isa => 'Str', request_name => 'applicationName', traits => ['NameInRequest']);
-  has ComputePlatform => (is => 'ro', isa => 'Str', request_name => 'computePlatform', traits => ['NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
-  has GitHubAccountName => (is => 'ro', isa => 'Str', request_name => 'gitHubAccountName', traits => ['NameInRequest']);
-  has LinkedToGitHub => (is => 'ro', isa => 'Bool', request_name => 'linkedToGitHub', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeDeploy::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str);
+  has ApplicationName => (is => 'ro', isa => Str);
+  has ComputePlatform => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str);
+  has GitHubAccountName => (is => 'ro', isa => Str);
+  has LinkedToGitHub => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComputePlatform' => {
+                                      'type' => 'Str'
+                                    },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'GitHubAccountName' => {
+                                        'type' => 'Str'
+                                      },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'LinkedToGitHub' => {
+                                     'type' => 'Bool'
+                                   }
+             },
+  'NameInRequest' => {
+                       'ComputePlatform' => 'computePlatform',
+                       'LinkedToGitHub' => 'linkedToGitHub',
+                       'ApplicationId' => 'applicationId',
+                       'CreateTime' => 'createTime',
+                       'GitHubAccountName' => 'gitHubAccountName',
+                       'ApplicationName' => 'applicationName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

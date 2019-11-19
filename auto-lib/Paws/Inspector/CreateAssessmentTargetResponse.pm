@@ -1,9 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Inspector::CreateAssessmentTargetResponse;
-  use Moose;
-  has AssessmentTargetArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentTargetArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Inspector::Types qw//;
+  has AssessmentTargetArn => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AssessmentTargetArn' => 1
+                  },
+  'NameInRequest' => {
+                       'AssessmentTargetArn' => 'assessmentTargetArn'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AssessmentTargetArn' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

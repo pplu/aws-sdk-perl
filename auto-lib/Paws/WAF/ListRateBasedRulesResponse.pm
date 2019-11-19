@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::ListRateBasedRulesResponse;
-  use Moose;
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::WAF::RuleSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_RuleSummary/;
+  has NextMarker => (is => 'ro', isa => Str);
+  has Rules => (is => 'ro', isa => ArrayRef[WAF_RuleSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Rules' => {
+                            'type' => 'ArrayRef[WAF_RuleSummary]',
+                            'class' => 'Paws::WAF::RuleSummary'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +46,7 @@ and specify the C<NextMarker> value from the response in the
 C<NextMarker> value in the next request.
 
 
-=head2 Rules => ArrayRef[L<Paws::WAF::RuleSummary>]
+=head2 Rules => ArrayRef[WAF_RuleSummary]
 
 An array of RuleSummary objects.
 

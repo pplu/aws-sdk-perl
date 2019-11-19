@@ -1,11 +1,38 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::UpdateItemOutput;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
-  has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
-  has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetrics');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AttributeMap DynamoDB_ConsumedCapacity DynamoDB_ItemCollectionMetrics/;
+  has Attributes => (is => 'ro', isa => DynamoDB_AttributeMap);
+  has ConsumedCapacity => (is => 'ro', isa => DynamoDB_ConsumedCapacity);
+  has ItemCollectionMetrics => (is => 'ro', isa => DynamoDB_ItemCollectionMetrics);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ItemCollectionMetrics' => {
+                                            'type' => 'DynamoDB_ItemCollectionMetrics',
+                                            'class' => 'Paws::DynamoDB::ItemCollectionMetrics'
+                                          },
+               'ConsumedCapacity' => {
+                                       'type' => 'DynamoDB_ConsumedCapacity',
+                                       'class' => 'Paws::DynamoDB::ConsumedCapacity'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Attributes' => {
+                                 'class' => 'Paws::DynamoDB::AttributeMap',
+                                 'type' => 'DynamoDB_AttributeMap'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +43,7 @@ Paws::DynamoDB::UpdateItemOutput
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::DynamoDB::AttributeMap>
+=head2 Attributes => DynamoDB_AttributeMap
 
 A map of attribute values as they appear before or after the
 C<UpdateItem> operation, as determined by the C<ReturnValues>
@@ -27,7 +54,7 @@ as something other than C<NONE> in the request. Each element represents
 one attribute.
 
 
-=head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
+=head2 ConsumedCapacity => DynamoDB_ConsumedCapacity
 
 The capacity units consumed by the C<UpdateItem> operation. The data
 returned includes the total provisioned throughput consumed, along with
@@ -39,7 +66,7 @@ Throughput
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetrics>
+=head2 ItemCollectionMetrics => DynamoDB_ItemCollectionMetrics
 
 Information about item collections, if any, that were affected by the
 C<UpdateItem> operation. C<ItemCollectionMetrics> is only returned if

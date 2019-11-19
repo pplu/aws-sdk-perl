@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ConstraintSummary;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

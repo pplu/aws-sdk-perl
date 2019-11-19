@@ -1,15 +1,44 @@
 
 package Paws::EC2::ModifySubnetAttribute;
-  use Moose;
-  has AssignIpv6AddressOnCreation => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue');
-  has MapPublicIpOnLaunch => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue');
-  has SubnetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'subnetId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_AttributeBooleanValue/;
+  has AssignIpv6AddressOnCreation => (is => 'ro', isa => EC2_AttributeBooleanValue, predicate => 1);
+  has MapPublicIpOnLaunch => (is => 'ro', isa => EC2_AttributeBooleanValue, predicate => 1);
+  has SubnetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifySubnetAttribute');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifySubnetAttribute');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SubnetId' => 1
+                  },
+  'NameInRequest' => {
+                       'SubnetId' => 'subnetId'
+                     },
+  'types' => {
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'AssignIpv6AddressOnCreation' => {
+                                                  'class' => 'Paws::EC2::AttributeBooleanValue',
+                                                  'type' => 'EC2_AttributeBooleanValue'
+                                                },
+               'MapPublicIpOnLaunch' => {
+                                          'class' => 'Paws::EC2::AttributeBooleanValue',
+                                          'type' => 'EC2_AttributeBooleanValue'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 AssignIpv6AddressOnCreation => L<Paws::EC2::AttributeBooleanValue>
+=head2 AssignIpv6AddressOnCreation => EC2_AttributeBooleanValue
 
 Specify C<true> to indicate that network interfaces created in the
 specified subnet should be assigned an IPv6 address. This includes a
@@ -59,7 +88,7 @@ using version C<2016-11-15> or later of the Amazon EC2 API.
 
 
 
-=head2 MapPublicIpOnLaunch => L<Paws::EC2::AttributeBooleanValue>
+=head2 MapPublicIpOnLaunch => EC2_AttributeBooleanValue
 
 Specify C<true> to indicate that ENIs attached to instances created in
 the specified subnet should be assigned a public IPv4 address.

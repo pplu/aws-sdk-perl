@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalytics::UpdateApplication;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has ApplicationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::ApplicationUpdate', required => 1);
-  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_ApplicationUpdate/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ApplicationUpdate => (is => 'ro', isa => KinesisAnalytics_ApplicationUpdate, required => 1, predicate => 1);
+  has CurrentApplicationVersionId => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalytics::UpdateApplicationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateApplication');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalytics::UpdateApplicationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrentApplicationVersionId' => {
+                                                  'type' => 'Int'
+                                                },
+               'ApplicationUpdate' => {
+                                        'class' => 'Paws::KinesisAnalytics::ApplicationUpdate',
+                                        'type' => 'KinesisAnalytics_ApplicationUpdate'
+                                      },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'ApplicationUpdate' => 1,
+                    'ApplicationName' => 1,
+                    'CurrentApplicationVersionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -176,7 +204,7 @@ Name of the Amazon Kinesis Analytics application to update.
 
 
 
-=head2 B<REQUIRED> ApplicationUpdate => L<Paws::KinesisAnalytics::ApplicationUpdate>
+=head2 B<REQUIRED> ApplicationUpdate => KinesisAnalytics_ApplicationUpdate
 
 Describes application updates.
 

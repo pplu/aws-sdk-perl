@@ -1,15 +1,41 @@
 
 package Paws::Chime::PutVoiceConnectorStreamingConfiguration;
-  use Moose;
-  has StreamingConfiguration => (is => 'ro', isa => 'Paws::Chime::StreamingConfiguration', required => 1);
-  has VoiceConnectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'voiceConnectorId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw/Chime_StreamingConfiguration/;
+  has StreamingConfiguration => (is => 'ro', isa => Chime_StreamingConfiguration, required => 1, predicate => 1);
+  has VoiceConnectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutVoiceConnectorStreamingConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/voice-connectors/{voiceConnectorId}/streaming-configuration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::PutVoiceConnectorStreamingConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutVoiceConnectorStreamingConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/voice-connectors/{voiceConnectorId}/streaming-configuration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::PutVoiceConnectorStreamingConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'VoiceConnectorId' => 'voiceConnectorId'
+                  },
+  'types' => {
+               'StreamingConfiguration' => {
+                                             'class' => 'Paws::Chime::StreamingConfiguration',
+                                             'type' => 'Chime_StreamingConfiguration'
+                                           },
+               'VoiceConnectorId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'VoiceConnectorId' => 1,
+                    'StreamingConfiguration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> StreamingConfiguration => L<Paws::Chime::StreamingConfiguration>
+=head2 B<REQUIRED> StreamingConfiguration => Chime_StreamingConfiguration
 
 The streaming configuration details to add.
 

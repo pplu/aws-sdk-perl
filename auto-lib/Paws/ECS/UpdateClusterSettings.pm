@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::UpdateClusterSettings;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' , required => 1);
-  has Settings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ClusterSetting]', traits => ['NameInRequest'], request_name => 'settings' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECS::Types qw/ECS_ClusterSetting/;
+  has Cluster => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Settings => (is => 'ro', isa => ArrayRef[ECS_ClusterSetting], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateClusterSettings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::UpdateClusterSettingsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateClusterSettings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::UpdateClusterSettingsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Settings' => 1,
+                    'Cluster' => 1
+                  },
+  'NameInRequest' => {
+                       'Settings' => 'settings',
+                       'Cluster' => 'cluster'
+                     },
+  'types' => {
+               'Settings' => {
+                               'class' => 'Paws::ECS::ClusterSetting',
+                               'type' => 'ArrayRef[ECS_ClusterSetting]'
+                             },
+               'Cluster' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +85,7 @@ The name of the cluster to modify the settings for.
 
 
 
-=head2 B<REQUIRED> Settings => ArrayRef[L<Paws::ECS::ClusterSetting>]
+=head2 B<REQUIRED> Settings => ArrayRef[ECS_ClusterSetting]
 
 The setting to use by default for a cluster. This parameter is used to
 enable CloudWatch Container Insights for a cluster. If this value is

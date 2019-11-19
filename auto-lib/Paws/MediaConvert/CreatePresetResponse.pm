@@ -1,9 +1,30 @@
 
 package Paws::MediaConvert::CreatePresetResponse;
-  use Moose;
-  has Preset => (is => 'ro', isa => 'Paws::MediaConvert::Preset', traits => ['NameInRequest'], request_name => 'preset');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_Preset/;
+  has Preset => (is => 'ro', isa => MediaConvert_Preset);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Preset' => {
+                             'class' => 'Paws::MediaConvert::Preset',
+                             'type' => 'MediaConvert_Preset'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Preset' => 'preset'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::MediaConvert::CreatePresetResponse
 =head1 ATTRIBUTES
 
 
-=head2 Preset => L<Paws::MediaConvert::Preset>
+=head2 Preset => MediaConvert_Preset
 
 A preset is a collection of preconfigured media conversion settings
 that you want MediaConvert to apply to the output during the conversion

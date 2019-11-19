@@ -1,18 +1,65 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Forecast::DescribeDatasetResponse;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DataFrequency => (is => 'ro', isa => 'Str');
-  has DatasetArn => (is => 'ro', isa => 'Str');
-  has DatasetName => (is => 'ro', isa => 'Str');
-  has DatasetType => (is => 'ro', isa => 'Str');
-  has Domain => (is => 'ro', isa => 'Str');
-  has EncryptionConfig => (is => 'ro', isa => 'Paws::Forecast::EncryptionConfig');
-  has LastModificationTime => (is => 'ro', isa => 'Str');
-  has Schema => (is => 'ro', isa => 'Paws::Forecast::Schema');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw/Forecast_Schema Forecast_EncryptionConfig/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DataFrequency => (is => 'ro', isa => Str);
+  has DatasetArn => (is => 'ro', isa => Str);
+  has DatasetName => (is => 'ro', isa => Str);
+  has DatasetType => (is => 'ro', isa => Str);
+  has Domain => (is => 'ro', isa => Str);
+  has EncryptionConfig => (is => 'ro', isa => Forecast_EncryptionConfig);
+  has LastModificationTime => (is => 'ro', isa => Str);
+  has Schema => (is => 'ro', isa => Forecast_Schema);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Schema' => {
+                             'class' => 'Paws::Forecast::Schema',
+                             'type' => 'Forecast_Schema'
+                           },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'DatasetType' => {
+                                  'type' => 'Str'
+                                },
+               'DatasetArn' => {
+                                 'type' => 'Str'
+                               },
+               'DataFrequency' => {
+                                    'type' => 'Str'
+                                  },
+               'LastModificationTime' => {
+                                           'type' => 'Str'
+                                         },
+               'EncryptionConfig' => {
+                                       'class' => 'Paws::Forecast::EncryptionConfig',
+                                       'type' => 'Forecast_EncryptionConfig'
+                                     },
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -58,7 +105,7 @@ Valid values are: C<"TARGET_TIME_SERIES">, C<"RELATED_TIME_SERIES">, C<"ITEM_MET
 The dataset domain.
 
 Valid values are: C<"RETAIL">, C<"CUSTOM">, C<"INVENTORY_PLANNING">, C<"EC2_CAPACITY">, C<"WORK_FORCE">, C<"WEB_TRAFFIC">, C<"METRICS">
-=head2 EncryptionConfig => L<Paws::Forecast::EncryptionConfig>
+=head2 EncryptionConfig => Forecast_EncryptionConfig
 
 An AWS Key Management Service (KMS) key and the AWS Identity and Access
 Management (IAM) role that Amazon Forecast can assume to access the
@@ -74,7 +121,7 @@ While data is being imported to the dataset, C<LastModificationTime> is
 the current query time.
 
 
-=head2 Schema => L<Paws::Forecast::Schema>
+=head2 Schema => Forecast_Schema
 
 An array of C<SchemaAttribute> objects that specify the dataset fields.
 Each C<SchemaAttribute> specifies the name and data type of a field.

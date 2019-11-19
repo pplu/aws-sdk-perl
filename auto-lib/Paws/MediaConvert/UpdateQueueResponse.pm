@@ -1,9 +1,30 @@
 
 package Paws::MediaConvert::UpdateQueueResponse;
-  use Moose;
-  has Queue => (is => 'ro', isa => 'Paws::MediaConvert::Queue', traits => ['NameInRequest'], request_name => 'queue');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_Queue/;
+  has Queue => (is => 'ro', isa => MediaConvert_Queue);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Queue' => {
+                            'type' => 'MediaConvert_Queue',
+                            'class' => 'Paws::MediaConvert::Queue'
+                          }
+             },
+  'NameInRequest' => {
+                       'Queue' => 'queue'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::MediaConvert::UpdateQueueResponse
 =head1 ATTRIBUTES
 
 
-=head2 Queue => L<Paws::MediaConvert::Queue>
+=head2 Queue => MediaConvert_Queue
 
 You can use queues to manage the resources that are available to your
 AWS account for running multiple transcoding jobs at the same time. If

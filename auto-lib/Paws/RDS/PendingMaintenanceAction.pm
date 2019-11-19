@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::RDS::PendingMaintenanceAction;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has AutoAppliedAfterDate => (is => 'ro', isa => 'Str');
-  has CurrentApplyDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ForcedApplyDate => (is => 'ro', isa => 'Str');
-  has OptInStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has Action => (is => 'ro', isa => Str);
+  has AutoAppliedAfterDate => (is => 'ro', isa => Str);
+  has CurrentApplyDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ForcedApplyDate => (is => 'ro', isa => Str);
+  has OptInStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ForcedApplyDate' => {
+                                      'type' => 'Str'
+                                    },
+               'AutoAppliedAfterDate' => {
+                                           'type' => 'Str'
+                                         },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'CurrentApplyDate' => {
+                                       'type' => 'Str'
+                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'OptInStatus' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

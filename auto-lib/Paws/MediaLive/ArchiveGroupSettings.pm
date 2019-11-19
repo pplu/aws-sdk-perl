@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ArchiveGroupSettings;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
-  has RolloverInterval => (is => 'ro', isa => 'Int', request_name => 'rolloverInterval', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaLive::Types qw/MediaLive_OutputLocationRef/;
+  has Destination => (is => 'ro', isa => MediaLive_OutputLocationRef, required => 1);
+  has RolloverInterval => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Destination' => 1
+                  },
+  'NameInRequest' => {
+                       'RolloverInterval' => 'rolloverInterval',
+                       'Destination' => 'destination'
+                     },
+  'types' => {
+               'Destination' => {
+                                  'class' => 'Paws::MediaLive::OutputLocationRef',
+                                  'type' => 'MediaLive_OutputLocationRef'
+                                },
+               'RolloverInterval' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +65,7 @@ Archive Group Settings
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Destination => L<Paws::MediaLive::OutputLocationRef>
+=head2 B<REQUIRED> Destination => MediaLive_OutputLocationRef
 
   A directory and base filename where archive files should be written.
 

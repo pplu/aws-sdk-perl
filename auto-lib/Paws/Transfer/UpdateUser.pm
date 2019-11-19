@@ -1,19 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Transfer::UpdateUser;
-  use Moose;
-  has HomeDirectory => (is => 'ro', isa => 'Str');
-  has HomeDirectoryMappings => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::HomeDirectoryMapEntry]');
-  has HomeDirectoryType => (is => 'ro', isa => 'Str');
-  has Policy => (is => 'ro', isa => 'Str');
-  has Role => (is => 'ro', isa => 'Str');
-  has ServerId => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Transfer::Types qw/Transfer_HomeDirectoryMapEntry/;
+  has HomeDirectory => (is => 'ro', isa => Str, predicate => 1);
+  has HomeDirectoryMappings => (is => 'ro', isa => ArrayRef[Transfer_HomeDirectoryMapEntry], predicate => 1);
+  has HomeDirectoryType => (is => 'ro', isa => Str, predicate => 1);
+  has Policy => (is => 'ro', isa => Str, predicate => 1);
+  has Role => (is => 'ro', isa => Str, predicate => 1);
+  has ServerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUser');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Transfer::UpdateUserResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateUser');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Transfer::UpdateUserResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'ServerId' => 1
+                  },
+  'types' => {
+               'HomeDirectoryType' => {
+                                        'type' => 'Str'
+                                      },
+               'HomeDirectoryMappings' => {
+                                            'class' => 'Paws::Transfer::HomeDirectoryMapEntry',
+                                            'type' => 'ArrayRef[Transfer_HomeDirectoryMapEntry]'
+                                          },
+               'HomeDirectory' => {
+                                    'type' => 'Str'
+                                  },
+               'ServerId' => {
+                               'type' => 'Str'
+                             },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'Policy' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +110,7 @@ An example is C<E<lt>your-Amazon-S3-bucket-nameE<gt>/home/username>.
 
 
 
-=head2 HomeDirectoryMappings => ArrayRef[L<Paws::Transfer::HomeDirectoryMapEntry>]
+=head2 HomeDirectoryMappings => ArrayRef[Transfer_HomeDirectoryMapEntry]
 
 Logical directory mappings that specify what S3 paths and keys should
 be visible to your user and how you want to make them visible. You will

@@ -1,9 +1,30 @@
 
 package Paws::MediaLive::UpdateChannelClassResponse;
-  use Moose;
-  has Channel => (is => 'ro', isa => 'Paws::MediaLive::Channel', traits => ['NameInRequest'], request_name => 'channel');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_Channel/;
+  has Channel => (is => 'ro', isa => MediaLive_Channel);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Channel' => {
+                              'type' => 'MediaLive_Channel',
+                              'class' => 'Paws::MediaLive::Channel'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Channel' => 'channel'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::MediaLive::UpdateChannelClassResponse
 =head1 ATTRIBUTES
 
 
-=head2 Channel => L<Paws::MediaLive::Channel>
+=head2 Channel => MediaLive_Channel
 
 
 

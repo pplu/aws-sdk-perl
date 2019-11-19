@@ -1,15 +1,71 @@
 package Paws::EC2::ReservedInstancesListing;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
-  has CreateDate => (is => 'ro', isa => 'Str', request_name => 'createDate', traits => ['NameInRequest']);
-  has InstanceCounts => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceCount]', request_name => 'instanceCounts', traits => ['NameInRequest']);
-  has PriceSchedules => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PriceSchedule]', request_name => 'priceSchedules', traits => ['NameInRequest']);
-  has ReservedInstancesId => (is => 'ro', isa => 'Str', request_name => 'reservedInstancesId', traits => ['NameInRequest']);
-  has ReservedInstancesListingId => (is => 'ro', isa => 'Str', request_name => 'reservedInstancesListingId', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has UpdateDate => (is => 'ro', isa => 'Str', request_name => 'updateDate', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Tag EC2_InstanceCount EC2_PriceSchedule/;
+  has ClientToken => (is => 'ro', isa => Str);
+  has CreateDate => (is => 'ro', isa => Str);
+  has InstanceCounts => (is => 'ro', isa => ArrayRef[EC2_InstanceCount]);
+  has PriceSchedules => (is => 'ro', isa => ArrayRef[EC2_PriceSchedule]);
+  has ReservedInstancesId => (is => 'ro', isa => Str);
+  has ReservedInstancesListingId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has UpdateDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PriceSchedules' => 'priceSchedules',
+                       'Tags' => 'tagSet',
+                       'InstanceCounts' => 'instanceCounts',
+                       'UpdateDate' => 'updateDate',
+                       'CreateDate' => 'createDate',
+                       'Status' => 'status',
+                       'ClientToken' => 'clientToken',
+                       'ReservedInstancesId' => 'reservedInstancesId',
+                       'StatusMessage' => 'statusMessage',
+                       'ReservedInstancesListingId' => 'reservedInstancesListingId'
+                     },
+  'types' => {
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'UpdateDate' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceCounts' => {
+                                     'type' => 'ArrayRef[EC2_InstanceCount]',
+                                     'class' => 'Paws::EC2::InstanceCount'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Tags' => {
+                           'type' => 'ArrayRef[EC2_Tag]',
+                           'class' => 'Paws::EC2::Tag'
+                         },
+               'PriceSchedules' => {
+                                     'class' => 'Paws::EC2::PriceSchedule',
+                                     'type' => 'ArrayRef[EC2_PriceSchedule]'
+                                   },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'ReservedInstancesId' => {
+                                          'type' => 'Str'
+                                        },
+               'ReservedInstancesListingId' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,12 +113,12 @@ request is idempotent. For more information, see Ensuring Idempotency
   The time the listing was created.
 
 
-=head2 InstanceCounts => ArrayRef[L<Paws::EC2::InstanceCount>]
+=head2 InstanceCounts => ArrayRef[EC2_InstanceCount]
 
   The number of instances in this state.
 
 
-=head2 PriceSchedules => ArrayRef[L<Paws::EC2::PriceSchedule>]
+=head2 PriceSchedules => ArrayRef[EC2_PriceSchedule]
 
   The price of the Reserved Instance listing.
 
@@ -88,7 +144,7 @@ request is idempotent. For more information, see Ensuring Idempotency
 response can be blank.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the resource.
 

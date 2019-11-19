@@ -1,22 +1,73 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::CreateMLTransform;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has InputRecordTables => (is => 'ro', isa => 'ArrayRef[Paws::Glue::GlueTable]', required => 1);
-  has MaxCapacity => (is => 'ro', isa => 'Num');
-  has MaxRetries => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NumberOfWorkers => (is => 'ro', isa => 'Int');
-  has Parameters => (is => 'ro', isa => 'Paws::Glue::TransformParameters', required => 1);
-  has Role => (is => 'ro', isa => 'Str', required => 1);
-  has Timeout => (is => 'ro', isa => 'Int');
-  has WorkerType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Num Int/;
+  use Paws::Glue::Types qw/Glue_GlueTable Glue_TransformParameters/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has InputRecordTables => (is => 'ro', isa => ArrayRef[Glue_GlueTable], required => 1, predicate => 1);
+  has MaxCapacity => (is => 'ro', isa => Num, predicate => 1);
+  has MaxRetries => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NumberOfWorkers => (is => 'ro', isa => Int, predicate => 1);
+  has Parameters => (is => 'ro', isa => Glue_TransformParameters, required => 1, predicate => 1);
+  has Role => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Timeout => (is => 'ro', isa => Int, predicate => 1);
+  has WorkerType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMLTransform');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::CreateMLTransformResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateMLTransform');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::CreateMLTransformResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxRetries' => {
+                                 'type' => 'Int'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Timeout' => {
+                              'type' => 'Int'
+                            },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'Parameters' => {
+                                 'class' => 'Paws::Glue::TransformParameters',
+                                 'type' => 'Glue_TransformParameters'
+                               },
+               'NumberOfWorkers' => {
+                                      'type' => 'Int'
+                                    },
+               'WorkerType' => {
+                                 'type' => 'Str'
+                               },
+               'MaxCapacity' => {
+                                  'type' => 'Num'
+                                },
+               'InputRecordTables' => {
+                                        'class' => 'Paws::Glue::GlueTable',
+                                        'type' => 'ArrayRef[Glue_GlueTable]'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'InputRecordTables' => 1,
+                    'Parameters' => 1,
+                    'Role' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +135,7 @@ The default is an empty string.
 
 
 
-=head2 B<REQUIRED> InputRecordTables => ArrayRef[L<Paws::Glue::GlueTable>]
+=head2 B<REQUIRED> InputRecordTables => ArrayRef[Glue_GlueTable]
 
 A list of AWS Glue table definitions used by the transform.
 
@@ -124,7 +175,7 @@ when this task runs.
 
 
 
-=head2 B<REQUIRED> Parameters => L<Paws::Glue::TransformParameters>
+=head2 B<REQUIRED> Parameters => Glue_TransformParameters
 
 The algorithmic parameters that are specific to the transform type
 used. Conditionally dependent on the transform type.

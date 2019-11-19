@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::Lightsail::MetricDatapoint;
-  use Moose;
-  has Average => (is => 'ro', isa => 'Num', request_name => 'average', traits => ['NameInRequest']);
-  has Maximum => (is => 'ro', isa => 'Num', request_name => 'maximum', traits => ['NameInRequest']);
-  has Minimum => (is => 'ro', isa => 'Num', request_name => 'minimum', traits => ['NameInRequest']);
-  has SampleCount => (is => 'ro', isa => 'Num', request_name => 'sampleCount', traits => ['NameInRequest']);
-  has Sum => (is => 'ro', isa => 'Num', request_name => 'sum', traits => ['NameInRequest']);
-  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest']);
-  has Unit => (is => 'ro', isa => 'Str', request_name => 'unit', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num Str/;
+  use Paws::Lightsail::Types qw//;
+  has Average => (is => 'ro', isa => Num);
+  has Maximum => (is => 'ro', isa => Num);
+  has Minimum => (is => 'ro', isa => Num);
+  has SampleCount => (is => 'ro', isa => Num);
+  has Sum => (is => 'ro', isa => Num);
+  has Timestamp => (is => 'ro', isa => Str);
+  has Unit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Sum' => 'sum',
+                       'Maximum' => 'maximum',
+                       'Minimum' => 'minimum',
+                       'Unit' => 'unit',
+                       'Average' => 'average',
+                       'Timestamp' => 'timestamp',
+                       'SampleCount' => 'sampleCount'
+                     },
+  'types' => {
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'Minimum' => {
+                              'type' => 'Num'
+                            },
+               'Maximum' => {
+                              'type' => 'Num'
+                            },
+               'Sum' => {
+                          'type' => 'Num'
+                        },
+               'SampleCount' => {
+                                  'type' => 'Num'
+                                },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'Average' => {
+                              'type' => 'Num'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

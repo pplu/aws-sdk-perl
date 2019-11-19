@@ -1,13 +1,35 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Personalize::DescribeAlgorithm;
-  use Moose;
-  has AlgorithmArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'algorithmArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has AlgorithmArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAlgorithm');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Personalize::DescribeAlgorithmResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAlgorithm');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Personalize::DescribeAlgorithmResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AlgorithmArn' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'AlgorithmArn' => 1
+                  },
+  'NameInRequest' => {
+                       'AlgorithmArn' => 'algorithmArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

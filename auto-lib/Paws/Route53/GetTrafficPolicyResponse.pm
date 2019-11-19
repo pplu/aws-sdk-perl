@@ -1,9 +1,31 @@
 
 package Paws::Route53::GetTrafficPolicyResponse;
-  use Moose;
-  has TrafficPolicy => (is => 'ro', isa => 'Paws::Route53::TrafficPolicy', required => 1);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw/Route53_TrafficPolicy/;
+  has TrafficPolicy => (is => 'ro', isa => Route53_TrafficPolicy, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TrafficPolicy' => {
+                                    'class' => 'Paws::Route53::TrafficPolicy',
+                                    'type' => 'Route53_TrafficPolicy'
+                                  }
+             },
+  'IsRequired' => {
+                    'TrafficPolicy' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::Route53::GetTrafficPolicyResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> TrafficPolicy => L<Paws::Route53::TrafficPolicy>
+=head2 B<REQUIRED> TrafficPolicy => Route53_TrafficPolicy
 
 A complex type that contains settings for the specified traffic policy.
 

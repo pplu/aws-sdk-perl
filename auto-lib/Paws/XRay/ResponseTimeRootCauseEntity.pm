@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::XRay::ResponseTimeRootCauseEntity;
-  use Moose;
-  has Coverage => (is => 'ro', isa => 'Num');
-  has Name => (is => 'ro', isa => 'Str');
-  has Remote => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Num Str Bool/;
+  use Paws::XRay::Types qw//;
+  has Coverage => (is => 'ro', isa => Num);
+  has Name => (is => 'ro', isa => Str);
+  has Remote => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Remote' => {
+                             'type' => 'Bool'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Coverage' => {
+                               'type' => 'Num'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

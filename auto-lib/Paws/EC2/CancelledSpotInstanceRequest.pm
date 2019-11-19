@@ -1,7 +1,28 @@
 package Paws::EC2::CancelledSpotInstanceRequest;
-  use Moose;
-  has SpotInstanceRequestId => (is => 'ro', isa => 'Str', request_name => 'spotInstanceRequestId', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has SpotInstanceRequestId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'SpotInstanceRequestId' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'NameInRequest' => {
+                       'SpotInstanceRequestId' => 'spotInstanceRequestId',
+                       'State' => 'state'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,17 +1,47 @@
 
 package Paws::EC2::ModifyCapacityReservation;
-  use Moose;
-  has CapacityReservationId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has EndDate => (is => 'ro', isa => 'Str');
-  has EndDateType => (is => 'ro', isa => 'Str');
-  has InstanceCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::EC2::Types qw//;
+  has CapacityReservationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has EndDate => (is => 'ro', isa => Str, predicate => 1);
+  has EndDateType => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceCount => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCapacityReservation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyCapacityReservationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyCapacityReservation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyCapacityReservationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CapacityReservationId' => 1
+                  },
+  'types' => {
+               'CapacityReservationId' => {
+                                            'type' => 'Str'
+                                          },
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'EndDateType' => {
+                                  'type' => 'Str'
+                                },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

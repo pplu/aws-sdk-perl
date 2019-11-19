@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::PresetSettings;
-  use Moose;
-  has AudioDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::AudioDescription]', request_name => 'audioDescriptions', traits => ['NameInRequest']);
-  has CaptionDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::CaptionDescriptionPreset]', request_name => 'captionDescriptions', traits => ['NameInRequest']);
-  has ContainerSettings => (is => 'ro', isa => 'Paws::MediaConvert::ContainerSettings', request_name => 'containerSettings', traits => ['NameInRequest']);
-  has VideoDescription => (is => 'ro', isa => 'Paws::MediaConvert::VideoDescription', request_name => 'videoDescription', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_VideoDescription MediaConvert_AudioDescription MediaConvert_ContainerSettings MediaConvert_CaptionDescriptionPreset/;
+  has AudioDescriptions => (is => 'ro', isa => ArrayRef[MediaConvert_AudioDescription]);
+  has CaptionDescriptions => (is => 'ro', isa => ArrayRef[MediaConvert_CaptionDescriptionPreset]);
+  has ContainerSettings => (is => 'ro', isa => MediaConvert_ContainerSettings);
+  has VideoDescription => (is => 'ro', isa => MediaConvert_VideoDescription);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContainerSettings' => {
+                                        'type' => 'MediaConvert_ContainerSettings',
+                                        'class' => 'Paws::MediaConvert::ContainerSettings'
+                                      },
+               'AudioDescriptions' => {
+                                        'class' => 'Paws::MediaConvert::AudioDescription',
+                                        'type' => 'ArrayRef[MediaConvert_AudioDescription]'
+                                      },
+               'VideoDescription' => {
+                                       'class' => 'Paws::MediaConvert::VideoDescription',
+                                       'type' => 'MediaConvert_VideoDescription'
+                                     },
+               'CaptionDescriptions' => {
+                                          'type' => 'ArrayRef[MediaConvert_CaptionDescriptionPreset]',
+                                          'class' => 'Paws::MediaConvert::CaptionDescriptionPreset'
+                                        }
+             },
+  'NameInRequest' => {
+                       'ContainerSettings' => 'containerSettings',
+                       'AudioDescriptions' => 'audioDescriptions',
+                       'VideoDescription' => 'videoDescription',
+                       'CaptionDescriptions' => 'captionDescriptions'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +75,7 @@ Settings for preset
 =head1 ATTRIBUTES
 
 
-=head2 AudioDescriptions => ArrayRef[L<Paws::MediaConvert::AudioDescription>]
+=head2 AudioDescriptions => ArrayRef[MediaConvert_AudioDescription]
 
   (AudioDescriptions) contains groups of audio encoding settings
 organized by audio codec. Include one instance of (AudioDescriptions)
@@ -47,18 +83,18 @@ per output. (AudioDescriptions) can contain multiple groups of encoding
 settings.
 
 
-=head2 CaptionDescriptions => ArrayRef[L<Paws::MediaConvert::CaptionDescriptionPreset>]
+=head2 CaptionDescriptions => ArrayRef[MediaConvert_CaptionDescriptionPreset]
 
   Caption settings for this preset. There can be multiple caption
 settings in a single output.
 
 
-=head2 ContainerSettings => L<Paws::MediaConvert::ContainerSettings>
+=head2 ContainerSettings => MediaConvert_ContainerSettings
 
   Container specific settings.
 
 
-=head2 VideoDescription => L<Paws::MediaConvert::VideoDescription>
+=head2 VideoDescription => MediaConvert_VideoDescription
 
   (VideoDescription) contains a group of video encoding settings. The
 specific video settings depend on the video codec that you choose when

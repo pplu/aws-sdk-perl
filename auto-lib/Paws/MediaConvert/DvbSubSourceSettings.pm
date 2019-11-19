@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::DvbSubSourceSettings;
-  use Moose;
-  has Pid => (is => 'ro', isa => 'Int', request_name => 'pid', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has Pid => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Pid' => 'pid'
+                     },
+  'types' => {
+               'Pid' => {
+                          'type' => 'Int'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

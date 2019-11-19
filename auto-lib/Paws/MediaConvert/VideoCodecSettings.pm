@@ -1,11 +1,56 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::VideoCodecSettings;
-  use Moose;
-  has Codec => (is => 'ro', isa => 'Str', request_name => 'codec', traits => ['NameInRequest']);
-  has FrameCaptureSettings => (is => 'ro', isa => 'Paws::MediaConvert::FrameCaptureSettings', request_name => 'frameCaptureSettings', traits => ['NameInRequest']);
-  has H264Settings => (is => 'ro', isa => 'Paws::MediaConvert::H264Settings', request_name => 'h264Settings', traits => ['NameInRequest']);
-  has H265Settings => (is => 'ro', isa => 'Paws::MediaConvert::H265Settings', request_name => 'h265Settings', traits => ['NameInRequest']);
-  has Mpeg2Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mpeg2Settings', request_name => 'mpeg2Settings', traits => ['NameInRequest']);
-  has ProresSettings => (is => 'ro', isa => 'Paws::MediaConvert::ProresSettings', request_name => 'proresSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_H264Settings MediaConvert_H265Settings MediaConvert_Mpeg2Settings MediaConvert_FrameCaptureSettings MediaConvert_ProresSettings/;
+  has Codec => (is => 'ro', isa => Str);
+  has FrameCaptureSettings => (is => 'ro', isa => MediaConvert_FrameCaptureSettings);
+  has H264Settings => (is => 'ro', isa => MediaConvert_H264Settings);
+  has H265Settings => (is => 'ro', isa => MediaConvert_H265Settings);
+  has Mpeg2Settings => (is => 'ro', isa => MediaConvert_Mpeg2Settings);
+  has ProresSettings => (is => 'ro', isa => MediaConvert_ProresSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Codec' => 'codec',
+                       'ProresSettings' => 'proresSettings',
+                       'FrameCaptureSettings' => 'frameCaptureSettings',
+                       'Mpeg2Settings' => 'mpeg2Settings',
+                       'H265Settings' => 'h265Settings',
+                       'H264Settings' => 'h264Settings'
+                     },
+  'types' => {
+               'Mpeg2Settings' => {
+                                    'class' => 'Paws::MediaConvert::Mpeg2Settings',
+                                    'type' => 'MediaConvert_Mpeg2Settings'
+                                  },
+               'H264Settings' => {
+                                   'class' => 'Paws::MediaConvert::H264Settings',
+                                   'type' => 'MediaConvert_H264Settings'
+                                 },
+               'H265Settings' => {
+                                   'class' => 'Paws::MediaConvert::H265Settings',
+                                   'type' => 'MediaConvert_H265Settings'
+                                 },
+               'FrameCaptureSettings' => {
+                                           'type' => 'MediaConvert_FrameCaptureSettings',
+                                           'class' => 'Paws::MediaConvert::FrameCaptureSettings'
+                                         },
+               'ProresSettings' => {
+                                     'class' => 'Paws::MediaConvert::ProresSettings',
+                                     'type' => 'MediaConvert_ProresSettings'
+                                   },
+               'Codec' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,30 +99,30 @@ FrameCaptureSettings
 defined by the object VideoCodec.
 
 
-=head2 FrameCaptureSettings => L<Paws::MediaConvert::FrameCaptureSettings>
+=head2 FrameCaptureSettings => MediaConvert_FrameCaptureSettings
 
   Required when you set (Codec) under
 (VideoDescription)E<gt>(CodecSettings) to the value FRAME_CAPTURE.
 
 
-=head2 H264Settings => L<Paws::MediaConvert::H264Settings>
+=head2 H264Settings => MediaConvert_H264Settings
 
   Required when you set (Codec) under
 (VideoDescription)E<gt>(CodecSettings) to the value H_264.
 
 
-=head2 H265Settings => L<Paws::MediaConvert::H265Settings>
+=head2 H265Settings => MediaConvert_H265Settings
 
   Settings for H265 codec
 
 
-=head2 Mpeg2Settings => L<Paws::MediaConvert::Mpeg2Settings>
+=head2 Mpeg2Settings => MediaConvert_Mpeg2Settings
 
   Required when you set (Codec) under
 (VideoDescription)E<gt>(CodecSettings) to the value MPEG2.
 
 
-=head2 ProresSettings => L<Paws::MediaConvert::ProresSettings>
+=head2 ProresSettings => MediaConvert_ProresSettings
 
   Required when you set (Codec) under
 (VideoDescription)E<gt>(CodecSettings) to the value PRORES.

@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::Robomaker::S3Object;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest'], required => 1);
-  has Etag => (is => 'ro', isa => 'Str', request_name => 'etag', traits => ['NameInRequest']);
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1);
+  has Etag => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'Etag' => {
+                           'type' => 'Str'
+                         },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Etag' => 'etag',
+                       'Key' => 'key',
+                       'Bucket' => 'bucket'
+                     },
+  'IsRequired' => {
+                    'Key' => 1,
+                    'Bucket' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

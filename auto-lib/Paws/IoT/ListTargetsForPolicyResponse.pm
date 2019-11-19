@@ -1,10 +1,34 @@
 
 package Paws::IoT::ListTargetsForPolicyResponse;
-  use Moose;
-  has NextMarker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextMarker');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targets');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::IoT::Types qw//;
+  has NextMarker => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextMarker' => 'nextMarker',
+                       'Targets' => 'targets'
+                     },
+  'types' => {
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Targets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::IoT::MitigationAction;
-  use Moose;
-  has ActionParams => (is => 'ro', isa => 'Paws::IoT::MitigationActionParams', request_name => 'actionParams', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_MitigationActionParams/;
+  has ActionParams => (is => 'ro', isa => IoT_MitigationActionParams);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ActionParams' => {
+                                   'type' => 'IoT_MitigationActionParams',
+                                   'class' => 'Paws::IoT::MitigationActionParams'
+                                 },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'RoleArn' => 'roleArn',
+                       'ActionParams' => 'actionParams',
+                       'Id' => 'id'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +73,7 @@ action.
 =head1 ATTRIBUTES
 
 
-=head2 ActionParams => L<Paws::IoT::MitigationActionParams>
+=head2 ActionParams => IoT_MitigationActionParams
 
   The set of parameters for this mitigation action. The parameters vary,
 depending on the kind of action you apply.

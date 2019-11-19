@@ -1,14 +1,71 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::ProjectSource;
-  use Moose;
-  has Auth => (is => 'ro', isa => 'Paws::CodeBuild::SourceAuth', request_name => 'auth', traits => ['NameInRequest']);
-  has Buildspec => (is => 'ro', isa => 'Str', request_name => 'buildspec', traits => ['NameInRequest']);
-  has GitCloneDepth => (is => 'ro', isa => 'Int', request_name => 'gitCloneDepth', traits => ['NameInRequest']);
-  has GitSubmodulesConfig => (is => 'ro', isa => 'Paws::CodeBuild::GitSubmodulesConfig', request_name => 'gitSubmodulesConfig', traits => ['NameInRequest']);
-  has InsecureSsl => (is => 'ro', isa => 'Bool', request_name => 'insecureSsl', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
-  has ReportBuildStatus => (is => 'ro', isa => 'Bool', request_name => 'reportBuildStatus', traits => ['NameInRequest']);
-  has SourceIdentifier => (is => 'ro', isa => 'Str', request_name => 'sourceIdentifier', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::CodeBuild::Types qw/CodeBuild_GitSubmodulesConfig CodeBuild_SourceAuth/;
+  has Auth => (is => 'ro', isa => CodeBuild_SourceAuth);
+  has Buildspec => (is => 'ro', isa => Str);
+  has GitCloneDepth => (is => 'ro', isa => Int);
+  has GitSubmodulesConfig => (is => 'ro', isa => CodeBuild_GitSubmodulesConfig);
+  has InsecureSsl => (is => 'ro', isa => Bool);
+  has Location => (is => 'ro', isa => Str);
+  has ReportBuildStatus => (is => 'ro', isa => Bool);
+  has SourceIdentifier => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'Auth' => {
+                           'class' => 'Paws::CodeBuild::SourceAuth',
+                           'type' => 'CodeBuild_SourceAuth'
+                         },
+               'Buildspec' => {
+                                'type' => 'Str'
+                              },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'InsecureSsl' => {
+                                  'type' => 'Bool'
+                                },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'GitCloneDepth' => {
+                                    'type' => 'Int'
+                                  },
+               'GitSubmodulesConfig' => {
+                                          'type' => 'CodeBuild_GitSubmodulesConfig',
+                                          'class' => 'Paws::CodeBuild::GitSubmodulesConfig'
+                                        },
+               'ReportBuildStatus' => {
+                                        'type' => 'Bool'
+                                      }
+             },
+  'IsRequired' => {
+                    'Type' => 1
+                  },
+  'NameInRequest' => {
+                       'ReportBuildStatus' => 'reportBuildStatus',
+                       'GitSubmodulesConfig' => 'gitSubmodulesConfig',
+                       'GitCloneDepth' => 'gitCloneDepth',
+                       'Type' => 'type',
+                       'InsecureSsl' => 'insecureSsl',
+                       'Location' => 'location',
+                       'Buildspec' => 'buildspec',
+                       'Auth' => 'auth',
+                       'SourceIdentifier' => 'sourceIdentifier'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +101,7 @@ Information about the build input source code for the build project.
 =head1 ATTRIBUTES
 
 
-=head2 Auth => L<Paws::CodeBuild::SourceAuth>
+=head2 Auth => CodeBuild_SourceAuth
 
   Information about the authorization settings for AWS CodeBuild to
 access the source code to be built.
@@ -66,7 +123,7 @@ with the source code to be built.
   Information about the Git clone depth for the build project.
 
 
-=head2 GitSubmodulesConfig => L<Paws::CodeBuild::GitSubmodulesConfig>
+=head2 GitSubmodulesConfig => CodeBuild_GitSubmodulesConfig
 
   Information about the Git submodules configuration for the build
 project.

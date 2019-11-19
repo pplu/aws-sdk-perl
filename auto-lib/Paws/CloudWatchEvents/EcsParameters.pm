@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::CloudWatchEvents::EcsParameters;
-  use Moose;
-  has Group => (is => 'ro', isa => 'Str');
-  has LaunchType => (is => 'ro', isa => 'Str');
-  has NetworkConfiguration => (is => 'ro', isa => 'Paws::CloudWatchEvents::NetworkConfiguration');
-  has PlatformVersion => (is => 'ro', isa => 'Str');
-  has TaskCount => (is => 'ro', isa => 'Int');
-  has TaskDefinitionArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_NetworkConfiguration/;
+  has Group => (is => 'ro', isa => Str);
+  has LaunchType => (is => 'ro', isa => Str);
+  has NetworkConfiguration => (is => 'ro', isa => CloudWatchEvents_NetworkConfiguration);
+  has PlatformVersion => (is => 'ro', isa => Str);
+  has TaskCount => (is => 'ro', isa => Int);
+  has TaskDefinitionArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'LaunchType' => {
+                                 'type' => 'Str'
+                               },
+               'Group' => {
+                            'type' => 'Str'
+                          },
+               'TaskDefinitionArn' => {
+                                        'type' => 'Str'
+                                      },
+               'TaskCount' => {
+                                'type' => 'Int'
+                              },
+               'NetworkConfiguration' => {
+                                           'class' => 'Paws::CloudWatchEvents::NetworkConfiguration',
+                                           'type' => 'CloudWatchEvents_NetworkConfiguration'
+                                         }
+             },
+  'IsRequired' => {
+                    'TaskDefinitionArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +94,7 @@ more information, see AWS Fargate on Amazon ECS
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 NetworkConfiguration => L<Paws::CloudWatchEvents::NetworkConfiguration>
+=head2 NetworkConfiguration => CloudWatchEvents_NetworkConfiguration
 
   Use this structure if the ECS task uses the C<awsvpc> network mode.
 This structure specifies the VPC subnets and security groups associated

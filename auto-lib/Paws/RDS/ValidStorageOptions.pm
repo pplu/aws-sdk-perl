@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::RDS::ValidStorageOptions;
-  use Moose;
-  has IopsToStorageRatio => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DoubleRange]', request_name => 'DoubleRange', traits => ['NameInRequest']);
-  has ProvisionedIops => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Range]', request_name => 'Range', traits => ['NameInRequest']);
-  has StorageSize => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Range]', request_name => 'Range', traits => ['NameInRequest']);
-  has StorageType => (is => 'ro', isa => 'Str');
-  has SupportsStorageAutoscaling => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Bool/;
+  use Paws::RDS::Types qw/RDS_Range RDS_DoubleRange/;
+  has IopsToStorageRatio => (is => 'ro', isa => ArrayRef[RDS_DoubleRange]);
+  has ProvisionedIops => (is => 'ro', isa => ArrayRef[RDS_Range]);
+  has StorageSize => (is => 'ro', isa => ArrayRef[RDS_Range]);
+  has StorageType => (is => 'ro', isa => Str);
+  has SupportsStorageAutoscaling => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ProvisionedIops' => 'Range',
+                       'IopsToStorageRatio' => 'DoubleRange',
+                       'StorageSize' => 'Range'
+                     },
+  'types' => {
+               'StorageSize' => {
+                                  'class' => 'Paws::RDS::Range',
+                                  'type' => 'ArrayRef[RDS_Range]'
+                                },
+               'ProvisionedIops' => {
+                                      'type' => 'ArrayRef[RDS_Range]',
+                                      'class' => 'Paws::RDS::Range'
+                                    },
+               'SupportsStorageAutoscaling' => {
+                                                 'type' => 'Bool'
+                                               },
+               'IopsToStorageRatio' => {
+                                         'type' => 'ArrayRef[RDS_DoubleRange]',
+                                         'class' => 'Paws::RDS::DoubleRange'
+                                       },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,19 +79,19 @@ C<DescribeValidDBInstanceModifications> action.
 =head1 ATTRIBUTES
 
 
-=head2 IopsToStorageRatio => ArrayRef[L<Paws::RDS::DoubleRange>]
+=head2 IopsToStorageRatio => ArrayRef[RDS_DoubleRange]
 
   The valid range of Provisioned IOPS to gibibytes of storage multiplier.
 For example, 3-10, which means that provisioned IOPS can be between 3
 and 10 times storage.
 
 
-=head2 ProvisionedIops => ArrayRef[L<Paws::RDS::Range>]
+=head2 ProvisionedIops => ArrayRef[RDS_Range]
 
   The valid range of provisioned IOPS. For example, 1000-20000.
 
 
-=head2 StorageSize => ArrayRef[L<Paws::RDS::Range>]
+=head2 StorageSize => ArrayRef[RDS_Range]
 
   The valid range of storage in gibibytes. For example, 100 to 16384.
 

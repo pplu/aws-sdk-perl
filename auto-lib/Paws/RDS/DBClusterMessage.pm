@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DBClusterMessage;
-  use Moose;
-  has DBClusters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBCluster]', request_name => 'DBCluster', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_DBCluster/;
+  has DBClusters => (is => 'ro', isa => ArrayRef[RDS_DBCluster]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DBClusters' => 'DBCluster'
+                     },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'DBClusters' => {
+                                 'class' => 'Paws::RDS::DBCluster',
+                                 'type' => 'ArrayRef[RDS_DBCluster]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RDS::DBClusterMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBClusters => ArrayRef[L<Paws::RDS::DBCluster>]
+=head2 DBClusters => ArrayRef[RDS_DBCluster]
 
 Contains a list of DB clusters for the user.
 

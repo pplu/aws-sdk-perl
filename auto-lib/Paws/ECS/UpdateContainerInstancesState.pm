@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::UpdateContainerInstancesState;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ECS::Types qw//;
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has ContainerInstances => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Status => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateContainerInstancesState');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::UpdateContainerInstancesStateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateContainerInstancesState');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::UpdateContainerInstancesStateResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'Cluster' => 'cluster',
+                       'ContainerInstances' => 'containerInstances'
+                     },
+  'IsRequired' => {
+                    'ContainerInstances' => 1,
+                    'Status' => 1
+                  },
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ContainerInstances' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'Cluster' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

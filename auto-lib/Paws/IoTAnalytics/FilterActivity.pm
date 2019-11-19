@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::FilterActivity;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Next => (is => 'ro', isa => 'Str', request_name => 'next', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has Filter => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Next => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Filter' => 1
+                  },
+  'NameInRequest' => {
+                       'Next' => 'next',
+                       'Name' => 'name',
+                       'Filter' => 'filter'
+                     },
+  'types' => {
+               'Next' => {
+                           'type' => 'Str'
+                         },
+               'Filter' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

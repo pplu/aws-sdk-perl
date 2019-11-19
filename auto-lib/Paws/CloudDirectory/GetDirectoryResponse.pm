@@ -1,9 +1,30 @@
 
 package Paws::CloudDirectory::GetDirectoryResponse;
-  use Moose;
-  has Directory => (is => 'ro', isa => 'Paws::CloudDirectory::Directory', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_Directory/;
+  has Directory => (is => 'ro', isa => CloudDirectory_Directory, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Directory' => {
+                                'class' => 'Paws::CloudDirectory::Directory',
+                                'type' => 'CloudDirectory_Directory'
+                              }
+             },
+  'IsRequired' => {
+                    'Directory' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::CloudDirectory::GetDirectoryResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Directory => L<Paws::CloudDirectory::Directory>
+=head2 B<REQUIRED> Directory => CloudDirectory_Directory
 
 Metadata about the directory.
 

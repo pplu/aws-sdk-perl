@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::ListOnPremisesInstances;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has RegistrationStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registrationStatus' );
-  has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'tagFilters' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_TagFilter/;
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has RegistrationStatus => (is => 'ro', isa => Str, predicate => 1);
+  has TagFilters => (is => 'ro', isa => ArrayRef[CodeDeploy_TagFilter], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListOnPremisesInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::ListOnPremisesInstancesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListOnPremisesInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::ListOnPremisesInstancesOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistrationStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'TagFilters' => {
+                                 'class' => 'Paws::CodeDeploy::TagFilter',
+                                 'type' => 'ArrayRef[CodeDeploy_TagFilter]'
+                               }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'TagFilters' => 'tagFilters',
+                       'RegistrationStatus' => 'registrationStatus'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +112,7 @@ list.
 
 Valid values are: C<"Registered">, C<"Deregistered">
 
-=head2 TagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
+=head2 TagFilters => ArrayRef[CodeDeploy_TagFilter]
 
 The on-premises instance tags that are used to restrict the on-premises
 instance names returned.

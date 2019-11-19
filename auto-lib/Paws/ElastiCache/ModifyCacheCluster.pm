@@ -1,31 +1,104 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::ModifyCacheCluster;
-  use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Bool');
-  has AuthToken => (is => 'ro', isa => 'Str');
-  has AuthTokenUpdateStrategy => (is => 'ro', isa => 'Str');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AZMode => (is => 'ro', isa => 'Str');
-  has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CacheNodeType => (is => 'ro', isa => 'Str');
-  has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has NewAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NotificationTopicArn => (is => 'ro', isa => 'Str');
-  has NotificationTopicStatus => (is => 'ro', isa => 'Str');
-  has NumCacheNodes => (is => 'ro', isa => 'Int');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
-  has SnapshotWindow => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef Int/;
+  use Paws::ElastiCache::Types qw//;
+  has ApplyImmediately => (is => 'ro', isa => Bool, predicate => 1);
+  has AuthToken => (is => 'ro', isa => Str, predicate => 1);
+  has AuthTokenUpdateStrategy => (is => 'ro', isa => Str, predicate => 1);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AZMode => (is => 'ro', isa => Str, predicate => 1);
+  has CacheClusterId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CacheNodeIdsToRemove => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has CacheNodeType => (is => 'ro', isa => Str, predicate => 1);
+  has CacheParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has CacheSecurityGroupNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has NewAvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has NotificationTopicArn => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationTopicStatus => (is => 'ro', isa => Str, predicate => 1);
+  has NumCacheNodes => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SnapshotRetentionLimit => (is => 'ro', isa => Int, predicate => 1);
+  has SnapshotWindow => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCacheCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::ModifyCacheClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyCacheClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyCacheCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::ModifyCacheClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyCacheClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CacheClusterId' => 1
+                  },
+  'types' => {
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'NotificationTopicArn' => {
+                                           'type' => 'Str'
+                                         },
+               'AuthTokenUpdateStrategy' => {
+                                              'type' => 'Str'
+                                            },
+               'SnapshotRetentionLimit' => {
+                                             'type' => 'Int'
+                                           },
+               'CacheSecurityGroupNames' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'CacheNodeType' => {
+                                    'type' => 'Str'
+                                  },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'NumCacheNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'NotificationTopicStatus' => {
+                                              'type' => 'Str'
+                                            },
+               'CacheParameterGroupName' => {
+                                              'type' => 'Str'
+                                            },
+               'NewAvailabilityZones' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'CacheNodeIdsToRemove' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'AZMode' => {
+                             'type' => 'Str'
+                           },
+               'SnapshotWindow' => {
+                                     'type' => 'Str'
+                                   },
+               'AuthToken' => {
+                                'type' => 'Str'
+                              },
+               'CacheClusterId' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

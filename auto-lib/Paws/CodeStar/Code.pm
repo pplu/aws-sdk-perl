@@ -1,7 +1,37 @@
+# Generated from default/object.tt
 package Paws::CodeStar::Code;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Paws::CodeStar::CodeDestination', request_name => 'destination', traits => ['NameInRequest'], required => 1);
-  has Source => (is => 'ro', isa => 'Paws::CodeStar::CodeSource', request_name => 'source', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CodeStar::Types qw/CodeStar_CodeSource CodeStar_CodeDestination/;
+  has Destination => (is => 'ro', isa => CodeStar_CodeDestination, required => 1);
+  has Source => (is => 'ro', isa => CodeStar_CodeSource, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Destination' => {
+                                  'class' => 'Paws::CodeStar::CodeDestination',
+                                  'type' => 'CodeStar_CodeDestination'
+                                },
+               'Source' => {
+                             'type' => 'CodeStar_CodeSource',
+                             'class' => 'Paws::CodeStar::CodeSource'
+                           }
+             },
+  'NameInRequest' => {
+                       'Destination' => 'destination',
+                       'Source' => 'source'
+                     },
+  'IsRequired' => {
+                    'Source' => 1,
+                    'Destination' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +69,7 @@ new project source repository after project creation.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Destination => L<Paws::CodeStar::CodeDestination>
+=head2 B<REQUIRED> Destination => CodeStar_CodeDestination
 
   The repository to be created in AWS CodeStar. Valid values are AWS
 CodeCommit or GitHub. After AWS CodeStar provisions the new repository,
@@ -47,7 +77,7 @@ the source code files provided with the project request are placed in
 the repository.
 
 
-=head2 B<REQUIRED> Source => L<Paws::CodeStar::CodeSource>
+=head2 B<REQUIRED> Source => CodeStar_CodeSource
 
   The location where the source code files provided with the project
 request are stored. AWS CodeStar retrieves the files during project

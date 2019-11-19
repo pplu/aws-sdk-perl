@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::ListComplianceItemsResult;
-  use Moose;
-  has ComplianceItems => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ComplianceItem]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_ComplianceItem/;
+  has ComplianceItems => (is => 'ro', isa => ArrayRef[SSM_ComplianceItem]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComplianceItems' => {
+                                      'class' => 'Paws::SSM::ComplianceItem',
+                                      'type' => 'ArrayRef[SSM_ComplianceItem]'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::ListComplianceItemsResult
 =head1 ATTRIBUTES
 
 
-=head2 ComplianceItems => ArrayRef[L<Paws::SSM::ComplianceItem>]
+=head2 ComplianceItems => ArrayRef[SSM_ComplianceItem]
 
 A list of compliance information for the specified resource ID.
 

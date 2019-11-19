@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::WorkflowType;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Version => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Version' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Version' => 1
+                  },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Version' => 'version'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

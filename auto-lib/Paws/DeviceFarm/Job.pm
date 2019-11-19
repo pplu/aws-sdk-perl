@@ -1,20 +1,99 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::Job;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Counters => (is => 'ro', isa => 'Paws::DeviceFarm::Counters', request_name => 'counters', traits => ['NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', request_name => 'device', traits => ['NameInRequest']);
-  has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', request_name => 'deviceMinutes', traits => ['NameInRequest']);
-  has InstanceArn => (is => 'ro', isa => 'Str', request_name => 'instanceArn', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
-  has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Stopped => (is => 'ro', isa => 'Str', request_name => 'stopped', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has VideoCapture => (is => 'ro', isa => 'Bool', request_name => 'videoCapture', traits => ['NameInRequest']);
-  has VideoEndpoint => (is => 'ro', isa => 'Str', request_name => 'videoEndpoint', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Device DeviceFarm_DeviceMinutes DeviceFarm_Counters/;
+  has Arn => (is => 'ro', isa => Str);
+  has Counters => (is => 'ro', isa => DeviceFarm_Counters);
+  has Created => (is => 'ro', isa => Str);
+  has Device => (is => 'ro', isa => DeviceFarm_Device);
+  has DeviceMinutes => (is => 'ro', isa => DeviceFarm_DeviceMinutes);
+  has InstanceArn => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Result => (is => 'ro', isa => Str);
+  has Started => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Stopped => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has VideoCapture => (is => 'ro', isa => Bool);
+  has VideoEndpoint => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'VideoCapture' => {
+                                   'type' => 'Bool'
+                                 },
+               'VideoEndpoint' => {
+                                    'type' => 'Str'
+                                  },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Result' => {
+                             'type' => 'Str'
+                           },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'DeviceMinutes' => {
+                                    'class' => 'Paws::DeviceFarm::DeviceMinutes',
+                                    'type' => 'DeviceFarm_DeviceMinutes'
+                                  },
+               'Stopped' => {
+                              'type' => 'Str'
+                            },
+               'Started' => {
+                              'type' => 'Str'
+                            },
+               'InstanceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Counters' => {
+                               'type' => 'DeviceFarm_Counters',
+                               'class' => 'Paws::DeviceFarm::Counters'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Device' => {
+                             'class' => 'Paws::DeviceFarm::Device',
+                             'type' => 'DeviceFarm_Device'
+                           },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Message' => 'message',
+                       'Device' => 'device',
+                       'Status' => 'status',
+                       'Name' => 'name',
+                       'Counters' => 'counters',
+                       'Stopped' => 'stopped',
+                       'Started' => 'started',
+                       'InstanceArn' => 'instanceArn',
+                       'DeviceMinutes' => 'deviceMinutes',
+                       'Arn' => 'arn',
+                       'Result' => 'result',
+                       'VideoCapture' => 'videoCapture',
+                       'Created' => 'created',
+                       'VideoEndpoint' => 'videoEndpoint',
+                       'Type' => 'type'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +134,7 @@ Represents a device.
   The job's ARN.
 
 
-=head2 Counters => L<Paws::DeviceFarm::Counters>
+=head2 Counters => DeviceFarm_Counters
 
   The job's result counters.
 
@@ -65,12 +144,12 @@ Represents a device.
   When the job was created.
 
 
-=head2 Device => L<Paws::DeviceFarm::Device>
+=head2 Device => DeviceFarm_Device
 
   The device (phone or tablet).
 
 
-=head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
+=head2 DeviceMinutes => DeviceFarm_DeviceMinutes
 
   Represents the total (metered or unmetered) minutes used by the job.
 

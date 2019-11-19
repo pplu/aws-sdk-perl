@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::RouteSettings;
-  use Moose;
-  has DataTraceEnabled => (is => 'ro', isa => 'Bool', request_name => 'dataTraceEnabled', traits => ['NameInRequest']);
-  has DetailedMetricsEnabled => (is => 'ro', isa => 'Bool', request_name => 'detailedMetricsEnabled', traits => ['NameInRequest']);
-  has LoggingLevel => (is => 'ro', isa => 'Str', request_name => 'loggingLevel', traits => ['NameInRequest']);
-  has ThrottlingBurstLimit => (is => 'ro', isa => 'Int', request_name => 'throttlingBurstLimit', traits => ['NameInRequest']);
-  has ThrottlingRateLimit => (is => 'ro', isa => 'Num', request_name => 'throttlingRateLimit', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str Int Num/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has DataTraceEnabled => (is => 'ro', isa => Bool);
+  has DetailedMetricsEnabled => (is => 'ro', isa => Bool);
+  has LoggingLevel => (is => 'ro', isa => Str);
+  has ThrottlingBurstLimit => (is => 'ro', isa => Int);
+  has ThrottlingRateLimit => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LoggingLevel' => 'loggingLevel',
+                       'ThrottlingBurstLimit' => 'throttlingBurstLimit',
+                       'DetailedMetricsEnabled' => 'detailedMetricsEnabled',
+                       'DataTraceEnabled' => 'dataTraceEnabled',
+                       'ThrottlingRateLimit' => 'throttlingRateLimit'
+                     },
+  'types' => {
+               'ThrottlingRateLimit' => {
+                                          'type' => 'Num'
+                                        },
+               'DataTraceEnabled' => {
+                                       'type' => 'Bool'
+                                     },
+               'DetailedMetricsEnabled' => {
+                                             'type' => 'Bool'
+                                           },
+               'ThrottlingBurstLimit' => {
+                                           'type' => 'Int'
+                                         },
+               'LoggingLevel' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

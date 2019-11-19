@@ -1,12 +1,63 @@
+# Generated from default/object.tt
 package Paws::MediaLive::OutputGroupSettings;
-  use Moose;
-  has ArchiveGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::ArchiveGroupSettings', request_name => 'archiveGroupSettings', traits => ['NameInRequest']);
-  has FrameCaptureGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::FrameCaptureGroupSettings', request_name => 'frameCaptureGroupSettings', traits => ['NameInRequest']);
-  has HlsGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsGroupSettings', request_name => 'hlsGroupSettings', traits => ['NameInRequest']);
-  has MediaPackageGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::MediaPackageGroupSettings', request_name => 'mediaPackageGroupSettings', traits => ['NameInRequest']);
-  has MsSmoothGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::MsSmoothGroupSettings', request_name => 'msSmoothGroupSettings', traits => ['NameInRequest']);
-  has RtmpGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::RtmpGroupSettings', request_name => 'rtmpGroupSettings', traits => ['NameInRequest']);
-  has UdpGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpGroupSettings', request_name => 'udpGroupSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_RtmpGroupSettings MediaLive_MediaPackageGroupSettings MediaLive_HlsGroupSettings MediaLive_ArchiveGroupSettings MediaLive_FrameCaptureGroupSettings MediaLive_MsSmoothGroupSettings MediaLive_UdpGroupSettings/;
+  has ArchiveGroupSettings => (is => 'ro', isa => MediaLive_ArchiveGroupSettings);
+  has FrameCaptureGroupSettings => (is => 'ro', isa => MediaLive_FrameCaptureGroupSettings);
+  has HlsGroupSettings => (is => 'ro', isa => MediaLive_HlsGroupSettings);
+  has MediaPackageGroupSettings => (is => 'ro', isa => MediaLive_MediaPackageGroupSettings);
+  has MsSmoothGroupSettings => (is => 'ro', isa => MediaLive_MsSmoothGroupSettings);
+  has RtmpGroupSettings => (is => 'ro', isa => MediaLive_RtmpGroupSettings);
+  has UdpGroupSettings => (is => 'ro', isa => MediaLive_UdpGroupSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'UdpGroupSettings' => 'udpGroupSettings',
+                       'MediaPackageGroupSettings' => 'mediaPackageGroupSettings',
+                       'RtmpGroupSettings' => 'rtmpGroupSettings',
+                       'FrameCaptureGroupSettings' => 'frameCaptureGroupSettings',
+                       'MsSmoothGroupSettings' => 'msSmoothGroupSettings',
+                       'ArchiveGroupSettings' => 'archiveGroupSettings',
+                       'HlsGroupSettings' => 'hlsGroupSettings'
+                     },
+  'types' => {
+               'UdpGroupSettings' => {
+                                       'class' => 'Paws::MediaLive::UdpGroupSettings',
+                                       'type' => 'MediaLive_UdpGroupSettings'
+                                     },
+               'MediaPackageGroupSettings' => {
+                                                'class' => 'Paws::MediaLive::MediaPackageGroupSettings',
+                                                'type' => 'MediaLive_MediaPackageGroupSettings'
+                                              },
+               'HlsGroupSettings' => {
+                                       'type' => 'MediaLive_HlsGroupSettings',
+                                       'class' => 'Paws::MediaLive::HlsGroupSettings'
+                                     },
+               'MsSmoothGroupSettings' => {
+                                            'type' => 'MediaLive_MsSmoothGroupSettings',
+                                            'class' => 'Paws::MediaLive::MsSmoothGroupSettings'
+                                          },
+               'ArchiveGroupSettings' => {
+                                           'type' => 'MediaLive_ArchiveGroupSettings',
+                                           'class' => 'Paws::MediaLive::ArchiveGroupSettings'
+                                         },
+               'RtmpGroupSettings' => {
+                                        'class' => 'Paws::MediaLive::RtmpGroupSettings',
+                                        'type' => 'MediaLive_RtmpGroupSettings'
+                                      },
+               'FrameCaptureGroupSettings' => {
+                                                'class' => 'Paws::MediaLive::FrameCaptureGroupSettings',
+                                                'type' => 'MediaLive_FrameCaptureGroupSettings'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,37 +93,37 @@ Output Group Settings
 =head1 ATTRIBUTES
 
 
-=head2 ArchiveGroupSettings => L<Paws::MediaLive::ArchiveGroupSettings>
+=head2 ArchiveGroupSettings => MediaLive_ArchiveGroupSettings
 
   
 
 
-=head2 FrameCaptureGroupSettings => L<Paws::MediaLive::FrameCaptureGroupSettings>
+=head2 FrameCaptureGroupSettings => MediaLive_FrameCaptureGroupSettings
 
   
 
 
-=head2 HlsGroupSettings => L<Paws::MediaLive::HlsGroupSettings>
+=head2 HlsGroupSettings => MediaLive_HlsGroupSettings
 
   
 
 
-=head2 MediaPackageGroupSettings => L<Paws::MediaLive::MediaPackageGroupSettings>
+=head2 MediaPackageGroupSettings => MediaLive_MediaPackageGroupSettings
 
   
 
 
-=head2 MsSmoothGroupSettings => L<Paws::MediaLive::MsSmoothGroupSettings>
+=head2 MsSmoothGroupSettings => MediaLive_MsSmoothGroupSettings
 
   
 
 
-=head2 RtmpGroupSettings => L<Paws::MediaLive::RtmpGroupSettings>
+=head2 RtmpGroupSettings => MediaLive_RtmpGroupSettings
 
   
 
 
-=head2 UdpGroupSettings => L<Paws::MediaLive::UdpGroupSettings>
+=head2 UdpGroupSettings => MediaLive_UdpGroupSettings
 
   
 

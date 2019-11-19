@@ -1,15 +1,41 @@
 
 package Paws::Batch::TerminateJob;
-  use Moose;
-  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId', required => 1);
-  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw//;
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Reason => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/terminatejob');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::TerminateJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TerminateJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/terminatejob');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Batch::TerminateJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'Reason' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Reason' => 'reason',
+                       'JobId' => 'jobId'
+                     },
+  'IsRequired' => {
+                    'JobId' => 1,
+                    'Reason' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

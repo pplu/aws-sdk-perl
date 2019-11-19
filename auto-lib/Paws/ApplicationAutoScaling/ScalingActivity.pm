@@ -1,16 +1,73 @@
+# Generated from default/object.tt
 package Paws::ApplicationAutoScaling::ScalingActivity;
-  use Moose;
-  has ActivityId => (is => 'ro', isa => 'Str', required => 1);
-  has Cause => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has Details => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
-  has StatusCode => (is => 'ro', isa => 'Str', required => 1);
-  has StatusMessage => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationAutoScaling::Types qw//;
+  has ActivityId => (is => 'ro', isa => Str, required => 1);
+  has Cause => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has Details => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str, required => 1);
+  has ScalableDimension => (is => 'ro', isa => Str, required => 1);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1);
+  has StatusCode => (is => 'ro', isa => Str, required => 1);
+  has StatusMessage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'StartTime' => 1,
+                    'ScalableDimension' => 1,
+                    'ActivityId' => 1,
+                    'StatusCode' => 1,
+                    'Cause' => 1,
+                    'ServiceNamespace' => 1,
+                    'Description' => 1
+                  },
+  'types' => {
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'ScalableDimension' => {
+                                        'type' => 'Str'
+                                      },
+               'Details' => {
+                              'type' => 'Str'
+                            },
+               'ActivityId' => {
+                                 'type' => 'Str'
+                               },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'Cause' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

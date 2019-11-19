@@ -1,32 +1,138 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::CreateService;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
-  has DeploymentController => (is => 'ro', isa => 'Paws::ECS::DeploymentController', traits => ['NameInRequest'], request_name => 'deploymentController' );
-  has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
-  has EnableECSManagedTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableECSManagedTags' );
-  has HealthCheckGracePeriodSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'healthCheckGracePeriodSeconds' );
-  has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
-  has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', traits => ['NameInRequest'], request_name => 'loadBalancers' );
-  has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
-  has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
-  has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', traits => ['NameInRequest'], request_name => 'placementStrategy' );
-  has PlatformVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformVersion' );
-  has PropagateTags => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'propagateTags' );
-  has Role => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'role' );
-  has SchedulingStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schedulingStrategy' );
-  has ServiceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceName' , required => 1);
-  has ServiceRegistries => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceRegistry]', traits => ['NameInRequest'], request_name => 'serviceRegistries' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' );
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef/;
+  use Paws::ECS::Types qw/ECS_LoadBalancer ECS_PlacementStrategy ECS_NetworkConfiguration ECS_DeploymentController ECS_ServiceRegistry ECS_Tag ECS_PlacementConstraint ECS_DeploymentConfiguration/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has DeploymentConfiguration => (is => 'ro', isa => ECS_DeploymentConfiguration, predicate => 1);
+  has DeploymentController => (is => 'ro', isa => ECS_DeploymentController, predicate => 1);
+  has DesiredCount => (is => 'ro', isa => Int, predicate => 1);
+  has EnableECSManagedTags => (is => 'ro', isa => Bool, predicate => 1);
+  has HealthCheckGracePeriodSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has LaunchType => (is => 'ro', isa => Str, predicate => 1);
+  has LoadBalancers => (is => 'ro', isa => ArrayRef[ECS_LoadBalancer], predicate => 1);
+  has NetworkConfiguration => (is => 'ro', isa => ECS_NetworkConfiguration, predicate => 1);
+  has PlacementConstraints => (is => 'ro', isa => ArrayRef[ECS_PlacementConstraint], predicate => 1);
+  has PlacementStrategy => (is => 'ro', isa => ArrayRef[ECS_PlacementStrategy], predicate => 1);
+  has PlatformVersion => (is => 'ro', isa => Str, predicate => 1);
+  has PropagateTags => (is => 'ro', isa => Str, predicate => 1);
+  has Role => (is => 'ro', isa => Str, predicate => 1);
+  has SchedulingStrategy => (is => 'ro', isa => Str, predicate => 1);
+  has ServiceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServiceRegistries => (is => 'ro', isa => ArrayRef[ECS_ServiceRegistry], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ECS_Tag], predicate => 1);
+  has TaskDefinition => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateService');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::CreateServiceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateService');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::CreateServiceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ServiceName' => 1
+                  },
+  'NameInRequest' => {
+                       'ServiceName' => 'serviceName',
+                       'EnableECSManagedTags' => 'enableECSManagedTags',
+                       'Tags' => 'tags',
+                       'PlatformVersion' => 'platformVersion',
+                       'NetworkConfiguration' => 'networkConfiguration',
+                       'DeploymentConfiguration' => 'deploymentConfiguration',
+                       'Role' => 'role',
+                       'PlacementConstraints' => 'placementConstraints',
+                       'ServiceRegistries' => 'serviceRegistries',
+                       'TaskDefinition' => 'taskDefinition',
+                       'ClientToken' => 'clientToken',
+                       'PropagateTags' => 'propagateTags',
+                       'LaunchType' => 'launchType',
+                       'Cluster' => 'cluster',
+                       'DeploymentController' => 'deploymentController',
+                       'PlacementStrategy' => 'placementStrategy',
+                       'LoadBalancers' => 'loadBalancers',
+                       'SchedulingStrategy' => 'schedulingStrategy',
+                       'HealthCheckGracePeriodSeconds' => 'healthCheckGracePeriodSeconds',
+                       'DesiredCount' => 'desiredCount'
+                     },
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::ECS::Tag',
+                           'type' => 'ArrayRef[ECS_Tag]'
+                         },
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'EnableECSManagedTags' => {
+                                           'type' => 'Bool'
+                                         },
+               'PlacementConstraints' => {
+                                           'class' => 'Paws::ECS::PlacementConstraint',
+                                           'type' => 'ArrayRef[ECS_PlacementConstraint]'
+                                         },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'NetworkConfiguration' => {
+                                           'type' => 'ECS_NetworkConfiguration',
+                                           'class' => 'Paws::ECS::NetworkConfiguration'
+                                         },
+               'DeploymentConfiguration' => {
+                                              'type' => 'ECS_DeploymentConfiguration',
+                                              'class' => 'Paws::ECS::DeploymentConfiguration'
+                                            },
+               'PlacementStrategy' => {
+                                        'type' => 'ArrayRef[ECS_PlacementStrategy]',
+                                        'class' => 'Paws::ECS::PlacementStrategy'
+                                      },
+               'DeploymentController' => {
+                                           'type' => 'ECS_DeploymentController',
+                                           'class' => 'Paws::ECS::DeploymentController'
+                                         },
+               'PropagateTags' => {
+                                    'type' => 'Str'
+                                  },
+               'LaunchType' => {
+                                 'type' => 'Str'
+                               },
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'ServiceRegistries' => {
+                                        'type' => 'ArrayRef[ECS_ServiceRegistry]',
+                                        'class' => 'Paws::ECS::ServiceRegistry'
+                                      },
+               'TaskDefinition' => {
+                                     'type' => 'Str'
+                                   },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'HealthCheckGracePeriodSeconds' => {
+                                                    'type' => 'Int'
+                                                  },
+               'DesiredCount' => {
+                                   'type' => 'Int'
+                                 },
+               'LoadBalancers' => {
+                                    'class' => 'Paws::ECS::LoadBalancer',
+                                    'type' => 'ArrayRef[ECS_LoadBalancer]'
+                                  },
+               'SchedulingStrategy' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -106,14 +212,14 @@ cluster is assumed.
 
 
 
-=head2 DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>
+=head2 DeploymentConfiguration => ECS_DeploymentConfiguration
 
 Optional deployment parameters that control how many tasks run during
 the deployment and the ordering of stopping and starting tasks.
 
 
 
-=head2 DeploymentController => L<Paws::ECS::DeploymentController>
+=head2 DeploymentController => ECS_DeploymentController
 
 The deployment controller to use for the service.
 
@@ -164,7 +270,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 Valid values are: C<"EC2">, C<"FARGATE">
 
-=head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
+=head2 LoadBalancers => ArrayRef[ECS_LoadBalancer]
 
 A load balancer object representing the load balancers to use with your
 service. For more information, see Service Load Balancing
@@ -221,7 +327,7 @@ elastic network interface, not an Amazon EC2 instance.
 
 
 
-=head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
+=head2 NetworkConfiguration => ECS_NetworkConfiguration
 
 The network configuration for the service. This parameter is required
 for task definitions that use the C<awsvpc> network mode to receive
@@ -232,7 +338,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
-=head2 PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]
+=head2 PlacementConstraints => ArrayRef[ECS_PlacementConstraint]
 
 An array of placement constraint objects to use for tasks in your
 service. You can specify a maximum of 10 constraints per task (this
@@ -241,7 +347,7 @@ at runtime).
 
 
 
-=head2 PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]
+=head2 PlacementStrategy => ArrayRef[ECS_PlacementStrategy]
 
 The placement strategy objects to use for tasks in your service. You
 can specify a maximum of five strategy rules per service.
@@ -343,7 +449,7 @@ within a Region or across multiple Regions.
 
 
 
-=head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]
+=head2 ServiceRegistries => ArrayRef[ECS_ServiceRegistry]
 
 The details of the service discovery registries to assign to this
 service. For more information, see Service Discovery
@@ -356,7 +462,7 @@ Platform Versions
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+=head2 Tags => ArrayRef[ECS_Tag]
 
 The metadata that you apply to the service to help you categorize and
 organize them. Each tag consists of a key and an optional value, both

@@ -1,16 +1,49 @@
 
 package Paws::ApiGateway::UpdateDeployment;
-  use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'deployment_id', required => 1);
-  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]', traits => ['NameInRequest'], request_name => 'patchOperations');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_PatchOperation/;
+  has DeploymentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PatchOperations => (is => 'ro', isa => ArrayRef[ApiGateway_PatchOperation], predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDeployment');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/deployments/{deployment_id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Deployment');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDeployment');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/deployments/{deployment_id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::Deployment');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id',
+                    'DeploymentId' => 'deployment_id'
+                  },
+  'NameInRequest' => {
+                       'PatchOperations' => 'patchOperations'
+                     },
+  'IsRequired' => {
+                    'DeploymentId' => 1,
+                    'RestApiId' => 1
+                  },
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'PatchOperations' => {
+                                      'type' => 'ArrayRef[ApiGateway_PatchOperation]',
+                                      'class' => 'Paws::ApiGateway::PatchOperation'
+                                    },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +99,7 @@ information about.
 
 
 
-=head2 PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]
+=head2 PatchOperations => ArrayRef[ApiGateway_PatchOperation]
 
 A list of update operations to be applied to the specified resource and
 in the order specified in this list.

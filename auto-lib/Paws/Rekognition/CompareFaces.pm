@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Rekognition::CompareFaces;
-  use Moose;
-  has SimilarityThreshold => (is => 'ro', isa => 'Num');
-  has SourceImage => (is => 'ro', isa => 'Paws::Rekognition::Image', required => 1);
-  has TargetImage => (is => 'ro', isa => 'Paws::Rekognition::Image', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::Rekognition::Types qw/Rekognition_Image/;
+  has SimilarityThreshold => (is => 'ro', isa => Num, predicate => 1);
+  has SourceImage => (is => 'ro', isa => Rekognition_Image, required => 1, predicate => 1);
+  has TargetImage => (is => 'ro', isa => Rekognition_Image, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CompareFaces');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Rekognition::CompareFacesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CompareFaces');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Rekognition::CompareFacesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceImage' => {
+                                  'class' => 'Paws::Rekognition::Image',
+                                  'type' => 'Rekognition_Image'
+                                },
+               'SimilarityThreshold' => {
+                                          'type' => 'Num'
+                                        },
+               'TargetImage' => {
+                                  'type' => 'Rekognition_Image',
+                                  'class' => 'Paws::Rekognition::Image'
+                                }
+             },
+  'IsRequired' => {
+                    'SourceImage' => 1,
+                    'TargetImage' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +95,7 @@ meet to be included in the C<FaceMatches> array.
 
 
 
-=head2 B<REQUIRED> SourceImage => L<Paws::Rekognition::Image>
+=head2 B<REQUIRED> SourceImage => Rekognition_Image
 
 The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
@@ -79,7 +107,7 @@ more information, see Images in the Amazon Rekognition developer guide.
 
 
 
-=head2 B<REQUIRED> TargetImage => L<Paws::Rekognition::Image>
+=head2 B<REQUIRED> TargetImage => Rekognition_Image
 
 The target image as base64-encoded bytes or an S3 object. If you use
 the AWS CLI to call Amazon Rekognition operations, passing

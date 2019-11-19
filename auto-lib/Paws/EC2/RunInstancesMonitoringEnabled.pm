@@ -1,6 +1,26 @@
 package Paws::EC2::RunInstancesMonitoringEnabled;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest'], required => 1);
+  use Moo;  use Types::Standard qw/Bool/;
+  use Paws::EC2::Types qw//;
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             },
+  'NameInRequest' => {
+                       'Enabled' => 'enabled'
+                     },
+  'IsRequired' => {
+                    'Enabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

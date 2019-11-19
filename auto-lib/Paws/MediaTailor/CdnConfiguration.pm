@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaTailor::CdnConfiguration;
-  use Moose;
-  has AdSegmentUrlPrefix => (is => 'ro', isa => 'Str');
-  has ContentSegmentUrlPrefix => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaTailor::Types qw//;
+  has AdSegmentUrlPrefix => (is => 'ro', isa => Str);
+  has ContentSegmentUrlPrefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContentSegmentUrlPrefix' => {
+                                              'type' => 'Str'
+                                            },
+               'AdSegmentUrlPrefix' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

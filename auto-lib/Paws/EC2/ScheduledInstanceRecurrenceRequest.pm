@@ -1,10 +1,39 @@
 package Paws::EC2::ScheduledInstanceRecurrenceRequest;
-  use Moose;
-  has Frequency => (is => 'ro', isa => 'Str');
-  has Interval => (is => 'ro', isa => 'Int');
-  has OccurrenceDays => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'OccurrenceDay', traits => ['NameInRequest']);
-  has OccurrenceRelativeToEnd => (is => 'ro', isa => 'Bool');
-  has OccurrenceUnit => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str Int ArrayRef Bool/;
+  use Paws::EC2::Types qw//;
+  has Frequency => (is => 'ro', isa => Str);
+  has Interval => (is => 'ro', isa => Int);
+  has OccurrenceDays => (is => 'ro', isa => ArrayRef[Int]);
+  has OccurrenceRelativeToEnd => (is => 'ro', isa => Bool);
+  has OccurrenceUnit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Frequency' => {
+                                'type' => 'Str'
+                              },
+               'OccurrenceDays' => {
+                                     'type' => 'ArrayRef[Int]'
+                                   },
+               'OccurrenceRelativeToEnd' => {
+                                              'type' => 'Bool'
+                                            },
+               'Interval' => {
+                               'type' => 'Int'
+                             },
+               'OccurrenceUnit' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'OccurrenceDays' => 'OccurrenceDay'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

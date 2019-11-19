@@ -1,23 +1,101 @@
 
 package Paws::ApiGateway::DomainName;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateArn');
-  has CertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateName');
-  has CertificateUploadDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateUploadDate');
-  has DistributionDomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distributionDomainName');
-  has DistributionHostedZoneId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distributionHostedZoneId');
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName');
-  has DomainNameStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainNameStatus');
-  has DomainNameStatusMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainNameStatusMessage');
-  has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
-  has RegionalCertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateArn');
-  has RegionalCertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateName');
-  has RegionalDomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalDomainName');
-  has RegionalHostedZoneId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalHostedZoneId');
-  has SecurityPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'securityPolicy');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString ApiGateway_EndpointConfiguration/;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CertificateName => (is => 'ro', isa => Str);
+  has CertificateUploadDate => (is => 'ro', isa => Str);
+  has DistributionDomainName => (is => 'ro', isa => Str);
+  has DistributionHostedZoneId => (is => 'ro', isa => Str);
+  has DomainName => (is => 'ro', isa => Str);
+  has DomainNameStatus => (is => 'ro', isa => Str);
+  has DomainNameStatusMessage => (is => 'ro', isa => Str);
+  has EndpointConfiguration => (is => 'ro', isa => ApiGateway_EndpointConfiguration);
+  has RegionalCertificateArn => (is => 'ro', isa => Str);
+  has RegionalCertificateName => (is => 'ro', isa => Str);
+  has RegionalDomainName => (is => 'ro', isa => Str);
+  has RegionalHostedZoneId => (is => 'ro', isa => Str);
+  has SecurityPolicy => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ApiGateway_MapOfStringToString);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityPolicy' => {
+                                     'type' => 'Str'
+                                   },
+               'DomainNameStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'Tags' => {
+                           'type' => 'ApiGateway_MapOfStringToString',
+                           'class' => 'Paws::ApiGateway::MapOfStringToString'
+                         },
+               'RegionalCertificateName' => {
+                                              'type' => 'Str'
+                                            },
+               'RegionalHostedZoneId' => {
+                                           'type' => 'Str'
+                                         },
+               'DomainNameStatusMessage' => {
+                                              'type' => 'Str'
+                                            },
+               'CertificateName' => {
+                                      'type' => 'Str'
+                                    },
+               'CertificateUploadDate' => {
+                                            'type' => 'Str'
+                                          },
+               'DistributionHostedZoneId' => {
+                                               'type' => 'Str'
+                                             },
+               'EndpointConfiguration' => {
+                                            'type' => 'ApiGateway_EndpointConfiguration',
+                                            'class' => 'Paws::ApiGateway::EndpointConfiguration'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RegionalCertificateArn' => {
+                                             'type' => 'Str'
+                                           },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'RegionalDomainName' => {
+                                         'type' => 'Str'
+                                       },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'DistributionDomainName' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'SecurityPolicy' => 'securityPolicy',
+                       'RegionalCertificateName' => 'regionalCertificateName',
+                       'Tags' => 'tags',
+                       'DomainNameStatus' => 'domainNameStatus',
+                       'DomainNameStatusMessage' => 'domainNameStatusMessage',
+                       'RegionalHostedZoneId' => 'regionalHostedZoneId',
+                       'CertificateUploadDate' => 'certificateUploadDate',
+                       'CertificateName' => 'certificateName',
+                       'DistributionHostedZoneId' => 'distributionHostedZoneId',
+                       'EndpointConfiguration' => 'endpointConfiguration',
+                       'RegionalCertificateArn' => 'regionalCertificateArn',
+                       'RegionalDomainName' => 'regionalDomainName',
+                       'CertificateArn' => 'certificateArn',
+                       'DomainName' => 'domainName',
+                       'DistributionDomainName' => 'distributionDomainName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -89,7 +167,7 @@ An optional text message containing detailed information about status
 of the DomainName migration.
 
 
-=head2 EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>
+=head2 EndpointConfiguration => ApiGateway_EndpointConfiguration
 
 The endpoint configuration of this DomainName showing the endpoint
 types of the domain name.
@@ -133,7 +211,7 @@ The Transport Layer Security (TLS) version + cipher suite for this
 DomainName. The valid values are C<TLS_1_0> and C<TLS_1_2>.
 
 Valid values are: C<"TLS_1_0">, C<"TLS_1_2">
-=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Tags => ApiGateway_MapOfStringToString
 
 The collection of tags. Each tag element is associated with a given
 resource.

@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::Neptune::DBClusterSnapshotAttribute;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str');
-  has AttributeValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AttributeValue', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Neptune::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str);
+  has AttributeValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeValues' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'AttributeValues' => 'AttributeValue'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

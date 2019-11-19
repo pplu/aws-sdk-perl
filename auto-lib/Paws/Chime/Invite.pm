@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Chime::Invite;
-  use Moose;
-  has EmailAddress => (is => 'ro', isa => 'Str');
-  has EmailStatus => (is => 'ro', isa => 'Str');
-  has InviteId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw//;
+  has EmailAddress => (is => 'ro', isa => Str);
+  has EmailStatus => (is => 'ro', isa => Str);
+  has InviteId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EmailAddress' => {
+                                   'type' => 'Str'
+                                 },
+               'InviteId' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'EmailStatus' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

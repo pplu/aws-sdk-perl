@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::TypedAttributeValue;
-  use Moose;
-  has BinaryValue => (is => 'ro', isa => 'Str');
-  has BooleanValue => (is => 'ro', isa => 'Bool');
-  has DatetimeValue => (is => 'ro', isa => 'Str');
-  has NumberValue => (is => 'ro', isa => 'Str');
-  has StringValue => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudDirectory::Types qw//;
+  has BinaryValue => (is => 'ro', isa => Str);
+  has BooleanValue => (is => 'ro', isa => Bool);
+  has DatetimeValue => (is => 'ro', isa => Str);
+  has NumberValue => (is => 'ro', isa => Str);
+  has StringValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumberValue' => {
+                                  'type' => 'Str'
+                                },
+               'DatetimeValue' => {
+                                    'type' => 'Str'
+                                  },
+               'BooleanValue' => {
+                                   'type' => 'Bool'
+                                 },
+               'BinaryValue' => {
+                                  'type' => 'Str'
+                                },
+               'StringValue' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

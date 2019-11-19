@@ -1,10 +1,35 @@
 
 package Paws::MediaPackage::ListHarvestJobsResponse;
-  use Moose;
-  has HarvestJobs => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackage::HarvestJob]', traits => ['NameInRequest'], request_name => 'harvestJobs');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaPackage::Types qw/MediaPackage_HarvestJob/;
+  has HarvestJobs => (is => 'ro', isa => ArrayRef[MediaPackage_HarvestJob]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'HarvestJobs' => 'harvestJobs',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'HarvestJobs' => {
+                                  'type' => 'ArrayRef[MediaPackage_HarvestJob]',
+                                  'class' => 'Paws::MediaPackage::HarvestJob'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::MediaPackage::ListHarvestJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 HarvestJobs => ArrayRef[L<Paws::MediaPackage::HarvestJob>]
+=head2 HarvestJobs => ArrayRef[MediaPackage_HarvestJob]
 
 A list of HarvestJob records.
 

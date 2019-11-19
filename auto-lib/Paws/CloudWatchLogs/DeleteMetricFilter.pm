@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchLogs::DeleteMetricFilter;
-  use Moose;
-  has FilterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterName' , required => 1);
-  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has FilterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LogGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMetricFilter');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteMetricFilter');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FilterName' => 1,
+                    'LogGroupName' => 1
+                  },
+  'NameInRequest' => {
+                       'LogGroupName' => 'logGroupName',
+                       'FilterName' => 'filterName'
+                     },
+  'types' => {
+               'FilterName' => {
+                                 'type' => 'Str'
+                               },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

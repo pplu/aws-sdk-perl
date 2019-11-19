@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::Support::TrustedAdvisorResourcesSummary;
-  use Moose;
-  has ResourcesFlagged => (is => 'ro', isa => 'Int', request_name => 'resourcesFlagged', traits => ['NameInRequest'], required => 1);
-  has ResourcesIgnored => (is => 'ro', isa => 'Int', request_name => 'resourcesIgnored', traits => ['NameInRequest'], required => 1);
-  has ResourcesProcessed => (is => 'ro', isa => 'Int', request_name => 'resourcesProcessed', traits => ['NameInRequest'], required => 1);
-  has ResourcesSuppressed => (is => 'ro', isa => 'Int', request_name => 'resourcesSuppressed', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Support::Types qw//;
+  has ResourcesFlagged => (is => 'ro', isa => Int, required => 1);
+  has ResourcesIgnored => (is => 'ro', isa => Int, required => 1);
+  has ResourcesProcessed => (is => 'ro', isa => Int, required => 1);
+  has ResourcesSuppressed => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourcesProcessed' => 1,
+                    'ResourcesFlagged' => 1,
+                    'ResourcesSuppressed' => 1,
+                    'ResourcesIgnored' => 1
+                  },
+  'NameInRequest' => {
+                       'ResourcesFlagged' => 'resourcesFlagged',
+                       'ResourcesProcessed' => 'resourcesProcessed',
+                       'ResourcesIgnored' => 'resourcesIgnored',
+                       'ResourcesSuppressed' => 'resourcesSuppressed'
+                     },
+  'types' => {
+               'ResourcesFlagged' => {
+                                       'type' => 'Int'
+                                     },
+               'ResourcesProcessed' => {
+                                         'type' => 'Int'
+                                       },
+               'ResourcesSuppressed' => {
+                                          'type' => 'Int'
+                                        },
+               'ResourcesIgnored' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeStar::UpdateProject;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStar::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateProject');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStar::UpdateProjectResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateProject');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStar::UpdateProjectResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Id' => 1
+                  },
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'Id' => 'id'
+                     },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::GetImportJob;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'job-id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetImportJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/jobs/import/{job-id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::GetImportJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetImportJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/jobs/import/{job-id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::GetImportJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id',
+                    'JobId' => 'job-id'
+                  },
+  'types' => {
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'JobId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

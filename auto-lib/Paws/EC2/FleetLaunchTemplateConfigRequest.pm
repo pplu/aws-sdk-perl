@@ -1,7 +1,26 @@
 package Paws::EC2::FleetLaunchTemplateConfigRequest;
-  use Moose;
-  has LaunchTemplateSpecification => (is => 'ro', isa => 'Paws::EC2::FleetLaunchTemplateSpecificationRequest');
-  has Overrides => (is => 'ro', isa => 'ArrayRef[Paws::EC2::FleetLaunchTemplateOverridesRequest]');
+  use Moo;  use Types::Standard qw/ArrayRef/;
+  use Paws::EC2::Types qw/EC2_FleetLaunchTemplateSpecificationRequest EC2_FleetLaunchTemplateOverridesRequest/;
+  has LaunchTemplateSpecification => (is => 'ro', isa => EC2_FleetLaunchTemplateSpecificationRequest);
+  has Overrides => (is => 'ro', isa => ArrayRef[EC2_FleetLaunchTemplateOverridesRequest]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchTemplateSpecification' => {
+                                                  'class' => 'Paws::EC2::FleetLaunchTemplateSpecificationRequest',
+                                                  'type' => 'EC2_FleetLaunchTemplateSpecificationRequest'
+                                                },
+               'Overrides' => {
+                                'type' => 'ArrayRef[EC2_FleetLaunchTemplateOverridesRequest]',
+                                'class' => 'Paws::EC2::FleetLaunchTemplateOverridesRequest'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +56,13 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 LaunchTemplateSpecification => L<Paws::EC2::FleetLaunchTemplateSpecificationRequest>
+=head2 LaunchTemplateSpecification => EC2_FleetLaunchTemplateSpecificationRequest
 
   The launch template to use. You must specify either the launch template
 ID or launch template name in the request.
 
 
-=head2 Overrides => ArrayRef[L<Paws::EC2::FleetLaunchTemplateOverridesRequest>]
+=head2 Overrides => ArrayRef[EC2_FleetLaunchTemplateOverridesRequest]
 
   Any parameters that you specify override the same parameters in the
 launch template.

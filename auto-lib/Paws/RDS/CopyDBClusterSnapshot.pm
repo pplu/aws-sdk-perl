@@ -1,18 +1,54 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::CopyDBClusterSnapshot;
-  use Moose;
-  has CopyTags => (is => 'ro', isa => 'Bool');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has PreSignedUrl => (is => 'ro', isa => 'Str');
-  has SourceDBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has TargetDBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Tag/;
+  has CopyTags => (is => 'ro', isa => Bool, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has PreSignedUrl => (is => 'ro', isa => Str, predicate => 1);
+  has SourceDBClusterSnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
+  has TargetDBClusterSnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBClusterSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CopyDBClusterSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyDBClusterSnapshotResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopyDBClusterSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::CopyDBClusterSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CopyDBClusterSnapshotResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TargetDBClusterSnapshotIdentifier' => 1,
+                    'SourceDBClusterSnapshotIdentifier' => 1
+                  },
+  'types' => {
+               'CopyTags' => {
+                               'type' => 'Bool'
+                             },
+               'SourceDBClusterSnapshotIdentifier' => {
+                                                        'type' => 'Str'
+                                                      },
+               'PreSignedUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::RDS::Tag',
+                           'type' => 'ArrayRef[RDS_Tag]'
+                         },
+               'TargetDBClusterSnapshotIdentifier' => {
+                                                        'type' => 'Str'
+                                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -175,7 +211,7 @@ Example: C<my-cluster-snapshot1>
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 
 

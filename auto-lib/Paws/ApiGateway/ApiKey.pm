@@ -1,18 +1,75 @@
 
 package Paws::ApiGateway::ApiKey;
-  use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
-  has CustomerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customerId');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Enabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enabled');
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has StageKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'stageKeys');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
-  has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString/;
+  has CreatedDate => (is => 'ro', isa => Str);
+  has CustomerId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str);
+  has LastUpdatedDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has StageKeys => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Tags => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has Value => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'StageKeys' => 'stageKeys',
+                       'LastUpdatedDate' => 'lastUpdatedDate',
+                       'Name' => 'name',
+                       'Id' => 'id',
+                       'Enabled' => 'enabled',
+                       'Tags' => 'tags',
+                       'Value' => 'value',
+                       'CreatedDate' => 'createdDate',
+                       'Description' => 'description',
+                       'CustomerId' => 'customerId'
+                     },
+  'types' => {
+               'CustomerId' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'StageKeys' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'LastUpdatedDate' => {
+                                      'type' => 'Str'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::ApiGateway::MapOfStringToString',
+                           'type' => 'ApiGateway_MapOfStringToString'
+                         },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +122,7 @@ The name of the API Key.
 A list of Stage resources that are associated with the ApiKey resource.
 
 
-=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Tags => ApiGateway_MapOfStringToString
 
 The collection of tags. Each tag element is associated with a given
 resource.

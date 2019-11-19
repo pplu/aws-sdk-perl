@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CloudFront::CustomErrorResponses;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::CustomErrorResponse]', request_name => 'CustomErrorResponse', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::CloudFront::Types qw/CloudFront_CustomErrorResponse/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_CustomErrorResponse]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'Items' => {
+                            'class' => 'Paws::CloudFront::CustomErrorResponse',
+                            'type' => 'ArrayRef[CloudFront_CustomErrorResponse]'
+                          }
+             },
+  'IsRequired' => {
+                    'Quantity' => 1
+                  },
+  'NameInRequest' => {
+                       'Items' => 'CustomErrorResponse'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +82,7 @@ in the I<Amazon CloudFront Developer Guide>.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::CustomErrorResponse>]
+=head2 Items => ArrayRef[CloudFront_CustomErrorResponse]
 
   A complex type that contains a C<CustomErrorResponse> element for each
 HTTP status code for which you want to specify a custom error page

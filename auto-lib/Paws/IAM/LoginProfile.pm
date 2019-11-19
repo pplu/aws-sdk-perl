@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::IAM::LoginProfile;
-  use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
-  has PasswordResetRequired => (is => 'ro', isa => 'Bool');
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IAM::Types qw//;
+  has CreateDate => (is => 'ro', isa => Str, required => 1);
+  has PasswordResetRequired => (is => 'ro', isa => Bool);
+  has UserName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PasswordResetRequired' => {
+                                            'type' => 'Bool'
+                                          },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'CreateDate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

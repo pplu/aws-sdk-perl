@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DAX::ListTagsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DAX::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DAX::Types qw/DAX_Tag/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[DAX_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::DAX::Tag',
+                           'type' => 'ArrayRef[DAX_Tag]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ To retrieve them, call C<ListTags> again, with C<NextToken> set to this
 value.
 
 
-=head2 Tags => ArrayRef[L<Paws::DAX::Tag>]
+=head2 Tags => ArrayRef[DAX_Tag]
 
 A list of tags currently associated with the DAX cluster.
 

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glue::Edge;
-  use Moose;
-  has DestinationId => (is => 'ro', isa => 'Str');
-  has SourceId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has DestinationId => (is => 'ro', isa => Str);
+  has SourceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DestinationId' => {
+                                    'type' => 'Str'
+                                  },
+               'SourceId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

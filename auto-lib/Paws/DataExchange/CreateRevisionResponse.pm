@@ -1,17 +1,59 @@
 
 package Paws::DataExchange::CreateRevisionResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Comment => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has DataSetId => (is => 'ro', isa => 'Str');
-  has Finalized => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str');
-  has SourceId => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::DataExchange::MapOf__string');
-  has UpdatedAt => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DataExchange::Types qw/DataExchange_MapOf__string/;
+  has Arn => (is => 'ro', isa => Str);
+  has Comment => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DataSetId => (is => 'ro', isa => Str);
+  has Finalized => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str);
+  has SourceId => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => DataExchange_MapOf__string);
+  has UpdatedAt => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceId' => {
+                               'type' => 'Str'
+                             },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'DataSetId' => {
+                                'type' => 'Str'
+                              },
+               'Finalized' => {
+                                'type' => 'Bool'
+                              },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::DataExchange::MapOf__string',
+                           'type' => 'DataExchange_MapOf__string'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +110,7 @@ revision being viewed. This parameter is returned when a revision owner
 is viewing the entitled copy of its owned revision.
 
 
-=head2 Tags => L<Paws::DataExchange::MapOf__string>
+=head2 Tags => DataExchange_MapOf__string
 
 The tags for the revision.
 

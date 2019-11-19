@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchAddFacetToObject;
-  use Moose;
-  has ObjectAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]', required => 1);
-  has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has SchemaFacet => (is => 'ro', isa => 'Paws::CloudDirectory::SchemaFacet', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference CloudDirectory_AttributeKeyAndValue CloudDirectory_SchemaFacet/;
+  has ObjectAttributeList => (is => 'ro', isa => ArrayRef[CloudDirectory_AttributeKeyAndValue], required => 1);
+  has ObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+  has SchemaFacet => (is => 'ro', isa => CloudDirectory_SchemaFacet, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SchemaFacet' => {
+                                  'class' => 'Paws::CloudDirectory::SchemaFacet',
+                                  'type' => 'CloudDirectory_SchemaFacet'
+                                },
+               'ObjectAttributeList' => {
+                                          'class' => 'Paws::CloudDirectory::AttributeKeyAndValue',
+                                          'type' => 'ArrayRef[CloudDirectory_AttributeKeyAndValue]'
+                                        },
+               'ObjectReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    }
+             },
+  'IsRequired' => {
+                    'SchemaFacet' => 1,
+                    'ObjectAttributeList' => 1,
+                    'ObjectReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +69,17 @@ Represents the output of a batch add facet to object operation.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
+=head2 B<REQUIRED> ObjectAttributeList => ArrayRef[CloudDirectory_AttributeKeyAndValue]
 
   The attributes to set on the object.
 
 
-=head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ObjectReference => CloudDirectory_ObjectReference
 
   A reference to the object being mutated.
 
 
-=head2 B<REQUIRED> SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>
+=head2 B<REQUIRED> SchemaFacet => CloudDirectory_SchemaFacet
 
   Represents the facet being added to the object.
 

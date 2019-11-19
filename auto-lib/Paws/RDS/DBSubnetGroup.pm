@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::RDS::DBSubnetGroup;
-  use Moose;
-  has DBSubnetGroupArn => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupDescription => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has SubnetGroupStatus => (is => 'ro', isa => 'Str');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Subnet]', request_name => 'Subnet', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Subnet/;
+  has DBSubnetGroupArn => (is => 'ro', isa => Str);
+  has DBSubnetGroupDescription => (is => 'ro', isa => Str);
+  has DBSubnetGroupName => (is => 'ro', isa => Str);
+  has SubnetGroupStatus => (is => 'ro', isa => Str);
+  has Subnets => (is => 'ro', isa => ArrayRef[RDS_Subnet]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Subnets' => 'Subnet'
+                     },
+  'types' => {
+               'SubnetGroupStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'Subnets' => {
+                              'class' => 'Paws::RDS::Subnet',
+                              'type' => 'ArrayRef[RDS_Subnet]'
+                            },
+               'DBSubnetGroupArn' => {
+                                       'type' => 'Str'
+                                     },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'DBSubnetGroupDescription' => {
+                                               'type' => 'Str'
+                                             },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +100,7 @@ C<DescribeDBSubnetGroups> action.
   Provides the status of the DB subnet group.
 
 
-=head2 Subnets => ArrayRef[L<Paws::RDS::Subnet>]
+=head2 Subnets => ArrayRef[RDS_Subnet]
 
   Contains a list of C<Subnet> elements.
 

@@ -1,7 +1,28 @@
 package Paws::EC2::Ipv6Range;
-  use Moose;
-  has CidrIpv6 => (is => 'ro', isa => 'Str', request_name => 'cidrIpv6', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has CidrIpv6 => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CidrIpv6' => 'cidrIpv6',
+                       'Description' => 'description'
+                     },
+  'types' => {
+               'CidrIpv6' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

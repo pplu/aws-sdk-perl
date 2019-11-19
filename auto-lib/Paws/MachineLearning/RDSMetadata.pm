@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::RDSMetadata;
-  use Moose;
-  has Database => (is => 'ro', isa => 'Paws::MachineLearning::RDSDatabase');
-  has DatabaseUserName => (is => 'ro', isa => 'Str');
-  has DataPipelineId => (is => 'ro', isa => 'Str');
-  has ResourceRole => (is => 'ro', isa => 'Str');
-  has SelectSqlQuery => (is => 'ro', isa => 'Str');
-  has ServiceRole => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MachineLearning::Types qw/MachineLearning_RDSDatabase/;
+  has Database => (is => 'ro', isa => MachineLearning_RDSDatabase);
+  has DatabaseUserName => (is => 'ro', isa => Str);
+  has DataPipelineId => (is => 'ro', isa => Str);
+  has ResourceRole => (is => 'ro', isa => Str);
+  has SelectSqlQuery => (is => 'ro', isa => Str);
+  has ServiceRole => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceRole' => {
+                                   'type' => 'Str'
+                                 },
+               'SelectSqlQuery' => {
+                                     'type' => 'Str'
+                                   },
+               'Database' => {
+                               'type' => 'MachineLearning_RDSDatabase',
+                               'class' => 'Paws::MachineLearning::RDSDatabase'
+                             },
+               'DatabaseUserName' => {
+                                       'type' => 'Str'
+                                     },
+               'DataPipelineId' => {
+                                     'type' => 'Str'
+                                   },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +74,7 @@ The datasource details that are specific to Amazon RDS.
 =head1 ATTRIBUTES
 
 
-=head2 Database => L<Paws::MachineLearning::RDSDatabase>
+=head2 Database => MachineLearning_RDSDatabase
 
   The database details required to connect to an Amazon RDS.
 

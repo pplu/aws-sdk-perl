@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::Lightsail::InstancePortInfo;
-  use Moose;
-  has AccessDirection => (is => 'ro', isa => 'Str', request_name => 'accessDirection', traits => ['NameInRequest']);
-  has AccessFrom => (is => 'ro', isa => 'Str', request_name => 'accessFrom', traits => ['NameInRequest']);
-  has AccessType => (is => 'ro', isa => 'Str', request_name => 'accessType', traits => ['NameInRequest']);
-  has CommonName => (is => 'ro', isa => 'Str', request_name => 'commonName', traits => ['NameInRequest']);
-  has FromPort => (is => 'ro', isa => 'Int', request_name => 'fromPort', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
-  has ToPort => (is => 'ro', isa => 'Int', request_name => 'toPort', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lightsail::Types qw//;
+  has AccessDirection => (is => 'ro', isa => Str);
+  has AccessFrom => (is => 'ro', isa => Str);
+  has AccessType => (is => 'ro', isa => Str);
+  has CommonName => (is => 'ro', isa => Str);
+  has FromPort => (is => 'ro', isa => Int);
+  has Protocol => (is => 'ro', isa => Str);
+  has ToPort => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccessDirection' => {
+                                      'type' => 'Str'
+                                    },
+               'AccessType' => {
+                                 'type' => 'Str'
+                               },
+               'FromPort' => {
+                               'type' => 'Int'
+                             },
+               'AccessFrom' => {
+                                 'type' => 'Str'
+                               },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'ToPort' => {
+                             'type' => 'Int'
+                           },
+               'CommonName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'AccessFrom' => 'accessFrom',
+                       'ToPort' => 'toPort',
+                       'Protocol' => 'protocol',
+                       'CommonName' => 'commonName',
+                       'AccessDirection' => 'accessDirection',
+                       'AccessType' => 'accessType',
+                       'FromPort' => 'fromPort'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

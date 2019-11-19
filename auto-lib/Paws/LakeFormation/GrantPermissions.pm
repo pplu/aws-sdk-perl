@@ -1,17 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::LakeFormation::GrantPermissions;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has Permissions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has PermissionsWithGrantOption => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Principal => (is => 'ro', isa => 'Paws::LakeFormation::DataLakePrincipal', required => 1);
-  has Resource => (is => 'ro', isa => 'Paws::LakeFormation::Resource', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::LakeFormation::Types qw/LakeFormation_Resource LakeFormation_DataLakePrincipal/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has Permissions => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has PermissionsWithGrantOption => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Principal => (is => 'ro', isa => LakeFormation_DataLakePrincipal, required => 1, predicate => 1);
+  has Resource => (is => 'ro', isa => LakeFormation_Resource, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GrantPermissions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LakeFormation::GrantPermissionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GrantPermissions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LakeFormation::GrantPermissionsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Permissions' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              },
+               'Principal' => {
+                                'type' => 'LakeFormation_DataLakePrincipal',
+                                'class' => 'Paws::LakeFormation::DataLakePrincipal'
+                              },
+               'PermissionsWithGrantOption' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'Resource' => {
+                               'type' => 'LakeFormation_Resource',
+                               'class' => 'Paws::LakeFormation::Resource'
+                             }
+             },
+  'IsRequired' => {
+                    'Resource' => 1,
+                    'Principal' => 1,
+                    'Permissions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -110,7 +145,7 @@ permissions granted in the C<Privileges>.
 
 
 
-=head2 B<REQUIRED> Principal => L<Paws::LakeFormation::DataLakePrincipal>
+=head2 B<REQUIRED> Principal => LakeFormation_DataLakePrincipal
 
 The principal to be granted the permissions on the resource. Supported
 principals are IAM users or IAM roles, and they are defined by their
@@ -122,7 +157,7 @@ maintains the permissions already granted.
 
 
 
-=head2 B<REQUIRED> Resource => L<Paws::LakeFormation::Resource>
+=head2 B<REQUIRED> Resource => LakeFormation_Resource
 
 The resource to which permissions are to be granted. Resources in AWS
 Lake Formation are the Data Catalog, databases, and tables.

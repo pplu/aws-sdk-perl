@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::CaptionDescriptionPreset;
-  use Moose;
-  has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
-  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionDestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
-  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
-  has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_CaptionDestinationSettings/;
+  has CustomLanguageCode => (is => 'ro', isa => Str);
+  has DestinationSettings => (is => 'ro', isa => MediaConvert_CaptionDestinationSettings);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has LanguageDescription => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomLanguageCode' => {
+                                         'type' => 'Str'
+                                       },
+               'DestinationSettings' => {
+                                          'class' => 'Paws::MediaConvert::CaptionDestinationSettings',
+                                          'type' => 'MediaConvert_CaptionDestinationSettings'
+                                        },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'LanguageDescription' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'LanguageCode' => 'languageCode',
+                       'LanguageDescription' => 'languageDescription',
+                       'CustomLanguageCode' => 'customLanguageCode',
+                       'DestinationSettings' => 'destinationSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +86,7 @@ following output groups: CMAF, DASH ISO, Apple HLS, or Microsoft Smooth
 Streaming.
 
 
-=head2 DestinationSettings => L<Paws::MediaConvert::CaptionDestinationSettings>
+=head2 DestinationSettings => MediaConvert_CaptionDestinationSettings
 
   Specific settings required by destination type. Note that
 burnin_destination_settings are not available if the source of the

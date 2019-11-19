@@ -1,17 +1,53 @@
 
 package Paws::IoT::CreateThing;
-  use Moose;
-  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload', traits => ['NameInRequest'], request_name => 'attributePayload');
-  has BillingGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'billingGroupName');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
-  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_AttributePayload/;
+  has AttributePayload => (is => 'ro', isa => IoT_AttributePayload, predicate => 1);
+  has BillingGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ThingTypeName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateThing');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateThingResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateThing');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/things/{thingName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateThingResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ThingName' => 'thingName'
+                  },
+  'types' => {
+               'BillingGroupName' => {
+                                       'type' => 'Str'
+                                     },
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'ThingTypeName' => {
+                                    'type' => 'Str'
+                                  },
+               'AttributePayload' => {
+                                       'type' => 'IoT_AttributePayload',
+                                       'class' => 'Paws::IoT::AttributePayload'
+                                     }
+             },
+  'NameInRequest' => {
+                       'AttributePayload' => 'attributePayload',
+                       'ThingTypeName' => 'thingTypeName',
+                       'BillingGroupName' => 'billingGroupName'
+                     },
+  'IsRequired' => {
+                    'ThingName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +93,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 AttributePayload => L<Paws::IoT::AttributePayload>
+=head2 AttributePayload => IoT_AttributePayload
 
 The attribute payload, which consists of up to three name/value pairs
 in a JSON document. For example:

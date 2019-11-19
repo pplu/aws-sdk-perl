@@ -1,23 +1,78 @@
 
 package Paws::SavingsPlans::DescribeSavingsPlansOfferingRates;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SavingsPlans::SavingsPlanOfferingRateFilterElement]', traits => ['NameInRequest'], request_name => 'filters');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Operations => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'operations');
-  has Products => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'products');
-  has SavingsPlanOfferingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'savingsPlanOfferingIds');
-  has SavingsPlanPaymentOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'savingsPlanPaymentOptions');
-  has SavingsPlanTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'savingsPlanTypes');
-  has ServiceCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'serviceCodes');
-  has UsageTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'usageTypes');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Undef/;
+  use Paws::SavingsPlans::Types qw/SavingsPlans_SavingsPlanOfferingRateFilterElement/;
+  has Filters => (is => 'ro', isa => ArrayRef[SavingsPlans_SavingsPlanOfferingRateFilterElement], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Operations => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Products => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SavingsPlanOfferingIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SavingsPlanPaymentOptions => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SavingsPlanTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ServiceCodes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has UsageTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSavingsPlansOfferingRates');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/DescribeSavingsPlansOfferingRates');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SavingsPlans::DescribeSavingsPlansOfferingRatesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeSavingsPlansOfferingRates');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/DescribeSavingsPlansOfferingRates');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SavingsPlans::DescribeSavingsPlansOfferingRatesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken',
+                       'SavingsPlanOfferingIds' => 'savingsPlanOfferingIds',
+                       'Products' => 'products',
+                       'Filters' => 'filters',
+                       'SavingsPlanPaymentOptions' => 'savingsPlanPaymentOptions',
+                       'Operations' => 'operations',
+                       'UsageTypes' => 'usageTypes',
+                       'ServiceCodes' => 'serviceCodes',
+                       'SavingsPlanTypes' => 'savingsPlanTypes'
+                     },
+  'types' => {
+               'Filters' => {
+                              'class' => 'Paws::SavingsPlans::SavingsPlanOfferingRateFilterElement',
+                              'type' => 'ArrayRef[SavingsPlans_SavingsPlanOfferingRateFilterElement]'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'SavingsPlanOfferingIds' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'Products' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'UsageTypes' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'SavingsPlanPaymentOptions' => {
+                                                'type' => 'ArrayRef[Str|Undef]'
+                                              },
+               'Operations' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'SavingsPlanTypes' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ServiceCodes' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -83,7 +138,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sav
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::SavingsPlans::SavingsPlanOfferingRateFilterElement>]
+=head2 Filters => ArrayRef[SavingsPlans_SavingsPlanOfferingRateFilterElement]
 
 The filters.
 

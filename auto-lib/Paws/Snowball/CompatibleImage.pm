@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Snowball::CompatibleImage;
-  use Moose;
-  has AmiId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Snowball::Types qw//;
+  has AmiId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AmiId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

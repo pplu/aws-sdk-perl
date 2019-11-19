@@ -1,10 +1,48 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionState;
-  use Moose;
-  has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest']);
-  has CurrentRevision => (is => 'ro', isa => 'Paws::CodePipeline::ActionRevision', request_name => 'currentRevision', traits => ['NameInRequest']);
-  has EntityUrl => (is => 'ro', isa => 'Str', request_name => 'entityUrl', traits => ['NameInRequest']);
-  has LatestExecution => (is => 'ro', isa => 'Paws::CodePipeline::ActionExecution', request_name => 'latestExecution', traits => ['NameInRequest']);
-  has RevisionUrl => (is => 'ro', isa => 'Str', request_name => 'revisionUrl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ActionExecution CodePipeline_ActionRevision/;
+  has ActionName => (is => 'ro', isa => Str);
+  has CurrentRevision => (is => 'ro', isa => CodePipeline_ActionRevision);
+  has EntityUrl => (is => 'ro', isa => Str);
+  has LatestExecution => (is => 'ro', isa => CodePipeline_ActionExecution);
+  has RevisionUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RevisionUrl' => 'revisionUrl',
+                       'CurrentRevision' => 'currentRevision',
+                       'EntityUrl' => 'entityUrl',
+                       'LatestExecution' => 'latestExecution',
+                       'ActionName' => 'actionName'
+                     },
+  'types' => {
+               'CurrentRevision' => {
+                                      'type' => 'CodePipeline_ActionRevision',
+                                      'class' => 'Paws::CodePipeline::ActionRevision'
+                                    },
+               'EntityUrl' => {
+                                'type' => 'Str'
+                              },
+               'LatestExecution' => {
+                                      'type' => 'CodePipeline_ActionExecution',
+                                      'class' => 'Paws::CodePipeline::ActionExecution'
+                                    },
+               'ActionName' => {
+                                 'type' => 'Str'
+                               },
+               'RevisionUrl' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +83,7 @@ Represents information about the state of an action.
   The name of the action.
 
 
-=head2 CurrentRevision => L<Paws::CodePipeline::ActionRevision>
+=head2 CurrentRevision => CodePipeline_ActionRevision
 
   Represents information about the version (or revision) of an action.
 
@@ -56,7 +94,7 @@ Represents information about the state of an action.
 a deployment group details page.
 
 
-=head2 LatestExecution => L<Paws::CodePipeline::ActionExecution>
+=head2 LatestExecution => CodePipeline_ActionExecution
 
   Represents information about the run of an action.
 

@@ -1,16 +1,42 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::DescribeDBParameterGroups;
-  use Moose;
-  has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Filter]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Neptune::Types qw/Neptune_Filter/;
+  has DBParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[Neptune_Filter], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBParameterGroups');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::DBParameterGroupsMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBParameterGroupsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDBParameterGroups');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::DBParameterGroupsMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeDBParameterGroupsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Filters' => {
+                              'type' => 'ArrayRef[Neptune_Filter]',
+                              'class' => 'Paws::Neptune::Filter'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +100,7 @@ DBClusterParameterGroup.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::Neptune::Filter>]
+=head2 Filters => ArrayRef[Neptune_Filter]
 
 This parameter is not currently supported.
 

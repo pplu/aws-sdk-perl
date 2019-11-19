@@ -1,15 +1,39 @@
 
 package Paws::IoT::UpdateIndexingConfiguration;
-  use Moose;
-  has ThingGroupIndexingConfiguration => (is => 'ro', isa => 'Paws::IoT::ThingGroupIndexingConfiguration', traits => ['NameInRequest'], request_name => 'thingGroupIndexingConfiguration');
-  has ThingIndexingConfiguration => (is => 'ro', isa => 'Paws::IoT::ThingIndexingConfiguration', traits => ['NameInRequest'], request_name => 'thingIndexingConfiguration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_ThingIndexingConfiguration IoT_ThingGroupIndexingConfiguration/;
+  has ThingGroupIndexingConfiguration => (is => 'ro', isa => IoT_ThingGroupIndexingConfiguration, predicate => 1);
+  has ThingIndexingConfiguration => (is => 'ro', isa => IoT_ThingIndexingConfiguration, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateIndexingConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/indexing/config');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::UpdateIndexingConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateIndexingConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/indexing/config');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::UpdateIndexingConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingGroupIndexingConfiguration' => {
+                                                      'class' => 'Paws::IoT::ThingGroupIndexingConfiguration',
+                                                      'type' => 'IoT_ThingGroupIndexingConfiguration'
+                                                    },
+               'ThingIndexingConfiguration' => {
+                                                 'class' => 'Paws::IoT::ThingIndexingConfiguration',
+                                                 'type' => 'IoT_ThingIndexingConfiguration'
+                                               }
+             },
+  'NameInRequest' => {
+                       'ThingIndexingConfiguration' => 'thingIndexingConfiguration',
+                       'ThingGroupIndexingConfiguration' => 'thingGroupIndexingConfiguration'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,13 +97,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 ThingGroupIndexingConfiguration => L<Paws::IoT::ThingGroupIndexingConfiguration>
+=head2 ThingGroupIndexingConfiguration => IoT_ThingGroupIndexingConfiguration
 
 Thing group indexing configuration.
 
 
 
-=head2 ThingIndexingConfiguration => L<Paws::IoT::ThingIndexingConfiguration>
+=head2 ThingIndexingConfiguration => IoT_ThingIndexingConfiguration
 
 Thing indexing configuration.
 

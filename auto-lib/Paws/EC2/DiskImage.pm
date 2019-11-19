@@ -1,8 +1,30 @@
 package Paws::EC2::DiskImage;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has Image => (is => 'ro', isa => 'Paws::EC2::DiskImageDetail');
-  has Volume => (is => 'ro', isa => 'Paws::EC2::VolumeDetail');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_VolumeDetail EC2_DiskImageDetail/;
+  has Description => (is => 'ro', isa => Str);
+  has Image => (is => 'ro', isa => EC2_DiskImageDetail);
+  has Volume => (is => 'ro', isa => EC2_VolumeDetail);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Image' => {
+                            'class' => 'Paws::EC2::DiskImageDetail',
+                            'type' => 'EC2_DiskImageDetail'
+                          },
+               'Volume' => {
+                             'class' => 'Paws::EC2::VolumeDetail',
+                             'type' => 'EC2_VolumeDetail'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,12 +65,12 @@ This class has no description
   A description of the disk image.
 
 
-=head2 Image => L<Paws::EC2::DiskImageDetail>
+=head2 Image => EC2_DiskImageDetail
 
   Information about the disk image.
 
 
-=head2 Volume => L<Paws::EC2::VolumeDetail>
+=head2 Volume => EC2_VolumeDetail
 
   Information about the volume.
 

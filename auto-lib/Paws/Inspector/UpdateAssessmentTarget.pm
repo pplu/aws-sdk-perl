@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Inspector::UpdateAssessmentTarget;
-  use Moose;
-  has AssessmentTargetArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentTargetArn' , required => 1);
-  has AssessmentTargetName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentTargetName' , required => 1);
-  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Inspector::Types qw//;
+  has AssessmentTargetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AssessmentTargetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceGroupArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAssessmentTarget');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateAssessmentTarget');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AssessmentTargetArn' => 'assessmentTargetArn',
+                       'ResourceGroupArn' => 'resourceGroupArn',
+                       'AssessmentTargetName' => 'assessmentTargetName'
+                     },
+  'IsRequired' => {
+                    'AssessmentTargetArn' => 1,
+                    'AssessmentTargetName' => 1
+                  },
+  'types' => {
+               'AssessmentTargetArn' => {
+                                          'type' => 'Str'
+                                        },
+               'AssessmentTargetName' => {
+                                           'type' => 'Str'
+                                         },
+               'ResourceGroupArn' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

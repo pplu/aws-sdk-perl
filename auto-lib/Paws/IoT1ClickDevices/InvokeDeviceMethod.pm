@@ -1,16 +1,48 @@
 
 package Paws::IoT1ClickDevices::InvokeDeviceMethod;
-  use Moose;
-  has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'deviceId', required => 1);
-  has DeviceMethod => (is => 'ro', isa => 'Paws::IoT1ClickDevices::DeviceMethod', traits => ['NameInRequest'], request_name => 'deviceMethod');
-  has DeviceMethodParameters => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deviceMethodParameters');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickDevices::Types qw/IoT1ClickDevices_DeviceMethod/;
+  has DeviceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeviceMethod => (is => 'ro', isa => IoT1ClickDevices_DeviceMethod, predicate => 1);
+  has DeviceMethodParameters => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'InvokeDeviceMethod');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/devices/{deviceId}/methods');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT1ClickDevices::InvokeDeviceMethodResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'InvokeDeviceMethod');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/devices/{deviceId}/methods');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT1ClickDevices::InvokeDeviceMethodResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceMethodParameters' => {
+                                             'type' => 'Str'
+                                           },
+               'DeviceMethod' => {
+                                   'type' => 'IoT1ClickDevices_DeviceMethod',
+                                   'class' => 'Paws::IoT1ClickDevices::DeviceMethod'
+                                 },
+               'DeviceId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'DeviceMethod' => 'deviceMethod',
+                       'DeviceMethodParameters' => 'deviceMethodParameters'
+                     },
+  'IsRequired' => {
+                    'DeviceId' => 1
+                  },
+  'ParamInURI' => {
+                    'DeviceId' => 'deviceId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +89,7 @@ The unique identifier of the device.
 
 
 
-=head2 DeviceMethod => L<Paws::IoT1ClickDevices::DeviceMethod>
+=head2 DeviceMethod => IoT1ClickDevices_DeviceMethod
 
 The device method to invoke.
 

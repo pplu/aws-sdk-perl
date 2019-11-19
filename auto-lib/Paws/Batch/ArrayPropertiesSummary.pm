@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Batch::ArrayPropertiesSummary;
-  use Moose;
-  has Index => (is => 'ro', isa => 'Int', request_name => 'index', traits => ['NameInRequest']);
-  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Batch::Types qw//;
+  has Index => (is => 'ro', isa => Int);
+  has Size => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'Index' => {
+                            'type' => 'Int'
+                          }
+             },
+  'NameInRequest' => {
+                       'Index' => 'index',
+                       'Size' => 'size'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

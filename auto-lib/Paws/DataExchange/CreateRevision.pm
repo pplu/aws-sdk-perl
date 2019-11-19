@@ -1,16 +1,44 @@
 
 package Paws::DataExchange::CreateRevision;
-  use Moose;
-  has Comment => (is => 'ro', isa => 'Str');
-  has DataSetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DataSetId', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::DataExchange::MapOf__string');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw/DataExchange_MapOf__string/;
+  has Comment => (is => 'ro', isa => Str, predicate => 1);
+  has DataSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => DataExchange_MapOf__string, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRevision');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/data-sets/{DataSetId}/revisions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataExchange::CreateRevisionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRevision');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/data-sets/{DataSetId}/revisions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataExchange::CreateRevisionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DataSetId' => 'DataSetId'
+                  },
+  'IsRequired' => {
+                    'DataSetId' => 1
+                  },
+  'types' => {
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'DataSetId' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::DataExchange::MapOf__string',
+                           'type' => 'DataExchange_MapOf__string'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +95,7 @@ The unique identifier for a data set.
 
 
 
-=head2 Tags => L<Paws::DataExchange::MapOf__string>
+=head2 Tags => DataExchange_MapOf__string
 
 A revision tag is an optional label that you can assign to a revision
 when you create it. Each tag consists of a key and an optional value,

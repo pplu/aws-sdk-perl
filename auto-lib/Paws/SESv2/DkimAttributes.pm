@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SESv2::DkimAttributes;
-  use Moose;
-  has SigningEnabled => (is => 'ro', isa => 'Bool');
-  has Status => (is => 'ro', isa => 'Str');
-  has Tokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Bool Str Undef ArrayRef/;
+  use Paws::SESv2::Types qw//;
+  has SigningEnabled => (is => 'ro', isa => Bool);
+  has Status => (is => 'ro', isa => Str);
+  has Tokens => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Tokens' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'SigningEnabled' => {
+                                     'type' => 'Bool'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,35 @@
+# Generated from callargs_class.tt
 
 package Paws::SNS::CheckIfPhoneNumberIsOptedOut;
-  use Moose;
-  has PhoneNumber => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'phoneNumber' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SNS::Types qw//;
+  has PhoneNumber => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CheckIfPhoneNumberIsOptedOut');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::CheckIfPhoneNumberIsOptedOutResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CheckIfPhoneNumberIsOptedOutResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CheckIfPhoneNumberIsOptedOut');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SNS::CheckIfPhoneNumberIsOptedOutResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CheckIfPhoneNumberIsOptedOutResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PhoneNumber' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'PhoneNumber' => 'phoneNumber'
+                     },
+  'IsRequired' => {
+                    'PhoneNumber' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

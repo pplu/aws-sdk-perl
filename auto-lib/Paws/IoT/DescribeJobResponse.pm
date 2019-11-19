@@ -1,10 +1,35 @@
 
 package Paws::IoT::DescribeJobResponse;
-  use Moose;
-  has DocumentSource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documentSource');
-  has Job => (is => 'ro', isa => 'Paws::IoT::Job', traits => ['NameInRequest'], request_name => 'job');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_Job/;
+  has DocumentSource => (is => 'ro', isa => Str);
+  has Job => (is => 'ro', isa => IoT_Job);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DocumentSource' => 'documentSource',
+                       'Job' => 'job'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Job' => {
+                          'class' => 'Paws::IoT::Job',
+                          'type' => 'IoT_Job'
+                        },
+               'DocumentSource' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +46,7 @@ Paws::IoT::DescribeJobResponse
 An S3 link to the job document.
 
 
-=head2 Job => L<Paws::IoT::Job>
+=head2 Job => IoT_Job
 
 Information about the job.
 

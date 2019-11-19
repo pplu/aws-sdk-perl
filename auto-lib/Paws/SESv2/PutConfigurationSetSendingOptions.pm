@@ -1,15 +1,39 @@
 
 package Paws::SESv2::PutConfigurationSetSendingOptions;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ConfigurationSetName', required => 1);
-  has SendingEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SESv2::Types qw//;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SendingEnabled => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutConfigurationSetSendingOptions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/configuration-sets/{ConfigurationSetName}/sending');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::PutConfigurationSetSendingOptionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutConfigurationSetSendingOptions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/configuration-sets/{ConfigurationSetName}/sending');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::PutConfigurationSetSendingOptionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SendingEnabled' => {
+                                     'type' => 'Bool'
+                                   },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1
+                  },
+  'ParamInURI' => {
+                    'ConfigurationSetName' => 'ConfigurationSetName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

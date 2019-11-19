@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::Greengrass::Device;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has SyncShadow => (is => 'ro', isa => 'Bool');
-  has ThingArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Greengrass::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has SyncShadow => (is => 'ro', isa => Bool);
+  has ThingArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ThingArn' => 1,
+                    'Id' => 1,
+                    'CertificateArn' => 1
+                  },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ThingArn' => {
+                               'type' => 'Str'
+                             },
+               'SyncShadow' => {
+                                 'type' => 'Bool'
+                               },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

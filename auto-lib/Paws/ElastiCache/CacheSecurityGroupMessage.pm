@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::ElastiCache::CacheSecurityGroupMessage;
-  use Moose;
-  has CacheSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSecurityGroup]', request_name => 'CacheSecurityGroup', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_CacheSecurityGroup/;
+  has CacheSecurityGroups => (is => 'ro', isa => ArrayRef[ElastiCache_CacheSecurityGroup]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CacheSecurityGroups' => {
+                                          'class' => 'Paws::ElastiCache::CacheSecurityGroup',
+                                          'type' => 'ArrayRef[ElastiCache_CacheSecurityGroup]'
+                                        },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'CacheSecurityGroups' => 'CacheSecurityGroup'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::ElastiCache::CacheSecurityGroupMessage
 =head1 ATTRIBUTES
 
 
-=head2 CacheSecurityGroups => ArrayRef[L<Paws::ElastiCache::CacheSecurityGroup>]
+=head2 CacheSecurityGroups => ArrayRef[ElastiCache_CacheSecurityGroup]
 
 A list of cache security groups. Each element in the list contains
 detailed information about one group.

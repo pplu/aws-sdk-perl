@@ -1,16 +1,50 @@
+# Generated from callargs_class.tt
 
 package Paws::SDB::DeleteAttributes;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::DeletableAttribute]', traits => ['NameInRequest'], request_name => 'Attribute' );
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Expected => (is => 'ro', isa => 'Paws::SDB::UpdateCondition');
-  has ItemName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SDB::Types qw/SDB_UpdateCondition SDB_DeletableAttribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[SDB_DeletableAttribute], predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Expected => (is => 'ro', isa => SDB_UpdateCondition, predicate => 1);
+  has ItemName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteAttributes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Attributes' => 'Attribute'
+                     },
+  'IsRequired' => {
+                    'DomainName' => 1,
+                    'ItemName' => 1
+                  },
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::SDB::DeletableAttribute',
+                                 'type' => 'ArrayRef[SDB_DeletableAttribute]'
+                               },
+               'Expected' => {
+                               'type' => 'SDB_UpdateCondition',
+                               'class' => 'Paws::SDB::UpdateCondition'
+                             },
+               'ItemName' => {
+                               'type' => 'Str'
+                             },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +87,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sdb
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::SDB::DeletableAttribute>]
+=head2 Attributes => ArrayRef[SDB_DeletableAttribute]
 
 A list of Attributes. Similar to columns on a spreadsheet, attributes
 represent categories of data that can be assigned to items.
@@ -66,7 +100,7 @@ The name of the domain in which to perform the operation.
 
 
 
-=head2 Expected => L<Paws::SDB::UpdateCondition>
+=head2 Expected => SDB_UpdateCondition
 
 The update condition which, if specified, determines whether the
 specified attributes will be deleted or not. The update condition must

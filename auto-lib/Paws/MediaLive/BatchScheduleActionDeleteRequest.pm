@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::MediaLive::BatchScheduleActionDeleteRequest;
-  use Moose;
-  has ActionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'actionNames', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaLive::Types qw//;
+  has ActionNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ActionNames' => 'actionNames'
+                     },
+  'IsRequired' => {
+                    'ActionNames' => 1
+                  },
+  'types' => {
+               'ActionNames' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,15 @@
 package Paws::MediaConnect;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'mediaconnect' }
   sub signing_name { 'mediaconnect' }
   sub version { '2018-11-14' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -189,7 +190,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =item FlowArn => Str
 
-=item Outputs => ArrayRef[L<Paws::MediaConnect::AddOutputRequest>]
+=item Outputs => ArrayRef[MediaConnect_AddOutputRequest]
 
 
 =back
@@ -208,13 +209,13 @@ flow.
 
 =item Name => Str
 
-=item Source => L<Paws::MediaConnect::SetSourceRequest>
+=item Source => MediaConnect_SetSourceRequest
 
 =item [AvailabilityZone => Str]
 
-=item [Entitlements => ArrayRef[L<Paws::MediaConnect::GrantEntitlementRequest>]]
+=item [Entitlements => ArrayRef[MediaConnect_GrantEntitlementRequest]]
 
-=item [Outputs => ArrayRef[L<Paws::MediaConnect::AddOutputRequest>]]
+=item [Outputs => ArrayRef[MediaConnect_AddOutputRequest]]
 
 
 =back
@@ -265,7 +266,7 @@ outputs, and entitlements.
 
 =over
 
-=item Entitlements => ArrayRef[L<Paws::MediaConnect::GrantEntitlementRequest>]
+=item Entitlements => ArrayRef[MediaConnect_GrantEntitlementRequest]
 
 =item FlowArn => Str
 
@@ -413,7 +414,7 @@ Stops a flow.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::MediaConnect::__mapOf__string>
+=item Tags => MediaConnect___mapOf__string
 
 
 =back
@@ -456,7 +457,7 @@ Deletes specified tags from a resource.
 
 =item [Description => Str]
 
-=item [Encryption => L<Paws::MediaConnect::UpdateEncryption>]
+=item [Encryption => MediaConnect_UpdateEncryption]
 
 =item [Subscribers => ArrayRef[Str|Undef]]
 
@@ -486,7 +487,7 @@ outputs that are are used by the subscribers that are removed.
 
 =item [Destination => Str]
 
-=item [Encryption => L<Paws::MediaConnect::UpdateEncryption>]
+=item [Encryption => MediaConnect_UpdateEncryption]
 
 =item [MaxLatency => Int]
 
@@ -518,7 +519,7 @@ Updates an existing flow output.
 
 =item SourceArn => Str
 
-=item [Decryption => L<Paws::MediaConnect::UpdateEncryption>]
+=item [Decryption => MediaConnect_UpdateEncryption]
 
 =item [Description => Str]
 

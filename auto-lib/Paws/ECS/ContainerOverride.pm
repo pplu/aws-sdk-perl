@@ -1,12 +1,58 @@
+# Generated from default/object.tt
 package Paws::ECS::ContainerOverride;
-  use Moose;
-  has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
-  has Cpu => (is => 'ro', isa => 'Int', request_name => 'cpu', traits => ['NameInRequest']);
-  has Environment => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
-  has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
-  has MemoryReservation => (is => 'ro', isa => 'Int', request_name => 'memoryReservation', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::ECS::Types qw/ECS_ResourceRequirement ECS_KeyValuePair/;
+  has Command => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Cpu => (is => 'ro', isa => Int);
+  has Environment => (is => 'ro', isa => ArrayRef[ECS_KeyValuePair]);
+  has Memory => (is => 'ro', isa => Int);
+  has MemoryReservation => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has ResourceRequirements => (is => 'ro', isa => ArrayRef[ECS_ResourceRequirement]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceRequirements' => {
+                                           'type' => 'ArrayRef[ECS_ResourceRequirement]',
+                                           'class' => 'Paws::ECS::ResourceRequirement'
+                                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Command' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Cpu' => {
+                          'type' => 'Int'
+                        },
+               'Environment' => {
+                                  'type' => 'ArrayRef[ECS_KeyValuePair]',
+                                  'class' => 'Paws::ECS::KeyValuePair'
+                                },
+               'Memory' => {
+                             'type' => 'Int'
+                           },
+               'MemoryReservation' => {
+                                        'type' => 'Int'
+                                      }
+             },
+  'NameInRequest' => {
+                       'Environment' => 'environment',
+                       'Memory' => 'memory',
+                       'MemoryReservation' => 'memoryReservation',
+                       'ResourceRequirements' => 'resourceRequirements',
+                       'Name' => 'name',
+                       'Command' => 'command',
+                       'Cpu' => 'cpu'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +105,7 @@ default value from the task definition. You must also specify a
 container name.
 
 
-=head2 Environment => ArrayRef[L<Paws::ECS::KeyValuePair>]
+=head2 Environment => ArrayRef[ECS_KeyValuePair]
 
   The environment variables to send to the container. You can add new
 environment variables, which are added to the container at launch, or
@@ -88,7 +134,7 @@ container name.
 required if any override is specified.
 
 
-=head2 ResourceRequirements => ArrayRef[L<Paws::ECS::ResourceRequirement>]
+=head2 ResourceRequirements => ArrayRef[ECS_ResourceRequirement]
 
   The type and amount of a resource to assign to a container, instead of
 the default value from the task definition. The only supported resource

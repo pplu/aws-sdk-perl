@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::OfferingStatus;
-  use Moose;
-  has EffectiveOn => (is => 'ro', isa => 'Str', request_name => 'effectiveOn', traits => ['NameInRequest']);
-  has Offering => (is => 'ro', isa => 'Paws::DeviceFarm::Offering', request_name => 'offering', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', request_name => 'quantity', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Offering/;
+  has EffectiveOn => (is => 'ro', isa => Str);
+  has Offering => (is => 'ro', isa => DeviceFarm_Offering);
+  has Quantity => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'EffectiveOn' => {
+                                  'type' => 'Str'
+                                },
+               'Offering' => {
+                               'type' => 'DeviceFarm_Offering',
+                               'class' => 'Paws::DeviceFarm::Offering'
+                             }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Quantity' => 'quantity',
+                       'EffectiveOn' => 'effectiveOn',
+                       'Offering' => 'offering'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +77,7 @@ The status of the offering.
   The date on which the offering is effective.
 
 
-=head2 Offering => L<Paws::DeviceFarm::Offering>
+=head2 Offering => DeviceFarm_Offering
 
   Represents the metadata of an offering status.
 

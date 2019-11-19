@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::CloudFront::PublicKeyList;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::PublicKeySummary]', request_name => 'PublicKeySummary', traits => ['NameInRequest']);
-  has MaxItems => (is => 'ro', isa => 'Int', required => 1);
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Str/;
+  use Paws::CloudFront::Types qw/CloudFront_PublicKeySummary/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_PublicKeySummary]);
+  has MaxItems => (is => 'ro', isa => Int, required => 1);
+  has NextMarker => (is => 'ro', isa => Str);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Quantity' => 1,
+                    'MaxItems' => 1
+                  },
+  'NameInRequest' => {
+                       'Items' => 'PublicKeySummary'
+                     },
+  'types' => {
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Items' => {
+                            'type' => 'ArrayRef[CloudFront_PublicKeySummary]',
+                            'class' => 'Paws::CloudFront::PublicKeySummary'
+                          },
+               'MaxItems' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +74,7 @@ like field-level encryption.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::PublicKeySummary>]
+=head2 Items => ArrayRef[CloudFront_PublicKeySummary]
 
   An array of information about a public key you add to CloudFront to use
 with features like field-level encryption.

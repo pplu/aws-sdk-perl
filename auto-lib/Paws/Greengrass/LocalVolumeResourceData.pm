@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Greengrass::LocalVolumeResourceData;
-  use Moose;
-  has DestinationPath => (is => 'ro', isa => 'Str');
-  has GroupOwnerSetting => (is => 'ro', isa => 'Paws::Greengrass::GroupOwnerSetting');
-  has SourcePath => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass_GroupOwnerSetting/;
+  has DestinationPath => (is => 'ro', isa => Str);
+  has GroupOwnerSetting => (is => 'ro', isa => Greengrass_GroupOwnerSetting);
+  has SourcePath => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupOwnerSetting' => {
+                                        'class' => 'Paws::Greengrass::GroupOwnerSetting',
+                                        'type' => 'Greengrass_GroupOwnerSetting'
+                                      },
+               'SourcePath' => {
+                                 'type' => 'Str'
+                               },
+               'DestinationPath' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +67,7 @@ Attributes that define a local volume resource.
   The absolute local path of the resource inside the Lambda environment.
 
 
-=head2 GroupOwnerSetting => L<Paws::Greengrass::GroupOwnerSetting>
+=head2 GroupOwnerSetting => Greengrass_GroupOwnerSetting
 
   Allows you to configure additional group privileges for the Lambda
 process. This field is optional.

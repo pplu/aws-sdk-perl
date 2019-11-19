@@ -1,16 +1,42 @@
 
 package Paws::SecurityHub::CreateActionTarget;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw//;
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateActionTarget');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/actionTargets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::CreateActionTargetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateActionTarget');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/actionTargets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::CreateActionTargetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Id' => 1,
+                    'Description' => 1
+                  },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

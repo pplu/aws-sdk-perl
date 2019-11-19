@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::Athena::EncryptionConfiguration;
-  use Moose;
-  has EncryptionOption => (is => 'ro', isa => 'Str', required => 1);
-  has KmsKey => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Athena::Types qw//;
+  has EncryptionOption => (is => 'ro', isa => Str, required => 1);
+  has KmsKey => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'EncryptionOption' => 1
+                  },
+  'types' => {
+               'EncryptionOption' => {
+                                       'type' => 'Str'
+                                     },
+               'KmsKey' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

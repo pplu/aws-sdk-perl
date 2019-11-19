@@ -1,11 +1,48 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ChannelSpecification;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has IsRequired => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has SupportedCompressionTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SupportedContentTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has SupportedInputModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::SageMaker::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has IsRequired => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has SupportedCompressionTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SupportedContentTypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has SupportedInputModes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'SupportedContentTypes' => 1,
+                    'SupportedInputModes' => 1
+                  },
+  'types' => {
+               'SupportedContentTypes' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'SupportedInputModes' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'IsRequired' => {
+                                 'type' => 'Bool'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SupportedCompressionTypes' => {
+                                                'type' => 'ArrayRef[Str|Undef]'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

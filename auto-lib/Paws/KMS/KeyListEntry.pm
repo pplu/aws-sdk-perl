@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::KMS::KeyListEntry;
-  use Moose;
-  has KeyArn => (is => 'ro', isa => 'Str');
-  has KeyId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KMS::Types qw//;
+  has KeyArn => (is => 'ro', isa => Str);
+  has KeyId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyId' => {
+                            'type' => 'Str'
+                          },
+               'KeyArn' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::GroundStation::DataflowEndpoint;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Paws::GroundStation::SocketAddress', request_name => 'address', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw/GroundStation_SocketAddress/;
+  has Address => (is => 'ro', isa => GroundStation_SocketAddress);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Address' => 'address',
+                       'Status' => 'status'
+                     },
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Address' => {
+                              'type' => 'GroundStation_SocketAddress',
+                              'class' => 'Paws::GroundStation::SocketAddress'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ Information about a dataflow endpoint.
 =head1 ATTRIBUTES
 
 
-=head2 Address => L<Paws::GroundStation::SocketAddress>
+=head2 Address => GroundStation_SocketAddress
 
   Socket address of a dataflow endpoint.
 

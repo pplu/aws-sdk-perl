@@ -1,20 +1,80 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ProvisionedProductAttribute;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has IdempotencyToken => (is => 'ro', isa => 'Str');
-  has LastRecordId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has PhysicalId => (is => 'ro', isa => 'Str');
-  has ProductId => (is => 'ro', isa => 'Str');
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
-  has Type => (is => 'ro', isa => 'Str');
-  has UserArn => (is => 'ro', isa => 'Str');
-  has UserArnSession => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_Tag/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has IdempotencyToken => (is => 'ro', isa => Str);
+  has LastRecordId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has PhysicalId => (is => 'ro', isa => Str);
+  has ProductId => (is => 'ro', isa => Str);
+  has ProvisioningArtifactId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[ServiceCatalog_Tag]);
+  has Type => (is => 'ro', isa => Str);
+  has UserArn => (is => 'ro', isa => Str);
+  has UserArnSession => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserArn' => {
+                              'type' => 'Str'
+                            },
+               'ProvisioningArtifactId' => {
+                                             'type' => 'Str'
+                                           },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'LastRecordId' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'type' => 'ArrayRef[ServiceCatalog_Tag]',
+                           'class' => 'Paws::ServiceCatalog::Tag'
+                         },
+               'UserArnSession' => {
+                                     'type' => 'Str'
+                                   },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'PhysicalId' => {
+                                 'type' => 'Str'
+                               },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -145,7 +205,7 @@ the plan. Wait for an C<AVAILABLE> status before performing operations.
   The current status message of the provisioned product.
 
 
-=head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
+=head2 Tags => ArrayRef[ServiceCatalog_Tag]
 
   One or more tags.
 

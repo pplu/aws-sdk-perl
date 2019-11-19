@@ -1,17 +1,72 @@
 
 package Paws::Robomaker::CreateDeploymentJobResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has CreatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdAt');
-  has DeploymentApplicationConfigs => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::DeploymentApplicationConfig]', traits => ['NameInRequest'], request_name => 'deploymentApplicationConfigs');
-  has DeploymentConfig => (is => 'ro', isa => 'Paws::Robomaker::DeploymentConfig', traits => ['NameInRequest'], request_name => 'deploymentConfig');
-  has FailureCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureCode');
-  has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
-  has Fleet => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fleet');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_DeploymentConfig Robomaker_TagMap Robomaker_DeploymentApplicationConfig/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DeploymentApplicationConfigs => (is => 'ro', isa => ArrayRef[Robomaker_DeploymentApplicationConfig]);
+  has DeploymentConfig => (is => 'ro', isa => Robomaker_DeploymentConfig);
+  has FailureCode => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has Fleet => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => Robomaker_TagMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeploymentApplicationConfigs' => {
+                                                   'class' => 'Paws::Robomaker::DeploymentApplicationConfig',
+                                                   'type' => 'ArrayRef[Robomaker_DeploymentApplicationConfig]'
+                                                 },
+               'Fleet' => {
+                            'type' => 'Str'
+                          },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'DeploymentConfig' => {
+                                       'class' => 'Paws::Robomaker::DeploymentConfig',
+                                       'type' => 'Robomaker_DeploymentConfig'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Robomaker::TagMap',
+                           'type' => 'Robomaker_TagMap'
+                         },
+               'FailureCode' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'Tags' => 'tags',
+                       'FailureCode' => 'failureCode',
+                       'Arn' => 'arn',
+                       'FailureReason' => 'failureReason',
+                       'Fleet' => 'fleet',
+                       'CreatedAt' => 'createdAt',
+                       'DeploymentApplicationConfigs' => 'deploymentApplicationConfigs',
+                       'DeploymentConfig' => 'deploymentConfig'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -33,12 +88,12 @@ The Amazon Resource Name (ARN) of the deployment job.
 The time, in milliseconds since the epoch, when the fleet was created.
 
 
-=head2 DeploymentApplicationConfigs => ArrayRef[L<Paws::Robomaker::DeploymentApplicationConfig>]
+=head2 DeploymentApplicationConfigs => ArrayRef[Robomaker_DeploymentApplicationConfig]
 
 The deployment application configuration.
 
 
-=head2 DeploymentConfig => L<Paws::Robomaker::DeploymentConfig>
+=head2 DeploymentConfig => Robomaker_DeploymentConfig
 
 The deployment configuration.
 
@@ -126,7 +181,7 @@ The target fleet for the deployment job.
 The status of the deployment job.
 
 Valid values are: C<"Pending">, C<"Preparing">, C<"InProgress">, C<"Failed">, C<"Succeeded">, C<"Canceled">
-=head2 Tags => L<Paws::Robomaker::TagMap>
+=head2 Tags => Robomaker_TagMap
 
 The list of all tags added to the deployment job.
 

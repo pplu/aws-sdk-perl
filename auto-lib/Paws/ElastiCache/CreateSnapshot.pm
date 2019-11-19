@@ -1,16 +1,44 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::CreateSnapshot;
-  use Moose;
-  has CacheClusterId => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has SnapshotName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheClusterId => (is => 'ro', isa => Str, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationGroupId => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CreateSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSnapshotResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::CreateSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateSnapshotResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CacheClusterId' => {
+                                     'type' => 'Str'
+                                   },
+               'SnapshotName' => {
+                                   'type' => 'Str'
+                                 },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'SnapshotName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

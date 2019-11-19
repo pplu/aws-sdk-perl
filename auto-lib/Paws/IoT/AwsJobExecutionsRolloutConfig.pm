@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::IoT::AwsJobExecutionsRolloutConfig;
-  use Moose;
-  has MaximumPerMinute => (is => 'ro', isa => 'Int', request_name => 'maximumPerMinute', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::IoT::Types qw//;
+  has MaximumPerMinute => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MaximumPerMinute' => 'maximumPerMinute'
+                     },
+  'types' => {
+               'MaximumPerMinute' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

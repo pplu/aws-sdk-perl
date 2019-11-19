@@ -1,17 +1,45 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::ListTypes;
-  use Moose;
-  has DeprecatedStatus => (is => 'ro', isa => 'Str');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ProvisioningType => (is => 'ro', isa => 'Str');
-  has Visibility => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudFormation::Types qw//;
+  has DeprecatedStatus => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ProvisioningType => (is => 'ro', isa => Str, predicate => 1);
+  has Visibility => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTypes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::ListTypesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListTypesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTypes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::ListTypesOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListTypesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Visibility' => {
+                                 'type' => 'Str'
+                               },
+               'DeprecatedStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'ProvisioningType' => {
+                                       'type' => 'Str'
+                                     },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

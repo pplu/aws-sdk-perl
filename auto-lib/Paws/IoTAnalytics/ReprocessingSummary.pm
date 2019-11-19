@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::ReprocessingSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'Id' => 'id',
+                       'Status' => 'status'
+                     },
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

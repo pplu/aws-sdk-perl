@@ -1,8 +1,42 @@
+# Generated from default/object.tt
 package Paws::Batch::NodeProperties;
-  use Moose;
-  has MainNode => (is => 'ro', isa => 'Int', request_name => 'mainNode', traits => ['NameInRequest'], required => 1);
-  has NodeRangeProperties => (is => 'ro', isa => 'ArrayRef[Paws::Batch::NodeRangeProperty]', request_name => 'nodeRangeProperties', traits => ['NameInRequest'], required => 1);
-  has NumNodes => (is => 'ro', isa => 'Int', request_name => 'numNodes', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int ArrayRef/;
+  use Paws::Batch::Types qw/Batch_NodeRangeProperty/;
+  has MainNode => (is => 'ro', isa => Int, required => 1);
+  has NodeRangeProperties => (is => 'ro', isa => ArrayRef[Batch_NodeRangeProperty], required => 1);
+  has NumNodes => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NumNodes' => 'numNodes',
+                       'MainNode' => 'mainNode',
+                       'NodeRangeProperties' => 'nodeRangeProperties'
+                     },
+  'IsRequired' => {
+                    'MainNode' => 1,
+                    'NodeRangeProperties' => 1,
+                    'NumNodes' => 1
+                  },
+  'types' => {
+               'NodeRangeProperties' => {
+                                          'class' => 'Paws::Batch::NodeRangeProperty',
+                                          'type' => 'ArrayRef[Batch_NodeRangeProperty]'
+                                        },
+               'MainNode' => {
+                               'type' => 'Int'
+                             },
+               'NumNodes' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +79,7 @@ job.
 job. This node index value must be fewer than the number of nodes.
 
 
-=head2 B<REQUIRED> NodeRangeProperties => ArrayRef[L<Paws::Batch::NodeRangeProperty>]
+=head2 B<REQUIRED> NodeRangeProperties => ArrayRef[Batch_NodeRangeProperty]
 
   A list of node ranges and their properties associated with a multi-node
 parallel job.

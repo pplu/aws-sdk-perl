@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::Prediction;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Paws::MachineLearning::DetailsMap', request_name => 'details', traits => ['NameInRequest']);
-  has PredictedLabel => (is => 'ro', isa => 'Str', request_name => 'predictedLabel', traits => ['NameInRequest']);
-  has PredictedScores => (is => 'ro', isa => 'Paws::MachineLearning::ScoreValuePerLabelMap', request_name => 'predictedScores', traits => ['NameInRequest']);
-  has PredictedValue => (is => 'ro', isa => 'Num', request_name => 'predictedValue', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::MachineLearning::Types qw/MachineLearning_ScoreValuePerLabelMap MachineLearning_DetailsMap/;
+  has Details => (is => 'ro', isa => MachineLearning_DetailsMap);
+  has PredictedLabel => (is => 'ro', isa => Str);
+  has PredictedScores => (is => 'ro', isa => MachineLearning_ScoreValuePerLabelMap);
+  has PredictedValue => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PredictedValue' => {
+                                     'type' => 'Num'
+                                   },
+               'PredictedScores' => {
+                                      'type' => 'MachineLearning_ScoreValuePerLabelMap',
+                                      'class' => 'Paws::MachineLearning::ScoreValuePerLabelMap'
+                                    },
+               'Details' => {
+                              'type' => 'MachineLearning_DetailsMap',
+                              'class' => 'Paws::MachineLearning::DetailsMap'
+                            },
+               'PredictedLabel' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'PredictedValue' => 'predictedValue',
+                       'Details' => 'details',
+                       'PredictedScores' => 'predictedScores',
+                       'PredictedLabel' => 'predictedLabel'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +98,7 @@ C<PredictedValue> - Present for a C<REGRESSION> C<MLModel> request.
 =head1 ATTRIBUTES
 
 
-=head2 Details => L<Paws::MachineLearning::DetailsMap>
+=head2 Details => MachineLearning_DetailsMap
 
   
 
@@ -75,7 +109,7 @@ C<PredictedValue> - Present for a C<REGRESSION> C<MLModel> request.
 C<MLModel>.
 
 
-=head2 PredictedScores => L<Paws::MachineLearning::ScoreValuePerLabelMap>
+=head2 PredictedScores => MachineLearning_ScoreValuePerLabelMap
 
   
 

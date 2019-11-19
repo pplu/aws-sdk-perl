@@ -1,26 +1,101 @@
 
 package Paws::ServerlessRepo::CreateCloudFormationChangeSet;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'capabilities');
-  has ChangeSetName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'changeSetName');
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has NotificationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'notificationArns');
-  has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ParameterValue]', traits => ['NameInRequest'], request_name => 'parameterOverrides');
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceTypes');
-  has RollbackConfiguration => (is => 'ro', isa => 'Paws::ServerlessRepo::RollbackConfiguration', traits => ['NameInRequest'], request_name => 'rollbackConfiguration');
-  has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion');
-  has StackName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stackName', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::Tag]', traits => ['NameInRequest'], request_name => 'tags');
-  has TemplateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateId');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ServerlessRepo::Types qw/ServerlessRepo_RollbackConfiguration ServerlessRepo_Tag ServerlessRepo_ParameterValue/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Capabilities => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ChangeSetName => (is => 'ro', isa => Str, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ParameterOverrides => (is => 'ro', isa => ArrayRef[ServerlessRepo_ParameterValue], predicate => 1);
+  has ResourceTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has RollbackConfiguration => (is => 'ro', isa => ServerlessRepo_RollbackConfiguration, predicate => 1);
+  has SemanticVersion => (is => 'ro', isa => Str, predicate => 1);
+  has StackName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ServerlessRepo_Tag], predicate => 1);
+  has TemplateId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCloudFormationChangeSet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/applications/{applicationId}/changesets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServerlessRepo::CreateCloudFormationChangeSetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCloudFormationChangeSet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/applications/{applicationId}/changesets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServerlessRepo::CreateCloudFormationChangeSetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApplicationId' => 'applicationId'
+                  },
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[ServerlessRepo_Tag]',
+                           'class' => 'Paws::ServerlessRepo::Tag'
+                         },
+               'RollbackConfiguration' => {
+                                            'type' => 'ServerlessRepo_RollbackConfiguration',
+                                            'class' => 'Paws::ServerlessRepo::RollbackConfiguration'
+                                          },
+               'Capabilities' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'NotificationArns' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ResourceTypes' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'TemplateId' => {
+                                 'type' => 'Str'
+                               },
+               'ChangeSetName' => {
+                                    'type' => 'Str'
+                                  },
+               'ParameterOverrides' => {
+                                         'class' => 'Paws::ServerlessRepo::ParameterValue',
+                                         'type' => 'ArrayRef[ServerlessRepo_ParameterValue]'
+                                       },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'StackName' => {
+                                'type' => 'Str'
+                              },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'StackName' => 1
+                  },
+  'NameInRequest' => {
+                       'RollbackConfiguration' => 'rollbackConfiguration',
+                       'Tags' => 'tags',
+                       'ClientToken' => 'clientToken',
+                       'StackName' => 'stackName',
+                       'ResourceTypes' => 'resourceTypes',
+                       'NotificationArns' => 'notificationArns',
+                       'Capabilities' => 'capabilities',
+                       'Description' => 'description',
+                       'SemanticVersion' => 'semanticVersion',
+                       'ParameterOverrides' => 'parameterOverrides',
+                       'ChangeSetName' => 'changeSetName',
+                       'TemplateId' => 'templateId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +132,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                              # OPTIONAL
-      ResourceTypes => [ 'My__string', ... ],         # OPTIONAL
+      ResourceTypes         => [ 'My__string', ... ], # OPTIONAL
       RollbackConfiguration => {
         MonitoringTimeInMinutes => 1,                 # OPTIONAL
         RollbackTriggers        => [
@@ -187,7 +262,7 @@ I<AWS CloudFormation CreateChangeSet
 
 
 
-=head2 ParameterOverrides => ArrayRef[L<Paws::ServerlessRepo::ParameterValue>]
+=head2 ParameterOverrides => ArrayRef[ServerlessRepo_ParameterValue]
 
 A list of parameter values for the parameters of the application.
 
@@ -202,7 +277,7 @@ I<AWS CloudFormation CreateChangeSet
 
 
 
-=head2 RollbackConfiguration => L<Paws::ServerlessRepo::RollbackConfiguration>
+=head2 RollbackConfiguration => ServerlessRepo_RollbackConfiguration
 
 This property corresponds to the parameter of the same name for the
 I<AWS CloudFormation CreateChangeSet
@@ -228,7 +303,7 @@ I<AWS CloudFormation CreateChangeSet
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ServerlessRepo::Tag>]
+=head2 Tags => ArrayRef[ServerlessRepo_Tag]
 
 This property corresponds to the parameter of the same name for the
 I<AWS CloudFormation CreateChangeSet

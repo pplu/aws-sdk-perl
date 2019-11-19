@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ListReservationsResultModel;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
-  has Reservations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::Reservation]', request_name => 'reservations', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_Reservation/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Reservations => (is => 'ro', isa => ArrayRef[MediaLive_Reservation]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Reservations' => {
+                                   'class' => 'Paws::MediaLive::Reservation',
+                                   'type' => 'ArrayRef[MediaLive_Reservation]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Reservations' => 'reservations',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ ListReservations response
   Token to retrieve the next page of results
 
 
-=head2 Reservations => ArrayRef[L<Paws::MediaLive::Reservation>]
+=head2 Reservations => ArrayRef[MediaLive_Reservation]
 
   List of reservations
 

@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAFRegional::UpdateWebACL;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has DefaultAction => (is => 'ro', isa => 'Paws::WAFRegional::WafAction');
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::WebACLUpdate]');
-  has WebACLId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_WebACLUpdate WAFRegional_WafAction/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DefaultAction => (is => 'ro', isa => WAFRegional_WafAction, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAFRegional_WebACLUpdate], predicate => 1);
+  has WebACLId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateWebACL');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAFRegional::UpdateWebACLResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateWebACL');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAFRegional::UpdateWebACLResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'WebACLId' => 1,
+                    'ChangeToken' => 1
+                  },
+  'types' => {
+               'WebACLId' => {
+                               'type' => 'Str'
+                             },
+               'DefaultAction' => {
+                                    'class' => 'Paws::WAFRegional::WafAction',
+                                    'type' => 'WAFRegional_WafAction'
+                                  },
+               'Updates' => {
+                              'type' => 'ArrayRef[WAFRegional_WebACLUpdate]',
+                              'class' => 'Paws::WAFRegional::WebACLUpdate'
+                            },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +102,7 @@ The value returned by the most recent call to GetChangeToken.
 
 
 
-=head2 DefaultAction => L<Paws::WAFRegional::WafAction>
+=head2 DefaultAction => WAFRegional_WafAction
 
 A default action for the web ACL, either ALLOW or BLOCK. AWS WAF
 performs the default action if a request doesn't match the criteria in
@@ -79,7 +110,7 @@ any of the rules in a web ACL.
 
 
 
-=head2 Updates => ArrayRef[L<Paws::WAFRegional::WebACLUpdate>]
+=head2 Updates => ArrayRef[WAFRegional_WebACLUpdate]
 
 An array of updates to make to the WebACL.
 

@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputVpcRequest;
-  use Moose;
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaLive::Types qw//;
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SubnetIds' => 1
+                  },
+  'NameInRequest' => {
+                       'SecurityGroupIds' => 'securityGroupIds',
+                       'SubnetIds' => 'subnetIds'
+                     },
+  'types' => {
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

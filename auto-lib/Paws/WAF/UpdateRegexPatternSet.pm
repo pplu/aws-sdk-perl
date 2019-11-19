@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAF::UpdateRegexPatternSet;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has RegexPatternSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAF::RegexPatternSetUpdate]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_RegexPatternSetUpdate/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RegexPatternSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAF_RegexPatternSetUpdate], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRegexPatternSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAF::UpdateRegexPatternSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRegexPatternSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAF::UpdateRegexPatternSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ChangeToken' => 1,
+                    'Updates' => 1,
+                    'RegexPatternSetId' => 1
+                  },
+  'types' => {
+               'Updates' => {
+                              'class' => 'Paws::WAF::RegexPatternSetUpdate',
+                              'type' => 'ArrayRef[WAF_RegexPatternSetUpdate]'
+                            },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'RegexPatternSetId' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +96,7 @@ by ListRegexPatternSets.
 
 
 
-=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::RegexPatternSetUpdate>]
+=head2 B<REQUIRED> Updates => ArrayRef[WAF_RegexPatternSetUpdate]
 
 An array of C<RegexPatternSetUpdate> objects that you want to insert
 into or delete from a RegexPatternSet.

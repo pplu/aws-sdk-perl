@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ACMPCA::ListTagsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ACMPCA::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ACMPCA::Types qw/ACMPCA_Tag/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[ACMPCA_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::ACMPCA::Tag',
+                           'type' => 'ArrayRef[ACMPCA_Tag]'
+                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ When the list is truncated, this value is present and should be used
 for the B<NextToken> parameter in a subsequent pagination request.
 
 
-=head2 Tags => ArrayRef[L<Paws::ACMPCA::Tag>]
+=head2 Tags => ArrayRef[ACMPCA_Tag]
 
 The tags associated with your private CA.
 

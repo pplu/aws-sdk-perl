@@ -1,40 +1,180 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeBuild::StartBuild;
-  use Moose;
-  has ArtifactsOverride => (is => 'ro', isa => 'Paws::CodeBuild::ProjectArtifacts', traits => ['NameInRequest'], request_name => 'artifactsOverride' );
-  has BuildspecOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'buildspecOverride' );
-  has CacheOverride => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', traits => ['NameInRequest'], request_name => 'cacheOverride' );
-  has CertificateOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateOverride' );
-  has ComputeTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeTypeOverride' );
-  has EnvironmentTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'environmentTypeOverride' );
-  has EnvironmentVariablesOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentVariable]', traits => ['NameInRequest'], request_name => 'environmentVariablesOverride' );
-  has GitCloneDepthOverride => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'gitCloneDepthOverride' );
-  has GitSubmodulesConfigOverride => (is => 'ro', isa => 'Paws::CodeBuild::GitSubmodulesConfig', traits => ['NameInRequest'], request_name => 'gitSubmodulesConfigOverride' );
-  has IdempotencyToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'idempotencyToken' );
-  has ImageOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageOverride' );
-  has ImagePullCredentialsTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imagePullCredentialsTypeOverride' );
-  has InsecureSslOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'insecureSslOverride' );
-  has LogsConfigOverride => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', traits => ['NameInRequest'], request_name => 'logsConfigOverride' );
-  has PrivilegedModeOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'privilegedModeOverride' );
-  has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
-  has QueuedTimeoutInMinutesOverride => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'queuedTimeoutInMinutesOverride' );
-  has RegistryCredentialOverride => (is => 'ro', isa => 'Paws::CodeBuild::RegistryCredential', traits => ['NameInRequest'], request_name => 'registryCredentialOverride' );
-  has ReportBuildStatusOverride => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reportBuildStatusOverride' );
-  has SecondaryArtifactsOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', traits => ['NameInRequest'], request_name => 'secondaryArtifactsOverride' );
-  has SecondarySourcesOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', traits => ['NameInRequest'], request_name => 'secondarySourcesOverride' );
-  has SecondarySourcesVersionOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSourceVersion]', traits => ['NameInRequest'], request_name => 'secondarySourcesVersionOverride' );
-  has ServiceRoleOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleOverride' );
-  has SourceAuthOverride => (is => 'ro', isa => 'Paws::CodeBuild::SourceAuth', traits => ['NameInRequest'], request_name => 'sourceAuthOverride' );
-  has SourceLocationOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceLocationOverride' );
-  has SourceTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceTypeOverride' );
-  has SourceVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceVersion' );
-  has TimeoutInMinutesOverride => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMinutesOverride' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Bool/;
+  use Paws::CodeBuild::Types qw/CodeBuild_ProjectSourceVersion CodeBuild_GitSubmodulesConfig CodeBuild_LogsConfig CodeBuild_ProjectCache CodeBuild_RegistryCredential CodeBuild_SourceAuth CodeBuild_ProjectSource CodeBuild_EnvironmentVariable CodeBuild_ProjectArtifacts/;
+  has ArtifactsOverride => (is => 'ro', isa => CodeBuild_ProjectArtifacts, predicate => 1);
+  has BuildspecOverride => (is => 'ro', isa => Str, predicate => 1);
+  has CacheOverride => (is => 'ro', isa => CodeBuild_ProjectCache, predicate => 1);
+  has CertificateOverride => (is => 'ro', isa => Str, predicate => 1);
+  has ComputeTypeOverride => (is => 'ro', isa => Str, predicate => 1);
+  has EnvironmentTypeOverride => (is => 'ro', isa => Str, predicate => 1);
+  has EnvironmentVariablesOverride => (is => 'ro', isa => ArrayRef[CodeBuild_EnvironmentVariable], predicate => 1);
+  has GitCloneDepthOverride => (is => 'ro', isa => Int, predicate => 1);
+  has GitSubmodulesConfigOverride => (is => 'ro', isa => CodeBuild_GitSubmodulesConfig, predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, predicate => 1);
+  has ImageOverride => (is => 'ro', isa => Str, predicate => 1);
+  has ImagePullCredentialsTypeOverride => (is => 'ro', isa => Str, predicate => 1);
+  has InsecureSslOverride => (is => 'ro', isa => Bool, predicate => 1);
+  has LogsConfigOverride => (is => 'ro', isa => CodeBuild_LogsConfig, predicate => 1);
+  has PrivilegedModeOverride => (is => 'ro', isa => Bool, predicate => 1);
+  has ProjectName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has QueuedTimeoutInMinutesOverride => (is => 'ro', isa => Int, predicate => 1);
+  has RegistryCredentialOverride => (is => 'ro', isa => CodeBuild_RegistryCredential, predicate => 1);
+  has ReportBuildStatusOverride => (is => 'ro', isa => Bool, predicate => 1);
+  has SecondaryArtifactsOverride => (is => 'ro', isa => ArrayRef[CodeBuild_ProjectArtifacts], predicate => 1);
+  has SecondarySourcesOverride => (is => 'ro', isa => ArrayRef[CodeBuild_ProjectSource], predicate => 1);
+  has SecondarySourcesVersionOverride => (is => 'ro', isa => ArrayRef[CodeBuild_ProjectSourceVersion], predicate => 1);
+  has ServiceRoleOverride => (is => 'ro', isa => Str, predicate => 1);
+  has SourceAuthOverride => (is => 'ro', isa => CodeBuild_SourceAuth, predicate => 1);
+  has SourceLocationOverride => (is => 'ro', isa => Str, predicate => 1);
+  has SourceTypeOverride => (is => 'ro', isa => Str, predicate => 1);
+  has SourceVersion => (is => 'ro', isa => Str, predicate => 1);
+  has TimeoutInMinutesOverride => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartBuild');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeBuild::StartBuildOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartBuild');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeBuild::StartBuildOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GitSubmodulesConfigOverride' => {
+                                                  'type' => 'CodeBuild_GitSubmodulesConfig',
+                                                  'class' => 'Paws::CodeBuild::GitSubmodulesConfig'
+                                                },
+               'PrivilegedModeOverride' => {
+                                             'type' => 'Bool'
+                                           },
+               'SecondaryArtifactsOverride' => {
+                                                 'class' => 'Paws::CodeBuild::ProjectArtifacts',
+                                                 'type' => 'ArrayRef[CodeBuild_ProjectArtifacts]'
+                                               },
+               'EnvironmentTypeOverride' => {
+                                              'type' => 'Str'
+                                            },
+               'InsecureSslOverride' => {
+                                          'type' => 'Bool'
+                                        },
+               'CertificateOverride' => {
+                                          'type' => 'Str'
+                                        },
+               'SourceAuthOverride' => {
+                                         'class' => 'Paws::CodeBuild::SourceAuth',
+                                         'type' => 'CodeBuild_SourceAuth'
+                                       },
+               'LogsConfigOverride' => {
+                                         'type' => 'CodeBuild_LogsConfig',
+                                         'class' => 'Paws::CodeBuild::LogsConfig'
+                                       },
+               'TimeoutInMinutesOverride' => {
+                                               'type' => 'Int'
+                                             },
+               'ImagePullCredentialsTypeOverride' => {
+                                                       'type' => 'Str'
+                                                     },
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                },
+               'ArtifactsOverride' => {
+                                        'class' => 'Paws::CodeBuild::ProjectArtifacts',
+                                        'type' => 'CodeBuild_ProjectArtifacts'
+                                      },
+               'BuildspecOverride' => {
+                                        'type' => 'Str'
+                                      },
+               'SecondarySourcesVersionOverride' => {
+                                                      'type' => 'ArrayRef[CodeBuild_ProjectSourceVersion]',
+                                                      'class' => 'Paws::CodeBuild::ProjectSourceVersion'
+                                                    },
+               'SourceLocationOverride' => {
+                                             'type' => 'Str'
+                                           },
+               'SourceVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'RegistryCredentialOverride' => {
+                                                 'class' => 'Paws::CodeBuild::RegistryCredential',
+                                                 'type' => 'CodeBuild_RegistryCredential'
+                                               },
+               'QueuedTimeoutInMinutesOverride' => {
+                                                     'type' => 'Int'
+                                                   },
+               'ReportBuildStatusOverride' => {
+                                                'type' => 'Bool'
+                                              },
+               'GitCloneDepthOverride' => {
+                                            'type' => 'Int'
+                                          },
+               'ServiceRoleOverride' => {
+                                          'type' => 'Str'
+                                        },
+               'SecondarySourcesOverride' => {
+                                               'type' => 'ArrayRef[CodeBuild_ProjectSource]',
+                                               'class' => 'Paws::CodeBuild::ProjectSource'
+                                             },
+               'SourceTypeOverride' => {
+                                         'type' => 'Str'
+                                       },
+               'CacheOverride' => {
+                                    'type' => 'CodeBuild_ProjectCache',
+                                    'class' => 'Paws::CodeBuild::ProjectCache'
+                                  },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'EnvironmentVariablesOverride' => {
+                                                   'class' => 'Paws::CodeBuild::EnvironmentVariable',
+                                                   'type' => 'ArrayRef[CodeBuild_EnvironmentVariable]'
+                                                 },
+               'ImageOverride' => {
+                                    'type' => 'Str'
+                                  },
+               'ComputeTypeOverride' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'ProjectName' => 1
+                  },
+  'NameInRequest' => {
+                       'QueuedTimeoutInMinutesOverride' => 'queuedTimeoutInMinutesOverride',
+                       'ReportBuildStatusOverride' => 'reportBuildStatusOverride',
+                       'GitCloneDepthOverride' => 'gitCloneDepthOverride',
+                       'ServiceRoleOverride' => 'serviceRoleOverride',
+                       'SecondarySourcesOverride' => 'secondarySourcesOverride',
+                       'RegistryCredentialOverride' => 'registryCredentialOverride',
+                       'EnvironmentVariablesOverride' => 'environmentVariablesOverride',
+                       'ImageOverride' => 'imageOverride',
+                       'ComputeTypeOverride' => 'computeTypeOverride',
+                       'SourceTypeOverride' => 'sourceTypeOverride',
+                       'CacheOverride' => 'cacheOverride',
+                       'IdempotencyToken' => 'idempotencyToken',
+                       'PrivilegedModeOverride' => 'privilegedModeOverride',
+                       'SecondaryArtifactsOverride' => 'secondaryArtifactsOverride',
+                       'EnvironmentTypeOverride' => 'environmentTypeOverride',
+                       'InsecureSslOverride' => 'insecureSslOverride',
+                       'SourceAuthOverride' => 'sourceAuthOverride',
+                       'CertificateOverride' => 'certificateOverride',
+                       'LogsConfigOverride' => 'logsConfigOverride',
+                       'GitSubmodulesConfigOverride' => 'gitSubmodulesConfigOverride',
+                       'BuildspecOverride' => 'buildspecOverride',
+                       'SecondarySourcesVersionOverride' => 'secondarySourcesVersionOverride',
+                       'SourceLocationOverride' => 'sourceLocationOverride',
+                       'SourceVersion' => 'sourceVersion',
+                       'TimeoutInMinutesOverride' => 'timeoutInMinutesOverride',
+                       'ImagePullCredentialsTypeOverride' => 'imagePullCredentialsTypeOverride',
+                       'ArtifactsOverride' => 'artifactsOverride',
+                       'ProjectName' => 'projectName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -182,7 +322,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head1 ATTRIBUTES
 
 
-=head2 ArtifactsOverride => L<Paws::CodeBuild::ProjectArtifacts>
+=head2 ArtifactsOverride => CodeBuild_ProjectArtifacts
 
 Build output artifact settings that override, for this build only, the
 latest ones already defined in the build project.
@@ -196,7 +336,7 @@ latest one already defined in the build project.
 
 
 
-=head2 CacheOverride => L<Paws::CodeBuild::ProjectCache>
+=head2 CacheOverride => CodeBuild_ProjectCache
 
 A ProjectCache object specified for this build that overrides the one
 defined in the build project.
@@ -224,7 +364,7 @@ build project.
 
 Valid values are: C<"WINDOWS_CONTAINER">, C<"LINUX_CONTAINER">, C<"LINUX_GPU_CONTAINER">, C<"ARM_CONTAINER">
 
-=head2 EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]
+=head2 EnvironmentVariablesOverride => ArrayRef[CodeBuild_EnvironmentVariable]
 
 A set of environment variables that overrides, for this build only, the
 latest ones already defined in the build project.
@@ -239,7 +379,7 @@ in the build project.
 
 
 
-=head2 GitSubmodulesConfigOverride => L<Paws::CodeBuild::GitSubmodulesConfig>
+=head2 GitSubmodulesConfigOverride => CodeBuild_GitSubmodulesConfig
 
 Information about the Git submodules configuration for this build of an
 AWS CodeBuild build project.
@@ -298,7 +438,7 @@ override applies only if the build's source is GitHub Enterprise.
 
 
 
-=head2 LogsConfigOverride => L<Paws::CodeBuild::LogsConfig>
+=head2 LogsConfigOverride => CodeBuild_LogsConfig
 
 Log settings for this build that override the log settings defined in
 the build project.
@@ -324,7 +464,7 @@ out.
 
 
 
-=head2 RegistryCredentialOverride => L<Paws::CodeBuild::RegistryCredential>
+=head2 RegistryCredentialOverride => CodeBuild_RegistryCredential
 
 The credentials for access to a private registry.
 
@@ -342,19 +482,19 @@ source provider.
 
 
 
-=head2 SecondaryArtifactsOverride => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]
+=head2 SecondaryArtifactsOverride => ArrayRef[CodeBuild_ProjectArtifacts]
 
 An array of C<ProjectArtifacts> objects.
 
 
 
-=head2 SecondarySourcesOverride => ArrayRef[L<Paws::CodeBuild::ProjectSource>]
+=head2 SecondarySourcesOverride => ArrayRef[CodeBuild_ProjectSource]
 
 An array of C<ProjectSource> objects.
 
 
 
-=head2 SecondarySourcesVersionOverride => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]
+=head2 SecondarySourcesVersionOverride => ArrayRef[CodeBuild_ProjectSourceVersion]
 
 An array of C<ProjectSourceVersion> objects that specify one or more
 versions of the project's secondary sources to be used for this build
@@ -369,7 +509,7 @@ specified in the build project.
 
 
 
-=head2 SourceAuthOverride => L<Paws::CodeBuild::SourceAuth>
+=head2 SourceAuthOverride => CodeBuild_SourceAuth
 
 An authorization type for this build that overrides the one defined in
 the build project. This override applies only if the build project's

@@ -1,8 +1,33 @@
 package Paws::EC2::ReservationValue;
-  use Moose;
-  has HourlyPrice => (is => 'ro', isa => 'Str', request_name => 'hourlyPrice', traits => ['NameInRequest']);
-  has RemainingTotalValue => (is => 'ro', isa => 'Str', request_name => 'remainingTotalValue', traits => ['NameInRequest']);
-  has RemainingUpfrontValue => (is => 'ro', isa => 'Str', request_name => 'remainingUpfrontValue', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has HourlyPrice => (is => 'ro', isa => Str);
+  has RemainingTotalValue => (is => 'ro', isa => Str);
+  has RemainingUpfrontValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HourlyPrice' => {
+                                  'type' => 'Str'
+                                },
+               'RemainingUpfrontValue' => {
+                                            'type' => 'Str'
+                                          },
+               'RemainingTotalValue' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'HourlyPrice' => 'hourlyPrice',
+                       'RemainingUpfrontValue' => 'remainingUpfrontValue',
+                       'RemainingTotalValue' => 'remainingTotalValue'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

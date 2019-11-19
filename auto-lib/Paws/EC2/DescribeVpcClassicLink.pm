@@ -1,15 +1,42 @@
 
 package Paws::EC2::DescribeVpcClassicLink;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has VpcIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'VpcId' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_Filter/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
+  has VpcIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcClassicLink');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeVpcClassicLinkResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeVpcClassicLink');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeVpcClassicLinkResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'type' => 'ArrayRef[EC2_Filter]',
+                              'class' => 'Paws::EC2::Filter'
+                            },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'VpcIds' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             },
+  'NameInRequest' => {
+                       'VpcIds' => 'VpcId',
+                       'DryRun' => 'dryRun',
+                       'Filters' => 'Filter'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -33,12 +60,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      VpcIds => [ 'MyString', ... ],        # OPTIONAL
+      ],                           # OPTIONAL
+      VpcIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
     );
 
     # Results:
@@ -61,7 +92,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+=head2 Filters => ArrayRef[EC2_Filter]
 
 One or more filters.
 

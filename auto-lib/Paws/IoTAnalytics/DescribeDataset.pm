@@ -1,14 +1,35 @@
 
 package Paws::IoTAnalytics::DescribeDataset;
-  use Moose;
-  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'datasetName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has DatasetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDataset');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/datasets/{datasetName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTAnalytics::DescribeDatasetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDataset');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/datasets/{datasetName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTAnalytics::DescribeDatasetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DatasetName' => 'datasetName'
+                  },
+  'types' => {
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'DatasetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

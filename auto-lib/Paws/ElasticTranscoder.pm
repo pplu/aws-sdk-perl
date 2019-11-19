@@ -1,14 +1,15 @@
 package Paws::ElasticTranscoder;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'elastictranscoder' }
   sub signing_name { 'elastictranscoder' }
   sub version { '2012-09-25' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -257,19 +258,19 @@ identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
 
 =item PipelineId => Str
 
-=item [Input => L<Paws::ElasticTranscoder::JobInput>]
+=item [Input => ElasticTranscoder_JobInput]
 
-=item [Inputs => ArrayRef[L<Paws::ElasticTranscoder::JobInput>]]
+=item [Inputs => ArrayRef[ElasticTranscoder_JobInput]]
 
-=item [Output => L<Paws::ElasticTranscoder::CreateJobOutput>]
+=item [Output => ElasticTranscoder_CreateJobOutput]
 
 =item [OutputKeyPrefix => Str]
 
-=item [Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>]]
+=item [Outputs => ArrayRef[ElasticTranscoder_CreateJobOutput]]
 
-=item [Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>]]
+=item [Playlists => ArrayRef[ElasticTranscoder_CreateJobPlaylist]]
 
-=item [UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>]
+=item [UserMetadata => ElasticTranscoder_UserMetadata]
 
 
 =back
@@ -300,13 +301,13 @@ one output for the Kindle Fire and another output for the Apple iPhone
 
 =item [AwsKmsKeyArn => Str]
 
-=item [ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>]
+=item [ContentConfig => ElasticTranscoder_PipelineOutputConfig]
 
-=item [Notifications => L<Paws::ElasticTranscoder::Notifications>]
+=item [Notifications => ElasticTranscoder_Notifications]
 
 =item [OutputBucket => Str]
 
-=item [ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>]
+=item [ThumbnailConfig => ElasticTranscoder_PipelineOutputConfig]
 
 
 =back
@@ -327,13 +328,13 @@ specify.
 
 =item Name => Str
 
-=item [Audio => L<Paws::ElasticTranscoder::AudioParameters>]
+=item [Audio => ElasticTranscoder_AudioParameters]
 
 =item [Description => Str]
 
-=item [Thumbnails => L<Paws::ElasticTranscoder::Thumbnails>]
+=item [Thumbnails => ElasticTranscoder_Thumbnails]
 
-=item [Video => L<Paws::ElasticTranscoder::VideoParameters>]
+=item [Video => ElasticTranscoder_VideoParameters]
 
 
 =back
@@ -574,17 +575,17 @@ topics that you specify.
 
 =item [AwsKmsKeyArn => Str]
 
-=item [ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>]
+=item [ContentConfig => ElasticTranscoder_PipelineOutputConfig]
 
 =item [InputBucket => Str]
 
 =item [Name => Str]
 
-=item [Notifications => L<Paws::ElasticTranscoder::Notifications>]
+=item [Notifications => ElasticTranscoder_Notifications]
 
 =item [Role => Str]
 
-=item [ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>]
+=item [ThumbnailConfig => ElasticTranscoder_PipelineOutputConfig]
 
 
 =back
@@ -607,7 +608,7 @@ that you submit after you change settings.
 
 =item Id => Str
 
-=item Notifications => L<Paws::ElasticTranscoder::Notifications>
+=item Notifications => ElasticTranscoder_Notifications
 
 
 =back

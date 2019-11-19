@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::AdminConfirmSignUp;
-  use Moose;
-  has ClientMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::ClientMetadataType');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_ClientMetadataType/;
+  has ClientMetadata => (is => 'ro', isa => CognitoIdp_ClientMetadataType, predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AdminConfirmSignUp');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::AdminConfirmSignUpResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AdminConfirmSignUp');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::AdminConfirmSignUpResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'ClientMetadata' => {
+                                     'type' => 'CognitoIdp_ClientMetadataType',
+                                     'class' => 'Paws::CognitoIdp::ClientMetadataType'
+                                   },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'Username' => 1,
+                    'UserPoolId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +68,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>
+=head2 ClientMetadata => CognitoIdp_ClientMetadataType
 
 A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.

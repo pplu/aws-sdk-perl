@@ -1,14 +1,30 @@
 
 package Paws::SecurityHub::EnableSecurityHub;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::SecurityHub::TagMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw/SecurityHub_TagMap/;
+  has Tags => (is => 'ro', isa => SecurityHub_TagMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableSecurityHub');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::EnableSecurityHubResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'EnableSecurityHub');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::EnableSecurityHubResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'SecurityHub_TagMap',
+                           'class' => 'Paws::SecurityHub::TagMap'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +56,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
-=head2 Tags => L<Paws::SecurityHub::TagMap>
+=head2 Tags => SecurityHub_TagMap
 
 The tags to add to the Hub resource when you enable Security Hub.
 

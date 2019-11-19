@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::GroundStation::TrackingConfig;
-  use Moose;
-  has Autotrack => (is => 'ro', isa => 'Str', request_name => 'autotrack', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw//;
+  has Autotrack => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Autotrack' => 'autotrack'
+                     },
+  'IsRequired' => {
+                    'Autotrack' => 1
+                  },
+  'types' => {
+               'Autotrack' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

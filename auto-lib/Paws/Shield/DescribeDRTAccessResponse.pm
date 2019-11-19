@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Shield::DescribeDRTAccessResponse;
-  use Moose;
-  has LogBucketList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RoleArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Shield::Types qw//;
+  has LogBucketList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RoleArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogBucketList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

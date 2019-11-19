@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CloudFront::OriginSslProtocols;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SslProtocol', traits => ['NameInRequest'], required => 1);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str Int/;
+  use Paws::CloudFront::Types qw//;
+  has Items => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Quantity' => 1,
+                    'Items' => 1
+                  },
+  'NameInRequest' => {
+                       'Items' => 'SslProtocol'
+                     },
+  'types' => {
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'Items' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

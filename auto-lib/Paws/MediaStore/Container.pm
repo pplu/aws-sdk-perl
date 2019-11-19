@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::MediaStore::Container;
-  use Moose;
-  has AccessLoggingEnabled => (is => 'ro', isa => 'Bool');
-  has ARN => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Endpoint => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::MediaStore::Types qw//;
+  has AccessLoggingEnabled => (is => 'ro', isa => Bool);
+  has ARN => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Endpoint => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'AccessLoggingEnabled' => {
+                                           'type' => 'Bool'
+                                         },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             },
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

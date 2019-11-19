@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::OpsWorksCM::DescribeEventsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ServerEvents => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::ServerEvent]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::OpsWorksCM::Types qw/OpsWorksCM_ServerEvent/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ServerEvents => (is => 'ro', isa => ArrayRef[OpsWorksCM_ServerEvent]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerEvents' => {
+                                   'type' => 'ArrayRef[OpsWorksCM_ServerEvent]',
+                                   'class' => 'Paws::OpsWorksCM::ServerEvent'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -27,7 +49,7 @@ is C<null>. Setting a C<nextToken> value that was not returned in your
 previous results causes an C<InvalidNextTokenException> to occur.
 
 
-=head2 ServerEvents => ArrayRef[L<Paws::OpsWorksCM::ServerEvent>]
+=head2 ServerEvents => ArrayRef[OpsWorksCM_ServerEvent]
 
 Contains the response to a C<DescribeEvents> request.
 

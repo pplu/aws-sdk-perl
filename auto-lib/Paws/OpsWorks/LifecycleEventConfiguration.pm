@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::LifecycleEventConfiguration;
-  use Moose;
-  has Shutdown => (is => 'ro', isa => 'Paws::OpsWorks::ShutdownEventConfiguration');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::OpsWorks::Types qw/OpsWorks_ShutdownEventConfiguration/;
+  has Shutdown => (is => 'ro', isa => OpsWorks_ShutdownEventConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Shutdown' => {
+                               'class' => 'Paws::OpsWorks::ShutdownEventConfiguration',
+                               'type' => 'OpsWorks_ShutdownEventConfiguration'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Specifies the lifecycle event configuration
 =head1 ATTRIBUTES
 
 
-=head2 Shutdown => L<Paws::OpsWorks::ShutdownEventConfiguration>
+=head2 Shutdown => OpsWorks_ShutdownEventConfiguration
 
   A C<ShutdownEventConfiguration> object that specifies the Shutdown
 event configuration.

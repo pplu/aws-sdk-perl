@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::EC2ResourceDetails;
-  use Moose;
-  has HourlyOnDemandRate => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has Memory => (is => 'ro', isa => 'Str');
-  has NetworkPerformance => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has Sku => (is => 'ro', isa => 'Str');
-  has Storage => (is => 'ro', isa => 'Str');
-  has Vcpu => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has HourlyOnDemandRate => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has Memory => (is => 'ro', isa => Str);
+  has NetworkPerformance => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has Sku => (is => 'ro', isa => Str);
+  has Storage => (is => 'ro', isa => Str);
+  has Vcpu => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Sku' => {
+                          'type' => 'Str'
+                        },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Vcpu' => {
+                           'type' => 'Str'
+                         },
+               'Memory' => {
+                             'type' => 'Str'
+                           },
+               'Storage' => {
+                              'type' => 'Str'
+                            },
+               'HourlyOnDemandRate' => {
+                                         'type' => 'Str'
+                                       },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'NetworkPerformance' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

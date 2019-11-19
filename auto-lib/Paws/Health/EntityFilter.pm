@@ -1,11 +1,56 @@
+# Generated from default/object.tt
 package Paws::Health::EntityFilter;
-  use Moose;
-  has EntityArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'entityArns', traits => ['NameInRequest']);
-  has EntityValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'entityValues', traits => ['NameInRequest']);
-  has EventArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventArns', traits => ['NameInRequest'], required => 1);
-  has LastUpdatedTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', request_name => 'lastUpdatedTimes', traits => ['NameInRequest']);
-  has StatusCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'statusCodes', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Health::TagSet]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::Health::Types qw/Health_DateTimeRange Health_tagSet/;
+  has EntityArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EntityValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EventArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has LastUpdatedTimes => (is => 'ro', isa => ArrayRef[Health_DateTimeRange]);
+  has StatusCodes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Tags => (is => 'ro', isa => ArrayRef[Health_tagSet]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EventArns' => 'eventArns',
+                       'StatusCodes' => 'statusCodes',
+                       'Tags' => 'tags',
+                       'EntityValues' => 'entityValues',
+                       'EntityArns' => 'entityArns',
+                       'LastUpdatedTimes' => 'lastUpdatedTimes'
+                     },
+  'IsRequired' => {
+                    'EventArns' => 1
+                  },
+  'types' => {
+               'StatusCodes' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Health::TagSet',
+                           'type' => 'ArrayRef[Health_tagSet]'
+                         },
+               'EntityValues' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'EventArns' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'LastUpdatedTimes' => {
+                                       'class' => 'Paws::Health::DateTimeRange',
+                                       'type' => 'ArrayRef[Health_DateTimeRange]'
+                                     },
+               'EntityArns' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +104,7 @@ C<"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INS
 "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101">
 
 
-=head2 LastUpdatedTimes => ArrayRef[L<Paws::Health::DateTimeRange>]
+=head2 LastUpdatedTimes => ArrayRef[Health_DateTimeRange]
 
   A list of the most recent dates and times that the entity was updated.
 
@@ -70,7 +115,7 @@ C<"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INS
 C<UNKNOWN>).
 
 
-=head2 Tags => ArrayRef[L<Paws::Health::TagSet>]
+=head2 Tags => ArrayRef[Health_tagSet]
 
   A map of entity tags attached to the affected entity.
 

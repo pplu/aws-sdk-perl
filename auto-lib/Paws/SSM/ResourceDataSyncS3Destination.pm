@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::SSM::ResourceDataSyncS3Destination;
-  use Moose;
-  has AWSKMSKeyARN => (is => 'ro', isa => 'Str');
-  has BucketName => (is => 'ro', isa => 'Str', required => 1);
-  has Prefix => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str', required => 1);
-  has SyncFormat => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has AWSKMSKeyARN => (is => 'ro', isa => Str);
+  has BucketName => (is => 'ro', isa => Str, required => 1);
+  has Prefix => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str, required => 1);
+  has SyncFormat => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SyncFormat' => 1,
+                    'Region' => 1,
+                    'BucketName' => 1
+                  },
+  'types' => {
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'SyncFormat' => {
+                                 'type' => 'Str'
+                               },
+               'AWSKMSKeyARN' => {
+                                   'type' => 'Str'
+                                 },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'Prefix' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,22 @@
 
 package Paws::IoT::GetIndexingConfiguration;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetIndexingConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/indexing/config');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::GetIndexingConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetIndexingConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/indexing/config');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::GetIndexingConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudFormation::ListStackSetOperationResultsOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Summaries => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::StackSetOperationResultSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackSetOperationResultSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Summaries => (is => 'ro', isa => ArrayRef[CloudFormation_StackSetOperationResultSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Summaries' => {
+                                'class' => 'Paws::CloudFormation::StackSetOperationResultSummary',
+                                'type' => 'ArrayRef[CloudFormation_StackSetOperationResultSummary]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +47,7 @@ object's C<NextToken> parameter. If there are no remaining results,
 C<NextToken> is set to C<null>.
 
 
-=head2 Summaries => ArrayRef[L<Paws::CloudFormation::StackSetOperationResultSummary>]
+=head2 Summaries => ArrayRef[CloudFormation_StackSetOperationResultSummary]
 
 A list of C<StackSetOperationResultSummary> structures that contain
 information about the specified operation results, for accounts and

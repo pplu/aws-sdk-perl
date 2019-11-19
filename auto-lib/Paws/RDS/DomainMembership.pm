@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::RDS::DomainMembership;
-  use Moose;
-  has Domain => (is => 'ro', isa => 'Str');
-  has FQDN => (is => 'ro', isa => 'Str');
-  has IAMRoleName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has Domain => (is => 'ro', isa => Str);
+  has FQDN => (is => 'ro', isa => Str);
+  has IAMRoleName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'FQDN' => {
+                           'type' => 'Str'
+                         },
+               'IAMRoleName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,23 @@
 package Paws::EC2::AccountAttributeValue;
-  use Moose;
-  has AttributeValue => (is => 'ro', isa => 'Str', request_name => 'attributeValue', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has AttributeValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AttributeValue' => 'attributeValue'
+                     },
+  'types' => {
+               'AttributeValue' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

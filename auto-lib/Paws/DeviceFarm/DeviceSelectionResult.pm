@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::DeviceSelectionResult;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DeviceFilter]', request_name => 'filters', traits => ['NameInRequest']);
-  has MatchedDevicesCount => (is => 'ro', isa => 'Int', request_name => 'matchedDevicesCount', traits => ['NameInRequest']);
-  has MaxDevices => (is => 'ro', isa => 'Int', request_name => 'maxDevices', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_DeviceFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[DeviceFarm_DeviceFilter]);
+  has MatchedDevicesCount => (is => 'ro', isa => Int);
+  has MaxDevices => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MatchedDevicesCount' => 'matchedDevicesCount',
+                       'Filters' => 'filters',
+                       'MaxDevices' => 'maxDevices'
+                     },
+  'types' => {
+               'MaxDevices' => {
+                                 'type' => 'Int'
+                               },
+               'Filters' => {
+                              'type' => 'ArrayRef[DeviceFarm_DeviceFilter]',
+                              'class' => 'Paws::DeviceFarm::DeviceFilter'
+                            },
+               'MatchedDevicesCount' => {
+                                          'type' => 'Int'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +69,7 @@ of the JSON response syntax, see ScheduleRun.
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::DeviceFarm::DeviceFilter>]
+=head2 Filters => ArrayRef[DeviceFarm_DeviceFilter]
 
   The filters in a device selection result.
 

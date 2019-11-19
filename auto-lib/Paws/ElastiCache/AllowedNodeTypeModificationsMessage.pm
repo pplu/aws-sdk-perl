@@ -1,10 +1,31 @@
+# Generated from callresult_class.tt
 
 package Paws::ElastiCache::AllowedNodeTypeModificationsMessage;
-  use Moose;
-  has ScaleDownModifications => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ScaleUpModifications => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ElastiCache::Types qw//;
+  has ScaleDownModifications => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ScaleUpModifications => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScaleDownModifications' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'ScaleUpModifications' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

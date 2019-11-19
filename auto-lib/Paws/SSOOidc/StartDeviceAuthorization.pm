@@ -1,16 +1,47 @@
 
 package Paws::SSOOidc::StartDeviceAuthorization;
-  use Moose;
-  has ClientId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientId', required => 1);
-  has ClientSecret => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientSecret', required => 1);
-  has StartUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startUrl', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSOOidc::Types qw//;
+  has ClientId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientSecret => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartUrl => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartDeviceAuthorization');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/device_authorization');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSOOidc::StartDeviceAuthorizationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartDeviceAuthorization');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/device_authorization');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSOOidc::StartDeviceAuthorizationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ClientSecret' => 'clientSecret',
+                       'StartUrl' => 'startUrl',
+                       'ClientId' => 'clientId'
+                     },
+  'IsRequired' => {
+                    'ClientId' => 1,
+                    'ClientSecret' => 1,
+                    'StartUrl' => 1
+                  },
+  'types' => {
+               'ClientSecret' => {
+                                   'type' => 'Str'
+                                 },
+               'StartUrl' => {
+                               'type' => 'Str'
+                             },
+               'ClientId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

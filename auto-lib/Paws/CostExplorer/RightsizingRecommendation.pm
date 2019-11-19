@@ -1,10 +1,42 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::RightsizingRecommendation;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has CurrentInstance => (is => 'ro', isa => 'Paws::CostExplorer::CurrentInstance');
-  has ModifyRecommendationDetail => (is => 'ro', isa => 'Paws::CostExplorer::ModifyRecommendationDetail');
-  has RightsizingType => (is => 'ro', isa => 'Str');
-  has TerminateRecommendationDetail => (is => 'ro', isa => 'Paws::CostExplorer::TerminateRecommendationDetail');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw/CostExplorer_TerminateRecommendationDetail CostExplorer_CurrentInstance CostExplorer_ModifyRecommendationDetail/;
+  has AccountId => (is => 'ro', isa => Str);
+  has CurrentInstance => (is => 'ro', isa => CostExplorer_CurrentInstance);
+  has ModifyRecommendationDetail => (is => 'ro', isa => CostExplorer_ModifyRecommendationDetail);
+  has RightsizingType => (is => 'ro', isa => Str);
+  has TerminateRecommendationDetail => (is => 'ro', isa => CostExplorer_TerminateRecommendationDetail);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrentInstance' => {
+                                      'class' => 'Paws::CostExplorer::CurrentInstance',
+                                      'type' => 'CostExplorer_CurrentInstance'
+                                    },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'RightsizingType' => {
+                                      'type' => 'Str'
+                                    },
+               'TerminateRecommendationDetail' => {
+                                                    'class' => 'Paws::CostExplorer::TerminateRecommendationDetail',
+                                                    'type' => 'CostExplorer_TerminateRecommendationDetail'
+                                                  },
+               'ModifyRecommendationDetail' => {
+                                                 'type' => 'CostExplorer_ModifyRecommendationDetail',
+                                                 'class' => 'Paws::CostExplorer::ModifyRecommendationDetail'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,12 +77,12 @@ Recommendations to rightsize resources.
   The account that this recommendation is for.
 
 
-=head2 CurrentInstance => L<Paws::CostExplorer::CurrentInstance>
+=head2 CurrentInstance => CostExplorer_CurrentInstance
 
   Context regarding the current instance.
 
 
-=head2 ModifyRecommendationDetail => L<Paws::CostExplorer::ModifyRecommendationDetail>
+=head2 ModifyRecommendationDetail => CostExplorer_ModifyRecommendationDetail
 
   Details for modification recommendations.
 
@@ -60,7 +92,7 @@ Recommendations to rightsize resources.
   Recommendation to either terminate or modify the resource.
 
 
-=head2 TerminateRecommendationDetail => L<Paws::CostExplorer::TerminateRecommendationDetail>
+=head2 TerminateRecommendationDetail => CostExplorer_TerminateRecommendationDetail
 
   Details for termination recommendations.
 

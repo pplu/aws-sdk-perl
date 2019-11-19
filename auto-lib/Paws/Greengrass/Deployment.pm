@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::Greengrass::Deployment;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has DeploymentArn => (is => 'ro', isa => 'Str');
-  has DeploymentId => (is => 'ro', isa => 'Str');
-  has DeploymentType => (is => 'ro', isa => 'Str');
-  has GroupArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DeploymentArn => (is => 'ro', isa => Str);
+  has DeploymentId => (is => 'ro', isa => Str);
+  has DeploymentType => (is => 'ro', isa => Str);
+  has GroupArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupArn' => {
+                               'type' => 'Str'
+                             },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'DeploymentType' => {
+                                     'type' => 'Str'
+                                   },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'DeploymentArn' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

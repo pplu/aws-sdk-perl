@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::AnalyticsConfigurationType;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
-  has ExternalId => (is => 'ro', isa => 'Str', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has UserDataShared => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CognitoIdp::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has ExternalId => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has UserDataShared => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ExternalId' => {
+                                 'type' => 'Str'
+                               },
+               'UserDataShared' => {
+                                     'type' => 'Bool'
+                                   }
+             },
+  'IsRequired' => {
+                    'ExternalId' => 1,
+                    'ApplicationId' => 1,
+                    'RoleArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

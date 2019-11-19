@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Lightsail::AvailabilityZone;
-  use Moose;
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has ZoneName => (is => 'ro', isa => 'Str', request_name => 'zoneName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has State => (is => 'ro', isa => Str);
+  has ZoneName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ZoneName' => 'zoneName',
+                       'State' => 'state'
+                     },
+  'types' => {
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'ZoneName' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

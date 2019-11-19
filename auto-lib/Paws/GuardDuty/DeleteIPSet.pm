@@ -1,15 +1,41 @@
 
 package Paws::GuardDuty::DeleteIPSet;
-  use Moose;
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has IpSetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ipSetId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IpSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteIPSet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/ipset/{ipSetId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::DeleteIPSetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteIPSet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/ipset/{ipSetId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::DeleteIPSetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'IpSetId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'DetectorId' => 1,
+                    'IpSetId' => 1
+                  },
+  'ParamInURI' => {
+                    'IpSetId' => 'ipSetId',
+                    'DetectorId' => 'detectorId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

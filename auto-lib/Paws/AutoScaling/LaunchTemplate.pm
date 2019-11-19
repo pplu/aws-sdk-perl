@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::LaunchTemplate;
-  use Moose;
-  has LaunchTemplateSpecification => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
-  has Overrides => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LaunchTemplateOverrides]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_LaunchTemplateSpecification AutoScaling_LaunchTemplateOverrides/;
+  has LaunchTemplateSpecification => (is => 'ro', isa => AutoScaling_LaunchTemplateSpecification);
+  has Overrides => (is => 'ro', isa => ArrayRef[AutoScaling_LaunchTemplateOverrides]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Overrides' => {
+                                'type' => 'ArrayRef[AutoScaling_LaunchTemplateOverrides]',
+                                'class' => 'Paws::AutoScaling::LaunchTemplateOverrides'
+                              },
+               'LaunchTemplateSpecification' => {
+                                                  'class' => 'Paws::AutoScaling::LaunchTemplateSpecification',
+                                                  'type' => 'AutoScaling_LaunchTemplateSpecification'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,13 +69,13 @@ group's termination policies.
 =head1 ATTRIBUTES
 
 
-=head2 LaunchTemplateSpecification => L<Paws::AutoScaling::LaunchTemplateSpecification>
+=head2 LaunchTemplateSpecification => AutoScaling_LaunchTemplateSpecification
 
   The launch template to use. You must specify either the launch template
 ID or launch template name in the request.
 
 
-=head2 Overrides => ArrayRef[L<Paws::AutoScaling::LaunchTemplateOverrides>]
+=head2 Overrides => ArrayRef[AutoScaling_LaunchTemplateOverrides]
 
   An optional setting. Any parameters that you specify override the same
 parameters in the launch template. Currently, the only supported

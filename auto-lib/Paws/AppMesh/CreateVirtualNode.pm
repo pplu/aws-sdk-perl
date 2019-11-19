@@ -1,18 +1,61 @@
 
 package Paws::AppMesh::CreateVirtualNode;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has MeshName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meshName', required => 1);
-  has Spec => (is => 'ro', isa => 'Paws::AppMesh::VirtualNodeSpec', traits => ['NameInRequest'], request_name => 'spec', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::TagRef]', traits => ['NameInRequest'], request_name => 'tags');
-  has VirtualNodeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualNodeName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppMesh::Types qw/AppMesh_TagRef AppMesh_VirtualNodeSpec/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has MeshName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Spec => (is => 'ro', isa => AppMesh_VirtualNodeSpec, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[AppMesh_TagRef], predicate => 1);
+  has VirtualNodeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVirtualNode');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}/virtualNodes');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::CreateVirtualNodeOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateVirtualNode');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20190125/meshes/{meshName}/virtualNodes');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppMesh::CreateVirtualNodeOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MeshName' => {
+                               'type' => 'Str'
+                             },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'VirtualNodeName' => {
+                                      'type' => 'Str'
+                                    },
+               'Spec' => {
+                           'class' => 'Paws::AppMesh::VirtualNodeSpec',
+                           'type' => 'AppMesh_VirtualNodeSpec'
+                         },
+               'Tags' => {
+                           'class' => 'Paws::AppMesh::TagRef',
+                           'type' => 'ArrayRef[AppMesh_TagRef]'
+                         }
+             },
+  'NameInRequest' => {
+                       'ClientToken' => 'clientToken',
+                       'VirtualNodeName' => 'virtualNodeName',
+                       'Spec' => 'spec',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'MeshName' => 1,
+                    'Spec' => 1,
+                    'VirtualNodeName' => 1
+                  },
+  'ParamInURI' => {
+                    'MeshName' => 'meshName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -127,13 +170,13 @@ The name of the service mesh to create the virtual node in.
 
 
 
-=head2 B<REQUIRED> Spec => L<Paws::AppMesh::VirtualNodeSpec>
+=head2 B<REQUIRED> Spec => AppMesh_VirtualNodeSpec
 
 The virtual node specification to apply.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::AppMesh::TagRef>]
+=head2 Tags => ArrayRef[AppMesh_TagRef]
 
 Optional metadata that you can apply to the virtual node to assist with
 categorization and organization. Each tag consists of a key and an

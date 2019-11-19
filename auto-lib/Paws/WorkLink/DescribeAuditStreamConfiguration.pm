@@ -1,14 +1,32 @@
 
 package Paws::WorkLink::DescribeAuditStreamConfiguration;
-  use Moose;
-  has FleetArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has FleetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAuditStreamConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/describeAuditStreamConfiguration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkLink::DescribeAuditStreamConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAuditStreamConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/describeAuditStreamConfiguration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkLink::DescribeAuditStreamConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FleetArn' => 1
+                  },
+  'types' => {
+               'FleetArn' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

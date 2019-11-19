@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WorkSpaces::DescribeTagsResult;
-  use Moose;
-  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_Tag/;
+  has TagList => (is => 'ro', isa => ArrayRef[WorkSpaces_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TagList' => {
+                              'type' => 'ArrayRef[WorkSpaces_Tag]',
+                              'class' => 'Paws::WorkSpaces::Tag'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::WorkSpaces::DescribeTagsResult
 =head1 ATTRIBUTES
 
 
-=head2 TagList => ArrayRef[L<Paws::WorkSpaces::Tag>]
+=head2 TagList => ArrayRef[WorkSpaces_Tag]
 
 The tags.
 

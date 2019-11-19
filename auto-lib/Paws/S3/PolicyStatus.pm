@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::S3::PolicyStatus;
-  use Moose;
-  has IsPublic => (is => 'ro', isa => 'Bool', request_name => 'IsPublic', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::S3::Types qw//;
+  has IsPublic => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'IsPublic' => 'IsPublic'
+                     },
+  'types' => {
+               'IsPublic' => {
+                               'type' => 'Bool'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

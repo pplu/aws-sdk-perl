@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::UpdateConfigurationSetTrackingOptions;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', required => 1);
-  has TrackingOptions => (is => 'ro', isa => 'Paws::SES::TrackingOptions', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw/SES_TrackingOptions/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TrackingOptions => (is => 'ro', isa => SES_TrackingOptions, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationSetTrackingOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::UpdateConfigurationSetTrackingOptionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationSetTrackingOptionsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateConfigurationSetTrackingOptions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::UpdateConfigurationSetTrackingOptionsResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateConfigurationSetTrackingOptionsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrackingOptions' => {
+                                      'class' => 'Paws::SES::TrackingOptions',
+                                      'type' => 'SES_TrackingOptions'
+                                    },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1,
+                    'TrackingOptions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +74,7 @@ custom tracking domain.
 
 
 
-=head2 B<REQUIRED> TrackingOptions => L<Paws::SES::TrackingOptions>
+=head2 B<REQUIRED> TrackingOptions => SES_TrackingOptions
 
 
 

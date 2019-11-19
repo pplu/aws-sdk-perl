@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::Forecast::ContinuousParameterRange;
-  use Moose;
-  has MaxValue => (is => 'ro', isa => 'Num', required => 1);
-  has MinValue => (is => 'ro', isa => 'Num', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ScalingType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Str/;
+  use Paws::Forecast::Types qw//;
+  has MaxValue => (is => 'ro', isa => Num, required => 1);
+  has MinValue => (is => 'ro', isa => Num, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has ScalingType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MaxValue' => 1,
+                    'MinValue' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'MaxValue' => {
+                               'type' => 'Num'
+                             },
+               'ScalingType' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MinValue' => {
+                               'type' => 'Num'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

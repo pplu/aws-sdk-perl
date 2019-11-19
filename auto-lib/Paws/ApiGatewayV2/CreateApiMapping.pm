@@ -1,17 +1,54 @@
 
 package Paws::ApiGatewayV2::CreateApiMapping;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiId', required => 1);
-  has ApiMappingKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiMappingKey');
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
-  has Stage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stage', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ApiMappingKey => (is => 'ro', isa => Str, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Stage => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApiMapping');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/domainnames/{domainName}/apimappings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::CreateApiMappingResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApiMapping');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/domainnames/{domainName}/apimappings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::CreateApiMappingResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DomainName' => 'domainName'
+                  },
+  'NameInRequest' => {
+                       'ApiId' => 'apiId',
+                       'Stage' => 'stage',
+                       'ApiMappingKey' => 'apiMappingKey'
+                     },
+  'IsRequired' => {
+                    'ApiId' => 1,
+                    'Stage' => 1,
+                    'DomainName' => 1
+                  },
+  'types' => {
+               'ApiMappingKey' => {
+                                    'type' => 'Str'
+                                  },
+               'Stage' => {
+                            'type' => 'Str'
+                          },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'ApiId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

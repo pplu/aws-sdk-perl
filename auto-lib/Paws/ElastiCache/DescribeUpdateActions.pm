@@ -1,22 +1,66 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::DescribeUpdateActions;
-  use Moose;
-  has CacheClusterIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Engine => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has ReplicationGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ServiceUpdateName => (is => 'ro', isa => 'Str');
-  has ServiceUpdateStatus => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ServiceUpdateTimeRange => (is => 'ro', isa => 'Paws::ElastiCache::TimeRangeFilter');
-  has ShowNodeLevelUpdateStatus => (is => 'ro', isa => 'Bool');
-  has UpdateActionStatus => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int Bool/;
+  use Paws::ElastiCache::Types qw/ElastiCache_TimeRangeFilter/;
+  has CacheClusterIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Engine => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has ReplicationGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ServiceUpdateName => (is => 'ro', isa => Str, predicate => 1);
+  has ServiceUpdateStatus => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ServiceUpdateTimeRange => (is => 'ro', isa => ElastiCache_TimeRangeFilter, predicate => 1);
+  has ShowNodeLevelUpdateStatus => (is => 'ro', isa => Bool, predicate => 1);
+  has UpdateActionStatus => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUpdateActions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::UpdateActionsMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeUpdateActionsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeUpdateActions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::UpdateActionsMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeUpdateActionsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'ServiceUpdateStatus' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'ShowNodeLevelUpdateStatus' => {
+                                                'type' => 'Bool'
+                                              },
+               'ServiceUpdateName' => {
+                                        'type' => 'Str'
+                                      },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'ReplicationGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'UpdateActionStatus' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'ServiceUpdateTimeRange' => {
+                                             'type' => 'ElastiCache_TimeRangeFilter',
+                                             'class' => 'Paws::ElastiCache::TimeRangeFilter'
+                                           },
+               'CacheClusterIds' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -115,7 +159,7 @@ The status of the service update
 
 
 
-=head2 ServiceUpdateTimeRange => L<Paws::ElastiCache::TimeRangeFilter>
+=head2 ServiceUpdateTimeRange => ElastiCache_TimeRangeFilter
 
 The range of time specified to search for service updates that are in
 available status

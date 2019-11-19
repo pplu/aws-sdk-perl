@@ -1,8 +1,42 @@
+# Generated from default/object.tt
 package Paws::Robomaker::DeploymentApplicationConfig;
-  use Moose;
-  has Application => (is => 'ro', isa => 'Str', request_name => 'application', traits => ['NameInRequest'], required => 1);
-  has ApplicationVersion => (is => 'ro', isa => 'Str', request_name => 'applicationVersion', traits => ['NameInRequest'], required => 1);
-  has LaunchConfig => (is => 'ro', isa => 'Paws::Robomaker::DeploymentLaunchConfig', request_name => 'launchConfig', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw/Robomaker_DeploymentLaunchConfig/;
+  has Application => (is => 'ro', isa => Str, required => 1);
+  has ApplicationVersion => (is => 'ro', isa => Str, required => 1);
+  has LaunchConfig => (is => 'ro', isa => Robomaker_DeploymentLaunchConfig, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ApplicationVersion' => 'applicationVersion',
+                       'Application' => 'application',
+                       'LaunchConfig' => 'launchConfig'
+                     },
+  'IsRequired' => {
+                    'LaunchConfig' => 1,
+                    'Application' => 1,
+                    'ApplicationVersion' => 1
+                  },
+  'types' => {
+               'ApplicationVersion' => {
+                                         'type' => 'Str'
+                                       },
+               'Application' => {
+                                  'type' => 'Str'
+                                },
+               'LaunchConfig' => {
+                                   'type' => 'Robomaker_DeploymentLaunchConfig',
+                                   'class' => 'Paws::Robomaker::DeploymentLaunchConfig'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +82,7 @@ Information about a deployment application configuration.
   The version of the application.
 
 
-=head2 B<REQUIRED> LaunchConfig => L<Paws::Robomaker::DeploymentLaunchConfig>
+=head2 B<REQUIRED> LaunchConfig => Robomaker_DeploymentLaunchConfig
 
   The launch configuration.
 

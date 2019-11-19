@@ -1,15 +1,16 @@
 package Paws::S3;
   warn "Paws::S3 is not stable / supported / entirely developed" unless $ENV{'PAWS_SILENCE_UNSTABLE_WARNINGS'};
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 's3' }
   sub signing_name { 's3' }
   sub version { '2006-03-01' }
   sub flattened_arrays { 1 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'BadDigest' },
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'RequestTimeout' },
   ] });
@@ -781,7 +782,7 @@ ListMultipartUploads
 
 =item UploadId => Str
 
-=item [MultipartUpload => L<Paws::S3::CompletedMultipartUpload>]
+=item [MultipartUpload => S3_CompletedMultipartUpload]
 
 =item [RequestPayer => Str]
 
@@ -979,7 +980,7 @@ ListMultipartUploads
 
 =item [GrantWriteACP => Str]
 
-=item [Metadata => L<Paws::S3::Metadata>]
+=item [Metadata => S3_Metadata]
 
 =item [MetadataDirective => Str]
 
@@ -1398,7 +1399,7 @@ For more information, see Copying Objects
 
 =item [ContentLength => Int]
 
-=item [CreateBucketConfiguration => L<Paws::S3::CreateBucketConfiguration>]
+=item [CreateBucketConfiguration => S3_CreateBucketConfiguration]
 
 =item [GrantFullControl => Str]
 
@@ -1550,7 +1551,7 @@ DeleteBucket
 
 =item [GrantWriteACP => Str]
 
-=item [Metadata => L<Paws::S3::Metadata>]
+=item [Metadata => S3_Metadata]
 
 =item [ObjectLockLegalHoldStatus => Str]
 
@@ -2425,7 +2426,7 @@ PutObject
 
 =item Bucket => Str
 
-=item Delete => L<Paws::S3::Delete>
+=item Delete => S3_Delete
 
 =item [BypassGovernanceRetention => Bool]
 
@@ -4777,7 +4778,7 @@ ListMultipartUploads
 
 =over
 
-=item AccelerateConfiguration => L<Paws::S3::AccelerateConfiguration>
+=item AccelerateConfiguration => S3_AccelerateConfiguration
 
 =item Bucket => Str
 
@@ -4855,7 +4856,7 @@ CreateBucket
 
 =item Bucket => Str
 
-=item [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>]
+=item [AccessControlPolicy => S3_AccessControlPolicy]
 
 =item [ACL => Str]
 
@@ -5031,7 +5032,7 @@ GetObjectAcl
 
 =over
 
-=item AnalyticsConfiguration => L<Paws::S3::AnalyticsConfiguration>
+=item AnalyticsConfiguration => S3_AnalyticsConfiguration
 
 =item Bucket => Str
 
@@ -5159,7 +5160,7 @@ B<Related Resources>
 
 =item Bucket => Str
 
-=item CORSConfiguration => L<Paws::S3::CORSConfiguration>
+=item CORSConfiguration => S3_CORSConfiguration
 
 =item [ContentLength => Int]
 
@@ -5246,7 +5247,7 @@ RESTOPTIONSobject
 
 =item Bucket => Str
 
-=item ServerSideEncryptionConfiguration => L<Paws::S3::ServerSideEncryptionConfiguration>
+=item ServerSideEncryptionConfiguration => S3_ServerSideEncryptionConfiguration
 
 =item [ContentLength => Int]
 
@@ -5308,7 +5309,7 @@ DeleteBucketEncryption
 
 =item Id => Str
 
-=item InventoryConfiguration => L<Paws::S3::InventoryConfiguration>
+=item InventoryConfiguration => S3_InventoryConfiguration
 
 =item [ContentLength => Int]
 
@@ -5442,7 +5443,7 @@ ListBucketInventoryConfigurations
 
 =item [ContentMD5 => Str]
 
-=item [LifecycleConfiguration => L<Paws::S3::LifecycleConfiguration>]
+=item [LifecycleConfiguration => S3_LifecycleConfiguration]
 
 
 =back
@@ -5546,7 +5547,7 @@ Managing Access Permissions to your Amazon S3 Resources
 
 =item Bucket => Str
 
-=item [LifecycleConfiguration => L<Paws::S3::BucketLifecycleConfiguration>]
+=item [LifecycleConfiguration => S3_BucketLifecycleConfiguration]
 
 
 =back
@@ -5664,7 +5665,7 @@ DeleteBucketLifecycle
 
 =item Bucket => Str
 
-=item BucketLoggingStatus => L<Paws::S3::BucketLoggingStatus>
+=item BucketLoggingStatus => S3_BucketLoggingStatus
 
 =item [ContentLength => Int]
 
@@ -5770,7 +5771,7 @@ GetBucketLogging
 
 =item Id => Str
 
-=item MetricsConfiguration => L<Paws::S3::MetricsConfiguration>
+=item MetricsConfiguration => S3_MetricsConfiguration
 
 =item [ContentLength => Int]
 
@@ -5850,7 +5851,7 @@ HTTP Status Code: HTTP 400 Bad Request
 
 =item Bucket => Str
 
-=item NotificationConfiguration => L<Paws::S3::NotificationConfigurationDeprecated>
+=item NotificationConfiguration => S3_NotificationConfigurationDeprecated
 
 =item [ContentLength => Int]
 
@@ -5872,7 +5873,7 @@ No longer used, see the PutBucketNotificationConfiguration operation.
 
 =item Bucket => Str
 
-=item NotificationConfiguration => L<Paws::S3::NotificationConfiguration>
+=item NotificationConfiguration => S3_NotificationConfiguration
 
 
 =back
@@ -6011,7 +6012,7 @@ DeleteBucket
 
 =item Bucket => Str
 
-=item ReplicationConfiguration => L<Paws::S3::ReplicationConfiguration>
+=item ReplicationConfiguration => S3_ReplicationConfiguration
 
 =item [ContentLength => Int]
 
@@ -6158,7 +6159,7 @@ DeleteBucketReplication
 
 =item Bucket => Str
 
-=item RequestPaymentConfiguration => L<Paws::S3::RequestPaymentConfiguration>
+=item RequestPaymentConfiguration => S3_RequestPaymentConfiguration
 
 =item [ContentLength => Int]
 
@@ -6200,7 +6201,7 @@ GetBucketRequestPayment
 
 =item Bucket => Str
 
-=item Tagging => L<Paws::S3::Tagging>
+=item Tagging => S3_Tagging
 
 =item [ContentLength => Int]
 
@@ -6322,7 +6323,7 @@ DeleteBucketTagging
 
 =item Bucket => Str
 
-=item VersioningConfiguration => L<Paws::S3::VersioningConfiguration>
+=item VersioningConfiguration => S3_VersioningConfiguration
 
 =item [ContentLength => Int]
 
@@ -6393,7 +6394,7 @@ GetBucketVersioning
 
 =item Bucket => Str
 
-=item WebsiteConfiguration => L<Paws::S3::WebsiteConfiguration>
+=item WebsiteConfiguration => S3_WebsiteConfiguration
 
 =item [ContentLength => Int]
 
@@ -6556,7 +6557,7 @@ HttpRedirectCode
 
 =item [GrantWriteACP => Str]
 
-=item [Metadata => L<Paws::S3::Metadata>]
+=item [Metadata => S3_Metadata]
 
 =item [ObjectLockLegalHoldStatus => Str]
 
@@ -6986,7 +6987,7 @@ DeleteObject
 
 =item Key => Str
 
-=item [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>]
+=item [AccessControlPolicy => S3_AccessControlPolicy]
 
 =item [ACL => Str]
 
@@ -7152,7 +7153,7 @@ GetObject
 
 =item [ContentMD5 => Str]
 
-=item [LegalHold => L<Paws::S3::ObjectLockLegalHold>]
+=item [LegalHold => S3_ObjectLockLegalHold]
 
 =item [RequestPayer => Str]
 
@@ -7188,7 +7189,7 @@ Locking Objects
 
 =item [ContentMD5 => Str]
 
-=item [ObjectLockConfiguration => L<Paws::S3::ObjectLockConfiguration>]
+=item [ObjectLockConfiguration => S3_ObjectLockConfiguration]
 
 =item [RequestPayer => Str]
 
@@ -7235,7 +7236,7 @@ Locking Objects
 
 =item [RequestPayer => Str]
 
-=item [Retention => L<Paws::S3::ObjectLockRetention>]
+=item [Retention => S3_ObjectLockRetention]
 
 =item [VersionId => Str]
 
@@ -7269,7 +7270,7 @@ Locking Objects
 
 =item Key => Str
 
-=item Tagging => L<Paws::S3::Tagging>
+=item Tagging => S3_Tagging
 
 =item [ContentLength => Int]
 
@@ -7397,7 +7398,7 @@ GetObjectTagging
 
 =item Bucket => Str
 
-=item PublicAccessBlockConfiguration => L<Paws::S3::PublicAccessBlockConfiguration>
+=item PublicAccessBlockConfiguration => S3_PublicAccessBlockConfiguration
 
 =item [ContentMD5 => Str]
 
@@ -7462,7 +7463,7 @@ Using Amazon S3 Block Public Access
 
 =item [RequestPayer => Str]
 
-=item [RestoreRequest => L<Paws::S3::RestoreRequest>]
+=item [RestoreRequest => S3_RestoreRequest]
 
 =item [VersionId => Str]
 
@@ -7833,15 +7834,15 @@ in the I<Amazon Simple Storage Service Developer Guide>
 
 =item ExpressionType => Str
 
-=item InputSerialization => L<Paws::S3::InputSerialization>
+=item InputSerialization => S3_InputSerialization
 
 =item Key => Str
 
-=item OutputSerialization => L<Paws::S3::OutputSerialization>
+=item OutputSerialization => S3_OutputSerialization
 
-=item [RequestProgress => L<Paws::S3::RequestProgress>]
+=item [RequestProgress => S3_RequestProgress]
 
-=item [ScanRange => L<Paws::S3::ScanRange>]
+=item [ScanRange => S3_ScanRange]
 
 =item [SSECustomerAlgorithm => Str]
 

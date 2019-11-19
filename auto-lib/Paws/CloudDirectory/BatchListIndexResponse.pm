@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchListIndexResponse;
-  use Moose;
-  has IndexAttachments => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::IndexAttachment]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_IndexAttachment/;
+  has IndexAttachments => (is => 'ro', isa => ArrayRef[CloudDirectory_IndexAttachment]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'IndexAttachments' => {
+                                       'type' => 'ArrayRef[CloudDirectory_IndexAttachment]',
+                                       'class' => 'Paws::CloudDirectory::IndexAttachment'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Represents the output of a ListIndex response operation.
 =head1 ATTRIBUTES
 
 
-=head2 IndexAttachments => ArrayRef[L<Paws::CloudDirectory::IndexAttachment>]
+=head2 IndexAttachments => ArrayRef[CloudDirectory_IndexAttachment]
 
   The objects and indexed values attached to the index.
 

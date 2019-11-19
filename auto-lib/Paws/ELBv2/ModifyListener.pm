@@ -1,18 +1,54 @@
+# Generated from callargs_class.tt
 
 package Paws::ELBv2::ModifyListener;
-  use Moose;
-  has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Certificate]');
-  has DefaultActions => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Action]');
-  has ListenerArn => (is => 'ro', isa => 'Str', required => 1);
-  has Port => (is => 'ro', isa => 'Int');
-  has Protocol => (is => 'ro', isa => 'Str');
-  has SslPolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::ELBv2::Types qw/ELBv2_Certificate ELBv2_Action/;
+  has Certificates => (is => 'ro', isa => ArrayRef[ELBv2_Certificate], predicate => 1);
+  has DefaultActions => (is => 'ro', isa => ArrayRef[ELBv2_Action], predicate => 1);
+  has ListenerArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has Protocol => (is => 'ro', isa => Str, predicate => 1);
+  has SslPolicy => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyListener');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELBv2::ModifyListenerOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyListenerResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyListener');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELBv2::ModifyListenerOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyListenerResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ListenerArn' => 1
+                  },
+  'types' => {
+               'DefaultActions' => {
+                                     'type' => 'ArrayRef[ELBv2_Action]',
+                                     'class' => 'Paws::ELBv2::Action'
+                                   },
+               'SslPolicy' => {
+                                'type' => 'Str'
+                              },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'ListenerArn' => {
+                                  'type' => 'Str'
+                                },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'Certificates' => {
+                                   'type' => 'ArrayRef[ELBv2_Certificate]',
+                                   'class' => 'Paws::ELBv2::Certificate'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +113,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
+=head2 Certificates => ArrayRef[ELBv2_Certificate]
 
 [HTTPS and TLS listeners] The default certificate for the listener. You
 must provide exactly one certificate. Set C<CertificateArn> to the
@@ -87,7 +123,7 @@ To create a certificate list, use AddListenerCertificates.
 
 
 
-=head2 DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
+=head2 DefaultActions => ArrayRef[ELBv2_Action]
 
 The actions for the default rule. The rule must include one forward
 action or one or more fixed-response actions.

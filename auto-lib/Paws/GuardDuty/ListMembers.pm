@@ -1,17 +1,52 @@
 
 package Paws::GuardDuty::ListMembers;
-  use Moose;
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has OnlyAssociated => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'onlyAssociated');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::GuardDuty::Types qw//;
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has OnlyAssociated => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListMembers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/member');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::ListMembersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListMembers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/member');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::ListMembersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'OnlyAssociated' => {
+                                     'type' => 'Str'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'IsRequired' => {
+                    'DetectorId' => 1
+                  },
+  'ParamInQuery' => {
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken',
+                      'OnlyAssociated' => 'onlyAssociated'
+                    },
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

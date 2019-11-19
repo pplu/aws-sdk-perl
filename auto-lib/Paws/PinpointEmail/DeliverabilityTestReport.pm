@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::DeliverabilityTestReport;
-  use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has DeliverabilityTestStatus => (is => 'ro', isa => 'Str');
-  has FromEmailAddress => (is => 'ro', isa => 'Str');
-  has ReportId => (is => 'ro', isa => 'Str');
-  has ReportName => (is => 'ro', isa => 'Str');
-  has Subject => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has CreateDate => (is => 'ro', isa => Str);
+  has DeliverabilityTestStatus => (is => 'ro', isa => Str);
+  has FromEmailAddress => (is => 'ro', isa => Str);
+  has ReportId => (is => 'ro', isa => Str);
+  has ReportName => (is => 'ro', isa => Str);
+  has Subject => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'FromEmailAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'ReportId' => {
+                               'type' => 'Str'
+                             },
+               'ReportName' => {
+                                 'type' => 'Str'
+                               },
+               'DeliverabilityTestStatus' => {
+                                               'type' => 'Str'
+                                             },
+               'Subject' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

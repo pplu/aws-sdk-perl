@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::IoT::TopicRuleDestinationSummary;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has HttpUrlSummary => (is => 'ro', isa => 'Paws::IoT::HttpUrlDestinationSummary', request_name => 'httpUrlSummary', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_HttpUrlDestinationSummary/;
+  has Arn => (is => 'ro', isa => Str);
+  has HttpUrlSummary => (is => 'ro', isa => IoT_HttpUrlDestinationSummary);
+  has Status => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'HttpUrlSummary' => {
+                                     'class' => 'Paws::IoT::HttpUrlDestinationSummary',
+                                     'type' => 'IoT_HttpUrlDestinationSummary'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'StatusReason' => 'statusReason',
+                       'HttpUrlSummary' => 'httpUrlSummary',
+                       'Arn' => 'arn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +77,7 @@ Information about the topic rule destination.
   The topic rule destination ARN.
 
 
-=head2 HttpUrlSummary => L<Paws::IoT::HttpUrlDestinationSummary>
+=head2 HttpUrlSummary => IoT_HttpUrlDestinationSummary
 
   Information about the HTTP URL.
 

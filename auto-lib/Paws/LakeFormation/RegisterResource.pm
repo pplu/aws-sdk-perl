@@ -1,15 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::LakeFormation::RegisterResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has UseServiceLinkedRole => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::LakeFormation::Types qw//;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has UseServiceLinkedRole => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LakeFormation::RegisterResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LakeFormation::RegisterResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceArn' => 1
+                  },
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'UseServiceLinkedRole' => {
+                                           'type' => 'Bool'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

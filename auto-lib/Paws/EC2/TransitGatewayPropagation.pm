@@ -1,10 +1,43 @@
 package Paws::EC2::TransitGatewayPropagation;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has TransitGatewayAttachmentId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayAttachmentId', traits => ['NameInRequest']);
-  has TransitGatewayRouteTableId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayRouteTableId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has TransitGatewayAttachmentId => (is => 'ro', isa => Str);
+  has TransitGatewayRouteTableId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ResourceType' => 'resourceType',
+                       'State' => 'state',
+                       'TransitGatewayAttachmentId' => 'transitGatewayAttachmentId',
+                       'TransitGatewayRouteTableId' => 'transitGatewayRouteTableId',
+                       'ResourceId' => 'resourceId'
+                     },
+  'types' => {
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'TransitGatewayAttachmentId' => {
+                                                 'type' => 'Str'
+                                               },
+               'TransitGatewayRouteTableId' => {
+                                                 'type' => 'Str'
+                                               },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

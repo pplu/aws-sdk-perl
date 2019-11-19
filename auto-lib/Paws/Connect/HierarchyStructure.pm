@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::Connect::HierarchyStructure;
-  use Moose;
-  has LevelFive => (is => 'ro', isa => 'Paws::Connect::HierarchyLevel');
-  has LevelFour => (is => 'ro', isa => 'Paws::Connect::HierarchyLevel');
-  has LevelOne => (is => 'ro', isa => 'Paws::Connect::HierarchyLevel');
-  has LevelThree => (is => 'ro', isa => 'Paws::Connect::HierarchyLevel');
-  has LevelTwo => (is => 'ro', isa => 'Paws::Connect::HierarchyLevel');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Connect::Types qw/Connect_HierarchyLevel/;
+  has LevelFive => (is => 'ro', isa => Connect_HierarchyLevel);
+  has LevelFour => (is => 'ro', isa => Connect_HierarchyLevel);
+  has LevelOne => (is => 'ro', isa => Connect_HierarchyLevel);
+  has LevelThree => (is => 'ro', isa => Connect_HierarchyLevel);
+  has LevelTwo => (is => 'ro', isa => Connect_HierarchyLevel);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LevelThree' => {
+                                 'class' => 'Paws::Connect::HierarchyLevel',
+                                 'type' => 'Connect_HierarchyLevel'
+                               },
+               'LevelOne' => {
+                               'type' => 'Connect_HierarchyLevel',
+                               'class' => 'Paws::Connect::HierarchyLevel'
+                             },
+               'LevelTwo' => {
+                               'class' => 'Paws::Connect::HierarchyLevel',
+                               'type' => 'Connect_HierarchyLevel'
+                             },
+               'LevelFive' => {
+                                'type' => 'Connect_HierarchyLevel',
+                                'class' => 'Paws::Connect::HierarchyLevel'
+                              },
+               'LevelFour' => {
+                                'class' => 'Paws::Connect::HierarchyLevel',
+                                'type' => 'Connect_HierarchyLevel'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,27 +74,27 @@ Contains information about a hierarchy structure.
 =head1 ATTRIBUTES
 
 
-=head2 LevelFive => L<Paws::Connect::HierarchyLevel>
+=head2 LevelFive => Connect_HierarchyLevel
 
   Information about level five.
 
 
-=head2 LevelFour => L<Paws::Connect::HierarchyLevel>
+=head2 LevelFour => Connect_HierarchyLevel
 
   Information about level four.
 
 
-=head2 LevelOne => L<Paws::Connect::HierarchyLevel>
+=head2 LevelOne => Connect_HierarchyLevel
 
   Information about level one.
 
 
-=head2 LevelThree => L<Paws::Connect::HierarchyLevel>
+=head2 LevelThree => Connect_HierarchyLevel
 
   Information about level three.
 
 
-=head2 LevelTwo => L<Paws::Connect::HierarchyLevel>
+=head2 LevelTwo => Connect_HierarchyLevel
 
   Information about level two.
 

@@ -1,15 +1,75 @@
+# Generated from default/object.tt
 package Paws::MediaLive::StaticImageActivateScheduleActionSettings;
-  use Moose;
-  has Duration => (is => 'ro', isa => 'Int', request_name => 'duration', traits => ['NameInRequest']);
-  has FadeIn => (is => 'ro', isa => 'Int', request_name => 'fadeIn', traits => ['NameInRequest']);
-  has FadeOut => (is => 'ro', isa => 'Int', request_name => 'fadeOut', traits => ['NameInRequest']);
-  has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
-  has Image => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'image', traits => ['NameInRequest'], required => 1);
-  has ImageX => (is => 'ro', isa => 'Int', request_name => 'imageX', traits => ['NameInRequest']);
-  has ImageY => (is => 'ro', isa => 'Int', request_name => 'imageY', traits => ['NameInRequest']);
-  has Layer => (is => 'ro', isa => 'Int', request_name => 'layer', traits => ['NameInRequest']);
-  has Opacity => (is => 'ro', isa => 'Int', request_name => 'opacity', traits => ['NameInRequest']);
-  has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaLive::Types qw/MediaLive_InputLocation/;
+  has Duration => (is => 'ro', isa => Int);
+  has FadeIn => (is => 'ro', isa => Int);
+  has FadeOut => (is => 'ro', isa => Int);
+  has Height => (is => 'ro', isa => Int);
+  has Image => (is => 'ro', isa => MediaLive_InputLocation, required => 1);
+  has ImageX => (is => 'ro', isa => Int);
+  has ImageY => (is => 'ro', isa => Int);
+  has Layer => (is => 'ro', isa => Int);
+  has Opacity => (is => 'ro', isa => Int);
+  has Width => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Width' => {
+                            'type' => 'Int'
+                          },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'Opacity' => {
+                              'type' => 'Int'
+                            },
+               'ImageY' => {
+                             'type' => 'Int'
+                           },
+               'Image' => {
+                            'type' => 'MediaLive_InputLocation',
+                            'class' => 'Paws::MediaLive::InputLocation'
+                          },
+               'FadeOut' => {
+                              'type' => 'Int'
+                            },
+               'FadeIn' => {
+                             'type' => 'Int'
+                           },
+               'Height' => {
+                             'type' => 'Int'
+                           },
+               'Layer' => {
+                            'type' => 'Int'
+                          },
+               'ImageX' => {
+                             'type' => 'Int'
+                           }
+             },
+  'NameInRequest' => {
+                       'FadeOut' => 'fadeOut',
+                       'FadeIn' => 'fadeIn',
+                       'Image' => 'image',
+                       'Opacity' => 'opacity',
+                       'ImageY' => 'imageY',
+                       'Width' => 'width',
+                       'Duration' => 'duration',
+                       'Layer' => 'layer',
+                       'ImageX' => 'imageX',
+                       'Height' => 'height'
+                     },
+  'IsRequired' => {
+                    'Image' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +133,7 @@ overlay will be scaled up or down to the specified height. Leave blank
 to use the native height of the overlay.
 
 
-=head2 B<REQUIRED> Image => L<Paws::MediaLive::InputLocation>
+=head2 B<REQUIRED> Image => MediaLive_InputLocation
 
   The location and filename of the image file to overlay on the video.
 The file must be a 32-bit BMP, PNG, or TGA file, and must not be larger

@@ -1,10 +1,56 @@
+# Generated from default/object.tt
 package Paws::AppMesh::VirtualServiceData;
-  use Moose;
-  has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
-  has Metadata => (is => 'ro', isa => 'Paws::AppMesh::ResourceMetadata', request_name => 'metadata', traits => ['NameInRequest'], required => 1);
-  has Spec => (is => 'ro', isa => 'Paws::AppMesh::VirtualServiceSpec', request_name => 'spec', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Paws::AppMesh::VirtualServiceStatus', request_name => 'status', traits => ['NameInRequest'], required => 1);
-  has VirtualServiceName => (is => 'ro', isa => 'Str', request_name => 'virtualServiceName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw/AppMesh_ResourceMetadata AppMesh_VirtualServiceStatus AppMesh_VirtualServiceSpec/;
+  has MeshName => (is => 'ro', isa => Str, required => 1);
+  has Metadata => (is => 'ro', isa => AppMesh_ResourceMetadata, required => 1);
+  has Spec => (is => 'ro', isa => AppMesh_VirtualServiceSpec, required => 1);
+  has Status => (is => 'ro', isa => AppMesh_VirtualServiceStatus, required => 1);
+  has VirtualServiceName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Spec' => {
+                           'class' => 'Paws::AppMesh::VirtualServiceSpec',
+                           'type' => 'AppMesh_VirtualServiceSpec'
+                         },
+               'Status' => {
+                             'type' => 'AppMesh_VirtualServiceStatus',
+                             'class' => 'Paws::AppMesh::VirtualServiceStatus'
+                           },
+               'Metadata' => {
+                               'type' => 'AppMesh_ResourceMetadata',
+                               'class' => 'Paws::AppMesh::ResourceMetadata'
+                             },
+               'VirtualServiceName' => {
+                                         'type' => 'Str'
+                                       },
+               'MeshName' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'MeshName' => 1,
+                    'VirtualServiceName' => 1,
+                    'Metadata' => 1,
+                    'Spec' => 1,
+                    'Status' => 1
+                  },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'Spec' => 'spec',
+                       'Metadata' => 'metadata',
+                       'MeshName' => 'meshName',
+                       'VirtualServiceName' => 'virtualServiceName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,17 +92,17 @@ operation.
   The name of the service mesh that the virtual service resides in.
 
 
-=head2 B<REQUIRED> Metadata => L<Paws::AppMesh::ResourceMetadata>
+=head2 B<REQUIRED> Metadata => AppMesh_ResourceMetadata
 
   
 
 
-=head2 B<REQUIRED> Spec => L<Paws::AppMesh::VirtualServiceSpec>
+=head2 B<REQUIRED> Spec => AppMesh_VirtualServiceSpec
 
   The specifications of the virtual service.
 
 
-=head2 B<REQUIRED> Status => L<Paws::AppMesh::VirtualServiceStatus>
+=head2 B<REQUIRED> Status => AppMesh_VirtualServiceStatus
 
   The current status of the virtual service.
 

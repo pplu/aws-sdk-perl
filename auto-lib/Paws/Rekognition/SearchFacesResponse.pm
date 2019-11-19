@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::SearchFacesResponse;
-  use Moose;
-  has FaceMatches => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::FaceMatch]');
-  has FaceModelVersion => (is => 'ro', isa => 'Str');
-  has SearchedFaceId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_FaceMatch/;
+  has FaceMatches => (is => 'ro', isa => ArrayRef[Rekognition_FaceMatch]);
+  has FaceModelVersion => (is => 'ro', isa => Str);
+  has SearchedFaceId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FaceModelVersion' => {
+                                       'type' => 'Str'
+                                     },
+               'SearchedFaceId' => {
+                                     'type' => 'Str'
+                                   },
+               'FaceMatches' => {
+                                  'class' => 'Paws::Rekognition::FaceMatch',
+                                  'type' => 'ArrayRef[Rekognition_FaceMatch]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::Rekognition::SearchFacesResponse
 =head1 ATTRIBUTES
 
 
-=head2 FaceMatches => ArrayRef[L<Paws::Rekognition::FaceMatch>]
+=head2 FaceMatches => ArrayRef[Rekognition_FaceMatch]
 
 An array of faces that matched the input face, along with the
 confidence in the match.

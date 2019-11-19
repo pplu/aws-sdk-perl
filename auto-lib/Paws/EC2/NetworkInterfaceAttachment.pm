@@ -1,12 +1,53 @@
 package Paws::EC2::NetworkInterfaceAttachment;
-  use Moose;
-  has AttachmentId => (is => 'ro', isa => 'Str', request_name => 'attachmentId', traits => ['NameInRequest']);
-  has AttachTime => (is => 'ro', isa => 'Str', request_name => 'attachTime', traits => ['NameInRequest']);
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool', request_name => 'deleteOnTermination', traits => ['NameInRequest']);
-  has DeviceIndex => (is => 'ro', isa => 'Int', request_name => 'deviceIndex', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has InstanceOwnerId => (is => 'ro', isa => 'Str', request_name => 'instanceOwnerId', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Bool Int/;
+  use Paws::EC2::Types qw//;
+  has AttachmentId => (is => 'ro', isa => Str);
+  has AttachTime => (is => 'ro', isa => Str);
+  has DeleteOnTermination => (is => 'ro', isa => Bool);
+  has DeviceIndex => (is => 'ro', isa => Int);
+  has InstanceId => (is => 'ro', isa => Str);
+  has InstanceOwnerId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceOwnerId' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'AttachmentId' => {
+                                   'type' => 'Str'
+                                 },
+               'AttachTime' => {
+                                 'type' => 'Str'
+                               },
+               'DeleteOnTermination' => {
+                                          'type' => 'Bool'
+                                        },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'DeviceIndex' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'NameInRequest' => {
+                       'AttachmentId' => 'attachmentId',
+                       'DeleteOnTermination' => 'deleteOnTermination',
+                       'InstanceId' => 'instanceId',
+                       'DeviceIndex' => 'deviceIndex',
+                       'AttachTime' => 'attachTime',
+                       'Status' => 'status',
+                       'InstanceOwnerId' => 'instanceOwnerId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

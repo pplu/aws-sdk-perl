@@ -1,16 +1,47 @@
 
 package Paws::DataExchange::DeleteAsset;
-  use Moose;
-  has AssetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'AssetId', required => 1);
-  has DataSetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DataSetId', required => 1);
-  has RevisionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'RevisionId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw//;
+  has AssetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DataSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RevisionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAsset');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/data-sets/{DataSetId}/revisions/{RevisionId}/assets/{AssetId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteAsset');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/data-sets/{DataSetId}/revisions/{RevisionId}/assets/{AssetId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RevisionId' => 1,
+                    'DataSetId' => 1,
+                    'AssetId' => 1
+                  },
+  'types' => {
+               'AssetId' => {
+                              'type' => 'Str'
+                            },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'DataSetId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'DataSetId' => 'DataSetId',
+                    'RevisionId' => 'RevisionId',
+                    'AssetId' => 'AssetId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

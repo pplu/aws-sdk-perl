@@ -1,23 +1,78 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::CreateReplicationTask;
-  use Moose;
-  has CdcStartPosition => (is => 'ro', isa => 'Str');
-  has CdcStartTime => (is => 'ro', isa => 'Str');
-  has CdcStopPosition => (is => 'ro', isa => 'Str');
-  has MigrationType => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicationInstanceArn => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicationTaskIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicationTaskSettings => (is => 'ro', isa => 'Str');
-  has SourceEndpointArn => (is => 'ro', isa => 'Str', required => 1);
-  has TableMappings => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
-  has TargetEndpointArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_Tag/;
+  has CdcStartPosition => (is => 'ro', isa => Str, predicate => 1);
+  has CdcStartTime => (is => 'ro', isa => Str, predicate => 1);
+  has CdcStopPosition => (is => 'ro', isa => Str, predicate => 1);
+  has MigrationType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicationInstanceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicationTaskIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicationTaskSettings => (is => 'ro', isa => Str, predicate => 1);
+  has SourceEndpointArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TableMappings => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DMS_Tag], predicate => 1);
+  has TargetEndpointArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateReplicationTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::CreateReplicationTaskResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateReplicationTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::CreateReplicationTaskResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetEndpointArn' => {
+                                        'type' => 'Str'
+                                      },
+               'ReplicationInstanceArn' => {
+                                             'type' => 'Str'
+                                           },
+               'CdcStartTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ReplicationTaskIdentifier' => {
+                                                'type' => 'Str'
+                                              },
+               'TableMappings' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'type' => 'ArrayRef[DMS_Tag]',
+                           'class' => 'Paws::DMS::Tag'
+                         },
+               'SourceEndpointArn' => {
+                                        'type' => 'Str'
+                                      },
+               'ReplicationTaskSettings' => {
+                                              'type' => 'Str'
+                                            },
+               'MigrationType' => {
+                                    'type' => 'Str'
+                                  },
+               'CdcStopPosition' => {
+                                      'type' => 'Str'
+                                    },
+               'CdcStartPosition' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'SourceEndpointArn' => 1,
+                    'ReplicationTaskIdentifier' => 1,
+                    'TableMappings' => 1,
+                    'MigrationType' => 1,
+                    'ReplicationInstanceArn' => 1,
+                    'TargetEndpointArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -180,7 +235,7 @@ in the I<AWS Database Migration User Guide.>
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DMS::Tag>]
+=head2 Tags => ArrayRef[DMS_Tag]
 
 One or more tags to be assigned to the replication task.
 

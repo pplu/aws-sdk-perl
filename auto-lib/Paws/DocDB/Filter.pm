@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::DocDB::Filter;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Value', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::DocDB::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Values' => 1
+                  },
+  'NameInRequest' => {
+                       'Values' => 'Value'
+                     },
+  'types' => {
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

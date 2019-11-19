@@ -1,15 +1,66 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::Event;
-  use Moose;
-  has AppPackageName => (is => 'ro', isa => 'Str');
-  has AppTitle => (is => 'ro', isa => 'Str');
-  has AppVersionCode => (is => 'ro', isa => 'Str');
-  has Attributes => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
-  has ClientSdkVersion => (is => 'ro', isa => 'Str');
-  has EventType => (is => 'ro', isa => 'Str', required => 1);
-  has Metrics => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__double');
-  has SdkName => (is => 'ro', isa => 'Str');
-  has Session => (is => 'ro', isa => 'Paws::Pinpoint::Session');
-  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string Pinpoint_Session Pinpoint_MapOf__double/;
+  has AppPackageName => (is => 'ro', isa => Str);
+  has AppTitle => (is => 'ro', isa => Str);
+  has AppVersionCode => (is => 'ro', isa => Str);
+  has Attributes => (is => 'ro', isa => Pinpoint_MapOf__string);
+  has ClientSdkVersion => (is => 'ro', isa => Str);
+  has EventType => (is => 'ro', isa => Str, required => 1);
+  has Metrics => (is => 'ro', isa => Pinpoint_MapOf__double);
+  has SdkName => (is => 'ro', isa => Str);
+  has Session => (is => 'ro', isa => Pinpoint_Session);
+  has Timestamp => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'type' => 'Pinpoint_MapOf__string',
+                                 'class' => 'Paws::Pinpoint::MapOf__string'
+                               },
+               'ClientSdkVersion' => {
+                                       'type' => 'Str'
+                                     },
+               'Metrics' => {
+                              'class' => 'Paws::Pinpoint::MapOf__double',
+                              'type' => 'Pinpoint_MapOf__double'
+                            },
+               'AppTitle' => {
+                               'type' => 'Str'
+                             },
+               'Session' => {
+                              'type' => 'Pinpoint_Session',
+                              'class' => 'Paws::Pinpoint::Session'
+                            },
+               'EventType' => {
+                                'type' => 'Str'
+                              },
+               'AppVersionCode' => {
+                                     'type' => 'Str'
+                                   },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'AppPackageName' => {
+                                     'type' => 'Str'
+                                   },
+               'SdkName' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'EventType' => 1,
+                    'Timestamp' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +112,7 @@ Pinpoint.
   The version number of the app that's recording the event.
 
 
-=head2 Attributes => L<Paws::Pinpoint::MapOf__string>
+=head2 Attributes => Pinpoint_MapOf__string
 
   One or more custom attributes that are associated with the event.
 
@@ -76,7 +127,7 @@ Pinpoint.
   The name of the event.
 
 
-=head2 Metrics => L<Paws::Pinpoint::MapOf__double>
+=head2 Metrics => Pinpoint_MapOf__double
 
   One or more custom metrics that are associated with the event.
 
@@ -86,7 +137,7 @@ Pinpoint.
   The name of the SDK that's being used to record the event.
 
 
-=head2 Session => L<Paws::Pinpoint::Session>
+=head2 Session => Pinpoint_Session
 
   Information about the session in which the event occurred.
 

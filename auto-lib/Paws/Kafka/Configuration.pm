@@ -1,11 +1,60 @@
+# Generated from default/object.tt
 package Paws::Kafka::Configuration;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest'], required => 1);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
-  has KafkaVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'kafkaVersions', traits => ['NameInRequest'], required => 1);
-  has LatestRevision => (is => 'ro', isa => 'Paws::Kafka::ConfigurationRevision', request_name => 'latestRevision', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Kafka::Types qw/Kafka_ConfigurationRevision/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has KafkaVersions => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has LatestRevision => (is => 'ro', isa => Kafka_ConfigurationRevision, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'KafkaVersions' => 'kafkaVersions',
+                       'Arn' => 'arn',
+                       'CreationTime' => 'creationTime',
+                       'LatestRevision' => 'latestRevision',
+                       'Name' => 'name',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'LatestRevision' => 1,
+                    'CreationTime' => 1,
+                    'KafkaVersions' => 1,
+                    'Arn' => 1,
+                    'Name' => 1,
+                    'Description' => 1
+                  },
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'KafkaVersions' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LatestRevision' => {
+                                     'type' => 'Kafka_ConfigurationRevision',
+                                     'class' => 'Paws::Kafka::ConfigurationRevision'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +113,7 @@ only if the Apache Kafka version specified for the cluster appears in
 this array.
 
 
-=head2 B<REQUIRED> LatestRevision => L<Paws::Kafka::ConfigurationRevision>
+=head2 B<REQUIRED> LatestRevision => Kafka_ConfigurationRevision
 
   Latest revision of the configuration.
 

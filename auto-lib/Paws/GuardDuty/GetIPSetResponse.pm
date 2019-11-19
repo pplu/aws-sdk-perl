@@ -1,13 +1,56 @@
 
 package Paws::GuardDuty::GetIPSetResponse;
-  use Moose;
-  has Format => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'format', required => 1);
-  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw/GuardDuty_TagMap/;
+  has Format => (is => 'ro', isa => Str, required => 1);
+  has Location => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => GuardDuty_TagMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Format' => 1,
+                    'Name' => 1,
+                    'Status' => 1,
+                    'Location' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'Location' => 'location',
+                       'Status' => 'status',
+                       'Name' => 'name',
+                       'Format' => 'format'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Tags' => {
+                           'class' => 'Paws::GuardDuty::TagMap',
+                           'type' => 'GuardDuty_TagMap'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'Format' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +83,7 @@ The user friendly name for the IPSet.
 The status of ipSet file uploaded.
 
 Valid values are: C<"INACTIVE">, C<"ACTIVATING">, C<"ACTIVE">, C<"DEACTIVATING">, C<"ERROR">, C<"DELETE_PENDING">, C<"DELETED">
-=head2 Tags => L<Paws::GuardDuty::TagMap>
+=head2 Tags => GuardDuty_TagMap
 
 The tags of the IP set resource.
 

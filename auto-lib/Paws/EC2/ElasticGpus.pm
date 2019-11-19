@@ -1,11 +1,49 @@
 package Paws::EC2::ElasticGpus;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has ElasticGpuHealth => (is => 'ro', isa => 'Paws::EC2::ElasticGpuHealth', request_name => 'elasticGpuHealth', traits => ['NameInRequest']);
-  has ElasticGpuId => (is => 'ro', isa => 'Str', request_name => 'elasticGpuId', traits => ['NameInRequest']);
-  has ElasticGpuState => (is => 'ro', isa => 'Str', request_name => 'elasticGpuState', traits => ['NameInRequest']);
-  has ElasticGpuType => (is => 'ro', isa => 'Str', request_name => 'elasticGpuType', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ElasticGpuHealth/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has ElasticGpuHealth => (is => 'ro', isa => EC2_ElasticGpuHealth);
+  has ElasticGpuId => (is => 'ro', isa => Str);
+  has ElasticGpuState => (is => 'ro', isa => Str);
+  has ElasticGpuType => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ElasticGpuState' => {
+                                      'type' => 'Str'
+                                    },
+               'ElasticGpuId' => {
+                                   'type' => 'Str'
+                                 },
+               'ElasticGpuType' => {
+                                     'type' => 'Str'
+                                   },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'ElasticGpuHealth' => {
+                                       'type' => 'EC2_ElasticGpuHealth',
+                                       'class' => 'Paws::EC2::ElasticGpuHealth'
+                                     },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'ElasticGpuState' => 'elasticGpuState',
+                       'ElasticGpuId' => 'elasticGpuId',
+                       'ElasticGpuType' => 'elasticGpuType',
+                       'InstanceId' => 'instanceId',
+                       'ElasticGpuHealth' => 'elasticGpuHealth',
+                       'AvailabilityZone' => 'availabilityZone'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +85,7 @@ This class has no description
 resides.
 
 
-=head2 ElasticGpuHealth => L<Paws::EC2::ElasticGpuHealth>
+=head2 ElasticGpuHealth => EC2_ElasticGpuHealth
 
   The status of the Elastic Graphics accelerator.
 

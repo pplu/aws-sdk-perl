@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::RedShift::PendingModifiedValues;
-  use Moose;
-  has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has ClusterIdentifier => (is => 'ro', isa => 'Str');
-  has ClusterType => (is => 'ro', isa => 'Str');
-  has ClusterVersion => (is => 'ro', isa => 'Str');
-  has EncryptionType => (is => 'ro', isa => 'Str');
-  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has NodeType => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Int Str Bool/;
+  use Paws::RedShift::Types qw//;
+  has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => Int);
+  has ClusterIdentifier => (is => 'ro', isa => Str);
+  has ClusterType => (is => 'ro', isa => Str);
+  has ClusterVersion => (is => 'ro', isa => Str);
+  has EncryptionType => (is => 'ro', isa => Str);
+  has EnhancedVpcRouting => (is => 'ro', isa => Bool);
+  has MaintenanceTrackName => (is => 'ro', isa => Str);
+  has MasterUserPassword => (is => 'ro', isa => Str);
+  has NodeType => (is => 'ro', isa => Str);
+  has NumberOfNodes => (is => 'ro', isa => Int);
+  has PubliclyAccessible => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumberOfNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'AutomatedSnapshotRetentionPeriod' => {
+                                                       'type' => 'Int'
+                                                     },
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'NodeType' => {
+                               'type' => 'Str'
+                             },
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'MaintenanceTrackName' => {
+                                           'type' => 'Str'
+                                         },
+               'EncryptionType' => {
+                                     'type' => 'Str'
+                                   },
+               'EnhancedVpcRouting' => {
+                                         'type' => 'Bool'
+                                       },
+               'ClusterVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'ClusterType' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

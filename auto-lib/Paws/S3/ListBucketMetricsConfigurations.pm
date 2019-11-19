@@ -1,17 +1,43 @@
 
 package Paws::S3::ListBucketMetricsConfigurations;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContinuationToken => (is => 'ro', isa => 'Str', query_name => 'continuation-token', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContinuationToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListBucketMetricsConfigurations');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}?metrics');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::ListBucketMetricsConfigurationsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListBucketMetricsConfigurations');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}?metrics');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::ListBucketMetricsConfigurationsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket'
+                  },
+  'types' => {
+               'ContinuationToken' => {
+                                        'type' => 'Str'
+                                      },
+               'Bucket' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInQuery' => {
+                      'ContinuationToken' => 'continuation-token'
+                    },
+  'IsRequired' => {
+                    'Bucket' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

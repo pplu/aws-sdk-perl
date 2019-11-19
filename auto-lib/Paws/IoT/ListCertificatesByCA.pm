@@ -1,17 +1,52 @@
 
 package Paws::IoT::ListCertificatesByCA;
-  use Moose;
-  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'isAscendingOrder');
-  has CaCertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'caCertificateId', required => 1);
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
-  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::IoT::Types qw//;
+  has AscendingOrder => (is => 'ro', isa => Bool, predicate => 1);
+  has CaCertificateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListCertificatesByCA');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/certificates-by-ca/{caCertificateId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListCertificatesByCAResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListCertificatesByCA');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/certificates-by-ca/{caCertificateId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListCertificatesByCAResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'CaCertificateId' => 'caCertificateId'
+                  },
+  'ParamInQuery' => {
+                      'Marker' => 'marker',
+                      'PageSize' => 'pageSize',
+                      'AscendingOrder' => 'isAscendingOrder'
+                    },
+  'IsRequired' => {
+                    'CaCertificateId' => 1
+                  },
+  'types' => {
+               'AscendingOrder' => {
+                                     'type' => 'Bool'
+                                   },
+               'CaCertificateId' => {
+                                      'type' => 'Str'
+                                    },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'PageSize' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

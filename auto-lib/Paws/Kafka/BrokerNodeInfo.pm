@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::Kafka::BrokerNodeInfo;
-  use Moose;
-  has AttachedENIId => (is => 'ro', isa => 'Str', request_name => 'attachedENIId', traits => ['NameInRequest']);
-  has BrokerId => (is => 'ro', isa => 'Num', request_name => 'brokerId', traits => ['NameInRequest']);
-  has ClientSubnet => (is => 'ro', isa => 'Str', request_name => 'clientSubnet', traits => ['NameInRequest']);
-  has ClientVpcIpAddress => (is => 'ro', isa => 'Str', request_name => 'clientVpcIpAddress', traits => ['NameInRequest']);
-  has CurrentBrokerSoftwareInfo => (is => 'ro', isa => 'Paws::Kafka::BrokerSoftwareInfo', request_name => 'currentBrokerSoftwareInfo', traits => ['NameInRequest']);
-  has Endpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'endpoints', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Num Undef ArrayRef/;
+  use Paws::Kafka::Types qw/Kafka_BrokerSoftwareInfo/;
+  has AttachedENIId => (is => 'ro', isa => Str);
+  has BrokerId => (is => 'ro', isa => Num);
+  has ClientSubnet => (is => 'ro', isa => Str);
+  has ClientVpcIpAddress => (is => 'ro', isa => Str);
+  has CurrentBrokerSoftwareInfo => (is => 'ro', isa => Kafka_BrokerSoftwareInfo);
+  has Endpoints => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttachedENIId' => {
+                                    'type' => 'Str'
+                                  },
+               'Endpoints' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'BrokerId' => {
+                               'type' => 'Num'
+                             },
+               'ClientVpcIpAddress' => {
+                                         'type' => 'Str'
+                                       },
+               'CurrentBrokerSoftwareInfo' => {
+                                                'class' => 'Paws::Kafka::BrokerSoftwareInfo',
+                                                'type' => 'Kafka_BrokerSoftwareInfo'
+                                              },
+               'ClientSubnet' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ClientSubnet' => 'clientSubnet',
+                       'CurrentBrokerSoftwareInfo' => 'currentBrokerSoftwareInfo',
+                       'ClientVpcIpAddress' => 'clientVpcIpAddress',
+                       'BrokerId' => 'brokerId',
+                       'Endpoints' => 'endpoints',
+                       'AttachedENIId' => 'attachedENIId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +102,7 @@ BrokerNodeInfo
   The virtual private cloud (VPC) of the client.
 
 
-=head2 CurrentBrokerSoftwareInfo => L<Paws::Kafka::BrokerSoftwareInfo>
+=head2 CurrentBrokerSoftwareInfo => Kafka_BrokerSoftwareInfo
 
   Information about the version of software currently deployed on the
 Kafka brokers in the cluster.

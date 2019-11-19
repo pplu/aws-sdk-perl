@@ -1,15 +1,50 @@
 
 package Paws::WorkLink::DescribeFleetMetadataResponse;
-  use Moose;
-  has CompanyCode => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has FleetName => (is => 'ro', isa => 'Str');
-  has FleetStatus => (is => 'ro', isa => 'Str');
-  has LastUpdatedTime => (is => 'ro', isa => 'Str');
-  has OptimizeForEndUserLocation => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::WorkLink::Types qw//;
+  has CompanyCode => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str);
+  has FleetName => (is => 'ro', isa => Str);
+  has FleetStatus => (is => 'ro', isa => Str);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has OptimizeForEndUserLocation => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'OptimizeForEndUserLocation' => {
+                                                 'type' => 'Bool'
+                                               },
+               'FleetStatus' => {
+                                  'type' => 'Str'
+                                },
+               'CompanyCode' => {
+                                  'type' => 'Str'
+                                },
+               'FleetName' => {
+                                'type' => 'Str'
+                              },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,21 +1,107 @@
+# Generated from default/object.tt
 package Paws::ECS::ContainerInstance;
-  use Moose;
-  has AgentConnected => (is => 'ro', isa => 'Bool', request_name => 'agentConnected', traits => ['NameInRequest']);
-  has AgentUpdateStatus => (is => 'ro', isa => 'Str', request_name => 'agentUpdateStatus', traits => ['NameInRequest']);
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attachment]', request_name => 'attachments', traits => ['NameInRequest']);
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', request_name => 'attributes', traits => ['NameInRequest']);
-  has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
-  has Ec2InstanceId => (is => 'ro', isa => 'Str', request_name => 'ec2InstanceId', traits => ['NameInRequest']);
-  has PendingTasksCount => (is => 'ro', isa => 'Int', request_name => 'pendingTasksCount', traits => ['NameInRequest']);
-  has RegisteredAt => (is => 'ro', isa => 'Str', request_name => 'registeredAt', traits => ['NameInRequest']);
-  has RegisteredResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', request_name => 'registeredResources', traits => ['NameInRequest']);
-  has RemainingResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', request_name => 'remainingResources', traits => ['NameInRequest']);
-  has RunningTasksCount => (is => 'ro', isa => 'Int', request_name => 'runningTasksCount', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
-  has VersionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo', request_name => 'versionInfo', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef Int/;
+  use Paws::ECS::Types qw/ECS_Tag ECS_Resource ECS_VersionInfo ECS_Attribute ECS_Attachment/;
+  has AgentConnected => (is => 'ro', isa => Bool);
+  has AgentUpdateStatus => (is => 'ro', isa => Str);
+  has Attachments => (is => 'ro', isa => ArrayRef[ECS_Attachment]);
+  has Attributes => (is => 'ro', isa => ArrayRef[ECS_Attribute]);
+  has ContainerInstanceArn => (is => 'ro', isa => Str);
+  has Ec2InstanceId => (is => 'ro', isa => Str);
+  has PendingTasksCount => (is => 'ro', isa => Int);
+  has RegisteredAt => (is => 'ro', isa => Str);
+  has RegisteredResources => (is => 'ro', isa => ArrayRef[ECS_Resource]);
+  has RemainingResources => (is => 'ro', isa => ArrayRef[ECS_Resource]);
+  has RunningTasksCount => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[ECS_Tag]);
+  has Version => (is => 'ro', isa => Int);
+  has VersionInfo => (is => 'ro', isa => ECS_VersionInfo);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RunningTasksCount' => {
+                                        'type' => 'Int'
+                                      },
+               'Attachments' => {
+                                  'class' => 'Paws::ECS::Attachment',
+                                  'type' => 'ArrayRef[ECS_Attachment]'
+                                },
+               'RegisteredAt' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ContainerInstanceArn' => {
+                                           'type' => 'Str'
+                                         },
+               'RemainingResources' => {
+                                         'type' => 'ArrayRef[ECS_Resource]',
+                                         'class' => 'Paws::ECS::Resource'
+                                       },
+               'PendingTasksCount' => {
+                                        'type' => 'Int'
+                                      },
+               'RegisteredResources' => {
+                                          'type' => 'ArrayRef[ECS_Resource]',
+                                          'class' => 'Paws::ECS::Resource'
+                                        },
+               'Ec2InstanceId' => {
+                                    'type' => 'Str'
+                                  },
+               'Attributes' => {
+                                 'type' => 'ArrayRef[ECS_Attribute]',
+                                 'class' => 'Paws::ECS::Attribute'
+                               },
+               'VersionInfo' => {
+                                  'class' => 'Paws::ECS::VersionInfo',
+                                  'type' => 'ECS_VersionInfo'
+                                },
+               'AgentUpdateStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'Tags' => {
+                           'type' => 'ArrayRef[ECS_Tag]',
+                           'class' => 'Paws::ECS::Tag'
+                         },
+               'AgentConnected' => {
+                                     'type' => 'Bool'
+                                   },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'VersionInfo' => 'versionInfo',
+                       'Tags' => 'tags',
+                       'AgentUpdateStatus' => 'agentUpdateStatus',
+                       'AgentConnected' => 'agentConnected',
+                       'Version' => 'version',
+                       'StatusReason' => 'statusReason',
+                       'RunningTasksCount' => 'runningTasksCount',
+                       'Attachments' => 'attachments',
+                       'Status' => 'status',
+                       'ContainerInstanceArn' => 'containerInstanceArn',
+                       'RegisteredAt' => 'registeredAt',
+                       'PendingTasksCount' => 'pendingTasksCount',
+                       'RemainingResources' => 'remainingResources',
+                       'Ec2InstanceId' => 'ec2InstanceId',
+                       'Attributes' => 'attributes',
+                       'RegisteredResources' => 'registeredResources'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,13 +152,13 @@ placement requests.
 requested, this value is C<NULL>.
 
 
-=head2 Attachments => ArrayRef[L<Paws::ECS::Attachment>]
+=head2 Attachments => ArrayRef[ECS_Attachment]
 
   The resources attached to a container instance, such as elastic network
 interfaces.
 
 
-=head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
+=head2 Attributes => ArrayRef[ECS_Attribute]
 
   The attributes set for the container instance, either by the Amazon ECS
 container agent at instance registration or manually with the
@@ -105,7 +191,7 @@ C<PENDING> status.
   The Unix timestamp for when the container instance was registered.
 
 
-=head2 RegisteredResources => ArrayRef[L<Paws::ECS::Resource>]
+=head2 RegisteredResources => ArrayRef[ECS_Resource]
 
   For CPU and memory resource types, this parameter describes the amount
 of each resource that was available on the container instance when the
@@ -116,7 +202,7 @@ describes the ports that were reserved by the Amazon ECS container
 agent when it registered the container instance with Amazon ECS.
 
 
-=head2 RemainingResources => ArrayRef[L<Paws::ECS::Resource>]
+=head2 RemainingResources => ArrayRef[ECS_Resource]
 
   For CPU and memory resource types, this parameter describes the
 remaining CPU and memory that has not already been allocated to tasks
@@ -165,7 +251,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
   The reason that the container instance reached its current status.
 
 
-=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+=head2 Tags => ArrayRef[ECS_Tag]
 
   The metadata that you apply to the container instance to help you
 categorize and organize them. Each tag consists of a key and an
@@ -228,7 +314,7 @@ the version reported in CloudWatch Events for the container instance
 stream is current.
 
 
-=head2 VersionInfo => L<Paws::ECS::VersionInfo>
+=head2 VersionInfo => ECS_VersionInfo
 
   The version information for the Amazon ECS container agent and Docker
 daemon running on the container instance.

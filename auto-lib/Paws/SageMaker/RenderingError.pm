@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SageMaker::RenderingError;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Str', required => 1);
-  has Message => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has Code => (is => 'ro', isa => Str, required => 1);
+  has Message => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Code' => 1,
+                    'Message' => 1
+                  },
+  'types' => {
+               'Code' => {
+                           'type' => 'Str'
+                         },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

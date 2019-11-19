@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::SES::ListTemplatesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has TemplatesMetadata => (is => 'ro', isa => 'ArrayRef[Paws::SES::TemplateMetadata]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SES::Types qw/SES_TemplateMetadata/;
+  has NextToken => (is => 'ro', isa => Str);
+  has TemplatesMetadata => (is => 'ro', isa => ArrayRef[SES_TemplateMetadata]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TemplatesMetadata' => {
+                                        'type' => 'ArrayRef[SES_TemplateMetadata]',
+                                        'class' => 'Paws::SES::TemplateMetadata'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +45,7 @@ to be listed. Pass this token to a subsequent call to C<ListTemplates>
 to retrieve the next 50 email templates.
 
 
-=head2 TemplatesMetadata => ArrayRef[L<Paws::SES::TemplateMetadata>]
+=head2 TemplatesMetadata => ArrayRef[SES_TemplateMetadata]
 
 An array the contains the name and creation time stamp for each
 template in your Amazon SES account.

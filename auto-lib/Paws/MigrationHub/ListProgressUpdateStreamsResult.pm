@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MigrationHub::ListProgressUpdateStreamsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ProgressUpdateStreamSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::MigrationHub::ProgressUpdateStreamSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MigrationHub::Types qw/MigrationHub_ProgressUpdateStreamSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ProgressUpdateStreamSummaryList => (is => 'ro', isa => ArrayRef[MigrationHub_ProgressUpdateStreamSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ProgressUpdateStreamSummaryList' => {
+                                                      'class' => 'Paws::MigrationHub::ProgressUpdateStreamSummary',
+                                                      'type' => 'ArrayRef[MigrationHub_ProgressUpdateStreamSummary]'
+                                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ token to be passed to the next call as a bookmark of where to start
 from.
 
 
-=head2 ProgressUpdateStreamSummaryList => ArrayRef[L<Paws::MigrationHub::ProgressUpdateStreamSummary>]
+=head2 ProgressUpdateStreamSummaryList => ArrayRef[MigrationHub_ProgressUpdateStreamSummary]
 
 List of progress update streams up to the max number of results passed
 in the input.

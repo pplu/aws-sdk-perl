@@ -1,20 +1,65 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::StartGameSessionPlacement;
-  use Moose;
-  has DesiredPlayerSessions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::DesiredPlayerSession]');
-  has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
-  has GameSessionData => (is => 'ro', isa => 'Str');
-  has GameSessionName => (is => 'ro', isa => 'Str');
-  has GameSessionQueueName => (is => 'ro', isa => 'Str', required => 1);
-  has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int', required => 1);
-  has PlacementId => (is => 'ro', isa => 'Str', required => 1);
-  has PlayerLatencies => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlayerLatency]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::GameLift::Types qw/GameLift_GameProperty GameLift_PlayerLatency GameLift_DesiredPlayerSession/;
+  has DesiredPlayerSessions => (is => 'ro', isa => ArrayRef[GameLift_DesiredPlayerSession], predicate => 1);
+  has GameProperties => (is => 'ro', isa => ArrayRef[GameLift_GameProperty], predicate => 1);
+  has GameSessionData => (is => 'ro', isa => Str, predicate => 1);
+  has GameSessionName => (is => 'ro', isa => Str, predicate => 1);
+  has GameSessionQueueName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaximumPlayerSessionCount => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has PlacementId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PlayerLatencies => (is => 'ro', isa => ArrayRef[GameLift_PlayerLatency], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartGameSessionPlacement');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::StartGameSessionPlacementOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartGameSessionPlacement');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::StartGameSessionPlacementOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'GameSessionQueueName' => 1,
+                    'MaximumPlayerSessionCount' => 1,
+                    'PlacementId' => 1
+                  },
+  'types' => {
+               'DesiredPlayerSessions' => {
+                                            'class' => 'Paws::GameLift::DesiredPlayerSession',
+                                            'type' => 'ArrayRef[GameLift_DesiredPlayerSession]'
+                                          },
+               'PlacementId' => {
+                                  'type' => 'Str'
+                                },
+               'GameSessionQueueName' => {
+                                           'type' => 'Str'
+                                         },
+               'GameSessionName' => {
+                                      'type' => 'Str'
+                                    },
+               'GameProperties' => {
+                                     'type' => 'ArrayRef[GameLift_GameProperty]',
+                                     'class' => 'Paws::GameLift::GameProperty'
+                                   },
+               'MaximumPlayerSessionCount' => {
+                                                'type' => 'Int'
+                                              },
+               'GameSessionData' => {
+                                      'type' => 'Str'
+                                    },
+               'PlayerLatencies' => {
+                                      'type' => 'ArrayRef[GameLift_PlayerLatency]',
+                                      'class' => 'Paws::GameLift::PlayerLatency'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,13 +123,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 =head1 ATTRIBUTES
 
 
-=head2 DesiredPlayerSessions => ArrayRef[L<Paws::GameLift::DesiredPlayerSession>]
+=head2 DesiredPlayerSessions => ArrayRef[GameLift_DesiredPlayerSession]
 
 Set of information on each player to create a player session for.
 
 
 
-=head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
+=head2 GameProperties => ArrayRef[GameLift_GameProperty]
 
 Set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
@@ -133,7 +178,7 @@ timed-out placement request.
 
 
 
-=head2 PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]
+=head2 PlayerLatencies => ArrayRef[GameLift_PlayerLatency]
 
 Set of values, expressed in milliseconds, indicating the amount of
 latency that a player experiences when connected to AWS regions. This

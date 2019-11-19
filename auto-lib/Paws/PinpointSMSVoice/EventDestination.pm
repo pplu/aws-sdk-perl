@@ -1,11 +1,46 @@
+# Generated from default/object.tt
 package Paws::PinpointSMSVoice::EventDestination;
-  use Moose;
-  has CloudWatchLogsDestination => (is => 'ro', isa => 'Paws::PinpointSMSVoice::CloudWatchLogsDestination');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has KinesisFirehoseDestination => (is => 'ro', isa => 'Paws::PinpointSMSVoice::KinesisFirehoseDestination');
-  has MatchingEventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str');
-  has SnsDestination => (is => 'ro', isa => 'Paws::PinpointSMSVoice::SnsDestination');
+  use Moo;
+  use Types::Standard qw/Bool Undef ArrayRef Str/;
+  use Paws::PinpointSMSVoice::Types qw/PinpointSMSVoice_SnsDestination PinpointSMSVoice_CloudWatchLogsDestination PinpointSMSVoice_KinesisFirehoseDestination/;
+  has CloudWatchLogsDestination => (is => 'ro', isa => PinpointSMSVoice_CloudWatchLogsDestination);
+  has Enabled => (is => 'ro', isa => Bool);
+  has KinesisFirehoseDestination => (is => 'ro', isa => PinpointSMSVoice_KinesisFirehoseDestination);
+  has MatchingEventTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Name => (is => 'ro', isa => Str);
+  has SnsDestination => (is => 'ro', isa => PinpointSMSVoice_SnsDestination);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'MatchingEventTypes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'KinesisFirehoseDestination' => {
+                                                 'type' => 'PinpointSMSVoice_KinesisFirehoseDestination',
+                                                 'class' => 'Paws::PinpointSMSVoice::KinesisFirehoseDestination'
+                                               },
+               'SnsDestination' => {
+                                     'type' => 'PinpointSMSVoice_SnsDestination',
+                                     'class' => 'Paws::PinpointSMSVoice::SnsDestination'
+                                   },
+               'CloudWatchLogsDestination' => {
+                                                'class' => 'Paws::PinpointSMSVoice::CloudWatchLogsDestination',
+                                                'type' => 'PinpointSMSVoice_CloudWatchLogsDestination'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +76,7 @@ An object that defines an event destination.
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchLogsDestination => L<Paws::PinpointSMSVoice::CloudWatchLogsDestination>
+=head2 CloudWatchLogsDestination => PinpointSMSVoice_CloudWatchLogsDestination
 
   
 
@@ -53,7 +88,7 @@ destination is enabled, then Amazon Pinpoint sends response data to the
 specified event destination.
 
 
-=head2 KinesisFirehoseDestination => L<Paws::PinpointSMSVoice::KinesisFirehoseDestination>
+=head2 KinesisFirehoseDestination => PinpointSMSVoice_KinesisFirehoseDestination
 
   
 
@@ -68,7 +103,7 @@ specified event destination.
   A name that identifies the event destination configuration.
 
 
-=head2 SnsDestination => L<Paws::PinpointSMSVoice::SnsDestination>
+=head2 SnsDestination => PinpointSMSVoice_SnsDestination
 
   
 

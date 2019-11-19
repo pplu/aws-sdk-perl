@@ -1,9 +1,33 @@
 package Paws::EC2::LaunchTemplateBlockDeviceMappingRequest;
-  use Moose;
-  has DeviceName => (is => 'ro', isa => 'Str');
-  has Ebs => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateEbsBlockDeviceRequest');
-  has NoDevice => (is => 'ro', isa => 'Str');
-  has VirtualName => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_LaunchTemplateEbsBlockDeviceRequest/;
+  has DeviceName => (is => 'ro', isa => Str);
+  has Ebs => (is => 'ro', isa => EC2_LaunchTemplateEbsBlockDeviceRequest);
+  has NoDevice => (is => 'ro', isa => Str);
+  has VirtualName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ebs' => {
+                          'class' => 'Paws::EC2::LaunchTemplateEbsBlockDeviceRequest',
+                          'type' => 'EC2_LaunchTemplateEbsBlockDeviceRequest'
+                        },
+               'VirtualName' => {
+                                  'type' => 'Str'
+                                },
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'NoDevice' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +68,7 @@ This class has no description
   The device name (for example, /dev/sdh or xvdh).
 
 
-=head2 Ebs => L<Paws::EC2::LaunchTemplateEbsBlockDeviceRequest>
+=head2 Ebs => EC2_LaunchTemplateEbsBlockDeviceRequest
 
   Parameters used to automatically set up EBS volumes when the instance
 is launched.

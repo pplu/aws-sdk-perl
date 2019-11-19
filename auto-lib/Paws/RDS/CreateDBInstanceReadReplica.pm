@@ -1,42 +1,151 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::CreateDBInstanceReadReplica;
-  use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has Domain => (is => 'ro', isa => 'Str');
-  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
-  has Iops => (is => 'ro', isa => 'Int');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MonitoringInterval => (is => 'ro', isa => 'Int');
-  has MonitoringRoleArn => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
-  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreSignedUrl => (is => 'ro', isa => 'Str');
-  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has StorageType => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef Int/;
+  use Paws::RDS::Types qw/RDS_ProcessorFeature RDS_Tag/;
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has DBInstanceClass => (is => 'ro', isa => Str, predicate => 1);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, predicate => 1);
+  has DomainIAMRoleName => (is => 'ro', isa => Str, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has EnablePerformanceInsights => (is => 'ro', isa => Bool, predicate => 1);
+  has Iops => (is => 'ro', isa => Int, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has MonitoringInterval => (is => 'ro', isa => Int, predicate => 1);
+  has MonitoringRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has MultiAZ => (is => 'ro', isa => Bool, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreSignedUrl => (is => 'ro', isa => Str, predicate => 1);
+  has ProcessorFeatures => (is => 'ro', isa => ArrayRef[RDS_ProcessorFeature], predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has SourceDBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StorageType => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
+  has UseDefaultProcessorFeatures => (is => 'ro', isa => Bool, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceReadReplica');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateDBInstanceReadReplicaResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceReadReplicaResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDBInstanceReadReplica');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::CreateDBInstanceReadReplicaResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateDBInstanceReadReplicaResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PreSignedUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'DomainIAMRoleName' => {
+                                        'type' => 'Str'
+                                      },
+               'UseDefaultProcessorFeatures' => {
+                                                  'type' => 'Bool'
+                                                },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'PerformanceInsightsKMSKeyId' => {
+                                                  'type' => 'Str'
+                                                },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'PerformanceInsightsRetentionPeriod' => {
+                                                         'type' => 'Int'
+                                                       },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'SourceDBInstanceIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'MonitoringInterval' => {
+                                         'type' => 'Int'
+                                       },
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'EnablePerformanceInsights' => {
+                                                'type' => 'Bool'
+                                              },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'MonitoringRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'ProcessorFeatures' => {
+                                        'class' => 'Paws::RDS::ProcessorFeature',
+                                        'type' => 'ArrayRef[RDS_ProcessorFeature]'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::RDS::Tag',
+                           'type' => 'ArrayRef[RDS_Tag]'
+                         },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'SourceDBInstanceIdentifier' => 1,
+                    'DBInstanceIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -453,7 +562,7 @@ operation that can be executed in the source AWS Region.
 
 
 
-=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+=head2 ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]
 
 The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.
@@ -539,7 +648,7 @@ Default: C<io1> if the C<Iops> parameter is specified, otherwise C<gp2>
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 
 

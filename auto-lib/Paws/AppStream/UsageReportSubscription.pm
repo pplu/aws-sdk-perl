@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::AppStream::UsageReportSubscription;
-  use Moose;
-  has LastGeneratedReportDate => (is => 'ro', isa => 'Str');
-  has S3BucketName => (is => 'ro', isa => 'Str');
-  has Schedule => (is => 'ro', isa => 'Str');
-  has SubscriptionErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::LastReportGenerationExecutionError]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppStream::Types qw/AppStream_LastReportGenerationExecutionError/;
+  has LastGeneratedReportDate => (is => 'ro', isa => Str);
+  has S3BucketName => (is => 'ro', isa => Str);
+  has Schedule => (is => 'ro', isa => Str);
+  has SubscriptionErrors => (is => 'ro', isa => ArrayRef[AppStream_LastReportGenerationExecutionError]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'Schedule' => {
+                               'type' => 'Str'
+                             },
+               'SubscriptionErrors' => {
+                                         'class' => 'Paws::AppStream::LastReportGenerationExecutionError',
+                                         'type' => 'ArrayRef[AppStream_LastReportGenerationExecutionError]'
+                                       },
+               'LastGeneratedReportDate' => {
+                                              'type' => 'Str'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +89,7 @@ reports, AppStream 2.0 creates a new S3 bucket.
   The schedule for generating usage reports.
 
 
-=head2 SubscriptionErrors => ArrayRef[L<Paws::AppStream::LastReportGenerationExecutionError>]
+=head2 SubscriptionErrors => ArrayRef[AppStream_LastReportGenerationExecutionError]
 
   The errors that were returned if usage reports couldn't be generated.
 

@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::PutLifecycleEventHookExecutionStatus;
-  use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' );
-  has LifecycleEventHookExecutionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lifecycleEventHookExecutionId' );
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has DeploymentId => (is => 'ro', isa => Str, predicate => 1);
+  has LifecycleEventHookExecutionId => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutLifecycleEventHookExecutionStatus');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::PutLifecycleEventHookExecutionStatusOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutLifecycleEventHookExecutionStatus');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::PutLifecycleEventHookExecutionStatusOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DeploymentId' => 'deploymentId',
+                       'Status' => 'status',
+                       'LifecycleEventHookExecutionId' => 'lifecycleEventHookExecutionId'
+                     },
+  'types' => {
+               'LifecycleEventHookExecutionId' => {
+                                                    'type' => 'Str'
+                                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

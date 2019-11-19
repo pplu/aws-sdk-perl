@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Greengrass::CoreDefinitionVersion;
-  use Moose;
-  has Cores => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Core]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_Core/;
+  has Cores => (is => 'ro', isa => ArrayRef[Greengrass_Core]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Cores' => {
+                            'class' => 'Paws::Greengrass::Core',
+                            'type' => 'ArrayRef[Greengrass_Core]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Information about a core definition version.
 =head1 ATTRIBUTES
 
 
-=head2 Cores => ArrayRef[L<Paws::Greengrass::Core>]
+=head2 Cores => ArrayRef[Greengrass_Core]
 
   A list of cores in the core definition version.
 

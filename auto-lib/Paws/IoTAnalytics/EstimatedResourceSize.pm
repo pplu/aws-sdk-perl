@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::EstimatedResourceSize;
-  use Moose;
-  has EstimatedOn => (is => 'ro', isa => 'Str', request_name => 'estimatedOn', traits => ['NameInRequest']);
-  has EstimatedSizeInBytes => (is => 'ro', isa => 'Num', request_name => 'estimatedSizeInBytes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::IoTAnalytics::Types qw//;
+  has EstimatedOn => (is => 'ro', isa => Str);
+  has EstimatedSizeInBytes => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EstimatedSizeInBytes' => {
+                                           'type' => 'Num'
+                                         },
+               'EstimatedOn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'EstimatedSizeInBytes' => 'estimatedSizeInBytes',
+                       'EstimatedOn' => 'estimatedOn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

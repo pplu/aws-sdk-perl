@@ -1,18 +1,74 @@
 
 package Paws::ApiGateway::Authorizer;
-  use Moose;
-  has AuthorizerCredentials => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerCredentials');
-  has AuthorizerResultTtlInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'authorizerResultTtlInSeconds');
-  has AuthorizerUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerUri');
-  has AuthType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authType');
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
-  has IdentitySource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identitySource');
-  has IdentityValidationExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identityValidationExpression');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'providerARNs');
-  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::ApiGateway::Types qw//;
+  has AuthorizerCredentials => (is => 'ro', isa => Str);
+  has AuthorizerResultTtlInSeconds => (is => 'ro', isa => Int);
+  has AuthorizerUri => (is => 'ro', isa => Str);
+  has AuthType => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has IdentitySource => (is => 'ro', isa => Str);
+  has IdentityValidationExpression => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ProviderARNs => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Type => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthorizerCredentials' => {
+                                            'type' => 'Str'
+                                          },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ProviderARNs' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'IdentitySource' => {
+                                     'type' => 'Str'
+                                   },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'IdentityValidationExpression' => {
+                                                   'type' => 'Str'
+                                                 },
+               'AuthorizerResultTtlInSeconds' => {
+                                                   'type' => 'Int'
+                                                 },
+               'AuthType' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AuthorizerUri' => {
+                                    'type' => 'Str'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'AuthorizerCredentials' => 'authorizerCredentials',
+                       'AuthType' => 'authType',
+                       'Id' => 'id',
+                       'IdentityValidationExpression' => 'identityValidationExpression',
+                       'Name' => 'name',
+                       'AuthorizerResultTtlInSeconds' => 'authorizerResultTtlInSeconds',
+                       'AuthorizerUri' => 'authorizerUri',
+                       'IdentitySource' => 'identitySource',
+                       'ProviderARNs' => 'providerARNs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

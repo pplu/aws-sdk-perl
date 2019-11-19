@@ -1,7 +1,28 @@
 package Paws::EC2::InstanceCreditSpecification;
-  use Moose;
-  has CpuCredits => (is => 'ro', isa => 'Str', request_name => 'cpuCredits', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has CpuCredits => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InstanceId' => 'instanceId',
+                       'CpuCredits' => 'cpuCredits'
+                     },
+  'types' => {
+               'CpuCredits' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

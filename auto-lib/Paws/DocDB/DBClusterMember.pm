@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::DocDB::DBClusterMember;
-  use Moose;
-  has DBClusterParameterGroupStatus => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has IsClusterWriter => (is => 'ro', isa => 'Bool');
-  has PromotionTier => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::DocDB::Types qw//;
+  has DBClusterParameterGroupStatus => (is => 'ro', isa => Str);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str);
+  has IsClusterWriter => (is => 'ro', isa => Bool);
+  has PromotionTier => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PromotionTier' => {
+                                    'type' => 'Int'
+                                  },
+               'DBClusterParameterGroupStatus' => {
+                                                    'type' => 'Str'
+                                                  },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'IsClusterWriter' => {
+                                      'type' => 'Bool'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

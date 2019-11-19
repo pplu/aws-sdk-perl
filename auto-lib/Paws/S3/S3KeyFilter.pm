@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::S3::S3KeyFilter;
-  use Moose;
-  has FilterRules => (is => 'ro', isa => 'ArrayRef[Paws::S3::FilterRule]', request_name => 'FilterRule', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::S3::Types qw/S3_FilterRule/;
+  has FilterRules => (is => 'ro', isa => ArrayRef[S3_FilterRule]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FilterRules' => 'FilterRule'
+                     },
+  'types' => {
+               'FilterRules' => {
+                                  'class' => 'Paws::S3::FilterRule',
+                                  'type' => 'ArrayRef[S3_FilterRule]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ A container for object key name prefix and suffix filtering rules.
 =head1 ATTRIBUTES
 
 
-=head2 FilterRules => ArrayRef[L<Paws::S3::FilterRule>]
+=head2 FilterRules => ArrayRef[S3_FilterRule]
 
   
 

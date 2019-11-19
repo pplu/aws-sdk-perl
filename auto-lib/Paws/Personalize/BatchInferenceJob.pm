@@ -1,16 +1,78 @@
+# Generated from default/object.tt
 package Paws::Personalize::BatchInferenceJob;
-  use Moose;
-  has BatchInferenceJobArn => (is => 'ro', isa => 'Str', request_name => 'batchInferenceJobArn', traits => ['NameInRequest']);
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has JobInput => (is => 'ro', isa => 'Paws::Personalize::BatchInferenceJobInput', request_name => 'jobInput', traits => ['NameInRequest']);
-  has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest']);
-  has JobOutput => (is => 'ro', isa => 'Paws::Personalize::BatchInferenceJobOutput', request_name => 'jobOutput', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has NumResults => (is => 'ro', isa => 'Int', request_name => 'numResults', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has SolutionVersionArn => (is => 'ro', isa => 'Str', request_name => 'solutionVersionArn', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Personalize::Types qw/Personalize_BatchInferenceJobInput Personalize_BatchInferenceJobOutput/;
+  has BatchInferenceJobArn => (is => 'ro', isa => Str);
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has JobInput => (is => 'ro', isa => Personalize_BatchInferenceJobInput);
+  has JobName => (is => 'ro', isa => Str);
+  has JobOutput => (is => 'ro', isa => Personalize_BatchInferenceJobOutput);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has NumResults => (is => 'ro', isa => Int);
+  has RoleArn => (is => 'ro', isa => Str);
+  has SolutionVersionArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SolutionVersionArn' => {
+                                         'type' => 'Str'
+                                       },
+               'NumResults' => {
+                                 'type' => 'Int'
+                               },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'JobInput' => {
+                               'class' => 'Paws::Personalize::BatchInferenceJobInput',
+                               'type' => 'Personalize_BatchInferenceJobInput'
+                             },
+               'JobOutput' => {
+                                'type' => 'Personalize_BatchInferenceJobOutput',
+                                'class' => 'Paws::Personalize::BatchInferenceJobOutput'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'BatchInferenceJobArn' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'JobOutput' => 'jobOutput',
+                       'BatchInferenceJobArn' => 'batchInferenceJobArn',
+                       'JobName' => 'jobName',
+                       'CreationDateTime' => 'creationDateTime',
+                       'SolutionVersionArn' => 'solutionVersionArn',
+                       'NumResults' => 'numResults',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime',
+                       'JobInput' => 'jobInput',
+                       'RoleArn' => 'roleArn',
+                       'FailureReason' => 'failureReason'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +123,7 @@ Contains information on a batch inference job.
   If the batch inference job failed, the reason for the failure.
 
 
-=head2 JobInput => L<Paws::Personalize::BatchInferenceJobInput>
+=head2 JobInput => Personalize_BatchInferenceJobInput
 
   The Amazon S3 path that leads to the input data used to generate the
 batch inference job.
@@ -72,7 +134,7 @@ batch inference job.
   The name of the batch inference job.
 
 
-=head2 JobOutput => L<Paws::Personalize::BatchInferenceJobOutput>
+=head2 JobOutput => Personalize_BatchInferenceJobOutput
 
   The Amazon S3 bucket that contains the output data generated by the
 batch inference job.

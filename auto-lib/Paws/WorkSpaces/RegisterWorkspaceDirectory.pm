@@ -1,18 +1,54 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::RegisterWorkspaceDirectory;
-  use Moose;
-  has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
-  has EnableSelfService => (is => 'ro', isa => 'Bool');
-  has EnableWorkDocs => (is => 'ro', isa => 'Bool', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Tag]');
-  has Tenancy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_Tag/;
+  has DirectoryId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EnableSelfService => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableWorkDocs => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[WorkSpaces_Tag], predicate => 1);
+  has Tenancy => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterWorkspaceDirectory');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::RegisterWorkspaceDirectoryResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterWorkspaceDirectory');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::RegisterWorkspaceDirectoryResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DirectoryId' => 1,
+                    'EnableWorkDocs' => 1
+                  },
+  'types' => {
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'ArrayRef[WorkSpaces_Tag]',
+                           'class' => 'Paws::WorkSpaces::Tag'
+                         },
+               'EnableSelfService' => {
+                                        'type' => 'Bool'
+                                      },
+               'Tenancy' => {
+                              'type' => 'Str'
+                            },
+               'EnableWorkDocs' => {
+                                     'type' => 'Bool'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -93,7 +129,7 @@ OperationNotSupportedException error.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
+=head2 Tags => ArrayRef[WorkSpaces_Tag]
 
 The tags associated with the directory.
 

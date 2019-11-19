@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeExportImageTasksResult;
-  use Moose;
-  has ExportImageTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ExportImageTask]', request_name => 'exportImageTaskSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ExportImageTask/;
+  has ExportImageTasks => (is => 'ro', isa => ArrayRef[EC2_ExportImageTask]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ExportImageTasks' => {
+                                       'class' => 'Paws::EC2::ExportImageTask',
+                                       'type' => 'ArrayRef[EC2_ExportImageTask]'
+                                     }
+             },
+  'NameInRequest' => {
+                       'ExportImageTasks' => 'exportImageTaskSet',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeExportImageTasksResult
 =head1 ATTRIBUTES
 
 
-=head2 ExportImageTasks => ArrayRef[L<Paws::EC2::ExportImageTask>]
+=head2 ExportImageTasks => ArrayRef[EC2_ExportImageTask]
 
 Information about the export image tasks.
 

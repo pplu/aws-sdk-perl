@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DS::DescribeSnapshotsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::DS::Snapshot]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DS::Types qw/DS_Snapshot/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Snapshots => (is => 'ro', isa => ArrayRef[DS_Snapshot]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Snapshots' => {
+                                'class' => 'Paws::DS::Snapshot',
+                                'type' => 'ArrayRef[DS_Snapshot]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ If not null, more results are available. Pass this value in the
 I<NextToken> member of a subsequent call to DescribeSnapshots.
 
 
-=head2 Snapshots => ArrayRef[L<Paws::DS::Snapshot>]
+=head2 Snapshots => ArrayRef[DS_Snapshot]
 
 The list of Snapshot objects that were retrieved.
 

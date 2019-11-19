@@ -1,17 +1,51 @@
+# Generated from callargs_class.tt
 
 package Paws::ImportExport::UpdateJob;
-  use Moose;
-  has APIVersion => (is => 'ro', isa => 'Str');
-  has JobId => (is => 'ro', isa => 'Str', required => 1);
-  has JobType => (is => 'ro', isa => 'Str', required => 1);
-  has Manifest => (is => 'ro', isa => 'Str', required => 1);
-  has ValidateOnly => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ImportExport::Types qw//;
+  has APIVersion => (is => 'ro', isa => Str, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has JobType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Manifest => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ValidateOnly => (is => 'ro', isa => Bool, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ImportExport::UpdateJobOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateJobResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ImportExport::UpdateJobOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateJobResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ValidateOnly' => 1,
+                    'JobId' => 1,
+                    'JobType' => 1,
+                    'Manifest' => 1
+                  },
+  'types' => {
+               'JobType' => {
+                              'type' => 'Str'
+                            },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'ValidateOnly' => {
+                                   'type' => 'Bool'
+                                 },
+               'APIVersion' => {
+                                 'type' => 'Str'
+                               },
+               'Manifest' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

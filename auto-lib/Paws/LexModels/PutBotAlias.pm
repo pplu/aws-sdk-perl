@@ -1,18 +1,59 @@
 
 package Paws::LexModels::PutBotAlias;
-  use Moose;
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
-  has BotVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'botVersion', required => 1);
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw//;
+  has BotName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BotVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Checksum => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutBotAlias');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bots/{botName}/aliases/{name}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::PutBotAliasResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutBotAlias');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/bots/{botName}/aliases/{name}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::PutBotAliasResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Name' => 'name',
+                    'BotName' => 'botName'
+                  },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'BotVersion' => 1,
+                    'BotName' => 1
+                  },
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'BotVersion' => 'botVersion',
+                       'Checksum' => 'checksum'
+                     },
+  'types' => {
+               'Checksum' => {
+                               'type' => 'Str'
+                             },
+               'BotVersion' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'BotName' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

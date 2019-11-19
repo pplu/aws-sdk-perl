@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::GetXssMatchSetResponse;
-  use Moose;
-  has XssMatchSet => (is => 'ro', isa => 'Paws::WAF::XssMatchSet');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_XssMatchSet/;
+  has XssMatchSet => (is => 'ro', isa => WAF_XssMatchSet);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'XssMatchSet' => {
+                                  'type' => 'WAF_XssMatchSet',
+                                  'class' => 'Paws::WAF::XssMatchSet'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::WAF::GetXssMatchSetResponse
 =head1 ATTRIBUTES
 
 
-=head2 XssMatchSet => L<Paws::WAF::XssMatchSet>
+=head2 XssMatchSet => WAF_XssMatchSet
 
 Information about the XssMatchSet that you specified in the
 C<GetXssMatchSet> request. For more information, see the following

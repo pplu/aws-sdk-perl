@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MQ::SanitizationWarning;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', request_name => 'attributeName', traits => ['NameInRequest']);
-  has ElementName => (is => 'ro', isa => 'Str', request_name => 'elementName', traits => ['NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str);
+  has ElementName => (is => 'ro', isa => Str);
+  has Reason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  },
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'ElementName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ElementName' => 'elementName',
+                       'Reason' => 'reason',
+                       'AttributeName' => 'attributeName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

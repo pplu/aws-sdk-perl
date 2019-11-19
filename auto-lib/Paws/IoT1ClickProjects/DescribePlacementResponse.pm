@@ -1,9 +1,33 @@
 
 package Paws::IoT1ClickProjects::DescribePlacementResponse;
-  use Moose;
-  has Placement => (is => 'ro', isa => 'Paws::IoT1ClickProjects::PlacementDescription', traits => ['NameInRequest'], request_name => 'placement', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickProjects::Types qw/IoT1ClickProjects_PlacementDescription/;
+  has Placement => (is => 'ro', isa => IoT1ClickProjects_PlacementDescription, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Placement' => 1
+                  },
+  'NameInRequest' => {
+                       'Placement' => 'placement'
+                     },
+  'types' => {
+               'Placement' => {
+                                'class' => 'Paws::IoT1ClickProjects::PlacementDescription',
+                                'type' => 'IoT1ClickProjects_PlacementDescription'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +39,7 @@ Paws::IoT1ClickProjects::DescribePlacementResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Placement => L<Paws::IoT1ClickProjects::PlacementDescription>
+=head2 B<REQUIRED> Placement => IoT1ClickProjects_PlacementDescription
 
 An object describing the placement.
 

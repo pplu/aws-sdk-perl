@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Budgets::DescribeBudget;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', required => 1);
-  has BudgetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Budgets::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BudgetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBudget');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Budgets::DescribeBudgetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeBudget');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Budgets::DescribeBudgetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BudgetName' => 1,
+                    'AccountId' => 1
+                  },
+  'types' => {
+               'BudgetName' => {
+                                 'type' => 'Str'
+                               },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

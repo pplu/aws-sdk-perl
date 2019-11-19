@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::XRay::HistogramEntry;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int');
-  has Value => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Int Num/;
+  use Paws::XRay::Types qw//;
+  has Count => (is => 'ro', isa => Int);
+  has Value => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Num'
+                          },
+               'Count' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,43 @@
 
 package Paws::IoT1ClickDevices::FinalizeDeviceClaim;
-  use Moose;
-  has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'deviceId', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::IoT1ClickDevices::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickDevices::Types qw/IoT1ClickDevices___mapOf__string/;
+  has DeviceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => IoT1ClickDevices___mapOf__string, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'FinalizeDeviceClaim');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/devices/{deviceId}/finalize-claim');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT1ClickDevices::FinalizeDeviceClaimResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'FinalizeDeviceClaim');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/devices/{deviceId}/finalize-claim');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT1ClickDevices::FinalizeDeviceClaimResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DeviceId' => 'deviceId'
+                  },
+  'IsRequired' => {
+                    'DeviceId' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'types' => {
+               'DeviceId' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::IoT1ClickDevices::__mapOf__string',
+                           'type' => 'IoT1ClickDevices___mapOf__string'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +79,7 @@ The unique identifier of the device.
 
 
 
-=head2 Tags => L<Paws::IoT1ClickDevices::__mapOf__string>
+=head2 Tags => IoT1ClickDevices___mapOf__string
 
 A collection of key/value pairs defining the resource tags. For
 example, { "tags": {"key1": "value1", "key2": "value2"} }. For more

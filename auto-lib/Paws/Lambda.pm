@@ -1,14 +1,15 @@
 package Paws::Lambda;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'lambda' }
   sub signing_name { 'lambda' }
   sub version { '2015-03-31' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -493,7 +494,7 @@ Function Policies
 
 =item [Description => Str]
 
-=item [RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>]
+=item [RoutingConfig => Lambda_AliasRoutingConfiguration]
 
 
 =back
@@ -567,7 +568,7 @@ Using AWS Lambda with Amazon DynamoDB
 
 =over
 
-=item Code => L<Paws::Lambda::FunctionCode>
+=item Code => Lambda_FunctionCode
 
 =item FunctionName => Str
 
@@ -577,11 +578,11 @@ Using AWS Lambda with Amazon DynamoDB
 
 =item Runtime => Str
 
-=item [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>]
+=item [DeadLetterConfig => Lambda_DeadLetterConfig]
 
 =item [Description => Str]
 
-=item [Environment => L<Paws::Lambda::Environment>]
+=item [Environment => Lambda_Environment]
 
 =item [KMSKeyArn => Str]
 
@@ -591,13 +592,13 @@ Using AWS Lambda with Amazon DynamoDB
 
 =item [Publish => Bool]
 
-=item [Tags => L<Paws::Lambda::Tags>]
+=item [Tags => Lambda_Tags]
 
 =item [Timeout => Int]
 
-=item [TracingConfig => L<Paws::Lambda::TracingConfig>]
+=item [TracingConfig => Lambda_TracingConfig]
 
-=item [VpcConfig => L<Paws::Lambda::VpcConfig>]
+=item [VpcConfig => Lambda_VpcConfig]
 
 
 =back
@@ -1172,7 +1173,7 @@ with the version-specific configuration of each.
 
 =over
 
-=item Content => L<Paws::Lambda::LayerVersionContentInput>
+=item Content => Lambda_LayerVersionContentInput
 
 =item LayerName => Str
 
@@ -1318,7 +1319,7 @@ You can get the ID of the statement from the output of GetPolicy.
 
 =item Resource => Str
 
-=item Tags => L<Paws::Lambda::Tags>
+=item Tags => Lambda_Tags
 
 
 =back
@@ -1365,7 +1366,7 @@ function.
 
 =item [RevisionId => Str]
 
-=item [RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>]
+=item [RoutingConfig => Lambda_AliasRoutingConfiguration]
 
 
 =back
@@ -1443,11 +1444,11 @@ modify the code of a published version, only the unpublished version.
 
 =item FunctionName => Str
 
-=item [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>]
+=item [DeadLetterConfig => Lambda_DeadLetterConfig]
 
 =item [Description => Str]
 
-=item [Environment => L<Paws::Lambda::Environment>]
+=item [Environment => Lambda_Environment]
 
 =item [Handler => Str]
 
@@ -1465,9 +1466,9 @@ modify the code of a published version, only the unpublished version.
 
 =item [Timeout => Int]
 
-=item [TracingConfig => L<Paws::Lambda::TracingConfig>]
+=item [TracingConfig => Lambda_TracingConfig]
 
-=item [VpcConfig => L<Paws::Lambda::VpcConfig>]
+=item [VpcConfig => Lambda_VpcConfig]
 
 
 =back

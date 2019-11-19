@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackSetOperationSummary;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has CreationTimestamp => (is => 'ro', isa => 'Str');
-  has EndTimestamp => (is => 'ro', isa => 'Str');
-  has OperationId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has Action => (is => 'ro', isa => Str);
+  has CreationTimestamp => (is => 'ro', isa => Str);
+  has EndTimestamp => (is => 'ro', isa => Str);
+  has OperationId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'EndTimestamp' => {
+                                   'type' => 'Str'
+                                 },
+               'OperationId' => {
+                                  'type' => 'Str'
+                                },
+               'Action' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

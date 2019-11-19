@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::SageMaker::FileSystemDataSource;
-  use Moose;
-  has DirectoryPath => (is => 'ro', isa => 'Str', required => 1);
-  has FileSystemAccessMode => (is => 'ro', isa => 'Str', required => 1);
-  has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
-  has FileSystemType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has DirectoryPath => (is => 'ro', isa => Str, required => 1);
+  has FileSystemAccessMode => (is => 'ro', isa => Str, required => 1);
+  has FileSystemId => (is => 'ro', isa => Str, required => 1);
+  has FileSystemType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileSystemAccessMode' => {
+                                           'type' => 'Str'
+                                         },
+               'FileSystemType' => {
+                                     'type' => 'Str'
+                                   },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 },
+               'DirectoryPath' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'FileSystemType' => 1,
+                    'FileSystemAccessMode' => 1,
+                    'FileSystemId' => 1,
+                    'DirectoryPath' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

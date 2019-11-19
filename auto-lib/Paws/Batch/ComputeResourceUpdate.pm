@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Batch::ComputeResourceUpdate;
-  use Moose;
-  has DesiredvCpus => (is => 'ro', isa => 'Int', request_name => 'desiredvCpus', traits => ['NameInRequest']);
-  has MaxvCpus => (is => 'ro', isa => 'Int', request_name => 'maxvCpus', traits => ['NameInRequest']);
-  has MinvCpus => (is => 'ro', isa => 'Int', request_name => 'minvCpus', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Batch::Types qw//;
+  has DesiredvCpus => (is => 'ro', isa => Int);
+  has MaxvCpus => (is => 'ro', isa => Int);
+  has MinvCpus => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DesiredvCpus' => 'desiredvCpus',
+                       'MaxvCpus' => 'maxvCpus',
+                       'MinvCpus' => 'minvCpus'
+                     },
+  'types' => {
+               'DesiredvCpus' => {
+                                   'type' => 'Int'
+                                 },
+               'MaxvCpus' => {
+                               'type' => 'Int'
+                             },
+               'MinvCpus' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::DeleteEndpointResponse;
-  use Moose;
-  has Endpoint => (is => 'ro', isa => 'Paws::DMS::Endpoint');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw/DMS_Endpoint/;
+  has Endpoint => (is => 'ro', isa => DMS_Endpoint);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Endpoint' => {
+                               'type' => 'DMS_Endpoint',
+                               'class' => 'Paws::DMS::Endpoint'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DMS::DeleteEndpointResponse
 =head1 ATTRIBUTES
 
 
-=head2 Endpoint => L<Paws::DMS::Endpoint>
+=head2 Endpoint => DMS_Endpoint
 
 The endpoint that was deleted.
 

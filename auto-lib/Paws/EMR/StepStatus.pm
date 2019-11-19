@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::EMR::StepStatus;
-  use Moose;
-  has FailureDetails => (is => 'ro', isa => 'Paws::EMR::FailureDetails');
-  has State => (is => 'ro', isa => 'Str');
-  has StateChangeReason => (is => 'ro', isa => 'Paws::EMR::StepStateChangeReason');
-  has Timeline => (is => 'ro', isa => 'Paws::EMR::StepTimeline');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_FailureDetails EMR_StepTimeline EMR_StepStateChangeReason/;
+  has FailureDetails => (is => 'ro', isa => EMR_FailureDetails);
+  has State => (is => 'ro', isa => Str);
+  has StateChangeReason => (is => 'ro', isa => EMR_StepStateChangeReason);
+  has Timeline => (is => 'ro', isa => EMR_StepTimeline);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timeline' => {
+                               'type' => 'EMR_StepTimeline',
+                               'class' => 'Paws::EMR::StepTimeline'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'StateChangeReason' => {
+                                        'type' => 'EMR_StepStateChangeReason',
+                                        'class' => 'Paws::EMR::StepStateChangeReason'
+                                      },
+               'FailureDetails' => {
+                                     'class' => 'Paws::EMR::FailureDetails',
+                                     'type' => 'EMR_FailureDetails'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +68,7 @@ The execution status details of the cluster step.
 =head1 ATTRIBUTES
 
 
-=head2 FailureDetails => L<Paws::EMR::FailureDetails>
+=head2 FailureDetails => EMR_FailureDetails
 
   The details for the step failure including reason, message, and log
 file path where the root cause was identified.
@@ -50,12 +79,12 @@ file path where the root cause was identified.
   The execution state of the cluster step.
 
 
-=head2 StateChangeReason => L<Paws::EMR::StepStateChangeReason>
+=head2 StateChangeReason => EMR_StepStateChangeReason
 
   The reason for the step execution status change.
 
 
-=head2 Timeline => L<Paws::EMR::StepTimeline>
+=head2 Timeline => EMR_StepTimeline
 
   The timeline of the cluster step status over time.
 

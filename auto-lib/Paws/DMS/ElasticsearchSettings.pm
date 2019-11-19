@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::DMS::ElasticsearchSettings;
-  use Moose;
-  has EndpointUri => (is => 'ro', isa => 'Str', required => 1);
-  has ErrorRetryDuration => (is => 'ro', isa => 'Int');
-  has FullLoadErrorPercentage => (is => 'ro', isa => 'Int');
-  has ServiceAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DMS::Types qw//;
+  has EndpointUri => (is => 'ro', isa => Str, required => 1);
+  has ErrorRetryDuration => (is => 'ro', isa => Int);
+  has FullLoadErrorPercentage => (is => 'ro', isa => Int);
+  has ServiceAccessRoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'EndpointUri' => 1,
+                    'ServiceAccessRoleArn' => 1
+                  },
+  'types' => {
+               'EndpointUri' => {
+                                  'type' => 'Str'
+                                },
+               'ServiceAccessRoleArn' => {
+                                           'type' => 'Str'
+                                         },
+               'ErrorRetryDuration' => {
+                                         'type' => 'Int'
+                                       },
+               'FullLoadErrorPercentage' => {
+                                              'type' => 'Int'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

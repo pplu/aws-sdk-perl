@@ -1,12 +1,52 @@
+# Generated from default/object.tt
 package Paws::Chime::Account;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', required => 1);
-  has AccountType => (is => 'ro', isa => 'Str');
-  has AwsAccountId => (is => 'ro', isa => 'Str', required => 1);
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has DefaultLicense => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has SupportedLicenses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Chime::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1);
+  has AccountType => (is => 'ro', isa => Str);
+  has AwsAccountId => (is => 'ro', isa => Str, required => 1);
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has DefaultLicense => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has SupportedLicenses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'Name' => 1,
+                    'AwsAccountId' => 1
+                  },
+  'types' => {
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'SupportedLicenses' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AccountType' => {
+                                  'type' => 'Str'
+                                },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'DefaultLicense' => {
+                                     'type' => 'Str'
+                                   },
+               'AwsAccountId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

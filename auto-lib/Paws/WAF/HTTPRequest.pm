@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::WAF::HTTPRequest;
-  use Moose;
-  has ClientIP => (is => 'ro', isa => 'Str');
-  has Country => (is => 'ro', isa => 'Str');
-  has Headers => (is => 'ro', isa => 'ArrayRef[Paws::WAF::HTTPHeader]');
-  has HTTPVersion => (is => 'ro', isa => 'Str');
-  has Method => (is => 'ro', isa => 'Str');
-  has URI => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_HTTPHeader/;
+  has ClientIP => (is => 'ro', isa => Str);
+  has Country => (is => 'ro', isa => Str);
+  has Headers => (is => 'ro', isa => ArrayRef[WAF_HTTPHeader]);
+  has HTTPVersion => (is => 'ro', isa => Str);
+  has Method => (is => 'ro', isa => Str);
+  has URI => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Headers' => {
+                              'class' => 'Paws::WAF::HTTPHeader',
+                              'type' => 'ArrayRef[WAF_HTTPHeader]'
+                            },
+               'Country' => {
+                              'type' => 'Str'
+                            },
+               'Method' => {
+                             'type' => 'Str'
+                           },
+               'HTTPVersion' => {
+                                  'type' => 'Str'
+                                },
+               'ClientIP' => {
+                               'type' => 'Str'
+                             },
+               'URI' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +106,7 @@ from. For a current list of country codes, see the Wikipedia entry ISO
 3166-1 alpha-2 (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 
 
-=head2 Headers => ArrayRef[L<Paws::WAF::HTTPHeader>]
+=head2 Headers => ArrayRef[WAF_HTTPHeader]
 
   A complex type that contains two values for each header in the sampled
 web request: the name of the header and the value of the header.

@@ -1,13 +1,36 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::CreateCloudFormationStack;
-  use Moose;
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::InstanceEntry]', traits => ['NameInRequest'], request_name => 'instances' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_InstanceEntry/;
+  has Instances => (is => 'ro', isa => ArrayRef[Lightsail_InstanceEntry], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCloudFormationStack');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::CreateCloudFormationStackResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCloudFormationStack');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::CreateCloudFormationStackResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Instances' => 'instances'
+                     },
+  'IsRequired' => {
+                    'Instances' => 1
+                  },
+  'types' => {
+               'Instances' => {
+                                'class' => 'Paws::Lightsail::InstanceEntry',
+                                'type' => 'ArrayRef[Lightsail_InstanceEntry]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Instances => ArrayRef[L<Paws::Lightsail::InstanceEntry>]
+=head2 B<REQUIRED> Instances => ArrayRef[Lightsail_InstanceEntry]
 
 An array of parameters that will be used to create the new Amazon EC2
 instance. You can only pass one instance entry at a time in this array.

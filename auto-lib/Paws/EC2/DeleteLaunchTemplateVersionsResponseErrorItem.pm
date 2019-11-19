@@ -1,9 +1,39 @@
 package Paws::EC2::DeleteLaunchTemplateVersionsResponseErrorItem;
-  use Moose;
-  has LaunchTemplateId => (is => 'ro', isa => 'Str', request_name => 'launchTemplateId', traits => ['NameInRequest']);
-  has LaunchTemplateName => (is => 'ro', isa => 'Str', request_name => 'launchTemplateName', traits => ['NameInRequest']);
-  has ResponseError => (is => 'ro', isa => 'Paws::EC2::ResponseError', request_name => 'responseError', traits => ['NameInRequest']);
-  has VersionNumber => (is => 'ro', isa => 'Int', request_name => 'versionNumber', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw/EC2_ResponseError/;
+  has LaunchTemplateId => (is => 'ro', isa => Str);
+  has LaunchTemplateName => (is => 'ro', isa => Str);
+  has ResponseError => (is => 'ro', isa => EC2_ResponseError);
+  has VersionNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ResponseError' => 'responseError',
+                       'LaunchTemplateName' => 'launchTemplateName',
+                       'LaunchTemplateId' => 'launchTemplateId',
+                       'VersionNumber' => 'versionNumber'
+                     },
+  'types' => {
+               'LaunchTemplateName' => {
+                                         'type' => 'Str'
+                                       },
+               'LaunchTemplateId' => {
+                                       'type' => 'Str'
+                                     },
+               'ResponseError' => {
+                                    'type' => 'EC2_ResponseError',
+                                    'class' => 'Paws::EC2::ResponseError'
+                                  },
+               'VersionNumber' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +79,7 @@ This class has no description
   The name of the launch template.
 
 
-=head2 ResponseError => L<Paws::EC2::ResponseError>
+=head2 ResponseError => EC2_ResponseError
 
   Information about the error.
 

@@ -1,15 +1,36 @@
 
 package Paws::CodeStarNotifications::DeleteTarget;
-  use Moose;
-  has ForceUnsubscribeAll => (is => 'ro', isa => 'Bool');
-  has TargetAddress => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeStarNotifications::Types qw//;
+  has ForceUnsubscribeAll => (is => 'ro', isa => Bool, predicate => 1);
+  has TargetAddress => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTarget');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/deleteTarget');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStarNotifications::DeleteTargetResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteTarget');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/deleteTarget');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStarNotifications::DeleteTargetResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TargetAddress' => 1
+                  },
+  'types' => {
+               'TargetAddress' => {
+                                    'type' => 'Str'
+                                  },
+               'ForceUnsubscribeAll' => {
+                                          'type' => 'Bool'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

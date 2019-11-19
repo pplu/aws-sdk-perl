@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::EMR::ShrinkPolicy;
-  use Moose;
-  has DecommissionTimeout => (is => 'ro', isa => 'Int');
-  has InstanceResizePolicy => (is => 'ro', isa => 'Paws::EMR::InstanceResizePolicy');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::EMR::Types qw/EMR_InstanceResizePolicy/;
+  has DecommissionTimeout => (is => 'ro', isa => Int);
+  has InstanceResizePolicy => (is => 'ro', isa => EMR_InstanceResizePolicy);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceResizePolicy' => {
+                                           'class' => 'Paws::EMR::InstanceResizePolicy',
+                                           'type' => 'EMR_InstanceResizePolicy'
+                                         },
+               'DecommissionTimeout' => {
+                                          'type' => 'Int'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +65,7 @@ decommissioning timeout and targeted instance shrinking.
 default YARN decommissioning timeout.
 
 
-=head2 InstanceResizePolicy => L<Paws::EMR::InstanceResizePolicy>
+=head2 InstanceResizePolicy => EMR_InstanceResizePolicy
 
   Custom policy for requesting termination protection or termination of
 specific instances when shrinking an instance group.

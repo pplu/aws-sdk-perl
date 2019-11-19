@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::RDS::DoubleRange;
-  use Moose;
-  has From => (is => 'ro', isa => 'Num');
-  has To => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::RDS::Types qw//;
+  has From => (is => 'ro', isa => Num);
+  has To => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'To' => {
+                         'type' => 'Num'
+                       },
+               'From' => {
+                           'type' => 'Num'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

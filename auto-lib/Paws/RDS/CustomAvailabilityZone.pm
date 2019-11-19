@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::RDS::CustomAvailabilityZone;
-  use Moose;
-  has CustomAvailabilityZoneId => (is => 'ro', isa => 'Str');
-  has CustomAvailabilityZoneName => (is => 'ro', isa => 'Str');
-  has CustomAvailabilityZoneStatus => (is => 'ro', isa => 'Str');
-  has VpnDetails => (is => 'ro', isa => 'Paws::RDS::VpnDetails');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw/RDS_VpnDetails/;
+  has CustomAvailabilityZoneId => (is => 'ro', isa => Str);
+  has CustomAvailabilityZoneName => (is => 'ro', isa => Str);
+  has CustomAvailabilityZoneStatus => (is => 'ro', isa => Str);
+  has VpnDetails => (is => 'ro', isa => RDS_VpnDetails);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomAvailabilityZoneStatus' => {
+                                                   'type' => 'Str'
+                                                 },
+               'VpnDetails' => {
+                                 'type' => 'RDS_VpnDetails',
+                                 'class' => 'Paws::RDS::VpnDetails'
+                               },
+               'CustomAvailabilityZoneId' => {
+                                               'type' => 'Str'
+                                             },
+               'CustomAvailabilityZoneName' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +88,7 @@ Amazon RDS generates a unique identifier when a custom AZ is created.
   The status of the custom AZ.
 
 
-=head2 VpnDetails => L<Paws::RDS::VpnDetails>
+=head2 VpnDetails => RDS_VpnDetails
 
   Information about the virtual private network (VPN) between the VMware
 vSphere cluster and the AWS website.

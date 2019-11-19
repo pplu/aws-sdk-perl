@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Rekognition::NotificationChannel;
-  use Moose;
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has SNSTopicArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Rekognition::Types qw//;
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has SNSTopicArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'SNSTopicArn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'SNSTopicArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

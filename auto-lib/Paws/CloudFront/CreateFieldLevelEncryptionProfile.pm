@@ -1,16 +1,34 @@
 
 package Paws::CloudFront::CreateFieldLevelEncryptionProfile;
-  use Moose;
-  has FieldLevelEncryptionProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionProfileConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_FieldLevelEncryptionProfileConfig/;
+  has FieldLevelEncryptionProfileConfig => (is => 'ro', isa => CloudFront_FieldLevelEncryptionProfileConfig, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFieldLevelEncryptionProfile');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/field-level-encryption-profile');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateFieldLevelEncryptionProfileResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFieldLevelEncryptionProfile');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2019-03-26/field-level-encryption-profile');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFront::CreateFieldLevelEncryptionProfileResult');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FieldLevelEncryptionProfileConfig' => {
+                                                        'class' => 'Paws::CloudFront::FieldLevelEncryptionProfileConfig',
+                                                        'type' => 'CloudFront_FieldLevelEncryptionProfileConfig'
+                                                      }
+             },
+  'IsRequired' => {
+                    'FieldLevelEncryptionProfileConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +87,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FieldLevelEncryptionProfileConfig => L<Paws::CloudFront::FieldLevelEncryptionProfileConfig>
+=head2 B<REQUIRED> FieldLevelEncryptionProfileConfig => CloudFront_FieldLevelEncryptionProfileConfig
 
 The request to create a field-level encryption profile.
 

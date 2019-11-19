@@ -1,18 +1,89 @@
+# Generated from default/object.tt
 package Paws::Personalize::Solution;
-  use Moose;
-  has AutoMLResult => (is => 'ro', isa => 'Paws::Personalize::AutoMLResult', request_name => 'autoMLResult', traits => ['NameInRequest']);
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has DatasetGroupArn => (is => 'ro', isa => 'Str', request_name => 'datasetGroupArn', traits => ['NameInRequest']);
-  has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has LatestSolutionVersion => (is => 'ro', isa => 'Paws::Personalize::SolutionVersionSummary', request_name => 'latestSolutionVersion', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has PerformAutoML => (is => 'ro', isa => 'Bool', request_name => 'performAutoML', traits => ['NameInRequest']);
-  has PerformHPO => (is => 'ro', isa => 'Bool', request_name => 'performHPO', traits => ['NameInRequest']);
-  has RecipeArn => (is => 'ro', isa => 'Str', request_name => 'recipeArn', traits => ['NameInRequest']);
-  has SolutionArn => (is => 'ro', isa => 'Str', request_name => 'solutionArn', traits => ['NameInRequest']);
-  has SolutionConfig => (is => 'ro', isa => 'Paws::Personalize::SolutionConfig', request_name => 'solutionConfig', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Personalize::Types qw/Personalize_SolutionConfig Personalize_AutoMLResult Personalize_SolutionVersionSummary/;
+  has AutoMLResult => (is => 'ro', isa => Personalize_AutoMLResult);
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has DatasetGroupArn => (is => 'ro', isa => Str);
+  has EventType => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has LatestSolutionVersion => (is => 'ro', isa => Personalize_SolutionVersionSummary);
+  has Name => (is => 'ro', isa => Str);
+  has PerformAutoML => (is => 'ro', isa => Bool);
+  has PerformHPO => (is => 'ro', isa => Bool);
+  has RecipeArn => (is => 'ro', isa => Str);
+  has SolutionArn => (is => 'ro', isa => Str);
+  has SolutionConfig => (is => 'ro', isa => Personalize_SolutionConfig);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SolutionConfig' => 'solutionConfig',
+                       'DatasetGroupArn' => 'datasetGroupArn',
+                       'LatestSolutionVersion' => 'latestSolutionVersion',
+                       'EventType' => 'eventType',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime',
+                       'AutoMLResult' => 'autoMLResult',
+                       'PerformAutoML' => 'performAutoML',
+                       'PerformHPO' => 'performHPO',
+                       'RecipeArn' => 'recipeArn',
+                       'Status' => 'status',
+                       'CreationDateTime' => 'creationDateTime',
+                       'Name' => 'name',
+                       'SolutionArn' => 'solutionArn'
+                     },
+  'types' => {
+               'SolutionConfig' => {
+                                     'class' => 'Paws::Personalize::SolutionConfig',
+                                     'type' => 'Personalize_SolutionConfig'
+                                   },
+               'EventType' => {
+                                'type' => 'Str'
+                              },
+               'LatestSolutionVersion' => {
+                                            'class' => 'Paws::Personalize::SolutionVersionSummary',
+                                            'type' => 'Personalize_SolutionVersionSummary'
+                                          },
+               'DatasetGroupArn' => {
+                                      'type' => 'Str'
+                                    },
+               'RecipeArn' => {
+                                'type' => 'Str'
+                              },
+               'PerformHPO' => {
+                                 'type' => 'Bool'
+                               },
+               'AutoMLResult' => {
+                                   'type' => 'Personalize_AutoMLResult',
+                                   'class' => 'Paws::Personalize::AutoMLResult'
+                                 },
+               'PerformAutoML' => {
+                                    'type' => 'Bool'
+                                  },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'SolutionArn' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +120,7 @@ trained model that can be deployed as a campaign.
 =head1 ATTRIBUTES
 
 
-=head2 AutoMLResult => L<Paws::Personalize::AutoMLResult>
+=head2 AutoMLResult => Personalize_AutoMLResult
 
   When C<performAutoML> is true, specifies the best recipe found.
 
@@ -76,7 +147,7 @@ training the model.
   The date and time (in Unix time) that the solution was last updated.
 
 
-=head2 LatestSolutionVersion => L<Paws::Personalize::SolutionVersionSummary>
+=head2 LatestSolutionVersion => Personalize_SolutionVersionSummary
 
   Describes the latest version of the solution, including the status and
 the ARN.
@@ -111,7 +182,7 @@ recipe. The default is C<false>.
   The ARN of the solution.
 
 
-=head2 SolutionConfig => L<Paws::Personalize::SolutionConfig>
+=head2 SolutionConfig => Personalize_SolutionConfig
 
   Describes the configuration properties for the solution.
 

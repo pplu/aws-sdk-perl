@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::AppStream::ApplicationSettings;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has SettingsGroup => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::AppStream::Types qw//;
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has SettingsGroup => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Enabled' => 1
+                  },
+  'types' => {
+               'SettingsGroup' => {
+                                    'type' => 'Str'
+                                  },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

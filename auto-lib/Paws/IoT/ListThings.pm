@@ -1,18 +1,52 @@
 
 package Paws::IoT::ListThings;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'attributeName');
-  has AttributeValue => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'attributeValue');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'thingTypeName');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str, predicate => 1);
+  has AttributeValue => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ThingTypeName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListThings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListThingsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListThings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/things');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListThingsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'AttributeValue' => {
+                                     'type' => 'Str'
+                                   },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  },
+               'ThingTypeName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'ParamInQuery' => {
+                      'ThingTypeName' => 'thingTypeName',
+                      'AttributeName' => 'attributeName',
+                      'AttributeValue' => 'attributeValue',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

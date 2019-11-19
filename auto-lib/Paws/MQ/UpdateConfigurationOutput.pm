@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::MQ::UpdateConfigurationOutput;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has LatestRevision => (is => 'ro', isa => 'Paws::MQ::ConfigurationRevision', request_name => 'latestRevision', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::MQ::SanitizationWarning]', request_name => 'warnings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MQ::Types qw/MQ_ConfigurationRevision MQ_SanitizationWarning/;
+  has Arn => (is => 'ro', isa => Str);
+  has Created => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has LatestRevision => (is => 'ro', isa => MQ_ConfigurationRevision);
+  has Name => (is => 'ro', isa => Str);
+  has Warnings => (is => 'ro', isa => ArrayRef[MQ_SanitizationWarning]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Warnings' => 'warnings',
+                       'Name' => 'name',
+                       'LatestRevision' => 'latestRevision',
+                       'Id' => 'id',
+                       'Arn' => 'arn',
+                       'Created' => 'created'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'LatestRevision' => {
+                                     'class' => 'Paws::MQ::ConfigurationRevision',
+                                     'type' => 'MQ_ConfigurationRevision'
+                                   },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Warnings' => {
+                               'class' => 'Paws::MQ::SanitizationWarning',
+                               'type' => 'ArrayRef[MQ_SanitizationWarning]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +98,7 @@ Returns information about the updated configuration.
   Required. The unique ID that Amazon MQ generates for the configuration.
 
 
-=head2 LatestRevision => L<Paws::MQ::ConfigurationRevision>
+=head2 LatestRevision => MQ_ConfigurationRevision
 
   The latest revision of the configuration.
 
@@ -68,7 +110,7 @@ alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 1-150 characters long.
 
 
-=head2 Warnings => ArrayRef[L<Paws::MQ::SanitizationWarning>]
+=head2 Warnings => ArrayRef[MQ_SanitizationWarning]
 
   The list of the first 20 warnings about the configuration XML elements
 or attributes that were sanitized.

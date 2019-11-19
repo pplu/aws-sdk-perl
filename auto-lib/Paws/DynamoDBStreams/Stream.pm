@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::DynamoDBStreams::Stream;
-  use Moose;
-  has StreamArn => (is => 'ro', isa => 'Str');
-  has StreamLabel => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDBStreams::Types qw//;
+  has StreamArn => (is => 'ro', isa => Str);
+  has StreamLabel => (is => 'ro', isa => Str);
+  has TableName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamLabel' => {
+                                  'type' => 'Str'
+                                },
+               'StreamArn' => {
+                                'type' => 'Str'
+                              },
+               'TableName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

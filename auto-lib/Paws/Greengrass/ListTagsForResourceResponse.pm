@@ -1,9 +1,30 @@
 
 package Paws::Greengrass::ListTagsForResourceResponse;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass_Tags/;
+  has Tags => (is => 'ro', isa => Greengrass_Tags);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'Greengrass_Tags',
+                           'class' => 'Paws::Greengrass::Tags'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::Greengrass::ListTagsForResourceResponse
 =head1 ATTRIBUTES
 
 
-=head2 Tags => L<Paws::Greengrass::Tags>
+=head2 Tags => Greengrass_Tags
 
 
 

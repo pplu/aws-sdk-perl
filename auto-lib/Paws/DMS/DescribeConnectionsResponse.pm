@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::DescribeConnectionsResponse;
-  use Moose;
-  has Connections => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Connection]');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_Connection/;
+  has Connections => (is => 'ro', isa => ArrayRef[DMS_Connection]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Connections' => {
+                                  'type' => 'ArrayRef[DMS_Connection]',
+                                  'class' => 'Paws::DMS::Connection'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::DMS::DescribeConnectionsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Connections => ArrayRef[L<Paws::DMS::Connection>]
+=head2 Connections => ArrayRef[DMS_Connection]
 
 A description of the connections.
 

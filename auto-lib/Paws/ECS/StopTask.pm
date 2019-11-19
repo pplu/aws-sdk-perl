@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::StopTask;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
-  has Task => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'task' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has Reason => (is => 'ro', isa => Str, predicate => 1);
+  has Task => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::StopTaskResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StopTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::StopTaskResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Task' => 1
+                  },
+  'NameInRequest' => {
+                       'Reason' => 'reason',
+                       'Task' => 'task',
+                       'Cluster' => 'cluster'
+                     },
+  'types' => {
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'Task' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

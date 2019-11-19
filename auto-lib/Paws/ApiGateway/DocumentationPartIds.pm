@@ -1,10 +1,34 @@
 
 package Paws::ApiGateway::DocumentationPartIds;
-  use Moose;
-  has Ids => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ids');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'warnings');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ApiGateway::Types qw//;
+  has Ids => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Warnings => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Ids' => 'ids',
+                       'Warnings' => 'warnings'
+                     },
+  'types' => {
+               'Warnings' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Ids' => {
+                          'type' => 'ArrayRef[Str|Undef]'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

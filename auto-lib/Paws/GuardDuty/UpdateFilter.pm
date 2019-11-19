@@ -1,19 +1,64 @@
 
 package Paws::GuardDuty::UpdateFilter;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'action');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has FilterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'filterName', required => 1);
-  has FindingCriteria => (is => 'ro', isa => 'Paws::GuardDuty::FindingCriteria', traits => ['NameInRequest'], request_name => 'findingCriteria');
-  has Rank => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'rank');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::GuardDuty::Types qw/GuardDuty_FindingCriteria/;
+  has Action => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FilterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FindingCriteria => (is => 'ro', isa => GuardDuty_FindingCriteria, predicate => 1);
+  has Rank => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFilter');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/filter/{filterName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::UpdateFilterResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFilter');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/filter/{filterName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::UpdateFilterResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'FilterName' => 'filterName',
+                    'DetectorId' => 'detectorId'
+                  },
+  'NameInRequest' => {
+                       'Rank' => 'rank',
+                       'FindingCriteria' => 'findingCriteria',
+                       'Action' => 'action',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'FilterName' => 1,
+                    'DetectorId' => 1
+                  },
+  'types' => {
+               'Rank' => {
+                           'type' => 'Int'
+                         },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'FindingCriteria' => {
+                                      'class' => 'Paws::GuardDuty::FindingCriteria',
+                                      'type' => 'GuardDuty_FindingCriteria'
+                                    },
+               'FilterName' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +141,7 @@ The name of the filter.
 
 
 
-=head2 FindingCriteria => L<Paws::GuardDuty::FindingCriteria>
+=head2 FindingCriteria => GuardDuty_FindingCriteria
 
 Represents the criteria to be used in the filter for querying findings.
 

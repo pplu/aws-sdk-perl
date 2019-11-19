@@ -1,15 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::ListAvailableManagementCidrRanges;
-  use Moose;
-  has ManagementCidrRangeConstraint => (is => 'ro', isa => 'Str', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WorkSpaces::Types qw//;
+  has ManagementCidrRangeConstraint => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAvailableManagementCidrRanges');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::ListAvailableManagementCidrRangesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAvailableManagementCidrRanges');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::ListAvailableManagementCidrRangesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ManagementCidrRangeConstraint' => 1
+                  },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'ManagementCidrRangeConstraint' => {
+                                                    'type' => 'Str'
+                                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::PipelineExecution;
-  use Moose;
-  has ArtifactRevisions => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ArtifactRevision]', request_name => 'artifactRevisions', traits => ['NameInRequest']);
-  has PipelineExecutionId => (is => 'ro', isa => 'Str', request_name => 'pipelineExecutionId', traits => ['NameInRequest']);
-  has PipelineName => (is => 'ro', isa => 'Str', request_name => 'pipelineName', traits => ['NameInRequest']);
-  has PipelineVersion => (is => 'ro', isa => 'Int', request_name => 'pipelineVersion', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ArtifactRevision/;
+  has ArtifactRevisions => (is => 'ro', isa => ArrayRef[CodePipeline_ArtifactRevision]);
+  has PipelineExecutionId => (is => 'ro', isa => Str);
+  has PipelineName => (is => 'ro', isa => Str);
+  has PipelineVersion => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ArtifactRevisions' => 'artifactRevisions',
+                       'Status' => 'status',
+                       'PipelineName' => 'pipelineName',
+                       'PipelineVersion' => 'pipelineVersion',
+                       'PipelineExecutionId' => 'pipelineExecutionId'
+                     },
+  'types' => {
+               'ArtifactRevisions' => {
+                                        'type' => 'ArrayRef[CodePipeline_ArtifactRevision]',
+                                        'class' => 'Paws::CodePipeline::ArtifactRevision'
+                                      },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'PipelineName' => {
+                                   'type' => 'Str'
+                                 },
+               'PipelineVersion' => {
+                                      'type' => 'Int'
+                                    },
+               'PipelineExecutionId' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +77,7 @@ Represents information about an execution of a pipeline.
 =head1 ATTRIBUTES
 
 
-=head2 ArtifactRevisions => ArrayRef[L<Paws::CodePipeline::ArtifactRevision>]
+=head2 ArtifactRevisions => ArrayRef[CodePipeline_ArtifactRevision]
 
   A list of C<ArtifactRevision> objects included in a pipeline execution.
 

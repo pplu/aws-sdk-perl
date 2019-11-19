@@ -1,14 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Inspector::DescribeRulesPackages;
-  use Moose;
-  has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale' );
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'rulesPackageArns' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Inspector::Types qw//;
+  has Locale => (is => 'ro', isa => Str, predicate => 1);
+  has RulesPackageArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRulesPackages');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Inspector::DescribeRulesPackagesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeRulesPackages');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Inspector::DescribeRulesPackagesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RulesPackageArns' => 1
+                  },
+  'NameInRequest' => {
+                       'RulesPackageArns' => 'rulesPackageArns',
+                       'Locale' => 'locale'
+                     },
+  'types' => {
+               'RulesPackageArns' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Locale' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

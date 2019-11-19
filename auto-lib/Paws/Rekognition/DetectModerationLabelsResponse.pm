@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::DetectModerationLabelsResponse;
-  use Moose;
-  has ModerationLabels => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::ModerationLabel]');
-  has ModerationModelVersion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_ModerationLabel/;
+  has ModerationLabels => (is => 'ro', isa => ArrayRef[Rekognition_ModerationLabel]);
+  has ModerationModelVersion => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ModerationLabels' => {
+                                       'class' => 'Paws::Rekognition::ModerationLabel',
+                                       'type' => 'ArrayRef[Rekognition_ModerationLabel]'
+                                     },
+               'ModerationModelVersion' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Rekognition::DetectModerationLabelsResponse
 =head1 ATTRIBUTES
 
 
-=head2 ModerationLabels => ArrayRef[L<Paws::Rekognition::ModerationLabel>]
+=head2 ModerationLabels => ArrayRef[Rekognition_ModerationLabel]
 
 Array of detected Moderation labels and the time, in milliseconds from
 the start of the video, they were detected.

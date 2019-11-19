@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ResourceGroups::GroupFilter;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ResourceGroups::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Values' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

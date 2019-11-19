@@ -1,10 +1,50 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::RemoteIpDetails;
-  use Moose;
-  has City => (is => 'ro', isa => 'Paws::GuardDuty::City', request_name => 'city', traits => ['NameInRequest']);
-  has Country => (is => 'ro', isa => 'Paws::GuardDuty::Country', request_name => 'country', traits => ['NameInRequest']);
-  has GeoLocation => (is => 'ro', isa => 'Paws::GuardDuty::GeoLocation', request_name => 'geoLocation', traits => ['NameInRequest']);
-  has IpAddressV4 => (is => 'ro', isa => 'Str', request_name => 'ipAddressV4', traits => ['NameInRequest']);
-  has Organization => (is => 'ro', isa => 'Paws::GuardDuty::Organization', request_name => 'organization', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw/GuardDuty_GeoLocation GuardDuty_City GuardDuty_Country GuardDuty_Organization/;
+  has City => (is => 'ro', isa => GuardDuty_City);
+  has Country => (is => 'ro', isa => GuardDuty_Country);
+  has GeoLocation => (is => 'ro', isa => GuardDuty_GeoLocation);
+  has IpAddressV4 => (is => 'ro', isa => Str);
+  has Organization => (is => 'ro', isa => GuardDuty_Organization);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'IpAddressV4' => 'ipAddressV4',
+                       'GeoLocation' => 'geoLocation',
+                       'City' => 'city',
+                       'Country' => 'country',
+                       'Organization' => 'organization'
+                     },
+  'types' => {
+               'Country' => {
+                              'type' => 'GuardDuty_Country',
+                              'class' => 'Paws::GuardDuty::Country'
+                            },
+               'Organization' => {
+                                   'type' => 'GuardDuty_Organization',
+                                   'class' => 'Paws::GuardDuty::Organization'
+                                 },
+               'City' => {
+                           'type' => 'GuardDuty_City',
+                           'class' => 'Paws::GuardDuty::City'
+                         },
+               'GeoLocation' => {
+                                  'class' => 'Paws::GuardDuty::GeoLocation',
+                                  'type' => 'GuardDuty_GeoLocation'
+                                },
+               'IpAddressV4' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,17 +80,17 @@ Continas information about the remote IP address of the connection.
 =head1 ATTRIBUTES
 
 
-=head2 City => L<Paws::GuardDuty::City>
+=head2 City => GuardDuty_City
 
   City information of the remote IP address.
 
 
-=head2 Country => L<Paws::GuardDuty::Country>
+=head2 Country => GuardDuty_Country
 
   Country code of the remote IP address.
 
 
-=head2 GeoLocation => L<Paws::GuardDuty::GeoLocation>
+=head2 GeoLocation => GuardDuty_GeoLocation
 
   Location information of the remote IP address.
 
@@ -60,7 +100,7 @@ Continas information about the remote IP address of the connection.
   IPV4 remote address of the connection.
 
 
-=head2 Organization => L<Paws::GuardDuty::Organization>
+=head2 Organization => GuardDuty_Organization
 
   ISP Organization information of the remote IP address.
 

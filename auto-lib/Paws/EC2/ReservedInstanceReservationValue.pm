@@ -1,7 +1,29 @@
 package Paws::EC2::ReservedInstanceReservationValue;
-  use Moose;
-  has ReservationValue => (is => 'ro', isa => 'Paws::EC2::ReservationValue', request_name => 'reservationValue', traits => ['NameInRequest']);
-  has ReservedInstanceId => (is => 'ro', isa => 'Str', request_name => 'reservedInstanceId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ReservationValue/;
+  has ReservationValue => (is => 'ro', isa => EC2_ReservationValue);
+  has ReservedInstanceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservationValue' => {
+                                       'class' => 'Paws::EC2::ReservationValue',
+                                       'type' => 'EC2_ReservationValue'
+                                     },
+               'ReservedInstanceId' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'ReservedInstanceId' => 'reservedInstanceId',
+                       'ReservationValue' => 'reservationValue'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +59,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ReservationValue => L<Paws::EC2::ReservationValue>
+=head2 ReservationValue => EC2_ReservationValue
 
   The total value of the Convertible Reserved Instance that you are
 exchanging.

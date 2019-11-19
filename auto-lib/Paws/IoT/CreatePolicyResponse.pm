@@ -1,12 +1,44 @@
 
 package Paws::IoT::CreatePolicyResponse;
-  use Moose;
-  has PolicyArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyArn');
-  has PolicyDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyDocument');
-  has PolicyName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyName');
-  has PolicyVersionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyVersionId');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has PolicyArn => (is => 'ro', isa => Str);
+  has PolicyDocument => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str);
+  has PolicyVersionId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyVersionId' => {
+                                      'type' => 'Str'
+                                    },
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PolicyArn' => {
+                                'type' => 'Str'
+                              },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'PolicyArn' => 'policyArn',
+                       'PolicyName' => 'policyName',
+                       'PolicyDocument' => 'policyDocument',
+                       'PolicyVersionId' => 'policyVersionId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

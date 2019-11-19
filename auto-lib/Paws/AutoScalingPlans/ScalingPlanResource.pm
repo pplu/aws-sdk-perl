@@ -1,13 +1,60 @@
+# Generated from default/object.tt
 package Paws::AutoScalingPlans::ScalingPlanResource;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
-  has ScalingPlanName => (is => 'ro', isa => 'Str', required => 1);
-  has ScalingPlanVersion => (is => 'ro', isa => 'Int', required => 1);
-  has ScalingPolicies => (is => 'ro', isa => 'ArrayRef[Paws::AutoScalingPlans::ScalingPolicy]');
-  has ScalingStatusCode => (is => 'ro', isa => 'Str', required => 1);
-  has ScalingStatusMessage => (is => 'ro', isa => 'Str');
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::AutoScalingPlans::Types qw/AutoScalingPlans_ScalingPolicy/;
+  has ResourceId => (is => 'ro', isa => Str, required => 1);
+  has ScalableDimension => (is => 'ro', isa => Str, required => 1);
+  has ScalingPlanName => (is => 'ro', isa => Str, required => 1);
+  has ScalingPlanVersion => (is => 'ro', isa => Int, required => 1);
+  has ScalingPolicies => (is => 'ro', isa => ArrayRef[AutoScalingPlans_ScalingPolicy]);
+  has ScalingStatusCode => (is => 'ro', isa => Str, required => 1);
+  has ScalingStatusMessage => (is => 'ro', isa => Str);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ScalingStatusCode' => 1,
+                    'ServiceNamespace' => 1,
+                    'ScalingPlanName' => 1,
+                    'ScalableDimension' => 1,
+                    'ResourceId' => 1,
+                    'ScalingPlanVersion' => 1
+                  },
+  'types' => {
+               'ScalingPolicies' => {
+                                      'type' => 'ArrayRef[AutoScalingPlans_ScalingPolicy]',
+                                      'class' => 'Paws::AutoScalingPlans::ScalingPolicy'
+                                    },
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'ScalingStatusCode' => {
+                                        'type' => 'Str'
+                                      },
+               'ScalingPlanVersion' => {
+                                         'type' => 'Int'
+                                       },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ScalingPlanName' => {
+                                      'type' => 'Str'
+                                    },
+               'ScalableDimension' => {
+                                        'type' => 'Str'
+                                      },
+               'ScalingStatusMessage' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -148,7 +195,7 @@ Aurora PostgreSQL-compatible edition.
   The version number of the scaling plan.
 
 
-=head2 ScalingPolicies => ArrayRef[L<Paws::AutoScalingPlans::ScalingPolicy>]
+=head2 ScalingPolicies => ArrayRef[AutoScalingPlans_ScalingPolicy]
 
   The scaling policies.
 

@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::IntegrationResponses;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::IntegrationResponse]', request_name => 'items', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_IntegrationResponse/;
+  has Items => (is => 'ro', isa => ArrayRef[ApiGatewayV2_IntegrationResponse]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Items' => 'items',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'Items' => {
+                            'type' => 'ArrayRef[ApiGatewayV2_IntegrationResponse]',
+                            'class' => 'Paws::ApiGatewayV2::IntegrationResponse'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Represents a collection of integration responses.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::ApiGatewayV2::IntegrationResponse>]
+=head2 Items => ArrayRef[ApiGatewayV2_IntegrationResponse]
 
   The elements from this collection.
 

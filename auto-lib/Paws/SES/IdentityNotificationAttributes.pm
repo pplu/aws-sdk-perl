@@ -1,12 +1,50 @@
+# Generated from default/object.tt
 package Paws::SES::IdentityNotificationAttributes;
-  use Moose;
-  has BounceTopic => (is => 'ro', isa => 'Str');
-  has ComplaintTopic => (is => 'ro', isa => 'Str');
-  has DeliveryTopic => (is => 'ro', isa => 'Str');
-  has ForwardingEnabled => (is => 'ro', isa => 'Bool', required => 1);
-  has HeadersInBounceNotificationsEnabled => (is => 'ro', isa => 'Bool');
-  has HeadersInComplaintNotificationsEnabled => (is => 'ro', isa => 'Bool');
-  has HeadersInDeliveryNotificationsEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SES::Types qw//;
+  has BounceTopic => (is => 'ro', isa => Str);
+  has ComplaintTopic => (is => 'ro', isa => Str);
+  has DeliveryTopic => (is => 'ro', isa => Str);
+  has ForwardingEnabled => (is => 'ro', isa => Bool, required => 1);
+  has HeadersInBounceNotificationsEnabled => (is => 'ro', isa => Bool);
+  has HeadersInComplaintNotificationsEnabled => (is => 'ro', isa => Bool);
+  has HeadersInDeliveryNotificationsEnabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ForwardingEnabled' => 1
+                  },
+  'types' => {
+               'HeadersInBounceNotificationsEnabled' => {
+                                                          'type' => 'Bool'
+                                                        },
+               'HeadersInComplaintNotificationsEnabled' => {
+                                                             'type' => 'Bool'
+                                                           },
+               'HeadersInDeliveryNotificationsEnabled' => {
+                                                            'type' => 'Bool'
+                                                          },
+               'BounceTopic' => {
+                                  'type' => 'Str'
+                                },
+               'ComplaintTopic' => {
+                                     'type' => 'Str'
+                                   },
+               'DeliveryTopic' => {
+                                    'type' => 'Str'
+                                  },
+               'ForwardingEnabled' => {
+                                        'type' => 'Bool'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

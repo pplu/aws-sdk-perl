@@ -1,19 +1,75 @@
+# Generated from default/object.tt
 package Paws::ServiceQuotas::RequestedServiceQuotaChange;
-  use Moose;
-  has CaseId => (is => 'ro', isa => 'Str');
-  has Created => (is => 'ro', isa => 'Str');
-  has DesiredValue => (is => 'ro', isa => 'Num');
-  has GlobalQuota => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str');
-  has LastUpdated => (is => 'ro', isa => 'Str');
-  has QuotaArn => (is => 'ro', isa => 'Str');
-  has QuotaCode => (is => 'ro', isa => 'Str');
-  has QuotaName => (is => 'ro', isa => 'Str');
-  has Requester => (is => 'ro', isa => 'Str');
-  has ServiceCode => (is => 'ro', isa => 'Str');
-  has ServiceName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Num Bool/;
+  use Paws::ServiceQuotas::Types qw//;
+  has CaseId => (is => 'ro', isa => Str);
+  has Created => (is => 'ro', isa => Str);
+  has DesiredValue => (is => 'ro', isa => Num);
+  has GlobalQuota => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str);
+  has LastUpdated => (is => 'ro', isa => Str);
+  has QuotaArn => (is => 'ro', isa => Str);
+  has QuotaCode => (is => 'ro', isa => Str);
+  has QuotaName => (is => 'ro', isa => Str);
+  has Requester => (is => 'ro', isa => Str);
+  has ServiceCode => (is => 'ro', isa => Str);
+  has ServiceName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Unit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                },
+               'LastUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'QuotaCode' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'QuotaArn' => {
+                               'type' => 'Str'
+                             },
+               'QuotaName' => {
+                                'type' => 'Str'
+                              },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'DesiredValue' => {
+                                   'type' => 'Num'
+                                 },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CaseId' => {
+                             'type' => 'Str'
+                           },
+               'GlobalQuota' => {
+                                  'type' => 'Bool'
+                                },
+               'Requester' => {
+                                'type' => 'Str'
+                              },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'Created' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

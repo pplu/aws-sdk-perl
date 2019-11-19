@@ -1,16 +1,43 @@
 
 package Paws::PinpointEmail::PutConfigurationSetDeliveryOptions;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ConfigurationSetName', required => 1);
-  has SendingPoolName => (is => 'ro', isa => 'Str');
-  has TlsPolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SendingPoolName => (is => 'ro', isa => Str, predicate => 1);
+  has TlsPolicy => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutConfigurationSetDeliveryOptions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/configuration-sets/{ConfigurationSetName}/delivery-options');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::PutConfigurationSetDeliveryOptionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutConfigurationSetDeliveryOptions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/configuration-sets/{ConfigurationSetName}/delivery-options');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::PutConfigurationSetDeliveryOptionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TlsPolicy' => {
+                                'type' => 'Str'
+                              },
+               'SendingPoolName' => {
+                                      'type' => 'Str'
+                                    },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1
+                  },
+  'ParamInURI' => {
+                    'ConfigurationSetName' => 'ConfigurationSetName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

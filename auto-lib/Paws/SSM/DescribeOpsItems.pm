@@ -1,15 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::DescribeOpsItems;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has OpsItemFilters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsItemFilter]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::SSM::Types qw/SSM_OpsItemFilter/;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has OpsItemFilters => (is => 'ro', isa => ArrayRef[SSM_OpsItemFilter], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOpsItems');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::DescribeOpsItemsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeOpsItems');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::DescribeOpsItemsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'OpsItemFilters' => {
+                                     'class' => 'Paws::SSM::OpsItemFilter',
+                                     'type' => 'ArrayRef[SSM_OpsItemFilter]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +94,7 @@ results.
 
 
 
-=head2 OpsItemFilters => ArrayRef[L<Paws::SSM::OpsItemFilter>]
+=head2 OpsItemFilters => ArrayRef[SSM_OpsItemFilter]
 
 One or more filters to limit the reponse.
 

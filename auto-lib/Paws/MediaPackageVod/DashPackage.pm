@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::DashPackage;
-  use Moose;
-  has DashManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::DashManifest]', request_name => 'dashManifests', traits => ['NameInRequest'], required => 1);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaPackageVod::DashEncryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_DashEncryption MediaPackageVod_DashManifest/;
+  has DashManifests => (is => 'ro', isa => ArrayRef[MediaPackageVod_DashManifest], required => 1);
+  has Encryption => (is => 'ro', isa => MediaPackageVod_DashEncryption);
+  has SegmentDurationSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DashManifests' => 1
+                  },
+  'NameInRequest' => {
+                       'SegmentDurationSeconds' => 'segmentDurationSeconds',
+                       'Encryption' => 'encryption',
+                       'DashManifests' => 'dashManifests'
+                     },
+  'types' => {
+               'SegmentDurationSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'DashManifests' => {
+                                    'type' => 'ArrayRef[MediaPackageVod_DashManifest]',
+                                    'class' => 'Paws::MediaPackageVod::DashManifest'
+                                  },
+               'Encryption' => {
+                                 'type' => 'MediaPackageVod_DashEncryption',
+                                 'class' => 'Paws::MediaPackageVod::DashEncryption'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +71,12 @@ A Dynamic Adaptive Streaming over HTTP (DASH) packaging configuration.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DashManifests => ArrayRef[L<Paws::MediaPackageVod::DashManifest>]
+=head2 B<REQUIRED> DashManifests => ArrayRef[MediaPackageVod_DashManifest]
 
   A list of DASH manifest configurations.
 
 
-=head2 Encryption => L<Paws::MediaPackageVod::DashEncryption>
+=head2 Encryption => MediaPackageVod_DashEncryption
 
   
 

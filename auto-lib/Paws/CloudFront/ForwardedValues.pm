@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::CloudFront::ForwardedValues;
-  use Moose;
-  has Cookies => (is => 'ro', isa => 'Paws::CloudFront::CookiePreference', required => 1);
-  has Headers => (is => 'ro', isa => 'Paws::CloudFront::Headers');
-  has QueryString => (is => 'ro', isa => 'Bool', required => 1);
-  has QueryStringCacheKeys => (is => 'ro', isa => 'Paws::CloudFront::QueryStringCacheKeys');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::CloudFront::Types qw/CloudFront_CookiePreference CloudFront_Headers CloudFront_QueryStringCacheKeys/;
+  has Cookies => (is => 'ro', isa => CloudFront_CookiePreference, required => 1);
+  has Headers => (is => 'ro', isa => CloudFront_Headers);
+  has QueryString => (is => 'ro', isa => Bool, required => 1);
+  has QueryStringCacheKeys => (is => 'ro', isa => CloudFront_QueryStringCacheKeys);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Cookies' => 1,
+                    'QueryString' => 1
+                  },
+  'types' => {
+               'Headers' => {
+                              'type' => 'CloudFront_Headers',
+                              'class' => 'Paws::CloudFront::Headers'
+                            },
+               'QueryStringCacheKeys' => {
+                                           'type' => 'CloudFront_QueryStringCacheKeys',
+                                           'class' => 'Paws::CloudFront::QueryStringCacheKeys'
+                                         },
+               'Cookies' => {
+                              'class' => 'Paws::CloudFront::CookiePreference',
+                              'type' => 'CloudFront_CookiePreference'
+                            },
+               'QueryString' => {
+                                  'type' => 'Bool'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +73,7 @@ cookies.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Cookies => L<Paws::CloudFront::CookiePreference>
+=head2 B<REQUIRED> Cookies => CloudFront_CookiePreference
 
   A complex type that specifies whether you want CloudFront to forward
 cookies to the origin and, if so, which ones. For more information
@@ -50,7 +83,7 @@ Caches, and Logs Cookies
 in the I<Amazon CloudFront Developer Guide>.
 
 
-=head2 Headers => L<Paws::CloudFront::Headers>
+=head2 Headers => CloudFront_Headers
 
   A complex type that specifies the C<Headers>, if any, that you want
 CloudFront to forward to the origin for this cache behavior
@@ -93,7 +126,7 @@ Query String Parameters
 in the I<Amazon CloudFront Developer Guide>.
 
 
-=head2 QueryStringCacheKeys => L<Paws::CloudFront::QueryStringCacheKeys>
+=head2 QueryStringCacheKeys => CloudFront_QueryStringCacheKeys
 
   A complex type that contains information about the query string
 parameters that you want CloudFront to use for caching for this cache

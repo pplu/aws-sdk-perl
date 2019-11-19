@@ -1,18 +1,60 @@
 
 package Paws::ApiGateway::PutGatewayResponse;
-  use Moose;
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseParameters');
-  has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseTemplates');
-  has ResponseType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'response_type', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has StatusCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusCode');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString/;
+  has ResponseParameters => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has ResponseTemplates => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has ResponseType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StatusCode => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutGatewayResponse');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/gatewayresponses/{response_type}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::GatewayResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutGatewayResponse');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/gatewayresponses/{response_type}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::GatewayResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'ResponseType' => 1
+                  },
+  'NameInRequest' => {
+                       'ResponseTemplates' => 'responseTemplates',
+                       'StatusCode' => 'statusCode',
+                       'ResponseParameters' => 'responseParameters'
+                     },
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'ResponseParameters' => {
+                                         'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                         'type' => 'ApiGateway_MapOfStringToString'
+                                       },
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'ResponseTemplates' => {
+                                        'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                        'type' => 'ApiGateway_MapOfStringToString'
+                                      },
+               'ResponseType' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'ResponseType' => 'response_type',
+                    'RestApiId' => 'restapi_id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,14 +97,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseParameters => ApiGateway_MapOfStringToString
 
 Response parameters (paths, query strings and headers) of the
 GatewayResponse as a string-to-string map of key-value pairs.
 
 
 
-=head2 ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseTemplates => ApiGateway_MapOfStringToString
 
 Response templates of the GatewayResponse as a string-to-string map of
 key-value pairs.

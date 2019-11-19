@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::Shield::Mitigation;
-  use Moose;
-  has MitigationName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Shield::Types qw//;
+  has MitigationName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MitigationName' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

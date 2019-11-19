@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::RedShift::SnapshotSortingEntity;
-  use Moose;
-  has Attribute => (is => 'ro', isa => 'Str', required => 1);
-  has SortOrder => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw//;
+  has Attribute => (is => 'ro', isa => Str, required => 1);
+  has SortOrder => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attribute' => {
+                                'type' => 'Str'
+                              },
+               'SortOrder' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Attribute' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

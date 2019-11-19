@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaLive::MsSmoothOutputSettings;
-  use Moose;
-  has H265PackagingType => (is => 'ro', isa => 'Str', request_name => 'h265PackagingType', traits => ['NameInRequest']);
-  has NameModifier => (is => 'ro', isa => 'Str', request_name => 'nameModifier', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has H265PackagingType => (is => 'ro', isa => Str);
+  has NameModifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'H265PackagingType' => 'h265PackagingType',
+                       'NameModifier' => 'nameModifier'
+                     },
+  'types' => {
+               'H265PackagingType' => {
+                                        'type' => 'Str'
+                                      },
+               'NameModifier' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

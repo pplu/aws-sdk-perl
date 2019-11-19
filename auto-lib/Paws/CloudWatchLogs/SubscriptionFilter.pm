@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::SubscriptionFilter;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
-  has DestinationArn => (is => 'ro', isa => 'Str', request_name => 'destinationArn', traits => ['NameInRequest']);
-  has Distribution => (is => 'ro', isa => 'Str', request_name => 'distribution', traits => ['NameInRequest']);
-  has FilterName => (is => 'ro', isa => 'Str', request_name => 'filterName', traits => ['NameInRequest']);
-  has FilterPattern => (is => 'ro', isa => 'Str', request_name => 'filterPattern', traits => ['NameInRequest']);
-  has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has CreationTime => (is => 'ro', isa => Int);
+  has DestinationArn => (is => 'ro', isa => Str);
+  has Distribution => (is => 'ro', isa => Str);
+  has FilterName => (is => 'ro', isa => Str);
+  has FilterPattern => (is => 'ro', isa => Str);
+  has LogGroupName => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DestinationArn' => {
+                                     'type' => 'Str'
+                                   },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'FilterPattern' => {
+                                    'type' => 'Str'
+                                  },
+               'FilterName' => {
+                                 'type' => 'Str'
+                               },
+               'CreationTime' => {
+                                   'type' => 'Int'
+                                 },
+               'Distribution' => {
+                                   'type' => 'Str'
+                                 },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'FilterPattern' => 'filterPattern',
+                       'RoleArn' => 'roleArn',
+                       'CreationTime' => 'creationTime',
+                       'FilterName' => 'filterName',
+                       'Distribution' => 'distribution',
+                       'LogGroupName' => 'logGroupName',
+                       'DestinationArn' => 'destinationArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

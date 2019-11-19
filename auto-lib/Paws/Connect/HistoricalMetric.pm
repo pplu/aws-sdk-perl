@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::Connect::HistoricalMetric;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has Statistic => (is => 'ro', isa => 'Str');
-  has Threshold => (is => 'ro', isa => 'Paws::Connect::Threshold');
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Connect::Types qw/Connect_Threshold/;
+  has Name => (is => 'ro', isa => Str);
+  has Statistic => (is => 'ro', isa => Str);
+  has Threshold => (is => 'ro', isa => Connect_Threshold);
+  has Unit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Threshold' => {
+                                'type' => 'Connect_Threshold',
+                                'class' => 'Paws::Connect::Threshold'
+                              },
+               'Statistic' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +76,7 @@ Contains information about a historical metric.
   The statistic for the metric.
 
 
-=head2 Threshold => L<Paws::Connect::Threshold>
+=head2 Threshold => Connect_Threshold
 
   The threshold for the metric, used with service level metrics.
 

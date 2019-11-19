@@ -1,17 +1,69 @@
 
 package Paws::ApiGatewayV2::CreateAuthorizerResponse;
-  use Moose;
-  has AuthorizerCredentialsArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerCredentialsArn');
-  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerId');
-  has AuthorizerResultTtlInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'authorizerResultTtlInSeconds');
-  has AuthorizerType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerType');
-  has AuthorizerUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerUri');
-  has IdentitySource => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'identitySource');
-  has IdentityValidationExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identityValidationExpression');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has ProviderArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'providerArns');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has AuthorizerCredentialsArn => (is => 'ro', isa => Str);
+  has AuthorizerId => (is => 'ro', isa => Str);
+  has AuthorizerResultTtlInSeconds => (is => 'ro', isa => Int);
+  has AuthorizerType => (is => 'ro', isa => Str);
+  has AuthorizerUri => (is => 'ro', isa => Str);
+  has IdentitySource => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has IdentityValidationExpression => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ProviderArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ProviderArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'IdentitySource' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'AuthorizerCredentialsArn' => {
+                                               'type' => 'Str'
+                                             },
+               'AuthorizerUri' => {
+                                    'type' => 'Str'
+                                  },
+               'IdentityValidationExpression' => {
+                                                   'type' => 'Str'
+                                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AuthorizerResultTtlInSeconds' => {
+                                                   'type' => 'Int'
+                                                 },
+               'AuthorizerType' => {
+                                     'type' => 'Str'
+                                   },
+               'AuthorizerId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'AuthorizerType' => 'authorizerType',
+                       'AuthorizerId' => 'authorizerId',
+                       'IdentityValidationExpression' => 'identityValidationExpression',
+                       'AuthorizerResultTtlInSeconds' => 'authorizerResultTtlInSeconds',
+                       'Name' => 'name',
+                       'ProviderArns' => 'providerArns',
+                       'AuthorizerUri' => 'authorizerUri',
+                       'AuthorizerCredentialsArn' => 'authorizerCredentialsArn',
+                       'IdentitySource' => 'identitySource'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

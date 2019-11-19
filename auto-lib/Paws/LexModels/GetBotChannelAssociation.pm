@@ -1,16 +1,47 @@
 
 package Paws::LexModels::GetBotChannelAssociation;
-  use Moose;
-  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'aliasName', required => 1);
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw//;
+  has BotAlias => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BotName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetBotChannelAssociation');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bots/{botName}/aliases/{aliasName}/channels/{name}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetBotChannelAssociationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetBotChannelAssociation');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/bots/{botName}/aliases/{aliasName}/channels/{name}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::GetBotChannelAssociationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'BotAlias' => 'aliasName',
+                    'Name' => 'name',
+                    'BotName' => 'botName'
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'BotAlias' => {
+                               'type' => 'Str'
+                             },
+               'BotName' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'BotAlias' => 1,
+                    'Name' => 1,
+                    'BotName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

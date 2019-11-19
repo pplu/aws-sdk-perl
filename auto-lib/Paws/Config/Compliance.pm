@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Config::Compliance;
-  use Moose;
-  has ComplianceContributorCount => (is => 'ro', isa => 'Paws::Config::ComplianceContributorCount');
-  has ComplianceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_ComplianceContributorCount/;
+  has ComplianceContributorCount => (is => 'ro', isa => Config_ComplianceContributorCount);
+  has ComplianceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComplianceType' => {
+                                     'type' => 'Str'
+                                   },
+               'ComplianceContributorCount' => {
+                                                 'class' => 'Paws::Config::ComplianceContributorCount',
+                                                 'type' => 'Config_ComplianceContributorCount'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ provides the number of contributors that affect the compliance.
 =head1 ATTRIBUTES
 
 
-=head2 ComplianceContributorCount => L<Paws::Config::ComplianceContributorCount>
+=head2 ComplianceContributorCount => Config_ComplianceContributorCount
 
   The number of AWS resources or AWS Config rules that cause a result of
 C<NON_COMPLIANT>, up to a maximum number.

@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetBlueprintsResult;
-  use Moose;
-  has Blueprints => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Blueprint]', traits => ['NameInRequest'], request_name => 'blueprints' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_Blueprint/;
+  has Blueprints => (is => 'ro', isa => ArrayRef[Lightsail_Blueprint]);
+  has NextPageToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'Blueprints' => {
+                                 'class' => 'Paws::Lightsail::Blueprint',
+                                 'type' => 'ArrayRef[Lightsail_Blueprint]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Blueprints' => 'blueprints',
+                       'NextPageToken' => 'nextPageToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Lightsail::GetBlueprintsResult
 =head1 ATTRIBUTES
 
 
-=head2 Blueprints => ArrayRef[L<Paws::Lightsail::Blueprint>]
+=head2 Blueprints => ArrayRef[Lightsail_Blueprint]
 
 An array of key-value pairs that contains information about the
 available blueprints.

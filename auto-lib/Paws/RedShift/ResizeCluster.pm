@@ -1,17 +1,49 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::ResizeCluster;
-  use Moose;
-  has Classic => (is => 'ro', isa => 'Bool');
-  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has ClusterType => (is => 'ro', isa => 'Str');
-  has NodeType => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::RedShift::Types qw//;
+  has Classic => (is => 'ro', isa => Bool, predicate => 1);
+  has ClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClusterType => (is => 'ro', isa => Str, predicate => 1);
+  has NodeType => (is => 'ro', isa => Str, predicate => 1);
+  has NumberOfNodes => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResizeCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::ResizeClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ResizeClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ResizeCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::ResizeClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ResizeClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ClusterIdentifier' => 1,
+                    'NumberOfNodes' => 1
+                  },
+  'types' => {
+               'NodeType' => {
+                               'type' => 'Str'
+                             },
+               'NumberOfNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'ClusterType' => {
+                                  'type' => 'Str'
+                                },
+               'Classic' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

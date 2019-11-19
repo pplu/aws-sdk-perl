@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ELBv2::Cipher;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ELBv2::Types qw//;
+  has Name => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Priority' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,38 @@
 
 package Paws::AppMesh::ListMeshesOutput;
-  use Moose;
-  has Meshes => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::MeshRef]', traits => ['NameInRequest'], request_name => 'meshes', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppMesh::Types qw/AppMesh_MeshRef/;
+  has Meshes => (is => 'ro', isa => ArrayRef[AppMesh_MeshRef], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Meshes' => {
+                             'class' => 'Paws::AppMesh::MeshRef',
+                             'type' => 'ArrayRef[AppMesh_MeshRef]'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Meshes' => 1
+                  },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Meshes' => 'meshes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +44,7 @@ Paws::AppMesh::ListMeshesOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Meshes => ArrayRef[L<Paws::AppMesh::MeshRef>]
+=head2 B<REQUIRED> Meshes => ArrayRef[AppMesh_MeshRef]
 
 The list of existing service meshes.
 

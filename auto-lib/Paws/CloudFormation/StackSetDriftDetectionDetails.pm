@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackSetDriftDetectionDetails;
-  use Moose;
-  has DriftDetectionStatus => (is => 'ro', isa => 'Str');
-  has DriftedStackInstancesCount => (is => 'ro', isa => 'Int');
-  has DriftStatus => (is => 'ro', isa => 'Str');
-  has FailedStackInstancesCount => (is => 'ro', isa => 'Int');
-  has InProgressStackInstancesCount => (is => 'ro', isa => 'Int');
-  has InSyncStackInstancesCount => (is => 'ro', isa => 'Int');
-  has LastDriftCheckTimestamp => (is => 'ro', isa => 'Str');
-  has TotalStackInstancesCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudFormation::Types qw//;
+  has DriftDetectionStatus => (is => 'ro', isa => Str);
+  has DriftedStackInstancesCount => (is => 'ro', isa => Int);
+  has DriftStatus => (is => 'ro', isa => Str);
+  has FailedStackInstancesCount => (is => 'ro', isa => Int);
+  has InProgressStackInstancesCount => (is => 'ro', isa => Int);
+  has InSyncStackInstancesCount => (is => 'ro', isa => Int);
+  has LastDriftCheckTimestamp => (is => 'ro', isa => Str);
+  has TotalStackInstancesCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailedStackInstancesCount' => {
+                                                'type' => 'Int'
+                                              },
+               'DriftDetectionStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'LastDriftCheckTimestamp' => {
+                                              'type' => 'Str'
+                                            },
+               'DriftedStackInstancesCount' => {
+                                                 'type' => 'Int'
+                                               },
+               'InSyncStackInstancesCount' => {
+                                                'type' => 'Int'
+                                              },
+               'DriftStatus' => {
+                                  'type' => 'Str'
+                                },
+               'InProgressStackInstancesCount' => {
+                                                    'type' => 'Int'
+                                                  },
+               'TotalStackInstancesCount' => {
+                                               'type' => 'Int'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

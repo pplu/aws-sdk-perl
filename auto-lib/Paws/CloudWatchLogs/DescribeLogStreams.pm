@@ -1,18 +1,60 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchLogs::DescribeLogStreams;
-  use Moose;
-  has Descending => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'descending' );
-  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
-  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
-  has LogStreamNamePrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logStreamNamePrefix' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has OrderBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'orderBy' );
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has Descending => (is => 'ro', isa => Bool, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has LogGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LogStreamNamePrefix => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has OrderBy => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLogStreams');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::DescribeLogStreamsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeLogStreams');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchLogs::DescribeLogStreamsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LogGroupName' => 1
+                  },
+  'NameInRequest' => {
+                       'LogStreamNamePrefix' => 'logStreamNamePrefix',
+                       'Descending' => 'descending',
+                       'NextToken' => 'nextToken',
+                       'OrderBy' => 'orderBy',
+                       'Limit' => 'limit',
+                       'LogGroupName' => 'logGroupName'
+                     },
+  'types' => {
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'Descending' => {
+                                 'type' => 'Bool'
+                               },
+               'LogStreamNamePrefix' => {
+                                          'type' => 'Str'
+                                        },
+               'OrderBy' => {
+                              'type' => 'Str'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

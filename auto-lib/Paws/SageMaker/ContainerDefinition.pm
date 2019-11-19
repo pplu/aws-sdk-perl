@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ContainerDefinition;
-  use Moose;
-  has ContainerHostname => (is => 'ro', isa => 'Str');
-  has Environment => (is => 'ro', isa => 'Paws::SageMaker::EnvironmentMap');
-  has Image => (is => 'ro', isa => 'Str');
-  has Mode => (is => 'ro', isa => 'Str');
-  has ModelDataUrl => (is => 'ro', isa => 'Str');
-  has ModelPackageName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_EnvironmentMap/;
+  has ContainerHostname => (is => 'ro', isa => Str);
+  has Environment => (is => 'ro', isa => SageMaker_EnvironmentMap);
+  has Image => (is => 'ro', isa => Str);
+  has Mode => (is => 'ro', isa => Str);
+  has ModelDataUrl => (is => 'ro', isa => Str);
+  has ModelPackageName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ModelPackageName' => {
+                                       'type' => 'Str'
+                                     },
+               'Environment' => {
+                                  'type' => 'SageMaker_EnvironmentMap',
+                                  'class' => 'Paws::SageMaker::EnvironmentMap'
+                                },
+               'Image' => {
+                            'type' => 'Str'
+                          },
+               'ContainerHostname' => {
+                                        'type' => 'Str'
+                                      },
+               'ModelDataUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'Mode' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +94,7 @@ C<ContainerHostName> parameter of every C<ContainerDefinition> in that
 pipeline.
 
 
-=head2 Environment => L<Paws::SageMaker::EnvironmentMap>
+=head2 Environment => SageMaker_EnvironmentMap
 
   The environment variables to set in the Docker container. Each key and
 value in the C<Environment> string to string map can have length of up

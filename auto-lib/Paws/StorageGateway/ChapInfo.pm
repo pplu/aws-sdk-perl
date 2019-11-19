@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::ChapInfo;
-  use Moose;
-  has InitiatorName => (is => 'ro', isa => 'Str');
-  has SecretToAuthenticateInitiator => (is => 'ro', isa => 'Str');
-  has SecretToAuthenticateTarget => (is => 'ro', isa => 'Str');
-  has TargetARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StorageGateway::Types qw//;
+  has InitiatorName => (is => 'ro', isa => Str);
+  has SecretToAuthenticateInitiator => (is => 'ro', isa => Str);
+  has SecretToAuthenticateTarget => (is => 'ro', isa => Str);
+  has TargetARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InitiatorName' => {
+                                    'type' => 'Str'
+                                  },
+               'SecretToAuthenticateTarget' => {
+                                                 'type' => 'Str'
+                                               },
+               'SecretToAuthenticateInitiator' => {
+                                                    'type' => 'Str'
+                                                  },
+               'TargetARN' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

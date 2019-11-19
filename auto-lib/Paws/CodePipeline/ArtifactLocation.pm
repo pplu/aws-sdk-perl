@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ArtifactLocation;
-  use Moose;
-  has S3Location => (is => 'ro', isa => 'Paws::CodePipeline::S3ArtifactLocation', request_name => 's3Location', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_S3ArtifactLocation/;
+  has S3Location => (is => 'ro', isa => CodePipeline_S3ArtifactLocation);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Location' => {
+                                 'type' => 'CodePipeline_S3ArtifactLocation',
+                                 'class' => 'Paws::CodePipeline::S3ArtifactLocation'
+                               },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'S3Location' => 's3Location',
+                       'Type' => 'type'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Represents information about the location of an artifact.
 =head1 ATTRIBUTES
 
 
-=head2 S3Location => L<Paws::CodePipeline::S3ArtifactLocation>
+=head2 S3Location => CodePipeline_S3ArtifactLocation
 
   The Amazon S3 bucket that contains the artifact.
 

@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Ac3Settings;
-  use Moose;
-  has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
-  has BitstreamMode => (is => 'ro', isa => 'Str', request_name => 'bitstreamMode', traits => ['NameInRequest']);
-  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
-  has Dialnorm => (is => 'ro', isa => 'Int', request_name => 'dialnorm', traits => ['NameInRequest']);
-  has DynamicRangeCompressionProfile => (is => 'ro', isa => 'Str', request_name => 'dynamicRangeCompressionProfile', traits => ['NameInRequest']);
-  has LfeFilter => (is => 'ro', isa => 'Str', request_name => 'lfeFilter', traits => ['NameInRequest']);
-  has MetadataControl => (is => 'ro', isa => 'Str', request_name => 'metadataControl', traits => ['NameInRequest']);
-  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaConvert::Types qw//;
+  has Bitrate => (is => 'ro', isa => Int);
+  has BitstreamMode => (is => 'ro', isa => Str);
+  has CodingMode => (is => 'ro', isa => Str);
+  has Dialnorm => (is => 'ro', isa => Int);
+  has DynamicRangeCompressionProfile => (is => 'ro', isa => Str);
+  has LfeFilter => (is => 'ro', isa => Str);
+  has MetadataControl => (is => 'ro', isa => Str);
+  has SampleRate => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BitstreamMode' => {
+                                    'type' => 'Str'
+                                  },
+               'Dialnorm' => {
+                               'type' => 'Int'
+                             },
+               'SampleRate' => {
+                                 'type' => 'Int'
+                               },
+               'MetadataControl' => {
+                                      'type' => 'Str'
+                                    },
+               'LfeFilter' => {
+                                'type' => 'Str'
+                              },
+               'DynamicRangeCompressionProfile' => {
+                                                     'type' => 'Str'
+                                                   },
+               'CodingMode' => {
+                                 'type' => 'Str'
+                               },
+               'Bitrate' => {
+                              'type' => 'Int'
+                            }
+             },
+  'NameInRequest' => {
+                       'MetadataControl' => 'metadataControl',
+                       'SampleRate' => 'sampleRate',
+                       'Dialnorm' => 'dialnorm',
+                       'BitstreamMode' => 'bitstreamMode',
+                       'Bitrate' => 'bitrate',
+                       'CodingMode' => 'codingMode',
+                       'DynamicRangeCompressionProfile' => 'dynamicRangeCompressionProfile',
+                       'LfeFilter' => 'lfeFilter'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::CreateScript;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has StorageLocation => (is => 'ro', isa => 'Paws::GameLift::S3Location');
-  has Version => (is => 'ro', isa => 'Str');
-  has ZipFile => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_S3Location/;
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has StorageLocation => (is => 'ro', isa => GameLift_S3Location, predicate => 1);
+  has Version => (is => 'ro', isa => Str, predicate => 1);
+  has ZipFile => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateScript');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::CreateScriptOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateScript');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::CreateScriptOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ZipFile' => {
+                              'type' => 'Str'
+                            },
+               'StorageLocation' => {
+                                      'type' => 'GameLift_S3Location',
+                                      'class' => 'Paws::GameLift::S3Location'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Version' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +86,7 @@ need to be unique. You can use UpdateScript to change this value later.
 
 
 
-=head2 StorageLocation => L<Paws::GameLift::S3Location>
+=head2 StorageLocation => GameLift_S3Location
 
 Location of the Amazon S3 bucket where a zipped file containing your
 Realtime scripts is stored. The storage location must specify the

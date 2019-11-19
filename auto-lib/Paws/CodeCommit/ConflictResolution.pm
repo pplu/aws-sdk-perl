@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::ConflictResolution;
-  use Moose;
-  has DeleteFiles => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::DeleteFileEntry]', request_name => 'deleteFiles', traits => ['NameInRequest']);
-  has ReplaceContents => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::ReplaceContentEntry]', request_name => 'replaceContents', traits => ['NameInRequest']);
-  has SetFileModes => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::SetFileModeEntry]', request_name => 'setFileModes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_ReplaceContentEntry CodeCommit_DeleteFileEntry CodeCommit_SetFileModeEntry/;
+  has DeleteFiles => (is => 'ro', isa => ArrayRef[CodeCommit_DeleteFileEntry]);
+  has ReplaceContents => (is => 'ro', isa => ArrayRef[CodeCommit_ReplaceContentEntry]);
+  has SetFileModes => (is => 'ro', isa => ArrayRef[CodeCommit_SetFileModeEntry]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SetFileModes' => 'setFileModes',
+                       'ReplaceContents' => 'replaceContents',
+                       'DeleteFiles' => 'deleteFiles'
+                     },
+  'types' => {
+               'SetFileModes' => {
+                                   'class' => 'Paws::CodeCommit::SetFileModeEntry',
+                                   'type' => 'ArrayRef[CodeCommit_SetFileModeEntry]'
+                                 },
+               'DeleteFiles' => {
+                                  'type' => 'ArrayRef[CodeCommit_DeleteFileEntry]',
+                                  'class' => 'Paws::CodeCommit::DeleteFileEntry'
+                                },
+               'ReplaceContents' => {
+                                      'class' => 'Paws::CodeCommit::ReplaceContentEntry',
+                                      'type' => 'ArrayRef[CodeCommit_ReplaceContentEntry]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,18 +70,18 @@ AUTOMERGE is chosen as the conflict resolution strategy.
 =head1 ATTRIBUTES
 
 
-=head2 DeleteFiles => ArrayRef[L<Paws::CodeCommit::DeleteFileEntry>]
+=head2 DeleteFiles => ArrayRef[CodeCommit_DeleteFileEntry]
 
   Files that will be deleted as part of the merge conflict resolution.
 
 
-=head2 ReplaceContents => ArrayRef[L<Paws::CodeCommit::ReplaceContentEntry>]
+=head2 ReplaceContents => ArrayRef[CodeCommit_ReplaceContentEntry]
 
   Files that will have content replaced as part of the merge conflict
 resolution.
 
 
-=head2 SetFileModes => ArrayRef[L<Paws::CodeCommit::SetFileModeEntry>]
+=head2 SetFileModes => ArrayRef[CodeCommit_SetFileModeEntry]
 
   File modes that will be set as part of the merge conflict resolution.
 

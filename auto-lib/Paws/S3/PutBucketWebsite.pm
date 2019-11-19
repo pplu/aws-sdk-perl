@@ -1,19 +1,59 @@
 
 package Paws::S3::PutBucketWebsite;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has WebsiteConfiguration => (is => 'ro', isa => 'Paws::S3::WebsiteConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw/S3_WebsiteConfiguration/;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentLength => (is => 'ro', isa => Int, predicate => 1);
+  has ContentMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has WebsiteConfiguration => (is => 'ro', isa => S3_WebsiteConfiguration, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutBucketWebsite');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}?website');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutBucketWebsite');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}?website');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'ContentLength' => 'Content-Length'
+                     },
+  'AutoInHeader' => {
+                      'ContentMD5' => {
+                                        'header_name' => 'Content-MD5',
+                                        'auto' => 'MD5'
+                                      }
+                    },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket'
+                  },
+  'IsRequired' => {
+                    'WebsiteConfiguration' => 1,
+                    'Bucket' => 1
+                  },
+  'types' => {
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'ContentMD5' => {
+                                 'type' => 'Str'
+                               },
+               'WebsiteConfiguration' => {
+                                           'class' => 'Paws::S3::WebsiteConfiguration',
+                                           'type' => 'S3_WebsiteConfiguration'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,13 +85,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },    # OPTIONAL
         RedirectAllRequestsTo => {
-          HostName => 'MyHostName',    # OPTIONAL
-          Protocol => 'http',          # values: http, https; OPTIONAL
+          HostName => 'MyHostName',
+          Protocol => 'http',         # values: http, https; OPTIONAL
         },    # OPTIONAL
         RoutingRules => [
           {
             Redirect => {
-              HostName         => 'MyHostName',            # OPTIONAL
+              HostName         => 'MyHostName',
               HttpRedirectCode => 'MyHttpRedirectCode',    # OPTIONAL
               Protocol => 'http',    # values: http, https; OPTIONAL
               ReplaceKeyPrefixWith => 'MyReplaceKeyPrefixWith',    # OPTIONAL
@@ -97,7 +137,7 @@ not corrupted in transit. For more information, see RFC 1864
 
 
 
-=head2 B<REQUIRED> WebsiteConfiguration => L<Paws::S3::WebsiteConfiguration>
+=head2 B<REQUIRED> WebsiteConfiguration => S3_WebsiteConfiguration
 
 Container for the request.
 

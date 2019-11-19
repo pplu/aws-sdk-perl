@@ -1,16 +1,47 @@
 
 package Paws::ManagedBlockchain::DeleteNode;
-  use Moose;
-  has MemberId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'memberId', required => 1);
-  has NetworkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'networkId', required => 1);
-  has NodeId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'nodeId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has MemberId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NetworkId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NodeId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteNode');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/members/{memberId}/nodes/{nodeId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::DeleteNodeOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteNode');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/networks/{networkId}/members/{memberId}/nodes/{nodeId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ManagedBlockchain::DeleteNodeOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NodeId' => {
+                             'type' => 'Str'
+                           },
+               'MemberId' => {
+                               'type' => 'Str'
+                             },
+               'NetworkId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'NetworkId' => 1,
+                    'MemberId' => 1,
+                    'NodeId' => 1
+                  },
+  'ParamInURI' => {
+                    'MemberId' => 'memberId',
+                    'NodeId' => 'nodeId',
+                    'NetworkId' => 'networkId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

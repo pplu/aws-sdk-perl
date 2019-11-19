@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::S3::ScanRange;
-  use Moose;
-  has End => (is => 'ro', isa => 'Int');
-  has Start => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::S3::Types qw//;
+  has End => (is => 'ro', isa => Int);
+  has Start => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'End' => {
+                          'type' => 'Int'
+                        },
+               'Start' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

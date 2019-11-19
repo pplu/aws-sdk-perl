@@ -1,21 +1,83 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::BatchPrediction;
-  use Moose;
-  has BatchPredictionDataSourceId => (is => 'ro', isa => 'Str');
-  has BatchPredictionId => (is => 'ro', isa => 'Str');
-  has ComputeTime => (is => 'ro', isa => 'Int');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has CreatedByIamUser => (is => 'ro', isa => 'Str');
-  has FinishedAt => (is => 'ro', isa => 'Str');
-  has InputDataLocationS3 => (is => 'ro', isa => 'Str');
-  has InvalidRecordCount => (is => 'ro', isa => 'Int');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has MLModelId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OutputUri => (is => 'ro', isa => 'Str');
-  has StartedAt => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TotalRecordCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MachineLearning::Types qw//;
+  has BatchPredictionDataSourceId => (is => 'ro', isa => Str);
+  has BatchPredictionId => (is => 'ro', isa => Str);
+  has ComputeTime => (is => 'ro', isa => Int);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has CreatedByIamUser => (is => 'ro', isa => Str);
+  has FinishedAt => (is => 'ro', isa => Str);
+  has InputDataLocationS3 => (is => 'ro', isa => Str);
+  has InvalidRecordCount => (is => 'ro', isa => Int);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has MLModelId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OutputUri => (is => 'ro', isa => Str);
+  has StartedAt => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TotalRecordCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartedAt' => {
+                                'type' => 'Str'
+                              },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'BatchPredictionDataSourceId' => {
+                                                  'type' => 'Str'
+                                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'FinishedAt' => {
+                                 'type' => 'Str'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'TotalRecordCount' => {
+                                       'type' => 'Int'
+                                     },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'OutputUri' => {
+                                'type' => 'Str'
+                              },
+               'InputDataLocationS3' => {
+                                          'type' => 'Str'
+                                        },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'MLModelId' => {
+                                'type' => 'Str'
+                              },
+               'InvalidRecordCount' => {
+                                         'type' => 'Int'
+                                       },
+               'ComputeTime' => {
+                                  'type' => 'Int'
+                                },
+               'BatchPredictionId' => {
+                                        'type' => 'Str'
+                                      },
+               'CreatedByIamUser' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,27 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudHSM::ListAvailableZonesResponse;
-  use Moose;
-  has AZList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudHSM::Types qw//;
+  has AZList => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AZList' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,15 +1,60 @@
 
 package Paws::MediaPackageVod::CreateAssetResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has EgressEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::EgressEndpoint]', traits => ['NameInRequest'], request_name => 'egressEndpoints');
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
-  has PackagingGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'packagingGroupId');
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceId');
-  has SourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceArn');
-  has SourceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceRoleArn');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_EgressEndpoint/;
+  has Arn => (is => 'ro', isa => Str);
+  has EgressEndpoints => (is => 'ro', isa => ArrayRef[MediaPackageVod_EgressEndpoint]);
+  has Id => (is => 'ro', isa => Str);
+  has PackagingGroupId => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has SourceArn => (is => 'ro', isa => Str);
+  has SourceRoleArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ResourceId' => 'resourceId',
+                       'EgressEndpoints' => 'egressEndpoints',
+                       'Id' => 'id',
+                       'Arn' => 'arn',
+                       'SourceArn' => 'sourceArn',
+                       'SourceRoleArn' => 'sourceRoleArn',
+                       'PackagingGroupId' => 'packagingGroupId'
+                     },
+  'types' => {
+               'SourceRoleArn' => {
+                                    'type' => 'Str'
+                                  },
+               'PackagingGroupId' => {
+                                       'type' => 'Str'
+                                     },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'EgressEndpoints' => {
+                                      'class' => 'Paws::MediaPackageVod::EgressEndpoint',
+                                      'type' => 'ArrayRef[MediaPackageVod_EgressEndpoint]'
+                                    },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'SourceArn' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +71,7 @@ Paws::MediaPackageVod::CreateAssetResponse
 The ARN of the Asset.
 
 
-=head2 EgressEndpoints => ArrayRef[L<Paws::MediaPackageVod::EgressEndpoint>]
+=head2 EgressEndpoints => ArrayRef[MediaPackageVod_EgressEndpoint]
 
 The list of egress endpoints available for the Asset.
 

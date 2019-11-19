@@ -1,14 +1,36 @@
+# Generated from callargs_class.tt
 
 package Paws::ImportExport::GetStatus;
-  use Moose;
-  has APIVersion => (is => 'ro', isa => 'Str');
-  has JobId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ImportExport::Types qw//;
+  has APIVersion => (is => 'ro', isa => Str, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetStatus');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ImportExport::GetStatusOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetStatusResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetStatus');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ImportExport::GetStatusOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetStatusResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'APIVersion' => {
+                                 'type' => 'Str'
+                               },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'JobId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

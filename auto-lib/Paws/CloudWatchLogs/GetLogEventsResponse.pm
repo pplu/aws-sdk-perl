@@ -1,11 +1,41 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchLogs::GetLogEventsResponse;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::OutputLogEvent]', traits => ['NameInRequest'], request_name => 'events' );
-  has NextBackwardToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextBackwardToken' );
-  has NextForwardToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextForwardToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_OutputLogEvent/;
+  has Events => (is => 'ro', isa => ArrayRef[CloudWatchLogs_OutputLogEvent]);
+  has NextBackwardToken => (is => 'ro', isa => Str);
+  has NextForwardToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextForwardToken' => 'nextForwardToken',
+                       'NextBackwardToken' => 'nextBackwardToken',
+                       'Events' => 'events'
+                     },
+  'types' => {
+               'Events' => {
+                             'class' => 'Paws::CloudWatchLogs::OutputLogEvent',
+                             'type' => 'ArrayRef[CloudWatchLogs_OutputLogEvent]'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextBackwardToken' => {
+                                        'type' => 'Str'
+                                      },
+               'NextForwardToken' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +46,7 @@ Paws::CloudWatchLogs::GetLogEventsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[L<Paws::CloudWatchLogs::OutputLogEvent>]
+=head2 Events => ArrayRef[CloudWatchLogs_OutputLogEvent]
 
 The events.
 

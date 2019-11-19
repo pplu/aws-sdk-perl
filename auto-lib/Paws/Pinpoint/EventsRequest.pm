@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EventsRequest;
-  use Moose;
-  has BatchItem => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEventsBatch', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOfEventsBatch/;
+  has BatchItem => (is => 'ro', isa => Pinpoint_MapOfEventsBatch, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BatchItem' => 1
+                  },
+  'types' => {
+               'BatchItem' => {
+                                'class' => 'Paws::Pinpoint::MapOfEventsBatch',
+                                'type' => 'Pinpoint_MapOfEventsBatch'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Specifies a batch of events to process.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> BatchItem => L<Paws::Pinpoint::MapOfEventsBatch>
+=head2 B<REQUIRED> BatchItem => Pinpoint_MapOfEventsBatch
 
   The batch of events to process. For each item in a batch, the endpoint
 ID acts as a key that has an EventsBatch object as its value.

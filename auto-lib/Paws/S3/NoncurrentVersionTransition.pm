@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::S3::NoncurrentVersionTransition;
-  use Moose;
-  has NoncurrentDays => (is => 'ro', isa => 'Int');
-  has StorageClass => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::S3::Types qw//;
+  has NoncurrentDays => (is => 'ro', isa => Int);
+  has StorageClass => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NoncurrentDays' => {
+                                     'type' => 'Int'
+                                   },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

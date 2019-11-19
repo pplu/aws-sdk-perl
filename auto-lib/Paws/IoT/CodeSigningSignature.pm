@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::IoT::CodeSigningSignature;
-  use Moose;
-  has InlineDocument => (is => 'ro', isa => 'Str', request_name => 'inlineDocument', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has InlineDocument => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InlineDocument' => 'inlineDocument'
+                     },
+  'types' => {
+               'InlineDocument' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

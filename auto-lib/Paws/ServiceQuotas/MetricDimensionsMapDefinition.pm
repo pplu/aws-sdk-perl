@@ -1,8 +1,22 @@
 package Paws::ServiceQuotas::MetricDimensionsMapDefinition;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToNativeMapParser';
+  use Types::Standard qw/HashRef Undef Str/;
+  use Paws::ServiceQuotas::Types qw//;
 
-  has Map => (is => 'ro', isa => 'HashRef[Maybe[Str]]');
+  has Map => (is => 'ro', isa => HashRef[Str|Undef]);
+
+  sub params_map {
+    my $params1 = {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[Str|Undef]',
+                                          class => '',
+                                        },
+                             },
+                  };
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +51,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => Str
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

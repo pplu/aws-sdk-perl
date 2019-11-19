@@ -1,16 +1,38 @@
 
 package Paws::CodeStarNotifications::ListTargets;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::CodeStarNotifications::ListTargetsFilter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::CodeStarNotifications::Types qw/CodeStarNotifications_ListTargetsFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[CodeStarNotifications_ListTargetsFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTargets');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/listTargets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStarNotifications::ListTargetsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTargets');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/listTargets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStarNotifications::ListTargetsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::CodeStarNotifications::ListTargetsFilter',
+                              'type' => 'ArrayRef[CodeStarNotifications_ListTargetsFilter]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +78,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::CodeStarNotifications::ListTargetsFilter>]
+=head2 Filters => ArrayRef[CodeStarNotifications_ListTargetsFilter]
 
 The filters to use to return information by service or resource type.
 Valid filters include target type, target address, and target status.

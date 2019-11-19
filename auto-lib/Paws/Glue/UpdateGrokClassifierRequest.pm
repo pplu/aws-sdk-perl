@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::Glue::UpdateGrokClassifierRequest;
-  use Moose;
-  has Classification => (is => 'ro', isa => 'Str');
-  has CustomPatterns => (is => 'ro', isa => 'Str');
-  has GrokPattern => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has Classification => (is => 'ro', isa => Str);
+  has CustomPatterns => (is => 'ro', isa => Str);
+  has GrokPattern => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'CustomPatterns' => {
+                                     'type' => 'Str'
+                                   },
+               'GrokPattern' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Classification' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

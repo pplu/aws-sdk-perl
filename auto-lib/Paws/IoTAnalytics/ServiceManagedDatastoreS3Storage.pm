@@ -1,5 +1,16 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::ServiceManagedDatastoreS3Storage;
-  use Moose;
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoTAnalytics::Types qw//;
+
+    sub params_map {
+    our $Params_map ||= {}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

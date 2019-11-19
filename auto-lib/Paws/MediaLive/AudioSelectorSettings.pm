@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::MediaLive::AudioSelectorSettings;
-  use Moose;
-  has AudioLanguageSelection => (is => 'ro', isa => 'Paws::MediaLive::AudioLanguageSelection', request_name => 'audioLanguageSelection', traits => ['NameInRequest']);
-  has AudioPidSelection => (is => 'ro', isa => 'Paws::MediaLive::AudioPidSelection', request_name => 'audioPidSelection', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_AudioLanguageSelection MediaLive_AudioPidSelection/;
+  has AudioLanguageSelection => (is => 'ro', isa => MediaLive_AudioLanguageSelection);
+  has AudioPidSelection => (is => 'ro', isa => MediaLive_AudioPidSelection);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AudioPidSelection' => 'audioPidSelection',
+                       'AudioLanguageSelection' => 'audioLanguageSelection'
+                     },
+  'types' => {
+               'AudioLanguageSelection' => {
+                                             'type' => 'MediaLive_AudioLanguageSelection',
+                                             'class' => 'Paws::MediaLive::AudioLanguageSelection'
+                                           },
+               'AudioPidSelection' => {
+                                        'class' => 'Paws::MediaLive::AudioPidSelection',
+                                        'type' => 'MediaLive_AudioPidSelection'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Audio Selector Settings
 =head1 ATTRIBUTES
 
 
-=head2 AudioLanguageSelection => L<Paws::MediaLive::AudioLanguageSelection>
+=head2 AudioLanguageSelection => MediaLive_AudioLanguageSelection
 
   
 
 
-=head2 AudioPidSelection => L<Paws::MediaLive::AudioPidSelection>
+=head2 AudioPidSelection => MediaLive_AudioPidSelection
 
   
 

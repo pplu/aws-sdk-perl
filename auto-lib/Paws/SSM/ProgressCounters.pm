@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::SSM::ProgressCounters;
-  use Moose;
-  has CancelledSteps => (is => 'ro', isa => 'Int');
-  has FailedSteps => (is => 'ro', isa => 'Int');
-  has SuccessSteps => (is => 'ro', isa => 'Int');
-  has TimedOutSteps => (is => 'ro', isa => 'Int');
-  has TotalSteps => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SSM::Types qw//;
+  has CancelledSteps => (is => 'ro', isa => Int);
+  has FailedSteps => (is => 'ro', isa => Int);
+  has SuccessSteps => (is => 'ro', isa => Int);
+  has TimedOutSteps => (is => 'ro', isa => Int);
+  has TotalSteps => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimedOutSteps' => {
+                                    'type' => 'Int'
+                                  },
+               'SuccessSteps' => {
+                                   'type' => 'Int'
+                                 },
+               'CancelledSteps' => {
+                                     'type' => 'Int'
+                                   },
+               'FailedSteps' => {
+                                  'type' => 'Int'
+                                },
+               'TotalSteps' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

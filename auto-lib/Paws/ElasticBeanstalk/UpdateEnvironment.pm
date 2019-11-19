@@ -1,24 +1,76 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::UpdateEnvironment;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EnvironmentId => (is => 'ro', isa => 'Str');
-  has EnvironmentName => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str');
-  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
-  has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]');
-  has PlatformArn => (is => 'ro', isa => 'Str');
-  has SolutionStackName => (is => 'ro', isa => 'Str');
-  has TemplateName => (is => 'ro', isa => 'Str');
-  has Tier => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentTier');
-  has VersionLabel => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_OptionSpecification ElasticBeanstalk_EnvironmentTier ElasticBeanstalk_ConfigurationOptionSetting/;
+  has ApplicationName => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has EnvironmentId => (is => 'ro', isa => Str, predicate => 1);
+  has EnvironmentName => (is => 'ro', isa => Str, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, predicate => 1);
+  has OptionSettings => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting], predicate => 1);
+  has OptionsToRemove => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_OptionSpecification], predicate => 1);
+  has PlatformArn => (is => 'ro', isa => Str, predicate => 1);
+  has SolutionStackName => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateName => (is => 'ro', isa => Str, predicate => 1);
+  has Tier => (is => 'ro', isa => ElasticBeanstalk_EnvironmentTier, predicate => 1);
+  has VersionLabel => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEnvironment');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::EnvironmentDescription');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateEnvironmentResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateEnvironment');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::EnvironmentDescription');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateEnvironmentResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VersionLabel' => {
+                                   'type' => 'Str'
+                                 },
+               'Tier' => {
+                           'class' => 'Paws::ElasticBeanstalk::EnvironmentTier',
+                           'type' => 'ElasticBeanstalk_EnvironmentTier'
+                         },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'OptionsToRemove' => {
+                                      'class' => 'Paws::ElasticBeanstalk::OptionSpecification',
+                                      'type' => 'ArrayRef[ElasticBeanstalk_OptionSpecification]'
+                                    },
+               'SolutionStackName' => {
+                                        'type' => 'Str'
+                                      },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'EnvironmentId' => {
+                                    'type' => 'Str'
+                                  },
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'PlatformArn' => {
+                                  'type' => 'Str'
+                                },
+               'EnvironmentName' => {
+                                      'type' => 'Str'
+                                    },
+               'OptionSettings' => {
+                                     'class' => 'Paws::ElasticBeanstalk::ConfigurationOptionSetting',
+                                     'type' => 'ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -167,7 +219,7 @@ for details.
 
 
 
-=head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
+=head2 OptionSettings => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]
 
 If specified, AWS Elastic Beanstalk updates the configuration set
 associated with the running environment and sets the specified
@@ -175,7 +227,7 @@ configuration options to the requested value.
 
 
 
-=head2 OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
+=head2 OptionsToRemove => ArrayRef[ElasticBeanstalk_OptionSpecification]
 
 A list of custom user-defined configuration options to remove from the
 configuration set for this environment.
@@ -204,7 +256,7 @@ C<InvalidParameterValue> error.
 
 
 
-=head2 Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>
+=head2 Tier => ElasticBeanstalk_EnvironmentTier
 
 This specifies the tier to use to update the environment.
 

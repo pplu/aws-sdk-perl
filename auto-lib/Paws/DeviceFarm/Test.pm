@@ -1,16 +1,78 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::Test;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Counters => (is => 'ro', isa => 'Paws::DeviceFarm::Counters', request_name => 'counters', traits => ['NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', request_name => 'deviceMinutes', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
-  has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Stopped => (is => 'ro', isa => 'Str', request_name => 'stopped', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_DeviceMinutes DeviceFarm_Counters/;
+  has Arn => (is => 'ro', isa => Str);
+  has Counters => (is => 'ro', isa => DeviceFarm_Counters);
+  has Created => (is => 'ro', isa => Str);
+  has DeviceMinutes => (is => 'ro', isa => DeviceFarm_DeviceMinutes);
+  has Message => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Result => (is => 'ro', isa => Str);
+  has Started => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Stopped => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DeviceMinutes' => {
+                                    'class' => 'Paws::DeviceFarm::DeviceMinutes',
+                                    'type' => 'DeviceFarm_DeviceMinutes'
+                                  },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'Started' => {
+                              'type' => 'Str'
+                            },
+               'Stopped' => {
+                              'type' => 'Str'
+                            },
+               'Counters' => {
+                               'type' => 'DeviceFarm_Counters',
+                               'class' => 'Paws::DeviceFarm::Counters'
+                             },
+               'Result' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Stopped' => 'stopped',
+                       'Started' => 'started',
+                       'Type' => 'type',
+                       'Created' => 'created',
+                       'Result' => 'result',
+                       'Counters' => 'counters',
+                       'Name' => 'name',
+                       'Arn' => 'arn',
+                       'DeviceMinutes' => 'deviceMinutes',
+                       'Message' => 'message',
+                       'Status' => 'status'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +113,7 @@ Represents a condition that is evaluated.
   The test's ARN.
 
 
-=head2 Counters => L<Paws::DeviceFarm::Counters>
+=head2 Counters => DeviceFarm_Counters
 
   The test's result counters.
 
@@ -61,7 +123,7 @@ Represents a condition that is evaluated.
   When the test was created.
 
 
-=head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
+=head2 DeviceMinutes => DeviceFarm_DeviceMinutes
 
   Represents the total (metered or unmetered) minutes used by the test.
 

@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdentity::GetCredentialsForIdentity;
-  use Moose;
-  has CustomRoleArn => (is => 'ro', isa => 'Str');
-  has IdentityId => (is => 'ro', isa => 'Str', required => 1);
-  has Logins => (is => 'ro', isa => 'Paws::CognitoIdentity::LoginsMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdentity::Types qw/CognitoIdentity_LoginsMap/;
+  has CustomRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has IdentityId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Logins => (is => 'ro', isa => CognitoIdentity_LoginsMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCredentialsForIdentity');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdentity::GetCredentialsForIdentityResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetCredentialsForIdentity');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdentity::GetCredentialsForIdentityResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'IdentityId' => 1
+                  },
+  'types' => {
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               },
+               'CustomRoleArn' => {
+                                    'type' => 'Str'
+                                  },
+               'Logins' => {
+                             'type' => 'CognitoIdentity_LoginsMap',
+                             'class' => 'Paws::CognitoIdentity::LoginsMap'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +92,7 @@ A unique identifier in the format REGION:GUID.
 
 
 
-=head2 Logins => L<Paws::CognitoIdentity::LoginsMap>
+=head2 Logins => CognitoIdentity_LoginsMap
 
 A set of optional name-value pairs that map provider names to provider
 tokens. The name-value pair will follow the syntax "provider_name":

@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::Kafka::NodeInfo;
-  use Moose;
-  has AddedToClusterTime => (is => 'ro', isa => 'Str', request_name => 'addedToClusterTime', traits => ['NameInRequest']);
-  has BrokerNodeInfo => (is => 'ro', isa => 'Paws::Kafka::BrokerNodeInfo', request_name => 'brokerNodeInfo', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has NodeARN => (is => 'ro', isa => 'Str', request_name => 'nodeARN', traits => ['NameInRequest']);
-  has NodeType => (is => 'ro', isa => 'Str', request_name => 'nodeType', traits => ['NameInRequest']);
-  has ZookeeperNodeInfo => (is => 'ro', isa => 'Paws::Kafka::ZookeeperNodeInfo', request_name => 'zookeeperNodeInfo', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kafka::Types qw/Kafka_BrokerNodeInfo Kafka_ZookeeperNodeInfo/;
+  has AddedToClusterTime => (is => 'ro', isa => Str);
+  has BrokerNodeInfo => (is => 'ro', isa => Kafka_BrokerNodeInfo);
+  has InstanceType => (is => 'ro', isa => Str);
+  has NodeARN => (is => 'ro', isa => Str);
+  has NodeType => (is => 'ro', isa => Str);
+  has ZookeeperNodeInfo => (is => 'ro', isa => Kafka_ZookeeperNodeInfo);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ZookeeperNodeInfo' => {
+                                        'class' => 'Paws::Kafka::ZookeeperNodeInfo',
+                                        'type' => 'Kafka_ZookeeperNodeInfo'
+                                      },
+               'BrokerNodeInfo' => {
+                                     'type' => 'Kafka_BrokerNodeInfo',
+                                     'class' => 'Paws::Kafka::BrokerNodeInfo'
+                                   },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'AddedToClusterTime' => {
+                                         'type' => 'Str'
+                                       },
+               'NodeARN' => {
+                              'type' => 'Str'
+                            },
+               'NodeType' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'InstanceType' => 'instanceType',
+                       'BrokerNodeInfo' => 'brokerNodeInfo',
+                       'ZookeeperNodeInfo' => 'zookeeperNodeInfo',
+                       'NodeType' => 'nodeType',
+                       'NodeARN' => 'nodeARN',
+                       'AddedToClusterTime' => 'addedToClusterTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +88,7 @@ The node information object.
   The start time.
 
 
-=head2 BrokerNodeInfo => L<Paws::Kafka::BrokerNodeInfo>
+=head2 BrokerNodeInfo => Kafka_BrokerNodeInfo
 
   The broker node info.
 
@@ -66,7 +108,7 @@ The node information object.
   The node type.
 
 
-=head2 ZookeeperNodeInfo => L<Paws::Kafka::ZookeeperNodeInfo>
+=head2 ZookeeperNodeInfo => Kafka_ZookeeperNodeInfo
 
   The ZookeeperNodeInfo.
 

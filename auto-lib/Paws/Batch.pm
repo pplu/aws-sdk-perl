@@ -1,14 +1,15 @@
 package Paws::Batch;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'batch' }
   sub signing_name { 'batch' }
   sub version { '2016-08-10' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -274,7 +275,7 @@ must be terminated with the TerminateJob operation.
 
 =item Type => Str
 
-=item [ComputeResources => L<Paws::Batch::ComputeResource>]
+=item [ComputeResources => Batch_ComputeResource]
 
 =item [State => Str]
 
@@ -349,7 +350,7 @@ Delete the old compute environment.
 
 =over
 
-=item ComputeEnvironmentOrder => ArrayRef[L<Paws::Batch::ComputeEnvironmentOrder>]
+=item ComputeEnvironmentOrder => ArrayRef[Batch_ComputeEnvironmentOrder]
 
 =item JobQueueName => Str
 
@@ -575,15 +576,15 @@ returned.
 
 =item Type => Str
 
-=item [ContainerProperties => L<Paws::Batch::ContainerProperties>]
+=item [ContainerProperties => Batch_ContainerProperties]
 
-=item [NodeProperties => L<Paws::Batch::NodeProperties>]
+=item [NodeProperties => Batch_NodeProperties]
 
-=item [Parameters => L<Paws::Batch::ParametersMap>]
+=item [Parameters => Batch_ParametersMap]
 
-=item [RetryStrategy => L<Paws::Batch::RetryStrategy>]
+=item [RetryStrategy => Batch_RetryStrategy]
 
-=item [Timeout => L<Paws::Batch::JobTimeout>]
+=item [Timeout => Batch_JobTimeout]
 
 
 =back
@@ -605,19 +606,19 @@ Registers an AWS Batch job definition.
 
 =item JobQueue => Str
 
-=item [ArrayProperties => L<Paws::Batch::ArrayProperties>]
+=item [ArrayProperties => Batch_ArrayProperties]
 
-=item [ContainerOverrides => L<Paws::Batch::ContainerOverrides>]
+=item [ContainerOverrides => Batch_ContainerOverrides]
 
-=item [DependsOn => ArrayRef[L<Paws::Batch::JobDependency>]]
+=item [DependsOn => ArrayRef[Batch_JobDependency]]
 
-=item [NodeOverrides => L<Paws::Batch::NodeOverrides>]
+=item [NodeOverrides => Batch_NodeOverrides]
 
-=item [Parameters => L<Paws::Batch::ParametersMap>]
+=item [Parameters => Batch_ParametersMap]
 
-=item [RetryStrategy => L<Paws::Batch::RetryStrategy>]
+=item [RetryStrategy => Batch_RetryStrategy]
 
-=item [Timeout => L<Paws::Batch::JobTimeout>]
+=item [Timeout => Batch_JobTimeout]
 
 
 =back
@@ -657,7 +658,7 @@ cancelled.
 
 =item ComputeEnvironment => Str
 
-=item [ComputeResources => L<Paws::Batch::ComputeResourceUpdate>]
+=item [ComputeResources => Batch_ComputeResourceUpdate]
 
 =item [ServiceRole => Str]
 
@@ -679,7 +680,7 @@ Updates an AWS Batch compute environment.
 
 =item JobQueue => Str
 
-=item [ComputeEnvironmentOrder => ArrayRef[L<Paws::Batch::ComputeEnvironmentOrder>]]
+=item [ComputeEnvironmentOrder => ArrayRef[Batch_ComputeEnvironmentOrder]]
 
 =item [Priority => Int]
 

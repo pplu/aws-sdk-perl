@@ -1,10 +1,50 @@
+# Generated from default/object.tt
 package Paws::AppMesh::RouteSpec;
-  use Moose;
-  has GrpcRoute => (is => 'ro', isa => 'Paws::AppMesh::GrpcRoute', request_name => 'grpcRoute', traits => ['NameInRequest']);
-  has Http2Route => (is => 'ro', isa => 'Paws::AppMesh::HttpRoute', request_name => 'http2Route', traits => ['NameInRequest']);
-  has HttpRoute => (is => 'ro', isa => 'Paws::AppMesh::HttpRoute', request_name => 'httpRoute', traits => ['NameInRequest']);
-  has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
-  has TcpRoute => (is => 'ro', isa => 'Paws::AppMesh::TcpRoute', request_name => 'tcpRoute', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::AppMesh::Types qw/AppMesh_HttpRoute AppMesh_GrpcRoute AppMesh_TcpRoute/;
+  has GrpcRoute => (is => 'ro', isa => AppMesh_GrpcRoute);
+  has Http2Route => (is => 'ro', isa => AppMesh_HttpRoute);
+  has HttpRoute => (is => 'ro', isa => AppMesh_HttpRoute);
+  has Priority => (is => 'ro', isa => Int);
+  has TcpRoute => (is => 'ro', isa => AppMesh_TcpRoute);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Priority' => 'priority',
+                       'TcpRoute' => 'tcpRoute',
+                       'Http2Route' => 'http2Route',
+                       'GrpcRoute' => 'grpcRoute',
+                       'HttpRoute' => 'httpRoute'
+                     },
+  'types' => {
+               'Http2Route' => {
+                                 'class' => 'Paws::AppMesh::HttpRoute',
+                                 'type' => 'AppMesh_HttpRoute'
+                               },
+               'GrpcRoute' => {
+                                'class' => 'Paws::AppMesh::GrpcRoute',
+                                'type' => 'AppMesh_GrpcRoute'
+                              },
+               'HttpRoute' => {
+                                'type' => 'AppMesh_HttpRoute',
+                                'class' => 'Paws::AppMesh::HttpRoute'
+                              },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'TcpRoute' => {
+                               'type' => 'AppMesh_TcpRoute',
+                               'class' => 'Paws::AppMesh::TcpRoute'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,17 +81,17 @@ type.
 =head1 ATTRIBUTES
 
 
-=head2 GrpcRoute => L<Paws::AppMesh::GrpcRoute>
+=head2 GrpcRoute => AppMesh_GrpcRoute
 
   An object that represents the specification of a GRPC route.
 
 
-=head2 Http2Route => L<Paws::AppMesh::HttpRoute>
+=head2 Http2Route => AppMesh_HttpRoute
 
   An object that represents the specification of an HTTP2 route.
 
 
-=head2 HttpRoute => L<Paws::AppMesh::HttpRoute>
+=head2 HttpRoute => AppMesh_HttpRoute
 
   An object that represents the specification of an HTTP route.
 
@@ -62,7 +102,7 @@ type.
 value, where 0 is the highest priority.
 
 
-=head2 TcpRoute => L<Paws::AppMesh::TcpRoute>
+=head2 TcpRoute => AppMesh_TcpRoute
 
   An object that represents the specification of a TCP route.
 

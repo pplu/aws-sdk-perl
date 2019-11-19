@@ -1,11 +1,49 @@
 package Paws::EC2::TargetNetwork;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', request_name => 'clientVpnEndpointId', traits => ['NameInRequest']);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Paws::EC2::AssociationStatus', request_name => 'status', traits => ['NameInRequest']);
-  has TargetNetworkId => (is => 'ro', isa => 'Str', request_name => 'targetNetworkId', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EC2::Types qw/EC2_AssociationStatus/;
+  has AssociationId => (is => 'ro', isa => Str);
+  has ClientVpnEndpointId => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Status => (is => 'ro', isa => EC2_AssociationStatus);
+  has TargetNetworkId => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'ClientVpnEndpointId' => 'clientVpnEndpointId',
+                       'VpcId' => 'vpcId',
+                       'SecurityGroups' => 'securityGroups',
+                       'AssociationId' => 'associationId',
+                       'TargetNetworkId' => 'targetNetworkId'
+                     },
+  'types' => {
+               'TargetNetworkId' => {
+                                      'type' => 'Str'
+                                    },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        },
+               'Status' => {
+                             'class' => 'Paws::EC2::AssociationStatus',
+                             'type' => 'EC2_AssociationStatus'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +96,7 @@ associated.
 association.
 
 
-=head2 Status => L<Paws::EC2::AssociationStatus>
+=head2 Status => EC2_AssociationStatus
 
   The current state of the target network association.
 

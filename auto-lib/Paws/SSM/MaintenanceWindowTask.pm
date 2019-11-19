@@ -1,18 +1,74 @@
+# Generated from default/object.tt
 package Paws::SSM::MaintenanceWindowTask;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has LoggingInfo => (is => 'ro', isa => 'Paws::SSM::LoggingInfo');
-  has MaxConcurrency => (is => 'ro', isa => 'Str');
-  has MaxErrors => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Int');
-  has ServiceRoleArn => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
-  has TaskArn => (is => 'ro', isa => 'Str');
-  has TaskParameters => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowTaskParameters');
-  has Type => (is => 'ro', isa => 'Str');
-  has WindowId => (is => 'ro', isa => 'Str');
-  has WindowTaskId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Target SSM_LoggingInfo SSM_MaintenanceWindowTaskParameters/;
+  has Description => (is => 'ro', isa => Str);
+  has LoggingInfo => (is => 'ro', isa => SSM_LoggingInfo);
+  has MaxConcurrency => (is => 'ro', isa => Str);
+  has MaxErrors => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Int);
+  has ServiceRoleArn => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target]);
+  has TaskArn => (is => 'ro', isa => Str);
+  has TaskParameters => (is => 'ro', isa => SSM_MaintenanceWindowTaskParameters);
+  has Type => (is => 'ro', isa => Str);
+  has WindowId => (is => 'ro', isa => Str);
+  has WindowTaskId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceRoleArn' => {
+                                     'type' => 'Str'
+                                   },
+               'MaxConcurrency' => {
+                                     'type' => 'Str'
+                                   },
+               'LoggingInfo' => {
+                                  'type' => 'SSM_LoggingInfo',
+                                  'class' => 'Paws::SSM::LoggingInfo'
+                                },
+               'Targets' => {
+                              'type' => 'ArrayRef[SSM_Target]',
+                              'class' => 'Paws::SSM::Target'
+                            },
+               'TaskParameters' => {
+                                     'type' => 'SSM_MaintenanceWindowTaskParameters',
+                                     'class' => 'Paws::SSM::MaintenanceWindowTaskParameters'
+                                   },
+               'MaxErrors' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'WindowTaskId' => {
+                                   'type' => 'Str'
+                                 },
+               'WindowId' => {
+                               'type' => 'Str'
+                             },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +109,7 @@ Information about a task defined for a maintenance window.
   A description of the task.
 
 
-=head2 LoggingInfo => L<Paws::SSM::LoggingInfo>
+=head2 LoggingInfo => SSM_LoggingInfo
 
   Information about an Amazon S3 bucket to write task-level logs to.
 
@@ -95,7 +151,7 @@ Notification Service (Amazon SNS) notifications for maintenance window
 Run Command tasks.
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
   The targets (either instances or tags). Instances are specified using
 Key=instanceids,Values=E<lt>instanceid1E<gt>,E<lt>instanceid2E<gt>.
@@ -111,7 +167,7 @@ or ARN. For LAMBDA tasks, it's the function name or ARN. For
 STEP_FUNCTIONS tasks, it's the state machine ARN.
 
 
-=head2 TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>
+=head2 TaskParameters => SSM_MaintenanceWindowTaskParameters
 
   The parameters that should be passed to the task when it is run.
 

@@ -1,16 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorks::DescribeVolumes;
-  use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has RaidArrayId => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
-  has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::OpsWorks::Types qw//;
+  has InstanceId => (is => 'ro', isa => Str, predicate => 1);
+  has RaidArrayId => (is => 'ro', isa => Str, predicate => 1);
+  has StackId => (is => 'ro', isa => Str, predicate => 1);
+  has VolumeIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::DescribeVolumesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeVolumes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::OpsWorks::DescribeVolumesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RaidArrayId' => {
+                                  'type' => 'Str'
+                                },
+               'VolumeIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

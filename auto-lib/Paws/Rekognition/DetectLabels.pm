@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Rekognition::DetectLabels;
-  use Moose;
-  has Image => (is => 'ro', isa => 'Paws::Rekognition::Image', required => 1);
-  has MaxLabels => (is => 'ro', isa => 'Int');
-  has MinConfidence => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::Rekognition::Types qw/Rekognition_Image/;
+  has Image => (is => 'ro', isa => Rekognition_Image, required => 1, predicate => 1);
+  has MaxLabels => (is => 'ro', isa => Int, predicate => 1);
+  has MinConfidence => (is => 'ro', isa => Num, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetectLabels');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Rekognition::DetectLabelsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DetectLabels');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Rekognition::DetectLabelsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Image' => 1
+                  },
+  'types' => {
+               'Image' => {
+                            'class' => 'Paws::Rekognition::Image',
+                            'type' => 'Rekognition_Image'
+                          },
+               'MaxLabels' => {
+                                'type' => 'Int'
+                              },
+               'MinConfidence' => {
+                                    'type' => 'Num'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +79,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
+=head2 B<REQUIRED> Image => Rekognition_Image
 
 The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing image bytes is

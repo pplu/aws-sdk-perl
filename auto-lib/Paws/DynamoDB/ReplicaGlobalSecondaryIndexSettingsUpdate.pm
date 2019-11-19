@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisionedReadCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsUpdate');
-  has ProvisionedReadCapacityUnits => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AutoScalingSettingsUpdate/;
+  has IndexName => (is => 'ro', isa => Str, required => 1);
+  has ProvisionedReadCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => DynamoDB_AutoScalingSettingsUpdate);
+  has ProvisionedReadCapacityUnits => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'IndexName' => 1
+                  },
+  'types' => {
+               'ProvisionedReadCapacityUnits' => {
+                                                   'type' => 'Int'
+                                                 },
+               'ProvisionedReadCapacityAutoScalingSettingsUpdate' => {
+                                                                       'type' => 'DynamoDB_AutoScalingSettingsUpdate',
+                                                                       'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate'
+                                                                     },
+               'IndexName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +72,7 @@ that will be modified.
 all other indexes on this table.
 
 
-=head2 ProvisionedReadCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>
+=head2 ProvisionedReadCapacityAutoScalingSettingsUpdate => DynamoDB_AutoScalingSettingsUpdate
 
   Auto scaling settings for managing a global secondary index replica's
 read capacity units.

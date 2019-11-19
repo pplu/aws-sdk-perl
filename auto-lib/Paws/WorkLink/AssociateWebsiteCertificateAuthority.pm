@@ -1,16 +1,41 @@
 
 package Paws::WorkLink::AssociateWebsiteCertificateAuthority;
-  use Moose;
-  has Certificate => (is => 'ro', isa => 'Str', required => 1);
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has FleetArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has Certificate => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DisplayName => (is => 'ro', isa => Str, predicate => 1);
+  has FleetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateWebsiteCertificateAuthority');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/associateWebsiteCertificateAuthority');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkLink::AssociateWebsiteCertificateAuthorityResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateWebsiteCertificateAuthority');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/associateWebsiteCertificateAuthority');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkLink::AssociateWebsiteCertificateAuthorityResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FleetArn' => {
+                               'type' => 'Str'
+                             },
+               'Certificate' => {
+                                  'type' => 'Str'
+                                },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Certificate' => 1,
+                    'FleetArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

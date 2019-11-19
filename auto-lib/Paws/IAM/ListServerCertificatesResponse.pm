@@ -1,11 +1,39 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListServerCertificatesResponse;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
-  has ServerCertificateMetadataList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ServerCertificateMetadata]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::IAM::Types qw/IAM_ServerCertificateMetadata/;
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
+  has ServerCertificateMetadataList => (is => 'ro', isa => ArrayRef[IAM_ServerCertificateMetadata], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'ServerCertificateMetadataList' => {
+                                                    'type' => 'ArrayRef[IAM_ServerCertificateMetadata]',
+                                                    'class' => 'Paws::IAM::ServerCertificateMetadata'
+                                                  },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                }
+             },
+  'IsRequired' => {
+                    'ServerCertificateMetadataList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +63,7 @@ the value to use for the C<Marker> parameter in a subsequent pagination
 request.
 
 
-=head2 B<REQUIRED> ServerCertificateMetadataList => ArrayRef[L<Paws::IAM::ServerCertificateMetadata>]
+=head2 B<REQUIRED> ServerCertificateMetadataList => ArrayRef[IAM_ServerCertificateMetadata]
 
 A list of server certificates.
 

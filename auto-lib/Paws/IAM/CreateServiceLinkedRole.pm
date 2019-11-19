@@ -1,15 +1,40 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateServiceLinkedRole;
-  use Moose;
-  has AWSServiceName => (is => 'ro', isa => 'Str', required => 1);
-  has CustomSuffix => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has AWSServiceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CustomSuffix => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateServiceLinkedRole');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::CreateServiceLinkedRoleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateServiceLinkedRoleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateServiceLinkedRole');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::CreateServiceLinkedRoleResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateServiceLinkedRoleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AWSServiceName' => 1
+                  },
+  'types' => {
+               'AWSServiceName' => {
+                                     'type' => 'Str'
+                                   },
+               'CustomSuffix' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

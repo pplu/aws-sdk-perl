@@ -1,26 +1,106 @@
+# Generated from default/object.tt
 package Paws::SSM::DocumentDescription;
-  use Moose;
-  has AttachmentsInformation => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AttachmentInformation]');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has DefaultVersion => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DocumentFormat => (is => 'ro', isa => 'Str');
-  has DocumentType => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has Hash => (is => 'ro', isa => 'Str');
-  has HashType => (is => 'ro', isa => 'Str');
-  has LatestVersion => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Owner => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentParameter]');
-  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SchemaVersion => (is => 'ro', isa => 'Str');
-  has Sha1 => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusInformation => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
-  has TargetType => (is => 'ro', isa => 'Str');
-  has VersionName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Undef/;
+  use Paws::SSM::Types qw/SSM_DocumentParameter SSM_Tag SSM_AttachmentInformation/;
+  has AttachmentsInformation => (is => 'ro', isa => ArrayRef[SSM_AttachmentInformation]);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has DefaultVersion => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DocumentFormat => (is => 'ro', isa => Str);
+  has DocumentType => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has Hash => (is => 'ro', isa => Str);
+  has HashType => (is => 'ro', isa => Str);
+  has LatestVersion => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Owner => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => ArrayRef[SSM_DocumentParameter]);
+  has PlatformTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SchemaVersion => (is => 'ro', isa => Str);
+  has Sha1 => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusInformation => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[SSM_Tag]);
+  has TargetType => (is => 'ro', isa => Str);
+  has VersionName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Sha1' => {
+                           'type' => 'Str'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'AttachmentsInformation' => {
+                                             'type' => 'ArrayRef[SSM_AttachmentInformation]',
+                                             'class' => 'Paws::SSM::AttachmentInformation'
+                                           },
+               'LatestVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'Parameters' => {
+                                 'class' => 'Paws::SSM::DocumentParameter',
+                                 'type' => 'ArrayRef[SSM_DocumentParameter]'
+                               },
+               'StatusInformation' => {
+                                        'type' => 'Str'
+                                      },
+               'Hash' => {
+                           'type' => 'Str'
+                         },
+               'DocumentFormat' => {
+                                     'type' => 'Str'
+                                   },
+               'SchemaVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::SSM::Tag',
+                           'type' => 'ArrayRef[SSM_Tag]'
+                         },
+               'DefaultVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'PlatformTypes' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'VersionName' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'HashType' => {
+                               'type' => 'Str'
+                             },
+               'DocumentType' => {
+                                   'type' => 'Str'
+                                 },
+               'TargetType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +136,7 @@ Describes a Systems Manager document.
 =head1 ATTRIBUTES
 
 
-=head2 AttachmentsInformation => ArrayRef[L<Paws::SSM::AttachmentInformation>]
+=head2 AttachmentsInformation => ArrayRef[SSM_AttachmentInformation]
 
   Details about the document attachments, including names, locations,
 sizes, etc.
@@ -123,7 +203,7 @@ Sha1 hashes have been deprecated.
   The AWS user account that created the document.
 
 
-=head2 Parameters => ArrayRef[L<Paws::SSM::DocumentParameter>]
+=head2 Parameters => ArrayRef[SSM_DocumentParameter]
 
   A description of the parameters for a document.
 
@@ -156,7 +236,7 @@ C<StatusInformation> message, "The specified S3 bucket does not exist.
 Verify that the URL of the S3 bucket is correct."
 
 
-=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+=head2 Tags => ArrayRef[SSM_Tag]
 
   The tags, or metadata, that have been applied to the document.
 

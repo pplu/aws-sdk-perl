@@ -1,21 +1,80 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::CreateInstances;
-  use Moose;
-  has AddOns => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AddOnRequest]', traits => ['NameInRequest'], request_name => 'addOns' );
-  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
-  has BlueprintId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'blueprintId' , required => 1);
-  has BundleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bundleId' , required => 1);
-  has CustomImageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customImageName' );
-  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
-  has KeyPairName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyPairName' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has UserData => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userData' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Lightsail::Types qw/Lightsail_AddOnRequest Lightsail_Tag/;
+  has AddOns => (is => 'ro', isa => ArrayRef[Lightsail_AddOnRequest], predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BlueprintId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BundleId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CustomImageName => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has KeyPairName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag], predicate => 1);
+  has UserData => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::CreateInstancesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::CreateInstancesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyPairName' => {
+                                  'type' => 'Str'
+                                },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'BundleId' => {
+                               'type' => 'Str'
+                             },
+               'UserData' => {
+                               'type' => 'Str'
+                             },
+               'AddOns' => {
+                             'type' => 'ArrayRef[Lightsail_AddOnRequest]',
+                             'class' => 'Paws::Lightsail::AddOnRequest'
+                           },
+               'CustomImageName' => {
+                                      'type' => 'Str'
+                                    },
+               'InstanceNames' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Tags' => {
+                           'type' => 'ArrayRef[Lightsail_Tag]',
+                           'class' => 'Paws::Lightsail::Tag'
+                         },
+               'BlueprintId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'BlueprintId' => 1,
+                    'AvailabilityZone' => 1,
+                    'InstanceNames' => 1,
+                    'BundleId' => 1
+                  },
+  'NameInRequest' => {
+                       'BlueprintId' => 'blueprintId',
+                       'Tags' => 'tags',
+                       'InstanceNames' => 'instanceNames',
+                       'CustomImageName' => 'customImageName',
+                       'UserData' => 'userData',
+                       'BundleId' => 'bundleId',
+                       'AddOns' => 'addOns',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'KeyPairName' => 'keyPairName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +131,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 =head1 ATTRIBUTES
 
 
-=head2 AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]
+=head2 AddOns => ArrayRef[Lightsail_AddOnRequest]
 
 An array of objects representing the add-ons to enable for the new
 instance.
@@ -134,7 +193,7 @@ The name of your key pair.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
 The tag keys and optional values to add to the resource during create.
 

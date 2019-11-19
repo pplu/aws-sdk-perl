@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::RDSData::Record;
-  use Moose;
-  has Values => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::Value]', request_name => 'values', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::RDSData::Types qw/RDSData_Value/;
+  has Values => (is => 'ro', isa => ArrayRef[RDSData_Value]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Values' => 'values'
+                     },
+  'types' => {
+               'Values' => {
+                             'class' => 'Paws::RDSData::Value',
+                             'type' => 'ArrayRef[RDSData_Value]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ A record returned by a call.
 =head1 ATTRIBUTES
 
 
-=head2 Values => ArrayRef[L<Paws::RDSData::Value>]
+=head2 Values => ArrayRef[RDSData_Value]
 
   The values returned in the record.
 

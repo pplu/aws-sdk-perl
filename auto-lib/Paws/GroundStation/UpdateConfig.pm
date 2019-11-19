@@ -1,17 +1,56 @@
 
 package Paws::GroundStation::UpdateConfig;
-  use Moose;
-  has ConfigData => (is => 'ro', isa => 'Paws::GroundStation::ConfigTypeData', traits => ['NameInRequest'], request_name => 'configData', required => 1);
-  has ConfigId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'configId', required => 1);
-  has ConfigType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'configType', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw/GroundStation_ConfigTypeData/;
+  has ConfigData => (is => 'ro', isa => GroundStation_ConfigTypeData, required => 1, predicate => 1);
+  has ConfigId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConfigType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConfig');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/config/{configType}/{configId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GroundStation::ConfigIdResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateConfig');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/config/{configType}/{configId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GroundStation::ConfigIdResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ConfigType' => 'configType',
+                    'ConfigId' => 'configId'
+                  },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'ConfigData' => 'configData'
+                     },
+  'IsRequired' => {
+                    'ConfigData' => 1,
+                    'ConfigType' => 1,
+                    'Name' => 1,
+                    'ConfigId' => 1
+                  },
+  'types' => {
+               'ConfigData' => {
+                                 'type' => 'GroundStation_ConfigTypeData',
+                                 'class' => 'Paws::GroundStation::ConfigTypeData'
+                               },
+               'ConfigId' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ConfigType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -125,7 +164,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gro
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ConfigData => L<Paws::GroundStation::ConfigTypeData>
+=head2 B<REQUIRED> ConfigData => GroundStation_ConfigTypeData
 
 Parameters for a C<Config>.
 

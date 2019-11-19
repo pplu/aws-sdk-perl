@@ -1,10 +1,31 @@
 
 package Paws::WorkLink::ListWebsiteCertificateAuthoritiesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has WebsiteCertificateAuthorities => (is => 'ro', isa => 'ArrayRef[Paws::WorkLink::WebsiteCaSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkLink::Types qw/WorkLink_WebsiteCaSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has WebsiteCertificateAuthorities => (is => 'ro', isa => ArrayRef[WorkLink_WebsiteCaSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'WebsiteCertificateAuthorities' => {
+                                                    'class' => 'Paws::WorkLink::WebsiteCaSummary',
+                                                    'type' => 'ArrayRef[WorkLink_WebsiteCaSummary]'
+                                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +43,7 @@ The pagination token used to retrieve the next page of results for this
 operation. If there are no more pages, this value is null.
 
 
-=head2 WebsiteCertificateAuthorities => ArrayRef[L<Paws::WorkLink::WebsiteCaSummary>]
+=head2 WebsiteCertificateAuthorities => ArrayRef[WorkLink_WebsiteCaSummary]
 
 Information about the certificates.
 

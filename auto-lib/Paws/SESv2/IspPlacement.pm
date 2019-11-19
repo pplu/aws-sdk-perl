@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::SESv2::IspPlacement;
-  use Moose;
-  has IspName => (is => 'ro', isa => 'Str');
-  has PlacementStatistics => (is => 'ro', isa => 'Paws::SESv2::PlacementStatistics');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw/SESv2_PlacementStatistics/;
+  has IspName => (is => 'ro', isa => Str);
+  has PlacementStatistics => (is => 'ro', isa => SESv2_PlacementStatistics);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlacementStatistics' => {
+                                          'type' => 'SESv2_PlacementStatistics',
+                                          'class' => 'Paws::SESv2::PlacementStatistics'
+                                        },
+               'IspName' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +65,7 @@ placement test was handled by a certain email provider.
 to.
 
 
-=head2 PlacementStatistics => L<Paws::SESv2::PlacementStatistics>
+=head2 PlacementStatistics => SESv2_PlacementStatistics
 
   An object that contains inbox placement metrics for a specific email
 provider.

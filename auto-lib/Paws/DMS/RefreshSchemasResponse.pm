@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::RefreshSchemasResponse;
-  use Moose;
-  has RefreshSchemasStatus => (is => 'ro', isa => 'Paws::DMS::RefreshSchemasStatus');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw/DMS_RefreshSchemasStatus/;
+  has RefreshSchemasStatus => (is => 'ro', isa => DMS_RefreshSchemasStatus);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RefreshSchemasStatus' => {
+                                           'type' => 'DMS_RefreshSchemasStatus',
+                                           'class' => 'Paws::DMS::RefreshSchemasStatus'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DMS::RefreshSchemasResponse
 =head1 ATTRIBUTES
 
 
-=head2 RefreshSchemasStatus => L<Paws::DMS::RefreshSchemasStatus>
+=head2 RefreshSchemasStatus => DMS_RefreshSchemasStatus
 
 The status of the refreshed schema.
 

@@ -1,10 +1,35 @@
 
 package Paws::GroundStation::ListGroundStationsResponse;
-  use Moose;
-  has GroundStationList => (is => 'ro', isa => 'ArrayRef[Paws::GroundStation::GroundStationData]', traits => ['NameInRequest'], request_name => 'groundStationList');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GroundStation::Types qw/GroundStation_GroundStationData/;
+  has GroundStationList => (is => 'ro', isa => ArrayRef[GroundStation_GroundStationData]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'GroundStationList' => 'groundStationList',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'GroundStationList' => {
+                                        'class' => 'Paws::GroundStation::GroundStationData',
+                                        'type' => 'ArrayRef[GroundStation_GroundStationData]'
+                                      },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::GroundStation::ListGroundStationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 GroundStationList => ArrayRef[L<Paws::GroundStation::GroundStationData>]
+=head2 GroundStationList => ArrayRef[GroundStation_GroundStationData]
 
 List of ground stations.
 

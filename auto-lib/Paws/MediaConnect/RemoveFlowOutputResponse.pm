@@ -1,10 +1,34 @@
 
 package Paws::MediaConnect::RemoveFlowOutputResponse;
-  use Moose;
-  has FlowArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'flowArn');
-  has OutputArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'outputArn');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConnect::Types qw//;
+  has FlowArn => (is => 'ro', isa => Str);
+  has OutputArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FlowArn' => {
+                              'type' => 'Str'
+                            },
+               'OutputArn' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'FlowArn' => 'flowArn',
+                       'OutputArn' => 'outputArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

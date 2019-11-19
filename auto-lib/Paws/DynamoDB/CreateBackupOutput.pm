@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::CreateBackupOutput;
-  use Moose;
-  has BackupDetails => (is => 'ro', isa => 'Paws::DynamoDB::BackupDetails');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDB::Types qw/DynamoDB_BackupDetails/;
+  has BackupDetails => (is => 'ro', isa => DynamoDB_BackupDetails);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupDetails' => {
+                                    'type' => 'DynamoDB_BackupDetails',
+                                    'class' => 'Paws::DynamoDB::BackupDetails'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DynamoDB::CreateBackupOutput
 =head1 ATTRIBUTES
 
 
-=head2 BackupDetails => L<Paws::DynamoDB::BackupDetails>
+=head2 BackupDetails => DynamoDB_BackupDetails
 
 Contains the details of the backup created for the table.
 

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Glue::TableVersion;
-  use Moose;
-  has Table => (is => 'ro', isa => 'Paws::Glue::Table');
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_Table/;
+  has Table => (is => 'ro', isa => Glue_Table);
+  has VersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Table' => {
+                            'class' => 'Paws::Glue::Table',
+                            'type' => 'Glue_Table'
+                          },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Specifies a version of a table.
 =head1 ATTRIBUTES
 
 
-=head2 Table => L<Paws::Glue::Table>
+=head2 Table => Glue_Table
 
   The table in question.
 

@@ -1,15 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ACMPCA::ListTags;
-  use Moose;
-  has CertificateAuthorityArn => (is => 'ro', isa => 'Str', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ACMPCA::Types qw//;
+  has CertificateAuthorityArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ACMPCA::ListTagsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTags');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ACMPCA::ListTagsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'CertificateAuthorityArn' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'IsRequired' => {
+                    'CertificateAuthorityArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

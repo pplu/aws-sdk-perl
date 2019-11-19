@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::ResetClusterParameterGroup;
-  use Moose;
-  has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Parameter]');
-  has ResetAllParameters => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::RedShift::Types qw/RedShift_Parameter/;
+  has ParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Parameters => (is => 'ro', isa => ArrayRef[RedShift_Parameter], predicate => 1);
+  has ResetAllParameters => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetClusterParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::ClusterParameterGroupNameMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ResetClusterParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ResetClusterParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::ClusterParameterGroupNameMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ResetClusterParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ParameterGroupName' => 1
+                  },
+  'types' => {
+               'ResetAllParameters' => {
+                                         'type' => 'Bool'
+                                       },
+               'Parameters' => {
+                                 'type' => 'ArrayRef[RedShift_Parameter]',
+                                 'class' => 'Paws::RedShift::Parameter'
+                               },
+               'ParameterGroupName' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +95,7 @@ The name of the cluster parameter group to be reset.
 
 
 
-=head2 Parameters => ArrayRef[L<Paws::RedShift::Parameter>]
+=head2 Parameters => ArrayRef[RedShift_Parameter]
 
 An array of names of parameters to be reset. If I<ResetAllParameters>
 option is not used, then at least one parameter name must be supplied.

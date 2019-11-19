@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::MonitoringConfigurationUpdate;
-  use Moose;
-  has ConfigurationTypeUpdate => (is => 'ro', isa => 'Str');
-  has LogLevelUpdate => (is => 'ro', isa => 'Str');
-  has MetricsLevelUpdate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has ConfigurationTypeUpdate => (is => 'ro', isa => Str);
+  has LogLevelUpdate => (is => 'ro', isa => Str);
+  has MetricsLevelUpdate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricsLevelUpdate' => {
+                                         'type' => 'Str'
+                                       },
+               'ConfigurationTypeUpdate' => {
+                                              'type' => 'Str'
+                                            },
+               'LogLevelUpdate' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

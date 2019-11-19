@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::IoT1ClickDevices::DeviceEvent;
-  use Moose;
-  has Device => (is => 'ro', isa => 'Paws::IoT1ClickDevices::Device', request_name => 'device', traits => ['NameInRequest']);
-  has StdEvent => (is => 'ro', isa => 'Str', request_name => 'stdEvent', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickDevices::Types qw/IoT1ClickDevices_Device/;
+  has Device => (is => 'ro', isa => IoT1ClickDevices_Device);
+  has StdEvent => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Device' => {
+                             'class' => 'Paws::IoT1ClickDevices::Device',
+                             'type' => 'IoT1ClickDevices_Device'
+                           },
+               'StdEvent' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'StdEvent' => 'stdEvent',
+                       'Device' => 'device'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Device => L<Paws::IoT1ClickDevices::Device>
+=head2 Device => IoT1ClickDevices_Device
 
   An object representing the device associated with the event.
 

@@ -1,12 +1,40 @@
 
 package Paws::Backup::UpdateRecoveryPointLifecycleOutput;
-  use Moose;
-  has BackupVaultArn => (is => 'ro', isa => 'Str');
-  has CalculatedLifecycle => (is => 'ro', isa => 'Paws::Backup::CalculatedLifecycle');
-  has Lifecycle => (is => 'ro', isa => 'Paws::Backup::Lifecycle');
-  has RecoveryPointArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw/Backup_CalculatedLifecycle Backup_Lifecycle/;
+  has BackupVaultArn => (is => 'ro', isa => Str);
+  has CalculatedLifecycle => (is => 'ro', isa => Backup_CalculatedLifecycle);
+  has Lifecycle => (is => 'ro', isa => Backup_Lifecycle);
+  has RecoveryPointArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RecoveryPointArn' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CalculatedLifecycle' => {
+                                          'type' => 'Backup_CalculatedLifecycle',
+                                          'class' => 'Paws::Backup::CalculatedLifecycle'
+                                        },
+               'Lifecycle' => {
+                                'type' => 'Backup_Lifecycle',
+                                'class' => 'Paws::Backup::Lifecycle'
+                              },
+               'BackupVaultArn' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,13 +52,13 @@ An ARN that uniquely identifies a backup vault; for example,
 C<arn:aws:backup:us-east-1:123456789012:vault:aBackupVault>.
 
 
-=head2 CalculatedLifecycle => L<Paws::Backup::CalculatedLifecycle>
+=head2 CalculatedLifecycle => Backup_CalculatedLifecycle
 
 A C<CalculatedLifecycle> object containing C<DeleteAt> and
 C<MoveToColdStorageAt> timestamps.
 
 
-=head2 Lifecycle => L<Paws::Backup::Lifecycle>
+=head2 Lifecycle => Backup_Lifecycle
 
 The lifecycle defines when a protected resource is transitioned to cold
 storage and when it expires. AWS Backup transitions and expires backups

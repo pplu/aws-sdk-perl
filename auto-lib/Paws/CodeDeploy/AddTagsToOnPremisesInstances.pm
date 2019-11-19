@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::AddTagsToOnPremisesInstances;
-  use Moose;
-  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_Tag/;
+  has InstanceNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CodeDeploy_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToOnPremisesInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddTagsToOnPremisesInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[CodeDeploy_Tag]',
+                           'class' => 'Paws::CodeDeploy::Tag'
+                         },
+               'InstanceNames' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'InstanceNames' => 'instanceNames',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'InstanceNames' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +80,7 @@ The names of the on-premises instances to which to add tags.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[CodeDeploy_Tag]
 
 The tag key-value pairs to add to the on-premises instances.
 

@@ -1,17 +1,73 @@
+# Generated from default/object.tt
 package Paws::Firehose::ExtendedS3DestinationUpdate;
-  use Moose;
-  has BucketARN => (is => 'ro', isa => 'Str');
-  has BufferingHints => (is => 'ro', isa => 'Paws::Firehose::BufferingHints');
-  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
-  has CompressionFormat => (is => 'ro', isa => 'Str');
-  has DataFormatConversionConfiguration => (is => 'ro', isa => 'Paws::Firehose::DataFormatConversionConfiguration');
-  has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::EncryptionConfiguration');
-  has ErrorOutputPrefix => (is => 'ro', isa => 'Str');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has S3BackupMode => (is => 'ro', isa => 'Str');
-  has S3BackupUpdate => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw/Firehose_DataFormatConversionConfiguration Firehose_ProcessingConfiguration Firehose_BufferingHints Firehose_EncryptionConfiguration Firehose_S3DestinationUpdate Firehose_CloudWatchLoggingOptions/;
+  has BucketARN => (is => 'ro', isa => Str);
+  has BufferingHints => (is => 'ro', isa => Firehose_BufferingHints);
+  has CloudWatchLoggingOptions => (is => 'ro', isa => Firehose_CloudWatchLoggingOptions);
+  has CompressionFormat => (is => 'ro', isa => Str);
+  has DataFormatConversionConfiguration => (is => 'ro', isa => Firehose_DataFormatConversionConfiguration);
+  has EncryptionConfiguration => (is => 'ro', isa => Firehose_EncryptionConfiguration);
+  has ErrorOutputPrefix => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+  has ProcessingConfiguration => (is => 'ro', isa => Firehose_ProcessingConfiguration);
+  has RoleARN => (is => 'ro', isa => Str);
+  has S3BackupMode => (is => 'ro', isa => Str);
+  has S3BackupUpdate => (is => 'ro', isa => Firehose_S3DestinationUpdate);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BufferingHints' => {
+                                     'type' => 'Firehose_BufferingHints',
+                                     'class' => 'Paws::Firehose::BufferingHints'
+                                   },
+               'ProcessingConfiguration' => {
+                                              'class' => 'Paws::Firehose::ProcessingConfiguration',
+                                              'type' => 'Firehose_ProcessingConfiguration'
+                                            },
+               'CloudWatchLoggingOptions' => {
+                                               'class' => 'Paws::Firehose::CloudWatchLoggingOptions',
+                                               'type' => 'Firehose_CloudWatchLoggingOptions'
+                                             },
+               'BucketARN' => {
+                                'type' => 'Str'
+                              },
+               'DataFormatConversionConfiguration' => {
+                                                        'class' => 'Paws::Firehose::DataFormatConversionConfiguration',
+                                                        'type' => 'Firehose_DataFormatConversionConfiguration'
+                                                      },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'CompressionFormat' => {
+                                        'type' => 'Str'
+                                      },
+               'EncryptionConfiguration' => {
+                                              'class' => 'Paws::Firehose::EncryptionConfiguration',
+                                              'type' => 'Firehose_EncryptionConfiguration'
+                                            },
+               'S3BackupMode' => {
+                                   'type' => 'Str'
+                                 },
+               'S3BackupUpdate' => {
+                                     'type' => 'Firehose_S3DestinationUpdate',
+                                     'class' => 'Paws::Firehose::S3DestinationUpdate'
+                                   },
+               'ErrorOutputPrefix' => {
+                                        'type' => 'Str'
+                                      },
+               'Prefix' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,12 +110,12 @@ Names (ARNs) and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
-=head2 BufferingHints => L<Paws::Firehose::BufferingHints>
+=head2 BufferingHints => Firehose_BufferingHints
 
   The buffering option.
 
 
-=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+=head2 CloudWatchLoggingOptions => Firehose_CloudWatchLoggingOptions
 
   The Amazon CloudWatch logging options for your delivery stream.
 
@@ -70,14 +126,14 @@ Names (ARNs) and AWS Service Namespaces
 C<UNCOMPRESSED>.
 
 
-=head2 DataFormatConversionConfiguration => L<Paws::Firehose::DataFormatConversionConfiguration>
+=head2 DataFormatConversionConfiguration => Firehose_DataFormatConversionConfiguration
 
   The serializer, deserializer, and schema for converting data from the
 JSON format to the Parquet or ORC format before writing it to Amazon
 S3.
 
 
-=head2 EncryptionConfiguration => L<Paws::Firehose::EncryptionConfiguration>
+=head2 EncryptionConfiguration => Firehose_EncryptionConfiguration
 
   The encryption configuration. If no value is specified, the default is
 no encryption.
@@ -100,7 +156,7 @@ described in Custom Prefixes for Amazon S3 Objects
 (https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html).
 
 
-=head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
+=head2 ProcessingConfiguration => Firehose_ProcessingConfiguration
 
   The data processing configuration.
 
@@ -118,7 +174,7 @@ Namespaces
   Enables or disables Amazon S3 backup mode.
 
 
-=head2 S3BackupUpdate => L<Paws::Firehose::S3DestinationUpdate>
+=head2 S3BackupUpdate => Firehose_S3DestinationUpdate
 
   The Amazon S3 destination for backup.
 

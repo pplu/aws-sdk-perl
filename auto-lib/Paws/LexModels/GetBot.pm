@@ -1,15 +1,41 @@
 
 package Paws::LexModels::GetBot;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has VersionOrAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'versionoralias', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VersionOrAlias => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetBot');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bots/{name}/versions/{versionoralias}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetBotResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetBot');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/bots/{name}/versions/{versionoralias}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::GetBotResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VersionOrAlias' => {
+                                     'type' => 'Str'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'VersionOrAlias' => 1,
+                    'Name' => 1
+                  },
+  'ParamInURI' => {
+                    'Name' => 'name',
+                    'VersionOrAlias' => 'versionoralias'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

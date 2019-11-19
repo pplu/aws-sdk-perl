@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::MediaLive::GlobalConfiguration;
-  use Moose;
-  has InitialAudioGain => (is => 'ro', isa => 'Int', request_name => 'initialAudioGain', traits => ['NameInRequest']);
-  has InputEndAction => (is => 'ro', isa => 'Str', request_name => 'inputEndAction', traits => ['NameInRequest']);
-  has InputLossBehavior => (is => 'ro', isa => 'Paws::MediaLive::InputLossBehavior', request_name => 'inputLossBehavior', traits => ['NameInRequest']);
-  has OutputLockingMode => (is => 'ro', isa => 'Str', request_name => 'outputLockingMode', traits => ['NameInRequest']);
-  has OutputTimingSource => (is => 'ro', isa => 'Str', request_name => 'outputTimingSource', traits => ['NameInRequest']);
-  has SupportLowFramerateInputs => (is => 'ro', isa => 'Str', request_name => 'supportLowFramerateInputs', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaLive::Types qw/MediaLive_InputLossBehavior/;
+  has InitialAudioGain => (is => 'ro', isa => Int);
+  has InputEndAction => (is => 'ro', isa => Str);
+  has InputLossBehavior => (is => 'ro', isa => MediaLive_InputLossBehavior);
+  has OutputLockingMode => (is => 'ro', isa => Str);
+  has OutputTimingSource => (is => 'ro', isa => Str);
+  has SupportLowFramerateInputs => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'OutputLockingMode' => 'outputLockingMode',
+                       'InputEndAction' => 'inputEndAction',
+                       'InputLossBehavior' => 'inputLossBehavior',
+                       'InitialAudioGain' => 'initialAudioGain',
+                       'SupportLowFramerateInputs' => 'supportLowFramerateInputs',
+                       'OutputTimingSource' => 'outputTimingSource'
+                     },
+  'types' => {
+               'SupportLowFramerateInputs' => {
+                                                'type' => 'Str'
+                                              },
+               'OutputTimingSource' => {
+                                         'type' => 'Str'
+                                       },
+               'OutputLockingMode' => {
+                                        'type' => 'Str'
+                                      },
+               'InputLossBehavior' => {
+                                        'type' => 'MediaLive_InputLossBehavior',
+                                        'class' => 'Paws::MediaLive::InputLossBehavior'
+                                      },
+               'InputEndAction' => {
+                                     'type' => 'Str'
+                                   },
+               'InitialAudioGain' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +98,7 @@ until the next input switch occurs (which is controlled through the
 Channel Schedule API).
 
 
-=head2 InputLossBehavior => L<Paws::MediaLive::InputLossBehavior>
+=head2 InputLossBehavior => MediaLive_InputLossBehavior
 
   Settings for system actions when input is lost.
 

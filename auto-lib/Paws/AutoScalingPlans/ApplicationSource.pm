@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::AutoScalingPlans::ApplicationSource;
-  use Moose;
-  has CloudFormationStackARN => (is => 'ro', isa => 'Str');
-  has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::AutoScalingPlans::TagFilter]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AutoScalingPlans::Types qw/AutoScalingPlans_TagFilter/;
+  has CloudFormationStackARN => (is => 'ro', isa => Str);
+  has TagFilters => (is => 'ro', isa => ArrayRef[AutoScalingPlans_TagFilter]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CloudFormationStackARN' => {
+                                             'type' => 'Str'
+                                           },
+               'TagFilters' => {
+                                 'type' => 'ArrayRef[AutoScalingPlans_TagFilter]',
+                                 'class' => 'Paws::AutoScalingPlans::TagFilter'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Represents an application source.
   The Amazon Resource Name (ARN) of a AWS CloudFormation stack.
 
 
-=head2 TagFilters => ArrayRef[L<Paws::AutoScalingPlans::TagFilter>]
+=head2 TagFilters => ArrayRef[AutoScalingPlans_TagFilter]
 
   A set of tags (up to 50).
 

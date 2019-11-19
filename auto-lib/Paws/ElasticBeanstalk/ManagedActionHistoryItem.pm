@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::ManagedActionHistoryItem;
-  use Moose;
-  has ActionDescription => (is => 'ro', isa => 'Str');
-  has ActionId => (is => 'ro', isa => 'Str');
-  has ActionType => (is => 'ro', isa => 'Str');
-  has ExecutedTime => (is => 'ro', isa => 'Str');
-  has FailureDescription => (is => 'ro', isa => 'Str');
-  has FailureType => (is => 'ro', isa => 'Str');
-  has FinishedTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ActionDescription => (is => 'ro', isa => Str);
+  has ActionId => (is => 'ro', isa => Str);
+  has ActionType => (is => 'ro', isa => Str);
+  has ExecutedTime => (is => 'ro', isa => Str);
+  has FailureDescription => (is => 'ro', isa => Str);
+  has FailureType => (is => 'ro', isa => Str);
+  has FinishedTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActionDescription' => {
+                                        'type' => 'Str'
+                                      },
+               'ExecutedTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ActionId' => {
+                               'type' => 'Str'
+                             },
+               'FinishedTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ActionType' => {
+                                 'type' => 'Str'
+                               },
+               'FailureType' => {
+                                  'type' => 'Str'
+                                },
+               'FailureDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

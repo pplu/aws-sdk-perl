@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::SSM::AssociationOverview;
-  use Moose;
-  has AssociationStatusAggregatedCount => (is => 'ro', isa => 'Paws::SSM::AssociationStatusAggregatedCount');
-  has DetailedStatus => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_AssociationStatusAggregatedCount/;
+  has AssociationStatusAggregatedCount => (is => 'ro', isa => SSM_AssociationStatusAggregatedCount);
+  has DetailedStatus => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DetailedStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'AssociationStatusAggregatedCount' => {
+                                                       'class' => 'Paws::SSM::AssociationStatusAggregatedCount',
+                                                       'type' => 'SSM_AssociationStatusAggregatedCount'
+                                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ Information about the association.
 =head1 ATTRIBUTES
 
 
-=head2 AssociationStatusAggregatedCount => L<Paws::SSM::AssociationStatusAggregatedCount>
+=head2 AssociationStatusAggregatedCount => SSM_AssociationStatusAggregatedCount
 
   Returns the number of targets for the association status. For example,
 if you created an association with two instances, and one of them was

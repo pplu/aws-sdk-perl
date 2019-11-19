@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::SqlInjectionMatchSetUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has SqlInjectionMatchTuple => (is => 'ro', isa => 'Paws::WAFRegional::SqlInjectionMatchTuple', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_SqlInjectionMatchTuple/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has SqlInjectionMatchTuple => (is => 'ro', isa => WAFRegional_SqlInjectionMatchTuple, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Action' => 1,
+                    'SqlInjectionMatchTuple' => 1
+                  },
+  'types' => {
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'SqlInjectionMatchTuple' => {
+                                             'class' => 'Paws::WAFRegional::SqlInjectionMatchTuple',
+                                             'type' => 'WAFRegional_SqlInjectionMatchTuple'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +72,7 @@ SqlInjectionMatchSet. Use C<DELETE> to remove a
 C<SqlInjectionMatchSetUpdate> from a C<SqlInjectionMatchSet>.
 
 
-=head2 B<REQUIRED> SqlInjectionMatchTuple => L<Paws::WAFRegional::SqlInjectionMatchTuple>
+=head2 B<REQUIRED> SqlInjectionMatchTuple => WAFRegional_SqlInjectionMatchTuple
 
   Specifies the part of a web request that you want AWS WAF to inspect
 for snippets of malicious SQL code and, if you want AWS WAF to inspect

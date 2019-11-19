@@ -1,12 +1,62 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionConfigurationProperty;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Key => (is => 'ro', isa => 'Bool', request_name => 'key', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Queryable => (is => 'ro', isa => 'Bool', request_name => 'queryable', traits => ['NameInRequest']);
-  has Required => (is => 'ro', isa => 'Bool', request_name => 'required', traits => ['NameInRequest'], required => 1);
-  has Secret => (is => 'ro', isa => 'Bool', request_name => 'secret', traits => ['NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodePipeline::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Bool, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Queryable => (is => 'ro', isa => Bool);
+  has Required => (is => 'ro', isa => Bool, required => 1);
+  has Secret => (is => 'ro', isa => Bool, required => 1);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Queryable' => {
+                                'type' => 'Bool'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Secret' => {
+                             'type' => 'Bool'
+                           },
+               'Key' => {
+                          'type' => 'Bool'
+                        },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Required' => {
+                               'type' => 'Bool'
+                             }
+             },
+  'NameInRequest' => {
+                       'Secret' => 'secret',
+                       'Key' => 'key',
+                       'Type' => 'type',
+                       'Required' => 'required',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'Queryable' => 'queryable'
+                     },
+  'IsRequired' => {
+                    'Required' => 1,
+                    'Key' => 1,
+                    'Name' => 1,
+                    'Secret' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

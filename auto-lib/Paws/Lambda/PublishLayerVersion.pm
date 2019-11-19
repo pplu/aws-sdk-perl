@@ -1,18 +1,53 @@
 
 package Paws::Lambda::PublishLayerVersion;
-  use Moose;
-  has CompatibleRuntimes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Content => (is => 'ro', isa => 'Paws::Lambda::LayerVersionContentInput', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has LayerName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LayerName', required => 1);
-  has LicenseInfo => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Lambda::Types qw/Lambda_LayerVersionContentInput/;
+  has CompatibleRuntimes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Content => (is => 'ro', isa => Lambda_LayerVersionContentInput, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has LayerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LicenseInfo => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PublishLayerVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-10-31/layers/{LayerName}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::PublishLayerVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PublishLayerVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2018-10-31/layers/{LayerName}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::PublishLayerVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'LayerName' => 'LayerName'
+                  },
+  'IsRequired' => {
+                    'LayerName' => 1,
+                    'Content' => 1
+                  },
+  'types' => {
+               'LicenseInfo' => {
+                                  'type' => 'Str'
+                                },
+               'LayerName' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Content' => {
+                              'class' => 'Paws::Lambda::LayerVersionContentInput',
+                              'type' => 'Lambda_LayerVersionContentInput'
+                            },
+               'CompatibleRuntimes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +77,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LayerName          => 'MyLayerName',
       CompatibleRuntimes => [
         'nodejs',
-        ... # values: nodejs, nodejs4.3, nodejs6.10, nodejs8.10, nodejs10.x, java8, python2.7, python3.6, python3.7, dotnetcore1.0, dotnetcore2.0, dotnetcore2.1, nodejs4.3-edge, go1.x, ruby2.5, provided
+        ... # values: nodejs, nodejs4.3, nodejs6.10, nodejs8.10, nodejs10.x, nodejs12.x, java8, java11, python2.7, python3.6, python3.7, python3.8, dotnetcore1.0, dotnetcore2.0, dotnetcore2.1, nodejs4.3-edge, go1.x, ruby2.5, provided
       ],    # OPTIONAL
       Description => 'MyDescription',    # OPTIONAL
       LicenseInfo => 'MyLicenseInfo',    # OPTIONAL
@@ -74,7 +109,7 @@ Used for filtering with ListLayers and ListLayerVersions.
 
 
 
-=head2 B<REQUIRED> Content => L<Paws::Lambda::LayerVersionContentInput>
+=head2 B<REQUIRED> Content => Lambda_LayerVersionContentInput
 
 The function layer archive.
 

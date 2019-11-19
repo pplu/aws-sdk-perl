@@ -1,18 +1,59 @@
 
 package Paws::IoT1ClickDevices::ListDeviceEvents;
-  use Moose;
-  has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'deviceId', required => 1);
-  has FromTimeStamp => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fromTimeStamp', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has ToTimeStamp => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'toTimeStamp', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT1ClickDevices::Types qw//;
+  has DeviceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FromTimeStamp => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ToTimeStamp => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDeviceEvents');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/devices/{deviceId}/events');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT1ClickDevices::ListDeviceEventsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDeviceEvents');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/devices/{deviceId}/events');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT1ClickDevices::ListDeviceEventsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DeviceId' => 'deviceId'
+                  },
+  'types' => {
+               'FromTimeStamp' => {
+                                    'type' => 'Str'
+                                  },
+               'DeviceId' => {
+                               'type' => 'Str'
+                             },
+               'ToTimeStamp' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'FromTimeStamp' => 'fromTimeStamp',
+                      'ToTimeStamp' => 'toTimeStamp',
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken'
+                    },
+  'IsRequired' => {
+                    'ToTimeStamp' => 1,
+                    'DeviceId' => 1,
+                    'FromTimeStamp' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,30 @@
 
 package Paws::IoTAnalytics::DescribeLoggingOptionsResponse;
-  use Moose;
-  has LoggingOptions => (is => 'ro', isa => 'Paws::IoTAnalytics::LoggingOptions', traits => ['NameInRequest'], request_name => 'loggingOptions');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_LoggingOptions/;
+  has LoggingOptions => (is => 'ro', isa => IoTAnalytics_LoggingOptions);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LoggingOptions' => 'loggingOptions'
+                     },
+  'types' => {
+               'LoggingOptions' => {
+                                     'class' => 'Paws::IoTAnalytics::LoggingOptions',
+                                     'type' => 'IoTAnalytics_LoggingOptions'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::IoTAnalytics::DescribeLoggingOptionsResponse
 =head1 ATTRIBUTES
 
 
-=head2 LoggingOptions => L<Paws::IoTAnalytics::LoggingOptions>
+=head2 LoggingOptions => IoTAnalytics_LoggingOptions
 
 The current settings of the AWS IoT Analytics logging options.
 

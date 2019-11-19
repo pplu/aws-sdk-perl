@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Rekognition::Image;
-  use Moose;
-  has Bytes => (is => 'ro', isa => 'Str');
-  has S3Object => (is => 'ro', isa => 'Paws::Rekognition::S3Object');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Rekognition::Types qw/Rekognition_S3Object/;
+  has Bytes => (is => 'ro', isa => Str);
+  has S3Object => (is => 'ro', isa => Rekognition_S3Object);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Object' => {
+                               'class' => 'Paws::Rekognition::S3Object',
+                               'type' => 'Rekognition_S3Object'
+                             },
+               'Bytes' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +89,7 @@ Based Policies in the Amazon Rekognition Developer Guide.
   Blob of image bytes up to 5 MBs.
 
 
-=head2 S3Object => L<Paws::Rekognition::S3Object>
+=head2 S3Object => Rekognition_S3Object
 
   Identifies an S3 object as the image source.
 

@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::SageMaker::LabelingJobAlgorithmsConfig;
-  use Moose;
-  has InitialActiveLearningModelArn => (is => 'ro', isa => 'Str');
-  has LabelingJobAlgorithmSpecificationArn => (is => 'ro', isa => 'Str', required => 1);
-  has LabelingJobResourceConfig => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobResourceConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_LabelingJobResourceConfig/;
+  has InitialActiveLearningModelArn => (is => 'ro', isa => Str);
+  has LabelingJobAlgorithmSpecificationArn => (is => 'ro', isa => Str, required => 1);
+  has LabelingJobResourceConfig => (is => 'ro', isa => SageMaker_LabelingJobResourceConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LabelingJobAlgorithmSpecificationArn' => 1
+                  },
+  'types' => {
+               'InitialActiveLearningModelArn' => {
+                                                    'type' => 'Str'
+                                                  },
+               'LabelingJobResourceConfig' => {
+                                                'class' => 'Paws::SageMaker::LabelingJobResourceConfig',
+                                                'type' => 'SageMaker_LabelingJobResourceConfig'
+                                              },
+               'LabelingJobAlgorithmSpecificationArn' => {
+                                                           'type' => 'Str'
+                                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -83,7 +110,7 @@ C<arn:aws:sagemaker:I<region>:027400017018:labeling-job-algorithm-specification/
 
 
 
-=head2 LabelingJobResourceConfig => L<Paws::SageMaker::LabelingJobResourceConfig>
+=head2 LabelingJobResourceConfig => SageMaker_LabelingJobResourceConfig
 
   Provides configuration information for a labeling job.
 

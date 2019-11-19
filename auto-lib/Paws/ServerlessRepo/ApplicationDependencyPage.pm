@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::ApplicationDependencyPage;
-  use Moose;
-  has Dependencies => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationDependencySummary]', request_name => 'dependencies', traits => ['NameInRequest'], required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ServerlessRepo::Types qw/ServerlessRepo_ApplicationDependencySummary/;
+  has Dependencies => (is => 'ro', isa => ArrayRef[ServerlessRepo_ApplicationDependencySummary], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Dependencies' => {
+                                   'class' => 'Paws::ServerlessRepo::ApplicationDependencySummary',
+                                   'type' => 'ArrayRef[ServerlessRepo_ApplicationDependencySummary]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Dependencies' => 'dependencies',
+                       'NextToken' => 'nextToken'
+                     },
+  'IsRequired' => {
+                    'Dependencies' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +65,7 @@ A list of application summaries nested in the application.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Dependencies => ArrayRef[L<Paws::ServerlessRepo::ApplicationDependencySummary>]
+=head2 B<REQUIRED> Dependencies => ArrayRef[ServerlessRepo_ApplicationDependencySummary]
 
   An array of application summaries nested in the application.
 

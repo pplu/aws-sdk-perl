@@ -1,15 +1,39 @@
 
 package Paws::EFS::ModifyMountTargetSecurityGroups;
-  use Moose;
-  has MountTargetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'MountTargetId', required => 1);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EFS::Types qw//;
+  has MountTargetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyMountTargetSecurityGroups');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/mount-targets/{MountTargetId}/security-groups');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyMountTargetSecurityGroups');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-02-01/mount-targets/{MountTargetId}/security-groups');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MountTargetId' => 1
+                  },
+  'types' => {
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'MountTargetId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'ParamInURI' => {
+                    'MountTargetId' => 'MountTargetId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

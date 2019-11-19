@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Lightsail::MonthlyTransfer;
-  use Moose;
-  has GbPerMonthAllocated => (is => 'ro', isa => 'Int', request_name => 'gbPerMonthAllocated', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Lightsail::Types qw//;
+  has GbPerMonthAllocated => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'GbPerMonthAllocated' => 'gbPerMonthAllocated'
+                     },
+  'types' => {
+               'GbPerMonthAllocated' => {
+                                          'type' => 'Int'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

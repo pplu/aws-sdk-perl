@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Athena::CreateWorkGroup;
-  use Moose;
-  has Configuration => (is => 'ro', isa => 'Paws::Athena::WorkGroupConfiguration');
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Athena::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Athena::Types qw/Athena_Tag Athena_WorkGroupConfiguration/;
+  has Configuration => (is => 'ro', isa => Athena_WorkGroupConfiguration, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Athena_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateWorkGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Athena::CreateWorkGroupOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateWorkGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Athena::CreateWorkGroupOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[Athena_Tag]',
+                           'class' => 'Paws::Athena::Tag'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Configuration' => {
+                                    'type' => 'Athena_WorkGroupConfiguration',
+                                    'class' => 'Paws::Athena::WorkGroupConfiguration'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +91,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ath
 =head1 ATTRIBUTES
 
 
-=head2 Configuration => L<Paws::Athena::WorkGroupConfiguration>
+=head2 Configuration => Athena_WorkGroupConfiguration
 
 The configuration for the workgroup, which includes the location in
 Amazon S3 where query results are stored, the encryption configuration,
@@ -87,7 +117,7 @@ The workgroup name.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Athena::Tag>]
+=head2 Tags => ArrayRef[Athena_Tag]
 
 One or more tags, separated by commas, that you want to attach to the
 workgroup as you create it.

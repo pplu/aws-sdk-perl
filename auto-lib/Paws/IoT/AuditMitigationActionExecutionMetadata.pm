@@ -1,14 +1,66 @@
+# Generated from default/object.tt
 package Paws::IoT::AuditMitigationActionExecutionMetadata;
-  use Moose;
-  has ActionId => (is => 'ro', isa => 'Str', request_name => 'actionId', traits => ['NameInRequest']);
-  has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
-  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
-  has FindingId => (is => 'ro', isa => 'Str', request_name => 'findingId', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has ActionId => (is => 'ro', isa => Str);
+  has ActionName => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has FindingId => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TaskId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ActionId' => 'actionId',
+                       'ActionName' => 'actionName',
+                       'FindingId' => 'findingId',
+                       'TaskId' => 'taskId',
+                       'ErrorCode' => 'errorCode',
+                       'EndTime' => 'endTime',
+                       'Message' => 'message',
+                       'StartTime' => 'startTime',
+                       'Status' => 'status'
+                     },
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'ActionId' => {
+                               'type' => 'Str'
+                             },
+               'ActionName' => {
+                                 'type' => 'Str'
+                               },
+               'FindingId' => {
+                                'type' => 'Str'
+                              },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'TaskId' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

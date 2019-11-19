@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::EMR::PortRange;
-  use Moose;
-  has MaxRange => (is => 'ro', isa => 'Int');
-  has MinRange => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::EMR::Types qw//;
+  has MaxRange => (is => 'ro', isa => Int);
+  has MinRange => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MinRange' => {
+                               'type' => 'Int'
+                             },
+               'MaxRange' => {
+                               'type' => 'Int'
+                             }
+             },
+  'IsRequired' => {
+                    'MinRange' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

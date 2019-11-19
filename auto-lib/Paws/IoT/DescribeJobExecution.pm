@@ -1,16 +1,48 @@
 
 package Paws::IoT::DescribeJobExecution;
-  use Moose;
-  has ExecutionNumber => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'executionNumber');
-  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has ExecutionNumber => (is => 'ro', isa => Int, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeJobExecution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}/jobs/{jobId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DescribeJobExecutionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeJobExecution');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/things/{thingName}/jobs/{jobId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DescribeJobExecutionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ThingName' => 'thingName',
+                    'JobId' => 'jobId'
+                  },
+  'types' => {
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'ExecutionNumber' => {
+                                      'type' => 'Int'
+                                    }
+             },
+  'ParamInQuery' => {
+                      'ExecutionNumber' => 'executionNumber'
+                    },
+  'IsRequired' => {
+                    'ThingName' => 1,
+                    'JobId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

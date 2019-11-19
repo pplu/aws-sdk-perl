@@ -1,13 +1,22 @@
 
 package Paws::XRay::GetEncryptionConfig;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::XRay::Types qw//;
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetEncryptionConfig');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/EncryptionConfig');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::XRay::GetEncryptionConfigResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetEncryptionConfig');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/EncryptionConfig');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::XRay::GetEncryptionConfigResult');
+
+    sub params_map {
+    our $Params_map ||= {}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

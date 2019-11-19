@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::IAM::DeletionTaskFailureReasonType;
-  use Moose;
-  has Reason => (is => 'ro', isa => 'Str');
-  has RoleUsageList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::RoleUsageType]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IAM::Types qw/IAM_RoleUsageType/;
+  has Reason => (is => 'ro', isa => Str);
+  has RoleUsageList => (is => 'ro', isa => ArrayRef[IAM_RoleUsageType]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'RoleUsageList' => {
+                                    'class' => 'Paws::IAM::RoleUsageType',
+                                    'type' => 'ArrayRef[IAM_RoleUsageType]'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +67,7 @@ GetServiceLinkedRoleDeletionStatus operation.
 failed.
 
 
-=head2 RoleUsageList => ArrayRef[L<Paws::IAM::RoleUsageType>]
+=head2 RoleUsageList => ArrayRef[IAM_RoleUsageType]
 
   A list of objects that contains details about the service-linked role
 deletion failure, if that information is returned by the service. If

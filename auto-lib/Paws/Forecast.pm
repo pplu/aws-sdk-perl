@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Forecast;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'forecast' }
   sub signing_name { 'forecast' }
   sub version { '2018-06-26' }
   sub target_prefix { 'AmazonForecast' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -331,11 +333,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/for
 
 =item Domain => Str
 
-=item Schema => L<Paws::Forecast::Schema>
+=item Schema => Forecast_Schema
 
 =item [DataFrequency => Str]
 
-=item [EncryptionConfig => L<Paws::Forecast::EncryptionConfig>]
+=item [EncryptionConfig => Forecast_EncryptionConfig]
 
 
 =back
@@ -424,7 +426,7 @@ DescribeDatasetGroup operation to get the status.
 
 =item DatasetImportJobName => Str
 
-=item DataSource => L<Paws::Forecast::DataSource>
+=item DataSource => Forecast_DataSource
 
 =item [TimestampFormat => Str]
 
@@ -520,7 +522,7 @@ status.
 
 =over
 
-=item Destination => L<Paws::Forecast::DataDestination>
+=item Destination => Forecast_DataDestination
 
 =item ForecastArn => Str
 
@@ -555,27 +557,27 @@ DescribeForecastExportJob operation to get the status.
 
 =over
 
-=item FeaturizationConfig => L<Paws::Forecast::FeaturizationConfig>
+=item FeaturizationConfig => Forecast_FeaturizationConfig
 
 =item ForecastHorizon => Int
 
-=item InputDataConfig => L<Paws::Forecast::InputDataConfig>
+=item InputDataConfig => Forecast_InputDataConfig
 
 =item PredictorName => Str
 
 =item [AlgorithmArn => Str]
 
-=item [EncryptionConfig => L<Paws::Forecast::EncryptionConfig>]
+=item [EncryptionConfig => Forecast_EncryptionConfig]
 
-=item [EvaluationParameters => L<Paws::Forecast::EvaluationParameters>]
+=item [EvaluationParameters => Forecast_EvaluationParameters]
 
-=item [HPOConfig => L<Paws::Forecast::HyperParameterTuningJobConfig>]
+=item [HPOConfig => Forecast_HyperParameterTuningJobConfig]
 
 =item [PerformAutoML => Bool]
 
 =item [PerformHPO => Bool]
 
-=item [TrainingParameters => L<Paws::Forecast::TrainingParameters>]
+=item [TrainingParameters => Forecast_TrainingParameters]
 
 
 =back
@@ -1087,7 +1089,7 @@ DescribeDatasetGroup operation.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Forecast::Filter>]]
+=item [Filters => ArrayRef[Forecast_Filter]]
 
 =item [MaxResults => Int]
 
@@ -1133,7 +1135,7 @@ properties by using the ARN with the DescribeDataset operation.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Forecast::Filter>]]
+=item [Filters => ArrayRef[Forecast_Filter]]
 
 =item [MaxResults => Int]
 
@@ -1158,7 +1160,7 @@ filtered using an array of Filter objects.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Forecast::Filter>]]
+=item [Filters => ArrayRef[Forecast_Filter]]
 
 =item [MaxResults => Int]
 
@@ -1182,7 +1184,7 @@ list can be filtered using an array of Filter objects.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Forecast::Filter>]]
+=item [Filters => ArrayRef[Forecast_Filter]]
 
 =item [MaxResults => Int]
 
@@ -1243,9 +1245,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Forecast::ListDatasetGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllDatasetImportJobs(sub { },[Filters => ArrayRef[L<Paws::Forecast::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllDatasetImportJobs(sub { },[Filters => ArrayRef[Forecast_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllDatasetImportJobs([Filters => ArrayRef[L<Paws::Forecast::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllDatasetImportJobs([Filters => ArrayRef[Forecast_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1267,9 +1269,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Forecast::ListDatasetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllForecastExportJobs(sub { },[Filters => ArrayRef[L<Paws::Forecast::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllForecastExportJobs(sub { },[Filters => ArrayRef[Forecast_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllForecastExportJobs([Filters => ArrayRef[L<Paws::Forecast::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllForecastExportJobs([Filters => ArrayRef[Forecast_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1279,9 +1281,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Forecast::ListForecastExportJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllForecasts(sub { },[Filters => ArrayRef[L<Paws::Forecast::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllForecasts(sub { },[Filters => ArrayRef[Forecast_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllForecasts([Filters => ArrayRef[L<Paws::Forecast::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllForecasts([Filters => ArrayRef[Forecast_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1291,9 +1293,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Forecast::ListForecastsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllPredictors(sub { },[Filters => ArrayRef[L<Paws::Forecast::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllPredictors(sub { },[Filters => ArrayRef[Forecast_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllPredictors([Filters => ArrayRef[L<Paws::Forecast::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllPredictors([Filters => ArrayRef[Forecast_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

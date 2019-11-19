@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::Robomaker::PortMapping;
-  use Moose;
-  has ApplicationPort => (is => 'ro', isa => 'Int', request_name => 'applicationPort', traits => ['NameInRequest'], required => 1);
-  has EnableOnPublicIp => (is => 'ro', isa => 'Bool', request_name => 'enableOnPublicIp', traits => ['NameInRequest']);
-  has JobPort => (is => 'ro', isa => 'Int', request_name => 'jobPort', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Bool/;
+  use Paws::Robomaker::Types qw//;
+  has ApplicationPort => (is => 'ro', isa => Int, required => 1);
+  has EnableOnPublicIp => (is => 'ro', isa => Bool);
+  has JobPort => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationPort' => {
+                                      'type' => 'Int'
+                                    },
+               'JobPort' => {
+                              'type' => 'Int'
+                            },
+               'EnableOnPublicIp' => {
+                                       'type' => 'Bool'
+                                     }
+             },
+  'NameInRequest' => {
+                       'JobPort' => 'jobPort',
+                       'EnableOnPublicIp' => 'enableOnPublicIp',
+                       'ApplicationPort' => 'applicationPort'
+                     },
+  'IsRequired' => {
+                    'JobPort' => 1,
+                    'ApplicationPort' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

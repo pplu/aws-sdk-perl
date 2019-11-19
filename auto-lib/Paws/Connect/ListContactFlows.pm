@@ -1,17 +1,52 @@
 
 package Paws::Connect::ListContactFlows;
-  use Moose;
-  has ContactFlowTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'contactFlowTypes');
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::Connect::Types qw//;
+  has ContactFlowTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListContactFlows');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/contact-flows-summary/{InstanceId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Connect::ListContactFlowsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListContactFlows');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/contact-flows-summary/{InstanceId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Connect::ListContactFlowsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContactFlowTypes' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults',
+                      'ContactFlowTypes' => 'contactFlowTypes'
+                    },
+  'IsRequired' => {
+                    'InstanceId' => 1
+                  },
+  'ParamInURI' => {
+                    'InstanceId' => 'InstanceId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

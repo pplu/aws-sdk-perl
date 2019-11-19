@@ -1,21 +1,89 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::WorkspaceDirectory;
-  use Moose;
-  has Alias => (is => 'ro', isa => 'Str');
-  has CustomerUserName => (is => 'ro', isa => 'Str');
-  has DirectoryId => (is => 'ro', isa => 'Str');
-  has DirectoryName => (is => 'ro', isa => 'Str');
-  has DirectoryType => (is => 'ro', isa => 'Str');
-  has DnsIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has IamRoleId => (is => 'ro', isa => 'Str');
-  has IpGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipGroupIds', traits => ['NameInRequest']);
-  has RegistrationCode => (is => 'ro', isa => 'Str');
-  has SelfservicePermissions => (is => 'ro', isa => 'Paws::WorkSpaces::SelfservicePermissions');
-  has State => (is => 'ro', isa => 'Str');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Tenancy => (is => 'ro', isa => 'Str');
-  has WorkspaceAccessProperties => (is => 'ro', isa => 'Paws::WorkSpaces::WorkspaceAccessProperties');
-  has WorkspaceCreationProperties => (is => 'ro', isa => 'Paws::WorkSpaces::DefaultWorkspaceCreationProperties');
-  has WorkspaceSecurityGroupId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_DefaultWorkspaceCreationProperties WorkSpaces_WorkspaceAccessProperties WorkSpaces_SelfservicePermissions/;
+  has Alias => (is => 'ro', isa => Str);
+  has CustomerUserName => (is => 'ro', isa => Str);
+  has DirectoryId => (is => 'ro', isa => Str);
+  has DirectoryName => (is => 'ro', isa => Str);
+  has DirectoryType => (is => 'ro', isa => Str);
+  has DnsIpAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has IamRoleId => (is => 'ro', isa => Str);
+  has IpGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RegistrationCode => (is => 'ro', isa => Str);
+  has SelfservicePermissions => (is => 'ro', isa => WorkSpaces_SelfservicePermissions);
+  has State => (is => 'ro', isa => Str);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Tenancy => (is => 'ro', isa => Str);
+  has WorkspaceAccessProperties => (is => 'ro', isa => WorkSpaces_WorkspaceAccessProperties);
+  has WorkspaceCreationProperties => (is => 'ro', isa => WorkSpaces_DefaultWorkspaceCreationProperties);
+  has WorkspaceSecurityGroupId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkspaceSecurityGroupId' => {
+                                               'type' => 'Str'
+                                             },
+               'DnsIpAddresses' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'IamRoleId' => {
+                                'type' => 'Str'
+                              },
+               'IpGroupIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'WorkspaceCreationProperties' => {
+                                                  'type' => 'WorkSpaces_DefaultWorkspaceCreationProperties',
+                                                  'class' => 'Paws::WorkSpaces::DefaultWorkspaceCreationProperties'
+                                                },
+               'DirectoryName' => {
+                                    'type' => 'Str'
+                                  },
+               'RegistrationCode' => {
+                                       'type' => 'Str'
+                                     },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'Alias' => {
+                            'type' => 'Str'
+                          },
+               'Tenancy' => {
+                              'type' => 'Str'
+                            },
+               'WorkspaceAccessProperties' => {
+                                                'class' => 'Paws::WorkSpaces::WorkspaceAccessProperties',
+                                                'type' => 'WorkSpaces_WorkspaceAccessProperties'
+                                              },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'SelfservicePermissions' => {
+                                             'type' => 'WorkSpaces_SelfservicePermissions',
+                                             'class' => 'Paws::WorkSpaces::SelfservicePermissions'
+                                           },
+               'DirectoryType' => {
+                                    'type' => 'Str'
+                                  },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'CustomerUserName' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'IpGroupIds' => 'ipGroupIds'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -101,7 +169,7 @@ enter in their Amazon WorkSpaces client application to connect to the
 directory.
 
 
-=head2 SelfservicePermissions => L<Paws::WorkSpaces::SelfservicePermissions>
+=head2 SelfservicePermissions => WorkSpaces_SelfservicePermissions
 
   The default self-service permissions for WorkSpaces in the directory.
 
@@ -124,13 +192,13 @@ more information, see Bring Your Own Windows Desktop Images
 (https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 
 
-=head2 WorkspaceAccessProperties => L<Paws::WorkSpaces::WorkspaceAccessProperties>
+=head2 WorkspaceAccessProperties => WorkSpaces_WorkspaceAccessProperties
 
   The devices and operating systems that users can use to access
 Workspaces.
 
 
-=head2 WorkspaceCreationProperties => L<Paws::WorkSpaces::DefaultWorkspaceCreationProperties>
+=head2 WorkspaceCreationProperties => WorkSpaces_DefaultWorkspaceCreationProperties
 
   The default creation properties for all WorkSpaces in the directory.
 

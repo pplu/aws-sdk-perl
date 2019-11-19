@@ -1,17 +1,59 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::CreateDirectConnectGatewayAssociationProposal;
-  use Moose;
-  has AddAllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', traits => ['NameInRequest'], request_name => 'addAllowedPrefixesToDirectConnectGateway' );
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' , required => 1);
-  has DirectConnectGatewayOwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayOwnerAccount' , required => 1);
-  has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' , required => 1);
-  has RemoveAllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', traits => ['NameInRequest'], request_name => 'removeAllowedPrefixesToDirectConnectGateway' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_RouteFilterPrefix/;
+  has AddAllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => ArrayRef[DirectConnect_RouteFilterPrefix], predicate => 1);
+  has DirectConnectGatewayId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DirectConnectGatewayOwnerAccount => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GatewayId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RemoveAllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => ArrayRef[DirectConnect_RouteFilterPrefix], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDirectConnectGatewayAssociationProposal');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::CreateDirectConnectGatewayAssociationProposalResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDirectConnectGatewayAssociationProposal');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::CreateDirectConnectGatewayAssociationProposalResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GatewayId' => {
+                                'type' => 'Str'
+                              },
+               'AddAllowedPrefixesToDirectConnectGateway' => {
+                                                               'type' => 'ArrayRef[DirectConnect_RouteFilterPrefix]',
+                                                               'class' => 'Paws::DirectConnect::RouteFilterPrefix'
+                                                             },
+               'DirectConnectGatewayOwnerAccount' => {
+                                                       'type' => 'Str'
+                                                     },
+               'RemoveAllowedPrefixesToDirectConnectGateway' => {
+                                                                  'type' => 'ArrayRef[DirectConnect_RouteFilterPrefix]',
+                                                                  'class' => 'Paws::DirectConnect::RouteFilterPrefix'
+                                                                },
+               'DirectConnectGatewayId' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'DirectConnectGatewayOwnerAccount' => 1,
+                    'GatewayId' => 1,
+                    'DirectConnectGatewayId' => 1
+                  },
+  'NameInRequest' => {
+                       'AddAllowedPrefixesToDirectConnectGateway' => 'addAllowedPrefixesToDirectConnectGateway',
+                       'GatewayId' => 'gatewayId',
+                       'DirectConnectGatewayOwnerAccount' => 'directConnectGatewayOwnerAccount',
+                       'RemoveAllowedPrefixesToDirectConnectGateway' => 'removeAllowedPrefixesToDirectConnectGateway',
+                       'DirectConnectGatewayId' => 'directConnectGatewayId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +105,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 =head1 ATTRIBUTES
 
 
-=head2 AddAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
+=head2 AddAllowedPrefixesToDirectConnectGateway => ArrayRef[DirectConnect_RouteFilterPrefix]
 
 The Amazon VPC prefixes to advertise to the Direct Connect gateway.
 
@@ -87,7 +129,7 @@ The ID of the virtual private gateway or transit gateway.
 
 
 
-=head2 RemoveAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
+=head2 RemoveAllowedPrefixesToDirectConnectGateway => ArrayRef[DirectConnect_RouteFilterPrefix]
 
 The Amazon VPC prefixes to no longer advertise to the Direct Connect
 gateway.

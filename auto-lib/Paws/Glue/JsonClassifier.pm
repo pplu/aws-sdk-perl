@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::Glue::JsonClassifier;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has JsonPath => (is => 'ro', isa => 'Str', required => 1);
-  has LastUpdated => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Glue::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has JsonPath => (is => 'ro', isa => Str, required => 1);
+  has LastUpdated => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LastUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'JsonPath' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'JsonPath' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

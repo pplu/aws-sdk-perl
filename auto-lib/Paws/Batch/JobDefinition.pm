@@ -1,15 +1,82 @@
+# Generated from default/object.tt
 package Paws::Batch::JobDefinition;
-  use Moose;
-  has ContainerProperties => (is => 'ro', isa => 'Paws::Batch::ContainerProperties', request_name => 'containerProperties', traits => ['NameInRequest']);
-  has JobDefinitionArn => (is => 'ro', isa => 'Str', request_name => 'jobDefinitionArn', traits => ['NameInRequest'], required => 1);
-  has JobDefinitionName => (is => 'ro', isa => 'Str', request_name => 'jobDefinitionName', traits => ['NameInRequest'], required => 1);
-  has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodeProperties', request_name => 'nodeProperties', traits => ['NameInRequest']);
-  has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', request_name => 'parameters', traits => ['NameInRequest']);
-  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', request_name => 'retryStrategy', traits => ['NameInRequest']);
-  has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', request_name => 'timeout', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Batch::Types qw/Batch_ParametersMap Batch_JobTimeout Batch_ContainerProperties Batch_RetryStrategy Batch_NodeProperties/;
+  has ContainerProperties => (is => 'ro', isa => Batch_ContainerProperties);
+  has JobDefinitionArn => (is => 'ro', isa => Str, required => 1);
+  has JobDefinitionName => (is => 'ro', isa => Str, required => 1);
+  has NodeProperties => (is => 'ro', isa => Batch_NodeProperties);
+  has Parameters => (is => 'ro', isa => Batch_ParametersMap);
+  has RetryStrategy => (is => 'ro', isa => Batch_RetryStrategy);
+  has Revision => (is => 'ro', isa => Int, required => 1);
+  has Status => (is => 'ro', isa => Str);
+  has Timeout => (is => 'ro', isa => Batch_JobTimeout);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Revision' => {
+                               'type' => 'Int'
+                             },
+               'ContainerProperties' => {
+                                          'class' => 'Paws::Batch::ContainerProperties',
+                                          'type' => 'Batch_ContainerProperties'
+                                        },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'RetryStrategy' => {
+                                    'class' => 'Paws::Batch::RetryStrategy',
+                                    'type' => 'Batch_RetryStrategy'
+                                  },
+               'JobDefinitionName' => {
+                                        'type' => 'Str'
+                                      },
+               'Parameters' => {
+                                 'class' => 'Paws::Batch::ParametersMap',
+                                 'type' => 'Batch_ParametersMap'
+                               },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'NodeProperties' => {
+                                     'type' => 'Batch_NodeProperties',
+                                     'class' => 'Paws::Batch::NodeProperties'
+                                   },
+               'Timeout' => {
+                              'type' => 'Batch_JobTimeout',
+                              'class' => 'Paws::Batch::JobTimeout'
+                            },
+               'JobDefinitionArn' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'JobDefinitionName' => 'jobDefinitionName',
+                       'RetryStrategy' => 'retryStrategy',
+                       'Type' => 'type',
+                       'NodeProperties' => 'nodeProperties',
+                       'Parameters' => 'parameters',
+                       'JobDefinitionArn' => 'jobDefinitionArn',
+                       'Timeout' => 'timeout',
+                       'Revision' => 'revision',
+                       'ContainerProperties' => 'containerProperties',
+                       'Status' => 'status'
+                     },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'JobDefinitionName' => 1,
+                    'Revision' => 1,
+                    'JobDefinitionArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +112,7 @@ An object representing an AWS Batch job definition.
 =head1 ATTRIBUTES
 
 
-=head2 ContainerProperties => L<Paws::Batch::ContainerProperties>
+=head2 ContainerProperties => Batch_ContainerProperties
 
   An object with various properties specific to container-based jobs.
 
@@ -60,12 +127,12 @@ An object representing an AWS Batch job definition.
   The name of the job definition.
 
 
-=head2 NodeProperties => L<Paws::Batch::NodeProperties>
+=head2 NodeProperties => Batch_NodeProperties
 
   An object with various properties specific to multi-node parallel jobs.
 
 
-=head2 Parameters => L<Paws::Batch::ParametersMap>
+=head2 Parameters => Batch_ParametersMap
 
   Default parameters or parameter substitution placeholders that are set
 in the job definition. Parameters are specified as a key-value pair
@@ -76,7 +143,7 @@ information about specifying parameters, see Job Definition Parameters
 in the I<AWS Batch User Guide>.
 
 
-=head2 RetryStrategy => L<Paws::Batch::RetryStrategy>
+=head2 RetryStrategy => Batch_RetryStrategy
 
   The retry strategy to use for failed jobs that are submitted with this
 job definition.
@@ -92,7 +159,7 @@ job definition.
   The status of the job definition.
 
 
-=head2 Timeout => L<Paws::Batch::JobTimeout>
+=head2 Timeout => Batch_JobTimeout
 
   The timeout configuration for jobs that are submitted with this job
 definition. You can specify a timeout duration after which AWS Batch

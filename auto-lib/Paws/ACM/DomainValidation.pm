@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::ACM::DomainValidation;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceRecord => (is => 'ro', isa => 'Paws::ACM::ResourceRecord');
-  has ValidationDomain => (is => 'ro', isa => 'Str');
-  has ValidationEmails => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ValidationMethod => (is => 'ro', isa => 'Str');
-  has ValidationStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ACM::Types qw/ACM_ResourceRecord/;
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has ResourceRecord => (is => 'ro', isa => ACM_ResourceRecord);
+  has ValidationDomain => (is => 'ro', isa => Str);
+  has ValidationEmails => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ValidationMethod => (is => 'ro', isa => Str);
+  has ValidationStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DomainName' => 1
+                  },
+  'types' => {
+               'ResourceRecord' => {
+                                     'type' => 'ACM_ResourceRecord',
+                                     'class' => 'Paws::ACM::ResourceRecord'
+                                   },
+               'ValidationEmails' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ValidationMethod' => {
+                                       'type' => 'Str'
+                                     },
+               'ValidationDomain' => {
+                                       'type' => 'Str'
+                                     },
+               'ValidationStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +84,7 @@ certificate.
 C<www.example.com> or C<example.com>.
 
 
-=head2 ResourceRecord => L<Paws::ACM::ResourceRecord>
+=head2 ResourceRecord => ACM_ResourceRecord
 
   Contains the CNAME record that you add to your DNS database for domain
 validation. For more information, see Use DNS to Validate Domain

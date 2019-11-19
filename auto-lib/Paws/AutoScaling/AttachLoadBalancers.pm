@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::AttachLoadBalancers;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LoadBalancerNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachLoadBalancers');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::AttachLoadBalancersResultType');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AttachLoadBalancersResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AttachLoadBalancers');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::AttachLoadBalancersResultType');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'AttachLoadBalancersResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'LoadBalancerNames' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      }
+             },
+  'IsRequired' => {
+                    'AutoScalingGroupName' => 1,
+                    'LoadBalancerNames' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

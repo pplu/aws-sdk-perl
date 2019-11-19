@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::RDSData::ResultSetOptions;
-  use Moose;
-  has DecimalReturnType => (is => 'ro', isa => 'Str', request_name => 'decimalReturnType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDSData::Types qw//;
+  has DecimalReturnType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DecimalReturnType' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'DecimalReturnType' => 'decimalReturnType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::ChannelResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has HasCredential => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str');
-  has IsArchived => (is => 'ro', isa => 'Bool');
-  has LastModifiedBy => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has HasCredential => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str);
+  has IsArchived => (is => 'ro', isa => Bool);
+  has LastModifiedBy => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'HasCredential' => {
+                                    'type' => 'Bool'
+                                  },
+               'LastModifiedBy' => {
+                                     'type' => 'Str'
+                                   },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'IsArchived' => {
+                                 'type' => 'Bool'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

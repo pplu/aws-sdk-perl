@@ -1,10 +1,51 @@
+# Generated from default/object.tt
 package Paws::Kafka::BrokerNodeGroupInfo;
-  use Moose;
-  has BrokerAZDistribution => (is => 'ro', isa => 'Str', request_name => 'brokerAZDistribution', traits => ['NameInRequest']);
-  has ClientSubnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'clientSubnets', traits => ['NameInRequest'], required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest'], required => 1);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
-  has StorageInfo => (is => 'ro', isa => 'Paws::Kafka::StorageInfo', request_name => 'storageInfo', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Kafka::Types qw/Kafka_StorageInfo/;
+  has BrokerAZDistribution => (is => 'ro', isa => Str);
+  has ClientSubnets => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has StorageInfo => (is => 'ro', isa => Kafka_StorageInfo);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'StorageInfo' => 'storageInfo',
+                       'SecurityGroups' => 'securityGroups',
+                       'ClientSubnets' => 'clientSubnets',
+                       'InstanceType' => 'instanceType',
+                       'BrokerAZDistribution' => 'brokerAZDistribution'
+                     },
+  'IsRequired' => {
+                    'InstanceType' => 1,
+                    'ClientSubnets' => 1
+                  },
+  'types' => {
+               'BrokerAZDistribution' => {
+                                           'type' => 'Str'
+                                         },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'ClientSubnets' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'StorageInfo' => {
+                                  'type' => 'Kafka_StorageInfo',
+                                  'class' => 'Paws::Kafka::StorageInfo'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +117,7 @@ the Amazon MSK cluster. If you don't specify a security group, Amazon
 MSK uses the default security group associated with the VPC.
 
 
-=head2 StorageInfo => L<Paws::Kafka::StorageInfo>
+=head2 StorageInfo => Kafka_StorageInfo
 
   Contains information about storage volumes attached to MSK broker
 nodes.

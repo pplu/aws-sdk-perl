@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::Neptune::ModifyDBSubnetGroupResult;
-  use Moose;
-  has DBSubnetGroup => (is => 'ro', isa => 'Paws::Neptune::DBSubnetGroup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Neptune::Types qw/Neptune_DBSubnetGroup/;
+  has DBSubnetGroup => (is => 'ro', isa => Neptune_DBSubnetGroup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DBSubnetGroup' => {
+                                    'type' => 'Neptune_DBSubnetGroup',
+                                    'class' => 'Paws::Neptune::DBSubnetGroup'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::Neptune::ModifyDBSubnetGroupResult
 =head1 ATTRIBUTES
 
 
-=head2 DBSubnetGroup => L<Paws::Neptune::DBSubnetGroup>
+=head2 DBSubnetGroup => Neptune_DBSubnetGroup
 
 
 

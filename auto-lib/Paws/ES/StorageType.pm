@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::ES::StorageType;
-  use Moose;
-  has StorageSubTypeName => (is => 'ro', isa => 'Str');
-  has StorageTypeLimits => (is => 'ro', isa => 'ArrayRef[Paws::ES::StorageTypeLimit]');
-  has StorageTypeName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ES::Types qw/ES_StorageTypeLimit/;
+  has StorageSubTypeName => (is => 'ro', isa => Str);
+  has StorageTypeLimits => (is => 'ro', isa => ArrayRef[ES_StorageTypeLimit]);
+  has StorageTypeName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StorageTypeName' => {
+                                      'type' => 'Str'
+                                    },
+               'StorageTypeLimits' => {
+                                        'class' => 'Paws::ES::StorageTypeLimit',
+                                        'type' => 'ArrayRef[ES_StorageTypeLimit]'
+                                      },
+               'StorageSubTypeName' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +68,7 @@ attributes that are available for given InstanceType.
   
 
 
-=head2 StorageTypeLimits => ArrayRef[L<Paws::ES::StorageTypeLimit>]
+=head2 StorageTypeLimits => ArrayRef[ES_StorageTypeLimit]
 
   List of limits that are applicable for given storage type.
 

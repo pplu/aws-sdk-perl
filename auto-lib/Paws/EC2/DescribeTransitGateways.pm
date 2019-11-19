@@ -1,17 +1,48 @@
 
 package Paws::EC2::DescribeTransitGateways;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has TransitGatewayIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int Undef/;
+  use Paws::EC2::Types qw/EC2_Filter/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has TransitGatewayIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTransitGateways');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeTransitGatewaysResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTransitGateways');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeTransitGatewaysResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Filters' => 'Filter'
+                     },
+  'types' => {
+               'TransitGatewayIds' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Filters' => {
+                              'class' => 'Paws::EC2::Filter',
+                              'type' => 'ArrayRef[EC2_Filter]'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -35,14 +66,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      MaxResults        => 1,                      # OPTIONAL
-      NextToken         => 'MyString',             # OPTIONAL
-      TransitGatewayIds => [ 'MyString', ... ],    # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults        => 1,             # OPTIONAL
+      NextToken         => 'MyString',    # OPTIONAL
+      TransitGatewayIds => [
+        'MyString', ...                   # OPTIONAL
+      ],                                  # OPTIONAL
     );
 
     # Results:
@@ -66,7 +101,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+=head2 Filters => ArrayRef[EC2_Filter]
 
 One or more filters. The possible values are:
 

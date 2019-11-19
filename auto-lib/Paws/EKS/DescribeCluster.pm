@@ -1,14 +1,35 @@
 
 package Paws::EKS::DescribeCluster;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EKS::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCluster');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clusters/{name}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EKS::DescribeClusterResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeCluster');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clusters/{name}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EKS::DescribeClusterResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'Name' => 'name'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

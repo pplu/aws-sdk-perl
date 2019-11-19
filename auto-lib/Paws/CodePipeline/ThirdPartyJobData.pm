@@ -1,13 +1,68 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ThirdPartyJobData;
-  use Moose;
-  has ActionConfiguration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfiguration', request_name => 'actionConfiguration', traits => ['NameInRequest']);
-  has ActionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', request_name => 'actionTypeId', traits => ['NameInRequest']);
-  has ArtifactCredentials => (is => 'ro', isa => 'Paws::CodePipeline::AWSSessionCredentials', request_name => 'artifactCredentials', traits => ['NameInRequest']);
-  has ContinuationToken => (is => 'ro', isa => 'Str', request_name => 'continuationToken', traits => ['NameInRequest']);
-  has EncryptionKey => (is => 'ro', isa => 'Paws::CodePipeline::EncryptionKey', request_name => 'encryptionKey', traits => ['NameInRequest']);
-  has InputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Artifact]', request_name => 'inputArtifacts', traits => ['NameInRequest']);
-  has OutputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Artifact]', request_name => 'outputArtifacts', traits => ['NameInRequest']);
-  has PipelineContext => (is => 'ro', isa => 'Paws::CodePipeline::PipelineContext', request_name => 'pipelineContext', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_Artifact CodePipeline_ActionConfiguration CodePipeline_ActionTypeId CodePipeline_PipelineContext CodePipeline_AWSSessionCredentials CodePipeline_EncryptionKey/;
+  has ActionConfiguration => (is => 'ro', isa => CodePipeline_ActionConfiguration);
+  has ActionTypeId => (is => 'ro', isa => CodePipeline_ActionTypeId);
+  has ArtifactCredentials => (is => 'ro', isa => CodePipeline_AWSSessionCredentials);
+  has ContinuationToken => (is => 'ro', isa => Str);
+  has EncryptionKey => (is => 'ro', isa => CodePipeline_EncryptionKey);
+  has InputArtifacts => (is => 'ro', isa => ArrayRef[CodePipeline_Artifact]);
+  has OutputArtifacts => (is => 'ro', isa => ArrayRef[CodePipeline_Artifact]);
+  has PipelineContext => (is => 'ro', isa => CodePipeline_PipelineContext);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ArtifactCredentials' => 'artifactCredentials',
+                       'InputArtifacts' => 'inputArtifacts',
+                       'ActionConfiguration' => 'actionConfiguration',
+                       'PipelineContext' => 'pipelineContext',
+                       'EncryptionKey' => 'encryptionKey',
+                       'ActionTypeId' => 'actionTypeId',
+                       'OutputArtifacts' => 'outputArtifacts',
+                       'ContinuationToken' => 'continuationToken'
+                     },
+  'types' => {
+               'ActionTypeId' => {
+                                   'type' => 'CodePipeline_ActionTypeId',
+                                   'class' => 'Paws::CodePipeline::ActionTypeId'
+                                 },
+               'OutputArtifacts' => {
+                                      'class' => 'Paws::CodePipeline::Artifact',
+                                      'type' => 'ArrayRef[CodePipeline_Artifact]'
+                                    },
+               'ContinuationToken' => {
+                                        'type' => 'Str'
+                                      },
+               'ArtifactCredentials' => {
+                                          'type' => 'CodePipeline_AWSSessionCredentials',
+                                          'class' => 'Paws::CodePipeline::AWSSessionCredentials'
+                                        },
+               'InputArtifacts' => {
+                                     'type' => 'ArrayRef[CodePipeline_Artifact]',
+                                     'class' => 'Paws::CodePipeline::Artifact'
+                                   },
+               'ActionConfiguration' => {
+                                          'class' => 'Paws::CodePipeline::ActionConfiguration',
+                                          'type' => 'CodePipeline_ActionConfiguration'
+                                        },
+               'PipelineContext' => {
+                                      'type' => 'CodePipeline_PipelineContext',
+                                      'class' => 'Paws::CodePipeline::PipelineContext'
+                                    },
+               'EncryptionKey' => {
+                                    'class' => 'Paws::CodePipeline::EncryptionKey',
+                                    'type' => 'CodePipeline_EncryptionKey'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,17 +98,17 @@ Represents information about the job data for a partner action.
 =head1 ATTRIBUTES
 
 
-=head2 ActionConfiguration => L<Paws::CodePipeline::ActionConfiguration>
+=head2 ActionConfiguration => CodePipeline_ActionConfiguration
 
   Represents information about an action configuration.
 
 
-=head2 ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
+=head2 ActionTypeId => CodePipeline_ActionTypeId
 
   Represents information about an action type.
 
 
-=head2 ArtifactCredentials => L<Paws::CodePipeline::AWSSessionCredentials>
+=head2 ArtifactCredentials => CodePipeline_AWSSessionCredentials
 
   Represents an AWS session credentials object. These credentials are
 temporary credentials that are issued by AWS Secure Token Service
@@ -68,14 +123,14 @@ CodePipeline.
 a job requires to continue the job asynchronously.
 
 
-=head2 EncryptionKey => L<Paws::CodePipeline::EncryptionKey>
+=head2 EncryptionKey => CodePipeline_EncryptionKey
 
   The encryption key used to encrypt and decrypt data in the artifact
 store for the pipeline, such as an AWS Key Management Service (AWS KMS)
 key. This is optional and might not be present.
 
 
-=head2 InputArtifacts => ArrayRef[L<Paws::CodePipeline::Artifact>]
+=head2 InputArtifacts => ArrayRef[CodePipeline_Artifact]
 
   The name of the artifact that is worked on by the action, if any. This
 name might be system-generated, such as "MyApp", or it might be defined
@@ -84,14 +139,14 @@ match the name of an output artifact generated by an action in an
 earlier action or stage of the pipeline.
 
 
-=head2 OutputArtifacts => ArrayRef[L<Paws::CodePipeline::Artifact>]
+=head2 OutputArtifacts => ArrayRef[CodePipeline_Artifact]
 
   The name of the artifact that is the result of the action, if any. This
 name might be system-generated, such as "MyBuiltApp", or it might be
 defined by the user when the action is created.
 
 
-=head2 PipelineContext => L<Paws::CodePipeline::PipelineContext>
+=head2 PipelineContext => CodePipeline_PipelineContext
 
   Represents information about a pipeline to a job worker.
 

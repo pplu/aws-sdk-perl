@@ -1,15 +1,40 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::ListStackSetOperations;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StackSetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudFormation::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StackSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListStackSetOperations');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::ListStackSetOperationsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListStackSetOperationsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListStackSetOperations');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::ListStackSetOperationsOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListStackSetOperationsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StackSetName' => 1
+                  },
+  'types' => {
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

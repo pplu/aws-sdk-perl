@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::Ebs;
-  use Moose;
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool');
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has Iops => (is => 'ro', isa => 'Int');
-  has SnapshotId => (is => 'ro', isa => 'Str');
-  has VolumeSize => (is => 'ro', isa => 'Int');
-  has VolumeType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Int Str/;
+  use Paws::AutoScaling::Types qw//;
+  has DeleteOnTermination => (is => 'ro', isa => Bool);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has Iops => (is => 'ro', isa => Int);
+  has SnapshotId => (is => 'ro', isa => Str);
+  has VolumeSize => (is => 'ro', isa => Int);
+  has VolumeType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeSize' => {
+                                 'type' => 'Int'
+                               },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'DeleteOnTermination' => {
+                                          'type' => 'Bool'
+                                        },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

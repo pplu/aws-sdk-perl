@@ -1,17 +1,51 @@
 
 package Paws::GuardDuty::CreateDetector;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has Enable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enable', required => 1);
-  has FindingPublishingFrequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'findingPublishingFrequency');
-  has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::GuardDuty::Types qw/GuardDuty_TagMap/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Enable => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has FindingPublishingFrequency => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => GuardDuty_TagMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDetector');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::CreateDetectorResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDetector');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::CreateDetectorResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'GuardDuty_TagMap',
+                           'class' => 'Paws::GuardDuty::TagMap'
+                         },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'Enable' => {
+                             'type' => 'Bool'
+                           },
+               'FindingPublishingFrequency' => {
+                                                 'type' => 'Str'
+                                               }
+             },
+  'IsRequired' => {
+                    'Enable' => 1
+                  },
+  'NameInRequest' => {
+                       'Enable' => 'enable',
+                       'ClientToken' => 'clientToken',
+                       'FindingPublishingFrequency' => 'findingPublishingFrequency',
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +104,7 @@ published.
 
 Valid values are: C<"FIFTEEN_MINUTES">, C<"ONE_HOUR">, C<"SIX_HOURS">
 
-=head2 Tags => L<Paws::GuardDuty::TagMap>
+=head2 Tags => GuardDuty_TagMap
 
 The tags to be added to a new detector resource.
 

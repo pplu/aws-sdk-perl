@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glue::BatchStopJobRunSuccessfulSubmission;
-  use Moose;
-  has JobName => (is => 'ro', isa => 'Str');
-  has JobRunId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has JobName => (is => 'ro', isa => Str);
+  has JobRunId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobRunId' => {
+                               'type' => 'Str'
+                             },
+               'JobName' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Rekognition::BoundingBox;
-  use Moose;
-  has Height => (is => 'ro', isa => 'Num');
-  has Left => (is => 'ro', isa => 'Num');
-  has Top => (is => 'ro', isa => 'Num');
-  has Width => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Rekognition::Types qw//;
+  has Height => (is => 'ro', isa => Num);
+  has Left => (is => 'ro', isa => Num);
+  has Top => (is => 'ro', isa => Num);
+  has Width => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Left' => {
+                           'type' => 'Num'
+                         },
+               'Width' => {
+                            'type' => 'Num'
+                          },
+               'Top' => {
+                          'type' => 'Num'
+                        },
+               'Height' => {
+                             'type' => 'Num'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,28 @@
 package Paws::EC2::KeyPairInfo;
-  use Moose;
-  has KeyFingerprint => (is => 'ro', isa => 'Str', request_name => 'keyFingerprint', traits => ['NameInRequest']);
-  has KeyName => (is => 'ro', isa => 'Str', request_name => 'keyName', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has KeyFingerprint => (is => 'ro', isa => Str);
+  has KeyName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyName' => {
+                              'type' => 'Str'
+                            },
+               'KeyFingerprint' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'KeyName' => 'keyName',
+                       'KeyFingerprint' => 'keyFingerprint'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

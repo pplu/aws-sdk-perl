@@ -1,17 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalytics::DiscoverInputSchema;
-  use Moose;
-  has InputProcessingConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputProcessingConfiguration');
-  has InputStartingPositionConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputStartingPositionConfiguration');
-  has ResourceARN => (is => 'ro', isa => 'Str');
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has S3Configuration => (is => 'ro', isa => 'Paws::KinesisAnalytics::S3Configuration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_InputProcessingConfiguration KinesisAnalytics_S3Configuration KinesisAnalytics_InputStartingPositionConfiguration/;
+  has InputProcessingConfiguration => (is => 'ro', isa => KinesisAnalytics_InputProcessingConfiguration, predicate => 1);
+  has InputStartingPositionConfiguration => (is => 'ro', isa => KinesisAnalytics_InputStartingPositionConfiguration, predicate => 1);
+  has ResourceARN => (is => 'ro', isa => Str, predicate => 1);
+  has RoleARN => (is => 'ro', isa => Str, predicate => 1);
+  has S3Configuration => (is => 'ro', isa => KinesisAnalytics_S3Configuration, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DiscoverInputSchema');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalytics::DiscoverInputSchemaResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DiscoverInputSchema');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalytics::DiscoverInputSchemaResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'InputStartingPositionConfiguration' => {
+                                                         'class' => 'Paws::KinesisAnalytics::InputStartingPositionConfiguration',
+                                                         'type' => 'KinesisAnalytics_InputStartingPositionConfiguration'
+                                                       },
+               'S3Configuration' => {
+                                      'type' => 'KinesisAnalytics_S3Configuration',
+                                      'class' => 'Paws::KinesisAnalytics::S3Configuration'
+                                    },
+               'InputProcessingConfiguration' => {
+                                                   'class' => 'Paws::KinesisAnalytics::InputProcessingConfiguration',
+                                                   'type' => 'KinesisAnalytics_InputProcessingConfiguration'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +100,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 =head1 ATTRIBUTES
 
 
-=head2 InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>
+=head2 InputProcessingConfiguration => KinesisAnalytics_InputProcessingConfiguration
 
 The InputProcessingConfiguration
 (https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html)
@@ -78,7 +109,7 @@ records.
 
 
 
-=head2 InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>
+=head2 InputStartingPositionConfiguration => KinesisAnalytics_InputStartingPositionConfiguration
 
 Point at which you want Amazon Kinesis Analytics to start reading
 records from the specified streaming source discovery purposes.
@@ -98,7 +129,7 @@ the stream on your behalf.
 
 
 
-=head2 S3Configuration => L<Paws::KinesisAnalytics::S3Configuration>
+=head2 S3Configuration => KinesisAnalytics_S3Configuration
 
 Specify this parameter to discover a schema from data in an Amazon S3
 object.

@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::RDS::Parameter;
-  use Moose;
-  has AllowedValues => (is => 'ro', isa => 'Str');
-  has ApplyMethod => (is => 'ro', isa => 'Str');
-  has ApplyType => (is => 'ro', isa => 'Str');
-  has DataType => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has IsModifiable => (is => 'ro', isa => 'Bool');
-  has MinimumEngineVersion => (is => 'ro', isa => 'Str');
-  has ParameterName => (is => 'ro', isa => 'Str');
-  has ParameterValue => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str');
-  has SupportedEngineModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::RDS::Types qw//;
+  has AllowedValues => (is => 'ro', isa => Str);
+  has ApplyMethod => (is => 'ro', isa => Str);
+  has ApplyType => (is => 'ro', isa => Str);
+  has DataType => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IsModifiable => (is => 'ro', isa => Bool);
+  has MinimumEngineVersion => (is => 'ro', isa => Str);
+  has ParameterName => (is => 'ro', isa => Str);
+  has ParameterValue => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str);
+  has SupportedEngineModes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterValue' => {
+                                     'type' => 'Str'
+                                   },
+               'ApplyType' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DataType' => {
+                               'type' => 'Str'
+                             },
+               'IsModifiable' => {
+                                   'type' => 'Bool'
+                                 },
+               'ParameterName' => {
+                                    'type' => 'Str'
+                                  },
+               'ApplyMethod' => {
+                                  'type' => 'Str'
+                                },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'AllowedValues' => {
+                                    'type' => 'Str'
+                                  },
+               'MinimumEngineVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'SupportedEngineModes' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

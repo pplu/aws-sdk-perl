@@ -1,15 +1,40 @@
 
 package Paws::EC2::DisableTransitGatewayRouteTablePropagation;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has TransitGatewayAttachmentId => (is => 'ro', isa => 'Str', required => 1);
-  has TransitGatewayRouteTableId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has TransitGatewayAttachmentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TransitGatewayRouteTableId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableTransitGatewayRouteTablePropagation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DisableTransitGatewayRouteTablePropagationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisableTransitGatewayRouteTablePropagation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DisableTransitGatewayRouteTablePropagationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TransitGatewayRouteTableId' => 1,
+                    'TransitGatewayAttachmentId' => 1
+                  },
+  'types' => {
+               'TransitGatewayRouteTableId' => {
+                                                 'type' => 'Str'
+                                               },
+               'TransitGatewayAttachmentId' => {
+                                                 'type' => 'Str'
+                                               },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,27 @@
 
 package Paws::Backup::GetBackupPlanFromTemplateOutput;
-  use Moose;
-  has BackupPlanDocument => (is => 'ro', isa => 'Paws::Backup::BackupPlan');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw/Backup_BackupPlan/;
+  has BackupPlanDocument => (is => 'ro', isa => Backup_BackupPlan);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BackupPlanDocument' => {
+                                         'type' => 'Backup_BackupPlan',
+                                         'class' => 'Paws::Backup::BackupPlan'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::Backup::GetBackupPlanFromTemplateOutput
 =head1 ATTRIBUTES
 
 
-=head2 BackupPlanDocument => L<Paws::Backup::BackupPlan>
+=head2 BackupPlanDocument => Backup_BackupPlan
 
 Returns the body of a backup plan based on the target template,
 including the name, rules, and backup vault of the plan.

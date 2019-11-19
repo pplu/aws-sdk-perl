@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::IoT::PublishFindingToSnsParams;
-  use Moose;
-  has TopicArn => (is => 'ro', isa => 'Str', request_name => 'topicArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has TopicArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TopicArn' => 1
+                  },
+  'NameInRequest' => {
+                       'TopicArn' => 'topicArn'
+                     },
+  'types' => {
+               'TopicArn' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

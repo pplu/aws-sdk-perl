@@ -1,11 +1,39 @@
 
 package Paws::IoT::GetV2LoggingOptionsResponse;
-  use Moose;
-  has DefaultLogLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultLogLevel');
-  has DisableAllLogs => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableAllLogs');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has DefaultLogLevel => (is => 'ro', isa => Str);
+  has DisableAllLogs => (is => 'ro', isa => Bool);
+  has RoleArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'DefaultLogLevel' => 'defaultLogLevel',
+                       'DisableAllLogs' => 'disableAllLogs'
+                     },
+  'types' => {
+               'DisableAllLogs' => {
+                                     'type' => 'Bool'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'DefaultLogLevel' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

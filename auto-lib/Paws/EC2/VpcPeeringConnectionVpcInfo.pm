@@ -1,12 +1,56 @@
 package Paws::EC2::VpcPeeringConnectionVpcInfo;
-  use Moose;
-  has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
-  has CidrBlockSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CidrBlock]', request_name => 'cidrBlockSet', traits => ['NameInRequest']);
-  has Ipv6CidrBlockSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Ipv6CidrBlock]', request_name => 'ipv6CidrBlockSet', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has PeeringOptions => (is => 'ro', isa => 'Paws::EC2::VpcPeeringConnectionOptionsDescription', request_name => 'peeringOptions', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_CidrBlock EC2_VpcPeeringConnectionOptionsDescription EC2_Ipv6CidrBlock/;
+  has CidrBlock => (is => 'ro', isa => Str);
+  has CidrBlockSet => (is => 'ro', isa => ArrayRef[EC2_CidrBlock]);
+  has Ipv6CidrBlockSet => (is => 'ro', isa => ArrayRef[EC2_Ipv6CidrBlock]);
+  has OwnerId => (is => 'ro', isa => Str);
+  has PeeringOptions => (is => 'ro', isa => EC2_VpcPeeringConnectionOptionsDescription);
+  has Region => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PeeringOptions' => {
+                                     'type' => 'EC2_VpcPeeringConnectionOptionsDescription',
+                                     'class' => 'Paws::EC2::VpcPeeringConnectionOptionsDescription'
+                                   },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'CidrBlock' => {
+                                'type' => 'Str'
+                              },
+               'CidrBlockSet' => {
+                                   'class' => 'Paws::EC2::CidrBlock',
+                                   'type' => 'ArrayRef[EC2_CidrBlock]'
+                                 },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'Ipv6CidrBlockSet' => {
+                                       'type' => 'ArrayRef[EC2_Ipv6CidrBlock]',
+                                       'class' => 'Paws::EC2::Ipv6CidrBlock'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Region' => 'region',
+                       'Ipv6CidrBlockSet' => 'ipv6CidrBlockSet',
+                       'CidrBlock' => 'cidrBlock',
+                       'OwnerId' => 'ownerId',
+                       'PeeringOptions' => 'peeringOptions',
+                       'VpcId' => 'vpcId',
+                       'CidrBlockSet' => 'cidrBlockSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,12 +91,12 @@ This class has no description
   The IPv4 CIDR block for the VPC.
 
 
-=head2 CidrBlockSet => ArrayRef[L<Paws::EC2::CidrBlock>]
+=head2 CidrBlockSet => ArrayRef[EC2_CidrBlock]
 
   Information about the IPv4 CIDR blocks for the VPC.
 
 
-=head2 Ipv6CidrBlockSet => ArrayRef[L<Paws::EC2::Ipv6CidrBlock>]
+=head2 Ipv6CidrBlockSet => ArrayRef[EC2_Ipv6CidrBlock]
 
   The IPv6 CIDR block for the VPC.
 
@@ -62,7 +106,7 @@ This class has no description
   The AWS account ID of the VPC owner.
 
 
-=head2 PeeringOptions => L<Paws::EC2::VpcPeeringConnectionOptionsDescription>
+=head2 PeeringOptions => EC2_VpcPeeringConnectionOptionsDescription
 
   Information about the VPC peering connection options for the accepter
 or requester VPC.

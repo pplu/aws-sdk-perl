@@ -1,12 +1,53 @@
+# Generated from default/object.tt
 package Paws::RDS::DBSecurityGroup;
-  use Moose;
-  has DBSecurityGroupArn => (is => 'ro', isa => 'Str');
-  has DBSecurityGroupDescription => (is => 'ro', isa => 'Str');
-  has DBSecurityGroupName => (is => 'ro', isa => 'Str');
-  has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::EC2SecurityGroup]', request_name => 'EC2SecurityGroup', traits => ['NameInRequest']);
-  has IPRanges => (is => 'ro', isa => 'ArrayRef[Paws::RDS::IPRange]', request_name => 'IPRange', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_IPRange RDS_EC2SecurityGroup/;
+  has DBSecurityGroupArn => (is => 'ro', isa => Str);
+  has DBSecurityGroupDescription => (is => 'ro', isa => Str);
+  has DBSecurityGroupName => (is => 'ro', isa => Str);
+  has EC2SecurityGroups => (is => 'ro', isa => ArrayRef[RDS_EC2SecurityGroup]);
+  has IPRanges => (is => 'ro', isa => ArrayRef[RDS_IPRange]);
+  has OwnerId => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EC2SecurityGroups' => 'EC2SecurityGroup',
+                       'IPRanges' => 'IPRange'
+                     },
+  'types' => {
+               'EC2SecurityGroups' => {
+                                        'class' => 'Paws::RDS::EC2SecurityGroup',
+                                        'type' => 'ArrayRef[RDS_EC2SecurityGroup]'
+                                      },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'IPRanges' => {
+                               'class' => 'Paws::RDS::IPRange',
+                               'type' => 'ArrayRef[RDS_IPRange]'
+                             },
+               'DBSecurityGroupArn' => {
+                                         'type' => 'Str'
+                                       },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'DBSecurityGroupName' => {
+                                          'type' => 'Str'
+                                        },
+               'DBSecurityGroupDescription' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,12 +101,12 @@ C<DescribeDBSecurityGroups> action.
   Specifies the name of the DB security group.
 
 
-=head2 EC2SecurityGroups => ArrayRef[L<Paws::RDS::EC2SecurityGroup>]
+=head2 EC2SecurityGroups => ArrayRef[RDS_EC2SecurityGroup]
 
   Contains a list of C<EC2SecurityGroup> elements.
 
 
-=head2 IPRanges => ArrayRef[L<Paws::RDS::IPRange>]
+=head2 IPRanges => ArrayRef[RDS_IPRange]
 
   Contains a list of C<IPRange> elements.
 

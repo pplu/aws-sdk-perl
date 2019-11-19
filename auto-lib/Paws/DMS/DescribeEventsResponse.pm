@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::DescribeEventsResponse;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Event]');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_Event/;
+  has Events => (is => 'ro', isa => ArrayRef[DMS_Event]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Events' => {
+                             'type' => 'ArrayRef[DMS_Event]',
+                             'class' => 'Paws::DMS::Event'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::DMS::DescribeEventsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[L<Paws::DMS::Event>]
+=head2 Events => ArrayRef[DMS_Event]
 
 The events described.
 

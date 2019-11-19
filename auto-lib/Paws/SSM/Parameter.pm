@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::SSM::Parameter;
-  use Moose;
-  has ARN => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Selector => (is => 'ro', isa => 'Str');
-  has SourceResult => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSM::Types qw//;
+  has ARN => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Selector => (is => 'ro', isa => Str);
+  has SourceResult => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Selector' => {
+                               'type' => 'Str'
+                             },
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'SourceResult' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

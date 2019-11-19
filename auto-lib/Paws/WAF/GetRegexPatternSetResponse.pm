@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::GetRegexPatternSetResponse;
-  use Moose;
-  has RegexPatternSet => (is => 'ro', isa => 'Paws::WAF::RegexPatternSet');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_RegexPatternSet/;
+  has RegexPatternSet => (is => 'ro', isa => WAF_RegexPatternSet);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegexPatternSet' => {
+                                      'type' => 'WAF_RegexPatternSet',
+                                      'class' => 'Paws::WAF::RegexPatternSet'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::WAF::GetRegexPatternSetResponse
 =head1 ATTRIBUTES
 
 
-=head2 RegexPatternSet => L<Paws::WAF::RegexPatternSet>
+=head2 RegexPatternSet => WAF_RegexPatternSet
 
 Information about the RegexPatternSet that you specified in the
 C<GetRegexPatternSet> request, including the identifier of the pattern

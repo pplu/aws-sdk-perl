@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ActivityTaskCanceledEventAttributes;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
-  has LatestCancelRequestedEventId => (is => 'ro', isa => 'Int', request_name => 'latestCancelRequestedEventId', traits => ['NameInRequest']);
-  has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest'], required => 1);
-  has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Details => (is => 'ro', isa => Str);
+  has LatestCancelRequestedEventId => (is => 'ro', isa => Int);
+  has ScheduledEventId => (is => 'ro', isa => Int, required => 1);
+  has StartedEventId => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ScheduledEventId' => 1,
+                    'StartedEventId' => 1
+                  },
+  'NameInRequest' => {
+                       'ScheduledEventId' => 'scheduledEventId',
+                       'Details' => 'details',
+                       'StartedEventId' => 'startedEventId',
+                       'LatestCancelRequestedEventId' => 'latestCancelRequestedEventId'
+                     },
+  'types' => {
+               'LatestCancelRequestedEventId' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Details' => {
+                              'type' => 'Str'
+                            },
+               'StartedEventId' => {
+                                     'type' => 'Int'
+                                   },
+               'ScheduledEventId' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

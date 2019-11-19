@@ -1,14 +1,15 @@
 package Paws::AppMesh;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'appmesh' }
   sub signing_name { 'appmesh' }
   sub version { '2019-01-25' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -355,9 +356,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 
 =item [ClientToken => Str]
 
-=item [Spec => L<Paws::AppMesh::MeshSpec>]
+=item [Spec => AppMesh_MeshSpec]
 
-=item [Tags => ArrayRef[L<Paws::AppMesh::TagRef>]]
+=item [Tags => ArrayRef[AppMesh_TagRef]]
 
 
 =back
@@ -382,13 +383,13 @@ between the applications in your mesh.
 
 =item RouteName => Str
 
-=item Spec => L<Paws::AppMesh::RouteSpec>
+=item Spec => AppMesh_RouteSpec
 
 =item VirtualRouterName => Str
 
 =item [ClientToken => Str]
 
-=item [Tags => ArrayRef[L<Paws::AppMesh::TagRef>]]
+=item [Tags => ArrayRef[AppMesh_TagRef]]
 
 
 =back
@@ -414,13 +415,13 @@ more target virtual nodes with relative weighting.
 
 =item MeshName => Str
 
-=item Spec => L<Paws::AppMesh::VirtualNodeSpec>
+=item Spec => AppMesh_VirtualNodeSpec
 
 =item VirtualNodeName => Str
 
 =item [ClientToken => Str]
 
-=item [Tags => ArrayRef[L<Paws::AppMesh::TagRef>]]
+=item [Tags => ArrayRef[AppMesh_TagRef]]
 
 
 =back
@@ -460,13 +461,13 @@ environment variable.
 
 =item MeshName => Str
 
-=item Spec => L<Paws::AppMesh::VirtualRouterSpec>
+=item Spec => AppMesh_VirtualRouterSpec
 
 =item VirtualRouterName => Str
 
 =item [ClientToken => Str]
 
-=item [Tags => ArrayRef[L<Paws::AppMesh::TagRef>]]
+=item [Tags => ArrayRef[AppMesh_TagRef]]
 
 
 =back
@@ -492,13 +493,13 @@ different virtual nodes.
 
 =item MeshName => Str
 
-=item Spec => L<Paws::AppMesh::VirtualServiceSpec>
+=item Spec => AppMesh_VirtualServiceSpec
 
 =item VirtualServiceName => Str
 
 =item [ClientToken => Str]
 
-=item [Tags => ArrayRef[L<Paws::AppMesh::TagRef>]]
+=item [Tags => ArrayRef[AppMesh_TagRef]]
 
 
 =back
@@ -833,7 +834,7 @@ Returns a list of existing virtual services in a service mesh.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::AppMesh::TagRef>]
+=item Tags => ArrayRef[AppMesh_TagRef]
 
 
 =back
@@ -874,7 +875,7 @@ Deletes specified tags from a resource.
 
 =item [ClientToken => Str]
 
-=item [Spec => L<Paws::AppMesh::MeshSpec>]
+=item [Spec => AppMesh_MeshSpec]
 
 
 =back
@@ -894,7 +895,7 @@ Updates an existing service mesh.
 
 =item RouteName => Str
 
-=item Spec => L<Paws::AppMesh::RouteSpec>
+=item Spec => AppMesh_RouteSpec
 
 =item VirtualRouterName => Str
 
@@ -917,7 +918,7 @@ router.
 
 =item MeshName => Str
 
-=item Spec => L<Paws::AppMesh::VirtualNodeSpec>
+=item Spec => AppMesh_VirtualNodeSpec
 
 =item VirtualNodeName => Str
 
@@ -939,7 +940,7 @@ Updates an existing virtual node in a specified service mesh.
 
 =item MeshName => Str
 
-=item Spec => L<Paws::AppMesh::VirtualRouterSpec>
+=item Spec => AppMesh_VirtualRouterSpec
 
 =item VirtualRouterName => Str
 
@@ -961,7 +962,7 @@ Updates an existing virtual router in a specified service mesh.
 
 =item MeshName => Str
 
-=item Spec => L<Paws::AppMesh::VirtualServiceSpec>
+=item Spec => AppMesh_VirtualServiceSpec
 
 =item VirtualServiceName => Str
 

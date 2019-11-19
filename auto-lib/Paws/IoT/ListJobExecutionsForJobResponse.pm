@@ -1,10 +1,35 @@
 
 package Paws::IoT::ListJobExecutionsForJobResponse;
-  use Moose;
-  has ExecutionSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoT::JobExecutionSummaryForJob]', traits => ['NameInRequest'], request_name => 'executionSummaries');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_JobExecutionSummaryForJob/;
+  has ExecutionSummaries => (is => 'ro', isa => ArrayRef[IoT_JobExecutionSummaryForJob]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'ExecutionSummaries' => 'executionSummaries'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ExecutionSummaries' => {
+                                         'class' => 'Paws::IoT::JobExecutionSummaryForJob',
+                                         'type' => 'ArrayRef[IoT_JobExecutionSummaryForJob]'
+                                       },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::IoT::ListJobExecutionsForJobResponse
 =head1 ATTRIBUTES
 
 
-=head2 ExecutionSummaries => ArrayRef[L<Paws::IoT::JobExecutionSummaryForJob>]
+=head2 ExecutionSummaries => ArrayRef[IoT_JobExecutionSummaryForJob]
 
 A list of job execution summaries.
 

@@ -1,12 +1,41 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::AdminInitiateAuthResponse;
-  use Moose;
-  has AuthenticationResult => (is => 'ro', isa => 'Paws::CognitoIdp::AuthenticationResultType');
-  has ChallengeName => (is => 'ro', isa => 'Str');
-  has ChallengeParameters => (is => 'ro', isa => 'Paws::CognitoIdp::ChallengeParametersType');
-  has Session => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AuthenticationResultType CognitoIdp_ChallengeParametersType/;
+  has AuthenticationResult => (is => 'ro', isa => CognitoIdp_AuthenticationResultType);
+  has ChallengeName => (is => 'ro', isa => Str);
+  has ChallengeParameters => (is => 'ro', isa => CognitoIdp_ChallengeParametersType);
+  has Session => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Session' => {
+                              'type' => 'Str'
+                            },
+               'ChallengeParameters' => {
+                                          'class' => 'Paws::CognitoIdp::ChallengeParametersType',
+                                          'type' => 'CognitoIdp_ChallengeParametersType'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AuthenticationResult' => {
+                                           'type' => 'CognitoIdp_AuthenticationResultType',
+                                           'class' => 'Paws::CognitoIdp::AuthenticationResultType'
+                                         },
+               'ChallengeName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -17,7 +46,7 @@ Paws::CognitoIdp::AdminInitiateAuthResponse
 =head1 ATTRIBUTES
 
 
-=head2 AuthenticationResult => L<Paws::CognitoIdp::AuthenticationResultType>
+=head2 AuthenticationResult => CognitoIdp_AuthenticationResultType
 
 The result of the authentication response. This is only returned if the
 caller does not need to pass another challenge. If the caller does need
@@ -89,7 +118,7 @@ with C<NEW_PASSWORD> and any other required attributes.
 
 
 Valid values are: C<"SMS_MFA">, C<"SOFTWARE_TOKEN_MFA">, C<"SELECT_MFA_TYPE">, C<"MFA_SETUP">, C<"PASSWORD_VERIFIER">, C<"CUSTOM_CHALLENGE">, C<"DEVICE_SRP_AUTH">, C<"DEVICE_PASSWORD_VERIFIER">, C<"ADMIN_NO_SRP_AUTH">, C<"NEW_PASSWORD_REQUIRED">
-=head2 ChallengeParameters => L<Paws::CognitoIdp::ChallengeParametersType>
+=head2 ChallengeParameters => CognitoIdp_ChallengeParametersType
 
 The challenge parameters. These are returned to you in the
 C<AdminInitiateAuth> response if you need to pass another challenge.

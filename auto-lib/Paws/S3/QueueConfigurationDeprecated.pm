@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::S3::QueueConfigurationDeprecated;
-  use Moose;
-  has Event => (is => 'ro', isa => 'Str');
-  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Event', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str');
-  has Queue => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::S3::Types qw//;
+  has Event => (is => 'ro', isa => Str);
+  has Events => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Id => (is => 'ro', isa => Str);
+  has Queue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Events' => 'Event'
+                     },
+  'types' => {
+               'Events' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Event' => {
+                            'type' => 'Str'
+                          },
+               'Queue' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

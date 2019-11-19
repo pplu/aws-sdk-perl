@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::ElastiCache::CreateCacheParameterGroupResult;
-  use Moose;
-  has CacheParameterGroup => (is => 'ro', isa => 'Paws::ElastiCache::CacheParameterGroup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw/ElastiCache_CacheParameterGroup/;
+  has CacheParameterGroup => (is => 'ro', isa => ElastiCache_CacheParameterGroup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CacheParameterGroup' => {
+                                          'class' => 'Paws::ElastiCache::CacheParameterGroup',
+                                          'type' => 'ElastiCache_CacheParameterGroup'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::ElastiCache::CreateCacheParameterGroupResult
 =head1 ATTRIBUTES
 
 
-=head2 CacheParameterGroup => L<Paws::ElastiCache::CacheParameterGroup>
+=head2 CacheParameterGroup => ElastiCache_CacheParameterGroup
 
 
 

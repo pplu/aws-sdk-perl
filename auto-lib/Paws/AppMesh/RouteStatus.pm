@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::AppMesh::RouteStatus;
-  use Moose;
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw//;
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Status' => 1
+                  },
+  'NameInRequest' => {
+                       'Status' => 'status'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

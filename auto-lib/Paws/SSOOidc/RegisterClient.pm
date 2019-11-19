@@ -1,16 +1,46 @@
 
 package Paws::SSOOidc::RegisterClient;
-  use Moose;
-  has ClientName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientName', required => 1);
-  has ClientType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientType', required => 1);
-  has Scopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'scopes');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SSOOidc::Types qw//;
+  has ClientName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Scopes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterClient');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/client/register');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSOOidc::RegisterClientResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterClient');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/client/register');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSOOidc::RegisterClientResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Scopes' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'ClientType' => {
+                                 'type' => 'Str'
+                               },
+               'ClientName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'ClientType' => 'clientType',
+                       'ClientName' => 'clientName',
+                       'Scopes' => 'scopes'
+                     },
+  'IsRequired' => {
+                    'ClientName' => 1,
+                    'ClientType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

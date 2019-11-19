@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::AutoScalingPlans::CustomizedLoadMetricSpecification;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::AutoScalingPlans::MetricDimension]');
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', required => 1);
-  has Statistic => (is => 'ro', isa => 'Str', required => 1);
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::AutoScalingPlans::Types qw/AutoScalingPlans_MetricDimension/;
+  has Dimensions => (is => 'ro', isa => ArrayRef[AutoScalingPlans_MetricDimension]);
+  has MetricName => (is => 'ro', isa => Str, required => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1);
+  has Statistic => (is => 'ro', isa => Str, required => 1);
+  has Unit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Namespace' => 1,
+                    'MetricName' => 1,
+                    'Statistic' => 1
+                  },
+  'types' => {
+               'Statistic' => {
+                                'type' => 'Str'
+                              },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'Dimensions' => {
+                                 'type' => 'ArrayRef[AutoScalingPlans_MetricDimension]',
+                                 'class' => 'Paws::AutoScalingPlans::MetricDimension'
+                               },
+               'Unit' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +98,7 @@ in the I<Amazon CloudWatch User Guide>.
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => ArrayRef[L<Paws::AutoScalingPlans::MetricDimension>]
+=head2 Dimensions => ArrayRef[AutoScalingPlans_MetricDimension]
 
   The dimensions of the metric.
 

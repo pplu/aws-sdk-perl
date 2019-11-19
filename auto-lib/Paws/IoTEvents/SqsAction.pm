@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::SqsAction;
-  use Moose;
-  has QueueUrl => (is => 'ro', isa => 'Str', request_name => 'queueUrl', traits => ['NameInRequest'], required => 1);
-  has UseBase64 => (is => 'ro', isa => 'Bool', request_name => 'useBase64', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoTEvents::Types qw//;
+  has QueueUrl => (is => 'ro', isa => Str, required => 1);
+  has UseBase64 => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'UseBase64' => 'useBase64',
+                       'QueueUrl' => 'queueUrl'
+                     },
+  'IsRequired' => {
+                    'QueueUrl' => 1
+                  },
+  'types' => {
+               'QueueUrl' => {
+                               'type' => 'Str'
+                             },
+               'UseBase64' => {
+                                'type' => 'Bool'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

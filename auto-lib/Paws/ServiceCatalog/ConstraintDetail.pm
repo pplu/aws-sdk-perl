@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ConstraintDetail;
-  use Moose;
-  has ConstraintId => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Owner => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has ConstraintId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Owner => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'ConstraintId' => {
+                                   'type' => 'Str'
+                                 },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

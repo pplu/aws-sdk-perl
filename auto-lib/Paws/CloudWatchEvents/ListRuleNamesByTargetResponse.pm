@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchEvents::ListRuleNamesByTargetResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has RuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::CloudWatchEvents::Types qw//;
+  has NextToken => (is => 'ro', isa => Str);
+  has RuleNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RuleNames' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,10 +1,35 @@
 
 package Paws::MediaConnect::UpdateFlowSourceResponse;
-  use Moose;
-  has FlowArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'flowArn');
-  has Source => (is => 'ro', isa => 'Paws::MediaConnect::Source', traits => ['NameInRequest'], request_name => 'source');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConnect::Types qw/MediaConnect_Source/;
+  has FlowArn => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => MediaConnect_Source);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Source' => {
+                             'type' => 'MediaConnect_Source',
+                             'class' => 'Paws::MediaConnect::Source'
+                           },
+               'FlowArn' => {
+                              'type' => 'Str'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'FlowArn' => 'flowArn',
+                       'Source' => 'source'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +46,7 @@ Paws::MediaConnect::UpdateFlowSourceResponse
 The ARN of the flow that you want to update.
 
 
-=head2 Source => L<Paws::MediaConnect::Source>
+=head2 Source => MediaConnect_Source
 
 The settings for the source of the flow.
 

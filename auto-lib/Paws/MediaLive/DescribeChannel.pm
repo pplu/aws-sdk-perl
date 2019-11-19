@@ -1,14 +1,35 @@
 
 package Paws::MediaLive::DescribeChannel;
-  use Moose;
-  has ChannelId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'channelId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has ChannelId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/channels/{channelId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::DescribeChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/channels/{channelId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::DescribeChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChannelId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'ChannelId' => 1
+                  },
+  'ParamInURI' => {
+                    'ChannelId' => 'channelId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

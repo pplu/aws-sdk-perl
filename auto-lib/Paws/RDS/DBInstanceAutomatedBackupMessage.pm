@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DBInstanceAutomatedBackupMessage;
-  use Moose;
-  has DBInstanceAutomatedBackups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBInstanceAutomatedBackup]', request_name => 'DBInstanceAutomatedBackup', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_DBInstanceAutomatedBackup/;
+  has DBInstanceAutomatedBackups => (is => 'ro', isa => ArrayRef[RDS_DBInstanceAutomatedBackup]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DBInstanceAutomatedBackups' => {
+                                                 'type' => 'ArrayRef[RDS_DBInstanceAutomatedBackup]',
+                                                 'class' => 'Paws::RDS::DBInstanceAutomatedBackup'
+                                               }
+             },
+  'NameInRequest' => {
+                       'DBInstanceAutomatedBackups' => 'DBInstanceAutomatedBackup'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RDS::DBInstanceAutomatedBackupMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBInstanceAutomatedBackups => ArrayRef[L<Paws::RDS::DBInstanceAutomatedBackup>]
+=head2 DBInstanceAutomatedBackups => ArrayRef[RDS_DBInstanceAutomatedBackup]
 
 A list of C<DBInstanceAutomatedBackup> instances.
 

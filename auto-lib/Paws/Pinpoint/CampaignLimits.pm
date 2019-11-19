@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::CampaignLimits;
-  use Moose;
-  has Daily => (is => 'ro', isa => 'Int');
-  has MaximumDuration => (is => 'ro', isa => 'Int');
-  has MessagesPerSecond => (is => 'ro', isa => 'Int');
-  has Total => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Pinpoint::Types qw//;
+  has Daily => (is => 'ro', isa => Int);
+  has MaximumDuration => (is => 'ro', isa => Int);
+  has MessagesPerSecond => (is => 'ro', isa => Int);
+  has Total => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Total' => {
+                            'type' => 'Int'
+                          },
+               'MaximumDuration' => {
+                                      'type' => 'Int'
+                                    },
+               'MessagesPerSecond' => {
+                                        'type' => 'Int'
+                                      },
+               'Daily' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

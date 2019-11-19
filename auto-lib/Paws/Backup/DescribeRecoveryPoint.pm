@@ -1,15 +1,41 @@
 
 package Paws::Backup::DescribeRecoveryPoint;
-  use Moose;
-  has BackupVaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'backupVaultName', required => 1);
-  has RecoveryPointArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'recoveryPointArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw//;
+  has BackupVaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RecoveryPointArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRecoveryPoint');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::DescribeRecoveryPointOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeRecoveryPoint');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::DescribeRecoveryPointOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RecoveryPointArn' => 1,
+                    'BackupVaultName' => 1
+                  },
+  'types' => {
+               'RecoveryPointArn' => {
+                                       'type' => 'Str'
+                                     },
+               'BackupVaultName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'ParamInURI' => {
+                    'RecoveryPointArn' => 'recoveryPointArn',
+                    'BackupVaultName' => 'backupVaultName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

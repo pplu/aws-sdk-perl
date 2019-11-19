@@ -1,14 +1,64 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::SourceTableDetails;
-  use Moose;
-  has BillingMode => (is => 'ro', isa => 'Str');
-  has ItemCount => (is => 'ro', isa => 'Int');
-  has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]', required => 1);
-  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput', required => 1);
-  has TableArn => (is => 'ro', isa => 'Str');
-  has TableCreationDateTime => (is => 'ro', isa => 'Str', required => 1);
-  has TableId => (is => 'ro', isa => 'Str', required => 1);
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
-  has TableSizeBytes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_KeySchemaElement DynamoDB_ProvisionedThroughput/;
+  has BillingMode => (is => 'ro', isa => Str);
+  has ItemCount => (is => 'ro', isa => Int);
+  has KeySchema => (is => 'ro', isa => ArrayRef[DynamoDB_KeySchemaElement], required => 1);
+  has ProvisionedThroughput => (is => 'ro', isa => DynamoDB_ProvisionedThroughput, required => 1);
+  has TableArn => (is => 'ro', isa => Str);
+  has TableCreationDateTime => (is => 'ro', isa => Str, required => 1);
+  has TableId => (is => 'ro', isa => Str, required => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1);
+  has TableSizeBytes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProvisionedThroughput' => {
+                                            'type' => 'DynamoDB_ProvisionedThroughput',
+                                            'class' => 'Paws::DynamoDB::ProvisionedThroughput'
+                                          },
+               'TableCreationDateTime' => {
+                                            'type' => 'Str'
+                                          },
+               'TableSizeBytes' => {
+                                     'type' => 'Int'
+                                   },
+               'ItemCount' => {
+                                'type' => 'Int'
+                              },
+               'TableId' => {
+                              'type' => 'Str'
+                            },
+               'BillingMode' => {
+                                  'type' => 'Str'
+                                },
+               'KeySchema' => {
+                                'type' => 'ArrayRef[DynamoDB_KeySchemaElement]',
+                                'class' => 'Paws::DynamoDB::KeySchemaElement'
+                              },
+               'TableArn' => {
+                               'type' => 'Str'
+                             },
+               'TableName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'KeySchema' => 1,
+                    'TableId' => 1,
+                    'TableName' => 1,
+                    'ProvisionedThroughput' => 1,
+                    'TableCreationDateTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,12 +121,12 @@ unpredictable workloads.
   Number of items in the table. Note that this is an approximate value.
 
 
-=head2 B<REQUIRED> KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
+=head2 B<REQUIRED> KeySchema => ArrayRef[DynamoDB_KeySchemaElement]
 
   Schema of the table.
 
 
-=head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
+=head2 B<REQUIRED> ProvisionedThroughput => DynamoDB_ProvisionedThroughput
 
   Read IOPs and Write IOPS on the table when the backup was created.
 

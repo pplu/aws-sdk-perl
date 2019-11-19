@@ -1,17 +1,47 @@
 
 package Paws::LexModels::GetBuiltinSlotTypes;
-  use Moose;
-  has Locale => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'locale');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has SignatureContains => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'signatureContains');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::LexModels::Types qw//;
+  has Locale => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SignatureContains => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetBuiltinSlotTypes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/builtins/slottypes/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetBuiltinSlotTypesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetBuiltinSlotTypes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/builtins/slottypes/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::GetBuiltinSlotTypesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SignatureContains' => {
+                                        'type' => 'Str'
+                                      },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInQuery' => {
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken',
+                      'Locale' => 'locale',
+                      'SignatureContains' => 'signatureContains'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

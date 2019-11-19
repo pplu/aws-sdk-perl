@@ -1,9 +1,29 @@
 
 package Paws::MobileHub::ExportBundleResult;
-  use Moose;
-  has DownloadUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'downloadUrl');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MobileHub::Types qw//;
+  has DownloadUrl => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DownloadUrl' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DownloadUrl' => 'downloadUrl'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

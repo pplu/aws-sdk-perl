@@ -1,16 +1,47 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::CopyDBClusterParameterGroup;
-  use Moose;
-  has SourceDBClusterParameterGroupIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Tag]');
-  has TargetDBClusterParameterGroupDescription => (is => 'ro', isa => 'Str', required => 1);
-  has TargetDBClusterParameterGroupIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_Tag/;
+  has SourceDBClusterParameterGroupIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Neptune_Tag], predicate => 1);
+  has TargetDBClusterParameterGroupDescription => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetDBClusterParameterGroupIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBClusterParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::CopyDBClusterParameterGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyDBClusterParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopyDBClusterParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::CopyDBClusterParameterGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CopyDBClusterParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TargetDBClusterParameterGroupIdentifier' => 1,
+                    'SourceDBClusterParameterGroupIdentifier' => 1,
+                    'TargetDBClusterParameterGroupDescription' => 1
+                  },
+  'types' => {
+               'SourceDBClusterParameterGroupIdentifier' => {
+                                                              'type' => 'Str'
+                                                            },
+               'Tags' => {
+                           'type' => 'ArrayRef[Neptune_Tag]',
+                           'class' => 'Paws::Neptune::Tag'
+                         },
+               'TargetDBClusterParameterGroupDescription' => {
+                                                               'type' => 'Str'
+                                                             },
+               'TargetDBClusterParameterGroupIdentifier' => {
+                                                              'type' => 'Str'
+                                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -87,7 +118,7 @@ C<arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
+=head2 Tags => ArrayRef[Neptune_Tag]
 
 The tags to be assigned to the copied DB cluster parameter group.
 

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Route53Resolver::ListTagsForResourceResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Route53Resolver::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53Resolver::Types qw/Route53Resolver_Tag/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[Route53Resolver_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Route53Resolver::Tag',
+                           'type' => 'ArrayRef[Route53Resolver_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +45,7 @@ results. In the next request, specify the value of C<NextToken> from
 the previous response.
 
 
-=head2 Tags => ArrayRef[L<Paws::Route53Resolver::Tag>]
+=head2 Tags => ArrayRef[Route53Resolver_Tag]
 
 The tags that are associated with the resource that you specified in
 the C<ListTagsForResource> request.

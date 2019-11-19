@@ -1,25 +1,91 @@
 
 package Paws::Backup::DescribeBackupJobOutput;
-  use Moose;
-  has BackupJobId => (is => 'ro', isa => 'Str');
-  has BackupSizeInBytes => (is => 'ro', isa => 'Int');
-  has BackupVaultArn => (is => 'ro', isa => 'Str');
-  has BackupVaultName => (is => 'ro', isa => 'Str');
-  has BytesTransferred => (is => 'ro', isa => 'Int');
-  has CompletionDate => (is => 'ro', isa => 'Str');
-  has CreatedBy => (is => 'ro', isa => 'Paws::Backup::RecoveryPointCreator');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has ExpectedCompletionDate => (is => 'ro', isa => 'Str');
-  has IamRoleArn => (is => 'ro', isa => 'Str');
-  has PercentDone => (is => 'ro', isa => 'Str');
-  has RecoveryPointArn => (is => 'ro', isa => 'Str');
-  has ResourceArn => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has StartBy => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Backup::Types qw/Backup_RecoveryPointCreator/;
+  has BackupJobId => (is => 'ro', isa => Str);
+  has BackupSizeInBytes => (is => 'ro', isa => Int);
+  has BackupVaultArn => (is => 'ro', isa => Str);
+  has BackupVaultName => (is => 'ro', isa => Str);
+  has BytesTransferred => (is => 'ro', isa => Int);
+  has CompletionDate => (is => 'ro', isa => Str);
+  has CreatedBy => (is => 'ro', isa => Backup_RecoveryPointCreator);
+  has CreationDate => (is => 'ro', isa => Str);
+  has ExpectedCompletionDate => (is => 'ro', isa => Str);
+  has IamRoleArn => (is => 'ro', isa => Str);
+  has PercentDone => (is => 'ro', isa => Str);
+  has RecoveryPointArn => (is => 'ro', isa => Str);
+  has ResourceArn => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has StartBy => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RecoveryPointArn' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedBy' => {
+                                'type' => 'Backup_RecoveryPointCreator',
+                                'class' => 'Paws::Backup::RecoveryPointCreator'
+                              },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'PercentDone' => {
+                                  'type' => 'Str'
+                                },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'ExpectedCompletionDate' => {
+                                             'type' => 'Str'
+                                           },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'BackupVaultName' => {
+                                      'type' => 'Str'
+                                    },
+               'StartBy' => {
+                              'type' => 'Str'
+                            },
+               'BackupJobId' => {
+                                  'type' => 'Str'
+                                },
+               'CompletionDate' => {
+                                     'type' => 'Str'
+                                   },
+               'BackupSizeInBytes' => {
+                                        'type' => 'Int'
+                                      },
+               'BackupVaultArn' => {
+                                     'type' => 'Str'
+                                   },
+               'BytesTransferred' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +136,7 @@ C<CreationDate> is accurate to milliseconds. For example, the value
 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.
 
 
-=head2 CreatedBy => L<Paws::Backup::RecoveryPointCreator>
+=head2 CreatedBy => Backup_RecoveryPointCreator
 
 Contains identifying information about the creation of a backup job,
 including the C<BackupPlanArn>, C<BackupPlanId>, C<BackupPlanVersion>,

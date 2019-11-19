@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::ListRepositoriesOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Repositories => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryNameIdPair]', traits => ['NameInRequest'], request_name => 'repositories' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_RepositoryNameIdPair/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Repositories => (is => 'ro', isa => ArrayRef[CodeCommit_RepositoryNameIdPair]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Repositories' => 'repositories'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Repositories' => {
+                                   'type' => 'ArrayRef[CodeCommit_RepositoryNameIdPair]',
+                                   'class' => 'Paws::CodeCommit::RepositoryNameIdPair'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +49,7 @@ When the client sends the token back to AWS CodeCommit, another page of
 1,000 records is retrieved.
 
 
-=head2 Repositories => ArrayRef[L<Paws::CodeCommit::RepositoryNameIdPair>]
+=head2 Repositories => ArrayRef[CodeCommit_RepositoryNameIdPair]
 
 Lists the repositories called by the list repositories operation.
 

@@ -1,10 +1,30 @@
 
 package Paws::ElasticTranscoder::TestRoleResponse;
-  use Moose;
-  has Messages => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Success => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ElasticTranscoder::Types qw//;
+  has Messages => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Success => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Success' => {
+                              'type' => 'Str'
+                            },
+               'Messages' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

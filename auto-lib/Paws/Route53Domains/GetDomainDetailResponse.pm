@@ -1,29 +1,118 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Route53Domains::GetDomainDetailResponse;
-  use Moose;
-  has AbuseContactEmail => (is => 'ro', isa => 'Str');
-  has AbuseContactPhone => (is => 'ro', isa => 'Str');
-  has AdminContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);
-  has AdminPrivacy => (is => 'ro', isa => 'Bool');
-  has AutoRenew => (is => 'ro', isa => 'Bool');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has DnsSec => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has ExpirationDate => (is => 'ro', isa => 'Str');
-  has Nameservers => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::Nameserver]', required => 1);
-  has RegistrantContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);
-  has RegistrantPrivacy => (is => 'ro', isa => 'Bool');
-  has RegistrarName => (is => 'ro', isa => 'Str');
-  has RegistrarUrl => (is => 'ro', isa => 'Str');
-  has RegistryDomainId => (is => 'ro', isa => 'Str');
-  has Reseller => (is => 'ro', isa => 'Str');
-  has StatusList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TechContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);
-  has TechPrivacy => (is => 'ro', isa => 'Bool');
-  has UpdatedDate => (is => 'ro', isa => 'Str');
-  has WhoIsServer => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::Route53Domains::Types qw/Route53Domains_Nameserver Route53Domains_ContactDetail/;
+  has AbuseContactEmail => (is => 'ro', isa => Str);
+  has AbuseContactPhone => (is => 'ro', isa => Str);
+  has AdminContact => (is => 'ro', isa => Route53Domains_ContactDetail, required => 1);
+  has AdminPrivacy => (is => 'ro', isa => Bool);
+  has AutoRenew => (is => 'ro', isa => Bool);
+  has CreationDate => (is => 'ro', isa => Str);
+  has DnsSec => (is => 'ro', isa => Str);
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has ExpirationDate => (is => 'ro', isa => Str);
+  has Nameservers => (is => 'ro', isa => ArrayRef[Route53Domains_Nameserver], required => 1);
+  has RegistrantContact => (is => 'ro', isa => Route53Domains_ContactDetail, required => 1);
+  has RegistrantPrivacy => (is => 'ro', isa => Bool);
+  has RegistrarName => (is => 'ro', isa => Str);
+  has RegistrarUrl => (is => 'ro', isa => Str);
+  has RegistryDomainId => (is => 'ro', isa => Str);
+  has Reseller => (is => 'ro', isa => Str);
+  has StatusList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TechContact => (is => 'ro', isa => Route53Domains_ContactDetail, required => 1);
+  has TechPrivacy => (is => 'ro', isa => Bool);
+  has UpdatedDate => (is => 'ro', isa => Str);
+  has WhoIsServer => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistrarUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'Reseller' => {
+                               'type' => 'Str'
+                             },
+               'UpdatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'Nameservers' => {
+                                  'class' => 'Paws::Route53Domains::Nameserver',
+                                  'type' => 'ArrayRef[Route53Domains_Nameserver]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'StatusList' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'ExpirationDate' => {
+                                     'type' => 'Str'
+                                   },
+               'RegistrarName' => {
+                                    'type' => 'Str'
+                                  },
+               'TechContact' => {
+                                  'class' => 'Paws::Route53Domains::ContactDetail',
+                                  'type' => 'Route53Domains_ContactDetail'
+                                },
+               'AdminPrivacy' => {
+                                   'type' => 'Bool'
+                                 },
+               'AbuseContactEmail' => {
+                                        'type' => 'Str'
+                                      },
+               'RegistryDomainId' => {
+                                       'type' => 'Str'
+                                     },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'RegistrantContact' => {
+                                        'class' => 'Paws::Route53Domains::ContactDetail',
+                                        'type' => 'Route53Domains_ContactDetail'
+                                      },
+               'RegistrantPrivacy' => {
+                                        'type' => 'Bool'
+                                      },
+               'TechPrivacy' => {
+                                  'type' => 'Bool'
+                                },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'WhoIsServer' => {
+                                  'type' => 'Str'
+                                },
+               'AutoRenew' => {
+                                'type' => 'Bool'
+                              },
+               'AdminContact' => {
+                                   'class' => 'Paws::Route53Domains::ContactDetail',
+                                   'type' => 'Route53Domains_ContactDetail'
+                                 },
+               'AbuseContactPhone' => {
+                                        'type' => 'Str'
+                                      },
+               'DnsSec' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'AdminContact' => 1,
+                    'TechContact' => 1,
+                    'RegistrantContact' => 1,
+                    'DomainName' => 1,
+                    'Nameservers' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -47,7 +136,7 @@ type of abuse.
 Phone number for reporting abuse.
 
 
-=head2 B<REQUIRED> AdminContact => L<Paws::Route53Domains::ContactDetail>
+=head2 B<REQUIRED> AdminContact => Route53Domains_ContactDetail
 
 Provides details about the domain administrative contact.
 
@@ -90,12 +179,12 @@ The date when the registration for the domain is set to expire. The
 date and time is in Coordinated Universal time (UTC).
 
 
-=head2 B<REQUIRED> Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>]
+=head2 B<REQUIRED> Nameservers => ArrayRef[Route53Domains_Nameserver]
 
 The name of the domain.
 
 
-=head2 B<REQUIRED> RegistrantContact => L<Paws::Route53Domains::ContactDetail>
+=head2 B<REQUIRED> RegistrantContact => Route53Domains_ContactDetail
 
 Provides details about the domain registrant.
 
@@ -153,7 +242,7 @@ and search for C<epp status codes>. (Search on the ICANN website; web
 searches sometimes return an old version of the document.)
 
 
-=head2 B<REQUIRED> TechContact => L<Paws::Route53Domains::ContactDetail>
+=head2 B<REQUIRED> TechContact => Route53Domains_ContactDetail
 
 Provides details about the domain technical contact.
 

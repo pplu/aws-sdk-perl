@@ -1,9 +1,30 @@
 
 package Paws::AppSync::ListTagsForResourceResponse;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::AppSync::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw/AppSync_TagMap/;
+  has Tags => (is => 'ro', isa => AppSync_TagMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'AppSync_TagMap',
+                           'class' => 'Paws::AppSync::TagMap'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::AppSync::ListTagsForResourceResponse
 =head1 ATTRIBUTES
 
 
-=head2 Tags => L<Paws::AppSync::TagMap>
+=head2 Tags => AppSync_TagMap
 
 A C<TagMap> object.
 

@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::ChannelStorageSummary;
-  use Moose;
-  has CustomerManagedS3 => (is => 'ro', isa => 'Paws::IoTAnalytics::CustomerManagedChannelS3StorageSummary', request_name => 'customerManagedS3', traits => ['NameInRequest']);
-  has ServiceManagedS3 => (is => 'ro', isa => 'Paws::IoTAnalytics::ServiceManagedChannelS3StorageSummary', request_name => 'serviceManagedS3', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_CustomerManagedChannelS3StorageSummary IoTAnalytics_ServiceManagedChannelS3StorageSummary/;
+  has CustomerManagedS3 => (is => 'ro', isa => IoTAnalytics_CustomerManagedChannelS3StorageSummary);
+  has ServiceManagedS3 => (is => 'ro', isa => IoTAnalytics_ServiceManagedChannelS3StorageSummary);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomerManagedS3' => {
+                                        'class' => 'Paws::IoTAnalytics::CustomerManagedChannelS3StorageSummary',
+                                        'type' => 'IoTAnalytics_CustomerManagedChannelS3StorageSummary'
+                                      },
+               'ServiceManagedS3' => {
+                                       'class' => 'Paws::IoTAnalytics::ServiceManagedChannelS3StorageSummary',
+                                       'type' => 'IoTAnalytics_ServiceManagedChannelS3StorageSummary'
+                                     }
+             },
+  'NameInRequest' => {
+                       'CustomerManagedS3' => 'customerManagedS3',
+                       'ServiceManagedS3' => 'serviceManagedS3'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Where channel data is stored.
 =head1 ATTRIBUTES
 
 
-=head2 CustomerManagedS3 => L<Paws::IoTAnalytics::CustomerManagedChannelS3StorageSummary>
+=head2 CustomerManagedS3 => IoTAnalytics_CustomerManagedChannelS3StorageSummary
 
   Used to store channel data in an S3 bucket that you manage.
 
 
-=head2 ServiceManagedS3 => L<Paws::IoTAnalytics::ServiceManagedChannelS3StorageSummary>
+=head2 ServiceManagedS3 => IoTAnalytics_ServiceManagedChannelS3StorageSummary
 
   Used to store channel data in an S3 bucket managed by the AWS IoT
 Analytics service.

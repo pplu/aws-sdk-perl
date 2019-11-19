@@ -1,10 +1,36 @@
 
 package Paws::EC2::CreateNatGatewayResult;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest',]);
-  has NatGateway => (is => 'ro', isa => 'Paws::EC2::NatGateway', request_name => 'natGateway', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_NatGateway/;
+  has ClientToken => (is => 'ro', isa => Str);
+  has NatGateway => (is => 'ro', isa => EC2_NatGateway);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NatGateway' => {
+                                 'type' => 'EC2_NatGateway',
+                                 'class' => 'Paws::EC2::NatGateway'
+                               }
+             },
+  'NameInRequest' => {
+                       'ClientToken' => 'clientToken',
+                       'NatGateway' => 'natGateway'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +48,7 @@ Unique, case-sensitive identifier to ensure the idempotency of the
 request. Only returned if a client token was provided in the request.
 
 
-=head2 NatGateway => L<Paws::EC2::NatGateway>
+=head2 NatGateway => EC2_NatGateway
 
 Information about the NAT gateway.
 

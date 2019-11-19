@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::PointInTimeRecoveryDescription;
-  use Moose;
-  has EarliestRestorableDateTime => (is => 'ro', isa => 'Str');
-  has LatestRestorableDateTime => (is => 'ro', isa => 'Str');
-  has PointInTimeRecoveryStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDB::Types qw//;
+  has EarliestRestorableDateTime => (is => 'ro', isa => Str);
+  has LatestRestorableDateTime => (is => 'ro', isa => Str);
+  has PointInTimeRecoveryStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LatestRestorableDateTime' => {
+                                               'type' => 'Str'
+                                             },
+               'EarliestRestorableDateTime' => {
+                                                 'type' => 'Str'
+                                               },
+               'PointInTimeRecoveryStatus' => {
+                                                'type' => 'Str'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

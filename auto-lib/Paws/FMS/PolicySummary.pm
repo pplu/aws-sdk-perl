@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::FMS::PolicySummary;
-  use Moose;
-  has PolicyArn => (is => 'ro', isa => 'Str');
-  has PolicyId => (is => 'ro', isa => 'Str');
-  has PolicyName => (is => 'ro', isa => 'Str');
-  has RemediationEnabled => (is => 'ro', isa => 'Bool');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has SecurityServiceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::FMS::Types qw//;
+  has PolicyArn => (is => 'ro', isa => Str);
+  has PolicyId => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str);
+  has RemediationEnabled => (is => 'ro', isa => Bool);
+  has ResourceType => (is => 'ro', isa => Str);
+  has SecurityServiceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RemediationEnabled' => {
+                                         'type' => 'Bool'
+                                       },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'SecurityServiceType' => {
+                                          'type' => 'Str'
+                                        },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyArn' => {
+                                'type' => 'Str'
+                              },
+               'PolicyId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

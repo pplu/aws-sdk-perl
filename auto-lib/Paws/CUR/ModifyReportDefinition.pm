@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CUR::ModifyReportDefinition;
-  use Moose;
-  has ReportDefinition => (is => 'ro', isa => 'Paws::CUR::ReportDefinition', required => 1);
-  has ReportName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CUR::Types qw/CUR_ReportDefinition/;
+  has ReportDefinition => (is => 'ro', isa => CUR_ReportDefinition, required => 1, predicate => 1);
+  has ReportName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReportDefinition');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CUR::ModifyReportDefinitionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyReportDefinition');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CUR::ModifyReportDefinitionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReportName' => {
+                                 'type' => 'Str'
+                               },
+               'ReportDefinition' => {
+                                       'type' => 'CUR_ReportDefinition',
+                                       'class' => 'Paws::CUR::ReportDefinition'
+                                     }
+             },
+  'IsRequired' => {
+                    'ReportDefinition' => 1,
+                    'ReportName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +82,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cur
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ReportDefinition => L<Paws::CUR::ReportDefinition>
+=head2 B<REQUIRED> ReportDefinition => CUR_ReportDefinition
 
 
 

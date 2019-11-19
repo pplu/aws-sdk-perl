@@ -1,13 +1,52 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::ApplicationDescription;
-  use Moose;
-  has ApplicationArn => (is => 'ro', isa => 'Str');
-  has ApplicationName => (is => 'ro', isa => 'Str');
-  has ConfigurationTemplates => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DateCreated => (is => 'ro', isa => 'Str');
-  has DateUpdated => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ResourceLifecycleConfig => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig');
-  has Versions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_ApplicationResourceLifecycleConfig/;
+  has ApplicationArn => (is => 'ro', isa => Str);
+  has ApplicationName => (is => 'ro', isa => Str);
+  has ConfigurationTemplates => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DateCreated => (is => 'ro', isa => Str);
+  has DateUpdated => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ResourceLifecycleConfig => (is => 'ro', isa => ElasticBeanstalk_ApplicationResourceLifecycleConfig);
+  has Versions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceLifecycleConfig' => {
+                                              'class' => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig',
+                                              'type' => 'ElasticBeanstalk_ApplicationResourceLifecycleConfig'
+                                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ConfigurationTemplates' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'Versions' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'DateUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'ApplicationArn' => {
+                                     'type' => 'Str'
+                                   },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'DateCreated' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +113,7 @@ application.
   User-defined description of the application.
 
 
-=head2 ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>
+=head2 ResourceLifecycleConfig => ElasticBeanstalk_ApplicationResourceLifecycleConfig
 
   The lifecycle settings for the application.
 

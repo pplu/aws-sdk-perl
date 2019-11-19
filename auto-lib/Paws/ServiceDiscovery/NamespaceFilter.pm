@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::NamespaceFilter;
-  use Moose;
-  has Condition => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ServiceDiscovery::Types qw//;
+  has Condition => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Condition' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Values' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

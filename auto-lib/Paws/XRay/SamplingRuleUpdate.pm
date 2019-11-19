@@ -1,17 +1,68 @@
+# Generated from default/object.tt
 package Paws::XRay::SamplingRuleUpdate;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::XRay::AttributeMap');
-  has FixedRate => (is => 'ro', isa => 'Num');
-  has Host => (is => 'ro', isa => 'Str');
-  has HTTPMethod => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Int');
-  has ReservoirSize => (is => 'ro', isa => 'Int');
-  has ResourceARN => (is => 'ro', isa => 'Str');
-  has RuleARN => (is => 'ro', isa => 'Str');
-  has RuleName => (is => 'ro', isa => 'Str');
-  has ServiceName => (is => 'ro', isa => 'Str');
-  has ServiceType => (is => 'ro', isa => 'Str');
-  has URLPath => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Str Int/;
+  use Paws::XRay::Types qw/XRay_AttributeMap/;
+  has Attributes => (is => 'ro', isa => XRay_AttributeMap);
+  has FixedRate => (is => 'ro', isa => Num);
+  has Host => (is => 'ro', isa => Str);
+  has HTTPMethod => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Int);
+  has ReservoirSize => (is => 'ro', isa => Int);
+  has ResourceARN => (is => 'ro', isa => Str);
+  has RuleARN => (is => 'ro', isa => Str);
+  has RuleName => (is => 'ro', isa => Str);
+  has ServiceName => (is => 'ro', isa => Str);
+  has ServiceType => (is => 'ro', isa => Str);
+  has URLPath => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservoirSize' => {
+                                    'type' => 'Int'
+                                  },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'ServiceType' => {
+                                  'type' => 'Str'
+                                },
+               'RuleName' => {
+                               'type' => 'Str'
+                             },
+               'URLPath' => {
+                              'type' => 'Str'
+                            },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'HTTPMethod' => {
+                                 'type' => 'Str'
+                               },
+               'RuleARN' => {
+                              'type' => 'Str'
+                            },
+               'FixedRate' => {
+                                'type' => 'Num'
+                              },
+               'Host' => {
+                           'type' => 'Str'
+                         },
+               'Attributes' => {
+                                 'class' => 'Paws::XRay::AttributeMap',
+                                 'type' => 'XRay_AttributeMap'
+                               },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +98,7 @@ A document specifying changes to a sampling rule's configuration.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::XRay::AttributeMap>
+=head2 Attributes => XRay_AttributeMap
 
   Matches attributes derived from the request.
 

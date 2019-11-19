@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::ResetDBParameterGroup;
-  use Moose;
-  has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Parameter]');
-  has ResetAllParameters => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::Neptune::Types qw/Neptune_Parameter/;
+  has DBParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Parameters => (is => 'ro', isa => ArrayRef[Neptune_Parameter], predicate => 1);
+  has ResetAllParameters => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetDBParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::DBParameterGroupNameMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ResetDBParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ResetDBParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::DBParameterGroupNameMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ResetDBParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DBParameterGroupName' => 1
+                  },
+  'types' => {
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'Parameters' => {
+                                 'class' => 'Paws::Neptune::Parameter',
+                                 'type' => 'ArrayRef[Neptune_Parameter]'
+                               },
+               'ResetAllParameters' => {
+                                         'type' => 'Bool'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +105,7 @@ Must match the name of an existing DBParameterGroup.
 
 
 
-=head2 Parameters => ArrayRef[L<Paws::Neptune::Parameter>]
+=head2 Parameters => ArrayRef[Neptune_Parameter]
 
 To reset the entire DB parameter group, specify the C<DBParameterGroup>
 name and C<ResetAllParameters> parameters. To reset specific

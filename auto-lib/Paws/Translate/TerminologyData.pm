@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Translate::TerminologyData;
-  use Moose;
-  has File => (is => 'ro', isa => 'Str', required => 1);
-  has Format => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Translate::Types qw//;
+  has File => (is => 'ro', isa => Str, required => 1);
+  has Format => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'File' => 1,
+                    'Format' => 1
+                  },
+  'types' => {
+               'File' => {
+                           'type' => 'Str'
+                         },
+               'Format' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

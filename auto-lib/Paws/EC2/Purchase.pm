@@ -1,13 +1,58 @@
 package Paws::EC2::Purchase;
-  use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
-  has Duration => (is => 'ro', isa => 'Int', request_name => 'duration', traits => ['NameInRequest']);
-  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'hostIdSet', traits => ['NameInRequest']);
-  has HostReservationId => (is => 'ro', isa => 'Str', request_name => 'hostReservationId', traits => ['NameInRequest']);
-  has HourlyPrice => (is => 'ro', isa => 'Str', request_name => 'hourlyPrice', traits => ['NameInRequest']);
-  has InstanceFamily => (is => 'ro', isa => 'Str', request_name => 'instanceFamily', traits => ['NameInRequest']);
-  has PaymentOption => (is => 'ro', isa => 'Str', request_name => 'paymentOption', traits => ['NameInRequest']);
-  has UpfrontPrice => (is => 'ro', isa => 'Str', request_name => 'upfrontPrice', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::EC2::Types qw//;
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has HostIdSet => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has HostReservationId => (is => 'ro', isa => Str);
+  has HourlyPrice => (is => 'ro', isa => Str);
+  has InstanceFamily => (is => 'ro', isa => Str);
+  has PaymentOption => (is => 'ro', isa => Str);
+  has UpfrontPrice => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'UpfrontPrice' => {
+                                   'type' => 'Str'
+                                 },
+               'HostReservationId' => {
+                                        'type' => 'Str'
+                                      },
+               'HourlyPrice' => {
+                                  'type' => 'Str'
+                                },
+               'InstanceFamily' => {
+                                     'type' => 'Str'
+                                   },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'PaymentOption' => {
+                                    'type' => 'Str'
+                                  },
+               'HostIdSet' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             },
+  'NameInRequest' => {
+                       'HostIdSet' => 'hostIdSet',
+                       'PaymentOption' => 'paymentOption',
+                       'InstanceFamily' => 'instanceFamily',
+                       'CurrencyCode' => 'currencyCode',
+                       'HourlyPrice' => 'hourlyPrice',
+                       'HostReservationId' => 'hostReservationId',
+                       'UpfrontPrice' => 'upfrontPrice',
+                       'Duration' => 'duration'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

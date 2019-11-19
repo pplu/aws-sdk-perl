@@ -1,11 +1,38 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::PutItemOutput;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
-  has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
-  has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetrics');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AttributeMap DynamoDB_ItemCollectionMetrics DynamoDB_ConsumedCapacity/;
+  has Attributes => (is => 'ro', isa => DynamoDB_AttributeMap);
+  has ConsumedCapacity => (is => 'ro', isa => DynamoDB_ConsumedCapacity);
+  has ItemCollectionMetrics => (is => 'ro', isa => DynamoDB_ItemCollectionMetrics);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConsumedCapacity' => {
+                                       'type' => 'DynamoDB_ConsumedCapacity',
+                                       'class' => 'Paws::DynamoDB::ConsumedCapacity'
+                                     },
+               'ItemCollectionMetrics' => {
+                                            'type' => 'DynamoDB_ItemCollectionMetrics',
+                                            'class' => 'Paws::DynamoDB::ItemCollectionMetrics'
+                                          },
+               'Attributes' => {
+                                 'class' => 'Paws::DynamoDB::AttributeMap',
+                                 'type' => 'DynamoDB_AttributeMap'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,14 +43,14 @@ Paws::DynamoDB::PutItemOutput
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::DynamoDB::AttributeMap>
+=head2 Attributes => DynamoDB_AttributeMap
 
 The attribute values as they appeared before the C<PutItem> operation,
 but only if C<ReturnValues> is specified as C<ALL_OLD> in the request.
 Each element consists of an attribute name and an attribute value.
 
 
-=head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
+=head2 ConsumedCapacity => DynamoDB_ConsumedCapacity
 
 The capacity units consumed by the C<PutItem> operation. The data
 returned includes the total provisioned throughput consumed, along with
@@ -35,7 +62,7 @@ Mode
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetrics>
+=head2 ItemCollectionMetrics => DynamoDB_ItemCollectionMetrics
 
 Information about item collections, if any, that were affected by the
 C<PutItem> operation. C<ItemCollectionMetrics> is only returned if the

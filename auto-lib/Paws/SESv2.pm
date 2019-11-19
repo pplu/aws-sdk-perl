@@ -1,14 +1,15 @@
 package Paws::SESv2;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'email' }
   sub signing_name { 'ses' }
   sub version { '2019-09-27' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -300,15 +301,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/ses/>
 
 =item ConfigurationSetName => Str
 
-=item [DeliveryOptions => L<Paws::SESv2::DeliveryOptions>]
+=item [DeliveryOptions => SESv2_DeliveryOptions]
 
-=item [ReputationOptions => L<Paws::SESv2::ReputationOptions>]
+=item [ReputationOptions => SESv2_ReputationOptions]
 
-=item [SendingOptions => L<Paws::SESv2::SendingOptions>]
+=item [SendingOptions => SESv2_SendingOptions]
 
-=item [Tags => ArrayRef[L<Paws::SESv2::Tag>]]
+=item [Tags => ArrayRef[SESv2_Tag]]
 
-=item [TrackingOptions => L<Paws::SESv2::TrackingOptions>]
+=item [TrackingOptions => SESv2_TrackingOptions]
 
 
 =back
@@ -331,7 +332,7 @@ set are applied to the email.
 
 =item ConfigurationSetName => Str
 
-=item EventDestination => L<Paws::SESv2::EventDestinationDefinition>
+=item EventDestination => SESv2_EventDestinationDefinition
 
 =item EventDestinationName => Str
 
@@ -359,7 +360,7 @@ A single configuration set can include more than one event destination.
 
 =item PoolName => Str
 
-=item [Tags => ArrayRef[L<Paws::SESv2::Tag>]]
+=item [Tags => ArrayRef[SESv2_Tag]]
 
 
 =back
@@ -379,13 +380,13 @@ the addresses in the associated pool.
 
 =over
 
-=item Content => L<Paws::SESv2::EmailContent>
+=item Content => SESv2_EmailContent
 
 =item FromEmailAddress => Str
 
 =item [ReportName => Str]
 
-=item [Tags => ArrayRef[L<Paws::SESv2::Tag>]]
+=item [Tags => ArrayRef[SESv2_Tag]]
 
 
 =back
@@ -411,7 +412,7 @@ to view the results of the test.
 
 =item EmailIdentity => Str
 
-=item [Tags => ArrayRef[L<Paws::SESv2::Tag>]]
+=item [Tags => ArrayRef[SESv2_Tag]]
 
 
 =back
@@ -1030,7 +1031,7 @@ Returns: a L<Paws::SESv2::PutDedicatedIpWarmupAttributesResponse> instance
 
 =item DashboardEnabled => Bool
 
-=item [SubscribedDomains => ArrayRef[L<Paws::SESv2::DomainDeliverabilityTrackingOption>]]
+=item [SubscribedDomains => ArrayRef[SESv2_DomainDeliverabilityTrackingOption]]
 
 
 =back
@@ -1125,13 +1126,13 @@ an email identity.
 
 =over
 
-=item Content => L<Paws::SESv2::EmailContent>
+=item Content => SESv2_EmailContent
 
-=item Destination => L<Paws::SESv2::Destination>
+=item Destination => SESv2_Destination
 
 =item [ConfigurationSetName => Str]
 
-=item [EmailTags => ArrayRef[L<Paws::SESv2::MessageTag>]]
+=item [EmailTags => ArrayRef[SESv2_MessageTag]]
 
 =item [FeedbackForwardingEmailAddress => Str]
 
@@ -1175,7 +1176,7 @@ valid MIME message.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::SESv2::Tag>]
+=item Tags => ArrayRef[SESv2_Tag]
 
 
 =back
@@ -1220,7 +1221,7 @@ Remove one or more tags (keys and values) from a specified resource.
 
 =item ConfigurationSetName => Str
 
-=item EventDestination => L<Paws::SESv2::EventDestinationDefinition>
+=item EventDestination => SESv2_EventDestinationDefinition
 
 =item EventDestinationName => Str
 

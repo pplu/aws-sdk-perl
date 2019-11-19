@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaLive::CreateChannelResultModel;
-  use Moose;
-  has Channel => (is => 'ro', isa => 'Paws::MediaLive::Channel', request_name => 'channel', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_Channel/;
+  has Channel => (is => 'ro', isa => MediaLive_Channel);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Channel' => {
+                              'class' => 'Paws::MediaLive::Channel',
+                              'type' => 'MediaLive_Channel'
+                            }
+             },
+  'NameInRequest' => {
+                       'Channel' => 'channel'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Placeholder documentation for CreateChannelResultModel
 =head1 ATTRIBUTES
 
 
-=head2 Channel => L<Paws::MediaLive::Channel>
+=head2 Channel => MediaLive_Channel
 
   
 

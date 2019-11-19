@@ -1,15 +1,37 @@
 
 package Paws::AppMesh::ListMeshes;
-  use Moose;
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AppMesh::Types qw//;
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListMeshes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::ListMeshesOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListMeshes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20190125/meshes');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppMesh::ListMeshesOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'Limit' => 'limit'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

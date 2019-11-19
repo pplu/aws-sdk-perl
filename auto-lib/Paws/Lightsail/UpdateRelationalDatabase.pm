@@ -1,21 +1,75 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::UpdateRelationalDatabase;
-  use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'applyImmediately' );
-  has DisableBackupRetention => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableBackupRetention' );
-  has EnableBackupRetention => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBackupRetention' );
-  has MasterUserPassword => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'masterUserPassword' );
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'preferredBackupWindow' );
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'preferredMaintenanceWindow' );
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible' );
-  has RelationalDatabaseName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseName' , required => 1);
-  has RotateMasterUserPassword => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'rotateMasterUserPassword' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Lightsail::Types qw//;
+  has ApplyImmediately => (is => 'ro', isa => Bool, predicate => 1);
+  has DisableBackupRetention => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableBackupRetention => (is => 'ro', isa => Bool, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has RelationalDatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RotateMasterUserPassword => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRelationalDatabase');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::UpdateRelationalDatabaseResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRelationalDatabase');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::UpdateRelationalDatabaseResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RotateMasterUserPassword' => {
+                                               'type' => 'Bool'
+                                             },
+               'EnableBackupRetention' => {
+                                            'type' => 'Bool'
+                                          },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'RelationalDatabaseName' => {
+                                             'type' => 'Str'
+                                           },
+               'DisableBackupRetention' => {
+                                             'type' => 'Bool'
+                                           },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'IsRequired' => {
+                    'RelationalDatabaseName' => 1
+                  },
+  'NameInRequest' => {
+                       'RelationalDatabaseName' => 'relationalDatabaseName',
+                       'PreferredMaintenanceWindow' => 'preferredMaintenanceWindow',
+                       'DisableBackupRetention' => 'disableBackupRetention',
+                       'PreferredBackupWindow' => 'preferredBackupWindow',
+                       'ApplyImmediately' => 'applyImmediately',
+                       'PubliclyAccessible' => 'publiclyAccessible',
+                       'MasterUserPassword' => 'masterUserPassword',
+                       'RotateMasterUserPassword' => 'rotateMasterUserPassword',
+                       'EnableBackupRetention' => 'enableBackupRetention'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

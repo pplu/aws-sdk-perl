@@ -1,16 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalyticsV2::AddApplicationInputProcessingConfiguration;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
-  has InputId => (is => 'ro', isa => 'Str', required => 1);
-  has InputProcessingConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::InputProcessingConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_InputProcessingConfiguration/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CurrentApplicationVersionId => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has InputId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputProcessingConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_InputProcessingConfiguration, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddApplicationInputProcessingConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalyticsV2::AddApplicationInputProcessingConfigurationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddApplicationInputProcessingConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalyticsV2::AddApplicationInputProcessingConfigurationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ApplicationName' => 1,
+                    'InputId' => 1,
+                    'CurrentApplicationVersionId' => 1,
+                    'InputProcessingConfiguration' => 1
+                  },
+  'types' => {
+               'InputProcessingConfiguration' => {
+                                                   'class' => 'Paws::KinesisAnalyticsV2::InputProcessingConfiguration',
+                                                   'type' => 'KinesisAnalyticsV2_InputProcessingConfiguration'
+                                                 },
+               'CurrentApplicationVersionId' => {
+                                                  'type' => 'Int'
+                                                },
+               'InputId' => {
+                              'type' => 'Str'
+                            },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -88,7 +120,7 @@ application using the DescribeApplication operation.
 
 
 
-=head2 B<REQUIRED> InputProcessingConfiguration => L<Paws::KinesisAnalyticsV2::InputProcessingConfiguration>
+=head2 B<REQUIRED> InputProcessingConfiguration => KinesisAnalyticsV2_InputProcessingConfiguration
 
 The InputProcessingConfiguration to add to the application.
 

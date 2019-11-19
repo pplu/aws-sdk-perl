@@ -1,17 +1,55 @@
 
 package Paws::IoT1ClickProjects::AssociateDeviceWithPlacement;
-  use Moose;
-  has DeviceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deviceId', required => 1);
-  has DeviceTemplateName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'deviceTemplateName', required => 1);
-  has PlacementName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'placementName', required => 1);
-  has ProjectName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'projectName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickProjects::Types qw//;
+  has DeviceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeviceTemplateName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PlacementName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProjectName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateDeviceWithPlacement');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/projects/{projectName}/placements/{placementName}/devices/{deviceTemplateName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT1ClickProjects::AssociateDeviceWithPlacementResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateDeviceWithPlacement');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/projects/{projectName}/placements/{placementName}/devices/{deviceTemplateName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT1ClickProjects::AssociateDeviceWithPlacementResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DeviceId' => 'deviceId'
+                     },
+  'IsRequired' => {
+                    'ProjectName' => 1,
+                    'PlacementName' => 1,
+                    'DeviceId' => 1,
+                    'DeviceTemplateName' => 1
+                  },
+  'types' => {
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                },
+               'PlacementName' => {
+                                    'type' => 'Str'
+                                  },
+               'DeviceId' => {
+                               'type' => 'Str'
+                             },
+               'DeviceTemplateName' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'ParamInURI' => {
+                    'ProjectName' => 'projectName',
+                    'PlacementName' => 'placementName',
+                    'DeviceTemplateName' => 'deviceTemplateName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

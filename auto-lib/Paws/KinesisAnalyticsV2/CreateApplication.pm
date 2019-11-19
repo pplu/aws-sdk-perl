@@ -1,19 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalyticsV2::CreateApplication;
-  use Moose;
-  has ApplicationConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationConfiguration');
-  has ApplicationDescription => (is => 'ro', isa => 'Str');
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has CloudWatchLoggingOptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::CloudWatchLoggingOption]');
-  has RuntimeEnvironment => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceExecutionRole => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_CloudWatchLoggingOption KinesisAnalyticsV2_ApplicationConfiguration KinesisAnalyticsV2_Tag/;
+  has ApplicationConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_ApplicationConfiguration, predicate => 1);
+  has ApplicationDescription => (is => 'ro', isa => Str, predicate => 1);
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CloudWatchLoggingOptions => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOption], predicate => 1);
+  has RuntimeEnvironment => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServiceExecutionRole => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalyticsV2::CreateApplicationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApplication');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalyticsV2::CreateApplicationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RuntimeEnvironment' => 1,
+                    'ServiceExecutionRole' => 1,
+                    'ApplicationName' => 1
+                  },
+  'types' => {
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'RuntimeEnvironment' => {
+                                         'type' => 'Str'
+                                       },
+               'ApplicationConfiguration' => {
+                                               'type' => 'KinesisAnalyticsV2_ApplicationConfiguration',
+                                               'class' => 'Paws::KinesisAnalyticsV2::ApplicationConfiguration'
+                                             },
+               'Tags' => {
+                           'class' => 'Paws::KinesisAnalyticsV2::Tag',
+                           'type' => 'ArrayRef[KinesisAnalyticsV2_Tag]'
+                         },
+               'ServiceExecutionRole' => {
+                                           'type' => 'Str'
+                                         },
+               'CloudWatchLoggingOptions' => {
+                                               'class' => 'Paws::KinesisAnalyticsV2::CloudWatchLoggingOption',
+                                               'type' => 'ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOption]'
+                                             },
+               'ApplicationDescription' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -227,7 +269,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationConfiguration => L<Paws::KinesisAnalyticsV2::ApplicationConfiguration>
+=head2 ApplicationConfiguration => KinesisAnalyticsV2_ApplicationConfiguration
 
 Use this parameter to configure the application.
 
@@ -245,7 +287,7 @@ The name of your application (for example, C<sample-app>).
 
 
 
-=head2 CloudWatchLoggingOptions => ArrayRef[L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOption>]
+=head2 CloudWatchLoggingOptions => ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOption]
 
 Use this parameter to configure an Amazon CloudWatch log stream to
 monitor application configuration errors.
@@ -267,7 +309,7 @@ external resources.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::KinesisAnalyticsV2::Tag>]
+=head2 Tags => ArrayRef[KinesisAnalyticsV2_Tag]
 
 A list of one or more tags to assign to the application. A tag is a
 key-value pair that identifies an application. Note that the maximum

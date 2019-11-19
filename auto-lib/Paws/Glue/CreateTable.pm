@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::CreateTable;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
-  has TableInput => (is => 'ro', isa => 'Paws::Glue::TableInput', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_TableInput/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TableInput => (is => 'ro', isa => Glue_TableInput, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTable');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::CreateTableResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTable');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::CreateTableResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DatabaseName' => 1,
+                    'TableInput' => 1
+                  },
+  'types' => {
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              },
+               'TableInput' => {
+                                 'class' => 'Paws::Glue::TableInput',
+                                 'type' => 'Glue_TableInput'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -132,7 +159,7 @@ compatibility, this name is entirely lowercase.
 
 
 
-=head2 B<REQUIRED> TableInput => L<Paws::Glue::TableInput>
+=head2 B<REQUIRED> TableInput => Glue_TableInput
 
 The C<TableInput> object that defines the metadata table to create in
 the catalog.

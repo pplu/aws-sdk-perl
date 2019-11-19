@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::S3LogsConfig;
-  use Moose;
-  has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::CodeBuild::Types qw//;
+  has EncryptionDisabled => (is => 'ro', isa => Bool);
+  has Location => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'EncryptionDisabled' => {
+                                         'type' => 'Bool'
+                                       }
+             },
+  'NameInRequest' => {
+                       'EncryptionDisabled' => 'encryptionDisabled',
+                       'Status' => 'status',
+                       'Location' => 'location'
+                     },
+  'IsRequired' => {
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

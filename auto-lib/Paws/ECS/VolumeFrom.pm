@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ECS::VolumeFrom;
-  use Moose;
-  has ReadOnly => (is => 'ro', isa => 'Bool', request_name => 'readOnly', traits => ['NameInRequest']);
-  has SourceContainer => (is => 'ro', isa => 'Str', request_name => 'sourceContainer', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::ECS::Types qw//;
+  has ReadOnly => (is => 'ro', isa => Bool);
+  has SourceContainer => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReadOnly' => {
+                               'type' => 'Bool'
+                             },
+               'SourceContainer' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'ReadOnly' => 'readOnly',
+                       'SourceContainer' => 'sourceContainer'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

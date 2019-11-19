@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SendUsersMessageRequest;
-  use Moose;
-  has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
-  has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration', required => 1);
-  has TraceId => (is => 'ro', isa => 'Str');
-  has Users => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string Pinpoint_MapOfEndpointSendConfiguration Pinpoint_DirectMessageConfiguration/;
+  has Context => (is => 'ro', isa => Pinpoint_MapOf__string);
+  has MessageConfiguration => (is => 'ro', isa => Pinpoint_DirectMessageConfiguration, required => 1);
+  has TraceId => (is => 'ro', isa => Str);
+  has Users => (is => 'ro', isa => Pinpoint_MapOfEndpointSendConfiguration, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MessageConfiguration' => 1,
+                    'Users' => 1
+                  },
+  'types' => {
+               'TraceId' => {
+                              'type' => 'Str'
+                            },
+               'Users' => {
+                            'class' => 'Paws::Pinpoint::MapOfEndpointSendConfiguration',
+                            'type' => 'Pinpoint_MapOfEndpointSendConfiguration'
+                          },
+               'Context' => {
+                              'class' => 'Paws::Pinpoint::MapOf__string',
+                              'type' => 'Pinpoint_MapOf__string'
+                            },
+               'MessageConfiguration' => {
+                                           'type' => 'Pinpoint_DirectMessageConfiguration',
+                                           'class' => 'Paws::Pinpoint::DirectMessageConfiguration'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +73,7 @@ all the endpoints that are associated with a list of users.
 =head1 ATTRIBUTES
 
 
-=head2 Context => L<Paws::Pinpoint::MapOf__string>
+=head2 Context => Pinpoint_MapOf__string
 
   A map of custom attribute-value pairs. For a push notification, Amazon
 Pinpoint adds these attributes to the data.pinpoint object in the body
@@ -49,7 +82,7 @@ attributes in the events that it generates for users-messages
 deliveries.
 
 
-=head2 B<REQUIRED> MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
+=head2 B<REQUIRED> MessageConfiguration => Pinpoint_DirectMessageConfiguration
 
   The message definitions for the default message and any default
 messages that you defined for specific channels.
@@ -61,7 +94,7 @@ messages that you defined for specific channels.
 visible to message recipients.
 
 
-=head2 B<REQUIRED> Users => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>
+=head2 B<REQUIRED> Users => Pinpoint_MapOfEndpointSendConfiguration
 
   A map that associates user IDs with EndpointSendConfiguration objects.
 You can use an EndpointSendConfiguration object to tailor the message

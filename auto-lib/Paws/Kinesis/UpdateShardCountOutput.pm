@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Kinesis::UpdateShardCountOutput;
-  use Moose;
-  has CurrentShardCount => (is => 'ro', isa => 'Int');
-  has StreamName => (is => 'ro', isa => 'Str');
-  has TargetShardCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Kinesis::Types qw//;
+  has CurrentShardCount => (is => 'ro', isa => Int);
+  has StreamName => (is => 'ro', isa => Str);
+  has TargetShardCount => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetShardCount' => {
+                                       'type' => 'Int'
+                                     },
+               'CurrentShardCount' => {
+                                        'type' => 'Int'
+                                      },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

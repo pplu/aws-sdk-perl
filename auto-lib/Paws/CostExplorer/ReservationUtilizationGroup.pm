@@ -1,9 +1,37 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::ReservationUtilizationGroup;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::CostExplorer::Attributes');
-  has Key => (is => 'ro', isa => 'Str');
-  has Utilization => (is => 'ro', isa => 'Paws::CostExplorer::ReservationAggregates');
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw/CostExplorer_ReservationAggregates CostExplorer_Attributes/;
+  has Attributes => (is => 'ro', isa => CostExplorer_Attributes);
+  has Key => (is => 'ro', isa => Str);
+  has Utilization => (is => 'ro', isa => CostExplorer_ReservationAggregates);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Attributes' => {
+                                 'class' => 'Paws::CostExplorer::Attributes',
+                                 'type' => 'CostExplorer_Attributes'
+                               },
+               'Utilization' => {
+                                  'class' => 'Paws::CostExplorer::ReservationAggregates',
+                                  'type' => 'CostExplorer_ReservationAggregates'
+                                },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +67,7 @@ A group of reservations that share a set of attributes.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::CostExplorer::Attributes>
+=head2 Attributes => CostExplorer_Attributes
 
   The attributes for this group of reservations.
 
@@ -49,7 +77,7 @@ A group of reservations that share a set of attributes.
   The key for a specific reservation attribute.
 
 
-=head2 Utilization => L<Paws::CostExplorer::ReservationAggregates>
+=head2 Utilization => CostExplorer_ReservationAggregates
 
   How much you used this group of reservations.
 

@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::RAM::Resource;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
-  has ResourceShareArn => (is => 'ro', isa => 'Str', request_name => 'resourceShareArn', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RAM::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has ResourceShareArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ResourceShareArn' => {
+                                       'type' => 'Str'
+                                     },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'ResourceShareArn' => 'resourceShareArn',
+                       'Type' => 'type',
+                       'CreationTime' => 'creationTime',
+                       'StatusMessage' => 'statusMessage',
+                       'Arn' => 'arn',
+                       'LastUpdatedTime' => 'lastUpdatedTime',
+                       'Status' => 'status'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

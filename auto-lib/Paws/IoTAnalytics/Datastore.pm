@@ -1,12 +1,58 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::Datastore;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Storage => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastoreStorage', request_name => 'storage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_RetentionPeriod IoTAnalytics_DatastoreStorage/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RetentionPeriod => (is => 'ro', isa => IoTAnalytics_RetentionPeriod);
+  has Status => (is => 'ro', isa => Str);
+  has Storage => (is => 'ro', isa => IoTAnalytics_DatastoreStorage);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RetentionPeriod' => 'retentionPeriod',
+                       'Storage' => 'storage',
+                       'CreationTime' => 'creationTime',
+                       'Status' => 'status',
+                       'Name' => 'name',
+                       'Arn' => 'arn',
+                       'LastUpdateTime' => 'lastUpdateTime'
+                     },
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RetentionPeriod' => {
+                                      'class' => 'Paws::IoTAnalytics::RetentionPeriod',
+                                      'type' => 'IoTAnalytics_RetentionPeriod'
+                                    },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Storage' => {
+                              'type' => 'IoTAnalytics_DatastoreStorage',
+                              'class' => 'Paws::IoTAnalytics::DatastoreStorage'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +108,7 @@ Information about a data store.
   The name of the data store.
 
 
-=head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
+=head2 RetentionPeriod => IoTAnalytics_RetentionPeriod
 
   How long, in days, message data is kept for the data store. When
 "customerManagedS3" storage is selected, this parameter is ignored.
@@ -90,7 +136,7 @@ The data store is being deleted.
 
 
 
-=head2 Storage => L<Paws::IoTAnalytics::DatastoreStorage>
+=head2 Storage => IoTAnalytics_DatastoreStorage
 
   Where data store data is stored. You may choose one of
 "serviceManagedS3" or "customerManagedS3" storage. If not specified,

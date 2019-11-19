@@ -1,14 +1,15 @@
 package Paws::MarketplaceCatalog;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'catalog.marketplace' }
   sub signing_name { 'aws-marketplace' }
   sub version { '2018-09-17' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -152,13 +153,13 @@ Returns the metadata and content of the entity.
 
 =item Catalog => Str
 
-=item [FilterList => ArrayRef[L<Paws::MarketplaceCatalog::Filter>]]
+=item [FilterList => ArrayRef[MarketplaceCatalog_Filter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [Sort => L<Paws::MarketplaceCatalog::Sort>]
+=item [Sort => MarketplaceCatalog_Sort]
 
 
 =back
@@ -184,13 +185,13 @@ period for API calls.
 
 =item EntityType => Str
 
-=item [FilterList => ArrayRef[L<Paws::MarketplaceCatalog::Filter>]]
+=item [FilterList => ArrayRef[MarketplaceCatalog_Filter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [Sort => L<Paws::MarketplaceCatalog::Sort>]
+=item [Sort => MarketplaceCatalog_Sort]
 
 
 =back
@@ -208,7 +209,7 @@ Provides the list of entities of a given type.
 
 =item Catalog => Str
 
-=item ChangeSet => ArrayRef[L<Paws::MarketplaceCatalog::Change>]
+=item ChangeSet => ArrayRef[MarketplaceCatalog_Change]
 
 =item [ChangeSetName => Str]
 

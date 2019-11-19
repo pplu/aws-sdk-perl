@@ -1,10 +1,31 @@
 
 package Paws::PinpointEmail::ListEmailIdentitiesResponse;
-  use Moose;
-  has EmailIdentities => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::IdentityInfo]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_IdentityInfo/;
+  has EmailIdentities => (is => 'ro', isa => ArrayRef[PinpointEmail_IdentityInfo]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'EmailIdentities' => {
+                                      'type' => 'ArrayRef[PinpointEmail_IdentityInfo]',
+                                      'class' => 'Paws::PinpointEmail::IdentityInfo'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::PinpointEmail::ListEmailIdentitiesResponse
 =head1 ATTRIBUTES
 
 
-=head2 EmailIdentities => ArrayRef[L<Paws::PinpointEmail::IdentityInfo>]
+=head2 EmailIdentities => ArrayRef[PinpointEmail_IdentityInfo]
 
 An array that includes all of the identities associated with your
 Amazon Pinpoint account.

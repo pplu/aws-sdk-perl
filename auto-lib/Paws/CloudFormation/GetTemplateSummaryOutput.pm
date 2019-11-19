@@ -1,17 +1,61 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudFormation::GetTemplateSummaryOutput;
-  use Moose;
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CapabilitiesReason => (is => 'ro', isa => 'Str');
-  has DeclaredTransforms => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Description => (is => 'ro', isa => 'Str');
-  has Metadata => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ParameterDeclaration]');
-  has ResourceIdentifierSummaries => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ResourceIdentifierSummary]');
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_ParameterDeclaration CloudFormation_ResourceIdentifierSummary/;
+  has Capabilities => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CapabilitiesReason => (is => 'ro', isa => Str);
+  has DeclaredTransforms => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Description => (is => 'ro', isa => Str);
+  has Metadata => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => ArrayRef[CloudFormation_ParameterDeclaration]);
+  has ResourceIdentifierSummaries => (is => 'ro', isa => ArrayRef[CloudFormation_ResourceIdentifierSummary]);
+  has ResourceTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Version => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Parameters' => {
+                                 'class' => 'Paws::CloudFormation::ParameterDeclaration',
+                                 'type' => 'ArrayRef[CloudFormation_ParameterDeclaration]'
+                               },
+               'DeclaredTransforms' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceTypes' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Capabilities' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Metadata' => {
+                               'type' => 'Str'
+                             },
+               'CapabilitiesReason' => {
+                                         'type' => 'Str'
+                                       },
+               'ResourceIdentifierSummaries' => {
+                                                  'type' => 'ArrayRef[CloudFormation_ResourceIdentifierSummary]',
+                                                  'class' => 'Paws::CloudFormation::ResourceIdentifierSummary'
+                                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -58,13 +102,13 @@ template.
 The value that is defined for the C<Metadata> property of the template.
 
 
-=head2 Parameters => ArrayRef[L<Paws::CloudFormation::ParameterDeclaration>]
+=head2 Parameters => ArrayRef[CloudFormation_ParameterDeclaration]
 
 A list of parameter declarations that describe various properties for
 each parameter.
 
 
-=head2 ResourceIdentifierSummaries => ArrayRef[L<Paws::CloudFormation::ResourceIdentifierSummary>]
+=head2 ResourceIdentifierSummaries => ArrayRef[CloudFormation_ResourceIdentifierSummary]
 
 A list of resource identifier summaries that describe the target
 resources of an import operation and the properties you can provide

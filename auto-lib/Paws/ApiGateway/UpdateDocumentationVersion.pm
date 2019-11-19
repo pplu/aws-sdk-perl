@@ -1,16 +1,49 @@
 
 package Paws::ApiGateway::UpdateDocumentationVersion;
-  use Moose;
-  has DocumentationVersion => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'doc_version', required => 1);
-  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]', traits => ['NameInRequest'], request_name => 'patchOperations');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_PatchOperation/;
+  has DocumentationVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PatchOperations => (is => 'ro', isa => ArrayRef[ApiGateway_PatchOperation], predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDocumentationVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/documentation/versions/{doc_version}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DocumentationVersion');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDocumentationVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/documentation/versions/{doc_version}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::DocumentationVersion');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PatchOperations' => 'patchOperations'
+                     },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'DocumentationVersion' => 1
+                  },
+  'types' => {
+               'DocumentationVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'PatchOperations' => {
+                                      'class' => 'Paws::ApiGateway::PatchOperation',
+                                      'type' => 'ArrayRef[ApiGateway_PatchOperation]'
+                                    },
+               'RestApiId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id',
+                    'DocumentationVersion' => 'doc_version'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +98,7 @@ version.
 
 
 
-=head2 PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]
+=head2 PatchOperations => ArrayRef[ApiGateway_PatchOperation]
 
 A list of update operations to be applied to the specified resource and
 in the order specified in this list.

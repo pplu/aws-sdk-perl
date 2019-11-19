@@ -1,9 +1,33 @@
 
 package Paws::IoT1ClickProjects::DescribeProjectResponse;
-  use Moose;
-  has Project => (is => 'ro', isa => 'Paws::IoT1ClickProjects::ProjectDescription', traits => ['NameInRequest'], request_name => 'project', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickProjects::Types qw/IoT1ClickProjects_ProjectDescription/;
+  has Project => (is => 'ro', isa => IoT1ClickProjects_ProjectDescription, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Project' => {
+                              'class' => 'Paws::IoT1ClickProjects::ProjectDescription',
+                              'type' => 'IoT1ClickProjects_ProjectDescription'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Project' => 1
+                  },
+  'NameInRequest' => {
+                       'Project' => 'project'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +39,7 @@ Paws::IoT1ClickProjects::DescribeProjectResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Project => L<Paws::IoT1ClickProjects::ProjectDescription>
+=head2 B<REQUIRED> Project => IoT1ClickProjects_ProjectDescription
 
 An object describing the project.
 

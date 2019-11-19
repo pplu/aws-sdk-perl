@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Rekognition::VideoMetadata;
-  use Moose;
-  has Codec => (is => 'ro', isa => 'Str');
-  has DurationMillis => (is => 'ro', isa => 'Int');
-  has Format => (is => 'ro', isa => 'Str');
-  has FrameHeight => (is => 'ro', isa => 'Int');
-  has FrameRate => (is => 'ro', isa => 'Num');
-  has FrameWidth => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::Rekognition::Types qw//;
+  has Codec => (is => 'ro', isa => Str);
+  has DurationMillis => (is => 'ro', isa => Int);
+  has Format => (is => 'ro', isa => Str);
+  has FrameHeight => (is => 'ro', isa => Int);
+  has FrameRate => (is => 'ro', isa => Num);
+  has FrameWidth => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FrameWidth' => {
+                                 'type' => 'Int'
+                               },
+               'FrameHeight' => {
+                                  'type' => 'Int'
+                                },
+               'FrameRate' => {
+                                'type' => 'Num'
+                              },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'DurationMillis' => {
+                                     'type' => 'Int'
+                                   },
+               'Codec' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

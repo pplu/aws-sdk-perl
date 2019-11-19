@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::GeoMatchSet;
-  use Moose;
-  has GeoMatchConstraints => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::GeoMatchConstraint]', required => 1);
-  has GeoMatchSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_GeoMatchConstraint/;
+  has GeoMatchConstraints => (is => 'ro', isa => ArrayRef[WAFRegional_GeoMatchConstraint], required => 1);
+  has GeoMatchSetId => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GeoMatchSetId' => {
+                                    'type' => 'Str'
+                                  },
+               'GeoMatchConstraints' => {
+                                          'type' => 'ArrayRef[WAFRegional_GeoMatchConstraint]',
+                                          'class' => 'Paws::WAFRegional::GeoMatchConstraint'
+                                        },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'GeoMatchConstraints' => 1,
+                    'GeoMatchSetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +66,7 @@ Contains one or more countries that AWS WAF will search for.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> GeoMatchConstraints => ArrayRef[L<Paws::WAFRegional::GeoMatchConstraint>]
+=head2 B<REQUIRED> GeoMatchConstraints => ArrayRef[WAFRegional_GeoMatchConstraint]
 
   An array of GeoMatchConstraint objects, which contain the country that
 you want AWS WAF to search for.

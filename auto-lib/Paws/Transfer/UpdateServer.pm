@@ -1,18 +1,54 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Transfer::UpdateServer;
-  use Moose;
-  has EndpointDetails => (is => 'ro', isa => 'Paws::Transfer::EndpointDetails');
-  has EndpointType => (is => 'ro', isa => 'Str');
-  has HostKey => (is => 'ro', isa => 'Str');
-  has IdentityProviderDetails => (is => 'ro', isa => 'Paws::Transfer::IdentityProviderDetails');
-  has LoggingRole => (is => 'ro', isa => 'Str');
-  has ServerId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Transfer::Types qw/Transfer_EndpointDetails Transfer_IdentityProviderDetails/;
+  has EndpointDetails => (is => 'ro', isa => Transfer_EndpointDetails, predicate => 1);
+  has EndpointType => (is => 'ro', isa => Str, predicate => 1);
+  has HostKey => (is => 'ro', isa => Str, predicate => 1);
+  has IdentityProviderDetails => (is => 'ro', isa => Transfer_IdentityProviderDetails, predicate => 1);
+  has LoggingRole => (is => 'ro', isa => Str, predicate => 1);
+  has ServerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateServer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Transfer::UpdateServerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateServer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Transfer::UpdateServerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ServerId' => 1
+                  },
+  'types' => {
+               'EndpointType' => {
+                                   'type' => 'Str'
+                                 },
+               'HostKey' => {
+                              'type' => 'Str'
+                            },
+               'ServerId' => {
+                               'type' => 'Str'
+                             },
+               'IdentityProviderDetails' => {
+                                              'type' => 'Transfer_IdentityProviderDetails',
+                                              'class' => 'Paws::Transfer::IdentityProviderDetails'
+                                            },
+               'EndpointDetails' => {
+                                      'type' => 'Transfer_EndpointDetails',
+                                      'class' => 'Paws::Transfer::EndpointDetails'
+                                    },
+               'LoggingRole' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +93,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head1 ATTRIBUTES
 
 
-=head2 EndpointDetails => L<Paws::Transfer::EndpointDetails>
+=head2 EndpointDetails => Transfer_EndpointDetails
 
 The virtual private cloud (VPC) endpoint settings that are configured
 for your SFTP server. With a VPC endpoint, your SFTP server isn't
@@ -89,7 +125,7 @@ in the I<AWS SFTP User Guide.>
 
 
 
-=head2 IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>
+=head2 IdentityProviderDetails => Transfer_IdentityProviderDetails
 
 This response parameter is an array containing all of the information
 required to call a customer's authentication API method.

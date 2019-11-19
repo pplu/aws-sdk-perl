@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::Change;
-  use Moose;
-  has ResourceChange => (is => 'ro', isa => 'Paws::CloudFormation::ResourceChange');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw/CloudFormation_ResourceChange/;
+  has ResourceChange => (is => 'ro', isa => CloudFormation_ResourceChange);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceChange' => {
+                                     'class' => 'Paws::CloudFormation::ResourceChange',
+                                     'type' => 'CloudFormation_ResourceChange'
+                                   },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ perform if you execute the change set.
 =head1 ATTRIBUTES
 
 
-=head2 ResourceChange => L<Paws::CloudFormation::ResourceChange>
+=head2 ResourceChange => CloudFormation_ResourceChange
 
   A C<ResourceChange> structure that describes the resource and action
 that AWS CloudFormation will perform.

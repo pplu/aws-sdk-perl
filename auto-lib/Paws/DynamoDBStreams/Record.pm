@@ -1,12 +1,58 @@
+# Generated from default/object.tt
 package Paws::DynamoDBStreams::Record;
-  use Moose;
-  has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest']);
-  has Dynamodb => (is => 'ro', isa => 'Paws::DynamoDBStreams::StreamRecord', request_name => 'dynamodb', traits => ['NameInRequest']);
-  has EventID => (is => 'ro', isa => 'Str', request_name => 'eventID', traits => ['NameInRequest']);
-  has EventName => (is => 'ro', isa => 'Str', request_name => 'eventName', traits => ['NameInRequest']);
-  has EventSource => (is => 'ro', isa => 'Str', request_name => 'eventSource', traits => ['NameInRequest']);
-  has EventVersion => (is => 'ro', isa => 'Str', request_name => 'eventVersion', traits => ['NameInRequest']);
-  has UserIdentity => (is => 'ro', isa => 'Paws::DynamoDBStreams::Identity', request_name => 'userIdentity', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDBStreams::Types qw/DynamoDBStreams_Identity DynamoDBStreams_StreamRecord/;
+  has AwsRegion => (is => 'ro', isa => Str);
+  has Dynamodb => (is => 'ro', isa => DynamoDBStreams_StreamRecord);
+  has EventID => (is => 'ro', isa => Str);
+  has EventName => (is => 'ro', isa => Str);
+  has EventSource => (is => 'ro', isa => Str);
+  has EventVersion => (is => 'ro', isa => Str);
+  has UserIdentity => (is => 'ro', isa => DynamoDBStreams_Identity);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EventID' => 'eventID',
+                       'UserIdentity' => 'userIdentity',
+                       'AwsRegion' => 'awsRegion',
+                       'EventVersion' => 'eventVersion',
+                       'EventName' => 'eventName',
+                       'EventSource' => 'eventSource',
+                       'Dynamodb' => 'dynamodb'
+                     },
+  'types' => {
+               'Dynamodb' => {
+                               'type' => 'DynamoDBStreams_StreamRecord',
+                               'class' => 'Paws::DynamoDBStreams::StreamRecord'
+                             },
+               'EventSource' => {
+                                  'type' => 'Str'
+                                },
+               'EventName' => {
+                                'type' => 'Str'
+                              },
+               'EventVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'EventID' => {
+                              'type' => 'Str'
+                            },
+               'UserIdentity' => {
+                                   'type' => 'DynamoDBStreams_Identity',
+                                   'class' => 'Paws::DynamoDBStreams::Identity'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +93,7 @@ A description of a unique event within a stream.
   The region in which the C<GetRecords> request was received.
 
 
-=head2 Dynamodb => L<Paws::DynamoDBStreams::StreamRecord>
+=head2 Dynamodb => DynamoDBStreams_StreamRecord
 
   The main body of the stream record, containing all of the
 DynamoDB-specific fields.
@@ -98,7 +144,7 @@ general, C<eventVersion> will only increase as the low-level DynamoDB
 Streams API evolves.
 
 
-=head2 UserIdentity => L<Paws::DynamoDBStreams::Identity>
+=head2 UserIdentity => DynamoDBStreams_Identity
 
   Items that are deleted by the Time to Live process after expiration
 have the following fields:

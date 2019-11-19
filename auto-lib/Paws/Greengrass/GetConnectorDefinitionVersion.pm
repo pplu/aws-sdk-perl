@@ -1,16 +1,48 @@
 
 package Paws::Greengrass::GetConnectorDefinitionVersion;
-  use Moose;
-  has ConnectorDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ConnectorDefinitionId', required => 1);
-  has ConnectorDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ConnectorDefinitionVersionId', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has ConnectorDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConnectorDefinitionVersionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetConnectorDefinitionVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/connectors/{ConnectorDefinitionId}/versions/{ConnectorDefinitionVersionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::GetConnectorDefinitionVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetConnectorDefinitionVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/connectors/{ConnectorDefinitionId}/versions/{ConnectorDefinitionVersionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::GetConnectorDefinitionVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConnectorDefinitionVersionId' => {
+                                                   'type' => 'Str'
+                                                 },
+               'ConnectorDefinitionId' => {
+                                            'type' => 'Str'
+                                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'ConnectorDefinitionId' => 1,
+                    'ConnectorDefinitionVersionId' => 1
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'NextToken'
+                    },
+  'ParamInURI' => {
+                    'ConnectorDefinitionId' => 'ConnectorDefinitionId',
+                    'ConnectorDefinitionVersionId' => 'ConnectorDefinitionVersionId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

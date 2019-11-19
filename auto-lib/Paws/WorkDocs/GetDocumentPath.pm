@@ -1,18 +1,59 @@
 
 package Paws::WorkDocs::GetDocumentPath;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId', required => 1);
-  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields');
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Fields => (is => 'ro', isa => Str, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDocumentPath');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/documents/{DocumentId}/path');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::GetDocumentPathResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDocumentPath');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/documents/{DocumentId}/path');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::GetDocumentPathResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'Fields' => 'fields',
+                      'Limit' => 'limit',
+                      'Marker' => 'marker'
+                    },
+  'IsRequired' => {
+                    'DocumentId' => 1
+                  },
+  'types' => {
+               'DocumentId' => {
+                                 'type' => 'Str'
+                               },
+               'Fields' => {
+                             'type' => 'Str'
+                           },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInURI' => {
+                    'DocumentId' => 'DocumentId'
+                  },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::LexModels::Message;
-  use Moose;
-  has Content => (is => 'ro', isa => 'Str', request_name => 'content', traits => ['NameInRequest'], required => 1);
-  has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest'], required => 1);
-  has GroupNumber => (is => 'ro', isa => 'Int', request_name => 'groupNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::LexModels::Types qw//;
+  has Content => (is => 'ro', isa => Str, required => 1);
+  has ContentType => (is => 'ro', isa => Str, required => 1);
+  has GroupNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'Content' => {
+                              'type' => 'Str'
+                            },
+               'GroupNumber' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'IsRequired' => {
+                    'Content' => 1,
+                    'ContentType' => 1
+                  },
+  'NameInRequest' => {
+                       'GroupNumber' => 'groupNumber',
+                       'Content' => 'content',
+                       'ContentType' => 'contentType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

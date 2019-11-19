@@ -1,15 +1,60 @@
+# Generated from default/object.tt
 package Paws::SSM::DocumentIdentifier;
-  use Moose;
-  has DocumentFormat => (is => 'ro', isa => 'Str');
-  has DocumentType => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Owner => (is => 'ro', isa => 'Str');
-  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SchemaVersion => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
-  has TargetType => (is => 'ro', isa => 'Str');
-  has VersionName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Tag/;
+  has DocumentFormat => (is => 'ro', isa => Str);
+  has DocumentType => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Owner => (is => 'ro', isa => Str);
+  has PlatformTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SchemaVersion => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[SSM_Tag]);
+  has TargetType => (is => 'ro', isa => Str);
+  has VersionName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DocumentFormat' => {
+                                     'type' => 'Str'
+                                   },
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'DocumentType' => {
+                                   'type' => 'Str'
+                                 },
+               'SchemaVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::SSM::Tag',
+                           'type' => 'ArrayRef[SSM_Tag]'
+                         },
+               'PlatformTypes' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'VersionName' => {
+                                  'type' => 'Str'
+                                },
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +125,7 @@ Describes the name of a Systems Manager document.
   The schema version.
 
 
-=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+=head2 Tags => ArrayRef[SSM_Tag]
 
   The tags, or metadata, that have been applied to the document.
 

@@ -1,11 +1,44 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Inspector::GetExclusionsPreviewResponse;
-  use Moose;
-  has ExclusionPreviews => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::ExclusionPreview]', traits => ['NameInRequest'], request_name => 'exclusionPreviews' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has PreviewStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'previewStatus' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Inspector::Types qw/Inspector_ExclusionPreview/;
+  has ExclusionPreviews => (is => 'ro', isa => ArrayRef[Inspector_ExclusionPreview]);
+  has NextToken => (is => 'ro', isa => Str);
+  has PreviewStatus => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PreviewStatus' => 1
+                  },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'PreviewStatus' => 'previewStatus',
+                       'ExclusionPreviews' => 'exclusionPreviews'
+                     },
+  'types' => {
+               'PreviewStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ExclusionPreviews' => {
+                                        'type' => 'ArrayRef[Inspector_ExclusionPreview]',
+                                        'class' => 'Paws::Inspector::ExclusionPreview'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +49,7 @@ Paws::Inspector::GetExclusionsPreviewResponse
 =head1 ATTRIBUTES
 
 
-=head2 ExclusionPreviews => ArrayRef[L<Paws::Inspector::ExclusionPreview>]
+=head2 ExclusionPreviews => ArrayRef[Inspector_ExclusionPreview]
 
 Information about the exclusions included in the preview.
 

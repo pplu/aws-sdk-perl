@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::Personalize::FeatureTransformation;
-  use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has DefaultParameters => (is => 'ro', isa => 'Paws::Personalize::FeaturizationParameters', request_name => 'defaultParameters', traits => ['NameInRequest']);
-  has FeatureTransformationArn => (is => 'ro', isa => 'Str', request_name => 'featureTransformationArn', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw/Personalize_FeaturizationParameters/;
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has DefaultParameters => (is => 'ro', isa => Personalize_FeaturizationParameters);
+  has FeatureTransformationArn => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'FeatureTransformationArn' => {
+                                               'type' => 'Str'
+                                             },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'DefaultParameters' => {
+                                        'class' => 'Paws::Personalize::FeaturizationParameters',
+                                        'type' => 'Personalize_FeaturizationParameters'
+                                      }
+             },
+  'NameInRequest' => {
+                       'FeatureTransformationArn' => 'featureTransformationArn',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime',
+                       'DefaultParameters' => 'defaultParameters',
+                       'Status' => 'status',
+                       'Name' => 'name',
+                       'CreationDateTime' => 'creationDateTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +90,7 @@ model training.
 transformation.
 
 
-=head2 DefaultParameters => L<Paws::Personalize::FeaturizationParameters>
+=head2 DefaultParameters => Personalize_FeaturizationParameters
 
   Provides the default parameters for feature transformation.
 

@@ -1,10 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MTurk::GetAssignmentResponse;
-  use Moose;
-  has Assignment => (is => 'ro', isa => 'Paws::MTurk::Assignment');
-  has HIT => (is => 'ro', isa => 'Paws::MTurk::HIT');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw/MTurk_HIT MTurk_Assignment/;
+  has Assignment => (is => 'ro', isa => MTurk_Assignment);
+  has HIT => (is => 'ro', isa => MTurk_HIT);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HIT' => {
+                          'type' => 'MTurk_HIT',
+                          'class' => 'Paws::MTurk::HIT'
+                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Assignment' => {
+                                 'class' => 'Paws::MTurk::Assignment',
+                                 'type' => 'MTurk_Assignment'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,12 +38,12 @@ Paws::MTurk::GetAssignmentResponse
 =head1 ATTRIBUTES
 
 
-=head2 Assignment => L<Paws::MTurk::Assignment>
+=head2 Assignment => MTurk_Assignment
 
 The assignment. The response includes one Assignment element.
 
 
-=head2 HIT => L<Paws::MTurk::HIT>
+=head2 HIT => MTurk_HIT
 
 The HIT associated with this assignment. The response includes one HIT
 element.

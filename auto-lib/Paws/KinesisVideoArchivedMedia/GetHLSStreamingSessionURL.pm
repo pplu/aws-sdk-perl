@@ -1,22 +1,62 @@
 
 package Paws::KinesisVideoArchivedMedia::GetHLSStreamingSessionURL;
-  use Moose;
-  has ContainerFormat => (is => 'ro', isa => 'Str');
-  has DiscontinuityMode => (is => 'ro', isa => 'Str');
-  has DisplayFragmentTimestamp => (is => 'ro', isa => 'Str');
-  has Expires => (is => 'ro', isa => 'Int');
-  has HLSFragmentSelector => (is => 'ro', isa => 'Paws::KinesisVideoArchivedMedia::HLSFragmentSelector');
-  has MaxMediaPlaylistFragmentResults => (is => 'ro', isa => 'Int');
-  has PlaybackMode => (is => 'ro', isa => 'Str');
-  has StreamARN => (is => 'ro', isa => 'Str');
-  has StreamName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisVideoArchivedMedia::Types qw/KinesisVideoArchivedMedia_HLSFragmentSelector/;
+  has ContainerFormat => (is => 'ro', isa => Str, predicate => 1);
+  has DiscontinuityMode => (is => 'ro', isa => Str, predicate => 1);
+  has DisplayFragmentTimestamp => (is => 'ro', isa => Str, predicate => 1);
+  has Expires => (is => 'ro', isa => Int, predicate => 1);
+  has HLSFragmentSelector => (is => 'ro', isa => KinesisVideoArchivedMedia_HLSFragmentSelector, predicate => 1);
+  has MaxMediaPlaylistFragmentResults => (is => 'ro', isa => Int, predicate => 1);
+  has PlaybackMode => (is => 'ro', isa => Str, predicate => 1);
+  has StreamARN => (is => 'ro', isa => Str, predicate => 1);
+  has StreamName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetHLSStreamingSessionURL');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/getHLSStreamingSessionURL');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisVideoArchivedMedia::GetHLSStreamingSessionURLOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetHLSStreamingSessionURL');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/getHLSStreamingSessionURL');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisVideoArchivedMedia::GetHLSStreamingSessionURLOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DiscontinuityMode' => {
+                                        'type' => 'Str'
+                                      },
+               'ContainerFormat' => {
+                                      'type' => 'Str'
+                                    },
+               'PlaybackMode' => {
+                                   'type' => 'Str'
+                                 },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               },
+               'MaxMediaPlaylistFragmentResults' => {
+                                                      'type' => 'Int'
+                                                    },
+               'Expires' => {
+                              'type' => 'Int'
+                            },
+               'DisplayFragmentTimestamp' => {
+                                               'type' => 'Str'
+                                             },
+               'HLSFragmentSelector' => {
+                                          'class' => 'Paws::KinesisVideoArchivedMedia::HLSFragmentSelector',
+                                          'type' => 'KinesisVideoArchivedMedia_HLSFragmentSelector'
+                                        },
+               'StreamARN' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -165,7 +205,7 @@ The default is 300 (5 minutes).
 
 
 
-=head2 HLSFragmentSelector => L<Paws::KinesisVideoArchivedMedia::HLSFragmentSelector>
+=head2 HLSFragmentSelector => KinesisVideoArchivedMedia_HLSFragmentSelector
 
 The time range of the requested fragment and the source of the
 timestamps.

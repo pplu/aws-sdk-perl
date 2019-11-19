@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glue::GetConnectionsFilter;
-  use Moose;
-  has ConnectionType => (is => 'ro', isa => 'Str');
-  has MatchCriteria => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Glue::Types qw//;
+  has ConnectionType => (is => 'ro', isa => Str);
+  has MatchCriteria => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MatchCriteria' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'ConnectionType' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

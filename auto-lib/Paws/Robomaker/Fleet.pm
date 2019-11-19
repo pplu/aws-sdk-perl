@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::Robomaker::Fleet;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has LastDeploymentJob => (is => 'ro', isa => 'Str', request_name => 'lastDeploymentJob', traits => ['NameInRequest']);
-  has LastDeploymentStatus => (is => 'ro', isa => 'Str', request_name => 'lastDeploymentStatus', traits => ['NameInRequest']);
-  has LastDeploymentTime => (is => 'ro', isa => 'Str', request_name => 'lastDeploymentTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has LastDeploymentJob => (is => 'ro', isa => Str);
+  has LastDeploymentStatus => (is => 'ro', isa => Str);
+  has LastDeploymentTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LastDeploymentJob' => 'lastDeploymentJob',
+                       'LastDeploymentTime' => 'lastDeploymentTime',
+                       'CreatedAt' => 'createdAt',
+                       'LastDeploymentStatus' => 'lastDeploymentStatus',
+                       'Arn' => 'arn',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LastDeploymentStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'LastDeploymentTime' => {
+                                         'type' => 'Str'
+                                       },
+               'LastDeploymentJob' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

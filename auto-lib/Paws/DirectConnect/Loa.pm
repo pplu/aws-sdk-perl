@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::Loa;
-  use Moose;
-  has LoaContent => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaContent' );
-  has LoaContentType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaContentType' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw//;
+  has LoaContent => (is => 'ro', isa => Str);
+  has LoaContentType => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LoaContentType' => {
+                                     'type' => 'Str'
+                                   },
+               'LoaContent' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'LoaContent' => 'loaContent',
+                       'LoaContentType' => 'loaContentType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

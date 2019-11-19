@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::SageMaker::AlgorithmSpecification;
-  use Moose;
-  has AlgorithmName => (is => 'ro', isa => 'Str');
-  has MetricDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricDefinition]');
-  has TrainingImage => (is => 'ro', isa => 'Str');
-  has TrainingInputMode => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_MetricDefinition/;
+  has AlgorithmName => (is => 'ro', isa => Str);
+  has MetricDefinitions => (is => 'ro', isa => ArrayRef[SageMaker_MetricDefinition]);
+  has TrainingImage => (is => 'ro', isa => Str);
+  has TrainingInputMode => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TrainingInputMode' => 1
+                  },
+  'types' => {
+               'AlgorithmName' => {
+                                    'type' => 'Str'
+                                  },
+               'TrainingInputMode' => {
+                                        'type' => 'Str'
+                                      },
+               'TrainingImage' => {
+                                    'type' => 'Str'
+                                  },
+               'MetricDefinitions' => {
+                                        'class' => 'Paws::SageMaker::MetricDefinition',
+                                        'type' => 'ArrayRef[SageMaker_MetricDefinition]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +86,7 @@ Marketplace. If you specify a value for this parameter, you can't
 specify a value for C<TrainingImage>.
 
 
-=head2 MetricDefinitions => ArrayRef[L<Paws::SageMaker::MetricDefinition>]
+=head2 MetricDefinitions => ArrayRef[SageMaker_MetricDefinition]
 
   A list of metric definition objects. Each object specifies the metric
 name and regular expressions used to parse algorithm logs. Amazon

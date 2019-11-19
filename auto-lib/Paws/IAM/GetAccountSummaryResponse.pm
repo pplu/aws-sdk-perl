@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetAccountSummaryResponse;
-  use Moose;
-  has SummaryMap => (is => 'ro', isa => 'Paws::IAM::SummaryMapType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_summaryMapType/;
+  has SummaryMap => (is => 'ro', isa => IAM_summaryMapType);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SummaryMap' => {
+                                 'type' => 'IAM_summaryMapType',
+                                 'class' => 'Paws::IAM::SummaryMapType'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::IAM::GetAccountSummaryResponse
 =head1 ATTRIBUTES
 
 
-=head2 SummaryMap => L<Paws::IAM::SummaryMapType>
+=head2 SummaryMap => IAM_summaryMapType
 
 A set of keyE<ndash>value pairs containing information about IAM entity
 usage and IAM quotas.

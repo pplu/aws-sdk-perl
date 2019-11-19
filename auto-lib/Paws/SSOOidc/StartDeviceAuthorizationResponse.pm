@@ -1,14 +1,54 @@
 
 package Paws::SSOOidc::StartDeviceAuthorizationResponse;
-  use Moose;
-  has DeviceCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deviceCode');
-  has ExpiresIn => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'expiresIn');
-  has Interval => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'interval');
-  has UserCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userCode');
-  has VerificationUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'verificationUri');
-  has VerificationUriComplete => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'verificationUriComplete');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSOOidc::Types qw//;
+  has DeviceCode => (is => 'ro', isa => Str);
+  has ExpiresIn => (is => 'ro', isa => Int);
+  has Interval => (is => 'ro', isa => Int);
+  has UserCode => (is => 'ro', isa => Str);
+  has VerificationUri => (is => 'ro', isa => Str);
+  has VerificationUriComplete => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DeviceCode' => 'deviceCode',
+                       'Interval' => 'interval',
+                       'VerificationUri' => 'verificationUri',
+                       'ExpiresIn' => 'expiresIn',
+                       'VerificationUriComplete' => 'verificationUriComplete',
+                       'UserCode' => 'userCode'
+                     },
+  'types' => {
+               'ExpiresIn' => {
+                                'type' => 'Int'
+                              },
+               'VerificationUri' => {
+                                      'type' => 'Str'
+                                    },
+               'Interval' => {
+                               'type' => 'Int'
+                             },
+               'DeviceCode' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VerificationUriComplete' => {
+                                              'type' => 'Str'
+                                            },
+               'UserCode' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

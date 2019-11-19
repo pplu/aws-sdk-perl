@@ -1,17 +1,43 @@
 
 package Paws::SecurityHub::GetFindings;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'Paws::SecurityHub::AwsSecurityFindingFilters');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SortCriteria => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::SortCriterion]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::SecurityHub::Types qw/SecurityHub_AwsSecurityFindingFilters SecurityHub_SortCriterion/;
+  has Filters => (is => 'ro', isa => SecurityHub_AwsSecurityFindingFilters, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SortCriteria => (is => 'ro', isa => ArrayRef[SecurityHub_SortCriterion], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetFindings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/findings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::GetFindingsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetFindings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/findings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::GetFindingsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'SortCriteria' => {
+                                   'class' => 'Paws::SecurityHub::SortCriterion',
+                                   'type' => 'ArrayRef[SecurityHub_SortCriterion]'
+                                 },
+               'Filters' => {
+                              'type' => 'SecurityHub_AwsSecurityFindingFilters',
+                              'class' => 'Paws::SecurityHub::AwsSecurityFindingFilters'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -687,7 +713,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
-=head2 Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>
+=head2 Filters => SecurityHub_AwsSecurityFindingFilters
 
 The findings attributes used to define a condition to filter the
 findings returned.
@@ -709,7 +735,7 @@ C<nextToken> from the previous response to continue listing data.
 
 
 
-=head2 SortCriteria => ArrayRef[L<Paws::SecurityHub::SortCriterion>]
+=head2 SortCriteria => ArrayRef[SecurityHub_SortCriterion]
 
 Findings attributes used to sort the list of findings returned.
 

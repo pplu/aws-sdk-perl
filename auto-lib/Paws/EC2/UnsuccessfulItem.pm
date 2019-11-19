@@ -1,7 +1,29 @@
 package Paws::EC2::UnsuccessfulItem;
-  use Moose;
-  has Error => (is => 'ro', isa => 'Paws::EC2::UnsuccessfulItemError', request_name => 'error', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_UnsuccessfulItemError/;
+  has Error => (is => 'ro', isa => EC2_UnsuccessfulItemError);
+  has ResourceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Error' => {
+                            'type' => 'EC2_UnsuccessfulItemError',
+                            'class' => 'Paws::EC2::UnsuccessfulItemError'
+                          },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'ResourceId' => 'resourceId',
+                       'Error' => 'error'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +59,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Error => L<Paws::EC2::UnsuccessfulItemError>
+=head2 Error => EC2_UnsuccessfulItemError
 
   Information about the error.
 

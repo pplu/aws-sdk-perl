@@ -1,13 +1,52 @@
+# Generated from default/object.tt
 package Paws::S3Control::JobListDescriptor;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has JobId => (is => 'ro', isa => 'Str');
-  has Operation => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Int');
-  has ProgressSummary => (is => 'ro', isa => 'Paws::S3Control::JobProgressSummary');
-  has Status => (is => 'ro', isa => 'Str');
-  has TerminationDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3Control::Types qw/S3Control_JobProgressSummary/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has JobId => (is => 'ro', isa => Str);
+  has Operation => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Int);
+  has ProgressSummary => (is => 'ro', isa => S3Control_JobProgressSummary);
+  has Status => (is => 'ro', isa => Str);
+  has TerminationDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProgressSummary' => {
+                                      'class' => 'Paws::S3Control::JobProgressSummary',
+                                      'type' => 'S3Control_JobProgressSummary'
+                                    },
+               'TerminationDate' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Operation' => {
+                                'type' => 'Str'
+                              },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +110,7 @@ object listed in the manifest.
   The current priority for the specified job.
 
 
-=head2 ProgressSummary => L<Paws::S3Control::JobProgressSummary>
+=head2 ProgressSummary => S3Control_JobProgressSummary
 
   Describes the total number of tasks that the specified job has
 executed, the number of tasks that succeeded, and the number of tasks

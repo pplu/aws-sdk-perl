@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::ApplicationCodeConfiguration;
-  use Moose;
-  has CodeContent => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::CodeContent');
-  has CodeContentType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_CodeContent/;
+  has CodeContent => (is => 'ro', isa => KinesisAnalyticsV2_CodeContent);
+  has CodeContentType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CodeContentType' => {
+                                      'type' => 'Str'
+                                    },
+               'CodeContent' => {
+                                  'class' => 'Paws::KinesisAnalyticsV2::CodeContent',
+                                  'type' => 'KinesisAnalyticsV2_CodeContent'
+                                }
+             },
+  'IsRequired' => {
+                    'CodeContentType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ application.
 =head1 ATTRIBUTES
 
 
-=head2 CodeContent => L<Paws::KinesisAnalyticsV2::CodeContent>
+=head2 CodeContent => KinesisAnalyticsV2_CodeContent
 
   The location and type of the application code.
 

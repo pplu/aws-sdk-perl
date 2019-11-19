@@ -1,20 +1,103 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Channel;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has ChannelClass => (is => 'ro', isa => 'Str', request_name => 'channelClass', traits => ['NameInRequest']);
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', request_name => 'destinations', traits => ['NameInRequest']);
-  has EgressEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ChannelEgressEndpoint]', request_name => 'egressEndpoints', traits => ['NameInRequest']);
-  has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', request_name => 'encoderSettings', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', request_name => 'inputAttachments', traits => ['NameInRequest']);
-  has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', request_name => 'inputSpecification', traits => ['NameInRequest']);
-  has LogLevel => (is => 'ro', isa => 'Str', request_name => 'logLevel', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has PipelineDetails => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::PipelineDetail]', request_name => 'pipelineDetails', traits => ['NameInRequest']);
-  has PipelinesRunningCount => (is => 'ro', isa => 'Int', request_name => 'pipelinesRunningCount', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::MediaLive::Types qw/MediaLive_Tags MediaLive_OutputDestination MediaLive_PipelineDetail MediaLive_InputSpecification MediaLive_EncoderSettings MediaLive_ChannelEgressEndpoint MediaLive_InputAttachment/;
+  has Arn => (is => 'ro', isa => Str);
+  has ChannelClass => (is => 'ro', isa => Str);
+  has Destinations => (is => 'ro', isa => ArrayRef[MediaLive_OutputDestination]);
+  has EgressEndpoints => (is => 'ro', isa => ArrayRef[MediaLive_ChannelEgressEndpoint]);
+  has EncoderSettings => (is => 'ro', isa => MediaLive_EncoderSettings);
+  has Id => (is => 'ro', isa => Str);
+  has InputAttachments => (is => 'ro', isa => ArrayRef[MediaLive_InputAttachment]);
+  has InputSpecification => (is => 'ro', isa => MediaLive_InputSpecification);
+  has LogLevel => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has PipelineDetails => (is => 'ro', isa => ArrayRef[MediaLive_PipelineDetail]);
+  has PipelinesRunningCount => (is => 'ro', isa => Int);
+  has RoleArn => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => MediaLive_Tags);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PipelineDetails' => 'pipelineDetails',
+                       'InputSpecification' => 'inputSpecification',
+                       'RoleArn' => 'roleArn',
+                       'Tags' => 'tags',
+                       'Destinations' => 'destinations',
+                       'EncoderSettings' => 'encoderSettings',
+                       'Id' => 'id',
+                       'ChannelClass' => 'channelClass',
+                       'Arn' => 'arn',
+                       'InputAttachments' => 'inputAttachments',
+                       'LogLevel' => 'logLevel',
+                       'PipelinesRunningCount' => 'pipelinesRunningCount',
+                       'State' => 'state',
+                       'EgressEndpoints' => 'egressEndpoints',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'InputSpecification' => {
+                                         'type' => 'MediaLive_InputSpecification',
+                                         'class' => 'Paws::MediaLive::InputSpecification'
+                                       },
+               'PipelineDetails' => {
+                                      'type' => 'ArrayRef[MediaLive_PipelineDetail]',
+                                      'class' => 'Paws::MediaLive::PipelineDetail'
+                                    },
+               'ChannelClass' => {
+                                   'type' => 'Str'
+                                 },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Tags' => {
+                           'type' => 'MediaLive_Tags',
+                           'class' => 'Paws::MediaLive::Tags'
+                         },
+               'EncoderSettings' => {
+                                      'type' => 'MediaLive_EncoderSettings',
+                                      'class' => 'Paws::MediaLive::EncoderSettings'
+                                    },
+               'Destinations' => {
+                                   'class' => 'Paws::MediaLive::OutputDestination',
+                                   'type' => 'ArrayRef[MediaLive_OutputDestination]'
+                                 },
+               'InputAttachments' => {
+                                       'type' => 'ArrayRef[MediaLive_InputAttachment]',
+                                       'class' => 'Paws::MediaLive::InputAttachment'
+                                     },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'EgressEndpoints' => {
+                                      'class' => 'Paws::MediaLive::ChannelEgressEndpoint',
+                                      'type' => 'ArrayRef[MediaLive_ChannelEgressEndpoint]'
+                                    },
+               'PipelinesRunningCount' => {
+                                            'type' => 'Int'
+                                          },
+               'LogLevel' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,19 +144,19 @@ Placeholder documentation for Channel
 or SINGLE_PIPELINE for a channel with one pipeline.
 
 
-=head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
+=head2 Destinations => ArrayRef[MediaLive_OutputDestination]
 
   A list of destinations of the channel. For UDP outputs, there is one
 destination per output. For other types (HLS, for example), there is
 one destination per packager.
 
 
-=head2 EgressEndpoints => ArrayRef[L<Paws::MediaLive::ChannelEgressEndpoint>]
+=head2 EgressEndpoints => ArrayRef[MediaLive_ChannelEgressEndpoint]
 
   The endpoints where outgoing connections initiate from
 
 
-=head2 EncoderSettings => L<Paws::MediaLive::EncoderSettings>
+=head2 EncoderSettings => MediaLive_EncoderSettings
 
   
 
@@ -83,12 +166,12 @@ one destination per packager.
   The unique id of the channel.
 
 
-=head2 InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]
+=head2 InputAttachments => ArrayRef[MediaLive_InputAttachment]
 
   List of input attachments for channel.
 
 
-=head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
+=head2 InputSpecification => MediaLive_InputSpecification
 
   
 
@@ -103,7 +186,7 @@ one destination per packager.
   The name of the channel. (user-mutable)
 
 
-=head2 PipelineDetails => ArrayRef[L<Paws::MediaLive::PipelineDetail>]
+=head2 PipelineDetails => ArrayRef[MediaLive_PipelineDetail]
 
   Runtime details for the pipelines of a running channel.
 
@@ -124,7 +207,7 @@ Channel.
   
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
   A collection of key-value pairs.
 

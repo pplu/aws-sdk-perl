@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_Tag/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CodeDeploy_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::TagResourceOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::TagResourceOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'Tags' => 1
+                  },
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'ArrayRef[CodeDeploy_Tag]',
+                           'class' => 'Paws::CodeDeploy::Tag'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +77,7 @@ group.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[CodeDeploy_Tag]
 
 A list of tags that C<TagResource> associates with a resource. The
 resource is identified by the C<ResourceArn> input parameter.

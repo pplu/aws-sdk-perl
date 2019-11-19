@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::DMS::SupportedEndpointType;
-  use Moose;
-  has EndpointType => (is => 'ro', isa => 'Str');
-  has EngineDisplayName => (is => 'ro', isa => 'Str');
-  has EngineName => (is => 'ro', isa => 'Str');
-  has SupportsCDC => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DMS::Types qw//;
+  has EndpointType => (is => 'ro', isa => Str);
+  has EngineDisplayName => (is => 'ro', isa => Str);
+  has EngineName => (is => 'ro', isa => Str);
+  has SupportsCDC => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineName' => {
+                                 'type' => 'Str'
+                               },
+               'SupportsCDC' => {
+                                  'type' => 'Bool'
+                                },
+               'EndpointType' => {
+                                   'type' => 'Str'
+                                 },
+               'EngineDisplayName' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

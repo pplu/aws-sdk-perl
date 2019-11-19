@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CloudWatchEvents::BatchParameters;
-  use Moose;
-  has ArrayProperties => (is => 'ro', isa => 'Paws::CloudWatchEvents::BatchArrayProperties');
-  has JobDefinition => (is => 'ro', isa => 'Str', required => 1);
-  has JobName => (is => 'ro', isa => 'Str', required => 1);
-  has RetryStrategy => (is => 'ro', isa => 'Paws::CloudWatchEvents::BatchRetryStrategy');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_BatchArrayProperties CloudWatchEvents_BatchRetryStrategy/;
+  has ArrayProperties => (is => 'ro', isa => CloudWatchEvents_BatchArrayProperties);
+  has JobDefinition => (is => 'ro', isa => Str, required => 1);
+  has JobName => (is => 'ro', isa => Str, required => 1);
+  has RetryStrategy => (is => 'ro', isa => CloudWatchEvents_BatchRetryStrategy);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'JobName' => 1,
+                    'JobDefinition' => 1
+                  },
+  'types' => {
+               'ArrayProperties' => {
+                                      'type' => 'CloudWatchEvents_BatchArrayProperties',
+                                      'class' => 'Paws::CloudWatchEvents::BatchArrayProperties'
+                                    },
+               'RetryStrategy' => {
+                                    'type' => 'CloudWatchEvents_BatchRetryStrategy',
+                                    'class' => 'Paws::CloudWatchEvents::BatchRetryStrategy'
+                                  },
+               'JobDefinition' => {
+                                    'type' => 'Str'
+                                  },
+               'JobName' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +71,7 @@ The custom parameters to be used when the target is an AWS Batch job.
 =head1 ATTRIBUTES
 
 
-=head2 ArrayProperties => L<Paws::CloudWatchEvents::BatchArrayProperties>
+=head2 ArrayProperties => CloudWatchEvents_BatchArrayProperties
 
   The array properties for the submitted job, such as the size of the
 array. The array size can be between 2 and 10,000. If you specify array
@@ -59,7 +91,7 @@ AWS Batch job. This job definition must already exist.
 Batch job.
 
 
-=head2 RetryStrategy => L<Paws::CloudWatchEvents::BatchRetryStrategy>
+=head2 RetryStrategy => CloudWatchEvents_BatchRetryStrategy
 
   The retry strategy to use for failed jobs if the target is an AWS Batch
 job. The retry strategy is the number of times to retry the failed job

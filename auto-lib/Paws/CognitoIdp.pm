@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CognitoIdp;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'cognito-idp' }
   sub signing_name { 'cognito-idp' }
   sub version { '2016-04-18' }
   sub target_prefix { 'AWSCognitoIdentityProviderService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -771,7 +773,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/cognito/>
 
 =over
 
-=item CustomAttributes => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>]
+=item CustomAttributes => ArrayRef[CognitoIdp_SchemaAttributeType]
 
 =item UserPoolId => Str
 
@@ -815,7 +817,7 @@ Calling this action requires developer credentials.
 
 =item UserPoolId => Str
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
 
 =back
@@ -838,7 +840,7 @@ Calling this action requires developer credentials.
 
 =item UserPoolId => Str
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
 =item [DesiredDeliveryMediums => ArrayRef[Str|Undef]]
 
@@ -848,9 +850,9 @@ Calling this action requires developer credentials.
 
 =item [TemporaryPassword => Str]
 
-=item [UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]]
+=item [UserAttributes => ArrayRef[CognitoIdp_AttributeType]]
 
-=item [ValidationData => ArrayRef[L<Paws::CognitoIdp::AttributeType>]]
+=item [ValidationData => ArrayRef[CognitoIdp_AttributeType]]
 
 
 =back
@@ -925,7 +927,7 @@ Calling this action requires developer credentials.
 
 =over
 
-=item User => L<Paws::CognitoIdp::ProviderUserIdentifierType>
+=item User => CognitoIdp_ProviderUserIdentifierType
 
 =item UserPoolId => Str
 
@@ -1087,13 +1089,13 @@ Calling this action requires developer credentials.
 
 =item UserPoolId => Str
 
-=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+=item [AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType]
 
-=item [AuthParameters => L<Paws::CognitoIdp::AuthParametersType>]
+=item [AuthParameters => CognitoIdp_AuthParametersType]
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
-=item [ContextData => L<Paws::CognitoIdp::ContextDataType>]
+=item [ContextData => CognitoIdp_ContextDataType]
 
 
 =back
@@ -1111,9 +1113,9 @@ Calling this action requires developer credentials.
 
 =over
 
-=item DestinationUser => L<Paws::CognitoIdp::ProviderUserIdentifierType>
+=item DestinationUser => CognitoIdp_ProviderUserIdentifierType
 
-=item SourceUser => L<Paws::CognitoIdp::ProviderUserIdentifierType>
+=item SourceUser => CognitoIdp_ProviderUserIdentifierType
 
 =item UserPoolId => Str
 
@@ -1249,7 +1251,7 @@ Calling this action requires developer credentials.
 
 =item UserPoolId => Str
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
 
 =back
@@ -1284,13 +1286,13 @@ Calling this action requires developer credentials.
 
 =item UserPoolId => Str
 
-=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+=item [AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType]
 
-=item [ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>]
+=item [ChallengeResponses => CognitoIdp_ChallengeResponsesType]
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
-=item [ContextData => L<Paws::CognitoIdp::ContextDataType>]
+=item [ContextData => CognitoIdp_ContextDataType]
 
 =item [Session => Str]
 
@@ -1314,9 +1316,9 @@ Calling this action requires developer credentials.
 
 =item UserPoolId => Str
 
-=item [SMSMfaSettings => L<Paws::CognitoIdp::SMSMfaSettingsType>]
+=item [SMSMfaSettings => CognitoIdp_SMSMfaSettingsType]
 
-=item [SoftwareTokenMfaSettings => L<Paws::CognitoIdp::SoftwareTokenMfaSettingsType>]
+=item [SoftwareTokenMfaSettings => CognitoIdp_SoftwareTokenMfaSettingsType]
 
 
 =back
@@ -1370,7 +1372,7 @@ user status will be set to C<Confirmed>.
 
 =over
 
-=item MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>]
+=item MFAOptions => ArrayRef[CognitoIdp_MFAOptionType]
 
 =item Username => Str
 
@@ -1441,13 +1443,13 @@ Calling this action requires developer credentials.
 
 =over
 
-=item UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=item UserAttributes => ArrayRef[CognitoIdp_AttributeType]
 
 =item Username => Str
 
 =item UserPoolId => Str
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
 
 =back
@@ -1537,7 +1539,7 @@ Changes the password for a specified user in a user pool.
 
 =item [DeviceName => Str]
 
-=item [DeviceSecretVerifierConfig => L<Paws::CognitoIdp::DeviceSecretVerifierConfigType>]
+=item [DeviceSecretVerifierConfig => CognitoIdp_DeviceSecretVerifierConfigType]
 
 
 =back
@@ -1562,13 +1564,13 @@ device tracking.
 
 =item Username => Str
 
-=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+=item [AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType]
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
 =item [SecretHash => Str]
 
-=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+=item [UserContextData => CognitoIdp_UserContextDataType]
 
 
 =back
@@ -1591,15 +1593,15 @@ password.
 
 =item Username => Str
 
-=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+=item [AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType]
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
 =item [ForceAliasCreation => Bool]
 
 =item [SecretHash => Str]
 
-=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+=item [UserContextData => CognitoIdp_UserContextDataType]
 
 
 =back
@@ -1642,7 +1644,7 @@ Calling this action requires developer credentials.
 
 =over
 
-=item ProviderDetails => L<Paws::CognitoIdp::ProviderDetailsType>
+=item ProviderDetails => CognitoIdp_ProviderDetailsType
 
 =item ProviderName => Str
 
@@ -1650,7 +1652,7 @@ Calling this action requires developer credentials.
 
 =item UserPoolId => Str
 
-=item [AttributeMapping => L<Paws::CognitoIdp::AttributeMappingType>]
+=item [AttributeMapping => CognitoIdp_AttributeMappingType]
 
 =item [IdpIdentifiers => ArrayRef[Str|Undef]]
 
@@ -1674,7 +1676,7 @@ Creates an identity provider for a user pool.
 
 =item UserPoolId => Str
 
-=item [Scopes => ArrayRef[L<Paws::CognitoIdp::ResourceServerScopeType>]]
+=item [Scopes => ArrayRef[CognitoIdp_ResourceServerScopeType]]
 
 
 =back
@@ -1712,41 +1714,41 @@ Creates the user import job.
 
 =item PoolName => Str
 
-=item [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>]
+=item [AdminCreateUserConfig => CognitoIdp_AdminCreateUserConfigType]
 
 =item [AliasAttributes => ArrayRef[Str|Undef]]
 
 =item [AutoVerifiedAttributes => ArrayRef[Str|Undef]]
 
-=item [DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>]
+=item [DeviceConfiguration => CognitoIdp_DeviceConfigurationType]
 
-=item [EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>]
+=item [EmailConfiguration => CognitoIdp_EmailConfigurationType]
 
 =item [EmailVerificationMessage => Str]
 
 =item [EmailVerificationSubject => Str]
 
-=item [LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>]
+=item [LambdaConfig => CognitoIdp_LambdaConfigType]
 
 =item [MfaConfiguration => Str]
 
-=item [Policies => L<Paws::CognitoIdp::UserPoolPolicyType>]
+=item [Policies => CognitoIdp_UserPoolPolicyType]
 
-=item [Schema => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>]]
+=item [Schema => ArrayRef[CognitoIdp_SchemaAttributeType]]
 
 =item [SmsAuthenticationMessage => Str]
 
-=item [SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>]
+=item [SmsConfiguration => CognitoIdp_SmsConfigurationType]
 
 =item [SmsVerificationMessage => Str]
 
 =item [UsernameAttributes => ArrayRef[Str|Undef]]
 
-=item [UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>]
+=item [UserPoolAddOns => CognitoIdp_UserPoolAddOnsType]
 
-=item [UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>]
+=item [UserPoolTags => CognitoIdp_UserPoolTagsType]
 
-=item [VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>]
+=item [VerificationMessageTemplate => CognitoIdp_VerificationMessageTemplateType]
 
 
 =back
@@ -1773,7 +1775,7 @@ the pool.
 
 =item [AllowedOAuthScopes => ArrayRef[Str|Undef]]
 
-=item [AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>]
+=item [AnalyticsConfiguration => CognitoIdp_AnalyticsConfigurationType]
 
 =item [CallbackURLs => ArrayRef[Str|Undef]]
 
@@ -1813,7 +1815,7 @@ Creates the user pool client.
 
 =item UserPoolId => Str
 
-=item [CustomDomainConfig => L<Paws::CognitoIdp::CustomDomainConfigType>]
+=item [CustomDomainConfig => CognitoIdp_CustomDomainConfigType]
 
 
 =back
@@ -2117,13 +2119,13 @@ Forgets the specified device.
 
 =item Username => Str
 
-=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+=item [AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType]
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
 =item [SecretHash => Str]
 
-=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+=item [UserContextData => CognitoIdp_UserContextDataType]
 
 
 =back
@@ -2277,7 +2279,7 @@ Gets the user attributes and metadata for a user.
 
 =item AttributeName => Str
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
 
 =back
@@ -2330,13 +2332,13 @@ Signs out users from all devices.
 
 =item ClientId => Str
 
-=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+=item [AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType]
 
-=item [AuthParameters => L<Paws::CognitoIdp::AuthParametersType>]
+=item [AuthParameters => CognitoIdp_AuthParametersType]
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
-=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+=item [UserContextData => CognitoIdp_UserContextDataType]
 
 
 =back
@@ -2566,13 +2568,13 @@ Calling this action requires developer credentials.
 
 =item Username => Str
 
-=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+=item [AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType]
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
 =item [SecretHash => Str]
 
-=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+=item [UserContextData => CognitoIdp_UserContextDataType]
 
 
 =back
@@ -2593,15 +2595,15 @@ specific user in the user pool.
 
 =item ClientId => Str
 
-=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+=item [AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType]
 
-=item [ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>]
+=item [ChallengeResponses => CognitoIdp_ChallengeResponsesType]
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
 =item [Session => Str]
 
-=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+=item [UserContextData => CognitoIdp_UserContextDataType]
 
 
 =back
@@ -2619,13 +2621,13 @@ Responds to the authentication challenge.
 
 =item UserPoolId => Str
 
-=item [AccountTakeoverRiskConfiguration => L<Paws::CognitoIdp::AccountTakeoverRiskConfigurationType>]
+=item [AccountTakeoverRiskConfiguration => CognitoIdp_AccountTakeoverRiskConfigurationType]
 
 =item [ClientId => Str]
 
-=item [CompromisedCredentialsRiskConfiguration => L<Paws::CognitoIdp::CompromisedCredentialsRiskConfigurationType>]
+=item [CompromisedCredentialsRiskConfiguration => CognitoIdp_CompromisedCredentialsRiskConfigurationType]
 
-=item [RiskExceptionConfiguration => L<Paws::CognitoIdp::RiskExceptionConfigurationType>]
+=item [RiskExceptionConfiguration => CognitoIdp_RiskExceptionConfigurationType]
 
 
 =back
@@ -2684,9 +2686,9 @@ will throw an error.
 
 =item AccessToken => Str
 
-=item [SMSMfaSettings => L<Paws::CognitoIdp::SMSMfaSettingsType>]
+=item [SMSMfaSettings => CognitoIdp_SMSMfaSettingsType]
 
-=item [SoftwareTokenMfaSettings => L<Paws::CognitoIdp::SoftwareTokenMfaSettingsType>]
+=item [SoftwareTokenMfaSettings => CognitoIdp_SoftwareTokenMfaSettingsType]
 
 
 =back
@@ -2711,9 +2713,9 @@ choose an MFA option will be returned during sign in.
 
 =item [MfaConfiguration => Str]
 
-=item [SmsMfaConfiguration => L<Paws::CognitoIdp::SmsMfaConfigType>]
+=item [SmsMfaConfiguration => CognitoIdp_SmsMfaConfigType]
 
-=item [SoftwareTokenMfaConfiguration => L<Paws::CognitoIdp::SoftwareTokenMfaConfigType>]
+=item [SoftwareTokenMfaConfiguration => CognitoIdp_SoftwareTokenMfaConfigType]
 
 
 =back
@@ -2731,7 +2733,7 @@ Set the user pool multi-factor authentication (MFA) configuration.
 
 =item AccessToken => Str
 
-=item MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>]
+=item MFAOptions => ArrayRef[CognitoIdp_MFAOptionType]
 
 
 =back
@@ -2756,17 +2758,17 @@ instead.
 
 =item Username => Str
 
-=item [AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>]
+=item [AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType]
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
 =item [SecretHash => Str]
 
-=item [UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]]
+=item [UserAttributes => ArrayRef[CognitoIdp_AttributeType]]
 
-=item [UserContextData => L<Paws::CognitoIdp::UserContextDataType>]
+=item [UserContextData => CognitoIdp_UserContextDataType]
 
-=item [ValidationData => ArrayRef[L<Paws::CognitoIdp::AttributeType>]]
+=item [ValidationData => ArrayRef[CognitoIdp_AttributeType]]
 
 
 =back
@@ -2821,7 +2823,7 @@ Stops the user import job.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::CognitoIdp::UserPoolTagsType>
+=item Tags => CognitoIdp_UserPoolTagsType
 
 
 =back
@@ -2954,11 +2956,11 @@ default value.
 
 =item UserPoolId => Str
 
-=item [AttributeMapping => L<Paws::CognitoIdp::AttributeMappingType>]
+=item [AttributeMapping => CognitoIdp_AttributeMappingType]
 
 =item [IdpIdentifiers => ArrayRef[Str|Undef]]
 
-=item [ProviderDetails => L<Paws::CognitoIdp::ProviderDetailsType>]
+=item [ProviderDetails => CognitoIdp_ProviderDetailsType]
 
 
 =back
@@ -2980,7 +2982,7 @@ Updates identity provider information for a user pool.
 
 =item UserPoolId => Str
 
-=item [Scopes => ArrayRef[L<Paws::CognitoIdp::ResourceServerScopeType>]]
+=item [Scopes => ArrayRef[CognitoIdp_ResourceServerScopeType]]
 
 
 =back
@@ -3002,9 +3004,9 @@ default value.
 
 =item AccessToken => Str
 
-=item UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=item UserAttributes => ArrayRef[CognitoIdp_AttributeType]
 
-=item [ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>]
+=item [ClientMetadata => CognitoIdp_ClientMetadataType]
 
 
 =back
@@ -3022,35 +3024,35 @@ Allows a user to update a specific attribute (one at a time).
 
 =item UserPoolId => Str
 
-=item [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>]
+=item [AdminCreateUserConfig => CognitoIdp_AdminCreateUserConfigType]
 
 =item [AutoVerifiedAttributes => ArrayRef[Str|Undef]]
 
-=item [DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>]
+=item [DeviceConfiguration => CognitoIdp_DeviceConfigurationType]
 
-=item [EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>]
+=item [EmailConfiguration => CognitoIdp_EmailConfigurationType]
 
 =item [EmailVerificationMessage => Str]
 
 =item [EmailVerificationSubject => Str]
 
-=item [LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>]
+=item [LambdaConfig => CognitoIdp_LambdaConfigType]
 
 =item [MfaConfiguration => Str]
 
-=item [Policies => L<Paws::CognitoIdp::UserPoolPolicyType>]
+=item [Policies => CognitoIdp_UserPoolPolicyType]
 
 =item [SmsAuthenticationMessage => Str]
 
-=item [SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>]
+=item [SmsConfiguration => CognitoIdp_SmsConfigurationType]
 
 =item [SmsVerificationMessage => Str]
 
-=item [UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>]
+=item [UserPoolAddOns => CognitoIdp_UserPoolAddOnsType]
 
-=item [UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>]
+=item [UserPoolTags => CognitoIdp_UserPoolTagsType]
 
-=item [VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>]
+=item [VerificationMessageTemplate => CognitoIdp_VerificationMessageTemplateType]
 
 
 =back
@@ -3080,7 +3082,7 @@ default value.
 
 =item [AllowedOAuthScopes => ArrayRef[Str|Undef]]
 
-=item [AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>]
+=item [AnalyticsConfiguration => CognitoIdp_AnalyticsConfigurationType]
 
 =item [CallbackURLs => ArrayRef[Str|Undef]]
 
@@ -3121,7 +3123,7 @@ default value.
 
 =over
 
-=item CustomDomainConfig => L<Paws::CognitoIdp::CustomDomainConfigType>
+=item CustomDomainConfig => CognitoIdp_CustomDomainConfigType
 
 =item Domain => Str
 

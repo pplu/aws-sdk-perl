@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::LexModels::Intent;
-  use Moose;
-  has IntentName => (is => 'ro', isa => 'Str', request_name => 'intentName', traits => ['NameInRequest'], required => 1);
-  has IntentVersion => (is => 'ro', isa => 'Str', request_name => 'intentVersion', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw//;
+  has IntentName => (is => 'ro', isa => Str, required => 1);
+  has IntentVersion => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IntentVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'IntentName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'IntentName' => 1,
+                    'IntentVersion' => 1
+                  },
+  'NameInRequest' => {
+                       'IntentVersion' => 'intentVersion',
+                       'IntentName' => 'intentName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

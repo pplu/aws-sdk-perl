@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::ShutdownEventConfiguration;
-  use Moose;
-  has DelayUntilElbConnectionsDrained => (is => 'ro', isa => 'Bool');
-  has ExecutionTimeout => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Bool Int/;
+  use Paws::OpsWorks::Types qw//;
+  has DelayUntilElbConnectionsDrained => (is => 'ro', isa => Bool);
+  has ExecutionTimeout => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DelayUntilElbConnectionsDrained' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'ExecutionTimeout' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

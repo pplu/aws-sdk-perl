@@ -1,21 +1,66 @@
 
 package Paws::CodeStarNotifications::CreateNotificationRule;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has DetailType => (is => 'ro', isa => 'Str', required => 1);
-  has EventTypeIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Resource => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::CodeStarNotifications::Tags');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::CodeStarNotifications::Target]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeStarNotifications::Types qw/CodeStarNotifications_Target CodeStarNotifications_Tags/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has DetailType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EventTypeIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Resource => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => CodeStarNotifications_Tags, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[CodeStarNotifications_Target], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNotificationRule');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/createNotificationRule');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStarNotifications::CreateNotificationRuleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateNotificationRule');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/createNotificationRule');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStarNotifications::CreateNotificationRuleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventTypeIds' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Tags' => {
+                           'type' => 'CodeStarNotifications_Tags',
+                           'class' => 'Paws::CodeStarNotifications::Tags'
+                         },
+               'Resource' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DetailType' => {
+                                 'type' => 'Str'
+                               },
+               'Targets' => {
+                              'class' => 'Paws::CodeStarNotifications::Target',
+                              'type' => 'ArrayRef[CodeStarNotifications_Target]'
+                            }
+             },
+  'IsRequired' => {
+                    'DetailType' => 1,
+                    'Resource' => 1,
+                    'EventTypeIds' => 1,
+                    'Targets' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -122,14 +167,14 @@ notification rule.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
 
-=head2 Tags => L<Paws::CodeStarNotifications::Tags>
+=head2 Tags => CodeStarNotifications_Tags
 
 A list of tags to apply to this notification rule. Key names cannot
 start with "aws".
 
 
 
-=head2 B<REQUIRED> Targets => ArrayRef[L<Paws::CodeStarNotifications::Target>]
+=head2 B<REQUIRED> Targets => ArrayRef[CodeStarNotifications_Target]
 
 A list of Amazon Resource Names (ARNs) of SNS topics to associate with
 the notification rule.

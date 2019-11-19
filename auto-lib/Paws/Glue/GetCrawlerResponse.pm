@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetCrawlerResponse;
-  use Moose;
-  has Crawler => (is => 'ro', isa => 'Paws::Glue::Crawler');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_Crawler/;
+  has Crawler => (is => 'ro', isa => Glue_Crawler);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Crawler' => {
+                              'type' => 'Glue_Crawler',
+                              'class' => 'Paws::Glue::Crawler'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Glue::GetCrawlerResponse
 =head1 ATTRIBUTES
 
 
-=head2 Crawler => L<Paws::Glue::Crawler>
+=head2 Crawler => Glue_Crawler
 
 The metadata for the specified crawler.
 

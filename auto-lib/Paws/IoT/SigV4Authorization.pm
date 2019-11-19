@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::IoT::SigV4Authorization;
-  use Moose;
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest'], required => 1);
-  has SigningRegion => (is => 'ro', isa => 'Str', request_name => 'signingRegion', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has ServiceName => (is => 'ro', isa => Str, required => 1);
+  has SigningRegion => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'SigningRegion' => {
+                                    'type' => 'Str'
+                                  },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'SigningRegion' => 'signingRegion',
+                       'ServiceName' => 'serviceName',
+                       'RoleArn' => 'roleArn'
+                     },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'ServiceName' => 1,
+                    'SigningRegion' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

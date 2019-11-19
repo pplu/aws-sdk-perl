@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoT::SigningProfileParameter;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
-  has CertificatePathOnDevice => (is => 'ro', isa => 'Str', request_name => 'certificatePathOnDevice', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CertificatePathOnDevice => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'CertificatePathOnDevice' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'NameInRequest' => {
+                       'Platform' => 'platform',
+                       'CertificateArn' => 'certificateArn',
+                       'CertificatePathOnDevice' => 'certificatePathOnDevice'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

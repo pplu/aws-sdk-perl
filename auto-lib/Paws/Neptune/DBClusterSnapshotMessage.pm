@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::Neptune::DBClusterSnapshotMessage;
-  use Moose;
-  has DBClusterSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBClusterSnapshot]', request_name => 'DBClusterSnapshot', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_DBClusterSnapshot/;
+  has DBClusterSnapshots => (is => 'ro', isa => ArrayRef[Neptune_DBClusterSnapshot]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DBClusterSnapshots' => 'DBClusterSnapshot'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'DBClusterSnapshots' => {
+                                         'type' => 'ArrayRef[Neptune_DBClusterSnapshot]',
+                                         'class' => 'Paws::Neptune::DBClusterSnapshot'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Neptune::DBClusterSnapshotMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBClusterSnapshots => ArrayRef[L<Paws::Neptune::DBClusterSnapshot>]
+=head2 DBClusterSnapshots => ArrayRef[Neptune_DBClusterSnapshot]
 
 Provides a list of DB cluster snapshots for the user.
 

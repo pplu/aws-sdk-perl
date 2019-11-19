@@ -1,7 +1,28 @@
 package Paws::EC2::Tag;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Key => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Value' => 'value',
+                       'Key' => 'key'
+                     },
+  'types' => {
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Value' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

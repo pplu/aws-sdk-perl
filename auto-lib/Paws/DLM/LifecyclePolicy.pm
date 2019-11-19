@@ -1,15 +1,61 @@
+# Generated from default/object.tt
 package Paws::DLM::LifecyclePolicy;
-  use Moose;
-  has DateCreated => (is => 'ro', isa => 'Str');
-  has DateModified => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str');
-  has PolicyArn => (is => 'ro', isa => 'Str');
-  has PolicyDetails => (is => 'ro', isa => 'Paws::DLM::PolicyDetails');
-  has PolicyId => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::DLM::TagMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DLM::Types qw/DLM_PolicyDetails DLM_TagMap/;
+  has DateCreated => (is => 'ro', isa => Str);
+  has DateModified => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ExecutionRoleArn => (is => 'ro', isa => Str);
+  has PolicyArn => (is => 'ro', isa => Str);
+  has PolicyDetails => (is => 'ro', isa => DLM_PolicyDetails);
+  has PolicyId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => DLM_TagMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyArn' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'PolicyDetails' => {
+                                    'type' => 'DLM_PolicyDetails',
+                                    'class' => 'Paws::DLM::PolicyDetails'
+                                  },
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     },
+               'PolicyId' => {
+                               'type' => 'Str'
+                             },
+               'DateModified' => {
+                                   'type' => 'Str'
+                                 },
+               'DateCreated' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::DLM::TagMap',
+                           'type' => 'DLM_TagMap'
+                         },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +117,7 @@ operations specified by the lifecycle policy.
   The Amazon Resource Name (ARN) of the policy.
 
 
-=head2 PolicyDetails => L<Paws::DLM::PolicyDetails>
+=head2 PolicyDetails => DLM_PolicyDetails
 
   The configuration of the lifecycle policy
 
@@ -91,7 +137,7 @@ operations specified by the lifecycle policy.
   The description of the status.
 
 
-=head2 Tags => L<Paws::DLM::TagMap>
+=head2 Tags => DLM_TagMap
 
   The tags.
 

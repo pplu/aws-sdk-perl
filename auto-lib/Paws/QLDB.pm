@@ -1,14 +1,15 @@
 package Paws::QLDB;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'qldb' }
   sub signing_name { 'qldb' }
   sub version { '2019-01-02' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -137,7 +138,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qld
 
 =item [DeletionProtection => Bool]
 
-=item [Tags => L<Paws::QLDB::Tags>]
+=item [Tags => QLDB_Tags]
 
 
 =back
@@ -226,7 +227,7 @@ created.
 
 =item RoleArn => Str
 
-=item S3ExportConfiguration => L<Paws::QLDB::S3ExportConfiguration>
+=item S3ExportConfiguration => QLDB_S3ExportConfiguration
 
 
 =back
@@ -254,11 +255,11 @@ C<LimitExceededException>.
 
 =over
 
-=item BlockAddress => L<Paws::QLDB::ValueHolder>
+=item BlockAddress => QLDB_ValueHolder
 
 =item Name => Str
 
-=item [DigestTipAddress => L<Paws::QLDB::ValueHolder>]
+=item [DigestTipAddress => QLDB_ValueHolder]
 
 
 =back
@@ -303,13 +304,13 @@ address.
 
 =over
 
-=item BlockAddress => L<Paws::QLDB::ValueHolder>
+=item BlockAddress => QLDB_ValueHolder
 
 =item DocumentId => Str
 
 =item Name => Str
 
-=item [DigestTipAddress => L<Paws::QLDB::ValueHolder>]
+=item [DigestTipAddress => QLDB_ValueHolder]
 
 
 =back
@@ -415,7 +416,7 @@ Returns all tags for a specified Amazon QLDB resource.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::QLDB::Tags>
+=item Tags => QLDB_Tags
 
 
 =back

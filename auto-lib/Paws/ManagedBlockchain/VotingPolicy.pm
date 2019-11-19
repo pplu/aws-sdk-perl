@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::VotingPolicy;
-  use Moose;
-  has ApprovalThresholdPolicy => (is => 'ro', isa => 'Paws::ManagedBlockchain::ApprovalThresholdPolicy');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_ApprovalThresholdPolicy/;
+  has ApprovalThresholdPolicy => (is => 'ro', isa => ManagedBlockchain_ApprovalThresholdPolicy);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApprovalThresholdPolicy' => {
+                                              'class' => 'Paws::ManagedBlockchain::ApprovalThresholdPolicy',
+                                              'type' => 'ManagedBlockchain_ApprovalThresholdPolicy'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ The voting rules for the network to decide if a proposal is accepted
 =head1 ATTRIBUTES
 
 
-=head2 ApprovalThresholdPolicy => L<Paws::ManagedBlockchain::ApprovalThresholdPolicy>
+=head2 ApprovalThresholdPolicy => ManagedBlockchain_ApprovalThresholdPolicy
 
   Defines the rules for the network for voting on proposals, such as the
 percentage of C<YES> votes required for the proposal to be approved and

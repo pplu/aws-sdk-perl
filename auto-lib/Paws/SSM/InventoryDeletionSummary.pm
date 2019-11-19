@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::SSM::InventoryDeletionSummary;
-  use Moose;
-  has RemainingCount => (is => 'ro', isa => 'Int');
-  has SummaryItems => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryDeletionSummaryItem]');
-  has TotalCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int ArrayRef/;
+  use Paws::SSM::Types qw/SSM_InventoryDeletionSummaryItem/;
+  has RemainingCount => (is => 'ro', isa => Int);
+  has SummaryItems => (is => 'ro', isa => ArrayRef[SSM_InventoryDeletionSummaryItem]);
+  has TotalCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RemainingCount' => {
+                                     'type' => 'Int'
+                                   },
+               'SummaryItems' => {
+                                   'type' => 'ArrayRef[SSM_InventoryDeletionSummaryItem]',
+                                   'class' => 'Paws::SSM::InventoryDeletionSummaryItem'
+                                 },
+               'TotalCount' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +67,7 @@ Information about the delete operation.
   Remaining number of items to delete.
 
 
-=head2 SummaryItems => ArrayRef[L<Paws::SSM::InventoryDeletionSummaryItem>]
+=head2 SummaryItems => ArrayRef[SSM_InventoryDeletionSummaryItem]
 
   A list of counts and versions for deleted items.
 

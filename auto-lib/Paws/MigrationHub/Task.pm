@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::MigrationHub::Task;
-  use Moose;
-  has ProgressPercent => (is => 'ro', isa => 'Int');
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has StatusDetail => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MigrationHub::Types qw//;
+  has ProgressPercent => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has StatusDetail => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StatusDetail' => {
+                                   'type' => 'Str'
+                                 },
+               'ProgressPercent' => {
+                                      'type' => 'Int'
+                                    }
+             },
+  'IsRequired' => {
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

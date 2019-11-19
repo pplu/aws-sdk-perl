@@ -1,15 +1,41 @@
 
 package Paws::IoTAnalytics::UntagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resourceArn', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'tagKeys', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IoTAnalytics::Types qw//;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagKeys => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UntagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tags');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTAnalytics::UntagResourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UntagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tags');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTAnalytics::UntagResourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'TagKeys' => 'tagKeys',
+                      'ResourceArn' => 'resourceArn'
+                    },
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'TagKeys' => 1
+                  },
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'TagKeys' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

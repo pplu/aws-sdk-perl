@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::AccountModification;
-  use Moose;
-  has DedicatedTenancyManagementCidrRange => (is => 'ro', isa => 'Str');
-  has DedicatedTenancySupport => (is => 'ro', isa => 'Str');
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has ModificationState => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkSpaces::Types qw//;
+  has DedicatedTenancyManagementCidrRange => (is => 'ro', isa => Str);
+  has DedicatedTenancySupport => (is => 'ro', isa => Str);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has ModificationState => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'DedicatedTenancyManagementCidrRange' => {
+                                                          'type' => 'Str'
+                                                        },
+               'DedicatedTenancySupport' => {
+                                              'type' => 'Str'
+                                            },
+               'ModificationState' => {
+                                        'type' => 'Str'
+                                      },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

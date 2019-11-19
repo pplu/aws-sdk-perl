@@ -1,14 +1,72 @@
+# Generated from default/object.tt
 package Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation;
-  use Moose;
-  has AddressFamily => (is => 'ro', isa => 'Str', request_name => 'addressFamily', traits => ['NameInRequest']);
-  has AmazonAddress => (is => 'ro', isa => 'Str', request_name => 'amazonAddress', traits => ['NameInRequest']);
-  has Asn => (is => 'ro', isa => 'Int', request_name => 'asn', traits => ['NameInRequest'], required => 1);
-  has AuthKey => (is => 'ro', isa => 'Str', request_name => 'authKey', traits => ['NameInRequest']);
-  has CustomerAddress => (is => 'ro', isa => 'Str', request_name => 'customerAddress', traits => ['NameInRequest']);
-  has Mtu => (is => 'ro', isa => 'Int', request_name => 'mtu', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', request_name => 'tags', traits => ['NameInRequest']);
-  has VirtualInterfaceName => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceName', traits => ['NameInRequest'], required => 1);
-  has Vlan => (is => 'ro', isa => 'Int', request_name => 'vlan', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_Tag/;
+  has AddressFamily => (is => 'ro', isa => Str);
+  has AmazonAddress => (is => 'ro', isa => Str);
+  has Asn => (is => 'ro', isa => Int, required => 1);
+  has AuthKey => (is => 'ro', isa => Str);
+  has CustomerAddress => (is => 'ro', isa => Str);
+  has Mtu => (is => 'ro', isa => Int);
+  has Tags => (is => 'ro', isa => ArrayRef[DirectConnect_Tag]);
+  has VirtualInterfaceName => (is => 'ro', isa => Str, required => 1);
+  has Vlan => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'VirtualInterfaceName' => 'virtualInterfaceName',
+                       'CustomerAddress' => 'customerAddress',
+                       'AmazonAddress' => 'amazonAddress',
+                       'Tags' => 'tags',
+                       'Vlan' => 'vlan',
+                       'Asn' => 'asn',
+                       'AuthKey' => 'authKey',
+                       'Mtu' => 'mtu',
+                       'AddressFamily' => 'addressFamily'
+                     },
+  'IsRequired' => {
+                    'Vlan' => 1,
+                    'VirtualInterfaceName' => 1,
+                    'Asn' => 1
+                  },
+  'types' => {
+               'VirtualInterfaceName' => {
+                                           'type' => 'Str'
+                                         },
+               'CustomerAddress' => {
+                                      'type' => 'Str'
+                                    },
+               'AmazonAddress' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::DirectConnect::Tag',
+                           'type' => 'ArrayRef[DirectConnect_Tag]'
+                         },
+               'Vlan' => {
+                           'type' => 'Int'
+                         },
+               'Asn' => {
+                          'type' => 'Int'
+                        },
+               'AuthKey' => {
+                              'type' => 'Str'
+                            },
+               'AddressFamily' => {
+                                    'type' => 'Str'
+                                  },
+               'Mtu' => {
+                          'type' => 'Int'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +138,7 @@ length of 6 characters and and a maximun lenth of 80 characters.
 1500 and 9001. The default value is 1500.
 
 
-=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+=head2 Tags => ArrayRef[DirectConnect_Tag]
 
   The tags associated with the private virtual interface.
 

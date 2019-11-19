@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::Batch::NodeOverrides;
-  use Moose;
-  has NodePropertyOverrides => (is => 'ro', isa => 'ArrayRef[Paws::Batch::NodePropertyOverride]', request_name => 'nodePropertyOverrides', traits => ['NameInRequest']);
-  has NumNodes => (is => 'ro', isa => 'Int', request_name => 'numNodes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::Batch::Types qw/Batch_NodePropertyOverride/;
+  has NodePropertyOverrides => (is => 'ro', isa => ArrayRef[Batch_NodePropertyOverride]);
+  has NumNodes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NumNodes' => 'numNodes',
+                       'NodePropertyOverrides' => 'nodePropertyOverrides'
+                     },
+  'types' => {
+               'NumNodes' => {
+                               'type' => 'Int'
+                             },
+               'NodePropertyOverrides' => {
+                                            'class' => 'Paws::Batch::NodePropertyOverride',
+                                            'type' => 'ArrayRef[Batch_NodePropertyOverride]'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +63,7 @@ in a SubmitJob API operation.
 =head1 ATTRIBUTES
 
 
-=head2 NodePropertyOverrides => ArrayRef[L<Paws::Batch::NodePropertyOverride>]
+=head2 NodePropertyOverrides => ArrayRef[Batch_NodePropertyOverride]
 
   The node property overrides for the job.
 

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Rekognition::FaceMatch;
-  use Moose;
-  has Face => (is => 'ro', isa => 'Paws::Rekognition::Face');
-  has Similarity => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Rekognition::Types qw/Rekognition_Face/;
+  has Face => (is => 'ro', isa => Rekognition_Face);
+  has Similarity => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Face' => {
+                           'class' => 'Paws::Rekognition::Face',
+                           'type' => 'Rekognition_Face'
+                         },
+               'Similarity' => {
+                                 'type' => 'Num'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ the match of this face with the input face.
 =head1 ATTRIBUTES
 
 
-=head2 Face => L<Paws::Rekognition::Face>
+=head2 Face => Rekognition_Face
 
   Describes the face properties such as the bounding box, face ID, image
 ID of the source image, and external image ID that you assigned.

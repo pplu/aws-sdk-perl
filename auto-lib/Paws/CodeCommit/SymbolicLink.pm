@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::SymbolicLink;
-  use Moose;
-  has AbsolutePath => (is => 'ro', isa => 'Str', request_name => 'absolutePath', traits => ['NameInRequest']);
-  has BlobId => (is => 'ro', isa => 'Str', request_name => 'blobId', traits => ['NameInRequest']);
-  has FileMode => (is => 'ro', isa => 'Str', request_name => 'fileMode', traits => ['NameInRequest']);
-  has RelativePath => (is => 'ro', isa => 'Str', request_name => 'relativePath', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has AbsolutePath => (is => 'ro', isa => Str);
+  has BlobId => (is => 'ro', isa => Str);
+  has FileMode => (is => 'ro', isa => Str);
+  has RelativePath => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AbsolutePath' => {
+                                   'type' => 'Str'
+                                 },
+               'RelativePath' => {
+                                   'type' => 'Str'
+                                 },
+               'BlobId' => {
+                             'type' => 'Str'
+                           },
+               'FileMode' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'FileMode' => 'fileMode',
+                       'BlobId' => 'blobId',
+                       'RelativePath' => 'relativePath',
+                       'AbsolutePath' => 'absolutePath'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

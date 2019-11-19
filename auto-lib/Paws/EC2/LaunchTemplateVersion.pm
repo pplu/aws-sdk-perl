@@ -1,13 +1,59 @@
 package Paws::EC2::LaunchTemplateVersion;
-  use Moose;
-  has CreatedBy => (is => 'ro', isa => 'Str', request_name => 'createdBy', traits => ['NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
-  has DefaultVersion => (is => 'ro', isa => 'Bool', request_name => 'defaultVersion', traits => ['NameInRequest']);
-  has LaunchTemplateData => (is => 'ro', isa => 'Paws::EC2::ResponseLaunchTemplateData', request_name => 'launchTemplateData', traits => ['NameInRequest']);
-  has LaunchTemplateId => (is => 'ro', isa => 'Str', request_name => 'launchTemplateId', traits => ['NameInRequest']);
-  has LaunchTemplateName => (is => 'ro', isa => 'Str', request_name => 'launchTemplateName', traits => ['NameInRequest']);
-  has VersionDescription => (is => 'ro', isa => 'Str', request_name => 'versionDescription', traits => ['NameInRequest']);
-  has VersionNumber => (is => 'ro', isa => 'Int', request_name => 'versionNumber', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Bool Int/;
+  use Paws::EC2::Types qw/EC2_ResponseLaunchTemplateData/;
+  has CreatedBy => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str);
+  has DefaultVersion => (is => 'ro', isa => Bool);
+  has LaunchTemplateData => (is => 'ro', isa => EC2_ResponseLaunchTemplateData);
+  has LaunchTemplateId => (is => 'ro', isa => Str);
+  has LaunchTemplateName => (is => 'ro', isa => Str);
+  has VersionDescription => (is => 'ro', isa => Str);
+  has VersionNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VersionNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'VersionDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'LaunchTemplateData' => {
+                                         'type' => 'EC2_ResponseLaunchTemplateData',
+                                         'class' => 'Paws::EC2::ResponseLaunchTemplateData'
+                                       },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'LaunchTemplateName' => {
+                                         'type' => 'Str'
+                                       },
+               'DefaultVersion' => {
+                                     'type' => 'Bool'
+                                   },
+               'LaunchTemplateId' => {
+                                       'type' => 'Str'
+                                     },
+               'CreatedBy' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'LaunchTemplateId' => 'launchTemplateId',
+                       'CreatedBy' => 'createdBy',
+                       'DefaultVersion' => 'defaultVersion',
+                       'LaunchTemplateName' => 'launchTemplateName',
+                       'VersionDescription' => 'versionDescription',
+                       'LaunchTemplateData' => 'launchTemplateData',
+                       'CreateTime' => 'createTime',
+                       'VersionNumber' => 'versionNumber'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +104,7 @@ This class has no description
   Indicates whether the version is the default version.
 
 
-=head2 LaunchTemplateData => L<Paws::EC2::ResponseLaunchTemplateData>
+=head2 LaunchTemplateData => EC2_ResponseLaunchTemplateData
 
   Information about the launch template.
 

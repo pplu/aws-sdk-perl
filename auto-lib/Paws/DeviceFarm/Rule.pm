@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::Rule;
-  use Moose;
-  has Attribute => (is => 'ro', isa => 'Str', request_name => 'attribute', traits => ['NameInRequest']);
-  has Operator => (is => 'ro', isa => 'Str', request_name => 'operator', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw//;
+  has Attribute => (is => 'ro', isa => Str);
+  has Operator => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Value' => 'value',
+                       'Attribute' => 'attribute',
+                       'Operator' => 'operator'
+                     },
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Operator' => {
+                               'type' => 'Str'
+                             },
+               'Attribute' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

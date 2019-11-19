@@ -1,13 +1,66 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Preset;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has LastUpdated => (is => 'ro', isa => 'Str', request_name => 'lastUpdated', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::PresetSettings', request_name => 'settings', traits => ['NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_PresetSettings/;
+  has Arn => (is => 'ro', isa => Str);
+  has Category => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LastUpdated => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Settings => (is => 'ro', isa => MediaConvert_PresetSettings, required => 1);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Settings' => 1,
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'LastUpdated' => 'lastUpdated',
+                       'Arn' => 'arn',
+                       'Settings' => 'settings',
+                       'Description' => 'description',
+                       'CreatedAt' => 'createdAt',
+                       'Category' => 'category',
+                       'Type' => 'type'
+                     },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Settings' => {
+                               'class' => 'Paws::MediaConvert::PresetSettings',
+                               'type' => 'MediaConvert_PresetSettings'
+                             },
+               'LastUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +129,7 @@ process.
 account.
 
 
-=head2 B<REQUIRED> Settings => L<Paws::MediaConvert::PresetSettings>
+=head2 B<REQUIRED> Settings => MediaConvert_PresetSettings
 
   Settings for preset
 

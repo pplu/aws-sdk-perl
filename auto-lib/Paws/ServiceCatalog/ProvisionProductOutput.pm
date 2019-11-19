@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceCatalog::ProvisionProductOutput;
-  use Moose;
-  has RecordDetail => (is => 'ro', isa => 'Paws::ServiceCatalog::RecordDetail');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_RecordDetail/;
+  has RecordDetail => (is => 'ro', isa => ServiceCatalog_RecordDetail);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RecordDetail' => {
+                                   'class' => 'Paws::ServiceCatalog::RecordDetail',
+                                   'type' => 'ServiceCatalog_RecordDetail'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::ServiceCatalog::ProvisionProductOutput
 =head1 ATTRIBUTES
 
 
-=head2 RecordDetail => L<Paws::ServiceCatalog::RecordDetail>
+=head2 RecordDetail => ServiceCatalog_RecordDetail
 
 Information about the result of provisioning the product.
 

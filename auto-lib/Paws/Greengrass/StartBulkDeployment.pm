@@ -1,17 +1,52 @@
 
 package Paws::Greengrass::StartBulkDeployment;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has InputFileUri => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass_Tags/;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has ExecutionRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputFileUri => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Greengrass_Tags, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartBulkDeployment');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/bulk/deployments');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::StartBulkDeploymentResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartBulkDeployment');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/bulk/deployments');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::StartBulkDeploymentResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InputFileUri' => 1,
+                    'ExecutionRoleArn' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'types' => {
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     },
+               'InputFileUri' => {
+                                   'type' => 'Str'
+                                 },
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    },
+               'Tags' => {
+                           'type' => 'Greengrass_Tags',
+                           'class' => 'Paws::Greengrass::Tags'
+                         }
+             },
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +111,7 @@ IoT Greengrass supports only ''NewDeployment'' deployment types.
 
 
 
-=head2 Tags => L<Paws::Greengrass::Tags>
+=head2 Tags => Greengrass_Tags
 
 Tag(s) to add to the new resource.
 

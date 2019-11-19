@@ -1,15 +1,74 @@
+# Generated from default/object.tt
 package Paws::Kafka::ClusterOperationInfo;
-  use Moose;
-  has ClientRequestId => (is => 'ro', isa => 'Str', request_name => 'clientRequestId', traits => ['NameInRequest']);
-  has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
-  has ErrorInfo => (is => 'ro', isa => 'Paws::Kafka::ErrorInfo', request_name => 'errorInfo', traits => ['NameInRequest']);
-  has OperationArn => (is => 'ro', isa => 'Str', request_name => 'operationArn', traits => ['NameInRequest']);
-  has OperationState => (is => 'ro', isa => 'Str', request_name => 'operationState', traits => ['NameInRequest']);
-  has OperationType => (is => 'ro', isa => 'Str', request_name => 'operationType', traits => ['NameInRequest']);
-  has SourceClusterInfo => (is => 'ro', isa => 'Paws::Kafka::MutableClusterInfo', request_name => 'sourceClusterInfo', traits => ['NameInRequest']);
-  has TargetClusterInfo => (is => 'ro', isa => 'Paws::Kafka::MutableClusterInfo', request_name => 'targetClusterInfo', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kafka::Types qw/Kafka_ErrorInfo Kafka_MutableClusterInfo/;
+  has ClientRequestId => (is => 'ro', isa => Str);
+  has ClusterArn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has ErrorInfo => (is => 'ro', isa => Kafka_ErrorInfo);
+  has OperationArn => (is => 'ro', isa => Str);
+  has OperationState => (is => 'ro', isa => Str);
+  has OperationType => (is => 'ro', isa => Str);
+  has SourceClusterInfo => (is => 'ro', isa => Kafka_MutableClusterInfo);
+  has TargetClusterInfo => (is => 'ro', isa => Kafka_MutableClusterInfo);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestId' => {
+                                      'type' => 'Str'
+                                    },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               },
+               'OperationArn' => {
+                                   'type' => 'Str'
+                                 },
+               'OperationState' => {
+                                     'type' => 'Str'
+                                   },
+               'SourceClusterInfo' => {
+                                        'class' => 'Paws::Kafka::MutableClusterInfo',
+                                        'type' => 'Kafka_MutableClusterInfo'
+                                      },
+               'OperationType' => {
+                                    'type' => 'Str'
+                                  },
+               'ErrorInfo' => {
+                                'type' => 'Kafka_ErrorInfo',
+                                'class' => 'Paws::Kafka::ErrorInfo'
+                              },
+               'TargetClusterInfo' => {
+                                        'class' => 'Paws::Kafka::MutableClusterInfo',
+                                        'type' => 'Kafka_MutableClusterInfo'
+                                      },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'EndTime' => 'endTime',
+                       'TargetClusterInfo' => 'targetClusterInfo',
+                       'ErrorInfo' => 'errorInfo',
+                       'OperationState' => 'operationState',
+                       'SourceClusterInfo' => 'sourceClusterInfo',
+                       'OperationType' => 'operationType',
+                       'ClusterArn' => 'clusterArn',
+                       'OperationArn' => 'operationArn',
+                       'CreationTime' => 'creationTime',
+                       'ClientRequestId' => 'clientRequestId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +124,7 @@ Returns information about a cluster operation.
   The time at which the operation finished.
 
 
-=head2 ErrorInfo => L<Paws::Kafka::ErrorInfo>
+=head2 ErrorInfo => Kafka_ErrorInfo
 
   Describes the error if the operation fails.
 
@@ -85,12 +144,12 @@ Returns information about a cluster operation.
   Type of the cluster operation.
 
 
-=head2 SourceClusterInfo => L<Paws::Kafka::MutableClusterInfo>
+=head2 SourceClusterInfo => Kafka_MutableClusterInfo
 
   Information about cluster attributes before a cluster is updated.
 
 
-=head2 TargetClusterInfo => L<Paws::Kafka::MutableClusterInfo>
+=head2 TargetClusterInfo => Kafka_MutableClusterInfo
 
   Information about cluster attributes after a cluster is updated.
 

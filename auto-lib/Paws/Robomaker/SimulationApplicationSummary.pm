@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::Robomaker::SimulationApplicationSummary;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RobotSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::RobotSoftwareSuite', request_name => 'robotSoftwareSuite', traits => ['NameInRequest']);
-  has SimulationSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::SimulationSoftwareSuite', request_name => 'simulationSoftwareSuite', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw/Robomaker_SimulationSoftwareSuite Robomaker_RobotSoftwareSuite/;
+  has Arn => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RobotSoftwareSuite => (is => 'ro', isa => Robomaker_RobotSoftwareSuite);
+  has SimulationSoftwareSuite => (is => 'ro', isa => Robomaker_SimulationSoftwareSuite);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SimulationSoftwareSuite' => {
+                                              'class' => 'Paws::Robomaker::SimulationSoftwareSuite',
+                                              'type' => 'Robomaker_SimulationSoftwareSuite'
+                                            },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'RobotSoftwareSuite' => {
+                                         'class' => 'Paws::Robomaker::RobotSoftwareSuite',
+                                         'type' => 'Robomaker_RobotSoftwareSuite'
+                                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'RobotSoftwareSuite' => 'robotSoftwareSuite',
+                       'Arn' => 'arn',
+                       'Version' => 'version',
+                       'Name' => 'name',
+                       'SimulationSoftwareSuite' => 'simulationSoftwareSuite',
+                       'LastUpdatedAt' => 'lastUpdatedAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,12 +99,12 @@ application was last updated.
   The name of the simulation application.
 
 
-=head2 RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
+=head2 RobotSoftwareSuite => Robomaker_RobotSoftwareSuite
 
   Information about a robot software suite.
 
 
-=head2 SimulationSoftwareSuite => L<Paws::Robomaker::SimulationSoftwareSuite>
+=head2 SimulationSoftwareSuite => Robomaker_SimulationSoftwareSuite
 
   Information about a simulation software suite.
 

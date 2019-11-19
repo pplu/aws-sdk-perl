@@ -1,25 +1,85 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AppStream::CreateImageBuilder;
-  use Moose;
-  has AccessEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::AccessEndpoint]');
-  has AppstreamAgentVersion => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
-  has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
-  has IamRoleArn => (is => 'ro', isa => 'Str');
-  has ImageArn => (is => 'ro', isa => 'Str');
-  has ImageName => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::AppStream::Tags');
-  has VpcConfig => (is => 'ro', isa => 'Paws::AppStream::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::AppStream::Types qw/AppStream_VpcConfig AppStream_DomainJoinInfo AppStream_AccessEndpoint AppStream_Tags/;
+  has AccessEndpoints => (is => 'ro', isa => ArrayRef[AppStream_AccessEndpoint], predicate => 1);
+  has AppstreamAgentVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DisplayName => (is => 'ro', isa => Str, predicate => 1);
+  has DomainJoinInfo => (is => 'ro', isa => AppStream_DomainJoinInfo, predicate => 1);
+  has EnableDefaultInternetAccess => (is => 'ro', isa => Bool, predicate => 1);
+  has IamRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has ImageArn => (is => 'ro', isa => Str, predicate => 1);
+  has ImageName => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => AppStream_Tags, predicate => 1);
+  has VpcConfig => (is => 'ro', isa => AppStream_VpcConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateImageBuilder');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppStream::CreateImageBuilderResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateImageBuilder');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppStream::CreateImageBuilderResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InstanceType' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'ImageArn' => {
+                               'type' => 'Str'
+                             },
+               'ImageName' => {
+                                'type' => 'Str'
+                              },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'EnableDefaultInternetAccess' => {
+                                                  'type' => 'Bool'
+                                                },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'VpcConfig' => {
+                                'class' => 'Paws::AppStream::VpcConfig',
+                                'type' => 'AppStream_VpcConfig'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::AppStream::Tags',
+                           'type' => 'AppStream_Tags'
+                         },
+               'AppstreamAgentVersion' => {
+                                            'type' => 'Str'
+                                          },
+               'DomainJoinInfo' => {
+                                     'class' => 'Paws::AppStream::DomainJoinInfo',
+                                     'type' => 'AppStream_DomainJoinInfo'
+                                   },
+               'AccessEndpoints' => {
+                                      'type' => 'ArrayRef[AppStream_AccessEndpoint]',
+                                      'class' => 'Paws::AppStream::AccessEndpoint'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +145,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =head1 ATTRIBUTES
 
 
-=head2 AccessEndpoints => ArrayRef[L<Paws::AppStream::AccessEndpoint>]
+=head2 AccessEndpoints => ArrayRef[AppStream_AccessEndpoint]
 
 The list of interface VPC endpoint (interface endpoint) objects.
 Administrators can connect to the image builder only through the
@@ -112,7 +172,7 @@ The image builder name to display.
 
 
 
-=head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
+=head2 DomainJoinInfo => AppStream_DomainJoinInfo
 
 The name of the directory and organizational unit (OU) to use to join
 the image builder to a Microsoft Active Directory domain.
@@ -252,7 +312,7 @@ A unique name for the image builder.
 
 
 
-=head2 Tags => L<Paws::AppStream::Tags>
+=head2 Tags => AppStream_Tags
 
 The tags to associate with the image builder. A tag is a key-value
 pair, and the value is optional. For example, Environment=Test. If you
@@ -271,7 +331,7 @@ in the I<Amazon AppStream 2.0 Administration Guide>.
 
 
 
-=head2 VpcConfig => L<Paws::AppStream::VpcConfig>
+=head2 VpcConfig => AppStream_VpcConfig
 
 The VPC configuration for the image builder. You can specify only one
 subnet.

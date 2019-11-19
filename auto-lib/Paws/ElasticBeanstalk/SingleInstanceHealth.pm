@@ -1,15 +1,62 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::SingleInstanceHealth;
-  use Moose;
-  has ApplicationMetrics => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationMetrics');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has Causes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Color => (is => 'ro', isa => 'Str');
-  has Deployment => (is => 'ro', isa => 'Paws::ElasticBeanstalk::Deployment');
-  has HealthStatus => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has LaunchedAt => (is => 'ro', isa => 'Str');
-  has System => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SystemStatus');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_Deployment ElasticBeanstalk_ApplicationMetrics ElasticBeanstalk_SystemStatus/;
+  has ApplicationMetrics => (is => 'ro', isa => ElasticBeanstalk_ApplicationMetrics);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has Causes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Color => (is => 'ro', isa => Str);
+  has Deployment => (is => 'ro', isa => ElasticBeanstalk_Deployment);
+  has HealthStatus => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has LaunchedAt => (is => 'ro', isa => Str);
+  has System => (is => 'ro', isa => ElasticBeanstalk_SystemStatus);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'ApplicationMetrics' => {
+                                         'type' => 'ElasticBeanstalk_ApplicationMetrics',
+                                         'class' => 'Paws::ElasticBeanstalk::ApplicationMetrics'
+                                       },
+               'HealthStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'Causes' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'System' => {
+                             'type' => 'ElasticBeanstalk_SystemStatus',
+                             'class' => 'Paws::ElasticBeanstalk::SystemStatus'
+                           },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'Color' => {
+                            'type' => 'Str'
+                          },
+               'LaunchedAt' => {
+                                 'type' => 'Str'
+                               },
+               'Deployment' => {
+                                 'type' => 'ElasticBeanstalk_Deployment',
+                                 'class' => 'Paws::ElasticBeanstalk::Deployment'
+                               },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +93,7 @@ Elastic Beanstalk environment.
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationMetrics => L<Paws::ElasticBeanstalk::ApplicationMetrics>
+=head2 ApplicationMetrics => ElasticBeanstalk_ApplicationMetrics
 
   Request metrics from your application.
 
@@ -70,7 +117,7 @@ Statuses
 (https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html).
 
 
-=head2 Deployment => L<Paws::ElasticBeanstalk::Deployment>
+=head2 Deployment => ElasticBeanstalk_Deployment
 
   Information about the most recent deployment to an instance.
 
@@ -97,7 +144,7 @@ information, see Health Colors and Statuses
   The time at which the EC2 instance was launched.
 
 
-=head2 System => L<Paws::ElasticBeanstalk::SystemStatus>
+=head2 System => ElasticBeanstalk_SystemStatus
 
   Operating system metrics from the instance.
 

@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::PackagingConfigurationList;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
-  has PackagingConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::PackagingConfiguration]', request_name => 'packagingConfigurations', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_PackagingConfiguration/;
+  has NextToken => (is => 'ro', isa => Str);
+  has PackagingConfigurations => (is => 'ro', isa => ArrayRef[MediaPackageVod_PackagingConfiguration]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'PackagingConfigurations' => {
+                                              'type' => 'ArrayRef[MediaPackageVod_PackagingConfiguration]',
+                                              'class' => 'Paws::MediaPackageVod::PackagingConfiguration'
+                                            }
+             },
+  'NameInRequest' => {
+                       'PackagingConfigurations' => 'packagingConfigurations',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +68,7 @@ A collection of MediaPackage VOD PackagingConfiguration resources.
 collection.
 
 
-=head2 PackagingConfigurations => ArrayRef[L<Paws::MediaPackageVod::PackagingConfiguration>]
+=head2 PackagingConfigurations => ArrayRef[MediaPackageVod_PackagingConfiguration]
 
   A list of MediaPackage VOD PackagingConfiguration resources.
 

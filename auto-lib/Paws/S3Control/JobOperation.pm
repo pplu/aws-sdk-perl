@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::S3Control::JobOperation;
-  use Moose;
-  has LambdaInvoke => (is => 'ro', isa => 'Paws::S3Control::LambdaInvokeOperation');
-  has S3InitiateRestoreObject => (is => 'ro', isa => 'Paws::S3Control::S3InitiateRestoreObjectOperation');
-  has S3PutObjectAcl => (is => 'ro', isa => 'Paws::S3Control::S3SetObjectAclOperation');
-  has S3PutObjectCopy => (is => 'ro', isa => 'Paws::S3Control::S3CopyObjectOperation');
-  has S3PutObjectTagging => (is => 'ro', isa => 'Paws::S3Control::S3SetObjectTaggingOperation');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3Control::Types qw/S3Control_LambdaInvokeOperation S3Control_S3InitiateRestoreObjectOperation S3Control_S3SetObjectTaggingOperation S3Control_S3SetObjectAclOperation S3Control_S3CopyObjectOperation/;
+  has LambdaInvoke => (is => 'ro', isa => S3Control_LambdaInvokeOperation);
+  has S3InitiateRestoreObject => (is => 'ro', isa => S3Control_S3InitiateRestoreObjectOperation);
+  has S3PutObjectAcl => (is => 'ro', isa => S3Control_S3SetObjectAclOperation);
+  has S3PutObjectCopy => (is => 'ro', isa => S3Control_S3CopyObjectOperation);
+  has S3PutObjectTagging => (is => 'ro', isa => S3Control_S3SetObjectTaggingOperation);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3PutObjectTagging' => {
+                                         'class' => 'Paws::S3Control::S3SetObjectTaggingOperation',
+                                         'type' => 'S3Control_S3SetObjectTaggingOperation'
+                                       },
+               'S3PutObjectAcl' => {
+                                     'type' => 'S3Control_S3SetObjectAclOperation',
+                                     'class' => 'Paws::S3Control::S3SetObjectAclOperation'
+                                   },
+               'S3PutObjectCopy' => {
+                                      'class' => 'Paws::S3Control::S3CopyObjectOperation',
+                                      'type' => 'S3Control_S3CopyObjectOperation'
+                                    },
+               'LambdaInvoke' => {
+                                   'class' => 'Paws::S3Control::LambdaInvokeOperation',
+                                   'type' => 'S3Control_LambdaInvokeOperation'
+                                 },
+               'S3InitiateRestoreObject' => {
+                                              'type' => 'S3Control_S3InitiateRestoreObjectOperation',
+                                              'class' => 'Paws::S3Control::S3InitiateRestoreObjectOperation'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,31 +78,31 @@ in the I<Amazon Simple Storage Service Developer Guide>.
 =head1 ATTRIBUTES
 
 
-=head2 LambdaInvoke => L<Paws::S3Control::LambdaInvokeOperation>
+=head2 LambdaInvoke => S3Control_LambdaInvokeOperation
 
   Directs the specified job to invoke an AWS Lambda function on each
 object in the manifest.
 
 
-=head2 S3InitiateRestoreObject => L<Paws::S3Control::S3InitiateRestoreObjectOperation>
+=head2 S3InitiateRestoreObject => S3Control_S3InitiateRestoreObjectOperation
 
   Directs the specified job to execute an Initiate Glacier Restore call
 on each object in the manifest.
 
 
-=head2 S3PutObjectAcl => L<Paws::S3Control::S3SetObjectAclOperation>
+=head2 S3PutObjectAcl => S3Control_S3SetObjectAclOperation
 
   Directs the specified job to execute a PUT Object acl call on each
 object in the manifest.
 
 
-=head2 S3PutObjectCopy => L<Paws::S3Control::S3CopyObjectOperation>
+=head2 S3PutObjectCopy => S3Control_S3CopyObjectOperation
 
   Directs the specified job to execute a PUT Copy object call on each
 object in the manifest.
 
 
-=head2 S3PutObjectTagging => L<Paws::S3Control::S3SetObjectTaggingOperation>
+=head2 S3PutObjectTagging => S3Control_S3SetObjectTaggingOperation
 
   Directs the specified job to execute a PUT Object tagging call on each
 object in the manifest.

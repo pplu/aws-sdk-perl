@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ShuffleConfig;
-  use Moose;
-  has Seed => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SageMaker::Types qw//;
+  has Seed => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Seed' => {
+                           'type' => 'Int'
+                         }
+             },
+  'IsRequired' => {
+                    'Seed' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

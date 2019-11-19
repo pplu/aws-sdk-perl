@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Personalize::ListSolutionVersionsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has SolutionVersions => (is => 'ro', isa => 'ArrayRef[Paws::Personalize::SolutionVersionSummary]', traits => ['NameInRequest'], request_name => 'solutionVersions' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Personalize::Types qw/Personalize_SolutionVersionSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SolutionVersions => (is => 'ro', isa => ArrayRef[Personalize_SolutionVersionSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SolutionVersions' => {
+                                       'type' => 'ArrayRef[Personalize_SolutionVersionSummary]',
+                                       'class' => 'Paws::Personalize::SolutionVersionSummary'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'SolutionVersions' => 'solutionVersions'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +46,7 @@ Paws::Personalize::ListSolutionVersionsResponse
 A token for getting the next set of solution versions (if they exist).
 
 
-=head2 SolutionVersions => ArrayRef[L<Paws::Personalize::SolutionVersionSummary>]
+=head2 SolutionVersions => ArrayRef[Personalize_SolutionVersionSummary]
 
 A list of solution versions describing the version properties.
 

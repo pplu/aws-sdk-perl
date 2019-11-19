@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::S3::InventoryFilter;
-  use Moose;
-  has Prefix => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has Prefix => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Prefix' => 1
+                  },
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

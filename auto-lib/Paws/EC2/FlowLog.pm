@@ -1,17 +1,78 @@
 package Paws::EC2::FlowLog;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has DeliverLogsErrorMessage => (is => 'ro', isa => 'Str', request_name => 'deliverLogsErrorMessage', traits => ['NameInRequest']);
-  has DeliverLogsPermissionArn => (is => 'ro', isa => 'Str', request_name => 'deliverLogsPermissionArn', traits => ['NameInRequest']);
-  has DeliverLogsStatus => (is => 'ro', isa => 'Str', request_name => 'deliverLogsStatus', traits => ['NameInRequest']);
-  has FlowLogId => (is => 'ro', isa => 'Str', request_name => 'flowLogId', traits => ['NameInRequest']);
-  has FlowLogStatus => (is => 'ro', isa => 'Str', request_name => 'flowLogStatus', traits => ['NameInRequest']);
-  has LogDestination => (is => 'ro', isa => 'Str', request_name => 'logDestination', traits => ['NameInRequest']);
-  has LogDestinationType => (is => 'ro', isa => 'Str', request_name => 'logDestinationType', traits => ['NameInRequest']);
-  has LogFormat => (is => 'ro', isa => 'Str', request_name => 'logFormat', traits => ['NameInRequest']);
-  has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has TrafficType => (is => 'ro', isa => 'Str', request_name => 'trafficType', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DeliverLogsErrorMessage => (is => 'ro', isa => Str);
+  has DeliverLogsPermissionArn => (is => 'ro', isa => Str);
+  has DeliverLogsStatus => (is => 'ro', isa => Str);
+  has FlowLogId => (is => 'ro', isa => Str);
+  has FlowLogStatus => (is => 'ro', isa => Str);
+  has LogDestination => (is => 'ro', isa => Str);
+  has LogDestinationType => (is => 'ro', isa => Str);
+  has LogFormat => (is => 'ro', isa => Str);
+  has LogGroupName => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has TrafficType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FlowLogStatus' => 'flowLogStatus',
+                       'LogDestinationType' => 'logDestinationType',
+                       'DeliverLogsPermissionArn' => 'deliverLogsPermissionArn',
+                       'TrafficType' => 'trafficType',
+                       'CreationTime' => 'creationTime',
+                       'LogDestination' => 'logDestination',
+                       'DeliverLogsErrorMessage' => 'deliverLogsErrorMessage',
+                       'ResourceId' => 'resourceId',
+                       'LogGroupName' => 'logGroupName',
+                       'LogFormat' => 'logFormat',
+                       'DeliverLogsStatus' => 'deliverLogsStatus',
+                       'FlowLogId' => 'flowLogId'
+                     },
+  'types' => {
+               'FlowLogId' => {
+                                'type' => 'Str'
+                              },
+               'DeliverLogsStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'LogFormat' => {
+                                'type' => 'Str'
+                              },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'LogDestination' => {
+                                     'type' => 'Str'
+                                   },
+               'DeliverLogsErrorMessage' => {
+                                              'type' => 'Str'
+                                            },
+               'LogDestinationType' => {
+                                         'type' => 'Str'
+                                       },
+               'TrafficType' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'DeliverLogsPermissionArn' => {
+                                               'type' => 'Str'
+                                             },
+               'FlowLogStatus' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

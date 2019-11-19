@@ -1,11 +1,57 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttributes;
-  use Moose;
-  has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest'], required => 1);
-  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
-  has InitiatedEventId => (is => 'ro', isa => 'Int', request_name => 'initiatedEventId', traits => ['NameInRequest'], required => 1);
-  has RunId => (is => 'ro', isa => 'Str', request_name => 'runId', traits => ['NameInRequest']);
-  has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Cause => (is => 'ro', isa => Str, required => 1);
+  has Control => (is => 'ro', isa => Str);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+  has InitiatedEventId => (is => 'ro', isa => Int, required => 1);
+  has RunId => (is => 'ro', isa => Str);
+  has WorkflowId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RunId' => 'runId',
+                       'Cause' => 'cause',
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId',
+                       'WorkflowId' => 'workflowId',
+                       'Control' => 'control',
+                       'InitiatedEventId' => 'initiatedEventId'
+                     },
+  'IsRequired' => {
+                    'WorkflowId' => 1,
+                    'InitiatedEventId' => 1,
+                    'Cause' => 1,
+                    'DecisionTaskCompletedEventId' => 1
+                  },
+  'types' => {
+               'Cause' => {
+                            'type' => 'Str'
+                          },
+               'RunId' => {
+                            'type' => 'Str'
+                          },
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Control' => {
+                              'type' => 'Str'
+                            },
+               'WorkflowId' => {
+                                 'type' => 'Str'
+                               },
+               'InitiatedEventId' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

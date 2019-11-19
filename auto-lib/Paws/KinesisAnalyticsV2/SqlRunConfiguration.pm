@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::SqlRunConfiguration;
-  use Moose;
-  has InputId => (is => 'ro', isa => 'Str', required => 1);
-  has InputStartingPositionConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::InputStartingPositionConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_InputStartingPositionConfiguration/;
+  has InputId => (is => 'ro', isa => Str, required => 1);
+  has InputStartingPositionConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_InputStartingPositionConfiguration, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InputStartingPositionConfiguration' => 1,
+                    'InputId' => 1
+                  },
+  'types' => {
+               'InputStartingPositionConfiguration' => {
+                                                         'type' => 'KinesisAnalyticsV2_InputStartingPositionConfiguration',
+                                                         'class' => 'Paws::KinesisAnalyticsV2::InputStartingPositionConfiguration'
+                                                       },
+               'InputId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +69,7 @@ Analytics application.
 DescribeApplication operation.
 
 
-=head2 B<REQUIRED> InputStartingPositionConfiguration => L<Paws::KinesisAnalyticsV2::InputStartingPositionConfiguration>
+=head2 B<REQUIRED> InputStartingPositionConfiguration => KinesisAnalyticsV2_InputStartingPositionConfiguration
 
   The point at which you want the application to start processing records
 from the streaming source.

@@ -1,21 +1,77 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::UpdateService;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
-  has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
-  has ForceNewDeployment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'forceNewDeployment' );
-  has HealthCheckGracePeriodSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'healthCheckGracePeriodSeconds' );
-  has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
-  has PlatformVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformVersion' );
-  has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
-  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' );
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::ECS::Types qw/ECS_DeploymentConfiguration ECS_NetworkConfiguration/;
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has DeploymentConfiguration => (is => 'ro', isa => ECS_DeploymentConfiguration, predicate => 1);
+  has DesiredCount => (is => 'ro', isa => Int, predicate => 1);
+  has ForceNewDeployment => (is => 'ro', isa => Bool, predicate => 1);
+  has HealthCheckGracePeriodSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has NetworkConfiguration => (is => 'ro', isa => ECS_NetworkConfiguration, predicate => 1);
+  has PlatformVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Service => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TaskDefinition => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateService');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::UpdateServiceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateService');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::UpdateServiceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ForceNewDeployment' => {
+                                         'type' => 'Bool'
+                                       },
+               'DeploymentConfiguration' => {
+                                              'class' => 'Paws::ECS::DeploymentConfiguration',
+                                              'type' => 'ECS_DeploymentConfiguration'
+                                            },
+               'NetworkConfiguration' => {
+                                           'type' => 'ECS_NetworkConfiguration',
+                                           'class' => 'Paws::ECS::NetworkConfiguration'
+                                         },
+               'Service' => {
+                              'type' => 'Str'
+                            },
+               'HealthCheckGracePeriodSeconds' => {
+                                                    'type' => 'Int'
+                                                  },
+               'DesiredCount' => {
+                                   'type' => 'Int'
+                                 },
+               'TaskDefinition' => {
+                                     'type' => 'Str'
+                                   },
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'Service' => 1
+                  },
+  'NameInRequest' => {
+                       'PlatformVersion' => 'platformVersion',
+                       'Cluster' => 'cluster',
+                       'TaskDefinition' => 'taskDefinition',
+                       'Service' => 'service',
+                       'HealthCheckGracePeriodSeconds' => 'healthCheckGracePeriodSeconds',
+                       'DesiredCount' => 'desiredCount',
+                       'NetworkConfiguration' => 'networkConfiguration',
+                       'DeploymentConfiguration' => 'deploymentConfiguration',
+                       'ForceNewDeployment' => 'forceNewDeployment'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +122,7 @@ default cluster is assumed.
 
 
 
-=head2 DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>
+=head2 DeploymentConfiguration => ECS_DeploymentConfiguration
 
 Optional deployment parameters that control how many tasks run during
 the deployment and the ordering of stopping and starting tasks.
@@ -106,7 +162,7 @@ before they have time to come up.
 
 
 
-=head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
+=head2 NetworkConfiguration => ECS_NetworkConfiguration
 
 The network configuration for the service. This parameter is required
 for task definitions that use the C<awsvpc> network mode to receive

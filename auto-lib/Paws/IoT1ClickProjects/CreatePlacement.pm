@@ -1,16 +1,49 @@
 
 package Paws::IoT1ClickProjects::CreatePlacement;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT1ClickProjects::PlacementAttributeMap', traits => ['NameInRequest'], request_name => 'attributes');
-  has PlacementName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'placementName', required => 1);
-  has ProjectName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'projectName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickProjects::Types qw/IoT1ClickProjects_PlacementAttributeMap/;
+  has Attributes => (is => 'ro', isa => IoT1ClickProjects_PlacementAttributeMap, predicate => 1);
+  has PlacementName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProjectName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePlacement');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/projects/{projectName}/placements');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT1ClickProjects::CreatePlacementResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePlacement');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/projects/{projectName}/placements');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT1ClickProjects::CreatePlacementResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ProjectName' => 'projectName'
+                  },
+  'NameInRequest' => {
+                       'PlacementName' => 'placementName',
+                       'Attributes' => 'attributes'
+                     },
+  'IsRequired' => {
+                    'ProjectName' => 1,
+                    'PlacementName' => 1
+                  },
+  'types' => {
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                },
+               'Attributes' => {
+                                 'class' => 'Paws::IoT1ClickProjects::PlacementAttributeMap',
+                                 'type' => 'IoT1ClickProjects_PlacementAttributeMap'
+                               },
+               'PlacementName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +78,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pro
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::IoT1ClickProjects::PlacementAttributeMap>
+=head2 Attributes => IoT1ClickProjects_PlacementAttributeMap
 
 Optional user-defined key/value pairs providing contextual data (such
 as location or function) for the placement.

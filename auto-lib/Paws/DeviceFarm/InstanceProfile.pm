@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::InstanceProfile;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has ExcludeAppPackagesFromCleanup => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'excludeAppPackagesFromCleanup', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has PackageCleanup => (is => 'ro', isa => 'Bool', request_name => 'packageCleanup', traits => ['NameInRequest']);
-  has RebootAfterUse => (is => 'ro', isa => 'Bool', request_name => 'rebootAfterUse', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::DeviceFarm::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ExcludeAppPackagesFromCleanup => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Name => (is => 'ro', isa => Str);
+  has PackageCleanup => (is => 'ro', isa => Bool);
+  has RebootAfterUse => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'PackageCleanup' => {
+                                     'type' => 'Bool'
+                                   },
+               'ExcludeAppPackagesFromCleanup' => {
+                                                    'type' => 'ArrayRef[Str|Undef]'
+                                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'RebootAfterUse' => {
+                                     'type' => 'Bool'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'ExcludeAppPackagesFromCleanup' => 'excludeAppPackagesFromCleanup',
+                       'PackageCleanup' => 'packageCleanup',
+                       'Name' => 'name',
+                       'Description' => 'description',
+                       'RebootAfterUse' => 'rebootAfterUse'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

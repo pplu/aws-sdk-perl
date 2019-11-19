@@ -1,21 +1,76 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Support::CreateCase;
-  use Moose;
-  has AttachmentSetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attachmentSetId' );
-  has CategoryCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'categoryCode' );
-  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ccEmailAddresses' );
-  has CommunicationBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'communicationBody' , required => 1);
-  has IssueType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'issueType' );
-  has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' );
-  has ServiceCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceCode' );
-  has SeverityCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'severityCode' );
-  has Subject => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'subject' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Support::Types qw//;
+  has AttachmentSetId => (is => 'ro', isa => Str, predicate => 1);
+  has CategoryCode => (is => 'ro', isa => Str, predicate => 1);
+  has CcEmailAddresses => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has CommunicationBody => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IssueType => (is => 'ro', isa => Str, predicate => 1);
+  has Language => (is => 'ro', isa => Str, predicate => 1);
+  has ServiceCode => (is => 'ro', isa => Str, predicate => 1);
+  has SeverityCode => (is => 'ro', isa => Str, predicate => 1);
+  has Subject => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCase');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::CreateCaseResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCase');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Support::CreateCaseResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CommunicationBody' => {
+                                        'type' => 'Str'
+                                      },
+               'AttachmentSetId' => {
+                                      'type' => 'Str'
+                                    },
+               'Subject' => {
+                              'type' => 'Str'
+                            },
+               'SeverityCode' => {
+                                   'type' => 'Str'
+                                 },
+               'Language' => {
+                               'type' => 'Str'
+                             },
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                },
+               'IssueType' => {
+                                'type' => 'Str'
+                              },
+               'CategoryCode' => {
+                                   'type' => 'Str'
+                                 },
+               'CcEmailAddresses' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             },
+  'NameInRequest' => {
+                       'SeverityCode' => 'severityCode',
+                       'Subject' => 'subject',
+                       'AttachmentSetId' => 'attachmentSetId',
+                       'CommunicationBody' => 'communicationBody',
+                       'CcEmailAddresses' => 'ccEmailAddresses',
+                       'CategoryCode' => 'categoryCode',
+                       'IssueType' => 'issueType',
+                       'ServiceCode' => 'serviceCode',
+                       'Language' => 'language'
+                     },
+  'IsRequired' => {
+                    'Subject' => 1,
+                    'CommunicationBody' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,29 +1,109 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MachineLearning::GetMLModelOutput;
-  use Moose;
-  has ComputeTime => (is => 'ro', isa => 'Int');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has CreatedByIamUser => (is => 'ro', isa => 'Str');
-  has EndpointInfo => (is => 'ro', isa => 'Paws::MachineLearning::RealtimeEndpointInfo');
-  has FinishedAt => (is => 'ro', isa => 'Str');
-  has InputDataLocationS3 => (is => 'ro', isa => 'Str');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
-  has LogUri => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has MLModelId => (is => 'ro', isa => 'Str');
-  has MLModelType => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Recipe => (is => 'ro', isa => 'Str');
-  has Schema => (is => 'ro', isa => 'Str');
-  has ScoreThreshold => (is => 'ro', isa => 'Num');
-  has ScoreThresholdLastUpdatedAt => (is => 'ro', isa => 'Str');
-  has SizeInBytes => (is => 'ro', isa => 'Int');
-  has StartedAt => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TrainingDataSourceId => (is => 'ro', isa => 'Str');
-  has TrainingParameters => (is => 'ro', isa => 'Paws::MachineLearning::TrainingParameters');
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::MachineLearning::Types qw/MachineLearning_RealtimeEndpointInfo MachineLearning_TrainingParameters/;
+  has ComputeTime => (is => 'ro', isa => Int);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has CreatedByIamUser => (is => 'ro', isa => Str);
+  has EndpointInfo => (is => 'ro', isa => MachineLearning_RealtimeEndpointInfo);
+  has FinishedAt => (is => 'ro', isa => Str);
+  has InputDataLocationS3 => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has LogUri => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has MLModelId => (is => 'ro', isa => Str);
+  has MLModelType => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Recipe => (is => 'ro', isa => Str);
+  has Schema => (is => 'ro', isa => Str);
+  has ScoreThreshold => (is => 'ro', isa => Num);
+  has ScoreThresholdLastUpdatedAt => (is => 'ro', isa => Str);
+  has SizeInBytes => (is => 'ro', isa => Int);
+  has StartedAt => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TrainingDataSourceId => (is => 'ro', isa => Str);
+  has TrainingParameters => (is => 'ro', isa => MachineLearning_TrainingParameters);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'ComputeTime' => {
+                                  'type' => 'Int'
+                                },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'MLModelId' => {
+                                'type' => 'Str'
+                              },
+               'InputDataLocationS3' => {
+                                          'type' => 'Str'
+                                        },
+               'CreatedByIamUser' => {
+                                       'type' => 'Str'
+                                     },
+               'TrainingDataSourceId' => {
+                                           'type' => 'Str'
+                                         },
+               'TrainingParameters' => {
+                                         'class' => 'Paws::MachineLearning::TrainingParameters',
+                                         'type' => 'MachineLearning_TrainingParameters'
+                                       },
+               'ScoreThresholdLastUpdatedAt' => {
+                                                  'type' => 'Str'
+                                                },
+               'LogUri' => {
+                             'type' => 'Str'
+                           },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'EndpointInfo' => {
+                                   'class' => 'Paws::MachineLearning::RealtimeEndpointInfo',
+                                   'type' => 'MachineLearning_RealtimeEndpointInfo'
+                                 },
+               'Recipe' => {
+                             'type' => 'Str'
+                           },
+               'MLModelType' => {
+                                  'type' => 'Str'
+                                },
+               'StartedAt' => {
+                                'type' => 'Str'
+                              },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ScoreThreshold' => {
+                                     'type' => 'Num'
+                                   },
+               'FinishedAt' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SizeInBytes' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -55,7 +135,7 @@ type can be either an AWS root account or an AWS Identity and Access
 Management (IAM) user account.
 
 
-=head2 EndpointInfo => L<Paws::MachineLearning::RealtimeEndpointInfo>
+=head2 EndpointInfo => MachineLearning_RealtimeEndpointInfo
 
 The current endpoint of the C<MLModel>
 
@@ -197,7 +277,7 @@ Valid values are: C<"PENDING">, C<"INPROGRESS">, C<"FAILED">, C<"COMPLETED">, C<
 The ID of the training C<DataSource>.
 
 
-=head2 TrainingParameters => L<Paws::MachineLearning::TrainingParameters>
+=head2 TrainingParameters => MachineLearning_TrainingParameters
 
 A list of the training parameters in the C<MLModel>. The list is
 implemented as a map of key-value pairs.

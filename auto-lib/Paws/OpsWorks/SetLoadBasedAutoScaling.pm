@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorks::SetLoadBasedAutoScaling;
-  use Moose;
-  has DownScaling => (is => 'ro', isa => 'Paws::OpsWorks::AutoScalingThresholds');
-  has Enable => (is => 'ro', isa => 'Bool');
-  has LayerId => (is => 'ro', isa => 'Str', required => 1);
-  has UpScaling => (is => 'ro', isa => 'Paws::OpsWorks::AutoScalingThresholds');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::OpsWorks::Types qw/OpsWorks_AutoScalingThresholds/;
+  has DownScaling => (is => 'ro', isa => OpsWorks_AutoScalingThresholds, predicate => 1);
+  has Enable => (is => 'ro', isa => Bool, predicate => 1);
+  has LayerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UpScaling => (is => 'ro', isa => OpsWorks_AutoScalingThresholds, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBasedAutoScaling');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetLoadBasedAutoScaling');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LayerId' => 1
+                  },
+  'types' => {
+               'Enable' => {
+                             'type' => 'Bool'
+                           },
+               'UpScaling' => {
+                                'type' => 'OpsWorks_AutoScalingThresholds',
+                                'class' => 'Paws::OpsWorks::AutoScalingThresholds'
+                              },
+               'DownScaling' => {
+                                  'class' => 'Paws::OpsWorks::AutoScalingThresholds',
+                                  'type' => 'OpsWorks_AutoScalingThresholds'
+                                },
+               'LayerId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +89,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ops
 =head1 ATTRIBUTES
 
 
-=head2 DownScaling => L<Paws::OpsWorks::AutoScalingThresholds>
+=head2 DownScaling => OpsWorks_AutoScalingThresholds
 
 An C<AutoScalingThresholds> object with the downscaling threshold
 configuration. If the load falls below these thresholds for a specified
@@ -80,7 +110,7 @@ The layer ID.
 
 
 
-=head2 UpScaling => L<Paws::OpsWorks::AutoScalingThresholds>
+=head2 UpScaling => OpsWorks_AutoScalingThresholds
 
 An C<AutoScalingThresholds> object with the upscaling threshold
 configuration. If the load exceeds these thresholds for a specified

@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::JobDetails;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has Data => (is => 'ro', isa => 'Paws::CodePipeline::JobData', request_name => 'data', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_JobData/;
+  has AccountId => (is => 'ro', isa => Str);
+  has Data => (is => 'ro', isa => CodePipeline_JobData);
+  has Id => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AccountId' => 'accountId',
+                       'Data' => 'data',
+                       'Id' => 'id'
+                     },
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Data' => {
+                           'type' => 'CodePipeline_JobData',
+                           'class' => 'Paws::CodePipeline::JobData'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +72,7 @@ Represents information about the details of a job.
   The AWS account ID associated with the job.
 
 
-=head2 Data => L<Paws::CodePipeline::JobData>
+=head2 Data => CodePipeline_JobData
 
   Represents other information about a job required for a job worker to
 complete the job.

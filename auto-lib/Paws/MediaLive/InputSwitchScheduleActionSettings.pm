@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputSwitchScheduleActionSettings;
-  use Moose;
-  has InputAttachmentNameReference => (is => 'ro', isa => 'Str', request_name => 'inputAttachmentNameReference', traits => ['NameInRequest'], required => 1);
-  has InputClippingSettings => (is => 'ro', isa => 'Paws::MediaLive::InputClippingSettings', request_name => 'inputClippingSettings', traits => ['NameInRequest']);
-  has UrlPath => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'urlPath', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaLive::Types qw/MediaLive_InputClippingSettings/;
+  has InputAttachmentNameReference => (is => 'ro', isa => Str, required => 1);
+  has InputClippingSettings => (is => 'ro', isa => MediaLive_InputClippingSettings);
+  has UrlPath => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InputAttachmentNameReference' => 'inputAttachmentNameReference',
+                       'InputClippingSettings' => 'inputClippingSettings',
+                       'UrlPath' => 'urlPath'
+                     },
+  'IsRequired' => {
+                    'InputAttachmentNameReference' => 1
+                  },
+  'types' => {
+               'UrlPath' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'InputAttachmentNameReference' => {
+                                                   'type' => 'Str'
+                                                 },
+               'InputClippingSettings' => {
+                                            'type' => 'MediaLive_InputClippingSettings',
+                                            'class' => 'Paws::MediaLive::InputClippingSettings'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +77,7 @@ input to ingesting another input.
 to. The name is specified in the channel configuration.
 
 
-=head2 InputClippingSettings => L<Paws::MediaLive::InputClippingSettings>
+=head2 InputClippingSettings => MediaLive_InputClippingSettings
 
   Settings to let you create a clip of the file input, in order to set up
 the input to ingest only a portion of the file.

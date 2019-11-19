@@ -1,9 +1,30 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::DeleteGitHubAccountTokenOutput;
-  use Moose;
-  has TokenName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'tokenName' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has TokenName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TokenName' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'TokenName' => 'tokenName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,8 +1,42 @@
+# Generated from default/object.tt
 package Paws::GroundStation::SpectrumConfig;
-  use Moose;
-  has Bandwidth => (is => 'ro', isa => 'Paws::GroundStation::FrequencyBandwidth', request_name => 'bandwidth', traits => ['NameInRequest'], required => 1);
-  has CenterFrequency => (is => 'ro', isa => 'Paws::GroundStation::Frequency', request_name => 'centerFrequency', traits => ['NameInRequest'], required => 1);
-  has Polarization => (is => 'ro', isa => 'Str', request_name => 'polarization', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw/GroundStation_Frequency GroundStation_FrequencyBandwidth/;
+  has Bandwidth => (is => 'ro', isa => GroundStation_FrequencyBandwidth, required => 1);
+  has CenterFrequency => (is => 'ro', isa => GroundStation_Frequency, required => 1);
+  has Polarization => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Bandwidth' => 'bandwidth',
+                       'CenterFrequency' => 'centerFrequency',
+                       'Polarization' => 'polarization'
+                     },
+  'IsRequired' => {
+                    'Bandwidth' => 1,
+                    'CenterFrequency' => 1
+                  },
+  'types' => {
+               'CenterFrequency' => {
+                                      'type' => 'GroundStation_Frequency',
+                                      'class' => 'Paws::GroundStation::Frequency'
+                                    },
+               'Bandwidth' => {
+                                'class' => 'Paws::GroundStation::FrequencyBandwidth',
+                                'type' => 'GroundStation_FrequencyBandwidth'
+                              },
+               'Polarization' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +72,12 @@ Object that describes a spectral C<Config>.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Bandwidth => L<Paws::GroundStation::FrequencyBandwidth>
+=head2 B<REQUIRED> Bandwidth => GroundStation_FrequencyBandwidth
 
   Bandwidth of a spectral C<Config>.
 
 
-=head2 B<REQUIRED> CenterFrequency => L<Paws::GroundStation::Frequency>
+=head2 B<REQUIRED> CenterFrequency => GroundStation_Frequency
 
   Center frequency of a spectral C<Config>.
 

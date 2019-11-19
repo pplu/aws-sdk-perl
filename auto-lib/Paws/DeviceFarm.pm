@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::DeviceFarm;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'devicefarm' }
   sub signing_name { 'devicefarm' }
   sub version { '2015-06-23' }
   sub target_prefix { 'DeviceFarm_20150623' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -861,7 +863,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =item ProjectArn => Str
 
-=item Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
+=item Rules => ArrayRef[DeviceFarm_Rule]
 
 =item [Description => Str]
 
@@ -968,7 +970,7 @@ Creates a new project.
 
 =item [ClientId => Str]
 
-=item [Configuration => L<Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration>]
+=item [Configuration => DeviceFarm_CreateRemoteAccessSessionConfiguration]
 
 =item [InstanceArn => Str]
 
@@ -1248,9 +1250,9 @@ Gets information about a device pool.
 
 =item [AppArn => Str]
 
-=item [Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>]
+=item [Configuration => DeviceFarm_ScheduleRunConfiguration]
 
-=item [Test => L<Paws::DeviceFarm::ScheduleRunTest>]
+=item [Test => DeviceFarm_ScheduleRunTest]
 
 =item [TestType => Str]
 
@@ -1532,7 +1534,7 @@ Gets information about device pools.
 
 =item [Arn => Str]
 
-=item [Filters => ArrayRef[L<Paws::DeviceFarm::DeviceFilter>]]
+=item [Filters => ArrayRef[DeviceFarm_DeviceFilter]]
 
 =item [NextToken => Str]
 
@@ -1903,17 +1905,17 @@ should be able to invoke this operation.
 
 =item ProjectArn => Str
 
-=item Test => L<Paws::DeviceFarm::ScheduleRunTest>
+=item Test => DeviceFarm_ScheduleRunTest
 
 =item [AppArn => Str]
 
-=item [Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>]
+=item [Configuration => DeviceFarm_ScheduleRunConfiguration]
 
 =item [DevicePoolArn => Str]
 
-=item [DeviceSelectionConfiguration => L<Paws::DeviceFarm::DeviceSelectionConfiguration>]
+=item [DeviceSelectionConfiguration => DeviceFarm_DeviceSelectionConfiguration]
 
-=item [ExecutionConfiguration => L<Paws::DeviceFarm::ExecutionConfiguration>]
+=item [ExecutionConfiguration => DeviceFarm_ExecutionConfiguration]
 
 =item [Name => Str]
 
@@ -1993,7 +1995,7 @@ were in progress or already completed.
 
 =item ResourceARN => Str
 
-=item Tags => ArrayRef[L<Paws::DeviceFarm::Tag>]
+=item Tags => ArrayRef[DeviceFarm_Tag]
 
 
 =back
@@ -2060,7 +2062,7 @@ Updates information about an existing private device instance.
 
 =item [Name => Str]
 
-=item [Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]]
+=item [Rules => ArrayRef[DeviceFarm_Rule]]
 
 
 =back
@@ -2262,9 +2264,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DeviceFarm::ListDevicePoolsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllDevices(sub { },[Arn => Str, Filters => ArrayRef[L<Paws::DeviceFarm::DeviceFilter>], NextToken => Str])
+=head2 ListAllDevices(sub { },[Arn => Str, Filters => ArrayRef[DeviceFarm_DeviceFilter], NextToken => Str])
 
-=head2 ListAllDevices([Arn => Str, Filters => ArrayRef[L<Paws::DeviceFarm::DeviceFilter>], NextToken => Str])
+=head2 ListAllDevices([Arn => Str, Filters => ArrayRef[DeviceFarm_DeviceFilter], NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

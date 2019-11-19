@@ -1,10 +1,41 @@
+# Generated from default/object.tt
 package Paws::EMR::StepSummary;
-  use Moose;
-  has ActionOnFailure => (is => 'ro', isa => 'Str');
-  has Config => (is => 'ro', isa => 'Paws::EMR::HadoopStepConfig');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Paws::EMR::StepStatus');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_StepStatus EMR_HadoopStepConfig/;
+  has ActionOnFailure => (is => 'ro', isa => Str);
+  has Config => (is => 'ro', isa => EMR_HadoopStepConfig);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => EMR_StepStatus);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Config' => {
+                             'class' => 'Paws::EMR::HadoopStepConfig',
+                             'type' => 'EMR_HadoopStepConfig'
+                           },
+               'ActionOnFailure' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'EMR_StepStatus',
+                             'class' => 'Paws::EMR::StepStatus'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +79,7 @@ available for backward compatibility. We recommend using
 TERMINATE_CLUSTER instead.
 
 
-=head2 Config => L<Paws::EMR::HadoopStepConfig>
+=head2 Config => EMR_HadoopStepConfig
 
   The Hadoop job configuration of the cluster step.
 
@@ -63,7 +94,7 @@ TERMINATE_CLUSTER instead.
   The name of the cluster step.
 
 
-=head2 Status => L<Paws::EMR::StepStatus>
+=head2 Status => EMR_StepStatus
 
   The current execution status details of the cluster step.
 

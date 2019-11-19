@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::LicenseManager::ListLicenseSpecificationsForResourceResponse;
-  use Moose;
-  has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::LicenseSpecification]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LicenseManager::Types qw/LicenseManager_LicenseSpecification/;
+  has LicenseSpecifications => (is => 'ro', isa => ArrayRef[LicenseManager_LicenseSpecification]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LicenseSpecifications' => {
+                                            'class' => 'Paws::LicenseManager::LicenseSpecification',
+                                            'type' => 'ArrayRef[LicenseManager_LicenseSpecification]'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::LicenseManager::ListLicenseSpecificationsForResourceResponse
 =head1 ATTRIBUTES
 
 
-=head2 LicenseSpecifications => ArrayRef[L<Paws::LicenseManager::LicenseSpecification>]
+=head2 LicenseSpecifications => ArrayRef[LicenseManager_LicenseSpecification]
 
 License configurations associated with a resource.
 

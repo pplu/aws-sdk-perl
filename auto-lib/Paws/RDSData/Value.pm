@@ -1,15 +1,73 @@
+# Generated from default/object.tt
 package Paws::RDSData::Value;
-  use Moose;
-  has ArrayValues => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::Value]', request_name => 'arrayValues', traits => ['NameInRequest']);
-  has BigIntValue => (is => 'ro', isa => 'Int', request_name => 'bigIntValue', traits => ['NameInRequest']);
-  has BitValue => (is => 'ro', isa => 'Bool', request_name => 'bitValue', traits => ['NameInRequest']);
-  has BlobValue => (is => 'ro', isa => 'Str', request_name => 'blobValue', traits => ['NameInRequest']);
-  has DoubleValue => (is => 'ro', isa => 'Num', request_name => 'doubleValue', traits => ['NameInRequest']);
-  has IntValue => (is => 'ro', isa => 'Int', request_name => 'intValue', traits => ['NameInRequest']);
-  has IsNull => (is => 'ro', isa => 'Bool', request_name => 'isNull', traits => ['NameInRequest']);
-  has RealValue => (is => 'ro', isa => 'Num', request_name => 'realValue', traits => ['NameInRequest']);
-  has StringValue => (is => 'ro', isa => 'Str', request_name => 'stringValue', traits => ['NameInRequest']);
-  has StructValue => (is => 'ro', isa => 'Paws::RDSData::StructValue', request_name => 'structValue', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Bool Str Num/;
+  use Paws::RDSData::Types qw/RDSData_StructValue RDSData_Value/;
+  has ArrayValues => (is => 'ro', isa => ArrayRef[RDSData_Value]);
+  has BigIntValue => (is => 'ro', isa => Int);
+  has BitValue => (is => 'ro', isa => Bool);
+  has BlobValue => (is => 'ro', isa => Str);
+  has DoubleValue => (is => 'ro', isa => Num);
+  has IntValue => (is => 'ro', isa => Int);
+  has IsNull => (is => 'ro', isa => Bool);
+  has RealValue => (is => 'ro', isa => Num);
+  has StringValue => (is => 'ro', isa => Str);
+  has StructValue => (is => 'ro', isa => RDSData_StructValue);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'BitValue' => 'bitValue',
+                       'BlobValue' => 'blobValue',
+                       'StructValue' => 'structValue',
+                       'StringValue' => 'stringValue',
+                       'IntValue' => 'intValue',
+                       'BigIntValue' => 'bigIntValue',
+                       'RealValue' => 'realValue',
+                       'ArrayValues' => 'arrayValues',
+                       'IsNull' => 'isNull',
+                       'DoubleValue' => 'doubleValue'
+                     },
+  'types' => {
+               'BitValue' => {
+                               'type' => 'Bool'
+                             },
+               'ArrayValues' => {
+                                  'type' => 'ArrayRef[RDSData_Value]',
+                                  'class' => 'Paws::RDSData::Value'
+                                },
+               'RealValue' => {
+                                'type' => 'Num'
+                              },
+               'BigIntValue' => {
+                                  'type' => 'Int'
+                                },
+               'DoubleValue' => {
+                                  'type' => 'Num'
+                                },
+               'IsNull' => {
+                             'type' => 'Bool'
+                           },
+               'BlobValue' => {
+                                'type' => 'Str'
+                              },
+               'IntValue' => {
+                               'type' => 'Int'
+                             },
+               'StructValue' => {
+                                  'class' => 'Paws::RDSData::StructValue',
+                                  'type' => 'RDSData_StructValue'
+                                },
+               'StringValue' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +105,7 @@ Contains the value of a column.
 =head1 ATTRIBUTES
 
 
-=head2 ArrayValues => ArrayRef[L<Paws::RDSData::Value>]
+=head2 ArrayValues => ArrayRef[RDSData_Value]
 
   An array of column values.
 
@@ -92,7 +150,7 @@ Contains the value of a column.
   A value for a column of string data type.
 
 
-=head2 StructValue => L<Paws::RDSData::StructValue>
+=head2 StructValue => RDSData_StructValue
 
   A value for a column of STRUCT data type.
 

@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::LakeFormation::DataLocationResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LakeFormation::Types qw//;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ResourceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

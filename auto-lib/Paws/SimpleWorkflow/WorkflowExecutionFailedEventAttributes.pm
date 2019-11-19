@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes;
-  use Moose;
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
-  has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+  has Details => (is => 'ro', isa => Str);
+  has Reason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DecisionTaskCompletedEventId' => 1
+                  },
+  'NameInRequest' => {
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId',
+                       'Details' => 'details',
+                       'Reason' => 'reason'
+                     },
+  'types' => {
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Details' => {
+                              'type' => 'Str'
+                            },
+               'Reason' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

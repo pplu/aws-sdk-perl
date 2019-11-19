@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::SSM::ResultAttribute;
-  use Moose;
-  has TypeName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has TypeName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TypeName' => 1
+                  },
+  'types' => {
+               'TypeName' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

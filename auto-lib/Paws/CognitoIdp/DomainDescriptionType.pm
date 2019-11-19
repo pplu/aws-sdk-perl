@@ -1,13 +1,52 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::DomainDescriptionType;
-  use Moose;
-  has AWSAccountId => (is => 'ro', isa => 'Str');
-  has CloudFrontDistribution => (is => 'ro', isa => 'Str');
-  has CustomDomainConfig => (is => 'ro', isa => 'Paws::CognitoIdp::CustomDomainConfigType');
-  has Domain => (is => 'ro', isa => 'Str');
-  has S3Bucket => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has UserPoolId => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_CustomDomainConfigType/;
+  has AWSAccountId => (is => 'ro', isa => Str);
+  has CloudFrontDistribution => (is => 'ro', isa => Str);
+  has CustomDomainConfig => (is => 'ro', isa => CognitoIdp_CustomDomainConfigType);
+  has Domain => (is => 'ro', isa => Str);
+  has S3Bucket => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has UserPoolId => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CloudFrontDistribution' => {
+                                             'type' => 'Str'
+                                           },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'CustomDomainConfig' => {
+                                         'type' => 'CognitoIdp_CustomDomainConfigType',
+                                         'class' => 'Paws::CognitoIdp::CustomDomainConfigType'
+                                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'AWSAccountId' => {
+                                   'type' => 'Str'
+                                 },
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +92,7 @@ A container for information about a domain.
   The ARN of the CloudFront distribution.
 
 
-=head2 CustomDomainConfig => L<Paws::CognitoIdp::CustomDomainConfigType>
+=head2 CustomDomainConfig => CognitoIdp_CustomDomainConfigType
 
   The configuration for a custom domain that hosts the sign-up and
 sign-in webpages for your application.

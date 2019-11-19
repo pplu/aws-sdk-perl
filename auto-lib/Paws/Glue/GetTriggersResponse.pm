@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetTriggersResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Trigger]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_Trigger/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Triggers => (is => 'ro', isa => ArrayRef[Glue_Trigger]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Triggers' => {
+                               'type' => 'ArrayRef[Glue_Trigger]',
+                               'class' => 'Paws::Glue::Trigger'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ A continuation token, if not all the requested triggers have yet been
 returned.
 
 
-=head2 Triggers => ArrayRef[L<Paws::Glue::Trigger>]
+=head2 Triggers => ArrayRef[Glue_Trigger]
 
 A list of triggers for the specified job.
 

@@ -1,9 +1,31 @@
 
 package Paws::Route53::ListTagsForResourcesResponse;
-  use Moose;
-  has ResourceTagSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceTagSet]', required => 1);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53::Types qw/Route53_ResourceTagSet/;
+  has ResourceTagSets => (is => 'ro', isa => ArrayRef[Route53_ResourceTagSet], required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceTagSets' => 1
+                  },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceTagSets' => {
+                                      'class' => 'Paws::Route53::ResourceTagSet',
+                                      'type' => 'ArrayRef[Route53_ResourceTagSet]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::Route53::ListTagsForResourcesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ResourceTagSets => ArrayRef[L<Paws::Route53::ResourceTagSet>]
+=head2 B<REQUIRED> ResourceTagSets => ArrayRef[Route53_ResourceTagSet]
 
 A list of C<ResourceTagSet>s containing tags associated with the
 specified resources.

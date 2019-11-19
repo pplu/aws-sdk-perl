@@ -1,14 +1,32 @@
 
 package Paws::Polly::ListLexicons;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Polly::Types qw//;
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListLexicons');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/lexicons');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Polly::ListLexiconsOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListLexicons');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/lexicons');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Polly::ListLexiconsOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'NextToken' => 'NextToken'
+                    },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

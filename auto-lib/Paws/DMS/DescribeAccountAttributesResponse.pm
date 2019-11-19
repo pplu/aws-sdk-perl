@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::DescribeAccountAttributesResponse;
-  use Moose;
-  has AccountQuotas => (is => 'ro', isa => 'ArrayRef[Paws::DMS::AccountQuota]');
-  has UniqueAccountIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_AccountQuota/;
+  has AccountQuotas => (is => 'ro', isa => ArrayRef[DMS_AccountQuota]);
+  has UniqueAccountIdentifier => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UniqueAccountIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AccountQuotas' => {
+                                    'type' => 'ArrayRef[DMS_AccountQuota]',
+                                    'class' => 'Paws::DMS::AccountQuota'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::DMS::DescribeAccountAttributesResponse
 =head1 ATTRIBUTES
 
 
-=head2 AccountQuotas => ArrayRef[L<Paws::DMS::AccountQuota>]
+=head2 AccountQuotas => ArrayRef[DMS_AccountQuota]
 
 Account quota information.
 

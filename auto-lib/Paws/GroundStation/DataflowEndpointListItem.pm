@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::GroundStation::DataflowEndpointListItem;
-  use Moose;
-  has DataflowEndpointGroupArn => (is => 'ro', isa => 'Str', request_name => 'dataflowEndpointGroupArn', traits => ['NameInRequest']);
-  has DataflowEndpointGroupId => (is => 'ro', isa => 'Str', request_name => 'dataflowEndpointGroupId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw//;
+  has DataflowEndpointGroupArn => (is => 'ro', isa => Str);
+  has DataflowEndpointGroupId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataflowEndpointGroupId' => {
+                                              'type' => 'Str'
+                                            },
+               'DataflowEndpointGroupArn' => {
+                                               'type' => 'Str'
+                                             }
+             },
+  'NameInRequest' => {
+                       'DataflowEndpointGroupArn' => 'dataflowEndpointGroupArn',
+                       'DataflowEndpointGroupId' => 'dataflowEndpointGroupId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

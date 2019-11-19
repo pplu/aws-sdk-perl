@@ -1,9 +1,30 @@
 
 package Paws::EC2::AllocateHostsResult;
-  use Moose;
-  has HostIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'hostIdSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::EC2::Types qw//;
+  has HostIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HostIds' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'HostIds' => 'hostIdSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::RDS::OptionVersion;
-  use Moose;
-  has IsDefault => (is => 'ro', isa => 'Bool');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::RDS::Types qw//;
+  has IsDefault => (is => 'ro', isa => Bool);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'IsDefault' => {
+                                'type' => 'Bool'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

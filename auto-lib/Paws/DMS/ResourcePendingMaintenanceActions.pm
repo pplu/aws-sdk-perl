@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::DMS::ResourcePendingMaintenanceActions;
-  use Moose;
-  has PendingMaintenanceActionDetails => (is => 'ro', isa => 'ArrayRef[Paws::DMS::PendingMaintenanceAction]');
-  has ResourceIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::DMS::Types qw/DMS_PendingMaintenanceAction/;
+  has PendingMaintenanceActionDetails => (is => 'ro', isa => ArrayRef[DMS_PendingMaintenanceAction]);
+  has ResourceIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'PendingMaintenanceActionDetails' => {
+                                                      'class' => 'Paws::DMS::PendingMaintenanceAction',
+                                                      'type' => 'ArrayRef[DMS_PendingMaintenanceAction]'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 PendingMaintenanceActionDetails => ArrayRef[L<Paws::DMS::PendingMaintenanceAction>]
+=head2 PendingMaintenanceActionDetails => ArrayRef[DMS_PendingMaintenanceAction]
 
   Detailed information about the pending maintenance action.
 

@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Inspector::AgentAlreadyRunningAssessment;
-  use Moose;
-  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest'], required => 1);
-  has AssessmentRunArn => (is => 'ro', isa => 'Str', request_name => 'assessmentRunArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Inspector::Types qw//;
+  has AgentId => (is => 'ro', isa => Str, required => 1);
+  has AssessmentRunArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AgentId' => {
+                              'type' => 'Str'
+                            },
+               'AssessmentRunArn' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'AgentId' => 'agentId',
+                       'AssessmentRunArn' => 'assessmentRunArn'
+                     },
+  'IsRequired' => {
+                    'AssessmentRunArn' => 1,
+                    'AgentId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

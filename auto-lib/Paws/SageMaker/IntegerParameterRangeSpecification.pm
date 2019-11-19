@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SageMaker::IntegerParameterRangeSpecification;
-  use Moose;
-  has MaxValue => (is => 'ro', isa => 'Str', required => 1);
-  has MinValue => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has MaxValue => (is => 'ro', isa => Str, required => 1);
+  has MinValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MinValue' => {
+                               'type' => 'Str'
+                             },
+               'MaxValue' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'MinValue' => 1,
+                    'MaxValue' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

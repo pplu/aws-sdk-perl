@@ -1,15 +1,43 @@
 
 package Paws::ApiGateway::UpdateUsagePlan;
-  use Moose;
-  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]', traits => ['NameInRequest'], request_name => 'patchOperations');
-  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usageplanId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_PatchOperation/;
+  has PatchOperations => (is => 'ro', isa => ArrayRef[ApiGateway_PatchOperation], predicate => 1);
+  has UsagePlanId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUsagePlan');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/usageplans/{usageplanId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::UsagePlan');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateUsagePlan');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/usageplans/{usageplanId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::UsagePlan');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'UsagePlanId' => 'usageplanId'
+                  },
+  'IsRequired' => {
+                    'UsagePlanId' => 1
+                  },
+  'NameInRequest' => {
+                       'PatchOperations' => 'patchOperations'
+                     },
+  'types' => {
+               'UsagePlanId' => {
+                                  'type' => 'Str'
+                                },
+               'PatchOperations' => {
+                                      'class' => 'Paws::ApiGateway::PatchOperation',
+                                      'type' => 'ArrayRef[ApiGateway_PatchOperation]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +89,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]
+=head2 PatchOperations => ArrayRef[ApiGateway_PatchOperation]
 
 A list of update operations to be applied to the specified resource and
 in the order specified in this list.

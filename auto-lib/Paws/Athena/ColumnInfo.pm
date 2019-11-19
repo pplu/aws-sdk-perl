@@ -1,15 +1,63 @@
+# Generated from default/object.tt
 package Paws::Athena::ColumnInfo;
-  use Moose;
-  has CaseSensitive => (is => 'ro', isa => 'Bool');
-  has CatalogName => (is => 'ro', isa => 'Str');
-  has Label => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Nullable => (is => 'ro', isa => 'Str');
-  has Precision => (is => 'ro', isa => 'Int');
-  has Scale => (is => 'ro', isa => 'Int');
-  has SchemaName => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Str Int/;
+  use Paws::Athena::Types qw//;
+  has CaseSensitive => (is => 'ro', isa => Bool);
+  has CatalogName => (is => 'ro', isa => Str);
+  has Label => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Nullable => (is => 'ro', isa => Str);
+  has Precision => (is => 'ro', isa => Int);
+  has Scale => (is => 'ro', isa => Int);
+  has SchemaName => (is => 'ro', isa => Str);
+  has TableName => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Nullable' => {
+                               'type' => 'Str'
+                             },
+               'CaseSensitive' => {
+                                    'type' => 'Bool'
+                                  },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CatalogName' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'Scale' => {
+                            'type' => 'Int'
+                          },
+               'Precision' => {
+                                'type' => 'Int'
+                              },
+               'SchemaName' => {
+                                 'type' => 'Str'
+                               },
+               'Label' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

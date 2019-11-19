@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::EKS::NodegroupHealth;
-  use Moose;
-  has Issues => (is => 'ro', isa => 'ArrayRef[Paws::EKS::Issue]', request_name => 'issues', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::EKS::Types qw/EKS_Issue/;
+  has Issues => (is => 'ro', isa => ArrayRef[EKS_Issue]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Issues' => {
+                             'type' => 'ArrayRef[EKS_Issue]',
+                             'class' => 'Paws::EKS::Issue'
+                           }
+             },
+  'NameInRequest' => {
+                       'Issues' => 'issues'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ An object representing the health status of the node group.
 =head1 ATTRIBUTES
 
 
-=head2 Issues => ArrayRef[L<Paws::EKS::Issue>]
+=head2 Issues => ArrayRef[EKS_Issue]
 
   Any issues that are associated with the node group.
 

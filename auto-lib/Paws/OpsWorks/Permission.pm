@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::Permission;
-  use Moose;
-  has AllowSsh => (is => 'ro', isa => 'Bool');
-  has AllowSudo => (is => 'ro', isa => 'Bool');
-  has IamUserArn => (is => 'ro', isa => 'Str');
-  has Level => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::OpsWorks::Types qw//;
+  has AllowSsh => (is => 'ro', isa => Bool);
+  has AllowSudo => (is => 'ro', isa => Bool);
+  has IamUserArn => (is => 'ro', isa => Str);
+  has Level => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Level' => {
+                            'type' => 'Str'
+                          },
+               'IamUserArn' => {
+                                 'type' => 'Str'
+                               },
+               'AllowSudo' => {
+                                'type' => 'Bool'
+                              },
+               'AllowSsh' => {
+                               'type' => 'Bool'
+                             },
+               'StackId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

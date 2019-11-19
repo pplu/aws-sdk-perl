@@ -1,13 +1,49 @@
 
 package Paws::IoT::TestInvokeAuthorizerResponse;
-  use Moose;
-  has DisconnectAfterInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'disconnectAfterInSeconds');
-  has IsAuthenticated => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'isAuthenticated');
-  has PolicyDocuments => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'policyDocuments');
-  has PrincipalId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'principalId');
-  has RefreshAfterInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'refreshAfterInSeconds');
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef Undef/;
+  use Paws::IoT::Types qw//;
+  has DisconnectAfterInSeconds => (is => 'ro', isa => Int);
+  has IsAuthenticated => (is => 'ro', isa => Bool);
+  has PolicyDocuments => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has PrincipalId => (is => 'ro', isa => Str);
+  has RefreshAfterInSeconds => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyDocuments' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'IsAuthenticated' => {
+                                      'type' => 'Bool'
+                                    },
+               'RefreshAfterInSeconds' => {
+                                            'type' => 'Int'
+                                          },
+               'PrincipalId' => {
+                                  'type' => 'Str'
+                                },
+               'DisconnectAfterInSeconds' => {
+                                               'type' => 'Int'
+                                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DisconnectAfterInSeconds' => 'disconnectAfterInSeconds',
+                       'PrincipalId' => 'principalId',
+                       'PolicyDocuments' => 'policyDocuments',
+                       'IsAuthenticated' => 'isAuthenticated',
+                       'RefreshAfterInSeconds' => 'refreshAfterInSeconds'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

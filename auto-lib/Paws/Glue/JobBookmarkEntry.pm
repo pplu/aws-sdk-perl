@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::Glue::JobBookmarkEntry;
-  use Moose;
-  has Attempt => (is => 'ro', isa => 'Int');
-  has JobBookmark => (is => 'ro', isa => 'Str');
-  has JobName => (is => 'ro', isa => 'Str');
-  has PreviousRunId => (is => 'ro', isa => 'Str');
-  has Run => (is => 'ro', isa => 'Int');
-  has RunId => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Glue::Types qw//;
+  has Attempt => (is => 'ro', isa => Int);
+  has JobBookmark => (is => 'ro', isa => Str);
+  has JobName => (is => 'ro', isa => Str);
+  has PreviousRunId => (is => 'ro', isa => Str);
+  has Run => (is => 'ro', isa => Int);
+  has RunId => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'PreviousRunId' => {
+                                    'type' => 'Str'
+                                  },
+               'JobBookmark' => {
+                                  'type' => 'Str'
+                                },
+               'Attempt' => {
+                              'type' => 'Int'
+                            },
+               'RunId' => {
+                            'type' => 'Str'
+                          },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'Run' => {
+                          'type' => 'Int'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

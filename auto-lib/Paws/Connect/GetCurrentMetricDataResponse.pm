@@ -1,11 +1,35 @@
 
 package Paws::Connect::GetCurrentMetricDataResponse;
-  use Moose;
-  has DataSnapshotTime => (is => 'ro', isa => 'Str');
-  has MetricResults => (is => 'ro', isa => 'ArrayRef[Paws::Connect::CurrentMetricResult]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Connect::Types qw/Connect_CurrentMetricResult/;
+  has DataSnapshotTime => (is => 'ro', isa => Str);
+  has MetricResults => (is => 'ro', isa => ArrayRef[Connect_CurrentMetricResult]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataSnapshotTime' => {
+                                       'type' => 'Str'
+                                     },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MetricResults' => {
+                                    'class' => 'Paws::Connect::CurrentMetricResult',
+                                    'type' => 'ArrayRef[Connect_CurrentMetricResult]'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +46,7 @@ Paws::Connect::GetCurrentMetricDataResponse
 The time at which the metrics were retrieved and cached for pagination.
 
 
-=head2 MetricResults => ArrayRef[L<Paws::Connect::CurrentMetricResult>]
+=head2 MetricResults => ArrayRef[Connect_CurrentMetricResult]
 
 Information about the real-time metrics.
 

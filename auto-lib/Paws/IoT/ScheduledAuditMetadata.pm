@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::IoT::ScheduledAuditMetadata;
-  use Moose;
-  has DayOfMonth => (is => 'ro', isa => 'Str', request_name => 'dayOfMonth', traits => ['NameInRequest']);
-  has DayOfWeek => (is => 'ro', isa => 'Str', request_name => 'dayOfWeek', traits => ['NameInRequest']);
-  has Frequency => (is => 'ro', isa => 'Str', request_name => 'frequency', traits => ['NameInRequest']);
-  has ScheduledAuditArn => (is => 'ro', isa => 'Str', request_name => 'scheduledAuditArn', traits => ['NameInRequest']);
-  has ScheduledAuditName => (is => 'ro', isa => 'Str', request_name => 'scheduledAuditName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has DayOfMonth => (is => 'ro', isa => Str);
+  has DayOfWeek => (is => 'ro', isa => Str);
+  has Frequency => (is => 'ro', isa => Str);
+  has ScheduledAuditArn => (is => 'ro', isa => Str);
+  has ScheduledAuditName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DayOfWeek' => 'dayOfWeek',
+                       'DayOfMonth' => 'dayOfMonth',
+                       'Frequency' => 'frequency',
+                       'ScheduledAuditArn' => 'scheduledAuditArn',
+                       'ScheduledAuditName' => 'scheduledAuditName'
+                     },
+  'types' => {
+               'ScheduledAuditName' => {
+                                         'type' => 'Str'
+                                       },
+               'ScheduledAuditArn' => {
+                                        'type' => 'Str'
+                                      },
+               'Frequency' => {
+                                'type' => 'Str'
+                              },
+               'DayOfMonth' => {
+                                 'type' => 'Str'
+                               },
+               'DayOfWeek' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

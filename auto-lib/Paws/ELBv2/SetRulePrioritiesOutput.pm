@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::ELBv2::SetRulePrioritiesOutput;
-  use Moose;
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Rule]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELBv2::Types qw/ELBv2_Rule/;
+  has Rules => (is => 'ro', isa => ArrayRef[ELBv2_Rule]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Rules' => {
+                            'class' => 'Paws::ELBv2::Rule',
+                            'type' => 'ArrayRef[ELBv2_Rule]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::ELBv2::SetRulePrioritiesOutput
 =head1 ATTRIBUTES
 
 
-=head2 Rules => ArrayRef[L<Paws::ELBv2::Rule>]
+=head2 Rules => ArrayRef[ELBv2_Rule]
 
 Information about the rules.
 

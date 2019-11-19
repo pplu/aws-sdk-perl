@@ -1,8 +1,23 @@
 package Paws::ResourceTagging::FailedResourcesMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::ResourceTagging::Types qw/ResourceTagging_FailureInfo/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::ResourceTagging::FailureInfo]');
+  has Map => (is => 'ro', isa => HashRef[ResourceTagging_FailureInfo]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[ResourceTagging_FailureInfo]',
+                                          class => 'Paws::ResourceTagging::FailureInfo',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::ResourceTagging::FailureInfo>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

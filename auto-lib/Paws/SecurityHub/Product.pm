@@ -1,13 +1,54 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::Product;
-  use Moose;
-  has ActivationUrl => (is => 'ro', isa => 'Str');
-  has Categories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CompanyName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has MarketplaceUrl => (is => 'ro', isa => 'Str');
-  has ProductArn => (is => 'ro', isa => 'Str', required => 1);
-  has ProductName => (is => 'ro', isa => 'Str');
-  has ProductSubscriptionResourcePolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::SecurityHub::Types qw//;
+  has ActivationUrl => (is => 'ro', isa => Str);
+  has Categories => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CompanyName => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has MarketplaceUrl => (is => 'ro', isa => Str);
+  has ProductArn => (is => 'ro', isa => Str, required => 1);
+  has ProductName => (is => 'ro', isa => Str);
+  has ProductSubscriptionResourcePolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProductSubscriptionResourcePolicy' => {
+                                                        'type' => 'Str'
+                                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ProductArn' => {
+                                 'type' => 'Str'
+                               },
+               'MarketplaceUrl' => {
+                                     'type' => 'Str'
+                                   },
+               'ActivationUrl' => {
+                                    'type' => 'Str'
+                                  },
+               'Categories' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'CompanyName' => {
+                                  'type' => 'Str'
+                                },
+               'ProductName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ProductArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

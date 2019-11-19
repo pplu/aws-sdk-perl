@@ -1,19 +1,63 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::SendMessage;
-  use Moose;
-  has DelaySeconds => (is => 'ro', isa => 'Int');
-  has MessageAttributes => (is => 'ro', isa => 'Paws::SQS::MessageBodyAttributeMap', traits => ['NameInRequest'], request_name => 'MessageAttribute' );
-  has MessageBody => (is => 'ro', isa => 'Str', required => 1);
-  has MessageDeduplicationId => (is => 'ro', isa => 'Str');
-  has MessageGroupId => (is => 'ro', isa => 'Str');
-  has MessageSystemAttributes => (is => 'ro', isa => 'Paws::SQS::MessageBodySystemAttributeMap', traits => ['NameInRequest'], request_name => 'MessageSystemAttribute' );
-  has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SQS::Types qw/SQS_MessageBodyAttributeMap SQS_MessageBodySystemAttributeMap/;
+  has DelaySeconds => (is => 'ro', isa => Int, predicate => 1);
+  has MessageAttributes => (is => 'ro', isa => SQS_MessageBodyAttributeMap, predicate => 1);
+  has MessageBody => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MessageDeduplicationId => (is => 'ro', isa => Str, predicate => 1);
+  has MessageGroupId => (is => 'ro', isa => Str, predicate => 1);
+  has MessageSystemAttributes => (is => 'ro', isa => SQS_MessageBodySystemAttributeMap, predicate => 1);
+  has QueueUrl => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendMessage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SQS::SendMessageResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendMessage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SQS::SendMessageResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'SendMessageResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MessageAttributes' => {
+                                        'type' => 'SQS_MessageBodyAttributeMap',
+                                        'class' => 'Paws::SQS::MessageBodyAttributeMap'
+                                      },
+               'MessageGroupId' => {
+                                     'type' => 'Str'
+                                   },
+               'MessageDeduplicationId' => {
+                                             'type' => 'Str'
+                                           },
+               'MessageBody' => {
+                                  'type' => 'Str'
+                                },
+               'QueueUrl' => {
+                               'type' => 'Str'
+                             },
+               'MessageSystemAttributes' => {
+                                              'type' => 'SQS_MessageBodySystemAttributeMap',
+                                              'class' => 'Paws::SQS::MessageBodySystemAttributeMap'
+                                            },
+               'DelaySeconds' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'IsRequired' => {
+                    'QueueUrl' => 1,
+                    'MessageBody' => 1
+                  },
+  'NameInRequest' => {
+                       'MessageSystemAttributes' => 'MessageSystemAttribute',
+                       'MessageAttributes' => 'MessageAttribute'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -88,7 +132,7 @@ You can set this parameter only on a queue level.
 
 
 
-=head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
+=head2 MessageAttributes => SQS_MessageBodyAttributeMap
 
 Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
 For more information, see Amazon SQS Message Attributes
@@ -236,7 +280,7 @@ Standard queues.
 
 
 
-=head2 MessageSystemAttributes => L<Paws::SQS::MessageBodySystemAttributeMap>
+=head2 MessageSystemAttributes => SQS_MessageBodySystemAttributeMap
 
 The message system attribute to send. Each message system attribute
 consists of a C<Name>, C<Type>, and C<Value>.

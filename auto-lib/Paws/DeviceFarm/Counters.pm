@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::Counters;
-  use Moose;
-  has Errored => (is => 'ro', isa => 'Int', request_name => 'errored', traits => ['NameInRequest']);
-  has Failed => (is => 'ro', isa => 'Int', request_name => 'failed', traits => ['NameInRequest']);
-  has Passed => (is => 'ro', isa => 'Int', request_name => 'passed', traits => ['NameInRequest']);
-  has Skipped => (is => 'ro', isa => 'Int', request_name => 'skipped', traits => ['NameInRequest']);
-  has Stopped => (is => 'ro', isa => 'Int', request_name => 'stopped', traits => ['NameInRequest']);
-  has Total => (is => 'ro', isa => 'Int', request_name => 'total', traits => ['NameInRequest']);
-  has Warned => (is => 'ro', isa => 'Int', request_name => 'warned', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::DeviceFarm::Types qw//;
+  has Errored => (is => 'ro', isa => Int);
+  has Failed => (is => 'ro', isa => Int);
+  has Passed => (is => 'ro', isa => Int);
+  has Skipped => (is => 'ro', isa => Int);
+  has Stopped => (is => 'ro', isa => Int);
+  has Total => (is => 'ro', isa => Int);
+  has Warned => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Skipped' => {
+                              'type' => 'Int'
+                            },
+               'Errored' => {
+                              'type' => 'Int'
+                            },
+               'Failed' => {
+                             'type' => 'Int'
+                           },
+               'Stopped' => {
+                              'type' => 'Int'
+                            },
+               'Passed' => {
+                             'type' => 'Int'
+                           },
+               'Warned' => {
+                             'type' => 'Int'
+                           },
+               'Total' => {
+                            'type' => 'Int'
+                          }
+             },
+  'NameInRequest' => {
+                       'Skipped' => 'skipped',
+                       'Errored' => 'errored',
+                       'Failed' => 'failed',
+                       'Stopped' => 'stopped',
+                       'Passed' => 'passed',
+                       'Total' => 'total',
+                       'Warned' => 'warned'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

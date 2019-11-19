@@ -1,14 +1,67 @@
+# Generated from default/object.tt
 package Paws::Personalize::Campaign;
-  use Moose;
-  has CampaignArn => (is => 'ro', isa => 'Str', request_name => 'campaignArn', traits => ['NameInRequest']);
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has LatestCampaignUpdate => (is => 'ro', isa => 'Paws::Personalize::CampaignUpdateSummary', request_name => 'latestCampaignUpdate', traits => ['NameInRequest']);
-  has MinProvisionedTPS => (is => 'ro', isa => 'Int', request_name => 'minProvisionedTPS', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has SolutionVersionArn => (is => 'ro', isa => 'Str', request_name => 'solutionVersionArn', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Personalize::Types qw/Personalize_CampaignUpdateSummary/;
+  has CampaignArn => (is => 'ro', isa => Str);
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has LatestCampaignUpdate => (is => 'ro', isa => Personalize_CampaignUpdateSummary);
+  has MinProvisionedTPS => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has SolutionVersionArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MinProvisionedTPS' => {
+                                        'type' => 'Int'
+                                      },
+               'LatestCampaignUpdate' => {
+                                           'type' => 'Personalize_CampaignUpdateSummary',
+                                           'class' => 'Paws::Personalize::CampaignUpdateSummary'
+                                         },
+               'CampaignArn' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'SolutionVersionArn' => {
+                                         'type' => 'Str'
+                                       },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'CampaignArn' => 'campaignArn',
+                       'CreationDateTime' => 'creationDateTime',
+                       'Name' => 'name',
+                       'LatestCampaignUpdate' => 'latestCampaignUpdate',
+                       'MinProvisionedTPS' => 'minProvisionedTPS',
+                       'SolutionVersionArn' => 'solutionVersionArn',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime',
+                       'FailureReason' => 'failureReason'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +118,7 @@ For more information on campaigns, see CreateCampaign.
   The date and time (in Unix format) that the campaign was last updated.
 
 
-=head2 LatestCampaignUpdate => L<Paws::Personalize::CampaignUpdateSummary>
+=head2 LatestCampaignUpdate => Personalize_CampaignUpdateSummary
 
   
 

@@ -1,53 +1,194 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::ModifyDBInstance;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AllowMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has ApplyImmediately => (is => 'ro', isa => 'Bool');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CACertificateIdentifier => (is => 'ro', isa => 'Str');
-  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::RDS::CloudwatchLogsExportConfiguration');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBPortNumber => (is => 'ro', isa => 'Int');
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has Domain => (is => 'ro', isa => 'Str');
-  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has MaxAllocatedStorage => (is => 'ro', isa => 'Int');
-  has MonitoringInterval => (is => 'ro', isa => 'Int');
-  has MonitoringRoleArn => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has NewDBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
-  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
-  has PromotionTier => (is => 'ro', isa => 'Int');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has StorageType => (is => 'ro', isa => 'Str');
-  has TdeCredentialArn => (is => 'ro', isa => 'Str');
-  has TdeCredentialPassword => (is => 'ro', isa => 'Str');
-  has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int Bool Undef ArrayRef/;
+  use Paws::RDS::Types qw/RDS_CloudwatchLogsExportConfiguration RDS_ProcessorFeature/;
+  has AllocatedStorage => (is => 'ro', isa => Int, predicate => 1);
+  has AllowMajorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has ApplyImmediately => (is => 'ro', isa => Bool, predicate => 1);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has CACertificateIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => RDS_CloudwatchLogsExportConfiguration, predicate => 1);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has DBInstanceClass => (is => 'ro', isa => Str, predicate => 1);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBPortNumber => (is => 'ro', isa => Int, predicate => 1);
+  has DBSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, predicate => 1);
+  has DomainIAMRoleName => (is => 'ro', isa => Str, predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has EnablePerformanceInsights => (is => 'ro', isa => Bool, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Iops => (is => 'ro', isa => Int, predicate => 1);
+  has LicenseModel => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, predicate => 1);
+  has MaxAllocatedStorage => (is => 'ro', isa => Int, predicate => 1);
+  has MonitoringInterval => (is => 'ro', isa => Int, predicate => 1);
+  has MonitoringRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has MultiAZ => (is => 'ro', isa => Bool, predicate => 1);
+  has NewDBInstanceIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has ProcessorFeatures => (is => 'ro', isa => ArrayRef[RDS_ProcessorFeature], predicate => 1);
+  has PromotionTier => (is => 'ro', isa => Int, predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has StorageType => (is => 'ro', isa => Str, predicate => 1);
+  has TdeCredentialArn => (is => 'ro', isa => Str, predicate => 1);
+  has TdeCredentialPassword => (is => 'ro', isa => Str, predicate => 1);
+  has UseDefaultProcessorFeatures => (is => 'ro', isa => Bool, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::ModifyDBInstanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBInstanceResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyDBInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::ModifyDBInstanceResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyDBInstanceResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UseDefaultProcessorFeatures' => {
+                                                  'type' => 'Bool'
+                                                },
+               'DomainIAMRoleName' => {
+                                        'type' => 'Str'
+                                      },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'PerformanceInsightsKMSKeyId' => {
+                                                  'type' => 'Str'
+                                                },
+               'PromotionTier' => {
+                                    'type' => 'Int'
+                                  },
+               'DBPortNumber' => {
+                                   'type' => 'Int'
+                                 },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'PerformanceInsightsRetentionPeriod' => {
+                                                         'type' => 'Int'
+                                                       },
+               'CACertificateIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'CloudwatchLogsExportConfiguration' => {
+                                                        'class' => 'Paws::RDS::CloudwatchLogsExportConfiguration',
+                                                        'type' => 'RDS_CloudwatchLogsExportConfiguration'
+                                                      },
+               'MonitoringInterval' => {
+                                         'type' => 'Int'
+                                       },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'EnablePerformanceInsights' => {
+                                                'type' => 'Bool'
+                                              },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'TdeCredentialPassword' => {
+                                            'type' => 'Str'
+                                          },
+               'NewDBInstanceIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'TdeCredentialArn' => {
+                                       'type' => 'Str'
+                                     },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'ProcessorFeatures' => {
+                                        'class' => 'Paws::RDS::ProcessorFeature',
+                                        'type' => 'ArrayRef[RDS_ProcessorFeature]'
+                                      },
+               'MonitoringRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'MaxAllocatedStorage' => {
+                                          'type' => 'Int'
+                                        },
+               'AllowMajorVersionUpgrade' => {
+                                               'type' => 'Bool'
+                                             },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'DBSecurityGroups' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             },
+  'IsRequired' => {
+                    'DBInstanceIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -200,7 +341,7 @@ instance.
 
 
 
-=head2 CloudwatchLogsExportConfiguration => L<Paws::RDS::CloudwatchLogsExportConfiguration>
+=head2 CloudwatchLogsExportConfiguration => RDS_CloudwatchLogsExportConfiguration
 
 The configuration setting for the log types to be enabled for export to
 CloudWatch Logs for a specific DB instance.
@@ -710,7 +851,7 @@ Constraints: Must be at least 30 minutes
 
 
 
-=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+=head2 ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]
 
 The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.

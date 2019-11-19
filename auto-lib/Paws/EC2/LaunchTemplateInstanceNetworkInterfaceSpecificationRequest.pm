@@ -1,18 +1,73 @@
 package Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest;
-  use Moose;
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool');
-  has Description => (is => 'ro', isa => 'Str');
-  has DeviceIndex => (is => 'ro', isa => 'Int');
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SecurityGroupId', traits => ['NameInRequest']);
-  has InterfaceType => (is => 'ro', isa => 'Str');
-  has Ipv6AddressCount => (is => 'ro', isa => 'Int');
-  has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6AddressRequest]');
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str');
-  has PrivateIpAddress => (is => 'ro', isa => 'Str');
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrivateIpAddressSpecification]');
-  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
-  has SubnetId => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Bool Str Int Undef ArrayRef/;
+  use Paws::EC2::Types qw/EC2_InstanceIpv6AddressRequest EC2_PrivateIpAddressSpecification/;
+  has AssociatePublicIpAddress => (is => 'ro', isa => Bool);
+  has DeleteOnTermination => (is => 'ro', isa => Bool);
+  has Description => (is => 'ro', isa => Str);
+  has DeviceIndex => (is => 'ro', isa => Int);
+  has Groups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has InterfaceType => (is => 'ro', isa => Str);
+  has Ipv6AddressCount => (is => 'ro', isa => Int);
+  has Ipv6Addresses => (is => 'ro', isa => ArrayRef[EC2_InstanceIpv6AddressRequest]);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+  has PrivateIpAddresses => (is => 'ro', isa => ArrayRef[EC2_PrivateIpAddressSpecification]);
+  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => Int);
+  has SubnetId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Groups' => 'SecurityGroupId'
+                     },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'Ipv6Addresses' => {
+                                    'type' => 'ArrayRef[EC2_InstanceIpv6AddressRequest]',
+                                    'class' => 'Paws::EC2::InstanceIpv6AddressRequest'
+                                  },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'DeleteOnTermination' => {
+                                          'type' => 'Bool'
+                                        },
+               'SecondaryPrivateIpAddressCount' => {
+                                                     'type' => 'Int'
+                                                   },
+               'Ipv6AddressCount' => {
+                                       'type' => 'Int'
+                                     },
+               'InterfaceType' => {
+                                    'type' => 'Str'
+                                  },
+               'AssociatePublicIpAddress' => {
+                                               'type' => 'Bool'
+                                             },
+               'PrivateIpAddresses' => {
+                                         'class' => 'Paws::EC2::PrivateIpAddressSpecification',
+                                         'type' => 'ArrayRef[EC2_PrivateIpAddressSpecification]'
+                                       },
+               'Groups' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'DeviceIndex' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +149,7 @@ EC2 automatically selects the IPv6 addresses from the subnet range. You
 can't use this option if specifying specific IPv6 addresses.
 
 
-=head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6AddressRequest>]
+=head2 Ipv6Addresses => ArrayRef[EC2_InstanceIpv6AddressRequest]
 
   One or more specific IPv6 addresses from the IPv6 CIDR block range of
 your subnet. You can't use this option if you're specifying a number of
@@ -111,7 +166,7 @@ IPv6 addresses.
   The primary private IPv4 address of the network interface.
 
 
-=head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]
+=head2 PrivateIpAddresses => ArrayRef[EC2_PrivateIpAddressSpecification]
 
   One or more private IPv4 addresses.
 

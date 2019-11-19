@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::AttributeNameAndValue;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedAttributeValue/;
+  has AttributeName => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => CloudDirectory_TypedAttributeValue, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  },
+               'Value' => {
+                            'class' => 'Paws::CloudDirectory::TypedAttributeValue',
+                            'type' => 'CloudDirectory_TypedAttributeValue'
+                          }
+             },
+  'IsRequired' => {
+                    'AttributeName' => 1,
+                    'Value' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ Identifies the attribute name and value for a typed link.
   The attribute name of the typed link.
 
 
-=head2 B<REQUIRED> Value => L<Paws::CloudDirectory::TypedAttributeValue>
+=head2 B<REQUIRED> Value => CloudDirectory_TypedAttributeValue
 
   The value for the typed link.
 

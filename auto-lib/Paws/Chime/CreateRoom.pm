@@ -1,16 +1,44 @@
 
 package Paws::Chime::CreateRoom;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRoom');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/rooms');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::CreateRoomResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRoom');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/rooms');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::CreateRoomResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'AccountId' => 1
+                  },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

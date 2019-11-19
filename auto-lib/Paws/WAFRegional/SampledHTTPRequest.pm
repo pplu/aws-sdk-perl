@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::SampledHTTPRequest;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has Request => (is => 'ro', isa => 'Paws::WAFRegional::HTTPRequest', required => 1);
-  has RuleWithinRuleGroup => (is => 'ro', isa => 'Str');
-  has Timestamp => (is => 'ro', isa => 'Str');
-  has Weight => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WAFRegional::Types qw/WAFRegional_HTTPRequest/;
+  has Action => (is => 'ro', isa => Str);
+  has Request => (is => 'ro', isa => WAFRegional_HTTPRequest, required => 1);
+  has RuleWithinRuleGroup => (is => 'ro', isa => Str);
+  has Timestamp => (is => 'ro', isa => Str);
+  has Weight => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Request' => 1,
+                    'Weight' => 1
+                  },
+  'types' => {
+               'Request' => {
+                              'class' => 'Paws::WAFRegional::HTTPRequest',
+                              'type' => 'WAFRegional_HTTPRequest'
+                            },
+               'Weight' => {
+                             'type' => 'Int'
+                           },
+               'RuleWithinRuleGroup' => {
+                                          'type' => 'Str'
+                                        },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'Action' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +84,7 @@ C<GetSampledRequests>.
 C<BLOCK>, or C<COUNT>.
 
 
-=head2 B<REQUIRED> Request => L<Paws::WAFRegional::HTTPRequest>
+=head2 B<REQUIRED> Request => WAFRegional_HTTPRequest
 
   A complex type that contains detailed information about the request.
 

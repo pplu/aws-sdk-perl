@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Forecast::InputDataConfig;
-  use Moose;
-  has DatasetGroupArn => (is => 'ro', isa => 'Str', required => 1);
-  has SupplementaryFeatures => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::SupplementaryFeature]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Forecast::Types qw/Forecast_SupplementaryFeature/;
+  has DatasetGroupArn => (is => 'ro', isa => Str, required => 1);
+  has SupplementaryFeatures => (is => 'ro', isa => ArrayRef[Forecast_SupplementaryFeature]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DatasetGroupArn' => 1
+                  },
+  'types' => {
+               'SupplementaryFeatures' => {
+                                            'type' => 'ArrayRef[Forecast_SupplementaryFeature]',
+                                            'class' => 'Paws::Forecast::SupplementaryFeature'
+                                          },
+               'DatasetGroupArn' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +68,7 @@ CreatePredictor request.
   The Amazon Resource Name (ARN) of the dataset group.
 
 
-=head2 SupplementaryFeatures => ArrayRef[L<Paws::Forecast::SupplementaryFeature>]
+=head2 SupplementaryFeatures => ArrayRef[Forecast_SupplementaryFeature]
 
   An array of supplementary features. For this release, the only
 supported feature is a holiday calendar.

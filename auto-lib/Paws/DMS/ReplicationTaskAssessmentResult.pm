@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::DMS::ReplicationTaskAssessmentResult;
-  use Moose;
-  has AssessmentResults => (is => 'ro', isa => 'Str');
-  has AssessmentResultsFile => (is => 'ro', isa => 'Str');
-  has AssessmentStatus => (is => 'ro', isa => 'Str');
-  has ReplicationTaskArn => (is => 'ro', isa => 'Str');
-  has ReplicationTaskIdentifier => (is => 'ro', isa => 'Str');
-  has ReplicationTaskLastAssessmentDate => (is => 'ro', isa => 'Str');
-  has S3ObjectUrl => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw//;
+  has AssessmentResults => (is => 'ro', isa => Str);
+  has AssessmentResultsFile => (is => 'ro', isa => Str);
+  has AssessmentStatus => (is => 'ro', isa => Str);
+  has ReplicationTaskArn => (is => 'ro', isa => Str);
+  has ReplicationTaskIdentifier => (is => 'ro', isa => Str);
+  has ReplicationTaskLastAssessmentDate => (is => 'ro', isa => Str);
+  has S3ObjectUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationTaskArn' => {
+                                         'type' => 'Str'
+                                       },
+               'AssessmentResultsFile' => {
+                                            'type' => 'Str'
+                                          },
+               'ReplicationTaskLastAssessmentDate' => {
+                                                        'type' => 'Str'
+                                                      },
+               'S3ObjectUrl' => {
+                                  'type' => 'Str'
+                                },
+               'AssessmentResults' => {
+                                        'type' => 'Str'
+                                      },
+               'ReplicationTaskIdentifier' => {
+                                                'type' => 'Str'
+                                              },
+               'AssessmentStatus' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

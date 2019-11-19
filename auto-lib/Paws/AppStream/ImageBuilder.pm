@@ -1,23 +1,100 @@
+# Generated from default/object.tt
 package Paws::AppStream::ImageBuilder;
-  use Moose;
-  has AccessEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::AccessEndpoint]');
-  has AppstreamAgentVersion => (is => 'ro', isa => 'Str');
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
-  has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
-  has IamRoleArn => (is => 'ro', isa => 'Str');
-  has ImageArn => (is => 'ro', isa => 'Str');
-  has ImageBuilderErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::ResourceError]');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NetworkAccessConfiguration => (is => 'ro', isa => 'Paws::AppStream::NetworkAccessConfiguration');
-  has Platform => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has StateChangeReason => (is => 'ro', isa => 'Paws::AppStream::ImageBuilderStateChangeReason');
-  has VpcConfig => (is => 'ro', isa => 'Paws::AppStream::VpcConfig');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Bool/;
+  use Paws::AppStream::Types qw/AppStream_AccessEndpoint AppStream_ImageBuilderStateChangeReason AppStream_NetworkAccessConfiguration AppStream_VpcConfig AppStream_ResourceError AppStream_DomainJoinInfo/;
+  has AccessEndpoints => (is => 'ro', isa => ArrayRef[AppStream_AccessEndpoint]);
+  has AppstreamAgentVersion => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str);
+  has DomainJoinInfo => (is => 'ro', isa => AppStream_DomainJoinInfo);
+  has EnableDefaultInternetAccess => (is => 'ro', isa => Bool);
+  has IamRoleArn => (is => 'ro', isa => Str);
+  has ImageArn => (is => 'ro', isa => Str);
+  has ImageBuilderErrors => (is => 'ro', isa => ArrayRef[AppStream_ResourceError]);
+  has InstanceType => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has NetworkAccessConfiguration => (is => 'ro', isa => AppStream_NetworkAccessConfiguration);
+  has Platform => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has StateChangeReason => (is => 'ro', isa => AppStream_ImageBuilderStateChangeReason);
+  has VpcConfig => (is => 'ro', isa => AppStream_VpcConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'NetworkAccessConfiguration' => {
+                                                 'class' => 'Paws::AppStream::NetworkAccessConfiguration',
+                                                 'type' => 'AppStream_NetworkAccessConfiguration'
+                                               },
+               'ImageBuilderErrors' => {
+                                         'type' => 'ArrayRef[AppStream_ResourceError]',
+                                         'class' => 'Paws::AppStream::ResourceError'
+                                       },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'EnableDefaultInternetAccess' => {
+                                                  'type' => 'Bool'
+                                                },
+               'ImageArn' => {
+                               'type' => 'Str'
+                             },
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'AccessEndpoints' => {
+                                      'type' => 'ArrayRef[AppStream_AccessEndpoint]',
+                                      'class' => 'Paws::AppStream::AccessEndpoint'
+                                    },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'StateChangeReason' => {
+                                        'type' => 'AppStream_ImageBuilderStateChangeReason',
+                                        'class' => 'Paws::AppStream::ImageBuilderStateChangeReason'
+                                      },
+               'AppstreamAgentVersion' => {
+                                            'type' => 'Str'
+                                          },
+               'DomainJoinInfo' => {
+                                     'type' => 'AppStream_DomainJoinInfo',
+                                     'class' => 'Paws::AppStream::DomainJoinInfo'
+                                   },
+               'VpcConfig' => {
+                                'type' => 'AppStream_VpcConfig',
+                                'class' => 'Paws::AppStream::VpcConfig'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +130,7 @@ Describes a virtual machine that is used to create an image.
 =head1 ATTRIBUTES
 
 
-=head2 AccessEndpoints => ArrayRef[L<Paws::AppStream::AccessEndpoint>]
+=head2 AccessEndpoints => ArrayRef[AppStream_AccessEndpoint]
 
   The list of virtual private cloud (VPC) interface endpoint objects.
 Administrators can connect to the image builder only through the
@@ -86,7 +163,7 @@ the image builder.
   The image builder name to display.
 
 
-=head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
+=head2 DomainJoinInfo => AppStream_DomainJoinInfo
 
   The name of the directory and organizational unit (OU) to use to join
 the image builder to a Microsoft Active Directory domain.
@@ -117,7 +194,7 @@ in the I<Amazon AppStream 2.0 Administration Guide>.
   The ARN of the image from which this builder was created.
 
 
-=head2 ImageBuilderErrors => ArrayRef[L<Paws::AppStream::ResourceError>]
+=head2 ImageBuilderErrors => ArrayRef[AppStream_ResourceError]
 
   The image builder errors.
 
@@ -218,7 +295,7 @@ stream.graphics-pro.16xlarge
   The name of the image builder.
 
 
-=head2 NetworkAccessConfiguration => L<Paws::AppStream::NetworkAccessConfiguration>
+=head2 NetworkAccessConfiguration => AppStream_NetworkAccessConfiguration
 
   
 
@@ -233,12 +310,12 @@ stream.graphics-pro.16xlarge
   The state of the image builder.
 
 
-=head2 StateChangeReason => L<Paws::AppStream::ImageBuilderStateChangeReason>
+=head2 StateChangeReason => AppStream_ImageBuilderStateChangeReason
 
   The reason why the last state change occurred.
 
 
-=head2 VpcConfig => L<Paws::AppStream::VpcConfig>
+=head2 VpcConfig => AppStream_VpcConfig
 
   The VPC configuration of the image builder.
 

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::FSX::CreateBackupResponse;
-  use Moose;
-  has Backup => (is => 'ro', isa => 'Paws::FSX::Backup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::FSX::Types qw/FSX_Backup/;
+  has Backup => (is => 'ro', isa => FSX_Backup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Backup' => {
+                             'type' => 'FSX_Backup',
+                             'class' => 'Paws::FSX::Backup'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::FSX::CreateBackupResponse
 =head1 ATTRIBUTES
 
 
-=head2 Backup => L<Paws::FSX::Backup>
+=head2 Backup => FSX_Backup
 
 A description of the backup.
 

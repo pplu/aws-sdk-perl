@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::MediaLive::FollowModeScheduleActionStartSettings;
-  use Moose;
-  has FollowPoint => (is => 'ro', isa => 'Str', request_name => 'followPoint', traits => ['NameInRequest'], required => 1);
-  has ReferenceActionName => (is => 'ro', isa => 'Str', request_name => 'referenceActionName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has FollowPoint => (is => 'ro', isa => Str, required => 1);
+  has ReferenceActionName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ReferenceActionName' => 'referenceActionName',
+                       'FollowPoint' => 'followPoint'
+                     },
+  'IsRequired' => {
+                    'ReferenceActionName' => 1,
+                    'FollowPoint' => 1
+                  },
+  'types' => {
+               'ReferenceActionName' => {
+                                          'type' => 'Str'
+                                        },
+               'FollowPoint' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

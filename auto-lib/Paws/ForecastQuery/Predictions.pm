@@ -1,8 +1,23 @@
 package Paws::ForecastQuery::Predictions;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef ArrayRef/;
+  use Paws::ForecastQuery::Types qw/ForecastQuery_DataPoint/;
 
-  has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::ForecastQuery::DataPoint]]');
+  has Map => (is => 'ro', isa => HashRef[ArrayRef[ForecastQuery_DataPoint]]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[ArrayRef[ForecastQuery_DataPoint]]',
+                                          class => 'Paws::ForecastQuery::DataPoint',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => ArrayRef[L<Paws::ForecastQuery::DataPoint>]
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

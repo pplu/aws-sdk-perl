@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Organizations::ListAccountsResponse;
-  use Moose;
-  has Accounts => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::Account]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Organizations::Types qw/Organizations_Account/;
+  has Accounts => (is => 'ro', isa => ArrayRef[Organizations_Account]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Accounts' => {
+                               'class' => 'Paws::Organizations::Account',
+                               'type' => 'ArrayRef[Organizations_Account]'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Organizations::ListAccountsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Accounts => ArrayRef[L<Paws::Organizations::Account>]
+=head2 Accounts => ArrayRef[Organizations_Account]
 
 A list of objects in the organization.
 

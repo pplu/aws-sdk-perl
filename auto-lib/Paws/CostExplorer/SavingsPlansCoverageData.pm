@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::SavingsPlansCoverageData;
-  use Moose;
-  has CoveragePercentage => (is => 'ro', isa => 'Str');
-  has OnDemandCost => (is => 'ro', isa => 'Str');
-  has SpendCoveredBySavingsPlans => (is => 'ro', isa => 'Str');
-  has TotalCost => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has CoveragePercentage => (is => 'ro', isa => Str);
+  has OnDemandCost => (is => 'ro', isa => Str);
+  has SpendCoveredBySavingsPlans => (is => 'ro', isa => Str);
+  has TotalCost => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CoveragePercentage' => {
+                                         'type' => 'Str'
+                                       },
+               'OnDemandCost' => {
+                                   'type' => 'Str'
+                                 },
+               'TotalCost' => {
+                                'type' => 'Str'
+                              },
+               'SpendCoveredBySavingsPlans' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

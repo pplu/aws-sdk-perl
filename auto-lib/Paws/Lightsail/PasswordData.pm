@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Lightsail::PasswordData;
-  use Moose;
-  has Ciphertext => (is => 'ro', isa => 'Str', request_name => 'ciphertext', traits => ['NameInRequest']);
-  has KeyPairName => (is => 'ro', isa => 'Str', request_name => 'keyPairName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has Ciphertext => (is => 'ro', isa => Str);
+  has KeyPairName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ciphertext' => {
+                                 'type' => 'Str'
+                               },
+               'KeyPairName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Ciphertext' => 'ciphertext',
+                       'KeyPairName' => 'keyPairName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

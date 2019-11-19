@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DS::UnshareDirectory;
-  use Moose;
-  has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
-  has UnshareTarget => (is => 'ro', isa => 'Paws::DS::UnshareTarget', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DS::Types qw/DS_UnshareTarget/;
+  has DirectoryId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UnshareTarget => (is => 'ro', isa => DS_UnshareTarget, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UnshareDirectory');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::UnshareDirectoryResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UnshareDirectory');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DS::UnshareDirectoryResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'UnshareTarget' => 1,
+                    'DirectoryId' => 1
+                  },
+  'types' => {
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'UnshareTarget' => {
+                                    'type' => 'DS_UnshareTarget',
+                                    'class' => 'Paws::DS::UnshareTarget'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +80,7 @@ to stop sharing.
 
 
 
-=head2 B<REQUIRED> UnshareTarget => L<Paws::DS::UnshareTarget>
+=head2 B<REQUIRED> UnshareTarget => DS_UnshareTarget
 
 Identifier for the directory consumer account with whom the directory
 has to be unshared.

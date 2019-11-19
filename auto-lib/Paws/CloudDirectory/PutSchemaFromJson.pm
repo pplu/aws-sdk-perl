@@ -1,15 +1,40 @@
 
 package Paws::CloudDirectory::PutSchemaFromJson;
-  use Moose;
-  has Document => (is => 'ro', isa => 'Str', required => 1);
-  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw//;
+  has Document => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SchemaArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutSchemaFromJson');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/schema/json');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::PutSchemaFromJsonResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutSchemaFromJson');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/schema/json');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::PutSchemaFromJsonResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'SchemaArn' => 'x-amz-data-partition'
+                     },
+  'types' => {
+               'Document' => {
+                               'type' => 'Str'
+                             },
+               'SchemaArn' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Document' => 1,
+                    'SchemaArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

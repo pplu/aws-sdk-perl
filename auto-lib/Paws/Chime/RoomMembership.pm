@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Chime::RoomMembership;
-  use Moose;
-  has InvitedBy => (is => 'ro', isa => 'Str');
-  has Member => (is => 'ro', isa => 'Paws::Chime::Member');
-  has Role => (is => 'ro', isa => 'Str');
-  has RoomId => (is => 'ro', isa => 'Str');
-  has UpdatedTimestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw/Chime_Member/;
+  has InvitedBy => (is => 'ro', isa => Str);
+  has Member => (is => 'ro', isa => Chime_Member);
+  has Role => (is => 'ro', isa => Str);
+  has RoomId => (is => 'ro', isa => Str);
+  has UpdatedTimestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UpdatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'InvitedBy' => {
+                                'type' => 'Str'
+                              },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'RoomId' => {
+                             'type' => 'Str'
+                           },
+               'Member' => {
+                             'class' => 'Paws::Chime::Member',
+                             'type' => 'Chime_Member'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +75,7 @@ The room membership details.
   The identifier of the user that invited the room member.
 
 
-=head2 Member => L<Paws::Chime::Member>
+=head2 Member => Chime_Member
 
   
 

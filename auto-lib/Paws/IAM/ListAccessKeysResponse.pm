@@ -1,11 +1,39 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListAccessKeysResponse;
-  use Moose;
-  has AccessKeyMetadata => (is => 'ro', isa => 'ArrayRef[Paws::IAM::AccessKeyMetadata]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::IAM::Types qw/IAM_AccessKeyMetadata/;
+  has AccessKeyMetadata => (is => 'ro', isa => ArrayRef[IAM_AccessKeyMetadata], required => 1);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AccessKeyMetadata' => 1
+                  },
+  'types' => {
+               'AccessKeyMetadata' => {
+                                        'type' => 'ArrayRef[IAM_AccessKeyMetadata]',
+                                        'class' => 'Paws::IAM::AccessKeyMetadata'
+                                      },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +45,7 @@ Paws::IAM::ListAccessKeysResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AccessKeyMetadata => ArrayRef[L<Paws::IAM::AccessKeyMetadata>]
+=head2 B<REQUIRED> AccessKeyMetadata => ArrayRef[IAM_AccessKeyMetadata]
 
 A list of objects containing metadata about the access keys.
 

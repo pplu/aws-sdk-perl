@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Pricing::GetAttributeValuesResponse;
-  use Moose;
-  has AttributeValues => (is => 'ro', isa => 'ArrayRef[Paws::Pricing::AttributeValue]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Pricing::Types qw/Pricing_AttributeValue/;
+  has AttributeValues => (is => 'ro', isa => ArrayRef[Pricing_AttributeValue]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeValues' => {
+                                      'class' => 'Paws::Pricing::AttributeValue',
+                                      'type' => 'ArrayRef[Pricing_AttributeValue]'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Pricing::GetAttributeValuesResponse
 =head1 ATTRIBUTES
 
 
-=head2 AttributeValues => ArrayRef[L<Paws::Pricing::AttributeValue>]
+=head2 AttributeValues => ArrayRef[Pricing_AttributeValue]
 
 The list of values for an attribute. For example, C<Throughput
 Optimized HDD> and C<Provisioned IOPS> are two available values for the

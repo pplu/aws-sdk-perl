@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::IoT::ThingGroupDocument;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', request_name => 'attributes', traits => ['NameInRequest']);
-  has ParentGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'parentGroupNames', traits => ['NameInRequest']);
-  has ThingGroupDescription => (is => 'ro', isa => 'Str', request_name => 'thingGroupDescription', traits => ['NameInRequest']);
-  has ThingGroupId => (is => 'ro', isa => 'Str', request_name => 'thingGroupId', traits => ['NameInRequest']);
-  has ThingGroupName => (is => 'ro', isa => 'Str', request_name => 'thingGroupName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::IoT::Types qw/IoT_Attributes/;
+  has Attributes => (is => 'ro', isa => IoT_Attributes);
+  has ParentGroupNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ThingGroupDescription => (is => 'ro', isa => Str);
+  has ThingGroupId => (is => 'ro', isa => Str);
+  has ThingGroupName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ThingGroupDescription' => 'thingGroupDescription',
+                       'ParentGroupNames' => 'parentGroupNames',
+                       'ThingGroupName' => 'thingGroupName',
+                       'ThingGroupId' => 'thingGroupId',
+                       'Attributes' => 'attributes'
+                     },
+  'types' => {
+               'ThingGroupDescription' => {
+                                            'type' => 'Str'
+                                          },
+               'ParentGroupNames' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ThingGroupName' => {
+                                     'type' => 'Str'
+                                   },
+               'Attributes' => {
+                                 'class' => 'Paws::IoT::Attributes',
+                                 'type' => 'IoT_Attributes'
+                               },
+               'ThingGroupId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +77,7 @@ The thing group search index document.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::IoT::Attributes>
+=head2 Attributes => IoT_Attributes
 
   The thing group attributes.
 

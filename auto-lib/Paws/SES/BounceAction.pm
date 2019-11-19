@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::SES::BounceAction;
-  use Moose;
-  has Message => (is => 'ro', isa => 'Str', required => 1);
-  has Sender => (is => 'ro', isa => 'Str', required => 1);
-  has SmtpReplyCode => (is => 'ro', isa => 'Str', required => 1);
-  has StatusCode => (is => 'ro', isa => 'Str');
-  has TopicArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has Message => (is => 'ro', isa => Str, required => 1);
+  has Sender => (is => 'ro', isa => Str, required => 1);
+  has SmtpReplyCode => (is => 'ro', isa => Str, required => 1);
+  has StatusCode => (is => 'ro', isa => Str);
+  has TopicArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Sender' => 1,
+                    'SmtpReplyCode' => 1,
+                    'Message' => 1
+                  },
+  'types' => {
+               'TopicArn' => {
+                               'type' => 'Str'
+                             },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'SmtpReplyCode' => {
+                                    'type' => 'Str'
+                                  },
+               'Sender' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

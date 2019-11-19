@@ -1,18 +1,74 @@
+# Generated from default/object.tt
 package Paws::SSM::AssociationVersionInfo;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str');
-  has AssociationName => (is => 'ro', isa => 'Str');
-  has AssociationVersion => (is => 'ro', isa => 'Str');
-  has ComplianceSeverity => (is => 'ro', isa => 'Str');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has MaxConcurrency => (is => 'ro', isa => 'Str');
-  has MaxErrors => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OutputLocation => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputLocation');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
-  has ScheduleExpression => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_InstanceAssociationOutputLocation SSM_Parameters SSM_Target/;
+  has AssociationId => (is => 'ro', isa => Str);
+  has AssociationName => (is => 'ro', isa => Str);
+  has AssociationVersion => (is => 'ro', isa => Str);
+  has ComplianceSeverity => (is => 'ro', isa => Str);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has MaxConcurrency => (is => 'ro', isa => Str);
+  has MaxErrors => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OutputLocation => (is => 'ro', isa => SSM_InstanceAssociationOutputLocation);
+  has Parameters => (is => 'ro', isa => SSM_Parameters);
+  has ScheduleExpression => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComplianceSeverity' => {
+                                         'type' => 'Str'
+                                       },
+               'ScheduleExpression' => {
+                                         'type' => 'Str'
+                                       },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'MaxConcurrency' => {
+                                     'type' => 'Str'
+                                   },
+               'AssociationVersion' => {
+                                         'type' => 'Str'
+                                       },
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               'Parameters' => {
+                                 'type' => 'SSM_Parameters',
+                                 'class' => 'Paws::SSM::Parameters'
+                               },
+               'MaxErrors' => {
+                                'type' => 'Str'
+                              },
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AssociationName' => {
+                                      'type' => 'Str'
+                                    },
+               'OutputLocation' => {
+                                     'class' => 'Paws::SSM::InstanceAssociationOutputLocation',
+                                     'type' => 'SSM_InstanceAssociationOutputLocation'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -118,13 +174,13 @@ one at a time.
   The name specified when the association was created.
 
 
-=head2 OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>
+=head2 OutputLocation => SSM_InstanceAssociationOutputLocation
 
   The location in Amazon S3 specified for the association when the
 association version was created.
 
 
-=head2 Parameters => L<Paws::SSM::Parameters>
+=head2 Parameters => SSM_Parameters
 
   Parameters specified when the association version was created.
 
@@ -135,7 +191,7 @@ association version was created.
 association version was created.
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
   The targets specified for the association when the association version
 was created.

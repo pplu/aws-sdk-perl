@@ -1,15 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::RejectPortfolioShare;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has PortfolioId => (is => 'ro', isa => 'Str', required => 1);
-  has PortfolioShareType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has PortfolioId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PortfolioShareType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RejectPortfolioShare');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::RejectPortfolioShareOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RejectPortfolioShare');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::RejectPortfolioShareOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PortfolioId' => 1
+                  },
+  'types' => {
+               'PortfolioShareType' => {
+                                         'type' => 'Str'
+                                       },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'PortfolioId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

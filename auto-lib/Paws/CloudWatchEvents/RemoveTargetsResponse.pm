@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchEvents::RemoveTargetsResponse;
-  use Moose;
-  has FailedEntries => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::RemoveTargetsResultEntry]');
-  has FailedEntryCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_RemoveTargetsResultEntry/;
+  has FailedEntries => (is => 'ro', isa => ArrayRef[CloudWatchEvents_RemoveTargetsResultEntry]);
+  has FailedEntryCount => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailedEntryCount' => {
+                                       'type' => 'Int'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FailedEntries' => {
+                                    'type' => 'ArrayRef[CloudWatchEvents_RemoveTargetsResultEntry]',
+                                    'class' => 'Paws::CloudWatchEvents::RemoveTargetsResultEntry'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::CloudWatchEvents::RemoveTargetsResponse
 =head1 ATTRIBUTES
 
 
-=head2 FailedEntries => ArrayRef[L<Paws::CloudWatchEvents::RemoveTargetsResultEntry>]
+=head2 FailedEntries => ArrayRef[CloudWatchEvents_RemoveTargetsResultEntry]
 
 The failed target entries.
 

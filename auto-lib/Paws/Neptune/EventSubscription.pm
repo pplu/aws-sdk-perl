@@ -1,15 +1,63 @@
+# Generated from default/object.tt
 package Paws::Neptune::EventSubscription;
-  use Moose;
-  has CustomerAwsId => (is => 'ro', isa => 'Str');
-  has CustSubscriptionId => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'EventCategory', traits => ['NameInRequest']);
-  has EventSubscriptionArn => (is => 'ro', isa => 'Str');
-  has SnsTopicArn => (is => 'ro', isa => 'Str');
-  has SourceIdsList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SourceId', traits => ['NameInRequest']);
-  has SourceType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::Neptune::Types qw//;
+  has CustomerAwsId => (is => 'ro', isa => Str);
+  has CustSubscriptionId => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has EventCategoriesList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EventSubscriptionArn => (is => 'ro', isa => Str);
+  has SnsTopicArn => (is => 'ro', isa => Str);
+  has SourceIdsList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SourceType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has SubscriptionCreationTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SourceIdsList' => 'SourceId',
+                       'EventCategoriesList' => 'EventCategory'
+                     },
+  'types' => {
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'SubscriptionCreationTime' => {
+                                               'type' => 'Str'
+                                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'EventCategoriesList' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'EventSubscriptionArn' => {
+                                           'type' => 'Str'
+                                         },
+               'CustomerAwsId' => {
+                                    'type' => 'Str'
+                                  },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'SnsTopicArn' => {
+                                  'type' => 'Str'
+                                },
+               'SourceIdsList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'CustSubscriptionId' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

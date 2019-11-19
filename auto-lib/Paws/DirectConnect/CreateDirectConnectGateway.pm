@@ -1,14 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::CreateDirectConnectGateway;
-  use Moose;
-  has AmazonSideAsn => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'amazonSideAsn' );
-  has DirectConnectGatewayName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DirectConnect::Types qw//;
+  has AmazonSideAsn => (is => 'ro', isa => Int, predicate => 1);
+  has DirectConnectGatewayName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDirectConnectGateway');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::CreateDirectConnectGatewayResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDirectConnectGateway');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::CreateDirectConnectGatewayResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AmazonSideAsn' => 'amazonSideAsn',
+                       'DirectConnectGatewayName' => 'directConnectGatewayName'
+                     },
+  'IsRequired' => {
+                    'DirectConnectGatewayName' => 1
+                  },
+  'types' => {
+               'DirectConnectGatewayName' => {
+                                               'type' => 'Str'
+                                             },
+               'AmazonSideAsn' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

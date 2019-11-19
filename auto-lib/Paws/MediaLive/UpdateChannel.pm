@@ -1,21 +1,76 @@
 
 package Paws::MediaLive::UpdateChannel;
-  use Moose;
-  has ChannelId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'channelId', required => 1);
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
-  has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
-  has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
-  has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', traits => ['NameInRequest'], request_name => 'inputSpecification');
-  has LogLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logLevel');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_EncoderSettings MediaLive_OutputDestination MediaLive_InputSpecification MediaLive_InputAttachment/;
+  has ChannelId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Destinations => (is => 'ro', isa => ArrayRef[MediaLive_OutputDestination], predicate => 1);
+  has EncoderSettings => (is => 'ro', isa => MediaLive_EncoderSettings, predicate => 1);
+  has InputAttachments => (is => 'ro', isa => ArrayRef[MediaLive_InputAttachment], predicate => 1);
+  has InputSpecification => (is => 'ro', isa => MediaLive_InputSpecification, predicate => 1);
+  has LogLevel => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/channels/{channelId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::UpdateChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/channels/{channelId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::UpdateChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ChannelId' => 'channelId'
+                  },
+  'IsRequired' => {
+                    'ChannelId' => 1
+                  },
+  'NameInRequest' => {
+                       'InputSpecification' => 'inputSpecification',
+                       'RoleArn' => 'roleArn',
+                       'InputAttachments' => 'inputAttachments',
+                       'Name' => 'name',
+                       'EncoderSettings' => 'encoderSettings',
+                       'Destinations' => 'destinations',
+                       'LogLevel' => 'logLevel'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LogLevel' => {
+                               'type' => 'Str'
+                             },
+               'Destinations' => {
+                                   'type' => 'ArrayRef[MediaLive_OutputDestination]',
+                                   'class' => 'Paws::MediaLive::OutputDestination'
+                                 },
+               'EncoderSettings' => {
+                                      'class' => 'Paws::MediaLive::EncoderSettings',
+                                      'type' => 'MediaLive_EncoderSettings'
+                                    },
+               'ChannelId' => {
+                                'type' => 'Str'
+                              },
+               'InputAttachments' => {
+                                       'class' => 'Paws::MediaLive::InputAttachment',
+                                       'type' => 'ArrayRef[MediaLive_InputAttachment]'
+                                     },
+               'InputSpecification' => {
+                                         'class' => 'Paws::MediaLive::InputSpecification',
+                                         'type' => 'MediaLive_InputSpecification'
+                                       },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -176,7 +231,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             OutputGroupSettings => {
               ArchiveGroupSettings => {
                 Destination => { DestinationRefId => 'My__string', },
-                RolloverInterval => 1,    # min: 1
+                RolloverInterval => 1,    # min: 1; OPTIONAL
               },    # OPTIONAL
               FrameCaptureGroupSettings => {
                 Destination => { DestinationRefId => 'My__string', },
@@ -204,7 +259,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_4281',    # values: RFC_4281, RFC_6381; OPTIONAL
-                ConstantIv         => 'My__stringMin32Max32', # min: 32, max: 32
+                ConstantIv =>
+                  'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
                 DirectoryStructure => 'SINGLE_DIRECTORY'
                 ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
                 EncryptionType =>
@@ -251,17 +307,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 IvInManifest => 'EXCLUDE',  # values: EXCLUDE, INCLUDE; OPTIONAL
                 IvSource     => 'EXPLICIT'
                 ,    # values: EXPLICIT, FOLLOWS_SEGMENT_NUMBER; OPTIONAL
-                KeepSegments        => 1,              # min: 1
+                KeepSegments        => 1,              # min: 1; OPTIONAL
                 KeyFormat           => 'My__string',
                 KeyFormatVersions   => 'My__string',
                 KeyProviderSettings => {
                   StaticKeySettings => {
-                    StaticKeyValue => 'My__stringMin32Max32', # min: 32, max: 32
+                    StaticKeyValue =>
+                      'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
                     KeyProviderServer => {
                       Uri           => 'My__string',
                       PasswordParam => 'My__string',
                       Username      => 'My__string',
-                    },                                        # OPTIONAL
+                    },                           # OPTIONAL
                   },    # OPTIONAL
                 },    # OPTIONAL
                 ManifestCompression => 'GZIP',    # values: GZIP, NONE; OPTIONAL
@@ -276,10 +333,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ProgramDateTimePeriod => 1,    # max: 3600; OPTIONAL
                 RedundantManifest =>
                   'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                SegmentLength    => 1,                         # min: 1
+                SegmentLength    => 1,                        # min: 1; OPTIONAL
                 SegmentationMode => 'USE_INPUT_SEGMENTATION'
                 , # values: USE_INPUT_SEGMENTATION, USE_SEGMENT_DURATION; OPTIONAL
-                SegmentsPerSubdirectory => 1,    # min: 1
+                SegmentsPerSubdirectory => 1,    # min: 1; OPTIONAL
                 StreamInfResolution =>
                   'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
                 TimedMetadataId3Frame =>
@@ -306,7 +363,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 , # values: NO_EVENT_ID, USE_CONFIGURED, USE_TIMESTAMP; OPTIONAL
                 EventStopBehavior => 'NONE',  # values: NONE, SEND_EOS; OPTIONAL
                 FilecacheDuration => 1,       # OPTIONAL
-                FragmentLength    => 1,       # min: 1
+                FragmentLength    => 1,       # min: 1; OPTIONAL
                 InputLossAction =>
                   'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
                 NumRetries       => 1,                         # OPTIONAL
@@ -480,7 +537,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Destination     => { DestinationRefId => 'My__string', },
                     CertificateMode => 'SELF_SIGNED'
                     ,    # values: SELF_SIGNED, VERIFY_AUTHENTICITY; OPTIONAL
-                    ConnectionRetryInterval => 1,    # min: 1
+                    ConnectionRetryInterval => 1,    # min: 1; OPTIONAL
                     NumRetries              => 1,    # OPTIONAL
                   },    # OPTIONAL
                   UdpOutputSettings => {
@@ -622,8 +679,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 FlickerAq => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
                 FramerateControl => 'INITIALIZE_FROM_SOURCE'
                 ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-                FramerateDenominator => 1,    # min: 1
-                FramerateNumerator   => 1,    # min: 1
+                FramerateDenominator => 1,    # min: 1; OPTIONAL
+                FramerateNumerator   => 1,    # min: 1; OPTIONAL
                 GopBReference =>
                   'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
                 GopClosedCadence => 1,    # OPTIONAL
@@ -639,7 +696,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 NumRefFrames => 1,    # min: 1, max: 6; OPTIONAL
                 ParControl => 'INITIALIZE_FROM_SOURCE'
                 ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-                ParDenominator => 1,           # min: 1
+                ParDenominator => 1,           # min: 1; OPTIONAL
                 ParNumerator   => 1,           # OPTIONAL
                 Profile        => 'BASELINE'
                 , # values: BASELINE, HIGH, HIGH_10BIT, HIGH_422, HIGH_422_10BIT, MAIN; OPTIONAL
@@ -661,7 +718,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               H265Settings => {
                 FramerateDenominator => 1,       # min: 1, max: 3003
-                FramerateNumerator   => 1,       # min: 1
+                FramerateNumerator   => 1,       # min: 1; OPTIONAL
                 AdaptiveQuantization => 'HIGH'
                 ,    # values: HIGH, HIGHER, LOW, MAX, MEDIUM, OFF; OPTIONAL
                 AfdSignaling => 'AUTO',    # values: AUTO, FIXED, NONE; OPTIONAL
@@ -697,8 +754,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'HIGH',    # values: HIGH, LOW, MEDIUM; OPTIONAL
                 MaxBitrate     => 1,      # min: 100000, max: 40000000; OPTIONAL
                 MinIInterval   => 1,      # max: 30; OPTIONAL
-                ParDenominator => 1,      # min: 1
-                ParNumerator   => 1,      # min: 1
+                ParDenominator => 1,      # min: 1; OPTIONAL
+                ParNumerator   => 1,      # min: 1; OPTIONAL
                 Profile        => 'MAIN', # values: MAIN, MAIN_10BIT; OPTIONAL
                 QvbrQualityLevel => 1,        # min: 1, max: 10; OPTIONAL
                 RateControlMode  => 'CBR',    # values: CBR, QVBR; OPTIONAL
@@ -900,7 +957,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       'LOOSE',    # values: LOOSE, STRICT; OPTIONAL
                   },    # OPTIONAL
                   AudioPidSelection => {
-                    Pid => 1,    # max: 8191
+                    Pid => 1,    # max: 8191; OPTIONAL
 
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -916,7 +973,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },                                     # OPTIONAL
                   DvbSubSourceSettings => {
-                    Pid => 1,                            # min: 1
+                    Pid => 1,                            # min: 1; OPTIONAL
                   },    # OPTIONAL
                   EmbeddedSourceSettings => {
                     Convert608To708 =>
@@ -931,7 +988,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Source608ChannelNumber => 1,    # min: 1, max: 4
                   },    # OPTIONAL
                   Scte27SourceSettings => {
-                    Pid => 1,    # min: 1
+                    Pid => 1,    # min: 1; OPTIONAL
                   },    # OPTIONAL
                   TeletextSourceSettings => { PageNumber => 'My__string', }
                   ,     # OPTIONAL
@@ -960,7 +1017,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ColorSpaceUsage => 'FALLBACK', # values: FALLBACK, FORCE; OPTIONAL
               SelectorSettings => {
                 VideoSelectorPid => {
-                  Pid => 1,                  # max: 8191
+                  Pid => 1,                  # max: 8191; OPTIONAL
                 },    # OPTIONAL
                 VideoSelectorProgramId => {
                   ProgramId => 1,    # max: 65536
@@ -1005,25 +1062,25 @@ channel ID
 
 
 
-=head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
+=head2 Destinations => ArrayRef[MediaLive_OutputDestination]
 
 A list of output destinations for this channel.
 
 
 
-=head2 EncoderSettings => L<Paws::MediaLive::EncoderSettings>
+=head2 EncoderSettings => MediaLive_EncoderSettings
 
 The encoder settings for this channel.
 
 
 
-=head2 InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]
+=head2 InputAttachments => ArrayRef[MediaLive_InputAttachment]
 
 
 
 
 
-=head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
+=head2 InputSpecification => MediaLive_InputSpecification
 
 Specification of input for this channel (max. bitrate, resolution,
 codec, etc.)

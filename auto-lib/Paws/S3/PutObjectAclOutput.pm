@@ -1,9 +1,30 @@
 
 package Paws::S3::PutObjectAclOutput;
-  use Moose;
-  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has RequestCharged => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestCharged' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInHeader' => {
+                       'RequestCharged' => 'x-amz-request-charged'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

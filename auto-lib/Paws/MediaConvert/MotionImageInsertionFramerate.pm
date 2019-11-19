@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::MotionImageInsertionFramerate;
-  use Moose;
-  has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest']);
-  has FramerateNumerator => (is => 'ro', isa => 'Int', request_name => 'framerateNumerator', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has FramerateDenominator => (is => 'ro', isa => Int);
+  has FramerateNumerator => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FramerateNumerator' => 'framerateNumerator',
+                       'FramerateDenominator' => 'framerateDenominator'
+                     },
+  'types' => {
+               'FramerateNumerator' => {
+                                         'type' => 'Int'
+                                       },
+               'FramerateDenominator' => {
+                                           'type' => 'Int'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

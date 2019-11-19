@@ -1,11 +1,50 @@
+# Generated from default/object.tt
 package Paws::IAM::SSHPublicKey;
-  use Moose;
-  has Fingerprint => (is => 'ro', isa => 'Str', required => 1);
-  has SSHPublicKeyBody => (is => 'ro', isa => 'Str', required => 1);
-  has SSHPublicKeyId => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has UploadDate => (is => 'ro', isa => 'Str');
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has Fingerprint => (is => 'ro', isa => Str, required => 1);
+  has SSHPublicKeyBody => (is => 'ro', isa => Str, required => 1);
+  has SSHPublicKeyId => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has UploadDate => (is => 'ro', isa => Str);
+  has UserName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Fingerprint' => {
+                                  'type' => 'Str'
+                                },
+               'UploadDate' => {
+                                 'type' => 'Str'
+                               },
+               'SSHPublicKeyBody' => {
+                                       'type' => 'Str'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SSHPublicKeyId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'SSHPublicKeyBody' => 1,
+                    'Status' => 1,
+                    'SSHPublicKeyId' => 1,
+                    'Fingerprint' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

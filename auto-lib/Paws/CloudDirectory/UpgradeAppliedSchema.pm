@@ -1,16 +1,41 @@
 
 package Paws::CloudDirectory::UpgradeAppliedSchema;
-  use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has PublishedSchemaArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudDirectory::Types qw//;
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has PublishedSchemaArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpgradeAppliedSchema');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/schema/upgradeapplied');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::UpgradeAppliedSchemaResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpgradeAppliedSchema');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/schema/upgradeapplied');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::UpgradeAppliedSchemaResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DirectoryArn' => 1,
+                    'PublishedSchemaArn' => 1
+                  },
+  'types' => {
+               'PublishedSchemaArn' => {
+                                         'type' => 'Str'
+                                       },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

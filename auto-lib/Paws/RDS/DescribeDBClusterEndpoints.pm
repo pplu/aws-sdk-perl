@@ -1,17 +1,46 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::DescribeDBClusterEndpoints;
-  use Moose;
-  has DBClusterEndpointIdentifier => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::RDS::Types qw/RDS_Filter/;
+  has DBClusterEndpointIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[RDS_Filter], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterEndpoints');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterEndpointMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterEndpointsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDBClusterEndpoints');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DBClusterEndpointMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeDBClusterEndpointsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Filters' => {
+                              'class' => 'Paws::RDS::Filter',
+                              'type' => 'ArrayRef[RDS_Filter]'
+                            },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'DBClusterEndpointIdentifier' => {
+                                                  'type' => 'Str'
+                                                },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +101,7 @@ endpoint. This parameter is stored as a lowercase string.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
+=head2 Filters => ArrayRef[RDS_Filter]
 
 A set of name-value pairs that define which endpoints to include in the
 output. The filters are specified as name-value pairs, in the format

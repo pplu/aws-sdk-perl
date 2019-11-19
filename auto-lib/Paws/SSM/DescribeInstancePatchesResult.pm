@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribeInstancePatchesResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Patches => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchComplianceData]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_PatchComplianceData/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Patches => (is => 'ro', isa => ArrayRef[SSM_PatchComplianceData]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Patches' => {
+                              'class' => 'Paws::SSM::PatchComplianceData',
+                              'type' => 'ArrayRef[SSM_PatchComplianceData]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
 
 
-=head2 Patches => ArrayRef[L<Paws::SSM::PatchComplianceData>]
+=head2 Patches => ArrayRef[SSM_PatchComplianceData]
 
 Each entry in the array is a structure containing:
 

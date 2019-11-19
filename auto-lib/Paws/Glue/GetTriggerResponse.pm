@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetTriggerResponse;
-  use Moose;
-  has Trigger => (is => 'ro', isa => 'Paws::Glue::Trigger');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_Trigger/;
+  has Trigger => (is => 'ro', isa => Glue_Trigger);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Trigger' => {
+                              'type' => 'Glue_Trigger',
+                              'class' => 'Paws::Glue::Trigger'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Glue::GetTriggerResponse
 =head1 ATTRIBUTES
 
 
-=head2 Trigger => L<Paws::Glue::Trigger>
+=head2 Trigger => Glue_Trigger
 
 The requested trigger definition.
 

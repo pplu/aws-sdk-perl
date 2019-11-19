@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::EMR::FailureDetails;
-  use Moose;
-  has LogFile => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has Reason => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw//;
+  has LogFile => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has Reason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'LogFile' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

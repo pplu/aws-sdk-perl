@@ -1,12 +1,63 @@
+# Generated from default/object.tt
 package Paws::MediaLive::OutputSettings;
-  use Moose;
-  has ArchiveOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::ArchiveOutputSettings', request_name => 'archiveOutputSettings', traits => ['NameInRequest']);
-  has FrameCaptureOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::FrameCaptureOutputSettings', request_name => 'frameCaptureOutputSettings', traits => ['NameInRequest']);
-  has HlsOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsOutputSettings', request_name => 'hlsOutputSettings', traits => ['NameInRequest']);
-  has MediaPackageOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::MediaPackageOutputSettings', request_name => 'mediaPackageOutputSettings', traits => ['NameInRequest']);
-  has MsSmoothOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::MsSmoothOutputSettings', request_name => 'msSmoothOutputSettings', traits => ['NameInRequest']);
-  has RtmpOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::RtmpOutputSettings', request_name => 'rtmpOutputSettings', traits => ['NameInRequest']);
-  has UdpOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpOutputSettings', request_name => 'udpOutputSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_FrameCaptureOutputSettings MediaLive_MsSmoothOutputSettings MediaLive_MediaPackageOutputSettings MediaLive_ArchiveOutputSettings MediaLive_UdpOutputSettings MediaLive_RtmpOutputSettings MediaLive_HlsOutputSettings/;
+  has ArchiveOutputSettings => (is => 'ro', isa => MediaLive_ArchiveOutputSettings);
+  has FrameCaptureOutputSettings => (is => 'ro', isa => MediaLive_FrameCaptureOutputSettings);
+  has HlsOutputSettings => (is => 'ro', isa => MediaLive_HlsOutputSettings);
+  has MediaPackageOutputSettings => (is => 'ro', isa => MediaLive_MediaPackageOutputSettings);
+  has MsSmoothOutputSettings => (is => 'ro', isa => MediaLive_MsSmoothOutputSettings);
+  has RtmpOutputSettings => (is => 'ro', isa => MediaLive_RtmpOutputSettings);
+  has UdpOutputSettings => (is => 'ro', isa => MediaLive_UdpOutputSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MsSmoothOutputSettings' => 'msSmoothOutputSettings',
+                       'UdpOutputSettings' => 'udpOutputSettings',
+                       'MediaPackageOutputSettings' => 'mediaPackageOutputSettings',
+                       'ArchiveOutputSettings' => 'archiveOutputSettings',
+                       'HlsOutputSettings' => 'hlsOutputSettings',
+                       'FrameCaptureOutputSettings' => 'frameCaptureOutputSettings',
+                       'RtmpOutputSettings' => 'rtmpOutputSettings'
+                     },
+  'types' => {
+               'MsSmoothOutputSettings' => {
+                                             'type' => 'MediaLive_MsSmoothOutputSettings',
+                                             'class' => 'Paws::MediaLive::MsSmoothOutputSettings'
+                                           },
+               'UdpOutputSettings' => {
+                                        'class' => 'Paws::MediaLive::UdpOutputSettings',
+                                        'type' => 'MediaLive_UdpOutputSettings'
+                                      },
+               'MediaPackageOutputSettings' => {
+                                                 'class' => 'Paws::MediaLive::MediaPackageOutputSettings',
+                                                 'type' => 'MediaLive_MediaPackageOutputSettings'
+                                               },
+               'HlsOutputSettings' => {
+                                        'type' => 'MediaLive_HlsOutputSettings',
+                                        'class' => 'Paws::MediaLive::HlsOutputSettings'
+                                      },
+               'ArchiveOutputSettings' => {
+                                            'type' => 'MediaLive_ArchiveOutputSettings',
+                                            'class' => 'Paws::MediaLive::ArchiveOutputSettings'
+                                          },
+               'RtmpOutputSettings' => {
+                                         'type' => 'MediaLive_RtmpOutputSettings',
+                                         'class' => 'Paws::MediaLive::RtmpOutputSettings'
+                                       },
+               'FrameCaptureOutputSettings' => {
+                                                 'type' => 'MediaLive_FrameCaptureOutputSettings',
+                                                 'class' => 'Paws::MediaLive::FrameCaptureOutputSettings'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,37 +93,37 @@ Output Settings
 =head1 ATTRIBUTES
 
 
-=head2 ArchiveOutputSettings => L<Paws::MediaLive::ArchiveOutputSettings>
+=head2 ArchiveOutputSettings => MediaLive_ArchiveOutputSettings
 
   
 
 
-=head2 FrameCaptureOutputSettings => L<Paws::MediaLive::FrameCaptureOutputSettings>
+=head2 FrameCaptureOutputSettings => MediaLive_FrameCaptureOutputSettings
 
   
 
 
-=head2 HlsOutputSettings => L<Paws::MediaLive::HlsOutputSettings>
+=head2 HlsOutputSettings => MediaLive_HlsOutputSettings
 
   
 
 
-=head2 MediaPackageOutputSettings => L<Paws::MediaLive::MediaPackageOutputSettings>
+=head2 MediaPackageOutputSettings => MediaLive_MediaPackageOutputSettings
 
   
 
 
-=head2 MsSmoothOutputSettings => L<Paws::MediaLive::MsSmoothOutputSettings>
+=head2 MsSmoothOutputSettings => MediaLive_MsSmoothOutputSettings
 
   
 
 
-=head2 RtmpOutputSettings => L<Paws::MediaLive::RtmpOutputSettings>
+=head2 RtmpOutputSettings => MediaLive_RtmpOutputSettings
 
   
 
 
-=head2 UdpOutputSettings => L<Paws::MediaLive::UdpOutputSettings>
+=head2 UdpOutputSettings => MediaLive_UdpOutputSettings
 
   
 

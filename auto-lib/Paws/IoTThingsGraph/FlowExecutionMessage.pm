@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::IoTThingsGraph::FlowExecutionMessage;
-  use Moose;
-  has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest']);
-  has MessageId => (is => 'ro', isa => 'Str', request_name => 'messageId', traits => ['NameInRequest']);
-  has Payload => (is => 'ro', isa => 'Str', request_name => 'payload', traits => ['NameInRequest']);
-  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has EventType => (is => 'ro', isa => Str);
+  has MessageId => (is => 'ro', isa => Str);
+  has Payload => (is => 'ro', isa => Str);
+  has Timestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MessageId' => 'messageId',
+                       'EventType' => 'eventType',
+                       'Timestamp' => 'timestamp',
+                       'Payload' => 'payload'
+                     },
+  'types' => {
+               'Payload' => {
+                              'type' => 'Str'
+                            },
+               'EventType' => {
+                                'type' => 'Str'
+                              },
+               'MessageId' => {
+                                'type' => 'Str'
+                              },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::ChangeSetDetails;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest'], required => 1);
-  has ChangeSetId => (is => 'ro', isa => 'Str', request_name => 'changeSetId', traits => ['NameInRequest'], required => 1);
-  has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest'], required => 1);
-  has StackId => (is => 'ro', isa => 'Str', request_name => 'stackId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServerlessRepo::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has ChangeSetId => (is => 'ro', isa => Str, required => 1);
+  has SemanticVersion => (is => 'ro', isa => Str, required => 1);
+  has StackId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeSetId' => {
+                                  'type' => 'Str'
+                                },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'ChangeSetId' => 'changeSetId',
+                       'StackId' => 'stackId',
+                       'ApplicationId' => 'applicationId',
+                       'SemanticVersion' => 'semanticVersion'
+                     },
+  'IsRequired' => {
+                    'ChangeSetId' => 1,
+                    'ApplicationId' => 1,
+                    'SemanticVersion' => 1,
+                    'StackId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,28 @@
 package Paws::EC2::NewDhcpConfiguration;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Value', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EC2::Types qw//;
+  has Key => (is => 'ro', isa => Str);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             },
+  'NameInRequest' => {
+                       'Key' => 'key',
+                       'Values' => 'Value'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

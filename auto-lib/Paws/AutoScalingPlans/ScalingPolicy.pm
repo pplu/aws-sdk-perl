@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::AutoScalingPlans::ScalingPolicy;
-  use Moose;
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyType => (is => 'ro', isa => 'Str', required => 1);
-  has TargetTrackingConfiguration => (is => 'ro', isa => 'Paws::AutoScalingPlans::TargetTrackingConfiguration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AutoScalingPlans::Types qw/AutoScalingPlans_TargetTrackingConfiguration/;
+  has PolicyName => (is => 'ro', isa => Str, required => 1);
+  has PolicyType => (is => 'ro', isa => Str, required => 1);
+  has TargetTrackingConfiguration => (is => 'ro', isa => AutoScalingPlans_TargetTrackingConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyType' => {
+                                 'type' => 'Str'
+                               },
+               'TargetTrackingConfiguration' => {
+                                                  'class' => 'Paws::AutoScalingPlans::TargetTrackingConfiguration',
+                                                  'type' => 'AutoScalingPlans_TargetTrackingConfiguration'
+                                                }
+             },
+  'IsRequired' => {
+                    'PolicyName' => 1,
+                    'PolicyType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +76,7 @@ Represents a scaling policy.
   The type of scaling policy.
 
 
-=head2 TargetTrackingConfiguration => L<Paws::AutoScalingPlans::TargetTrackingConfiguration>
+=head2 TargetTrackingConfiguration => AutoScalingPlans_TargetTrackingConfiguration
 
   The target tracking scaling policy. Includes support for predefined or
 customized metrics.

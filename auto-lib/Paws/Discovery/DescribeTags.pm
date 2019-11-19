@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Discovery::DescribeTags;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::TagFilter]', traits => ['NameInRequest'], request_name => 'filters' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Discovery::Types qw/Discovery_TagFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[Discovery_TagFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Discovery::DescribeTagsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTags');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Discovery::DescribeTagsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Filters' => 'filters',
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'Filters' => {
+                              'type' => 'ArrayRef[Discovery_TagFilter]',
+                              'class' => 'Paws::Discovery::TagFilter'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +82,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dis
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::Discovery::TagFilter>]
+=head2 Filters => ArrayRef[Discovery_TagFilter]
 
 You can filter the list using a I<key>-I<value> format. You can
 separate these items by using logical operators. Allowed filters

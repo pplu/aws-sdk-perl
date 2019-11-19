@@ -1,14 +1,15 @@
 package Paws::Robomaker;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'robomaker' }
   sub signing_name { 'robomaker' }
   sub version { '2018-06-29' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -425,13 +426,13 @@ Cancels the specified simulation job.
 
 =item ClientRequestToken => Str
 
-=item DeploymentApplicationConfigs => ArrayRef[L<Paws::Robomaker::DeploymentApplicationConfig>]
+=item DeploymentApplicationConfigs => ArrayRef[Robomaker_DeploymentApplicationConfig]
 
 =item Fleet => Str
 
-=item [DeploymentConfig => L<Paws::Robomaker::DeploymentConfig>]
+=item [DeploymentConfig => Robomaker_DeploymentConfig]
 
-=item [Tags => L<Paws::Robomaker::TagMap>]
+=item [Tags => Robomaker_TagMap]
 
 
 =back
@@ -458,7 +459,7 @@ longer be accessible.
 
 =item Name => Str
 
-=item [Tags => L<Paws::Robomaker::TagMap>]
+=item [Tags => Robomaker_TagMap]
 
 
 =back
@@ -481,7 +482,7 @@ application.
 
 =item Name => Str
 
-=item [Tags => L<Paws::Robomaker::TagMap>]
+=item [Tags => Robomaker_TagMap]
 
 
 =back
@@ -499,11 +500,11 @@ Creates a robot.
 
 =item Name => Str
 
-=item RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
+=item RobotSoftwareSuite => Robomaker_RobotSoftwareSuite
 
-=item Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
+=item Sources => ArrayRef[Robomaker_SourceConfig]
 
-=item [Tags => L<Paws::Robomaker::TagMap>]
+=item [Tags => Robomaker_TagMap]
 
 
 =back
@@ -539,15 +540,15 @@ Creates a version of a robot application.
 
 =item Name => Str
 
-=item RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
+=item RobotSoftwareSuite => Robomaker_RobotSoftwareSuite
 
-=item SimulationSoftwareSuite => L<Paws::Robomaker::SimulationSoftwareSuite>
+=item SimulationSoftwareSuite => Robomaker_SimulationSoftwareSuite
 
-=item Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
+=item Sources => ArrayRef[Robomaker_SourceConfig]
 
-=item [RenderingEngine => L<Paws::Robomaker::RenderingEngine>]
+=item [RenderingEngine => Robomaker_RenderingEngine]
 
-=item [Tags => L<Paws::Robomaker::TagMap>]
+=item [Tags => Robomaker_TagMap]
 
 
 =back
@@ -587,21 +588,21 @@ Creates a simulation application with a specific revision id.
 
 =item [ClientRequestToken => Str]
 
-=item [DataSources => ArrayRef[L<Paws::Robomaker::DataSourceConfig>]]
+=item [DataSources => ArrayRef[Robomaker_DataSourceConfig]]
 
 =item [FailureBehavior => Str]
 
-=item [LoggingConfig => L<Paws::Robomaker::LoggingConfig>]
+=item [LoggingConfig => Robomaker_LoggingConfig]
 
-=item [OutputLocation => L<Paws::Robomaker::OutputLocation>]
+=item [OutputLocation => Robomaker_OutputLocation]
 
-=item [RobotApplications => ArrayRef[L<Paws::Robomaker::RobotApplicationConfig>]]
+=item [RobotApplications => ArrayRef[Robomaker_RobotApplicationConfig]]
 
-=item [SimulationApplications => ArrayRef[L<Paws::Robomaker::SimulationApplicationConfig>]]
+=item [SimulationApplications => ArrayRef[Robomaker_SimulationApplicationConfig]]
 
-=item [Tags => L<Paws::Robomaker::TagMap>]
+=item [Tags => Robomaker_TagMap]
 
-=item [VpcConfig => L<Paws::Robomaker::VPCConfig>]
+=item [VpcConfig => Robomaker_VPCConfig]
 
 
 =back
@@ -806,7 +807,7 @@ Describes a simulation job.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Robomaker::Filter>]]
+=item [Filters => ArrayRef[Robomaker_Filter]]
 
 =item [MaxResults => Int]
 
@@ -827,7 +828,7 @@ provide filters to retrieve specific deployment jobs.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Robomaker::Filter>]]
+=item [Filters => ArrayRef[Robomaker_Filter]]
 
 =item [MaxResults => Int]
 
@@ -848,7 +849,7 @@ retrieve specific fleets.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Robomaker::Filter>]]
+=item [Filters => ArrayRef[Robomaker_Filter]]
 
 =item [MaxResults => Int]
 
@@ -871,7 +872,7 @@ to retrieve specific robot applications.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Robomaker::Filter>]]
+=item [Filters => ArrayRef[Robomaker_Filter]]
 
 =item [MaxResults => Int]
 
@@ -892,7 +893,7 @@ retrieve specific robots.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Robomaker::Filter>]]
+=item [Filters => ArrayRef[Robomaker_Filter]]
 
 =item [MaxResults => Int]
 
@@ -915,7 +916,7 @@ filters to retrieve specific simulation applications.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Robomaker::Filter>]]
+=item [Filters => ArrayRef[Robomaker_Filter]]
 
 =item [MaxResults => Int]
 
@@ -1007,7 +1008,7 @@ helpful if robots were added after a deployment.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::Robomaker::TagMap>
+=item Tags => Robomaker_TagMap
 
 
 =back
@@ -1055,9 +1056,9 @@ existing tag key, use C<TagResource>
 
 =item Application => Str
 
-=item RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
+=item RobotSoftwareSuite => Robomaker_RobotSoftwareSuite
 
-=item Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
+=item Sources => ArrayRef[Robomaker_SourceConfig]
 
 =item [CurrentRevisionId => Str]
 
@@ -1077,15 +1078,15 @@ Updates a robot application.
 
 =item Application => Str
 
-=item RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
+=item RobotSoftwareSuite => Robomaker_RobotSoftwareSuite
 
-=item SimulationSoftwareSuite => L<Paws::Robomaker::SimulationSoftwareSuite>
+=item SimulationSoftwareSuite => Robomaker_SimulationSoftwareSuite
 
-=item Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
+=item Sources => ArrayRef[Robomaker_SourceConfig]
 
 =item [CurrentRevisionId => Str]
 
-=item [RenderingEngine => L<Paws::Robomaker::RenderingEngine>]
+=item [RenderingEngine => Robomaker_RenderingEngine]
 
 
 =back
@@ -1103,9 +1104,9 @@ Updates a simulation application.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllDeploymentJobs(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllDeploymentJobs(sub { },[Filters => ArrayRef[Robomaker_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllDeploymentJobs([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllDeploymentJobs([Filters => ArrayRef[Robomaker_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1115,9 +1116,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Robomaker::ListDeploymentJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllFleets(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllFleets(sub { },[Filters => ArrayRef[Robomaker_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllFleets([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllFleets([Filters => ArrayRef[Robomaker_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1127,9 +1128,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Robomaker::ListFleetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllRobotApplications(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str, VersionQualifier => Str])
+=head2 ListAllRobotApplications(sub { },[Filters => ArrayRef[Robomaker_Filter], MaxResults => Int, NextToken => Str, VersionQualifier => Str])
 
-=head2 ListAllRobotApplications([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str, VersionQualifier => Str])
+=head2 ListAllRobotApplications([Filters => ArrayRef[Robomaker_Filter], MaxResults => Int, NextToken => Str, VersionQualifier => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1139,9 +1140,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Robomaker::ListRobotApplicationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllRobots(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllRobots(sub { },[Filters => ArrayRef[Robomaker_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllRobots([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllRobots([Filters => ArrayRef[Robomaker_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1151,9 +1152,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Robomaker::ListRobotsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllSimulationApplications(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str, VersionQualifier => Str])
+=head2 ListAllSimulationApplications(sub { },[Filters => ArrayRef[Robomaker_Filter], MaxResults => Int, NextToken => Str, VersionQualifier => Str])
 
-=head2 ListAllSimulationApplications([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str, VersionQualifier => Str])
+=head2 ListAllSimulationApplications([Filters => ArrayRef[Robomaker_Filter], MaxResults => Int, NextToken => Str, VersionQualifier => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1163,9 +1164,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Robomaker::ListSimulationApplicationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllSimulationJobs(sub { },[Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllSimulationJobs(sub { },[Filters => ArrayRef[Robomaker_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllSimulationJobs([Filters => ArrayRef[L<Paws::Robomaker::Filter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllSimulationJobs([Filters => ArrayRef[Robomaker_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

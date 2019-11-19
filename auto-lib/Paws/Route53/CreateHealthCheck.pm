@@ -1,17 +1,39 @@
 
 package Paws::Route53::CreateHealthCheck;
-  use Moose;
-  has CallerReference => (is => 'ro', isa => 'Str', required => 1);
-  has HealthCheckConfig => (is => 'ro', isa => 'Paws::Route53::HealthCheckConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw/Route53_HealthCheckConfig/;
+  has CallerReference => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has HealthCheckConfig => (is => 'ro', isa => Route53_HealthCheckConfig, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHealthCheck');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/healthcheck');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::CreateHealthCheckResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateHealthCheck');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/healthcheck');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::CreateHealthCheckResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CallerReference' => {
+                                      'type' => 'Str'
+                                    },
+               'HealthCheckConfig' => {
+                                        'class' => 'Paws::Route53::HealthCheckConfig',
+                                        'type' => 'Route53_HealthCheckConfig'
+                                      }
+             },
+  'IsRequired' => {
+                    'HealthCheckConfig' => 1,
+                    'CallerReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -119,7 +141,7 @@ Route 53 creates the health check.
 
 
 
-=head2 B<REQUIRED> HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>
+=head2 B<REQUIRED> HealthCheckConfig => Route53_HealthCheckConfig
 
 A complex type that contains settings for a new health check.
 

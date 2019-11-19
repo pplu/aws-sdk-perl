@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::IoT::LogTargetConfiguration;
-  use Moose;
-  has LogLevel => (is => 'ro', isa => 'Str', request_name => 'logLevel', traits => ['NameInRequest']);
-  has LogTarget => (is => 'ro', isa => 'Paws::IoT::LogTarget', request_name => 'logTarget', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_LogTarget/;
+  has LogLevel => (is => 'ro', isa => Str);
+  has LogTarget => (is => 'ro', isa => IoT_LogTarget);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogLevel' => {
+                               'type' => 'Str'
+                             },
+               'LogTarget' => {
+                                'type' => 'IoT_LogTarget',
+                                'class' => 'Paws::IoT::LogTarget'
+                              }
+             },
+  'NameInRequest' => {
+                       'LogTarget' => 'logTarget',
+                       'LogLevel' => 'logLevel'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ The target configuration.
   The logging level.
 
 
-=head2 LogTarget => L<Paws::IoT::LogTarget>
+=head2 LogTarget => IoT_LogTarget
 
   A log target
 

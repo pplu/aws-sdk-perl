@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::FSX::UpdateFileSystem;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
-  has LustreConfiguration => (is => 'ro', isa => 'Paws::FSX::UpdateFileSystemLustreConfiguration');
-  has WindowsConfiguration => (is => 'ro', isa => 'Paws::FSX::UpdateFileSystemWindowsConfiguration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::FSX::Types qw/FSX_UpdateFileSystemLustreConfiguration FSX_UpdateFileSystemWindowsConfiguration/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has FileSystemId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LustreConfiguration => (is => 'ro', isa => FSX_UpdateFileSystemLustreConfiguration, predicate => 1);
+  has WindowsConfiguration => (is => 'ro', isa => FSX_UpdateFileSystemWindowsConfiguration, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFileSystem');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::FSX::UpdateFileSystemResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFileSystem');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::FSX::UpdateFileSystemResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FileSystemId' => 1
+                  },
+  'types' => {
+               'LustreConfiguration' => {
+                                          'class' => 'Paws::FSX::UpdateFileSystemLustreConfiguration',
+                                          'type' => 'FSX_UpdateFileSystemLustreConfiguration'
+                                        },
+               'WindowsConfiguration' => {
+                                           'type' => 'FSX_UpdateFileSystemWindowsConfiguration',
+                                           'class' => 'Paws::FSX::UpdateFileSystemWindowsConfiguration'
+                                         },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,13 +105,13 @@ AWS SDK.
 
 
 
-=head2 LustreConfiguration => L<Paws::FSX::UpdateFileSystemLustreConfiguration>
+=head2 LustreConfiguration => FSX_UpdateFileSystemLustreConfiguration
 
 
 
 
 
-=head2 WindowsConfiguration => L<Paws::FSX::UpdateFileSystemWindowsConfiguration>
+=head2 WindowsConfiguration => FSX_UpdateFileSystemWindowsConfiguration
 
 The configuration update for this Microsoft Windows file system. The
 only supported options are for backup and maintenance and for

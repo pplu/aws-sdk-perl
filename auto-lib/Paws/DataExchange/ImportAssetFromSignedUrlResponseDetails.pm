@@ -1,11 +1,48 @@
+# Generated from default/object.tt
 package Paws::DataExchange::ImportAssetFromSignedUrlResponseDetails;
-  use Moose;
-  has AssetName => (is => 'ro', isa => 'Str', required => 1);
-  has DataSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Md5Hash => (is => 'ro', isa => 'Str');
-  has RevisionId => (is => 'ro', isa => 'Str', required => 1);
-  has SignedUrl => (is => 'ro', isa => 'Str');
-  has SignedUrlExpiresAt => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw//;
+  has AssetName => (is => 'ro', isa => Str, required => 1);
+  has DataSetId => (is => 'ro', isa => Str, required => 1);
+  has Md5Hash => (is => 'ro', isa => Str);
+  has RevisionId => (is => 'ro', isa => Str, required => 1);
+  has SignedUrl => (is => 'ro', isa => Str);
+  has SignedUrlExpiresAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SignedUrlExpiresAt' => {
+                                         'type' => 'Str'
+                                       },
+               'AssetName' => {
+                                'type' => 'Str'
+                              },
+               'DataSetId' => {
+                                'type' => 'Str'
+                              },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'SignedUrl' => {
+                                'type' => 'Str'
+                              },
+               'Md5Hash' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'RevisionId' => 1,
+                    'DataSetId' => 1,
+                    'AssetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

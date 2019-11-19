@@ -1,20 +1,75 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::ScheduleRun;
-  use Moose;
-  has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' );
-  has Configuration => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunConfiguration', traits => ['NameInRequest'], request_name => 'configuration' );
-  has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' );
-  has DeviceSelectionConfiguration => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceSelectionConfiguration', traits => ['NameInRequest'], request_name => 'deviceSelectionConfiguration' );
-  has ExecutionConfiguration => (is => 'ro', isa => 'Paws::DeviceFarm::ExecutionConfiguration', traits => ['NameInRequest'], request_name => 'executionConfiguration' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
-  has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
-  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunTest', traits => ['NameInRequest'], request_name => 'test' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_ScheduleRunTest DeviceFarm_DeviceSelectionConfiguration DeviceFarm_ExecutionConfiguration DeviceFarm_ScheduleRunConfiguration/;
+  has AppArn => (is => 'ro', isa => Str, predicate => 1);
+  has Configuration => (is => 'ro', isa => DeviceFarm_ScheduleRunConfiguration, predicate => 1);
+  has DevicePoolArn => (is => 'ro', isa => Str, predicate => 1);
+  has DeviceSelectionConfiguration => (is => 'ro', isa => DeviceFarm_DeviceSelectionConfiguration, predicate => 1);
+  has ExecutionConfiguration => (is => 'ro', isa => DeviceFarm_ExecutionConfiguration, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has ProjectArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Test => (is => 'ro', isa => DeviceFarm_ScheduleRunTest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ScheduleRun');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::ScheduleRunResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ScheduleRun');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::ScheduleRunResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Test' => 1,
+                    'ProjectArn' => 1
+                  },
+  'NameInRequest' => {
+                       'DevicePoolArn' => 'devicePoolArn',
+                       'ExecutionConfiguration' => 'executionConfiguration',
+                       'Configuration' => 'configuration',
+                       'Name' => 'name',
+                       'DeviceSelectionConfiguration' => 'deviceSelectionConfiguration',
+                       'Test' => 'test',
+                       'AppArn' => 'appArn',
+                       'ProjectArn' => 'projectArn'
+                     },
+  'types' => {
+               'Test' => {
+                           'type' => 'DeviceFarm_ScheduleRunTest',
+                           'class' => 'Paws::DeviceFarm::ScheduleRunTest'
+                         },
+               'AppArn' => {
+                             'type' => 'Str'
+                           },
+               'ProjectArn' => {
+                                 'type' => 'Str'
+                               },
+               'DevicePoolArn' => {
+                                    'type' => 'Str'
+                                  },
+               'ExecutionConfiguration' => {
+                                             'class' => 'Paws::DeviceFarm::ExecutionConfiguration',
+                                             'type' => 'DeviceFarm_ExecutionConfiguration'
+                                           },
+               'Configuration' => {
+                                    'class' => 'Paws::DeviceFarm::ScheduleRunConfiguration',
+                                    'type' => 'DeviceFarm_ScheduleRunConfiguration'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DeviceSelectionConfiguration' => {
+                                                   'type' => 'DeviceFarm_DeviceSelectionConfiguration',
+                                                   'class' => 'Paws::DeviceFarm::DeviceSelectionConfiguration'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +121,7 @@ The ARN of the app to schedule a run.
 
 
 
-=head2 Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>
+=head2 Configuration => DeviceFarm_ScheduleRunConfiguration
 
 Information about the settings for the run to be scheduled.
 
@@ -78,7 +133,7 @@ The ARN of the device pool for the run to be scheduled.
 
 
 
-=head2 DeviceSelectionConfiguration => L<Paws::DeviceFarm::DeviceSelectionConfiguration>
+=head2 DeviceSelectionConfiguration => DeviceFarm_DeviceSelectionConfiguration
 
 The filter criteria used to dynamically select a set of devices for a
 test run, as well as the maximum number of devices to be included in
@@ -89,7 +144,7 @@ required in a request.
 
 
 
-=head2 ExecutionConfiguration => L<Paws::DeviceFarm::ExecutionConfiguration>
+=head2 ExecutionConfiguration => DeviceFarm_ExecutionConfiguration
 
 Specifies configuration information about a test run, such as the
 execution timeout (in minutes).
@@ -108,7 +163,7 @@ The ARN of the project for the run to be scheduled.
 
 
 
-=head2 B<REQUIRED> Test => L<Paws::DeviceFarm::ScheduleRunTest>
+=head2 B<REQUIRED> Test => DeviceFarm_ScheduleRunTest
 
 Information about the test for the run to be scheduled.
 

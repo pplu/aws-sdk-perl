@@ -1,10 +1,31 @@
 
 package Paws::WorkDocs::DescribeGroupsResponse;
-  use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::GroupMetadata]');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkDocs::Types qw/WorkDocs_GroupMetadata/;
+  has Groups => (is => 'ro', isa => ArrayRef[WorkDocs_GroupMetadata]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Groups' => {
+                             'class' => 'Paws::WorkDocs::GroupMetadata',
+                             'type' => 'ArrayRef[WorkDocs_GroupMetadata]'
+                           },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::WorkDocs::DescribeGroupsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Groups => ArrayRef[L<Paws::WorkDocs::GroupMetadata>]
+=head2 Groups => ArrayRef[WorkDocs_GroupMetadata]
 
 The list of groups.
 

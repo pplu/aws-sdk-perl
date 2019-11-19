@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::SESv2::Template;
-  use Moose;
-  has TemplateArn => (is => 'ro', isa => 'Str');
-  has TemplateData => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw//;
+  has TemplateArn => (is => 'ro', isa => Str);
+  has TemplateData => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateData' => {
+                                   'type' => 'Str'
+                                 },
+               'TemplateArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

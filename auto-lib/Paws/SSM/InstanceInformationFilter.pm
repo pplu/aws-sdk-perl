@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::SSM::InstanceInformationFilter;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
-  has ValueSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'valueSet', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SSM::Types qw//;
+  has Key => (is => 'ro', isa => Str, required => 1);
+  has ValueSet => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Key' => 1,
+                    'ValueSet' => 1
+                  },
+  'NameInRequest' => {
+                       'Key' => 'key',
+                       'ValueSet' => 'valueSet'
+                     },
+  'types' => {
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'ValueSet' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

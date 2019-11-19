@@ -1,18 +1,57 @@
 
 package Paws::IoTAnalytics::ListDatasetContents;
-  use Moose;
-  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'datasetName', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has ScheduledBefore => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'scheduledBefore');
-  has ScheduledOnOrAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'scheduledOnOrAfter');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTAnalytics::Types qw//;
+  has DatasetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ScheduledBefore => (is => 'ro', isa => Str, predicate => 1);
+  has ScheduledOnOrAfter => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDatasetContents');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/datasets/{datasetName}/contents');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTAnalytics::ListDatasetContentsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDatasetContents');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/datasets/{datasetName}/contents');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTAnalytics::ListDatasetContentsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DatasetName' => 'datasetName'
+                  },
+  'ParamInQuery' => {
+                      'ScheduledOnOrAfter' => 'scheduledOnOrAfter',
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken',
+                      'ScheduledBefore' => 'scheduledBefore'
+                    },
+  'IsRequired' => {
+                    'DatasetName' => 1
+                  },
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ScheduledBefore' => {
+                                      'type' => 'Str'
+                                    },
+               'ScheduledOnOrAfter' => {
+                                         'type' => 'Str'
+                                       },
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,35 @@
 
 package Paws::SESv2::GetBlacklistReports;
-  use Moose;
-  has BlacklistItemNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'BlacklistItemNames', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::SESv2::Types qw//;
+  has BlacklistItemNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetBlacklistReports');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/deliverability-dashboard/blacklist-report');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::GetBlacklistReportsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetBlacklistReports');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/deliverability-dashboard/blacklist-report');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::GetBlacklistReportsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BlacklistItemNames' => 1
+                  },
+  'ParamInQuery' => {
+                      'BlacklistItemNames' => 'BlacklistItemNames'
+                    },
+  'types' => {
+               'BlacklistItemNames' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

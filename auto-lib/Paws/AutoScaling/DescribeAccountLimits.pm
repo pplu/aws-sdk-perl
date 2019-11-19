@@ -1,12 +1,22 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::DescribeAccountLimits;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AutoScaling::Types qw//;
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAccountLimits');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::DescribeAccountLimitsAnswer');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAccountLimitsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAccountLimits');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::DescribeAccountLimitsAnswer');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeAccountLimitsResult');
+
+    sub params_map {
+    our $Params_map ||= {}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

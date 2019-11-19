@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Discovery::AgentConfigurationStatus;
-  use Moose;
-  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has OperationSucceeded => (is => 'ro', isa => 'Bool', request_name => 'operationSucceeded', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Discovery::Types qw//;
+  has AgentId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has OperationSucceeded => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AgentId' => 'agentId',
+                       'Description' => 'description',
+                       'OperationSucceeded' => 'operationSucceeded'
+                     },
+  'types' => {
+               'AgentId' => {
+                              'type' => 'Str'
+                            },
+               'OperationSucceeded' => {
+                                         'type' => 'Bool'
+                                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

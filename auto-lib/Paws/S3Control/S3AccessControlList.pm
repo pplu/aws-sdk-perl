@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::S3Control::S3AccessControlList;
-  use Moose;
-  has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::S3Grant]');
-  has Owner => (is => 'ro', isa => 'Paws::S3Control::S3ObjectOwner', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::S3Control::Types qw/S3Control_S3ObjectOwner S3Control_S3Grant/;
+  has Grants => (is => 'ro', isa => ArrayRef[S3Control_S3Grant]);
+  has Owner => (is => 'ro', isa => S3Control_S3ObjectOwner, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Grants' => {
+                             'type' => 'ArrayRef[S3Control_S3Grant]',
+                             'class' => 'Paws::S3Control::S3Grant'
+                           },
+               'Owner' => {
+                            'type' => 'S3Control_S3ObjectOwner',
+                            'class' => 'Paws::S3Control::S3ObjectOwner'
+                          }
+             },
+  'IsRequired' => {
+                    'Owner' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +62,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Grants => ArrayRef[L<Paws::S3Control::S3Grant>]
+=head2 Grants => ArrayRef[S3Control_S3Grant]
 
   
 
 
-=head2 B<REQUIRED> Owner => L<Paws::S3Control::S3ObjectOwner>
+=head2 B<REQUIRED> Owner => S3Control_S3ObjectOwner
 
   
 

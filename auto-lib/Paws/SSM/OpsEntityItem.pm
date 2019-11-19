@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::SSM::OpsEntityItem;
-  use Moose;
-  has CaptureTime => (is => 'ro', isa => 'Str');
-  has Content => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsEntityItemEntry]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_OpsEntityItemEntry/;
+  has CaptureTime => (is => 'ro', isa => Str);
+  has Content => (is => 'ro', isa => ArrayRef[SSM_OpsEntityItemEntry]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Content' => {
+                              'class' => 'Paws::SSM::OpsEntityItemEntry',
+                              'type' => 'ArrayRef[SSM_OpsEntityItemEntry]'
+                            },
+               'CaptureTime' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ The OpsItem summaries result item.
   The time OpsItem data was captured.
 
 
-=head2 Content => ArrayRef[L<Paws::SSM::OpsEntityItemEntry>]
+=head2 Content => ArrayRef[SSM_OpsEntityItemEntry]
 
   The detailed data content for an OpsItem summaries result item.
 

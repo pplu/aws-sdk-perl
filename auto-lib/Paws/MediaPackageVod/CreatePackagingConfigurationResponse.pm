@@ -1,15 +1,63 @@
 
 package Paws::MediaPackageVod::CreatePackagingConfigurationResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::CmafPackage', traits => ['NameInRequest'], request_name => 'cmafPackage');
-  has DashPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::DashPackage', traits => ['NameInRequest'], request_name => 'dashPackage');
-  has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::HlsPackage', traits => ['NameInRequest'], request_name => 'hlsPackage');
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
-  has MssPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::MssPackage', traits => ['NameInRequest'], request_name => 'mssPackage');
-  has PackagingGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'packagingGroupId');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_DashPackage MediaPackageVod_CmafPackage MediaPackageVod_MssPackage MediaPackageVod_HlsPackage/;
+  has Arn => (is => 'ro', isa => Str);
+  has CmafPackage => (is => 'ro', isa => MediaPackageVod_CmafPackage);
+  has DashPackage => (is => 'ro', isa => MediaPackageVod_DashPackage);
+  has HlsPackage => (is => 'ro', isa => MediaPackageVod_HlsPackage);
+  has Id => (is => 'ro', isa => Str);
+  has MssPackage => (is => 'ro', isa => MediaPackageVod_MssPackage);
+  has PackagingGroupId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'HlsPackage' => 'hlsPackage',
+                       'MssPackage' => 'mssPackage',
+                       'DashPackage' => 'dashPackage',
+                       'PackagingGroupId' => 'packagingGroupId',
+                       'Id' => 'id',
+                       'Arn' => 'arn',
+                       'CmafPackage' => 'cmafPackage'
+                     },
+  'types' => {
+               'PackagingGroupId' => {
+                                       'type' => 'Str'
+                                     },
+               'HlsPackage' => {
+                                 'type' => 'MediaPackageVod_HlsPackage',
+                                 'class' => 'Paws::MediaPackageVod::HlsPackage'
+                               },
+               'CmafPackage' => {
+                                  'class' => 'Paws::MediaPackageVod::CmafPackage',
+                                  'type' => 'MediaPackageVod_CmafPackage'
+                                },
+               'DashPackage' => {
+                                  'type' => 'MediaPackageVod_DashPackage',
+                                  'class' => 'Paws::MediaPackageVod::DashPackage'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MssPackage' => {
+                                 'type' => 'MediaPackageVod_MssPackage',
+                                 'class' => 'Paws::MediaPackageVod::MssPackage'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -26,17 +74,17 @@ Paws::MediaPackageVod::CreatePackagingConfigurationResponse
 The ARN of the PackagingConfiguration.
 
 
-=head2 CmafPackage => L<Paws::MediaPackageVod::CmafPackage>
+=head2 CmafPackage => MediaPackageVod_CmafPackage
 
 
 
 
-=head2 DashPackage => L<Paws::MediaPackageVod::DashPackage>
+=head2 DashPackage => MediaPackageVod_DashPackage
 
 
 
 
-=head2 HlsPackage => L<Paws::MediaPackageVod::HlsPackage>
+=head2 HlsPackage => MediaPackageVod_HlsPackage
 
 
 
@@ -46,7 +94,7 @@ The ARN of the PackagingConfiguration.
 The ID of the PackagingConfiguration.
 
 
-=head2 MssPackage => L<Paws::MediaPackageVod::MssPackage>
+=head2 MssPackage => MediaPackageVod_MssPackage
 
 
 

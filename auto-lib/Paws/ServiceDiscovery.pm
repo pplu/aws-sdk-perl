@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::ServiceDiscovery;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'servicediscovery' }
   sub signing_name { 'servicediscovery' }
   sub version { '2017-03-14' }
   sub target_prefix { 'Route53AutoNaming_v20170314' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -347,11 +349,11 @@ in the I<AWS Cloud Map Developer Guide>.
 
 =item [Description => Str]
 
-=item [DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>]
+=item [DnsConfig => ServiceDiscovery_DnsConfig]
 
-=item [HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>]
+=item [HealthCheckConfig => ServiceDiscovery_HealthCheckConfig]
 
-=item [HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>]
+=item [HealthCheckCustomConfig => ServiceDiscovery_HealthCheckCustomConfig]
 
 =item [NamespaceId => Str]
 
@@ -478,7 +480,7 @@ AWS Cloud Map created for the specified instance.
 
 =item [MaxResults => Int]
 
-=item [QueryParameters => L<Paws::ServiceDiscovery::Attributes>]
+=item [QueryParameters => ServiceDiscovery_Attributes]
 
 
 =back
@@ -612,7 +614,7 @@ using a specified service.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::ServiceDiscovery::NamespaceFilter>]]
+=item [Filters => ArrayRef[ServiceDiscovery_NamespaceFilter]]
 
 =item [MaxResults => Int]
 
@@ -633,7 +635,7 @@ current AWS account.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::ServiceDiscovery::OperationFilter>]]
+=item [Filters => ArrayRef[ServiceDiscovery_OperationFilter]]
 
 =item [MaxResults => Int]
 
@@ -653,7 +655,7 @@ Lists operations that match the criteria that you specify.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::ServiceDiscovery::ServiceFilter>]]
+=item [Filters => ArrayRef[ServiceDiscovery_ServiceFilter]]
 
 =item [MaxResults => Int]
 
@@ -674,7 +676,7 @@ one or more specified namespaces.
 
 =over
 
-=item Attributes => L<Paws::ServiceDiscovery::Attributes>
+=item Attributes => ServiceDiscovery_Attributes
 
 =item InstanceId => Str
 
@@ -781,7 +783,7 @@ For more information, see HealthCheckCustomConfig.
 
 =item Id => Str
 
-=item Service => L<Paws::ServiceDiscovery::ServiceChange>
+=item Service => ServiceDiscovery_ServiceChange
 
 
 =back
@@ -837,9 +839,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceDiscovery::ListInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllNamespaces(sub { },[Filters => ArrayRef[L<Paws::ServiceDiscovery::NamespaceFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllNamespaces(sub { },[Filters => ArrayRef[ServiceDiscovery_NamespaceFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllNamespaces([Filters => ArrayRef[L<Paws::ServiceDiscovery::NamespaceFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllNamespaces([Filters => ArrayRef[ServiceDiscovery_NamespaceFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -849,9 +851,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceDiscovery::ListNamespacesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllOperations(sub { },[Filters => ArrayRef[L<Paws::ServiceDiscovery::OperationFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllOperations(sub { },[Filters => ArrayRef[ServiceDiscovery_OperationFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllOperations([Filters => ArrayRef[L<Paws::ServiceDiscovery::OperationFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllOperations([Filters => ArrayRef[ServiceDiscovery_OperationFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -861,9 +863,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceDiscovery::ListOperationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllServices(sub { },[Filters => ArrayRef[L<Paws::ServiceDiscovery::ServiceFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllServices(sub { },[Filters => ArrayRef[ServiceDiscovery_ServiceFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllServices([Filters => ArrayRef[L<Paws::ServiceDiscovery::ServiceFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllServices([Filters => ArrayRef[ServiceDiscovery_ServiceFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

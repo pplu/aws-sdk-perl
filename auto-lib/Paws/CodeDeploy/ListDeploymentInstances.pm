@@ -1,16 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::ListDeploymentInstances;
-  use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' , required => 1);
-  has InstanceStatusFilter => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceStatusFilter' );
-  has InstanceTypeFilter => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceTypeFilter' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::CodeDeploy::Types qw//;
+  has DeploymentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceStatusFilter => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has InstanceTypeFilter => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDeploymentInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::ListDeploymentInstancesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDeploymentInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::ListDeploymentInstancesOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'InstanceTypeFilter' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceStatusFilter' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         }
+             },
+  'NameInRequest' => {
+                       'InstanceStatusFilter' => 'instanceStatusFilter',
+                       'DeploymentId' => 'deploymentId',
+                       'InstanceTypeFilter' => 'instanceTypeFilter',
+                       'NextToken' => 'nextToken'
+                     },
+  'IsRequired' => {
+                    'DeploymentId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

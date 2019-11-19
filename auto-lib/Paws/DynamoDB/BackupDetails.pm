@@ -1,12 +1,54 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::BackupDetails;
-  use Moose;
-  has BackupArn => (is => 'ro', isa => 'Str', required => 1);
-  has BackupCreationDateTime => (is => 'ro', isa => 'Str', required => 1);
-  has BackupExpiryDateTime => (is => 'ro', isa => 'Str');
-  has BackupName => (is => 'ro', isa => 'Str', required => 1);
-  has BackupSizeBytes => (is => 'ro', isa => 'Int');
-  has BackupStatus => (is => 'ro', isa => 'Str', required => 1);
-  has BackupType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DynamoDB::Types qw//;
+  has BackupArn => (is => 'ro', isa => Str, required => 1);
+  has BackupCreationDateTime => (is => 'ro', isa => Str, required => 1);
+  has BackupExpiryDateTime => (is => 'ro', isa => Str);
+  has BackupName => (is => 'ro', isa => Str, required => 1);
+  has BackupSizeBytes => (is => 'ro', isa => Int);
+  has BackupStatus => (is => 'ro', isa => Str, required => 1);
+  has BackupType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupName' => {
+                                 'type' => 'Str'
+                               },
+               'BackupSizeBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'BackupType' => {
+                                 'type' => 'Str'
+                               },
+               'BackupCreationDateTime' => {
+                                             'type' => 'Str'
+                                           },
+               'BackupArn' => {
+                                'type' => 'Str'
+                              },
+               'BackupExpiryDateTime' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'BackupStatus' => 1,
+                    'BackupName' => 1,
+                    'BackupCreationDateTime' => 1,
+                    'BackupArn' => 1,
+                    'BackupType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,55 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Rekognition::StartFaceSearch;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has CollectionId => (is => 'ro', isa => 'Str', required => 1);
-  has FaceMatchThreshold => (is => 'ro', isa => 'Num');
-  has JobTag => (is => 'ro', isa => 'Str');
-  has NotificationChannel => (is => 'ro', isa => 'Paws::Rekognition::NotificationChannel');
-  has Video => (is => 'ro', isa => 'Paws::Rekognition::Video', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::Rekognition::Types qw/Rekognition_Video Rekognition_NotificationChannel/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has CollectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FaceMatchThreshold => (is => 'ro', isa => Num, predicate => 1);
+  has JobTag => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationChannel => (is => 'ro', isa => Rekognition_NotificationChannel, predicate => 1);
+  has Video => (is => 'ro', isa => Rekognition_Video, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartFaceSearch');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Rekognition::StartFaceSearchResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartFaceSearch');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Rekognition::StartFaceSearchResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotificationChannel' => {
+                                          'type' => 'Rekognition_NotificationChannel',
+                                          'class' => 'Paws::Rekognition::NotificationChannel'
+                                        },
+               'JobTag' => {
+                             'type' => 'Str'
+                           },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Video' => {
+                            'type' => 'Rekognition_Video',
+                            'class' => 'Paws::Rekognition::Video'
+                          },
+               'CollectionId' => {
+                                   'type' => 'Str'
+                                 },
+               'FaceMatchThreshold' => {
+                                         'type' => 'Num'
+                                       }
+             },
+  'IsRequired' => {
+                    'CollectionId' => 1,
+                    'Video' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,14 +131,14 @@ and identify them in the completion notification.
 
 
 
-=head2 NotificationChannel => L<Paws::Rekognition::NotificationChannel>
+=head2 NotificationChannel => Rekognition_NotificationChannel
 
 The ARN of the Amazon SNS topic to which you want Amazon Rekognition
 Video to publish the completion status of the search.
 
 
 
-=head2 B<REQUIRED> Video => L<Paws::Rekognition::Video>
+=head2 B<REQUIRED> Video => Rekognition_Video
 
 The video you want to search. The video must be stored in an Amazon S3
 bucket.

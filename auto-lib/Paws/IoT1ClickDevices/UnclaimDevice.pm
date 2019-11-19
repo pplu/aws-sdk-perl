@@ -1,14 +1,35 @@
 
 package Paws::IoT1ClickDevices::UnclaimDevice;
-  use Moose;
-  has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'deviceId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickDevices::Types qw//;
+  has DeviceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UnclaimDevice');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/devices/{deviceId}/unclaim');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT1ClickDevices::UnclaimDeviceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UnclaimDevice');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/devices/{deviceId}/unclaim');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT1ClickDevices::UnclaimDeviceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DeviceId' => 1
+                  },
+  'types' => {
+               'DeviceId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'DeviceId' => 'deviceId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

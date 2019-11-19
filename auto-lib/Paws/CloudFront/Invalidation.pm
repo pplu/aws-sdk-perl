@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::CloudFront::Invalidation;
-  use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has InvalidationBatch => (is => 'ro', isa => 'Paws::CloudFront::InvalidationBatch', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_InvalidationBatch/;
+  has CreateTime => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has InvalidationBatch => (is => 'ro', isa => CloudFront_InvalidationBatch, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InvalidationBatch' => 1,
+                    'Id' => 1,
+                    'CreateTime' => 1,
+                    'Status' => 1
+                  },
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'InvalidationBatch' => {
+                                        'class' => 'Paws::CloudFront::InvalidationBatch',
+                                        'type' => 'CloudFront_InvalidationBatch'
+                                      },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +83,7 @@ An invalidation.
 C<IDFDVBD632BHDS5>.
 
 
-=head2 B<REQUIRED> InvalidationBatch => L<Paws::CloudFront::InvalidationBatch>
+=head2 B<REQUIRED> InvalidationBatch => CloudFront_InvalidationBatch
 
   The current invalidation information for the batch request.
 

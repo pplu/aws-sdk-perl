@@ -1,17 +1,93 @@
+# Generated from default/object.tt
 package Paws::MediaLive::CaptionDestinationSettings;
-  use Moose;
-  has AribDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::AribDestinationSettings', request_name => 'aribDestinationSettings', traits => ['NameInRequest']);
-  has BurnInDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::BurnInDestinationSettings', request_name => 'burnInDestinationSettings', traits => ['NameInRequest']);
-  has DvbSubDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::DvbSubDestinationSettings', request_name => 'dvbSubDestinationSettings', traits => ['NameInRequest']);
-  has EmbeddedDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::EmbeddedDestinationSettings', request_name => 'embeddedDestinationSettings', traits => ['NameInRequest']);
-  has EmbeddedPlusScte20DestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::EmbeddedPlusScte20DestinationSettings', request_name => 'embeddedPlusScte20DestinationSettings', traits => ['NameInRequest']);
-  has RtmpCaptionInfoDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::RtmpCaptionInfoDestinationSettings', request_name => 'rtmpCaptionInfoDestinationSettings', traits => ['NameInRequest']);
-  has Scte20PlusEmbeddedDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte20PlusEmbeddedDestinationSettings', request_name => 'scte20PlusEmbeddedDestinationSettings', traits => ['NameInRequest']);
-  has Scte27DestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte27DestinationSettings', request_name => 'scte27DestinationSettings', traits => ['NameInRequest']);
-  has SmpteTtDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::SmpteTtDestinationSettings', request_name => 'smpteTtDestinationSettings', traits => ['NameInRequest']);
-  has TeletextDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::TeletextDestinationSettings', request_name => 'teletextDestinationSettings', traits => ['NameInRequest']);
-  has TtmlDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::TtmlDestinationSettings', request_name => 'ttmlDestinationSettings', traits => ['NameInRequest']);
-  has WebvttDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::WebvttDestinationSettings', request_name => 'webvttDestinationSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_EmbeddedPlusScte20DestinationSettings MediaLive_Scte27DestinationSettings MediaLive_TtmlDestinationSettings MediaLive_SmpteTtDestinationSettings MediaLive_DvbSubDestinationSettings MediaLive_TeletextDestinationSettings MediaLive_WebvttDestinationSettings MediaLive_RtmpCaptionInfoDestinationSettings MediaLive_Scte20PlusEmbeddedDestinationSettings MediaLive_AribDestinationSettings MediaLive_EmbeddedDestinationSettings MediaLive_BurnInDestinationSettings/;
+  has AribDestinationSettings => (is => 'ro', isa => MediaLive_AribDestinationSettings);
+  has BurnInDestinationSettings => (is => 'ro', isa => MediaLive_BurnInDestinationSettings);
+  has DvbSubDestinationSettings => (is => 'ro', isa => MediaLive_DvbSubDestinationSettings);
+  has EmbeddedDestinationSettings => (is => 'ro', isa => MediaLive_EmbeddedDestinationSettings);
+  has EmbeddedPlusScte20DestinationSettings => (is => 'ro', isa => MediaLive_EmbeddedPlusScte20DestinationSettings);
+  has RtmpCaptionInfoDestinationSettings => (is => 'ro', isa => MediaLive_RtmpCaptionInfoDestinationSettings);
+  has Scte20PlusEmbeddedDestinationSettings => (is => 'ro', isa => MediaLive_Scte20PlusEmbeddedDestinationSettings);
+  has Scte27DestinationSettings => (is => 'ro', isa => MediaLive_Scte27DestinationSettings);
+  has SmpteTtDestinationSettings => (is => 'ro', isa => MediaLive_SmpteTtDestinationSettings);
+  has TeletextDestinationSettings => (is => 'ro', isa => MediaLive_TeletextDestinationSettings);
+  has TtmlDestinationSettings => (is => 'ro', isa => MediaLive_TtmlDestinationSettings);
+  has WebvttDestinationSettings => (is => 'ro', isa => MediaLive_WebvttDestinationSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DvbSubDestinationSettings' => {
+                                                'class' => 'Paws::MediaLive::DvbSubDestinationSettings',
+                                                'type' => 'MediaLive_DvbSubDestinationSettings'
+                                              },
+               'TtmlDestinationSettings' => {
+                                              'type' => 'MediaLive_TtmlDestinationSettings',
+                                              'class' => 'Paws::MediaLive::TtmlDestinationSettings'
+                                            },
+               'BurnInDestinationSettings' => {
+                                                'class' => 'Paws::MediaLive::BurnInDestinationSettings',
+                                                'type' => 'MediaLive_BurnInDestinationSettings'
+                                              },
+               'AribDestinationSettings' => {
+                                              'type' => 'MediaLive_AribDestinationSettings',
+                                              'class' => 'Paws::MediaLive::AribDestinationSettings'
+                                            },
+               'SmpteTtDestinationSettings' => {
+                                                 'class' => 'Paws::MediaLive::SmpteTtDestinationSettings',
+                                                 'type' => 'MediaLive_SmpteTtDestinationSettings'
+                                               },
+               'EmbeddedDestinationSettings' => {
+                                                  'class' => 'Paws::MediaLive::EmbeddedDestinationSettings',
+                                                  'type' => 'MediaLive_EmbeddedDestinationSettings'
+                                                },
+               'EmbeddedPlusScte20DestinationSettings' => {
+                                                            'class' => 'Paws::MediaLive::EmbeddedPlusScte20DestinationSettings',
+                                                            'type' => 'MediaLive_EmbeddedPlusScte20DestinationSettings'
+                                                          },
+               'RtmpCaptionInfoDestinationSettings' => {
+                                                         'type' => 'MediaLive_RtmpCaptionInfoDestinationSettings',
+                                                         'class' => 'Paws::MediaLive::RtmpCaptionInfoDestinationSettings'
+                                                       },
+               'WebvttDestinationSettings' => {
+                                                'class' => 'Paws::MediaLive::WebvttDestinationSettings',
+                                                'type' => 'MediaLive_WebvttDestinationSettings'
+                                              },
+               'TeletextDestinationSettings' => {
+                                                  'type' => 'MediaLive_TeletextDestinationSettings',
+                                                  'class' => 'Paws::MediaLive::TeletextDestinationSettings'
+                                                },
+               'Scte27DestinationSettings' => {
+                                                'type' => 'MediaLive_Scte27DestinationSettings',
+                                                'class' => 'Paws::MediaLive::Scte27DestinationSettings'
+                                              },
+               'Scte20PlusEmbeddedDestinationSettings' => {
+                                                            'type' => 'MediaLive_Scte20PlusEmbeddedDestinationSettings',
+                                                            'class' => 'Paws::MediaLive::Scte20PlusEmbeddedDestinationSettings'
+                                                          }
+             },
+  'NameInRequest' => {
+                       'TeletextDestinationSettings' => 'teletextDestinationSettings',
+                       'Scte27DestinationSettings' => 'scte27DestinationSettings',
+                       'Scte20PlusEmbeddedDestinationSettings' => 'scte20PlusEmbeddedDestinationSettings',
+                       'EmbeddedPlusScte20DestinationSettings' => 'embeddedPlusScte20DestinationSettings',
+                       'RtmpCaptionInfoDestinationSettings' => 'rtmpCaptionInfoDestinationSettings',
+                       'WebvttDestinationSettings' => 'webvttDestinationSettings',
+                       'DvbSubDestinationSettings' => 'dvbSubDestinationSettings',
+                       'EmbeddedDestinationSettings' => 'embeddedDestinationSettings',
+                       'TtmlDestinationSettings' => 'ttmlDestinationSettings',
+                       'BurnInDestinationSettings' => 'burnInDestinationSettings',
+                       'SmpteTtDestinationSettings' => 'smpteTtDestinationSettings',
+                       'AribDestinationSettings' => 'aribDestinationSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,62 +123,62 @@ Caption Destination Settings
 =head1 ATTRIBUTES
 
 
-=head2 AribDestinationSettings => L<Paws::MediaLive::AribDestinationSettings>
+=head2 AribDestinationSettings => MediaLive_AribDestinationSettings
 
   
 
 
-=head2 BurnInDestinationSettings => L<Paws::MediaLive::BurnInDestinationSettings>
+=head2 BurnInDestinationSettings => MediaLive_BurnInDestinationSettings
 
   
 
 
-=head2 DvbSubDestinationSettings => L<Paws::MediaLive::DvbSubDestinationSettings>
+=head2 DvbSubDestinationSettings => MediaLive_DvbSubDestinationSettings
 
   
 
 
-=head2 EmbeddedDestinationSettings => L<Paws::MediaLive::EmbeddedDestinationSettings>
+=head2 EmbeddedDestinationSettings => MediaLive_EmbeddedDestinationSettings
 
   
 
 
-=head2 EmbeddedPlusScte20DestinationSettings => L<Paws::MediaLive::EmbeddedPlusScte20DestinationSettings>
+=head2 EmbeddedPlusScte20DestinationSettings => MediaLive_EmbeddedPlusScte20DestinationSettings
 
   
 
 
-=head2 RtmpCaptionInfoDestinationSettings => L<Paws::MediaLive::RtmpCaptionInfoDestinationSettings>
+=head2 RtmpCaptionInfoDestinationSettings => MediaLive_RtmpCaptionInfoDestinationSettings
 
   
 
 
-=head2 Scte20PlusEmbeddedDestinationSettings => L<Paws::MediaLive::Scte20PlusEmbeddedDestinationSettings>
+=head2 Scte20PlusEmbeddedDestinationSettings => MediaLive_Scte20PlusEmbeddedDestinationSettings
 
   
 
 
-=head2 Scte27DestinationSettings => L<Paws::MediaLive::Scte27DestinationSettings>
+=head2 Scte27DestinationSettings => MediaLive_Scte27DestinationSettings
 
   
 
 
-=head2 SmpteTtDestinationSettings => L<Paws::MediaLive::SmpteTtDestinationSettings>
+=head2 SmpteTtDestinationSettings => MediaLive_SmpteTtDestinationSettings
 
   
 
 
-=head2 TeletextDestinationSettings => L<Paws::MediaLive::TeletextDestinationSettings>
+=head2 TeletextDestinationSettings => MediaLive_TeletextDestinationSettings
 
   
 
 
-=head2 TtmlDestinationSettings => L<Paws::MediaLive::TtmlDestinationSettings>
+=head2 TtmlDestinationSettings => MediaLive_TtmlDestinationSettings
 
   
 
 
-=head2 WebvttDestinationSettings => L<Paws::MediaLive::WebvttDestinationSettings>
+=head2 WebvttDestinationSettings => MediaLive_WebvttDestinationSettings
 
   
 

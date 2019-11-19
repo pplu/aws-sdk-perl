@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::SDB::ReplaceableAttribute;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Replace => (is => 'ro', isa => 'Bool');
-  has Value => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SDB::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Replace => (is => 'ro', isa => Bool);
+  has Value => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Replace' => {
+                              'type' => 'Bool'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Value' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

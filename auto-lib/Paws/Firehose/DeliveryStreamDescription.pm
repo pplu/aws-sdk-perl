@@ -1,16 +1,75 @@
+# Generated from default/object.tt
 package Paws::Firehose::DeliveryStreamDescription;
-  use Moose;
-  has CreateTimestamp => (is => 'ro', isa => 'Str');
-  has DeliveryStreamARN => (is => 'ro', isa => 'Str', required => 1);
-  has DeliveryStreamEncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::DeliveryStreamEncryptionConfiguration');
-  has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
-  has DeliveryStreamStatus => (is => 'ro', isa => 'Str', required => 1);
-  has DeliveryStreamType => (is => 'ro', isa => 'Str', required => 1);
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::DestinationDescription]', required => 1);
-  has HasMoreDestinations => (is => 'ro', isa => 'Bool', required => 1);
-  has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Paws::Firehose::SourceDescription');
-  has VersionId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::Firehose::Types qw/Firehose_SourceDescription Firehose_DestinationDescription Firehose_DeliveryStreamEncryptionConfiguration/;
+  has CreateTimestamp => (is => 'ro', isa => Str);
+  has DeliveryStreamARN => (is => 'ro', isa => Str, required => 1);
+  has DeliveryStreamEncryptionConfiguration => (is => 'ro', isa => Firehose_DeliveryStreamEncryptionConfiguration);
+  has DeliveryStreamName => (is => 'ro', isa => Str, required => 1);
+  has DeliveryStreamStatus => (is => 'ro', isa => Str, required => 1);
+  has DeliveryStreamType => (is => 'ro', isa => Str, required => 1);
+  has Destinations => (is => 'ro', isa => ArrayRef[Firehose_DestinationDescription], required => 1);
+  has HasMoreDestinations => (is => 'ro', isa => Bool, required => 1);
+  has LastUpdateTimestamp => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Firehose_SourceDescription);
+  has VersionId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'DeliveryStreamARN' => {
+                                        'type' => 'Str'
+                                      },
+               'Destinations' => {
+                                   'class' => 'Paws::Firehose::DestinationDescription',
+                                   'type' => 'ArrayRef[Firehose_DestinationDescription]'
+                                 },
+               'Source' => {
+                             'class' => 'Paws::Firehose::SourceDescription',
+                             'type' => 'Firehose_SourceDescription'
+                           },
+               'CreateTimestamp' => {
+                                      'type' => 'Str'
+                                    },
+               'DeliveryStreamStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'LastUpdateTimestamp' => {
+                                          'type' => 'Str'
+                                        },
+               'HasMoreDestinations' => {
+                                          'type' => 'Bool'
+                                        },
+               'DeliveryStreamType' => {
+                                         'type' => 'Str'
+                                       },
+               'DeliveryStreamName' => {
+                                         'type' => 'Str'
+                                       },
+               'DeliveryStreamEncryptionConfiguration' => {
+                                                            'type' => 'Firehose_DeliveryStreamEncryptionConfiguration',
+                                                            'class' => 'Paws::Firehose::DeliveryStreamEncryptionConfiguration'
+                                                          }
+             },
+  'IsRequired' => {
+                    'DeliveryStreamARN' => 1,
+                    'VersionId' => 1,
+                    'Destinations' => 1,
+                    'DeliveryStreamStatus' => 1,
+                    'DeliveryStreamType' => 1,
+                    'HasMoreDestinations' => 1,
+                    'DeliveryStreamName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +118,7 @@ Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
-=head2 DeliveryStreamEncryptionConfiguration => L<Paws::Firehose::DeliveryStreamEncryptionConfiguration>
+=head2 DeliveryStreamEncryptionConfiguration => Firehose_DeliveryStreamEncryptionConfiguration
 
   Indicates the server-side encryption (SSE) status for the delivery
 stream.
@@ -95,7 +154,7 @@ stream as a source.
 
 
 
-=head2 B<REQUIRED> Destinations => ArrayRef[L<Paws::Firehose::DestinationDescription>]
+=head2 B<REQUIRED> Destinations => ArrayRef[Firehose_DestinationDescription]
 
   The destinations.
 
@@ -110,7 +169,7 @@ stream as a source.
   The date and time that the delivery stream was last updated.
 
 
-=head2 Source => L<Paws::Firehose::SourceDescription>
+=head2 Source => Firehose_SourceDescription
 
   If the C<DeliveryStreamType> parameter is C<KinesisStreamAsSource>, a
 SourceDescription object describing the source Kinesis data stream.

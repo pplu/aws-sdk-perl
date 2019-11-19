@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Rekognition::SearchFacesByImage;
-  use Moose;
-  has CollectionId => (is => 'ro', isa => 'Str', required => 1);
-  has FaceMatchThreshold => (is => 'ro', isa => 'Num');
-  has Image => (is => 'ro', isa => 'Paws::Rekognition::Image', required => 1);
-  has MaxFaces => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Num Int/;
+  use Paws::Rekognition::Types qw/Rekognition_Image/;
+  has CollectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FaceMatchThreshold => (is => 'ro', isa => Num, predicate => 1);
+  has Image => (is => 'ro', isa => Rekognition_Image, required => 1, predicate => 1);
+  has MaxFaces => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SearchFacesByImage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Rekognition::SearchFacesByImageResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SearchFacesByImage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Rekognition::SearchFacesByImageResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Image' => 1,
+                    'CollectionId' => 1
+                  },
+  'types' => {
+               'FaceMatchThreshold' => {
+                                         'type' => 'Num'
+                                       },
+               'MaxFaces' => {
+                               'type' => 'Int'
+                             },
+               'CollectionId' => {
+                                   'type' => 'Str'
+                                 },
+               'Image' => {
+                            'type' => 'Rekognition_Image',
+                            'class' => 'Paws::Rekognition::Image'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +104,7 @@ matches is less than 70%. The default value is 80%.
 
 
 
-=head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
+=head2 B<REQUIRED> Image => Rekognition_Image
 
 The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded

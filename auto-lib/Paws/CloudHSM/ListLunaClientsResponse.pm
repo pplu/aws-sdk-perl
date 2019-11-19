@@ -1,10 +1,34 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudHSM::ListLunaClientsResponse;
-  use Moose;
-  has ClientList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::CloudHSM::Types qw//;
+  has ClientList => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ClientList' => 1
+                  },
+  'types' => {
+               'ClientList' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

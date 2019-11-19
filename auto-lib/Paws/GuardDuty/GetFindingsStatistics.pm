@@ -1,16 +1,49 @@
 
 package Paws::GuardDuty::GetFindingsStatistics;
-  use Moose;
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has FindingCriteria => (is => 'ro', isa => 'Paws::GuardDuty::FindingCriteria', traits => ['NameInRequest'], request_name => 'findingCriteria');
-  has FindingStatisticTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingStatisticTypes', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GuardDuty::Types qw/GuardDuty_FindingCriteria/;
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FindingCriteria => (is => 'ro', isa => GuardDuty_FindingCriteria, predicate => 1);
+  has FindingStatisticTypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetFindingsStatistics');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/findings/statistics');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::GetFindingsStatisticsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetFindingsStatistics');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/findings/statistics');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::GetFindingsStatisticsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  },
+  'IsRequired' => {
+                    'DetectorId' => 1,
+                    'FindingStatisticTypes' => 1
+                  },
+  'NameInRequest' => {
+                       'FindingCriteria' => 'findingCriteria',
+                       'FindingStatisticTypes' => 'findingStatisticTypes'
+                     },
+  'types' => {
+               'FindingStatisticTypes' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'FindingCriteria' => {
+                                      'type' => 'GuardDuty_FindingCriteria',
+                                      'class' => 'Paws::GuardDuty::FindingCriteria'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +106,7 @@ findings' statistics you want to retrieve.
 
 
 
-=head2 FindingCriteria => L<Paws::GuardDuty::FindingCriteria>
+=head2 FindingCriteria => GuardDuty_FindingCriteria
 
 Represents the criteria used for querying findings.
 

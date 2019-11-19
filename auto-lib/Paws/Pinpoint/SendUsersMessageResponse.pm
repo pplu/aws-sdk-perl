@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SendUsersMessageResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
-  has RequestId => (is => 'ro', isa => 'Str');
-  has Result => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMapOfEndpointMessageResult');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOfMapOfEndpointMessageResult/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has RequestId => (is => 'ro', isa => Str);
+  has Result => (is => 'ro', isa => Pinpoint_MapOfMapOfEndpointMessageResult);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Result' => {
+                             'type' => 'Pinpoint_MapOfMapOfEndpointMessageResult',
+                             'class' => 'Paws::Pinpoint::MapOfMapOfEndpointMessageResult'
+                           },
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +77,7 @@ message.
   The unique identifier that was assigned to the message request.
 
 
-=head2 Result => L<Paws::Pinpoint::MapOfMapOfEndpointMessageResult>
+=head2 Result => Pinpoint_MapOfMapOfEndpointMessageResult
 
   An object that indicates which endpoints the message was sent to, for
 each user. The object lists user IDs and, for each user ID, provides

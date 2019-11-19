@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::AutoScaling::DescribeLoadBalancersResponse;
-  use Moose;
-  has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LoadBalancerState]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_LoadBalancerState/;
+  has LoadBalancers => (is => 'ro', isa => ArrayRef[AutoScaling_LoadBalancerState]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LoadBalancers' => {
+                                    'type' => 'ArrayRef[AutoScaling_LoadBalancerState]',
+                                    'class' => 'Paws::AutoScaling::LoadBalancerState'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +38,7 @@ Paws::AutoScaling::DescribeLoadBalancersResponse
 =head1 ATTRIBUTES
 
 
-=head2 LoadBalancers => ArrayRef[L<Paws::AutoScaling::LoadBalancerState>]
+=head2 LoadBalancers => ArrayRef[AutoScaling_LoadBalancerState]
 
 The load balancers.
 

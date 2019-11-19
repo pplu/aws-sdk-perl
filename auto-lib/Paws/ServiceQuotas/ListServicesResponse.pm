@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceQuotas::ListServicesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Services => (is => 'ro', isa => 'ArrayRef[Paws::ServiceQuotas::ServiceInfo]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceQuotas::Types qw/ServiceQuotas_ServiceInfo/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Services => (is => 'ro', isa => ArrayRef[ServiceQuotas_ServiceInfo]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Services' => {
+                               'type' => 'ArrayRef[ServiceQuotas_ServiceInfo]',
+                               'class' => 'Paws::ServiceQuotas::ServiceInfo'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -27,7 +49,7 @@ repeat this until the C<NextToken> response element comes back empty
 (as C<null>).
 
 
-=head2 Services => ArrayRef[L<Paws::ServiceQuotas::ServiceInfo>]
+=head2 Services => ArrayRef[ServiceQuotas_ServiceInfo]
 
 Returns a list of services.
 

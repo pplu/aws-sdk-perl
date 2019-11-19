@@ -1,15 +1,41 @@
 
 package Paws::AppSync::DeleteType;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has TypeName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'typeName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TypeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteType');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apis/{apiId}/types/{typeName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppSync::DeleteTypeResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteType');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apis/{apiId}/types/{typeName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppSync::DeleteTypeResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TypeName' => 1,
+                    'ApiId' => 1
+                  },
+  'types' => {
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'TypeName' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'TypeName' => 'typeName',
+                    'ApiId' => 'apiId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::DLM::CreateRule;
-  use Moose;
-  has Interval => (is => 'ro', isa => 'Int', required => 1);
-  has IntervalUnit => (is => 'ro', isa => 'Str', required => 1);
-  has Times => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Int Str Undef ArrayRef/;
+  use Paws::DLM::Types qw//;
+  has Interval => (is => 'ro', isa => Int, required => 1);
+  has IntervalUnit => (is => 'ro', isa => Str, required => 1);
+  has Times => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Times' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'IntervalUnit' => {
+                                   'type' => 'Str'
+                                 },
+               'Interval' => {
+                               'type' => 'Int'
+                             }
+             },
+  'IsRequired' => {
+                    'IntervalUnit' => 1,
+                    'Interval' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

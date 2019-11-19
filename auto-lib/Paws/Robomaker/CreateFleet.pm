@@ -1,15 +1,41 @@
 
 package Paws::Robomaker::CreateFleet;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw/Robomaker_TagMap/;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Robomaker_TagMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFleet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/createFleet');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Robomaker::CreateFleetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFleet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/createFleet');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Robomaker::CreateFleetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Tags' => {
+                           'type' => 'Robomaker_TagMap',
+                           'class' => 'Paws::Robomaker::TagMap'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +82,7 @@ The name of the fleet.
 
 
 
-=head2 Tags => L<Paws::Robomaker::TagMap>
+=head2 Tags => Robomaker_TagMap
 
 A map that contains tag keys and tag values that are attached to the
 fleet.

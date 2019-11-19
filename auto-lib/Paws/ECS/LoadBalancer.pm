@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::ECS::LoadBalancer;
-  use Moose;
-  has ContainerName => (is => 'ro', isa => 'Str', request_name => 'containerName', traits => ['NameInRequest']);
-  has ContainerPort => (is => 'ro', isa => 'Int', request_name => 'containerPort', traits => ['NameInRequest']);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', request_name => 'loadBalancerName', traits => ['NameInRequest']);
-  has TargetGroupArn => (is => 'ro', isa => 'Str', request_name => 'targetGroupArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ECS::Types qw//;
+  has ContainerName => (is => 'ro', isa => Str);
+  has ContainerPort => (is => 'ro', isa => Int);
+  has LoadBalancerName => (is => 'ro', isa => Str);
+  has TargetGroupArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LoadBalancerName' => 'loadBalancerName',
+                       'ContainerPort' => 'containerPort',
+                       'ContainerName' => 'containerName',
+                       'TargetGroupArn' => 'targetGroupArn'
+                     },
+  'types' => {
+               'ContainerPort' => {
+                                    'type' => 'Int'
+                                  },
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'ContainerName' => {
+                                    'type' => 'Str'
+                                  },
+               'TargetGroupArn' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

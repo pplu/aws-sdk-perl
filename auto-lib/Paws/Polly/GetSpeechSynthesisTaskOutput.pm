@@ -1,9 +1,27 @@
 
 package Paws::Polly::GetSpeechSynthesisTaskOutput;
-  use Moose;
-  has SynthesisTask => (is => 'ro', isa => 'Paws::Polly::SynthesisTask');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Polly::Types qw/Polly_SynthesisTask/;
+  has SynthesisTask => (is => 'ro', isa => Polly_SynthesisTask);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SynthesisTask' => {
+                                    'class' => 'Paws::Polly::SynthesisTask',
+                                    'type' => 'Polly_SynthesisTask'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::Polly::GetSpeechSynthesisTaskOutput
 =head1 ATTRIBUTES
 
 
-=head2 SynthesisTask => L<Paws::Polly::SynthesisTask>
+=head2 SynthesisTask => Polly_SynthesisTask
 
 SynthesisTask object that provides information from the requested task,
 including output format, creation time, task status, and so on.

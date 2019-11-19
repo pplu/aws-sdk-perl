@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::FailedCreateWorkspaceRequest;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has WorkspaceRequest => (is => 'ro', isa => 'Paws::WorkSpaces::WorkspaceRequest');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_WorkspaceRequest/;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has WorkspaceRequest => (is => 'ro', isa => WorkSpaces_WorkspaceRequest);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'WorkspaceRequest' => {
+                                       'class' => 'Paws::WorkSpaces::WorkspaceRequest',
+                                       'type' => 'WorkSpaces_WorkspaceRequest'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +73,7 @@ Describes a WorkSpace that cannot be created.
 be created.
 
 
-=head2 WorkspaceRequest => L<Paws::WorkSpaces::WorkspaceRequest>
+=head2 WorkspaceRequest => WorkSpaces_WorkspaceRequest
 
   Information about the WorkSpace.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::StepFunctions::MapIterationEventDetails;
-  use Moose;
-  has Index => (is => 'ro', isa => 'Int', request_name => 'index', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::StepFunctions::Types qw//;
+  has Index => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Index' => 'index'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Index' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,37 @@
 
 package Paws::GuardDuty::ListIPSetsResponse;
-  use Moose;
-  has IpSetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ipSetIds', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GuardDuty::Types qw//;
+  has IpSetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'IpSetIds' => 1
+                  },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'IpSetIds' => 'ipSetIds'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IpSetIds' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

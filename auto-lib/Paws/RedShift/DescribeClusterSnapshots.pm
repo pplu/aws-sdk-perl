@@ -1,24 +1,74 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::DescribeClusterSnapshots;
-  use Moose;
-  has ClusterExists => (is => 'ro', isa => 'Bool');
-  has ClusterIdentifier => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has OwnerAccount => (is => 'ro', isa => 'Str');
-  has SnapshotIdentifier => (is => 'ro', isa => 'Str');
-  has SnapshotType => (is => 'ro', isa => 'Str');
-  has SortingEntities => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SnapshotSortingEntity]');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TagValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::RedShift::Types qw/RedShift_SnapshotSortingEntity/;
+  has ClusterExists => (is => 'ro', isa => Bool, predicate => 1);
+  has ClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has OwnerAccount => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotType => (is => 'ro', isa => Str, predicate => 1);
+  has SortingEntities => (is => 'ro', isa => ArrayRef[RedShift_SnapshotSortingEntity], predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
+  has TagKeys => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has TagValues => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterSnapshots');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::SnapshotMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSnapshotsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeClusterSnapshots');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::SnapshotMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeClusterSnapshotsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SortingEntities' => {
+                                      'type' => 'ArrayRef[RedShift_SnapshotSortingEntity]',
+                                      'class' => 'Paws::RedShift::SnapshotSortingEntity'
+                                    },
+               'OwnerAccount' => {
+                                   'type' => 'Str'
+                                 },
+               'ClusterExists' => {
+                                    'type' => 'Bool'
+                                  },
+               'TagValues' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'TagKeys' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'SnapshotType' => {
+                                   'type' => 'Str'
+                                 },
+               'SnapshotIdentifier' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -175,7 +225,7 @@ Valid Values: C<automated> | C<manual>
 
 
 
-=head2 SortingEntities => ArrayRef[L<Paws::RedShift::SnapshotSortingEntity>]
+=head2 SortingEntities => ArrayRef[RedShift_SnapshotSortingEntity]
 
 
 

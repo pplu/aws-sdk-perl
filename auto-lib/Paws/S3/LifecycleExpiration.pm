@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::S3::LifecycleExpiration;
-  use Moose;
-  has Date => (is => 'ro', isa => 'Str');
-  has Days => (is => 'ro', isa => 'Int');
-  has ExpiredObjectDeleteMarker => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::S3::Types qw//;
+  has Date => (is => 'ro', isa => Str);
+  has Days => (is => 'ro', isa => Int);
+  has ExpiredObjectDeleteMarker => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Days' => {
+                           'type' => 'Int'
+                         },
+               'Date' => {
+                           'type' => 'Str'
+                         },
+               'ExpiredObjectDeleteMarker' => {
+                                                'type' => 'Bool'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::AttachDisk;
-  use Moose;
-  has DiskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskName' , required => 1);
-  has DiskPath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskPath' , required => 1);
-  has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has DiskName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DiskPath => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachDisk');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::AttachDiskResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AttachDisk');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::AttachDiskResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DiskPath' => 1,
+                    'DiskName' => 1,
+                    'InstanceName' => 1
+                  },
+  'NameInRequest' => {
+                       'DiskName' => 'diskName',
+                       'InstanceName' => 'instanceName',
+                       'DiskPath' => 'diskPath'
+                     },
+  'types' => {
+               'InstanceName' => {
+                                   'type' => 'Str'
+                                 },
+               'DiskName' => {
+                               'type' => 'Str'
+                             },
+               'DiskPath' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::FacetAttributeReference;
-  use Moose;
-  has TargetAttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has TargetFacetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw//;
+  has TargetAttributeName => (is => 'ro', isa => Str, required => 1);
+  has TargetFacetName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TargetAttributeName' => 1,
+                    'TargetFacetName' => 1
+                  },
+  'types' => {
+               'TargetFacetName' => {
+                                      'type' => 'Str'
+                                    },
+               'TargetAttributeName' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,32 +1,148 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::VirtualInterface;
-  use Moose;
-  has AddressFamily => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'addressFamily' );
-  has AmazonAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'amazonAddress' );
-  has AmazonSideAsn => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'amazonSideAsn' );
-  has Asn => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'asn' );
-  has AuthKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authKey' );
-  has AwsDeviceV2 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDeviceV2' );
-  has BgpPeers => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::BGPPeer]', traits => ['NameInRequest'], request_name => 'bgpPeers' );
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
-  has CustomerAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customerAddress' );
-  has CustomerRouterConfig => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customerRouterConfig' );
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' );
-  has JumboFrameCapable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'jumboFrameCapable' );
-  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
-  has Mtu => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'mtu' );
-  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
-  has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
-  has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', traits => ['NameInRequest'], request_name => 'routeFilterPrefixes' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' );
-  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' );
-  has VirtualInterfaceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceName' );
-  has VirtualInterfaceState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceState' );
-  has VirtualInterfaceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceType' );
-  has Vlan => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'vlan' );
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Bool/;
+  use Paws::DirectConnect::Types qw/DirectConnect_BGPPeer DirectConnect_Tag DirectConnect_RouteFilterPrefix/;
+  has AddressFamily => (is => 'ro', isa => Str);
+  has AmazonAddress => (is => 'ro', isa => Str);
+  has AmazonSideAsn => (is => 'ro', isa => Int);
+  has Asn => (is => 'ro', isa => Int);
+  has AuthKey => (is => 'ro', isa => Str);
+  has AwsDeviceV2 => (is => 'ro', isa => Str);
+  has BgpPeers => (is => 'ro', isa => ArrayRef[DirectConnect_BGPPeer]);
+  has ConnectionId => (is => 'ro', isa => Str);
+  has CustomerAddress => (is => 'ro', isa => Str);
+  has CustomerRouterConfig => (is => 'ro', isa => Str);
+  has DirectConnectGatewayId => (is => 'ro', isa => Str);
+  has JumboFrameCapable => (is => 'ro', isa => Bool);
+  has Location => (is => 'ro', isa => Str);
+  has Mtu => (is => 'ro', isa => Int);
+  has OwnerAccount => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has RouteFilterPrefixes => (is => 'ro', isa => ArrayRef[DirectConnect_RouteFilterPrefix]);
+  has Tags => (is => 'ro', isa => ArrayRef[DirectConnect_Tag]);
+  has VirtualGatewayId => (is => 'ro', isa => Str);
+  has VirtualInterfaceId => (is => 'ro', isa => Str);
+  has VirtualInterfaceName => (is => 'ro', isa => Str);
+  has VirtualInterfaceState => (is => 'ro', isa => Str);
+  has VirtualInterfaceType => (is => 'ro', isa => Str);
+  has Vlan => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Region' => 'region',
+                       'Mtu' => 'mtu',
+                       'BgpPeers' => 'bgpPeers',
+                       'CustomerAddress' => 'customerAddress',
+                       'AmazonAddress' => 'amazonAddress',
+                       'RouteFilterPrefixes' => 'routeFilterPrefixes',
+                       'AmazonSideAsn' => 'amazonSideAsn',
+                       'OwnerAccount' => 'ownerAccount',
+                       'CustomerRouterConfig' => 'customerRouterConfig',
+                       'Location' => 'location',
+                       'VirtualGatewayId' => 'virtualGatewayId',
+                       'VirtualInterfaceState' => 'virtualInterfaceState',
+                       'VirtualInterfaceName' => 'virtualInterfaceName',
+                       'VirtualInterfaceType' => 'virtualInterfaceType',
+                       'AwsDeviceV2' => 'awsDeviceV2',
+                       'Vlan' => 'vlan',
+                       'Asn' => 'asn',
+                       'AuthKey' => 'authKey',
+                       'AddressFamily' => 'addressFamily',
+                       'VirtualInterfaceId' => 'virtualInterfaceId',
+                       'DirectConnectGatewayId' => 'directConnectGatewayId',
+                       'JumboFrameCapable' => 'jumboFrameCapable',
+                       'Tags' => 'tags',
+                       'ConnectionId' => 'connectionId'
+                     },
+  'types' => {
+               'AmazonAddress' => {
+                                    'type' => 'Str'
+                                  },
+               'CustomerAddress' => {
+                                      'type' => 'Str'
+                                    },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'BgpPeers' => {
+                               'class' => 'Paws::DirectConnect::BGPPeer',
+                               'type' => 'ArrayRef[DirectConnect_BGPPeer]'
+                             },
+               'Mtu' => {
+                          'type' => 'Int'
+                        },
+               'AmazonSideAsn' => {
+                                    'type' => 'Int'
+                                  },
+               'RouteFilterPrefixes' => {
+                                          'class' => 'Paws::DirectConnect::RouteFilterPrefix',
+                                          'type' => 'ArrayRef[DirectConnect_RouteFilterPrefix]'
+                                        },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'VirtualGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'OwnerAccount' => {
+                                   'type' => 'Str'
+                                 },
+               'CustomerRouterConfig' => {
+                                           'type' => 'Str'
+                                         },
+               'VirtualInterfaceType' => {
+                                           'type' => 'Str'
+                                         },
+               'VirtualInterfaceName' => {
+                                           'type' => 'Str'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AwsDeviceV2' => {
+                                  'type' => 'Str'
+                                },
+               'VirtualInterfaceState' => {
+                                            'type' => 'Str'
+                                          },
+               'JumboFrameCapable' => {
+                                        'type' => 'Bool'
+                                      },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::DirectConnect::Tag',
+                           'type' => 'ArrayRef[DirectConnect_Tag]'
+                         },
+               'Asn' => {
+                          'type' => 'Int'
+                        },
+               'Vlan' => {
+                           'type' => 'Int'
+                         },
+               'DirectConnectGatewayId' => {
+                                             'type' => 'Str'
+                                           },
+               'VirtualInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'AddressFamily' => {
+                                    'type' => 'Str'
+                                  },
+               'AuthKey' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -72,7 +188,7 @@ length of 6 characters and and a maximun lenth of 80 characters.
 The Direct Connect endpoint on which the virtual interface terminates.
 
 
-=head2 BgpPeers => ArrayRef[L<Paws::DirectConnect::BGPPeer>]
+=head2 BgpPeers => ArrayRef[DirectConnect_BGPPeer]
 
 The BGP peers configured on this virtual interface.
 
@@ -123,13 +239,13 @@ The ID of the AWS account that owns the virtual interface.
 The AWS Region where the virtual interface is located.
 
 
-=head2 RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
+=head2 RouteFilterPrefixes => ArrayRef[DirectConnect_RouteFilterPrefix]
 
 The routes to be advertised to the AWS network in this Region. Applies
 to public virtual interfaces.
 
 
-=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+=head2 Tags => ArrayRef[DirectConnect_Tag]
 
 The tags associated with the virtual interface.
 

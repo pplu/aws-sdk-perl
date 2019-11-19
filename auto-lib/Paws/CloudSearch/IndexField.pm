@@ -1,18 +1,86 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::IndexField;
-  use Moose;
-  has DateArrayOptions => (is => 'ro', isa => 'Paws::CloudSearch::DateArrayOptions');
-  has DateOptions => (is => 'ro', isa => 'Paws::CloudSearch::DateOptions');
-  has DoubleArrayOptions => (is => 'ro', isa => 'Paws::CloudSearch::DoubleArrayOptions');
-  has DoubleOptions => (is => 'ro', isa => 'Paws::CloudSearch::DoubleOptions');
-  has IndexFieldName => (is => 'ro', isa => 'Str', required => 1);
-  has IndexFieldType => (is => 'ro', isa => 'Str', required => 1);
-  has IntArrayOptions => (is => 'ro', isa => 'Paws::CloudSearch::IntArrayOptions');
-  has IntOptions => (is => 'ro', isa => 'Paws::CloudSearch::IntOptions');
-  has LatLonOptions => (is => 'ro', isa => 'Paws::CloudSearch::LatLonOptions');
-  has LiteralArrayOptions => (is => 'ro', isa => 'Paws::CloudSearch::LiteralArrayOptions');
-  has LiteralOptions => (is => 'ro', isa => 'Paws::CloudSearch::LiteralOptions');
-  has TextArrayOptions => (is => 'ro', isa => 'Paws::CloudSearch::TextArrayOptions');
-  has TextOptions => (is => 'ro', isa => 'Paws::CloudSearch::TextOptions');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearch::Types qw/CloudSearch_DateOptions CloudSearch_IntOptions CloudSearch_DateArrayOptions CloudSearch_IntArrayOptions CloudSearch_LiteralOptions CloudSearch_LiteralArrayOptions CloudSearch_TextOptions CloudSearch_LatLonOptions CloudSearch_TextArrayOptions CloudSearch_DoubleOptions CloudSearch_DoubleArrayOptions/;
+  has DateArrayOptions => (is => 'ro', isa => CloudSearch_DateArrayOptions);
+  has DateOptions => (is => 'ro', isa => CloudSearch_DateOptions);
+  has DoubleArrayOptions => (is => 'ro', isa => CloudSearch_DoubleArrayOptions);
+  has DoubleOptions => (is => 'ro', isa => CloudSearch_DoubleOptions);
+  has IndexFieldName => (is => 'ro', isa => Str, required => 1);
+  has IndexFieldType => (is => 'ro', isa => Str, required => 1);
+  has IntArrayOptions => (is => 'ro', isa => CloudSearch_IntArrayOptions);
+  has IntOptions => (is => 'ro', isa => CloudSearch_IntOptions);
+  has LatLonOptions => (is => 'ro', isa => CloudSearch_LatLonOptions);
+  has LiteralArrayOptions => (is => 'ro', isa => CloudSearch_LiteralArrayOptions);
+  has LiteralOptions => (is => 'ro', isa => CloudSearch_LiteralOptions);
+  has TextArrayOptions => (is => 'ro', isa => CloudSearch_TextArrayOptions);
+  has TextOptions => (is => 'ro', isa => CloudSearch_TextOptions);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexFieldType' => {
+                                     'type' => 'Str'
+                                   },
+               'DoubleArrayOptions' => {
+                                         'class' => 'Paws::CloudSearch::DoubleArrayOptions',
+                                         'type' => 'CloudSearch_DoubleArrayOptions'
+                                       },
+               'TextArrayOptions' => {
+                                       'type' => 'CloudSearch_TextArrayOptions',
+                                       'class' => 'Paws::CloudSearch::TextArrayOptions'
+                                     },
+               'LatLonOptions' => {
+                                    'class' => 'Paws::CloudSearch::LatLonOptions',
+                                    'type' => 'CloudSearch_LatLonOptions'
+                                  },
+               'IntArrayOptions' => {
+                                      'class' => 'Paws::CloudSearch::IntArrayOptions',
+                                      'type' => 'CloudSearch_IntArrayOptions'
+                                    },
+               'TextOptions' => {
+                                  'class' => 'Paws::CloudSearch::TextOptions',
+                                  'type' => 'CloudSearch_TextOptions'
+                                },
+               'LiteralArrayOptions' => {
+                                          'type' => 'CloudSearch_LiteralArrayOptions',
+                                          'class' => 'Paws::CloudSearch::LiteralArrayOptions'
+                                        },
+               'DoubleOptions' => {
+                                    'type' => 'CloudSearch_DoubleOptions',
+                                    'class' => 'Paws::CloudSearch::DoubleOptions'
+                                  },
+               'DateArrayOptions' => {
+                                       'class' => 'Paws::CloudSearch::DateArrayOptions',
+                                       'type' => 'CloudSearch_DateArrayOptions'
+                                     },
+               'IntOptions' => {
+                                 'type' => 'CloudSearch_IntOptions',
+                                 'class' => 'Paws::CloudSearch::IntOptions'
+                               },
+               'DateOptions' => {
+                                  'class' => 'Paws::CloudSearch::DateOptions',
+                                  'type' => 'CloudSearch_DateOptions'
+                                },
+               'IndexFieldName' => {
+                                     'type' => 'Str'
+                                   },
+               'LiteralOptions' => {
+                                     'type' => 'CloudSearch_LiteralOptions',
+                                     'class' => 'Paws::CloudSearch::LiteralOptions'
+                                   }
+             },
+  'IsRequired' => {
+                    'IndexFieldType' => 1,
+                    'IndexFieldName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,22 +118,22 @@ C<IndexFieldType>.
 =head1 ATTRIBUTES
 
 
-=head2 DateArrayOptions => L<Paws::CloudSearch::DateArrayOptions>
+=head2 DateArrayOptions => CloudSearch_DateArrayOptions
 
   
 
 
-=head2 DateOptions => L<Paws::CloudSearch::DateOptions>
+=head2 DateOptions => CloudSearch_DateOptions
 
   
 
 
-=head2 DoubleArrayOptions => L<Paws::CloudSearch::DoubleArrayOptions>
+=head2 DoubleArrayOptions => CloudSearch_DoubleArrayOptions
 
   
 
 
-=head2 DoubleOptions => L<Paws::CloudSearch::DoubleOptions>
+=head2 DoubleOptions => CloudSearch_DoubleOptions
 
   
 
@@ -94,37 +162,37 @@ reference a document's ID, you can use the name C<_id>.
   
 
 
-=head2 IntArrayOptions => L<Paws::CloudSearch::IntArrayOptions>
+=head2 IntArrayOptions => CloudSearch_IntArrayOptions
 
   
 
 
-=head2 IntOptions => L<Paws::CloudSearch::IntOptions>
+=head2 IntOptions => CloudSearch_IntOptions
 
   
 
 
-=head2 LatLonOptions => L<Paws::CloudSearch::LatLonOptions>
+=head2 LatLonOptions => CloudSearch_LatLonOptions
 
   
 
 
-=head2 LiteralArrayOptions => L<Paws::CloudSearch::LiteralArrayOptions>
+=head2 LiteralArrayOptions => CloudSearch_LiteralArrayOptions
 
   
 
 
-=head2 LiteralOptions => L<Paws::CloudSearch::LiteralOptions>
+=head2 LiteralOptions => CloudSearch_LiteralOptions
 
   
 
 
-=head2 TextArrayOptions => L<Paws::CloudSearch::TextArrayOptions>
+=head2 TextArrayOptions => CloudSearch_TextArrayOptions
 
   
 
 
-=head2 TextOptions => L<Paws::CloudSearch::TextOptions>
+=head2 TextOptions => CloudSearch_TextOptions
 
   
 

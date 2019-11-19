@@ -1,16 +1,45 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::ModifyOptionGroup;
-  use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Bool');
-  has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has OptionsToInclude => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionConfiguration]');
-  has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::RDS::Types qw/RDS_OptionConfiguration/;
+  has ApplyImmediately => (is => 'ro', isa => Bool, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OptionsToInclude => (is => 'ro', isa => ArrayRef[RDS_OptionConfiguration], predicate => 1);
+  has OptionsToRemove => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyOptionGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::ModifyOptionGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyOptionGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyOptionGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::ModifyOptionGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyOptionGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'OptionGroupName' => 1
+                  },
+  'types' => {
+               'OptionsToInclude' => {
+                                       'type' => 'ArrayRef[RDS_OptionConfiguration]',
+                                       'class' => 'Paws::RDS::OptionConfiguration'
+                                     },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'OptionsToRemove' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +98,7 @@ be removed from a DB instance once it is associated with a DB instance
 
 
 
-=head2 OptionsToInclude => ArrayRef[L<Paws::RDS::OptionConfiguration>]
+=head2 OptionsToInclude => ArrayRef[RDS_OptionConfiguration]
 
 Options in this list are added to the option group or, if already
 present, the specified configuration is used to update the existing

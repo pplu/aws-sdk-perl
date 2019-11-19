@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::TimeSpan;
-  use Moose;
-  has Duration => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw//;
+  has Duration => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'Duration' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,44 @@
 
 package Paws::IoTEvents::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resourceArn', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Tag]', traits => ['NameInRequest'], request_name => 'tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTEvents::Types qw/IoTEvents_Tag/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoTEvents_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tags');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTEvents::TagResourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tags');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTEvents::TagResourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::IoTEvents::Tag',
+                           'type' => 'ArrayRef[IoTEvents_Tag]'
+                         }
+             },
+  'ParamInQuery' => {
+                      'ResourceArn' => 'resourceArn'
+                    },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +83,7 @@ The ARN of the resource.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::IoTEvents::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[IoTEvents_Tag]
 
 The new or modified tags for the resource.
 

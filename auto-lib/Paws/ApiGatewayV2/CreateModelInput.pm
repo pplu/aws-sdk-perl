@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::CreateModelInput;
-  use Moose;
-  has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Schema => (is => 'ro', isa => 'Str', request_name => 'schema', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ContentType => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Schema => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Schema' => 1
+                  },
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'Schema' => 'schema',
+                       'ContentType' => 'contentType',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

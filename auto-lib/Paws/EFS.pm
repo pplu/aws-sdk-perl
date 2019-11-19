@@ -1,14 +1,15 @@
 package Paws::EFS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'elasticfilesystem' }
   sub signing_name { 'elasticfilesystem' }
   sub version { '2015-02-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -212,7 +213,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =item [ProvisionedThroughputInMibps => Num]
 
-=item [Tags => ArrayRef[L<Paws::EFS::Tag>]]
+=item [Tags => ArrayRef[EFS_Tag]]
 
 =item [ThroughputMode => Str]
 
@@ -474,7 +475,7 @@ C<ec2:CreateNetworkInterface>
 
 =item FileSystemId => Str
 
-=item Tags => ArrayRef[L<Paws::EFS::Tag>]
+=item Tags => ArrayRef[EFS_Tag]
 
 
 =back
@@ -818,7 +819,7 @@ network interface.
 
 =item FileSystemId => Str
 
-=item LifecyclePolicies => ArrayRef[L<Paws::EFS::LifecyclePolicy>]
+=item LifecyclePolicies => ArrayRef[EFS_LifecyclePolicy]
 
 
 =back

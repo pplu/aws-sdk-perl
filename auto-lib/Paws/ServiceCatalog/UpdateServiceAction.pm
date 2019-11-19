@@ -1,17 +1,49 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::UpdateServiceAction;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has Definition => (is => 'ro', isa => 'Paws::ServiceCatalog::ServiceActionDefinitionMap');
-  has Description => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ServiceActionDefinitionMap/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has Definition => (is => 'ro', isa => ServiceCatalog_ServiceActionDefinitionMap, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateServiceAction');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::UpdateServiceActionOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateServiceAction');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::UpdateServiceActionOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Id' => 1
+                  },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Definition' => {
+                                 'type' => 'ServiceCatalog_ServiceActionDefinitionMap',
+                                 'class' => 'Paws::ServiceCatalog::ServiceActionDefinitionMap'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +108,7 @@ C<zh> - Chinese
 
 
 
-=head2 Definition => L<Paws::ServiceCatalog::ServiceActionDefinitionMap>
+=head2 Definition => ServiceCatalog_ServiceActionDefinitionMap
 
 A map that defines the self-service action.
 

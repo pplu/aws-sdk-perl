@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SecretsManager::RotateSecretResponse;
-  use Moose;
-  has ARN => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecretsManager::Types qw//;
+  has ARN => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

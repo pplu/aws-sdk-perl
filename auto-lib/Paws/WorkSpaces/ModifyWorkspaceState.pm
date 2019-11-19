@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::ModifyWorkspaceState;
-  use Moose;
-  has WorkspaceId => (is => 'ro', isa => 'Str', required => 1);
-  has WorkspaceState => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkSpaces::Types qw//;
+  has WorkspaceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WorkspaceState => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyWorkspaceState');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::ModifyWorkspaceStateResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyWorkspaceState');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::ModifyWorkspaceStateResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'WorkspaceId' => 1,
+                    'WorkspaceState' => 1
+                  },
+  'types' => {
+               'WorkspaceState' => {
+                                     'type' => 'Str'
+                                   },
+               'WorkspaceId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

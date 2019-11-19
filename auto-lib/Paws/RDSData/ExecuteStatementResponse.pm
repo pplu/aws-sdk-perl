@@ -1,12 +1,47 @@
 
 package Paws::RDSData::ExecuteStatementResponse;
-  use Moose;
-  has ColumnMetadata => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::ColumnMetadata]', traits => ['NameInRequest'], request_name => 'columnMetadata');
-  has GeneratedFields => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::Field]', traits => ['NameInRequest'], request_name => 'generatedFields');
-  has NumberOfRecordsUpdated => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfRecordsUpdated');
-  has Records => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::RDSData::Field]]', traits => ['NameInRequest'], request_name => 'records');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::RDSData::Types qw/RDSData_Field RDSData_ColumnMetadata/;
+  has ColumnMetadata => (is => 'ro', isa => ArrayRef[RDSData_ColumnMetadata]);
+  has GeneratedFields => (is => 'ro', isa => ArrayRef[RDSData_Field]);
+  has NumberOfRecordsUpdated => (is => 'ro', isa => Int);
+  has Records => (is => 'ro', isa => ArrayRef[ArrayRef[RDSData_Field]]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumberOfRecordsUpdated' => {
+                                             'type' => 'Int'
+                                           },
+               'GeneratedFields' => {
+                                      'class' => 'Paws::RDSData::Field',
+                                      'type' => 'ArrayRef[RDSData_Field]'
+                                    },
+               'Records' => {
+                              'class' => 'Paws::RDSData::Field',
+                              'type' => 'ArrayRef[ArrayRef[RDSData_Field]]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ColumnMetadata' => {
+                                     'type' => 'ArrayRef[RDSData_ColumnMetadata]',
+                                     'class' => 'Paws::RDSData::ColumnMetadata'
+                                   }
+             },
+  'NameInRequest' => {
+                       'GeneratedFields' => 'generatedFields',
+                       'Records' => 'records',
+                       'NumberOfRecordsUpdated' => 'numberOfRecordsUpdated',
+                       'ColumnMetadata' => 'columnMetadata'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -18,12 +53,12 @@ Paws::RDSData::ExecuteStatementResponse
 =head1 ATTRIBUTES
 
 
-=head2 ColumnMetadata => ArrayRef[L<Paws::RDSData::ColumnMetadata>]
+=head2 ColumnMetadata => ArrayRef[RDSData_ColumnMetadata]
 
 Metadata for the columns included in the results.
 
 
-=head2 GeneratedFields => ArrayRef[L<Paws::RDSData::Field>]
+=head2 GeneratedFields => ArrayRef[RDSData_Field]
 
 Values for fields generated during the request.
 
@@ -35,7 +70,7 @@ Values for fields generated during the request.
 The number of records updated by the request.
 
 
-=head2 Records => ArrayRef[L<ArrayRef[Paws::RDSData::Field]>]
+=head2 Records => ArrayRef[ArrayRef[RDSData_Field]]
 
 The records returned by the SQL statement.
 

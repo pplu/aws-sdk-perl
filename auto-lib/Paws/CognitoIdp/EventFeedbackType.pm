@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::EventFeedbackType;
-  use Moose;
-  has FeedbackDate => (is => 'ro', isa => 'Str');
-  has FeedbackValue => (is => 'ro', isa => 'Str', required => 1);
-  has Provider => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has FeedbackDate => (is => 'ro', isa => Str);
+  has FeedbackValue => (is => 'ro', isa => Str, required => 1);
+  has Provider => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Provider' => 1,
+                    'FeedbackValue' => 1
+                  },
+  'types' => {
+               'FeedbackValue' => {
+                                    'type' => 'Str'
+                                  },
+               'FeedbackDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Provider' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

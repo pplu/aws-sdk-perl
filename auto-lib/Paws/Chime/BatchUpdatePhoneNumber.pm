@@ -1,14 +1,33 @@
 
 package Paws::Chime::BatchUpdatePhoneNumber;
-  use Moose;
-  has UpdatePhoneNumberRequestItems => (is => 'ro', isa => 'ArrayRef[Paws::Chime::UpdatePhoneNumberRequestItem]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Chime::Types qw/Chime_UpdatePhoneNumberRequestItem/;
+  has UpdatePhoneNumberRequestItems => (is => 'ro', isa => ArrayRef[Chime_UpdatePhoneNumberRequestItem], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchUpdatePhoneNumber');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/phone-numbers?operation=batch-update');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::BatchUpdatePhoneNumberResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchUpdatePhoneNumber');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/phone-numbers?operation=batch-update');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::BatchUpdatePhoneNumberResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'UpdatePhoneNumberRequestItems' => 1
+                  },
+  'types' => {
+               'UpdatePhoneNumberRequestItems' => {
+                                                    'type' => 'ArrayRef[Chime_UpdatePhoneNumberRequestItem]',
+                                                    'class' => 'Paws::Chime::UpdatePhoneNumberRequestItem'
+                                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +71,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> UpdatePhoneNumberRequestItems => ArrayRef[L<Paws::Chime::UpdatePhoneNumberRequestItem>]
+=head2 B<REQUIRED> UpdatePhoneNumberRequestItems => ArrayRef[Chime_UpdatePhoneNumberRequestItem]
 
 The request containing the phone number IDs and product types or
 calling names to update.

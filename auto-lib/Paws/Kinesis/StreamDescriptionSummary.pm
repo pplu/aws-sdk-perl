@@ -1,15 +1,69 @@
+# Generated from default/object.tt
 package Paws::Kinesis::StreamDescriptionSummary;
-  use Moose;
-  has ConsumerCount => (is => 'ro', isa => 'Int');
-  has EncryptionType => (is => 'ro', isa => 'Str');
-  has EnhancedMonitoring => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::EnhancedMetrics]', required => 1);
-  has KeyId => (is => 'ro', isa => 'Str');
-  has OpenShardCount => (is => 'ro', isa => 'Int', required => 1);
-  has RetentionPeriodHours => (is => 'ro', isa => 'Int', required => 1);
-  has StreamARN => (is => 'ro', isa => 'Str', required => 1);
-  has StreamCreationTimestamp => (is => 'ro', isa => 'Str', required => 1);
-  has StreamName => (is => 'ro', isa => 'Str', required => 1);
-  has StreamStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef/;
+  use Paws::Kinesis::Types qw/Kinesis_EnhancedMetrics/;
+  has ConsumerCount => (is => 'ro', isa => Int);
+  has EncryptionType => (is => 'ro', isa => Str);
+  has EnhancedMonitoring => (is => 'ro', isa => ArrayRef[Kinesis_EnhancedMetrics], required => 1);
+  has KeyId => (is => 'ro', isa => Str);
+  has OpenShardCount => (is => 'ro', isa => Int, required => 1);
+  has RetentionPeriodHours => (is => 'ro', isa => Int, required => 1);
+  has StreamARN => (is => 'ro', isa => Str, required => 1);
+  has StreamCreationTimestamp => (is => 'ro', isa => Str, required => 1);
+  has StreamName => (is => 'ro', isa => Str, required => 1);
+  has StreamStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamName' => {
+                                 'type' => 'Str'
+                               },
+               'OpenShardCount' => {
+                                     'type' => 'Int'
+                                   },
+               'EncryptionType' => {
+                                     'type' => 'Str'
+                                   },
+               'KeyId' => {
+                            'type' => 'Str'
+                          },
+               'StreamStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'RetentionPeriodHours' => {
+                                           'type' => 'Int'
+                                         },
+               'StreamARN' => {
+                                'type' => 'Str'
+                              },
+               'ConsumerCount' => {
+                                    'type' => 'Int'
+                                  },
+               'StreamCreationTimestamp' => {
+                                              'type' => 'Str'
+                                            },
+               'EnhancedMonitoring' => {
+                                         'type' => 'ArrayRef[Kinesis_EnhancedMetrics]',
+                                         'class' => 'Paws::Kinesis::EnhancedMetrics'
+                                       }
+             },
+  'IsRequired' => {
+                    'StreamARN' => 1,
+                    'EnhancedMonitoring' => 1,
+                    'StreamCreationTimestamp' => 1,
+                    'RetentionPeriodHours' => 1,
+                    'StreamStatus' => 1,
+                    'OpenShardCount' => 1,
+                    'StreamName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +122,7 @@ C<NONE>
 
 
 
-=head2 B<REQUIRED> EnhancedMonitoring => ArrayRef[L<Paws::Kinesis::EnhancedMetrics>]
+=head2 B<REQUIRED> EnhancedMonitoring => ArrayRef[Kinesis_EnhancedMetrics]
 
   Represents the current enhanced monitoring settings of the stream.
 

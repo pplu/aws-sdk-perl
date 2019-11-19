@@ -1,19 +1,77 @@
 
 package Paws::LexRuntime::PutSessionResponse;
-  use Moose;
-  has AudioStream => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'audioStream');
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has DialogState => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-dialog-state');
-  has IntentName => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-intent-name');
-  has Message => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-message');
-  has MessageFormat => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-message-format');
-  has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-session-attributes');
-  has SessionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-session-id');
-  has Slots => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-slots');
-  has SlotToElicit => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-slot-to-elicit');
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'AudioStream');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::LexRuntime::Types qw//;
+  has AudioStream => (is => 'ro', isa => Str);
+  has ContentType => (is => 'ro', isa => Str);
+  has DialogState => (is => 'ro', isa => Str);
+  has IntentName => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has MessageFormat => (is => 'ro', isa => Str);
+  has SessionAttributes => (is => 'ro', isa => Str);
+  has SessionId => (is => 'ro', isa => Str);
+  has Slots => (is => 'ro', isa => Str);
+  has SlotToElicit => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'IntentName' => 'x-amz-lex-intent-name',
+                       'ContentType' => 'Content-Type',
+                       'SlotToElicit' => 'x-amz-lex-slot-to-elicit',
+                       'Slots' => 'x-amz-lex-slots',
+                       'SessionAttributes' => 'x-amz-lex-session-attributes',
+                       'MessageFormat' => 'x-amz-lex-message-format',
+                       'Message' => 'x-amz-lex-message',
+                       'SessionId' => 'x-amz-lex-session-id',
+                       'DialogState' => 'x-amz-lex-dialog-state'
+                     },
+  'NameInRequest' => {
+                       'AudioStream' => 'audioStream'
+                     },
+  'types' => {
+               'DialogState' => {
+                                  'type' => 'Str'
+                                },
+               'AudioStream' => {
+                                  'type' => 'Str'
+                                },
+               'SessionId' => {
+                                'type' => 'Str'
+                              },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MessageFormat' => {
+                                    'type' => 'Str'
+                                  },
+               'IntentName' => {
+                                 'type' => 'Str'
+                               },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'SlotToElicit' => {
+                                   'type' => 'Str'
+                                 },
+               'SessionAttributes' => {
+                                        'type' => 'Str'
+                                      },
+               'Slots' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

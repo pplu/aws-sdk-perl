@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ShareError;
-  use Moose;
-  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Error => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ServiceCatalog::Types qw//;
+  has Accounts => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Error => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Accounts' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'Error' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::Lightsail::AutoSnapshotDetails;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Date => (is => 'ro', isa => 'Str', request_name => 'date', traits => ['NameInRequest']);
-  has FromAttachedDisks => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AttachedDisk]', request_name => 'fromAttachedDisks', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_AttachedDisk/;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Date => (is => 'ro', isa => Str);
+  has FromAttachedDisks => (is => 'ro', isa => ArrayRef[Lightsail_AttachedDisk]);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Date' => {
+                           'type' => 'Str'
+                         },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'FromAttachedDisks' => {
+                                        'class' => 'Paws::Lightsail::AttachedDisk',
+                                        'type' => 'ArrayRef[Lightsail_AttachedDisk]'
+                                      }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'Date' => 'date',
+                       'FromAttachedDisks' => 'fromAttachedDisks',
+                       'CreatedAt' => 'createdAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +82,7 @@ Describes an automatic snapshot.
   The date of the automatic snapshot in C<YYYY-MM-DD> format.
 
 
-=head2 FromAttachedDisks => ArrayRef[L<Paws::Lightsail::AttachedDisk>]
+=head2 FromAttachedDisks => ArrayRef[Lightsail_AttachedDisk]
 
   An array of objects that describe the block storage disks attached to
 the instance when the automatic snapshot was created.

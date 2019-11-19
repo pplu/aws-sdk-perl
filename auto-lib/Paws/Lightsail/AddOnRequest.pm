@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Lightsail::AddOnRequest;
-  use Moose;
-  has AddOnType => (is => 'ro', isa => 'Str', request_name => 'addOnType', traits => ['NameInRequest'], required => 1);
-  has AutoSnapshotAddOnRequest => (is => 'ro', isa => 'Paws::Lightsail::AutoSnapshotAddOnRequest', request_name => 'autoSnapshotAddOnRequest', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_AutoSnapshotAddOnRequest/;
+  has AddOnType => (is => 'ro', isa => Str, required => 1);
+  has AutoSnapshotAddOnRequest => (is => 'ro', isa => Lightsail_AutoSnapshotAddOnRequest);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AddOnType' => {
+                                'type' => 'Str'
+                              },
+               'AutoSnapshotAddOnRequest' => {
+                                               'type' => 'Lightsail_AutoSnapshotAddOnRequest',
+                                               'class' => 'Paws::Lightsail::AutoSnapshotAddOnRequest'
+                                             }
+             },
+  'IsRequired' => {
+                    'AddOnType' => 1
+                  },
+  'NameInRequest' => {
+                       'AddOnType' => 'addOnType',
+                       'AutoSnapshotAddOnRequest' => 'autoSnapshotAddOnRequest'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +75,7 @@ information, see the Lightsail pricing page
   The add-on type.
 
 
-=head2 AutoSnapshotAddOnRequest => L<Paws::Lightsail::AutoSnapshotAddOnRequest>
+=head2 AutoSnapshotAddOnRequest => Lightsail_AutoSnapshotAddOnRequest
 
   An object that represents additional parameters when enabling or
 modifying the automatic snapshot add-on.

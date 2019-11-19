@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MachineLearning::PredictOutput;
-  use Moose;
-  has Prediction => (is => 'ro', isa => 'Paws::MachineLearning::Prediction');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MachineLearning::Types qw/MachineLearning_Prediction/;
+  has Prediction => (is => 'ro', isa => MachineLearning_Prediction);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prediction' => {
+                                 'class' => 'Paws::MachineLearning::Prediction',
+                                 'type' => 'MachineLearning_Prediction'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::MachineLearning::PredictOutput
 =head1 ATTRIBUTES
 
 
-=head2 Prediction => L<Paws::MachineLearning::Prediction>
+=head2 Prediction => MachineLearning_Prediction
 
 
 

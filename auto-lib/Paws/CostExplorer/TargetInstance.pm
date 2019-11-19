@@ -1,11 +1,45 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::TargetInstance;
-  use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str');
-  has DefaultTargetInstance => (is => 'ro', isa => 'Bool');
-  has EstimatedMonthlyCost => (is => 'ro', isa => 'Str');
-  has EstimatedMonthlySavings => (is => 'ro', isa => 'Str');
-  has ExpectedResourceUtilization => (is => 'ro', isa => 'Paws::CostExplorer::ResourceUtilization');
-  has ResourceDetails => (is => 'ro', isa => 'Paws::CostExplorer::ResourceDetails');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CostExplorer::Types qw/CostExplorer_ResourceUtilization CostExplorer_ResourceDetails/;
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has DefaultTargetInstance => (is => 'ro', isa => Bool);
+  has EstimatedMonthlyCost => (is => 'ro', isa => Str);
+  has EstimatedMonthlySavings => (is => 'ro', isa => Str);
+  has ExpectedResourceUtilization => (is => 'ro', isa => CostExplorer_ResourceUtilization);
+  has ResourceDetails => (is => 'ro', isa => CostExplorer_ResourceDetails);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpectedResourceUtilization' => {
+                                                  'type' => 'CostExplorer_ResourceUtilization',
+                                                  'class' => 'Paws::CostExplorer::ResourceUtilization'
+                                                },
+               'EstimatedMonthlyCost' => {
+                                           'type' => 'Str'
+                                         },
+               'DefaultTargetInstance' => {
+                                            'type' => 'Bool'
+                                          },
+               'EstimatedMonthlySavings' => {
+                                              'type' => 'Str'
+                                            },
+               'ResourceDetails' => {
+                                      'class' => 'Paws::CostExplorer::ResourceDetails',
+                                      'type' => 'CostExplorer_ResourceDetails'
+                                    },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,12 +97,12 @@ Web Services recommendation.
   Estimated savings resulting from modification, on a monthly basis.
 
 
-=head2 ExpectedResourceUtilization => L<Paws::CostExplorer::ResourceUtilization>
+=head2 ExpectedResourceUtilization => CostExplorer_ResourceUtilization
 
   Expected utilization metrics for target instance type.
 
 
-=head2 ResourceDetails => L<Paws::CostExplorer::ResourceDetails>
+=head2 ResourceDetails => CostExplorer_ResourceDetails
 
   Details on the target instance type.
 

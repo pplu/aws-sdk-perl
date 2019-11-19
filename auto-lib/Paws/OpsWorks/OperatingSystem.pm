@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::OperatingSystem;
-  use Moose;
-  has ConfigurationManagers => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::OperatingSystemConfigurationManager]');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ReportedName => (is => 'ro', isa => 'Str');
-  has ReportedVersion => (is => 'ro', isa => 'Str');
-  has Supported => (is => 'ro', isa => 'Bool');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Bool/;
+  use Paws::OpsWorks::Types qw/OpsWorks_OperatingSystemConfigurationManager/;
+  has ConfigurationManagers => (is => 'ro', isa => ArrayRef[OpsWorks_OperatingSystemConfigurationManager]);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ReportedName => (is => 'ro', isa => Str);
+  has ReportedVersion => (is => 'ro', isa => Str);
+  has Supported => (is => 'ro', isa => Bool);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReportedName' => {
+                                   'type' => 'Str'
+                                 },
+               'ReportedVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Supported' => {
+                                'type' => 'Bool'
+                              },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ConfigurationManagers' => {
+                                            'class' => 'Paws::OpsWorks::OperatingSystemConfigurationManager',
+                                            'type' => 'ArrayRef[OpsWorks_OperatingSystemConfigurationManager]'
+                                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +78,7 @@ Describes supported operating systems in AWS OpsWorks Stacks.
 =head1 ATTRIBUTES
 
 
-=head2 ConfigurationManagers => ArrayRef[L<Paws::OpsWorks::OperatingSystemConfigurationManager>]
+=head2 ConfigurationManagers => ArrayRef[OpsWorks_OperatingSystemConfigurationManager]
 
   Supported configuration manager name and versions for an AWS OpsWorks
 Stacks operating system.

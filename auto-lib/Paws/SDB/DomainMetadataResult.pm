@@ -1,15 +1,51 @@
+# Generated from callresult_class.tt
 
 package Paws::SDB::DomainMetadataResult;
-  use Moose;
-  has AttributeNameCount => (is => 'ro', isa => 'Int');
-  has AttributeNamesSizeBytes => (is => 'ro', isa => 'Int');
-  has AttributeValueCount => (is => 'ro', isa => 'Int');
-  has AttributeValuesSizeBytes => (is => 'ro', isa => 'Int');
-  has ItemCount => (is => 'ro', isa => 'Int');
-  has ItemNamesSizeBytes => (is => 'ro', isa => 'Int');
-  has Timestamp => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SDB::Types qw//;
+  has AttributeNameCount => (is => 'ro', isa => Int);
+  has AttributeNamesSizeBytes => (is => 'ro', isa => Int);
+  has AttributeValueCount => (is => 'ro', isa => Int);
+  has AttributeValuesSizeBytes => (is => 'ro', isa => Int);
+  has ItemCount => (is => 'ro', isa => Int);
+  has ItemNamesSizeBytes => (is => 'ro', isa => Int);
+  has Timestamp => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Int'
+                              },
+               'ItemNamesSizeBytes' => {
+                                         'type' => 'Int'
+                                       },
+               'ItemCount' => {
+                                'type' => 'Int'
+                              },
+               'AttributeNamesSizeBytes' => {
+                                              'type' => 'Int'
+                                            },
+               'AttributeValuesSizeBytes' => {
+                                               'type' => 'Int'
+                                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AttributeNameCount' => {
+                                         'type' => 'Int'
+                                       },
+               'AttributeValueCount' => {
+                                          'type' => 'Int'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

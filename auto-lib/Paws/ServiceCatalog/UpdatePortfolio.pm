@@ -1,19 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::UpdatePortfolio;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has AddTags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
-  has Description => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has ProviderName => (is => 'ro', isa => 'Str');
-  has RemoveTags => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_Tag/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has AddTags => (is => 'ro', isa => ArrayRef[ServiceCatalog_Tag], predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DisplayName => (is => 'ro', isa => Str, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProviderName => (is => 'ro', isa => Str, predicate => 1);
+  has RemoveTags => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePortfolio');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::UpdatePortfolioOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdatePortfolio');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::UpdatePortfolioOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'RemoveTags' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'ProviderName' => {
+                                   'type' => 'Str'
+                                 },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AddTags' => {
+                              'class' => 'Paws::ServiceCatalog::Tag',
+                              'type' => 'ArrayRef[ServiceCatalog_Tag]'
+                            }
+             },
+  'IsRequired' => {
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -87,7 +125,7 @@ C<zh> - Chinese
 
 
 
-=head2 AddTags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
+=head2 AddTags => ArrayRef[ServiceCatalog_Tag]
 
 The tags to add.
 

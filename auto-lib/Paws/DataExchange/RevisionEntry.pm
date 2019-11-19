@@ -1,13 +1,58 @@
+# Generated from default/object.tt
 package Paws::DataExchange::RevisionEntry;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has Comment => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str', required => 1);
-  has DataSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Finalized => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has SourceId => (is => 'ro', isa => 'Str');
-  has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DataExchange::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has Comment => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str, required => 1);
+  has DataSetId => (is => 'ro', isa => Str, required => 1);
+  has Finalized => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has SourceId => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Arn' => 1,
+                    'DataSetId' => 1,
+                    'CreatedAt' => 1,
+                    'UpdatedAt' => 1
+                  },
+  'types' => {
+               'DataSetId' => {
+                                'type' => 'Str'
+                              },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Finalized' => {
+                                'type' => 'Bool'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'SourceId' => {
+                               'type' => 'Str'
+                             },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

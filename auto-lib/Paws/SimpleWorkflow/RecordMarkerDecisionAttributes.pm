@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::RecordMarkerDecisionAttributes;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
-  has MarkerName => (is => 'ro', isa => 'Str', request_name => 'markerName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Details => (is => 'ro', isa => Str);
+  has MarkerName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MarkerName' => 1
+                  },
+  'NameInRequest' => {
+                       'Details' => 'details',
+                       'MarkerName' => 'markerName'
+                     },
+  'types' => {
+               'Details' => {
+                              'type' => 'Str'
+                            },
+               'MarkerName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

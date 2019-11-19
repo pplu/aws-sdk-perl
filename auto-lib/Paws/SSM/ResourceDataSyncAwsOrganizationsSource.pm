@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SSM::ResourceDataSyncAwsOrganizationsSource;
-  use Moose;
-  has OrganizationalUnits => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ResourceDataSyncOrganizationalUnit]');
-  has OrganizationSourceType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::SSM::Types qw/SSM_ResourceDataSyncOrganizationalUnit/;
+  has OrganizationalUnits => (is => 'ro', isa => ArrayRef[SSM_ResourceDataSyncOrganizationalUnit]);
+  has OrganizationSourceType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationSourceType' => {
+                                             'type' => 'Str'
+                                           },
+               'OrganizationalUnits' => {
+                                          'type' => 'ArrayRef[SSM_ResourceDataSyncOrganizationalUnit]',
+                                          'class' => 'Paws::SSM::ResourceDataSyncOrganizationalUnit'
+                                        }
+             },
+  'IsRequired' => {
+                    'OrganizationSourceType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ or, if an AWS Organization is not present, from multiple AWS Regions.
 =head1 ATTRIBUTES
 
 
-=head2 OrganizationalUnits => ArrayRef[L<Paws::SSM::ResourceDataSyncOrganizationalUnit>]
+=head2 OrganizationalUnits => ArrayRef[SSM_ResourceDataSyncOrganizationalUnit]
 
   The AWS Organizations organization units included in the sync.
 

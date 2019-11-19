@@ -1,9 +1,30 @@
 
 package Paws::AppSync::CreateApiKeyResponse;
-  use Moose;
-  has ApiKey => (is => 'ro', isa => 'Paws::AppSync::ApiKey', traits => ['NameInRequest'], request_name => 'apiKey');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw/AppSync_ApiKey/;
+  has ApiKey => (is => 'ro', isa => AppSync_ApiKey);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ApiKey' => 'apiKey'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ApiKey' => {
+                             'type' => 'AppSync_ApiKey',
+                             'class' => 'Paws::AppSync::ApiKey'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::AppSync::CreateApiKeyResponse
 =head1 ATTRIBUTES
 
 
-=head2 ApiKey => L<Paws::AppSync::ApiKey>
+=head2 ApiKey => AppSync_ApiKey
 
 The API key.
 

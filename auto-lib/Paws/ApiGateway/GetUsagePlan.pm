@@ -1,14 +1,35 @@
 
 package Paws::ApiGateway::GetUsagePlan;
-  use Moose;
-  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usageplanId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has UsagePlanId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetUsagePlan');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/usageplans/{usageplanId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::UsagePlan');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetUsagePlan');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/usageplans/{usageplanId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::UsagePlan');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UsagePlanId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'UsagePlanId' => 1
+                  },
+  'ParamInURI' => {
+                    'UsagePlanId' => 'usageplanId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

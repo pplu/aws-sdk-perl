@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::Route53Resolver::TargetAddress;
-  use Moose;
-  has Ip => (is => 'ro', isa => 'Str', required => 1);
-  has Port => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Route53Resolver::Types qw//;
+  has Ip => (is => 'ro', isa => Str, required => 1);
+  has Port => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Ip' => 1
+                  },
+  'types' => {
+               'Ip' => {
+                         'type' => 'Str'
+                       },
+               'Port' => {
+                           'type' => 'Int'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

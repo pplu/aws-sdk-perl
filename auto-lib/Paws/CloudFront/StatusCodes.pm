@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CloudFront::StatusCodes;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'StatusCode', traits => ['NameInRequest'], required => 1);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::CloudFront::Types qw//;
+  has Items => (is => 'ro', isa => ArrayRef[Int], required => 1);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Items' => 'StatusCode'
+                     },
+  'IsRequired' => {
+                    'Quantity' => 1,
+                    'Items' => 1
+                  },
+  'types' => {
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'Items' => {
+                            'type' => 'ArrayRef[Int]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

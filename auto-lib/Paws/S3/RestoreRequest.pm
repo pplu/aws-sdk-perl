@@ -1,12 +1,50 @@
+# Generated from default/object.tt
 package Paws::S3::RestoreRequest;
-  use Moose;
-  has Days => (is => 'ro', isa => 'Int');
-  has Description => (is => 'ro', isa => 'Str');
-  has GlacierJobParameters => (is => 'ro', isa => 'Paws::S3::GlacierJobParameters');
-  has OutputLocation => (is => 'ro', isa => 'Paws::S3::OutputLocation');
-  has SelectParameters => (is => 'ro', isa => 'Paws::S3::SelectParameters');
-  has Tier => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::S3::Types qw/S3_OutputLocation S3_GlacierJobParameters S3_SelectParameters/;
+  has Days => (is => 'ro', isa => Int);
+  has Description => (is => 'ro', isa => Str);
+  has GlacierJobParameters => (is => 'ro', isa => S3_GlacierJobParameters);
+  has OutputLocation => (is => 'ro', isa => S3_OutputLocation);
+  has SelectParameters => (is => 'ro', isa => S3_SelectParameters);
+  has Tier => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SelectParameters' => {
+                                       'type' => 'S3_SelectParameters',
+                                       'class' => 'Paws::S3::SelectParameters'
+                                     },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'GlacierJobParameters' => {
+                                           'class' => 'Paws::S3::GlacierJobParameters',
+                                           'type' => 'S3_GlacierJobParameters'
+                                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'OutputLocation' => {
+                                     'class' => 'Paws::S3::OutputLocation',
+                                     'type' => 'S3_OutputLocation'
+                                   },
+               'Days' => {
+                           'type' => 'Int'
+                         },
+               'Tier' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,18 +91,18 @@ specify OutputLocation.
   The optional description for the job.
 
 
-=head2 GlacierJobParameters => L<Paws::S3::GlacierJobParameters>
+=head2 GlacierJobParameters => S3_GlacierJobParameters
 
   Glacier related parameters pertaining to this job. Do not use with
 restores that specify OutputLocation.
 
 
-=head2 OutputLocation => L<Paws::S3::OutputLocation>
+=head2 OutputLocation => S3_OutputLocation
 
   Describes the location where the restore job's output is stored.
 
 
-=head2 SelectParameters => L<Paws::S3::SelectParameters>
+=head2 SelectParameters => S3_SelectParameters
 
   Describes the parameters for Select job types.
 

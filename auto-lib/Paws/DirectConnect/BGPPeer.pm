@@ -1,14 +1,66 @@
+# Generated from default/object.tt
 package Paws::DirectConnect::BGPPeer;
-  use Moose;
-  has AddressFamily => (is => 'ro', isa => 'Str', request_name => 'addressFamily', traits => ['NameInRequest']);
-  has AmazonAddress => (is => 'ro', isa => 'Str', request_name => 'amazonAddress', traits => ['NameInRequest']);
-  has Asn => (is => 'ro', isa => 'Int', request_name => 'asn', traits => ['NameInRequest']);
-  has AuthKey => (is => 'ro', isa => 'Str', request_name => 'authKey', traits => ['NameInRequest']);
-  has AwsDeviceV2 => (is => 'ro', isa => 'Str', request_name => 'awsDeviceV2', traits => ['NameInRequest']);
-  has BgpPeerId => (is => 'ro', isa => 'Str', request_name => 'bgpPeerId', traits => ['NameInRequest']);
-  has BgpPeerState => (is => 'ro', isa => 'Str', request_name => 'bgpPeerState', traits => ['NameInRequest']);
-  has BgpStatus => (is => 'ro', isa => 'Str', request_name => 'bgpStatus', traits => ['NameInRequest']);
-  has CustomerAddress => (is => 'ro', isa => 'Str', request_name => 'customerAddress', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DirectConnect::Types qw//;
+  has AddressFamily => (is => 'ro', isa => Str);
+  has AmazonAddress => (is => 'ro', isa => Str);
+  has Asn => (is => 'ro', isa => Int);
+  has AuthKey => (is => 'ro', isa => Str);
+  has AwsDeviceV2 => (is => 'ro', isa => Str);
+  has BgpPeerId => (is => 'ro', isa => Str);
+  has BgpPeerState => (is => 'ro', isa => Str);
+  has BgpStatus => (is => 'ro', isa => Str);
+  has CustomerAddress => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'BgpPeerState' => 'bgpPeerState',
+                       'AwsDeviceV2' => 'awsDeviceV2',
+                       'CustomerAddress' => 'customerAddress',
+                       'BgpStatus' => 'bgpStatus',
+                       'AmazonAddress' => 'amazonAddress',
+                       'AuthKey' => 'authKey',
+                       'AddressFamily' => 'addressFamily',
+                       'BgpPeerId' => 'bgpPeerId',
+                       'Asn' => 'asn'
+                     },
+  'types' => {
+               'AwsDeviceV2' => {
+                                  'type' => 'Str'
+                                },
+               'BgpPeerState' => {
+                                   'type' => 'Str'
+                                 },
+               'AmazonAddress' => {
+                                    'type' => 'Str'
+                                  },
+               'BgpStatus' => {
+                                'type' => 'Str'
+                              },
+               'CustomerAddress' => {
+                                      'type' => 'Str'
+                                    },
+               'AddressFamily' => {
+                                    'type' => 'Str'
+                                  },
+               'AuthKey' => {
+                              'type' => 'Str'
+                            },
+               'Asn' => {
+                          'type' => 'Int'
+                        },
+               'BgpPeerId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

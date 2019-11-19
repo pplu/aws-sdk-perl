@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Greengrass::GroupCertificateAuthorityProperties;
-  use Moose;
-  has GroupCertificateAuthorityArn => (is => 'ro', isa => 'Str');
-  has GroupCertificateAuthorityId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has GroupCertificateAuthorityArn => (is => 'ro', isa => Str);
+  has GroupCertificateAuthorityId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupCertificateAuthorityArn' => {
+                                                   'type' => 'Str'
+                                                 },
+               'GroupCertificateAuthorityId' => {
+                                                  'type' => 'Str'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

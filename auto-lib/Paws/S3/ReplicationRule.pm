@@ -1,14 +1,64 @@
+# Generated from default/object.tt
 package Paws::S3::ReplicationRule;
-  use Moose;
-  has DeleteMarkerReplication => (is => 'ro', isa => 'Paws::S3::DeleteMarkerReplication');
-  has Destination => (is => 'ro', isa => 'Paws::S3::Destination', required => 1);
-  has ExistingObjectReplication => (is => 'ro', isa => 'Paws::S3::ExistingObjectReplication');
-  has Filter => (is => 'ro', isa => 'Paws::S3::ReplicationRuleFilter');
-  has ID => (is => 'ro', isa => 'Str');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Int');
-  has SourceSelectionCriteria => (is => 'ro', isa => 'Paws::S3::SourceSelectionCriteria');
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw/S3_DeleteMarkerReplication S3_SourceSelectionCriteria S3_ReplicationRuleFilter S3_Destination S3_ExistingObjectReplication/;
+  has DeleteMarkerReplication => (is => 'ro', isa => S3_DeleteMarkerReplication);
+  has Destination => (is => 'ro', isa => S3_Destination, required => 1);
+  has ExistingObjectReplication => (is => 'ro', isa => S3_ExistingObjectReplication);
+  has Filter => (is => 'ro', isa => S3_ReplicationRuleFilter);
+  has ID => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Int);
+  has SourceSelectionCriteria => (is => 'ro', isa => S3_SourceSelectionCriteria);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Filter' => {
+                             'type' => 'S3_ReplicationRuleFilter',
+                             'class' => 'Paws::S3::ReplicationRuleFilter'
+                           },
+               'SourceSelectionCriteria' => {
+                                              'class' => 'Paws::S3::SourceSelectionCriteria',
+                                              'type' => 'S3_SourceSelectionCriteria'
+                                            },
+               'ExistingObjectReplication' => {
+                                                'type' => 'S3_ExistingObjectReplication',
+                                                'class' => 'Paws::S3::ExistingObjectReplication'
+                                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Destination' => {
+                                  'type' => 'S3_Destination',
+                                  'class' => 'Paws::S3::Destination'
+                                },
+               'ID' => {
+                         'type' => 'Str'
+                       },
+               'DeleteMarkerReplication' => {
+                                              'type' => 'S3_DeleteMarkerReplication',
+                                              'class' => 'Paws::S3::DeleteMarkerReplication'
+                                            },
+               'Priority' => {
+                               'type' => 'Int'
+                             }
+             },
+  'IsRequired' => {
+                    'Destination' => 1,
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,24 +95,24 @@ replicas.
 =head1 ATTRIBUTES
 
 
-=head2 DeleteMarkerReplication => L<Paws::S3::DeleteMarkerReplication>
+=head2 DeleteMarkerReplication => S3_DeleteMarkerReplication
 
   
 
 
-=head2 B<REQUIRED> Destination => L<Paws::S3::Destination>
+=head2 B<REQUIRED> Destination => S3_Destination
 
   A container for information about the replication destination.
 
 
-=head2 ExistingObjectReplication => L<Paws::S3::ExistingObjectReplication>
+=head2 ExistingObjectReplication => S3_ExistingObjectReplication
 
   A container that specifies information about existing object
 replication. You can choose whether to enable or disable the
 replication of existing objects.
 
 
-=head2 Filter => L<Paws::S3::ReplicationRuleFilter>
+=head2 Filter => S3_ReplicationRuleFilter
 
   
 
@@ -105,7 +155,7 @@ For more information, see Replication in the I<Amazon S3 Developer
 Guide>.
 
 
-=head2 SourceSelectionCriteria => L<Paws::S3::SourceSelectionCriteria>
+=head2 SourceSelectionCriteria => S3_SourceSelectionCriteria
 
   A container that describes additional filters for identifying the
 source objects that you want to replicate. You can choose to enable or

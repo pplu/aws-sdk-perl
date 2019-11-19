@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::UpdateGatewayInformationOutput;
-  use Moose;
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has GatewayName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StorageGateway::Types qw//;
+  has GatewayARN => (is => 'ro', isa => Str);
+  has GatewayName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               },
+               'GatewayName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

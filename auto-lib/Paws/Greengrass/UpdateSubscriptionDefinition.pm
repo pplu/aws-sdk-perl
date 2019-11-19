@@ -1,15 +1,39 @@
 
 package Paws::Greengrass::UpdateSubscriptionDefinition;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has SubscriptionDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSubscriptionDefinition');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/subscriptions/{SubscriptionDefinitionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::UpdateSubscriptionDefinitionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateSubscriptionDefinition');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/subscriptions/{SubscriptionDefinitionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::UpdateSubscriptionDefinitionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'SubscriptionDefinitionId' => 'SubscriptionDefinitionId'
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SubscriptionDefinitionId' => {
+                                               'type' => 'Str'
+                                             }
+             },
+  'IsRequired' => {
+                    'SubscriptionDefinitionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

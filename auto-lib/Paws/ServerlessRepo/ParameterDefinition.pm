@@ -1,18 +1,90 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::ParameterDefinition;
-  use Moose;
-  has AllowedPattern => (is => 'ro', isa => 'Str', request_name => 'allowedPattern', traits => ['NameInRequest']);
-  has AllowedValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'allowedValues', traits => ['NameInRequest']);
-  has ConstraintDescription => (is => 'ro', isa => 'Str', request_name => 'constraintDescription', traits => ['NameInRequest']);
-  has DefaultValue => (is => 'ro', isa => 'Str', request_name => 'defaultValue', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has MaxLength => (is => 'ro', isa => 'Int', request_name => 'maxLength', traits => ['NameInRequest']);
-  has MaxValue => (is => 'ro', isa => 'Int', request_name => 'maxValue', traits => ['NameInRequest']);
-  has MinLength => (is => 'ro', isa => 'Int', request_name => 'minLength', traits => ['NameInRequest']);
-  has MinValue => (is => 'ro', isa => 'Int', request_name => 'minValue', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has NoEcho => (is => 'ro', isa => 'Bool', request_name => 'noEcho', traits => ['NameInRequest']);
-  has ReferencedByResources => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'referencedByResources', traits => ['NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int Bool/;
+  use Paws::ServerlessRepo::Types qw//;
+  has AllowedPattern => (is => 'ro', isa => Str);
+  has AllowedValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ConstraintDescription => (is => 'ro', isa => Str);
+  has DefaultValue => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has MaxLength => (is => 'ro', isa => Int);
+  has MaxValue => (is => 'ro', isa => Int);
+  has MinLength => (is => 'ro', isa => Int);
+  has MinValue => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has NoEcho => (is => 'ro', isa => Bool);
+  has ReferencedByResources => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DefaultValue' => 'defaultValue',
+                       'ConstraintDescription' => 'constraintDescription',
+                       'Name' => 'name',
+                       'ReferencedByResources' => 'referencedByResources',
+                       'AllowedValues' => 'allowedValues',
+                       'MinLength' => 'minLength',
+                       'Description' => 'description',
+                       'AllowedPattern' => 'allowedPattern',
+                       'NoEcho' => 'noEcho',
+                       'Type' => 'type',
+                       'MaxLength' => 'maxLength',
+                       'MaxValue' => 'maxValue',
+                       'MinValue' => 'minValue'
+                     },
+  'IsRequired' => {
+                    'ReferencedByResources' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'MaxValue' => {
+                               'type' => 'Int'
+                             },
+               'MinValue' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'MinLength' => {
+                                'type' => 'Int'
+                              },
+               'MaxLength' => {
+                                'type' => 'Int'
+                              },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'NoEcho' => {
+                             'type' => 'Bool'
+                           },
+               'AllowedPattern' => {
+                                     'type' => 'Str'
+                                   },
+               'AllowedValues' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'ReferencedByResources' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ConstraintDescription' => {
+                                            'type' => 'Str'
+                                          },
+               'DefaultValue' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

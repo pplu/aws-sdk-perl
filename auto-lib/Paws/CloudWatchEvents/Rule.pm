@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::CloudWatchEvents::Rule;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EventBusName => (is => 'ro', isa => 'Str');
-  has EventPattern => (is => 'ro', isa => 'Str');
-  has ManagedBy => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has ScheduleExpression => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchEvents::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EventBusName => (is => 'ro', isa => Str);
+  has EventPattern => (is => 'ro', isa => Str);
+  has ManagedBy => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has ScheduleExpression => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ManagedBy' => {
+                                'type' => 'Str'
+                              },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'EventBusName' => {
+                                   'type' => 'Str'
+                                 },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ScheduleExpression' => {
+                                         'type' => 'Str'
+                                       },
+               'EventPattern' => {
+                                   'type' => 'Str'
+                                 },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

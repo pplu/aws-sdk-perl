@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::AppMesh::Backend;
-  use Moose;
-  has VirtualService => (is => 'ro', isa => 'Paws::AppMesh::VirtualServiceBackend', request_name => 'virtualService', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_VirtualServiceBackend/;
+  has VirtualService => (is => 'ro', isa => AppMesh_VirtualServiceBackend);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VirtualService' => {
+                                     'type' => 'AppMesh_VirtualServiceBackend',
+                                     'class' => 'Paws::AppMesh::VirtualServiceBackend'
+                                   }
+             },
+  'NameInRequest' => {
+                       'VirtualService' => 'virtualService'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ to send outbound traffic to.
 =head1 ATTRIBUTES
 
 
-=head2 VirtualService => L<Paws::AppMesh::VirtualServiceBackend>
+=head2 VirtualService => AppMesh_VirtualServiceBackend
 
   Specifies a virtual service to use as a backend for a virtual node.
 

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceGroupTimeline;
-  use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str');
-  has EndDateTime => (is => 'ro', isa => 'Str');
-  has ReadyDateTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw//;
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has EndDateTime => (is => 'ro', isa => Str);
+  has ReadyDateTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndDateTime' => {
+                                  'type' => 'Str'
+                                },
+               'ReadyDateTime' => {
+                                    'type' => 'Str'
+                                  },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

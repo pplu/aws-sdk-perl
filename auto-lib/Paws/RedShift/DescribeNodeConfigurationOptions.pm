@@ -1,18 +1,56 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::DescribeNodeConfigurationOptions;
-  use Moose;
-  has ActionType => (is => 'ro', isa => 'Str', required => 1);
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::NodeConfigurationOptionsFilter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has OwnerAccount => (is => 'ro', isa => 'Str');
-  has SnapshotIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::RedShift::Types qw/RedShift_NodeConfigurationOptionsFilter/;
+  has ActionType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[RedShift_NodeConfigurationOptionsFilter], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has OwnerAccount => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotIdentifier => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeNodeConfigurationOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::NodeConfigurationOptionsMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeNodeConfigurationOptionsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeNodeConfigurationOptions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::NodeConfigurationOptionsMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeNodeConfigurationOptionsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OwnerAccount' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'SnapshotIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'ActionType' => {
+                                 'type' => 'Str'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Filters' => {
+                              'class' => 'Paws::RedShift::NodeConfigurationOptionsFilter',
+                              'type' => 'ArrayRef[RedShift_NodeConfigurationOptionsFilter]'
+                            }
+             },
+  'IsRequired' => {
+                    'ActionType' => 1
+                  },
+  'NameInRequest' => {
+                       'Filters' => 'Filter'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +108,7 @@ Currently, it must be "restore-cluster".
 
 Valid values are: C<"restore-cluster">
 
-=head2 Filters => ArrayRef[L<Paws::RedShift::NodeConfigurationOptionsFilter>]
+=head2 Filters => ArrayRef[RedShift_NodeConfigurationOptionsFilter]
 
 A set of name, operator, and value items to filter the results.
 

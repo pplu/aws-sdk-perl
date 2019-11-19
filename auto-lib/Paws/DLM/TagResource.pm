@@ -1,15 +1,41 @@
 
 package Paws::DLM::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceArn', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::DLM::TagMap', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DLM::Types qw/DLM_TagMap/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => DLM_TagMap, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tags/{resourceArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DLM::TagResourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tags/{resourceArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DLM::TagResourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'Tags' => 1
+                  },
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::DLM::TagMap',
+                           'type' => 'DLM_TagMap'
+                         }
+             },
+  'ParamInURI' => {
+                    'ResourceArn' => 'resourceArn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +75,7 @@ The Amazon Resource Name (ARN) of the resource.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::DLM::TagMap>
+=head2 B<REQUIRED> Tags => DLM_TagMap
 
 One or more tags.
 

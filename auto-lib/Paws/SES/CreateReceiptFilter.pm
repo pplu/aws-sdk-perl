@@ -1,13 +1,33 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::CreateReceiptFilter;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::SES::ReceiptFilter', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw/SES_ReceiptFilter/;
+  has Filter => (is => 'ro', isa => SES_ReceiptFilter, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateReceiptFilter');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::CreateReceiptFilterResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateReceiptFilterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateReceiptFilter');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::CreateReceiptFilterResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateReceiptFilterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filter' => {
+                             'class' => 'Paws::SES::ReceiptFilter',
+                             'type' => 'SES_ReceiptFilter'
+                           }
+             },
+  'IsRequired' => {
+                    'Filter' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +66,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Filter => L<Paws::SES::ReceiptFilter>
+=head2 B<REQUIRED> Filter => SES_ReceiptFilter
 
 A data structure that describes the IP address filter to create, which
 consists of a name, an IP address range, and whether to allow or block

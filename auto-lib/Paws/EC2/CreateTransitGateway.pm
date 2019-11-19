@@ -1,16 +1,45 @@
 
 package Paws::EC2::CreateTransitGateway;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Options => (is => 'ro', isa => 'Paws::EC2::TransitGatewayRequestOptions');
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_TransitGatewayRequestOptions EC2_TagSpecification/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Options => (is => 'ro', isa => EC2_TransitGatewayRequestOptions, predicate => 1);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_TagSpecification], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTransitGateway');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateTransitGatewayResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTransitGateway');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateTransitGatewayResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TagSpecifications' => 'TagSpecification'
+                     },
+  'types' => {
+               'Options' => {
+                              'type' => 'EC2_TransitGatewayRequestOptions',
+                              'class' => 'Paws::EC2::TransitGatewayRequestOptions'
+                            },
+               'TagSpecifications' => {
+                                        'type' => 'ArrayRef[EC2_TagSpecification]',
+                                        'class' => 'Paws::EC2::TagSpecification'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,13 +115,13 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Options => L<Paws::EC2::TransitGatewayRequestOptions>
+=head2 Options => EC2_TransitGatewayRequestOptions
 
 The transit gateway options.
 
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_TagSpecification]
 
 The tags to apply to the transit gateway.
 

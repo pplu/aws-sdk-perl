@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DAX::CreateParameterGroupResponse;
-  use Moose;
-  has ParameterGroup => (is => 'ro', isa => 'Paws::DAX::ParameterGroup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DAX::Types qw/DAX_ParameterGroup/;
+  has ParameterGroup => (is => 'ro', isa => DAX_ParameterGroup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ParameterGroup' => {
+                                     'type' => 'DAX_ParameterGroup',
+                                     'class' => 'Paws::DAX::ParameterGroup'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DAX::CreateParameterGroupResponse
 =head1 ATTRIBUTES
 
 
-=head2 ParameterGroup => L<Paws::DAX::ParameterGroup>
+=head2 ParameterGroup => DAX_ParameterGroup
 
 Represents the output of a I<CreateParameterGroup> action.
 

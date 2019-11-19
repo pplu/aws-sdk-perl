@@ -1,18 +1,59 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SMS::CreateApp;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
-  has RoleName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleName' );
-  has ServerGroups => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ServerGroup]', traits => ['NameInRequest'], request_name => 'serverGroups' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SMS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SMS::Types qw/SMS_Tag SMS_ServerGroup/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has RoleName => (is => 'ro', isa => Str, predicate => 1);
+  has ServerGroups => (is => 'ro', isa => ArrayRef[SMS_ServerGroup], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SMS_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApp');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SMS::CreateAppResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApp');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SMS::CreateAppResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'Description' => 'description',
+                       'RoleName' => 'roleName',
+                       'Name' => 'name',
+                       'ClientToken' => 'clientToken',
+                       'ServerGroups' => 'serverGroups'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'ServerGroups' => {
+                                   'class' => 'Paws::SMS::ServerGroup',
+                                   'type' => 'ArrayRef[SMS_ServerGroup]'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::SMS::Tag',
+                           'type' => 'ArrayRef[SMS_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -112,13 +153,13 @@ Name of service role in customer's account to be used by AWS SMS.
 
 
 
-=head2 ServerGroups => ArrayRef[L<Paws::SMS::ServerGroup>]
+=head2 ServerGroups => ArrayRef[SMS_ServerGroup]
 
 List of server groups to include in the application.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SMS::Tag>]
+=head2 Tags => ArrayRef[SMS_Tag]
 
 List of tags to be associated with the application.
 

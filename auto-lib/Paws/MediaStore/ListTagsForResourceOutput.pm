@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MediaStore::ListTagsForResourceOutput;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::MediaStore::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaStore::Types qw/MediaStore_Tag/;
+  has Tags => (is => 'ro', isa => ArrayRef[MediaStore_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::MediaStore::Tag',
+                           'type' => 'ArrayRef[MediaStore_Tag]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::MediaStore::ListTagsForResourceOutput
 =head1 ATTRIBUTES
 
 
-=head2 Tags => ArrayRef[L<Paws::MediaStore::Tag>]
+=head2 Tags => ArrayRef[MediaStore_Tag]
 
 An array of key:value pairs that are assigned to the container.
 

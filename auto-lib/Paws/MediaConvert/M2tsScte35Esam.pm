@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::M2tsScte35Esam;
-  use Moose;
-  has Scte35EsamPid => (is => 'ro', isa => 'Int', request_name => 'scte35EsamPid', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has Scte35EsamPid => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Scte35EsamPid' => {
+                                    'type' => 'Int'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Scte35EsamPid' => 'scte35EsamPid'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

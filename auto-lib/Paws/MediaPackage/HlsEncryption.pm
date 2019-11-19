@@ -1,10 +1,50 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::HlsEncryption;
-  use Moose;
-  has ConstantInitializationVector => (is => 'ro', isa => 'Str', request_name => 'constantInitializationVector', traits => ['NameInRequest']);
-  has EncryptionMethod => (is => 'ro', isa => 'Str', request_name => 'encryptionMethod', traits => ['NameInRequest']);
-  has KeyRotationIntervalSeconds => (is => 'ro', isa => 'Int', request_name => 'keyRotationIntervalSeconds', traits => ['NameInRequest']);
-  has RepeatExtXKey => (is => 'ro', isa => 'Bool', request_name => 'repeatExtXKey', traits => ['NameInRequest']);
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaPackage::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::MediaPackage::Types qw/MediaPackage_SpekeKeyProvider/;
+  has ConstantInitializationVector => (is => 'ro', isa => Str);
+  has EncryptionMethod => (is => 'ro', isa => Str);
+  has KeyRotationIntervalSeconds => (is => 'ro', isa => Int);
+  has RepeatExtXKey => (is => 'ro', isa => Bool);
+  has SpekeKeyProvider => (is => 'ro', isa => MediaPackage_SpekeKeyProvider, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RepeatExtXKey' => {
+                                    'type' => 'Bool'
+                                  },
+               'EncryptionMethod' => {
+                                       'type' => 'Str'
+                                     },
+               'ConstantInitializationVector' => {
+                                                   'type' => 'Str'
+                                                 },
+               'SpekeKeyProvider' => {
+                                       'class' => 'Paws::MediaPackage::SpekeKeyProvider',
+                                       'type' => 'MediaPackage_SpekeKeyProvider'
+                                     },
+               'KeyRotationIntervalSeconds' => {
+                                                 'type' => 'Int'
+                                               }
+             },
+  'IsRequired' => {
+                    'SpekeKeyProvider' => 1
+                  },
+  'NameInRequest' => {
+                       'KeyRotationIntervalSeconds' => 'keyRotationIntervalSeconds',
+                       'SpekeKeyProvider' => 'spekeKeyProvider',
+                       'ConstantInitializationVector' => 'constantInitializationVector',
+                       'RepeatExtXKey' => 'repeatExtXKey',
+                       'EncryptionMethod' => 'encryptionMethod'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +101,7 @@ specified the initialization vector will be periodically rotated.
   When enabled, the EXT-X-KEY tag will be repeated in output manifests.
 
 
-=head2 B<REQUIRED> SpekeKeyProvider => L<Paws::MediaPackage::SpekeKeyProvider>
+=head2 B<REQUIRED> SpekeKeyProvider => MediaPackage_SpekeKeyProvider
 
   
 

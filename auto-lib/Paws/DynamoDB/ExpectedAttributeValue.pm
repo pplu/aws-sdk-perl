@@ -1,9 +1,37 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::ExpectedAttributeValue;
-  use Moose;
-  has AttributeValueList => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeValue]');
-  has ComparisonOperator => (is => 'ro', isa => 'Str');
-  has Exists => (is => 'ro', isa => 'Bool');
-  has Value => (is => 'ro', isa => 'Paws::DynamoDB::AttributeValue');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Bool/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AttributeValue/;
+  has AttributeValueList => (is => 'ro', isa => ArrayRef[DynamoDB_AttributeValue]);
+  has ComparisonOperator => (is => 'ro', isa => Str);
+  has Exists => (is => 'ro', isa => Bool);
+  has Value => (is => 'ro', isa => DynamoDB_AttributeValue);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeValueList' => {
+                                         'class' => 'Paws::DynamoDB::AttributeValue',
+                                         'type' => 'ArrayRef[DynamoDB_AttributeValue]'
+                                       },
+               'Exists' => {
+                             'type' => 'Bool'
+                           },
+               'Value' => {
+                            'class' => 'Paws::DynamoDB::AttributeValue',
+                            'type' => 'DynamoDB_AttributeValue'
+                          },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +96,7 @@ once, DynamoDB will return a C<ValidationException> exception.
 =head1 ATTRIBUTES
 
 
-=head2 AttributeValueList => ArrayRef[L<Paws::DynamoDB::AttributeValue>]
+=head2 AttributeValueList => ArrayRef[DynamoDB_AttributeValue]
 
   One or more values to evaluate against the supplied attribute. The
 number of values in the list depends on the C<ComparisonOperator> being
@@ -314,7 +342,7 @@ exist.)
 
 
 
-=head2 Value => L<Paws::DynamoDB::AttributeValue>
+=head2 Value => DynamoDB_AttributeValue
 
   Represents the data for the expected attribute.
 

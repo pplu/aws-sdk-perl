@@ -1,14 +1,35 @@
 
 package Paws::SSO::Logout;
-  use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sso_bearer_token', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSO::Types qw//;
+  has AccessToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Logout');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/logout');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Logout');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/logout');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'AccessToken' => 'x-amz-sso_bearer_token'
+                     },
+  'IsRequired' => {
+                    'AccessToken' => 1
+                  },
+  'types' => {
+               'AccessToken' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

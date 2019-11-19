@@ -1,12 +1,47 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::CreateKeyPairResult;
-  use Moose;
-  has KeyPair => (is => 'ro', isa => 'Paws::Lightsail::KeyPair', traits => ['NameInRequest'], request_name => 'keyPair' );
-  has Operation => (is => 'ro', isa => 'Paws::Lightsail::Operation', traits => ['NameInRequest'], request_name => 'operation' );
-  has PrivateKeyBase64 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'privateKeyBase64' );
-  has PublicKeyBase64 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'publicKeyBase64' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_Operation Lightsail_KeyPair/;
+  has KeyPair => (is => 'ro', isa => Lightsail_KeyPair);
+  has Operation => (is => 'ro', isa => Lightsail_Operation);
+  has PrivateKeyBase64 => (is => 'ro', isa => Str);
+  has PublicKeyBase64 => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrivateKeyBase64' => {
+                                       'type' => 'Str'
+                                     },
+               'PublicKeyBase64' => {
+                                      'type' => 'Str'
+                                    },
+               'KeyPair' => {
+                              'type' => 'Lightsail_KeyPair',
+                              'class' => 'Paws::Lightsail::KeyPair'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Operation' => {
+                                'type' => 'Lightsail_Operation',
+                                'class' => 'Paws::Lightsail::Operation'
+                              }
+             },
+  'NameInRequest' => {
+                       'Operation' => 'operation',
+                       'KeyPair' => 'keyPair',
+                       'PrivateKeyBase64' => 'privateKeyBase64',
+                       'PublicKeyBase64' => 'publicKeyBase64'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -17,13 +52,13 @@ Paws::Lightsail::CreateKeyPairResult
 =head1 ATTRIBUTES
 
 
-=head2 KeyPair => L<Paws::Lightsail::KeyPair>
+=head2 KeyPair => Lightsail_KeyPair
 
 An array of key-value pairs containing information about the new key
 pair you just created.
 
 
-=head2 Operation => L<Paws::Lightsail::Operation>
+=head2 Operation => Lightsail_Operation
 
 An array of key-value pairs containing information about the results of
 your create key pair request.

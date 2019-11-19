@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::SavingsPlansAmortizedCommitment;
-  use Moose;
-  has AmortizedRecurringCommitment => (is => 'ro', isa => 'Str');
-  has AmortizedUpfrontCommitment => (is => 'ro', isa => 'Str');
-  has TotalAmortizedCommitment => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has AmortizedRecurringCommitment => (is => 'ro', isa => Str);
+  has AmortizedUpfrontCommitment => (is => 'ro', isa => Str);
+  has TotalAmortizedCommitment => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AmortizedUpfrontCommitment' => {
+                                                 'type' => 'Str'
+                                               },
+               'AmortizedRecurringCommitment' => {
+                                                   'type' => 'Str'
+                                                 },
+               'TotalAmortizedCommitment' => {
+                                               'type' => 'Str'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

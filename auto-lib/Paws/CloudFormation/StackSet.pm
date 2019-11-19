@@ -1,17 +1,74 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackSet;
-  use Moose;
-  has AdministrationRoleARN => (is => 'ro', isa => 'Str');
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExecutionRoleName => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has StackSetARN => (is => 'ro', isa => 'Str');
-  has StackSetDriftDetectionDetails => (is => 'ro', isa => 'Paws::CloudFormation::StackSetDriftDetectionDetails');
-  has StackSetId => (is => 'ro', isa => 'Str');
-  has StackSetName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
-  has TemplateBody => (is => 'ro', isa => 'Str', decode_as => 'JSON', method => 'Template', traits => ['JSONAttribute']);
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_Parameter CloudFormation_Tag CloudFormation_StackSetDriftDetectionDetails/;
+  has AdministrationRoleARN => (is => 'ro', isa => Str);
+  has Capabilities => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Description => (is => 'ro', isa => Str);
+  has ExecutionRoleName => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => ArrayRef[CloudFormation_Parameter]);
+  has StackSetARN => (is => 'ro', isa => Str);
+  has StackSetDriftDetectionDetails => (is => 'ro', isa => CloudFormation_StackSetDriftDetectionDetails);
+  has StackSetId => (is => 'ro', isa => Str);
+  has StackSetName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[CloudFormation_Tag]);
+  has TemplateBody => (is => 'ro', isa => Str);
+  has Template => ( is => 'lazy', builder => sub { my $self = shift;  return decode_json($self->TemplateBody); });
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Capabilities' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Tags' => {
+                           'type' => 'ArrayRef[CloudFormation_Tag]',
+                           'class' => 'Paws::CloudFormation::Tag'
+                         },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               'ExecutionRoleName' => {
+                                        'type' => 'Str'
+                                      },
+               'StackSetDriftDetectionDetails' => {
+                                                    'type' => 'CloudFormation_StackSetDriftDetectionDetails',
+                                                    'class' => 'Paws::CloudFormation::StackSetDriftDetectionDetails'
+                                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'StackSetId' => {
+                                 'type' => 'Str'
+                               },
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 },
+               'StackSetARN' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'AdministrationRoleARN' => {
+                                            'type' => 'Str'
+                                          },
+               'Parameters' => {
+                                 'class' => 'Paws::CloudFormation::Parameter',
+                                 'type' => 'ArrayRef[CloudFormation_Parameter]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -89,7 +146,7 @@ Use customized execution roles to control which stack resources users
 and groups can include in their stack sets.
 
 
-=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
+=head2 Parameters => ArrayRef[CloudFormation_Parameter]
 
   A list of input parameters for a stack set.
 
@@ -99,7 +156,7 @@ and groups can include in their stack sets.
   The Amazon Resource Number (ARN) of the stack set.
 
 
-=head2 StackSetDriftDetectionDetails => L<Paws::CloudFormation::StackSetDriftDetectionDetails>
+=head2 StackSetDriftDetectionDetails => CloudFormation_StackSetDriftDetectionDetails
 
   Detailed information about the drift status of the stack set.
 
@@ -123,7 +180,7 @@ operations currently in progress is not included.
   The status of the stack set.
 
 
-=head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
+=head2 Tags => ArrayRef[CloudFormation_Tag]
 
   A list of tags that specify information about the stack set. A maximum
 number of 50 tags can be specified.

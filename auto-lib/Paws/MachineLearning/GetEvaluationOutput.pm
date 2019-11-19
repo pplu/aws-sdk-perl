@@ -1,23 +1,84 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MachineLearning::GetEvaluationOutput;
-  use Moose;
-  has ComputeTime => (is => 'ro', isa => 'Int');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has CreatedByIamUser => (is => 'ro', isa => 'Str');
-  has EvaluationDataSourceId => (is => 'ro', isa => 'Str');
-  has EvaluationId => (is => 'ro', isa => 'Str');
-  has FinishedAt => (is => 'ro', isa => 'Str');
-  has InputDataLocationS3 => (is => 'ro', isa => 'Str');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
-  has LogUri => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has MLModelId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has PerformanceMetrics => (is => 'ro', isa => 'Paws::MachineLearning::PerformanceMetrics');
-  has StartedAt => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MachineLearning::Types qw/MachineLearning_PerformanceMetrics/;
+  has ComputeTime => (is => 'ro', isa => Int);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has CreatedByIamUser => (is => 'ro', isa => Str);
+  has EvaluationDataSourceId => (is => 'ro', isa => Str);
+  has EvaluationId => (is => 'ro', isa => Str);
+  has FinishedAt => (is => 'ro', isa => Str);
+  has InputDataLocationS3 => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has LogUri => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has MLModelId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has PerformanceMetrics => (is => 'ro', isa => MachineLearning_PerformanceMetrics);
+  has StartedAt => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedByIamUser' => {
+                                       'type' => 'Str'
+                                     },
+               'EvaluationDataSourceId' => {
+                                             'type' => 'Str'
+                                           },
+               'ComputeTime' => {
+                                  'type' => 'Int'
+                                },
+               'InputDataLocationS3' => {
+                                          'type' => 'Str'
+                                        },
+               'MLModelId' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'FinishedAt' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'PerformanceMetrics' => {
+                                         'type' => 'MachineLearning_PerformanceMetrics',
+                                         'class' => 'Paws::MachineLearning::PerformanceMetrics'
+                                       },
+               'LogUri' => {
+                             'type' => 'Str'
+                           },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'EvaluationId' => {
+                                   'type' => 'Str'
+                                 },
+               'StartedAt' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -100,7 +161,7 @@ The ID of the C<MLModel> that was the focus of the evaluation.
 A user-supplied name or description of the C<Evaluation>.
 
 
-=head2 PerformanceMetrics => L<Paws::MachineLearning::PerformanceMetrics>
+=head2 PerformanceMetrics => MachineLearning_PerformanceMetrics
 
 Measurements of how well the C<MLModel> performed using observations
 referenced by the C<DataSource>. One of the following metric is

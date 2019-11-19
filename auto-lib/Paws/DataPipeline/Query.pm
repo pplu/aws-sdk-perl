@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::DataPipeline::Query;
-  use Moose;
-  has Selectors => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Selector]', request_name => 'selectors', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::DataPipeline::Types qw/DataPipeline_Selector/;
+  has Selectors => (is => 'ro', isa => ArrayRef[DataPipeline_Selector]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Selectors' => {
+                                'class' => 'Paws::DataPipeline::Selector',
+                                'type' => 'ArrayRef[DataPipeline_Selector]'
+                              }
+             },
+  'NameInRequest' => {
+                       'Selectors' => 'selectors'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Defines the query to run against an object.
 =head1 ATTRIBUTES
 
 
-=head2 Selectors => ArrayRef[L<Paws::DataPipeline::Selector>]
+=head2 Selectors => ArrayRef[DataPipeline_Selector]
 
   List of selectors that define the query. An object must satisfy all of
 the selectors to match the query.

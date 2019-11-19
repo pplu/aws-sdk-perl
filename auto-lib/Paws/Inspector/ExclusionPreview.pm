@@ -1,10 +1,54 @@
+# Generated from default/object.tt
 package Paws::Inspector::ExclusionPreview;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'attributes', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
-  has Recommendation => (is => 'ro', isa => 'Str', request_name => 'recommendation', traits => ['NameInRequest'], required => 1);
-  has Scopes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Scope]', request_name => 'scopes', traits => ['NameInRequest'], required => 1);
-  has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Inspector::Types qw/Inspector_Attribute Inspector_Scope/;
+  has Attributes => (is => 'ro', isa => ArrayRef[Inspector_Attribute]);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has Recommendation => (is => 'ro', isa => Str, required => 1);
+  has Scopes => (is => 'ro', isa => ArrayRef[Inspector_Scope], required => 1);
+  has Title => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Scopes' => {
+                             'class' => 'Paws::Inspector::Scope',
+                             'type' => 'ArrayRef[Inspector_Scope]'
+                           },
+               'Recommendation' => {
+                                     'type' => 'Str'
+                                   },
+               'Attributes' => {
+                                 'class' => 'Paws::Inspector::Attribute',
+                                 'type' => 'ArrayRef[Inspector_Attribute]'
+                               },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Scopes' => 'scopes',
+                       'Description' => 'description',
+                       'Title' => 'title',
+                       'Attributes' => 'attributes',
+                       'Recommendation' => 'recommendation'
+                     },
+  'IsRequired' => {
+                    'Description' => 1,
+                    'Title' => 1,
+                    'Recommendation' => 1,
+                    'Scopes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +85,7 @@ given the current state of the assessment template.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 Attributes => ArrayRef[Inspector_Attribute]
 
   The system-defined attributes for the exclusion preview.
 
@@ -56,7 +100,7 @@ given the current state of the assessment template.
   The recommendation for the exclusion preview.
 
 
-=head2 B<REQUIRED> Scopes => ArrayRef[L<Paws::Inspector::Scope>]
+=head2 B<REQUIRED> Scopes => ArrayRef[Inspector_Scope]
 
   The AWS resources for which the exclusion preview pertains.
 

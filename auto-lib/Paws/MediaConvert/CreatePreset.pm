@@ -1,18 +1,58 @@
 
 package Paws::MediaConvert::CreatePreset;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'category');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::PresetSettings', traits => ['NameInRequest'], request_name => 'settings', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert___mapOf__string MediaConvert_PresetSettings/;
+  has Category => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Settings => (is => 'ro', isa => MediaConvert_PresetSettings, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => MediaConvert___mapOf__string, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePreset');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/presets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConvert::CreatePresetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePreset');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-08-29/presets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConvert::CreatePresetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'MediaConvert___mapOf__string',
+                           'class' => 'Paws::MediaConvert::__mapOf__string'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Settings' => {
+                               'type' => 'MediaConvert_PresetSettings',
+                               'class' => 'Paws::MediaConvert::PresetSettings'
+                             },
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'Settings' => 'settings',
+                       'Category' => 'category'
+                     },
+  'IsRequired' => {
+                    'Settings' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -720,13 +760,13 @@ The name of the preset you are creating.
 
 
 
-=head2 B<REQUIRED> Settings => L<Paws::MediaConvert::PresetSettings>
+=head2 B<REQUIRED> Settings => MediaConvert_PresetSettings
 
 Settings for preset
 
 
 
-=head2 Tags => L<Paws::MediaConvert::__mapOf__string>
+=head2 Tags => MediaConvert___mapOf__string
 
 The tags that you want to add to the resource. You can tag resources
 with a key-value pair or with only a key.

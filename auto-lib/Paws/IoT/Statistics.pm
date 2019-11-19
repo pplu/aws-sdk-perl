@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::IoT::Statistics;
-  use Moose;
-  has Average => (is => 'ro', isa => 'Num', request_name => 'average', traits => ['NameInRequest']);
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
-  has Maximum => (is => 'ro', isa => 'Num', request_name => 'maximum', traits => ['NameInRequest']);
-  has Minimum => (is => 'ro', isa => 'Num', request_name => 'minimum', traits => ['NameInRequest']);
-  has StdDeviation => (is => 'ro', isa => 'Num', request_name => 'stdDeviation', traits => ['NameInRequest']);
-  has Sum => (is => 'ro', isa => 'Num', request_name => 'sum', traits => ['NameInRequest']);
-  has SumOfSquares => (is => 'ro', isa => 'Num', request_name => 'sumOfSquares', traits => ['NameInRequest']);
-  has Variance => (is => 'ro', isa => 'Num', request_name => 'variance', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num Int/;
+  use Paws::IoT::Types qw//;
+  has Average => (is => 'ro', isa => Num);
+  has Count => (is => 'ro', isa => Int);
+  has Maximum => (is => 'ro', isa => Num);
+  has Minimum => (is => 'ro', isa => Num);
+  has StdDeviation => (is => 'ro', isa => Num);
+  has Sum => (is => 'ro', isa => Num);
+  has SumOfSquares => (is => 'ro', isa => Num);
+  has Variance => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Average' => {
+                              'type' => 'Num'
+                            },
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'SumOfSquares' => {
+                                   'type' => 'Num'
+                                 },
+               'StdDeviation' => {
+                                   'type' => 'Num'
+                                 },
+               'Maximum' => {
+                              'type' => 'Num'
+                            },
+               'Variance' => {
+                               'type' => 'Num'
+                             },
+               'Sum' => {
+                          'type' => 'Num'
+                        },
+               'Minimum' => {
+                              'type' => 'Num'
+                            }
+             },
+  'NameInRequest' => {
+                       'SumOfSquares' => 'sumOfSquares',
+                       'StdDeviation' => 'stdDeviation',
+                       'Average' => 'average',
+                       'Count' => 'count',
+                       'Minimum' => 'minimum',
+                       'Maximum' => 'maximum',
+                       'Sum' => 'sum',
+                       'Variance' => 'variance'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

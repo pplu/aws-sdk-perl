@@ -1,16 +1,70 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackResourceDetail;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DriftInformation => (is => 'ro', isa => 'Paws::CloudFormation::StackResourceDriftInformation');
-  has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
-  has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has Metadata => (is => 'ro', isa => 'Str');
-  has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceStatusReason => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
-  has StackId => (is => 'ro', isa => 'Str');
-  has StackName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackResourceDriftInformation/;
+  has Description => (is => 'ro', isa => Str);
+  has DriftInformation => (is => 'ro', isa => CloudFormation_StackResourceDriftInformation);
+  has LastUpdatedTimestamp => (is => 'ro', isa => Str, required => 1);
+  has LogicalResourceId => (is => 'ro', isa => Str, required => 1);
+  has Metadata => (is => 'ro', isa => Str);
+  has PhysicalResourceId => (is => 'ro', isa => Str);
+  has ResourceStatus => (is => 'ro', isa => Str, required => 1);
+  has ResourceStatusReason => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str, required => 1);
+  has StackId => (is => 'ro', isa => Str);
+  has StackName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LogicalResourceId' => 1,
+                    'ResourceStatus' => 1,
+                    'ResourceType' => 1,
+                    'LastUpdatedTimestamp' => 1
+                  },
+  'types' => {
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'ResourceStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceStatusReason' => {
+                                           'type' => 'Str'
+                                         },
+               'LogicalResourceId' => {
+                                        'type' => 'Str'
+                                      },
+               'StackName' => {
+                                'type' => 'Str'
+                              },
+               'DriftInformation' => {
+                                       'type' => 'CloudFormation_StackResourceDriftInformation',
+                                       'class' => 'Paws::CloudFormation::StackResourceDriftInformation'
+                                     },
+               'Metadata' => {
+                               'type' => 'Str'
+                             },
+               'PhysicalResourceId' => {
+                                         'type' => 'Str'
+                                       },
+               'LastUpdatedTimestamp' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +105,7 @@ Contains detailed information about the specified stack resource.
   User defined description associated with the resource.
 
 
-=head2 DriftInformation => L<Paws::CloudFormation::StackResourceDriftInformation>
+=head2 DriftInformation => CloudFormation_StackResourceDriftInformation
 
   Information about whether the resource's actual configuration differs,
 or has I<drifted>, from its expected configuration, as defined in the

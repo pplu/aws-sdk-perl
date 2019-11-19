@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::SES::IdentityVerificationAttributes;
-  use Moose;
-  has VerificationStatus => (is => 'ro', isa => 'Str', required => 1);
-  has VerificationToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has VerificationStatus => (is => 'ro', isa => Str, required => 1);
+  has VerificationToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VerificationToken' => {
+                                        'type' => 'Str'
+                                      },
+               'VerificationStatus' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'VerificationStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

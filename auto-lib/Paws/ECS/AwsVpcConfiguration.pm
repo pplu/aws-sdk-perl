@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::ECS::AwsVpcConfiguration;
-  use Moose;
-  has AssignPublicIp => (is => 'ro', isa => 'Str', request_name => 'assignPublicIp', traits => ['NameInRequest']);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ECS::Types qw//;
+  has AssignPublicIp => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Subnets => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subnets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'AssignPublicIp' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Subnets' => 'subnets',
+                       'SecurityGroups' => 'securityGroups',
+                       'AssignPublicIp' => 'assignPublicIp'
+                     },
+  'IsRequired' => {
+                    'Subnets' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

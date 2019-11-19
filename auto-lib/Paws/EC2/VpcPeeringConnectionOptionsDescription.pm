@@ -1,8 +1,33 @@
 package Paws::EC2::VpcPeeringConnectionOptionsDescription;
-  use Moose;
-  has AllowDnsResolutionFromRemoteVpc => (is => 'ro', isa => 'Bool', request_name => 'allowDnsResolutionFromRemoteVpc', traits => ['NameInRequest']);
-  has AllowEgressFromLocalClassicLinkToRemoteVpc => (is => 'ro', isa => 'Bool', request_name => 'allowEgressFromLocalClassicLinkToRemoteVpc', traits => ['NameInRequest']);
-  has AllowEgressFromLocalVpcToRemoteClassicLink => (is => 'ro', isa => 'Bool', request_name => 'allowEgressFromLocalVpcToRemoteClassicLink', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool/;
+  use Paws::EC2::Types qw//;
+  has AllowDnsResolutionFromRemoteVpc => (is => 'ro', isa => Bool);
+  has AllowEgressFromLocalClassicLinkToRemoteVpc => (is => 'ro', isa => Bool);
+  has AllowEgressFromLocalVpcToRemoteClassicLink => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AllowEgressFromLocalClassicLinkToRemoteVpc' => 'allowEgressFromLocalClassicLinkToRemoteVpc',
+                       'AllowEgressFromLocalVpcToRemoteClassicLink' => 'allowEgressFromLocalVpcToRemoteClassicLink',
+                       'AllowDnsResolutionFromRemoteVpc' => 'allowDnsResolutionFromRemoteVpc'
+                     },
+  'types' => {
+               'AllowDnsResolutionFromRemoteVpc' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'AllowEgressFromLocalVpcToRemoteClassicLink' => {
+                                                                 'type' => 'Bool'
+                                                               },
+               'AllowEgressFromLocalClassicLinkToRemoteVpc' => {
+                                                                 'type' => 'Bool'
+                                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

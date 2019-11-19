@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Translate::TerminologyDataLocation;
-  use Moose;
-  has Location => (is => 'ro', isa => 'Str', required => 1);
-  has RepositoryType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Translate::Types qw//;
+  has Location => (is => 'ro', isa => Str, required => 1);
+  has RepositoryType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RepositoryType' => 1,
+                    'Location' => 1
+                  },
+  'types' => {
+               'RepositoryType' => {
+                                     'type' => 'Str'
+                                   },
+               'Location' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

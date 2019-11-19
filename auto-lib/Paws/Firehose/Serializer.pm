@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Firehose::Serializer;
-  use Moose;
-  has OrcSerDe => (is => 'ro', isa => 'Paws::Firehose::OrcSerDe');
-  has ParquetSerDe => (is => 'ro', isa => 'Paws::Firehose::ParquetSerDe');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Firehose::Types qw/Firehose_OrcSerDe Firehose_ParquetSerDe/;
+  has OrcSerDe => (is => 'ro', isa => Firehose_OrcSerDe);
+  has ParquetSerDe => (is => 'ro', isa => Firehose_ParquetSerDe);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParquetSerDe' => {
+                                   'class' => 'Paws::Firehose::ParquetSerDe',
+                                   'type' => 'Firehose_ParquetSerDe'
+                                 },
+               'OrcSerDe' => {
+                               'type' => 'Firehose_OrcSerDe',
+                               'class' => 'Paws::Firehose::OrcSerDe'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,14 +64,14 @@ and the Parquet SerDe
 =head1 ATTRIBUTES
 
 
-=head2 OrcSerDe => L<Paws::Firehose::OrcSerDe>
+=head2 OrcSerDe => Firehose_OrcSerDe
 
   A serializer to use for converting data to the ORC format before
 storing it in Amazon S3. For more information, see Apache ORC
 (https://orc.apache.org/docs/).
 
 
-=head2 ParquetSerDe => L<Paws::Firehose::ParquetSerDe>
+=head2 ParquetSerDe => Firehose_ParquetSerDe
 
   A serializer to use for converting data to the Parquet format before
 storing it in Amazon S3. For more information, see Apache Parquet

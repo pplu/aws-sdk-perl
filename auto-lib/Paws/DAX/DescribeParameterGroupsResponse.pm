@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DAX::DescribeParameterGroupsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::DAX::ParameterGroup]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DAX::Types qw/DAX_ParameterGroup/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ParameterGroups => (is => 'ro', isa => ArrayRef[DAX_ParameterGroup]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ParameterGroups' => {
+                                      'class' => 'Paws::DAX::ParameterGroup',
+                                      'type' => 'ArrayRef[DAX_ParameterGroup]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +42,7 @@ Paws::DAX::DescribeParameterGroupsResponse
 Provides an identifier to allow retrieval of paginated results.
 
 
-=head2 ParameterGroups => ArrayRef[L<Paws::DAX::ParameterGroup>]
+=head2 ParameterGroups => ArrayRef[DAX_ParameterGroup]
 
 An array of parameter groups. Each element in the array represents one
 parameter group.

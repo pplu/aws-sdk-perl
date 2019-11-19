@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::Forecast::FeaturizationConfig;
-  use Moose;
-  has Featurizations => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::Featurization]');
-  has ForecastDimensions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ForecastFrequency => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Undef/;
+  use Paws::Forecast::Types qw/Forecast_Featurization/;
+  has Featurizations => (is => 'ro', isa => ArrayRef[Forecast_Featurization]);
+  has ForecastDimensions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ForecastFrequency => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ForecastFrequency' => 1
+                  },
+  'types' => {
+               'ForecastFrequency' => {
+                                        'type' => 'Str'
+                                      },
+               'ForecastDimensions' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'Featurizations' => {
+                                     'class' => 'Paws::Forecast::Featurization',
+                                     'type' => 'ArrayRef[Forecast_Featurization]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +78,7 @@ different featurization configurations.
 =head1 ATTRIBUTES
 
 
-=head2 Featurizations => ArrayRef[L<Paws::Forecast::Featurization>]
+=head2 Featurizations => ArrayRef[Forecast_Featurization]
 
   An array of featurization (transformation) information for the fields
 of a dataset. In this release, only a single featurization is

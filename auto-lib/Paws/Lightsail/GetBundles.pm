@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::GetBundles;
-  use Moose;
-  has IncludeInactive => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeInactive' );
-  has PageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pageToken' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Lightsail::Types qw//;
+  has IncludeInactive => (is => 'ro', isa => Bool, predicate => 1);
+  has PageToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetBundles');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::GetBundlesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetBundles');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::GetBundlesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PageToken' => 'pageToken',
+                       'IncludeInactive' => 'includeInactive'
+                     },
+  'types' => {
+               'IncludeInactive' => {
+                                      'type' => 'Bool'
+                                    },
+               'PageToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

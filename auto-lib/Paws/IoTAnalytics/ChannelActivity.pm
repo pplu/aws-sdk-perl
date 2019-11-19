@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::ChannelActivity;
-  use Moose;
-  has ChannelName => (is => 'ro', isa => 'Str', request_name => 'channelName', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Next => (is => 'ro', isa => 'Str', request_name => 'next', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has ChannelName => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Next => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Next' => 'next',
+                       'ChannelName' => 'channelName',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'ChannelName' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'Next' => {
+                           'type' => 'Str'
+                         },
+               'ChannelName' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

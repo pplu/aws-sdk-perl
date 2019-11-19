@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Rekognition::CompareFacesMatch;
-  use Moose;
-  has Face => (is => 'ro', isa => 'Paws::Rekognition::ComparedFace');
-  has Similarity => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Rekognition::Types qw/Rekognition_ComparedFace/;
+  has Face => (is => 'ro', isa => Rekognition_ComparedFace);
+  has Similarity => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Face' => {
+                           'class' => 'Paws::Rekognition::ComparedFace',
+                           'type' => 'Rekognition_ComparedFace'
+                         },
+               'Similarity' => {
+                                 'type' => 'Num'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +62,7 @@ matches the face in the bounding box.
 =head1 ATTRIBUTES
 
 
-=head2 Face => L<Paws::Rekognition::ComparedFace>
+=head2 Face => Rekognition_ComparedFace
 
   Provides face metadata (bounding box and confidence that the bounding
 box actually contains a face).

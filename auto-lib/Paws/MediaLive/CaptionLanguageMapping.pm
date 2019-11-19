@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaLive::CaptionLanguageMapping;
-  use Moose;
-  has CaptionChannel => (is => 'ro', isa => 'Int', request_name => 'captionChannel', traits => ['NameInRequest'], required => 1);
-  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest'], required => 1);
-  has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaLive::Types qw//;
+  has CaptionChannel => (is => 'ro', isa => Int, required => 1);
+  has LanguageCode => (is => 'ro', isa => Str, required => 1);
+  has LanguageDescription => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LanguageDescription' => {
+                                          'type' => 'Str'
+                                        },
+               'CaptionChannel' => {
+                                     'type' => 'Int'
+                                   },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'LanguageDescription' => 'languageDescription',
+                       'CaptionChannel' => 'captionChannel',
+                       'LanguageCode' => 'languageCode'
+                     },
+  'IsRequired' => {
+                    'LanguageDescription' => 1,
+                    'CaptionChannel' => 1,
+                    'LanguageCode' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

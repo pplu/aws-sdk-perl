@@ -1,14 +1,35 @@
 
 package Paws::Greengrass::StopBulkDeployment;
-  use Moose;
-  has BulkDeploymentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'BulkDeploymentId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has BulkDeploymentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopBulkDeployment');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/bulk/deployments/{BulkDeploymentId}/$stop');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::StopBulkDeploymentResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StopBulkDeployment');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/bulk/deployments/{BulkDeploymentId}/$stop');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::StopBulkDeploymentResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BulkDeploymentId' => 1
+                  },
+  'types' => {
+               'BulkDeploymentId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'ParamInURI' => {
+                    'BulkDeploymentId' => 'BulkDeploymentId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

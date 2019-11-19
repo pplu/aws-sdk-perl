@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DataPipeline::ReportTaskRunnerHeartbeat;
-  use Moose;
-  has Hostname => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostname' );
-  has TaskrunnerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskrunnerId' , required => 1);
-  has WorkerGroup => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workerGroup' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataPipeline::Types qw//;
+  has Hostname => (is => 'ro', isa => Str, predicate => 1);
+  has TaskrunnerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WorkerGroup => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReportTaskRunnerHeartbeat');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::ReportTaskRunnerHeartbeatOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ReportTaskRunnerHeartbeat');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataPipeline::ReportTaskRunnerHeartbeatOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkerGroup' => {
+                                  'type' => 'Str'
+                                },
+               'Hostname' => {
+                               'type' => 'Str'
+                             },
+               'TaskrunnerId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'TaskrunnerId' => 1
+                  },
+  'NameInRequest' => {
+                       'WorkerGroup' => 'workerGroup',
+                       'Hostname' => 'hostname',
+                       'TaskrunnerId' => 'taskrunnerId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

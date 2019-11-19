@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceDiscovery::ListOperationsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Operations => (is => 'ro', isa => 'ArrayRef[Paws::ServiceDiscovery::OperationSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_OperationSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Operations => (is => 'ro', isa => ArrayRef[ServiceDiscovery_OperationSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Operations' => {
+                                 'type' => 'ArrayRef[ServiceDiscovery_OperationSummary]',
+                                 'class' => 'Paws::ServiceDiscovery::OperationSummary'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -28,7 +50,7 @@ subsequent groups of C<MaxResults> operations do contain operations
 that match the criteria.
 
 
-=head2 Operations => ArrayRef[L<Paws::ServiceDiscovery::OperationSummary>]
+=head2 Operations => ArrayRef[ServiceDiscovery_OperationSummary]
 
 Summary information about the operations that match the specified
 criteria.

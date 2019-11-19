@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::LakeFormation::PrincipalPermissions;
-  use Moose;
-  has Permissions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Principal => (is => 'ro', isa => 'Paws::LakeFormation::DataLakePrincipal');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::LakeFormation::Types qw/LakeFormation_DataLakePrincipal/;
+  has Permissions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Principal => (is => 'ro', isa => LakeFormation_DataLakePrincipal);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Permissions' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Principal' => {
+                                'class' => 'Paws::LakeFormation::DataLakePrincipal',
+                                'type' => 'LakeFormation_DataLakePrincipal'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Permissions granted to a principal.
   The permissions that are granted to the principal.
 
 
-=head2 Principal => L<Paws::LakeFormation::DataLakePrincipal>
+=head2 Principal => LakeFormation_DataLakePrincipal
 
   The principal who is granted permissions.
 

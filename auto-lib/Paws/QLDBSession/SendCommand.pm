@@ -1,20 +1,64 @@
+# Generated from json/callargs_class.tt
 
 package Paws::QLDBSession::SendCommand;
-  use Moose;
-  has AbortTransaction => (is => 'ro', isa => 'Paws::QLDBSession::AbortTransactionRequest');
-  has CommitTransaction => (is => 'ro', isa => 'Paws::QLDBSession::CommitTransactionRequest');
-  has EndSession => (is => 'ro', isa => 'Paws::QLDBSession::EndSessionRequest');
-  has ExecuteStatement => (is => 'ro', isa => 'Paws::QLDBSession::ExecuteStatementRequest');
-  has FetchPage => (is => 'ro', isa => 'Paws::QLDBSession::FetchPageRequest');
-  has SessionToken => (is => 'ro', isa => 'Str');
-  has StartSession => (is => 'ro', isa => 'Paws::QLDBSession::StartSessionRequest');
-  has StartTransaction => (is => 'ro', isa => 'Paws::QLDBSession::StartTransactionRequest');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::QLDBSession::Types qw/QLDBSession_StartTransactionRequest QLDBSession_EndSessionRequest QLDBSession_CommitTransactionRequest QLDBSession_AbortTransactionRequest QLDBSession_StartSessionRequest QLDBSession_FetchPageRequest QLDBSession_ExecuteStatementRequest/;
+  has AbortTransaction => (is => 'ro', isa => QLDBSession_AbortTransactionRequest, predicate => 1);
+  has CommitTransaction => (is => 'ro', isa => QLDBSession_CommitTransactionRequest, predicate => 1);
+  has EndSession => (is => 'ro', isa => QLDBSession_EndSessionRequest, predicate => 1);
+  has ExecuteStatement => (is => 'ro', isa => QLDBSession_ExecuteStatementRequest, predicate => 1);
+  has FetchPage => (is => 'ro', isa => QLDBSession_FetchPageRequest, predicate => 1);
+  has SessionToken => (is => 'ro', isa => Str, predicate => 1);
+  has StartSession => (is => 'ro', isa => QLDBSession_StartSessionRequest, predicate => 1);
+  has StartTransaction => (is => 'ro', isa => QLDBSession_StartTransactionRequest, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendCommand');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::QLDBSession::SendCommandResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendCommand');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::QLDBSession::SendCommandResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExecuteStatement' => {
+                                       'class' => 'Paws::QLDBSession::ExecuteStatementRequest',
+                                       'type' => 'QLDBSession_ExecuteStatementRequest'
+                                     },
+               'FetchPage' => {
+                                'class' => 'Paws::QLDBSession::FetchPageRequest',
+                                'type' => 'QLDBSession_FetchPageRequest'
+                              },
+               'SessionToken' => {
+                                   'type' => 'Str'
+                                 },
+               'StartTransaction' => {
+                                       'class' => 'Paws::QLDBSession::StartTransactionRequest',
+                                       'type' => 'QLDBSession_StartTransactionRequest'
+                                     },
+               'StartSession' => {
+                                   'class' => 'Paws::QLDBSession::StartSessionRequest',
+                                   'type' => 'QLDBSession_StartSessionRequest'
+                                 },
+               'CommitTransaction' => {
+                                        'class' => 'Paws::QLDBSession::CommitTransactionRequest',
+                                        'type' => 'QLDBSession_CommitTransactionRequest'
+                                      },
+               'AbortTransaction' => {
+                                       'class' => 'Paws::QLDBSession::AbortTransactionRequest',
+                                       'type' => 'QLDBSession_AbortTransactionRequest'
+                                     },
+               'EndSession' => {
+                                 'class' => 'Paws::QLDBSession::EndSessionRequest',
+                                 'type' => 'QLDBSession_EndSessionRequest'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -89,31 +133,31 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ses
 =head1 ATTRIBUTES
 
 
-=head2 AbortTransaction => L<Paws::QLDBSession::AbortTransactionRequest>
+=head2 AbortTransaction => QLDBSession_AbortTransactionRequest
 
 Command to abort the current transaction.
 
 
 
-=head2 CommitTransaction => L<Paws::QLDBSession::CommitTransactionRequest>
+=head2 CommitTransaction => QLDBSession_CommitTransactionRequest
 
 Command to commit the specified transaction.
 
 
 
-=head2 EndSession => L<Paws::QLDBSession::EndSessionRequest>
+=head2 EndSession => QLDBSession_EndSessionRequest
 
 Command to end the current session.
 
 
 
-=head2 ExecuteStatement => L<Paws::QLDBSession::ExecuteStatementRequest>
+=head2 ExecuteStatement => QLDBSession_ExecuteStatementRequest
 
 Command to execute a statement in the specified transaction.
 
 
 
-=head2 FetchPage => L<Paws::QLDBSession::FetchPageRequest>
+=head2 FetchPage => QLDBSession_FetchPageRequest
 
 Command to fetch a page.
 
@@ -130,14 +174,14 @@ during the current session.
 
 
 
-=head2 StartSession => L<Paws::QLDBSession::StartSessionRequest>
+=head2 StartSession => QLDBSession_StartSessionRequest
 
 Command to start a new session. A session token is obtained as part of
 the response.
 
 
 
-=head2 StartTransaction => L<Paws::QLDBSession::StartTransactionRequest>
+=head2 StartTransaction => QLDBSession_StartTransactionRequest
 
 Command to start a new transaction.
 

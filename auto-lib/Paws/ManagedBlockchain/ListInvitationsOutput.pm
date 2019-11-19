@@ -1,10 +1,31 @@
 
 package Paws::ManagedBlockchain::ListInvitationsOutput;
-  use Moose;
-  has Invitations => (is => 'ro', isa => 'ArrayRef[Paws::ManagedBlockchain::Invitation]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_Invitation/;
+  has Invitations => (is => 'ro', isa => ArrayRef[ManagedBlockchain_Invitation]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Invitations' => {
+                                  'class' => 'Paws::ManagedBlockchain::Invitation',
+                                  'type' => 'ArrayRef[ManagedBlockchain_Invitation]'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::ManagedBlockchain::ListInvitationsOutput
 =head1 ATTRIBUTES
 
 
-=head2 Invitations => ArrayRef[L<Paws::ManagedBlockchain::Invitation>]
+=head2 Invitations => ArrayRef[ManagedBlockchain_Invitation]
 
 The invitations for the network.
 

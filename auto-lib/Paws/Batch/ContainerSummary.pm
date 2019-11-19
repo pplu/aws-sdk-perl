@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Batch::ContainerSummary;
-  use Moose;
-  has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Batch::Types qw//;
+  has ExitCode => (is => 'ro', isa => Int);
+  has Reason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExitCode' => {
+                               'type' => 'Int'
+                             },
+               'Reason' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Reason' => 'reason',
+                       'ExitCode' => 'exitCode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

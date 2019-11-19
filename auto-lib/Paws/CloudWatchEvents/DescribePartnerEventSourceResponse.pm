@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchEvents::DescribePartnerEventSourceResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchEvents::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

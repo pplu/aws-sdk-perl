@@ -1,16 +1,66 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::Pipeline;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has AwsKmsKeyArn => (is => 'ro', isa => 'Str');
-  has ContentConfig => (is => 'ro', isa => 'Paws::ElasticTranscoder::PipelineOutputConfig');
-  has Id => (is => 'ro', isa => 'Str');
-  has InputBucket => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Notifications => (is => 'ro', isa => 'Paws::ElasticTranscoder::Notifications');
-  has OutputBucket => (is => 'ro', isa => 'Str');
-  has Role => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has ThumbnailConfig => (is => 'ro', isa => 'Paws::ElasticTranscoder::PipelineOutputConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_PipelineOutputConfig ElasticTranscoder_Notifications/;
+  has Arn => (is => 'ro', isa => Str);
+  has AwsKmsKeyArn => (is => 'ro', isa => Str);
+  has ContentConfig => (is => 'ro', isa => ElasticTranscoder_PipelineOutputConfig);
+  has Id => (is => 'ro', isa => Str);
+  has InputBucket => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Notifications => (is => 'ro', isa => ElasticTranscoder_Notifications);
+  has OutputBucket => (is => 'ro', isa => Str);
+  has Role => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has ThumbnailConfig => (is => 'ro', isa => ElasticTranscoder_PipelineOutputConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'Notifications' => {
+                                    'type' => 'ElasticTranscoder_Notifications',
+                                    'class' => 'Paws::ElasticTranscoder::Notifications'
+                                  },
+               'AwsKmsKeyArn' => {
+                                   'type' => 'Str'
+                                 },
+               'InputBucket' => {
+                                  'type' => 'Str'
+                                },
+               'ThumbnailConfig' => {
+                                      'type' => 'ElasticTranscoder_PipelineOutputConfig',
+                                      'class' => 'Paws::ElasticTranscoder::PipelineOutputConfig'
+                                    },
+               'OutputBucket' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ContentConfig' => {
+                                    'type' => 'ElasticTranscoder_PipelineOutputConfig',
+                                    'class' => 'Paws::ElasticTranscoder::PipelineOutputConfig'
+                                  },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +114,7 @@ key, or if you are using an C<Encryption:Mode> of C<aes-cbc-pkcs7>,
 C<aes-ctr>, or C<aes-gcm>.
 
 
-=head2 ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
+=head2 ContentConfig => ElasticTranscoder_PipelineOutputConfig
 
   Information about the Amazon S3 bucket in which you want Elastic
 Transcoder to save transcoded files and playlists. Either you specify
@@ -177,7 +227,7 @@ the AWS account, but uniqueness is not enforced.
 Constraints: Maximum 40 characters
 
 
-=head2 Notifications => L<Paws::ElasticTranscoder::Notifications>
+=head2 Notifications => ElasticTranscoder_Notifications
 
   The Amazon Simple Notification Service (Amazon SNS) topic that you want
 to notify to report job status.
@@ -243,7 +293,7 @@ C<Paused>: The pipeline is not currently processing jobs.
 
 
 
-=head2 ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
+=head2 ThumbnailConfig => ElasticTranscoder_PipelineOutputConfig
 
   Information about the Amazon S3 bucket in which you want Elastic
 Transcoder to save thumbnail files. Either you specify both

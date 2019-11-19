@@ -1,9 +1,32 @@
 package Paws::EC2::ClientData;
-  use Moose;
-  has Comment => (is => 'ro', isa => 'Str');
-  has UploadEnd => (is => 'ro', isa => 'Str');
-  has UploadSize => (is => 'ro', isa => 'Num');
-  has UploadStart => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str Num/;
+  use Paws::EC2::Types qw//;
+  has Comment => (is => 'ro', isa => Str);
+  has UploadEnd => (is => 'ro', isa => Str);
+  has UploadSize => (is => 'ro', isa => Num);
+  has UploadStart => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UploadSize' => {
+                                 'type' => 'Num'
+                               },
+               'UploadStart' => {
+                                  'type' => 'Str'
+                                },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'UploadEnd' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

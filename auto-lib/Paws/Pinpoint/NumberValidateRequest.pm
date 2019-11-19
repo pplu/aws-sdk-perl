@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::NumberValidateRequest;
-  use Moose;
-  has IsoCountryCode => (is => 'ro', isa => 'Str');
-  has PhoneNumber => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has IsoCountryCode => (is => 'ro', isa => Str);
+  has PhoneNumber => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsoCountryCode' => {
+                                     'type' => 'Str'
+                                   },
+               'PhoneNumber' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

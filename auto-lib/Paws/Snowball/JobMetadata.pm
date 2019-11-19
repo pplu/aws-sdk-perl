@@ -1,22 +1,92 @@
+# Generated from default/object.tt
 package Paws::Snowball::JobMetadata;
-  use Moose;
-  has AddressId => (is => 'ro', isa => 'Str');
-  has ClusterId => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has DataTransferProgress => (is => 'ro', isa => 'Paws::Snowball::DataTransfer');
-  has Description => (is => 'ro', isa => 'Str');
-  has ForwardingAddressId => (is => 'ro', isa => 'Str');
-  has JobId => (is => 'ro', isa => 'Str');
-  has JobLogInfo => (is => 'ro', isa => 'Paws::Snowball::JobLogs');
-  has JobState => (is => 'ro', isa => 'Str');
-  has JobType => (is => 'ro', isa => 'Str');
-  has KmsKeyARN => (is => 'ro', isa => 'Str');
-  has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
-  has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource');
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has ShippingDetails => (is => 'ro', isa => 'Paws::Snowball::ShippingDetails');
-  has SnowballCapacityPreference => (is => 'ro', isa => 'Str');
-  has SnowballType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Snowball::Types qw/Snowball_Notification Snowball_DataTransfer Snowball_JobResource Snowball_JobLogs Snowball_ShippingDetails/;
+  has AddressId => (is => 'ro', isa => Str);
+  has ClusterId => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has DataTransferProgress => (is => 'ro', isa => Snowball_DataTransfer);
+  has Description => (is => 'ro', isa => Str);
+  has ForwardingAddressId => (is => 'ro', isa => Str);
+  has JobId => (is => 'ro', isa => Str);
+  has JobLogInfo => (is => 'ro', isa => Snowball_JobLogs);
+  has JobState => (is => 'ro', isa => Str);
+  has JobType => (is => 'ro', isa => Str);
+  has KmsKeyARN => (is => 'ro', isa => Str);
+  has Notification => (is => 'ro', isa => Snowball_Notification);
+  has Resources => (is => 'ro', isa => Snowball_JobResource);
+  has RoleARN => (is => 'ro', isa => Str);
+  has ShippingDetails => (is => 'ro', isa => Snowball_ShippingDetails);
+  has SnowballCapacityPreference => (is => 'ro', isa => Str);
+  has SnowballType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'ForwardingAddressId' => {
+                                          'type' => 'Str'
+                                        },
+               'Notification' => {
+                                   'type' => 'Snowball_Notification',
+                                   'class' => 'Paws::Snowball::Notification'
+                                 },
+               'SnowballType' => {
+                                   'type' => 'Str'
+                                 },
+               'AddressId' => {
+                                'type' => 'Str'
+                              },
+               'JobState' => {
+                               'type' => 'Str'
+                             },
+               'ShippingDetails' => {
+                                      'class' => 'Paws::Snowball::ShippingDetails',
+                                      'type' => 'Snowball_ShippingDetails'
+                                    },
+               'Resources' => {
+                                'type' => 'Snowball_JobResource',
+                                'class' => 'Paws::Snowball::JobResource'
+                              },
+               'ClusterId' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DataTransferProgress' => {
+                                           'class' => 'Paws::Snowball::DataTransfer',
+                                           'type' => 'Snowball_DataTransfer'
+                                         },
+               'JobType' => {
+                              'type' => 'Str'
+                            },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'KmsKeyARN' => {
+                                'type' => 'Str'
+                              },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'SnowballCapacityPreference' => {
+                                                 'type' => 'Str'
+                                               },
+               'JobLogInfo' => {
+                                 'type' => 'Snowball_JobLogs',
+                                 'class' => 'Paws::Snowball::JobLogs'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +141,7 @@ C<CID123e4567-e89b-12d3-a456-426655440000>.
   The creation date for this job.
 
 
-=head2 DataTransferProgress => L<Paws::Snowball::DataTransfer>
+=head2 DataTransferProgress => Snowball_DataTransfer
 
   A value that defines the real-time status of a Snowball's data transfer
 while the device is at AWS. This data is only available while a job has
@@ -96,7 +166,7 @@ regions.
 C<JID123e4567-e89b-12d3-a456-426655440000>.
 
 
-=head2 JobLogInfo => L<Paws::Snowball::JobLogs>
+=head2 JobLogInfo => Snowball_JobLogs
 
   Links to Amazon S3 presigned URLs for the job report and logs. For
 import jobs, the PDF job report becomes available at the end of the
@@ -124,7 +194,7 @@ CreateKey
 API action in AWS KMS.
 
 
-=head2 Notification => L<Paws::Snowball::Notification>
+=head2 Notification => Snowball_Notification
 
   The Amazon Simple Notification Service (Amazon SNS) notification
 settings associated with a specific job. The C<Notification> object is
@@ -132,7 +202,7 @@ returned as a part of the response syntax of the C<DescribeJob> action
 in the C<JobMetadata> data type.
 
 
-=head2 Resources => L<Paws::Snowball::JobResource>
+=head2 Resources => Snowball_JobResource
 
   An array of C<S3Resource> objects. Each C<S3Resource> object represents
 an Amazon S3 bucket that your transferred data will be exported from or
@@ -147,7 +217,7 @@ CreateRole
 API action in AWS Identity and Access Management (IAM).
 
 
-=head2 ShippingDetails => L<Paws::Snowball::ShippingDetails>
+=head2 ShippingDetails => Snowball_ShippingDetails
 
   A job's shipping information, including inbound and outbound tracking
 numbers and shipping speed options.

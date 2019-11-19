@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::EMR::AddJobFlowSteps;
-  use Moose;
-  has JobFlowId => (is => 'ro', isa => 'Str', required => 1);
-  has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepConfig]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EMR::Types qw/EMR_StepConfig/;
+  has JobFlowId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Steps => (is => 'ro', isa => ArrayRef[EMR_StepConfig], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddJobFlowSteps');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::AddJobFlowStepsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddJobFlowSteps');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EMR::AddJobFlowStepsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobFlowId' => {
+                                'type' => 'Str'
+                              },
+               'Steps' => {
+                            'type' => 'ArrayRef[EMR_StepConfig]',
+                            'class' => 'Paws::EMR::StepConfig'
+                          }
+             },
+  'IsRequired' => {
+                    'JobFlowId' => 1,
+                    'Steps' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +97,7 @@ returned by RunJobFlow and can also be obtained from ListClusters.
 
 
 
-=head2 B<REQUIRED> Steps => ArrayRef[L<Paws::EMR::StepConfig>]
+=head2 B<REQUIRED> Steps => ArrayRef[EMR_StepConfig]
 
 A list of StepConfig to be executed by the job flow.
 

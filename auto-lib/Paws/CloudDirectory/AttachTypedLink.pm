@@ -1,18 +1,59 @@
 
 package Paws::CloudDirectory::AttachTypedLink;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeNameAndValue]', required => 1);
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has SourceObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has TargetObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has TypedLinkFacet => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSchemaAndFacetName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_AttributeNameAndValue CloudDirectory_TypedLinkSchemaAndFacetName CloudDirectory_ObjectReference/;
+  has Attributes => (is => 'ro', isa => ArrayRef[CloudDirectory_AttributeNameAndValue], required => 1, predicate => 1);
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1, predicate => 1);
+  has TargetObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1, predicate => 1);
+  has TypedLinkFacet => (is => 'ro', isa => CloudDirectory_TypedLinkSchemaAndFacetName, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachTypedLink');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/attach');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::AttachTypedLinkResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AttachTypedLink');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/attach');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::AttachTypedLinkResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     },
+  'IsRequired' => {
+                    'Attributes' => 1,
+                    'TypedLinkFacet' => 1,
+                    'TargetObjectReference' => 1,
+                    'DirectoryArn' => 1,
+                    'SourceObjectReference' => 1
+                  },
+  'types' => {
+               'Attributes' => {
+                                 'type' => 'ArrayRef[CloudDirectory_AttributeNameAndValue]',
+                                 'class' => 'Paws::CloudDirectory::AttributeNameAndValue'
+                               },
+               'TypedLinkFacet' => {
+                                     'class' => 'Paws::CloudDirectory::TypedLinkSchemaAndFacetName',
+                                     'type' => 'CloudDirectory_TypedLinkSchemaAndFacetName'
+                                   },
+               'TargetObjectReference' => {
+                                            'type' => 'CloudDirectory_ObjectReference',
+                                            'class' => 'Paws::CloudDirectory::ObjectReference'
+                                          },
+               'SourceObjectReference' => {
+                                            'class' => 'Paws::CloudDirectory::ObjectReference',
+                                            'type' => 'CloudDirectory_ObjectReference'
+                                          },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +114,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::CloudDirectory::AttributeNameAndValue>]
+=head2 B<REQUIRED> Attributes => ArrayRef[CloudDirectory_AttributeNameAndValue]
 
 A set of attributes that are associated with the typed link.
 
@@ -86,19 +127,19 @@ attach the typed link.
 
 
 
-=head2 B<REQUIRED> SourceObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> SourceObjectReference => CloudDirectory_ObjectReference
 
 Identifies the source object that the typed link will attach to.
 
 
 
-=head2 B<REQUIRED> TargetObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> TargetObjectReference => CloudDirectory_ObjectReference
 
 Identifies the target object that the typed link will attach to.
 
 
 
-=head2 B<REQUIRED> TypedLinkFacet => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>
+=head2 B<REQUIRED> TypedLinkFacet => CloudDirectory_TypedLinkSchemaAndFacetName
 
 Identifies the typed link facet that is associated with the typed link.
 

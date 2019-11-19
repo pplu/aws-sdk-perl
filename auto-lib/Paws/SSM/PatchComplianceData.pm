@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::SSM::PatchComplianceData;
-  use Moose;
-  has Classification => (is => 'ro', isa => 'Str', required => 1);
-  has InstalledTime => (is => 'ro', isa => 'Str', required => 1);
-  has KBId => (is => 'ro', isa => 'Str', required => 1);
-  has Severity => (is => 'ro', isa => 'Str', required => 1);
-  has State => (is => 'ro', isa => 'Str', required => 1);
-  has Title => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has Classification => (is => 'ro', isa => Str, required => 1);
+  has InstalledTime => (is => 'ro', isa => Str, required => 1);
+  has KBId => (is => 'ro', isa => Str, required => 1);
+  has Severity => (is => 'ro', isa => Str, required => 1);
+  has State => (is => 'ro', isa => Str, required => 1);
+  has Title => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Classification' => {
+                                     'type' => 'Str'
+                                   },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'KBId' => {
+                           'type' => 'Str'
+                         },
+               'Severity' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'InstalledTime' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'Severity' => 1,
+                    'InstalledTime' => 1,
+                    'State' => 1,
+                    'Title' => 1,
+                    'KBId' => 1,
+                    'Classification' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

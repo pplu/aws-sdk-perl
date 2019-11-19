@@ -1,17 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Datasync::CreateLocationNfs;
-  use Moose;
-  has MountOptions => (is => 'ro', isa => 'Paws::Datasync::NfsMountOptions');
-  has OnPremConfig => (is => 'ro', isa => 'Paws::Datasync::OnPremConfig', required => 1);
-  has ServerHostname => (is => 'ro', isa => 'Str', required => 1);
-  has Subdirectory => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TagListEntry]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Datasync::Types qw/Datasync_OnPremConfig Datasync_NfsMountOptions Datasync_TagListEntry/;
+  has MountOptions => (is => 'ro', isa => Datasync_NfsMountOptions, predicate => 1);
+  has OnPremConfig => (is => 'ro', isa => Datasync_OnPremConfig, required => 1, predicate => 1);
+  has ServerHostname => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Subdirectory => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Datasync_TagListEntry], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLocationNfs');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Datasync::CreateLocationNfsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLocationNfs');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Datasync::CreateLocationNfsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerHostname' => {
+                                     'type' => 'Str'
+                                   },
+               'OnPremConfig' => {
+                                   'type' => 'Datasync_OnPremConfig',
+                                   'class' => 'Paws::Datasync::OnPremConfig'
+                                 },
+               'Tags' => {
+                           'type' => 'ArrayRef[Datasync_TagListEntry]',
+                           'class' => 'Paws::Datasync::TagListEntry'
+                         },
+               'MountOptions' => {
+                                   'class' => 'Paws::Datasync::NfsMountOptions',
+                                   'type' => 'Datasync_NfsMountOptions'
+                                 },
+               'Subdirectory' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'OnPremConfig' => 1,
+                    'ServerHostname' => 1,
+                    'Subdirectory' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,13 +100,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 =head1 ATTRIBUTES
 
 
-=head2 MountOptions => L<Paws::Datasync::NfsMountOptions>
+=head2 MountOptions => Datasync_NfsMountOptions
 
 The NFS mount options that DataSync can use to mount your NFS share.
 
 
 
-=head2 B<REQUIRED> OnPremConfig => L<Paws::Datasync::OnPremConfig>
+=head2 B<REQUIRED> OnPremConfig => Datasync_OnPremConfig
 
 Contains a list of Amazon Resource Names (ARNs) of agents that are used
 to connect to an NFS server.
@@ -115,7 +151,7 @@ documentation.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]
+=head2 Tags => ArrayRef[Datasync_TagListEntry]
 
 The key-value pair that represents the tag that you want to add to the
 location. The value can be an empty string. We recommend using tags to

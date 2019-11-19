@@ -1,17 +1,47 @@
 
 package Paws::IoT::UpdateThingGroupsForThing;
-  use Moose;
-  has OverrideDynamicGroups => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'overrideDynamicGroups');
-  has ThingGroupsToAdd => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'thingGroupsToAdd');
-  has ThingGroupsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'thingGroupsToRemove');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingName');
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::IoT::Types qw//;
+  has OverrideDynamicGroups => (is => 'ro', isa => Bool, predicate => 1);
+  has ThingGroupsToAdd => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ThingGroupsToRemove => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateThingGroupsForThing');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/thing-groups/updateThingGroupsForThing');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::UpdateThingGroupsForThingResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateThingGroupsForThing');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/thing-groups/updateThingGroupsForThing');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::UpdateThingGroupsForThingResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'ThingGroupsToAdd' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'OverrideDynamicGroups' => {
+                                            'type' => 'Bool'
+                                          },
+               'ThingGroupsToRemove' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        }
+             },
+  'NameInRequest' => {
+                       'ThingGroupsToRemove' => 'thingGroupsToRemove',
+                       'OverrideDynamicGroups' => 'overrideDynamicGroups',
+                       'ThingName' => 'thingName',
+                       'ThingGroupsToAdd' => 'thingGroupsToAdd'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

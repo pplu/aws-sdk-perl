@@ -1,16 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECR::SetRepositoryPolicy;
-  use Moose;
-  has Force => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'force' );
-  has PolicyText => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyText' , required => 1);
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ECR::Types qw//;
+  has Force => (is => 'ro', isa => Bool, predicate => 1);
+  has PolicyText => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RegistryId => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetRepositoryPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::SetRepositoryPolicyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetRepositoryPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECR::SetRepositoryPolicyResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'Force' => {
+                            'type' => 'Bool'
+                          },
+               'PolicyText' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'PolicyText' => 1,
+                    'RepositoryName' => 1
+                  },
+  'NameInRequest' => {
+                       'RegistryId' => 'registryId',
+                       'RepositoryName' => 'repositoryName',
+                       'Force' => 'force',
+                       'PolicyText' => 'policyText'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

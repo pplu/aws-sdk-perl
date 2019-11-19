@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::Greengrass::FunctionConfiguration;
-  use Moose;
-  has EncodingType => (is => 'ro', isa => 'Str');
-  has Environment => (is => 'ro', isa => 'Paws::Greengrass::FunctionConfigurationEnvironment');
-  has ExecArgs => (is => 'ro', isa => 'Str');
-  has Executable => (is => 'ro', isa => 'Str');
-  has MemorySize => (is => 'ro', isa => 'Int');
-  has Pinned => (is => 'ro', isa => 'Bool');
-  has Timeout => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::Greengrass::Types qw/Greengrass_FunctionConfigurationEnvironment/;
+  has EncodingType => (is => 'ro', isa => Str);
+  has Environment => (is => 'ro', isa => Greengrass_FunctionConfigurationEnvironment);
+  has ExecArgs => (is => 'ro', isa => Str);
+  has Executable => (is => 'ro', isa => Str);
+  has MemorySize => (is => 'ro', isa => Int);
+  has Pinned => (is => 'ro', isa => Bool);
+  has Timeout => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Pinned' => {
+                             'type' => 'Bool'
+                           },
+               'ExecArgs' => {
+                               'type' => 'Str'
+                             },
+               'Environment' => {
+                                  'class' => 'Paws::Greengrass::FunctionConfigurationEnvironment',
+                                  'type' => 'Greengrass_FunctionConfigurationEnvironment'
+                                },
+               'MemorySize' => {
+                                 'type' => 'Int'
+                               },
+               'Executable' => {
+                                 'type' => 'Str'
+                               },
+               'Timeout' => {
+                              'type' => 'Int'
+                            },
+               'EncodingType' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +84,7 @@ The configuration of the Lambda function.
 default is ''json''.
 
 
-=head2 Environment => L<Paws::Greengrass::FunctionConfigurationEnvironment>
+=head2 Environment => Greengrass_FunctionConfigurationEnvironment
 
   The environment configuration of the function.
 

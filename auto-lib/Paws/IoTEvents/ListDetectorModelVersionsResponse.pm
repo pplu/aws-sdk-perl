@@ -1,10 +1,35 @@
 
 package Paws::IoTEvents::ListDetectorModelVersionsResponse;
-  use Moose;
-  has DetectorModelVersionSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::DetectorModelVersionSummary]', traits => ['NameInRequest'], request_name => 'detectorModelVersionSummaries');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTEvents::Types qw/IoTEvents_DetectorModelVersionSummary/;
+  has DetectorModelVersionSummaries => (is => 'ro', isa => ArrayRef[IoTEvents_DetectorModelVersionSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DetectorModelVersionSummaries' => {
+                                                    'class' => 'Paws::IoTEvents::DetectorModelVersionSummary',
+                                                    'type' => 'ArrayRef[IoTEvents_DetectorModelVersionSummary]'
+                                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'DetectorModelVersionSummaries' => 'detectorModelVersionSummaries'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::IoTEvents::ListDetectorModelVersionsResponse
 =head1 ATTRIBUTES
 
 
-=head2 DetectorModelVersionSummaries => ArrayRef[L<Paws::IoTEvents::DetectorModelVersionSummary>]
+=head2 DetectorModelVersionSummaries => ArrayRef[IoTEvents_DetectorModelVersionSummary]
 
 Summary information about the detector model versions.
 

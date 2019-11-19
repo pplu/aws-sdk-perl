@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::RDS::ScalingConfiguration;
-  use Moose;
-  has AutoPause => (is => 'ro', isa => 'Bool');
-  has MaxCapacity => (is => 'ro', isa => 'Int');
-  has MinCapacity => (is => 'ro', isa => 'Int');
-  has SecondsUntilAutoPause => (is => 'ro', isa => 'Int');
-  has TimeoutAction => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Int Str/;
+  use Paws::RDS::Types qw//;
+  has AutoPause => (is => 'ro', isa => Bool);
+  has MaxCapacity => (is => 'ro', isa => Int);
+  has MinCapacity => (is => 'ro', isa => Int);
+  has SecondsUntilAutoPause => (is => 'ro', isa => Int);
+  has TimeoutAction => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecondsUntilAutoPause' => {
+                                            'type' => 'Int'
+                                          },
+               'MaxCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'TimeoutAction' => {
+                                    'type' => 'Str'
+                                  },
+               'AutoPause' => {
+                                'type' => 'Bool'
+                              },
+               'MinCapacity' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,8 +89,11 @@ restored when there is a request to connect to it.
   The maximum capacity for an Aurora DB cluster in C<serverless> DB
 engine mode.
 
-Valid capacity values are C<1>, C<2>, C<4>, C<8>, C<16>, C<32>, C<64>,
-C<128>, and C<256>.
+For Aurora MySQL, valid capacity values are C<1>, C<2>, C<4>, C<8>,
+C<16>, C<32>, C<64>, C<128>, and C<256>.
+
+For Aurora PostgreSQL, valid capacity values are C<2>, C<4>, C<8>,
+C<16>, C<32>, C<64>, C<192>, and C<384>.
 
 The maximum capacity must be greater than or equal to the minimum
 capacity.
@@ -72,8 +104,11 @@ capacity.
   The minimum capacity for an Aurora DB cluster in C<serverless> DB
 engine mode.
 
-Valid capacity values are C<1>, C<2>, C<4>, C<8>, C<16>, C<32>, C<64>,
-C<128>, and C<256>.
+For Aurora MySQL, valid capacity values are C<1>, C<2>, C<4>, C<8>,
+C<16>, C<32>, C<64>, C<128>, and C<256>.
+
+For Aurora PostgreSQL, valid capacity values are C<2>, C<4>, C<8>,
+C<16>, C<32>, C<64>, C<192>, and C<384>.
 
 The minimum capacity must be less than or equal to the maximum
 capacity.

@@ -1,8 +1,33 @@
 package Paws::EC2::InstanceCapacity;
-  use Moose;
-  has AvailableCapacity => (is => 'ro', isa => 'Int', request_name => 'availableCapacity', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has TotalCapacity => (is => 'ro', isa => 'Int', request_name => 'totalCapacity', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str/;
+  use Paws::EC2::Types qw//;
+  has AvailableCapacity => (is => 'ro', isa => Int);
+  has InstanceType => (is => 'ro', isa => Str);
+  has TotalCapacity => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TotalCapacity' => 'totalCapacity',
+                       'AvailableCapacity' => 'availableCapacity',
+                       'InstanceType' => 'instanceType'
+                     },
+  'types' => {
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'AvailableCapacity' => {
+                                        'type' => 'Int'
+                                      },
+               'TotalCapacity' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

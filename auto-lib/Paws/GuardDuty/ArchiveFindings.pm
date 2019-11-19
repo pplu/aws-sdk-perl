@@ -1,15 +1,43 @@
 
 package Paws::GuardDuty::ArchiveFindings;
-  use Moose;
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has FindingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingIds', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GuardDuty::Types qw//;
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FindingIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ArchiveFindings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/findings/archive');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::ArchiveFindingsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ArchiveFindings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/findings/archive');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::ArchiveFindingsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FindingIds' => 1,
+                    'DetectorId' => 1
+                  },
+  'NameInRequest' => {
+                       'FindingIds' => 'findingIds'
+                     },
+  'types' => {
+               'FindingIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

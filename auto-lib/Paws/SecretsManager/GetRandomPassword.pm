@@ -1,20 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SecretsManager::GetRandomPassword;
-  use Moose;
-  has ExcludeCharacters => (is => 'ro', isa => 'Str');
-  has ExcludeLowercase => (is => 'ro', isa => 'Bool');
-  has ExcludeNumbers => (is => 'ro', isa => 'Bool');
-  has ExcludePunctuation => (is => 'ro', isa => 'Bool');
-  has ExcludeUppercase => (is => 'ro', isa => 'Bool');
-  has IncludeSpace => (is => 'ro', isa => 'Bool');
-  has PasswordLength => (is => 'ro', isa => 'Int');
-  has RequireEachIncludedType => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::SecretsManager::Types qw//;
+  has ExcludeCharacters => (is => 'ro', isa => Str, predicate => 1);
+  has ExcludeLowercase => (is => 'ro', isa => Bool, predicate => 1);
+  has ExcludeNumbers => (is => 'ro', isa => Bool, predicate => 1);
+  has ExcludePunctuation => (is => 'ro', isa => Bool, predicate => 1);
+  has ExcludeUppercase => (is => 'ro', isa => Bool, predicate => 1);
+  has IncludeSpace => (is => 'ro', isa => Bool, predicate => 1);
+  has PasswordLength => (is => 'ro', isa => Int, predicate => 1);
+  has RequireEachIncludedType => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRandomPassword');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecretsManager::GetRandomPasswordResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetRandomPassword');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecretsManager::GetRandomPasswordResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExcludeUppercase' => {
+                                       'type' => 'Bool'
+                                     },
+               'RequireEachIncludedType' => {
+                                              'type' => 'Bool'
+                                            },
+               'PasswordLength' => {
+                                     'type' => 'Int'
+                                   },
+               'ExcludePunctuation' => {
+                                         'type' => 'Bool'
+                                       },
+               'IncludeSpace' => {
+                                   'type' => 'Bool'
+                                 },
+               'ExcludeNumbers' => {
+                                     'type' => 'Bool'
+                                   },
+               'ExcludeCharacters' => {
+                                        'type' => 'Str'
+                                      },
+               'ExcludeLowercase' => {
+                                       'type' => 'Bool'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

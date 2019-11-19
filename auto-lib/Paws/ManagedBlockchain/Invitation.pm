@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::Invitation;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has ExpirationDate => (is => 'ro', isa => 'Str');
-  has InvitationId => (is => 'ro', isa => 'Str');
-  has NetworkSummary => (is => 'ro', isa => 'Paws::ManagedBlockchain::NetworkSummary');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_NetworkSummary/;
+  has CreationDate => (is => 'ro', isa => Str);
+  has ExpirationDate => (is => 'ro', isa => Str);
+  has InvitationId => (is => 'ro', isa => Str);
+  has NetworkSummary => (is => 'ro', isa => ManagedBlockchain_NetworkSummary);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ExpirationDate' => {
+                                     'type' => 'Str'
+                                   },
+               'NetworkSummary' => {
+                                     'type' => 'ManagedBlockchain_NetworkSummary',
+                                     'class' => 'Paws::ManagedBlockchain::NetworkSummary'
+                                   },
+               'InvitationId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +90,7 @@ C<InvitationId>.
   The unique identifier for the invitation.
 
 
-=head2 NetworkSummary => L<Paws::ManagedBlockchain::NetworkSummary>
+=head2 NetworkSummary => ManagedBlockchain_NetworkSummary
 
   
 

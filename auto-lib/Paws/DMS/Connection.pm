@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::DMS::Connection;
-  use Moose;
-  has EndpointArn => (is => 'ro', isa => 'Str');
-  has EndpointIdentifier => (is => 'ro', isa => 'Str');
-  has LastFailureMessage => (is => 'ro', isa => 'Str');
-  has ReplicationInstanceArn => (is => 'ro', isa => 'Str');
-  has ReplicationInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw//;
+  has EndpointArn => (is => 'ro', isa => Str);
+  has EndpointIdentifier => (is => 'ro', isa => Str);
+  has LastFailureMessage => (is => 'ro', isa => Str);
+  has ReplicationInstanceArn => (is => 'ro', isa => Str);
+  has ReplicationInstanceIdentifier => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastFailureMessage' => {
+                                         'type' => 'Str'
+                                       },
+               'EndpointIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ReplicationInstanceIdentifier' => {
+                                                    'type' => 'Str'
+                                                  },
+               'EndpointArn' => {
+                                  'type' => 'Str'
+                                },
+               'ReplicationInstanceArn' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,19 +1,80 @@
 
 package Paws::S3::CreateMultipartUploadOutput;
-  use Moose;
-  has AbortDate => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-abort-date');
-  has AbortRuleId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-abort-rule-id');
-  has Bucket => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'Bucket');
-  has Key => (is => 'ro', isa => 'Str');
-  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
-  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5');
-  has SSEKMSEncryptionContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-context');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
-  has UploadId => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has AbortDate => (is => 'ro', isa => Str);
+  has AbortRuleId => (is => 'ro', isa => Str);
+  has Bucket => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has RequestCharged => (is => 'ro', isa => Str);
+  has ServerSideEncryption => (is => 'ro', isa => Str);
+  has SSECustomerAlgorithm => (is => 'ro', isa => Str);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => Str);
+  has SSEKMSEncryptionContext => (is => 'ro', isa => Str);
+  has SSEKMSKeyId => (is => 'ro', isa => Str);
+  has UploadId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'SSEKMSKeyId' => 'x-amz-server-side-encryption-aws-kms-key-id',
+                       'SSEKMSEncryptionContext' => 'x-amz-server-side-encryption-context',
+                       'AbortDate' => 'x-amz-abort-date',
+                       'AbortRuleId' => 'x-amz-abort-rule-id',
+                       'RequestCharged' => 'x-amz-request-charged',
+                       'ServerSideEncryption' => 'x-amz-server-side-encryption',
+                       'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5',
+                       'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               'AbortRuleId' => {
+                                  'type' => 'Str'
+                                },
+               'SSECustomerAlgorithm' => {
+                                           'type' => 'Str'
+                                         },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'AbortDate' => {
+                                'type' => 'Str'
+                              },
+               'SSEKMSEncryptionContext' => {
+                                              'type' => 'Str'
+                                            },
+               'SSEKMSKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'ServerSideEncryption' => {
+                                           'type' => 'Str'
+                                         },
+               'RequestCharged' => {
+                                     'type' => 'Str'
+                                   },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'SSECustomerKeyMD5' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'Bucket' => 'Bucket'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

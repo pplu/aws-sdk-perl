@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DBSecurityGroupMessage;
-  use Moose;
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroup]', request_name => 'DBSecurityGroup', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_DBSecurityGroup/;
+  has DBSecurityGroups => (is => 'ro', isa => ArrayRef[RDS_DBSecurityGroup]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'DBSecurityGroups' => {
+                                       'class' => 'Paws::RDS::DBSecurityGroup',
+                                       'type' => 'ArrayRef[RDS_DBSecurityGroup]'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DBSecurityGroups' => 'DBSecurityGroup'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RDS::DBSecurityGroupMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBSecurityGroups => ArrayRef[L<Paws::RDS::DBSecurityGroup>]
+=head2 DBSecurityGroups => ArrayRef[RDS_DBSecurityGroup]
 
 A list of C<DBSecurityGroup> instances.
 

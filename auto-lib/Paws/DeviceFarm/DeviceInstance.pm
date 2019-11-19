@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::DeviceInstance;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has DeviceArn => (is => 'ro', isa => 'Str', request_name => 'deviceArn', traits => ['NameInRequest']);
-  has InstanceProfile => (is => 'ro', isa => 'Paws::DeviceFarm::InstanceProfile', request_name => 'instanceProfile', traits => ['NameInRequest']);
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'labels', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Udid => (is => 'ro', isa => 'Str', request_name => 'udid', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_InstanceProfile/;
+  has Arn => (is => 'ro', isa => Str);
+  has DeviceArn => (is => 'ro', isa => Str);
+  has InstanceProfile => (is => 'ro', isa => DeviceFarm_InstanceProfile);
+  has Labels => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Status => (is => 'ro', isa => Str);
+  has Udid => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Udid' => {
+                           'type' => 'Str'
+                         },
+               'InstanceProfile' => {
+                                      'type' => 'DeviceFarm_InstanceProfile',
+                                      'class' => 'Paws::DeviceFarm::InstanceProfile'
+                                    },
+               'DeviceArn' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Labels' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'InstanceProfile' => 'instanceProfile',
+                       'Udid' => 'udid',
+                       'Arn' => 'arn',
+                       'DeviceArn' => 'deviceArn',
+                       'Labels' => 'labels',
+                       'Status' => 'status'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +92,7 @@ Represents the device instance.
   The Amazon Resource Name (ARN) of the device.
 
 
-=head2 InstanceProfile => L<Paws::DeviceFarm::InstanceProfile>
+=head2 InstanceProfile => DeviceFarm_InstanceProfile
 
   A object containing information about the instance profile.
 

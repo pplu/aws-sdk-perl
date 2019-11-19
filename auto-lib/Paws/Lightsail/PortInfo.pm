@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Lightsail::PortInfo;
-  use Moose;
-  has FromPort => (is => 'ro', isa => 'Int', request_name => 'fromPort', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
-  has ToPort => (is => 'ro', isa => 'Int', request_name => 'toPort', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Lightsail::Types qw//;
+  has FromPort => (is => 'ro', isa => Int);
+  has Protocol => (is => 'ro', isa => Str);
+  has ToPort => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FromPort' => 'fromPort',
+                       'Protocol' => 'protocol',
+                       'ToPort' => 'toPort'
+                     },
+  'types' => {
+               'FromPort' => {
+                               'type' => 'Int'
+                             },
+               'ToPort' => {
+                             'type' => 'Int'
+                           },
+               'Protocol' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

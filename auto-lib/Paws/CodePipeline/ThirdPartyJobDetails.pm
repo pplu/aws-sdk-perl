@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ThirdPartyJobDetails;
-  use Moose;
-  has Data => (is => 'ro', isa => 'Paws::CodePipeline::ThirdPartyJobData', request_name => 'data', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Nonce => (is => 'ro', isa => 'Str', request_name => 'nonce', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ThirdPartyJobData/;
+  has Data => (is => 'ro', isa => CodePipeline_ThirdPartyJobData);
+  has Id => (is => 'ro', isa => Str);
+  has Nonce => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Nonce' => {
+                            'type' => 'Str'
+                          },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Data' => {
+                           'class' => 'Paws::CodePipeline::ThirdPartyJobData',
+                           'type' => 'CodePipeline_ThirdPartyJobData'
+                         }
+             },
+  'NameInRequest' => {
+                       'Nonce' => 'nonce',
+                       'Id' => 'id',
+                       'Data' => 'data'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +68,7 @@ request.
 =head1 ATTRIBUTES
 
 
-=head2 Data => L<Paws::CodePipeline::ThirdPartyJobData>
+=head2 Data => CodePipeline_ThirdPartyJobData
 
   The data to be returned by the third party job worker.
 

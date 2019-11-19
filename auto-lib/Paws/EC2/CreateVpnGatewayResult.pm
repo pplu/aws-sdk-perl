@@ -1,9 +1,31 @@
 
 package Paws::EC2::CreateVpnGatewayResult;
-  use Moose;
-  has VpnGateway => (is => 'ro', isa => 'Paws::EC2::VpnGateway', request_name => 'vpnGateway', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_VpnGateway/;
+  has VpnGateway => (is => 'ro', isa => EC2_VpnGateway);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VpnGateway' => {
+                                 'type' => 'EC2_VpnGateway',
+                                 'class' => 'Paws::EC2::VpnGateway'
+                               }
+             },
+  'NameInRequest' => {
+                       'VpnGateway' => 'vpnGateway'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::CreateVpnGatewayResult
 =head1 ATTRIBUTES
 
 
-=head2 VpnGateway => L<Paws::EC2::VpnGateway>
+=head2 VpnGateway => EC2_VpnGateway
 
 Information about the virtual private gateway.
 

@@ -1,21 +1,72 @@
 
 package Paws::S3::PutObjectTagging;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has Tagging => (is => 'ro', isa => 'Paws::S3::Tagging', required => 1);
-  has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw/S3_Tagging/;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentLength => (is => 'ro', isa => Int, predicate => 1);
+  has ContentMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tagging => (is => 'ro', isa => S3_Tagging, required => 1, predicate => 1);
+  has VersionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutObjectTagging');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}?tagging');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectTaggingOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutObjectTagging');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}?tagging');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::PutObjectTaggingOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'AutoInHeader' => {
+                      'ContentMD5' => {
+                                        'header_name' => 'Content-MD5',
+                                        'auto' => 'MD5'
+                                      }
+                    },
+  'types' => {
+               'Tagging' => {
+                              'class' => 'Paws::S3::Tagging',
+                              'type' => 'S3_Tagging'
+                            },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'ContentMD5' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInQuery' => {
+                      'VersionId' => 'versionId'
+                    },
+  'IsRequired' => {
+                    'Tagging' => 1,
+                    'Bucket' => 1,
+                    'Key' => 1
+                  },
+  'ParamInHeader' => {
+                       'ContentLength' => 'Content-Length'
+                     },
+  'ParamInURI' => {
+                    'Key' => 'Key',
+                    'Bucket' => 'Bucket'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -89,7 +140,7 @@ Name of the tag.
 
 
 
-=head2 B<REQUIRED> Tagging => L<Paws::S3::Tagging>
+=head2 B<REQUIRED> Tagging => S3_Tagging
 
 Container for the TagSet and Tag elements
 

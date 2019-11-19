@@ -1,14 +1,56 @@
 
 package Paws::ApiGatewayV2::CreateIntegrationResponseResponse;
-  use Moose;
-  has ContentHandlingStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandlingStrategy');
-  has IntegrationResponseId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationResponseId');
-  has IntegrationResponseKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationResponseKey');
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::IntegrationParameters', traits => ['NameInRequest'], request_name => 'responseParameters');
-  has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGatewayV2::TemplateMap', traits => ['NameInRequest'], request_name => 'responseTemplates');
-  has TemplateSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateSelectionExpression');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_TemplateMap ApiGatewayV2_IntegrationParameters/;
+  has ContentHandlingStrategy => (is => 'ro', isa => Str);
+  has IntegrationResponseId => (is => 'ro', isa => Str);
+  has IntegrationResponseKey => (is => 'ro', isa => Str);
+  has ResponseParameters => (is => 'ro', isa => ApiGatewayV2_IntegrationParameters);
+  has ResponseTemplates => (is => 'ro', isa => ApiGatewayV2_TemplateMap);
+  has TemplateSelectionExpression => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ResponseTemplates' => 'responseTemplates',
+                       'IntegrationResponseKey' => 'integrationResponseKey',
+                       'TemplateSelectionExpression' => 'templateSelectionExpression',
+                       'ContentHandlingStrategy' => 'contentHandlingStrategy',
+                       'ResponseParameters' => 'responseParameters',
+                       'IntegrationResponseId' => 'integrationResponseId'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IntegrationResponseId' => {
+                                            'type' => 'Str'
+                                          },
+               'ResponseParameters' => {
+                                         'class' => 'Paws::ApiGatewayV2::IntegrationParameters',
+                                         'type' => 'ApiGatewayV2_IntegrationParameters'
+                                       },
+               'TemplateSelectionExpression' => {
+                                                  'type' => 'Str'
+                                                },
+               'ContentHandlingStrategy' => {
+                                              'type' => 'Str'
+                                            },
+               'IntegrationResponseKey' => {
+                                             'type' => 'Str'
+                                           },
+               'ResponseTemplates' => {
+                                        'class' => 'Paws::ApiGatewayV2::TemplateMap',
+                                        'type' => 'ApiGatewayV2_TemplateMap'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +89,7 @@ The integration response ID.
 The integration response key.
 
 
-=head2 ResponseParameters => L<Paws::ApiGatewayV2::IntegrationParameters>
+=head2 ResponseParameters => ApiGatewayV2_IntegrationParameters
 
 A key-value map specifying response parameters that are passed to the
 method response from the backend. The key is a method response header
@@ -62,7 +104,7 @@ unique response header name and JSON-expression is a valid JSON
 expression without the $ prefix.
 
 
-=head2 ResponseTemplates => L<Paws::ApiGatewayV2::TemplateMap>
+=head2 ResponseTemplates => ApiGatewayV2_TemplateMap
 
 The collection of response templates for the integration response as a
 string-to-string map of key-value pairs. Response templates are

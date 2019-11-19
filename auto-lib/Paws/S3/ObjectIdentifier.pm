@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::S3::ObjectIdentifier;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Str', required => 1);
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has Key => (is => 'ro', isa => Str, required => 1);
+  has VersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Key' => 1
+                  },
+  'types' => {
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

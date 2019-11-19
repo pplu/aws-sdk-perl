@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::Inspector::Tag;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Inspector::Types qw//;
+  has Key => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Key' => 'key',
+                       'Value' => 'value'
+                     },
+  'IsRequired' => {
+                    'Key' => 1
+                  },
+  'types' => {
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Value' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::Robomaker::DataSource;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has S3Bucket => (is => 'ro', isa => 'Str', request_name => 's3Bucket', traits => ['NameInRequest']);
-  has S3Keys => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::S3KeyOutput]', request_name => 's3Keys', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_S3KeyOutput/;
+  has Name => (is => 'ro', isa => Str);
+  has S3Bucket => (is => 'ro', isa => Str);
+  has S3Keys => (is => 'ro', isa => ArrayRef[Robomaker_S3KeyOutput]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Keys' => {
+                             'type' => 'ArrayRef[Robomaker_S3KeyOutput]',
+                             'class' => 'Paws::Robomaker::S3KeyOutput'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'S3Bucket' => 's3Bucket',
+                       'Name' => 'name',
+                       'S3Keys' => 's3Keys'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +77,7 @@ Information about a data source.
   The S3 bucket where the data files are located.
 
 
-=head2 S3Keys => ArrayRef[L<Paws::Robomaker::S3KeyOutput>]
+=head2 S3Keys => ArrayRef[Robomaker_S3KeyOutput]
 
   The list of S3 keys identifying the data source files.
 

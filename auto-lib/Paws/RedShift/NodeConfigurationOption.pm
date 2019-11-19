@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::RedShift::NodeConfigurationOption;
-  use Moose;
-  has EstimatedDiskUtilizationPercent => (is => 'ro', isa => 'Num');
-  has NodeType => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Num Str Int/;
+  use Paws::RedShift::Types qw//;
+  has EstimatedDiskUtilizationPercent => (is => 'ro', isa => Num);
+  has NodeType => (is => 'ro', isa => Str);
+  has NumberOfNodes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EstimatedDiskUtilizationPercent' => {
+                                                      'type' => 'Num'
+                                                    },
+               'NumberOfNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'NodeType' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

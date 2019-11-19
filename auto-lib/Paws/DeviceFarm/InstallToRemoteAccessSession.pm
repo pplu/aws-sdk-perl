@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::InstallToRemoteAccessSession;
-  use Moose;
-  has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' , required => 1);
-  has RemoteAccessSessionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'remoteAccessSessionArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw//;
+  has AppArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RemoteAccessSessionArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'InstallToRemoteAccessSession');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::InstallToRemoteAccessSessionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'InstallToRemoteAccessSession');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::InstallToRemoteAccessSessionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RemoteAccessSessionArn' => 1,
+                    'AppArn' => 1
+                  },
+  'NameInRequest' => {
+                       'AppArn' => 'appArn',
+                       'RemoteAccessSessionArn' => 'remoteAccessSessionArn'
+                     },
+  'types' => {
+               'AppArn' => {
+                             'type' => 'Str'
+                           },
+               'RemoteAccessSessionArn' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,87 @@
 package Paws::EC2::Host;
-  use Moose;
-  has AllocationTime => (is => 'ro', isa => 'Str', request_name => 'allocationTime', traits => ['NameInRequest']);
-  has AutoPlacement => (is => 'ro', isa => 'Str', request_name => 'autoPlacement', traits => ['NameInRequest']);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has AvailableCapacity => (is => 'ro', isa => 'Paws::EC2::AvailableCapacity', request_name => 'availableCapacity', traits => ['NameInRequest']);
-  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
-  has HostId => (is => 'ro', isa => 'Str', request_name => 'hostId', traits => ['NameInRequest']);
-  has HostProperties => (is => 'ro', isa => 'Paws::EC2::HostProperties', request_name => 'hostProperties', traits => ['NameInRequest']);
-  has HostRecovery => (is => 'ro', isa => 'Str', request_name => 'hostRecovery', traits => ['NameInRequest']);
-  has HostReservationId => (is => 'ro', isa => 'Str', request_name => 'hostReservationId', traits => ['NameInRequest']);
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HostInstance]', request_name => 'instances', traits => ['NameInRequest']);
-  has ReleaseTime => (is => 'ro', isa => 'Str', request_name => 'releaseTime', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_AvailableCapacity EC2_Tag EC2_HostInstance EC2_HostProperties/;
+  has AllocationTime => (is => 'ro', isa => Str);
+  has AutoPlacement => (is => 'ro', isa => Str);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has AvailableCapacity => (is => 'ro', isa => EC2_AvailableCapacity);
+  has ClientToken => (is => 'ro', isa => Str);
+  has HostId => (is => 'ro', isa => Str);
+  has HostProperties => (is => 'ro', isa => EC2_HostProperties);
+  has HostRecovery => (is => 'ro', isa => Str);
+  has HostReservationId => (is => 'ro', isa => Str);
+  has Instances => (is => 'ro', isa => ArrayRef[EC2_HostInstance]);
+  has ReleaseTime => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HostProperties' => {
+                                     'type' => 'EC2_HostProperties',
+                                     'class' => 'Paws::EC2::HostProperties'
+                                   },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'ReleaseTime' => {
+                                  'type' => 'Str'
+                                },
+               'AutoPlacement' => {
+                                    'type' => 'Str'
+                                  },
+               'HostReservationId' => {
+                                        'type' => 'Str'
+                                      },
+               'HostRecovery' => {
+                                   'type' => 'Str'
+                                 },
+               'Instances' => {
+                                'class' => 'Paws::EC2::HostInstance',
+                                'type' => 'ArrayRef[EC2_HostInstance]'
+                              },
+               'AllocationTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'AvailableCapacity' => {
+                                        'class' => 'Paws::EC2::AvailableCapacity',
+                                        'type' => 'EC2_AvailableCapacity'
+                                      },
+               'HostId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'AutoPlacement' => 'autoPlacement',
+                       'HostReservationId' => 'hostReservationId',
+                       'State' => 'state',
+                       'ReleaseTime' => 'releaseTime',
+                       'HostProperties' => 'hostProperties',
+                       'ClientToken' => 'clientToken',
+                       'HostRecovery' => 'hostRecovery',
+                       'Tags' => 'tagSet',
+                       'AllocationTime' => 'allocationTime',
+                       'Instances' => 'instances',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'AvailableCapacity' => 'availableCapacity',
+                       'HostId' => 'hostId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +132,7 @@ This class has no description
   The Availability Zone of the Dedicated Host.
 
 
-=head2 AvailableCapacity => L<Paws::EC2::AvailableCapacity>
+=head2 AvailableCapacity => EC2_AvailableCapacity
 
   The number of new instances that can be launched onto the Dedicated
 Host.
@@ -82,7 +151,7 @@ Idempotency
   The ID of the Dedicated Host.
 
 
-=head2 HostProperties => L<Paws::EC2::HostProperties>
+=head2 HostProperties => EC2_HostProperties
 
   The hardware specifications of the Dedicated Host.
 
@@ -99,7 +168,7 @@ Dedicated Host.
 response if the Dedicated Host doesn't have an associated reservation.
 
 
-=head2 Instances => ArrayRef[L<Paws::EC2::HostInstance>]
+=head2 Instances => ArrayRef[EC2_HostInstance]
 
   The IDs and instance type that are currently running on the Dedicated
 Host.
@@ -115,7 +184,7 @@ Host.
   The Dedicated Host's state.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the Dedicated Host.
 

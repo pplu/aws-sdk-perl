@@ -1,14 +1,47 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DBClusterBacktrack;
-  use Moose;
-  has BacktrackedFrom => (is => 'ro', isa => 'Str');
-  has BacktrackIdentifier => (is => 'ro', isa => 'Str');
-  has BacktrackRequestCreationTime => (is => 'ro', isa => 'Str');
-  has BacktrackTo => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has BacktrackedFrom => (is => 'ro', isa => Str);
+  has BacktrackIdentifier => (is => 'ro', isa => Str);
+  has BacktrackRequestCreationTime => (is => 'ro', isa => Str);
+  has BacktrackTo => (is => 'ro', isa => Str);
+  has DBClusterIdentifier => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BacktrackedFrom' => {
+                                      'type' => 'Str'
+                                    },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'BacktrackIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'BacktrackRequestCreationTime' => {
+                                                   'type' => 'Str'
+                                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'BacktrackTo' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

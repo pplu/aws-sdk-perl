@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::CreateAppResponse;
-  use Moose;
-  has ApplicationResponse => (is => 'ro', isa => 'Paws::Pinpoint::ApplicationResponse', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_ApplicationResponse/;
+  has ApplicationResponse => (is => 'ro', isa => Pinpoint_ApplicationResponse, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ApplicationResponse' => 1
+                  },
+  'types' => {
+               'ApplicationResponse' => {
+                                          'class' => 'Paws::Pinpoint::ApplicationResponse',
+                                          'type' => 'Pinpoint_ApplicationResponse'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ApplicationResponse => L<Paws::Pinpoint::ApplicationResponse>
+=head2 B<REQUIRED> ApplicationResponse => Pinpoint_ApplicationResponse
 
   
 

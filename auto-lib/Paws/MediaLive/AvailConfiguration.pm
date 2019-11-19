@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaLive::AvailConfiguration;
-  use Moose;
-  has AvailSettings => (is => 'ro', isa => 'Paws::MediaLive::AvailSettings', request_name => 'availSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_AvailSettings/;
+  has AvailSettings => (is => 'ro', isa => MediaLive_AvailSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AvailSettings' => 'availSettings'
+                     },
+  'types' => {
+               'AvailSettings' => {
+                                    'class' => 'Paws::MediaLive::AvailSettings',
+                                    'type' => 'MediaLive_AvailSettings'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Avail Configuration
 =head1 ATTRIBUTES
 
 
-=head2 AvailSettings => L<Paws::MediaLive::AvailSettings>
+=head2 AvailSettings => MediaLive_AvailSettings
 
   Ad avail settings.
 

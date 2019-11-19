@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeStar::UntagProject;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeStar::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UntagProject');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStar::UntagProjectResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UntagProject');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStar::UntagProjectResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Tags' => 1
+                  },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Tags' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

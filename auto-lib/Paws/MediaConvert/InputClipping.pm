@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::InputClipping;
-  use Moose;
-  has EndTimecode => (is => 'ro', isa => 'Str', request_name => 'endTimecode', traits => ['NameInRequest']);
-  has StartTimecode => (is => 'ro', isa => 'Str', request_name => 'startTimecode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has EndTimecode => (is => 'ro', isa => Str);
+  has StartTimecode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndTimecode' => {
+                                  'type' => 'Str'
+                                },
+               'StartTimecode' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'EndTimecode' => 'endTimecode',
+                       'StartTimecode' => 'startTimecode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

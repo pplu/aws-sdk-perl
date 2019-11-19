@@ -1,10 +1,35 @@
 
 package Paws::EC2::ConfirmProductInstanceResult;
-  use Moose;
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest',]);
-  has Return => (is => 'ro', isa => 'Bool', request_name => 'return', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has OwnerId => (is => 'ro', isa => Str);
+  has Return => (is => 'ro', isa => Bool);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Return' => {
+                             'type' => 'Bool'
+                           },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'OwnerId' => 'ownerId',
+                       'Return' => 'return'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

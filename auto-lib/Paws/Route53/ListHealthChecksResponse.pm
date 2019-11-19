@@ -1,13 +1,50 @@
 
 package Paws::Route53::ListHealthChecksResponse;
-  use Moose;
-  has HealthChecks => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HealthCheck]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has Marker => (is => 'ro', isa => 'Str', required => 1);
-  has MaxItems => (is => 'ro', isa => 'Str', required => 1);
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::Route53::Types qw/Route53_HealthCheck/;
+  has HealthChecks => (is => 'ro', isa => ArrayRef[Route53_HealthCheck], required => 1);
+  has IsTruncated => (is => 'ro', isa => Bool, required => 1);
+  has Marker => (is => 'ro', isa => Str, required => 1);
+  has MaxItems => (is => 'ro', isa => Str, required => 1);
+  has NextMarker => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'MaxItems' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'HealthChecks' => {
+                                   'type' => 'ArrayRef[Route53_HealthCheck]',
+                                   'class' => 'Paws::Route53::HealthCheck'
+                                 },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'MaxItems' => 1,
+                    'IsTruncated' => 1,
+                    'Marker' => 1,
+                    'HealthChecks' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -19,7 +56,7 @@ Paws::Route53::ListHealthChecksResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HealthChecks => ArrayRef[L<Paws::Route53::HealthCheck>]
+=head2 B<REQUIRED> HealthChecks => ArrayRef[Route53_HealthCheck]
 
 A complex type that contains one C<HealthCheck> element for each health
 check that is associated with the current AWS account.

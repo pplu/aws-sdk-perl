@@ -1,29 +1,107 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudHSM::DescribeHsmResponse;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has EniId => (is => 'ro', isa => 'Str');
-  has EniIp => (is => 'ro', isa => 'Str');
-  has HsmArn => (is => 'ro', isa => 'Str');
-  has HsmType => (is => 'ro', isa => 'Str');
-  has IamRoleArn => (is => 'ro', isa => 'Str');
-  has Partitions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SerialNumber => (is => 'ro', isa => 'Str');
-  has ServerCertLastUpdated => (is => 'ro', isa => 'Str');
-  has ServerCertUri => (is => 'ro', isa => 'Str');
-  has SoftwareVersion => (is => 'ro', isa => 'Str');
-  has SshKeyLastUpdated => (is => 'ro', isa => 'Str');
-  has SshPublicKey => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusDetails => (is => 'ro', isa => 'Str');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has SubscriptionEndDate => (is => 'ro', isa => 'Str');
-  has SubscriptionStartDate => (is => 'ro', isa => 'Str');
-  has SubscriptionType => (is => 'ro', isa => 'Str');
-  has VendorName => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudHSM::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has EniId => (is => 'ro', isa => Str);
+  has EniIp => (is => 'ro', isa => Str);
+  has HsmArn => (is => 'ro', isa => Str);
+  has HsmType => (is => 'ro', isa => Str);
+  has IamRoleArn => (is => 'ro', isa => Str);
+  has Partitions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SerialNumber => (is => 'ro', isa => Str);
+  has ServerCertLastUpdated => (is => 'ro', isa => Str);
+  has ServerCertUri => (is => 'ro', isa => Str);
+  has SoftwareVersion => (is => 'ro', isa => Str);
+  has SshKeyLastUpdated => (is => 'ro', isa => Str);
+  has SshPublicKey => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetails => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has SubscriptionEndDate => (is => 'ro', isa => Str);
+  has SubscriptionStartDate => (is => 'ro', isa => Str);
+  has SubscriptionType => (is => 'ro', isa => Str);
+  has VendorName => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SerialNumber' => {
+                                   'type' => 'Str'
+                                 },
+               'ServerCertUri' => {
+                                    'type' => 'Str'
+                                  },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'ServerCertLastUpdated' => {
+                                            'type' => 'Str'
+                                          },
+               'HsmArn' => {
+                             'type' => 'Str'
+                           },
+               'SubscriptionType' => {
+                                       'type' => 'Str'
+                                     },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'Partitions' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SubscriptionEndDate' => {
+                                          'type' => 'Str'
+                                        },
+               'VendorName' => {
+                                 'type' => 'Str'
+                               },
+               'SshKeyLastUpdated' => {
+                                        'type' => 'Str'
+                                      },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'SshPublicKey' => {
+                                   'type' => 'Str'
+                                 },
+               'SubscriptionStartDate' => {
+                                            'type' => 'Str'
+                                          },
+               'StatusDetails' => {
+                                    'type' => 'Str'
+                                  },
+               'EniId' => {
+                            'type' => 'Str'
+                          },
+               'HsmType' => {
+                              'type' => 'Str'
+                            },
+               'EniIp' => {
+                            'type' => 'Str'
+                          },
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'SoftwareVersion' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

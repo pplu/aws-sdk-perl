@@ -1,12 +1,53 @@
 package Paws::EC2::UserIdGroupPair;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
-  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
-  has PeeringStatus => (is => 'ro', isa => 'Str', request_name => 'peeringStatus', traits => ['NameInRequest']);
-  has UserId => (is => 'ro', isa => 'Str', request_name => 'userId', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
-  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', request_name => 'vpcPeeringConnectionId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has GroupId => (is => 'ro', isa => Str);
+  has GroupName => (is => 'ro', isa => Str);
+  has PeeringStatus => (is => 'ro', isa => Str);
+  has UserId => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+  has VpcPeeringConnectionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'VpcId' => 'vpcId',
+                       'GroupId' => 'groupId',
+                       'VpcPeeringConnectionId' => 'vpcPeeringConnectionId',
+                       'Description' => 'description',
+                       'UserId' => 'userId',
+                       'PeeringStatus' => 'peeringStatus',
+                       'GroupName' => 'groupName'
+                     },
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'VpcPeeringConnectionId' => {
+                                             'type' => 'Str'
+                                           },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'PeeringStatus' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

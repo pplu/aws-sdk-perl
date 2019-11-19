@@ -1,9 +1,37 @@
+# Generated from default/object.tt
 package Paws::LakeFormation::PrincipalResourcePermissions;
-  use Moose;
-  has Permissions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PermissionsWithGrantOption => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Principal => (is => 'ro', isa => 'Paws::LakeFormation::DataLakePrincipal');
-  has Resource => (is => 'ro', isa => 'Paws::LakeFormation::Resource');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::LakeFormation::Types qw/LakeFormation_DataLakePrincipal LakeFormation_Resource/;
+  has Permissions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has PermissionsWithGrantOption => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Principal => (is => 'ro', isa => LakeFormation_DataLakePrincipal);
+  has Resource => (is => 'ro', isa => LakeFormation_Resource);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Resource' => {
+                               'type' => 'LakeFormation_Resource',
+                               'class' => 'Paws::LakeFormation::Resource'
+                             },
+               'PermissionsWithGrantOption' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'Principal' => {
+                                'class' => 'Paws::LakeFormation::DataLakePrincipal',
+                                'type' => 'LakeFormation_DataLakePrincipal'
+                              },
+               'Permissions' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,12 +78,12 @@ The permissions granted or revoked on a resource.
 subset of permissions granted).
 
 
-=head2 Principal => L<Paws::LakeFormation::DataLakePrincipal>
+=head2 Principal => LakeFormation_DataLakePrincipal
 
   The Data Lake principal to be granted or revoked permissions.
 
 
-=head2 Resource => L<Paws::LakeFormation::Resource>
+=head2 Resource => LakeFormation_Resource
 
   The resource where permissions are to be granted or revoked.
 

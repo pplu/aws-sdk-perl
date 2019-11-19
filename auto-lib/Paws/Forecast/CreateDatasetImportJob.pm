@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Forecast::CreateDatasetImportJob;
-  use Moose;
-  has DatasetArn => (is => 'ro', isa => 'Str', required => 1);
-  has DatasetImportJobName => (is => 'ro', isa => 'Str', required => 1);
-  has DataSource => (is => 'ro', isa => 'Paws::Forecast::DataSource', required => 1);
-  has TimestampFormat => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw/Forecast_DataSource/;
+  has DatasetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DatasetImportJobName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DataSource => (is => 'ro', isa => Forecast_DataSource, required => 1, predicate => 1);
+  has TimestampFormat => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDatasetImportJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Forecast::CreateDatasetImportJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDatasetImportJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Forecast::CreateDatasetImportJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DataSource' => 1,
+                    'DatasetArn' => 1,
+                    'DatasetImportJobName' => 1
+                  },
+  'types' => {
+               'TimestampFormat' => {
+                                      'type' => 'Str'
+                                    },
+               'DatasetArn' => {
+                                 'type' => 'Str'
+                               },
+               'DataSource' => {
+                                 'type' => 'Forecast_DataSource',
+                                 'class' => 'Paws::Forecast::DataSource'
+                               },
+               'DatasetImportJobName' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +103,7 @@ C<20190721DatasetImport>.
 
 
 
-=head2 B<REQUIRED> DataSource => L<Paws::Forecast::DataSource>
+=head2 B<REQUIRED> DataSource => Forecast_DataSource
 
 The location of the training data to import and an AWS Identity and
 Access Management (IAM) role that Amazon Forecast can assume to access

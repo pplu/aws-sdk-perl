@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetStaticIpResult;
-  use Moose;
-  has StaticIp => (is => 'ro', isa => 'Paws::Lightsail::StaticIp', traits => ['NameInRequest'], request_name => 'staticIp' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_StaticIp/;
+  has StaticIp => (is => 'ro', isa => Lightsail_StaticIp);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StaticIp' => {
+                               'class' => 'Paws::Lightsail::StaticIp',
+                               'type' => 'Lightsail_StaticIp'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'StaticIp' => 'staticIp'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Lightsail::GetStaticIpResult
 =head1 ATTRIBUTES
 
 
-=head2 StaticIp => L<Paws::Lightsail::StaticIp>
+=head2 StaticIp => Lightsail_StaticIp
 
 An array of key-value pairs containing information about the requested
 static IP.

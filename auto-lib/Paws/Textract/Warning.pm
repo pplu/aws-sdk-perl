@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Textract::Warning;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has Pages => (is => 'ro', isa => 'ArrayRef[Int]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::Textract::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has Pages => (is => 'ro', isa => ArrayRef[Int]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'Pages' => {
+                            'type' => 'ArrayRef[Int]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

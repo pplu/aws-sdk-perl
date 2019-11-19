@@ -1,11 +1,54 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::NetworkConnectionAction;
-  use Moose;
-  has Blocked => (is => 'ro', isa => 'Bool', request_name => 'blocked', traits => ['NameInRequest']);
-  has ConnectionDirection => (is => 'ro', isa => 'Str', request_name => 'connectionDirection', traits => ['NameInRequest']);
-  has LocalPortDetails => (is => 'ro', isa => 'Paws::GuardDuty::LocalPortDetails', request_name => 'localPortDetails', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
-  has RemoteIpDetails => (is => 'ro', isa => 'Paws::GuardDuty::RemoteIpDetails', request_name => 'remoteIpDetails', traits => ['NameInRequest']);
-  has RemotePortDetails => (is => 'ro', isa => 'Paws::GuardDuty::RemotePortDetails', request_name => 'remotePortDetails', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::GuardDuty::Types qw/GuardDuty_RemotePortDetails GuardDuty_LocalPortDetails GuardDuty_RemoteIpDetails/;
+  has Blocked => (is => 'ro', isa => Bool);
+  has ConnectionDirection => (is => 'ro', isa => Str);
+  has LocalPortDetails => (is => 'ro', isa => GuardDuty_LocalPortDetails);
+  has Protocol => (is => 'ro', isa => Str);
+  has RemoteIpDetails => (is => 'ro', isa => GuardDuty_RemoteIpDetails);
+  has RemotePortDetails => (is => 'ro', isa => GuardDuty_RemotePortDetails);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'LocalPortDetails' => {
+                                       'type' => 'GuardDuty_LocalPortDetails',
+                                       'class' => 'Paws::GuardDuty::LocalPortDetails'
+                                     },
+               'RemotePortDetails' => {
+                                        'class' => 'Paws::GuardDuty::RemotePortDetails',
+                                        'type' => 'GuardDuty_RemotePortDetails'
+                                      },
+               'Blocked' => {
+                              'type' => 'Bool'
+                            },
+               'RemoteIpDetails' => {
+                                      'type' => 'GuardDuty_RemoteIpDetails',
+                                      'class' => 'Paws::GuardDuty::RemoteIpDetails'
+                                    },
+               'ConnectionDirection' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'RemotePortDetails' => 'remotePortDetails',
+                       'ConnectionDirection' => 'connectionDirection',
+                       'Blocked' => 'blocked',
+                       'RemoteIpDetails' => 'remoteIpDetails',
+                       'Protocol' => 'protocol',
+                       'LocalPortDetails' => 'localPortDetails'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +95,7 @@ the finding.
   Network connection direction.
 
 
-=head2 LocalPortDetails => L<Paws::GuardDuty::LocalPortDetails>
+=head2 LocalPortDetails => GuardDuty_LocalPortDetails
 
   Local port information of the connection.
 
@@ -62,12 +105,12 @@ the finding.
   Network connection protocol.
 
 
-=head2 RemoteIpDetails => L<Paws::GuardDuty::RemoteIpDetails>
+=head2 RemoteIpDetails => GuardDuty_RemoteIpDetails
 
   Remote IP information of the connection.
 
 
-=head2 RemotePortDetails => L<Paws::GuardDuty::RemotePortDetails>
+=head2 RemotePortDetails => GuardDuty_RemotePortDetails
 
   Remote port information of the connection.
 

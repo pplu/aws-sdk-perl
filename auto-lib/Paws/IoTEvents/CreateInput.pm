@@ -1,17 +1,53 @@
 
 package Paws::IoTEvents::CreateInput;
-  use Moose;
-  has InputDefinition => (is => 'ro', isa => 'Paws::IoTEvents::InputDefinition', traits => ['NameInRequest'], request_name => 'inputDefinition', required => 1);
-  has InputDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputDescription');
-  has InputName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputName', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Tag]', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTEvents::Types qw/IoTEvents_InputDefinition IoTEvents_Tag/;
+  has InputDefinition => (is => 'ro', isa => IoTEvents_InputDefinition, required => 1, predicate => 1);
+  has InputDescription => (is => 'ro', isa => Str, predicate => 1);
+  has InputName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoTEvents_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInput');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/inputs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTEvents::CreateInputResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateInput');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/inputs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTEvents::CreateInputResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InputName' => 1,
+                    'InputDefinition' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'InputDescription' => 'inputDescription',
+                       'InputName' => 'inputName',
+                       'InputDefinition' => 'inputDefinition'
+                     },
+  'types' => {
+               'InputDefinition' => {
+                                      'type' => 'IoTEvents_InputDefinition',
+                                      'class' => 'Paws::IoTEvents::InputDefinition'
+                                    },
+               'InputName' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::IoTEvents::Tag',
+                           'type' => 'ArrayRef[IoTEvents_Tag]'
+                         },
+               'InputDescription' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +101,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InputDefinition => L<Paws::IoTEvents::InputDefinition>
+=head2 B<REQUIRED> InputDefinition => IoTEvents_InputDefinition
 
 The definition of the input.
 
@@ -83,7 +119,7 @@ The name you want to give to the input.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoTEvents::Tag>]
+=head2 Tags => ArrayRef[IoTEvents_Tag]
 
 Metadata that can be used to manage the input.
 

@@ -1,16 +1,45 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateUser;
-  use Moose;
-  has Path => (is => 'ro', isa => 'Str');
-  has PermissionsBoundary => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IAM::Types qw/IAM_Tag/;
+  has Path => (is => 'ro', isa => Str, predicate => 1);
+  has PermissionsBoundary => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IAM_Tag], predicate => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUser');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::CreateUserResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateUserResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateUser');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::CreateUserResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateUserResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'UserName' => 1
+                  },
+  'types' => {
+               'PermissionsBoundary' => {
+                                          'type' => 'Str'
+                                        },
+               'Tags' => {
+                           'class' => 'Paws::IAM::Tag',
+                           'type' => 'ArrayRef[IAM_Tag]'
+                         },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Path' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +102,7 @@ the user.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+=head2 Tags => ArrayRef[IAM_Tag]
 
 A list of tags that you want to attach to the newly created user. Each
 tag consists of a key name and an associated value. For more

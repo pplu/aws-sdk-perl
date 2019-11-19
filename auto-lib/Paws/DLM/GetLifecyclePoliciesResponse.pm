@@ -1,9 +1,27 @@
 
 package Paws::DLM::GetLifecyclePoliciesResponse;
-  use Moose;
-  has Policies => (is => 'ro', isa => 'ArrayRef[Paws::DLM::LifecyclePolicySummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DLM::Types qw/DLM_LifecyclePolicySummary/;
+  has Policies => (is => 'ro', isa => ArrayRef[DLM_LifecyclePolicySummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Policies' => {
+                               'class' => 'Paws::DLM::LifecyclePolicySummary',
+                               'type' => 'ArrayRef[DLM_LifecyclePolicySummary]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::DLM::GetLifecyclePoliciesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Policies => ArrayRef[L<Paws::DLM::LifecyclePolicySummary>]
+=head2 Policies => ArrayRef[DLM_LifecyclePolicySummary]
 
 Summary information about the lifecycle policies.
 

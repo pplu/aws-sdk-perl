@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceFleetStatus;
-  use Moose;
-  has State => (is => 'ro', isa => 'Str');
-  has StateChangeReason => (is => 'ro', isa => 'Paws::EMR::InstanceFleetStateChangeReason');
-  has Timeline => (is => 'ro', isa => 'Paws::EMR::InstanceFleetTimeline');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_InstanceFleetTimeline EMR_InstanceFleetStateChangeReason/;
+  has State => (is => 'ro', isa => Str);
+  has StateChangeReason => (is => 'ro', isa => EMR_InstanceFleetStateChangeReason);
+  has Timeline => (is => 'ro', isa => EMR_InstanceFleetTimeline);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StateChangeReason' => {
+                                        'class' => 'Paws::EMR::InstanceFleetStateChangeReason',
+                                        'type' => 'EMR_InstanceFleetStateChangeReason'
+                                      },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Timeline' => {
+                               'type' => 'EMR_InstanceFleetTimeline',
+                               'class' => 'Paws::EMR::InstanceFleetTimeline'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -86,12 +111,12 @@ EC2 instances have been terminated.
 
 
 
-=head2 StateChangeReason => L<Paws::EMR::InstanceFleetStateChangeReason>
+=head2 StateChangeReason => EMR_InstanceFleetStateChangeReason
 
   Provides status change reason details for the instance fleet.
 
 
-=head2 Timeline => L<Paws::EMR::InstanceFleetTimeline>
+=head2 Timeline => EMR_InstanceFleetTimeline
 
   Provides historical timestamps for the instance fleet, including the
 time of creation, the time it became ready to run jobs, and the time of

@@ -1,15 +1,42 @@
 
 package Paws::IoT::CreateCertificateFromCsr;
-  use Moose;
-  has CertificateSigningRequest => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateSigningRequest', required => 1);
-  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has CertificateSigningRequest => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SetAsActive => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCertificateFromCsr');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/certificates');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateCertificateFromCsrResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCertificateFromCsr');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/certificates');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateCertificateFromCsrResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'SetAsActive' => 'setAsActive'
+                    },
+  'IsRequired' => {
+                    'CertificateSigningRequest' => 1
+                  },
+  'NameInRequest' => {
+                       'CertificateSigningRequest' => 'certificateSigningRequest'
+                     },
+  'types' => {
+               'SetAsActive' => {
+                                  'type' => 'Bool'
+                                },
+               'CertificateSigningRequest' => {
+                                                'type' => 'Str'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceDiscovery::UpdateService;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Service => (is => 'ro', isa => 'Paws::ServiceDiscovery::ServiceChange', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_ServiceChange/;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Service => (is => 'ro', isa => ServiceDiscovery_ServiceChange, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateService');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceDiscovery::UpdateServiceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateService');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceDiscovery::UpdateServiceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Service' => {
+                              'type' => 'ServiceDiscovery_ServiceChange',
+                              'class' => 'Paws::ServiceDiscovery::ServiceChange'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'IsRequired' => {
+                    'Service' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +93,7 @@ The ID of the service that you want to update.
 
 
 
-=head2 B<REQUIRED> Service => L<Paws::ServiceDiscovery::ServiceChange>
+=head2 B<REQUIRED> Service => ServiceDiscovery_ServiceChange
 
 A complex type that contains the new settings for the service.
 

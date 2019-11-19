@@ -1,14 +1,35 @@
 
 package Paws::EC2::DeleteClientVpnEndpoint;
-  use Moose;
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has ClientVpnEndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClientVpnEndpoint');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DeleteClientVpnEndpointResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteClientVpnEndpoint');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DeleteClientVpnEndpointResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             },
+  'IsRequired' => {
+                    'ClientVpnEndpointId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::DnsProperties;
-  use Moose;
-  has HostedZoneId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceDiscovery::Types qw//;
+  has HostedZoneId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

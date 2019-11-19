@@ -1,16 +1,48 @@
 
 package Paws::IoT::CreateRoleAlias;
-  use Moose;
-  has CredentialDurationSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'credentialDurationSeconds');
-  has RoleAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'roleAlias', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has CredentialDurationSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has RoleAlias => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRoleAlias');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/role-aliases/{roleAlias}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateRoleAliasResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRoleAlias');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/role-aliases/{roleAlias}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateRoleAliasResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'RoleAlias' => 'roleAlias'
+                  },
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'RoleAlias' => {
+                                'type' => 'Str'
+                              },
+               'CredentialDurationSeconds' => {
+                                                'type' => 'Int'
+                                              }
+             },
+  'IsRequired' => {
+                    'RoleAlias' => 1,
+                    'RoleArn' => 1
+                  },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'CredentialDurationSeconds' => 'credentialDurationSeconds'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

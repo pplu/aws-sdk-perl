@@ -1,11 +1,45 @@
+# Generated from default/object.tt
 package Paws::Rekognition::CelebrityDetail;
-  use Moose;
-  has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
-  has Confidence => (is => 'ro', isa => 'Num');
-  has Face => (is => 'ro', isa => 'Paws::Rekognition::FaceDetail');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Urls => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Num Str ArrayRef Undef/;
+  use Paws::Rekognition::Types qw/Rekognition_BoundingBox Rekognition_FaceDetail/;
+  has BoundingBox => (is => 'ro', isa => Rekognition_BoundingBox);
+  has Confidence => (is => 'ro', isa => Num);
+  has Face => (is => 'ro', isa => Rekognition_FaceDetail);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Urls => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Face' => {
+                           'class' => 'Paws::Rekognition::FaceDetail',
+                           'type' => 'Rekognition_FaceDetail'
+                         },
+               'Urls' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         },
+               'BoundingBox' => {
+                                  'class' => 'Paws::Rekognition::BoundingBox',
+                                  'type' => 'Rekognition_BoundingBox'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Confidence' => {
+                                 'type' => 'Num'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +75,7 @@ Information about a recognized celebrity.
 =head1 ATTRIBUTES
 
 
-=head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
+=head2 BoundingBox => Rekognition_BoundingBox
 
   Bounding box around the body of a celebrity.
 
@@ -52,7 +86,7 @@ Information about a recognized celebrity.
 recognized face is the celebrity.
 
 
-=head2 Face => L<Paws::Rekognition::FaceDetail>
+=head2 Face => Rekognition_FaceDetail
 
   Face details for the recognized celebrity.
 

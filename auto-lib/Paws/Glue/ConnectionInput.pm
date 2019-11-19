@@ -1,11 +1,50 @@
+# Generated from default/object.tt
 package Paws::Glue::ConnectionInput;
-  use Moose;
-  has ConnectionProperties => (is => 'ro', isa => 'Paws::Glue::ConnectionProperties', required => 1);
-  has ConnectionType => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has MatchCriteria => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has PhysicalConnectionRequirements => (is => 'ro', isa => 'Paws::Glue::PhysicalConnectionRequirements');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Glue::Types qw/Glue_PhysicalConnectionRequirements Glue_ConnectionProperties/;
+  has ConnectionProperties => (is => 'ro', isa => Glue_ConnectionProperties, required => 1);
+  has ConnectionType => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str);
+  has MatchCriteria => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has PhysicalConnectionRequirements => (is => 'ro', isa => Glue_PhysicalConnectionRequirements);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PhysicalConnectionRequirements' => {
+                                                     'type' => 'Glue_PhysicalConnectionRequirements',
+                                                     'class' => 'Paws::Glue::PhysicalConnectionRequirements'
+                                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ConnectionProperties' => {
+                                           'type' => 'Glue_ConnectionProperties',
+                                           'class' => 'Paws::Glue::ConnectionProperties'
+                                         },
+               'ConnectionType' => {
+                                     'type' => 'Str'
+                                   },
+               'MatchCriteria' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'ConnectionProperties' => 1,
+                    'ConnectionType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +80,7 @@ A structure that is used to specify a connection to create or update.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ConnectionProperties => L<Paws::Glue::ConnectionProperties>
+=head2 B<REQUIRED> ConnectionProperties => Glue_ConnectionProperties
 
   These key-value pairs define parameters for the connection.
 
@@ -67,7 +106,7 @@ not supported.
   The name of the connection.
 
 
-=head2 PhysicalConnectionRequirements => L<Paws::Glue::PhysicalConnectionRequirements>
+=head2 PhysicalConnectionRequirements => Glue_PhysicalConnectionRequirements
 
   A map of physical connection requirements, such as virtual private
 cloud (VPC) and C<SecurityGroup>, that are needed to successfully make

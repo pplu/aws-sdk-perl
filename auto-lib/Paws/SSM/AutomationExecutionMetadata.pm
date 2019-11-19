@@ -1,27 +1,111 @@
+# Generated from default/object.tt
 package Paws::SSM::AutomationExecutionMetadata;
-  use Moose;
-  has AutomationExecutionId => (is => 'ro', isa => 'Str');
-  has AutomationExecutionStatus => (is => 'ro', isa => 'Str');
-  has AutomationType => (is => 'ro', isa => 'Str');
-  has CurrentAction => (is => 'ro', isa => 'Str');
-  has CurrentStepName => (is => 'ro', isa => 'Str');
-  has DocumentName => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has ExecutedBy => (is => 'ro', isa => 'Str');
-  has ExecutionEndTime => (is => 'ro', isa => 'Str');
-  has ExecutionStartTime => (is => 'ro', isa => 'Str');
-  has FailureMessage => (is => 'ro', isa => 'Str');
-  has LogFile => (is => 'ro', isa => 'Str');
-  has MaxConcurrency => (is => 'ro', isa => 'Str');
-  has MaxErrors => (is => 'ro', isa => 'Str');
-  has Mode => (is => 'ro', isa => 'Str');
-  has Outputs => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
-  has ParentAutomationExecutionId => (is => 'ro', isa => 'Str');
-  has ResolvedTargets => (is => 'ro', isa => 'Paws::SSM::ResolvedTargets');
-  has Target => (is => 'ro', isa => 'Str');
-  has TargetMaps => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetMap]');
-  has TargetParameterName => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Target SSM_AutomationParameterMap SSM_ResolvedTargets SSM_TargetMap/;
+  has AutomationExecutionId => (is => 'ro', isa => Str);
+  has AutomationExecutionStatus => (is => 'ro', isa => Str);
+  has AutomationType => (is => 'ro', isa => Str);
+  has CurrentAction => (is => 'ro', isa => Str);
+  has CurrentStepName => (is => 'ro', isa => Str);
+  has DocumentName => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has ExecutedBy => (is => 'ro', isa => Str);
+  has ExecutionEndTime => (is => 'ro', isa => Str);
+  has ExecutionStartTime => (is => 'ro', isa => Str);
+  has FailureMessage => (is => 'ro', isa => Str);
+  has LogFile => (is => 'ro', isa => Str);
+  has MaxConcurrency => (is => 'ro', isa => Str);
+  has MaxErrors => (is => 'ro', isa => Str);
+  has Mode => (is => 'ro', isa => Str);
+  has Outputs => (is => 'ro', isa => SSM_AutomationParameterMap);
+  has ParentAutomationExecutionId => (is => 'ro', isa => Str);
+  has ResolvedTargets => (is => 'ro', isa => SSM_ResolvedTargets);
+  has Target => (is => 'ro', isa => Str);
+  has TargetMaps => (is => 'ro', isa => ArrayRef[SSM_TargetMap]);
+  has TargetParameterName => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrentStepName' => {
+                                      'type' => 'Str'
+                                    },
+               'Mode' => {
+                           'type' => 'Str'
+                         },
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'ExecutedBy' => {
+                                 'type' => 'Str'
+                               },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'TargetMaps' => {
+                                 'type' => 'ArrayRef[SSM_TargetMap]',
+                                 'class' => 'Paws::SSM::TargetMap'
+                               },
+               'ExecutionStartTime' => {
+                                         'type' => 'Str'
+                                       },
+               'ParentAutomationExecutionId' => {
+                                                  'type' => 'Str'
+                                                },
+               'MaxErrors' => {
+                                'type' => 'Str'
+                              },
+               'LogFile' => {
+                              'type' => 'Str'
+                            },
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               'ExecutionEndTime' => {
+                                       'type' => 'Str'
+                                     },
+               'MaxConcurrency' => {
+                                     'type' => 'Str'
+                                   },
+               'CurrentAction' => {
+                                    'type' => 'Str'
+                                  },
+               'TargetParameterName' => {
+                                          'type' => 'Str'
+                                        },
+               'AutomationExecutionStatus' => {
+                                                'type' => 'Str'
+                                              },
+               'DocumentName' => {
+                                   'type' => 'Str'
+                                 },
+               'AutomationExecutionId' => {
+                                            'type' => 'Str'
+                                          },
+               'Outputs' => {
+                              'class' => 'Paws::SSM::AutomationParameterMap',
+                              'type' => 'SSM_AutomationParameterMap'
+                            },
+               'ResolvedTargets' => {
+                                      'type' => 'SSM_ResolvedTargets',
+                                      'class' => 'Paws::SSM::ResolvedTargets'
+                                    },
+               'FailureMessage' => {
+                                     'type' => 'Str'
+                                   },
+               'AutomationType' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -140,7 +224,7 @@ Automation.
   The Automation execution mode.
 
 
-=head2 Outputs => L<Paws::SSM::AutomationParameterMap>
+=head2 Outputs => SSM_AutomationParameterMap
 
   The list of execution outputs as defined in the Automation document.
 
@@ -150,7 +234,7 @@ Automation.
   The ExecutionId of the parent Automation.
 
 
-=head2 ResolvedTargets => L<Paws::SSM::ResolvedTargets>
+=head2 ResolvedTargets => SSM_ResolvedTargets
 
   A list of targets that resolved during the execution.
 
@@ -160,7 +244,7 @@ Automation.
   The list of execution outputs as defined in the Automation document.
 
 
-=head2 TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]
+=head2 TargetMaps => ArrayRef[SSM_TargetMap]
 
   The specified key-value mapping of document parameters to target
 resources.
@@ -171,7 +255,7 @@ resources.
   The list of execution outputs as defined in the Automation document.
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
   The targets defined by the user when starting the Automation.
 

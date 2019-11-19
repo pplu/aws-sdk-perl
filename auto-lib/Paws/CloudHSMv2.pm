@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CloudHSMv2;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'cloudhsmv2' }
   sub signing_name { 'cloudhsm' }
   sub version { '2017-04-28' }
   sub target_prefix { 'BaldrApiService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -314,7 +316,7 @@ these values. To find these values, use DescribeClusters.
 
 =over
 
-=item [Filters => L<Paws::CloudHSMv2::Filters>]
+=item [Filters => CloudHSMv2_Filters]
 
 =item [MaxResults => Int]
 
@@ -343,7 +345,7 @@ value), that means there are no more backups to get.
 
 =over
 
-=item [Filters => L<Paws::CloudHSMv2::Filters>]
+=item [Filters => CloudHSMv2_Filters]
 
 =item [MaxResults => Int]
 
@@ -441,7 +443,7 @@ see DeleteBackup.
 
 =item ResourceId => Str
 
-=item TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>]
+=item TagList => ArrayRef[CloudHSMv2_Tag]
 
 
 =back
@@ -479,9 +481,9 @@ cluster.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllBackups(sub { },[Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str, SortAscending => Bool])
+=head2 DescribeAllBackups(sub { },[Filters => CloudHSMv2_Filters, MaxResults => Int, NextToken => Str, SortAscending => Bool])
 
-=head2 DescribeAllBackups([Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str, SortAscending => Bool])
+=head2 DescribeAllBackups([Filters => CloudHSMv2_Filters, MaxResults => Int, NextToken => Str, SortAscending => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -491,9 +493,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudHSMv2::DescribeBackupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllClusters(sub { },[Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClusters(sub { },[Filters => CloudHSMv2_Filters, MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllClusters([Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClusters([Filters => CloudHSMv2_Filters, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

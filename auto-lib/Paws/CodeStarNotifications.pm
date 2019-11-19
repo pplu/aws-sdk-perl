@@ -1,14 +1,15 @@
 package Paws::CodeStarNotifications;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'codestar-notifications' }
   sub signing_name { 'codestar-notifications' }
   sub version { '2019-10-15' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -290,13 +291,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =item Resource => Str
 
-=item Targets => ArrayRef[L<Paws::CodeStarNotifications::Target>]
+=item Targets => ArrayRef[CodeStarNotifications_Target]
 
 =item [ClientRequestToken => Str]
 
 =item [Status => Str]
 
-=item [Tags => L<Paws::CodeStarNotifications::Tags>]
+=item [Tags => CodeStarNotifications_Tags]
 
 
 =back
@@ -364,7 +365,7 @@ Returns information about a specified notification rule.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::CodeStarNotifications::ListEventTypesFilter>]]
+=item [Filters => ArrayRef[CodeStarNotifications_ListEventTypesFilter]]
 
 =item [MaxResults => Int]
 
@@ -385,7 +386,7 @@ notifications.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::CodeStarNotifications::ListNotificationRulesFilter>]]
+=item [Filters => ArrayRef[CodeStarNotifications_ListNotificationRulesFilter]]
 
 =item [MaxResults => Int]
 
@@ -421,7 +422,7 @@ Returns a list of the tags associated with a notification rule.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::CodeStarNotifications::ListTargetsFilter>]]
+=item [Filters => ArrayRef[CodeStarNotifications_ListTargetsFilter]]
 
 =item [MaxResults => Int]
 
@@ -443,7 +444,7 @@ Returns a list of the notification rule targets for an AWS account.
 
 =item Arn => Str
 
-=item Target => L<Paws::CodeStarNotifications::Target>
+=item Target => CodeStarNotifications_Target
 
 =item [ClientRequestToken => Str]
 
@@ -465,7 +466,7 @@ described in the rule are triggered.
 
 =item Arn => Str
 
-=item Tags => L<Paws::CodeStarNotifications::Tags>
+=item Tags => CodeStarNotifications_Tags
 
 
 =back
@@ -530,7 +531,7 @@ notification rule.
 
 =item [Status => Str]
 
-=item [Targets => ArrayRef[L<Paws::CodeStarNotifications::Target>]]
+=item [Targets => ArrayRef[CodeStarNotifications_Target]]
 
 
 =back
@@ -553,9 +554,9 @@ and UntagResource.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllEventTypes(sub { },[Filters => ArrayRef[L<Paws::CodeStarNotifications::ListEventTypesFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllEventTypes(sub { },[Filters => ArrayRef[CodeStarNotifications_ListEventTypesFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllEventTypes([Filters => ArrayRef[L<Paws::CodeStarNotifications::ListEventTypesFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllEventTypes([Filters => ArrayRef[CodeStarNotifications_ListEventTypesFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -565,9 +566,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CodeStarNotifications::ListEventTypesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllNotificationRules(sub { },[Filters => ArrayRef[L<Paws::CodeStarNotifications::ListNotificationRulesFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllNotificationRules(sub { },[Filters => ArrayRef[CodeStarNotifications_ListNotificationRulesFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllNotificationRules([Filters => ArrayRef[L<Paws::CodeStarNotifications::ListNotificationRulesFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllNotificationRules([Filters => ArrayRef[CodeStarNotifications_ListNotificationRulesFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -577,9 +578,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CodeStarNotifications::ListNotificationRulesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllTargets(sub { },[Filters => ArrayRef[L<Paws::CodeStarNotifications::ListTargetsFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllTargets(sub { },[Filters => ArrayRef[CodeStarNotifications_ListTargetsFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllTargets([Filters => ArrayRef[L<Paws::CodeStarNotifications::ListTargetsFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllTargets([Filters => ArrayRef[CodeStarNotifications_ListTargetsFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -1,8 +1,42 @@
+# Generated from default/object.tt
 package Paws::Inspector::Subscription;
-  use Moose;
-  has EventSubscriptions => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::EventSubscription]', request_name => 'eventSubscriptions', traits => ['NameInRequest'], required => 1);
-  has ResourceArn => (is => 'ro', isa => 'Str', request_name => 'resourceArn', traits => ['NameInRequest'], required => 1);
-  has TopicArn => (is => 'ro', isa => 'Str', request_name => 'topicArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Inspector::Types qw/Inspector_EventSubscription/;
+  has EventSubscriptions => (is => 'ro', isa => ArrayRef[Inspector_EventSubscription], required => 1);
+  has ResourceArn => (is => 'ro', isa => Str, required => 1);
+  has TopicArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'EventSubscriptions' => {
+                                         'type' => 'ArrayRef[Inspector_EventSubscription]',
+                                         'class' => 'Paws::Inspector::EventSubscription'
+                                       },
+               'TopicArn' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'EventSubscriptions' => 1,
+                    'ResourceArn' => 1,
+                    'TopicArn' => 1
+                  },
+  'NameInRequest' => {
+                       'EventSubscriptions' => 'eventSubscriptions',
+                       'ResourceArn' => 'resourceArn',
+                       'TopicArn' => 'topicArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +73,7 @@ ListEventSubscriptions action.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EventSubscriptions => ArrayRef[L<Paws::Inspector::EventSubscription>]
+=head2 B<REQUIRED> EventSubscriptions => ArrayRef[Inspector_EventSubscription]
 
   The list of existing event subscriptions.
 

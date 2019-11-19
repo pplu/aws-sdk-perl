@@ -1,17 +1,59 @@
 
 package Paws::CognitoSync::ListRecordsResponse;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int');
-  has DatasetDeletedAfterRequestedSyncCount => (is => 'ro', isa => 'Bool');
-  has DatasetExists => (is => 'ro', isa => 'Bool');
-  has DatasetSyncCount => (is => 'ro', isa => 'Int');
-  has LastModifiedBy => (is => 'ro', isa => 'Str');
-  has MergedDatasetNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Records => (is => 'ro', isa => 'ArrayRef[Paws::CognitoSync::Record]');
-  has SyncSessionToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef Undef/;
+  use Paws::CognitoSync::Types qw/CognitoSync_Record/;
+  has Count => (is => 'ro', isa => Int);
+  has DatasetDeletedAfterRequestedSyncCount => (is => 'ro', isa => Bool);
+  has DatasetExists => (is => 'ro', isa => Bool);
+  has DatasetSyncCount => (is => 'ro', isa => Int);
+  has LastModifiedBy => (is => 'ro', isa => Str);
+  has MergedDatasetNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NextToken => (is => 'ro', isa => Str);
+  has Records => (is => 'ro', isa => ArrayRef[CognitoSync_Record]);
+  has SyncSessionToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastModifiedBy' => {
+                                     'type' => 'Str'
+                                   },
+               'DatasetSyncCount' => {
+                                       'type' => 'Int'
+                                     },
+               'SyncSessionToken' => {
+                                       'type' => 'Str'
+                                     },
+               'DatasetDeletedAfterRequestedSyncCount' => {
+                                                            'type' => 'Bool'
+                                                          },
+               'Records' => {
+                              'type' => 'ArrayRef[CognitoSync_Record]',
+                              'class' => 'Paws::CognitoSync::Record'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'DatasetExists' => {
+                                    'type' => 'Bool'
+                                  },
+               'MergedDatasetNames' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +100,7 @@ Names of merged datasets.
 A pagination token for obtaining the next page of results.
 
 
-=head2 Records => ArrayRef[L<Paws::CognitoSync::Record>]
+=head2 Records => ArrayRef[CognitoSync_Record]
 
 A list of all records.
 

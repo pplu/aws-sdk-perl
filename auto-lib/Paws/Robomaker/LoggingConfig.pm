@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::Robomaker::LoggingConfig;
-  use Moose;
-  has RecordAllRosTopics => (is => 'ro', isa => 'Bool', request_name => 'recordAllRosTopics', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::Robomaker::Types qw//;
+  has RecordAllRosTopics => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RecordAllRosTopics' => 'recordAllRosTopics'
+                     },
+  'IsRequired' => {
+                    'RecordAllRosTopics' => 1
+                  },
+  'types' => {
+               'RecordAllRosTopics' => {
+                                         'type' => 'Bool'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

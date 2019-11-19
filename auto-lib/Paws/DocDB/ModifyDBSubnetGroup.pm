@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::ModifyDBSubnetGroup;
-  use Moose;
-  has DBSubnetGroupDescription => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::DocDB::Types qw//;
+  has DBSubnetGroupDescription => (is => 'ro', isa => Str, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBSubnetGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::ModifyDBSubnetGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBSubnetGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyDBSubnetGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::ModifyDBSubnetGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyDBSubnetGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SubnetIds' => 1,
+                    'DBSubnetGroupName' => 1
+                  },
+  'types' => {
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'DBSubnetGroupDescription' => {
+                                               'type' => 'Str'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

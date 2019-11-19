@@ -1,23 +1,113 @@
+# Generated from default/object.tt
 package Paws::SMS::ReplicationJob;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest']);
-  has Frequency => (is => 'ro', isa => 'Int', request_name => 'frequency', traits => ['NameInRequest']);
-  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
-  has LatestAmiId => (is => 'ro', isa => 'Str', request_name => 'latestAmiId', traits => ['NameInRequest']);
-  has LicenseType => (is => 'ro', isa => 'Str', request_name => 'licenseType', traits => ['NameInRequest']);
-  has NextReplicationRunStartTime => (is => 'ro', isa => 'Str', request_name => 'nextReplicationRunStartTime', traits => ['NameInRequest']);
-  has NumberOfRecentAmisToKeep => (is => 'ro', isa => 'Int', request_name => 'numberOfRecentAmisToKeep', traits => ['NameInRequest']);
-  has ReplicationJobId => (is => 'ro', isa => 'Str', request_name => 'replicationJobId', traits => ['NameInRequest']);
-  has ReplicationRunList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ReplicationRun]', request_name => 'replicationRunList', traits => ['NameInRequest']);
-  has RoleName => (is => 'ro', isa => 'Str', request_name => 'roleName', traits => ['NameInRequest']);
-  has RunOnce => (is => 'ro', isa => 'Bool', request_name => 'runOnce', traits => ['NameInRequest']);
-  has SeedReplicationTime => (is => 'ro', isa => 'Str', request_name => 'seedReplicationTime', traits => ['NameInRequest']);
-  has ServerId => (is => 'ro', isa => 'Str', request_name => 'serverId', traits => ['NameInRequest']);
-  has ServerType => (is => 'ro', isa => 'Str', request_name => 'serverType', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has VmServer => (is => 'ro', isa => 'Paws::SMS::VmServer', request_name => 'vmServer', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::SMS::Types qw/SMS_VmServer SMS_ReplicationRun/;
+  has Description => (is => 'ro', isa => Str);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has Frequency => (is => 'ro', isa => Int);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LatestAmiId => (is => 'ro', isa => Str);
+  has LicenseType => (is => 'ro', isa => Str);
+  has NextReplicationRunStartTime => (is => 'ro', isa => Str);
+  has NumberOfRecentAmisToKeep => (is => 'ro', isa => Int);
+  has ReplicationJobId => (is => 'ro', isa => Str);
+  has ReplicationRunList => (is => 'ro', isa => ArrayRef[SMS_ReplicationRun]);
+  has RoleName => (is => 'ro', isa => Str);
+  has RunOnce => (is => 'ro', isa => Bool);
+  has SeedReplicationTime => (is => 'ro', isa => Str);
+  has ServerId => (is => 'ro', isa => Str);
+  has ServerType => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has VmServer => (is => 'ro', isa => SMS_VmServer);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'VmServer' => {
+                               'type' => 'SMS_VmServer',
+                               'class' => 'Paws::SMS::VmServer'
+                             },
+               'SeedReplicationTime' => {
+                                          'type' => 'Str'
+                                        },
+               'ReplicationJobId' => {
+                                       'type' => 'Str'
+                                     },
+               'ServerType' => {
+                                 'type' => 'Str'
+                               },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'NextReplicationRunStartTime' => {
+                                                  'type' => 'Str'
+                                                },
+               'LatestAmiId' => {
+                                  'type' => 'Str'
+                                },
+               'ReplicationRunList' => {
+                                         'type' => 'ArrayRef[SMS_ReplicationRun]',
+                                         'class' => 'Paws::SMS::ReplicationRun'
+                                       },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'Frequency' => {
+                                'type' => 'Int'
+                              },
+               'NumberOfRecentAmisToKeep' => {
+                                               'type' => 'Int'
+                                             },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'ServerId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'LicenseType' => {
+                                  'type' => 'Str'
+                                },
+               'RunOnce' => {
+                              'type' => 'Bool'
+                            }
+             },
+  'NameInRequest' => {
+                       'Encrypted' => 'encrypted',
+                       'Frequency' => 'frequency',
+                       'NumberOfRecentAmisToKeep' => 'numberOfRecentAmisToKeep',
+                       'Description' => 'description',
+                       'KmsKeyId' => 'kmsKeyId',
+                       'ServerId' => 'serverId',
+                       'LicenseType' => 'licenseType',
+                       'RunOnce' => 'runOnce',
+                       'VmServer' => 'vmServer',
+                       'RoleName' => 'roleName',
+                       'SeedReplicationTime' => 'seedReplicationTime',
+                       'ReplicationJobId' => 'replicationJobId',
+                       'ServerType' => 'serverType',
+                       'StatusMessage' => 'statusMessage',
+                       'NextReplicationRunStartTime' => 'nextReplicationRunStartTime',
+                       'State' => 'state',
+                       'ReplicationRunList' => 'replicationRunList',
+                       'LatestAmiId' => 'latestAmiId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -126,7 +216,7 @@ AMIs are kept.
   The identifier of the replication job.
 
 
-=head2 ReplicationRunList => ArrayRef[L<Paws::SMS::ReplicationRun>]
+=head2 ReplicationRunList => ArrayRef[SMS_ReplicationRun]
 
   Information about the replication runs.
 
@@ -166,7 +256,7 @@ AMIs are kept.
   The description of the current status of the replication job.
 
 
-=head2 VmServer => L<Paws::SMS::VmServer>
+=head2 VmServer => SMS_VmServer
 
   Information about the VM server.
 

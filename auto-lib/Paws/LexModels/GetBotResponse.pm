@@ -1,23 +1,102 @@
 
 package Paws::LexModels::GetBotResponse;
-  use Moose;
-  has AbortStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'abortStatement');
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
-  has ChildDirected => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'childDirected');
-  has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'clarificationPrompt');
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
-  has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
-  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
-  has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
-  has VoiceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'voiceId');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::LexModels::Types qw/LexModels_Statement LexModels_Intent LexModels_Prompt/;
+  has AbortStatement => (is => 'ro', isa => LexModels_Statement);
+  has Checksum => (is => 'ro', isa => Str);
+  has ChildDirected => (is => 'ro', isa => Bool);
+  has ClarificationPrompt => (is => 'ro', isa => LexModels_Prompt);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has IdleSessionTTLInSeconds => (is => 'ro', isa => Int);
+  has Intents => (is => 'ro', isa => ArrayRef[LexModels_Intent]);
+  has LastUpdatedDate => (is => 'ro', isa => Str);
+  has Locale => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+  has VoiceId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'IdleSessionTTLInSeconds' => {
+                                              'type' => 'Int'
+                                            },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ChildDirected' => {
+                                    'type' => 'Bool'
+                                  },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'AbortStatement' => {
+                                     'class' => 'Paws::LexModels::Statement',
+                                     'type' => 'LexModels_Statement'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Checksum' => {
+                               'type' => 'Str'
+                             },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'ClarificationPrompt' => {
+                                          'class' => 'Paws::LexModels::Prompt',
+                                          'type' => 'LexModels_Prompt'
+                                        },
+               'Intents' => {
+                              'class' => 'Paws::LexModels::Intent',
+                              'type' => 'ArrayRef[LexModels_Intent]'
+                            },
+               'VoiceId' => {
+                              'type' => 'Str'
+                            },
+               'LastUpdatedDate' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'IdleSessionTTLInSeconds' => 'idleSessionTTLInSeconds',
+                       'FailureReason' => 'failureReason',
+                       'CreatedDate' => 'createdDate',
+                       'Locale' => 'locale',
+                       'Name' => 'name',
+                       'AbortStatement' => 'abortStatement',
+                       'Status' => 'status',
+                       'ChildDirected' => 'childDirected',
+                       'Checksum' => 'checksum',
+                       'ClarificationPrompt' => 'clarificationPrompt',
+                       'Version' => 'version',
+                       'Description' => 'description',
+                       'VoiceId' => 'voiceId',
+                       'Intents' => 'intents',
+                       'LastUpdatedDate' => 'lastUpdatedDate'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +108,7 @@ Paws::LexModels::GetBotResponse
 =head1 ATTRIBUTES
 
 
-=head2 AbortStatement => L<Paws::LexModels::Statement>
+=head2 AbortStatement => LexModels_Statement
 
 The message that Amazon Lex returns when the user elects to end the
 conversation without completing it. For more information, see PutBot.
@@ -70,7 +149,7 @@ targeted, in whole or in part, to children under age 13, see the Amazon
 Lex FAQ. (https://aws.amazon.com/lex/faqs#data-security)
 
 
-=head2 ClarificationPrompt => L<Paws::LexModels::Prompt>
+=head2 ClarificationPrompt => LexModels_Prompt
 
 The message Amazon Lex uses when it doesn't understand the user's
 request. For more information, see PutBot.
@@ -98,7 +177,7 @@ The maximum time in seconds that Amazon Lex retains the data gathered
 in a conversation. For more information, see PutBot.
 
 
-=head2 Intents => ArrayRef[L<Paws::LexModels::Intent>]
+=head2 Intents => ArrayRef[LexModels_Intent]
 
 An array of C<intent> objects. For more information, see PutBot.
 

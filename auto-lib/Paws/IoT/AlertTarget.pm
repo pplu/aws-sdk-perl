@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoT::AlertTarget;
-  use Moose;
-  has AlertTargetArn => (is => 'ro', isa => 'Str', request_name => 'alertTargetArn', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has AlertTargetArn => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AlertTargetArn' => {
+                                     'type' => 'Str'
+                                   },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'AlertTargetArn' => 1,
+                    'RoleArn' => 1
+                  },
+  'NameInRequest' => {
+                       'AlertTargetArn' => 'alertTargetArn',
+                       'RoleArn' => 'roleArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

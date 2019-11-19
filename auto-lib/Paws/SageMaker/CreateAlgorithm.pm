@@ -1,18 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::CreateAlgorithm;
-  use Moose;
-  has AlgorithmDescription => (is => 'ro', isa => 'Str');
-  has AlgorithmName => (is => 'ro', isa => 'Str', required => 1);
-  has CertifyForMarketplace => (is => 'ro', isa => 'Bool');
-  has InferenceSpecification => (is => 'ro', isa => 'Paws::SageMaker::InferenceSpecification');
-  has TrainingSpecification => (is => 'ro', isa => 'Paws::SageMaker::TrainingSpecification', required => 1);
-  has ValidationSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmValidationSpecification');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SageMaker::Types qw/SageMaker_InferenceSpecification SageMaker_AlgorithmValidationSpecification SageMaker_TrainingSpecification/;
+  has AlgorithmDescription => (is => 'ro', isa => Str, predicate => 1);
+  has AlgorithmName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CertifyForMarketplace => (is => 'ro', isa => Bool, predicate => 1);
+  has InferenceSpecification => (is => 'ro', isa => SageMaker_InferenceSpecification, predicate => 1);
+  has TrainingSpecification => (is => 'ro', isa => SageMaker_TrainingSpecification, required => 1, predicate => 1);
+  has ValidationSpecification => (is => 'ro', isa => SageMaker_AlgorithmValidationSpecification, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAlgorithm');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::CreateAlgorithmOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateAlgorithm');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::CreateAlgorithmOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TrainingSpecification' => 1,
+                    'AlgorithmName' => 1
+                  },
+  'types' => {
+               'ValidationSpecification' => {
+                                              'class' => 'Paws::SageMaker::AlgorithmValidationSpecification',
+                                              'type' => 'SageMaker_AlgorithmValidationSpecification'
+                                            },
+               'CertifyForMarketplace' => {
+                                            'type' => 'Bool'
+                                          },
+               'AlgorithmDescription' => {
+                                           'type' => 'Str'
+                                         },
+               'InferenceSpecification' => {
+                                             'type' => 'SageMaker_InferenceSpecification',
+                                             'class' => 'Paws::SageMaker::InferenceSpecification'
+                                           },
+               'AlgorithmName' => {
+                                    'type' => 'Str'
+                                  },
+               'TrainingSpecification' => {
+                                            'type' => 'SageMaker_TrainingSpecification',
+                                            'class' => 'Paws::SageMaker::TrainingSpecification'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -270,7 +308,7 @@ Marketplace.
 
 
 
-=head2 InferenceSpecification => L<Paws::SageMaker::InferenceSpecification>
+=head2 InferenceSpecification => SageMaker_InferenceSpecification
 
 Specifies details about inference jobs that the algorithm runs,
 including the following:
@@ -297,7 +335,7 @@ inference.
 
 
 
-=head2 B<REQUIRED> TrainingSpecification => L<Paws::SageMaker::TrainingSpecification>
+=head2 B<REQUIRED> TrainingSpecification => SageMaker_TrainingSpecification
 
 Specifies details about training jobs run by this algorithm, including
 the following:
@@ -341,7 +379,7 @@ C<test> channels.
 
 
 
-=head2 ValidationSpecification => L<Paws::SageMaker::AlgorithmValidationSpecification>
+=head2 ValidationSpecification => SageMaker_AlgorithmValidationSpecification
 
 Specifies configurations for one or more training jobs and that Amazon
 SageMaker runs to test the algorithm's training code and, optionally,

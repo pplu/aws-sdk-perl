@@ -1,14 +1,36 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::CancelCommand;
-  use Moose;
-  has CommandId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SSM::Types qw//;
+  has CommandId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelCommand');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CancelCommandResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CancelCommand');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::CancelCommandResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'CommandId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'CommandId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

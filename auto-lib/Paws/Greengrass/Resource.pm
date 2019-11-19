@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::Greengrass::Resource;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceDataContainer => (is => 'ro', isa => 'Paws::Greengrass::ResourceDataContainer', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass_ResourceDataContainer/;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has ResourceDataContainer => (is => 'ro', isa => Greengrass_ResourceDataContainer, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ResourceDataContainer' => {
+                                            'type' => 'Greengrass_ResourceDataContainer',
+                                            'class' => 'Paws::Greengrass::ResourceDataContainer'
+                                          }
+             },
+  'IsRequired' => {
+                    'ResourceDataContainer' => 1,
+                    'Id' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +81,7 @@ Greengrass console. Max length 128 characters with pattern
 ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
 
 
-=head2 B<REQUIRED> ResourceDataContainer => L<Paws::Greengrass::ResourceDataContainer>
+=head2 B<REQUIRED> ResourceDataContainer => Greengrass_ResourceDataContainer
 
   A container of data for all resource types.
 

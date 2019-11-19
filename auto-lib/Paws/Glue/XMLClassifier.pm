@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::Glue::XMLClassifier;
-  use Moose;
-  has Classification => (is => 'ro', isa => 'Str', required => 1);
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has LastUpdated => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RowTag => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Glue::Types qw//;
+  has Classification => (is => 'ro', isa => Str, required => 1);
+  has CreationTime => (is => 'ro', isa => Str);
+  has LastUpdated => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has RowTag => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LastUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'RowTag' => {
+                             'type' => 'Str'
+                           },
+               'Classification' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Classification' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

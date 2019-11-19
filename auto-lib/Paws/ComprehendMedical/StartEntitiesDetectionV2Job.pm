@@ -1,19 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ComprehendMedical::StartEntitiesDetectionV2Job;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has DataAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has InputDataConfig => (is => 'ro', isa => 'Paws::ComprehendMedical::InputDataConfig', required => 1);
-  has JobName => (is => 'ro', isa => 'Str');
-  has KMSKey => (is => 'ro', isa => 'Str');
-  has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
-  has OutputDataConfig => (is => 'ro', isa => 'Paws::ComprehendMedical::OutputDataConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ComprehendMedical::Types qw/ComprehendMedical_OutputDataConfig ComprehendMedical_InputDataConfig/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has DataAccessRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputDataConfig => (is => 'ro', isa => ComprehendMedical_InputDataConfig, required => 1, predicate => 1);
+  has JobName => (is => 'ro', isa => Str, predicate => 1);
+  has KMSKey => (is => 'ro', isa => Str, predicate => 1);
+  has LanguageCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OutputDataConfig => (is => 'ro', isa => ComprehendMedical_OutputDataConfig, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartEntitiesDetectionV2Job');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ComprehendMedical::StartEntitiesDetectionV2JobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartEntitiesDetectionV2Job');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ComprehendMedical::StartEntitiesDetectionV2JobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputDataConfig' => {
+                                       'type' => 'ComprehendMedical_OutputDataConfig',
+                                       'class' => 'Paws::ComprehendMedical::OutputDataConfig'
+                                     },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'DataAccessRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'InputDataConfig' => {
+                                      'class' => 'Paws::ComprehendMedical::InputDataConfig',
+                                      'type' => 'ComprehendMedical_InputDataConfig'
+                                    },
+               'KMSKey' => {
+                             'type' => 'Str'
+                           },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'DataAccessRoleArn' => 1,
+                    'LanguageCode' => 1,
+                    'OutputDataConfig' => 1,
+                    'InputDataConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +120,7 @@ Required for Asynchronous Operations
 
 
 
-=head2 B<REQUIRED> InputDataConfig => L<Paws::ComprehendMedical::InputDataConfig>
+=head2 B<REQUIRED> InputDataConfig => ComprehendMedical_InputDataConfig
 
 Specifies the format and location of the input data for the job.
 
@@ -104,7 +146,7 @@ language.
 
 Valid values are: C<"en">
 
-=head2 B<REQUIRED> OutputDataConfig => L<Paws::ComprehendMedical::OutputDataConfig>
+=head2 B<REQUIRED> OutputDataConfig => ComprehendMedical_OutputDataConfig
 
 Specifies where to send the output files.
 

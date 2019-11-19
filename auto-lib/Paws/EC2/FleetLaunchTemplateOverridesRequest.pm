@@ -1,12 +1,45 @@
 package Paws::EC2::FleetLaunchTemplateOverridesRequest;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has MaxPrice => (is => 'ro', isa => 'Str');
-  has Placement => (is => 'ro', isa => 'Paws::EC2::Placement');
-  has Priority => (is => 'ro', isa => 'Num');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has WeightedCapacity => (is => 'ro', isa => 'Num');
+  use Moo;  use Types::Standard qw/Str Num/;
+  use Paws::EC2::Types qw/EC2_Placement/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has MaxPrice => (is => 'ro', isa => Str);
+  has Placement => (is => 'ro', isa => EC2_Placement);
+  has Priority => (is => 'ro', isa => Num);
+  has SubnetId => (is => 'ro', isa => Str);
+  has WeightedCapacity => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Priority' => {
+                               'type' => 'Num'
+                             },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'WeightedCapacity' => {
+                                       'type' => 'Num'
+                                     },
+               'Placement' => {
+                                'class' => 'Paws::EC2::Placement',
+                                'type' => 'EC2_Placement'
+                              },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxPrice' => {
+                               'type' => 'Str'
+                             },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +91,7 @@ This class has no description
 Instance.
 
 
-=head2 Placement => L<Paws::EC2::Placement>
+=head2 Placement => EC2_Placement
 
   The location where the instance launched, if applicable.
 

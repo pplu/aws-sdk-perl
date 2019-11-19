@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::WAF::RuleUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has Predicate => (is => 'ro', isa => 'Paws::WAF::Predicate', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_Predicate/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has Predicate => (is => 'ro', isa => WAF_Predicate, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Predicate' => 1,
+                    'Action' => 1
+                  },
+  'types' => {
+               'Predicate' => {
+                                'type' => 'WAF_Predicate',
+                                'class' => 'Paws::WAF::Predicate'
+                              },
+               'Action' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +69,7 @@ you want to add it to a C<Rule> or delete it from a C<Rule>.
 remove a C<Predicate> from a C<Rule>.
 
 
-=head2 B<REQUIRED> Predicate => L<Paws::WAF::Predicate>
+=head2 B<REQUIRED> Predicate => WAF_Predicate
 
   The ID of the C<Predicate> (such as an C<IPSet>) that you want to add
 to a C<Rule>.

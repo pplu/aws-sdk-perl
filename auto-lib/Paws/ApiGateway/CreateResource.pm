@@ -1,16 +1,49 @@
 
 package Paws::ApiGateway::CreateResource;
-  use Moose;
-  has ParentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'parent_id', required => 1);
-  has PathPart => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pathPart', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has ParentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PathPart => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{parent_id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Resource');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/resources/{parent_id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::Resource');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParentId' => {
+                               'type' => 'Str'
+                             },
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'PathPart' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'PathPart' => 1,
+                    'RestApiId' => 1,
+                    'ParentId' => 1
+                  },
+  'NameInRequest' => {
+                       'PathPart' => 'pathPart'
+                     },
+  'ParamInURI' => {
+                    'ParentId' => 'parent_id',
+                    'RestApiId' => 'restapi_id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

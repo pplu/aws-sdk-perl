@@ -1,26 +1,101 @@
 
 package Paws::MediaPackage::CreateOriginEndpoint;
-  use Moose;
-  has ChannelId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelId', required => 1);
-  has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackage::CmafPackageCreateOrUpdateParameters', traits => ['NameInRequest'], request_name => 'cmafPackage');
-  has DashPackage => (is => 'ro', isa => 'Paws::MediaPackage::DashPackage', traits => ['NameInRequest'], request_name => 'dashPackage');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackage::HlsPackage', traits => ['NameInRequest'], request_name => 'hlsPackage');
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id', required => 1);
-  has ManifestName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'manifestName');
-  has MssPackage => (is => 'ro', isa => 'Paws::MediaPackage::MssPackage', traits => ['NameInRequest'], request_name => 'mssPackage');
-  has Origination => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'origination');
-  has StartoverWindowSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startoverWindowSeconds');
-  has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', traits => ['NameInRequest'], request_name => 'tags');
-  has TimeDelaySeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeDelaySeconds');
-  has Whitelist => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'whitelist');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::MediaPackage::Types qw/MediaPackage_Tags MediaPackage_HlsPackage MediaPackage_DashPackage MediaPackage_MssPackage MediaPackage_CmafPackageCreateOrUpdateParameters/;
+  has ChannelId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CmafPackage => (is => 'ro', isa => MediaPackage_CmafPackageCreateOrUpdateParameters, predicate => 1);
+  has DashPackage => (is => 'ro', isa => MediaPackage_DashPackage, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has HlsPackage => (is => 'ro', isa => MediaPackage_HlsPackage, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ManifestName => (is => 'ro', isa => Str, predicate => 1);
+  has MssPackage => (is => 'ro', isa => MediaPackage_MssPackage, predicate => 1);
+  has Origination => (is => 'ro', isa => Str, predicate => 1);
+  has StartoverWindowSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has Tags => (is => 'ro', isa => MediaPackage_Tags, predicate => 1);
+  has TimeDelaySeconds => (is => 'ro', isa => Int, predicate => 1);
+  has Whitelist => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateOriginEndpoint');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/origin_endpoints');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaPackage::CreateOriginEndpointResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateOriginEndpoint');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/origin_endpoints');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaPackage::CreateOriginEndpointResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ChannelId' => 1,
+                    'Id' => 1
+                  },
+  'NameInRequest' => {
+                       'HlsPackage' => 'hlsPackage',
+                       'Description' => 'description',
+                       'CmafPackage' => 'cmafPackage',
+                       'StartoverWindowSeconds' => 'startoverWindowSeconds',
+                       'ManifestName' => 'manifestName',
+                       'Origination' => 'origination',
+                       'DashPackage' => 'dashPackage',
+                       'Tags' => 'tags',
+                       'MssPackage' => 'mssPackage',
+                       'Id' => 'id',
+                       'TimeDelaySeconds' => 'timeDelaySeconds',
+                       'Whitelist' => 'whitelist',
+                       'ChannelId' => 'channelId'
+                     },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'HlsPackage' => {
+                                 'class' => 'Paws::MediaPackage::HlsPackage',
+                                 'type' => 'MediaPackage_HlsPackage'
+                               },
+               'ManifestName' => {
+                                   'type' => 'Str'
+                                 },
+               'StartoverWindowSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'CmafPackage' => {
+                                  'type' => 'MediaPackage_CmafPackageCreateOrUpdateParameters',
+                                  'class' => 'Paws::MediaPackage::CmafPackageCreateOrUpdateParameters'
+                                },
+               'MssPackage' => {
+                                 'class' => 'Paws::MediaPackage::MssPackage',
+                                 'type' => 'MediaPackage_MssPackage'
+                               },
+               'Tags' => {
+                           'type' => 'MediaPackage_Tags',
+                           'class' => 'Paws::MediaPackage::Tags'
+                         },
+               'DashPackage' => {
+                                  'type' => 'MediaPackage_DashPackage',
+                                  'class' => 'Paws::MediaPackage::DashPackage'
+                                },
+               'Origination' => {
+                                  'type' => 'Str'
+                                },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ChannelId' => {
+                                'type' => 'Str'
+                              },
+               'Whitelist' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'TimeDelaySeconds' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -215,13 +290,13 @@ This cannot be changed after the OriginEndpoint is created.
 
 
 
-=head2 CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>
+=head2 CmafPackage => MediaPackage_CmafPackageCreateOrUpdateParameters
 
 
 
 
 
-=head2 DashPackage => L<Paws::MediaPackage::DashPackage>
+=head2 DashPackage => MediaPackage_DashPackage
 
 
 
@@ -233,7 +308,7 @@ A short text description of the OriginEndpoint.
 
 
 
-=head2 HlsPackage => L<Paws::MediaPackage::HlsPackage>
+=head2 HlsPackage => MediaPackage_HlsPackage
 
 
 
@@ -253,7 +328,7 @@ URL (defaults to "index").
 
 
 
-=head2 MssPackage => L<Paws::MediaPackage::MssPackage>
+=head2 MssPackage => MediaPackage_MssPackage
 
 
 
@@ -277,7 +352,7 @@ OriginEndpoint.
 
 
 
-=head2 Tags => L<Paws::MediaPackage::Tags>
+=head2 Tags => MediaPackage_Tags
 
 
 

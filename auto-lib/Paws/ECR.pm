@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::ECR;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'api.ecr' }
   sub signing_name { 'ecr' }
   sub version { '2015-09-21' }
   sub target_prefix { 'AmazonEC2ContainerRegistry_V20150921' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -350,7 +352,7 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 =over
 
-=item ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]
+=item ImageIds => ArrayRef[ECR_ImageIdentifier]
 
 =item RepositoryName => Str
 
@@ -378,7 +380,7 @@ the image's digest in your request.
 
 =over
 
-=item ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]
+=item ImageIds => ArrayRef[ECR_ImageIdentifier]
 
 =item RepositoryName => Str
 
@@ -433,11 +435,11 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 =item RepositoryName => Str
 
-=item [ImageScanningConfiguration => L<Paws::ECR::ImageScanningConfiguration>]
+=item [ImageScanningConfiguration => ECR_ImageScanningConfiguration]
 
 =item [ImageTagMutability => Str]
 
-=item [Tags => ArrayRef[L<Paws::ECR::Tag>]]
+=item [Tags => ArrayRef[ECR_Tag]]
 
 
 =back
@@ -516,9 +518,9 @@ Deletes the repository policy from a specified repository.
 
 =item RepositoryName => Str
 
-=item [Filter => L<Paws::ECR::DescribeImagesFilter>]
+=item [Filter => ECR_DescribeImagesFilter]
 
-=item [ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]]
+=item [ImageIds => ArrayRef[ECR_ImageIdentifier]]
 
 =item [MaxResults => Int]
 
@@ -547,7 +549,7 @@ DescribeImages.
 
 =over
 
-=item ImageId => L<Paws::ECR::ImageIdentifier>
+=item ImageId => ECR_ImageIdentifier
 
 =item RepositoryName => Str
 
@@ -663,9 +665,9 @@ Retrieves the specified lifecycle policy.
 
 =item RepositoryName => Str
 
-=item [Filter => L<Paws::ECR::LifecyclePolicyPreviewFilter>]
+=item [Filter => ECR_LifecyclePolicyPreviewFilter]
 
-=item [ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]]
+=item [ImageIds => ArrayRef[ECR_ImageIdentifier]]
 
 =item [MaxResults => Int]
 
@@ -730,7 +732,7 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 =item RepositoryName => Str
 
-=item [Filter => L<Paws::ECR::ListImagesFilter>]
+=item [Filter => ECR_ListImagesFilter]
 
 =item [MaxResults => Int]
 
@@ -802,7 +804,7 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 =over
 
-=item ImageScanningConfiguration => L<Paws::ECR::ImageScanningConfiguration>
+=item ImageScanningConfiguration => ECR_ImageScanningConfiguration
 
 =item RepositoryName => Str
 
@@ -894,7 +896,7 @@ in the I<Amazon Elastic Container Registry User Guide>.
 
 =over
 
-=item ImageId => L<Paws::ECR::ImageIdentifier>
+=item ImageId => ECR_ImageIdentifier
 
 =item RepositoryName => Str
 
@@ -941,7 +943,7 @@ see the results before creating the lifecycle policy.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::ECR::Tag>]
+=item Tags => ArrayRef[ECR_Tag]
 
 
 =back
@@ -1009,9 +1011,9 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllImages(sub { },RepositoryName => Str, [Filter => L<Paws::ECR::DescribeImagesFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 DescribeAllImages(sub { },RepositoryName => Str, [Filter => ECR_DescribeImagesFilter, ImageIds => ArrayRef[ECR_ImageIdentifier], MaxResults => Int, NextToken => Str, RegistryId => Str])
 
-=head2 DescribeAllImages(RepositoryName => Str, [Filter => L<Paws::ECR::DescribeImagesFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 DescribeAllImages(RepositoryName => Str, [Filter => ECR_DescribeImagesFilter, ImageIds => ArrayRef[ECR_ImageIdentifier], MaxResults => Int, NextToken => Str, RegistryId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1021,9 +1023,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ECR::DescribeImagesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllImageScanFindings(sub { },ImageId => L<Paws::ECR::ImageIdentifier>, RepositoryName => Str, [MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 DescribeAllImageScanFindings(sub { },ImageId => ECR_ImageIdentifier, RepositoryName => Str, [MaxResults => Int, NextToken => Str, RegistryId => Str])
 
-=head2 DescribeAllImageScanFindings(ImageId => L<Paws::ECR::ImageIdentifier>, RepositoryName => Str, [MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 DescribeAllImageScanFindings(ImageId => ECR_ImageIdentifier, RepositoryName => Str, [MaxResults => Int, NextToken => Str, RegistryId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1045,9 +1047,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ECR::DescribeRepositoriesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllLifecyclePolicyPreview(sub { },RepositoryName => Str, [Filter => L<Paws::ECR::LifecyclePolicyPreviewFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 GetAllLifecyclePolicyPreview(sub { },RepositoryName => Str, [Filter => ECR_LifecyclePolicyPreviewFilter, ImageIds => ArrayRef[ECR_ImageIdentifier], MaxResults => Int, NextToken => Str, RegistryId => Str])
 
-=head2 GetAllLifecyclePolicyPreview(RepositoryName => Str, [Filter => L<Paws::ECR::LifecyclePolicyPreviewFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 GetAllLifecyclePolicyPreview(RepositoryName => Str, [Filter => ECR_LifecyclePolicyPreviewFilter, ImageIds => ArrayRef[ECR_ImageIdentifier], MaxResults => Int, NextToken => Str, RegistryId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1057,9 +1059,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ECR::GetLifecyclePolicyPreviewResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllImages(sub { },RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 ListAllImages(sub { },RepositoryName => Str, [Filter => ECR_ListImagesFilter, MaxResults => Int, NextToken => Str, RegistryId => Str])
 
-=head2 ListAllImages(RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 ListAllImages(RepositoryName => Str, [Filter => ECR_ListImagesFilter, MaxResults => Int, NextToken => Str, RegistryId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -1,10 +1,34 @@
 
 package Paws::Kafka::GetBootstrapBrokersResponse;
-  use Moose;
-  has BootstrapBrokerString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bootstrapBrokerString');
-  has BootstrapBrokerStringTls => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bootstrapBrokerStringTls');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kafka::Types qw//;
+  has BootstrapBrokerString => (is => 'ro', isa => Str);
+  has BootstrapBrokerStringTls => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'BootstrapBrokerString' => 'bootstrapBrokerString',
+                       'BootstrapBrokerStringTls' => 'bootstrapBrokerStringTls'
+                     },
+  'types' => {
+               'BootstrapBrokerString' => {
+                                            'type' => 'Str'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BootstrapBrokerStringTls' => {
+                                               'type' => 'Str'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::AudioSelectorGroup;
-  use Moose;
-  has AudioSelectorNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'audioSelectorNames', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::MediaConvert::Types qw//;
+  has AudioSelectorNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AudioSelectorNames' => 'audioSelectorNames'
+                     },
+  'types' => {
+               'AudioSelectorNames' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

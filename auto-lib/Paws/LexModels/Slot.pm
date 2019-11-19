@@ -1,14 +1,71 @@
+# Generated from default/object.tt
 package Paws::LexModels::Slot;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
-  has ResponseCard => (is => 'ro', isa => 'Str', request_name => 'responseCard', traits => ['NameInRequest']);
-  has SampleUtterances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'sampleUtterances', traits => ['NameInRequest']);
-  has SlotConstraint => (is => 'ro', isa => 'Str', request_name => 'slotConstraint', traits => ['NameInRequest'], required => 1);
-  has SlotType => (is => 'ro', isa => 'Str', request_name => 'slotType', traits => ['NameInRequest']);
-  has SlotTypeVersion => (is => 'ro', isa => 'Str', request_name => 'slotTypeVersion', traits => ['NameInRequest']);
-  has ValueElicitationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', request_name => 'valueElicitationPrompt', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::LexModels::Types qw/LexModels_Prompt/;
+  has Description => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Priority => (is => 'ro', isa => Int);
+  has ResponseCard => (is => 'ro', isa => Str);
+  has SampleUtterances => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SlotConstraint => (is => 'ro', isa => Str, required => 1);
+  has SlotType => (is => 'ro', isa => Str);
+  has SlotTypeVersion => (is => 'ro', isa => Str);
+  has ValueElicitationPrompt => (is => 'ro', isa => LexModels_Prompt);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SlotType' => 'slotType',
+                       'ValueElicitationPrompt' => 'valueElicitationPrompt',
+                       'SlotTypeVersion' => 'slotTypeVersion',
+                       'ResponseCard' => 'responseCard',
+                       'Name' => 'name',
+                       'Description' => 'description',
+                       'Priority' => 'priority',
+                       'SlotConstraint' => 'slotConstraint',
+                       'SampleUtterances' => 'sampleUtterances'
+                     },
+  'IsRequired' => {
+                    'SlotConstraint' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'SlotConstraint' => {
+                                     'type' => 'Str'
+                                   },
+               'SampleUtterances' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ResponseCard' => {
+                                   'type' => 'Str'
+                                 },
+               'ValueElicitationPrompt' => {
+                                             'type' => 'LexModels_Prompt',
+                                             'class' => 'Paws::LexModels::Prompt'
+                                           },
+               'SlotTypeVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SlotType' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +152,7 @@ of the built-in slot types.
   The version of the slot type.
 
 
-=head2 ValueElicitationPrompt => L<Paws::LexModels::Prompt>
+=head2 ValueElicitationPrompt => LexModels_Prompt
 
   The prompt that Amazon Lex uses to elicit the slot value from the user.
 

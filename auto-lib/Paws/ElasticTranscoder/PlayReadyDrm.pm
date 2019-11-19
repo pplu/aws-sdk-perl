@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::PlayReadyDrm;
-  use Moose;
-  has Format => (is => 'ro', isa => 'Str');
-  has InitializationVector => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str');
-  has KeyId => (is => 'ro', isa => 'Str');
-  has KeyMd5 => (is => 'ro', isa => 'Str');
-  has LicenseAcquisitionUrl => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw//;
+  has Format => (is => 'ro', isa => Str);
+  has InitializationVector => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has KeyId => (is => 'ro', isa => Str);
+  has KeyMd5 => (is => 'ro', isa => Str);
+  has LicenseAcquisitionUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyId' => {
+                            'type' => 'Str'
+                          },
+               'KeyMd5' => {
+                             'type' => 'Str'
+                           },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'InitializationVector' => {
+                                           'type' => 'Str'
+                                         },
+               'LicenseAcquisitionUrl' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

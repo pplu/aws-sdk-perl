@@ -1,16 +1,49 @@
 
 package Paws::Kafka::UpdateBrokerCount;
-  use Moose;
-  has ClusterArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'clusterArn', required => 1);
-  has CurrentVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'currentVersion', required => 1);
-  has TargetNumberOfBrokerNodes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'targetNumberOfBrokerNodes', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Kafka::Types qw//;
+  has ClusterArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CurrentVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetNumberOfBrokerNodes => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBrokerCount');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/clusters/{clusterArn}/nodes/count');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kafka::UpdateBrokerCountResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateBrokerCount');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/clusters/{clusterArn}/nodes/count');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Kafka::UpdateBrokerCountResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ClusterArn' => 'clusterArn'
+                  },
+  'types' => {
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               },
+               'CurrentVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'TargetNumberOfBrokerNodes' => {
+                                                'type' => 'Int'
+                                              }
+             },
+  'NameInRequest' => {
+                       'TargetNumberOfBrokerNodes' => 'targetNumberOfBrokerNodes',
+                       'CurrentVersion' => 'currentVersion'
+                     },
+  'IsRequired' => {
+                    'TargetNumberOfBrokerNodes' => 1,
+                    'CurrentVersion' => 1,
+                    'ClusterArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,15 @@
 package Paws::ResourceGroups;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'resource-groups' }
   sub signing_name { 'resource-groups' }
   sub version { '2017-11-27' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -108,14 +109,17 @@ package Paws::ResourceGroups;
     if (not defined $callback) {
       while ($next_result->NextToken) {
         $next_result = $self->ListGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->GroupIdentifiers }, @{ $next_result->GroupIdentifiers };
         push @{ $result->Groups }, @{ $next_result->Groups };
       }
       return $result;
     } else {
       while ($result->NextToken) {
+        $callback->($_ => 'GroupIdentifiers') foreach (@{ $result->GroupIdentifiers });
         $callback->($_ => 'Groups') foreach (@{ $result->Groups });
         $result = $self->ListGroups(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'GroupIdentifiers') foreach (@{ $result->GroupIdentifiers });
       $callback->($_ => 'Groups') foreach (@{ $result->Groups });
     }
 
@@ -239,11 +243,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/res
 
 =item Name => Str
 
-=item ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
+=item ResourceQuery => ResourceGroups_ResourceQuery
 
 =item [Description => Str]
 
-=item [Tags => L<Paws::ResourceGroups::Tags>]
+=item [Tags => ResourceGroups_Tags]
 
 
 =back
@@ -329,7 +333,7 @@ specified by an ARN.
 
 =item GroupName => Str
 
-=item [Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>]]
+=item [Filters => ArrayRef[ResourceGroups_ResourceFilter]]
 
 =item [MaxResults => Int]
 
@@ -350,7 +354,7 @@ resource group.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::ResourceGroups::GroupFilter>]]
+=item [Filters => ArrayRef[ResourceGroups_GroupFilter]]
 
 =item [MaxResults => Int]
 
@@ -370,7 +374,7 @@ Returns a list of existing resource groups in your account.
 
 =over
 
-=item ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
+=item ResourceQuery => ResourceGroups_ResourceQuery
 
 =item [MaxResults => Int]
 
@@ -394,7 +398,7 @@ CreateGroup or UpdateGroupQuery operation.
 
 =item Arn => Str
 
-=item Tags => L<Paws::ResourceGroups::Tags>
+=item Tags => ResourceGroups_Tags
 
 
 =back
@@ -451,7 +455,7 @@ update the name of a resource group.
 
 =item GroupName => Str
 
-=item ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
+=item ResourceQuery => ResourceGroups_ResourceQuery
 
 
 =back
@@ -469,9 +473,9 @@ Updates the resource query of a group.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllGroupResources(sub { },GroupName => Str, [Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllGroupResources(sub { },GroupName => Str, [Filters => ArrayRef[ResourceGroups_ResourceFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllGroupResources(GroupName => Str, [Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllGroupResources(GroupName => Str, [Filters => ArrayRef[ResourceGroups_ResourceFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -481,21 +485,23 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ResourceGroups::ListGroupResourcesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllGroups(sub { },[Filters => ArrayRef[L<Paws::ResourceGroups::GroupFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllGroups(sub { },[Filters => ArrayRef[ResourceGroups_GroupFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllGroups([Filters => ArrayRef[L<Paws::ResourceGroups::GroupFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllGroups([Filters => ArrayRef[ResourceGroups_GroupFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
 
+ - GroupIdentifiers, passing the object as the first parameter, and the string 'GroupIdentifiers' as the second parameter 
+
  - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
 
-If not, it will return a a L<Paws::ResourceGroups::ListGroupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+If not, it will return a a L<Paws::ResourceGroups::ListGroupsOutput> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SearchAllResources(sub { },ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>, [MaxResults => Int, NextToken => Str])
+=head2 SearchAllResources(sub { },ResourceQuery => ResourceGroups_ResourceQuery, [MaxResults => Int, NextToken => Str])
 
-=head2 SearchAllResources(ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>, [MaxResults => Int, NextToken => Str])
+=head2 SearchAllResources(ResourceQuery => ResourceGroups_ResourceQuery, [MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

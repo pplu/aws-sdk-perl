@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::GameLift::PlayerLatency;
-  use Moose;
-  has LatencyInMilliseconds => (is => 'ro', isa => 'Num');
-  has PlayerId => (is => 'ro', isa => 'Str');
-  has RegionIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Str/;
+  use Paws::GameLift::Types qw//;
+  has LatencyInMilliseconds => (is => 'ro', isa => Num);
+  has PlayerId => (is => 'ro', isa => Str);
+  has RegionIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegionIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'PlayerId' => {
+                               'type' => 'Str'
+                             },
+               'LatencyInMilliseconds' => {
+                                            'type' => 'Num'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SegmentReference;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Pinpoint::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Id' => 1
+                  },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Version' => {
+                              'type' => 'Int'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,37 @@
 
 package Paws::SESv2::CreateEmailIdentity;
-  use Moose;
-  has EmailIdentity => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SESv2::Types qw/SESv2_Tag/;
+  has EmailIdentity => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SESv2_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEmailIdentity');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/identities');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::CreateEmailIdentityResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateEmailIdentity');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/identities');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::CreateEmailIdentityResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'EmailIdentity' => 1
+                  },
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[SESv2_Tag]',
+                           'class' => 'Paws::SESv2::Tag'
+                         },
+               'EmailIdentity' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +83,7 @@ The email address or domain that you want to verify.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SESv2::Tag>]
+=head2 Tags => ArrayRef[SESv2_Tag]
 
 An array of objects that define the tags (keys and values) that you
 want to associate with the email identity.

@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::ResourceToImport;
-  use Moose;
-  has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceIdentifier => (is => 'ro', isa => 'Paws::CloudFormation::ResourceIdentifierProperties', required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw/CloudFormation_ResourceIdentifierProperties/;
+  has LogicalResourceId => (is => 'ro', isa => Str, required => 1);
+  has ResourceIdentifier => (is => 'ro', isa => CloudFormation_ResourceIdentifierProperties, required => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LogicalResourceId' => 1,
+                    'ResourceType' => 1,
+                    'ResourceIdentifier' => 1
+                  },
+  'types' => {
+               'ResourceIdentifier' => {
+                                         'class' => 'Paws::CloudFormation::ResourceIdentifierProperties',
+                                         'type' => 'CloudFormation_ResourceIdentifierProperties'
+                                       },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'LogicalResourceId' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +72,7 @@ Describes the target resource of an import operation.
   The logical ID of the target resource as specified in the template.
 
 
-=head2 B<REQUIRED> ResourceIdentifier => L<Paws::CloudFormation::ResourceIdentifierProperties>
+=head2 B<REQUIRED> ResourceIdentifier => CloudFormation_ResourceIdentifierProperties
 
   A key-value pair that identifies the target resource. The key is an
 identifier property (for example, C<BucketName> for C<AWS::S3::Bucket>

@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::Forecast::PredictorSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DatasetGroupArn => (is => 'ro', isa => 'Str');
-  has LastModificationTime => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has PredictorArn => (is => 'ro', isa => 'Str');
-  has PredictorName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DatasetGroupArn => (is => 'ro', isa => Str);
+  has LastModificationTime => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has PredictorArn => (is => 'ro', isa => Str);
+  has PredictorName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PredictorArn' => {
+                                   'type' => 'Str'
+                                 },
+               'PredictorName' => {
+                                    'type' => 'Str'
+                                  },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LastModificationTime' => {
+                                           'type' => 'Str'
+                                         },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'DatasetGroupArn' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,12 +1,62 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::CaptionSourceSettings;
-  use Moose;
-  has AncillarySourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::AncillarySourceSettings', request_name => 'ancillarySourceSettings', traits => ['NameInRequest']);
-  has DvbSubSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::DvbSubSourceSettings', request_name => 'dvbSubSourceSettings', traits => ['NameInRequest']);
-  has EmbeddedSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::EmbeddedSourceSettings', request_name => 'embeddedSourceSettings', traits => ['NameInRequest']);
-  has FileSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::FileSourceSettings', request_name => 'fileSourceSettings', traits => ['NameInRequest']);
-  has SourceType => (is => 'ro', isa => 'Str', request_name => 'sourceType', traits => ['NameInRequest']);
-  has TeletextSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::TeletextSourceSettings', request_name => 'teletextSourceSettings', traits => ['NameInRequest']);
-  has TrackSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::TrackSourceSettings', request_name => 'trackSourceSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_TeletextSourceSettings MediaConvert_EmbeddedSourceSettings MediaConvert_TrackSourceSettings MediaConvert_DvbSubSourceSettings MediaConvert_FileSourceSettings MediaConvert_AncillarySourceSettings/;
+  has AncillarySourceSettings => (is => 'ro', isa => MediaConvert_AncillarySourceSettings);
+  has DvbSubSourceSettings => (is => 'ro', isa => MediaConvert_DvbSubSourceSettings);
+  has EmbeddedSourceSettings => (is => 'ro', isa => MediaConvert_EmbeddedSourceSettings);
+  has FileSourceSettings => (is => 'ro', isa => MediaConvert_FileSourceSettings);
+  has SourceType => (is => 'ro', isa => Str);
+  has TeletextSourceSettings => (is => 'ro', isa => MediaConvert_TeletextSourceSettings);
+  has TrackSourceSettings => (is => 'ro', isa => MediaConvert_TrackSourceSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EmbeddedSourceSettings' => {
+                                             'class' => 'Paws::MediaConvert::EmbeddedSourceSettings',
+                                             'type' => 'MediaConvert_EmbeddedSourceSettings'
+                                           },
+               'FileSourceSettings' => {
+                                         'class' => 'Paws::MediaConvert::FileSourceSettings',
+                                         'type' => 'MediaConvert_FileSourceSettings'
+                                       },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'TeletextSourceSettings' => {
+                                             'type' => 'MediaConvert_TeletextSourceSettings',
+                                             'class' => 'Paws::MediaConvert::TeletextSourceSettings'
+                                           },
+               'AncillarySourceSettings' => {
+                                              'type' => 'MediaConvert_AncillarySourceSettings',
+                                              'class' => 'Paws::MediaConvert::AncillarySourceSettings'
+                                            },
+               'DvbSubSourceSettings' => {
+                                           'class' => 'Paws::MediaConvert::DvbSubSourceSettings',
+                                           'type' => 'MediaConvert_DvbSubSourceSettings'
+                                         },
+               'TrackSourceSettings' => {
+                                          'type' => 'MediaConvert_TrackSourceSettings',
+                                          'class' => 'Paws::MediaConvert::TrackSourceSettings'
+                                        }
+             },
+  'NameInRequest' => {
+                       'DvbSubSourceSettings' => 'dvbSubSourceSettings',
+                       'AncillarySourceSettings' => 'ancillarySourceSettings',
+                       'TrackSourceSettings' => 'trackSourceSettings',
+                       'EmbeddedSourceSettings' => 'embeddedSourceSettings',
+                       'FileSourceSettings' => 'fileSourceSettings',
+                       'SourceType' => 'sourceType',
+                       'TeletextSourceSettings' => 'teletextSourceSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,22 +95,22 @@ FileSoureSettings.
 =head1 ATTRIBUTES
 
 
-=head2 AncillarySourceSettings => L<Paws::MediaConvert::AncillarySourceSettings>
+=head2 AncillarySourceSettings => MediaConvert_AncillarySourceSettings
 
   Settings for ancillary captions source.
 
 
-=head2 DvbSubSourceSettings => L<Paws::MediaConvert::DvbSubSourceSettings>
+=head2 DvbSubSourceSettings => MediaConvert_DvbSubSourceSettings
 
   DVB Sub Source Settings
 
 
-=head2 EmbeddedSourceSettings => L<Paws::MediaConvert::EmbeddedSourceSettings>
+=head2 EmbeddedSourceSettings => MediaConvert_EmbeddedSourceSettings
 
   Settings for embedded captions Source
 
 
-=head2 FileSourceSettings => L<Paws::MediaConvert::FileSourceSettings>
+=head2 FileSourceSettings => MediaConvert_FileSourceSettings
 
   If your input captions are SCC, SMI, SRT, STL, TTML, or IMSC 1.1 in an
 xml file, specify the URI of the input caption source file. If your
@@ -74,12 +124,12 @@ instead of FileSoureSettings.
 The service cannot auto-detect caption format.
 
 
-=head2 TeletextSourceSettings => L<Paws::MediaConvert::TeletextSourceSettings>
+=head2 TeletextSourceSettings => MediaConvert_TeletextSourceSettings
 
   Settings specific to Teletext caption sources, including Page number.
 
 
-=head2 TrackSourceSettings => L<Paws::MediaConvert::TrackSourceSettings>
+=head2 TrackSourceSettings => MediaConvert_TrackSourceSettings
 
   Settings specific to caption sources that are specified by track
 number. Currently, this is only IMSC captions in an IMF package. If

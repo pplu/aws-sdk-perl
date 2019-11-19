@@ -1,14 +1,71 @@
+# Generated from default/object.tt
 package Paws::CloudFront::Distribution;
-  use Moose;
-  has ActiveTrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::ActiveTrustedSigners', required => 1);
-  has AliasICPRecordals => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::AliasICPRecordal]', request_name => 'AliasICPRecordal', traits => ['NameInRequest']);
-  has ARN => (is => 'ro', isa => 'Str', required => 1);
-  has DistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::DistributionConfig', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has InProgressInvalidationBatches => (is => 'ro', isa => 'Int', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int/;
+  use Paws::CloudFront::Types qw/CloudFront_AliasICPRecordal CloudFront_ActiveTrustedSigners CloudFront_DistributionConfig/;
+  has ActiveTrustedSigners => (is => 'ro', isa => CloudFront_ActiveTrustedSigners, required => 1);
+  has AliasICPRecordals => (is => 'ro', isa => ArrayRef[CloudFront_AliasICPRecordal]);
+  has ARN => (is => 'ro', isa => Str, required => 1);
+  has DistributionConfig => (is => 'ro', isa => CloudFront_DistributionConfig, required => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has InProgressInvalidationBatches => (is => 'ro', isa => Int, required => 1);
+  has LastModifiedTime => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DistributionConfig' => 1,
+                    'ARN' => 1,
+                    'InProgressInvalidationBatches' => 1,
+                    'ActiveTrustedSigners' => 1,
+                    'DomainName' => 1,
+                    'LastModifiedTime' => 1,
+                    'Status' => 1,
+                    'Id' => 1
+                  },
+  'NameInRequest' => {
+                       'AliasICPRecordals' => 'AliasICPRecordal'
+                     },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'AliasICPRecordals' => {
+                                        'type' => 'ArrayRef[CloudFront_AliasICPRecordal]',
+                                        'class' => 'Paws::CloudFront::AliasICPRecordal'
+                                      },
+               'ActiveTrustedSigners' => {
+                                           'type' => 'CloudFront_ActiveTrustedSigners',
+                                           'class' => 'Paws::CloudFront::ActiveTrustedSigners'
+                                         },
+               'InProgressInvalidationBatches' => {
+                                                    'type' => 'Int'
+                                                  },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'DistributionConfig' => {
+                                         'type' => 'CloudFront_DistributionConfig',
+                                         'class' => 'Paws::CloudFront::DistributionConfig'
+                                       },
+               'ARN' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +102,7 @@ from, and the details about how to track and manage content delivery.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ActiveTrustedSigners => L<Paws::CloudFront::ActiveTrustedSigners>
+=head2 B<REQUIRED> ActiveTrustedSigners => CloudFront_ActiveTrustedSigners
 
   CloudFront automatically adds this element to the response only if
 you've set up the distribution to serve private content with signed
@@ -58,7 +115,7 @@ no C<KeyPairId> element appears for a C<Signer>, that signer can't
 create working signed URLs.
 
 
-=head2 AliasICPRecordals => ArrayRef[L<Paws::CloudFront::AliasICPRecordal>]
+=head2 AliasICPRecordals => ArrayRef[CloudFront_AliasICPRecordal]
 
   AWS services in China customers must file for an Internet Content
 Provider (ICP) recordal if they want to serve content publicly on an
@@ -79,7 +136,7 @@ C<arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5>, where
 C<123456789012> is your AWS account ID.
 
 
-=head2 B<REQUIRED> DistributionConfig => L<Paws::CloudFront::DistributionConfig>
+=head2 B<REQUIRED> DistributionConfig => CloudFront_DistributionConfig
 
   The current configuration information for the distribution. Send a
 C<GET> request to the C</I<CloudFront API version>/distribution

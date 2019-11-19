@@ -1,18 +1,49 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudWatch::DescribeAlarms;
-  use Moose;
-  has ActionPrefix => (is => 'ro', isa => 'Str');
-  has AlarmNamePrefix => (is => 'ro', isa => 'Str');
-  has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StateValue => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::CloudWatch::Types qw//;
+  has ActionPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has AlarmNamePrefix => (is => 'ro', isa => Str, predicate => 1);
+  has AlarmNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StateValue => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAlarms');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatch::DescribeAlarmsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAlarms');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatch::DescribeAlarmsOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeAlarmsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AlarmNamePrefix' => {
+                                      'type' => 'Str'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ActionPrefix' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'AlarmNames' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'StateValue' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

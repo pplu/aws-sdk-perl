@@ -1,15 +1,71 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::DetectorModelConfiguration;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has DetectorModelArn => (is => 'ro', isa => 'Str', request_name => 'detectorModelArn', traits => ['NameInRequest']);
-  has DetectorModelDescription => (is => 'ro', isa => 'Str', request_name => 'detectorModelDescription', traits => ['NameInRequest']);
-  has DetectorModelName => (is => 'ro', isa => 'Str', request_name => 'detectorModelName', traits => ['NameInRequest']);
-  has DetectorModelVersion => (is => 'ro', isa => 'Str', request_name => 'detectorModelVersion', traits => ['NameInRequest']);
-  has EvaluationMethod => (is => 'ro', isa => 'Str', request_name => 'evaluationMethod', traits => ['NameInRequest']);
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DetectorModelArn => (is => 'ro', isa => Str);
+  has DetectorModelDescription => (is => 'ro', isa => Str);
+  has DetectorModelName => (is => 'ro', isa => Str);
+  has DetectorModelVersion => (is => 'ro', isa => Str);
+  has EvaluationMethod => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'DetectorModelArn' => {
+                                       'type' => 'Str'
+                                     },
+               'DetectorModelVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'EvaluationMethod' => {
+                                       'type' => 'Str'
+                                     },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'DetectorModelName' => {
+                                        'type' => 'Str'
+                                      },
+               'DetectorModelDescription' => {
+                                               'type' => 'Str'
+                                             },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'EvaluationMethod' => 'evaluationMethod',
+                       'DetectorModelVersion' => 'detectorModelVersion',
+                       'DetectorModelArn' => 'detectorModelArn',
+                       'CreationTime' => 'creationTime',
+                       'Key' => 'key',
+                       'DetectorModelDescription' => 'detectorModelDescription',
+                       'RoleArn' => 'roleArn',
+                       'DetectorModelName' => 'detectorModelName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

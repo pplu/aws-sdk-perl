@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalyticsV2::AddApplicationCloudWatchLoggingOption;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has CloudWatchLoggingOption => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::CloudWatchLoggingOption', required => 1);
-  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_CloudWatchLoggingOption/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CloudWatchLoggingOption => (is => 'ro', isa => KinesisAnalyticsV2_CloudWatchLoggingOption, required => 1, predicate => 1);
+  has CurrentApplicationVersionId => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddApplicationCloudWatchLoggingOption');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalyticsV2::AddApplicationCloudWatchLoggingOptionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddApplicationCloudWatchLoggingOption');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalyticsV2::AddApplicationCloudWatchLoggingOptionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CloudWatchLoggingOption' => {
+                                              'class' => 'Paws::KinesisAnalyticsV2::CloudWatchLoggingOption',
+                                              'type' => 'KinesisAnalyticsV2_CloudWatchLoggingOption'
+                                            },
+               'CurrentApplicationVersionId' => {
+                                                  'type' => 'Int'
+                                                },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'CloudWatchLoggingOption' => 1,
+                    'CurrentApplicationVersionId' => 1,
+                    'ApplicationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +91,7 @@ The Kinesis Data Analytics application name.
 
 
 
-=head2 B<REQUIRED> CloudWatchLoggingOption => L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOption>
+=head2 B<REQUIRED> CloudWatchLoggingOption => KinesisAnalyticsV2_CloudWatchLoggingOption
 
 Provides the Amazon CloudWatch log stream Amazon Resource Name (ARN).
 

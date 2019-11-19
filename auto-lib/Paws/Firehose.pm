@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Firehose;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'firehose' }
   sub signing_name { 'firehose' }
   sub version { '2015-08-04' }
   sub target_prefix { 'Firehose_20150804' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -126,19 +128,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fir
 
 =item [DeliveryStreamType => Str]
 
-=item [ElasticsearchDestinationConfiguration => L<Paws::Firehose::ElasticsearchDestinationConfiguration>]
+=item [ElasticsearchDestinationConfiguration => Firehose_ElasticsearchDestinationConfiguration]
 
-=item [ExtendedS3DestinationConfiguration => L<Paws::Firehose::ExtendedS3DestinationConfiguration>]
+=item [ExtendedS3DestinationConfiguration => Firehose_ExtendedS3DestinationConfiguration]
 
-=item [KinesisStreamSourceConfiguration => L<Paws::Firehose::KinesisStreamSourceConfiguration>]
+=item [KinesisStreamSourceConfiguration => Firehose_KinesisStreamSourceConfiguration]
 
-=item [RedshiftDestinationConfiguration => L<Paws::Firehose::RedshiftDestinationConfiguration>]
+=item [RedshiftDestinationConfiguration => Firehose_RedshiftDestinationConfiguration]
 
-=item [S3DestinationConfiguration => L<Paws::Firehose::S3DestinationConfiguration>]
+=item [S3DestinationConfiguration => Firehose_S3DestinationConfiguration]
 
-=item [SplunkDestinationConfiguration => L<Paws::Firehose::SplunkDestinationConfiguration>]
+=item [SplunkDestinationConfiguration => Firehose_SplunkDestinationConfiguration]
 
-=item [Tags => ArrayRef[L<Paws::Firehose::Tag>]]
+=item [Tags => ArrayRef[Firehose_Tag]]
 
 
 =back
@@ -330,7 +332,7 @@ limit of five transactions per second per account.
 
 =item DeliveryStreamName => Str
 
-=item Record => L<Paws::Firehose::Record>
+=item Record => Firehose_Record
 
 
 =back
@@ -388,7 +390,7 @@ encoding.
 
 =item DeliveryStreamName => Str
 
-=item Records => ArrayRef[L<Paws::Firehose::Record>]
+=item Records => ArrayRef[Firehose_Record]
 
 
 =back
@@ -550,7 +552,7 @@ in a 24-hour period.
 
 =item DeliveryStreamName => Str
 
-=item Tags => ArrayRef[L<Paws::Firehose::Tag>]
+=item Tags => ArrayRef[Firehose_Tag]
 
 
 =back
@@ -608,15 +610,15 @@ This operation has a limit of five transactions per second per account.
 
 =item DestinationId => Str
 
-=item [ElasticsearchDestinationUpdate => L<Paws::Firehose::ElasticsearchDestinationUpdate>]
+=item [ElasticsearchDestinationUpdate => Firehose_ElasticsearchDestinationUpdate]
 
-=item [ExtendedS3DestinationUpdate => L<Paws::Firehose::ExtendedS3DestinationUpdate>]
+=item [ExtendedS3DestinationUpdate => Firehose_ExtendedS3DestinationUpdate]
 
-=item [RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>]
+=item [RedshiftDestinationUpdate => Firehose_RedshiftDestinationUpdate]
 
-=item [S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>]
+=item [S3DestinationUpdate => Firehose_S3DestinationUpdate]
 
-=item [SplunkDestinationUpdate => L<Paws::Firehose::SplunkDestinationUpdate>]
+=item [SplunkDestinationUpdate => Firehose_SplunkDestinationUpdate]
 
 
 =back

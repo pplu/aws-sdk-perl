@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::SendMessages;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has MessageRequest => (is => 'ro', isa => 'Paws::Pinpoint::MessageRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MessageRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MessageRequest => (is => 'ro', isa => Pinpoint_MessageRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'MessageRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendMessages');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/messages');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::MessageResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendMessages');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/messages');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::MessageResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'types' => {
+               'MessageRequest' => {
+                                     'type' => 'Pinpoint_MessageRequest',
+                                     'class' => 'Paws::Pinpoint::MessageRequest'
+                                   },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'MessageRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -217,7 +243,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> MessageRequest => L<Paws::Pinpoint::MessageRequest>
+=head2 B<REQUIRED> MessageRequest => Pinpoint_MessageRequest
 
 
 

@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::RedShift::ClusterSecurityGroup;
-  use Moose;
-  has ClusterSecurityGroupName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EC2SecurityGroup]', request_name => 'EC2SecurityGroup', traits => ['NameInRequest']);
-  has IPRanges => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::IPRange]', request_name => 'IPRange', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_IPRange RedShift_Tag RedShift_EC2SecurityGroup/;
+  has ClusterSecurityGroupName => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EC2SecurityGroups => (is => 'ro', isa => ArrayRef[RedShift_EC2SecurityGroup]);
+  has IPRanges => (is => 'ro', isa => ArrayRef[RedShift_IPRange]);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'IPRanges' => 'IPRange',
+                       'Tags' => 'Tag',
+                       'EC2SecurityGroups' => 'EC2SecurityGroup'
+                     },
+  'types' => {
+               'ClusterSecurityGroupName' => {
+                                               'type' => 'Str'
+                                             },
+               'IPRanges' => {
+                               'class' => 'Paws::RedShift::IPRange',
+                               'type' => 'ArrayRef[RedShift_IPRange]'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::RedShift::Tag',
+                           'type' => 'ArrayRef[RedShift_Tag]'
+                         },
+               'EC2SecurityGroups' => {
+                                        'class' => 'Paws::RedShift::EC2SecurityGroup',
+                                        'type' => 'ArrayRef[RedShift_EC2SecurityGroup]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,19 +88,19 @@ applied.
   A description of the security group.
 
 
-=head2 EC2SecurityGroups => ArrayRef[L<Paws::RedShift::EC2SecurityGroup>]
+=head2 EC2SecurityGroups => ArrayRef[RedShift_EC2SecurityGroup]
 
   A list of EC2 security groups that are permitted to access clusters
 associated with this cluster security group.
 
 
-=head2 IPRanges => ArrayRef[L<Paws::RedShift::IPRange>]
+=head2 IPRanges => ArrayRef[RedShift_IPRange]
 
   A list of IP ranges (CIDR blocks) that are permitted to access clusters
 associated with this cluster security group.
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
   The list of tags for the cluster security group.
 

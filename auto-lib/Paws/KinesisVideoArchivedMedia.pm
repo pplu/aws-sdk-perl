@@ -1,14 +1,15 @@
 package Paws::KinesisVideoArchivedMedia;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'kinesisvideo' }
   sub signing_name { 'kinesisvideo' }
   sub version { '2017-09-30' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -99,7 +100,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =over
 
-=item [DASHFragmentSelector => L<Paws::KinesisVideoArchivedMedia::DASHFragmentSelector>]
+=item [DASHFragmentSelector => KinesisVideoArchivedMedia_DASHFragmentSelector]
 
 =item [DisplayFragmentNumber => Str]
 
@@ -335,7 +336,7 @@ topic, as well as Common Errors
 
 =item [Expires => Int]
 
-=item [HLSFragmentSelector => L<Paws::KinesisVideoArchivedMedia::HLSFragmentSelector>]
+=item [HLSFragmentSelector => KinesisVideoArchivedMedia_HLSFragmentSelector]
 
 =item [MaxMediaPlaylistFragmentResults => Int]
 
@@ -664,7 +665,7 @@ topic, as well as Common Errors
 
 =item StreamName => Str
 
-=item [FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>]
+=item [FragmentSelector => KinesisVideoArchivedMedia_FragmentSelector]
 
 =item [MaxResults => Int]
 
@@ -727,9 +728,9 @@ topic, as well as Common Errors
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllFragments(sub { },StreamName => Str, [FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>, MaxResults => Int, NextToken => Str])
+=head2 ListAllFragments(sub { },StreamName => Str, [FragmentSelector => KinesisVideoArchivedMedia_FragmentSelector, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllFragments(StreamName => Str, [FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>, MaxResults => Int, NextToken => Str])
+=head2 ListAllFragments(StreamName => Str, [FragmentSelector => KinesisVideoArchivedMedia_FragmentSelector, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -1,14 +1,35 @@
 
 package Paws::Chime::GetVoiceConnectorStreamingConfiguration;
-  use Moose;
-  has VoiceConnectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'voiceConnectorId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw//;
+  has VoiceConnectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetVoiceConnectorStreamingConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/voice-connectors/{voiceConnectorId}/streaming-configuration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::GetVoiceConnectorStreamingConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetVoiceConnectorStreamingConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/voice-connectors/{voiceConnectorId}/streaming-configuration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::GetVoiceConnectorStreamingConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'VoiceConnectorId' => 1
+                  },
+  'types' => {
+               'VoiceConnectorId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'ParamInURI' => {
+                    'VoiceConnectorId' => 'voiceConnectorId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

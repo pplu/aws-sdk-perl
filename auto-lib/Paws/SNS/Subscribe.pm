@@ -1,17 +1,50 @@
+# Generated from callargs_class.tt
 
 package Paws::SNS::Subscribe;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::SubscriptionAttributesMap');
-  has Endpoint => (is => 'ro', isa => 'Str');
-  has Protocol => (is => 'ro', isa => 'Str', required => 1);
-  has ReturnSubscriptionArn => (is => 'ro', isa => 'Bool');
-  has TopicArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SNS::Types qw/SNS_SubscriptionAttributesMap/;
+  has Attributes => (is => 'ro', isa => SNS_SubscriptionAttributesMap, predicate => 1);
+  has Endpoint => (is => 'ro', isa => Str, predicate => 1);
+  has Protocol => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReturnSubscriptionArn => (is => 'ro', isa => Bool, predicate => 1);
+  has TopicArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Subscribe');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::SubscribeResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SubscribeResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Subscribe');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SNS::SubscribeResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'SubscribeResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::SNS::SubscriptionAttributesMap',
+                                 'type' => 'SNS_SubscriptionAttributesMap'
+                               },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'ReturnSubscriptionArn' => {
+                                            'type' => 'Bool'
+                                          },
+               'TopicArn' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'Protocol' => 1,
+                    'TopicArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +83,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SNS::SubscriptionAttributesMap>
+=head2 Attributes => SNS_SubscriptionAttributesMap
 
 A map of attributes with their corresponding values.
 

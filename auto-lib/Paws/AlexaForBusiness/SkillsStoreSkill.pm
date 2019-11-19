@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::SkillsStoreSkill;
-  use Moose;
-  has IconUrl => (is => 'ro', isa => 'Str');
-  has SampleUtterances => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ShortDescription => (is => 'ro', isa => 'Str');
-  has SkillDetails => (is => 'ro', isa => 'Paws::AlexaForBusiness::SkillDetails');
-  has SkillId => (is => 'ro', isa => 'Str');
-  has SkillName => (is => 'ro', isa => 'Str');
-  has SupportsLinking => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_SkillDetails/;
+  has IconUrl => (is => 'ro', isa => Str);
+  has SampleUtterances => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ShortDescription => (is => 'ro', isa => Str);
+  has SkillDetails => (is => 'ro', isa => AlexaForBusiness_SkillDetails);
+  has SkillId => (is => 'ro', isa => Str);
+  has SkillName => (is => 'ro', isa => Str);
+  has SupportsLinking => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SkillDetails' => {
+                                   'type' => 'AlexaForBusiness_SkillDetails',
+                                   'class' => 'Paws::AlexaForBusiness::SkillDetails'
+                                 },
+               'SkillName' => {
+                                'type' => 'Str'
+                              },
+               'SampleUtterances' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'IconUrl' => {
+                              'type' => 'Str'
+                            },
+               'SkillId' => {
+                              'type' => 'Str'
+                            },
+               'ShortDescription' => {
+                                       'type' => 'Str'
+                                     },
+               'SupportsLinking' => {
+                                      'type' => 'Bool'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +93,7 @@ The detailed information about an Alexa skill.
   Short description about the skill.
 
 
-=head2 SkillDetails => L<Paws::AlexaForBusiness::SkillDetails>
+=head2 SkillDetails => AlexaForBusiness_SkillDetails
 
   Information about the skill.
 

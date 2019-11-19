@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::DescribeTaskSets;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' , required => 1);
-  has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
-  has TaskSets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'taskSets' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ECS::Types qw//;
+  has Cluster => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Service => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TaskSets => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTaskSets');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DescribeTaskSetsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTaskSets');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::DescribeTaskSetsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TaskSets' => 'taskSets',
+                       'Cluster' => 'cluster',
+                       'Service' => 'service'
+                     },
+  'IsRequired' => {
+                    'Service' => 1,
+                    'Cluster' => 1
+                  },
+  'types' => {
+               'Service' => {
+                              'type' => 'Str'
+                            },
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'TaskSets' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

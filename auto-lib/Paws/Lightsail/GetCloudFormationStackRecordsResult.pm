@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetCloudFormationStackRecordsResult;
-  use Moose;
-  has CloudFormationStackRecords => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::CloudFormationStackRecord]', traits => ['NameInRequest'], request_name => 'cloudFormationStackRecords' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_CloudFormationStackRecord/;
+  has CloudFormationStackRecords => (is => 'ro', isa => ArrayRef[Lightsail_CloudFormationStackRecord]);
+  has NextPageToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'CloudFormationStackRecords' => {
+                                                 'class' => 'Paws::Lightsail::CloudFormationStackRecord',
+                                                 'type' => 'ArrayRef[Lightsail_CloudFormationStackRecord]'
+                                               }
+             },
+  'NameInRequest' => {
+                       'CloudFormationStackRecords' => 'cloudFormationStackRecords',
+                       'NextPageToken' => 'nextPageToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Lightsail::GetCloudFormationStackRecordsResult
 =head1 ATTRIBUTES
 
 
-=head2 CloudFormationStackRecords => ArrayRef[L<Paws::Lightsail::CloudFormationStackRecord>]
+=head2 CloudFormationStackRecords => ArrayRef[Lightsail_CloudFormationStackRecord]
 
 A list of objects describing the CloudFormation stack records.
 

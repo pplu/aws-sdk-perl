@@ -1,17 +1,52 @@
 
 package Paws::IoT::RegisterCertificate;
-  use Moose;
-  has CaCertificatePem => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caCertificatePem');
-  has CertificatePem => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificatePem', required => 1);
-  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has CaCertificatePem => (is => 'ro', isa => Str, predicate => 1);
+  has CertificatePem => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SetAsActive => (is => 'ro', isa => Bool, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterCertificate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/certificate/register');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::RegisterCertificateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterCertificate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/certificate/register');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::RegisterCertificateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'SetAsActive' => 'setAsActive'
+                    },
+  'NameInRequest' => {
+                       'CaCertificatePem' => 'caCertificatePem',
+                       'Status' => 'status',
+                       'CertificatePem' => 'certificatePem'
+                     },
+  'IsRequired' => {
+                    'CertificatePem' => 1
+                  },
+  'types' => {
+               'CertificatePem' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CaCertificatePem' => {
+                                       'type' => 'Str'
+                                     },
+               'SetAsActive' => {
+                                  'type' => 'Bool'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

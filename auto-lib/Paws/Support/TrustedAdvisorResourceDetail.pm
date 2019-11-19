@@ -1,10 +1,51 @@
+# Generated from default/object.tt
 package Paws::Support::TrustedAdvisorResourceDetail;
-  use Moose;
-  has IsSuppressed => (is => 'ro', isa => 'Bool', request_name => 'isSuppressed', traits => ['NameInRequest']);
-  has Metadata => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'metadata', traits => ['NameInRequest'], required => 1);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::Support::Types qw//;
+  has IsSuppressed => (is => 'ro', isa => Bool);
+  has Metadata => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Region => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Metadata' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'IsSuppressed' => {
+                                   'type' => 'Bool'
+                                 },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'IsSuppressed' => 'isSuppressed',
+                       'Region' => 'region',
+                       'ResourceId' => 'resourceId',
+                       'Status' => 'status',
+                       'Metadata' => 'metadata'
+                     },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'Metadata' => 1,
+                    'ResourceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,15 @@
 package Paws::Greengrass;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'greengrass' }
   sub signing_name { 'greengrass' }
   sub version { '2017-06-07' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -991,11 +992,11 @@ minimum permissions in the policy
 
 =item [AmznClientToken => Str]
 
-=item [InitialVersion => L<Paws::Greengrass::ConnectorDefinitionVersion>]
+=item [InitialVersion => Greengrass_ConnectorDefinitionVersion]
 
 =item [Name => Str]
 
-=item [Tags => L<Paws::Greengrass::Tags>]
+=item [Tags => Greengrass_Tags]
 
 
 =back
@@ -1017,7 +1018,7 @@ the connector definition now or use
 
 =item [AmznClientToken => Str]
 
-=item [Connectors => ArrayRef[L<Paws::Greengrass::Connector>]]
+=item [Connectors => ArrayRef[Greengrass_Connector]]
 
 
 =back
@@ -1036,11 +1037,11 @@ defined.
 
 =item [AmznClientToken => Str]
 
-=item [InitialVersion => L<Paws::Greengrass::CoreDefinitionVersion>]
+=item [InitialVersion => Greengrass_CoreDefinitionVersion]
 
 =item [Name => Str]
 
-=item [Tags => L<Paws::Greengrass::Tags>]
+=item [Tags => Greengrass_Tags]
 
 
 =back
@@ -1062,7 +1063,7 @@ time. Greengrass groups must each contain exactly one Greengrass core.
 
 =item [AmznClientToken => Str]
 
-=item [Cores => ArrayRef[L<Paws::Greengrass::Core>]]
+=item [Cores => ArrayRef[Greengrass_Core]]
 
 
 =back
@@ -1107,11 +1108,11 @@ parameters.
 
 =item [AmznClientToken => Str]
 
-=item [InitialVersion => L<Paws::Greengrass::DeviceDefinitionVersion>]
+=item [InitialVersion => Greengrass_DeviceDefinitionVersion]
 
 =item [Name => Str]
 
-=item [Tags => L<Paws::Greengrass::Tags>]
+=item [Tags => Greengrass_Tags]
 
 
 =back
@@ -1133,7 +1134,7 @@ later time.
 
 =item [AmznClientToken => Str]
 
-=item [Devices => ArrayRef[L<Paws::Greengrass::Device>]]
+=item [Devices => ArrayRef[Greengrass_Device]]
 
 
 =back
@@ -1151,11 +1152,11 @@ Creates a version of a device definition that has already been defined.
 
 =item [AmznClientToken => Str]
 
-=item [InitialVersion => L<Paws::Greengrass::FunctionDefinitionVersion>]
+=item [InitialVersion => Greengrass_FunctionDefinitionVersion]
 
 =item [Name => Str]
 
-=item [Tags => L<Paws::Greengrass::Tags>]
+=item [Tags => Greengrass_Tags]
 
 
 =back
@@ -1179,9 +1180,9 @@ Lambda functions and their configurations now, or use
 
 =item [AmznClientToken => Str]
 
-=item [DefaultConfig => L<Paws::Greengrass::FunctionDefaultConfig>]
+=item [DefaultConfig => Greengrass_FunctionDefaultConfig]
 
-=item [Functions => ArrayRef[L<Paws::Greengrass::Function>]]
+=item [Functions => ArrayRef[Greengrass_Function]]
 
 
 =back
@@ -1200,11 +1201,11 @@ defined.
 
 =item [AmznClientToken => Str]
 
-=item [InitialVersion => L<Paws::Greengrass::GroupVersion>]
+=item [InitialVersion => Greengrass_GroupVersion]
 
 =item [Name => Str]
 
-=item [Tags => L<Paws::Greengrass::Tags>]
+=item [Tags => Greengrass_Tags]
 
 
 =back
@@ -1277,11 +1278,11 @@ Creates a version of a group which has already been defined.
 
 =item [AmznClientToken => Str]
 
-=item [InitialVersion => L<Paws::Greengrass::LoggerDefinitionVersion>]
+=item [InitialVersion => Greengrass_LoggerDefinitionVersion]
 
 =item [Name => Str]
 
-=item [Tags => L<Paws::Greengrass::Tags>]
+=item [Tags => Greengrass_Tags]
 
 
 =back
@@ -1303,7 +1304,7 @@ later time.
 
 =item [AmznClientToken => Str]
 
-=item [Loggers => ArrayRef[L<Paws::Greengrass::Logger>]]
+=item [Loggers => ArrayRef[Greengrass_Logger]]
 
 
 =back
@@ -1321,11 +1322,11 @@ Creates a version of a logger definition that has already been defined.
 
 =item [AmznClientToken => Str]
 
-=item [InitialVersion => L<Paws::Greengrass::ResourceDefinitionVersion>]
+=item [InitialVersion => Greengrass_ResourceDefinitionVersion]
 
 =item [Name => Str]
 
-=item [Tags => L<Paws::Greengrass::Tags>]
+=item [Tags => Greengrass_Tags]
 
 
 =back
@@ -1348,7 +1349,7 @@ providing a list of resources now, or use
 
 =item [AmznClientToken => Str]
 
-=item [Resources => ArrayRef[L<Paws::Greengrass::Resource>]]
+=item [Resources => ArrayRef[Greengrass_Resource]]
 
 
 =back
@@ -1399,11 +1400,11 @@ update job.
 
 =item [AmznClientToken => Str]
 
-=item [InitialVersion => L<Paws::Greengrass::SubscriptionDefinitionVersion>]
+=item [InitialVersion => Greengrass_SubscriptionDefinitionVersion]
 
 =item [Name => Str]
 
-=item [Tags => L<Paws::Greengrass::Tags>]
+=item [Tags => Greengrass_Tags]
 
 
 =back
@@ -1425,7 +1426,7 @@ of the subscription definition now or use
 
 =item [AmznClientToken => Str]
 
-=item [Subscriptions => ArrayRef[L<Paws::Greengrass::Subscription>]]
+=item [Subscriptions => ArrayRef[Greengrass_Subscription]]
 
 
 =back
@@ -2430,7 +2431,7 @@ Resets a group's deployments.
 
 =item [AmznClientToken => Str]
 
-=item [Tags => L<Paws::Greengrass::Tags>]
+=item [Tags => Greengrass_Tags]
 
 
 =back
@@ -2473,7 +2474,7 @@ pending deployments.
 
 =item ResourceArn => Str
 
-=item [Tags => L<Paws::Greengrass::Tags>]
+=item [Tags => Greengrass_Tags]
 
 
 =back
@@ -2512,7 +2513,7 @@ Remove resource tags from a Greengrass Resource.
 
 =item ThingName => Str
 
-=item [ConnectivityInfo => ArrayRef[L<Paws::Greengrass::ConnectivityInfo>]]
+=item [ConnectivityInfo => ArrayRef[Greengrass_ConnectivityInfo]]
 
 
 =back

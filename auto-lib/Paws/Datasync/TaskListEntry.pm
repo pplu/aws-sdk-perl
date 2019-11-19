@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Datasync::TaskListEntry;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TaskArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Datasync::Types qw//;
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TaskArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

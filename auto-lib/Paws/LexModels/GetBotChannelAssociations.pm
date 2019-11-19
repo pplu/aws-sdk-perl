@@ -1,18 +1,58 @@
 
 package Paws::LexModels::GetBotChannelAssociations;
-  use Moose;
-  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'aliasName', required => 1);
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NameContains => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameContains');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::LexModels::Types qw//;
+  has BotAlias => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BotName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NameContains => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetBotChannelAssociations');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bots/{botName}/aliases/{aliasName}/channels/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetBotChannelAssociationsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetBotChannelAssociations');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/bots/{botName}/aliases/{aliasName}/channels/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::GetBotChannelAssociationsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'BotAlias' => {
+                               'type' => 'Str'
+                             },
+               'BotName' => {
+                              'type' => 'Str'
+                            },
+               'NameContains' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'BotAlias' => 1,
+                    'BotName' => 1
+                  },
+  'ParamInQuery' => {
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken',
+                      'NameContains' => 'nameContains'
+                    },
+  'ParamInURI' => {
+                    'BotName' => 'botName',
+                    'BotAlias' => 'aliasName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

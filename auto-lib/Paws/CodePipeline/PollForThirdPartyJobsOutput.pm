@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodePipeline::PollForThirdPartyJobsOutput;
-  use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ThirdPartyJob]', traits => ['NameInRequest'], request_name => 'jobs' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ThirdPartyJob/;
+  has Jobs => (is => 'ro', isa => ArrayRef[CodePipeline_ThirdPartyJob]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Jobs' => {
+                           'class' => 'Paws::CodePipeline::ThirdPartyJob',
+                           'type' => 'ArrayRef[CodePipeline_ThirdPartyJob]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Jobs' => 'jobs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CodePipeline::PollForThirdPartyJobsOutput
 =head1 ATTRIBUTES
 
 
-=head2 Jobs => ArrayRef[L<Paws::CodePipeline::ThirdPartyJob>]
+=head2 Jobs => ArrayRef[CodePipeline_ThirdPartyJob]
 
 Information about the jobs to take action on.
 

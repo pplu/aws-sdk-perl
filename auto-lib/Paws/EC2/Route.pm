@@ -1,18 +1,83 @@
 package Paws::EC2::Route;
-  use Moose;
-  has DestinationCidrBlock => (is => 'ro', isa => 'Str', request_name => 'destinationCidrBlock', traits => ['NameInRequest']);
-  has DestinationIpv6CidrBlock => (is => 'ro', isa => 'Str', request_name => 'destinationIpv6CidrBlock', traits => ['NameInRequest']);
-  has DestinationPrefixListId => (is => 'ro', isa => 'Str', request_name => 'destinationPrefixListId', traits => ['NameInRequest']);
-  has EgressOnlyInternetGatewayId => (is => 'ro', isa => 'Str', request_name => 'egressOnlyInternetGatewayId', traits => ['NameInRequest']);
-  has GatewayId => (is => 'ro', isa => 'Str', request_name => 'gatewayId', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has InstanceOwnerId => (is => 'ro', isa => 'Str', request_name => 'instanceOwnerId', traits => ['NameInRequest']);
-  has NatGatewayId => (is => 'ro', isa => 'Str', request_name => 'natGatewayId', traits => ['NameInRequest']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
-  has Origin => (is => 'ro', isa => 'Str', request_name => 'origin', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has TransitGatewayId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayId', traits => ['NameInRequest']);
-  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', request_name => 'vpcPeeringConnectionId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has DestinationCidrBlock => (is => 'ro', isa => Str);
+  has DestinationIpv6CidrBlock => (is => 'ro', isa => Str);
+  has DestinationPrefixListId => (is => 'ro', isa => Str);
+  has EgressOnlyInternetGatewayId => (is => 'ro', isa => Str);
+  has GatewayId => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has InstanceOwnerId => (is => 'ro', isa => Str);
+  has NatGatewayId => (is => 'ro', isa => Str);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has Origin => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has TransitGatewayId => (is => 'ro', isa => Str);
+  has VpcPeeringConnectionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DestinationIpv6CidrBlock' => {
+                                               'type' => 'Str'
+                                             },
+               'InstanceOwnerId' => {
+                                      'type' => 'Str'
+                                    },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'NatGatewayId' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'EgressOnlyInternetGatewayId' => {
+                                                  'type' => 'Str'
+                                                },
+               'DestinationCidrBlock' => {
+                                           'type' => 'Str'
+                                         },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'VpcPeeringConnectionId' => {
+                                             'type' => 'Str'
+                                           },
+               'GatewayId' => {
+                                'type' => 'Str'
+                              },
+               'TransitGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'DestinationPrefixListId' => {
+                                              'type' => 'Str'
+                                            },
+               'Origin' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'NatGatewayId' => 'natGatewayId',
+                       'DestinationCidrBlock' => 'destinationCidrBlock',
+                       'EgressOnlyInternetGatewayId' => 'egressOnlyInternetGatewayId',
+                       'InstanceId' => 'instanceId',
+                       'DestinationIpv6CidrBlock' => 'destinationIpv6CidrBlock',
+                       'InstanceOwnerId' => 'instanceOwnerId',
+                       'State' => 'state',
+                       'TransitGatewayId' => 'transitGatewayId',
+                       'VpcPeeringConnectionId' => 'vpcPeeringConnectionId',
+                       'GatewayId' => 'gatewayId',
+                       'Origin' => 'origin',
+                       'DestinationPrefixListId' => 'destinationPrefixListId',
+                       'NetworkInterfaceId' => 'networkInterfaceId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

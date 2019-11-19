@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Route53Resolver::IpAddressUpdate;
-  use Moose;
-  has Ip => (is => 'ro', isa => 'Str');
-  has IpId => (is => 'ro', isa => 'Str');
-  has SubnetId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53Resolver::Types qw//;
+  has Ip => (is => 'ro', isa => Str);
+  has IpId => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ip' => {
+                         'type' => 'Str'
+                       },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'IpId' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::S3::RequestProgress;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::S3::Types qw//;
+  has Enabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

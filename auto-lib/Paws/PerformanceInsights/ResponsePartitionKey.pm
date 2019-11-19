@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::PerformanceInsights::ResponsePartitionKey;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'Paws::PerformanceInsights::DimensionMap', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::PerformanceInsights::Types qw/PerformanceInsights_DimensionMap/;
+  has Dimensions => (is => 'ro', isa => PerformanceInsights_DimensionMap, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Dimensions' => {
+                                 'type' => 'PerformanceInsights_DimensionMap',
+                                 'class' => 'Paws::PerformanceInsights::DimensionMap'
+                               }
+             },
+  'IsRequired' => {
+                    'Dimensions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ specifies one dimension.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Dimensions => L<Paws::PerformanceInsights::DimensionMap>
+=head2 B<REQUIRED> Dimensions => PerformanceInsights_DimensionMap
 
   A dimension map that contains the dimension(s) for this partition.
 

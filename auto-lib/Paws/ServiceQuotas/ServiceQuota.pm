@@ -1,17 +1,70 @@
+# Generated from default/object.tt
 package Paws::ServiceQuotas::ServiceQuota;
-  use Moose;
-  has Adjustable => (is => 'ro', isa => 'Bool');
-  has ErrorReason => (is => 'ro', isa => 'Paws::ServiceQuotas::ErrorReason');
-  has GlobalQuota => (is => 'ro', isa => 'Bool');
-  has Period => (is => 'ro', isa => 'Paws::ServiceQuotas::QuotaPeriod');
-  has QuotaArn => (is => 'ro', isa => 'Str');
-  has QuotaCode => (is => 'ro', isa => 'Str');
-  has QuotaName => (is => 'ro', isa => 'Str');
-  has ServiceCode => (is => 'ro', isa => 'Str');
-  has ServiceName => (is => 'ro', isa => 'Str');
-  has Unit => (is => 'ro', isa => 'Str');
-  has UsageMetric => (is => 'ro', isa => 'Paws::ServiceQuotas::MetricInfo');
-  has Value => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Bool Str Num/;
+  use Paws::ServiceQuotas::Types qw/ServiceQuotas_MetricInfo ServiceQuotas_QuotaPeriod ServiceQuotas_ErrorReason/;
+  has Adjustable => (is => 'ro', isa => Bool);
+  has ErrorReason => (is => 'ro', isa => ServiceQuotas_ErrorReason);
+  has GlobalQuota => (is => 'ro', isa => Bool);
+  has Period => (is => 'ro', isa => ServiceQuotas_QuotaPeriod);
+  has QuotaArn => (is => 'ro', isa => Str);
+  has QuotaCode => (is => 'ro', isa => Str);
+  has QuotaName => (is => 'ro', isa => Str);
+  has ServiceCode => (is => 'ro', isa => Str);
+  has ServiceName => (is => 'ro', isa => Str);
+  has Unit => (is => 'ro', isa => Str);
+  has UsageMetric => (is => 'ro', isa => ServiceQuotas_MetricInfo);
+  has Value => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                },
+               'Period' => {
+                             'type' => 'ServiceQuotas_QuotaPeriod',
+                             'class' => 'Paws::ServiceQuotas::QuotaPeriod'
+                           },
+               'QuotaCode' => {
+                                'type' => 'Str'
+                              },
+               'QuotaArn' => {
+                               'type' => 'Str'
+                             },
+               'GlobalQuota' => {
+                                  'type' => 'Bool'
+                                },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'QuotaName' => {
+                                'type' => 'Str'
+                              },
+               'UsageMetric' => {
+                                  'class' => 'Paws::ServiceQuotas::MetricInfo',
+                                  'type' => 'ServiceQuotas_MetricInfo'
+                                },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'ErrorReason' => {
+                                  'class' => 'Paws::ServiceQuotas::ErrorReason',
+                                  'type' => 'ServiceQuotas_ErrorReason'
+                                },
+               'Adjustable' => {
+                                 'type' => 'Bool'
+                               },
+               'Value' => {
+                            'type' => 'Num'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +106,7 @@ service quota.
   Specifies if the quota value can be increased.
 
 
-=head2 ErrorReason => L<Paws::ServiceQuotas::ErrorReason>
+=head2 ErrorReason => ServiceQuotas_ErrorReason
 
   Specifies the C<ErrorCode> and C<ErrorMessage> when success isn't
 achieved.
@@ -64,7 +117,7 @@ achieved.
   Specifies if the quota is global.
 
 
-=head2 Period => L<Paws::ServiceQuotas::QuotaPeriod>
+=head2 Period => ServiceQuotas_QuotaPeriod
 
   Identifies the unit and value of how time is measured.
 
@@ -99,7 +152,7 @@ achieved.
   The unit of measurement for the value of the service quota.
 
 
-=head2 UsageMetric => L<Paws::ServiceQuotas::MetricInfo>
+=head2 UsageMetric => ServiceQuotas_MetricInfo
 
   Specifies the details about the measurement.
 

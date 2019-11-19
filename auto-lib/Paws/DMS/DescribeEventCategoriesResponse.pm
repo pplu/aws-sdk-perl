@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::DescribeEventCategoriesResponse;
-  use Moose;
-  has EventCategoryGroupList => (is => 'ro', isa => 'ArrayRef[Paws::DMS::EventCategoryGroup]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_EventCategoryGroup/;
+  has EventCategoryGroupList => (is => 'ro', isa => ArrayRef[DMS_EventCategoryGroup]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventCategoryGroupList' => {
+                                             'class' => 'Paws::DMS::EventCategoryGroup',
+                                             'type' => 'ArrayRef[DMS_EventCategoryGroup]'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DMS::DescribeEventCategoriesResponse
 =head1 ATTRIBUTES
 
 
-=head2 EventCategoryGroupList => ArrayRef[L<Paws::DMS::EventCategoryGroup>]
+=head2 EventCategoryGroupList => ArrayRef[DMS_EventCategoryGroup]
 
 A list of event categories.
 

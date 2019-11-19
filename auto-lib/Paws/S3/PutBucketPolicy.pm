@@ -1,20 +1,63 @@
 
 package Paws::S3::PutBucketPolicy;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ConfirmRemoveSelfBucketAccess => (is => 'ro', isa => 'Bool', header_name => 'x-amz-confirm-remove-self-bucket-access', traits => ['ParamInHeader']);
-  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has Policy => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::S3::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConfirmRemoveSelfBucketAccess => (is => 'ro', isa => Bool, predicate => 1);
+  has ContentLength => (is => 'ro', isa => Int, predicate => 1);
+  has ContentMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has Policy => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutBucketPolicy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}?policy');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutBucketPolicy');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}?policy');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'ContentLength' => 'Content-Length',
+                       'ConfirmRemoveSelfBucketAccess' => 'x-amz-confirm-remove-self-bucket-access'
+                     },
+  'AutoInHeader' => {
+                      'ContentMD5' => {
+                                        'auto' => 'MD5',
+                                        'header_name' => 'Content-MD5'
+                                      }
+                    },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket'
+                  },
+  'types' => {
+               'ContentMD5' => {
+                                 'type' => 'Str'
+                               },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'ConfirmRemoveSelfBucketAccess' => {
+                                                    'type' => 'Bool'
+                                                  },
+               'Policy' => {
+                             'type' => 'Str'
+                           },
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  }
+             },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'Policy' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

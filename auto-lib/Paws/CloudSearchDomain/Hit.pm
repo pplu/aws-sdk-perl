@@ -1,9 +1,44 @@
+# Generated from default/object.tt
 package Paws::CloudSearchDomain::Hit;
-  use Moose;
-  has Exprs => (is => 'ro', isa => 'Paws::CloudSearchDomain::Exprs', request_name => 'exprs', traits => ['NameInRequest']);
-  has Fields => (is => 'ro', isa => 'Paws::CloudSearchDomain::Fields', request_name => 'fields', traits => ['NameInRequest']);
-  has Highlights => (is => 'ro', isa => 'Paws::CloudSearchDomain::Highlights', request_name => 'highlights', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearchDomain::Types qw/CloudSearchDomain_Highlights CloudSearchDomain_Fields CloudSearchDomain_Exprs/;
+  has Exprs => (is => 'ro', isa => CloudSearchDomain_Exprs);
+  has Fields => (is => 'ro', isa => CloudSearchDomain_Fields);
+  has Highlights => (is => 'ro', isa => CloudSearchDomain_Highlights);
+  has Id => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Exprs' => 'exprs',
+                       'Fields' => 'fields',
+                       'Highlights' => 'highlights'
+                     },
+  'types' => {
+               'Fields' => {
+                             'type' => 'CloudSearchDomain_Fields',
+                             'class' => 'Paws::CloudSearchDomain::Fields'
+                           },
+               'Exprs' => {
+                            'type' => 'CloudSearchDomain_Exprs',
+                            'class' => 'Paws::CloudSearchDomain::Exprs'
+                          },
+               'Highlights' => {
+                                 'class' => 'Paws::CloudSearchDomain::Highlights',
+                                 'type' => 'CloudSearchDomain_Highlights'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,18 +74,18 @@ Information about a document that matches the search request.
 =head1 ATTRIBUTES
 
 
-=head2 Exprs => L<Paws::CloudSearchDomain::Exprs>
+=head2 Exprs => CloudSearchDomain_Exprs
 
   The expressions returned from a document that matches the search
 request.
 
 
-=head2 Fields => L<Paws::CloudSearchDomain::Fields>
+=head2 Fields => CloudSearchDomain_Fields
 
   The fields returned from a document that matches the search request.
 
 
-=head2 Highlights => L<Paws::CloudSearchDomain::Highlights>
+=head2 Highlights => CloudSearchDomain_Highlights
 
   The highlights returned from a document that matches the search
 request.

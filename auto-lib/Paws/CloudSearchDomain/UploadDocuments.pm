@@ -1,15 +1,43 @@
 
 package Paws::CloudSearchDomain::UploadDocuments;
-  use Moose;
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type', required => 1);
-  has Documents => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documents', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearchDomain::Types qw//;
+  has ContentType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Documents => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Documents');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadDocuments');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-01-01/documents/batch?format=sdk');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearchDomain::UploadDocumentsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UploadDocuments');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-01-01/documents/batch?format=sdk');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudSearchDomain::UploadDocumentsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'ContentType' => 'Content-Type'
+                     },
+  'IsRequired' => {
+                    'ContentType' => 1,
+                    'Documents' => 1
+                  },
+  'NameInRequest' => {
+                       'Documents' => 'documents'
+                     },
+  'types' => {
+               'Documents' => {
+                                'type' => 'Str'
+                              },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

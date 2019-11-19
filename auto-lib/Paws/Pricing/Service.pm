@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pricing::Service;
-  use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ServiceCode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::Pricing::Types qw//;
+  has AttributeNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ServiceCode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeNames' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

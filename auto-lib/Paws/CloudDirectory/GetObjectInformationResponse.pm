@@ -1,10 +1,31 @@
 
 package Paws::CloudDirectory::GetObjectInformationResponse;
-  use Moose;
-  has ObjectIdentifier => (is => 'ro', isa => 'Str');
-  has SchemaFacets => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::SchemaFacet]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_SchemaFacet/;
+  has ObjectIdentifier => (is => 'ro', isa => Str);
+  has SchemaFacets => (is => 'ro', isa => ArrayRef[CloudDirectory_SchemaFacet]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SchemaFacets' => {
+                                   'type' => 'ArrayRef[CloudDirectory_SchemaFacet]',
+                                   'class' => 'Paws::CloudDirectory::SchemaFacet'
+                                 },
+               'ObjectIdentifier' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +42,7 @@ Paws::CloudDirectory::GetObjectInformationResponse
 The C<ObjectIdentifier> of the specified object.
 
 
-=head2 SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
+=head2 SchemaFacets => ArrayRef[CloudDirectory_SchemaFacet]
 
 The facets attached to the specified object. Although the response does
 not include minor version information, the most recently applied minor

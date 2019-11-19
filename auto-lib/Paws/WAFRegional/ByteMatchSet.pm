@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::ByteMatchSet;
-  use Moose;
-  has ByteMatchSetId => (is => 'ro', isa => 'Str', required => 1);
-  has ByteMatchTuples => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::ByteMatchTuple]', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_ByteMatchTuple/;
+  has ByteMatchSetId => (is => 'ro', isa => Str, required => 1);
+  has ByteMatchTuples => (is => 'ro', isa => ArrayRef[WAFRegional_ByteMatchTuple], required => 1);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ByteMatchTuples' => {
+                                      'class' => 'Paws::WAFRegional::ByteMatchTuple',
+                                      'type' => 'ArrayRef[WAFRegional_ByteMatchTuple]'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ByteMatchSetId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'ByteMatchSetId' => 1,
+                    'ByteMatchTuples' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +88,7 @@ C<ByteMatchSetId> is returned by CreateByteMatchSet and by
 ListByteMatchSets.
 
 
-=head2 B<REQUIRED> ByteMatchTuples => ArrayRef[L<Paws::WAFRegional::ByteMatchTuple>]
+=head2 B<REQUIRED> ByteMatchTuples => ArrayRef[WAFRegional_ByteMatchTuple]
 
   Specifies the bytes (typically a string that corresponds with ASCII
 characters) that you want AWS WAF to search for in web requests, the

@@ -1,13 +1,51 @@
 
 package Paws::MediaPackage::RotateIngestEndpointCredentialsResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has HlsIngest => (is => 'ro', isa => 'Paws::MediaPackage::HlsIngest', traits => ['NameInRequest'], request_name => 'hlsIngest');
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
-  has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackage::Types qw/MediaPackage_Tags MediaPackage_HlsIngest/;
+  has Arn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has HlsIngest => (is => 'ro', isa => MediaPackage_HlsIngest);
+  has Id => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => MediaPackage_Tags);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'Id' => 'id',
+                       'HlsIngest' => 'hlsIngest',
+                       'Description' => 'description',
+                       'Tags' => 'tags'
+                     },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::MediaPackage::Tags',
+                           'type' => 'MediaPackage_Tags'
+                         },
+               'HlsIngest' => {
+                                'class' => 'Paws::MediaPackage::HlsIngest',
+                                'type' => 'MediaPackage_HlsIngest'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +67,7 @@ The Amazon Resource Name (ARN) assigned to the Channel.
 A short text description of the Channel.
 
 
-=head2 HlsIngest => L<Paws::MediaPackage::HlsIngest>
+=head2 HlsIngest => MediaPackage_HlsIngest
 
 
 
@@ -39,7 +77,7 @@ A short text description of the Channel.
 The ID of the Channel.
 
 
-=head2 Tags => L<Paws::MediaPackage::Tags>
+=head2 Tags => MediaPackage_Tags
 
 
 

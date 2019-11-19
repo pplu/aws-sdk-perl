@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Connect::Filters;
-  use Moose;
-  has Channels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Queues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Connect::Types qw//;
+  has Channels => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Queues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Queues' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Channels' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

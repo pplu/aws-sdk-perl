@@ -1,21 +1,87 @@
+# Generated from default/object.tt
 package Paws::FSX::FileSystem;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DNSName => (is => 'ro', isa => 'Str');
-  has FailureDetails => (is => 'ro', isa => 'Paws::FSX::FileSystemFailureDetails');
-  has FileSystemId => (is => 'ro', isa => 'Str');
-  has FileSystemType => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has Lifecycle => (is => 'ro', isa => 'Str');
-  has LustreConfiguration => (is => 'ro', isa => 'Paws::FSX::LustreFileSystemConfiguration');
-  has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has OwnerId => (is => 'ro', isa => 'Str');
-  has ResourceARN => (is => 'ro', isa => 'Str');
-  has StorageCapacity => (is => 'ro', isa => 'Int');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
-  has VpcId => (is => 'ro', isa => 'Str');
-  has WindowsConfiguration => (is => 'ro', isa => 'Paws::FSX::WindowsFileSystemConfiguration');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int/;
+  use Paws::FSX::Types qw/FSX_FileSystemFailureDetails FSX_Tag FSX_LustreFileSystemConfiguration FSX_WindowsFileSystemConfiguration/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DNSName => (is => 'ro', isa => Str);
+  has FailureDetails => (is => 'ro', isa => FSX_FileSystemFailureDetails);
+  has FileSystemId => (is => 'ro', isa => Str);
+  has FileSystemType => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has Lifecycle => (is => 'ro', isa => Str);
+  has LustreConfiguration => (is => 'ro', isa => FSX_LustreFileSystemConfiguration);
+  has NetworkInterfaceIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has OwnerId => (is => 'ro', isa => Str);
+  has ResourceARN => (is => 'ro', isa => Str);
+  has StorageCapacity => (is => 'ro', isa => Int);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Tags => (is => 'ro', isa => ArrayRef[FSX_Tag]);
+  has VpcId => (is => 'ro', isa => Str);
+  has WindowsConfiguration => (is => 'ro', isa => FSX_WindowsFileSystemConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NetworkInterfaceIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'WindowsConfiguration' => {
+                                           'class' => 'Paws::FSX::WindowsFileSystemConfiguration',
+                                           'type' => 'FSX_WindowsFileSystemConfiguration'
+                                         },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 },
+               'FileSystemType' => {
+                                     'type' => 'Str'
+                                   },
+               'StorageCapacity' => {
+                                      'type' => 'Int'
+                                    },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'LustreConfiguration' => {
+                                          'class' => 'Paws::FSX::LustreFileSystemConfiguration',
+                                          'type' => 'FSX_LustreFileSystemConfiguration'
+                                        },
+               'Lifecycle' => {
+                                'type' => 'Str'
+                              },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'DNSName' => {
+                              'type' => 'Str'
+                            },
+               'Tags' => {
+                           'type' => 'ArrayRef[FSX_Tag]',
+                           'class' => 'Paws::FSX::Tag'
+                         },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'FailureDetails' => {
+                                     'class' => 'Paws::FSX::FileSystemFailureDetails',
+                                     'type' => 'FSX_FileSystemFailureDetails'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +128,7 @@ A description of a specific Amazon FSx file system.
   The DNS name for the file system.
 
 
-=head2 FailureDetails => L<Paws::FSX::FileSystemFailureDetails>
+=head2 FailureDetails => FSX_FileSystemFailureDetails
 
   
 
@@ -124,7 +190,7 @@ initiated update.
 
 
 
-=head2 LustreConfiguration => L<Paws::FSX::LustreFileSystemConfiguration>
+=head2 LustreConfiguration => FSX_LustreFileSystemConfiguration
 
   
 
@@ -167,7 +233,7 @@ and only one is supported. The file system is launched in the
 Availability Zone associated with this subnet.
 
 
-=head2 Tags => ArrayRef[L<Paws::FSX::Tag>]
+=head2 Tags => ArrayRef[FSX_Tag]
 
   The tags to associate with the file system. For more information, see
 Tagging Your Amazon EC2 Resources
@@ -180,7 +246,7 @@ in the I<Amazon EC2 User Guide>.
   The ID of the primary VPC for the file system.
 
 
-=head2 WindowsConfiguration => L<Paws::FSX::WindowsFileSystemConfiguration>
+=head2 WindowsConfiguration => FSX_WindowsFileSystemConfiguration
 
   The configuration for this Microsoft Windows file system.
 

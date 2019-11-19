@@ -1,16 +1,47 @@
 
 package Paws::EFS::DescribeTags;
-  use Moose;
-  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FileSystemId', required => 1);
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::EFS::Types qw//;
+  has FileSystemId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTags');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/tags/{FileSystemId}/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EFS::DescribeTagsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTags');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-02-01/tags/{FileSystemId}/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EFS::DescribeTagsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'FileSystemId' => 'FileSystemId'
+                  },
+  'IsRequired' => {
+                    'FileSystemId' => 1
+                  },
+  'ParamInQuery' => {
+                      'MaxItems' => 'MaxItems',
+                      'Marker' => 'Marker'
+                    },
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

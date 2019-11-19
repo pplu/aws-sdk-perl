@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Rekognition::Pose;
-  use Moose;
-  has Pitch => (is => 'ro', isa => 'Num');
-  has Roll => (is => 'ro', isa => 'Num');
-  has Yaw => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Rekognition::Types qw//;
+  has Pitch => (is => 'ro', isa => Num);
+  has Roll => (is => 'ro', isa => Num);
+  has Yaw => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Roll' => {
+                           'type' => 'Num'
+                         },
+               'Pitch' => {
+                            'type' => 'Num'
+                          },
+               'Yaw' => {
+                          'type' => 'Num'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

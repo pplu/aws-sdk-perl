@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Discovery::DescribeContinuousExportsResponse;
-  use Moose;
-  has Descriptions => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ContinuousExportDescription]', traits => ['NameInRequest'], request_name => 'descriptions' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Discovery::Types qw/Discovery_ContinuousExportDescription/;
+  has Descriptions => (is => 'ro', isa => ArrayRef[Discovery_ContinuousExportDescription]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Descriptions' => 'descriptions'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Descriptions' => {
+                                   'class' => 'Paws::Discovery::ContinuousExportDescription',
+                                   'type' => 'ArrayRef[Discovery_ContinuousExportDescription]'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Discovery::DescribeContinuousExportsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Descriptions => ArrayRef[L<Paws::Discovery::ContinuousExportDescription>]
+=head2 Descriptions => ArrayRef[Discovery_ContinuousExportDescription]
 
 A list of continuous export descriptions.
 

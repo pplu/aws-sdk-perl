@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::Pipeline;
-  use Moose;
-  has Activities => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::PipelineActivity]', request_name => 'activities', traits => ['NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ReprocessingSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::ReprocessingSummary]', request_name => 'reprocessingSummaries', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_ReprocessingSummary IoTAnalytics_PipelineActivity/;
+  has Activities => (is => 'ro', isa => ArrayRef[IoTAnalytics_PipelineActivity]);
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ReprocessingSummaries => (is => 'ro', isa => ArrayRef[IoTAnalytics_ReprocessingSummary]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'Arn' => 'arn',
+                       'Activities' => 'activities',
+                       'Name' => 'name',
+                       'ReprocessingSummaries' => 'reprocessingSummaries',
+                       'CreationTime' => 'creationTime'
+                     },
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Activities' => {
+                                 'type' => 'ArrayRef[IoTAnalytics_PipelineActivity]',
+                                 'class' => 'Paws::IoTAnalytics::PipelineActivity'
+                               },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'ReprocessingSummaries' => {
+                                            'type' => 'ArrayRef[IoTAnalytics_ReprocessingSummary]',
+                                            'class' => 'Paws::IoTAnalytics::ReprocessingSummary'
+                                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +83,7 @@ Contains information about a pipeline.
 =head1 ATTRIBUTES
 
 
-=head2 Activities => ArrayRef[L<Paws::IoTAnalytics::PipelineActivity>]
+=head2 Activities => ArrayRef[IoTAnalytics_PipelineActivity]
 
   The activities that perform transformations on the messages.
 
@@ -66,7 +108,7 @@ Contains information about a pipeline.
   The name of the pipeline.
 
 
-=head2 ReprocessingSummaries => ArrayRef[L<Paws::IoTAnalytics::ReprocessingSummary>]
+=head2 ReprocessingSummaries => ArrayRef[IoTAnalytics_ReprocessingSummary]
 
   A summary of information about the pipeline reprocessing.
 

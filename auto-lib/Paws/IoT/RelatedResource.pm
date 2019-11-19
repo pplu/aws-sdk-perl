@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::IoT::RelatedResource;
-  use Moose;
-  has AdditionalInfo => (is => 'ro', isa => 'Paws::IoT::StringMap', request_name => 'additionalInfo', traits => ['NameInRequest']);
-  has ResourceIdentifier => (is => 'ro', isa => 'Paws::IoT::ResourceIdentifier', request_name => 'resourceIdentifier', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_ResourceIdentifier IoT_StringMap/;
+  has AdditionalInfo => (is => 'ro', isa => IoT_StringMap);
+  has ResourceIdentifier => (is => 'ro', isa => IoT_ResourceIdentifier);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceIdentifier' => {
+                                         'type' => 'IoT_ResourceIdentifier',
+                                         'class' => 'Paws::IoT::ResourceIdentifier'
+                                       },
+               'AdditionalInfo' => {
+                                     'type' => 'IoT_StringMap',
+                                     'class' => 'Paws::IoT::StringMap'
+                                   },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ResourceIdentifier' => 'resourceIdentifier',
+                       'AdditionalInfo' => 'additionalInfo',
+                       'ResourceType' => 'resourceType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +68,12 @@ Information about a related resource.
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalInfo => L<Paws::IoT::StringMap>
+=head2 AdditionalInfo => IoT_StringMap
 
   Other information about the resource.
 
 
-=head2 ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>
+=head2 ResourceIdentifier => IoT_ResourceIdentifier
 
   Information that identifies the resource.
 

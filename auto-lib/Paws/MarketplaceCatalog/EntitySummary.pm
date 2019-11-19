@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::MarketplaceCatalog::EntitySummary;
-  use Moose;
-  has EntityArn => (is => 'ro', isa => 'Str');
-  has EntityId => (is => 'ro', isa => 'Str');
-  has EntityType => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Visibility => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MarketplaceCatalog::Types qw//;
+  has EntityArn => (is => 'ro', isa => Str);
+  has EntityId => (is => 'ro', isa => Str);
+  has EntityType => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Visibility => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Visibility' => {
+                                 'type' => 'Str'
+                               },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'EntityType' => {
+                                 'type' => 'Str'
+                               },
+               'EntityId' => {
+                               'type' => 'Str'
+                             },
+               'EntityArn' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

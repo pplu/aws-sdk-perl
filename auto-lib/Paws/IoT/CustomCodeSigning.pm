@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::IoT::CustomCodeSigning;
-  use Moose;
-  has CertificateChain => (is => 'ro', isa => 'Paws::IoT::CodeSigningCertificateChain', request_name => 'certificateChain', traits => ['NameInRequest']);
-  has HashAlgorithm => (is => 'ro', isa => 'Str', request_name => 'hashAlgorithm', traits => ['NameInRequest']);
-  has Signature => (is => 'ro', isa => 'Paws::IoT::CodeSigningSignature', request_name => 'signature', traits => ['NameInRequest']);
-  has SignatureAlgorithm => (is => 'ro', isa => 'Str', request_name => 'signatureAlgorithm', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_CodeSigningCertificateChain IoT_CodeSigningSignature/;
+  has CertificateChain => (is => 'ro', isa => IoT_CodeSigningCertificateChain);
+  has HashAlgorithm => (is => 'ro', isa => Str);
+  has Signature => (is => 'ro', isa => IoT_CodeSigningSignature);
+  has SignatureAlgorithm => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SignatureAlgorithm' => 'signatureAlgorithm',
+                       'Signature' => 'signature',
+                       'HashAlgorithm' => 'hashAlgorithm',
+                       'CertificateChain' => 'certificateChain'
+                     },
+  'types' => {
+               'Signature' => {
+                                'type' => 'IoT_CodeSigningSignature',
+                                'class' => 'Paws::IoT::CodeSigningSignature'
+                              },
+               'CertificateChain' => {
+                                       'class' => 'Paws::IoT::CodeSigningCertificateChain',
+                                       'type' => 'IoT_CodeSigningCertificateChain'
+                                     },
+               'HashAlgorithm' => {
+                                    'type' => 'Str'
+                                  },
+               'SignatureAlgorithm' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +73,7 @@ Describes a custom method used to code sign a file.
 =head1 ATTRIBUTES
 
 
-=head2 CertificateChain => L<Paws::IoT::CodeSigningCertificateChain>
+=head2 CertificateChain => IoT_CodeSigningCertificateChain
 
   The certificate chain.
 
@@ -49,7 +83,7 @@ Describes a custom method used to code sign a file.
   The hash algorithm used to code sign the file.
 
 
-=head2 Signature => L<Paws::IoT::CodeSigningSignature>
+=head2 Signature => IoT_CodeSigningSignature
 
   The signature for the file.
 

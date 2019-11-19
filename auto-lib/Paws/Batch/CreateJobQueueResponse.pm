@@ -1,10 +1,38 @@
 
 package Paws::Batch::CreateJobQueueResponse;
-  use Moose;
-  has JobQueueArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueueArn', required => 1);
-  has JobQueueName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueueName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw//;
+  has JobQueueArn => (is => 'ro', isa => Str, required => 1);
+  has JobQueueName => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'JobQueueArn' => 'jobQueueArn',
+                       'JobQueueName' => 'jobQueueName'
+                     },
+  'IsRequired' => {
+                    'JobQueueName' => 1,
+                    'JobQueueArn' => 1
+                  },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobQueueArn' => {
+                                  'type' => 'Str'
+                                },
+               'JobQueueName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

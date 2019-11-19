@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes;
-  use Moose;
-  has ActivityId => (is => 'ro', isa => 'Str', request_name => 'activityId', traits => ['NameInRequest'], required => 1);
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has ActivityId => (is => 'ro', isa => Str, required => 1);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ActivityId' => 'activityId',
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId'
+                     },
+  'IsRequired' => {
+                    'ActivityId' => 1,
+                    'DecisionTaskCompletedEventId' => 1
+                  },
+  'types' => {
+               'ActivityId' => {
+                                 'type' => 'Str'
+                               },
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

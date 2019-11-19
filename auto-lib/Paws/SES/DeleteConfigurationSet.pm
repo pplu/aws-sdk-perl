@@ -1,13 +1,32 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::DeleteConfigurationSet;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteConfigurationSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::DeleteConfigurationSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteConfigurationSetResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteConfigurationSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::DeleteConfigurationSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DeleteConfigurationSetResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1
+                  },
+  'types' => {
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

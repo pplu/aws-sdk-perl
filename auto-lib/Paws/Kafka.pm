@@ -1,14 +1,15 @@
 package Paws::Kafka;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'kafka' }
   sub signing_name { 'kafka' }
   sub version { '2018-11-14' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -266,7 +267,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kaf
 
 =over
 
-=item BrokerNodeGroupInfo => L<Paws::Kafka::BrokerNodeGroupInfo>
+=item BrokerNodeGroupInfo => Kafka_BrokerNodeGroupInfo
 
 =item ClusterName => Str
 
@@ -274,15 +275,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kaf
 
 =item NumberOfBrokerNodes => Int
 
-=item [ClientAuthentication => L<Paws::Kafka::ClientAuthentication>]
+=item [ClientAuthentication => Kafka_ClientAuthentication]
 
-=item [ConfigurationInfo => L<Paws::Kafka::ConfigurationInfo>]
+=item [ConfigurationInfo => Kafka_ConfigurationInfo]
 
-=item [EncryptionInfo => L<Paws::Kafka::EncryptionInfo>]
+=item [EncryptionInfo => Kafka_EncryptionInfo]
 
 =item [EnhancedMonitoring => Str]
 
-=item [Tags => L<Paws::Kafka::__mapOf__string>]
+=item [Tags => Kafka___mapOf__string]
 
 
 =back
@@ -539,7 +540,7 @@ Returns a list of the tags associated with the specified resource.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::Kafka::__mapOf__string>
+=item Tags => Kafka___mapOf__string
 
 
 =back
@@ -598,7 +599,7 @@ Updates the number of broker nodes in the cluster.
 
 =item CurrentVersion => Str
 
-=item TargetBrokerEBSVolumeInfo => ArrayRef[L<Paws::Kafka::BrokerEBSVolumeInfo>]
+=item TargetBrokerEBSVolumeInfo => ArrayRef[Kafka_BrokerEBSVolumeInfo]
 
 
 =back
@@ -616,7 +617,7 @@ Updates the EBS storage associated with MSK brokers.
 
 =item ClusterArn => Str
 
-=item ConfigurationInfo => L<Paws::Kafka::ConfigurationInfo>
+=item ConfigurationInfo => Kafka_ConfigurationInfo
 
 =item CurrentVersion => Str
 

@@ -1,21 +1,74 @@
 
 package Paws::WorkDocs::DescribeFolderContents;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has FolderId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FolderId', required => 1);
-  has Include => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'include');
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
-  has Order => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'order');
-  has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort');
-  has Type => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'type');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has FolderId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Include => (is => 'ro', isa => Str, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has Order => (is => 'ro', isa => Str, predicate => 1);
+  has Sort => (is => 'ro', isa => Str, predicate => 1);
+  has Type => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeFolderContents');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/folders/{FolderId}/contents');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::DescribeFolderContentsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeFolderContents');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/folders/{FolderId}/contents');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::DescribeFolderContentsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'FolderId' => {
+                               'type' => 'Str'
+                             },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Sort' => {
+                           'type' => 'Str'
+                         },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Order' => {
+                            'type' => 'Str'
+                          },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'Include' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInQuery' => {
+                      'Limit' => 'limit',
+                      'Include' => 'include',
+                      'Order' => 'order',
+                      'Marker' => 'marker',
+                      'Type' => 'type',
+                      'Sort' => 'sort'
+                    },
+  'IsRequired' => {
+                    'FolderId' => 1
+                  },
+  'ParamInURI' => {
+                    'FolderId' => 'FolderId'
+                  },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

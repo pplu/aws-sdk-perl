@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::Organization;
-  use Moose;
-  has Asn => (is => 'ro', isa => 'Str', request_name => 'asn', traits => ['NameInRequest']);
-  has AsnOrg => (is => 'ro', isa => 'Str', request_name => 'asnOrg', traits => ['NameInRequest']);
-  has Isp => (is => 'ro', isa => 'Str', request_name => 'isp', traits => ['NameInRequest']);
-  has Org => (is => 'ro', isa => 'Str', request_name => 'org', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has Asn => (is => 'ro', isa => Str);
+  has AsnOrg => (is => 'ro', isa => Str);
+  has Isp => (is => 'ro', isa => Str);
+  has Org => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Org' => {
+                          'type' => 'Str'
+                        },
+               'AsnOrg' => {
+                             'type' => 'Str'
+                           },
+               'Isp' => {
+                          'type' => 'Str'
+                        },
+               'Asn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'AsnOrg' => 'asnOrg',
+                       'Org' => 'org',
+                       'Isp' => 'isp',
+                       'Asn' => 'asn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

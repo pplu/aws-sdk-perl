@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::S3::Filter;
-  use Moose;
-  has And => (is => 'ro', isa => 'Paws::S3::And');
-  has Prefix => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_And/;
+  has And => (is => 'ro', isa => S3_And);
+  has Prefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'And' => {
+                          'type' => 'S3_And',
+                          'class' => 'Paws::S3::And'
+                        },
+               'Prefix' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 And => L<Paws::S3::And>
+=head2 And => S3_And
 
   
 

@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::DocDB::CertificateMessage;
-  use Moose;
-  has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Certificate]', request_name => 'Certificate', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DocDB::Types qw/DocDB_Certificate/;
+  has Certificates => (is => 'ro', isa => ArrayRef[DocDB_Certificate]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Certificates' => {
+                                   'class' => 'Paws::DocDB::Certificate',
+                                   'type' => 'ArrayRef[DocDB_Certificate]'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Certificates' => 'Certificate'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::DocDB::CertificateMessage
 =head1 ATTRIBUTES
 
 
-=head2 Certificates => ArrayRef[L<Paws::DocDB::Certificate>]
+=head2 Certificates => ArrayRef[DocDB_Certificate]
 
 A list of certificates for this AWS account.
 

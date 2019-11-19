@@ -1,9 +1,38 @@
 package Paws::EC2::ElasticGpuAssociation;
-  use Moose;
-  has ElasticGpuAssociationId => (is => 'ro', isa => 'Str', request_name => 'elasticGpuAssociationId', traits => ['NameInRequest']);
-  has ElasticGpuAssociationState => (is => 'ro', isa => 'Str', request_name => 'elasticGpuAssociationState', traits => ['NameInRequest']);
-  has ElasticGpuAssociationTime => (is => 'ro', isa => 'Str', request_name => 'elasticGpuAssociationTime', traits => ['NameInRequest']);
-  has ElasticGpuId => (is => 'ro', isa => 'Str', request_name => 'elasticGpuId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has ElasticGpuAssociationId => (is => 'ro', isa => Str);
+  has ElasticGpuAssociationState => (is => 'ro', isa => Str);
+  has ElasticGpuAssociationTime => (is => 'ro', isa => Str);
+  has ElasticGpuId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ElasticGpuAssociationTime' => {
+                                                'type' => 'Str'
+                                              },
+               'ElasticGpuAssociationId' => {
+                                              'type' => 'Str'
+                                            },
+               'ElasticGpuAssociationState' => {
+                                                 'type' => 'Str'
+                                               },
+               'ElasticGpuId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ElasticGpuId' => 'elasticGpuId',
+                       'ElasticGpuAssociationTime' => 'elasticGpuAssociationTime',
+                       'ElasticGpuAssociationId' => 'elasticGpuAssociationId',
+                       'ElasticGpuAssociationState' => 'elasticGpuAssociationState'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

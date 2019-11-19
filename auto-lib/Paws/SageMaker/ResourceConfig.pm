@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ResourceConfig;
-  use Moose;
-  has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
-  has VolumeSizeInGB => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::SageMaker::Types qw//;
+  has InstanceCount => (is => 'ro', isa => Int, required => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1);
+  has VolumeKmsKeyId => (is => 'ro', isa => Str);
+  has VolumeSizeInGB => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'VolumeKmsKeyId' => {
+                                     'type' => 'Str'
+                                   },
+               'VolumeSizeInGB' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'IsRequired' => {
+                    'InstanceCount' => 1,
+                    'InstanceType' => 1,
+                    'VolumeSizeInGB' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Firehose::DescribeDeliveryStreamOutput;
-  use Moose;
-  has DeliveryStreamDescription => (is => 'ro', isa => 'Paws::Firehose::DeliveryStreamDescription', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw/Firehose_DeliveryStreamDescription/;
+  has DeliveryStreamDescription => (is => 'ro', isa => Firehose_DeliveryStreamDescription, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeliveryStreamDescription' => {
+                                                'type' => 'Firehose_DeliveryStreamDescription',
+                                                'class' => 'Paws::Firehose::DeliveryStreamDescription'
+                                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'DeliveryStreamDescription' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Firehose::DescribeDeliveryStreamOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DeliveryStreamDescription => L<Paws::Firehose::DeliveryStreamDescription>
+=head2 B<REQUIRED> DeliveryStreamDescription => Firehose_DeliveryStreamDescription
 
 Information about the delivery stream.
 

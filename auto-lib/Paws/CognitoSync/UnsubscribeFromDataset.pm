@@ -1,17 +1,53 @@
 
 package Paws::CognitoSync::UnsubscribeFromDataset;
-  use Moose;
-  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName', required => 1);
-  has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceId', required => 1);
-  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId', required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoSync::Types qw//;
+  has DatasetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeviceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UnsubscribeFromDataset');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::UnsubscribeFromDatasetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UnsubscribeFromDataset');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoSync::UnsubscribeFromDatasetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DeviceId' => 'DeviceId',
+                    'DatasetName' => 'DatasetName',
+                    'IdentityId' => 'IdentityId',
+                    'IdentityPoolId' => 'IdentityPoolId'
+                  },
+  'types' => {
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                },
+               'DeviceId' => {
+                               'type' => 'Str'
+                             },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   },
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'IdentityPoolId' => 1,
+                    'IdentityId' => 1,
+                    'DatasetName' => 1,
+                    'DeviceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

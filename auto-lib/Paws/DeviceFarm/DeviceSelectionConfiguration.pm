@@ -1,7 +1,36 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::DeviceSelectionConfiguration;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DeviceFilter]', request_name => 'filters', traits => ['NameInRequest'], required => 1);
-  has MaxDevices => (is => 'ro', isa => 'Int', request_name => 'maxDevices', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_DeviceFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[DeviceFarm_DeviceFilter], required => 1);
+  has MaxDevices => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MaxDevices' => 'maxDevices',
+                       'Filters' => 'filters'
+                     },
+  'IsRequired' => {
+                    'Filters' => 1,
+                    'MaxDevices' => 1
+                  },
+  'types' => {
+               'Filters' => {
+                              'type' => 'ArrayRef[DeviceFarm_DeviceFilter]',
+                              'class' => 'Paws::DeviceFarm::DeviceFilter'
+                            },
+               'MaxDevices' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +68,7 @@ C<deviceSelectionConfiguration> request parameter in ScheduleRun.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Filters => ArrayRef[L<Paws::DeviceFarm::DeviceFilter>]
+=head2 B<REQUIRED> Filters => ArrayRef[DeviceFarm_DeviceFilter]
 
   Used to dynamically select a set of devices for a test run. A filter is
 made up of an attribute, an operator, and one or more values.

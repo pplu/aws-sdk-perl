@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::ListUsersResponse;
-  use Moose;
-  has PaginationToken => (is => 'ro', isa => 'Str');
-  has Users => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::UserType]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_UserType/;
+  has PaginationToken => (is => 'ro', isa => Str);
+  has Users => (is => 'ro', isa => ArrayRef[CognitoIdp_UserType]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Users' => {
+                            'type' => 'ArrayRef[CognitoIdp_UserType]',
+                            'class' => 'Paws::CognitoIdp::UserType'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PaginationToken' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-=head2 Users => ArrayRef[L<Paws::CognitoIdp::UserType>]
+=head2 Users => ArrayRef[CognitoIdp_UserType]
 
 The users returned in the request to list users.
 

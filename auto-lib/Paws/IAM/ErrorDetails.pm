@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IAM::ErrorDetails;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Str', required => 1);
-  has Message => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has Code => (is => 'ro', isa => Str, required => 1);
+  has Message => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Code' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Code' => 1,
+                    'Message' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

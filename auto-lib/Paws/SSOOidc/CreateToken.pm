@@ -1,21 +1,73 @@
 
 package Paws::SSOOidc::CreateToken;
-  use Moose;
-  has ClientId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientId', required => 1);
-  has ClientSecret => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientSecret', required => 1);
-  has Code => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'code');
-  has DeviceCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deviceCode', required => 1);
-  has GrantType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'grantType', required => 1);
-  has RedirectUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'redirectUri');
-  has RefreshToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'refreshToken');
-  has Scope => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'scope');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SSOOidc::Types qw//;
+  has ClientId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientSecret => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Code => (is => 'ro', isa => Str, predicate => 1);
+  has DeviceCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GrantType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RedirectUri => (is => 'ro', isa => Str, predicate => 1);
+  has RefreshToken => (is => 'ro', isa => Str, predicate => 1);
+  has Scope => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateToken');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/token');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSOOidc::CreateTokenResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateToken');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/token');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSOOidc::CreateTokenResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ClientSecret' => 1,
+                    'GrantType' => 1,
+                    'ClientId' => 1,
+                    'DeviceCode' => 1
+                  },
+  'NameInRequest' => {
+                       'ClientId' => 'clientId',
+                       'Scope' => 'scope',
+                       'Code' => 'code',
+                       'RedirectUri' => 'redirectUri',
+                       'DeviceCode' => 'deviceCode',
+                       'RefreshToken' => 'refreshToken',
+                       'ClientSecret' => 'clientSecret',
+                       'GrantType' => 'grantType'
+                     },
+  'types' => {
+               'RedirectUri' => {
+                                  'type' => 'Str'
+                                },
+               'DeviceCode' => {
+                                 'type' => 'Str'
+                               },
+               'ClientSecret' => {
+                                   'type' => 'Str'
+                                 },
+               'RefreshToken' => {
+                                   'type' => 'Str'
+                                 },
+               'GrantType' => {
+                                'type' => 'Str'
+                              },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'Scope' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Code' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

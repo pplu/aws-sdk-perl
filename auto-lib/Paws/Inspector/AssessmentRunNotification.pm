@@ -1,11 +1,56 @@
+# Generated from default/object.tt
 package Paws::Inspector::AssessmentRunNotification;
-  use Moose;
-  has Date => (is => 'ro', isa => 'Str', request_name => 'date', traits => ['NameInRequest'], required => 1);
-  has Error => (is => 'ro', isa => 'Bool', request_name => 'error', traits => ['NameInRequest'], required => 1);
-  has Event => (is => 'ro', isa => 'Str', request_name => 'event', traits => ['NameInRequest'], required => 1);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has SnsPublishStatusCode => (is => 'ro', isa => 'Str', request_name => 'snsPublishStatusCode', traits => ['NameInRequest']);
-  has SnsTopicArn => (is => 'ro', isa => 'Str', request_name => 'snsTopicArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Inspector::Types qw//;
+  has Date => (is => 'ro', isa => Str, required => 1);
+  has Error => (is => 'ro', isa => Bool, required => 1);
+  has Event => (is => 'ro', isa => Str, required => 1);
+  has Message => (is => 'ro', isa => Str);
+  has SnsPublishStatusCode => (is => 'ro', isa => Str);
+  has SnsTopicArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Date' => 'date',
+                       'Message' => 'message',
+                       'SnsPublishStatusCode' => 'snsPublishStatusCode',
+                       'Error' => 'error',
+                       'SnsTopicArn' => 'snsTopicArn',
+                       'Event' => 'event'
+                     },
+  'IsRequired' => {
+                    'Event' => 1,
+                    'Error' => 1,
+                    'Date' => 1
+                  },
+  'types' => {
+               'Error' => {
+                            'type' => 'Bool'
+                          },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'SnsPublishStatusCode' => {
+                                           'type' => 'Str'
+                                         },
+               'Date' => {
+                           'type' => 'Str'
+                         },
+               'SnsTopicArn' => {
+                                  'type' => 'Str'
+                                },
+               'Event' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

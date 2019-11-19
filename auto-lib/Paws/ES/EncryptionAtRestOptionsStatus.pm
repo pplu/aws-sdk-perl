@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::ES::EncryptionAtRestOptionsStatus;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Paws::ES::EncryptionAtRestOptions', required => 1);
-  has Status => (is => 'ro', isa => 'Paws::ES::OptionStatus', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ES::Types qw/ES_EncryptionAtRestOptions ES_OptionStatus/;
+  has Options => (is => 'ro', isa => ES_EncryptionAtRestOptions, required => 1);
+  has Status => (is => 'ro', isa => ES_OptionStatus, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'class' => 'Paws::ES::OptionStatus',
+                             'type' => 'ES_OptionStatus'
+                           },
+               'Options' => {
+                              'class' => 'Paws::ES::EncryptionAtRestOptions',
+                              'type' => 'ES_EncryptionAtRestOptions'
+                            }
+             },
+  'IsRequired' => {
+                    'Options' => 1,
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +64,13 @@ Elasticsearch domain.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Options => L<Paws::ES::EncryptionAtRestOptions>
+=head2 B<REQUIRED> Options => ES_EncryptionAtRestOptions
 
   Specifies the Encryption At Rest options for the specified
 Elasticsearch domain.
 
 
-=head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
+=head2 B<REQUIRED> Status => ES_OptionStatus
 
   Specifies the status of the Encryption At Rest options for the
 specified Elasticsearch domain.

@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DatasetContentDeliveryRule;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Paws::IoTAnalytics::DatasetContentDeliveryDestination', request_name => 'destination', traits => ['NameInRequest'], required => 1);
-  has EntryName => (is => 'ro', isa => 'Str', request_name => 'entryName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_DatasetContentDeliveryDestination/;
+  has Destination => (is => 'ro', isa => IoTAnalytics_DatasetContentDeliveryDestination, required => 1);
+  has EntryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Destination' => 1
+                  },
+  'NameInRequest' => {
+                       'Destination' => 'destination',
+                       'EntryName' => 'entryName'
+                     },
+  'types' => {
+               'EntryName' => {
+                                'type' => 'Str'
+                              },
+               'Destination' => {
+                                  'type' => 'IoTAnalytics_DatasetContentDeliveryDestination',
+                                  'class' => 'Paws::IoTAnalytics::DatasetContentDeliveryDestination'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +66,7 @@ specified here.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Destination => L<Paws::IoTAnalytics::DatasetContentDeliveryDestination>
+=head2 B<REQUIRED> Destination => IoTAnalytics_DatasetContentDeliveryDestination
 
   The destination to which data set contents are delivered.
 

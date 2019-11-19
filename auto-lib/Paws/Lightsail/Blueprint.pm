@@ -1,17 +1,81 @@
+# Generated from default/object.tt
 package Paws::Lightsail::Blueprint;
-  use Moose;
-  has BlueprintId => (is => 'ro', isa => 'Str', request_name => 'blueprintId', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Group => (is => 'ro', isa => 'Str', request_name => 'group', traits => ['NameInRequest']);
-  has IsActive => (is => 'ro', isa => 'Bool', request_name => 'isActive', traits => ['NameInRequest']);
-  has LicenseUrl => (is => 'ro', isa => 'Str', request_name => 'licenseUrl', traits => ['NameInRequest']);
-  has MinPower => (is => 'ro', isa => 'Int', request_name => 'minPower', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
-  has ProductUrl => (is => 'ro', isa => 'Str', request_name => 'productUrl', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
-  has VersionCode => (is => 'ro', isa => 'Str', request_name => 'versionCode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::Lightsail::Types qw//;
+  has BlueprintId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Group => (is => 'ro', isa => Str);
+  has IsActive => (is => 'ro', isa => Bool);
+  has LicenseUrl => (is => 'ro', isa => Str);
+  has MinPower => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has ProductUrl => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+  has VersionCode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'ProductUrl' => {
+                                 'type' => 'Str'
+                               },
+               'MinPower' => {
+                               'type' => 'Int'
+                             },
+               'IsActive' => {
+                               'type' => 'Bool'
+                             },
+               'LicenseUrl' => {
+                                 'type' => 'Str'
+                               },
+               'BlueprintId' => {
+                                  'type' => 'Str'
+                                },
+               'VersionCode' => {
+                                  'type' => 'Str'
+                                },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'Group' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'Type' => 'type',
+                       'ProductUrl' => 'productUrl',
+                       'MinPower' => 'minPower',
+                       'IsActive' => 'isActive',
+                       'Version' => 'version',
+                       'LicenseUrl' => 'licenseUrl',
+                       'BlueprintId' => 'blueprintId',
+                       'VersionCode' => 'versionCode',
+                       'Platform' => 'platform',
+                       'Group' => 'group',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::GetFolder;
-  use Moose;
-  has CommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitSpecifier' );
-  has FolderPath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'folderPath' , required => 1);
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has CommitSpecifier => (is => 'ro', isa => Str, predicate => 1);
+  has FolderPath => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetFolder');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::GetFolderOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetFolder');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::GetFolderOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'CommitSpecifier' => {
+                                      'type' => 'Str'
+                                    },
+               'FolderPath' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'RepositoryName' => 1,
+                    'FolderPath' => 1
+                  },
+  'NameInRequest' => {
+                       'RepositoryName' => 'repositoryName',
+                       'FolderPath' => 'folderPath',
+                       'CommitSpecifier' => 'commitSpecifier'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

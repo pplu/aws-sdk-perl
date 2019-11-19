@@ -1,16 +1,64 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::DescribeModelOutput;
-  use Moose;
-  has Containers => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ContainerDefinition]');
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has ModelArn => (is => 'ro', isa => 'Str', required => 1);
-  has ModelName => (is => 'ro', isa => 'Str', required => 1);
-  has PrimaryContainer => (is => 'ro', isa => 'Paws::SageMaker::ContainerDefinition');
-  has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::SageMaker::Types qw/SageMaker_ContainerDefinition SageMaker_VpcConfig/;
+  has Containers => (is => 'ro', isa => ArrayRef[SageMaker_ContainerDefinition]);
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has EnableNetworkIsolation => (is => 'ro', isa => Bool);
+  has ExecutionRoleArn => (is => 'ro', isa => Str, required => 1);
+  has ModelArn => (is => 'ro', isa => Str, required => 1);
+  has ModelName => (is => 'ro', isa => Str, required => 1);
+  has PrimaryContainer => (is => 'ro', isa => SageMaker_ContainerDefinition);
+  has VpcConfig => (is => 'ro', isa => SageMaker_VpcConfig);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ModelName' => {
+                                'type' => 'Str'
+                              },
+               'EnableNetworkIsolation' => {
+                                             'type' => 'Bool'
+                                           },
+               'VpcConfig' => {
+                                'type' => 'SageMaker_VpcConfig',
+                                'class' => 'Paws::SageMaker::VpcConfig'
+                              },
+               'ModelArn' => {
+                               'type' => 'Str'
+                             },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'PrimaryContainer' => {
+                                       'class' => 'Paws::SageMaker::ContainerDefinition',
+                                       'type' => 'SageMaker_ContainerDefinition'
+                                     },
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Containers' => {
+                                 'class' => 'Paws::SageMaker::ContainerDefinition',
+                                 'type' => 'ArrayRef[SageMaker_ContainerDefinition]'
+                               }
+             },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'ExecutionRoleArn' => 1,
+                    'ModelName' => 1,
+                    'ModelArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +69,7 @@ Paws::SageMaker::DescribeModelOutput
 =head1 ATTRIBUTES
 
 
-=head2 Containers => ArrayRef[L<Paws::SageMaker::ContainerDefinition>]
+=head2 Containers => ArrayRef[SageMaker_ContainerDefinition]
 
 The containers in the inference pipeline.
 
@@ -56,14 +104,14 @@ The Amazon Resource Name (ARN) of the model.
 Name of the Amazon SageMaker model.
 
 
-=head2 PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>
+=head2 PrimaryContainer => SageMaker_ContainerDefinition
 
 The location of the primary inference code, associated artifacts, and
 custom environment map that the inference code uses when it is deployed
 in production.
 
 
-=head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
+=head2 VpcConfig => SageMaker_VpcConfig
 
 A VpcConfig object that specifies the VPC that this model has access
 to. For more information, see Protect Endpoints by Using an Amazon

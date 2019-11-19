@@ -1,15 +1,36 @@
 
 package Paws::EC2::CancelImportTask;
-  use Moose;
-  has CancelReason => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has ImportTaskId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has CancelReason => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has ImportTaskId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelImportTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CancelImportTaskResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CancelImportTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CancelImportTaskResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ImportTaskId' => {
+                                   'type' => 'Str'
+                                 },
+               'CancelReason' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

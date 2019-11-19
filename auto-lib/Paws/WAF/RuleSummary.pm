@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::WAF::RuleSummary;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RuleId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has RuleId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RuleId' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RuleId' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

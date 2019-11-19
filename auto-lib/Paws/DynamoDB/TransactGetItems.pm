@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::TransactGetItems;
-  use Moose;
-  has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
-  has TransactItems => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::TransactGetItem]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_TransactGetItem/;
+  has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
+  has TransactItems => (is => 'ro', isa => ArrayRef[DynamoDB_TransactGetItem], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TransactGetItems');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::TransactGetItemsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TransactGetItems');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::TransactGetItemsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TransactItems' => 1
+                  },
+  'types' => {
+               'ReturnConsumedCapacity' => {
+                                             'type' => 'Str'
+                                           },
+               'TransactItems' => {
+                                    'class' => 'Paws::DynamoDB::TransactGetItem',
+                                    'type' => 'ArrayRef[DynamoDB_TransactGetItem]'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -34,22 +57,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Get => {
             Key => {
               'MyAttributeName' => {
-                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
-                BOOL => 1,                             # OPTIONAL
-                BS   => [
-                  'BlobBinaryAttributeValue', ...      # OPTIONAL
-                ],                                     # OPTIONAL
-                L => [ <AttributeValue>, ... ],        # OPTIONAL
-                M => {
+                B    => 'BlobBinaryAttributeValue',
+                BOOL => 1,                                      # OPTIONAL
+                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
+                L    => [ <AttributeValue>, ... ],              # OPTIONAL
+                M    => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
                 N  => 'MyNumberAttributeValue',    # OPTIONAL
                 NS => [
                   'MyNumberAttributeValue', ...    # OPTIONAL
                 ],                                 # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',
-                SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
+                NULL => 1,                         # OPTIONAL
+                S    => 'MyStringAttributeValue',  # OPTIONAL
+                SS   => [
+                  'MyStringAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
               },    # key: max: 65535
             },
             TableName                => 'MyTableName',    # min: 3, max: 255
@@ -86,7 +109,7 @@ returned. No other value is valid.
 
 Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
-=head2 B<REQUIRED> TransactItems => ArrayRef[L<Paws::DynamoDB::TransactGetItem>]
+=head2 B<REQUIRED> TransactItems => ArrayRef[DynamoDB_TransactGetItem]
 
 An ordered array of up to 25 C<TransactGetItem> objects, each of which
 contains a C<Get> structure.

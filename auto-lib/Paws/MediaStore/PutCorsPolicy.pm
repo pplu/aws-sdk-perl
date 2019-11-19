@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MediaStore::PutCorsPolicy;
-  use Moose;
-  has ContainerName => (is => 'ro', isa => 'Str', required => 1);
-  has CorsPolicy => (is => 'ro', isa => 'ArrayRef[Paws::MediaStore::CorsRule]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaStore::Types qw/MediaStore_CorsRule/;
+  has ContainerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CorsPolicy => (is => 'ro', isa => ArrayRef[MediaStore_CorsRule], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutCorsPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaStore::PutCorsPolicyOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutCorsPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaStore::PutCorsPolicyOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContainerName' => {
+                                    'type' => 'Str'
+                                  },
+               'CorsPolicy' => {
+                                 'type' => 'ArrayRef[MediaStore_CorsRule]',
+                                 'class' => 'Paws::MediaStore::CorsRule'
+                               }
+             },
+  'IsRequired' => {
+                    'ContainerName' => 1,
+                    'CorsPolicy' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +87,7 @@ The name of the container that you want to assign the CORS policy to.
 
 
 
-=head2 B<REQUIRED> CorsPolicy => ArrayRef[L<Paws::MediaStore::CorsRule>]
+=head2 B<REQUIRED> CorsPolicy => ArrayRef[MediaStore_CorsRule]
 
 The CORS policy to apply to the container.
 

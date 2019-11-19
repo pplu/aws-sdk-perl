@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceQuotas::ListServiceQuotasResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Quotas => (is => 'ro', isa => 'ArrayRef[Paws::ServiceQuotas::ServiceQuota]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceQuotas::Types qw/ServiceQuotas_ServiceQuota/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Quotas => (is => 'ro', isa => ArrayRef[ServiceQuotas_ServiceQuota]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Quotas' => {
+                             'type' => 'ArrayRef[ServiceQuotas_ServiceQuota]',
+                             'class' => 'Paws::ServiceQuotas::ServiceQuota'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -27,7 +49,7 @@ repeat this until the C<NextToken> response element comes back empty
 (as C<null>).
 
 
-=head2 Quotas => ArrayRef[L<Paws::ServiceQuotas::ServiceQuota>]
+=head2 Quotas => ArrayRef[ServiceQuotas_ServiceQuota]
 
 The response information for a quota lists all attribute information
 for the quota.

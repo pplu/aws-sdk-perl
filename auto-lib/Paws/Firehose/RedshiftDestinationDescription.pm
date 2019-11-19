@@ -1,15 +1,72 @@
+# Generated from default/object.tt
 package Paws::Firehose::RedshiftDestinationDescription;
-  use Moose;
-  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
-  has ClusterJDBCURL => (is => 'ro', isa => 'Str', required => 1);
-  has CopyCommand => (is => 'ro', isa => 'Paws::Firehose::CopyCommand', required => 1);
-  has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
-  has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::RedshiftRetryOptions');
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
-  has S3BackupDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription');
-  has S3BackupMode => (is => 'ro', isa => 'Str');
-  has S3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription', required => 1);
-  has Username => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw/Firehose_S3DestinationDescription Firehose_RedshiftRetryOptions Firehose_CopyCommand Firehose_ProcessingConfiguration Firehose_CloudWatchLoggingOptions/;
+  has CloudWatchLoggingOptions => (is => 'ro', isa => Firehose_CloudWatchLoggingOptions);
+  has ClusterJDBCURL => (is => 'ro', isa => Str, required => 1);
+  has CopyCommand => (is => 'ro', isa => Firehose_CopyCommand, required => 1);
+  has ProcessingConfiguration => (is => 'ro', isa => Firehose_ProcessingConfiguration);
+  has RetryOptions => (is => 'ro', isa => Firehose_RedshiftRetryOptions);
+  has RoleARN => (is => 'ro', isa => Str, required => 1);
+  has S3BackupDescription => (is => 'ro', isa => Firehose_S3DestinationDescription);
+  has S3BackupMode => (is => 'ro', isa => Str);
+  has S3DestinationDescription => (is => 'ro', isa => Firehose_S3DestinationDescription, required => 1);
+  has Username => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CopyCommand' => {
+                                  'type' => 'Firehose_CopyCommand',
+                                  'class' => 'Paws::Firehose::CopyCommand'
+                                },
+               'CloudWatchLoggingOptions' => {
+                                               'class' => 'Paws::Firehose::CloudWatchLoggingOptions',
+                                               'type' => 'Firehose_CloudWatchLoggingOptions'
+                                             },
+               'RetryOptions' => {
+                                   'class' => 'Paws::Firehose::RedshiftRetryOptions',
+                                   'type' => 'Firehose_RedshiftRetryOptions'
+                                 },
+               'S3BackupMode' => {
+                                   'type' => 'Str'
+                                 },
+               'ProcessingConfiguration' => {
+                                              'class' => 'Paws::Firehose::ProcessingConfiguration',
+                                              'type' => 'Firehose_ProcessingConfiguration'
+                                            },
+               'S3DestinationDescription' => {
+                                               'type' => 'Firehose_S3DestinationDescription',
+                                               'class' => 'Paws::Firehose::S3DestinationDescription'
+                                             },
+               'S3BackupDescription' => {
+                                          'type' => 'Firehose_S3DestinationDescription',
+                                          'class' => 'Paws::Firehose::S3DestinationDescription'
+                                        },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'ClusterJDBCURL' => {
+                                     'type' => 'Str'
+                                   },
+               'Username' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'RoleARN' => 1,
+                    'ClusterJDBCURL' => 1,
+                    'Username' => 1,
+                    'CopyCommand' => 1,
+                    'S3DestinationDescription' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +102,7 @@ Describes a destination in Amazon Redshift.
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+=head2 CloudWatchLoggingOptions => Firehose_CloudWatchLoggingOptions
 
   The Amazon CloudWatch logging options for your delivery stream.
 
@@ -55,17 +112,17 @@ Describes a destination in Amazon Redshift.
   The database connection string.
 
 
-=head2 B<REQUIRED> CopyCommand => L<Paws::Firehose::CopyCommand>
+=head2 B<REQUIRED> CopyCommand => Firehose_CopyCommand
 
   The C<COPY> command.
 
 
-=head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
+=head2 ProcessingConfiguration => Firehose_ProcessingConfiguration
 
   The data processing configuration.
 
 
-=head2 RetryOptions => L<Paws::Firehose::RedshiftRetryOptions>
+=head2 RetryOptions => Firehose_RedshiftRetryOptions
 
   The retry behavior in case Kinesis Data Firehose is unable to deliver
 documents to Amazon Redshift. Default value is 3600 (60 minutes).
@@ -79,7 +136,7 @@ Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
-=head2 S3BackupDescription => L<Paws::Firehose::S3DestinationDescription>
+=head2 S3BackupDescription => Firehose_S3DestinationDescription
 
   The configuration for backup in Amazon S3.
 
@@ -89,7 +146,7 @@ Namespaces
   The Amazon S3 backup mode.
 
 
-=head2 B<REQUIRED> S3DestinationDescription => L<Paws::Firehose::S3DestinationDescription>
+=head2 B<REQUIRED> S3DestinationDescription => Firehose_S3DestinationDescription
 
   The Amazon S3 destination.
 

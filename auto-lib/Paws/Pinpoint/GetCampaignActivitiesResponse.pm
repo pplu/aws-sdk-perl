@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::GetCampaignActivitiesResponse;
-  use Moose;
-  has ActivitiesResponse => (is => 'ro', isa => 'Paws::Pinpoint::ActivitiesResponse', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_ActivitiesResponse/;
+  has ActivitiesResponse => (is => 'ro', isa => Pinpoint_ActivitiesResponse, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActivitiesResponse' => {
+                                         'class' => 'Paws::Pinpoint::ActivitiesResponse',
+                                         'type' => 'Pinpoint_ActivitiesResponse'
+                                       }
+             },
+  'IsRequired' => {
+                    'ActivitiesResponse' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ActivitiesResponse => L<Paws::Pinpoint::ActivitiesResponse>
+=head2 B<REQUIRED> ActivitiesResponse => Pinpoint_ActivitiesResponse
 
   
 

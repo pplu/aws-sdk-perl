@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KMS::CreateCustomKeyStore;
-  use Moose;
-  has CloudHsmClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has CustomKeyStoreName => (is => 'ro', isa => 'Str', required => 1);
-  has KeyStorePassword => (is => 'ro', isa => 'Str', required => 1);
-  has TrustAnchorCertificate => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KMS::Types qw//;
+  has CloudHsmClusterId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CustomKeyStoreName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KeyStorePassword => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TrustAnchorCertificate => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCustomKeyStore');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::CreateCustomKeyStoreResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCustomKeyStore');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KMS::CreateCustomKeyStoreResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CustomKeyStoreName' => 1,
+                    'KeyStorePassword' => 1,
+                    'TrustAnchorCertificate' => 1,
+                    'CloudHsmClusterId' => 1
+                  },
+  'types' => {
+               'CustomKeyStoreName' => {
+                                         'type' => 'Str'
+                                       },
+               'KeyStorePassword' => {
+                                       'type' => 'Str'
+                                     },
+               'TrustAnchorCertificate' => {
+                                             'type' => 'Str'
+                                           },
+               'CloudHsmClusterId' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

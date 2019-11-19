@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::RecordFormat;
-  use Moose;
-  has MappingParameters => (is => 'ro', isa => 'Paws::KinesisAnalytics::MappingParameters');
-  has RecordFormatType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_MappingParameters/;
+  has MappingParameters => (is => 'ro', isa => KinesisAnalytics_MappingParameters);
+  has RecordFormatType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RecordFormatType' => 1
+                  },
+  'types' => {
+               'MappingParameters' => {
+                                        'class' => 'Paws::KinesisAnalytics::MappingParameters',
+                                        'type' => 'KinesisAnalytics_MappingParameters'
+                                      },
+               'RecordFormatType' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ should be applied to schematize the records on the stream.
 =head1 ATTRIBUTES
 
 
-=head2 MappingParameters => L<Paws::KinesisAnalytics::MappingParameters>
+=head2 MappingParameters => KinesisAnalytics_MappingParameters
 
   When configuring application input at the time of creating or updating
 an application, provides additional mapping information specific to the

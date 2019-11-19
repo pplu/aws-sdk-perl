@@ -1,19 +1,57 @@
 
 package Paws::IoT::ListJobs;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has Status => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status');
-  has TargetSelection => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'targetSelection');
-  has ThingGroupId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'thingGroupId');
-  has ThingGroupName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'thingGroupName');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
+  has TargetSelection => (is => 'ro', isa => Str, predicate => 1);
+  has ThingGroupId => (is => 'ro', isa => Str, predicate => 1);
+  has ThingGroupName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListJobs');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListJobsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListJobs');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListJobsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingGroupName' => {
+                                     'type' => 'Str'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'TargetSelection' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ThingGroupId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInQuery' => {
+                      'ThingGroupId' => 'thingGroupId',
+                      'Status' => 'status',
+                      'TargetSelection' => 'targetSelection',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults',
+                      'ThingGroupName' => 'thingGroupName'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

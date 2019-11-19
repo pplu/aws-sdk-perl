@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Connect::HistoricalMetricResult;
-  use Moose;
-  has Collections => (is => 'ro', isa => 'ArrayRef[Paws::Connect::HistoricalMetricData]');
-  has Dimensions => (is => 'ro', isa => 'Paws::Connect::Dimensions');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Connect::Types qw/Connect_HistoricalMetricData Connect_Dimensions/;
+  has Collections => (is => 'ro', isa => ArrayRef[Connect_HistoricalMetricData]);
+  has Dimensions => (is => 'ro', isa => Connect_Dimensions);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Collections' => {
+                                  'type' => 'ArrayRef[Connect_HistoricalMetricData]',
+                                  'class' => 'Paws::Connect::HistoricalMetricData'
+                                },
+               'Dimensions' => {
+                                 'type' => 'Connect_Dimensions',
+                                 'class' => 'Paws::Connect::Dimensions'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +59,12 @@ Contains information about the historical metrics retrieved.
 =head1 ATTRIBUTES
 
 
-=head2 Collections => ArrayRef[L<Paws::Connect::HistoricalMetricData>]
+=head2 Collections => ArrayRef[Connect_HistoricalMetricData]
 
   The set of metrics.
 
 
-=head2 Dimensions => L<Paws::Connect::Dimensions>
+=head2 Dimensions => Connect_Dimensions
 
   The dimension for the metrics.
 

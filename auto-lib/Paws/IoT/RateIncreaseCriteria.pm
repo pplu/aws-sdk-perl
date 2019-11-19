@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoT::RateIncreaseCriteria;
-  use Moose;
-  has NumberOfNotifiedThings => (is => 'ro', isa => 'Int', request_name => 'numberOfNotifiedThings', traits => ['NameInRequest']);
-  has NumberOfSucceededThings => (is => 'ro', isa => 'Int', request_name => 'numberOfSucceededThings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::IoT::Types qw//;
+  has NumberOfNotifiedThings => (is => 'ro', isa => Int);
+  has NumberOfSucceededThings => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NumberOfSucceededThings' => 'numberOfSucceededThings',
+                       'NumberOfNotifiedThings' => 'numberOfNotifiedThings'
+                     },
+  'types' => {
+               'NumberOfSucceededThings' => {
+                                              'type' => 'Int'
+                                            },
+               'NumberOfNotifiedThings' => {
+                                             'type' => 'Int'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

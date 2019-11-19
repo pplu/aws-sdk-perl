@@ -1,13 +1,51 @@
 
 package Paws::EC2::DescribeFleetHistoryResult;
-  use Moose;
-  has FleetId => (is => 'ro', isa => 'Str', request_name => 'fleetId', traits => ['NameInRequest',]);
-  has HistoryRecords => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HistoryRecordEntry]', request_name => 'historyRecordSet', traits => ['NameInRequest',]);
-  has LastEvaluatedTime => (is => 'ro', isa => 'Str', request_name => 'lastEvaluatedTime', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_HistoryRecordEntry/;
+  has FleetId => (is => 'ro', isa => Str);
+  has HistoryRecords => (is => 'ro', isa => ArrayRef[EC2_HistoryRecordEntry]);
+  has LastEvaluatedTime => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LastEvaluatedTime' => 'lastEvaluatedTime',
+                       'StartTime' => 'startTime',
+                       'NextToken' => 'nextToken',
+                       'FleetId' => 'fleetId',
+                       'HistoryRecords' => 'historyRecordSet'
+                     },
+  'types' => {
+               'LastEvaluatedTime' => {
+                                        'type' => 'Str'
+                                      },
+               'HistoryRecords' => {
+                                     'class' => 'Paws::EC2::HistoryRecordEntry',
+                                     'type' => 'ArrayRef[EC2_HistoryRecordEntry]'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +62,7 @@ Paws::EC2::DescribeFleetHistoryResult
 The ID of the EC Fleet.
 
 
-=head2 HistoryRecords => ArrayRef[L<Paws::EC2::HistoryRecordEntry>]
+=head2 HistoryRecords => ArrayRef[EC2_HistoryRecordEntry]
 
 Information about the events in the history of the EC2 Fleet.
 

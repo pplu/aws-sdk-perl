@@ -1,13 +1,47 @@
 
 package Paws::SESv2::GetDeliverabilityDashboardOptionsResponse;
-  use Moose;
-  has AccountStatus => (is => 'ro', isa => 'Str');
-  has ActiveSubscribedDomains => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::DomainDeliverabilityTrackingOption]');
-  has DashboardEnabled => (is => 'ro', isa => 'Bool', required => 1);
-  has PendingExpirationSubscribedDomains => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::DomainDeliverabilityTrackingOption]');
-  has SubscriptionExpiryDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::SESv2::Types qw/SESv2_DomainDeliverabilityTrackingOption/;
+  has AccountStatus => (is => 'ro', isa => Str);
+  has ActiveSubscribedDomains => (is => 'ro', isa => ArrayRef[SESv2_DomainDeliverabilityTrackingOption]);
+  has DashboardEnabled => (is => 'ro', isa => Bool, required => 1);
+  has PendingExpirationSubscribedDomains => (is => 'ro', isa => ArrayRef[SESv2_DomainDeliverabilityTrackingOption]);
+  has SubscriptionExpiryDate => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PendingExpirationSubscribedDomains' => {
+                                                         'type' => 'ArrayRef[SESv2_DomainDeliverabilityTrackingOption]',
+                                                         'class' => 'Paws::SESv2::DomainDeliverabilityTrackingOption'
+                                                       },
+               'ActiveSubscribedDomains' => {
+                                              'type' => 'ArrayRef[SESv2_DomainDeliverabilityTrackingOption]',
+                                              'class' => 'Paws::SESv2::DomainDeliverabilityTrackingOption'
+                                            },
+               'AccountStatus' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DashboardEnabled' => {
+                                       'type' => 'Bool'
+                                     },
+               'SubscriptionExpiryDate' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'DashboardEnabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +60,7 @@ this value is C<PENDING_EXPIRATION>, your subscription is scheduled to
 expire at the end of the current calendar month.
 
 Valid values are: C<"ACTIVE">, C<"PENDING_EXPIRATION">, C<"DISABLED">
-=head2 ActiveSubscribedDomains => ArrayRef[L<Paws::SESv2::DomainDeliverabilityTrackingOption>]
+=head2 ActiveSubscribedDomains => ArrayRef[SESv2_DomainDeliverabilityTrackingOption]
 
 An array of objects, one for each verified domain that you use to send
 email and currently has an active Deliverability dashboard subscription
@@ -40,7 +74,7 @@ Specifies whether the Deliverability dashboard is enabled. If this
 value is C<true>, the dashboard is enabled.
 
 
-=head2 PendingExpirationSubscribedDomains => ArrayRef[L<Paws::SESv2::DomainDeliverabilityTrackingOption>]
+=head2 PendingExpirationSubscribedDomains => ArrayRef[SESv2_DomainDeliverabilityTrackingOption]
 
 An array of objects, one for each verified domain that you use to send
 email and currently has an active Deliverability dashboard subscription

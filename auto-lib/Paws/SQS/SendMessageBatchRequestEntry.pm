@@ -1,12 +1,57 @@
+# Generated from default/object.tt
 package Paws::SQS::SendMessageBatchRequestEntry;
-  use Moose;
-  has DelaySeconds => (is => 'ro', isa => 'Int');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has MessageAttributes => (is => 'ro', isa => 'Paws::SQS::MessageBodyAttributeMap', request_name => 'MessageAttribute', traits => ['NameInRequest']);
-  has MessageBody => (is => 'ro', isa => 'Str', required => 1);
-  has MessageDeduplicationId => (is => 'ro', isa => 'Str');
-  has MessageGroupId => (is => 'ro', isa => 'Str');
-  has MessageSystemAttributes => (is => 'ro', isa => 'Paws::SQS::MessageBodySystemAttributeMap', request_name => 'MessageSystemAttribute', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::SQS::Types qw/SQS_MessageBodyAttributeMap SQS_MessageBodySystemAttributeMap/;
+  has DelaySeconds => (is => 'ro', isa => Int);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has MessageAttributes => (is => 'ro', isa => SQS_MessageBodyAttributeMap);
+  has MessageBody => (is => 'ro', isa => Str, required => 1);
+  has MessageDeduplicationId => (is => 'ro', isa => Str);
+  has MessageGroupId => (is => 'ro', isa => Str);
+  has MessageSystemAttributes => (is => 'ro', isa => SQS_MessageBodySystemAttributeMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'MessageGroupId' => {
+                                     'type' => 'Str'
+                                   },
+               'MessageAttributes' => {
+                                        'class' => 'Paws::SQS::MessageBodyAttributeMap',
+                                        'type' => 'SQS_MessageBodyAttributeMap'
+                                      },
+               'MessageBody' => {
+                                  'type' => 'Str'
+                                },
+               'MessageDeduplicationId' => {
+                                             'type' => 'Str'
+                                           },
+               'DelaySeconds' => {
+                                   'type' => 'Int'
+                                 },
+               'MessageSystemAttributes' => {
+                                              'class' => 'Paws::SQS::MessageBodySystemAttributeMap',
+                                              'type' => 'SQS_MessageBodySystemAttributeMap'
+                                            }
+             },
+  'NameInRequest' => {
+                       'MessageSystemAttributes' => 'MessageSystemAttribute',
+                       'MessageAttributes' => 'MessageAttribute'
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'MessageBody' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +111,7 @@ This identifier can have up to 80 characters. The following characters
 are accepted: alphanumeric characters, hyphens(-), and underscores (_).
 
 
-=head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
+=head2 MessageAttributes => SQS_MessageBodyAttributeMap
 
   Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
 For more information, see Amazon SQS Message Attributes
@@ -200,7 +245,7 @@ C<MessageGroupId> is required for FIFO queues. You can't use it for
 Standard queues.
 
 
-=head2 MessageSystemAttributes => L<Paws::SQS::MessageBodySystemAttributeMap>
+=head2 MessageSystemAttributes => SQS_MessageBodySystemAttributeMap
 
   The message system attribute to send Each message system attribute
 consists of a C<Name>, C<Type>, and C<Value>.

@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::MediaLive::RtmpOutputSettings;
-  use Moose;
-  has CertificateMode => (is => 'ro', isa => 'Str', request_name => 'certificateMode', traits => ['NameInRequest']);
-  has ConnectionRetryInterval => (is => 'ro', isa => 'Int', request_name => 'connectionRetryInterval', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
-  has NumRetries => (is => 'ro', isa => 'Int', request_name => 'numRetries', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaLive::Types qw/MediaLive_OutputLocationRef/;
+  has CertificateMode => (is => 'ro', isa => Str);
+  has ConnectionRetryInterval => (is => 'ro', isa => Int);
+  has Destination => (is => 'ro', isa => MediaLive_OutputLocationRef, required => 1);
+  has NumRetries => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Destination' => {
+                                  'class' => 'Paws::MediaLive::OutputLocationRef',
+                                  'type' => 'MediaLive_OutputLocationRef'
+                                },
+               'ConnectionRetryInterval' => {
+                                              'type' => 'Int'
+                                            },
+               'NumRetries' => {
+                                 'type' => 'Int'
+                               },
+               'CertificateMode' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'CertificateMode' => 'certificateMode',
+                       'NumRetries' => 'numRetries',
+                       'Destination' => 'destination',
+                       'ConnectionRetryInterval' => 'connectionRetryInterval'
+                     },
+  'IsRequired' => {
+                    'Destination' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +88,7 @@ self-signed certificates to fail.
 Media server if the connection is lost.
 
 
-=head2 B<REQUIRED> Destination => L<Paws::MediaLive::OutputLocationRef>
+=head2 B<REQUIRED> Destination => MediaLive_OutputLocationRef
 
   The RTMP endpoint excluding the stream name (eg. rtmp://host/appname).
 For connection to Akamai, a username and password must be supplied. URI

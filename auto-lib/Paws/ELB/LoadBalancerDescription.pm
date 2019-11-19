@@ -1,21 +1,89 @@
+# Generated from default/object.tt
 package Paws::ELB::LoadBalancerDescription;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has BackendServerDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELB::BackendServerDescription]');
-  has CanonicalHostedZoneName => (is => 'ro', isa => 'Str');
-  has CanonicalHostedZoneNameID => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has DNSName => (is => 'ro', isa => 'Str');
-  has HealthCheck => (is => 'ro', isa => 'Paws::ELB::HealthCheck');
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Instance]');
-  has ListenerDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELB::ListenerDescription]');
-  has LoadBalancerName => (is => 'ro', isa => 'Str');
-  has Policies => (is => 'ro', isa => 'Paws::ELB::Policies');
-  has Scheme => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SourceSecurityGroup => (is => 'ro', isa => 'Paws::ELB::SourceSecurityGroup');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has VPCId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::ELB::Types qw/ELB_ListenerDescription ELB_Instance ELB_SourceSecurityGroup ELB_Policies ELB_BackendServerDescription ELB_HealthCheck/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BackendServerDescriptions => (is => 'ro', isa => ArrayRef[ELB_BackendServerDescription]);
+  has CanonicalHostedZoneName => (is => 'ro', isa => Str);
+  has CanonicalHostedZoneNameID => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has DNSName => (is => 'ro', isa => Str);
+  has HealthCheck => (is => 'ro', isa => ELB_HealthCheck);
+  has Instances => (is => 'ro', isa => ArrayRef[ELB_Instance]);
+  has ListenerDescriptions => (is => 'ro', isa => ArrayRef[ELB_ListenerDescription]);
+  has LoadBalancerName => (is => 'ro', isa => Str);
+  has Policies => (is => 'ro', isa => ELB_Policies);
+  has Scheme => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SourceSecurityGroup => (is => 'ro', isa => ELB_SourceSecurityGroup);
+  has Subnets => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has VPCId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceSecurityGroup' => {
+                                          'type' => 'ELB_SourceSecurityGroup',
+                                          'class' => 'Paws::ELB::SourceSecurityGroup'
+                                        },
+               'CanonicalHostedZoneName' => {
+                                              'type' => 'Str'
+                                            },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'BackendServerDescriptions' => {
+                                                'type' => 'ArrayRef[ELB_BackendServerDescription]',
+                                                'class' => 'Paws::ELB::BackendServerDescription'
+                                              },
+               'Policies' => {
+                               'class' => 'Paws::ELB::Policies',
+                               'type' => 'ELB_Policies'
+                             },
+               'VPCId' => {
+                            'type' => 'Str'
+                          },
+               'ListenerDescriptions' => {
+                                           'class' => 'Paws::ELB::ListenerDescription',
+                                           'type' => 'ArrayRef[ELB_ListenerDescription]'
+                                         },
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'CanonicalHostedZoneNameID' => {
+                                                'type' => 'Str'
+                                              },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Subnets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Instances' => {
+                                'type' => 'ArrayRef[ELB_Instance]',
+                                'class' => 'Paws::ELB::Instance'
+                              },
+               'DNSName' => {
+                              'type' => 'Str'
+                            },
+               'HealthCheck' => {
+                                  'class' => 'Paws::ELB::HealthCheck',
+                                  'type' => 'ELB_HealthCheck'
+                                },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'Scheme' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +124,7 @@ Information about a load balancer.
   The Availability Zones for the load balancer.
 
 
-=head2 BackendServerDescriptions => ArrayRef[L<Paws::ELB::BackendServerDescription>]
+=head2 BackendServerDescriptions => ArrayRef[ELB_BackendServerDescription]
 
   Information about your EC2 instances.
 
@@ -85,17 +153,17 @@ in the I<Classic Load Balancers Guide>.
   The DNS name of the load balancer.
 
 
-=head2 HealthCheck => L<Paws::ELB::HealthCheck>
+=head2 HealthCheck => ELB_HealthCheck
 
   Information about the health checks conducted on the load balancer.
 
 
-=head2 Instances => ArrayRef[L<Paws::ELB::Instance>]
+=head2 Instances => ArrayRef[ELB_Instance]
 
   The IDs of the instances for the load balancer.
 
 
-=head2 ListenerDescriptions => ArrayRef[L<Paws::ELB::ListenerDescription>]
+=head2 ListenerDescriptions => ArrayRef[ELB_ListenerDescription]
 
   The listeners for the load balancer.
 
@@ -105,7 +173,7 @@ in the I<Classic Load Balancers Guide>.
   The name of the load balancer.
 
 
-=head2 Policies => L<Paws::ELB::Policies>
+=head2 Policies => ELB_Policies
 
   The policies defined for the load balancer.
 
@@ -127,7 +195,7 @@ that resolves to a private IP address.
 balancers in a VPC.
 
 
-=head2 SourceSecurityGroup => L<Paws::ELB::SourceSecurityGroup>
+=head2 SourceSecurityGroup => ELB_SourceSecurityGroup
 
   The security group for the load balancer, which you can use as part of
 your inbound rules for your registered instances. To only allow traffic

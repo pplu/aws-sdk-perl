@@ -1,10 +1,37 @@
 
 package Paws::GuardDuty::ListThreatIntelSetsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has ThreatIntelSetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'threatIntelSetIds', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GuardDuty::Types qw//;
+  has NextToken => (is => 'ro', isa => Str);
+  has ThreatIntelSetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ThreatIntelSetIds' => 1
+                  },
+  'NameInRequest' => {
+                       'ThreatIntelSetIds' => 'threatIntelSetIds',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ThreatIntelSetIds' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

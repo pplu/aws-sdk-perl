@@ -1,19 +1,76 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::Evaluation;
-  use Moose;
-  has ComputeTime => (is => 'ro', isa => 'Int');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has CreatedByIamUser => (is => 'ro', isa => 'Str');
-  has EvaluationDataSourceId => (is => 'ro', isa => 'Str');
-  has EvaluationId => (is => 'ro', isa => 'Str');
-  has FinishedAt => (is => 'ro', isa => 'Str');
-  has InputDataLocationS3 => (is => 'ro', isa => 'Str');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has MLModelId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has PerformanceMetrics => (is => 'ro', isa => 'Paws::MachineLearning::PerformanceMetrics');
-  has StartedAt => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MachineLearning::Types qw/MachineLearning_PerformanceMetrics/;
+  has ComputeTime => (is => 'ro', isa => Int);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has CreatedByIamUser => (is => 'ro', isa => Str);
+  has EvaluationDataSourceId => (is => 'ro', isa => Str);
+  has EvaluationId => (is => 'ro', isa => Str);
+  has FinishedAt => (is => 'ro', isa => Str);
+  has InputDataLocationS3 => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has MLModelId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has PerformanceMetrics => (is => 'ro', isa => MachineLearning_PerformanceMetrics);
+  has StartedAt => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EvaluationDataSourceId' => {
+                                             'type' => 'Str'
+                                           },
+               'CreatedByIamUser' => {
+                                       'type' => 'Str'
+                                     },
+               'InputDataLocationS3' => {
+                                          'type' => 'Str'
+                                        },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'MLModelId' => {
+                                'type' => 'Str'
+                              },
+               'ComputeTime' => {
+                                  'type' => 'Int'
+                                },
+               'FinishedAt' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'StartedAt' => {
+                                'type' => 'Str'
+                              },
+               'PerformanceMetrics' => {
+                                         'type' => 'MachineLearning_PerformanceMetrics',
+                                         'class' => 'Paws::MachineLearning::PerformanceMetrics'
+                                       },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'EvaluationId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -113,7 +170,7 @@ C<MLModel>.
   A user-supplied name or description of the C<Evaluation>.
 
 
-=head2 PerformanceMetrics => L<Paws::MachineLearning::PerformanceMetrics>
+=head2 PerformanceMetrics => MachineLearning_PerformanceMetrics
 
   Measurements of how well the C<MLModel> performed, using observations
 referenced by the C<DataSource>. One of the following metrics is

@@ -1,7 +1,28 @@
 package Paws::EC2::TrafficMirrorPortRange;
-  use Moose;
-  has FromPort => (is => 'ro', isa => 'Int', request_name => 'fromPort', traits => ['NameInRequest']);
-  has ToPort => (is => 'ro', isa => 'Int', request_name => 'toPort', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int/;
+  use Paws::EC2::Types qw//;
+  has FromPort => (is => 'ro', isa => Int);
+  has ToPort => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FromPort' => 'fromPort',
+                       'ToPort' => 'toPort'
+                     },
+  'types' => {
+               'ToPort' => {
+                             'type' => 'Int'
+                           },
+               'FromPort' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

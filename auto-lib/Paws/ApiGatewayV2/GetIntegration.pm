@@ -1,15 +1,41 @@
 
 package Paws::ApiGatewayV2::GetIntegration;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has IntegrationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'integrationId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IntegrationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetIntegration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/integrations/{integrationId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::GetIntegrationResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetIntegration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/apis/{apiId}/integrations/{integrationId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::GetIntegrationResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'IntegrationId' => 1,
+                    'ApiId' => 1
+                  },
+  'types' => {
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'IntegrationId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'ParamInURI' => {
+                    'IntegrationId' => 'integrationId',
+                    'ApiId' => 'apiId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

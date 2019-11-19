@@ -1,13 +1,64 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::HlsManifest;
-  use Moose;
-  has AdMarkers => (is => 'ro', isa => 'Str', request_name => 'adMarkers', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has IncludeIframeOnlyStream => (is => 'ro', isa => 'Bool', request_name => 'includeIframeOnlyStream', traits => ['NameInRequest']);
-  has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
-  has PlaylistType => (is => 'ro', isa => 'Str', request_name => 'playlistType', traits => ['NameInRequest']);
-  has PlaylistWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'playlistWindowSeconds', traits => ['NameInRequest']);
-  has ProgramDateTimeIntervalSeconds => (is => 'ro', isa => 'Int', request_name => 'programDateTimeIntervalSeconds', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::MediaPackage::Types qw//;
+  has AdMarkers => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has IncludeIframeOnlyStream => (is => 'ro', isa => Bool);
+  has ManifestName => (is => 'ro', isa => Str);
+  has PlaylistType => (is => 'ro', isa => Str);
+  has PlaylistWindowSeconds => (is => 'ro', isa => Int);
+  has ProgramDateTimeIntervalSeconds => (is => 'ro', isa => Int);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Id' => 1
+                  },
+  'NameInRequest' => {
+                       'PlaylistType' => 'playlistType',
+                       'Id' => 'id',
+                       'AdMarkers' => 'adMarkers',
+                       'ManifestName' => 'manifestName',
+                       'ProgramDateTimeIntervalSeconds' => 'programDateTimeIntervalSeconds',
+                       'Url' => 'url',
+                       'IncludeIframeOnlyStream' => 'includeIframeOnlyStream',
+                       'PlaylistWindowSeconds' => 'playlistWindowSeconds'
+                     },
+  'types' => {
+               'AdMarkers' => {
+                                'type' => 'Str'
+                              },
+               'PlaylistType' => {
+                                   'type' => 'Str'
+                                 },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'PlaylistWindowSeconds' => {
+                                            'type' => 'Int'
+                                          },
+               'IncludeIframeOnlyStream' => {
+                                              'type' => 'Bool'
+                                            },
+               'ProgramDateTimeIntervalSeconds' => {
+                                                     'type' => 'Int'
+                                                   },
+               'ManifestName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

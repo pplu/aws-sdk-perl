@@ -1,9 +1,38 @@
 package Paws::EC2::InstanceMetadataOptionsResponse;
-  use Moose;
-  has HttpEndpoint => (is => 'ro', isa => 'Str', request_name => 'httpEndpoint', traits => ['NameInRequest']);
-  has HttpPutResponseHopLimit => (is => 'ro', isa => 'Int', request_name => 'httpPutResponseHopLimit', traits => ['NameInRequest']);
-  has HttpTokens => (is => 'ro', isa => 'Str', request_name => 'httpTokens', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw//;
+  has HttpEndpoint => (is => 'ro', isa => Str);
+  has HttpPutResponseHopLimit => (is => 'ro', isa => Int);
+  has HttpTokens => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HttpTokens' => {
+                                 'type' => 'Str'
+                               },
+               'HttpPutResponseHopLimit' => {
+                                              'type' => 'Int'
+                                            },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'HttpEndpoint' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'HttpPutResponseHopLimit' => 'httpPutResponseHopLimit',
+                       'HttpTokens' => 'httpTokens',
+                       'State' => 'state',
+                       'HttpEndpoint' => 'httpEndpoint'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::MarketplaceEntitlement::Entitlement;
-  use Moose;
-  has CustomerIdentifier => (is => 'ro', isa => 'Str');
-  has Dimension => (is => 'ro', isa => 'Str');
-  has ExpirationDate => (is => 'ro', isa => 'Str');
-  has ProductCode => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Paws::MarketplaceEntitlement::EntitlementValue');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MarketplaceEntitlement::Types qw/MarketplaceEntitlement_EntitlementValue/;
+  has CustomerIdentifier => (is => 'ro', isa => Str);
+  has Dimension => (is => 'ro', isa => Str);
+  has ExpirationDate => (is => 'ro', isa => Str);
+  has ProductCode => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => MarketplaceEntitlement_EntitlementValue);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpirationDate' => {
+                                     'type' => 'Str'
+                                   },
+               'CustomerIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'Value' => {
+                            'class' => 'Paws::MarketplaceEntitlement::EntitlementValue',
+                            'type' => 'MarketplaceEntitlement_EntitlementValue'
+                          },
+               'Dimension' => {
+                                'type' => 'Str'
+                              },
+               'ProductCode' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +103,7 @@ date.
 are provided by AWS Marketplace when the product listing is created.
 
 
-=head2 Value => L<Paws::MarketplaceEntitlement::EntitlementValue>
+=head2 Value => MarketplaceEntitlement_EntitlementValue
 
   The EntitlementValue represents the amount of capacity that the
 customer is entitled to for the product.

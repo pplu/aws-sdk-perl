@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::DetectStackSetDrift;
-  use Moose;
-  has OperationId => (is => 'ro', isa => 'Str');
-  has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
-  has StackSetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackSetOperationPreferences/;
+  has OperationId => (is => 'ro', isa => Str, predicate => 1);
+  has OperationPreferences => (is => 'ro', isa => CloudFormation_StackSetOperationPreferences, predicate => 1);
+  has StackSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetectStackSetDrift');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::DetectStackSetDriftOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DetectStackSetDriftResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DetectStackSetDrift');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::DetectStackSetDriftOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DetectStackSetDriftResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OperationPreferences' => {
+                                           'type' => 'CloudFormation_StackSetOperationPreferences',
+                                           'class' => 'Paws::CloudFormation::StackSetOperationPreferences'
+                                         },
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 },
+               'OperationId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'StackSetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +84,7 @@ I<The ID of the stack set operation.>
 
 
 
-=head2 OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>
+=head2 OperationPreferences => CloudFormation_StackSetOperationPreferences
 
 
 

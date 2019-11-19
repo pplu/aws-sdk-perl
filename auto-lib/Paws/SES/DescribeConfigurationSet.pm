@@ -1,14 +1,36 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::DescribeConfigurationSet;
-  use Moose;
-  has ConfigurationSetAttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SES::Types qw//;
+  has ConfigurationSetAttributeNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::DescribeConfigurationSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationSetResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeConfigurationSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::DescribeConfigurationSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeConfigurationSetResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1
+                  },
+  'types' => {
+               'ConfigurationSetAttributeNames' => {
+                                                     'type' => 'ArrayRef[Str|Undef]'
+                                                   },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

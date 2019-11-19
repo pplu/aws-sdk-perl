@@ -1,16 +1,47 @@
 
 package Paws::IoT::DeleteOTAUpdate;
-  use Moose;
-  has DeleteStream => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'deleteStream');
-  has ForceDeleteAWSJob => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'forceDeleteAWSJob');
-  has OtaUpdateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'otaUpdateId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has DeleteStream => (is => 'ro', isa => Bool, predicate => 1);
+  has ForceDeleteAWSJob => (is => 'ro', isa => Bool, predicate => 1);
+  has OtaUpdateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteOTAUpdate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/otaUpdates/{otaUpdateId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DeleteOTAUpdateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteOTAUpdate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/otaUpdates/{otaUpdateId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DeleteOTAUpdateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'OtaUpdateId' => 1
+                  },
+  'ParamInQuery' => {
+                      'ForceDeleteAWSJob' => 'forceDeleteAWSJob',
+                      'DeleteStream' => 'deleteStream'
+                    },
+  'types' => {
+               'DeleteStream' => {
+                                   'type' => 'Bool'
+                                 },
+               'OtaUpdateId' => {
+                                  'type' => 'Str'
+                                },
+               'ForceDeleteAWSJob' => {
+                                        'type' => 'Bool'
+                                      }
+             },
+  'ParamInURI' => {
+                    'OtaUpdateId' => 'otaUpdateId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

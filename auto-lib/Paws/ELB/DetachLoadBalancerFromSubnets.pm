@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::ELB::DetachLoadBalancerFromSubnets;
-  use Moose;
-  has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ELB::Types qw//;
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Subnets => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachLoadBalancerFromSubnets');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::DetachLoadBalancerFromSubnetsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DetachLoadBalancerFromSubnetsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DetachLoadBalancerFromSubnets');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELB::DetachLoadBalancerFromSubnetsOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DetachLoadBalancerFromSubnetsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subnets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'LoadBalancerName' => 1,
+                    'Subnets' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::DMS::KinesisSettings;
-  use Moose;
-  has MessageFormat => (is => 'ro', isa => 'Str');
-  has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
-  has StreamArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw//;
+  has MessageFormat => (is => 'ro', isa => Str);
+  has ServiceAccessRoleArn => (is => 'ro', isa => Str);
+  has StreamArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MessageFormat' => {
+                                    'type' => 'Str'
+                                  },
+               'ServiceAccessRoleArn' => {
+                                           'type' => 'Str'
+                                         },
+               'StreamArn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

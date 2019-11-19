@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ProductViewSummary;
-  use Moose;
-  has Distributor => (is => 'ro', isa => 'Str');
-  has HasDefaultPath => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Owner => (is => 'ro', isa => 'Str');
-  has ProductId => (is => 'ro', isa => 'Str');
-  has ShortDescription => (is => 'ro', isa => 'Str');
-  has SupportDescription => (is => 'ro', isa => 'Str');
-  has SupportEmail => (is => 'ro', isa => 'Str');
-  has SupportUrl => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ServiceCatalog::Types qw//;
+  has Distributor => (is => 'ro', isa => Str);
+  has HasDefaultPath => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Owner => (is => 'ro', isa => Str);
+  has ProductId => (is => 'ro', isa => Str);
+  has ShortDescription => (is => 'ro', isa => Str);
+  has SupportDescription => (is => 'ro', isa => Str);
+  has SupportEmail => (is => 'ro', isa => Str);
+  has SupportUrl => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Distributor' => {
+                                  'type' => 'Str'
+                                },
+               'SupportDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'SupportEmail' => {
+                                   'type' => 'Str'
+                                 },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ShortDescription' => {
+                                       'type' => 'Str'
+                                     },
+               'SupportUrl' => {
+                                 'type' => 'Str'
+                               },
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'HasDefaultPath' => {
+                                     'type' => 'Bool'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

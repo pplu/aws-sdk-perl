@@ -1,16 +1,42 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudWatch::ListMetrics;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::DimensionFilter]');
-  has MetricName => (is => 'ro', isa => 'Str');
-  has Namespace => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatch::Types qw/CloudWatch_DimensionFilter/;
+  has Dimensions => (is => 'ro', isa => ArrayRef[CloudWatch_DimensionFilter], predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListMetrics');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatch::ListMetricsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListMetricsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListMetrics');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatch::ListMetricsOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListMetricsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Dimensions' => {
+                                 'type' => 'ArrayRef[CloudWatch_DimensionFilter]',
+                                 'class' => 'Paws::CloudWatch::DimensionFilter'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +81,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>]
+=head2 Dimensions => ArrayRef[CloudWatch_DimensionFilter]
 
 The dimensions to filter against.
 

@@ -1,12 +1,58 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::CommentsForComparedCommit;
-  use Moose;
-  has AfterBlobId => (is => 'ro', isa => 'Str', request_name => 'afterBlobId', traits => ['NameInRequest']);
-  has AfterCommitId => (is => 'ro', isa => 'Str', request_name => 'afterCommitId', traits => ['NameInRequest']);
-  has BeforeBlobId => (is => 'ro', isa => 'Str', request_name => 'beforeBlobId', traits => ['NameInRequest']);
-  has BeforeCommitId => (is => 'ro', isa => 'Str', request_name => 'beforeCommitId', traits => ['NameInRequest']);
-  has Comments => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::Comment]', request_name => 'comments', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::CodeCommit::Location', request_name => 'location', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_Comment CodeCommit_Location/;
+  has AfterBlobId => (is => 'ro', isa => Str);
+  has AfterCommitId => (is => 'ro', isa => Str);
+  has BeforeBlobId => (is => 'ro', isa => Str);
+  has BeforeCommitId => (is => 'ro', isa => Str);
+  has Comments => (is => 'ro', isa => ArrayRef[CodeCommit_Comment]);
+  has Location => (is => 'ro', isa => CodeCommit_Location);
+  has RepositoryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Location' => 'location',
+                       'BeforeCommitId' => 'beforeCommitId',
+                       'AfterCommitId' => 'afterCommitId',
+                       'Comments' => 'comments',
+                       'RepositoryName' => 'repositoryName',
+                       'AfterBlobId' => 'afterBlobId',
+                       'BeforeBlobId' => 'beforeBlobId'
+                     },
+  'types' => {
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'BeforeBlobId' => {
+                                   'type' => 'Str'
+                                 },
+               'AfterBlobId' => {
+                                  'type' => 'Str'
+                                },
+               'AfterCommitId' => {
+                                    'type' => 'Str'
+                                  },
+               'BeforeCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               'Comments' => {
+                               'class' => 'Paws::CodeCommit::Comment',
+                               'type' => 'ArrayRef[CodeCommit_Comment]'
+                             },
+               'Location' => {
+                               'type' => 'CodeCommit_Location',
+                               'class' => 'Paws::CodeCommit::Location'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -67,13 +113,13 @@ comparison.
 comparison.
 
 
-=head2 Comments => ArrayRef[L<Paws::CodeCommit::Comment>]
+=head2 Comments => ArrayRef[CodeCommit_Comment]
 
   An array of comment objects. Each comment object contains information
 about a comment on the comparison between commits.
 
 
-=head2 Location => L<Paws::CodeCommit::Location>
+=head2 Location => CodeCommit_Location
 
   Location information about the comment on the comparison, including the
 file name, line number, and whether the version of the file where the

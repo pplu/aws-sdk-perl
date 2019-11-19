@@ -1,20 +1,65 @@
 
 package Paws::RAM::ListResources;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Principal => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'principal');
-  has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceArns');
-  has ResourceOwner => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceOwner', required => 1);
-  has ResourceShareArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceShareArns');
-  has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::RAM::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Principal => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceOwner => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceShareArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListResources');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/listresources');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RAM::ListResourcesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListResources');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/listresources');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RAM::ListResourcesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceOwner' => {
+                                    'type' => 'Str'
+                                  },
+               'Principal' => {
+                                'type' => 'Str'
+                              },
+               'ResourceShareArns' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'ResourceArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 }
+             },
+  'IsRequired' => {
+                    'ResourceOwner' => 1
+                  },
+  'NameInRequest' => {
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken',
+                       'ResourceType' => 'resourceType',
+                       'Principal' => 'principal',
+                       'ResourceOwner' => 'resourceOwner',
+                       'ResourceShareArns' => 'resourceShareArns',
+                       'ResourceArns' => 'resourceArns'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::Robomaker::VPCConfigResponse;
-  use Moose;
-  has AssignPublicIp => (is => 'ro', isa => 'Bool', request_name => 'assignPublicIp', traits => ['NameInRequest']);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::Robomaker::Types qw//;
+  has AssignPublicIp => (is => 'ro', isa => Bool);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Subnets => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Subnets' => 'subnets',
+                       'VpcId' => 'vpcId',
+                       'SecurityGroups' => 'securityGroups',
+                       'AssignPublicIp' => 'assignPublicIp'
+                     },
+  'types' => {
+               'Subnets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'AssignPublicIp' => {
+                                     'type' => 'Bool'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

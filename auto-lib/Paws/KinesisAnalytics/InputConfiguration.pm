@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::InputConfiguration;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has InputStartingPositionConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputStartingPositionConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_InputStartingPositionConfiguration/;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has InputStartingPositionConfiguration => (is => 'ro', isa => KinesisAnalytics_InputStartingPositionConfiguration, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputStartingPositionConfiguration' => {
+                                                         'type' => 'KinesisAnalytics_InputStartingPositionConfiguration',
+                                                         'class' => 'Paws::KinesisAnalytics::InputStartingPositionConfiguration'
+                                                       },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'IsRequired' => {
+                    'InputStartingPositionConfiguration' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +71,7 @@ you want the application to start processing records.
 operation.
 
 
-=head2 B<REQUIRED> InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>
+=head2 B<REQUIRED> InputStartingPositionConfiguration => KinesisAnalytics_InputStartingPositionConfiguration
 
   Point at which you want the application to start processing records
 from the streaming source.

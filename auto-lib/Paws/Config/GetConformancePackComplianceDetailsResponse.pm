@@ -1,11 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::GetConformancePackComplianceDetailsResponse;
-  use Moose;
-  has ConformancePackName => (is => 'ro', isa => 'Str', required => 1);
-  has ConformancePackRuleEvaluationResults => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConformancePackEvaluationResult]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_ConformancePackEvaluationResult/;
+  has ConformancePackName => (is => 'ro', isa => Str, required => 1);
+  has ConformancePackRuleEvaluationResults => (is => 'ro', isa => ArrayRef[Config_ConformancePackEvaluationResult]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ConformancePackRuleEvaluationResults' => {
+                                                           'class' => 'Paws::Config::ConformancePackEvaluationResult',
+                                                           'type' => 'ArrayRef[Config_ConformancePackEvaluationResult]'
+                                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ConformancePackName' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'ConformancePackName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +49,7 @@ Paws::Config::GetConformancePackComplianceDetailsResponse
 Name of the conformance pack.
 
 
-=head2 ConformancePackRuleEvaluationResults => ArrayRef[L<Paws::Config::ConformancePackEvaluationResult>]
+=head2 ConformancePackRuleEvaluationResults => ArrayRef[Config_ConformancePackEvaluationResult]
 
 Returns a list of C<ConformancePackEvaluationResult> objects.
 

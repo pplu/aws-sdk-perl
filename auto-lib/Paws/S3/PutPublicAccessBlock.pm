@@ -1,18 +1,52 @@
 
 package Paws::S3::PutPublicAccessBlock;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has PublicAccessBlockConfiguration => (is => 'ro', isa => 'Paws::S3::PublicAccessBlockConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_PublicAccessBlockConfiguration/;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has PublicAccessBlockConfiguration => (is => 'ro', isa => S3_PublicAccessBlockConfiguration, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutPublicAccessBlock');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}?publicAccessBlock');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutPublicAccessBlock');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}?publicAccessBlock');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket'
+                  },
+  'types' => {
+               'PublicAccessBlockConfiguration' => {
+                                                     'class' => 'Paws::S3::PublicAccessBlockConfiguration',
+                                                     'type' => 'S3_PublicAccessBlockConfiguration'
+                                                   },
+               'ContentMD5' => {
+                                 'type' => 'Str'
+                               },
+               'Bucket' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'PublicAccessBlockConfiguration' => 1
+                  },
+  'AutoInHeader' => {
+                      'ContentMD5' => {
+                                        'header_name' => 'Content-MD5',
+                                        'auto' => 'MD5'
+                                      }
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +96,7 @@ The MD5 hash of the C<PutPublicAccessBlock> request body.
 
 
 
-=head2 B<REQUIRED> PublicAccessBlockConfiguration => L<Paws::S3::PublicAccessBlockConfiguration>
+=head2 B<REQUIRED> PublicAccessBlockConfiguration => S3_PublicAccessBlockConfiguration
 
 The C<PublicAccessBlock> configuration that you want to apply to this
 Amazon S3 bucket. You can enable the configuration options in any

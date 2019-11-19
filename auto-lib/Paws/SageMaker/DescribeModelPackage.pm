@@ -1,13 +1,32 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::DescribeModelPackage;
-  use Moose;
-  has ModelPackageName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has ModelPackageName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeModelPackage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::DescribeModelPackageOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeModelPackage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::DescribeModelPackageOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ModelPackageName' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'ModelPackageName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

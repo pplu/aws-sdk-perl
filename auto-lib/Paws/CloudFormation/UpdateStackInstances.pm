@@ -1,18 +1,56 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::UpdateStackInstances;
-  use Moose;
-  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has OperationId => (is => 'ro', isa => 'Str');
-  has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
-  has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has StackSetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_Parameter CloudFormation_StackSetOperationPreferences/;
+  has Accounts => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has OperationId => (is => 'ro', isa => Str, predicate => 1);
+  has OperationPreferences => (is => 'ro', isa => CloudFormation_StackSetOperationPreferences, predicate => 1);
+  has ParameterOverrides => (is => 'ro', isa => ArrayRef[CloudFormation_Parameter], predicate => 1);
+  has Regions => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has StackSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStackInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::UpdateStackInstancesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStackInstancesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateStackInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::UpdateStackInstancesOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateStackInstancesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterOverrides' => {
+                                         'class' => 'Paws::CloudFormation::Parameter',
+                                         'type' => 'ArrayRef[CloudFormation_Parameter]'
+                                       },
+               'OperationId' => {
+                                  'type' => 'Str'
+                                },
+               'OperationPreferences' => {
+                                           'type' => 'CloudFormation_StackSetOperationPreferences',
+                                           'class' => 'Paws::CloudFormation::StackSetOperationPreferences'
+                                         },
+               'Accounts' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 },
+               'Regions' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            }
+             },
+  'IsRequired' => {
+                    'Accounts' => 1,
+                    'Regions' => 1,
+                    'StackSetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -90,14 +128,14 @@ automatically.
 
 
 
-=head2 OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>
+=head2 OperationPreferences => CloudFormation_StackSetOperationPreferences
 
 Preferences for how AWS CloudFormation performs this stack set
 operation.
 
 
 
-=head2 ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]
+=head2 ParameterOverrides => ArrayRef[CloudFormation_Parameter]
 
 A list of input parameters whose values you want to update for the
 specified stack instances.

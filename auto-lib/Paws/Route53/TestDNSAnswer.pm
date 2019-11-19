@@ -1,21 +1,63 @@
 
 package Paws::Route53::TestDNSAnswer;
-  use Moose;
-  has EDNS0ClientSubnetIP => (is => 'ro', isa => 'Str', query_name => 'edns0clientsubnetip', traits => ['ParamInQuery']);
-  has EDNS0ClientSubnetMask => (is => 'ro', isa => 'Str', query_name => 'edns0clientsubnetmask', traits => ['ParamInQuery']);
-  has HostedZoneId => (is => 'ro', isa => 'Str', query_name => 'hostedzoneid', traits => ['ParamInQuery'], required => 1);
-  has RecordName => (is => 'ro', isa => 'Str', query_name => 'recordname', traits => ['ParamInQuery'], required => 1);
-  has RecordType => (is => 'ro', isa => 'Str', query_name => 'recordtype', traits => ['ParamInQuery'], required => 1);
-  has ResolverIP => (is => 'ro', isa => 'Str', query_name => 'resolverip', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw//;
+  has EDNS0ClientSubnetIP => (is => 'ro', isa => Str, predicate => 1);
+  has EDNS0ClientSubnetMask => (is => 'ro', isa => Str, predicate => 1);
+  has HostedZoneId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RecordName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RecordType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResolverIP => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TestDNSAnswer');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/testdnsanswer');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::TestDNSAnswerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TestDNSAnswer');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/testdnsanswer');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::TestDNSAnswerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 },
+               'ResolverIP' => {
+                                 'type' => 'Str'
+                               },
+               'EDNS0ClientSubnetIP' => {
+                                          'type' => 'Str'
+                                        },
+               'EDNS0ClientSubnetMask' => {
+                                            'type' => 'Str'
+                                          },
+               'RecordName' => {
+                                 'type' => 'Str'
+                               },
+               'RecordType' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInQuery' => {
+                      'RecordType' => 'recordtype',
+                      'RecordName' => 'recordname',
+                      'EDNS0ClientSubnetMask' => 'edns0clientsubnetmask',
+                      'ResolverIP' => 'resolverip',
+                      'EDNS0ClientSubnetIP' => 'edns0clientsubnetip',
+                      'HostedZoneId' => 'hostedzoneid'
+                    },
+  'IsRequired' => {
+                    'HostedZoneId' => 1,
+                    'RecordName' => 1,
+                    'RecordType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

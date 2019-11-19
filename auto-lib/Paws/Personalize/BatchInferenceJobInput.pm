@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::Personalize::BatchInferenceJobInput;
-  use Moose;
-  has S3DataSource => (is => 'ro', isa => 'Paws::Personalize::S3DataConfig', request_name => 's3DataSource', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Personalize::Types qw/Personalize_S3DataConfig/;
+  has S3DataSource => (is => 'ro', isa => Personalize_S3DataConfig, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3DataSource' => {
+                                   'class' => 'Paws::Personalize::S3DataConfig',
+                                   'type' => 'Personalize_S3DataConfig'
+                                 }
+             },
+  'IsRequired' => {
+                    'S3DataSource' => 1
+                  },
+  'NameInRequest' => {
+                       'S3DataSource' => 's3DataSource'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ The input configuration of a batch inference job.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> S3DataSource => L<Paws::Personalize::S3DataConfig>
+=head2 B<REQUIRED> S3DataSource => Personalize_S3DataConfig
 
   The URI of the Amazon S3 location that contains your input data. The
 Amazon S3 bucket must be in the same region as the API endpoint you are

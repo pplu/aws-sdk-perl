@@ -1,11 +1,39 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListSigningCertificatesResponse;
-  use Moose;
-  has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::IAM::SigningCertificate]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::IAM::Types qw/IAM_SigningCertificate/;
+  has Certificates => (is => 'ro', isa => ArrayRef[IAM_SigningCertificate], required => 1);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Certificates' => 1
+                  },
+  'types' => {
+               'Certificates' => {
+                                   'type' => 'ArrayRef[IAM_SigningCertificate]',
+                                   'class' => 'Paws::IAM::SigningCertificate'
+                                 },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +45,7 @@ Paws::IAM::ListSigningCertificatesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Certificates => ArrayRef[L<Paws::IAM::SigningCertificate>]
+=head2 B<REQUIRED> Certificates => ArrayRef[IAM_SigningCertificate]
 
 A list of the user's signing certificate information.
 

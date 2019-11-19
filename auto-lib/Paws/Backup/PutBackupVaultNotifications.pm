@@ -1,16 +1,45 @@
 
 package Paws::Backup::PutBackupVaultNotifications;
-  use Moose;
-  has BackupVaultEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has BackupVaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'backupVaultName', required => 1);
-  has SNSTopicArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Backup::Types qw//;
+  has BackupVaultEvents => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has BackupVaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SNSTopicArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutBackupVaultNotifications');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup-vaults/{backupVaultName}/notification-configuration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutBackupVaultNotifications');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup-vaults/{backupVaultName}/notification-configuration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'BackupVaultName' => 'backupVaultName'
+                  },
+  'IsRequired' => {
+                    'SNSTopicArn' => 1,
+                    'BackupVaultEvents' => 1,
+                    'BackupVaultName' => 1
+                  },
+  'types' => {
+               'BackupVaultEvents' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'SNSTopicArn' => {
+                                  'type' => 'Str'
+                                },
+               'BackupVaultName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

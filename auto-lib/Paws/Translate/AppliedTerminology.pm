@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Translate::AppliedTerminology;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has Terms => (is => 'ro', isa => 'ArrayRef[Paws::Translate::Term]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Translate::Types qw/Translate_Term/;
+  has Name => (is => 'ro', isa => Str);
+  has Terms => (is => 'ro', isa => ArrayRef[Translate_Term]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Terms' => {
+                            'type' => 'ArrayRef[Translate_Term]',
+                            'class' => 'Paws::Translate::Term'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +68,7 @@ request.
 Translate for the translated text response.
 
 
-=head2 Terms => ArrayRef[L<Paws::Translate::Term>]
+=head2 Terms => ArrayRef[Translate_Term]
 
   The specific terms of the custom terminology applied to the input text
 by Amazon Translate for the translated text response. A maximum of 250

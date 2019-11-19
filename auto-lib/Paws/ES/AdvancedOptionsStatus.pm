@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::ES::AdvancedOptionsStatus;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Paws::ES::AdvancedOptions', required => 1);
-  has Status => (is => 'ro', isa => 'Paws::ES::OptionStatus', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ES::Types qw/ES_AdvancedOptions ES_OptionStatus/;
+  has Options => (is => 'ro', isa => ES_AdvancedOptions, required => 1);
+  has Status => (is => 'ro', isa => ES_OptionStatus, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Options' => {
+                              'class' => 'Paws::ES::AdvancedOptions',
+                              'type' => 'ES_AdvancedOptions'
+                            },
+               'Status' => {
+                             'class' => 'Paws::ES::OptionStatus',
+                             'type' => 'ES_OptionStatus'
+                           }
+             },
+  'IsRequired' => {
+                    'Options' => 1,
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,13 +80,13 @@ For more information, see Configuring Advanced Options
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Options => L<Paws::ES::AdvancedOptions>
+=head2 B<REQUIRED> Options => ES_AdvancedOptions
 
   Specifies the status of advanced options for the specified
 Elasticsearch domain.
 
 
-=head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
+=head2 B<REQUIRED> Status => ES_OptionStatus
 
   Specifies the status of C<OptionStatus> for advanced options for the
 specified Elasticsearch domain.

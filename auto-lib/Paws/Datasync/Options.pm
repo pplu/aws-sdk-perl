@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::Datasync::Options;
-  use Moose;
-  has Atime => (is => 'ro', isa => 'Str');
-  has BytesPerSecond => (is => 'ro', isa => 'Int');
-  has Gid => (is => 'ro', isa => 'Str');
-  has Mtime => (is => 'ro', isa => 'Str');
-  has OverwriteMode => (is => 'ro', isa => 'Str');
-  has PosixPermissions => (is => 'ro', isa => 'Str');
-  has PreserveDeletedFiles => (is => 'ro', isa => 'Str');
-  has PreserveDevices => (is => 'ro', isa => 'Str');
-  has TaskQueueing => (is => 'ro', isa => 'Str');
-  has Uid => (is => 'ro', isa => 'Str');
-  has VerifyMode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Datasync::Types qw//;
+  has Atime => (is => 'ro', isa => Str);
+  has BytesPerSecond => (is => 'ro', isa => Int);
+  has Gid => (is => 'ro', isa => Str);
+  has Mtime => (is => 'ro', isa => Str);
+  has OverwriteMode => (is => 'ro', isa => Str);
+  has PosixPermissions => (is => 'ro', isa => Str);
+  has PreserveDeletedFiles => (is => 'ro', isa => Str);
+  has PreserveDevices => (is => 'ro', isa => Str);
+  has TaskQueueing => (is => 'ro', isa => Str);
+  has Uid => (is => 'ro', isa => Str);
+  has VerifyMode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Atime' => {
+                            'type' => 'Str'
+                          },
+               'VerifyMode' => {
+                                 'type' => 'Str'
+                               },
+               'OverwriteMode' => {
+                                    'type' => 'Str'
+                                  },
+               'PreserveDeletedFiles' => {
+                                           'type' => 'Str'
+                                         },
+               'TaskQueueing' => {
+                                   'type' => 'Str'
+                                 },
+               'Mtime' => {
+                            'type' => 'Str'
+                          },
+               'PreserveDevices' => {
+                                      'type' => 'Str'
+                                    },
+               'BytesPerSecond' => {
+                                     'type' => 'Int'
+                                   },
+               'Gid' => {
+                          'type' => 'Str'
+                        },
+               'Uid' => {
+                          'type' => 'Str'
+                        },
+               'PosixPermissions' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

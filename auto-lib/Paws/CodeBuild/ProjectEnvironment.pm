@@ -1,13 +1,68 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::ProjectEnvironment;
-  use Moose;
-  has Certificate => (is => 'ro', isa => 'Str', request_name => 'certificate', traits => ['NameInRequest']);
-  has ComputeType => (is => 'ro', isa => 'Str', request_name => 'computeType', traits => ['NameInRequest'], required => 1);
-  has EnvironmentVariables => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentVariable]', request_name => 'environmentVariables', traits => ['NameInRequest']);
-  has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest'], required => 1);
-  has ImagePullCredentialsType => (is => 'ro', isa => 'Str', request_name => 'imagePullCredentialsType', traits => ['NameInRequest']);
-  has PrivilegedMode => (is => 'ro', isa => 'Bool', request_name => 'privilegedMode', traits => ['NameInRequest']);
-  has RegistryCredential => (is => 'ro', isa => 'Paws::CodeBuild::RegistryCredential', request_name => 'registryCredential', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::CodeBuild::Types qw/CodeBuild_EnvironmentVariable CodeBuild_RegistryCredential/;
+  has Certificate => (is => 'ro', isa => Str);
+  has ComputeType => (is => 'ro', isa => Str, required => 1);
+  has EnvironmentVariables => (is => 'ro', isa => ArrayRef[CodeBuild_EnvironmentVariable]);
+  has Image => (is => 'ro', isa => Str, required => 1);
+  has ImagePullCredentialsType => (is => 'ro', isa => Str);
+  has PrivilegedMode => (is => 'ro', isa => Bool);
+  has RegistryCredential => (is => 'ro', isa => CodeBuild_RegistryCredential);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ComputeType' => {
+                                  'type' => 'Str'
+                                },
+               'Certificate' => {
+                                  'type' => 'Str'
+                                },
+               'PrivilegedMode' => {
+                                     'type' => 'Bool'
+                                   },
+               'ImagePullCredentialsType' => {
+                                               'type' => 'Str'
+                                             },
+               'RegistryCredential' => {
+                                         'type' => 'CodeBuild_RegistryCredential',
+                                         'class' => 'Paws::CodeBuild::RegistryCredential'
+                                       },
+               'Image' => {
+                            'type' => 'Str'
+                          },
+               'EnvironmentVariables' => {
+                                           'type' => 'ArrayRef[CodeBuild_EnvironmentVariable]',
+                                           'class' => 'Paws::CodeBuild::EnvironmentVariable'
+                                         }
+             },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'ComputeType' => 1,
+                    'Image' => 1
+                  },
+  'NameInRequest' => {
+                       'EnvironmentVariables' => 'environmentVariables',
+                       'Image' => 'image',
+                       'ImagePullCredentialsType' => 'imagePullCredentialsType',
+                       'PrivilegedMode' => 'privilegedMode',
+                       'RegistryCredential' => 'registryCredential',
+                       'ComputeType' => 'computeType',
+                       'Type' => 'type',
+                       'Certificate' => 'certificate'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -102,7 +157,7 @@ For more information, see Build Environment Compute Types
 in the I<AWS CodeBuild User Guide.>
 
 
-=head2 EnvironmentVariables => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]
+=head2 EnvironmentVariables => ArrayRef[CodeBuild_EnvironmentVariable]
 
   A set of environment variables to make available to builds for this
 build project.
@@ -184,7 +239,7 @@ C<- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock
 C<- timeout -t 15 sh -c "until docker info; do echo .; sleep 1; done">
 
 
-=head2 RegistryCredential => L<Paws::CodeBuild::RegistryCredential>
+=head2 RegistryCredential => CodeBuild_RegistryCredential
 
   The credentials for access to a private registry.
 

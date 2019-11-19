@@ -1,14 +1,55 @@
 
 package Paws::GroundStation::GetSatelliteResponse;
-  use Moose;
-  has DateCreated => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dateCreated');
-  has LastUpdated => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdated');
-  has NoradSatelliteID => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'noradSatelliteID');
-  has SatelliteArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'satelliteArn');
-  has SatelliteId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'satelliteId');
-  has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::GroundStation::Types qw/GroundStation_TagsMap/;
+  has DateCreated => (is => 'ro', isa => Str);
+  has LastUpdated => (is => 'ro', isa => Str);
+  has NoradSatelliteID => (is => 'ro', isa => Int);
+  has SatelliteArn => (is => 'ro', isa => Str);
+  has SatelliteId => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => GroundStation_TagsMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'SatelliteId' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'GroundStation_TagsMap',
+                           'class' => 'Paws::GroundStation::TagsMap'
+                         },
+               'SatelliteArn' => {
+                                   'type' => 'Str'
+                                 },
+               'NoradSatelliteID' => {
+                                       'type' => 'Int'
+                                     },
+               'DateCreated' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'SatelliteId' => 'satelliteId',
+                       'LastUpdated' => 'lastUpdated',
+                       'Tags' => 'tags',
+                       'DateCreated' => 'dateCreated',
+                       'NoradSatelliteID' => 'noradSatelliteID',
+                       'SatelliteArn' => 'satelliteArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +86,7 @@ ARN of a satellite.
 UUID of a satellite.
 
 
-=head2 Tags => L<Paws::GroundStation::TagsMap>
+=head2 Tags => GroundStation_TagsMap
 
 Tags assigned to a satellite.
 

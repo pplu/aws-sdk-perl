@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::Organizations::Account;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Email => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has JoinedMethod => (is => 'ro', isa => 'Str');
-  has JoinedTimestamp => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Organizations::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Email => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has JoinedMethod => (is => 'ro', isa => Str);
+  has JoinedTimestamp => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'JoinedTimestamp' => {
+                                      'type' => 'Str'
+                                    },
+               'JoinedMethod' => {
+                                   'type' => 'Str'
+                                 },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Email' => {
+                            'type' => 'Str'
+                          },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

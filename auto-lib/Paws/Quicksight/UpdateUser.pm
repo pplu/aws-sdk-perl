@@ -1,18 +1,57 @@
 
 package Paws::Quicksight::UpdateUser;
-  use Moose;
-  has AwsAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'AwsAccountId', required => 1);
-  has Email => (is => 'ro', isa => 'Str', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Namespace', required => 1);
-  has Role => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UserName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Quicksight::Types qw//;
+  has AwsAccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Email => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Role => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUser');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{AwsAccountId}/namespaces/{Namespace}/users/{UserName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Quicksight::UpdateUserResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateUser');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{AwsAccountId}/namespaces/{Namespace}/users/{UserName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Quicksight::UpdateUserResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AwsAccountId' => {
+                                   'type' => 'Str'
+                                 },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Email' => {
+                            'type' => 'Str'
+                          },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'Namespace' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Email' => 1,
+                    'Role' => 1,
+                    'UserName' => 1,
+                    'AwsAccountId' => 1,
+                    'Namespace' => 1
+                  },
+  'ParamInURI' => {
+                    'AwsAccountId' => 'AwsAccountId',
+                    'UserName' => 'UserName',
+                    'Namespace' => 'Namespace'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

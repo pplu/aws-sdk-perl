@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::ResetServiceSettingResult;
-  use Moose;
-  has ServiceSetting => (is => 'ro', isa => 'Paws::SSM::ServiceSetting');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_ServiceSetting/;
+  has ServiceSetting => (is => 'ro', isa => SSM_ServiceSetting);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceSetting' => {
+                                     'type' => 'SSM_ServiceSetting',
+                                     'class' => 'Paws::SSM::ServiceSetting'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::SSM::ResetServiceSettingResult
 =head1 ATTRIBUTES
 
 
-=head2 ServiceSetting => L<Paws::SSM::ServiceSetting>
+=head2 ServiceSetting => SSM_ServiceSetting
 
 The current, effective service setting after calling the
 ResetServiceSetting API action.

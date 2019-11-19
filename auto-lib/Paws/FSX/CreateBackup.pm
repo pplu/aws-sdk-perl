@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::FSX::CreateBackup;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::FSX::Types qw/FSX_Tag/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has FileSystemId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[FSX_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBackup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::FSX::CreateBackupResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBackup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::FSX::CreateBackupResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FileSystemId' => 1
+                  },
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::FSX::Tag',
+                           'type' => 'ArrayRef[FSX_Tag]'
+                         },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +93,7 @@ The ID of the file system to back up.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::FSX::Tag>]
+=head2 Tags => ArrayRef[FSX_Tag]
 
 The tags to apply to the backup at backup creation. The key value of
 the C<Name> tag appears in the console as the backup name.

@@ -1,12 +1,25 @@
+# Generated from default/map_enum.tt
 package Paws::ApplicationInsights::Feedback;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationInsights::Types qw//;
+  has INSIGHTS_FEEDBACK => (is => 'ro', isa => Str);
 
-  has INSIGHTS_FEEDBACK => (is => 'ro', isa => 'Str');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'INSIGHTS_FEEDBACK' => {
+                                          type => 'Str',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +55,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 INSIGHTS_FEEDBACK => Str
+=head2 INSIGHTS_FEEDBACK => 
 
 
 

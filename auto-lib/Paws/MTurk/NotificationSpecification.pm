@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MTurk::NotificationSpecification;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Str', required => 1);
-  has EventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Transport => (is => 'ro', isa => 'Str', required => 1);
-  has Version => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MTurk::Types qw//;
+  has Destination => (is => 'ro', isa => Str, required => 1);
+  has EventTypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Transport => (is => 'ro', isa => Str, required => 1);
+  has Version => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Transport' => 1,
+                    'Destination' => 1,
+                    'EventTypes' => 1,
+                    'Version' => 1
+                  },
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'EventTypes' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'Transport' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

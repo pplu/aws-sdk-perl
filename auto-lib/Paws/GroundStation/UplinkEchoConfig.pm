@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::GroundStation::UplinkEchoConfig;
-  use Moose;
-  has AntennaUplinkConfigArn => (is => 'ro', isa => 'Str', request_name => 'antennaUplinkConfigArn', traits => ['NameInRequest'], required => 1);
-  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::GroundStation::Types qw//;
+  has AntennaUplinkConfigArn => (is => 'ro', isa => Str, required => 1);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AntennaUplinkConfigArn' => {
+                                             'type' => 'Str'
+                                           },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             },
+  'NameInRequest' => {
+                       'Enabled' => 'enabled',
+                       'AntennaUplinkConfigArn' => 'antennaUplinkConfigArn'
+                     },
+  'IsRequired' => {
+                    'Enabled' => 1,
+                    'AntennaUplinkConfigArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

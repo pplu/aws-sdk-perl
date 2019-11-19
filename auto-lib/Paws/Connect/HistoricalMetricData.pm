@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Connect::HistoricalMetricData;
-  use Moose;
-  has Metric => (is => 'ro', isa => 'Paws::Connect::HistoricalMetric');
-  has Value => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Connect::Types qw/Connect_HistoricalMetric/;
+  has Metric => (is => 'ro', isa => Connect_HistoricalMetric);
+  has Value => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Num'
+                          },
+               'Metric' => {
+                             'class' => 'Paws::Connect::HistoricalMetric',
+                             'type' => 'Connect_HistoricalMetric'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Contains the data for a historical metric.
 =head1 ATTRIBUTES
 
 
-=head2 Metric => L<Paws::Connect::HistoricalMetric>
+=head2 Metric => Connect_HistoricalMetric
 
   Information about the metric.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DatasetContentStatus;
-  use Moose;
-  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has Reason => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'State' => 'state',
+                       'Reason' => 'reason'
+                     },
+  'types' => {
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

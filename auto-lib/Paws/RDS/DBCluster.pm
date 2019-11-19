@@ -1,56 +1,236 @@
+# Generated from default/object.tt
 package Paws::RDS::DBCluster;
-  use Moose;
-  has ActivityStreamKinesisStreamName => (is => 'ro', isa => 'Str');
-  has ActivityStreamKmsKeyId => (is => 'ro', isa => 'Str');
-  has ActivityStreamMode => (is => 'ro', isa => 'Str');
-  has ActivityStreamStatus => (is => 'ro', isa => 'Str');
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AssociatedRoles => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterRole]', request_name => 'DBClusterRole', traits => ['NameInRequest']);
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
-  has BacktrackConsumedChangeRecords => (is => 'ro', isa => 'Int');
-  has BacktrackWindow => (is => 'ro', isa => 'Int');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has Capacity => (is => 'ro', isa => 'Int');
-  has CharacterSetName => (is => 'ro', isa => 'Str');
-  has CloneGroupId => (is => 'ro', isa => 'Str');
-  has ClusterCreateTime => (is => 'ro', isa => 'Str');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has CrossAccountClone => (is => 'ro', isa => 'Bool');
-  has CustomEndpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has DBClusterArn => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has DBClusterMembers => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterMember]', request_name => 'DBClusterMember', traits => ['NameInRequest']);
-  has DBClusterOptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterOptionGroupStatus]', request_name => 'DBClusterOptionGroup', traits => ['NameInRequest']);
-  has DBClusterParameterGroup => (is => 'ro', isa => 'Str');
-  has DbClusterResourceId => (is => 'ro', isa => 'Str');
-  has DBSubnetGroup => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has EarliestBacktrackTime => (is => 'ro', isa => 'Str');
-  has EarliestRestorableTime => (is => 'ro', isa => 'Str');
-  has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Endpoint => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineMode => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has HostedZoneId => (is => 'ro', isa => 'Str');
-  has HttpEndpointEnabled => (is => 'ro', isa => 'Bool');
-  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LatestRestorableTime => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has PercentProgress => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ReaderEndpoint => (is => 'ro', isa => 'Str');
-  has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ReadReplicaIdentifier', traits => ['NameInRequest']);
-  has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
-  has ScalingConfigurationInfo => (is => 'ro', isa => 'Paws::RDS::ScalingConfigurationInfo');
-  has Status => (is => 'ro', isa => 'Str');
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef Bool/;
+  use Paws::RDS::Types qw/RDS_DBClusterMember RDS_DBClusterOptionGroupStatus RDS_ScalingConfigurationInfo RDS_VpcSecurityGroupMembership RDS_DBClusterRole/;
+  has ActivityStreamKinesisStreamName => (is => 'ro', isa => Str);
+  has ActivityStreamKmsKeyId => (is => 'ro', isa => Str);
+  has ActivityStreamMode => (is => 'ro', isa => Str);
+  has ActivityStreamStatus => (is => 'ro', isa => Str);
+  has AllocatedStorage => (is => 'ro', isa => Int);
+  has AssociatedRoles => (is => 'ro', isa => ArrayRef[RDS_DBClusterRole]);
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BacktrackConsumedChangeRecords => (is => 'ro', isa => Int);
+  has BacktrackWindow => (is => 'ro', isa => Int);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int);
+  has Capacity => (is => 'ro', isa => Int);
+  has CharacterSetName => (is => 'ro', isa => Str);
+  has CloneGroupId => (is => 'ro', isa => Str);
+  has ClusterCreateTime => (is => 'ro', isa => Str);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool);
+  has CrossAccountClone => (is => 'ro', isa => Bool);
+  has CustomEndpoints => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DatabaseName => (is => 'ro', isa => Str);
+  has DBClusterArn => (is => 'ro', isa => Str);
+  has DBClusterIdentifier => (is => 'ro', isa => Str);
+  has DBClusterMembers => (is => 'ro', isa => ArrayRef[RDS_DBClusterMember]);
+  has DBClusterOptionGroupMemberships => (is => 'ro', isa => ArrayRef[RDS_DBClusterOptionGroupStatus]);
+  has DBClusterParameterGroup => (is => 'ro', isa => Str);
+  has DbClusterResourceId => (is => 'ro', isa => Str);
+  has DBSubnetGroup => (is => 'ro', isa => Str);
+  has DeletionProtection => (is => 'ro', isa => Bool);
+  has EarliestBacktrackTime => (is => 'ro', isa => Str);
+  has EarliestRestorableTime => (is => 'ro', isa => Str);
+  has EnabledCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Endpoint => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineMode => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has HostedZoneId => (is => 'ro', isa => Str);
+  has HttpEndpointEnabled => (is => 'ro', isa => Bool);
+  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => Bool);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LatestRestorableTime => (is => 'ro', isa => Str);
+  has MasterUsername => (is => 'ro', isa => Str);
+  has MultiAZ => (is => 'ro', isa => Bool);
+  has PercentProgress => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has PreferredBackupWindow => (is => 'ro', isa => Str);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has ReaderEndpoint => (is => 'ro', isa => Str);
+  has ReadReplicaIdentifiers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ReplicationSourceIdentifier => (is => 'ro', isa => Str);
+  has ScalingConfigurationInfo => (is => 'ro', isa => RDS_ScalingConfigurationInfo);
+  has Status => (is => 'ro', isa => Str);
+  has StorageEncrypted => (is => 'ro', isa => Bool);
+  has VpcSecurityGroups => (is => 'ro', isa => ArrayRef[RDS_VpcSecurityGroupMembership]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IAMDatabaseAuthenticationEnabled' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'DBClusterOptionGroupMemberships' => {
+                                                      'type' => 'ArrayRef[RDS_DBClusterOptionGroupStatus]',
+                                                      'class' => 'Paws::RDS::DBClusterOptionGroupStatus'
+                                                    },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'EngineMode' => {
+                                 'type' => 'Str'
+                               },
+               'PercentProgress' => {
+                                      'type' => 'Str'
+                                    },
+               'DBClusterArn' => {
+                                   'type' => 'Str'
+                                 },
+               'AssociatedRoles' => {
+                                      'type' => 'ArrayRef[RDS_DBClusterRole]',
+                                      'class' => 'Paws::RDS::DBClusterRole'
+                                    },
+               'CrossAccountClone' => {
+                                        'type' => 'Bool'
+                                      },
+               'ReaderEndpoint' => {
+                                     'type' => 'Str'
+                                   },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DBClusterParameterGroup' => {
+                                              'type' => 'Str'
+                                            },
+               'ClusterCreateTime' => {
+                                        'type' => 'Str'
+                                      },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'ActivityStreamStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'HttpEndpointEnabled' => {
+                                          'type' => 'Bool'
+                                        },
+               'EarliestRestorableTime' => {
+                                             'type' => 'Str'
+                                           },
+               'EarliestBacktrackTime' => {
+                                            'type' => 'Str'
+                                          },
+               'EnabledCloudwatchLogsExports' => {
+                                                   'type' => 'ArrayRef[Str|Undef]'
+                                                 },
+               'ReadReplicaIdentifiers' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'ActivityStreamKmsKeyId' => {
+                                             'type' => 'Str'
+                                           },
+               'CharacterSetName' => {
+                                       'type' => 'Str'
+                                     },
+               'Capacity' => {
+                               'type' => 'Int'
+                             },
+               'DBSubnetGroup' => {
+                                    'type' => 'Str'
+                                  },
+               'CustomEndpoints' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'ActivityStreamMode' => {
+                                         'type' => 'Str'
+                                       },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'CloneGroupId' => {
+                                   'type' => 'Str'
+                                 },
+               'BacktrackConsumedChangeRecords' => {
+                                                     'type' => 'Int'
+                                                   },
+               'DbClusterResourceId' => {
+                                          'type' => 'Str'
+                                        },
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'BacktrackWindow' => {
+                                      'type' => 'Int'
+                                    },
+               'DBClusterMembers' => {
+                                       'class' => 'Paws::RDS::DBClusterMember',
+                                       'type' => 'ArrayRef[RDS_DBClusterMember]'
+                                     },
+               'ReplicationSourceIdentifier' => {
+                                                  'type' => 'Str'
+                                                },
+               'LatestRestorableTime' => {
+                                           'type' => 'Str'
+                                         },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'VpcSecurityGroups' => {
+                                        'class' => 'Paws::RDS::VpcSecurityGroupMembership',
+                                        'type' => 'ArrayRef[RDS_VpcSecurityGroupMembership]'
+                                      },
+               'ActivityStreamKinesisStreamName' => {
+                                                      'type' => 'Str'
+                                                    },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'ScalingConfigurationInfo' => {
+                                               'type' => 'RDS_ScalingConfigurationInfo',
+                                               'class' => 'Paws::RDS::ScalingConfigurationInfo'
+                                             },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'NameInRequest' => {
+                       'DBClusterOptionGroupMemberships' => 'DBClusterOptionGroup',
+                       'ReadReplicaIdentifiers' => 'ReadReplicaIdentifier',
+                       'VpcSecurityGroups' => 'VpcSecurityGroupMembership',
+                       'AssociatedRoles' => 'DBClusterRole',
+                       'AvailabilityZones' => 'AvailabilityZone',
+                       'DBClusterMembers' => 'DBClusterMember'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -121,7 +301,7 @@ C<AllocatedStorage> always returns 1, because Aurora DB cluster storage
 size isn't fixed, but instead automatically adjusts as needed.
 
 
-=head2 AssociatedRoles => ArrayRef[L<Paws::RDS::DBClusterRole>]
+=head2 AssociatedRoles => ArrayRef[RDS_DBClusterRole]
 
   Provides a list of the AWS Identity and Access Management (IAM) roles
 that are associated with the DB cluster. IAM roles that are associated
@@ -216,12 +396,12 @@ created. This same name is returned for the life of the DB cluster.
 unique key that identifies a DB cluster.
 
 
-=head2 DBClusterMembers => ArrayRef[L<Paws::RDS::DBClusterMember>]
+=head2 DBClusterMembers => ArrayRef[RDS_DBClusterMember]
 
   Provides the list of instances that make up the DB cluster.
 
 
-=head2 DBClusterOptionGroupMemberships => ArrayRef[L<Paws::RDS::DBClusterOptionGroupStatus>]
+=head2 DBClusterOptionGroupMemberships => ArrayRef[RDS_DBClusterOptionGroupStatus]
 
   Provides the list of option group memberships for this DB cluster.
 
@@ -397,7 +577,7 @@ this DB cluster.
 a Read Replica.
 
 
-=head2 ScalingConfigurationInfo => L<Paws::RDS::ScalingConfigurationInfo>
+=head2 ScalingConfigurationInfo => RDS_ScalingConfigurationInfo
 
   
 
@@ -412,7 +592,7 @@ a Read Replica.
   Specifies whether the DB cluster is encrypted.
 
 
-=head2 VpcSecurityGroups => ArrayRef[L<Paws::RDS::VpcSecurityGroupMembership>]
+=head2 VpcSecurityGroups => ArrayRef[RDS_VpcSecurityGroupMembership]
 
   Provides a list of VPC security groups that the DB cluster belongs to.
 

@@ -1,20 +1,68 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::SubmitContainerStateChange;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has ContainerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerName' );
-  has ExitCode => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'exitCode' );
-  has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', traits => ['NameInRequest'], request_name => 'networkBindings' );
-  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
-  has RuntimeId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'runtimeId' );
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
-  has Task => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'task' );
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::ECS::Types qw/ECS_NetworkBinding/;
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has ContainerName => (is => 'ro', isa => Str, predicate => 1);
+  has ExitCode => (is => 'ro', isa => Int, predicate => 1);
+  has NetworkBindings => (is => 'ro', isa => ArrayRef[ECS_NetworkBinding], predicate => 1);
+  has Reason => (is => 'ro', isa => Str, predicate => 1);
+  has RuntimeId => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
+  has Task => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SubmitContainerStateChange');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::SubmitContainerStateChangeResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SubmitContainerStateChange');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::SubmitContainerStateChangeResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExitCode' => {
+                               'type' => 'Int'
+                             },
+               'NetworkBindings' => {
+                                      'type' => 'ArrayRef[ECS_NetworkBinding]',
+                                      'class' => 'Paws::ECS::NetworkBinding'
+                                    },
+               'Task' => {
+                           'type' => 'Str'
+                         },
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'ContainerName' => {
+                                    'type' => 'Str'
+                                  },
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'RuntimeId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Cluster' => 'cluster',
+                       'Status' => 'status',
+                       'RuntimeId' => 'runtimeId',
+                       'ContainerName' => 'containerName',
+                       'Reason' => 'reason',
+                       'NetworkBindings' => 'networkBindings',
+                       'ExitCode' => 'exitCode',
+                       'Task' => 'task'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +130,7 @@ The exit code returned for the state change request.
 
 
 
-=head2 NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>]
+=head2 NetworkBindings => ArrayRef[ECS_NetworkBinding]
 
 The network bindings of the container.
 

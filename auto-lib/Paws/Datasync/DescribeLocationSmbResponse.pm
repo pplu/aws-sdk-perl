@@ -1,15 +1,52 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Datasync::DescribeLocationSmbResponse;
-  use Moose;
-  has AgentArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Domain => (is => 'ro', isa => 'Str');
-  has LocationArn => (is => 'ro', isa => 'Str');
-  has LocationUri => (is => 'ro', isa => 'Str');
-  has MountOptions => (is => 'ro', isa => 'Paws::Datasync::SmbMountOptions');
-  has User => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Datasync::Types qw/Datasync_SmbMountOptions/;
+  has AgentArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Domain => (is => 'ro', isa => Str);
+  has LocationArn => (is => 'ro', isa => Str);
+  has LocationUri => (is => 'ro', isa => Str);
+  has MountOptions => (is => 'ro', isa => Datasync_SmbMountOptions);
+  has User => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AgentArns' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'MountOptions' => {
+                                   'type' => 'Datasync_SmbMountOptions',
+                                   'class' => 'Paws::Datasync::SmbMountOptions'
+                                 },
+               'LocationUri' => {
+                                  'type' => 'Str'
+                                },
+               'User' => {
+                           'type' => 'Str'
+                         },
+               'LocationArn' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -46,7 +83,7 @@ The Amazon resource Name (ARN) of the SMB location that was described.
 The URL of the source SBM location that was described.
 
 
-=head2 MountOptions => L<Paws::Datasync::SmbMountOptions>
+=head2 MountOptions => Datasync_SmbMountOptions
 
 The mount options that are available for DataSync to use to access an
 SMB location.

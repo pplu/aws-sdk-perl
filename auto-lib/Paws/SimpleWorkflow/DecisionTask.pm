@@ -1,15 +1,70 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SimpleWorkflow::DecisionTask;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::HistoryEvent]', traits => ['NameInRequest'], request_name => 'events' , required => 1);
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
-  has PreviousStartedEventId => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'previousStartedEventId' );
-  has StartedEventId => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startedEventId' , required => 1);
-  has TaskToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskToken' , required => 1);
-  has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', traits => ['NameInRequest'], request_name => 'workflowExecution' , required => 1);
-  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', traits => ['NameInRequest'], request_name => 'workflowType' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowType SimpleWorkflow_WorkflowExecution SimpleWorkflow_HistoryEvent/;
+  has Events => (is => 'ro', isa => ArrayRef[SimpleWorkflow_HistoryEvent], required => 1);
+  has NextPageToken => (is => 'ro', isa => Str);
+  has PreviousStartedEventId => (is => 'ro', isa => Int);
+  has StartedEventId => (is => 'ro', isa => Int, required => 1);
+  has TaskToken => (is => 'ro', isa => Str, required => 1);
+  has WorkflowExecution => (is => 'ro', isa => SimpleWorkflow_WorkflowExecution, required => 1);
+  has WorkflowType => (is => 'ro', isa => SimpleWorkflow_WorkflowType, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TaskToken' => 'taskToken',
+                       'Events' => 'events',
+                       'PreviousStartedEventId' => 'previousStartedEventId',
+                       'NextPageToken' => 'nextPageToken',
+                       'StartedEventId' => 'startedEventId',
+                       'WorkflowExecution' => 'workflowExecution',
+                       'WorkflowType' => 'workflowType'
+                     },
+  'IsRequired' => {
+                    'TaskToken' => 1,
+                    'WorkflowExecution' => 1,
+                    'Events' => 1,
+                    'WorkflowType' => 1,
+                    'StartedEventId' => 1
+                  },
+  'types' => {
+               'StartedEventId' => {
+                                     'type' => 'Int'
+                                   },
+               'WorkflowExecution' => {
+                                        'type' => 'SimpleWorkflow_WorkflowExecution',
+                                        'class' => 'Paws::SimpleWorkflow::WorkflowExecution'
+                                      },
+               'WorkflowType' => {
+                                   'type' => 'SimpleWorkflow_WorkflowType',
+                                   'class' => 'Paws::SimpleWorkflow::WorkflowType'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Events' => {
+                             'class' => 'Paws::SimpleWorkflow::HistoryEvent',
+                             'type' => 'ArrayRef[SimpleWorkflow_HistoryEvent]'
+                           },
+               'TaskToken' => {
+                                'type' => 'Str'
+                              },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'PreviousStartedEventId' => {
+                                             'type' => 'Int'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +75,7 @@ Paws::SimpleWorkflow::DecisionTask
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Events => ArrayRef[L<Paws::SimpleWorkflow::HistoryEvent>]
+=head2 B<REQUIRED> Events => ArrayRef[SimpleWorkflow_HistoryEvent]
 
 A paginated list of history events of the workflow execution. The
 decider uses this during the processing of the decision task.
@@ -57,12 +112,12 @@ workers to communicate progress and response information back to the
 system about the task.
 
 
-=head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=head2 B<REQUIRED> WorkflowExecution => SimpleWorkflow_WorkflowExecution
 
 The workflow execution for which this decision task was created.
 
 
-=head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=head2 B<REQUIRED> WorkflowType => SimpleWorkflow_WorkflowType
 
 The type of the workflow execution for which this decision task was
 created.

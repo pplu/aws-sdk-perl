@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::S3Location;
-  use Moose;
-  has S3Bucket => (is => 'ro', isa => 'Str');
-  has S3Key => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has S3Bucket => (is => 'ro', isa => Str);
+  has S3Key => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Key' => {
+                            'type' => 'Str'
+                          },
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

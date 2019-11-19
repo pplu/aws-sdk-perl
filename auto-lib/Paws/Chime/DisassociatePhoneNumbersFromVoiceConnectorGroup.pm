@@ -1,15 +1,39 @@
 
 package Paws::Chime::DisassociatePhoneNumbersFromVoiceConnectorGroup;
-  use Moose;
-  has E164PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has VoiceConnectorGroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'voiceConnectorGroupId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Chime::Types qw//;
+  has E164PhoneNumbers => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has VoiceConnectorGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociatePhoneNumbersFromVoiceConnectorGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/voice-connector-groups/{voiceConnectorGroupId}?operation=disassociate-phone-numbers');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::DisassociatePhoneNumbersFromVoiceConnectorGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisassociatePhoneNumbersFromVoiceConnectorGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/voice-connector-groups/{voiceConnectorGroupId}?operation=disassociate-phone-numbers');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::DisassociatePhoneNumbersFromVoiceConnectorGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'VoiceConnectorGroupId' => 'voiceConnectorGroupId'
+                  },
+  'IsRequired' => {
+                    'VoiceConnectorGroupId' => 1
+                  },
+  'types' => {
+               'VoiceConnectorGroupId' => {
+                                            'type' => 'Str'
+                                          },
+               'E164PhoneNumbers' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

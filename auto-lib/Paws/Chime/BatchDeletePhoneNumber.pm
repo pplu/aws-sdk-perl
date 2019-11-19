@@ -1,14 +1,32 @@
 
 package Paws::Chime::BatchDeletePhoneNumber;
-  use Moose;
-  has PhoneNumberIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Chime::Types qw//;
+  has PhoneNumberIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchDeletePhoneNumber');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/phone-numbers?operation=batch-delete');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::BatchDeletePhoneNumberResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchDeletePhoneNumber');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/phone-numbers?operation=batch-delete');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::BatchDeletePhoneNumberResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PhoneNumberIds' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'IsRequired' => {
+                    'PhoneNumberIds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

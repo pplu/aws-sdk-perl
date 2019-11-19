@@ -1,14 +1,47 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchEvents::DescribeEventSourceResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreatedBy => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has ExpirationTime => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchEvents::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedBy => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has ExpirationTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'CreatedBy' => {
+                                'type' => 'Str'
+                              },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ExpirationTime' => {
+                                     'type' => 'Str'
+                                   },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

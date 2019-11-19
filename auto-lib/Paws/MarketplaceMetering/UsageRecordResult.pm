@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::MarketplaceMetering::UsageRecordResult;
-  use Moose;
-  has MeteringRecordId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has UsageRecord => (is => 'ro', isa => 'Paws::MarketplaceMetering::UsageRecord');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MarketplaceMetering::Types qw/MarketplaceMetering_UsageRecord/;
+  has MeteringRecordId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has UsageRecord => (is => 'ro', isa => MarketplaceMetering_UsageRecord);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'UsageRecord' => {
+                                  'type' => 'MarketplaceMetering_UsageRecord',
+                                  'class' => 'Paws::MarketplaceMetering::UsageRecord'
+                                },
+               'MeteringRecordId' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +97,7 @@ dimension, and time, but a different quantity.
 
 
 
-=head2 UsageRecord => L<Paws::MarketplaceMetering::UsageRecord>
+=head2 UsageRecord => MarketplaceMetering_UsageRecord
 
   The UsageRecord that was part of the BatchMeterUsage request.
 

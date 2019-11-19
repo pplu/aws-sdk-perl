@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AutoScalingPlans::GetScalingPlanResourceForecastDataResponse;
-  use Moose;
-  has Datapoints => (is => 'ro', isa => 'ArrayRef[Paws::AutoScalingPlans::Datapoint]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AutoScalingPlans::Types qw/AutoScalingPlans_Datapoint/;
+  has Datapoints => (is => 'ro', isa => ArrayRef[AutoScalingPlans_Datapoint], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Datapoints' => {
+                                 'type' => 'ArrayRef[AutoScalingPlans_Datapoint]',
+                                 'class' => 'Paws::AutoScalingPlans::Datapoint'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Datapoints' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::AutoScalingPlans::GetScalingPlanResourceForecastDataResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Datapoints => ArrayRef[L<Paws::AutoScalingPlans::Datapoint>]
+=head2 B<REQUIRED> Datapoints => ArrayRef[AutoScalingPlans_Datapoint]
 
 The data points to return.
 

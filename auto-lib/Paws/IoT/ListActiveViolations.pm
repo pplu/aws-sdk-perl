@@ -1,17 +1,47 @@
 
 package Paws::IoT::ListActiveViolations;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has SecurityProfileName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'securityProfileName');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'thingName');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityProfileName => (is => 'ro', isa => Str, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListActiveViolations');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/active-violations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListActiveViolationsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListActiveViolations');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/active-violations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListActiveViolationsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'ThingName' => 'thingName',
+                      'SecurityProfileName' => 'securityProfileName',
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken'
+                    },
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SecurityProfileName' => {
+                                          'type' => 'Str'
+                                        },
+               'ThingName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

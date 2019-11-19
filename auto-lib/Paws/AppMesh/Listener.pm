@@ -1,7 +1,36 @@
+# Generated from default/object.tt
 package Paws::AppMesh::Listener;
-  use Moose;
-  has HealthCheck => (is => 'ro', isa => 'Paws::AppMesh::HealthCheckPolicy', request_name => 'healthCheck', traits => ['NameInRequest']);
-  has PortMapping => (is => 'ro', isa => 'Paws::AppMesh::PortMapping', request_name => 'portMapping', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_HealthCheckPolicy AppMesh_PortMapping/;
+  has HealthCheck => (is => 'ro', isa => AppMesh_HealthCheckPolicy);
+  has PortMapping => (is => 'ro', isa => AppMesh_PortMapping, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PortMapping' => 'portMapping',
+                       'HealthCheck' => 'healthCheck'
+                     },
+  'IsRequired' => {
+                    'PortMapping' => 1
+                  },
+  'types' => {
+               'PortMapping' => {
+                                  'type' => 'AppMesh_PortMapping',
+                                  'class' => 'Paws::AppMesh::PortMapping'
+                                },
+               'HealthCheck' => {
+                                  'class' => 'Paws::AppMesh::HealthCheckPolicy',
+                                  'type' => 'AppMesh_HealthCheckPolicy'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +66,12 @@ An object that represents a listener for a virtual node.
 =head1 ATTRIBUTES
 
 
-=head2 HealthCheck => L<Paws::AppMesh::HealthCheckPolicy>
+=head2 HealthCheck => AppMesh_HealthCheckPolicy
 
   The health check information for the listener.
 
 
-=head2 B<REQUIRED> PortMapping => L<Paws::AppMesh::PortMapping>
+=head2 B<REQUIRED> PortMapping => AppMesh_PortMapping
 
   The port mapping information for the listener.
 

@@ -1,34 +1,116 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::ModifyCluster;
-  use Moose;
-  has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ClusterType => (is => 'ro', isa => 'Str');
-  has ClusterVersion => (is => 'ro', isa => 'Str');
-  has ElasticIp => (is => 'ro', isa => 'Str');
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
-  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
-  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
-  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has NewClusterIdentifier => (is => 'ro', isa => 'Str');
-  has NodeType => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::RedShift::Types qw//;
+  has AllowVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has ClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClusterParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has ClusterSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ClusterType => (is => 'ro', isa => Str, predicate => 1);
+  has ClusterVersion => (is => 'ro', isa => Str, predicate => 1);
+  has ElasticIp => (is => 'ro', isa => Str, predicate => 1);
+  has Encrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has EnhancedVpcRouting => (is => 'ro', isa => Bool, predicate => 1);
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has HsmConfigurationIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has MaintenanceTrackName => (is => 'ro', isa => Str, predicate => 1);
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, predicate => 1);
+  has NewClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has NodeType => (is => 'ro', isa => Str, predicate => 1);
+  has NumberOfNodes => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::ModifyClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::ModifyClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ManualSnapshotRetentionPeriod' => {
+                                                    'type' => 'Int'
+                                                  },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'ClusterSecurityGroups' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'AutomatedSnapshotRetentionPeriod' => {
+                                                       'type' => 'Int'
+                                                     },
+               'HsmClientCertificateIdentifier' => {
+                                                     'type' => 'Str'
+                                                   },
+               'NewClusterIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'NumberOfNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'ClusterType' => {
+                                  'type' => 'Str'
+                                },
+               'ClusterVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'EnhancedVpcRouting' => {
+                                         'type' => 'Bool'
+                                       },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'AllowVersionUpgrade' => {
+                                          'type' => 'Bool'
+                                        },
+               'MaintenanceTrackName' => {
+                                           'type' => 'Str'
+                                         },
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'ClusterParameterGroupName' => {
+                                                'type' => 'Str'
+                                              },
+               'HsmConfigurationIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'ElasticIp' => {
+                                'type' => 'Str'
+                              },
+               'NodeType' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'ClusterIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

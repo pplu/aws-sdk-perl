@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::ResourceTargetDefinition;
-  use Moose;
-  has Attribute => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has RequiresRecreation => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has Attribute => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RequiresRecreation => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attribute' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RequiresRecreation' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

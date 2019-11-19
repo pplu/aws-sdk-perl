@@ -1,12 +1,44 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CostExplorer::GetTagsResponse;
-  use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str');
-  has ReturnSize => (is => 'ro', isa => 'Int', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has TotalSize => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::CostExplorer::Types qw//;
+  has NextPageToken => (is => 'ro', isa => Str);
+  has ReturnSize => (is => 'ro', isa => Int, required => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has TotalSize => (is => 'ro', isa => Int, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TotalSize' => {
+                                'type' => 'Int'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         },
+               'ReturnSize' => {
+                                 'type' => 'Int'
+                               },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ReturnSize' => 1,
+                    'Tags' => 1,
+                    'TotalSize' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

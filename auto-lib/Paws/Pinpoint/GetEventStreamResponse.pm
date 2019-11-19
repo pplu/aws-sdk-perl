@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::GetEventStreamResponse;
-  use Moose;
-  has EventStream => (is => 'ro', isa => 'Paws::Pinpoint::EventStream', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'EventStream');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EventStream/;
+  has EventStream => (is => 'ro', isa => Pinpoint_EventStream, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'EventStream' => 1
+                  },
+  'types' => {
+               'EventStream' => {
+                                  'class' => 'Paws::Pinpoint::EventStream',
+                                  'type' => 'Pinpoint_EventStream'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::GetEventStreamResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EventStream => L<Paws::Pinpoint::EventStream>
+=head2 B<REQUIRED> EventStream => Pinpoint_EventStream
 
 
 

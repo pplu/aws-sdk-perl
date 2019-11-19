@@ -1,15 +1,43 @@
 
 package Paws::AppMesh::UntagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resourceArn', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'tagKeys', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::AppMesh::Types qw//;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagKeys => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UntagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/untag');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::UntagResourceOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UntagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20190125/untag');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppMesh::UntagResourceOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TagKeys' => 'tagKeys'
+                     },
+  'ParamInQuery' => {
+                      'ResourceArn' => 'resourceArn'
+                    },
+  'IsRequired' => {
+                    'TagKeys' => 1,
+                    'ResourceArn' => 1
+                  },
+  'types' => {
+               'TagKeys' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

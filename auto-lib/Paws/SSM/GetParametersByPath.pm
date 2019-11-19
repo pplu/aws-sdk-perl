@@ -1,18 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::GetParametersByPath;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ParameterFilters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ParameterStringFilter]');
-  has Path => (is => 'ro', isa => 'Str', required => 1);
-  has Recursive => (is => 'ro', isa => 'Bool');
-  has WithDecryption => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Bool/;
+  use Paws::SSM::Types qw/SSM_ParameterStringFilter/;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ParameterFilters => (is => 'ro', isa => ArrayRef[SSM_ParameterStringFilter], predicate => 1);
+  has Path => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Recursive => (is => 'ro', isa => Bool, predicate => 1);
+  has WithDecryption => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetParametersByPath');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::GetParametersByPathResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetParametersByPath');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::GetParametersByPathResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Recursive' => {
+                                'type' => 'Bool'
+                              },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'ParameterFilters' => {
+                                       'class' => 'Paws::SSM::ParameterStringFilter',
+                                       'type' => 'ArrayRef[SSM_ParameterStringFilter]'
+                                     },
+               'WithDecryption' => {
+                                     'type' => 'Bool'
+                                   },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Path' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +112,7 @@ results.
 
 
 
-=head2 ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]
+=head2 ParameterFilters => ArrayRef[SSM_ParameterStringFilter]
 
 Filters to limit the request results.
 

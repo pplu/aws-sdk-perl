@@ -1,16 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECR::CompleteLayerUpload;
-  use Moose;
-  has LayerDigests => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'layerDigests' , required => 1);
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uploadId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ECR::Types qw//;
+  has LayerDigests => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has RegistryId => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UploadId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CompleteLayerUpload');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::CompleteLayerUploadResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CompleteLayerUpload');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECR::CompleteLayerUploadResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RegistryId' => 'registryId',
+                       'RepositoryName' => 'repositoryName',
+                       'LayerDigests' => 'layerDigests',
+                       'UploadId' => 'uploadId'
+                     },
+  'IsRequired' => {
+                    'UploadId' => 1,
+                    'LayerDigests' => 1,
+                    'RepositoryName' => 1
+                  },
+  'types' => {
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               'LayerDigests' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

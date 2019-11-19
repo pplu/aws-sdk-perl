@@ -1,23 +1,88 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::MergeBranchesByThreeWay;
-  use Moose;
-  has AuthorName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorName' );
-  has CommitMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitMessage' );
-  has ConflictDetailLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'conflictDetailLevel' );
-  has ConflictResolution => (is => 'ro', isa => 'Paws::CodeCommit::ConflictResolution', traits => ['NameInRequest'], request_name => 'conflictResolution' );
-  has ConflictResolutionStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'conflictResolutionStrategy' );
-  has DestinationCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCommitSpecifier' , required => 1);
-  has Email => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'email' );
-  has KeepEmptyFolders => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'keepEmptyFolders' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has SourceCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCommitSpecifier' , required => 1);
-  has TargetBranch => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetBranch' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeCommit::Types qw/CodeCommit_ConflictResolution/;
+  has AuthorName => (is => 'ro', isa => Str, predicate => 1);
+  has CommitMessage => (is => 'ro', isa => Str, predicate => 1);
+  has ConflictDetailLevel => (is => 'ro', isa => Str, predicate => 1);
+  has ConflictResolution => (is => 'ro', isa => CodeCommit_ConflictResolution, predicate => 1);
+  has ConflictResolutionStrategy => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Email => (is => 'ro', isa => Str, predicate => 1);
+  has KeepEmptyFolders => (is => 'ro', isa => Bool, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetBranch => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'MergeBranchesByThreeWay');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::MergeBranchesByThreeWayOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'MergeBranchesByThreeWay');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::MergeBranchesByThreeWayOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DestinationCommitSpecifier' => 1,
+                    'SourceCommitSpecifier' => 1,
+                    'RepositoryName' => 1
+                  },
+  'NameInRequest' => {
+                       'DestinationCommitSpecifier' => 'destinationCommitSpecifier',
+                       'SourceCommitSpecifier' => 'sourceCommitSpecifier',
+                       'CommitMessage' => 'commitMessage',
+                       'AuthorName' => 'authorName',
+                       'KeepEmptyFolders' => 'keepEmptyFolders',
+                       'ConflictResolution' => 'conflictResolution',
+                       'TargetBranch' => 'targetBranch',
+                       'RepositoryName' => 'repositoryName',
+                       'Email' => 'email',
+                       'ConflictResolutionStrategy' => 'conflictResolutionStrategy',
+                       'ConflictDetailLevel' => 'conflictDetailLevel'
+                     },
+  'types' => {
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'Email' => {
+                            'type' => 'Str'
+                          },
+               'ConflictResolutionStrategy' => {
+                                                 'type' => 'Str'
+                                               },
+               'ConflictDetailLevel' => {
+                                          'type' => 'Str'
+                                        },
+               'ConflictResolution' => {
+                                         'class' => 'Paws::CodeCommit::ConflictResolution',
+                                         'type' => 'CodeCommit_ConflictResolution'
+                                       },
+               'TargetBranch' => {
+                                   'type' => 'Str'
+                                 },
+               'AuthorName' => {
+                                 'type' => 'Str'
+                               },
+               'KeepEmptyFolders' => {
+                                       'type' => 'Bool'
+                                     },
+               'SourceCommitSpecifier' => {
+                                            'type' => 'Str'
+                                          },
+               'DestinationCommitSpecifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'CommitMessage' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -112,7 +177,7 @@ branches has differences on the same line.
 
 Valid values are: C<"FILE_LEVEL">, C<"LINE_LEVEL">
 
-=head2 ConflictResolution => L<Paws::CodeCommit::ConflictResolution>
+=head2 ConflictResolution => CodeCommit_ConflictResolution
 
 A list of inputs to use when resolving conflicts during a merge if
 AUTOMERGE is chosen as the conflict resolution strategy.

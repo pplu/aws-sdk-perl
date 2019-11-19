@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StepFunctions::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::Tag]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StepFunctions::Types qw/StepFunctions_Tag/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[StepFunctions_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StepFunctions::TagResourceOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StepFunctions::TagResourceOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ResourceArn' => 'resourceArn',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'Tags' => 1
+                  },
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'ArrayRef[StepFunctions_Tag]',
+                           'class' => 'Paws::StepFunctions::Tag'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +81,7 @@ activity.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::StepFunctions::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[StepFunctions_Tag]
 
 The list of tags to add to a resource.
 

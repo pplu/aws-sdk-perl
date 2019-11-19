@@ -1,9 +1,30 @@
 
 package Paws::MediaTailor::ListTagsForResourceResponse;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::MediaTailor::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaTailor::Types qw/MediaTailor___mapOf__string/;
+  has Tags => (is => 'ro', isa => MediaTailor___mapOf__string);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::MediaTailor::__mapOf__string',
+                           'type' => 'MediaTailor___mapOf__string'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::MediaTailor::ListTagsForResourceResponse
 =head1 ATTRIBUTES
 
 
-=head2 Tags => L<Paws::MediaTailor::__mapOf__string>
+=head2 Tags => MediaTailor___mapOf__string
 
 A comma-separated list of tag key:value pairs. For example: { "Key1":
 "Value1", "Key2": "Value2" }

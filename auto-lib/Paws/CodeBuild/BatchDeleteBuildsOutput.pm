@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeBuild::BatchDeleteBuildsOutput;
-  use Moose;
-  has BuildsDeleted => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'buildsDeleted' );
-  has BuildsNotDeleted => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildNotDeleted]', traits => ['NameInRequest'], request_name => 'buildsNotDeleted' );
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::CodeBuild::Types qw/CodeBuild_BuildNotDeleted/;
+  has BuildsDeleted => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BuildsNotDeleted => (is => 'ro', isa => ArrayRef[CodeBuild_BuildNotDeleted]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BuildsDeleted' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BuildsNotDeleted' => {
+                                       'type' => 'ArrayRef[CodeBuild_BuildNotDeleted]',
+                                       'class' => 'Paws::CodeBuild::BuildNotDeleted'
+                                     }
+             },
+  'NameInRequest' => {
+                       'BuildsNotDeleted' => 'buildsNotDeleted',
+                       'BuildsDeleted' => 'buildsDeleted'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +46,7 @@ Paws::CodeBuild::BatchDeleteBuildsOutput
 The IDs of the builds that were successfully deleted.
 
 
-=head2 BuildsNotDeleted => ArrayRef[L<Paws::CodeBuild::BuildNotDeleted>]
+=head2 BuildsNotDeleted => ArrayRef[CodeBuild_BuildNotDeleted]
 
 Information about any builds that could not be successfully deleted.
 

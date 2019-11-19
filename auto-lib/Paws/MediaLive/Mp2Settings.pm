@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Mp2Settings;
-  use Moose;
-  has Bitrate => (is => 'ro', isa => 'Num', request_name => 'bitrate', traits => ['NameInRequest']);
-  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
-  has SampleRate => (is => 'ro', isa => 'Num', request_name => 'sampleRate', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num Str/;
+  use Paws::MediaLive::Types qw//;
+  has Bitrate => (is => 'ro', isa => Num);
+  has CodingMode => (is => 'ro', isa => Str);
+  has SampleRate => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CodingMode' => {
+                                 'type' => 'Str'
+                               },
+               'Bitrate' => {
+                              'type' => 'Num'
+                            },
+               'SampleRate' => {
+                                 'type' => 'Num'
+                               }
+             },
+  'NameInRequest' => {
+                       'SampleRate' => 'sampleRate',
+                       'Bitrate' => 'bitrate',
+                       'CodingMode' => 'codingMode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

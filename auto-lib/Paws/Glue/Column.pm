@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::Glue::Column;
-  use Moose;
-  has Comment => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_ParametersMap/;
+  has Comment => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Parameters => (is => 'ro', isa => Glue_ParametersMap);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'Parameters' => {
+                                 'type' => 'Glue_ParametersMap',
+                                 'class' => 'Paws::Glue::ParametersMap'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +79,7 @@ A column in a C<Table>.
   The name of the C<Column>.
 
 
-=head2 Parameters => L<Paws::Glue::ParametersMap>
+=head2 Parameters => Glue_ParametersMap
 
   These key-value pairs define properties associated with the column.
 

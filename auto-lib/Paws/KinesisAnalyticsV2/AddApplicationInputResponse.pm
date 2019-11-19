@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KinesisAnalyticsV2::AddApplicationInputResponse;
-  use Moose;
-  has ApplicationARN => (is => 'ro', isa => 'Str');
-  has ApplicationVersionId => (is => 'ro', isa => 'Int');
-  has InputDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::InputDescription]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_InputDescription/;
+  has ApplicationARN => (is => 'ro', isa => Str);
+  has ApplicationVersionId => (is => 'ro', isa => Int);
+  has InputDescriptions => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_InputDescription]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationVersionId' => {
+                                           'type' => 'Int'
+                                         },
+               'InputDescriptions' => {
+                                        'class' => 'Paws::KinesisAnalyticsV2::InputDescription',
+                                        'type' => 'ArrayRef[KinesisAnalyticsV2_InputDescription]'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ApplicationARN' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -26,7 +51,7 @@ The Amazon Resource Name (ARN) of the application.
 Provides the current application version.
 
 
-=head2 InputDescriptions => ArrayRef[L<Paws::KinesisAnalyticsV2::InputDescription>]
+=head2 InputDescriptions => ArrayRef[KinesisAnalyticsV2_InputDescription]
 
 Describes the application input configuration.
 

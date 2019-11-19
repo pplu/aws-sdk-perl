@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::CampaignEmailMessage;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str');
-  has FromAddress => (is => 'ro', isa => 'Str');
-  has HtmlBody => (is => 'ro', isa => 'Str');
-  has Title => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has Body => (is => 'ro', isa => Str);
+  has FromAddress => (is => 'ro', isa => Str);
+  has HtmlBody => (is => 'ro', isa => Str);
+  has Title => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Title' => 1
+                  },
+  'types' => {
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'HtmlBody' => {
+                               'type' => 'Str'
+                             },
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'FromAddress' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

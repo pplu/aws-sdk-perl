@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::IoT::JobExecutionSummaryForJob;
-  use Moose;
-  has JobExecutionSummary => (is => 'ro', isa => 'Paws::IoT::JobExecutionSummary', request_name => 'jobExecutionSummary', traits => ['NameInRequest']);
-  has ThingArn => (is => 'ro', isa => 'Str', request_name => 'thingArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_JobExecutionSummary/;
+  has JobExecutionSummary => (is => 'ro', isa => IoT_JobExecutionSummary);
+  has ThingArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobExecutionSummary' => {
+                                          'type' => 'IoT_JobExecutionSummary',
+                                          'class' => 'Paws::IoT::JobExecutionSummary'
+                                        },
+               'ThingArn' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'ThingArn' => 'thingArn',
+                       'JobExecutionSummary' => 'jobExecutionSummary'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +63,7 @@ job.
 =head1 ATTRIBUTES
 
 
-=head2 JobExecutionSummary => L<Paws::IoT::JobExecutionSummary>
+=head2 JobExecutionSummary => IoT_JobExecutionSummary
 
   Contains a subset of information about a job execution.
 

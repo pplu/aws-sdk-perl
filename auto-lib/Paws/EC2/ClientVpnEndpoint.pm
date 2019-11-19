@@ -1,21 +1,103 @@
 package Paws::EC2::ClientVpnEndpoint;
-  use Moose;
-  has AssociatedTargetNetworks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AssociatedTargetNetwork]', request_name => 'associatedTargetNetwork', traits => ['NameInRequest']);
-  has AuthenticationOptions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClientVpnAuthentication]', request_name => 'authenticationOptions', traits => ['NameInRequest']);
-  has ClientCidrBlock => (is => 'ro', isa => 'Str', request_name => 'clientCidrBlock', traits => ['NameInRequest']);
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', request_name => 'clientVpnEndpointId', traits => ['NameInRequest']);
-  has ConnectionLogOptions => (is => 'ro', isa => 'Paws::EC2::ConnectionLogResponseOptions', request_name => 'connectionLogOptions', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has DeletionTime => (is => 'ro', isa => 'Str', request_name => 'deletionTime', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has DnsName => (is => 'ro', isa => 'Str', request_name => 'dnsName', traits => ['NameInRequest']);
-  has DnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'dnsServer', traits => ['NameInRequest']);
-  has ServerCertificateArn => (is => 'ro', isa => 'Str', request_name => 'serverCertificateArn', traits => ['NameInRequest']);
-  has SplitTunnel => (is => 'ro', isa => 'Bool', request_name => 'splitTunnel', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Paws::EC2::ClientVpnEndpointStatus', request_name => 'status', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has TransportProtocol => (is => 'ro', isa => 'Str', request_name => 'transportProtocol', traits => ['NameInRequest']);
-  has VpnProtocol => (is => 'ro', isa => 'Str', request_name => 'vpnProtocol', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef Str Undef Bool/;
+  use Paws::EC2::Types qw/EC2_AssociatedTargetNetwork EC2_ClientVpnAuthentication EC2_ConnectionLogResponseOptions EC2_ClientVpnEndpointStatus EC2_Tag/;
+  has AssociatedTargetNetworks => (is => 'ro', isa => ArrayRef[EC2_AssociatedTargetNetwork]);
+  has AuthenticationOptions => (is => 'ro', isa => ArrayRef[EC2_ClientVpnAuthentication]);
+  has ClientCidrBlock => (is => 'ro', isa => Str);
+  has ClientVpnEndpointId => (is => 'ro', isa => Str);
+  has ConnectionLogOptions => (is => 'ro', isa => EC2_ConnectionLogResponseOptions);
+  has CreationTime => (is => 'ro', isa => Str);
+  has DeletionTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DnsName => (is => 'ro', isa => Str);
+  has DnsServers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ServerCertificateArn => (is => 'ro', isa => Str);
+  has SplitTunnel => (is => 'ro', isa => Bool);
+  has Status => (is => 'ro', isa => EC2_ClientVpnEndpointStatus);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has TransportProtocol => (is => 'ro', isa => Str);
+  has VpnProtocol => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ServerCertificateArn' => 'serverCertificateArn',
+                       'ClientCidrBlock' => 'clientCidrBlock',
+                       'Status' => 'status',
+                       'CreationTime' => 'creationTime',
+                       'DnsName' => 'dnsName',
+                       'DnsServers' => 'dnsServer',
+                       'ConnectionLogOptions' => 'connectionLogOptions',
+                       'TransportProtocol' => 'transportProtocol',
+                       'AuthenticationOptions' => 'authenticationOptions',
+                       'DeletionTime' => 'deletionTime',
+                       'VpnProtocol' => 'vpnProtocol',
+                       'ClientVpnEndpointId' => 'clientVpnEndpointId',
+                       'Tags' => 'tagSet',
+                       'AssociatedTargetNetworks' => 'associatedTargetNetwork',
+                       'SplitTunnel' => 'splitTunnel',
+                       'Description' => 'description'
+                     },
+  'types' => {
+               'Status' => {
+                             'class' => 'Paws::EC2::ClientVpnEndpointStatus',
+                             'type' => 'EC2_ClientVpnEndpointStatus'
+                           },
+               'ClientCidrBlock' => {
+                                      'type' => 'Str'
+                                    },
+               'ServerCertificateArn' => {
+                                           'type' => 'Str'
+                                         },
+               'DnsServers' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'DnsName' => {
+                              'type' => 'Str'
+                            },
+               'ConnectionLogOptions' => {
+                                           'class' => 'Paws::EC2::ConnectionLogResponseOptions',
+                                           'type' => 'EC2_ConnectionLogResponseOptions'
+                                         },
+               'TransportProtocol' => {
+                                        'type' => 'Str'
+                                      },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'VpnProtocol' => {
+                                  'type' => 'Str'
+                                },
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'AuthenticationOptions' => {
+                                            'class' => 'Paws::EC2::ClientVpnAuthentication',
+                                            'type' => 'ArrayRef[EC2_ClientVpnAuthentication]'
+                                          },
+               'DeletionTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AssociatedTargetNetworks' => {
+                                               'class' => 'Paws::EC2::AssociatedTargetNetwork',
+                                               'type' => 'ArrayRef[EC2_AssociatedTargetNetwork]'
+                                             },
+               'SplitTunnel' => {
+                                  'type' => 'Bool'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,13 +133,13 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 AssociatedTargetNetworks => ArrayRef[L<Paws::EC2::AssociatedTargetNetwork>]
+=head2 AssociatedTargetNetworks => ArrayRef[EC2_AssociatedTargetNetwork]
 
   Information about the associated target networks. A target network is a
 subnet in a VPC.
 
 
-=head2 AuthenticationOptions => ArrayRef[L<Paws::EC2::ClientVpnAuthentication>]
+=head2 AuthenticationOptions => ArrayRef[EC2_ClientVpnAuthentication]
 
   Information about the authentication method used by the Client VPN
 endpoint.
@@ -74,7 +156,7 @@ addresses are assigned.
   The ID of the Client VPN endpoint.
 
 
-=head2 ConnectionLogOptions => L<Paws::EC2::ConnectionLogResponseOptions>
+=head2 ConnectionLogOptions => EC2_ConnectionLogResponseOptions
 
   Information about the client connection logging options for the Client
 VPN endpoint.
@@ -122,12 +204,12 @@ Client VPN Endpoint
 in the I<AWS Client VPN Administrator Guide>.
 
 
-=head2 Status => L<Paws::EC2::ClientVpnEndpointStatus>
+=head2 Status => EC2_ClientVpnEndpointStatus
 
   The current state of the Client VPN endpoint.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the Client VPN endpoint.
 

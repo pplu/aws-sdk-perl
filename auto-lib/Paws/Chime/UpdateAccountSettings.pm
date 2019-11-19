@@ -1,15 +1,41 @@
 
 package Paws::Chime::UpdateAccountSettings;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has AccountSettings => (is => 'ro', isa => 'Paws::Chime::AccountSettings', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw/Chime_AccountSettings/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AccountSettings => (is => 'ro', isa => Chime_AccountSettings, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAccountSettings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/settings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::UpdateAccountSettingsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateAccountSettings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/settings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::UpdateAccountSettingsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AccountSettings' => 1,
+                    'AccountId' => 1
+                  },
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'AccountSettings' => {
+                                      'class' => 'Paws::Chime::AccountSettings',
+                                      'type' => 'Chime_AccountSettings'
+                                    }
+             },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +76,7 @@ The Amazon Chime account ID.
 
 
 
-=head2 B<REQUIRED> AccountSettings => L<Paws::Chime::AccountSettings>
+=head2 B<REQUIRED> AccountSettings => Chime_AccountSettings
 
 The Amazon Chime account settings to update.
 

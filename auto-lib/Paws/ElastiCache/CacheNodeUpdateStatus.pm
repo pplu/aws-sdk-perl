@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::CacheNodeUpdateStatus;
-  use Moose;
-  has CacheNodeId => (is => 'ro', isa => 'Str');
-  has NodeDeletionDate => (is => 'ro', isa => 'Str');
-  has NodeUpdateEndDate => (is => 'ro', isa => 'Str');
-  has NodeUpdateInitiatedBy => (is => 'ro', isa => 'Str');
-  has NodeUpdateInitiatedDate => (is => 'ro', isa => 'Str');
-  has NodeUpdateStartDate => (is => 'ro', isa => 'Str');
-  has NodeUpdateStatus => (is => 'ro', isa => 'Str');
-  has NodeUpdateStatusModifiedDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheNodeId => (is => 'ro', isa => Str);
+  has NodeDeletionDate => (is => 'ro', isa => Str);
+  has NodeUpdateEndDate => (is => 'ro', isa => Str);
+  has NodeUpdateInitiatedBy => (is => 'ro', isa => Str);
+  has NodeUpdateInitiatedDate => (is => 'ro', isa => Str);
+  has NodeUpdateStartDate => (is => 'ro', isa => Str);
+  has NodeUpdateStatus => (is => 'ro', isa => Str);
+  has NodeUpdateStatusModifiedDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NodeUpdateStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'NodeDeletionDate' => {
+                                       'type' => 'Str'
+                                     },
+               'NodeUpdateStartDate' => {
+                                          'type' => 'Str'
+                                        },
+               'NodeUpdateInitiatedDate' => {
+                                              'type' => 'Str'
+                                            },
+               'NodeUpdateEndDate' => {
+                                        'type' => 'Str'
+                                      },
+               'CacheNodeId' => {
+                                  'type' => 'Str'
+                                },
+               'NodeUpdateInitiatedBy' => {
+                                            'type' => 'Str'
+                                          },
+               'NodeUpdateStatusModifiedDate' => {
+                                                   'type' => 'Str'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

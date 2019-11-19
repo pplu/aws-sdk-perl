@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::SageMaker::EndpointSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointArn => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointName => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointStatus => (is => 'ro', isa => 'Str', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has EndpointArn => (is => 'ro', isa => Str, required => 1);
+  has EndpointName => (is => 'ro', isa => Str, required => 1);
+  has EndpointStatus => (is => 'ro', isa => Str, required => 1);
+  has LastModifiedTime => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'EndpointName' => {
+                                   'type' => 'Str'
+                                 },
+               'EndpointStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'EndpointArn' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'EndpointName' => 1,
+                    'EndpointStatus' => 1,
+                    'EndpointArn' => 1,
+                    'CreationTime' => 1,
+                    'LastModifiedTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

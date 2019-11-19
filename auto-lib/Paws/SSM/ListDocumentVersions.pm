@@ -1,15 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::ListDocumentVersions;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSM::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDocumentVersions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::ListDocumentVersionsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDocumentVersions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::ListDocumentVersionsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

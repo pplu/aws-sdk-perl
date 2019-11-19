@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::IoT1ClickProjects::DeviceTemplate;
-  use Moose;
-  has CallbackOverrides => (is => 'ro', isa => 'Paws::IoT1ClickProjects::DeviceCallbackOverrideMap', request_name => 'callbackOverrides', traits => ['NameInRequest']);
-  has DeviceType => (is => 'ro', isa => 'Str', request_name => 'deviceType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickProjects::Types qw/IoT1ClickProjects_DeviceCallbackOverrideMap/;
+  has CallbackOverrides => (is => 'ro', isa => IoT1ClickProjects_DeviceCallbackOverrideMap);
+  has DeviceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CallbackOverrides' => {
+                                        'class' => 'Paws::IoT1ClickProjects::DeviceCallbackOverrideMap',
+                                        'type' => 'IoT1ClickProjects_DeviceCallbackOverrideMap'
+                                      },
+               'DeviceType' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'CallbackOverrides' => 'callbackOverrides',
+                       'DeviceType' => 'deviceType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +63,7 @@ PlacementTemplate).
 =head1 ATTRIBUTES
 
 
-=head2 CallbackOverrides => L<Paws::IoT1ClickProjects::DeviceCallbackOverrideMap>
+=head2 CallbackOverrides => IoT1ClickProjects_DeviceCallbackOverrideMap
 
   An optional Lambda function to invoke instead of the default Lambda
 function provided by the placement template.

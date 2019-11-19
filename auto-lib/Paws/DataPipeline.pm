@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::DataPipeline;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'datapipeline' }
   sub signing_name { 'datapipeline' }
   sub version { '2012-10-29' }
   sub target_prefix { 'DataPipeline' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -246,7 +248,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 
 =item PipelineId => Str
 
-=item [ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]]
+=item [ParameterValues => ArrayRef[DataPipeline_ParameterValue]]
 
 =item [StartTimestamp => Str]
 
@@ -273,7 +275,7 @@ and then activate it.
 
 =item PipelineId => Str
 
-=item Tags => ArrayRef[L<Paws::DataPipeline::Tag>]
+=item Tags => ArrayRef[DataPipeline_Tag]
 
 
 =back
@@ -295,7 +297,7 @@ Adds or modifies tags for the specified pipeline.
 
 =item [Description => Str]
 
-=item [Tags => ArrayRef[L<Paws::DataPipeline::Tag>]]
+=item [Tags => ArrayRef[DataPipeline_Tag]]
 
 
 =back
@@ -470,7 +472,7 @@ permission to access.
 
 =item [Hostname => Str]
 
-=item [InstanceIdentity => L<Paws::DataPipeline::InstanceIdentity>]
+=item [InstanceIdentity => DataPipeline_InstanceIdentity]
 
 
 =back
@@ -502,11 +504,11 @@ response, and this can take up to 90 seconds.
 
 =item PipelineId => Str
 
-=item PipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>]
+=item PipelineObjects => ArrayRef[DataPipeline_PipelineObject]
 
-=item [ParameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>]]
+=item [ParameterObjects => ArrayRef[DataPipeline_ParameterObject]]
 
-=item [ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]]
+=item [ParameterValues => ArrayRef[DataPipeline_ParameterValue]]
 
 
 =back
@@ -551,7 +553,7 @@ action and returned by the GetPipelineDefinition action.
 
 =item [Marker => Str]
 
-=item [Query => L<Paws::DataPipeline::Query>]
+=item [Query => DataPipeline_Query]
 
 
 =back
@@ -588,7 +590,7 @@ Removes existing tags from the specified pipeline.
 
 =item TaskId => Str
 
-=item [Fields => ArrayRef[L<Paws::DataPipeline::Field>]]
+=item [Fields => ArrayRef[DataPipeline_Field]]
 
 
 =back
@@ -696,11 +698,11 @@ ReportTaskProgress.
 
 =item PipelineId => Str
 
-=item PipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>]
+=item PipelineObjects => ArrayRef[DataPipeline_PipelineObject]
 
-=item [ParameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>]]
+=item [ParameterObjects => ArrayRef[DataPipeline_ParameterObject]]
 
-=item [ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]]
+=item [ParameterValues => ArrayRef[DataPipeline_ParameterValue]]
 
 
 =back
@@ -743,9 +745,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DataPipeline::ListPipelinesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 QueryAllObjects(sub { },PipelineId => Str, Sphere => Str, [Limit => Int, Marker => Str, Query => L<Paws::DataPipeline::Query>])
+=head2 QueryAllObjects(sub { },PipelineId => Str, Sphere => Str, [Limit => Int, Marker => Str, Query => DataPipeline_Query])
 
-=head2 QueryAllObjects(PipelineId => Str, Sphere => Str, [Limit => Int, Marker => Str, Query => L<Paws::DataPipeline::Query>])
+=head2 QueryAllObjects(PipelineId => Str, Sphere => Str, [Limit => Int, Marker => Str, Query => DataPipeline_Query])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

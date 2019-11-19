@@ -1,11 +1,39 @@
 
 package Paws::Glacier::InitiateJobOutput;
-  use Moose;
-  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-job-id');
-  has JobOutputPath => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-job-output-path');
-  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has JobId => (is => 'ro', isa => Str);
+  has JobOutputPath => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobOutputPath' => {
+                                    'type' => 'Str'
+                                  },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Location' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInHeader' => {
+                       'Location' => 'Location',
+                       'JobOutputPath' => 'x-amz-job-output-path',
+                       'JobId' => 'x-amz-job-id'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

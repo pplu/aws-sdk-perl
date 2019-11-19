@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MarketplaceEntitlement::GetEntitlements;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::MarketplaceEntitlement::GetEntitlementFilters');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ProductCode => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MarketplaceEntitlement::Types qw/MarketplaceEntitlement_GetEntitlementFilters/;
+  has Filter => (is => 'ro', isa => MarketplaceEntitlement_GetEntitlementFilters, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ProductCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetEntitlements');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MarketplaceEntitlement::GetEntitlementsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetEntitlements');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MarketplaceEntitlement::GetEntitlementsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ProductCode' => 1
+                  },
+  'types' => {
+               'Filter' => {
+                             'type' => 'MarketplaceEntitlement_GetEntitlementFilters',
+                             'class' => 'Paws::MarketplaceEntitlement::GetEntitlementFilters'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'ProductCode' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +81,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ent
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::MarketplaceEntitlement::GetEntitlementFilters>
+=head2 Filter => MarketplaceEntitlement_GetEntitlementFilters
 
 Filter is used to return entitlements for a specific customer or for a
 specific dimension. Filters are described as keys mapped to a lists of

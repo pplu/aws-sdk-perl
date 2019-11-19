@@ -1,20 +1,62 @@
+# Generated from callargs_class.tt
 
 package Paws::ELBv2::CreateLoadBalancer;
-  use Moose;
-  has IpAddressType => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Scheme => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SubnetMappings => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::SubnetMapping]');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Tag]');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ELBv2::Types qw/ELBv2_Tag ELBv2_SubnetMapping/;
+  has IpAddressType => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Scheme => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SubnetMappings => (is => 'ro', isa => ArrayRef[ELBv2_SubnetMapping], predicate => 1);
+  has Subnets => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ELBv2_Tag], predicate => 1);
+  has Type => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELBv2::CreateLoadBalancerOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLoadBalancer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELBv2::CreateLoadBalancerOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateLoadBalancerResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'IpAddressType' => {
+                                    'type' => 'Str'
+                                  },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Scheme' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'SubnetMappings' => {
+                                     'type' => 'ArrayRef[ELBv2_SubnetMapping]',
+                                     'class' => 'Paws::ELBv2::SubnetMapping'
+                                   },
+               'Subnets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Tags' => {
+                           'type' => 'ArrayRef[ELBv2_Tag]',
+                           'class' => 'Paws::ELBv2::Tag'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -113,7 +155,7 @@ load balancer.
 
 
 
-=head2 SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>]
+=head2 SubnetMappings => ArrayRef[ELBv2_SubnetMapping]
 
 The IDs of the public subnets. You can specify only one subnet per
 Availability Zone. You must specify either subnets or subnet mappings.
@@ -141,7 +183,7 @@ Availability Zones.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ELBv2::Tag>]
+=head2 Tags => ArrayRef[ELBv2_Tag]
 
 One or more tags to assign to the load balancer.
 

@@ -1,13 +1,68 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::AudioCodecSettings;
-  use Moose;
-  has AacSettings => (is => 'ro', isa => 'Paws::MediaConvert::AacSettings', request_name => 'aacSettings', traits => ['NameInRequest']);
-  has Ac3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Ac3Settings', request_name => 'ac3Settings', traits => ['NameInRequest']);
-  has AiffSettings => (is => 'ro', isa => 'Paws::MediaConvert::AiffSettings', request_name => 'aiffSettings', traits => ['NameInRequest']);
-  has Codec => (is => 'ro', isa => 'Str', request_name => 'codec', traits => ['NameInRequest']);
-  has Eac3AtmosSettings => (is => 'ro', isa => 'Paws::MediaConvert::Eac3AtmosSettings', request_name => 'eac3AtmosSettings', traits => ['NameInRequest']);
-  has Eac3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Eac3Settings', request_name => 'eac3Settings', traits => ['NameInRequest']);
-  has Mp2Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp2Settings', request_name => 'mp2Settings', traits => ['NameInRequest']);
-  has WavSettings => (is => 'ro', isa => 'Paws::MediaConvert::WavSettings', request_name => 'wavSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_AacSettings MediaConvert_Mp2Settings MediaConvert_WavSettings MediaConvert_Ac3Settings MediaConvert_Eac3AtmosSettings MediaConvert_Eac3Settings MediaConvert_AiffSettings/;
+  has AacSettings => (is => 'ro', isa => MediaConvert_AacSettings);
+  has Ac3Settings => (is => 'ro', isa => MediaConvert_Ac3Settings);
+  has AiffSettings => (is => 'ro', isa => MediaConvert_AiffSettings);
+  has Codec => (is => 'ro', isa => Str);
+  has Eac3AtmosSettings => (is => 'ro', isa => MediaConvert_Eac3AtmosSettings);
+  has Eac3Settings => (is => 'ro', isa => MediaConvert_Eac3Settings);
+  has Mp2Settings => (is => 'ro', isa => MediaConvert_Mp2Settings);
+  has WavSettings => (is => 'ro', isa => MediaConvert_WavSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Eac3Settings' => {
+                                   'type' => 'MediaConvert_Eac3Settings',
+                                   'class' => 'Paws::MediaConvert::Eac3Settings'
+                                 },
+               'Mp2Settings' => {
+                                  'type' => 'MediaConvert_Mp2Settings',
+                                  'class' => 'Paws::MediaConvert::Mp2Settings'
+                                },
+               'Eac3AtmosSettings' => {
+                                        'class' => 'Paws::MediaConvert::Eac3AtmosSettings',
+                                        'type' => 'MediaConvert_Eac3AtmosSettings'
+                                      },
+               'WavSettings' => {
+                                  'type' => 'MediaConvert_WavSettings',
+                                  'class' => 'Paws::MediaConvert::WavSettings'
+                                },
+               'Ac3Settings' => {
+                                  'type' => 'MediaConvert_Ac3Settings',
+                                  'class' => 'Paws::MediaConvert::Ac3Settings'
+                                },
+               'Codec' => {
+                            'type' => 'Str'
+                          },
+               'AiffSettings' => {
+                                   'class' => 'Paws::MediaConvert::AiffSettings',
+                                   'type' => 'MediaConvert_AiffSettings'
+                                 },
+               'AacSettings' => {
+                                  'class' => 'Paws::MediaConvert::AacSettings',
+                                  'type' => 'MediaConvert_AacSettings'
+                                }
+             },
+  'NameInRequest' => {
+                       'Eac3Settings' => 'eac3Settings',
+                       'Mp2Settings' => 'mp2Settings',
+                       'Eac3AtmosSettings' => 'eac3AtmosSettings',
+                       'WavSettings' => 'wavSettings',
+                       'Ac3Settings' => 'ac3Settings',
+                       'Codec' => 'codec',
+                       'AiffSettings' => 'aiffSettings',
+                       'AacSettings' => 'aacSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +105,7 @@ Eac3AtmosSettings
 =head1 ATTRIBUTES
 
 
-=head2 AacSettings => L<Paws::MediaConvert::AacSettings>
+=head2 AacSettings => MediaConvert_AacSettings
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value AAC. The service
@@ -62,13 +117,13 @@ you use the setting Bitrate (bitrate). Defaults and valid values depend
 on the rate control mode.
 
 
-=head2 Ac3Settings => L<Paws::MediaConvert::Ac3Settings>
+=head2 Ac3Settings => MediaConvert_Ac3Settings
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value AC3.
 
 
-=head2 AiffSettings => L<Paws::MediaConvert::AiffSettings>
+=head2 AiffSettings => MediaConvert_AiffSettings
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value AIFF.
@@ -79,25 +134,25 @@ on the rate control mode.
   Type of Audio codec.
 
 
-=head2 Eac3AtmosSettings => L<Paws::MediaConvert::Eac3AtmosSettings>
+=head2 Eac3AtmosSettings => MediaConvert_Eac3AtmosSettings
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value EAC3_ATMOS.
 
 
-=head2 Eac3Settings => L<Paws::MediaConvert::Eac3Settings>
+=head2 Eac3Settings => MediaConvert_Eac3Settings
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value EAC3.
 
 
-=head2 Mp2Settings => L<Paws::MediaConvert::Mp2Settings>
+=head2 Mp2Settings => MediaConvert_Mp2Settings
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value MP2.
 
 
-=head2 WavSettings => L<Paws::MediaConvert::WavSettings>
+=head2 WavSettings => MediaConvert_WavSettings
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value WAV.

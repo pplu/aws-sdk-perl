@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Scte35TimeSignalApos;
-  use Moose;
-  has AdAvailOffset => (is => 'ro', isa => 'Int', request_name => 'adAvailOffset', traits => ['NameInRequest']);
-  has NoRegionalBlackoutFlag => (is => 'ro', isa => 'Str', request_name => 'noRegionalBlackoutFlag', traits => ['NameInRequest']);
-  has WebDeliveryAllowedFlag => (is => 'ro', isa => 'Str', request_name => 'webDeliveryAllowedFlag', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaLive::Types qw//;
+  has AdAvailOffset => (is => 'ro', isa => Int);
+  has NoRegionalBlackoutFlag => (is => 'ro', isa => Str);
+  has WebDeliveryAllowedFlag => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AdAvailOffset' => {
+                                    'type' => 'Int'
+                                  },
+               'WebDeliveryAllowedFlag' => {
+                                             'type' => 'Str'
+                                           },
+               'NoRegionalBlackoutFlag' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'AdAvailOffset' => 'adAvailOffset',
+                       'WebDeliveryAllowedFlag' => 'webDeliveryAllowedFlag',
+                       'NoRegionalBlackoutFlag' => 'noRegionalBlackoutFlag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

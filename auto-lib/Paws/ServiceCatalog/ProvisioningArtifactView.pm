@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ProvisioningArtifactView;
-  use Moose;
-  has ProductViewSummary => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewSummary');
-  has ProvisioningArtifact => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningArtifact');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ProductViewSummary ServiceCatalog_ProvisioningArtifact/;
+  has ProductViewSummary => (is => 'ro', isa => ServiceCatalog_ProductViewSummary);
+  has ProvisioningArtifact => (is => 'ro', isa => ServiceCatalog_ProvisioningArtifact);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProvisioningArtifact' => {
+                                           'class' => 'Paws::ServiceCatalog::ProvisioningArtifact',
+                                           'type' => 'ServiceCatalog_ProvisioningArtifact'
+                                         },
+               'ProductViewSummary' => {
+                                         'class' => 'Paws::ServiceCatalog::ProductViewSummary',
+                                         'type' => 'ServiceCatalog_ProductViewSummary'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +60,12 @@ provisioning artifact.
 =head1 ATTRIBUTES
 
 
-=head2 ProductViewSummary => L<Paws::ServiceCatalog::ProductViewSummary>
+=head2 ProductViewSummary => ServiceCatalog_ProductViewSummary
 
   Summary information about a product view.
 
 
-=head2 ProvisioningArtifact => L<Paws::ServiceCatalog::ProvisioningArtifact>
+=head2 ProvisioningArtifact => ServiceCatalog_ProvisioningArtifact
 
   Information about a provisioning artifact. A provisioning artifact is
 also known as a product version.

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ACM::ListCertificatesResponse;
-  use Moose;
-  has CertificateSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::ACM::CertificateSummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ACM::Types qw/ACM_CertificateSummary/;
+  has CertificateSummaryList => (is => 'ro', isa => ArrayRef[ACM_CertificateSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CertificateSummaryList' => {
+                                             'class' => 'Paws::ACM::CertificateSummary',
+                                             'type' => 'ArrayRef[ACM_CertificateSummary]'
+                                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::ACM::ListCertificatesResponse
 =head1 ATTRIBUTES
 
 
-=head2 CertificateSummaryList => ArrayRef[L<Paws::ACM::CertificateSummary>]
+=head2 CertificateSummaryList => ArrayRef[ACM_CertificateSummary]
 
 A list of ACM certificates.
 

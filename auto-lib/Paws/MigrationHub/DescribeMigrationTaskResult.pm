@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MigrationHub::DescribeMigrationTaskResult;
-  use Moose;
-  has MigrationTask => (is => 'ro', isa => 'Paws::MigrationHub::MigrationTask');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MigrationHub::Types qw/MigrationHub_MigrationTask/;
+  has MigrationTask => (is => 'ro', isa => MigrationHub_MigrationTask);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MigrationTask' => {
+                                    'class' => 'Paws::MigrationHub::MigrationTask',
+                                    'type' => 'MigrationHub_MigrationTask'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::MigrationHub::DescribeMigrationTaskResult
 =head1 ATTRIBUTES
 
 
-=head2 MigrationTask => L<Paws::MigrationHub::MigrationTask>
+=head2 MigrationTask => MigrationHub_MigrationTask
 
 Object encapsulating information about the migration task.
 

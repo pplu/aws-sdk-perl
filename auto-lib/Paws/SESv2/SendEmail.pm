@@ -1,20 +1,60 @@
 
 package Paws::SESv2::SendEmail;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str');
-  has Content => (is => 'ro', isa => 'Paws::SESv2::EmailContent', required => 1);
-  has Destination => (is => 'ro', isa => 'Paws::SESv2::Destination', required => 1);
-  has EmailTags => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::MessageTag]');
-  has FeedbackForwardingEmailAddress => (is => 'ro', isa => 'Str');
-  has FromEmailAddress => (is => 'ro', isa => 'Str');
-  has ReplyToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SESv2::Types qw/SESv2_MessageTag SESv2_Destination SESv2_EmailContent/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, predicate => 1);
+  has Content => (is => 'ro', isa => SESv2_EmailContent, required => 1, predicate => 1);
+  has Destination => (is => 'ro', isa => SESv2_Destination, required => 1, predicate => 1);
+  has EmailTags => (is => 'ro', isa => ArrayRef[SESv2_MessageTag], predicate => 1);
+  has FeedbackForwardingEmailAddress => (is => 'ro', isa => Str, predicate => 1);
+  has FromEmailAddress => (is => 'ro', isa => Str, predicate => 1);
+  has ReplyToAddresses => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendEmail');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/outbound-emails');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::SendEmailResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendEmail');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/outbound-emails');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::SendEmailResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Destination' => 1,
+                    'Content' => 1
+                  },
+  'types' => {
+               'ReplyToAddresses' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Destination' => {
+                                  'class' => 'Paws::SESv2::Destination',
+                                  'type' => 'SESv2_Destination'
+                                },
+               'FromEmailAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'FeedbackForwardingEmailAddress' => {
+                                                     'type' => 'Str'
+                                                   },
+               'EmailTags' => {
+                                'class' => 'Paws::SESv2::MessageTag',
+                                'type' => 'ArrayRef[SESv2_MessageTag]'
+                              },
+               'Content' => {
+                              'type' => 'SESv2_EmailContent',
+                              'class' => 'Paws::SESv2::EmailContent'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -99,20 +139,20 @@ email.
 
 
 
-=head2 B<REQUIRED> Content => L<Paws::SESv2::EmailContent>
+=head2 B<REQUIRED> Content => SESv2_EmailContent
 
 An object that contains the body of the message. You can send either a
 Simple message or a Raw message.
 
 
 
-=head2 B<REQUIRED> Destination => L<Paws::SESv2::Destination>
+=head2 B<REQUIRED> Destination => SESv2_Destination
 
 An object that contains the recipients of the email message.
 
 
 
-=head2 EmailTags => ArrayRef[L<Paws::SESv2::MessageTag>]
+=head2 EmailTags => ArrayRef[SESv2_MessageTag]
 
 A list of tags, in the form of name/value pairs, to apply to an email
 that you send using the C<SendEmail> operation. Tags correspond to

@@ -1,12 +1,60 @@
+# Generated from default/object.tt
 package Paws::LexRuntime::DialogAction;
-  use Moose;
-  has FulfillmentState => (is => 'ro', isa => 'Str', request_name => 'fulfillmentState', traits => ['NameInRequest']);
-  has IntentName => (is => 'ro', isa => 'Str', request_name => 'intentName', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has MessageFormat => (is => 'ro', isa => 'Str', request_name => 'messageFormat', traits => ['NameInRequest']);
-  has Slots => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', request_name => 'slots', traits => ['NameInRequest']);
-  has SlotToElicit => (is => 'ro', isa => 'Str', request_name => 'slotToElicit', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexRuntime::Types qw/LexRuntime_StringMap/;
+  has FulfillmentState => (is => 'ro', isa => Str);
+  has IntentName => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has MessageFormat => (is => 'ro', isa => Str);
+  has Slots => (is => 'ro', isa => LexRuntime_StringMap);
+  has SlotToElicit => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Type' => 1
+                  },
+  'NameInRequest' => {
+                       'IntentName' => 'intentName',
+                       'Slots' => 'slots',
+                       'SlotToElicit' => 'slotToElicit',
+                       'MessageFormat' => 'messageFormat',
+                       'FulfillmentState' => 'fulfillmentState',
+                       'Message' => 'message',
+                       'Type' => 'type'
+                     },
+  'types' => {
+               'FulfillmentState' => {
+                                       'type' => 'Str'
+                                     },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Slots' => {
+                            'class' => 'Paws::LexRuntime::StringMap',
+                            'type' => 'LexRuntime_StringMap'
+                          },
+               'SlotToElicit' => {
+                                   'type' => 'Str'
+                                 },
+               'IntentName' => {
+                                 'type' => 'Str'
+                               },
+               'MessageFormat' => {
+                                    'type' => 'Str'
+                                  },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -109,7 +157,7 @@ one or more messages. For more information, see Message Groups
 
 
 
-=head2 Slots => L<Paws::LexRuntime::StringMap>
+=head2 Slots => LexRuntime_StringMap
 
   Map of the slots that have been gathered and their values.
 

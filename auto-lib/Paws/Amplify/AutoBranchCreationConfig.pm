@@ -1,14 +1,67 @@
+# Generated from default/object.tt
 package Paws::Amplify::AutoBranchCreationConfig;
-  use Moose;
-  has BasicAuthCredentials => (is => 'ro', isa => 'Str', request_name => 'basicAuthCredentials', traits => ['NameInRequest']);
-  has BuildSpec => (is => 'ro', isa => 'Str', request_name => 'buildSpec', traits => ['NameInRequest']);
-  has EnableAutoBuild => (is => 'ro', isa => 'Bool', request_name => 'enableAutoBuild', traits => ['NameInRequest']);
-  has EnableBasicAuth => (is => 'ro', isa => 'Bool', request_name => 'enableBasicAuth', traits => ['NameInRequest']);
-  has EnablePullRequestPreview => (is => 'ro', isa => 'Bool', request_name => 'enablePullRequestPreview', traits => ['NameInRequest']);
-  has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', request_name => 'environmentVariables', traits => ['NameInRequest']);
-  has Framework => (is => 'ro', isa => 'Str', request_name => 'framework', traits => ['NameInRequest']);
-  has PullRequestEnvironmentName => (is => 'ro', isa => 'Str', request_name => 'pullRequestEnvironmentName', traits => ['NameInRequest']);
-  has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Amplify::Types qw/Amplify_EnvironmentVariables/;
+  has BasicAuthCredentials => (is => 'ro', isa => Str);
+  has BuildSpec => (is => 'ro', isa => Str);
+  has EnableAutoBuild => (is => 'ro', isa => Bool);
+  has EnableBasicAuth => (is => 'ro', isa => Bool);
+  has EnablePullRequestPreview => (is => 'ro', isa => Bool);
+  has EnvironmentVariables => (is => 'ro', isa => Amplify_EnvironmentVariables);
+  has Framework => (is => 'ro', isa => Str);
+  has PullRequestEnvironmentName => (is => 'ro', isa => Str);
+  has Stage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EnvironmentVariables' => 'environmentVariables',
+                       'Framework' => 'framework',
+                       'BuildSpec' => 'buildSpec',
+                       'EnableBasicAuth' => 'enableBasicAuth',
+                       'EnablePullRequestPreview' => 'enablePullRequestPreview',
+                       'PullRequestEnvironmentName' => 'pullRequestEnvironmentName',
+                       'Stage' => 'stage',
+                       'BasicAuthCredentials' => 'basicAuthCredentials',
+                       'EnableAutoBuild' => 'enableAutoBuild'
+                     },
+  'types' => {
+               'BuildSpec' => {
+                                'type' => 'Str'
+                              },
+               'EnvironmentVariables' => {
+                                           'type' => 'Amplify_EnvironmentVariables',
+                                           'class' => 'Paws::Amplify::EnvironmentVariables'
+                                         },
+               'Framework' => {
+                                'type' => 'Str'
+                              },
+               'Stage' => {
+                            'type' => 'Str'
+                          },
+               'EnableAutoBuild' => {
+                                      'type' => 'Bool'
+                                    },
+               'BasicAuthCredentials' => {
+                                           'type' => 'Str'
+                                         },
+               'EnablePullRequestPreview' => {
+                                               'type' => 'Bool'
+                                             },
+               'EnableBasicAuth' => {
+                                      'type' => 'Bool'
+                                    },
+               'PullRequestEnvironmentName' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +122,7 @@ Structure with auto branch creation config.
   Enables Pull Request Preview for auto created branch.
 
 
-=head2 EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
+=head2 EnvironmentVariables => Amplify_EnvironmentVariables
 
   Environment Variables for the auto created branch.
 

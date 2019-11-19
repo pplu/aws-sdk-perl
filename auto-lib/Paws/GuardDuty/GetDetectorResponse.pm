@@ -1,14 +1,59 @@
 
 package Paws::GuardDuty::GetDetectorResponse;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdAt');
-  has FindingPublishingFrequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'findingPublishingFrequency');
-  has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole', required => 1);
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
-  has UpdatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'updatedAt');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw/GuardDuty_TagMap/;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has FindingPublishingFrequency => (is => 'ro', isa => Str);
+  has ServiceRole => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => GuardDuty_TagMap);
+  has UpdatedAt => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'GuardDuty_TagMap',
+                           'class' => 'Paws::GuardDuty::TagMap'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'FindingPublishingFrequency' => {
+                                                 'type' => 'Str'
+                                               }
+             },
+  'IsRequired' => {
+                    'ServiceRole' => 1,
+                    'Status' => 1
+                  },
+  'NameInRequest' => {
+                       'UpdatedAt' => 'updatedAt',
+                       'CreatedAt' => 'createdAt',
+                       'ServiceRole' => 'serviceRole',
+                       'FindingPublishingFrequency' => 'findingPublishingFrequency',
+                       'Status' => 'status',
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +85,7 @@ The GuardDuty service role.
 The detector status.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
-=head2 Tags => L<Paws::GuardDuty::TagMap>
+=head2 Tags => GuardDuty_TagMap
 
 The tags of the detector resource.
 

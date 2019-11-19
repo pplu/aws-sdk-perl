@@ -1,19 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DS::ConnectDirectory;
-  use Moose;
-  has ConnectSettings => (is => 'ro', isa => 'Paws::DS::DirectoryConnectSettings', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has ShortName => (is => 'ro', isa => 'Str');
-  has Size => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DS::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DS::Types qw/DS_DirectoryConnectSettings DS_Tag/;
+  has ConnectSettings => (is => 'ro', isa => DS_DirectoryConnectSettings, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Password => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ShortName => (is => 'ro', isa => Str, predicate => 1);
+  has Size => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DS_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConnectDirectory');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::ConnectDirectoryResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ConnectDirectory');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DS::ConnectDirectoryResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Size' => {
+                           'type' => 'Str'
+                         },
+               'ConnectSettings' => {
+                                      'type' => 'DS_DirectoryConnectSettings',
+                                      'class' => 'Paws::DS::DirectoryConnectSettings'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::DS::Tag',
+                           'type' => 'ArrayRef[DS_Tag]'
+                         },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'ShortName' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Password' => 1,
+                    'ConnectSettings' => 1,
+                    'Name' => 1,
+                    'Size' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +109,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ds/
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ConnectSettings => L<Paws::DS::DirectoryConnectSettings>
+=head2 B<REQUIRED> ConnectSettings => DS_DirectoryConnectSettings
 
 A DirectoryConnectSettings object that contains additional information
 for the operation.
@@ -105,7 +147,7 @@ The size of the directory.
 
 Valid values are: C<"Small">, C<"Large">
 
-=head2 Tags => ArrayRef[L<Paws::DS::Tag>]
+=head2 Tags => ArrayRef[DS_Tag]
 
 The tags to be assigned to AD Connector.
 

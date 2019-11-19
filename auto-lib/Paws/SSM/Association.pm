@@ -1,15 +1,61 @@
+# Generated from default/object.tt
 package Paws::SSM::Association;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str');
-  has AssociationName => (is => 'ro', isa => 'Str');
-  has AssociationVersion => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has LastExecutionDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Overview => (is => 'ro', isa => 'Paws::SSM::AssociationOverview');
-  has ScheduleExpression => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_AssociationOverview SSM_Target/;
+  has AssociationId => (is => 'ro', isa => Str);
+  has AssociationName => (is => 'ro', isa => Str);
+  has AssociationVersion => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has LastExecutionDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Overview => (is => 'ro', isa => SSM_AssociationOverview);
+  has ScheduleExpression => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastExecutionDate' => {
+                                        'type' => 'Str'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               'AssociationName' => {
+                                      'type' => 'Str'
+                                    },
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'ScheduleExpression' => {
+                                         'type' => 'Str'
+                                       },
+               'Overview' => {
+                               'class' => 'Paws::SSM::AssociationOverview',
+                               'type' => 'SSM_AssociationOverview'
+                             },
+               'AssociationVersion' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +128,7 @@ schedule.
   The name of the Systems Manager document.
 
 
-=head2 Overview => L<Paws::SSM::AssociationOverview>
+=head2 Overview => SSM_AssociationOverview
 
   Information about the association.
 
@@ -92,7 +138,7 @@ schedule.
   A cron expression that specifies a schedule when the association runs.
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
   The instances targeted by the request to create an association.
 

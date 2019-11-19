@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::CacheParameterGroupStatus;
-  use Moose;
-  has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'CacheNodeId', traits => ['NameInRequest']);
-  has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has ParameterApplyStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheNodeIdsToReboot => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CacheParameterGroupName => (is => 'ro', isa => Str);
+  has ParameterApplyStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CacheNodeIdsToReboot' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'ParameterApplyStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'CacheParameterGroupName' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'NameInRequest' => {
+                       'CacheNodeIdsToReboot' => 'CacheNodeId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

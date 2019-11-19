@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaLive::PipelineDetail;
-  use Moose;
-  has ActiveInputAttachmentName => (is => 'ro', isa => 'Str', request_name => 'activeInputAttachmentName', traits => ['NameInRequest']);
-  has ActiveInputSwitchActionName => (is => 'ro', isa => 'Str', request_name => 'activeInputSwitchActionName', traits => ['NameInRequest']);
-  has PipelineId => (is => 'ro', isa => 'Str', request_name => 'pipelineId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has ActiveInputAttachmentName => (is => 'ro', isa => Str);
+  has ActiveInputSwitchActionName => (is => 'ro', isa => Str);
+  has PipelineId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ActiveInputSwitchActionName' => 'activeInputSwitchActionName',
+                       'PipelineId' => 'pipelineId',
+                       'ActiveInputAttachmentName' => 'activeInputAttachmentName'
+                     },
+  'types' => {
+               'ActiveInputAttachmentName' => {
+                                                'type' => 'Str'
+                                              },
+               'PipelineId' => {
+                                 'type' => 'Str'
+                               },
+               'ActiveInputSwitchActionName' => {
+                                                  'type' => 'Str'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

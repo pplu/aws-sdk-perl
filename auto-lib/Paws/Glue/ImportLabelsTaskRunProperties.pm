@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glue::ImportLabelsTaskRunProperties;
-  use Moose;
-  has InputS3Path => (is => 'ro', isa => 'Str');
-  has Replace => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Glue::Types qw//;
+  has InputS3Path => (is => 'ro', isa => Str);
+  has Replace => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Replace' => {
+                              'type' => 'Bool'
+                            },
+               'InputS3Path' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

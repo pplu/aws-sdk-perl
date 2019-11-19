@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::DataExchange::RequestDetails;
-  use Moose;
-  has ExportAssetsToS3 => (is => 'ro', isa => 'Paws::DataExchange::ExportAssetsToS3RequestDetails');
-  has ExportAssetToSignedUrl => (is => 'ro', isa => 'Paws::DataExchange::ExportAssetToSignedUrlRequestDetails');
-  has ImportAssetFromSignedUrl => (is => 'ro', isa => 'Paws::DataExchange::ImportAssetFromSignedUrlRequestDetails');
-  has ImportAssetsFromS3 => (is => 'ro', isa => 'Paws::DataExchange::ImportAssetsFromS3RequestDetails');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::DataExchange::Types qw/DataExchange_ExportAssetToSignedUrlRequestDetails DataExchange_ExportAssetsToS3RequestDetails DataExchange_ImportAssetFromSignedUrlRequestDetails DataExchange_ImportAssetsFromS3RequestDetails/;
+  has ExportAssetsToS3 => (is => 'ro', isa => DataExchange_ExportAssetsToS3RequestDetails);
+  has ExportAssetToSignedUrl => (is => 'ro', isa => DataExchange_ExportAssetToSignedUrlRequestDetails);
+  has ImportAssetFromSignedUrl => (is => 'ro', isa => DataExchange_ImportAssetFromSignedUrlRequestDetails);
+  has ImportAssetsFromS3 => (is => 'ro', isa => DataExchange_ImportAssetsFromS3RequestDetails);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExportAssetToSignedUrl' => {
+                                             'type' => 'DataExchange_ExportAssetToSignedUrlRequestDetails',
+                                             'class' => 'Paws::DataExchange::ExportAssetToSignedUrlRequestDetails'
+                                           },
+               'ExportAssetsToS3' => {
+                                       'type' => 'DataExchange_ExportAssetsToS3RequestDetails',
+                                       'class' => 'Paws::DataExchange::ExportAssetsToS3RequestDetails'
+                                     },
+               'ImportAssetFromSignedUrl' => {
+                                               'class' => 'Paws::DataExchange::ImportAssetFromSignedUrlRequestDetails',
+                                               'type' => 'DataExchange_ImportAssetFromSignedUrlRequestDetails'
+                                             },
+               'ImportAssetsFromS3' => {
+                                         'class' => 'Paws::DataExchange::ImportAssetsFromS3RequestDetails',
+                                         'type' => 'DataExchange_ImportAssetsFromS3RequestDetails'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,22 +69,22 @@ The details for the request.
 =head1 ATTRIBUTES
 
 
-=head2 ExportAssetsToS3 => L<Paws::DataExchange::ExportAssetsToS3RequestDetails>
+=head2 ExportAssetsToS3 => DataExchange_ExportAssetsToS3RequestDetails
 
   Details about the export to Amazon S3 request.
 
 
-=head2 ExportAssetToSignedUrl => L<Paws::DataExchange::ExportAssetToSignedUrlRequestDetails>
+=head2 ExportAssetToSignedUrl => DataExchange_ExportAssetToSignedUrlRequestDetails
 
   Details about the export to signed URL request.
 
 
-=head2 ImportAssetFromSignedUrl => L<Paws::DataExchange::ImportAssetFromSignedUrlRequestDetails>
+=head2 ImportAssetFromSignedUrl => DataExchange_ImportAssetFromSignedUrlRequestDetails
 
   Details about the import from signed URL request.
 
 
-=head2 ImportAssetsFromS3 => L<Paws::DataExchange::ImportAssetsFromS3RequestDetails>
+=head2 ImportAssetsFromS3 => DataExchange_ImportAssetsFromS3RequestDetails
 
   Details about the import from Amazon S3 request.
 

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Discovery::BatchDeleteImportDataError;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
-  has ErrorDescription => (is => 'ro', isa => 'Str', request_name => 'errorDescription', traits => ['NameInRequest']);
-  has ImportTaskId => (is => 'ro', isa => 'Str', request_name => 'importTaskId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Discovery::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorDescription => (is => 'ro', isa => Str);
+  has ImportTaskId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ErrorDescription' => 'errorDescription',
+                       'ErrorCode' => 'errorCode',
+                       'ImportTaskId' => 'importTaskId'
+                     },
+  'types' => {
+               'ErrorDescription' => {
+                                       'type' => 'Str'
+                                     },
+               'ImportTaskId' => {
+                                   'type' => 'Str'
+                                 },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,35 +1,165 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::AwsSecurityFinding;
-  use Moose;
-  has AwsAccountId => (is => 'ro', isa => 'Str', required => 1);
-  has Compliance => (is => 'ro', isa => 'Paws::SecurityHub::Compliance');
-  has Confidence => (is => 'ro', isa => 'Int');
-  has CreatedAt => (is => 'ro', isa => 'Str', required => 1);
-  has Criticality => (is => 'ro', isa => 'Int');
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has FirstObservedAt => (is => 'ro', isa => 'Str');
-  has GeneratorId => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LastObservedAt => (is => 'ro', isa => 'Str');
-  has Malware => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::Malware]');
-  has Network => (is => 'ro', isa => 'Paws::SecurityHub::Network');
-  has Note => (is => 'ro', isa => 'Paws::SecurityHub::Note');
-  has Process => (is => 'ro', isa => 'Paws::SecurityHub::ProcessDetails');
-  has ProductArn => (is => 'ro', isa => 'Str', required => 1);
-  has ProductFields => (is => 'ro', isa => 'Paws::SecurityHub::FieldMap');
-  has RecordState => (is => 'ro', isa => 'Str');
-  has RelatedFindings => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::RelatedFinding]');
-  has Remediation => (is => 'ro', isa => 'Paws::SecurityHub::Remediation');
-  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::Resource]', required => 1);
-  has SchemaVersion => (is => 'ro', isa => 'Str', required => 1);
-  has Severity => (is => 'ro', isa => 'Paws::SecurityHub::Severity', required => 1);
-  has SourceUrl => (is => 'ro', isa => 'Str');
-  has ThreatIntelIndicators => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::ThreatIntelIndicator]');
-  has Title => (is => 'ro', isa => 'Str', required => 1);
-  has Types => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
-  has UserDefinedFields => (is => 'ro', isa => 'Paws::SecurityHub::FieldMap');
-  has VerificationState => (is => 'ro', isa => 'Str');
-  has WorkflowState => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::SecurityHub::Types qw/SecurityHub_Remediation SecurityHub_Resource SecurityHub_RelatedFinding SecurityHub_ThreatIntelIndicator SecurityHub_Malware SecurityHub_FieldMap SecurityHub_ProcessDetails SecurityHub_Compliance SecurityHub_Network SecurityHub_Note SecurityHub_Severity/;
+  has AwsAccountId => (is => 'ro', isa => Str, required => 1);
+  has Compliance => (is => 'ro', isa => SecurityHub_Compliance);
+  has Confidence => (is => 'ro', isa => Int);
+  has CreatedAt => (is => 'ro', isa => Str, required => 1);
+  has Criticality => (is => 'ro', isa => Int);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has FirstObservedAt => (is => 'ro', isa => Str);
+  has GeneratorId => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has LastObservedAt => (is => 'ro', isa => Str);
+  has Malware => (is => 'ro', isa => ArrayRef[SecurityHub_Malware]);
+  has Network => (is => 'ro', isa => SecurityHub_Network);
+  has Note => (is => 'ro', isa => SecurityHub_Note);
+  has Process => (is => 'ro', isa => SecurityHub_ProcessDetails);
+  has ProductArn => (is => 'ro', isa => Str, required => 1);
+  has ProductFields => (is => 'ro', isa => SecurityHub_FieldMap);
+  has RecordState => (is => 'ro', isa => Str);
+  has RelatedFindings => (is => 'ro', isa => ArrayRef[SecurityHub_RelatedFinding]);
+  has Remediation => (is => 'ro', isa => SecurityHub_Remediation);
+  has Resources => (is => 'ro', isa => ArrayRef[SecurityHub_Resource], required => 1);
+  has SchemaVersion => (is => 'ro', isa => Str, required => 1);
+  has Severity => (is => 'ro', isa => SecurityHub_Severity, required => 1);
+  has SourceUrl => (is => 'ro', isa => Str);
+  has ThreatIntelIndicators => (is => 'ro', isa => ArrayRef[SecurityHub_ThreatIntelIndicator]);
+  has Title => (is => 'ro', isa => Str, required => 1);
+  has Types => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has UpdatedAt => (is => 'ro', isa => Str, required => 1);
+  has UserDefinedFields => (is => 'ro', isa => SecurityHub_FieldMap);
+  has VerificationState => (is => 'ro', isa => Str);
+  has WorkflowState => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Title' => 1,
+                    'SchemaVersion' => 1,
+                    'GeneratorId' => 1,
+                    'AwsAccountId' => 1,
+                    'Id' => 1,
+                    'Severity' => 1,
+                    'Resources' => 1,
+                    'ProductArn' => 1,
+                    'Description' => 1,
+                    'UpdatedAt' => 1,
+                    'CreatedAt' => 1,
+                    'Types' => 1
+                  },
+  'types' => {
+               'Compliance' => {
+                                 'type' => 'SecurityHub_Compliance',
+                                 'class' => 'Paws::SecurityHub::Compliance'
+                               },
+               'WorkflowState' => {
+                                    'type' => 'Str'
+                                  },
+               'Confidence' => {
+                                 'type' => 'Int'
+                               },
+               'UserDefinedFields' => {
+                                        'class' => 'Paws::SecurityHub::FieldMap',
+                                        'type' => 'SecurityHub_FieldMap'
+                                      },
+               'RecordState' => {
+                                  'type' => 'Str'
+                                },
+               'Process' => {
+                              'class' => 'Paws::SecurityHub::ProcessDetails',
+                              'type' => 'SecurityHub_ProcessDetails'
+                            },
+               'Note' => {
+                           'type' => 'SecurityHub_Note',
+                           'class' => 'Paws::SecurityHub::Note'
+                         },
+               'Criticality' => {
+                                  'type' => 'Int'
+                                },
+               'AwsAccountId' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'FirstObservedAt' => {
+                                      'type' => 'Str'
+                                    },
+               'Network' => {
+                              'class' => 'Paws::SecurityHub::Network',
+                              'type' => 'SecurityHub_Network'
+                            },
+               'GeneratorId' => {
+                                  'type' => 'Str'
+                                },
+               'SourceUrl' => {
+                                'type' => 'Str'
+                              },
+               'Malware' => {
+                              'class' => 'Paws::SecurityHub::Malware',
+                              'type' => 'ArrayRef[SecurityHub_Malware]'
+                            },
+               'SchemaVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'ThreatIntelIndicators' => {
+                                            'type' => 'ArrayRef[SecurityHub_ThreatIntelIndicator]',
+                                            'class' => 'Paws::SecurityHub::ThreatIntelIndicator'
+                                          },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Severity' => {
+                               'class' => 'Paws::SecurityHub::Severity',
+                               'type' => 'SecurityHub_Severity'
+                             },
+               'ProductFields' => {
+                                    'class' => 'Paws::SecurityHub::FieldMap',
+                                    'type' => 'SecurityHub_FieldMap'
+                                  },
+               'VerificationState' => {
+                                        'type' => 'Str'
+                                      },
+               'LastObservedAt' => {
+                                     'type' => 'Str'
+                                   },
+               'Types' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Remediation' => {
+                                  'class' => 'Paws::SecurityHub::Remediation',
+                                  'type' => 'SecurityHub_Remediation'
+                                },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'ProductArn' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'RelatedFindings' => {
+                                      'type' => 'ArrayRef[SecurityHub_RelatedFinding]',
+                                      'class' => 'Paws::SecurityHub::RelatedFinding'
+                                    },
+               'Resources' => {
+                                'type' => 'ArrayRef[SecurityHub_Resource]',
+                                'class' => 'Paws::SecurityHub::Resource'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +207,7 @@ the integrated third-party solutions and compliance checks.
   The AWS account ID that a finding is generated in.
 
 
-=head2 Compliance => L<Paws::SecurityHub::Compliance>
+=head2 Compliance => SecurityHub_Compliance
 
   This data type is exclusive to findings that are generated as the
 result of a check run against a specific rule in a supported standard
@@ -143,22 +273,22 @@ security-findings provider most recently observed the potential
 security issue that a finding captured.
 
 
-=head2 Malware => ArrayRef[L<Paws::SecurityHub::Malware>]
+=head2 Malware => ArrayRef[SecurityHub_Malware]
 
   A list of malware related to a finding.
 
 
-=head2 Network => L<Paws::SecurityHub::Network>
+=head2 Network => SecurityHub_Network
 
   The details of network-related information about a finding.
 
 
-=head2 Note => L<Paws::SecurityHub::Note>
+=head2 Note => SecurityHub_Note
 
   A user-defined note added to a finding.
 
 
-=head2 Process => L<Paws::SecurityHub::ProcessDetails>
+=head2 Process => SecurityHub_ProcessDetails
 
   The details of process-related information about a finding.
 
@@ -171,7 +301,7 @@ product (solution that generates findings) is registered with Security
 Hub.
 
 
-=head2 ProductFields => L<Paws::SecurityHub::FieldMap>
+=head2 ProductFields => SecurityHub_FieldMap
 
   A data type where security-findings providers can include additional
 solution-specific details that aren't part of the defined
@@ -183,17 +313,17 @@ C<AwsSecurityFinding> format.
   The record state of a finding.
 
 
-=head2 RelatedFindings => ArrayRef[L<Paws::SecurityHub::RelatedFinding>]
+=head2 RelatedFindings => ArrayRef[SecurityHub_RelatedFinding]
 
   A list of related findings.
 
 
-=head2 Remediation => L<Paws::SecurityHub::Remediation>
+=head2 Remediation => SecurityHub_Remediation
 
   A data type that describes the remediation options for a finding.
 
 
-=head2 B<REQUIRED> Resources => ArrayRef[L<Paws::SecurityHub::Resource>]
+=head2 B<REQUIRED> Resources => ArrayRef[SecurityHub_Resource]
 
   A set of resource data types that describe the resources that the
 finding refers to.
@@ -204,7 +334,7 @@ finding refers to.
   The schema version that a finding is formatted for.
 
 
-=head2 B<REQUIRED> Severity => L<Paws::SecurityHub::Severity>
+=head2 B<REQUIRED> Severity => SecurityHub_Severity
 
   A finding's severity.
 
@@ -215,7 +345,7 @@ finding refers to.
 security-findings provider's solution.
 
 
-=head2 ThreatIntelIndicators => ArrayRef[L<Paws::SecurityHub::ThreatIntelIndicator>]
+=head2 ThreatIntelIndicators => ArrayRef[SecurityHub_ThreatIntelIndicator]
 
   Threat intel details related to a finding.
 
@@ -242,7 +372,7 @@ Effects | Unusual Behaviors | Sensitive Data Identifications
 security-findings provider last updated the finding record.
 
 
-=head2 UserDefinedFields => L<Paws::SecurityHub::FieldMap>
+=head2 UserDefinedFields => SecurityHub_FieldMap
 
   A list of name/value string pairs associated with the finding. These
 are custom, user-defined fields added to a finding.

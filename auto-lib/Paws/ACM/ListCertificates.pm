@@ -1,16 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ACM::ListCertificates;
-  use Moose;
-  has CertificateStatuses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Includes => (is => 'ro', isa => 'Paws::ACM::Filters');
-  has MaxItems => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int/;
+  use Paws::ACM::Types qw/ACM_Filters/;
+  has CertificateStatuses => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Includes => (is => 'ro', isa => ACM_Filters, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListCertificates');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ACM::ListCertificatesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListCertificates');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ACM::ListCertificatesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'CertificateStatuses' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'Includes' => {
+                               'type' => 'ACM_Filters',
+                               'class' => 'Paws::ACM::Filters'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +98,7 @@ Filter the certificate list by status value.
 
 
 
-=head2 Includes => L<Paws::ACM::Filters>
+=head2 Includes => ACM_Filters
 
 Filter the certificate list. For more information, see the Filters
 structure.

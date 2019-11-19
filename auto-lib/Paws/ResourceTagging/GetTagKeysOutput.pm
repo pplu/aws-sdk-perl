@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ResourceTagging::GetTagKeysOutput;
-  use Moose;
-  has PaginationToken => (is => 'ro', isa => 'Str');
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ResourceTagging::Types qw//;
+  has PaginationToken => (is => 'ro', isa => Str);
+  has TagKeys => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PaginationToken' => {
+                                      'type' => 'Str'
+                                    },
+               'TagKeys' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

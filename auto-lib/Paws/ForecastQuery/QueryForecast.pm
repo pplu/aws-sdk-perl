@@ -1,17 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ForecastQuery::QueryForecast;
-  use Moose;
-  has EndDate => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'Paws::ForecastQuery::Filters', required => 1);
-  has ForecastArn => (is => 'ro', isa => 'Str', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StartDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ForecastQuery::Types qw/ForecastQuery_Filters/;
+  has EndDate => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ForecastQuery_Filters, required => 1, predicate => 1);
+  has ForecastArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StartDate => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'QueryForecast');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ForecastQuery::QueryForecastResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'QueryForecast');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ForecastQuery::QueryForecastResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Filters' => 1,
+                    'ForecastArn' => 1
+                  },
+  'types' => {
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'ForecastArn' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'StartDate' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::ForecastQuery::Filters',
+                              'type' => 'ForecastQuery_Filters'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +94,7 @@ yyyy-MM-dd'T'HH:mm:ss'Z' (ISO 8601 format). For example,
 
 
 
-=head2 B<REQUIRED> Filters => L<Paws::ForecastQuery::Filters>
+=head2 B<REQUIRED> Filters => ForecastQuery_Filters
 
 The filtering criteria to apply when retrieving the forecast. For
 example:

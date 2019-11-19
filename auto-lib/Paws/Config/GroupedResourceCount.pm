@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Config::GroupedResourceCount;
-  use Moose;
-  has GroupName => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceCount => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Config::Types qw//;
+  has GroupName => (is => 'ro', isa => Str, required => 1);
+  has ResourceCount => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'GroupName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'GroupName' => 1,
+                    'ResourceCount' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

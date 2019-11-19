@@ -1,16 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Transcribe::ListVocabularies;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NameContains => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StateEquals => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Transcribe::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NameContains => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StateEquals => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListVocabularies');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Transcribe::ListVocabulariesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListVocabularies');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Transcribe::ListVocabulariesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'StateEquals' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'NameContains' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,49 @@
 
 package Paws::ApiGatewayV2::UpdateDeploymentResponse;
-  use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
-  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId');
-  has DeploymentStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentStatus');
-  has DeploymentStatusMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentStatusMessage');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has CreatedDate => (is => 'ro', isa => Str);
+  has DeploymentId => (is => 'ro', isa => Str);
+  has DeploymentStatus => (is => 'ro', isa => Str);
+  has DeploymentStatusMessage => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DeploymentStatusMessage' => {
+                                              'type' => 'Str'
+                                            },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'DeploymentStatus' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'DeploymentId' => 'deploymentId',
+                       'DeploymentStatusMessage' => 'deploymentStatusMessage',
+                       'CreatedDate' => 'createdDate',
+                       'Description' => 'description',
+                       'DeploymentStatus' => 'deploymentStatus'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,37 @@
 
 package Paws::SESv2::PutDeliverabilityDashboardOption;
-  use Moose;
-  has DashboardEnabled => (is => 'ro', isa => 'Bool', required => 1);
-  has SubscribedDomains => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::DomainDeliverabilityTrackingOption]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::SESv2::Types qw/SESv2_DomainDeliverabilityTrackingOption/;
+  has DashboardEnabled => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has SubscribedDomains => (is => 'ro', isa => ArrayRef[SESv2_DomainDeliverabilityTrackingOption], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutDeliverabilityDashboardOption');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/deliverability-dashboard');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::PutDeliverabilityDashboardOptionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutDeliverabilityDashboardOption');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/deliverability-dashboard');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::PutDeliverabilityDashboardOptionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DashboardEnabled' => {
+                                       'type' => 'Bool'
+                                     },
+               'SubscribedDomains' => {
+                                        'type' => 'ArrayRef[SESv2_DomainDeliverabilityTrackingOption]',
+                                        'class' => 'Paws::SESv2::DomainDeliverabilityTrackingOption'
+                                      }
+             },
+  'IsRequired' => {
+                    'DashboardEnabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +80,7 @@ dashboard, set this value to C<true>.
 
 
 
-=head2 SubscribedDomains => ArrayRef[L<Paws::SESv2::DomainDeliverabilityTrackingOption>]
+=head2 SubscribedDomains => ArrayRef[SESv2_DomainDeliverabilityTrackingOption]
 
 An array of objects, one for each verified domain that you use to send
 email and enabled the Deliverability dashboard for.

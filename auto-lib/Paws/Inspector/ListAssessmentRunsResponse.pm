@@ -1,10 +1,38 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Inspector::ListAssessmentRunsResponse;
-  use Moose;
-  has AssessmentRunArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'assessmentRunArns' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Inspector::Types qw//;
+  has AssessmentRunArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'AssessmentRunArns' => 'assessmentRunArns'
+                     },
+  'IsRequired' => {
+                    'AssessmentRunArns' => 1
+                  },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'AssessmentRunArns' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

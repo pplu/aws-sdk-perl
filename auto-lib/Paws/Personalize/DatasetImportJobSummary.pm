@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::Personalize::DatasetImportJobSummary;
-  use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has DatasetImportJobArn => (is => 'ro', isa => 'Str', request_name => 'datasetImportJobArn', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has DatasetImportJobArn => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has JobName => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DatasetImportJobArn' => {
+                                          'type' => 'Str'
+                                        },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'JobName' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'JobName' => 'jobName',
+                       'CreationDateTime' => 'creationDateTime',
+                       'FailureReason' => 'failureReason',
+                       'Status' => 'status',
+                       'DatasetImportJobArn' => 'datasetImportJobArn',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Personalize::AutoMLResult;
-  use Moose;
-  has BestRecipeArn => (is => 'ro', isa => 'Str', request_name => 'bestRecipeArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has BestRecipeArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BestRecipeArn' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'BestRecipeArn' => 'bestRecipeArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

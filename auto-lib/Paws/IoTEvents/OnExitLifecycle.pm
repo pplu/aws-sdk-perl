@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::OnExitLifecycle;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Event]', request_name => 'events', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::IoTEvents::Types qw/IoTEvents_Event/;
+  has Events => (is => 'ro', isa => ArrayRef[IoTEvents_Event]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Events' => {
+                             'type' => 'ArrayRef[IoTEvents_Event]',
+                             'class' => 'Paws::IoTEvents::Event'
+                           }
+             },
+  'NameInRequest' => {
+                       'Events' => 'events'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ C<"condition"> is TRUE.
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[L<Paws::IoTEvents::Event>]
+=head2 Events => ArrayRef[IoTEvents_Event]
 
   Specifies the C<"actions"> that are performed when the state is exited
 and the C<"condition"> is TRUE.

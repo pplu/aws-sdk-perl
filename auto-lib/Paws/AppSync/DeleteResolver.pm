@@ -1,16 +1,47 @@
 
 package Paws::AppSync::DeleteResolver;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has FieldName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'fieldName', required => 1);
-  has TypeName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'typeName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FieldName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TypeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteResolver');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apis/{apiId}/types/{typeName}/resolvers/{fieldName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppSync::DeleteResolverResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteResolver');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apis/{apiId}/types/{typeName}/resolvers/{fieldName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppSync::DeleteResolverResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'FieldName' => 'fieldName',
+                    'TypeName' => 'typeName',
+                    'ApiId' => 'apiId'
+                  },
+  'IsRequired' => {
+                    'TypeName' => 1,
+                    'FieldName' => 1,
+                    'ApiId' => 1
+                  },
+  'types' => {
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'FieldName' => {
+                                'type' => 'Str'
+                              },
+               'ApiId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

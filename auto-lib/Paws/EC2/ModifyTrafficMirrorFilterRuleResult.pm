@@ -1,9 +1,31 @@
 
 package Paws::EC2::ModifyTrafficMirrorFilterRuleResult;
-  use Moose;
-  has TrafficMirrorFilterRule => (is => 'ro', isa => 'Paws::EC2::TrafficMirrorFilterRule', request_name => 'trafficMirrorFilterRule', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_TrafficMirrorFilterRule/;
+  has TrafficMirrorFilterRule => (is => 'ro', isa => EC2_TrafficMirrorFilterRule);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrafficMirrorFilterRule' => {
+                                              'type' => 'EC2_TrafficMirrorFilterRule',
+                                              'class' => 'Paws::EC2::TrafficMirrorFilterRule'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'TrafficMirrorFilterRule' => 'trafficMirrorFilterRule'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::ModifyTrafficMirrorFilterRuleResult
 =head1 ATTRIBUTES
 
 
-=head2 TrafficMirrorFilterRule => L<Paws::EC2::TrafficMirrorFilterRule>
+=head2 TrafficMirrorFilterRule => EC2_TrafficMirrorFilterRule
 
 Modifies a Traffic Mirror rule.
 

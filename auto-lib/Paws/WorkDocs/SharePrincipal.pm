@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::SharePrincipal;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Role => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Role => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Role' => 1,
+                    'Id' => 1,
+                    'Type' => 1
+                  },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Role' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

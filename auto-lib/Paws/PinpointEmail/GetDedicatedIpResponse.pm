@@ -1,9 +1,27 @@
 
 package Paws::PinpointEmail::GetDedicatedIpResponse;
-  use Moose;
-  has DedicatedIp => (is => 'ro', isa => 'Paws::PinpointEmail::DedicatedIp');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_DedicatedIp/;
+  has DedicatedIp => (is => 'ro', isa => PinpointEmail_DedicatedIp);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DedicatedIp' => {
+                                  'type' => 'PinpointEmail_DedicatedIp',
+                                  'class' => 'Paws::PinpointEmail::DedicatedIp'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::PinpointEmail::GetDedicatedIpResponse
 =head1 ATTRIBUTES
 
 
-=head2 DedicatedIp => L<Paws::PinpointEmail::DedicatedIp>
+=head2 DedicatedIp => PinpointEmail_DedicatedIp
 
 An object that contains information about a dedicated IP address.
 

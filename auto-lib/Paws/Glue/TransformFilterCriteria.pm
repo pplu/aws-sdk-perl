@@ -1,13 +1,52 @@
+# Generated from default/object.tt
 package Paws::Glue::TransformFilterCriteria;
-  use Moose;
-  has CreatedAfter => (is => 'ro', isa => 'Str');
-  has CreatedBefore => (is => 'ro', isa => 'Str');
-  has LastModifiedAfter => (is => 'ro', isa => 'Str');
-  has LastModifiedBefore => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Schema => (is => 'ro', isa => 'ArrayRef[Paws::Glue::SchemaColumn]');
-  has Status => (is => 'ro', isa => 'Str');
-  has TransformType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_SchemaColumn/;
+  has CreatedAfter => (is => 'ro', isa => Str);
+  has CreatedBefore => (is => 'ro', isa => Str);
+  has LastModifiedAfter => (is => 'ro', isa => Str);
+  has LastModifiedBefore => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Schema => (is => 'ro', isa => ArrayRef[Glue_SchemaColumn]);
+  has Status => (is => 'ro', isa => Str);
+  has TransformType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Schema' => {
+                             'class' => 'Paws::Glue::SchemaColumn',
+                             'type' => 'ArrayRef[Glue_SchemaColumn]'
+                           },
+               'TransformType' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreatedBefore' => {
+                                    'type' => 'Str'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LastModifiedBefore' => {
+                                         'type' => 'Str'
+                                       },
+               'LastModifiedAfter' => {
+                                        'type' => 'Str'
+                                      },
+               'CreatedAfter' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +108,7 @@ The criteria used to filter the machine learning transforms.
 transforms.
 
 
-=head2 Schema => ArrayRef[L<Paws::Glue::SchemaColumn>]
+=head2 Schema => ArrayRef[Glue_SchemaColumn]
 
   Filters on datasets with a specific schema. The C<MapE<lt>Column,
 TypeE<gt>> object is an array of key-value pairs representing the

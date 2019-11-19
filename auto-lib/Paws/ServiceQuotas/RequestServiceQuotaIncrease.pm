@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceQuotas::RequestServiceQuotaIncrease;
-  use Moose;
-  has DesiredValue => (is => 'ro', isa => 'Num', required => 1);
-  has QuotaCode => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceCode => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::ServiceQuotas::Types qw//;
+  has DesiredValue => (is => 'ro', isa => Num, required => 1, predicate => 1);
+  has QuotaCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServiceCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RequestServiceQuotaIncrease');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceQuotas::RequestServiceQuotaIncreaseResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RequestServiceQuotaIncrease');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceQuotas::RequestServiceQuotaIncreaseResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ServiceCode' => 1,
+                    'DesiredValue' => 1,
+                    'QuotaCode' => 1
+                  },
+  'types' => {
+               'QuotaCode' => {
+                                'type' => 'Str'
+                              },
+               'DesiredValue' => {
+                                   'type' => 'Num'
+                                 },
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

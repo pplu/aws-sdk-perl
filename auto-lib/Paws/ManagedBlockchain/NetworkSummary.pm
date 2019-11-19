@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::NetworkSummary;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Framework => (is => 'ro', isa => 'Str');
-  has FrameworkVersion => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Framework => (is => 'ro', isa => Str);
+  has FrameworkVersion => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Framework' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'FrameworkVersion' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

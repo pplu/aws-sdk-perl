@@ -1,11 +1,48 @@
 package Paws::EC2::InstanceStatusEvent;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has InstanceEventId => (is => 'ro', isa => 'Str', request_name => 'instanceEventId', traits => ['NameInRequest']);
-  has NotAfter => (is => 'ro', isa => 'Str', request_name => 'notAfter', traits => ['NameInRequest']);
-  has NotBefore => (is => 'ro', isa => 'Str', request_name => 'notBefore', traits => ['NameInRequest']);
-  has NotBeforeDeadline => (is => 'ro', isa => 'Str', request_name => 'notBeforeDeadline', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Code => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has InstanceEventId => (is => 'ro', isa => Str);
+  has NotAfter => (is => 'ro', isa => Str);
+  has NotBefore => (is => 'ro', isa => Str);
+  has NotBeforeDeadline => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'Code' => 'code',
+                       'InstanceEventId' => 'instanceEventId',
+                       'NotAfter' => 'notAfter',
+                       'NotBefore' => 'notBefore',
+                       'NotBeforeDeadline' => 'notBeforeDeadline'
+                     },
+  'types' => {
+               'Code' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'NotBefore' => {
+                                'type' => 'Str'
+                              },
+               'NotBeforeDeadline' => {
+                                        'type' => 'Str'
+                                      },
+               'NotAfter' => {
+                               'type' => 'Str'
+                             },
+               'InstanceEventId' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

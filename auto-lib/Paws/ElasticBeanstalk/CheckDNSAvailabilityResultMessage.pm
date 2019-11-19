@@ -1,10 +1,31 @@
+# Generated from callresult_class.tt
 
 package Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage;
-  use Moose;
-  has Available => (is => 'ro', isa => 'Bool');
-  has FullyQualifiedCNAME => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has Available => (is => 'ro', isa => Bool);
+  has FullyQualifiedCNAME => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FullyQualifiedCNAME' => {
+                                          'type' => 'Str'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Available' => {
+                                'type' => 'Bool'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

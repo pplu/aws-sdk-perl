@@ -1,15 +1,39 @@
 
 package Paws::Greengrass::UpdateGroupCertificateConfiguration;
-  use Moose;
-  has CertificateExpiryInMilliseconds => (is => 'ro', isa => 'Str');
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has CertificateExpiryInMilliseconds => (is => 'ro', isa => Str, predicate => 1);
+  has GroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGroupCertificateConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::UpdateGroupCertificateConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateGroupCertificateConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::UpdateGroupCertificateConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'GroupId' => 'GroupId'
+                  },
+  'IsRequired' => {
+                    'GroupId' => 1
+                  },
+  'types' => {
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'CertificateExpiryInMilliseconds' => {
+                                                      'type' => 'Str'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

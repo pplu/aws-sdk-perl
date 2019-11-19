@@ -1,11 +1,41 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetAutoSnapshotsResult;
-  use Moose;
-  has AutoSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AutoSnapshotDetails]', traits => ['NameInRequest'], request_name => 'autoSnapshots' );
-  has ResourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceName' );
-  has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_AutoSnapshotDetails/;
+  has AutoSnapshots => (is => 'ro', isa => ArrayRef[Lightsail_AutoSnapshotDetails]);
+  has ResourceName => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceName' => {
+                                   'type' => 'Str'
+                                 },
+               'AutoSnapshots' => {
+                                    'class' => 'Paws::Lightsail::AutoSnapshotDetails',
+                                    'type' => 'ArrayRef[Lightsail_AutoSnapshotDetails]'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ResourceName' => 'resourceName',
+                       'AutoSnapshots' => 'autoSnapshots',
+                       'ResourceType' => 'resourceType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +46,7 @@ Paws::Lightsail::GetAutoSnapshotsResult
 =head1 ATTRIBUTES
 
 
-=head2 AutoSnapshots => ArrayRef[L<Paws::Lightsail::AutoSnapshotDetails>]
+=head2 AutoSnapshots => ArrayRef[Lightsail_AutoSnapshotDetails]
 
 An array of objects that describe the automatic snapshots that are
 available for the specified source resource.asdf

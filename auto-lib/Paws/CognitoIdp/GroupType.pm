@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::GroupType;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Precedence => (is => 'ro', isa => 'Int');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has UserPoolId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CognitoIdp::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has GroupName => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has Precedence => (is => 'ro', isa => Int);
+  has RoleArn => (is => 'ro', isa => Str);
+  has UserPoolId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'Precedence' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

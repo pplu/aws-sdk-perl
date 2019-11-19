@@ -1,15 +1,76 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::Dataset;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetAction]', request_name => 'actions', traits => ['NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has ContentDeliveryRules => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetContentDeliveryRule]', request_name => 'contentDeliveryRules', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetTrigger]', request_name => 'triggers', traits => ['NameInRequest']);
-  has VersioningConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::VersioningConfiguration', request_name => 'versioningConfiguration', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_DatasetContentDeliveryRule IoTAnalytics_VersioningConfiguration IoTAnalytics_RetentionPeriod IoTAnalytics_DatasetAction IoTAnalytics_DatasetTrigger/;
+  has Actions => (is => 'ro', isa => ArrayRef[IoTAnalytics_DatasetAction]);
+  has Arn => (is => 'ro', isa => Str);
+  has ContentDeliveryRules => (is => 'ro', isa => ArrayRef[IoTAnalytics_DatasetContentDeliveryRule]);
+  has CreationTime => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RetentionPeriod => (is => 'ro', isa => IoTAnalytics_RetentionPeriod);
+  has Status => (is => 'ro', isa => Str);
+  has Triggers => (is => 'ro', isa => ArrayRef[IoTAnalytics_DatasetTrigger]);
+  has VersioningConfiguration => (is => 'ro', isa => IoTAnalytics_VersioningConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentDeliveryRules' => {
+                                           'class' => 'Paws::IoTAnalytics::DatasetContentDeliveryRule',
+                                           'type' => 'ArrayRef[IoTAnalytics_DatasetContentDeliveryRule]'
+                                         },
+               'VersioningConfiguration' => {
+                                              'type' => 'IoTAnalytics_VersioningConfiguration',
+                                              'class' => 'Paws::IoTAnalytics::VersioningConfiguration'
+                                            },
+               'Actions' => {
+                              'type' => 'ArrayRef[IoTAnalytics_DatasetAction]',
+                              'class' => 'Paws::IoTAnalytics::DatasetAction'
+                            },
+               'Triggers' => {
+                               'type' => 'ArrayRef[IoTAnalytics_DatasetTrigger]',
+                               'class' => 'Paws::IoTAnalytics::DatasetTrigger'
+                             },
+               'RetentionPeriod' => {
+                                      'type' => 'IoTAnalytics_RetentionPeriod',
+                                      'class' => 'Paws::IoTAnalytics::RetentionPeriod'
+                                    }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'Arn' => 'arn',
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'Name' => 'name',
+                       'RetentionPeriod' => 'retentionPeriod',
+                       'Triggers' => 'triggers',
+                       'CreationTime' => 'creationTime',
+                       'Actions' => 'actions',
+                       'VersioningConfiguration' => 'versioningConfiguration',
+                       'ContentDeliveryRules' => 'contentDeliveryRules'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +106,7 @@ Information about a data set.
 =head1 ATTRIBUTES
 
 
-=head2 Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
+=head2 Actions => ArrayRef[IoTAnalytics_DatasetAction]
 
   The "DatasetAction" objects that automatically create the data set
 contents.
@@ -56,7 +117,7 @@ contents.
   The ARN of the data set.
 
 
-=head2 ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]
+=head2 ContentDeliveryRules => ArrayRef[IoTAnalytics_DatasetContentDeliveryRule]
 
   When data set contents are created they are delivered to destinations
 specified here.
@@ -77,7 +138,7 @@ specified here.
   The name of the data set.
 
 
-=head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
+=head2 RetentionPeriod => IoTAnalytics_RetentionPeriod
 
   [Optional] How long, in days, message data is kept for the data set.
 
@@ -87,13 +148,13 @@ specified here.
   The status of the data set.
 
 
-=head2 Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]
+=head2 Triggers => ArrayRef[IoTAnalytics_DatasetTrigger]
 
   The "DatasetTrigger" objects that specify when the data set is
 automatically updated.
 
 
-=head2 VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>
+=head2 VersioningConfiguration => IoTAnalytics_VersioningConfiguration
 
   [Optional] How many versions of data set contents are kept. If not
 specified or set to null, only the latest version plus the latest

@@ -1,16 +1,45 @@
 
 package Paws::EC2::CreatePlacementGroup;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has GroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'groupName' );
-  has PartitionCount => (is => 'ro', isa => 'Int');
-  has Strategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'strategy' );
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::EC2::Types qw//;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, predicate => 1);
+  has PartitionCount => (is => 'ro', isa => Int, predicate => 1);
+  has Strategy => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePlacementGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePlacementGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Strategy' => 'strategy',
+                       'DryRun' => 'dryRun',
+                       'GroupName' => 'groupName'
+                     },
+  'types' => {
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'Strategy' => {
+                               'type' => 'Str'
+                             },
+               'PartitionCount' => {
+                                     'type' => 'Int'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

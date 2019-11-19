@@ -1,16 +1,76 @@
+# Generated from default/object.tt
 package Paws::Lightsail::Bundle;
-  use Moose;
-  has BundleId => (is => 'ro', isa => 'Str', request_name => 'bundleId', traits => ['NameInRequest']);
-  has CpuCount => (is => 'ro', isa => 'Int', request_name => 'cpuCount', traits => ['NameInRequest']);
-  has DiskSizeInGb => (is => 'ro', isa => 'Int', request_name => 'diskSizeInGb', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has IsActive => (is => 'ro', isa => 'Bool', request_name => 'isActive', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Power => (is => 'ro', isa => 'Int', request_name => 'power', traits => ['NameInRequest']);
-  has Price => (is => 'ro', isa => 'Num', request_name => 'price', traits => ['NameInRequest']);
-  has RamSizeInGb => (is => 'ro', isa => 'Num', request_name => 'ramSizeInGb', traits => ['NameInRequest']);
-  has SupportedPlatforms => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedPlatforms', traits => ['NameInRequest']);
-  has TransferPerMonthInGb => (is => 'ro', isa => 'Int', request_name => 'transferPerMonthInGb', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Bool Num Undef ArrayRef/;
+  use Paws::Lightsail::Types qw//;
+  has BundleId => (is => 'ro', isa => Str);
+  has CpuCount => (is => 'ro', isa => Int);
+  has DiskSizeInGb => (is => 'ro', isa => Int);
+  has InstanceType => (is => 'ro', isa => Str);
+  has IsActive => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str);
+  has Power => (is => 'ro', isa => Int);
+  has Price => (is => 'ro', isa => Num);
+  has RamSizeInGb => (is => 'ro', isa => Num);
+  has SupportedPlatforms => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TransferPerMonthInGb => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SupportedPlatforms' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'TransferPerMonthInGb' => {
+                                           'type' => 'Int'
+                                         },
+               'DiskSizeInGb' => {
+                                   'type' => 'Int'
+                                 },
+               'Power' => {
+                            'type' => 'Int'
+                          },
+               'RamSizeInGb' => {
+                                  'type' => 'Num'
+                                },
+               'BundleId' => {
+                               'type' => 'Str'
+                             },
+               'CpuCount' => {
+                               'type' => 'Int'
+                             },
+               'IsActive' => {
+                               'type' => 'Bool'
+                             },
+               'Price' => {
+                            'type' => 'Num'
+                          }
+             },
+  'NameInRequest' => {
+                       'TransferPerMonthInGb' => 'transferPerMonthInGb',
+                       'InstanceType' => 'instanceType',
+                       'SupportedPlatforms' => 'supportedPlatforms',
+                       'Name' => 'name',
+                       'IsActive' => 'isActive',
+                       'CpuCount' => 'cpuCount',
+                       'Price' => 'price',
+                       'Power' => 'power',
+                       'DiskSizeInGb' => 'diskSizeInGb',
+                       'BundleId' => 'bundleId',
+                       'RamSizeInGb' => 'ramSizeInGb'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

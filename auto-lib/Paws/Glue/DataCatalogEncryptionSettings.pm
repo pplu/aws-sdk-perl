@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Glue::DataCatalogEncryptionSettings;
-  use Moose;
-  has ConnectionPasswordEncryption => (is => 'ro', isa => 'Paws::Glue::ConnectionPasswordEncryption');
-  has EncryptionAtRest => (is => 'ro', isa => 'Paws::Glue::EncryptionAtRest');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Glue::Types qw/Glue_EncryptionAtRest Glue_ConnectionPasswordEncryption/;
+  has ConnectionPasswordEncryption => (is => 'ro', isa => Glue_ConnectionPasswordEncryption);
+  has EncryptionAtRest => (is => 'ro', isa => Glue_EncryptionAtRest);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EncryptionAtRest' => {
+                                       'type' => 'Glue_EncryptionAtRest',
+                                       'class' => 'Paws::Glue::EncryptionAtRest'
+                                     },
+               'ConnectionPasswordEncryption' => {
+                                                   'class' => 'Paws::Glue::ConnectionPasswordEncryption',
+                                                   'type' => 'Glue_ConnectionPasswordEncryption'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +60,7 @@ security.
 =head1 ATTRIBUTES
 
 
-=head2 ConnectionPasswordEncryption => L<Paws::Glue::ConnectionPasswordEncryption>
+=head2 ConnectionPasswordEncryption => Glue_ConnectionPasswordEncryption
 
   When connection password protection is enabled, the Data Catalog uses a
 customer-provided key to encrypt the password as part of
@@ -47,7 +69,7 @@ C<ENCRYPTED_PASSWORD> field in the connection properties. You can
 enable catalog encryption or only password encryption.
 
 
-=head2 EncryptionAtRest => L<Paws::Glue::EncryptionAtRest>
+=head2 EncryptionAtRest => Glue_EncryptionAtRest
 
   Specifies the encryption-at-rest configuration for the Data Catalog.
 

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Batch::NodePropertiesSummary;
-  use Moose;
-  has IsMainNode => (is => 'ro', isa => 'Bool', request_name => 'isMainNode', traits => ['NameInRequest']);
-  has NodeIndex => (is => 'ro', isa => 'Int', request_name => 'nodeIndex', traits => ['NameInRequest']);
-  has NumNodes => (is => 'ro', isa => 'Int', request_name => 'numNodes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Int/;
+  use Paws::Batch::Types qw//;
+  has IsMainNode => (is => 'ro', isa => Bool);
+  has NodeIndex => (is => 'ro', isa => Int);
+  has NumNodes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumNodes' => {
+                               'type' => 'Int'
+                             },
+               'NodeIndex' => {
+                                'type' => 'Int'
+                              },
+               'IsMainNode' => {
+                                 'type' => 'Bool'
+                               }
+             },
+  'NameInRequest' => {
+                       'IsMainNode' => 'isMainNode',
+                       'NodeIndex' => 'nodeIndex',
+                       'NumNodes' => 'numNodes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

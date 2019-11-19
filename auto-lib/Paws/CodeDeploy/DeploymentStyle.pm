@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::DeploymentStyle;
-  use Moose;
-  has DeploymentOption => (is => 'ro', isa => 'Str', request_name => 'deploymentOption', traits => ['NameInRequest']);
-  has DeploymentType => (is => 'ro', isa => 'Str', request_name => 'deploymentType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has DeploymentOption => (is => 'ro', isa => Str);
+  has DeploymentType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeploymentOption' => {
+                                       'type' => 'Str'
+                                     },
+               'DeploymentType' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'DeploymentOption' => 'deploymentOption',
+                       'DeploymentType' => 'deploymentType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

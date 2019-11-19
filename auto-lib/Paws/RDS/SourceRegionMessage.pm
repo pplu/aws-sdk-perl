@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::SourceRegionMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has SourceRegions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::SourceRegion]', request_name => 'SourceRegion', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_SourceRegion/;
+  has Marker => (is => 'ro', isa => Str);
+  has SourceRegions => (is => 'ro', isa => ArrayRef[RDS_SourceRegion]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SourceRegions' => {
+                                    'class' => 'Paws::RDS::SourceRegion',
+                                    'type' => 'ArrayRef[RDS_SourceRegion]'
+                                  },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'SourceRegions' => 'SourceRegion'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +48,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-=head2 SourceRegions => ArrayRef[L<Paws::RDS::SourceRegion>]
+=head2 SourceRegions => ArrayRef[RDS_SourceRegion]
 
 A list of SourceRegion instances that contains each source AWS Region
 that the current AWS Region can get a Read Replica or a DB snapshot

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::ELBv2::TargetHealth;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has Reason => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ELBv2::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has Reason => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

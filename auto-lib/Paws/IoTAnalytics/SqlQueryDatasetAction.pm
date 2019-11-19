@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::SqlQueryDatasetAction;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::QueryFilter]', request_name => 'filters', traits => ['NameInRequest']);
-  has SqlQuery => (is => 'ro', isa => 'Str', request_name => 'sqlQuery', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_QueryFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[IoTAnalytics_QueryFilter]);
+  has SqlQuery => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Filters' => 'filters',
+                       'SqlQuery' => 'sqlQuery'
+                     },
+  'IsRequired' => {
+                    'SqlQuery' => 1
+                  },
+  'types' => {
+               'Filters' => {
+                              'type' => 'ArrayRef[IoTAnalytics_QueryFilter]',
+                              'class' => 'Paws::IoTAnalytics::QueryFilter'
+                            },
+               'SqlQuery' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +65,7 @@ The SQL query to modify the message.
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::IoTAnalytics::QueryFilter>]
+=head2 Filters => ArrayRef[IoTAnalytics_QueryFilter]
 
   Pre-filters applied to message data.
 

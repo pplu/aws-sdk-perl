@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::Quicksight::User;
-  use Moose;
-  has Active => (is => 'ro', isa => 'Bool');
-  has Arn => (is => 'ro', isa => 'Str');
-  has Email => (is => 'ro', isa => 'Str');
-  has IdentityType => (is => 'ro', isa => 'Str');
-  has PrincipalId => (is => 'ro', isa => 'Str');
-  has Role => (is => 'ro', isa => 'Str');
-  has UserName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::Quicksight::Types qw//;
+  has Active => (is => 'ro', isa => Bool);
+  has Arn => (is => 'ro', isa => Str);
+  has Email => (is => 'ro', isa => Str);
+  has IdentityType => (is => 'ro', isa => Str);
+  has PrincipalId => (is => 'ro', isa => Str);
+  has Role => (is => 'ro', isa => Str);
+  has UserName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Email' => {
+                            'type' => 'Str'
+                          },
+               'IdentityType' => {
+                                   'type' => 'Str'
+                                 },
+               'PrincipalId' => {
+                                  'type' => 'Str'
+                                },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'Active' => {
+                             'type' => 'Bool'
+                           },
+               'UserName' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,50 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::CreateSnapshotSchedule;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has NextInvocations => (is => 'ro', isa => 'Int');
-  has ScheduleDefinitions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ScheduleDescription => (is => 'ro', isa => 'Str');
-  has ScheduleIdentifier => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::RedShift::Types qw/RedShift_Tag/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has NextInvocations => (is => 'ro', isa => Int, predicate => 1);
+  has ScheduleDefinitions => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ScheduleDescription => (is => 'ro', isa => Str, predicate => 1);
+  has ScheduleIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshotSchedule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::SnapshotSchedule');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSnapshotScheduleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSnapshotSchedule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::SnapshotSchedule');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateSnapshotScheduleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScheduleIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'ScheduleDescription' => {
+                                          'type' => 'Str'
+                                        },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'NextInvocations' => {
+                                      'type' => 'Int'
+                                    },
+               'ScheduleDefinitions' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'Tags' => {
+                           'type' => 'ArrayRef[RedShift_Tag]',
+                           'class' => 'Paws::RedShift::Tag'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +128,7 @@ characters are allowed for the identifier.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
 An optional set of tags you can use to search for the schedule.
 

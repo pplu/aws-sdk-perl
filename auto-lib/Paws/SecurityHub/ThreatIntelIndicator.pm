@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::ThreatIntelIndicator;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str');
-  has LastObservedAt => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str');
-  has SourceUrl => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw//;
+  has Category => (is => 'ro', isa => Str);
+  has LastObservedAt => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str);
+  has SourceUrl => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastObservedAt' => {
+                                     'type' => 'Str'
+                                   },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'SourceUrl' => {
+                                'type' => 'Str'
+                              },
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Value' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,80 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Queue;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has LastUpdated => (is => 'ro', isa => 'Str', request_name => 'lastUpdated', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has PricingPlan => (is => 'ro', isa => 'Str', request_name => 'pricingPlan', traits => ['NameInRequest']);
-  has ProgressingJobsCount => (is => 'ro', isa => 'Int', request_name => 'progressingJobsCount', traits => ['NameInRequest']);
-  has ReservationPlan => (is => 'ro', isa => 'Paws::MediaConvert::ReservationPlan', request_name => 'reservationPlan', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has SubmittedJobsCount => (is => 'ro', isa => 'Int', request_name => 'submittedJobsCount', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_ReservationPlan/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LastUpdated => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has PricingPlan => (is => 'ro', isa => Str);
+  has ProgressingJobsCount => (is => 'ro', isa => Int);
+  has ReservationPlan => (is => 'ro', isa => MediaConvert_ReservationPlan);
+  has Status => (is => 'ro', isa => Str);
+  has SubmittedJobsCount => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ReservationPlan' => {
+                                      'type' => 'MediaConvert_ReservationPlan',
+                                      'class' => 'Paws::MediaConvert::ReservationPlan'
+                                    },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'LastUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ProgressingJobsCount' => {
+                                           'type' => 'Int'
+                                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'PricingPlan' => {
+                                  'type' => 'Str'
+                                },
+               'SubmittedJobsCount' => {
+                                         'type' => 'Int'
+                                       },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'CreatedAt' => 'createdAt',
+                       'Type' => 'type',
+                       'SubmittedJobsCount' => 'submittedJobsCount',
+                       'PricingPlan' => 'pricingPlan',
+                       'Description' => 'description',
+                       'ProgressingJobsCount' => 'progressingJobsCount',
+                       'Name' => 'name',
+                       'LastUpdated' => 'lastUpdated',
+                       'Arn' => 'arn',
+                       'ReservationPlan' => 'reservationPlan',
+                       'Status' => 'status'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -91,7 +155,7 @@ pricing requires a 12-month commitment.
   The estimated number of jobs with a PROGRESSING status.
 
 
-=head2 ReservationPlan => L<Paws::MediaConvert::ReservationPlan>
+=head2 ReservationPlan => MediaConvert_ReservationPlan
 
   Details about the pricing plan for your reserved queue. Required for
 reserved queues and not applicable to on-demand queues.

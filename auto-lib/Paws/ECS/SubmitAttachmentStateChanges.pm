@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::SubmitAttachmentStateChanges;
-  use Moose;
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::AttachmentStateChange]', traits => ['NameInRequest'], request_name => 'attachments' , required => 1);
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECS::Types qw/ECS_AttachmentStateChange/;
+  has Attachments => (is => 'ro', isa => ArrayRef[ECS_AttachmentStateChange], required => 1, predicate => 1);
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SubmitAttachmentStateChanges');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::SubmitAttachmentStateChangesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SubmitAttachmentStateChanges');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::SubmitAttachmentStateChangesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Attachments' => 'attachments',
+                       'Cluster' => 'cluster'
+                     },
+  'IsRequired' => {
+                    'Attachments' => 1
+                  },
+  'types' => {
+               'Attachments' => {
+                                  'type' => 'ArrayRef[ECS_AttachmentStateChange]',
+                                  'class' => 'Paws::ECS::AttachmentStateChange'
+                                },
+               'Cluster' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +79,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>]
+=head2 B<REQUIRED> Attachments => ArrayRef[ECS_AttachmentStateChange]
 
 Any attachments associated with the state change request.
 

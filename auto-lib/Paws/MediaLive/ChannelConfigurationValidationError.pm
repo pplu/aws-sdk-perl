@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ChannelConfigurationValidationError;
-  use Moose;
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has ValidationErrors => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ValidationError]', request_name => 'validationErrors', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_ValidationError/;
+  has Message => (is => 'ro', isa => Str);
+  has ValidationErrors => (is => 'ro', isa => ArrayRef[MediaLive_ValidationError]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Message' => 'message',
+                       'ValidationErrors' => 'validationErrors'
+                     },
+  'types' => {
+               'ValidationErrors' => {
+                                       'type' => 'ArrayRef[MediaLive_ValidationError]',
+                                       'class' => 'Paws::MediaLive::ValidationError'
+                                     },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ Placeholder documentation for ChannelConfigurationValidationError
   
 
 
-=head2 ValidationErrors => ArrayRef[L<Paws::MediaLive::ValidationError>]
+=head2 ValidationErrors => ArrayRef[MediaLive_ValidationError]
 
   A collection of validation error responses.
 

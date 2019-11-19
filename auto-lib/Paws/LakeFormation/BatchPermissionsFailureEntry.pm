@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::LakeFormation::BatchPermissionsFailureEntry;
-  use Moose;
-  has Error => (is => 'ro', isa => 'Paws::LakeFormation::ErrorDetail');
-  has RequestEntry => (is => 'ro', isa => 'Paws::LakeFormation::BatchPermissionsRequestEntry');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::LakeFormation::Types qw/LakeFormation_BatchPermissionsRequestEntry LakeFormation_ErrorDetail/;
+  has Error => (is => 'ro', isa => LakeFormation_ErrorDetail);
+  has RequestEntry => (is => 'ro', isa => LakeFormation_BatchPermissionsRequestEntry);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestEntry' => {
+                                   'type' => 'LakeFormation_BatchPermissionsRequestEntry',
+                                   'class' => 'Paws::LakeFormation::BatchPermissionsRequestEntry'
+                                 },
+               'Error' => {
+                            'class' => 'Paws::LakeFormation::ErrorDetail',
+                            'type' => 'LakeFormation_ErrorDetail'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +60,12 @@ operation.
 =head1 ATTRIBUTES
 
 
-=head2 Error => L<Paws::LakeFormation::ErrorDetail>
+=head2 Error => LakeFormation_ErrorDetail
 
   An error message that applies to the failure of the entry.
 
 
-=head2 RequestEntry => L<Paws::LakeFormation::BatchPermissionsRequestEntry>
+=head2 RequestEntry => LakeFormation_BatchPermissionsRequestEntry
 
   An identifier for an entry of the batch request.
 

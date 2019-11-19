@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::ELBv2::ForwardActionConfig;
-  use Moose;
-  has TargetGroups => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::TargetGroupTuple]');
-  has TargetGroupStickinessConfig => (is => 'ro', isa => 'Paws::ELBv2::TargetGroupStickinessConfig');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::ELBv2::Types qw/ELBv2_TargetGroupStickinessConfig ELBv2_TargetGroupTuple/;
+  has TargetGroups => (is => 'ro', isa => ArrayRef[ELBv2_TargetGroupTuple]);
+  has TargetGroupStickinessConfig => (is => 'ro', isa => ELBv2_TargetGroupStickinessConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetGroupStickinessConfig' => {
+                                                  'class' => 'Paws::ELBv2::TargetGroupStickinessConfig',
+                                                  'type' => 'ELBv2_TargetGroupStickinessConfig'
+                                                },
+               'TargetGroups' => {
+                                   'type' => 'ArrayRef[ELBv2_TargetGroupTuple]',
+                                   'class' => 'Paws::ELBv2::TargetGroupTuple'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +59,13 @@ Information about a forward action.
 =head1 ATTRIBUTES
 
 
-=head2 TargetGroups => ArrayRef[L<Paws::ELBv2::TargetGroupTuple>]
+=head2 TargetGroups => ArrayRef[ELBv2_TargetGroupTuple]
 
   One or more target groups. For Network Load Balancers, you can specify
 a single target group.
 
 
-=head2 TargetGroupStickinessConfig => L<Paws::ELBv2::TargetGroupStickinessConfig>
+=head2 TargetGroupStickinessConfig => ELBv2_TargetGroupStickinessConfig
 
   The target group stickiness for the rule.
 

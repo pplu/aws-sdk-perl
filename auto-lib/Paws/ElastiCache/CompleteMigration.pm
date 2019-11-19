@@ -1,14 +1,36 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::CompleteMigration;
-  use Moose;
-  has Force => (is => 'ro', isa => 'Bool');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ElastiCache::Types qw//;
+  has Force => (is => 'ro', isa => Bool, predicate => 1);
+  has ReplicationGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CompleteMigration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CompleteMigrationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CompleteMigrationResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CompleteMigration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::CompleteMigrationResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CompleteMigrationResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Force' => {
+                            'type' => 'Bool'
+                          },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'ReplicationGroupId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

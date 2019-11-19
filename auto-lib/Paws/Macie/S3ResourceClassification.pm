@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::Macie::S3ResourceClassification;
-  use Moose;
-  has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest'], required => 1);
-  has ClassificationType => (is => 'ro', isa => 'Paws::Macie::ClassificationType', request_name => 'classificationType', traits => ['NameInRequest'], required => 1);
-  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Macie::Types qw/Macie_ClassificationType/;
+  has BucketName => (is => 'ro', isa => Str, required => 1);
+  has ClassificationType => (is => 'ro', isa => Macie_ClassificationType, required => 1);
+  has Prefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Prefix' => 'prefix',
+                       'ClassificationType' => 'classificationType',
+                       'BucketName' => 'bucketName'
+                     },
+  'IsRequired' => {
+                    'BucketName' => 1,
+                    'ClassificationType' => 1
+                  },
+  'types' => {
+               'ClassificationType' => {
+                                         'class' => 'Paws::Macie::ClassificationType',
+                                         'type' => 'Macie_ClassificationType'
+                                       },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +79,7 @@ in the ListS3Resources action.
   The name of the S3 bucket that you want to associate with Amazon Macie.
 
 
-=head2 B<REQUIRED> ClassificationType => L<Paws::Macie::ClassificationType>
+=head2 B<REQUIRED> ClassificationType => Macie_ClassificationType
 
   The classification type that you want to specify for the resource
 associated with Amazon Macie.

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::SqlInjectionMatchSetSummary;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has SqlInjectionMatchSetId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has SqlInjectionMatchSetId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SqlInjectionMatchSetId' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'SqlInjectionMatchSetId' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

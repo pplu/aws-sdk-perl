@@ -1,18 +1,62 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchLogs::StartQuery;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'endTime' , required => 1);
-  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
-  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' );
-  has LogGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'logGroupNames' );
-  has QueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryString' , required => 1);
-  has StartTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startTime' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has EndTime => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has LogGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has LogGroupNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has QueryString => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartTime => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartQuery');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::StartQueryResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartQuery');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchLogs::StartQueryResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogGroupNames' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'EndTime' => {
+                              'type' => 'Int'
+                            },
+               'QueryString' => {
+                                  'type' => 'Str'
+                                },
+               'StartTime' => {
+                                'type' => 'Int'
+                              },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'Limit' => {
+                            'type' => 'Int'
+                          }
+             },
+  'NameInRequest' => {
+                       'QueryString' => 'queryString',
+                       'EndTime' => 'endTime',
+                       'StartTime' => 'startTime',
+                       'LogGroupNames' => 'logGroupNames',
+                       'LogGroupName' => 'logGroupName',
+                       'Limit' => 'limit'
+                     },
+  'IsRequired' => {
+                    'EndTime' => 1,
+                    'QueryString' => 1,
+                    'StartTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

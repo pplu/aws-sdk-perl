@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::CreateWebACLResponse;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str');
-  has WebACL => (is => 'ro', isa => 'Paws::WAFRegional::WebACL');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_WebACL/;
+  has ChangeToken => (is => 'ro', isa => Str);
+  has WebACL => (is => 'ro', isa => WAFRegional_WebACL);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WebACL' => {
+                             'type' => 'WAFRegional_WebACL',
+                             'class' => 'Paws::WAFRegional::WebACL'
+                           },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ You can also use this value to query the status of the request. For
 more information, see GetChangeTokenStatus.
 
 
-=head2 WebACL => L<Paws::WAFRegional::WebACL>
+=head2 WebACL => WAFRegional_WebACL
 
 The WebACL returned in the C<CreateWebACL> response.
 

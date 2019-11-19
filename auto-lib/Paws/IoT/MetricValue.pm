@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoT::MetricValue;
-  use Moose;
-  has Cidrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'cidrs', traits => ['NameInRequest']);
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
-  has Ports => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'ports', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str Int/;
+  use Paws::IoT::Types qw//;
+  has Cidrs => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Count => (is => 'ro', isa => Int);
+  has Ports => (is => 'ro', isa => ArrayRef[Int]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Cidrs' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Ports' => {
+                            'type' => 'ArrayRef[Int]'
+                          },
+               'Count' => {
+                            'type' => 'Int'
+                          }
+             },
+  'NameInRequest' => {
+                       'Count' => 'count',
+                       'Ports' => 'ports',
+                       'Cidrs' => 'cidrs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

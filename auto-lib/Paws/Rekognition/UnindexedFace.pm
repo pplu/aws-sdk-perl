@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Rekognition::UnindexedFace;
-  use Moose;
-  has FaceDetail => (is => 'ro', isa => 'Paws::Rekognition::FaceDetail');
-  has Reasons => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_FaceDetail/;
+  has FaceDetail => (is => 'ro', isa => Rekognition_FaceDetail);
+  has Reasons => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FaceDetail' => {
+                                 'class' => 'Paws::Rekognition::FaceDetail',
+                                 'type' => 'Rekognition_FaceDetail'
+                               },
+               'Reasons' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ response attribute to determine why a face wasn't indexed.
 =head1 ATTRIBUTES
 
 
-=head2 FaceDetail => L<Paws::Rekognition::FaceDetail>
+=head2 FaceDetail => Rekognition_FaceDetail
 
   The structure that contains attributes of a face that
 C<IndexFaces>detected, but didn't index.

@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::SES::ReceiptRule;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::SES::ReceiptAction]');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Recipients => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ScanEnabled => (is => 'ro', isa => 'Bool');
-  has TlsPolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Bool Str Undef/;
+  use Paws::SES::Types qw/SES_ReceiptAction/;
+  has Actions => (is => 'ro', isa => ArrayRef[SES_ReceiptAction]);
+  has Enabled => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Recipients => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ScanEnabled => (is => 'ro', isa => Bool);
+  has TlsPolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'TlsPolicy' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Actions' => {
+                              'class' => 'Paws::SES::ReceiptAction',
+                              'type' => 'ArrayRef[SES_ReceiptAction]'
+                            },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'ScanEnabled' => {
+                                  'type' => 'Bool'
+                                },
+               'Recipients' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +88,7 @@ Developer Guide
 =head1 ATTRIBUTES
 
 
-=head2 Actions => ArrayRef[L<Paws::SES::ReceiptAction>]
+=head2 Actions => ArrayRef[SES_ReceiptAction]
 
   An ordered list of actions to perform on messages that match at least
 one of the recipient email addresses or domains specified in the

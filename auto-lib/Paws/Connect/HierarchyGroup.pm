@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Connect::HierarchyGroup;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has HierarchyPath => (is => 'ro', isa => 'Paws::Connect::HierarchyPath');
-  has Id => (is => 'ro', isa => 'Str');
-  has LevelId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Connect::Types qw/Connect_HierarchyPath/;
+  has Arn => (is => 'ro', isa => Str);
+  has HierarchyPath => (is => 'ro', isa => Connect_HierarchyPath);
+  has Id => (is => 'ro', isa => Str);
+  has LevelId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'HierarchyPath' => {
+                                    'type' => 'Connect_HierarchyPath',
+                                    'class' => 'Paws::Connect::HierarchyPath'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LevelId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +75,7 @@ Contains information about a hierarchy group.
   The Amazon Resource Name (ARN) of the hierarchy group.
 
 
-=head2 HierarchyPath => L<Paws::Connect::HierarchyPath>
+=head2 HierarchyPath => Connect_HierarchyPath
 
   Information about the levels in the hierarchy group.
 

@@ -1,17 +1,53 @@
 
 package Paws::GuardDuty::InviteMembers;
-  use Moose;
-  has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'accountIds', required => 1);
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has DisableEmailNotification => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableEmailNotification');
-  has Message => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'message');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::GuardDuty::Types qw//;
+  has AccountIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DisableEmailNotification => (is => 'ro', isa => Bool, predicate => 1);
+  has Message => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'InviteMembers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/member/invite');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::InviteMembersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'InviteMembers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/member/invite');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::InviteMembersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DisableEmailNotification' => {
+                                               'type' => 'Bool'
+                                             },
+               'AccountIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'AccountIds' => 'accountIds',
+                       'Message' => 'message',
+                       'DisableEmailNotification' => 'disableEmailNotification'
+                     },
+  'IsRequired' => {
+                    'DetectorId' => 1,
+                    'AccountIds' => 1
+                  },
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

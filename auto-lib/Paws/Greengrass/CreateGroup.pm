@@ -1,17 +1,49 @@
 
 package Paws::Greengrass::CreateGroup;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has InitialVersion => (is => 'ro', isa => 'Paws::Greengrass::GroupVersion');
-  has Name => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass_Tags Greengrass_GroupVersion/;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has InitialVersion => (is => 'ro', isa => Greengrass_GroupVersion, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => Greengrass_Tags, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/groups');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/groups');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::CreateGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'types' => {
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'InitialVersion' => {
+                                     'type' => 'Greengrass_GroupVersion',
+                                     'class' => 'Paws::Greengrass::GroupVersion'
+                                   },
+               'Tags' => {
+                           'type' => 'Greengrass_Tags',
+                           'class' => 'Paws::Greengrass::Tags'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +101,7 @@ A client token used to correlate requests and responses.
 
 
 
-=head2 InitialVersion => L<Paws::Greengrass::GroupVersion>
+=head2 InitialVersion => Greengrass_GroupVersion
 
 Information about the initial version of the group.
 
@@ -81,7 +113,7 @@ The name of the group.
 
 
 
-=head2 Tags => L<Paws::Greengrass::Tags>
+=head2 Tags => Greengrass_Tags
 
 Tag(s) to add to the new resource.
 

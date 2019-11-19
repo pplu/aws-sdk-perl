@@ -1,18 +1,59 @@
 
 package Paws::Amplify::ListArtifacts;
-  use Moose;
-  has AppId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'appId', required => 1);
-  has BranchName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'branchName', required => 1);
-  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Amplify::Types qw//;
+  has AppId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BranchName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListArtifacts');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apps/{appId}/branches/{branchName}/jobs/{jobId}/artifacts');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Amplify::ListArtifactsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListArtifacts');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/apps/{appId}/branches/{branchName}/jobs/{jobId}/artifacts');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Amplify::ListArtifactsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'AppId' => {
+                            'type' => 'Str'
+                          },
+               'BranchName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'BranchName' => 1,
+                    'AppId' => 1,
+                    'JobId' => 1
+                  },
+  'ParamInQuery' => {
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken'
+                    },
+  'ParamInURI' => {
+                    'BranchName' => 'branchName',
+                    'JobId' => 'jobId',
+                    'AppId' => 'appId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

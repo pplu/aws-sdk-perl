@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::GetDeviceInstanceResult;
-  use Moose;
-  has DeviceInstance => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceInstance', traits => ['NameInRequest'], request_name => 'deviceInstance' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_DeviceInstance/;
+  has DeviceInstance => (is => 'ro', isa => DeviceFarm_DeviceInstance);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DeviceInstance' => 'deviceInstance'
+                     },
+  'types' => {
+               'DeviceInstance' => {
+                                     'type' => 'DeviceFarm_DeviceInstance',
+                                     'class' => 'Paws::DeviceFarm::DeviceInstance'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DeviceFarm::GetDeviceInstanceResult
 =head1 ATTRIBUTES
 
 
-=head2 DeviceInstance => L<Paws::DeviceFarm::DeviceInstance>
+=head2 DeviceInstance => DeviceFarm_DeviceInstance
 
 An object containing information about your device instance.
 

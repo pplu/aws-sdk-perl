@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::DescribeKeyPhrasesDetectionJobResponse;
-  use Moose;
-  has KeyPhrasesDetectionJobProperties => (is => 'ro', isa => 'Paws::Comprehend::KeyPhrasesDetectionJobProperties');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw/Comprehend_KeyPhrasesDetectionJobProperties/;
+  has KeyPhrasesDetectionJobProperties => (is => 'ro', isa => Comprehend_KeyPhrasesDetectionJobProperties);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'KeyPhrasesDetectionJobProperties' => {
+                                                       'class' => 'Paws::Comprehend::KeyPhrasesDetectionJobProperties',
+                                                       'type' => 'Comprehend_KeyPhrasesDetectionJobProperties'
+                                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Comprehend::DescribeKeyPhrasesDetectionJobResponse
 =head1 ATTRIBUTES
 
 
-=head2 KeyPhrasesDetectionJobProperties => L<Paws::Comprehend::KeyPhrasesDetectionJobProperties>
+=head2 KeyPhrasesDetectionJobProperties => Comprehend_KeyPhrasesDetectionJobProperties
 
 An object that contains the properties associated with a key phrases
 detection job.

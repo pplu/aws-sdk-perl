@@ -1,9 +1,38 @@
 package Paws::EC2::RouteTableAssociation;
-  use Moose;
-  has Main => (is => 'ro', isa => 'Bool', request_name => 'main', traits => ['NameInRequest']);
-  has RouteTableAssociationId => (is => 'ro', isa => 'Str', request_name => 'routeTableAssociationId', traits => ['NameInRequest']);
-  has RouteTableId => (is => 'ro', isa => 'Str', request_name => 'routeTableId', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool Str/;
+  use Paws::EC2::Types qw//;
+  has Main => (is => 'ro', isa => Bool);
+  has RouteTableAssociationId => (is => 'ro', isa => Str);
+  has RouteTableId => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RouteTableAssociationId' => 'routeTableAssociationId',
+                       'Main' => 'main',
+                       'RouteTableId' => 'routeTableId',
+                       'SubnetId' => 'subnetId'
+                     },
+  'types' => {
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'RouteTableId' => {
+                                   'type' => 'Str'
+                                 },
+               'RouteTableAssociationId' => {
+                                              'type' => 'Str'
+                                            },
+               'Main' => {
+                           'type' => 'Bool'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

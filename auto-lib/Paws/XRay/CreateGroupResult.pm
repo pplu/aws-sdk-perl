@@ -1,9 +1,27 @@
 
 package Paws::XRay::CreateGroupResult;
-  use Moose;
-  has Group => (is => 'ro', isa => 'Paws::XRay::Group');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::XRay::Types qw/XRay_Group/;
+  has Group => (is => 'ro', isa => XRay_Group);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Group' => {
+                            'class' => 'Paws::XRay::Group',
+                            'type' => 'XRay_Group'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::XRay::CreateGroupResult
 =head1 ATTRIBUTES
 
 
-=head2 Group => L<Paws::XRay::Group>
+=head2 Group => XRay_Group
 
 The group that was created. Contains the name of the group that was
 created, the ARN of the group that was generated based on the group

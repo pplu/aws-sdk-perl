@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::IAM::AccessKeyMetadata;
-  use Moose;
-  has AccessKeyId => (is => 'ro', isa => 'Str');
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has UserName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has AccessKeyId => (is => 'ro', isa => Str);
+  has CreateDate => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has UserName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccessKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,78 @@
+# Generated from default/object.tt
 package Paws::MediaLive::AudioDescription;
-  use Moose;
-  has AudioNormalizationSettings => (is => 'ro', isa => 'Paws::MediaLive::AudioNormalizationSettings', request_name => 'audioNormalizationSettings', traits => ['NameInRequest']);
-  has AudioSelectorName => (is => 'ro', isa => 'Str', request_name => 'audioSelectorName', traits => ['NameInRequest'], required => 1);
-  has AudioType => (is => 'ro', isa => 'Str', request_name => 'audioType', traits => ['NameInRequest']);
-  has AudioTypeControl => (is => 'ro', isa => 'Str', request_name => 'audioTypeControl', traits => ['NameInRequest']);
-  has CodecSettings => (is => 'ro', isa => 'Paws::MediaLive::AudioCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest']);
-  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
-  has LanguageCodeControl => (is => 'ro', isa => 'Str', request_name => 'languageCodeControl', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has RemixSettings => (is => 'ro', isa => 'Paws::MediaLive::RemixSettings', request_name => 'remixSettings', traits => ['NameInRequest']);
-  has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_AudioNormalizationSettings MediaLive_AudioCodecSettings MediaLive_RemixSettings/;
+  has AudioNormalizationSettings => (is => 'ro', isa => MediaLive_AudioNormalizationSettings);
+  has AudioSelectorName => (is => 'ro', isa => Str, required => 1);
+  has AudioType => (is => 'ro', isa => Str);
+  has AudioTypeControl => (is => 'ro', isa => Str);
+  has CodecSettings => (is => 'ro', isa => MediaLive_AudioCodecSettings);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has LanguageCodeControl => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has RemixSettings => (is => 'ro', isa => MediaLive_RemixSettings);
+  has StreamName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AudioType' => {
+                                'type' => 'Str'
+                              },
+               'CodecSettings' => {
+                                    'class' => 'Paws::MediaLive::AudioCodecSettings',
+                                    'type' => 'MediaLive_AudioCodecSettings'
+                                  },
+               'AudioNormalizationSettings' => {
+                                                 'type' => 'MediaLive_AudioNormalizationSettings',
+                                                 'class' => 'Paws::MediaLive::AudioNormalizationSettings'
+                                               },
+               'LanguageCodeControl' => {
+                                          'type' => 'Str'
+                                        },
+               'AudioSelectorName' => {
+                                        'type' => 'Str'
+                                      },
+               'RemixSettings' => {
+                                    'class' => 'Paws::MediaLive::RemixSettings',
+                                    'type' => 'MediaLive_RemixSettings'
+                                  },
+               'AudioTypeControl' => {
+                                       'type' => 'Str'
+                                     },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'AudioSelectorName' => 1,
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'StreamName' => 'streamName',
+                       'LanguageCode' => 'languageCode',
+                       'AudioTypeControl' => 'audioTypeControl',
+                       'RemixSettings' => 'remixSettings',
+                       'AudioSelectorName' => 'audioSelectorName',
+                       'LanguageCodeControl' => 'languageCodeControl',
+                       'AudioNormalizationSettings' => 'audioNormalizationSettings',
+                       'CodecSettings' => 'codecSettings',
+                       'AudioType' => 'audioType',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +108,7 @@ Audio Description
 =head1 ATTRIBUTES
 
 
-=head2 AudioNormalizationSettings => L<Paws::MediaLive::AudioNormalizationSettings>
+=head2 AudioNormalizationSettings => MediaLive_AudioNormalizationSettings
 
   Advanced audio normalization settings.
 
@@ -72,7 +135,7 @@ is included in the output. Note that this field and audioType are both
 ignored if inputType is broadcasterMixedAd.
 
 
-=head2 CodecSettings => L<Paws::MediaLive::AudioCodecSettings>
+=head2 CodecSettings => MediaLive_AudioCodecSettings
 
   Audio codec settings.
 
@@ -99,7 +162,7 @@ uniquely identify this AudioDescription. Description names should be
 unique within this Live Event.
 
 
-=head2 RemixSettings => L<Paws::MediaLive::RemixSettings>
+=head2 RemixSettings => MediaLive_RemixSettings
 
   Settings that control how input audio channels are remixed into the
 output audio channels.

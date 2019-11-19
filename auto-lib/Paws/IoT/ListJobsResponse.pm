@@ -1,10 +1,35 @@
 
 package Paws::IoT::ListJobsResponse;
-  use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::IoT::JobSummary]', traits => ['NameInRequest'], request_name => 'jobs');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_JobSummary/;
+  has Jobs => (is => 'ro', isa => ArrayRef[IoT_JobSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Jobs' => 'jobs',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Jobs' => {
+                           'type' => 'ArrayRef[IoT_JobSummary]',
+                           'class' => 'Paws::IoT::JobSummary'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::IoT::ListJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Jobs => ArrayRef[L<Paws::IoT::JobSummary>]
+=head2 Jobs => ArrayRef[IoT_JobSummary]
 
 A list of jobs.
 

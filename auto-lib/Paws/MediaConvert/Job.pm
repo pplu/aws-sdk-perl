@@ -1,28 +1,146 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Job;
-  use Moose;
-  has AccelerationSettings => (is => 'ro', isa => 'Paws::MediaConvert::AccelerationSettings', request_name => 'accelerationSettings', traits => ['NameInRequest']);
-  has AccelerationStatus => (is => 'ro', isa => 'Str', request_name => 'accelerationStatus', traits => ['NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has BillingTagsSource => (is => 'ro', isa => 'Str', request_name => 'billingTagsSource', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has CurrentPhase => (is => 'ro', isa => 'Str', request_name => 'currentPhase', traits => ['NameInRequest']);
-  has ErrorCode => (is => 'ro', isa => 'Int', request_name => 'errorCode', traits => ['NameInRequest']);
-  has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has JobPercentComplete => (is => 'ro', isa => 'Int', request_name => 'jobPercentComplete', traits => ['NameInRequest']);
-  has JobTemplate => (is => 'ro', isa => 'Str', request_name => 'jobTemplate', traits => ['NameInRequest']);
-  has Messages => (is => 'ro', isa => 'Paws::MediaConvert::JobMessages', request_name => 'messages', traits => ['NameInRequest']);
-  has OutputGroupDetails => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputGroupDetail]', request_name => 'outputGroupDetails', traits => ['NameInRequest']);
-  has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
-  has Queue => (is => 'ro', isa => 'Str', request_name => 'queue', traits => ['NameInRequest']);
-  has RetryCount => (is => 'ro', isa => 'Int', request_name => 'retryCount', traits => ['NameInRequest']);
-  has Role => (is => 'ro', isa => 'Str', request_name => 'role', traits => ['NameInRequest'], required => 1);
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobSettings', request_name => 'settings', traits => ['NameInRequest'], required => 1);
-  has SimulateReservedQueue => (is => 'ro', isa => 'Str', request_name => 'simulateReservedQueue', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusUpdateInterval => (is => 'ro', isa => 'Str', request_name => 'statusUpdateInterval', traits => ['NameInRequest']);
-  has Timing => (is => 'ro', isa => 'Paws::MediaConvert::Timing', request_name => 'timing', traits => ['NameInRequest']);
-  has UserMetadata => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', request_name => 'userMetadata', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_JobSettings MediaConvert_JobMessages MediaConvert_OutputGroupDetail MediaConvert_AccelerationSettings MediaConvert_Timing MediaConvert___mapOf__string/;
+  has AccelerationSettings => (is => 'ro', isa => MediaConvert_AccelerationSettings);
+  has AccelerationStatus => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has BillingTagsSource => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has CurrentPhase => (is => 'ro', isa => Str);
+  has ErrorCode => (is => 'ro', isa => Int);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has JobPercentComplete => (is => 'ro', isa => Int);
+  has JobTemplate => (is => 'ro', isa => Str);
+  has Messages => (is => 'ro', isa => MediaConvert_JobMessages);
+  has OutputGroupDetails => (is => 'ro', isa => ArrayRef[MediaConvert_OutputGroupDetail]);
+  has Priority => (is => 'ro', isa => Int);
+  has Queue => (is => 'ro', isa => Str);
+  has RetryCount => (is => 'ro', isa => Int);
+  has Role => (is => 'ro', isa => Str, required => 1);
+  has Settings => (is => 'ro', isa => MediaConvert_JobSettings, required => 1);
+  has SimulateReservedQueue => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusUpdateInterval => (is => 'ro', isa => Str);
+  has Timing => (is => 'ro', isa => MediaConvert_Timing);
+  has UserMetadata => (is => 'ro', isa => MediaConvert___mapOf__string);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorCode' => {
+                                'type' => 'Int'
+                              },
+               'Timing' => {
+                             'class' => 'Paws::MediaConvert::Timing',
+                             'type' => 'MediaConvert_Timing'
+                           },
+               'CurrentPhase' => {
+                                   'type' => 'Str'
+                                 },
+               'BillingTagsSource' => {
+                                        'type' => 'Str'
+                                      },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'OutputGroupDetails' => {
+                                         'class' => 'Paws::MediaConvert::OutputGroupDetail',
+                                         'type' => 'ArrayRef[MediaConvert_OutputGroupDetail]'
+                                       },
+               'JobPercentComplete' => {
+                                         'type' => 'Int'
+                                       },
+               'StatusUpdateInterval' => {
+                                           'type' => 'Str'
+                                         },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SimulateReservedQueue' => {
+                                            'type' => 'Str'
+                                          },
+               'Settings' => {
+                               'class' => 'Paws::MediaConvert::JobSettings',
+                               'type' => 'MediaConvert_JobSettings'
+                             },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Messages' => {
+                               'class' => 'Paws::MediaConvert::JobMessages',
+                               'type' => 'MediaConvert_JobMessages'
+                             },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'AccelerationSettings' => {
+                                           'class' => 'Paws::MediaConvert::AccelerationSettings',
+                                           'type' => 'MediaConvert_AccelerationSettings'
+                                         },
+               'UserMetadata' => {
+                                   'type' => 'MediaConvert___mapOf__string',
+                                   'class' => 'Paws::MediaConvert::__mapOf__string'
+                                 },
+               'Queue' => {
+                            'type' => 'Str'
+                          },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'JobTemplate' => {
+                                  'type' => 'Str'
+                                },
+               'AccelerationStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'RetryCount' => {
+                                 'type' => 'Int'
+                               },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'RetryCount' => 'retryCount',
+                       'AccelerationStatus' => 'accelerationStatus',
+                       'ErrorMessage' => 'errorMessage',
+                       'CreatedAt' => 'createdAt',
+                       'AccelerationSettings' => 'accelerationSettings',
+                       'Priority' => 'priority',
+                       'Messages' => 'messages',
+                       'Role' => 'role',
+                       'Queue' => 'queue',
+                       'Arn' => 'arn',
+                       'JobTemplate' => 'jobTemplate',
+                       'UserMetadata' => 'userMetadata',
+                       'StatusUpdateInterval' => 'statusUpdateInterval',
+                       'JobPercentComplete' => 'jobPercentComplete',
+                       'Settings' => 'settings',
+                       'Status' => 'status',
+                       'SimulateReservedQueue' => 'simulateReservedQueue',
+                       'Timing' => 'timing',
+                       'ErrorCode' => 'errorCode',
+                       'CurrentPhase' => 'currentPhase',
+                       'Id' => 'id',
+                       'OutputGroupDetails' => 'outputGroupDetails',
+                       'BillingTagsSource' => 'billingTagsSource'
+                     },
+  'IsRequired' => {
+                    'Role' => 1,
+                    'Settings' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +178,7 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 =head1 ATTRIBUTES
 
 
-=head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
+=head2 AccelerationSettings => MediaConvert_AccelerationSettings
 
   Accelerated transcoding can significantly speed up jobs with long,
 visually complex content.
@@ -143,13 +261,13 @@ those cases, jobPercentComplete returns a null value.
 job template.
 
 
-=head2 Messages => L<Paws::MediaConvert::JobMessages>
+=head2 Messages => MediaConvert_JobMessages
 
   Provides messages from the service about jobs that you have already
 successfully submitted.
 
 
-=head2 OutputGroupDetails => ArrayRef[L<Paws::MediaConvert::OutputGroupDetail>]
+=head2 OutputGroupDetails => ArrayRef[MediaConvert_OutputGroupDetail]
 
   List of output group details
 
@@ -180,7 +298,7 @@ permissions, see the User Guide topic at the User Guide at
 http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html
 
 
-=head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobSettings>
+=head2 B<REQUIRED> Settings => MediaConvert_JobSettings
 
   JobSettings contains all the transcode settings for a job.
 
@@ -209,13 +327,13 @@ the service begins processing your job to the time it completes the
 transcode or encounters an error.
 
 
-=head2 Timing => L<Paws::MediaConvert::Timing>
+=head2 Timing => MediaConvert_Timing
 
   Information about when jobs are submitted, started, and finished is
 specified in Unix epoch format in seconds.
 
 
-=head2 UserMetadata => L<Paws::MediaConvert::__mapOf__string>
+=head2 UserMetadata => MediaConvert___mapOf__string
 
   User-defined metadata that you want to associate with an MediaConvert
 job. You specify metadata in key/value pairs.

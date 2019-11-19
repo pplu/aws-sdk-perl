@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::IoT::RepublishAction;
-  use Moose;
-  has Qos => (is => 'ro', isa => 'Int', request_name => 'qos', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has Topic => (is => 'ro', isa => 'Str', request_name => 'topic', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::IoT::Types qw//;
+  has Qos => (is => 'ro', isa => Int);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has Topic => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'Topic' => 'topic',
+                       'Qos' => 'qos'
+                     },
+  'IsRequired' => {
+                    'Topic' => 1,
+                    'RoleArn' => 1
+                  },
+  'types' => {
+               'Topic' => {
+                            'type' => 'Str'
+                          },
+               'Qos' => {
+                          'type' => 'Int'
+                        },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

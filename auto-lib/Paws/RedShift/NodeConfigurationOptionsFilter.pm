@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::RedShift::NodeConfigurationOptionsFilter;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has Operator => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'item', request_name => 'Value', traits => ['NameInRequest','NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::RedShift::Types qw//;
+  has Name => (is => 'ro', isa => Str);
+  has Operator => (is => 'ro', isa => Str);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Values' => 'Value'
+                     },
+  'types' => {
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Operator' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

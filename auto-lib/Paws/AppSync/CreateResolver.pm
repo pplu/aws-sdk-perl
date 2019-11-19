@@ -1,21 +1,76 @@
 
 package Paws::AppSync::CreateResolver;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has DataSourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSourceName');
-  has FieldName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fieldName', required => 1);
-  has Kind => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kind');
-  has PipelineConfig => (is => 'ro', isa => 'Paws::AppSync::PipelineConfig', traits => ['NameInRequest'], request_name => 'pipelineConfig');
-  has RequestMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestMappingTemplate', required => 1);
-  has ResponseMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'responseMappingTemplate');
-  has TypeName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'typeName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw/AppSync_PipelineConfig/;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DataSourceName => (is => 'ro', isa => Str, predicate => 1);
+  has FieldName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Kind => (is => 'ro', isa => Str, predicate => 1);
+  has PipelineConfig => (is => 'ro', isa => AppSync_PipelineConfig, predicate => 1);
+  has RequestMappingTemplate => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResponseMappingTemplate => (is => 'ro', isa => Str, predicate => 1);
+  has TypeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateResolver');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apis/{apiId}/types/{typeName}/resolvers');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppSync::CreateResolverResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateResolver');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apis/{apiId}/types/{typeName}/resolvers');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppSync::CreateResolverResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'DataSourceName' => {
+                                     'type' => 'Str'
+                                   },
+               'Kind' => {
+                           'type' => 'Str'
+                         },
+               'ResponseMappingTemplate' => {
+                                              'type' => 'Str'
+                                            },
+               'RequestMappingTemplate' => {
+                                             'type' => 'Str'
+                                           },
+               'PipelineConfig' => {
+                                     'type' => 'AppSync_PipelineConfig',
+                                     'class' => 'Paws::AppSync::PipelineConfig'
+                                   },
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'FieldName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'TypeName' => 1,
+                    'FieldName' => 1,
+                    'ApiId' => 1,
+                    'RequestMappingTemplate' => 1
+                  },
+  'NameInRequest' => {
+                       'RequestMappingTemplate' => 'requestMappingTemplate',
+                       'PipelineConfig' => 'pipelineConfig',
+                       'DataSourceName' => 'dataSourceName',
+                       'Kind' => 'kind',
+                       'ResponseMappingTemplate' => 'responseMappingTemplate',
+                       'FieldName' => 'fieldName'
+                     },
+  'ParamInURI' => {
+                    'ApiId' => 'apiId',
+                    'TypeName' => 'typeName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -101,7 +156,7 @@ sources.
 
 Valid values are: C<"UNIT">, C<"PIPELINE">
 
-=head2 PipelineConfig => L<Paws::AppSync::PipelineConfig>
+=head2 PipelineConfig => AppSync_PipelineConfig
 
 The C<PipelineConfig>.
 

@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Datasync::StartTaskExecution;
-  use Moose;
-  has Includes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
-  has OverrideOptions => (is => 'ro', isa => 'Paws::Datasync::Options');
-  has TaskArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Datasync::Types qw/Datasync_FilterRule Datasync_Options/;
+  has Includes => (is => 'ro', isa => ArrayRef[Datasync_FilterRule], predicate => 1);
+  has OverrideOptions => (is => 'ro', isa => Datasync_Options, predicate => 1);
+  has TaskArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartTaskExecution');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Datasync::StartTaskExecutionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartTaskExecution');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Datasync::StartTaskExecutionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OverrideOptions' => {
+                                      'class' => 'Paws::Datasync::Options',
+                                      'type' => 'Datasync_Options'
+                                    },
+               'Includes' => {
+                               'type' => 'ArrayRef[Datasync_FilterRule]',
+                               'class' => 'Paws::Datasync::FilterRule'
+                             },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'TaskArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +94,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 =head1 ATTRIBUTES
 
 
-=head2 Includes => ArrayRef[L<Paws::Datasync::FilterRule>]
+=head2 Includes => ArrayRef[Datasync_FilterRule]
 
 A list of filter rules that determines which files to include when
 running a task. The pattern should contain a single filter string that
@@ -76,7 +103,7 @@ consists of the patterns to include. The patterns are delimited by "|"
 
 
 
-=head2 OverrideOptions => L<Paws::Datasync::Options>
+=head2 OverrideOptions => Datasync_Options
 
 
 

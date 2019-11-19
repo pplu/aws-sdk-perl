@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::SSM::InstanceAggregatedAssociationOverview;
-  use Moose;
-  has DetailedStatus => (is => 'ro', isa => 'Str');
-  has InstanceAssociationStatusAggregatedCount => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationStatusAggregatedCount');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_InstanceAssociationStatusAggregatedCount/;
+  has DetailedStatus => (is => 'ro', isa => Str);
+  has InstanceAssociationStatusAggregatedCount => (is => 'ro', isa => SSM_InstanceAssociationStatusAggregatedCount);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceAssociationStatusAggregatedCount' => {
+                                                               'class' => 'Paws::SSM::InstanceAssociationStatusAggregatedCount',
+                                                               'type' => 'SSM_InstanceAssociationStatusAggregatedCount'
+                                                             },
+               'DetailedStatus' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Status information about the aggregated associations.
   Detailed status information about the aggregated associations.
 
 
-=head2 InstanceAssociationStatusAggregatedCount => L<Paws::SSM::InstanceAssociationStatusAggregatedCount>
+=head2 InstanceAssociationStatusAggregatedCount => SSM_InstanceAssociationStatusAggregatedCount
 
   The number of associations for the instance(s).
 

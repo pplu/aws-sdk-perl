@@ -1,15 +1,73 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::NetworkInterface;
-  use Moose;
-  has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipv6Addresses', traits => ['NameInRequest']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
-  has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::PrivateIpAddressDetails]', request_name => 'privateIpAddresses', traits => ['NameInRequest']);
-  has PublicDnsName => (is => 'ro', isa => 'Str', request_name => 'publicDnsName', traits => ['NameInRequest']);
-  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::SecurityGroup]', request_name => 'securityGroups', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::GuardDuty::Types qw/GuardDuty_SecurityGroup GuardDuty_PrivateIpAddressDetails/;
+  has Ipv6Addresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has PrivateDnsName => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+  has PrivateIpAddresses => (is => 'ro', isa => ArrayRef[GuardDuty_PrivateIpAddressDetails]);
+  has PublicDnsName => (is => 'ro', isa => Str);
+  has PublicIp => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[GuardDuty_SecurityGroup]);
+  has SubnetId => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrivateIpAddresses' => {
+                                         'type' => 'ArrayRef[GuardDuty_PrivateIpAddressDetails]',
+                                         'class' => 'Paws::GuardDuty::PrivateIpAddressDetails'
+                                       },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'SecurityGroups' => {
+                                     'class' => 'Paws::GuardDuty::SecurityGroup',
+                                     'type' => 'ArrayRef[GuardDuty_SecurityGroup]'
+                                   },
+               'PrivateDnsName' => {
+                                     'type' => 'Str'
+                                   },
+               'PublicIp' => {
+                               'type' => 'Str'
+                             },
+               'PublicDnsName' => {
+                                    'type' => 'Str'
+                                  },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'Ipv6Addresses' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Ipv6Addresses' => 'ipv6Addresses',
+                       'PublicIp' => 'publicIp',
+                       'PrivateIpAddress' => 'privateIpAddress',
+                       'PublicDnsName' => 'publicDnsName',
+                       'PrivateDnsName' => 'privateDnsName',
+                       'SecurityGroups' => 'securityGroups',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'PrivateIpAddresses' => 'privateIpAddresses',
+                       'VpcId' => 'vpcId',
+                       'SubnetId' => 'subnetId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +123,7 @@ Contains information about the network interface of the Ec2 instance.
   Private IP address of the EC2 instance.
 
 
-=head2 PrivateIpAddresses => ArrayRef[L<Paws::GuardDuty::PrivateIpAddressDetails>]
+=head2 PrivateIpAddresses => ArrayRef[GuardDuty_PrivateIpAddressDetails]
 
   Other private IP address information of the EC2 instance.
 
@@ -80,7 +138,7 @@ Contains information about the network interface of the Ec2 instance.
   Public IP address of the EC2 instance.
 
 
-=head2 SecurityGroups => ArrayRef[L<Paws::GuardDuty::SecurityGroup>]
+=head2 SecurityGroups => ArrayRef[GuardDuty_SecurityGroup]
 
   Security groups associated with the EC2 instance.
 

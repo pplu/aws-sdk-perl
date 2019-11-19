@@ -1,13 +1,62 @@
+# Generated from default/object.tt
 package Paws::RAM::ResourceShareInvitation;
-  use Moose;
-  has InvitationTimestamp => (is => 'ro', isa => 'Str', request_name => 'invitationTimestamp', traits => ['NameInRequest']);
-  has ReceiverAccountId => (is => 'ro', isa => 'Str', request_name => 'receiverAccountId', traits => ['NameInRequest']);
-  has ResourceShareArn => (is => 'ro', isa => 'Str', request_name => 'resourceShareArn', traits => ['NameInRequest']);
-  has ResourceShareAssociations => (is => 'ro', isa => 'ArrayRef[Paws::RAM::ResourceShareAssociation]', request_name => 'resourceShareAssociations', traits => ['NameInRequest']);
-  has ResourceShareInvitationArn => (is => 'ro', isa => 'Str', request_name => 'resourceShareInvitationArn', traits => ['NameInRequest']);
-  has ResourceShareName => (is => 'ro', isa => 'Str', request_name => 'resourceShareName', traits => ['NameInRequest']);
-  has SenderAccountId => (is => 'ro', isa => 'Str', request_name => 'senderAccountId', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RAM::Types qw/RAM_ResourceShareAssociation/;
+  has InvitationTimestamp => (is => 'ro', isa => Str);
+  has ReceiverAccountId => (is => 'ro', isa => Str);
+  has ResourceShareArn => (is => 'ro', isa => Str);
+  has ResourceShareAssociations => (is => 'ro', isa => ArrayRef[RAM_ResourceShareAssociation]);
+  has ResourceShareInvitationArn => (is => 'ro', isa => Str);
+  has ResourceShareName => (is => 'ro', isa => Str);
+  has SenderAccountId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InvitationTimestamp' => {
+                                          'type' => 'Str'
+                                        },
+               'ReceiverAccountId' => {
+                                        'type' => 'Str'
+                                      },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SenderAccountId' => {
+                                      'type' => 'Str'
+                                    },
+               'ResourceShareArn' => {
+                                       'type' => 'Str'
+                                     },
+               'ResourceShareAssociations' => {
+                                                'class' => 'Paws::RAM::ResourceShareAssociation',
+                                                'type' => 'ArrayRef[RAM_ResourceShareAssociation]'
+                                              },
+               'ResourceShareName' => {
+                                        'type' => 'Str'
+                                      },
+               'ResourceShareInvitationArn' => {
+                                                 'type' => 'Str'
+                                               }
+             },
+  'NameInRequest' => {
+                       'ResourceShareInvitationArn' => 'resourceShareInvitationArn',
+                       'ResourceShareAssociations' => 'resourceShareAssociations',
+                       'ResourceShareName' => 'resourceShareName',
+                       'ResourceShareArn' => 'resourceShareArn',
+                       'SenderAccountId' => 'senderAccountId',
+                       'Status' => 'status',
+                       'ReceiverAccountId' => 'receiverAccountId',
+                       'InvitationTimestamp' => 'invitationTimestamp'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +107,7 @@ Describes an invitation to join a resource share.
   The Amazon Resource Name (ARN) of the resource share.
 
 
-=head2 ResourceShareAssociations => ArrayRef[L<Paws::RAM::ResourceShareAssociation>]
+=head2 ResourceShareAssociations => ArrayRef[RAM_ResourceShareAssociation]
 
   To view the resources associated with a pending resource share
 invitation, use ListPendingInvitationResources

@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::UpdateLag;
-  use Moose;
-  has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' , required => 1);
-  has LagName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagName' );
-  has MinimumLinks => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumLinks' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DirectConnect::Types qw//;
+  has LagId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LagName => (is => 'ro', isa => Str, predicate => 1);
+  has MinimumLinks => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateLag');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::Lag');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateLag');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::Lag');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LagId' => 1
+                  },
+  'NameInRequest' => {
+                       'LagId' => 'lagId',
+                       'LagName' => 'lagName',
+                       'MinimumLinks' => 'minimumLinks'
+                     },
+  'types' => {
+               'MinimumLinks' => {
+                                   'type' => 'Int'
+                                 },
+               'LagId' => {
+                            'type' => 'Str'
+                          },
+               'LagName' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

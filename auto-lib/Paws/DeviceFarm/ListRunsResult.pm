@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListRunsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Runs => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Run]', traits => ['NameInRequest'], request_name => 'runs' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Run/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Runs => (is => 'ro', isa => ArrayRef[DeviceFarm_Run]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Runs' => {
+                           'type' => 'ArrayRef[DeviceFarm_Run]',
+                           'class' => 'Paws::DeviceFarm::Run'
+                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Runs' => 'runs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +49,7 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
-=head2 Runs => ArrayRef[L<Paws::DeviceFarm::Run>]
+=head2 Runs => ArrayRef[DeviceFarm_Run]
 
 Information about the runs.
 

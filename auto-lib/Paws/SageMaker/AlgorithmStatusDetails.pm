@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::SageMaker::AlgorithmStatusDetails;
-  use Moose;
-  has ImageScanStatuses => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::AlgorithmStatusItem]');
-  has ValidationStatuses => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::AlgorithmStatusItem]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_AlgorithmStatusItem/;
+  has ImageScanStatuses => (is => 'ro', isa => ArrayRef[SageMaker_AlgorithmStatusItem]);
+  has ValidationStatuses => (is => 'ro', isa => ArrayRef[SageMaker_AlgorithmStatusItem]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValidationStatuses' => {
+                                         'class' => 'Paws::SageMaker::AlgorithmStatusItem',
+                                         'type' => 'ArrayRef[SageMaker_AlgorithmStatusItem]'
+                                       },
+               'ImageScanStatuses' => {
+                                        'type' => 'ArrayRef[SageMaker_AlgorithmStatusItem]',
+                                        'class' => 'Paws::SageMaker::AlgorithmStatusItem'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +59,12 @@ Specifies the validation and image scan statuses of the algorithm.
 =head1 ATTRIBUTES
 
 
-=head2 ImageScanStatuses => ArrayRef[L<Paws::SageMaker::AlgorithmStatusItem>]
+=head2 ImageScanStatuses => ArrayRef[SageMaker_AlgorithmStatusItem]
 
   The status of the scan of the algorithm's Docker image container.
 
 
-=head2 ValidationStatuses => ArrayRef[L<Paws::SageMaker::AlgorithmStatusItem>]
+=head2 ValidationStatuses => ArrayRef[SageMaker_AlgorithmStatusItem]
 
   The status of algorithm validation.
 

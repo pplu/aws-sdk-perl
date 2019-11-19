@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::FMS::EvaluationResult;
-  use Moose;
-  has ComplianceStatus => (is => 'ro', isa => 'Str');
-  has EvaluationLimitExceeded => (is => 'ro', isa => 'Bool');
-  has ViolatorCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::FMS::Types qw//;
+  has ComplianceStatus => (is => 'ro', isa => Str);
+  has EvaluationLimitExceeded => (is => 'ro', isa => Bool);
+  has ViolatorCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EvaluationLimitExceeded' => {
+                                              'type' => 'Bool'
+                                            },
+               'ComplianceStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'ViolatorCount' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

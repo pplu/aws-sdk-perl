@@ -1,15 +1,73 @@
+# Generated from default/object.tt
 package Paws::IoT::AuditFinding;
-  use Moose;
-  has CheckName => (is => 'ro', isa => 'Str', request_name => 'checkName', traits => ['NameInRequest']);
-  has FindingId => (is => 'ro', isa => 'Str', request_name => 'findingId', traits => ['NameInRequest']);
-  has FindingTime => (is => 'ro', isa => 'Str', request_name => 'findingTime', traits => ['NameInRequest']);
-  has NonCompliantResource => (is => 'ro', isa => 'Paws::IoT::NonCompliantResource', request_name => 'nonCompliantResource', traits => ['NameInRequest']);
-  has ReasonForNonCompliance => (is => 'ro', isa => 'Str', request_name => 'reasonForNonCompliance', traits => ['NameInRequest']);
-  has ReasonForNonComplianceCode => (is => 'ro', isa => 'Str', request_name => 'reasonForNonComplianceCode', traits => ['NameInRequest']);
-  has RelatedResources => (is => 'ro', isa => 'ArrayRef[Paws::IoT::RelatedResource]', request_name => 'relatedResources', traits => ['NameInRequest']);
-  has Severity => (is => 'ro', isa => 'Str', request_name => 'severity', traits => ['NameInRequest']);
-  has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
-  has TaskStartTime => (is => 'ro', isa => 'Str', request_name => 'taskStartTime', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_NonCompliantResource IoT_RelatedResource/;
+  has CheckName => (is => 'ro', isa => Str);
+  has FindingId => (is => 'ro', isa => Str);
+  has FindingTime => (is => 'ro', isa => Str);
+  has NonCompliantResource => (is => 'ro', isa => IoT_NonCompliantResource);
+  has ReasonForNonCompliance => (is => 'ro', isa => Str);
+  has ReasonForNonComplianceCode => (is => 'ro', isa => Str);
+  has RelatedResources => (is => 'ro', isa => ArrayRef[IoT_RelatedResource]);
+  has Severity => (is => 'ro', isa => Str);
+  has TaskId => (is => 'ro', isa => Str);
+  has TaskStartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RelatedResources' => {
+                                       'type' => 'ArrayRef[IoT_RelatedResource]',
+                                       'class' => 'Paws::IoT::RelatedResource'
+                                     },
+               'CheckName' => {
+                                'type' => 'Str'
+                              },
+               'Severity' => {
+                               'type' => 'Str'
+                             },
+               'NonCompliantResource' => {
+                                           'class' => 'Paws::IoT::NonCompliantResource',
+                                           'type' => 'IoT_NonCompliantResource'
+                                         },
+               'TaskStartTime' => {
+                                    'type' => 'Str'
+                                  },
+               'FindingId' => {
+                                'type' => 'Str'
+                              },
+               'FindingTime' => {
+                                  'type' => 'Str'
+                                },
+               'ReasonForNonComplianceCode' => {
+                                                 'type' => 'Str'
+                                               },
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'ReasonForNonCompliance' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'CheckName' => 'checkName',
+                       'Severity' => 'severity',
+                       'RelatedResources' => 'relatedResources',
+                       'NonCompliantResource' => 'nonCompliantResource',
+                       'FindingId' => 'findingId',
+                       'TaskStartTime' => 'taskStartTime',
+                       'ReasonForNonCompliance' => 'reasonForNonCompliance',
+                       'TaskId' => 'taskId',
+                       'ReasonForNonComplianceCode' => 'reasonForNonComplianceCode',
+                       'FindingTime' => 'findingTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +119,7 @@ used to apply mitigation tasks to one or more sets of findings.
   The time the result (finding) was discovered.
 
 
-=head2 NonCompliantResource => L<Paws::IoT::NonCompliantResource>
+=head2 NonCompliantResource => IoT_NonCompliantResource
 
   The resource that was found to be noncompliant with the audit check.
 
@@ -76,7 +134,7 @@ used to apply mitigation tasks to one or more sets of findings.
   A code that indicates the reason that the resource was noncompliant.
 
 
-=head2 RelatedResources => ArrayRef[L<Paws::IoT::RelatedResource>]
+=head2 RelatedResources => ArrayRef[IoT_RelatedResource]
 
   The list of related resources.
 

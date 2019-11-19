@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::Recipes;
-  use Moose;
-  has Configure => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Deploy => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Setup => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Shutdown => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Undeploy => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::OpsWorks::Types qw//;
+  has Configure => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Deploy => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Setup => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Shutdown => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Undeploy => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Shutdown' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'Configure' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Undeploy' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'Setup' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Deploy' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

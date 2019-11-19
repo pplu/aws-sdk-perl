@@ -1,11 +1,44 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetUserPolicyResponse;
-  use Moose;
-  has PolicyDocument => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute',], required => 1);
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has PolicyDocument => (is => 'ro', isa => Str, required => 1);
+  has Policy => ( is => 'lazy', builder => sub { my $self = shift;  return decode_json(URL::Encode::url_decode($self->PolicyDocument)); });
+  has PolicyName => (is => 'ro', isa => Str, required => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PolicyDocument' => 1,
+                    'UserName' => 1,
+                    'PolicyName' => 1
+                  },
+  'types' => {
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

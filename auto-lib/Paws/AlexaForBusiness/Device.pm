@@ -1,15 +1,61 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::Device;
-  use Moose;
-  has DeviceArn => (is => 'ro', isa => 'Str');
-  has DeviceName => (is => 'ro', isa => 'Str');
-  has DeviceSerialNumber => (is => 'ro', isa => 'Str');
-  has DeviceStatus => (is => 'ro', isa => 'Str');
-  has DeviceStatusInfo => (is => 'ro', isa => 'Paws::AlexaForBusiness::DeviceStatusInfo');
-  has DeviceType => (is => 'ro', isa => 'Str');
-  has MacAddress => (is => 'ro', isa => 'Str');
-  has NetworkProfileInfo => (is => 'ro', isa => 'Paws::AlexaForBusiness::DeviceNetworkProfileInfo');
-  has RoomArn => (is => 'ro', isa => 'Str');
-  has SoftwareVersion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_DeviceStatusInfo AlexaForBusiness_DeviceNetworkProfileInfo/;
+  has DeviceArn => (is => 'ro', isa => Str);
+  has DeviceName => (is => 'ro', isa => Str);
+  has DeviceSerialNumber => (is => 'ro', isa => Str);
+  has DeviceStatus => (is => 'ro', isa => Str);
+  has DeviceStatusInfo => (is => 'ro', isa => AlexaForBusiness_DeviceStatusInfo);
+  has DeviceType => (is => 'ro', isa => Str);
+  has MacAddress => (is => 'ro', isa => Str);
+  has NetworkProfileInfo => (is => 'ro', isa => AlexaForBusiness_DeviceNetworkProfileInfo);
+  has RoomArn => (is => 'ro', isa => Str);
+  has SoftwareVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceSerialNumber' => {
+                                         'type' => 'Str'
+                                       },
+               'NetworkProfileInfo' => {
+                                         'class' => 'Paws::AlexaForBusiness::DeviceNetworkProfileInfo',
+                                         'type' => 'AlexaForBusiness_DeviceNetworkProfileInfo'
+                                       },
+               'DeviceArn' => {
+                                'type' => 'Str'
+                              },
+               'MacAddress' => {
+                                 'type' => 'Str'
+                               },
+               'DeviceStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'RoomArn' => {
+                              'type' => 'Str'
+                            },
+               'DeviceStatusInfo' => {
+                                       'class' => 'Paws::AlexaForBusiness::DeviceStatusInfo',
+                                       'type' => 'AlexaForBusiness_DeviceStatusInfo'
+                                     },
+               'SoftwareVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'DeviceType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +112,7 @@ A device with attributes.
 DeviceStatusInfo value for details.
 
 
-=head2 DeviceStatusInfo => L<Paws::AlexaForBusiness::DeviceStatusInfo>
+=head2 DeviceStatusInfo => AlexaForBusiness_DeviceStatusInfo
 
   Detailed information about a device's status.
 
@@ -81,7 +127,7 @@ DeviceStatusInfo value for details.
   The MAC address of a device.
 
 
-=head2 NetworkProfileInfo => L<Paws::AlexaForBusiness::DeviceNetworkProfileInfo>
+=head2 NetworkProfileInfo => AlexaForBusiness_DeviceNetworkProfileInfo
 
   Detailed information about a device's network profile.
 

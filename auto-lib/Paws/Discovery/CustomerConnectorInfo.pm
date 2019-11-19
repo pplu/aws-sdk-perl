@@ -1,12 +1,65 @@
+# Generated from default/object.tt
 package Paws::Discovery::CustomerConnectorInfo;
-  use Moose;
-  has ActiveConnectors => (is => 'ro', isa => 'Int', request_name => 'activeConnectors', traits => ['NameInRequest'], required => 1);
-  has BlackListedConnectors => (is => 'ro', isa => 'Int', request_name => 'blackListedConnectors', traits => ['NameInRequest'], required => 1);
-  has HealthyConnectors => (is => 'ro', isa => 'Int', request_name => 'healthyConnectors', traits => ['NameInRequest'], required => 1);
-  has ShutdownConnectors => (is => 'ro', isa => 'Int', request_name => 'shutdownConnectors', traits => ['NameInRequest'], required => 1);
-  has TotalConnectors => (is => 'ro', isa => 'Int', request_name => 'totalConnectors', traits => ['NameInRequest'], required => 1);
-  has UnhealthyConnectors => (is => 'ro', isa => 'Int', request_name => 'unhealthyConnectors', traits => ['NameInRequest'], required => 1);
-  has UnknownConnectors => (is => 'ro', isa => 'Int', request_name => 'unknownConnectors', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Discovery::Types qw//;
+  has ActiveConnectors => (is => 'ro', isa => Int, required => 1);
+  has BlackListedConnectors => (is => 'ro', isa => Int, required => 1);
+  has HealthyConnectors => (is => 'ro', isa => Int, required => 1);
+  has ShutdownConnectors => (is => 'ro', isa => Int, required => 1);
+  has TotalConnectors => (is => 'ro', isa => Int, required => 1);
+  has UnhealthyConnectors => (is => 'ro', isa => Int, required => 1);
+  has UnknownConnectors => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HealthyConnectors' => {
+                                        'type' => 'Int'
+                                      },
+               'BlackListedConnectors' => {
+                                            'type' => 'Int'
+                                          },
+               'ActiveConnectors' => {
+                                       'type' => 'Int'
+                                     },
+               'UnhealthyConnectors' => {
+                                          'type' => 'Int'
+                                        },
+               'UnknownConnectors' => {
+                                        'type' => 'Int'
+                                      },
+               'TotalConnectors' => {
+                                      'type' => 'Int'
+                                    },
+               'ShutdownConnectors' => {
+                                         'type' => 'Int'
+                                       }
+             },
+  'NameInRequest' => {
+                       'UnknownConnectors' => 'unknownConnectors',
+                       'TotalConnectors' => 'totalConnectors',
+                       'ShutdownConnectors' => 'shutdownConnectors',
+                       'HealthyConnectors' => 'healthyConnectors',
+                       'BlackListedConnectors' => 'blackListedConnectors',
+                       'ActiveConnectors' => 'activeConnectors',
+                       'UnhealthyConnectors' => 'unhealthyConnectors'
+                     },
+  'IsRequired' => {
+                    'HealthyConnectors' => 1,
+                    'BlackListedConnectors' => 1,
+                    'ActiveConnectors' => 1,
+                    'UnhealthyConnectors' => 1,
+                    'UnknownConnectors' => 1,
+                    'TotalConnectors' => 1,
+                    'ShutdownConnectors' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

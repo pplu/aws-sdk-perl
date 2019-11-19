@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Macie::ListS3ResourcesResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has S3Resources => (is => 'ro', isa => 'ArrayRef[Paws::Macie::S3ResourceClassification]', traits => ['NameInRequest'], request_name => 's3Resources' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Macie::Types qw/Macie_S3ResourceClassification/;
+  has NextToken => (is => 'ro', isa => Str);
+  has S3Resources => (is => 'ro', isa => ArrayRef[Macie_S3ResourceClassification]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'S3Resources' => 's3Resources'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'S3Resources' => {
+                                  'type' => 'ArrayRef[Macie_S3ResourceClassification]',
+                                  'class' => 'Paws::Macie::S3ResourceClassification'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +49,7 @@ the nextToken parameter in a subsequent pagination request. If there is
 no more data to be listed, this parameter is set to null.
 
 
-=head2 S3Resources => ArrayRef[L<Paws::Macie::S3ResourceClassification>]
+=head2 S3Resources => ArrayRef[Macie_S3ResourceClassification]
 
 A list of the associated S3 resources returned by the action.
 

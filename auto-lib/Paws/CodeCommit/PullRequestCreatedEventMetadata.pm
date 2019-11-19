@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::PullRequestCreatedEventMetadata;
-  use Moose;
-  has DestinationCommitId => (is => 'ro', isa => 'Str', request_name => 'destinationCommitId', traits => ['NameInRequest']);
-  has MergeBase => (is => 'ro', isa => 'Str', request_name => 'mergeBase', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
-  has SourceCommitId => (is => 'ro', isa => 'Str', request_name => 'sourceCommitId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has DestinationCommitId => (is => 'ro', isa => Str);
+  has MergeBase => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+  has SourceCommitId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DestinationCommitId' => {
+                                          'type' => 'Str'
+                                        },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'MergeBase' => {
+                                'type' => 'Str'
+                              },
+               'SourceCommitId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'SourceCommitId' => 'sourceCommitId',
+                       'MergeBase' => 'mergeBase',
+                       'DestinationCommitId' => 'destinationCommitId',
+                       'RepositoryName' => 'repositoryName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

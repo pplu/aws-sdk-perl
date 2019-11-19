@@ -1,15 +1,43 @@
 
 package Paws::ApiGateway::UntagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource_arn', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'tagKeys', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ApiGateway::Types qw//;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagKeys => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UntagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tags/{resource_arn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UntagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tags/{resource_arn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ResourceArn' => 'resource_arn'
+                  },
+  'types' => {
+               'TagKeys' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'TagKeys' => 1,
+                    'ResourceArn' => 1
+                  },
+  'ParamInQuery' => {
+                      'TagKeys' => 'tagKeys'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

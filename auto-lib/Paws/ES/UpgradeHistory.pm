@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::ES::UpgradeHistory;
-  use Moose;
-  has StartTimestamp => (is => 'ro', isa => 'Str');
-  has StepsList => (is => 'ro', isa => 'ArrayRef[Paws::ES::UpgradeStepItem]');
-  has UpgradeName => (is => 'ro', isa => 'Str');
-  has UpgradeStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ES::Types qw/ES_UpgradeStepItem/;
+  has StartTimestamp => (is => 'ro', isa => Str);
+  has StepsList => (is => 'ro', isa => ArrayRef[ES_UpgradeStepItem]);
+  has UpgradeName => (is => 'ro', isa => Str);
+  has UpgradeStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StepsList' => {
+                                'class' => 'Paws::ES::UpgradeStepItem',
+                                'type' => 'ArrayRef[ES_UpgradeStepItem]'
+                              },
+               'StartTimestamp' => {
+                                     'type' => 'Str'
+                                   },
+               'UpgradeStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'UpgradeName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +72,7 @@ History of the last 10 Upgrades and Upgrade Eligibility Checks.
 "yyyy-MM-ddTHH:mm:ssZ" format.
 
 
-=head2 StepsList => ArrayRef[L<Paws::ES::UpgradeStepItem>]
+=head2 StepsList => ArrayRef[ES_UpgradeStepItem]
 
   A list of C< UpgradeStepItem > s representing information about each
 step performed as pard of a specific Upgrade or Upgrade Eligibility

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::QLDBSession::ExecuteStatementRequest;
-  use Moose;
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::QLDBSession::ValueHolder]');
-  has Statement => (is => 'ro', isa => 'Str', required => 1);
-  has TransactionId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::QLDBSession::Types qw/QLDBSession_ValueHolder/;
+  has Parameters => (is => 'ro', isa => ArrayRef[QLDBSession_ValueHolder]);
+  has Statement => (is => 'ro', isa => Str, required => 1);
+  has TransactionId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TransactionId' => 1,
+                    'Statement' => 1
+                  },
+  'types' => {
+               'TransactionId' => {
+                                    'type' => 'Str'
+                                  },
+               'Parameters' => {
+                                 'type' => 'ArrayRef[QLDBSession_ValueHolder]',
+                                 'class' => 'Paws::QLDBSession::ValueHolder'
+                               },
+               'Statement' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +66,7 @@ Specifies a request to execute a statement.
 =head1 ATTRIBUTES
 
 
-=head2 Parameters => ArrayRef[L<Paws::QLDBSession::ValueHolder>]
+=head2 Parameters => ArrayRef[QLDBSession_ValueHolder]
 
   Specifies the parameters for the parameterized statement in the
 request.

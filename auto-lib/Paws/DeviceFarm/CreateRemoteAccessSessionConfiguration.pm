@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration;
-  use Moose;
-  has BillingMethod => (is => 'ro', isa => 'Str', request_name => 'billingMethod', traits => ['NameInRequest']);
-  has VpceConfigurationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'vpceConfigurationArns', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::DeviceFarm::Types qw//;
+  has BillingMethod => (is => 'ro', isa => Str);
+  has VpceConfigurationArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpceConfigurationArns' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'BillingMethod' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'BillingMethod' => 'billingMethod',
+                       'VpceConfigurationArns' => 'vpceConfigurationArns'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CloudFront::LambdaFunctionAssociations;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::LambdaFunctionAssociation]', request_name => 'LambdaFunctionAssociation', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::CloudFront::Types qw/CloudFront_LambdaFunctionAssociation/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_LambdaFunctionAssociation]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'Items' => {
+                            'class' => 'Paws::CloudFront::LambdaFunctionAssociation',
+                            'type' => 'ArrayRef[CloudFront_LambdaFunctionAssociation]'
+                          }
+             },
+  'NameInRequest' => {
+                       'Items' => 'LambdaFunctionAssociation'
+                     },
+  'IsRequired' => {
+                    'Quantity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +75,7 @@ match C<PathPattern>, specify C<0> for C<Quantity> and omit C<Items>.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::LambdaFunctionAssociation>]
+=head2 Items => ArrayRef[CloudFront_LambdaFunctionAssociation]
 
   B<Optional>: A complex type that contains C<LambdaFunctionAssociation>
 items for this cache behavior. If C<Quantity> is C<0>, you can omit

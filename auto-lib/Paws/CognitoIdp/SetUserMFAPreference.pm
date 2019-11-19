@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::SetUserMFAPreference;
-  use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str', required => 1);
-  has SMSMfaSettings => (is => 'ro', isa => 'Paws::CognitoIdp::SMSMfaSettingsType');
-  has SoftwareTokenMfaSettings => (is => 'ro', isa => 'Paws::CognitoIdp::SoftwareTokenMfaSettingsType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_SMSMfaSettingsType CognitoIdp_SoftwareTokenMfaSettingsType/;
+  has AccessToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SMSMfaSettings => (is => 'ro', isa => CognitoIdp_SMSMfaSettingsType, predicate => 1);
+  has SoftwareTokenMfaSettings => (is => 'ro', isa => CognitoIdp_SoftwareTokenMfaSettingsType, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetUserMFAPreference');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::SetUserMFAPreferenceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetUserMFAPreference');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::SetUserMFAPreferenceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SoftwareTokenMfaSettings' => {
+                                               'type' => 'CognitoIdp_SoftwareTokenMfaSettingsType',
+                                               'class' => 'Paws::CognitoIdp::SoftwareTokenMfaSettingsType'
+                                             },
+               'SMSMfaSettings' => {
+                                     'type' => 'CognitoIdp_SMSMfaSettingsType',
+                                     'class' => 'Paws::CognitoIdp::SMSMfaSettingsType'
+                                   },
+               'AccessToken' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'AccessToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,13 +80,13 @@ The access token for the user.
 
 
 
-=head2 SMSMfaSettings => L<Paws::CognitoIdp::SMSMfaSettingsType>
+=head2 SMSMfaSettings => CognitoIdp_SMSMfaSettingsType
 
 The SMS text message multi-factor authentication (MFA) settings.
 
 
 
-=head2 SoftwareTokenMfaSettings => L<Paws::CognitoIdp::SoftwareTokenMfaSettingsType>
+=head2 SoftwareTokenMfaSettings => CognitoIdp_SoftwareTokenMfaSettingsType
 
 The time-based one-time password software token MFA settings.
 

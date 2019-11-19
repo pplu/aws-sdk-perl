@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::StopEntitiesDetectionJobResponse;
-  use Moose;
-  has JobId => (is => 'ro', isa => 'Str');
-  has JobStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw//;
+  has JobId => (is => 'ro', isa => Str);
+  has JobStatus => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

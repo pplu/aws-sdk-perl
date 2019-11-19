@@ -1,18 +1,49 @@
 
 package Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity;
-  use Moose;
-  has CloudFrontOriginAccessIdentityConfig => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentityConfig', required => 1);
-  has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
-  has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_CloudFrontOriginAccessIdentityConfig/;
+  has CloudFrontOriginAccessIdentityConfig => (is => 'ro', isa => CloudFront_CloudFrontOriginAccessIdentityConfig, required => 1, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IfMatch => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCloudFrontOriginAccessIdentity');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/origin-access-identity/cloudfront/{Id}/config');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdateCloudFrontOriginAccessIdentityResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateCloudFrontOriginAccessIdentity');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2019-03-26/origin-access-identity/cloudfront/{Id}/config');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFront::UpdateCloudFrontOriginAccessIdentityResult');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'IfMatch' => 'If-Match'
+                     },
+  'ParamInURI' => {
+                    'Id' => 'Id'
+                  },
+  'types' => {
+               'CloudFrontOriginAccessIdentityConfig' => {
+                                                           'class' => 'Paws::CloudFront::CloudFrontOriginAccessIdentityConfig',
+                                                           'type' => 'CloudFront_CloudFrontOriginAccessIdentityConfig'
+                                                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'IfMatch' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'CloudFrontOriginAccessIdentityConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +88,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>
+=head2 B<REQUIRED> CloudFrontOriginAccessIdentityConfig => CloudFront_CloudFrontOriginAccessIdentityConfig
 
 The identity's configuration information.
 

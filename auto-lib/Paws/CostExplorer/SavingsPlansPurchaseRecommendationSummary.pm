@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::SavingsPlansPurchaseRecommendationSummary;
-  use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str');
-  has CurrentOnDemandSpend => (is => 'ro', isa => 'Str');
-  has DailyCommitmentToPurchase => (is => 'ro', isa => 'Str');
-  has EstimatedMonthlySavingsAmount => (is => 'ro', isa => 'Str');
-  has EstimatedOnDemandCostWithCurrentCommitment => (is => 'ro', isa => 'Str');
-  has EstimatedROI => (is => 'ro', isa => 'Str');
-  has EstimatedSavingsAmount => (is => 'ro', isa => 'Str');
-  has EstimatedSavingsPercentage => (is => 'ro', isa => 'Str');
-  has EstimatedTotalCost => (is => 'ro', isa => 'Str');
-  has HourlyCommitmentToPurchase => (is => 'ro', isa => 'Str');
-  has TotalRecommendationCount => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has CurrentOnDemandSpend => (is => 'ro', isa => Str);
+  has DailyCommitmentToPurchase => (is => 'ro', isa => Str);
+  has EstimatedMonthlySavingsAmount => (is => 'ro', isa => Str);
+  has EstimatedOnDemandCostWithCurrentCommitment => (is => 'ro', isa => Str);
+  has EstimatedROI => (is => 'ro', isa => Str);
+  has EstimatedSavingsAmount => (is => 'ro', isa => Str);
+  has EstimatedSavingsPercentage => (is => 'ro', isa => Str);
+  has EstimatedTotalCost => (is => 'ro', isa => Str);
+  has HourlyCommitmentToPurchase => (is => 'ro', isa => Str);
+  has TotalRecommendationCount => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrentOnDemandSpend' => {
+                                           'type' => 'Str'
+                                         },
+               'EstimatedSavingsPercentage' => {
+                                                 'type' => 'Str'
+                                               },
+               'EstimatedROI' => {
+                                   'type' => 'Str'
+                                 },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'HourlyCommitmentToPurchase' => {
+                                                 'type' => 'Str'
+                                               },
+               'TotalRecommendationCount' => {
+                                               'type' => 'Str'
+                                             },
+               'EstimatedSavingsAmount' => {
+                                             'type' => 'Str'
+                                           },
+               'EstimatedOnDemandCostWithCurrentCommitment' => {
+                                                                 'type' => 'Str'
+                                                               },
+               'EstimatedMonthlySavingsAmount' => {
+                                                    'type' => 'Str'
+                                                  },
+               'EstimatedTotalCost' => {
+                                         'type' => 'Str'
+                                       },
+               'DailyCommitmentToPurchase' => {
+                                                'type' => 'Str'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

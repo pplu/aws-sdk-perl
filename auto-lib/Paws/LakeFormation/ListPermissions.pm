@@ -1,18 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::LakeFormation::ListPermissions;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Principal => (is => 'ro', isa => 'Paws::LakeFormation::DataLakePrincipal');
-  has Resource => (is => 'ro', isa => 'Paws::LakeFormation::Resource');
-  has ResourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::LakeFormation::Types qw/LakeFormation_Resource LakeFormation_DataLakePrincipal/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Principal => (is => 'ro', isa => LakeFormation_DataLakePrincipal, predicate => 1);
+  has Resource => (is => 'ro', isa => LakeFormation_Resource, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListPermissions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LakeFormation::ListPermissionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListPermissions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LakeFormation::ListPermissionsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Principal' => {
+                                'class' => 'Paws::LakeFormation::DataLakePrincipal',
+                                'type' => 'LakeFormation_DataLakePrincipal'
+                              },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Resource' => {
+                               'type' => 'LakeFormation_Resource',
+                               'class' => 'Paws::LakeFormation::Resource'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -108,13 +141,13 @@ list.
 
 
 
-=head2 Principal => L<Paws::LakeFormation::DataLakePrincipal>
+=head2 Principal => LakeFormation_DataLakePrincipal
 
 Specifies a principal to filter the permissions returned.
 
 
 
-=head2 Resource => L<Paws::LakeFormation::Resource>
+=head2 Resource => LakeFormation_Resource
 
 A resource where you will get a list of the principal permissions.
 

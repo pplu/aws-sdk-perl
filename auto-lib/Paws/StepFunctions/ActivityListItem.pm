@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::StepFunctions::ActivityListItem;
-  use Moose;
-  has ActivityArn => (is => 'ro', isa => 'Str', request_name => 'activityArn', traits => ['NameInRequest'], required => 1);
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has ActivityArn => (is => 'ro', isa => Str, required => 1);
+  has CreationDate => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActivityArn' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ActivityArn' => 'activityArn',
+                       'CreationDate' => 'creationDate',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'ActivityArn' => 1,
+                    'CreationDate' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::GetOpsSummary;
-  use Moose;
-  has Aggregators => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsAggregator]');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsFilter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ResultAttributes => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsResultAttribute]');
-  has SyncName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::SSM::Types qw/SSM_OpsAggregator SSM_OpsResultAttribute SSM_OpsFilter/;
+  has Aggregators => (is => 'ro', isa => ArrayRef[SSM_OpsAggregator], predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[SSM_OpsFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResultAttributes => (is => 'ro', isa => ArrayRef[SSM_OpsResultAttribute], predicate => 1);
+  has SyncName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetOpsSummary');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::GetOpsSummaryResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetOpsSummary');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::GetOpsSummaryResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SyncName' => {
+                               'type' => 'Str'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ResultAttributes' => {
+                                       'type' => 'ArrayRef[SSM_OpsResultAttribute]',
+                                       'class' => 'Paws::SSM::OpsResultAttribute'
+                                     },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filters' => {
+                              'class' => 'Paws::SSM::OpsFilter',
+                              'type' => 'ArrayRef[SSM_OpsFilter]'
+                            },
+               'Aggregators' => {
+                                  'type' => 'ArrayRef[SSM_OpsAggregator]',
+                                  'class' => 'Paws::SSM::OpsAggregator'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -88,14 +122,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>]
+=head2 Aggregators => ArrayRef[SSM_OpsAggregator]
 
 Optional aggregators that return counts of OpsItems based on one or
 more expressions.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::SSM::OpsFilter>]
+=head2 Filters => ArrayRef[SSM_OpsFilter]
 
 Optional filters used to scope down the returned OpsItems.
 
@@ -116,7 +150,7 @@ results.
 
 
 
-=head2 ResultAttributes => ArrayRef[L<Paws::SSM::OpsResultAttribute>]
+=head2 ResultAttributes => ArrayRef[SSM_OpsResultAttribute]
 
 The OpsItem data type to return.
 

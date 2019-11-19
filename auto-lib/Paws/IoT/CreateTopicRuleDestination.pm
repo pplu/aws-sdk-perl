@@ -1,14 +1,36 @@
 
 package Paws::IoT::CreateTopicRuleDestination;
-  use Moose;
-  has DestinationConfiguration => (is => 'ro', isa => 'Paws::IoT::TopicRuleDestinationConfiguration', traits => ['NameInRequest'], request_name => 'destinationConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_TopicRuleDestinationConfiguration/;
+  has DestinationConfiguration => (is => 'ro', isa => IoT_TopicRuleDestinationConfiguration, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTopicRuleDestination');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/destinations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateTopicRuleDestinationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTopicRuleDestination');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/destinations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateTopicRuleDestinationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DestinationConfiguration' => 1
+                  },
+  'NameInRequest' => {
+                       'DestinationConfiguration' => 'destinationConfiguration'
+                     },
+  'types' => {
+               'DestinationConfiguration' => {
+                                               'class' => 'Paws::IoT::TopicRuleDestinationConfiguration',
+                                               'type' => 'IoT_TopicRuleDestinationConfiguration'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +72,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DestinationConfiguration => L<Paws::IoT::TopicRuleDestinationConfiguration>
+=head2 B<REQUIRED> DestinationConfiguration => IoT_TopicRuleDestinationConfiguration
 
 The topic rule destination configuration.
 

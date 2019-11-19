@@ -1,17 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::DescribeDirectConnectGatewayAssociationProposals;
-  use Moose;
-  has AssociatedGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'associatedGatewayId' );
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has ProposalId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'proposalId' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DirectConnect::Types qw//;
+  has AssociatedGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has DirectConnectGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ProposalId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDirectConnectGatewayAssociationProposals');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::DescribeDirectConnectGatewayAssociationProposalsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDirectConnectGatewayAssociationProposals');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::DescribeDirectConnectGatewayAssociationProposalsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AssociatedGatewayId' => {
+                                          'type' => 'Str'
+                                        },
+               'ProposalId' => {
+                                 'type' => 'Str'
+                               },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DirectConnectGatewayId' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'DirectConnectGatewayId' => 'directConnectGatewayId',
+                       'AssociatedGatewayId' => 'associatedGatewayId',
+                       'ProposalId' => 'proposalId',
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

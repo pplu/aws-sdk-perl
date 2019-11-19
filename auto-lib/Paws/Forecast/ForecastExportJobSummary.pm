@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::Forecast::ForecastExportJobSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Destination => (is => 'ro', isa => 'Paws::Forecast::DataDestination');
-  has ForecastExportJobArn => (is => 'ro', isa => 'Str');
-  has ForecastExportJobName => (is => 'ro', isa => 'Str');
-  has LastModificationTime => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw/Forecast_DataDestination/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has Destination => (is => 'ro', isa => Forecast_DataDestination);
+  has ForecastExportJobArn => (is => 'ro', isa => Str);
+  has ForecastExportJobName => (is => 'ro', isa => Str);
+  has LastModificationTime => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastModificationTime' => {
+                                           'type' => 'Str'
+                                         },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Destination' => {
+                                  'type' => 'Forecast_DataDestination',
+                                  'class' => 'Paws::Forecast::DataDestination'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ForecastExportJobArn' => {
+                                           'type' => 'Str'
+                                         },
+               'ForecastExportJobName' => {
+                                            'type' => 'Str'
+                                          },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +86,7 @@ the listed C<ForecastExportJobArn>.
   When the forecast export job was created.
 
 
-=head2 Destination => L<Paws::Forecast::DataDestination>
+=head2 Destination => Forecast_DataDestination
 
   The path to the S3 bucket where the forecast is stored.
 

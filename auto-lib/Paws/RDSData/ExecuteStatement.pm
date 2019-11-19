@@ -1,23 +1,84 @@
 
 package Paws::RDSData::ExecuteStatement;
-  use Moose;
-  has ContinueAfterTimeout => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'continueAfterTimeout');
-  has Database => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'database');
-  has IncludeResultMetadata => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeResultMetadata');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::SqlParameter]', traits => ['NameInRequest'], request_name => 'parameters');
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn', required => 1);
-  has ResultSetOptions => (is => 'ro', isa => 'Paws::RDSData::ResultSetOptions', traits => ['NameInRequest'], request_name => 'resultSetOptions');
-  has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema');
-  has SecretArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'secretArn', required => 1);
-  has Sql => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sql', required => 1);
-  has TransactionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'transactionId');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::RDSData::Types qw/RDSData_ResultSetOptions RDSData_SqlParameter/;
+  has ContinueAfterTimeout => (is => 'ro', isa => Bool, predicate => 1);
+  has Database => (is => 'ro', isa => Str, predicate => 1);
+  has IncludeResultMetadata => (is => 'ro', isa => Bool, predicate => 1);
+  has Parameters => (is => 'ro', isa => ArrayRef[RDSData_SqlParameter], predicate => 1);
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResultSetOptions => (is => 'ro', isa => RDSData_ResultSetOptions, predicate => 1);
+  has Schema => (is => 'ro', isa => Str, predicate => 1);
+  has SecretArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Sql => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TransactionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExecuteStatement');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/Execute');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDSData::ExecuteStatementResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ExecuteStatement');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/Execute');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDSData::ExecuteStatementResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Sql' => 1,
+                    'ResourceArn' => 1,
+                    'SecretArn' => 1
+                  },
+  'NameInRequest' => {
+                       'TransactionId' => 'transactionId',
+                       'ResourceArn' => 'resourceArn',
+                       'Sql' => 'sql',
+                       'IncludeResultMetadata' => 'includeResultMetadata',
+                       'ContinueAfterTimeout' => 'continueAfterTimeout',
+                       'Database' => 'database',
+                       'Parameters' => 'parameters',
+                       'SecretArn' => 'secretArn',
+                       'ResultSetOptions' => 'resultSetOptions',
+                       'Schema' => 'schema'
+                     },
+  'types' => {
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'ResultSetOptions' => {
+                                       'class' => 'Paws::RDSData::ResultSetOptions',
+                                       'type' => 'RDSData_ResultSetOptions'
+                                     },
+               'SecretArn' => {
+                                'type' => 'Str'
+                              },
+               'ContinueAfterTimeout' => {
+                                           'type' => 'Bool'
+                                         },
+               'Database' => {
+                               'type' => 'Str'
+                             },
+               'Parameters' => {
+                                 'class' => 'Paws::RDSData::SqlParameter',
+                                 'type' => 'ArrayRef[RDSData_SqlParameter]'
+                               },
+               'IncludeResultMetadata' => {
+                                            'type' => 'Bool'
+                                          },
+               'Sql' => {
+                          'type' => 'Str'
+                        },
+               'TransactionId' => {
+                                    'type' => 'Str'
+                                  },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,10 +114,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               BooleanValues => [
                 1, ...                                   # OPTIONAL
               ],                                         # OPTIONAL
-              DoubleValues => [
-                1, ...                                   # OPTIONAL
-              ],                                         # OPTIONAL
-              LongValues => [
+              DoubleValues => [ 1, ... ],                # OPTIONAL
+              LongValues   => [
                 1, ...                                   # OPTIONAL
               ],                                         # OPTIONAL
               StringValues => [
@@ -65,7 +124,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
             BlobValue    => 'BlobBlob',    # OPTIONAL
             BooleanValue => 1,             # OPTIONAL
-            DoubleValue  => 1,             # OPTIONAL
+            DoubleValue  => 1,
             IsNull       => 1,             # OPTIONAL
             LongValue    => 1,             # OPTIONAL
             StringValue  => 'MyString',    # OPTIONAL
@@ -121,7 +180,7 @@ A value that indicates whether to include metadata in the results.
 
 
 
-=head2 Parameters => ArrayRef[L<Paws::RDSData::SqlParameter>]
+=head2 Parameters => ArrayRef[RDSData_SqlParameter]
 
 The parameters for the SQL statement.
 
@@ -133,7 +192,7 @@ The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
 
 
 
-=head2 ResultSetOptions => L<Paws::RDSData::ResultSetOptions>
+=head2 ResultSetOptions => RDSData_ResultSetOptions
 
 Options that control how the result set is returned.
 

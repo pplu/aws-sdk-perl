@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::DescribeSchemasResponse;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has Schemas => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::DMS::Types qw//;
+  has Marker => (is => 'ro', isa => Str);
+  has Schemas => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Schemas' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

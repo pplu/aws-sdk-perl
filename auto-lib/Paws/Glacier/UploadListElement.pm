@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::Glacier::UploadListElement;
-  use Moose;
-  has ArchiveDescription => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has MultipartUploadId => (is => 'ro', isa => 'Str');
-  has PartSizeInBytes => (is => 'ro', isa => 'Int');
-  has VaultARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Glacier::Types qw//;
+  has ArchiveDescription => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has MultipartUploadId => (is => 'ro', isa => Str);
+  has PartSizeInBytes => (is => 'ro', isa => Int);
+  has VaultARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PartSizeInBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'VaultARN' => {
+                               'type' => 'Str'
+                             },
+               'MultipartUploadId' => {
+                                        'type' => 'Str'
+                                      },
+               'ArchiveDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

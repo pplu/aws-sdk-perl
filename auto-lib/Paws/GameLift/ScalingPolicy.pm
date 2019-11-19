@@ -1,16 +1,64 @@
+# Generated from default/object.tt
 package Paws::GameLift::ScalingPolicy;
-  use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str');
-  has EvaluationPeriods => (is => 'ro', isa => 'Int');
-  has FleetId => (is => 'ro', isa => 'Str');
-  has MetricName => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has PolicyType => (is => 'ro', isa => 'Str');
-  has ScalingAdjustment => (is => 'ro', isa => 'Int');
-  has ScalingAdjustmentType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TargetConfiguration => (is => 'ro', isa => 'Paws::GameLift::TargetConfiguration');
-  has Threshold => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::GameLift::Types qw/GameLift_TargetConfiguration/;
+  has ComparisonOperator => (is => 'ro', isa => Str);
+  has EvaluationPeriods => (is => 'ro', isa => Int);
+  has FleetId => (is => 'ro', isa => Str);
+  has MetricName => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has PolicyType => (is => 'ro', isa => Str);
+  has ScalingAdjustment => (is => 'ro', isa => Int);
+  has ScalingAdjustmentType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TargetConfiguration => (is => 'ro', isa => GameLift_TargetConfiguration);
+  has Threshold => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'TargetConfiguration' => {
+                                          'type' => 'GameLift_TargetConfiguration',
+                                          'class' => 'Paws::GameLift::TargetConfiguration'
+                                        },
+               'EvaluationPeriods' => {
+                                        'type' => 'Int'
+                                      },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'ScalingAdjustment' => {
+                                        'type' => 'Int'
+                                      },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       },
+               'Threshold' => {
+                                'type' => 'Num'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ScalingAdjustmentType' => {
+                                            'type' => 'Str'
+                                          },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'PolicyType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -282,7 +330,7 @@ removed and recreated.
 
 
 
-=head2 TargetConfiguration => L<Paws::GameLift::TargetConfiguration>
+=head2 TargetConfiguration => GameLift_TargetConfiguration
 
   Object that contains settings for a target-based scaling policy.
 

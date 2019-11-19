@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Lambda::LayersListItem;
-  use Moose;
-  has LatestMatchingVersion => (is => 'ro', isa => 'Paws::Lambda::LayerVersionsListItem');
-  has LayerArn => (is => 'ro', isa => 'Str');
-  has LayerName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw/Lambda_LayerVersionsListItem/;
+  has LatestMatchingVersion => (is => 'ro', isa => Lambda_LayerVersionsListItem);
+  has LayerArn => (is => 'ro', isa => Str);
+  has LayerName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LayerArn' => {
+                               'type' => 'Str'
+                             },
+               'LayerName' => {
+                                'type' => 'Str'
+                              },
+               'LatestMatchingVersion' => {
+                                            'class' => 'Paws::Lambda::LayerVersionsListItem',
+                                            'type' => 'Lambda_LayerVersionsListItem'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ Details about an AWS Lambda layer
 =head1 ATTRIBUTES
 
 
-=head2 LatestMatchingVersion => L<Paws::Lambda::LayerVersionsListItem>
+=head2 LatestMatchingVersion => Lambda_LayerVersionsListItem
 
   The newest version of the layer.
 

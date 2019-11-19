@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glacier::VaultNotificationConfig;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SNSTopic => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Glacier::Types qw//;
+  has Events => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SNSTopic => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Events' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'SNSTopic' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

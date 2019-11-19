@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::TargetInstances;
-  use Moose;
-  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'autoScalingGroups', traits => ['NameInRequest']);
-  has Ec2TagSet => (is => 'ro', isa => 'Paws::CodeDeploy::EC2TagSet', request_name => 'ec2TagSet', traits => ['NameInRequest']);
-  has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', request_name => 'tagFilters', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_EC2TagSet CodeDeploy_EC2TagFilter/;
+  has AutoScalingGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Ec2TagSet => (is => 'ro', isa => CodeDeploy_EC2TagSet);
+  has TagFilters => (is => 'ro', isa => ArrayRef[CodeDeploy_EC2TagFilter]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ec2TagSet' => {
+                                'class' => 'Paws::CodeDeploy::EC2TagSet',
+                                'type' => 'CodeDeploy_EC2TagSet'
+                              },
+               'AutoScalingGroups' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'TagFilters' => {
+                                 'type' => 'ArrayRef[CodeDeploy_EC2TagFilter]',
+                                 'class' => 'Paws::CodeDeploy::EC2TagFilter'
+                               }
+             },
+  'NameInRequest' => {
+                       'AutoScalingGroups' => 'autoScalingGroups',
+                       'TagFilters' => 'tagFilters',
+                       'Ec2TagSet' => 'ec2TagSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +75,7 @@ environment in a blue/green deployment.
 environment for a blue/green deployment.
 
 
-=head2 Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>
+=head2 Ec2TagSet => CodeDeploy_EC2TagSet
 
   Information about the groups of EC2 instance tags that an instance must
 be identified by in order for it to be included in the replacement
@@ -53,7 +83,7 @@ environment for a blue/green deployment. Cannot be used in the same
 call as tagFilters.
 
 
-=head2 TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
+=head2 TagFilters => ArrayRef[CodeDeploy_EC2TagFilter]
 
   The tag filter key, type, and value used to identify Amazon EC2
 instances in a replacement environment for a blue/green deployment.

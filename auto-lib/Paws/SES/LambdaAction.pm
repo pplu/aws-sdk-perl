@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::SES::LambdaAction;
-  use Moose;
-  has FunctionArn => (is => 'ro', isa => 'Str', required => 1);
-  has InvocationType => (is => 'ro', isa => 'Str');
-  has TopicArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has FunctionArn => (is => 'ro', isa => Str, required => 1);
+  has InvocationType => (is => 'ro', isa => Str);
+  has TopicArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FunctionArn' => 1
+                  },
+  'types' => {
+               'FunctionArn' => {
+                                  'type' => 'Str'
+                                },
+               'InvocationType' => {
+                                     'type' => 'Str'
+                                   },
+               'TopicArn' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

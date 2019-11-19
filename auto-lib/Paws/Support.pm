@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Support;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'support' }
   sub signing_name { 'support' }
   sub version { '2013-04-15' }
   sub target_prefix { 'AWSSupport_20130415' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -255,7 +257,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/aws-support/>
 
 =over
 
-=item Attachments => ArrayRef[L<Paws::Support::Attachment>]
+=item Attachments => ArrayRef[Support_Attachment]
 
 =item [AttachmentSetId => Str]
 

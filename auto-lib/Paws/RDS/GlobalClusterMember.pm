@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::RDS::GlobalClusterMember;
-  use Moose;
-  has DBClusterArn => (is => 'ro', isa => 'Str');
-  has IsWriter => (is => 'ro', isa => 'Bool');
-  has Readers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::RDS::Types qw//;
+  has DBClusterArn => (is => 'ro', isa => Str);
+  has IsWriter => (is => 'ro', isa => Bool);
+  has Readers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBClusterArn' => {
+                                   'type' => 'Str'
+                                 },
+               'Readers' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'IsWriter' => {
+                               'type' => 'Bool'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

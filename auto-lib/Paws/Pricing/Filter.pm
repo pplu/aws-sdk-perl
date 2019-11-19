@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Pricing::Filter;
-  use Moose;
-  has Field => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pricing::Types qw//;
+  has Field => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Value' => 1,
+                    'Field' => 1
+                  },
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Field' => {
+                            'type' => 'Str'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,63 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchLogs::PutSubscriptionFilter;
-  use Moose;
-  has DestinationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationArn' , required => 1);
-  has Distribution => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distribution' );
-  has FilterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterName' , required => 1);
-  has FilterPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterPattern' , required => 1);
-  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has DestinationArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Distribution => (is => 'ro', isa => Str, predicate => 1);
+  has FilterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FilterPattern => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LogGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutSubscriptionFilter');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutSubscriptionFilter');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'FilterName' => {
+                                 'type' => 'Str'
+                               },
+               'Distribution' => {
+                                   'type' => 'Str'
+                                 },
+               'FilterPattern' => {
+                                    'type' => 'Str'
+                                  },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'DestinationArn' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'FilterName' => 1,
+                    'DestinationArn' => 1,
+                    'FilterPattern' => 1,
+                    'LogGroupName' => 1
+                  },
+  'NameInRequest' => {
+                       'LogGroupName' => 'logGroupName',
+                       'Distribution' => 'distribution',
+                       'FilterName' => 'filterName',
+                       'FilterPattern' => 'filterPattern',
+                       'RoleArn' => 'roleArn',
+                       'DestinationArn' => 'destinationArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

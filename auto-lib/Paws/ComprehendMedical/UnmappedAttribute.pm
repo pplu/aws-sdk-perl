@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::ComprehendMedical::UnmappedAttribute;
-  use Moose;
-  has Attribute => (is => 'ro', isa => 'Paws::ComprehendMedical::Attribute');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ComprehendMedical::Types qw/ComprehendMedical_Attribute/;
+  has Attribute => (is => 'ro', isa => ComprehendMedical_Attribute);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Attribute' => {
+                                'type' => 'ComprehendMedical_Attribute',
+                                'class' => 'Paws::ComprehendMedical::Attribute'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ An attribute that we extracted, but were unable to relate to an entity.
 =head1 ATTRIBUTES
 
 
-=head2 Attribute => L<Paws::ComprehendMedical::Attribute>
+=head2 Attribute => ComprehendMedical_Attribute
 
   The specific attribute that has been extracted but not mapped to an
 entity.

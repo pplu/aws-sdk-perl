@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Timing;
-  use Moose;
-  has FinishTime => (is => 'ro', isa => 'Str', request_name => 'finishTime', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has SubmitTime => (is => 'ro', isa => 'Str', request_name => 'submitTime', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has FinishTime => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has SubmitTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubmitTime' => {
+                                 'type' => 'Str'
+                               },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'FinishTime' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'FinishTime' => 'finishTime',
+                       'StartTime' => 'startTime',
+                       'SubmitTime' => 'submitTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

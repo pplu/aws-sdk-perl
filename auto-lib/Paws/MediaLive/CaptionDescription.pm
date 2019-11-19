@@ -1,10 +1,51 @@
+# Generated from default/object.tt
 package Paws::MediaLive::CaptionDescription;
-  use Moose;
-  has CaptionSelectorName => (is => 'ro', isa => 'Str', request_name => 'captionSelectorName', traits => ['NameInRequest'], required => 1);
-  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::CaptionDestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
-  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
-  has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_CaptionDestinationSettings/;
+  has CaptionSelectorName => (is => 'ro', isa => Str, required => 1);
+  has DestinationSettings => (is => 'ro', isa => MediaLive_CaptionDestinationSettings);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has LanguageDescription => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DestinationSettings' => {
+                                          'type' => 'MediaLive_CaptionDestinationSettings',
+                                          'class' => 'Paws::MediaLive::CaptionDestinationSettings'
+                                        },
+               'CaptionSelectorName' => {
+                                          'type' => 'Str'
+                                        },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'LanguageDescription' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'DestinationSettings' => 'destinationSettings',
+                       'CaptionSelectorName' => 'captionSelectorName',
+                       'LanguageCode' => 'languageCode',
+                       'LanguageDescription' => 'languageDescription'
+                     },
+  'IsRequired' => {
+                    'CaptionSelectorName' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +89,7 @@ generating output captions. This field should match a captionSelector
 name.
 
 
-=head2 DestinationSettings => L<Paws::MediaLive::CaptionDestinationSettings>
+=head2 DestinationSettings => MediaLive_CaptionDestinationSettings
 
   Additional settings for captions destination that depend on the
 destination type.

@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::GetDeploymentConfigOutput;
-  use Moose;
-  has DeploymentConfigInfo => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentConfigInfo', traits => ['NameInRequest'], request_name => 'deploymentConfigInfo' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_DeploymentConfigInfo/;
+  has DeploymentConfigInfo => (is => 'ro', isa => CodeDeploy_DeploymentConfigInfo);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeploymentConfigInfo' => {
+                                           'type' => 'CodeDeploy_DeploymentConfigInfo',
+                                           'class' => 'Paws::CodeDeploy::DeploymentConfigInfo'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DeploymentConfigInfo' => 'deploymentConfigInfo'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CodeDeploy::GetDeploymentConfigOutput
 =head1 ATTRIBUTES
 
 
-=head2 DeploymentConfigInfo => L<Paws::CodeDeploy::DeploymentConfigInfo>
+=head2 DeploymentConfigInfo => CodeDeploy_DeploymentConfigInfo
 
 Information about the deployment configuration.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Lightsail::RelationalDatabaseEndpoint;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Str', request_name => 'address', traits => ['NameInRequest']);
-  has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lightsail::Types qw//;
+  has Address => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'Address' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Port' => 'port',
+                       'Address' => 'address'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

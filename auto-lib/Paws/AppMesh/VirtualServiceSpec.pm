@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::AppMesh::VirtualServiceSpec;
-  use Moose;
-  has Provider => (is => 'ro', isa => 'Paws::AppMesh::VirtualServiceProvider', request_name => 'provider', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_VirtualServiceProvider/;
+  has Provider => (is => 'ro', isa => AppMesh_VirtualServiceProvider);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Provider' => {
+                               'class' => 'Paws::AppMesh::VirtualServiceProvider',
+                               'type' => 'AppMesh_VirtualServiceProvider'
+                             }
+             },
+  'NameInRequest' => {
+                       'Provider' => 'provider'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ An object that represents the specification of a virtual service.
 =head1 ATTRIBUTES
 
 
-=head2 Provider => L<Paws::AppMesh::VirtualServiceProvider>
+=head2 Provider => AppMesh_VirtualServiceProvider
 
   The App Mesh object that is acting as the provider for a virtual
 service. You can specify a single virtual node or virtual router.

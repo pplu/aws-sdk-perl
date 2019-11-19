@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoT::CodeSigningCertificateChain;
-  use Moose;
-  has CertificateName => (is => 'ro', isa => 'Str', request_name => 'certificateName', traits => ['NameInRequest']);
-  has InlineDocument => (is => 'ro', isa => 'Str', request_name => 'inlineDocument', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has CertificateName => (is => 'ro', isa => Str);
+  has InlineDocument => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InlineDocument' => 'inlineDocument',
+                       'CertificateName' => 'certificateName'
+                     },
+  'types' => {
+               'InlineDocument' => {
+                                     'type' => 'Str'
+                                   },
+               'CertificateName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::ListActivityTypes;
-  use Moose;
-  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
-  has MaximumPageSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maximumPageSize' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
-  has RegistrationStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registrationStatus' , required => 1);
-  has ReverseOrder => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reverseOrder' );
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaximumPageSize => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has NextPageToken => (is => 'ro', isa => Str, predicate => 1);
+  has RegistrationStatus => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReverseOrder => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListActivityTypes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::ActivityTypeInfos');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListActivityTypes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SimpleWorkflow::ActivityTypeInfos');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RegistrationStatus' => 'registrationStatus',
+                       'ReverseOrder' => 'reverseOrder',
+                       'NextPageToken' => 'nextPageToken',
+                       'MaximumPageSize' => 'maximumPageSize',
+                       'Domain' => 'domain',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Domain' => 1,
+                    'RegistrationStatus' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'MaximumPageSize' => {
+                                      'type' => 'Int'
+                                    },
+               'ReverseOrder' => {
+                                   'type' => 'Bool'
+                                 },
+               'RegistrationStatus' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

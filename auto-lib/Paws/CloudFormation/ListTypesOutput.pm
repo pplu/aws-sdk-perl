@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudFormation::ListTypesOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has TypeSummaries => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::TypeSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_TypeSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has TypeSummaries => (is => 'ro', isa => ArrayRef[CloudFormation_TypeSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'TypeSummaries' => {
+                                    'class' => 'Paws::CloudFormation::TypeSummary',
+                                    'type' => 'ArrayRef[CloudFormation_TypeSummary]'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +47,7 @@ C<NextToken> parameter. If the request returns all results,
 C<NextToken> is set to C<null>.
 
 
-=head2 TypeSummaries => ArrayRef[L<Paws::CloudFormation::TypeSummary>]
+=head2 TypeSummaries => ArrayRef[CloudFormation_TypeSummary]
 
 A list of C<TypeSummary> structures that contain information about the
 specified types.

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Firehose::EncryptionConfiguration;
-  use Moose;
-  has KMSEncryptionConfig => (is => 'ro', isa => 'Paws::Firehose::KMSEncryptionConfig');
-  has NoEncryptionConfig => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw/Firehose_KMSEncryptionConfig/;
+  has KMSEncryptionConfig => (is => 'ro', isa => Firehose_KMSEncryptionConfig);
+  has NoEncryptionConfig => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KMSEncryptionConfig' => {
+                                          'type' => 'Firehose_KMSEncryptionConfig',
+                                          'class' => 'Paws::Firehose::KMSEncryptionConfig'
+                                        },
+               'NoEncryptionConfig' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Describes the encryption for a destination in Amazon S3.
 =head1 ATTRIBUTES
 
 
-=head2 KMSEncryptionConfig => L<Paws::Firehose::KMSEncryptionConfig>
+=head2 KMSEncryptionConfig => Firehose_KMSEncryptionConfig
 
   The encryption key.
 

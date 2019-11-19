@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::RollbackTrigger;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServerlessRepo::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Arn' => 1,
+                    'Type' => 1
+                  },
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'Type' => 'type'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

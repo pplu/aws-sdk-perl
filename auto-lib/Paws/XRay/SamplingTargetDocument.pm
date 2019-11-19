@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::XRay::SamplingTargetDocument;
-  use Moose;
-  has FixedRate => (is => 'ro', isa => 'Num');
-  has Interval => (is => 'ro', isa => 'Int');
-  has ReservoirQuota => (is => 'ro', isa => 'Int');
-  has ReservoirQuotaTTL => (is => 'ro', isa => 'Str');
-  has RuleName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Int Str/;
+  use Paws::XRay::Types qw//;
+  has FixedRate => (is => 'ro', isa => Num);
+  has Interval => (is => 'ro', isa => Int);
+  has ReservoirQuota => (is => 'ro', isa => Int);
+  has ReservoirQuotaTTL => (is => 'ro', isa => Str);
+  has RuleName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Interval' => {
+                               'type' => 'Int'
+                             },
+               'ReservoirQuota' => {
+                                     'type' => 'Int'
+                                   },
+               'ReservoirQuotaTTL' => {
+                                        'type' => 'Str'
+                                      },
+               'RuleName' => {
+                               'type' => 'Str'
+                             },
+               'FixedRate' => {
+                                'type' => 'Num'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

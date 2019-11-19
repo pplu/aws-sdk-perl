@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::MQ::EncryptionOptions;
-  use Moose;
-  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
-  has UseAwsOwnedKey => (is => 'ro', isa => 'Bool', request_name => 'useAwsOwnedKey', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::MQ::Types qw//;
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has UseAwsOwnedKey => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'KmsKeyId' => 'kmsKeyId',
+                       'UseAwsOwnedKey' => 'useAwsOwnedKey'
+                     },
+  'IsRequired' => {
+                    'UseAwsOwnedKey' => 1
+                  },
+  'types' => {
+               'UseAwsOwnedKey' => {
+                                     'type' => 'Bool'
+                                   },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

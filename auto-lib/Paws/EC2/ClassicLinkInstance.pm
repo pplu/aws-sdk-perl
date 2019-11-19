@@ -1,9 +1,40 @@
 package Paws::EC2::ClassicLinkInstance;
-  use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef Str/;
+  use Paws::EC2::Types qw/EC2_GroupIdentifier EC2_Tag/;
+  has Groups => (is => 'ro', isa => ArrayRef[EC2_GroupIdentifier]);
+  has InstanceId => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Groups' => {
+                             'type' => 'ArrayRef[EC2_GroupIdentifier]',
+                             'class' => 'Paws::EC2::GroupIdentifier'
+                           },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'Tags' => {
+                           'type' => 'ArrayRef[EC2_Tag]',
+                           'class' => 'Paws::EC2::Tag'
+                         }
+             },
+  'NameInRequest' => {
+                       'Groups' => 'groupSet',
+                       'InstanceId' => 'instanceId',
+                       'Tags' => 'tagSet',
+                       'VpcId' => 'vpcId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +70,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
+=head2 Groups => ArrayRef[EC2_GroupIdentifier]
 
   A list of security groups.
 
@@ -49,7 +80,7 @@ This class has no description
   The ID of the instance.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the instance.
 

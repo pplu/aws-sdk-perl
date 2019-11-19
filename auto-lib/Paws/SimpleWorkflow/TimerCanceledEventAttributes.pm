@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::TimerCanceledEventAttributes;
-  use Moose;
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
-  has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
-  has TimerId => (is => 'ro', isa => 'Str', request_name => 'timerId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+  has StartedEventId => (is => 'ro', isa => Int, required => 1);
+  has TimerId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId',
+                       'TimerId' => 'timerId',
+                       'StartedEventId' => 'startedEventId'
+                     },
+  'IsRequired' => {
+                    'DecisionTaskCompletedEventId' => 1,
+                    'StartedEventId' => 1,
+                    'TimerId' => 1
+                  },
+  'types' => {
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 },
+               'TimerId' => {
+                              'type' => 'Str'
+                            },
+               'StartedEventId' => {
+                                     'type' => 'Int'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,48 @@
 
 package Paws::IoT::UpdateMitigationAction;
-  use Moose;
-  has ActionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'actionName', required => 1);
-  has ActionParams => (is => 'ro', isa => 'Paws::IoT::MitigationActionParams', traits => ['NameInRequest'], request_name => 'actionParams');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_MitigationActionParams/;
+  has ActionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ActionParams => (is => 'ro', isa => IoT_MitigationActionParams, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMitigationAction');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/mitigationactions/actions/{actionName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::UpdateMitigationActionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateMitigationAction');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/mitigationactions/actions/{actionName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::UpdateMitigationActionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ActionName' => 'actionName'
+                  },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'ActionParams' => 'actionParams'
+                     },
+  'IsRequired' => {
+                    'ActionName' => 1
+                  },
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ActionName' => {
+                                 'type' => 'Str'
+                               },
+               'ActionParams' => {
+                                   'class' => 'Paws::IoT::MitigationActionParams',
+                                   'type' => 'IoT_MitigationActionParams'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +116,7 @@ re-create the mitigation action with the new name.
 
 
 
-=head2 ActionParams => L<Paws::IoT::MitigationActionParams>
+=head2 ActionParams => IoT_MitigationActionParams
 
 Defines the type of action and the parameters for that action.
 

@@ -1,19 +1,59 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MachineLearning::CreateMLModel;
-  use Moose;
-  has MLModelId => (is => 'ro', isa => 'Str', required => 1);
-  has MLModelName => (is => 'ro', isa => 'Str');
-  has MLModelType => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::MachineLearning::TrainingParameters');
-  has Recipe => (is => 'ro', isa => 'Str');
-  has RecipeUri => (is => 'ro', isa => 'Str');
-  has TrainingDataSourceId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MachineLearning::Types qw/MachineLearning_TrainingParameters/;
+  has MLModelId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MLModelName => (is => 'ro', isa => Str, predicate => 1);
+  has MLModelType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Parameters => (is => 'ro', isa => MachineLearning_TrainingParameters, predicate => 1);
+  has Recipe => (is => 'ro', isa => Str, predicate => 1);
+  has RecipeUri => (is => 'ro', isa => Str, predicate => 1);
+  has TrainingDataSourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMLModel');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::CreateMLModelOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateMLModel');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MachineLearning::CreateMLModelOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TrainingDataSourceId' => 1,
+                    'MLModelType' => 1,
+                    'MLModelId' => 1
+                  },
+  'types' => {
+               'TrainingDataSourceId' => {
+                                           'type' => 'Str'
+                                         },
+               'MLModelName' => {
+                                  'type' => 'Str'
+                                },
+               'RecipeUri' => {
+                                'type' => 'Str'
+                              },
+               'Parameters' => {
+                                 'type' => 'MachineLearning_TrainingParameters',
+                                 'class' => 'Paws::MachineLearning::TrainingParameters'
+                               },
+               'Recipe' => {
+                             'type' => 'Str'
+                           },
+               'MLModelId' => {
+                                'type' => 'Str'
+                              },
+               'MLModelType' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -89,7 +129,7 @@ For more information, see the Amazon Machine Learning Developer Guide
 
 Valid values are: C<"REGRESSION">, C<"BINARY">, C<"MULTICLASS">
 
-=head2 Parameters => L<Paws::MachineLearning::TrainingParameters>
+=head2 Parameters => MachineLearning_TrainingParameters
 
 A list of the training parameters in the C<MLModel>. The list is
 implemented as a map of key-value pairs.

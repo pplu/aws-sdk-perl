@@ -1,20 +1,58 @@
 
 package Paws::XRay::GetTraceSummaries;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', required => 1);
-  has FilterExpression => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Sampling => (is => 'ro', isa => 'Bool');
-  has SamplingStrategy => (is => 'ro', isa => 'Paws::XRay::SamplingStrategy');
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
-  has TimeRangeType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::XRay::Types qw/XRay_SamplingStrategy/;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FilterExpression => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Sampling => (is => 'ro', isa => Bool, predicate => 1);
+  has SamplingStrategy => (is => 'ro', isa => XRay_SamplingStrategy, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TimeRangeType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetTraceSummaries');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/TraceSummaries');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::XRay::GetTraceSummariesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetTraceSummaries');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/TraceSummaries');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::XRay::GetTraceSummariesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Sampling' => {
+                               'type' => 'Bool'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'TimeRangeType' => {
+                                    'type' => 'Str'
+                                  },
+               'FilterExpression' => {
+                                       'type' => 'Str'
+                                     },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'SamplingStrategy' => {
+                                       'type' => 'XRay_SamplingStrategy',
+                                       'class' => 'Paws::XRay::SamplingStrategy'
+                                     }
+             },
+  'IsRequired' => {
+                    'StartTime' => 1,
+                    'EndTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -87,7 +125,7 @@ Set to C<true> to get summaries for only a subset of available traces.
 
 
 
-=head2 SamplingStrategy => L<Paws::XRay::SamplingStrategy>
+=head2 SamplingStrategy => XRay_SamplingStrategy
 
 A paramater to indicate whether to enable sampling on trace summaries.
 Input parameters are Name and Value.

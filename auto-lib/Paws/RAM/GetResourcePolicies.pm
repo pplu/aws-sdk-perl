@@ -1,17 +1,50 @@
 
 package Paws::RAM::GetResourcePolicies;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Principal => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'principal');
-  has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceArns', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::RAM::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Principal => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetResourcePolicies');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/getresourcepolicies');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RAM::GetResourcePoliciesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetResourcePolicies');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/getresourcepolicies');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RAM::GetResourcePoliciesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Principal' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ResourceArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 }
+             },
+  'IsRequired' => {
+                    'ResourceArns' => 1
+                  },
+  'NameInRequest' => {
+                       'Principal' => 'principal',
+                       'ResourceArns' => 'resourceArns',
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,17 +1,40 @@
+# Generated from default/map_enum.tt
 package Paws::ECR::FindingSeverityCounts;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Int/;
+  use Paws::ECR::Types qw//;
+  has CRITICAL => (is => 'ro', isa => Int);
+  has HIGH => (is => 'ro', isa => Int);
+  has INFORMATIONAL => (is => 'ro', isa => Int);
+  has LOW => (is => 'ro', isa => Int);
+  has MEDIUM => (is => 'ro', isa => Int);
+  has UNDEFINED => (is => 'ro', isa => Int);
 
-  has CRITICAL => (is => 'ro', isa => 'Int');
-  has HIGH => (is => 'ro', isa => 'Int');
-  has INFORMATIONAL => (is => 'ro', isa => 'Int');
-  has LOW => (is => 'ro', isa => 'Int');
-  has MEDIUM => (is => 'ro', isa => 'Int');
-  has UNDEFINED => (is => 'ro', isa => 'Int');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'CRITICAL' => {
+                                          type => 'Int',                                        },
+                               'HIGH' => {
+                                          type => 'Int',                                        },
+                               'INFORMATIONAL' => {
+                                          type => 'Int',                                        },
+                               'LOW' => {
+                                          type => 'Int',                                        },
+                               'MEDIUM' => {
+                                          type => 'Int',                                        },
+                               'UNDEFINED' => {
+                                          type => 'Int',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,22 +70,22 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 CRITICAL => Int
+=head2 CRITICAL => 
 
 
-=head2 HIGH => Int
+=head2 HIGH => 
 
 
-=head2 INFORMATIONAL => Int
+=head2 INFORMATIONAL => 
 
 
-=head2 LOW => Int
+=head2 LOW => 
 
 
-=head2 MEDIUM => Int
+=head2 MEDIUM => 
 
 
-=head2 UNDEFINED => Int
+=head2 UNDEFINED => 
 
 
 

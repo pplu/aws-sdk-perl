@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::SESv2::SendingOptions;
-  use Moose;
-  has SendingEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::SESv2::Types qw//;
+  has SendingEnabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SendingEnabled' => {
+                                     'type' => 'Bool'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

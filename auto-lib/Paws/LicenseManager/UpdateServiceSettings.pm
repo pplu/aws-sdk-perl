@@ -1,16 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::LicenseManager::UpdateServiceSettings;
-  use Moose;
-  has EnableCrossAccountsDiscovery => (is => 'ro', isa => 'Bool');
-  has OrganizationConfiguration => (is => 'ro', isa => 'Paws::LicenseManager::OrganizationConfiguration');
-  has S3BucketArn => (is => 'ro', isa => 'Str');
-  has SnsTopicArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::LicenseManager::Types qw/LicenseManager_OrganizationConfiguration/;
+  has EnableCrossAccountsDiscovery => (is => 'ro', isa => Bool, predicate => 1);
+  has OrganizationConfiguration => (is => 'ro', isa => LicenseManager_OrganizationConfiguration, predicate => 1);
+  has S3BucketArn => (is => 'ro', isa => Str, predicate => 1);
+  has SnsTopicArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateServiceSettings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LicenseManager::UpdateServiceSettingsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateServiceSettings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LicenseManager::UpdateServiceSettingsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationConfiguration' => {
+                                                'class' => 'Paws::LicenseManager::OrganizationConfiguration',
+                                                'type' => 'LicenseManager_OrganizationConfiguration'
+                                              },
+               'EnableCrossAccountsDiscovery' => {
+                                                   'type' => 'Bool'
+                                                 },
+               'SnsTopicArn' => {
+                                  'type' => 'Str'
+                                },
+               'S3BucketArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +79,7 @@ Activates cross-account discovery.
 
 
 
-=head2 OrganizationConfiguration => L<Paws::LicenseManager::OrganizationConfiguration>
+=head2 OrganizationConfiguration => LicenseManager_OrganizationConfiguration
 
 Integrates AWS Organizations with License Manager for cross-account
 discovery.

@@ -1,20 +1,82 @@
+# Generated from default/object.tt
 package Paws::KMS::KeyMetadata;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has AWSAccountId => (is => 'ro', isa => 'Str');
-  has CloudHsmClusterId => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has CustomKeyStoreId => (is => 'ro', isa => 'Str');
-  has DeletionDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has ExpirationModel => (is => 'ro', isa => 'Str');
-  has KeyId => (is => 'ro', isa => 'Str', required => 1);
-  has KeyManager => (is => 'ro', isa => 'Str');
-  has KeyState => (is => 'ro', isa => 'Str');
-  has KeyUsage => (is => 'ro', isa => 'Str');
-  has Origin => (is => 'ro', isa => 'Str');
-  has ValidTo => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::KMS::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has AWSAccountId => (is => 'ro', isa => Str);
+  has CloudHsmClusterId => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has CustomKeyStoreId => (is => 'ro', isa => Str);
+  has DeletionDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has ExpirationModel => (is => 'ro', isa => Str);
+  has KeyId => (is => 'ro', isa => Str, required => 1);
+  has KeyManager => (is => 'ro', isa => Str);
+  has KeyState => (is => 'ro', isa => Str);
+  has KeyUsage => (is => 'ro', isa => Str);
+  has Origin => (is => 'ro', isa => Str);
+  has ValidTo => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'KeyId' => 1
+                  },
+  'types' => {
+               'KeyState' => {
+                               'type' => 'Str'
+                             },
+               'KeyManager' => {
+                                 'type' => 'Str'
+                               },
+               'ExpirationModel' => {
+                                      'type' => 'Str'
+                                    },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'KeyUsage' => {
+                               'type' => 'Str'
+                             },
+               'CloudHsmClusterId' => {
+                                        'type' => 'Str'
+                                      },
+               'AWSAccountId' => {
+                                   'type' => 'Str'
+                                 },
+               'ValidTo' => {
+                              'type' => 'Str'
+                            },
+               'Origin' => {
+                             'type' => 'Str'
+                           },
+               'DeletionDate' => {
+                                   'type' => 'Str'
+                                 },
+               'KeyId' => {
+                            'type' => 'Str'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CustomKeyStoreId' => {
+                                       'type' => 'Str'
+                                     },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

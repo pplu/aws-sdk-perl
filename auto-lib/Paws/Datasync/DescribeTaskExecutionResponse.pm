@@ -1,20 +1,75 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Datasync::DescribeTaskExecutionResponse;
-  use Moose;
-  has BytesTransferred => (is => 'ro', isa => 'Int');
-  has BytesWritten => (is => 'ro', isa => 'Int');
-  has EstimatedBytesToTransfer => (is => 'ro', isa => 'Int');
-  has EstimatedFilesToTransfer => (is => 'ro', isa => 'Int');
-  has Excludes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
-  has FilesTransferred => (is => 'ro', isa => 'Int');
-  has Includes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
-  has Options => (is => 'ro', isa => 'Paws::Datasync::Options');
-  has Result => (is => 'ro', isa => 'Paws::Datasync::TaskExecutionResultDetail');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TaskExecutionArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::Datasync::Types qw/Datasync_Options Datasync_TaskExecutionResultDetail Datasync_FilterRule/;
+  has BytesTransferred => (is => 'ro', isa => Int);
+  has BytesWritten => (is => 'ro', isa => Int);
+  has EstimatedBytesToTransfer => (is => 'ro', isa => Int);
+  has EstimatedFilesToTransfer => (is => 'ro', isa => Int);
+  has Excludes => (is => 'ro', isa => ArrayRef[Datasync_FilterRule]);
+  has FilesTransferred => (is => 'ro', isa => Int);
+  has Includes => (is => 'ro', isa => ArrayRef[Datasync_FilterRule]);
+  has Options => (is => 'ro', isa => Datasync_Options);
+  has Result => (is => 'ro', isa => Datasync_TaskExecutionResultDetail);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TaskExecutionArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Excludes' => {
+                               'type' => 'ArrayRef[Datasync_FilterRule]',
+                               'class' => 'Paws::Datasync::FilterRule'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'TaskExecutionArn' => {
+                                       'type' => 'Str'
+                                     },
+               'BytesWritten' => {
+                                   'type' => 'Int'
+                                 },
+               'EstimatedBytesToTransfer' => {
+                                               'type' => 'Int'
+                                             },
+               'FilesTransferred' => {
+                                       'type' => 'Int'
+                                     },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'Includes' => {
+                               'class' => 'Paws::Datasync::FilterRule',
+                               'type' => 'ArrayRef[Datasync_FilterRule]'
+                             },
+               'EstimatedFilesToTransfer' => {
+                                               'type' => 'Int'
+                                             },
+               'Result' => {
+                             'class' => 'Paws::Datasync::TaskExecutionResultDetail',
+                             'type' => 'Datasync_TaskExecutionResultDetail'
+                           },
+               'Options' => {
+                              'type' => 'Datasync_Options',
+                              'class' => 'Paws::Datasync::Options'
+                            },
+               'BytesTransferred' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -52,7 +107,7 @@ source and destination locations and finding the delta that needs to be
 transferred.
 
 
-=head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
+=head2 Excludes => ArrayRef[Datasync_FilterRule]
 
 A list of filter rules that determines which files to exclude from a
 task. The list should contain a single filter string that consists of
@@ -74,7 +129,7 @@ implementation-specific for some location types, so don't use it as an
 indicator for a correct file number or to monitor your task execution.
 
 
-=head2 Includes => ArrayRef[L<Paws::Datasync::FilterRule>]
+=head2 Includes => ArrayRef[Datasync_FilterRule]
 
 A list of filter rules that determines which files to include when
 running a task. The list should contain a single filter string that
@@ -82,12 +137,12 @@ consists of the patterns to include. The patterns are delimited by "|"
 (that is, a pipe), for example: C<"/folder1|/folder2">
 
 
-=head2 Options => L<Paws::Datasync::Options>
+=head2 Options => Datasync_Options
 
 
 
 
-=head2 Result => L<Paws::Datasync::TaskExecutionResultDetail>
+=head2 Result => Datasync_TaskExecutionResultDetail
 
 The result of the task execution.
 

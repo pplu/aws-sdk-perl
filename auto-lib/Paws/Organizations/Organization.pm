@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::Organizations::Organization;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has AvailablePolicyTypes => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::PolicyTypeSummary]');
-  has FeatureSet => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has MasterAccountArn => (is => 'ro', isa => 'Str');
-  has MasterAccountEmail => (is => 'ro', isa => 'Str');
-  has MasterAccountId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Organizations::Types qw/Organizations_PolicyTypeSummary/;
+  has Arn => (is => 'ro', isa => Str);
+  has AvailablePolicyTypes => (is => 'ro', isa => ArrayRef[Organizations_PolicyTypeSummary]);
+  has FeatureSet => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has MasterAccountArn => (is => 'ro', isa => Str);
+  has MasterAccountEmail => (is => 'ro', isa => Str);
+  has MasterAccountId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MasterAccountArn' => {
+                                       'type' => 'Str'
+                                     },
+               'MasterAccountEmail' => {
+                                         'type' => 'Str'
+                                       },
+               'MasterAccountId' => {
+                                      'type' => 'Str'
+                                    },
+               'AvailablePolicyTypes' => {
+                                           'type' => 'ArrayRef[Organizations_PolicyTypeSummary]',
+                                           'class' => 'Paws::Organizations::PolicyTypeSummary'
+                                         },
+               'FeatureSet' => {
+                                 'type' => 'Str'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +91,7 @@ Supported by Organizations
 in the I<AWS Organizations User Guide>.
 
 
-=head2 AvailablePolicyTypes => ArrayRef[L<Paws::Organizations::PolicyTypeSummary>]
+=head2 AvailablePolicyTypes => ArrayRef[Organizations_PolicyTypeSummary]
 
   A list of policy types that are enabled for this organization. For
 example, if your organization has all features enabled, then service

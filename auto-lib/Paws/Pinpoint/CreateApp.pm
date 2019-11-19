@@ -1,14 +1,33 @@
 
 package Paws::Pinpoint::CreateApp;
-  use Moose;
-  has CreateApplicationRequest => (is => 'ro', isa => 'Paws::Pinpoint::CreateApplicationRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_CreateApplicationRequest/;
+  has CreateApplicationRequest => (is => 'ro', isa => Pinpoint_CreateApplicationRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'CreateApplicationRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApp');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::ApplicationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApp');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::ApplicationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateApplicationRequest' => {
+                                               'class' => 'Paws::Pinpoint::CreateApplicationRequest',
+                                               'type' => 'Pinpoint_CreateApplicationRequest'
+                                             }
+             },
+  'IsRequired' => {
+                    'CreateApplicationRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +69,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CreateApplicationRequest => L<Paws::Pinpoint::CreateApplicationRequest>
+=head2 B<REQUIRED> CreateApplicationRequest => Pinpoint_CreateApplicationRequest
 
 
 

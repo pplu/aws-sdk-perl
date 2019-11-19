@@ -1,16 +1,76 @@
 package Paws::EC2::NatGateway;
-  use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
-  has DeleteTime => (is => 'ro', isa => 'Str', request_name => 'deleteTime', traits => ['NameInRequest']);
-  has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
-  has FailureMessage => (is => 'ro', isa => 'Str', request_name => 'failureMessage', traits => ['NameInRequest']);
-  has NatGatewayAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NatGatewayAddress]', request_name => 'natGatewayAddressSet', traits => ['NameInRequest']);
-  has NatGatewayId => (is => 'ro', isa => 'Str', request_name => 'natGatewayId', traits => ['NameInRequest']);
-  has ProvisionedBandwidth => (is => 'ro', isa => 'Paws::EC2::ProvisionedBandwidth', request_name => 'provisionedBandwidth', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_NatGatewayAddress EC2_Tag EC2_ProvisionedBandwidth/;
+  has CreateTime => (is => 'ro', isa => Str);
+  has DeleteTime => (is => 'ro', isa => Str);
+  has FailureCode => (is => 'ro', isa => Str);
+  has FailureMessage => (is => 'ro', isa => Str);
+  has NatGatewayAddresses => (is => 'ro', isa => ArrayRef[EC2_NatGatewayAddress]);
+  has NatGatewayId => (is => 'ro', isa => Str);
+  has ProvisionedBandwidth => (is => 'ro', isa => EC2_ProvisionedBandwidth);
+  has State => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CreateTime' => 'createTime',
+                       'FailureMessage' => 'failureMessage',
+                       'NatGatewayAddresses' => 'natGatewayAddressSet',
+                       'FailureCode' => 'failureCode',
+                       'SubnetId' => 'subnetId',
+                       'VpcId' => 'vpcId',
+                       'ProvisionedBandwidth' => 'provisionedBandwidth',
+                       'Tags' => 'tagSet',
+                       'NatGatewayId' => 'natGatewayId',
+                       'State' => 'state',
+                       'DeleteTime' => 'deleteTime'
+                     },
+  'types' => {
+               'FailureCode' => {
+                                  'type' => 'Str'
+                                },
+               'ProvisionedBandwidth' => {
+                                           'type' => 'EC2_ProvisionedBandwidth',
+                                           'class' => 'Paws::EC2::ProvisionedBandwidth'
+                                         },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'FailureMessage' => {
+                                     'type' => 'Str'
+                                   },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'NatGatewayAddresses' => {
+                                          'type' => 'ArrayRef[EC2_NatGatewayAddress]',
+                                          'class' => 'Paws::EC2::NatGatewayAddress'
+                                        },
+               'DeleteTime' => {
+                                 'type' => 'Str'
+                               },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'NatGatewayId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -107,7 +167,7 @@ does not exist or could not be found."
 
 
 
-=head2 NatGatewayAddresses => ArrayRef[L<Paws::EC2::NatGatewayAddress>]
+=head2 NatGatewayAddresses => ArrayRef[EC2_NatGatewayAddress]
 
   Information about the IP addresses and network interface associated
 with the NAT gateway.
@@ -118,7 +178,7 @@ with the NAT gateway.
   The ID of the NAT gateway.
 
 
-=head2 ProvisionedBandwidth => L<Paws::EC2::ProvisionedBandwidth>
+=head2 ProvisionedBandwidth => EC2_ProvisionedBandwidth
 
   Reserved. If you need to sustain traffic greater than the documented
 limits
@@ -168,7 +228,7 @@ processing traffic.
   The ID of the subnet in which the NAT gateway is located.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   The tags for the NAT gateway.
 

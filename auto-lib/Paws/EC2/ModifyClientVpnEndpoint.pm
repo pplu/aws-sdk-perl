@@ -1,19 +1,57 @@
 
 package Paws::EC2::ModifyClientVpnEndpoint;
-  use Moose;
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', required => 1);
-  has ConnectionLogOptions => (is => 'ro', isa => 'Paws::EC2::ConnectionLogOptions');
-  has Description => (is => 'ro', isa => 'Str');
-  has DnsServers => (is => 'ro', isa => 'Paws::EC2::DnsServersOptionsModifyStructure');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has ServerCertificateArn => (is => 'ro', isa => 'Str');
-  has SplitTunnel => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw/EC2_DnsServersOptionsModifyStructure EC2_ConnectionLogOptions/;
+  has ClientVpnEndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConnectionLogOptions => (is => 'ro', isa => EC2_ConnectionLogOptions, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DnsServers => (is => 'ro', isa => EC2_DnsServersOptionsModifyStructure, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has ServerCertificateArn => (is => 'ro', isa => Str, predicate => 1);
+  has SplitTunnel => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClientVpnEndpoint');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyClientVpnEndpointResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyClientVpnEndpoint');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyClientVpnEndpointResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ClientVpnEndpointId' => 1
+                  },
+  'types' => {
+               'ConnectionLogOptions' => {
+                                           'class' => 'Paws::EC2::ConnectionLogOptions',
+                                           'type' => 'EC2_ConnectionLogOptions'
+                                         },
+               'DnsServers' => {
+                                 'class' => 'Paws::EC2::DnsServersOptionsModifyStructure',
+                                 'type' => 'EC2_DnsServersOptionsModifyStructure'
+                               },
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ServerCertificateArn' => {
+                                           'type' => 'Str'
+                                         },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'SplitTunnel' => {
+                                  'type' => 'Bool'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +107,7 @@ The ID of the Client VPN endpoint to modify.
 
 
 
-=head2 ConnectionLogOptions => L<Paws::EC2::ConnectionLogOptions>
+=head2 ConnectionLogOptions => EC2_ConnectionLogOptions
 
 Information about the client connection logging options.
 
@@ -106,7 +144,7 @@ A brief description of the Client VPN endpoint.
 
 
 
-=head2 DnsServers => L<Paws::EC2::DnsServersOptionsModifyStructure>
+=head2 DnsServers => EC2_DnsServersOptionsModifyStructure
 
 Information about the DNS servers to be used by Client VPN connections.
 A Client VPN endpoint can have up to two DNS servers.

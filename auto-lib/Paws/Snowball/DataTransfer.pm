@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Snowball::DataTransfer;
-  use Moose;
-  has BytesTransferred => (is => 'ro', isa => 'Int');
-  has ObjectsTransferred => (is => 'ro', isa => 'Int');
-  has TotalBytes => (is => 'ro', isa => 'Int');
-  has TotalObjects => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Snowball::Types qw//;
+  has BytesTransferred => (is => 'ro', isa => Int);
+  has ObjectsTransferred => (is => 'ro', isa => Int);
+  has TotalBytes => (is => 'ro', isa => Int);
+  has TotalObjects => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TotalBytes' => {
+                                 'type' => 'Int'
+                               },
+               'BytesTransferred' => {
+                                       'type' => 'Int'
+                                     },
+               'TotalObjects' => {
+                                   'type' => 'Int'
+                                 },
+               'ObjectsTransferred' => {
+                                         'type' => 'Int'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

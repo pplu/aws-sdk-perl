@@ -1,13 +1,50 @@
 
 package Paws::ApiGateway::Resource;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
-  has ParentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentId');
-  has Path => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'path');
-  has PathPart => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pathPart');
-  has ResourceMethods => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethod', traits => ['NameInRequest'], request_name => 'resourceMethods');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfMethod/;
+  has Id => (is => 'ro', isa => Str);
+  has ParentId => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str);
+  has PathPart => (is => 'ro', isa => Str);
+  has ResourceMethods => (is => 'ro', isa => ApiGateway_MapOfMethod);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PathPart' => {
+                               'type' => 'Str'
+                             },
+               'ParentId' => {
+                               'type' => 'Str'
+                             },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceMethods' => {
+                                      'class' => 'Paws::ApiGateway::MapOfMethod',
+                                      'type' => 'ApiGateway_MapOfMethod'
+                                    }
+             },
+  'NameInRequest' => {
+                       'ResourceMethods' => 'resourceMethods',
+                       'Path' => 'path',
+                       'ParentId' => 'parentId',
+                       'Id' => 'id',
+                       'PathPart' => 'pathPart'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +76,7 @@ The full path for this resource.
 The last path segment for this resource.
 
 
-=head2 ResourceMethods => L<Paws::ApiGateway::MapOfMethod>
+=head2 ResourceMethods => ApiGateway_MapOfMethod
 
 Gets an API resource's method of a given HTTP verb.
 

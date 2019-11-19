@@ -1,24 +1,81 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::CreateCrawler;
-  use Moose;
-  has Classifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Configuration => (is => 'ro', isa => 'Str');
-  has CrawlerSecurityConfiguration => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Role => (is => 'ro', isa => 'Str', required => 1);
-  has Schedule => (is => 'ro', isa => 'Str');
-  has SchemaChangePolicy => (is => 'ro', isa => 'Paws::Glue::SchemaChangePolicy');
-  has TablePrefix => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Glue::TagsMap');
-  has Targets => (is => 'ro', isa => 'Paws::Glue::CrawlerTargets', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Glue::Types qw/Glue_SchemaChangePolicy Glue_TagsMap Glue_CrawlerTargets/;
+  has Classifiers => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Configuration => (is => 'ro', isa => Str, predicate => 1);
+  has CrawlerSecurityConfiguration => (is => 'ro', isa => Str, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Role => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Schedule => (is => 'ro', isa => Str, predicate => 1);
+  has SchemaChangePolicy => (is => 'ro', isa => Glue_SchemaChangePolicy, predicate => 1);
+  has TablePrefix => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => Glue_TagsMap, predicate => 1);
+  has Targets => (is => 'ro', isa => Glue_CrawlerTargets, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCrawler');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::CreateCrawlerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCrawler');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::CreateCrawlerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Targets' => 1,
+                    'Role' => 1
+                  },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'SchemaChangePolicy' => {
+                                         'type' => 'Glue_SchemaChangePolicy',
+                                         'class' => 'Paws::Glue::SchemaChangePolicy'
+                                       },
+               'CrawlerSecurityConfiguration' => {
+                                                   'type' => 'Str'
+                                                 },
+               'TablePrefix' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Glue::TagsMap',
+                           'type' => 'Glue_TagsMap'
+                         },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'Targets' => {
+                              'type' => 'Glue_CrawlerTargets',
+                              'class' => 'Paws::Glue::CrawlerTargets'
+                            },
+               'Classifiers' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Schedule' => {
+                               'type' => 'Str'
+                             },
+               'Configuration' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -165,7 +222,7 @@ For example, to run something every day at 12:15 UTC, specify C<cron(15
 
 
 
-=head2 SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>
+=head2 SchemaChangePolicy => Glue_SchemaChangePolicy
 
 The policy for the crawler's update and deletion behavior.
 
@@ -177,7 +234,7 @@ The table prefix used for catalog tables that are created.
 
 
 
-=head2 Tags => L<Paws::Glue::TagsMap>
+=head2 Tags => Glue_TagsMap
 
 The tags to use with this crawler request. You can use tags to limit
 access to the crawler. For more information, see AWS Tags in AWS Glue
@@ -185,7 +242,7 @@ access to the crawler. For more information, see AWS Tags in AWS Glue
 
 
 
-=head2 B<REQUIRED> Targets => L<Paws::Glue::CrawlerTargets>
+=head2 B<REQUIRED> Targets => Glue_CrawlerTargets
 
 A list of collection of targets to crawl.
 

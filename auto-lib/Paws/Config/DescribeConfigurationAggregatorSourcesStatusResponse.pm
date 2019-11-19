@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::DescribeConfigurationAggregatorSourcesStatusResponse;
-  use Moose;
-  has AggregatedSourceStatusList => (is => 'ro', isa => 'ArrayRef[Paws::Config::AggregatedSourceStatus]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_AggregatedSourceStatus/;
+  has AggregatedSourceStatusList => (is => 'ro', isa => ArrayRef[Config_AggregatedSourceStatus]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AggregatedSourceStatusList' => {
+                                                 'type' => 'ArrayRef[Config_AggregatedSourceStatus]',
+                                                 'class' => 'Paws::Config::AggregatedSourceStatus'
+                                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Config::DescribeConfigurationAggregatorSourcesStatusResponse
 =head1 ATTRIBUTES
 
 
-=head2 AggregatedSourceStatusList => ArrayRef[L<Paws::Config::AggregatedSourceStatus>]
+=head2 AggregatedSourceStatusList => ArrayRef[Config_AggregatedSourceStatus]
 
 Returns an AggregatedSourceStatus object.
 

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Macie;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'macie' }
   sub signing_name { 'macie' }
   sub version { '2017-12-19' }
   sub target_prefix { 'MacieService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -163,7 +165,7 @@ account.
 
 =over
 
-=item S3Resources => ArrayRef[L<Paws::Macie::S3ResourceClassification>]
+=item S3Resources => ArrayRef[Macie_S3ResourceClassification]
 
 =item [MemberAccountId => Str]
 
@@ -201,7 +203,7 @@ Removes the specified member account from Amazon Macie.
 
 =over
 
-=item AssociatedS3Resources => ArrayRef[L<Paws::Macie::S3Resource>]
+=item AssociatedS3Resources => ArrayRef[Macie_S3Resource]
 
 =item [MemberAccountId => Str]
 
@@ -266,7 +268,7 @@ associated with Amazon Macie for the specified member account.
 
 =over
 
-=item S3ResourcesUpdate => ArrayRef[L<Paws::Macie::S3ResourceClassificationUpdate>]
+=item S3ResourcesUpdate => ArrayRef[Macie_S3ResourceClassificationUpdate]
 
 =item [MemberAccountId => Str]
 

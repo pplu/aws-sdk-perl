@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::CreateSnapshotCopyGrant;
-  use Moose;
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has SnapshotCopyGrantName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Tag/;
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotCopyGrantName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshotCopyGrant');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::CreateSnapshotCopyGrantResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSnapshotCopyGrantResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSnapshotCopyGrant');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::CreateSnapshotCopyGrantResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateSnapshotCopyGrantResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::RedShift::Tag',
+                           'type' => 'ArrayRef[RedShift_Tag]'
+                         },
+               'SnapshotCopyGrantName' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'IsRequired' => {
+                    'SnapshotCopyGrantName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +120,7 @@ Must be unique for all clusters within an AWS account.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
 A list of tag instances.
 

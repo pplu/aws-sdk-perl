@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::SourceCredentialsInfo;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has AuthType => (is => 'ro', isa => 'Str', request_name => 'authType', traits => ['NameInRequest']);
-  has ServerType => (is => 'ro', isa => 'Str', request_name => 'serverType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeBuild::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has AuthType => (is => 'ro', isa => Str);
+  has ServerType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'AuthType' => 'authType',
+                       'ServerType' => 'serverType'
+                     },
+  'types' => {
+               'AuthType' => {
+                               'type' => 'Str'
+                             },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'ServerType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DescribeDBLogFilesResponse;
-  use Moose;
-  has DescribeDBLogFiles => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DescribeDBLogFilesDetails]', request_name => 'DescribeDBLogFilesDetails', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_DescribeDBLogFilesDetails/;
+  has DescribeDBLogFiles => (is => 'ro', isa => ArrayRef[RDS_DescribeDBLogFilesDetails]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DescribeDBLogFiles' => {
+                                         'type' => 'ArrayRef[RDS_DescribeDBLogFilesDetails]',
+                                         'class' => 'Paws::RDS::DescribeDBLogFilesDetails'
+                                       }
+             },
+  'NameInRequest' => {
+                       'DescribeDBLogFiles' => 'DescribeDBLogFilesDetails'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RDS::DescribeDBLogFilesResponse
 =head1 ATTRIBUTES
 
 
-=head2 DescribeDBLogFiles => ArrayRef[L<Paws::RDS::DescribeDBLogFilesDetails>]
+=head2 DescribeDBLogFiles => ArrayRef[RDS_DescribeDBLogFilesDetails]
 
 The DB log files returned.
 

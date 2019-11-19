@@ -1,19 +1,83 @@
 
 package Paws::ApiGateway::Method;
-  use Moose;
-  has ApiKeyRequired => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'apiKeyRequired');
-  has AuthorizationScopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'authorizationScopes');
-  has AuthorizationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizationType');
-  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerId');
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'httpMethod');
-  has MethodIntegration => (is => 'ro', isa => 'Paws::ApiGateway::Integration', traits => ['NameInRequest'], request_name => 'methodIntegration');
-  has MethodResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodResponse', traits => ['NameInRequest'], request_name => 'methodResponses');
-  has OperationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'operationName');
-  has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestModels');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean', traits => ['NameInRequest'], request_name => 'requestParameters');
-  has RequestValidatorId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestValidatorId');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToBoolean ApiGateway_MapOfStringToString ApiGateway_Integration ApiGateway_MapOfMethodResponse/;
+  has ApiKeyRequired => (is => 'ro', isa => Bool);
+  has AuthorizationScopes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has AuthorizationType => (is => 'ro', isa => Str);
+  has AuthorizerId => (is => 'ro', isa => Str);
+  has HttpMethod => (is => 'ro', isa => Str);
+  has MethodIntegration => (is => 'ro', isa => ApiGateway_Integration);
+  has MethodResponses => (is => 'ro', isa => ApiGateway_MapOfMethodResponse);
+  has OperationName => (is => 'ro', isa => Str);
+  has RequestModels => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has RequestParameters => (is => 'ro', isa => ApiGateway_MapOfStringToBoolean);
+  has RequestValidatorId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ApiKeyRequired' => 'apiKeyRequired',
+                       'OperationName' => 'operationName',
+                       'MethodIntegration' => 'methodIntegration',
+                       'RequestParameters' => 'requestParameters',
+                       'RequestValidatorId' => 'requestValidatorId',
+                       'MethodResponses' => 'methodResponses',
+                       'AuthorizationType' => 'authorizationType',
+                       'RequestModels' => 'requestModels',
+                       'AuthorizationScopes' => 'authorizationScopes',
+                       'HttpMethod' => 'httpMethod',
+                       'AuthorizerId' => 'authorizerId'
+                     },
+  'types' => {
+               'AuthorizationScopes' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'HttpMethod' => {
+                                 'type' => 'Str'
+                               },
+               'AuthorizerId' => {
+                                   'type' => 'Str'
+                                 },
+               'AuthorizationType' => {
+                                        'type' => 'Str'
+                                      },
+               'RequestModels' => {
+                                    'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                    'type' => 'ApiGateway_MapOfStringToString'
+                                  },
+               'RequestParameters' => {
+                                        'type' => 'ApiGateway_MapOfStringToBoolean',
+                                        'class' => 'Paws::ApiGateway::MapOfStringToBoolean'
+                                      },
+               'RequestValidatorId' => {
+                                         'type' => 'Str'
+                                       },
+               'MethodResponses' => {
+                                      'type' => 'ApiGateway_MapOfMethodResponse',
+                                      'class' => 'Paws::ApiGateway::MapOfMethodResponse'
+                                    },
+               'ApiKeyRequired' => {
+                                     'type' => 'Bool'
+                                   },
+               'OperationName' => {
+                                    'type' => 'Str'
+                                  },
+               'MethodIntegration' => {
+                                        'class' => 'Paws::ApiGateway::Integration',
+                                        'type' => 'ApiGateway_Integration'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +127,7 @@ C<authorizationType> must be C<CUSTOM>.
 The method's HTTP verb.
 
 
-=head2 MethodIntegration => L<Paws::ApiGateway::Integration>
+=head2 MethodIntegration => ApiGateway_Integration
 
 Gets the method's integration responsible for passing the
 client-submitted request to the back end and performing necessary
@@ -86,7 +150,7 @@ AWS CLI
 (https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-integration.html)
 
 
-=head2 MethodResponses => L<Paws::ApiGateway::MapOfMethodResponse>
+=head2 MethodResponses => ApiGateway_MapOfMethodResponse
 
 Gets a method response associated with a given HTTP status code.
 
@@ -119,14 +183,14 @@ can assign the C<operationName> of C<ListPets> for the C<GET /pets>
 method in the C<PetStore> example.
 
 
-=head2 RequestModels => L<Paws::ApiGateway::MapOfStringToString>
+=head2 RequestModels => ApiGateway_MapOfStringToString
 
 A key-value map specifying data schemas, represented by Model
 resources, (as the mapped value) of the request payloads of given
 content types (as the mapping key).
 
 
-=head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
+=head2 RequestParameters => ApiGateway_MapOfStringToBoolean
 
 A key-value map defining required or optional method request parameters
 that can be accepted by API Gateway. A key is a method request

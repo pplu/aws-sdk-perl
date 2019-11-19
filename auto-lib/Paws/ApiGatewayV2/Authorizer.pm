@@ -1,14 +1,69 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::Authorizer;
-  use Moose;
-  has AuthorizerCredentialsArn => (is => 'ro', isa => 'Str', request_name => 'authorizerCredentialsArn', traits => ['NameInRequest']);
-  has AuthorizerId => (is => 'ro', isa => 'Str', request_name => 'authorizerId', traits => ['NameInRequest']);
-  has AuthorizerResultTtlInSeconds => (is => 'ro', isa => 'Int', request_name => 'authorizerResultTtlInSeconds', traits => ['NameInRequest']);
-  has AuthorizerType => (is => 'ro', isa => 'Str', request_name => 'authorizerType', traits => ['NameInRequest']);
-  has AuthorizerUri => (is => 'ro', isa => 'Str', request_name => 'authorizerUri', traits => ['NameInRequest']);
-  has IdentitySource => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'identitySource', traits => ['NameInRequest']);
-  has IdentityValidationExpression => (is => 'ro', isa => 'Str', request_name => 'identityValidationExpression', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has ProviderArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'providerArns', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has AuthorizerCredentialsArn => (is => 'ro', isa => Str);
+  has AuthorizerId => (is => 'ro', isa => Str);
+  has AuthorizerResultTtlInSeconds => (is => 'ro', isa => Int);
+  has AuthorizerType => (is => 'ro', isa => Str);
+  has AuthorizerUri => (is => 'ro', isa => Str);
+  has IdentitySource => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has IdentityValidationExpression => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has ProviderArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthorizerId' => {
+                                   'type' => 'Str'
+                                 },
+               'AuthorizerType' => {
+                                     'type' => 'Str'
+                                   },
+               'AuthorizerResultTtlInSeconds' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'IdentityValidationExpression' => {
+                                                   'type' => 'Str'
+                                                 },
+               'IdentitySource' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'AuthorizerCredentialsArn' => {
+                                               'type' => 'Str'
+                                             },
+               'AuthorizerUri' => {
+                                    'type' => 'Str'
+                                  },
+               'ProviderArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'AuthorizerResultTtlInSeconds' => 'authorizerResultTtlInSeconds',
+                       'Name' => 'name',
+                       'IdentityValidationExpression' => 'identityValidationExpression',
+                       'AuthorizerUri' => 'authorizerUri',
+                       'AuthorizerCredentialsArn' => 'authorizerCredentialsArn',
+                       'IdentitySource' => 'identitySource',
+                       'ProviderArns' => 'providerArns',
+                       'AuthorizerId' => 'authorizerId',
+                       'AuthorizerType' => 'authorizerType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

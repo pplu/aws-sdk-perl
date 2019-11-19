@@ -1,20 +1,57 @@
 
 package Paws::Lambda::CreateEventSourceMapping;
-  use Moose;
-  has BatchSize => (is => 'ro', isa => 'Int');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has EventSourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has FunctionName => (is => 'ro', isa => 'Str', required => 1);
-  has MaximumBatchingWindowInSeconds => (is => 'ro', isa => 'Int');
-  has StartingPosition => (is => 'ro', isa => 'Str');
-  has StartingPositionTimestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::Lambda::Types qw//;
+  has BatchSize => (is => 'ro', isa => Int, predicate => 1);
+  has Enabled => (is => 'ro', isa => Bool, predicate => 1);
+  has EventSourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaximumBatchingWindowInSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has StartingPosition => (is => 'ro', isa => Str, predicate => 1);
+  has StartingPositionTimestamp => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEventSourceMapping');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/event-source-mappings/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::EventSourceMappingConfiguration');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateEventSourceMapping');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-03-31/event-source-mappings/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::EventSourceMappingConfiguration');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BatchSize' => {
+                                'type' => 'Int'
+                              },
+               'StartingPosition' => {
+                                       'type' => 'Str'
+                                     },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'EventSourceArn' => {
+                                     'type' => 'Str'
+                                   },
+               'StartingPositionTimestamp' => {
+                                                'type' => 'Str'
+                                              },
+               'MaximumBatchingWindowInSeconds' => {
+                                                     'type' => 'Int'
+                                                   },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             },
+  'IsRequired' => {
+                    'FunctionName' => 1,
+                    'EventSourceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

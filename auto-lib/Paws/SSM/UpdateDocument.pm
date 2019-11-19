@@ -1,19 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::UpdateDocument;
-  use Moose;
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AttachmentsSource]');
-  has Content => (is => 'ro', isa => 'Str', required => 1);
-  has DocumentFormat => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has TargetType => (is => 'ro', isa => 'Str');
-  has VersionName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_AttachmentsSource/;
+  has Attachments => (is => 'ro', isa => ArrayRef[SSM_AttachmentsSource], predicate => 1);
+  has Content => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DocumentFormat => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetType => (is => 'ro', isa => Str, predicate => 1);
+  has VersionName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDocument');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::UpdateDocumentResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDocument');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::UpdateDocumentResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'DocumentFormat' => {
+                                     'type' => 'Str'
+                                   },
+               'Content' => {
+                              'type' => 'Str'
+                            },
+               'Attachments' => {
+                                  'class' => 'Paws::SSM::AttachmentsSource',
+                                  'type' => 'ArrayRef[SSM_AttachmentsSource]'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'VersionName' => {
+                                  'type' => 'Str'
+                                },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Content' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +102,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 Attachments => ArrayRef[L<Paws::SSM::AttachmentsSource>]
+=head2 Attachments => ArrayRef[SSM_AttachmentsSource]
 
 A list of key and value pairs that describe attachments to a version of
 a document.

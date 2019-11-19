@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::PerformanceMetrics;
-  use Moose;
-  has Properties => (is => 'ro', isa => 'Paws::MachineLearning::PerformanceMetricsProperties');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MachineLearning::Types qw/MachineLearning_PerformanceMetricsProperties/;
+  has Properties => (is => 'ro', isa => MachineLearning_PerformanceMetricsProperties);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Properties' => {
+                                 'class' => 'Paws::MachineLearning::PerformanceMetricsProperties',
+                                 'type' => 'MachineLearning_PerformanceMetricsProperties'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +80,7 @@ Machine Learning Developer Guide
 =head1 ATTRIBUTES
 
 
-=head2 Properties => L<Paws::MachineLearning::PerformanceMetricsProperties>
+=head2 Properties => MachineLearning_PerformanceMetricsProperties
 
   
 

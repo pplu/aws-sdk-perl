@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::RDSData::StructValue;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::Value]', request_name => 'attributes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::RDSData::Types qw/RDSData_Value/;
+  has Attributes => (is => 'ro', isa => ArrayRef[RDSData_Value]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::RDSData::Value',
+                                 'type' => 'ArrayRef[RDSData_Value]'
+                               }
+             },
+  'NameInRequest' => {
+                       'Attributes' => 'attributes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ A structure value returned by a call.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::RDSData::Value>]
+=head2 Attributes => ArrayRef[RDSData_Value]
 
   The attributes returned in the record.
 

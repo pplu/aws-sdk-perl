@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::SSM::ResourceDataSyncSourceWithState;
-  use Moose;
-  has AwsOrganizationsSource => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncAwsOrganizationsSource');
-  has IncludeFutureRegions => (is => 'ro', isa => 'Bool');
-  has SourceRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SourceType => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::SSM::Types qw/SSM_ResourceDataSyncAwsOrganizationsSource/;
+  has AwsOrganizationsSource => (is => 'ro', isa => SSM_ResourceDataSyncAwsOrganizationsSource);
+  has IncludeFutureRegions => (is => 'ro', isa => Bool);
+  has SourceRegions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SourceType => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'SourceRegions' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'AwsOrganizationsSource' => {
+                                             'type' => 'SSM_ResourceDataSyncAwsOrganizationsSource',
+                                             'class' => 'Paws::SSM::ResourceDataSyncAwsOrganizationsSource'
+                                           },
+               'IncludeFutureRegions' => {
+                                           'type' => 'Bool'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +83,7 @@ organization in AWS Organizations.)
 =head1 ATTRIBUTES
 
 
-=head2 AwsOrganizationsSource => L<Paws::SSM::ResourceDataSyncAwsOrganizationsSource>
+=head2 AwsOrganizationsSource => SSM_ResourceDataSyncAwsOrganizationsSource
 
   The field name in C<SyncSource> for the
 C<ResourceDataSyncAwsOrganizationsSource> type.

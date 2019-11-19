@@ -1,10 +1,37 @@
+# Generated from json/callresult_class.tt
 
 package Paws::EMR::GetBlockPublicAccessConfigurationOutput;
-  use Moose;
-  has BlockPublicAccessConfiguration => (is => 'ro', isa => 'Paws::EMR::BlockPublicAccessConfiguration', required => 1);
-  has BlockPublicAccessConfigurationMetadata => (is => 'ro', isa => 'Paws::EMR::BlockPublicAccessConfigurationMetadata', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_BlockPublicAccessConfiguration EMR_BlockPublicAccessConfigurationMetadata/;
+  has BlockPublicAccessConfiguration => (is => 'ro', isa => EMR_BlockPublicAccessConfiguration, required => 1);
+  has BlockPublicAccessConfigurationMetadata => (is => 'ro', isa => EMR_BlockPublicAccessConfigurationMetadata, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BlockPublicAccessConfigurationMetadata' => 1,
+                    'BlockPublicAccessConfiguration' => 1
+                  },
+  'types' => {
+               'BlockPublicAccessConfiguration' => {
+                                                     'type' => 'EMR_BlockPublicAccessConfiguration',
+                                                     'class' => 'Paws::EMR::BlockPublicAccessConfiguration'
+                                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BlockPublicAccessConfigurationMetadata' => {
+                                                             'type' => 'EMR_BlockPublicAccessConfigurationMetadata',
+                                                             'class' => 'Paws::EMR::BlockPublicAccessConfigurationMetadata'
+                                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +42,7 @@ Paws::EMR::GetBlockPublicAccessConfigurationOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> BlockPublicAccessConfiguration => L<Paws::EMR::BlockPublicAccessConfiguration>
+=head2 B<REQUIRED> BlockPublicAccessConfiguration => EMR_BlockPublicAccessConfiguration
 
 A configuration for Amazon EMR block public access. The configuration
 applies to all clusters created in your account for the current Region.
@@ -30,7 +57,7 @@ this by updating the block public access configuration to remove the
 exception.
 
 
-=head2 B<REQUIRED> BlockPublicAccessConfigurationMetadata => L<Paws::EMR::BlockPublicAccessConfigurationMetadata>
+=head2 B<REQUIRED> BlockPublicAccessConfigurationMetadata => EMR_BlockPublicAccessConfigurationMetadata
 
 Properties that describe the AWS principal that created the
 C<BlockPublicAccessConfiguration> using the

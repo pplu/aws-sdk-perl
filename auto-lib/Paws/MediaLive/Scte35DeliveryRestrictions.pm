@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Scte35DeliveryRestrictions;
-  use Moose;
-  has ArchiveAllowedFlag => (is => 'ro', isa => 'Str', request_name => 'archiveAllowedFlag', traits => ['NameInRequest'], required => 1);
-  has DeviceRestrictions => (is => 'ro', isa => 'Str', request_name => 'deviceRestrictions', traits => ['NameInRequest'], required => 1);
-  has NoRegionalBlackoutFlag => (is => 'ro', isa => 'Str', request_name => 'noRegionalBlackoutFlag', traits => ['NameInRequest'], required => 1);
-  has WebDeliveryAllowedFlag => (is => 'ro', isa => 'Str', request_name => 'webDeliveryAllowedFlag', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has ArchiveAllowedFlag => (is => 'ro', isa => Str, required => 1);
+  has DeviceRestrictions => (is => 'ro', isa => Str, required => 1);
+  has NoRegionalBlackoutFlag => (is => 'ro', isa => Str, required => 1);
+  has WebDeliveryAllowedFlag => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceRestrictions' => {
+                                         'type' => 'Str'
+                                       },
+               'NoRegionalBlackoutFlag' => {
+                                             'type' => 'Str'
+                                           },
+               'ArchiveAllowedFlag' => {
+                                         'type' => 'Str'
+                                       },
+               'WebDeliveryAllowedFlag' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'WebDeliveryAllowedFlag' => 'webDeliveryAllowedFlag',
+                       'ArchiveAllowedFlag' => 'archiveAllowedFlag',
+                       'NoRegionalBlackoutFlag' => 'noRegionalBlackoutFlag',
+                       'DeviceRestrictions' => 'deviceRestrictions'
+                     },
+  'IsRequired' => {
+                    'DeviceRestrictions' => 1,
+                    'NoRegionalBlackoutFlag' => 1,
+                    'ArchiveAllowedFlag' => 1,
+                    'WebDeliveryAllowedFlag' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::CodeStar::ToolchainSource;
-  use Moose;
-  has S3 => (is => 'ro', isa => 'Paws::CodeStar::S3Location', request_name => 's3', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CodeStar::Types qw/CodeStar_S3Location/;
+  has S3 => (is => 'ro', isa => CodeStar_S3Location, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3' => {
+                         'type' => 'CodeStar_S3Location',
+                         'class' => 'Paws::CodeStar::S3Location'
+                       }
+             },
+  'NameInRequest' => {
+                       'S3' => 's3'
+                     },
+  'IsRequired' => {
+                    'S3' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ project creation.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> S3 => L<Paws::CodeStar::S3Location>
+=head2 B<REQUIRED> S3 => CodeStar_S3Location
 
   The Amazon S3 bucket where the toolchain template file provided with
 the project request is stored.

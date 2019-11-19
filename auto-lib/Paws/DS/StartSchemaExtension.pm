@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DS::StartSchemaExtension;
-  use Moose;
-  has CreateSnapshotBeforeSchemaExtension => (is => 'ro', isa => 'Bool', required => 1);
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
-  has LdifContent => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DS::Types qw//;
+  has CreateSnapshotBeforeSchemaExtension => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DirectoryId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LdifContent => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartSchemaExtension');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::StartSchemaExtensionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartSchemaExtension');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DS::StartSchemaExtensionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Description' => 1,
+                    'DirectoryId' => 1,
+                    'LdifContent' => 1,
+                    'CreateSnapshotBeforeSchemaExtension' => 1
+                  },
+  'types' => {
+               'CreateSnapshotBeforeSchemaExtension' => {
+                                                          'type' => 'Bool'
+                                                        },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'LdifContent' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

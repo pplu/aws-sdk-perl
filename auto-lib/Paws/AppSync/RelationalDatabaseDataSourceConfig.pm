@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::AppSync::RelationalDatabaseDataSourceConfig;
-  use Moose;
-  has RdsHttpEndpointConfig => (is => 'ro', isa => 'Paws::AppSync::RdsHttpEndpointConfig', request_name => 'rdsHttpEndpointConfig', traits => ['NameInRequest']);
-  has RelationalDatabaseSourceType => (is => 'ro', isa => 'Str', request_name => 'relationalDatabaseSourceType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw/AppSync_RdsHttpEndpointConfig/;
+  has RdsHttpEndpointConfig => (is => 'ro', isa => AppSync_RdsHttpEndpointConfig);
+  has RelationalDatabaseSourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RelationalDatabaseSourceType' => {
+                                                   'type' => 'Str'
+                                                 },
+               'RdsHttpEndpointConfig' => {
+                                            'class' => 'Paws::AppSync::RdsHttpEndpointConfig',
+                                            'type' => 'AppSync_RdsHttpEndpointConfig'
+                                          }
+             },
+  'NameInRequest' => {
+                       'RdsHttpEndpointConfig' => 'rdsHttpEndpointConfig',
+                       'RelationalDatabaseSourceType' => 'relationalDatabaseSourceType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Describes a relational database data source configuration.
 =head1 ATTRIBUTES
 
 
-=head2 RdsHttpEndpointConfig => L<Paws::AppSync::RdsHttpEndpointConfig>
+=head2 RdsHttpEndpointConfig => AppSync_RdsHttpEndpointConfig
 
   Amazon RDS HTTP endpoint settings.
 

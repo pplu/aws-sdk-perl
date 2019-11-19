@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::StepFunctions::ActivityTimedOutEventDetails;
-  use Moose;
-  has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest']);
-  has Error => (is => 'ro', isa => 'Str', request_name => 'error', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has Cause => (is => 'ro', isa => Str);
+  has Error => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Cause' => {
+                            'type' => 'Str'
+                          },
+               'Error' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'Cause' => 'cause',
+                       'Error' => 'error'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

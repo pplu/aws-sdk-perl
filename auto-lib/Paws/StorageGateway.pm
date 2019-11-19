@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::StorageGateway;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'storagegateway' }
   sub signing_name { 'storagegateway' }
   sub version { '2013-06-30' }
   sub target_prefix { 'StorageGateway_20130630' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -718,7 +720,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =item [MediumChangerType => Str]
 
-=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+=item [Tags => ArrayRef[StorageGateway_Tag]]
 
 =item [TapeDriveType => Str]
 
@@ -771,7 +773,7 @@ configure as cache.
 
 =item ResourceARN => Str
 
-=item Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+=item Tags => ArrayRef[StorageGateway_Tag]
 
 
 =back
@@ -980,7 +982,7 @@ gateway type.
 
 =item [SourceVolumeARN => Str]
 
-=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+=item [Tags => ArrayRef[StorageGateway_Tag]]
 
 
 =back
@@ -1032,7 +1034,7 @@ the copied volume, in bytes.
 
 =item [KMSKey => Str]
 
-=item [NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>]
+=item [NFSFileShareDefaults => StorageGateway_NFSFileShareDefaults]
 
 =item [ObjectACL => Str]
 
@@ -1042,7 +1044,7 @@ the copied volume, in bytes.
 
 =item [Squash => Str]
 
-=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+=item [Tags => ArrayRef[StorageGateway_Tag]]
 
 
 =back
@@ -1103,7 +1105,7 @@ share.
 
 =item [SMBACLEnabled => Bool]
 
-=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+=item [Tags => ArrayRef[StorageGateway_Tag]]
 
 =item [ValidUserList => ArrayRef[Str|Undef]]
 
@@ -1141,7 +1143,7 @@ share.
 
 =item VolumeARN => Str
 
-=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+=item [Tags => ArrayRef[StorageGateway_Tag]]
 
 
 =back
@@ -1189,7 +1191,7 @@ page.
 
 =item VolumeARN => Str
 
-=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+=item [Tags => ArrayRef[StorageGateway_Tag]]
 
 
 =back
@@ -1239,7 +1241,7 @@ information, in I<Amazon Elastic Compute Cloud API Reference>.
 
 =item [SnapshotId => Str]
 
-=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+=item [Tags => ArrayRef[StorageGateway_Tag]]
 
 
 =back
@@ -1283,7 +1285,7 @@ can use to connect to the volume target.
 
 =item [PoolId => Str]
 
-=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+=item [Tags => ArrayRef[StorageGateway_Tag]]
 
 
 =back
@@ -1317,7 +1319,7 @@ gateway.
 
 =item [PoolId => Str]
 
-=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+=item [Tags => ArrayRef[StorageGateway_Tag]]
 
 
 =back
@@ -2602,7 +2604,7 @@ your gateway's time zone.
 
 =item [KMSKey => Str]
 
-=item [NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>]
+=item [NFSFileShareDefaults => StorageGateway_NFSFileShareDefaults]
 
 =item [ObjectACL => Str]
 
@@ -2743,7 +2745,7 @@ A higher security level can affect performance of the gateway.
 
 =item [Description => Str]
 
-=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+=item [Tags => ArrayRef[StorageGateway_Tag]]
 
 
 =back

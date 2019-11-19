@@ -1,21 +1,86 @@
+# Generated from default/object.tt
 package Paws::SSM::CommandInvocation;
-  use Moose;
-  has CloudWatchOutputConfig => (is => 'ro', isa => 'Paws::SSM::CloudWatchOutputConfig');
-  has CommandId => (is => 'ro', isa => 'Str');
-  has CommandPlugins => (is => 'ro', isa => 'ArrayRef[Paws::SSM::CommandPlugin]');
-  has Comment => (is => 'ro', isa => 'Str');
-  has DocumentName => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has InstanceName => (is => 'ro', isa => 'Str');
-  has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
-  has RequestedDateTime => (is => 'ro', isa => 'Str');
-  has ServiceRole => (is => 'ro', isa => 'Str');
-  has StandardErrorUrl => (is => 'ro', isa => 'Str');
-  has StandardOutputUrl => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusDetails => (is => 'ro', isa => 'Str');
-  has TraceOutput => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_CommandPlugin SSM_CloudWatchOutputConfig SSM_NotificationConfig/;
+  has CloudWatchOutputConfig => (is => 'ro', isa => SSM_CloudWatchOutputConfig);
+  has CommandId => (is => 'ro', isa => Str);
+  has CommandPlugins => (is => 'ro', isa => ArrayRef[SSM_CommandPlugin]);
+  has Comment => (is => 'ro', isa => Str);
+  has DocumentName => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has InstanceName => (is => 'ro', isa => Str);
+  has NotificationConfig => (is => 'ro', isa => SSM_NotificationConfig);
+  has RequestedDateTime => (is => 'ro', isa => Str);
+  has ServiceRole => (is => 'ro', isa => Str);
+  has StandardErrorUrl => (is => 'ro', isa => Str);
+  has StandardOutputUrl => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetails => (is => 'ro', isa => Str);
+  has TraceOutput => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusDetails' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StandardErrorUrl' => {
+                                       'type' => 'Str'
+                                     },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'InstanceName' => {
+                                   'type' => 'Str'
+                                 },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'TraceOutput' => {
+                                  'type' => 'Str'
+                                },
+               'RequestedDateTime' => {
+                                        'type' => 'Str'
+                                      },
+               'NotificationConfig' => {
+                                         'type' => 'SSM_NotificationConfig',
+                                         'class' => 'Paws::SSM::NotificationConfig'
+                                       },
+               'DocumentName' => {
+                                   'type' => 'Str'
+                                 },
+               'StandardOutputUrl' => {
+                                        'type' => 'Str'
+                                      },
+               'CloudWatchOutputConfig' => {
+                                             'type' => 'SSM_CloudWatchOutputConfig',
+                                             'class' => 'Paws::SSM::CloudWatchOutputConfig'
+                                           },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'CommandPlugins' => {
+                                     'type' => 'ArrayRef[SSM_CommandPlugin]',
+                                     'class' => 'Paws::SSM::CommandPlugin'
+                                   },
+               'CommandId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +121,7 @@ information about a command you ran.
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchOutputConfig => L<Paws::SSM::CloudWatchOutputConfig>
+=head2 CloudWatchOutputConfig => SSM_CloudWatchOutputConfig
 
   CloudWatch Logs information where you want Systems Manager to send the
 command output.
@@ -67,7 +132,7 @@ command output.
   The command against which this invocation was requested.
 
 
-=head2 CommandPlugins => ArrayRef[L<Paws::SSM::CommandPlugin>]
+=head2 CommandPlugins => ArrayRef[SSM_CommandPlugin]
 
   
 
@@ -100,7 +165,7 @@ value for the aws:Name tag. For on-premises instances, this is the name
 of the instance.
 
 
-=head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
+=head2 NotificationConfig => SSM_NotificationConfig
 
   Configurations for sending notifications about command status changes
 on a per instance basis.

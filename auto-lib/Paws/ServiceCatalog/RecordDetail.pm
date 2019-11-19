@@ -1,18 +1,73 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::RecordDetail;
-  use Moose;
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has PathId => (is => 'ro', isa => 'Str');
-  has ProductId => (is => 'ro', isa => 'Str');
-  has ProvisionedProductId => (is => 'ro', isa => 'Str');
-  has ProvisionedProductName => (is => 'ro', isa => 'Str');
-  has ProvisionedProductType => (is => 'ro', isa => 'Str');
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
-  has RecordErrors => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::RecordError]');
-  has RecordId => (is => 'ro', isa => 'Str');
-  has RecordTags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::RecordTag]');
-  has RecordType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has UpdatedTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_RecordError ServiceCatalog_RecordTag/;
+  has CreatedTime => (is => 'ro', isa => Str);
+  has PathId => (is => 'ro', isa => Str);
+  has ProductId => (is => 'ro', isa => Str);
+  has ProvisionedProductId => (is => 'ro', isa => Str);
+  has ProvisionedProductName => (is => 'ro', isa => Str);
+  has ProvisionedProductType => (is => 'ro', isa => Str);
+  has ProvisioningArtifactId => (is => 'ro', isa => Str);
+  has RecordErrors => (is => 'ro', isa => ArrayRef[ServiceCatalog_RecordError]);
+  has RecordId => (is => 'ro', isa => Str);
+  has RecordTags => (is => 'ro', isa => ArrayRef[ServiceCatalog_RecordTag]);
+  has RecordType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has UpdatedTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RecordErrors' => {
+                                   'type' => 'ArrayRef[ServiceCatalog_RecordError]',
+                                   'class' => 'Paws::ServiceCatalog::RecordError'
+                                 },
+               'ProvisionedProductName' => {
+                                             'type' => 'Str'
+                                           },
+               'RecordId' => {
+                               'type' => 'Str'
+                             },
+               'ProvisioningArtifactId' => {
+                                             'type' => 'Str'
+                                           },
+               'PathId' => {
+                             'type' => 'Str'
+                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ProvisionedProductId' => {
+                                           'type' => 'Str'
+                                         },
+               'UpdatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'ProvisionedProductType' => {
+                                             'type' => 'Str'
+                                           },
+               'RecordTags' => {
+                                 'type' => 'ArrayRef[ServiceCatalog_RecordTag]',
+                                 'class' => 'Paws::ServiceCatalog::RecordTag'
+                               },
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'RecordType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +139,7 @@ and C<CFN_STACKSET>.
   The identifier of the provisioning artifact.
 
 
-=head2 RecordErrors => ArrayRef[L<Paws::ServiceCatalog::RecordError>]
+=head2 RecordErrors => ArrayRef[ServiceCatalog_RecordError]
 
   The errors that occurred.
 
@@ -94,7 +149,7 @@ and C<CFN_STACKSET>.
   The identifier of the record.
 
 
-=head2 RecordTags => ArrayRef[L<Paws::ServiceCatalog::RecordTag>]
+=head2 RecordTags => ArrayRef[ServiceCatalog_RecordTag]
 
   One or more tags.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::DestinationProperties;
-  use Moose;
-  has DestinationArn => (is => 'ro', isa => 'Str', request_name => 'destinationArn', traits => ['NameInRequest']);
-  has KmsKeyArn => (is => 'ro', isa => 'Str', request_name => 'kmsKeyArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has DestinationArn => (is => 'ro', isa => Str);
+  has KmsKeyArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DestinationArn' => {
+                                     'type' => 'Str'
+                                   },
+               'KmsKeyArn' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'KmsKeyArn' => 'kmsKeyArn',
+                       'DestinationArn' => 'destinationArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,34 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::DescribeEventCategories;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Filter]');
-  has SourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DocDB::Types qw/DocDB_Filter/;
+  has Filters => (is => 'ro', isa => ArrayRef[DocDB_Filter], predicate => 1);
+  has SourceType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventCategories');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::EventCategoriesMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEventCategories');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::EventCategoriesMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeEventCategoriesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'Filters' => {
+                              'class' => 'Paws::DocDB::Filter',
+                              'type' => 'ArrayRef[DocDB_Filter]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +72,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::DocDB::Filter>]
+=head2 Filters => ArrayRef[DocDB_Filter]
 
 This parameter is not currently supported.
 

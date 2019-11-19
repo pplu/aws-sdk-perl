@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::ListVolumesOutput;
-  use Moose;
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has VolumeInfos => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::VolumeInfo]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_VolumeInfo/;
+  has GatewayARN => (is => 'ro', isa => Str);
+  has Marker => (is => 'ro', isa => Str);
+  has VolumeInfos => (is => 'ro', isa => ArrayRef[StorageGateway_VolumeInfo]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VolumeInfos' => {
+                                  'class' => 'Paws::StorageGateway::VolumeInfo',
+                                  'type' => 'ArrayRef[StorageGateway_VolumeInfo]'
+                                },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -28,7 +53,7 @@ volumes. If there are no more volumes to list, this field does not
 appear in the response body.
 
 
-=head2 VolumeInfos => ArrayRef[L<Paws::StorageGateway::VolumeInfo>]
+=head2 VolumeInfos => ArrayRef[StorageGateway_VolumeInfo]
 
 An array of VolumeInfo objects, where each object describes an iSCSI
 volume. If no volumes are defined for the gateway, then C<VolumeInfos>

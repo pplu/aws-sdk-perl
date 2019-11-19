@@ -1,17 +1,54 @@
 
 package Paws::LexRuntime::GetSession;
-  use Moose;
-  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias', required => 1);
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
-  has CheckpointLabelFilter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'checkpointLabelFilter');
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexRuntime::Types qw//;
+  has BotAlias => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BotName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CheckpointLabelFilter => (is => 'ro', isa => Str, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSession');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bot/{botName}/alias/{botAlias}/user/{userId}/session/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexRuntime::GetSessionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSession');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/bot/{botName}/alias/{botAlias}/user/{userId}/session/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexRuntime::GetSessionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'UserId' => 'userId',
+                    'BotAlias' => 'botAlias',
+                    'BotName' => 'botName'
+                  },
+  'IsRequired' => {
+                    'BotName' => 1,
+                    'BotAlias' => 1,
+                    'UserId' => 1
+                  },
+  'ParamInQuery' => {
+                      'CheckpointLabelFilter' => 'checkpointLabelFilter'
+                    },
+  'types' => {
+               'BotName' => {
+                              'type' => 'Str'
+                            },
+               'CheckpointLabelFilter' => {
+                                            'type' => 'Str'
+                                          },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'BotAlias' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

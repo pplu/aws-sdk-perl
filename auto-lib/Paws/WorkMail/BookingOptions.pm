@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::WorkMail::BookingOptions;
-  use Moose;
-  has AutoAcceptRequests => (is => 'ro', isa => 'Bool');
-  has AutoDeclineConflictingRequests => (is => 'ro', isa => 'Bool');
-  has AutoDeclineRecurringRequests => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::WorkMail::Types qw//;
+  has AutoAcceptRequests => (is => 'ro', isa => Bool);
+  has AutoDeclineConflictingRequests => (is => 'ro', isa => Bool);
+  has AutoDeclineRecurringRequests => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoDeclineConflictingRequests' => {
+                                                     'type' => 'Bool'
+                                                   },
+               'AutoAcceptRequests' => {
+                                         'type' => 'Bool'
+                                       },
+               'AutoDeclineRecurringRequests' => {
+                                                   'type' => 'Bool'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::ResourceTagging::FailureInfo;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has StatusCode => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ResourceTagging::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has StatusCode => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'StatusCode' => {
+                                 'type' => 'Int'
+                               },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

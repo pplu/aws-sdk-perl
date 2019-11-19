@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::DolbyVision;
-  use Moose;
-  has L6Metadata => (is => 'ro', isa => 'Paws::MediaConvert::DolbyVisionLevel6Metadata', request_name => 'l6Metadata', traits => ['NameInRequest']);
-  has L6Mode => (is => 'ro', isa => 'Str', request_name => 'l6Mode', traits => ['NameInRequest']);
-  has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_DolbyVisionLevel6Metadata/;
+  has L6Metadata => (is => 'ro', isa => MediaConvert_DolbyVisionLevel6Metadata);
+  has L6Mode => (is => 'ro', isa => Str);
+  has Profile => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'L6Mode' => {
+                             'type' => 'Str'
+                           },
+               'L6Metadata' => {
+                                 'class' => 'Paws::MediaConvert::DolbyVisionLevel6Metadata',
+                                 'type' => 'MediaConvert_DolbyVisionLevel6Metadata'
+                               },
+               'Profile' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Profile' => 'profile',
+                       'L6Metadata' => 'l6Metadata',
+                       'L6Mode' => 'l6Mode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ Settings for Dolby Vision
 =head1 ATTRIBUTES
 
 
-=head2 L6Metadata => L<Paws::MediaConvert::DolbyVisionLevel6Metadata>
+=head2 L6Metadata => MediaConvert_DolbyVisionLevel6Metadata
 
   Use these settings when you set DolbyVisionLevel6Mode to SPECIFY to
 override the MaxCLL and MaxFALL values in your input with new values.

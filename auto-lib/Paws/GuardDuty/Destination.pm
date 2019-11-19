@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::Destination;
-  use Moose;
-  has DestinationId => (is => 'ro', isa => 'Str', request_name => 'destinationId', traits => ['NameInRequest'], required => 1);
-  has DestinationType => (is => 'ro', isa => 'Str', request_name => 'destinationType', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has DestinationId => (is => 'ro', isa => Str, required => 1);
+  has DestinationType => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DestinationId' => 'destinationId',
+                       'DestinationType' => 'destinationType',
+                       'Status' => 'status'
+                     },
+  'IsRequired' => {
+                    'DestinationId' => 1,
+                    'Status' => 1,
+                    'DestinationType' => 1
+                  },
+  'types' => {
+               'DestinationId' => {
+                                    'type' => 'Str'
+                                  },
+               'DestinationType' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

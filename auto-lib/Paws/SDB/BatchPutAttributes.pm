@@ -1,14 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::SDB::BatchPutAttributes;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::SDB::ReplaceableItem]', traits => ['NameInRequest'], request_name => 'Item' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SDB::Types qw/SDB_ReplaceableItem/;
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Items => (is => 'ro', isa => ArrayRef[SDB_ReplaceableItem], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchPutAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchPutAttributes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'Items' => {
+                            'type' => 'ArrayRef[SDB_ReplaceableItem]',
+                            'class' => 'Paws::SDB::ReplaceableItem'
+                          }
+             },
+  'NameInRequest' => {
+                       'Items' => 'Item'
+                     },
+  'IsRequired' => {
+                    'DomainName' => 1,
+                    'Items' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +87,7 @@ The name of the domain in which the attributes are being stored.
 
 
 
-=head2 B<REQUIRED> Items => ArrayRef[L<Paws::SDB::ReplaceableItem>]
+=head2 B<REQUIRED> Items => ArrayRef[SDB_ReplaceableItem]
 
 A list of items on which to perform the operation.
 

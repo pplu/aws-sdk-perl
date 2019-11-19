@@ -1,10 +1,34 @@
 
 package Paws::IoTAnalytics::CreatePipelineResponse;
-  use Moose;
-  has PipelineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineArn');
-  has PipelineName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineName');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has PipelineArn => (is => 'ro', isa => Str);
+  has PipelineName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PipelineArn' => 'pipelineArn',
+                       'PipelineName' => 'pipelineName'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PipelineArn' => {
+                                  'type' => 'Str'
+                                },
+               'PipelineName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

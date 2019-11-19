@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetAutomationExecutionResult;
-  use Moose;
-  has AutomationExecution => (is => 'ro', isa => 'Paws::SSM::AutomationExecution');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_AutomationExecution/;
+  has AutomationExecution => (is => 'ro', isa => SSM_AutomationExecution);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutomationExecution' => {
+                                          'type' => 'SSM_AutomationExecution',
+                                          'class' => 'Paws::SSM::AutomationExecution'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::SSM::GetAutomationExecutionResult
 =head1 ATTRIBUTES
 
 
-=head2 AutomationExecution => L<Paws::SSM::AutomationExecution>
+=head2 AutomationExecution => SSM_AutomationExecution
 
 Detailed information about the current state of an automation
 execution.

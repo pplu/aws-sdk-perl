@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glue::SortCriterion;
-  use Moose;
-  has FieldName => (is => 'ro', isa => 'Str');
-  has Sort => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has FieldName => (is => 'ro', isa => Str);
+  has Sort => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FieldName' => {
+                                'type' => 'Str'
+                              },
+               'Sort' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

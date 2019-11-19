@@ -1,16 +1,49 @@
 
 package Paws::GuardDuty::GetFindings;
-  use Moose;
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has FindingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingIds', required => 1);
-  has SortCriteria => (is => 'ro', isa => 'Paws::GuardDuty::SortCriteria', traits => ['NameInRequest'], request_name => 'sortCriteria');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GuardDuty::Types qw/GuardDuty_SortCriteria/;
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FindingIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has SortCriteria => (is => 'ro', isa => GuardDuty_SortCriteria, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetFindings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/findings/get');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::GetFindingsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetFindings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/findings/get');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::GetFindingsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FindingIds' => 1,
+                    'DetectorId' => 1
+                  },
+  'NameInRequest' => {
+                       'SortCriteria' => 'sortCriteria',
+                       'FindingIds' => 'findingIds'
+                     },
+  'types' => {
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'FindingIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'SortCriteria' => {
+                                   'class' => 'Paws::GuardDuty::SortCriteria',
+                                   'type' => 'GuardDuty_SortCriteria'
+                                 }
+             },
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +98,7 @@ IDs of the findings that you want to retrieve.
 
 
 
-=head2 SortCriteria => L<Paws::GuardDuty::SortCriteria>
+=head2 SortCriteria => GuardDuty_SortCriteria
 
 Represents the criteria used for sorting findings.
 

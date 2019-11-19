@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoT::PolicyVersionIdentifier;
-  use Moose;
-  has PolicyName => (is => 'ro', isa => 'Str', request_name => 'policyName', traits => ['NameInRequest']);
-  has PolicyVersionId => (is => 'ro', isa => 'Str', request_name => 'policyVersionId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has PolicyName => (is => 'ro', isa => Str);
+  has PolicyVersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PolicyVersionId' => 'policyVersionId',
+                       'PolicyName' => 'policyName'
+                     },
+  'types' => {
+               'PolicyVersionId' => {
+                                      'type' => 'Str'
+                                    },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

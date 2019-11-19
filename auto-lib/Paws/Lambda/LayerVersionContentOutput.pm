@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Lambda::LayerVersionContentOutput;
-  use Moose;
-  has CodeSha256 => (is => 'ro', isa => 'Str');
-  has CodeSize => (is => 'ro', isa => 'Int');
-  has Location => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lambda::Types qw//;
+  has CodeSha256 => (is => 'ro', isa => Str);
+  has CodeSize => (is => 'ro', isa => Int);
+  has Location => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'CodeSha256' => {
+                                 'type' => 'Str'
+                               },
+               'CodeSize' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::ApplicationAutoScaling::ScalableTarget;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has MaxCapacity => (is => 'ro', isa => 'Int', required => 1);
-  has MinCapacity => (is => 'ro', isa => 'Int', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
-  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
-  has SuspendedState => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::SuspendedState');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ApplicationAutoScaling::Types qw/ApplicationAutoScaling_SuspendedState/;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has MaxCapacity => (is => 'ro', isa => Int, required => 1);
+  has MinCapacity => (is => 'ro', isa => Int, required => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1);
+  has RoleARN => (is => 'ro', isa => Str, required => 1);
+  has ScalableDimension => (is => 'ro', isa => Str, required => 1);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1);
+  has SuspendedState => (is => 'ro', isa => ApplicationAutoScaling_SuspendedState);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScalableDimension' => {
+                                        'type' => 'Str'
+                                      },
+               'MaxCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'MinCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'SuspendedState' => {
+                                     'type' => 'ApplicationAutoScaling_SuspendedState',
+                                     'class' => 'Paws::ApplicationAutoScaling::SuspendedState'
+                                   },
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'ServiceNamespace' => 1,
+                    'CreationTime' => 1,
+                    'MaxCapacity' => 1,
+                    'ScalableDimension' => 1,
+                    'ResourceId' => 1,
+                    'RoleARN' => 1,
+                    'MinCapacity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -203,7 +251,7 @@ service. For more information, see AWS Service Namespaces
 in the I<Amazon Web Services General Reference>.
 
 
-=head2 SuspendedState => L<Paws::ApplicationAutoScaling::SuspendedState>
+=head2 SuspendedState => ApplicationAutoScaling_SuspendedState
 
   
 

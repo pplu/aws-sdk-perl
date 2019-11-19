@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Kinesis::DescribeStreamOutput;
-  use Moose;
-  has StreamDescription => (is => 'ro', isa => 'Paws::Kinesis::StreamDescription', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kinesis::Types qw/Kinesis_StreamDescription/;
+  has StreamDescription => (is => 'ro', isa => Kinesis_StreamDescription, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StreamDescription' => 1
+                  },
+  'types' => {
+               'StreamDescription' => {
+                                        'class' => 'Paws::Kinesis::StreamDescription',
+                                        'type' => 'Kinesis_StreamDescription'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Kinesis::DescribeStreamOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> StreamDescription => L<Paws::Kinesis::StreamDescription>
+=head2 B<REQUIRED> StreamDescription => Kinesis_StreamDescription
 
 The current status of the stream, the stream Amazon Resource Name
 (ARN), an array of shard objects that comprise the stream, and whether

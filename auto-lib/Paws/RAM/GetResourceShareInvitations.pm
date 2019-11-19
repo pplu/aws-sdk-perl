@@ -1,17 +1,47 @@
 
 package Paws::RAM::GetResourceShareInvitations;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has ResourceShareArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceShareArns');
-  has ResourceShareInvitationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceShareInvitationArns');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::RAM::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceShareArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceShareInvitationArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetResourceShareInvitations');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/getresourceshareinvitations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RAM::GetResourceShareInvitationsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetResourceShareInvitations');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/getresourceshareinvitations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RAM::GetResourceShareInvitationsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken',
+                       'ResourceShareArns' => 'resourceShareArns',
+                       'ResourceShareInvitationArns' => 'resourceShareInvitationArns'
+                     },
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ResourceShareArns' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'ResourceShareInvitationArns' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

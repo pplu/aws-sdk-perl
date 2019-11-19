@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchGetObjectInformation;
-  use Moose;
-  has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference/;
+  has ObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObjectReference' => {
+                                      'type' => 'CloudDirectory_ObjectReference',
+                                      'class' => 'Paws::CloudDirectory::ObjectReference'
+                                    }
+             },
+  'IsRequired' => {
+                    'ObjectReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ BatchReadRequest$Operations.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ObjectReference => CloudDirectory_ObjectReference
 
   A reference to the object.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Forecast::Featurization;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has FeaturizationPipeline => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::FeaturizationMethod]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Forecast::Types qw/Forecast_FeaturizationMethod/;
+  has AttributeName => (is => 'ro', isa => Str, required => 1);
+  has FeaturizationPipeline => (is => 'ro', isa => ArrayRef[Forecast_FeaturizationMethod]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AttributeName' => 1
+                  },
+  'types' => {
+               'FeaturizationPipeline' => {
+                                            'type' => 'ArrayRef[Forecast_FeaturizationMethod]',
+                                            'class' => 'Paws::Forecast::FeaturizationMethod'
+                                          },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +88,7 @@ C<RETAIL> domain, the target is C<demand>, and for the C<CUSTOM>
 domain, the target is C<target_value>.
 
 
-=head2 FeaturizationPipeline => ArrayRef[L<Paws::Forecast::FeaturizationMethod>]
+=head2 FeaturizationPipeline => ArrayRef[Forecast_FeaturizationMethod]
 
   An array C<FeaturizationMethod> objects that specifies the feature
 transformation methods. For this release, the number of methods is

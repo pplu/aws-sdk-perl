@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Textract::Document;
-  use Moose;
-  has Bytes => (is => 'ro', isa => 'Str');
-  has S3Object => (is => 'ro', isa => 'Paws::Textract::S3Object');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Textract::Types qw/Textract_S3Object/;
+  has Bytes => (is => 'ro', isa => Str);
+  has S3Object => (is => 'ro', isa => Textract_S3Object);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Object' => {
+                               'class' => 'Paws::Textract::S3Object',
+                               'type' => 'Textract_S3Object'
+                             },
+               'Bytes' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +90,7 @@ If you are using an AWS SDK to call Amazon Textract, you might not need
 to base64-encode image bytes passed using the C<Bytes> field.
 
 
-=head2 S3Object => L<Paws::Textract::S3Object>
+=head2 S3Object => Textract_S3Object
 
   Identifies an S3 object as the document source. The maximum size of a
 document stored in an S3 bucket is 5 MB.

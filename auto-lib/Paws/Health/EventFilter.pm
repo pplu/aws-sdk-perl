@@ -1,18 +1,90 @@
+# Generated from default/object.tt
 package Paws::Health::EventFilter;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availabilityZones', traits => ['NameInRequest']);
-  has EndTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', request_name => 'endTimes', traits => ['NameInRequest']);
-  has EntityArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'entityArns', traits => ['NameInRequest']);
-  has EntityValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'entityValues', traits => ['NameInRequest']);
-  has EventArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventArns', traits => ['NameInRequest']);
-  has EventStatusCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventStatusCodes', traits => ['NameInRequest']);
-  has EventTypeCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventTypeCategories', traits => ['NameInRequest']);
-  has EventTypeCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventTypeCodes', traits => ['NameInRequest']);
-  has LastUpdatedTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', request_name => 'lastUpdatedTimes', traits => ['NameInRequest']);
-  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'regions', traits => ['NameInRequest']);
-  has Services => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'services', traits => ['NameInRequest']);
-  has StartTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', request_name => 'startTimes', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Health::TagSet]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::Health::Types qw/Health_tagSet Health_DateTimeRange/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EndTimes => (is => 'ro', isa => ArrayRef[Health_DateTimeRange]);
+  has EntityArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EntityValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EventArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EventStatusCodes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EventTypeCategories => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EventTypeCodes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LastUpdatedTimes => (is => 'ro', isa => ArrayRef[Health_DateTimeRange]);
+  has Regions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Services => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has StartTimes => (is => 'ro', isa => ArrayRef[Health_DateTimeRange]);
+  has Tags => (is => 'ro', isa => ArrayRef[Health_tagSet]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventTypeCategories' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Tags' => {
+                           'type' => 'ArrayRef[Health_tagSet]',
+                           'class' => 'Paws::Health::TagSet'
+                         },
+               'EventArns' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'EventStatusCodes' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'EndTimes' => {
+                               'type' => 'ArrayRef[Health_DateTimeRange]',
+                               'class' => 'Paws::Health::DateTimeRange'
+                             },
+               'StartTimes' => {
+                                 'type' => 'ArrayRef[Health_DateTimeRange]',
+                                 'class' => 'Paws::Health::DateTimeRange'
+                               },
+               'EntityValues' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Services' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'Regions' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'LastUpdatedTimes' => {
+                                       'class' => 'Paws::Health::DateTimeRange',
+                                       'type' => 'ArrayRef[Health_DateTimeRange]'
+                                     },
+               'EventTypeCodes' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'EntityArns' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'NameInRequest' => {
+                       'Regions' => 'regions',
+                       'EntityValues' => 'entityValues',
+                       'Services' => 'services',
+                       'EntityArns' => 'entityArns',
+                       'EventTypeCodes' => 'eventTypeCodes',
+                       'LastUpdatedTimes' => 'lastUpdatedTimes',
+                       'EventStatusCodes' => 'eventStatusCodes',
+                       'EventArns' => 'eventArns',
+                       'Tags' => 'tags',
+                       'AvailabilityZones' => 'availabilityZones',
+                       'EventTypeCategories' => 'eventTypeCategories',
+                       'StartTimes' => 'startTimes',
+                       'EndTimes' => 'endTimes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +126,7 @@ DescribeEventAggregates operations.
   A list of AWS availability zones.
 
 
-=head2 EndTimes => ArrayRef[L<Paws::Health::DateTimeRange>]
+=head2 EndTimes => ArrayRef[Health_DateTimeRange]
 
   A list of dates and times that the event ended.
 
@@ -94,7 +166,7 @@ C<accountNotification>).
 C<"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED">
 
 
-=head2 LastUpdatedTimes => ArrayRef[L<Paws::Health::DateTimeRange>]
+=head2 LastUpdatedTimes => ArrayRef[Health_DateTimeRange]
 
   A list of dates and times that the event was last updated.
 
@@ -110,12 +182,12 @@ C<"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED">
 C<RDS>.
 
 
-=head2 StartTimes => ArrayRef[L<Paws::Health::DateTimeRange>]
+=head2 StartTimes => ArrayRef[Health_DateTimeRange]
 
   A list of dates and times that the event began.
 
 
-=head2 Tags => ArrayRef[L<Paws::Health::TagSet>]
+=head2 Tags => ArrayRef[Health_tagSet]
 
   A map of entity tags attached to the affected entity.
 

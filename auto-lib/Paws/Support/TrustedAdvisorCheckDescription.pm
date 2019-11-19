@@ -1,10 +1,53 @@
+# Generated from default/object.tt
 package Paws::Support::TrustedAdvisorCheckDescription;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest'], required => 1);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has Metadata => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'metadata', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Support::Types qw//;
+  has Category => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Metadata => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Metadata' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Description' => 1,
+                    'Metadata' => 1,
+                    'Category' => 1,
+                    'Id' => 1,
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'Metadata' => 'metadata',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'Id' => 'id',
+                       'Category' => 'category'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

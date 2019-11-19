@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::NoiseReducerTemporalFilterSettings;
-  use Moose;
-  has AggressiveMode => (is => 'ro', isa => 'Int', request_name => 'aggressiveMode', traits => ['NameInRequest']);
-  has Speed => (is => 'ro', isa => 'Int', request_name => 'speed', traits => ['NameInRequest']);
-  has Strength => (is => 'ro', isa => 'Int', request_name => 'strength', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has AggressiveMode => (is => 'ro', isa => Int);
+  has Speed => (is => 'ro', isa => Int);
+  has Strength => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Speed' => 'speed',
+                       'AggressiveMode' => 'aggressiveMode',
+                       'Strength' => 'strength'
+                     },
+  'types' => {
+               'Speed' => {
+                            'type' => 'Int'
+                          },
+               'AggressiveMode' => {
+                                     'type' => 'Int'
+                                   },
+               'Strength' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

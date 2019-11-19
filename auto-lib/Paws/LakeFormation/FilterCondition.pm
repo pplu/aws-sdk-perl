@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::LakeFormation::FilterCondition;
-  use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str');
-  has Field => (is => 'ro', isa => 'Str');
-  has StringValueList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::LakeFormation::Types qw//;
+  has ComparisonOperator => (is => 'ro', isa => Str);
+  has Field => (is => 'ro', isa => Str);
+  has StringValueList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Field' => {
+                            'type' => 'Str'
+                          },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       },
+               'StringValueList' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

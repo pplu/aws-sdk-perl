@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackSetSummary;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DriftStatus => (is => 'ro', isa => 'Str');
-  has LastDriftCheckTimestamp => (is => 'ro', isa => 'Str');
-  has StackSetId => (is => 'ro', isa => 'Str');
-  has StackSetName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has DriftStatus => (is => 'ro', isa => Str);
+  has LastDriftCheckTimestamp => (is => 'ro', isa => Str);
+  has StackSetId => (is => 'ro', isa => Str);
+  has StackSetName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackSetId' => {
+                                 'type' => 'Str'
+                               },
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DriftStatus' => {
+                                  'type' => 'Str'
+                                },
+               'LastDriftCheckTimestamp' => {
+                                              'type' => 'Str'
+                                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

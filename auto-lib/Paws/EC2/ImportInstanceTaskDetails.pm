@@ -1,9 +1,39 @@
 package Paws::EC2::ImportInstanceTaskDetails;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
-  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportInstanceVolumeDetailItem]', request_name => 'volumes', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ImportInstanceVolumeDetailItem/;
+  has Description => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has Volumes => (is => 'ro', isa => ArrayRef[EC2_ImportInstanceVolumeDetailItem]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Volumes' => {
+                              'class' => 'Paws::EC2::ImportInstanceVolumeDetailItem',
+                              'type' => 'ArrayRef[EC2_ImportInstanceVolumeDetailItem]'
+                            }
+             },
+  'NameInRequest' => {
+                       'InstanceId' => 'instanceId',
+                       'Platform' => 'platform',
+                       'Description' => 'description',
+                       'Volumes' => 'volumes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +84,7 @@ This class has no description
   The instance operating system.
 
 
-=head2 Volumes => ArrayRef[L<Paws::EC2::ImportInstanceVolumeDetailItem>]
+=head2 Volumes => ArrayRef[EC2_ImportInstanceVolumeDetailItem]
 
   The volumes.
 

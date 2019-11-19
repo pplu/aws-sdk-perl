@@ -1,29 +1,102 @@
 
 package Paws::Lambda::CreateFunction;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Paws::Lambda::FunctionCode', required => 1);
-  has DeadLetterConfig => (is => 'ro', isa => 'Paws::Lambda::DeadLetterConfig');
-  has Description => (is => 'ro', isa => 'Str');
-  has Environment => (is => 'ro', isa => 'Paws::Lambda::Environment');
-  has FunctionName => (is => 'ro', isa => 'Str', required => 1);
-  has Handler => (is => 'ro', isa => 'Str', required => 1);
-  has KMSKeyArn => (is => 'ro', isa => 'Str');
-  has Layers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MemorySize => (is => 'ro', isa => 'Int');
-  has Publish => (is => 'ro', isa => 'Bool');
-  has Role => (is => 'ro', isa => 'Str', required => 1);
-  has Runtime => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Lambda::Tags');
-  has Timeout => (is => 'ro', isa => 'Int');
-  has TracingConfig => (is => 'ro', isa => 'Paws::Lambda::TracingConfig');
-  has VpcConfig => (is => 'ro', isa => 'Paws::Lambda::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int Bool/;
+  use Paws::Lambda::Types qw/Lambda_Tags Lambda_Environment Lambda_DeadLetterConfig Lambda_FunctionCode Lambda_VpcConfig Lambda_TracingConfig/;
+  has Code => (is => 'ro', isa => Lambda_FunctionCode, required => 1, predicate => 1);
+  has DeadLetterConfig => (is => 'ro', isa => Lambda_DeadLetterConfig, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Environment => (is => 'ro', isa => Lambda_Environment, predicate => 1);
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Handler => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KMSKeyArn => (is => 'ro', isa => Str, predicate => 1);
+  has Layers => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MemorySize => (is => 'ro', isa => Int, predicate => 1);
+  has Publish => (is => 'ro', isa => Bool, predicate => 1);
+  has Role => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Runtime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Lambda_Tags, predicate => 1);
+  has Timeout => (is => 'ro', isa => Int, predicate => 1);
+  has TracingConfig => (is => 'ro', isa => Lambda_TracingConfig, predicate => 1);
+  has VpcConfig => (is => 'ro', isa => Lambda_VpcConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFunction');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFunction');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-03-31/functions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Handler' => 1,
+                    'FunctionName' => 1,
+                    'Role' => 1,
+                    'Code' => 1,
+                    'Runtime' => 1
+                  },
+  'types' => {
+               'Layers' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'VpcConfig' => {
+                                'class' => 'Paws::Lambda::VpcConfig',
+                                'type' => 'Lambda_VpcConfig'
+                              },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'Timeout' => {
+                              'type' => 'Int'
+                            },
+               'Runtime' => {
+                              'type' => 'Str'
+                            },
+               'Tags' => {
+                           'type' => 'Lambda_Tags',
+                           'class' => 'Paws::Lambda::Tags'
+                         },
+               'TracingConfig' => {
+                                    'class' => 'Paws::Lambda::TracingConfig',
+                                    'type' => 'Lambda_TracingConfig'
+                                  },
+               'Handler' => {
+                              'type' => 'Str'
+                            },
+               'KMSKeyArn' => {
+                                'type' => 'Str'
+                              },
+               'Publish' => {
+                              'type' => 'Bool'
+                            },
+               'Environment' => {
+                                  'type' => 'Lambda_Environment',
+                                  'class' => 'Paws::Lambda::Environment'
+                                },
+               'MemorySize' => {
+                                 'type' => 'Int'
+                               },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'Code' => {
+                           'class' => 'Paws::Lambda::FunctionCode',
+                           'type' => 'Lambda_FunctionCode'
+                         },
+               'DeadLetterConfig' => {
+                                       'type' => 'Lambda_DeadLetterConfig',
+                                       'class' => 'Paws::Lambda::DeadLetterConfig'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -85,13 +158,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Code => L<Paws::Lambda::FunctionCode>
+=head2 B<REQUIRED> Code => Lambda_FunctionCode
 
 The code for the function.
 
 
 
-=head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
+=head2 DeadLetterConfig => Lambda_DeadLetterConfig
 
 A dead letter queue configuration that specifies the queue or topic
 where Lambda sends asynchronous events when they fail processing. For
@@ -106,7 +179,7 @@ A description of the function.
 
 
 
-=head2 Environment => L<Paws::Lambda::Environment>
+=head2 Environment => Lambda_Environment
 
 Environment variables that are accessible from function code during
 execution.
@@ -194,9 +267,9 @@ The Amazon Resource Name (ARN) of the function's execution role.
 The identifier of the function's runtime
 (https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"provided">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"java8">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"provided">
 
-=head2 Tags => L<Paws::Lambda::Tags>
+=head2 Tags => Lambda_Tags
 
 A list of tags
 (https://docs.aws.amazon.com/lambda/latest/dg/tagging.html) to apply to
@@ -211,14 +284,14 @@ it. The default is 3 seconds. The maximum allowed value is 900 seconds.
 
 
 
-=head2 TracingConfig => L<Paws::Lambda::TracingConfig>
+=head2 TracingConfig => Lambda_TracingConfig
 
 Set C<Mode> to C<Active> to sample and trace a subset of incoming
 requests with AWS X-Ray.
 
 
 
-=head2 VpcConfig => L<Paws::Lambda::VpcConfig>
+=head2 VpcConfig => Lambda_VpcConfig
 
 For network connectivity to AWS resources in a VPC, specify a list of
 security groups and subnets in the VPC. When you connect a function to

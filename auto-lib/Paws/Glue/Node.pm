@@ -1,11 +1,46 @@
+# Generated from default/object.tt
 package Paws::Glue::Node;
-  use Moose;
-  has CrawlerDetails => (is => 'ro', isa => 'Paws::Glue::CrawlerNodeDetails');
-  has JobDetails => (is => 'ro', isa => 'Paws::Glue::JobNodeDetails');
-  has Name => (is => 'ro', isa => 'Str');
-  has TriggerDetails => (is => 'ro', isa => 'Paws::Glue::TriggerNodeDetails');
-  has Type => (is => 'ro', isa => 'Str');
-  has UniqueId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_CrawlerNodeDetails Glue_JobNodeDetails Glue_TriggerNodeDetails/;
+  has CrawlerDetails => (is => 'ro', isa => Glue_CrawlerNodeDetails);
+  has JobDetails => (is => 'ro', isa => Glue_JobNodeDetails);
+  has Name => (is => 'ro', isa => Str);
+  has TriggerDetails => (is => 'ro', isa => Glue_TriggerNodeDetails);
+  has Type => (is => 'ro', isa => Str);
+  has UniqueId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CrawlerDetails' => {
+                                     'class' => 'Paws::Glue::CrawlerNodeDetails',
+                                     'type' => 'Glue_CrawlerNodeDetails'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'JobDetails' => {
+                                 'class' => 'Paws::Glue::JobNodeDetails',
+                                 'type' => 'Glue_JobNodeDetails'
+                               },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'TriggerDetails' => {
+                                     'type' => 'Glue_TriggerNodeDetails',
+                                     'class' => 'Paws::Glue::TriggerNodeDetails'
+                                   },
+               'UniqueId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,12 +77,12 @@ part of a workflow.
 =head1 ATTRIBUTES
 
 
-=head2 CrawlerDetails => L<Paws::Glue::CrawlerNodeDetails>
+=head2 CrawlerDetails => Glue_CrawlerNodeDetails
 
   Details of the crawler when the node represents a crawler.
 
 
-=head2 JobDetails => L<Paws::Glue::JobNodeDetails>
+=head2 JobDetails => Glue_JobNodeDetails
 
   Details of the Job when the node represents a Job.
 
@@ -57,7 +92,7 @@ part of a workflow.
   The name of the AWS Glue component represented by the node.
 
 
-=head2 TriggerDetails => L<Paws::Glue::TriggerNodeDetails>
+=head2 TriggerDetails => Glue_TriggerNodeDetails
 
   Details of the Trigger when the node represents a Trigger.
 

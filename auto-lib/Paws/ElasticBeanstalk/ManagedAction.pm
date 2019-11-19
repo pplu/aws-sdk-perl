@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::ManagedAction;
-  use Moose;
-  has ActionDescription => (is => 'ro', isa => 'Str');
-  has ActionId => (is => 'ro', isa => 'Str');
-  has ActionType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has WindowStartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ActionDescription => (is => 'ro', isa => Str);
+  has ActionId => (is => 'ro', isa => Str);
+  has ActionType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has WindowStartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WindowStartTime' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ActionDescription' => {
+                                        'type' => 'Str'
+                                      },
+               'ActionId' => {
+                               'type' => 'Str'
+                             },
+               'ActionType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

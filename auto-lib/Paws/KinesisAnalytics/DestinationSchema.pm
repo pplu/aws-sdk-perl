@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::DestinationSchema;
-  use Moose;
-  has RecordFormatType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw//;
+  has RecordFormatType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RecordFormatType' => 1
+                  },
+  'types' => {
+               'RecordFormatType' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

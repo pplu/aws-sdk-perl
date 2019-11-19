@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceCatalog::DescribeServiceActionExecutionParametersOutput;
-  use Moose;
-  has ServiceActionParameters => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ExecutionParameter]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ExecutionParameter/;
+  has ServiceActionParameters => (is => 'ro', isa => ArrayRef[ServiceCatalog_ExecutionParameter]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceActionParameters' => {
+                                              'class' => 'Paws::ServiceCatalog::ExecutionParameter',
+                                              'type' => 'ArrayRef[ServiceCatalog_ExecutionParameter]'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::ServiceCatalog::DescribeServiceActionExecutionParametersOutput
 =head1 ATTRIBUTES
 
 
-=head2 ServiceActionParameters => ArrayRef[L<Paws::ServiceCatalog::ExecutionParameter>]
+=head2 ServiceActionParameters => ArrayRef[ServiceCatalog_ExecutionParameter]
 
 
 

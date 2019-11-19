@@ -1,16 +1,47 @@
 
 package Paws::Quicksight::DeleteUserByPrincipalId;
-  use Moose;
-  has AwsAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'AwsAccountId', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Namespace', required => 1);
-  has PrincipalId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'PrincipalId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Quicksight::Types qw//;
+  has AwsAccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PrincipalId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteUserByPrincipalId');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{AwsAccountId}/namespaces/{Namespace}/user-principals/{PrincipalId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Quicksight::DeleteUserByPrincipalIdResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteUserByPrincipalId');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{AwsAccountId}/namespaces/{Namespace}/user-principals/{PrincipalId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Quicksight::DeleteUserByPrincipalIdResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AwsAccountId' => {
+                                   'type' => 'Str'
+                                 },
+               'PrincipalId' => {
+                                  'type' => 'Str'
+                                },
+               'Namespace' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Namespace' => 1,
+                    'PrincipalId' => 1,
+                    'AwsAccountId' => 1
+                  },
+  'ParamInURI' => {
+                    'AwsAccountId' => 'AwsAccountId',
+                    'PrincipalId' => 'PrincipalId',
+                    'Namespace' => 'Namespace'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

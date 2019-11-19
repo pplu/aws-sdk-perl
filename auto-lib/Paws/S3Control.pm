@@ -1,15 +1,16 @@
 package Paws::S3Control;
   warn "Paws::S3Control is not stable / supported / entirely developed" unless $ENV{'PAWS_SILENCE_UNSTABLE_WARNINGS'};
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 's3-control' }
   sub signing_name { 's3' }
   sub version { '2018-08-20' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::S3V4Signature', 'Paws::Net::RestXmlCaller';
@@ -101,13 +102,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3-
 
 =item ClientRequestToken => Str
 
-=item Manifest => L<Paws::S3Control::JobManifest>
+=item Manifest => S3Control_JobManifest
 
-=item Operation => L<Paws::S3Control::JobOperation>
+=item Operation => S3Control_JobOperation
 
 =item Priority => Int
 
-=item Report => L<Paws::S3Control::JobReport>
+=item Report => S3Control_JobReport
 
 =item RoleArn => Str
 
@@ -206,7 +207,7 @@ the AWS account making the request.
 
 =item AccountId => Str
 
-=item PublicAccessBlockConfiguration => L<Paws::S3Control::PublicAccessBlockConfiguration>
+=item PublicAccessBlockConfiguration => S3Control_PublicAccessBlockConfiguration
 
 
 =back

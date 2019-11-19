@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::EMR::BootstrapActionConfig;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ScriptBootstrapAction => (is => 'ro', isa => 'Paws::EMR::ScriptBootstrapActionConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_ScriptBootstrapActionConfig/;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has ScriptBootstrapAction => (is => 'ro', isa => EMR_ScriptBootstrapActionConfig, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ScriptBootstrapAction' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ScriptBootstrapAction' => {
+                                            'type' => 'EMR_ScriptBootstrapActionConfig',
+                                            'class' => 'Paws::EMR::ScriptBootstrapActionConfig'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ Configuration of a bootstrap action.
   The name of the bootstrap action.
 
 
-=head2 B<REQUIRED> ScriptBootstrapAction => L<Paws::EMR::ScriptBootstrapActionConfig>
+=head2 B<REQUIRED> ScriptBootstrapAction => EMR_ScriptBootstrapActionConfig
 
   The script run by the bootstrap action.
 

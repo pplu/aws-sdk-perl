@@ -1,15 +1,40 @@
 
 package Paws::ElasticTranscoder::UpdatePipelineStatus;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Status => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePipelineStatus');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/pipelines/{Id}/status');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineStatusResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdatePipelineStatus');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2012-09-25/pipelines/{Id}/status');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineStatusResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'Id' => 1
+                  },
+  'ParamInURI' => {
+                    'Id' => 'Id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

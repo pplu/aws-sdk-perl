@@ -1,15 +1,67 @@
+# Generated from default/object.tt
 package Paws::AppStream::Session;
-  use Moose;
-  has AuthenticationType => (is => 'ro', isa => 'Str');
-  has ConnectionState => (is => 'ro', isa => 'Str');
-  has FleetName => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has MaxExpirationTime => (is => 'ro', isa => 'Str');
-  has NetworkAccessConfiguration => (is => 'ro', isa => 'Paws::AppStream::NetworkAccessConfiguration');
-  has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str', required => 1);
-  has UserId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppStream::Types qw/AppStream_NetworkAccessConfiguration/;
+  has AuthenticationType => (is => 'ro', isa => Str);
+  has ConnectionState => (is => 'ro', isa => Str);
+  has FleetName => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has MaxExpirationTime => (is => 'ro', isa => Str);
+  has NetworkAccessConfiguration => (is => 'ro', isa => AppStream_NetworkAccessConfiguration);
+  has StackName => (is => 'ro', isa => Str, required => 1);
+  has StartTime => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str, required => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxExpirationTime' => {
+                                        'type' => 'Str'
+                                      },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'StackName' => {
+                                'type' => 'Str'
+                              },
+               'AuthenticationType' => {
+                                         'type' => 'Str'
+                                       },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'NetworkAccessConfiguration' => {
+                                                 'class' => 'Paws::AppStream::NetworkAccessConfiguration',
+                                                 'type' => 'AppStream_NetworkAccessConfiguration'
+                                               },
+               'FleetName' => {
+                                'type' => 'Str'
+                              },
+               'ConnectionState' => {
+                                      'type' => 'Str'
+                                    },
+               'UserId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'StackName' => 1,
+                    'UserId' => 1,
+                    'FleetName' => 1,
+                    'Id' => 1,
+                    'State' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +131,7 @@ or her session, the streaming instance is terminated and the streaming
 session ends.
 
 
-=head2 NetworkAccessConfiguration => L<Paws::AppStream::NetworkAccessConfiguration>
+=head2 NetworkAccessConfiguration => AppStream_NetworkAccessConfiguration
 
   The network details for the streaming session.
 

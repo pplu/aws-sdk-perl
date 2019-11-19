@@ -1,15 +1,38 @@
 
 package Paws::CodeStarNotifications::TagResource;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::CodeStarNotifications::Tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStarNotifications::Types qw/CodeStarNotifications_Tags/;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => CodeStarNotifications_Tags, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tagResource');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStarNotifications::TagResourceResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tagResource');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStarNotifications::TagResourceResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Arn' => 1,
+                    'Tags' => 1
+                  },
+  'types' => {
+               'Tags' => {
+                           'type' => 'CodeStarNotifications_Tags',
+                           'class' => 'Paws::CodeStarNotifications::Tags'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +77,7 @@ The Amazon Resource Name (ARN) of the notification rule to tag.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::CodeStarNotifications::Tags>
+=head2 B<REQUIRED> Tags => CodeStarNotifications_Tags
 
 The list of tags to associate with the resource. Tag key names cannot
 start with "aws".

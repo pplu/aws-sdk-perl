@@ -1,30 +1,102 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::CreateLaunchConfiguration;
-  use Moose;
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::BlockDeviceMapping]');
-  has ClassicLinkVPCId => (is => 'ro', isa => 'Str');
-  has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EbsOptimized => (is => 'ro', isa => 'Bool');
-  has IamInstanceProfile => (is => 'ro', isa => 'Str');
-  has ImageId => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has InstanceMonitoring => (is => 'ro', isa => 'Paws::AutoScaling::InstanceMonitoring');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has KernelId => (is => 'ro', isa => 'Str');
-  has KeyName => (is => 'ro', isa => 'Str');
-  has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
-  has PlacementTenancy => (is => 'ro', isa => 'Str');
-  has RamdiskId => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SpotPrice => (is => 'ro', isa => 'Str');
-  has UserData => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_InstanceMonitoring AutoScaling_BlockDeviceMapping/;
+  has AssociatePublicIpAddress => (is => 'ro', isa => Bool, predicate => 1);
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[AutoScaling_BlockDeviceMapping], predicate => 1);
+  has ClassicLinkVPCId => (is => 'ro', isa => Str, predicate => 1);
+  has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EbsOptimized => (is => 'ro', isa => Bool, predicate => 1);
+  has IamInstanceProfile => (is => 'ro', isa => Str, predicate => 1);
+  has ImageId => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceMonitoring => (is => 'ro', isa => AutoScaling_InstanceMonitoring, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, predicate => 1);
+  has KernelId => (is => 'ro', isa => Str, predicate => 1);
+  has KeyName => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchConfigurationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PlacementTenancy => (is => 'ro', isa => Str, predicate => 1);
+  has RamdiskId => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SpotPrice => (is => 'ro', isa => Str, predicate => 1);
+  has UserData => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLaunchConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLaunchConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LaunchConfigurationName' => 1
+                  },
+  'types' => {
+               'KernelId' => {
+                               'type' => 'Str'
+                             },
+               'InstanceMonitoring' => {
+                                         'class' => 'Paws::AutoScaling::InstanceMonitoring',
+                                         'type' => 'AutoScaling_InstanceMonitoring'
+                                       },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'IamInstanceProfile' => {
+                                         'type' => 'Str'
+                                       },
+               'AssociatePublicIpAddress' => {
+                                               'type' => 'Bool'
+                                             },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'ClassicLinkVPCId' => {
+                                       'type' => 'Str'
+                                     },
+               'RamdiskId' => {
+                                'type' => 'Str'
+                              },
+               'ClassicLinkVPCSecurityGroups' => {
+                                                   'type' => 'ArrayRef[Str|Undef]'
+                                                 },
+               'KeyName' => {
+                              'type' => 'Str'
+                            },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'UserData' => {
+                               'type' => 'Str'
+                             },
+               'LaunchConfigurationName' => {
+                                              'type' => 'Str'
+                                            },
+               'BlockDeviceMappings' => {
+                                          'type' => 'ArrayRef[AutoScaling_BlockDeviceMapping]',
+                                          'class' => 'Paws::AutoScaling::BlockDeviceMapping'
+                                        },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'SpotPrice' => {
+                                'type' => 'Str'
+                              },
+               'PlacementTenancy' => {
+                                       'type' => 'Str'
+                                     },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -83,7 +155,7 @@ subnet.
 
 
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>]
+=head2 BlockDeviceMappings => ArrayRef[AutoScaling_BlockDeviceMapping]
 
 A block device mapping, which specifies the block devices for the
 instance. You can specify virtual devices and EBS volumes. For more
@@ -183,7 +255,7 @@ and C<InstanceType>.
 
 
 
-=head2 InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>
+=head2 InstanceMonitoring => AutoScaling_InstanceMonitoring
 
 Controls whether instances in this group are launched with detailed
 (C<true>) or basic (C<false>) monitoring.

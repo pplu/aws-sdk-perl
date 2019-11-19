@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Comprehend::EntityRecognizerMetadataEntityTypesListItem;
-  use Moose;
-  has EvaluationMetrics => (is => 'ro', isa => 'Paws::Comprehend::EntityTypesEvaluationMetrics');
-  has NumberOfTrainMentions => (is => 'ro', isa => 'Int');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Comprehend::Types qw/Comprehend_EntityTypesEvaluationMetrics/;
+  has EvaluationMetrics => (is => 'ro', isa => Comprehend_EntityTypesEvaluationMetrics);
+  has NumberOfTrainMentions => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EvaluationMetrics' => {
+                                        'class' => 'Paws::Comprehend::EntityTypesEvaluationMetrics',
+                                        'type' => 'Comprehend_EntityTypesEvaluationMetrics'
+                                      },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'NumberOfTrainMentions' => {
+                                            'type' => 'Int'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ entity recognizer.
 =head1 ATTRIBUTES
 
 
-=head2 EvaluationMetrics => L<Paws::Comprehend::EntityTypesEvaluationMetrics>
+=head2 EvaluationMetrics => Comprehend_EntityTypesEvaluationMetrics
 
   Detailed information about the accuracy of the entity recognizer for a
 specific item on the list of entity types.

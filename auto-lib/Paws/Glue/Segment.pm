@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Glue::Segment;
-  use Moose;
-  has SegmentNumber => (is => 'ro', isa => 'Int', required => 1);
-  has TotalSegments => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Glue::Types qw//;
+  has SegmentNumber => (is => 'ro', isa => Int, required => 1);
+  has TotalSegments => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SegmentNumber' => 1,
+                    'TotalSegments' => 1
+                  },
+  'types' => {
+               'SegmentNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'TotalSegments' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::CreateIpGroup;
-  use Moose;
-  has GroupDesc => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Tag]');
-  has UserRules => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::IpRuleItem]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_IpRuleItem WorkSpaces_Tag/;
+  has GroupDesc => (is => 'ro', isa => Str, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[WorkSpaces_Tag], predicate => 1);
+  has UserRules => (is => 'ro', isa => ArrayRef[WorkSpaces_IpRuleItem], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateIpGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::CreateIpGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateIpGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::CreateIpGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'GroupName' => 1
+                  },
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[WorkSpaces_Tag]',
+                           'class' => 'Paws::WorkSpaces::Tag'
+                         },
+               'GroupDesc' => {
+                                'type' => 'Str'
+                              },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'UserRules' => {
+                                'class' => 'Paws::WorkSpaces::IpRuleItem',
+                                'type' => 'ArrayRef[WorkSpaces_IpRuleItem]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,13 +102,13 @@ The name of the group.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
+=head2 Tags => ArrayRef[WorkSpaces_Tag]
 
 The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 
 
 
-=head2 UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]
+=head2 UserRules => ArrayRef[WorkSpaces_IpRuleItem]
 
 The rules to add to the group.
 

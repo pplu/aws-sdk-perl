@@ -1,22 +1,89 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::APNSMessage;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has Badge => (is => 'ro', isa => 'Int');
-  has Body => (is => 'ro', isa => 'Str');
-  has Category => (is => 'ro', isa => 'Str');
-  has CollapseId => (is => 'ro', isa => 'Str');
-  has Data => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
-  has MediaUrl => (is => 'ro', isa => 'Str');
-  has PreferredAuthenticationMethod => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Str');
-  has RawContent => (is => 'ro', isa => 'Str');
-  has SilentPush => (is => 'ro', isa => 'Bool');
-  has Sound => (is => 'ro', isa => 'Str');
-  has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
-  has ThreadId => (is => 'ro', isa => 'Str');
-  has TimeToLive => (is => 'ro', isa => 'Int');
-  has Title => (is => 'ro', isa => 'Str');
-  has Url => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string Pinpoint_MapOfListOf__string/;
+  has Action => (is => 'ro', isa => Str);
+  has Badge => (is => 'ro', isa => Int);
+  has Body => (is => 'ro', isa => Str);
+  has Category => (is => 'ro', isa => Str);
+  has CollapseId => (is => 'ro', isa => Str);
+  has Data => (is => 'ro', isa => Pinpoint_MapOf__string);
+  has MediaUrl => (is => 'ro', isa => Str);
+  has PreferredAuthenticationMethod => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Str);
+  has RawContent => (is => 'ro', isa => Str);
+  has SilentPush => (is => 'ro', isa => Bool);
+  has Sound => (is => 'ro', isa => Str);
+  has Substitutions => (is => 'ro', isa => Pinpoint_MapOfListOf__string);
+  has ThreadId => (is => 'ro', isa => Str);
+  has TimeToLive => (is => 'ro', isa => Int);
+  has Title => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RawContent' => {
+                                 'type' => 'Str'
+                               },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'Badge' => {
+                            'type' => 'Int'
+                          },
+               'Priority' => {
+                               'type' => 'Str'
+                             },
+               'MediaUrl' => {
+                               'type' => 'Str'
+                             },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'PreferredAuthenticationMethod' => {
+                                                    'type' => 'Str'
+                                                  },
+               'CollapseId' => {
+                                 'type' => 'Str'
+                               },
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'Data' => {
+                           'type' => 'Pinpoint_MapOf__string',
+                           'class' => 'Paws::Pinpoint::MapOf__string'
+                         },
+               'ThreadId' => {
+                               'type' => 'Str'
+                             },
+               'Sound' => {
+                            'type' => 'Str'
+                          },
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'SilentPush' => {
+                                 'type' => 'Bool'
+                               },
+               'Substitutions' => {
+                                    'class' => 'Paws::Pinpoint::MapOfListOf__string',
+                                    'type' => 'Pinpoint_MapOfListOf__string'
+                                  },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'TimeToLive' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -111,7 +178,7 @@ Amazon Pinpoint specifies this value in the apns-collapse-id request
 header when it sends the notification message to APNs.
 
 
-=head2 Data => L<Paws::Pinpoint::MapOf__string>
+=head2 Data => Pinpoint_MapOf__string
 
   The JSON payload to use for a silent push notification. This payload is
 added to the data.pinpoint.jsonBody object of the notification.
@@ -182,7 +249,7 @@ container. If the sound file can't be found or you specify default for
 the value, the system plays the default alert sound.
 
 
-=head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
+=head2 Substitutions => Pinpoint_MapOfListOf__string
 
   The default message variables to use in the notification message. You
 can override these default variables with individual address variables.

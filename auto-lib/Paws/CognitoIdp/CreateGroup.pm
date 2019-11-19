@@ -1,17 +1,49 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::CreateGroup;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Precedence => (is => 'ro', isa => 'Int');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CognitoIdp::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Precedence => (is => 'ro', isa => Int, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::CreateGroupResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::CreateGroupResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'Precedence' => {
+                                 'type' => 'Int'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'GroupName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'UserPoolId' => 1,
+                    'GroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

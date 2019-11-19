@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::S3Control::JobManifestSpec;
-  use Moose;
-  has Fields => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Format => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::S3Control::Types qw//;
+  has Fields => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Format => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Format' => 1
+                  },
+  'types' => {
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'Fields' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

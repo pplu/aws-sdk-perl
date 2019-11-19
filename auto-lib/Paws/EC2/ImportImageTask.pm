@@ -1,18 +1,84 @@
 package Paws::EC2::ImportImageTask;
-  use Moose;
-  has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest']);
-  has Hypervisor => (is => 'ro', isa => 'Str', request_name => 'hypervisor', traits => ['NameInRequest']);
-  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
-  has ImportTaskId => (is => 'ro', isa => 'Str', request_name => 'importTaskId', traits => ['NameInRequest']);
-  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
-  has LicenseType => (is => 'ro', isa => 'Str', request_name => 'licenseType', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
-  has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
-  has SnapshotDetails => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SnapshotDetail]', request_name => 'snapshotDetailSet', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_SnapshotDetail/;
+  has Architecture => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has Hypervisor => (is => 'ro', isa => Str);
+  has ImageId => (is => 'ro', isa => Str);
+  has ImportTaskId => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LicenseType => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has Progress => (is => 'ro', isa => Str);
+  has SnapshotDetails => (is => 'ro', isa => ArrayRef[EC2_SnapshotDetail]);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshotDetails' => {
+                                      'class' => 'Paws::EC2::SnapshotDetail',
+                                      'type' => 'ArrayRef[EC2_SnapshotDetail]'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Hypervisor' => {
+                                 'type' => 'Str'
+                               },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'ImportTaskId' => {
+                                   'type' => 'Str'
+                                 },
+               'LicenseType' => {
+                                  'type' => 'Str'
+                                },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'Progress' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'KmsKeyId' => 'kmsKeyId',
+                       'Encrypted' => 'encrypted',
+                       'Progress' => 'progress',
+                       'ImportTaskId' => 'importTaskId',
+                       'ImageId' => 'imageId',
+                       'Architecture' => 'architecture',
+                       'LicenseType' => 'licenseType',
+                       'StatusMessage' => 'statusMessage',
+                       'Status' => 'status',
+                       'SnapshotDetails' => 'snapshotDetailSet',
+                       'Hypervisor' => 'hypervisor',
+                       'Platform' => 'platform'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -104,7 +170,7 @@ master key (CMK) that was used to create the encrypted image.
   The percentage of progress of the import image task.
 
 
-=head2 SnapshotDetails => ArrayRef[L<Paws::EC2::SnapshotDetail>]
+=head2 SnapshotDetails => ArrayRef[EC2_SnapshotDetail]
 
   Information about the snapshots.
 

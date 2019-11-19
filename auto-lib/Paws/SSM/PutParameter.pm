@@ -1,22 +1,71 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::PutParameter;
-  use Moose;
-  has AllowedPattern => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has KeyId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Overwrite => (is => 'ro', isa => 'Bool');
-  has Policies => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
-  has Tier => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Tag/;
+  has AllowedPattern => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has KeyId => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Overwrite => (is => 'ro', isa => Bool, predicate => 1);
+  has Policies => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SSM_Tag], predicate => 1);
+  has Tier => (is => 'ro', isa => Str, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Value => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutParameter');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::PutParameterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutParameter');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::PutParameterResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tier' => {
+                           'type' => 'Str'
+                         },
+               'Overwrite' => {
+                                'type' => 'Bool'
+                              },
+               'Tags' => {
+                           'type' => 'ArrayRef[SSM_Tag]',
+                           'class' => 'Paws::SSM::Tag'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Policies' => {
+                               'type' => 'Str'
+                             },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AllowedPattern' => {
+                                     'type' => 'Str'
+                                   },
+               'KeyId' => {
+                            'type' => 'Str'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Value' => 1,
+                    'Name' => 1,
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -198,7 +247,7 @@ Working with Parameter Policies
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+=head2 Tags => ArrayRef[SSM_Tag]
 
 Optional metadata that you assign to a resource. Tags enable you to
 categorize a resource in different ways, such as by purpose, owner, or

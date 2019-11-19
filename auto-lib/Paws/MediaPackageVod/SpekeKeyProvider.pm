@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::SpekeKeyProvider;
-  use Moose;
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has SystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'systemIds', traits => ['NameInRequest'], required => 1);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::MediaPackageVod::Types qw//;
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has SystemIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Url => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Url' => 'url',
+                       'SystemIds' => 'systemIds',
+                       'RoleArn' => 'roleArn'
+                     },
+  'IsRequired' => {
+                    'Url' => 1,
+                    'SystemIds' => 1,
+                    'RoleArn' => 1
+                  },
+  'types' => {
+               'SystemIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Url' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudFront::QueryArgProfile;
-  use Moose;
-  has ProfileId => (is => 'ro', isa => 'Str', required => 1);
-  has QueryArg => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw//;
+  has ProfileId => (is => 'ro', isa => Str, required => 1);
+  has QueryArg => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QueryArg' => {
+                               'type' => 'Str'
+                             },
+               'ProfileId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'ProfileId' => 1,
+                    'QueryArg' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

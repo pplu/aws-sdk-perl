@@ -1,15 +1,41 @@
 
 package Paws::IoTAnalytics::CancelPipelineReprocessing;
-  use Moose;
-  has PipelineName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'pipelineName', required => 1);
-  has ReprocessingId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'reprocessingId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has PipelineName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReprocessingId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelPipelineReprocessing');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/pipelines/{pipelineName}/reprocessing/{reprocessingId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTAnalytics::CancelPipelineReprocessingResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CancelPipelineReprocessing');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/pipelines/{pipelineName}/reprocessing/{reprocessingId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTAnalytics::CancelPipelineReprocessingResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'PipelineName' => 'pipelineName',
+                    'ReprocessingId' => 'reprocessingId'
+                  },
+  'types' => {
+               'PipelineName' => {
+                                   'type' => 'Str'
+                                 },
+               'ReprocessingId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'ReprocessingId' => 1,
+                    'PipelineName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

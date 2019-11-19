@@ -1,22 +1,81 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::DescribeGatewayInformationOutput;
-  use Moose;
-  has CloudWatchLogGroupARN => (is => 'ro', isa => 'Str');
-  has Ec2InstanceId => (is => 'ro', isa => 'Str');
-  has Ec2InstanceRegion => (is => 'ro', isa => 'Str');
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has GatewayId => (is => 'ro', isa => 'Str');
-  has GatewayName => (is => 'ro', isa => 'Str');
-  has GatewayNetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::NetworkInterface]');
-  has GatewayState => (is => 'ro', isa => 'Str');
-  has GatewayTimezone => (is => 'ro', isa => 'Str');
-  has GatewayType => (is => 'ro', isa => 'Str');
-  has LastSoftwareUpdate => (is => 'ro', isa => 'Str');
-  has NextUpdateAvailabilityDate => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
-  has VPCEndpoint => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_NetworkInterface StorageGateway_Tag/;
+  has CloudWatchLogGroupARN => (is => 'ro', isa => Str);
+  has Ec2InstanceId => (is => 'ro', isa => Str);
+  has Ec2InstanceRegion => (is => 'ro', isa => Str);
+  has GatewayARN => (is => 'ro', isa => Str);
+  has GatewayId => (is => 'ro', isa => Str);
+  has GatewayName => (is => 'ro', isa => Str);
+  has GatewayNetworkInterfaces => (is => 'ro', isa => ArrayRef[StorageGateway_NetworkInterface]);
+  has GatewayState => (is => 'ro', isa => Str);
+  has GatewayTimezone => (is => 'ro', isa => Str);
+  has GatewayType => (is => 'ro', isa => Str);
+  has LastSoftwareUpdate => (is => 'ro', isa => Str);
+  has NextUpdateAvailabilityDate => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[StorageGateway_Tag]);
+  has VPCEndpoint => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GatewayName' => {
+                                  'type' => 'Str'
+                                },
+               'Ec2InstanceRegion' => {
+                                        'type' => 'Str'
+                                      },
+               'Ec2InstanceId' => {
+                                    'type' => 'Str'
+                                  },
+               'GatewayType' => {
+                                  'type' => 'Str'
+                                },
+               'GatewayTimezone' => {
+                                      'type' => 'Str'
+                                    },
+               'LastSoftwareUpdate' => {
+                                         'type' => 'Str'
+                                       },
+               'GatewayState' => {
+                                   'type' => 'Str'
+                                 },
+               'NextUpdateAvailabilityDate' => {
+                                                 'type' => 'Str'
+                                               },
+               'CloudWatchLogGroupARN' => {
+                                            'type' => 'Str'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VPCEndpoint' => {
+                                  'type' => 'Str'
+                                },
+               'GatewayId' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::StorageGateway::Tag',
+                           'type' => 'ArrayRef[StorageGateway_Tag]'
+                         },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               },
+               'GatewayNetworkInterfaces' => {
+                                               'class' => 'Paws::StorageGateway::NetworkInterface',
+                                               'type' => 'ArrayRef[StorageGateway_NetworkInterface]'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -60,7 +119,7 @@ use as input for other operations.
 The name you configured for your gateway.
 
 
-=head2 GatewayNetworkInterfaces => ArrayRef[L<Paws::StorageGateway::NetworkInterface>]
+=head2 GatewayNetworkInterfaces => ArrayRef[StorageGateway_NetworkInterface]
 
 A NetworkInterface array that contains descriptions of the gateway
 network interfaces.
@@ -95,7 +154,7 @@ in the time zone of the gateway. If the gateway is not available for an
 update this field is not returned in the response.
 
 
-=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+=head2 Tags => ArrayRef[StorageGateway_Tag]
 
 A list of up to 50 tags assigned to the gateway, sorted alphabetically
 by key name. Each tag is a key-value pair. For a gateway with more than

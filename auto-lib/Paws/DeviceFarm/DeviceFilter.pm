@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::DeviceFilter;
-  use Moose;
-  has Attribute => (is => 'ro', isa => 'Str', request_name => 'attribute', traits => ['NameInRequest']);
-  has Operator => (is => 'ro', isa => 'Str', request_name => 'operator', traits => ['NameInRequest']);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'values', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::DeviceFarm::Types qw//;
+  has Attribute => (is => 'ro', isa => Str);
+  has Operator => (is => 'ro', isa => Str);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Operator' => {
+                               'type' => 'Str'
+                             },
+               'Attribute' => {
+                                'type' => 'Str'
+                              },
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             },
+  'NameInRequest' => {
+                       'Operator' => 'operator',
+                       'Attribute' => 'attribute',
+                       'Values' => 'values'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

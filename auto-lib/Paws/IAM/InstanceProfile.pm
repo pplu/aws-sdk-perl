@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::IAM::InstanceProfile;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceProfileId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceProfileName => (is => 'ro', isa => 'Str', required => 1);
-  has Path => (is => 'ro', isa => 'Str', required => 1);
-  has Roles => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Role]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IAM::Types qw/IAM_Role/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has CreateDate => (is => 'ro', isa => Str, required => 1);
+  has InstanceProfileId => (is => 'ro', isa => Str, required => 1);
+  has InstanceProfileName => (is => 'ro', isa => Str, required => 1);
+  has Path => (is => 'ro', isa => Str, required => 1);
+  has Roles => (is => 'ro', isa => ArrayRef[IAM_Role], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Arn' => 1,
+                    'CreateDate' => 1,
+                    'Path' => 1,
+                    'InstanceProfileName' => 1,
+                    'InstanceProfileId' => 1,
+                    'Roles' => 1
+                  },
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'InstanceProfileName' => {
+                                          'type' => 'Str'
+                                        },
+               'InstanceProfileId' => {
+                                        'type' => 'Str'
+                                      },
+               'Roles' => {
+                            'class' => 'Paws::IAM::Role',
+                            'type' => 'ArrayRef[IAM_Role]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +141,7 @@ IAM Identifiers
 in the I<IAM User Guide>.
 
 
-=head2 B<REQUIRED> Roles => ArrayRef[L<Paws::IAM::Role>]
+=head2 B<REQUIRED> Roles => ArrayRef[IAM_Role]
 
   The role associated with the instance profile.
 

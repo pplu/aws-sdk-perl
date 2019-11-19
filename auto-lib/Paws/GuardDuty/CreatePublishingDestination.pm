@@ -1,17 +1,55 @@
 
 package Paws::GuardDuty::CreatePublishingDestination;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has DestinationProperties => (is => 'ro', isa => 'Paws::GuardDuty::DestinationProperties', traits => ['NameInRequest'], request_name => 'destinationProperties', required => 1);
-  has DestinationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationType', required => 1);
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw/GuardDuty_DestinationProperties/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationProperties => (is => 'ro', isa => GuardDuty_DestinationProperties, required => 1, predicate => 1);
+  has DestinationType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePublishingDestination');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/publishingDestination');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::CreatePublishingDestinationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePublishingDestination');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/publishingDestination');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::CreatePublishingDestinationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  },
+  'types' => {
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'DestinationType' => {
+                                      'type' => 'Str'
+                                    },
+               'DestinationProperties' => {
+                                            'class' => 'Paws::GuardDuty::DestinationProperties',
+                                            'type' => 'GuardDuty_DestinationProperties'
+                                          }
+             },
+  'NameInRequest' => {
+                       'DestinationType' => 'destinationType',
+                       'DestinationProperties' => 'destinationProperties',
+                       'ClientToken' => 'clientToken'
+                     },
+  'IsRequired' => {
+                    'DetectorId' => 1,
+                    'DestinationType' => 1,
+                    'DestinationProperties' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +97,7 @@ The idempotency token for the request.
 
 
 
-=head2 B<REQUIRED> DestinationProperties => L<Paws::GuardDuty::DestinationProperties>
+=head2 B<REQUIRED> DestinationProperties => GuardDuty_DestinationProperties
 
 Properties of the publishing destination, including the ARNs for the
 destination and the KMS key used for encryption.

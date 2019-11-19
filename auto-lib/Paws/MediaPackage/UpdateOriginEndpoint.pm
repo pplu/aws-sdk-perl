@@ -1,24 +1,91 @@
 
 package Paws::MediaPackage::UpdateOriginEndpoint;
-  use Moose;
-  has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackage::CmafPackageCreateOrUpdateParameters', traits => ['NameInRequest'], request_name => 'cmafPackage');
-  has DashPackage => (is => 'ro', isa => 'Paws::MediaPackage::DashPackage', traits => ['NameInRequest'], request_name => 'dashPackage');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackage::HlsPackage', traits => ['NameInRequest'], request_name => 'hlsPackage');
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'id', required => 1);
-  has ManifestName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'manifestName');
-  has MssPackage => (is => 'ro', isa => 'Paws::MediaPackage::MssPackage', traits => ['NameInRequest'], request_name => 'mssPackage');
-  has Origination => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'origination');
-  has StartoverWindowSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startoverWindowSeconds');
-  has TimeDelaySeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeDelaySeconds');
-  has Whitelist => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'whitelist');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::MediaPackage::Types qw/MediaPackage_CmafPackageCreateOrUpdateParameters MediaPackage_MssPackage MediaPackage_DashPackage MediaPackage_HlsPackage/;
+  has CmafPackage => (is => 'ro', isa => MediaPackage_CmafPackageCreateOrUpdateParameters, predicate => 1);
+  has DashPackage => (is => 'ro', isa => MediaPackage_DashPackage, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has HlsPackage => (is => 'ro', isa => MediaPackage_HlsPackage, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ManifestName => (is => 'ro', isa => Str, predicate => 1);
+  has MssPackage => (is => 'ro', isa => MediaPackage_MssPackage, predicate => 1);
+  has Origination => (is => 'ro', isa => Str, predicate => 1);
+  has StartoverWindowSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has TimeDelaySeconds => (is => 'ro', isa => Int, predicate => 1);
+  has Whitelist => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateOriginEndpoint');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/origin_endpoints/{id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaPackage::UpdateOriginEndpointResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateOriginEndpoint');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/origin_endpoints/{id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaPackage::UpdateOriginEndpointResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HlsPackage' => {
+                                 'class' => 'Paws::MediaPackage::HlsPackage',
+                                 'type' => 'MediaPackage_HlsPackage'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ManifestName' => {
+                                   'type' => 'Str'
+                                 },
+               'CmafPackage' => {
+                                  'type' => 'MediaPackage_CmafPackageCreateOrUpdateParameters',
+                                  'class' => 'Paws::MediaPackage::CmafPackageCreateOrUpdateParameters'
+                                },
+               'TimeDelaySeconds' => {
+                                       'type' => 'Int'
+                                     },
+               'StartoverWindowSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'Whitelist' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'MssPackage' => {
+                                 'class' => 'Paws::MediaPackage::MssPackage',
+                                 'type' => 'MediaPackage_MssPackage'
+                               },
+               'Origination' => {
+                                  'type' => 'Str'
+                                },
+               'DashPackage' => {
+                                  'type' => 'MediaPackage_DashPackage',
+                                  'class' => 'Paws::MediaPackage::DashPackage'
+                                },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'NameInRequest' => {
+                       'MssPackage' => 'mssPackage',
+                       'Origination' => 'origination',
+                       'DashPackage' => 'dashPackage',
+                       'Description' => 'description',
+                       'HlsPackage' => 'hlsPackage',
+                       'ManifestName' => 'manifestName',
+                       'Whitelist' => 'whitelist',
+                       'TimeDelaySeconds' => 'timeDelaySeconds',
+                       'StartoverWindowSeconds' => 'startoverWindowSeconds',
+                       'CmafPackage' => 'cmafPackage'
+                     },
+  'IsRequired' => {
+                    'Id' => 1
+                  },
+  'ParamInURI' => {
+                    'Id' => 'id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -204,13 +271,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head1 ATTRIBUTES
 
 
-=head2 CmafPackage => L<Paws::MediaPackage::CmafPackageCreateOrUpdateParameters>
+=head2 CmafPackage => MediaPackage_CmafPackageCreateOrUpdateParameters
 
 
 
 
 
-=head2 DashPackage => L<Paws::MediaPackage::DashPackage>
+=head2 DashPackage => MediaPackage_DashPackage
 
 
 
@@ -222,7 +289,7 @@ A short text description of the OriginEndpoint.
 
 
 
-=head2 HlsPackage => L<Paws::MediaPackage::HlsPackage>
+=head2 HlsPackage => MediaPackage_HlsPackage
 
 
 
@@ -240,7 +307,7 @@ A short string that will be appended to the end of the Endpoint URL.
 
 
 
-=head2 MssPackage => L<Paws::MediaPackage::MssPackage>
+=head2 MssPackage => MediaPackage_MssPackage
 
 
 

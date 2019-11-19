@@ -1,12 +1,40 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SecretsManager::ListSecretVersionIdsResponse;
-  use Moose;
-  has ARN => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Versions => (is => 'ro', isa => 'ArrayRef[Paws::SecretsManager::SecretVersionsListEntry]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SecretsManager::Types qw/SecretsManager_SecretVersionsListEntry/;
+  has ARN => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has Versions => (is => 'ro', isa => ArrayRef[SecretsManager_SecretVersionsListEntry]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Versions' => {
+                               'class' => 'Paws::SecretsManager::SecretVersionsListEntry',
+                               'type' => 'ArrayRef[SecretsManager_SecretVersionsListEntry]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -47,7 +75,7 @@ repeat this until the C<NextToken> response element comes back empty
 (as C<null>).
 
 
-=head2 Versions => ArrayRef[L<Paws::SecretsManager::SecretVersionsListEntry>]
+=head2 Versions => ArrayRef[SecretsManager_SecretVersionsListEntry]
 
 The list of the currently available versions of the specified secret.
 

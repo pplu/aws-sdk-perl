@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::SourceFileSpecifier;
-  use Moose;
-  has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest'], required => 1);
-  has IsMove => (is => 'ro', isa => 'Bool', request_name => 'isMove', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeCommit::Types qw//;
+  has FilePath => (is => 'ro', isa => Str, required => 1);
+  has IsMove => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'IsMove' => 'isMove',
+                       'FilePath' => 'filePath'
+                     },
+  'IsRequired' => {
+                    'FilePath' => 1
+                  },
+  'types' => {
+               'IsMove' => {
+                             'type' => 'Bool'
+                           },
+               'FilePath' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

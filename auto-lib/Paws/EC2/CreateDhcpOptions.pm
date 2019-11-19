@@ -1,14 +1,40 @@
 
 package Paws::EC2::CreateDhcpOptions;
-  use Moose;
-  has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NewDhcpConfiguration]', traits => ['NameInRequest'], request_name => 'dhcpConfiguration' , required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_NewDhcpConfiguration/;
+  has DhcpConfigurations => (is => 'ro', isa => ArrayRef[EC2_NewDhcpConfiguration], required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDhcpOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateDhcpOptionsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDhcpOptions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateDhcpOptionsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DhcpConfigurations' => 'dhcpConfiguration',
+                       'DryRun' => 'dryRun'
+                     },
+  'IsRequired' => {
+                    'DhcpConfigurations' => 1
+                  },
+  'types' => {
+               'DhcpConfigurations' => {
+                                         'class' => 'Paws::EC2::NewDhcpConfiguration',
+                                         'type' => 'ArrayRef[EC2_NewDhcpConfiguration]'
+                                       },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DhcpConfigurations => ArrayRef[L<Paws::EC2::NewDhcpConfiguration>]
+=head2 B<REQUIRED> DhcpConfigurations => ArrayRef[EC2_NewDhcpConfiguration]
 
 A DHCP configuration option.
 

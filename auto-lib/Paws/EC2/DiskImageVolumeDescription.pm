@@ -1,7 +1,28 @@
 package Paws::EC2::DiskImageVolumeDescription;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw//;
+  has Id => (is => 'ro', isa => Str);
+  has Size => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Size' => 'size'
+                     },
+  'types' => {
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

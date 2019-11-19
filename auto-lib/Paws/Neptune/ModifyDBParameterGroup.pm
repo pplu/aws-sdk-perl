@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::ModifyDBParameterGroup;
-  use Moose;
-  has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Parameter]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_Parameter/;
+  has DBParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Parameters => (is => 'ro', isa => ArrayRef[Neptune_Parameter], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::DBParameterGroupNameMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyDBParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::DBParameterGroupNameMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyDBParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DBParameterGroupName' => 1,
+                    'Parameters' => 1
+                  },
+  'types' => {
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'Parameters' => {
+                                 'type' => 'ArrayRef[Neptune_Parameter]',
+                                 'class' => 'Paws::Neptune::Parameter'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +102,7 @@ If supplied, must match the name of an existing DBParameterGroup.
 
 
 
-=head2 B<REQUIRED> Parameters => ArrayRef[L<Paws::Neptune::Parameter>]
+=head2 B<REQUIRED> Parameters => ArrayRef[Neptune_Parameter]
 
 An array of parameter names, values, and the apply method for the
 parameter update. At least one parameter name, value, and apply method

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Config::ConformancePackComplianceSummary;
-  use Moose;
-  has ConformancePackComplianceStatus => (is => 'ro', isa => 'Str', required => 1);
-  has ConformancePackName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has ConformancePackComplianceStatus => (is => 'ro', isa => Str, required => 1);
+  has ConformancePackName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConformancePackComplianceStatus' => 1,
+                    'ConformancePackName' => 1
+                  },
+  'types' => {
+               'ConformancePackName' => {
+                                          'type' => 'Str'
+                                        },
+               'ConformancePackComplianceStatus' => {
+                                                      'type' => 'Str'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

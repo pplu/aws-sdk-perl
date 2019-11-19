@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::AnalysisOptions;
-  use Moose;
-  has AlgorithmicStemming => (is => 'ro', isa => 'Str');
-  has JapaneseTokenizationDictionary => (is => 'ro', isa => 'Str');
-  has StemmingDictionary => (is => 'ro', isa => 'Str');
-  has Stopwords => (is => 'ro', isa => 'Str');
-  has Synonyms => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearch::Types qw//;
+  has AlgorithmicStemming => (is => 'ro', isa => Str);
+  has JapaneseTokenizationDictionary => (is => 'ro', isa => Str);
+  has StemmingDictionary => (is => 'ro', isa => Str);
+  has Stopwords => (is => 'ro', isa => Str);
+  has Synonyms => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AlgorithmicStemming' => {
+                                          'type' => 'Str'
+                                        },
+               'Synonyms' => {
+                               'type' => 'Str'
+                             },
+               'StemmingDictionary' => {
+                                         'type' => 'Str'
+                                       },
+               'JapaneseTokenizationDictionary' => {
+                                                     'type' => 'Str'
+                                                   },
+               'Stopwords' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

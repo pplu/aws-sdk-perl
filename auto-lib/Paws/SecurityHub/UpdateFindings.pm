@@ -1,16 +1,42 @@
 
 package Paws::SecurityHub::UpdateFindings;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'Paws::SecurityHub::AwsSecurityFindingFilters', required => 1);
-  has Note => (is => 'ro', isa => 'Paws::SecurityHub::NoteUpdate');
-  has RecordState => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw/SecurityHub_NoteUpdate SecurityHub_AwsSecurityFindingFilters/;
+  has Filters => (is => 'ro', isa => SecurityHub_AwsSecurityFindingFilters, required => 1, predicate => 1);
+  has Note => (is => 'ro', isa => SecurityHub_NoteUpdate, predicate => 1);
+  has RecordState => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFindings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/findings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::UpdateFindingsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFindings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/findings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::UpdateFindingsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Filters' => 1
+                  },
+  'types' => {
+               'Filters' => {
+                              'type' => 'SecurityHub_AwsSecurityFindingFilters',
+                              'class' => 'Paws::SecurityHub::AwsSecurityFindingFilters'
+                            },
+               'RecordState' => {
+                                  'type' => 'Str'
+                                },
+               'Note' => {
+                           'class' => 'Paws::SecurityHub::NoteUpdate',
+                           'type' => 'SecurityHub_NoteUpdate'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -677,14 +703,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>
+=head2 B<REQUIRED> Filters => SecurityHub_AwsSecurityFindingFilters
 
 A collection of attributes that specify which findings you want to
 update.
 
 
 
-=head2 Note => L<Paws::SecurityHub::NoteUpdate>
+=head2 Note => SecurityHub_NoteUpdate
 
 The updated note for the finding.
 

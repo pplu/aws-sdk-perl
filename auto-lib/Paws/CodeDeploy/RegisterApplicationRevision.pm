@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::RegisterApplicationRevision;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['NameInRequest'], request_name => 'revision' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_RevisionLocation/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Revision => (is => 'ro', isa => CodeDeploy_RevisionLocation, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterApplicationRevision');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterApplicationRevision');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Revision' => {
+                               'type' => 'CodeDeploy_RevisionLocation',
+                               'class' => 'Paws::CodeDeploy::RevisionLocation'
+                             },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'Revision' => 1,
+                    'ApplicationName' => 1
+                  },
+  'NameInRequest' => {
+                       'Revision' => 'revision',
+                       'Description' => 'description',
+                       'ApplicationName' => 'applicationName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +108,7 @@ A comment about the revision.
 
 
 
-=head2 B<REQUIRED> Revision => L<Paws::CodeDeploy::RevisionLocation>
+=head2 B<REQUIRED> Revision => CodeDeploy_RevisionLocation
 
 Information about the application revision to register, including type
 and location.

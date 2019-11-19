@@ -1,15 +1,51 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SecretsManager::GetSecretValueResponse;
-  use Moose;
-  has ARN => (is => 'ro', isa => 'Str');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has SecretBinary => (is => 'ro', isa => 'Str');
-  has SecretString => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
-  has VersionStages => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::SecretsManager::Types qw//;
+  has ARN => (is => 'ro', isa => Str);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has SecretBinary => (is => 'ro', isa => Str);
+  has SecretString => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+  has VersionStages => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecretBinary' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               'VersionStages' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SecretString' => {
+                                   'type' => 'Str'
+                                 },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

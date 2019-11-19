@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::GreenFleetProvisioningOption;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', request_name => 'action', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has Action => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Action' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Action' => 'action'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

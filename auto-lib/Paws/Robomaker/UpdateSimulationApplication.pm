@@ -1,19 +1,67 @@
 
 package Paws::Robomaker::UpdateSimulationApplication;
-  use Moose;
-  has Application => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'application', required => 1);
-  has CurrentRevisionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'currentRevisionId');
-  has RenderingEngine => (is => 'ro', isa => 'Paws::Robomaker::RenderingEngine', traits => ['NameInRequest'], request_name => 'renderingEngine');
-  has RobotSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::RobotSoftwareSuite', traits => ['NameInRequest'], request_name => 'robotSoftwareSuite', required => 1);
-  has SimulationSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::SimulationSoftwareSuite', traits => ['NameInRequest'], request_name => 'simulationSoftwareSuite', required => 1);
-  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SourceConfig]', traits => ['NameInRequest'], request_name => 'sources', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_RobotSoftwareSuite Robomaker_SourceConfig Robomaker_RenderingEngine Robomaker_SimulationSoftwareSuite/;
+  has Application => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CurrentRevisionId => (is => 'ro', isa => Str, predicate => 1);
+  has RenderingEngine => (is => 'ro', isa => Robomaker_RenderingEngine, predicate => 1);
+  has RobotSoftwareSuite => (is => 'ro', isa => Robomaker_RobotSoftwareSuite, required => 1, predicate => 1);
+  has SimulationSoftwareSuite => (is => 'ro', isa => Robomaker_SimulationSoftwareSuite, required => 1, predicate => 1);
+  has Sources => (is => 'ro', isa => ArrayRef[Robomaker_SourceConfig], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSimulationApplication');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/updateSimulationApplication');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Robomaker::UpdateSimulationApplicationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateSimulationApplication');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/updateSimulationApplication');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Robomaker::UpdateSimulationApplicationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Sources' => {
+                              'type' => 'ArrayRef[Robomaker_SourceConfig]',
+                              'class' => 'Paws::Robomaker::SourceConfig'
+                            },
+               'RenderingEngine' => {
+                                      'class' => 'Paws::Robomaker::RenderingEngine',
+                                      'type' => 'Robomaker_RenderingEngine'
+                                    },
+               'Application' => {
+                                  'type' => 'Str'
+                                },
+               'CurrentRevisionId' => {
+                                        'type' => 'Str'
+                                      },
+               'SimulationSoftwareSuite' => {
+                                              'class' => 'Paws::Robomaker::SimulationSoftwareSuite',
+                                              'type' => 'Robomaker_SimulationSoftwareSuite'
+                                            },
+               'RobotSoftwareSuite' => {
+                                         'type' => 'Robomaker_RobotSoftwareSuite',
+                                         'class' => 'Paws::Robomaker::RobotSoftwareSuite'
+                                       }
+             },
+  'IsRequired' => {
+                    'Application' => 1,
+                    'Sources' => 1,
+                    'SimulationSoftwareSuite' => 1,
+                    'RobotSoftwareSuite' => 1
+                  },
+  'NameInRequest' => {
+                       'Application' => 'application',
+                       'SimulationSoftwareSuite' => 'simulationSoftwareSuite',
+                       'CurrentRevisionId' => 'currentRevisionId',
+                       'RobotSoftwareSuite' => 'robotSoftwareSuite',
+                       'RenderingEngine' => 'renderingEngine',
+                       'Sources' => 'sources'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -92,25 +140,25 @@ The revision id for the robot application.
 
 
 
-=head2 RenderingEngine => L<Paws::Robomaker::RenderingEngine>
+=head2 RenderingEngine => Robomaker_RenderingEngine
 
 The rendering engine for the simulation application.
 
 
 
-=head2 B<REQUIRED> RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
+=head2 B<REQUIRED> RobotSoftwareSuite => Robomaker_RobotSoftwareSuite
 
 Information about the robot software suite.
 
 
 
-=head2 B<REQUIRED> SimulationSoftwareSuite => L<Paws::Robomaker::SimulationSoftwareSuite>
+=head2 B<REQUIRED> SimulationSoftwareSuite => Robomaker_SimulationSoftwareSuite
 
 The simulation software suite used by the simulation application.
 
 
 
-=head2 B<REQUIRED> Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
+=head2 B<REQUIRED> Sources => ArrayRef[Robomaker_SourceConfig]
 
 The sources of the simulation application.
 

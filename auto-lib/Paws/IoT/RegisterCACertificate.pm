@@ -1,18 +1,59 @@
 
 package Paws::IoT::RegisterCACertificate;
-  use Moose;
-  has AllowAutoRegistration => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'allowAutoRegistration');
-  has CaCertificate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caCertificate', required => 1);
-  has RegistrationConfig => (is => 'ro', isa => 'Paws::IoT::RegistrationConfig', traits => ['NameInRequest'], request_name => 'registrationConfig');
-  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive');
-  has VerificationCertificate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'verificationCertificate', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw/IoT_RegistrationConfig/;
+  has AllowAutoRegistration => (is => 'ro', isa => Bool, predicate => 1);
+  has CaCertificate => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RegistrationConfig => (is => 'ro', isa => IoT_RegistrationConfig, predicate => 1);
+  has SetAsActive => (is => 'ro', isa => Bool, predicate => 1);
+  has VerificationCertificate => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterCACertificate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/cacertificate');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::RegisterCACertificateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterCACertificate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/cacertificate');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::RegisterCACertificateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistrationConfig' => {
+                                         'class' => 'Paws::IoT::RegistrationConfig',
+                                         'type' => 'IoT_RegistrationConfig'
+                                       },
+               'VerificationCertificate' => {
+                                              'type' => 'Str'
+                                            },
+               'SetAsActive' => {
+                                  'type' => 'Bool'
+                                },
+               'CaCertificate' => {
+                                    'type' => 'Str'
+                                  },
+               'AllowAutoRegistration' => {
+                                            'type' => 'Bool'
+                                          }
+             },
+  'IsRequired' => {
+                    'VerificationCertificate' => 1,
+                    'CaCertificate' => 1
+                  },
+  'NameInRequest' => {
+                       'CaCertificate' => 'caCertificate',
+                       'VerificationCertificate' => 'verificationCertificate',
+                       'RegistrationConfig' => 'registrationConfig'
+                     },
+  'ParamInQuery' => {
+                      'AllowAutoRegistration' => 'allowAutoRegistration',
+                      'SetAsActive' => 'setAsActive'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +109,7 @@ The CA certificate.
 
 
 
-=head2 RegistrationConfig => L<Paws::IoT::RegistrationConfig>
+=head2 RegistrationConfig => IoT_RegistrationConfig
 
 Information about the registration configuration.
 

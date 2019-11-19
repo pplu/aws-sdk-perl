@@ -1,11 +1,45 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::LocalSecondaryIndexDescription;
-  use Moose;
-  has IndexArn => (is => 'ro', isa => 'Str');
-  has IndexName => (is => 'ro', isa => 'Str');
-  has IndexSizeBytes => (is => 'ro', isa => 'Int');
-  has ItemCount => (is => 'ro', isa => 'Int');
-  has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]');
-  has Projection => (is => 'ro', isa => 'Paws::DynamoDB::Projection');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_Projection DynamoDB_KeySchemaElement/;
+  has IndexArn => (is => 'ro', isa => Str);
+  has IndexName => (is => 'ro', isa => Str);
+  has IndexSizeBytes => (is => 'ro', isa => Int);
+  has ItemCount => (is => 'ro', isa => Int);
+  has KeySchema => (is => 'ro', isa => ArrayRef[DynamoDB_KeySchemaElement]);
+  has Projection => (is => 'ro', isa => DynamoDB_Projection);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'KeySchema' => {
+                                'class' => 'Paws::DynamoDB::KeySchemaElement',
+                                'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
+                              },
+               'IndexArn' => {
+                               'type' => 'Str'
+                             },
+               'ItemCount' => {
+                                'type' => 'Int'
+                              },
+               'Projection' => {
+                                 'type' => 'DynamoDB_Projection',
+                                 'class' => 'Paws::DynamoDB::Projection'
+                               },
+               'IndexSizeBytes' => {
+                                     'type' => 'Int'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +99,7 @@ approximately every six hours. Recent changes might not be reflected in
 this value.
 
 
-=head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
+=head2 KeySchema => ArrayRef[DynamoDB_KeySchemaElement]
 
   The complete key schema for the local secondary index, consisting of
 one or more pairs of attribute names and key types:
@@ -93,7 +127,7 @@ the same partition key physically close together, in sorted order by
 the sort key value.
 
 
-=head2 Projection => L<Paws::DynamoDB::Projection>
+=head2 Projection => DynamoDB_Projection
 
   Represents attributes that are copied (projected) from the table into
 the global secondary index. These are in addition to the primary key

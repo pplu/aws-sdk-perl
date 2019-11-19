@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::Personalize::BatchInferenceJobOutput;
-  use Moose;
-  has S3DataDestination => (is => 'ro', isa => 'Paws::Personalize::S3DataConfig', request_name => 's3DataDestination', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Personalize::Types qw/Personalize_S3DataConfig/;
+  has S3DataDestination => (is => 'ro', isa => Personalize_S3DataConfig, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3DataDestination' => {
+                                        'type' => 'Personalize_S3DataConfig',
+                                        'class' => 'Paws::Personalize::S3DataConfig'
+                                      }
+             },
+  'NameInRequest' => {
+                       'S3DataDestination' => 's3DataDestination'
+                     },
+  'IsRequired' => {
+                    'S3DataDestination' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ The output configuration parameters of a batch inference job.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> S3DataDestination => L<Paws::Personalize::S3DataConfig>
+=head2 B<REQUIRED> S3DataDestination => Personalize_S3DataConfig
 
   Information on the Amazon S3 bucket in which the batch inference job's
 output is stored.

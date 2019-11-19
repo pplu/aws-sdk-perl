@@ -1,10 +1,31 @@
 
 package Paws::Backup::ListTagsOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Backup::Tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw/Backup_Tags/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => Backup_Tags);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Backup::Tags',
+                           'type' => 'Backup_Tags'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +45,7 @@ C<NextToken> allows you to return more items in your list starting at
 the location pointed to by the next token.
 
 
-=head2 Tags => L<Paws::Backup::Tags>
+=head2 Tags => Backup_Tags
 
 To help organize your resources, you can assign your own metadata to
 the resources you create. Each tag is a key-value pair.

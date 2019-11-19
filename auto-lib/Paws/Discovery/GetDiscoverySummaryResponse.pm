@@ -1,14 +1,57 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Discovery::GetDiscoverySummaryResponse;
-  use Moose;
-  has AgentSummary => (is => 'ro', isa => 'Paws::Discovery::CustomerAgentInfo', traits => ['NameInRequest'], request_name => 'agentSummary' );
-  has Applications => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'applications' );
-  has ConnectorSummary => (is => 'ro', isa => 'Paws::Discovery::CustomerConnectorInfo', traits => ['NameInRequest'], request_name => 'connectorSummary' );
-  has Servers => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'servers' );
-  has ServersMappedToApplications => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'serversMappedToApplications' );
-  has ServersMappedtoTags => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'serversMappedtoTags' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Discovery::Types qw/Discovery_CustomerAgentInfo Discovery_CustomerConnectorInfo/;
+  has AgentSummary => (is => 'ro', isa => Discovery_CustomerAgentInfo);
+  has Applications => (is => 'ro', isa => Int);
+  has ConnectorSummary => (is => 'ro', isa => Discovery_CustomerConnectorInfo);
+  has Servers => (is => 'ro', isa => Int);
+  has ServersMappedToApplications => (is => 'ro', isa => Int);
+  has ServersMappedtoTags => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Servers' => 'servers',
+                       'ServersMappedToApplications' => 'serversMappedToApplications',
+                       'ConnectorSummary' => 'connectorSummary',
+                       'AgentSummary' => 'agentSummary',
+                       'ServersMappedtoTags' => 'serversMappedtoTags',
+                       'Applications' => 'applications'
+                     },
+  'types' => {
+               'ServersMappedToApplications' => {
+                                                  'type' => 'Int'
+                                                },
+               'Servers' => {
+                              'type' => 'Int'
+                            },
+               'ServersMappedtoTags' => {
+                                          'type' => 'Int'
+                                        },
+               'Applications' => {
+                                   'type' => 'Int'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AgentSummary' => {
+                                   'type' => 'Discovery_CustomerAgentInfo',
+                                   'class' => 'Paws::Discovery::CustomerAgentInfo'
+                                 },
+               'ConnectorSummary' => {
+                                       'class' => 'Paws::Discovery::CustomerConnectorInfo',
+                                       'type' => 'Discovery_CustomerConnectorInfo'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -19,7 +62,7 @@ Paws::Discovery::GetDiscoverySummaryResponse
 =head1 ATTRIBUTES
 
 
-=head2 AgentSummary => L<Paws::Discovery::CustomerAgentInfo>
+=head2 AgentSummary => Discovery_CustomerAgentInfo
 
 Details about discovered agents, including agent status and health.
 
@@ -29,7 +72,7 @@ Details about discovered agents, including agent status and health.
 The number of applications discovered.
 
 
-=head2 ConnectorSummary => L<Paws::Discovery::CustomerConnectorInfo>
+=head2 ConnectorSummary => Discovery_CustomerConnectorInfo
 
 Details about discovered connectors, including connector status and
 health.

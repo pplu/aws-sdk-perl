@@ -1,10 +1,44 @@
 package Paws::EC2::IamInstanceProfileAssociation;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
-  has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfile', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_IamInstanceProfile/;
+  has AssociationId => (is => 'ro', isa => Str);
+  has IamInstanceProfile => (is => 'ro', isa => EC2_IamInstanceProfile);
+  has InstanceId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Timestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'State' => 'state',
+                       'Timestamp' => 'timestamp',
+                       'InstanceId' => 'instanceId',
+                       'AssociationId' => 'associationId',
+                       'IamInstanceProfile' => 'iamInstanceProfile'
+                     },
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'IamInstanceProfile' => {
+                                         'type' => 'EC2_IamInstanceProfile',
+                                         'class' => 'Paws::EC2::IamInstanceProfile'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +79,7 @@ This class has no description
   The ID of the association.
 
 
-=head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfile>
+=head2 IamInstanceProfile => EC2_IamInstanceProfile
 
   The IAM instance profile.
 

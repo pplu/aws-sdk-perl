@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::AppMesh::HttpRouteHeader;
-  use Moose;
-  has Invert => (is => 'ro', isa => 'Bool', request_name => 'invert', traits => ['NameInRequest']);
-  has Match => (is => 'ro', isa => 'Paws::AppMesh::HeaderMatchMethod', request_name => 'match', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::AppMesh::Types qw/AppMesh_HeaderMatchMethod/;
+  has Invert => (is => 'ro', isa => Bool);
+  has Match => (is => 'ro', isa => AppMesh_HeaderMatchMethod);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Invert' => {
+                             'type' => 'Bool'
+                           },
+               'Match' => {
+                            'type' => 'AppMesh_HeaderMatchMethod',
+                            'class' => 'Paws::AppMesh::HeaderMatchMethod'
+                          }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Invert' => 'invert',
+                       'Match' => 'match'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +76,7 @@ An object that represents the HTTP header in the request.
 default value is C<False>.
 
 
-=head2 Match => L<Paws::AppMesh::HeaderMatchMethod>
+=head2 Match => AppMesh_HeaderMatchMethod
 
   The C<HeaderMatchMethod> object.
 

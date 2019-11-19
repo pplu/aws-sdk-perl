@@ -1,16 +1,44 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::UpdateGatewayInformation;
-  use Moose;
-  has CloudWatchLogGroupARN => (is => 'ro', isa => 'Str');
-  has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
-  has GatewayName => (is => 'ro', isa => 'Str');
-  has GatewayTimezone => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StorageGateway::Types qw//;
+  has CloudWatchLogGroupARN => (is => 'ro', isa => Str, predicate => 1);
+  has GatewayARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GatewayName => (is => 'ro', isa => Str, predicate => 1);
+  has GatewayTimezone => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGatewayInformation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::UpdateGatewayInformationOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateGatewayInformation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::UpdateGatewayInformationOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GatewayName' => {
+                                  'type' => 'Str'
+                                },
+               'GatewayTimezone' => {
+                                      'type' => 'Str'
+                                    },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               },
+               'CloudWatchLogGroupARN' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'IsRequired' => {
+                    'GatewayARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::MTurk::Qualification;
-  use Moose;
-  has GrantTime => (is => 'ro', isa => 'Str');
-  has IntegerValue => (is => 'ro', isa => 'Int');
-  has LocaleValue => (is => 'ro', isa => 'Paws::MTurk::Locale');
-  has QualificationTypeId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has WorkerId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MTurk::Types qw/MTurk_Locale/;
+  has GrantTime => (is => 'ro', isa => Str);
+  has IntegerValue => (is => 'ro', isa => Int);
+  has LocaleValue => (is => 'ro', isa => MTurk_Locale);
+  has QualificationTypeId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has WorkerId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'GrantTime' => {
+                                'type' => 'Str'
+                              },
+               'QualificationTypeId' => {
+                                          'type' => 'Str'
+                                        },
+               'WorkerId' => {
+                               'type' => 'Str'
+                             },
+               'IntegerValue' => {
+                                   'type' => 'Int'
+                                 },
+               'LocaleValue' => {
+                                  'class' => 'Paws::MTurk::Locale',
+                                  'type' => 'MTurk_Locale'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +89,7 @@ to the AcceptQualificationRequest operation.
 integer value.
 
 
-=head2 LocaleValue => L<Paws::MTurk::Locale>
+=head2 LocaleValue => MTurk_Locale
 
   
 

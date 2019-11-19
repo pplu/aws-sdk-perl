@@ -1,16 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECR::BatchGetImage;
-  use Moose;
-  has AcceptedMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'acceptedMediaTypes' );
-  has ImageIds => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageIdentifier]', traits => ['NameInRequest'], request_name => 'imageIds' , required => 1);
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ECR::Types qw/ECR_ImageIdentifier/;
+  has AcceptedMediaTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ImageIds => (is => 'ro', isa => ArrayRef[ECR_ImageIdentifier], required => 1, predicate => 1);
+  has RegistryId => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchGetImage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::BatchGetImageResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchGetImage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECR::BatchGetImageResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'ImageIds' => {
+                               'class' => 'Paws::ECR::ImageIdentifier',
+                               'type' => 'ArrayRef[ECR_ImageIdentifier]'
+                             },
+               'AcceptedMediaTypes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       }
+             },
+  'NameInRequest' => {
+                       'ImageIds' => 'imageIds',
+                       'RepositoryName' => 'repositoryName',
+                       'RegistryId' => 'registryId',
+                       'AcceptedMediaTypes' => 'acceptedMediaTypes'
+                     },
+  'IsRequired' => {
+                    'ImageIds' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +101,7 @@ C<application/vnd.oci.image.manifest.v1+json>
 
 
 
-=head2 B<REQUIRED> ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]
+=head2 B<REQUIRED> ImageIds => ArrayRef[ECR_ImageIdentifier]
 
 A list of image ID references that correspond to images to describe.
 The format of the C<imageIds> reference is C<imageTag=tag> or

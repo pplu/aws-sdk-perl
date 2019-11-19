@@ -1,26 +1,87 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::UpdateStackSet;
-  use Moose;
-  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AdministrationRoleARN => (is => 'ro', isa => 'Str');
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExecutionRoleName => (is => 'ro', isa => 'Str');
-  has OperationId => (is => 'ro', isa => 'Str');
-  has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has StackSetName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
-  has TemplateBody => (is => 'ro', isa => 'Str');
-  has TemplateURL => (is => 'ro', isa => 'Str');
-  has UsePreviousTemplate => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackSetOperationPreferences CloudFormation_Tag CloudFormation_Parameter/;
+  has Accounts => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has AdministrationRoleARN => (is => 'ro', isa => Str, predicate => 1);
+  has Capabilities => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has ExecutionRoleName => (is => 'ro', isa => Str, predicate => 1);
+  has OperationId => (is => 'ro', isa => Str, predicate => 1);
+  has OperationPreferences => (is => 'ro', isa => CloudFormation_StackSetOperationPreferences, predicate => 1);
+  has Parameters => (is => 'ro', isa => ArrayRef[CloudFormation_Parameter], predicate => 1);
+  has Regions => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has StackSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CloudFormation_Tag], predicate => 1);
+  has TemplateBody => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateURL => (is => 'ro', isa => Str, predicate => 1);
+  has UsePreviousTemplate => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStackSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::UpdateStackSetOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStackSetResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateStackSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::UpdateStackSetOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateStackSetResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StackSetName' => 1
+                  },
+  'types' => {
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 },
+               'UsePreviousTemplate' => {
+                                          'type' => 'Bool'
+                                        },
+               'Regions' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'TemplateURL' => {
+                                  'type' => 'Str'
+                                },
+               'Parameters' => {
+                                 'class' => 'Paws::CloudFormation::Parameter',
+                                 'type' => 'ArrayRef[CloudFormation_Parameter]'
+                               },
+               'AdministrationRoleARN' => {
+                                            'type' => 'Str'
+                                          },
+               'Accounts' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::CloudFormation::Tag',
+                           'type' => 'ArrayRef[CloudFormation_Tag]'
+                         },
+               'OperationPreferences' => {
+                                           'type' => 'CloudFormation_StackSetOperationPreferences',
+                                           'class' => 'Paws::CloudFormation::StackSetOperationPreferences'
+                                         },
+               'Capabilities' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ExecutionRoleName' => {
+                                        'type' => 'Str'
+                                      },
+               'OperationId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -287,14 +348,14 @@ stack instances whose status is C<OUTDATED>.
 
 
 
-=head2 OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>
+=head2 OperationPreferences => CloudFormation_StackSetOperationPreferences
 
 Preferences for how AWS CloudFormation performs this stack set
 operation.
 
 
 
-=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
+=head2 Parameters => ArrayRef[CloudFormation_Parameter]
 
 A list of input parameters for the stack set template.
 
@@ -327,7 +388,7 @@ The name or unique ID of the stack set that you want to update.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
+=head2 Tags => ArrayRef[CloudFormation_Tag]
 
 The key-value pairs to associate with this stack set and the stacks
 created from it. AWS CloudFormation also propagates these tags to

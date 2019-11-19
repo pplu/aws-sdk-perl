@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::Models;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::Model]', request_name => 'items', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_Model/;
+  has Items => (is => 'ro', isa => ArrayRef[ApiGatewayV2_Model]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Items' => 'items'
+                     },
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::ApiGatewayV2::Model',
+                            'type' => 'ArrayRef[ApiGatewayV2_Model]'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +64,7 @@ Templates for Request and Response Mappings
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::ApiGatewayV2::Model>]
+=head2 Items => ArrayRef[ApiGatewayV2_Model]
 
   The elements from this collection.
 

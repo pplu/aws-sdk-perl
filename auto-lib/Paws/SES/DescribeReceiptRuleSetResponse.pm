@@ -1,10 +1,33 @@
+# Generated from callresult_class.tt
 
 package Paws::SES::DescribeReceiptRuleSetResponse;
-  use Moose;
-  has Metadata => (is => 'ro', isa => 'Paws::SES::ReceiptRuleSetMetadata');
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::SES::ReceiptRule]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SES::Types qw/SES_ReceiptRule SES_ReceiptRuleSetMetadata/;
+  has Metadata => (is => 'ro', isa => SES_ReceiptRuleSetMetadata);
+  has Rules => (is => 'ro', isa => ArrayRef[SES_ReceiptRule]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Metadata' => {
+                               'type' => 'SES_ReceiptRuleSetMetadata',
+                               'class' => 'Paws::SES::ReceiptRuleSetMetadata'
+                             },
+               'Rules' => {
+                            'type' => 'ArrayRef[SES_ReceiptRule]',
+                            'class' => 'Paws::SES::ReceiptRule'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,13 +39,13 @@ Paws::SES::DescribeReceiptRuleSetResponse
 =head1 ATTRIBUTES
 
 
-=head2 Metadata => L<Paws::SES::ReceiptRuleSetMetadata>
+=head2 Metadata => SES_ReceiptRuleSetMetadata
 
 The metadata for the receipt rule set, which consists of the rule set
 name and the timestamp of when the rule set was created.
 
 
-=head2 Rules => ArrayRef[L<Paws::SES::ReceiptRule>]
+=head2 Rules => ArrayRef[SES_ReceiptRule]
 
 A list of the receipt rules that belong to the specified receipt rule
 set.

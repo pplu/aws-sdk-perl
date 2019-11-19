@@ -1,9 +1,44 @@
+# Generated from default/object.tt
 package Paws::S3::QueueConfiguration;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Event', traits => ['NameInRequest'], required => 1);
-  has Filter => (is => 'ro', isa => 'Paws::S3::NotificationConfigurationFilter');
-  has Id => (is => 'ro', isa => 'Str');
-  has QueueArn => (is => 'ro', isa => 'Str', request_name => 'Queue', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::S3::Types qw/S3_NotificationConfigurationFilter/;
+  has Events => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Filter => (is => 'ro', isa => S3_NotificationConfigurationFilter);
+  has Id => (is => 'ro', isa => Str);
+  has QueueArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Events' => 1,
+                    'QueueArn' => 1
+                  },
+  'NameInRequest' => {
+                       'Events' => 'Event',
+                       'QueueArn' => 'Queue'
+                     },
+  'types' => {
+               'Events' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'QueueArn' => {
+                               'type' => 'Str'
+                             },
+               'Filter' => {
+                             'class' => 'Paws::S3::NotificationConfigurationFilter',
+                             'type' => 'S3_NotificationConfigurationFilter'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +81,7 @@ events.
   A collection of bucket events for which to send notiications
 
 
-=head2 Filter => L<Paws::S3::NotificationConfigurationFilter>
+=head2 Filter => S3_NotificationConfigurationFilter
 
   
 

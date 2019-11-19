@@ -1,9 +1,33 @@
 
 package Paws::Amplify::StartDeploymentResult;
-  use Moose;
-  has JobSummary => (is => 'ro', isa => 'Paws::Amplify::JobSummary', traits => ['NameInRequest'], request_name => 'jobSummary', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw/Amplify_JobSummary/;
+  has JobSummary => (is => 'ro', isa => Amplify_JobSummary, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'JobSummary' => 'jobSummary'
+                     },
+  'IsRequired' => {
+                    'JobSummary' => 1
+                  },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobSummary' => {
+                                 'type' => 'Amplify_JobSummary',
+                                 'class' => 'Paws::Amplify::JobSummary'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +39,7 @@ Paws::Amplify::StartDeploymentResult
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> JobSummary => L<Paws::Amplify::JobSummary>
+=head2 B<REQUIRED> JobSummary => Amplify_JobSummary
 
 Summary for the Job.
 

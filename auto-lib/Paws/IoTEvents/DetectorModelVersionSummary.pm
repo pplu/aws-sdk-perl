@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::DetectorModelVersionSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has DetectorModelArn => (is => 'ro', isa => 'Str', request_name => 'detectorModelArn', traits => ['NameInRequest']);
-  has DetectorModelName => (is => 'ro', isa => 'Str', request_name => 'detectorModelName', traits => ['NameInRequest']);
-  has DetectorModelVersion => (is => 'ro', isa => 'Str', request_name => 'detectorModelVersion', traits => ['NameInRequest']);
-  has EvaluationMethod => (is => 'ro', isa => 'Str', request_name => 'evaluationMethod', traits => ['NameInRequest']);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DetectorModelArn => (is => 'ro', isa => Str);
+  has DetectorModelName => (is => 'ro', isa => Str);
+  has DetectorModelVersion => (is => 'ro', isa => Str);
+  has EvaluationMethod => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DetectorModelName' => 'detectorModelName',
+                       'RoleArn' => 'roleArn',
+                       'CreationTime' => 'creationTime',
+                       'DetectorModelArn' => 'detectorModelArn',
+                       'EvaluationMethod' => 'evaluationMethod',
+                       'DetectorModelVersion' => 'detectorModelVersion',
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'Status' => 'status'
+                     },
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'DetectorModelName' => {
+                                        'type' => 'Str'
+                                      },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'DetectorModelVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'EvaluationMethod' => {
+                                       'type' => 'Str'
+                                     },
+               'DetectorModelArn' => {
+                                       'type' => 'Str'
+                                     },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

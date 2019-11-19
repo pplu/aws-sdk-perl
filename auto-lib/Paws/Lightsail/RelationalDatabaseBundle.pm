@@ -1,14 +1,66 @@
+# Generated from default/object.tt
 package Paws::Lightsail::RelationalDatabaseBundle;
-  use Moose;
-  has BundleId => (is => 'ro', isa => 'Str', request_name => 'bundleId', traits => ['NameInRequest']);
-  has CpuCount => (is => 'ro', isa => 'Int', request_name => 'cpuCount', traits => ['NameInRequest']);
-  has DiskSizeInGb => (is => 'ro', isa => 'Int', request_name => 'diskSizeInGb', traits => ['NameInRequest']);
-  has IsActive => (is => 'ro', isa => 'Bool', request_name => 'isActive', traits => ['NameInRequest']);
-  has IsEncrypted => (is => 'ro', isa => 'Bool', request_name => 'isEncrypted', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Price => (is => 'ro', isa => 'Num', request_name => 'price', traits => ['NameInRequest']);
-  has RamSizeInGb => (is => 'ro', isa => 'Num', request_name => 'ramSizeInGb', traits => ['NameInRequest']);
-  has TransferPerMonthInGb => (is => 'ro', isa => 'Int', request_name => 'transferPerMonthInGb', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Bool Num/;
+  use Paws::Lightsail::Types qw//;
+  has BundleId => (is => 'ro', isa => Str);
+  has CpuCount => (is => 'ro', isa => Int);
+  has DiskSizeInGb => (is => 'ro', isa => Int);
+  has IsActive => (is => 'ro', isa => Bool);
+  has IsEncrypted => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str);
+  has Price => (is => 'ro', isa => Num);
+  has RamSizeInGb => (is => 'ro', isa => Num);
+  has TransferPerMonthInGb => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TransferPerMonthInGb' => {
+                                           'type' => 'Int'
+                                         },
+               'Price' => {
+                            'type' => 'Num'
+                          },
+               'IsActive' => {
+                               'type' => 'Bool'
+                             },
+               'CpuCount' => {
+                               'type' => 'Int'
+                             },
+               'DiskSizeInGb' => {
+                                   'type' => 'Int'
+                                 },
+               'IsEncrypted' => {
+                                  'type' => 'Bool'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'BundleId' => {
+                               'type' => 'Str'
+                             },
+               'RamSizeInGb' => {
+                                  'type' => 'Num'
+                                }
+             },
+  'NameInRequest' => {
+                       'Price' => 'price',
+                       'TransferPerMonthInGb' => 'transferPerMonthInGb',
+                       'IsActive' => 'isActive',
+                       'CpuCount' => 'cpuCount',
+                       'IsEncrypted' => 'isEncrypted',
+                       'DiskSizeInGb' => 'diskSizeInGb',
+                       'Name' => 'name',
+                       'BundleId' => 'bundleId',
+                       'RamSizeInGb' => 'ramSizeInGb'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

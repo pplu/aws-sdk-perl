@@ -1,10 +1,41 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EndpointSendConfiguration;
-  use Moose;
-  has BodyOverride => (is => 'ro', isa => 'Str');
-  has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
-  has RawContent => (is => 'ro', isa => 'Str');
-  has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
-  has TitleOverride => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string Pinpoint_MapOfListOf__string/;
+  has BodyOverride => (is => 'ro', isa => Str);
+  has Context => (is => 'ro', isa => Pinpoint_MapOf__string);
+  has RawContent => (is => 'ro', isa => Str);
+  has Substitutions => (is => 'ro', isa => Pinpoint_MapOfListOf__string);
+  has TitleOverride => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TitleOverride' => {
+                                    'type' => 'Str'
+                                  },
+               'Substitutions' => {
+                                    'class' => 'Paws::Pinpoint::MapOfListOf__string',
+                                    'type' => 'Pinpoint_MapOfListOf__string'
+                                  },
+               'RawContent' => {
+                                 'type' => 'Str'
+                               },
+               'Context' => {
+                              'type' => 'Pinpoint_MapOf__string',
+                              'class' => 'Paws::Pinpoint::MapOf__string'
+                            },
+               'BodyOverride' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +78,7 @@ use in a message that's sent directly to an endpoint.
 message body.
 
 
-=head2 Context => L<Paws::Pinpoint::MapOf__string>
+=head2 Context => Pinpoint_MapOf__string
 
   A map of custom attributes to attach to the message for the address.
 For a push notification, this payload is added to the data.pinpoint
@@ -61,7 +92,7 @@ email/SMS delivery receipt event attributes.
 If specified, this value overrides the message.
 
 
-=head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
+=head2 Substitutions => Pinpoint_MapOfListOf__string
 
   A map of the message variables to merge with the variables specified
 for the default message (DefaultMessage.Substitutions). The variables

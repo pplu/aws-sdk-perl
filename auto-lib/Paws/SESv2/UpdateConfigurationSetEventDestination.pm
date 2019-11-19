@@ -1,16 +1,47 @@
 
 package Paws::SESv2::UpdateConfigurationSetEventDestination;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ConfigurationSetName', required => 1);
-  has EventDestination => (is => 'ro', isa => 'Paws::SESv2::EventDestinationDefinition', required => 1);
-  has EventDestinationName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'EventDestinationName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw/SESv2_EventDestinationDefinition/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EventDestination => (is => 'ro', isa => SESv2_EventDestinationDefinition, required => 1, predicate => 1);
+  has EventDestinationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationSetEventDestination');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::UpdateConfigurationSetEventDestinationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateConfigurationSetEventDestination');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::UpdateConfigurationSetEventDestinationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'EventDestinationName' => 'EventDestinationName',
+                    'ConfigurationSetName' => 'ConfigurationSetName'
+                  },
+  'types' => {
+               'EventDestination' => {
+                                       'type' => 'SESv2_EventDestinationDefinition',
+                                       'class' => 'Paws::SESv2::EventDestinationDefinition'
+                                     },
+               'EventDestinationName' => {
+                                           'type' => 'Str'
+                                         },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'EventDestination' => 1,
+                    'ConfigurationSetName' => 1,
+                    'EventDestinationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,18 +80,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         Enabled                    => 1,    # OPTIONAL
         KinesisFirehoseDestination => {
-          DeliveryStreamArn => 'MyAmazonResourceName',
-          IamRoleArn        => 'MyAmazonResourceName',
+          DeliveryStreamArn => 'MyAmazonResourceName',    # OPTIONAL
+          IamRoleArn        => 'MyAmazonResourceName',    # OPTIONAL
 
-        },                                  # OPTIONAL
+        },    # OPTIONAL
         MatchingEventTypes => [
           'SEND',
           ... # values: SEND, REJECT, BOUNCE, COMPLAINT, DELIVERY, OPEN, CLICK, RENDERING_FAILURE
         ],    # OPTIONAL
-        PinpointDestination => { ApplicationArn => 'MyAmazonResourceName', }
-        ,     # OPTIONAL
+        PinpointDestination => {
+          ApplicationArn => 'MyAmazonResourceName',    # OPTIONAL
+        },    # OPTIONAL
         SnsDestination => {
-          TopicArn => 'MyAmazonResourceName',
+          TopicArn => 'MyAmazonResourceName',    # OPTIONAL
 
         },    # OPTIONAL
       },
@@ -81,7 +113,7 @@ that you want to modify.
 
 
 
-=head2 B<REQUIRED> EventDestination => L<Paws::SESv2::EventDestinationDefinition>
+=head2 B<REQUIRED> EventDestination => SESv2_EventDestinationDefinition
 
 An object that defines the event destination.
 

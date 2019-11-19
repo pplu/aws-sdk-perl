@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Kafka::ErrorInfo;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
-  has ErrorString => (is => 'ro', isa => 'Str', request_name => 'errorString', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kafka::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorString => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorString' => {
+                                  'type' => 'Str'
+                                },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'ErrorString' => 'errorString',
+                       'ErrorCode' => 'errorCode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

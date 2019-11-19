@@ -1,9 +1,29 @@
 
 package Paws::GroundStation::DataflowEndpointGroupIdResponse;
-  use Moose;
-  has DataflowEndpointGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataflowEndpointGroupId');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw//;
+  has DataflowEndpointGroupId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DataflowEndpointGroupId' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'NameInRequest' => {
+                       'DataflowEndpointGroupId' => 'dataflowEndpointGroupId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,55 @@
+# Generated from default/object.tt
 package Paws::RDS::OptionGroupOptionSetting;
-  use Moose;
-  has AllowedValues => (is => 'ro', isa => 'Str');
-  has ApplyType => (is => 'ro', isa => 'Str');
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has IsModifiable => (is => 'ro', isa => 'Bool');
-  has IsRequired => (is => 'ro', isa => 'Bool');
-  has MinimumEngineVersionPerAllowedValue => (is => 'ro', isa => 'ArrayRef[Paws::RDS::MinimumEngineVersionPerAllowedValue]', request_name => 'MinimumEngineVersionPerAllowedValue', traits => ['NameInRequest']);
-  has SettingDescription => (is => 'ro', isa => 'Str');
-  has SettingName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::RDS::Types qw/RDS_MinimumEngineVersionPerAllowedValue/;
+  has AllowedValues => (is => 'ro', isa => Str);
+  has ApplyType => (is => 'ro', isa => Str);
+  has DefaultValue => (is => 'ro', isa => Str);
+  has IsModifiable => (is => 'ro', isa => Bool);
+  has IsRequired => (is => 'ro', isa => Bool);
+  has MinimumEngineVersionPerAllowedValue => (is => 'ro', isa => ArrayRef[RDS_MinimumEngineVersionPerAllowedValue]);
+  has SettingDescription => (is => 'ro', isa => Str);
+  has SettingName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MinimumEngineVersionPerAllowedValue' => 'MinimumEngineVersionPerAllowedValue'
+                     },
+  'types' => {
+               'IsModifiable' => {
+                                   'type' => 'Bool'
+                                 },
+               'DefaultValue' => {
+                                   'type' => 'Str'
+                                 },
+               'ApplyType' => {
+                                'type' => 'Str'
+                              },
+               'IsRequired' => {
+                                 'type' => 'Bool'
+                               },
+               'SettingDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'SettingName' => {
+                                  'type' => 'Str'
+                                },
+               'MinimumEngineVersionPerAllowedValue' => {
+                                                          'class' => 'Paws::RDS::MinimumEngineVersionPerAllowedValue',
+                                                          'type' => 'ArrayRef[RDS_MinimumEngineVersionPerAllowedValue]'
+                                                        },
+               'AllowedValues' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +114,7 @@ changed from the default value.
 this option setting of the option group option.
 
 
-=head2 MinimumEngineVersionPerAllowedValue => ArrayRef[L<Paws::RDS::MinimumEngineVersionPerAllowedValue>]
+=head2 MinimumEngineVersionPerAllowedValue => ArrayRef[RDS_MinimumEngineVersionPerAllowedValue]
 
   The minimum DB engine version required for the corresponding allowed
 value for this option setting.

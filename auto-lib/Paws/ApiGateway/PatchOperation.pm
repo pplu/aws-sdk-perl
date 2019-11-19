@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::ApiGateway::PatchOperation;
-  use Moose;
-  has From => (is => 'ro', isa => 'Str', request_name => 'from', traits => ['NameInRequest']);
-  has Op => (is => 'ro', isa => 'Str', request_name => 'op', traits => ['NameInRequest']);
-  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has From => (is => 'ro', isa => Str);
+  has Op => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Path' => 'path',
+                       'Value' => 'value',
+                       'Op' => 'op',
+                       'From' => 'from'
+                     },
+  'types' => {
+               'Op' => {
+                         'type' => 'Str'
+                       },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'From' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

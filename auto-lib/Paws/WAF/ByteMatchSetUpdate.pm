@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::WAF::ByteMatchSetUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has ByteMatchTuple => (is => 'ro', isa => 'Paws::WAF::ByteMatchTuple', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_ByteMatchTuple/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has ByteMatchTuple => (is => 'ro', isa => WAF_ByteMatchTuple, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'ByteMatchTuple' => {
+                                     'class' => 'Paws::WAF::ByteMatchTuple',
+                                     'type' => 'WAF_ByteMatchTuple'
+                                   }
+             },
+  'IsRequired' => {
+                    'Action' => 1,
+                    'ByteMatchTuple' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +69,7 @@ for the C<ByteMatchTuple>.
   Specifies whether to insert or delete a ByteMatchTuple.
 
 
-=head2 B<REQUIRED> ByteMatchTuple => L<Paws::WAF::ByteMatchTuple>
+=head2 B<REQUIRED> ByteMatchTuple => WAF_ByteMatchTuple
 
   Information about the part of a web request that you want AWS WAF to
 inspect and the value that you want AWS WAF to search for. If you

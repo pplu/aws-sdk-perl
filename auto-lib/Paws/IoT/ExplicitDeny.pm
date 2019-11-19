@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::IoT::ExplicitDeny;
-  use Moose;
-  has Policies => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Policy]', request_name => 'policies', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::IoT::Types qw/IoT_Policy/;
+  has Policies => (is => 'ro', isa => ArrayRef[IoT_Policy]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Policies' => 'policies'
+                     },
+  'types' => {
+               'Policies' => {
+                               'type' => 'ArrayRef[IoT_Policy]',
+                               'class' => 'Paws::IoT::Policy'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Information that explicitly denies authorization.
 =head1 ATTRIBUTES
 
 
-=head2 Policies => ArrayRef[L<Paws::IoT::Policy>]
+=head2 Policies => ArrayRef[IoT_Policy]
 
   The policies that denied the authorization.
 

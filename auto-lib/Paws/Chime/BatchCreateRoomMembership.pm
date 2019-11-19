@@ -1,16 +1,47 @@
 
 package Paws::Chime::BatchCreateRoomMembership;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has MembershipItemList => (is => 'ro', isa => 'ArrayRef[Paws::Chime::MembershipItem]', required => 1);
-  has RoomId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'roomId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Chime::Types qw/Chime_MembershipItem/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MembershipItemList => (is => 'ro', isa => ArrayRef[Chime_MembershipItem], required => 1, predicate => 1);
+  has RoomId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchCreateRoomMembership');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/rooms/{roomId}/memberships?operation=batch-create');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::BatchCreateRoomMembershipResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchCreateRoomMembership');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/rooms/{roomId}/memberships?operation=batch-create');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::BatchCreateRoomMembershipResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'MembershipItemList' => 1,
+                    'RoomId' => 1
+                  },
+  'types' => {
+               'MembershipItemList' => {
+                                         'class' => 'Paws::Chime::MembershipItem',
+                                         'type' => 'ArrayRef[Chime_MembershipItem]'
+                                       },
+               'RoomId' => {
+                             'type' => 'Str'
+                           },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'RoomId' => 'roomId',
+                    'AccountId' => 'accountId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +91,7 @@ The Amazon Chime account ID.
 
 
 
-=head2 B<REQUIRED> MembershipItemList => ArrayRef[L<Paws::Chime::MembershipItem>]
+=head2 B<REQUIRED> MembershipItemList => ArrayRef[Chime_MembershipItem]
 
 The list of membership items.
 

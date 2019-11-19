@@ -1,17 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::PutThirdPartyJobSuccessResult;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' , required => 1);
-  has ContinuationToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'continuationToken' );
-  has CurrentRevision => (is => 'ro', isa => 'Paws::CodePipeline::CurrentRevision', traits => ['NameInRequest'], request_name => 'currentRevision' );
-  has ExecutionDetails => (is => 'ro', isa => 'Paws::CodePipeline::ExecutionDetails', traits => ['NameInRequest'], request_name => 'executionDetails' );
-  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ExecutionDetails CodePipeline_CurrentRevision/;
+  has ClientToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContinuationToken => (is => 'ro', isa => Str, predicate => 1);
+  has CurrentRevision => (is => 'ro', isa => CodePipeline_CurrentRevision, predicate => 1);
+  has ExecutionDetails => (is => 'ro', isa => CodePipeline_ExecutionDetails, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutThirdPartyJobSuccessResult');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutThirdPartyJobSuccessResult');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'JobId' => 1,
+                    'ClientToken' => 1
+                  },
+  'NameInRequest' => {
+                       'ContinuationToken' => 'continuationToken',
+                       'ClientToken' => 'clientToken',
+                       'JobId' => 'jobId',
+                       'CurrentRevision' => 'currentRevision',
+                       'ExecutionDetails' => 'executionDetails'
+                     },
+  'types' => {
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'CurrentRevision' => {
+                                      'type' => 'CodePipeline_CurrentRevision',
+                                      'class' => 'Paws::CodePipeline::CurrentRevision'
+                                    },
+               'ExecutionDetails' => {
+                                       'type' => 'CodePipeline_ExecutionDetails',
+                                       'class' => 'Paws::CodePipeline::ExecutionDetails'
+                                     },
+               'ContinuationToken' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,13 +114,13 @@ continuation token should be supplied.
 
 
 
-=head2 CurrentRevision => L<Paws::CodePipeline::CurrentRevision>
+=head2 CurrentRevision => CodePipeline_CurrentRevision
 
 Represents information about a current revision.
 
 
 
-=head2 ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>
+=head2 ExecutionDetails => CodePipeline_ExecutionDetails
 
 The details of the actions taken and results produced on an artifact as
 it passes through stages in the pipeline.

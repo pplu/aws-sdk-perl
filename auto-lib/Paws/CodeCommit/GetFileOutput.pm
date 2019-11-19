@@ -1,14 +1,63 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::GetFileOutput;
-  use Moose;
-  has BlobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'blobId' , required => 1);
-  has CommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitId' , required => 1);
-  has FileContent => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fileContent' , required => 1);
-  has FileMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fileMode' , required => 1);
-  has FilePath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filePath' , required => 1);
-  has FileSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'fileSize' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodeCommit::Types qw//;
+  has BlobId => (is => 'ro', isa => Str, required => 1);
+  has CommitId => (is => 'ro', isa => Str, required => 1);
+  has FileContent => (is => 'ro', isa => Str, required => 1);
+  has FileMode => (is => 'ro', isa => Str, required => 1);
+  has FilePath => (is => 'ro', isa => Str, required => 1);
+  has FileSize => (is => 'ro', isa => Int, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CommitId' => 'commitId',
+                       'FileMode' => 'fileMode',
+                       'FileContent' => 'fileContent',
+                       'FileSize' => 'fileSize',
+                       'BlobId' => 'blobId',
+                       'FilePath' => 'filePath'
+                     },
+  'IsRequired' => {
+                    'FilePath' => 1,
+                    'FileSize' => 1,
+                    'FileContent' => 1,
+                    'CommitId' => 1,
+                    'FileMode' => 1,
+                    'BlobId' => 1
+                  },
+  'types' => {
+               'BlobId' => {
+                             'type' => 'Str'
+                           },
+               'FileContent' => {
+                                  'type' => 'Str'
+                                },
+               'FileSize' => {
+                               'type' => 'Int'
+                             },
+               'CommitId' => {
+                               'type' => 'Str'
+                             },
+               'FileMode' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FilePath' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

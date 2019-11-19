@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Personalize::IntegerHyperParameterRange;
-  use Moose;
-  has MaxValue => (is => 'ro', isa => 'Int', request_name => 'maxValue', traits => ['NameInRequest']);
-  has MinValue => (is => 'ro', isa => 'Int', request_name => 'minValue', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Personalize::Types qw//;
+  has MaxValue => (is => 'ro', isa => Int);
+  has MinValue => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MaxValue' => 'maxValue',
+                       'MinValue' => 'minValue',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'MaxValue' => {
+                               'type' => 'Int'
+                             },
+               'MinValue' => {
+                               'type' => 'Int'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

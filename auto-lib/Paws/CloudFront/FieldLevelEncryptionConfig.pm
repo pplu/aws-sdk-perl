@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::CloudFront::FieldLevelEncryptionConfig;
-  use Moose;
-  has CallerReference => (is => 'ro', isa => 'Str', required => 1);
-  has Comment => (is => 'ro', isa => 'Str');
-  has ContentTypeProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::ContentTypeProfileConfig');
-  has QueryArgProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::QueryArgProfileConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_ContentTypeProfileConfig CloudFront_QueryArgProfileConfig/;
+  has CallerReference => (is => 'ro', isa => Str, required => 1);
+  has Comment => (is => 'ro', isa => Str);
+  has ContentTypeProfileConfig => (is => 'ro', isa => CloudFront_ContentTypeProfileConfig);
+  has QueryArgProfileConfig => (is => 'ro', isa => CloudFront_QueryArgProfileConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContentTypeProfileConfig' => {
+                                               'type' => 'CloudFront_ContentTypeProfileConfig',
+                                               'class' => 'Paws::CloudFront::ContentTypeProfileConfig'
+                                             },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'CallerReference' => {
+                                      'type' => 'Str'
+                                    },
+               'QueryArgProfileConfig' => {
+                                            'class' => 'Paws::CloudFront::QueryArgProfileConfig',
+                                            'type' => 'CloudFront_QueryArgProfileConfig'
+                                          }
+             },
+  'IsRequired' => {
+                    'CallerReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,14 +81,14 @@ for field-level encryption.
   An optional comment about the configuration.
 
 
-=head2 ContentTypeProfileConfig => L<Paws::CloudFront::ContentTypeProfileConfig>
+=head2 ContentTypeProfileConfig => CloudFront_ContentTypeProfileConfig
 
   A complex data type that specifies when to forward content if a content
 type isn't recognized and profiles to use as by default in a request if
 a query argument doesn't specify a profile to use.
 
 
-=head2 QueryArgProfileConfig => L<Paws::CloudFront::QueryArgProfileConfig>
+=head2 QueryArgProfileConfig => CloudFront_QueryArgProfileConfig
 
   A complex data type that specifies when to forward content if a profile
 isn't found and the profile that can be provided as a query argument in

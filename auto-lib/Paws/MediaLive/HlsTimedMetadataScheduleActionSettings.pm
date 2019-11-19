@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::MediaLive::HlsTimedMetadataScheduleActionSettings;
-  use Moose;
-  has Id3 => (is => 'ro', isa => 'Str', request_name => 'id3', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has Id3 => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id3' => {
+                          'type' => 'Str'
+                        }
+             },
+  'IsRequired' => {
+                    'Id3' => 1
+                  },
+  'NameInRequest' => {
+                       'Id3' => 'id3'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

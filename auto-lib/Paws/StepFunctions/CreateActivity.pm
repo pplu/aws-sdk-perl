@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StepFunctions::CreateActivity;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StepFunctions::Types qw/StepFunctions_Tag/;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[StepFunctions_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateActivity');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StepFunctions::CreateActivityOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateActivity');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StepFunctions::CreateActivityOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Tags' => {
+                           'class' => 'Paws::StepFunctions::Tag',
+                           'type' => 'ArrayRef[StepFunctions_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -88,7 +115,7 @@ control characters (C<U+0000-001F>, C<U+007F-009F>)
 
 
 
-=head2 Tags => ArrayRef[L<Paws::StepFunctions::Tag>]
+=head2 Tags => ArrayRef[StepFunctions_Tag]
 
 The list of tags to add to a resource.
 

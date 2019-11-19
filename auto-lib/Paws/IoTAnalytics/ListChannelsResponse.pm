@@ -1,10 +1,35 @@
 
 package Paws::IoTAnalytics::ListChannelsResponse;
-  use Moose;
-  has ChannelSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::ChannelSummary]', traits => ['NameInRequest'], request_name => 'channelSummaries');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_ChannelSummary/;
+  has ChannelSummaries => (is => 'ro', isa => ArrayRef[IoTAnalytics_ChannelSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ChannelSummaries' => {
+                                       'type' => 'ArrayRef[IoTAnalytics_ChannelSummary]',
+                                       'class' => 'Paws::IoTAnalytics::ChannelSummary'
+                                     }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'ChannelSummaries' => 'channelSummaries'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::IoTAnalytics::ListChannelsResponse
 =head1 ATTRIBUTES
 
 
-=head2 ChannelSummaries => ArrayRef[L<Paws::IoTAnalytics::ChannelSummary>]
+=head2 ChannelSummaries => ArrayRef[IoTAnalytics_ChannelSummary]
 
 A list of "ChannelSummary" objects.
 

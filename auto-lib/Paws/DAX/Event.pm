@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::DAX::Event;
-  use Moose;
-  has Date => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has SourceName => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DAX::Types qw//;
+  has Date => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has SourceName => (is => 'ro', isa => Str);
+  has SourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'Date' => {
+                           'type' => 'Str'
+                         },
+               'SourceName' => {
+                                 'type' => 'Str'
+                               },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

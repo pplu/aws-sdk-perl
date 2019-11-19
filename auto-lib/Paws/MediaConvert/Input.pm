@@ -1,24 +1,125 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Input;
-  use Moose;
-  has AudioSelectorGroups => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfAudioSelectorGroup', request_name => 'audioSelectorGroups', traits => ['NameInRequest']);
-  has AudioSelectors => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfAudioSelector', request_name => 'audioSelectors', traits => ['NameInRequest']);
-  has CaptionSelectors => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfCaptionSelector', request_name => 'captionSelectors', traits => ['NameInRequest']);
-  has Crop => (is => 'ro', isa => 'Paws::MediaConvert::Rectangle', request_name => 'crop', traits => ['NameInRequest']);
-  has DeblockFilter => (is => 'ro', isa => 'Str', request_name => 'deblockFilter', traits => ['NameInRequest']);
-  has DecryptionSettings => (is => 'ro', isa => 'Paws::MediaConvert::InputDecryptionSettings', request_name => 'decryptionSettings', traits => ['NameInRequest']);
-  has DenoiseFilter => (is => 'ro', isa => 'Str', request_name => 'denoiseFilter', traits => ['NameInRequest']);
-  has FileInput => (is => 'ro', isa => 'Str', request_name => 'fileInput', traits => ['NameInRequest']);
-  has FilterEnable => (is => 'ro', isa => 'Str', request_name => 'filterEnable', traits => ['NameInRequest']);
-  has FilterStrength => (is => 'ro', isa => 'Int', request_name => 'filterStrength', traits => ['NameInRequest']);
-  has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
-  has InputClippings => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputClipping]', request_name => 'inputClippings', traits => ['NameInRequest']);
-  has Position => (is => 'ro', isa => 'Paws::MediaConvert::Rectangle', request_name => 'position', traits => ['NameInRequest']);
-  has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
-  has PsiControl => (is => 'ro', isa => 'Str', request_name => 'psiControl', traits => ['NameInRequest']);
-  has SupplementalImps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supplementalImps', traits => ['NameInRequest']);
-  has TimecodeSource => (is => 'ro', isa => 'Str', request_name => 'timecodeSource', traits => ['NameInRequest']);
-  has TimecodeStart => (is => 'ro', isa => 'Str', request_name => 'timecodeStart', traits => ['NameInRequest']);
-  has VideoSelector => (is => 'ro', isa => 'Paws::MediaConvert::VideoSelector', request_name => 'videoSelector', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_InputClipping MediaConvert___mapOfCaptionSelector MediaConvert_Rectangle MediaConvert_InputDecryptionSettings MediaConvert___mapOfAudioSelectorGroup MediaConvert_ImageInserter MediaConvert_VideoSelector MediaConvert___mapOfAudioSelector/;
+  has AudioSelectorGroups => (is => 'ro', isa => MediaConvert___mapOfAudioSelectorGroup);
+  has AudioSelectors => (is => 'ro', isa => MediaConvert___mapOfAudioSelector);
+  has CaptionSelectors => (is => 'ro', isa => MediaConvert___mapOfCaptionSelector);
+  has Crop => (is => 'ro', isa => MediaConvert_Rectangle);
+  has DeblockFilter => (is => 'ro', isa => Str);
+  has DecryptionSettings => (is => 'ro', isa => MediaConvert_InputDecryptionSettings);
+  has DenoiseFilter => (is => 'ro', isa => Str);
+  has FileInput => (is => 'ro', isa => Str);
+  has FilterEnable => (is => 'ro', isa => Str);
+  has FilterStrength => (is => 'ro', isa => Int);
+  has ImageInserter => (is => 'ro', isa => MediaConvert_ImageInserter);
+  has InputClippings => (is => 'ro', isa => ArrayRef[MediaConvert_InputClipping]);
+  has Position => (is => 'ro', isa => MediaConvert_Rectangle);
+  has ProgramNumber => (is => 'ro', isa => Int);
+  has PsiControl => (is => 'ro', isa => Str);
+  has SupplementalImps => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TimecodeSource => (is => 'ro', isa => Str);
+  has TimecodeStart => (is => 'ro', isa => Str);
+  has VideoSelector => (is => 'ro', isa => MediaConvert_VideoSelector);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FilterStrength' => 'filterStrength',
+                       'CaptionSelectors' => 'captionSelectors',
+                       'TimecodeSource' => 'timecodeSource',
+                       'DeblockFilter' => 'deblockFilter',
+                       'InputClippings' => 'inputClippings',
+                       'ProgramNumber' => 'programNumber',
+                       'VideoSelector' => 'videoSelector',
+                       'FileInput' => 'fileInput',
+                       'PsiControl' => 'psiControl',
+                       'Position' => 'position',
+                       'ImageInserter' => 'imageInserter',
+                       'AudioSelectors' => 'audioSelectors',
+                       'AudioSelectorGroups' => 'audioSelectorGroups',
+                       'SupplementalImps' => 'supplementalImps',
+                       'FilterEnable' => 'filterEnable',
+                       'DecryptionSettings' => 'decryptionSettings',
+                       'TimecodeStart' => 'timecodeStart',
+                       'DenoiseFilter' => 'denoiseFilter',
+                       'Crop' => 'crop'
+                     },
+  'types' => {
+               'AudioSelectorGroups' => {
+                                          'type' => 'MediaConvert___mapOfAudioSelectorGroup',
+                                          'class' => 'Paws::MediaConvert::__mapOfAudioSelectorGroup'
+                                        },
+               'SupplementalImps' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'FilterEnable' => {
+                                   'type' => 'Str'
+                                 },
+               'ImageInserter' => {
+                                    'type' => 'MediaConvert_ImageInserter',
+                                    'class' => 'Paws::MediaConvert::ImageInserter'
+                                  },
+               'AudioSelectors' => {
+                                     'type' => 'MediaConvert___mapOfAudioSelector',
+                                     'class' => 'Paws::MediaConvert::__mapOfAudioSelector'
+                                   },
+               'Crop' => {
+                           'class' => 'Paws::MediaConvert::Rectangle',
+                           'type' => 'MediaConvert_Rectangle'
+                         },
+               'DecryptionSettings' => {
+                                         'type' => 'MediaConvert_InputDecryptionSettings',
+                                         'class' => 'Paws::MediaConvert::InputDecryptionSettings'
+                                       },
+               'TimecodeStart' => {
+                                    'type' => 'Str'
+                                  },
+               'DenoiseFilter' => {
+                                    'type' => 'Str'
+                                  },
+               'InputClippings' => {
+                                     'type' => 'ArrayRef[MediaConvert_InputClipping]',
+                                     'class' => 'Paws::MediaConvert::InputClipping'
+                                   },
+               'DeblockFilter' => {
+                                    'type' => 'Str'
+                                  },
+               'VideoSelector' => {
+                                    'type' => 'MediaConvert_VideoSelector',
+                                    'class' => 'Paws::MediaConvert::VideoSelector'
+                                  },
+               'ProgramNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'CaptionSelectors' => {
+                                       'class' => 'Paws::MediaConvert::__mapOfCaptionSelector',
+                                       'type' => 'MediaConvert___mapOfCaptionSelector'
+                                     },
+               'FilterStrength' => {
+                                     'type' => 'Int'
+                                   },
+               'TimecodeSource' => {
+                                     'type' => 'Str'
+                                   },
+               'Position' => {
+                               'type' => 'MediaConvert_Rectangle',
+                               'class' => 'Paws::MediaConvert::Rectangle'
+                             },
+               'FileInput' => {
+                                'type' => 'Str'
+                              },
+               'PsiControl' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,28 +155,28 @@ Specifies media input
 =head1 ATTRIBUTES
 
 
-=head2 AudioSelectorGroups => L<Paws::MediaConvert::__mapOfAudioSelectorGroup>
+=head2 AudioSelectorGroups => MediaConvert___mapOfAudioSelectorGroup
 
   Specifies set of audio selectors within an input to combine. An input
 may have multiple audio selector groups. See "Audio Selector
 Group":#inputs-audio_selector_group for more information.
 
 
-=head2 AudioSelectors => L<Paws::MediaConvert::__mapOfAudioSelector>
+=head2 AudioSelectors => MediaConvert___mapOfAudioSelector
 
   Use Audio selectors (AudioSelectors) to specify a track or set of
 tracks from the input that you will use in your outputs. You can use
 mutiple Audio selectors per input.
 
 
-=head2 CaptionSelectors => L<Paws::MediaConvert::__mapOfCaptionSelector>
+=head2 CaptionSelectors => MediaConvert___mapOfCaptionSelector
 
   Use Captions selectors (CaptionSelectors) to specify the captions data
 from the input that you will use in your outputs. You can use mutiple
 captions selectors per input.
 
 
-=head2 Crop => L<Paws::MediaConvert::Rectangle>
+=head2 Crop => MediaConvert_Rectangle
 
   Use Cropping selection (crop) to specify the video area that the
 service will include in the output video frame. If you specify a value
@@ -90,7 +191,7 @@ output. Default is disabled. Only manaully controllable for MPEG2 and
 uncompressed video inputs.
 
 
-=head2 DecryptionSettings => L<Paws::MediaConvert::InputDecryptionSettings>
+=head2 DecryptionSettings => MediaConvert_InputDecryptionSettings
 
   Settings for decrypting any input files that you encrypt before you
 upload them to Amazon S3. MediaConvert can decrypt files only when you
@@ -136,14 +237,14 @@ filter settings (Deblock and Denoise). The range is -5 to 5. Default is
 0.
 
 
-=head2 ImageInserter => L<Paws::MediaConvert::ImageInserter>
+=head2 ImageInserter => MediaConvert_ImageInserter
 
   Enable the image inserter feature to include a graphic overlay on your
 video. Enable or disable this feature for each input individually. This
 setting is disabled by default.
 
 
-=head2 InputClippings => ArrayRef[L<Paws::MediaConvert::InputClipping>]
+=head2 InputClippings => ArrayRef[MediaConvert_InputClipping]
 
   (InputClippings) contains sets of start and end times that together
 specify a portion of the input to be used in the outputs. If you
@@ -154,7 +255,7 @@ clip, the transcoding service creates the job outputs by stringing the
 clips together in the order you specify them.
 
 
-=head2 Position => L<Paws::MediaConvert::Rectangle>
+=head2 Position => MediaConvert_Rectangle
 
   Use Selection placement (position) to define the video area in your
 output frame. The area outside of the rectangle that you specify here
@@ -218,7 +319,7 @@ Specified start (SPECIFIEDSTART). For more information about timecodes,
 see https://docs.aws.amazon.com/console/mediaconvert/timecode.
 
 
-=head2 VideoSelector => L<Paws::MediaConvert::VideoSelector>
+=head2 VideoSelector => MediaConvert_VideoSelector
 
   Selector for video.
 

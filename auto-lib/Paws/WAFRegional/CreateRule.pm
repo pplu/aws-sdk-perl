@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAFRegional::CreateRule;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_Tag/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[WAFRegional_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAFRegional::CreateRuleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAFRegional::CreateRuleResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MetricName' => 1,
+                    'ChangeToken' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Tags' => {
+                           'class' => 'Paws::WAFRegional::Tag',
+                           'type' => 'ArrayRef[WAFRegional_Tag]'
+                         },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +105,7 @@ of a C<Rule> after you create it.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::WAFRegional::Tag>]
+=head2 Tags => ArrayRef[WAFRegional_Tag]
 
 
 

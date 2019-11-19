@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::H264QvbrSettings;
-  use Moose;
-  has MaxAverageBitrate => (is => 'ro', isa => 'Int', request_name => 'maxAverageBitrate', traits => ['NameInRequest']);
-  has QvbrQualityLevel => (is => 'ro', isa => 'Int', request_name => 'qvbrQualityLevel', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has MaxAverageBitrate => (is => 'ro', isa => Int);
+  has QvbrQualityLevel => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'QvbrQualityLevel' => 'qvbrQualityLevel',
+                       'MaxAverageBitrate' => 'maxAverageBitrate'
+                     },
+  'types' => {
+               'QvbrQualityLevel' => {
+                                       'type' => 'Int'
+                                     },
+               'MaxAverageBitrate' => {
+                                        'type' => 'Int'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

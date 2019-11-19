@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CodeCommit;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'codecommit' }
   sub signing_name { 'codecommit' }
   sub version { '2015-04-13' }
   sub target_prefix { 'CodeCommit_20150413' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -925,7 +927,7 @@ branch. To do this, call the update default branch operation.
 
 =item [CommitMessage => Str]
 
-=item [DeleteFiles => ArrayRef[L<Paws::CodeCommit::DeleteFileEntry>]]
+=item [DeleteFiles => ArrayRef[CodeCommit_DeleteFileEntry]]
 
 =item [Email => Str]
 
@@ -933,9 +935,9 @@ branch. To do this, call the update default branch operation.
 
 =item [ParentCommitId => Str]
 
-=item [PutFiles => ArrayRef[L<Paws::CodeCommit::PutFileEntry>]]
+=item [PutFiles => ArrayRef[CodeCommit_PutFileEntry]]
 
-=item [SetFileModes => ArrayRef[L<Paws::CodeCommit::SetFileModeEntry>]]
+=item [SetFileModes => ArrayRef[CodeCommit_SetFileModeEntry]]
 
 
 =back
@@ -951,7 +953,7 @@ Creates a commit for a repository on the tip of a specified branch.
 
 =over
 
-=item Targets => ArrayRef[L<Paws::CodeCommit::Target>]
+=item Targets => ArrayRef[CodeCommit_Target]
 
 =item Title => Str
 
@@ -977,7 +979,7 @@ Creates a pull request in the specified repository.
 
 =item [RepositoryDescription => Str]
 
-=item [Tags => L<Paws::CodeCommit::TagsMap>]
+=item [Tags => CodeCommit_TagsMap]
 
 
 =back
@@ -1007,7 +1009,7 @@ Creates a new, empty repository.
 
 =item [ConflictDetailLevel => Str]
 
-=item [ConflictResolution => L<Paws::CodeCommit::ConflictResolution>]
+=item [ConflictResolution => CodeCommit_ConflictResolution]
 
 =item [ConflictResolutionStrategy => Str]
 
@@ -1636,7 +1638,7 @@ Merges two branches using the fast-forward merge strategy.
 
 =item [ConflictDetailLevel => Str]
 
-=item [ConflictResolution => L<Paws::CodeCommit::ConflictResolution>]
+=item [ConflictResolution => CodeCommit_ConflictResolution]
 
 =item [ConflictResolutionStrategy => Str]
 
@@ -1672,7 +1674,7 @@ Merges two branches using the squash merge strategy.
 
 =item [ConflictDetailLevel => Str]
 
-=item [ConflictResolution => L<Paws::CodeCommit::ConflictResolution>]
+=item [ConflictResolution => CodeCommit_ConflictResolution]
 
 =item [ConflictResolutionStrategy => Str]
 
@@ -1729,7 +1731,7 @@ successful, it closes the pull request.
 
 =item [ConflictDetailLevel => Str]
 
-=item [ConflictResolution => L<Paws::CodeCommit::ConflictResolution>]
+=item [ConflictResolution => CodeCommit_ConflictResolution]
 
 =item [ConflictResolutionStrategy => Str]
 
@@ -1766,7 +1768,7 @@ closes the pull request.
 
 =item [ConflictDetailLevel => Str]
 
-=item [ConflictResolution => L<Paws::CodeCommit::ConflictResolution>]
+=item [ConflictResolution => CodeCommit_ConflictResolution]
 
 =item [ConflictResolutionStrategy => Str]
 
@@ -1803,7 +1805,7 @@ it closes the pull request.
 
 =item [ClientRequestToken => Str]
 
-=item [Location => L<Paws::CodeCommit::Location>]
+=item [Location => CodeCommit_Location]
 
 
 =back
@@ -1831,7 +1833,7 @@ Posts a comment on the comparison between two commits.
 
 =item [ClientRequestToken => Str]
 
-=item [Location => L<Paws::CodeCommit::Location>]
+=item [Location => CodeCommit_Location]
 
 
 =back
@@ -1903,7 +1905,7 @@ generates a commit for the addition in the specified branch.
 
 =item RepositoryName => Str
 
-=item Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]
+=item Triggers => ArrayRef[CodeCommit_RepositoryTrigger]
 
 
 =back
@@ -1922,7 +1924,7 @@ delete triggers.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::CodeCommit::TagsMap>
+=item Tags => CodeCommit_TagsMap
 
 
 =back
@@ -1944,7 +1946,7 @@ in the AWS CodeCommit User Guide.
 
 =item RepositoryName => Str
 
-=item Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]
+=item Triggers => ArrayRef[CodeCommit_RepositoryTrigger]
 
 
 =back

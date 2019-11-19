@@ -1,24 +1,95 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::CreateInstancesFromSnapshot;
-  use Moose;
-  has AddOns => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AddOnRequest]', traits => ['NameInRequest'], request_name => 'addOns' );
-  has AttachedDiskMapping => (is => 'ro', isa => 'Paws::Lightsail::AttachedDiskMap', traits => ['NameInRequest'], request_name => 'attachedDiskMapping' );
-  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
-  has BundleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bundleId' , required => 1);
-  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
-  has InstanceSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceSnapshotName' );
-  has KeyPairName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyPairName' );
-  has RestoreDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'restoreDate' );
-  has SourceInstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceInstanceName' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has UseLatestRestorableAutoSnapshot => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'useLatestRestorableAutoSnapshot' );
-  has UserData => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userData' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::Lightsail::Types qw/Lightsail_AttachedDiskMap Lightsail_Tag Lightsail_AddOnRequest/;
+  has AddOns => (is => 'ro', isa => ArrayRef[Lightsail_AddOnRequest], predicate => 1);
+  has AttachedDiskMapping => (is => 'ro', isa => Lightsail_AttachedDiskMap, predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BundleId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has InstanceSnapshotName => (is => 'ro', isa => Str, predicate => 1);
+  has KeyPairName => (is => 'ro', isa => Str, predicate => 1);
+  has RestoreDate => (is => 'ro', isa => Str, predicate => 1);
+  has SourceInstanceName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag], predicate => 1);
+  has UseLatestRestorableAutoSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has UserData => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInstancesFromSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::CreateInstancesFromSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateInstancesFromSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::CreateInstancesFromSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyPairName' => {
+                                  'type' => 'Str'
+                                },
+               'AddOns' => {
+                             'type' => 'ArrayRef[Lightsail_AddOnRequest]',
+                             'class' => 'Paws::Lightsail::AddOnRequest'
+                           },
+               'UseLatestRestorableAutoSnapshot' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'AttachedDiskMapping' => {
+                                          'class' => 'Paws::Lightsail::AttachedDiskMap',
+                                          'type' => 'Lightsail_AttachedDiskMap'
+                                        },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'SourceInstanceName' => {
+                                         'type' => 'Str'
+                                       },
+               'Tags' => {
+                           'type' => 'ArrayRef[Lightsail_Tag]',
+                           'class' => 'Paws::Lightsail::Tag'
+                         },
+               'InstanceSnapshotName' => {
+                                           'type' => 'Str'
+                                         },
+               'InstanceNames' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'BundleId' => {
+                               'type' => 'Str'
+                             },
+               'RestoreDate' => {
+                                  'type' => 'Str'
+                                },
+               'UserData' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'AvailabilityZone' => 'availabilityZone',
+                       'AttachedDiskMapping' => 'attachedDiskMapping',
+                       'UseLatestRestorableAutoSnapshot' => 'useLatestRestorableAutoSnapshot',
+                       'SourceInstanceName' => 'sourceInstanceName',
+                       'InstanceNames' => 'instanceNames',
+                       'InstanceSnapshotName' => 'instanceSnapshotName',
+                       'Tags' => 'tags',
+                       'RestoreDate' => 'restoreDate',
+                       'BundleId' => 'bundleId',
+                       'UserData' => 'userData',
+                       'KeyPairName' => 'keyPairName',
+                       'AddOns' => 'addOns'
+                     },
+  'IsRequired' => {
+                    'AvailabilityZone' => 1,
+                    'InstanceNames' => 1,
+                    'BundleId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -87,14 +158,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 =head1 ATTRIBUTES
 
 
-=head2 AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]
+=head2 AddOns => ArrayRef[Lightsail_AddOnRequest]
 
 An array of objects representing the add-ons to enable for the new
 instance.
 
 
 
-=head2 AttachedDiskMapping => L<Paws::Lightsail::AttachedDiskMap>
+=head2 AttachedDiskMapping => Lightsail_AttachedDiskMap
 
 An object containing information about one or more disk mappings.
 
@@ -186,7 +257,7 @@ automatic snapshot. For more information, see the Lightsail Dev Guide
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
 The tag keys and optional values to add to the resource during create.
 

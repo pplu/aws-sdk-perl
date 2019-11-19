@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::SpekeKeyProviderCmaf;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
-  has DashSignaledSystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'dashSignaledSystemIds', traits => ['NameInRequest']);
-  has HlsSignaledSystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'hlsSignaledSystemIds', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaConvert::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has DashSignaledSystemIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has HlsSignaledSystemIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ResourceId => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DashSignaledSystemIds' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'HlsSignaledSystemIds' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'ResourceId' => 'resourceId',
+                       'DashSignaledSystemIds' => 'dashSignaledSystemIds',
+                       'CertificateArn' => 'certificateArn',
+                       'HlsSignaledSystemIds' => 'hlsSignaledSystemIds',
+                       'Url' => 'url'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

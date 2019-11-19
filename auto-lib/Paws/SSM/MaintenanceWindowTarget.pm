@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::SSM::MaintenanceWindowTarget;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OwnerInformation => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
-  has WindowId => (is => 'ro', isa => 'Str');
-  has WindowTargetId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Target/;
+  has Description => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OwnerInformation => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target]);
+  has WindowId => (is => 'ro', isa => Str);
+  has WindowTargetId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OwnerInformation' => {
+                                       'type' => 'Str'
+                                     },
+               'Targets' => {
+                              'type' => 'ArrayRef[SSM_Target]',
+                              'class' => 'Paws::SSM::Target'
+                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'WindowId' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'WindowTargetId' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +101,7 @@ maintenance window.
 window.
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
   The targets, either instances or tags.
 

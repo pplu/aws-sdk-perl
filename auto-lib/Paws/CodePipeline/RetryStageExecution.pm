@@ -1,16 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::RetryStageExecution;
-  use Moose;
-  has PipelineExecutionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineExecutionId' , required => 1);
-  has PipelineName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineName' , required => 1);
-  has RetryMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'retryMode' , required => 1);
-  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has PipelineExecutionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PipelineName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RetryMode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StageName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RetryStageExecution');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::RetryStageExecutionOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RetryStageExecution');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodePipeline::RetryStageExecutionOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PipelineName' => 'pipelineName',
+                       'RetryMode' => 'retryMode',
+                       'StageName' => 'stageName',
+                       'PipelineExecutionId' => 'pipelineExecutionId'
+                     },
+  'IsRequired' => {
+                    'PipelineExecutionId' => 1,
+                    'StageName' => 1,
+                    'PipelineName' => 1,
+                    'RetryMode' => 1
+                  },
+  'types' => {
+               'PipelineName' => {
+                                   'type' => 'Str'
+                                 },
+               'RetryMode' => {
+                                'type' => 'Str'
+                              },
+               'StageName' => {
+                                'type' => 'Str'
+                              },
+               'PipelineExecutionId' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

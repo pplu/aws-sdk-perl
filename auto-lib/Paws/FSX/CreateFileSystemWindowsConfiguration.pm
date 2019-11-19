@@ -1,12 +1,51 @@
+# Generated from default/object.tt
 package Paws::FSX::CreateFileSystemWindowsConfiguration;
-  use Moose;
-  has ActiveDirectoryId => (is => 'ro', isa => 'Str');
-  has AutomaticBackupRetentionDays => (is => 'ro', isa => 'Int');
-  has CopyTagsToBackups => (is => 'ro', isa => 'Bool');
-  has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
-  has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => 'Paws::FSX::SelfManagedActiveDirectoryConfiguration');
-  has ThroughputCapacity => (is => 'ro', isa => 'Int', required => 1);
-  has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::FSX::Types qw/FSX_SelfManagedActiveDirectoryConfiguration/;
+  has ActiveDirectoryId => (is => 'ro', isa => Str);
+  has AutomaticBackupRetentionDays => (is => 'ro', isa => Int);
+  has CopyTagsToBackups => (is => 'ro', isa => Bool);
+  has DailyAutomaticBackupStartTime => (is => 'ro', isa => Str);
+  has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => FSX_SelfManagedActiveDirectoryConfiguration);
+  has ThroughputCapacity => (is => 'ro', isa => Int, required => 1);
+  has WeeklyMaintenanceStartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ThroughputCapacity' => 1
+                  },
+  'types' => {
+               'AutomaticBackupRetentionDays' => {
+                                                   'type' => 'Int'
+                                                 },
+               'SelfManagedActiveDirectoryConfiguration' => {
+                                                              'class' => 'Paws::FSX::SelfManagedActiveDirectoryConfiguration',
+                                                              'type' => 'FSX_SelfManagedActiveDirectoryConfiguration'
+                                                            },
+               'CopyTagsToBackups' => {
+                                        'type' => 'Bool'
+                                      },
+               'ThroughputCapacity' => {
+                                         'type' => 'Int'
+                                       },
+               'WeeklyMaintenanceStartTime' => {
+                                                 'type' => 'Str'
+                                               },
+               'DailyAutomaticBackupStartTime' => {
+                                                    'type' => 'Str'
+                                                  },
+               'ActiveDirectoryId' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +112,7 @@ tags are copied to backups.
 the UTC time zone.
 
 
-=head2 SelfManagedActiveDirectoryConfiguration => L<Paws::FSX::SelfManagedActiveDirectoryConfiguration>
+=head2 SelfManagedActiveDirectoryConfiguration => FSX_SelfManagedActiveDirectoryConfiguration
 
   
 

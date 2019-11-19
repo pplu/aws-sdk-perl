@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Lightsail::ResourceLocation;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has RegionName => (is => 'ro', isa => 'Str', request_name => 'regionName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has RegionName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'RegionName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'AvailabilityZone' => 'availabilityZone',
+                       'RegionName' => 'regionName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

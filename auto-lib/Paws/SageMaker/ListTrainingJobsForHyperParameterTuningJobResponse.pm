@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::ListTrainingJobsForHyperParameterTuningJobResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has TrainingJobSummaries => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::HyperParameterTrainingJobSummary]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_HyperParameterTrainingJobSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has TrainingJobSummaries => (is => 'ro', isa => ArrayRef[SageMaker_HyperParameterTrainingJobSummary], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TrainingJobSummaries' => 1
+                  },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'TrainingJobSummaries' => {
+                                           'class' => 'Paws::SageMaker::HyperParameterTrainingJobSummary',
+                                           'type' => 'ArrayRef[SageMaker_HyperParameterTrainingJobSummary]'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +48,7 @@ retrieve the next set of training jobs, use the token in the next
 request.
 
 
-=head2 B<REQUIRED> TrainingJobSummaries => ArrayRef[L<Paws::SageMaker::HyperParameterTrainingJobSummary>]
+=head2 B<REQUIRED> TrainingJobSummaries => ArrayRef[SageMaker_HyperParameterTrainingJobSummary]
 
 A list of TrainingJobSummary objects that describe the training jobs
 that the C<ListTrainingJobsForHyperParameterTuningJob> request

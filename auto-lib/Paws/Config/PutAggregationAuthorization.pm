@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::PutAggregationAuthorization;
-  use Moose;
-  has AuthorizedAccountId => (is => 'ro', isa => 'Str', required => 1);
-  has AuthorizedAwsRegion => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Config::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_Tag/;
+  has AuthorizedAccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AuthorizedAwsRegion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Config_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutAggregationAuthorization');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::PutAggregationAuthorizationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutAggregationAuthorization');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::PutAggregationAuthorizationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::Config::Tag',
+                           'type' => 'ArrayRef[Config_Tag]'
+                         },
+               'AuthorizedAwsRegion' => {
+                                          'type' => 'Str'
+                                        },
+               'AuthorizedAccountId' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'AuthorizedAccountId' => 1,
+                    'AuthorizedAwsRegion' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +93,7 @@ The region authorized to collect aggregated data.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Config::Tag>]
+=head2 Tags => ArrayRef[Config_Tag]
 
 An array of tag object.
 

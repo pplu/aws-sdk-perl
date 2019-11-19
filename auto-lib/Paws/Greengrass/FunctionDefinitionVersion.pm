@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Greengrass::FunctionDefinitionVersion;
-  use Moose;
-  has DefaultConfig => (is => 'ro', isa => 'Paws::Greengrass::FunctionDefaultConfig');
-  has Functions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Function]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_FunctionDefaultConfig Greengrass_Function/;
+  has DefaultConfig => (is => 'ro', isa => Greengrass_FunctionDefaultConfig);
+  has Functions => (is => 'ro', isa => ArrayRef[Greengrass_Function]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Functions' => {
+                                'type' => 'ArrayRef[Greengrass_Function]',
+                                'class' => 'Paws::Greengrass::Function'
+                              },
+               'DefaultConfig' => {
+                                    'type' => 'Greengrass_FunctionDefaultConfig',
+                                    'class' => 'Paws::Greengrass::FunctionDefaultConfig'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,14 +59,14 @@ Information about a function definition version.
 =head1 ATTRIBUTES
 
 
-=head2 DefaultConfig => L<Paws::Greengrass::FunctionDefaultConfig>
+=head2 DefaultConfig => Greengrass_FunctionDefaultConfig
 
   The default configuration that applies to all Lambda functions in this
 function definition version. Individual Lambda functions can override
 these settings.
 
 
-=head2 Functions => ArrayRef[L<Paws::Greengrass::Function>]
+=head2 Functions => ArrayRef[Greengrass_Function]
 
   A list of Lambda functions in this function definition version.
 

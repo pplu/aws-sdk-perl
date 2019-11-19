@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CloudFront::CacheBehaviors;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::CacheBehavior]', request_name => 'CacheBehavior', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::CloudFront::Types qw/CloudFront_CacheBehavior/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_CacheBehavior]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::CloudFront::CacheBehavior',
+                            'type' => 'ArrayRef[CloudFront_CacheBehavior]'
+                          },
+               'Quantity' => {
+                               'type' => 'Int'
+                             }
+             },
+  'IsRequired' => {
+                    'Quantity' => 1
+                  },
+  'NameInRequest' => {
+                       'Items' => 'CacheBehavior'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +64,7 @@ A complex type that contains zero or more C<CacheBehavior> elements.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::CacheBehavior>]
+=head2 Items => ArrayRef[CloudFront_CacheBehavior]
 
   Optional: A complex type that contains cache behaviors for this
 distribution. If C<Quantity> is C<0>, you can omit C<Items>.

@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Inspector::EventSubscription;
-  use Moose;
-  has Event => (is => 'ro', isa => 'Str', request_name => 'event', traits => ['NameInRequest'], required => 1);
-  has SubscribedAt => (is => 'ro', isa => 'Str', request_name => 'subscribedAt', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Inspector::Types qw//;
+  has Event => (is => 'ro', isa => Str, required => 1);
+  has SubscribedAt => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubscribedAt' => {
+                                   'type' => 'Str'
+                                 },
+               'Event' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'SubscribedAt' => 1,
+                    'Event' => 1
+                  },
+  'NameInRequest' => {
+                       'Event' => 'event',
+                       'SubscribedAt' => 'subscribedAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

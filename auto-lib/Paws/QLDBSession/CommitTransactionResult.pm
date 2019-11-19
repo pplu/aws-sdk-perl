@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::QLDBSession::CommitTransactionResult;
-  use Moose;
-  has CommitDigest => (is => 'ro', isa => 'Str');
-  has TransactionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::QLDBSession::Types qw//;
+  has CommitDigest => (is => 'ro', isa => Str);
+  has TransactionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TransactionId' => {
+                                    'type' => 'Str'
+                                  },
+               'CommitDigest' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

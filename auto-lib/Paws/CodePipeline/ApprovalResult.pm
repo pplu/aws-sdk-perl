@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ApprovalResult;
-  use Moose;
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
-  has Summary => (is => 'ro', isa => 'Str', request_name => 'summary', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has Summary => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Status' => 1,
+                    'Summary' => 1
+                  },
+  'NameInRequest' => {
+                       'Summary' => 'summary',
+                       'Status' => 'status'
+                     },
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Summary' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

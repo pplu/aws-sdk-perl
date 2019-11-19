@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::AppMesh::RouteRef;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
-  has RouteName => (is => 'ro', isa => 'Str', request_name => 'routeName', traits => ['NameInRequest'], required => 1);
-  has VirtualRouterName => (is => 'ro', isa => 'Str', request_name => 'virtualRouterName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has MeshName => (is => 'ro', isa => Str, required => 1);
+  has RouteName => (is => 'ro', isa => Str, required => 1);
+  has VirtualRouterName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RouteName' => 1,
+                    'VirtualRouterName' => 1,
+                    'MeshName' => 1,
+                    'Arn' => 1
+                  },
+  'NameInRequest' => {
+                       'RouteName' => 'routeName',
+                       'VirtualRouterName' => 'virtualRouterName',
+                       'MeshName' => 'meshName',
+                       'Arn' => 'arn'
+                     },
+  'types' => {
+               'MeshName' => {
+                               'type' => 'Str'
+                             },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'RouteName' => {
+                                'type' => 'Str'
+                              },
+               'VirtualRouterName' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

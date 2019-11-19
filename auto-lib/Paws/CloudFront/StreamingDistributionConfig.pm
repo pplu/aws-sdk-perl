@@ -1,13 +1,62 @@
+# Generated from default/object.tt
 package Paws::CloudFront::StreamingDistributionConfig;
-  use Moose;
-  has Aliases => (is => 'ro', isa => 'Paws::CloudFront::Aliases');
-  has CallerReference => (is => 'ro', isa => 'Str', required => 1);
-  has Comment => (is => 'ro', isa => 'Str', required => 1);
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has Logging => (is => 'ro', isa => 'Paws::CloudFront::StreamingLoggingConfig');
-  has PriceClass => (is => 'ro', isa => 'Str');
-  has S3Origin => (is => 'ro', isa => 'Paws::CloudFront::S3Origin', required => 1);
-  has TrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::TrustedSigners', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudFront::Types qw/CloudFront_S3Origin CloudFront_Aliases CloudFront_StreamingLoggingConfig CloudFront_TrustedSigners/;
+  has Aliases => (is => 'ro', isa => CloudFront_Aliases);
+  has CallerReference => (is => 'ro', isa => Str, required => 1);
+  has Comment => (is => 'ro', isa => Str, required => 1);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has Logging => (is => 'ro', isa => CloudFront_StreamingLoggingConfig);
+  has PriceClass => (is => 'ro', isa => Str);
+  has S3Origin => (is => 'ro', isa => CloudFront_S3Origin, required => 1);
+  has TrustedSigners => (is => 'ro', isa => CloudFront_TrustedSigners, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CallerReference' => {
+                                      'type' => 'Str'
+                                    },
+               'Aliases' => {
+                              'class' => 'Paws::CloudFront::Aliases',
+                              'type' => 'CloudFront_Aliases'
+                            },
+               'PriceClass' => {
+                                 'type' => 'Str'
+                               },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'S3Origin' => {
+                               'type' => 'CloudFront_S3Origin',
+                               'class' => 'Paws::CloudFront::S3Origin'
+                             },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Logging' => {
+                              'type' => 'CloudFront_StreamingLoggingConfig',
+                              'class' => 'Paws::CloudFront::StreamingLoggingConfig'
+                            },
+               'TrustedSigners' => {
+                                     'type' => 'CloudFront_TrustedSigners',
+                                     'class' => 'Paws::CloudFront::TrustedSigners'
+                                   }
+             },
+  'IsRequired' => {
+                    'S3Origin' => 1,
+                    'CallerReference' => 1,
+                    'Comment' => 1,
+                    'Enabled' => 1,
+                    'TrustedSigners' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +92,7 @@ The RTMP distribution's configuration information.
 =head1 ATTRIBUTES
 
 
-=head2 Aliases => L<Paws::CloudFront::Aliases>
+=head2 Aliases => CloudFront_Aliases
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this streaming distribution.
@@ -74,7 +123,7 @@ C<DistributionAlreadyExists> error.
 for content.
 
 
-=head2 Logging => L<Paws::CloudFront::StreamingLoggingConfig>
+=head2 Logging => CloudFront_StreamingLoggingConfig
 
   A complex type that controls whether access logs are written for the
 streaming distribution.
@@ -86,14 +135,14 @@ streaming distribution.
 streaming distribution.
 
 
-=head2 B<REQUIRED> S3Origin => L<Paws::CloudFront::S3Origin>
+=head2 B<REQUIRED> S3Origin => CloudFront_S3Origin
 
   A complex type that contains information about the Amazon S3 bucket
 from which you want CloudFront to get your media files for
 distribution.
 
 
-=head2 B<REQUIRED> TrustedSigners => L<Paws::CloudFront::TrustedSigners>
+=head2 B<REQUIRED> TrustedSigners => CloudFront_TrustedSigners
 
   A complex type that specifies any AWS accounts that you want to permit
 to create signed URLs for private content. If you want the distribution

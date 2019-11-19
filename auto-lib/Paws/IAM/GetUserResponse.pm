@@ -1,9 +1,31 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetUserResponse;
-  use Moose;
-  has User => (is => 'ro', isa => 'Paws::IAM::User', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_User/;
+  has User => (is => 'ro', isa => IAM_User, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'User' => 1
+                  },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'User' => {
+                           'class' => 'Paws::IAM::User',
+                           'type' => 'IAM_User'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::IAM::GetUserResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> User => L<Paws::IAM::User>
+=head2 B<REQUIRED> User => IAM_User
 
 A structure containing details about the IAM user.
 

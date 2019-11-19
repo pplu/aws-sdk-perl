@@ -1,48 +1,207 @@
 
 package Paws::EC2::RunInstances;
-  use Moose;
-  has AdditionalInfo => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'additionalInfo' );
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
-  has CapacityReservationSpecification => (is => 'ro', isa => 'Paws::EC2::CapacityReservationSpecification');
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
-  has CpuOptions => (is => 'ro', isa => 'Paws::EC2::CpuOptionsRequest');
-  has CreditSpecification => (is => 'ro', isa => 'Paws::EC2::CreditSpecificationRequest');
-  has DisableApiTermination => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableApiTermination' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has EbsOptimized => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'ebsOptimized' );
-  has ElasticGpuSpecification => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuSpecification]');
-  has ElasticInferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticInferenceAccelerator]', traits => ['NameInRequest'], request_name => 'ElasticInferenceAccelerator' );
-  has HibernationOptions => (is => 'ro', isa => 'Paws::EC2::HibernationOptionsRequest');
-  has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfileSpecification', traits => ['NameInRequest'], request_name => 'iamInstanceProfile' );
-  has ImageId => (is => 'ro', isa => 'Str');
-  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceInitiatedShutdownBehavior' );
-  has InstanceMarketOptions => (is => 'ro', isa => 'Paws::EC2::InstanceMarketOptionsRequest');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has Ipv6AddressCount => (is => 'ro', isa => 'Int');
-  has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6Address]', traits => ['NameInRequest'], request_name => 'Ipv6Address' );
-  has KernelId => (is => 'ro', isa => 'Str');
-  has KeyName => (is => 'ro', isa => 'Str');
-  has LaunchTemplate => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateSpecification');
-  has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LicenseConfigurationRequest]', traits => ['NameInRequest'], request_name => 'LicenseSpecification' );
-  has MaxCount => (is => 'ro', isa => 'Int', required => 1);
-  has MetadataOptions => (is => 'ro', isa => 'Paws::EC2::InstanceMetadataOptionsRequest');
-  has MinCount => (is => 'ro', isa => 'Int', required => 1);
-  has Monitoring => (is => 'ro', isa => 'Paws::EC2::RunInstancesMonitoringEnabled');
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceNetworkInterfaceSpecification]', traits => ['NameInRequest'], request_name => 'networkInterface' );
-  has Placement => (is => 'ro', isa => 'Paws::EC2::Placement');
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'privateIpAddress' );
-  has RamdiskId => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroup' );
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
-  has UserData => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool Int Undef/;
+  use Paws::EC2::Types qw/EC2_HibernationOptionsRequest EC2_InstanceNetworkInterfaceSpecification EC2_CapacityReservationSpecification EC2_CreditSpecificationRequest EC2_LicenseConfigurationRequest EC2_ElasticInferenceAccelerator EC2_Placement EC2_BlockDeviceMapping EC2_CpuOptionsRequest EC2_ElasticGpuSpecification EC2_IamInstanceProfileSpecification EC2_InstanceMetadataOptionsRequest EC2_TagSpecification EC2_RunInstancesMonitoringEnabled EC2_InstanceMarketOptionsRequest EC2_InstanceIpv6Address EC2_LaunchTemplateSpecification/;
+  has AdditionalInfo => (is => 'ro', isa => Str, predicate => 1);
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[EC2_BlockDeviceMapping], predicate => 1);
+  has CapacityReservationSpecification => (is => 'ro', isa => EC2_CapacityReservationSpecification, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has CpuOptions => (is => 'ro', isa => EC2_CpuOptionsRequest, predicate => 1);
+  has CreditSpecification => (is => 'ro', isa => EC2_CreditSpecificationRequest, predicate => 1);
+  has DisableApiTermination => (is => 'ro', isa => Bool, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has EbsOptimized => (is => 'ro', isa => Bool, predicate => 1);
+  has ElasticGpuSpecification => (is => 'ro', isa => ArrayRef[EC2_ElasticGpuSpecification], predicate => 1);
+  has ElasticInferenceAccelerators => (is => 'ro', isa => ArrayRef[EC2_ElasticInferenceAccelerator], predicate => 1);
+  has HibernationOptions => (is => 'ro', isa => EC2_HibernationOptionsRequest, predicate => 1);
+  has IamInstanceProfile => (is => 'ro', isa => EC2_IamInstanceProfileSpecification, predicate => 1);
+  has ImageId => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceMarketOptions => (is => 'ro', isa => EC2_InstanceMarketOptionsRequest, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, predicate => 1);
+  has Ipv6AddressCount => (is => 'ro', isa => Int, predicate => 1);
+  has Ipv6Addresses => (is => 'ro', isa => ArrayRef[EC2_InstanceIpv6Address], predicate => 1);
+  has KernelId => (is => 'ro', isa => Str, predicate => 1);
+  has KeyName => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchTemplate => (is => 'ro', isa => EC2_LaunchTemplateSpecification, predicate => 1);
+  has LicenseSpecifications => (is => 'ro', isa => ArrayRef[EC2_LicenseConfigurationRequest], predicate => 1);
+  has MaxCount => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has MetadataOptions => (is => 'ro', isa => EC2_InstanceMetadataOptionsRequest, predicate => 1);
+  has MinCount => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Monitoring => (is => 'ro', isa => EC2_RunInstancesMonitoringEnabled, predicate => 1);
+  has NetworkInterfaces => (is => 'ro', isa => ArrayRef[EC2_InstanceNetworkInterfaceSpecification], predicate => 1);
+  has Placement => (is => 'ro', isa => EC2_Placement, predicate => 1);
+  has PrivateIpAddress => (is => 'ro', isa => Str, predicate => 1);
+  has RamdiskId => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SubnetId => (is => 'ro', isa => Str, predicate => 1);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_TagSpecification], predicate => 1);
+  has UserData => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RunInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::Reservation');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RunInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::Reservation');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Placement' => {
+                                'type' => 'EC2_Placement',
+                                'class' => 'Paws::EC2::Placement'
+                              },
+               'CreditSpecification' => {
+                                          'class' => 'Paws::EC2::CreditSpecificationRequest',
+                                          'type' => 'EC2_CreditSpecificationRequest'
+                                        },
+               'CapacityReservationSpecification' => {
+                                                       'class' => 'Paws::EC2::CapacityReservationSpecification',
+                                                       'type' => 'EC2_CapacityReservationSpecification'
+                                                     },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'HibernationOptions' => {
+                                         'class' => 'Paws::EC2::HibernationOptionsRequest',
+                                         'type' => 'EC2_HibernationOptionsRequest'
+                                       },
+               'NetworkInterfaces' => {
+                                        'class' => 'Paws::EC2::InstanceNetworkInterfaceSpecification',
+                                        'type' => 'ArrayRef[EC2_InstanceNetworkInterfaceSpecification]'
+                                      },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'BlockDeviceMappings' => {
+                                          'class' => 'Paws::EC2::BlockDeviceMapping',
+                                          'type' => 'ArrayRef[EC2_BlockDeviceMapping]'
+                                        },
+               'LaunchTemplate' => {
+                                     'class' => 'Paws::EC2::LaunchTemplateSpecification',
+                                     'type' => 'EC2_LaunchTemplateSpecification'
+                                   },
+               'MetadataOptions' => {
+                                      'type' => 'EC2_InstanceMetadataOptionsRequest',
+                                      'class' => 'Paws::EC2::InstanceMetadataOptionsRequest'
+                                    },
+               'ElasticInferenceAccelerators' => {
+                                                   'class' => 'Paws::EC2::ElasticInferenceAccelerator',
+                                                   'type' => 'ArrayRef[EC2_ElasticInferenceAccelerator]'
+                                                 },
+               'TagSpecifications' => {
+                                        'class' => 'Paws::EC2::TagSpecification',
+                                        'type' => 'ArrayRef[EC2_TagSpecification]'
+                                      },
+               'LicenseSpecifications' => {
+                                            'type' => 'ArrayRef[EC2_LicenseConfigurationRequest]',
+                                            'class' => 'Paws::EC2::LicenseConfigurationRequest'
+                                          },
+               'IamInstanceProfile' => {
+                                         'type' => 'EC2_IamInstanceProfileSpecification',
+                                         'class' => 'Paws::EC2::IamInstanceProfileSpecification'
+                                       },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Ipv6Addresses' => {
+                                    'type' => 'ArrayRef[EC2_InstanceIpv6Address]',
+                                    'class' => 'Paws::EC2::InstanceIpv6Address'
+                                  },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 },
+               'InstanceMarketOptions' => {
+                                            'type' => 'EC2_InstanceMarketOptionsRequest',
+                                            'class' => 'Paws::EC2::InstanceMarketOptionsRequest'
+                                          },
+               'CpuOptions' => {
+                                 'type' => 'EC2_CpuOptionsRequest',
+                                 'class' => 'Paws::EC2::CpuOptionsRequest'
+                               },
+               'KeyName' => {
+                              'type' => 'Str'
+                            },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'UserData' => {
+                               'type' => 'Str'
+                             },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'MaxCount' => {
+                               'type' => 'Int'
+                             },
+               'ElasticGpuSpecification' => {
+                                              'class' => 'Paws::EC2::ElasticGpuSpecification',
+                                              'type' => 'ArrayRef[EC2_ElasticGpuSpecification]'
+                                            },
+               'AdditionalInfo' => {
+                                     'type' => 'Str'
+                                   },
+               'MinCount' => {
+                               'type' => 'Int'
+                             },
+               'RamdiskId' => {
+                                'type' => 'Str'
+                              },
+               'Ipv6AddressCount' => {
+                                       'type' => 'Int'
+                                     },
+               'Monitoring' => {
+                                 'type' => 'EC2_RunInstancesMonitoringEnabled',
+                                 'class' => 'Paws::EC2::RunInstancesMonitoringEnabled'
+                               },
+               'KernelId' => {
+                               'type' => 'Str'
+                             },
+               'InstanceInitiatedShutdownBehavior' => {
+                                                        'type' => 'Str'
+                                                      },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'DisableApiTermination' => {
+                                            'type' => 'Bool'
+                                          }
+             },
+  'IsRequired' => {
+                    'MinCount' => 1,
+                    'MaxCount' => 1
+                  },
+  'NameInRequest' => {
+                       'SecurityGroups' => 'SecurityGroup',
+                       'DryRun' => 'dryRun',
+                       'BlockDeviceMappings' => 'BlockDeviceMapping',
+                       'NetworkInterfaces' => 'networkInterface',
+                       'EbsOptimized' => 'ebsOptimized',
+                       'Ipv6Addresses' => 'Ipv6Address',
+                       'PrivateIpAddress' => 'privateIpAddress',
+                       'InstanceInitiatedShutdownBehavior' => 'instanceInitiatedShutdownBehavior',
+                       'ClientToken' => 'clientToken',
+                       'SecurityGroupIds' => 'SecurityGroupId',
+                       'DisableApiTermination' => 'disableApiTermination',
+                       'IamInstanceProfile' => 'iamInstanceProfile',
+                       'ElasticInferenceAccelerators' => 'ElasticInferenceAccelerator',
+                       'LicenseSpecifications' => 'LicenseSpecification',
+                       'AdditionalInfo' => 'additionalInfo',
+                       'TagSpecifications' => 'TagSpecification'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -233,13 +392,13 @@ Reserved.
 
 
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
+=head2 BlockDeviceMappings => ArrayRef[EC2_BlockDeviceMapping]
 
 The block device mapping entries.
 
 
 
-=head2 CapacityReservationSpecification => L<Paws::EC2::CapacityReservationSpecification>
+=head2 CapacityReservationSpecification => EC2_CapacityReservationSpecification
 
 Information about the Capacity Reservation targeting option. If you do
 not specify this parameter, the instance's Capacity Reservation
@@ -259,7 +418,7 @@ Constraints: Maximum 64 ASCII characters
 
 
 
-=head2 CpuOptions => L<Paws::EC2::CpuOptionsRequest>
+=head2 CpuOptions => EC2_CpuOptionsRequest
 
 The CPU options for the instance. For more information, see Optimizing
 CPU Options
@@ -268,7 +427,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
-=head2 CreditSpecification => L<Paws::EC2::CreditSpecificationRequest>
+=head2 CreditSpecification => EC2_CreditSpecificationRequest
 
 The credit option for CPU usage of the T2 or T3 instance. Valid values
 are C<standard> and C<unlimited>. To change this attribute after
@@ -317,7 +476,7 @@ Default: C<false>
 
 
 
-=head2 ElasticGpuSpecification => ArrayRef[L<Paws::EC2::ElasticGpuSpecification>]
+=head2 ElasticGpuSpecification => ArrayRef[EC2_ElasticGpuSpecification]
 
 An elastic GPU to associate with the instance. An Elastic GPU is a GPU
 resource that you can attach to your Windows instance to accelerate the
@@ -328,7 +487,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
-=head2 ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::ElasticInferenceAccelerator>]
+=head2 ElasticInferenceAccelerators => ArrayRef[EC2_ElasticInferenceAccelerator]
 
 An elastic inference accelerator to associate with the instance.
 Elastic inference accelerators are a resource you can attach to your
@@ -337,7 +496,7 @@ workloads.
 
 
 
-=head2 HibernationOptions => L<Paws::EC2::HibernationOptionsRequest>
+=head2 HibernationOptions => EC2_HibernationOptionsRequest
 
 Indicates whether an instance is enabled for hibernation. For more
 information, see Hibernate Your Instance
@@ -346,7 +505,7 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
-=head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>
+=head2 IamInstanceProfile => EC2_IamInstanceProfileSpecification
 
 The IAM instance profile.
 
@@ -369,7 +528,7 @@ Default: C<stop>
 
 Valid values are: C<"stop">, C<"terminate">
 
-=head2 InstanceMarketOptions => L<Paws::EC2::InstanceMarketOptionsRequest>
+=head2 InstanceMarketOptions => EC2_InstanceMarketOptionsRequest
 
 The market (purchasing) option for the instances.
 
@@ -402,7 +561,7 @@ same request.
 
 
 
-=head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]
+=head2 Ipv6Addresses => ArrayRef[EC2_InstanceIpv6Address]
 
 [EC2-VPC] The IPv6 addresses from the range of the subnet to associate
 with the primary network interface. You cannot specify this option and
@@ -439,7 +598,7 @@ to log in.
 
 
 
-=head2 LaunchTemplate => L<Paws::EC2::LaunchTemplateSpecification>
+=head2 LaunchTemplate => EC2_LaunchTemplateSpecification
 
 The launch template to use to launch the instances. Any parameters that
 you specify in RunInstances override the same parameters in the launch
@@ -448,7 +607,7 @@ but not both.
 
 
 
-=head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::LicenseConfigurationRequest>]
+=head2 LicenseSpecifications => ArrayRef[EC2_LicenseConfigurationRequest]
 
 The license configurations.
 
@@ -470,7 +629,7 @@ in the Amazon EC2 FAQ.
 
 
 
-=head2 MetadataOptions => L<Paws::EC2::InstanceMetadataOptionsRequest>
+=head2 MetadataOptions => EC2_InstanceMetadataOptionsRequest
 
 The metadata options for the instance. For more information, see
 Instance Metadata and User Data
@@ -493,13 +652,13 @@ in the Amazon EC2 General FAQ.
 
 
 
-=head2 Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>
+=head2 Monitoring => EC2_RunInstancesMonitoringEnabled
 
 Specifies whether detailed monitoring is enabled for the instance.
 
 
 
-=head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
+=head2 NetworkInterfaces => ArrayRef[EC2_InstanceNetworkInterfaceSpecification]
 
 The network interfaces to associate with the instance. If you specify a
 network interface, you must specify any security groups and subnets as
@@ -507,7 +666,7 @@ part of the network interface.
 
 
 
-=head2 Placement => L<Paws::EC2::Placement>
+=head2 Placement => EC2_Placement
 
 The placement for the instance.
 
@@ -575,7 +734,7 @@ part of the network interface.
 
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_TagSpecification]
 
 The tags to apply to the resources during launch. You can only tag
 instances and volumes on launch. The specified tags are applied to all

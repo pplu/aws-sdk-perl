@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::LexModels::FulfillmentActivity;
-  use Moose;
-  has CodeHook => (is => 'ro', isa => 'Paws::LexModels::CodeHook', request_name => 'codeHook', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw/LexModels_CodeHook/;
+  has CodeHook => (is => 'ro', isa => LexModels_CodeHook);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CodeHook' => 'codeHook',
+                       'Type' => 'type'
+                     },
+  'IsRequired' => {
+                    'Type' => 1
+                  },
+  'types' => {
+               'CodeHook' => {
+                               'class' => 'Paws::LexModels::CodeHook',
+                               'type' => 'LexModels_CodeHook'
+                             },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +92,7 @@ Amazon Lex to return the intent data to the client.
 =head1 ATTRIBUTES
 
 
-=head2 CodeHook => L<Paws::LexModels::CodeHook>
+=head2 CodeHook => LexModels_CodeHook
 
   A description of the Lambda function that is run to fulfill the intent.
 

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribePatchBaselinesResult;
-  use Moose;
-  has BaselineIdentities => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchBaselineIdentity]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_PatchBaselineIdentity/;
+  has BaselineIdentities => (is => 'ro', isa => ArrayRef[SSM_PatchBaselineIdentity]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'BaselineIdentities' => {
+                                         'type' => 'ArrayRef[SSM_PatchBaselineIdentity]',
+                                         'class' => 'Paws::SSM::PatchBaselineIdentity'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::DescribePatchBaselinesResult
 =head1 ATTRIBUTES
 
 
-=head2 BaselineIdentities => ArrayRef[L<Paws::SSM::PatchBaselineIdentity>]
+=head2 BaselineIdentities => ArrayRef[SSM_PatchBaselineIdentity]
 
 An array of PatchBaselineIdentity elements.
 

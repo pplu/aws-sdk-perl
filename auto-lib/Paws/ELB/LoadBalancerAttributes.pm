@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::ELB::LoadBalancerAttributes;
-  use Moose;
-  has AccessLog => (is => 'ro', isa => 'Paws::ELB::AccessLog');
-  has AdditionalAttributes => (is => 'ro', isa => 'ArrayRef[Paws::ELB::AdditionalAttribute]');
-  has ConnectionDraining => (is => 'ro', isa => 'Paws::ELB::ConnectionDraining');
-  has ConnectionSettings => (is => 'ro', isa => 'Paws::ELB::ConnectionSettings');
-  has CrossZoneLoadBalancing => (is => 'ro', isa => 'Paws::ELB::CrossZoneLoadBalancing');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::ELB::Types qw/ELB_ConnectionSettings ELB_AccessLog ELB_AdditionalAttribute ELB_CrossZoneLoadBalancing ELB_ConnectionDraining/;
+  has AccessLog => (is => 'ro', isa => ELB_AccessLog);
+  has AdditionalAttributes => (is => 'ro', isa => ArrayRef[ELB_AdditionalAttribute]);
+  has ConnectionDraining => (is => 'ro', isa => ELB_ConnectionDraining);
+  has ConnectionSettings => (is => 'ro', isa => ELB_ConnectionSettings);
+  has CrossZoneLoadBalancing => (is => 'ro', isa => ELB_CrossZoneLoadBalancing);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConnectionSettings' => {
+                                         'class' => 'Paws::ELB::ConnectionSettings',
+                                         'type' => 'ELB_ConnectionSettings'
+                                       },
+               'AdditionalAttributes' => {
+                                           'type' => 'ArrayRef[ELB_AdditionalAttribute]',
+                                           'class' => 'Paws::ELB::AdditionalAttribute'
+                                         },
+               'ConnectionDraining' => {
+                                         'type' => 'ELB_ConnectionDraining',
+                                         'class' => 'Paws::ELB::ConnectionDraining'
+                                       },
+               'CrossZoneLoadBalancing' => {
+                                             'type' => 'ELB_CrossZoneLoadBalancing',
+                                             'class' => 'Paws::ELB::CrossZoneLoadBalancing'
+                                           },
+               'AccessLog' => {
+                                'class' => 'Paws::ELB::AccessLog',
+                                'type' => 'ELB_AccessLog'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +74,7 @@ The attributes for a load balancer.
 =head1 ATTRIBUTES
 
 
-=head2 AccessLog => L<Paws::ELB::AccessLog>
+=head2 AccessLog => ELB_AccessLog
 
   If enabled, the load balancer captures detailed information of all
 requests and delivers the information to the Amazon S3 bucket that you
@@ -51,12 +85,12 @@ For more information, see Enable Access Logs
 in the I<Classic Load Balancers Guide>.
 
 
-=head2 AdditionalAttributes => ArrayRef[L<Paws::ELB::AdditionalAttribute>]
+=head2 AdditionalAttributes => ArrayRef[ELB_AdditionalAttribute]
 
   This parameter is reserved.
 
 
-=head2 ConnectionDraining => L<Paws::ELB::ConnectionDraining>
+=head2 ConnectionDraining => ELB_ConnectionDraining
 
   If enabled, the load balancer allows existing requests to complete
 before the load balancer shifts traffic away from a deregistered or
@@ -67,7 +101,7 @@ For more information, see Configure Connection Draining
 in the I<Classic Load Balancers Guide>.
 
 
-=head2 ConnectionSettings => L<Paws::ELB::ConnectionSettings>
+=head2 ConnectionSettings => ELB_ConnectionSettings
 
   If enabled, the load balancer allows the connections to remain idle (no
 data is sent over the connection) for the specified duration.
@@ -80,7 +114,7 @@ Timeout
 in the I<Classic Load Balancers Guide>.
 
 
-=head2 CrossZoneLoadBalancing => L<Paws::ELB::CrossZoneLoadBalancing>
+=head2 CrossZoneLoadBalancing => ELB_CrossZoneLoadBalancing
 
   If enabled, the load balancer routes the request traffic evenly across
 all instances regardless of the Availability Zones.

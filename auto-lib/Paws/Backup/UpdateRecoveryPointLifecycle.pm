@@ -1,16 +1,46 @@
 
 package Paws::Backup::UpdateRecoveryPointLifecycle;
-  use Moose;
-  has BackupVaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'backupVaultName', required => 1);
-  has Lifecycle => (is => 'ro', isa => 'Paws::Backup::Lifecycle');
-  has RecoveryPointArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'recoveryPointArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw/Backup_Lifecycle/;
+  has BackupVaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Lifecycle => (is => 'ro', isa => Backup_Lifecycle, predicate => 1);
+  has RecoveryPointArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRecoveryPointLifecycle');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::UpdateRecoveryPointLifecycleOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRecoveryPointLifecycle');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::UpdateRecoveryPointLifecycleOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'BackupVaultName' => 'backupVaultName',
+                    'RecoveryPointArn' => 'recoveryPointArn'
+                  },
+  'types' => {
+               'RecoveryPointArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Lifecycle' => {
+                                'type' => 'Backup_Lifecycle',
+                                'class' => 'Paws::Backup::Lifecycle'
+                              },
+               'BackupVaultName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'RecoveryPointArn' => 1,
+                    'BackupVaultName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +95,7 @@ lowercase letters, numbers, and hyphens.
 
 
 
-=head2 Lifecycle => L<Paws::Backup::Lifecycle>
+=head2 Lifecycle => Backup_Lifecycle
 
 The lifecycle defines when a protected resource is transitioned to cold
 storage and when it expires. AWS Backup transitions and expires backups

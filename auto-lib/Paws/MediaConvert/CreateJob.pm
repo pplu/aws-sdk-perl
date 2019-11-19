@@ -1,25 +1,95 @@
 
 package Paws::MediaConvert::CreateJob;
-  use Moose;
-  has AccelerationSettings => (is => 'ro', isa => 'Paws::MediaConvert::AccelerationSettings', traits => ['NameInRequest'], request_name => 'accelerationSettings');
-  has BillingTagsSource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'billingTagsSource');
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
-  has JobTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobTemplate');
-  has Priority => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'priority');
-  has Queue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queue');
-  has Role => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'role', required => 1);
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobSettings', traits => ['NameInRequest'], request_name => 'settings', required => 1);
-  has SimulateReservedQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'simulateReservedQueue');
-  has StatusUpdateInterval => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusUpdateInterval');
-  has Tags => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
-  has UserMetadata => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', traits => ['NameInRequest'], request_name => 'userMetadata');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_AccelerationSettings MediaConvert_JobSettings MediaConvert___mapOf__string/;
+  has AccelerationSettings => (is => 'ro', isa => MediaConvert_AccelerationSettings, predicate => 1);
+  has BillingTagsSource => (is => 'ro', isa => Str, predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has JobTemplate => (is => 'ro', isa => Str, predicate => 1);
+  has Priority => (is => 'ro', isa => Int, predicate => 1);
+  has Queue => (is => 'ro', isa => Str, predicate => 1);
+  has Role => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Settings => (is => 'ro', isa => MediaConvert_JobSettings, required => 1, predicate => 1);
+  has SimulateReservedQueue => (is => 'ro', isa => Str, predicate => 1);
+  has StatusUpdateInterval => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => MediaConvert___mapOf__string, predicate => 1);
+  has UserMetadata => (is => 'ro', isa => MediaConvert___mapOf__string, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConvert::CreateJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-08-29/jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConvert::CreateJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Settings' => {
+                               'type' => 'MediaConvert_JobSettings',
+                               'class' => 'Paws::MediaConvert::JobSettings'
+                             },
+               'SimulateReservedQueue' => {
+                                            'type' => 'Str'
+                                          },
+               'StatusUpdateInterval' => {
+                                           'type' => 'Str'
+                                         },
+               'JobTemplate' => {
+                                  'type' => 'Str'
+                                },
+               'Queue' => {
+                            'type' => 'Str'
+                          },
+               'BillingTagsSource' => {
+                                        'type' => 'Str'
+                                      },
+               'UserMetadata' => {
+                                   'type' => 'MediaConvert___mapOf__string',
+                                   'class' => 'Paws::MediaConvert::__mapOf__string'
+                                 },
+               'Tags' => {
+                           'type' => 'MediaConvert___mapOf__string',
+                           'class' => 'Paws::MediaConvert::__mapOf__string'
+                         },
+               'AccelerationSettings' => {
+                                           'type' => 'MediaConvert_AccelerationSettings',
+                                           'class' => 'Paws::MediaConvert::AccelerationSettings'
+                                         },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'Priority' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'StatusUpdateInterval' => 'statusUpdateInterval',
+                       'SimulateReservedQueue' => 'simulateReservedQueue',
+                       'Settings' => 'settings',
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'Priority' => 'priority',
+                       'Role' => 'role',
+                       'AccelerationSettings' => 'accelerationSettings',
+                       'UserMetadata' => 'userMetadata',
+                       'Tags' => 'tags',
+                       'BillingTagsSource' => 'billingTagsSource',
+                       'Queue' => 'queue',
+                       'JobTemplate' => 'jobTemplate'
+                     },
+  'IsRequired' => {
+                    'Role' => 1,
+                    'Settings' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +134,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1; OPTIONAL
+                  'My__stringMin1', ...    # min: 1
                 ],                         # OPTIONAL
               },
             },    # OPTIONAL
@@ -273,13 +343,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               CmafGroupSettings => {
                 AdditionalManifests => [
                   {
-                    ManifestNameModifier => 'My__stringMin1', # min: 1; OPTIONAL
+                    ManifestNameModifier => 'My__stringMin1',    # min: 1
                     SelectedOutputs      => [
-                      'My__stringMin1', ...                   # min: 1; OPTIONAL
-                    ],                                        # OPTIONAL
+                      'My__stringMin1', ...                      # min: 1
+                    ],                                           # OPTIONAL
                   },
                   ...
-                ],                                            # OPTIONAL
+                ],                                               # OPTIONAL
                 BaseUrl => 'My__string',
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
@@ -352,13 +422,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               DashIsoGroupSettings => {
                 AdditionalManifests => [
                   {
-                    ManifestNameModifier => 'My__stringMin1', # min: 1; OPTIONAL
+                    ManifestNameModifier => 'My__stringMin1',    # min: 1
                     SelectedOutputs      => [
-                      'My__stringMin1', ...                   # min: 1; OPTIONAL
-                    ],                                        # OPTIONAL
+                      'My__stringMin1', ...                      # min: 1
+                    ],                                           # OPTIONAL
                   },
                   ...
-                ],                                            # OPTIONAL
+                ],                                               # OPTIONAL
                 BaseUrl             => 'My__string',
                 Destination         => 'My__stringPatternS3',    # OPTIONAL
                 DestinationSettings => {
@@ -426,13 +496,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                    # OPTIONAL
                 AdditionalManifests => [
                   {
-                    ManifestNameModifier => 'My__stringMin1', # min: 1; OPTIONAL
+                    ManifestNameModifier => 'My__stringMin1',    # min: 1
                     SelectedOutputs      => [
-                      'My__stringMin1', ...                   # min: 1; OPTIONAL
-                    ],                                        # OPTIONAL
+                      'My__stringMin1', ...                      # min: 1
+                    ],                                           # OPTIONAL
                   },
                   ...
-                ],                                            # OPTIONAL
+                ],                                               # OPTIONAL
                 BaseUrl                 => 'My__string',
                 CaptionLanguageMappings => [
                   {
@@ -525,13 +595,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               MsSmoothGroupSettings => {
                 AdditionalManifests => [
                   {
-                    ManifestNameModifier => 'My__stringMin1', # min: 1; OPTIONAL
+                    ManifestNameModifier => 'My__stringMin1',    # min: 1
                     SelectedOutputs      => [
-                      'My__stringMin1', ...                   # min: 1; OPTIONAL
-                    ],                                        # OPTIONAL
+                      'My__stringMin1', ...                      # min: 1
+                    ],                                           # OPTIONAL
                   },
                   ...
-                ],                                            # OPTIONAL
+                ],                                               # OPTIONAL
                 AudioDeduplication => 'COMBINE_DUPLICATE_STREAMS'
                 ,    # values: COMBINE_DUPLICATE_STREAMS, NONE; OPTIONAL
                 Destination         => 'My__stringPatternS3',    # OPTIONAL
@@ -726,9 +796,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
+                    CaptionSelectorName => 'My__stringMin1',    # min: 1
                     CustomLanguageCode =>
-                      'My__stringPatternAZaZ23AZaZ',          # OPTIONAL
+                      'My__stringPatternAZaZ23AZaZ',            # OPTIONAL
                     DestinationSettings => {
                       BurninDestinationSettings => {
                         Alignment =>
@@ -945,7 +1015,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
+                NameModifier   => 'My__stringMin1',    # min: 1
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId => 'My__string',
@@ -1344,7 +1414,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head1 ATTRIBUTES
 
 
-=head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
+=head2 AccelerationSettings => MediaConvert_AccelerationSettings
 
 Accelerated transcoding can significantly speed up jobs with long,
 visually complex content. Outputs that use this feature incur pro-tier
@@ -1404,7 +1474,7 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
 
 
 
-=head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobSettings>
+=head2 B<REQUIRED> Settings => MediaConvert_JobSettings
 
 JobSettings contains all the transcode settings for a job.
 
@@ -1430,14 +1500,14 @@ transcode or encounters an error.
 
 Valid values are: C<"SECONDS_10">, C<"SECONDS_12">, C<"SECONDS_15">, C<"SECONDS_20">, C<"SECONDS_30">, C<"SECONDS_60">, C<"SECONDS_120">, C<"SECONDS_180">, C<"SECONDS_240">, C<"SECONDS_300">, C<"SECONDS_360">, C<"SECONDS_420">, C<"SECONDS_480">, C<"SECONDS_540">, C<"SECONDS_600">
 
-=head2 Tags => L<Paws::MediaConvert::__mapOf__string>
+=head2 Tags => MediaConvert___mapOf__string
 
 The tags that you want to add to the resource. You can tag resources
 with a key-value pair or with only a key.
 
 
 
-=head2 UserMetadata => L<Paws::MediaConvert::__mapOf__string>
+=head2 UserMetadata => MediaConvert___mapOf__string
 
 User-defined metadata that you want to associate with an MediaConvert
 job. You specify metadata in key/value pairs.

@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::EKS::NodegroupResources;
-  use Moose;
-  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::EKS::AutoScalingGroup]', request_name => 'autoScalingGroups', traits => ['NameInRequest']);
-  has RemoteAccessSecurityGroup => (is => 'ro', isa => 'Str', request_name => 'remoteAccessSecurityGroup', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::EKS::Types qw/EKS_AutoScalingGroup/;
+  has AutoScalingGroups => (is => 'ro', isa => ArrayRef[EKS_AutoScalingGroup]);
+  has RemoteAccessSecurityGroup => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AutoScalingGroups' => 'autoScalingGroups',
+                       'RemoteAccessSecurityGroup' => 'remoteAccessSecurityGroup'
+                     },
+  'types' => {
+               'RemoteAccessSecurityGroup' => {
+                                                'type' => 'Str'
+                                              },
+               'AutoScalingGroups' => {
+                                        'class' => 'Paws::EKS::AutoScalingGroup',
+                                        'type' => 'ArrayRef[EKS_AutoScalingGroup]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +63,7 @@ such as AutoScaling groups and security groups for remote access.
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingGroups => ArrayRef[L<Paws::EKS::AutoScalingGroup>]
+=head2 AutoScalingGroups => ArrayRef[EKS_AutoScalingGroup]
 
   The autoscaling groups associated with the node group.
 

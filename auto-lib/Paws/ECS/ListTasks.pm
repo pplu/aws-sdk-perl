@@ -1,21 +1,72 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::ListTasks;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has ContainerInstance => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerInstance' );
-  has DesiredStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'desiredStatus' );
-  has Family => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'family' );
-  has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has ServiceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceName' );
-  has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ECS::Types qw//;
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has ContainerInstance => (is => 'ro', isa => Str, predicate => 1);
+  has DesiredStatus => (is => 'ro', isa => Str, predicate => 1);
+  has Family => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchType => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ServiceName => (is => 'ro', isa => Str, predicate => 1);
+  has StartedBy => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTasks');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::ListTasksResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTasks');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::ListTasksResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContainerInstance' => {
+                                        'type' => 'Str'
+                                      },
+               'Family' => {
+                             'type' => 'Str'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DesiredStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'LaunchType' => {
+                                 'type' => 'Str'
+                               },
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'StartedBy' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'ContainerInstance' => 'containerInstance',
+                       'Family' => 'family',
+                       'NextToken' => 'nextToken',
+                       'DesiredStatus' => 'desiredStatus',
+                       'MaxResults' => 'maxResults',
+                       'ServiceName' => 'serviceName',
+                       'Cluster' => 'cluster',
+                       'LaunchType' => 'launchType',
+                       'StartedBy' => 'startedBy'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,21 +1,71 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Comprehend::CreateDocumentClassifier;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has DataAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has DocumentClassifierName => (is => 'ro', isa => 'Str', required => 1);
-  has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierInputDataConfig', required => 1);
-  has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
-  has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierOutputDataConfig');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::Tag]');
-  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
-  has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_Tag Comprehend_DocumentClassifierOutputDataConfig Comprehend_VpcConfig Comprehend_DocumentClassifierInputDataConfig/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has DataAccessRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DocumentClassifierName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputDataConfig => (is => 'ro', isa => Comprehend_DocumentClassifierInputDataConfig, required => 1, predicate => 1);
+  has LanguageCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OutputDataConfig => (is => 'ro', isa => Comprehend_DocumentClassifierOutputDataConfig, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Comprehend_Tag], predicate => 1);
+  has VolumeKmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has VpcConfig => (is => 'ro', isa => Comprehend_VpcConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDocumentClassifier');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::CreateDocumentClassifierResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDocumentClassifier');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Comprehend::CreateDocumentClassifierResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InputDataConfig' => 1,
+                    'DataAccessRoleArn' => 1,
+                    'DocumentClassifierName' => 1,
+                    'LanguageCode' => 1
+                  },
+  'types' => {
+               'VpcConfig' => {
+                                'type' => 'Comprehend_VpcConfig',
+                                'class' => 'Paws::Comprehend::VpcConfig'
+                              },
+               'OutputDataConfig' => {
+                                       'type' => 'Comprehend_DocumentClassifierOutputDataConfig',
+                                       'class' => 'Paws::Comprehend::DocumentClassifierOutputDataConfig'
+                                     },
+               'VolumeKmsKeyId' => {
+                                     'type' => 'Str'
+                                   },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'DataAccessRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'DocumentClassifierName' => {
+                                             'type' => 'Str'
+                                           },
+               'Tags' => {
+                           'type' => 'ArrayRef[Comprehend_Tag]',
+                           'class' => 'Paws::Comprehend::Tag'
+                         },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'InputDataConfig' => {
+                                      'class' => 'Paws::Comprehend::DocumentClassifierInputDataConfig',
+                                      'type' => 'Comprehend_DocumentClassifierInputDataConfig'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +150,7 @@ The name of the document classifier.
 
 
 
-=head2 B<REQUIRED> InputDataConfig => L<Paws::Comprehend::DocumentClassifierInputDataConfig>
+=head2 B<REQUIRED> InputDataConfig => Comprehend_DocumentClassifierInputDataConfig
 
 Specifies the format and location of the input data for the job.
 
@@ -115,14 +165,14 @@ languages supported by Amazon Comprehend: German ("de"), English
 
 Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">, C<"ar">, C<"hi">, C<"ja">, C<"ko">, C<"zh">, C<"zh-TW">
 
-=head2 OutputDataConfig => L<Paws::Comprehend::DocumentClassifierOutputDataConfig>
+=head2 OutputDataConfig => Comprehend_DocumentClassifierOutputDataConfig
 
 Enables the addition of output results configuration parameters for
 custom classifier jobs.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Comprehend::Tag>]
+=head2 Tags => ArrayRef[Comprehend_Tag]
 
 Tags to be associated with the document classifier being created. A tag
 is a key-value pair that adds as a metadata to a resource used by
@@ -154,7 +204,7 @@ C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
 
 
 
-=head2 VpcConfig => L<Paws::Comprehend::VpcConfig>
+=head2 VpcConfig => Comprehend_VpcConfig
 
 Configuration parameters for an optional private Virtual Private Cloud
 (VPC) containing the resources you are using for your custom

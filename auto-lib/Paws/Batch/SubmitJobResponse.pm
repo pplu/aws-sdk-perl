@@ -1,10 +1,38 @@
 
 package Paws::Batch::SubmitJobResponse;
-  use Moose;
-  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId', required => 1);
-  has JobName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw//;
+  has JobId => (is => 'ro', isa => Str, required => 1);
+  has JobName => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'JobId' => 'jobId',
+                       'JobName' => 'jobName'
+                     },
+  'IsRequired' => {
+                    'JobName' => 1,
+                    'JobId' => 1
+                  },
+  'types' => {
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

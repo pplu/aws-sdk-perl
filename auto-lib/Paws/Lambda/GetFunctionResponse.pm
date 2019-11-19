@@ -1,12 +1,42 @@
 
 package Paws::Lambda::GetFunctionResponse;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Paws::Lambda::FunctionCodeLocation');
-  has Concurrency => (is => 'ro', isa => 'Paws::Lambda::Concurrency');
-  has Configuration => (is => 'ro', isa => 'Paws::Lambda::FunctionConfiguration');
-  has Tags => (is => 'ro', isa => 'Paws::Lambda::Tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw/Lambda_FunctionCodeLocation Lambda_Concurrency Lambda_FunctionConfiguration Lambda_Tags/;
+  has Code => (is => 'ro', isa => Lambda_FunctionCodeLocation);
+  has Concurrency => (is => 'ro', isa => Lambda_Concurrency);
+  has Configuration => (is => 'ro', isa => Lambda_FunctionConfiguration);
+  has Tags => (is => 'ro', isa => Lambda_Tags);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Code' => {
+                           'class' => 'Paws::Lambda::FunctionCodeLocation',
+                           'type' => 'Lambda_FunctionCodeLocation'
+                         },
+               'Configuration' => {
+                                    'class' => 'Paws::Lambda::FunctionConfiguration',
+                                    'type' => 'Lambda_FunctionConfiguration'
+                                  },
+               'Concurrency' => {
+                                  'type' => 'Lambda_Concurrency',
+                                  'class' => 'Paws::Lambda::Concurrency'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Lambda::Tags',
+                           'type' => 'Lambda_Tags'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -18,23 +48,23 @@ Paws::Lambda::GetFunctionResponse
 =head1 ATTRIBUTES
 
 
-=head2 Code => L<Paws::Lambda::FunctionCodeLocation>
+=head2 Code => Lambda_FunctionCodeLocation
 
 The deployment package of the function or version.
 
 
-=head2 Concurrency => L<Paws::Lambda::Concurrency>
+=head2 Concurrency => Lambda_Concurrency
 
 The function's reserved concurrency
 (https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
 
 
-=head2 Configuration => L<Paws::Lambda::FunctionConfiguration>
+=head2 Configuration => Lambda_FunctionConfiguration
 
 The configuration of the function or version.
 
 
-=head2 Tags => L<Paws::Lambda::Tags>
+=head2 Tags => Lambda_Tags
 
 The function's tags
 (https://docs.aws.amazon.com/lambda/latest/dg/tagging.html).

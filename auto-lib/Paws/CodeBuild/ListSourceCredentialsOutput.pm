@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeBuild::ListSourceCredentialsOutput;
-  use Moose;
-  has SourceCredentialsInfos => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::SourceCredentialsInfo]', traits => ['NameInRequest'], request_name => 'sourceCredentialsInfos' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeBuild::Types qw/CodeBuild_SourceCredentialsInfo/;
+  has SourceCredentialsInfos => (is => 'ro', isa => ArrayRef[CodeBuild_SourceCredentialsInfo]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SourceCredentialsInfos' => 'sourceCredentialsInfos'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SourceCredentialsInfos' => {
+                                             'class' => 'Paws::CodeBuild::SourceCredentialsInfo',
+                                             'type' => 'ArrayRef[CodeBuild_SourceCredentialsInfo]'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CodeBuild::ListSourceCredentialsOutput
 =head1 ATTRIBUTES
 
 
-=head2 SourceCredentialsInfos => ArrayRef[L<Paws::CodeBuild::SourceCredentialsInfo>]
+=head2 SourceCredentialsInfos => ArrayRef[CodeBuild_SourceCredentialsInfo]
 
 A list of C<SourceCredentialsInfo> objects. Each
 C<SourceCredentialsInfo> object includes the authentication type, token

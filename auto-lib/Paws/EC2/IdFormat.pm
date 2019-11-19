@@ -1,8 +1,33 @@
 package Paws::EC2::IdFormat;
-  use Moose;
-  has Deadline => (is => 'ro', isa => 'Str', request_name => 'deadline', traits => ['NameInRequest']);
-  has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest']);
-  has UseLongIds => (is => 'ro', isa => 'Bool', request_name => 'useLongIds', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has Deadline => (is => 'ro', isa => Str);
+  has Resource => (is => 'ro', isa => Str);
+  has UseLongIds => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Resource' => 'resource',
+                       'Deadline' => 'deadline',
+                       'UseLongIds' => 'useLongIds'
+                     },
+  'types' => {
+               'Resource' => {
+                               'type' => 'Str'
+                             },
+               'Deadline' => {
+                               'type' => 'Str'
+                             },
+               'UseLongIds' => {
+                                 'type' => 'Bool'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

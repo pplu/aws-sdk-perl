@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::ES::OptionStatus;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', required => 1);
-  has PendingDeletion => (is => 'ro', isa => 'Bool');
-  has State => (is => 'ro', isa => 'Str', required => 1);
-  has UpdateDate => (is => 'ro', isa => 'Str', required => 1);
-  has UpdateVersion => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::ES::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str, required => 1);
+  has PendingDeletion => (is => 'ro', isa => Bool);
+  has State => (is => 'ro', isa => Str, required => 1);
+  has UpdateDate => (is => 'ro', isa => Str, required => 1);
+  has UpdateVersion => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'State' => 1,
+                    'CreationDate' => 1,
+                    'UpdateDate' => 1
+                  },
+  'types' => {
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'PendingDeletion' => {
+                                      'type' => 'Bool'
+                                    },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'UpdateVersion' => {
+                                    'type' => 'Int'
+                                  },
+               'UpdateDate' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

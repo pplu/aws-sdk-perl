@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribePrincipalIdFormatResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has Principals => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrincipalIdFormat]', request_name => 'principalSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_PrincipalIdFormat/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Principals => (is => 'ro', isa => ArrayRef[EC2_PrincipalIdFormat]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Principals' => 'principalSet',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Principals' => {
+                                 'type' => 'ArrayRef[EC2_PrincipalIdFormat]',
+                                 'class' => 'Paws::EC2::PrincipalIdFormat'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +48,7 @@ The token to use to retrieve the next page of results. This value is
 null when there are no more results to return.
 
 
-=head2 Principals => ArrayRef[L<Paws::EC2::PrincipalIdFormat>]
+=head2 Principals => ArrayRef[EC2_PrincipalIdFormat]
 
 Information about the ID format settings for the ARN.
 

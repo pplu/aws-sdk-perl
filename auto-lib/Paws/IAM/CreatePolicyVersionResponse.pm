@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::CreatePolicyVersionResponse;
-  use Moose;
-  has PolicyVersion => (is => 'ro', isa => 'Paws::IAM::PolicyVersion');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_PolicyVersion/;
+  has PolicyVersion => (is => 'ro', isa => IAM_PolicyVersion);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PolicyVersion' => {
+                                    'class' => 'Paws::IAM::PolicyVersion',
+                                    'type' => 'IAM_PolicyVersion'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::IAM::CreatePolicyVersionResponse
 =head1 ATTRIBUTES
 
 
-=head2 PolicyVersion => L<Paws::IAM::PolicyVersion>
+=head2 PolicyVersion => IAM_PolicyVersion
 
 A structure containing details about the new policy version.
 

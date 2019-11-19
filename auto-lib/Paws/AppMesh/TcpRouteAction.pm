@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::AppMesh::TcpRouteAction;
-  use Moose;
-  has WeightedTargets => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::WeightedTarget]', request_name => 'weightedTargets', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::AppMesh::Types qw/AppMesh_WeightedTarget/;
+  has WeightedTargets => (is => 'ro', isa => ArrayRef[AppMesh_WeightedTarget], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WeightedTargets' => {
+                                      'class' => 'Paws::AppMesh::WeightedTarget',
+                                      'type' => 'ArrayRef[AppMesh_WeightedTarget]'
+                                    }
+             },
+  'IsRequired' => {
+                    'WeightedTargets' => 1
+                  },
+  'NameInRequest' => {
+                       'WeightedTargets' => 'weightedTargets'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ An object that represents the action to take if a match is determined.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> WeightedTargets => ArrayRef[L<Paws::AppMesh::WeightedTarget>]
+=head2 B<REQUIRED> WeightedTargets => ArrayRef[AppMesh_WeightedTarget]
 
   An object that represents the targets that traffic is routed to when a
 request matches the route.

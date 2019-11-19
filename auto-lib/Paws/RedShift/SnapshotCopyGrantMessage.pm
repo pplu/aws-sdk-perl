@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::SnapshotCopyGrantMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has SnapshotCopyGrants => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SnapshotCopyGrant]', request_name => 'SnapshotCopyGrant', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_SnapshotCopyGrant/;
+  has Marker => (is => 'ro', isa => Str);
+  has SnapshotCopyGrants => (is => 'ro', isa => ArrayRef[RedShift_SnapshotCopyGrant]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SnapshotCopyGrants' => {
+                                         'class' => 'Paws::RedShift::SnapshotCopyGrant',
+                                         'type' => 'ArrayRef[RedShift_SnapshotCopyGrant]'
+                                       }
+             },
+  'NameInRequest' => {
+                       'SnapshotCopyGrants' => 'SnapshotCopyGrant'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +54,7 @@ Constraints: You can specify either the B<SnapshotCopyGrantName>
 parameter or the B<Marker> parameter, but not both.
 
 
-=head2 SnapshotCopyGrants => ArrayRef[L<Paws::RedShift::SnapshotCopyGrant>]
+=head2 SnapshotCopyGrants => ArrayRef[RedShift_SnapshotCopyGrant]
 
 The list of C<SnapshotCopyGrant> objects.
 

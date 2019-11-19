@@ -1,16 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::CreateUpload;
-  use Moose;
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentType' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
-  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw//;
+  has ContentType => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProjectArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUpload');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::CreateUploadResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateUpload');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::CreateUploadResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProjectArn' => {
+                                 'type' => 'Str'
+                               },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'ProjectArn' => 1,
+                    'Name' => 1,
+                    'Type' => 1
+                  },
+  'NameInRequest' => {
+                       'ProjectArn' => 'projectArn',
+                       'Type' => 'type',
+                       'ContentType' => 'contentType',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

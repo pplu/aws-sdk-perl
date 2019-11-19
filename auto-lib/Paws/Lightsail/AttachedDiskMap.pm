@@ -1,8 +1,23 @@
 package Paws::Lightsail::AttachedDiskMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_DiskMap/;
 
-  has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::Lightsail::DiskMap]]');
+  has Map => (is => 'ro', isa => HashRef[ArrayRef[Lightsail_DiskMap]]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[ArrayRef[Lightsail_DiskMap]]',
+                                          class => 'Paws::Lightsail::DiskMap',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => ArrayRef[L<Paws::Lightsail::DiskMap>]
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

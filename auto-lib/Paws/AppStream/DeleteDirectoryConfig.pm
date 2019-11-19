@@ -1,13 +1,32 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AppStream::DeleteDirectoryConfig;
-  use Moose;
-  has DirectoryName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppStream::Types qw//;
+  has DirectoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDirectoryConfig');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppStream::DeleteDirectoryConfigResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteDirectoryConfig');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppStream::DeleteDirectoryConfigResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DirectoryName' => 1
+                  },
+  'types' => {
+               'DirectoryName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

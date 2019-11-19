@@ -1,12 +1,63 @@
+# Generated from default/object.tt
 package Paws::AppMesh::HealthCheckPolicy;
-  use Moose;
-  has HealthyThreshold => (is => 'ro', isa => 'Int', request_name => 'healthyThreshold', traits => ['NameInRequest'], required => 1);
-  has IntervalMillis => (is => 'ro', isa => 'Int', request_name => 'intervalMillis', traits => ['NameInRequest'], required => 1);
-  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
-  has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest'], required => 1);
-  has TimeoutMillis => (is => 'ro', isa => 'Int', request_name => 'timeoutMillis', traits => ['NameInRequest'], required => 1);
-  has UnhealthyThreshold => (is => 'ro', isa => 'Int', request_name => 'unhealthyThreshold', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::AppMesh::Types qw//;
+  has HealthyThreshold => (is => 'ro', isa => Int, required => 1);
+  has IntervalMillis => (is => 'ro', isa => Int, required => 1);
+  has Path => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has Protocol => (is => 'ro', isa => Str, required => 1);
+  has TimeoutMillis => (is => 'ro', isa => Int, required => 1);
+  has UnhealthyThreshold => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'UnhealthyThreshold' => 1,
+                    'TimeoutMillis' => 1,
+                    'Protocol' => 1,
+                    'IntervalMillis' => 1,
+                    'HealthyThreshold' => 1
+                  },
+  'NameInRequest' => {
+                       'Protocol' => 'protocol',
+                       'Path' => 'path',
+                       'HealthyThreshold' => 'healthyThreshold',
+                       'Port' => 'port',
+                       'UnhealthyThreshold' => 'unhealthyThreshold',
+                       'TimeoutMillis' => 'timeoutMillis',
+                       'IntervalMillis' => 'intervalMillis'
+                     },
+  'types' => {
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'HealthyThreshold' => {
+                                       'type' => 'Int'
+                                     },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'UnhealthyThreshold' => {
+                                         'type' => 'Int'
+                                       },
+               'TimeoutMillis' => {
+                                    'type' => 'Int'
+                                  },
+               'IntervalMillis' => {
+                                     'type' => 'Int'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::CloudFront::CloudFrontOriginAccessIdentityList;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::CloudFrontOriginAccessIdentitySummary]', request_name => 'CloudFrontOriginAccessIdentitySummary', traits => ['NameInRequest']);
-  has Marker => (is => 'ro', isa => 'Str', required => 1);
-  has MaxItems => (is => 'ro', isa => 'Int', required => 1);
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Str Int/;
+  use Paws::CloudFront::Types qw/CloudFront_CloudFrontOriginAccessIdentitySummary/;
+  has IsTruncated => (is => 'ro', isa => Bool, required => 1);
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_CloudFrontOriginAccessIdentitySummary]);
+  has Marker => (is => 'ro', isa => Str, required => 1);
+  has MaxItems => (is => 'ro', isa => Int, required => 1);
+  has NextMarker => (is => 'ro', isa => Str);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Marker' => 1,
+                    'IsTruncated' => 1,
+                    'Quantity' => 1,
+                    'MaxItems' => 1
+                  },
+  'NameInRequest' => {
+                       'Items' => 'CloudFrontOriginAccessIdentitySummary'
+                     },
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'Items' => {
+                            'class' => 'Paws::CloudFront::CloudFrontOriginAccessIdentitySummary',
+                            'type' => 'ArrayRef[CloudFront_CloudFrontOriginAccessIdentitySummary]'
+                          },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'MaxItems' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +97,7 @@ pagination request using the C<Marker> request parameter to retrieve
 more items in the list.
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::CloudFrontOriginAccessIdentitySummary>]
+=head2 Items => ArrayRef[CloudFront_CloudFrontOriginAccessIdentitySummary]
 
   A complex type that contains one
 C<CloudFrontOriginAccessIdentitySummary> element for each origin access

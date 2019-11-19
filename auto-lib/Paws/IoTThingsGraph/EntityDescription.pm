@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::IoTThingsGraph::EntityDescription;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Definition => (is => 'ro', isa => 'Paws::IoTThingsGraph::DefinitionDocument', request_name => 'definition', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_DefinitionDocument/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Definition => (is => 'ro', isa => IoTThingsGraph_DefinitionDocument);
+  has Id => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Definition' => 'definition',
+                       'Arn' => 'arn',
+                       'Type' => 'type',
+                       'Id' => 'id',
+                       'CreatedAt' => 'createdAt'
+                     },
+  'types' => {
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Definition' => {
+                                 'type' => 'IoTThingsGraph_DefinitionDocument',
+                                 'class' => 'Paws::IoTThingsGraph::DefinitionDocument'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +87,7 @@ Describes the properties of an entity.
   The time at which the entity was created.
 
 
-=head2 Definition => L<Paws::IoTThingsGraph::DefinitionDocument>
+=head2 Definition => IoTThingsGraph_DefinitionDocument
 
   The definition document of the entity.
 

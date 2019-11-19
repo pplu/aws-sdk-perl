@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Robomaker::NetworkInterface;
-  use Moose;
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
-  has PublicIpAddress => (is => 'ro', isa => 'Str', request_name => 'publicIpAddress', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw//;
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+  has PublicIpAddress => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PublicIpAddress' => 'publicIpAddress',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'PrivateIpAddress' => 'privateIpAddress'
+                     },
+  'types' => {
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'PublicIpAddress' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

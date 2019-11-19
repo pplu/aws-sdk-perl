@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Athena::GetQueryResultsOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ResultSet => (is => 'ro', isa => 'Paws::Athena::ResultSet');
-  has UpdateCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Athena::Types qw/Athena_ResultSet/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ResultSet => (is => 'ro', isa => Athena_ResultSet);
+  has UpdateCount => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ResultSet' => {
+                                'type' => 'Athena_ResultSet',
+                                'class' => 'Paws::Athena::ResultSet'
+                              },
+               'UpdateCount' => {
+                                  'type' => 'Int'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +46,7 @@ Paws::Athena::GetQueryResultsOutput
 A token to be used by the next request if this request is truncated.
 
 
-=head2 ResultSet => L<Paws::Athena::ResultSet>
+=head2 ResultSet => Athena_ResultSet
 
 The results of the query execution.
 

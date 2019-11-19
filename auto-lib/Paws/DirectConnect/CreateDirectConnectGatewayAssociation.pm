@@ -1,16 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::CreateDirectConnectGatewayAssociation;
-  use Moose;
-  has AddAllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', traits => ['NameInRequest'], request_name => 'addAllowedPrefixesToDirectConnectGateway' );
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' , required => 1);
-  has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' );
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_RouteFilterPrefix/;
+  has AddAllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => ArrayRef[DirectConnect_RouteFilterPrefix], predicate => 1);
+  has DirectConnectGatewayId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has VirtualGatewayId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDirectConnectGatewayAssociation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::CreateDirectConnectGatewayAssociationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDirectConnectGatewayAssociation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::CreateDirectConnectGatewayAssociationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DirectConnectGatewayId' => {
+                                             'type' => 'Str'
+                                           },
+               'VirtualGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'AddAllowedPrefixesToDirectConnectGateway' => {
+                                                               'type' => 'ArrayRef[DirectConnect_RouteFilterPrefix]',
+                                                               'class' => 'Paws::DirectConnect::RouteFilterPrefix'
+                                                             },
+               'GatewayId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'DirectConnectGatewayId' => 1
+                  },
+  'NameInRequest' => {
+                       'GatewayId' => 'gatewayId',
+                       'AddAllowedPrefixesToDirectConnectGateway' => 'addAllowedPrefixesToDirectConnectGateway',
+                       'DirectConnectGatewayId' => 'directConnectGatewayId',
+                       'VirtualGatewayId' => 'virtualGatewayId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +91,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 =head1 ATTRIBUTES
 
 
-=head2 AddAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
+=head2 AddAllowedPrefixesToDirectConnectGateway => ArrayRef[DirectConnect_RouteFilterPrefix]
 
 The Amazon VPC prefixes to advertise to the Direct Connect gateway
 

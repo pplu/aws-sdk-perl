@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::IoT::JobExecutionsRolloutConfig;
-  use Moose;
-  has ExponentialRate => (is => 'ro', isa => 'Paws::IoT::ExponentialRolloutRate', request_name => 'exponentialRate', traits => ['NameInRequest']);
-  has MaximumPerMinute => (is => 'ro', isa => 'Int', request_name => 'maximumPerMinute', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::IoT::Types qw/IoT_ExponentialRolloutRate/;
+  has ExponentialRate => (is => 'ro', isa => IoT_ExponentialRolloutRate);
+  has MaximumPerMinute => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MaximumPerMinute' => 'maximumPerMinute',
+                       'ExponentialRate' => 'exponentialRate'
+                     },
+  'types' => {
+               'MaximumPerMinute' => {
+                                       'type' => 'Int'
+                                     },
+               'ExponentialRate' => {
+                                      'type' => 'IoT_ExponentialRolloutRate',
+                                      'class' => 'Paws::IoT::ExponentialRolloutRate'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Allows you to create a staged rollout of a job.
 =head1 ATTRIBUTES
 
 
-=head2 ExponentialRate => L<Paws::IoT::ExponentialRolloutRate>
+=head2 ExponentialRate => IoT_ExponentialRolloutRate
 
   The rate of increase for a job rollout. This parameter allows you to
 define an exponential rate for a job rollout.

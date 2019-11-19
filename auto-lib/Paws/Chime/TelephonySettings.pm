@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Chime::TelephonySettings;
-  use Moose;
-  has InboundCalling => (is => 'ro', isa => 'Bool', required => 1);
-  has OutboundCalling => (is => 'ro', isa => 'Bool', required => 1);
-  has SMS => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::Chime::Types qw//;
+  has InboundCalling => (is => 'ro', isa => Bool, required => 1);
+  has OutboundCalling => (is => 'ro', isa => Bool, required => 1);
+  has SMS => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutboundCalling' => {
+                                      'type' => 'Bool'
+                                    },
+               'InboundCalling' => {
+                                     'type' => 'Bool'
+                                   },
+               'SMS' => {
+                          'type' => 'Bool'
+                        }
+             },
+  'IsRequired' => {
+                    'SMS' => 1,
+                    'OutboundCalling' => 1,
+                    'InboundCalling' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

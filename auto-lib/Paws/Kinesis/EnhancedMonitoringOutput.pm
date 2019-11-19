@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Kinesis::EnhancedMonitoringOutput;
-  use Moose;
-  has CurrentShardLevelMetrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DesiredShardLevelMetrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has StreamName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Kinesis::Types qw//;
+  has CurrentShardLevelMetrics => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DesiredShardLevelMetrics => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has StreamName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamName' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CurrentShardLevelMetrics' => {
+                                               'type' => 'ArrayRef[Str|Undef]'
+                                             },
+               'DesiredShardLevelMetrics' => {
+                                               'type' => 'ArrayRef[Str|Undef]'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

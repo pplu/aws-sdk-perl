@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::LogsLocation;
-  use Moose;
-  has CloudWatchLogs => (is => 'ro', isa => 'Paws::CodeBuild::CloudWatchLogsConfig', request_name => 'cloudWatchLogs', traits => ['NameInRequest']);
-  has DeepLink => (is => 'ro', isa => 'Str', request_name => 'deepLink', traits => ['NameInRequest']);
-  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
-  has S3DeepLink => (is => 'ro', isa => 'Str', request_name => 's3DeepLink', traits => ['NameInRequest']);
-  has S3Logs => (is => 'ro', isa => 'Paws::CodeBuild::S3LogsConfig', request_name => 's3Logs', traits => ['NameInRequest']);
-  has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeBuild::Types qw/CodeBuild_S3LogsConfig CodeBuild_CloudWatchLogsConfig/;
+  has CloudWatchLogs => (is => 'ro', isa => CodeBuild_CloudWatchLogsConfig);
+  has DeepLink => (is => 'ro', isa => Str);
+  has GroupName => (is => 'ro', isa => Str);
+  has S3DeepLink => (is => 'ro', isa => Str);
+  has S3Logs => (is => 'ro', isa => CodeBuild_S3LogsConfig);
+  has StreamName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeepLink' => {
+                               'type' => 'Str'
+                             },
+               'S3Logs' => {
+                             'type' => 'CodeBuild_S3LogsConfig',
+                             'class' => 'Paws::CodeBuild::S3LogsConfig'
+                           },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'CloudWatchLogs' => {
+                                     'class' => 'Paws::CodeBuild::CloudWatchLogsConfig',
+                                     'type' => 'CodeBuild_CloudWatchLogsConfig'
+                                   },
+               'S3DeepLink' => {
+                                 'type' => 'Str'
+                               },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'CloudWatchLogs' => 'cloudWatchLogs',
+                       'GroupName' => 'groupName',
+                       'StreamName' => 'streamName',
+                       'S3DeepLink' => 's3DeepLink',
+                       'S3Logs' => 's3Logs',
+                       'DeepLink' => 'deepLink'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +83,7 @@ Information about build logs in Amazon CloudWatch Logs.
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchLogs => L<Paws::CodeBuild::CloudWatchLogsConfig>
+=head2 CloudWatchLogs => CodeBuild_CloudWatchLogsConfig
 
   Information about Amazon CloudWatch Logs for a build project.
 
@@ -61,7 +103,7 @@ Information about build logs in Amazon CloudWatch Logs.
   The URL to a build log in an S3 bucket.
 
 
-=head2 S3Logs => L<Paws::CodeBuild::S3LogsConfig>
+=head2 S3Logs => CodeBuild_S3LogsConfig
 
   Information about S3 logs for a build project.
 

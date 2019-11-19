@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::GetByteMatchSetResponse;
-  use Moose;
-  has ByteMatchSet => (is => 'ro', isa => 'Paws::WAF::ByteMatchSet');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_ByteMatchSet/;
+  has ByteMatchSet => (is => 'ro', isa => WAF_ByteMatchSet);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ByteMatchSet' => {
+                                   'type' => 'WAF_ByteMatchSet',
+                                   'class' => 'Paws::WAF::ByteMatchSet'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::WAF::GetByteMatchSetResponse
 =head1 ATTRIBUTES
 
 
-=head2 ByteMatchSet => L<Paws::WAF::ByteMatchSet>
+=head2 ByteMatchSet => WAF_ByteMatchSet
 
 Information about the ByteMatchSet that you specified in the
 C<GetByteMatchSet> request. For more information, see the following

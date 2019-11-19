@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Greengrass::SubscriptionDefinitionVersion;
-  use Moose;
-  has Subscriptions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Subscription]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_Subscription/;
+  has Subscriptions => (is => 'ro', isa => ArrayRef[Greengrass_Subscription]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subscriptions' => {
+                                    'type' => 'ArrayRef[Greengrass_Subscription]',
+                                    'class' => 'Paws::Greengrass::Subscription'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Information about a subscription definition version.
 =head1 ATTRIBUTES
 
 
-=head2 Subscriptions => ArrayRef[L<Paws::Greengrass::Subscription>]
+=head2 Subscriptions => ArrayRef[Greengrass_Subscription]
 
   A list of subscriptions.
 

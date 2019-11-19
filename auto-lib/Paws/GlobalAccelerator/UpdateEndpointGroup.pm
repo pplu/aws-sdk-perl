@@ -1,20 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GlobalAccelerator::UpdateEndpointGroup;
-  use Moose;
-  has EndpointConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::EndpointConfiguration]');
-  has EndpointGroupArn => (is => 'ro', isa => 'Str', required => 1);
-  has HealthCheckIntervalSeconds => (is => 'ro', isa => 'Int');
-  has HealthCheckPath => (is => 'ro', isa => 'Str');
-  has HealthCheckPort => (is => 'ro', isa => 'Int');
-  has HealthCheckProtocol => (is => 'ro', isa => 'Str');
-  has ThresholdCount => (is => 'ro', isa => 'Int');
-  has TrafficDialPercentage => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Num/;
+  use Paws::GlobalAccelerator::Types qw/GlobalAccelerator_EndpointConfiguration/;
+  has EndpointConfigurations => (is => 'ro', isa => ArrayRef[GlobalAccelerator_EndpointConfiguration], predicate => 1);
+  has EndpointGroupArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has HealthCheckIntervalSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has HealthCheckPath => (is => 'ro', isa => Str, predicate => 1);
+  has HealthCheckPort => (is => 'ro', isa => Int, predicate => 1);
+  has HealthCheckProtocol => (is => 'ro', isa => Str, predicate => 1);
+  has ThresholdCount => (is => 'ro', isa => Int, predicate => 1);
+  has TrafficDialPercentage => (is => 'ro', isa => Num, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEndpointGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GlobalAccelerator::UpdateEndpointGroupResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateEndpointGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GlobalAccelerator::UpdateEndpointGroupResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndpointConfigurations' => {
+                                             'class' => 'Paws::GlobalAccelerator::EndpointConfiguration',
+                                             'type' => 'ArrayRef[GlobalAccelerator_EndpointConfiguration]'
+                                           },
+               'ThresholdCount' => {
+                                     'type' => 'Int'
+                                   },
+               'TrafficDialPercentage' => {
+                                            'type' => 'Num'
+                                          },
+               'HealthCheckPath' => {
+                                      'type' => 'Str'
+                                    },
+               'HealthCheckProtocol' => {
+                                          'type' => 'Str'
+                                        },
+               'EndpointGroupArn' => {
+                                       'type' => 'Str'
+                                     },
+               'HealthCheckPort' => {
+                                      'type' => 'Int'
+                                    },
+               'HealthCheckIntervalSeconds' => {
+                                                 'type' => 'Int'
+                                               }
+             },
+  'IsRequired' => {
+                    'EndpointGroupArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +104,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glo
 =head1 ATTRIBUTES
 
 
-=head2 EndpointConfigurations => ArrayRef[L<Paws::GlobalAccelerator::EndpointConfiguration>]
+=head2 EndpointConfigurations => ArrayRef[GlobalAccelerator_EndpointConfiguration]
 
 The list of endpoint objects.
 

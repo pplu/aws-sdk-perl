@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::Greengrass::FunctionConfigurationEnvironment;
-  use Moose;
-  has AccessSysfs => (is => 'ro', isa => 'Bool');
-  has Execution => (is => 'ro', isa => 'Paws::Greengrass::FunctionExecutionConfig');
-  has ResourceAccessPolicies => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ResourceAccessPolicy]');
-  has Variables => (is => 'ro', isa => 'Paws::Greengrass::__mapOf__string');
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_ResourceAccessPolicy Greengrass_FunctionExecutionConfig Greengrass___mapOf__string/;
+  has AccessSysfs => (is => 'ro', isa => Bool);
+  has Execution => (is => 'ro', isa => Greengrass_FunctionExecutionConfig);
+  has ResourceAccessPolicies => (is => 'ro', isa => ArrayRef[Greengrass_ResourceAccessPolicy]);
+  has Variables => (is => 'ro', isa => Greengrass___mapOf__string);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccessSysfs' => {
+                                  'type' => 'Bool'
+                                },
+               'Variables' => {
+                                'class' => 'Paws::Greengrass::__mapOf__string',
+                                'type' => 'Greengrass___mapOf__string'
+                              },
+               'ResourceAccessPolicies' => {
+                                             'type' => 'ArrayRef[Greengrass_ResourceAccessPolicy]',
+                                             'class' => 'Paws::Greengrass::ResourceAccessPolicy'
+                                           },
+               'Execution' => {
+                                'class' => 'Paws::Greengrass::FunctionExecutionConfig',
+                                'type' => 'Greengrass_FunctionExecutionConfig'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,12 +76,12 @@ information from /sys. This setting applies only when you run the
 Lambda function in a Greengrass container.
 
 
-=head2 Execution => L<Paws::Greengrass::FunctionExecutionConfig>
+=head2 Execution => Greengrass_FunctionExecutionConfig
 
   Configuration related to executing the Lambda function
 
 
-=head2 ResourceAccessPolicies => ArrayRef[L<Paws::Greengrass::ResourceAccessPolicy>]
+=head2 ResourceAccessPolicies => ArrayRef[Greengrass_ResourceAccessPolicy]
 
   A list of the resources, with their permissions, to which the Lambda
 function will be granted access. A Lambda function can have at most 10
@@ -60,7 +89,7 @@ resources. ResourceAccessPolicies apply only when you run the Lambda
 function in a Greengrass container.
 
 
-=head2 Variables => L<Paws::Greengrass::__mapOf__string>
+=head2 Variables => Greengrass___mapOf__string
 
   Environment variables for the Lambda function's configuration.
 

@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::AppMesh::GrpcRouteMetadata;
-  use Moose;
-  has Invert => (is => 'ro', isa => 'Bool', request_name => 'invert', traits => ['NameInRequest']);
-  has Match => (is => 'ro', isa => 'Paws::AppMesh::GrpcRouteMetadataMatchMethod', request_name => 'match', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::AppMesh::Types qw/AppMesh_GrpcRouteMetadataMatchMethod/;
+  has Invert => (is => 'ro', isa => Bool);
+  has Match => (is => 'ro', isa => AppMesh_GrpcRouteMetadataMatchMethod);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Invert' => 'invert',
+                       'Match' => 'match'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Match' => {
+                            'type' => 'AppMesh_GrpcRouteMetadataMatchMethod',
+                            'class' => 'Paws::AppMesh::GrpcRouteMetadataMatchMethod'
+                          },
+               'Invert' => {
+                             'type' => 'Bool'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +76,7 @@ An object that represents the match metadata for the route.
 default value is C<False>.
 
 
-=head2 Match => L<Paws::AppMesh::GrpcRouteMetadataMatchMethod>
+=head2 Match => AppMesh_GrpcRouteMetadataMatchMethod
 
   An object that represents the data to match from the request.
 

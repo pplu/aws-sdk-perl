@@ -1,11 +1,48 @@
+# Generated from default/object.tt
 package Paws::Config::OrganizationConformancePackDetailedStatus;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', required => 1);
-  has ConformancePackName => (is => 'ro', isa => 'Str', required => 1);
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has LastUpdateTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1);
+  has ConformancePackName => (is => 'ro', isa => Str, required => 1);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConformancePackName' => 1,
+                    'Status' => 1,
+                    'AccountId' => 1
+                  },
+  'types' => {
+               'ConformancePackName' => {
+                                          'type' => 'Str'
+                                        },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

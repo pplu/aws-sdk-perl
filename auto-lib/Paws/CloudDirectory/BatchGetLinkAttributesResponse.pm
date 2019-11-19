@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchGetLinkAttributesResponse;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_AttributeKeyAndValue/;
+  has Attributes => (is => 'ro', isa => ArrayRef[CloudDirectory_AttributeKeyAndValue]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::CloudDirectory::AttributeKeyAndValue',
+                                 'type' => 'ArrayRef[CloudDirectory_AttributeKeyAndValue]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Represents the output of a GetLinkAttributes response operation.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
+=head2 Attributes => ArrayRef[CloudDirectory_AttributeKeyAndValue]
 
   The attributes that are associated with the typed link.
 

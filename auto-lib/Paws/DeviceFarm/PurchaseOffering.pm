@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::PurchaseOffering;
-  use Moose;
-  has OfferingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringId' );
-  has OfferingPromotionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringPromotionId' );
-  has Quantity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'quantity' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DeviceFarm::Types qw//;
+  has OfferingId => (is => 'ro', isa => Str, predicate => 1);
+  has OfferingPromotionId => (is => 'ro', isa => Str, predicate => 1);
+  has Quantity => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseOffering');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::PurchaseOfferingResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PurchaseOffering');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::PurchaseOfferingResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'OfferingPromotionId' => {
+                                          'type' => 'Str'
+                                        },
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Quantity' => 'quantity',
+                       'OfferingId' => 'offeringId',
+                       'OfferingPromotionId' => 'offeringPromotionId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

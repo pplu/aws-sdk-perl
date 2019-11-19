@@ -1,9 +1,35 @@
 package Paws::EC2::TargetCapacitySpecificationRequest;
-  use Moose;
-  has DefaultTargetCapacityType => (is => 'ro', isa => 'Str');
-  has OnDemandTargetCapacity => (is => 'ro', isa => 'Int');
-  has SpotTargetCapacity => (is => 'ro', isa => 'Int');
-  has TotalTargetCapacity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw//;
+  has DefaultTargetCapacityType => (is => 'ro', isa => Str);
+  has OnDemandTargetCapacity => (is => 'ro', isa => Int);
+  has SpotTargetCapacity => (is => 'ro', isa => Int);
+  has TotalTargetCapacity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OnDemandTargetCapacity' => {
+                                             'type' => 'Int'
+                                           },
+               'SpotTargetCapacity' => {
+                                         'type' => 'Int'
+                                       },
+               'TotalTargetCapacity' => {
+                                          'type' => 'Int'
+                                        },
+               'DefaultTargetCapacityType' => {
+                                                'type' => 'Str'
+                                              }
+             },
+  'IsRequired' => {
+                    'TotalTargetCapacity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

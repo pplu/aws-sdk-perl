@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::NodeConfigurationOptionsMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has NodeConfigurationOptionList => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::NodeConfigurationOption]', request_name => 'NodeConfigurationOption', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_NodeConfigurationOption/;
+  has Marker => (is => 'ro', isa => Str);
+  has NodeConfigurationOptionList => (is => 'ro', isa => ArrayRef[RedShift_NodeConfigurationOption]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NodeConfigurationOptionList' => {
+                                                  'class' => 'Paws::RedShift::NodeConfigurationOption',
+                                                  'type' => 'ArrayRef[RedShift_NodeConfigurationOption]'
+                                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NodeConfigurationOptionList' => 'NodeConfigurationOption'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +51,7 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-=head2 NodeConfigurationOptionList => ArrayRef[L<Paws::RedShift::NodeConfigurationOption>]
+=head2 NodeConfigurationOptionList => ArrayRef[RedShift_NodeConfigurationOption]
 
 A list of valid node configurations.
 

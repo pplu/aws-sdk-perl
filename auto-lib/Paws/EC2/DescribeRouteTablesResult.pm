@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeRouteTablesResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has RouteTables => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RouteTable]', request_name => 'routeTableSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_RouteTable/;
+  has NextToken => (is => 'ro', isa => Str);
+  has RouteTables => (is => 'ro', isa => ArrayRef[EC2_RouteTable]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RouteTables' => {
+                                  'type' => 'ArrayRef[EC2_RouteTable]',
+                                  'class' => 'Paws::EC2::RouteTable'
+                                }
+             },
+  'NameInRequest' => {
+                       'RouteTables' => 'routeTableSet',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +48,7 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 RouteTables => ArrayRef[L<Paws::EC2::RouteTable>]
+=head2 RouteTables => ArrayRef[EC2_RouteTable]
 
 Information about one or more route tables.
 

@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Rekognition::FaceRecord;
-  use Moose;
-  has Face => (is => 'ro', isa => 'Paws::Rekognition::Face');
-  has FaceDetail => (is => 'ro', isa => 'Paws::Rekognition::FaceDetail');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Rekognition::Types qw/Rekognition_Face Rekognition_FaceDetail/;
+  has Face => (is => 'ro', isa => Rekognition_Face);
+  has FaceDetail => (is => 'ro', isa => Rekognition_FaceDetail);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Face' => {
+                           'class' => 'Paws::Rekognition::Face',
+                           'type' => 'Rekognition_Face'
+                         },
+               'FaceDetail' => {
+                                 'class' => 'Paws::Rekognition::FaceDetail',
+                                 'type' => 'Rekognition_FaceDetail'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,13 +61,13 @@ the database.
 =head1 ATTRIBUTES
 
 
-=head2 Face => L<Paws::Rekognition::Face>
+=head2 Face => Rekognition_Face
 
   Describes the face properties such as the bounding box, face ID, image
 ID of the input image, and external image ID that you assigned.
 
 
-=head2 FaceDetail => L<Paws::Rekognition::FaceDetail>
+=head2 FaceDetail => Rekognition_FaceDetail
 
   Structure containing attributes of the face that the algorithm
 detected.

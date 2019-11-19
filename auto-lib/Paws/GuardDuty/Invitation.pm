@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::Invitation;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has InvitationId => (is => 'ro', isa => 'Str', request_name => 'invitationId', traits => ['NameInRequest']);
-  has InvitedAt => (is => 'ro', isa => 'Str', request_name => 'invitedAt', traits => ['NameInRequest']);
-  has RelationshipStatus => (is => 'ro', isa => 'Str', request_name => 'relationshipStatus', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has InvitationId => (is => 'ro', isa => Str);
+  has InvitedAt => (is => 'ro', isa => Str);
+  has RelationshipStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InvitedAt' => 'invitedAt',
+                       'RelationshipStatus' => 'relationshipStatus',
+                       'AccountId' => 'accountId',
+                       'InvitationId' => 'invitationId'
+                     },
+  'types' => {
+               'RelationshipStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'InvitedAt' => {
+                                'type' => 'Str'
+                              },
+               'InvitationId' => {
+                                   'type' => 'Str'
+                                 },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

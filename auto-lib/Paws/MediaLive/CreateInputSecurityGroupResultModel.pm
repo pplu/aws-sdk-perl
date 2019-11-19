@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaLive::CreateInputSecurityGroupResultModel;
-  use Moose;
-  has SecurityGroup => (is => 'ro', isa => 'Paws::MediaLive::InputSecurityGroup', request_name => 'securityGroup', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_InputSecurityGroup/;
+  has SecurityGroup => (is => 'ro', isa => MediaLive_InputSecurityGroup);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityGroup' => {
+                                    'type' => 'MediaLive_InputSecurityGroup',
+                                    'class' => 'Paws::MediaLive::InputSecurityGroup'
+                                  }
+             },
+  'NameInRequest' => {
+                       'SecurityGroup' => 'securityGroup'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Placeholder documentation for CreateInputSecurityGroupResultModel
 =head1 ATTRIBUTES
 
 
-=head2 SecurityGroup => L<Paws::MediaLive::InputSecurityGroup>
+=head2 SecurityGroup => MediaLive_InputSecurityGroup
 
   
 

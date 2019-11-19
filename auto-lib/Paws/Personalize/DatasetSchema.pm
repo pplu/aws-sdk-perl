@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::Personalize::DatasetSchema;
-  use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Schema => (is => 'ro', isa => 'Str', request_name => 'schema', traits => ['NameInRequest']);
-  has SchemaArn => (is => 'ro', isa => 'Str', request_name => 'schemaArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Schema => (is => 'ro', isa => Str);
+  has SchemaArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'SchemaArn' => {
+                                'type' => 'Str'
+                              },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'CreationDateTime' => 'creationDateTime',
+                       'SchemaArn' => 'schemaArn',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime',
+                       'Schema' => 'schema'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

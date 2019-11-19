@@ -1,16 +1,48 @@
 
 package Paws::ApiGateway::ImportRestApi;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body', required => 1);
-  has FailOnWarnings => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'failonwarnings');
-  has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString/;
+  has Body => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FailOnWarnings => (is => 'ro', isa => Bool, predicate => 1);
+  has Parameters => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportRestApi');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis?mode=import');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::RestApi');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportRestApi');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis?mode=import');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::RestApi');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Body' => 'body'
+                     },
+  'ParamInQuery' => {
+                      'Parameters' => 'parameters',
+                      'FailOnWarnings' => 'failonwarnings'
+                    },
+  'IsRequired' => {
+                    'Body' => 1
+                  },
+  'types' => {
+               'FailOnWarnings' => {
+                                     'type' => 'Bool'
+                                   },
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'Parameters' => {
+                                 'type' => 'ApiGateway_MapOfStringToString',
+                                 'class' => 'Paws::ApiGateway::MapOfStringToString'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +106,7 @@ value is C<false>.
 
 
 
-=head2 Parameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Parameters => ApiGateway_MapOfStringToString
 
 A key-value map of context-specific query string parameters specifying
 the behavior of different API importing operations. The following shows

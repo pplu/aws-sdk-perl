@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Transfer;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'transfer' }
   sub signing_name { 'transfer' }
   sub version { '2018-11-05' }
   sub target_prefix { 'TransferService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -180,19 +182,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =over
 
-=item [EndpointDetails => L<Paws::Transfer::EndpointDetails>]
+=item [EndpointDetails => Transfer_EndpointDetails]
 
 =item [EndpointType => Str]
 
 =item [HostKey => Str]
 
-=item [IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>]
+=item [IdentityProviderDetails => Transfer_IdentityProviderDetails]
 
 =item [IdentityProviderType => Str]
 
 =item [LoggingRole => Str]
 
-=item [Tags => ArrayRef[L<Paws::Transfer::Tag>]]
+=item [Tags => ArrayRef[Transfer_Tag]]
 
 
 =back
@@ -219,7 +221,7 @@ property that is assigned to the newly created server.
 
 =item [HomeDirectory => Str]
 
-=item [HomeDirectoryMappings => ArrayRef[L<Paws::Transfer::HomeDirectoryMapEntry>]]
+=item [HomeDirectoryMappings => ArrayRef[Transfer_HomeDirectoryMapEntry]]
 
 =item [HomeDirectoryType => Str]
 
@@ -227,7 +229,7 @@ property that is assigned to the newly created server.
 
 =item [SshPublicKeyBody => Str]
 
-=item [Tags => ArrayRef[L<Paws::Transfer::Tag>]]
+=item [Tags => ArrayRef[Transfer_Tag]]
 
 
 =back
@@ -493,7 +495,7 @@ No response is returned from this call.
 
 =item Arn => Str
 
-=item Tags => ArrayRef[L<Paws::Transfer::Tag>]
+=item Tags => ArrayRef[Transfer_Tag]
 
 
 =back
@@ -562,13 +564,13 @@ No response is returned from this call.
 
 =item ServerId => Str
 
-=item [EndpointDetails => L<Paws::Transfer::EndpointDetails>]
+=item [EndpointDetails => Transfer_EndpointDetails]
 
 =item [EndpointType => Str]
 
 =item [HostKey => Str]
 
-=item [IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>]
+=item [IdentityProviderDetails => Transfer_IdentityProviderDetails]
 
 =item [LoggingRole => Str]
 
@@ -595,7 +597,7 @@ Transfer Protocol (SFTP) server you updated.
 
 =item [HomeDirectory => Str]
 
-=item [HomeDirectoryMappings => ArrayRef[L<Paws::Transfer::HomeDirectoryMapEntry>]]
+=item [HomeDirectoryMappings => ArrayRef[Transfer_HomeDirectoryMapEntry]]
 
 =item [HomeDirectoryType => Str]
 

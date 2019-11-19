@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::MarketplaceCatalog::Filter;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has ValueList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MarketplaceCatalog::Types qw//;
+  has Name => (is => 'ro', isa => Str);
+  has ValueList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValueList' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

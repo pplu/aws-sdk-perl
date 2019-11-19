@@ -1,13 +1,32 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::GetStackPolicy;
-  use Moose;
-  has StackName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has StackName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetStackPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::GetStackPolicyOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetStackPolicyResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetStackPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::GetStackPolicyOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetStackPolicyResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StackName' => 1
+                  },
+  'types' => {
+               'StackName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

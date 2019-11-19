@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaLive::StopTimecode;
-  use Moose;
-  has LastFrameClippingBehavior => (is => 'ro', isa => 'Str', request_name => 'lastFrameClippingBehavior', traits => ['NameInRequest']);
-  has Timecode => (is => 'ro', isa => 'Str', request_name => 'timecode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has LastFrameClippingBehavior => (is => 'ro', isa => Str);
+  has Timecode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastFrameClippingBehavior' => {
+                                                'type' => 'Str'
+                                              },
+               'Timecode' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'LastFrameClippingBehavior' => 'lastFrameClippingBehavior',
+                       'Timecode' => 'timecode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

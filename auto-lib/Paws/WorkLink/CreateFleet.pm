@@ -1,16 +1,40 @@
 
 package Paws::WorkLink::CreateFleet;
-  use Moose;
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has FleetName => (is => 'ro', isa => 'Str', required => 1);
-  has OptimizeForEndUserLocation => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::WorkLink::Types qw//;
+  has DisplayName => (is => 'ro', isa => Str, predicate => 1);
+  has FleetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OptimizeForEndUserLocation => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFleet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/createFleet');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkLink::CreateFleetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFleet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/createFleet');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkLink::CreateFleetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FleetName' => {
+                                'type' => 'Str'
+                              },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'OptimizeForEndUserLocation' => {
+                                                 'type' => 'Bool'
+                                               }
+             },
+  'IsRequired' => {
+                    'FleetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

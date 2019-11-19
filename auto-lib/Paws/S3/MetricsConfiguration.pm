@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::S3::MetricsConfiguration;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::S3::MetricsFilter');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_MetricsFilter/;
+  has Filter => (is => 'ro', isa => S3_MetricsFilter);
+  has Id => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filter' => {
+                             'class' => 'Paws::S3::MetricsFilter',
+                             'type' => 'S3_MetricsFilter'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'IsRequired' => {
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +68,7 @@ in the I<Amazon Simple Storage Service API Reference>.
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::S3::MetricsFilter>
+=head2 Filter => S3_MetricsFilter
 
   Specifies a metrics configuration filter. The metrics configuration
 will only include objects that meet the filter's criteria. A filter

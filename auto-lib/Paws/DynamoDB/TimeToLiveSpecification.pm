@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::TimeToLiveSpecification;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DynamoDB::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str, required => 1);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Enabled' => 1,
+                    'AttributeName' => 1
+                  },
+  'types' => {
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

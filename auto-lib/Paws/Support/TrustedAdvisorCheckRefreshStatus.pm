@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::Support::TrustedAdvisorCheckRefreshStatus;
-  use Moose;
-  has CheckId => (is => 'ro', isa => 'Str', request_name => 'checkId', traits => ['NameInRequest'], required => 1);
-  has MillisUntilNextRefreshable => (is => 'ro', isa => 'Int', request_name => 'millisUntilNextRefreshable', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Support::Types qw//;
+  has CheckId => (is => 'ro', isa => Str, required => 1);
+  has MillisUntilNextRefreshable => (is => 'ro', isa => Int, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CheckId' => {
+                              'type' => 'Str'
+                            },
+               'MillisUntilNextRefreshable' => {
+                                                 'type' => 'Int'
+                                               },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'MillisUntilNextRefreshable' => 1,
+                    'CheckId' => 1,
+                    'Status' => 1
+                  },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'CheckId' => 'checkId',
+                       'MillisUntilNextRefreshable' => 'millisUntilNextRefreshable'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,65 @@
 
 package Paws::IoT::DescribeMitigationActionResponse;
-  use Moose;
-  has ActionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'actionArn');
-  has ActionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'actionId');
-  has ActionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'actionName');
-  has ActionParams => (is => 'ro', isa => 'Paws::IoT::MitigationActionParams', traits => ['NameInRequest'], request_name => 'actionParams');
-  has ActionType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'actionType');
-  has CreationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationDate');
-  has LastModifiedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastModifiedDate');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_MitigationActionParams/;
+  has ActionArn => (is => 'ro', isa => Str);
+  has ActionId => (is => 'ro', isa => Str);
+  has ActionName => (is => 'ro', isa => Str);
+  has ActionParams => (is => 'ro', isa => IoT_MitigationActionParams);
+  has ActionType => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LastModifiedDate' => 'lastModifiedDate',
+                       'CreationDate' => 'creationDate',
+                       'ActionArn' => 'actionArn',
+                       'ActionParams' => 'actionParams',
+                       'ActionType' => 'actionType',
+                       'RoleArn' => 'roleArn',
+                       'ActionName' => 'actionName',
+                       'ActionId' => 'actionId'
+                     },
+  'types' => {
+               'ActionParams' => {
+                                   'type' => 'IoT_MitigationActionParams',
+                                   'class' => 'Paws::IoT::MitigationActionParams'
+                                 },
+               'ActionType' => {
+                                 'type' => 'Str'
+                               },
+               'ActionId' => {
+                               'type' => 'Str'
+                             },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ActionName' => {
+                                 'type' => 'Str'
+                               },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ActionArn' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +86,7 @@ A unique identifier for this action.
 The friendly name that uniquely identifies the mitigation action.
 
 
-=head2 ActionParams => L<Paws::IoT::MitigationActionParams>
+=head2 ActionParams => IoT_MitigationActionParams
 
 Parameters that control how the mitigation action is applied, specific
 to the type of mitigation action.

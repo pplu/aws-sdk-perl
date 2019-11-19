@@ -1,24 +1,89 @@
+# Generated from callargs_class.tt
 
 package Paws::ImportExport::GetShippingLabel;
-  use Moose;
-  has APIVersion => (is => 'ro', isa => 'Str');
-  has City => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'city' );
-  has Company => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'company' );
-  has Country => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'country' );
-  has JobIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'jobIds' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
-  has PhoneNumber => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'phoneNumber' );
-  has PostalCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'postalCode' );
-  has StateOrProvince => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateOrProvince' );
-  has Street1 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'street1' );
-  has Street2 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'street2' );
-  has Street3 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'street3' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ImportExport::Types qw//;
+  has APIVersion => (is => 'ro', isa => Str, predicate => 1);
+  has City => (is => 'ro', isa => Str, predicate => 1);
+  has Company => (is => 'ro', isa => Str, predicate => 1);
+  has Country => (is => 'ro', isa => Str, predicate => 1);
+  has JobIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has PhoneNumber => (is => 'ro', isa => Str, predicate => 1);
+  has PostalCode => (is => 'ro', isa => Str, predicate => 1);
+  has StateOrProvince => (is => 'ro', isa => Str, predicate => 1);
+  has Street1 => (is => 'ro', isa => Str, predicate => 1);
+  has Street2 => (is => 'ro', isa => Str, predicate => 1);
+  has Street3 => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetShippingLabel');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ImportExport::GetShippingLabelOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetShippingLabelResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetShippingLabel');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ImportExport::GetShippingLabelOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetShippingLabelResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'JobIds' => 1
+                  },
+  'NameInRequest' => {
+                       'PhoneNumber' => 'phoneNumber',
+                       'Country' => 'country',
+                       'StateOrProvince' => 'stateOrProvince',
+                       'Name' => 'name',
+                       'Company' => 'company',
+                       'PostalCode' => 'postalCode',
+                       'Street1' => 'street1',
+                       'Street3' => 'street3',
+                       'City' => 'city',
+                       'JobIds' => 'jobIds',
+                       'Street2' => 'street2'
+                     },
+  'types' => {
+               'APIVersion' => {
+                                 'type' => 'Str'
+                               },
+               'Street3' => {
+                              'type' => 'Str'
+                            },
+               'Street1' => {
+                              'type' => 'Str'
+                            },
+               'Company' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'StateOrProvince' => {
+                                      'type' => 'Str'
+                                    },
+               'Country' => {
+                              'type' => 'Str'
+                            },
+               'PhoneNumber' => {
+                                  'type' => 'Str'
+                                },
+               'Street2' => {
+                              'type' => 'Str'
+                            },
+               'City' => {
+                           'type' => 'Str'
+                         },
+               'JobIds' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'PostalCode' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

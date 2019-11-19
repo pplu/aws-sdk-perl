@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::SavingsPlansUtilizationAggregates;
-  use Moose;
-  has AmortizedCommitment => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansAmortizedCommitment');
-  has Savings => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansSavings');
-  has Utilization => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansUtilization', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CostExplorer::Types qw/CostExplorer_SavingsPlansUtilization CostExplorer_SavingsPlansSavings CostExplorer_SavingsPlansAmortizedCommitment/;
+  has AmortizedCommitment => (is => 'ro', isa => CostExplorer_SavingsPlansAmortizedCommitment);
+  has Savings => (is => 'ro', isa => CostExplorer_SavingsPlansSavings);
+  has Utilization => (is => 'ro', isa => CostExplorer_SavingsPlansUtilization, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Savings' => {
+                              'class' => 'Paws::CostExplorer::SavingsPlansSavings',
+                              'type' => 'CostExplorer_SavingsPlansSavings'
+                            },
+               'Utilization' => {
+                                  'type' => 'CostExplorer_SavingsPlansUtilization',
+                                  'class' => 'Paws::CostExplorer::SavingsPlansUtilization'
+                                },
+               'AmortizedCommitment' => {
+                                          'class' => 'Paws::CostExplorer::SavingsPlansAmortizedCommitment',
+                                          'type' => 'CostExplorer_SavingsPlansAmortizedCommitment'
+                                        }
+             },
+  'IsRequired' => {
+                    'Utilization' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +67,13 @@ The aggregated utilization metrics for your Savings Plans usage.
 =head1 ATTRIBUTES
 
 
-=head2 AmortizedCommitment => L<Paws::CostExplorer::SavingsPlansAmortizedCommitment>
+=head2 AmortizedCommitment => CostExplorer_SavingsPlansAmortizedCommitment
 
   The total amortized commitment for a Savings Plans. This includes the
 sum of the upfront and recurring Savings Plans fees.
 
 
-=head2 Savings => L<Paws::CostExplorer::SavingsPlansSavings>
+=head2 Savings => CostExplorer_SavingsPlansSavings
 
   The amount saved by using existing Savings Plans. Savings returns both
 net savings from Savings Plans, as well as the
@@ -52,7 +81,7 @@ C<onDemandCostEquivalent> of the Savings Plans when considering the
 utilization rate.
 
 
-=head2 B<REQUIRED> Utilization => L<Paws::CostExplorer::SavingsPlansUtilization>
+=head2 B<REQUIRED> Utilization => CostExplorer_SavingsPlansUtilization
 
   A ratio of your effectiveness of using existing Savings Plans to apply
 to workloads that are Savings Plans eligible.

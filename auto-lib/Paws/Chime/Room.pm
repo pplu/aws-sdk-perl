@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Chime::Room;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has CreatedBy => (is => 'ro', isa => 'Str');
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has RoomId => (is => 'ro', isa => 'Str');
-  has UpdatedTimestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has CreatedBy => (is => 'ro', isa => Str);
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RoomId => (is => 'ro', isa => Str);
+  has UpdatedTimestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoomId' => {
+                             'type' => 'Str'
+                           },
+               'UpdatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'CreatedBy' => {
+                                'type' => 'Str'
+                              },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

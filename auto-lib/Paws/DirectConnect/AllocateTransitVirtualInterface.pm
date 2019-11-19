@@ -1,15 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::AllocateTransitVirtualInterface;
-  use Moose;
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
-  has NewTransitVirtualInterfaceAllocation => (is => 'ro', isa => 'Paws::DirectConnect::NewTransitVirtualInterfaceAllocation', traits => ['NameInRequest'], request_name => 'newTransitVirtualInterfaceAllocation' , required => 1);
-  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw/DirectConnect_NewTransitVirtualInterfaceAllocation/;
+  has ConnectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NewTransitVirtualInterfaceAllocation => (is => 'ro', isa => DirectConnect_NewTransitVirtualInterfaceAllocation, required => 1, predicate => 1);
+  has OwnerAccount => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AllocateTransitVirtualInterface');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::AllocateTransitVirtualInterfaceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AllocateTransitVirtualInterface');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::AllocateTransitVirtualInterfaceResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NewTransitVirtualInterfaceAllocation' => {
+                                                           'class' => 'Paws::DirectConnect::NewTransitVirtualInterfaceAllocation',
+                                                           'type' => 'DirectConnect_NewTransitVirtualInterfaceAllocation'
+                                                         },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 },
+               'OwnerAccount' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'NewTransitVirtualInterfaceAllocation' => 'newTransitVirtualInterfaceAllocation',
+                       'ConnectionId' => 'connectionId',
+                       'OwnerAccount' => 'ownerAccount'
+                     },
+  'IsRequired' => {
+                    'NewTransitVirtualInterfaceAllocation' => 1,
+                    'OwnerAccount' => 1,
+                    'ConnectionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +105,7 @@ provisioned.
 
 
 
-=head2 B<REQUIRED> NewTransitVirtualInterfaceAllocation => L<Paws::DirectConnect::NewTransitVirtualInterfaceAllocation>
+=head2 B<REQUIRED> NewTransitVirtualInterfaceAllocation => DirectConnect_NewTransitVirtualInterfaceAllocation
 
 Information about the transit virtual interface.
 

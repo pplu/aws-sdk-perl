@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeBuild::StopBuildOutput;
-  use Moose;
-  has Build => (is => 'ro', isa => 'Paws::CodeBuild::Build', traits => ['NameInRequest'], request_name => 'build' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeBuild::Types qw/CodeBuild_Build/;
+  has Build => (is => 'ro', isa => CodeBuild_Build);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Build' => {
+                            'type' => 'CodeBuild_Build',
+                            'class' => 'Paws::CodeBuild::Build'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Build' => 'build'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CodeBuild::StopBuildOutput
 =head1 ATTRIBUTES
 
 
-=head2 Build => L<Paws::CodeBuild::Build>
+=head2 Build => CodeBuild_Build
 
 Information about the build.
 

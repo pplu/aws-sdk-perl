@@ -1,10 +1,35 @@
 
 package Paws::Batch::DescribeComputeEnvironmentsResponse;
-  use Moose;
-  has ComputeEnvironments => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ComputeEnvironmentDetail]', traits => ['NameInRequest'], request_name => 'computeEnvironments');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Batch::Types qw/Batch_ComputeEnvironmentDetail/;
+  has ComputeEnvironments => (is => 'ro', isa => ArrayRef[Batch_ComputeEnvironmentDetail]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ComputeEnvironments' => 'computeEnvironments',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'ComputeEnvironments' => {
+                                          'type' => 'ArrayRef[Batch_ComputeEnvironmentDetail]',
+                                          'class' => 'Paws::Batch::ComputeEnvironmentDetail'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Batch::DescribeComputeEnvironmentsResponse
 =head1 ATTRIBUTES
 
 
-=head2 ComputeEnvironments => ArrayRef[L<Paws::Batch::ComputeEnvironmentDetail>]
+=head2 ComputeEnvironments => ArrayRef[Batch_ComputeEnvironmentDetail]
 
 The list of compute environments.
 

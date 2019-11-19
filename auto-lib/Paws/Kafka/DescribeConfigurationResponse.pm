@@ -1,14 +1,55 @@
 
 package Paws::Kafka::DescribeConfigurationResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has CreationTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationTime');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has KafkaVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'kafkaVersions');
-  has LatestRevision => (is => 'ro', isa => 'Paws::Kafka::ConfigurationRevision', traits => ['NameInRequest'], request_name => 'latestRevision');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Kafka::Types qw/Kafka_ConfigurationRevision/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has KafkaVersions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LatestRevision => (is => 'ro', isa => Kafka_ConfigurationRevision);
+  has Name => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LatestRevision' => {
+                                     'type' => 'Kafka_ConfigurationRevision',
+                                     'class' => 'Paws::Kafka::ConfigurationRevision'
+                                   },
+               'KafkaVersions' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'KafkaVersions' => 'kafkaVersions',
+                       'Arn' => 'arn',
+                       'CreationTime' => 'creationTime',
+                       'LatestRevision' => 'latestRevision',
+                       'Name' => 'name',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +82,7 @@ The versions of Apache Kafka with which you can use this MSK
 configuration.
 
 
-=head2 LatestRevision => L<Paws::Kafka::ConfigurationRevision>
+=head2 LatestRevision => Kafka_ConfigurationRevision
 
 Latest revision of the configuration.
 

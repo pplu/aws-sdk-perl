@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchGetObjectInformationResponse;
-  use Moose;
-  has ObjectIdentifier => (is => 'ro', isa => 'Str');
-  has SchemaFacets => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::SchemaFacet]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_SchemaFacet/;
+  has ObjectIdentifier => (is => 'ro', isa => Str);
+  has SchemaFacets => (is => 'ro', isa => ArrayRef[CloudDirectory_SchemaFacet]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObjectIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'SchemaFacets' => {
+                                   'type' => 'ArrayRef[CloudDirectory_SchemaFacet]',
+                                   'class' => 'Paws::CloudDirectory::SchemaFacet'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Represents the output of a GetObjectInformation response operation.
   The C<ObjectIdentifier> of the specified object.
 
 
-=head2 SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
+=head2 SchemaFacets => ArrayRef[CloudDirectory_SchemaFacet]
 
   The facets attached to the specified object.
 

@@ -1,9 +1,46 @@
+# Generated from default/object.tt
 package Paws::IoT::S3Action;
-  use Moose;
-  has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest'], required => 1);
-  has CannedAcl => (is => 'ro', isa => 'Str', request_name => 'cannedAcl', traits => ['NameInRequest']);
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has BucketName => (is => 'ro', isa => Str, required => 1);
+  has CannedAcl => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'BucketName' => 'bucketName',
+                       'RoleArn' => 'roleArn',
+                       'Key' => 'key',
+                       'CannedAcl' => 'cannedAcl'
+                     },
+  'IsRequired' => {
+                    'Key' => 1,
+                    'RoleArn' => 1,
+                    'BucketName' => 1
+                  },
+  'types' => {
+               'CannedAcl' => {
+                                'type' => 'Str'
+                              },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

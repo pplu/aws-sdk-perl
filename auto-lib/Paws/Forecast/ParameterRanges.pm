@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::Forecast::ParameterRanges;
-  use Moose;
-  has CategoricalParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::CategoricalParameterRange]');
-  has ContinuousParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::ContinuousParameterRange]');
-  has IntegerParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::IntegerParameterRange]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Forecast::Types qw/Forecast_IntegerParameterRange Forecast_ContinuousParameterRange Forecast_CategoricalParameterRange/;
+  has CategoricalParameterRanges => (is => 'ro', isa => ArrayRef[Forecast_CategoricalParameterRange]);
+  has ContinuousParameterRanges => (is => 'ro', isa => ArrayRef[Forecast_ContinuousParameterRange]);
+  has IntegerParameterRanges => (is => 'ro', isa => ArrayRef[Forecast_IntegerParameterRange]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IntegerParameterRanges' => {
+                                             'type' => 'ArrayRef[Forecast_IntegerParameterRange]',
+                                             'class' => 'Paws::Forecast::IntegerParameterRange'
+                                           },
+               'CategoricalParameterRanges' => {
+                                                 'type' => 'ArrayRef[Forecast_CategoricalParameterRange]',
+                                                 'class' => 'Paws::Forecast::CategoricalParameterRange'
+                                               },
+               'ContinuousParameterRanges' => {
+                                                'class' => 'Paws::Forecast::ContinuousParameterRange',
+                                                'type' => 'ArrayRef[Forecast_ContinuousParameterRange]'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,17 +68,17 @@ HyperParameterTuningJobConfig object.
 =head1 ATTRIBUTES
 
 
-=head2 CategoricalParameterRanges => ArrayRef[L<Paws::Forecast::CategoricalParameterRange>]
+=head2 CategoricalParameterRanges => ArrayRef[Forecast_CategoricalParameterRange]
 
   Specifies the tunable range for each categorical hyperparameter.
 
 
-=head2 ContinuousParameterRanges => ArrayRef[L<Paws::Forecast::ContinuousParameterRange>]
+=head2 ContinuousParameterRanges => ArrayRef[Forecast_ContinuousParameterRange]
 
   Specifies the tunable range for each continuous hyperparameter.
 
 
-=head2 IntegerParameterRanges => ArrayRef[L<Paws::Forecast::IntegerParameterRange>]
+=head2 IntegerParameterRanges => ArrayRef[Forecast_IntegerParameterRange]
 
   Specifies the tunable range for each integer hyperparameter.
 

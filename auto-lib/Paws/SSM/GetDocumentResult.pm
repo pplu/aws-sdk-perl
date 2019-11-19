@@ -1,17 +1,60 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetDocumentResult;
-  use Moose;
-  has AttachmentsContent => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AttachmentContent]');
-  has Content => (is => 'ro', isa => 'Str');
-  has DocumentFormat => (is => 'ro', isa => 'Str');
-  has DocumentType => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusInformation => (is => 'ro', isa => 'Str');
-  has VersionName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_AttachmentContent/;
+  has AttachmentsContent => (is => 'ro', isa => ArrayRef[SSM_AttachmentContent]);
+  has Content => (is => 'ro', isa => Str);
+  has DocumentFormat => (is => 'ro', isa => Str);
+  has DocumentType => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusInformation => (is => 'ro', isa => Str);
+  has VersionName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DocumentFormat' => {
+                                     'type' => 'Str'
+                                   },
+               'StatusInformation' => {
+                                        'type' => 'Str'
+                                      },
+               'DocumentType' => {
+                                   'type' => 'Str'
+                                 },
+               'Content' => {
+                              'type' => 'Str'
+                            },
+               'VersionName' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AttachmentsContent' => {
+                                         'class' => 'Paws::SSM::AttachmentContent',
+                                         'type' => 'ArrayRef[SSM_AttachmentContent]'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +65,7 @@ Paws::SSM::GetDocumentResult
 =head1 ATTRIBUTES
 
 
-=head2 AttachmentsContent => ArrayRef[L<Paws::SSM::AttachmentContent>]
+=head2 AttachmentsContent => ArrayRef[SSM_AttachmentContent]
 
 A description of the document attachments, including names, locations,
 sizes, etc.

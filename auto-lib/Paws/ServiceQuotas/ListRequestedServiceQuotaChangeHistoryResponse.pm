@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceQuotas::ListRequestedServiceQuotaChangeHistoryResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has RequestedQuotas => (is => 'ro', isa => 'ArrayRef[Paws::ServiceQuotas::RequestedServiceQuotaChange]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceQuotas::Types qw/ServiceQuotas_RequestedServiceQuotaChange/;
+  has NextToken => (is => 'ro', isa => Str);
+  has RequestedQuotas => (is => 'ro', isa => ArrayRef[ServiceQuotas_RequestedServiceQuotaChange]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RequestedQuotas' => {
+                                      'class' => 'Paws::ServiceQuotas::RequestedServiceQuotaChange',
+                                      'type' => 'ArrayRef[ServiceQuotas_RequestedServiceQuotaChange]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -27,7 +49,7 @@ repeat this until the C<NextToken> response element comes back empty
 (as C<null>).
 
 
-=head2 RequestedQuotas => ArrayRef[L<Paws::ServiceQuotas::RequestedServiceQuotaChange>]
+=head2 RequestedQuotas => ArrayRef[ServiceQuotas_RequestedServiceQuotaChange]
 
 Returns a list of service quota requests.
 

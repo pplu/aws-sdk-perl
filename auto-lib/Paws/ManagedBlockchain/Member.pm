@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::Member;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has FrameworkAttributes => (is => 'ro', isa => 'Paws::ManagedBlockchain::MemberFrameworkAttributes');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has NetworkId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_MemberFrameworkAttributes/;
+  has CreationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has FrameworkAttributes => (is => 'ro', isa => ManagedBlockchain_MemberFrameworkAttributes);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has NetworkId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'NetworkId' => {
+                                'type' => 'Str'
+                              },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'FrameworkAttributes' => {
+                                          'class' => 'Paws::ManagedBlockchain::MemberFrameworkAttributes',
+                                          'type' => 'ManagedBlockchain_MemberFrameworkAttributes'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +88,7 @@ Member configuration properties.
   An optional description for the member.
 
 
-=head2 FrameworkAttributes => L<Paws::ManagedBlockchain::MemberFrameworkAttributes>
+=head2 FrameworkAttributes => ManagedBlockchain_MemberFrameworkAttributes
 
   Attributes relevant to a member for the blockchain framework that the
 Managed Blockchain network uses.

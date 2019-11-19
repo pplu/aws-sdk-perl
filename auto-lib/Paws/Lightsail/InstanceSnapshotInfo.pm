@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::Lightsail::InstanceSnapshotInfo;
-  use Moose;
-  has FromBlueprintId => (is => 'ro', isa => 'Str', request_name => 'fromBlueprintId', traits => ['NameInRequest']);
-  has FromBundleId => (is => 'ro', isa => 'Str', request_name => 'fromBundleId', traits => ['NameInRequest']);
-  has FromDiskInfo => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::DiskInfo]', request_name => 'fromDiskInfo', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_DiskInfo/;
+  has FromBlueprintId => (is => 'ro', isa => Str);
+  has FromBundleId => (is => 'ro', isa => Str);
+  has FromDiskInfo => (is => 'ro', isa => ArrayRef[Lightsail_DiskInfo]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FromBlueprintId' => {
+                                      'type' => 'Str'
+                                    },
+               'FromDiskInfo' => {
+                                   'type' => 'ArrayRef[Lightsail_DiskInfo]',
+                                   'class' => 'Paws::Lightsail::DiskInfo'
+                                 },
+               'FromBundleId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'FromBundleId' => 'fromBundleId',
+                       'FromBlueprintId' => 'fromBlueprintId',
+                       'FromDiskInfo' => 'fromDiskInfo'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +79,7 @@ C<os_debian_8_3>).
 C<micro_1_0>).
 
 
-=head2 FromDiskInfo => ArrayRef[L<Paws::Lightsail::DiskInfo>]
+=head2 FromDiskInfo => ArrayRef[Lightsail_DiskInfo]
 
   A list of objects describing the disks that were attached to the source
 instance.

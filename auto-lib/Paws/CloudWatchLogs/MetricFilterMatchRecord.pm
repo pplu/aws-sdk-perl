@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::MetricFilterMatchRecord;
-  use Moose;
-  has EventMessage => (is => 'ro', isa => 'Str', request_name => 'eventMessage', traits => ['NameInRequest']);
-  has EventNumber => (is => 'ro', isa => 'Int', request_name => 'eventNumber', traits => ['NameInRequest']);
-  has ExtractedValues => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExtractedValues', request_name => 'extractedValues', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_ExtractedValues/;
+  has EventMessage => (is => 'ro', isa => Str);
+  has EventNumber => (is => 'ro', isa => Int);
+  has ExtractedValues => (is => 'ro', isa => CloudWatchLogs_ExtractedValues);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventNumber' => {
+                                  'type' => 'Int'
+                                },
+               'EventMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'ExtractedValues' => {
+                                      'class' => 'Paws::CloudWatchLogs::ExtractedValues',
+                                      'type' => 'CloudWatchLogs_ExtractedValues'
+                                    }
+             },
+  'NameInRequest' => {
+                       'EventNumber' => 'eventNumber',
+                       'ExtractedValues' => 'extractedValues',
+                       'EventMessage' => 'eventMessage'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +77,7 @@ Represents a matched event.
   The event number.
 
 
-=head2 ExtractedValues => L<Paws::CloudWatchLogs::ExtractedValues>
+=head2 ExtractedValues => CloudWatchLogs_ExtractedValues
 
   The values extracted from the event data by the filter.
 

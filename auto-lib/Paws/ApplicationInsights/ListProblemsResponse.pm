@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ApplicationInsights::ListProblemsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ProblemList => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationInsights::Problem]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApplicationInsights::Types qw/ApplicationInsights_Problem/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ProblemList => (is => 'ro', isa => ArrayRef[ApplicationInsights_Problem]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ProblemList' => {
+                                  'class' => 'Paws::ApplicationInsights::Problem',
+                                  'type' => 'ArrayRef[ApplicationInsights_Problem]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The token used to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 ProblemList => ArrayRef[L<Paws::ApplicationInsights::Problem>]
+=head2 ProblemList => ArrayRef[ApplicationInsights_Problem]
 
 The list of problems.
 

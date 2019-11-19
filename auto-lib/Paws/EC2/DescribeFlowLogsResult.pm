@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeFlowLogsResult;
-  use Moose;
-  has FlowLogs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::FlowLog]', request_name => 'flowLogSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_FlowLog/;
+  has FlowLogs => (is => 'ro', isa => ArrayRef[EC2_FlowLog]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FlowLogs' => 'flowLogSet',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FlowLogs' => {
+                               'class' => 'Paws::EC2::FlowLog',
+                               'type' => 'ArrayRef[EC2_FlowLog]'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeFlowLogsResult
 =head1 ATTRIBUTES
 
 
-=head2 FlowLogs => ArrayRef[L<Paws::EC2::FlowLog>]
+=head2 FlowLogs => ArrayRef[EC2_FlowLog]
 
 Information about the flow logs.
 

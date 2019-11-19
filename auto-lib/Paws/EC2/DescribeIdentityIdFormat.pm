@@ -1,14 +1,39 @@
 
 package Paws::EC2::DescribeIdentityIdFormat;
-  use Moose;
-  has PrincipalArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'principalArn' , required => 1);
-  has Resource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resource' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has PrincipalArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Resource => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeIdentityIdFormat');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeIdentityIdFormatResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeIdentityIdFormat');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeIdentityIdFormatResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PrincipalArn' => 1
+                  },
+  'NameInRequest' => {
+                       'PrincipalArn' => 'principalArn',
+                       'Resource' => 'resource'
+                     },
+  'types' => {
+               'PrincipalArn' => {
+                                   'type' => 'Str'
+                                 },
+               'Resource' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::AppSync::AuthorizationConfig;
-  use Moose;
-  has AuthorizationType => (is => 'ro', isa => 'Str', request_name => 'authorizationType', traits => ['NameInRequest'], required => 1);
-  has AwsIamConfig => (is => 'ro', isa => 'Paws::AppSync::AwsIamConfig', request_name => 'awsIamConfig', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw/AppSync_AwsIamConfig/;
+  has AuthorizationType => (is => 'ro', isa => Str, required => 1);
+  has AwsIamConfig => (is => 'ro', isa => AppSync_AwsIamConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AwsIamConfig' => 'awsIamConfig',
+                       'AuthorizationType' => 'authorizationType'
+                     },
+  'IsRequired' => {
+                    'AuthorizationType' => 1
+                  },
+  'types' => {
+               'AuthorizationType' => {
+                                        'type' => 'Str'
+                                      },
+               'AwsIamConfig' => {
+                                   'class' => 'Paws::AppSync::AwsIamConfig',
+                                   'type' => 'AppSync_AwsIamConfig'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +80,7 @@ B<AWS_IAM>: The authorization type is Sigv4.
 
 
 
-=head2 AwsIamConfig => L<Paws::AppSync::AwsIamConfig>
+=head2 AwsIamConfig => AppSync_AwsIamConfig
 
   The AWS IAM settings.
 

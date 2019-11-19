@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::LakeFormation::ColumnWildcard;
-  use Moose;
-  has ExcludedColumnNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::LakeFormation::Types qw//;
+  has ExcludedColumnNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExcludedColumnNames' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

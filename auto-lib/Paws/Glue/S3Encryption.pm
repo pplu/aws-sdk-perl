@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glue::S3Encryption;
-  use Moose;
-  has KmsKeyArn => (is => 'ro', isa => 'Str');
-  has S3EncryptionMode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has KmsKeyArn => (is => 'ro', isa => Str);
+  has S3EncryptionMode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3EncryptionMode' => {
+                                       'type' => 'Str'
+                                     },
+               'KmsKeyArn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

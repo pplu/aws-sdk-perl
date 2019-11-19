@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::SQS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'sqs' }
   sub signing_name { 'sqs' }
   sub version { '2012-11-05' }
   sub flattened_arrays { 1 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
        sub { defined $_[0]->http_status and $_[0]->http_status == 403 and $_[0]->code eq 'RequestThrottled' },
   ] });
 
@@ -427,7 +429,7 @@ received.
 
 =over
 
-=item Entries => ArrayRef[L<Paws::SQS::ChangeMessageVisibilityBatchRequestEntry>]
+=item Entries => ArrayRef[SQS_ChangeMessageVisibilityBatchRequestEntry]
 
 =item QueueUrl => Str
 
@@ -463,9 +465,9 @@ C<&Attribute.2=second>
 
 =item QueueName => Str
 
-=item [Attributes => L<Paws::SQS::QueueAttributeMap>]
+=item [Attributes => SQS_QueueAttributeMap]
 
-=item [Tags => L<Paws::SQS::TagMap>]
+=item [Tags => SQS_TagMap]
 
 
 =back
@@ -586,7 +588,7 @@ more than once does not cause issues.
 
 =over
 
-=item Entries => ArrayRef[L<Paws::SQS::DeleteMessageBatchRequestEntry>]
+=item Entries => ArrayRef[SQS_DeleteMessageBatchRequestEntry]
 
 =item QueueUrl => Str
 
@@ -952,13 +954,13 @@ C<SetQueueAttributes> actions in your IAM policy.
 
 =item [DelaySeconds => Int]
 
-=item [MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>]
+=item [MessageAttributes => SQS_MessageBodyAttributeMap]
 
 =item [MessageDeduplicationId => Str]
 
 =item [MessageGroupId => Str]
 
-=item [MessageSystemAttributes => L<Paws::SQS::MessageBodySystemAttributeMap>]
+=item [MessageSystemAttributes => SQS_MessageBodySystemAttributeMap]
 
 
 =back
@@ -984,7 +986,7 @@ information, see the W3C specification for characters
 
 =over
 
-=item Entries => ArrayRef[L<Paws::SQS::SendMessageBatchRequestEntry>]
+=item Entries => ArrayRef[SQS_SendMessageBatchRequestEntry]
 
 =item QueueUrl => Str
 
@@ -1034,7 +1036,7 @@ C<&Attribute.2=second>
 
 =over
 
-=item Attributes => L<Paws::SQS::QueueAttributeMap>
+=item Attributes => SQS_QueueAttributeMap
 
 =item QueueUrl => Str
 
@@ -1083,7 +1085,7 @@ C<SetQueueAttributes> actions in your IAM policy.
 
 =item QueueUrl => Str
 
-=item Tags => L<Paws::SQS::TagMap>
+=item Tags => SQS_TagMap
 
 
 =back

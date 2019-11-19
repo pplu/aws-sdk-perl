@@ -1,12 +1,57 @@
+# Generated from default/object.tt
 package Paws::Robomaker::RobotDeployment;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has DeploymentFinishTime => (is => 'ro', isa => 'Str', request_name => 'deploymentFinishTime', traits => ['NameInRequest']);
-  has DeploymentStartTime => (is => 'ro', isa => 'Str', request_name => 'deploymentStartTime', traits => ['NameInRequest']);
-  has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has ProgressDetail => (is => 'ro', isa => 'Paws::Robomaker::ProgressDetail', request_name => 'progressDetail', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw/Robomaker_ProgressDetail/;
+  has Arn => (is => 'ro', isa => Str);
+  has DeploymentFinishTime => (is => 'ro', isa => Str);
+  has DeploymentStartTime => (is => 'ro', isa => Str);
+  has FailureCode => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has ProgressDetail => (is => 'ro', isa => Robomaker_ProgressDetail);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeploymentStartTime' => {
+                                          'type' => 'Str'
+                                        },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'FailureCode' => {
+                                  'type' => 'Str'
+                                },
+               'ProgressDetail' => {
+                                     'class' => 'Paws::Robomaker::ProgressDetail',
+                                     'type' => 'Robomaker_ProgressDetail'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DeploymentFinishTime' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'ProgressDetail' => 'progressDetail',
+                       'DeploymentFinishTime' => 'deploymentFinishTime',
+                       'Arn' => 'arn',
+                       'DeploymentStartTime' => 'deploymentStartTime',
+                       'FailureReason' => 'failureReason',
+                       'FailureCode' => 'failureCode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +114,7 @@ started.
   A short description of the reason why the robot deployment failed.
 
 
-=head2 ProgressDetail => L<Paws::Robomaker::ProgressDetail>
+=head2 ProgressDetail => Robomaker_ProgressDetail
 
   Information about how the deployment is progressing.
 

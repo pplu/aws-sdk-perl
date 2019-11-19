@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::S3::AccessControlPolicy;
-  use Moose;
-  has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3::Grant]', request_name => 'Grant', request_name => 'AccessControlList', traits => ['NameInRequest','NameInRequest']);
-  has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::S3::Types qw/S3_Owner S3_Grant/;
+  has Grants => (is => 'ro', isa => ArrayRef[S3_Grant]);
+  has Owner => (is => 'ro', isa => S3_Owner);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Grants' => {
+                             'class' => 'Paws::S3::Grant',
+                             'type' => 'ArrayRef[S3_Grant]'
+                           },
+               'Owner' => {
+                            'type' => 'S3_Owner',
+                            'class' => 'Paws::S3::Owner'
+                          }
+             },
+  'NameInRequest' => {
+                       'Grants' => 'AccessControlList'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +63,12 @@ grantee.
 =head1 ATTRIBUTES
 
 
-=head2 Grants => ArrayRef[L<Paws::S3::Grant>]
+=head2 Grants => ArrayRef[S3_Grant]
 
   A list of grants.
 
 
-=head2 Owner => L<Paws::S3::Owner>
+=head2 Owner => S3_Owner
 
   Container for the bucket owner's display name and ID.
 

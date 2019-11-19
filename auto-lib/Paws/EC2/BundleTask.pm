@@ -1,13 +1,60 @@
 package Paws::EC2::BundleTask;
-  use Moose;
-  has BundleId => (is => 'ro', isa => 'Str', request_name => 'bundleId', traits => ['NameInRequest']);
-  has BundleTaskError => (is => 'ro', isa => 'Paws::EC2::BundleTaskError', request_name => 'error', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Storage => (is => 'ro', isa => 'Paws::EC2::Storage', request_name => 'storage', traits => ['NameInRequest']);
-  has UpdateTime => (is => 'ro', isa => 'Str', request_name => 'updateTime', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_Storage EC2_BundleTaskError/;
+  has BundleId => (is => 'ro', isa => Str);
+  has BundleTaskError => (is => 'ro', isa => EC2_BundleTaskError);
+  has InstanceId => (is => 'ro', isa => Str);
+  has Progress => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Storage => (is => 'ro', isa => EC2_Storage);
+  has UpdateTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InstanceId' => 'instanceId',
+                       'UpdateTime' => 'updateTime',
+                       'BundleTaskError' => 'error',
+                       'Progress' => 'progress',
+                       'Storage' => 'storage',
+                       'BundleId' => 'bundleId',
+                       'State' => 'state',
+                       'StartTime' => 'startTime'
+                     },
+  'types' => {
+               'BundleId' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'BundleTaskError' => {
+                                      'class' => 'Paws::EC2::BundleTaskError',
+                                      'type' => 'EC2_BundleTaskError'
+                                    },
+               'UpdateTime' => {
+                                 'type' => 'Str'
+                               },
+               'Progress' => {
+                               'type' => 'Str'
+                             },
+               'Storage' => {
+                              'class' => 'Paws::EC2::Storage',
+                              'type' => 'EC2_Storage'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +95,7 @@ This class has no description
   The ID of the bundle task.
 
 
-=head2 BundleTaskError => L<Paws::EC2::BundleTaskError>
+=head2 BundleTaskError => EC2_BundleTaskError
 
   If the task fails, a description of the error.
 
@@ -73,7 +120,7 @@ This class has no description
   The state of the task.
 
 
-=head2 Storage => L<Paws::EC2::Storage>
+=head2 Storage => EC2_Storage
 
   The Amazon S3 storage locations.
 

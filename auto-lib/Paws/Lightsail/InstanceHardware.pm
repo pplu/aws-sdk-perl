@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::Lightsail::InstanceHardware;
-  use Moose;
-  has CpuCount => (is => 'ro', isa => 'Int', request_name => 'cpuCount', traits => ['NameInRequest']);
-  has Disks => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Disk]', request_name => 'disks', traits => ['NameInRequest']);
-  has RamSizeInGb => (is => 'ro', isa => 'Num', request_name => 'ramSizeInGb', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int ArrayRef Num/;
+  use Paws::Lightsail::Types qw/Lightsail_Disk/;
+  has CpuCount => (is => 'ro', isa => Int);
+  has Disks => (is => 'ro', isa => ArrayRef[Lightsail_Disk]);
+  has RamSizeInGb => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CpuCount' => 'cpuCount',
+                       'RamSizeInGb' => 'ramSizeInGb',
+                       'Disks' => 'disks'
+                     },
+  'types' => {
+               'CpuCount' => {
+                               'type' => 'Int'
+                             },
+               'RamSizeInGb' => {
+                                  'type' => 'Num'
+                                },
+               'Disks' => {
+                            'class' => 'Paws::Lightsail::Disk',
+                            'type' => 'ArrayRef[Lightsail_Disk]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +72,7 @@ Describes the hardware for the instance.
   The number of vCPUs the instance has.
 
 
-=head2 Disks => ArrayRef[L<Paws::Lightsail::Disk>]
+=head2 Disks => ArrayRef[Lightsail_Disk]
 
   The disks attached to the instance.
 

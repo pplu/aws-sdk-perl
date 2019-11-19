@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::PutDataCatalogEncryptionSettings;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has DataCatalogEncryptionSettings => (is => 'ro', isa => 'Paws::Glue::DataCatalogEncryptionSettings', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_DataCatalogEncryptionSettings/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has DataCatalogEncryptionSettings => (is => 'ro', isa => Glue_DataCatalogEncryptionSettings, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutDataCatalogEncryptionSettings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::PutDataCatalogEncryptionSettingsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutDataCatalogEncryptionSettings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::PutDataCatalogEncryptionSettingsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DataCatalogEncryptionSettings' => 1
+                  },
+  'types' => {
+               'DataCatalogEncryptionSettings' => {
+                                                    'type' => 'Glue_DataCatalogEncryptionSettings',
+                                                    'class' => 'Paws::Glue::DataCatalogEncryptionSettings'
+                                                  },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +79,7 @@ none is provided, the AWS account ID is used by default.
 
 
 
-=head2 B<REQUIRED> DataCatalogEncryptionSettings => L<Paws::Glue::DataCatalogEncryptionSettings>
+=head2 B<REQUIRED> DataCatalogEncryptionSettings => Glue_DataCatalogEncryptionSettings
 
 The security configuration to set.
 

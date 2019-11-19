@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribePublicIpv4PoolsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has PublicIpv4Pools => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PublicIpv4Pool]', request_name => 'publicIpv4PoolSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_PublicIpv4Pool/;
+  has NextToken => (is => 'ro', isa => Str);
+  has PublicIpv4Pools => (is => 'ro', isa => ArrayRef[EC2_PublicIpv4Pool]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PublicIpv4Pools' => {
+                                      'type' => 'ArrayRef[EC2_PublicIpv4Pool]',
+                                      'class' => 'Paws::EC2::PublicIpv4Pool'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'PublicIpv4Pools' => 'publicIpv4PoolSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +48,7 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 PublicIpv4Pools => ArrayRef[L<Paws::EC2::PublicIpv4Pool>]
+=head2 PublicIpv4Pools => ArrayRef[EC2_PublicIpv4Pool]
 
 Information about the address pools.
 

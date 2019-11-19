@@ -1,21 +1,68 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::AdminCreateUser;
-  use Moose;
-  has ClientMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::ClientMetadataType');
-  has DesiredDeliveryMediums => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ForceAliasCreation => (is => 'ro', isa => 'Bool');
-  has MessageAction => (is => 'ro', isa => 'Str');
-  has TemporaryPassword => (is => 'ro', isa => 'Str');
-  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has ValidationData => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AttributeType CognitoIdp_ClientMetadataType/;
+  has ClientMetadata => (is => 'ro', isa => CognitoIdp_ClientMetadataType, predicate => 1);
+  has DesiredDeliveryMediums => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ForceAliasCreation => (is => 'ro', isa => Bool, predicate => 1);
+  has MessageAction => (is => 'ro', isa => Str, predicate => 1);
+  has TemporaryPassword => (is => 'ro', isa => Str, predicate => 1);
+  has UserAttributes => (is => 'ro', isa => ArrayRef[CognitoIdp_AttributeType], predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ValidationData => (is => 'ro', isa => ArrayRef[CognitoIdp_AttributeType], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AdminCreateUser');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::AdminCreateUserResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AdminCreateUser');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::AdminCreateUserResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'UserAttributes' => {
+                                     'type' => 'ArrayRef[CognitoIdp_AttributeType]',
+                                     'class' => 'Paws::CognitoIdp::AttributeType'
+                                   },
+               'ValidationData' => {
+                                     'type' => 'ArrayRef[CognitoIdp_AttributeType]',
+                                     'class' => 'Paws::CognitoIdp::AttributeType'
+                                   },
+               'ClientMetadata' => {
+                                     'type' => 'CognitoIdp_ClientMetadataType',
+                                     'class' => 'Paws::CognitoIdp::ClientMetadataType'
+                                   },
+               'MessageAction' => {
+                                    'type' => 'Str'
+                                  },
+               'ForceAliasCreation' => {
+                                         'type' => 'Bool'
+                                       },
+               'TemporaryPassword' => {
+                                        'type' => 'Str'
+                                      },
+               'DesiredDeliveryMediums' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'Username' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'Username' => 1,
+                    'UserPoolId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +119,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>
+=head2 ClientMetadata => CognitoIdp_ClientMetadataType
 
 A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -173,7 +220,7 @@ C<MessageAction> parameter.
 
 
 
-=head2 UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=head2 UserAttributes => ArrayRef[CognitoIdp_AttributeType]
 
 An array of name-value pairs that contain user attributes and attribute
 values to be set for the user to be created. You can create a user
@@ -230,7 +277,7 @@ The user pool ID for the user pool where the user will be created.
 
 
 
-=head2 ValidationData => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=head2 ValidationData => ArrayRef[CognitoIdp_AttributeType]
 
 The user's validation data. This is an array of name-value pairs that
 contain user attributes and attribute values that you can use for

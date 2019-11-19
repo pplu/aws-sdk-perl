@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SES::Destination;
-  use Moose;
-  has BccAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CcAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SES::Types qw//;
+  has BccAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CcAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ToAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CcAddresses' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'ToAddresses' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'BccAddresses' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

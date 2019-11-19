@@ -1,14 +1,15 @@
 package Paws::MediaTailor;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'api.mediatailor' }
   sub signing_name { 'mediatailor' }
   sub version { '2018-04-23' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -199,15 +200,15 @@ configuration resource.
 
 =item [AdDecisionServerUrl => Str]
 
-=item [CdnConfiguration => L<Paws::MediaTailor::CdnConfiguration>]
+=item [CdnConfiguration => MediaTailor_CdnConfiguration]
 
-=item [DashConfiguration => L<Paws::MediaTailor::DashConfigurationForPut>]
+=item [DashConfiguration => MediaTailor_DashConfigurationForPut]
 
 =item [Name => Str]
 
 =item [SlateAdUrl => Str]
 
-=item [Tags => L<Paws::MediaTailor::__mapOf__string>]
+=item [Tags => MediaTailor___mapOf__string]
 
 =item [TranscodeProfileName => Str]
 
@@ -229,7 +230,7 @@ Adds a new playback configuration to AWS Elemental MediaTailor.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::MediaTailor::__mapOf__string>
+=item Tags => MediaTailor___mapOf__string
 
 
 =back

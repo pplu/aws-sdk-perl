@@ -1,17 +1,77 @@
+# Generated from default/object.tt
 package Paws::IAM::RoleDetail;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has AssumeRolePolicyDocument => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute']);
-  has AttachedManagedPolicies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::AttachedPolicy]');
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has InstanceProfileList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::InstanceProfile]');
-  has Path => (is => 'ro', isa => 'Str');
-  has PermissionsBoundary => (is => 'ro', isa => 'Paws::IAM::AttachedPermissionsBoundary');
-  has RoleId => (is => 'ro', isa => 'Str');
-  has RoleLastUsed => (is => 'ro', isa => 'Paws::IAM::RoleLastUsed');
-  has RoleName => (is => 'ro', isa => 'Str');
-  has RolePolicyList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyDetail]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IAM::Types qw/IAM_PolicyDetail IAM_RoleLastUsed IAM_InstanceProfile IAM_AttachedPolicy IAM_AttachedPermissionsBoundary IAM_Tag/;
+  has Arn => (is => 'ro', isa => Str);
+  has AssumeRolePolicyDocument => (is => 'ro', isa => Str);
+  has Policy => ( is => 'lazy', builder => sub { my $self = shift;  return decode_json(URL::Encode::url_decode($self->AssumeRolePolicyDocument)); });
+  has AttachedManagedPolicies => (is => 'ro', isa => ArrayRef[IAM_AttachedPolicy]);
+  has CreateDate => (is => 'ro', isa => Str);
+  has InstanceProfileList => (is => 'ro', isa => ArrayRef[IAM_InstanceProfile]);
+  has Path => (is => 'ro', isa => Str);
+  has PermissionsBoundary => (is => 'ro', isa => IAM_AttachedPermissionsBoundary);
+  has RoleId => (is => 'ro', isa => Str);
+  has RoleLastUsed => (is => 'ro', isa => IAM_RoleLastUsed);
+  has RoleName => (is => 'ro', isa => Str);
+  has RolePolicyList => (is => 'ro', isa => ArrayRef[IAM_PolicyDetail]);
+  has Tags => (is => 'ro', isa => ArrayRef[IAM_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AssumeRolePolicyDocument' => {
+                                               'type' => 'Str'
+                                             },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Tags' => {
+                           'class' => 'Paws::IAM::Tag',
+                           'type' => 'ArrayRef[IAM_Tag]'
+                         },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'PermissionsBoundary' => {
+                                          'type' => 'IAM_AttachedPermissionsBoundary',
+                                          'class' => 'Paws::IAM::AttachedPermissionsBoundary'
+                                        },
+               'AttachedManagedPolicies' => {
+                                              'type' => 'ArrayRef[IAM_AttachedPolicy]',
+                                              'class' => 'Paws::IAM::AttachedPolicy'
+                                            },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'RoleId' => {
+                             'type' => 'Str'
+                           },
+               'InstanceProfileList' => {
+                                          'class' => 'Paws::IAM::InstanceProfile',
+                                          'type' => 'ArrayRef[IAM_InstanceProfile]'
+                                        },
+               'RolePolicyList' => {
+                                     'type' => 'ArrayRef[IAM_PolicyDetail]',
+                                     'class' => 'Paws::IAM::PolicyDetail'
+                                   },
+               'RoleLastUsed' => {
+                                   'type' => 'IAM_RoleLastUsed',
+                                   'class' => 'Paws::IAM::RoleLastUsed'
+                                 },
+               'RoleName' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +121,7 @@ GetAccountAuthorizationDetails operation.
   The trust policy that grants permission to assume the role.
 
 
-=head2 AttachedManagedPolicies => ArrayRef[L<Paws::IAM::AttachedPolicy>]
+=head2 AttachedManagedPolicies => ArrayRef[IAM_AttachedPolicy]
 
   A list of managed policies attached to the role. These policies are the
 role's access (permissions) policies.
@@ -73,7 +133,7 @@ role's access (permissions) policies.
 (http://www.iso.org/iso/iso8601), when the role was created.
 
 
-=head2 InstanceProfileList => ArrayRef[L<Paws::IAM::InstanceProfile>]
+=head2 InstanceProfileList => ArrayRef[IAM_InstanceProfile]
 
   A list of instance profiles that contain this role.
 
@@ -86,7 +146,7 @@ Identifiers
 in the I<IAM User Guide>.
 
 
-=head2 PermissionsBoundary => L<Paws::IAM::AttachedPermissionsBoundary>
+=head2 PermissionsBoundary => IAM_AttachedPermissionsBoundary
 
   The ARN of the policy used to set the permissions boundary for the
 role.
@@ -105,7 +165,7 @@ about IDs, see IAM Identifiers
 in the I<IAM User Guide>.
 
 
-=head2 RoleLastUsed => L<Paws::IAM::RoleLastUsed>
+=head2 RoleLastUsed => IAM_RoleLastUsed
 
   Contains information about the last time that an IAM role was used.
 This includes the date and time and the Region in which the role was
@@ -122,13 +182,13 @@ in the I<IAM User Guide>.
   The friendly name that identifies the role.
 
 
-=head2 RolePolicyList => ArrayRef[L<Paws::IAM::PolicyDetail>]
+=head2 RolePolicyList => ArrayRef[IAM_PolicyDetail]
 
   A list of inline policies embedded in the role. These policies are the
 role's access (permissions) policies.
 
 
-=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+=head2 Tags => ArrayRef[IAM_Tag]
 
   A list of tags that are attached to the specified role. For more
 information about tagging, see Tagging IAM Identities

@@ -1,17 +1,74 @@
+# Generated from default/object.tt
 package Paws::Config::RemediationConfiguration;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Automatic => (is => 'ro', isa => 'Bool');
-  has ConfigRuleName => (is => 'ro', isa => 'Str', required => 1);
-  has CreatedByService => (is => 'ro', isa => 'Str');
-  has ExecutionControls => (is => 'ro', isa => 'Paws::Config::ExecutionControls');
-  has MaximumAutomaticAttempts => (is => 'ro', isa => 'Int');
-  has Parameters => (is => 'ro', isa => 'Paws::Config::RemediationParameters');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has RetryAttemptSeconds => (is => 'ro', isa => 'Int');
-  has TargetId => (is => 'ro', isa => 'Str', required => 1);
-  has TargetType => (is => 'ro', isa => 'Str', required => 1);
-  has TargetVersion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::Config::Types qw/Config_ExecutionControls Config_RemediationParameters/;
+  has Arn => (is => 'ro', isa => Str);
+  has Automatic => (is => 'ro', isa => Bool);
+  has ConfigRuleName => (is => 'ro', isa => Str, required => 1);
+  has CreatedByService => (is => 'ro', isa => Str);
+  has ExecutionControls => (is => 'ro', isa => Config_ExecutionControls);
+  has MaximumAutomaticAttempts => (is => 'ro', isa => Int);
+  has Parameters => (is => 'ro', isa => Config_RemediationParameters);
+  has ResourceType => (is => 'ro', isa => Str);
+  has RetryAttemptSeconds => (is => 'ro', isa => Int);
+  has TargetId => (is => 'ro', isa => Str, required => 1);
+  has TargetType => (is => 'ro', isa => Str, required => 1);
+  has TargetVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TargetType' => 1,
+                    'TargetId' => 1,
+                    'ConfigRuleName' => 1
+                  },
+  'types' => {
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'ExecutionControls' => {
+                                        'class' => 'Paws::Config::ExecutionControls',
+                                        'type' => 'Config_ExecutionControls'
+                                      },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'CreatedByService' => {
+                                       'type' => 'Str'
+                                     },
+               'Automatic' => {
+                                'type' => 'Bool'
+                              },
+               'TargetVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'TargetId' => {
+                               'type' => 'Str'
+                             },
+               'Parameters' => {
+                                 'class' => 'Paws::Config::RemediationParameters',
+                                 'type' => 'Config_RemediationParameters'
+                               },
+               'MaximumAutomaticAttempts' => {
+                                               'type' => 'Int'
+                                             },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ConfigRuleName' => {
+                                     'type' => 'Str'
+                                   },
+               'RetryAttemptSeconds' => {
+                                          'type' => 'Int'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +126,7 @@ data to execute the action.
   Name of the service that owns the service linked rule, if applicable.
 
 
-=head2 ExecutionControls => L<Paws::Config::ExecutionControls>
+=head2 ExecutionControls => Config_ExecutionControls
 
   An ExecutionControls object.
 
@@ -84,7 +141,7 @@ RetryAttemptsSeconds as 50 seconds, AWS Config throws an exception
 after the 5th failed attempt within 50 seconds.
 
 
-=head2 Parameters => L<Paws::Config::RemediationParameters>
+=head2 Parameters => Config_RemediationParameters
 
   An object of the RemediationParameterValue.
 

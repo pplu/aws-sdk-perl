@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::IoTThingsGraph::ListTagsForResourceResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTThingsGraph::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_Tag/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[IoTThingsGraph_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'ArrayRef[IoTThingsGraph_Tag]',
+                           'class' => 'Paws::IoTThingsGraph::Tag'
+                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +46,7 @@ Paws::IoTThingsGraph::ListTagsForResourceResponse
 The token that specifies the next page of results to return.
 
 
-=head2 Tags => ArrayRef[L<Paws::IoTThingsGraph::Tag>]
+=head2 Tags => ArrayRef[IoTThingsGraph_Tag]
 
 List of tags returned by the C<ListTagsForResource> operation.
 

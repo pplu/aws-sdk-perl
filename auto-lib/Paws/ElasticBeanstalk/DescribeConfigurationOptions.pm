@@ -1,18 +1,50 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::DescribeConfigurationOptions;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str');
-  has EnvironmentName => (is => 'ro', isa => 'Str');
-  has Options => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]');
-  has PlatformArn => (is => 'ro', isa => 'Str');
-  has SolutionStackName => (is => 'ro', isa => 'Str');
-  has TemplateName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_OptionSpecification/;
+  has ApplicationName => (is => 'ro', isa => Str, predicate => 1);
+  has EnvironmentName => (is => 'ro', isa => Str, predicate => 1);
+  has Options => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_OptionSpecification], predicate => 1);
+  has PlatformArn => (is => 'ro', isa => Str, predicate => 1);
+  has SolutionStackName => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ConfigurationOptionsDescription');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationOptionsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeConfigurationOptions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::ConfigurationOptionsDescription');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeConfigurationOptionsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Options' => {
+                              'type' => 'ArrayRef[ElasticBeanstalk_OptionSpecification]',
+                              'class' => 'Paws::ElasticBeanstalk::OptionSpecification'
+                            },
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'EnvironmentName' => {
+                                      'type' => 'Str'
+                                    },
+               'SolutionStackName' => {
+                                        'type' => 'Str'
+                                      },
+               'PlatformArn' => {
+                                  'type' => 'Str'
+                                },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +100,7 @@ describe.
 
 
 
-=head2 Options => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
+=head2 Options => ArrayRef[ElasticBeanstalk_OptionSpecification]
 
 If specified, restricts the descriptions to only the specified options.
 

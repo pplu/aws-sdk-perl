@@ -1,10 +1,32 @@
 
 package Paws::Chime::GetGlobalSettingsResponse;
-  use Moose;
-  has BusinessCalling => (is => 'ro', isa => 'Paws::Chime::BusinessCallingSettings');
-  has VoiceConnector => (is => 'ro', isa => 'Paws::Chime::VoiceConnectorSettings');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw/Chime_BusinessCallingSettings Chime_VoiceConnectorSettings/;
+  has BusinessCalling => (is => 'ro', isa => Chime_BusinessCallingSettings);
+  has VoiceConnector => (is => 'ro', isa => Chime_VoiceConnectorSettings);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VoiceConnector' => {
+                                     'type' => 'Chime_VoiceConnectorSettings',
+                                     'class' => 'Paws::Chime::VoiceConnectorSettings'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BusinessCalling' => {
+                                      'class' => 'Paws::Chime::BusinessCallingSettings',
+                                      'type' => 'Chime_BusinessCallingSettings'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,12 +38,12 @@ Paws::Chime::GetGlobalSettingsResponse
 =head1 ATTRIBUTES
 
 
-=head2 BusinessCalling => L<Paws::Chime::BusinessCallingSettings>
+=head2 BusinessCalling => Chime_BusinessCallingSettings
 
 The Amazon Chime Business Calling settings.
 
 
-=head2 VoiceConnector => L<Paws::Chime::VoiceConnectorSettings>
+=head2 VoiceConnector => Chime_VoiceConnectorSettings
 
 The Amazon Chime Voice Connector settings.
 

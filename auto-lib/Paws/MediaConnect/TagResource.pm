@@ -1,15 +1,44 @@
 
 package Paws::MediaConnect::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceArn', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::MediaConnect::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConnect::Types qw/MediaConnect___mapOf__string/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => MediaConnect___mapOf__string, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tags/{resourceArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tags/{resourceArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'Tags' => 1
+                  },
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::MediaConnect::__mapOf__string',
+                           'type' => 'MediaConnect___mapOf__string'
+                         }
+             },
+  'ParamInURI' => {
+                    'ResourceArn' => 'resourceArn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +77,7 @@ MediaConnect resource to which to add tags.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::MediaConnect::__mapOf__string>
+=head2 B<REQUIRED> Tags => MediaConnect___mapOf__string
 
 A map from tag keys to values. Tag keys can have a maximum character
 length of 128 characters, and tag values can have a maximum length of

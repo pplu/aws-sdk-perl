@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Route53Resolver;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'route53resolver' }
   sub signing_name { 'route53resolver' }
   sub version { '2018-04-01' }
   sub target_prefix { 'Route53Resolver' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -246,7 +248,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =over
 
-=item IpAddress => L<Paws::Route53Resolver::IpAddressUpdate>
+=item IpAddress => Route53Resolver_IpAddressUpdate
 
 =item ResolverEndpointId => Str
 
@@ -297,13 +299,13 @@ in the rule. For more information about rules, see CreateResolverRule.
 
 =item Direction => Str
 
-=item IpAddresses => ArrayRef[L<Paws::Route53Resolver::IpAddressRequest>]
+=item IpAddresses => ArrayRef[Route53Resolver_IpAddressRequest]
 
 =item SecurityGroupIds => ArrayRef[Str|Undef]
 
 =item [Name => Str]
 
-=item [Tags => ArrayRef[L<Paws::Route53Resolver::Tag>]]
+=item [Tags => ArrayRef[Route53Resolver_Tag]]
 
 
 =back
@@ -345,9 +347,9 @@ service for a VPC to your network or another VPC.
 
 =item [ResolverEndpointId => Str]
 
-=item [Tags => ArrayRef[L<Paws::Route53Resolver::Tag>]]
+=item [Tags => ArrayRef[Route53Resolver_Tag]]
 
-=item [TargetIps => ArrayRef[L<Paws::Route53Resolver::TargetAddress>]]
+=item [TargetIps => ArrayRef[Route53Resolver_TargetAddress]]
 
 
 =back
@@ -416,7 +418,7 @@ rule with. For more infomation, see DisassociateResolverRule.
 
 =over
 
-=item IpAddress => L<Paws::Route53Resolver::IpAddressUpdate>
+=item IpAddress => Route53Resolver_IpAddressUpdate
 
 =item ResolverEndpointId => Str
 
@@ -554,7 +556,7 @@ Gets the IP addresses for a specified resolver endpoint.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Route53Resolver::Filter>]]
+=item [Filters => ArrayRef[Route53Resolver_Filter]]
 
 =item [MaxResults => Int]
 
@@ -575,7 +577,7 @@ AWS account.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Route53Resolver::Filter>]]
+=item [Filters => ArrayRef[Route53Resolver_Filter]]
 
 =item [MaxResults => Int]
 
@@ -596,7 +598,7 @@ VPCs using the current AWS account.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Route53Resolver::Filter>]]
+=item [Filters => ArrayRef[Route53Resolver_Filter]]
 
 =item [MaxResults => Int]
 
@@ -658,7 +660,7 @@ another AWS account to be able to use.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::Route53Resolver::Tag>]
+=item Tags => ArrayRef[Route53Resolver_Tag]
 
 
 =back
@@ -710,7 +712,7 @@ Updates the name of an inbound or an outbound resolver endpoint.
 
 =over
 
-=item Config => L<Paws::Route53Resolver::ResolverRuleConfig>
+=item Config => Route53Resolver_ResolverRuleConfig
 
 =item ResolverRuleId => Str
 

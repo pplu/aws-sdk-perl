@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::Get;
-  use Moose;
-  has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
-  has Key => (is => 'ro', isa => 'Paws::DynamoDB::Key', required => 1);
-  has ProjectionExpression => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ExpressionAttributeNameMap DynamoDB_Key/;
+  has ExpressionAttributeNames => (is => 'ro', isa => DynamoDB_ExpressionAttributeNameMap);
+  has Key => (is => 'ro', isa => DynamoDB_Key, required => 1);
+  has ProjectionExpression => (is => 'ro', isa => Str);
+  has TableName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Key' => {
+                          'type' => 'DynamoDB_Key',
+                          'class' => 'Paws::DynamoDB::Key'
+                        },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'ExpressionAttributeNames' => {
+                                               'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
+                                               'type' => 'DynamoDB_ExpressionAttributeNameMap'
+                                             },
+               'ProjectionExpression' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'Key' => 1,
+                    'TableName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,13 +72,13 @@ C<TransactGetItem> object.
 =head1 ATTRIBUTES
 
 
-=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
+=head2 ExpressionAttributeNames => DynamoDB_ExpressionAttributeNameMap
 
   One or more substitution tokens for attribute names in the
 ProjectionExpression parameter.
 
 
-=head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
+=head2 B<REQUIRED> Key => DynamoDB_Key
 
   A map of attribute names to C<AttributeValue> objects that specifies
 the primary key of the item to retrieve.

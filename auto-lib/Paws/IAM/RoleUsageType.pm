@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::IAM::RoleUsageType;
-  use Moose;
-  has Region => (is => 'ro', isa => 'Str');
-  has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::IAM::Types qw//;
+  has Region => (is => 'ro', isa => Str);
+  has Resources => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'Resources' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodePipeline::GetJobDetailsOutput;
-  use Moose;
-  has JobDetails => (is => 'ro', isa => 'Paws::CodePipeline::JobDetails', traits => ['NameInRequest'], request_name => 'jobDetails' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_JobDetails/;
+  has JobDetails => (is => 'ro', isa => CodePipeline_JobDetails);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobDetails' => {
+                                 'class' => 'Paws::CodePipeline::JobDetails',
+                                 'type' => 'CodePipeline_JobDetails'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'JobDetails' => 'jobDetails'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CodePipeline::GetJobDetailsOutput
 =head1 ATTRIBUTES
 
 
-=head2 JobDetails => L<Paws::CodePipeline::JobDetails>
+=head2 JobDetails => CodePipeline_JobDetails
 
 The details of the job.
 

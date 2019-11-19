@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DAX::DescribeClustersResponse;
-  use Moose;
-  has Clusters => (is => 'ro', isa => 'ArrayRef[Paws::DAX::Cluster]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DAX::Types qw/DAX_Cluster/;
+  has Clusters => (is => 'ro', isa => ArrayRef[DAX_Cluster]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Clusters' => {
+                               'type' => 'ArrayRef[DAX_Cluster]',
+                               'class' => 'Paws::DAX::Cluster'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::DAX::DescribeClustersResponse
 =head1 ATTRIBUTES
 
 
-=head2 Clusters => ArrayRef[L<Paws::DAX::Cluster>]
+=head2 Clusters => ArrayRef[DAX_Cluster]
 
 The descriptions of your DAX clusters, in response to a
 I<DescribeClusters> request.

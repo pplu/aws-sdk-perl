@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::LambdaFunctionInfo;
-  use Moose;
-  has CurrentVersion => (is => 'ro', isa => 'Str', request_name => 'currentVersion', traits => ['NameInRequest']);
-  has FunctionAlias => (is => 'ro', isa => 'Str', request_name => 'functionAlias', traits => ['NameInRequest']);
-  has FunctionName => (is => 'ro', isa => 'Str', request_name => 'functionName', traits => ['NameInRequest']);
-  has TargetVersion => (is => 'ro', isa => 'Str', request_name => 'targetVersion', traits => ['NameInRequest']);
-  has TargetVersionWeight => (is => 'ro', isa => 'Num', request_name => 'targetVersionWeight', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::CodeDeploy::Types qw//;
+  has CurrentVersion => (is => 'ro', isa => Str);
+  has FunctionAlias => (is => 'ro', isa => Str);
+  has FunctionName => (is => 'ro', isa => Str);
+  has TargetVersion => (is => 'ro', isa => Str);
+  has TargetVersionWeight => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrentVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'TargetVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'TargetVersionWeight' => {
+                                          'type' => 'Num'
+                                        },
+               'FunctionAlias' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'CurrentVersion' => 'currentVersion',
+                       'FunctionName' => 'functionName',
+                       'TargetVersion' => 'targetVersion',
+                       'TargetVersionWeight' => 'targetVersionWeight',
+                       'FunctionAlias' => 'functionAlias'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceDiscovery::ListNamespacesResponse;
-  use Moose;
-  has Namespaces => (is => 'ro', isa => 'ArrayRef[Paws::ServiceDiscovery::NamespaceSummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_NamespaceSummary/;
+  has Namespaces => (is => 'ro', isa => ArrayRef[ServiceDiscovery_NamespaceSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Namespaces' => {
+                                 'type' => 'ArrayRef[ServiceDiscovery_NamespaceSummary]',
+                                 'class' => 'Paws::ServiceDiscovery::NamespaceSummary'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::ServiceDiscovery::ListNamespacesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Namespaces => ArrayRef[L<Paws::ServiceDiscovery::NamespaceSummary>]
+=head2 Namespaces => ArrayRef[ServiceDiscovery_NamespaceSummary]
 
 An array that contains one C<NamespaceSummary> object for each
 namespace that matches the specified filter criteria.

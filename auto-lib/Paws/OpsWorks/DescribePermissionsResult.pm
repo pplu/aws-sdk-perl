@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::OpsWorks::DescribePermissionsResult;
-  use Moose;
-  has Permissions => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Permission]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::OpsWorks::Types qw/OpsWorks_Permission/;
+  has Permissions => (is => 'ro', isa => ArrayRef[OpsWorks_Permission]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Permissions' => {
+                                  'type' => 'ArrayRef[OpsWorks_Permission]',
+                                  'class' => 'Paws::OpsWorks::Permission'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::OpsWorks::DescribePermissionsResult
 =head1 ATTRIBUTES
 
 
-=head2 Permissions => ArrayRef[L<Paws::OpsWorks::Permission>]
+=head2 Permissions => ArrayRef[OpsWorks_Permission]
 
 An array of C<Permission> objects that describe the stack permissions.
 

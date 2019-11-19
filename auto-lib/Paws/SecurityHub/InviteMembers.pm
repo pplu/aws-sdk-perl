@@ -1,14 +1,29 @@
 
 package Paws::SecurityHub::InviteMembers;
-  use Moose;
-  has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SecurityHub::Types qw//;
+  has AccountIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'InviteMembers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/members/invite');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::InviteMembersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'InviteMembers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/members/invite');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::InviteMembersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

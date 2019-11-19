@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::GlobalAccelerator::IpSet;
-  use Moose;
-  has IpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has IpFamily => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::GlobalAccelerator::Types qw//;
+  has IpAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has IpFamily => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IpFamily' => {
+                               'type' => 'Str'
+                             },
+               'IpAddresses' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

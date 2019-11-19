@@ -1,17 +1,50 @@
 
 package Paws::EC2::DetachVolume;
-  use Moose;
-  has Device => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Force => (is => 'ro', isa => 'Bool');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has VolumeId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has Device => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Force => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, predicate => 1);
+  has VolumeId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachVolume');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::VolumeAttachment');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DetachVolume');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::VolumeAttachment');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'VolumeId' => 1
+                  },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun'
+                     },
+  'types' => {
+               'VolumeId' => {
+                               'type' => 'Str'
+                             },
+               'Device' => {
+                             'type' => 'Str'
+                           },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Force' => {
+                            'type' => 'Bool'
+                          },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

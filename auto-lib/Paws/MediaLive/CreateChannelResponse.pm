@@ -1,19 +1,84 @@
 
 package Paws::MediaLive::CreateChannelResponse;
-  use Moose;
-  has ChannelClass => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelClass');
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
-  has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
-  has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
-  has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', traits => ['NameInRequest'], request_name => 'inputSpecification');
-  has LogLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logLevel');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
-  has Reserved => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reserved');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_InputSpecification MediaLive_InputAttachment MediaLive_Tags MediaLive_EncoderSettings MediaLive_OutputDestination/;
+  has ChannelClass => (is => 'ro', isa => Str);
+  has Destinations => (is => 'ro', isa => ArrayRef[MediaLive_OutputDestination]);
+  has EncoderSettings => (is => 'ro', isa => MediaLive_EncoderSettings);
+  has InputAttachments => (is => 'ro', isa => ArrayRef[MediaLive_InputAttachment]);
+  has InputSpecification => (is => 'ro', isa => MediaLive_InputSpecification);
+  has LogLevel => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RequestId => (is => 'ro', isa => Str);
+  has Reserved => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => MediaLive_Tags);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputAttachments' => {
+                                       'class' => 'Paws::MediaLive::InputAttachment',
+                                       'type' => 'ArrayRef[MediaLive_InputAttachment]'
+                                     },
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'Reserved' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LogLevel' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InputSpecification' => {
+                                         'type' => 'MediaLive_InputSpecification',
+                                         'class' => 'Paws::MediaLive::InputSpecification'
+                                       },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ChannelClass' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'type' => 'MediaLive_Tags',
+                           'class' => 'Paws::MediaLive::Tags'
+                         },
+               'Destinations' => {
+                                   'type' => 'ArrayRef[MediaLive_OutputDestination]',
+                                   'class' => 'Paws::MediaLive::OutputDestination'
+                                 },
+               'EncoderSettings' => {
+                                      'type' => 'MediaLive_EncoderSettings',
+                                      'class' => 'Paws::MediaLive::EncoderSettings'
+                                    }
+             },
+  'NameInRequest' => {
+                       'InputSpecification' => 'inputSpecification',
+                       'RoleArn' => 'roleArn',
+                       'ChannelClass' => 'channelClass',
+                       'Tags' => 'tags',
+                       'Destinations' => 'destinations',
+                       'EncoderSettings' => 'encoderSettings',
+                       'InputAttachments' => 'inputAttachments',
+                       'RequestId' => 'requestId',
+                       'Reserved' => 'reserved',
+                       'Name' => 'name',
+                       'LogLevel' => 'logLevel'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -31,22 +96,22 @@ The class for this channel. STANDARD for a channel with two pipelines
 or SINGLE_PIPELINE for a channel with one pipeline.
 
 Valid values are: C<"STANDARD">, C<"SINGLE_PIPELINE">
-=head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
+=head2 Destinations => ArrayRef[MediaLive_OutputDestination]
 
 
 
 
-=head2 EncoderSettings => L<Paws::MediaLive::EncoderSettings>
+=head2 EncoderSettings => MediaLive_EncoderSettings
 
 
 
 
-=head2 InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]
+=head2 InputAttachments => ArrayRef[MediaLive_InputAttachment]
 
 List of input attachments for channel.
 
 
-=head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
+=head2 InputSpecification => MediaLive_InputSpecification
 
 Specification of input for this channel (max. bitrate, resolution,
 codec, etc.)
@@ -79,7 +144,7 @@ An optional Amazon Resource Name (ARN) of the role to assume when
 running the Channel.
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
 A collection of key-value pairs.
 

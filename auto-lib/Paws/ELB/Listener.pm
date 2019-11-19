@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::ELB::Listener;
-  use Moose;
-  has InstancePort => (is => 'ro', isa => 'Int', required => 1);
-  has InstanceProtocol => (is => 'ro', isa => 'Str');
-  has LoadBalancerPort => (is => 'ro', isa => 'Int', required => 1);
-  has Protocol => (is => 'ro', isa => 'Str', required => 1);
-  has SSLCertificateId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::ELB::Types qw//;
+  has InstancePort => (is => 'ro', isa => Int, required => 1);
+  has InstanceProtocol => (is => 'ro', isa => Str);
+  has LoadBalancerPort => (is => 'ro', isa => Int, required => 1);
+  has Protocol => (is => 'ro', isa => Str, required => 1);
+  has SSLCertificateId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Protocol' => 1,
+                    'InstancePort' => 1,
+                    'LoadBalancerPort' => 1
+                  },
+  'types' => {
+               'SSLCertificateId' => {
+                                       'type' => 'Str'
+                                     },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'InstanceProtocol' => {
+                                       'type' => 'Str'
+                                     },
+               'LoadBalancerPort' => {
+                                       'type' => 'Int'
+                                     },
+               'InstancePort' => {
+                                   'type' => 'Int'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

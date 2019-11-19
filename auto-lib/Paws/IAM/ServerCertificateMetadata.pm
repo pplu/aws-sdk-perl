@@ -1,11 +1,49 @@
+# Generated from default/object.tt
 package Paws::IAM::ServerCertificateMetadata;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has Expiration => (is => 'ro', isa => 'Str');
-  has Path => (is => 'ro', isa => 'Str', required => 1);
-  has ServerCertificateId => (is => 'ro', isa => 'Str', required => 1);
-  has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
-  has UploadDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has Expiration => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str, required => 1);
+  has ServerCertificateId => (is => 'ro', isa => Str, required => 1);
+  has ServerCertificateName => (is => 'ro', isa => Str, required => 1);
+  has UploadDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Path' => 1,
+                    'ServerCertificateId' => 1,
+                    'Arn' => 1,
+                    'ServerCertificateName' => 1
+                  },
+  'types' => {
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'UploadDate' => {
+                                 'type' => 'Str'
+                               },
+               'ServerCertificateName' => {
+                                            'type' => 'Str'
+                                          },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'ServerCertificateId' => {
+                                          'type' => 'Str'
+                                        },
+               'Expiration' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

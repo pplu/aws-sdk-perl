@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::RepositoryTriggerExecutionFailure;
-  use Moose;
-  has FailureMessage => (is => 'ro', isa => 'Str', request_name => 'failureMessage', traits => ['NameInRequest']);
-  has Trigger => (is => 'ro', isa => 'Str', request_name => 'trigger', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has FailureMessage => (is => 'ro', isa => Str);
+  has Trigger => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Trigger' => {
+                              'type' => 'Str'
+                            },
+               'FailureMessage' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Trigger' => 'trigger',
+                       'FailureMessage' => 'failureMessage'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

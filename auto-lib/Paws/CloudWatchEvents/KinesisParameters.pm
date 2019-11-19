@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::CloudWatchEvents::KinesisParameters;
-  use Moose;
-  has PartitionKeyPath => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchEvents::Types qw//;
+  has PartitionKeyPath => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PartitionKeyPath' => 1
+                  },
+  'types' => {
+               'PartitionKeyPath' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

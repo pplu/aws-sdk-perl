@@ -1,17 +1,53 @@
 
 package Paws::ApiGateway::CreateBasePathMapping;
-  use Moose;
-  has BasePath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'basePath');
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domain_name', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'restApiId', required => 1);
-  has Stage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stage');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has BasePath => (is => 'ro', isa => Str, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Stage => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBasePathMapping');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames/{domain_name}/basepathmappings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::BasePathMapping');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBasePathMapping');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/domainnames/{domain_name}/basepathmappings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::BasePathMapping');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Stage' => {
+                            'type' => 'Str'
+                          },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'BasePath' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'DomainName' => 1
+                  },
+  'NameInRequest' => {
+                       'Stage' => 'stage',
+                       'RestApiId' => 'restApiId',
+                       'BasePath' => 'basePath'
+                     },
+  'ParamInURI' => {
+                    'DomainName' => 'domain_name'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

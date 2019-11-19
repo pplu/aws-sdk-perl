@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::FileModes;
-  use Moose;
-  has Base => (is => 'ro', isa => 'Str', request_name => 'base', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
-  has Source => (is => 'ro', isa => 'Str', request_name => 'source', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has Base => (is => 'ro', isa => Str);
+  has Destination => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Base' => {
+                           'type' => 'Str'
+                         },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'Destination' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Destination' => 'destination',
+                       'Base' => 'base',
+                       'Source' => 'source'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

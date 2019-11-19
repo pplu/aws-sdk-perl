@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaLive::DvbSdtSettings;
-  use Moose;
-  has OutputSdt => (is => 'ro', isa => 'Str', request_name => 'outputSdt', traits => ['NameInRequest']);
-  has RepInterval => (is => 'ro', isa => 'Int', request_name => 'repInterval', traits => ['NameInRequest']);
-  has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
-  has ServiceProviderName => (is => 'ro', isa => 'Str', request_name => 'serviceProviderName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaLive::Types qw//;
+  has OutputSdt => (is => 'ro', isa => Str);
+  has RepInterval => (is => 'ro', isa => Int);
+  has ServiceName => (is => 'ro', isa => Str);
+  has ServiceProviderName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceProviderName' => {
+                                          'type' => 'Str'
+                                        },
+               'OutputSdt' => {
+                                'type' => 'Str'
+                              },
+               'RepInterval' => {
+                                  'type' => 'Int'
+                                },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ServiceName' => 'serviceName',
+                       'OutputSdt' => 'outputSdt',
+                       'ServiceProviderName' => 'serviceProviderName',
+                       'RepInterval' => 'repInterval'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

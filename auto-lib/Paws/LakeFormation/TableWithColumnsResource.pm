@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::LakeFormation::TableWithColumnsResource;
-  use Moose;
-  has ColumnNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ColumnWildcard => (is => 'ro', isa => 'Paws::LakeFormation::ColumnWildcard');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::LakeFormation::Types qw/LakeFormation_ColumnWildcard/;
+  has ColumnNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ColumnWildcard => (is => 'ro', isa => LakeFormation_ColumnWildcard);
+  has DatabaseName => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'ColumnWildcard' => {
+                                     'class' => 'Paws::LakeFormation::ColumnWildcard',
+                                     'type' => 'LakeFormation_ColumnWildcard'
+                                   },
+               'ColumnNames' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +76,7 @@ C<ColumnsIndexes>, or C<ColumnsWildcard>.
 or C<ColumnWildcard> is required.
 
 
-=head2 ColumnWildcard => L<Paws::LakeFormation::ColumnWildcard>
+=head2 ColumnWildcard => LakeFormation_ColumnWildcard
 
   A wildcard specified by a C<ColumnWildcard> object. At least one of
 C<ColumnNames> or C<ColumnWildcard> is required.

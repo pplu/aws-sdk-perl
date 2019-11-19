@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Firehose::InputFormatConfiguration;
-  use Moose;
-  has Deserializer => (is => 'ro', isa => 'Paws::Firehose::Deserializer');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Firehose::Types qw/Firehose_Deserializer/;
+  has Deserializer => (is => 'ro', isa => Firehose_Deserializer);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Deserializer' => {
+                                   'class' => 'Paws::Firehose::Deserializer',
+                                   'type' => 'Firehose_Deserializer'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ input data.
 =head1 ATTRIBUTES
 
 
-=head2 Deserializer => L<Paws::Firehose::Deserializer>
+=head2 Deserializer => Firehose_Deserializer
 
   Specifies which deserializer to use. You can choose either the Apache
 Hive JSON SerDe or the OpenX JSON SerDe. If both are non-null, the

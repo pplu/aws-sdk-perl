@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::GetDifferencesOutput;
-  use Moose;
-  has Differences => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::Difference]', traits => ['NameInRequest'], request_name => 'differences' );
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_Difference/;
+  has Differences => (is => 'ro', isa => ArrayRef[CodeCommit_Difference]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Differences' => {
+                                  'class' => 'Paws::CodeCommit::Difference',
+                                  'type' => 'ArrayRef[CodeCommit_Difference]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Differences' => 'differences'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +40,7 @@ Paws::CodeCommit::GetDifferencesOutput
 =head1 ATTRIBUTES
 
 
-=head2 Differences => ArrayRef[L<Paws::CodeCommit::Difference>]
+=head2 Differences => ArrayRef[CodeCommit_Difference]
 
 A differences data type object that contains information about the
 differences, including whether the difference is added, modified, or

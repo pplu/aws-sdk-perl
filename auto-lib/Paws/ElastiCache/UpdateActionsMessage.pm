@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::ElastiCache::UpdateActionsMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has UpdateActions => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::UpdateAction]', request_name => 'UpdateAction', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_UpdateAction/;
+  has Marker => (is => 'ro', isa => Str);
+  has UpdateActions => (is => 'ro', isa => ArrayRef[ElastiCache_UpdateAction]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'UpdateActions' => 'UpdateAction'
+                     },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'UpdateActions' => {
+                                    'class' => 'Paws::ElastiCache::UpdateAction',
+                                    'type' => 'ArrayRef[ElastiCache_UpdateAction]'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +49,7 @@ specified, the response includes only records beyond the marker, up to
 the value specified by C<MaxRecords>.
 
 
-=head2 UpdateActions => ArrayRef[L<Paws::ElastiCache::UpdateAction>]
+=head2 UpdateActions => ArrayRef[ElastiCache_UpdateAction]
 
 Returns a list of update actions
 

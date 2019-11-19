@@ -1,14 +1,36 @@
 
 package Paws::IoT::SetLoggingOptions;
-  use Moose;
-  has LoggingOptionsPayload => (is => 'ro', isa => 'Paws::IoT::LoggingOptionsPayload', traits => ['NameInRequest'], request_name => 'loggingOptionsPayload', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_LoggingOptionsPayload/;
+  has LoggingOptionsPayload => (is => 'ro', isa => IoT_LoggingOptionsPayload, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'LoggingOptionsPayload');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoggingOptions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/loggingOptions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetLoggingOptions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/loggingOptions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LoggingOptionsPayload' => 1
+                  },
+  'NameInRequest' => {
+                       'LoggingOptionsPayload' => 'loggingOptionsPayload'
+                     },
+  'types' => {
+               'LoggingOptionsPayload' => {
+                                            'class' => 'Paws::IoT::LoggingOptionsPayload',
+                                            'type' => 'IoT_LoggingOptionsPayload'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +65,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LoggingOptionsPayload => L<Paws::IoT::LoggingOptionsPayload>
+=head2 B<REQUIRED> LoggingOptionsPayload => IoT_LoggingOptionsPayload
 
 The logging options payload.
 

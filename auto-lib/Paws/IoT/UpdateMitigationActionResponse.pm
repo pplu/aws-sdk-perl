@@ -1,10 +1,34 @@
 
 package Paws::IoT::UpdateMitigationActionResponse;
-  use Moose;
-  has ActionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'actionArn');
-  has ActionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'actionId');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has ActionArn => (is => 'ro', isa => Str);
+  has ActionId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ActionId' => 'actionId',
+                       'ActionArn' => 'actionArn'
+                     },
+  'types' => {
+               'ActionId' => {
+                               'type' => 'Str'
+                             },
+               'ActionArn' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

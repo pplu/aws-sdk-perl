@@ -1,13 +1,62 @@
+# Generated from default/object.tt
 package Paws::IoT::StreamInfo;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Files => (is => 'ro', isa => 'ArrayRef[Paws::IoT::StreamFile]', request_name => 'files', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has StreamArn => (is => 'ro', isa => 'Str', request_name => 'streamArn', traits => ['NameInRequest']);
-  has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
-  has StreamVersion => (is => 'ro', isa => 'Int', request_name => 'streamVersion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::IoT::Types qw/IoT_StreamFile/;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Files => (is => 'ro', isa => ArrayRef[IoT_StreamFile]);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has StreamArn => (is => 'ro', isa => Str);
+  has StreamId => (is => 'ro', isa => Str);
+  has StreamVersion => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Files' => {
+                            'class' => 'Paws::IoT::StreamFile',
+                            'type' => 'ArrayRef[IoT_StreamFile]'
+                          },
+               'StreamVersion' => {
+                                    'type' => 'Int'
+                                  },
+               'StreamArn' => {
+                                'type' => 'Str'
+                              },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'StreamId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'StreamArn' => 'streamArn',
+                       'Files' => 'files',
+                       'StreamVersion' => 'streamVersion',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'StreamId' => 'streamId',
+                       'Description' => 'description',
+                       'RoleArn' => 'roleArn',
+                       'CreatedAt' => 'createdAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +102,7 @@ Information about a stream.
   The description of the stream.
 
 
-=head2 Files => ArrayRef[L<Paws::IoT::StreamFile>]
+=head2 Files => ArrayRef[IoT_StreamFile]
 
   The files to stream.
 

@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MTurk::DisassociateQualificationFromWorker;
-  use Moose;
-  has QualificationTypeId => (is => 'ro', isa => 'Str', required => 1);
-  has Reason => (is => 'ro', isa => 'Str');
-  has WorkerId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw//;
+  has QualificationTypeId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Reason => (is => 'ro', isa => Str, predicate => 1);
+  has WorkerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateQualificationFromWorker');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MTurk::DisassociateQualificationFromWorkerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisassociateQualificationFromWorker');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MTurk::DisassociateQualificationFromWorkerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkerId' => {
+                               'type' => 'Str'
+                             },
+               'QualificationTypeId' => {
+                                          'type' => 'Str'
+                                        },
+               'Reason' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'WorkerId' => 1,
+                    'QualificationTypeId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,50 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::GrantEntitlementRequest;
-  use Moose;
-  has DataTransferSubscriberFeePercent => (is => 'ro', isa => 'Int', request_name => 'dataTransferSubscriberFeePercent', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Subscribers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subscribers', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef Undef/;
+  use Paws::MediaConnect::Types qw/MediaConnect_Encryption/;
+  has DataTransferSubscriberFeePercent => (is => 'ro', isa => Int);
+  has Description => (is => 'ro', isa => Str);
+  has Encryption => (is => 'ro', isa => MediaConnect_Encryption);
+  has Name => (is => 'ro', isa => Str);
+  has Subscribers => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subscribers' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Encryption' => {
+                                 'type' => 'MediaConnect_Encryption',
+                                 'class' => 'Paws::MediaConnect::Encryption'
+                               },
+               'DataTransferSubscriberFeePercent' => {
+                                                       'type' => 'Int'
+                                                     }
+             },
+  'NameInRequest' => {
+                       'DataTransferSubscriberFeePercent' => 'dataTransferSubscriberFeePercent',
+                       'Encryption' => 'encryption',
+                       'Name' => 'name',
+                       'Description' => 'description',
+                       'Subscribers' => 'subscribers'
+                     },
+  'IsRequired' => {
+                    'Subscribers' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +93,7 @@ AWS Elemental MediaConnect console and will not be seen by the
 subscriber or end user.
 
 
-=head2 Encryption => L<Paws::MediaConnect::Encryption>
+=head2 Encryption => MediaConnect_Encryption
 
   The type of encryption that will be used on the output that is
 associated with this entitlement.

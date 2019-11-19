@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::CommentMetadata;
-  use Moose;
-  has CommentId => (is => 'ro', isa => 'Str');
-  has CommentStatus => (is => 'ro', isa => 'Str');
-  has Contributor => (is => 'ro', isa => 'Paws::WorkDocs::User');
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has RecipientId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw/WorkDocs_User/;
+  has CommentId => (is => 'ro', isa => Str);
+  has CommentStatus => (is => 'ro', isa => Str);
+  has Contributor => (is => 'ro', isa => WorkDocs_User);
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has RecipientId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'CommentId' => {
+                                'type' => 'Str'
+                              },
+               'CommentStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'RecipientId' => {
+                                  'type' => 'Str'
+                                },
+               'Contributor' => {
+                                  'type' => 'WorkDocs_User',
+                                  'class' => 'Paws::WorkDocs::User'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +80,7 @@ Describes the metadata of a comment.
   The status of the comment.
 
 
-=head2 Contributor => L<Paws::WorkDocs::User>
+=head2 Contributor => WorkDocs_User
 
   The user who made the comment.
 

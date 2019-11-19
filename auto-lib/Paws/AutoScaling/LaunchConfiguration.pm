@@ -1,24 +1,103 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::LaunchConfiguration;
-  use Moose;
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::BlockDeviceMapping]');
-  has ClassicLinkVPCId => (is => 'ro', isa => 'Str');
-  has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
-  has EbsOptimized => (is => 'ro', isa => 'Bool');
-  has IamInstanceProfile => (is => 'ro', isa => 'Str');
-  has ImageId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceMonitoring => (is => 'ro', isa => 'Paws::AutoScaling::InstanceMonitoring');
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has KernelId => (is => 'ro', isa => 'Str');
-  has KeyName => (is => 'ro', isa => 'Str');
-  has LaunchConfigurationARN => (is => 'ro', isa => 'Str');
-  has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
-  has PlacementTenancy => (is => 'ro', isa => 'Str');
-  has RamdiskId => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SpotPrice => (is => 'ro', isa => 'Str');
-  has UserData => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Str Undef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_InstanceMonitoring AutoScaling_BlockDeviceMapping/;
+  has AssociatePublicIpAddress => (is => 'ro', isa => Bool);
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[AutoScaling_BlockDeviceMapping]);
+  has ClassicLinkVPCId => (is => 'ro', isa => Str);
+  has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CreatedTime => (is => 'ro', isa => Str, required => 1);
+  has EbsOptimized => (is => 'ro', isa => Bool);
+  has IamInstanceProfile => (is => 'ro', isa => Str);
+  has ImageId => (is => 'ro', isa => Str, required => 1);
+  has InstanceMonitoring => (is => 'ro', isa => AutoScaling_InstanceMonitoring);
+  has InstanceType => (is => 'ro', isa => Str, required => 1);
+  has KernelId => (is => 'ro', isa => Str);
+  has KeyName => (is => 'ro', isa => Str);
+  has LaunchConfigurationARN => (is => 'ro', isa => Str);
+  has LaunchConfigurationName => (is => 'ro', isa => Str, required => 1);
+  has PlacementTenancy => (is => 'ro', isa => Str);
+  has RamdiskId => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SpotPrice => (is => 'ro', isa => Str);
+  has UserData => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'UserData' => {
+                               'type' => 'Str'
+                             },
+               'KeyName' => {
+                              'type' => 'Str'
+                            },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'BlockDeviceMappings' => {
+                                          'type' => 'ArrayRef[AutoScaling_BlockDeviceMapping]',
+                                          'class' => 'Paws::AutoScaling::BlockDeviceMapping'
+                                        },
+               'LaunchConfigurationName' => {
+                                              'type' => 'Str'
+                                            },
+               'SpotPrice' => {
+                                'type' => 'Str'
+                              },
+               'PlacementTenancy' => {
+                                       'type' => 'Str'
+                                     },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 },
+               'LaunchConfigurationARN' => {
+                                             'type' => 'Str'
+                                           },
+               'KernelId' => {
+                               'type' => 'Str'
+                             },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'InstanceMonitoring' => {
+                                         'class' => 'Paws::AutoScaling::InstanceMonitoring',
+                                         'type' => 'AutoScaling_InstanceMonitoring'
+                                       },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'AssociatePublicIpAddress' => {
+                                               'type' => 'Bool'
+                                             },
+               'IamInstanceProfile' => {
+                                         'type' => 'Str'
+                                       },
+               'ClassicLinkVPCId' => {
+                                       'type' => 'Str'
+                                     },
+               'RamdiskId' => {
+                                'type' => 'Str'
+                              },
+               'ClassicLinkVPCSecurityGroups' => {
+                                                   'type' => 'ArrayRef[Str|Undef]'
+                                                 }
+             },
+  'IsRequired' => {
+                    'ImageId' => 1,
+                    'InstanceType' => 1,
+                    'LaunchConfigurationName' => 1,
+                    'CreatedTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +143,7 @@ For more information, see Launching Auto Scaling Instances in a VPC
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>]
+=head2 BlockDeviceMappings => ArrayRef[AutoScaling_BlockDeviceMapping]
 
   A block device mapping, which specifies the block devices for the
 instance.
@@ -137,7 +216,7 @@ For more information, see Finding an AMI
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
-=head2 InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>
+=head2 InstanceMonitoring => AutoScaling_InstanceMonitoring
 
   Controls whether instances in this group are launched with detailed
 (C<true>) or basic (C<false>) monitoring.

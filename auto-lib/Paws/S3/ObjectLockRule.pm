@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::S3::ObjectLockRule;
-  use Moose;
-  has DefaultRetention => (is => 'ro', isa => 'Paws::S3::DefaultRetention');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_DefaultRetention/;
+  has DefaultRetention => (is => 'ro', isa => S3_DefaultRetention);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DefaultRetention' => {
+                                       'class' => 'Paws::S3::DefaultRetention',
+                                       'type' => 'S3_DefaultRetention'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ The container element for an Object Lock rule.
 =head1 ATTRIBUTES
 
 
-=head2 DefaultRetention => L<Paws::S3::DefaultRetention>
+=head2 DefaultRetention => S3_DefaultRetention
 
   The default retention period that you want to apply to new objects
 placed in the specified bucket.

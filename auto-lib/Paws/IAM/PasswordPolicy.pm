@@ -1,15 +1,59 @@
+# Generated from default/object.tt
 package Paws::IAM::PasswordPolicy;
-  use Moose;
-  has AllowUsersToChangePassword => (is => 'ro', isa => 'Bool');
-  has ExpirePasswords => (is => 'ro', isa => 'Bool');
-  has HardExpiry => (is => 'ro', isa => 'Bool');
-  has MaxPasswordAge => (is => 'ro', isa => 'Int');
-  has MinimumPasswordLength => (is => 'ro', isa => 'Int');
-  has PasswordReusePrevention => (is => 'ro', isa => 'Int');
-  has RequireLowercaseCharacters => (is => 'ro', isa => 'Bool');
-  has RequireNumbers => (is => 'ro', isa => 'Bool');
-  has RequireSymbols => (is => 'ro', isa => 'Bool');
-  has RequireUppercaseCharacters => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool Int/;
+  use Paws::IAM::Types qw//;
+  has AllowUsersToChangePassword => (is => 'ro', isa => Bool);
+  has ExpirePasswords => (is => 'ro', isa => Bool);
+  has HardExpiry => (is => 'ro', isa => Bool);
+  has MaxPasswordAge => (is => 'ro', isa => Int);
+  has MinimumPasswordLength => (is => 'ro', isa => Int);
+  has PasswordReusePrevention => (is => 'ro', isa => Int);
+  has RequireLowercaseCharacters => (is => 'ro', isa => Bool);
+  has RequireNumbers => (is => 'ro', isa => Bool);
+  has RequireSymbols => (is => 'ro', isa => Bool);
+  has RequireUppercaseCharacters => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxPasswordAge' => {
+                                     'type' => 'Int'
+                                   },
+               'RequireSymbols' => {
+                                     'type' => 'Bool'
+                                   },
+               'RequireNumbers' => {
+                                     'type' => 'Bool'
+                                   },
+               'MinimumPasswordLength' => {
+                                            'type' => 'Int'
+                                          },
+               'RequireUppercaseCharacters' => {
+                                                 'type' => 'Bool'
+                                               },
+               'HardExpiry' => {
+                                 'type' => 'Bool'
+                               },
+               'RequireLowercaseCharacters' => {
+                                                 'type' => 'Bool'
+                                               },
+               'ExpirePasswords' => {
+                                      'type' => 'Bool'
+                                    },
+               'AllowUsersToChangePassword' => {
+                                                 'type' => 'Bool'
+                                               },
+               'PasswordReusePrevention' => {
+                                              'type' => 'Int'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

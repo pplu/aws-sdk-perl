@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeIamInstanceProfileAssociationsResult;
-  use Moose;
-  has IamInstanceProfileAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IamInstanceProfileAssociation]', request_name => 'iamInstanceProfileAssociationSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_IamInstanceProfileAssociation/;
+  has IamInstanceProfileAssociations => (is => 'ro', isa => ArrayRef[EC2_IamInstanceProfileAssociation]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'IamInstanceProfileAssociations' => 'iamInstanceProfileAssociationSet',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IamInstanceProfileAssociations' => {
+                                                     'class' => 'Paws::EC2::IamInstanceProfileAssociation',
+                                                     'type' => 'ArrayRef[EC2_IamInstanceProfileAssociation]'
+                                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeIamInstanceProfileAssociationsResult
 =head1 ATTRIBUTES
 
 
-=head2 IamInstanceProfileAssociations => ArrayRef[L<Paws::EC2::IamInstanceProfileAssociation>]
+=head2 IamInstanceProfileAssociations => ArrayRef[EC2_IamInstanceProfileAssociation]
 
 Information about the IAM instance profile associations.
 

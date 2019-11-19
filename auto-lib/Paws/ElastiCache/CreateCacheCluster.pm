@@ -1,35 +1,121 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::CreateCacheCluster;
-  use Moose;
-  has AuthToken => (is => 'ro', isa => 'Str');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AZMode => (is => 'ro', isa => 'Str');
-  has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has CacheNodeType => (is => 'ro', isa => 'Str');
-  has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has NotificationTopicArn => (is => 'ro', isa => 'Str');
-  has NumCacheNodes => (is => 'ro', isa => 'Int');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
-  has PreferredAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SnapshotArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SnapshotName => (is => 'ro', isa => 'Str');
-  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
-  has SnapshotWindow => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef Int/;
+  use Paws::ElastiCache::Types qw/ElastiCache_Tag/;
+  has AuthToken => (is => 'ro', isa => Str, predicate => 1);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AZMode => (is => 'ro', isa => Str, predicate => 1);
+  has CacheClusterId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CacheNodeType => (is => 'ro', isa => Str, predicate => 1);
+  has CacheParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has CacheSecurityGroupNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has CacheSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationTopicArn => (is => 'ro', isa => Str, predicate => 1);
+  has NumCacheNodes => (is => 'ro', isa => Int, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredAvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredAvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationGroupId => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SnapshotArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SnapshotName => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotRetentionLimit => (is => 'ro', isa => Int, predicate => 1);
+  has SnapshotWindow => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ElastiCache_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCacheCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CreateCacheClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCacheClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCacheCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::CreateCacheClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateCacheClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'CacheSecurityGroupNames' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'CacheNodeType' => {
+                                    'type' => 'Str'
+                                  },
+               'NumCacheNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'SnapshotName' => {
+                                   'type' => 'Str'
+                                 },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'AZMode' => {
+                             'type' => 'Str'
+                           },
+               'SnapshotWindow' => {
+                                     'type' => 'Str'
+                                   },
+               'CacheClusterId' => {
+                                     'type' => 'Str'
+                                   },
+               'CacheSubnetGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'PreferredAvailabilityZone' => {
+                                                'type' => 'Str'
+                                              },
+               'SnapshotArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'NotificationTopicArn' => {
+                                           'type' => 'Str'
+                                         },
+               'SnapshotRetentionLimit' => {
+                                             'type' => 'Int'
+                                           },
+               'PreferredAvailabilityZones' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'CacheParameterGroupName' => {
+                                              'type' => 'Str'
+                                            },
+               'Tags' => {
+                           'class' => 'Paws::ElastiCache::Tag',
+                           'type' => 'ArrayRef[ElastiCache_Tag]'
+                         },
+               'AuthToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'CacheClusterId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -531,7 +617,7 @@ This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
+=head2 Tags => ArrayRef[ElastiCache_Tag]
 
 A list of cost allocation tags to be added to this resource.
 

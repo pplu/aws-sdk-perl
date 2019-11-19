@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::DeleteRequest;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Paws::DynamoDB::Key', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::DynamoDB::Types qw/DynamoDB_Key/;
+  has Key => (is => 'ro', isa => DynamoDB_Key, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Key' => 1
+                  },
+  'types' => {
+               'Key' => {
+                          'type' => 'DynamoDB_Key',
+                          'class' => 'Paws::DynamoDB::Key'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Represents a request to perform a C<DeleteItem> operation on an item.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
+=head2 B<REQUIRED> Key => DynamoDB_Key
 
   A map of attribute name to attribute values, representing the primary
 key of the item to delete. All of the table's primary key attributes

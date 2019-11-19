@@ -1,16 +1,47 @@
 
 package Paws::SSO::ListAccounts;
-  use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sso_bearer_token', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max_result');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'next_token');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSO::Types qw//;
+  has AccessToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAccounts');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/assignment/accounts');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSO::ListAccountsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAccounts');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/assignment/accounts');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSO::ListAccountsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccessToken' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'MaxResults' => 'max_result',
+                      'NextToken' => 'next_token'
+                    },
+  'IsRequired' => {
+                    'AccessToken' => 1
+                  },
+  'ParamInHeader' => {
+                       'AccessToken' => 'x-amz-sso_bearer_token'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

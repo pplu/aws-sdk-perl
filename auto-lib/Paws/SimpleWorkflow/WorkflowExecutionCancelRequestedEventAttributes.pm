@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes;
-  use Moose;
-  has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest']);
-  has ExternalInitiatedEventId => (is => 'ro', isa => 'Int', request_name => 'externalInitiatedEventId', traits => ['NameInRequest']);
-  has ExternalWorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'externalWorkflowExecution', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowExecution/;
+  has Cause => (is => 'ro', isa => Str);
+  has ExternalInitiatedEventId => (is => 'ro', isa => Int);
+  has ExternalWorkflowExecution => (is => 'ro', isa => SimpleWorkflow_WorkflowExecution);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ExternalWorkflowExecution' => 'externalWorkflowExecution',
+                       'Cause' => 'cause',
+                       'ExternalInitiatedEventId' => 'externalInitiatedEventId'
+                     },
+  'types' => {
+               'ExternalInitiatedEventId' => {
+                                               'type' => 'Int'
+                                             },
+               'Cause' => {
+                            'type' => 'Str'
+                          },
+               'ExternalWorkflowExecution' => {
+                                                'class' => 'Paws::SimpleWorkflow::WorkflowExecution',
+                                                'type' => 'SimpleWorkflow_WorkflowExecution'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +85,7 @@ can be useful for diagnosing problems by tracing back the chain of
 events leading up to this event.
 
 
-=head2 ExternalWorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=head2 ExternalWorkflowExecution => SimpleWorkflow_WorkflowExecution
 
   The external workflow execution for which the cancellation was
 requested.

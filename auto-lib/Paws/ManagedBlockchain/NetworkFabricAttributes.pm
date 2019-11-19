@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::NetworkFabricAttributes;
-  use Moose;
-  has Edition => (is => 'ro', isa => 'Str');
-  has OrderingServiceEndpoint => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has Edition => (is => 'ro', isa => Str);
+  has OrderingServiceEndpoint => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Edition' => {
+                              'type' => 'Str'
+                            },
+               'OrderingServiceEndpoint' => {
+                                              'type' => 'Str'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

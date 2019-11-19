@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::TimeBasedCanary;
-  use Moose;
-  has CanaryInterval => (is => 'ro', isa => 'Int', request_name => 'canaryInterval', traits => ['NameInRequest']);
-  has CanaryPercentage => (is => 'ro', isa => 'Int', request_name => 'canaryPercentage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::CodeDeploy::Types qw//;
+  has CanaryInterval => (is => 'ro', isa => Int);
+  has CanaryPercentage => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CanaryPercentage' => 'canaryPercentage',
+                       'CanaryInterval' => 'canaryInterval'
+                     },
+  'types' => {
+               'CanaryPercentage' => {
+                                       'type' => 'Int'
+                                     },
+               'CanaryInterval' => {
+                                     'type' => 'Int'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

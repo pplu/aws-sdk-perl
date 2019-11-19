@@ -1,14 +1,29 @@
 
 package Paws::PinpointEmail::PutAccountSendingAttributes;
-  use Moose;
-  has SendingEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::PinpointEmail::Types qw//;
+  has SendingEnabled => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutAccountSendingAttributes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/account/sending');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::PutAccountSendingAttributesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutAccountSendingAttributes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/account/sending');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::PutAccountSendingAttributesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SendingEnabled' => {
+                                     'type' => 'Bool'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

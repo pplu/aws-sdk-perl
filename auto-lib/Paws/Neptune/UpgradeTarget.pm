@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::Neptune::UpgradeTarget;
-  use Moose;
-  has AutoUpgrade => (is => 'ro', isa => 'Bool');
-  has Description => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has IsMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::Neptune::Types qw//;
+  has AutoUpgrade => (is => 'ro', isa => Bool);
+  has Description => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has IsMajorVersionUpgrade => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AutoUpgrade' => {
+                                  'type' => 'Bool'
+                                },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'IsMajorVersionUpgrade' => {
+                                            'type' => 'Bool'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

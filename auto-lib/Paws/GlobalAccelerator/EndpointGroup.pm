@@ -1,14 +1,56 @@
+# Generated from default/object.tt
 package Paws::GlobalAccelerator::EndpointGroup;
-  use Moose;
-  has EndpointDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::EndpointDescription]');
-  has EndpointGroupArn => (is => 'ro', isa => 'Str');
-  has EndpointGroupRegion => (is => 'ro', isa => 'Str');
-  has HealthCheckIntervalSeconds => (is => 'ro', isa => 'Int');
-  has HealthCheckPath => (is => 'ro', isa => 'Str');
-  has HealthCheckPort => (is => 'ro', isa => 'Int');
-  has HealthCheckProtocol => (is => 'ro', isa => 'Str');
-  has ThresholdCount => (is => 'ro', isa => 'Int');
-  has TrafficDialPercentage => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int Num/;
+  use Paws::GlobalAccelerator::Types qw/GlobalAccelerator_EndpointDescription/;
+  has EndpointDescriptions => (is => 'ro', isa => ArrayRef[GlobalAccelerator_EndpointDescription]);
+  has EndpointGroupArn => (is => 'ro', isa => Str);
+  has EndpointGroupRegion => (is => 'ro', isa => Str);
+  has HealthCheckIntervalSeconds => (is => 'ro', isa => Int);
+  has HealthCheckPath => (is => 'ro', isa => Str);
+  has HealthCheckPort => (is => 'ro', isa => Int);
+  has HealthCheckProtocol => (is => 'ro', isa => Str);
+  has ThresholdCount => (is => 'ro', isa => Int);
+  has TrafficDialPercentage => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThresholdCount' => {
+                                     'type' => 'Int'
+                                   },
+               'HealthCheckPath' => {
+                                      'type' => 'Str'
+                                    },
+               'TrafficDialPercentage' => {
+                                            'type' => 'Num'
+                                          },
+               'EndpointGroupRegion' => {
+                                          'type' => 'Str'
+                                        },
+               'HealthCheckIntervalSeconds' => {
+                                                 'type' => 'Int'
+                                               },
+               'HealthCheckProtocol' => {
+                                          'type' => 'Str'
+                                        },
+               'HealthCheckPort' => {
+                                      'type' => 'Int'
+                                    },
+               'EndpointDescriptions' => {
+                                           'class' => 'Paws::GlobalAccelerator::EndpointDescription',
+                                           'type' => 'ArrayRef[GlobalAccelerator_EndpointDescription]'
+                                         },
+               'EndpointGroupArn' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +87,7 @@ endpoint group for a specific listener.
 =head1 ATTRIBUTES
 
 
-=head2 EndpointDescriptions => ArrayRef[L<Paws::GlobalAccelerator::EndpointDescription>]
+=head2 EndpointDescriptions => ArrayRef[GlobalAccelerator_EndpointDescription]
 
   The list of endpoint objects.
 

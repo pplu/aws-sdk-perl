@@ -1,14 +1,55 @@
 
 package Paws::Robomaker::CreateRobotResponse;
-  use Moose;
-  has Architecture => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'architecture');
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has CreatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdAt');
-  has GreengrassGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'greengrassGroupId');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw/Robomaker_TagMap/;
+  has Architecture => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has GreengrassGroupId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => Robomaker_TagMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'Robomaker_TagMap',
+                           'class' => 'Paws::Robomaker::TagMap'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'GreengrassGroupId' => {
+                                        'type' => 'Str'
+                                      },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Architecture' => 'architecture',
+                       'CreatedAt' => 'createdAt',
+                       'Name' => 'name',
+                       'Arn' => 'arn',
+                       'GreengrassGroupId' => 'greengrassGroupId',
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +87,7 @@ the robot.
 The name of the robot.
 
 
-=head2 Tags => L<Paws::Robomaker::TagMap>
+=head2 Tags => Robomaker_TagMap
 
 The list of all tags added to the robot.
 

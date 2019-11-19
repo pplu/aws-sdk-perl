@@ -1,10 +1,50 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ScheduleLambdaFunctionDecisionAttributes;
-  use Moose;
-  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has StartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'startToCloseTimeout', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Control => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Input => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has StartToCloseTimeout => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Id' => 1
+                  },
+  'NameInRequest' => {
+                       'Control' => 'control',
+                       'StartToCloseTimeout' => 'startToCloseTimeout',
+                       'Name' => 'name',
+                       'Input' => 'input',
+                       'Id' => 'id'
+                     },
+  'types' => {
+               'Control' => {
+                              'type' => 'Str'
+                            },
+               'StartToCloseTimeout' => {
+                                          'type' => 'Str'
+                                        },
+               'Input' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

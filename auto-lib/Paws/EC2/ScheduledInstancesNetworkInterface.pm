@@ -1,17 +1,71 @@
 package Paws::EC2::ScheduledInstancesNetworkInterface;
-  use Moose;
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool');
-  has Description => (is => 'ro', isa => 'Str');
-  has DeviceIndex => (is => 'ro', isa => 'Int');
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Group', traits => ['NameInRequest']);
-  has Ipv6AddressCount => (is => 'ro', isa => 'Int');
-  has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ScheduledInstancesIpv6Address]', request_name => 'Ipv6Address', traits => ['NameInRequest']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str');
-  has PrivateIpAddress => (is => 'ro', isa => 'Str');
-  has PrivateIpAddressConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ScheduledInstancesPrivateIpAddressConfig]', request_name => 'PrivateIpAddressConfig', traits => ['NameInRequest']);
-  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
-  has SubnetId => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Bool Str Int ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_ScheduledInstancesIpv6Address EC2_ScheduledInstancesPrivateIpAddressConfig/;
+  has AssociatePublicIpAddress => (is => 'ro', isa => Bool);
+  has DeleteOnTermination => (is => 'ro', isa => Bool);
+  has Description => (is => 'ro', isa => Str);
+  has DeviceIndex => (is => 'ro', isa => Int);
+  has Groups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Ipv6AddressCount => (is => 'ro', isa => Int);
+  has Ipv6Addresses => (is => 'ro', isa => ArrayRef[EC2_ScheduledInstancesIpv6Address]);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+  has PrivateIpAddressConfigs => (is => 'ro', isa => ArrayRef[EC2_ScheduledInstancesPrivateIpAddressConfig]);
+  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => Int);
+  has SubnetId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ipv6AddressCount' => {
+                                       'type' => 'Int'
+                                     },
+               'SecondaryPrivateIpAddressCount' => {
+                                                     'type' => 'Int'
+                                                   },
+               'DeviceIndex' => {
+                                  'type' => 'Int'
+                                },
+               'Groups' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'PrivateIpAddressConfigs' => {
+                                              'class' => 'Paws::EC2::ScheduledInstancesPrivateIpAddressConfig',
+                                              'type' => 'ArrayRef[EC2_ScheduledInstancesPrivateIpAddressConfig]'
+                                            },
+               'AssociatePublicIpAddress' => {
+                                               'type' => 'Bool'
+                                             },
+               'Ipv6Addresses' => {
+                                    'class' => 'Paws::EC2::ScheduledInstancesIpv6Address',
+                                    'type' => 'ArrayRef[EC2_ScheduledInstancesIpv6Address]'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'DeleteOnTermination' => {
+                                          'type' => 'Bool'
+                                        },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'Ipv6Addresses' => 'Ipv6Address',
+                       'PrivateIpAddressConfigs' => 'PrivateIpAddressConfig',
+                       'Groups' => 'Group'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +138,7 @@ terminated.
 IPv6 addresses are automatically selected from the subnet range.
 
 
-=head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::ScheduledInstancesIpv6Address>]
+=head2 Ipv6Addresses => ArrayRef[EC2_ScheduledInstancesIpv6Address]
 
   The specific IPv6 addresses from the subnet range.
 
@@ -99,7 +153,7 @@ IPv6 addresses are automatically selected from the subnet range.
   The IPv4 address of the network interface within the subnet.
 
 
-=head2 PrivateIpAddressConfigs => ArrayRef[L<Paws::EC2::ScheduledInstancesPrivateIpAddressConfig>]
+=head2 PrivateIpAddressConfigs => ArrayRef[EC2_ScheduledInstancesPrivateIpAddressConfig]
 
   The private IPv4 addresses.
 

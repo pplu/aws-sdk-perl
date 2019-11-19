@@ -1,9 +1,29 @@
 
 package Paws::Glacier::PurchaseProvisionedCapacityOutput;
-  use Moose;
-  has CapacityId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-capacity-id');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has CapacityId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'CapacityId' => 'x-amz-capacity-id'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CapacityId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

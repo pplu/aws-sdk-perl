@@ -1,11 +1,50 @@
+# Generated from default/object.tt
 package Paws::WAF::RateBasedRule;
-  use Moose;
-  has MatchPredicates => (is => 'ro', isa => 'ArrayRef[Paws::WAF::Predicate]', required => 1);
-  has MetricName => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has RateKey => (is => 'ro', isa => 'Str', required => 1);
-  has RateLimit => (is => 'ro', isa => 'Int', required => 1);
-  has RuleId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int/;
+  use Paws::WAF::Types qw/WAF_Predicate/;
+  has MatchPredicates => (is => 'ro', isa => ArrayRef[WAF_Predicate], required => 1);
+  has MetricName => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RateKey => (is => 'ro', isa => Str, required => 1);
+  has RateLimit => (is => 'ro', isa => Int, required => 1);
+  has RuleId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'RateKey' => {
+                              'type' => 'Str'
+                            },
+               'MatchPredicates' => {
+                                      'type' => 'ArrayRef[WAF_Predicate]',
+                                      'class' => 'Paws::WAF::Predicate'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RuleId' => {
+                             'type' => 'Str'
+                           },
+               'RateLimit' => {
+                                'type' => 'Int'
+                              }
+             },
+  'IsRequired' => {
+                    'RuleId' => 1,
+                    'RateLimit' => 1,
+                    'RateKey' => 1,
+                    'MatchPredicates' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +102,7 @@ defined in the web ACL.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> MatchPredicates => ArrayRef[L<Paws::WAF::Predicate>]
+=head2 B<REQUIRED> MatchPredicates => ArrayRef[WAF_Predicate]
 
   The C<Predicates> object contains one C<Predicate> element for each
 ByteMatchSet, IPSet, or SqlInjectionMatchSet object that you want to

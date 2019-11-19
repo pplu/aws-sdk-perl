@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::Greengrass::ResourceDataContainer;
-  use Moose;
-  has LocalDeviceResourceData => (is => 'ro', isa => 'Paws::Greengrass::LocalDeviceResourceData');
-  has LocalVolumeResourceData => (is => 'ro', isa => 'Paws::Greengrass::LocalVolumeResourceData');
-  has S3MachineLearningModelResourceData => (is => 'ro', isa => 'Paws::Greengrass::S3MachineLearningModelResourceData');
-  has SageMakerMachineLearningModelResourceData => (is => 'ro', isa => 'Paws::Greengrass::SageMakerMachineLearningModelResourceData');
-  has SecretsManagerSecretResourceData => (is => 'ro', isa => 'Paws::Greengrass::SecretsManagerSecretResourceData');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Greengrass::Types qw/Greengrass_LocalVolumeResourceData Greengrass_S3MachineLearningModelResourceData Greengrass_SageMakerMachineLearningModelResourceData Greengrass_SecretsManagerSecretResourceData Greengrass_LocalDeviceResourceData/;
+  has LocalDeviceResourceData => (is => 'ro', isa => Greengrass_LocalDeviceResourceData);
+  has LocalVolumeResourceData => (is => 'ro', isa => Greengrass_LocalVolumeResourceData);
+  has S3MachineLearningModelResourceData => (is => 'ro', isa => Greengrass_S3MachineLearningModelResourceData);
+  has SageMakerMachineLearningModelResourceData => (is => 'ro', isa => Greengrass_SageMakerMachineLearningModelResourceData);
+  has SecretsManagerSecretResourceData => (is => 'ro', isa => Greengrass_SecretsManagerSecretResourceData);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LocalVolumeResourceData' => {
+                                              'type' => 'Greengrass_LocalVolumeResourceData',
+                                              'class' => 'Paws::Greengrass::LocalVolumeResourceData'
+                                            },
+               'SecretsManagerSecretResourceData' => {
+                                                       'type' => 'Greengrass_SecretsManagerSecretResourceData',
+                                                       'class' => 'Paws::Greengrass::SecretsManagerSecretResourceData'
+                                                     },
+               'SageMakerMachineLearningModelResourceData' => {
+                                                                'class' => 'Paws::Greengrass::SageMakerMachineLearningModelResourceData',
+                                                                'type' => 'Greengrass_SageMakerMachineLearningModelResourceData'
+                                                              },
+               'LocalDeviceResourceData' => {
+                                              'type' => 'Greengrass_LocalDeviceResourceData',
+                                              'class' => 'Paws::Greengrass::LocalDeviceResourceData'
+                                            },
+               'S3MachineLearningModelResourceData' => {
+                                                         'class' => 'Paws::Greengrass::S3MachineLearningModelResourceData',
+                                                         'type' => 'Greengrass_S3MachineLearningModelResourceData'
+                                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,27 +79,27 @@ following supported resource data types: ''LocalDeviceResourceData'',
 =head1 ATTRIBUTES
 
 
-=head2 LocalDeviceResourceData => L<Paws::Greengrass::LocalDeviceResourceData>
+=head2 LocalDeviceResourceData => Greengrass_LocalDeviceResourceData
 
   Attributes that define the local device resource.
 
 
-=head2 LocalVolumeResourceData => L<Paws::Greengrass::LocalVolumeResourceData>
+=head2 LocalVolumeResourceData => Greengrass_LocalVolumeResourceData
 
   Attributes that define the local volume resource.
 
 
-=head2 S3MachineLearningModelResourceData => L<Paws::Greengrass::S3MachineLearningModelResourceData>
+=head2 S3MachineLearningModelResourceData => Greengrass_S3MachineLearningModelResourceData
 
   Attributes that define an Amazon S3 machine learning resource.
 
 
-=head2 SageMakerMachineLearningModelResourceData => L<Paws::Greengrass::SageMakerMachineLearningModelResourceData>
+=head2 SageMakerMachineLearningModelResourceData => Greengrass_SageMakerMachineLearningModelResourceData
 
   Attributes that define an Amazon SageMaker machine learning resource.
 
 
-=head2 SecretsManagerSecretResourceData => L<Paws::Greengrass::SecretsManagerSecretResourceData>
+=head2 SecretsManagerSecretResourceData => Greengrass_SecretsManagerSecretResourceData
 
   Attributes that define a secret resource, which references a secret
 from AWS Secrets Manager.

@@ -1,21 +1,75 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SMS::UpdateReplicationJob;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has Encrypted => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'encrypted' );
-  has Frequency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'frequency' );
-  has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kmsKeyId' );
-  has LicenseType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'licenseType' );
-  has NextReplicationRunStartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextReplicationRunStartTime' );
-  has NumberOfRecentAmisToKeep => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfRecentAmisToKeep' );
-  has ReplicationJobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'replicationJobId' , required => 1);
-  has RoleName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleName' );
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::SMS::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Encrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has Frequency => (is => 'ro', isa => Int, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has LicenseType => (is => 'ro', isa => Str, predicate => 1);
+  has NextReplicationRunStartTime => (is => 'ro', isa => Str, predicate => 1);
+  has NumberOfRecentAmisToKeep => (is => 'ro', isa => Int, predicate => 1);
+  has ReplicationJobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateReplicationJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SMS::UpdateReplicationJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateReplicationJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SMS::UpdateReplicationJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LicenseType' => {
+                                  'type' => 'Str'
+                                },
+               'NextReplicationRunStartTime' => {
+                                                  'type' => 'Str'
+                                                },
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'Frequency' => {
+                                'type' => 'Int'
+                              },
+               'NumberOfRecentAmisToKeep' => {
+                                               'type' => 'Int'
+                                             },
+               'ReplicationJobId' => {
+                                       'type' => 'Str'
+                                     },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'KmsKeyId' => 'kmsKeyId',
+                       'Description' => 'description',
+                       'ReplicationJobId' => 'replicationJobId',
+                       'NumberOfRecentAmisToKeep' => 'numberOfRecentAmisToKeep',
+                       'Frequency' => 'frequency',
+                       'Encrypted' => 'encrypted',
+                       'RoleName' => 'roleName',
+                       'NextReplicationRunStartTime' => 'nextReplicationRunStartTime',
+                       'LicenseType' => 'licenseType'
+                     },
+  'IsRequired' => {
+                    'ReplicationJobId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

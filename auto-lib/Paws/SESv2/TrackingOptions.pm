@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::SESv2::TrackingOptions;
-  use Moose;
-  has CustomRedirectDomain => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw//;
+  has CustomRedirectDomain => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomRedirectDomain' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'CustomRedirectDomain' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

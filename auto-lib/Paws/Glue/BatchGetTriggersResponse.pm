@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::BatchGetTriggersResponse;
-  use Moose;
-  has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Trigger]');
-  has TriggersNotFound => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Glue::Types qw/Glue_Trigger/;
+  has Triggers => (is => 'ro', isa => ArrayRef[Glue_Trigger]);
+  has TriggersNotFound => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TriggersNotFound' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Triggers' => {
+                               'class' => 'Paws::Glue::Trigger',
+                               'type' => 'ArrayRef[Glue_Trigger]'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Glue::BatchGetTriggersResponse
 =head1 ATTRIBUTES
 
 
-=head2 Triggers => ArrayRef[L<Paws::Glue::Trigger>]
+=head2 Triggers => ArrayRef[Glue_Trigger]
 
 A list of trigger definitions.
 

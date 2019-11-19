@@ -1,10 +1,31 @@
 
 package Paws::XRay::GetSamplingStatisticSummariesResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SamplingStatisticSummaries => (is => 'ro', isa => 'ArrayRef[Paws::XRay::SamplingStatisticSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::XRay::Types qw/XRay_SamplingStatisticSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SamplingStatisticSummaries => (is => 'ro', isa => ArrayRef[XRay_SamplingStatisticSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SamplingStatisticSummaries' => {
+                                                 'type' => 'ArrayRef[XRay_SamplingStatisticSummary]',
+                                                 'class' => 'Paws::XRay::SamplingStatisticSummary'
+                                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +42,7 @@ Paws::XRay::GetSamplingStatisticSummariesResult
 Pagination token. Not used.
 
 
-=head2 SamplingStatisticSummaries => ArrayRef[L<Paws::XRay::SamplingStatisticSummary>]
+=head2 SamplingStatisticSummaries => ArrayRef[XRay_SamplingStatisticSummary]
 
 Information about the number of requests instrumented for each sampling
 rule.

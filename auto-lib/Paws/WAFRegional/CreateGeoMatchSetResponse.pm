@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::CreateGeoMatchSetResponse;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str');
-  has GeoMatchSet => (is => 'ro', isa => 'Paws::WAFRegional::GeoMatchSet');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_GeoMatchSet/;
+  has ChangeToken => (is => 'ro', isa => Str);
+  has GeoMatchSet => (is => 'ro', isa => WAFRegional_GeoMatchSet);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'GeoMatchSet' => {
+                                  'type' => 'WAFRegional_GeoMatchSet',
+                                  'class' => 'Paws::WAFRegional::GeoMatchSet'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ request. You can also use this value to query the status of the
 request. For more information, see GetChangeTokenStatus.
 
 
-=head2 GeoMatchSet => L<Paws::WAFRegional::GeoMatchSet>
+=head2 GeoMatchSet => WAFRegional_GeoMatchSet
 
 The GeoMatchSet returned in the C<CreateGeoMatchSet> response. The
 C<GeoMatchSet> contains no C<GeoMatchConstraints>.

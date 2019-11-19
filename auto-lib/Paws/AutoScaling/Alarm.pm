@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::Alarm;
-  use Moose;
-  has AlarmARN => (is => 'ro', isa => 'Str');
-  has AlarmName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AutoScaling::Types qw//;
+  has AlarmARN => (is => 'ro', isa => Str);
+  has AlarmName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AlarmARN' => {
+                               'type' => 'Str'
+                             },
+               'AlarmName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,59 @@
 package Paws::EC2::CustomerGateway;
-  use Moose;
-  has BgpAsn => (is => 'ro', isa => 'Str', request_name => 'bgpAsn', traits => ['NameInRequest']);
-  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
-  has CustomerGatewayId => (is => 'ro', isa => 'Str', request_name => 'customerGatewayId', traits => ['NameInRequest']);
-  has DeviceName => (is => 'ro', isa => 'Str', request_name => 'deviceName', traits => ['NameInRequest']);
-  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Tag/;
+  has BgpAsn => (is => 'ro', isa => Str);
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CustomerGatewayId => (is => 'ro', isa => Str);
+  has DeviceName => (is => 'ro', isa => Str);
+  has IpAddress => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CustomerGatewayId' => 'customerGatewayId',
+                       'DeviceName' => 'deviceName',
+                       'CertificateArn' => 'certificateArn',
+                       'Type' => 'type',
+                       'BgpAsn' => 'bgpAsn',
+                       'Tags' => 'tagSet',
+                       'IpAddress' => 'ipAddress',
+                       'State' => 'state'
+                     },
+  'types' => {
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'BgpAsn' => {
+                             'type' => 'Str'
+                           },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'CustomerGatewayId' => {
+                                        'type' => 'Str'
+                                      },
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +122,7 @@ interface.
 deleting | deleted>).
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the customer gateway.
 

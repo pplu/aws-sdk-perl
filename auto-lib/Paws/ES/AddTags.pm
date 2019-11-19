@@ -1,15 +1,38 @@
 
 package Paws::ES::AddTags;
-  use Moose;
-  has ARN => (is => 'ro', isa => 'Str', required => 1);
-  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::ES::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ES::Types qw/ES_Tag/;
+  has ARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagList => (is => 'ro', isa => ArrayRef[ES_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTags');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-01-01/tags');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddTags');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-01-01/tags');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TagList' => 1,
+                    'ARN' => 1
+                  },
+  'types' => {
+               'TagList' => {
+                              'class' => 'Paws::ES::Tag',
+                              'type' => 'ArrayRef[ES_Tag]'
+                            },
+               'ARN' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +77,7 @@ Specify the C<ARN> for which you want to add the tags.
 
 
 
-=head2 B<REQUIRED> TagList => ArrayRef[L<Paws::ES::Tag>]
+=head2 B<REQUIRED> TagList => ArrayRef[ES_Tag]
 
 List of C<Tag> that need to be added for the Elasticsearch domain.
 

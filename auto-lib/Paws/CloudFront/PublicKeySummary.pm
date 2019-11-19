@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::CloudFront::PublicKeySummary;
-  use Moose;
-  has Comment => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
-  has EncodedKey => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw//;
+  has Comment => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str, required => 1);
+  has EncodedKey => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Id' => 1,
+                    'CreatedTime' => 1,
+                    'EncodedKey' => 1
+                  },
+  'types' => {
+               'EncodedKey' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,23 @@
 package Paws::GuardDuty::Criterion;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::GuardDuty::Types qw/GuardDuty_Condition/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::GuardDuty::Condition]');
+  has Map => (is => 'ro', isa => HashRef[GuardDuty_Condition]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[GuardDuty_Condition]',
+                                          class => 'Paws::GuardDuty::Condition',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::GuardDuty::Condition>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

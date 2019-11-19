@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::CreateApplicationVersionInput;
-  use Moose;
-  has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeArchiveUrl', traits => ['NameInRequest']);
-  has SourceCodeUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeUrl', traits => ['NameInRequest']);
-  has TemplateBody => (is => 'ro', isa => 'Str', request_name => 'templateBody', traits => ['NameInRequest']);
-  has TemplateUrl => (is => 'ro', isa => 'Str', request_name => 'templateUrl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServerlessRepo::Types qw//;
+  has SourceCodeArchiveUrl => (is => 'ro', isa => Str);
+  has SourceCodeUrl => (is => 'ro', isa => Str);
+  has TemplateBody => (is => 'ro', isa => Str);
+  has TemplateUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceCodeArchiveUrl' => {
+                                           'type' => 'Str'
+                                         },
+               'TemplateUrl' => {
+                                  'type' => 'Str'
+                                },
+               'SourceCodeUrl' => {
+                                    'type' => 'Str'
+                                  },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'SourceCodeUrl' => 'sourceCodeUrl',
+                       'TemplateUrl' => 'templateUrl',
+                       'TemplateBody' => 'templateBody',
+                       'SourceCodeArchiveUrl' => 'sourceCodeArchiveUrl'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

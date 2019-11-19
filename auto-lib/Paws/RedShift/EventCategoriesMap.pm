@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::RedShift::EventCategoriesMap;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EventInfoMap]', request_name => 'EventInfoMap', traits => ['NameInRequest']);
-  has SourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::RedShift::Types qw/RedShift_EventInfoMap/;
+  has Events => (is => 'ro', isa => ArrayRef[RedShift_EventInfoMap]);
+  has SourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'Events' => {
+                             'type' => 'ArrayRef[RedShift_EventInfoMap]',
+                             'class' => 'Paws::RedShift::EventInfoMap'
+                           }
+             },
+  'NameInRequest' => {
+                       'Events' => 'EventInfoMap'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +61,7 @@ Describes event categories.
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[L<Paws::RedShift::EventInfoMap>]
+=head2 Events => ArrayRef[RedShift_EventInfoMap]
 
   The events in the event category.
 

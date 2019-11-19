@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::AttributeValueUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Paws::DynamoDB::AttributeValue');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AttributeValue/;
+  has Action => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => DynamoDB_AttributeValue);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'Value' => {
+                            'type' => 'DynamoDB_AttributeValue',
+                            'class' => 'Paws::DynamoDB::AttributeValue'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -147,7 +168,7 @@ specified.
 
 
 
-=head2 Value => L<Paws::DynamoDB::AttributeValue>
+=head2 Value => DynamoDB_AttributeValue
 
   Represents the data for an attribute.
 

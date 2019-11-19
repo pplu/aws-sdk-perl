@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DeregisterTargetFromMaintenanceWindowResult;
-  use Moose;
-  has WindowId => (is => 'ro', isa => 'Str');
-  has WindowTargetId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has WindowId => (is => 'ro', isa => Str);
+  has WindowTargetId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WindowTargetId' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'WindowId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::CancelTimerDecisionAttributes;
-  use Moose;
-  has TimerId => (is => 'ro', isa => 'Str', request_name => 'timerId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has TimerId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimerId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'TimerId' => 'timerId'
+                     },
+  'IsRequired' => {
+                    'TimerId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

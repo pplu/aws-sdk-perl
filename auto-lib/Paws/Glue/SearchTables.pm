@@ -1,18 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::SearchTables;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Glue::PropertyPredicate]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SearchText => (is => 'ro', isa => 'Str');
-  has SortCriteria => (is => 'ro', isa => 'ArrayRef[Paws::Glue::SortCriterion]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Glue::Types qw/Glue_PropertyPredicate Glue_SortCriterion/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[Glue_PropertyPredicate], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SearchText => (is => 'ro', isa => Str, predicate => 1);
+  has SortCriteria => (is => 'ro', isa => ArrayRef[Glue_SortCriterion], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SearchTables');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::SearchTablesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SearchTables');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::SearchTablesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SortCriteria' => {
+                                   'class' => 'Paws::Glue::SortCriterion',
+                                   'type' => 'ArrayRef[Glue_SortCriterion]'
+                                 },
+               'Filters' => {
+                              'class' => 'Paws::Glue::PropertyPredicate',
+                              'type' => 'ArrayRef[Glue_PropertyPredicate]'
+                            },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              },
+               'SearchText' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +106,7 @@ A unique identifier, consisting of C< I<account_id>/datalake>.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::Glue::PropertyPredicate>]
+=head2 Filters => ArrayRef[Glue_PropertyPredicate]
 
 A list of key-value pairs, and a comparator used to filter the search
 results. Returns all entities matching the predicate.
@@ -101,7 +134,7 @@ value.
 
 
 
-=head2 SortCriteria => ArrayRef[L<Paws::Glue::SortCriterion>]
+=head2 SortCriteria => ArrayRef[Glue_SortCriterion]
 
 A list of criteria for sorting the results by a field name, in an
 ascending or descending order.

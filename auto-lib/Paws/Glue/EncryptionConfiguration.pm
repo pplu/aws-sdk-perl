@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::Glue::EncryptionConfiguration;
-  use Moose;
-  has CloudWatchEncryption => (is => 'ro', isa => 'Paws::Glue::CloudWatchEncryption');
-  has JobBookmarksEncryption => (is => 'ro', isa => 'Paws::Glue::JobBookmarksEncryption');
-  has S3Encryption => (is => 'ro', isa => 'ArrayRef[Paws::Glue::S3Encryption]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Glue::Types qw/Glue_CloudWatchEncryption Glue_S3Encryption Glue_JobBookmarksEncryption/;
+  has CloudWatchEncryption => (is => 'ro', isa => Glue_CloudWatchEncryption);
+  has JobBookmarksEncryption => (is => 'ro', isa => Glue_JobBookmarksEncryption);
+  has S3Encryption => (is => 'ro', isa => ArrayRef[Glue_S3Encryption]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobBookmarksEncryption' => {
+                                             'type' => 'Glue_JobBookmarksEncryption',
+                                             'class' => 'Paws::Glue::JobBookmarksEncryption'
+                                           },
+               'CloudWatchEncryption' => {
+                                           'type' => 'Glue_CloudWatchEncryption',
+                                           'class' => 'Paws::Glue::CloudWatchEncryption'
+                                         },
+               'S3Encryption' => {
+                                   'type' => 'ArrayRef[Glue_S3Encryption]',
+                                   'class' => 'Paws::Glue::S3Encryption'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +64,17 @@ Specifies an encryption configuration.
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchEncryption => L<Paws::Glue::CloudWatchEncryption>
+=head2 CloudWatchEncryption => Glue_CloudWatchEncryption
 
   The encryption configuration for Amazon CloudWatch.
 
 
-=head2 JobBookmarksEncryption => L<Paws::Glue::JobBookmarksEncryption>
+=head2 JobBookmarksEncryption => Glue_JobBookmarksEncryption
 
   The encryption configuration for job bookmarks.
 
 
-=head2 S3Encryption => ArrayRef[L<Paws::Glue::S3Encryption>]
+=head2 S3Encryption => ArrayRef[Glue_S3Encryption]
 
   The encryption configuration for Amazon Simple Storage Service (Amazon
 S3) data.

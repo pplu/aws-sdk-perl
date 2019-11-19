@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::SES::StopAction;
-  use Moose;
-  has Scope => (is => 'ro', isa => 'Str', required => 1);
-  has TopicArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has Scope => (is => 'ro', isa => Str, required => 1);
+  has TopicArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Scope' => {
+                            'type' => 'Str'
+                          },
+               'TopicArn' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'Scope' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,23 +1,76 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::StartAutomationExecution;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has DocumentName => (is => 'ro', isa => 'Str', required => 1);
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has MaxConcurrency => (is => 'ro', isa => 'Str');
-  has MaxErrors => (is => 'ro', isa => 'Str');
-  has Mode => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
-  has TargetLocations => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetLocation]');
-  has TargetMaps => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetMap]');
-  has TargetParameterName => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_TargetLocation SSM_AutomationParameterMap SSM_Target SSM_TargetMap/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DocumentVersion => (is => 'ro', isa => Str, predicate => 1);
+  has MaxConcurrency => (is => 'ro', isa => Str, predicate => 1);
+  has MaxErrors => (is => 'ro', isa => Str, predicate => 1);
+  has Mode => (is => 'ro', isa => Str, predicate => 1);
+  has Parameters => (is => 'ro', isa => SSM_AutomationParameterMap, predicate => 1);
+  has TargetLocations => (is => 'ro', isa => ArrayRef[SSM_TargetLocation], predicate => 1);
+  has TargetMaps => (is => 'ro', isa => ArrayRef[SSM_TargetMap], predicate => 1);
+  has TargetParameterName => (is => 'ro', isa => Str, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartAutomationExecution');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::StartAutomationExecutionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartAutomationExecution');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::StartAutomationExecutionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetParameterName' => {
+                                          'type' => 'Str'
+                                        },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'Mode' => {
+                           'type' => 'Str'
+                         },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'TargetMaps' => {
+                                 'type' => 'ArrayRef[SSM_TargetMap]',
+                                 'class' => 'Paws::SSM::TargetMap'
+                               },
+               'DocumentName' => {
+                                   'type' => 'Str'
+                                 },
+               'Parameters' => {
+                                 'type' => 'SSM_AutomationParameterMap',
+                                 'class' => 'Paws::SSM::AutomationParameterMap'
+                               },
+               'Targets' => {
+                              'type' => 'ArrayRef[SSM_Target]',
+                              'class' => 'Paws::SSM::Target'
+                            },
+               'TargetLocations' => {
+                                      'class' => 'Paws::SSM::TargetLocation',
+                                      'type' => 'ArrayRef[SSM_TargetLocation]'
+                                    },
+               'MaxErrors' => {
+                                'type' => 'Str'
+                              },
+               'MaxConcurrency' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'DocumentName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -145,14 +198,14 @@ following: Auto and Interactive. The default mode is Auto.
 
 Valid values are: C<"Auto">, C<"Interactive">
 
-=head2 Parameters => L<Paws::SSM::AutomationParameterMap>
+=head2 Parameters => SSM_AutomationParameterMap
 
 A key-value map of execution parameters, which match the declared
 parameters in the Automation document.
 
 
 
-=head2 TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]
+=head2 TargetLocations => ArrayRef[SSM_TargetLocation]
 
 A location is a combination of AWS Regions and/or AWS accounts where
 you want to run the Automation. Use this action to start an Automation
@@ -163,7 +216,7 @@ in the I<AWS Systems Manager User Guide>.
 
 
 
-=head2 TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]
+=head2 TargetMaps => ArrayRef[SSM_TargetMap]
 
 A key-value mapping of document parameters to target resources. Both
 Targets and TargetMaps cannot be specified together.
@@ -177,7 +230,7 @@ rate-controlled execution. Required if you specify targets.
 
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
 A key-value mapping to target resources. Required if you specify
 TargetParameterName.

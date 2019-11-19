@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::GlobalTableDescription;
-  use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str');
-  has GlobalTableArn => (is => 'ro', isa => 'Str');
-  has GlobalTableName => (is => 'ro', isa => 'Str');
-  has GlobalTableStatus => (is => 'ro', isa => 'Str');
-  has ReplicationGroup => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaDescription]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ReplicaDescription/;
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has GlobalTableArn => (is => 'ro', isa => Str);
+  has GlobalTableName => (is => 'ro', isa => Str);
+  has GlobalTableStatus => (is => 'ro', isa => Str);
+  has ReplicationGroup => (is => 'ro', isa => ArrayRef[DynamoDB_ReplicaDescription]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GlobalTableArn' => {
+                                     'type' => 'Str'
+                                   },
+               'ReplicationGroup' => {
+                                       'type' => 'ArrayRef[DynamoDB_ReplicaDescription]',
+                                       'class' => 'Paws::DynamoDB::ReplicaDescription'
+                                     },
+               'GlobalTableName' => {
+                                      'type' => 'Str'
+                                    },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'GlobalTableStatus' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -81,7 +111,7 @@ C<ACTIVE> - The global table is ready for use.
 
 
 
-=head2 ReplicationGroup => ArrayRef[L<Paws::DynamoDB::ReplicaDescription>]
+=head2 ReplicationGroup => ArrayRef[DynamoDB_ReplicaDescription]
 
   The Regions where the global table has replicas.
 

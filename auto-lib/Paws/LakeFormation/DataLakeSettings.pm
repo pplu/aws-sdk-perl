@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::LakeFormation::DataLakeSettings;
-  use Moose;
-  has CreateDatabaseDefaultPermissions => (is => 'ro', isa => 'ArrayRef[Paws::LakeFormation::PrincipalPermissions]');
-  has CreateTableDefaultPermissions => (is => 'ro', isa => 'ArrayRef[Paws::LakeFormation::PrincipalPermissions]');
-  has DataLakeAdmins => (is => 'ro', isa => 'ArrayRef[Paws::LakeFormation::DataLakePrincipal]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::LakeFormation::Types qw/LakeFormation_DataLakePrincipal LakeFormation_PrincipalPermissions/;
+  has CreateDatabaseDefaultPermissions => (is => 'ro', isa => ArrayRef[LakeFormation_PrincipalPermissions]);
+  has CreateTableDefaultPermissions => (is => 'ro', isa => ArrayRef[LakeFormation_PrincipalPermissions]);
+  has DataLakeAdmins => (is => 'ro', isa => ArrayRef[LakeFormation_DataLakePrincipal]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataLakeAdmins' => {
+                                     'class' => 'Paws::LakeFormation::DataLakePrincipal',
+                                     'type' => 'ArrayRef[LakeFormation_DataLakePrincipal]'
+                                   },
+               'CreateDatabaseDefaultPermissions' => {
+                                                       'type' => 'ArrayRef[LakeFormation_PrincipalPermissions]',
+                                                       'class' => 'Paws::LakeFormation::PrincipalPermissions'
+                                                     },
+               'CreateTableDefaultPermissions' => {
+                                                    'class' => 'Paws::LakeFormation::PrincipalPermissions',
+                                                    'type' => 'ArrayRef[LakeFormation_PrincipalPermissions]'
+                                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,19 +64,19 @@ The AWS Lake Formation principal.
 =head1 ATTRIBUTES
 
 
-=head2 CreateDatabaseDefaultPermissions => ArrayRef[L<Paws::LakeFormation::PrincipalPermissions>]
+=head2 CreateDatabaseDefaultPermissions => ArrayRef[LakeFormation_PrincipalPermissions]
 
   A list of up to three principal permissions entries for default create
 database permissions.
 
 
-=head2 CreateTableDefaultPermissions => ArrayRef[L<Paws::LakeFormation::PrincipalPermissions>]
+=head2 CreateTableDefaultPermissions => ArrayRef[LakeFormation_PrincipalPermissions]
 
   A list of up to three principal permissions entries for default create
 table permissions.
 
 
-=head2 DataLakeAdmins => ArrayRef[L<Paws::LakeFormation::DataLakePrincipal>]
+=head2 DataLakeAdmins => ArrayRef[LakeFormation_DataLakePrincipal]
 
   A list of AWS Lake Formation principals.
 

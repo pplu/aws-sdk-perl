@@ -1,14 +1,67 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes;
-  use Moose;
-  has ChildPolicy => (is => 'ro', isa => 'Str', request_name => 'childPolicy', traits => ['NameInRequest']);
-  has ExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'executionStartToCloseTimeout', traits => ['NameInRequest']);
-  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
-  has LambdaRole => (is => 'ro', isa => 'Str', request_name => 'lambdaRole', traits => ['NameInRequest']);
-  has TagList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'tagList', traits => ['NameInRequest']);
-  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'taskList', traits => ['NameInRequest']);
-  has TaskPriority => (is => 'ro', isa => 'Str', request_name => 'taskPriority', traits => ['NameInRequest']);
-  has TaskStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'taskStartToCloseTimeout', traits => ['NameInRequest']);
-  has WorkflowTypeVersion => (is => 'ro', isa => 'Str', request_name => 'workflowTypeVersion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_TaskList/;
+  has ChildPolicy => (is => 'ro', isa => Str);
+  has ExecutionStartToCloseTimeout => (is => 'ro', isa => Str);
+  has Input => (is => 'ro', isa => Str);
+  has LambdaRole => (is => 'ro', isa => Str);
+  has TagList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TaskList => (is => 'ro', isa => SimpleWorkflow_TaskList);
+  has TaskPriority => (is => 'ro', isa => Str);
+  has TaskStartToCloseTimeout => (is => 'ro', isa => Str);
+  has WorkflowTypeVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskList' => {
+                               'type' => 'SimpleWorkflow_TaskList',
+                               'class' => 'Paws::SimpleWorkflow::TaskList'
+                             },
+               'ChildPolicy' => {
+                                  'type' => 'Str'
+                                },
+               'WorkflowTypeVersion' => {
+                                          'type' => 'Str'
+                                        },
+               'Input' => {
+                            'type' => 'Str'
+                          },
+               'TagList' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'ExecutionStartToCloseTimeout' => {
+                                                   'type' => 'Str'
+                                                 },
+               'TaskPriority' => {
+                                   'type' => 'Str'
+                                 },
+               'LambdaRole' => {
+                                 'type' => 'Str'
+                               },
+               'TaskStartToCloseTimeout' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'NameInRequest' => {
+                       'TaskStartToCloseTimeout' => 'taskStartToCloseTimeout',
+                       'TaskPriority' => 'taskPriority',
+                       'LambdaRole' => 'lambdaRole',
+                       'WorkflowTypeVersion' => 'workflowTypeVersion',
+                       'TagList' => 'tagList',
+                       'ExecutionStartToCloseTimeout' => 'executionStartToCloseTimeout',
+                       'Input' => 'input',
+                       'TaskList' => 'taskList',
+                       'ChildPolicy' => 'childPolicy'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -164,7 +217,7 @@ with a specific tag by calling ListOpenWorkflowExecutions or
 ListClosedWorkflowExecutions and specifying a TagFilter.
 
 
-=head2 TaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 TaskList => SimpleWorkflow_TaskList
 
   The task list to use for the decisions of the new (continued) workflow
 execution.

@@ -1,17 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::ListDeployments;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
-  has CreateTimeRange => (is => 'ro', isa => 'Paws::CodeDeploy::TimeRange', traits => ['NameInRequest'], request_name => 'createTimeRange' );
-  has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' );
-  has IncludeOnlyStatuses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'includeOnlyStatuses' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_TimeRange/;
+  has ApplicationName => (is => 'ro', isa => Str, predicate => 1);
+  has CreateTimeRange => (is => 'ro', isa => CodeDeploy_TimeRange, predicate => 1);
+  has DeploymentGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has IncludeOnlyStatuses => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDeployments');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::ListDeploymentsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDeployments');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::ListDeploymentsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateTimeRange' => {
+                                      'class' => 'Paws::CodeDeploy::TimeRange',
+                                      'type' => 'CodeDeploy_TimeRange'
+                                    },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'DeploymentGroupName' => {
+                                          'type' => 'Str'
+                                        },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'IncludeOnlyStatuses' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        }
+             },
+  'NameInRequest' => {
+                       'CreateTimeRange' => 'createTimeRange',
+                       'NextToken' => 'nextToken',
+                       'DeploymentGroupName' => 'deploymentGroupName',
+                       'ApplicationName' => 'applicationName',
+                       'IncludeOnlyStatuses' => 'includeOnlyStatuses'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +104,7 @@ be specified.
 
 
 
-=head2 CreateTimeRange => L<Paws::CodeDeploy::TimeRange>
+=head2 CreateTimeRange => CodeDeploy_TimeRange
 
 A time range (start and end) for returning a subset of the list of
 deployments.

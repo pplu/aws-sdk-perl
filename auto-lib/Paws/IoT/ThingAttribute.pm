@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::IoT::ThingAttribute;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', request_name => 'attributes', traits => ['NameInRequest']);
-  has ThingArn => (is => 'ro', isa => 'Str', request_name => 'thingArn', traits => ['NameInRequest']);
-  has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
-  has ThingTypeName => (is => 'ro', isa => 'Str', request_name => 'thingTypeName', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw/IoT_Attributes/;
+  has Attributes => (is => 'ro', isa => IoT_Attributes);
+  has ThingArn => (is => 'ro', isa => Str);
+  has ThingName => (is => 'ro', isa => Str);
+  has ThingTypeName => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Attributes' => 'attributes',
+                       'ThingTypeName' => 'thingTypeName',
+                       'ThingArn' => 'thingArn',
+                       'Version' => 'version',
+                       'ThingName' => 'thingName'
+                     },
+  'types' => {
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'ThingArn' => {
+                               'type' => 'Str'
+                             },
+               'ThingTypeName' => {
+                                    'type' => 'Str'
+                                  },
+               'Attributes' => {
+                                 'class' => 'Paws::IoT::Attributes',
+                                 'type' => 'IoT_Attributes'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +78,7 @@ a list of thing attributes.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::IoT::Attributes>
+=head2 Attributes => IoT_Attributes
 
   A list of thing attributes which are name-value pairs.
 

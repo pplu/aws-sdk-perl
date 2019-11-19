@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::StreamSpecification;
-  use Moose;
-  has StreamEnabled => (is => 'ro', isa => 'Bool');
-  has StreamViewType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::DynamoDB::Types qw//;
+  has StreamEnabled => (is => 'ro', isa => Bool);
+  has StreamViewType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamViewType' => {
+                                     'type' => 'Str'
+                                   },
+               'StreamEnabled' => {
+                                    'type' => 'Bool'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

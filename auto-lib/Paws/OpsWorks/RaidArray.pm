@@ -1,18 +1,71 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::RaidArray;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has Device => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has MountPoint => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has NumberOfDisks => (is => 'ro', isa => 'Int');
-  has RaidArrayId => (is => 'ro', isa => 'Str');
-  has RaidLevel => (is => 'ro', isa => 'Int');
-  has Size => (is => 'ro', isa => 'Int');
-  has StackId => (is => 'ro', isa => 'Str');
-  has VolumeType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::OpsWorks::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Device => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has Iops => (is => 'ro', isa => Int);
+  has MountPoint => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has NumberOfDisks => (is => 'ro', isa => Int);
+  has RaidArrayId => (is => 'ro', isa => Str);
+  has RaidLevel => (is => 'ro', isa => Int);
+  has Size => (is => 'ro', isa => Int);
+  has StackId => (is => 'ro', isa => Str);
+  has VolumeType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'MountPoint' => {
+                                 'type' => 'Str'
+                               },
+               'RaidLevel' => {
+                                'type' => 'Int'
+                              },
+               'RaidArrayId' => {
+                                  'type' => 'Str'
+                                },
+               'NumberOfDisks' => {
+                                    'type' => 'Int'
+                                  },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'Device' => {
+                             'type' => 'Str'
+                           },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

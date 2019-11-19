@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::Personalize::AlgorithmImage;
-  use Moose;
-  has DockerURI => (is => 'ro', isa => 'Str', request_name => 'dockerURI', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has DockerURI => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DockerURI' => 1
+                  },
+  'NameInRequest' => {
+                       'DockerURI' => 'dockerURI',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DockerURI' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

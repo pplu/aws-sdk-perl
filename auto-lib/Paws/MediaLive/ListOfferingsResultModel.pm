@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ListOfferingsResultModel;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
-  has Offerings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::Offering]', request_name => 'offerings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_Offering/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Offerings => (is => 'ro', isa => ArrayRef[MediaLive_Offering]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Offerings' => {
+                                'class' => 'Paws::MediaLive::Offering',
+                                'type' => 'ArrayRef[MediaLive_Offering]'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Offerings' => 'offerings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ ListOfferings response
   Token to retrieve the next page of results
 
 
-=head2 Offerings => ArrayRef[L<Paws::MediaLive::Offering>]
+=head2 Offerings => ArrayRef[MediaLive_Offering]
 
   List of offerings
 

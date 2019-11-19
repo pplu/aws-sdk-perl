@@ -1,18 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::CreateRoom;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ProfileArn => (is => 'ro', isa => 'Str');
-  has ProviderCalendarId => (is => 'ro', isa => 'Str');
-  has RoomName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_Tag/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has ProfileArn => (is => 'ro', isa => Str, predicate => 1);
+  has ProviderCalendarId => (is => 'ro', isa => Str, predicate => 1);
+  has RoomName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[AlexaForBusiness_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRoom');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::CreateRoomResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRoom');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::CreateRoomResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProviderCalendarId' => {
+                                         'type' => 'Str'
+                                       },
+               'Tags' => {
+                           'type' => 'ArrayRef[AlexaForBusiness_Tag]',
+                           'class' => 'Paws::AlexaForBusiness::Tag'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'RoomName' => {
+                               'type' => 'Str'
+                             },
+               'ProfileArn' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'RoomName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -90,7 +125,7 @@ The name for the room.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]
+=head2 Tags => ArrayRef[AlexaForBusiness_Tag]
 
 The tags for the room.
 

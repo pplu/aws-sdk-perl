@@ -1,14 +1,66 @@
+# Generated from default/object.tt
 package Paws::Personalize::Recipe;
-  use Moose;
-  has AlgorithmArn => (is => 'ro', isa => 'Str', request_name => 'algorithmArn', traits => ['NameInRequest']);
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has FeatureTransformationArn => (is => 'ro', isa => 'Str', request_name => 'featureTransformationArn', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RecipeArn => (is => 'ro', isa => 'Str', request_name => 'recipeArn', traits => ['NameInRequest']);
-  has RecipeType => (is => 'ro', isa => 'Str', request_name => 'recipeType', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has AlgorithmArn => (is => 'ro', isa => Str);
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has FeatureTransformationArn => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RecipeArn => (is => 'ro', isa => Str);
+  has RecipeType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'RecipeType' => {
+                                 'type' => 'Str'
+                               },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'FeatureTransformationArn' => {
+                                               'type' => 'Str'
+                                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AlgorithmArn' => {
+                                   'type' => 'Str'
+                                 },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'RecipeArn' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'RecipeType' => 'recipeType',
+                       'CreationDateTime' => 'creationDateTime',
+                       'Name' => 'name',
+                       'Status' => 'status',
+                       'RecipeArn' => 'recipeArn',
+                       'FeatureTransformationArn' => 'featureTransformationArn',
+                       'Description' => 'description',
+                       'AlgorithmArn' => 'algorithmArn',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

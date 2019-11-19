@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::Personalize::BatchInferenceJobSummary;
-  use Moose;
-  has BatchInferenceJobArn => (is => 'ro', isa => 'Str', request_name => 'batchInferenceJobArn', traits => ['NameInRequest']);
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has BatchInferenceJobArn => (is => 'ro', isa => Str);
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has JobName => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BatchInferenceJobArn' => {
+                                           'type' => 'Str'
+                                         },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'BatchInferenceJobArn' => 'batchInferenceJobArn',
+                       'JobName' => 'jobName',
+                       'CreationDateTime' => 'creationDateTime',
+                       'FailureReason' => 'failureReason',
+                       'Status' => 'status',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::MarkerRecordedEventAttributes;
-  use Moose;
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
-  has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
-  has MarkerName => (is => 'ro', isa => 'Str', request_name => 'markerName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+  has Details => (is => 'ro', isa => Str);
+  has MarkerName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MarkerName' => {
+                                 'type' => 'Str'
+                               },
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Details' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Details' => 'details',
+                       'MarkerName' => 'markerName',
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId'
+                     },
+  'IsRequired' => {
+                    'MarkerName' => 1,
+                    'DecisionTaskCompletedEventId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

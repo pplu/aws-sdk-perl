@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Comprehend::ClassifierEvaluationMetrics;
-  use Moose;
-  has Accuracy => (is => 'ro', isa => 'Num');
-  has F1Score => (is => 'ro', isa => 'Num');
-  has Precision => (is => 'ro', isa => 'Num');
-  has Recall => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Comprehend::Types qw//;
+  has Accuracy => (is => 'ro', isa => Num);
+  has F1Score => (is => 'ro', isa => Num);
+  has Precision => (is => 'ro', isa => Num);
+  has Recall => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Precision' => {
+                                'type' => 'Num'
+                              },
+               'Recall' => {
+                             'type' => 'Num'
+                           },
+               'F1Score' => {
+                              'type' => 'Num'
+                            },
+               'Accuracy' => {
+                               'type' => 'Num'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

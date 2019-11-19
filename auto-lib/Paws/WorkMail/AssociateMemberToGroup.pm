@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkMail::AssociateMemberToGroup;
-  use Moose;
-  has GroupId => (is => 'ro', isa => 'Str', required => 1);
-  has MemberId => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkMail::Types qw//;
+  has GroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MemberId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OrganizationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateMemberToGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkMail::AssociateMemberToGroupResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateMemberToGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkMail::AssociateMemberToGroupResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'OrganizationId' => 1,
+                    'MemberId' => 1,
+                    'GroupId' => 1
+                  },
+  'types' => {
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'MemberId' => {
+                               'type' => 'Str'
+                             },
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

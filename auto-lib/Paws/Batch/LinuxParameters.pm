@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Batch::LinuxParameters;
-  use Moose;
-  has Devices => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Device]', request_name => 'devices', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Batch::Types qw/Batch_Device/;
+  has Devices => (is => 'ro', isa => ArrayRef[Batch_Device]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Devices' => {
+                              'class' => 'Paws::Batch::Device',
+                              'type' => 'ArrayRef[Batch_Device]'
+                            }
+             },
+  'NameInRequest' => {
+                       'Devices' => 'devices'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ details for device mappings.
 =head1 ATTRIBUTES
 
 
-=head2 Devices => ArrayRef[L<Paws::Batch::Device>]
+=head2 Devices => ArrayRef[Batch_Device]
 
   Any host devices to expose to the container. This parameter maps to
 C<Devices> in the Create a container

@@ -1,15 +1,46 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::CreateQueue;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SQS::QueueAttributeMap', traits => ['NameInRequest'], request_name => 'Attribute' );
-  has QueueName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::SQS::TagMap', traits => ['NameInRequest'], request_name => 'Tag' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SQS::Types qw/SQS_QueueAttributeMap SQS_TagMap/;
+  has Attributes => (is => 'ro', isa => SQS_QueueAttributeMap, predicate => 1);
+  has QueueName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => SQS_TagMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateQueue');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SQS::CreateQueueResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateQueueResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateQueue');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SQS::CreateQueueResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateQueueResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'QueueName' => 1
+                  },
+  'NameInRequest' => {
+                       'Attributes' => 'Attribute',
+                       'Tags' => 'Tag'
+                     },
+  'types' => {
+               'Attributes' => {
+                                 'type' => 'SQS_QueueAttributeMap',
+                                 'class' => 'Paws::SQS::QueueAttributeMap'
+                               },
+               'Tags' => {
+                           'type' => 'SQS_TagMap',
+                           'class' => 'Paws::SQS::TagMap'
+                         },
+               'QueueName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SQS::QueueAttributeMap>
+=head2 Attributes => SQS_QueueAttributeMap
 
 A map of attributes with their corresponding values.
 
@@ -260,7 +291,7 @@ Queue URLs and names are case-sensitive.
 
 
 
-=head2 Tags => L<Paws::SQS::TagMap>
+=head2 Tags => SQS_TagMap
 
 Add cost allocation tags to the specified Amazon SQS queue. For an
 overview, see Tagging Your Amazon SQS Queues

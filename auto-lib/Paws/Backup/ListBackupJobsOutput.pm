@@ -1,10 +1,31 @@
 
 package Paws::Backup::ListBackupJobsOutput;
-  use Moose;
-  has BackupJobs => (is => 'ro', isa => 'ArrayRef[Paws::Backup::BackupJob]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Backup::Types qw/Backup_BackupJob/;
+  has BackupJobs => (is => 'ro', isa => ArrayRef[Backup_BackupJob]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BackupJobs' => {
+                                 'class' => 'Paws::Backup::BackupJob',
+                                 'type' => 'ArrayRef[Backup_BackupJob]'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Backup::ListBackupJobsOutput
 =head1 ATTRIBUTES
 
 
-=head2 BackupJobs => ArrayRef[L<Paws::Backup::BackupJob>]
+=head2 BackupJobs => ArrayRef[Backup_BackupJob]
 
 An array of structures containing metadata about your backup jobs
 returned in JSON format.

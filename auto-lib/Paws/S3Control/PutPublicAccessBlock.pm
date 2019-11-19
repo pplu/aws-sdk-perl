@@ -1,17 +1,42 @@
 
 package Paws::S3Control::PutPublicAccessBlock;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', header_name => 'x-amz-account-id', traits => ['ParamInHeader'], required => 1);
-  has PublicAccessBlockConfiguration => (is => 'ro', isa => 'Paws::S3Control::PublicAccessBlockConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3Control::Types qw/S3Control_PublicAccessBlockConfiguration/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PublicAccessBlockConfiguration => (is => 'ro', isa => S3Control_PublicAccessBlockConfiguration, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutPublicAccessBlock');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20180820/configuration/publicAccessBlock');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutPublicAccessBlock');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20180820/configuration/publicAccessBlock');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'AccountId' => 'x-amz-account-id'
+                     },
+  'types' => {
+               'PublicAccessBlockConfiguration' => {
+                                                     'type' => 'S3Control_PublicAccessBlockConfiguration',
+                                                     'class' => 'Paws::S3Control::PublicAccessBlockConfiguration'
+                                                   },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'PublicAccessBlockConfiguration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +79,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3-
 
 
 
-=head2 B<REQUIRED> PublicAccessBlockConfiguration => L<Paws::S3Control::PublicAccessBlockConfiguration>
+=head2 B<REQUIRED> PublicAccessBlockConfiguration => S3Control_PublicAccessBlockConfiguration
 
 
 

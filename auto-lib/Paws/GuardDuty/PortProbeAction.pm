@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::PortProbeAction;
-  use Moose;
-  has Blocked => (is => 'ro', isa => 'Bool', request_name => 'blocked', traits => ['NameInRequest']);
-  has PortProbeDetails => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::PortProbeDetail]', request_name => 'portProbeDetails', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef/;
+  use Paws::GuardDuty::Types qw/GuardDuty_PortProbeDetail/;
+  has Blocked => (is => 'ro', isa => Bool);
+  has PortProbeDetails => (is => 'ro', isa => ArrayRef[GuardDuty_PortProbeDetail]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Blocked' => 'blocked',
+                       'PortProbeDetails' => 'portProbeDetails'
+                     },
+  'types' => {
+               'PortProbeDetails' => {
+                                       'class' => 'Paws::GuardDuty::PortProbeDetail',
+                                       'type' => 'ArrayRef[GuardDuty_PortProbeDetail]'
+                                     },
+               'Blocked' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +68,7 @@ finding.
   Port probe blocked information.
 
 
-=head2 PortProbeDetails => ArrayRef[L<Paws::GuardDuty::PortProbeDetail>]
+=head2 PortProbeDetails => ArrayRef[GuardDuty_PortProbeDetail]
 
   A list of port probe details objects.
 

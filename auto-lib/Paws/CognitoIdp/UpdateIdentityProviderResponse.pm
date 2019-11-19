@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::UpdateIdentityProviderResponse;
-  use Moose;
-  has IdentityProvider => (is => 'ro', isa => 'Paws::CognitoIdp::IdentityProviderType', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_IdentityProviderType/;
+  has IdentityProvider => (is => 'ro', isa => CognitoIdp_IdentityProviderType, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IdentityProvider' => {
+                                       'type' => 'CognitoIdp_IdentityProviderType',
+                                       'class' => 'Paws::CognitoIdp::IdentityProviderType'
+                                     }
+             },
+  'IsRequired' => {
+                    'IdentityProvider' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CognitoIdp::UpdateIdentityProviderResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> IdentityProvider => L<Paws::CognitoIdp::IdentityProviderType>
+=head2 B<REQUIRED> IdentityProvider => CognitoIdp_IdentityProviderType
 
 The identity provider object.
 

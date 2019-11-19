@@ -1,18 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::PutComplianceItems;
-  use Moose;
-  has ComplianceType => (is => 'ro', isa => 'Str', required => 1);
-  has ExecutionSummary => (is => 'ro', isa => 'Paws::SSM::ComplianceExecutionSummary', required => 1);
-  has ItemContentHash => (is => 'ro', isa => 'Str');
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ComplianceItemEntry]', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_ComplianceExecutionSummary SSM_ComplianceItemEntry/;
+  has ComplianceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExecutionSummary => (is => 'ro', isa => SSM_ComplianceExecutionSummary, required => 1, predicate => 1);
+  has ItemContentHash => (is => 'ro', isa => Str, predicate => 1);
+  has Items => (is => 'ro', isa => ArrayRef[SSM_ComplianceItemEntry], required => 1, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutComplianceItems');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::PutComplianceItemsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutComplianceItems');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::PutComplianceItemsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ComplianceType' => {
+                                     'type' => 'Str'
+                                   },
+               'ItemContentHash' => {
+                                      'type' => 'Str'
+                                    },
+               'ExecutionSummary' => {
+                                       'class' => 'Paws::SSM::ComplianceExecutionSummary',
+                                       'type' => 'SSM_ComplianceExecutionSummary'
+                                     },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Items' => {
+                            'type' => 'ArrayRef[SSM_ComplianceItemEntry]',
+                            'class' => 'Paws::SSM::ComplianceItemEntry'
+                          }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'ComplianceType' => 1,
+                    'ExecutionSummary' => 1,
+                    'ResourceType' => 1,
+                    'Items' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +111,7 @@ State Manager association), Patch, or Custom:C<string>.
 
 
 
-=head2 B<REQUIRED> ExecutionSummary => L<Paws::SSM::ComplianceExecutionSummary>
+=head2 B<REQUIRED> ExecutionSummary => SSM_ComplianceExecutionSummary
 
 A summary of the call execution that includes an execution ID, the type
 of execution (for example, C<Command>), and the date/time of the
@@ -88,7 +128,7 @@ hashes match, the request to put compliance information is ignored.
 
 
 
-=head2 B<REQUIRED> Items => ArrayRef[L<Paws::SSM::ComplianceItemEntry>]
+=head2 B<REQUIRED> Items => ArrayRef[SSM_ComplianceItemEntry]
 
 Information about the compliance as defined by the resource type. For
 example, for a patch compliance type, C<Items> includes information

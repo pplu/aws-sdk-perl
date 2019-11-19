@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Athena::QueryExecutionStatistics;
-  use Moose;
-  has DataManifestLocation => (is => 'ro', isa => 'Str');
-  has DataScannedInBytes => (is => 'ro', isa => 'Int');
-  has EngineExecutionTimeInMillis => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Athena::Types qw//;
+  has DataManifestLocation => (is => 'ro', isa => Str);
+  has DataScannedInBytes => (is => 'ro', isa => Int);
+  has EngineExecutionTimeInMillis => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataManifestLocation' => {
+                                           'type' => 'Str'
+                                         },
+               'EngineExecutionTimeInMillis' => {
+                                                  'type' => 'Int'
+                                                },
+               'DataScannedInBytes' => {
+                                         'type' => 'Int'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

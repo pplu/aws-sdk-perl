@@ -1,15 +1,44 @@
 
 package Paws::MediaConnect::GrantFlowEntitlements;
-  use Moose;
-  has Entitlements => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::GrantEntitlementRequest]', traits => ['NameInRequest'], request_name => 'entitlements', required => 1);
-  has FlowArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'flowArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaConnect::Types qw/MediaConnect_GrantEntitlementRequest/;
+  has Entitlements => (is => 'ro', isa => ArrayRef[MediaConnect_GrantEntitlementRequest], required => 1, predicate => 1);
+  has FlowArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GrantFlowEntitlements');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/flows/{flowArn}/entitlements');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConnect::GrantFlowEntitlementsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GrantFlowEntitlements');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/flows/{flowArn}/entitlements');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConnect::GrantFlowEntitlementsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Entitlements' => 1,
+                    'FlowArn' => 1
+                  },
+  'NameInRequest' => {
+                       'Entitlements' => 'entitlements'
+                     },
+  'types' => {
+               'Entitlements' => {
+                                   'class' => 'Paws::MediaConnect::GrantEntitlementRequest',
+                                   'type' => 'ArrayRef[MediaConnect_GrantEntitlementRequest]'
+                                 },
+               'FlowArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInURI' => {
+                    'FlowArn' => 'flowArn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Entitlements => ArrayRef[L<Paws::MediaConnect::GrantEntitlementRequest>]
+=head2 B<REQUIRED> Entitlements => ArrayRef[MediaConnect_GrantEntitlementRequest]
 
 The list of entitlements that you want to grant.
 

@@ -1,51 +1,265 @@
 package Paws::EC2::Instance;
-  use Moose;
-  has AmiLaunchIndex => (is => 'ro', isa => 'Int', request_name => 'amiLaunchIndex', traits => ['NameInRequest']);
-  has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest']);
-  has CapacityReservationId => (is => 'ro', isa => 'Str', request_name => 'capacityReservationId', traits => ['NameInRequest']);
-  has CapacityReservationSpecification => (is => 'ro', isa => 'Paws::EC2::CapacityReservationSpecificationResponse', request_name => 'capacityReservationSpecification', traits => ['NameInRequest']);
-  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
-  has CpuOptions => (is => 'ro', isa => 'Paws::EC2::CpuOptions', request_name => 'cpuOptions', traits => ['NameInRequest']);
-  has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
-  has ElasticGpuAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuAssociation]', request_name => 'elasticGpuAssociationSet', traits => ['NameInRequest']);
-  has ElasticInferenceAcceleratorAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticInferenceAcceleratorAssociation]', request_name => 'elasticInferenceAcceleratorAssociationSet', traits => ['NameInRequest']);
-  has EnaSupport => (is => 'ro', isa => 'Bool', request_name => 'enaSupport', traits => ['NameInRequest']);
-  has HibernationOptions => (is => 'ro', isa => 'Paws::EC2::HibernationOptions', request_name => 'hibernationOptions', traits => ['NameInRequest']);
-  has Hypervisor => (is => 'ro', isa => 'Str', request_name => 'hypervisor', traits => ['NameInRequest']);
-  has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfile', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
-  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has InstanceLifecycle => (is => 'ro', isa => 'Str', request_name => 'instanceLifecycle', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has KernelId => (is => 'ro', isa => 'Str', request_name => 'kernelId', traits => ['NameInRequest']);
-  has KeyName => (is => 'ro', isa => 'Str', request_name => 'keyName', traits => ['NameInRequest']);
-  has LaunchTime => (is => 'ro', isa => 'Str', request_name => 'launchTime', traits => ['NameInRequest']);
-  has Licenses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LicenseConfiguration]', request_name => 'licenseSet', traits => ['NameInRequest']);
-  has MetadataOptions => (is => 'ro', isa => 'Paws::EC2::InstanceMetadataOptionsResponse', request_name => 'metadataOptions', traits => ['NameInRequest']);
-  has Monitoring => (is => 'ro', isa => 'Paws::EC2::Monitoring', request_name => 'monitoring', traits => ['NameInRequest']);
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceNetworkInterface]', request_name => 'networkInterfaceSet', traits => ['NameInRequest']);
-  has Placement => (is => 'ro', isa => 'Paws::EC2::Placement', request_name => 'placement', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
-  has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest']);
-  has PublicDnsName => (is => 'ro', isa => 'Str', request_name => 'dnsName', traits => ['NameInRequest']);
-  has PublicIpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
-  has RamdiskId => (is => 'ro', isa => 'Str', request_name => 'ramdiskId', traits => ['NameInRequest']);
-  has RootDeviceName => (is => 'ro', isa => 'Str', request_name => 'rootDeviceName', traits => ['NameInRequest']);
-  has RootDeviceType => (is => 'ro', isa => 'Str', request_name => 'rootDeviceType', traits => ['NameInRequest']);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest']);
-  has SourceDestCheck => (is => 'ro', isa => 'Bool', request_name => 'sourceDestCheck', traits => ['NameInRequest']);
-  has SpotInstanceRequestId => (is => 'ro', isa => 'Str', request_name => 'spotInstanceRequestId', traits => ['NameInRequest']);
-  has SriovNetSupport => (is => 'ro', isa => 'Str', request_name => 'sriovNetSupport', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Paws::EC2::InstanceState', request_name => 'instanceState', traits => ['NameInRequest']);
-  has StateReason => (is => 'ro', isa => 'Paws::EC2::StateReason', request_name => 'stateReason', traits => ['NameInRequest']);
-  has StateTransitionReason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VirtualizationType => (is => 'ro', isa => 'Str', request_name => 'virtualizationType', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_StateReason EC2_ElasticGpuAssociation EC2_InstanceState EC2_LicenseConfiguration EC2_InstanceBlockDeviceMapping EC2_HibernationOptions EC2_ProductCode EC2_CpuOptions EC2_Tag EC2_CapacityReservationSpecificationResponse EC2_InstanceNetworkInterface EC2_IamInstanceProfile EC2_InstanceMetadataOptionsResponse EC2_GroupIdentifier EC2_Placement EC2_Monitoring EC2_ElasticInferenceAcceleratorAssociation/;
+  has AmiLaunchIndex => (is => 'ro', isa => Int);
+  has Architecture => (is => 'ro', isa => Str);
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[EC2_InstanceBlockDeviceMapping]);
+  has CapacityReservationId => (is => 'ro', isa => Str);
+  has CapacityReservationSpecification => (is => 'ro', isa => EC2_CapacityReservationSpecificationResponse);
+  has ClientToken => (is => 'ro', isa => Str);
+  has CpuOptions => (is => 'ro', isa => EC2_CpuOptions);
+  has EbsOptimized => (is => 'ro', isa => Bool);
+  has ElasticGpuAssociations => (is => 'ro', isa => ArrayRef[EC2_ElasticGpuAssociation]);
+  has ElasticInferenceAcceleratorAssociations => (is => 'ro', isa => ArrayRef[EC2_ElasticInferenceAcceleratorAssociation]);
+  has EnaSupport => (is => 'ro', isa => Bool);
+  has HibernationOptions => (is => 'ro', isa => EC2_HibernationOptions);
+  has Hypervisor => (is => 'ro', isa => Str);
+  has IamInstanceProfile => (is => 'ro', isa => EC2_IamInstanceProfile);
+  has ImageId => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has InstanceLifecycle => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has KernelId => (is => 'ro', isa => Str);
+  has KeyName => (is => 'ro', isa => Str);
+  has LaunchTime => (is => 'ro', isa => Str);
+  has Licenses => (is => 'ro', isa => ArrayRef[EC2_LicenseConfiguration]);
+  has MetadataOptions => (is => 'ro', isa => EC2_InstanceMetadataOptionsResponse);
+  has Monitoring => (is => 'ro', isa => EC2_Monitoring);
+  has NetworkInterfaces => (is => 'ro', isa => ArrayRef[EC2_InstanceNetworkInterface]);
+  has Placement => (is => 'ro', isa => EC2_Placement);
+  has Platform => (is => 'ro', isa => Str);
+  has PrivateDnsName => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+  has ProductCodes => (is => 'ro', isa => ArrayRef[EC2_ProductCode]);
+  has PublicDnsName => (is => 'ro', isa => Str);
+  has PublicIpAddress => (is => 'ro', isa => Str);
+  has RamdiskId => (is => 'ro', isa => Str);
+  has RootDeviceName => (is => 'ro', isa => Str);
+  has RootDeviceType => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[EC2_GroupIdentifier]);
+  has SourceDestCheck => (is => 'ro', isa => Bool);
+  has SpotInstanceRequestId => (is => 'ro', isa => Str);
+  has SriovNetSupport => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => EC2_InstanceState);
+  has StateReason => (is => 'ro', isa => EC2_StateReason);
+  has StateTransitionReason => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VirtualizationType => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EbsOptimized' => 'ebsOptimized',
+                       'SriovNetSupport' => 'sriovNetSupport',
+                       'CpuOptions' => 'cpuOptions',
+                       'ProductCodes' => 'productCodes',
+                       'SubnetId' => 'subnetId',
+                       'StateTransitionReason' => 'reason',
+                       'Tags' => 'tagSet',
+                       'RamdiskId' => 'ramdiskId',
+                       'Monitoring' => 'monitoring',
+                       'SourceDestCheck' => 'sourceDestCheck',
+                       'PublicIpAddress' => 'ipAddress',
+                       'Placement' => 'placement',
+                       'ElasticInferenceAcceleratorAssociations' => 'elasticInferenceAcceleratorAssociationSet',
+                       'InstanceLifecycle' => 'instanceLifecycle',
+                       'PrivateDnsName' => 'privateDnsName',
+                       'ImageId' => 'imageId',
+                       'NetworkInterfaces' => 'networkInterfaceSet',
+                       'SpotInstanceRequestId' => 'spotInstanceRequestId',
+                       'VirtualizationType' => 'virtualizationType',
+                       'State' => 'instanceState',
+                       'InstanceType' => 'instanceType',
+                       'Licenses' => 'licenseSet',
+                       'SecurityGroups' => 'groupSet',
+                       'RootDeviceName' => 'rootDeviceName',
+                       'KeyName' => 'keyName',
+                       'LaunchTime' => 'launchTime',
+                       'StateReason' => 'stateReason',
+                       'ElasticGpuAssociations' => 'elasticGpuAssociationSet',
+                       'ClientToken' => 'clientToken',
+                       'KernelId' => 'kernelId',
+                       'Platform' => 'platform',
+                       'CapacityReservationSpecification' => 'capacityReservationSpecification',
+                       'PrivateIpAddress' => 'privateIpAddress',
+                       'HibernationOptions' => 'hibernationOptions',
+                       'Architecture' => 'architecture',
+                       'MetadataOptions' => 'metadataOptions',
+                       'VpcId' => 'vpcId',
+                       'BlockDeviceMappings' => 'blockDeviceMapping',
+                       'CapacityReservationId' => 'capacityReservationId',
+                       'EnaSupport' => 'enaSupport',
+                       'InstanceId' => 'instanceId',
+                       'AmiLaunchIndex' => 'amiLaunchIndex',
+                       'PublicDnsName' => 'dnsName',
+                       'Hypervisor' => 'hypervisor',
+                       'RootDeviceType' => 'rootDeviceType',
+                       'IamInstanceProfile' => 'iamInstanceProfile'
+                     },
+  'types' => {
+               'MetadataOptions' => {
+                                      'type' => 'EC2_InstanceMetadataOptionsResponse',
+                                      'class' => 'Paws::EC2::InstanceMetadataOptionsResponse'
+                                    },
+               'BlockDeviceMappings' => {
+                                          'type' => 'ArrayRef[EC2_InstanceBlockDeviceMapping]',
+                                          'class' => 'Paws::EC2::InstanceBlockDeviceMapping'
+                                        },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'CapacityReservationId' => {
+                                            'type' => 'Str'
+                                          },
+               'EnaSupport' => {
+                                 'type' => 'Bool'
+                               },
+               'HibernationOptions' => {
+                                         'type' => 'EC2_HibernationOptions',
+                                         'class' => 'Paws::EC2::HibernationOptions'
+                                       },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'CapacityReservationSpecification' => {
+                                                       'type' => 'EC2_CapacityReservationSpecificationResponse',
+                                                       'class' => 'Paws::EC2::CapacityReservationSpecificationResponse'
+                                                     },
+               'RootDeviceType' => {
+                                     'type' => 'Str'
+                                   },
+               'IamInstanceProfile' => {
+                                         'type' => 'EC2_IamInstanceProfile',
+                                         'class' => 'Paws::EC2::IamInstanceProfile'
+                                       },
+               'Hypervisor' => {
+                                 'type' => 'Str'
+                               },
+               'PublicDnsName' => {
+                                    'type' => 'Str'
+                                  },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'AmiLaunchIndex' => {
+                                     'type' => 'Int'
+                                   },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[EC2_GroupIdentifier]',
+                                     'class' => 'Paws::EC2::GroupIdentifier'
+                                   },
+               'RootDeviceName' => {
+                                     'type' => 'Str'
+                                   },
+               'KeyName' => {
+                              'type' => 'Str'
+                            },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'KernelId' => {
+                               'type' => 'Str'
+                             },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'StateReason' => {
+                                  'class' => 'Paws::EC2::StateReason',
+                                  'type' => 'EC2_StateReason'
+                                },
+               'ElasticGpuAssociations' => {
+                                             'class' => 'Paws::EC2::ElasticGpuAssociation',
+                                             'type' => 'ArrayRef[EC2_ElasticGpuAssociation]'
+                                           },
+               'LaunchTime' => {
+                                 'type' => 'Str'
+                               },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'NetworkInterfaces' => {
+                                        'class' => 'Paws::EC2::InstanceNetworkInterface',
+                                        'type' => 'ArrayRef[EC2_InstanceNetworkInterface]'
+                                      },
+               'PrivateDnsName' => {
+                                     'type' => 'Str'
+                                   },
+               'InstanceLifecycle' => {
+                                        'type' => 'Str'
+                                      },
+               'Placement' => {
+                                'class' => 'Paws::EC2::Placement',
+                                'type' => 'EC2_Placement'
+                              },
+               'ElasticInferenceAcceleratorAssociations' => {
+                                                              'type' => 'ArrayRef[EC2_ElasticInferenceAcceleratorAssociation]',
+                                                              'class' => 'Paws::EC2::ElasticInferenceAcceleratorAssociation'
+                                                            },
+               'Licenses' => {
+                               'class' => 'Paws::EC2::LicenseConfiguration',
+                               'type' => 'ArrayRef[EC2_LicenseConfiguration]'
+                             },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'State' => {
+                            'type' => 'EC2_InstanceState',
+                            'class' => 'Paws::EC2::InstanceState'
+                          },
+               'SpotInstanceRequestId' => {
+                                            'type' => 'Str'
+                                          },
+               'VirtualizationType' => {
+                                         'type' => 'Str'
+                                       },
+               'StateTransitionReason' => {
+                                            'type' => 'Str'
+                                          },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'type' => 'ArrayRef[EC2_Tag]',
+                           'class' => 'Paws::EC2::Tag'
+                         },
+               'CpuOptions' => {
+                                 'type' => 'EC2_CpuOptions',
+                                 'class' => 'Paws::EC2::CpuOptions'
+                               },
+               'ProductCodes' => {
+                                   'class' => 'Paws::EC2::ProductCode',
+                                   'type' => 'ArrayRef[EC2_ProductCode]'
+                                 },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 },
+               'SriovNetSupport' => {
+                                      'type' => 'Str'
+                                    },
+               'SourceDestCheck' => {
+                                      'type' => 'Bool'
+                                    },
+               'PublicIpAddress' => {
+                                      'type' => 'Str'
+                                    },
+               'Monitoring' => {
+                                 'class' => 'Paws::EC2::Monitoring',
+                                 'type' => 'EC2_Monitoring'
+                               },
+               'RamdiskId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +306,7 @@ launch group.
   The architecture of the image.
 
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMapping>]
+=head2 BlockDeviceMappings => ArrayRef[EC2_InstanceBlockDeviceMapping]
 
   Any block device mapping entries for the instance.
 
@@ -102,7 +316,7 @@ launch group.
   The ID of the Capacity Reservation.
 
 
-=head2 CapacityReservationSpecification => L<Paws::EC2::CapacityReservationSpecificationResponse>
+=head2 CapacityReservationSpecification => EC2_CapacityReservationSpecificationResponse
 
   Information about the Capacity Reservation targeting option.
 
@@ -113,7 +327,7 @@ launch group.
 applicable.
 
 
-=head2 CpuOptions => L<Paws::EC2::CpuOptions>
+=head2 CpuOptions => EC2_CpuOptions
 
   The CPU options for the instance.
 
@@ -127,12 +341,12 @@ optimization isn't available with all instance types. Additional usage
 charges apply when using an EBS Optimized instance.
 
 
-=head2 ElasticGpuAssociations => ArrayRef[L<Paws::EC2::ElasticGpuAssociation>]
+=head2 ElasticGpuAssociations => ArrayRef[EC2_ElasticGpuAssociation]
 
   The Elastic GPU associated with the instance.
 
 
-=head2 ElasticInferenceAcceleratorAssociations => ArrayRef[L<Paws::EC2::ElasticInferenceAcceleratorAssociation>]
+=head2 ElasticInferenceAcceleratorAssociations => ArrayRef[EC2_ElasticInferenceAcceleratorAssociation]
 
   The elastic inference accelerator associated with the instance.
 
@@ -142,7 +356,7 @@ charges apply when using an EBS Optimized instance.
   Specifies whether enhanced networking with ENA is enabled.
 
 
-=head2 HibernationOptions => L<Paws::EC2::HibernationOptions>
+=head2 HibernationOptions => EC2_HibernationOptions
 
   Indicates whether the instance is enabled for hibernation.
 
@@ -152,7 +366,7 @@ charges apply when using an EBS Optimized instance.
   The hypervisor type of the instance.
 
 
-=head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfile>
+=head2 IamInstanceProfile => EC2_IamInstanceProfile
 
   The IAM instance profile associated with the instance, if applicable.
 
@@ -193,27 +407,27 @@ associated key pair.
   The time the instance was launched.
 
 
-=head2 Licenses => ArrayRef[L<Paws::EC2::LicenseConfiguration>]
+=head2 Licenses => ArrayRef[EC2_LicenseConfiguration]
 
   The license configurations.
 
 
-=head2 MetadataOptions => L<Paws::EC2::InstanceMetadataOptionsResponse>
+=head2 MetadataOptions => EC2_InstanceMetadataOptionsResponse
 
   The metadata options for the instance.
 
 
-=head2 Monitoring => L<Paws::EC2::Monitoring>
+=head2 Monitoring => EC2_Monitoring
 
   The monitoring for the instance.
 
 
-=head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterface>]
+=head2 NetworkInterfaces => ArrayRef[EC2_InstanceNetworkInterface]
 
   [EC2-VPC] The network interfaces for the instance.
 
 
-=head2 Placement => L<Paws::EC2::Placement>
+=head2 Placement => EC2_Placement
 
   The location where the instance launched, if applicable.
 
@@ -241,7 +455,7 @@ hostname as appropriate.
   The private IPv4 address assigned to the instance.
 
 
-=head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
+=head2 ProductCodes => ArrayRef[EC2_ProductCode]
 
   The product codes attached to this instance, if applicable.
 
@@ -275,7 +489,7 @@ for your VPC.
 an instance store volume.
 
 
-=head2 SecurityGroups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
+=head2 SecurityGroups => ArrayRef[EC2_GroupIdentifier]
 
   The security groups for the instance.
 
@@ -303,12 +517,12 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 Function interface is enabled.
 
 
-=head2 State => L<Paws::EC2::InstanceState>
+=head2 State => EC2_InstanceState
 
   The current state of the instance.
 
 
-=head2 StateReason => L<Paws::EC2::StateReason>
+=head2 StateReason => EC2_StateReason
 
   The reason for the most recent state transition.
 
@@ -324,7 +538,7 @@ string.
   [EC2-VPC] The ID of the subnet in which the instance is running.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the instance.
 

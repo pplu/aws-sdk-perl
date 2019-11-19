@@ -1,19 +1,67 @@
 
 package Paws::AppMesh::CreateRoute;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has MeshName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meshName', required => 1);
-  has RouteName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeName', required => 1);
-  has Spec => (is => 'ro', isa => 'Paws::AppMesh::RouteSpec', traits => ['NameInRequest'], request_name => 'spec', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::TagRef]', traits => ['NameInRequest'], request_name => 'tags');
-  has VirtualRouterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'virtualRouterName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppMesh::Types qw/AppMesh_RouteSpec AppMesh_TagRef/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has MeshName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RouteName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Spec => (is => 'ro', isa => AppMesh_RouteSpec, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[AppMesh_TagRef], predicate => 1);
+  has VirtualRouterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRoute');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::CreateRouteOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRoute');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppMesh::CreateRouteOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'VirtualRouterName' => 'virtualRouterName',
+                    'MeshName' => 'meshName'
+                  },
+  'types' => {
+               'Spec' => {
+                           'type' => 'AppMesh_RouteSpec',
+                           'class' => 'Paws::AppMesh::RouteSpec'
+                         },
+               'Tags' => {
+                           'class' => 'Paws::AppMesh::TagRef',
+                           'type' => 'ArrayRef[AppMesh_TagRef]'
+                         },
+               'VirtualRouterName' => {
+                                        'type' => 'Str'
+                                      },
+               'RouteName' => {
+                                'type' => 'Str'
+                              },
+               'MeshName' => {
+                               'type' => 'Str'
+                             },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'MeshName' => 1,
+                    'Spec' => 1,
+                    'RouteName' => 1,
+                    'VirtualRouterName' => 1
+                  },
+  'NameInRequest' => {
+                       'RouteName' => 'routeName',
+                       'Tags' => 'tags',
+                       'Spec' => 'spec',
+                       'ClientToken' => 'clientToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -247,13 +295,13 @@ The name to use for the route.
 
 
 
-=head2 B<REQUIRED> Spec => L<Paws::AppMesh::RouteSpec>
+=head2 B<REQUIRED> Spec => AppMesh_RouteSpec
 
 The route specification to apply.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::AppMesh::TagRef>]
+=head2 Tags => ArrayRef[AppMesh_TagRef]
 
 Optional metadata that you can apply to the route to assist with
 categorization and organization. Each tag consists of a key and an

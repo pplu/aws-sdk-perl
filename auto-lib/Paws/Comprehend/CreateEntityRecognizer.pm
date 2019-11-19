@@ -1,20 +1,66 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Comprehend::CreateEntityRecognizer;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has DataAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerInputDataConfig', required => 1);
-  has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
-  has RecognizerName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::Tag]');
-  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
-  has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_VpcConfig Comprehend_Tag Comprehend_EntityRecognizerInputDataConfig/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has DataAccessRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputDataConfig => (is => 'ro', isa => Comprehend_EntityRecognizerInputDataConfig, required => 1, predicate => 1);
+  has LanguageCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RecognizerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Comprehend_Tag], predicate => 1);
+  has VolumeKmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has VpcConfig => (is => 'ro', isa => Comprehend_VpcConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEntityRecognizer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::CreateEntityRecognizerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateEntityRecognizer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Comprehend::CreateEntityRecognizerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'VolumeKmsKeyId' => {
+                                     'type' => 'Str'
+                                   },
+               'VpcConfig' => {
+                                'class' => 'Paws::Comprehend::VpcConfig',
+                                'type' => 'Comprehend_VpcConfig'
+                              },
+               'RecognizerName' => {
+                                     'type' => 'Str'
+                                   },
+               'Tags' => {
+                           'type' => 'ArrayRef[Comprehend_Tag]',
+                           'class' => 'Paws::Comprehend::Tag'
+                         },
+               'DataAccessRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'InputDataConfig' => {
+                                      'class' => 'Paws::Comprehend::EntityRecognizerInputDataConfig',
+                                      'type' => 'Comprehend_EntityRecognizerInputDataConfig'
+                                    },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'InputDataConfig' => 1,
+                    'LanguageCode' => 1,
+                    'DataAccessRoleArn' => 1,
+                    'RecognizerName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -105,7 +151,7 @@ role that grants Amazon Comprehend read access to your input data.
 
 
 
-=head2 B<REQUIRED> InputDataConfig => L<Paws::Comprehend::EntityRecognizerInputDataConfig>
+=head2 B<REQUIRED> InputDataConfig => Comprehend_EntityRecognizerInputDataConfig
 
 Specifies the format and location of the input data. The S3 bucket
 containing the input data must be located in the same region as the
@@ -129,7 +175,7 @@ account/region.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Comprehend::Tag>]
+=head2 Tags => ArrayRef[Comprehend_Tag]
 
 Tags to be associated with the entity recognizer being created. A tag
 is a key-value pair that adds as a metadata to a resource used by
@@ -161,7 +207,7 @@ C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
 
 
 
-=head2 VpcConfig => L<Paws::Comprehend::VpcConfig>
+=head2 VpcConfig => Comprehend_VpcConfig
 
 Configuration parameters for an optional private Virtual Private Cloud
 (VPC) containing the resources you are using for your custom entity

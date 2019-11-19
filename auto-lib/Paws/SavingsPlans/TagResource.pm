@@ -1,15 +1,42 @@
 
 package Paws::SavingsPlans::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::SavingsPlans::TagMap', traits => ['NameInRequest'], request_name => 'tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SavingsPlans::Types qw/SavingsPlans_TagMap/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => SavingsPlans_TagMap, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/TagResource');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SavingsPlans::TagResourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/TagResource');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SavingsPlans::TagResourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'SavingsPlans_TagMap',
+                           'class' => 'Paws::SavingsPlans::TagMap'
+                         }
+             },
+  'NameInRequest' => {
+                       'ResourceArn' => 'resourceArn',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'ResourceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +74,7 @@ The Amazon Resource Name (ARN) of the resource.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::SavingsPlans::TagMap>
+=head2 B<REQUIRED> Tags => SavingsPlans_TagMap
 
 One or more tags. For example, { "tags": {"key1":"value1",
 "key2":"value2"} }.

@@ -1,10 +1,31 @@
 
 package Paws::WorkDocs::DescribeRootFoldersResponse;
-  use Moose;
-  has Folders => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::FolderMetadata]');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkDocs::Types qw/WorkDocs_FolderMetadata/;
+  has Folders => (is => 'ro', isa => ArrayRef[WorkDocs_FolderMetadata]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Folders' => {
+                              'class' => 'Paws::WorkDocs::FolderMetadata',
+                              'type' => 'ArrayRef[WorkDocs_FolderMetadata]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::WorkDocs::DescribeRootFoldersResponse
 =head1 ATTRIBUTES
 
 
-=head2 Folders => ArrayRef[L<Paws::WorkDocs::FolderMetadata>]
+=head2 Folders => ArrayRef[WorkDocs_FolderMetadata]
 
 The user's special folders.
 

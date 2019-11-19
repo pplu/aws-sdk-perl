@@ -1,14 +1,33 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::ListAllowedNodeTypeModifications;
-  use Moose;
-  has CacheClusterId => (is => 'ro', isa => 'Str');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheClusterId => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationGroupId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAllowedNodeTypeModifications');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::AllowedNodeTypeModificationsMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListAllowedNodeTypeModificationsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAllowedNodeTypeModifications');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::AllowedNodeTypeModificationsMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListAllowedNodeTypeModificationsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'CacheClusterId' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

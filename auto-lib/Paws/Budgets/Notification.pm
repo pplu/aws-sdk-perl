@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::Budgets::Notification;
-  use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
-  has NotificationState => (is => 'ro', isa => 'Str');
-  has NotificationType => (is => 'ro', isa => 'Str', required => 1);
-  has Threshold => (is => 'ro', isa => 'Num', required => 1);
-  has ThresholdType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::Budgets::Types qw//;
+  has ComparisonOperator => (is => 'ro', isa => Str, required => 1);
+  has NotificationState => (is => 'ro', isa => Str);
+  has NotificationType => (is => 'ro', isa => Str, required => 1);
+  has Threshold => (is => 'ro', isa => Num, required => 1);
+  has ThresholdType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'NotificationType' => 1,
+                    'ComparisonOperator' => 1,
+                    'Threshold' => 1
+                  },
+  'types' => {
+               'NotificationType' => {
+                                       'type' => 'Str'
+                                     },
+               'NotificationState' => {
+                                        'type' => 'Str'
+                                      },
+               'Threshold' => {
+                                'type' => 'Num'
+                              },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       },
+               'ThresholdType' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

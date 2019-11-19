@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::ListLabelingJobsForWorkteamResponse;
-  use Moose;
-  has LabelingJobSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::LabelingJobForWorkteamSummary]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_LabelingJobForWorkteamSummary/;
+  has LabelingJobSummaryList => (is => 'ro', isa => ArrayRef[SageMaker_LabelingJobForWorkteamSummary], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'LabelingJobSummaryList' => {
+                                             'class' => 'Paws::SageMaker::LabelingJobForWorkteamSummary',
+                                             'type' => 'ArrayRef[SageMaker_LabelingJobForWorkteamSummary]'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'LabelingJobSummaryList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +40,7 @@ Paws::SageMaker::ListLabelingJobsForWorkteamResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LabelingJobSummaryList => ArrayRef[L<Paws::SageMaker::LabelingJobForWorkteamSummary>]
+=head2 B<REQUIRED> LabelingJobSummaryList => ArrayRef[SageMaker_LabelingJobForWorkteamSummary]
 
 An array of C<LabelingJobSummary> objects, each describing a labeling
 job.

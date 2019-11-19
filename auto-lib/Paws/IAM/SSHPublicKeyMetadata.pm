@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::IAM::SSHPublicKeyMetadata;
-  use Moose;
-  has SSHPublicKeyId => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has UploadDate => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has SSHPublicKeyId => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has UploadDate => (is => 'ro', isa => Str, required => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'UploadDate' => {
+                                 'type' => 'Str'
+                               },
+               'SSHPublicKeyId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'SSHPublicKeyId' => 1,
+                    'UploadDate' => 1,
+                    'UserName' => 1,
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

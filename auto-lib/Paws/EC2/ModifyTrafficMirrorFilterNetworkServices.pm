@@ -1,16 +1,47 @@
 
 package Paws::EC2::ModifyTrafficMirrorFilterNetworkServices;
-  use Moose;
-  has AddNetworkServices => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddNetworkService' );
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has RemoveNetworkServices => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveNetworkService' );
-  has TrafficMirrorFilterId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::EC2::Types qw//;
+  has AddNetworkServices => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has RemoveNetworkServices => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has TrafficMirrorFilterId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyTrafficMirrorFilterNetworkServices');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyTrafficMirrorFilterNetworkServicesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyTrafficMirrorFilterNetworkServices');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyTrafficMirrorFilterNetworkServicesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TrafficMirrorFilterId' => 1
+                  },
+  'NameInRequest' => {
+                       'AddNetworkServices' => 'AddNetworkService',
+                       'RemoveNetworkServices' => 'RemoveNetworkService'
+                     },
+  'types' => {
+               'RemoveNetworkServices' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'AddNetworkServices' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'TrafficMirrorFilterId' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

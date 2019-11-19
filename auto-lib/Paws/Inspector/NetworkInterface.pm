@@ -1,15 +1,73 @@
+# Generated from default/object.tt
 package Paws::Inspector::NetworkInterface;
-  use Moose;
-  has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipv6Addresses', traits => ['NameInRequest']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
-  has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::PrivateIp]', request_name => 'privateIpAddresses', traits => ['NameInRequest']);
-  has PublicDnsName => (is => 'ro', isa => 'Str', request_name => 'publicDnsName', traits => ['NameInRequest']);
-  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::SecurityGroup]', request_name => 'securityGroups', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::Inspector::Types qw/Inspector_PrivateIp Inspector_SecurityGroup/;
+  has Ipv6Addresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has PrivateDnsName => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+  has PrivateIpAddresses => (is => 'ro', isa => ArrayRef[Inspector_PrivateIp]);
+  has PublicDnsName => (is => 'ro', isa => Str);
+  has PublicIp => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Inspector_SecurityGroup]);
+  has SubnetId => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ipv6Addresses' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'PublicIp' => {
+                               'type' => 'Str'
+                             },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'PublicDnsName' => {
+                                    'type' => 'Str'
+                                  },
+               'PrivateDnsName' => {
+                                     'type' => 'Str'
+                                   },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Inspector_SecurityGroup]',
+                                     'class' => 'Paws::Inspector::SecurityGroup'
+                                   },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'PrivateIpAddresses' => {
+                                         'type' => 'ArrayRef[Inspector_PrivateIp]',
+                                         'class' => 'Paws::Inspector::PrivateIp'
+                                       },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'VpcId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'PublicDnsName' => 'publicDnsName',
+                       'PrivateIpAddress' => 'privateIpAddress',
+                       'PublicIp' => 'publicIp',
+                       'Ipv6Addresses' => 'ipv6Addresses',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'VpcId' => 'vpcId',
+                       'SubnetId' => 'subnetId',
+                       'PrivateIpAddresses' => 'privateIpAddresses',
+                       'PrivateDnsName' => 'privateDnsName',
+                       'SecurityGroups' => 'securityGroups'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +125,7 @@ AssetAttributes data type.
   The private IP address associated with the network interface.
 
 
-=head2 PrivateIpAddresses => ArrayRef[L<Paws::Inspector::PrivateIp>]
+=head2 PrivateIpAddresses => ArrayRef[Inspector_PrivateIp]
 
   A list of the private IP addresses associated with the network
 interface. Includes the privateDnsName and privateIpAddress.
@@ -83,7 +141,7 @@ interface. Includes the privateDnsName and privateIpAddress.
   The public IP address from which the network interface is reachable.
 
 
-=head2 SecurityGroups => ArrayRef[L<Paws::Inspector::SecurityGroup>]
+=head2 SecurityGroups => ArrayRef[Inspector_SecurityGroup]
 
   A list of the security groups associated with the network interface.
 Includes the groupId and groupName.

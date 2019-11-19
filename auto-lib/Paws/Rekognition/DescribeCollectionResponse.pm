@@ -1,12 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::DescribeCollectionResponse;
-  use Moose;
-  has CollectionARN => (is => 'ro', isa => 'Str');
-  has CreationTimestamp => (is => 'ro', isa => 'Str');
-  has FaceCount => (is => 'ro', isa => 'Int');
-  has FaceModelVersion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Rekognition::Types qw//;
+  has CollectionARN => (is => 'ro', isa => Str);
+  has CreationTimestamp => (is => 'ro', isa => Str);
+  has FaceCount => (is => 'ro', isa => Int);
+  has FaceModelVersion => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FaceModelVersion' => {
+                                       'type' => 'Str'
+                                     },
+               'CollectionARN' => {
+                                    'type' => 'Str'
+                                  },
+               'FaceCount' => {
+                                'type' => 'Int'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTimestamp' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

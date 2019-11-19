@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DBSubnetGroupMessage;
-  use Moose;
-  has DBSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSubnetGroup]', request_name => 'DBSubnetGroup', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_DBSubnetGroup/;
+  has DBSubnetGroups => (is => 'ro', isa => ArrayRef[RDS_DBSubnetGroup]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DBSubnetGroups' => 'DBSubnetGroup'
+                     },
+  'types' => {
+               'DBSubnetGroups' => {
+                                     'type' => 'ArrayRef[RDS_DBSubnetGroup]',
+                                     'class' => 'Paws::RDS::DBSubnetGroup'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RDS::DBSubnetGroupMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBSubnetGroups => ArrayRef[L<Paws::RDS::DBSubnetGroup>]
+=head2 DBSubnetGroups => ArrayRef[RDS_DBSubnetGroup]
 
 A list of C<DBSubnetGroup> instances.
 

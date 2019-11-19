@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MediaStore::ListContainersOutput;
-  use Moose;
-  has Containers => (is => 'ro', isa => 'ArrayRef[Paws::MediaStore::Container]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaStore::Types qw/MediaStore_Container/;
+  has Containers => (is => 'ro', isa => ArrayRef[MediaStore_Container], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Containers' => {
+                                 'class' => 'Paws::MediaStore::Container',
+                                 'type' => 'ArrayRef[MediaStore_Container]'
+                               }
+             },
+  'IsRequired' => {
+                    'Containers' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +40,7 @@ Paws::MediaStore::ListContainersOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Containers => ArrayRef[L<Paws::MediaStore::Container>]
+=head2 B<REQUIRED> Containers => ArrayRef[MediaStore_Container]
 
 The names of the containers.
 

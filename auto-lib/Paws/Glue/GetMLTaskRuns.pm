@@ -1,17 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::GetMLTaskRuns;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::Glue::TaskRunFilterCriteria');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Sort => (is => 'ro', isa => 'Paws::Glue::TaskRunSortCriteria');
-  has TransformId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Glue::Types qw/Glue_TaskRunSortCriteria Glue_TaskRunFilterCriteria/;
+  has Filter => (is => 'ro', isa => Glue_TaskRunFilterCriteria, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Sort => (is => 'ro', isa => Glue_TaskRunSortCriteria, predicate => 1);
+  has TransformId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMLTaskRuns');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::GetMLTaskRunsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetMLTaskRuns');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::GetMLTaskRunsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TransformId' => 1
+                  },
+  'types' => {
+               'Filter' => {
+                             'class' => 'Paws::Glue::TaskRunFilterCriteria',
+                             'type' => 'Glue_TaskRunFilterCriteria'
+                           },
+               'Sort' => {
+                           'class' => 'Paws::Glue::TaskRunSortCriteria',
+                           'type' => 'Glue_TaskRunSortCriteria'
+                         },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'TransformId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::Glue::TaskRunFilterCriteria>
+=head2 Filter => Glue_TaskRunFilterCriteria
 
 The filter criteria, in the C<TaskRunFilterCriteria> structure, for the
 task run.
@@ -81,7 +114,7 @@ A token for pagination of the results. The default is empty.
 
 
 
-=head2 Sort => L<Paws::Glue::TaskRunSortCriteria>
+=head2 Sort => Glue_TaskRunSortCriteria
 
 The sorting criteria, in the C<TaskRunSortCriteria> structure, for the
 task run.

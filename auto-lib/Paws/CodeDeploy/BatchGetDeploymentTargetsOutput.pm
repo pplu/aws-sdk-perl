@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::BatchGetDeploymentTargetsOutput;
-  use Moose;
-  has DeploymentTargets => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::DeploymentTarget]', traits => ['NameInRequest'], request_name => 'deploymentTargets' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_DeploymentTarget/;
+  has DeploymentTargets => (is => 'ro', isa => ArrayRef[CodeDeploy_DeploymentTarget]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeploymentTargets' => {
+                                        'type' => 'ArrayRef[CodeDeploy_DeploymentTarget]',
+                                        'class' => 'Paws::CodeDeploy::DeploymentTarget'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DeploymentTargets' => 'deploymentTargets'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CodeDeploy::BatchGetDeploymentTargetsOutput
 =head1 ATTRIBUTES
 
 
-=head2 DeploymentTargets => ArrayRef[L<Paws::CodeDeploy::DeploymentTarget>]
+=head2 DeploymentTargets => ArrayRef[CodeDeploy_DeploymentTarget]
 
 A list of target objects for a deployment. Each target object contains
 details about the target, such as its status and lifecycle events. The

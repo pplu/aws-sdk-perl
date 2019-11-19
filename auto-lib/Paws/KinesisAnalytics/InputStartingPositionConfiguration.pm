@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::InputStartingPositionConfiguration;
-  use Moose;
-  has InputStartingPosition => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw//;
+  has InputStartingPosition => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputStartingPosition' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

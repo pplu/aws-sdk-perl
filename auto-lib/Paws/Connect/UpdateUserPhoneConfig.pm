@@ -1,16 +1,47 @@
 
 package Paws::Connect::UpdateUserPhoneConfig;
-  use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceId', required => 1);
-  has PhoneConfig => (is => 'ro', isa => 'Paws::Connect::UserPhoneConfig', required => 1);
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UserId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Connect::Types qw/Connect_UserPhoneConfig/;
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PhoneConfig => (is => 'ro', isa => Connect_UserPhoneConfig, required => 1, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUserPhoneConfig');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/users/{InstanceId}/{UserId}/phone-config');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateUserPhoneConfig');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/users/{InstanceId}/{UserId}/phone-config');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'UserId' => 'UserId',
+                    'InstanceId' => 'InstanceId'
+                  },
+  'IsRequired' => {
+                    'InstanceId' => 1,
+                    'UserId' => 1,
+                    'PhoneConfig' => 1
+                  },
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'PhoneConfig' => {
+                                  'class' => 'Paws::Connect::UserPhoneConfig',
+                                  'type' => 'Connect_UserPhoneConfig'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +85,7 @@ The identifier of the Amazon Connect instance.
 
 
 
-=head2 B<REQUIRED> PhoneConfig => L<Paws::Connect::UserPhoneConfig>
+=head2 B<REQUIRED> PhoneConfig => Connect_UserPhoneConfig
 
 Information about phone configuration settings for the user.
 

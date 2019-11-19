@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Rekognition::StreamProcessorSettings;
-  use Moose;
-  has FaceSearch => (is => 'ro', isa => 'Paws::Rekognition::FaceSearchSettings');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Rekognition::Types qw/Rekognition_FaceSearchSettings/;
+  has FaceSearch => (is => 'ro', isa => Rekognition_FaceSearchSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FaceSearch' => {
+                                 'class' => 'Paws::Rekognition::FaceSearchSettings',
+                                 'type' => 'Rekognition_FaceSearchSettings'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ by a Amazon Rekognition stream processor.
 =head1 ATTRIBUTES
 
 
-=head2 FaceSearch => L<Paws::Rekognition::FaceSearchSettings>
+=head2 FaceSearch => Rekognition_FaceSearchSettings
 
   Face search settings to use on a streaming video.
 

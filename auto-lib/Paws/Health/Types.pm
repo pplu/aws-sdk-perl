@@ -1,0 +1,34 @@
+package Paws::Health::Types;
+  use Type::Library qw/-base/;
+  use Type::Utils qw/class_type/;
+
+  class_type Health_AffectedEntity, { class => 'Paws::Health::AffectedEntity' };
+  class_type Health_DateTimeRange, { class => 'Paws::Health::DateTimeRange' };
+  class_type Health_DescribeAffectedEntitiesRequest, { class => 'Paws::Health::DescribeAffectedEntitiesRequest' };
+  class_type Health_DescribeAffectedEntitiesResponse, { class => 'Paws::Health::DescribeAffectedEntitiesResponse' };
+  class_type Health_DescribeEntityAggregatesRequest, { class => 'Paws::Health::DescribeEntityAggregatesRequest' };
+  class_type Health_DescribeEntityAggregatesResponse, { class => 'Paws::Health::DescribeEntityAggregatesResponse' };
+  class_type Health_DescribeEventAggregatesRequest, { class => 'Paws::Health::DescribeEventAggregatesRequest' };
+  class_type Health_DescribeEventAggregatesResponse, { class => 'Paws::Health::DescribeEventAggregatesResponse' };
+  class_type Health_DescribeEventDetailsRequest, { class => 'Paws::Health::DescribeEventDetailsRequest' };
+  class_type Health_DescribeEventDetailsResponse, { class => 'Paws::Health::DescribeEventDetailsResponse' };
+  class_type Health_DescribeEventsRequest, { class => 'Paws::Health::DescribeEventsRequest' };
+  class_type Health_DescribeEventsResponse, { class => 'Paws::Health::DescribeEventsResponse' };
+  class_type Health_DescribeEventTypesRequest, { class => 'Paws::Health::DescribeEventTypesRequest' };
+  class_type Health_DescribeEventTypesResponse, { class => 'Paws::Health::DescribeEventTypesResponse' };
+  class_type Health_EntityAggregate, { class => 'Paws::Health::EntityAggregate' };
+  class_type Health_EntityFilter, { class => 'Paws::Health::EntityFilter' };
+  class_type Health_Event, { class => 'Paws::Health::Event' };
+  class_type Health_EventAggregate, { class => 'Paws::Health::EventAggregate' };
+  class_type Health_EventDescription, { class => 'Paws::Health::EventDescription' };
+  class_type Health_EventDetails, { class => 'Paws::Health::EventDetails' };
+  class_type Health_EventDetailsErrorItem, { class => 'Paws::Health::EventDetailsErrorItem' };
+  class_type Health_EventFilter, { class => 'Paws::Health::EventFilter' };
+  class_type Health_eventMetadata, { class => 'Paws::Health::EventMetadata' };
+  class_type Health_EventType, { class => 'Paws::Health::EventType' };
+  class_type Health_EventTypeFilter, { class => 'Paws::Health::EventTypeFilter' };
+  class_type Health_InvalidPaginationToken, { class => 'Paws::Health::InvalidPaginationToken' };
+  class_type Health_tagSet, { class => 'Paws::Health::TagSet' };
+  class_type Health_UnsupportedLocale, { class => 'Paws::Health::UnsupportedLocale' };
+
+1;

@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::Robomaker::RobotApplicationConfig;
-  use Moose;
-  has Application => (is => 'ro', isa => 'Str', request_name => 'application', traits => ['NameInRequest'], required => 1);
-  has ApplicationVersion => (is => 'ro', isa => 'Str', request_name => 'applicationVersion', traits => ['NameInRequest']);
-  has LaunchConfig => (is => 'ro', isa => 'Paws::Robomaker::LaunchConfig', request_name => 'launchConfig', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw/Robomaker_LaunchConfig/;
+  has Application => (is => 'ro', isa => Str, required => 1);
+  has ApplicationVersion => (is => 'ro', isa => Str);
+  has LaunchConfig => (is => 'ro', isa => Robomaker_LaunchConfig, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchConfig' => {
+                                   'type' => 'Robomaker_LaunchConfig',
+                                   'class' => 'Paws::Robomaker::LaunchConfig'
+                                 },
+               'Application' => {
+                                  'type' => 'Str'
+                                },
+               'ApplicationVersion' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'Application' => 'application',
+                       'LaunchConfig' => 'launchConfig',
+                       'ApplicationVersion' => 'applicationVersion'
+                     },
+  'IsRequired' => {
+                    'LaunchConfig' => 1,
+                    'Application' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +81,7 @@ Application configuration information for a robot.
   The version of the robot application.
 
 
-=head2 B<REQUIRED> LaunchConfig => L<Paws::Robomaker::LaunchConfig>
+=head2 B<REQUIRED> LaunchConfig => Robomaker_LaunchConfig
 
   The launch configuration for the robot application.
 

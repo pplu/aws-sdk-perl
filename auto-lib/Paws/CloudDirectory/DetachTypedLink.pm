@@ -1,15 +1,41 @@
 
 package Paws::CloudDirectory::DetachTypedLink;
-  use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has TypedLinkSpecifier => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSpecifier', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedLinkSpecifier/;
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TypedLinkSpecifier => (is => 'ro', isa => CloudDirectory_TypedLinkSpecifier, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachTypedLink');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/detach');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DetachTypedLink');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/detach');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TypedLinkSpecifier' => 1,
+                    'DirectoryArn' => 1
+                  },
+  'types' => {
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'TypedLinkSpecifier' => {
+                                         'class' => 'Paws::CloudDirectory::TypedLinkSpecifier',
+                                         'type' => 'CloudDirectory_TypedLinkSpecifier'
+                                       }
+             },
+  'ParamInHeader' => {
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +101,7 @@ detach the typed link.
 
 
 
-=head2 B<REQUIRED> TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>
+=head2 B<REQUIRED> TypedLinkSpecifier => CloudDirectory_TypedLinkSpecifier
 
 Used to accept a typed link specifier as input.
 

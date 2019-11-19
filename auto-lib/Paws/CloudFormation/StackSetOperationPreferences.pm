@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackSetOperationPreferences;
-  use Moose;
-  has FailureToleranceCount => (is => 'ro', isa => 'Int');
-  has FailureTolerancePercentage => (is => 'ro', isa => 'Int');
-  has MaxConcurrentCount => (is => 'ro', isa => 'Int');
-  has MaxConcurrentPercentage => (is => 'ro', isa => 'Int');
-  has RegionOrder => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Int Undef ArrayRef Str/;
+  use Paws::CloudFormation::Types qw//;
+  has FailureToleranceCount => (is => 'ro', isa => Int);
+  has FailureTolerancePercentage => (is => 'ro', isa => Int);
+  has MaxConcurrentCount => (is => 'ro', isa => Int);
+  has MaxConcurrentPercentage => (is => 'ro', isa => Int);
+  has RegionOrder => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailureToleranceCount' => {
+                                            'type' => 'Int'
+                                          },
+               'MaxConcurrentCount' => {
+                                         'type' => 'Int'
+                                       },
+               'FailureTolerancePercentage' => {
+                                                 'type' => 'Int'
+                                               },
+               'MaxConcurrentPercentage' => {
+                                              'type' => 'Int'
+                                            },
+               'RegionOrder' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

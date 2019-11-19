@@ -1,9 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SimpleWorkflow::ActivityTaskStatus;
-  use Moose;
-  has CancelRequested => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'cancelRequested' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has CancelRequested => (is => 'ro', isa => Bool, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CancelRequested' => 1
+                  },
+  'NameInRequest' => {
+                       'CancelRequested' => 'cancelRequested'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CancelRequested' => {
+                                      'type' => 'Bool'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

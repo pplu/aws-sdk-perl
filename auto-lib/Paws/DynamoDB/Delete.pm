@@ -1,11 +1,50 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::Delete;
-  use Moose;
-  has ConditionExpression => (is => 'ro', isa => 'Str');
-  has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
-  has ExpressionAttributeValues => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeValueMap');
-  has Key => (is => 'ro', isa => 'Paws::DynamoDB::Key', required => 1);
-  has ReturnValuesOnConditionCheckFailure => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDB::Types qw/DynamoDB_Key DynamoDB_ExpressionAttributeValueMap DynamoDB_ExpressionAttributeNameMap/;
+  has ConditionExpression => (is => 'ro', isa => Str);
+  has ExpressionAttributeNames => (is => 'ro', isa => DynamoDB_ExpressionAttributeNameMap);
+  has ExpressionAttributeValues => (is => 'ro', isa => DynamoDB_ExpressionAttributeValueMap);
+  has Key => (is => 'ro', isa => DynamoDB_Key, required => 1);
+  has ReturnValuesOnConditionCheckFailure => (is => 'ro', isa => Str);
+  has TableName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpressionAttributeValues' => {
+                                                'type' => 'DynamoDB_ExpressionAttributeValueMap',
+                                                'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap'
+                                              },
+               'ExpressionAttributeNames' => {
+                                               'type' => 'DynamoDB_ExpressionAttributeNameMap',
+                                               'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap'
+                                             },
+               'Key' => {
+                          'type' => 'DynamoDB_Key',
+                          'class' => 'Paws::DynamoDB::Key'
+                        },
+               'ReturnValuesOnConditionCheckFailure' => {
+                                                          'type' => 'Str'
+                                                        },
+               'ConditionExpression' => {
+                                          'type' => 'Str'
+                                        },
+               'TableName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Key' => 1,
+                    'TableName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,17 +86,17 @@ Represents a request to perform a C<DeleteItem> operation.
 succeed.
 
 
-=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
+=head2 ExpressionAttributeNames => DynamoDB_ExpressionAttributeNameMap
 
   One or more substitution tokens for attribute names in an expression.
 
 
-=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
+=head2 ExpressionAttributeValues => DynamoDB_ExpressionAttributeValueMap
 
   One or more values that can be substituted in an expression.
 
 
-=head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
+=head2 B<REQUIRED> Key => DynamoDB_Key
 
   The primary key of the item to be deleted. Each element consists of an
 attribute name and a value for that attribute.

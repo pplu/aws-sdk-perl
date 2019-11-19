@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::MarketplaceMetering::UsageRecord;
-  use Moose;
-  has CustomerIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Dimension => (is => 'ro', isa => 'Str', required => 1);
-  has Quantity => (is => 'ro', isa => 'Int');
-  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MarketplaceMetering::Types qw//;
+  has CustomerIdentifier => (is => 'ro', isa => Str, required => 1);
+  has Dimension => (is => 'ro', isa => Str, required => 1);
+  has Quantity => (is => 'ro', isa => Int);
+  has Timestamp => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Dimension' => {
+                                'type' => 'Str'
+                              },
+               'CustomerIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Dimension' => 1,
+                    'CustomerIdentifier' => 1,
+                    'Timestamp' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

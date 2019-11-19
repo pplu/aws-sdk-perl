@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::IoT::LambdaAction;
-  use Moose;
-  has FunctionArn => (is => 'ro', isa => 'Str', request_name => 'functionArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has FunctionArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FunctionArn' => 'functionArn'
+                     },
+  'IsRequired' => {
+                    'FunctionArn' => 1
+                  },
+  'types' => {
+               'FunctionArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

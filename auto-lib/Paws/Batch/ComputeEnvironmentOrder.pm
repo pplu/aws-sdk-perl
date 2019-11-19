@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Batch::ComputeEnvironmentOrder;
-  use Moose;
-  has ComputeEnvironment => (is => 'ro', isa => 'Str', request_name => 'computeEnvironment', traits => ['NameInRequest'], required => 1);
-  has Order => (is => 'ro', isa => 'Int', request_name => 'order', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Batch::Types qw//;
+  has ComputeEnvironment => (is => 'ro', isa => Str, required => 1);
+  has Order => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComputeEnvironment' => {
+                                         'type' => 'Str'
+                                       },
+               'Order' => {
+                            'type' => 'Int'
+                          }
+             },
+  'NameInRequest' => {
+                       'ComputeEnvironment' => 'computeEnvironment',
+                       'Order' => 'order'
+                     },
+  'IsRequired' => {
+                    'ComputeEnvironment' => 1,
+                    'Order' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

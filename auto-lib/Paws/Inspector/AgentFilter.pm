@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Inspector::AgentFilter;
-  use Moose;
-  has AgentHealthCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'agentHealthCodes', traits => ['NameInRequest'], required => 1);
-  has AgentHealths => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'agentHealths', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Inspector::Types qw//;
+  has AgentHealthCodes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has AgentHealths => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AgentHealths' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'AgentHealthCodes' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             },
+  'NameInRequest' => {
+                       'AgentHealths' => 'agentHealths',
+                       'AgentHealthCodes' => 'agentHealthCodes'
+                     },
+  'IsRequired' => {
+                    'AgentHealthCodes' => 1,
+                    'AgentHealths' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

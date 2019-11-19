@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::ItemResponse;
-  use Moose;
-  has EndpointItemResponse => (is => 'ro', isa => 'Paws::Pinpoint::EndpointItemResponse');
-  has EventsItemResponse => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEventItemResponse');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOfEventItemResponse Pinpoint_EndpointItemResponse/;
+  has EndpointItemResponse => (is => 'ro', isa => Pinpoint_EndpointItemResponse);
+  has EventsItemResponse => (is => 'ro', isa => Pinpoint_MapOfEventItemResponse);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventsItemResponse' => {
+                                         'type' => 'Pinpoint_MapOfEventItemResponse',
+                                         'class' => 'Paws::Pinpoint::MapOfEventItemResponse'
+                                       },
+               'EndpointItemResponse' => {
+                                           'type' => 'Pinpoint_EndpointItemResponse',
+                                           'class' => 'Paws::Pinpoint::EndpointItemResponse'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +60,12 @@ an endpoint that's associated with an event.
 =head1 ATTRIBUTES
 
 
-=head2 EndpointItemResponse => L<Paws::Pinpoint::EndpointItemResponse>
+=head2 EndpointItemResponse => Pinpoint_EndpointItemResponse
 
   The response that was received after the endpoint data was accepted.
 
 
-=head2 EventsItemResponse => L<Paws::Pinpoint::MapOfEventItemResponse>
+=head2 EventsItemResponse => Pinpoint_MapOfEventItemResponse
 
   A multipart response object that contains a key and a value for each
 event in the request. In each object, the event ID is the key and an

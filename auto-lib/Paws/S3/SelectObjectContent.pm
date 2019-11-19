@@ -1,26 +1,91 @@
 
 package Paws::S3::SelectObjectContent;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has Expression => (is => 'ro', isa => 'Str', required => 1);
-  has ExpressionType => (is => 'ro', isa => 'Str', required => 1);
-  has InputSerialization => (is => 'ro', isa => 'Paws::S3::InputSerialization', required => 1);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has OutputSerialization => (is => 'ro', isa => 'Paws::S3::OutputSerialization', required => 1);
-  has RequestProgress => (is => 'ro', isa => 'Paws::S3::RequestProgress');
-  has ScanRange => (is => 'ro', isa => 'Paws::S3::ScanRange');
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
-  has SSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key', traits => ['ParamInHeader']);
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_ScanRange S3_RequestProgress S3_OutputSerialization S3_InputSerialization/;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Expression => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExpressionType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputSerialization => (is => 'ro', isa => S3_InputSerialization, required => 1, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OutputSerialization => (is => 'ro', isa => S3_OutputSerialization, required => 1, predicate => 1);
+  has RequestProgress => (is => 'ro', isa => S3_RequestProgress, predicate => 1);
+  has ScanRange => (is => 'ro', isa => S3_ScanRange, predicate => 1);
+  has SSECustomerAlgorithm => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKey => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SelectObjectContent');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}?select&select-type=2');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::SelectObjectContentOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SelectObjectContent');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}?select&select-type=2');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::SelectObjectContentOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'Key' => 1,
+                    'InputSerialization' => 1,
+                    'OutputSerialization' => 1,
+                    'Expression' => 1,
+                    'ExpressionType' => 1
+                  },
+  'types' => {
+               'SSECustomerKey' => {
+                                     'type' => 'Str'
+                                   },
+               'OutputSerialization' => {
+                                          'class' => 'Paws::S3::OutputSerialization',
+                                          'type' => 'S3_OutputSerialization'
+                                        },
+               'Expression' => {
+                                 'type' => 'Str'
+                               },
+               'SSECustomerAlgorithm' => {
+                                           'type' => 'Str'
+                                         },
+               'InputSerialization' => {
+                                         'class' => 'Paws::S3::InputSerialization',
+                                         'type' => 'S3_InputSerialization'
+                                       },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'RequestProgress' => {
+                                      'type' => 'S3_RequestProgress',
+                                      'class' => 'Paws::S3::RequestProgress'
+                                    },
+               'ExpressionType' => {
+                                     'type' => 'Str'
+                                   },
+               'SSECustomerKeyMD5' => {
+                                        'type' => 'Str'
+                                      },
+               'ScanRange' => {
+                                'class' => 'Paws::S3::ScanRange',
+                                'type' => 'S3_ScanRange'
+                              },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             },
+  'ParamInURI' => {
+                    'Key' => 'Key',
+                    'Bucket' => 'Bucket'
+                  },
+  'ParamInHeader' => {
+                       'SSECustomerKey' => 'x-amz-server-side-encryption-customer-key',
+                       'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm',
+                       'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -116,7 +181,7 @@ The type of the provided expression (for example., SQL).
 
 Valid values are: C<"SQL">
 
-=head2 B<REQUIRED> InputSerialization => L<Paws::S3::InputSerialization>
+=head2 B<REQUIRED> InputSerialization => S3_InputSerialization
 
 Describes the format of the data in the object that is being queried.
 
@@ -128,20 +193,20 @@ The object key.
 
 
 
-=head2 B<REQUIRED> OutputSerialization => L<Paws::S3::OutputSerialization>
+=head2 B<REQUIRED> OutputSerialization => S3_OutputSerialization
 
 Describes the format of the data that you want Amazon S3 to return in
 response.
 
 
 
-=head2 RequestProgress => L<Paws::S3::RequestProgress>
+=head2 RequestProgress => S3_RequestProgress
 
 Specifies if periodic request progress information should be enabled.
 
 
 
-=head2 ScanRange => L<Paws::S3::ScanRange>
+=head2 ScanRange => S3_ScanRange
 
 Specifies the byte range of the object to get the records from. A
 record is processed when its first byte is contained by the range. This

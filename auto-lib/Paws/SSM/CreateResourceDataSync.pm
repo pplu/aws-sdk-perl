@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::CreateResourceDataSync;
-  use Moose;
-  has S3Destination => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncS3Destination');
-  has SyncName => (is => 'ro', isa => 'Str', required => 1);
-  has SyncSource => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncSource');
-  has SyncType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_ResourceDataSyncSource SSM_ResourceDataSyncS3Destination/;
+  has S3Destination => (is => 'ro', isa => SSM_ResourceDataSyncS3Destination, predicate => 1);
+  has SyncName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SyncSource => (is => 'ro', isa => SSM_ResourceDataSyncSource, predicate => 1);
+  has SyncType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateResourceDataSync');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreateResourceDataSyncResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateResourceDataSync');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::CreateResourceDataSyncResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SyncSource' => {
+                                 'class' => 'Paws::SSM::ResourceDataSyncSource',
+                                 'type' => 'SSM_ResourceDataSyncSource'
+                               },
+               'S3Destination' => {
+                                    'class' => 'Paws::SSM::ResourceDataSyncS3Destination',
+                                    'type' => 'SSM_ResourceDataSyncS3Destination'
+                                  },
+               'SyncType' => {
+                               'type' => 'Str'
+                             },
+               'SyncName' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'SyncName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +97,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>
+=head2 S3Destination => SSM_ResourceDataSyncS3Destination
 
 Amazon S3 configuration details for the sync.
 
@@ -79,7 +109,7 @@ A name for the configuration.
 
 
 
-=head2 SyncSource => L<Paws::SSM::ResourceDataSyncSource>
+=head2 SyncSource => SSM_ResourceDataSyncSource
 
 Specify information about the data sources to synchronize.
 

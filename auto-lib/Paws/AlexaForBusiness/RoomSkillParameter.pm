@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::RoomSkillParameter;
-  use Moose;
-  has ParameterKey => (is => 'ro', isa => 'Str', required => 1);
-  has ParameterValue => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has ParameterKey => (is => 'ro', isa => Str, required => 1);
+  has ParameterValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterKey' => {
+                                   'type' => 'Str'
+                                 },
+               'ParameterValue' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'ParameterValue' => 1,
+                    'ParameterKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

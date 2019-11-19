@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::ES::EBSOptionsStatus;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Paws::ES::EBSOptions', required => 1);
-  has Status => (is => 'ro', isa => 'Paws::ES::OptionStatus', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ES::Types qw/ES_EBSOptions ES_OptionStatus/;
+  has Options => (is => 'ro', isa => ES_EBSOptions, required => 1);
+  has Status => (is => 'ro', isa => ES_OptionStatus, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'class' => 'Paws::ES::OptionStatus',
+                             'type' => 'ES_OptionStatus'
+                           },
+               'Options' => {
+                              'type' => 'ES_EBSOptions',
+                              'class' => 'Paws::ES::EBSOptions'
+                            }
+             },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'Options' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Status of the EBS options for the specified Elasticsearch domain.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Options => L<Paws::ES::EBSOptions>
+=head2 B<REQUIRED> Options => ES_EBSOptions
 
   Specifies the EBS options for the specified Elasticsearch domain.
 
 
-=head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
+=head2 B<REQUIRED> Status => ES_OptionStatus
 
   Specifies the status of the EBS options for the specified Elasticsearch
 domain.

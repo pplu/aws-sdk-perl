@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Config::RemediationParameterValue;
-  use Moose;
-  has ResourceValue => (is => 'ro', isa => 'Paws::Config::ResourceValue');
-  has StaticValue => (is => 'ro', isa => 'Paws::Config::StaticValue');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Config::Types qw/Config_ResourceValue Config_StaticValue/;
+  has ResourceValue => (is => 'ro', isa => Config_ResourceValue);
+  has StaticValue => (is => 'ro', isa => Config_StaticValue);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceValue' => {
+                                    'type' => 'Config_ResourceValue',
+                                    'class' => 'Paws::Config::ResourceValue'
+                                  },
+               'StaticValue' => {
+                                  'class' => 'Paws::Config::StaticValue',
+                                  'type' => 'Config_StaticValue'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +60,12 @@ must select either a dynamic value or a static value.
 =head1 ATTRIBUTES
 
 
-=head2 ResourceValue => L<Paws::Config::ResourceValue>
+=head2 ResourceValue => Config_ResourceValue
 
   The value is dynamic and changes at run-time.
 
 
-=head2 StaticValue => L<Paws::Config::StaticValue>
+=head2 StaticValue => Config_StaticValue
 
   The value is static and does not change at run-time.
 

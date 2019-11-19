@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CognitoIdentity::MappingRule;
-  use Moose;
-  has Claim => (is => 'ro', isa => 'Str', required => 1);
-  has MatchType => (is => 'ro', isa => 'Str', required => 1);
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdentity::Types qw//;
+  has Claim => (is => 'ro', isa => Str, required => 1);
+  has MatchType => (is => 'ro', isa => Str, required => 1);
+  has RoleARN => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Value' => 1,
+                    'MatchType' => 1,
+                    'Claim' => 1,
+                    'RoleARN' => 1
+                  },
+  'types' => {
+               'MatchType' => {
+                                'type' => 'Str'
+                              },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Claim' => {
+                            'type' => 'Str'
+                          },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

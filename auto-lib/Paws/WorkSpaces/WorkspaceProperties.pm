@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::WorkspaceProperties;
-  use Moose;
-  has ComputeTypeName => (is => 'ro', isa => 'Str');
-  has RootVolumeSizeGib => (is => 'ro', isa => 'Int');
-  has RunningMode => (is => 'ro', isa => 'Str');
-  has RunningModeAutoStopTimeoutInMinutes => (is => 'ro', isa => 'Int');
-  has UserVolumeSizeGib => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WorkSpaces::Types qw//;
+  has ComputeTypeName => (is => 'ro', isa => Str);
+  has RootVolumeSizeGib => (is => 'ro', isa => Int);
+  has RunningMode => (is => 'ro', isa => Str);
+  has RunningModeAutoStopTimeoutInMinutes => (is => 'ro', isa => Int);
+  has UserVolumeSizeGib => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComputeTypeName' => {
+                                      'type' => 'Str'
+                                    },
+               'RootVolumeSizeGib' => {
+                                        'type' => 'Int'
+                                      },
+               'RunningMode' => {
+                                  'type' => 'Str'
+                                },
+               'UserVolumeSizeGib' => {
+                                        'type' => 'Int'
+                                      },
+               'RunningModeAutoStopTimeoutInMinutes' => {
+                                                          'type' => 'Int'
+                                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

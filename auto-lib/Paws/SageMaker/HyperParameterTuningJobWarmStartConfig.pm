@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::SageMaker::HyperParameterTuningJobWarmStartConfig;
-  use Moose;
-  has ParentHyperParameterTuningJobs => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ParentHyperParameterTuningJob]', required => 1);
-  has WarmStartType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::SageMaker::Types qw/SageMaker_ParentHyperParameterTuningJob/;
+  has ParentHyperParameterTuningJobs => (is => 'ro', isa => ArrayRef[SageMaker_ParentHyperParameterTuningJob], required => 1);
+  has WarmStartType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ParentHyperParameterTuningJobs' => 1,
+                    'WarmStartType' => 1
+                  },
+  'types' => {
+               'ParentHyperParameterTuningJobs' => {
+                                                     'class' => 'Paws::SageMaker::ParentHyperParameterTuningJob',
+                                                     'type' => 'ArrayRef[SageMaker_ParentHyperParameterTuningJob]'
+                                                   },
+               'WarmStartType' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +76,7 @@ for the tuning job.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ParentHyperParameterTuningJobs => ArrayRef[L<Paws::SageMaker::ParentHyperParameterTuningJob>]
+=head2 B<REQUIRED> ParentHyperParameterTuningJobs => ArrayRef[SageMaker_ParentHyperParameterTuningJob]
 
   An array of hyperparameter tuning jobs that are used as the starting
 point for the new hyperparameter tuning job. For more information about

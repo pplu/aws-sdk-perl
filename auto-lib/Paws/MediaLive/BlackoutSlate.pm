@@ -1,10 +1,48 @@
+# Generated from default/object.tt
 package Paws::MediaLive::BlackoutSlate;
-  use Moose;
-  has BlackoutSlateImage => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'blackoutSlateImage', traits => ['NameInRequest']);
-  has NetworkEndBlackout => (is => 'ro', isa => 'Str', request_name => 'networkEndBlackout', traits => ['NameInRequest']);
-  has NetworkEndBlackoutImage => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'networkEndBlackoutImage', traits => ['NameInRequest']);
-  has NetworkId => (is => 'ro', isa => 'Str', request_name => 'networkId', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_InputLocation/;
+  has BlackoutSlateImage => (is => 'ro', isa => MediaLive_InputLocation);
+  has NetworkEndBlackout => (is => 'ro', isa => Str);
+  has NetworkEndBlackoutImage => (is => 'ro', isa => MediaLive_InputLocation);
+  has NetworkId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BlackoutSlateImage' => {
+                                         'type' => 'MediaLive_InputLocation',
+                                         'class' => 'Paws::MediaLive::InputLocation'
+                                       },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'NetworkEndBlackoutImage' => {
+                                              'class' => 'Paws::MediaLive::InputLocation',
+                                              'type' => 'MediaLive_InputLocation'
+                                            },
+               'NetworkId' => {
+                                'type' => 'Str'
+                              },
+               'NetworkEndBlackout' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'NetworkId' => 'networkId',
+                       'NetworkEndBlackout' => 'networkEndBlackout',
+                       'BlackoutSlateImage' => 'blackoutSlateImage',
+                       'State' => 'state',
+                       'NetworkEndBlackoutImage' => 'networkEndBlackoutImage'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +78,7 @@ Blackout Slate
 =head1 ATTRIBUTES
 
 
-=head2 BlackoutSlateImage => L<Paws::MediaLive::InputLocation>
+=head2 BlackoutSlateImage => MediaLive_InputLocation
 
   Blackout slate image to be used. Leave empty for solid black. Only bmp
 and png images are supported.
@@ -56,7 +94,7 @@ is encountered. The Network End and Network Start descriptors must
 contain a network ID that matches the value entered in "Network ID".
 
 
-=head2 NetworkEndBlackoutImage => L<Paws::MediaLive::InputLocation>
+=head2 NetworkEndBlackoutImage => MediaLive_InputLocation
 
   Path to local file to use as Network End Blackout image. Image will be
 scaled to fill the entire output raster.

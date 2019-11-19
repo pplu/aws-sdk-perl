@@ -1,43 +1,154 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::RestoreDBInstanceToPointInTime;
-  use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has DBName => (is => 'ro', isa => 'Str');
-  has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has Domain => (is => 'ro', isa => 'Str');
-  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has RestoreTime => (is => 'ro', isa => 'Str');
-  has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has SourceDbiResourceId => (is => 'ro', isa => 'Str');
-  has StorageType => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has TdeCredentialArn => (is => 'ro', isa => 'Str');
-  has TdeCredentialPassword => (is => 'ro', isa => 'Str');
-  has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
-  has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef Int/;
+  use Paws::RDS::Types qw/RDS_ProcessorFeature RDS_Tag/;
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has DBInstanceClass => (is => 'ro', isa => Str, predicate => 1);
+  has DBName => (is => 'ro', isa => Str, predicate => 1);
+  has DBParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, predicate => 1);
+  has DomainIAMRoleName => (is => 'ro', isa => Str, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, predicate => 1);
+  has Iops => (is => 'ro', isa => Int, predicate => 1);
+  has LicenseModel => (is => 'ro', isa => Str, predicate => 1);
+  has MultiAZ => (is => 'ro', isa => Bool, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has ProcessorFeatures => (is => 'ro', isa => ArrayRef[RDS_ProcessorFeature], predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has RestoreTime => (is => 'ro', isa => Str, predicate => 1);
+  has SourceDBInstanceIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has SourceDbiResourceId => (is => 'ro', isa => Str, predicate => 1);
+  has StorageType => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
+  has TargetDBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TdeCredentialArn => (is => 'ro', isa => Str, predicate => 1);
+  has TdeCredentialPassword => (is => 'ro', isa => Str, predicate => 1);
+  has UseDefaultProcessorFeatures => (is => 'ro', isa => Bool, predicate => 1);
+  has UseLatestRestorableTime => (is => 'ro', isa => Bool, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceToPointInTime');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RestoreDBInstanceToPointInTimeResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceToPointInTimeResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreDBInstanceToPointInTime');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::RestoreDBInstanceToPointInTimeResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RestoreDBInstanceToPointInTimeResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TargetDBInstanceIdentifier' => 1
+                  },
+  'types' => {
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'RestoreTime' => {
+                                  'type' => 'Str'
+                                },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'SourceDBInstanceIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'DBName' => {
+                             'type' => 'Str'
+                           },
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'DomainIAMRoleName' => {
+                                        'type' => 'Str'
+                                      },
+               'UseDefaultProcessorFeatures' => {
+                                                  'type' => 'Bool'
+                                                },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'SourceDbiResourceId' => {
+                                          'type' => 'Str'
+                                        },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'TargetDBInstanceIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'ProcessorFeatures' => {
+                                        'type' => 'ArrayRef[RDS_ProcessorFeature]',
+                                        'class' => 'Paws::RDS::ProcessorFeature'
+                                      },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'TdeCredentialArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Tags' => {
+                           'type' => 'ArrayRef[RDS_Tag]',
+                           'class' => 'Paws::RDS::Tag'
+                         },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'TdeCredentialPassword' => {
+                                            'type' => 'Str'
+                                          },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'UseLatestRestorableTime' => {
+                                              'type' => 'Bool'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -389,7 +500,7 @@ Default: The same port as the original DB instance.
 
 
 
-=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+=head2 ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]
 
 The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.
@@ -469,7 +580,7 @@ Default: C<io1> if the C<Iops> parameter is specified, otherwise C<gp2>
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 
 

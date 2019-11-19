@@ -1,11 +1,50 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::ActivatedRule;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Paws::WAFRegional::WafAction');
-  has ExcludedRules => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::ExcludedRule]');
-  has OverrideAction => (is => 'ro', isa => 'Paws::WAFRegional::WafOverrideAction');
-  has Priority => (is => 'ro', isa => 'Int', required => 1);
-  has RuleId => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_WafOverrideAction WAFRegional_WafAction WAFRegional_ExcludedRule/;
+  has Action => (is => 'ro', isa => WAFRegional_WafAction);
+  has ExcludedRules => (is => 'ro', isa => ArrayRef[WAFRegional_ExcludedRule]);
+  has OverrideAction => (is => 'ro', isa => WAFRegional_WafOverrideAction);
+  has Priority => (is => 'ro', isa => Int, required => 1);
+  has RuleId => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'RuleId' => {
+                             'type' => 'Str'
+                           },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Action' => {
+                             'type' => 'WAFRegional_WafAction',
+                             'class' => 'Paws::WAFRegional::WafAction'
+                           },
+               'OverrideAction' => {
+                                     'class' => 'Paws::WAFRegional::WafOverrideAction',
+                                     'type' => 'WAFRegional_WafOverrideAction'
+                                   },
+               'ExcludedRules' => {
+                                    'class' => 'Paws::WAFRegional::ExcludedRule',
+                                    'type' => 'ArrayRef[WAFRegional_ExcludedRule]'
+                                  }
+             },
+  'IsRequired' => {
+                    'Priority' => 1,
+                    'RuleId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +86,7 @@ parameter in the WebACLUpdate data type.
 =head1 ATTRIBUTES
 
 
-=head2 Action => L<Paws::WAFRegional::WafAction>
+=head2 Action => WAFRegional_WafAction
 
   Specifies the action that CloudFront or AWS WAF takes when a web
 request matches the conditions in the C<Rule>. Valid values for
@@ -78,7 +117,7 @@ C<ActivatedRule|Action> is used instead of
 C<ActivatedRule|OverrideAction>.
 
 
-=head2 ExcludedRules => ArrayRef[L<Paws::WAFRegional::ExcludedRule>]
+=head2 ExcludedRules => ArrayRef[WAFRegional_ExcludedRule]
 
   An array of rules to exclude from a rule group. This is applicable only
 when the C<ActivatedRule> refers to a C<RuleGroup>.
@@ -135,7 +174,7 @@ that you want to exclude.
 
 
 
-=head2 OverrideAction => L<Paws::WAFRegional::WafOverrideAction>
+=head2 OverrideAction => WAFRegional_WafOverrideAction
 
   Use the C<OverrideAction> to test your C<RuleGroup>.
 

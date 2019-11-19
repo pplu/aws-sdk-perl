@@ -1,21 +1,84 @@
+# Generated from default/object.tt
 package Paws::ELBv2::TargetGroup;
-  use Moose;
-  has HealthCheckEnabled => (is => 'ro', isa => 'Bool');
-  has HealthCheckIntervalSeconds => (is => 'ro', isa => 'Int');
-  has HealthCheckPath => (is => 'ro', isa => 'Str');
-  has HealthCheckPort => (is => 'ro', isa => 'Str');
-  has HealthCheckProtocol => (is => 'ro', isa => 'Str');
-  has HealthCheckTimeoutSeconds => (is => 'ro', isa => 'Int');
-  has HealthyThresholdCount => (is => 'ro', isa => 'Int');
-  has LoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Matcher => (is => 'ro', isa => 'Paws::ELBv2::Matcher');
-  has Port => (is => 'ro', isa => 'Int');
-  has Protocol => (is => 'ro', isa => 'Str');
-  has TargetGroupArn => (is => 'ro', isa => 'Str');
-  has TargetGroupName => (is => 'ro', isa => 'Str');
-  has TargetType => (is => 'ro', isa => 'Str');
-  has UnhealthyThresholdCount => (is => 'ro', isa => 'Int');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Int Str ArrayRef Undef/;
+  use Paws::ELBv2::Types qw/ELBv2_Matcher/;
+  has HealthCheckEnabled => (is => 'ro', isa => Bool);
+  has HealthCheckIntervalSeconds => (is => 'ro', isa => Int);
+  has HealthCheckPath => (is => 'ro', isa => Str);
+  has HealthCheckPort => (is => 'ro', isa => Str);
+  has HealthCheckProtocol => (is => 'ro', isa => Str);
+  has HealthCheckTimeoutSeconds => (is => 'ro', isa => Int);
+  has HealthyThresholdCount => (is => 'ro', isa => Int);
+  has LoadBalancerArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Matcher => (is => 'ro', isa => ELBv2_Matcher);
+  has Port => (is => 'ro', isa => Int);
+  has Protocol => (is => 'ro', isa => Str);
+  has TargetGroupArn => (is => 'ro', isa => Str);
+  has TargetGroupName => (is => 'ro', isa => Str);
+  has TargetType => (is => 'ro', isa => Str);
+  has UnhealthyThresholdCount => (is => 'ro', isa => Int);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HealthCheckEnabled' => {
+                                         'type' => 'Bool'
+                                       },
+               'HealthCheckIntervalSeconds' => {
+                                                 'type' => 'Int'
+                                               },
+               'HealthCheckPort' => {
+                                      'type' => 'Str'
+                                    },
+               'LoadBalancerArns' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'HealthCheckProtocol' => {
+                                          'type' => 'Str'
+                                        },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'TargetGroupArn' => {
+                                     'type' => 'Str'
+                                   },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'UnhealthyThresholdCount' => {
+                                              'type' => 'Int'
+                                            },
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'HealthCheckTimeoutSeconds' => {
+                                                'type' => 'Int'
+                                              },
+               'Matcher' => {
+                              'type' => 'ELBv2_Matcher',
+                              'class' => 'Paws::ELBv2::Matcher'
+                            },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'HealthyThresholdCount' => {
+                                            'type' => 'Int'
+                                          },
+               'TargetGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'HealthCheckPath' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +158,7 @@ considering an unhealthy target healthy.
 traffic to this target group.
 
 
-=head2 Matcher => L<Paws::ELBv2::Matcher>
+=head2 Matcher => ELBv2_Matcher
 
   The HTTP codes to use when checking for a successful response from a
 target.

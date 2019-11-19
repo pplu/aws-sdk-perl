@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::DescribeChapCredentialsOutput;
-  use Moose;
-  has ChapCredentials => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::ChapInfo]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_ChapInfo/;
+  has ChapCredentials => (is => 'ro', isa => ArrayRef[StorageGateway_ChapInfo]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChapCredentials' => {
+                                      'type' => 'ArrayRef[StorageGateway_ChapInfo]',
+                                      'class' => 'Paws::StorageGateway::ChapInfo'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::StorageGateway::DescribeChapCredentialsOutput
 =head1 ATTRIBUTES
 
 
-=head2 ChapCredentials => ArrayRef[L<Paws::StorageGateway::ChapInfo>]
+=head2 ChapCredentials => ArrayRef[StorageGateway_ChapInfo]
 
 An array of ChapInfo objects that represent CHAP credentials. Each
 object in the array contains CHAP credential information for one

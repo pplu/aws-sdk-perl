@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::UpdateApnsVoipChannel;
-  use Moose;
-  has APNSVoipChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::APNSVoipChannelRequest', required => 1);
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_APNSVoipChannelRequest/;
+  has APNSVoipChannelRequest => (is => 'ro', isa => Pinpoint_APNSVoipChannelRequest, required => 1, predicate => 1);
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'APNSVoipChannelRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApnsVoipChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/apns_voip');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateApnsVoipChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateApnsVoipChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/channels/apns_voip');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::UpdateApnsVoipChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'APNSVoipChannelRequest' => {
+                                             'type' => 'Pinpoint_APNSVoipChannelRequest',
+                                             'class' => 'Paws::Pinpoint::APNSVoipChannelRequest'
+                                           },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'APNSVoipChannelRequest' => 1
+                  },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +82,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> APNSVoipChannelRequest => L<Paws::Pinpoint::APNSVoipChannelRequest>
+=head2 B<REQUIRED> APNSVoipChannelRequest => Pinpoint_APNSVoipChannelRequest
 
 
 

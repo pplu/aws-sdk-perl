@@ -1,11 +1,48 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str', required => 1);
-  has IndexStatus => (is => 'ro', isa => 'Str');
-  has ProvisionedReadCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
-  has ProvisionedReadCapacityUnits => (is => 'ro', isa => 'Int');
-  has ProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsDescription');
-  has ProvisionedWriteCapacityUnits => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AutoScalingSettingsDescription/;
+  has IndexName => (is => 'ro', isa => Str, required => 1);
+  has IndexStatus => (is => 'ro', isa => Str);
+  has ProvisionedReadCapacityAutoScalingSettings => (is => 'ro', isa => DynamoDB_AutoScalingSettingsDescription);
+  has ProvisionedReadCapacityUnits => (is => 'ro', isa => Int);
+  has ProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => DynamoDB_AutoScalingSettingsDescription);
+  has ProvisionedWriteCapacityUnits => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'ProvisionedReadCapacityAutoScalingSettings' => {
+                                                                 'type' => 'DynamoDB_AutoScalingSettingsDescription',
+                                                                 'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription'
+                                                               },
+               'ProvisionedWriteCapacityUnits' => {
+                                                    'type' => 'Int'
+                                                  },
+               'ProvisionedReadCapacityUnits' => {
+                                                   'type' => 'Int'
+                                                 },
+               'IndexStatus' => {
+                                  'type' => 'Str'
+                                },
+               'ProvisionedWriteCapacityAutoScalingSettings' => {
+                                                                  'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
+                                                                  'type' => 'DynamoDB_AutoScalingSettingsDescription'
+                                                                }
+             },
+  'IsRequired' => {
+                    'IndexName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +110,7 @@ C<ACTIVE> - The global secondary index is ready for use.
 
 
 
-=head2 ProvisionedReadCapacityAutoScalingSettings => L<Paws::DynamoDB::AutoScalingSettingsDescription>
+=head2 ProvisionedReadCapacityAutoScalingSettings => DynamoDB_AutoScalingSettingsDescription
 
   Auto scaling settings for a global secondary index replica's read
 capacity units.
@@ -85,7 +122,7 @@ capacity units.
 before DynamoDB returns a C<ThrottlingException>.
 
 
-=head2 ProvisionedWriteCapacityAutoScalingSettings => L<Paws::DynamoDB::AutoScalingSettingsDescription>
+=head2 ProvisionedWriteCapacityAutoScalingSettings => DynamoDB_AutoScalingSettingsDescription
 
   Auto scaling settings for a global secondary index replica's write
 capacity units.

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CodeDeploy;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'codedeploy' }
   sub signing_name { 'codedeploy' }
   sub version { '2014-10-06' }
   sub target_prefix { 'CodeDeploy_20141006' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -602,7 +604,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =item InstanceNames => ArrayRef[Str|Undef]
 
-=item Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+=item Tags => ArrayRef[CodeDeploy_Tag]
 
 
 =back
@@ -620,7 +622,7 @@ Adds tags to on-premises instances.
 
 =item ApplicationName => Str
 
-=item Revisions => ArrayRef[L<Paws::CodeDeploy::RevisionLocation>]
+=item Revisions => ArrayRef[CodeDeploy_RevisionLocation]
 
 
 =back
@@ -799,7 +801,7 @@ soon as all instances have a status of Ready.)
 
 =item [ComputePlatform => Str]
 
-=item [Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]]
+=item [Tags => ArrayRef[CodeDeploy_Tag]]
 
 
 =back
@@ -817,7 +819,7 @@ Creates an application.
 
 =item ApplicationName => Str
 
-=item [AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>]
+=item [AutoRollbackConfiguration => CodeDeploy_AutoRollbackConfiguration]
 
 =item [DeploymentConfigName => Str]
 
@@ -829,9 +831,9 @@ Creates an application.
 
 =item [IgnoreApplicationStopFailures => Bool]
 
-=item [Revision => L<Paws::CodeDeploy::RevisionLocation>]
+=item [Revision => CodeDeploy_RevisionLocation]
 
-=item [TargetInstances => L<Paws::CodeDeploy::TargetInstances>]
+=item [TargetInstances => CodeDeploy_TargetInstances]
 
 =item [UpdateOutdatedInstancesOnly => Bool]
 
@@ -853,9 +855,9 @@ Deploys an application revision through the specified deployment group.
 
 =item [ComputePlatform => Str]
 
-=item [MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>]
+=item [MinimumHealthyHosts => CodeDeploy_MinimumHealthyHosts]
 
-=item [TrafficRoutingConfig => L<Paws::CodeDeploy::TrafficRoutingConfig>]
+=item [TrafficRoutingConfig => CodeDeploy_TrafficRoutingConfig]
 
 
 =back
@@ -877,33 +879,33 @@ Creates a deployment configuration.
 
 =item ServiceRoleArn => Str
 
-=item [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>]
+=item [AlarmConfiguration => CodeDeploy_AlarmConfiguration]
 
-=item [AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>]
+=item [AutoRollbackConfiguration => CodeDeploy_AutoRollbackConfiguration]
 
 =item [AutoScalingGroups => ArrayRef[Str|Undef]]
 
-=item [BlueGreenDeploymentConfiguration => L<Paws::CodeDeploy::BlueGreenDeploymentConfiguration>]
+=item [BlueGreenDeploymentConfiguration => CodeDeploy_BlueGreenDeploymentConfiguration]
 
 =item [DeploymentConfigName => Str]
 
-=item [DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>]
+=item [DeploymentStyle => CodeDeploy_DeploymentStyle]
 
-=item [Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]]
+=item [Ec2TagFilters => ArrayRef[CodeDeploy_EC2TagFilter]]
 
-=item [Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>]
+=item [Ec2TagSet => CodeDeploy_EC2TagSet]
 
-=item [EcsServices => ArrayRef[L<Paws::CodeDeploy::ECSService>]]
+=item [EcsServices => ArrayRef[CodeDeploy_ECSService]]
 
-=item [LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>]
+=item [LoadBalancerInfo => CodeDeploy_LoadBalancerInfo]
 
-=item [OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]]
+=item [OnPremisesInstanceTagFilters => ArrayRef[CodeDeploy_TagFilter]]
 
-=item [OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>]
+=item [OnPremisesTagSet => CodeDeploy_OnPremisesTagSet]
 
-=item [Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]]
+=item [Tags => ArrayRef[CodeDeploy_Tag]]
 
-=item [TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]]
+=item [TriggerConfigurations => ArrayRef[CodeDeploy_TriggerConfig]]
 
 
 =back
@@ -1022,7 +1024,7 @@ Gets information about an application.
 
 =item ApplicationName => Str
 
-=item Revision => L<Paws::CodeDeploy::RevisionLocation>
+=item Revision => CodeDeploy_RevisionLocation
 
 
 =back
@@ -1254,7 +1256,7 @@ account.
 
 =item [ApplicationName => Str]
 
-=item [CreateTimeRange => L<Paws::CodeDeploy::TimeRange>]
+=item [CreateTimeRange => CodeDeploy_TimeRange]
 
 =item [DeploymentGroupName => Str]
 
@@ -1281,7 +1283,7 @@ registered with the IAM user or AWS account.
 
 =item [NextToken => Str]
 
-=item [TargetFilters => L<Paws::CodeDeploy::TargetFilters>]
+=item [TargetFilters => CodeDeploy_TargetFilters]
 
 
 =back
@@ -1317,7 +1319,7 @@ Lists the names of stored connections to GitHub accounts.
 
 =item [RegistrationStatus => Str]
 
-=item [TagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]]
+=item [TagFilters => ArrayRef[CodeDeploy_TagFilter]]
 
 
 =back
@@ -1381,7 +1383,7 @@ C<AfterAllowTraffic>) and returns C<Succeeded> or C<Failed>.
 
 =item ApplicationName => Str
 
-=item Revision => L<Paws::CodeDeploy::RevisionLocation>
+=item Revision => CodeDeploy_RevisionLocation
 
 =item [Description => Str]
 
@@ -1424,7 +1426,7 @@ the request. You cannot use both.
 
 =item InstanceNames => ArrayRef[Str|Undef]
 
-=item Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+=item Tags => ArrayRef[CodeDeploy_Tag]
 
 
 =back
@@ -1478,7 +1480,7 @@ Attempts to stop an ongoing deployment.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+=item Tags => ArrayRef[CodeDeploy_Tag]
 
 
 =back
@@ -1537,35 +1539,35 @@ Changes the name of an application.
 
 =item CurrentDeploymentGroupName => Str
 
-=item [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>]
+=item [AlarmConfiguration => CodeDeploy_AlarmConfiguration]
 
-=item [AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>]
+=item [AutoRollbackConfiguration => CodeDeploy_AutoRollbackConfiguration]
 
 =item [AutoScalingGroups => ArrayRef[Str|Undef]]
 
-=item [BlueGreenDeploymentConfiguration => L<Paws::CodeDeploy::BlueGreenDeploymentConfiguration>]
+=item [BlueGreenDeploymentConfiguration => CodeDeploy_BlueGreenDeploymentConfiguration]
 
 =item [DeploymentConfigName => Str]
 
-=item [DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>]
+=item [DeploymentStyle => CodeDeploy_DeploymentStyle]
 
-=item [Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]]
+=item [Ec2TagFilters => ArrayRef[CodeDeploy_EC2TagFilter]]
 
-=item [Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>]
+=item [Ec2TagSet => CodeDeploy_EC2TagSet]
 
-=item [EcsServices => ArrayRef[L<Paws::CodeDeploy::ECSService>]]
+=item [EcsServices => ArrayRef[CodeDeploy_ECSService]]
 
-=item [LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>]
+=item [LoadBalancerInfo => CodeDeploy_LoadBalancerInfo]
 
 =item [NewDeploymentGroupName => Str]
 
-=item [OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]]
+=item [OnPremisesInstanceTagFilters => ArrayRef[CodeDeploy_TagFilter]]
 
-=item [OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>]
+=item [OnPremisesTagSet => CodeDeploy_OnPremisesTagSet]
 
 =item [ServiceRoleArn => Str]
 
-=item [TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]]
+=item [TriggerConfigurations => ArrayRef[CodeDeploy_TriggerConfig]]
 
 
 =back
@@ -1643,9 +1645,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CodeDeploy::ListDeploymentInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllDeployments(sub { },[ApplicationName => Str, CreateTimeRange => L<Paws::CodeDeploy::TimeRange>, DeploymentGroupName => Str, IncludeOnlyStatuses => ArrayRef[Str|Undef], NextToken => Str])
+=head2 ListAllDeployments(sub { },[ApplicationName => Str, CreateTimeRange => CodeDeploy_TimeRange, DeploymentGroupName => Str, IncludeOnlyStatuses => ArrayRef[Str|Undef], NextToken => Str])
 
-=head2 ListAllDeployments([ApplicationName => Str, CreateTimeRange => L<Paws::CodeDeploy::TimeRange>, DeploymentGroupName => Str, IncludeOnlyStatuses => ArrayRef[Str|Undef], NextToken => Str])
+=head2 ListAllDeployments([ApplicationName => Str, CreateTimeRange => CodeDeploy_TimeRange, DeploymentGroupName => Str, IncludeOnlyStatuses => ArrayRef[Str|Undef], NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1655,9 +1657,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CodeDeploy::ListDeploymentsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllDeploymentTargets(sub { },[DeploymentId => Str, NextToken => Str, TargetFilters => L<Paws::CodeDeploy::TargetFilters>])
+=head2 ListAllDeploymentTargets(sub { },[DeploymentId => Str, NextToken => Str, TargetFilters => CodeDeploy_TargetFilters])
 
-=head2 ListAllDeploymentTargets([DeploymentId => Str, NextToken => Str, TargetFilters => L<Paws::CodeDeploy::TargetFilters>])
+=head2 ListAllDeploymentTargets([DeploymentId => Str, NextToken => Str, TargetFilters => CodeDeploy_TargetFilters])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1679,9 +1681,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CodeDeploy::ListGitHubAccountTokenNamesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllOnPremisesInstances(sub { },[NextToken => Str, RegistrationStatus => Str, TagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]])
+=head2 ListAllOnPremisesInstances(sub { },[NextToken => Str, RegistrationStatus => Str, TagFilters => ArrayRef[CodeDeploy_TagFilter]])
 
-=head2 ListAllOnPremisesInstances([NextToken => Str, RegistrationStatus => Str, TagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]])
+=head2 ListAllOnPremisesInstances([NextToken => Str, RegistrationStatus => Str, TagFilters => ArrayRef[CodeDeploy_TagFilter]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

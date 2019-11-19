@@ -1,14 +1,36 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::DetachVolume;
-  use Moose;
-  has ForceDetach => (is => 'ro', isa => 'Bool');
-  has VolumeARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::StorageGateway::Types qw//;
+  has ForceDetach => (is => 'ro', isa => Bool, predicate => 1);
+  has VolumeARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachVolume');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::DetachVolumeOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DetachVolume');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::DetachVolumeOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ForceDetach' => {
+                                  'type' => 'Bool'
+                                },
+               'VolumeARN' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'VolumeARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

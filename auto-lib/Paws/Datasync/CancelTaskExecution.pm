@@ -1,13 +1,32 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Datasync::CancelTaskExecution;
-  use Moose;
-  has TaskExecutionArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Datasync::Types qw//;
+  has TaskExecutionArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelTaskExecution');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Datasync::CancelTaskExecutionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CancelTaskExecution');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Datasync::CancelTaskExecutionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TaskExecutionArn' => 1
+                  },
+  'types' => {
+               'TaskExecutionArn' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

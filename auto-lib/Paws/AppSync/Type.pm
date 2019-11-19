@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::AppSync::Type;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Definition => (is => 'ro', isa => 'Str', request_name => 'definition', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Definition => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Format => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Definition' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Definition' => 'definition',
+                       'Arn' => 'arn',
+                       'Format' => 'format',
+                       'Name' => 'name',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

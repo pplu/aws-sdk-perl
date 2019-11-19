@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::TypedAttributeValueRange;
-  use Moose;
-  has EndMode => (is => 'ro', isa => 'Str', required => 1);
-  has EndValue => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue');
-  has StartMode => (is => 'ro', isa => 'Str', required => 1);
-  has StartValue => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedAttributeValue/;
+  has EndMode => (is => 'ro', isa => Str, required => 1);
+  has EndValue => (is => 'ro', isa => CloudDirectory_TypedAttributeValue);
+  has StartMode => (is => 'ro', isa => Str, required => 1);
+  has StartValue => (is => 'ro', isa => CloudDirectory_TypedAttributeValue);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StartMode' => 1,
+                    'EndMode' => 1
+                  },
+  'types' => {
+               'EndValue' => {
+                               'type' => 'CloudDirectory_TypedAttributeValue',
+                               'class' => 'Paws::CloudDirectory::TypedAttributeValue'
+                             },
+               'StartValue' => {
+                                 'type' => 'CloudDirectory_TypedAttributeValue',
+                                 'class' => 'Paws::CloudDirectory::TypedAttributeValue'
+                               },
+               'EndMode' => {
+                              'type' => 'Str'
+                            },
+               'StartMode' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +77,7 @@ A range of attribute values. For more information, see Range Filters
   The inclusive or exclusive range end.
 
 
-=head2 EndValue => L<Paws::CloudDirectory::TypedAttributeValue>
+=head2 EndValue => CloudDirectory_TypedAttributeValue
 
   The attribute value to terminate the range at.
 
@@ -55,7 +87,7 @@ A range of attribute values. For more information, see Range Filters
   The inclusive or exclusive range start.
 
 
-=head2 StartValue => L<Paws::CloudDirectory::TypedAttributeValue>
+=head2 StartValue => CloudDirectory_TypedAttributeValue
 
   The value to start the range at.
 

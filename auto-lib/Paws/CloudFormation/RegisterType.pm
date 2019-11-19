@@ -1,18 +1,54 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::RegisterType;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str');
-  has LoggingConfig => (is => 'ro', isa => 'Paws::CloudFormation::LoggingConfig');
-  has SchemaHandlerPackage => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str');
-  has TypeName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw/CloudFormation_LoggingConfig/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has ExecutionRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has LoggingConfig => (is => 'ro', isa => CloudFormation_LoggingConfig, predicate => 1);
+  has SchemaHandlerPackage => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Type => (is => 'ro', isa => Str, predicate => 1);
+  has TypeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterType');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::RegisterTypeOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterTypeResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterType');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::RegisterTypeOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RegisterTypeResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SchemaHandlerPackage' => 1,
+                    'TypeName' => 1
+                  },
+  'types' => {
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'SchemaHandlerPackage' => {
+                                           'type' => 'Str'
+                                         },
+               'LoggingConfig' => {
+                                    'class' => 'Paws::CloudFormation::LoggingConfig',
+                                    'type' => 'CloudFormation_LoggingConfig'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +115,7 @@ appropriate credentials.
 
 
 
-=head2 LoggingConfig => L<Paws::CloudFormation::LoggingConfig>
+=head2 LoggingConfig => CloudFormation_LoggingConfig
 
 Specifies logging configuration information for a type.
 

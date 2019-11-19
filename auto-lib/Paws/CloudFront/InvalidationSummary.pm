@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CloudFront::InvalidationSummary;
-  use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw//;
+  has CreateTime => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'CreateTime' => 1,
+                    'Id' => 1,
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

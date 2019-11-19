@@ -1,12 +1,39 @@
+# Generated from callresult_class.tt
 
 package Paws::AutoScaling::DescribeAccountLimitsAnswer;
-  use Moose;
-  has MaxNumberOfAutoScalingGroups => (is => 'ro', isa => 'Int');
-  has MaxNumberOfLaunchConfigurations => (is => 'ro', isa => 'Int');
-  has NumberOfAutoScalingGroups => (is => 'ro', isa => 'Int');
-  has NumberOfLaunchConfigurations => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AutoScaling::Types qw//;
+  has MaxNumberOfAutoScalingGroups => (is => 'ro', isa => Int);
+  has MaxNumberOfLaunchConfigurations => (is => 'ro', isa => Int);
+  has NumberOfAutoScalingGroups => (is => 'ro', isa => Int);
+  has NumberOfLaunchConfigurations => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MaxNumberOfAutoScalingGroups' => {
+                                                   'type' => 'Int'
+                                                 },
+               'NumberOfLaunchConfigurations' => {
+                                                   'type' => 'Int'
+                                                 },
+               'MaxNumberOfLaunchConfigurations' => {
+                                                      'type' => 'Int'
+                                                    },
+               'NumberOfAutoScalingGroups' => {
+                                                'type' => 'Int'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

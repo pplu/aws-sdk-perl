@@ -1,14 +1,35 @@
 
 package Paws::ElasticTranscoder::ReadPreset;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReadPreset');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/presets/{Id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::ReadPresetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ReadPreset');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2012-09-25/presets/{Id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticTranscoder::ReadPresetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Id' => 1
+                  },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'ParamInURI' => {
+                    'Id' => 'Id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

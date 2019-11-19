@@ -1,16 +1,65 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackSetOperation;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has AdministrationRoleARN => (is => 'ro', isa => 'Str');
-  has CreationTimestamp => (is => 'ro', isa => 'Str');
-  has EndTimestamp => (is => 'ro', isa => 'Str');
-  has ExecutionRoleName => (is => 'ro', isa => 'Str');
-  has OperationId => (is => 'ro', isa => 'Str');
-  has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
-  has RetainStacks => (is => 'ro', isa => 'Bool');
-  has StackSetDriftDetectionDetails => (is => 'ro', isa => 'Paws::CloudFormation::StackSetDriftDetectionDetails');
-  has StackSetId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackSetDriftDetectionDetails CloudFormation_StackSetOperationPreferences/;
+  has Action => (is => 'ro', isa => Str);
+  has AdministrationRoleARN => (is => 'ro', isa => Str);
+  has CreationTimestamp => (is => 'ro', isa => Str);
+  has EndTimestamp => (is => 'ro', isa => Str);
+  has ExecutionRoleName => (is => 'ro', isa => Str);
+  has OperationId => (is => 'ro', isa => Str);
+  has OperationPreferences => (is => 'ro', isa => CloudFormation_StackSetOperationPreferences);
+  has RetainStacks => (is => 'ro', isa => Bool);
+  has StackSetDriftDetectionDetails => (is => 'ro', isa => CloudFormation_StackSetDriftDetectionDetails);
+  has StackSetId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OperationPreferences' => {
+                                           'type' => 'CloudFormation_StackSetOperationPreferences',
+                                           'class' => 'Paws::CloudFormation::StackSetOperationPreferences'
+                                         },
+               'EndTimestamp' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreationTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'StackSetId' => {
+                                 'type' => 'Str'
+                               },
+               'ExecutionRoleName' => {
+                                        'type' => 'Str'
+                                      },
+               'StackSetDriftDetectionDetails' => {
+                                                    'type' => 'CloudFormation_StackSetDriftDetectionDetails',
+                                                    'class' => 'Paws::CloudFormation::StackSetDriftDetectionDetails'
+                                                  },
+               'RetainStacks' => {
+                                   'type' => 'Bool'
+                                 },
+               'AdministrationRoleARN' => {
+                                            'type' => 'Str'
+                                          },
+               'OperationId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -99,7 +148,7 @@ and groups can include in their stack sets.
   The unique ID of a stack set operation.
 
 
-=head2 OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>
+=head2 OperationPreferences => CloudFormation_StackSetOperationPreferences
 
   The preferences for how AWS CloudFormation performs this stack set
 operation.
@@ -113,7 +162,7 @@ delete the stacks. You can't reassociate a retained stack, or add an
 existing, saved stack to a new stack set.
 
 
-=head2 StackSetDriftDetectionDetails => L<Paws::CloudFormation::StackSetDriftDetectionDetails>
+=head2 StackSetDriftDetectionDetails => CloudFormation_StackSetDriftDetectionDetails
 
   Detailed information about the drift status of the stack set. This
 includes information about drift operations currently being performed

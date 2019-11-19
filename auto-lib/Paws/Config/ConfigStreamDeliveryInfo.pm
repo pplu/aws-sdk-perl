@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::Config::ConfigStreamDeliveryInfo;
-  use Moose;
-  has LastErrorCode => (is => 'ro', isa => 'Str', request_name => 'lastErrorCode', traits => ['NameInRequest']);
-  has LastErrorMessage => (is => 'ro', isa => 'Str', request_name => 'lastErrorMessage', traits => ['NameInRequest']);
-  has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
-  has LastStatusChangeTime => (is => 'ro', isa => 'Str', request_name => 'lastStatusChangeTime', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has LastErrorCode => (is => 'ro', isa => Str);
+  has LastErrorMessage => (is => 'ro', isa => Str);
+  has LastStatus => (is => 'ro', isa => Str);
+  has LastStatusChangeTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastStatusChangeTime' => {
+                                           'type' => 'Str'
+                                         },
+               'LastErrorMessage' => {
+                                       'type' => 'Str'
+                                     },
+               'LastStatus' => {
+                                 'type' => 'Str'
+                               },
+               'LastErrorCode' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'LastStatusChangeTime' => 'lastStatusChangeTime',
+                       'LastErrorMessage' => 'lastErrorMessage',
+                       'LastStatus' => 'lastStatus',
+                       'LastErrorCode' => 'lastErrorCode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Route53Resolver::ListResolverEndpoints;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Route53Resolver::Filter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Route53Resolver::Types qw/Route53Resolver_Filter/;
+  has Filters => (is => 'ro', isa => ArrayRef[Route53Resolver_Filter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListResolverEndpoints');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Resolver::ListResolverEndpointsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListResolverEndpoints');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53Resolver::ListResolverEndpointsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filters' => {
+                              'class' => 'Paws::Route53Resolver::Filter',
+                              'type' => 'ArrayRef[Route53Resolver_Filter]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +79,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::Route53Resolver::Filter>]
+=head2 Filters => ArrayRef[Route53Resolver_Filter]
 
 An optional specification to return a subset of resolver endpoints,
 such as all inbound resolver endpoints.

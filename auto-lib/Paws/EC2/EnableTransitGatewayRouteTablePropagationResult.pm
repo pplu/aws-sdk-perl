@@ -1,9 +1,31 @@
 
 package Paws::EC2::EnableTransitGatewayRouteTablePropagationResult;
-  use Moose;
-  has Propagation => (is => 'ro', isa => 'Paws::EC2::TransitGatewayPropagation', request_name => 'propagation', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_TransitGatewayPropagation/;
+  has Propagation => (is => 'ro', isa => EC2_TransitGatewayPropagation);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Propagation' => {
+                                  'type' => 'EC2_TransitGatewayPropagation',
+                                  'class' => 'Paws::EC2::TransitGatewayPropagation'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Propagation' => 'propagation'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::EnableTransitGatewayRouteTablePropagationResult
 =head1 ATTRIBUTES
 
 
-=head2 Propagation => L<Paws::EC2::TransitGatewayPropagation>
+=head2 Propagation => EC2_TransitGatewayPropagation
 
 Information about route propagation.
 

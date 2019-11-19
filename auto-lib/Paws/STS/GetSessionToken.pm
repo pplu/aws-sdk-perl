@@ -1,15 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::STS::GetSessionToken;
-  use Moose;
-  has DurationSeconds => (is => 'ro', isa => 'Int');
-  has SerialNumber => (is => 'ro', isa => 'Str');
-  has TokenCode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::STS::Types qw//;
+  has DurationSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has SerialNumber => (is => 'ro', isa => Str, predicate => 1);
+  has TokenCode => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSessionToken');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::STS::GetSessionTokenResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSessionTokenResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSessionToken');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::STS::GetSessionTokenResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetSessionTokenResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TokenCode' => {
+                                'type' => 'Str'
+                              },
+               'DurationSeconds' => {
+                                      'type' => 'Int'
+                                    },
+               'SerialNumber' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

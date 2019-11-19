@@ -1,12 +1,58 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::HlsEncryptionSettings;
-  use Moose;
-  has ConstantInitializationVector => (is => 'ro', isa => 'Str', request_name => 'constantInitializationVector', traits => ['NameInRequest']);
-  has EncryptionMethod => (is => 'ro', isa => 'Str', request_name => 'encryptionMethod', traits => ['NameInRequest']);
-  has InitializationVectorInManifest => (is => 'ro', isa => 'Str', request_name => 'initializationVectorInManifest', traits => ['NameInRequest']);
-  has OfflineEncrypted => (is => 'ro', isa => 'Str', request_name => 'offlineEncrypted', traits => ['NameInRequest']);
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest']);
-  has StaticKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::StaticKeyProvider', request_name => 'staticKeyProvider', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_SpekeKeyProvider MediaConvert_StaticKeyProvider/;
+  has ConstantInitializationVector => (is => 'ro', isa => Str);
+  has EncryptionMethod => (is => 'ro', isa => Str);
+  has InitializationVectorInManifest => (is => 'ro', isa => Str);
+  has OfflineEncrypted => (is => 'ro', isa => Str);
+  has SpekeKeyProvider => (is => 'ro', isa => MediaConvert_SpekeKeyProvider);
+  has StaticKeyProvider => (is => 'ro', isa => MediaConvert_StaticKeyProvider);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SpekeKeyProvider' => 'spekeKeyProvider',
+                       'EncryptionMethod' => 'encryptionMethod',
+                       'Type' => 'type',
+                       'ConstantInitializationVector' => 'constantInitializationVector',
+                       'OfflineEncrypted' => 'offlineEncrypted',
+                       'InitializationVectorInManifest' => 'initializationVectorInManifest',
+                       'StaticKeyProvider' => 'staticKeyProvider'
+                     },
+  'types' => {
+               'OfflineEncrypted' => {
+                                       'type' => 'Str'
+                                     },
+               'InitializationVectorInManifest' => {
+                                                     'type' => 'Str'
+                                                   },
+               'StaticKeyProvider' => {
+                                        'type' => 'MediaConvert_StaticKeyProvider',
+                                        'class' => 'Paws::MediaConvert::StaticKeyProvider'
+                                      },
+               'SpekeKeyProvider' => {
+                                       'class' => 'Paws::MediaConvert::SpekeKeyProvider',
+                                       'type' => 'MediaConvert_SpekeKeyProvider'
+                                     },
+               'EncryptionMethod' => {
+                                       'type' => 'Str'
+                                     },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ConstantInitializationVector' => {
+                                                   'type' => 'Str'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +117,7 @@ master playlist. This allows for offline Apple HLS FairPlay content
 protection.
 
 
-=head2 SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProvider>
+=head2 SpekeKeyProvider => MediaConvert_SpekeKeyProvider
 
   If your output group type is HLS, DASH, or Microsoft Smooth, use these
 settings when doing DRM encryption with a SPEKE-compliant key provider.
@@ -79,7 +125,7 @@ If your output group type is CMAF, use the SpekeKeyProviderCmaf
 settings instead.
 
 
-=head2 StaticKeyProvider => L<Paws::MediaConvert::StaticKeyProvider>
+=head2 StaticKeyProvider => MediaConvert_StaticKeyProvider
 
   Use these settings to set up encryption with a static key provider.
 

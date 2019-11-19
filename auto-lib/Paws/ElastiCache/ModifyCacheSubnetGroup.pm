@@ -1,15 +1,40 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::ModifyCacheSubnetGroup;
-  use Moose;
-  has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str');
-  has CacheSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheSubnetGroupDescription => (is => 'ro', isa => Str, predicate => 1);
+  has CacheSubnetGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCacheSubnetGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::ModifyCacheSubnetGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyCacheSubnetGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyCacheSubnetGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::ModifyCacheSubnetGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyCacheSubnetGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'CacheSubnetGroupDescription' => {
+                                                  'type' => 'Str'
+                                                },
+               'CacheSubnetGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'CacheSubnetGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

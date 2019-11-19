@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::ParallelismConfiguration;
-  use Moose;
-  has AutoScalingEnabled => (is => 'ro', isa => 'Bool');
-  has ConfigurationType => (is => 'ro', isa => 'Str', required => 1);
-  has Parallelism => (is => 'ro', isa => 'Int');
-  has ParallelismPerKPU => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Bool Str Int/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has AutoScalingEnabled => (is => 'ro', isa => Bool);
+  has ConfigurationType => (is => 'ro', isa => Str, required => 1);
+  has Parallelism => (is => 'ro', isa => Int);
+  has ParallelismPerKPU => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfigurationType' => 1
+                  },
+  'types' => {
+               'ParallelismPerKPU' => {
+                                        'type' => 'Int'
+                                      },
+               'Parallelism' => {
+                                  'type' => 'Int'
+                                },
+               'AutoScalingEnabled' => {
+                                         'type' => 'Bool'
+                                       },
+               'ConfigurationType' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,88 @@
+# Generated from default/object.tt
 package Paws::IoT::CertificateDescription;
-  use Moose;
-  has CaCertificateId => (is => 'ro', isa => 'Str', request_name => 'caCertificateId', traits => ['NameInRequest']);
-  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
-  has CertificateId => (is => 'ro', isa => 'Str', request_name => 'certificateId', traits => ['NameInRequest']);
-  has CertificatePem => (is => 'ro', isa => 'Str', request_name => 'certificatePem', traits => ['NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has CustomerVersion => (is => 'ro', isa => 'Int', request_name => 'customerVersion', traits => ['NameInRequest']);
-  has GenerationId => (is => 'ro', isa => 'Str', request_name => 'generationId', traits => ['NameInRequest']);
-  has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
-  has OwnedBy => (is => 'ro', isa => 'Str', request_name => 'ownedBy', traits => ['NameInRequest']);
-  has PreviousOwnedBy => (is => 'ro', isa => 'Str', request_name => 'previousOwnedBy', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TransferData => (is => 'ro', isa => 'Paws::IoT::TransferData', request_name => 'transferData', traits => ['NameInRequest']);
-  has Validity => (is => 'ro', isa => 'Paws::IoT::CertificateValidity', request_name => 'validity', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw/IoT_CertificateValidity IoT_TransferData/;
+  has CaCertificateId => (is => 'ro', isa => Str);
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CertificateId => (is => 'ro', isa => Str);
+  has CertificatePem => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has CustomerVersion => (is => 'ro', isa => Int);
+  has GenerationId => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has OwnedBy => (is => 'ro', isa => Str);
+  has PreviousOwnedBy => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TransferData => (is => 'ro', isa => IoT_TransferData);
+  has Validity => (is => 'ro', isa => IoT_CertificateValidity);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CertificatePem' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Validity' => {
+                               'type' => 'IoT_CertificateValidity',
+                               'class' => 'Paws::IoT::CertificateValidity'
+                             },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'TransferData' => {
+                                   'type' => 'IoT_TransferData',
+                                   'class' => 'Paws::IoT::TransferData'
+                                 },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'GenerationId' => {
+                                   'type' => 'Str'
+                                 },
+               'CertificateId' => {
+                                    'type' => 'Str'
+                                  },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'CaCertificateId' => {
+                                      'type' => 'Str'
+                                    },
+               'CustomerVersion' => {
+                                      'type' => 'Int'
+                                    },
+               'PreviousOwnedBy' => {
+                                      'type' => 'Str'
+                                    },
+               'OwnedBy' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'CustomerVersion' => 'customerVersion',
+                       'CaCertificateId' => 'caCertificateId',
+                       'CertificateId' => 'certificateId',
+                       'CertificateArn' => 'certificateArn',
+                       'GenerationId' => 'generationId',
+                       'LastModifiedDate' => 'lastModifiedDate',
+                       'TransferData' => 'transferData',
+                       'Validity' => 'validity',
+                       'CertificatePem' => 'certificatePem',
+                       'Status' => 'status',
+                       'CreationDate' => 'creationDate',
+                       'OwnedBy' => 'ownedBy',
+                       'PreviousOwnedBy' => 'previousOwnedBy'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -103,12 +173,12 @@ Describes a certificate.
   The status of the certificate.
 
 
-=head2 TransferData => L<Paws::IoT::TransferData>
+=head2 TransferData => IoT_TransferData
 
   The transfer data.
 
 
-=head2 Validity => L<Paws::IoT::CertificateValidity>
+=head2 Validity => IoT_CertificateValidity
 
   When the certificate is valid.
 

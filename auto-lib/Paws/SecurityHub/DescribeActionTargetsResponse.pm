@@ -1,10 +1,34 @@
 
 package Paws::SecurityHub::DescribeActionTargetsResponse;
-  use Moose;
-  has ActionTargets => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::ActionTarget]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SecurityHub::Types qw/SecurityHub_ActionTarget/;
+  has ActionTargets => (is => 'ro', isa => ArrayRef[SecurityHub_ActionTarget], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ActionTargets' => 1
+                  },
+  'types' => {
+               'ActionTargets' => {
+                                    'class' => 'Paws::SecurityHub::ActionTarget',
+                                    'type' => 'ArrayRef[SecurityHub_ActionTarget]'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +40,7 @@ Paws::SecurityHub::DescribeActionTargetsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ActionTargets => ArrayRef[L<Paws::SecurityHub::ActionTarget>]
+=head2 B<REQUIRED> ActionTargets => ArrayRef[SecurityHub_ActionTarget]
 
 A list of C<ActionTarget> objects. Each object includes the
 C<ActionTargetArn>, C<Description>, and C<Name> of a custom action

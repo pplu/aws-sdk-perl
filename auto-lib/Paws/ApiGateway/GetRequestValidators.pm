@@ -1,16 +1,47 @@
 
 package Paws::ApiGateway::GetRequestValidators;
-  use Moose;
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ApiGateway::Types qw//;
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Position => (is => 'ro', isa => Str, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRequestValidators');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/requestvalidators');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::RequestValidators');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetRequestValidators');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/requestvalidators');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::RequestValidators');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id'
+                  },
+  'ParamInQuery' => {
+                      'Limit' => 'limit',
+                      'Position' => 'position'
+                    },
+  'IsRequired' => {
+                    'RestApiId' => 1
+                  },
+  'types' => {
+               'Position' => {
+                               'type' => 'Str'
+                             },
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'Limit' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

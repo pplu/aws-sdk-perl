@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::DescribeMatchmakingConfigurationsOutput;
-  use Moose;
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::MatchmakingConfiguration]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_MatchmakingConfiguration/;
+  has Configurations => (is => 'ro', isa => ArrayRef[GameLift_MatchmakingConfiguration]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Configurations' => {
+                                     'class' => 'Paws::GameLift::MatchmakingConfiguration',
+                                     'type' => 'ArrayRef[GameLift_MatchmakingConfiguration]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::GameLift::DescribeMatchmakingConfigurationsOutput
 =head1 ATTRIBUTES
 
 
-=head2 Configurations => ArrayRef[L<Paws::GameLift::MatchmakingConfiguration>]
+=head2 Configurations => ArrayRef[GameLift_MatchmakingConfiguration]
 
 Collection of requested matchmaking configuration objects.
 

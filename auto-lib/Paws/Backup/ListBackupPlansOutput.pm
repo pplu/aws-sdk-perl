@@ -1,10 +1,31 @@
 
 package Paws::Backup::ListBackupPlansOutput;
-  use Moose;
-  has BackupPlansList => (is => 'ro', isa => 'ArrayRef[Paws::Backup::BackupPlansListMember]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Backup::Types qw/Backup_BackupPlansListMember/;
+  has BackupPlansList => (is => 'ro', isa => ArrayRef[Backup_BackupPlansListMember]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BackupPlansList' => {
+                                      'class' => 'Paws::Backup::BackupPlansListMember',
+                                      'type' => 'ArrayRef[Backup_BackupPlansListMember]'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Backup::ListBackupPlansOutput
 =head1 ATTRIBUTES
 
 
-=head2 BackupPlansList => ArrayRef[L<Paws::Backup::BackupPlansListMember>]
+=head2 BackupPlansList => ArrayRef[Backup_BackupPlansListMember]
 
 An array of backup plan list items containing metadata about your saved
 backup plans.

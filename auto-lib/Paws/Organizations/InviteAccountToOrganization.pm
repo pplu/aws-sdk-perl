@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Organizations::InviteAccountToOrganization;
-  use Moose;
-  has Notes => (is => 'ro', isa => 'Str');
-  has Target => (is => 'ro', isa => 'Paws::Organizations::HandshakeParty', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Organizations::Types qw/Organizations_HandshakeParty/;
+  has Notes => (is => 'ro', isa => Str, predicate => 1);
+  has Target => (is => 'ro', isa => Organizations_HandshakeParty, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'InviteAccountToOrganization');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Organizations::InviteAccountToOrganizationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'InviteAccountToOrganization');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Organizations::InviteAccountToOrganizationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Target' => 1
+                  },
+  'types' => {
+               'Notes' => {
+                            'type' => 'Str'
+                          },
+               'Target' => {
+                             'type' => 'Organizations_HandshakeParty',
+                             'class' => 'Paws::Organizations::HandshakeParty'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +79,7 @@ to the recipient account owner.
 
 
 
-=head2 B<REQUIRED> Target => L<Paws::Organizations::HandshakeParty>
+=head2 B<REQUIRED> Target => Organizations_HandshakeParty
 
 The identifier (ID) of the AWS account that you want to invite to join
 your organization. This is a JSON object that contains the following

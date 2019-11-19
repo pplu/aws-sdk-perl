@@ -1,15 +1,41 @@
 
 package Paws::Batch::CancelJob;
-  use Moose;
-  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId', required => 1);
-  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw//;
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Reason => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/canceljob');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::CancelJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CancelJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/canceljob');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Batch::CancelJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'JobId' => 1,
+                    'Reason' => 1
+                  },
+  'NameInRequest' => {
+                       'Reason' => 'reason',
+                       'JobId' => 'jobId'
+                     },
+  'types' => {
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

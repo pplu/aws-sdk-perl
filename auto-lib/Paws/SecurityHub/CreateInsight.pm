@@ -1,16 +1,43 @@
 
 package Paws::SecurityHub::CreateInsight;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'Paws::SecurityHub::AwsSecurityFindingFilters', required => 1);
-  has GroupByAttribute => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw/SecurityHub_AwsSecurityFindingFilters/;
+  has Filters => (is => 'ro', isa => SecurityHub_AwsSecurityFindingFilters, required => 1, predicate => 1);
+  has GroupByAttribute => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInsight');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/insights');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::CreateInsightResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateInsight');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/insights');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::CreateInsightResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupByAttribute' => {
+                                       'type' => 'Str'
+                                     },
+               'Filters' => {
+                              'class' => 'Paws::SecurityHub::AwsSecurityFindingFilters',
+                              'type' => 'SecurityHub_AwsSecurityFindingFilters'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'GroupByAttribute' => 1,
+                    'Filters' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -679,7 +706,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>
+=head2 B<REQUIRED> Filters => SecurityHub_AwsSecurityFindingFilters
 
 One or more attributes used to filter the findings included in the
 insight. Only findings that match the criteria defined in the filters

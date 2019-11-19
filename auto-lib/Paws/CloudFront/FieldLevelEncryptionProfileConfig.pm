@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CloudFront::FieldLevelEncryptionProfileConfig;
-  use Moose;
-  has CallerReference => (is => 'ro', isa => 'Str', required => 1);
-  has Comment => (is => 'ro', isa => 'Str');
-  has EncryptionEntities => (is => 'ro', isa => 'Paws::CloudFront::EncryptionEntities', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_EncryptionEntities/;
+  has CallerReference => (is => 'ro', isa => Str, required => 1);
+  has Comment => (is => 'ro', isa => Str);
+  has EncryptionEntities => (is => 'ro', isa => CloudFront_EncryptionEntities, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EncryptionEntities' => {
+                                         'class' => 'Paws::CloudFront::EncryptionEntities',
+                                         'type' => 'CloudFront_EncryptionEntities'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CallerReference' => {
+                                      'type' => 'Str'
+                                    },
+               'Comment' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'EncryptionEntities' => 1,
+                    'CallerReference' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +81,7 @@ A complex data type of profiles for the field-level encryption.
   An optional comment for the field-level encryption profile.
 
 
-=head2 B<REQUIRED> EncryptionEntities => L<Paws::CloudFront::EncryptionEntities>
+=head2 B<REQUIRED> EncryptionEntities => CloudFront_EncryptionEntities
 
   A complex data type of encryption entities for the field-level
 encryption profile that include the public key ID, provider, and field

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::SSM::SessionManagerOutputUrl;
-  use Moose;
-  has CloudWatchOutputUrl => (is => 'ro', isa => 'Str');
-  has S3OutputUrl => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has CloudWatchOutputUrl => (is => 'ro', isa => Str);
+  has S3OutputUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3OutputUrl' => {
+                                  'type' => 'Str'
+                                },
+               'CloudWatchOutputUrl' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

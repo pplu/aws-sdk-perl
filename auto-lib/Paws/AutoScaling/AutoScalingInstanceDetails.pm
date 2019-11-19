@@ -1,15 +1,68 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::AutoScalingInstanceDetails;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
-  has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has LaunchConfigurationName => (is => 'ro', isa => 'Str');
-  has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
-  has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
-  has ProtectedFromScaleIn => (is => 'ro', isa => 'Bool', required => 1);
-  has WeightedCapacity => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::AutoScaling::Types qw/AutoScaling_LaunchTemplateSpecification/;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, required => 1);
+  has HealthStatus => (is => 'ro', isa => Str, required => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1);
+  has InstanceType => (is => 'ro', isa => Str);
+  has LaunchConfigurationName => (is => 'ro', isa => Str);
+  has LaunchTemplate => (is => 'ro', isa => AutoScaling_LaunchTemplateSpecification);
+  has LifecycleState => (is => 'ro', isa => Str, required => 1);
+  has ProtectedFromScaleIn => (is => 'ro', isa => Bool, required => 1);
+  has WeightedCapacity => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'ProtectedFromScaleIn' => {
+                                           'type' => 'Bool'
+                                         },
+               'LaunchTemplate' => {
+                                     'type' => 'AutoScaling_LaunchTemplateSpecification',
+                                     'class' => 'Paws::AutoScaling::LaunchTemplateSpecification'
+                                   },
+               'LaunchConfigurationName' => {
+                                              'type' => 'Str'
+                                            },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'LifecycleState' => {
+                                     'type' => 'Str'
+                                   },
+               'WeightedCapacity' => {
+                                       'type' => 'Str'
+                                     },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'HealthStatus' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'LifecycleState' => 1,
+                    'ProtectedFromScaleIn' => 1,
+                    'AutoScalingGroupName' => 1,
+                    'HealthStatus' => 1,
+                    'InstanceId' => 1,
+                    'AvailabilityZone' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +132,7 @@ terminate and replace it.
 available if you attached the instance to the Auto Scaling group.
 
 
-=head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
+=head2 LaunchTemplate => AutoScaling_LaunchTemplateSpecification
 
   The launch template for the instance.
 

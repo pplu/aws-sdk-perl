@@ -1,15 +1,59 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::BackupSummary;
-  use Moose;
-  has BackupArn => (is => 'ro', isa => 'Str');
-  has BackupCreationDateTime => (is => 'ro', isa => 'Str');
-  has BackupExpiryDateTime => (is => 'ro', isa => 'Str');
-  has BackupName => (is => 'ro', isa => 'Str');
-  has BackupSizeBytes => (is => 'ro', isa => 'Int');
-  has BackupStatus => (is => 'ro', isa => 'Str');
-  has BackupType => (is => 'ro', isa => 'Str');
-  has TableArn => (is => 'ro', isa => 'Str');
-  has TableId => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DynamoDB::Types qw//;
+  has BackupArn => (is => 'ro', isa => Str);
+  has BackupCreationDateTime => (is => 'ro', isa => Str);
+  has BackupExpiryDateTime => (is => 'ro', isa => Str);
+  has BackupName => (is => 'ro', isa => Str);
+  has BackupSizeBytes => (is => 'ro', isa => Int);
+  has BackupStatus => (is => 'ro', isa => Str);
+  has BackupType => (is => 'ro', isa => Str);
+  has TableArn => (is => 'ro', isa => Str);
+  has TableId => (is => 'ro', isa => Str);
+  has TableName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupName' => {
+                                 'type' => 'Str'
+                               },
+               'BackupType' => {
+                                 'type' => 'Str'
+                               },
+               'TableId' => {
+                              'type' => 'Str'
+                            },
+               'BackupSizeBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'BackupStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupCreationDateTime' => {
+                                             'type' => 'Str'
+                                           },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'BackupArn' => {
+                                'type' => 'Str'
+                              },
+               'BackupExpiryDateTime' => {
+                                           'type' => 'Str'
+                                         },
+               'TableArn' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::CreateByteMatchSetResponse;
-  use Moose;
-  has ByteMatchSet => (is => 'ro', isa => 'Paws::WAF::ByteMatchSet');
-  has ChangeToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_ByteMatchSet/;
+  has ByteMatchSet => (is => 'ro', isa => WAF_ByteMatchSet);
+  has ChangeToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ByteMatchSet' => {
+                                   'class' => 'Paws::WAF::ByteMatchSet',
+                                   'type' => 'WAF_ByteMatchSet'
+                                 },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::WAF::CreateByteMatchSetResponse
 =head1 ATTRIBUTES
 
 
-=head2 ByteMatchSet => L<Paws::WAF::ByteMatchSet>
+=head2 ByteMatchSet => WAF_ByteMatchSet
 
 A ByteMatchSet that contains no C<ByteMatchTuple> objects.
 

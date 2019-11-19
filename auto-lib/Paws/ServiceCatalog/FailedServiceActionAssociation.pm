@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::FailedServiceActionAssociation;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has ProductId => (is => 'ro', isa => 'Str');
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
-  has ServiceActionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has ProductId => (is => 'ro', isa => Str);
+  has ProvisioningArtifactId => (is => 'ro', isa => Str);
+  has ServiceActionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'ServiceActionId' => {
+                                      'type' => 'Str'
+                                    },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'ProvisioningArtifactId' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaLive::AvailBlanking;
-  use Moose;
-  has AvailBlankingImage => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'availBlankingImage', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_InputLocation/;
+  has AvailBlankingImage => (is => 'ro', isa => MediaLive_InputLocation);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailBlankingImage' => {
+                                         'type' => 'MediaLive_InputLocation',
+                                         'class' => 'Paws::MediaLive::InputLocation'
+                                       },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'AvailBlankingImage' => 'availBlankingImage',
+                       'State' => 'state'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Avail Blanking
 =head1 ATTRIBUTES
 
 
-=head2 AvailBlankingImage => L<Paws::MediaLive::InputLocation>
+=head2 AvailBlankingImage => MediaLive_InputLocation
 
   Blanking image to be used. Leave empty for solid black. Only bmp and
 png images are supported.

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::ECR::AuthorizationData;
-  use Moose;
-  has AuthorizationToken => (is => 'ro', isa => 'Str', request_name => 'authorizationToken', traits => ['NameInRequest']);
-  has ExpiresAt => (is => 'ro', isa => 'Str', request_name => 'expiresAt', traits => ['NameInRequest']);
-  has ProxyEndpoint => (is => 'ro', isa => 'Str', request_name => 'proxyEndpoint', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw//;
+  has AuthorizationToken => (is => 'ro', isa => Str);
+  has ExpiresAt => (is => 'ro', isa => Str);
+  has ProxyEndpoint => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProxyEndpoint' => {
+                                    'type' => 'Str'
+                                  },
+               'ExpiresAt' => {
+                                'type' => 'Str'
+                              },
+               'AuthorizationToken' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'ExpiresAt' => 'expiresAt',
+                       'AuthorizationToken' => 'authorizationToken',
+                       'ProxyEndpoint' => 'proxyEndpoint'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

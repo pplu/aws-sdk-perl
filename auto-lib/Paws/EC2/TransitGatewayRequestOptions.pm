@@ -1,11 +1,40 @@
 package Paws::EC2::TransitGatewayRequestOptions;
-  use Moose;
-  has AmazonSideAsn => (is => 'ro', isa => 'Int');
-  has AutoAcceptSharedAttachments => (is => 'ro', isa => 'Str');
-  has DefaultRouteTableAssociation => (is => 'ro', isa => 'Str');
-  has DefaultRouteTablePropagation => (is => 'ro', isa => 'Str');
-  has DnsSupport => (is => 'ro', isa => 'Str');
-  has VpnEcmpSupport => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Int Str/;
+  use Paws::EC2::Types qw//;
+  has AmazonSideAsn => (is => 'ro', isa => Int);
+  has AutoAcceptSharedAttachments => (is => 'ro', isa => Str);
+  has DefaultRouteTableAssociation => (is => 'ro', isa => Str);
+  has DefaultRouteTablePropagation => (is => 'ro', isa => Str);
+  has DnsSupport => (is => 'ro', isa => Str);
+  has VpnEcmpSupport => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AmazonSideAsn' => {
+                                    'type' => 'Int'
+                                  },
+               'AutoAcceptSharedAttachments' => {
+                                                  'type' => 'Str'
+                                                },
+               'DefaultRouteTablePropagation' => {
+                                                   'type' => 'Str'
+                                                 },
+               'DnsSupport' => {
+                                 'type' => 'Str'
+                               },
+               'DefaultRouteTableAssociation' => {
+                                                   'type' => 'Str'
+                                                 },
+               'VpnEcmpSupport' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

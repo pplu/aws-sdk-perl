@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoTThingsGraph::SystemTemplateFilter;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Value => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'value', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Value' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Value' => 'value'
+                     },
+  'IsRequired' => {
+                    'Value' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

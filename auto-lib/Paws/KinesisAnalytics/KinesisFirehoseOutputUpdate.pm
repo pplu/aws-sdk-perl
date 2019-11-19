@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::KinesisFirehoseOutputUpdate;
-  use Moose;
-  has ResourceARNUpdate => (is => 'ro', isa => 'Str');
-  has RoleARNUpdate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw//;
+  has ResourceARNUpdate => (is => 'ro', isa => Str);
+  has RoleARNUpdate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceARNUpdate' => {
+                                        'type' => 'Str'
+                                      },
+               'RoleARNUpdate' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

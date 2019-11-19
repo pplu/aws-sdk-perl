@@ -1,23 +1,79 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::CreateProvisionedProductPlan;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has IdempotencyToken => (is => 'ro', isa => 'Str', required => 1);
-  has NotificationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PathId => (is => 'ro', isa => 'Str');
-  has PlanName => (is => 'ro', isa => 'Str', required => 1);
-  has PlanType => (is => 'ro', isa => 'Str', required => 1);
-  has ProductId => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisionedProductName => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisioningParameters => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::UpdateProvisioningParameter]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_UpdateProvisioningParameter ServiceCatalog_Tag/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NotificationArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has PathId => (is => 'ro', isa => Str, predicate => 1);
+  has PlanName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PlanType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProductId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProvisionedProductName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProvisioningArtifactId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProvisioningParameters => (is => 'ro', isa => ArrayRef[ServiceCatalog_UpdateProvisioningParameter], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ServiceCatalog_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateProvisionedProductPlan');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::CreateProvisionedProductPlanOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateProvisionedProductPlan');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::CreateProvisionedProductPlanOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'IdempotencyToken' => 1,
+                    'ProvisioningArtifactId' => 1,
+                    'ProvisionedProductName' => 1,
+                    'ProductId' => 1,
+                    'PlanType' => 1,
+                    'PlanName' => 1
+                  },
+  'types' => {
+               'PathId' => {
+                             'type' => 'Str'
+                           },
+               'PlanType' => {
+                               'type' => 'Str'
+                             },
+               'PlanName' => {
+                               'type' => 'Str'
+                             },
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'Tags' => {
+                           'type' => 'ArrayRef[ServiceCatalog_Tag]',
+                           'class' => 'Paws::ServiceCatalog::Tag'
+                         },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'NotificationArns' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ProvisionedProductName' => {
+                                             'type' => 'Str'
+                                           },
+               'ProvisioningParameters' => {
+                                             'type' => 'ArrayRef[ServiceCatalog_UpdateProvisioningParameter]',
+                                             'class' => 'Paws::ServiceCatalog::UpdateProvisioningParameter'
+                                           },
+               'ProvisioningArtifactId' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -164,14 +220,14 @@ The identifier of the provisioning artifact.
 
 
 
-=head2 ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>]
+=head2 ProvisioningParameters => ArrayRef[ServiceCatalog_UpdateProvisioningParameter]
 
 Parameters specified by the administrator that are required for
 provisioning the product.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
+=head2 Tags => ArrayRef[ServiceCatalog_Tag]
 
 One or more tags.
 

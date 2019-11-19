@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoT::SalesforceAction;
-  use Moose;
-  has Token => (is => 'ro', isa => 'Str', request_name => 'token', traits => ['NameInRequest'], required => 1);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has Token => (is => 'ro', isa => Str, required => 1);
+  has Url => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Token' => 1,
+                    'Url' => 1
+                  },
+  'NameInRequest' => {
+                       'Token' => 'token',
+                       'Url' => 'url'
+                     },
+  'types' => {
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'Token' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

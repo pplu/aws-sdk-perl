@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ArchiveOutputSettings;
-  use Moose;
-  has ContainerSettings => (is => 'ro', isa => 'Paws::MediaLive::ArchiveContainerSettings', request_name => 'containerSettings', traits => ['NameInRequest'], required => 1);
-  has Extension => (is => 'ro', isa => 'Str', request_name => 'extension', traits => ['NameInRequest']);
-  has NameModifier => (is => 'ro', isa => 'Str', request_name => 'nameModifier', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_ArchiveContainerSettings/;
+  has ContainerSettings => (is => 'ro', isa => MediaLive_ArchiveContainerSettings, required => 1);
+  has Extension => (is => 'ro', isa => Str);
+  has NameModifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Extension' => {
+                                'type' => 'Str'
+                              },
+               'ContainerSettings' => {
+                                        'type' => 'MediaLive_ArchiveContainerSettings',
+                                        'class' => 'Paws::MediaLive::ArchiveContainerSettings'
+                                      },
+               'NameModifier' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'ContainerSettings' => 1
+                  },
+  'NameInRequest' => {
+                       'ContainerSettings' => 'containerSettings',
+                       'Extension' => 'extension',
+                       'NameModifier' => 'nameModifier'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +70,7 @@ Archive Output Settings
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ContainerSettings => L<Paws::MediaLive::ArchiveContainerSettings>
+=head2 B<REQUIRED> ContainerSettings => MediaLive_ArchiveContainerSettings
 
   Settings specific to the container type of the file.
 

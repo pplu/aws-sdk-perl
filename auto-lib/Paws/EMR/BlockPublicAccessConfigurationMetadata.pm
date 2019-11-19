@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::EMR::BlockPublicAccessConfigurationMetadata;
-  use Moose;
-  has CreatedByArn => (is => 'ro', isa => 'Str', required => 1);
-  has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw//;
+  has CreatedByArn => (is => 'ro', isa => Str, required => 1);
+  has CreationDateTime => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedByArn' => {
+                                   'type' => 'Str'
+                                 },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'CreationDateTime' => 1,
+                    'CreatedByArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

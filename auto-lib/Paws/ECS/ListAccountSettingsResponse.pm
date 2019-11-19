@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECS::ListAccountSettingsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Settings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Setting]', traits => ['NameInRequest'], request_name => 'settings' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECS::Types qw/ECS_Setting/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Settings => (is => 'ro', isa => ArrayRef[ECS_Setting]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Settings' => {
+                               'type' => 'ArrayRef[ECS_Setting]',
+                               'class' => 'Paws::ECS::Setting'
+                             }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Settings' => 'settings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +50,7 @@ results. This value is C<null> when there are no more results to
 return.
 
 
-=head2 Settings => ArrayRef[L<Paws::ECS::Setting>]
+=head2 Settings => ArrayRef[ECS_Setting]
 
 The account settings for the resource.
 

@@ -1,9 +1,38 @@
 package Paws::EC2::ElasticInferenceAcceleratorAssociation;
-  use Moose;
-  has ElasticInferenceAcceleratorArn => (is => 'ro', isa => 'Str', request_name => 'elasticInferenceAcceleratorArn', traits => ['NameInRequest']);
-  has ElasticInferenceAcceleratorAssociationId => (is => 'ro', isa => 'Str', request_name => 'elasticInferenceAcceleratorAssociationId', traits => ['NameInRequest']);
-  has ElasticInferenceAcceleratorAssociationState => (is => 'ro', isa => 'Str', request_name => 'elasticInferenceAcceleratorAssociationState', traits => ['NameInRequest']);
-  has ElasticInferenceAcceleratorAssociationTime => (is => 'ro', isa => 'Str', request_name => 'elasticInferenceAcceleratorAssociationTime', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has ElasticInferenceAcceleratorArn => (is => 'ro', isa => Str);
+  has ElasticInferenceAcceleratorAssociationId => (is => 'ro', isa => Str);
+  has ElasticInferenceAcceleratorAssociationState => (is => 'ro', isa => Str);
+  has ElasticInferenceAcceleratorAssociationTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ElasticInferenceAcceleratorAssociationState' => 'elasticInferenceAcceleratorAssociationState',
+                       'ElasticInferenceAcceleratorAssociationId' => 'elasticInferenceAcceleratorAssociationId',
+                       'ElasticInferenceAcceleratorArn' => 'elasticInferenceAcceleratorArn',
+                       'ElasticInferenceAcceleratorAssociationTime' => 'elasticInferenceAcceleratorAssociationTime'
+                     },
+  'types' => {
+               'ElasticInferenceAcceleratorAssociationId' => {
+                                                               'type' => 'Str'
+                                                             },
+               'ElasticInferenceAcceleratorAssociationState' => {
+                                                                  'type' => 'Str'
+                                                                },
+               'ElasticInferenceAcceleratorAssociationTime' => {
+                                                                 'type' => 'Str'
+                                                               },
+               'ElasticInferenceAcceleratorArn' => {
+                                                     'type' => 'Str'
+                                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

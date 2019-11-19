@@ -1,16 +1,77 @@
+# Generated from default/object.tt
 package Paws::IAM::Role;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has AssumeRolePolicyDocument => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute']);
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has MaxSessionDuration => (is => 'ro', isa => 'Int');
-  has Path => (is => 'ro', isa => 'Str', required => 1);
-  has PermissionsBoundary => (is => 'ro', isa => 'Paws::IAM::AttachedPermissionsBoundary');
-  has RoleId => (is => 'ro', isa => 'Str', required => 1);
-  has RoleLastUsed => (is => 'ro', isa => 'Paws::IAM::RoleLastUsed');
-  has RoleName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::IAM::Types qw/IAM_AttachedPermissionsBoundary IAM_RoleLastUsed IAM_Tag/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has AssumeRolePolicyDocument => (is => 'ro', isa => Str);
+  has Policy => ( is => 'lazy', builder => sub { my $self = shift;  return decode_json(URL::Encode::url_decode($self->AssumeRolePolicyDocument)); });
+  has CreateDate => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str);
+  has MaxSessionDuration => (is => 'ro', isa => Int);
+  has Path => (is => 'ro', isa => Str, required => 1);
+  has PermissionsBoundary => (is => 'ro', isa => IAM_AttachedPermissionsBoundary);
+  has RoleId => (is => 'ro', isa => Str, required => 1);
+  has RoleLastUsed => (is => 'ro', isa => IAM_RoleLastUsed);
+  has RoleName => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IAM_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxSessionDuration' => {
+                                         'type' => 'Int'
+                                       },
+               'RoleLastUsed' => {
+                                   'class' => 'Paws::IAM::RoleLastUsed',
+                                   'type' => 'IAM_RoleLastUsed'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'RoleId' => {
+                             'type' => 'Str'
+                           },
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::IAM::Tag',
+                           'type' => 'ArrayRef[IAM_Tag]'
+                         },
+               'AssumeRolePolicyDocument' => {
+                                               'type' => 'Str'
+                                             },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'PermissionsBoundary' => {
+                                          'type' => 'IAM_AttachedPermissionsBoundary',
+                                          'class' => 'Paws::IAM::AttachedPermissionsBoundary'
+                                        }
+             },
+  'IsRequired' => {
+                    'Arn' => 1,
+                    'RoleName' => 1,
+                    'CreateDate' => 1,
+                    'Path' => 1,
+                    'RoleId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -88,7 +149,7 @@ Identifiers
 in the I<IAM User Guide>.
 
 
-=head2 PermissionsBoundary => L<Paws::IAM::AttachedPermissionsBoundary>
+=head2 PermissionsBoundary => IAM_AttachedPermissionsBoundary
 
   The ARN of the policy used to set the permissions boundary for the
 role.
@@ -107,7 +168,7 @@ about IDs, see IAM Identifiers
 in the I<IAM User Guide>.
 
 
-=head2 RoleLastUsed => L<Paws::IAM::RoleLastUsed>
+=head2 RoleLastUsed => IAM_RoleLastUsed
 
   Contains information about the last time that an IAM role was used.
 This includes the date and time and the Region in which the role was
@@ -124,7 +185,7 @@ in the I<IAM User Guide>.
   The friendly name that identifies the role.
 
 
-=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+=head2 Tags => ArrayRef[IAM_Tag]
 
   A list of tags that are attached to the specified role. For more
 information about tagging, see Tagging IAM Identities

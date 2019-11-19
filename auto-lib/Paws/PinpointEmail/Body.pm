@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::Body;
-  use Moose;
-  has Html => (is => 'ro', isa => 'Paws::PinpointEmail::Content');
-  has Text => (is => 'ro', isa => 'Paws::PinpointEmail::Content');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_Content/;
+  has Html => (is => 'ro', isa => PinpointEmail_Content);
+  has Text => (is => 'ro', isa => PinpointEmail_Content);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Text' => {
+                           'type' => 'PinpointEmail_Content',
+                           'class' => 'Paws::PinpointEmail::Content'
+                         },
+               'Html' => {
+                           'class' => 'Paws::PinpointEmail::Content',
+                           'type' => 'PinpointEmail_Content'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,14 +59,14 @@ Represents the body of the email message.
 =head1 ATTRIBUTES
 
 
-=head2 Html => L<Paws::PinpointEmail::Content>
+=head2 Html => PinpointEmail_Content
 
   An object that represents the version of the message that is displayed
 in email clients that support HTML. HTML messages can include formatted
 text, hyperlinks, images, and more.
 
 
-=head2 Text => L<Paws::PinpointEmail::Content>
+=head2 Text => PinpointEmail_Content
 
   An object that represents the version of the message that is displayed
 in email clients that don't support HTML, or clients where the

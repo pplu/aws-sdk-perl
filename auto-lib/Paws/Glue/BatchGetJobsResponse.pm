@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::BatchGetJobsResponse;
-  use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Job]');
-  has JobsNotFound => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Glue::Types qw/Glue_Job/;
+  has Jobs => (is => 'ro', isa => ArrayRef[Glue_Job]);
+  has JobsNotFound => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Jobs' => {
+                           'type' => 'ArrayRef[Glue_Job]',
+                           'class' => 'Paws::Glue::Job'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobsNotFound' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Glue::BatchGetJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Jobs => ArrayRef[L<Paws::Glue::Job>]
+=head2 Jobs => ArrayRef[Glue_Job]
 
 A list of job definitions.
 

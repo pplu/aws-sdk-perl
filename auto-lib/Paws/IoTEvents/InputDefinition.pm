@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::InputDefinition;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Attribute]', request_name => 'attributes', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::IoTEvents::Types qw/IoTEvents_Attribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[IoTEvents_Attribute], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::IoTEvents::Attribute',
+                                 'type' => 'ArrayRef[IoTEvents_Attribute]'
+                               }
+             },
+  'NameInRequest' => {
+                       'Attributes' => 'attributes'
+                     },
+  'IsRequired' => {
+                    'Attributes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ The definition of the input.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::IoTEvents::Attribute>]
+=head2 B<REQUIRED> Attributes => ArrayRef[IoTEvents_Attribute]
 
   The attributes from the JSON payload that are made available by the
 input. Inputs are derived from messages sent to the AWS IoT Events

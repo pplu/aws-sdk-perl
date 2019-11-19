@@ -1,15 +1,41 @@
 
 package Paws::MediaPackage::RotateIngestEndpointCredentials;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'id', required => 1);
-  has IngestEndpointId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ingest_endpoint_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackage::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IngestEndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RotateIngestEndpointCredentials');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/channels/{id}/ingest_endpoints/{ingest_endpoint_id}/credentials');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaPackage::RotateIngestEndpointCredentialsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RotateIngestEndpointCredentials');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/channels/{id}/ingest_endpoints/{ingest_endpoint_id}/credentials');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaPackage::RotateIngestEndpointCredentialsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'IngestEndpointId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'IngestEndpointId' => 1
+                  },
+  'ParamInURI' => {
+                    'IngestEndpointId' => 'ingest_endpoint_id',
+                    'Id' => 'id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,17 +1,46 @@
 
 package Paws::CloudDirectory::UpgradePublishedSchema;
-  use Moose;
-  has DevelopmentSchemaArn => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has MinorVersion => (is => 'ro', isa => 'Str', required => 1);
-  has PublishedSchemaArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudDirectory::Types qw//;
+  has DevelopmentSchemaArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has MinorVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PublishedSchemaArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpgradePublishedSchema');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/schema/upgradepublished');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::UpgradePublishedSchemaResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpgradePublishedSchema');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/schema/upgradepublished');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::UpgradePublishedSchemaResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DevelopmentSchemaArn' => 1,
+                    'MinorVersion' => 1,
+                    'PublishedSchemaArn' => 1
+                  },
+  'types' => {
+               'DevelopmentSchemaArn' => {
+                                           'type' => 'Str'
+                                         },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'MinorVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'PublishedSchemaArn' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

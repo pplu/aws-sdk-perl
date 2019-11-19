@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Mp4Settings;
-  use Moose;
-  has CslgAtom => (is => 'ro', isa => 'Str', request_name => 'cslgAtom', traits => ['NameInRequest']);
-  has FreeSpaceBox => (is => 'ro', isa => 'Str', request_name => 'freeSpaceBox', traits => ['NameInRequest']);
-  has MoovPlacement => (is => 'ro', isa => 'Str', request_name => 'moovPlacement', traits => ['NameInRequest']);
-  has Mp4MajorBrand => (is => 'ro', isa => 'Str', request_name => 'mp4MajorBrand', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has CslgAtom => (is => 'ro', isa => Str);
+  has FreeSpaceBox => (is => 'ro', isa => Str);
+  has MoovPlacement => (is => 'ro', isa => Str);
+  has Mp4MajorBrand => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MoovPlacement' => {
+                                    'type' => 'Str'
+                                  },
+               'CslgAtom' => {
+                               'type' => 'Str'
+                             },
+               'FreeSpaceBox' => {
+                                   'type' => 'Str'
+                                 },
+               'Mp4MajorBrand' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'FreeSpaceBox' => 'freeSpaceBox',
+                       'Mp4MajorBrand' => 'mp4MajorBrand',
+                       'MoovPlacement' => 'moovPlacement',
+                       'CslgAtom' => 'cslgAtom'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

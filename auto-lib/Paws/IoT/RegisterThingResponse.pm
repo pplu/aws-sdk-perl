@@ -1,10 +1,35 @@
 
 package Paws::IoT::RegisterThingResponse;
-  use Moose;
-  has CertificatePem => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificatePem');
-  has ResourceArns => (is => 'ro', isa => 'Paws::IoT::ResourceArns', traits => ['NameInRequest'], request_name => 'resourceArns');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_ResourceArns/;
+  has CertificatePem => (is => 'ro', isa => Str);
+  has ResourceArns => (is => 'ro', isa => IoT_ResourceArns);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ResourceArns' => 'resourceArns',
+                       'CertificatePem' => 'certificatePem'
+                     },
+  'types' => {
+               'ResourceArns' => {
+                                   'class' => 'Paws::IoT::ResourceArns',
+                                   'type' => 'IoT_ResourceArns'
+                                 },
+               'CertificatePem' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +46,7 @@ Paws::IoT::RegisterThingResponse
 .
 
 
-=head2 ResourceArns => L<Paws::IoT::ResourceArns>
+=head2 ResourceArns => IoT_ResourceArns
 
 ARNs for the generated resources.
 

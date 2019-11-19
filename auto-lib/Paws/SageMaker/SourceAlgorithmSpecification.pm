@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::SageMaker::SourceAlgorithmSpecification;
-  use Moose;
-  has SourceAlgorithms => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::SourceAlgorithm]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_SourceAlgorithm/;
+  has SourceAlgorithms => (is => 'ro', isa => ArrayRef[SageMaker_SourceAlgorithm], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SourceAlgorithms' => 1
+                  },
+  'types' => {
+               'SourceAlgorithms' => {
+                                       'type' => 'ArrayRef[SageMaker_SourceAlgorithm]',
+                                       'class' => 'Paws::SageMaker::SourceAlgorithm'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ A list of algorithms that were used to create a model package.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SourceAlgorithms => ArrayRef[L<Paws::SageMaker::SourceAlgorithm>]
+=head2 B<REQUIRED> SourceAlgorithms => ArrayRef[SageMaker_SourceAlgorithm]
 
   A list of the algorithms that were used to create a model package.
 

@@ -1,14 +1,35 @@
 
 package Paws::ApiGateway::DeleteClientCertificate;
-  use Moose;
-  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'clientcertificate_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has ClientCertificateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClientCertificate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clientcertificates/{clientcertificate_id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteClientCertificate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clientcertificates/{clientcertificate_id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ClientCertificateId' => 1
+                  },
+  'types' => {
+               'ClientCertificateId' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'ParamInURI' => {
+                    'ClientCertificateId' => 'clientcertificate_id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

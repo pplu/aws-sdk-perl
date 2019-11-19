@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::DetectedProperties;
-  use Moose;
-  has DurationMillis => (is => 'ro', isa => 'Int');
-  has FileSize => (is => 'ro', isa => 'Int');
-  has FrameRate => (is => 'ro', isa => 'Str');
-  has Height => (is => 'ro', isa => 'Int');
-  has Width => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::ElasticTranscoder::Types qw//;
+  has DurationMillis => (is => 'ro', isa => Int);
+  has FileSize => (is => 'ro', isa => Int);
+  has FrameRate => (is => 'ro', isa => Str);
+  has Height => (is => 'ro', isa => Int);
+  has Width => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FrameRate' => {
+                                'type' => 'Str'
+                              },
+               'DurationMillis' => {
+                                     'type' => 'Int'
+                                   },
+               'Height' => {
+                             'type' => 'Int'
+                           },
+               'FileSize' => {
+                               'type' => 'Int'
+                             },
+               'Width' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

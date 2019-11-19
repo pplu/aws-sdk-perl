@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MachineLearning::DescribeTagsOutput;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::MachineLearning::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MachineLearning::Types qw/MachineLearning_Tag/;
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[MachineLearning_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::MachineLearning::Tag',
+                           'type' => 'ArrayRef[MachineLearning_Tag]'
+                         },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -26,7 +51,7 @@ The ID of the tagged ML object.
 The type of the tagged ML object.
 
 Valid values are: C<"BatchPrediction">, C<"DataSource">, C<"Evaluation">, C<"MLModel">
-=head2 Tags => ArrayRef[L<Paws::MachineLearning::Tag>]
+=head2 Tags => ArrayRef[MachineLearning_Tag]
 
 A list of tags associated with the ML object.
 

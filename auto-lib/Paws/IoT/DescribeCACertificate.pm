@@ -1,14 +1,35 @@
 
 package Paws::IoT::DescribeCACertificate;
-  use Moose;
-  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'caCertificateId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has CertificateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCACertificate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/cacertificate/{caCertificateId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DescribeCACertificateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeCACertificate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/cacertificate/{caCertificateId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DescribeCACertificateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'CertificateId' => 'caCertificateId'
+                  },
+  'IsRequired' => {
+                    'CertificateId' => 1
+                  },
+  'types' => {
+               'CertificateId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

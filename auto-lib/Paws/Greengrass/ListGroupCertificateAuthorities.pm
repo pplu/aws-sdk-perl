@@ -1,14 +1,35 @@
 
 package Paws::Greengrass::ListGroupCertificateAuthorities;
-  use Moose;
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has GroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListGroupCertificateAuthorities');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/groups/{GroupId}/certificateauthorities');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::ListGroupCertificateAuthoritiesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListGroupCertificateAuthorities');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/groups/{GroupId}/certificateauthorities');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::ListGroupCertificateAuthoritiesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'GroupId' => 1
+                  },
+  'types' => {
+               'GroupId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInURI' => {
+                    'GroupId' => 'GroupId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

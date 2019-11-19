@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::CloudFormation;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'cloudformation' }
   sub signing_name { 'cloudformation' }
   sub version { '2010-05-15' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -724,17 +726,17 @@ back to it, causing the update rollback to fail.
 
 =item [NotificationARNs => ArrayRef[Str|Undef]]
 
-=item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+=item [Parameters => ArrayRef[CloudFormation_Parameter]]
 
-=item [ResourcesToImport => ArrayRef[L<Paws::CloudFormation::ResourceToImport>]]
+=item [ResourcesToImport => ArrayRef[CloudFormation_ResourceToImport]]
 
 =item [ResourceTypes => ArrayRef[Str|Undef]]
 
 =item [RoleARN => Str]
 
-=item [RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>]
+=item [RollbackConfiguration => CloudFormation_RollbackConfiguration]
 
-=item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
+=item [Tags => ArrayRef[CloudFormation_Tag]]
 
 =item [TemplateBody => Str]
 
@@ -793,19 +795,19 @@ CloudFormation doesn't make changes until you execute the change set.
 
 =item [OnFailure => Str]
 
-=item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+=item [Parameters => ArrayRef[CloudFormation_Parameter]]
 
 =item [ResourceTypes => ArrayRef[Str|Undef]]
 
 =item [RoleARN => Str]
 
-=item [RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>]
+=item [RollbackConfiguration => CloudFormation_RollbackConfiguration]
 
 =item [StackPolicyBody => Str]
 
 =item [StackPolicyURL => Str]
 
-=item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
+=item [Tags => ArrayRef[CloudFormation_Tag]]
 
 =item [TemplateBody => Str]
 
@@ -837,9 +839,9 @@ the stack via the DescribeStacks API.
 
 =item [OperationId => Str]
 
-=item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
+=item [OperationPreferences => CloudFormation_StackSetOperationPreferences]
 
-=item [ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+=item [ParameterOverrides => ArrayRef[CloudFormation_Parameter]]
 
 
 =back
@@ -870,9 +872,9 @@ parametersE<mdash>you must specify at least one account and one region.
 
 =item [ExecutionRoleName => Str]
 
-=item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+=item [Parameters => ArrayRef[CloudFormation_Parameter]]
 
-=item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
+=item [Tags => ArrayRef[CloudFormation_Tag]]
 
 =item [TemplateBody => Str]
 
@@ -948,7 +950,7 @@ API if the deletion has been completed successfully.
 
 =item [OperationId => Str]
 
-=item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
+=item [OperationPreferences => CloudFormation_StackSetOperationPreferences]
 
 
 =back
@@ -1430,7 +1432,7 @@ Resources that Support Drift Detection
 
 =item [OperationId => Str]
 
-=item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
+=item [OperationPreferences => CloudFormation_StackSetOperationPreferences]
 
 
 =back
@@ -1494,7 +1496,7 @@ StopStackSetOperation >.
 
 =over
 
-=item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+=item [Parameters => ArrayRef[CloudFormation_Parameter]]
 
 =item [TemplateBody => Str]
 
@@ -1942,7 +1944,7 @@ Do not use this API in your code.
 
 =item [ExecutionRoleArn => Str]
 
-=item [LoggingConfig => L<Paws::CloudFormation::LoggingConfig>]
+=item [LoggingConfig => CloudFormation_LoggingConfig]
 
 =item [Type => Str]
 
@@ -2084,13 +2086,13 @@ instances.
 
 =item [NotificationARNs => ArrayRef[Str|Undef]]
 
-=item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+=item [Parameters => ArrayRef[CloudFormation_Parameter]]
 
 =item [ResourceTypes => ArrayRef[Str|Undef]]
 
 =item [RoleARN => Str]
 
-=item [RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>]
+=item [RollbackConfiguration => CloudFormation_RollbackConfiguration]
 
 =item [StackPolicyBody => Str]
 
@@ -2100,7 +2102,7 @@ instances.
 
 =item [StackPolicyURL => Str]
 
-=item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
+=item [Tags => ArrayRef[CloudFormation_Tag]]
 
 =item [TemplateBody => Str]
 
@@ -2139,9 +2141,9 @@ stack, and monitoring the progress of the update, see Updating a Stack
 
 =item [OperationId => Str]
 
-=item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
+=item [OperationPreferences => CloudFormation_StackSetOperationPreferences]
 
-=item [ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+=item [ParameterOverrides => ArrayRef[CloudFormation_Parameter]]
 
 
 =back
@@ -2193,13 +2195,13 @@ value using C<UpdateStackInstances>.
 
 =item [OperationId => Str]
 
-=item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
+=item [OperationPreferences => CloudFormation_StackSetOperationPreferences]
 
-=item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
+=item [Parameters => ArrayRef[CloudFormation_Parameter]]
 
 =item [Regions => ArrayRef[Str|Undef]]
 
-=item [Tags => ArrayRef[L<Paws::CloudFormation::Tag>]]
+=item [Tags => ArrayRef[CloudFormation_Tag]]
 
 =item [TemplateBody => Str]
 

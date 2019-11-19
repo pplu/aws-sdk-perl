@@ -1,21 +1,106 @@
+# Generated from default/object.tt
 package Paws::Lightsail::LoadBalancer;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has ConfigurationOptions => (is => 'ro', isa => 'Paws::Lightsail::LoadBalancerConfigurationOptions', request_name => 'configurationOptions', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has DnsName => (is => 'ro', isa => 'Str', request_name => 'dnsName', traits => ['NameInRequest']);
-  has HealthCheckPath => (is => 'ro', isa => 'Str', request_name => 'healthCheckPath', traits => ['NameInRequest']);
-  has InstanceHealthSummary => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::InstanceHealthSummary]', request_name => 'instanceHealthSummary', traits => ['NameInRequest']);
-  has InstancePort => (is => 'ro', isa => 'Int', request_name => 'instancePort', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
-  has PublicPorts => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'publicPorts', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', request_name => 'tags', traits => ['NameInRequest']);
-  has TlsCertificateSummaries => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::LoadBalancerTlsCertificateSummary]', request_name => 'tlsCertificateSummaries', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Lightsail::Types qw/Lightsail_Tag Lightsail_LoadBalancerConfigurationOptions Lightsail_InstanceHealthSummary Lightsail_LoadBalancerTlsCertificateSummary Lightsail_ResourceLocation/;
+  has Arn => (is => 'ro', isa => Str);
+  has ConfigurationOptions => (is => 'ro', isa => Lightsail_LoadBalancerConfigurationOptions);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DnsName => (is => 'ro', isa => Str);
+  has HealthCheckPath => (is => 'ro', isa => Str);
+  has InstanceHealthSummary => (is => 'ro', isa => ArrayRef[Lightsail_InstanceHealthSummary]);
+  has InstancePort => (is => 'ro', isa => Int);
+  has Location => (is => 'ro', isa => Lightsail_ResourceLocation);
+  has Name => (is => 'ro', isa => Str);
+  has Protocol => (is => 'ro', isa => Str);
+  has PublicPorts => (is => 'ro', isa => ArrayRef[Int]);
+  has ResourceType => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has SupportCode => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag]);
+  has TlsCertificateSummaries => (is => 'ro', isa => ArrayRef[Lightsail_LoadBalancerTlsCertificateSummary]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ResourceType' => 'resourceType',
+                       'ConfigurationOptions' => 'configurationOptions',
+                       'InstancePort' => 'instancePort',
+                       'DnsName' => 'dnsName',
+                       'HealthCheckPath' => 'healthCheckPath',
+                       'TlsCertificateSummaries' => 'tlsCertificateSummaries',
+                       'PublicPorts' => 'publicPorts',
+                       'State' => 'state',
+                       'SupportCode' => 'supportCode',
+                       'Protocol' => 'protocol',
+                       'Name' => 'name',
+                       'Location' => 'location',
+                       'InstanceHealthSummary' => 'instanceHealthSummary',
+                       'CreatedAt' => 'createdAt',
+                       'Tags' => 'tags',
+                       'Arn' => 'arn'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SupportCode' => {
+                                  'type' => 'Str'
+                                },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'TlsCertificateSummaries' => {
+                                              'type' => 'ArrayRef[Lightsail_LoadBalancerTlsCertificateSummary]',
+                                              'class' => 'Paws::Lightsail::LoadBalancerTlsCertificateSummary'
+                                            },
+               'PublicPorts' => {
+                                  'type' => 'ArrayRef[Int]'
+                                },
+               'HealthCheckPath' => {
+                                      'type' => 'Str'
+                                    },
+               'DnsName' => {
+                              'type' => 'Str'
+                            },
+               'InstancePort' => {
+                                   'type' => 'Int'
+                                 },
+               'ConfigurationOptions' => {
+                                           'class' => 'Paws::Lightsail::LoadBalancerConfigurationOptions',
+                                           'type' => 'Lightsail_LoadBalancerConfigurationOptions'
+                                         },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'type' => 'ArrayRef[Lightsail_Tag]',
+                           'class' => 'Paws::Lightsail::Tag'
+                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'InstanceHealthSummary' => {
+                                            'class' => 'Paws::Lightsail::InstanceHealthSummary',
+                                            'type' => 'ArrayRef[Lightsail_InstanceHealthSummary]'
+                                          },
+               'Location' => {
+                               'class' => 'Paws::Lightsail::ResourceLocation',
+                               'type' => 'Lightsail_ResourceLocation'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +141,7 @@ Describes the Lightsail load balancer.
   The Amazon Resource Name (ARN) of the load balancer.
 
 
-=head2 ConfigurationOptions => L<Paws::Lightsail::LoadBalancerConfigurationOptions>
+=head2 ConfigurationOptions => Lightsail_LoadBalancerConfigurationOptions
 
   A string to string map of the configuration options for your load
 balancer. Valid values are listed below.
@@ -79,7 +164,7 @@ specified, the load balancer tries to make a request to the default
 (root) page.
 
 
-=head2 InstanceHealthSummary => ArrayRef[L<Paws::Lightsail::InstanceHealthSummary>]
+=head2 InstanceHealthSummary => ArrayRef[Lightsail_InstanceHealthSummary]
 
   An array of InstanceHealthSummary objects describing the health of the
 load balancer.
@@ -92,7 +177,7 @@ instances. For HTTP traffic, it's port 80. For HTTPS traffic, it's port
 443.
 
 
-=head2 Location => L<Paws::Lightsail::ResourceLocation>
+=head2 Location => Lightsail_ResourceLocation
 
   The AWS Region where your load balancer was created (e.g.,
 C<us-east-2a>). Lightsail automatically creates your load balancer
@@ -135,14 +220,14 @@ have questions about your Lightsail load balancer. This code enables
 our support team to look up your Lightsail information more easily.
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
   The tag keys and optional values for the resource. For more information
 about tags in Lightsail, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags).
 
 
-=head2 TlsCertificateSummaries => ArrayRef[L<Paws::Lightsail::LoadBalancerTlsCertificateSummary>]
+=head2 TlsCertificateSummaries => ArrayRef[Lightsail_LoadBalancerTlsCertificateSummary]
 
   An array of LoadBalancerTlsCertificateSummary objects that provide
 additional information about the SSL/TLS certificates. For example, if

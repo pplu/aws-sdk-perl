@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::KinesisVideo::StreamNameCondition;
-  use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str');
-  has ComparisonValue => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisVideo::Types qw//;
+  has ComparisonOperator => (is => 'ro', isa => Str);
+  has ComparisonValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       },
+               'ComparisonValue' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

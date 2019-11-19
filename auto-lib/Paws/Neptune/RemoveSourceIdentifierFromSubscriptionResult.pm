@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::Neptune::RemoveSourceIdentifierFromSubscriptionResult;
-  use Moose;
-  has EventSubscription => (is => 'ro', isa => 'Paws::Neptune::EventSubscription');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Neptune::Types qw/Neptune_EventSubscription/;
+  has EventSubscription => (is => 'ro', isa => Neptune_EventSubscription);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventSubscription' => {
+                                        'class' => 'Paws::Neptune::EventSubscription',
+                                        'type' => 'Neptune_EventSubscription'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::Neptune::RemoveSourceIdentifierFromSubscriptionResult
 =head1 ATTRIBUTES
 
 
-=head2 EventSubscription => L<Paws::Neptune::EventSubscription>
+=head2 EventSubscription => Neptune_EventSubscription
 
 
 

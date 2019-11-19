@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::BatchGetItem;
-  use Moose;
-  has RequestItems => (is => 'ro', isa => 'Paws::DynamoDB::BatchGetRequestMap', required => 1);
-  has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDB::Types qw/DynamoDB_BatchGetRequestMap/;
+  has RequestItems => (is => 'ro', isa => DynamoDB_BatchGetRequestMap, required => 1, predicate => 1);
+  has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchGetItem');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::BatchGetItemOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchGetItem');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::BatchGetItemOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RequestItems' => 1
+                  },
+  'types' => {
+               'ReturnConsumedCapacity' => {
+                                             'type' => 'Str'
+                                           },
+               'RequestItems' => {
+                                   'type' => 'DynamoDB_BatchGetRequestMap',
+                                   'class' => 'Paws::DynamoDB::BatchGetRequestMap'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +102,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> RequestItems => L<Paws::DynamoDB::BatchGetRequestMap>
+=head2 B<REQUIRED> RequestItems => DynamoDB_BatchGetRequestMap
 
 A map of one or more table names and, for each table, a map that
 describes one or more items to retrieve from that table. Each table

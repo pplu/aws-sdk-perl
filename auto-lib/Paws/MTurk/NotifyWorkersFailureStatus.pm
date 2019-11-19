@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::MTurk::NotifyWorkersFailureStatus;
-  use Moose;
-  has NotifyWorkersFailureCode => (is => 'ro', isa => 'Str');
-  has NotifyWorkersFailureMessage => (is => 'ro', isa => 'Str');
-  has WorkerId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw//;
+  has NotifyWorkersFailureCode => (is => 'ro', isa => Str);
+  has NotifyWorkersFailureMessage => (is => 'ro', isa => Str);
+  has WorkerId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotifyWorkersFailureCode' => {
+                                               'type' => 'Str'
+                                             },
+               'NotifyWorkersFailureMessage' => {
+                                                  'type' => 'Str'
+                                                },
+               'WorkerId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,21 +1,82 @@
 
 package Paws::S3::ListObjectVersionsOutput;
-  use Moose;
-  has CommonPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::S3::CommonPrefix]');
-  has DeleteMarkers => (is => 'ro', isa => 'ArrayRef[Paws::S3::DeleteMarkerEntry]', traits => ['NameInRequest'], request_name => 'DeleteMarker');
-  has Delimiter => (is => 'ro', isa => 'Str');
-  has EncodingType => (is => 'ro', isa => 'Str');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has KeyMarker => (is => 'ro', isa => 'Str');
-  has MaxKeys => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str');
-  has NextKeyMarker => (is => 'ro', isa => 'Str');
-  has NextVersionIdMarker => (is => 'ro', isa => 'Str');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has VersionIdMarker => (is => 'ro', isa => 'Str');
-  has Versions => (is => 'ro', isa => 'ArrayRef[Paws::S3::ObjectVersion]', traits => ['NameInRequest'], request_name => 'Version');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Bool Int/;
+  use Paws::S3::Types qw/S3_ObjectVersion S3_DeleteMarkerEntry S3_CommonPrefix/;
+  has CommonPrefixes => (is => 'ro', isa => ArrayRef[S3_CommonPrefix]);
+  has DeleteMarkers => (is => 'ro', isa => ArrayRef[S3_DeleteMarkerEntry]);
+  has Delimiter => (is => 'ro', isa => Str);
+  has EncodingType => (is => 'ro', isa => Str);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has KeyMarker => (is => 'ro', isa => Str);
+  has MaxKeys => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has NextKeyMarker => (is => 'ro', isa => Str);
+  has NextVersionIdMarker => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+  has VersionIdMarker => (is => 'ro', isa => Str);
+  has Versions => (is => 'ro', isa => ArrayRef[S3_ObjectVersion]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Versions' => 'Version',
+                       'DeleteMarkers' => 'DeleteMarker'
+                     },
+  'types' => {
+               'NextVersionIdMarker' => {
+                                          'type' => 'Str'
+                                        },
+               'DeleteMarkers' => {
+                                    'type' => 'ArrayRef[S3_DeleteMarkerEntry]',
+                                    'class' => 'Paws::S3::DeleteMarkerEntry'
+                                  },
+               'Delimiter' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Versions' => {
+                               'type' => 'ArrayRef[S3_ObjectVersion]',
+                               'class' => 'Paws::S3::ObjectVersion'
+                             },
+               'MaxKeys' => {
+                              'type' => 'Int'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CommonPrefixes' => {
+                                     'type' => 'ArrayRef[S3_CommonPrefix]',
+                                     'class' => 'Paws::S3::CommonPrefix'
+                                   },
+               'NextKeyMarker' => {
+                                    'type' => 'Str'
+                                  },
+               'KeyMarker' => {
+                                'type' => 'Str'
+                              },
+               'EncodingType' => {
+                                   'type' => 'Str'
+                                 },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'VersionIdMarker' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -27,14 +88,14 @@ Paws::S3::ListObjectVersionsOutput
 =head1 ATTRIBUTES
 
 
-=head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
+=head2 CommonPrefixes => ArrayRef[S3_CommonPrefix]
 
 All of the keys rolled up into a common prefix count as a single return
 when calculating the number of returns.
 
 
 
-=head2 DeleteMarkers => ArrayRef[L<Paws::S3::DeleteMarkerEntry>]
+=head2 DeleteMarkers => ArrayRef[S3_DeleteMarkerEntry]
 
 Container for an object that is a delete marker.
 
@@ -122,7 +183,7 @@ Marks the last version of the Key returned in a truncated response.
 
 
 
-=head2 Versions => ArrayRef[L<Paws::S3::ObjectVersion>]
+=head2 Versions => ArrayRef[S3_ObjectVersion]
 
 Container for version information.
 

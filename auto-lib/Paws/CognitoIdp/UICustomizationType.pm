@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::UICustomizationType;
-  use Moose;
-  has ClientId => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has CSS => (is => 'ro', isa => 'Str');
-  has CSSVersion => (is => 'ro', isa => 'Str');
-  has ImageUrl => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has UserPoolId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has ClientId => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has CSS => (is => 'ro', isa => Str);
+  has CSSVersion => (is => 'ro', isa => Str);
+  has ImageUrl => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has UserPoolId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CSS' => {
+                          'type' => 'Str'
+                        },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'ImageUrl' => {
+                               'type' => 'Str'
+                             },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'CSSVersion' => {
+                                 'type' => 'Str'
+                               },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

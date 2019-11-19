@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SecretsManager::DeleteSecretResponse;
-  use Moose;
-  has ARN => (is => 'ro', isa => 'Str');
-  has DeletionDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecretsManager::Types qw//;
+  has ARN => (is => 'ro', isa => Str);
+  has DeletionDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DeletionDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

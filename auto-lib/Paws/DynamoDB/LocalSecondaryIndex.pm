@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::LocalSecondaryIndex;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str', required => 1);
-  has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]', required => 1);
-  has Projection => (is => 'ro', isa => 'Paws::DynamoDB::Projection', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_Projection DynamoDB_KeySchemaElement/;
+  has IndexName => (is => 'ro', isa => Str, required => 1);
+  has KeySchema => (is => 'ro', isa => ArrayRef[DynamoDB_KeySchemaElement], required => 1);
+  has Projection => (is => 'ro', isa => DynamoDB_Projection, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'Projection' => {
+                                 'class' => 'Paws::DynamoDB::Projection',
+                                 'type' => 'DynamoDB_Projection'
+                               },
+               'KeySchema' => {
+                                'class' => 'Paws::DynamoDB::KeySchemaElement',
+                                'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
+                              }
+             },
+  'IsRequired' => {
+                    'IndexName' => 1,
+                    'Projection' => 1,
+                    'KeySchema' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +74,7 @@ Represents the properties of a local secondary index.
 all other indexes on this table.
 
 
-=head2 B<REQUIRED> KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
+=head2 B<REQUIRED> KeySchema => ArrayRef[DynamoDB_KeySchemaElement]
 
   The complete key schema for the local secondary index, consisting of
 one or more pairs of attribute names and key types:
@@ -72,7 +102,7 @@ the same partition key physically close together, in sorted order by
 the sort key value.
 
 
-=head2 B<REQUIRED> Projection => L<Paws::DynamoDB::Projection>
+=head2 B<REQUIRED> Projection => DynamoDB_Projection
 
   Represents attributes that are copied (projected) from the table into
 the local secondary index. These are in addition to the primary key

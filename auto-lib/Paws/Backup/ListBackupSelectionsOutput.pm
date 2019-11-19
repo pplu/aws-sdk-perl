@@ -1,10 +1,31 @@
 
 package Paws::Backup::ListBackupSelectionsOutput;
-  use Moose;
-  has BackupSelectionsList => (is => 'ro', isa => 'ArrayRef[Paws::Backup::BackupSelectionsListMember]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Backup::Types qw/Backup_BackupSelectionsListMember/;
+  has BackupSelectionsList => (is => 'ro', isa => ArrayRef[Backup_BackupSelectionsListMember]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'BackupSelectionsList' => {
+                                           'class' => 'Paws::Backup::BackupSelectionsListMember',
+                                           'type' => 'ArrayRef[Backup_BackupSelectionsListMember]'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Backup::ListBackupSelectionsOutput
 =head1 ATTRIBUTES
 
 
-=head2 BackupSelectionsList => ArrayRef[L<Paws::Backup::BackupSelectionsListMember>]
+=head2 BackupSelectionsList => ArrayRef[Backup_BackupSelectionsListMember]
 
 An array of backup selection list items containing metadata about each
 resource in the list.

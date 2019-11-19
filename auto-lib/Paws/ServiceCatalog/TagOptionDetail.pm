@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::TagOptionDetail;
-  use Moose;
-  has Active => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has Active => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Active' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,48 @@
 
 package Paws::EC2::ApplySecurityGroupsToClientVpnTargetNetwork;
-  use Moose;
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' , required => 1);
-  has VpcId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw//;
+  has ClientVpnEndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has VpcId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ApplySecurityGroupsToClientVpnTargetNetwork');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ApplySecurityGroupsToClientVpnTargetNetworkResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ApplySecurityGroupsToClientVpnTargetNetwork');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ApplySecurityGroupsToClientVpnTargetNetworkResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SecurityGroupIds' => 'SecurityGroupId'
+                     },
+  'IsRequired' => {
+                    'SecurityGroupIds' => 1,
+                    'VpcId' => 1,
+                    'ClientVpnEndpointId' => 1
+                  },
+  'types' => {
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

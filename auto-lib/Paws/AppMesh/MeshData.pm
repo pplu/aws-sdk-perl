@@ -1,9 +1,50 @@
+# Generated from default/object.tt
 package Paws::AppMesh::MeshData;
-  use Moose;
-  has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
-  has Metadata => (is => 'ro', isa => 'Paws::AppMesh::ResourceMetadata', request_name => 'metadata', traits => ['NameInRequest'], required => 1);
-  has Spec => (is => 'ro', isa => 'Paws::AppMesh::MeshSpec', request_name => 'spec', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Paws::AppMesh::MeshStatus', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw/AppMesh_MeshStatus AppMesh_MeshSpec AppMesh_ResourceMetadata/;
+  has MeshName => (is => 'ro', isa => Str, required => 1);
+  has Metadata => (is => 'ro', isa => AppMesh_ResourceMetadata, required => 1);
+  has Spec => (is => 'ro', isa => AppMesh_MeshSpec, required => 1);
+  has Status => (is => 'ro', isa => AppMesh_MeshStatus, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MeshName' => 'meshName',
+                       'Status' => 'status',
+                       'Spec' => 'spec',
+                       'Metadata' => 'metadata'
+                     },
+  'IsRequired' => {
+                    'Metadata' => 1,
+                    'Status' => 1,
+                    'Spec' => 1,
+                    'MeshName' => 1
+                  },
+  'types' => {
+               'Metadata' => {
+                               'class' => 'Paws::AppMesh::ResourceMetadata',
+                               'type' => 'AppMesh_ResourceMetadata'
+                             },
+               'Status' => {
+                             'type' => 'AppMesh_MeshStatus',
+                             'class' => 'Paws::AppMesh::MeshStatus'
+                           },
+               'Spec' => {
+                           'class' => 'Paws::AppMesh::MeshSpec',
+                           'type' => 'AppMesh_MeshSpec'
+                         },
+               'MeshName' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,17 +86,17 @@ operation.
   The name of the service mesh.
 
 
-=head2 B<REQUIRED> Metadata => L<Paws::AppMesh::ResourceMetadata>
+=head2 B<REQUIRED> Metadata => AppMesh_ResourceMetadata
 
   The associated metadata for the service mesh.
 
 
-=head2 B<REQUIRED> Spec => L<Paws::AppMesh::MeshSpec>
+=head2 B<REQUIRED> Spec => AppMesh_MeshSpec
 
   The associated specification for the service mesh.
 
 
-=head2 B<REQUIRED> Status => L<Paws::AppMesh::MeshStatus>
+=head2 B<REQUIRED> Status => AppMesh_MeshStatus
 
   The status of the service mesh.
 

@@ -1,18 +1,59 @@
 
 package Paws::Glacier::CompleteMultipartUpload;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has ArchiveSize => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-archive-size');
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sha256-tree-hash');
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'uploadId', required => 1);
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ArchiveSize => (is => 'ro', isa => Str, predicate => 1);
+  has Checksum => (is => 'ro', isa => Str, predicate => 1);
+  has UploadId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CompleteMultipartUpload');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ArchiveCreationOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CompleteMultipartUpload');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glacier::ArchiveCreationOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'ArchiveSize' => 'x-amz-archive-size',
+                       'Checksum' => 'x-amz-sha256-tree-hash'
+                     },
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               'Checksum' => {
+                               'type' => 'Str'
+                             },
+               'ArchiveSize' => {
+                                  'type' => 'Str'
+                                },
+               'VaultName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'VaultName' => 1,
+                    'UploadId' => 1,
+                    'AccountId' => 1
+                  },
+  'ParamInURI' => {
+                    'UploadId' => 'uploadId',
+                    'AccountId' => 'accountId',
+                    'VaultName' => 'vaultName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

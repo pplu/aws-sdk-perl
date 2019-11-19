@@ -1,8 +1,35 @@
 package Paws::EC2::ClientVpnAuthentication;
-  use Moose;
-  has ActiveDirectory => (is => 'ro', isa => 'Paws::EC2::DirectoryServiceAuthentication', request_name => 'activeDirectory', traits => ['NameInRequest']);
-  has MutualAuthentication => (is => 'ro', isa => 'Paws::EC2::CertificateAuthentication', request_name => 'mutualAuthentication', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_DirectoryServiceAuthentication EC2_CertificateAuthentication/;
+  has ActiveDirectory => (is => 'ro', isa => EC2_DirectoryServiceAuthentication);
+  has MutualAuthentication => (is => 'ro', isa => EC2_CertificateAuthentication);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MutualAuthentication' => 'mutualAuthentication',
+                       'ActiveDirectory' => 'activeDirectory',
+                       'Type' => 'type'
+                     },
+  'types' => {
+               'ActiveDirectory' => {
+                                      'type' => 'EC2_DirectoryServiceAuthentication',
+                                      'class' => 'Paws::EC2::DirectoryServiceAuthentication'
+                                    },
+               'MutualAuthentication' => {
+                                           'type' => 'EC2_CertificateAuthentication',
+                                           'class' => 'Paws::EC2::CertificateAuthentication'
+                                         },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +65,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ActiveDirectory => L<Paws::EC2::DirectoryServiceAuthentication>
+=head2 ActiveDirectory => EC2_DirectoryServiceAuthentication
 
   Information about the Active Directory, if applicable.
 
 
-=head2 MutualAuthentication => L<Paws::EC2::CertificateAuthentication>
+=head2 MutualAuthentication => EC2_CertificateAuthentication
 
   Information about the authentication certificates, if applicable.
 

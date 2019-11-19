@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CloudWatchEvents;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'events' }
   sub signing_name { 'events' }
   sub version { '2015-10-07' }
   sub target_prefix { 'AWSEvents' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -823,7 +825,7 @@ Lists the targets assigned to the specified rule.
 
 =over
 
-=item Entries => ArrayRef[L<Paws::CloudWatchEvents::PutEventsRequestEntry>]
+=item Entries => ArrayRef[CloudWatchEvents_PutEventsRequestEntry]
 
 
 =back
@@ -840,7 +842,7 @@ rules. These events can be from your custom applications and services.
 
 =over
 
-=item Entries => ArrayRef[L<Paws::CloudWatchEvents::PutPartnerEventsRequestEntry>]
+=item Entries => ArrayRef[CloudWatchEvents_PutPartnerEventsRequestEntry]
 
 
 =back
@@ -867,7 +869,7 @@ event bus.
 
 =item StatementId => Str
 
-=item [Condition => L<Paws::CloudWatchEvents::Condition>]
+=item [Condition => CloudWatchEvents_Condition]
 
 =item [EventBusName => Str]
 
@@ -921,7 +923,7 @@ The permission policy on an event bus can't exceed 10 KB in size.
 
 =item [State => Str]
 
-=item [Tags => ArrayRef[L<Paws::CloudWatchEvents::Tag>]]
+=item [Tags => ArrayRef[CloudWatchEvents_Tag]]
 
 
 =back
@@ -998,7 +1000,7 @@ with Budgets
 
 =item Rule => Str
 
-=item Targets => ArrayRef[L<Paws::CloudWatchEvents::Target>]
+=item Targets => ArrayRef[CloudWatchEvents_Target]
 
 =item [EventBusName => Str]
 
@@ -1229,7 +1231,7 @@ failed target and the error code.
 
 =item ResourceARN => Str
 
-=item Tags => ArrayRef[L<Paws::CloudWatchEvents::Tag>]
+=item Tags => ArrayRef[CloudWatchEvents_Tag]
 
 
 =back

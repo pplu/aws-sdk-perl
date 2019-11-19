@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::PutConfigurationAggregator;
-  use Moose;
-  has AccountAggregationSources => (is => 'ro', isa => 'ArrayRef[Paws::Config::AccountAggregationSource]');
-  has ConfigurationAggregatorName => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationAggregationSource => (is => 'ro', isa => 'Paws::Config::OrganizationAggregationSource');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Config::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_Tag Config_AccountAggregationSource Config_OrganizationAggregationSource/;
+  has AccountAggregationSources => (is => 'ro', isa => ArrayRef[Config_AccountAggregationSource], predicate => 1);
+  has ConfigurationAggregatorName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OrganizationAggregationSource => (is => 'ro', isa => Config_OrganizationAggregationSource, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Config_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutConfigurationAggregator');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::PutConfigurationAggregatorResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutConfigurationAggregator');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::PutConfigurationAggregatorResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfigurationAggregatorName' => 1
+                  },
+  'types' => {
+               'AccountAggregationSources' => {
+                                                'type' => 'ArrayRef[Config_AccountAggregationSource]',
+                                                'class' => 'Paws::Config::AccountAggregationSource'
+                                              },
+               'ConfigurationAggregatorName' => {
+                                                  'type' => 'Str'
+                                                },
+               'OrganizationAggregationSource' => {
+                                                    'class' => 'Paws::Config::OrganizationAggregationSource',
+                                                    'type' => 'Config_OrganizationAggregationSource'
+                                                  },
+               'Tags' => {
+                           'type' => 'ArrayRef[Config_Tag]',
+                           'class' => 'Paws::Config::Tag'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +98,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head1 ATTRIBUTES
 
 
-=head2 AccountAggregationSources => ArrayRef[L<Paws::Config::AccountAggregationSource>]
+=head2 AccountAggregationSources => ArrayRef[Config_AccountAggregationSource]
 
 A list of AccountAggregationSource object.
 
@@ -79,13 +110,13 @@ The name of the configuration aggregator.
 
 
 
-=head2 OrganizationAggregationSource => L<Paws::Config::OrganizationAggregationSource>
+=head2 OrganizationAggregationSource => Config_OrganizationAggregationSource
 
 An OrganizationAggregationSource object.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Config::Tag>]
+=head2 Tags => ArrayRef[Config_Tag]
 
 An array of tag object.
 

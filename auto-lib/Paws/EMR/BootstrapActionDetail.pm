@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::EMR::BootstrapActionDetail;
-  use Moose;
-  has BootstrapActionConfig => (is => 'ro', isa => 'Paws::EMR::BootstrapActionConfig');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::EMR::Types qw/EMR_BootstrapActionConfig/;
+  has BootstrapActionConfig => (is => 'ro', isa => EMR_BootstrapActionConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BootstrapActionConfig' => {
+                                            'class' => 'Paws::EMR::BootstrapActionConfig',
+                                            'type' => 'EMR_BootstrapActionConfig'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ flow).
 =head1 ATTRIBUTES
 
 
-=head2 BootstrapActionConfig => L<Paws::EMR::BootstrapActionConfig>
+=head2 BootstrapActionConfig => EMR_BootstrapActionConfig
 
   A description of the bootstrap action.
 

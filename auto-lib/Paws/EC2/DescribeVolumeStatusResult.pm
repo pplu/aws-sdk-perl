@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeVolumeStatusResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has VolumeStatuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeStatusItem]', request_name => 'volumeStatusSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_VolumeStatusItem/;
+  has NextToken => (is => 'ro', isa => Str);
+  has VolumeStatuses => (is => 'ro', isa => ArrayRef[EC2_VolumeStatusItem]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'VolumeStatuses' => 'volumeStatusSet'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'VolumeStatuses' => {
+                                     'class' => 'Paws::EC2::VolumeStatusItem',
+                                     'type' => 'ArrayRef[EC2_VolumeStatusItem]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +48,7 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 VolumeStatuses => ArrayRef[L<Paws::EC2::VolumeStatusItem>]
+=head2 VolumeStatuses => ArrayRef[EC2_VolumeStatusItem]
 
 Information about the status of the volumes.
 

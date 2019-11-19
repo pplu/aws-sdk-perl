@@ -1,15 +1,42 @@
 
 package Paws::ServerlessRepo::CreateCloudFormationTemplate;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
-  has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServerlessRepo::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SemanticVersion => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCloudFormationTemplate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/applications/{applicationId}/templates');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServerlessRepo::CreateCloudFormationTemplateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCloudFormationTemplate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/applications/{applicationId}/templates');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServerlessRepo::CreateCloudFormationTemplateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1
+                  },
+  'NameInRequest' => {
+                       'SemanticVersion' => 'semanticVersion'
+                     },
+  'ParamInURI' => {
+                    'ApplicationId' => 'applicationId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

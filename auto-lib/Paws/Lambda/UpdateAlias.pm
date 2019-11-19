@@ -1,19 +1,58 @@
 
 package Paws::Lambda::UpdateAlias;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
-  has FunctionVersion => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Name', required => 1);
-  has RevisionId => (is => 'ro', isa => 'Str');
-  has RoutingConfig => (is => 'ro', isa => 'Paws::Lambda::AliasRoutingConfiguration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw/Lambda_AliasRoutingConfiguration/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FunctionVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RevisionId => (is => 'ro', isa => Str, predicate => 1);
+  has RoutingConfig => (is => 'ro', isa => Lambda_AliasRoutingConfiguration, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAlias');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/aliases/{Name}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::AliasConfiguration');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateAlias');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-03-31/functions/{FunctionName}/aliases/{Name}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::AliasConfiguration');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Name' => 'Name',
+                    'FunctionName' => 'FunctionName'
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'RoutingConfig' => {
+                                    'type' => 'Lambda_AliasRoutingConfiguration',
+                                    'class' => 'Paws::Lambda::AliasRoutingConfiguration'
+                                  },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'FunctionVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'FunctionName' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -110,7 +149,7 @@ since you last read it.
 
 
 
-=head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
+=head2 RoutingConfig => Lambda_AliasRoutingConfiguration
 
 The routing configuration
 (https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)

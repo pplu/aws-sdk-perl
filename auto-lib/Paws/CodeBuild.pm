@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CodeBuild;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'codebuild' }
   sub signing_name { 'codebuild' }
   sub version { '2016-10-06' }
   sub target_prefix { 'CodeBuild_20161006' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -387,41 +389,41 @@ Gets information about one or more build projects.
 
 =over
 
-=item Artifacts => L<Paws::CodeBuild::ProjectArtifacts>
+=item Artifacts => CodeBuild_ProjectArtifacts
 
-=item Environment => L<Paws::CodeBuild::ProjectEnvironment>
+=item Environment => CodeBuild_ProjectEnvironment
 
 =item Name => Str
 
 =item ServiceRole => Str
 
-=item Source => L<Paws::CodeBuild::ProjectSource>
+=item Source => CodeBuild_ProjectSource
 
 =item [BadgeEnabled => Bool]
 
-=item [Cache => L<Paws::CodeBuild::ProjectCache>]
+=item [Cache => CodeBuild_ProjectCache]
 
 =item [Description => Str]
 
 =item [EncryptionKey => Str]
 
-=item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
+=item [LogsConfig => CodeBuild_LogsConfig]
 
 =item [QueuedTimeoutInMinutes => Int]
 
-=item [SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+=item [SecondaryArtifacts => ArrayRef[CodeBuild_ProjectArtifacts]]
 
-=item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
+=item [SecondarySources => ArrayRef[CodeBuild_ProjectSource]]
 
-=item [SecondarySourceVersions => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]]
+=item [SecondarySourceVersions => ArrayRef[CodeBuild_ProjectSourceVersion]]
 
 =item [SourceVersion => Str]
 
-=item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
+=item [Tags => ArrayRef[CodeBuild_Tag]]
 
 =item [TimeoutInMinutes => Int]
 
-=item [VpcConfig => L<Paws::CodeBuild::VpcConfig>]
+=item [VpcConfig => CodeBuild_VpcConfig]
 
 
 =back
@@ -441,7 +443,7 @@ Creates a build project.
 
 =item [BranchFilter => Str]
 
-=item [FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]]
+=item [FilterGroups => ArrayRef[ArrayRef[CodeBuild_WebhookFilter]]]
 
 
 =back
@@ -655,11 +657,11 @@ Returns a list of C<SourceCredentialsInfo> objects.
 
 =item ProjectName => Str
 
-=item [ArtifactsOverride => L<Paws::CodeBuild::ProjectArtifacts>]
+=item [ArtifactsOverride => CodeBuild_ProjectArtifacts]
 
 =item [BuildspecOverride => Str]
 
-=item [CacheOverride => L<Paws::CodeBuild::ProjectCache>]
+=item [CacheOverride => CodeBuild_ProjectCache]
 
 =item [CertificateOverride => Str]
 
@@ -667,11 +669,11 @@ Returns a list of C<SourceCredentialsInfo> objects.
 
 =item [EnvironmentTypeOverride => Str]
 
-=item [EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]]
+=item [EnvironmentVariablesOverride => ArrayRef[CodeBuild_EnvironmentVariable]]
 
 =item [GitCloneDepthOverride => Int]
 
-=item [GitSubmodulesConfigOverride => L<Paws::CodeBuild::GitSubmodulesConfig>]
+=item [GitSubmodulesConfigOverride => CodeBuild_GitSubmodulesConfig]
 
 =item [IdempotencyToken => Str]
 
@@ -681,25 +683,25 @@ Returns a list of C<SourceCredentialsInfo> objects.
 
 =item [InsecureSslOverride => Bool]
 
-=item [LogsConfigOverride => L<Paws::CodeBuild::LogsConfig>]
+=item [LogsConfigOverride => CodeBuild_LogsConfig]
 
 =item [PrivilegedModeOverride => Bool]
 
 =item [QueuedTimeoutInMinutesOverride => Int]
 
-=item [RegistryCredentialOverride => L<Paws::CodeBuild::RegistryCredential>]
+=item [RegistryCredentialOverride => CodeBuild_RegistryCredential]
 
 =item [ReportBuildStatusOverride => Bool]
 
-=item [SecondaryArtifactsOverride => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+=item [SecondaryArtifactsOverride => ArrayRef[CodeBuild_ProjectArtifacts]]
 
-=item [SecondarySourcesOverride => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
+=item [SecondarySourcesOverride => ArrayRef[CodeBuild_ProjectSource]]
 
-=item [SecondarySourcesVersionOverride => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]]
+=item [SecondarySourcesVersionOverride => ArrayRef[CodeBuild_ProjectSourceVersion]]
 
 =item [ServiceRoleOverride => Str]
 
-=item [SourceAuthOverride => L<Paws::CodeBuild::SourceAuth>]
+=item [SourceAuthOverride => CodeBuild_SourceAuth]
 
 =item [SourceLocationOverride => Str]
 
@@ -741,39 +743,39 @@ Attempts to stop running a build.
 
 =item Name => Str
 
-=item [Artifacts => L<Paws::CodeBuild::ProjectArtifacts>]
+=item [Artifacts => CodeBuild_ProjectArtifacts]
 
 =item [BadgeEnabled => Bool]
 
-=item [Cache => L<Paws::CodeBuild::ProjectCache>]
+=item [Cache => CodeBuild_ProjectCache]
 
 =item [Description => Str]
 
 =item [EncryptionKey => Str]
 
-=item [Environment => L<Paws::CodeBuild::ProjectEnvironment>]
+=item [Environment => CodeBuild_ProjectEnvironment]
 
-=item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
+=item [LogsConfig => CodeBuild_LogsConfig]
 
 =item [QueuedTimeoutInMinutes => Int]
 
-=item [SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+=item [SecondaryArtifacts => ArrayRef[CodeBuild_ProjectArtifacts]]
 
-=item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
+=item [SecondarySources => ArrayRef[CodeBuild_ProjectSource]]
 
-=item [SecondarySourceVersions => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]]
+=item [SecondarySourceVersions => ArrayRef[CodeBuild_ProjectSourceVersion]]
 
 =item [ServiceRole => Str]
 
-=item [Source => L<Paws::CodeBuild::ProjectSource>]
+=item [Source => CodeBuild_ProjectSource]
 
 =item [SourceVersion => Str]
 
-=item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
+=item [Tags => ArrayRef[CodeBuild_Tag]]
 
 =item [TimeoutInMinutes => Int]
 
-=item [VpcConfig => L<Paws::CodeBuild::VpcConfig>]
+=item [VpcConfig => CodeBuild_VpcConfig]
 
 
 =back
@@ -793,7 +795,7 @@ Changes the settings of a build project.
 
 =item [BranchFilter => Str]
 
-=item [FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]]
+=item [FilterGroups => ArrayRef[ArrayRef[CodeBuild_WebhookFilter]]]
 
 =item [RotateSecret => Bool]
 

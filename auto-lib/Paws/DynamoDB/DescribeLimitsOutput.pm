@@ -1,12 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::DescribeLimitsOutput;
-  use Moose;
-  has AccountMaxReadCapacityUnits => (is => 'ro', isa => 'Int');
-  has AccountMaxWriteCapacityUnits => (is => 'ro', isa => 'Int');
-  has TableMaxReadCapacityUnits => (is => 'ro', isa => 'Int');
-  has TableMaxWriteCapacityUnits => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DynamoDB::Types qw//;
+  has AccountMaxReadCapacityUnits => (is => 'ro', isa => Int);
+  has AccountMaxWriteCapacityUnits => (is => 'ro', isa => Int);
+  has TableMaxReadCapacityUnits => (is => 'ro', isa => Int);
+  has TableMaxWriteCapacityUnits => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TableMaxReadCapacityUnits' => {
+                                                'type' => 'Int'
+                                              },
+               'AccountMaxReadCapacityUnits' => {
+                                                  'type' => 'Int'
+                                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AccountMaxWriteCapacityUnits' => {
+                                                   'type' => 'Int'
+                                                 },
+               'TableMaxWriteCapacityUnits' => {
+                                                 'type' => 'Int'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

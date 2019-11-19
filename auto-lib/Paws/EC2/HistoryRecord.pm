@@ -1,8 +1,34 @@
 package Paws::EC2::HistoryRecord;
-  use Moose;
-  has EventInformation => (is => 'ro', isa => 'Paws::EC2::EventInformation', request_name => 'eventInformation', traits => ['NameInRequest']);
-  has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest']);
-  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_EventInformation/;
+  has EventInformation => (is => 'ro', isa => EC2_EventInformation);
+  has EventType => (is => 'ro', isa => Str);
+  has Timestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventInformation' => {
+                                       'class' => 'Paws::EC2::EventInformation',
+                                       'type' => 'EC2_EventInformation'
+                                     },
+               'EventType' => {
+                                'type' => 'Str'
+                              },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Timestamp' => 'timestamp',
+                       'EventInformation' => 'eventInformation',
+                       'EventType' => 'eventType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +64,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 EventInformation => L<Paws::EC2::EventInformation>
+=head2 EventInformation => EC2_EventInformation
 
   Information about the event.
 

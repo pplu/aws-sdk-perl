@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Organizations::ListCreateAccountStatusResponse;
-  use Moose;
-  has CreateAccountStatuses => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::CreateAccountStatus]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Organizations::Types qw/Organizations_CreateAccountStatus/;
+  has CreateAccountStatuses => (is => 'ro', isa => ArrayRef[Organizations_CreateAccountStatus]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreateAccountStatuses' => {
+                                            'type' => 'ArrayRef[Organizations_CreateAccountStatus]',
+                                            'class' => 'Paws::Organizations::CreateAccountStatus'
+                                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Organizations::ListCreateAccountStatusResponse
 =head1 ATTRIBUTES
 
 
-=head2 CreateAccountStatuses => ArrayRef[L<Paws::Organizations::CreateAccountStatus>]
+=head2 CreateAccountStatuses => ArrayRef[Organizations_CreateAccountStatus]
 
 A list of objects with details about the requests. Certain elements,
 such as the accountId number, are present in the output only after the

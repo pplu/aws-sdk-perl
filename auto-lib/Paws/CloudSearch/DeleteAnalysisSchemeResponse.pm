@@ -1,9 +1,31 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudSearch::DeleteAnalysisSchemeResponse;
-  use Moose;
-  has AnalysisScheme => (is => 'ro', isa => 'Paws::CloudSearch::AnalysisSchemeStatus', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearch::Types qw/CloudSearch_AnalysisSchemeStatus/;
+  has AnalysisScheme => (is => 'ro', isa => CloudSearch_AnalysisSchemeStatus, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AnalysisScheme' => 1
+                  },
+  'types' => {
+               'AnalysisScheme' => {
+                                     'type' => 'CloudSearch_AnalysisSchemeStatus',
+                                     'class' => 'Paws::CloudSearch::AnalysisSchemeStatus'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::CloudSearch::DeleteAnalysisSchemeResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AnalysisScheme => L<Paws::CloudSearch::AnalysisSchemeStatus>
+=head2 B<REQUIRED> AnalysisScheme => CloudSearch_AnalysisSchemeStatus
 
 The status of the analysis scheme being deleted.
 

@@ -1,19 +1,71 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::CountClosedWorkflowExecutions;
-  use Moose;
-  has CloseStatusFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::CloseStatusFilter', traits => ['NameInRequest'], request_name => 'closeStatusFilter' );
-  has CloseTimeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExecutionTimeFilter', traits => ['NameInRequest'], request_name => 'closeTimeFilter' );
-  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
-  has ExecutionFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionFilter', traits => ['NameInRequest'], request_name => 'executionFilter' );
-  has StartTimeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExecutionTimeFilter', traits => ['NameInRequest'], request_name => 'startTimeFilter' );
-  has TagFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::TagFilter', traits => ['NameInRequest'], request_name => 'tagFilter' );
-  has TypeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeFilter', traits => ['NameInRequest'], request_name => 'typeFilter' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_CloseStatusFilter SimpleWorkflow_WorkflowExecutionFilter SimpleWorkflow_ExecutionTimeFilter SimpleWorkflow_TagFilter SimpleWorkflow_WorkflowTypeFilter/;
+  has CloseStatusFilter => (is => 'ro', isa => SimpleWorkflow_CloseStatusFilter, predicate => 1);
+  has CloseTimeFilter => (is => 'ro', isa => SimpleWorkflow_ExecutionTimeFilter, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExecutionFilter => (is => 'ro', isa => SimpleWorkflow_WorkflowExecutionFilter, predicate => 1);
+  has StartTimeFilter => (is => 'ro', isa => SimpleWorkflow_ExecutionTimeFilter, predicate => 1);
+  has TagFilter => (is => 'ro', isa => SimpleWorkflow_TagFilter, predicate => 1);
+  has TypeFilter => (is => 'ro', isa => SimpleWorkflow_WorkflowTypeFilter, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CountClosedWorkflowExecutions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::WorkflowExecutionCount');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CountClosedWorkflowExecutions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SimpleWorkflow::WorkflowExecutionCount');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Domain' => 1
+                  },
+  'NameInRequest' => {
+                       'TagFilter' => 'tagFilter',
+                       'CloseStatusFilter' => 'closeStatusFilter',
+                       'StartTimeFilter' => 'startTimeFilter',
+                       'Domain' => 'domain',
+                       'ExecutionFilter' => 'executionFilter',
+                       'CloseTimeFilter' => 'closeTimeFilter',
+                       'TypeFilter' => 'typeFilter'
+                     },
+  'types' => {
+               'ExecutionFilter' => {
+                                      'type' => 'SimpleWorkflow_WorkflowExecutionFilter',
+                                      'class' => 'Paws::SimpleWorkflow::WorkflowExecutionFilter'
+                                    },
+               'CloseTimeFilter' => {
+                                      'class' => 'Paws::SimpleWorkflow::ExecutionTimeFilter',
+                                      'type' => 'SimpleWorkflow_ExecutionTimeFilter'
+                                    },
+               'TypeFilter' => {
+                                 'class' => 'Paws::SimpleWorkflow::WorkflowTypeFilter',
+                                 'type' => 'SimpleWorkflow_WorkflowTypeFilter'
+                               },
+               'TagFilter' => {
+                                'type' => 'SimpleWorkflow_TagFilter',
+                                'class' => 'Paws::SimpleWorkflow::TagFilter'
+                              },
+               'CloseStatusFilter' => {
+                                        'type' => 'SimpleWorkflow_CloseStatusFilter',
+                                        'class' => 'Paws::SimpleWorkflow::CloseStatusFilter'
+                                      },
+               'StartTimeFilter' => {
+                                      'type' => 'SimpleWorkflow_ExecutionTimeFilter',
+                                      'class' => 'Paws::SimpleWorkflow::ExecutionTimeFilter'
+                                    },
+               'Domain' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +126,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf
 =head1 ATTRIBUTES
 
 
-=head2 CloseStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>
+=head2 CloseStatusFilter => SimpleWorkflow_CloseStatusFilter
 
 If specified, only workflow executions that match this close status are
 counted. This filter has an affect only if C<executionStatus> is
@@ -86,7 +138,7 @@ these in a request.
 
 
 
-=head2 CloseTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
+=head2 CloseTimeFilter => SimpleWorkflow_ExecutionTimeFilter
 
 If specified, only workflow executions that meet the close time
 criteria of the filter are counted.
@@ -102,7 +154,7 @@ The name of the domain containing the workflow executions to count.
 
 
 
-=head2 ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>
+=head2 ExecutionFilter => SimpleWorkflow_WorkflowExecutionFilter
 
 If specified, only workflow executions matching the C<WorkflowId> in
 the filter are counted.
@@ -113,7 +165,7 @@ these in a request.
 
 
 
-=head2 StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
+=head2 StartTimeFilter => SimpleWorkflow_ExecutionTimeFilter
 
 If specified, only workflow executions that meet the start time
 criteria of the filter are counted.
@@ -123,7 +175,7 @@ must specify one of these in a request but not both.
 
 
 
-=head2 TagFilter => L<Paws::SimpleWorkflow::TagFilter>
+=head2 TagFilter => SimpleWorkflow_TagFilter
 
 If specified, only executions that have a tag that matches the filter
 are counted.
@@ -134,7 +186,7 @@ these in a request.
 
 
 
-=head2 TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>
+=head2 TypeFilter => SimpleWorkflow_WorkflowTypeFilter
 
 If specified, indicates the type of the workflow executions to be
 counted.

@@ -1,17 +1,52 @@
 
 package Paws::Lambda::ListLayerVersions;
-  use Moose;
-  has CompatibleRuntime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'CompatibleRuntime');
-  has LayerName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LayerName', required => 1);
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lambda::Types qw//;
+  has CompatibleRuntime => (is => 'ro', isa => Str, predicate => 1);
+  has LayerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListLayerVersions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-10-31/layers/{LayerName}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::ListLayerVersionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListLayerVersions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2018-10-31/layers/{LayerName}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::ListLayerVersionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'CompatibleRuntime' => 'CompatibleRuntime',
+                      'MaxItems' => 'MaxItems',
+                      'Marker' => 'Marker'
+                    },
+  'IsRequired' => {
+                    'LayerName' => 1
+                  },
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'CompatibleRuntime' => {
+                                        'type' => 'Str'
+                                      },
+               'LayerName' => {
+                                'type' => 'Str'
+                              },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInURI' => {
+                    'LayerName' => 'LayerName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +89,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 A runtime identifier. For example, C<go1.x>.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"provided">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"java8">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"provided">
 
 =head2 B<REQUIRED> LayerName => Str
 

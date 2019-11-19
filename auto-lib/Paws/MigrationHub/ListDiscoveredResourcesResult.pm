@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MigrationHub::ListDiscoveredResourcesResult;
-  use Moose;
-  has DiscoveredResourceList => (is => 'ro', isa => 'ArrayRef[Paws::MigrationHub::DiscoveredResource]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MigrationHub::Types qw/MigrationHub_DiscoveredResource/;
+  has DiscoveredResourceList => (is => 'ro', isa => ArrayRef[MigrationHub_DiscoveredResource]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DiscoveredResourceList' => {
+                                             'class' => 'Paws::MigrationHub::DiscoveredResource',
+                                             'type' => 'ArrayRef[MigrationHub_DiscoveredResource]'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::MigrationHub::ListDiscoveredResourcesResult
 =head1 ATTRIBUTES
 
 
-=head2 DiscoveredResourceList => ArrayRef[L<Paws::MigrationHub::DiscoveredResource>]
+=head2 DiscoveredResourceList => ArrayRef[MigrationHub_DiscoveredResource]
 
 Returned list of discovered resources associated with the given
 MigrationTask.

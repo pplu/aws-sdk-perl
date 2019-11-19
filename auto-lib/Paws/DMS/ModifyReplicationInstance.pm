@@ -1,23 +1,72 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::ModifyReplicationInstance;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AllowMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has ApplyImmediately => (is => 'ro', isa => 'Bool');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ReplicationInstanceArn => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
-  has ReplicationInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int Bool Undef ArrayRef/;
+  use Paws::DMS::Types qw//;
+  has AllocatedStorage => (is => 'ro', isa => Int, predicate => 1);
+  has AllowMajorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has ApplyImmediately => (is => 'ro', isa => Bool, predicate => 1);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has MultiAZ => (is => 'ro', isa => Bool, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationInstanceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicationInstanceClass => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationInstanceIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReplicationInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::ModifyReplicationInstanceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyReplicationInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::ModifyReplicationInstanceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ReplicationInstanceArn' => 1
+                  },
+  'types' => {
+               'ReplicationInstanceArn' => {
+                                             'type' => 'Str'
+                                           },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'ReplicationInstanceIdentifier' => {
+                                                    'type' => 'Str'
+                                                  },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'AllowMajorVersionUpgrade' => {
+                                               'type' => 'Bool'
+                                             },
+               'ReplicationInstanceClass' => {
+                                               'type' => 'Str'
+                                             },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

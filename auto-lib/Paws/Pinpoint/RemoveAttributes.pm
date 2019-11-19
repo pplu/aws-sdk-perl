@@ -1,16 +1,47 @@
 
 package Paws::Pinpoint::RemoveAttributes;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has AttributeType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'attribute-type', required => 1);
-  has UpdateAttributesRequest => (is => 'ro', isa => 'Paws::Pinpoint::UpdateAttributesRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_UpdateAttributesRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AttributeType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UpdateAttributesRequest => (is => 'ro', isa => Pinpoint_UpdateAttributesRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'UpdateAttributesRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveAttributes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/attributes/{attribute-type}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::RemoveAttributesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RemoveAttributes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/attributes/{attribute-type}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::RemoveAttributesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'AttributeType' => 'attribute-type',
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'UpdateAttributesRequest' => 1,
+                    'AttributeType' => 1,
+                    'ApplicationId' => 1
+                  },
+  'types' => {
+               'AttributeType' => {
+                                    'type' => 'Str'
+                                  },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'UpdateAttributesRequest' => {
+                                              'type' => 'Pinpoint_UpdateAttributesRequest',
+                                              'class' => 'Paws::Pinpoint::UpdateAttributesRequest'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +116,7 @@ as first name, last name, and age.
 
 
 
-=head2 B<REQUIRED> UpdateAttributesRequest => L<Paws::Pinpoint::UpdateAttributesRequest>
+=head2 B<REQUIRED> UpdateAttributesRequest => Pinpoint_UpdateAttributesRequest
 
 
 

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SESv2::SendQuota;
-  use Moose;
-  has Max24HourSend => (is => 'ro', isa => 'Num');
-  has MaxSendRate => (is => 'ro', isa => 'Num');
-  has SentLast24Hours => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::SESv2::Types qw//;
+  has Max24HourSend => (is => 'ro', isa => Num);
+  has MaxSendRate => (is => 'ro', isa => Num);
+  has SentLast24Hours => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxSendRate' => {
+                                  'type' => 'Num'
+                                },
+               'SentLast24Hours' => {
+                                      'type' => 'Num'
+                                    },
+               'Max24HourSend' => {
+                                    'type' => 'Num'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

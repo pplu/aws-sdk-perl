@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::IspPlacement;
-  use Moose;
-  has IspName => (is => 'ro', isa => 'Str');
-  has PlacementStatistics => (is => 'ro', isa => 'Paws::PinpointEmail::PlacementStatistics');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_PlacementStatistics/;
+  has IspName => (is => 'ro', isa => Str);
+  has PlacementStatistics => (is => 'ro', isa => PinpointEmail_PlacementStatistics);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IspName' => {
+                              'type' => 'Str'
+                            },
+               'PlacementStatistics' => {
+                                          'type' => 'PinpointEmail_PlacementStatistics',
+                                          'class' => 'Paws::PinpointEmail::PlacementStatistics'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +65,7 @@ placement test was handled by a certain email provider.
 to.
 
 
-=head2 PlacementStatistics => L<Paws::PinpointEmail::PlacementStatistics>
+=head2 PlacementStatistics => PinpointEmail_PlacementStatistics
 
   An object that contains inbox placement metrics for a specific email
 provider.

@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::SESv2::DailyVolume;
-  use Moose;
-  has DomainIspPlacements => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::DomainIspPlacement]');
-  has StartDate => (is => 'ro', isa => 'Str');
-  has VolumeStatistics => (is => 'ro', isa => 'Paws::SESv2::VolumeStatistics');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::SESv2::Types qw/SESv2_DomainIspPlacement SESv2_VolumeStatistics/;
+  has DomainIspPlacements => (is => 'ro', isa => ArrayRef[SESv2_DomainIspPlacement]);
+  has StartDate => (is => 'ro', isa => Str);
+  has VolumeStatistics => (is => 'ro', isa => SESv2_VolumeStatistics);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartDate' => {
+                                'type' => 'Str'
+                              },
+               'VolumeStatistics' => {
+                                       'type' => 'SESv2_VolumeStatistics',
+                                       'class' => 'Paws::SESv2::VolumeStatistics'
+                                     },
+               'DomainIspPlacements' => {
+                                          'type' => 'ArrayRef[SESv2_DomainIspPlacement]',
+                                          'class' => 'Paws::SESv2::DomainIspPlacement'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +64,7 @@ each day of the analysis period.
 =head1 ATTRIBUTES
 
 
-=head2 DomainIspPlacements => ArrayRef[L<Paws::SESv2::DomainIspPlacement>]
+=head2 DomainIspPlacements => ArrayRef[SESv2_DomainIspPlacement]
 
   An object that contains inbox placement metrics for a specified day in
 the analysis period, broken out by the recipient's email provider.
@@ -50,7 +75,7 @@ the analysis period, broken out by the recipient's email provider.
   The date that the DailyVolume metrics apply to, in Unix time.
 
 
-=head2 VolumeStatistics => L<Paws::SESv2::VolumeStatistics>
+=head2 VolumeStatistics => SESv2_VolumeStatistics
 
   An object that contains inbox placement metrics for a specific day in
 the analysis period.

@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkMail::CreateResource;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationId => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkMail::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OrganizationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkMail::CreateResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkMail::CreateResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Type' => 1,
+                    'OrganizationId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

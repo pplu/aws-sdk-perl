@@ -1,29 +1,142 @@
 package Paws::EC2::Image;
-  use Moose;
-  has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has EnaSupport => (is => 'ro', isa => 'Bool', request_name => 'enaSupport', traits => ['NameInRequest']);
-  has Hypervisor => (is => 'ro', isa => 'Str', request_name => 'hypervisor', traits => ['NameInRequest']);
-  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
-  has ImageLocation => (is => 'ro', isa => 'Str', request_name => 'imageLocation', traits => ['NameInRequest']);
-  has ImageOwnerAlias => (is => 'ro', isa => 'Str', request_name => 'imageOwnerAlias', traits => ['NameInRequest']);
-  has ImageType => (is => 'ro', isa => 'Str', request_name => 'imageType', traits => ['NameInRequest']);
-  has KernelId => (is => 'ro', isa => 'Str', request_name => 'kernelId', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'imageOwnerId', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest']);
-  has Public => (is => 'ro', isa => 'Bool', request_name => 'isPublic', traits => ['NameInRequest']);
-  has RamdiskId => (is => 'ro', isa => 'Str', request_name => 'ramdiskId', traits => ['NameInRequest']);
-  has RootDeviceName => (is => 'ro', isa => 'Str', request_name => 'rootDeviceName', traits => ['NameInRequest']);
-  has RootDeviceType => (is => 'ro', isa => 'Str', request_name => 'rootDeviceType', traits => ['NameInRequest']);
-  has SriovNetSupport => (is => 'ro', isa => 'Str', request_name => 'sriovNetSupport', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'imageState', traits => ['NameInRequest']);
-  has StateReason => (is => 'ro', isa => 'Paws::EC2::StateReason', request_name => 'stateReason', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VirtualizationType => (is => 'ro', isa => 'Str', request_name => 'virtualizationType', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_ProductCode EC2_Tag EC2_StateReason EC2_BlockDeviceMapping/;
+  has Architecture => (is => 'ro', isa => Str);
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[EC2_BlockDeviceMapping]);
+  has CreationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EnaSupport => (is => 'ro', isa => Bool);
+  has Hypervisor => (is => 'ro', isa => Str);
+  has ImageId => (is => 'ro', isa => Str);
+  has ImageLocation => (is => 'ro', isa => Str);
+  has ImageOwnerAlias => (is => 'ro', isa => Str);
+  has ImageType => (is => 'ro', isa => Str);
+  has KernelId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OwnerId => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has ProductCodes => (is => 'ro', isa => ArrayRef[EC2_ProductCode]);
+  has Public => (is => 'ro', isa => Bool);
+  has RamdiskId => (is => 'ro', isa => Str);
+  has RootDeviceName => (is => 'ro', isa => Str);
+  has RootDeviceType => (is => 'ro', isa => Str);
+  has SriovNetSupport => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has StateReason => (is => 'ro', isa => EC2_StateReason);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VirtualizationType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImageLocation' => {
+                                    'type' => 'Str'
+                                  },
+               'SriovNetSupport' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ProductCodes' => {
+                                   'class' => 'Paws::EC2::ProductCode',
+                                   'type' => 'ArrayRef[EC2_ProductCode]'
+                                 },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'RootDeviceName' => {
+                                     'type' => 'Str'
+                                   },
+               'Tags' => {
+                           'type' => 'ArrayRef[EC2_Tag]',
+                           'class' => 'Paws::EC2::Tag'
+                         },
+               'RamdiskId' => {
+                                'type' => 'Str'
+                              },
+               'StateReason' => {
+                                  'class' => 'Paws::EC2::StateReason',
+                                  'type' => 'EC2_StateReason'
+                                },
+               'KernelId' => {
+                               'type' => 'Str'
+                             },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'ImageOwnerAlias' => {
+                                      'type' => 'Str'
+                                    },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'ImageType' => {
+                                'type' => 'Str'
+                              },
+               'BlockDeviceMappings' => {
+                                          'type' => 'ArrayRef[EC2_BlockDeviceMapping]',
+                                          'class' => 'Paws::EC2::BlockDeviceMapping'
+                                        },
+               'Public' => {
+                             'type' => 'Bool'
+                           },
+               'EnaSupport' => {
+                                 'type' => 'Bool'
+                               },
+               'VirtualizationType' => {
+                                         'type' => 'Str'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Hypervisor' => {
+                                 'type' => 'Str'
+                               },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'RootDeviceType' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'VirtualizationType' => 'virtualizationType',
+                       'CreationDate' => 'creationDate',
+                       'State' => 'imageState',
+                       'Hypervisor' => 'hypervisor',
+                       'Name' => 'name',
+                       'RootDeviceType' => 'rootDeviceType',
+                       'Architecture' => 'architecture',
+                       'EnaSupport' => 'enaSupport',
+                       'Public' => 'isPublic',
+                       'BlockDeviceMappings' => 'blockDeviceMapping',
+                       'ImageType' => 'imageType',
+                       'ImageId' => 'imageId',
+                       'StateReason' => 'stateReason',
+                       'RamdiskId' => 'ramdiskId',
+                       'ImageOwnerAlias' => 'imageOwnerAlias',
+                       'Platform' => 'platform',
+                       'KernelId' => 'kernelId',
+                       'SriovNetSupport' => 'sriovNetSupport',
+                       'ImageLocation' => 'imageLocation',
+                       'ProductCodes' => 'productCodes',
+                       'Description' => 'description',
+                       'RootDeviceName' => 'rootDeviceName',
+                       'OwnerId' => 'imageOwnerId',
+                       'Tags' => 'tagSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +177,7 @@ This class has no description
   The architecture of the image.
 
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
+=head2 BlockDeviceMappings => ArrayRef[EC2_BlockDeviceMapping]
 
   Any block device mapping entries.
 
@@ -132,7 +245,7 @@ machine images.
 blank.
 
 
-=head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
+=head2 ProductCodes => ArrayRef[EC2_ProductCode]
 
   Any product codes associated with the AMI.
 
@@ -173,12 +286,12 @@ Function interface is enabled.
 is successfully registered and can be used to launch an instance.
 
 
-=head2 StateReason => L<Paws::EC2::StateReason>
+=head2 StateReason => EC2_StateReason
 
   The reason for the state change.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the image.
 

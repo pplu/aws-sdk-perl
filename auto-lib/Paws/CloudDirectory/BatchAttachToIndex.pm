@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchAttachToIndex;
-  use Moose;
-  has IndexReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has TargetReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference/;
+  has IndexReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+  has TargetReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TargetReference' => 1,
+                    'IndexReference' => 1
+                  },
+  'types' => {
+               'TargetReference' => {
+                                      'type' => 'CloudDirectory_ObjectReference',
+                                      'class' => 'Paws::CloudDirectory::ObjectReference'
+                                    },
+               'IndexReference' => {
+                                     'class' => 'Paws::CloudDirectory::ObjectReference',
+                                     'type' => 'CloudDirectory_ObjectReference'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,12 +65,12 @@ BatchReadRequest$Operations.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> IndexReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> IndexReference => CloudDirectory_ObjectReference
 
   A reference to the index that you are attaching the object to.
 
 
-=head2 B<REQUIRED> TargetReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> TargetReference => CloudDirectory_ObjectReference
 
   A reference to the object that you are attaching to the index.
 

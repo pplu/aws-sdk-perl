@@ -1,16 +1,49 @@
 
 package Paws::GuardDuty::UpdatePublishingDestination;
-  use Moose;
-  has DestinationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'destinationId', required => 1);
-  has DestinationProperties => (is => 'ro', isa => 'Paws::GuardDuty::DestinationProperties', traits => ['NameInRequest'], request_name => 'destinationProperties');
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw/GuardDuty_DestinationProperties/;
+  has DestinationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DestinationProperties => (is => 'ro', isa => GuardDuty_DestinationProperties, predicate => 1);
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePublishingDestination');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/publishingDestination/{destinationId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::UpdatePublishingDestinationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdatePublishingDestination');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/publishingDestination/{destinationId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::UpdatePublishingDestinationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DestinationId' => 'destinationId',
+                    'DetectorId' => 'detectorId'
+                  },
+  'types' => {
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'DestinationProperties' => {
+                                            'type' => 'GuardDuty_DestinationProperties',
+                                            'class' => 'Paws::GuardDuty::DestinationProperties'
+                                          },
+               'DestinationId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'DestinationProperties' => 'destinationProperties'
+                     },
+  'IsRequired' => {
+                    'DetectorId' => 1,
+                    'DestinationId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +86,7 @@ update.
 
 
 
-=head2 DestinationProperties => L<Paws::GuardDuty::DestinationProperties>
+=head2 DestinationProperties => GuardDuty_DestinationProperties
 
 A C<DestinationProperties> object that includes the C<DestinationArn>
 and C<KmsKeyArn> of the publishing destination.

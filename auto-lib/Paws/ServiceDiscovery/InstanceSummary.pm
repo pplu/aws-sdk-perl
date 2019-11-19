@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::InstanceSummary;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::ServiceDiscovery::Attributes');
-  has Id => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_Attributes/;
+  has Attributes => (is => 'ro', isa => ServiceDiscovery_Attributes);
+  has Id => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'type' => 'ServiceDiscovery_Attributes',
+                                 'class' => 'Paws::ServiceDiscovery::Attributes'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ registered by using a specified service.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::ServiceDiscovery::Attributes>
+=head2 Attributes => ServiceDiscovery_Attributes
 
   A string map that contains the following information:
 

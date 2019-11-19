@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::Robomaker::SimulationJobSummary;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has DataSourceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'dataSourceNames', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RobotApplicationNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'robotApplicationNames', traits => ['NameInRequest']);
-  has SimulationApplicationNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'simulationApplicationNames', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Robomaker::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has DataSourceNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RobotApplicationNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SimulationApplicationNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RobotApplicationNames' => 'robotApplicationNames',
+                       'Status' => 'status',
+                       'DataSourceNames' => 'dataSourceNames',
+                       'Name' => 'name',
+                       'Arn' => 'arn',
+                       'SimulationApplicationNames' => 'simulationApplicationNames',
+                       'LastUpdatedAt' => 'lastUpdatedAt'
+                     },
+  'types' => {
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SimulationApplicationNames' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'RobotApplicationNames' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DataSourceNames' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::PutWorkflowRunProperties;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RunId => (is => 'ro', isa => 'Str', required => 1);
-  has RunProperties => (is => 'ro', isa => 'Paws::Glue::WorkflowRunProperties', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_WorkflowRunProperties/;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RunId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RunProperties => (is => 'ro', isa => Glue_WorkflowRunProperties, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutWorkflowRunProperties');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::PutWorkflowRunPropertiesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutWorkflowRunProperties');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::PutWorkflowRunPropertiesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RunProperties' => {
+                                    'type' => 'Glue_WorkflowRunProperties',
+                                    'class' => 'Paws::Glue::WorkflowRunProperties'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RunId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'RunId' => 1,
+                    'Name' => 1,
+                    'RunProperties' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +85,7 @@ updated.
 
 
 
-=head2 B<REQUIRED> RunProperties => L<Paws::Glue::WorkflowRunProperties>
+=head2 B<REQUIRED> RunProperties => Glue_WorkflowRunProperties
 
 The properties to put for the specified run.
 

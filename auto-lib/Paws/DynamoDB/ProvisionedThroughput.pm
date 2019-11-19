@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::ProvisionedThroughput;
-  use Moose;
-  has ReadCapacityUnits => (is => 'ro', isa => 'Int', required => 1);
-  has WriteCapacityUnits => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::DynamoDB::Types qw//;
+  has ReadCapacityUnits => (is => 'ro', isa => Int, required => 1);
+  has WriteCapacityUnits => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReadCapacityUnits' => {
+                                        'type' => 'Int'
+                                      },
+               'WriteCapacityUnits' => {
+                                         'type' => 'Int'
+                                       }
+             },
+  'IsRequired' => {
+                    'WriteCapacityUnits' => 1,
+                    'ReadCapacityUnits' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

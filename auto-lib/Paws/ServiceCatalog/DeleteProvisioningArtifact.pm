@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::DeleteProvisioningArtifact;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has ProductId => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has ProductId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProvisioningArtifactId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteProvisioningArtifact');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::DeleteProvisioningArtifactOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteProvisioningArtifact');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::DeleteProvisioningArtifactOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'ProvisioningArtifactId' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'ProvisioningArtifactId' => 1,
+                    'ProductId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

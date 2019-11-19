@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Shield::DescribeProtectionResponse;
-  use Moose;
-  has Protection => (is => 'ro', isa => 'Paws::Shield::Protection');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Shield::Types qw/Shield_Protection/;
+  has Protection => (is => 'ro', isa => Shield_Protection);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Protection' => {
+                                 'class' => 'Paws::Shield::Protection',
+                                 'type' => 'Shield_Protection'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Shield::DescribeProtectionResponse
 =head1 ATTRIBUTES
 
 
-=head2 Protection => L<Paws::Shield::Protection>
+=head2 Protection => Shield_Protection
 
 The Protection object that is described.
 

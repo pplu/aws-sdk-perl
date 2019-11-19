@@ -1,15 +1,41 @@
 
 package Paws::Chime::ResetPersonalPIN;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetPersonalPIN');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/users/{userId}?operation=reset-personal-pin');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::ResetPersonalPINResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ResetPersonalPIN');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/users/{userId}?operation=reset-personal-pin');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::ResetPersonalPINResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'AccountId' => 'accountId',
+                    'UserId' => 'userId'
+                  },
+  'types' => {
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'UserId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

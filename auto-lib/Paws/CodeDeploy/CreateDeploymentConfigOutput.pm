@@ -1,9 +1,30 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::CreateDeploymentConfigOutput;
-  use Moose;
-  has DeploymentConfigId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has DeploymentConfigId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeploymentConfigId' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DeploymentConfigId' => 'deploymentConfigId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

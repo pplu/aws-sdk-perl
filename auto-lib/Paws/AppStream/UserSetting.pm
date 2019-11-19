@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::AppStream::UserSetting;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has Permission => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppStream::Types qw//;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has Permission => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Permission' => {
+                                 'type' => 'Str'
+                               },
+               'Action' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Permission' => 1,
+                    'Action' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

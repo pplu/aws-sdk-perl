@@ -1,10 +1,31 @@
 
 package Paws::ElasticTranscoder::ListJobsByStatusResponse;
-  use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Job]');
-  has NextPageToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_Job/;
+  has Jobs => (is => 'ro', isa => ArrayRef[ElasticTranscoder_Job]);
+  has NextPageToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'Jobs' => {
+                           'type' => 'ArrayRef[ElasticTranscoder_Job]',
+                           'class' => 'Paws::ElasticTranscoder::Job'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::ElasticTranscoder::ListJobsByStatusResponse
 =head1 ATTRIBUTES
 
 
-=head2 Jobs => ArrayRef[L<Paws::ElasticTranscoder::Job>]
+=head2 Jobs => ArrayRef[ElasticTranscoder_Job]
 
 An array of C<Job> objects that have the specified status.
 

@@ -1,17 +1,70 @@
+# Generated from default/object.tt
 package Paws::Comprehend::SentimentDetectionJobProperties;
-  use Moose;
-  has DataAccessRoleArn => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::InputDataConfig');
-  has JobId => (is => 'ro', isa => 'Str');
-  has JobName => (is => 'ro', isa => 'Str');
-  has JobStatus => (is => 'ro', isa => 'Str');
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::OutputDataConfig');
-  has SubmitTime => (is => 'ro', isa => 'Str');
-  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
-  has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw/Comprehend_InputDataConfig Comprehend_VpcConfig Comprehend_OutputDataConfig/;
+  has DataAccessRoleArn => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has InputDataConfig => (is => 'ro', isa => Comprehend_InputDataConfig);
+  has JobId => (is => 'ro', isa => Str);
+  has JobName => (is => 'ro', isa => Str);
+  has JobStatus => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has OutputDataConfig => (is => 'ro', isa => Comprehend_OutputDataConfig);
+  has SubmitTime => (is => 'ro', isa => Str);
+  has VolumeKmsKeyId => (is => 'ro', isa => Str);
+  has VpcConfig => (is => 'ro', isa => Comprehend_VpcConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'SubmitTime' => {
+                                 'type' => 'Str'
+                               },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'DataAccessRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               'OutputDataConfig' => {
+                                       'class' => 'Paws::Comprehend::OutputDataConfig',
+                                       'type' => 'Comprehend_OutputDataConfig'
+                                     },
+               'VolumeKmsKeyId' => {
+                                     'type' => 'Str'
+                                   },
+               'VpcConfig' => {
+                                'class' => 'Paws::Comprehend::VpcConfig',
+                                'type' => 'Comprehend_VpcConfig'
+                              },
+               'InputDataConfig' => {
+                                      'class' => 'Paws::Comprehend::InputDataConfig',
+                                      'type' => 'Comprehend_InputDataConfig'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +111,7 @@ to your input data.
   The time that the sentiment detection job ended.
 
 
-=head2 InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+=head2 InputDataConfig => Comprehend_InputDataConfig
 
   The input data configuration that you supplied when you created the
 sentiment detection job.
@@ -90,7 +143,7 @@ C<FAILED>, the C<Messages> field shows the reason for the failure.
   A description of the status of a job.
 
 
-=head2 OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+=head2 OutputDataConfig => Comprehend_OutputDataConfig
 
   The output data configuration that you supplied when you created the
 sentiment detection job.
@@ -123,7 +176,7 @@ C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
 
 
 
-=head2 VpcConfig => L<Paws::Comprehend::VpcConfig>
+=head2 VpcConfig => Comprehend_VpcConfig
 
   Configuration parameters for a private Virtual Private Cloud (VPC)
 containing the resources you are using for your sentiment detection

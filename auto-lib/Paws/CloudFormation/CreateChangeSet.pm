@@ -1,28 +1,97 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::CreateChangeSet;
-  use Moose;
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ChangeSetName => (is => 'ro', isa => 'Str', required => 1);
-  has ChangeSetType => (is => 'ro', isa => 'Str');
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has ResourcesToImport => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ResourceToImport]');
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
-  has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
-  has TemplateBody => (is => 'ro', isa => 'Str');
-  has TemplateURL => (is => 'ro', isa => 'Str');
-  has UsePreviousTemplate => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::CloudFormation::Types qw/CloudFormation_Tag CloudFormation_RollbackConfiguration CloudFormation_ResourceToImport CloudFormation_Parameter/;
+  has Capabilities => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ChangeSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ChangeSetType => (is => 'ro', isa => Str, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationARNs => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Parameters => (is => 'ro', isa => ArrayRef[CloudFormation_Parameter], predicate => 1);
+  has ResourcesToImport => (is => 'ro', isa => ArrayRef[CloudFormation_ResourceToImport], predicate => 1);
+  has ResourceTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has RoleARN => (is => 'ro', isa => Str, predicate => 1);
+  has RollbackConfiguration => (is => 'ro', isa => CloudFormation_RollbackConfiguration, predicate => 1);
+  has StackName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CloudFormation_Tag], predicate => 1);
+  has TemplateBody => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateURL => (is => 'ro', isa => Str, predicate => 1);
+  has UsePreviousTemplate => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateChangeSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::CreateChangeSetOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateChangeSetResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateChangeSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::CreateChangeSetOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateChangeSetResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ChangeSetName' => 1,
+                    'StackName' => 1
+                  },
+  'types' => {
+               'UsePreviousTemplate' => {
+                                          'type' => 'Bool'
+                                        },
+               'StackName' => {
+                                'type' => 'Str'
+                              },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'TemplateURL' => {
+                                  'type' => 'Str'
+                                },
+               'ChangeSetType' => {
+                                    'type' => 'Str'
+                                  },
+               'ResourcesToImport' => {
+                                        'type' => 'ArrayRef[CloudFormation_ResourceToImport]',
+                                        'class' => 'Paws::CloudFormation::ResourceToImport'
+                                      },
+               'NotificationARNs' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Parameters' => {
+                                 'type' => 'ArrayRef[CloudFormation_Parameter]',
+                                 'class' => 'Paws::CloudFormation::Parameter'
+                               },
+               'RollbackConfiguration' => {
+                                            'type' => 'CloudFormation_RollbackConfiguration',
+                                            'class' => 'Paws::CloudFormation::RollbackConfiguration'
+                                          },
+               'Tags' => {
+                           'class' => 'Paws::CloudFormation::Tag',
+                           'type' => 'ArrayRef[CloudFormation_Tag]'
+                         },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               'Capabilities' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'ResourceTypes' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ChangeSetName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -291,14 +360,14 @@ To remove all associated notification topics, specify an empty list.
 
 
 
-=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
+=head2 Parameters => ArrayRef[CloudFormation_Parameter]
 
 A list of C<Parameter> structures that specify input parameters for the
 change set. For more information, see the Parameter data type.
 
 
 
-=head2 ResourcesToImport => ArrayRef[L<Paws::CloudFormation::ResourceToImport>]
+=head2 ResourcesToImport => ArrayRef[CloudFormation_ResourceToImport]
 
 The resources to import into your stack.
 
@@ -339,7 +408,7 @@ user credentials.
 
 
 
-=head2 RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>
+=head2 RollbackConfiguration => CloudFormation_RollbackConfiguration
 
 The rollback triggers for AWS CloudFormation to monitor during stack
 creation and updating operations, and for the specified monitoring
@@ -356,7 +425,7 @@ a modified template or different parameter input values.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
+=head2 Tags => ArrayRef[CloudFormation_Tag]
 
 Key-value pairs to associate with this stack. AWS CloudFormation also
 propagates these tags to resources in the stack. You can specify a

@@ -1,10 +1,44 @@
 package Paws::EC2::PublicIpv4Pool;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has PoolAddressRanges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PublicIpv4PoolRange]', request_name => 'poolAddressRangeSet', traits => ['NameInRequest']);
-  has PoolId => (is => 'ro', isa => 'Str', request_name => 'poolId', traits => ['NameInRequest']);
-  has TotalAddressCount => (is => 'ro', isa => 'Int', request_name => 'totalAddressCount', traits => ['NameInRequest']);
-  has TotalAvailableAddressCount => (is => 'ro', isa => 'Int', request_name => 'totalAvailableAddressCount', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::EC2::Types qw/EC2_PublicIpv4PoolRange/;
+  has Description => (is => 'ro', isa => Str);
+  has PoolAddressRanges => (is => 'ro', isa => ArrayRef[EC2_PublicIpv4PoolRange]);
+  has PoolId => (is => 'ro', isa => Str);
+  has TotalAddressCount => (is => 'ro', isa => Int);
+  has TotalAvailableAddressCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'PoolAddressRanges' => {
+                                        'type' => 'ArrayRef[EC2_PublicIpv4PoolRange]',
+                                        'class' => 'Paws::EC2::PublicIpv4PoolRange'
+                                      },
+               'TotalAddressCount' => {
+                                        'type' => 'Int'
+                                      },
+               'TotalAvailableAddressCount' => {
+                                                 'type' => 'Int'
+                                               },
+               'PoolId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'PoolId' => 'poolId',
+                       'TotalAvailableAddressCount' => 'totalAvailableAddressCount',
+                       'PoolAddressRanges' => 'poolAddressRangeSet',
+                       'TotalAddressCount' => 'totalAddressCount'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +79,7 @@ This class has no description
   A description of the address pool.
 
 
-=head2 PoolAddressRanges => ArrayRef[L<Paws::EC2::PublicIpv4PoolRange>]
+=head2 PoolAddressRanges => ArrayRef[EC2_PublicIpv4PoolRange]
 
   The address ranges.
 

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::KinesisAnalytics;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'kinesisanalytics' }
   sub signing_name { 'kinesisanalytics' }
   sub version { '2015-08-14' }
   sub target_prefix { 'KinesisAnalytics_20150814' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -169,7 +171,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =item ApplicationName => Str
 
-=item CloudWatchLoggingOption => L<Paws::KinesisAnalytics::CloudWatchLoggingOption>
+=item CloudWatchLoggingOption => KinesisAnalytics_CloudWatchLoggingOption
 
 =item CurrentApplicationVersionId => Int
 
@@ -200,7 +202,7 @@ CloudWatch Logs
 
 =item CurrentApplicationVersionId => Int
 
-=item Input => L<Paws::KinesisAnalytics::Input>
+=item Input => KinesisAnalytics_Input
 
 
 =back
@@ -243,7 +245,7 @@ C<kinesisanalytics:AddApplicationInput> action.
 
 =item InputId => Str
 
-=item InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>
+=item InputProcessingConfiguration => KinesisAnalytics_InputProcessingConfiguration
 
 
 =back
@@ -273,7 +275,7 @@ input processor available is AWS Lambda
 
 =item CurrentApplicationVersionId => Int
 
-=item Output => L<Paws::KinesisAnalytics::Output>
+=item Output => KinesisAnalytics_Output
 
 
 =back
@@ -327,7 +329,7 @@ C<kinesisanalytics:AddApplicationOutput> action.
 
 =item CurrentApplicationVersionId => Int
 
-=item ReferenceDataSource => L<Paws::KinesisAnalytics::ReferenceDataSource>
+=item ReferenceDataSource => KinesisAnalytics_ReferenceDataSource
 
 
 =back
@@ -370,13 +372,13 @@ C<kinesisanalytics:AddApplicationOutput> action.
 
 =item [ApplicationDescription => Str]
 
-=item [CloudWatchLoggingOptions => ArrayRef[L<Paws::KinesisAnalytics::CloudWatchLoggingOption>]]
+=item [CloudWatchLoggingOptions => ArrayRef[KinesisAnalytics_CloudWatchLoggingOption]]
 
-=item [Inputs => ArrayRef[L<Paws::KinesisAnalytics::Input>]]
+=item [Inputs => ArrayRef[KinesisAnalytics_Input]]
 
-=item [Outputs => ArrayRef[L<Paws::KinesisAnalytics::Output>]]
+=item [Outputs => ArrayRef[KinesisAnalytics_Output]]
 
-=item [Tags => ArrayRef[L<Paws::KinesisAnalytics::Tag>]]
+=item [Tags => ArrayRef[KinesisAnalytics_Tag]]
 
 
 =back
@@ -608,15 +610,15 @@ you need to call other operations such as C<Update>.
 
 =over
 
-=item [InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>]
+=item [InputProcessingConfiguration => KinesisAnalytics_InputProcessingConfiguration]
 
-=item [InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>]
+=item [InputStartingPositionConfiguration => KinesisAnalytics_InputStartingPositionConfiguration]
 
 =item [ResourceARN => Str]
 
 =item [RoleARN => Str]
 
-=item [S3Configuration => L<Paws::KinesisAnalytics::S3Configuration>]
+=item [S3Configuration => KinesisAnalytics_S3Configuration]
 
 
 =back
@@ -708,7 +710,7 @@ more information, see Using Tagging
 
 =item ApplicationName => Str
 
-=item InputConfigurations => ArrayRef[L<Paws::KinesisAnalytics::InputConfiguration>]
+=item InputConfigurations => ArrayRef[KinesisAnalytics_InputConfiguration]
 
 
 =back
@@ -781,7 +783,7 @@ C<kinesisanalytics:StopApplication> action.
 
 =item ResourceARN => Str
 
-=item Tags => ArrayRef[L<Paws::KinesisAnalytics::Tag>]
+=item Tags => ArrayRef[KinesisAnalytics_Tag]
 
 
 =back
@@ -823,7 +825,7 @@ information, see Using Tagging
 
 =item ApplicationName => Str
 
-=item ApplicationUpdate => L<Paws::KinesisAnalytics::ApplicationUpdate>
+=item ApplicationUpdate => KinesisAnalytics_ApplicationUpdate
 
 =item CurrentApplicationVersionId => Int
 

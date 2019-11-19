@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::AppStream::Application;
-  use Moose;
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has IconURL => (is => 'ro', isa => 'Str');
-  has LaunchParameters => (is => 'ro', isa => 'Str');
-  has LaunchPath => (is => 'ro', isa => 'Str');
-  has Metadata => (is => 'ro', isa => 'Paws::AppStream::Metadata');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::AppStream::Types qw/AppStream_Metadata/;
+  has DisplayName => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has IconURL => (is => 'ro', isa => Str);
+  has LaunchParameters => (is => 'ro', isa => Str);
+  has LaunchPath => (is => 'ro', isa => Str);
+  has Metadata => (is => 'ro', isa => AppStream_Metadata);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'LaunchParameters' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'LaunchPath' => {
+                                 'type' => 'Str'
+                               },
+               'Metadata' => {
+                               'type' => 'AppStream_Metadata',
+                               'class' => 'Paws::AppStream::Metadata'
+                             },
+               'IconURL' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +104,7 @@ creation.
   The path to the application executable in the instance.
 
 
-=head2 Metadata => L<Paws::AppStream::Metadata>
+=head2 Metadata => AppStream_Metadata
 
   Additional attributes that describe the application.
 

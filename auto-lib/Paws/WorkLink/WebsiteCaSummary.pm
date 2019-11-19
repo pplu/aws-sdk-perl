@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::WorkLink::WebsiteCaSummary;
-  use Moose;
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has WebsiteCaId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has CreatedTime => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str);
+  has WebsiteCaId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'WebsiteCaId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

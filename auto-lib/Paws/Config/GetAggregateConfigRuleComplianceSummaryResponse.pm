@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::GetAggregateConfigRuleComplianceSummaryResponse;
-  use Moose;
-  has AggregateComplianceCounts => (is => 'ro', isa => 'ArrayRef[Paws::Config::AggregateComplianceCount]');
-  has GroupByKey => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_AggregateComplianceCount/;
+  has AggregateComplianceCounts => (is => 'ro', isa => ArrayRef[Config_AggregateComplianceCount]);
+  has GroupByKey => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'GroupByKey' => {
+                                 'type' => 'Str'
+                               },
+               'AggregateComplianceCounts' => {
+                                                'type' => 'ArrayRef[Config_AggregateComplianceCount]',
+                                                'class' => 'Paws::Config::AggregateComplianceCount'
+                                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::Config::GetAggregateConfigRuleComplianceSummaryResponse
 =head1 ATTRIBUTES
 
 
-=head2 AggregateComplianceCounts => ArrayRef[L<Paws::Config::AggregateComplianceCount>]
+=head2 AggregateComplianceCounts => ArrayRef[Config_AggregateComplianceCount]
 
 Returns a list of AggregateComplianceCounts object.
 

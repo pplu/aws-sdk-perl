@@ -1,16 +1,42 @@
 
 package Paws::IoT::ListOutgoingCertificates;
-  use Moose;
-  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'isAscendingOrder');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
-  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::IoT::Types qw//;
+  has AscendingOrder => (is => 'ro', isa => Bool, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListOutgoingCertificates');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/certificates-out-going');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListOutgoingCertificatesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListOutgoingCertificates');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/certificates-out-going');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListOutgoingCertificatesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'AscendingOrder' => 'isAscendingOrder',
+                      'Marker' => 'marker',
+                      'PageSize' => 'pageSize'
+                    },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'AscendingOrder' => {
+                                     'type' => 'Bool'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

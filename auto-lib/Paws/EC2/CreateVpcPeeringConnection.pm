@@ -1,17 +1,50 @@
 
 package Paws::EC2::CreateVpcPeeringConnection;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has PeerOwnerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'peerOwnerId' );
-  has PeerRegion => (is => 'ro', isa => 'Str');
-  has PeerVpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'peerVpcId' );
-  has VpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcId' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has PeerOwnerId => (is => 'ro', isa => Str, predicate => 1);
+  has PeerRegion => (is => 'ro', isa => Str, predicate => 1);
+  has PeerVpcId => (is => 'ro', isa => Str, predicate => 1);
+  has VpcId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpcPeeringConnection');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateVpcPeeringConnectionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateVpcPeeringConnection');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateVpcPeeringConnectionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'VpcId' => 'vpcId',
+                       'PeerOwnerId' => 'peerOwnerId',
+                       'PeerVpcId' => 'peerVpcId'
+                     },
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'PeerRegion' => {
+                                 'type' => 'Str'
+                               },
+               'PeerOwnerId' => {
+                                  'type' => 'Str'
+                                },
+               'PeerVpcId' => {
+                                'type' => 'Str'
+                              },
+               'VpcId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

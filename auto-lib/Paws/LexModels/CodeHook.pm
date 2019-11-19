@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::LexModels::CodeHook;
-  use Moose;
-  has MessageVersion => (is => 'ro', isa => 'Str', request_name => 'messageVersion', traits => ['NameInRequest'], required => 1);
-  has Uri => (is => 'ro', isa => 'Str', request_name => 'uri', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw//;
+  has MessageVersion => (is => 'ro', isa => Str, required => 1);
+  has Uri => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Uri' => 1,
+                    'MessageVersion' => 1
+                  },
+  'NameInRequest' => {
+                       'MessageVersion' => 'messageVersion',
+                       'Uri' => 'uri'
+                     },
+  'types' => {
+               'MessageVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'Uri' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,29 @@
 
 package Paws::EFS::DescribeMountTargetSecurityGroupsResponse;
-  use Moose;
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EFS::Types qw//;
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SecurityGroups' => 1
+                  },
+  'types' => {
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

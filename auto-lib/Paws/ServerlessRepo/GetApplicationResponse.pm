@@ -1,19 +1,80 @@
 
 package Paws::ServerlessRepo::GetApplicationResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationId');
-  has Author => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'author');
-  has CreationTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationTime');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has HomePageUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'homePageUrl');
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'labels');
-  has LicenseUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'licenseUrl');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has ReadmeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeUrl');
-  has SpdxLicenseId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'spdxLicenseId');
-  has Version => (is => 'ro', isa => 'Paws::ServerlessRepo::Version', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ServerlessRepo::Types qw/ServerlessRepo_Version/;
+  has ApplicationId => (is => 'ro', isa => Str);
+  has Author => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has HomePageUrl => (is => 'ro', isa => Str);
+  has Labels => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LicenseUrl => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ReadmeUrl => (is => 'ro', isa => Str);
+  has SpdxLicenseId => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => ServerlessRepo_Version);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Labels' => 'labels',
+                       'LicenseUrl' => 'licenseUrl',
+                       'ApplicationId' => 'applicationId',
+                       'ReadmeUrl' => 'readmeUrl',
+                       'Name' => 'name',
+                       'SpdxLicenseId' => 'spdxLicenseId',
+                       'CreationTime' => 'creationTime',
+                       'Author' => 'author',
+                       'Description' => 'description',
+                       'HomePageUrl' => 'homePageUrl',
+                       'Version' => 'version'
+                     },
+  'types' => {
+               'SpdxLicenseId' => {
+                                    'type' => 'Str'
+                                  },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LicenseUrl' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Labels' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ReadmeUrl' => {
+                                'type' => 'Str'
+                              },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'HomePageUrl' => {
+                                  'type' => 'Str'
+                                },
+               'Version' => {
+                              'class' => 'Paws::ServerlessRepo::Version',
+                              'type' => 'ServerlessRepo_Version'
+                            },
+               'Author' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +157,7 @@ Maximum size 5 MB
 A valid identifier from https://spdx.org/licenses/.
 
 
-=head2 Version => L<Paws::ServerlessRepo::Version>
+=head2 Version => ServerlessRepo_Version
 
 Version information about the application.
 

@@ -1,17 +1,66 @@
 
 package Paws::MediaStoreData::GetObjectResponse;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str');
-  has CacheControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Cache-Control');
-  has ContentLength => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'Content-Length');
-  has ContentRange => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Range');
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
-  has LastModified => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Last-Modified');
-  has StatusCode => (is => 'ro', isa => 'Int', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaStoreData::Types qw//;
+  has Body => (is => 'ro', isa => Str);
+  has CacheControl => (is => 'ro', isa => Str);
+  has ContentLength => (is => 'ro', isa => Int);
+  has ContentRange => (is => 'ro', isa => Str);
+  has ContentType => (is => 'ro', isa => Str);
+  has ETag => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
+  has StatusCode => (is => 'ro', isa => Int, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'LastModified' => 'Last-Modified',
+                       'ETag' => 'ETag',
+                       'ContentLength' => 'Content-Length',
+                       'ContentRange' => 'Content-Range',
+                       'CacheControl' => 'Cache-Control',
+                       'ContentType' => 'Content-Type'
+                     },
+  'IsRequired' => {
+                    'StatusCode' => 1
+                  },
+  'types' => {
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'CacheControl' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'StatusCode' => {
+                                 'type' => 'Int'
+                               },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ContentRange' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

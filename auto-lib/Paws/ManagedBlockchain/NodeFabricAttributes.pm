@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::NodeFabricAttributes;
-  use Moose;
-  has PeerEndpoint => (is => 'ro', isa => 'Str');
-  has PeerEventEndpoint => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has PeerEndpoint => (is => 'ro', isa => Str);
+  has PeerEventEndpoint => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PeerEndpoint' => {
+                                   'type' => 'Str'
+                                 },
+               'PeerEventEndpoint' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

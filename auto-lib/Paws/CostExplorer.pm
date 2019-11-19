@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CostExplorer;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'ce' }
   sub signing_name { 'ce' }
   sub version { '2017-10-25' }
   sub target_prefix { 'AWSInsightsIndexService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -147,13 +149,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing
 
 =over
 
-=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+=item TimePeriod => CostExplorer_DateInterval
 
-=item [Filter => L<Paws::CostExplorer::Expression>]
+=item [Filter => CostExplorer_Expression]
 
 =item [Granularity => Str]
 
-=item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
+=item [GroupBy => ArrayRef[CostExplorer_GroupDefinition]]
 
 =item [Metrics => ArrayRef[Str|Undef]]
 
@@ -181,13 +183,13 @@ access to all member accounts.
 
 =over
 
-=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+=item TimePeriod => CostExplorer_DateInterval
 
-=item [Filter => L<Paws::CostExplorer::Expression>]
+=item [Filter => CostExplorer_Expression]
 
 =item [Granularity => Str]
 
-=item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
+=item [GroupBy => ArrayRef[CostExplorer_GroupDefinition]]
 
 =item [Metrics => ArrayRef[Str|Undef]]
 
@@ -226,9 +228,9 @@ in the I<AWS Billing and Cost Management User Guide>.
 
 =item Metric => Str
 
-=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+=item TimePeriod => CostExplorer_DateInterval
 
-=item [Filter => L<Paws::CostExplorer::Expression>]
+=item [Filter => CostExplorer_Expression]
 
 =item [PredictionIntervalLevel => Int]
 
@@ -250,7 +252,7 @@ past costs.
 
 =item Dimension => Str
 
-=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+=item TimePeriod => CostExplorer_DateInterval
 
 =item [Context => Str]
 
@@ -274,13 +276,13 @@ string.
 
 =over
 
-=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+=item TimePeriod => CostExplorer_DateInterval
 
-=item [Filter => L<Paws::CostExplorer::Expression>]
+=item [Filter => CostExplorer_Expression]
 
 =item [Granularity => Str]
 
-=item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
+=item [GroupBy => ArrayRef[CostExplorer_GroupDefinition]]
 
 =item [Metrics => ArrayRef[Str|Undef]]
 
@@ -375,7 +377,7 @@ C<GetDimensionValues> operation.
 
 =item [PaymentOption => Str]
 
-=item [ServiceSpecification => L<Paws::CostExplorer::ServiceSpecification>]
+=item [ServiceSpecification => CostExplorer_ServiceSpecification]
 
 =item [TermInYears => Str]
 
@@ -412,13 +414,13 @@ size instance in the c4 instance family.
 
 =over
 
-=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+=item TimePeriod => CostExplorer_DateInterval
 
-=item [Filter => L<Paws::CostExplorer::Expression>]
+=item [Filter => CostExplorer_Expression]
 
 =item [Granularity => Str]
 
-=item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
+=item [GroupBy => ArrayRef[CostExplorer_GroupDefinition]]
 
 =item [NextPageToken => Str]
 
@@ -442,7 +444,7 @@ by C<SUBSCRIPTION_ID>.
 
 =item Service => Str
 
-=item [Filter => L<Paws::CostExplorer::Expression>]
+=item [Filter => CostExplorer_Expression]
 
 =item [NextPageToken => Str]
 
@@ -469,13 +471,13 @@ Recommendations
 
 =over
 
-=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+=item TimePeriod => CostExplorer_DateInterval
 
-=item [Filter => L<Paws::CostExplorer::Expression>]
+=item [Filter => CostExplorer_Expression]
 
 =item [Granularity => Str]
 
-=item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
+=item [GroupBy => ArrayRef[CostExplorer_GroupDefinition]]
 
 =item [MaxResults => Int]
 
@@ -551,9 +553,9 @@ and Details.
 
 =over
 
-=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+=item TimePeriod => CostExplorer_DateInterval
 
-=item [Filter => L<Paws::CostExplorer::Expression>]
+=item [Filter => CostExplorer_Expression]
 
 =item [Granularity => Str]
 
@@ -578,9 +580,9 @@ C<GetSavingsPlansUtilization>.
 
 =over
 
-=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+=item TimePeriod => CostExplorer_DateInterval
 
-=item [Filter => L<Paws::CostExplorer::Expression>]
+=item [Filter => CostExplorer_Expression]
 
 =item [MaxResults => Int]
 
@@ -610,7 +612,7 @@ C<SavingsPlansArn>.
 
 =over
 
-=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+=item TimePeriod => CostExplorer_DateInterval
 
 =item [NextPageToken => Str]
 
@@ -637,9 +639,9 @@ You can search the tag values for an arbitrary string.
 
 =item Metric => Str
 
-=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+=item TimePeriod => CostExplorer_DateInterval
 
-=item [Filter => L<Paws::CostExplorer::Expression>]
+=item [Filter => CostExplorer_Expression]
 
 =item [PredictionIntervalLevel => Int]
 

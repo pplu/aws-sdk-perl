@@ -1,15 +1,40 @@
 
 package Paws::RAM::AcceptResourceShareInvitation;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has ResourceShareInvitationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceShareInvitationArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RAM::Types qw//;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceShareInvitationArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AcceptResourceShareInvitation');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/acceptresourceshareinvitation');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RAM::AcceptResourceShareInvitationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AcceptResourceShareInvitation');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/acceptresourceshareinvitation');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RAM::AcceptResourceShareInvitationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceShareInvitationArn' => {
+                                                 'type' => 'Str'
+                                               },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ResourceShareInvitationArn' => 1
+                  },
+  'NameInRequest' => {
+                       'ResourceShareInvitationArn' => 'resourceShareInvitationArn',
+                       'ClientToken' => 'clientToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

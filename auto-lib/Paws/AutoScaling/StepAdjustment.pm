@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::StepAdjustment;
-  use Moose;
-  has MetricIntervalLowerBound => (is => 'ro', isa => 'Num');
-  has MetricIntervalUpperBound => (is => 'ro', isa => 'Num');
-  has ScalingAdjustment => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Num Int/;
+  use Paws::AutoScaling::Types qw//;
+  has MetricIntervalLowerBound => (is => 'ro', isa => Num);
+  has MetricIntervalUpperBound => (is => 'ro', isa => Num);
+  has ScalingAdjustment => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricIntervalUpperBound' => {
+                                               'type' => 'Num'
+                                             },
+               'MetricIntervalLowerBound' => {
+                                               'type' => 'Num'
+                                             },
+               'ScalingAdjustment' => {
+                                        'type' => 'Int'
+                                      }
+             },
+  'IsRequired' => {
+                    'ScalingAdjustment' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

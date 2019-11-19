@@ -1,11 +1,35 @@
 
 package Paws::EFS::DescribeFileSystemsResponse;
-  use Moose;
-  has FileSystems => (is => 'ro', isa => 'ArrayRef[Paws::EFS::FileSystemDescription]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EFS::Types qw/EFS_FileSystemDescription/;
+  has FileSystems => (is => 'ro', isa => ArrayRef[EFS_FileSystemDescription]);
+  has Marker => (is => 'ro', isa => Str);
+  has NextMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'FileSystems' => {
+                                  'type' => 'ArrayRef[EFS_FileSystemDescription]',
+                                  'class' => 'Paws::EFS::FileSystemDescription'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +41,7 @@ Paws::EFS::DescribeFileSystemsResponse
 =head1 ATTRIBUTES
 
 
-=head2 FileSystems => ArrayRef[L<Paws::EFS::FileSystemDescription>]
+=head2 FileSystems => ArrayRef[EFS_FileSystemDescription]
 
 An array of file system descriptions.
 

@@ -1,10 +1,48 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::Channel;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has HlsIngest => (is => 'ro', isa => 'Paws::MediaPackage::HlsIngest', request_name => 'hlsIngest', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackage::Types qw/MediaPackage_HlsIngest MediaPackage_Tags/;
+  has Arn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has HlsIngest => (is => 'ro', isa => MediaPackage_HlsIngest);
+  has Id => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => MediaPackage_Tags);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'MediaPackage_Tags',
+                           'class' => 'Paws::MediaPackage::Tags'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'HlsIngest' => {
+                                'type' => 'MediaPackage_HlsIngest',
+                                'class' => 'Paws::MediaPackage::HlsIngest'
+                              },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Arn' => 'arn',
+                       'Tags' => 'tags',
+                       'Description' => 'description',
+                       'HlsIngest' => 'hlsIngest'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +88,7 @@ A Channel resource configuration.
   A short text description of the Channel.
 
 
-=head2 HlsIngest => L<Paws::MediaPackage::HlsIngest>
+=head2 HlsIngest => MediaPackage_HlsIngest
 
   
 
@@ -60,7 +98,7 @@ A Channel resource configuration.
   The ID of the Channel.
 
 
-=head2 Tags => L<Paws::MediaPackage::Tags>
+=head2 Tags => MediaPackage_Tags
 
   
 

@@ -1,9 +1,31 @@
 
 package Paws::EC2::DescribeRegionsResult;
-  use Moose;
-  has Regions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Region]', request_name => 'regionInfo', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Region/;
+  has Regions => (is => 'ro', isa => ArrayRef[EC2_Region]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Regions' => {
+                              'type' => 'ArrayRef[EC2_Region]',
+                              'class' => 'Paws::EC2::Region'
+                            }
+             },
+  'NameInRequest' => {
+                       'Regions' => 'regionInfo'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::DescribeRegionsResult
 =head1 ATTRIBUTES
 
 
-=head2 Regions => ArrayRef[L<Paws::EC2::Region>]
+=head2 Regions => ArrayRef[EC2_Region]
 
 Information about the Regions.
 

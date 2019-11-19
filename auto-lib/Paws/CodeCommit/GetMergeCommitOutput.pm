@@ -1,12 +1,45 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::GetMergeCommitOutput;
-  use Moose;
-  has BaseCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'baseCommitId' );
-  has DestinationCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCommitId' );
-  has MergedCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'mergedCommitId' );
-  has SourceCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCommitId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has BaseCommitId => (is => 'ro', isa => Str);
+  has DestinationCommitId => (is => 'ro', isa => Str);
+  has MergedCommitId => (is => 'ro', isa => Str);
+  has SourceCommitId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               'MergedCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               'DestinationCommitId' => {
+                                          'type' => 'Str'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BaseCommitId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DestinationCommitId' => 'destinationCommitId',
+                       'BaseCommitId' => 'baseCommitId',
+                       'MergedCommitId' => 'mergedCommitId',
+                       'SourceCommitId' => 'sourceCommitId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

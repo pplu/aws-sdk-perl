@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::OpenInstancePublicPorts;
-  use Moose;
-  has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' , required => 1);
-  has PortInfo => (is => 'ro', isa => 'Paws::Lightsail::PortInfo', traits => ['NameInRequest'], request_name => 'portInfo' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_PortInfo/;
+  has InstanceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PortInfo => (is => 'ro', isa => Lightsail_PortInfo, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'OpenInstancePublicPorts');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::OpenInstancePublicPortsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'OpenInstancePublicPorts');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::OpenInstancePublicPortsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceName' => {
+                                   'type' => 'Str'
+                                 },
+               'PortInfo' => {
+                               'class' => 'Paws::Lightsail::PortInfo',
+                               'type' => 'Lightsail_PortInfo'
+                             }
+             },
+  'IsRequired' => {
+                    'PortInfo' => 1,
+                    'InstanceName' => 1
+                  },
+  'NameInRequest' => {
+                       'PortInfo' => 'portInfo',
+                       'InstanceName' => 'instanceName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +83,7 @@ The name of the instance for which you want to open the public ports.
 
 
 
-=head2 B<REQUIRED> PortInfo => L<Paws::Lightsail::PortInfo>
+=head2 B<REQUIRED> PortInfo => Lightsail_PortInfo
 
 An array of key-value pairs containing information about the port
 mappings.

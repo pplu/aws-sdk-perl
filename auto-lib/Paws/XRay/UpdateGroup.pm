@@ -1,16 +1,37 @@
 
 package Paws::XRay::UpdateGroup;
-  use Moose;
-  has FilterExpression => (is => 'ro', isa => 'Str');
-  has GroupARN => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::XRay::Types qw//;
+  has FilterExpression => (is => 'ro', isa => Str, predicate => 1);
+  has GroupARN => (is => 'ro', isa => Str, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/UpdateGroup');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::XRay::UpdateGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/UpdateGroup');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::XRay::UpdateGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'GroupARN' => {
+                               'type' => 'Str'
+                             },
+               'FilterExpression' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

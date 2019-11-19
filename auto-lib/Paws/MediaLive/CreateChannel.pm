@@ -1,24 +1,87 @@
 
 package Paws::MediaLive::CreateChannel;
-  use Moose;
-  has ChannelClass => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelClass');
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
-  has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
-  has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
-  has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', traits => ['NameInRequest'], request_name => 'inputSpecification');
-  has LogLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logLevel');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
-  has Reserved => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reserved');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_InputAttachment MediaLive_InputSpecification MediaLive_Tags MediaLive_EncoderSettings MediaLive_OutputDestination/;
+  has ChannelClass => (is => 'ro', isa => Str, predicate => 1);
+  has Destinations => (is => 'ro', isa => ArrayRef[MediaLive_OutputDestination], predicate => 1);
+  has EncoderSettings => (is => 'ro', isa => MediaLive_EncoderSettings, predicate => 1);
+  has InputAttachments => (is => 'ro', isa => ArrayRef[MediaLive_InputAttachment], predicate => 1);
+  has InputSpecification => (is => 'ro', isa => MediaLive_InputSpecification, predicate => 1);
+  has LogLevel => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has RequestId => (is => 'ro', isa => Str, predicate => 1);
+  has Reserved => (is => 'ro', isa => Str, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => MediaLive_Tags, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/channels');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::CreateChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/channels');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::CreateChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputAttachments' => {
+                                       'type' => 'ArrayRef[MediaLive_InputAttachment]',
+                                       'class' => 'Paws::MediaLive::InputAttachment'
+                                     },
+               'LogLevel' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Reserved' => {
+                               'type' => 'Str'
+                             },
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'InputSpecification' => {
+                                         'type' => 'MediaLive_InputSpecification',
+                                         'class' => 'Paws::MediaLive::InputSpecification'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::MediaLive::Tags',
+                           'type' => 'MediaLive_Tags'
+                         },
+               'Destinations' => {
+                                   'class' => 'Paws::MediaLive::OutputDestination',
+                                   'type' => 'ArrayRef[MediaLive_OutputDestination]'
+                                 },
+               'EncoderSettings' => {
+                                      'type' => 'MediaLive_EncoderSettings',
+                                      'class' => 'Paws::MediaLive::EncoderSettings'
+                                    },
+               'ChannelClass' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'InputAttachments' => 'inputAttachments',
+                       'LogLevel' => 'logLevel',
+                       'Reserved' => 'reserved',
+                       'RequestId' => 'requestId',
+                       'Name' => 'name',
+                       'InputSpecification' => 'inputSpecification',
+                       'RoleArn' => 'roleArn',
+                       'EncoderSettings' => 'encoderSettings',
+                       'Destinations' => 'destinations',
+                       'Tags' => 'tags',
+                       'ChannelClass' => 'channelClass'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -181,7 +244,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Destination => {
                   DestinationRefId => 'My__string',    # OPTIONAL
                 },
-                RolloverInterval => 1,                 # min: 1
+                RolloverInterval => 1,                 # min: 1; OPTIONAL
               },    # OPTIONAL
               FrameCaptureGroupSettings => {
                 Destination => {
@@ -213,7 +276,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_4281',    # values: RFC_4281, RFC_6381; OPTIONAL
-                ConstantIv         => 'My__stringMin32Max32', # min: 32, max: 32
+                ConstantIv =>
+                  'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
                 DirectoryStructure => 'SINGLE_DIRECTORY'
                 ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
                 EncryptionType =>
@@ -260,16 +324,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 IvInManifest => 'EXCLUDE',  # values: EXCLUDE, INCLUDE; OPTIONAL
                 IvSource     => 'EXPLICIT'
                 ,    # values: EXPLICIT, FOLLOWS_SEGMENT_NUMBER; OPTIONAL
-                KeepSegments        => 1,               # min: 1
+                KeepSegments        => 1,               # min: 1; OPTIONAL
                 KeyFormat           => 'My__string',    # OPTIONAL
                 KeyFormatVersions   => 'My__string',    # OPTIONAL
                 KeyProviderSettings => {
                   StaticKeySettings => {
-                    StaticKeyValue => 'My__stringMin32Max32', # min: 32, max: 32
+                    StaticKeyValue =>
+                      'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
                     KeyProviderServer => {
-                      Uri           => 'My__string',          # OPTIONAL
-                      PasswordParam => 'My__string',          # OPTIONAL
-                      Username      => 'My__string',          # OPTIONAL
+                      Uri           => 'My__string',    # OPTIONAL
+                      PasswordParam => 'My__string',    # OPTIONAL
+                      Username      => 'My__string',    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -285,10 +350,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ProgramDateTimePeriod => 1,    # max: 3600; OPTIONAL
                 RedundantManifest =>
                   'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                SegmentLength    => 1,                         # min: 1
+                SegmentLength    => 1,                        # min: 1; OPTIONAL
                 SegmentationMode => 'USE_INPUT_SEGMENTATION'
                 , # values: USE_INPUT_SEGMENTATION, USE_SEGMENT_DURATION; OPTIONAL
-                SegmentsPerSubdirectory => 1,    # min: 1
+                SegmentsPerSubdirectory => 1,    # min: 1; OPTIONAL
                 StreamInfResolution =>
                   'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
                 TimedMetadataId3Frame =>
@@ -319,7 +384,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 , # values: NO_EVENT_ID, USE_CONFIGURED, USE_TIMESTAMP; OPTIONAL
                 EventStopBehavior => 'NONE',  # values: NONE, SEND_EOS; OPTIONAL
                 FilecacheDuration => 1,       # OPTIONAL
-                FragmentLength    => 1,       # min: 1
+                FragmentLength    => 1,       # min: 1; OPTIONAL
                 InputLossAction =>
                   'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
                 NumRetries       => 1,                         # OPTIONAL
@@ -496,7 +561,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },
                     CertificateMode => 'SELF_SIGNED'
                     ,    # values: SELF_SIGNED, VERIFY_AUTHENTICITY; OPTIONAL
-                    ConnectionRetryInterval => 1,    # min: 1
+                    ConnectionRetryInterval => 1,    # min: 1; OPTIONAL
                     NumRetries              => 1,    # OPTIONAL
                   },    # OPTIONAL
                   UdpOutputSettings => {
@@ -644,8 +709,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 FlickerAq => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
                 FramerateControl => 'INITIALIZE_FROM_SOURCE'
                 ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-                FramerateDenominator => 1,    # min: 1
-                FramerateNumerator   => 1,    # min: 1
+                FramerateDenominator => 1,    # min: 1; OPTIONAL
+                FramerateNumerator   => 1,    # min: 1; OPTIONAL
                 GopBReference =>
                   'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
                 GopClosedCadence => 1,    # OPTIONAL
@@ -661,7 +726,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 NumRefFrames => 1,    # min: 1, max: 6; OPTIONAL
                 ParControl => 'INITIALIZE_FROM_SOURCE'
                 ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-                ParDenominator => 1,           # min: 1
+                ParDenominator => 1,           # min: 1; OPTIONAL
                 ParNumerator   => 1,           # OPTIONAL
                 Profile        => 'BASELINE'
                 , # values: BASELINE, HIGH, HIGH_10BIT, HIGH_422, HIGH_422_10BIT, MAIN; OPTIONAL
@@ -683,7 +748,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               H265Settings => {
                 FramerateDenominator => 1,       # min: 1, max: 3003
-                FramerateNumerator   => 1,       # min: 1
+                FramerateNumerator   => 1,       # min: 1; OPTIONAL
                 AdaptiveQuantization => 'HIGH'
                 ,    # values: HIGH, HIGHER, LOW, MAX, MEDIUM, OFF; OPTIONAL
                 AfdSignaling => 'AUTO',    # values: AUTO, FIXED, NONE; OPTIONAL
@@ -719,8 +784,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'HIGH',    # values: HIGH, LOW, MEDIUM; OPTIONAL
                 MaxBitrate     => 1,      # min: 100000, max: 40000000; OPTIONAL
                 MinIInterval   => 1,      # max: 30; OPTIONAL
-                ParDenominator => 1,      # min: 1
-                ParNumerator   => 1,      # min: 1
+                ParDenominator => 1,      # min: 1; OPTIONAL
+                ParNumerator   => 1,      # min: 1; OPTIONAL
                 Profile        => 'MAIN', # values: MAIN, MAIN_10BIT; OPTIONAL
                 QvbrQualityLevel => 1,        # min: 1, max: 10; OPTIONAL
                 RateControlMode  => 'CBR',    # values: CBR, QVBR; OPTIONAL
@@ -922,7 +987,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       'LOOSE',    # values: LOOSE, STRICT; OPTIONAL
                   },    # OPTIONAL
                   AudioPidSelection => {
-                    Pid => 1,    # max: 8191
+                    Pid => 1,    # max: 8191; OPTIONAL
 
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -938,7 +1003,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },                                     # OPTIONAL
                   DvbSubSourceSettings => {
-                    Pid => 1,                            # min: 1
+                    Pid => 1,                            # min: 1; OPTIONAL
                   },    # OPTIONAL
                   EmbeddedSourceSettings => {
                     Convert608To708 =>
@@ -953,7 +1018,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Source608ChannelNumber => 1,    # min: 1, max: 4
                   },    # OPTIONAL
                   Scte27SourceSettings => {
-                    Pid => 1,    # min: 1
+                    Pid => 1,    # min: 1; OPTIONAL
                   },    # OPTIONAL
                   TeletextSourceSettings => {
                     PageNumber => 'My__string',    # OPTIONAL
@@ -983,7 +1048,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ColorSpaceUsage => 'FALLBACK', # values: FALLBACK, FORCE; OPTIONAL
               SelectorSettings => {
                 VideoSelectorPid => {
-                  Pid => 1,                  # max: 8191
+                  Pid => 1,                  # max: 8191; OPTIONAL
                 },    # OPTIONAL
                 VideoSelectorProgramId => {
                   ProgramId => 1,    # max: 65536
@@ -1038,25 +1103,25 @@ or SINGLE_PIPELINE for a channel with one pipeline.
 
 Valid values are: C<"STANDARD">, C<"SINGLE_PIPELINE">
 
-=head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
+=head2 Destinations => ArrayRef[MediaLive_OutputDestination]
 
 
 
 
 
-=head2 EncoderSettings => L<Paws::MediaLive::EncoderSettings>
+=head2 EncoderSettings => MediaLive_EncoderSettings
 
 
 
 
 
-=head2 InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]
+=head2 InputAttachments => ArrayRef[MediaLive_InputAttachment]
 
 List of input attachments for channel.
 
 
 
-=head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
+=head2 InputSpecification => MediaLive_InputSpecification
 
 Specification of input for this channel (max. bitrate, resolution,
 codec, etc.)
@@ -1095,7 +1160,7 @@ running the Channel.
 
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
 A collection of key-value pairs.
 

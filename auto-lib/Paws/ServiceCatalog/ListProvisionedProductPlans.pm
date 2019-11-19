@@ -1,17 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::ListProvisionedProductPlans;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has AccessLevelFilter => (is => 'ro', isa => 'Paws::ServiceCatalog::AccessLevelFilter');
-  has PageSize => (is => 'ro', isa => 'Int');
-  has PageToken => (is => 'ro', isa => 'Str');
-  has ProvisionProductId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_AccessLevelFilter/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has AccessLevelFilter => (is => 'ro', isa => ServiceCatalog_AccessLevelFilter, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has PageToken => (is => 'ro', isa => Str, predicate => 1);
+  has ProvisionProductId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListProvisionedProductPlans');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::ListProvisionedProductPlansOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListProvisionedProductPlans');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::ListProvisionedProductPlansOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'ProvisionProductId' => {
+                                         'type' => 'Str'
+                                       },
+               'AccessLevelFilter' => {
+                                        'class' => 'Paws::ServiceCatalog::AccessLevelFilter',
+                                        'type' => 'ServiceCatalog_AccessLevelFilter'
+                                      },
+               'PageToken' => {
+                                'type' => 'Str'
+                              },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +108,7 @@ C<zh> - Chinese
 
 
 
-=head2 AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>
+=head2 AccessLevelFilter => ServiceCatalog_AccessLevelFilter
 
 The access level to use to obtain results. The default is C<User>.
 

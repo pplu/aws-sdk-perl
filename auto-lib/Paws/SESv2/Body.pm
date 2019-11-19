@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::SESv2::Body;
-  use Moose;
-  has Html => (is => 'ro', isa => 'Paws::SESv2::Content');
-  has Text => (is => 'ro', isa => 'Paws::SESv2::Content');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SESv2::Types qw/SESv2_Content/;
+  has Html => (is => 'ro', isa => SESv2_Content);
+  has Text => (is => 'ro', isa => SESv2_Content);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Text' => {
+                           'class' => 'Paws::SESv2::Content',
+                           'type' => 'SESv2_Content'
+                         },
+               'Html' => {
+                           'type' => 'SESv2_Content',
+                           'class' => 'Paws::SESv2::Content'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,14 +59,14 @@ Represents the body of the email message.
 =head1 ATTRIBUTES
 
 
-=head2 Html => L<Paws::SESv2::Content>
+=head2 Html => SESv2_Content
 
   An object that represents the version of the message that is displayed
 in email clients that support HTML. HTML messages can include formatted
 text, hyperlinks, images, and more.
 
 
-=head2 Text => L<Paws::SESv2::Content>
+=head2 Text => SESv2_Content
 
   An object that represents the version of the message that is displayed
 in email clients that don't support HTML, or clients where the

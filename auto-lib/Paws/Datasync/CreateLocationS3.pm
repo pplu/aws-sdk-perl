@@ -1,17 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Datasync::CreateLocationS3;
-  use Moose;
-  has S3BucketArn => (is => 'ro', isa => 'Str', required => 1);
-  has S3Config => (is => 'ro', isa => 'Paws::Datasync::S3Config', required => 1);
-  has S3StorageClass => (is => 'ro', isa => 'Str');
-  has Subdirectory => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TagListEntry]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Datasync::Types qw/Datasync_S3Config Datasync_TagListEntry/;
+  has S3BucketArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3Config => (is => 'ro', isa => Datasync_S3Config, required => 1, predicate => 1);
+  has S3StorageClass => (is => 'ro', isa => Str, predicate => 1);
+  has Subdirectory => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Datasync_TagListEntry], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLocationS3');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Datasync::CreateLocationS3Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLocationS3');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Datasync::CreateLocationS3Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3BucketArn' => {
+                                  'type' => 'Str'
+                                },
+               'Subdirectory' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::Datasync::TagListEntry',
+                           'type' => 'ArrayRef[Datasync_TagListEntry]'
+                         },
+               'S3StorageClass' => {
+                                     'type' => 'Str'
+                                   },
+               'S3Config' => {
+                               'class' => 'Paws::Datasync::S3Config',
+                               'type' => 'Datasync_S3Config'
+                             }
+             },
+  'IsRequired' => {
+                    'S3BucketArn' => 1,
+                    'S3Config' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +99,7 @@ The Amazon Resource Name (ARN) of the Amazon S3 bucket.
 
 
 
-=head2 B<REQUIRED> S3Config => L<Paws::Datasync::S3Config>
+=head2 B<REQUIRED> S3Config => Datasync_S3Config
 
 
 
@@ -91,7 +125,7 @@ S3 destination.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]
+=head2 Tags => ArrayRef[Datasync_TagListEntry]
 
 The key-value pair that represents the tag that you want to add to the
 location. The value can be an empty string. We recommend using tags to

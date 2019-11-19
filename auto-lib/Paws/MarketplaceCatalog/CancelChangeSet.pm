@@ -1,15 +1,41 @@
 
 package Paws::MarketplaceCatalog::CancelChangeSet;
-  use Moose;
-  has Catalog => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'catalog', required => 1);
-  has ChangeSetId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'changeSetId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MarketplaceCatalog::Types qw//;
+  has Catalog => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ChangeSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelChangeSet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/CancelChangeSet');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MarketplaceCatalog::CancelChangeSetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CancelChangeSet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/CancelChangeSet');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MarketplaceCatalog::CancelChangeSetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeSetId' => {
+                                  'type' => 'Str'
+                                },
+               'Catalog' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInQuery' => {
+                      'ChangeSetId' => 'changeSetId',
+                      'Catalog' => 'catalog'
+                    },
+  'IsRequired' => {
+                    'ChangeSetId' => 1,
+                    'Catalog' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

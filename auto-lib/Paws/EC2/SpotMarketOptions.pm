@@ -1,10 +1,36 @@
 package Paws::EC2::SpotMarketOptions;
-  use Moose;
-  has BlockDurationMinutes => (is => 'ro', isa => 'Int');
-  has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str');
-  has MaxPrice => (is => 'ro', isa => 'Str');
-  has SpotInstanceType => (is => 'ro', isa => 'Str');
-  has ValidUntil => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Int Str/;
+  use Paws::EC2::Types qw//;
+  has BlockDurationMinutes => (is => 'ro', isa => Int);
+  has InstanceInterruptionBehavior => (is => 'ro', isa => Str);
+  has MaxPrice => (is => 'ro', isa => Str);
+  has SpotInstanceType => (is => 'ro', isa => Str);
+  has ValidUntil => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BlockDurationMinutes' => {
+                                           'type' => 'Int'
+                                         },
+               'InstanceInterruptionBehavior' => {
+                                                   'type' => 'Str'
+                                                 },
+               'SpotInstanceType' => {
+                                       'type' => 'Str'
+                                     },
+               'ValidUntil' => {
+                                 'type' => 'Str'
+                               },
+               'MaxPrice' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

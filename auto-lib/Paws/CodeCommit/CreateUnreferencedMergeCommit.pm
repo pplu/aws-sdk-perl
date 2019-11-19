@@ -1,23 +1,89 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::CreateUnreferencedMergeCommit;
-  use Moose;
-  has AuthorName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorName' );
-  has CommitMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitMessage' );
-  has ConflictDetailLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'conflictDetailLevel' );
-  has ConflictResolution => (is => 'ro', isa => 'Paws::CodeCommit::ConflictResolution', traits => ['NameInRequest'], request_name => 'conflictResolution' );
-  has ConflictResolutionStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'conflictResolutionStrategy' );
-  has DestinationCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCommitSpecifier' , required => 1);
-  has Email => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'email' );
-  has KeepEmptyFolders => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'keepEmptyFolders' );
-  has MergeOption => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'mergeOption' , required => 1);
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has SourceCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCommitSpecifier' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeCommit::Types qw/CodeCommit_ConflictResolution/;
+  has AuthorName => (is => 'ro', isa => Str, predicate => 1);
+  has CommitMessage => (is => 'ro', isa => Str, predicate => 1);
+  has ConflictDetailLevel => (is => 'ro', isa => Str, predicate => 1);
+  has ConflictResolution => (is => 'ro', isa => CodeCommit_ConflictResolution, predicate => 1);
+  has ConflictResolutionStrategy => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Email => (is => 'ro', isa => Str, predicate => 1);
+  has KeepEmptyFolders => (is => 'ro', isa => Bool, predicate => 1);
+  has MergeOption => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUnreferencedMergeCommit');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::CreateUnreferencedMergeCommitOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateUnreferencedMergeCommit');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::CreateUnreferencedMergeCommitOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SourceCommitSpecifier' => 1,
+                    'MergeOption' => 1,
+                    'DestinationCommitSpecifier' => 1,
+                    'RepositoryName' => 1
+                  },
+  'NameInRequest' => {
+                       'CommitMessage' => 'commitMessage',
+                       'SourceCommitSpecifier' => 'sourceCommitSpecifier',
+                       'Email' => 'email',
+                       'ConflictDetailLevel' => 'conflictDetailLevel',
+                       'MergeOption' => 'mergeOption',
+                       'DestinationCommitSpecifier' => 'destinationCommitSpecifier',
+                       'KeepEmptyFolders' => 'keepEmptyFolders',
+                       'AuthorName' => 'authorName',
+                       'ConflictResolution' => 'conflictResolution',
+                       'RepositoryName' => 'repositoryName',
+                       'ConflictResolutionStrategy' => 'conflictResolutionStrategy'
+                     },
+  'types' => {
+               'ConflictResolution' => {
+                                         'class' => 'Paws::CodeCommit::ConflictResolution',
+                                         'type' => 'CodeCommit_ConflictResolution'
+                                       },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'ConflictResolutionStrategy' => {
+                                                 'type' => 'Str'
+                                               },
+               'DestinationCommitSpecifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'MergeOption' => {
+                                  'type' => 'Str'
+                                },
+               'KeepEmptyFolders' => {
+                                       'type' => 'Bool'
+                                     },
+               'AuthorName' => {
+                                 'type' => 'Str'
+                               },
+               'Email' => {
+                            'type' => 'Str'
+                          },
+               'ConflictDetailLevel' => {
+                                          'type' => 'Str'
+                                        },
+               'SourceCommitSpecifier' => {
+                                            'type' => 'Str'
+                                          },
+               'CommitMessage' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -114,7 +180,7 @@ branches has differences on the same line.
 
 Valid values are: C<"FILE_LEVEL">, C<"LINE_LEVEL">
 
-=head2 ConflictResolution => L<Paws::CodeCommit::ConflictResolution>
+=head2 ConflictResolution => CodeCommit_ConflictResolution
 
 A list of inputs to use when resolving conflicts during a merge if
 AUTOMERGE is chosen as the conflict resolution strategy.

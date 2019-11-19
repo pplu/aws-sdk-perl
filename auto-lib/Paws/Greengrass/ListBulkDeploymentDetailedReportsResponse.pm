@@ -1,10 +1,31 @@
 
 package Paws::Greengrass::ListBulkDeploymentDetailedReportsResponse;
-  use Moose;
-  has Deployments => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::BulkDeploymentResult]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_BulkDeploymentResult/;
+  has Deployments => (is => 'ro', isa => ArrayRef[Greengrass_BulkDeploymentResult]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Deployments' => {
+                                  'type' => 'ArrayRef[Greengrass_BulkDeploymentResult]',
+                                  'class' => 'Paws::Greengrass::BulkDeploymentResult'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Greengrass::ListBulkDeploymentDetailedReportsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Deployments => ArrayRef[L<Paws::Greengrass::BulkDeploymentResult>]
+=head2 Deployments => ArrayRef[Greengrass_BulkDeploymentResult]
 
 A list of the individual group deployments in the bulk deployment
 operation.

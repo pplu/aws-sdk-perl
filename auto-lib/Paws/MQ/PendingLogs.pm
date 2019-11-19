@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MQ::PendingLogs;
-  use Moose;
-  has Audit => (is => 'ro', isa => 'Bool', request_name => 'audit', traits => ['NameInRequest']);
-  has General => (is => 'ro', isa => 'Bool', request_name => 'general', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::MQ::Types qw//;
+  has Audit => (is => 'ro', isa => Bool);
+  has General => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'General' => {
+                              'type' => 'Bool'
+                            },
+               'Audit' => {
+                            'type' => 'Bool'
+                          }
+             },
+  'NameInRequest' => {
+                       'General' => 'general',
+                       'Audit' => 'audit'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

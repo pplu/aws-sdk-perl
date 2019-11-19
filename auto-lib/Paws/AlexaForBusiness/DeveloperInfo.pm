@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::DeveloperInfo;
-  use Moose;
-  has DeveloperName => (is => 'ro', isa => 'Str');
-  has Email => (is => 'ro', isa => 'Str');
-  has PrivacyPolicy => (is => 'ro', isa => 'Str');
-  has Url => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has DeveloperName => (is => 'ro', isa => Str);
+  has Email => (is => 'ro', isa => Str);
+  has PrivacyPolicy => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Email' => {
+                            'type' => 'Str'
+                          },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'PrivacyPolicy' => {
+                                    'type' => 'Str'
+                                  },
+               'DeveloperName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

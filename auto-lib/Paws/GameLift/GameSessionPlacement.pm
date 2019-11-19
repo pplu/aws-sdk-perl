@@ -1,23 +1,94 @@
+# Generated from default/object.tt
 package Paws::GameLift::GameSessionPlacement;
-  use Moose;
-  has DnsName => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
-  has GameSessionArn => (is => 'ro', isa => 'Str');
-  has GameSessionData => (is => 'ro', isa => 'Str');
-  has GameSessionId => (is => 'ro', isa => 'Str');
-  has GameSessionName => (is => 'ro', isa => 'Str');
-  has GameSessionQueueName => (is => 'ro', isa => 'Str');
-  has GameSessionRegion => (is => 'ro', isa => 'Str');
-  has IpAddress => (is => 'ro', isa => 'Str');
-  has MatchmakerData => (is => 'ro', isa => 'Str');
-  has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
-  has PlacedPlayerSessions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlacedPlayerSession]');
-  has PlacementId => (is => 'ro', isa => 'Str');
-  has PlayerLatencies => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlayerLatency]');
-  has Port => (is => 'ro', isa => 'Int');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::GameLift::Types qw/GameLift_PlayerLatency GameLift_GameProperty GameLift_PlacedPlayerSession/;
+  has DnsName => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has GameProperties => (is => 'ro', isa => ArrayRef[GameLift_GameProperty]);
+  has GameSessionArn => (is => 'ro', isa => Str);
+  has GameSessionData => (is => 'ro', isa => Str);
+  has GameSessionId => (is => 'ro', isa => Str);
+  has GameSessionName => (is => 'ro', isa => Str);
+  has GameSessionQueueName => (is => 'ro', isa => Str);
+  has GameSessionRegion => (is => 'ro', isa => Str);
+  has IpAddress => (is => 'ro', isa => Str);
+  has MatchmakerData => (is => 'ro', isa => Str);
+  has MaximumPlayerSessionCount => (is => 'ro', isa => Int);
+  has PlacedPlayerSessions => (is => 'ro', isa => ArrayRef[GameLift_PlacedPlayerSession]);
+  has PlacementId => (is => 'ro', isa => Str);
+  has PlayerLatencies => (is => 'ro', isa => ArrayRef[GameLift_PlayerLatency]);
+  has Port => (is => 'ro', isa => Int);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GameSessionRegion' => {
+                                        'type' => 'Str'
+                                      },
+               'GameSessionId' => {
+                                    'type' => 'Str'
+                                  },
+               'GameSessionQueueName' => {
+                                           'type' => 'Str'
+                                         },
+               'GameSessionArn' => {
+                                     'type' => 'Str'
+                                   },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'MaximumPlayerSessionCount' => {
+                                                'type' => 'Int'
+                                              },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'PlayerLatencies' => {
+                                      'type' => 'ArrayRef[GameLift_PlayerLatency]',
+                                      'class' => 'Paws::GameLift::PlayerLatency'
+                                    },
+               'GameSessionData' => {
+                                      'type' => 'Str'
+                                    },
+               'PlacedPlayerSessions' => {
+                                           'class' => 'Paws::GameLift::PlacedPlayerSession',
+                                           'type' => 'ArrayRef[GameLift_PlacedPlayerSession]'
+                                         },
+               'MatchmakerData' => {
+                                     'type' => 'Str'
+                                   },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'GameSessionName' => {
+                                      'type' => 'Str'
+                                    },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'GameProperties' => {
+                                     'class' => 'Paws::GameLift::GameProperty',
+                                     'type' => 'ArrayRef[GameLift_GameProperty]'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'PlacementId' => {
+                                  'type' => 'Str'
+                                },
+               'DnsName' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +156,7 @@ StopGameSessionPlacement
 timed out.
 
 
-=head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
+=head2 GameProperties => ArrayRef[GameLift_GameProperty]
 
   Set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
@@ -160,7 +231,7 @@ assignments. For more details on matchmaker data, see Match Data
 game session.
 
 
-=head2 PlacedPlayerSessions => ArrayRef[L<Paws::GameLift::PlacedPlayerSession>]
+=head2 PlacedPlayerSessions => ArrayRef[GameLift_PlacedPlayerSession]
 
   Collection of information on player sessions created in response to the
 game session placement request. These player sessions are created only
@@ -176,7 +247,7 @@ the player session ID.
   Unique identifier for a game session placement.
 
 
-=head2 PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]
+=head2 PlayerLatencies => ArrayRef[GameLift_PlayerLatency]
 
   Set of values, expressed in milliseconds, indicating the amount of
 latency that a player experiences when connected to AWS regions.

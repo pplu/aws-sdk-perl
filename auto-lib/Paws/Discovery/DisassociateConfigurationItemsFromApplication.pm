@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Discovery::DisassociateConfigurationItemsFromApplication;
-  use Moose;
-  has ApplicationConfigurationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationConfigurationId' , required => 1);
-  has ConfigurationIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'configurationIds' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Discovery::Types qw//;
+  has ApplicationConfigurationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConfigurationIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateConfigurationItemsFromApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Discovery::DisassociateConfigurationItemsFromApplicationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisassociateConfigurationItemsFromApplication');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Discovery::DisassociateConfigurationItemsFromApplicationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ApplicationConfigurationId' => {
+                                                 'type' => 'Str'
+                                               }
+             },
+  'NameInRequest' => {
+                       'ConfigurationIds' => 'configurationIds',
+                       'ApplicationConfigurationId' => 'applicationConfigurationId'
+                     },
+  'IsRequired' => {
+                    'ApplicationConfigurationId' => 1,
+                    'ConfigurationIds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

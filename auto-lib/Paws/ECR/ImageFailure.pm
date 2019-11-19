@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::ECR::ImageFailure;
-  use Moose;
-  has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has ImageId => (is => 'ro', isa => 'Paws::ECR::ImageIdentifier', request_name => 'imageId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw/ECR_ImageIdentifier/;
+  has FailureCode => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has ImageId => (is => 'ro', isa => ECR_ImageIdentifier);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ImageId' => 'imageId',
+                       'FailureReason' => 'failureReason',
+                       'FailureCode' => 'failureCode'
+                     },
+  'types' => {
+               'FailureCode' => {
+                                  'type' => 'Str'
+                                },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'ImageId' => {
+                              'type' => 'ECR_ImageIdentifier',
+                              'class' => 'Paws::ECR::ImageIdentifier'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +77,7 @@ An object representing an Amazon ECR image failure.
   The reason for the failure.
 
 
-=head2 ImageId => L<Paws::ECR::ImageIdentifier>
+=head2 ImageId => ECR_ImageIdentifier
 
   The image ID associated with the failure.
 

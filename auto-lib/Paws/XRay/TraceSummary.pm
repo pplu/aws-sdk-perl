@@ -1,25 +1,110 @@
+# Generated from default/object.tt
 package Paws::XRay::TraceSummary;
-  use Moose;
-  has Annotations => (is => 'ro', isa => 'Paws::XRay::Annotations');
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::XRay::AvailabilityZoneDetail]');
-  has Duration => (is => 'ro', isa => 'Num');
-  has EntryPoint => (is => 'ro', isa => 'Paws::XRay::ServiceId');
-  has ErrorRootCauses => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ErrorRootCause]');
-  has FaultRootCauses => (is => 'ro', isa => 'ArrayRef[Paws::XRay::FaultRootCause]');
-  has HasError => (is => 'ro', isa => 'Bool');
-  has HasFault => (is => 'ro', isa => 'Bool');
-  has HasThrottle => (is => 'ro', isa => 'Bool');
-  has Http => (is => 'ro', isa => 'Paws::XRay::Http');
-  has Id => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Paws::XRay::InstanceIdDetail]');
-  has IsPartial => (is => 'ro', isa => 'Bool');
-  has MatchedEventTime => (is => 'ro', isa => 'Str');
-  has ResourceARNs => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ResourceARNDetail]');
-  has ResponseTime => (is => 'ro', isa => 'Num');
-  has ResponseTimeRootCauses => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ResponseTimeRootCause]');
-  has Revision => (is => 'ro', isa => 'Int');
-  has ServiceIds => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ServiceId]');
-  has Users => (is => 'ro', isa => 'ArrayRef[Paws::XRay::TraceUser]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Num Bool Str Int/;
+  use Paws::XRay::Types qw/XRay_AvailabilityZoneDetail XRay_ServiceId XRay_Http XRay_FaultRootCause XRay_ErrorRootCause XRay_TraceUser XRay_InstanceIdDetail XRay_Annotations XRay_ResourceARNDetail XRay_ResponseTimeRootCause/;
+  has Annotations => (is => 'ro', isa => XRay_Annotations);
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[XRay_AvailabilityZoneDetail]);
+  has Duration => (is => 'ro', isa => Num);
+  has EntryPoint => (is => 'ro', isa => XRay_ServiceId);
+  has ErrorRootCauses => (is => 'ro', isa => ArrayRef[XRay_ErrorRootCause]);
+  has FaultRootCauses => (is => 'ro', isa => ArrayRef[XRay_FaultRootCause]);
+  has HasError => (is => 'ro', isa => Bool);
+  has HasFault => (is => 'ro', isa => Bool);
+  has HasThrottle => (is => 'ro', isa => Bool);
+  has Http => (is => 'ro', isa => XRay_Http);
+  has Id => (is => 'ro', isa => Str);
+  has InstanceIds => (is => 'ro', isa => ArrayRef[XRay_InstanceIdDetail]);
+  has IsPartial => (is => 'ro', isa => Bool);
+  has MatchedEventTime => (is => 'ro', isa => Str);
+  has ResourceARNs => (is => 'ro', isa => ArrayRef[XRay_ResourceARNDetail]);
+  has ResponseTime => (is => 'ro', isa => Num);
+  has ResponseTimeRootCauses => (is => 'ro', isa => ArrayRef[XRay_ResponseTimeRootCause]);
+  has Revision => (is => 'ro', isa => Int);
+  has ServiceIds => (is => 'ro', isa => ArrayRef[XRay_ServiceId]);
+  has Users => (is => 'ro', isa => ArrayRef[XRay_TraceUser]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceIds' => {
+                                 'type' => 'ArrayRef[XRay_ServiceId]',
+                                 'class' => 'Paws::XRay::ServiceId'
+                               },
+               'HasError' => {
+                               'type' => 'Bool'
+                             },
+               'MatchedEventTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Annotations' => {
+                                  'class' => 'Paws::XRay::Annotations',
+                                  'type' => 'XRay_Annotations'
+                                },
+               'IsPartial' => {
+                                'type' => 'Bool'
+                              },
+               'ResponseTime' => {
+                                   'type' => 'Num'
+                                 },
+               'InstanceIds' => {
+                                  'type' => 'ArrayRef[XRay_InstanceIdDetail]',
+                                  'class' => 'Paws::XRay::InstanceIdDetail'
+                                },
+               'EntryPoint' => {
+                                 'type' => 'XRay_ServiceId',
+                                 'class' => 'Paws::XRay::ServiceId'
+                               },
+               'HasThrottle' => {
+                                  'type' => 'Bool'
+                                },
+               'HasFault' => {
+                               'type' => 'Bool'
+                             },
+               'Users' => {
+                            'type' => 'ArrayRef[XRay_TraceUser]',
+                            'class' => 'Paws::XRay::TraceUser'
+                          },
+               'Revision' => {
+                               'type' => 'Int'
+                             },
+               'Http' => {
+                           'type' => 'XRay_Http',
+                           'class' => 'Paws::XRay::Http'
+                         },
+               'ErrorRootCauses' => {
+                                      'class' => 'Paws::XRay::ErrorRootCause',
+                                      'type' => 'ArrayRef[XRay_ErrorRootCause]'
+                                    },
+               'AvailabilityZones' => {
+                                        'class' => 'Paws::XRay::AvailabilityZoneDetail',
+                                        'type' => 'ArrayRef[XRay_AvailabilityZoneDetail]'
+                                      },
+               'ResponseTimeRootCauses' => {
+                                             'class' => 'Paws::XRay::ResponseTimeRootCause',
+                                             'type' => 'ArrayRef[XRay_ResponseTimeRootCause]'
+                                           },
+               'Duration' => {
+                               'type' => 'Num'
+                             },
+               'ResourceARNs' => {
+                                   'class' => 'Paws::XRay::ResourceARNDetail',
+                                   'type' => 'ArrayRef[XRay_ResourceARNDetail]'
+                                 },
+               'FaultRootCauses' => {
+                                      'class' => 'Paws::XRay::FaultRootCause',
+                                      'type' => 'ArrayRef[XRay_FaultRootCause]'
+                                    },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,12 +140,12 @@ Metadata generated from the segment documents in a trace.
 =head1 ATTRIBUTES
 
 
-=head2 Annotations => L<Paws::XRay::Annotations>
+=head2 Annotations => XRay_Annotations
 
   Annotations from the trace's segment documents.
 
 
-=head2 AvailabilityZones => ArrayRef[L<Paws::XRay::AvailabilityZoneDetail>]
+=head2 AvailabilityZones => ArrayRef[XRay_AvailabilityZoneDetail]
 
   A list of availability zones for any zone corresponding to the trace
 segments.
@@ -72,18 +157,18 @@ segments.
 segment and the end time of the last segment that completed.
 
 
-=head2 EntryPoint => L<Paws::XRay::ServiceId>
+=head2 EntryPoint => XRay_ServiceId
 
   The root of a trace.
 
 
-=head2 ErrorRootCauses => ArrayRef[L<Paws::XRay::ErrorRootCause>]
+=head2 ErrorRootCauses => ArrayRef[XRay_ErrorRootCause]
 
   A collection of ErrorRootCause structures corresponding to the trace
 segments.
 
 
-=head2 FaultRootCauses => ArrayRef[L<Paws::XRay::FaultRootCause>]
+=head2 FaultRootCauses => ArrayRef[XRay_FaultRootCause]
 
   A collection of FaultRootCause structures corresponding to the the
 trace segments.
@@ -104,7 +189,7 @@ trace segments.
   One or more of the segment documents has a 429 throttling error.
 
 
-=head2 Http => L<Paws::XRay::Http>
+=head2 Http => XRay_Http
 
   Information about the HTTP request served by the trace.
 
@@ -115,7 +200,7 @@ trace segments.
 segments and subsegments.
 
 
-=head2 InstanceIds => ArrayRef[L<Paws::XRay::InstanceIdDetail>]
+=head2 InstanceIds => ArrayRef[XRay_InstanceIdDetail]
 
   A list of EC2 instance IDs for any instance corresponding to the trace
 segments.
@@ -131,7 +216,7 @@ segments.
   The matched time stamp of a defined event.
 
 
-=head2 ResourceARNs => ArrayRef[L<Paws::XRay::ResourceARNDetail>]
+=head2 ResourceARNs => ArrayRef[XRay_ResourceARNDetail]
 
   A list of resource ARNs for any resource corresponding to the trace
 segments.
@@ -146,7 +231,7 @@ the duration measures the amount of time before the last traced
 activity completes.
 
 
-=head2 ResponseTimeRootCauses => ArrayRef[L<Paws::XRay::ResponseTimeRootCause>]
+=head2 ResponseTimeRootCauses => ArrayRef[XRay_ResponseTimeRootCause]
 
   A collection of ResponseTimeRootCause structures corresponding to the
 trace segments.
@@ -157,12 +242,12 @@ trace segments.
   The revision number of a trace.
 
 
-=head2 ServiceIds => ArrayRef[L<Paws::XRay::ServiceId>]
+=head2 ServiceIds => ArrayRef[XRay_ServiceId]
 
   Service IDs from the trace's segment documents.
 
 
-=head2 Users => ArrayRef[L<Paws::XRay::TraceUser>]
+=head2 Users => ArrayRef[XRay_TraceUser]
 
   Users from the trace's segment documents.
 

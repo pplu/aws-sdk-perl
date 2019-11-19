@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::DeleteUserEndpointsResponse;
-  use Moose;
-  has EndpointsResponse => (is => 'ro', isa => 'Paws::Pinpoint::EndpointsResponse', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'EndpointsResponse');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EndpointsResponse/;
+  has EndpointsResponse => (is => 'ro', isa => Pinpoint_EndpointsResponse, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'EndpointsResponse' => 1
+                  },
+  'types' => {
+               'EndpointsResponse' => {
+                                        'class' => 'Paws::Pinpoint::EndpointsResponse',
+                                        'type' => 'Pinpoint_EndpointsResponse'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::DeleteUserEndpointsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EndpointsResponse => L<Paws::Pinpoint::EndpointsResponse>
+=head2 B<REQUIRED> EndpointsResponse => Pinpoint_EndpointsResponse
 
 
 

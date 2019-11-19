@@ -1,9 +1,31 @@
 
 package Paws::EC2::CreateInternetGatewayResult;
-  use Moose;
-  has InternetGateway => (is => 'ro', isa => 'Paws::EC2::InternetGateway', request_name => 'internetGateway', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_InternetGateway/;
+  has InternetGateway => (is => 'ro', isa => EC2_InternetGateway);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InternetGateway' => 'internetGateway'
+                     },
+  'types' => {
+               'InternetGateway' => {
+                                      'class' => 'Paws::EC2::InternetGateway',
+                                      'type' => 'EC2_InternetGateway'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::CreateInternetGatewayResult
 =head1 ATTRIBUTES
 
 
-=head2 InternetGateway => L<Paws::EC2::InternetGateway>
+=head2 InternetGateway => EC2_InternetGateway
 
 Information about the internet gateway.
 

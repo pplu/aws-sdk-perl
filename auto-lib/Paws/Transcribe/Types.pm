@@ -1,0 +1,33 @@
+package Paws::Transcribe::Types;
+  use Type::Library qw/-base/;
+  use Type::Utils qw/class_type/;
+
+  class_type Transcribe_BadRequestException, { class => 'Paws::Transcribe::BadRequestException' };
+  class_type Transcribe_ConflictException, { class => 'Paws::Transcribe::ConflictException' };
+  class_type Transcribe_CreateVocabularyRequest, { class => 'Paws::Transcribe::CreateVocabularyRequest' };
+  class_type Transcribe_CreateVocabularyResponse, { class => 'Paws::Transcribe::CreateVocabularyResponse' };
+  class_type Transcribe_DeleteTranscriptionJobRequest, { class => 'Paws::Transcribe::DeleteTranscriptionJobRequest' };
+  class_type Transcribe_DeleteVocabularyRequest, { class => 'Paws::Transcribe::DeleteVocabularyRequest' };
+  class_type Transcribe_GetTranscriptionJobRequest, { class => 'Paws::Transcribe::GetTranscriptionJobRequest' };
+  class_type Transcribe_GetTranscriptionJobResponse, { class => 'Paws::Transcribe::GetTranscriptionJobResponse' };
+  class_type Transcribe_GetVocabularyRequest, { class => 'Paws::Transcribe::GetVocabularyRequest' };
+  class_type Transcribe_GetVocabularyResponse, { class => 'Paws::Transcribe::GetVocabularyResponse' };
+  class_type Transcribe_InternalFailureException, { class => 'Paws::Transcribe::InternalFailureException' };
+  class_type Transcribe_LimitExceededException, { class => 'Paws::Transcribe::LimitExceededException' };
+  class_type Transcribe_ListTranscriptionJobsRequest, { class => 'Paws::Transcribe::ListTranscriptionJobsRequest' };
+  class_type Transcribe_ListTranscriptionJobsResponse, { class => 'Paws::Transcribe::ListTranscriptionJobsResponse' };
+  class_type Transcribe_ListVocabulariesRequest, { class => 'Paws::Transcribe::ListVocabulariesRequest' };
+  class_type Transcribe_ListVocabulariesResponse, { class => 'Paws::Transcribe::ListVocabulariesResponse' };
+  class_type Transcribe_Media, { class => 'Paws::Transcribe::Media' };
+  class_type Transcribe_NotFoundException, { class => 'Paws::Transcribe::NotFoundException' };
+  class_type Transcribe_Settings, { class => 'Paws::Transcribe::Settings' };
+  class_type Transcribe_StartTranscriptionJobRequest, { class => 'Paws::Transcribe::StartTranscriptionJobRequest' };
+  class_type Transcribe_StartTranscriptionJobResponse, { class => 'Paws::Transcribe::StartTranscriptionJobResponse' };
+  class_type Transcribe_Transcript, { class => 'Paws::Transcribe::Transcript' };
+  class_type Transcribe_TranscriptionJob, { class => 'Paws::Transcribe::TranscriptionJob' };
+  class_type Transcribe_TranscriptionJobSummary, { class => 'Paws::Transcribe::TranscriptionJobSummary' };
+  class_type Transcribe_UpdateVocabularyRequest, { class => 'Paws::Transcribe::UpdateVocabularyRequest' };
+  class_type Transcribe_UpdateVocabularyResponse, { class => 'Paws::Transcribe::UpdateVocabularyResponse' };
+  class_type Transcribe_VocabularyInfo, { class => 'Paws::Transcribe::VocabularyInfo' };
+
+1;

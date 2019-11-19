@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::ExportTaskExecutionInfo;
-  use Moose;
-  has CompletionTime => (is => 'ro', isa => 'Int', request_name => 'completionTime', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has CompletionTime => (is => 'ro', isa => Int);
+  has CreationTime => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'CompletionTime' => 'completionTime'
+                     },
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Int'
+                                 },
+               'CompletionTime' => {
+                                     'type' => 'Int'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

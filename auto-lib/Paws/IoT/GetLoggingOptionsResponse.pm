@@ -1,10 +1,34 @@
 
 package Paws::IoT::GetLoggingOptionsResponse;
-  use Moose;
-  has LogLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logLevel');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has LogLevel => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'LogLevel' => 'logLevel'
+                     },
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'LogLevel' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

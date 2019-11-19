@@ -1,18 +1,76 @@
 
 package Paws::IoT::DescribeThingGroupResponse;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'indexName');
-  has QueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryString');
-  has QueryVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryVersion');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has ThingGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingGroupArn');
-  has ThingGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingGroupId');
-  has ThingGroupMetadata => (is => 'ro', isa => 'Paws::IoT::ThingGroupMetadata', traits => ['NameInRequest'], request_name => 'thingGroupMetadata');
-  has ThingGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingGroupName');
-  has ThingGroupProperties => (is => 'ro', isa => 'Paws::IoT::ThingGroupProperties', traits => ['NameInRequest'], request_name => 'thingGroupProperties');
-  has Version => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw/IoT_ThingGroupMetadata IoT_ThingGroupProperties/;
+  has IndexName => (is => 'ro', isa => Str);
+  has QueryString => (is => 'ro', isa => Str);
+  has QueryVersion => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has ThingGroupArn => (is => 'ro', isa => Str);
+  has ThingGroupId => (is => 'ro', isa => Str);
+  has ThingGroupMetadata => (is => 'ro', isa => IoT_ThingGroupMetadata);
+  has ThingGroupName => (is => 'ro', isa => Str);
+  has ThingGroupProperties => (is => 'ro', isa => IoT_ThingGroupProperties);
+  has Version => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'QueryString' => 'queryString',
+                       'Status' => 'status',
+                       'IndexName' => 'indexName',
+                       'ThingGroupMetadata' => 'thingGroupMetadata',
+                       'ThingGroupId' => 'thingGroupId',
+                       'ThingGroupArn' => 'thingGroupArn',
+                       'ThingGroupProperties' => 'thingGroupProperties',
+                       'Version' => 'version',
+                       'QueryVersion' => 'queryVersion',
+                       'ThingGroupName' => 'thingGroupName'
+                     },
+  'types' => {
+               'ThingGroupArn' => {
+                                    'type' => 'Str'
+                                  },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'QueryVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'ThingGroupName' => {
+                                     'type' => 'Str'
+                                   },
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'ThingGroupId' => {
+                                   'type' => 'Str'
+                                 },
+               'ThingGroupProperties' => {
+                                           'type' => 'IoT_ThingGroupProperties',
+                                           'class' => 'Paws::IoT::ThingGroupProperties'
+                                         },
+               'QueryString' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ThingGroupMetadata' => {
+                                         'type' => 'IoT_ThingGroupMetadata',
+                                         'class' => 'Paws::IoT::ThingGroupMetadata'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +112,7 @@ The thing group ARN.
 The thing group ID.
 
 
-=head2 ThingGroupMetadata => L<Paws::IoT::ThingGroupMetadata>
+=head2 ThingGroupMetadata => IoT_ThingGroupMetadata
 
 Thing group metadata.
 
@@ -64,7 +122,7 @@ Thing group metadata.
 The name of the thing group.
 
 
-=head2 ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>
+=head2 ThingGroupProperties => IoT_ThingGroupProperties
 
 The thing group properties.
 

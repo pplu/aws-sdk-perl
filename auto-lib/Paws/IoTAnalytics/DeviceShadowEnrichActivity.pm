@@ -1,10 +1,52 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DeviceShadowEnrichActivity;
-  use Moose;
-  has Attribute => (is => 'ro', isa => 'Str', request_name => 'attribute', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Next => (is => 'ro', isa => 'Str', request_name => 'next', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has Attribute => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Next => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has ThingName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'Attribute' => {
+                                'type' => 'Str'
+                              },
+               'Next' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'Name' => 'name',
+                       'ThingName' => 'thingName',
+                       'Attribute' => 'attribute',
+                       'Next' => 'next'
+                     },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'Name' => 1,
+                    'Attribute' => 1,
+                    'ThingName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

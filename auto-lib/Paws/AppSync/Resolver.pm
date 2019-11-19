@@ -1,13 +1,62 @@
+# Generated from default/object.tt
 package Paws::AppSync::Resolver;
-  use Moose;
-  has DataSourceName => (is => 'ro', isa => 'Str', request_name => 'dataSourceName', traits => ['NameInRequest']);
-  has FieldName => (is => 'ro', isa => 'Str', request_name => 'fieldName', traits => ['NameInRequest']);
-  has Kind => (is => 'ro', isa => 'Str', request_name => 'kind', traits => ['NameInRequest']);
-  has PipelineConfig => (is => 'ro', isa => 'Paws::AppSync::PipelineConfig', request_name => 'pipelineConfig', traits => ['NameInRequest']);
-  has RequestMappingTemplate => (is => 'ro', isa => 'Str', request_name => 'requestMappingTemplate', traits => ['NameInRequest']);
-  has ResolverArn => (is => 'ro', isa => 'Str', request_name => 'resolverArn', traits => ['NameInRequest']);
-  has ResponseMappingTemplate => (is => 'ro', isa => 'Str', request_name => 'responseMappingTemplate', traits => ['NameInRequest']);
-  has TypeName => (is => 'ro', isa => 'Str', request_name => 'typeName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw/AppSync_PipelineConfig/;
+  has DataSourceName => (is => 'ro', isa => Str);
+  has FieldName => (is => 'ro', isa => Str);
+  has Kind => (is => 'ro', isa => Str);
+  has PipelineConfig => (is => 'ro', isa => AppSync_PipelineConfig);
+  has RequestMappingTemplate => (is => 'ro', isa => Str);
+  has ResolverArn => (is => 'ro', isa => Str);
+  has ResponseMappingTemplate => (is => 'ro', isa => Str);
+  has TypeName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RequestMappingTemplate' => 'requestMappingTemplate',
+                       'ResolverArn' => 'resolverArn',
+                       'TypeName' => 'typeName',
+                       'FieldName' => 'fieldName',
+                       'PipelineConfig' => 'pipelineConfig',
+                       'ResponseMappingTemplate' => 'responseMappingTemplate',
+                       'Kind' => 'kind',
+                       'DataSourceName' => 'dataSourceName'
+                     },
+  'types' => {
+               'ResponseMappingTemplate' => {
+                                              'type' => 'Str'
+                                            },
+               'DataSourceName' => {
+                                     'type' => 'Str'
+                                   },
+               'Kind' => {
+                           'type' => 'Str'
+                         },
+               'ResolverArn' => {
+                                  'type' => 'Str'
+                                },
+               'RequestMappingTemplate' => {
+                                             'type' => 'Str'
+                                           },
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'FieldName' => {
+                                'type' => 'Str'
+                              },
+               'PipelineConfig' => {
+                                     'type' => 'AppSync_PipelineConfig',
+                                     'class' => 'Paws::AppSync::PipelineConfig'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +125,7 @@ sources.
 
 
 
-=head2 PipelineConfig => L<Paws::AppSync::PipelineConfig>
+=head2 PipelineConfig => AppSync_PipelineConfig
 
   The C<PipelineConfig>.
 

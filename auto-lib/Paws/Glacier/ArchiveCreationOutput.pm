@@ -1,11 +1,39 @@
 
 package Paws::Glacier::ArchiveCreationOutput;
-  use Moose;
-  has ArchiveId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-archive-id');
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sha256-tree-hash');
-  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has ArchiveId => (is => 'ro', isa => Str);
+  has Checksum => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'Checksum' => 'x-amz-sha256-tree-hash',
+                       'Location' => 'Location',
+                       'ArchiveId' => 'x-amz-archive-id'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ArchiveId' => {
+                                'type' => 'Str'
+                              },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'Checksum' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::EKS::VpcConfigResponse;
-  use Moose;
-  has ClusterSecurityGroupId => (is => 'ro', isa => 'Str', request_name => 'clusterSecurityGroupId', traits => ['NameInRequest']);
-  has EndpointPrivateAccess => (is => 'ro', isa => 'Bool', request_name => 'endpointPrivateAccess', traits => ['NameInRequest']);
-  has EndpointPublicAccess => (is => 'ro', isa => 'Bool', request_name => 'endpointPublicAccess', traits => ['NameInRequest']);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::EKS::Types qw//;
+  has ClusterSecurityGroupId => (is => 'ro', isa => Str);
+  has EndpointPrivateAccess => (is => 'ro', isa => Bool);
+  has EndpointPublicAccess => (is => 'ro', isa => Bool);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndpointPublicAccess' => {
+                                           'type' => 'Bool'
+                                         },
+               'ClusterSecurityGroupId' => {
+                                             'type' => 'Str'
+                                           },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'EndpointPrivateAccess' => {
+                                            'type' => 'Bool'
+                                          }
+             },
+  'NameInRequest' => {
+                       'EndpointPrivateAccess' => 'endpointPrivateAccess',
+                       'SecurityGroupIds' => 'securityGroupIds',
+                       'VpcId' => 'vpcId',
+                       'SubnetIds' => 'subnetIds',
+                       'ClusterSecurityGroupId' => 'clusterSecurityGroupId',
+                       'EndpointPublicAccess' => 'endpointPublicAccess'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

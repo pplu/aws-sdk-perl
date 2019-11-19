@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::PipelineOutputConfig;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str');
-  has Permissions => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Permission]');
-  has StorageClass => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_Permission/;
+  has Bucket => (is => 'ro', isa => Str);
+  has Permissions => (is => 'ro', isa => ArrayRef[ElasticTranscoder_Permission]);
+  has StorageClass => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Permissions' => {
+                                  'class' => 'Paws::ElasticTranscoder::Permission',
+                                  'type' => 'ArrayRef[ElasticTranscoder_Permission]'
+                                },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +99,7 @@ Amazon S3 storage class, omit OutputBucket and specify values for
 C<ContentConfig> and C<ThumbnailConfig> instead.
 
 
-=head2 Permissions => ArrayRef[L<Paws::ElasticTranscoder::Permission>]
+=head2 Permissions => ArrayRef[ElasticTranscoder_Permission]
 
   Optional. The C<Permissions> object specifies which users and/or
 predefined Amazon S3 groups you want to have access to transcoded files

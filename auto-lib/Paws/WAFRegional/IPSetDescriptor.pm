@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::IPSetDescriptor;
-  use Moose;
-  has Type => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw//;
+  has Type => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Value' => 1
+                  },
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Value' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::EMR::VolumeSpecification;
-  use Moose;
-  has Iops => (is => 'ro', isa => 'Int');
-  has SizeInGB => (is => 'ro', isa => 'Int', required => 1);
-  has VolumeType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::EMR::Types qw//;
+  has Iops => (is => 'ro', isa => Int);
+  has SizeInGB => (is => 'ro', isa => Int, required => 1);
+  has VolumeType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SizeInGB' => 1,
+                    'VolumeType' => 1
+                  },
+  'types' => {
+               'SizeInGB' => {
+                               'type' => 'Int'
+                             },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

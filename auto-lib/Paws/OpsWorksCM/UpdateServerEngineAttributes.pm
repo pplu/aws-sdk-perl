@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorksCM::UpdateServerEngineAttributes;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has AttributeValue => (is => 'ro', isa => 'Str');
-  has ServerName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorksCM::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AttributeValue => (is => 'ro', isa => Str, predicate => 1);
+  has ServerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateServerEngineAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorksCM::UpdateServerEngineAttributesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateServerEngineAttributes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::OpsWorksCM::UpdateServerEngineAttributesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeValue' => {
+                                     'type' => 'Str'
+                                   },
+               'ServerName' => {
+                                 'type' => 'Str'
+                               },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ServerName' => 1,
+                    'AttributeName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

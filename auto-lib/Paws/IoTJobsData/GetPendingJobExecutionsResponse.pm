@@ -1,10 +1,36 @@
 
 package Paws::IoTJobsData::GetPendingJobExecutionsResponse;
-  use Moose;
-  has InProgressJobs => (is => 'ro', isa => 'ArrayRef[Paws::IoTJobsData::JobExecutionSummary]', traits => ['NameInRequest'], request_name => 'inProgressJobs');
-  has QueuedJobs => (is => 'ro', isa => 'ArrayRef[Paws::IoTJobsData::JobExecutionSummary]', traits => ['NameInRequest'], request_name => 'queuedJobs');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTJobsData::Types qw/IoTJobsData_JobExecutionSummary/;
+  has InProgressJobs => (is => 'ro', isa => ArrayRef[IoTJobsData_JobExecutionSummary]);
+  has QueuedJobs => (is => 'ro', isa => ArrayRef[IoTJobsData_JobExecutionSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InProgressJobs' => {
+                                     'class' => 'Paws::IoTJobsData::JobExecutionSummary',
+                                     'type' => 'ArrayRef[IoTJobsData_JobExecutionSummary]'
+                                   },
+               'QueuedJobs' => {
+                                 'class' => 'Paws::IoTJobsData::JobExecutionSummary',
+                                 'type' => 'ArrayRef[IoTJobsData_JobExecutionSummary]'
+                               }
+             },
+  'NameInRequest' => {
+                       'QueuedJobs' => 'queuedJobs',
+                       'InProgressJobs' => 'inProgressJobs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,12 +42,12 @@ Paws::IoTJobsData::GetPendingJobExecutionsResponse
 =head1 ATTRIBUTES
 
 
-=head2 InProgressJobs => ArrayRef[L<Paws::IoTJobsData::JobExecutionSummary>]
+=head2 InProgressJobs => ArrayRef[IoTJobsData_JobExecutionSummary]
 
 A list of JobExecutionSummary objects with status IN_PROGRESS.
 
 
-=head2 QueuedJobs => ArrayRef[L<Paws::IoTJobsData::JobExecutionSummary>]
+=head2 QueuedJobs => ArrayRef[IoTJobsData_JobExecutionSummary]
 
 A list of JobExecutionSummary objects with status QUEUED.
 

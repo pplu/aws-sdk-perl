@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::GameLift::MatchmakingRuleSet;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has RuleSetBody => (is => 'ro', isa => 'Str', required => 1);
-  has RuleSetName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has RuleSetBody => (is => 'ro', isa => Str, required => 1);
+  has RuleSetName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RuleSetName' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'RuleSetBody' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'RuleSetBody' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

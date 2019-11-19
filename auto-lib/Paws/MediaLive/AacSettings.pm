@@ -1,14 +1,66 @@
+# Generated from default/object.tt
 package Paws::MediaLive::AacSettings;
-  use Moose;
-  has Bitrate => (is => 'ro', isa => 'Num', request_name => 'bitrate', traits => ['NameInRequest']);
-  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
-  has InputType => (is => 'ro', isa => 'Str', request_name => 'inputType', traits => ['NameInRequest']);
-  has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
-  has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
-  has RawFormat => (is => 'ro', isa => 'Str', request_name => 'rawFormat', traits => ['NameInRequest']);
-  has SampleRate => (is => 'ro', isa => 'Num', request_name => 'sampleRate', traits => ['NameInRequest']);
-  has Spec => (is => 'ro', isa => 'Str', request_name => 'spec', traits => ['NameInRequest']);
-  has VbrQuality => (is => 'ro', isa => 'Str', request_name => 'vbrQuality', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num Str/;
+  use Paws::MediaLive::Types qw//;
+  has Bitrate => (is => 'ro', isa => Num);
+  has CodingMode => (is => 'ro', isa => Str);
+  has InputType => (is => 'ro', isa => Str);
+  has Profile => (is => 'ro', isa => Str);
+  has RateControlMode => (is => 'ro', isa => Str);
+  has RawFormat => (is => 'ro', isa => Str);
+  has SampleRate => (is => 'ro', isa => Num);
+  has Spec => (is => 'ro', isa => Str);
+  has VbrQuality => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SampleRate' => {
+                                 'type' => 'Num'
+                               },
+               'VbrQuality' => {
+                                 'type' => 'Str'
+                               },
+               'Bitrate' => {
+                              'type' => 'Num'
+                            },
+               'RawFormat' => {
+                                'type' => 'Str'
+                              },
+               'InputType' => {
+                                'type' => 'Str'
+                              },
+               'Spec' => {
+                           'type' => 'Str'
+                         },
+               'RateControlMode' => {
+                                      'type' => 'Str'
+                                    },
+               'Profile' => {
+                              'type' => 'Str'
+                            },
+               'CodingMode' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'VbrQuality' => 'vbrQuality',
+                       'SampleRate' => 'sampleRate',
+                       'Bitrate' => 'bitrate',
+                       'RawFormat' => 'rawFormat',
+                       'InputType' => 'inputType',
+                       'RateControlMode' => 'rateControlMode',
+                       'Profile' => 'profile',
+                       'CodingMode' => 'codingMode',
+                       'Spec' => 'spec'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

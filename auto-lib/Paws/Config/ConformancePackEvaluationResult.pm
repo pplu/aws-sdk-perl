@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::Config::ConformancePackEvaluationResult;
-  use Moose;
-  has Annotation => (is => 'ro', isa => 'Str');
-  has ComplianceType => (is => 'ro', isa => 'Str', required => 1);
-  has ConfigRuleInvokedTime => (is => 'ro', isa => 'Str', required => 1);
-  has EvaluationResultIdentifier => (is => 'ro', isa => 'Paws::Config::EvaluationResultIdentifier', required => 1);
-  has ResultRecordedTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_EvaluationResultIdentifier/;
+  has Annotation => (is => 'ro', isa => Str);
+  has ComplianceType => (is => 'ro', isa => Str, required => 1);
+  has ConfigRuleInvokedTime => (is => 'ro', isa => Str, required => 1);
+  has EvaluationResultIdentifier => (is => 'ro', isa => Config_EvaluationResultIdentifier, required => 1);
+  has ResultRecordedTime => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResultRecordedTime' => 1,
+                    'ConfigRuleInvokedTime' => 1,
+                    'EvaluationResultIdentifier' => 1,
+                    'ComplianceType' => 1
+                  },
+  'types' => {
+               'ResultRecordedTime' => {
+                                         'type' => 'Str'
+                                       },
+               'EvaluationResultIdentifier' => {
+                                                 'class' => 'Paws::Config::EvaluationResultIdentifier',
+                                                 'type' => 'Config_EvaluationResultIdentifier'
+                                               },
+               'ConfigRuleInvokedTime' => {
+                                            'type' => 'Str'
+                                          },
+               'Annotation' => {
+                                 'type' => 'Str'
+                               },
+               'ComplianceType' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +96,7 @@ The allowed values are C<COMPLIANT> and C<NON_COMPLIANT>.
   The time when AWS Config rule evaluated AWS resource.
 
 
-=head2 B<REQUIRED> EvaluationResultIdentifier => L<Paws::Config::EvaluationResultIdentifier>
+=head2 B<REQUIRED> EvaluationResultIdentifier => Config_EvaluationResultIdentifier
 
   
 

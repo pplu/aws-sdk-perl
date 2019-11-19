@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::Amplify::CustomRule;
-  use Moose;
-  has Condition => (is => 'ro', isa => 'Str', request_name => 'condition', traits => ['NameInRequest']);
-  has Source => (is => 'ro', isa => 'Str', request_name => 'source', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Target => (is => 'ro', isa => 'Str', request_name => 'target', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw//;
+  has Condition => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str);
+  has Target => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'Condition' => {
+                                'type' => 'Str'
+                              },
+               'Target' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Source' => 'source',
+                       'Condition' => 'condition',
+                       'Status' => 'status',
+                       'Target' => 'target'
+                     },
+  'IsRequired' => {
+                    'Source' => 1,
+                    'Target' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

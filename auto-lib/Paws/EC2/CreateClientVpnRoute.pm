@@ -1,18 +1,53 @@
 
 package Paws::EC2::CreateClientVpnRoute;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has DestinationCidrBlock => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has TargetVpcSubnetId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has ClientVpnEndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationCidrBlock => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has TargetVpcSubnetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClientVpnRoute');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateClientVpnRouteResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateClientVpnRoute');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateClientVpnRouteResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DestinationCidrBlock' => {
+                                           'type' => 'Str'
+                                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'TargetVpcSubnetId' => {
+                                        'type' => 'Str'
+                                      },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'TargetVpcSubnetId' => 1,
+                    'DestinationCidrBlock' => 1,
+                    'ClientVpnEndpointId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

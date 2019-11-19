@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Greengrass::BulkDeploymentMetrics;
-  use Moose;
-  has InvalidInputRecords => (is => 'ro', isa => 'Int');
-  has RecordsProcessed => (is => 'ro', isa => 'Int');
-  has RetryAttempts => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Greengrass::Types qw//;
+  has InvalidInputRecords => (is => 'ro', isa => Int);
+  has RecordsProcessed => (is => 'ro', isa => Int);
+  has RetryAttempts => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InvalidInputRecords' => {
+                                          'type' => 'Int'
+                                        },
+               'RetryAttempts' => {
+                                    'type' => 'Int'
+                                  },
+               'RecordsProcessed' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,41 @@
 
 package Paws::CognitoSync::DescribeIdentityUsage;
-  use Moose;
-  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId', required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoSync::Types qw//;
+  has IdentityId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeIdentityUsage');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::DescribeIdentityUsageResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeIdentityUsage');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoSync::DescribeIdentityUsageResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'IdentityId' => 'IdentityId',
+                    'IdentityPoolId' => 'IdentityPoolId'
+                  },
+  'types' => {
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'IdentityPoolId' => 1,
+                    'IdentityId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

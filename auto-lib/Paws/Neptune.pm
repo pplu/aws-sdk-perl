@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::Neptune;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'rds' }
   sub signing_name { 'rds' }
   sub version { '2014-10-31' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -743,7 +745,7 @@ subscription.
 
 =item ResourceName => Str
 
-=item Tags => ArrayRef[L<Paws::Neptune::Tag>]
+=item Tags => ArrayRef[Neptune_Tag]
 
 
 =back
@@ -789,7 +791,7 @@ DB instance).
 
 =item TargetDBClusterParameterGroupIdentifier => Str
 
-=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+=item [Tags => ArrayRef[Neptune_Tag]]
 
 
 =back
@@ -815,7 +817,7 @@ Copies the specified DB cluster parameter group.
 
 =item [PreSignedUrl => Str]
 
-=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+=item [Tags => ArrayRef[Neptune_Tag]]
 
 
 =back
@@ -843,7 +845,7 @@ You can't copy from one AWS Region to another.
 
 =item TargetDBParameterGroupIdentifier => Str
 
-=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+=item [Tags => ArrayRef[Neptune_Tag]]
 
 
 =back
@@ -901,7 +903,7 @@ Copies the specified DB parameter group.
 
 =item [StorageEncrypted => Bool]
 
-=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+=item [Tags => ArrayRef[Neptune_Tag]]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -929,7 +931,7 @@ instance.
 
 =item Description => Str
 
-=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+=item [Tags => ArrayRef[Neptune_Tag]]
 
 
 =back
@@ -975,7 +977,7 @@ parameter group has been created or modified.
 
 =item DBClusterSnapshotIdentifier => Str
 
-=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+=item [Tags => ArrayRef[Neptune_Tag]]
 
 
 =back
@@ -1065,7 +1067,7 @@ Creates a snapshot of a DB cluster.
 
 =item [StorageType => Str]
 
-=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+=item [Tags => ArrayRef[Neptune_Tag]]
 
 =item [TdeCredentialArn => Str]
 
@@ -1095,7 +1097,7 @@ Creates a new DB instance.
 
 =item Description => Str
 
-=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+=item [Tags => ArrayRef[Neptune_Tag]]
 
 
 =back
@@ -1139,7 +1141,7 @@ has been created or modified.
 
 =item SubnetIds => ArrayRef[Str|Undef]
 
-=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+=item [Tags => ArrayRef[Neptune_Tag]]
 
 
 =back
@@ -1168,7 +1170,7 @@ one subnet in at least two AZs in the AWS Region.
 
 =item [SourceType => Str]
 
-=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+=item [Tags => ArrayRef[Neptune_Tag]]
 
 
 =back
@@ -1354,7 +1356,7 @@ Deletes an event notification subscription.
 
 =item [DBClusterParameterGroupName => Str]
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [Marker => Str]
 
@@ -1379,7 +1381,7 @@ group.
 
 =item DBClusterParameterGroupName => Str
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [Marker => Str]
 
@@ -1404,7 +1406,7 @@ parameter group.
 
 =item [DBClusterIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [Marker => Str]
 
@@ -1457,7 +1459,7 @@ or private, use the ModifyDBClusterSnapshotAttribute API action.
 
 =item [DBClusterSnapshotIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [IncludePublic => Bool]
 
@@ -1492,7 +1494,7 @@ supports pagination.
 
 =item [EngineVersion => Str]
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [ListSupportedCharacterSets => Bool]
 
@@ -1518,7 +1520,7 @@ Returns a list of the available DB engines.
 
 =item [DBInstanceIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [Marker => Str]
 
@@ -1541,7 +1543,7 @@ pagination.
 
 =item [DBParameterGroupName => Str]
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [Marker => Str]
 
@@ -1565,7 +1567,7 @@ description of the specified DB parameter group.
 
 =item DBParameterGroupName => Str
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [Marker => Str]
 
@@ -1590,7 +1592,7 @@ group.
 
 =item [DBSubnetGroupName => Str]
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [Marker => Str]
 
@@ -1617,7 +1619,7 @@ For an overview of CIDR ranges, go to the Wikipedia Tutorial
 
 =item DBParameterGroupFamily => Str
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [Marker => Str]
 
@@ -1640,7 +1642,7 @@ cluster database engine.
 
 =item DBParameterGroupFamily => Str
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [Marker => Str]
 
@@ -1661,7 +1663,7 @@ specified database engine.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [SourceType => Str]
 
@@ -1686,7 +1688,7 @@ specified, for a specified source type.
 
 =item [EventCategories => ArrayRef[Str|Undef]]
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [Marker => Str]
 
@@ -1716,7 +1718,7 @@ as a parameter. By default, the past hour of events are returned.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [Marker => Str]
 
@@ -1749,7 +1751,7 @@ subscription.
 
 =item [EngineVersion => Str]
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [LicenseModel => Str]
 
@@ -1774,7 +1776,7 @@ engine.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 =item [Marker => Str]
 
@@ -1846,7 +1848,7 @@ use those endpoint addresses when the failover is complete.
 
 =item ResourceName => Str
 
-=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+=item [Filters => ArrayRef[Neptune_Filter]]
 
 
 =back
@@ -1868,7 +1870,7 @@ Lists all tags on an Amazon Neptune resource.
 
 =item [BackupRetentionPeriod => Int]
 
-=item [CloudwatchLogsExportConfiguration => L<Paws::Neptune::CloudwatchLogsExportConfiguration>]
+=item [CloudwatchLogsExportConfiguration => Neptune_CloudwatchLogsExportConfiguration]
 
 =item [DBClusterParameterGroupName => Str]
 
@@ -1908,7 +1910,7 @@ values in the request.
 
 =item DBClusterParameterGroupName => Str
 
-=item Parameters => ArrayRef[L<Paws::Neptune::Parameter>]
+=item Parameters => ArrayRef[Neptune_Parameter]
 
 
 =back
@@ -1996,7 +1998,7 @@ private, use the DescribeDBClusterSnapshotAttributes API action.
 
 =item [CACertificateIdentifier => Str]
 
-=item [CloudwatchLogsExportConfiguration => L<Paws::Neptune::CloudwatchLogsExportConfiguration>]
+=item [CloudwatchLogsExportConfiguration => Neptune_CloudwatchLogsExportConfiguration]
 
 =item [CopyTagsToSnapshot => Bool]
 
@@ -2074,7 +2076,7 @@ you call ModifyDBInstance.
 
 =item DBParameterGroupName => Str
 
-=item Parameters => ArrayRef[L<Paws::Neptune::Parameter>]
+=item Parameters => ArrayRef[Neptune_Parameter]
 
 
 =back
@@ -2260,7 +2262,7 @@ Removes metadata tags from an Amazon Neptune resource.
 
 =item DBClusterParameterGroupName => Str
 
-=item [Parameters => ArrayRef[L<Paws::Neptune::Parameter>]]
+=item [Parameters => ArrayRef[Neptune_Parameter]]
 
 =item [ResetAllParameters => Bool]
 
@@ -2290,7 +2292,7 @@ that you want the updated static parameter to apply to.
 
 =item DBParameterGroupName => Str
 
-=item [Parameters => ArrayRef[L<Paws::Neptune::Parameter>]]
+=item [Parameters => ArrayRef[Neptune_Parameter]]
 
 =item [ResetAllParameters => Bool]
 
@@ -2341,7 +2343,7 @@ or C<RebootDBInstance> request.
 
 =item [Port => Int]
 
-=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+=item [Tags => ArrayRef[Neptune_Tag]]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -2390,7 +2392,7 @@ created with the default security group.
 
 =item [RestoreType => Str]
 
-=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+=item [Tags => ArrayRef[Neptune_Tag]]
 
 =item [UseLatestRestorableTime => Bool]
 
@@ -2424,9 +2426,9 @@ completed and the DB cluster is available.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllDBClusterParameterGroups(sub { },[DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusterParameterGroups(sub { },[DBClusterParameterGroupName => Str, Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBClusterParameterGroups([DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusterParameterGroups([DBClusterParameterGroupName => Str, Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2436,9 +2438,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::DBClusterParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBClusterParameters(sub { },DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+=head2 DescribeAllDBClusterParameters(sub { },DBClusterParameterGroupName => Str, [Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int, Source => Str])
 
-=head2 DescribeAllDBClusterParameters(DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+=head2 DescribeAllDBClusterParameters(DBClusterParameterGroupName => Str, [Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int, Source => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2448,9 +2450,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::DBClusterParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBClusters(sub { },[DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusters(sub { },[DBClusterIdentifier => Str, Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2460,9 +2462,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::DBClusterMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBClusterSnapshots(sub { },[DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeAllDBClusterSnapshots(sub { },[DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[Neptune_Filter], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
-=head2 DescribeAllDBClusterSnapshots([DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeAllDBClusterSnapshots([DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[Neptune_Filter], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2472,9 +2474,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::DBClusterSnapshotMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBEngineVersions(sub { },[DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBEngineVersions(sub { },[DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[Neptune_Filter], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[Neptune_Filter], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2484,9 +2486,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::DBEngineVersionMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBInstances(sub { },[DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBInstances(sub { },[DBInstanceIdentifier => Str, Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBInstances([DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBInstances([DBInstanceIdentifier => Str, Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2496,9 +2498,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::DBInstanceMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBParameterGroups(sub { },[DBParameterGroupName => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBParameterGroups(sub { },[DBParameterGroupName => Str, Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBParameterGroups([DBParameterGroupName => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBParameterGroups([DBParameterGroupName => Str, Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2508,9 +2510,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::DBParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBParameters(sub { },DBParameterGroupName => Str, [Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+=head2 DescribeAllDBParameters(sub { },DBParameterGroupName => Str, [Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int, Source => Str])
 
-=head2 DescribeAllDBParameters(DBParameterGroupName => Str, [Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+=head2 DescribeAllDBParameters(DBParameterGroupName => Str, [Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int, Source => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2520,9 +2522,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::DBParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBSubnetGroups(sub { },[DBSubnetGroupName => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBSubnetGroups(sub { },[DBSubnetGroupName => Str, Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBSubnetGroups([DBSubnetGroupName => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBSubnetGroups([DBSubnetGroupName => Str, Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2532,9 +2534,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::DBSubnetGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEngineDefaultParameters(sub { },DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllEngineDefaultParameters(sub { },DBParameterGroupFamily => Str, [Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllEngineDefaultParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllEngineDefaultParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2544,9 +2546,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::DescribeEngineDefaultParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
 
-=head2 DescribeAllEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeAllEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2556,9 +2558,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::EventsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEventSubscriptions(sub { },[Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+=head2 DescribeAllEventSubscriptions(sub { },[Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
 
-=head2 DescribeAllEventSubscriptions([Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+=head2 DescribeAllEventSubscriptions([Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2568,9 +2570,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::EventSubscriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllOrderableDBInstanceOptions(sub { },Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
+=head2 DescribeAllOrderableDBInstanceOptions(sub { },Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[Neptune_Filter], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
 
-=head2 DescribeAllOrderableDBInstanceOptions(Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
+=head2 DescribeAllOrderableDBInstanceOptions(Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[Neptune_Filter], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2580,9 +2582,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Neptune::OrderableDBInstanceOptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllPendingMaintenanceActions(sub { },[Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+=head2 DescribeAllPendingMaintenanceActions(sub { },[Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
 
-=head2 DescribeAllPendingMaintenanceActions([Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+=head2 DescribeAllPendingMaintenanceActions([Filters => ArrayRef[Neptune_Filter], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

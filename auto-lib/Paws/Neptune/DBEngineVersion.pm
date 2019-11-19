@@ -1,17 +1,76 @@
+# Generated from default/object.tt
 package Paws::Neptune::DBEngineVersion;
-  use Moose;
-  has DBEngineDescription => (is => 'ro', isa => 'Str');
-  has DBEngineVersionDescription => (is => 'ro', isa => 'Str');
-  has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has DefaultCharacterSet => (is => 'ro', isa => 'Paws::Neptune::CharacterSet');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has ExportableLogTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::CharacterSet]', request_name => 'CharacterSet', traits => ['NameInRequest']);
-  has SupportedTimezones => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Timezone]', request_name => 'Timezone', traits => ['NameInRequest']);
-  has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => 'Bool');
-  has SupportsReadReplica => (is => 'ro', isa => 'Bool');
-  has ValidUpgradeTarget => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::UpgradeTarget]', request_name => 'UpgradeTarget', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::Neptune::Types qw/Neptune_Timezone Neptune_UpgradeTarget Neptune_CharacterSet/;
+  has DBEngineDescription => (is => 'ro', isa => Str);
+  has DBEngineVersionDescription => (is => 'ro', isa => Str);
+  has DBParameterGroupFamily => (is => 'ro', isa => Str);
+  has DefaultCharacterSet => (is => 'ro', isa => Neptune_CharacterSet);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has ExportableLogTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SupportedCharacterSets => (is => 'ro', isa => ArrayRef[Neptune_CharacterSet]);
+  has SupportedTimezones => (is => 'ro', isa => ArrayRef[Neptune_Timezone]);
+  has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => Bool);
+  has SupportsReadReplica => (is => 'ro', isa => Bool);
+  has ValidUpgradeTarget => (is => 'ro', isa => ArrayRef[Neptune_UpgradeTarget]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ValidUpgradeTarget' => 'UpgradeTarget',
+                       'SupportedCharacterSets' => 'CharacterSet',
+                       'SupportedTimezones' => 'Timezone'
+                     },
+  'types' => {
+               'DefaultCharacterSet' => {
+                                          'class' => 'Paws::Neptune::CharacterSet',
+                                          'type' => 'Neptune_CharacterSet'
+                                        },
+               'DBEngineDescription' => {
+                                          'type' => 'Str'
+                                        },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'SupportsLogExportsToCloudwatchLogs' => {
+                                                         'type' => 'Bool'
+                                                       },
+               'SupportedCharacterSets' => {
+                                             'type' => 'ArrayRef[Neptune_CharacterSet]',
+                                             'class' => 'Paws::Neptune::CharacterSet'
+                                           },
+               'DBEngineVersionDescription' => {
+                                                 'type' => 'Str'
+                                               },
+               'SupportedTimezones' => {
+                                         'class' => 'Paws::Neptune::Timezone',
+                                         'type' => 'ArrayRef[Neptune_Timezone]'
+                                       },
+               'ExportableLogTypes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'ValidUpgradeTarget' => {
+                                         'class' => 'Paws::Neptune::UpgradeTarget',
+                                         'type' => 'ArrayRef[Neptune_UpgradeTarget]'
+                                       },
+               'SupportsReadReplica' => {
+                                          'type' => 'Bool'
+                                        },
+               'DBParameterGroupFamily' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +122,7 @@ DescribeDBEngineVersions.
   The name of the DB parameter group family for the database engine.
 
 
-=head2 DefaultCharacterSet => L<Paws::Neptune::CharacterSet>
+=head2 DefaultCharacterSet => Neptune_CharacterSet
 
   The default character set for new instances of this engine version, if
 the C<CharacterSetName> parameter of the CreateDBInstance API is not
@@ -86,13 +145,13 @@ specified.
 CloudWatch Logs.
 
 
-=head2 SupportedCharacterSets => ArrayRef[L<Paws::Neptune::CharacterSet>]
+=head2 SupportedCharacterSets => ArrayRef[Neptune_CharacterSet]
 
   A list of the character sets supported by this engine for the
 C<CharacterSetName> parameter of the C<CreateDBInstance> action.
 
 
-=head2 SupportedTimezones => ArrayRef[L<Paws::Neptune::Timezone>]
+=head2 SupportedTimezones => ArrayRef[Neptune_Timezone]
 
   A list of the time zones supported by this engine for the C<Timezone>
 parameter of the C<CreateDBInstance> action.
@@ -109,7 +168,7 @@ the log types specified by ExportableLogTypes to CloudWatch Logs.
   Indicates whether the database engine version supports read replicas.
 
 
-=head2 ValidUpgradeTarget => ArrayRef[L<Paws::Neptune::UpgradeTarget>]
+=head2 ValidUpgradeTarget => ArrayRef[Neptune_UpgradeTarget]
 
   A list of engine versions that this database engine version can be
 upgraded to.

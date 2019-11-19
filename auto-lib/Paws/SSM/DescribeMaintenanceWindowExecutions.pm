@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::DescribeMaintenanceWindowExecutions;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::MaintenanceWindowFilter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has WindowId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::SSM::Types qw/SSM_MaintenanceWindowFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[SSM_MaintenanceWindowFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has WindowId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMaintenanceWindowExecutions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::DescribeMaintenanceWindowExecutionsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeMaintenanceWindowExecutions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::DescribeMaintenanceWindowExecutionsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filters' => {
+                              'class' => 'Paws::SSM::MaintenanceWindowFilter',
+                              'type' => 'ArrayRef[SSM_MaintenanceWindowFilter]'
+                            },
+               'WindowId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'WindowId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +88,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>]
+=head2 Filters => ArrayRef[SSM_MaintenanceWindowFilter]
 
 Each entry in the array is a structure containing:
 

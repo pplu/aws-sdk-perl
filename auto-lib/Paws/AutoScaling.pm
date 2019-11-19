@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::AutoScaling;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'autoscaling' }
   sub signing_name { 'autoscaling' }
   sub version { '2011-01-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -681,7 +683,7 @@ group.
 
 =item AutoScalingGroupName => Str
 
-=item ScheduledUpdateGroupActions => ArrayRef[L<Paws::AutoScaling::ScheduledUpdateGroupActionRequest>]
+=item ScheduledUpdateGroupActions => ArrayRef[AutoScaling_ScheduledUpdateGroupActionRequest]
 
 
 =back
@@ -783,15 +785,15 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =item [LaunchConfigurationName => Str]
 
-=item [LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>]
+=item [LaunchTemplate => AutoScaling_LaunchTemplateSpecification]
 
-=item [LifecycleHookSpecificationList => ArrayRef[L<Paws::AutoScaling::LifecycleHookSpecification>]]
+=item [LifecycleHookSpecificationList => ArrayRef[AutoScaling_LifecycleHookSpecification]]
 
 =item [LoadBalancerNames => ArrayRef[Str|Undef]]
 
 =item [MaxInstanceLifetime => Int]
 
-=item [MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>]
+=item [MixedInstancesPolicy => AutoScaling_MixedInstancesPolicy]
 
 =item [NewInstancesProtectedFromScaleIn => Bool]
 
@@ -799,7 +801,7 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =item [ServiceLinkedRoleARN => Str]
 
-=item [Tags => ArrayRef[L<Paws::AutoScaling::Tag>]]
+=item [Tags => ArrayRef[AutoScaling_Tag]]
 
 =item [TargetGroupARNs => ArrayRef[Str|Undef]]
 
@@ -832,7 +834,7 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =item [AssociatePublicIpAddress => Bool]
 
-=item [BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>]]
+=item [BlockDeviceMappings => ArrayRef[AutoScaling_BlockDeviceMapping]]
 
 =item [ClassicLinkVPCId => Str]
 
@@ -846,7 +848,7 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =item [InstanceId => Str]
 
-=item [InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>]
+=item [InstanceMonitoring => AutoScaling_InstanceMonitoring]
 
 =item [InstanceType => Str]
 
@@ -889,7 +891,7 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =over
 
-=item Tags => ArrayRef[L<Paws::AutoScaling::Tag>]
+=item Tags => ArrayRef[AutoScaling_Tag]
 
 
 =back
@@ -1051,7 +1053,7 @@ Deletes the specified scheduled action.
 
 =over
 
-=item Tags => ArrayRef[L<Paws::AutoScaling::Tag>]
+=item Tags => ArrayRef[AutoScaling_Tag]
 
 
 =back
@@ -1408,7 +1410,7 @@ actions that have already run, use DescribeScalingActivities.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::AutoScaling::Filter>]]
+=item [Filters => ArrayRef[AutoScaling_Filter]]
 
 =item [MaxRecords => Int]
 
@@ -1798,9 +1800,9 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =item [ScalingAdjustment => Int]
 
-=item [StepAdjustments => ArrayRef[L<Paws::AutoScaling::StepAdjustment>]]
+=item [StepAdjustments => ArrayRef[AutoScaling_StepAdjustment]]
 
-=item [TargetTrackingConfiguration => L<Paws::AutoScaling::TargetTrackingConfiguration>]
+=item [TargetTrackingConfiguration => AutoScaling_TargetTrackingConfiguration]
 
 
 =back
@@ -2087,7 +2089,7 @@ terminated immediately.
 
 =item [LaunchConfigurationName => Str]
 
-=item [LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>]
+=item [LaunchTemplate => AutoScaling_LaunchTemplateSpecification]
 
 =item [MaxInstanceLifetime => Int]
 
@@ -2095,7 +2097,7 @@ terminated immediately.
 
 =item [MinSize => Int]
 
-=item [MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>]
+=item [MixedInstancesPolicy => AutoScaling_MixedInstancesPolicy]
 
 =item [NewInstancesProtectedFromScaleIn => Bool]
 
@@ -2283,9 +2285,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::AutoScaling::ScheduledActionsType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTags(sub { },[Filters => ArrayRef[L<Paws::AutoScaling::Filter>], MaxRecords => Int, NextToken => Str])
+=head2 DescribeAllTags(sub { },[Filters => ArrayRef[AutoScaling_Filter], MaxRecords => Int, NextToken => Str])
 
-=head2 DescribeAllTags([Filters => ArrayRef[L<Paws::AutoScaling::Filter>], MaxRecords => Int, NextToken => Str])
+=head2 DescribeAllTags([Filters => ArrayRef[AutoScaling_Filter], MaxRecords => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

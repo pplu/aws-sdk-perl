@@ -1,11 +1,52 @@
 package Paws::EC2::VpcPeeringConnection;
-  use Moose;
-  has AccepterVpcInfo => (is => 'ro', isa => 'Paws::EC2::VpcPeeringConnectionVpcInfo', request_name => 'accepterVpcInfo', traits => ['NameInRequest']);
-  has ExpirationTime => (is => 'ro', isa => 'Str', request_name => 'expirationTime', traits => ['NameInRequest']);
-  has RequesterVpcInfo => (is => 'ro', isa => 'Paws::EC2::VpcPeeringConnectionVpcInfo', request_name => 'requesterVpcInfo', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Paws::EC2::VpcPeeringConnectionStateReason', request_name => 'status', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', request_name => 'vpcPeeringConnectionId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_VpcPeeringConnectionStateReason EC2_Tag EC2_VpcPeeringConnectionVpcInfo/;
+  has AccepterVpcInfo => (is => 'ro', isa => EC2_VpcPeeringConnectionVpcInfo);
+  has ExpirationTime => (is => 'ro', isa => Str);
+  has RequesterVpcInfo => (is => 'ro', isa => EC2_VpcPeeringConnectionVpcInfo);
+  has Status => (is => 'ro', isa => EC2_VpcPeeringConnectionStateReason);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VpcPeeringConnectionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcPeeringConnectionId' => {
+                                             'type' => 'Str'
+                                           },
+               'ExpirationTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'Status' => {
+                             'type' => 'EC2_VpcPeeringConnectionStateReason',
+                             'class' => 'Paws::EC2::VpcPeeringConnectionStateReason'
+                           },
+               'RequesterVpcInfo' => {
+                                       'type' => 'EC2_VpcPeeringConnectionVpcInfo',
+                                       'class' => 'Paws::EC2::VpcPeeringConnectionVpcInfo'
+                                     },
+               'AccepterVpcInfo' => {
+                                      'class' => 'Paws::EC2::VpcPeeringConnectionVpcInfo',
+                                      'type' => 'EC2_VpcPeeringConnectionVpcInfo'
+                                    }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'Tags' => 'tagSet',
+                       'ExpirationTime' => 'expirationTime',
+                       'VpcPeeringConnectionId' => 'vpcPeeringConnectionId',
+                       'AccepterVpcInfo' => 'accepterVpcInfo',
+                       'RequesterVpcInfo' => 'requesterVpcInfo'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +82,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 AccepterVpcInfo => L<Paws::EC2::VpcPeeringConnectionVpcInfo>
+=head2 AccepterVpcInfo => EC2_VpcPeeringConnectionVpcInfo
 
   Information about the accepter VPC. CIDR block information is only
 returned when describing an active VPC peering connection.
@@ -52,18 +93,18 @@ returned when describing an active VPC peering connection.
   The time that an unaccepted VPC peering connection will expire.
 
 
-=head2 RequesterVpcInfo => L<Paws::EC2::VpcPeeringConnectionVpcInfo>
+=head2 RequesterVpcInfo => EC2_VpcPeeringConnectionVpcInfo
 
   Information about the requester VPC. CIDR block information is only
 returned when describing an active VPC peering connection.
 
 
-=head2 Status => L<Paws::EC2::VpcPeeringConnectionStateReason>
+=head2 Status => EC2_VpcPeeringConnectionStateReason
 
   The status of the VPC peering connection.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the resource.
 

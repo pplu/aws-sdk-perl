@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::AppMesh::HeaderMatchMethod;
-  use Moose;
-  has Exact => (is => 'ro', isa => 'Str', request_name => 'exact', traits => ['NameInRequest']);
-  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
-  has Range => (is => 'ro', isa => 'Paws::AppMesh::MatchRange', request_name => 'range', traits => ['NameInRequest']);
-  has Regex => (is => 'ro', isa => 'Str', request_name => 'regex', traits => ['NameInRequest']);
-  has Suffix => (is => 'ro', isa => 'Str', request_name => 'suffix', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw/AppMesh_MatchRange/;
+  has Exact => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+  has Range => (is => 'ro', isa => AppMesh_MatchRange);
+  has Regex => (is => 'ro', isa => Str);
+  has Suffix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Regex' => 'regex',
+                       'Exact' => 'exact',
+                       'Suffix' => 'suffix',
+                       'Prefix' => 'prefix',
+                       'Range' => 'range'
+                     },
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Range' => {
+                            'type' => 'AppMesh_MatchRange',
+                            'class' => 'Paws::AppMesh::MatchRange'
+                          },
+               'Regex' => {
+                            'type' => 'Str'
+                          },
+               'Exact' => {
+                            'type' => 'Str'
+                          },
+               'Suffix' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +88,7 @@ value sent in a request. Specify one match method.
   The value sent by the client must begin with the specified characters.
 
 
-=head2 Range => L<Paws::AppMesh::MatchRange>
+=head2 Range => AppMesh_MatchRange
 
   An object that represents the range of values to match on.
 

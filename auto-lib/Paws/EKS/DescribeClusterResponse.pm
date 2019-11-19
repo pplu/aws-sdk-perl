@@ -1,9 +1,30 @@
 
 package Paws::EKS::DescribeClusterResponse;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Paws::EKS::Cluster', traits => ['NameInRequest'], request_name => 'cluster');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EKS::Types qw/EKS_Cluster/;
+  has Cluster => (is => 'ro', isa => EKS_Cluster);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Cluster' => 'cluster'
+                     },
+  'types' => {
+               'Cluster' => {
+                              'type' => 'EKS_Cluster',
+                              'class' => 'Paws::EKS::Cluster'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::EKS::DescribeClusterResponse
 =head1 ATTRIBUTES
 
 
-=head2 Cluster => L<Paws::EKS::Cluster>
+=head2 Cluster => EKS_Cluster
 
 The full description of your specified cluster.
 

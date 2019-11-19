@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetJobRunResponse;
-  use Moose;
-  has JobRun => (is => 'ro', isa => 'Paws::Glue::JobRun');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_JobRun/;
+  has JobRun => (is => 'ro', isa => Glue_JobRun);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobRun' => {
+                             'class' => 'Paws::Glue::JobRun',
+                             'type' => 'Glue_JobRun'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Glue::GetJobRunResponse
 =head1 ATTRIBUTES
 
 
-=head2 JobRun => L<Paws::Glue::JobRun>
+=head2 JobRun => Glue_JobRun
 
 The requested job-run metadata.
 

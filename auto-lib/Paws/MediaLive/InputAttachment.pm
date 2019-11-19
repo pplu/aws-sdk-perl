@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputAttachment;
-  use Moose;
-  has InputAttachmentName => (is => 'ro', isa => 'Str', request_name => 'inputAttachmentName', traits => ['NameInRequest']);
-  has InputId => (is => 'ro', isa => 'Str', request_name => 'inputId', traits => ['NameInRequest']);
-  has InputSettings => (is => 'ro', isa => 'Paws::MediaLive::InputSettings', request_name => 'inputSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_InputSettings/;
+  has InputAttachmentName => (is => 'ro', isa => Str);
+  has InputId => (is => 'ro', isa => Str);
+  has InputSettings => (is => 'ro', isa => MediaLive_InputSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InputId' => 'inputId',
+                       'InputAttachmentName' => 'inputAttachmentName',
+                       'InputSettings' => 'inputSettings'
+                     },
+  'types' => {
+               'InputId' => {
+                              'type' => 'Str'
+                            },
+               'InputAttachmentName' => {
+                                          'type' => 'Str'
+                                        },
+               'InputSettings' => {
+                                    'type' => 'MediaLive_InputSettings',
+                                    'class' => 'Paws::MediaLive::InputSettings'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +78,7 @@ wants to use this input in an input switch action.
   The ID of the input
 
 
-=head2 InputSettings => L<Paws::MediaLive::InputSettings>
+=head2 InputSettings => MediaLive_InputSettings
 
   Settings of an input (caption selector, etc.)
 

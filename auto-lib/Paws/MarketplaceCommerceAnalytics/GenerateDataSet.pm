@@ -1,19 +1,70 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MarketplaceCommerceAnalytics::GenerateDataSet;
-  use Moose;
-  has CustomerDefinedValues => (is => 'ro', isa => 'Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues', traits => ['NameInRequest'], request_name => 'customerDefinedValues' );
-  has DataSetPublicationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSetPublicationDate' , required => 1);
-  has DataSetType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSetType' , required => 1);
-  has DestinationS3BucketName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationS3BucketName' , required => 1);
-  has DestinationS3Prefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationS3Prefix' );
-  has RoleNameArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleNameArn' , required => 1);
-  has SnsTopicArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'snsTopicArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MarketplaceCommerceAnalytics::Types qw/MarketplaceCommerceAnalytics_CustomerDefinedValues/;
+  has CustomerDefinedValues => (is => 'ro', isa => MarketplaceCommerceAnalytics_CustomerDefinedValues, predicate => 1);
+  has DataSetPublicationDate => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DataSetType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DestinationS3BucketName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DestinationS3Prefix => (is => 'ro', isa => Str, predicate => 1);
+  has RoleNameArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SnsTopicArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GenerateDataSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MarketplaceCommerceAnalytics::GenerateDataSetResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GenerateDataSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MarketplaceCommerceAnalytics::GenerateDataSetResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DestinationS3BucketName' => 1,
+                    'DataSetPublicationDate' => 1,
+                    'SnsTopicArn' => 1,
+                    'DataSetType' => 1,
+                    'RoleNameArn' => 1
+                  },
+  'NameInRequest' => {
+                       'CustomerDefinedValues' => 'customerDefinedValues',
+                       'SnsTopicArn' => 'snsTopicArn',
+                       'DataSetPublicationDate' => 'dataSetPublicationDate',
+                       'RoleNameArn' => 'roleNameArn',
+                       'DestinationS3Prefix' => 'destinationS3Prefix',
+                       'DataSetType' => 'dataSetType',
+                       'DestinationS3BucketName' => 'destinationS3BucketName'
+                     },
+  'types' => {
+               'DestinationS3BucketName' => {
+                                              'type' => 'Str'
+                                            },
+               'DataSetType' => {
+                                  'type' => 'Str'
+                                },
+               'DestinationS3Prefix' => {
+                                          'type' => 'Str'
+                                        },
+               'RoleNameArn' => {
+                                  'type' => 'Str'
+                                },
+               'CustomerDefinedValues' => {
+                                            'class' => 'Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues',
+                                            'type' => 'MarketplaceCommerceAnalytics_CustomerDefinedValues'
+                                          },
+               'DataSetPublicationDate' => {
+                                             'type' => 'Str'
+                                           },
+               'SnsTopicArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +108,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mar
 =head1 ATTRIBUTES
 
 
-=head2 CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>
+=head2 CustomerDefinedValues => MarketplaceCommerceAnalytics_CustomerDefinedValues
 
 (Optional) Key-value pairs which will be returned, unmodified, in the
 Amazon SNS notification message and the data set metadata file. These

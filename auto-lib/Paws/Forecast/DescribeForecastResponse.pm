@@ -1,16 +1,55 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Forecast::DescribeForecastResponse;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DatasetGroupArn => (is => 'ro', isa => 'Str');
-  has ForecastArn => (is => 'ro', isa => 'Str');
-  has ForecastName => (is => 'ro', isa => 'Str');
-  has LastModificationTime => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has PredictorArn => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DatasetGroupArn => (is => 'ro', isa => Str);
+  has ForecastArn => (is => 'ro', isa => Str);
+  has ForecastName => (is => 'ro', isa => Str);
+  has LastModificationTime => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has PredictorArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ForecastArn' => {
+                                  'type' => 'Str'
+                                },
+               'PredictorArn' => {
+                                   'type' => 'Str'
+                                 },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ForecastName' => {
+                                   'type' => 'Str'
+                                 },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'LastModificationTime' => {
+                                           'type' => 'Str'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DatasetGroupArn' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

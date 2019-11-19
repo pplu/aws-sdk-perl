@@ -1,10 +1,31 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::ClusterParameterGroupNameMessage;
-  use Moose;
-  has ParameterGroupName => (is => 'ro', isa => 'Str');
-  has ParameterGroupStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw//;
+  has ParameterGroupName => (is => 'ro', isa => Str);
+  has ParameterGroupStatus => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterGroupName' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ParameterGroupStatus' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

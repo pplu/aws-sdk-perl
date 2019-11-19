@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ELB::BackendServerDescription;
-  use Moose;
-  has InstancePort => (is => 'ro', isa => 'Int');
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef Undef/;
+  use Paws::ELB::Types qw//;
+  has InstancePort => (is => 'ro', isa => Int);
+  has PolicyNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstancePort' => {
+                                   'type' => 'Int'
+                                 },
+               'PolicyNames' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

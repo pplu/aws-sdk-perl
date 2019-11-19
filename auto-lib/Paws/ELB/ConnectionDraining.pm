@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::ELB::ConnectionDraining;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has Timeout => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Bool Int/;
+  use Paws::ELB::Types qw//;
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has Timeout => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Timeout' => {
+                              'type' => 'Int'
+                            }
+             },
+  'IsRequired' => {
+                    'Enabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

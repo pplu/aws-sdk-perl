@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateLoginProfile;
-  use Moose;
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has PasswordResetRequired => (is => 'ro', isa => 'Bool');
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IAM::Types qw//;
+  has Password => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PasswordResetRequired => (is => 'ro', isa => Bool, predicate => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoginProfile');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::CreateLoginProfileResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoginProfileResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLoginProfile');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::CreateLoginProfileResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateLoginProfileResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'PasswordResetRequired' => {
+                                            'type' => 'Bool'
+                                          }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'Password' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,0 +1,37 @@
+package Paws::AutoScalingPlans::Types;
+  use Type::Library qw/-base/;
+  use Type::Utils qw/class_type/;
+
+  class_type AutoScalingPlans_ApplicationSource, { class => 'Paws::AutoScalingPlans::ApplicationSource' };
+  class_type AutoScalingPlans_ConcurrentUpdateException, { class => 'Paws::AutoScalingPlans::ConcurrentUpdateException' };
+  class_type AutoScalingPlans_CreateScalingPlanRequest, { class => 'Paws::AutoScalingPlans::CreateScalingPlanRequest' };
+  class_type AutoScalingPlans_CreateScalingPlanResponse, { class => 'Paws::AutoScalingPlans::CreateScalingPlanResponse' };
+  class_type AutoScalingPlans_CustomizedLoadMetricSpecification, { class => 'Paws::AutoScalingPlans::CustomizedLoadMetricSpecification' };
+  class_type AutoScalingPlans_CustomizedScalingMetricSpecification, { class => 'Paws::AutoScalingPlans::CustomizedScalingMetricSpecification' };
+  class_type AutoScalingPlans_Datapoint, { class => 'Paws::AutoScalingPlans::Datapoint' };
+  class_type AutoScalingPlans_DeleteScalingPlanRequest, { class => 'Paws::AutoScalingPlans::DeleteScalingPlanRequest' };
+  class_type AutoScalingPlans_DeleteScalingPlanResponse, { class => 'Paws::AutoScalingPlans::DeleteScalingPlanResponse' };
+  class_type AutoScalingPlans_DescribeScalingPlanResourcesRequest, { class => 'Paws::AutoScalingPlans::DescribeScalingPlanResourcesRequest' };
+  class_type AutoScalingPlans_DescribeScalingPlanResourcesResponse, { class => 'Paws::AutoScalingPlans::DescribeScalingPlanResourcesResponse' };
+  class_type AutoScalingPlans_DescribeScalingPlansRequest, { class => 'Paws::AutoScalingPlans::DescribeScalingPlansRequest' };
+  class_type AutoScalingPlans_DescribeScalingPlansResponse, { class => 'Paws::AutoScalingPlans::DescribeScalingPlansResponse' };
+  class_type AutoScalingPlans_GetScalingPlanResourceForecastDataRequest, { class => 'Paws::AutoScalingPlans::GetScalingPlanResourceForecastDataRequest' };
+  class_type AutoScalingPlans_GetScalingPlanResourceForecastDataResponse, { class => 'Paws::AutoScalingPlans::GetScalingPlanResourceForecastDataResponse' };
+  class_type AutoScalingPlans_InternalServiceException, { class => 'Paws::AutoScalingPlans::InternalServiceException' };
+  class_type AutoScalingPlans_InvalidNextTokenException, { class => 'Paws::AutoScalingPlans::InvalidNextTokenException' };
+  class_type AutoScalingPlans_LimitExceededException, { class => 'Paws::AutoScalingPlans::LimitExceededException' };
+  class_type AutoScalingPlans_MetricDimension, { class => 'Paws::AutoScalingPlans::MetricDimension' };
+  class_type AutoScalingPlans_ObjectNotFoundException, { class => 'Paws::AutoScalingPlans::ObjectNotFoundException' };
+  class_type AutoScalingPlans_PredefinedLoadMetricSpecification, { class => 'Paws::AutoScalingPlans::PredefinedLoadMetricSpecification' };
+  class_type AutoScalingPlans_PredefinedScalingMetricSpecification, { class => 'Paws::AutoScalingPlans::PredefinedScalingMetricSpecification' };
+  class_type AutoScalingPlans_ScalingInstruction, { class => 'Paws::AutoScalingPlans::ScalingInstruction' };
+  class_type AutoScalingPlans_ScalingPlan, { class => 'Paws::AutoScalingPlans::ScalingPlan' };
+  class_type AutoScalingPlans_ScalingPlanResource, { class => 'Paws::AutoScalingPlans::ScalingPlanResource' };
+  class_type AutoScalingPlans_ScalingPolicy, { class => 'Paws::AutoScalingPlans::ScalingPolicy' };
+  class_type AutoScalingPlans_TagFilter, { class => 'Paws::AutoScalingPlans::TagFilter' };
+  class_type AutoScalingPlans_TargetTrackingConfiguration, { class => 'Paws::AutoScalingPlans::TargetTrackingConfiguration' };
+  class_type AutoScalingPlans_UpdateScalingPlanRequest, { class => 'Paws::AutoScalingPlans::UpdateScalingPlanRequest' };
+  class_type AutoScalingPlans_UpdateScalingPlanResponse, { class => 'Paws::AutoScalingPlans::UpdateScalingPlanResponse' };
+  class_type AutoScalingPlans_ValidationException, { class => 'Paws::AutoScalingPlans::ValidationException' };
+
+1;

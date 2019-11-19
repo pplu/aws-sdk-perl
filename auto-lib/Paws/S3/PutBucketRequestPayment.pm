@@ -1,19 +1,59 @@
 
 package Paws::S3::PutBucketRequestPayment;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has RequestPaymentConfiguration => (is => 'ro', isa => 'Paws::S3::RequestPaymentConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw/S3_RequestPaymentConfiguration/;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentLength => (is => 'ro', isa => Int, predicate => 1);
+  has ContentMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has RequestPaymentConfiguration => (is => 'ro', isa => S3_RequestPaymentConfiguration, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutBucketRequestPayment');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}?requestPayment');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutBucketRequestPayment');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}?requestPayment');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'RequestPaymentConfiguration' => {
+                                                  'type' => 'S3_RequestPaymentConfiguration',
+                                                  'class' => 'Paws::S3::RequestPaymentConfiguration'
+                                                },
+               'ContentMD5' => {
+                                 'type' => 'Str'
+                               },
+               'Bucket' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'RequestPaymentConfiguration' => 1,
+                    'Bucket' => 1
+                  },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket'
+                  },
+  'AutoInHeader' => {
+                      'ContentMD5' => {
+                                        'header_name' => 'Content-MD5',
+                                        'auto' => 'MD5'
+                                      }
+                    },
+  'ParamInHeader' => {
+                       'ContentLength' => 'Content-Length'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +110,7 @@ body was not corrupted in transit. For more information, see RFC 1864
 
 
 
-=head2 B<REQUIRED> RequestPaymentConfiguration => L<Paws::S3::RequestPaymentConfiguration>
+=head2 B<REQUIRED> RequestPaymentConfiguration => S3_RequestPaymentConfiguration
 
 Container for Payer.
 

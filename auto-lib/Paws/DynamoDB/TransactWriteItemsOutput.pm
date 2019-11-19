@@ -1,10 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::TransactWriteItemsOutput;
-  use Moose;
-  has ConsumedCapacity => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ConsumedCapacity]');
-  has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetricsPerTable');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ItemCollectionMetricsPerTable DynamoDB_ConsumedCapacity/;
+  has ConsumedCapacity => (is => 'ro', isa => ArrayRef[DynamoDB_ConsumedCapacity]);
+  has ItemCollectionMetrics => (is => 'ro', isa => DynamoDB_ItemCollectionMetricsPerTable);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ItemCollectionMetrics' => {
+                                            'class' => 'Paws::DynamoDB::ItemCollectionMetricsPerTable',
+                                            'type' => 'DynamoDB_ItemCollectionMetricsPerTable'
+                                          },
+               'ConsumedCapacity' => {
+                                       'class' => 'Paws::DynamoDB::ConsumedCapacity',
+                                       'type' => 'ArrayRef[DynamoDB_ConsumedCapacity]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,14 +38,14 @@ Paws::DynamoDB::TransactWriteItemsOutput
 =head1 ATTRIBUTES
 
 
-=head2 ConsumedCapacity => ArrayRef[L<Paws::DynamoDB::ConsumedCapacity>]
+=head2 ConsumedCapacity => ArrayRef[DynamoDB_ConsumedCapacity]
 
 The capacity units consumed by the entire C<TransactWriteItems>
 operation. The values of the list are ordered according to the ordering
 of the C<TransactItems> request parameter.
 
 
-=head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetricsPerTable>
+=head2 ItemCollectionMetrics => DynamoDB_ItemCollectionMetricsPerTable
 
 A list of tables that were processed by C<TransactWriteItems> and, for
 each table, information about any item collections that were affected

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MQ::Error;
-  use Moose;
-  has ErrorAttribute => (is => 'ro', isa => 'Str', request_name => 'errorAttribute', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has ErrorAttribute => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'ErrorAttribute' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Message' => 'message',
+                       'ErrorAttribute' => 'errorAttribute'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,20 +1,57 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::DescribeEnvironments;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str');
-  has EnvironmentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnvironmentNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has IncludedDeletedBackTo => (is => 'ro', isa => 'Str');
-  has IncludeDeleted => (is => 'ro', isa => 'Bool');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has VersionLabel => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool Int/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ApplicationName => (is => 'ro', isa => Str, predicate => 1);
+  has EnvironmentIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnvironmentNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has IncludedDeletedBackTo => (is => 'ro', isa => Str, predicate => 1);
+  has IncludeDeleted => (is => 'ro', isa => Bool, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has VersionLabel => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEnvironments');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEnvironmentsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEnvironments');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeEnvironmentsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IncludeDeleted' => {
+                                     'type' => 'Bool'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'EnvironmentNames' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'IncludedDeletedBackTo' => {
+                                            'type' => 'Str'
+                                          },
+               'VersionLabel' => {
+                                   'type' => 'Str'
+                                 },
+               'EnvironmentIds' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

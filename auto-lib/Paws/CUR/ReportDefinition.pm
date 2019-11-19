@@ -1,16 +1,73 @@
+# Generated from default/object.tt
 package Paws::CUR::ReportDefinition;
-  use Moose;
-  has AdditionalArtifacts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AdditionalSchemaElements => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Compression => (is => 'ro', isa => 'Str', required => 1);
-  has Format => (is => 'ro', isa => 'Str', required => 1);
-  has RefreshClosedReports => (is => 'ro', isa => 'Bool');
-  has ReportName => (is => 'ro', isa => 'Str', required => 1);
-  has ReportVersioning => (is => 'ro', isa => 'Str');
-  has S3Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has S3Prefix => (is => 'ro', isa => 'Str', required => 1);
-  has S3Region => (is => 'ro', isa => 'Str', required => 1);
-  has TimeUnit => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::CUR::Types qw//;
+  has AdditionalArtifacts => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has AdditionalSchemaElements => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Compression => (is => 'ro', isa => Str, required => 1);
+  has Format => (is => 'ro', isa => Str, required => 1);
+  has RefreshClosedReports => (is => 'ro', isa => Bool);
+  has ReportName => (is => 'ro', isa => Str, required => 1);
+  has ReportVersioning => (is => 'ro', isa => Str);
+  has S3Bucket => (is => 'ro', isa => Str, required => 1);
+  has S3Prefix => (is => 'ro', isa => Str, required => 1);
+  has S3Region => (is => 'ro', isa => Str, required => 1);
+  has TimeUnit => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Region' => {
+                               'type' => 'Str'
+                             },
+               'TimeUnit' => {
+                               'type' => 'Str'
+                             },
+               'AdditionalArtifacts' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             },
+               'S3Prefix' => {
+                               'type' => 'Str'
+                             },
+               'Compression' => {
+                                  'type' => 'Str'
+                                },
+               'ReportVersioning' => {
+                                       'type' => 'Str'
+                                     },
+               'RefreshClosedReports' => {
+                                           'type' => 'Bool'
+                                         },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'AdditionalSchemaElements' => {
+                                               'type' => 'ArrayRef[Str|Undef]'
+                                             },
+               'ReportName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'TimeUnit' => 1,
+                    'S3Region' => 1,
+                    'S3Bucket' => 1,
+                    'Compression' => 1,
+                    'S3Prefix' => 1,
+                    'Format' => 1,
+                    'ReportName' => 1,
+                    'AdditionalSchemaElements' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

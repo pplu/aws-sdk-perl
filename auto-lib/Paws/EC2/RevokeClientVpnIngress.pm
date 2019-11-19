@@ -1,17 +1,48 @@
 
 package Paws::EC2::RevokeClientVpnIngress;
-  use Moose;
-  has AccessGroupId => (is => 'ro', isa => 'Str');
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has RevokeAllGroups => (is => 'ro', isa => 'Bool');
-  has TargetNetworkCidr => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has AccessGroupId => (is => 'ro', isa => Str, predicate => 1);
+  has ClientVpnEndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has RevokeAllGroups => (is => 'ro', isa => Bool, predicate => 1);
+  has TargetNetworkCidr => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeClientVpnIngress');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::RevokeClientVpnIngressResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RevokeClientVpnIngress');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::RevokeClientVpnIngressResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RevokeAllGroups' => {
+                                      'type' => 'Bool'
+                                    },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        },
+               'AccessGroupId' => {
+                                    'type' => 'Str'
+                                  },
+               'TargetNetworkCidr' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'TargetNetworkCidr' => 1,
+                    'ClientVpnEndpointId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

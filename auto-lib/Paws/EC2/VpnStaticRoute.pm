@@ -1,8 +1,33 @@
 package Paws::EC2::VpnStaticRoute;
-  use Moose;
-  has DestinationCidrBlock => (is => 'ro', isa => 'Str', request_name => 'destinationCidrBlock', traits => ['NameInRequest']);
-  has Source => (is => 'ro', isa => 'Str', request_name => 'source', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has DestinationCidrBlock => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Source' => 'source',
+                       'State' => 'state',
+                       'DestinationCidrBlock' => 'destinationCidrBlock'
+                     },
+  'types' => {
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'DestinationCidrBlock' => {
+                                           'type' => 'Str'
+                                         },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

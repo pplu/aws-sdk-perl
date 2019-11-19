@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceQuotas::GetServiceQuotaIncreaseRequestFromTemplate;
-  use Moose;
-  has AwsRegion => (is => 'ro', isa => 'Str', required => 1);
-  has QuotaCode => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceCode => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceQuotas::Types qw//;
+  has AwsRegion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has QuotaCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServiceCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetServiceQuotaIncreaseRequestFromTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceQuotas::GetServiceQuotaIncreaseRequestFromTemplateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetServiceQuotaIncreaseRequestFromTemplate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceQuotas::GetServiceQuotaIncreaseRequestFromTemplateResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AwsRegion' => 1,
+                    'ServiceCode' => 1,
+                    'QuotaCode' => 1
+                  },
+  'types' => {
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                },
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'QuotaCode' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

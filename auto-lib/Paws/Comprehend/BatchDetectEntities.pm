@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Comprehend::BatchDetectEntities;
-  use Moose;
-  has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
-  has TextList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Comprehend::Types qw//;
+  has LanguageCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TextList => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchDetectEntities');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::BatchDetectEntitiesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchDetectEntities');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Comprehend::BatchDetectEntitiesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LanguageCode' => 1,
+                    'TextList' => 1
+                  },
+  'types' => {
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'TextList' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,35 @@
 
 package Paws::MobileHub::DescribeBundle;
-  use Moose;
-  has BundleId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'bundleId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MobileHub::Types qw//;
+  has BundleId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBundle');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bundles/{bundleId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MobileHub::DescribeBundleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeBundle');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/bundles/{bundleId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MobileHub::DescribeBundleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BundleId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'BundleId' => 1
+                  },
+  'ParamInURI' => {
+                    'BundleId' => 'bundleId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

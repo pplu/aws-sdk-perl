@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::ADMChannelRequest;
-  use Moose;
-  has ClientId => (is => 'ro', isa => 'Str', required => 1);
-  has ClientSecret => (is => 'ro', isa => 'Str', required => 1);
-  has Enabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Pinpoint::Types qw//;
+  has ClientId => (is => 'ro', isa => Str, required => 1);
+  has ClientSecret => (is => 'ro', isa => Str, required => 1);
+  has Enabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ClientId' => 1,
+                    'ClientSecret' => 1
+                  },
+  'types' => {
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'ClientSecret' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

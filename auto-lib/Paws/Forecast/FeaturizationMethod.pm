@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Forecast::FeaturizationMethod;
-  use Moose;
-  has FeaturizationMethodName => (is => 'ro', isa => 'Str', required => 1);
-  has FeaturizationMethodParameters => (is => 'ro', isa => 'Paws::Forecast::FeaturizationMethodParameters');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Forecast::Types qw/Forecast_FeaturizationMethodParameters/;
+  has FeaturizationMethodName => (is => 'ro', isa => Str, required => 1);
+  has FeaturizationMethodParameters => (is => 'ro', isa => Forecast_FeaturizationMethodParameters);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FeaturizationMethodName' => {
+                                              'type' => 'Str'
+                                            },
+               'FeaturizationMethodParameters' => {
+                                                    'type' => 'Forecast_FeaturizationMethodParameters',
+                                                    'class' => 'Paws::Forecast::FeaturizationMethodParameters'
+                                                  }
+             },
+  'IsRequired' => {
+                    'FeaturizationMethodName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +81,7 @@ C<}>
 supported method.
 
 
-=head2 FeaturizationMethodParameters => L<Paws::Forecast::FeaturizationMethodParameters>
+=head2 FeaturizationMethodParameters => Forecast_FeaturizationMethodParameters
 
   The method parameters (key-value pairs). Specify these to override the
 default values. The following list shows the parameters and their valid

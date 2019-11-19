@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetJobResponse;
-  use Moose;
-  has Job => (is => 'ro', isa => 'Paws::Glue::Job');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_Job/;
+  has Job => (is => 'ro', isa => Glue_Job);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Job' => {
+                          'type' => 'Glue_Job',
+                          'class' => 'Paws::Glue::Job'
+                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Glue::GetJobResponse
 =head1 ATTRIBUTES
 
 
-=head2 Job => L<Paws::Glue::Job>
+=head2 Job => Glue_Job
 
 The requested job definition.
 

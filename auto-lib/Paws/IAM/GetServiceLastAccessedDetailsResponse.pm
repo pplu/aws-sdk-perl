@@ -1,15 +1,59 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetServiceLastAccessedDetailsResponse;
-  use Moose;
-  has Error => (is => 'ro', isa => 'Paws::IAM::ErrorDetails');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has JobCompletionDate => (is => 'ro', isa => 'Str', required => 1);
-  has JobCreationDate => (is => 'ro', isa => 'Str', required => 1);
-  has JobStatus => (is => 'ro', isa => 'Str', required => 1);
-  has Marker => (is => 'ro', isa => 'Str');
-  has ServicesLastAccessed => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ServiceLastAccessed]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::IAM::Types qw/IAM_ServiceLastAccessed IAM_ErrorDetails/;
+  has Error => (is => 'ro', isa => IAM_ErrorDetails);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has JobCompletionDate => (is => 'ro', isa => Str, required => 1);
+  has JobCreationDate => (is => 'ro', isa => Str, required => 1);
+  has JobStatus => (is => 'ro', isa => Str, required => 1);
+  has Marker => (is => 'ro', isa => Str);
+  has ServicesLastAccessed => (is => 'ro', isa => ArrayRef[IAM_ServiceLastAccessed], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Error' => {
+                            'type' => 'IAM_ErrorDetails',
+                            'class' => 'Paws::IAM::ErrorDetails'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobCreationDate' => {
+                                      'type' => 'Str'
+                                    },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'ServicesLastAccessed' => {
+                                           'type' => 'ArrayRef[IAM_ServiceLastAccessed]',
+                                           'class' => 'Paws::IAM::ServiceLastAccessed'
+                                         },
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               'JobCompletionDate' => {
+                                        'type' => 'Str'
+                                      },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                }
+             },
+  'IsRequired' => {
+                    'JobCreationDate' => 1,
+                    'JobCompletionDate' => 1,
+                    'JobStatus' => 1,
+                    'ServicesLastAccessed' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +65,7 @@ Paws::IAM::GetServiceLastAccessedDetailsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Error => L<Paws::IAM::ErrorDetails>
+=head2 Error => IAM_ErrorDetails
 
 An object that contains details about the reason the operation failed.
 
@@ -65,7 +109,7 @@ the value to use for the C<Marker> parameter in a subsequent pagination
 request.
 
 
-=head2 B<REQUIRED> ServicesLastAccessed => ArrayRef[L<Paws::IAM::ServiceLastAccessed>]
+=head2 B<REQUIRED> ServicesLastAccessed => ArrayRef[IAM_ServiceLastAccessed]
 
 A C<ServiceLastAccessed> object that contains details about the most
 recent attempt to access the service.

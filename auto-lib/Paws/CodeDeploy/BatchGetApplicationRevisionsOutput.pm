@@ -1,11 +1,41 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::BatchGetApplicationRevisionsOutput;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
-  has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'errorMessage' );
-  has Revisions => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::RevisionInfo]', traits => ['NameInRequest'], request_name => 'revisions' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_RevisionInfo/;
+  has ApplicationName => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has Revisions => (is => 'ro', isa => ArrayRef[CodeDeploy_RevisionInfo]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ErrorMessage' => 'errorMessage',
+                       'Revisions' => 'revisions',
+                       'ApplicationName' => 'applicationName'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Revisions' => {
+                                'type' => 'ArrayRef[CodeDeploy_RevisionInfo]',
+                                'class' => 'Paws::CodeDeploy::RevisionInfo'
+                              },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -26,7 +56,7 @@ The name of the application that corresponds to the revisions.
 Information about errors that might have occurred during the API call.
 
 
-=head2 Revisions => ArrayRef[L<Paws::CodeDeploy::RevisionInfo>]
+=head2 Revisions => ArrayRef[CodeDeploy_RevisionInfo]
 
 Additional information about the revisions, including the type and
 location.

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IAM::PolicyDetail;
-  use Moose;
-  has PolicyDocument => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute']);
-  has PolicyName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has PolicyDocument => (is => 'ro', isa => Str);
+  has Policy => ( is => 'lazy', builder => sub { my $self = shift;  return decode_json(URL::Encode::url_decode($self->PolicyDocument)); });
+  has PolicyName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

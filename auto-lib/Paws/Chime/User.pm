@@ -1,16 +1,66 @@
+# Generated from default/object.tt
 package Paws::Chime::User;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has InvitedOn => (is => 'ro', isa => 'Str');
-  has LicenseType => (is => 'ro', isa => 'Str');
-  has PersonalPIN => (is => 'ro', isa => 'Str');
-  has PrimaryEmail => (is => 'ro', isa => 'Str');
-  has PrimaryProvisionedNumber => (is => 'ro', isa => 'Str');
-  has RegisteredOn => (is => 'ro', isa => 'Str');
-  has UserId => (is => 'ro', isa => 'Str', required => 1);
-  has UserInvitationStatus => (is => 'ro', isa => 'Str');
-  has UserRegistrationStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str);
+  has InvitedOn => (is => 'ro', isa => Str);
+  has LicenseType => (is => 'ro', isa => Str);
+  has PersonalPIN => (is => 'ro', isa => Str);
+  has PrimaryEmail => (is => 'ro', isa => Str);
+  has PrimaryProvisionedNumber => (is => 'ro', isa => Str);
+  has RegisteredOn => (is => 'ro', isa => Str);
+  has UserId => (is => 'ro', isa => Str, required => 1);
+  has UserInvitationStatus => (is => 'ro', isa => Str);
+  has UserRegistrationStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LicenseType' => {
+                                  'type' => 'Str'
+                                },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'InvitedOn' => {
+                                'type' => 'Str'
+                              },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'PersonalPIN' => {
+                                  'type' => 'Str'
+                                },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'RegisteredOn' => {
+                                   'type' => 'Str'
+                                 },
+               'PrimaryEmail' => {
+                                   'type' => 'Str'
+                                 },
+               'PrimaryProvisionedNumber' => {
+                                               'type' => 'Str'
+                                             },
+               'UserInvitationStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'UserRegistrationStatus' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'UserId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

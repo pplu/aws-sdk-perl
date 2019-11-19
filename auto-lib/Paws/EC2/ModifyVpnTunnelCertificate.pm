@@ -1,15 +1,40 @@
 
 package Paws::EC2::ModifyVpnTunnelCertificate;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has VpnConnectionId => (is => 'ro', isa => 'Str', required => 1);
-  has VpnTunnelOutsideIpAddress => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has VpnConnectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VpnTunnelOutsideIpAddress => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVpnTunnelCertificate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyVpnTunnelCertificateResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyVpnTunnelCertificate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyVpnTunnelCertificateResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'VpnTunnelOutsideIpAddress' => 1,
+                    'VpnConnectionId' => 1
+                  },
+  'types' => {
+               'VpnConnectionId' => {
+                                      'type' => 'Str'
+                                    },
+               'VpnTunnelOutsideIpAddress' => {
+                                                'type' => 'Str'
+                                              },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

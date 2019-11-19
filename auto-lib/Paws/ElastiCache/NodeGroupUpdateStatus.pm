@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::NodeGroupUpdateStatus;
-  use Moose;
-  has NodeGroupId => (is => 'ro', isa => 'Str');
-  has NodeGroupMemberUpdateStatus => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupMemberUpdateStatus]', request_name => 'NodeGroupMemberUpdateStatus', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_NodeGroupMemberUpdateStatus/;
+  has NodeGroupId => (is => 'ro', isa => Str);
+  has NodeGroupMemberUpdateStatus => (is => 'ro', isa => ArrayRef[ElastiCache_NodeGroupMemberUpdateStatus]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NodeGroupMemberUpdateStatus' => 'NodeGroupMemberUpdateStatus'
+                     },
+  'types' => {
+               'NodeGroupId' => {
+                                  'type' => 'Str'
+                                },
+               'NodeGroupMemberUpdateStatus' => {
+                                                  'class' => 'Paws::ElastiCache::NodeGroupMemberUpdateStatus',
+                                                  'type' => 'ArrayRef[ElastiCache_NodeGroupMemberUpdateStatus]'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +66,7 @@ The status of the service update on the node group
   The ID of the node group
 
 
-=head2 NodeGroupMemberUpdateStatus => ArrayRef[L<Paws::ElastiCache::NodeGroupMemberUpdateStatus>]
+=head2 NodeGroupMemberUpdateStatus => ArrayRef[ElastiCache_NodeGroupMemberUpdateStatus]
 
   The status of the service update on the node group member
 

@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECR::ListImagesResponse;
-  use Moose;
-  has ImageIds => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageIdentifier]', traits => ['NameInRequest'], request_name => 'imageIds' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECR::Types qw/ECR_ImageIdentifier/;
+  has ImageIds => (is => 'ro', isa => ArrayRef[ECR_ImageIdentifier]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ImageIds' => 'imageIds',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ImageIds' => {
+                               'class' => 'Paws::ECR::ImageIdentifier',
+                               'type' => 'ArrayRef[ECR_ImageIdentifier]'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::ECR::ListImagesResponse
 =head1 ATTRIBUTES
 
 
-=head2 ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]
+=head2 ImageIds => ArrayRef[ECR_ImageIdentifier]
 
 The list of image IDs for the requested repository.
 

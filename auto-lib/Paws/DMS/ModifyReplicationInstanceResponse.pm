@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::ModifyReplicationInstanceResponse;
-  use Moose;
-  has ReplicationInstance => (is => 'ro', isa => 'Paws::DMS::ReplicationInstance');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw/DMS_ReplicationInstance/;
+  has ReplicationInstance => (is => 'ro', isa => DMS_ReplicationInstance);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ReplicationInstance' => {
+                                          'class' => 'Paws::DMS::ReplicationInstance',
+                                          'type' => 'DMS_ReplicationInstance'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DMS::ModifyReplicationInstanceResponse
 =head1 ATTRIBUTES
 
 
-=head2 ReplicationInstance => L<Paws::DMS::ReplicationInstance>
+=head2 ReplicationInstance => DMS_ReplicationInstance
 
 The modified replication instance.
 

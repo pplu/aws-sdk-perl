@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::TagsModel;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::MediaPackage::__mapOf__string', request_name => 'tags', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaPackage::Types qw/MediaPackage___mapOf__string/;
+  has Tags => (is => 'ro', isa => MediaPackage___mapOf__string, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'MediaPackage___mapOf__string',
+                           'class' => 'Paws::MediaPackage::__mapOf__string'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Tags => L<Paws::MediaPackage::__mapOf__string>
+=head2 B<REQUIRED> Tags => MediaPackage___mapOf__string
 
   
 

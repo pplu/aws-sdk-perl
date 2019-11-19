@@ -1,19 +1,66 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::GetResourceConfigHistory;
-  use Moose;
-  has ChronologicalOrder => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'chronologicalOrder' );
-  has EarlierTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'earlierTime' );
-  has LaterTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'laterTime' );
-  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceId' , required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Config::Types qw//;
+  has ChronologicalOrder => (is => 'ro', isa => Str, predicate => 1);
+  has EarlierTime => (is => 'ro', isa => Str, predicate => 1);
+  has LaterTime => (is => 'ro', isa => Str, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetResourceConfigHistory');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::GetResourceConfigHistoryResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetResourceConfigHistory');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::GetResourceConfigHistoryResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ChronologicalOrder' => {
+                                         'type' => 'Str'
+                                       },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'EarlierTime' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'LaterTime' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'ResourceId' => 'resourceId',
+                       'LaterTime' => 'laterTime',
+                       'NextToken' => 'nextToken',
+                       'ChronologicalOrder' => 'chronologicalOrder',
+                       'EarlierTime' => 'earlierTime',
+                       'ResourceType' => 'resourceType',
+                       'Limit' => 'limit'
+                     },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'ResourceType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

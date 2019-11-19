@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::ServiceCatalog;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'servicecatalog' }
   sub signing_name { 'servicecatalog' }
   sub version { '2015-12-10' }
   sub target_prefix { 'AWS242ServiceCatalogService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -970,7 +972,7 @@ product.
 
 =over
 
-=item ServiceActionAssociations => ArrayRef[L<Paws::ServiceCatalog::ServiceActionAssociation>]
+=item ServiceActionAssociations => ArrayRef[ServiceCatalog_ServiceActionAssociation]
 
 =item [AcceptLanguage => Str]
 
@@ -988,7 +990,7 @@ Associates multiple self-service actions with provisioning artifacts.
 
 =over
 
-=item ServiceActionAssociations => ArrayRef[L<Paws::ServiceCatalog::ServiceActionAssociation>]
+=item ServiceActionAssociations => ArrayRef[ServiceCatalog_ServiceActionAssociation]
 
 =item [AcceptLanguage => Str]
 
@@ -1015,7 +1017,7 @@ provisioning artifact.
 
 =item [CopyOptions => ArrayRef[Str|Undef]]
 
-=item [SourceProvisioningArtifactIdentifiers => ArrayRef[L<Paws::ServiceCatalog::SourceProvisioningArtifactPropertiesMap>]]
+=item [SourceProvisioningArtifactIdentifiers => ArrayRef[ServiceCatalog_SourceProvisioningArtifactPropertiesMap]]
 
 =item [TargetProductId => Str]
 
@@ -1080,7 +1082,7 @@ Creates a constraint.
 
 =item [Description => Str]
 
-=item [Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]]
+=item [Tags => ArrayRef[ServiceCatalog_Tag]]
 
 
 =back
@@ -1102,7 +1104,7 @@ Creates a portfolio.
 
 =item [AccountId => Str]
 
-=item [OrganizationNode => L<Paws::ServiceCatalog::OrganizationNode>]
+=item [OrganizationNode => ServiceCatalog_OrganizationNode]
 
 
 =back
@@ -1130,7 +1132,7 @@ node.
 
 =item ProductType => Str
 
-=item ProvisioningArtifactParameters => L<Paws::ServiceCatalog::ProvisioningArtifactProperties>
+=item ProvisioningArtifactParameters => ServiceCatalog_ProvisioningArtifactProperties
 
 =item [AcceptLanguage => Str]
 
@@ -1144,7 +1146,7 @@ node.
 
 =item [SupportUrl => Str]
 
-=item [Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]]
+=item [Tags => ArrayRef[ServiceCatalog_Tag]]
 
 
 =back
@@ -1178,9 +1180,9 @@ Creates a product.
 
 =item [PathId => Str]
 
-=item [ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>]]
+=item [ProvisioningParameters => ArrayRef[ServiceCatalog_UpdateProvisioningParameter]]
 
-=item [Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]]
+=item [Tags => ArrayRef[ServiceCatalog_Tag]]
 
 
 =back
@@ -1208,7 +1210,7 @@ product, use ExecuteProvisionedProductPlan.
 
 =item IdempotencyToken => Str
 
-=item Parameters => L<Paws::ServiceCatalog::ProvisioningArtifactProperties>
+=item Parameters => ServiceCatalog_ProvisioningArtifactProperties
 
 =item ProductId => Str
 
@@ -1232,7 +1234,7 @@ with you.
 
 =over
 
-=item Definition => L<Paws::ServiceCatalog::ServiceActionDefinitionMap>
+=item Definition => ServiceCatalog_ServiceActionDefinitionMap
 
 =item DefinitionType => Str
 
@@ -1321,7 +1323,7 @@ associated products, users, constraints, or shared accounts.
 
 =item [AccountId => Str]
 
-=item [OrganizationNode => L<Paws::ServiceCatalog::OrganizationNode>]
+=item [OrganizationNode => ServiceCatalog_OrganizationNode]
 
 
 =back
@@ -1919,7 +1921,7 @@ specified plan.
 
 =item [AcceptLanguage => Str]
 
-=item [Parameters => L<Paws::ServiceCatalog::ExecutionParameterMap>]
+=item [Parameters => ServiceCatalog_ExecutionParameterMap]
 
 
 =back
@@ -2152,7 +2154,7 @@ Lists all principal ARNs associated with the specified portfolio.
 
 =item [AcceptLanguage => Str]
 
-=item [AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>]
+=item [AccessLevelFilter => ServiceCatalog_AccessLevelFilter]
 
 =item [PageSize => Int]
 
@@ -2219,13 +2221,13 @@ specified self-service action.
 
 =item [AcceptLanguage => Str]
 
-=item [AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>]
+=item [AccessLevelFilter => ServiceCatalog_AccessLevelFilter]
 
 =item [PageSize => Int]
 
 =item [PageToken => Str]
 
-=item [SearchFilter => L<Paws::ServiceCatalog::ListRecordHistorySearchFilter>]
+=item [SearchFilter => ServiceCatalog_ListRecordHistorySearchFilter]
 
 
 =back
@@ -2333,7 +2335,7 @@ account name or region.
 
 =over
 
-=item [Filters => L<Paws::ServiceCatalog::ListTagOptionsFilters>]
+=item [Filters => ServiceCatalog_ListTagOptionsFilters]
 
 =item [PageSize => Int]
 
@@ -2367,11 +2369,11 @@ Lists the specified TagOptions or all TagOptions.
 
 =item [PathId => Str]
 
-=item [ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::ProvisioningParameter>]]
+=item [ProvisioningParameters => ArrayRef[ServiceCatalog_ProvisioningParameter]]
 
-=item [ProvisioningPreferences => L<Paws::ServiceCatalog::ProvisioningPreferences>]
+=item [ProvisioningPreferences => ServiceCatalog_ProvisioningPreferences]
 
-=item [Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]]
+=item [Tags => ArrayRef[ServiceCatalog_Tag]]
 
 
 =back
@@ -2419,7 +2421,7 @@ Rejects an offer to share the specified portfolio.
 
 =item [AcceptLanguage => Str]
 
-=item [AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>]
+=item [AccessLevelFilter => ServiceCatalog_AccessLevelFilter]
 
 =item [PageSize => Int]
 
@@ -2443,7 +2445,7 @@ To use additional filtering, see SearchProvisionedProducts.
 
 =item [AcceptLanguage => Str]
 
-=item [Filters => L<Paws::ServiceCatalog::ProductViewFilters>]
+=item [Filters => ServiceCatalog_ProductViewFilters]
 
 =item [PageSize => Int]
 
@@ -2469,7 +2471,7 @@ Gets information about the products to which the caller has access.
 
 =item [AcceptLanguage => Str]
 
-=item [Filters => L<Paws::ServiceCatalog::ProductViewFilters>]
+=item [Filters => ServiceCatalog_ProductViewFilters]
 
 =item [PageSize => Int]
 
@@ -2500,9 +2502,9 @@ products.
 
 =item [AcceptLanguage => Str]
 
-=item [AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>]
+=item [AccessLevelFilter => ServiceCatalog_AccessLevelFilter]
 
-=item [Filters => L<Paws::ServiceCatalog::ProvisionedProductFilters>]
+=item [Filters => ServiceCatalog_ProvisionedProductFilters]
 
 =item [PageSize => Int]
 
@@ -2582,7 +2584,7 @@ Updates the specified constraint.
 
 =item [AcceptLanguage => Str]
 
-=item [AddTags => ArrayRef[L<Paws::ServiceCatalog::Tag>]]
+=item [AddTags => ArrayRef[ServiceCatalog_Tag]]
 
 =item [Description => Str]
 
@@ -2612,7 +2614,7 @@ You cannot update a product that was shared with you.
 
 =item [AcceptLanguage => Str]
 
-=item [AddTags => ArrayRef[L<Paws::ServiceCatalog::Tag>]]
+=item [AddTags => ArrayRef[ServiceCatalog_Tag]]
 
 =item [Description => Str]
 
@@ -2658,11 +2660,11 @@ Updates the specified product.
 
 =item [ProvisioningArtifactId => Str]
 
-=item [ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>]]
+=item [ProvisioningParameters => ArrayRef[ServiceCatalog_UpdateProvisioningParameter]]
 
-=item [ProvisioningPreferences => L<Paws::ServiceCatalog::UpdateProvisioningPreferences>]
+=item [ProvisioningPreferences => ServiceCatalog_UpdateProvisioningPreferences]
 
-=item [Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]]
+=item [Tags => ArrayRef[ServiceCatalog_Tag]]
 
 
 =back
@@ -2690,7 +2692,7 @@ You can check the status of this request using DescribeRecord.
 
 =item ProvisionedProductId => Str
 
-=item ProvisionedProductProperties => L<Paws::ServiceCatalog::ProvisionedProductProperties>
+=item ProvisionedProductProperties => ServiceCatalog_ProvisionedProductProperties
 
 =item [AcceptLanguage => Str]
 
@@ -2745,7 +2747,7 @@ with you.
 
 =item [AcceptLanguage => Str]
 
-=item [Definition => L<Paws::ServiceCatalog::ServiceActionDefinitionMap>]
+=item [Definition => ServiceCatalog_ServiceActionDefinitionMap]
 
 =item [Description => Str]
 
@@ -2871,9 +2873,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceCatalog::ListPrincipalsForPortfolioOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllProvisionedProductPlans(sub { },[AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, ProvisionProductId => Str])
+=head2 ListAllProvisionedProductPlans(sub { },[AcceptLanguage => Str, AccessLevelFilter => ServiceCatalog_AccessLevelFilter, PageSize => Int, PageToken => Str, ProvisionProductId => Str])
 
-=head2 ListAllProvisionedProductPlans([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, ProvisionProductId => Str])
+=head2 ListAllProvisionedProductPlans([AcceptLanguage => Str, AccessLevelFilter => ServiceCatalog_AccessLevelFilter, PageSize => Int, PageToken => Str, ProvisionProductId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2895,9 +2897,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceCatalog::ListProvisioningArtifactsForServiceActionOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllRecordHistory(sub { },[AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, SearchFilter => L<Paws::ServiceCatalog::ListRecordHistorySearchFilter>])
+=head2 ListAllRecordHistory(sub { },[AcceptLanguage => Str, AccessLevelFilter => ServiceCatalog_AccessLevelFilter, PageSize => Int, PageToken => Str, SearchFilter => ServiceCatalog_ListRecordHistorySearchFilter])
 
-=head2 ListAllRecordHistory([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, SearchFilter => L<Paws::ServiceCatalog::ListRecordHistorySearchFilter>])
+=head2 ListAllRecordHistory([AcceptLanguage => Str, AccessLevelFilter => ServiceCatalog_AccessLevelFilter, PageSize => Int, PageToken => Str, SearchFilter => ServiceCatalog_ListRecordHistorySearchFilter])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2943,9 +2945,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceCatalog::ListServiceActionsForProvisioningArtifactOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllTagOptions(sub { },[Filters => L<Paws::ServiceCatalog::ListTagOptionsFilters>, PageSize => Int, PageToken => Str])
+=head2 ListAllTagOptions(sub { },[Filters => ServiceCatalog_ListTagOptionsFilters, PageSize => Int, PageToken => Str])
 
-=head2 ListAllTagOptions([Filters => L<Paws::ServiceCatalog::ListTagOptionsFilters>, PageSize => Int, PageToken => Str])
+=head2 ListAllTagOptions([Filters => ServiceCatalog_ListTagOptionsFilters, PageSize => Int, PageToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2955,9 +2957,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceCatalog::ListTagOptionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ScanAllProvisionedProducts(sub { },[AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str])
+=head2 ScanAllProvisionedProducts(sub { },[AcceptLanguage => Str, AccessLevelFilter => ServiceCatalog_AccessLevelFilter, PageSize => Int, PageToken => Str])
 
-=head2 ScanAllProvisionedProducts([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str])
+=head2 ScanAllProvisionedProducts([AcceptLanguage => Str, AccessLevelFilter => ServiceCatalog_AccessLevelFilter, PageSize => Int, PageToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2967,9 +2969,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ServiceCatalog::ScanProvisionedProductsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SearchAllProductsAsAdmin(sub { },[AcceptLanguage => Str, Filters => L<Paws::ServiceCatalog::ProductViewFilters>, PageSize => Int, PageToken => Str, PortfolioId => Str, ProductSource => Str, SortBy => Str, SortOrder => Str])
+=head2 SearchAllProductsAsAdmin(sub { },[AcceptLanguage => Str, Filters => ServiceCatalog_ProductViewFilters, PageSize => Int, PageToken => Str, PortfolioId => Str, ProductSource => Str, SortBy => Str, SortOrder => Str])
 
-=head2 SearchAllProductsAsAdmin([AcceptLanguage => Str, Filters => L<Paws::ServiceCatalog::ProductViewFilters>, PageSize => Int, PageToken => Str, PortfolioId => Str, ProductSource => Str, SortBy => Str, SortOrder => Str])
+=head2 SearchAllProductsAsAdmin([AcceptLanguage => Str, Filters => ServiceCatalog_ProductViewFilters, PageSize => Int, PageToken => Str, PortfolioId => Str, ProductSource => Str, SortBy => Str, SortOrder => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -1,10 +1,41 @@
+# Generated from default/object.tt
 package Paws::Glue::PartitionInput;
-  use Moose;
-  has LastAccessTime => (is => 'ro', isa => 'Str');
-  has LastAnalyzedTime => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
-  has StorageDescriptor => (is => 'ro', isa => 'Paws::Glue::StorageDescriptor');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Glue::Types qw/Glue_ParametersMap Glue_StorageDescriptor/;
+  has LastAccessTime => (is => 'ro', isa => Str);
+  has LastAnalyzedTime => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => Glue_ParametersMap);
+  has StorageDescriptor => (is => 'ro', isa => Glue_StorageDescriptor);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastAccessTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'LastAnalyzedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'StorageDescriptor' => {
+                                        'class' => 'Paws::Glue::StorageDescriptor',
+                                        'type' => 'Glue_StorageDescriptor'
+                                      },
+               'Parameters' => {
+                                 'class' => 'Paws::Glue::ParametersMap',
+                                 'type' => 'Glue_ParametersMap'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,12 +82,12 @@ The structure used to create and update a partition.
 partition.
 
 
-=head2 Parameters => L<Paws::Glue::ParametersMap>
+=head2 Parameters => Glue_ParametersMap
 
   These key-value pairs define partition parameters.
 
 
-=head2 StorageDescriptor => L<Paws::Glue::StorageDescriptor>
+=head2 StorageDescriptor => Glue_StorageDescriptor
 
   Provides information about the physical location where the partition is
 stored.

@@ -1,15 +1,44 @@
 
 package Paws::IoT::ReplaceTopicRule;
-  use Moose;
-  has RuleName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ruleName', required => 1);
-  has TopicRulePayload => (is => 'ro', isa => 'Paws::IoT::TopicRulePayload', traits => ['NameInRequest'], request_name => 'topicRulePayload', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_TopicRulePayload/;
+  has RuleName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TopicRulePayload => (is => 'ro', isa => IoT_TopicRulePayload, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'TopicRulePayload');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceTopicRule');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/rules/{ruleName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ReplaceTopicRule');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/rules/{ruleName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'RuleName' => 'ruleName'
+                  },
+  'NameInRequest' => {
+                       'TopicRulePayload' => 'topicRulePayload'
+                     },
+  'IsRequired' => {
+                    'RuleName' => 1,
+                    'TopicRulePayload' => 1
+                  },
+  'types' => {
+               'TopicRulePayload' => {
+                                       'type' => 'IoT_TopicRulePayload',
+                                       'class' => 'Paws::IoT::TopicRulePayload'
+                                     },
+               'RuleName' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -297,7 +326,7 @@ The name of the rule.
 
 
 
-=head2 B<REQUIRED> TopicRulePayload => L<Paws::IoT::TopicRulePayload>
+=head2 B<REQUIRED> TopicRulePayload => IoT_TopicRulePayload
 
 The rule payload.
 

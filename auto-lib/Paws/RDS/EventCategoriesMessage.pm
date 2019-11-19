@@ -1,9 +1,31 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::EventCategoriesMessage;
-  use Moose;
-  has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::EventCategoriesMap]', request_name => 'EventCategoriesMap', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_EventCategoriesMap/;
+  has EventCategoriesMapList => (is => 'ro', isa => ArrayRef[RDS_EventCategoriesMap]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EventCategoriesMapList' => 'EventCategoriesMap'
+                     },
+  'types' => {
+               'EventCategoriesMapList' => {
+                                             'class' => 'Paws::RDS::EventCategoriesMap',
+                                             'type' => 'ArrayRef[RDS_EventCategoriesMap]'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::RDS::EventCategoriesMessage
 =head1 ATTRIBUTES
 
 
-=head2 EventCategoriesMapList => ArrayRef[L<Paws::RDS::EventCategoriesMap>]
+=head2 EventCategoriesMapList => ArrayRef[RDS_EventCategoriesMap]
 
 A list of EventCategoriesMap data types.
 

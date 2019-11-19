@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::KMS::AliasListEntry;
-  use Moose;
-  has AliasArn => (is => 'ro', isa => 'Str');
-  has AliasName => (is => 'ro', isa => 'Str');
-  has TargetKeyId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KMS::Types qw//;
+  has AliasArn => (is => 'ro', isa => Str);
+  has AliasName => (is => 'ro', isa => Str);
+  has TargetKeyId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'AliasArn' => {
+                               'type' => 'Str'
+                             },
+               'AliasName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

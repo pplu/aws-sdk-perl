@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DS::DescribeDomainControllersResult;
-  use Moose;
-  has DomainControllers => (is => 'ro', isa => 'ArrayRef[Paws::DS::DomainController]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DS::Types qw/DS_DomainController/;
+  has DomainControllers => (is => 'ro', isa => ArrayRef[DS_DomainController]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DomainControllers' => {
+                                        'type' => 'ArrayRef[DS_DomainController]',
+                                        'class' => 'Paws::DS::DomainController'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::DS::DescribeDomainControllersResult
 =head1 ATTRIBUTES
 
 
-=head2 DomainControllers => ArrayRef[L<Paws::DS::DomainController>]
+=head2 DomainControllers => ArrayRef[DS_DomainController]
 
 List of the DomainController objects that were retrieved.
 

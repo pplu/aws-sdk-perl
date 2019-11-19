@@ -1,14 +1,55 @@
 
 package Paws::EC2::VolumeAttachment;
-  use Moose;
-  has AttachTime => (is => 'ro', isa => 'Str', request_name => 'attachTime', traits => ['NameInRequest',]);
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool', request_name => 'deleteOnTermination', traits => ['NameInRequest',]);
-  has Device => (is => 'ro', isa => 'Str', request_name => 'device', traits => ['NameInRequest',]);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest',]);
-  has State => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest',]);
-  has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has AttachTime => (is => 'ro', isa => Str);
+  has DeleteOnTermination => (is => 'ro', isa => Bool);
+  has Device => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has VolumeId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Device' => 'device',
+                       'VolumeId' => 'volumeId',
+                       'AttachTime' => 'attachTime',
+                       'InstanceId' => 'instanceId',
+                       'DeleteOnTermination' => 'deleteOnTermination',
+                       'State' => 'status'
+                     },
+  'types' => {
+               'Device' => {
+                             'type' => 'Str'
+                           },
+               'VolumeId' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AttachTime' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'DeleteOnTermination' => {
+                                          'type' => 'Bool'
+                                        },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

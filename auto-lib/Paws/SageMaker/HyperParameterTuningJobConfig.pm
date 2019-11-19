@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::SageMaker::HyperParameterTuningJobConfig;
-  use Moose;
-  has HyperParameterTuningJobObjective => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobObjective');
-  has ParameterRanges => (is => 'ro', isa => 'Paws::SageMaker::ParameterRanges');
-  has ResourceLimits => (is => 'ro', isa => 'Paws::SageMaker::ResourceLimits', required => 1);
-  has Strategy => (is => 'ro', isa => 'Str', required => 1);
-  has TrainingJobEarlyStoppingType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_ResourceLimits SageMaker_ParameterRanges SageMaker_HyperParameterTuningJobObjective/;
+  has HyperParameterTuningJobObjective => (is => 'ro', isa => SageMaker_HyperParameterTuningJobObjective);
+  has ParameterRanges => (is => 'ro', isa => SageMaker_ParameterRanges);
+  has ResourceLimits => (is => 'ro', isa => SageMaker_ResourceLimits, required => 1);
+  has Strategy => (is => 'ro', isa => Str, required => 1);
+  has TrainingJobEarlyStoppingType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceLimits' => {
+                                     'type' => 'SageMaker_ResourceLimits',
+                                     'class' => 'Paws::SageMaker::ResourceLimits'
+                                   },
+               'Strategy' => {
+                               'type' => 'Str'
+                             },
+               'TrainingJobEarlyStoppingType' => {
+                                                   'type' => 'Str'
+                                                 },
+               'ParameterRanges' => {
+                                      'class' => 'Paws::SageMaker::ParameterRanges',
+                                      'type' => 'SageMaker_ParameterRanges'
+                                    },
+               'HyperParameterTuningJobObjective' => {
+                                                       'type' => 'SageMaker_HyperParameterTuningJobObjective',
+                                                       'class' => 'Paws::SageMaker::HyperParameterTuningJobObjective'
+                                                     }
+             },
+  'IsRequired' => {
+                    'ResourceLimits' => 1,
+                    'Strategy' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,19 +76,19 @@ Configures a hyperparameter tuning job.
 =head1 ATTRIBUTES
 
 
-=head2 HyperParameterTuningJobObjective => L<Paws::SageMaker::HyperParameterTuningJobObjective>
+=head2 HyperParameterTuningJobObjective => SageMaker_HyperParameterTuningJobObjective
 
   The HyperParameterTuningJobObjective object that specifies the
 objective metric for this tuning job.
 
 
-=head2 ParameterRanges => L<Paws::SageMaker::ParameterRanges>
+=head2 ParameterRanges => SageMaker_ParameterRanges
 
   The ParameterRanges object that specifies the ranges of hyperparameters
 that this tuning job searches.
 
 
-=head2 B<REQUIRED> ResourceLimits => L<Paws::SageMaker::ResourceLimits>
+=head2 B<REQUIRED> ResourceLimits => SageMaker_ResourceLimits
 
   The ResourceLimits object that specifies the maximum number of training
 jobs and parallel training jobs for this tuning job.

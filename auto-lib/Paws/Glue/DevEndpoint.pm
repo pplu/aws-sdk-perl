@@ -1,30 +1,120 @@
+# Generated from default/object.tt
 package Paws::Glue::DevEndpoint;
-  use Moose;
-  has Arguments => (is => 'ro', isa => 'Paws::Glue::MapValue');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has EndpointName => (is => 'ro', isa => 'Str');
-  has ExtraJarsS3Path => (is => 'ro', isa => 'Str');
-  has ExtraPythonLibsS3Path => (is => 'ro', isa => 'Str');
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has GlueVersion => (is => 'ro', isa => 'Str');
-  has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
-  has LastUpdateStatus => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int');
-  has NumberOfWorkers => (is => 'ro', isa => 'Int');
-  has PrivateAddress => (is => 'ro', isa => 'Str');
-  has PublicAddress => (is => 'ro', isa => 'Str');
-  has PublicKey => (is => 'ro', isa => 'Str');
-  has PublicKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has SecurityConfiguration => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Status => (is => 'ro', isa => 'Str');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str');
-  has WorkerType => (is => 'ro', isa => 'Str');
-  has YarnEndpointAddress => (is => 'ro', isa => 'Str');
-  has ZeppelinRemoteSparkInterpreterPort => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::Glue::Types qw/Glue_MapValue/;
+  has Arguments => (is => 'ro', isa => Glue_MapValue);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has EndpointName => (is => 'ro', isa => Str);
+  has ExtraJarsS3Path => (is => 'ro', isa => Str);
+  has ExtraPythonLibsS3Path => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has GlueVersion => (is => 'ro', isa => Str);
+  has LastModifiedTimestamp => (is => 'ro', isa => Str);
+  has LastUpdateStatus => (is => 'ro', isa => Str);
+  has NumberOfNodes => (is => 'ro', isa => Int);
+  has NumberOfWorkers => (is => 'ro', isa => Int);
+  has PrivateAddress => (is => 'ro', isa => Str);
+  has PublicAddress => (is => 'ro', isa => Str);
+  has PublicKey => (is => 'ro', isa => Str);
+  has PublicKeys => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RoleArn => (is => 'ro', isa => Str);
+  has SecurityConfiguration => (is => 'ro', isa => Str);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Status => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+  has WorkerType => (is => 'ro', isa => Str);
+  has YarnEndpointAddress => (is => 'ro', isa => Str);
+  has ZeppelinRemoteSparkInterpreterPort => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'SecurityConfiguration' => {
+                                            'type' => 'Str'
+                                          },
+               'ExtraJarsS3Path' => {
+                                      'type' => 'Str'
+                                    },
+               'YarnEndpointAddress' => {
+                                          'type' => 'Str'
+                                        },
+               'ExtraPythonLibsS3Path' => {
+                                            'type' => 'Str'
+                                          },
+               'PublicKeys' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'EndpointName' => {
+                                   'type' => 'Str'
+                                 },
+               'WorkerType' => {
+                                 'type' => 'Str'
+                               },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'NumberOfNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'GlueVersion' => {
+                                  'type' => 'Str'
+                                },
+               'LastUpdateStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'PublicKey' => {
+                                'type' => 'Str'
+                              },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'ZeppelinRemoteSparkInterpreterPort' => {
+                                                         'type' => 'Int'
+                                                       },
+               'Arguments' => {
+                                'class' => 'Paws::Glue::MapValue',
+                                'type' => 'Glue_MapValue'
+                              },
+               'NumberOfWorkers' => {
+                                      'type' => 'Int'
+                                    },
+               'LastModifiedTimestamp' => {
+                                            'type' => 'Str'
+                                          },
+               'PrivateAddress' => {
+                                     'type' => 'Str'
+                                   },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'PublicAddress' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +151,7 @@ transform, and load (ETL) scripts.
 =head1 ATTRIBUTES
 
 
-=head2 Arguments => L<Paws::Glue::MapValue>
+=head2 Arguments => Glue_MapValue
 
   A map of arguments used to configure the C<DevEndpoint>.
 

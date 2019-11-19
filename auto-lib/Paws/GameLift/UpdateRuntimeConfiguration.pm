@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::UpdateRuntimeConfiguration;
-  use Moose;
-  has FleetId => (is => 'ro', isa => 'Str', required => 1);
-  has RuntimeConfiguration => (is => 'ro', isa => 'Paws::GameLift::RuntimeConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_RuntimeConfiguration/;
+  has FleetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RuntimeConfiguration => (is => 'ro', isa => GameLift_RuntimeConfiguration, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRuntimeConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::UpdateRuntimeConfigurationOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRuntimeConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::UpdateRuntimeConfigurationOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RuntimeConfiguration' => {
+                                           'type' => 'GameLift_RuntimeConfiguration',
+                                           'class' => 'Paws::GameLift::RuntimeConfiguration'
+                                         },
+               'FleetId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'FleetId' => 1,
+                    'RuntimeConfiguration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +89,7 @@ Unique identifier for a fleet to update run-time configuration for.
 
 
 
-=head2 B<REQUIRED> RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>
+=head2 B<REQUIRED> RuntimeConfiguration => GameLift_RuntimeConfiguration
 
 Instructions for launching server processes on each instance in the
 fleet. Server processes run either a custom game build executable or a

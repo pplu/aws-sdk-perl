@@ -1,7 +1,29 @@
 package Paws::EC2::CancelSpotFleetRequestsErrorItem;
-  use Moose;
-  has Error => (is => 'ro', isa => 'Paws::EC2::CancelSpotFleetRequestsError', request_name => 'error', traits => ['NameInRequest']);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_CancelSpotFleetRequestsError/;
+  has Error => (is => 'ro', isa => EC2_CancelSpotFleetRequestsError);
+  has SpotFleetRequestId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Error' => {
+                            'class' => 'Paws::EC2::CancelSpotFleetRequestsError',
+                            'type' => 'EC2_CancelSpotFleetRequestsError'
+                          },
+               'SpotFleetRequestId' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'SpotFleetRequestId' => 'spotFleetRequestId',
+                       'Error' => 'error'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +59,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Error => L<Paws::EC2::CancelSpotFleetRequestsError>
+=head2 Error => EC2_CancelSpotFleetRequestsError
 
   The error.
 

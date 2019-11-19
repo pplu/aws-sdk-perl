@@ -1,10 +1,34 @@
 
 package Paws::EKS::ListNodegroupsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Nodegroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'nodegroups');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EKS::Types qw//;
+  has NextToken => (is => 'ro', isa => Str);
+  has Nodegroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Nodegroups' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Nodegroups' => 'nodegroups'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,40 @@
 
 package Paws::Lambda::PutFunctionConcurrency;
-  use Moose;
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
-  has ReservedConcurrentExecutions => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lambda::Types qw//;
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReservedConcurrentExecutions => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutFunctionConcurrency');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-10-31/functions/{FunctionName}/concurrency');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::Concurrency');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutFunctionConcurrency');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-10-31/functions/{FunctionName}/concurrency');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::Concurrency');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'FunctionName' => 'FunctionName'
+                  },
+  'types' => {
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'ReservedConcurrentExecutions' => {
+                                                   'type' => 'Int'
+                                                 }
+             },
+  'IsRequired' => {
+                    'FunctionName' => 1,
+                    'ReservedConcurrentExecutions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

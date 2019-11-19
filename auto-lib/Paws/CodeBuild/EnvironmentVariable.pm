@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::EnvironmentVariable;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeBuild::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Value' => 1
+                  },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Name' => 'name',
+                       'Value' => 'value'
+                     },
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

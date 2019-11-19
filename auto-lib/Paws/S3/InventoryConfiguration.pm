@@ -1,12 +1,60 @@
+# Generated from default/object.tt
 package Paws::S3::InventoryConfiguration;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Paws::S3::InventoryDestination', required => 1);
-  has Filter => (is => 'ro', isa => 'Paws::S3::InventoryFilter');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has IncludedObjectVersions => (is => 'ro', isa => 'Str', required => 1);
-  has IsEnabled => (is => 'ro', isa => 'Bool', required => 1);
-  has OptionalFields => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Field', traits => ['NameInRequest']);
-  has Schedule => (is => 'ro', isa => 'Paws::S3::InventorySchedule', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::S3::Types qw/S3_InventoryFilter S3_InventoryDestination S3_InventorySchedule/;
+  has Destination => (is => 'ro', isa => S3_InventoryDestination, required => 1);
+  has Filter => (is => 'ro', isa => S3_InventoryFilter);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has IncludedObjectVersions => (is => 'ro', isa => Str, required => 1);
+  has IsEnabled => (is => 'ro', isa => Bool, required => 1);
+  has OptionalFields => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Schedule => (is => 'ro', isa => S3_InventorySchedule, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Destination' => {
+                                  'class' => 'Paws::S3::InventoryDestination',
+                                  'type' => 'S3_InventoryDestination'
+                                },
+               'Filter' => {
+                             'type' => 'S3_InventoryFilter',
+                             'class' => 'Paws::S3::InventoryFilter'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Schedule' => {
+                               'class' => 'Paws::S3::InventorySchedule',
+                               'type' => 'S3_InventorySchedule'
+                             },
+               'OptionalFields' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'IsEnabled' => {
+                                'type' => 'Bool'
+                              },
+               'IncludedObjectVersions' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'OptionalFields' => 'Field'
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'IncludedObjectVersions' => 1,
+                    'Schedule' => 1,
+                    'Destination' => 1,
+                    'IsEnabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,12 +93,12 @@ in the I<Amazon Simple Storage Service API Reference>.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Destination => L<Paws::S3::InventoryDestination>
+=head2 B<REQUIRED> Destination => S3_InventoryDestination
 
   Contains information about where to publish the inventory results.
 
 
-=head2 Filter => L<Paws::S3::InventoryFilter>
+=head2 Filter => S3_InventoryFilter
 
   Specifies an inventory filter. The inventory only includes objects that
 meet the filter's criteria.
@@ -83,7 +131,7 @@ inventory list is generated.
 results.
 
 
-=head2 B<REQUIRED> Schedule => L<Paws::S3::InventorySchedule>
+=head2 B<REQUIRED> Schedule => S3_InventorySchedule
 
   Specifies the schedule for generating inventory results.
 

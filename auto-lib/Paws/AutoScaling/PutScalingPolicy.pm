@@ -1,24 +1,79 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::PutScalingPolicy;
-  use Moose;
-  has AdjustmentType => (is => 'ro', isa => 'Str');
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Cooldown => (is => 'ro', isa => 'Int');
-  has EstimatedInstanceWarmup => (is => 'ro', isa => 'Int');
-  has MetricAggregationType => (is => 'ro', isa => 'Str');
-  has MinAdjustmentMagnitude => (is => 'ro', isa => 'Int');
-  has MinAdjustmentStep => (is => 'ro', isa => 'Int');
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyType => (is => 'ro', isa => 'Str');
-  has ScalingAdjustment => (is => 'ro', isa => 'Int');
-  has StepAdjustments => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::StepAdjustment]');
-  has TargetTrackingConfiguration => (is => 'ro', isa => 'Paws::AutoScaling::TargetTrackingConfiguration');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_TargetTrackingConfiguration AutoScaling_StepAdjustment/;
+  has AdjustmentType => (is => 'ro', isa => Str, predicate => 1);
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Cooldown => (is => 'ro', isa => Int, predicate => 1);
+  has EstimatedInstanceWarmup => (is => 'ro', isa => Int, predicate => 1);
+  has MetricAggregationType => (is => 'ro', isa => Str, predicate => 1);
+  has MinAdjustmentMagnitude => (is => 'ro', isa => Int, predicate => 1);
+  has MinAdjustmentStep => (is => 'ro', isa => Int, predicate => 1);
+  has PolicyName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PolicyType => (is => 'ro', isa => Str, predicate => 1);
+  has ScalingAdjustment => (is => 'ro', isa => Int, predicate => 1);
+  has StepAdjustments => (is => 'ro', isa => ArrayRef[AutoScaling_StepAdjustment], predicate => 1);
+  has TargetTrackingConfiguration => (is => 'ro', isa => AutoScaling_TargetTrackingConfiguration, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutScalingPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::PolicyARNType');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PutScalingPolicyResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutScalingPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::PolicyARNType');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'PutScalingPolicyResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StepAdjustments' => {
+                                      'class' => 'Paws::AutoScaling::StepAdjustment',
+                                      'type' => 'ArrayRef[AutoScaling_StepAdjustment]'
+                                    },
+               'PolicyType' => {
+                                 'type' => 'Str'
+                               },
+               'TargetTrackingConfiguration' => {
+                                                  'class' => 'Paws::AutoScaling::TargetTrackingConfiguration',
+                                                  'type' => 'AutoScaling_TargetTrackingConfiguration'
+                                                },
+               'AdjustmentType' => {
+                                     'type' => 'Str'
+                                   },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'ScalingAdjustment' => {
+                                        'type' => 'Int'
+                                      },
+               'MetricAggregationType' => {
+                                            'type' => 'Str'
+                                          },
+               'EstimatedInstanceWarmup' => {
+                                              'type' => 'Int'
+                                            },
+               'MinAdjustmentMagnitude' => {
+                                             'type' => 'Int'
+                                           },
+               'Cooldown' => {
+                               'type' => 'Int'
+                             },
+               'MinAdjustmentStep' => {
+                                        'type' => 'Int'
+                                      },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'PolicyName' => 1,
+                    'AutoScalingGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -166,7 +221,7 @@ must specify this parameter. (Not used with any other policy type.)
 
 
 
-=head2 StepAdjustments => ArrayRef[L<Paws::AutoScaling::StepAdjustment>]
+=head2 StepAdjustments => ArrayRef[AutoScaling_StepAdjustment]
 
 A set of adjustments that enable you to scale based on the size of the
 alarm breach.
@@ -176,7 +231,7 @@ must specify this parameter. (Not used with any other policy type.)
 
 
 
-=head2 TargetTrackingConfiguration => L<Paws::AutoScaling::TargetTrackingConfiguration>
+=head2 TargetTrackingConfiguration => AutoScaling_TargetTrackingConfiguration
 
 A target tracking scaling policy. Includes support for predefined or
 customized metrics.

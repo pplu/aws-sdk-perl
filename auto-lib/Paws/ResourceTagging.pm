@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::ResourceTagging;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'tagging' }
   sub signing_name { 'tagging' }
   sub version { '2017-01-26' }
   sub target_prefix { 'ResourceGroupsTaggingAPI_20170126' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -573,7 +575,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/resourcegroupst
 
 =item [ResourceTypeFilters => ArrayRef[Str|Undef]]
 
-=item [TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>]]
+=item [TagFilters => ArrayRef[ResourceTagging_TagFilter]]
 
 =item [TagsPerPage => Int]
 
@@ -637,7 +639,7 @@ for the AWS account.
 
 =item ResourceARNList => ArrayRef[Str|Undef]
 
-=item Tags => L<Paws::ResourceTagging::TagMap>
+=item Tags => ResourceTagging_TagMap
 
 
 =back
@@ -728,9 +730,9 @@ the AWS account.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 GetAllResources(sub { },[PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
+=head2 GetAllResources(sub { },[PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[ResourceTagging_TagFilter], TagsPerPage => Int])
 
-=head2 GetAllResources([PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
+=head2 GetAllResources([PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[ResourceTagging_TagFilter], TagsPerPage => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

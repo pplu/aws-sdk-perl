@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::EMR::AddInstanceGroupsOutput;
-  use Moose;
-  has ClusterArn => (is => 'ro', isa => 'Str');
-  has InstanceGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has JobFlowId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EMR::Types qw//;
+  has ClusterArn => (is => 'ro', isa => Str);
+  has InstanceGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has JobFlowId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobFlowId' => {
+                                'type' => 'Str'
+                              },
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

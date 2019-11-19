@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::RDSData::ResultSetMetadata;
-  use Moose;
-  has ColumnCount => (is => 'ro', isa => 'Int', request_name => 'columnCount', traits => ['NameInRequest']);
-  has ColumnMetadata => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::ColumnMetadata]', request_name => 'columnMetadata', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int ArrayRef/;
+  use Paws::RDSData::Types qw/RDSData_ColumnMetadata/;
+  has ColumnCount => (is => 'ro', isa => Int);
+  has ColumnMetadata => (is => 'ro', isa => ArrayRef[RDSData_ColumnMetadata]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ColumnMetadata' => {
+                                     'class' => 'Paws::RDSData::ColumnMetadata',
+                                     'type' => 'ArrayRef[RDSData_ColumnMetadata]'
+                                   },
+               'ColumnCount' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'NameInRequest' => {
+                       'ColumnMetadata' => 'columnMetadata',
+                       'ColumnCount' => 'columnCount'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ The metadata of the result set returned by a SQL statement.
   The number of columns in the result set.
 
 
-=head2 ColumnMetadata => ArrayRef[L<Paws::RDSData::ColumnMetadata>]
+=head2 ColumnMetadata => ArrayRef[RDSData_ColumnMetadata]
 
   The metadata of the columns in the result set.
 

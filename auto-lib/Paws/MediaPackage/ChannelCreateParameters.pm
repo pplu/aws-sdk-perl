@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::ChannelCreateParameters;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackage::Types qw/MediaPackage_Tags/;
+  has Description => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => MediaPackage_Tags);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'MediaPackage_Tags',
+                           'class' => 'Paws::MediaPackage::Tags'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Description' => 'description',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +81,7 @@ Configuration parameters for a new Channel.
 cannot be changed after a Channel is created.
 
 
-=head2 Tags => L<Paws::MediaPackage::Tags>
+=head2 Tags => MediaPackage_Tags
 
   
 

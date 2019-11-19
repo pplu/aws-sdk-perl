@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SESv2::KinesisFirehoseDestination;
-  use Moose;
-  has DeliveryStreamArn => (is => 'ro', isa => 'Str', required => 1);
-  has IamRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw//;
+  has DeliveryStreamArn => (is => 'ro', isa => Str, required => 1);
+  has IamRoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DeliveryStreamArn' => 1,
+                    'IamRoleArn' => 1
+                  },
+  'types' => {
+               'DeliveryStreamArn' => {
+                                        'type' => 'Str'
+                                      },
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

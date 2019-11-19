@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Rekognition::CelebrityRecognition;
-  use Moose;
-  has Celebrity => (is => 'ro', isa => 'Paws::Rekognition::CelebrityDetail');
-  has Timestamp => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Rekognition::Types qw/Rekognition_CelebrityDetail/;
+  has Celebrity => (is => 'ro', isa => Rekognition_CelebrityDetail);
+  has Timestamp => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Int'
+                              },
+               'Celebrity' => {
+                                'class' => 'Paws::Rekognition::CelebrityDetail',
+                                'type' => 'Rekognition_CelebrityDetail'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +60,7 @@ GetCelebrityRecognition in the Amazon Rekognition Developer Guide.
 =head1 ATTRIBUTES
 
 
-=head2 Celebrity => L<Paws::Rekognition::CelebrityDetail>
+=head2 Celebrity => Rekognition_CelebrityDetail
 
   Information about a recognized celebrity.
 

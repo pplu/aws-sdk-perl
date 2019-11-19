@@ -1,19 +1,62 @@
 
 package Paws::MediaStoreData::PutObject;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str', required => 1);
-  has CacheControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Cache-Control');
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has Path => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Path', required => 1);
-  has StorageClass => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-storage-class');
-  has UploadAvailability => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-upload-availability');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaStoreData::Types qw//;
+  has Body => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CacheControl => (is => 'ro', isa => Str, predicate => 1);
+  has ContentType => (is => 'ro', isa => Str, predicate => 1);
+  has Path => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StorageClass => (is => 'ro', isa => Str, predicate => 1);
+  has UploadAvailability => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutObject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Path+}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaStoreData::PutObjectResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutObject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Path+}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaStoreData::PutObjectResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'StorageClass' => 'x-amz-storage-class',
+                       'UploadAvailability' => 'x-amz-upload-availability',
+                       'CacheControl' => 'Cache-Control',
+                       'ContentType' => 'Content-Type'
+                     },
+  'IsRequired' => {
+                    'Path' => 1,
+                    'Body' => 1
+                  },
+  'types' => {
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 },
+               'UploadAvailability' => {
+                                         'type' => 'Str'
+                                       },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'CacheControl' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'Body' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'Path' => 'Path'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

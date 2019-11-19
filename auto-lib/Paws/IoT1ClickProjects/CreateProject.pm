@@ -1,17 +1,52 @@
 
 package Paws::IoT1ClickProjects::CreateProject;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has PlacementTemplate => (is => 'ro', isa => 'Paws::IoT1ClickProjects::PlacementTemplate', traits => ['NameInRequest'], request_name => 'placementTemplate');
-  has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::IoT1ClickProjects::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickProjects::Types qw/IoT1ClickProjects_PlacementTemplate IoT1ClickProjects_TagMap/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has PlacementTemplate => (is => 'ro', isa => IoT1ClickProjects_PlacementTemplate, predicate => 1);
+  has ProjectName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => IoT1ClickProjects_TagMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateProject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/projects');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT1ClickProjects::CreateProjectResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateProject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/projects');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT1ClickProjects::CreateProjectResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'IoT1ClickProjects_TagMap',
+                           'class' => 'Paws::IoT1ClickProjects::TagMap'
+                         },
+               'PlacementTemplate' => {
+                                        'type' => 'IoT1ClickProjects_PlacementTemplate',
+                                        'class' => 'Paws::IoT1ClickProjects::PlacementTemplate'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ProjectName' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'Description' => 'description',
+                       'PlacementTemplate' => 'placementTemplate',
+                       'ProjectName' => 'projectName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +101,7 @@ An optional description for the project.
 
 
 
-=head2 PlacementTemplate => L<Paws::IoT1ClickProjects::PlacementTemplate>
+=head2 PlacementTemplate => IoT1ClickProjects_PlacementTemplate
 
 The schema defining the placement to be created. A placement template
 defines placement default attributes and device templates. You cannot
@@ -82,7 +117,7 @@ The name of the project to create.
 
 
 
-=head2 Tags => L<Paws::IoT1ClickProjects::TagMap>
+=head2 Tags => IoT1ClickProjects_TagMap
 
 Optional tags (metadata key/value pairs) to be associated with the
 project. For example, C<{ {"key1": "value1", "key2": "value2"} }>. For

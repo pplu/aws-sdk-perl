@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::ResourcePolicy;
-  use Moose;
-  has LastUpdatedTime => (is => 'ro', isa => 'Int', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
-  has PolicyDocument => (is => 'ro', isa => 'Str', request_name => 'policyDocument', traits => ['NameInRequest']);
-  has PolicyName => (is => 'ro', isa => 'Str', request_name => 'policyName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has LastUpdatedTime => (is => 'ro', isa => Int);
+  has PolicyDocument => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'LastUpdatedTime' => {
+                                      'type' => 'Int'
+                                    }
+             },
+  'NameInRequest' => {
+                       'LastUpdatedTime' => 'lastUpdatedTime',
+                       'PolicyName' => 'policyName',
+                       'PolicyDocument' => 'policyDocument'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

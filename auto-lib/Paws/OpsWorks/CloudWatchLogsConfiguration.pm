@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::CloudWatchLogsConfiguration;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has LogStreams => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::CloudWatchLogsLogStream]');
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef/;
+  use Paws::OpsWorks::Types qw/OpsWorks_CloudWatchLogsLogStream/;
+  has Enabled => (is => 'ro', isa => Bool);
+  has LogStreams => (is => 'ro', isa => ArrayRef[OpsWorks_CloudWatchLogsLogStream]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogStreams' => {
+                                 'class' => 'Paws::OpsWorks::CloudWatchLogsLogStream',
+                                 'type' => 'ArrayRef[OpsWorks_CloudWatchLogsLogStream]'
+                               },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Describes the Amazon CloudWatch logs configuration for a layer.
   Whether CloudWatch Logs is enabled for a layer.
 
 
-=head2 LogStreams => ArrayRef[L<Paws::OpsWorks::CloudWatchLogsLogStream>]
+=head2 LogStreams => ArrayRef[OpsWorks_CloudWatchLogsLogStream]
 
   A list of configuration options for CloudWatch Logs.
 

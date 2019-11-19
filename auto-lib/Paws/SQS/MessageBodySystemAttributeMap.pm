@@ -1,12 +1,25 @@
+# Generated from default/map_enum.tt
 package Paws::SQS::MessageBodySystemAttributeMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'Name');
   class_has xml_values =>(is => 'ro', default => 'Value');
+  use Types::Standard qw//;
+  use Paws::SQS::Types qw/SQS_MessageSystemAttributeValue/;
+  has AWSTraceHeader => (is => 'ro', isa => SQS_MessageSystemAttributeValue);
 
-  has AWSTraceHeader => (is => 'ro', isa => 'Paws::SQS::MessageSystemAttributeValue');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'AWSTraceHeader' => {
+                                          type => 'SQS_MessageSystemAttributeValue',                                          class => 'Paws::SQS::MessageSystemAttributeValue',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +55,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 AWSTraceHeader => L<Paws::SQS::MessageSystemAttributeValue>
+=head2 AWSTraceHeader => 
 
 
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::QLDBSession::FetchPageRequest;
-  use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str', required => 1);
-  has TransactionId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::QLDBSession::Types qw//;
+  has NextPageToken => (is => 'ro', isa => Str, required => 1);
+  has TransactionId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'NextPageToken' => 1,
+                    'TransactionId' => 1
+                  },
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'TransactionId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

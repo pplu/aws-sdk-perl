@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Organizations::ListChildrenResponse;
-  use Moose;
-  has Children => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::Child]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Organizations::Types qw/Organizations_Child/;
+  has Children => (is => 'ro', isa => ArrayRef[Organizations_Child]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Children' => {
+                               'class' => 'Paws::Organizations::Child',
+                               'type' => 'ArrayRef[Organizations_Child]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Organizations::ListChildrenResponse
 =head1 ATTRIBUTES
 
 
-=head2 Children => ArrayRef[L<Paws::Organizations::Child>]
+=head2 Children => ArrayRef[Organizations_Child]
 
 The list of children of the specified parent container.
 

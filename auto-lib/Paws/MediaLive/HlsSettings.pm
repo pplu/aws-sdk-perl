@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::MediaLive::HlsSettings;
-  use Moose;
-  has AudioOnlyHlsSettings => (is => 'ro', isa => 'Paws::MediaLive::AudioOnlyHlsSettings', request_name => 'audioOnlyHlsSettings', traits => ['NameInRequest']);
-  has StandardHlsSettings => (is => 'ro', isa => 'Paws::MediaLive::StandardHlsSettings', request_name => 'standardHlsSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_AudioOnlyHlsSettings MediaLive_StandardHlsSettings/;
+  has AudioOnlyHlsSettings => (is => 'ro', isa => MediaLive_AudioOnlyHlsSettings);
+  has StandardHlsSettings => (is => 'ro', isa => MediaLive_StandardHlsSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'StandardHlsSettings' => 'standardHlsSettings',
+                       'AudioOnlyHlsSettings' => 'audioOnlyHlsSettings'
+                     },
+  'types' => {
+               'AudioOnlyHlsSettings' => {
+                                           'type' => 'MediaLive_AudioOnlyHlsSettings',
+                                           'class' => 'Paws::MediaLive::AudioOnlyHlsSettings'
+                                         },
+               'StandardHlsSettings' => {
+                                          'type' => 'MediaLive_StandardHlsSettings',
+                                          'class' => 'Paws::MediaLive::StandardHlsSettings'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Hls Settings
 =head1 ATTRIBUTES
 
 
-=head2 AudioOnlyHlsSettings => L<Paws::MediaLive::AudioOnlyHlsSettings>
+=head2 AudioOnlyHlsSettings => MediaLive_AudioOnlyHlsSettings
 
   
 
 
-=head2 StandardHlsSettings => L<Paws::MediaLive::StandardHlsSettings>
+=head2 StandardHlsSettings => MediaLive_StandardHlsSettings
 
   
 

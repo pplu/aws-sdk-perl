@@ -1,10 +1,36 @@
 
 package Paws::EC2::CreateTrafficMirrorSessionResult;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest',]);
-  has TrafficMirrorSession => (is => 'ro', isa => 'Paws::EC2::TrafficMirrorSession', request_name => 'trafficMirrorSession', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_TrafficMirrorSession/;
+  has ClientToken => (is => 'ro', isa => Str);
+  has TrafficMirrorSession => (is => 'ro', isa => EC2_TrafficMirrorSession);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TrafficMirrorSession' => {
+                                           'class' => 'Paws::EC2::TrafficMirrorSession',
+                                           'type' => 'EC2_TrafficMirrorSession'
+                                         },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ClientToken' => 'clientToken',
+                       'TrafficMirrorSession' => 'trafficMirrorSession'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +50,7 @@ Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
-=head2 TrafficMirrorSession => L<Paws::EC2::TrafficMirrorSession>
+=head2 TrafficMirrorSession => EC2_TrafficMirrorSession
 
 Information about the Traffic Mirror session.
 

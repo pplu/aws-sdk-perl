@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::OptionSpecification;
-  use Moose;
-  has Namespace => (is => 'ro', isa => 'Str');
-  has OptionName => (is => 'ro', isa => 'Str');
-  has ResourceName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has Namespace => (is => 'ro', isa => Str);
+  has OptionName => (is => 'ro', isa => Str);
+  has ResourceName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'ResourceName' => {
+                                   'type' => 'Str'
+                                 },
+               'OptionName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

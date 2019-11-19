@@ -1,14 +1,35 @@
 
 package Paws::Polly::GetSpeechSynthesisTask;
-  use Moose;
-  has TaskId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'TaskId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Polly::Types qw//;
+  has TaskId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSpeechSynthesisTask');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/synthesisTasks/{TaskId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Polly::GetSpeechSynthesisTaskOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSpeechSynthesisTask');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/synthesisTasks/{TaskId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Polly::GetSpeechSynthesisTaskOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'TaskId' => 'TaskId'
+                  },
+  'types' => {
+               'TaskId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'TaskId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

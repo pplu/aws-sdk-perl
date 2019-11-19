@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::ECS::NetworkConfiguration;
-  use Moose;
-  has AwsvpcConfiguration => (is => 'ro', isa => 'Paws::ECS::AwsVpcConfiguration', request_name => 'awsvpcConfiguration', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ECS::Types qw/ECS_AwsVpcConfiguration/;
+  has AwsvpcConfiguration => (is => 'ro', isa => ECS_AwsVpcConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AwsvpcConfiguration' => {
+                                          'type' => 'ECS_AwsVpcConfiguration',
+                                          'class' => 'Paws::ECS::AwsVpcConfiguration'
+                                        }
+             },
+  'NameInRequest' => {
+                       'AwsvpcConfiguration' => 'awsvpcConfiguration'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ An object representing the network configuration for a task or service.
 =head1 ATTRIBUTES
 
 
-=head2 AwsvpcConfiguration => L<Paws::ECS::AwsVpcConfiguration>
+=head2 AwsvpcConfiguration => ECS_AwsVpcConfiguration
 
   The VPC subnets and security groups associated with a task.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoTThingsGraph::Thing;
-  use Moose;
-  has ThingArn => (is => 'ro', isa => 'Str', request_name => 'thingArn', traits => ['NameInRequest']);
-  has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has ThingArn => (is => 'ro', isa => Str);
+  has ThingName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ThingName' => 'thingName',
+                       'ThingArn' => 'thingArn'
+                     },
+  'types' => {
+               'ThingArn' => {
+                               'type' => 'Str'
+                             },
+               'ThingName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::RedShift::MaintenanceTrack;
-  use Moose;
-  has DatabaseVersion => (is => 'ro', isa => 'Str');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
-  has UpdateTargets => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::UpdateTarget]', request_name => 'UpdateTarget', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_UpdateTarget/;
+  has DatabaseVersion => (is => 'ro', isa => Str);
+  has MaintenanceTrackName => (is => 'ro', isa => Str);
+  has UpdateTargets => (is => 'ro', isa => ArrayRef[RedShift_UpdateTarget]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'UpdateTargets' => 'UpdateTarget'
+                     },
+  'types' => {
+               'MaintenanceTrackName' => {
+                                           'type' => 'Str'
+                                         },
+               'DatabaseVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'UpdateTargets' => {
+                                    'class' => 'Paws::RedShift::UpdateTarget',
+                                    'type' => 'ArrayRef[RedShift_UpdateTarget]'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +80,7 @@ the cluster is updated to the previously certified maintenance release.
 C<trailing>.
 
 
-=head2 UpdateTargets => ArrayRef[L<Paws::RedShift::UpdateTarget>]
+=head2 UpdateTargets => ArrayRef[RedShift_UpdateTarget]
 
   An array of UpdateTarget objects to update with the maintenance track.
 

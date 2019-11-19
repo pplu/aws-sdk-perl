@@ -1,17 +1,46 @@
 
 package Paws::QLDB::CreateLedger;
-  use Moose;
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has PermissionsMode => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::QLDB::Tags');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::QLDB::Types qw/QLDB_Tags/;
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PermissionsMode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => QLDB_Tags, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLedger');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/ledgers');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::QLDB::CreateLedgerResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLedger');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/ledgers');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::QLDB::CreateLedgerResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PermissionsMode' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'Tags' => {
+                           'type' => 'QLDB_Tags',
+                           'class' => 'Paws::QLDB::Tags'
+                         },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'PermissionsMode' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +111,7 @@ The permissions mode to assign to the ledger that you want to create.
 
 Valid values are: C<"ALLOW_ALL">
 
-=head2 Tags => L<Paws::QLDB::Tags>
+=head2 Tags => QLDB_Tags
 
 The key-value pairs to add as tags to the ledger that you want to
 create. Tag keys are case sensitive. Tag values are case sensitive and

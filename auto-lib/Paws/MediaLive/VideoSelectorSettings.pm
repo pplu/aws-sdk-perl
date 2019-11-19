@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::MediaLive::VideoSelectorSettings;
-  use Moose;
-  has VideoSelectorPid => (is => 'ro', isa => 'Paws::MediaLive::VideoSelectorPid', request_name => 'videoSelectorPid', traits => ['NameInRequest']);
-  has VideoSelectorProgramId => (is => 'ro', isa => 'Paws::MediaLive::VideoSelectorProgramId', request_name => 'videoSelectorProgramId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_VideoSelectorPid MediaLive_VideoSelectorProgramId/;
+  has VideoSelectorPid => (is => 'ro', isa => MediaLive_VideoSelectorPid);
+  has VideoSelectorProgramId => (is => 'ro', isa => MediaLive_VideoSelectorProgramId);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'VideoSelectorProgramId' => 'videoSelectorProgramId',
+                       'VideoSelectorPid' => 'videoSelectorPid'
+                     },
+  'types' => {
+               'VideoSelectorPid' => {
+                                       'type' => 'MediaLive_VideoSelectorPid',
+                                       'class' => 'Paws::MediaLive::VideoSelectorPid'
+                                     },
+               'VideoSelectorProgramId' => {
+                                             'type' => 'MediaLive_VideoSelectorProgramId',
+                                             'class' => 'Paws::MediaLive::VideoSelectorProgramId'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Video Selector Settings
 =head1 ATTRIBUTES
 
 
-=head2 VideoSelectorPid => L<Paws::MediaLive::VideoSelectorPid>
+=head2 VideoSelectorPid => MediaLive_VideoSelectorPid
 
   
 
 
-=head2 VideoSelectorProgramId => L<Paws::MediaLive::VideoSelectorProgramId>
+=head2 VideoSelectorProgramId => MediaLive_VideoSelectorProgramId
 
   
 

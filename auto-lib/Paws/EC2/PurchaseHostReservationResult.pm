@@ -1,13 +1,51 @@
 
 package Paws::EC2::PurchaseHostReservationResult;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest',]);
-  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest',]);
-  has Purchase => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Purchase]', request_name => 'purchase', traits => ['NameInRequest',]);
-  has TotalHourlyPrice => (is => 'ro', isa => 'Str', request_name => 'totalHourlyPrice', traits => ['NameInRequest',]);
-  has TotalUpfrontPrice => (is => 'ro', isa => 'Str', request_name => 'totalUpfrontPrice', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Purchase/;
+  has ClientToken => (is => 'ro', isa => Str);
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has Purchase => (is => 'ro', isa => ArrayRef[EC2_Purchase]);
+  has TotalHourlyPrice => (is => 'ro', isa => Str);
+  has TotalUpfrontPrice => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ClientToken' => 'clientToken',
+                       'CurrencyCode' => 'currencyCode',
+                       'Purchase' => 'purchase',
+                       'TotalUpfrontPrice' => 'totalUpfrontPrice',
+                       'TotalHourlyPrice' => 'totalHourlyPrice'
+                     },
+  'types' => {
+               'TotalHourlyPrice' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TotalUpfrontPrice' => {
+                                        'type' => 'Str'
+                                      },
+               'Purchase' => {
+                               'class' => 'Paws::EC2::Purchase',
+                               'type' => 'ArrayRef[EC2_Purchase]'
+                             },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -34,7 +72,7 @@ amounts are specified. At this time, the only supported currency is
 C<USD>.
 
 Valid values are: C<"USD">
-=head2 Purchase => ArrayRef[L<Paws::EC2::Purchase>]
+=head2 Purchase => ArrayRef[EC2_Purchase]
 
 Describes the details of the purchase.
 

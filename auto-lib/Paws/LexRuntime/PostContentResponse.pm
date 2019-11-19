@@ -1,19 +1,77 @@
 
 package Paws::LexRuntime::PostContentResponse;
-  use Moose;
-  has AudioStream => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'audioStream');
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has DialogState => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-dialog-state');
-  has InputTranscript => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-input-transcript');
-  has IntentName => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-intent-name');
-  has Message => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-message');
-  has MessageFormat => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-message-format');
-  has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-session-attributes');
-  has Slots => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-slots');
-  has SlotToElicit => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-slot-to-elicit');
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'AudioStream');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::LexRuntime::Types qw//;
+  has AudioStream => (is => 'ro', isa => Str);
+  has ContentType => (is => 'ro', isa => Str);
+  has DialogState => (is => 'ro', isa => Str);
+  has InputTranscript => (is => 'ro', isa => Str);
+  has IntentName => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has MessageFormat => (is => 'ro', isa => Str);
+  has SessionAttributes => (is => 'ro', isa => Str);
+  has Slots => (is => 'ro', isa => Str);
+  has SlotToElicit => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AudioStream' => 'audioStream'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'SlotToElicit' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'IntentName' => {
+                                 'type' => 'Str'
+                               },
+               'MessageFormat' => {
+                                    'type' => 'Str'
+                                  },
+               'DialogState' => {
+                                  'type' => 'Str'
+                                },
+               'AudioStream' => {
+                                  'type' => 'Str'
+                                },
+               'Slots' => {
+                            'type' => 'Str'
+                          },
+               'SessionAttributes' => {
+                                        'type' => 'Str'
+                                      },
+               'InputTranscript' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'ParamInHeader' => {
+                       'Message' => 'x-amz-lex-message',
+                       'MessageFormat' => 'x-amz-lex-message-format',
+                       'SessionAttributes' => 'x-amz-lex-session-attributes',
+                       'SlotToElicit' => 'x-amz-lex-slot-to-elicit',
+                       'Slots' => 'x-amz-lex-slots',
+                       'ContentType' => 'Content-Type',
+                       'IntentName' => 'x-amz-lex-intent-name',
+                       'DialogState' => 'x-amz-lex-dialog-state',
+                       'InputTranscript' => 'x-amz-lex-input-transcript'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

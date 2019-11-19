@@ -1,17 +1,53 @@
 
 package Paws::SSO::ListAccountRoles;
-  use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sso_bearer_token', required => 1);
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'account_id', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max_result');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'next_token');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSO::Types qw//;
+  has AccessToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAccountRoles');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/assignment/roles');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSO::ListAccountRolesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAccountRoles');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/assignment/roles');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSO::ListAccountRolesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'AccessToken' => 'x-amz-sso_bearer_token'
+                     },
+  'types' => {
+               'AccessToken' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'AccessToken' => 1
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'next_token',
+                      'AccountId' => 'account_id',
+                      'MaxResults' => 'max_result'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

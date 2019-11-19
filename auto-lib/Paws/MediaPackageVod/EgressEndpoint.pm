@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::EgressEndpoint;
-  use Moose;
-  has PackagingConfigurationId => (is => 'ro', isa => 'Str', request_name => 'packagingConfigurationId', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackageVod::Types qw//;
+  has PackagingConfigurationId => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PackagingConfigurationId' => 'packagingConfigurationId',
+                       'Url' => 'url'
+                     },
+  'types' => {
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'PackagingConfigurationId' => {
+                                               'type' => 'Str'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

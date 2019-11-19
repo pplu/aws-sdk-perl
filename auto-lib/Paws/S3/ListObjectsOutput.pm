@@ -1,18 +1,65 @@
 
 package Paws::S3::ListObjectsOutput;
-  use Moose;
-  has CommonPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::S3::CommonPrefix]');
-  has Contents => (is => 'ro', isa => 'ArrayRef[Paws::S3::Object]');
-  has Delimiter => (is => 'ro', isa => 'Str');
-  has EncodingType => (is => 'ro', isa => 'Str');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxKeys => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str');
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Prefix => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Bool Int/;
+  use Paws::S3::Types qw/S3_Object S3_CommonPrefix/;
+  has CommonPrefixes => (is => 'ro', isa => ArrayRef[S3_CommonPrefix]);
+  has Contents => (is => 'ro', isa => ArrayRef[S3_Object]);
+  has Delimiter => (is => 'ro', isa => Str);
+  has EncodingType => (is => 'ro', isa => Str);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
+  has MaxKeys => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has NextMarker => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CommonPrefixes' => {
+                                     'type' => 'ArrayRef[S3_CommonPrefix]',
+                                     'class' => 'Paws::S3::CommonPrefix'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MaxKeys' => {
+                              'type' => 'Int'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Delimiter' => {
+                                'type' => 'Str'
+                              },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'EncodingType' => {
+                                   'type' => 'Str'
+                                 },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'Contents' => {
+                               'type' => 'ArrayRef[S3_Object]',
+                               'class' => 'Paws::S3::Object'
+                             },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +71,7 @@ Paws::S3::ListObjectsOutput
 =head1 ATTRIBUTES
 
 
-=head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
+=head2 CommonPrefixes => ArrayRef[S3_CommonPrefix]
 
 All of the keys rolled up in a common prefix count as a single return
 when calculating the number of returns.
@@ -44,7 +91,7 @@ calculating the number of returns.
 
 
 
-=head2 Contents => ArrayRef[L<Paws::S3::Object>]
+=head2 Contents => ArrayRef[S3_Object]
 
 Metadata about each object returned.
 

@@ -1,15 +1,51 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Forecast::DescribeDatasetGroupResponse;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DatasetArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DatasetGroupArn => (is => 'ro', isa => 'Str');
-  has DatasetGroupName => (is => 'ro', isa => 'Str');
-  has Domain => (is => 'ro', isa => 'Str');
-  has LastModificationTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Forecast::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DatasetArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DatasetGroupArn => (is => 'ro', isa => Str);
+  has DatasetGroupName => (is => 'ro', isa => Str);
+  has Domain => (is => 'ro', isa => Str);
+  has LastModificationTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DatasetGroupArn' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LastModificationTime' => {
+                                           'type' => 'Str'
+                                         },
+               'DatasetGroupName' => {
+                                       'type' => 'Str'
+                                     },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'DatasetArns' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

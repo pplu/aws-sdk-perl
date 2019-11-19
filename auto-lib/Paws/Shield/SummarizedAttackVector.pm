@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Shield::SummarizedAttackVector;
-  use Moose;
-  has VectorCounters => (is => 'ro', isa => 'ArrayRef[Paws::Shield::SummarizedCounter]');
-  has VectorType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Shield::Types qw/Shield_SummarizedCounter/;
+  has VectorCounters => (is => 'ro', isa => ArrayRef[Shield_SummarizedCounter]);
+  has VectorType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VectorType' => {
+                                 'type' => 'Str'
+                               },
+               'VectorCounters' => {
+                                     'type' => 'ArrayRef[Shield_SummarizedCounter]',
+                                     'class' => 'Paws::Shield::SummarizedCounter'
+                                   }
+             },
+  'IsRequired' => {
+                    'VectorType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +61,7 @@ A summary of information about the attack.
 =head1 ATTRIBUTES
 
 
-=head2 VectorCounters => ArrayRef[L<Paws::Shield::SummarizedCounter>]
+=head2 VectorCounters => ArrayRef[Shield_SummarizedCounter]
 
   The list of counters that describe the details of the attack.
 

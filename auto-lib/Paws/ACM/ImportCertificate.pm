@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ACM::ImportCertificate;
-  use Moose;
-  has Certificate => (is => 'ro', isa => 'Str', required => 1);
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has CertificateChain => (is => 'ro', isa => 'Str');
-  has PrivateKey => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACM::Types qw//;
+  has Certificate => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CertificateArn => (is => 'ro', isa => Str, predicate => 1);
+  has CertificateChain => (is => 'ro', isa => Str, predicate => 1);
+  has PrivateKey => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportCertificate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ACM::ImportCertificateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportCertificate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ACM::ImportCertificateResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CertificateChain' => {
+                                       'type' => 'Str'
+                                     },
+               'Certificate' => {
+                                  'type' => 'Str'
+                                },
+               'PrivateKey' => {
+                                 'type' => 'Str'
+                               },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'Certificate' => 1,
+                    'PrivateKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

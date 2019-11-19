@@ -1,6 +1,23 @@
 package Paws::EC2::ServiceTypeDetail;
-  use Moose;
-  has ServiceType => (is => 'ro', isa => 'Str', request_name => 'serviceType', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has ServiceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ServiceType' => 'serviceType'
+                     },
+  'types' => {
+               'ServiceType' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

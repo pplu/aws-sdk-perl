@@ -1,20 +1,75 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::CreateLag;
-  use Moose;
-  has ChildConnectionTags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'childConnectionTags' );
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
-  has ConnectionsBandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionsBandwidth' , required => 1);
-  has LagName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagName' , required => 1);
-  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
-  has NumberOfConnections => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfConnections' , required => 1);
-  has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::DirectConnect::Types qw/DirectConnect_Tag/;
+  has ChildConnectionTags => (is => 'ro', isa => ArrayRef[DirectConnect_Tag], predicate => 1);
+  has ConnectionId => (is => 'ro', isa => Str, predicate => 1);
+  has ConnectionsBandwidth => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LagName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Location => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NumberOfConnections => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has ProviderName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DirectConnect_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLag');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::Lag');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLag');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::Lag');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProviderName' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::DirectConnect::Tag',
+                           'type' => 'ArrayRef[DirectConnect_Tag]'
+                         },
+               'LagName' => {
+                              'type' => 'Str'
+                            },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 },
+               'NumberOfConnections' => {
+                                          'type' => 'Int'
+                                        },
+               'ChildConnectionTags' => {
+                                          'class' => 'Paws::DirectConnect::Tag',
+                                          'type' => 'ArrayRef[DirectConnect_Tag]'
+                                        },
+               'ConnectionsBandwidth' => {
+                                           'type' => 'Str'
+                                         },
+               'Location' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Location' => 'location',
+                       'NumberOfConnections' => 'numberOfConnections',
+                       'ChildConnectionTags' => 'childConnectionTags',
+                       'ConnectionsBandwidth' => 'connectionsBandwidth',
+                       'ConnectionId' => 'connectionId',
+                       'Tags' => 'tags',
+                       'ProviderName' => 'providerName',
+                       'LagName' => 'lagName'
+                     },
+  'IsRequired' => {
+                    'ConnectionsBandwidth' => 1,
+                    'NumberOfConnections' => 1,
+                    'Location' => 1,
+                    'LagName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +139,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 =head1 ATTRIBUTES
 
 
-=head2 ChildConnectionTags => ArrayRef[L<Paws::DirectConnect::Tag>]
+=head2 ChildConnectionTags => ArrayRef[DirectConnect_Tag]
 
 The tags to associate with the automtically created LAGs.
 
@@ -129,7 +184,7 @@ The name of the service provider associated with the LAG.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+=head2 Tags => ArrayRef[DirectConnect_Tag]
 
 The tags to associate with the LAG.
 

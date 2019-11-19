@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::TransitionEvent;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Action]', request_name => 'actions', traits => ['NameInRequest']);
-  has Condition => (is => 'ro', isa => 'Str', request_name => 'condition', traits => ['NameInRequest'], required => 1);
-  has EventName => (is => 'ro', isa => 'Str', request_name => 'eventName', traits => ['NameInRequest'], required => 1);
-  has NextState => (is => 'ro', isa => 'Str', request_name => 'nextState', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::IoTEvents::Types qw/IoTEvents_Action/;
+  has Actions => (is => 'ro', isa => ArrayRef[IoTEvents_Action]);
+  has Condition => (is => 'ro', isa => Str, required => 1);
+  has EventName => (is => 'ro', isa => Str, required => 1);
+  has NextState => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Condition' => 'condition',
+                       'NextState' => 'nextState',
+                       'Actions' => 'actions',
+                       'EventName' => 'eventName'
+                     },
+  'IsRequired' => {
+                    'Condition' => 1,
+                    'NextState' => 1,
+                    'EventName' => 1
+                  },
+  'types' => {
+               'Actions' => {
+                              'class' => 'Paws::IoTEvents::Action',
+                              'type' => 'ArrayRef[IoTEvents_Action]'
+                            },
+               'EventName' => {
+                                'type' => 'Str'
+                              },
+               'NextState' => {
+                                'type' => 'Str'
+                              },
+               'Condition' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +78,7 @@ C<"condition"> evaluates to TRUE.
 =head1 ATTRIBUTES
 
 
-=head2 Actions => ArrayRef[L<Paws::IoTEvents::Action>]
+=head2 Actions => ArrayRef[IoTEvents_Action]
 
   The actions to be performed.
 

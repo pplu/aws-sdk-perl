@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::CmafEncryptionSettings;
-  use Moose;
-  has ConstantInitializationVector => (is => 'ro', isa => 'Str', request_name => 'constantInitializationVector', traits => ['NameInRequest']);
-  has EncryptionMethod => (is => 'ro', isa => 'Str', request_name => 'encryptionMethod', traits => ['NameInRequest']);
-  has InitializationVectorInManifest => (is => 'ro', isa => 'Str', request_name => 'initializationVectorInManifest', traits => ['NameInRequest']);
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProviderCmaf', request_name => 'spekeKeyProvider', traits => ['NameInRequest']);
-  has StaticKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::StaticKeyProvider', request_name => 'staticKeyProvider', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_StaticKeyProvider MediaConvert_SpekeKeyProviderCmaf/;
+  has ConstantInitializationVector => (is => 'ro', isa => Str);
+  has EncryptionMethod => (is => 'ro', isa => Str);
+  has InitializationVectorInManifest => (is => 'ro', isa => Str);
+  has SpekeKeyProvider => (is => 'ro', isa => MediaConvert_SpekeKeyProviderCmaf);
+  has StaticKeyProvider => (is => 'ro', isa => MediaConvert_StaticKeyProvider);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpekeKeyProvider' => {
+                                       'type' => 'MediaConvert_SpekeKeyProviderCmaf',
+                                       'class' => 'Paws::MediaConvert::SpekeKeyProviderCmaf'
+                                     },
+               'ConstantInitializationVector' => {
+                                                   'type' => 'Str'
+                                                 },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'EncryptionMethod' => {
+                                       'type' => 'Str'
+                                     },
+               'StaticKeyProvider' => {
+                                        'type' => 'MediaConvert_StaticKeyProvider',
+                                        'class' => 'Paws::MediaConvert::StaticKeyProvider'
+                                      },
+               'InitializationVectorInManifest' => {
+                                                     'type' => 'Str'
+                                                   }
+             },
+  'NameInRequest' => {
+                       'SpekeKeyProvider' => 'spekeKeyProvider',
+                       'Type' => 'type',
+                       'EncryptionMethod' => 'encryptionMethod',
+                       'ConstantInitializationVector' => 'constantInitializationVector',
+                       'InitializationVectorInManifest' => 'initializationVectorInManifest',
+                       'StaticKeyProvider' => 'staticKeyProvider'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +104,7 @@ the 128-bit encryption initialization vector in the HLS and DASH
 manifests.
 
 
-=head2 SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProviderCmaf>
+=head2 SpekeKeyProvider => MediaConvert_SpekeKeyProviderCmaf
 
   If your output group type is CMAF, use these settings when doing DRM
 encryption with a SPEKE-compliant key provider. If your output group
@@ -70,7 +112,7 @@ type is HLS, DASH, or Microsoft Smooth, use the SpekeKeyProvider
 settings instead.
 
 
-=head2 StaticKeyProvider => L<Paws::MediaConvert::StaticKeyProvider>
+=head2 StaticKeyProvider => MediaConvert_StaticKeyProvider
 
   Use these settings to set up encryption with a static key provider.
 

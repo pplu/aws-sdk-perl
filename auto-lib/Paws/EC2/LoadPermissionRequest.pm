@@ -1,7 +1,24 @@
 package Paws::EC2::LoadPermissionRequest;
-  use Moose;
-  has Group => (is => 'ro', isa => 'Str');
-  has UserId => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Group => (is => 'ro', isa => Str);
+  has UserId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Group' => {
+                            'type' => 'Str'
+                          },
+               'UserId' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

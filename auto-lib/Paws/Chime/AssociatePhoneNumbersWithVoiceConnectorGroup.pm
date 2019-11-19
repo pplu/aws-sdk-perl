@@ -1,16 +1,43 @@
 
 package Paws::Chime::AssociatePhoneNumbersWithVoiceConnectorGroup;
-  use Moose;
-  has E164PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ForceAssociate => (is => 'ro', isa => 'Bool');
-  has VoiceConnectorGroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'voiceConnectorGroupId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::Chime::Types qw//;
+  has E164PhoneNumbers => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ForceAssociate => (is => 'ro', isa => Bool, predicate => 1);
+  has VoiceConnectorGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociatePhoneNumbersWithVoiceConnectorGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/voice-connector-groups/{voiceConnectorGroupId}?operation=associate-phone-numbers');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::AssociatePhoneNumbersWithVoiceConnectorGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociatePhoneNumbersWithVoiceConnectorGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/voice-connector-groups/{voiceConnectorGroupId}?operation=associate-phone-numbers');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::AssociatePhoneNumbersWithVoiceConnectorGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'VoiceConnectorGroupId' => 1
+                  },
+  'types' => {
+               'VoiceConnectorGroupId' => {
+                                            'type' => 'Str'
+                                          },
+               'ForceAssociate' => {
+                                     'type' => 'Bool'
+                                   },
+               'E164PhoneNumbers' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             },
+  'ParamInURI' => {
+                    'VoiceConnectorGroupId' => 'voiceConnectorGroupId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

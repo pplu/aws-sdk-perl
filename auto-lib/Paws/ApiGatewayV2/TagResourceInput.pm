@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::TagResourceInput;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_Tags/;
+  has Tags => (is => 'ro', isa => ApiGatewayV2_Tags);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'ApiGatewayV2_Tags',
+                           'class' => 'Paws::ApiGatewayV2::Tags'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Tags => L<Paws::ApiGatewayV2::Tags>
+=head2 Tags => ApiGatewayV2_Tags
 
   The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not

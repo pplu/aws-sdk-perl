@@ -1,13 +1,52 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::WorkspaceImage;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has ImageId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OperatingSystem => (is => 'ro', isa => 'Paws::WorkSpaces::OperatingSystem');
-  has RequiredTenancy => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_OperatingSystem/;
+  has Description => (is => 'ro', isa => Str);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has ImageId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OperatingSystem => (is => 'ro', isa => WorkSpaces_OperatingSystem);
+  has RequiredTenancy => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'RequiredTenancy' => {
+                                      'type' => 'Str'
+                                    },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'OperatingSystem' => {
+                                      'class' => 'Paws::WorkSpaces::OperatingSystem',
+                                      'type' => 'WorkSpaces_OperatingSystem'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +107,7 @@ Describes a WorkSpace image.
   The name of the image.
 
 
-=head2 OperatingSystem => L<Paws::WorkSpaces::OperatingSystem>
+=head2 OperatingSystem => WorkSpaces_OperatingSystem
 
   The operating system that the image is running.
 

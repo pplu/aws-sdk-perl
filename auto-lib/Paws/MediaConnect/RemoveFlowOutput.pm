@@ -1,15 +1,41 @@
 
 package Paws::MediaConnect::RemoveFlowOutput;
-  use Moose;
-  has FlowArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'flowArn', required => 1);
-  has OutputArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'outputArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConnect::Types qw//;
+  has FlowArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OutputArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveFlowOutput');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/flows/{flowArn}/outputs/{outputArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConnect::RemoveFlowOutputResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RemoveFlowOutput');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/flows/{flowArn}/outputs/{outputArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConnect::RemoveFlowOutputResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputArn' => {
+                                'type' => 'Str'
+                              },
+               'FlowArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'FlowArn' => 1,
+                    'OutputArn' => 1
+                  },
+  'ParamInURI' => {
+                    'OutputArn' => 'outputArn',
+                    'FlowArn' => 'flowArn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

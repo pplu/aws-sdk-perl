@@ -1,12 +1,60 @@
+# Generated from default/object.tt
 package Paws::Inspector::AssessmentRunFilter;
-  use Moose;
-  has CompletionTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', request_name => 'completionTimeRange', traits => ['NameInRequest']);
-  has DurationRange => (is => 'ro', isa => 'Paws::Inspector::DurationRange', request_name => 'durationRange', traits => ['NameInRequest']);
-  has NamePattern => (is => 'ro', isa => 'Str', request_name => 'namePattern', traits => ['NameInRequest']);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest']);
-  has StartTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', request_name => 'startTimeRange', traits => ['NameInRequest']);
-  has StateChangeTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', request_name => 'stateChangeTimeRange', traits => ['NameInRequest']);
-  has States => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'states', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Inspector::Types qw/Inspector_DurationRange Inspector_TimestampRange/;
+  has CompletionTimeRange => (is => 'ro', isa => Inspector_TimestampRange);
+  has DurationRange => (is => 'ro', isa => Inspector_DurationRange);
+  has NamePattern => (is => 'ro', isa => Str);
+  has RulesPackageArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has StartTimeRange => (is => 'ro', isa => Inspector_TimestampRange);
+  has StateChangeTimeRange => (is => 'ro', isa => Inspector_TimestampRange);
+  has States => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'States' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'StartTimeRange' => {
+                                     'class' => 'Paws::Inspector::TimestampRange',
+                                     'type' => 'Inspector_TimestampRange'
+                                   },
+               'StateChangeTimeRange' => {
+                                           'class' => 'Paws::Inspector::TimestampRange',
+                                           'type' => 'Inspector_TimestampRange'
+                                         },
+               'NamePattern' => {
+                                  'type' => 'Str'
+                                },
+               'RulesPackageArns' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'DurationRange' => {
+                                    'class' => 'Paws::Inspector::DurationRange',
+                                    'type' => 'Inspector_DurationRange'
+                                  },
+               'CompletionTimeRange' => {
+                                          'class' => 'Paws::Inspector::TimestampRange',
+                                          'type' => 'Inspector_TimestampRange'
+                                        }
+             },
+  'NameInRequest' => {
+                       'States' => 'states',
+                       'StartTimeRange' => 'startTimeRange',
+                       'StateChangeTimeRange' => 'stateChangeTimeRange',
+                       'NamePattern' => 'namePattern',
+                       'RulesPackageArns' => 'rulesPackageArns',
+                       'DurationRange' => 'durationRange',
+                       'CompletionTimeRange' => 'completionTimeRange'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +90,7 @@ Used as the request parameter in the ListAssessmentRuns action.
 =head1 ATTRIBUTES
 
 
-=head2 CompletionTimeRange => L<Paws::Inspector::TimestampRange>
+=head2 CompletionTimeRange => Inspector_TimestampRange
 
   For a record to match a filter, the value that is specified for this
 data type property must inclusively match any value between the
@@ -50,7 +98,7 @@ specified minimum and maximum values of the B<completedAt> property of
 the AssessmentRun data type.
 
 
-=head2 DurationRange => L<Paws::Inspector::DurationRange>
+=head2 DurationRange => Inspector_DurationRange
 
   For a record to match a filter, the value that is specified for this
 data type property must inclusively match any value between the
@@ -73,7 +121,7 @@ data type property must be contained in the list of values of the
 B<rulesPackages> property of the AssessmentRun data type.
 
 
-=head2 StartTimeRange => L<Paws::Inspector::TimestampRange>
+=head2 StartTimeRange => Inspector_TimestampRange
 
   For a record to match a filter, the value that is specified for this
 data type property must inclusively match any value between the
@@ -81,7 +129,7 @@ specified minimum and maximum values of the B<startTime> property of
 the AssessmentRun data type.
 
 
-=head2 StateChangeTimeRange => L<Paws::Inspector::TimestampRange>
+=head2 StateChangeTimeRange => Inspector_TimestampRange
 
   For a record to match a filter, the value that is specified for this
 data type property must match the B<stateChangedAt> property of the

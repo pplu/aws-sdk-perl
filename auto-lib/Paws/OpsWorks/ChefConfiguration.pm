@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::ChefConfiguration;
-  use Moose;
-  has BerkshelfVersion => (is => 'ro', isa => 'Str');
-  has ManageBerkshelf => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::OpsWorks::Types qw//;
+  has BerkshelfVersion => (is => 'ro', isa => Str);
+  has ManageBerkshelf => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ManageBerkshelf' => {
+                                      'type' => 'Bool'
+                                    },
+               'BerkshelfVersion' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

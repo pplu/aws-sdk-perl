@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetAccessKeyLastUsedResponse;
-  use Moose;
-  has AccessKeyLastUsed => (is => 'ro', isa => 'Paws::IAM::AccessKeyLastUsed');
-  has UserName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_AccessKeyLastUsed/;
+  has AccessKeyLastUsed => (is => 'ro', isa => IAM_AccessKeyLastUsed);
+  has UserName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'AccessKeyLastUsed' => {
+                                        'type' => 'IAM_AccessKeyLastUsed',
+                                        'class' => 'Paws::IAM::AccessKeyLastUsed'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +38,7 @@ Paws::IAM::GetAccessKeyLastUsedResponse
 =head1 ATTRIBUTES
 
 
-=head2 AccessKeyLastUsed => L<Paws::IAM::AccessKeyLastUsed>
+=head2 AccessKeyLastUsed => IAM_AccessKeyLastUsed
 
 Contains information about the last time the access key was used.
 

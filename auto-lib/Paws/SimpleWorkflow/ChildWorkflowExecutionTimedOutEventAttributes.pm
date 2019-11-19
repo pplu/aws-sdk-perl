@@ -1,10 +1,55 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes;
-  use Moose;
-  has InitiatedEventId => (is => 'ro', isa => 'Int', request_name => 'initiatedEventId', traits => ['NameInRequest'], required => 1);
-  has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
-  has TimeoutType => (is => 'ro', isa => 'Str', request_name => 'timeoutType', traits => ['NameInRequest'], required => 1);
-  has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'workflowExecution', traits => ['NameInRequest'], required => 1);
-  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', request_name => 'workflowType', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowExecution SimpleWorkflow_WorkflowType/;
+  has InitiatedEventId => (is => 'ro', isa => Int, required => 1);
+  has StartedEventId => (is => 'ro', isa => Int, required => 1);
+  has TimeoutType => (is => 'ro', isa => Str, required => 1);
+  has WorkflowExecution => (is => 'ro', isa => SimpleWorkflow_WorkflowExecution, required => 1);
+  has WorkflowType => (is => 'ro', isa => SimpleWorkflow_WorkflowType, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeoutType' => {
+                                  'type' => 'Str'
+                                },
+               'WorkflowType' => {
+                                   'type' => 'SimpleWorkflow_WorkflowType',
+                                   'class' => 'Paws::SimpleWorkflow::WorkflowType'
+                                 },
+               'WorkflowExecution' => {
+                                        'type' => 'SimpleWorkflow_WorkflowExecution',
+                                        'class' => 'Paws::SimpleWorkflow::WorkflowExecution'
+                                      },
+               'InitiatedEventId' => {
+                                       'type' => 'Int'
+                                     },
+               'StartedEventId' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'NameInRequest' => {
+                       'InitiatedEventId' => 'initiatedEventId',
+                       'StartedEventId' => 'startedEventId',
+                       'WorkflowType' => 'workflowType',
+                       'TimeoutType' => 'timeoutType',
+                       'WorkflowExecution' => 'workflowExecution'
+                     },
+  'IsRequired' => {
+                    'WorkflowExecution' => 1,
+                    'TimeoutType' => 1,
+                    'WorkflowType' => 1,
+                    'StartedEventId' => 1,
+                    'InitiatedEventId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,12 +108,12 @@ to this event.
 time out.
 
 
-=head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=head2 B<REQUIRED> WorkflowExecution => SimpleWorkflow_WorkflowExecution
 
   The child workflow execution that timed out.
 
 
-=head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=head2 B<REQUIRED> WorkflowType => SimpleWorkflow_WorkflowType
 
   The type of the child workflow execution.
 

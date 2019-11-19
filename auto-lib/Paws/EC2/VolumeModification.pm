@@ -1,17 +1,78 @@
 package Paws::EC2::VolumeModification;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
-  has ModificationState => (is => 'ro', isa => 'Str', request_name => 'modificationState', traits => ['NameInRequest']);
-  has OriginalIops => (is => 'ro', isa => 'Int', request_name => 'originalIops', traits => ['NameInRequest']);
-  has OriginalSize => (is => 'ro', isa => 'Int', request_name => 'originalSize', traits => ['NameInRequest']);
-  has OriginalVolumeType => (is => 'ro', isa => 'Str', request_name => 'originalVolumeType', traits => ['NameInRequest']);
-  has Progress => (is => 'ro', isa => 'Int', request_name => 'progress', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has TargetIops => (is => 'ro', isa => 'Int', request_name => 'targetIops', traits => ['NameInRequest']);
-  has TargetSize => (is => 'ro', isa => 'Int', request_name => 'targetSize', traits => ['NameInRequest']);
-  has TargetVolumeType => (is => 'ro', isa => 'Str', request_name => 'targetVolumeType', traits => ['NameInRequest']);
-  has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw//;
+  has EndTime => (is => 'ro', isa => Str);
+  has ModificationState => (is => 'ro', isa => Str);
+  has OriginalIops => (is => 'ro', isa => Int);
+  has OriginalSize => (is => 'ro', isa => Int);
+  has OriginalVolumeType => (is => 'ro', isa => Str);
+  has Progress => (is => 'ro', isa => Int);
+  has StartTime => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has TargetIops => (is => 'ro', isa => Int);
+  has TargetSize => (is => 'ro', isa => Int);
+  has TargetVolumeType => (is => 'ro', isa => Str);
+  has VolumeId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'StatusMessage' => 'statusMessage',
+                       'TargetSize' => 'targetSize',
+                       'EndTime' => 'endTime',
+                       'OriginalVolumeType' => 'originalVolumeType',
+                       'Progress' => 'progress',
+                       'ModificationState' => 'modificationState',
+                       'OriginalSize' => 'originalSize',
+                       'OriginalIops' => 'originalIops',
+                       'TargetVolumeType' => 'targetVolumeType',
+                       'VolumeId' => 'volumeId',
+                       'StartTime' => 'startTime',
+                       'TargetIops' => 'targetIops'
+                     },
+  'types' => {
+               'TargetSize' => {
+                                 'type' => 'Int'
+                               },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'OriginalVolumeType' => {
+                                         'type' => 'Str'
+                                       },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'OriginalSize' => {
+                                   'type' => 'Int'
+                                 },
+               'OriginalIops' => {
+                                   'type' => 'Int'
+                                 },
+               'TargetVolumeType' => {
+                                       'type' => 'Str'
+                                     },
+               'VolumeId' => {
+                               'type' => 'Str'
+                             },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'TargetIops' => {
+                                 'type' => 'Int'
+                               },
+               'Progress' => {
+                               'type' => 'Int'
+                             },
+               'ModificationState' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

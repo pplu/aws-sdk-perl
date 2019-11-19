@@ -1,14 +1,35 @@
 
 package Paws::MediaConnect::StopFlow;
-  use Moose;
-  has FlowArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'flowArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConnect::Types qw//;
+  has FlowArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopFlow');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/flows/stop/{flowArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConnect::StopFlowResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StopFlow');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/flows/stop/{flowArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConnect::StopFlowResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FlowArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'FlowArn' => 1
+                  },
+  'ParamInURI' => {
+                    'FlowArn' => 'flowArn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::S3::CORSConfiguration;
-  use Moose;
-  has CORSRules => (is => 'ro', isa => 'ArrayRef[Paws::S3::CORSRule]', request_name => 'CORSRule', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::S3::Types qw/S3_CORSRule/;
+  has CORSRules => (is => 'ro', isa => ArrayRef[S3_CORSRule], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CORSRules' => 'CORSRule'
+                     },
+  'IsRequired' => {
+                    'CORSRules' => 1
+                  },
+  'types' => {
+               'CORSRules' => {
+                                'class' => 'Paws::S3::CORSRule',
+                                'type' => 'ArrayRef[S3_CORSRule]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +64,7 @@ I<Amazon Simple Storage Service Developer Guide>.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CORSRules => ArrayRef[L<Paws::S3::CORSRule>]
+=head2 B<REQUIRED> CORSRules => ArrayRef[S3_CORSRule]
 
   A set of origins and methods (cross-origin access that you want to
 allow). You can add up to 100 rules to the configuration.

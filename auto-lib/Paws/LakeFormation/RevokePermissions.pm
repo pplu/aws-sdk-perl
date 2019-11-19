@@ -1,17 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::LakeFormation::RevokePermissions;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has Permissions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has PermissionsWithGrantOption => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Principal => (is => 'ro', isa => 'Paws::LakeFormation::DataLakePrincipal', required => 1);
-  has Resource => (is => 'ro', isa => 'Paws::LakeFormation::Resource', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::LakeFormation::Types qw/LakeFormation_Resource LakeFormation_DataLakePrincipal/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has Permissions => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has PermissionsWithGrantOption => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Principal => (is => 'ro', isa => LakeFormation_DataLakePrincipal, required => 1, predicate => 1);
+  has Resource => (is => 'ro', isa => LakeFormation_Resource, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokePermissions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LakeFormation::RevokePermissionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RevokePermissions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LakeFormation::RevokePermissionsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Permissions' => 1,
+                    'Principal' => 1,
+                    'Resource' => 1
+                  },
+  'types' => {
+               'CatalogId' => {
+                                'type' => 'Str'
+                              },
+               'Permissions' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Resource' => {
+                               'type' => 'LakeFormation_Resource',
+                               'class' => 'Paws::LakeFormation::Resource'
+                             },
+               'PermissionsWithGrantOption' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'Principal' => {
+                                'type' => 'LakeFormation_DataLakePrincipal',
+                                'class' => 'Paws::LakeFormation::DataLakePrincipal'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -108,13 +143,13 @@ allowing the principal to pass permissions to other principals.
 
 
 
-=head2 B<REQUIRED> Principal => L<Paws::LakeFormation::DataLakePrincipal>
+=head2 B<REQUIRED> Principal => LakeFormation_DataLakePrincipal
 
 The principal to be revoked permissions on the resource.
 
 
 
-=head2 B<REQUIRED> Resource => L<Paws::LakeFormation::Resource>
+=head2 B<REQUIRED> Resource => LakeFormation_Resource
 
 The resource to which permissions are to be revoked.
 

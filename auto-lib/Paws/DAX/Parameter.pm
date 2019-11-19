@@ -1,15 +1,60 @@
+# Generated from default/object.tt
 package Paws::DAX::Parameter;
-  use Moose;
-  has AllowedValues => (is => 'ro', isa => 'Str');
-  has ChangeType => (is => 'ro', isa => 'Str');
-  has DataType => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has IsModifiable => (is => 'ro', isa => 'Str');
-  has NodeTypeSpecificValues => (is => 'ro', isa => 'ArrayRef[Paws::DAX::NodeTypeSpecificValue]');
-  has ParameterName => (is => 'ro', isa => 'Str');
-  has ParameterType => (is => 'ro', isa => 'Str');
-  has ParameterValue => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DAX::Types qw/DAX_NodeTypeSpecificValue/;
+  has AllowedValues => (is => 'ro', isa => Str);
+  has ChangeType => (is => 'ro', isa => Str);
+  has DataType => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IsModifiable => (is => 'ro', isa => Str);
+  has NodeTypeSpecificValues => (is => 'ro', isa => ArrayRef[DAX_NodeTypeSpecificValue]);
+  has ParameterName => (is => 'ro', isa => Str);
+  has ParameterType => (is => 'ro', isa => Str);
+  has ParameterValue => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterName' => {
+                                    'type' => 'Str'
+                                  },
+               'IsModifiable' => {
+                                   'type' => 'Str'
+                                 },
+               'ParameterType' => {
+                                    'type' => 'Str'
+                                  },
+               'ChangeType' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ParameterValue' => {
+                                     'type' => 'Str'
+                                   },
+               'NodeTypeSpecificValues' => {
+                                             'type' => 'ArrayRef[DAX_NodeTypeSpecificValue]',
+                                             'class' => 'Paws::DAX::NodeTypeSpecificValue'
+                                           },
+               'DataType' => {
+                               'type' => 'Str'
+                             },
+               'AllowedValues' => {
+                                    'type' => 'Str'
+                                  },
+               'Source' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +118,7 @@ parameter will only take effect if a node is rebooted.
   Whether the customer is allowed to modify the parameter.
 
 
-=head2 NodeTypeSpecificValues => ArrayRef[L<Paws::DAX::NodeTypeSpecificValue>]
+=head2 NodeTypeSpecificValues => ArrayRef[DAX_NodeTypeSpecificValue]
 
   A list of node types, and specific parameter values for each node.
 

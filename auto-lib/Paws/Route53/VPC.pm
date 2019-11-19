@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Route53::VPC;
-  use Moose;
-  has VPCId => (is => 'ro', isa => 'Str');
-  has VPCRegion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw//;
+  has VPCId => (is => 'ro', isa => Str);
+  has VPCRegion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VPCRegion' => {
+                                'type' => 'Str'
+                              },
+               'VPCId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

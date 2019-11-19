@@ -1,17 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::GetPlan;
-  use Moose;
-  has Language => (is => 'ro', isa => 'Str');
-  has Location => (is => 'ro', isa => 'Paws::Glue::Location');
-  has Mapping => (is => 'ro', isa => 'ArrayRef[Paws::Glue::MappingEntry]', required => 1);
-  has Sinks => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CatalogEntry]');
-  has Source => (is => 'ro', isa => 'Paws::Glue::CatalogEntry', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_CatalogEntry Glue_Location Glue_MappingEntry/;
+  has Language => (is => 'ro', isa => Str, predicate => 1);
+  has Location => (is => 'ro', isa => Glue_Location, predicate => 1);
+  has Mapping => (is => 'ro', isa => ArrayRef[Glue_MappingEntry], required => 1, predicate => 1);
+  has Sinks => (is => 'ro', isa => ArrayRef[Glue_CatalogEntry], predicate => 1);
+  has Source => (is => 'ro', isa => Glue_CatalogEntry, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetPlan');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::GetPlanResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetPlan');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::GetPlanResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Source' => 1,
+                    'Mapping' => 1
+                  },
+  'types' => {
+               'Language' => {
+                               'type' => 'Str'
+                             },
+               'Sinks' => {
+                            'type' => 'ArrayRef[Glue_CatalogEntry]',
+                            'class' => 'Paws::Glue::CatalogEntry'
+                          },
+               'Source' => {
+                             'class' => 'Paws::Glue::CatalogEntry',
+                             'type' => 'Glue_CatalogEntry'
+                           },
+               'Mapping' => {
+                              'type' => 'ArrayRef[Glue_MappingEntry]',
+                              'class' => 'Paws::Glue::MappingEntry'
+                            },
+               'Location' => {
+                               'type' => 'Glue_Location',
+                               'class' => 'Paws::Glue::Location'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -103,25 +139,25 @@ The programming language of the code to perform the mapping.
 
 Valid values are: C<"PYTHON">, C<"SCALA">
 
-=head2 Location => L<Paws::Glue::Location>
+=head2 Location => Glue_Location
 
 The parameters for the mapping.
 
 
 
-=head2 B<REQUIRED> Mapping => ArrayRef[L<Paws::Glue::MappingEntry>]
+=head2 B<REQUIRED> Mapping => ArrayRef[Glue_MappingEntry]
 
 The list of mappings from a source table to target tables.
 
 
 
-=head2 Sinks => ArrayRef[L<Paws::Glue::CatalogEntry>]
+=head2 Sinks => ArrayRef[Glue_CatalogEntry]
 
 The target tables.
 
 
 
-=head2 B<REQUIRED> Source => L<Paws::Glue::CatalogEntry>
+=head2 B<REQUIRED> Source => Glue_CatalogEntry
 
 The source table.
 

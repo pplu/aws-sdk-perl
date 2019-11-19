@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Personalize::HPOResourceConfig;
-  use Moose;
-  has MaxNumberOfTrainingJobs => (is => 'ro', isa => 'Str', request_name => 'maxNumberOfTrainingJobs', traits => ['NameInRequest']);
-  has MaxParallelTrainingJobs => (is => 'ro', isa => 'Str', request_name => 'maxParallelTrainingJobs', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has MaxNumberOfTrainingJobs => (is => 'ro', isa => Str);
+  has MaxParallelTrainingJobs => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxParallelTrainingJobs' => {
+                                              'type' => 'Str'
+                                            },
+               'MaxNumberOfTrainingJobs' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'NameInRequest' => {
+                       'MaxNumberOfTrainingJobs' => 'maxNumberOfTrainingJobs',
+                       'MaxParallelTrainingJobs' => 'maxParallelTrainingJobs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

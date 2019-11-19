@@ -1,15 +1,44 @@
 
 package Paws::EC2::BundleInstance;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has Storage => (is => 'ro', isa => 'Paws::EC2::Storage', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw/EC2_Storage/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Storage => (is => 'ro', isa => EC2_Storage, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BundleInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::BundleInstanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BundleInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::BundleInstanceResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Storage' => 1,
+                    'InstanceId' => 1
+                  },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun'
+                     },
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Storage' => {
+                              'type' => 'EC2_Storage',
+                              'class' => 'Paws::EC2::Storage'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +104,7 @@ Required: Yes
 
 
 
-=head2 B<REQUIRED> Storage => L<Paws::EC2::Storage>
+=head2 B<REQUIRED> Storage => EC2_Storage
 
 The bucket in which to store the AMI. You can specify a bucket that you
 already own or a new bucket that Amazon EC2 creates on your behalf. If

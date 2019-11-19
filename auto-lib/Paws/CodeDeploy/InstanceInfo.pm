@@ -1,12 +1,57 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::InstanceInfo;
-  use Moose;
-  has DeregisterTime => (is => 'ro', isa => 'Str', request_name => 'deregisterTime', traits => ['NameInRequest']);
-  has IamSessionArn => (is => 'ro', isa => 'Str', request_name => 'iamSessionArn', traits => ['NameInRequest']);
-  has IamUserArn => (is => 'ro', isa => 'Str', request_name => 'iamUserArn', traits => ['NameInRequest']);
-  has InstanceArn => (is => 'ro', isa => 'Str', request_name => 'instanceArn', traits => ['NameInRequest']);
-  has InstanceName => (is => 'ro', isa => 'Str', request_name => 'instanceName', traits => ['NameInRequest']);
-  has RegisterTime => (is => 'ro', isa => 'Str', request_name => 'registerTime', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_Tag/;
+  has DeregisterTime => (is => 'ro', isa => Str);
+  has IamSessionArn => (is => 'ro', isa => Str);
+  has IamUserArn => (is => 'ro', isa => Str);
+  has InstanceArn => (is => 'ro', isa => Str);
+  has InstanceName => (is => 'ro', isa => Str);
+  has RegisterTime => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[CodeDeploy_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'IamUserArn' => 'iamUserArn',
+                       'IamSessionArn' => 'iamSessionArn',
+                       'DeregisterTime' => 'deregisterTime',
+                       'RegisterTime' => 'registerTime',
+                       'InstanceName' => 'instanceName',
+                       'InstanceArn' => 'instanceArn',
+                       'Tags' => 'tags'
+                     },
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::CodeDeploy::Tag',
+                           'type' => 'ArrayRef[CodeDeploy_Tag]'
+                         },
+               'InstanceName' => {
+                                   'type' => 'Str'
+                                 },
+               'RegisterTime' => {
+                                   'type' => 'Str'
+                                 },
+               'DeregisterTime' => {
+                                     'type' => 'Str'
+                                   },
+               'InstanceArn' => {
+                                  'type' => 'Str'
+                                },
+               'IamUserArn' => {
+                                 'type' => 'Str'
+                               },
+               'IamSessionArn' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +118,7 @@ on-premises instance was deregistered.
   The time at which the on-premises instance was registered.
 
 
-=head2 Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+=head2 Tags => ArrayRef[CodeDeploy_Tag]
 
   The tags currently associated with the on-premises instance.
 

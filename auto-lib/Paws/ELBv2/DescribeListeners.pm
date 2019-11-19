@@ -1,16 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::ELBv2::DescribeListeners;
-  use Moose;
-  has ListenerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has LoadBalancerArn => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has PageSize => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::ELBv2::Types qw//;
+  has ListenerArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has LoadBalancerArn => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeListeners');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELBv2::DescribeListenersOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeListenersResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeListeners');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELBv2::DescribeListenersOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeListenersResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerArn' => {
+                                      'type' => 'Str'
+                                    },
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'ListenerArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::S3Location;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has Bucket => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Key' => 'key',
+                       'Bucket' => 'bucket'
+                     },
+  'types' => {
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Bucket' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::MQ::ListConfigurationsOutput;
-  use Moose;
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::MQ::Configuration]', request_name => 'configurations', traits => ['NameInRequest']);
-  has MaxResults => (is => 'ro', isa => 'Int', request_name => 'maxResults', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Str/;
+  use Paws::MQ::Types qw/MQ_Configuration/;
+  has Configurations => (is => 'ro', isa => ArrayRef[MQ_Configuration]);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken',
+                       'Configurations' => 'configurations'
+                     },
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Configurations' => {
+                                     'type' => 'ArrayRef[MQ_Configuration]',
+                                     'class' => 'Paws::MQ::Configuration'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ Returns a list of all configurations.
 =head1 ATTRIBUTES
 
 
-=head2 Configurations => ArrayRef[L<Paws::MQ::Configuration>]
+=head2 Configurations => ArrayRef[MQ_Configuration]
 
   The list of all revisions for the specified configuration.
 

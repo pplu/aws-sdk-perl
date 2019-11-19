@@ -1,19 +1,66 @@
 
 package Paws::IoT::UpdateJob;
-  use Moose;
-  has AbortConfig => (is => 'ro', isa => 'Paws::IoT::AbortConfig', traits => ['NameInRequest'], request_name => 'abortConfig');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has JobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::JobExecutionsRolloutConfig', traits => ['NameInRequest'], request_name => 'jobExecutionsRolloutConfig');
-  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
-  has PresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::PresignedUrlConfig', traits => ['NameInRequest'], request_name => 'presignedUrlConfig');
-  has TimeoutConfig => (is => 'ro', isa => 'Paws::IoT::TimeoutConfig', traits => ['NameInRequest'], request_name => 'timeoutConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_PresignedUrlConfig IoT_AbortConfig IoT_JobExecutionsRolloutConfig IoT_TimeoutConfig/;
+  has AbortConfig => (is => 'ro', isa => IoT_AbortConfig, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has JobExecutionsRolloutConfig => (is => 'ro', isa => IoT_JobExecutionsRolloutConfig, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PresignedUrlConfig => (is => 'ro', isa => IoT_PresignedUrlConfig, predicate => 1);
+  has TimeoutConfig => (is => 'ro', isa => IoT_TimeoutConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/jobs/{jobId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/jobs/{jobId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'JobId' => 'jobId'
+                  },
+  'IsRequired' => {
+                    'JobId' => 1
+                  },
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'AbortConfig' => 'abortConfig',
+                       'JobExecutionsRolloutConfig' => 'jobExecutionsRolloutConfig',
+                       'PresignedUrlConfig' => 'presignedUrlConfig',
+                       'TimeoutConfig' => 'timeoutConfig'
+                     },
+  'types' => {
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'JobExecutionsRolloutConfig' => {
+                                                 'class' => 'Paws::IoT::JobExecutionsRolloutConfig',
+                                                 'type' => 'IoT_JobExecutionsRolloutConfig'
+                                               },
+               'AbortConfig' => {
+                                  'type' => 'IoT_AbortConfig',
+                                  'class' => 'Paws::IoT::AbortConfig'
+                                },
+               'TimeoutConfig' => {
+                                    'type' => 'IoT_TimeoutConfig',
+                                    'class' => 'Paws::IoT::TimeoutConfig'
+                                  },
+               'PresignedUrlConfig' => {
+                                         'class' => 'Paws::IoT::PresignedUrlConfig',
+                                         'type' => 'IoT_PresignedUrlConfig'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +123,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 AbortConfig => L<Paws::IoT::AbortConfig>
+=head2 AbortConfig => IoT_AbortConfig
 
 Allows you to create criteria to abort a job.
 
@@ -88,7 +135,7 @@ A short text description of the job.
 
 
 
-=head2 JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>
+=head2 JobExecutionsRolloutConfig => IoT_JobExecutionsRolloutConfig
 
 Allows you to create a staged rollout of the job.
 
@@ -100,13 +147,13 @@ The ID of the job to be updated.
 
 
 
-=head2 PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>
+=head2 PresignedUrlConfig => IoT_PresignedUrlConfig
 
 Configuration information for pre-signed S3 URLs.
 
 
 
-=head2 TimeoutConfig => L<Paws::IoT::TimeoutConfig>
+=head2 TimeoutConfig => IoT_TimeoutConfig
 
 Specifies the amount of time each device has to finish its execution of
 the job. The timer is started when the job execution status is set to

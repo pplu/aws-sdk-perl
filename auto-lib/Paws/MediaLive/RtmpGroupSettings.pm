@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::MediaLive::RtmpGroupSettings;
-  use Moose;
-  has AuthenticationScheme => (is => 'ro', isa => 'Str', request_name => 'authenticationScheme', traits => ['NameInRequest']);
-  has CacheFullBehavior => (is => 'ro', isa => 'Str', request_name => 'cacheFullBehavior', traits => ['NameInRequest']);
-  has CacheLength => (is => 'ro', isa => 'Int', request_name => 'cacheLength', traits => ['NameInRequest']);
-  has CaptionData => (is => 'ro', isa => 'Str', request_name => 'captionData', traits => ['NameInRequest']);
-  has InputLossAction => (is => 'ro', isa => 'Str', request_name => 'inputLossAction', traits => ['NameInRequest']);
-  has RestartDelay => (is => 'ro', isa => 'Int', request_name => 'restartDelay', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaLive::Types qw//;
+  has AuthenticationScheme => (is => 'ro', isa => Str);
+  has CacheFullBehavior => (is => 'ro', isa => Str);
+  has CacheLength => (is => 'ro', isa => Int);
+  has CaptionData => (is => 'ro', isa => Str);
+  has InputLossAction => (is => 'ro', isa => Str);
+  has RestartDelay => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RestartDelay' => 'restartDelay',
+                       'CaptionData' => 'captionData',
+                       'AuthenticationScheme' => 'authenticationScheme',
+                       'CacheFullBehavior' => 'cacheFullBehavior',
+                       'InputLossAction' => 'inputLossAction',
+                       'CacheLength' => 'cacheLength'
+                     },
+  'types' => {
+               'RestartDelay' => {
+                                   'type' => 'Int'
+                                 },
+               'AuthenticationScheme' => {
+                                           'type' => 'Str'
+                                         },
+               'CaptionData' => {
+                                  'type' => 'Str'
+                                },
+               'InputLossAction' => {
+                                      'type' => 'Str'
+                                    },
+               'CacheFullBehavior' => {
+                                        'type' => 'Str'
+                                      },
+               'CacheLength' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

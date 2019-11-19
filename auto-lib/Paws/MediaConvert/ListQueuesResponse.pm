@@ -1,10 +1,35 @@
 
 package Paws::MediaConvert::ListQueuesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Queues => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Queue]', traits => ['NameInRequest'], request_name => 'queues');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_Queue/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Queues => (is => 'ro', isa => ArrayRef[MediaConvert_Queue]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Queues' => 'queues'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Queues' => {
+                             'type' => 'ArrayRef[MediaConvert_Queue]',
+                             'class' => 'Paws::MediaConvert::Queue'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +46,7 @@ Paws::MediaConvert::ListQueuesResponse
 Use this string to request the next batch of queues.
 
 
-=head2 Queues => ArrayRef[L<Paws::MediaConvert::Queue>]
+=head2 Queues => ArrayRef[MediaConvert_Queue]
 
 List of queues.
 

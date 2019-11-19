@@ -1,25 +1,95 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetMLTransformResponse;
-  use Moose;
-  has CreatedOn => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EvaluationMetrics => (is => 'ro', isa => 'Paws::Glue::EvaluationMetrics');
-  has InputRecordTables => (is => 'ro', isa => 'ArrayRef[Paws::Glue::GlueTable]');
-  has LabelCount => (is => 'ro', isa => 'Int');
-  has LastModifiedOn => (is => 'ro', isa => 'Str');
-  has MaxCapacity => (is => 'ro', isa => 'Num');
-  has MaxRetries => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str');
-  has NumberOfWorkers => (is => 'ro', isa => 'Int');
-  has Parameters => (is => 'ro', isa => 'Paws::Glue::TransformParameters');
-  has Role => (is => 'ro', isa => 'Str');
-  has Schema => (is => 'ro', isa => 'ArrayRef[Paws::Glue::SchemaColumn]');
-  has Status => (is => 'ro', isa => 'Str');
-  has Timeout => (is => 'ro', isa => 'Int');
-  has TransformId => (is => 'ro', isa => 'Str');
-  has WorkerType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Num/;
+  use Paws::Glue::Types qw/Glue_EvaluationMetrics Glue_GlueTable Glue_SchemaColumn Glue_TransformParameters/;
+  has CreatedOn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EvaluationMetrics => (is => 'ro', isa => Glue_EvaluationMetrics);
+  has InputRecordTables => (is => 'ro', isa => ArrayRef[Glue_GlueTable]);
+  has LabelCount => (is => 'ro', isa => Int);
+  has LastModifiedOn => (is => 'ro', isa => Str);
+  has MaxCapacity => (is => 'ro', isa => Num);
+  has MaxRetries => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has NumberOfWorkers => (is => 'ro', isa => Int);
+  has Parameters => (is => 'ro', isa => Glue_TransformParameters);
+  has Role => (is => 'ro', isa => Str);
+  has Schema => (is => 'ro', isa => ArrayRef[Glue_SchemaColumn]);
+  has Status => (is => 'ro', isa => Str);
+  has Timeout => (is => 'ro', isa => Int);
+  has TransformId => (is => 'ro', isa => Str);
+  has WorkerType => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'type' => 'Glue_TransformParameters',
+                                 'class' => 'Paws::Glue::TransformParameters'
+                               },
+               'EvaluationMetrics' => {
+                                        'class' => 'Paws::Glue::EvaluationMetrics',
+                                        'type' => 'Glue_EvaluationMetrics'
+                                      },
+               'MaxRetries' => {
+                                 'type' => 'Int'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MaxCapacity' => {
+                                  'type' => 'Num'
+                                },
+               'NumberOfWorkers' => {
+                                      'type' => 'Int'
+                                    },
+               'WorkerType' => {
+                                 'type' => 'Str'
+                               },
+               'LastModifiedOn' => {
+                                     'type' => 'Str'
+                                   },
+               'LabelCount' => {
+                                 'type' => 'Int'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Timeout' => {
+                              'type' => 'Int'
+                            },
+               'Schema' => {
+                             'type' => 'ArrayRef[Glue_SchemaColumn]',
+                             'class' => 'Paws::Glue::SchemaColumn'
+                           },
+               'TransformId' => {
+                                  'type' => 'Str'
+                                },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'InputRecordTables' => {
+                                        'class' => 'Paws::Glue::GlueTable',
+                                        'type' => 'ArrayRef[Glue_GlueTable]'
+                                      },
+               'CreatedOn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -40,12 +110,12 @@ The date and time when the transform was created.
 A description of the transform.
 
 
-=head2 EvaluationMetrics => L<Paws::Glue::EvaluationMetrics>
+=head2 EvaluationMetrics => Glue_EvaluationMetrics
 
 The latest evaluation metrics.
 
 
-=head2 InputRecordTables => ArrayRef[L<Paws::Glue::GlueTable>]
+=head2 InputRecordTables => ArrayRef[Glue_GlueTable]
 
 A list of AWS Glue table definitions used by the transform.
 
@@ -90,7 +160,7 @@ The number of workers of a defined C<workerType> that are allocated
 when this task runs.
 
 
-=head2 Parameters => L<Paws::Glue::TransformParameters>
+=head2 Parameters => Glue_TransformParameters
 
 The configuration parameters that are specific to the algorithm used.
 
@@ -101,7 +171,7 @@ The name or Amazon Resource Name (ARN) of the IAM role with the
 required permissions.
 
 
-=head2 Schema => ArrayRef[L<Paws::Glue::SchemaColumn>]
+=head2 Schema => ArrayRef[Glue_SchemaColumn]
 
 The C<MapE<lt>Column, TypeE<gt>> object that represents the schema that
 this transform accepts. Has an upper bound of 100 columns.

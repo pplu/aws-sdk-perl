@@ -1,10 +1,35 @@
 
 package Paws::MobileHub::ListProjectsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Projects => (is => 'ro', isa => 'ArrayRef[Paws::MobileHub::ProjectSummary]', traits => ['NameInRequest'], request_name => 'projects');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MobileHub::Types qw/MobileHub_ProjectSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Projects => (is => 'ro', isa => ArrayRef[MobileHub_ProjectSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Projects' => 'projects',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Projects' => {
+                               'type' => 'ArrayRef[MobileHub_ProjectSummary]',
+                               'class' => 'Paws::MobileHub::ProjectSummary'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +46,7 @@ Paws::MobileHub::ListProjectsResult
 
 
 
-=head2 Projects => ArrayRef[L<Paws::MobileHub::ProjectSummary>]
+=head2 Projects => ArrayRef[MobileHub_ProjectSummary]
 
 
 

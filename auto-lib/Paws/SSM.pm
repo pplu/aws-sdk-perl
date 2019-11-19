@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::SSM;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'ssm' }
   sub signing_name { 'ssm' }
   sub version { '2014-11-06' }
   sub target_prefix { 'AmazonSSM' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -1604,7 +1606,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =item ResourceType => Str
 
-=item Tags => ArrayRef[L<Paws::SSM::Tag>]
+=item Tags => ArrayRef[SSM_Tag]
 
 
 =back
@@ -1690,7 +1692,7 @@ cancels any tasks in the window that have not already starting running.
 
 =item [RegistrationLimit => Int]
 
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+=item [Tags => ArrayRef[SSM_Tag]]
 
 
 =back
@@ -1727,13 +1729,13 @@ Up AWS Systems Manager for Hybrid Environments
 
 =item [MaxErrors => Str]
 
-=item [OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>]
+=item [OutputLocation => SSM_InstanceAssociationOutputLocation]
 
-=item [Parameters => L<Paws::SSM::Parameters>]
+=item [Parameters => SSM_Parameters]
 
 =item [ScheduleExpression => Str]
 
-=item [Targets => ArrayRef[L<Paws::SSM::Target>]]
+=item [Targets => ArrayRef[SSM_Target]]
 
 
 =back
@@ -1758,7 +1760,7 @@ exception.
 
 =over
 
-=item Entries => ArrayRef[L<Paws::SSM::CreateAssociationBatchRequestEntry>]
+=item Entries => ArrayRef[SSM_CreateAssociationBatchRequestEntry]
 
 
 =back
@@ -1787,13 +1789,13 @@ exception.
 
 =item Name => Str
 
-=item [Attachments => ArrayRef[L<Paws::SSM::AttachmentsSource>]]
+=item [Attachments => ArrayRef[SSM_AttachmentsSource]]
 
 =item [DocumentFormat => Str]
 
 =item [DocumentType => Str]
 
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+=item [Tags => ArrayRef[SSM_Tag]]
 
 =item [TargetType => Str]
 
@@ -1836,7 +1838,7 @@ it with one or more running instances.
 
 =item [StartDate => Str]
 
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+=item [Tags => ArrayRef[SSM_Tag]]
 
 
 =back
@@ -1868,17 +1870,17 @@ tasks can start after 5 PM.
 
 =item [Category => Str]
 
-=item [Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]]
+=item [Notifications => ArrayRef[SSM_OpsItemNotification]]
 
-=item [OperationalData => L<Paws::SSM::OpsItemOperationalData>]
+=item [OperationalData => SSM_OpsItemOperationalData]
 
 =item [Priority => Int]
 
-=item [RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]]
+=item [RelatedOpsItems => ArrayRef[SSM_RelatedOpsItem]]
 
 =item [Severity => Str]
 
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+=item [Tags => ArrayRef[SSM_Tag]]
 
 
 =back
@@ -1907,7 +1909,7 @@ in the I<AWS Systems Manager User Guide>.
 
 =item Name => Str
 
-=item [ApprovalRules => L<Paws::SSM::PatchRuleGroup>]
+=item [ApprovalRules => SSM_PatchRuleGroup]
 
 =item [ApprovedPatches => ArrayRef[Str|Undef]]
 
@@ -1919,7 +1921,7 @@ in the I<AWS Systems Manager User Guide>.
 
 =item [Description => Str]
 
-=item [GlobalFilters => L<Paws::SSM::PatchFilterGroup>]
+=item [GlobalFilters => SSM_PatchFilterGroup]
 
 =item [OperatingSystem => Str]
 
@@ -1927,9 +1929,9 @@ in the I<AWS Systems Manager User Guide>.
 
 =item [RejectedPatchesAction => Str]
 
-=item [Sources => ArrayRef[L<Paws::SSM::PatchSource>]]
+=item [Sources => ArrayRef[SSM_PatchSource]]
 
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+=item [Tags => ArrayRef[SSM_Tag]]
 
 
 =back
@@ -1951,9 +1953,9 @@ each supported operating system type, see PatchFilter
 
 =item SyncName => Str
 
-=item [S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>]
+=item [S3Destination => SSM_ResourceDataSyncS3Destination]
 
-=item [SyncSource => L<Paws::SSM::ResourceDataSyncSource>]
+=item [SyncSource => SSM_ResourceDataSyncSource]
 
 =item [SyncType => Str]
 
@@ -2256,7 +2258,7 @@ Removes a task from a maintenance window.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SSM::DescribeActivationsFilter>]]
+=item [Filters => ArrayRef[SSM_DescribeActivationsFilter]]
 
 =item [MaxResults => Int]
 
@@ -2308,7 +2310,7 @@ document name and the instance ID.
 
 =item AssociationId => Str
 
-=item [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionFilter>]]
+=item [Filters => ArrayRef[SSM_AssociationExecutionFilter]]
 
 =item [MaxResults => Int]
 
@@ -2333,7 +2335,7 @@ ID.
 
 =item ExecutionId => Str
 
-=item [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionTargetsFilter>]]
+=item [Filters => ArrayRef[SSM_AssociationExecutionTargetsFilter]]
 
 =item [MaxResults => Int]
 
@@ -2354,7 +2356,7 @@ specific association.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SSM::AutomationExecutionFilter>]]
+=item [Filters => ArrayRef[SSM_AutomationExecutionFilter]]
 
 =item [MaxResults => Int]
 
@@ -2376,7 +2378,7 @@ Provides details about all active and terminated Automation executions.
 
 =item AutomationExecutionId => Str
 
-=item [Filters => ArrayRef[L<Paws::SSM::StepExecutionFilter>]]
+=item [Filters => ArrayRef[SSM_StepExecutionFilter]]
 
 =item [MaxResults => Int]
 
@@ -2399,7 +2401,7 @@ Automation workflow.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>]]
+=item [Filters => ArrayRef[SSM_PatchOrchestratorFilter]]
 
 =item [MaxResults => Int]
 
@@ -2522,9 +2524,9 @@ The status of the associations for the instance(s).
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SSM::InstanceInformationStringFilter>]]
+=item [Filters => ArrayRef[SSM_InstanceInformationStringFilter]]
 
-=item [InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>]]
+=item [InstanceInformationFilterList => ArrayRef[SSM_InstanceInformationFilter]]
 
 =item [MaxResults => Int]
 
@@ -2556,7 +2558,7 @@ not return the IAM role for Amazon EC2 instances.
 
 =item InstanceId => Str
 
-=item [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>]]
+=item [Filters => ArrayRef[SSM_PatchOrchestratorFilter]]
 
 =item [MaxResults => Int]
 
@@ -2599,7 +2601,7 @@ Retrieves the high-level patch state of one or more instances.
 
 =item PatchGroup => Str
 
-=item [Filters => ArrayRef[L<Paws::SSM::InstancePatchStateFilter>]]
+=item [Filters => ArrayRef[SSM_InstancePatchStateFilter]]
 
 =item [MaxResults => Int]
 
@@ -2642,7 +2644,7 @@ Describes a specific delete inventory operation.
 
 =item WindowId => Str
 
-=item [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>]]
+=item [Filters => ArrayRef[SSM_MaintenanceWindowFilter]]
 
 =item [MaxResults => Int]
 
@@ -2668,7 +2670,7 @@ information about tasks registered and run with the maintenance window.
 
 =item WindowExecutionId => Str
 
-=item [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>]]
+=item [Filters => ArrayRef[SSM_MaintenanceWindowFilter]]
 
 =item [MaxResults => Int]
 
@@ -2691,7 +2693,7 @@ particular task run as part of a maintenance window execution.
 
 =item WindowExecutionId => Str
 
-=item [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>]]
+=item [Filters => ArrayRef[SSM_MaintenanceWindowFilter]]
 
 =item [MaxResults => Int]
 
@@ -2712,7 +2714,7 @@ run.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>]]
+=item [Filters => ArrayRef[SSM_MaintenanceWindowFilter]]
 
 =item [MaxResults => Int]
 
@@ -2732,7 +2734,7 @@ Retrieves the maintenance windows in an AWS account.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>]]
+=item [Filters => ArrayRef[SSM_PatchOrchestratorFilter]]
 
 =item [MaxResults => Int]
 
@@ -2740,7 +2742,7 @@ Retrieves the maintenance windows in an AWS account.
 
 =item [ResourceType => Str]
 
-=item [Targets => ArrayRef[L<Paws::SSM::Target>]]
+=item [Targets => ArrayRef[SSM_Target]]
 
 =item [WindowId => Str]
 
@@ -2761,7 +2763,7 @@ window.
 
 =item ResourceType => Str
 
-=item Targets => ArrayRef[L<Paws::SSM::Target>]
+=item Targets => ArrayRef[SSM_Target]
 
 =item [MaxResults => Int]
 
@@ -2784,7 +2786,7 @@ that an instance is associated with.
 
 =item WindowId => Str
 
-=item [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>]]
+=item [Filters => ArrayRef[SSM_MaintenanceWindowFilter]]
 
 =item [MaxResults => Int]
 
@@ -2806,7 +2808,7 @@ Lists the targets registered with the maintenance window.
 
 =item WindowId => Str
 
-=item [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>]]
+=item [Filters => ArrayRef[SSM_MaintenanceWindowFilter]]
 
 =item [MaxResults => Int]
 
@@ -2830,7 +2832,7 @@ Lists the tasks in a maintenance window.
 
 =item [NextToken => Str]
 
-=item [OpsItemFilters => ArrayRef[L<Paws::SSM::OpsItemFilter>]]
+=item [OpsItemFilters => ArrayRef[SSM_OpsItemFilter]]
 
 
 =back
@@ -2857,13 +2859,13 @@ in the I<AWS Systems Manager User Guide>.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SSM::ParametersFilter>]]
+=item [Filters => ArrayRef[SSM_ParametersFilter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]]
+=item [ParameterFilters => ArrayRef[SSM_ParameterStringFilter]]
 
 
 =back
@@ -2888,7 +2890,7 @@ of results.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>]]
+=item [Filters => ArrayRef[SSM_PatchOrchestratorFilter]]
 
 =item [MaxResults => Int]
 
@@ -2908,7 +2910,7 @@ Lists the patch baselines in your AWS account.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>]]
+=item [Filters => ArrayRef[SSM_PatchOrchestratorFilter]]
 
 =item [MaxResults => Int]
 
@@ -3012,7 +3014,7 @@ Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 
 =item State => Str
 
-=item [Filters => ArrayRef[L<Paws::SSM::SessionFilter>]]
+=item [Filters => ArrayRef[SSM_SessionFilter]]
 
 =item [MaxResults => Int]
 
@@ -3151,15 +3153,15 @@ Gets the contents of the specified Systems Manager document.
 
 =over
 
-=item [Aggregators => ArrayRef[L<Paws::SSM::InventoryAggregator>]]
+=item [Aggregators => ArrayRef[SSM_InventoryAggregator]]
 
-=item [Filters => ArrayRef[L<Paws::SSM::InventoryFilter>]]
+=item [Filters => ArrayRef[SSM_InventoryFilter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]]
+=item [ResultAttributes => ArrayRef[SSM_ResultAttribute]]
 
 
 =back
@@ -3318,15 +3320,15 @@ in the I<AWS Systems Manager User Guide>.
 
 =over
 
-=item [Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>]]
+=item [Aggregators => ArrayRef[SSM_OpsAggregator]]
 
-=item [Filters => ArrayRef[L<Paws::SSM::OpsFilter>]]
+=item [Filters => ArrayRef[SSM_OpsFilter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [ResultAttributes => ArrayRef[L<Paws::SSM::OpsResultAttribute>]]
+=item [ResultAttributes => ArrayRef[SSM_OpsResultAttribute]]
 
 =item [SyncName => Str]
 
@@ -3410,7 +3412,7 @@ GetParameter API action.
 
 =item [NextToken => Str]
 
-=item [ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]]
+=item [ParameterFilters => ArrayRef[SSM_ParameterStringFilter]]
 
 =item [Recursive => Bool]
 
@@ -3579,7 +3581,7 @@ InvalidLabels.
 
 =over
 
-=item [AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>]]
+=item [AssociationFilterList => ArrayRef[SSM_AssociationFilter]]
 
 =item [MaxResults => Int]
 
@@ -3624,7 +3626,7 @@ Retrieves all versions of an association for a specific association ID.
 
 =item [Details => Bool]
 
-=item [Filters => ArrayRef[L<Paws::SSM::CommandFilter>]]
+=item [Filters => ArrayRef[SSM_CommandFilter]]
 
 =item [InstanceId => Str]
 
@@ -3653,7 +3655,7 @@ command execution.
 
 =item [CommandId => Str]
 
-=item [Filters => ArrayRef[L<Paws::SSM::CommandFilter>]]
+=item [Filters => ArrayRef[SSM_CommandFilter]]
 
 =item [InstanceId => Str]
 
@@ -3675,7 +3677,7 @@ Lists the commands requested by users of the AWS account.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>]]
+=item [Filters => ArrayRef[SSM_ComplianceStringFilter]]
 
 =item [MaxResults => Int]
 
@@ -3702,7 +3704,7 @@ criteria specified in the filter.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>]]
+=item [Filters => ArrayRef[SSM_ComplianceStringFilter]]
 
 =item [MaxResults => Int]
 
@@ -3725,9 +3727,9 @@ filter criteria that you specify.
 
 =over
 
-=item [DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>]]
+=item [DocumentFilterList => ArrayRef[SSM_DocumentFilter]]
 
-=item [Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>]]
+=item [Filters => ArrayRef[SSM_DocumentKeyValuesFilter]]
 
 =item [MaxResults => Int]
 
@@ -3771,7 +3773,7 @@ List all versions for a document.
 
 =item TypeName => Str
 
-=item [Filters => ArrayRef[L<Paws::SSM::InventoryFilter>]]
+=item [Filters => ArrayRef[SSM_InventoryFilter]]
 
 =item [MaxResults => Int]
 
@@ -3791,7 +3793,7 @@ A list of inventory items returned by the request.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>]]
+=item [Filters => ArrayRef[SSM_ComplianceStringFilter]]
 
 =item [MaxResults => Int]
 
@@ -3890,9 +3892,9 @@ must specify I<All> as the account ID.
 
 =item ComplianceType => Str
 
-=item ExecutionSummary => L<Paws::SSM::ComplianceExecutionSummary>
+=item ExecutionSummary => SSM_ComplianceExecutionSummary
 
-=item Items => ArrayRef[L<Paws::SSM::ComplianceItemEntry>]
+=item Items => ArrayRef[SSM_ComplianceItemEntry]
 
 =item ResourceId => Str
 
@@ -3993,7 +3995,7 @@ following format: yyyy-MM-dd'T'HH:mm:ss'Z'
 
 =item InstanceId => Str
 
-=item Items => ArrayRef[L<Paws::SSM::InventoryItem>]
+=item Items => ArrayRef[SSM_InventoryItem]
 
 
 =back
@@ -4027,7 +4029,7 @@ inventory item, if it does exist.
 
 =item [Policies => Str]
 
-=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+=item [Tags => ArrayRef[SSM_Tag]]
 
 =item [Tier => Str]
 
@@ -4087,7 +4089,7 @@ Registers a patch baseline for a patch group.
 
 =item ResourceType => Str
 
-=item Targets => ArrayRef[L<Paws::SSM::Target>]
+=item Targets => ArrayRef[SSM_Target]
 
 =item WindowId => Str
 
@@ -4117,7 +4119,7 @@ Registers a target with a maintenance window.
 
 =item MaxErrors => Str
 
-=item Targets => ArrayRef[L<Paws::SSM::Target>]
+=item Targets => ArrayRef[SSM_Target]
 
 =item TaskArn => Str
 
@@ -4129,7 +4131,7 @@ Registers a target with a maintenance window.
 
 =item [Description => Str]
 
-=item [LoggingInfo => L<Paws::SSM::LoggingInfo>]
+=item [LoggingInfo => SSM_LoggingInfo]
 
 =item [Name => Str]
 
@@ -4137,9 +4139,9 @@ Registers a target with a maintenance window.
 
 =item [ServiceRoleArn => Str]
 
-=item [TaskInvocationParameters => L<Paws::SSM::MaintenanceWindowTaskInvocationParameters>]
+=item [TaskInvocationParameters => SSM_MaintenanceWindowTaskInvocationParameters]
 
-=item [TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>]
+=item [TaskParameters => SSM_MaintenanceWindowTaskParameters]
 
 
 =back
@@ -4233,7 +4235,7 @@ any other use.
 
 =item SignalType => Str
 
-=item [Payload => L<Paws::SSM::AutomationParameterMap>]
+=item [Payload => SSM_AutomationParameterMap]
 
 
 =back
@@ -4252,7 +4254,7 @@ behavior or status of the execution.
 
 =item DocumentName => Str
 
-=item [CloudWatchOutputConfig => L<Paws::SSM::CloudWatchOutputConfig>]
+=item [CloudWatchOutputConfig => SSM_CloudWatchOutputConfig]
 
 =item [Comment => Str]
 
@@ -4268,7 +4270,7 @@ behavior or status of the execution.
 
 =item [MaxErrors => Str]
 
-=item [NotificationConfig => L<Paws::SSM::NotificationConfig>]
+=item [NotificationConfig => SSM_NotificationConfig]
 
 =item [OutputS3BucketName => Str]
 
@@ -4276,11 +4278,11 @@ behavior or status of the execution.
 
 =item [OutputS3Region => Str]
 
-=item [Parameters => L<Paws::SSM::Parameters>]
+=item [Parameters => SSM_Parameters]
 
 =item [ServiceRoleArn => Str]
 
-=item [Targets => ArrayRef[L<Paws::SSM::Target>]]
+=item [Targets => ArrayRef[SSM_Target]]
 
 =item [TimeoutSeconds => Int]
 
@@ -4327,15 +4329,15 @@ time. This action can be helpful when troubleshooting associations.
 
 =item [Mode => Str]
 
-=item [Parameters => L<Paws::SSM::AutomationParameterMap>]
+=item [Parameters => SSM_AutomationParameterMap]
 
-=item [TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]]
+=item [TargetLocations => ArrayRef[SSM_TargetLocation]]
 
-=item [TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]]
+=item [TargetMaps => ArrayRef[SSM_TargetMap]]
 
 =item [TargetParameterName => Str]
 
-=item [Targets => ArrayRef[L<Paws::SSM::Target>]]
+=item [Targets => ArrayRef[SSM_Target]]
 
 
 =back
@@ -4355,7 +4357,7 @@ Initiates execution of an Automation document.
 
 =item [DocumentName => Str]
 
-=item [Parameters => L<Paws::SSM::SessionManagerParameters>]
+=item [Parameters => SSM_SessionManagerParameters]
 
 
 =back
@@ -4437,13 +4439,13 @@ session cannot be resumed.
 
 =item [Name => Str]
 
-=item [OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>]
+=item [OutputLocation => SSM_InstanceAssociationOutputLocation]
 
-=item [Parameters => L<Paws::SSM::Parameters>]
+=item [Parameters => SSM_Parameters]
 
 =item [ScheduleExpression => Str]
 
-=item [Targets => ArrayRef[L<Paws::SSM::Target>]]
+=item [Targets => ArrayRef[SSM_Target]]
 
 
 =back
@@ -4472,7 +4474,7 @@ against the specified targets.
 
 =over
 
-=item AssociationStatus => L<Paws::SSM::AssociationStatus>
+=item AssociationStatus => SSM_AssociationStatus
 
 =item InstanceId => Str
 
@@ -4497,7 +4499,7 @@ specified instance.
 
 =item Name => Str
 
-=item [Attachments => ArrayRef[L<Paws::SSM::AttachmentsSource>]]
+=item [Attachments => ArrayRef[SSM_AttachmentsSource]]
 
 =item [DocumentFormat => Str]
 
@@ -4598,7 +4600,7 @@ tasks can start after 5 PM.
 
 =item [Replace => Bool]
 
-=item [Targets => ArrayRef[L<Paws::SSM::Target>]]
+=item [Targets => ArrayRef[SSM_Target]]
 
 
 =back
@@ -4653,7 +4655,7 @@ If a parameter is null, then the corresponding field is not modified.
 
 =item [Description => Str]
 
-=item [LoggingInfo => L<Paws::SSM::LoggingInfo>]
+=item [LoggingInfo => SSM_LoggingInfo]
 
 =item [MaxConcurrency => Str]
 
@@ -4667,13 +4669,13 @@ If a parameter is null, then the corresponding field is not modified.
 
 =item [ServiceRoleArn => Str]
 
-=item [Targets => ArrayRef[L<Paws::SSM::Target>]]
+=item [Targets => ArrayRef[SSM_Target]]
 
 =item [TaskArn => Str]
 
-=item [TaskInvocationParameters => L<Paws::SSM::MaintenanceWindowTaskInvocationParameters>]
+=item [TaskInvocationParameters => SSM_MaintenanceWindowTaskInvocationParameters]
 
-=item [TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>]
+=item [TaskParameters => SSM_MaintenanceWindowTaskParameters]
 
 
 =back
@@ -4749,15 +4751,15 @@ for the managed instance.
 
 =item [Description => Str]
 
-=item [Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]]
+=item [Notifications => ArrayRef[SSM_OpsItemNotification]]
 
-=item [OperationalData => L<Paws::SSM::OpsItemOperationalData>]
+=item [OperationalData => SSM_OpsItemOperationalData]
 
 =item [OperationalDataToDelete => ArrayRef[Str|Undef]]
 
 =item [Priority => Int]
 
-=item [RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]]
+=item [RelatedOpsItems => ArrayRef[SSM_RelatedOpsItem]]
 
 =item [Severity => Str]
 
@@ -4792,7 +4794,7 @@ in the I<AWS Systems Manager User Guide>.
 
 =item BaselineId => Str
 
-=item [ApprovalRules => L<Paws::SSM::PatchRuleGroup>]
+=item [ApprovalRules => SSM_PatchRuleGroup]
 
 =item [ApprovedPatches => ArrayRef[Str|Undef]]
 
@@ -4802,7 +4804,7 @@ in the I<AWS Systems Manager User Guide>.
 
 =item [Description => Str]
 
-=item [GlobalFilters => L<Paws::SSM::PatchFilterGroup>]
+=item [GlobalFilters => SSM_PatchFilterGroup]
 
 =item [Name => Str]
 
@@ -4812,7 +4814,7 @@ in the I<AWS Systems Manager User Guide>.
 
 =item [Replace => Bool]
 
-=item [Sources => ArrayRef[L<Paws::SSM::PatchSource>]]
+=item [Sources => ArrayRef[SSM_PatchSource]]
 
 
 =back
@@ -4869,9 +4871,9 @@ Update the service setting for the account.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllActivations(sub { },[Filters => ArrayRef[L<Paws::SSM::DescribeActivationsFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllActivations(sub { },[Filters => ArrayRef[SSM_DescribeActivationsFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllActivations([Filters => ArrayRef[L<Paws::SSM::DescribeActivationsFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllActivations([Filters => ArrayRef[SSM_DescribeActivationsFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -4881,9 +4883,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeActivationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllAssociationExecutions(sub { },AssociationId => Str, [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllAssociationExecutions(sub { },AssociationId => Str, [Filters => ArrayRef[SSM_AssociationExecutionFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllAssociationExecutions(AssociationId => Str, [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllAssociationExecutions(AssociationId => Str, [Filters => ArrayRef[SSM_AssociationExecutionFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -4893,9 +4895,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeAssociationExecutionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllAssociationExecutionTargets(sub { },AssociationId => Str, ExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionTargetsFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllAssociationExecutionTargets(sub { },AssociationId => Str, ExecutionId => Str, [Filters => ArrayRef[SSM_AssociationExecutionTargetsFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllAssociationExecutionTargets(AssociationId => Str, ExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::AssociationExecutionTargetsFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllAssociationExecutionTargets(AssociationId => Str, ExecutionId => Str, [Filters => ArrayRef[SSM_AssociationExecutionTargetsFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -4905,9 +4907,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeAssociationExecutionTargetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllAutomationExecutions(sub { },[Filters => ArrayRef[L<Paws::SSM::AutomationExecutionFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllAutomationExecutions(sub { },[Filters => ArrayRef[SSM_AutomationExecutionFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllAutomationExecutions([Filters => ArrayRef[L<Paws::SSM::AutomationExecutionFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllAutomationExecutions([Filters => ArrayRef[SSM_AutomationExecutionFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -4917,9 +4919,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeAutomationExecutionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllAutomationStepExecutions(sub { },AutomationExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::StepExecutionFilter>], MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
+=head2 DescribeAllAutomationStepExecutions(sub { },AutomationExecutionId => Str, [Filters => ArrayRef[SSM_StepExecutionFilter], MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
 
-=head2 DescribeAllAutomationStepExecutions(AutomationExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::StepExecutionFilter>], MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
+=head2 DescribeAllAutomationStepExecutions(AutomationExecutionId => Str, [Filters => ArrayRef[SSM_StepExecutionFilter], MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -4929,9 +4931,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeAutomationStepExecutionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllAvailablePatches(sub { },[Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllAvailablePatches(sub { },[Filters => ArrayRef[SSM_PatchOrchestratorFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllAvailablePatches([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllAvailablePatches([Filters => ArrayRef[SSM_PatchOrchestratorFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -4977,9 +4979,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeInstanceAssociationsStatusResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllInstanceInformation(sub { },[Filters => ArrayRef[L<Paws::SSM::InstanceInformationStringFilter>], InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInstanceInformation(sub { },[Filters => ArrayRef[SSM_InstanceInformationStringFilter], InstanceInformationFilterList => ArrayRef[SSM_InstanceInformationFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllInstanceInformation([Filters => ArrayRef[L<Paws::SSM::InstanceInformationStringFilter>], InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInstanceInformation([Filters => ArrayRef[SSM_InstanceInformationStringFilter], InstanceInformationFilterList => ArrayRef[SSM_InstanceInformationFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -4989,9 +4991,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeInstanceInformationResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllInstancePatches(sub { },InstanceId => Str, [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInstancePatches(sub { },InstanceId => Str, [Filters => ArrayRef[SSM_PatchOrchestratorFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllInstancePatches(InstanceId => Str, [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInstancePatches(InstanceId => Str, [Filters => ArrayRef[SSM_PatchOrchestratorFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5013,9 +5015,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeInstancePatchStatesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllInstancePatchStatesForPatchGroup(sub { },PatchGroup => Str, [Filters => ArrayRef[L<Paws::SSM::InstancePatchStateFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInstancePatchStatesForPatchGroup(sub { },PatchGroup => Str, [Filters => ArrayRef[SSM_InstancePatchStateFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllInstancePatchStatesForPatchGroup(PatchGroup => Str, [Filters => ArrayRef[L<Paws::SSM::InstancePatchStateFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInstancePatchStatesForPatchGroup(PatchGroup => Str, [Filters => ArrayRef[SSM_InstancePatchStateFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5037,9 +5039,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeInventoryDeletionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllMaintenanceWindowExecutions(sub { },WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindowExecutions(sub { },WindowId => Str, [Filters => ArrayRef[SSM_MaintenanceWindowFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllMaintenanceWindowExecutions(WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindowExecutions(WindowId => Str, [Filters => ArrayRef[SSM_MaintenanceWindowFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5049,9 +5051,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowExecutionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllMaintenanceWindowExecutionTaskInvocations(sub { },TaskId => Str, WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindowExecutionTaskInvocations(sub { },TaskId => Str, WindowExecutionId => Str, [Filters => ArrayRef[SSM_MaintenanceWindowFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllMaintenanceWindowExecutionTaskInvocations(TaskId => Str, WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindowExecutionTaskInvocations(TaskId => Str, WindowExecutionId => Str, [Filters => ArrayRef[SSM_MaintenanceWindowFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5061,9 +5063,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowExecutionTaskInvocationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllMaintenanceWindowExecutionTasks(sub { },WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindowExecutionTasks(sub { },WindowExecutionId => Str, [Filters => ArrayRef[SSM_MaintenanceWindowFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllMaintenanceWindowExecutionTasks(WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindowExecutionTasks(WindowExecutionId => Str, [Filters => ArrayRef[SSM_MaintenanceWindowFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5073,9 +5075,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowExecutionTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllMaintenanceWindows(sub { },[Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindows(sub { },[Filters => ArrayRef[SSM_MaintenanceWindowFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllMaintenanceWindows([Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindows([Filters => ArrayRef[SSM_MaintenanceWindowFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5085,9 +5087,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllMaintenanceWindowSchedule(sub { },[Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str, ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], WindowId => Str])
+=head2 DescribeAllMaintenanceWindowSchedule(sub { },[Filters => ArrayRef[SSM_PatchOrchestratorFilter], MaxResults => Int, NextToken => Str, ResourceType => Str, Targets => ArrayRef[SSM_Target], WindowId => Str])
 
-=head2 DescribeAllMaintenanceWindowSchedule([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str, ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], WindowId => Str])
+=head2 DescribeAllMaintenanceWindowSchedule([Filters => ArrayRef[SSM_PatchOrchestratorFilter], MaxResults => Int, NextToken => Str, ResourceType => Str, Targets => ArrayRef[SSM_Target], WindowId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5097,9 +5099,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowScheduleResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllMaintenanceWindowsForTarget(sub { },ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], [MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindowsForTarget(sub { },ResourceType => Str, Targets => ArrayRef[SSM_Target], [MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllMaintenanceWindowsForTarget(ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], [MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindowsForTarget(ResourceType => Str, Targets => ArrayRef[SSM_Target], [MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5109,9 +5111,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowsForTargetResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllMaintenanceWindowTargets(sub { },WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindowTargets(sub { },WindowId => Str, [Filters => ArrayRef[SSM_MaintenanceWindowFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllMaintenanceWindowTargets(WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindowTargets(WindowId => Str, [Filters => ArrayRef[SSM_MaintenanceWindowFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5121,9 +5123,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowTargetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllMaintenanceWindowTasks(sub { },WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindowTasks(sub { },WindowId => Str, [Filters => ArrayRef[SSM_MaintenanceWindowFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllMaintenanceWindowTasks(WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllMaintenanceWindowTasks(WindowId => Str, [Filters => ArrayRef[SSM_MaintenanceWindowFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5133,9 +5135,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeMaintenanceWindowTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllParameters(sub { },[Filters => ArrayRef[L<Paws::SSM::ParametersFilter>], MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]])
+=head2 DescribeAllParameters(sub { },[Filters => ArrayRef[SSM_ParametersFilter], MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[SSM_ParameterStringFilter]])
 
-=head2 DescribeAllParameters([Filters => ArrayRef[L<Paws::SSM::ParametersFilter>], MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]])
+=head2 DescribeAllParameters([Filters => ArrayRef[SSM_ParametersFilter], MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[SSM_ParameterStringFilter]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5145,9 +5147,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllPatchBaselines(sub { },[Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllPatchBaselines(sub { },[Filters => ArrayRef[SSM_PatchOrchestratorFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllPatchBaselines([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllPatchBaselines([Filters => ArrayRef[SSM_PatchOrchestratorFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5157,9 +5159,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribePatchBaselinesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllPatchGroups(sub { },[Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllPatchGroups(sub { },[Filters => ArrayRef[SSM_PatchOrchestratorFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllPatchGroups([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllPatchGroups([Filters => ArrayRef[SSM_PatchOrchestratorFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5169,9 +5171,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribePatchGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllSessions(sub { },State => Str, [Filters => ArrayRef[L<Paws::SSM::SessionFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllSessions(sub { },State => Str, [Filters => ArrayRef[SSM_SessionFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllSessions(State => Str, [Filters => ArrayRef[L<Paws::SSM::SessionFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllSessions(State => Str, [Filters => ArrayRef[SSM_SessionFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5181,9 +5183,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::DescribeSessionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllInventory(sub { },[Aggregators => ArrayRef[L<Paws::SSM::InventoryAggregator>], Filters => ArrayRef[L<Paws::SSM::InventoryFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]])
+=head2 GetAllInventory(sub { },[Aggregators => ArrayRef[SSM_InventoryAggregator], Filters => ArrayRef[SSM_InventoryFilter], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[SSM_ResultAttribute]])
 
-=head2 GetAllInventory([Aggregators => ArrayRef[L<Paws::SSM::InventoryAggregator>], Filters => ArrayRef[L<Paws::SSM::InventoryFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]])
+=head2 GetAllInventory([Aggregators => ArrayRef[SSM_InventoryAggregator], Filters => ArrayRef[SSM_InventoryFilter], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[SSM_ResultAttribute]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5217,9 +5219,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::GetParameterHistoryResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllParametersByPath(sub { },Path => Str, [MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>], Recursive => Bool, WithDecryption => Bool])
+=head2 GetAllParametersByPath(sub { },Path => Str, [MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[SSM_ParameterStringFilter], Recursive => Bool, WithDecryption => Bool])
 
-=head2 GetAllParametersByPath(Path => Str, [MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>], Recursive => Bool, WithDecryption => Bool])
+=head2 GetAllParametersByPath(Path => Str, [MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[SSM_ParameterStringFilter], Recursive => Bool, WithDecryption => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5229,9 +5231,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::GetParametersByPathResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllAssociations(sub { },[AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllAssociations(sub { },[AssociationFilterList => ArrayRef[SSM_AssociationFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllAssociations([AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllAssociations([AssociationFilterList => ArrayRef[SSM_AssociationFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5253,9 +5255,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListAssociationVersionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllCommandInvocations(sub { },[CommandId => Str, Details => Bool, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllCommandInvocations(sub { },[CommandId => Str, Details => Bool, Filters => ArrayRef[SSM_CommandFilter], InstanceId => Str, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllCommandInvocations([CommandId => Str, Details => Bool, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllCommandInvocations([CommandId => Str, Details => Bool, Filters => ArrayRef[SSM_CommandFilter], InstanceId => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5265,9 +5267,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListCommandInvocationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllCommands(sub { },[CommandId => Str, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllCommands(sub { },[CommandId => Str, Filters => ArrayRef[SSM_CommandFilter], InstanceId => Str, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllCommands([CommandId => Str, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllCommands([CommandId => Str, Filters => ArrayRef[SSM_CommandFilter], InstanceId => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5277,9 +5279,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListCommandsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllComplianceItems(sub { },[Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceTypes => ArrayRef[Str|Undef]])
+=head2 ListAllComplianceItems(sub { },[Filters => ArrayRef[SSM_ComplianceStringFilter], MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceTypes => ArrayRef[Str|Undef]])
 
-=head2 ListAllComplianceItems([Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceTypes => ArrayRef[Str|Undef]])
+=head2 ListAllComplianceItems([Filters => ArrayRef[SSM_ComplianceStringFilter], MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceTypes => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5289,9 +5291,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListComplianceItemsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllComplianceSummaries(sub { },[Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllComplianceSummaries(sub { },[Filters => ArrayRef[SSM_ComplianceStringFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllComplianceSummaries([Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllComplianceSummaries([Filters => ArrayRef[SSM_ComplianceStringFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5301,9 +5303,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListComplianceSummariesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllDocuments(sub { },[DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllDocuments(sub { },[DocumentFilterList => ArrayRef[SSM_DocumentFilter], Filters => ArrayRef[SSM_DocumentKeyValuesFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllDocuments([DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllDocuments([DocumentFilterList => ArrayRef[SSM_DocumentFilter], Filters => ArrayRef[SSM_DocumentKeyValuesFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5325,9 +5327,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListDocumentVersionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllResourceComplianceSummaries(sub { },[Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllResourceComplianceSummaries(sub { },[Filters => ArrayRef[SSM_ComplianceStringFilter], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllResourceComplianceSummaries([Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllResourceComplianceSummaries([Filters => ArrayRef[SSM_ComplianceStringFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

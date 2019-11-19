@@ -1,18 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ACMPCA::IssueCertificate;
-  use Moose;
-  has CertificateAuthorityArn => (is => 'ro', isa => 'Str', required => 1);
-  has Csr => (is => 'ro', isa => 'Str', required => 1);
-  has IdempotencyToken => (is => 'ro', isa => 'Str');
-  has SigningAlgorithm => (is => 'ro', isa => 'Str', required => 1);
-  has TemplateArn => (is => 'ro', isa => 'Str');
-  has Validity => (is => 'ro', isa => 'Paws::ACMPCA::Validity', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACMPCA::Types qw/ACMPCA_Validity/;
+  has CertificateAuthorityArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Csr => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, predicate => 1);
+  has SigningAlgorithm => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TemplateArn => (is => 'ro', isa => Str, predicate => 1);
+  has Validity => (is => 'ro', isa => ACMPCA_Validity, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'IssueCertificate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ACMPCA::IssueCertificateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'IssueCertificate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ACMPCA::IssueCertificateResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Csr' => {
+                          'type' => 'Str'
+                        },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'TemplateArn' => {
+                                  'type' => 'Str'
+                                },
+               'Validity' => {
+                               'class' => 'Paws::ACMPCA::Validity',
+                               'type' => 'ACMPCA_Validity'
+                             },
+               'CertificateAuthorityArn' => {
+                                              'type' => 'Str'
+                                            },
+               'SigningAlgorithm' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'Validity' => 1,
+                    'Csr' => 1,
+                    'SigningAlgorithm' => 1,
+                    'CertificateAuthorityArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -145,7 +183,7 @@ For more information, see Using Templates
 
 
 
-=head2 B<REQUIRED> Validity => L<Paws::ACMPCA::Validity>
+=head2 B<REQUIRED> Validity => ACMPCA_Validity
 
 The type of the validity period.
 

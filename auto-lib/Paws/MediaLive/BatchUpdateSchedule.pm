@@ -1,16 +1,49 @@
 
 package Paws::MediaLive::BatchUpdateSchedule;
-  use Moose;
-  has ChannelId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'channelId', required => 1);
-  has Creates => (is => 'ro', isa => 'Paws::MediaLive::BatchScheduleActionCreateRequest', traits => ['NameInRequest'], request_name => 'creates');
-  has Deletes => (is => 'ro', isa => 'Paws::MediaLive::BatchScheduleActionDeleteRequest', traits => ['NameInRequest'], request_name => 'deletes');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_BatchScheduleActionDeleteRequest MediaLive_BatchScheduleActionCreateRequest/;
+  has ChannelId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Creates => (is => 'ro', isa => MediaLive_BatchScheduleActionCreateRequest, predicate => 1);
+  has Deletes => (is => 'ro', isa => MediaLive_BatchScheduleActionDeleteRequest, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchUpdateSchedule');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/channels/{channelId}/schedule');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::BatchUpdateScheduleResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchUpdateSchedule');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/channels/{channelId}/schedule');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::BatchUpdateScheduleResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ChannelId' => 'channelId'
+                  },
+  'types' => {
+               'Creates' => {
+                              'type' => 'MediaLive_BatchScheduleActionCreateRequest',
+                              'class' => 'Paws::MediaLive::BatchScheduleActionCreateRequest'
+                            },
+               'Deletes' => {
+                              'type' => 'MediaLive_BatchScheduleActionDeleteRequest',
+                              'class' => 'Paws::MediaLive::BatchScheduleActionDeleteRequest'
+                            },
+               'ChannelId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Creates' => 'creates',
+                       'Deletes' => 'deletes'
+                     },
+  'IsRequired' => {
+                    'ChannelId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -175,13 +208,13 @@ Id of the channel whose schedule is being updated.
 
 
 
-=head2 Creates => L<Paws::MediaLive::BatchScheduleActionCreateRequest>
+=head2 Creates => MediaLive_BatchScheduleActionCreateRequest
 
 Schedule actions to create in the schedule.
 
 
 
-=head2 Deletes => L<Paws::MediaLive::BatchScheduleActionDeleteRequest>
+=head2 Deletes => MediaLive_BatchScheduleActionDeleteRequest
 
 Schedule actions to delete from the schedule.
 

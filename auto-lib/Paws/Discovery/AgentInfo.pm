@@ -1,15 +1,72 @@
+# Generated from default/object.tt
 package Paws::Discovery::AgentInfo;
-  use Moose;
-  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest']);
-  has AgentNetworkInfoList => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentNetworkInfo]', request_name => 'agentNetworkInfoList', traits => ['NameInRequest']);
-  has AgentType => (is => 'ro', isa => 'Str', request_name => 'agentType', traits => ['NameInRequest']);
-  has CollectionStatus => (is => 'ro', isa => 'Str', request_name => 'collectionStatus', traits => ['NameInRequest']);
-  has ConnectorId => (is => 'ro', isa => 'Str', request_name => 'connectorId', traits => ['NameInRequest']);
-  has Health => (is => 'ro', isa => 'Str', request_name => 'health', traits => ['NameInRequest']);
-  has HostName => (is => 'ro', isa => 'Str', request_name => 'hostName', traits => ['NameInRequest']);
-  has LastHealthPingTime => (is => 'ro', isa => 'Str', request_name => 'lastHealthPingTime', traits => ['NameInRequest']);
-  has RegisteredTime => (is => 'ro', isa => 'Str', request_name => 'registeredTime', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Discovery::Types qw/Discovery_AgentNetworkInfo/;
+  has AgentId => (is => 'ro', isa => Str);
+  has AgentNetworkInfoList => (is => 'ro', isa => ArrayRef[Discovery_AgentNetworkInfo]);
+  has AgentType => (is => 'ro', isa => Str);
+  has CollectionStatus => (is => 'ro', isa => Str);
+  has ConnectorId => (is => 'ro', isa => Str);
+  has Health => (is => 'ro', isa => Str);
+  has HostName => (is => 'ro', isa => Str);
+  has LastHealthPingTime => (is => 'ro', isa => Str);
+  has RegisteredTime => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastHealthPingTime' => {
+                                         'type' => 'Str'
+                                       },
+               'AgentType' => {
+                                'type' => 'Str'
+                              },
+               'AgentId' => {
+                              'type' => 'Str'
+                            },
+               'Health' => {
+                             'type' => 'Str'
+                           },
+               'ConnectorId' => {
+                                  'type' => 'Str'
+                                },
+               'RegisteredTime' => {
+                                     'type' => 'Str'
+                                   },
+               'AgentNetworkInfoList' => {
+                                           'class' => 'Paws::Discovery::AgentNetworkInfo',
+                                           'type' => 'ArrayRef[Discovery_AgentNetworkInfo]'
+                                         },
+               'CollectionStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'HostName' => {
+                               'type' => 'Str'
+                             },
+               'Version' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Health' => 'health',
+                       'AgentId' => 'agentId',
+                       'AgentType' => 'agentType',
+                       'LastHealthPingTime' => 'lastHealthPingTime',
+                       'ConnectorId' => 'connectorId',
+                       'RegisteredTime' => 'registeredTime',
+                       'CollectionStatus' => 'collectionStatus',
+                       'AgentNetworkInfoList' => 'agentNetworkInfoList',
+                       'HostName' => 'hostName',
+                       'Version' => 'version'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +111,7 @@ version for each agent.
   The agent or connector ID.
 
 
-=head2 AgentNetworkInfoList => ArrayRef[L<Paws::Discovery::AgentNetworkInfo>]
+=head2 AgentNetworkInfoList => ArrayRef[Discovery_AgentNetworkInfo]
 
   Network details about the host where the agent or connector resides.
 

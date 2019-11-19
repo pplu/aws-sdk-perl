@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::FlinkApplicationConfigurationDescription;
-  use Moose;
-  has CheckpointConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::CheckpointConfigurationDescription');
-  has JobPlanDescription => (is => 'ro', isa => 'Str');
-  has MonitoringConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::MonitoringConfigurationDescription');
-  has ParallelismConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ParallelismConfigurationDescription');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_ParallelismConfigurationDescription KinesisAnalyticsV2_MonitoringConfigurationDescription KinesisAnalyticsV2_CheckpointConfigurationDescription/;
+  has CheckpointConfigurationDescription => (is => 'ro', isa => KinesisAnalyticsV2_CheckpointConfigurationDescription);
+  has JobPlanDescription => (is => 'ro', isa => Str);
+  has MonitoringConfigurationDescription => (is => 'ro', isa => KinesisAnalyticsV2_MonitoringConfigurationDescription);
+  has ParallelismConfigurationDescription => (is => 'ro', isa => KinesisAnalyticsV2_ParallelismConfigurationDescription);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CheckpointConfigurationDescription' => {
+                                                         'type' => 'KinesisAnalyticsV2_CheckpointConfigurationDescription',
+                                                         'class' => 'Paws::KinesisAnalyticsV2::CheckpointConfigurationDescription'
+                                                       },
+               'MonitoringConfigurationDescription' => {
+                                                         'type' => 'KinesisAnalyticsV2_MonitoringConfigurationDescription',
+                                                         'class' => 'Paws::KinesisAnalyticsV2::MonitoringConfigurationDescription'
+                                                       },
+               'ParallelismConfigurationDescription' => {
+                                                          'type' => 'KinesisAnalyticsV2_ParallelismConfigurationDescription',
+                                                          'class' => 'Paws::KinesisAnalyticsV2::ParallelismConfigurationDescription'
+                                                        },
+               'JobPlanDescription' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +69,7 @@ Analytics application.
 =head1 ATTRIBUTES
 
 
-=head2 CheckpointConfigurationDescription => L<Paws::KinesisAnalyticsV2::CheckpointConfigurationDescription>
+=head2 CheckpointConfigurationDescription => KinesisAnalyticsV2_CheckpointConfigurationDescription
 
   Describes an application's checkpointing configuration. Checkpointing
 is the process of persisting application state for fault tolerance.
@@ -58,13 +87,13 @@ DescribeApplicationRequest$IncludeAdditionalDetails parameter of the
 DescribeApplication operation.
 
 
-=head2 MonitoringConfigurationDescription => L<Paws::KinesisAnalyticsV2::MonitoringConfigurationDescription>
+=head2 MonitoringConfigurationDescription => KinesisAnalyticsV2_MonitoringConfigurationDescription
 
   Describes configuration parameters for Amazon CloudWatch logging for an
 application.
 
 
-=head2 ParallelismConfigurationDescription => L<Paws::KinesisAnalyticsV2::ParallelismConfigurationDescription>
+=head2 ParallelismConfigurationDescription => KinesisAnalyticsV2_ParallelismConfigurationDescription
 
   Describes parameters for how an application executes multiple tasks
 simultaneously.

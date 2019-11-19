@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KMS::CreateGrantResponse;
-  use Moose;
-  has GrantId => (is => 'ro', isa => 'Str');
-  has GrantToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KMS::Types qw//;
+  has GrantId => (is => 'ro', isa => Str);
+  has GrantToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'GrantToken' => {
+                                 'type' => 'Str'
+                               },
+               'GrantId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

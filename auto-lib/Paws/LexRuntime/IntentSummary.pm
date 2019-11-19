@@ -1,12 +1,60 @@
+# Generated from default/object.tt
 package Paws::LexRuntime::IntentSummary;
-  use Moose;
-  has CheckpointLabel => (is => 'ro', isa => 'Str', request_name => 'checkpointLabel', traits => ['NameInRequest']);
-  has ConfirmationStatus => (is => 'ro', isa => 'Str', request_name => 'confirmationStatus', traits => ['NameInRequest']);
-  has DialogActionType => (is => 'ro', isa => 'Str', request_name => 'dialogActionType', traits => ['NameInRequest'], required => 1);
-  has FulfillmentState => (is => 'ro', isa => 'Str', request_name => 'fulfillmentState', traits => ['NameInRequest']);
-  has IntentName => (is => 'ro', isa => 'Str', request_name => 'intentName', traits => ['NameInRequest']);
-  has Slots => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', request_name => 'slots', traits => ['NameInRequest']);
-  has SlotToElicit => (is => 'ro', isa => 'Str', request_name => 'slotToElicit', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexRuntime::Types qw/LexRuntime_StringMap/;
+  has CheckpointLabel => (is => 'ro', isa => Str);
+  has ConfirmationStatus => (is => 'ro', isa => Str);
+  has DialogActionType => (is => 'ro', isa => Str, required => 1);
+  has FulfillmentState => (is => 'ro', isa => Str);
+  has IntentName => (is => 'ro', isa => Str);
+  has Slots => (is => 'ro', isa => LexRuntime_StringMap);
+  has SlotToElicit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DialogActionType' => 'dialogActionType',
+                       'ConfirmationStatus' => 'confirmationStatus',
+                       'CheckpointLabel' => 'checkpointLabel',
+                       'FulfillmentState' => 'fulfillmentState',
+                       'IntentName' => 'intentName',
+                       'SlotToElicit' => 'slotToElicit',
+                       'Slots' => 'slots'
+                     },
+  'IsRequired' => {
+                    'DialogActionType' => 1
+                  },
+  'types' => {
+               'DialogActionType' => {
+                                       'type' => 'Str'
+                                     },
+               'CheckpointLabel' => {
+                                      'type' => 'Str'
+                                    },
+               'ConfirmationStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'FulfillmentState' => {
+                                       'type' => 'Str'
+                                     },
+               'SlotToElicit' => {
+                                   'type' => 'Str'
+                                 },
+               'Slots' => {
+                            'type' => 'LexRuntime_StringMap',
+                            'class' => 'Paws::LexRuntime::StringMap'
+                          },
+               'IntentName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -147,7 +195,7 @@ application.
   The name of the intent.
 
 
-=head2 Slots => L<Paws::LexRuntime::StringMap>
+=head2 Slots => LexRuntime_StringMap
 
   Map of the slots that have been gathered and their values.
 

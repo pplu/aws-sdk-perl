@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::TimedMetadataInsertion;
-  use Moose;
-  has Id3Insertions => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Id3Insertion]', request_name => 'id3Insertions', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_Id3Insertion/;
+  has Id3Insertions => (is => 'ro', isa => ArrayRef[MediaConvert_Id3Insertion]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id3Insertions' => {
+                                    'type' => 'ArrayRef[MediaConvert_Id3Insertion]',
+                                    'class' => 'Paws::MediaConvert::Id3Insertion'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Id3Insertions' => 'id3Insertions'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +60,7 @@ ID3 insertion (Id3Insertion) objects.
 =head1 ATTRIBUTES
 
 
-=head2 Id3Insertions => ArrayRef[L<Paws::MediaConvert::Id3Insertion>]
+=head2 Id3Insertions => ArrayRef[MediaConvert_Id3Insertion]
 
   Id3Insertions contains the array of Id3Insertion instances.
 

@@ -1,13 +1,43 @@
 
 package Paws::SESv2::GetAccountResponse;
-  use Moose;
-  has DedicatedIpAutoWarmupEnabled => (is => 'ro', isa => 'Bool');
-  has EnforcementStatus => (is => 'ro', isa => 'Str');
-  has ProductionAccessEnabled => (is => 'ro', isa => 'Bool');
-  has SendingEnabled => (is => 'ro', isa => 'Bool');
-  has SendQuota => (is => 'ro', isa => 'Paws::SESv2::SendQuota');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SESv2::Types qw/SESv2_SendQuota/;
+  has DedicatedIpAutoWarmupEnabled => (is => 'ro', isa => Bool);
+  has EnforcementStatus => (is => 'ro', isa => Str);
+  has ProductionAccessEnabled => (is => 'ro', isa => Bool);
+  has SendingEnabled => (is => 'ro', isa => Bool);
+  has SendQuota => (is => 'ro', isa => SESv2_SendQuota);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SendingEnabled' => {
+                                     'type' => 'Bool'
+                                   },
+               'EnforcementStatus' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DedicatedIpAutoWarmupEnabled' => {
+                                                   'type' => 'Bool'
+                                                 },
+               'ProductionAccessEnabled' => {
+                                              'type' => 'Bool'
+                                            },
+               'SendQuota' => {
+                                'type' => 'SESv2_SendQuota',
+                                'class' => 'Paws::SESv2::SendQuota'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +107,7 @@ Indicates whether or not email sending is enabled for your Amazon SES
 account in the current AWS Region.
 
 
-=head2 SendQuota => L<Paws::SESv2::SendQuota>
+=head2 SendQuota => SESv2_SendQuota
 
 An object that contains information about the per-day and per-second
 sending limits for your Amazon SES account in the current AWS Region.

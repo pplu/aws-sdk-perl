@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CloudFront::FieldLevelEncryption;
-  use Moose;
-  has FieldLevelEncryptionConfig => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionConfig', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_FieldLevelEncryptionConfig/;
+  has FieldLevelEncryptionConfig => (is => 'ro', isa => CloudFront_FieldLevelEncryptionConfig, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has LastModifiedTime => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'FieldLevelEncryptionConfig' => {
+                                                 'type' => 'CloudFront_FieldLevelEncryptionConfig',
+                                                 'class' => 'Paws::CloudFront::FieldLevelEncryptionConfig'
+                                               },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'LastModifiedTime' => 1,
+                    'FieldLevelEncryptionConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +68,7 @@ options specified for field-level encryption.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FieldLevelEncryptionConfig => L<Paws::CloudFront::FieldLevelEncryptionConfig>
+=head2 B<REQUIRED> FieldLevelEncryptionConfig => CloudFront_FieldLevelEncryptionConfig
 
   A complex data type that includes the profile configurations specified
 for field-level encryption.

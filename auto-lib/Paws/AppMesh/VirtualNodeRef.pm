@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::AppMesh::VirtualNodeRef;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
-  has VirtualNodeName => (is => 'ro', isa => 'Str', request_name => 'virtualNodeName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has MeshName => (is => 'ro', isa => Str, required => 1);
+  has VirtualNodeName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VirtualNodeName' => {
+                                      'type' => 'Str'
+                                    },
+               'MeshName' => {
+                               'type' => 'Str'
+                             },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'IsRequired' => {
+                    'Arn' => 1,
+                    'MeshName' => 1,
+                    'VirtualNodeName' => 1
+                  },
+  'NameInRequest' => {
+                       'VirtualNodeName' => 'virtualNodeName',
+                       'Arn' => 'arn',
+                       'MeshName' => 'meshName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

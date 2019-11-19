@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::SageMaker::UiTemplate;
-  use Moose;
-  has Content => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has Content => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Content' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'Content' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

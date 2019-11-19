@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::GetRepositoryOutput;
-  use Moose;
-  has RepositoryMetadata => (is => 'ro', isa => 'Paws::CodeCommit::RepositoryMetadata', traits => ['NameInRequest'], request_name => 'repositoryMetadata' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_RepositoryMetadata/;
+  has RepositoryMetadata => (is => 'ro', isa => CodeCommit_RepositoryMetadata);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RepositoryMetadata' => {
+                                         'type' => 'CodeCommit_RepositoryMetadata',
+                                         'class' => 'Paws::CodeCommit::RepositoryMetadata'
+                                       }
+             },
+  'NameInRequest' => {
+                       'RepositoryMetadata' => 'repositoryMetadata'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CodeCommit::GetRepositoryOutput
 =head1 ATTRIBUTES
 
 
-=head2 RepositoryMetadata => L<Paws::CodeCommit::RepositoryMetadata>
+=head2 RepositoryMetadata => CodeCommit_RepositoryMetadata
 
 Information about the repository.
 

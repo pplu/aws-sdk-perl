@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::CustomizedMetricSpecification;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::MetricDimension]');
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', required => 1);
-  has Statistic => (is => 'ro', isa => 'Str', required => 1);
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::AutoScaling::Types qw/AutoScaling_MetricDimension/;
+  has Dimensions => (is => 'ro', isa => ArrayRef[AutoScaling_MetricDimension]);
+  has MetricName => (is => 'ro', isa => Str, required => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1);
+  has Statistic => (is => 'ro', isa => Str, required => 1);
+  has Unit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Statistic' => {
+                                'type' => 'Str'
+                              },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'Dimensions' => {
+                                 'type' => 'ArrayRef[AutoScaling_MetricDimension]',
+                                 'class' => 'Paws::AutoScaling::MetricDimension'
+                               }
+             },
+  'IsRequired' => {
+                    'Statistic' => 1,
+                    'MetricName' => 1,
+                    'Namespace' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +101,7 @@ For more information about CloudWatch, see Amazon CloudWatch Concepts
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => ArrayRef[L<Paws::AutoScaling::MetricDimension>]
+=head2 Dimensions => ArrayRef[AutoScaling_MetricDimension]
 
   The dimensions of the metric.
 

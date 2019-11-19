@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Greengrass::LoggerDefinitionVersion;
-  use Moose;
-  has Loggers => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Logger]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_Logger/;
+  has Loggers => (is => 'ro', isa => ArrayRef[Greengrass_Logger]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Loggers' => {
+                              'class' => 'Paws::Greengrass::Logger',
+                              'type' => 'ArrayRef[Greengrass_Logger]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Information about a logger definition version.
 =head1 ATTRIBUTES
 
 
-=head2 Loggers => ArrayRef[L<Paws::Greengrass::Logger>]
+=head2 Loggers => ArrayRef[Greengrass_Logger]
 
   A list of loggers.
 

@@ -1,17 +1,47 @@
 
 package Paws::IoT::ListAuthorizers;
-  use Moose;
-  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'isAscendingOrder');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
-  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize');
-  has Status => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::IoT::Types qw//;
+  has AscendingOrder => (is => 'ro', isa => Bool, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAuthorizers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/authorizers/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListAuthorizersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAuthorizers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/authorizers/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListAuthorizersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'AscendingOrder' => 'isAscendingOrder',
+                      'Status' => 'status',
+                      'PageSize' => 'pageSize',
+                      'Marker' => 'marker'
+                    },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'AscendingOrder' => {
+                                     'type' => 'Bool'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,42 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::NodeGroupConfiguration;
-  use Moose;
-  has NodeGroupId => (is => 'ro', isa => 'Str');
-  has PrimaryAvailabilityZone => (is => 'ro', isa => 'Str');
-  has ReplicaAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
-  has ReplicaCount => (is => 'ro', isa => 'Int');
-  has Slots => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::ElastiCache::Types qw//;
+  has NodeGroupId => (is => 'ro', isa => Str);
+  has PrimaryAvailabilityZone => (is => 'ro', isa => Str);
+  has ReplicaAvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ReplicaCount => (is => 'ro', isa => Int);
+  has Slots => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ReplicaAvailabilityZones' => 'AvailabilityZone'
+                     },
+  'types' => {
+               'NodeGroupId' => {
+                                  'type' => 'Str'
+                                },
+               'PrimaryAvailabilityZone' => {
+                                              'type' => 'Str'
+                                            },
+               'Slots' => {
+                            'type' => 'Str'
+                          },
+               'ReplicaAvailabilityZones' => {
+                                               'type' => 'ArrayRef[Str|Undef]'
+                                             },
+               'ReplicaCount' => {
+                                   'type' => 'Int'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

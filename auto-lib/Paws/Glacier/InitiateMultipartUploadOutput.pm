@@ -1,10 +1,34 @@
 
 package Paws::Glacier::InitiateMultipartUploadOutput;
-  use Moose;
-  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location');
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-multipart-upload-id');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has Location => (is => 'ro', isa => Str);
+  has UploadId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Location' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInHeader' => {
+                       'Location' => 'Location',
+                       'UploadId' => 'x-amz-multipart-upload-id'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

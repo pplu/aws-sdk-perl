@@ -1,14 +1,35 @@
 
 package Paws::IoT::GetOTAUpdate;
-  use Moose;
-  has OtaUpdateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'otaUpdateId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has OtaUpdateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetOTAUpdate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/otaUpdates/{otaUpdateId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::GetOTAUpdateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetOTAUpdate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/otaUpdates/{otaUpdateId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::GetOTAUpdateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'OtaUpdateId' => 1
+                  },
+  'types' => {
+               'OtaUpdateId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'OtaUpdateId' => 'otaUpdateId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

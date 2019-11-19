@@ -1,28 +1,95 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::UpdateStack;
-  use Moose;
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
-  has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has StackPolicyBody => (is => 'ro', isa => 'Str');
-  has StackPolicyDuringUpdateBody => (is => 'ro', isa => 'Str');
-  has StackPolicyDuringUpdateURL => (is => 'ro', isa => 'Str');
-  has StackPolicyURL => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
-  has TemplateBody => (is => 'ro', isa => 'Str');
-  has TemplateURL => (is => 'ro', isa => 'Str');
-  has UsePreviousTemplate => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::CloudFormation::Types qw/CloudFormation_Parameter CloudFormation_RollbackConfiguration CloudFormation_Tag/;
+  has Capabilities => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationARNs => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Parameters => (is => 'ro', isa => ArrayRef[CloudFormation_Parameter], predicate => 1);
+  has ResourceTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has RoleARN => (is => 'ro', isa => Str, predicate => 1);
+  has RollbackConfiguration => (is => 'ro', isa => CloudFormation_RollbackConfiguration, predicate => 1);
+  has StackName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StackPolicyBody => (is => 'ro', isa => Str, predicate => 1);
+  has StackPolicyDuringUpdateBody => (is => 'ro', isa => Str, predicate => 1);
+  has StackPolicyDuringUpdateURL => (is => 'ro', isa => Str, predicate => 1);
+  has StackPolicyURL => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CloudFormation_Tag], predicate => 1);
+  has TemplateBody => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateURL => (is => 'ro', isa => Str, predicate => 1);
+  has UsePreviousTemplate => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStack');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::UpdateStackOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStackResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateStack');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::UpdateStackOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateStackResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StackName' => 1
+                  },
+  'types' => {
+               'StackPolicyURL' => {
+                                     'type' => 'Str'
+                                   },
+               'StackPolicyDuringUpdateURL' => {
+                                                 'type' => 'Str'
+                                               },
+               'StackName' => {
+                                'type' => 'Str'
+                              },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'TemplateURL' => {
+                                  'type' => 'Str'
+                                },
+               'UsePreviousTemplate' => {
+                                          'type' => 'Bool'
+                                        },
+               'NotificationARNs' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Parameters' => {
+                                 'class' => 'Paws::CloudFormation::Parameter',
+                                 'type' => 'ArrayRef[CloudFormation_Parameter]'
+                               },
+               'RollbackConfiguration' => {
+                                            'class' => 'Paws::CloudFormation::RollbackConfiguration',
+                                            'type' => 'CloudFormation_RollbackConfiguration'
+                                          },
+               'Tags' => {
+                           'class' => 'Paws::CloudFormation::Tag',
+                           'type' => 'ArrayRef[CloudFormation_Tag]'
+                         },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'ResourceTypes' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'StackPolicyDuringUpdateBody' => {
+                                                  'type' => 'Str'
+                                                },
+               'Capabilities' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'StackPolicyBody' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -302,7 +369,7 @@ list to remove all notification topics.
 
 
 
-=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
+=head2 Parameters => ArrayRef[CloudFormation_Parameter]
 
 A list of C<Parameter> structures that specify input parameters for the
 stack. For more information, see the Parameter
@@ -345,7 +412,7 @@ user credentials.
 
 
 
-=head2 RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>
+=head2 RollbackConfiguration => CloudFormation_RollbackConfiguration
 
 The rollback triggers for AWS CloudFormation to monitor during stack
 creation and updating operations, and for the specified monitoring
@@ -414,7 +481,7 @@ stack is unchanged.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
+=head2 Tags => ArrayRef[CloudFormation_Tag]
 
 Key-value pairs to associate with this stack. AWS CloudFormation also
 propagates these tags to supported resources in the stack. You can

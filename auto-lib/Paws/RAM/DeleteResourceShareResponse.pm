@@ -1,10 +1,34 @@
 
 package Paws::RAM::DeleteResourceShareResponse;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has ReturnValue => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'returnValue');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::RAM::Types qw//;
+  has ClientToken => (is => 'ro', isa => Str);
+  has ReturnValue => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReturnValue' => {
+                                  'type' => 'Bool'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ReturnValue' => 'returnValue',
+                       'ClientToken' => 'clientToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

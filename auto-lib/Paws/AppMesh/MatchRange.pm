@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::AppMesh::MatchRange;
-  use Moose;
-  has End => (is => 'ro', isa => 'Int', request_name => 'end', traits => ['NameInRequest'], required => 1);
-  has Start => (is => 'ro', isa => 'Int', request_name => 'start', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::AppMesh::Types qw//;
+  has End => (is => 'ro', isa => Int, required => 1);
+  has Start => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'End' => {
+                          'type' => 'Int'
+                        },
+               'Start' => {
+                            'type' => 'Int'
+                          }
+             },
+  'IsRequired' => {
+                    'Start' => 1,
+                    'End' => 1
+                  },
+  'NameInRequest' => {
+                       'End' => 'end',
+                       'Start' => 'start'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

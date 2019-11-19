@@ -1,14 +1,54 @@
 
 package Paws::IoT::DescribeScheduledAuditResponse;
-  use Moose;
-  has DayOfMonth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dayOfMonth');
-  has DayOfWeek => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dayOfWeek');
-  has Frequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'frequency');
-  has ScheduledAuditArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'scheduledAuditArn');
-  has ScheduledAuditName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'scheduledAuditName');
-  has TargetCheckNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targetCheckNames');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::IoT::Types qw//;
+  has DayOfMonth => (is => 'ro', isa => Str);
+  has DayOfWeek => (is => 'ro', isa => Str);
+  has Frequency => (is => 'ro', isa => Str);
+  has ScheduledAuditArn => (is => 'ro', isa => Str);
+  has ScheduledAuditName => (is => 'ro', isa => Str);
+  has TargetCheckNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScheduledAuditArn' => {
+                                        'type' => 'Str'
+                                      },
+               'ScheduledAuditName' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DayOfWeek' => {
+                                'type' => 'Str'
+                              },
+               'DayOfMonth' => {
+                                 'type' => 'Str'
+                               },
+               'Frequency' => {
+                                'type' => 'Str'
+                              },
+               'TargetCheckNames' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             },
+  'NameInRequest' => {
+                       'ScheduledAuditName' => 'scheduledAuditName',
+                       'ScheduledAuditArn' => 'scheduledAuditArn',
+                       'DayOfWeek' => 'dayOfWeek',
+                       'DayOfMonth' => 'dayOfMonth',
+                       'Frequency' => 'frequency',
+                       'TargetCheckNames' => 'targetCheckNames'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

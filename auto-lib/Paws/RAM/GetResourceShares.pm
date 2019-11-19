@@ -1,20 +1,66 @@
 
 package Paws::RAM::GetResourceShares;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has ResourceOwner => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceOwner', required => 1);
-  has ResourceShareArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceShareArns');
-  has ResourceShareStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceShareStatus');
-  has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::RAM::TagFilter]', traits => ['NameInRequest'], request_name => 'tagFilters');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::RAM::Types qw/RAM_TagFilter/;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceOwner => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceShareArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceShareStatus => (is => 'ro', isa => Str, predicate => 1);
+  has TagFilters => (is => 'ro', isa => ArrayRef[RAM_TagFilter], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetResourceShares');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/getresourceshares');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RAM::GetResourceSharesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetResourceShares');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/getresourceshares');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RAM::GetResourceSharesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagFilters' => {
+                                 'type' => 'ArrayRef[RAM_TagFilter]',
+                                 'class' => 'Paws::RAM::TagFilter'
+                               },
+               'ResourceShareStatus' => {
+                                          'type' => 'Str'
+                                        },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'ResourceOwner' => {
+                                    'type' => 'Str'
+                                  },
+               'ResourceShareArns' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'ResourceOwner' => 1
+                  },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'ResourceShareStatus' => 'resourceShareStatus',
+                       'MaxResults' => 'maxResults',
+                       'TagFilters' => 'tagFilters',
+                       'ResourceOwner' => 'resourceOwner',
+                       'ResourceShareArns' => 'resourceShareArns',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +146,7 @@ The status of the resource share.
 
 Valid values are: C<"PENDING">, C<"ACTIVE">, C<"FAILED">, C<"DELETING">, C<"DELETED">
 
-=head2 TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]
+=head2 TagFilters => ArrayRef[RAM_TagFilter]
 
 One or more tag filters.
 

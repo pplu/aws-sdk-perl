@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::LexModels::UtteranceData;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
-  has DistinctUsers => (is => 'ro', isa => 'Int', request_name => 'distinctUsers', traits => ['NameInRequest']);
-  has FirstUtteredDate => (is => 'ro', isa => 'Str', request_name => 'firstUtteredDate', traits => ['NameInRequest']);
-  has LastUtteredDate => (is => 'ro', isa => 'Str', request_name => 'lastUtteredDate', traits => ['NameInRequest']);
-  has UtteranceString => (is => 'ro', isa => 'Str', request_name => 'utteranceString', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::LexModels::Types qw//;
+  has Count => (is => 'ro', isa => Int);
+  has DistinctUsers => (is => 'ro', isa => Int);
+  has FirstUtteredDate => (is => 'ro', isa => Str);
+  has LastUtteredDate => (is => 'ro', isa => Str);
+  has UtteranceString => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FirstUtteredDate' => 'firstUtteredDate',
+                       'UtteranceString' => 'utteranceString',
+                       'Count' => 'count',
+                       'LastUtteredDate' => 'lastUtteredDate',
+                       'DistinctUsers' => 'distinctUsers'
+                     },
+  'types' => {
+               'LastUtteredDate' => {
+                                      'type' => 'Str'
+                                    },
+               'DistinctUsers' => {
+                                    'type' => 'Int'
+                                  },
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'FirstUtteredDate' => {
+                                       'type' => 'Str'
+                                     },
+               'UtteranceString' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

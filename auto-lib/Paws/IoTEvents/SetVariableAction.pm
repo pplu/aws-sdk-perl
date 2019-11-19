@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::SetVariableAction;
-  use Moose;
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
-  has VariableName => (is => 'ro', isa => 'Str', request_name => 'variableName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw//;
+  has Value => (is => 'ro', isa => Str, required => 1);
+  has VariableName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'VariableName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'VariableName' => 1,
+                    'Value' => 1
+                  },
+  'NameInRequest' => {
+                       'VariableName' => 'variableName',
+                       'Value' => 'value'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

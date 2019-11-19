@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorksCM::ExportServerEngineAttribute;
-  use Moose;
-  has ExportAttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has InputAttributes => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::EngineAttribute]');
-  has ServerName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::OpsWorksCM::Types qw/OpsWorksCM_EngineAttribute/;
+  has ExportAttributeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputAttributes => (is => 'ro', isa => ArrayRef[OpsWorksCM_EngineAttribute], predicate => 1);
+  has ServerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExportServerEngineAttribute');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorksCM::ExportServerEngineAttributeResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ExportServerEngineAttribute');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::OpsWorksCM::ExportServerEngineAttributeResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExportAttributeName' => {
+                                          'type' => 'Str'
+                                        },
+               'InputAttributes' => {
+                                      'class' => 'Paws::OpsWorksCM::EngineAttribute',
+                                      'type' => 'ArrayRef[OpsWorksCM_EngineAttribute]'
+                                    },
+               'ServerName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ExportAttributeName' => 1,
+                    'ServerName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +89,7 @@ parameters and values provided in the C<InputAttributes> list.
 
 
 
-=head2 InputAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
+=head2 InputAttributes => ArrayRef[OpsWorksCM_EngineAttribute]
 
 The list of engine attributes. The list type is C<EngineAttribute>. An
 C<EngineAttribute> list item is a pair that includes an attribute name

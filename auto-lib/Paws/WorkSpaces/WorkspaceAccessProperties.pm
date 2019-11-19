@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::WorkspaceAccessProperties;
-  use Moose;
-  has DeviceTypeAndroid => (is => 'ro', isa => 'Str');
-  has DeviceTypeChromeOs => (is => 'ro', isa => 'Str');
-  has DeviceTypeIos => (is => 'ro', isa => 'Str');
-  has DeviceTypeOsx => (is => 'ro', isa => 'Str');
-  has DeviceTypeWeb => (is => 'ro', isa => 'Str');
-  has DeviceTypeWindows => (is => 'ro', isa => 'Str');
-  has DeviceTypeZeroClient => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkSpaces::Types qw//;
+  has DeviceTypeAndroid => (is => 'ro', isa => Str);
+  has DeviceTypeChromeOs => (is => 'ro', isa => Str);
+  has DeviceTypeIos => (is => 'ro', isa => Str);
+  has DeviceTypeOsx => (is => 'ro', isa => Str);
+  has DeviceTypeWeb => (is => 'ro', isa => Str);
+  has DeviceTypeWindows => (is => 'ro', isa => Str);
+  has DeviceTypeZeroClient => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceTypeZeroClient' => {
+                                           'type' => 'Str'
+                                         },
+               'DeviceTypeWindows' => {
+                                        'type' => 'Str'
+                                      },
+               'DeviceTypeIos' => {
+                                    'type' => 'Str'
+                                  },
+               'DeviceTypeOsx' => {
+                                    'type' => 'Str'
+                                  },
+               'DeviceTypeWeb' => {
+                                    'type' => 'Str'
+                                  },
+               'DeviceTypeAndroid' => {
+                                        'type' => 'Str'
+                                      },
+               'DeviceTypeChromeOs' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

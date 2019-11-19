@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::Neptune::EventsMessage;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Event]', request_name => 'Event', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_Event/;
+  has Events => (is => 'ro', isa => ArrayRef[Neptune_Event]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Events' => 'Event'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Events' => {
+                             'class' => 'Paws::Neptune::Event',
+                             'type' => 'ArrayRef[Neptune_Event]'
+                           },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Neptune::EventsMessage
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[L<Paws::Neptune::Event>]
+=head2 Events => ArrayRef[Neptune_Event]
 
 A list of Event instances.
 

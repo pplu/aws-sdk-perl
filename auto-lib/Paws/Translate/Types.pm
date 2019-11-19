@@ -1,0 +1,31 @@
+package Paws::Translate::Types;
+  use Type::Library qw/-base/;
+  use Type::Utils qw/class_type/;
+
+  class_type Translate_AppliedTerminology, { class => 'Paws::Translate::AppliedTerminology' };
+  class_type Translate_DeleteTerminologyRequest, { class => 'Paws::Translate::DeleteTerminologyRequest' };
+  class_type Translate_DetectedLanguageLowConfidenceException, { class => 'Paws::Translate::DetectedLanguageLowConfidenceException' };
+  class_type Translate_EncryptionKey, { class => 'Paws::Translate::EncryptionKey' };
+  class_type Translate_GetTerminologyRequest, { class => 'Paws::Translate::GetTerminologyRequest' };
+  class_type Translate_GetTerminologyResponse, { class => 'Paws::Translate::GetTerminologyResponse' };
+  class_type Translate_ImportTerminologyRequest, { class => 'Paws::Translate::ImportTerminologyRequest' };
+  class_type Translate_ImportTerminologyResponse, { class => 'Paws::Translate::ImportTerminologyResponse' };
+  class_type Translate_InternalServerException, { class => 'Paws::Translate::InternalServerException' };
+  class_type Translate_InvalidParameterValueException, { class => 'Paws::Translate::InvalidParameterValueException' };
+  class_type Translate_InvalidRequestException, { class => 'Paws::Translate::InvalidRequestException' };
+  class_type Translate_LimitExceededException, { class => 'Paws::Translate::LimitExceededException' };
+  class_type Translate_ListTerminologiesRequest, { class => 'Paws::Translate::ListTerminologiesRequest' };
+  class_type Translate_ListTerminologiesResponse, { class => 'Paws::Translate::ListTerminologiesResponse' };
+  class_type Translate_ResourceNotFoundException, { class => 'Paws::Translate::ResourceNotFoundException' };
+  class_type Translate_ServiceUnavailableException, { class => 'Paws::Translate::ServiceUnavailableException' };
+  class_type Translate_Term, { class => 'Paws::Translate::Term' };
+  class_type Translate_TerminologyData, { class => 'Paws::Translate::TerminologyData' };
+  class_type Translate_TerminologyDataLocation, { class => 'Paws::Translate::TerminologyDataLocation' };
+  class_type Translate_TerminologyProperties, { class => 'Paws::Translate::TerminologyProperties' };
+  class_type Translate_TextSizeLimitExceededException, { class => 'Paws::Translate::TextSizeLimitExceededException' };
+  class_type Translate_TooManyRequestsException, { class => 'Paws::Translate::TooManyRequestsException' };
+  class_type Translate_TranslateTextRequest, { class => 'Paws::Translate::TranslateTextRequest' };
+  class_type Translate_TranslateTextResponse, { class => 'Paws::Translate::TranslateTextResponse' };
+  class_type Translate_UnsupportedLanguagePairException, { class => 'Paws::Translate::UnsupportedLanguagePairException' };
+
+1;

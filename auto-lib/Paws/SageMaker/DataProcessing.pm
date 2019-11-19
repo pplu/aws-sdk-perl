@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SageMaker::DataProcessing;
-  use Moose;
-  has InputFilter => (is => 'ro', isa => 'Str');
-  has JoinSource => (is => 'ro', isa => 'Str');
-  has OutputFilter => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has InputFilter => (is => 'ro', isa => Str);
+  has JoinSource => (is => 'ro', isa => Str);
+  has OutputFilter => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JoinSource' => {
+                                 'type' => 'Str'
+                               },
+               'OutputFilter' => {
+                                   'type' => 'Str'
+                                 },
+               'InputFilter' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

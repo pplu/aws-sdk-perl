@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::ModifyRecommendationDetail;
-  use Moose;
-  has TargetInstances => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::TargetInstance]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CostExplorer::Types qw/CostExplorer_TargetInstance/;
+  has TargetInstances => (is => 'ro', isa => ArrayRef[CostExplorer_TargetInstance]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetInstances' => {
+                                      'type' => 'ArrayRef[CostExplorer_TargetInstance]',
+                                      'class' => 'Paws::CostExplorer::TargetInstance'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Details on the modification recommendation.
 =head1 ATTRIBUTES
 
 
-=head2 TargetInstances => ArrayRef[L<Paws::CostExplorer::TargetInstance>]
+=head2 TargetInstances => ArrayRef[CostExplorer_TargetInstance]
 
   Identifies whether this instance type is the Amazon Web Services
 default recommendation.

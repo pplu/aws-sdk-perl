@@ -1,10 +1,42 @@
+# Generated from default/object.tt
 package Paws::S3Control::JobReport;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has Format => (is => 'ro', isa => 'Str');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has ReportScope => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::S3Control::Types qw//;
+  has Bucket => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has Format => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+  has ReportScope => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Enabled' => 1
+                  },
+  'types' => {
+               'ReportScope' => {
+                                  'type' => 'Str'
+                                },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Bucket' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,46 +1,185 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::Instance;
-  use Moose;
-  has AgentVersion => (is => 'ro', isa => 'Str');
-  has AmiId => (is => 'ro', isa => 'Str');
-  has Architecture => (is => 'ro', isa => 'Str');
-  has Arn => (is => 'ro', isa => 'Str');
-  has AutoScalingType => (is => 'ro', isa => 'Str');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::BlockDeviceMapping]');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has EbsOptimized => (is => 'ro', isa => 'Bool');
-  has Ec2InstanceId => (is => 'ro', isa => 'Str');
-  has EcsClusterArn => (is => 'ro', isa => 'Str');
-  has EcsContainerInstanceArn => (is => 'ro', isa => 'Str');
-  has ElasticIp => (is => 'ro', isa => 'Str');
-  has Hostname => (is => 'ro', isa => 'Str');
-  has InfrastructureClass => (is => 'ro', isa => 'Str');
-  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has InstanceProfileArn => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has LastServiceErrorId => (is => 'ro', isa => 'Str');
-  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Os => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
-  has PrivateDns => (is => 'ro', isa => 'Str');
-  has PrivateIp => (is => 'ro', isa => 'Str');
-  has PublicDns => (is => 'ro', isa => 'Str');
-  has PublicIp => (is => 'ro', isa => 'Str');
-  has RegisteredBy => (is => 'ro', isa => 'Str');
-  has ReportedAgentVersion => (is => 'ro', isa => 'Str');
-  has ReportedOs => (is => 'ro', isa => 'Paws::OpsWorks::ReportedOs');
-  has RootDeviceType => (is => 'ro', isa => 'Str');
-  has RootDeviceVolumeId => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SshHostDsaKeyFingerprint => (is => 'ro', isa => 'Str');
-  has SshHostRsaKeyFingerprint => (is => 'ro', isa => 'Str');
-  has SshKeyName => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has Tenancy => (is => 'ro', isa => 'Str');
-  has VirtualizationType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool Undef/;
+  use Paws::OpsWorks::Types qw/OpsWorks_ReportedOs OpsWorks_BlockDeviceMapping/;
+  has AgentVersion => (is => 'ro', isa => Str);
+  has AmiId => (is => 'ro', isa => Str);
+  has Architecture => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has AutoScalingType => (is => 'ro', isa => Str);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[OpsWorks_BlockDeviceMapping]);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has EbsOptimized => (is => 'ro', isa => Bool);
+  has Ec2InstanceId => (is => 'ro', isa => Str);
+  has EcsClusterArn => (is => 'ro', isa => Str);
+  has EcsContainerInstanceArn => (is => 'ro', isa => Str);
+  has ElasticIp => (is => 'ro', isa => Str);
+  has Hostname => (is => 'ro', isa => Str);
+  has InfrastructureClass => (is => 'ro', isa => Str);
+  has InstallUpdatesOnBoot => (is => 'ro', isa => Bool);
+  has InstanceId => (is => 'ro', isa => Str);
+  has InstanceProfileArn => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has LastServiceErrorId => (is => 'ro', isa => Str);
+  has LayerIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Os => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has PrivateDns => (is => 'ro', isa => Str);
+  has PrivateIp => (is => 'ro', isa => Str);
+  has PublicDns => (is => 'ro', isa => Str);
+  has PublicIp => (is => 'ro', isa => Str);
+  has RegisteredBy => (is => 'ro', isa => Str);
+  has ReportedAgentVersion => (is => 'ro', isa => Str);
+  has ReportedOs => (is => 'ro', isa => OpsWorks_ReportedOs);
+  has RootDeviceType => (is => 'ro', isa => Str);
+  has RootDeviceVolumeId => (is => 'ro', isa => Str);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SshHostDsaKeyFingerprint => (is => 'ro', isa => Str);
+  has SshHostRsaKeyFingerprint => (is => 'ro', isa => Str);
+  has SshKeyName => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has Tenancy => (is => 'ro', isa => Str);
+  has VirtualizationType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'PublicDns' => {
+                                'type' => 'Str'
+                              },
+               'EcsContainerInstanceArn' => {
+                                              'type' => 'Str'
+                                            },
+               'Tenancy' => {
+                              'type' => 'Str'
+                            },
+               'ElasticIp' => {
+                                'type' => 'Str'
+                              },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'ReportedOs' => {
+                                 'type' => 'OpsWorks_ReportedOs',
+                                 'class' => 'Paws::OpsWorks::ReportedOs'
+                               },
+               'Os' => {
+                         'type' => 'Str'
+                       },
+               'AmiId' => {
+                            'type' => 'Str'
+                          },
+               'ReportedAgentVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'SshHostDsaKeyFingerprint' => {
+                                               'type' => 'Str'
+                                             },
+               'InstanceProfileArn' => {
+                                         'type' => 'Str'
+                                       },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'LastServiceErrorId' => {
+                                         'type' => 'Str'
+                                       },
+               'PublicIp' => {
+                               'type' => 'Str'
+                             },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 },
+               'SshKeyName' => {
+                                 'type' => 'Str'
+                               },
+               'EcsClusterArn' => {
+                                    'type' => 'Str'
+                                  },
+               'RootDeviceType' => {
+                                     'type' => 'Str'
+                                   },
+               'LayerIds' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Ec2InstanceId' => {
+                                    'type' => 'Str'
+                                  },
+               'PrivateIp' => {
+                                'type' => 'Str'
+                              },
+               'SshHostRsaKeyFingerprint' => {
+                                               'type' => 'Str'
+                                             },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'VirtualizationType' => {
+                                         'type' => 'Str'
+                                       },
+               'BlockDeviceMappings' => {
+                                          'class' => 'Paws::OpsWorks::BlockDeviceMapping',
+                                          'type' => 'ArrayRef[OpsWorks_BlockDeviceMapping]'
+                                        },
+               'PrivateDns' => {
+                                 'type' => 'Str'
+                               },
+               'RegisteredBy' => {
+                                   'type' => 'Str'
+                                 },
+               'Hostname' => {
+                               'type' => 'Str'
+                             },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 },
+               'RootDeviceVolumeId' => {
+                                         'type' => 'Str'
+                                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'AutoScalingType' => {
+                                      'type' => 'Str'
+                                    },
+               'AgentVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'InstallUpdatesOnBoot' => {
+                                           'type' => 'Bool'
+                                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'InfrastructureClass' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -111,7 +250,7 @@ information, see Instances
 Endpoints (https://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>]
+=head2 BlockDeviceMappings => ArrayRef[OpsWorks_BlockDeviceMapping]
 
   An array of C<BlockDeviceMapping> objects that specify the instance's
 block device mappings.
@@ -240,7 +379,7 @@ DescribeServiceErrors.
   The instance's reported AWS OpsWorks Stacks agent version.
 
 
-=head2 ReportedOs => L<Paws::OpsWorks::ReportedOs>
+=head2 ReportedOs => OpsWorks_ReportedOs
 
   For registered instances, the reported operating system.
 

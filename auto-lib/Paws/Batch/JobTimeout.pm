@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Batch::JobTimeout;
-  use Moose;
-  has AttemptDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'attemptDurationSeconds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Batch::Types qw//;
+  has AttemptDurationSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttemptDurationSeconds' => {
+                                             'type' => 'Int'
+                                           }
+             },
+  'NameInRequest' => {
+                       'AttemptDurationSeconds' => 'attemptDurationSeconds'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

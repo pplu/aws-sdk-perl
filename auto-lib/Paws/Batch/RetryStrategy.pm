@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Batch::RetryStrategy;
-  use Moose;
-  has Attempts => (is => 'ro', isa => 'Int', request_name => 'attempts', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Batch::Types qw//;
+  has Attempts => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attempts' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'Attempts' => 'attempts'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

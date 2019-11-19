@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::RollbackConfiguration;
-  use Moose;
-  has MonitoringTimeInMinutes => (is => 'ro', isa => 'Int', request_name => 'monitoringTimeInMinutes', traits => ['NameInRequest']);
-  has RollbackTriggers => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::RollbackTrigger]', request_name => 'rollbackTriggers', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int ArrayRef/;
+  use Paws::ServerlessRepo::Types qw/ServerlessRepo_RollbackTrigger/;
+  has MonitoringTimeInMinutes => (is => 'ro', isa => Int);
+  has RollbackTriggers => (is => 'ro', isa => ArrayRef[ServerlessRepo_RollbackTrigger]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RollbackTriggers' => {
+                                       'type' => 'ArrayRef[ServerlessRepo_RollbackTrigger]',
+                                       'class' => 'Paws::ServerlessRepo::RollbackTrigger'
+                                     },
+               'MonitoringTimeInMinutes' => {
+                                              'type' => 'Int'
+                                            }
+             },
+  'NameInRequest' => {
+                       'RollbackTriggers' => 'rollbackTriggers',
+                       'MonitoringTimeInMinutes' => 'monitoringTimeInMinutes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +73,7 @@ CloudFormation RollbackConfiguration
 > Data Type.
 
 
-=head2 RollbackTriggers => ArrayRef[L<Paws::ServerlessRepo::RollbackTrigger>]
+=head2 RollbackTriggers => ArrayRef[ServerlessRepo_RollbackTrigger]
 
   This property corresponds to the content of the same name for the I<AWS
 CloudFormation RollbackConfiguration

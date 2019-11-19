@@ -1,21 +1,75 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudTrail::UpdateTrailResponse;
-  use Moose;
-  has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str');
-  has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
-  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
-  has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
-  has IsOrganizationTrail => (is => 'ro', isa => 'Bool');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LogFileValidationEnabled => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
-  has S3BucketName => (is => 'ro', isa => 'Str');
-  has S3KeyPrefix => (is => 'ro', isa => 'Str');
-  has SnsTopicARN => (is => 'ro', isa => 'Str');
-  has SnsTopicName => (is => 'ro', isa => 'Str');
-  has TrailARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudTrail::Types qw//;
+  has CloudWatchLogsLogGroupArn => (is => 'ro', isa => Str);
+  has CloudWatchLogsRoleArn => (is => 'ro', isa => Str);
+  has IncludeGlobalServiceEvents => (is => 'ro', isa => Bool);
+  has IsMultiRegionTrail => (is => 'ro', isa => Bool);
+  has IsOrganizationTrail => (is => 'ro', isa => Bool);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LogFileValidationEnabled => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str);
+  has S3BucketName => (is => 'ro', isa => Str);
+  has S3KeyPrefix => (is => 'ro', isa => Str);
+  has SnsTopicARN => (is => 'ro', isa => Str);
+  has SnsTopicName => (is => 'ro', isa => Str);
+  has TrailARN => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'SnsTopicName' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SnsTopicARN' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'S3KeyPrefix' => {
+                                  'type' => 'Str'
+                                },
+               'CloudWatchLogsLogGroupArn' => {
+                                                'type' => 'Str'
+                                              },
+               'IncludeGlobalServiceEvents' => {
+                                                 'type' => 'Bool'
+                                               },
+               'LogFileValidationEnabled' => {
+                                               'type' => 'Bool'
+                                             },
+               'IsMultiRegionTrail' => {
+                                         'type' => 'Bool'
+                                       },
+               'IsOrganizationTrail' => {
+                                          'type' => 'Bool'
+                                        },
+               'TrailARN' => {
+                               'type' => 'Str'
+                             },
+               'CloudWatchLogsRoleArn' => {
+                                            'type' => 'Str'
+                                          },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

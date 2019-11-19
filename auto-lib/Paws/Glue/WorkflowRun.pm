@@ -1,13 +1,54 @@
+# Generated from default/object.tt
 package Paws::Glue::WorkflowRun;
-  use Moose;
-  has CompletedOn => (is => 'ro', isa => 'Str');
-  has Graph => (is => 'ro', isa => 'Paws::Glue::WorkflowGraph');
-  has Name => (is => 'ro', isa => 'Str');
-  has StartedOn => (is => 'ro', isa => 'Str');
-  has Statistics => (is => 'ro', isa => 'Paws::Glue::WorkflowRunStatistics');
-  has Status => (is => 'ro', isa => 'Str');
-  has WorkflowRunId => (is => 'ro', isa => 'Str');
-  has WorkflowRunProperties => (is => 'ro', isa => 'Paws::Glue::WorkflowRunProperties');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_WorkflowRunStatistics Glue_WorkflowRunProperties Glue_WorkflowGraph/;
+  has CompletedOn => (is => 'ro', isa => Str);
+  has Graph => (is => 'ro', isa => Glue_WorkflowGraph);
+  has Name => (is => 'ro', isa => Str);
+  has StartedOn => (is => 'ro', isa => Str);
+  has Statistics => (is => 'ro', isa => Glue_WorkflowRunStatistics);
+  has Status => (is => 'ro', isa => Str);
+  has WorkflowRunId => (is => 'ro', isa => Str);
+  has WorkflowRunProperties => (is => 'ro', isa => Glue_WorkflowRunProperties);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Graph' => {
+                            'class' => 'Paws::Glue::WorkflowGraph',
+                            'type' => 'Glue_WorkflowGraph'
+                          },
+               'StartedOn' => {
+                                'type' => 'Str'
+                              },
+               'WorkflowRunProperties' => {
+                                            'class' => 'Paws::Glue::WorkflowRunProperties',
+                                            'type' => 'Glue_WorkflowRunProperties'
+                                          },
+               'WorkflowRunId' => {
+                                    'type' => 'Str'
+                                  },
+               'Statistics' => {
+                                 'class' => 'Paws::Glue::WorkflowRunStatistics',
+                                 'type' => 'Glue_WorkflowRunStatistics'
+                               },
+               'CompletedOn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +90,7 @@ information.
   The date and time when the workflow run completed.
 
 
-=head2 Graph => L<Paws::Glue::WorkflowGraph>
+=head2 Graph => Glue_WorkflowGraph
 
   The graph representing all the AWS Glue components that belong to the
 workflow as nodes and directed connections between them as edges.
@@ -65,7 +106,7 @@ workflow as nodes and directed connections between them as edges.
   The date and time when the workflow run was started.
 
 
-=head2 Statistics => L<Paws::Glue::WorkflowRunStatistics>
+=head2 Statistics => Glue_WorkflowRunStatistics
 
   The statistics of the run.
 
@@ -80,7 +121,7 @@ workflow as nodes and directed connections between them as edges.
   The ID of this workflow run.
 
 
-=head2 WorkflowRunProperties => L<Paws::Glue::WorkflowRunProperties>
+=head2 WorkflowRunProperties => Glue_WorkflowRunProperties
 
   The workflow run properties which were set during the run.
 

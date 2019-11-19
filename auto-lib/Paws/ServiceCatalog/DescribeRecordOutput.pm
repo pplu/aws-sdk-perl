@@ -1,11 +1,37 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceCatalog::DescribeRecordOutput;
-  use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str');
-  has RecordDetail => (is => 'ro', isa => 'Paws::ServiceCatalog::RecordDetail');
-  has RecordOutputs => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::RecordOutput]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_RecordDetail ServiceCatalog_RecordOutput/;
+  has NextPageToken => (is => 'ro', isa => Str);
+  has RecordDetail => (is => 'ro', isa => ServiceCatalog_RecordDetail);
+  has RecordOutputs => (is => 'ro', isa => ArrayRef[ServiceCatalog_RecordOutput]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RecordOutputs' => {
+                                    'type' => 'ArrayRef[ServiceCatalog_RecordOutput]',
+                                    'class' => 'Paws::ServiceCatalog::RecordOutput'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RecordDetail' => {
+                                   'type' => 'ServiceCatalog_RecordDetail',
+                                   'class' => 'Paws::ServiceCatalog::RecordDetail'
+                                 },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,12 +48,12 @@ The page token to use to retrieve the next set of results. If there are
 no additional results, this value is null.
 
 
-=head2 RecordDetail => L<Paws::ServiceCatalog::RecordDetail>
+=head2 RecordDetail => ServiceCatalog_RecordDetail
 
 Information about the product.
 
 
-=head2 RecordOutputs => ArrayRef[L<Paws::ServiceCatalog::RecordOutput>]
+=head2 RecordOutputs => ArrayRef[ServiceCatalog_RecordOutput]
 
 Information about the product created as the result of a request. For
 example, the output for a CloudFormation-backed product that creates an

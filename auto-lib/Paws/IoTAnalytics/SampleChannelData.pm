@@ -1,17 +1,52 @@
 
 package Paws::IoTAnalytics::SampleChannelData;
-  use Moose;
-  has ChannelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'channelName', required => 1);
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'endTime');
-  has MaxMessages => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxMessages');
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'startTime');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTAnalytics::Types qw//;
+  has ChannelName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has MaxMessages => (is => 'ro', isa => Int, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SampleChannelData');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/channels/{channelName}/sample');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTAnalytics::SampleChannelDataResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SampleChannelData');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/channels/{channelName}/sample');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTAnalytics::SampleChannelDataResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'EndTime' => 'endTime',
+                      'StartTime' => 'startTime',
+                      'MaxMessages' => 'maxMessages'
+                    },
+  'IsRequired' => {
+                    'ChannelName' => 1
+                  },
+  'types' => {
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'ChannelName' => {
+                                  'type' => 'Str'
+                                },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'MaxMessages' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'ParamInURI' => {
+                    'ChannelName' => 'channelName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

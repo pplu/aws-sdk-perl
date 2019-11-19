@@ -1,8 +1,44 @@
+# Generated from default/object.tt
 package Paws::GroundStation::AntennaDownlinkDemodDecodeConfig;
-  use Moose;
-  has DecodeConfig => (is => 'ro', isa => 'Paws::GroundStation::DecodeConfig', request_name => 'decodeConfig', traits => ['NameInRequest'], required => 1);
-  has DemodulationConfig => (is => 'ro', isa => 'Paws::GroundStation::DemodulationConfig', request_name => 'demodulationConfig', traits => ['NameInRequest'], required => 1);
-  has SpectrumConfig => (is => 'ro', isa => 'Paws::GroundStation::SpectrumConfig', request_name => 'spectrumConfig', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::GroundStation::Types qw/GroundStation_SpectrumConfig GroundStation_DemodulationConfig GroundStation_DecodeConfig/;
+  has DecodeConfig => (is => 'ro', isa => GroundStation_DecodeConfig, required => 1);
+  has DemodulationConfig => (is => 'ro', isa => GroundStation_DemodulationConfig, required => 1);
+  has SpectrumConfig => (is => 'ro', isa => GroundStation_SpectrumConfig, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DecodeConfig' => {
+                                   'type' => 'GroundStation_DecodeConfig',
+                                   'class' => 'Paws::GroundStation::DecodeConfig'
+                                 },
+               'DemodulationConfig' => {
+                                         'class' => 'Paws::GroundStation::DemodulationConfig',
+                                         'type' => 'GroundStation_DemodulationConfig'
+                                       },
+               'SpectrumConfig' => {
+                                     'class' => 'Paws::GroundStation::SpectrumConfig',
+                                     'type' => 'GroundStation_SpectrumConfig'
+                                   }
+             },
+  'NameInRequest' => {
+                       'DemodulationConfig' => 'demodulationConfig',
+                       'DecodeConfig' => 'decodeConfig',
+                       'SpectrumConfig' => 'spectrumConfig'
+                     },
+  'IsRequired' => {
+                    'DemodulationConfig' => 1,
+                    'DecodeConfig' => 1,
+                    'SpectrumConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,17 +75,17 @@ downlink demod decode during a contact.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DecodeConfig => L<Paws::GroundStation::DecodeConfig>
+=head2 B<REQUIRED> DecodeConfig => GroundStation_DecodeConfig
 
   Information about the decode C<Config>.
 
 
-=head2 B<REQUIRED> DemodulationConfig => L<Paws::GroundStation::DemodulationConfig>
+=head2 B<REQUIRED> DemodulationConfig => GroundStation_DemodulationConfig
 
   Information about the demodulation C<Config>.
 
 
-=head2 B<REQUIRED> SpectrumConfig => L<Paws::GroundStation::SpectrumConfig>
+=head2 B<REQUIRED> SpectrumConfig => GroundStation_SpectrumConfig
 
   Information about the spectral C<Config>.
 

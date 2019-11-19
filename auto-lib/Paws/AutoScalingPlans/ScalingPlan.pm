@@ -1,13 +1,60 @@
+# Generated from default/object.tt
 package Paws::AutoScalingPlans::ScalingPlan;
-  use Moose;
-  has ApplicationSource => (is => 'ro', isa => 'Paws::AutoScalingPlans::ApplicationSource', required => 1);
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has ScalingInstructions => (is => 'ro', isa => 'ArrayRef[Paws::AutoScalingPlans::ScalingInstruction]', required => 1);
-  has ScalingPlanName => (is => 'ro', isa => 'Str', required => 1);
-  has ScalingPlanVersion => (is => 'ro', isa => 'Int', required => 1);
-  has StatusCode => (is => 'ro', isa => 'Str', required => 1);
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has StatusStartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::AutoScalingPlans::Types qw/AutoScalingPlans_ApplicationSource AutoScalingPlans_ScalingInstruction/;
+  has ApplicationSource => (is => 'ro', isa => AutoScalingPlans_ApplicationSource, required => 1);
+  has CreationTime => (is => 'ro', isa => Str);
+  has ScalingInstructions => (is => 'ro', isa => ArrayRef[AutoScalingPlans_ScalingInstruction], required => 1);
+  has ScalingPlanName => (is => 'ro', isa => Str, required => 1);
+  has ScalingPlanVersion => (is => 'ro', isa => Int, required => 1);
+  has StatusCode => (is => 'ro', isa => Str, required => 1);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has StatusStartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ScalingPlanName' => 1,
+                    'StatusCode' => 1,
+                    'ScalingPlanVersion' => 1,
+                    'ScalingInstructions' => 1,
+                    'ApplicationSource' => 1
+                  },
+  'types' => {
+               'ApplicationSource' => {
+                                        'type' => 'AutoScalingPlans_ApplicationSource',
+                                        'class' => 'Paws::AutoScalingPlans::ApplicationSource'
+                                      },
+               'ScalingInstructions' => {
+                                          'class' => 'Paws::AutoScalingPlans::ScalingInstruction',
+                                          'type' => 'ArrayRef[AutoScalingPlans_ScalingInstruction]'
+                                        },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'ScalingPlanVersion' => {
+                                         'type' => 'Int'
+                                       },
+               'StatusStartTime' => {
+                                      'type' => 'Str'
+                                    },
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'ScalingPlanName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +90,7 @@ Represents a scaling plan.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ApplicationSource => L<Paws::AutoScalingPlans::ApplicationSource>
+=head2 B<REQUIRED> ApplicationSource => AutoScalingPlans_ApplicationSource
 
   The application source.
 
@@ -53,7 +100,7 @@ Represents a scaling plan.
   The Unix time stamp when the scaling plan was created.
 
 
-=head2 B<REQUIRED> ScalingInstructions => ArrayRef[L<Paws::AutoScalingPlans::ScalingInstruction>]
+=head2 B<REQUIRED> ScalingInstructions => ArrayRef[AutoScalingPlans_ScalingInstruction]
 
   The scaling instructions.
 

@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::CreateBGPPeer;
-  use Moose;
-  has NewBGPPeer => (is => 'ro', isa => 'Paws::DirectConnect::NewBGPPeer', traits => ['NameInRequest'], request_name => 'newBGPPeer' );
-  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw/DirectConnect_NewBGPPeer/;
+  has NewBGPPeer => (is => 'ro', isa => DirectConnect_NewBGPPeer, predicate => 1);
+  has VirtualInterfaceId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBGPPeer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::CreateBGPPeerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBGPPeer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::CreateBGPPeerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'VirtualInterfaceId' => 'virtualInterfaceId',
+                       'NewBGPPeer' => 'newBGPPeer'
+                     },
+  'types' => {
+               'VirtualInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'NewBGPPeer' => {
+                                 'type' => 'DirectConnect_NewBGPPeer',
+                                 'class' => 'Paws::DirectConnect::NewBGPPeer'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +74,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 =head1 ATTRIBUTES
 
 
-=head2 NewBGPPeer => L<Paws::DirectConnect::NewBGPPeer>
+=head2 NewBGPPeer => DirectConnect_NewBGPPeer
 
 Information about the BGP peer.
 

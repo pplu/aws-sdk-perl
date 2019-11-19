@@ -1,11 +1,39 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListPoliciesGrantingServiceAccessResponse;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
-  has PoliciesGrantingServiceAccess => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ListPoliciesGrantingServiceAccessEntry]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::IAM::Types qw/IAM_ListPoliciesGrantingServiceAccessEntry/;
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
+  has PoliciesGrantingServiceAccess => (is => 'ro', isa => ArrayRef[IAM_ListPoliciesGrantingServiceAccessEntry], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PoliciesGrantingServiceAccess' => 1
+                  },
+  'types' => {
+               'PoliciesGrantingServiceAccess' => {
+                                                    'type' => 'ArrayRef[IAM_ListPoliciesGrantingServiceAccessEntry]',
+                                                    'class' => 'Paws::IAM::ListPoliciesGrantingServiceAccessEntry'
+                                                  },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -33,7 +61,7 @@ the value to use for the C<Marker> parameter in a subsequent pagination
 request.
 
 
-=head2 B<REQUIRED> PoliciesGrantingServiceAccess => ArrayRef[L<Paws::IAM::ListPoliciesGrantingServiceAccessEntry>]
+=head2 B<REQUIRED> PoliciesGrantingServiceAccess => ArrayRef[IAM_ListPoliciesGrantingServiceAccessEntry]
 
 A C<ListPoliciesGrantingServiceAccess> object that contains details
 about the permissions policies attached to the specified identity

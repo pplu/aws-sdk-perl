@@ -1,20 +1,58 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::DescribeDBClusterSnapshots;
-  use Moose;
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
-  has IncludePublic => (is => 'ro', isa => 'Bool');
-  has IncludeShared => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has SnapshotType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool Int/;
+  use Paws::RDS::Types qw/RDS_Filter/;
+  has DBClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has DBClusterSnapshotIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[RDS_Filter], predicate => 1);
+  has IncludePublic => (is => 'ro', isa => Bool, predicate => 1);
+  has IncludeShared => (is => 'ro', isa => Bool, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has SnapshotType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterSnapshots');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterSnapshotMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterSnapshotsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDBClusterSnapshots');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DBClusterSnapshotMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeDBClusterSnapshotsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'SnapshotType' => {
+                                   'type' => 'Str'
+                                 },
+               'IncludeShared' => {
+                                    'type' => 'Bool'
+                                  },
+               'DBClusterSnapshotIdentifier' => {
+                                                  'type' => 'Str'
+                                                },
+               'Filters' => {
+                              'class' => 'Paws::RDS::Filter',
+                              'type' => 'ArrayRef[RDS_Filter]'
+                            },
+               'IncludePublic' => {
+                                    'type' => 'Bool'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +132,7 @@ parameter must also be specified.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
+=head2 Filters => ArrayRef[RDS_Filter]
 
 A filter that specifies one or more DB cluster snapshots to describe.
 

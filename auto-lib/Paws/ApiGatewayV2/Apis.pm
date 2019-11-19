@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::Apis;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::Api]', request_name => 'items', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_Api/;
+  has Items => (is => 'ro', isa => ArrayRef[ApiGatewayV2_Api]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Items' => {
+                            'class' => 'Paws::ApiGatewayV2::Api',
+                            'type' => 'ArrayRef[ApiGatewayV2_Api]'
+                          }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Items' => 'items'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Represents a collection of APIs.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::ApiGatewayV2::Api>]
+=head2 Items => ArrayRef[ApiGatewayV2_Api]
 
   The elements from this collection.
 

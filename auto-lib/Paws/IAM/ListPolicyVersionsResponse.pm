@@ -1,11 +1,36 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListPolicyVersionsResponse;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
-  has Versions => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyVersion]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::IAM::Types qw/IAM_PolicyVersion/;
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
+  has Versions => (is => 'ro', isa => ArrayRef[IAM_PolicyVersion]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Versions' => {
+                               'type' => 'ArrayRef[IAM_PolicyVersion]',
+                               'class' => 'Paws::IAM::PolicyVersion'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +60,7 @@ the value to use for the C<Marker> parameter in a subsequent pagination
 request.
 
 
-=head2 Versions => ArrayRef[L<Paws::IAM::PolicyVersion>]
+=head2 Versions => ArrayRef[IAM_PolicyVersion]
 
 A list of policy versions.
 

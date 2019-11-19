@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudHSM::GetConfig;
-  use Moose;
-  has ClientArn => (is => 'ro', isa => 'Str', required => 1);
-  has ClientVersion => (is => 'ro', isa => 'Str', required => 1);
-  has HapgList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::CloudHSM::Types qw//;
+  has ClientArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has HapgList => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetConfig');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::GetConfigResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetConfig');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudHSM::GetConfigResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'HapgList' => 1,
+                    'ClientArn' => 1,
+                    'ClientVersion' => 1
+                  },
+  'types' => {
+               'ClientVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'HapgList' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'ClientArn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

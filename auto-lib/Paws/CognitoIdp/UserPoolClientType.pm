@@ -1,24 +1,96 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::UserPoolClientType;
-  use Moose;
-  has AllowedOAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AllowedOAuthFlowsUserPoolClient => (is => 'ro', isa => 'Bool');
-  has AllowedOAuthScopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AnalyticsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsConfigurationType');
-  has CallbackURLs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ClientId => (is => 'ro', isa => 'Str');
-  has ClientName => (is => 'ro', isa => 'Str');
-  has ClientSecret => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has DefaultRedirectURI => (is => 'ro', isa => 'Str');
-  has ExplicitAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has LogoutURLs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PreventUserExistenceErrors => (is => 'ro', isa => 'Str');
-  has ReadAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RefreshTokenValidity => (is => 'ro', isa => 'Int');
-  has SupportedIdentityProviders => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has UserPoolId => (is => 'ro', isa => 'Str');
-  has WriteAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Bool Int/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AnalyticsConfigurationType/;
+  has AllowedOAuthFlows => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has AllowedOAuthFlowsUserPoolClient => (is => 'ro', isa => Bool);
+  has AllowedOAuthScopes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has AnalyticsConfiguration => (is => 'ro', isa => CognitoIdp_AnalyticsConfigurationType);
+  has CallbackURLs => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ClientId => (is => 'ro', isa => Str);
+  has ClientName => (is => 'ro', isa => Str);
+  has ClientSecret => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has DefaultRedirectURI => (is => 'ro', isa => Str);
+  has ExplicitAuthFlows => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has LogoutURLs => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has PreventUserExistenceErrors => (is => 'ro', isa => Str);
+  has ReadAttributes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RefreshTokenValidity => (is => 'ro', isa => Int);
+  has SupportedIdentityProviders => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has UserPoolId => (is => 'ro', isa => Str);
+  has WriteAttributes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReadAttributes' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'AllowedOAuthScopes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'DefaultRedirectURI' => {
+                                         'type' => 'Str'
+                                       },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'AllowedOAuthFlowsUserPoolClient' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'ClientSecret' => {
+                                   'type' => 'Str'
+                                 },
+               'PreventUserExistenceErrors' => {
+                                                 'type' => 'Str'
+                                               },
+               'AnalyticsConfiguration' => {
+                                             'type' => 'CognitoIdp_AnalyticsConfigurationType',
+                                             'class' => 'Paws::CognitoIdp::AnalyticsConfigurationType'
+                                           },
+               'SupportedIdentityProviders' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'CallbackURLs' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'ClientName' => {
+                                 'type' => 'Str'
+                               },
+               'AllowedOAuthFlows' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'RefreshTokenValidity' => {
+                                           'type' => 'Int'
+                                         },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'LogoutURLs' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'ExplicitAuthFlows' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'WriteAttributes' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +150,7 @@ these values, custom scopes created in Resource Servers are also
 supported.
 
 
-=head2 AnalyticsConfiguration => L<Paws::CognitoIdp::AnalyticsConfigurationType>
+=head2 AnalyticsConfiguration => CognitoIdp_AnalyticsConfigurationType
 
   The Amazon Pinpoint analytics configuration for the user pool client.
 

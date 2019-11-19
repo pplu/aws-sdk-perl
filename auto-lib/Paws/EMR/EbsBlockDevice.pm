@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::EMR::EbsBlockDevice;
-  use Moose;
-  has Device => (is => 'ro', isa => 'Str');
-  has VolumeSpecification => (is => 'ro', isa => 'Paws::EMR::VolumeSpecification');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_VolumeSpecification/;
+  has Device => (is => 'ro', isa => Str);
+  has VolumeSpecification => (is => 'ro', isa => EMR_VolumeSpecification);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeSpecification' => {
+                                          'type' => 'EMR_VolumeSpecification',
+                                          'class' => 'Paws::EMR::VolumeSpecification'
+                                        },
+               'Device' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ instance group.
   The device name that is exposed to the instance, such as /dev/sdh.
 
 
-=head2 VolumeSpecification => L<Paws::EMR::VolumeSpecification>
+=head2 VolumeSpecification => EMR_VolumeSpecification
 
   EBS volume specifications such as volume type, IOPS, and size (GiB)
 that will be requested for the EBS volume attached to an EC2 instance

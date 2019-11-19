@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::AppSync::DynamodbDataSourceConfig;
-  use Moose;
-  has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest'], required => 1);
-  has TableName => (is => 'ro', isa => 'Str', request_name => 'tableName', traits => ['NameInRequest'], required => 1);
-  has UseCallerCredentials => (is => 'ro', isa => 'Bool', request_name => 'useCallerCredentials', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::AppSync::Types qw//;
+  has AwsRegion => (is => 'ro', isa => Str, required => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1);
+  has UseCallerCredentials => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UseCallerCredentials' => {
+                                           'type' => 'Bool'
+                                         },
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'TableName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'TableName' => 1,
+                    'AwsRegion' => 1
+                  },
+  'NameInRequest' => {
+                       'UseCallerCredentials' => 'useCallerCredentials',
+                       'AwsRegion' => 'awsRegion',
+                       'TableName' => 'tableName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

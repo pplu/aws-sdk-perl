@@ -1,26 +1,133 @@
+# Generated from default/object.tt
 package Paws::Batch::ContainerDetail;
-  use Moose;
-  has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
-  has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
-  has Environment => (is => 'ro', isa => 'ArrayRef[Paws::Batch::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
-  has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
-  has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has JobRoleArn => (is => 'ro', isa => 'Str', request_name => 'jobRoleArn', traits => ['NameInRequest']);
-  has LinuxParameters => (is => 'ro', isa => 'Paws::Batch::LinuxParameters', request_name => 'linuxParameters', traits => ['NameInRequest']);
-  has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
-  has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
-  has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::Batch::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
-  has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
-  has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
-  has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
-  has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
-  has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
-  has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
-  has Vcpus => (is => 'ro', isa => 'Int', request_name => 'vcpus', traits => ['NameInRequest']);
-  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Volume]', request_name => 'volumes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str Int Bool/;
+  use Paws::Batch::Types qw/Batch_Volume Batch_ResourceRequirement Batch_KeyValuePair Batch_Ulimit Batch_LinuxParameters Batch_NetworkInterface Batch_MountPoint/;
+  has Command => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ContainerInstanceArn => (is => 'ro', isa => Str);
+  has Environment => (is => 'ro', isa => ArrayRef[Batch_KeyValuePair]);
+  has ExitCode => (is => 'ro', isa => Int);
+  has Image => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has JobRoleArn => (is => 'ro', isa => Str);
+  has LinuxParameters => (is => 'ro', isa => Batch_LinuxParameters);
+  has LogStreamName => (is => 'ro', isa => Str);
+  has Memory => (is => 'ro', isa => Int);
+  has MountPoints => (is => 'ro', isa => ArrayRef[Batch_MountPoint]);
+  has NetworkInterfaces => (is => 'ro', isa => ArrayRef[Batch_NetworkInterface]);
+  has Privileged => (is => 'ro', isa => Bool);
+  has ReadonlyRootFilesystem => (is => 'ro', isa => Bool);
+  has Reason => (is => 'ro', isa => Str);
+  has ResourceRequirements => (is => 'ro', isa => ArrayRef[Batch_ResourceRequirement]);
+  has TaskArn => (is => 'ro', isa => Str);
+  has Ulimits => (is => 'ro', isa => ArrayRef[Batch_Ulimit]);
+  has User => (is => 'ro', isa => Str);
+  has Vcpus => (is => 'ro', isa => Int);
+  has Volumes => (is => 'ro', isa => ArrayRef[Batch_Volume]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReadonlyRootFilesystem' => {
+                                             'type' => 'Bool'
+                                           },
+               'Environment' => {
+                                  'class' => 'Paws::Batch::KeyValuePair',
+                                  'type' => 'ArrayRef[Batch_KeyValuePair]'
+                                },
+               'Memory' => {
+                             'type' => 'Int'
+                           },
+               'ExitCode' => {
+                               'type' => 'Int'
+                             },
+               'Image' => {
+                            'type' => 'Str'
+                          },
+               'ResourceRequirements' => {
+                                           'type' => 'ArrayRef[Batch_ResourceRequirement]',
+                                           'class' => 'Paws::Batch::ResourceRequirement'
+                                         },
+               'Privileged' => {
+                                 'type' => 'Bool'
+                               },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ContainerInstanceArn' => {
+                                           'type' => 'Str'
+                                         },
+               'JobRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'Command' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'LogStreamName' => {
+                                    'type' => 'Str'
+                                  },
+               'User' => {
+                           'type' => 'Str'
+                         },
+               'Vcpus' => {
+                            'type' => 'Int'
+                          },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            },
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'MountPoints' => {
+                                  'type' => 'ArrayRef[Batch_MountPoint]',
+                                  'class' => 'Paws::Batch::MountPoint'
+                                },
+               'NetworkInterfaces' => {
+                                        'class' => 'Paws::Batch::NetworkInterface',
+                                        'type' => 'ArrayRef[Batch_NetworkInterface]'
+                                      },
+               'Volumes' => {
+                              'type' => 'ArrayRef[Batch_Volume]',
+                              'class' => 'Paws::Batch::Volume'
+                            },
+               'LinuxParameters' => {
+                                      'class' => 'Paws::Batch::LinuxParameters',
+                                      'type' => 'Batch_LinuxParameters'
+                                    },
+               'Ulimits' => {
+                              'type' => 'ArrayRef[Batch_Ulimit]',
+                              'class' => 'Paws::Batch::Ulimit'
+                            }
+             },
+  'NameInRequest' => {
+                       'Reason' => 'reason',
+                       'Volumes' => 'volumes',
+                       'LinuxParameters' => 'linuxParameters',
+                       'Ulimits' => 'ulimits',
+                       'NetworkInterfaces' => 'networkInterfaces',
+                       'MountPoints' => 'mountPoints',
+                       'Vcpus' => 'vcpus',
+                       'User' => 'user',
+                       'TaskArn' => 'taskArn',
+                       'LogStreamName' => 'logStreamName',
+                       'JobRoleArn' => 'jobRoleArn',
+                       'Command' => 'command',
+                       'Image' => 'image',
+                       'ContainerInstanceArn' => 'containerInstanceArn',
+                       'ResourceRequirements' => 'resourceRequirements',
+                       'Privileged' => 'privileged',
+                       'InstanceType' => 'instanceType',
+                       'ExitCode' => 'exitCode',
+                       'Memory' => 'memory',
+                       'ReadonlyRootFilesystem' => 'readonlyRootFilesystem',
+                       'Environment' => 'environment'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +175,7 @@ job.
 container is running.
 
 
-=head2 Environment => ArrayRef[L<Paws::Batch::KeyValuePair>]
+=head2 Environment => ArrayRef[Batch_KeyValuePair]
 
   The environment variables to pass to a container.
 
@@ -98,7 +205,7 @@ parallel job.
   The Amazon Resource Name (ARN) associated with the job upon execution.
 
 
-=head2 LinuxParameters => L<Paws::Batch::LinuxParameters>
+=head2 LinuxParameters => Batch_LinuxParameters
 
   Linux-specific modifications that are applied to the container, such as
 details for device mappings.
@@ -117,12 +224,12 @@ C<RUNNING> status.
   The number of MiB of memory reserved for the job.
 
 
-=head2 MountPoints => ArrayRef[L<Paws::Batch::MountPoint>]
+=head2 MountPoints => ArrayRef[Batch_MountPoint]
 
   The mount points for data volumes in your container.
 
 
-=head2 NetworkInterfaces => ArrayRef[L<Paws::Batch::NetworkInterface>]
+=head2 NetworkInterfaces => ArrayRef[Batch_NetworkInterface]
 
   The network interfaces associated with the job.
 
@@ -145,7 +252,7 @@ its root file system.
 additional details about a running or stopped container.
 
 
-=head2 ResourceRequirements => ArrayRef[L<Paws::Batch::ResourceRequirement>]
+=head2 ResourceRequirements => ArrayRef[Batch_ResourceRequirement]
 
   The type and amount of a resource to assign to a container. Currently,
 the only supported resource is C<GPU>.
@@ -158,7 +265,7 @@ associated with the container job. Each container attempt receives a
 task ARN when they reach the C<STARTING> status.
 
 
-=head2 Ulimits => ArrayRef[L<Paws::Batch::Ulimit>]
+=head2 Ulimits => ArrayRef[Batch_Ulimit]
 
   A list of C<ulimit> values to set in the container.
 
@@ -173,7 +280,7 @@ task ARN when they reach the C<STARTING> status.
   The number of VCPUs allocated for the job.
 
 
-=head2 Volumes => ArrayRef[L<Paws::Batch::Volume>]
+=head2 Volumes => ArrayRef[Batch_Volume]
 
   A list of volumes associated with the job.
 

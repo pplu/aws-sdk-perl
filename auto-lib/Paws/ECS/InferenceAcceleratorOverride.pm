@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ECS::InferenceAcceleratorOverride;
-  use Moose;
-  has DeviceName => (is => 'ro', isa => 'Str', request_name => 'deviceName', traits => ['NameInRequest']);
-  has DeviceType => (is => 'ro', isa => 'Str', request_name => 'deviceType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has DeviceName => (is => 'ro', isa => Str);
+  has DeviceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DeviceType' => 'deviceType',
+                       'DeviceName' => 'deviceName'
+                     },
+  'types' => {
+               'DeviceType' => {
+                                 'type' => 'Str'
+                               },
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

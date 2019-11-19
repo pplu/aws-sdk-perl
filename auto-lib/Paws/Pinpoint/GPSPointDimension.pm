@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::GPSPointDimension;
-  use Moose;
-  has Coordinates => (is => 'ro', isa => 'Paws::Pinpoint::GPSCoordinates', required => 1);
-  has RangeInKilometers => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Pinpoint::Types qw/Pinpoint_GPSCoordinates/;
+  has Coordinates => (is => 'ro', isa => Pinpoint_GPSCoordinates, required => 1);
+  has RangeInKilometers => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Coordinates' => 1
+                  },
+  'types' => {
+               'Coordinates' => {
+                                  'type' => 'Pinpoint_GPSCoordinates',
+                                  'class' => 'Paws::Pinpoint::GPSCoordinates'
+                                },
+               'RangeInKilometers' => {
+                                        'type' => 'Num'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ a segment.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Coordinates => L<Paws::Pinpoint::GPSCoordinates>
+=head2 B<REQUIRED> Coordinates => Pinpoint_GPSCoordinates
 
   The GPS coordinates to measure distance from.
 

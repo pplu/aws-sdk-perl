@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Datasync;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'datasync' }
   sub signing_name { 'datasync' }
   sub version { '2018-11-09' }
   sub target_prefix { 'FmrsService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -349,7 +351,7 @@ execution.
 
 =item [SubnetArns => ArrayRef[Str|Undef]]
 
-=item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
+=item [Tags => ArrayRef[Datasync_TagListEntry]]
 
 =item [VpcEndpointId => Str]
 
@@ -384,13 +386,13 @@ mechanism that ensures minimal interruption to your tasks.
 
 =over
 
-=item Ec2Config => L<Paws::Datasync::Ec2Config>
+=item Ec2Config => Datasync_Ec2Config
 
 =item EfsFilesystemArn => Str
 
 =item [Subdirectory => Str]
 
-=item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
+=item [Tags => ArrayRef[Datasync_TagListEntry]]
 
 
 =back
@@ -406,15 +408,15 @@ Creates an endpoint for an Amazon EFS file system.
 
 =over
 
-=item OnPremConfig => L<Paws::Datasync::OnPremConfig>
+=item OnPremConfig => Datasync_OnPremConfig
 
 =item ServerHostname => Str
 
 =item Subdirectory => Str
 
-=item [MountOptions => L<Paws::Datasync::NfsMountOptions>]
+=item [MountOptions => Datasync_NfsMountOptions]
 
-=item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
+=item [Tags => ArrayRef[Datasync_TagListEntry]]
 
 
 =back
@@ -433,13 +435,13 @@ read from or written to
 
 =item S3BucketArn => Str
 
-=item S3Config => L<Paws::Datasync::S3Config>
+=item S3Config => Datasync_S3Config
 
 =item [S3StorageClass => Str]
 
 =item [Subdirectory => Str]
 
-=item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
+=item [Tags => ArrayRef[Datasync_TagListEntry]]
 
 
 =back
@@ -477,9 +479,9 @@ in the I<AWS DataSync User Guide.>
 
 =item [Domain => Str]
 
-=item [MountOptions => L<Paws::Datasync::SmbMountOptions>]
+=item [MountOptions => Datasync_SmbMountOptions]
 
-=item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
+=item [Tags => ArrayRef[Datasync_TagListEntry]]
 
 
 =back
@@ -502,13 +504,13 @@ be read from or written to
 
 =item [CloudWatchLogGroupArn => Str]
 
-=item [Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]]
+=item [Excludes => ArrayRef[Datasync_FilterRule]]
 
 =item [Name => Str]
 
-=item [Options => L<Paws::Datasync::Options>]
+=item [Options => Datasync_Options]
 
-=item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
+=item [Tags => ArrayRef[Datasync_TagListEntry]]
 
 
 =back
@@ -823,9 +825,9 @@ Returns a list of all the tasks.
 
 =item TaskArn => Str
 
-=item [Includes => ArrayRef[L<Paws::Datasync::FilterRule>]]
+=item [Includes => ArrayRef[Datasync_FilterRule]]
 
-=item [OverrideOptions => L<Paws::Datasync::Options>]
+=item [OverrideOptions => Datasync_Options]
 
 
 =back
@@ -851,7 +853,7 @@ Components and Terminology topic in the I<AWS DataSync User Guide>.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]
+=item Tags => ArrayRef[Datasync_TagListEntry]
 
 
 =back
@@ -907,11 +909,11 @@ Updates the name of an agent.
 
 =item [CloudWatchLogGroupArn => Str]
 
-=item [Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]]
+=item [Excludes => ArrayRef[Datasync_FilterRule]]
 
 =item [Name => Str]
 
-=item [Options => L<Paws::Datasync::Options>]
+=item [Options => Datasync_Options]
 
 
 =back

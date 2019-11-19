@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::DetectFacesResponse;
-  use Moose;
-  has FaceDetails => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::FaceDetail]');
-  has OrientationCorrection => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_FaceDetail/;
+  has FaceDetails => (is => 'ro', isa => ArrayRef[Rekognition_FaceDetail]);
+  has OrientationCorrection => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrientationCorrection' => {
+                                            'type' => 'Str'
+                                          },
+               'FaceDetails' => {
+                                  'type' => 'ArrayRef[Rekognition_FaceDetail]',
+                                  'class' => 'Paws::Rekognition::FaceDetail'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Rekognition::DetectFacesResponse
 =head1 ATTRIBUTES
 
 
-=head2 FaceDetails => ArrayRef[L<Paws::Rekognition::FaceDetail>]
+=head2 FaceDetails => ArrayRef[Rekognition_FaceDetail]
 
 Details of each face found in the image.
 

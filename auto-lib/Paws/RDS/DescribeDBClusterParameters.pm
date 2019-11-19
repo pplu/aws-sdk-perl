@@ -1,17 +1,49 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::DescribeDBClusterParameters;
-  use Moose;
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has Source => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::RDS::Types qw/RDS_Filter/;
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[RDS_Filter], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has Source => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterParameters');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterParameterGroupDetails');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterParametersResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDBClusterParameters');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DBClusterParameterGroupDetails');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeDBClusterParametersResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Filters' => {
+                              'class' => 'Paws::RDS::Filter',
+                              'type' => 'ArrayRef[RDS_Filter]'
+                            }
+             },
+  'IsRequired' => {
+                    'DBClusterParameterGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +97,7 @@ DBClusterParameterGroup.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
+=head2 Filters => ArrayRef[RDS_Filter]
 
 This parameter isn't currently supported.
 

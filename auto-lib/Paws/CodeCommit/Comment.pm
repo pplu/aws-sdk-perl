@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::Comment;
-  use Moose;
-  has AuthorArn => (is => 'ro', isa => 'Str', request_name => 'authorArn', traits => ['NameInRequest']);
-  has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
-  has CommentId => (is => 'ro', isa => 'Str', request_name => 'commentId', traits => ['NameInRequest']);
-  has Content => (is => 'ro', isa => 'Str', request_name => 'content', traits => ['NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has Deleted => (is => 'ro', isa => 'Bool', request_name => 'deleted', traits => ['NameInRequest']);
-  has InReplyTo => (is => 'ro', isa => 'Str', request_name => 'inReplyTo', traits => ['NameInRequest']);
-  has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeCommit::Types qw//;
+  has AuthorArn => (is => 'ro', isa => Str);
+  has ClientRequestToken => (is => 'ro', isa => Str);
+  has CommentId => (is => 'ro', isa => Str);
+  has Content => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has Deleted => (is => 'ro', isa => Bool);
+  has InReplyTo => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Content' => 'content',
+                       'CreationDate' => 'creationDate',
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'Deleted' => 'deleted',
+                       'AuthorArn' => 'authorArn',
+                       'LastModifiedDate' => 'lastModifiedDate',
+                       'CommentId' => 'commentId',
+                       'InReplyTo' => 'inReplyTo'
+                     },
+  'types' => {
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Deleted' => {
+                              'type' => 'Bool'
+                            },
+               'AuthorArn' => {
+                                'type' => 'Str'
+                              },
+               'CommentId' => {
+                                'type' => 'Str'
+                              },
+               'InReplyTo' => {
+                                'type' => 'Str'
+                              },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'Content' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

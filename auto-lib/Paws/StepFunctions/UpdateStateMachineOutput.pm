@@ -1,9 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StepFunctions::UpdateStateMachineOutput;
-  use Moose;
-  has UpdateDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'updateDate' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has UpdateDate => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'UpdateDate' => 1
+                  },
+  'NameInRequest' => {
+                       'UpdateDate' => 'updateDate'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UpdateDate' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

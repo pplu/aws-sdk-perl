@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::EMR::SpotProvisioningSpecification;
-  use Moose;
-  has BlockDurationMinutes => (is => 'ro', isa => 'Int');
-  has TimeoutAction => (is => 'ro', isa => 'Str', required => 1);
-  has TimeoutDurationMinutes => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::EMR::Types qw//;
+  has BlockDurationMinutes => (is => 'ro', isa => Int);
+  has TimeoutAction => (is => 'ro', isa => Str, required => 1);
+  has TimeoutDurationMinutes => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeoutDurationMinutes' => {
+                                             'type' => 'Int'
+                                           },
+               'TimeoutAction' => {
+                                    'type' => 'Str'
+                                  },
+               'BlockDurationMinutes' => {
+                                           'type' => 'Int'
+                                         }
+             },
+  'IsRequired' => {
+                    'TimeoutAction' => 1,
+                    'TimeoutDurationMinutes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

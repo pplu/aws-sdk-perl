@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::JobMessages;
-  use Moose;
-  has Info => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'info', traits => ['NameInRequest']);
-  has Warning => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'warning', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::MediaConvert::Types qw//;
+  has Info => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Warning => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Info' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         },
+               'Warning' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            }
+             },
+  'NameInRequest' => {
+                       'Warning' => 'warning',
+                       'Info' => 'info'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

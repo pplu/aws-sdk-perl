@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::UserPoolDescriptionType;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has LambdaConfig => (is => 'ro', isa => 'Paws::CognitoIdp::LambdaConfigType');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_LambdaConfigType/;
+  has CreationDate => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has LambdaConfig => (is => 'ro', isa => CognitoIdp_LambdaConfigType);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LambdaConfig' => {
+                                   'type' => 'CognitoIdp_LambdaConfigType',
+                                   'class' => 'Paws::CognitoIdp::LambdaConfigType'
+                                 },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +84,7 @@ A user pool description.
   The ID in a user pool description.
 
 
-=head2 LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>
+=head2 LambdaConfig => CognitoIdp_LambdaConfigType
 
   The AWS Lambda configuration information in a user pool description.
 

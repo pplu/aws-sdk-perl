@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::EKS::ErrorDetail;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
-  has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
-  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'resourceIds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EKS::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has ResourceIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ResourceIds' => 'resourceIds',
+                       'ErrorCode' => 'errorCode',
+                       'ErrorMessage' => 'errorMessage'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

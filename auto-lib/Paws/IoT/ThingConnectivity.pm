@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoT::ThingConnectivity;
-  use Moose;
-  has Connected => (is => 'ro', isa => 'Bool', request_name => 'connected', traits => ['NameInRequest']);
-  has Timestamp => (is => 'ro', isa => 'Int', request_name => 'timestamp', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Int/;
+  use Paws::IoT::Types qw//;
+  has Connected => (is => 'ro', isa => Bool);
+  has Timestamp => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Int'
+                              },
+               'Connected' => {
+                                'type' => 'Bool'
+                              }
+             },
+  'NameInRequest' => {
+                       'Connected' => 'connected',
+                       'Timestamp' => 'timestamp'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

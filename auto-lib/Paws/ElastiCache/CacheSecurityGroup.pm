@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::CacheSecurityGroup;
-  use Moose;
-  has CacheSecurityGroupName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::EC2SecurityGroup]', request_name => 'EC2SecurityGroup', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_EC2SecurityGroup/;
+  has CacheSecurityGroupName => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EC2SecurityGroups => (is => 'ro', isa => ArrayRef[ElastiCache_EC2SecurityGroup]);
+  has OwnerId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'CacheSecurityGroupName' => {
+                                             'type' => 'Str'
+                                           },
+               'EC2SecurityGroups' => {
+                                        'class' => 'Paws::ElastiCache::EC2SecurityGroup',
+                                        'type' => 'ArrayRef[ElastiCache_EC2SecurityGroup]'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'EC2SecurityGroups' => 'EC2SecurityGroup'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +96,7 @@ C<RevokeCacheSecurityGroupIngress>
   The description of the cache security group.
 
 
-=head2 EC2SecurityGroups => ArrayRef[L<Paws::ElastiCache::EC2SecurityGroup>]
+=head2 EC2SecurityGroups => ArrayRef[ElastiCache_EC2SecurityGroup]
 
   A list of Amazon EC2 security groups that are associated with this
 cache security group.

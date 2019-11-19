@@ -1,9 +1,31 @@
 
 package Paws::EC2::ReplaceIamInstanceProfileAssociationResult;
-  use Moose;
-  has IamInstanceProfileAssociation => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfileAssociation', request_name => 'iamInstanceProfileAssociation', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_IamInstanceProfileAssociation/;
+  has IamInstanceProfileAssociation => (is => 'ro', isa => EC2_IamInstanceProfileAssociation);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'IamInstanceProfileAssociation' => 'iamInstanceProfileAssociation'
+                     },
+  'types' => {
+               'IamInstanceProfileAssociation' => {
+                                                    'type' => 'EC2_IamInstanceProfileAssociation',
+                                                    'class' => 'Paws::EC2::IamInstanceProfileAssociation'
+                                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::ReplaceIamInstanceProfileAssociationResult
 =head1 ATTRIBUTES
 
 
-=head2 IamInstanceProfileAssociation => L<Paws::EC2::IamInstanceProfileAssociation>
+=head2 IamInstanceProfileAssociation => EC2_IamInstanceProfileAssociation
 
 Information about the IAM instance profile association.
 

@@ -1,17 +1,50 @@
 
 package Paws::RAM::AssociateResourceShare;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'principals');
-  has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceArns');
-  has ResourceShareArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceShareArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::RAM::Types qw//;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Principals => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceShareArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateResourceShare');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/associateresourceshare');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RAM::AssociateResourceShareResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateResourceShare');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/associateresourceshare');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RAM::AssociateResourceShareResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Principals' => 'principals',
+                       'ClientToken' => 'clientToken',
+                       'ResourceShareArn' => 'resourceShareArn',
+                       'ResourceArns' => 'resourceArns'
+                     },
+  'IsRequired' => {
+                    'ResourceShareArn' => 1
+                  },
+  'types' => {
+               'ResourceArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'ResourceShareArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Principals' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

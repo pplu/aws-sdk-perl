@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::Clip;
-  use Moose;
-  has TimeSpan => (is => 'ro', isa => 'Paws::ElasticTranscoder::TimeSpan');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_TimeSpan/;
+  has TimeSpan => (is => 'ro', isa => ElasticTranscoder_TimeSpan);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeSpan' => {
+                               'type' => 'ElasticTranscoder_TimeSpan',
+                               'class' => 'Paws::ElasticTranscoder::TimeSpan'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ have the same clip settings.
 =head1 ATTRIBUTES
 
 
-=head2 TimeSpan => L<Paws::ElasticTranscoder::TimeSpan>
+=head2 TimeSpan => ElasticTranscoder_TimeSpan
 
   Settings that determine when a clip begins and how long it lasts.
 

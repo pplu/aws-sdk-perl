@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DatastoreStorage;
-  use Moose;
-  has CustomerManagedS3 => (is => 'ro', isa => 'Paws::IoTAnalytics::CustomerManagedDatastoreS3Storage', request_name => 'customerManagedS3', traits => ['NameInRequest']);
-  has ServiceManagedS3 => (is => 'ro', isa => 'Paws::IoTAnalytics::ServiceManagedDatastoreS3Storage', request_name => 'serviceManagedS3', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_ServiceManagedDatastoreS3Storage IoTAnalytics_CustomerManagedDatastoreS3Storage/;
+  has CustomerManagedS3 => (is => 'ro', isa => IoTAnalytics_CustomerManagedDatastoreS3Storage);
+  has ServiceManagedS3 => (is => 'ro', isa => IoTAnalytics_ServiceManagedDatastoreS3Storage);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ServiceManagedS3' => 'serviceManagedS3',
+                       'CustomerManagedS3' => 'customerManagedS3'
+                     },
+  'types' => {
+               'ServiceManagedS3' => {
+                                       'type' => 'IoTAnalytics_ServiceManagedDatastoreS3Storage',
+                                       'class' => 'Paws::IoTAnalytics::ServiceManagedDatastoreS3Storage'
+                                     },
+               'CustomerManagedS3' => {
+                                        'class' => 'Paws::IoTAnalytics::CustomerManagedDatastoreS3Storage',
+                                        'type' => 'IoTAnalytics_CustomerManagedDatastoreS3Storage'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +66,7 @@ data store is created.
 =head1 ATTRIBUTES
 
 
-=head2 CustomerManagedS3 => L<Paws::IoTAnalytics::CustomerManagedDatastoreS3Storage>
+=head2 CustomerManagedS3 => IoTAnalytics_CustomerManagedDatastoreS3Storage
 
   Use this to store data store data in an S3 bucket that you manage. When
 customer managed storage is selected, the "retentionPeriod" parameter
@@ -48,7 +74,7 @@ is ignored. The choice of service-managed or customer-managed S3
 storage cannot be changed after creation of the data store.
 
 
-=head2 ServiceManagedS3 => L<Paws::IoTAnalytics::ServiceManagedDatastoreS3Storage>
+=head2 ServiceManagedS3 => IoTAnalytics_ServiceManagedDatastoreS3Storage
 
   Use this to store data store data in an S3 bucket managed by the AWS
 IoT Analytics service. The choice of service-managed or

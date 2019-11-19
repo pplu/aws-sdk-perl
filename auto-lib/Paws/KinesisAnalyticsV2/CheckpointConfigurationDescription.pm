@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::CheckpointConfigurationDescription;
-  use Moose;
-  has CheckpointingEnabled => (is => 'ro', isa => 'Bool');
-  has CheckpointInterval => (is => 'ro', isa => 'Int');
-  has ConfigurationType => (is => 'ro', isa => 'Str');
-  has MinPauseBetweenCheckpoints => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Bool Int Str/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has CheckpointingEnabled => (is => 'ro', isa => Bool);
+  has CheckpointInterval => (is => 'ro', isa => Int);
+  has ConfigurationType => (is => 'ro', isa => Str);
+  has MinPauseBetweenCheckpoints => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CheckpointInterval' => {
+                                         'type' => 'Int'
+                                       },
+               'CheckpointingEnabled' => {
+                                           'type' => 'Bool'
+                                         },
+               'ConfigurationType' => {
+                                        'type' => 'Str'
+                                      },
+               'MinPauseBetweenCheckpoints' => {
+                                                 'type' => 'Int'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

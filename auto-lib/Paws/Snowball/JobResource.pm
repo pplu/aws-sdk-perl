@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::Snowball::JobResource;
-  use Moose;
-  has Ec2AmiResources => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::Ec2AmiResource]');
-  has LambdaResources => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::LambdaResource]');
-  has S3Resources => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::S3Resource]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Snowball::Types qw/Snowball_LambdaResource Snowball_S3Resource Snowball_Ec2AmiResource/;
+  has Ec2AmiResources => (is => 'ro', isa => ArrayRef[Snowball_Ec2AmiResource]);
+  has LambdaResources => (is => 'ro', isa => ArrayRef[Snowball_LambdaResource]);
+  has S3Resources => (is => 'ro', isa => ArrayRef[Snowball_S3Resource]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ec2AmiResources' => {
+                                      'class' => 'Paws::Snowball::Ec2AmiResource',
+                                      'type' => 'ArrayRef[Snowball_Ec2AmiResource]'
+                                    },
+               'LambdaResources' => {
+                                      'class' => 'Paws::Snowball::LambdaResource',
+                                      'type' => 'ArrayRef[Snowball_LambdaResource]'
+                                    },
+               'S3Resources' => {
+                                  'class' => 'Paws::Snowball::S3Resource',
+                                  'type' => 'ArrayRef[Snowball_S3Resource]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,17 +66,17 @@ Amazon S3 bucket, an AWS Lambda function, or an Amazon Machine Image
 =head1 ATTRIBUTES
 
 
-=head2 Ec2AmiResources => ArrayRef[L<Paws::Snowball::Ec2AmiResource>]
+=head2 Ec2AmiResources => ArrayRef[Snowball_Ec2AmiResource]
 
   The Amazon Machine Images (AMIs) associated with this job.
 
 
-=head2 LambdaResources => ArrayRef[L<Paws::Snowball::LambdaResource>]
+=head2 LambdaResources => ArrayRef[Snowball_LambdaResource]
 
   The Python-language Lambda functions for this job.
 
 
-=head2 S3Resources => ArrayRef[L<Paws::Snowball::S3Resource>]
+=head2 S3Resources => ArrayRef[Snowball_S3Resource]
 
   An array of C<S3Resource> objects.
 

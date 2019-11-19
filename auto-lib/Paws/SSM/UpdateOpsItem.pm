@@ -1,23 +1,75 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::UpdateOpsItem;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsItemNotification]');
-  has OperationalData => (is => 'ro', isa => 'Paws::SSM::OpsItemOperationalData');
-  has OperationalDataToDelete => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has OpsItemId => (is => 'ro', isa => 'Str', required => 1);
-  has Priority => (is => 'ro', isa => 'Int');
-  has RelatedOpsItems => (is => 'ro', isa => 'ArrayRef[Paws::SSM::RelatedOpsItem]');
-  has Severity => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Title => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::SSM::Types qw/SSM_RelatedOpsItem SSM_OpsItemNotification SSM_OpsItemOperationalData/;
+  has Category => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Notifications => (is => 'ro', isa => ArrayRef[SSM_OpsItemNotification], predicate => 1);
+  has OperationalData => (is => 'ro', isa => SSM_OpsItemOperationalData, predicate => 1);
+  has OperationalDataToDelete => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has OpsItemId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Priority => (is => 'ro', isa => Int, predicate => 1);
+  has RelatedOpsItems => (is => 'ro', isa => ArrayRef[SSM_RelatedOpsItem], predicate => 1);
+  has Severity => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
+  has Title => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateOpsItem');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::UpdateOpsItemResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateOpsItem');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::UpdateOpsItemResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'OperationalDataToDelete' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'RelatedOpsItems' => {
+                                      'class' => 'Paws::SSM::RelatedOpsItem',
+                                      'type' => 'ArrayRef[SSM_RelatedOpsItem]'
+                                    },
+               'Severity' => {
+                               'type' => 'Str'
+                             },
+               'OperationalData' => {
+                                      'class' => 'Paws::SSM::OpsItemOperationalData',
+                                      'type' => 'SSM_OpsItemOperationalData'
+                                    },
+               'Notifications' => {
+                                    'class' => 'Paws::SSM::OpsItemNotification',
+                                    'type' => 'ArrayRef[SSM_OpsItemNotification]'
+                                  },
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'OpsItemId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'OpsItemId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -90,14 +142,14 @@ issue.
 
 
 
-=head2 Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]
+=head2 Notifications => ArrayRef[SSM_OpsItemNotification]
 
 The Amazon Resource Name (ARN) of an SNS topic where notifications are
 sent when this OpsItem is edited or changed.
 
 
 
-=head2 OperationalData => L<Paws::SSM::OpsItemOperationalData>
+=head2 OperationalData => SSM_OpsItemOperationalData
 
 Add new keys or edit existing key-value pairs of the OperationalData
 map in the OpsItem object.
@@ -147,7 +199,7 @@ system.
 
 
 
-=head2 RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]
+=head2 RelatedOpsItems => ArrayRef[SSM_RelatedOpsItem]
 
 One or more OpsItems that share something in common with the current
 OpsItems. For example, related OpsItems can include OpsItems with

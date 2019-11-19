@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::ResourceConfiguration;
-  use Moose;
-  has ComputeType => (is => 'ro', isa => 'Str', request_name => 'computeType', traits => ['NameInRequest'], required => 1);
-  has VolumeSizeInGB => (is => 'ro', isa => 'Int', request_name => 'volumeSizeInGB', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTAnalytics::Types qw//;
+  has ComputeType => (is => 'ro', isa => Str, required => 1);
+  has VolumeSizeInGB => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'VolumeSizeInGB' => 1,
+                    'ComputeType' => 1
+                  },
+  'NameInRequest' => {
+                       'VolumeSizeInGB' => 'volumeSizeInGB',
+                       'ComputeType' => 'computeType'
+                     },
+  'types' => {
+               'VolumeSizeInGB' => {
+                                     'type' => 'Int'
+                                   },
+               'ComputeType' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

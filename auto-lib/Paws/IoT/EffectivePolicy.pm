@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoT::EffectivePolicy;
-  use Moose;
-  has PolicyArn => (is => 'ro', isa => 'Str', request_name => 'policyArn', traits => ['NameInRequest']);
-  has PolicyDocument => (is => 'ro', isa => 'Str', request_name => 'policyDocument', traits => ['NameInRequest']);
-  has PolicyName => (is => 'ro', isa => 'Str', request_name => 'policyName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has PolicyArn => (is => 'ro', isa => Str);
+  has PolicyDocument => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PolicyName' => 'policyName',
+                       'PolicyArn' => 'policyArn',
+                       'PolicyDocument' => 'policyDocument'
+                     },
+  'types' => {
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   },
+               'PolicyArn' => {
+                                'type' => 'Str'
+                              },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

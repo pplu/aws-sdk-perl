@@ -1,18 +1,55 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::CreateModelPackage;
-  use Moose;
-  has CertifyForMarketplace => (is => 'ro', isa => 'Bool');
-  has InferenceSpecification => (is => 'ro', isa => 'Paws::SageMaker::InferenceSpecification');
-  has ModelPackageDescription => (is => 'ro', isa => 'Str');
-  has ModelPackageName => (is => 'ro', isa => 'Str', required => 1);
-  has SourceAlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::SourceAlgorithmSpecification');
-  has ValidationSpecification => (is => 'ro', isa => 'Paws::SageMaker::ModelPackageValidationSpecification');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SageMaker::Types qw/SageMaker_SourceAlgorithmSpecification SageMaker_ModelPackageValidationSpecification SageMaker_InferenceSpecification/;
+  has CertifyForMarketplace => (is => 'ro', isa => Bool, predicate => 1);
+  has InferenceSpecification => (is => 'ro', isa => SageMaker_InferenceSpecification, predicate => 1);
+  has ModelPackageDescription => (is => 'ro', isa => Str, predicate => 1);
+  has ModelPackageName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceAlgorithmSpecification => (is => 'ro', isa => SageMaker_SourceAlgorithmSpecification, predicate => 1);
+  has ValidationSpecification => (is => 'ro', isa => SageMaker_ModelPackageValidationSpecification, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateModelPackage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::CreateModelPackageOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateModelPackage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::CreateModelPackageOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InferenceSpecification' => {
+                                             'type' => 'SageMaker_InferenceSpecification',
+                                             'class' => 'Paws::SageMaker::InferenceSpecification'
+                                           },
+               'ModelPackageName' => {
+                                       'type' => 'Str'
+                                     },
+               'ModelPackageDescription' => {
+                                              'type' => 'Str'
+                                            },
+               'ValidationSpecification' => {
+                                              'type' => 'SageMaker_ModelPackageValidationSpecification',
+                                              'class' => 'Paws::SageMaker::ModelPackageValidationSpecification'
+                                            },
+               'SourceAlgorithmSpecification' => {
+                                                   'class' => 'Paws::SageMaker::SourceAlgorithmSpecification',
+                                                   'type' => 'SageMaker_SourceAlgorithmSpecification'
+                                                 },
+               'CertifyForMarketplace' => {
+                                            'type' => 'Bool'
+                                          }
+             },
+  'IsRequired' => {
+                    'ModelPackageName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -140,7 +177,7 @@ Whether to certify the model package for listing on AWS Marketplace.
 
 
 
-=head2 InferenceSpecification => L<Paws::SageMaker::InferenceSpecification>
+=head2 InferenceSpecification => SageMaker_InferenceSpecification
 
 Specifies details about inference jobs that can be run with models
 based on this model package, including the following:
@@ -180,13 +217,13 @@ Valid characters are a-z, A-Z, 0-9, and - (hyphen).
 
 
 
-=head2 SourceAlgorithmSpecification => L<Paws::SageMaker::SourceAlgorithmSpecification>
+=head2 SourceAlgorithmSpecification => SageMaker_SourceAlgorithmSpecification
 
 Details about the algorithm that was used to create the model package.
 
 
 
-=head2 ValidationSpecification => L<Paws::SageMaker::ModelPackageValidationSpecification>
+=head2 ValidationSpecification => SageMaker_ModelPackageValidationSpecification
 
 Specifies configurations for one or more transform jobs that Amazon
 SageMaker runs to test the model package.

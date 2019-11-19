@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::UpdateApiInput;
-  use Moose;
-  has ApiKeySelectionExpression => (is => 'ro', isa => 'Str', request_name => 'apiKeySelectionExpression', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has DisableSchemaValidation => (is => 'ro', isa => 'Bool', request_name => 'disableSchemaValidation', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RouteSelectionExpression => (is => 'ro', isa => 'Str', request_name => 'routeSelectionExpression', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ApiKeySelectionExpression => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DisableSchemaValidation => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str);
+  has RouteSelectionExpression => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'RouteSelectionExpression' => 'routeSelectionExpression',
+                       'Name' => 'name',
+                       'ApiKeySelectionExpression' => 'apiKeySelectionExpression',
+                       'Version' => 'version',
+                       'DisableSchemaValidation' => 'disableSchemaValidation'
+                     },
+  'types' => {
+               'DisableSchemaValidation' => {
+                                              'type' => 'Bool'
+                                            },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ApiKeySelectionExpression' => {
+                                                'type' => 'Str'
+                                              },
+               'RouteSelectionExpression' => {
+                                               'type' => 'Str'
+                                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

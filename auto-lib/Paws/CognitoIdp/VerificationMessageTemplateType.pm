@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::VerificationMessageTemplateType;
-  use Moose;
-  has DefaultEmailOption => (is => 'ro', isa => 'Str');
-  has EmailMessage => (is => 'ro', isa => 'Str');
-  has EmailMessageByLink => (is => 'ro', isa => 'Str');
-  has EmailSubject => (is => 'ro', isa => 'Str');
-  has EmailSubjectByLink => (is => 'ro', isa => 'Str');
-  has SmsMessage => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has DefaultEmailOption => (is => 'ro', isa => Str);
+  has EmailMessage => (is => 'ro', isa => Str);
+  has EmailMessageByLink => (is => 'ro', isa => Str);
+  has EmailSubject => (is => 'ro', isa => Str);
+  has EmailSubjectByLink => (is => 'ro', isa => Str);
+  has SmsMessage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DefaultEmailOption' => {
+                                         'type' => 'Str'
+                                       },
+               'EmailSubjectByLink' => {
+                                         'type' => 'Str'
+                                       },
+               'EmailSubject' => {
+                                   'type' => 'Str'
+                                 },
+               'EmailMessageByLink' => {
+                                         'type' => 'Str'
+                                       },
+               'EmailMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'SmsMessage' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

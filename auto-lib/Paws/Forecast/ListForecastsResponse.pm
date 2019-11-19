@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Forecast::ListForecastsResponse;
-  use Moose;
-  has Forecasts => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::ForecastSummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Forecast::Types qw/Forecast_ForecastSummary/;
+  has Forecasts => (is => 'ro', isa => ArrayRef[Forecast_ForecastSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Forecasts' => {
+                                'type' => 'ArrayRef[Forecast_ForecastSummary]',
+                                'class' => 'Paws::Forecast::ForecastSummary'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Forecast::ListForecastsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Forecasts => ArrayRef[L<Paws::Forecast::ForecastSummary>]
+=head2 Forecasts => ArrayRef[Forecast_ForecastSummary]
 
 An array of objects that summarize each forecast's properties.
 

@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::LexRuntime::Button;
-  use Moose;
-  has Text => (is => 'ro', isa => 'Str', request_name => 'text', traits => ['NameInRequest'], required => 1);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexRuntime::Types qw//;
+  has Text => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Text' => {
+                           'type' => 'Str'
+                         },
+               'Value' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'Text' => 1,
+                    'Value' => 1
+                  },
+  'NameInRequest' => {
+                       'Text' => 'text',
+                       'Value' => 'value'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

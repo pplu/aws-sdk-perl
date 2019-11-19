@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::FindingCriteria;
-  use Moose;
-  has Criterion => (is => 'ro', isa => 'Paws::GuardDuty::Criterion', request_name => 'criterion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::GuardDuty::Types qw/GuardDuty_Criterion/;
+  has Criterion => (is => 'ro', isa => GuardDuty_Criterion);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Criterion' => 'criterion'
+                     },
+  'types' => {
+               'Criterion' => {
+                                'class' => 'Paws::GuardDuty::Criterion',
+                                'type' => 'GuardDuty_Criterion'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Contains information about the criteria used for querying findings.
 =head1 ATTRIBUTES
 
 
-=head2 Criterion => L<Paws::GuardDuty::Criterion>
+=head2 Criterion => GuardDuty_Criterion
 
   Represents a map of finding properties that match specified conditions
 and values when querying findings.

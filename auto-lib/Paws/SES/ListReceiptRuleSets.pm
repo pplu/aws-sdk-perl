@@ -1,13 +1,29 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::ListReceiptRuleSets;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListReceiptRuleSets');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::ListReceiptRuleSetsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListReceiptRuleSetsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListReceiptRuleSets');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::ListReceiptRuleSetsResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListReceiptRuleSetsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

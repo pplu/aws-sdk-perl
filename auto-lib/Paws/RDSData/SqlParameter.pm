@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::RDSData::SqlParameter;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Paws::RDSData::Field', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDSData::Types qw/RDSData_Field/;
+  has Name => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => RDSData_Field);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'class' => 'Paws::RDSData::Field',
+                            'type' => 'RDSData_Field'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Value' => 'value'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ A parameter used in a SQL statement.
   The name of the parameter.
 
 
-=head2 Value => L<Paws::RDSData::Field>
+=head2 Value => RDSData_Field
 
   The value of the parameter.
 

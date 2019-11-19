@@ -1,12 +1,54 @@
 package Paws::EC2::FleetLaunchTemplateOverrides;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has MaxPrice => (is => 'ro', isa => 'Str', request_name => 'maxPrice', traits => ['NameInRequest']);
-  has Placement => (is => 'ro', isa => 'Paws::EC2::PlacementResponse', request_name => 'placement', traits => ['NameInRequest']);
-  has Priority => (is => 'ro', isa => 'Num', request_name => 'priority', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
-  has WeightedCapacity => (is => 'ro', isa => 'Num', request_name => 'weightedCapacity', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Num/;
+  use Paws::EC2::Types qw/EC2_PlacementResponse/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has MaxPrice => (is => 'ro', isa => Str);
+  has Placement => (is => 'ro', isa => EC2_PlacementResponse);
+  has Priority => (is => 'ro', isa => Num);
+  has SubnetId => (is => 'ro', isa => Str);
+  has WeightedCapacity => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InstanceType' => 'instanceType',
+                       'MaxPrice' => 'maxPrice',
+                       'SubnetId' => 'subnetId',
+                       'Placement' => 'placement',
+                       'Priority' => 'priority',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'WeightedCapacity' => 'weightedCapacity'
+                     },
+  'types' => {
+               'Placement' => {
+                                'type' => 'EC2_PlacementResponse',
+                                'class' => 'Paws::EC2::PlacementResponse'
+                              },
+               'Priority' => {
+                               'type' => 'Num'
+                             },
+               'WeightedCapacity' => {
+                                       'type' => 'Num'
+                                     },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'MaxPrice' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +100,7 @@ This class has no description
 Instance.
 
 
-=head2 Placement => L<Paws::EC2::PlacementResponse>
+=head2 Placement => EC2_PlacementResponse
 
   The location where the instance launched, if applicable.
 

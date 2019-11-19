@@ -1,40 +1,143 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::RestoreDBInstanceFromDBSnapshot;
-  use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBName => (is => 'ro', isa => 'Str');
-  has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has Domain => (is => 'ro', isa => 'Str');
-  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has StorageType => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has TdeCredentialArn => (is => 'ro', isa => 'Str');
-  has TdeCredentialPassword => (is => 'ro', isa => 'Str');
-  has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef Int/;
+  use Paws::RDS::Types qw/RDS_ProcessorFeature RDS_Tag/;
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has DBInstanceClass => (is => 'ro', isa => Str, predicate => 1);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBName => (is => 'ro', isa => Str, predicate => 1);
+  has DBParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBSnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, predicate => 1);
+  has DomainIAMRoleName => (is => 'ro', isa => Str, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, predicate => 1);
+  has Iops => (is => 'ro', isa => Int, predicate => 1);
+  has LicenseModel => (is => 'ro', isa => Str, predicate => 1);
+  has MultiAZ => (is => 'ro', isa => Bool, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has ProcessorFeatures => (is => 'ro', isa => ArrayRef[RDS_ProcessorFeature], predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has StorageType => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
+  has TdeCredentialArn => (is => 'ro', isa => Str, predicate => 1);
+  has TdeCredentialPassword => (is => 'ro', isa => Str, predicate => 1);
+  has UseDefaultProcessorFeatures => (is => 'ro', isa => Bool, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RestoreDBInstanceFromDBSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshotResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreDBInstanceFromDBSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::RestoreDBInstanceFromDBSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RestoreDBInstanceFromDBSnapshotResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DBSnapshotIdentifier' => 1,
+                    'DBInstanceIdentifier' => 1
+                  },
+  'types' => {
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'DBName' => {
+                             'type' => 'Str'
+                           },
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'UseDefaultProcessorFeatures' => {
+                                                  'type' => 'Bool'
+                                                },
+               'DomainIAMRoleName' => {
+                                        'type' => 'Str'
+                                      },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'TdeCredentialArn' => {
+                                       'type' => 'Str'
+                                     },
+               'ProcessorFeatures' => {
+                                        'type' => 'ArrayRef[RDS_ProcessorFeature]',
+                                        'class' => 'Paws::RDS::ProcessorFeature'
+                                      },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'DBSnapshotIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'Tags' => {
+                           'type' => 'ArrayRef[RDS_Tag]',
+                           'class' => 'Paws::RDS::Tag'
+                         },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'TdeCredentialPassword' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -440,7 +543,7 @@ Constraints: Value must be C<1150-65535>
 
 
 
-=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+=head2 ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]
 
 The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.
@@ -471,7 +574,7 @@ Default: C<io1> if the C<Iops> parameter is specified, otherwise C<gp2>
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 
 

@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::TrafficRoute;
-  use Moose;
-  has ListenerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'listenerArns', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has ListenerArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ListenerArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ListenerArns' => 'listenerArns'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

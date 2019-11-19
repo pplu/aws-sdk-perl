@@ -1,11 +1,36 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::SimulatePolicyResponse;
-  use Moose;
-  has EvaluationResults => (is => 'ro', isa => 'ArrayRef[Paws::IAM::EvaluationResult]');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::IAM::Types qw/IAM_EvaluationResult/;
+  has EvaluationResults => (is => 'ro', isa => ArrayRef[IAM_EvaluationResult]);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'EvaluationResults' => {
+                                        'class' => 'Paws::IAM::EvaluationResult',
+                                        'type' => 'ArrayRef[IAM_EvaluationResult]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +42,7 @@ Paws::IAM::SimulatePolicyResponse
 =head1 ATTRIBUTES
 
 
-=head2 EvaluationResults => ArrayRef[L<Paws::IAM::EvaluationResult>]
+=head2 EvaluationResults => ArrayRef[IAM_EvaluationResult]
 
 The results of the simulation.
 

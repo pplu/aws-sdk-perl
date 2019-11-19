@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::QLDBSession::Page;
-  use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Paws::QLDBSession::ValueHolder]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::QLDBSession::Types qw/QLDBSession_ValueHolder/;
+  has NextPageToken => (is => 'ro', isa => Str);
+  has Values => (is => 'ro', isa => ArrayRef[QLDBSession_ValueHolder]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'Values' => {
+                             'type' => 'ArrayRef[QLDBSession_ValueHolder]',
+                             'class' => 'Paws::QLDBSession::ValueHolder'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Contains details of the fetched page.
   The token of the next page.
 
 
-=head2 Values => ArrayRef[L<Paws::QLDBSession::ValueHolder>]
+=head2 Values => ArrayRef[QLDBSession_ValueHolder]
 
   A structure that contains values in multiple encoding formats.
 

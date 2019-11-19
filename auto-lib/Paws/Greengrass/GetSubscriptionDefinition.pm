@@ -1,14 +1,35 @@
 
 package Paws::Greengrass::GetSubscriptionDefinition;
-  use Moose;
-  has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has SubscriptionDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSubscriptionDefinition');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/subscriptions/{SubscriptionDefinitionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::GetSubscriptionDefinitionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSubscriptionDefinition');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/subscriptions/{SubscriptionDefinitionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::GetSubscriptionDefinitionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SubscriptionDefinitionId' => 1
+                  },
+  'types' => {
+               'SubscriptionDefinitionId' => {
+                                               'type' => 'Str'
+                                             }
+             },
+  'ParamInURI' => {
+                    'SubscriptionDefinitionId' => 'SubscriptionDefinitionId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

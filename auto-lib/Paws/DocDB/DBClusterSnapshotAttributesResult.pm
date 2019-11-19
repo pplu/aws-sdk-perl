@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DocDB::DBClusterSnapshotAttributesResult;
-  use Moose;
-  has DBClusterSnapshotAttributes => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::DBClusterSnapshotAttribute]', request_name => 'DBClusterSnapshotAttribute', traits => ['NameInRequest']);
-  has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::DocDB::Types qw/DocDB_DBClusterSnapshotAttribute/;
+  has DBClusterSnapshotAttributes => (is => 'ro', isa => ArrayRef[DocDB_DBClusterSnapshotAttribute]);
+  has DBClusterSnapshotIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBClusterSnapshotIdentifier' => {
+                                                  'type' => 'Str'
+                                                },
+               'DBClusterSnapshotAttributes' => {
+                                                  'class' => 'Paws::DocDB::DBClusterSnapshotAttribute',
+                                                  'type' => 'ArrayRef[DocDB_DBClusterSnapshotAttribute]'
+                                                }
+             },
+  'NameInRequest' => {
+                       'DBClusterSnapshotAttributes' => 'DBClusterSnapshotAttribute'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ cluster snapshot.
 =head1 ATTRIBUTES
 
 
-=head2 DBClusterSnapshotAttributes => ArrayRef[L<Paws::DocDB::DBClusterSnapshotAttribute>]
+=head2 DBClusterSnapshotAttributes => ArrayRef[DocDB_DBClusterSnapshotAttribute]
 
   The list of attributes and values for the DB cluster snapshot.
 

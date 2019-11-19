@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::SavingsPlansDetails;
-  use Moose;
-  has InstanceFamily => (is => 'ro', isa => 'Str');
-  has OfferingId => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has InstanceFamily => (is => 'ro', isa => Str);
+  has OfferingId => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'InstanceFamily' => {
+                                     'type' => 'Str'
+                                   },
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,71 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::Profile;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Str');
-  has AddressBookArn => (is => 'ro', isa => 'Str');
-  has DistanceUnit => (is => 'ro', isa => 'Str');
-  has IsDefault => (is => 'ro', isa => 'Bool');
-  has Locale => (is => 'ro', isa => 'Str');
-  has MaxVolumeLimit => (is => 'ro', isa => 'Int');
-  has ProfileArn => (is => 'ro', isa => 'Str');
-  has ProfileName => (is => 'ro', isa => 'Str');
-  has PSTNEnabled => (is => 'ro', isa => 'Bool');
-  has SetupModeDisabled => (is => 'ro', isa => 'Bool');
-  has TemperatureUnit => (is => 'ro', isa => 'Str');
-  has Timezone => (is => 'ro', isa => 'Str');
-  has WakeWord => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has Address => (is => 'ro', isa => Str);
+  has AddressBookArn => (is => 'ro', isa => Str);
+  has DistanceUnit => (is => 'ro', isa => Str);
+  has IsDefault => (is => 'ro', isa => Bool);
+  has Locale => (is => 'ro', isa => Str);
+  has MaxVolumeLimit => (is => 'ro', isa => Int);
+  has ProfileArn => (is => 'ro', isa => Str);
+  has ProfileName => (is => 'ro', isa => Str);
+  has PSTNEnabled => (is => 'ro', isa => Bool);
+  has SetupModeDisabled => (is => 'ro', isa => Bool);
+  has TemperatureUnit => (is => 'ro', isa => Str);
+  has Timezone => (is => 'ro', isa => Str);
+  has WakeWord => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SetupModeDisabled' => {
+                                        'type' => 'Bool'
+                                      },
+               'Address' => {
+                              'type' => 'Str'
+                            },
+               'ProfileArn' => {
+                                 'type' => 'Str'
+                               },
+               'PSTNEnabled' => {
+                                  'type' => 'Bool'
+                                },
+               'WakeWord' => {
+                               'type' => 'Str'
+                             },
+               'ProfileName' => {
+                                  'type' => 'Str'
+                                },
+               'TemperatureUnit' => {
+                                      'type' => 'Str'
+                                    },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'AddressBookArn' => {
+                                     'type' => 'Str'
+                                   },
+               'DistanceUnit' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxVolumeLimit' => {
+                                     'type' => 'Int'
+                                   },
+               'IsDefault' => {
+                                'type' => 'Bool'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::MQ::Configurations;
-  use Moose;
-  has Current => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', request_name => 'current', traits => ['NameInRequest']);
-  has History => (is => 'ro', isa => 'ArrayRef[Paws::MQ::ConfigurationId]', request_name => 'history', traits => ['NameInRequest']);
-  has Pending => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', request_name => 'pending', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::MQ::Types qw/MQ_ConfigurationId/;
+  has Current => (is => 'ro', isa => MQ_ConfigurationId);
+  has History => (is => 'ro', isa => ArrayRef[MQ_ConfigurationId]);
+  has Pending => (is => 'ro', isa => MQ_ConfigurationId);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Pending' => {
+                              'type' => 'MQ_ConfigurationId',
+                              'class' => 'Paws::MQ::ConfigurationId'
+                            },
+               'Current' => {
+                              'class' => 'Paws::MQ::ConfigurationId',
+                              'type' => 'MQ_ConfigurationId'
+                            },
+               'History' => {
+                              'type' => 'ArrayRef[MQ_ConfigurationId]',
+                              'class' => 'Paws::MQ::ConfigurationId'
+                            }
+             },
+  'NameInRequest' => {
+                       'Pending' => 'pending',
+                       'Current' => 'current',
+                       'History' => 'history'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +69,17 @@ Broker configuration information
 =head1 ATTRIBUTES
 
 
-=head2 Current => L<Paws::MQ::ConfigurationId>
+=head2 Current => MQ_ConfigurationId
 
   The current configuration of the broker.
 
 
-=head2 History => ArrayRef[L<Paws::MQ::ConfigurationId>]
+=head2 History => ArrayRef[MQ_ConfigurationId]
 
   The history of configurations applied to the broker.
 
 
-=head2 Pending => L<Paws::MQ::ConfigurationId>
+=head2 Pending => MQ_ConfigurationId
 
   The pending configuration of the broker.
 

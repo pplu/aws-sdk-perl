@@ -1,21 +1,62 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::DescribeEvents;
-  use Moose;
-  has Duration => (is => 'ro', isa => 'Int');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Filter]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has SourceIdentifier => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::DMS::Types qw/DMS_Filter/;
+  has Duration => (is => 'ro', isa => Int, predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has EventCategories => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[DMS_Filter], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has SourceIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has SourceType => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::DescribeEventsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEvents');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::DescribeEventsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'type' => 'ArrayRef[DMS_Filter]',
+                              'class' => 'Paws::DMS::Filter'
+                            },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'SourceIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'EventCategories' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +125,7 @@ A list of event categories for the source type that you've chosen.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::DMS::Filter>]
+=head2 Filters => ArrayRef[DMS_Filter]
 
 Filters applied to the action.
 

@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Personalize::DescribeSolutionVersionResponse;
-  use Moose;
-  has SolutionVersion => (is => 'ro', isa => 'Paws::Personalize::SolutionVersion', traits => ['NameInRequest'], request_name => 'solutionVersion' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw/Personalize_SolutionVersion/;
+  has SolutionVersion => (is => 'ro', isa => Personalize_SolutionVersion);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SolutionVersion' => {
+                                      'type' => 'Personalize_SolutionVersion',
+                                      'class' => 'Paws::Personalize::SolutionVersion'
+                                    }
+             },
+  'NameInRequest' => {
+                       'SolutionVersion' => 'solutionVersion'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Personalize::DescribeSolutionVersionResponse
 =head1 ATTRIBUTES
 
 
-=head2 SolutionVersion => L<Paws::Personalize::SolutionVersion>
+=head2 SolutionVersion => Personalize_SolutionVersion
 
 The solution version.
 

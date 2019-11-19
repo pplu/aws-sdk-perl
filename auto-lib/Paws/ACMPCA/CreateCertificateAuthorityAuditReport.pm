@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ACMPCA::CreateCertificateAuthorityAuditReport;
-  use Moose;
-  has AuditReportResponseFormat => (is => 'ro', isa => 'Str', required => 1);
-  has CertificateAuthorityArn => (is => 'ro', isa => 'Str', required => 1);
-  has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACMPCA::Types qw//;
+  has AuditReportResponseFormat => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CertificateAuthorityArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3BucketName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCertificateAuthorityAuditReport');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ACMPCA::CreateCertificateAuthorityAuditReportResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCertificateAuthorityAuditReport');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ACMPCA::CreateCertificateAuthorityAuditReportResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'S3BucketName' => 1,
+                    'CertificateAuthorityArn' => 1,
+                    'AuditReportResponseFormat' => 1
+                  },
+  'types' => {
+               'CertificateAuthorityArn' => {
+                                              'type' => 'Str'
+                                            },
+               'AuditReportResponseFormat' => {
+                                                'type' => 'Str'
+                                              },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackDriftInformationSummary;
-  use Moose;
-  has LastCheckTimestamp => (is => 'ro', isa => 'Str');
-  has StackDriftStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has LastCheckTimestamp => (is => 'ro', isa => Str);
+  has StackDriftStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastCheckTimestamp' => {
+                                         'type' => 'Str'
+                                       },
+               'StackDriftStatus' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'StackDriftStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

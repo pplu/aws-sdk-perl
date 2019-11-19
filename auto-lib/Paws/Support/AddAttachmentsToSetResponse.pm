@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Support::AddAttachmentsToSetResponse;
-  use Moose;
-  has AttachmentSetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attachmentSetId' );
-  has ExpiryTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'expiryTime' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Support::Types qw//;
+  has AttachmentSetId => (is => 'ro', isa => Str);
+  has ExpiryTime => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ExpiryTime' => 'expiryTime',
+                       'AttachmentSetId' => 'attachmentSetId'
+                     },
+  'types' => {
+               'ExpiryTime' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AttachmentSetId' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,11 +1,42 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::GetApplicationRevisionOutput;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
-  has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['NameInRequest'], request_name => 'revision' );
-  has RevisionInfo => (is => 'ro', isa => 'Paws::CodeDeploy::GenericRevisionInfo', traits => ['NameInRequest'], request_name => 'revisionInfo' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_GenericRevisionInfo CodeDeploy_RevisionLocation/;
+  has ApplicationName => (is => 'ro', isa => Str);
+  has Revision => (is => 'ro', isa => CodeDeploy_RevisionLocation);
+  has RevisionInfo => (is => 'ro', isa => CodeDeploy_GenericRevisionInfo);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ApplicationName' => 'applicationName',
+                       'Revision' => 'revision',
+                       'RevisionInfo' => 'revisionInfo'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RevisionInfo' => {
+                                   'type' => 'CodeDeploy_GenericRevisionInfo',
+                                   'class' => 'Paws::CodeDeploy::GenericRevisionInfo'
+                                 },
+               'Revision' => {
+                               'type' => 'CodeDeploy_RevisionLocation',
+                               'class' => 'Paws::CodeDeploy::RevisionLocation'
+                             },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,12 +52,12 @@ Paws::CodeDeploy::GetApplicationRevisionOutput
 The name of the application that corresponds to the revision.
 
 
-=head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
+=head2 Revision => CodeDeploy_RevisionLocation
 
 Additional information about the revision, including type and location.
 
 
-=head2 RevisionInfo => L<Paws::CodeDeploy::GenericRevisionInfo>
+=head2 RevisionInfo => CodeDeploy_GenericRevisionInfo
 
 General information about the revision.
 

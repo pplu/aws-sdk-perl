@@ -1,10 +1,43 @@
 package Paws::EC2::OnDemandOptions;
-  use Moose;
-  has AllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'allocationStrategy', traits => ['NameInRequest']);
-  has MaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'maxTotalPrice', traits => ['NameInRequest']);
-  has MinTargetCapacity => (is => 'ro', isa => 'Int', request_name => 'minTargetCapacity', traits => ['NameInRequest']);
-  has SingleAvailabilityZone => (is => 'ro', isa => 'Bool', request_name => 'singleAvailabilityZone', traits => ['NameInRequest']);
-  has SingleInstanceType => (is => 'ro', isa => 'Bool', request_name => 'singleInstanceType', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int Bool/;
+  use Paws::EC2::Types qw//;
+  has AllocationStrategy => (is => 'ro', isa => Str);
+  has MaxTotalPrice => (is => 'ro', isa => Str);
+  has MinTargetCapacity => (is => 'ro', isa => Int);
+  has SingleAvailabilityZone => (is => 'ro', isa => Bool);
+  has SingleInstanceType => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxTotalPrice' => {
+                                    'type' => 'Str'
+                                  },
+               'SingleInstanceType' => {
+                                         'type' => 'Bool'
+                                       },
+               'MinTargetCapacity' => {
+                                        'type' => 'Int'
+                                      },
+               'SingleAvailabilityZone' => {
+                                             'type' => 'Bool'
+                                           },
+               'AllocationStrategy' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'SingleInstanceType' => 'singleInstanceType',
+                       'MinTargetCapacity' => 'minTargetCapacity',
+                       'SingleAvailabilityZone' => 'singleAvailabilityZone',
+                       'AllocationStrategy' => 'allocationStrategy',
+                       'MaxTotalPrice' => 'maxTotalPrice'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

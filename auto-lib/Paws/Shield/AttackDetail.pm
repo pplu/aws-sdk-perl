@@ -1,13 +1,55 @@
+# Generated from default/object.tt
 package Paws::Shield::AttackDetail;
-  use Moose;
-  has AttackCounters => (is => 'ro', isa => 'ArrayRef[Paws::Shield::SummarizedCounter]');
-  has AttackId => (is => 'ro', isa => 'Str');
-  has AttackProperties => (is => 'ro', isa => 'ArrayRef[Paws::Shield::AttackProperty]');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has Mitigations => (is => 'ro', isa => 'ArrayRef[Paws::Shield::Mitigation]');
-  has ResourceArn => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has SubResources => (is => 'ro', isa => 'ArrayRef[Paws::Shield::SubResourceSummary]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Shield::Types qw/Shield_SubResourceSummary Shield_AttackProperty Shield_SummarizedCounter Shield_Mitigation/;
+  has AttackCounters => (is => 'ro', isa => ArrayRef[Shield_SummarizedCounter]);
+  has AttackId => (is => 'ro', isa => Str);
+  has AttackProperties => (is => 'ro', isa => ArrayRef[Shield_AttackProperty]);
+  has EndTime => (is => 'ro', isa => Str);
+  has Mitigations => (is => 'ro', isa => ArrayRef[Shield_Mitigation]);
+  has ResourceArn => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has SubResources => (is => 'ro', isa => ArrayRef[Shield_SubResourceSummary]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'AttackCounters' => {
+                                     'class' => 'Paws::Shield::SummarizedCounter',
+                                     'type' => 'ArrayRef[Shield_SummarizedCounter]'
+                                   },
+               'Mitigations' => {
+                                  'type' => 'ArrayRef[Shield_Mitigation]',
+                                  'class' => 'Paws::Shield::Mitigation'
+                                },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'AttackProperties' => {
+                                       'class' => 'Paws::Shield::AttackProperty',
+                                       'type' => 'ArrayRef[Shield_AttackProperty]'
+                                     },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'SubResources' => {
+                                   'class' => 'Paws::Shield::SubResourceSummary',
+                                   'type' => 'ArrayRef[Shield_SubResourceSummary]'
+                                 },
+               'AttackId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +85,7 @@ The details of a DDoS attack.
 =head1 ATTRIBUTES
 
 
-=head2 AttackCounters => ArrayRef[L<Paws::Shield::SummarizedCounter>]
+=head2 AttackCounters => ArrayRef[Shield_SummarizedCounter]
 
   List of counters that describe the attack for the specified time
 period.
@@ -54,7 +96,7 @@ period.
   The unique identifier (ID) of the attack.
 
 
-=head2 AttackProperties => ArrayRef[L<Paws::Shield::AttackProperty>]
+=head2 AttackProperties => ArrayRef[Shield_AttackProperty]
 
   The array of AttackProperty objects.
 
@@ -66,7 +108,7 @@ information see timestamp
 (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types).
 
 
-=head2 Mitigations => ArrayRef[L<Paws::Shield::Mitigation>]
+=head2 Mitigations => ArrayRef[Shield_Mitigation]
 
   List of mitigation actions taken for the attack.
 
@@ -83,7 +125,7 @@ information see timestamp
 (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types).
 
 
-=head2 SubResources => ArrayRef[L<Paws::Shield::SubResourceSummary>]
+=head2 SubResources => ArrayRef[Shield_SubResourceSummary]
 
   If applicable, additional detail about the resource being attacked, for
 example, IP address or URL.

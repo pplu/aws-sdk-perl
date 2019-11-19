@@ -1,20 +1,60 @@
 
 package Paws::PinpointEmail::SendEmail;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str');
-  has Content => (is => 'ro', isa => 'Paws::PinpointEmail::EmailContent', required => 1);
-  has Destination => (is => 'ro', isa => 'Paws::PinpointEmail::Destination', required => 1);
-  has EmailTags => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::MessageTag]');
-  has FeedbackForwardingEmailAddress => (is => 'ro', isa => 'Str');
-  has FromEmailAddress => (is => 'ro', isa => 'Str');
-  has ReplyToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_MessageTag PinpointEmail_EmailContent PinpointEmail_Destination/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, predicate => 1);
+  has Content => (is => 'ro', isa => PinpointEmail_EmailContent, required => 1, predicate => 1);
+  has Destination => (is => 'ro', isa => PinpointEmail_Destination, required => 1, predicate => 1);
+  has EmailTags => (is => 'ro', isa => ArrayRef[PinpointEmail_MessageTag], predicate => 1);
+  has FeedbackForwardingEmailAddress => (is => 'ro', isa => Str, predicate => 1);
+  has FromEmailAddress => (is => 'ro', isa => Str, predicate => 1);
+  has ReplyToAddresses => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendEmail');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/outbound-emails');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::SendEmailResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendEmail');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/outbound-emails');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::SendEmailResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Content' => 1,
+                    'Destination' => 1
+                  },
+  'types' => {
+               'Content' => {
+                              'type' => 'PinpointEmail_EmailContent',
+                              'class' => 'Paws::PinpointEmail::EmailContent'
+                            },
+               'EmailTags' => {
+                                'type' => 'ArrayRef[PinpointEmail_MessageTag]',
+                                'class' => 'Paws::PinpointEmail::MessageTag'
+                              },
+               'Destination' => {
+                                  'type' => 'PinpointEmail_Destination',
+                                  'class' => 'Paws::PinpointEmail::Destination'
+                                },
+               'FromEmailAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'FeedbackForwardingEmailAddress' => {
+                                                     'type' => 'Str'
+                                                   },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'ReplyToAddresses' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -99,20 +139,20 @@ email.
 
 
 
-=head2 B<REQUIRED> Content => L<Paws::PinpointEmail::EmailContent>
+=head2 B<REQUIRED> Content => PinpointEmail_EmailContent
 
 An object that contains the body of the message. You can send either a
 Simple message or a Raw message.
 
 
 
-=head2 B<REQUIRED> Destination => L<Paws::PinpointEmail::Destination>
+=head2 B<REQUIRED> Destination => PinpointEmail_Destination
 
 An object that contains the recipients of the email message.
 
 
 
-=head2 EmailTags => ArrayRef[L<Paws::PinpointEmail::MessageTag>]
+=head2 EmailTags => ArrayRef[PinpointEmail_MessageTag]
 
 A list of tags, in the form of name/value pairs, to apply to an email
 that you send using the C<SendEmail> operation. Tags correspond to

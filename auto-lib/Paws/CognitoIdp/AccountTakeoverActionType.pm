@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::AccountTakeoverActionType;
-  use Moose;
-  has EventAction => (is => 'ro', isa => 'Str', required => 1);
-  has Notify => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CognitoIdp::Types qw//;
+  has EventAction => (is => 'ro', isa => Str, required => 1);
+  has Notify => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventAction' => {
+                                  'type' => 'Str'
+                                },
+               'Notify' => {
+                             'type' => 'Bool'
+                           }
+             },
+  'IsRequired' => {
+                    'EventAction' => 1,
+                    'Notify' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

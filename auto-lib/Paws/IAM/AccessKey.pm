@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::IAM::AccessKey;
-  use Moose;
-  has AccessKeyId => (is => 'ro', isa => 'Str', required => 1);
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has SecretAccessKey => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has AccessKeyId => (is => 'ro', isa => Str, required => 1);
+  has CreateDate => (is => 'ro', isa => Str);
+  has SecretAccessKey => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Status' => 1,
+                    'UserName' => 1,
+                    'SecretAccessKey' => 1,
+                    'AccessKeyId' => 1
+                  },
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SecretAccessKey' => {
+                                      'type' => 'Str'
+                                    },
+               'AccessKeyId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

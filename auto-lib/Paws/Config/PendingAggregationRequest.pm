@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Config::PendingAggregationRequest;
-  use Moose;
-  has RequesterAccountId => (is => 'ro', isa => 'Str');
-  has RequesterAwsRegion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has RequesterAccountId => (is => 'ro', isa => Str);
+  has RequesterAwsRegion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequesterAwsRegion' => {
+                                         'type' => 'Str'
+                                       },
+               'RequesterAccountId' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::MigrationHub;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'mgh' }
   sub signing_name { 'mgh' }
   sub version { '2017-05-31' }
   sub target_prefix { 'AWSMigrationHub' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -231,7 +233,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/migrationhub/>
 
 =over
 
-=item CreatedArtifact => L<Paws::MigrationHub::CreatedArtifact>
+=item CreatedArtifact => MigrationHub_CreatedArtifact
 
 =item MigrationTaskName => Str
 
@@ -276,7 +278,7 @@ EC2 instance, or DMS endpoint, etc.
 
 =over
 
-=item DiscoveredResource => L<Paws::MigrationHub::DiscoveredResource>
+=item DiscoveredResource => MigrationHub_DiscoveredResource
 
 =item MigrationTaskName => Str
 
@@ -656,7 +658,7 @@ IN_PROGRESS | COMPLETED>.
 
 =item ProgressUpdateStream => Str
 
-=item Task => L<Paws::MigrationHub::Task>
+=item Task => MigrationHub_Task
 
 =item UpdateDateTime => Str
 
@@ -701,7 +703,7 @@ namespace for each migration tool.
 
 =item ProgressUpdateStream => Str
 
-=item ResourceAttributeList => ArrayRef[L<Paws::MigrationHub::ResourceAttribute>]
+=item ResourceAttributeList => ArrayRef[MigrationHub_ResourceAttribute]
 
 =item [DryRun => Bool]
 

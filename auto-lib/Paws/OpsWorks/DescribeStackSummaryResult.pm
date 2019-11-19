@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::OpsWorks::DescribeStackSummaryResult;
-  use Moose;
-  has StackSummary => (is => 'ro', isa => 'Paws::OpsWorks::StackSummary');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw/OpsWorks_StackSummary/;
+  has StackSummary => (is => 'ro', isa => OpsWorks_StackSummary);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackSummary' => {
+                                   'class' => 'Paws::OpsWorks::StackSummary',
+                                   'type' => 'OpsWorks_StackSummary'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::OpsWorks::DescribeStackSummaryResult
 =head1 ATTRIBUTES
 
 
-=head2 StackSummary => L<Paws::OpsWorks::StackSummary>
+=head2 StackSummary => OpsWorks_StackSummary
 
 A C<StackSummary> object that contains the results.
 

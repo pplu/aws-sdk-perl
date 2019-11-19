@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::ListEntitiesDetectionJobsResponse;
-  use Moose;
-  has EntitiesDetectionJobPropertiesList => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::EntitiesDetectionJobProperties]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_EntitiesDetectionJobProperties/;
+  has EntitiesDetectionJobPropertiesList => (is => 'ro', isa => ArrayRef[Comprehend_EntitiesDetectionJobProperties]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'EntitiesDetectionJobPropertiesList' => {
+                                                         'type' => 'ArrayRef[Comprehend_EntitiesDetectionJobProperties]',
+                                                         'class' => 'Paws::Comprehend::EntitiesDetectionJobProperties'
+                                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Comprehend::ListEntitiesDetectionJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 EntitiesDetectionJobPropertiesList => ArrayRef[L<Paws::Comprehend::EntitiesDetectionJobProperties>]
+=head2 EntitiesDetectionJobPropertiesList => ArrayRef[Comprehend_EntitiesDetectionJobProperties]
 
 A list containing the properties of each job that is returned.
 

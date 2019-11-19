@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Rekognition::StreamProcessorInput;
-  use Moose;
-  has KinesisVideoStream => (is => 'ro', isa => 'Paws::Rekognition::KinesisVideoStream');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Rekognition::Types qw/Rekognition_KinesisVideoStream/;
+  has KinesisVideoStream => (is => 'ro', isa => Rekognition_KinesisVideoStream);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KinesisVideoStream' => {
+                                         'type' => 'Rekognition_KinesisVideoStream',
+                                         'class' => 'Paws::Rekognition::KinesisVideoStream'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Information about the source streaming video.
 =head1 ATTRIBUTES
 
 
-=head2 KinesisVideoStream => L<Paws::Rekognition::KinesisVideoStream>
+=head2 KinesisVideoStream => Rekognition_KinesisVideoStream
 
   The Kinesis video stream input stream for the source streaming video.
 

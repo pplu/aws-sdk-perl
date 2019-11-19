@@ -1,15 +1,61 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::ApplicationVersionDescription;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str');
-  has ApplicationVersionArn => (is => 'ro', isa => 'Str');
-  has BuildArn => (is => 'ro', isa => 'Str');
-  has DateCreated => (is => 'ro', isa => 'Str');
-  has DateUpdated => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has SourceBuildInformation => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SourceBuildInformation');
-  has SourceBundle => (is => 'ro', isa => 'Paws::ElasticBeanstalk::S3Location');
-  has Status => (is => 'ro', isa => 'Str');
-  has VersionLabel => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_SourceBuildInformation ElasticBeanstalk_S3Location/;
+  has ApplicationName => (is => 'ro', isa => Str);
+  has ApplicationVersionArn => (is => 'ro', isa => Str);
+  has BuildArn => (is => 'ro', isa => Str);
+  has DateCreated => (is => 'ro', isa => Str);
+  has DateUpdated => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has SourceBuildInformation => (is => 'ro', isa => ElasticBeanstalk_SourceBuildInformation);
+  has SourceBundle => (is => 'ro', isa => ElasticBeanstalk_S3Location);
+  has Status => (is => 'ro', isa => Str);
+  has VersionLabel => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'BuildArn' => {
+                               'type' => 'Str'
+                             },
+               'SourceBuildInformation' => {
+                                             'class' => 'Paws::ElasticBeanstalk::SourceBuildInformation',
+                                             'type' => 'ElasticBeanstalk_SourceBuildInformation'
+                                           },
+               'SourceBundle' => {
+                                   'class' => 'Paws::ElasticBeanstalk::S3Location',
+                                   'type' => 'ElasticBeanstalk_S3Location'
+                                 },
+               'DateCreated' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'VersionLabel' => {
+                                   'type' => 'Str'
+                                 },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'ApplicationVersionArn' => {
+                                            'type' => 'Str'
+                                          },
+               'DateUpdated' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -75,13 +121,13 @@ Describes the properties of an application version.
   The description of the application version.
 
 
-=head2 SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>
+=head2 SourceBuildInformation => ElasticBeanstalk_SourceBuildInformation
 
   If the version's source code was retrieved from AWS CodeCommit, the
 location of the source code for the application version.
 
 
-=head2 SourceBundle => L<Paws::ElasticBeanstalk::S3Location>
+=head2 SourceBundle => ElasticBeanstalk_S3Location
 
   The storage location of the application version's source bundle in
 Amazon S3.

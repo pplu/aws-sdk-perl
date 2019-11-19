@@ -1,15 +1,62 @@
+# Generated from default/object.tt
 package Paws::Connect::User;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has DirectoryUserId => (is => 'ro', isa => 'Str');
-  has HierarchyGroupId => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has IdentityInfo => (is => 'ro', isa => 'Paws::Connect::UserIdentityInfo');
-  has PhoneConfig => (is => 'ro', isa => 'Paws::Connect::UserPhoneConfig');
-  has RoutingProfileId => (is => 'ro', isa => 'Str');
-  has SecurityProfileIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Tags => (is => 'ro', isa => 'Paws::Connect::TagMap');
-  has Username => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Connect::Types qw/Connect_TagMap Connect_UserPhoneConfig Connect_UserIdentityInfo/;
+  has Arn => (is => 'ro', isa => Str);
+  has DirectoryUserId => (is => 'ro', isa => Str);
+  has HierarchyGroupId => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has IdentityInfo => (is => 'ro', isa => Connect_UserIdentityInfo);
+  has PhoneConfig => (is => 'ro', isa => Connect_UserPhoneConfig);
+  has RoutingProfileId => (is => 'ro', isa => Str);
+  has SecurityProfileIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Tags => (is => 'ro', isa => Connect_TagMap);
+  has Username => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityProfileIds' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'PhoneConfig' => {
+                                  'type' => 'Connect_UserPhoneConfig',
+                                  'class' => 'Paws::Connect::UserPhoneConfig'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Connect::TagMap',
+                           'type' => 'Connect_TagMap'
+                         },
+               'HierarchyGroupId' => {
+                                       'type' => 'Str'
+                                     },
+               'RoutingProfileId' => {
+                                       'type' => 'Str'
+                                     },
+               'IdentityInfo' => {
+                                   'class' => 'Paws::Connect::UserIdentityInfo',
+                                   'type' => 'Connect_UserIdentityInfo'
+                                 },
+               'DirectoryUserId' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -67,12 +114,12 @@ management.
   The identifier of the user account.
 
 
-=head2 IdentityInfo => L<Paws::Connect::UserIdentityInfo>
+=head2 IdentityInfo => Connect_UserIdentityInfo
 
   Information about the user identity.
 
 
-=head2 PhoneConfig => L<Paws::Connect::UserPhoneConfig>
+=head2 PhoneConfig => Connect_UserPhoneConfig
 
   Information about the phone configuration for the user.
 
@@ -87,7 +134,7 @@ management.
   The identifiers of the security profiles for the user.
 
 
-=head2 Tags => L<Paws::Connect::TagMap>
+=head2 Tags => Connect_TagMap
 
   The tags.
 

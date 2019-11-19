@@ -1,18 +1,78 @@
 
 package Paws::Robomaker::DescribeDeploymentJobResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has CreatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdAt');
-  has DeploymentApplicationConfigs => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::DeploymentApplicationConfig]', traits => ['NameInRequest'], request_name => 'deploymentApplicationConfigs');
-  has DeploymentConfig => (is => 'ro', isa => 'Paws::Robomaker::DeploymentConfig', traits => ['NameInRequest'], request_name => 'deploymentConfig');
-  has FailureCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureCode');
-  has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
-  has Fleet => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fleet');
-  has RobotDeploymentSummary => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::RobotDeployment]', traits => ['NameInRequest'], request_name => 'robotDeploymentSummary');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_TagMap Robomaker_DeploymentApplicationConfig Robomaker_RobotDeployment Robomaker_DeploymentConfig/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DeploymentApplicationConfigs => (is => 'ro', isa => ArrayRef[Robomaker_DeploymentApplicationConfig]);
+  has DeploymentConfig => (is => 'ro', isa => Robomaker_DeploymentConfig);
+  has FailureCode => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has Fleet => (is => 'ro', isa => Str);
+  has RobotDeploymentSummary => (is => 'ro', isa => ArrayRef[Robomaker_RobotDeployment]);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => Robomaker_TagMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::Robomaker::TagMap',
+                           'type' => 'Robomaker_TagMap'
+                         },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FailureCode' => {
+                                  'type' => 'Str'
+                                },
+               'RobotDeploymentSummary' => {
+                                             'class' => 'Paws::Robomaker::RobotDeployment',
+                                             'type' => 'ArrayRef[Robomaker_RobotDeployment]'
+                                           },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Fleet' => {
+                            'type' => 'Str'
+                          },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'DeploymentApplicationConfigs' => {
+                                                   'class' => 'Paws::Robomaker::DeploymentApplicationConfig',
+                                                   'type' => 'ArrayRef[Robomaker_DeploymentApplicationConfig]'
+                                                 },
+               'DeploymentConfig' => {
+                                       'type' => 'Robomaker_DeploymentConfig',
+                                       'class' => 'Paws::Robomaker::DeploymentConfig'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'RobotDeploymentSummary' => 'robotDeploymentSummary',
+                       'FailureCode' => 'failureCode',
+                       'Status' => 'status',
+                       'Tags' => 'tags',
+                       'DeploymentConfig' => 'deploymentConfig',
+                       'FailureReason' => 'failureReason',
+                       'Fleet' => 'fleet',
+                       'DeploymentApplicationConfigs' => 'deploymentApplicationConfigs',
+                       'CreatedAt' => 'createdAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -35,12 +95,12 @@ The time, in milliseconds since the epoch, when the deployment job was
 created.
 
 
-=head2 DeploymentApplicationConfigs => ArrayRef[L<Paws::Robomaker::DeploymentApplicationConfig>]
+=head2 DeploymentApplicationConfigs => ArrayRef[Robomaker_DeploymentApplicationConfig]
 
 The deployment application configuration.
 
 
-=head2 DeploymentConfig => L<Paws::Robomaker::DeploymentConfig>
+=head2 DeploymentConfig => Robomaker_DeploymentConfig
 
 The deployment configuration.
 
@@ -60,7 +120,7 @@ A short description of the reason why the deployment job failed.
 The Amazon Resource Name (ARN) of the fleet.
 
 
-=head2 RobotDeploymentSummary => ArrayRef[L<Paws::Robomaker::RobotDeployment>]
+=head2 RobotDeploymentSummary => ArrayRef[Robomaker_RobotDeployment]
 
 A list of robot deployment summaries.
 
@@ -70,7 +130,7 @@ A list of robot deployment summaries.
 The status of the deployment job.
 
 Valid values are: C<"Pending">, C<"Preparing">, C<"InProgress">, C<"Failed">, C<"Succeeded">, C<"Canceled">
-=head2 Tags => L<Paws::Robomaker::TagMap>
+=head2 Tags => Robomaker_TagMap
 
 The list of all tags added to the specified deployment job.
 

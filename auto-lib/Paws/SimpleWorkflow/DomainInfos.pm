@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SimpleWorkflow::DomainInfos;
-  use Moose;
-  has DomainInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::DomainInfo]', traits => ['NameInRequest'], request_name => 'domainInfos' , required => 1);
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_DomainInfo/;
+  has DomainInfos => (is => 'ro', isa => ArrayRef[SimpleWorkflow_DomainInfo], required => 1);
+  has NextPageToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextPageToken' => 'nextPageToken',
+                       'DomainInfos' => 'domainInfos'
+                     },
+  'IsRequired' => {
+                    'DomainInfos' => 1
+                  },
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'DomainInfos' => {
+                                  'class' => 'Paws::SimpleWorkflow::DomainInfo',
+                                  'type' => 'ArrayRef[SimpleWorkflow_DomainInfo]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +44,7 @@ Paws::SimpleWorkflow::DomainInfos
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DomainInfos => ArrayRef[L<Paws::SimpleWorkflow::DomainInfo>]
+=head2 B<REQUIRED> DomainInfos => ArrayRef[SimpleWorkflow_DomainInfo]
 
 A list of DomainInfo structures.
 

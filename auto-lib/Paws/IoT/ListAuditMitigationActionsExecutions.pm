@@ -1,18 +1,56 @@
 
 package Paws::IoT::ListAuditMitigationActionsExecutions;
-  use Moose;
-  has ActionStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'actionStatus');
-  has FindingId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'findingId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has TaskId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'taskId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has ActionStatus => (is => 'ro', isa => Str, predicate => 1);
+  has FindingId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has TaskId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAuditMitigationActionsExecutions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/audit/mitigationactions/executions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListAuditMitigationActionsExecutionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAuditMitigationActionsExecutions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/audit/mitigationactions/executions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListAuditMitigationActionsExecutionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FindingId' => {
+                                'type' => 'Str'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'ActionStatus' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInQuery' => {
+                      'ActionStatus' => 'actionStatus',
+                      'TaskId' => 'taskId',
+                      'FindingId' => 'findingId',
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken'
+                    },
+  'IsRequired' => {
+                    'TaskId' => 1,
+                    'FindingId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

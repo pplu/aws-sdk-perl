@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::BillingModeSummary;
-  use Moose;
-  has BillingMode => (is => 'ro', isa => 'Str');
-  has LastUpdateToPayPerRequestDateTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDB::Types qw//;
+  has BillingMode => (is => 'ro', isa => Str);
+  has LastUpdateToPayPerRequestDateTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BillingMode' => {
+                                  'type' => 'Str'
+                                },
+               'LastUpdateToPayPerRequestDateTime' => {
+                                                        'type' => 'Str'
+                                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

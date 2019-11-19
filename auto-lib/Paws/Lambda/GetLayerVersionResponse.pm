@@ -1,16 +1,55 @@
 
 package Paws::Lambda::GetLayerVersionResponse;
-  use Moose;
-  has CompatibleRuntimes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Content => (is => 'ro', isa => 'Paws::Lambda::LayerVersionContentOutput');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has LayerArn => (is => 'ro', isa => 'Str');
-  has LayerVersionArn => (is => 'ro', isa => 'Str');
-  has LicenseInfo => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::Lambda::Types qw/Lambda_LayerVersionContentOutput/;
+  has CompatibleRuntimes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Content => (is => 'ro', isa => Lambda_LayerVersionContentOutput);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LayerArn => (is => 'ro', isa => Str);
+  has LayerVersionArn => (is => 'ro', isa => Str);
+  has LicenseInfo => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LicenseInfo' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LayerArn' => {
+                               'type' => 'Str'
+                             },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'CompatibleRuntimes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'LayerVersionArn' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'Content' => {
+                              'type' => 'Lambda_LayerVersionContentOutput',
+                              'class' => 'Paws::Lambda::LayerVersionContentOutput'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +66,7 @@ Paws::Lambda::GetLayerVersionResponse
 The layer's compatible runtimes.
 
 
-=head2 Content => L<Paws::Lambda::LayerVersionContentOutput>
+=head2 Content => Lambda_LayerVersionContentOutput
 
 Details about the layer version.
 

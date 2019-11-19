@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::ELB::DeregisterInstancesFromLoadBalancer;
-  use Moose;
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Instance]', required => 1);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELB::Types qw/ELB_Instance/;
+  has Instances => (is => 'ro', isa => ArrayRef[ELB_Instance], required => 1, predicate => 1);
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterInstancesFromLoadBalancer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::DeregisterEndPointsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeregisterInstancesFromLoadBalancerResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeregisterInstancesFromLoadBalancer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELB::DeregisterEndPointsOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DeregisterInstancesFromLoadBalancerResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'LoadBalancerName' => 1,
+                    'Instances' => 1
+                  },
+  'types' => {
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'Instances' => {
+                                'class' => 'Paws::ELB::Instance',
+                                'type' => 'ArrayRef[ELB_Instance]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Instances => ArrayRef[L<Paws::ELB::Instance>]
+=head2 B<REQUIRED> Instances => ArrayRef[ELB_Instance]
 
 The IDs of the instances.
 

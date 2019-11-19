@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::RedShift::ClusterSnapshotCopyStatus;
-  use Moose;
-  has DestinationRegion => (is => 'ro', isa => 'Str');
-  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has RetentionPeriod => (is => 'ro', isa => 'Int');
-  has SnapshotCopyGrantName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::RedShift::Types qw//;
+  has DestinationRegion => (is => 'ro', isa => Str);
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => Int);
+  has RetentionPeriod => (is => 'ro', isa => Int);
+  has SnapshotCopyGrantName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshotCopyGrantName' => {
+                                            'type' => 'Str'
+                                          },
+               'DestinationRegion' => {
+                                        'type' => 'Str'
+                                      },
+               'RetentionPeriod' => {
+                                      'type' => 'Int'
+                                    },
+               'ManualSnapshotRetentionPeriod' => {
+                                                    'type' => 'Int'
+                                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

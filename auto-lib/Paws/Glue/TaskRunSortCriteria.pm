@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Glue::TaskRunSortCriteria;
-  use Moose;
-  has Column => (is => 'ro', isa => 'Str', required => 1);
-  has SortDirection => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has Column => (is => 'ro', isa => Str, required => 1);
+  has SortDirection => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Column' => {
+                             'type' => 'Str'
+                           },
+               'SortDirection' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'Column' => 1,
+                    'SortDirection' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::MediaLive::AvailSettings;
-  use Moose;
-  has Scte35SpliceInsert => (is => 'ro', isa => 'Paws::MediaLive::Scte35SpliceInsert', request_name => 'scte35SpliceInsert', traits => ['NameInRequest']);
-  has Scte35TimeSignalApos => (is => 'ro', isa => 'Paws::MediaLive::Scte35TimeSignalApos', request_name => 'scte35TimeSignalApos', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_Scte35TimeSignalApos MediaLive_Scte35SpliceInsert/;
+  has Scte35SpliceInsert => (is => 'ro', isa => MediaLive_Scte35SpliceInsert);
+  has Scte35TimeSignalApos => (is => 'ro', isa => MediaLive_Scte35TimeSignalApos);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Scte35TimeSignalApos' => 'scte35TimeSignalApos',
+                       'Scte35SpliceInsert' => 'scte35SpliceInsert'
+                     },
+  'types' => {
+               'Scte35TimeSignalApos' => {
+                                           'type' => 'MediaLive_Scte35TimeSignalApos',
+                                           'class' => 'Paws::MediaLive::Scte35TimeSignalApos'
+                                         },
+               'Scte35SpliceInsert' => {
+                                         'type' => 'MediaLive_Scte35SpliceInsert',
+                                         'class' => 'Paws::MediaLive::Scte35SpliceInsert'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Avail Settings
 =head1 ATTRIBUTES
 
 
-=head2 Scte35SpliceInsert => L<Paws::MediaLive::Scte35SpliceInsert>
+=head2 Scte35SpliceInsert => MediaLive_Scte35SpliceInsert
 
   
 
 
-=head2 Scte35TimeSignalApos => L<Paws::MediaLive::Scte35TimeSignalApos>
+=head2 Scte35TimeSignalApos => MediaLive_Scte35TimeSignalApos
 
   
 

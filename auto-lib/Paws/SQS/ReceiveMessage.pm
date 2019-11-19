@@ -1,19 +1,56 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::ReceiveMessage;
-  use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MaxNumberOfMessages => (is => 'ro', isa => 'Int');
-  has MessageAttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
-  has ReceiveRequestAttemptId => (is => 'ro', isa => 'Str');
-  has VisibilityTimeout => (is => 'ro', isa => 'Int');
-  has WaitTimeSeconds => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int/;
+  use Paws::SQS::Types qw//;
+  has AttributeNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MaxNumberOfMessages => (is => 'ro', isa => Int, predicate => 1);
+  has MessageAttributeNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has QueueUrl => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReceiveRequestAttemptId => (is => 'ro', isa => Str, predicate => 1);
+  has VisibilityTimeout => (is => 'ro', isa => Int, predicate => 1);
+  has WaitTimeSeconds => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReceiveMessage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SQS::ReceiveMessageResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ReceiveMessageResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ReceiveMessage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SQS::ReceiveMessageResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ReceiveMessageResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxNumberOfMessages' => {
+                                          'type' => 'Int'
+                                        },
+               'WaitTimeSeconds' => {
+                                      'type' => 'Int'
+                                    },
+               'AttributeNames' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'MessageAttributeNames' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'VisibilityTimeout' => {
+                                        'type' => 'Int'
+                                      },
+               'QueueUrl' => {
+                               'type' => 'Str'
+                             },
+               'ReceiveRequestAttemptId' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'IsRequired' => {
+                    'QueueUrl' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

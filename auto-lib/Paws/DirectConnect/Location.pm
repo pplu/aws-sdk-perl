@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::DirectConnect::Location;
-  use Moose;
-  has AvailablePortSpeeds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availablePortSpeeds', traits => ['NameInRequest']);
-  has AvailableProviders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availableProviders', traits => ['NameInRequest']);
-  has LocationCode => (is => 'ro', isa => 'Str', request_name => 'locationCode', traits => ['NameInRequest']);
-  has LocationName => (is => 'ro', isa => 'Str', request_name => 'locationName', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::DirectConnect::Types qw//;
+  has AvailablePortSpeeds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has AvailableProviders => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LocationCode => (is => 'ro', isa => Str);
+  has LocationName => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailablePortSpeeds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'LocationName' => {
+                                   'type' => 'Str'
+                                 },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'LocationCode' => {
+                                   'type' => 'Str'
+                                 },
+               'AvailableProviders' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       }
+             },
+  'NameInRequest' => {
+                       'AvailableProviders' => 'availableProviders',
+                       'LocationCode' => 'locationCode',
+                       'Region' => 'region',
+                       'LocationName' => 'locationName',
+                       'AvailablePortSpeeds' => 'availablePortSpeeds'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

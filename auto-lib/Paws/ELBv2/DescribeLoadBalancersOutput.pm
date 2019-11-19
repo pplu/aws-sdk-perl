@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::ELBv2::DescribeLoadBalancersOutput;
-  use Moose;
-  has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::LoadBalancer]');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELBv2::Types qw/ELBv2_LoadBalancer/;
+  has LoadBalancers => (is => 'ro', isa => ArrayRef[ELBv2_LoadBalancer]);
+  has NextMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'LoadBalancers' => {
+                                    'type' => 'ArrayRef[ELBv2_LoadBalancer]',
+                                    'class' => 'Paws::ELBv2::LoadBalancer'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +38,7 @@ Paws::ELBv2::DescribeLoadBalancersOutput
 =head1 ATTRIBUTES
 
 
-=head2 LoadBalancers => ArrayRef[L<Paws::ELBv2::LoadBalancer>]
+=head2 LoadBalancers => ArrayRef[ELBv2_LoadBalancer]
 
 Information about the load balancers.
 

@@ -1,16 +1,45 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::DescribeEngineDefaultParameters;
-  use Moose;
-  has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::RDS::Types qw/RDS_Filter/;
+  has DBParameterGroupFamily => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[RDS_Filter], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultParameters');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DescribeEngineDefaultParametersResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultParametersResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEngineDefaultParameters');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DescribeEngineDefaultParametersResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeEngineDefaultParametersResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DBParameterGroupFamily' => 1
+                  },
+  'types' => {
+               'DBParameterGroupFamily' => {
+                                             'type' => 'Str'
+                                           },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Filters' => {
+                              'type' => 'ArrayRef[RDS_Filter]',
+                              'class' => 'Paws::RDS::Filter'
+                            },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +78,7 @@ The name of the DB parameter group family.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
+=head2 Filters => ArrayRef[RDS_Filter]
 
 This parameter isn't currently supported.
 

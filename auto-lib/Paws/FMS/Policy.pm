@@ -1,16 +1,74 @@
+# Generated from default/object.tt
 package Paws::FMS::Policy;
-  use Moose;
-  has ExcludeMap => (is => 'ro', isa => 'Paws::FMS::CustomerPolicyScopeMap');
-  has ExcludeResourceTags => (is => 'ro', isa => 'Bool', required => 1);
-  has IncludeMap => (is => 'ro', isa => 'Paws::FMS::CustomerPolicyScopeMap');
-  has PolicyId => (is => 'ro', isa => 'Str');
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyUpdateToken => (is => 'ro', isa => 'Str');
-  has RemediationEnabled => (is => 'ro', isa => 'Bool', required => 1);
-  has ResourceTags => (is => 'ro', isa => 'ArrayRef[Paws::FMS::ResourceTag]');
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceTypeList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SecurityServicePolicyData => (is => 'ro', isa => 'Paws::FMS::SecurityServicePolicyData', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef Undef/;
+  use Paws::FMS::Types qw/FMS_SecurityServicePolicyData FMS_CustomerPolicyScopeMap FMS_ResourceTag/;
+  has ExcludeMap => (is => 'ro', isa => FMS_CustomerPolicyScopeMap);
+  has ExcludeResourceTags => (is => 'ro', isa => Bool, required => 1);
+  has IncludeMap => (is => 'ro', isa => FMS_CustomerPolicyScopeMap);
+  has PolicyId => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str, required => 1);
+  has PolicyUpdateToken => (is => 'ro', isa => Str);
+  has RemediationEnabled => (is => 'ro', isa => Bool, required => 1);
+  has ResourceTags => (is => 'ro', isa => ArrayRef[FMS_ResourceTag]);
+  has ResourceType => (is => 'ro', isa => Str, required => 1);
+  has ResourceTypeList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SecurityServicePolicyData => (is => 'ro', isa => FMS_SecurityServicePolicyData, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceTags' => {
+                                   'class' => 'Paws::FMS::ResourceTag',
+                                   'type' => 'ArrayRef[FMS_ResourceTag]'
+                                 },
+               'ExcludeResourceTags' => {
+                                          'type' => 'Bool'
+                                        },
+               'RemediationEnabled' => {
+                                         'type' => 'Bool'
+                                       },
+               'ResourceTypeList' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'PolicyUpdateToken' => {
+                                        'type' => 'Str'
+                                      },
+               'ExcludeMap' => {
+                                 'class' => 'Paws::FMS::CustomerPolicyScopeMap',
+                                 'type' => 'FMS_CustomerPolicyScopeMap'
+                               },
+               'IncludeMap' => {
+                                 'class' => 'Paws::FMS::CustomerPolicyScopeMap',
+                                 'type' => 'FMS_CustomerPolicyScopeMap'
+                               },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyId' => {
+                               'type' => 'Str'
+                             },
+               'SecurityServicePolicyData' => {
+                                                'class' => 'Paws::FMS::SecurityServicePolicyData',
+                                                'type' => 'FMS_SecurityServicePolicyData'
+                                              }
+             },
+  'IsRequired' => {
+                    'ExcludeResourceTags' => 1,
+                    'RemediationEnabled' => 1,
+                    'ResourceType' => 1,
+                    'PolicyName' => 1,
+                    'SecurityServicePolicyData' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +104,7 @@ An AWS Firewall Manager policy.
 =head1 ATTRIBUTES
 
 
-=head2 ExcludeMap => L<Paws::FMS::CustomerPolicyScopeMap>
+=head2 ExcludeMap => FMS_CustomerPolicyScopeMap
 
   Specifies the AWS account IDs to exclude from the policy. The
 C<IncludeMap> values are evaluated first, with all the appropriate
@@ -67,7 +125,7 @@ C<False>, and the C<ResourceTag> array is not null, only resources with
 the specified tags are in scope of the policy.
 
 
-=head2 IncludeMap => L<Paws::FMS::CustomerPolicyScopeMap>
+=head2 IncludeMap => FMS_CustomerPolicyScopeMap
 
   Specifies the AWS account IDs to include in the policy. If
 C<IncludeMap> is null, all accounts in the organization in AWS
@@ -104,7 +162,7 @@ C<GetPolicy> request.
 resources.
 
 
-=head2 ResourceTags => ArrayRef[L<Paws::FMS::ResourceTag>]
+=head2 ResourceTags => ArrayRef[FMS_ResourceTag]
 
   An array of C<ResourceTag> objects.
 
@@ -129,7 +187,7 @@ value is C<AWS::EC2::SecurityGroup>.
   An array of C<ResourceType>.
 
 
-=head2 B<REQUIRED> SecurityServicePolicyData => L<Paws::FMS::SecurityServicePolicyData>
+=head2 B<REQUIRED> SecurityServicePolicyData => FMS_SecurityServicePolicyData
 
   Details about the security service that is being used to protect the
 resources.

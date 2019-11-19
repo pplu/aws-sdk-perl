@@ -1,10 +1,35 @@
 
 package Paws::IoT::ListScheduledAuditsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has ScheduledAudits => (is => 'ro', isa => 'ArrayRef[Paws::IoT::ScheduledAuditMetadata]', traits => ['NameInRequest'], request_name => 'scheduledAudits');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_ScheduledAuditMetadata/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ScheduledAudits => (is => 'ro', isa => ArrayRef[IoT_ScheduledAuditMetadata]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScheduledAudits' => {
+                                      'class' => 'Paws::IoT::ScheduledAuditMetadata',
+                                      'type' => 'ArrayRef[IoT_ScheduledAuditMetadata]'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'ScheduledAudits' => 'scheduledAudits'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +47,7 @@ A token that can be used to retrieve the next set of results, or
 C<null> if there are no additional results.
 
 
-=head2 ScheduledAudits => ArrayRef[L<Paws::IoT::ScheduledAuditMetadata>]
+=head2 ScheduledAudits => ArrayRef[IoT_ScheduledAuditMetadata]
 
 The list of scheduled audits.
 

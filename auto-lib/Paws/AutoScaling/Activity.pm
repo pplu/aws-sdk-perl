@@ -1,15 +1,65 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::Activity;
-  use Moose;
-  has ActivityId => (is => 'ro', isa => 'Str', required => 1);
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Cause => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Details => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has Progress => (is => 'ro', isa => 'Int');
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
-  has StatusCode => (is => 'ro', isa => 'Str', required => 1);
-  has StatusMessage => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AutoScaling::Types qw//;
+  has ActivityId => (is => 'ro', isa => Str, required => 1);
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1);
+  has Cause => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Details => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has Progress => (is => 'ro', isa => Int);
+  has StartTime => (is => 'ro', isa => Str, required => 1);
+  has StatusCode => (is => 'ro', isa => Str, required => 1);
+  has StatusMessage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StartTime' => 1,
+                    'ActivityId' => 1,
+                    'AutoScalingGroupName' => 1,
+                    'StatusCode' => 1
+                  },
+  'types' => {
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Progress' => {
+                               'type' => 'Int'
+                             },
+               'Cause' => {
+                            'type' => 'Str'
+                          },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'ActivityId' => {
+                                 'type' => 'Str'
+                               },
+               'Details' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

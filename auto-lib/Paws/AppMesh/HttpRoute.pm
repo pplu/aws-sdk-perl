@@ -1,8 +1,43 @@
+# Generated from default/object.tt
 package Paws::AppMesh::HttpRoute;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Paws::AppMesh::HttpRouteAction', request_name => 'action', traits => ['NameInRequest'], required => 1);
-  has Match => (is => 'ro', isa => 'Paws::AppMesh::HttpRouteMatch', request_name => 'match', traits => ['NameInRequest'], required => 1);
-  has RetryPolicy => (is => 'ro', isa => 'Paws::AppMesh::HttpRetryPolicy', request_name => 'retryPolicy', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_HttpRetryPolicy AppMesh_HttpRouteAction AppMesh_HttpRouteMatch/;
+  has Action => (is => 'ro', isa => AppMesh_HttpRouteAction, required => 1);
+  has Match => (is => 'ro', isa => AppMesh_HttpRouteMatch, required => 1);
+  has RetryPolicy => (is => 'ro', isa => AppMesh_HttpRetryPolicy);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Match' => 'match',
+                       'Action' => 'action',
+                       'RetryPolicy' => 'retryPolicy'
+                     },
+  'IsRequired' => {
+                    'Match' => 1,
+                    'Action' => 1
+                  },
+  'types' => {
+               'Match' => {
+                            'type' => 'AppMesh_HttpRouteMatch',
+                            'class' => 'Paws::AppMesh::HttpRouteMatch'
+                          },
+               'Action' => {
+                             'class' => 'Paws::AppMesh::HttpRouteAction',
+                             'type' => 'AppMesh_HttpRouteAction'
+                           },
+               'RetryPolicy' => {
+                                  'class' => 'Paws::AppMesh::HttpRetryPolicy',
+                                  'type' => 'AppMesh_HttpRetryPolicy'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +73,17 @@ An object that represents an HTTP or HTTP2 route type.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Action => L<Paws::AppMesh::HttpRouteAction>
+=head2 B<REQUIRED> Action => AppMesh_HttpRouteAction
 
   An object that represents the action to take if a match is determined.
 
 
-=head2 B<REQUIRED> Match => L<Paws::AppMesh::HttpRouteMatch>
+=head2 B<REQUIRED> Match => AppMesh_HttpRouteMatch
 
   An object that represents the criteria for determining a request match.
 
 
-=head2 RetryPolicy => L<Paws::AppMesh::HttpRetryPolicy>
+=head2 RetryPolicy => AppMesh_HttpRetryPolicy
 
   An object that represents a retry policy.
 

@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::MediaLive::TimecodeConfig;
-  use Moose;
-  has Source => (is => 'ro', isa => 'Str', request_name => 'source', traits => ['NameInRequest'], required => 1);
-  has SyncThreshold => (is => 'ro', isa => 'Int', request_name => 'syncThreshold', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaLive::Types qw//;
+  has Source => (is => 'ro', isa => Str, required => 1);
+  has SyncThreshold => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SyncThreshold' => 'syncThreshold',
+                       'Source' => 'source'
+                     },
+  'IsRequired' => {
+                    'Source' => 1
+                  },
+  'types' => {
+               'SyncThreshold' => {
+                                    'type' => 'Int'
+                                  },
+               'Source' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

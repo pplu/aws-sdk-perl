@@ -1,14 +1,70 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::Encryption;
-  use Moose;
-  has Algorithm => (is => 'ro', isa => 'Str', request_name => 'algorithm', traits => ['NameInRequest'], required => 1);
-  has ConstantInitializationVector => (is => 'ro', isa => 'Str', request_name => 'constantInitializationVector', traits => ['NameInRequest']);
-  has DeviceId => (is => 'ro', isa => 'Str', request_name => 'deviceId', traits => ['NameInRequest']);
-  has KeyType => (is => 'ro', isa => 'Str', request_name => 'keyType', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has SecretArn => (is => 'ro', isa => 'Str', request_name => 'secretArn', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConnect::Types qw//;
+  has Algorithm => (is => 'ro', isa => Str, required => 1);
+  has ConstantInitializationVector => (is => 'ro', isa => Str);
+  has DeviceId => (is => 'ro', isa => Str);
+  has KeyType => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has SecretArn => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Region' => 'region',
+                       'Algorithm' => 'algorithm',
+                       'ConstantInitializationVector' => 'constantInitializationVector',
+                       'SecretArn' => 'secretArn',
+                       'RoleArn' => 'roleArn',
+                       'Url' => 'url',
+                       'DeviceId' => 'deviceId',
+                       'ResourceId' => 'resourceId',
+                       'KeyType' => 'keyType'
+                     },
+  'IsRequired' => {
+                    'Algorithm' => 1,
+                    'RoleArn' => 1
+                  },
+  'types' => {
+               'DeviceId' => {
+                               'type' => 'Str'
+                             },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'ConstantInitializationVector' => {
+                                                   'type' => 'Str'
+                                                 },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'SecretArn' => {
+                                'type' => 'Str'
+                              },
+               'Algorithm' => {
+                                'type' => 'Str'
+                              },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'KeyType' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

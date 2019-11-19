@@ -1,19 +1,60 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MTurk::CreateHITType;
-  use Moose;
-  has AssignmentDurationInSeconds => (is => 'ro', isa => 'Int', required => 1);
-  has AutoApprovalDelayInSeconds => (is => 'ro', isa => 'Int');
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has Keywords => (is => 'ro', isa => 'Str');
-  has QualificationRequirements => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::QualificationRequirement]');
-  has Reward => (is => 'ro', isa => 'Str', required => 1);
-  has Title => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::MTurk::Types qw/MTurk_QualificationRequirement/;
+  has AssignmentDurationInSeconds => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has AutoApprovalDelayInSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Keywords => (is => 'ro', isa => Str, predicate => 1);
+  has QualificationRequirements => (is => 'ro', isa => ArrayRef[MTurk_QualificationRequirement], predicate => 1);
+  has Reward => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Title => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHITType');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MTurk::CreateHITTypeResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateHITType');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MTurk::CreateHITTypeResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Title' => 1,
+                    'Description' => 1,
+                    'AssignmentDurationInSeconds' => 1,
+                    'Reward' => 1
+                  },
+  'types' => {
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'QualificationRequirements' => {
+                                                'class' => 'Paws::MTurk::QualificationRequirement',
+                                                'type' => 'ArrayRef[MTurk_QualificationRequirement]'
+                                              },
+               'Reward' => {
+                             'type' => 'Str'
+                           },
+               'AutoApprovalDelayInSeconds' => {
+                                                 'type' => 'Int'
+                                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Keywords' => {
+                               'type' => 'Str'
+                             },
+               'AssignmentDurationInSeconds' => {
+                                                  'type' => 'Int'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -108,7 +149,7 @@ commas. These words are used in searches to find HITs.
 
 
 
-=head2 QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>]
+=head2 QualificationRequirements => ArrayRef[MTurk_QualificationRequirement]
 
 Conditions that a Worker's Qualifications must meet in order to accept
 the HIT. A HIT can have between zero and ten Qualification

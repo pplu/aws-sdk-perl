@@ -1,15 +1,60 @@
+# Generated from default/object.tt
 package Paws::SSM::Activation;
-  use Moose;
-  has ActivationId => (is => 'ro', isa => 'Str');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has DefaultInstanceName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExpirationDate => (is => 'ro', isa => 'Str');
-  has Expired => (is => 'ro', isa => 'Bool');
-  has IamRole => (is => 'ro', isa => 'Str');
-  has RegistrationLimit => (is => 'ro', isa => 'Int');
-  has RegistrationsCount => (is => 'ro', isa => 'Int');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Tag/;
+  has ActivationId => (is => 'ro', isa => Str);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has DefaultInstanceName => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ExpirationDate => (is => 'ro', isa => Str);
+  has Expired => (is => 'ro', isa => Bool);
+  has IamRole => (is => 'ro', isa => Str);
+  has RegistrationLimit => (is => 'ro', isa => Int);
+  has RegistrationsCount => (is => 'ro', isa => Int);
+  has Tags => (is => 'ro', isa => ArrayRef[SSM_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistrationLimit' => {
+                                        'type' => 'Int'
+                                      },
+               'ExpirationDate' => {
+                                     'type' => 'Str'
+                                   },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'DefaultInstanceName' => {
+                                          'type' => 'Str'
+                                        },
+               'ActivationId' => {
+                                   'type' => 'Str'
+                                 },
+               'Expired' => {
+                              'type' => 'Bool'
+                            },
+               'IamRole' => {
+                              'type' => 'Str'
+                            },
+               'Tags' => {
+                           'class' => 'Paws::SSM::Tag',
+                           'type' => 'ArrayRef[SSM_Tag]'
+                         },
+               'RegistrationsCount' => {
+                                         'type' => 'Int'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -97,7 +142,7 @@ this activation.
 activation.
 
 
-=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+=head2 Tags => ArrayRef[SSM_Tag]
 
   Tags assigned to the activation.
 

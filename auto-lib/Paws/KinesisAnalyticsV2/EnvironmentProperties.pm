@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::EnvironmentProperties;
-  use Moose;
-  has PropertyGroups => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::PropertyGroup]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_PropertyGroup/;
+  has PropertyGroups => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_PropertyGroup], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PropertyGroups' => 1
+                  },
+  'types' => {
+               'PropertyGroups' => {
+                                     'class' => 'Paws::KinesisAnalyticsV2::PropertyGroup',
+                                     'type' => 'ArrayRef[KinesisAnalyticsV2_PropertyGroup]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ application.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> PropertyGroups => ArrayRef[L<Paws::KinesisAnalyticsV2::PropertyGroup>]
+=head2 B<REQUIRED> PropertyGroups => ArrayRef[KinesisAnalyticsV2_PropertyGroup]
 
   Describes the execution property groups.
 

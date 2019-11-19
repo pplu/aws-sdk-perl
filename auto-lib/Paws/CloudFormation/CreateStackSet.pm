@@ -1,22 +1,70 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::CreateStackSet;
-  use Moose;
-  has AdministrationRoleARN => (is => 'ro', isa => 'Str');
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExecutionRoleName => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has StackSetName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
-  has TemplateBody => (is => 'ro', isa => 'Str');
-  has TemplateURL => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_Parameter CloudFormation_Tag/;
+  has AdministrationRoleARN => (is => 'ro', isa => Str, predicate => 1);
+  has Capabilities => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has ExecutionRoleName => (is => 'ro', isa => Str, predicate => 1);
+  has Parameters => (is => 'ro', isa => ArrayRef[CloudFormation_Parameter], predicate => 1);
+  has StackSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CloudFormation_Tag], predicate => 1);
+  has TemplateBody => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateURL => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStackSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::CreateStackSetOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStackSetResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateStackSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::CreateStackSetOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateStackSetResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StackSetName' => 1
+                  },
+  'types' => {
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 },
+               'Capabilities' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'TemplateURL' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::CloudFormation::Tag',
+                           'type' => 'ArrayRef[CloudFormation_Tag]'
+                         },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               'Parameters' => {
+                                 'type' => 'ArrayRef[CloudFormation_Parameter]',
+                                 'class' => 'Paws::CloudFormation::Parameter'
+                               },
+               'AdministrationRoleARN' => {
+                                            'type' => 'Str'
+                                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ExecutionRoleName' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -237,7 +285,7 @@ stack sets.
 
 
 
-=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
+=head2 Parameters => ArrayRef[CloudFormation_Parameter]
 
 The input parameters for the stack set template.
 
@@ -254,7 +302,7 @@ longer than 128 characters.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
+=head2 Tags => ArrayRef[CloudFormation_Tag]
 
 The key-value pairs to associate with this stack set and the stacks
 created from it. AWS CloudFormation also propagates these tags to

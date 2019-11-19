@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::IoT::StreamSummary;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has StreamArn => (is => 'ro', isa => 'Str', request_name => 'streamArn', traits => ['NameInRequest']);
-  has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
-  has StreamVersion => (is => 'ro', isa => 'Int', request_name => 'streamVersion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has StreamArn => (is => 'ro', isa => Str);
+  has StreamId => (is => 'ro', isa => Str);
+  has StreamVersion => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'StreamId' => 'streamId',
+                       'StreamArn' => 'streamArn',
+                       'Description' => 'description',
+                       'StreamVersion' => 'streamVersion'
+                     },
+  'types' => {
+               'StreamVersion' => {
+                                    'type' => 'Int'
+                                  },
+               'StreamArn' => {
+                                'type' => 'Str'
+                              },
+               'StreamId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

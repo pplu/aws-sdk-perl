@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::PipelineSummary;
-  use Moose;
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Updated => (is => 'ro', isa => 'Str', request_name => 'updated', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodePipeline::Types qw//;
+  has Created => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Updated => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Version' => 'version',
+                       'Updated' => 'updated',
+                       'Created' => 'created'
+                     },
+  'types' => {
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'Updated' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Version' => {
+                              'type' => 'Int'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

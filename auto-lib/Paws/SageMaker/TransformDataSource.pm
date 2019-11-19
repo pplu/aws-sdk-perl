@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::SageMaker::TransformDataSource;
-  use Moose;
-  has S3DataSource => (is => 'ro', isa => 'Paws::SageMaker::TransformS3DataSource', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SageMaker::Types qw/SageMaker_TransformS3DataSource/;
+  has S3DataSource => (is => 'ro', isa => SageMaker_TransformS3DataSource, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3DataSource' => {
+                                   'class' => 'Paws::SageMaker::TransformS3DataSource',
+                                   'type' => 'SageMaker_TransformS3DataSource'
+                                 }
+             },
+  'IsRequired' => {
+                    'S3DataSource' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Describes the location of the channel data.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> S3DataSource => L<Paws::SageMaker::TransformS3DataSource>
+=head2 B<REQUIRED> S3DataSource => SageMaker_TransformS3DataSource
 
   The S3 location of the data source that is associated with a channel.
 

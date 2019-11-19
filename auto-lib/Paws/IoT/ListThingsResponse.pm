@@ -1,10 +1,35 @@
 
 package Paws::IoT::ListThingsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Things => (is => 'ro', isa => 'ArrayRef[Paws::IoT::ThingAttribute]', traits => ['NameInRequest'], request_name => 'things');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_ThingAttribute/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Things => (is => 'ro', isa => ArrayRef[IoT_ThingAttribute]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Things' => 'things'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Things' => {
+                             'class' => 'Paws::IoT::ThingAttribute',
+                             'type' => 'ArrayRef[IoT_ThingAttribute]'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +47,7 @@ The token used to get the next set of results, or B<null> if there are
 no additional results.
 
 
-=head2 Things => ArrayRef[L<Paws::IoT::ThingAttribute>]
+=head2 Things => ArrayRef[IoT_ThingAttribute]
 
 The things.
 

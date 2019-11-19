@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::AccountDetail;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest'], required => 1);
-  has Email => (is => 'ro', isa => 'Str', request_name => 'email', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1);
+  has Email => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Email' => 'email',
+                       'AccountId' => 'accountId'
+                     },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'Email' => 1
+                  },
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Email' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,71 @@
 package Paws::EC2::Vpc;
-  use Moose;
-  has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
-  has CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcCidrBlockAssociation]', request_name => 'cidrBlockAssociationSet', traits => ['NameInRequest']);
-  has DhcpOptionsId => (is => 'ro', isa => 'Str', request_name => 'dhcpOptionsId', traits => ['NameInRequest']);
-  has InstanceTenancy => (is => 'ro', isa => 'Str', request_name => 'instanceTenancy', traits => ['NameInRequest']);
-  has Ipv6CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcIpv6CidrBlockAssociation]', request_name => 'ipv6CidrBlockAssociationSet', traits => ['NameInRequest']);
-  has IsDefault => (is => 'ro', isa => 'Bool', request_name => 'isDefault', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_Tag EC2_VpcIpv6CidrBlockAssociation EC2_VpcCidrBlockAssociation/;
+  has CidrBlock => (is => 'ro', isa => Str);
+  has CidrBlockAssociationSet => (is => 'ro', isa => ArrayRef[EC2_VpcCidrBlockAssociation]);
+  has DhcpOptionsId => (is => 'ro', isa => Str);
+  has InstanceTenancy => (is => 'ro', isa => Str);
+  has Ipv6CidrBlockAssociationSet => (is => 'ro', isa => ArrayRef[EC2_VpcIpv6CidrBlockAssociation]);
+  has IsDefault => (is => 'ro', isa => Bool);
+  has OwnerId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CidrBlockAssociationSet' => 'cidrBlockAssociationSet',
+                       'VpcId' => 'vpcId',
+                       'IsDefault' => 'isDefault',
+                       'Tags' => 'tagSet',
+                       'InstanceTenancy' => 'instanceTenancy',
+                       'CidrBlock' => 'cidrBlock',
+                       'OwnerId' => 'ownerId',
+                       'State' => 'state',
+                       'Ipv6CidrBlockAssociationSet' => 'ipv6CidrBlockAssociationSet',
+                       'DhcpOptionsId' => 'dhcpOptionsId'
+                     },
+  'types' => {
+               'CidrBlockAssociationSet' => {
+                                              'type' => 'ArrayRef[EC2_VpcCidrBlockAssociation]',
+                                              'class' => 'Paws::EC2::VpcCidrBlockAssociation'
+                                            },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'IsDefault' => {
+                                'type' => 'Bool'
+                              },
+               'CidrBlock' => {
+                                'type' => 'Str'
+                              },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'InstanceTenancy' => {
+                                      'type' => 'Str'
+                                    },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Ipv6CidrBlockAssociationSet' => {
+                                                  'type' => 'ArrayRef[EC2_VpcIpv6CidrBlockAssociation]',
+                                                  'class' => 'Paws::EC2::VpcIpv6CidrBlockAssociation'
+                                                },
+               'DhcpOptionsId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +106,7 @@ This class has no description
   The primary IPv4 CIDR block for the VPC.
 
 
-=head2 CidrBlockAssociationSet => ArrayRef[L<Paws::EC2::VpcCidrBlockAssociation>]
+=head2 CidrBlockAssociationSet => ArrayRef[EC2_VpcCidrBlockAssociation]
 
   Information about the IPv4 CIDR blocks associated with the VPC.
 
@@ -66,7 +122,7 @@ C<default> if the default options are associated with the VPC).
   The allowed tenancy of instances launched into the VPC.
 
 
-=head2 Ipv6CidrBlockAssociationSet => ArrayRef[L<Paws::EC2::VpcIpv6CidrBlockAssociation>]
+=head2 Ipv6CidrBlockAssociationSet => ArrayRef[EC2_VpcIpv6CidrBlockAssociation]
 
   Information about the IPv6 CIDR blocks associated with the VPC.
 
@@ -86,7 +142,7 @@ C<default> if the default options are associated with the VPC).
   The current state of the VPC.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the VPC.
 

@@ -1,36 +1,97 @@
+# Generated from default/map_enum.tt
 package Paws::OpsWorks::LayerAttributes;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw//;
+  has BundlerVersion => (is => 'ro', isa => Str);
+  has EcsClusterArn => (is => 'ro', isa => Str);
+  has EnableHaproxyStats => (is => 'ro', isa => Str);
+  has GangliaPassword => (is => 'ro', isa => Str);
+  has GangliaUrl => (is => 'ro', isa => Str);
+  has GangliaUser => (is => 'ro', isa => Str);
+  has HaproxyHealthCheckMethod => (is => 'ro', isa => Str);
+  has HaproxyHealthCheckUrl => (is => 'ro', isa => Str);
+  has HaproxyStatsPassword => (is => 'ro', isa => Str);
+  has HaproxyStatsUrl => (is => 'ro', isa => Str);
+  has HaproxyStatsUser => (is => 'ro', isa => Str);
+  has JavaAppServer => (is => 'ro', isa => Str);
+  has JavaAppServerVersion => (is => 'ro', isa => Str);
+  has Jvm => (is => 'ro', isa => Str);
+  has JvmOptions => (is => 'ro', isa => Str);
+  has JvmVersion => (is => 'ro', isa => Str);
+  has ManageBundler => (is => 'ro', isa => Str);
+  has MemcachedMemory => (is => 'ro', isa => Str);
+  has MysqlRootPassword => (is => 'ro', isa => Str);
+  has MysqlRootPasswordUbiquitous => (is => 'ro', isa => Str);
+  has NodejsVersion => (is => 'ro', isa => Str);
+  has PassengerVersion => (is => 'ro', isa => Str);
+  has RailsStack => (is => 'ro', isa => Str);
+  has RubygemsVersion => (is => 'ro', isa => Str);
+  has RubyVersion => (is => 'ro', isa => Str);
 
-  has BundlerVersion => (is => 'ro', isa => 'Str');
-  has EcsClusterArn => (is => 'ro', isa => 'Str');
-  has EnableHaproxyStats => (is => 'ro', isa => 'Str');
-  has GangliaPassword => (is => 'ro', isa => 'Str');
-  has GangliaUrl => (is => 'ro', isa => 'Str');
-  has GangliaUser => (is => 'ro', isa => 'Str');
-  has HaproxyHealthCheckMethod => (is => 'ro', isa => 'Str');
-  has HaproxyHealthCheckUrl => (is => 'ro', isa => 'Str');
-  has HaproxyStatsPassword => (is => 'ro', isa => 'Str');
-  has HaproxyStatsUrl => (is => 'ro', isa => 'Str');
-  has HaproxyStatsUser => (is => 'ro', isa => 'Str');
-  has JavaAppServer => (is => 'ro', isa => 'Str');
-  has JavaAppServerVersion => (is => 'ro', isa => 'Str');
-  has Jvm => (is => 'ro', isa => 'Str');
-  has JvmOptions => (is => 'ro', isa => 'Str');
-  has JvmVersion => (is => 'ro', isa => 'Str');
-  has ManageBundler => (is => 'ro', isa => 'Str');
-  has MemcachedMemory => (is => 'ro', isa => 'Str');
-  has MysqlRootPassword => (is => 'ro', isa => 'Str');
-  has MysqlRootPasswordUbiquitous => (is => 'ro', isa => 'Str');
-  has NodejsVersion => (is => 'ro', isa => 'Str');
-  has PassengerVersion => (is => 'ro', isa => 'Str');
-  has RailsStack => (is => 'ro', isa => 'Str');
-  has RubygemsVersion => (is => 'ro', isa => 'Str');
-  has RubyVersion => (is => 'ro', isa => 'Str');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'BundlerVersion' => {
+                                          type => 'Str',                                        },
+                               'EcsClusterArn' => {
+                                          type => 'Str',                                        },
+                               'EnableHaproxyStats' => {
+                                          type => 'Str',                                        },
+                               'GangliaPassword' => {
+                                          type => 'Str',                                        },
+                               'GangliaUrl' => {
+                                          type => 'Str',                                        },
+                               'GangliaUser' => {
+                                          type => 'Str',                                        },
+                               'HaproxyHealthCheckMethod' => {
+                                          type => 'Str',                                        },
+                               'HaproxyHealthCheckUrl' => {
+                                          type => 'Str',                                        },
+                               'HaproxyStatsPassword' => {
+                                          type => 'Str',                                        },
+                               'HaproxyStatsUrl' => {
+                                          type => 'Str',                                        },
+                               'HaproxyStatsUser' => {
+                                          type => 'Str',                                        },
+                               'JavaAppServer' => {
+                                          type => 'Str',                                        },
+                               'JavaAppServerVersion' => {
+                                          type => 'Str',                                        },
+                               'Jvm' => {
+                                          type => 'Str',                                        },
+                               'JvmOptions' => {
+                                          type => 'Str',                                        },
+                               'JvmVersion' => {
+                                          type => 'Str',                                        },
+                               'ManageBundler' => {
+                                          type => 'Str',                                        },
+                               'MemcachedMemory' => {
+                                          type => 'Str',                                        },
+                               'MysqlRootPassword' => {
+                                          type => 'Str',                                        },
+                               'MysqlRootPasswordUbiquitous' => {
+                                          type => 'Str',                                        },
+                               'NodejsVersion' => {
+                                          type => 'Str',                                        },
+                               'PassengerVersion' => {
+                                          type => 'Str',                                        },
+                               'RailsStack' => {
+                                          type => 'Str',                                        },
+                               'RubygemsVersion' => {
+                                          type => 'Str',                                        },
+                               'RubyVersion' => {
+                                          type => 'Str',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,79 +127,79 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 BundlerVersion => Str
+=head2 BundlerVersion => 
 
 
-=head2 EcsClusterArn => Str
+=head2 EcsClusterArn => 
 
 
-=head2 EnableHaproxyStats => Str
+=head2 EnableHaproxyStats => 
 
 
-=head2 GangliaPassword => Str
+=head2 GangliaPassword => 
 
 
-=head2 GangliaUrl => Str
+=head2 GangliaUrl => 
 
 
-=head2 GangliaUser => Str
+=head2 GangliaUser => 
 
 
-=head2 HaproxyHealthCheckMethod => Str
+=head2 HaproxyHealthCheckMethod => 
 
 
-=head2 HaproxyHealthCheckUrl => Str
+=head2 HaproxyHealthCheckUrl => 
 
 
-=head2 HaproxyStatsPassword => Str
+=head2 HaproxyStatsPassword => 
 
 
-=head2 HaproxyStatsUrl => Str
+=head2 HaproxyStatsUrl => 
 
 
-=head2 HaproxyStatsUser => Str
+=head2 HaproxyStatsUser => 
 
 
-=head2 JavaAppServer => Str
+=head2 JavaAppServer => 
 
 
-=head2 JavaAppServerVersion => Str
+=head2 JavaAppServerVersion => 
 
 
-=head2 Jvm => Str
+=head2 Jvm => 
 
 
-=head2 JvmOptions => Str
+=head2 JvmOptions => 
 
 
-=head2 JvmVersion => Str
+=head2 JvmVersion => 
 
 
-=head2 ManageBundler => Str
+=head2 ManageBundler => 
 
 
-=head2 MemcachedMemory => Str
+=head2 MemcachedMemory => 
 
 
-=head2 MysqlRootPassword => Str
+=head2 MysqlRootPassword => 
 
 
-=head2 MysqlRootPasswordUbiquitous => Str
+=head2 MysqlRootPasswordUbiquitous => 
 
 
-=head2 NodejsVersion => Str
+=head2 NodejsVersion => 
 
 
-=head2 PassengerVersion => Str
+=head2 PassengerVersion => 
 
 
-=head2 RailsStack => Str
+=head2 RailsStack => 
 
 
-=head2 RubygemsVersion => Str
+=head2 RubygemsVersion => 
 
 
-=head2 RubyVersion => Str
+=head2 RubyVersion => 
 
 
 

@@ -1,19 +1,57 @@
 
 package Paws::Batch::ListJobs;
-  use Moose;
-  has ArrayJobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arrayJobId');
-  has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue');
-  has JobStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobStatus');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has MultiNodeJobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'multiNodeJobId');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Batch::Types qw//;
+  has ArrayJobId => (is => 'ro', isa => Str, predicate => 1);
+  has JobQueue => (is => 'ro', isa => Str, predicate => 1);
+  has JobStatus => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has MultiNodeJobId => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListJobs');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/listjobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::ListJobsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListJobs');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/listjobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Batch::ListJobsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MultiNodeJobId' => {
+                                     'type' => 'Str'
+                                   },
+               'JobQueue' => {
+                               'type' => 'Str'
+                             },
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ArrayJobId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'MultiNodeJobId' => 'multiNodeJobId',
+                       'JobQueue' => 'jobQueue',
+                       'JobStatus' => 'jobStatus',
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken',
+                       'ArrayJobId' => 'arrayJobId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::InputProcessingConfigurationUpdate;
-  use Moose;
-  has InputLambdaProcessorUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputLambdaProcessorUpdate', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_InputLambdaProcessorUpdate/;
+  has InputLambdaProcessorUpdate => (is => 'ro', isa => KinesisAnalytics_InputLambdaProcessorUpdate, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InputLambdaProcessorUpdate' => 1
+                  },
+  'types' => {
+               'InputLambdaProcessorUpdate' => {
+                                                 'class' => 'Paws::KinesisAnalytics::InputLambdaProcessorUpdate',
+                                                 'type' => 'KinesisAnalytics_InputLambdaProcessorUpdate'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Describes updates to an InputProcessingConfiguration
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InputLambdaProcessorUpdate => L<Paws::KinesisAnalytics::InputLambdaProcessorUpdate>
+=head2 B<REQUIRED> InputLambdaProcessorUpdate => KinesisAnalytics_InputLambdaProcessorUpdate
 
   Provides update information for an InputLambdaProcessor
 (https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html).

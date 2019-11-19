@@ -1,9 +1,30 @@
 
 package Paws::IoT::DescribeAuditFindingResponse;
-  use Moose;
-  has Finding => (is => 'ro', isa => 'Paws::IoT::AuditFinding', traits => ['NameInRequest'], request_name => 'finding');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_AuditFinding/;
+  has Finding => (is => 'ro', isa => IoT_AuditFinding);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Finding' => 'finding'
+                     },
+  'types' => {
+               'Finding' => {
+                              'type' => 'IoT_AuditFinding',
+                              'class' => 'Paws::IoT::AuditFinding'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::IoT::DescribeAuditFindingResponse
 =head1 ATTRIBUTES
 
 
-=head2 Finding => L<Paws::IoT::AuditFinding>
+=head2 Finding => IoT_AuditFinding
 
 
 

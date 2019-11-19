@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputWhitelistRule;
-  use Moose;
-  has Cidr => (is => 'ro', isa => 'Str', request_name => 'cidr', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has Cidr => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Cidr' => 'cidr'
+                     },
+  'types' => {
+               'Cidr' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

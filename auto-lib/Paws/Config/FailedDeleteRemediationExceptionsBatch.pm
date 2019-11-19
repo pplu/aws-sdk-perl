@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Config::FailedDeleteRemediationExceptionsBatch;
-  use Moose;
-  has FailedItems => (is => 'ro', isa => 'ArrayRef[Paws::Config::RemediationExceptionResourceKey]');
-  has FailureMessage => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Config::Types qw/Config_RemediationExceptionResourceKey/;
+  has FailedItems => (is => 'ro', isa => ArrayRef[Config_RemediationExceptionResourceKey]);
+  has FailureMessage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailedItems' => {
+                                  'type' => 'ArrayRef[Config_RemediationExceptionResourceKey]',
+                                  'class' => 'Paws::Config::RemediationExceptionResourceKey'
+                                },
+               'FailureMessage' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ reasons.
 =head1 ATTRIBUTES
 
 
-=head2 FailedItems => ArrayRef[L<Paws::Config::RemediationExceptionResourceKey>]
+=head2 FailedItems => ArrayRef[Config_RemediationExceptionResourceKey]
 
   Returns remediation exception resource key object of the failed items.
 

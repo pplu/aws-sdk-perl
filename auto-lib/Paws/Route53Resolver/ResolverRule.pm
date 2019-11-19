@@ -1,17 +1,68 @@
+# Generated from default/object.tt
 package Paws::Route53Resolver::ResolverRule;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreatorRequestId => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OwnerId => (is => 'ro', isa => 'Str');
-  has ResolverEndpointId => (is => 'ro', isa => 'Str');
-  has RuleType => (is => 'ro', isa => 'Str');
-  has ShareStatus => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has TargetIps => (is => 'ro', isa => 'ArrayRef[Paws::Route53Resolver::TargetAddress]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53Resolver::Types qw/Route53Resolver_TargetAddress/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatorRequestId => (is => 'ro', isa => Str);
+  has DomainName => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OwnerId => (is => 'ro', isa => Str);
+  has ResolverEndpointId => (is => 'ro', isa => Str);
+  has RuleType => (is => 'ro', isa => Str);
+  has ShareStatus => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has TargetIps => (is => 'ro', isa => ArrayRef[Route53Resolver_TargetAddress]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'TargetIps' => {
+                                'type' => 'ArrayRef[Route53Resolver_TargetAddress]',
+                                'class' => 'Paws::Route53Resolver::TargetAddress'
+                              },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'RuleType' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     },
+               'ResolverEndpointId' => {
+                                         'type' => 'Str'
+                                       },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'ShareStatus' => {
+                                  'type' => 'Str'
+                                },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -118,7 +169,7 @@ the rule with the current account.
   A detailed description of the status of a resolver rule.
 
 
-=head2 TargetIps => ArrayRef[L<Paws::Route53Resolver::TargetAddress>]
+=head2 TargetIps => ArrayRef[Route53Resolver_TargetAddress]
 
   An array that contains the IP addresses and ports that you want to
 forward

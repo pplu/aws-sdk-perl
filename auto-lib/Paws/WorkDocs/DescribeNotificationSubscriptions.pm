@@ -1,16 +1,47 @@
 
 package Paws::WorkDocs::DescribeNotificationSubscriptions;
-  use Moose;
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
-  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'OrganizationId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WorkDocs::Types qw//;
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has OrganizationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeNotificationSubscriptions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/organizations/{OrganizationId}/subscriptions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::DescribeNotificationSubscriptionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeNotificationSubscriptions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/organizations/{OrganizationId}/subscriptions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::DescribeNotificationSubscriptionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'OrganizationId' => 'OrganizationId'
+                  },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'OrganizationId' => 1
+                  },
+  'ParamInQuery' => {
+                      'Limit' => 'limit',
+                      'Marker' => 'marker'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

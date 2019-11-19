@@ -1,13 +1,63 @@
+# Generated from default/object.tt
 package Paws::Lightsail::KeyPair;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Fingerprint => (is => 'ro', isa => 'Str', request_name => 'fingerprint', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_ResourceLocation Lightsail_Tag/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Fingerprint => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Lightsail_ResourceLocation);
+  has Name => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has SupportCode => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CreatedAt' => 'createdAt',
+                       'Fingerprint' => 'fingerprint',
+                       'ResourceType' => 'resourceType',
+                       'Location' => 'location',
+                       'Name' => 'name',
+                       'SupportCode' => 'supportCode',
+                       'Arn' => 'arn',
+                       'Tags' => 'tags'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SupportCode' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::Lightsail::Tag',
+                           'type' => 'ArrayRef[Lightsail_Tag]'
+                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Fingerprint' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Location' => {
+                               'class' => 'Paws::Lightsail::ResourceLocation',
+                               'type' => 'Lightsail_ResourceLocation'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +109,7 @@ C<arn:aws:lightsail:us-east-2:123456789101:KeyPair/05859e3d-331d-48ba-9034-12345
   The RSA fingerprint of the key pair.
 
 
-=head2 Location => L<Paws::Lightsail::ResourceLocation>
+=head2 Location => Lightsail_ResourceLocation
 
   The region name and Availability Zone where the key pair was created.
 
@@ -82,7 +132,7 @@ code enables our support team to look up your Lightsail information
 more easily.
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
   The tag keys and optional values for the resource. For more information
 about tags in Lightsail, see the Lightsail Dev Guide

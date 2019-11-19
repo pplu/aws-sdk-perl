@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Kafka::ClientAuthentication;
-  use Moose;
-  has Tls => (is => 'ro', isa => 'Paws::Kafka::Tls', request_name => 'tls', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Kafka::Types qw/Kafka_Tls/;
+  has Tls => (is => 'ro', isa => Kafka_Tls);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tls' => {
+                          'type' => 'Kafka_Tls',
+                          'class' => 'Paws::Kafka::Tls'
+                        }
+             },
+  'NameInRequest' => {
+                       'Tls' => 'tls'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Includes all client authentication information.
 =head1 ATTRIBUTES
 
 
-=head2 Tls => L<Paws::Kafka::Tls>
+=head2 Tls => Kafka_Tls
 
   Details for ClientAuthentication using TLS.
 

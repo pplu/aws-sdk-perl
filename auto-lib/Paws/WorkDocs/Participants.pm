@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::Participants;
-  use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::GroupMetadata]');
-  has Users => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::UserMetadata]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::WorkDocs::Types qw/WorkDocs_GroupMetadata WorkDocs_UserMetadata/;
+  has Groups => (is => 'ro', isa => ArrayRef[WorkDocs_GroupMetadata]);
+  has Users => (is => 'ro', isa => ArrayRef[WorkDocs_UserMetadata]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Groups' => {
+                             'type' => 'ArrayRef[WorkDocs_GroupMetadata]',
+                             'class' => 'Paws::WorkDocs::GroupMetadata'
+                           },
+               'Users' => {
+                            'type' => 'ArrayRef[WorkDocs_UserMetadata]',
+                            'class' => 'Paws::WorkDocs::UserMetadata'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +59,12 @@ Describes the users or user groups.
 =head1 ATTRIBUTES
 
 
-=head2 Groups => ArrayRef[L<Paws::WorkDocs::GroupMetadata>]
+=head2 Groups => ArrayRef[WorkDocs_GroupMetadata]
 
   The list of user groups.
 
 
-=head2 Users => ArrayRef[L<Paws::WorkDocs::UserMetadata>]
+=head2 Users => ArrayRef[WorkDocs_UserMetadata]
 
   The list of users.
 

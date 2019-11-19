@@ -1,16 +1,49 @@
 
 package Paws::SSO::GetRoleCredentials;
-  use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sso_bearer_token', required => 1);
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'account_id', required => 1);
-  has RoleName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'role_name', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSO::Types qw//;
+  has AccessToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRoleCredentials');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/federation/credentials');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSO::GetRoleCredentialsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetRoleCredentials');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/federation/credentials');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSO::GetRoleCredentialsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'AccessToken' => 'x-amz-sso_bearer_token'
+                     },
+  'types' => {
+               'AccessToken' => {
+                                  'type' => 'Str'
+                                },
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInQuery' => {
+                      'RoleName' => 'role_name',
+                      'AccountId' => 'account_id'
+                    },
+  'IsRequired' => {
+                    'AccessToken' => 1,
+                    'RoleName' => 1,
+                    'AccountId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

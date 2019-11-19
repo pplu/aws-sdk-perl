@@ -1,11 +1,48 @@
+# Generated from default/object.tt
 package Paws::Athena::NamedQuery;
-  use Moose;
-  has Database => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NamedQueryId => (is => 'ro', isa => 'Str');
-  has QueryString => (is => 'ro', isa => 'Str', required => 1);
-  has WorkGroup => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Athena::Types qw//;
+  has Database => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has NamedQueryId => (is => 'ro', isa => Str);
+  has QueryString => (is => 'ro', isa => Str, required => 1);
+  has WorkGroup => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkGroup' => {
+                                'type' => 'Str'
+                              },
+               'Database' => {
+                               'type' => 'Str'
+                             },
+               'NamedQueryId' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'QueryString' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'QueryString' => 1,
+                    'Name' => 1,
+                    'Database' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

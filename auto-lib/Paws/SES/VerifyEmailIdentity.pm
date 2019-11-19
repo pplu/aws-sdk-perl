@@ -1,13 +1,32 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::VerifyEmailIdentity;
-  use Moose;
-  has EmailAddress => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has EmailAddress => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'VerifyEmailIdentity');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::VerifyEmailIdentityResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'VerifyEmailIdentityResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'VerifyEmailIdentity');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::VerifyEmailIdentityResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'VerifyEmailIdentityResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'EmailAddress' => 1
+                  },
+  'types' => {
+               'EmailAddress' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::VolumeStatistics;
-  use Moose;
-  has InboxRawCount => (is => 'ro', isa => 'Int');
-  has ProjectedInbox => (is => 'ro', isa => 'Int');
-  has ProjectedSpam => (is => 'ro', isa => 'Int');
-  has SpamRawCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::PinpointEmail::Types qw//;
+  has InboxRawCount => (is => 'ro', isa => Int);
+  has ProjectedInbox => (is => 'ro', isa => Int);
+  has ProjectedSpam => (is => 'ro', isa => Int);
+  has SpamRawCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InboxRawCount' => {
+                                    'type' => 'Int'
+                                  },
+               'ProjectedInbox' => {
+                                     'type' => 'Int'
+                                   },
+               'ProjectedSpam' => {
+                                    'type' => 'Int'
+                                  },
+               'SpamRawCount' => {
+                                   'type' => 'Int'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::ResponseError;
-  use Moose;
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConnect::Types qw//;
+  has Message => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'Message' => 1
+                  },
+  'NameInRequest' => {
+                       'Message' => 'message'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

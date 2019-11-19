@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Config::ExecutionControls;
-  use Moose;
-  has SsmControls => (is => 'ro', isa => 'Paws::Config::SsmControls');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Config::Types qw/Config_SsmControls/;
+  has SsmControls => (is => 'ro', isa => Config_SsmControls);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SsmControls' => {
+                                  'class' => 'Paws::Config::SsmControls',
+                                  'type' => 'Config_SsmControls'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ The controls that AWS Config uses for executing remediations.
 =head1 ATTRIBUTES
 
 
-=head2 SsmControls => L<Paws::Config::SsmControls>
+=head2 SsmControls => Config_SsmControls
 
   A SsmControls object.
 

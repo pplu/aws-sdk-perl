@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Transfer::DescribeUser;
-  use Moose;
-  has ServerId => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Transfer::Types qw//;
+  has ServerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUser');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Transfer::DescribeUserResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeUser');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Transfer::DescribeUserResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'ServerId' => 1
+                  },
+  'types' => {
+               'ServerId' => {
+                               'type' => 'Str'
+                             },
+               'UserName' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

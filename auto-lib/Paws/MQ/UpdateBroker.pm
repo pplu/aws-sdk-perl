@@ -1,20 +1,69 @@
 
 package Paws::MQ::UpdateBroker;
-  use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'autoMinorVersionUpgrade');
-  has BrokerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'broker-id', required => 1);
-  has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', traits => ['NameInRequest'], request_name => 'configuration');
-  has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
-  has HostInstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostInstanceType');
-  has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', traits => ['NameInRequest'], request_name => 'logs');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::MQ::Types qw/MQ_ConfigurationId MQ_Logs/;
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has BrokerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Configuration => (is => 'ro', isa => MQ_ConfigurationId, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has HostInstanceType => (is => 'ro', isa => Str, predicate => 1);
+  has Logs => (is => 'ro', isa => MQ_Logs, predicate => 1);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBroker');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/brokers/{broker-id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MQ::UpdateBrokerResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateBroker');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/brokers/{broker-id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MQ::UpdateBrokerResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'BrokerId' => 1
+                  },
+  'NameInRequest' => {
+                       'Logs' => 'logs',
+                       'HostInstanceType' => 'hostInstanceType',
+                       'EngineVersion' => 'engineVersion',
+                       'AutoMinorVersionUpgrade' => 'autoMinorVersionUpgrade',
+                       'SecurityGroups' => 'securityGroups',
+                       'Configuration' => 'configuration'
+                     },
+  'types' => {
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'Configuration' => {
+                                    'class' => 'Paws::MQ::ConfigurationId',
+                                    'type' => 'MQ_ConfigurationId'
+                                  },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'HostInstanceType' => {
+                                       'type' => 'Str'
+                                     },
+               'Logs' => {
+                           'type' => 'MQ_Logs',
+                           'class' => 'Paws::MQ::Logs'
+                         },
+               'BrokerId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'BrokerId' => 'broker-id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +134,7 @@ characters, or special characters.
 
 
 
-=head2 Configuration => L<Paws::MQ::ConfigurationId>
+=head2 Configuration => MQ_ConfigurationId
 
 A list of information about the configuration.
 
@@ -107,7 +156,7 @@ https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker
 
 
 
-=head2 Logs => L<Paws::MQ::Logs>
+=head2 Logs => MQ_Logs
 
 Enables Amazon CloudWatch logging for brokers.
 

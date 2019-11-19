@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::WAF::SqlInjectionMatchSetUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has SqlInjectionMatchTuple => (is => 'ro', isa => 'Paws::WAF::SqlInjectionMatchTuple', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_SqlInjectionMatchTuple/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has SqlInjectionMatchTuple => (is => 'ro', isa => WAF_SqlInjectionMatchTuple, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SqlInjectionMatchTuple' => 1,
+                    'Action' => 1
+                  },
+  'types' => {
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'SqlInjectionMatchTuple' => {
+                                             'class' => 'Paws::WAF::SqlInjectionMatchTuple',
+                                             'type' => 'WAF_SqlInjectionMatchTuple'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +72,7 @@ SqlInjectionMatchSet. Use C<DELETE> to remove a
 C<SqlInjectionMatchSetUpdate> from a C<SqlInjectionMatchSet>.
 
 
-=head2 B<REQUIRED> SqlInjectionMatchTuple => L<Paws::WAF::SqlInjectionMatchTuple>
+=head2 B<REQUIRED> SqlInjectionMatchTuple => WAF_SqlInjectionMatchTuple
 
   Specifies the part of a web request that you want AWS WAF to inspect
 for snippets of malicious SQL code and, if you want AWS WAF to inspect

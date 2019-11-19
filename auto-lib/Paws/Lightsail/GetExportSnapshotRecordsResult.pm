@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetExportSnapshotRecordsResult;
-  use Moose;
-  has ExportSnapshotRecords => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::ExportSnapshotRecord]', traits => ['NameInRequest'], request_name => 'exportSnapshotRecords' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_ExportSnapshotRecord/;
+  has ExportSnapshotRecords => (is => 'ro', isa => ArrayRef[Lightsail_ExportSnapshotRecord]);
+  has NextPageToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ExportSnapshotRecords' => 'exportSnapshotRecords',
+                       'NextPageToken' => 'nextPageToken'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ExportSnapshotRecords' => {
+                                            'class' => 'Paws::Lightsail::ExportSnapshotRecord',
+                                            'type' => 'ArrayRef[Lightsail_ExportSnapshotRecord]'
+                                          },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Lightsail::GetExportSnapshotRecordsResult
 =head1 ATTRIBUTES
 
 
-=head2 ExportSnapshotRecords => ArrayRef[L<Paws::Lightsail::ExportSnapshotRecord>]
+=head2 ExportSnapshotRecords => ArrayRef[Lightsail_ExportSnapshotRecord]
 
 A list of objects describing the export snapshot records.
 

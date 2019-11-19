@@ -1,9 +1,29 @@
 
 package Paws::ApiGatewayV2::GetModelTemplateResponse;
-  use Moose;
-  has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has Value => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Value' => 'value'
+                     },
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

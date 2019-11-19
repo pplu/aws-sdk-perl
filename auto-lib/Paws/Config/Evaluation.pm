@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::Config::Evaluation;
-  use Moose;
-  has Annotation => (is => 'ro', isa => 'Str');
-  has ComplianceResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ComplianceResourceType => (is => 'ro', isa => 'Str', required => 1);
-  has ComplianceType => (is => 'ro', isa => 'Str', required => 1);
-  has OrderingTimestamp => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has Annotation => (is => 'ro', isa => Str);
+  has ComplianceResourceId => (is => 'ro', isa => Str, required => 1);
+  has ComplianceResourceType => (is => 'ro', isa => Str, required => 1);
+  has ComplianceType => (is => 'ro', isa => Str, required => 1);
+  has OrderingTimestamp => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'OrderingTimestamp' => 1,
+                    'ComplianceType' => 1,
+                    'ComplianceResourceId' => 1,
+                    'ComplianceResourceType' => 1
+                  },
+  'types' => {
+               'Annotation' => {
+                                 'type' => 'Str'
+                               },
+               'OrderingTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'ComplianceType' => {
+                                     'type' => 'Str'
+                                   },
+               'ComplianceResourceId' => {
+                                           'type' => 'Str'
+                                         },
+               'ComplianceResourceType' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

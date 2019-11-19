@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Forecast::DataSource;
-  use Moose;
-  has S3Config => (is => 'ro', isa => 'Paws::Forecast::S3Config', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Forecast::Types qw/Forecast_S3Config/;
+  has S3Config => (is => 'ro', isa => Forecast_S3Config, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'S3Config' => 1
+                  },
+  'types' => {
+               'S3Config' => {
+                               'type' => 'Forecast_S3Config',
+                               'class' => 'Paws::Forecast::S3Config'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ This object is submitted in the CreateDatasetImportJob request.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> S3Config => L<Paws::Forecast::S3Config>
+=head2 B<REQUIRED> S3Config => Forecast_S3Config
 
   The path to the training data stored in an Amazon Simple Storage
 Service (Amazon S3) bucket along with the credentials to access the

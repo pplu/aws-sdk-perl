@@ -1,19 +1,71 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::GetRelationalDatabaseMetricData;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime' , required => 1);
-  has MetricName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'metricName' , required => 1);
-  has Period => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'period' , required => 1);
-  has RelationalDatabaseName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseName' , required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' , required => 1);
-  has Statistics => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'statistics' , required => 1);
-  has Unit => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'unit' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::Lightsail::Types qw//;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Period => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has RelationalDatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Statistics => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Unit => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRelationalDatabaseMetricData');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::GetRelationalDatabaseMetricDataResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetRelationalDatabaseMetricData');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::GetRelationalDatabaseMetricDataResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Period' => 1,
+                    'Statistics' => 1,
+                    'Unit' => 1,
+                    'MetricName' => 1,
+                    'EndTime' => 1,
+                    'RelationalDatabaseName' => 1,
+                    'StartTime' => 1
+                  },
+  'NameInRequest' => {
+                       'Unit' => 'unit',
+                       'Statistics' => 'statistics',
+                       'Period' => 'period',
+                       'StartTime' => 'startTime',
+                       'RelationalDatabaseName' => 'relationalDatabaseName',
+                       'EndTime' => 'endTime',
+                       'MetricName' => 'metricName'
+                     },
+  'types' => {
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'Period' => {
+                             'type' => 'Int'
+                           },
+               'Statistics' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'RelationalDatabaseName' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

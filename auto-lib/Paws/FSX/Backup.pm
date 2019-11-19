@@ -1,16 +1,74 @@
+# Generated from default/object.tt
 package Paws::FSX::Backup;
-  use Moose;
-  has BackupId => (is => 'ro', isa => 'Str', required => 1);
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has DirectoryInformation => (is => 'ro', isa => 'Paws::FSX::ActiveDirectoryBackupAttributes');
-  has FailureDetails => (is => 'ro', isa => 'Paws::FSX::BackupFailureDetails');
-  has FileSystem => (is => 'ro', isa => 'Paws::FSX::FileSystem', required => 1);
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has Lifecycle => (is => 'ro', isa => 'Str', required => 1);
-  has ProgressPercent => (is => 'ro', isa => 'Int');
-  has ResourceARN => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::FSX::Types qw/FSX_Tag FSX_FileSystem FSX_BackupFailureDetails FSX_ActiveDirectoryBackupAttributes/;
+  has BackupId => (is => 'ro', isa => Str, required => 1);
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has DirectoryInformation => (is => 'ro', isa => FSX_ActiveDirectoryBackupAttributes);
+  has FailureDetails => (is => 'ro', isa => FSX_BackupFailureDetails);
+  has FileSystem => (is => 'ro', isa => FSX_FileSystem, required => 1);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has Lifecycle => (is => 'ro', isa => Str, required => 1);
+  has ProgressPercent => (is => 'ro', isa => Int);
+  has ResourceARN => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[FSX_Tag]);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[FSX_Tag]',
+                           'class' => 'Paws::FSX::Tag'
+                         },
+               'FileSystem' => {
+                                 'type' => 'FSX_FileSystem',
+                                 'class' => 'Paws::FSX::FileSystem'
+                               },
+               'FailureDetails' => {
+                                     'class' => 'Paws::FSX::BackupFailureDetails',
+                                     'type' => 'FSX_BackupFailureDetails'
+                                   },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'DirectoryInformation' => {
+                                           'type' => 'FSX_ActiveDirectoryBackupAttributes',
+                                           'class' => 'Paws::FSX::ActiveDirectoryBackupAttributes'
+                                         },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Lifecycle' => {
+                                'type' => 'Str'
+                              },
+               'BackupId' => {
+                               'type' => 'Str'
+                             },
+               'ProgressPercent' => {
+                                      'type' => 'Int'
+                                    },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'Type' => 1,
+                    'BackupId' => 1,
+                    'Lifecycle' => 1,
+                    'FileSystem' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,18 +115,18 @@ create a new file system from a backup to protect against data loss.
   The time when a particular backup was created.
 
 
-=head2 DirectoryInformation => L<Paws::FSX::ActiveDirectoryBackupAttributes>
+=head2 DirectoryInformation => FSX_ActiveDirectoryBackupAttributes
 
   The configuration of the self-managed Microsoft Active Directory (AD)
 to which the Windows File Server instance is joined.
 
 
-=head2 FailureDetails => L<Paws::FSX::BackupFailureDetails>
+=head2 FailureDetails => FSX_BackupFailureDetails
 
   Details explaining any failures that occur when creating a backup.
 
 
-=head2 B<REQUIRED> FileSystem => L<Paws::FSX::FileSystem>
+=head2 B<REQUIRED> FileSystem => FSX_FileSystem
 
   Metadata of the file system associated with the backup. This metadata
 is persisted even if the file system is deleted.
@@ -95,7 +153,7 @@ this backup's data.
   The Amazon Resource Name (ARN) for the backup resource.
 
 
-=head2 Tags => ArrayRef[L<Paws::FSX::Tag>]
+=head2 Tags => ArrayRef[FSX_Tag]
 
   Tags associated with a particular file system.
 

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::CreateCampaignResponse;
-  use Moose;
-  has CampaignResponse => (is => 'ro', isa => 'Paws::Pinpoint::CampaignResponse', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_CampaignResponse/;
+  has CampaignResponse => (is => 'ro', isa => Pinpoint_CampaignResponse, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CampaignResponse' => 1
+                  },
+  'types' => {
+               'CampaignResponse' => {
+                                       'class' => 'Paws::Pinpoint::CampaignResponse',
+                                       'type' => 'Pinpoint_CampaignResponse'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CampaignResponse => L<Paws::Pinpoint::CampaignResponse>
+=head2 B<REQUIRED> CampaignResponse => Pinpoint_CampaignResponse
 
   
 

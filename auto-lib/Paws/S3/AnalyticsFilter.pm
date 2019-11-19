@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::S3::AnalyticsFilter;
-  use Moose;
-  has And => (is => 'ro', isa => 'Paws::S3::AnalyticsAndOperator');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has Tag => (is => 'ro', isa => 'Paws::S3::Tag');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_Tag S3_AnalyticsAndOperator/;
+  has And => (is => 'ro', isa => S3_AnalyticsAndOperator);
+  has Prefix => (is => 'ro', isa => Str);
+  has Tag => (is => 'ro', isa => S3_Tag);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'And' => {
+                          'class' => 'Paws::S3::AnalyticsAndOperator',
+                          'type' => 'S3_AnalyticsAndOperator'
+                        },
+               'Tag' => {
+                          'type' => 'S3_Tag',
+                          'class' => 'Paws::S3::Tag'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +66,7 @@ considered in any analysis.
 =head1 ATTRIBUTES
 
 
-=head2 And => L<Paws::S3::AnalyticsAndOperator>
+=head2 And => S3_AnalyticsAndOperator
 
   A conjunction (logical AND) of predicates, which is used in evaluating
 an analytics filter. The operator must have at least two predicates.
@@ -52,7 +77,7 @@ an analytics filter. The operator must have at least two predicates.
   The prefix to use when evaluating an analytics filter.
 
 
-=head2 Tag => L<Paws::S3::Tag>
+=head2 Tag => S3_Tag
 
   The tag to use when evaluating an analytics filter.
 

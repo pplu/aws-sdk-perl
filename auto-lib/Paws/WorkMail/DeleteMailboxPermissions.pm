@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkMail::DeleteMailboxPermissions;
-  use Moose;
-  has EntityId => (is => 'ro', isa => 'Str', required => 1);
-  has GranteeId => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkMail::Types qw//;
+  has EntityId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GranteeId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OrganizationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMailboxPermissions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkMail::DeleteMailboxPermissionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteMailboxPermissions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkMail::DeleteMailboxPermissionsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GranteeId' => {
+                                'type' => 'Str'
+                              },
+               'EntityId' => {
+                               'type' => 'Str'
+                             },
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'OrganizationId' => 1,
+                    'EntityId' => 1,
+                    'GranteeId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

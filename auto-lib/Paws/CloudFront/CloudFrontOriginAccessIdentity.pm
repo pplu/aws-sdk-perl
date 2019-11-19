@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CloudFront::CloudFrontOriginAccessIdentity;
-  use Moose;
-  has CloudFrontOriginAccessIdentityConfig => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentityConfig');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has S3CanonicalUserId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_CloudFrontOriginAccessIdentityConfig/;
+  has CloudFrontOriginAccessIdentityConfig => (is => 'ro', isa => CloudFront_CloudFrontOriginAccessIdentityConfig);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has S3CanonicalUserId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CloudFrontOriginAccessIdentityConfig' => {
+                                                           'type' => 'CloudFront_CloudFrontOriginAccessIdentityConfig',
+                                                           'class' => 'Paws::CloudFront::CloudFrontOriginAccessIdentityConfig'
+                                                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'S3CanonicalUserId' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'S3CanonicalUserId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +66,7 @@ CloudFront origin access identity.
 =head1 ATTRIBUTES
 
 
-=head2 CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>
+=head2 CloudFrontOriginAccessIdentityConfig => CloudFront_CloudFrontOriginAccessIdentityConfig
 
   The current configuration information for the identity.
 

@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::SNS::ListPlatformApplicationsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PlatformApplications => (is => 'ro', isa => 'ArrayRef[Paws::SNS::PlatformApplication]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SNS::Types qw/SNS_PlatformApplication/;
+  has NextToken => (is => 'ro', isa => Str);
+  has PlatformApplications => (is => 'ro', isa => ArrayRef[SNS_PlatformApplication]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PlatformApplications' => {
+                                           'type' => 'ArrayRef[SNS_PlatformApplication]',
+                                           'class' => 'Paws::SNS::PlatformApplication'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +45,7 @@ action if additional records are available after the first page
 results.
 
 
-=head2 PlatformApplications => ArrayRef[L<Paws::SNS::PlatformApplication>]
+=head2 PlatformApplications => ArrayRef[SNS_PlatformApplication]
 
 Platform applications returned when calling ListPlatformApplications
 action.

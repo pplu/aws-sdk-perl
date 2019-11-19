@@ -1,30 +1,104 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::CreateDBCluster;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Engine => (is => 'ro', isa => 'Str', required => 1);
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
-  has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Tag]');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int Bool/;
+  use Paws::DocDB::Types qw/DocDB_Tag/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Engine => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUsername => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has StorageEncrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DocDB_Tag], predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::CreateDBClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDBCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::CreateDBClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateDBClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MasterUsername' => 1,
+                    'Engine' => 1,
+                    'MasterUserPassword' => 1,
+                    'DBClusterIdentifier' => 1
+                  },
+  'types' => {
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'Tags' => {
+                           'class' => 'Paws::DocDB::Tag',
+                           'type' => 'ArrayRef[DocDB_Tag]'
+                         },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -321,7 +395,7 @@ Specifies whether the DB cluster is encrypted.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
+=head2 Tags => ArrayRef[DocDB_Tag]
 
 The tags to be assigned to the DB cluster.
 

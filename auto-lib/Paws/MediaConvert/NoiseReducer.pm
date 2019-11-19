@@ -1,9 +1,44 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::NoiseReducer;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest']);
-  has FilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerFilterSettings', request_name => 'filterSettings', traits => ['NameInRequest']);
-  has SpatialFilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerSpatialFilterSettings', request_name => 'spatialFilterSettings', traits => ['NameInRequest']);
-  has TemporalFilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerTemporalFilterSettings', request_name => 'temporalFilterSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_NoiseReducerTemporalFilterSettings MediaConvert_NoiseReducerFilterSettings MediaConvert_NoiseReducerSpatialFilterSettings/;
+  has Filter => (is => 'ro', isa => Str);
+  has FilterSettings => (is => 'ro', isa => MediaConvert_NoiseReducerFilterSettings);
+  has SpatialFilterSettings => (is => 'ro', isa => MediaConvert_NoiseReducerSpatialFilterSettings);
+  has TemporalFilterSettings => (is => 'ro', isa => MediaConvert_NoiseReducerTemporalFilterSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filter' => {
+                             'type' => 'Str'
+                           },
+               'TemporalFilterSettings' => {
+                                             'class' => 'Paws::MediaConvert::NoiseReducerTemporalFilterSettings',
+                                             'type' => 'MediaConvert_NoiseReducerTemporalFilterSettings'
+                                           },
+               'SpatialFilterSettings' => {
+                                            'class' => 'Paws::MediaConvert::NoiseReducerSpatialFilterSettings',
+                                            'type' => 'MediaConvert_NoiseReducerSpatialFilterSettings'
+                                          },
+               'FilterSettings' => {
+                                     'class' => 'Paws::MediaConvert::NoiseReducerFilterSettings',
+                                     'type' => 'MediaConvert_NoiseReducerFilterSettings'
+                                   }
+             },
+  'NameInRequest' => {
+                       'TemporalFilterSettings' => 'temporalFilterSettings',
+                       'FilterSettings' => 'filterSettings',
+                       'SpatialFilterSettings' => 'spatialFilterSettings',
+                       'Filter' => 'filter'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,17 +89,17 @@ noise reduction. * Spatial does frequency-domain filtering based on JND
 principles. * Temporal optimizes video quality for complex motion.
 
 
-=head2 FilterSettings => L<Paws::MediaConvert::NoiseReducerFilterSettings>
+=head2 FilterSettings => MediaConvert_NoiseReducerFilterSettings
 
   Settings for a noise reducer filter
 
 
-=head2 SpatialFilterSettings => L<Paws::MediaConvert::NoiseReducerSpatialFilterSettings>
+=head2 SpatialFilterSettings => MediaConvert_NoiseReducerSpatialFilterSettings
 
   Noise reducer filter settings for spatial filter.
 
 
-=head2 TemporalFilterSettings => L<Paws::MediaConvert::NoiseReducerTemporalFilterSettings>
+=head2 TemporalFilterSettings => MediaConvert_NoiseReducerTemporalFilterSettings
 
   Noise reducer filter settings for temporal filter.
 

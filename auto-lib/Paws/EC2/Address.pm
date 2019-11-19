@@ -1,15 +1,69 @@
 package Paws::EC2::Address;
-  use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest']);
-  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
-  has Domain => (is => 'ro', isa => 'Str', request_name => 'domain', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
-  has NetworkInterfaceOwnerId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceOwnerId', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
-  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
-  has PublicIpv4Pool => (is => 'ro', isa => 'Str', request_name => 'publicIpv4Pool', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Tag/;
+  has AllocationId => (is => 'ro', isa => Str);
+  has AssociationId => (is => 'ro', isa => Str);
+  has Domain => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has NetworkInterfaceOwnerId => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+  has PublicIp => (is => 'ro', isa => Str);
+  has PublicIpv4Pool => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PrivateIpAddress' => 'privateIpAddress',
+                       'PublicIp' => 'publicIp',
+                       'AllocationId' => 'allocationId',
+                       'NetworkInterfaceOwnerId' => 'networkInterfaceOwnerId',
+                       'AssociationId' => 'associationId',
+                       'InstanceId' => 'instanceId',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'Tags' => 'tagSet',
+                       'PublicIpv4Pool' => 'publicIpv4Pool',
+                       'Domain' => 'domain'
+                     },
+  'types' => {
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'Tags' => {
+                           'type' => 'ArrayRef[EC2_Tag]',
+                           'class' => 'Paws::EC2::Tag'
+                         },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'PublicIpv4Pool' => {
+                                     'type' => 'Str'
+                                   },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'PublicIp' => {
+                               'type' => 'Str'
+                             },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'NetworkInterfaceOwnerId' => {
+                                              'type' => 'Str'
+                                            },
+               'AllocationId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +146,7 @@ EC2-Classic (C<standard>) or instances in a VPC (C<vpc>).
   The ID of an address pool.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the Elastic IP address.
 

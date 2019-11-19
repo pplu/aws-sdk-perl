@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Health::DescribeEventAggregatesResponse;
-  use Moose;
-  has EventAggregates => (is => 'ro', isa => 'ArrayRef[Paws::Health::EventAggregate]', traits => ['NameInRequest'], request_name => 'eventAggregates' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Health::Types qw/Health_EventAggregate/;
+  has EventAggregates => (is => 'ro', isa => ArrayRef[Health_EventAggregate]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'EventAggregates' => {
+                                      'class' => 'Paws::Health::EventAggregate',
+                                      'type' => 'ArrayRef[Health_EventAggregate]'
+                                    }
+             },
+  'NameInRequest' => {
+                       'EventAggregates' => 'eventAggregates',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Health::DescribeEventAggregatesResponse
 =head1 ATTRIBUTES
 
 
-=head2 EventAggregates => ArrayRef[L<Paws::Health::EventAggregate>]
+=head2 EventAggregates => ArrayRef[Health_EventAggregate]
 
 The number of events in each category that meet the optional filter
 criteria.

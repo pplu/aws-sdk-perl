@@ -1,13 +1,58 @@
+# Generated from default/object.tt
 package Paws::Config::ConformancePackDetail;
-  use Moose;
-  has ConformancePackArn => (is => 'ro', isa => 'Str', required => 1);
-  has ConformancePackId => (is => 'ro', isa => 'Str', required => 1);
-  has ConformancePackInputParameters => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConformancePackInputParameter]');
-  has ConformancePackName => (is => 'ro', isa => 'Str', required => 1);
-  has CreatedBy => (is => 'ro', isa => 'Str');
-  has DeliveryS3Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has DeliveryS3KeyPrefix => (is => 'ro', isa => 'Str');
-  has LastUpdateRequestedTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_ConformancePackInputParameter/;
+  has ConformancePackArn => (is => 'ro', isa => Str, required => 1);
+  has ConformancePackId => (is => 'ro', isa => Str, required => 1);
+  has ConformancePackInputParameters => (is => 'ro', isa => ArrayRef[Config_ConformancePackInputParameter]);
+  has ConformancePackName => (is => 'ro', isa => Str, required => 1);
+  has CreatedBy => (is => 'ro', isa => Str);
+  has DeliveryS3Bucket => (is => 'ro', isa => Str, required => 1);
+  has DeliveryS3KeyPrefix => (is => 'ro', isa => Str);
+  has LastUpdateRequestedTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConformancePackName' => {
+                                          'type' => 'Str'
+                                        },
+               'ConformancePackArn' => {
+                                         'type' => 'Str'
+                                       },
+               'DeliveryS3Bucket' => {
+                                       'type' => 'Str'
+                                     },
+               'DeliveryS3KeyPrefix' => {
+                                          'type' => 'Str'
+                                        },
+               'ConformancePackInputParameters' => {
+                                                     'class' => 'Paws::Config::ConformancePackInputParameter',
+                                                     'type' => 'ArrayRef[Config_ConformancePackInputParameter]'
+                                                   },
+               'LastUpdateRequestedTime' => {
+                                              'type' => 'Str'
+                                            },
+               'ConformancePackId' => {
+                                        'type' => 'Str'
+                                      },
+               'CreatedBy' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'ConformancePackId' => 1,
+                    'ConformancePackArn' => 1,
+                    'ConformancePackName' => 1,
+                    'DeliveryS3Bucket' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +100,7 @@ account and a region.
   ID of the conformance pack.
 
 
-=head2 ConformancePackInputParameters => ArrayRef[L<Paws::Config::ConformancePackInputParameter>]
+=head2 ConformancePackInputParameters => ArrayRef[Config_ConformancePackInputParameter]
 
   A list of C<ConformancePackInputParameter> objects.
 

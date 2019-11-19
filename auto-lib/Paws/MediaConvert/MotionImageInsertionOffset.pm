@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::MotionImageInsertionOffset;
-  use Moose;
-  has ImageX => (is => 'ro', isa => 'Int', request_name => 'imageX', traits => ['NameInRequest']);
-  has ImageY => (is => 'ro', isa => 'Int', request_name => 'imageY', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has ImageX => (is => 'ro', isa => Int);
+  has ImageY => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImageX' => {
+                             'type' => 'Int'
+                           },
+               'ImageY' => {
+                             'type' => 'Int'
+                           }
+             },
+  'NameInRequest' => {
+                       'ImageY' => 'imageY',
+                       'ImageX' => 'imageX'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

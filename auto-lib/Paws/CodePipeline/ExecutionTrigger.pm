@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ExecutionTrigger;
-  use Moose;
-  has TriggerDetail => (is => 'ro', isa => 'Str', request_name => 'triggerDetail', traits => ['NameInRequest']);
-  has TriggerType => (is => 'ro', isa => 'Str', request_name => 'triggerType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has TriggerDetail => (is => 'ro', isa => Str);
+  has TriggerType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TriggerType' => {
+                                  'type' => 'Str'
+                                },
+               'TriggerDetail' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'TriggerDetail' => 'triggerDetail',
+                       'TriggerType' => 'triggerType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

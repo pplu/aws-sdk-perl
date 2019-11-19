@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::TypedLinkAttributeRange;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str');
-  has Range => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValueRange', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedAttributeValueRange/;
+  has AttributeName => (is => 'ro', isa => Str);
+  has Range => (is => 'ro', isa => CloudDirectory_TypedAttributeValueRange, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Range' => {
+                            'type' => 'CloudDirectory_TypedAttributeValueRange',
+                            'class' => 'Paws::CloudDirectory::TypedAttributeValueRange'
+                          },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'Range' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +66,7 @@ Identifies the range of attributes that are used by a specified filter.
   The unique name of the typed link attribute.
 
 
-=head2 B<REQUIRED> Range => L<Paws::CloudDirectory::TypedAttributeValueRange>
+=head2 B<REQUIRED> Range => CloudDirectory_TypedAttributeValueRange
 
   The range of attribute values that are being selected.
 

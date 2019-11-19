@@ -1,21 +1,86 @@
+# Generated from default/object.tt
 package Paws::SSM::OpsItem;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str');
-  has CreatedBy => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has LastModifiedBy => (is => 'ro', isa => 'Str');
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsItemNotification]');
-  has OperationalData => (is => 'ro', isa => 'Paws::SSM::OpsItemOperationalData');
-  has OpsItemId => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Int');
-  has RelatedOpsItems => (is => 'ro', isa => 'ArrayRef[Paws::SSM::RelatedOpsItem]');
-  has Severity => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Title => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::SSM::Types qw/SSM_OpsItemNotification SSM_OpsItemOperationalData SSM_RelatedOpsItem/;
+  has Category => (is => 'ro', isa => Str);
+  has CreatedBy => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LastModifiedBy => (is => 'ro', isa => Str);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has Notifications => (is => 'ro', isa => ArrayRef[SSM_OpsItemNotification]);
+  has OperationalData => (is => 'ro', isa => SSM_OpsItemOperationalData);
+  has OpsItemId => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Int);
+  has RelatedOpsItems => (is => 'ro', isa => ArrayRef[SSM_RelatedOpsItem]);
+  has Severity => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Title => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Severity' => {
+                               'type' => 'Str'
+                             },
+               'OperationalData' => {
+                                      'class' => 'Paws::SSM::OpsItemOperationalData',
+                                      'type' => 'SSM_OpsItemOperationalData'
+                                    },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'RelatedOpsItems' => {
+                                      'class' => 'Paws::SSM::RelatedOpsItem',
+                                      'type' => 'ArrayRef[SSM_RelatedOpsItem]'
+                                    },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'LastModifiedBy' => {
+                                     'type' => 'Str'
+                                   },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedBy' => {
+                                'type' => 'Str'
+                              },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'OpsItemId' => {
+                                'type' => 'Str'
+                              },
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'Notifications' => {
+                                    'type' => 'ArrayRef[SSM_OpsItemNotification]',
+                                    'class' => 'Paws::SSM::OpsItemNotification'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -87,13 +152,13 @@ Performance, Recovery, Security.
   The date and time the OpsItem was last updated.
 
 
-=head2 Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]
+=head2 Notifications => ArrayRef[SSM_OpsItemNotification]
 
   The Amazon Resource Name (ARN) of an SNS topic where notifications are
 sent when this OpsItem is edited or changed.
 
 
-=head2 OperationalData => L<Paws::SSM::OpsItemOperationalData>
+=head2 OperationalData => SSM_OpsItemOperationalData
 
   Operational data is custom data that provides useful reference details
 about the OpsItem. For example, you can specify log files, error
@@ -131,7 +196,7 @@ in the I<AWS Systems Manager User Guide>.
 system.
 
 
-=head2 RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]
+=head2 RelatedOpsItems => ArrayRef[SSM_RelatedOpsItem]
 
   One or more OpsItems that share something in common with the current
 OpsItem. For example, related OpsItems can include OpsItems with

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::ModifyReplicationSubnetGroupResponse;
-  use Moose;
-  has ReplicationSubnetGroup => (is => 'ro', isa => 'Paws::DMS::ReplicationSubnetGroup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw/DMS_ReplicationSubnetGroup/;
+  has ReplicationSubnetGroup => (is => 'ro', isa => DMS_ReplicationSubnetGroup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ReplicationSubnetGroup' => {
+                                             'class' => 'Paws::DMS::ReplicationSubnetGroup',
+                                             'type' => 'DMS_ReplicationSubnetGroup'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DMS::ModifyReplicationSubnetGroupResponse
 =head1 ATTRIBUTES
 
 
-=head2 ReplicationSubnetGroup => L<Paws::DMS::ReplicationSubnetGroup>
+=head2 ReplicationSubnetGroup => DMS_ReplicationSubnetGroup
 
 The modified replication subnet group.
 

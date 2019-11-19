@@ -1,15 +1,37 @@
 
 package Paws::KinesisVideoArchivedMedia::GetMediaForFragmentList;
-  use Moose;
-  has Fragments => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has StreamName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::KinesisVideoArchivedMedia::Types qw//;
+  has Fragments => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has StreamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMediaForFragmentList');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/getMediaForFragmentList');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisVideoArchivedMedia::GetMediaForFragmentListOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetMediaForFragmentList');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/getMediaForFragmentList');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisVideoArchivedMedia::GetMediaForFragmentListOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Fragments' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'StreamName' => 1,
+                    'Fragments' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,19 +1,66 @@
 
 package Paws::Glacier::UploadMultipartPart;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sha256-tree-hash');
-  has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Range');
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'uploadId', required => 1);
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Body => (is => 'ro', isa => Str, predicate => 1);
+  has Checksum => (is => 'ro', isa => Str, predicate => 1);
+  has Range => (is => 'ro', isa => Str, predicate => 1);
+  has UploadId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadMultipartPart');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::UploadMultipartPartOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UploadMultipartPart');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glacier::UploadMultipartPartOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'VaultName' => 'vaultName',
+                    'AccountId' => 'accountId',
+                    'UploadId' => 'uploadId'
+                  },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'UploadId' => 1,
+                    'VaultName' => 1
+                  },
+  'NameInRequest' => {
+                       'Body' => 'body'
+                     },
+  'types' => {
+               'VaultName' => {
+                                'type' => 'Str'
+                              },
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Checksum' => {
+                               'type' => 'Str'
+                             },
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               'Range' => {
+                            'type' => 'Str'
+                          }
+             },
+  'ParamInHeader' => {
+                       'Checksum' => 'x-amz-sha256-tree-hash',
+                       'Range' => 'Content-Range'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::AppMesh::VirtualServiceProvider;
-  use Moose;
-  has VirtualNode => (is => 'ro', isa => 'Paws::AppMesh::VirtualNodeServiceProvider', request_name => 'virtualNode', traits => ['NameInRequest']);
-  has VirtualRouter => (is => 'ro', isa => 'Paws::AppMesh::VirtualRouterServiceProvider', request_name => 'virtualRouter', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_VirtualNodeServiceProvider AppMesh_VirtualRouterServiceProvider/;
+  has VirtualNode => (is => 'ro', isa => AppMesh_VirtualNodeServiceProvider);
+  has VirtualRouter => (is => 'ro', isa => AppMesh_VirtualRouterServiceProvider);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'VirtualRouter' => 'virtualRouter',
+                       'VirtualNode' => 'virtualNode'
+                     },
+  'types' => {
+               'VirtualRouter' => {
+                                    'class' => 'Paws::AppMesh::VirtualRouterServiceProvider',
+                                    'type' => 'AppMesh_VirtualRouterServiceProvider'
+                                  },
+               'VirtualNode' => {
+                                  'type' => 'AppMesh_VirtualNodeServiceProvider',
+                                  'class' => 'Paws::AppMesh::VirtualNodeServiceProvider'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ An object that represents the provider for a virtual service.
 =head1 ATTRIBUTES
 
 
-=head2 VirtualNode => L<Paws::AppMesh::VirtualNodeServiceProvider>
+=head2 VirtualNode => AppMesh_VirtualNodeServiceProvider
 
   The virtual node associated with a virtual service.
 
 
-=head2 VirtualRouter => L<Paws::AppMesh::VirtualRouterServiceProvider>
+=head2 VirtualRouter => AppMesh_VirtualRouterServiceProvider
 
   The virtual router associated with a virtual service.
 

@@ -1,7 +1,28 @@
 package Paws::EC2::UnsuccessfulInstanceCreditSpecificationItemError;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Code => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Code' => {
+                           'type' => 'Str'
+                         },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Message' => 'message',
+                       'Code' => 'code'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,35 @@
 
 package Paws::WorkMailMessageFlow::GetRawMessageContent;
-  use Moose;
-  has MessageId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'messageId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkMailMessageFlow::Types qw//;
+  has MessageId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRawMessageContent');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/messages/{messageId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkMailMessageFlow::GetRawMessageContentResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetRawMessageContent');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/messages/{messageId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkMailMessageFlow::GetRawMessageContentResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MessageId' => 1
+                  },
+  'types' => {
+               'MessageId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'MessageId' => 'messageId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

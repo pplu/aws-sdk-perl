@@ -1,18 +1,49 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::DescribeGameSessions;
-  use Moose;
-  has AliasId => (is => 'ro', isa => 'Str');
-  has FleetId => (is => 'ro', isa => 'Str');
-  has GameSessionId => (is => 'ro', isa => 'Str');
-  has Limit => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StatusFilter => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::GameLift::Types qw//;
+  has AliasId => (is => 'ro', isa => Str, predicate => 1);
+  has FleetId => (is => 'ro', isa => Str, predicate => 1);
+  has GameSessionId => (is => 'ro', isa => Str, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StatusFilter => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeGameSessions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::DescribeGameSessionsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeGameSessions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::DescribeGameSessionsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusFilter' => {
+                                   'type' => 'Str'
+                                 },
+               'AliasId' => {
+                              'type' => 'Str'
+                            },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'GameSessionId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

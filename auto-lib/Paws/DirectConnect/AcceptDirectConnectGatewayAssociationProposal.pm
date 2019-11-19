@@ -1,16 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::AcceptDirectConnectGatewayAssociationProposal;
-  use Moose;
-  has AssociatedGatewayOwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'associatedGatewayOwnerAccount' , required => 1);
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' , required => 1);
-  has OverrideAllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', traits => ['NameInRequest'], request_name => 'overrideAllowedPrefixesToDirectConnectGateway' );
-  has ProposalId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'proposalId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_RouteFilterPrefix/;
+  has AssociatedGatewayOwnerAccount => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DirectConnectGatewayId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OverrideAllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => ArrayRef[DirectConnect_RouteFilterPrefix], predicate => 1);
+  has ProposalId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AcceptDirectConnectGatewayAssociationProposal');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::AcceptDirectConnectGatewayAssociationProposalResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AcceptDirectConnectGatewayAssociationProposal');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::AcceptDirectConnectGatewayAssociationProposalResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'OverrideAllowedPrefixesToDirectConnectGateway' => 'overrideAllowedPrefixesToDirectConnectGateway',
+                       'DirectConnectGatewayId' => 'directConnectGatewayId',
+                       'AssociatedGatewayOwnerAccount' => 'associatedGatewayOwnerAccount',
+                       'ProposalId' => 'proposalId'
+                     },
+  'IsRequired' => {
+                    'ProposalId' => 1,
+                    'AssociatedGatewayOwnerAccount' => 1,
+                    'DirectConnectGatewayId' => 1
+                  },
+  'types' => {
+               'ProposalId' => {
+                                 'type' => 'Str'
+                               },
+               'AssociatedGatewayOwnerAccount' => {
+                                                    'type' => 'Str'
+                                                  },
+               'DirectConnectGatewayId' => {
+                                             'type' => 'Str'
+                                           },
+               'OverrideAllowedPrefixesToDirectConnectGateway' => {
+                                                                    'class' => 'Paws::DirectConnect::RouteFilterPrefix',
+                                                                    'type' => 'ArrayRef[DirectConnect_RouteFilterPrefix]'
+                                                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +106,7 @@ The ID of the Direct Connect gateway.
 
 
 
-=head2 OverrideAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
+=head2 OverrideAllowedPrefixesToDirectConnectGateway => ArrayRef[DirectConnect_RouteFilterPrefix]
 
 Overrides the Amazon VPC prefixes advertised to the Direct Connect
 gateway.

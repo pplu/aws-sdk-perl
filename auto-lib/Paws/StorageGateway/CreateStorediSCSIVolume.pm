@@ -1,21 +1,69 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::CreateStorediSCSIVolume;
-  use Moose;
-  has DiskId => (is => 'ro', isa => 'Str', required => 1);
-  has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
-  has KMSEncrypted => (is => 'ro', isa => 'Bool');
-  has KMSKey => (is => 'ro', isa => 'Str');
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
-  has PreserveExistingData => (is => 'ro', isa => 'Bool', required => 1);
-  has SnapshotId => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
-  has TargetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_Tag/;
+  has DiskId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GatewayARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KMSEncrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has KMSKey => (is => 'ro', isa => Str, predicate => 1);
+  has NetworkInterfaceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PreserveExistingData => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has SnapshotId => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[StorageGateway_Tag], predicate => 1);
+  has TargetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStorediSCSIVolume');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::CreateStorediSCSIVolumeOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateStorediSCSIVolume');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::CreateStorediSCSIVolumeOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PreserveExistingData' => 1,
+                    'NetworkInterfaceId' => 1,
+                    'DiskId' => 1,
+                    'GatewayARN' => 1,
+                    'TargetName' => 1
+                  },
+  'types' => {
+               'TargetName' => {
+                                 'type' => 'Str'
+                               },
+               'DiskId' => {
+                             'type' => 'Str'
+                           },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               },
+               'KMSKey' => {
+                             'type' => 'Str'
+                           },
+               'KMSEncrypted' => {
+                                   'type' => 'Bool'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::StorageGateway::Tag',
+                           'type' => 'ArrayRef[StorageGateway_Tag]'
+                         },
+               'PreserveExistingData' => {
+                                           'type' => 'Bool'
+                                         },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -123,7 +171,7 @@ in the I<Amazon Elastic Compute Cloud API Reference>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+=head2 Tags => ArrayRef[StorageGateway_Tag]
 
 A list of up to 50 tags that can be assigned to a stored volume. Each
 tag is a key-value pair.

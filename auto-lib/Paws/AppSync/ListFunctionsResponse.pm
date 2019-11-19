@@ -1,10 +1,35 @@
 
 package Paws::AppSync::ListFunctionsResponse;
-  use Moose;
-  has Functions => (is => 'ro', isa => 'ArrayRef[Paws::AppSync::FunctionConfiguration]', traits => ['NameInRequest'], request_name => 'functions');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppSync::Types qw/AppSync_FunctionConfiguration/;
+  has Functions => (is => 'ro', isa => ArrayRef[AppSync_FunctionConfiguration]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Functions' => 'functions'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Functions' => {
+                                'class' => 'Paws::AppSync::FunctionConfiguration',
+                                'type' => 'ArrayRef[AppSync_FunctionConfiguration]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::AppSync::ListFunctionsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Functions => ArrayRef[L<Paws::AppSync::FunctionConfiguration>]
+=head2 Functions => ArrayRef[AppSync_FunctionConfiguration]
 
 A list of C<Function> objects.
 

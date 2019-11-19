@@ -1,16 +1,49 @@
 
 package Paws::IoTAnalytics::UpdateChannel;
-  use Moose;
-  has ChannelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'channelName', required => 1);
-  has ChannelStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::ChannelStorage', traits => ['NameInRequest'], request_name => 'channelStorage');
-  has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_RetentionPeriod IoTAnalytics_ChannelStorage/;
+  has ChannelName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ChannelStorage => (is => 'ro', isa => IoTAnalytics_ChannelStorage, predicate => 1);
+  has RetentionPeriod => (is => 'ro', isa => IoTAnalytics_RetentionPeriod, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/channels/{channelName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/channels/{channelName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RetentionPeriod' => {
+                                      'class' => 'Paws::IoTAnalytics::RetentionPeriod',
+                                      'type' => 'IoTAnalytics_RetentionPeriod'
+                                    },
+               'ChannelStorage' => {
+                                     'class' => 'Paws::IoTAnalytics::ChannelStorage',
+                                     'type' => 'IoTAnalytics_ChannelStorage'
+                                   },
+               'ChannelName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ChannelName' => 1
+                  },
+  'NameInRequest' => {
+                       'RetentionPeriod' => 'retentionPeriod',
+                       'ChannelStorage' => 'channelStorage'
+                     },
+  'ParamInURI' => {
+                    'ChannelName' => 'channelName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +93,7 @@ The name of the channel to be updated.
 
 
 
-=head2 ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>
+=head2 ChannelStorage => IoTAnalytics_ChannelStorage
 
 Where channel data is stored. You may choose one of "serviceManagedS3"
 or "customerManagedS3" storage. If not specified, the default is
@@ -69,7 +102,7 @@ channel.
 
 
 
-=head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
+=head2 RetentionPeriod => IoTAnalytics_RetentionPeriod
 
 How long, in days, message data is kept for the channel. The retention
 period cannot be updated if the channel's S3 storage is

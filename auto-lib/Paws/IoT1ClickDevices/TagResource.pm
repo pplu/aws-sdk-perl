@@ -1,15 +1,44 @@
 
 package Paws::IoT1ClickDevices::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource-arn', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::IoT1ClickDevices::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickDevices::Types qw/IoT1ClickDevices___mapOf__string/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => IoT1ClickDevices___mapOf__string, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tags/{resource-arn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tags/{resource-arn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'IoT1ClickDevices___mapOf__string',
+                           'class' => 'Paws::IoT1ClickDevices::__mapOf__string'
+                         },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'ResourceArn' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'ParamInURI' => {
+                    'ResourceArn' => 'resource-arn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +76,7 @@ The ARN of the resource.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::IoT1ClickDevices::__mapOf__string>
+=head2 B<REQUIRED> Tags => IoT1ClickDevices___mapOf__string
 
 A collection of key/value pairs defining the resource tags. For
 example, { "tags": {"key1": "value1", "key2": "value2"} }. For more

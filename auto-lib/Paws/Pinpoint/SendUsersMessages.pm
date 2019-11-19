@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::SendUsersMessages;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has SendUsersMessageRequest => (is => 'ro', isa => 'Paws::Pinpoint::SendUsersMessageRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_SendUsersMessageRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SendUsersMessageRequest => (is => 'ro', isa => Pinpoint_SendUsersMessageRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'SendUsersMessageRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendUsersMessages');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/users-messages');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::SendUsersMessagesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendUsersMessages');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/users-messages');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::SendUsersMessagesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'SendUsersMessageRequest' => 1
+                  },
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'SendUsersMessageRequest' => {
+                                              'type' => 'Pinpoint_SendUsersMessageRequest',
+                                              'class' => 'Paws::Pinpoint::SendUsersMessageRequest'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -203,7 +229,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> SendUsersMessageRequest => L<Paws::Pinpoint::SendUsersMessageRequest>
+=head2 B<REQUIRED> SendUsersMessageRequest => Pinpoint_SendUsersMessageRequest
 
 
 

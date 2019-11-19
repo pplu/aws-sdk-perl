@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::S3::SelectParameters;
-  use Moose;
-  has Expression => (is => 'ro', isa => 'Str', required => 1);
-  has ExpressionType => (is => 'ro', isa => 'Str', required => 1);
-  has InputSerialization => (is => 'ro', isa => 'Paws::S3::InputSerialization', required => 1);
-  has OutputSerialization => (is => 'ro', isa => 'Paws::S3::OutputSerialization', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_InputSerialization S3_OutputSerialization/;
+  has Expression => (is => 'ro', isa => Str, required => 1);
+  has ExpressionType => (is => 'ro', isa => Str, required => 1);
+  has InputSerialization => (is => 'ro', isa => S3_InputSerialization, required => 1);
+  has OutputSerialization => (is => 'ro', isa => S3_OutputSerialization, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InputSerialization' => 1,
+                    'OutputSerialization' => 1,
+                    'Expression' => 1,
+                    'ExpressionType' => 1
+                  },
+  'types' => {
+               'OutputSerialization' => {
+                                          'class' => 'Paws::S3::OutputSerialization',
+                                          'type' => 'S3_OutputSerialization'
+                                        },
+               'Expression' => {
+                                 'type' => 'Str'
+                               },
+               'ExpressionType' => {
+                                     'type' => 'Str'
+                                   },
+               'InputSerialization' => {
+                                         'type' => 'S3_InputSerialization',
+                                         'class' => 'Paws::S3::InputSerialization'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,12 +83,12 @@ Describes the parameters for Select job types.
   The type of the provided expression (e.g., SQL).
 
 
-=head2 B<REQUIRED> InputSerialization => L<Paws::S3::InputSerialization>
+=head2 B<REQUIRED> InputSerialization => S3_InputSerialization
 
   Describes the serialization format of the object.
 
 
-=head2 B<REQUIRED> OutputSerialization => L<Paws::S3::OutputSerialization>
+=head2 B<REQUIRED> OutputSerialization => S3_OutputSerialization
 
   Describes how the results of the Select job are serialized.
 

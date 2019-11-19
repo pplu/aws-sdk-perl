@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::SESv2::EmailContent;
-  use Moose;
-  has Raw => (is => 'ro', isa => 'Paws::SESv2::RawMessage');
-  has Simple => (is => 'ro', isa => 'Paws::SESv2::Message');
-  has Template => (is => 'ro', isa => 'Paws::SESv2::Template');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SESv2::Types qw/SESv2_Message SESv2_RawMessage SESv2_Template/;
+  has Raw => (is => 'ro', isa => SESv2_RawMessage);
+  has Simple => (is => 'ro', isa => SESv2_Message);
+  has Template => (is => 'ro', isa => SESv2_Template);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Simple' => {
+                             'type' => 'SESv2_Message',
+                             'class' => 'Paws::SESv2::Message'
+                           },
+               'Raw' => {
+                          'type' => 'SESv2_RawMessage',
+                          'class' => 'Paws::SESv2::RawMessage'
+                        },
+               'Template' => {
+                               'type' => 'SESv2_Template',
+                               'class' => 'Paws::SESv2::Template'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +69,7 @@ include attachments and custom headers.
 =head1 ATTRIBUTES
 
 
-=head2 Raw => L<Paws::SESv2::RawMessage>
+=head2 Raw => SESv2_RawMessage
 
   The raw email message. The message has to meet the following criteria:
 
@@ -88,13 +114,13 @@ characters. This restriction is defined in RFC 5321
 
 
 
-=head2 Simple => L<Paws::SESv2::Message>
+=head2 Simple => SESv2_Message
 
   The simple email message. The message consists of a subject and a
 message body.
 
 
-=head2 Template => L<Paws::SESv2::Template>
+=head2 Template => SESv2_Template
 
   The template to use for the email message.
 

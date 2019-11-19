@@ -1,12 +1,54 @@
 package Paws::EC2::TrafficMirrorTarget;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
-  has NetworkLoadBalancerArn => (is => 'ro', isa => 'Str', request_name => 'networkLoadBalancerArn', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has TrafficMirrorTargetId => (is => 'ro', isa => 'Str', request_name => 'trafficMirrorTargetId', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Tag/;
+  has Description => (is => 'ro', isa => Str);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has NetworkLoadBalancerArn => (is => 'ro', isa => Str);
+  has OwnerId => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has TrafficMirrorTargetId => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'TrafficMirrorTargetId' => {
+                                            'type' => 'Str'
+                                          },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'NetworkLoadBalancerArn' => {
+                                             'type' => 'Str'
+                                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'TrafficMirrorTargetId' => 'trafficMirrorTargetId',
+                       'Type' => 'type',
+                       'OwnerId' => 'ownerId',
+                       'Description' => 'description',
+                       'Tags' => 'tagSet',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'NetworkLoadBalancerArn' => 'networkLoadBalancerArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +104,7 @@ This class has no description
   The ID of the account that owns the Traffic Mirror target.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   The tags assigned to the Traffic Mirror target.
 

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Config::AggregateComplianceCount;
-  use Moose;
-  has ComplianceSummary => (is => 'ro', isa => 'Paws::Config::ComplianceSummary');
-  has GroupName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_ComplianceSummary/;
+  has ComplianceSummary => (is => 'ro', isa => Config_ComplianceSummary);
+  has GroupName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComplianceSummary' => {
+                                        'type' => 'Config_ComplianceSummary',
+                                        'class' => 'Paws::Config::ComplianceSummary'
+                                      },
+               'GroupName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ accounts and regions in an aggregator.
 =head1 ATTRIBUTES
 
 
-=head2 ComplianceSummary => L<Paws::Config::ComplianceSummary>
+=head2 ComplianceSummary => Config_ComplianceSummary
 
   The number of compliant and noncompliant AWS Config rules.
 

@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::CloudFront::AllowedMethods;
-  use Moose;
-  has CachedMethods => (is => 'ro', isa => 'Paws::CloudFront::CachedMethods');
-  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Method', traits => ['NameInRequest'], required => 1);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::CloudFront::Types qw/CloudFront_CachedMethods/;
+  has CachedMethods => (is => 'ro', isa => CloudFront_CachedMethods);
+  has Items => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Items' => 'Method'
+                     },
+  'IsRequired' => {
+                    'Items' => 1,
+                    'Quantity' => 1
+                  },
+  'types' => {
+               'Items' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'CachedMethods' => {
+                                    'type' => 'CloudFront_CachedMethods',
+                                    'class' => 'Paws::CloudFront::CachedMethods'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +93,7 @@ users to have permissions to delete objects from your origin.
 =head1 ATTRIBUTES
 
 
-=head2 CachedMethods => L<Paws::CloudFront::CachedMethods>
+=head2 CachedMethods => CloudFront_CachedMethods
 
   
 

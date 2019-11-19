@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Route53Resolver::AssociateResolverEndpointIpAddress;
-  use Moose;
-  has IpAddress => (is => 'ro', isa => 'Paws::Route53Resolver::IpAddressUpdate', required => 1);
-  has ResolverEndpointId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53Resolver::Types qw/Route53Resolver_IpAddressUpdate/;
+  has IpAddress => (is => 'ro', isa => Route53Resolver_IpAddressUpdate, required => 1, predicate => 1);
+  has ResolverEndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateResolverEndpointIpAddress');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Resolver::AssociateResolverEndpointIpAddressResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateResolverEndpointIpAddress');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53Resolver::AssociateResolverEndpointIpAddressResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IpAddress' => {
+                                'class' => 'Paws::Route53Resolver::IpAddressUpdate',
+                                'type' => 'Route53Resolver_IpAddressUpdate'
+                              },
+               'ResolverEndpointId' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'ResolverEndpointId' => 1,
+                    'IpAddress' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> IpAddress => L<Paws::Route53Resolver::IpAddressUpdate>
+=head2 B<REQUIRED> IpAddress => Route53Resolver_IpAddressUpdate
 
 Either the IPv4 address that you want to add to a resolver endpoint or
 a subnet ID. If you specify a subnet ID, Resolver chooses an IP address

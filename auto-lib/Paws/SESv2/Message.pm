@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::SESv2::Message;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Paws::SESv2::Body', required => 1);
-  has Subject => (is => 'ro', isa => 'Paws::SESv2::Content', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SESv2::Types qw/SESv2_Body SESv2_Content/;
+  has Body => (is => 'ro', isa => SESv2_Body, required => 1);
+  has Subject => (is => 'ro', isa => SESv2_Content, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Body' => {
+                           'class' => 'Paws::SESv2::Body',
+                           'type' => 'SESv2_Body'
+                         },
+               'Subject' => {
+                              'class' => 'Paws::SESv2::Content',
+                              'type' => 'SESv2_Content'
+                            }
+             },
+  'IsRequired' => {
+                    'Body' => 1,
+                    'Subject' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +64,13 @@ consists of a subject line and a message body.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Body => L<Paws::SESv2::Body>
+=head2 B<REQUIRED> Body => SESv2_Body
 
   The body of the message. You can specify an HTML version of the
 message, a text-only version of the message, or both.
 
 
-=head2 B<REQUIRED> Subject => L<Paws::SESv2::Content>
+=head2 B<REQUIRED> Subject => SESv2_Content
 
   The subject line of the email. The subject line can only contain 7-bit
 ASCII characters. However, you can specify non-ASCII characters in the

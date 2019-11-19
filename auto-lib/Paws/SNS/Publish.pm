@@ -1,19 +1,57 @@
+# Generated from callargs_class.tt
 
 package Paws::SNS::Publish;
-  use Moose;
-  has Message => (is => 'ro', isa => 'Str', required => 1);
-  has MessageAttributes => (is => 'ro', isa => 'Paws::SNS::MessageAttributeMap');
-  has MessageStructure => (is => 'ro', isa => 'Str');
-  has PhoneNumber => (is => 'ro', isa => 'Str');
-  has Subject => (is => 'ro', isa => 'Str');
-  has TargetArn => (is => 'ro', isa => 'Str');
-  has TopicArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SNS::Types qw/SNS_MessageAttributeMap/;
+  has Message => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MessageAttributes => (is => 'ro', isa => SNS_MessageAttributeMap, predicate => 1);
+  has MessageStructure => (is => 'ro', isa => Str, predicate => 1);
+  has PhoneNumber => (is => 'ro', isa => Str, predicate => 1);
+  has Subject => (is => 'ro', isa => Str, predicate => 1);
+  has TargetArn => (is => 'ro', isa => Str, predicate => 1);
+  has TopicArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Publish');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::PublishResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PublishResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Publish');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SNS::PublishResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'PublishResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Message' => 1
+                  },
+  'types' => {
+               'Subject' => {
+                              'type' => 'Str'
+                            },
+               'PhoneNumber' => {
+                                  'type' => 'Str'
+                                },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'TargetArn' => {
+                                'type' => 'Str'
+                              },
+               'TopicArn' => {
+                               'type' => 'Str'
+                             },
+               'MessageAttributes' => {
+                                        'class' => 'Paws::SNS::MessageAttributeMap',
+                                        'type' => 'SNS_MessageAttributeMap'
+                                      },
+               'MessageStructure' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -151,7 +189,7 @@ the C<Publish> call to return an error (no partial delivery).
 
 
 
-=head2 MessageAttributes => L<Paws::SNS::MessageAttributeMap>
+=head2 MessageAttributes => SNS_MessageAttributeMap
 
 Message attributes for Publish action.
 

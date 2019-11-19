@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::ResourceDetails;
-  use Moose;
-  has EC2ResourceDetails => (is => 'ro', isa => 'Paws::CostExplorer::EC2ResourceDetails');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CostExplorer::Types qw/CostExplorer_EC2ResourceDetails/;
+  has EC2ResourceDetails => (is => 'ro', isa => CostExplorer_EC2ResourceDetails);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EC2ResourceDetails' => {
+                                         'type' => 'CostExplorer_EC2ResourceDetails',
+                                         'class' => 'Paws::CostExplorer::EC2ResourceDetails'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Details on the resource.
 =head1 ATTRIBUTES
 
 
-=head2 EC2ResourceDetails => L<Paws::CostExplorer::EC2ResourceDetails>
+=head2 EC2ResourceDetails => CostExplorer_EC2ResourceDetails
 
   Details on the Amazon EC2 resource.
 

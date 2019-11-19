@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaLive::NetworkInputSettings;
-  use Moose;
-  has HlsInputSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsInputSettings', request_name => 'hlsInputSettings', traits => ['NameInRequest']);
-  has ServerValidation => (is => 'ro', isa => 'Str', request_name => 'serverValidation', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_HlsInputSettings/;
+  has HlsInputSettings => (is => 'ro', isa => MediaLive_HlsInputSettings);
+  has ServerValidation => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HlsInputSettings' => {
+                                       'class' => 'Paws::MediaLive::HlsInputSettings',
+                                       'type' => 'MediaLive_HlsInputSettings'
+                                     },
+               'ServerValidation' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'ServerValidation' => 'serverValidation',
+                       'HlsInputSettings' => 'hlsInputSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +63,7 @@ node that is running the live event through a network connection.
 =head1 ATTRIBUTES
 
 
-=head2 HlsInputSettings => L<Paws::MediaLive::HlsInputSettings>
+=head2 HlsInputSettings => MediaLive_HlsInputSettings
 
   Specifies HLS input settings when the uri is for a HLS manifest.
 

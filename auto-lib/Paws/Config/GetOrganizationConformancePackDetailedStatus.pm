@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::GetOrganizationConformancePackDetailedStatus;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'Paws::Config::OrganizationResourceDetailedStatusFilters');
-  has Limit => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has OrganizationConformancePackName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Config::Types qw/Config_OrganizationResourceDetailedStatusFilters/;
+  has Filters => (is => 'ro', isa => Config_OrganizationResourceDetailedStatusFilters, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has OrganizationConformancePackName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetOrganizationConformancePackDetailedStatus');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::GetOrganizationConformancePackDetailedStatusResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetOrganizationConformancePackDetailedStatus');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::GetOrganizationConformancePackDetailedStatusResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationConformancePackName' => {
+                                                      'type' => 'Str'
+                                                    },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'Filters' => {
+                              'class' => 'Paws::Config::OrganizationResourceDetailedStatusFilters',
+                              'type' => 'Config_OrganizationResourceDetailedStatusFilters'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'OrganizationConformancePackName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +86,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head1 ATTRIBUTES
 
 
-=head2 Filters => L<Paws::Config::OrganizationResourceDetailedStatusFilters>
+=head2 Filters => Config_OrganizationResourceDetailedStatusFilters
 
 An C<OrganizationResourceDetailedStatusFilters> object.
 

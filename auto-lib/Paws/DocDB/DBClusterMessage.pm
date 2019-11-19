@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::DocDB::DBClusterMessage;
-  use Moose;
-  has DBClusters => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::DBCluster]', request_name => 'DBCluster', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DocDB::Types qw/DocDB_DBCluster/;
+  has DBClusters => (is => 'ro', isa => ArrayRef[DocDB_DBCluster]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'DBClusters' => {
+                                 'class' => 'Paws::DocDB::DBCluster',
+                                 'type' => 'ArrayRef[DocDB_DBCluster]'
+                               }
+             },
+  'NameInRequest' => {
+                       'DBClusters' => 'DBCluster'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::DocDB::DBClusterMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBClusters => ArrayRef[L<Paws::DocDB::DBCluster>]
+=head2 DBClusters => ArrayRef[DocDB_DBCluster]
 
 A list of DB clusters.
 

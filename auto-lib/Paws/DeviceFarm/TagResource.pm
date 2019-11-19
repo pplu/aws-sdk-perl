@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::TagResource;
-  use Moose;
-  has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Tag/;
+  has ResourceARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DeviceFarm_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::TagResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::TagResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::DeviceFarm::Tag',
+                           'type' => 'ArrayRef[DeviceFarm_Tag]'
+                         },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ResourceARN' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +81,7 @@ C<VPCE_CONFIGURATION>.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::DeviceFarm::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[DeviceFarm_Tag]
 
 The tags to add to the resource. A tag is an array of key-value pairs.
 Tag keys can have a maximum character length of 128 characters, and tag

@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DBSnapshotMessage;
-  use Moose;
-  has DBSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSnapshot]', request_name => 'DBSnapshot', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_DBSnapshot/;
+  has DBSnapshots => (is => 'ro', isa => ArrayRef[RDS_DBSnapshot]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DBSnapshots' => 'DBSnapshot'
+                     },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'DBSnapshots' => {
+                                  'class' => 'Paws::RDS::DBSnapshot',
+                                  'type' => 'ArrayRef[RDS_DBSnapshot]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RDS::DBSnapshotMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBSnapshots => ArrayRef[L<Paws::RDS::DBSnapshot>]
+=head2 DBSnapshots => ArrayRef[RDS_DBSnapshot]
 
 A list of C<DBSnapshot> instances.
 

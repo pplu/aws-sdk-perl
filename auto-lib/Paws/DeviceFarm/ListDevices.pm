@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::ListDevices;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' );
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DeviceFilter]', traits => ['NameInRequest'], request_name => 'filters' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_DeviceFilter/;
+  has Arn => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[DeviceFarm_DeviceFilter], predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDevices');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::ListDevicesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDevices');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::ListDevicesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Filters' => {
+                              'type' => 'ArrayRef[DeviceFarm_DeviceFilter]',
+                              'class' => 'Paws::DeviceFarm::DeviceFilter'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'Filters' => 'filters',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +78,7 @@ The Amazon Resource Name (ARN) of the project.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::DeviceFarm::DeviceFilter>]
+=head2 Filters => ArrayRef[DeviceFarm_DeviceFilter]
 
 Used to select a set of devices. A filter is made up of an attribute,
 an operator, and one or more values.

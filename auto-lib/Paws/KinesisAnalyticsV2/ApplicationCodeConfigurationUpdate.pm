@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::ApplicationCodeConfigurationUpdate;
-  use Moose;
-  has CodeContentTypeUpdate => (is => 'ro', isa => 'Str');
-  has CodeContentUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::CodeContentUpdate');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_CodeContentUpdate/;
+  has CodeContentTypeUpdate => (is => 'ro', isa => Str);
+  has CodeContentUpdate => (is => 'ro', isa => KinesisAnalyticsV2_CodeContentUpdate);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CodeContentUpdate' => {
+                                        'type' => 'KinesisAnalyticsV2_CodeContentUpdate',
+                                        'class' => 'Paws::KinesisAnalyticsV2::CodeContentUpdate'
+                                      },
+               'CodeContentTypeUpdate' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ application.
   Describes updates to the code content type.
 
 
-=head2 CodeContentUpdate => L<Paws::KinesisAnalyticsV2::CodeContentUpdate>
+=head2 CodeContentUpdate => KinesisAnalyticsV2_CodeContentUpdate
 
   Describes updates to the code content of an application.
 

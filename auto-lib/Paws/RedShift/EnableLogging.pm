@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::EnableLogging;
-  use Moose;
-  has BucketName => (is => 'ro', isa => 'Str', required => 1);
-  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has S3KeyPrefix => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw//;
+  has BucketName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3KeyPrefix => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableLogging');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::LoggingStatus');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'EnableLoggingResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'EnableLogging');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::LoggingStatus');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'EnableLoggingResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'S3KeyPrefix' => {
+                                  'type' => 'Str'
+                                },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ClusterIdentifier' => 1,
+                    'BucketName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

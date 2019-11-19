@@ -1,8 +1,42 @@
+# Generated from default/object.tt
 package Paws::MediaLive::OutputGroup;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has OutputGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::OutputGroupSettings', request_name => 'outputGroupSettings', traits => ['NameInRequest'], required => 1);
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::Output]', request_name => 'outputs', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_Output MediaLive_OutputGroupSettings/;
+  has Name => (is => 'ro', isa => Str);
+  has OutputGroupSettings => (is => 'ro', isa => MediaLive_OutputGroupSettings, required => 1);
+  has Outputs => (is => 'ro', isa => ArrayRef[MediaLive_Output], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Outputs' => 'outputs',
+                       'OutputGroupSettings' => 'outputGroupSettings',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'OutputGroupSettings' => 1,
+                    'Outputs' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'OutputGroupSettings' => {
+                                          'type' => 'MediaLive_OutputGroupSettings',
+                                          'class' => 'Paws::MediaLive::OutputGroupSettings'
+                                        },
+               'Outputs' => {
+                              'class' => 'Paws::MediaLive::Output',
+                              'type' => 'ArrayRef[MediaLive_Output]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,12 +80,12 @@ numbers, and the underscore character allowed; only 32 characters
 allowed.
 
 
-=head2 B<REQUIRED> OutputGroupSettings => L<Paws::MediaLive::OutputGroupSettings>
+=head2 B<REQUIRED> OutputGroupSettings => MediaLive_OutputGroupSettings
 
   Settings associated with the output group.
 
 
-=head2 B<REQUIRED> Outputs => ArrayRef[L<Paws::MediaLive::Output>]
+=head2 B<REQUIRED> Outputs => ArrayRef[MediaLive_Output]
 
   
 

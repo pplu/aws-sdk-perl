@@ -1,27 +1,100 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::CreateDevEndpointResponse;
-  use Moose;
-  has Arguments => (is => 'ro', isa => 'Paws::Glue::MapValue');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has EndpointName => (is => 'ro', isa => 'Str');
-  has ExtraJarsS3Path => (is => 'ro', isa => 'Str');
-  has ExtraPythonLibsS3Path => (is => 'ro', isa => 'Str');
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has GlueVersion => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int');
-  has NumberOfWorkers => (is => 'ro', isa => 'Int');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has SecurityConfiguration => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Status => (is => 'ro', isa => 'Str');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str');
-  has WorkerType => (is => 'ro', isa => 'Str');
-  has YarnEndpointAddress => (is => 'ro', isa => 'Str');
-  has ZeppelinRemoteSparkInterpreterPort => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::Glue::Types qw/Glue_MapValue/;
+  has Arguments => (is => 'ro', isa => Glue_MapValue);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has EndpointName => (is => 'ro', isa => Str);
+  has ExtraJarsS3Path => (is => 'ro', isa => Str);
+  has ExtraPythonLibsS3Path => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has GlueVersion => (is => 'ro', isa => Str);
+  has NumberOfNodes => (is => 'ro', isa => Int);
+  has NumberOfWorkers => (is => 'ro', isa => Int);
+  has RoleArn => (is => 'ro', isa => Str);
+  has SecurityConfiguration => (is => 'ro', isa => Str);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Status => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+  has WorkerType => (is => 'ro', isa => Str);
+  has YarnEndpointAddress => (is => 'ro', isa => Str);
+  has ZeppelinRemoteSparkInterpreterPort => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExtraPythonLibsS3Path' => {
+                                            'type' => 'Str'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'SecurityConfiguration' => {
+                                            'type' => 'Str'
+                                          },
+               'YarnEndpointAddress' => {
+                                          'type' => 'Str'
+                                        },
+               'ZeppelinRemoteSparkInterpreterPort' => {
+                                                         'type' => 'Int'
+                                                       },
+               'ExtraJarsS3Path' => {
+                                      'type' => 'Str'
+                                    },
+               'NumberOfNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'GlueVersion' => {
+                                  'type' => 'Str'
+                                },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'NumberOfWorkers' => {
+                                      'type' => 'Int'
+                                    },
+               'Arguments' => {
+                                'class' => 'Paws::Glue::MapValue',
+                                'type' => 'Glue_MapValue'
+                              },
+               'EndpointName' => {
+                                   'type' => 'Str'
+                                 },
+               'WorkerType' => {
+                                 'type' => 'Str'
+                               },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -32,7 +105,7 @@ Paws::Glue::CreateDevEndpointResponse
 =head1 ATTRIBUTES
 
 
-=head2 Arguments => L<Paws::Glue::MapValue>
+=head2 Arguments => Glue_MapValue
 
 The map of arguments used to configure this C<DevEndpoint>.
 

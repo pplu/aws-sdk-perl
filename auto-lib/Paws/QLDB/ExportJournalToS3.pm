@@ -1,18 +1,56 @@
 
 package Paws::QLDB::ExportJournalToS3;
-  use Moose;
-  has ExclusiveEndTime => (is => 'ro', isa => 'Str', required => 1);
-  has InclusiveStartTime => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has S3ExportConfiguration => (is => 'ro', isa => 'Paws::QLDB::S3ExportConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::QLDB::Types qw/QLDB_S3ExportConfiguration/;
+  has ExclusiveEndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InclusiveStartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3ExportConfiguration => (is => 'ro', isa => QLDB_S3ExportConfiguration, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExportJournalToS3');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/ledgers/{name}/journal-s3-exports');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::QLDB::ExportJournalToS3Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ExportJournalToS3');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/ledgers/{name}/journal-s3-exports');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::QLDB::ExportJournalToS3Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Name' => 'name'
+                  },
+  'IsRequired' => {
+                    'ExclusiveEndTime' => 1,
+                    'InclusiveStartTime' => 1,
+                    'RoleArn' => 1,
+                    'S3ExportConfiguration' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'InclusiveStartTime' => {
+                                         'type' => 'Str'
+                                       },
+               'ExclusiveEndTime' => {
+                                       'type' => 'Str'
+                                     },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'S3ExportConfiguration' => {
+                                            'type' => 'QLDB_S3ExportConfiguration',
+                                            'class' => 'Paws::QLDB::S3ExportConfiguration'
+                                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -120,7 +158,7 @@ Service (AWS KMS) for server-side encryption of your exported data.
 
 
 
-=head2 B<REQUIRED> S3ExportConfiguration => L<Paws::QLDB::S3ExportConfiguration>
+=head2 B<REQUIRED> S3ExportConfiguration => QLDB_S3ExportConfiguration
 
 The configuration settings of the Amazon S3 bucket destination for your
 export request.

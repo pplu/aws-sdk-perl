@@ -1,24 +1,117 @@
 package Paws::EC2::SpotInstanceRequest;
-  use Moose;
-  has ActualBlockHourlyPrice => (is => 'ro', isa => 'Str', request_name => 'actualBlockHourlyPrice', traits => ['NameInRequest']);
-  has AvailabilityZoneGroup => (is => 'ro', isa => 'Str', request_name => 'availabilityZoneGroup', traits => ['NameInRequest']);
-  has BlockDurationMinutes => (is => 'ro', isa => 'Int', request_name => 'blockDurationMinutes', traits => ['NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
-  has Fault => (is => 'ro', isa => 'Paws::EC2::SpotInstanceStateFault', request_name => 'fault', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInterruptionBehavior', traits => ['NameInRequest']);
-  has LaunchedAvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'launchedAvailabilityZone', traits => ['NameInRequest']);
-  has LaunchGroup => (is => 'ro', isa => 'Str', request_name => 'launchGroup', traits => ['NameInRequest']);
-  has LaunchSpecification => (is => 'ro', isa => 'Paws::EC2::LaunchSpecification', request_name => 'launchSpecification', traits => ['NameInRequest']);
-  has ProductDescription => (is => 'ro', isa => 'Str', request_name => 'productDescription', traits => ['NameInRequest']);
-  has SpotInstanceRequestId => (is => 'ro', isa => 'Str', request_name => 'spotInstanceRequestId', traits => ['NameInRequest']);
-  has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Paws::EC2::SpotInstanceStatus', request_name => 'status', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has ValidFrom => (is => 'ro', isa => 'Str', request_name => 'validFrom', traits => ['NameInRequest']);
-  has ValidUntil => (is => 'ro', isa => 'Str', request_name => 'validUntil', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::EC2::Types qw/EC2_LaunchSpecification EC2_SpotInstanceStatus EC2_Tag EC2_SpotInstanceStateFault/;
+  has ActualBlockHourlyPrice => (is => 'ro', isa => Str);
+  has AvailabilityZoneGroup => (is => 'ro', isa => Str);
+  has BlockDurationMinutes => (is => 'ro', isa => Int);
+  has CreateTime => (is => 'ro', isa => Str);
+  has Fault => (is => 'ro', isa => EC2_SpotInstanceStateFault);
+  has InstanceId => (is => 'ro', isa => Str);
+  has InstanceInterruptionBehavior => (is => 'ro', isa => Str);
+  has LaunchedAvailabilityZone => (is => 'ro', isa => Str);
+  has LaunchGroup => (is => 'ro', isa => Str);
+  has LaunchSpecification => (is => 'ro', isa => EC2_LaunchSpecification);
+  has ProductDescription => (is => 'ro', isa => Str);
+  has SpotInstanceRequestId => (is => 'ro', isa => Str);
+  has SpotPrice => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => EC2_SpotInstanceStatus);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has Type => (is => 'ro', isa => Str);
+  has ValidFrom => (is => 'ro', isa => Str);
+  has ValidUntil => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'LaunchedAvailabilityZone' => 'launchedAvailabilityZone',
+                       'ValidFrom' => 'validFrom',
+                       'State' => 'state',
+                       'LaunchSpecification' => 'launchSpecification',
+                       'ActualBlockHourlyPrice' => 'actualBlockHourlyPrice',
+                       'AvailabilityZoneGroup' => 'availabilityZoneGroup',
+                       'InstanceId' => 'instanceId',
+                       'SpotInstanceRequestId' => 'spotInstanceRequestId',
+                       'Tags' => 'tagSet',
+                       'LaunchGroup' => 'launchGroup',
+                       'ValidUntil' => 'validUntil',
+                       'Fault' => 'fault',
+                       'ProductDescription' => 'productDescription',
+                       'InstanceInterruptionBehavior' => 'instanceInterruptionBehavior',
+                       'Type' => 'type',
+                       'BlockDurationMinutes' => 'blockDurationMinutes',
+                       'SpotPrice' => 'spotPrice',
+                       'CreateTime' => 'createTime'
+                     },
+  'types' => {
+               'LaunchedAvailabilityZone' => {
+                                               'type' => 'Str'
+                                             },
+               'Status' => {
+                             'type' => 'EC2_SpotInstanceStatus',
+                             'class' => 'Paws::EC2::SpotInstanceStatus'
+                           },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'ValidFrom' => {
+                                'type' => 'Str'
+                              },
+               'LaunchSpecification' => {
+                                          'class' => 'Paws::EC2::LaunchSpecification',
+                                          'type' => 'EC2_LaunchSpecification'
+                                        },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'SpotInstanceRequestId' => {
+                                            'type' => 'Str'
+                                          },
+               'AvailabilityZoneGroup' => {
+                                            'type' => 'Str'
+                                          },
+               'ActualBlockHourlyPrice' => {
+                                             'type' => 'Str'
+                                           },
+               'ValidUntil' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'LaunchGroup' => {
+                                  'type' => 'Str'
+                                },
+               'Fault' => {
+                            'type' => 'EC2_SpotInstanceStateFault',
+                            'class' => 'Paws::EC2::SpotInstanceStateFault'
+                          },
+               'ProductDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'InstanceInterruptionBehavior' => {
+                                                   'type' => 'Str'
+                                                 },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'SpotPrice' => {
+                                'type' => 'Str'
+                              },
+               'BlockDurationMinutes' => {
+                                           'type' => 'Int'
+                                         },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +172,7 @@ in the same Availability Zone.
 format (for example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
 
-=head2 Fault => L<Paws::EC2::SpotInstanceStateFault>
+=head2 Fault => EC2_SpotInstanceStateFault
 
   The fault codes for the Spot Instance request, if any.
 
@@ -106,7 +199,7 @@ Instance request.
 together and terminate together.
 
 
-=head2 LaunchSpecification => L<Paws::EC2::LaunchSpecification>
+=head2 LaunchSpecification => EC2_LaunchSpecification
 
   Additional information for launching instances.
 
@@ -136,13 +229,13 @@ Status
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
-=head2 Status => L<Paws::EC2::SpotInstanceStatus>
+=head2 Status => EC2_SpotInstanceStatus
 
   The status code and status message describing the Spot Instance
 request.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the resource.
 

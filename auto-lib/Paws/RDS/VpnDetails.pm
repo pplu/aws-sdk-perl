@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::RDS::VpnDetails;
-  use Moose;
-  has VpnGatewayIp => (is => 'ro', isa => 'Str');
-  has VpnId => (is => 'ro', isa => 'Str');
-  has VpnName => (is => 'ro', isa => 'Str');
-  has VpnPSK => (is => 'ro', isa => 'Str');
-  has VpnState => (is => 'ro', isa => 'Str');
-  has VpnTunnelOriginatorIP => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has VpnGatewayIp => (is => 'ro', isa => Str);
+  has VpnId => (is => 'ro', isa => Str);
+  has VpnName => (is => 'ro', isa => Str);
+  has VpnPSK => (is => 'ro', isa => Str);
+  has VpnState => (is => 'ro', isa => Str);
+  has VpnTunnelOriginatorIP => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpnTunnelOriginatorIP' => {
+                                            'type' => 'Str'
+                                          },
+               'VpnPSK' => {
+                             'type' => 'Str'
+                           },
+               'VpnState' => {
+                               'type' => 'Str'
+                             },
+               'VpnName' => {
+                              'type' => 'Str'
+                            },
+               'VpnId' => {
+                            'type' => 'Str'
+                          },
+               'VpnGatewayIp' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

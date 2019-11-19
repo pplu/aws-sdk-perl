@@ -1,16 +1,47 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::CreateDBClusterParameterGroup;
-  use Moose;
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_Tag/;
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBParameterGroupFamily => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Neptune_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBClusterParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::CreateDBClusterParameterGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBClusterParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDBClusterParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::CreateDBClusterParameterGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateDBClusterParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'Tags' => {
+                           'type' => 'ArrayRef[Neptune_Tag]',
+                           'class' => 'Paws::Neptune::Tag'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DBParameterGroupFamily' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'DBParameterGroupFamily' => 1,
+                    'DBClusterParameterGroupName' => 1,
+                    'Description' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -90,7 +121,7 @@ The description for the DB cluster parameter group.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
+=head2 Tags => ArrayRef[Neptune_Tag]
 
 The tags to be assigned to the new DB cluster parameter group.
 

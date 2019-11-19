@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::WAF::FieldToMatch;
-  use Moose;
-  has Data => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw//;
+  has Data => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Type' => 1
+                  },
+  'types' => {
+               'Data' => {
+                           'type' => 'Str'
+                         },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

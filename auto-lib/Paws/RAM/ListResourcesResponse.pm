@@ -1,10 +1,35 @@
 
 package Paws::RAM::ListResourcesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::RAM::Resource]', traits => ['NameInRequest'], request_name => 'resources');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RAM::Types qw/RAM_Resource/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Resources => (is => 'ro', isa => ArrayRef[RAM_Resource]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Resources' => {
+                                'class' => 'Paws::RAM::Resource',
+                                'type' => 'ArrayRef[RAM_Resource]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Resources' => 'resources'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +47,7 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 Resources => ArrayRef[L<Paws::RAM::Resource>]
+=head2 Resources => ArrayRef[RAM_Resource]
 
 Information about the resources.
 

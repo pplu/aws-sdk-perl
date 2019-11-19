@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::DataExchange::ExportAssetToSignedUrlResponseDetails;
-  use Moose;
-  has AssetId => (is => 'ro', isa => 'Str', required => 1);
-  has DataSetId => (is => 'ro', isa => 'Str', required => 1);
-  has RevisionId => (is => 'ro', isa => 'Str', required => 1);
-  has SignedUrl => (is => 'ro', isa => 'Str');
-  has SignedUrlExpiresAt => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw//;
+  has AssetId => (is => 'ro', isa => Str, required => 1);
+  has DataSetId => (is => 'ro', isa => Str, required => 1);
+  has RevisionId => (is => 'ro', isa => Str, required => 1);
+  has SignedUrl => (is => 'ro', isa => Str);
+  has SignedUrlExpiresAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SignedUrlExpiresAt' => {
+                                         'type' => 'Str'
+                                       },
+               'AssetId' => {
+                              'type' => 'Str'
+                            },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'SignedUrl' => {
+                                'type' => 'Str'
+                              },
+               'DataSetId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'AssetId' => 1,
+                    'RevisionId' => 1,
+                    'DataSetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

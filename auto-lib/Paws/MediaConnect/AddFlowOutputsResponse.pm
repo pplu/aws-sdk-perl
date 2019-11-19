@@ -1,10 +1,35 @@
 
 package Paws::MediaConnect::AddFlowOutputsResponse;
-  use Moose;
-  has FlowArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'flowArn');
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::Output]', traits => ['NameInRequest'], request_name => 'outputs');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaConnect::Types qw/MediaConnect_Output/;
+  has FlowArn => (is => 'ro', isa => Str);
+  has Outputs => (is => 'ro', isa => ArrayRef[MediaConnect_Output]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FlowArn' => {
+                              'type' => 'Str'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Outputs' => {
+                              'type' => 'ArrayRef[MediaConnect_Output]',
+                              'class' => 'Paws::MediaConnect::Output'
+                            }
+             },
+  'NameInRequest' => {
+                       'FlowArn' => 'flowArn',
+                       'Outputs' => 'outputs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +46,7 @@ Paws::MediaConnect::AddFlowOutputsResponse
 The ARN of the flow that these outputs were added to.
 
 
-=head2 Outputs => ArrayRef[L<Paws::MediaConnect::Output>]
+=head2 Outputs => ArrayRef[MediaConnect_Output]
 
 The details of the newly added outputs.
 

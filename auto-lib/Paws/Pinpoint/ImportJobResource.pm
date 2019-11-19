@@ -1,13 +1,56 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::ImportJobResource;
-  use Moose;
-  has DefineSegment => (is => 'ro', isa => 'Bool');
-  has ExternalId => (is => 'ro', isa => 'Str');
-  has Format => (is => 'ro', isa => 'Str', required => 1);
-  has RegisterEndpoints => (is => 'ro', isa => 'Bool');
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has S3Url => (is => 'ro', isa => 'Str', required => 1);
-  has SegmentId => (is => 'ro', isa => 'Str');
-  has SegmentName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::Pinpoint::Types qw//;
+  has DefineSegment => (is => 'ro', isa => Bool);
+  has ExternalId => (is => 'ro', isa => Str);
+  has Format => (is => 'ro', isa => Str, required => 1);
+  has RegisterEndpoints => (is => 'ro', isa => Bool);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has S3Url => (is => 'ro', isa => Str, required => 1);
+  has SegmentId => (is => 'ro', isa => Str);
+  has SegmentName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'S3Url' => 1,
+                    'Format' => 1,
+                    'RoleArn' => 1
+                  },
+  'types' => {
+               'SegmentId' => {
+                                'type' => 'Str'
+                              },
+               'ExternalId' => {
+                                 'type' => 'Str'
+                               },
+               'S3Url' => {
+                            'type' => 'Str'
+                          },
+               'RegisterEndpoints' => {
+                                        'type' => 'Bool'
+                                      },
+               'SegmentName' => {
+                                  'type' => 'Str'
+                                },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'DefineSegment' => {
+                                    'type' => 'Bool'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

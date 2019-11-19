@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::Connections;
-  use Moose;
-  has Connections => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Connection]', traits => ['NameInRequest'], request_name => 'connections' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_Connection/;
+  has Connections => (is => 'ro', isa => ArrayRef[DirectConnect_Connection]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Connections' => 'connections'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Connections' => {
+                                  'type' => 'ArrayRef[DirectConnect_Connection]',
+                                  'class' => 'Paws::DirectConnect::Connection'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DirectConnect::Connections
 =head1 ATTRIBUTES
 
 
-=head2 Connections => ArrayRef[L<Paws::DirectConnect::Connection>]
+=head2 Connections => ArrayRef[DirectConnect_Connection]
 
 The connections.
 

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::WAF::IPSet;
-  use Moose;
-  has IPSetDescriptors => (is => 'ro', isa => 'ArrayRef[Paws::WAF::IPSetDescriptor]', required => 1);
-  has IPSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::WAF::Types qw/WAF_IPSetDescriptor/;
+  has IPSetDescriptors => (is => 'ro', isa => ArrayRef[WAF_IPSetDescriptor], required => 1);
+  has IPSetId => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'IPSetDescriptors' => 1,
+                    'IPSetId' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'IPSetDescriptors' => {
+                                       'type' => 'ArrayRef[WAF_IPSetDescriptor]',
+                                       'class' => 'Paws::WAF::IPSetDescriptor'
+                                     },
+               'IPSetId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +77,7 @@ Classless Inter-Domain Routing
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> IPSetDescriptors => ArrayRef[L<Paws::WAF::IPSetDescriptor>]
+=head2 B<REQUIRED> IPSetDescriptors => ArrayRef[WAF_IPSetDescriptor]
 
   The IP address type (C<IPV4> or C<IPV6>) and the IP address range (in
 CIDR notation) that web requests originate from. If the C<WebACL> is

@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::IoT::CodeSigning;
-  use Moose;
-  has AwsSignerJobId => (is => 'ro', isa => 'Str', request_name => 'awsSignerJobId', traits => ['NameInRequest']);
-  has CustomCodeSigning => (is => 'ro', isa => 'Paws::IoT::CustomCodeSigning', request_name => 'customCodeSigning', traits => ['NameInRequest']);
-  has StartSigningJobParameter => (is => 'ro', isa => 'Paws::IoT::StartSigningJobParameter', request_name => 'startSigningJobParameter', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_StartSigningJobParameter IoT_CustomCodeSigning/;
+  has AwsSignerJobId => (is => 'ro', isa => Str);
+  has CustomCodeSigning => (is => 'ro', isa => IoT_CustomCodeSigning);
+  has StartSigningJobParameter => (is => 'ro', isa => IoT_StartSigningJobParameter);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CustomCodeSigning' => 'customCodeSigning',
+                       'AwsSignerJobId' => 'awsSignerJobId',
+                       'StartSigningJobParameter' => 'startSigningJobParameter'
+                     },
+  'types' => {
+               'AwsSignerJobId' => {
+                                     'type' => 'Str'
+                                   },
+               'CustomCodeSigning' => {
+                                        'class' => 'Paws::IoT::CustomCodeSigning',
+                                        'type' => 'IoT_CustomCodeSigning'
+                                      },
+               'StartSigningJobParameter' => {
+                                               'type' => 'IoT_StartSigningJobParameter',
+                                               'class' => 'Paws::IoT::StartSigningJobParameter'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,12 +73,12 @@ Describes the method to use when code signing a file.
   The ID of the AWSSignerJob which was created to sign the file.
 
 
-=head2 CustomCodeSigning => L<Paws::IoT::CustomCodeSigning>
+=head2 CustomCodeSigning => IoT_CustomCodeSigning
 
   A custom method for code signing a file.
 
 
-=head2 StartSigningJobParameter => L<Paws::IoT::StartSigningJobParameter>
+=head2 StartSigningJobParameter => IoT_StartSigningJobParameter
 
   Describes the code-signing job.
 

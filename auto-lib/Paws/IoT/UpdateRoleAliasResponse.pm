@@ -1,10 +1,34 @@
 
 package Paws::IoT::UpdateRoleAliasResponse;
-  use Moose;
-  has RoleAlias => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleAlias');
-  has RoleAliasArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleAliasArn');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has RoleAlias => (is => 'ro', isa => Str);
+  has RoleAliasArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RoleAliasArn' => 'roleAliasArn',
+                       'RoleAlias' => 'roleAlias'
+                     },
+  'types' => {
+               'RoleAliasArn' => {
+                                   'type' => 'Str'
+                                 },
+               'RoleAlias' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

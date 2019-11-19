@@ -1,11 +1,39 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListRolesResponse;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
-  has Roles => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Role]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::IAM::Types qw/IAM_Role/;
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
+  has Roles => (is => 'ro', isa => ArrayRef[IAM_Role], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Roles' => 1
+                  },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Roles' => {
+                            'class' => 'Paws::IAM::Role',
+                            'type' => 'ArrayRef[IAM_Role]'
+                          },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +63,7 @@ the value to use for the C<Marker> parameter in a subsequent pagination
 request.
 
 
-=head2 B<REQUIRED> Roles => ArrayRef[L<Paws::IAM::Role>]
+=head2 B<REQUIRED> Roles => ArrayRef[IAM_Role]
 
 A list of roles.
 

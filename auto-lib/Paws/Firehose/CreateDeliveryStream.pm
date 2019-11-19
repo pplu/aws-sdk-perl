@@ -1,21 +1,71 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Firehose::CreateDeliveryStream;
-  use Moose;
-  has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
-  has DeliveryStreamType => (is => 'ro', isa => 'Str');
-  has ElasticsearchDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchDestinationConfiguration');
-  has ExtendedS3DestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::ExtendedS3DestinationConfiguration');
-  has KinesisStreamSourceConfiguration => (is => 'ro', isa => 'Paws::Firehose::KinesisStreamSourceConfiguration');
-  has RedshiftDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationConfiguration');
-  has S3DestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration');
-  has SplunkDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::SplunkDestinationConfiguration');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Firehose::Types qw/Firehose_S3DestinationConfiguration Firehose_KinesisStreamSourceConfiguration Firehose_ElasticsearchDestinationConfiguration Firehose_SplunkDestinationConfiguration Firehose_RedshiftDestinationConfiguration Firehose_Tag Firehose_ExtendedS3DestinationConfiguration/;
+  has DeliveryStreamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeliveryStreamType => (is => 'ro', isa => Str, predicate => 1);
+  has ElasticsearchDestinationConfiguration => (is => 'ro', isa => Firehose_ElasticsearchDestinationConfiguration, predicate => 1);
+  has ExtendedS3DestinationConfiguration => (is => 'ro', isa => Firehose_ExtendedS3DestinationConfiguration, predicate => 1);
+  has KinesisStreamSourceConfiguration => (is => 'ro', isa => Firehose_KinesisStreamSourceConfiguration, predicate => 1);
+  has RedshiftDestinationConfiguration => (is => 'ro', isa => Firehose_RedshiftDestinationConfiguration, predicate => 1);
+  has S3DestinationConfiguration => (is => 'ro', isa => Firehose_S3DestinationConfiguration, predicate => 1);
+  has SplunkDestinationConfiguration => (is => 'ro', isa => Firehose_SplunkDestinationConfiguration, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Firehose_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeliveryStream');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Firehose::CreateDeliveryStreamOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDeliveryStream');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Firehose::CreateDeliveryStreamOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DeliveryStreamName' => 1
+                  },
+  'types' => {
+               'RedshiftDestinationConfiguration' => {
+                                                       'type' => 'Firehose_RedshiftDestinationConfiguration',
+                                                       'class' => 'Paws::Firehose::RedshiftDestinationConfiguration'
+                                                     },
+               'Tags' => {
+                           'type' => 'ArrayRef[Firehose_Tag]',
+                           'class' => 'Paws::Firehose::Tag'
+                         },
+               'KinesisStreamSourceConfiguration' => {
+                                                       'type' => 'Firehose_KinesisStreamSourceConfiguration',
+                                                       'class' => 'Paws::Firehose::KinesisStreamSourceConfiguration'
+                                                     },
+               'DeliveryStreamName' => {
+                                         'type' => 'Str'
+                                       },
+               'DeliveryStreamType' => {
+                                         'type' => 'Str'
+                                       },
+               'SplunkDestinationConfiguration' => {
+                                                     'type' => 'Firehose_SplunkDestinationConfiguration',
+                                                     'class' => 'Paws::Firehose::SplunkDestinationConfiguration'
+                                                   },
+               'ExtendedS3DestinationConfiguration' => {
+                                                         'class' => 'Paws::Firehose::ExtendedS3DestinationConfiguration',
+                                                         'type' => 'Firehose_ExtendedS3DestinationConfiguration'
+                                                       },
+               'S3DestinationConfiguration' => {
+                                                 'type' => 'Firehose_S3DestinationConfiguration',
+                                                 'class' => 'Paws::Firehose::S3DestinationConfiguration'
+                                               },
+               'ElasticsearchDestinationConfiguration' => {
+                                                            'class' => 'Paws::Firehose::ElasticsearchDestinationConfiguration',
+                                                            'type' => 'Firehose_ElasticsearchDestinationConfiguration'
+                                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -130,9 +180,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               OpenXJsonSerDe => {
                 CaseInsensitive         => 1,    # OPTIONAL
                 ColumnToJsonKeyMappings => {
-                  'MyNonEmptyStringWithoutWhitespace' =>
-                    'MyNonEmptyString',          # key: OPTIONAL
-                },    # OPTIONAL
+                  'MyNonEmptyStringWithoutWhitespace' => 'MyNonEmptyString',
+                },                               # OPTIONAL
                 ConvertDotsInJsonKeysToUnderscores => 1,    # OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
@@ -140,11 +189,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           OutputFormatConfiguration => {
             Serializer => {
               OrcSerDe => {
-                BlockSizeBytes     => 1,    # min: 67108864; OPTIONAL
-                BloomFilterColumns => [
-                  'MyNonEmptyStringWithoutWhitespace', ...    # OPTIONAL
-                ],                                            # OPTIONAL
-                BloomFilterFalsePositiveProbability => 1,     # max: 1; OPTIONAL
+                BlockSizeBytes => 1,    # min: 67108864; OPTIONAL
+                BloomFilterColumns =>
+                  [ 'MyNonEmptyStringWithoutWhitespace', ... ],    # OPTIONAL
+                BloomFilterFalsePositiveProbability => 1,    # max: 1; OPTIONAL
                 Compression => 'NONE',    # values: NONE, ZLIB, SNAPPY; OPTIONAL
                 DictionaryKeyThreshold => 1,    # max: 1; OPTIONAL
                 EnablePadding          => 1,    # OPTIONAL
@@ -165,12 +213,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },    # OPTIONAL
           SchemaConfiguration => {
-            CatalogId    => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            DatabaseName => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            Region       => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            RoleARN      => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            TableName    => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
-            VersionId    => 'MyNonEmptyStringWithoutWhitespace',    # OPTIONAL
+            CatalogId    => 'MyNonEmptyStringWithoutWhitespace',
+            DatabaseName => 'MyNonEmptyStringWithoutWhitespace',
+            Region       => 'MyNonEmptyStringWithoutWhitespace',
+            RoleARN      => 'MyNonEmptyStringWithoutWhitespace',
+            TableName    => 'MyNonEmptyStringWithoutWhitespace',
+            VersionId    => 'MyNonEmptyStringWithoutWhitespace',
           },    # OPTIONAL
         },    # OPTIONAL
         EncryptionConfiguration => {
@@ -457,19 +505,19 @@ stream as a source.
 
 Valid values are: C<"DirectPut">, C<"KinesisStreamAsSource">
 
-=head2 ElasticsearchDestinationConfiguration => L<Paws::Firehose::ElasticsearchDestinationConfiguration>
+=head2 ElasticsearchDestinationConfiguration => Firehose_ElasticsearchDestinationConfiguration
 
 The destination in Amazon ES. You can specify only one destination.
 
 
 
-=head2 ExtendedS3DestinationConfiguration => L<Paws::Firehose::ExtendedS3DestinationConfiguration>
+=head2 ExtendedS3DestinationConfiguration => Firehose_ExtendedS3DestinationConfiguration
 
 The destination in Amazon S3. You can specify only one destination.
 
 
 
-=head2 KinesisStreamSourceConfiguration => L<Paws::Firehose::KinesisStreamSourceConfiguration>
+=head2 KinesisStreamSourceConfiguration => Firehose_KinesisStreamSourceConfiguration
 
 When a Kinesis data stream is used as the source for the delivery
 stream, a KinesisStreamSourceConfiguration containing the Kinesis data
@@ -478,27 +526,27 @@ stream.
 
 
 
-=head2 RedshiftDestinationConfiguration => L<Paws::Firehose::RedshiftDestinationConfiguration>
+=head2 RedshiftDestinationConfiguration => Firehose_RedshiftDestinationConfiguration
 
 The destination in Amazon Redshift. You can specify only one
 destination.
 
 
 
-=head2 S3DestinationConfiguration => L<Paws::Firehose::S3DestinationConfiguration>
+=head2 S3DestinationConfiguration => Firehose_S3DestinationConfiguration
 
 [Deprecated] The destination in Amazon S3. You can specify only one
 destination.
 
 
 
-=head2 SplunkDestinationConfiguration => L<Paws::Firehose::SplunkDestinationConfiguration>
+=head2 SplunkDestinationConfiguration => Firehose_SplunkDestinationConfiguration
 
 The destination in Splunk. You can specify only one destination.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Firehose::Tag>]
+=head2 Tags => ArrayRef[Firehose_Tag]
 
 A set of tags to assign to the delivery stream. A tag is a key-value
 pair that you can define and assign to AWS resources. Tags are

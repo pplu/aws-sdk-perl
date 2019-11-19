@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Ac3Settings;
-  use Moose;
-  has Bitrate => (is => 'ro', isa => 'Num', request_name => 'bitrate', traits => ['NameInRequest']);
-  has BitstreamMode => (is => 'ro', isa => 'Str', request_name => 'bitstreamMode', traits => ['NameInRequest']);
-  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
-  has Dialnorm => (is => 'ro', isa => 'Int', request_name => 'dialnorm', traits => ['NameInRequest']);
-  has DrcProfile => (is => 'ro', isa => 'Str', request_name => 'drcProfile', traits => ['NameInRequest']);
-  has LfeFilter => (is => 'ro', isa => 'Str', request_name => 'lfeFilter', traits => ['NameInRequest']);
-  has MetadataControl => (is => 'ro', isa => 'Str', request_name => 'metadataControl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num Str Int/;
+  use Paws::MediaLive::Types qw//;
+  has Bitrate => (is => 'ro', isa => Num);
+  has BitstreamMode => (is => 'ro', isa => Str);
+  has CodingMode => (is => 'ro', isa => Str);
+  has Dialnorm => (is => 'ro', isa => Int);
+  has DrcProfile => (is => 'ro', isa => Str);
+  has LfeFilter => (is => 'ro', isa => Str);
+  has MetadataControl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LfeFilter' => {
+                                'type' => 'Str'
+                              },
+               'Bitrate' => {
+                              'type' => 'Num'
+                            },
+               'DrcProfile' => {
+                                 'type' => 'Str'
+                               },
+               'CodingMode' => {
+                                 'type' => 'Str'
+                               },
+               'Dialnorm' => {
+                               'type' => 'Int'
+                             },
+               'BitstreamMode' => {
+                                    'type' => 'Str'
+                                  },
+               'MetadataControl' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'BitstreamMode' => 'bitstreamMode',
+                       'Dialnorm' => 'dialnorm',
+                       'MetadataControl' => 'metadataControl',
+                       'LfeFilter' => 'lfeFilter',
+                       'Bitrate' => 'bitrate',
+                       'DrcProfile' => 'drcProfile',
+                       'CodingMode' => 'codingMode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

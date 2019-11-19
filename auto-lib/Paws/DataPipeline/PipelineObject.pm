@@ -1,8 +1,42 @@
+# Generated from default/object.tt
 package Paws::DataPipeline::PipelineObject;
-  use Moose;
-  has Fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]', request_name => 'fields', traits => ['NameInRequest'], required => 1);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::DataPipeline::Types qw/DataPipeline_Field/;
+  has Fields => (is => 'ro', isa => ArrayRef[DataPipeline_Field], required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Fields' => {
+                             'type' => 'ArrayRef[DataPipeline_Field]',
+                             'class' => 'Paws::DataPipeline::Field'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Name' => 'name',
+                       'Fields' => 'fields'
+                     },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Id' => 1,
+                    'Fields' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +74,7 @@ components of a pipeline defines the pipeline.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Fields => ArrayRef[L<Paws::DataPipeline::Field>]
+=head2 B<REQUIRED> Fields => ArrayRef[DataPipeline_Field]
 
   Key-value pairs that define the properties of the object.
 

@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::PSTNDialIn;
-  use Moose;
-  has CountryCode => (is => 'ro', isa => 'Str', required => 1);
-  has OneClickIdDelay => (is => 'ro', isa => 'Str', required => 1);
-  has OneClickPinDelay => (is => 'ro', isa => 'Str', required => 1);
-  has PhoneNumber => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has CountryCode => (is => 'ro', isa => Str, required => 1);
+  has OneClickIdDelay => (is => 'ro', isa => Str, required => 1);
+  has OneClickPinDelay => (is => 'ro', isa => Str, required => 1);
+  has PhoneNumber => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OneClickPinDelay' => {
+                                       'type' => 'Str'
+                                     },
+               'OneClickIdDelay' => {
+                                      'type' => 'Str'
+                                    },
+               'PhoneNumber' => {
+                                  'type' => 'Str'
+                                },
+               'CountryCode' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'PhoneNumber' => 1,
+                    'CountryCode' => 1,
+                    'OneClickIdDelay' => 1,
+                    'OneClickPinDelay' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

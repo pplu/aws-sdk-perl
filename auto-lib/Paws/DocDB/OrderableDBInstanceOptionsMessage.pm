@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::DocDB::OrderableDBInstanceOptionsMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has OrderableDBInstanceOptions => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::OrderableDBInstanceOption]', request_name => 'OrderableDBInstanceOption', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DocDB::Types qw/DocDB_OrderableDBInstanceOption/;
+  has Marker => (is => 'ro', isa => Str);
+  has OrderableDBInstanceOptions => (is => 'ro', isa => ArrayRef[DocDB_OrderableDBInstanceOption]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'OrderableDBInstanceOptions' => {
+                                                 'class' => 'Paws::DocDB::OrderableDBInstanceOption',
+                                                 'type' => 'ArrayRef[DocDB_OrderableDBInstanceOption]'
+                                               }
+             },
+  'NameInRequest' => {
+                       'OrderableDBInstanceOptions' => 'OrderableDBInstanceOption'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +48,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-=head2 OrderableDBInstanceOptions => ArrayRef[L<Paws::DocDB::OrderableDBInstanceOption>]
+=head2 OrderableDBInstanceOptions => ArrayRef[DocDB_OrderableDBInstanceOption]
 
 The options that are available for a particular orderable DB instance.
 

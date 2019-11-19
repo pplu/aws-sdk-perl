@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Glue;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'glue' }
   sub signing_name { 'glue' }
   sub version { '2017-03-31' }
   sub target_prefix { 'AWSGlue' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -998,7 +1000,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =item DatabaseName => Str
 
-=item PartitionInputList => ArrayRef[L<Paws::Glue::PartitionInput>]
+=item PartitionInputList => ArrayRef[Glue_PartitionInput]
 
 =item TableName => Str
 
@@ -1038,7 +1040,7 @@ Deletes a list of connection definitions from the Data Catalog.
 
 =item DatabaseName => Str
 
-=item PartitionsToDelete => ArrayRef[L<Paws::Glue::PartitionValueList>]
+=item PartitionsToDelete => ArrayRef[Glue_PartitionValueList]
 
 =item TableName => Str
 
@@ -1173,7 +1175,7 @@ that uses tags.
 
 =item DatabaseName => Str
 
-=item PartitionsToGet => ArrayRef[L<Paws::Glue::PartitionValueList>]
+=item PartitionsToGet => ArrayRef[Glue_PartitionValueList]
 
 =item TableName => Str
 
@@ -1275,13 +1277,13 @@ C<TransformID> and the task run's C<TaskRunId>.
 
 =over
 
-=item [CsvClassifier => L<Paws::Glue::CreateCsvClassifierRequest>]
+=item [CsvClassifier => Glue_CreateCsvClassifierRequest]
 
-=item [GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>]
+=item [GrokClassifier => Glue_CreateGrokClassifierRequest]
 
-=item [JsonClassifier => L<Paws::Glue::CreateJsonClassifierRequest>]
+=item [JsonClassifier => Glue_CreateJsonClassifierRequest]
 
-=item [XMLClassifier => L<Paws::Glue::CreateXMLClassifierRequest>]
+=item [XMLClassifier => Glue_CreateXMLClassifierRequest]
 
 
 =back
@@ -1299,7 +1301,7 @@ C<CsvClassifier>, depending on which field of the request is present.
 
 =over
 
-=item ConnectionInput => L<Paws::Glue::ConnectionInput>
+=item ConnectionInput => Glue_ConnectionInput
 
 =item [CatalogId => Str]
 
@@ -1321,7 +1323,7 @@ Creates a connection definition in the Data Catalog.
 
 =item Role => Str
 
-=item Targets => L<Paws::Glue::CrawlerTargets>
+=item Targets => Glue_CrawlerTargets
 
 =item [Classifiers => ArrayRef[Str|Undef]]
 
@@ -1335,11 +1337,11 @@ Creates a connection definition in the Data Catalog.
 
 =item [Schedule => Str]
 
-=item [SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>]
+=item [SchemaChangePolicy => Glue_SchemaChangePolicy]
 
 =item [TablePrefix => Str]
 
-=item [Tags => L<Paws::Glue::TagsMap>]
+=item [Tags => Glue_TagsMap]
 
 
 =back
@@ -1358,7 +1360,7 @@ field.
 
 =over
 
-=item DatabaseInput => L<Paws::Glue::DatabaseInput>
+=item DatabaseInput => Glue_DatabaseInput
 
 =item [CatalogId => Str]
 
@@ -1380,7 +1382,7 @@ Creates a new database in a Data Catalog.
 
 =item RoleArn => Str
 
-=item [Arguments => L<Paws::Glue::MapValue>]
+=item [Arguments => Glue_MapValue]
 
 =item [ExtraJarsS3Path => Str]
 
@@ -1402,7 +1404,7 @@ Creates a new database in a Data Catalog.
 
 =item [SubnetId => Str]
 
-=item [Tags => L<Paws::Glue::TagsMap>]
+=item [Tags => Glue_TagsMap]
 
 =item [WorkerType => Str]
 
@@ -1420,7 +1422,7 @@ Creates a new development endpoint.
 
 =over
 
-=item Command => L<Paws::Glue::JobCommand>
+=item Command => Glue_JobCommand
 
 =item Name => Str
 
@@ -1428,13 +1430,13 @@ Creates a new development endpoint.
 
 =item [AllocatedCapacity => Int]
 
-=item [Connections => L<Paws::Glue::ConnectionsList>]
+=item [Connections => Glue_ConnectionsList]
 
-=item [DefaultArguments => L<Paws::Glue::GenericMap>]
+=item [DefaultArguments => Glue_GenericMap]
 
 =item [Description => Str]
 
-=item [ExecutionProperty => L<Paws::Glue::ExecutionProperty>]
+=item [ExecutionProperty => Glue_ExecutionProperty]
 
 =item [GlueVersion => Str]
 
@@ -1444,13 +1446,13 @@ Creates a new development endpoint.
 
 =item [MaxRetries => Int]
 
-=item [NotificationProperty => L<Paws::Glue::NotificationProperty>]
+=item [NotificationProperty => Glue_NotificationProperty]
 
 =item [NumberOfWorkers => Int]
 
 =item [SecurityConfiguration => Str]
 
-=item [Tags => L<Paws::Glue::TagsMap>]
+=item [Tags => Glue_TagsMap]
 
 =item [Timeout => Int]
 
@@ -1470,11 +1472,11 @@ Creates a new job definition.
 
 =over
 
-=item InputRecordTables => ArrayRef[L<Paws::Glue::GlueTable>]
+=item InputRecordTables => ArrayRef[Glue_GlueTable]
 
 =item Name => Str
 
-=item Parameters => L<Paws::Glue::TransformParameters>
+=item Parameters => Glue_TransformParameters
 
 =item Role => Str
 
@@ -1519,7 +1521,7 @@ C<MaxRetries>. For more information, see Jobs
 
 =item DatabaseName => Str
 
-=item PartitionInput => L<Paws::Glue::PartitionInput>
+=item PartitionInput => Glue_PartitionInput
 
 =item TableName => Str
 
@@ -1539,9 +1541,9 @@ Creates a new partition.
 
 =over
 
-=item [DagEdges => ArrayRef[L<Paws::Glue::CodeGenEdge>]]
+=item [DagEdges => ArrayRef[Glue_CodeGenEdge]]
 
-=item [DagNodes => ArrayRef[L<Paws::Glue::CodeGenNode>]]
+=item [DagNodes => ArrayRef[Glue_CodeGenNode]]
 
 =item [Language => Str]
 
@@ -1559,7 +1561,7 @@ Transforms a directed acyclic graph (DAG) into code.
 
 =over
 
-=item EncryptionConfiguration => L<Paws::Glue::EncryptionConfiguration>
+=item EncryptionConfiguration => Glue_EncryptionConfiguration
 
 =item Name => Str
 
@@ -1584,7 +1586,7 @@ by Crawlers, Jobs, and Development Endpoints
 
 =item DatabaseName => Str
 
-=item TableInput => L<Paws::Glue::TableInput>
+=item TableInput => Glue_TableInput
 
 =item [CatalogId => Str]
 
@@ -1602,7 +1604,7 @@ Creates a new table definition in the Data Catalog.
 
 =over
 
-=item Actions => ArrayRef[L<Paws::Glue::Action>]
+=item Actions => ArrayRef[Glue_Action]
 
 =item Name => Str
 
@@ -1610,13 +1612,13 @@ Creates a new table definition in the Data Catalog.
 
 =item [Description => Str]
 
-=item [Predicate => L<Paws::Glue::Predicate>]
+=item [Predicate => Glue_Predicate]
 
 =item [Schedule => Str]
 
 =item [StartOnCreation => Bool]
 
-=item [Tags => L<Paws::Glue::TagsMap>]
+=item [Tags => Glue_TagsMap]
 
 =item [WorkflowName => Str]
 
@@ -1636,7 +1638,7 @@ Creates a new trigger.
 
 =item DatabaseName => Str
 
-=item FunctionInput => L<Paws::Glue::UserDefinedFunctionInput>
+=item FunctionInput => Glue_UserDefinedFunctionInput
 
 =item [CatalogId => Str]
 
@@ -1656,11 +1658,11 @@ Creates a new function definition in the Data Catalog.
 
 =item Name => Str
 
-=item [DefaultRunProperties => L<Paws::Glue::WorkflowRunProperties>]
+=item [DefaultRunProperties => Glue_WorkflowRunProperties]
 
 =item [Description => Str]
 
-=item [Tags => L<Paws::Glue::TagsMap>]
+=item [Tags => Glue_TagsMap]
 
 
 =back
@@ -2045,7 +2047,7 @@ Retrieves a connection definition from the Data Catalog.
 
 =item [CatalogId => Str]
 
-=item [Filter => L<Paws::Glue::GetConnectionsFilter>]
+=item [Filter => Glue_GetConnectionsFilter]
 
 =item [HidePassword => Bool]
 
@@ -2327,11 +2329,11 @@ Retrieves all current job definitions.
 
 =over
 
-=item Source => L<Paws::Glue::CatalogEntry>
+=item Source => Glue_CatalogEntry
 
-=item [Location => L<Paws::Glue::Location>]
+=item [Location => Glue_Location]
 
-=item [Sinks => ArrayRef[L<Paws::Glue::CatalogEntry>]]
+=item [Sinks => ArrayRef[Glue_CatalogEntry]]
 
 
 =back
@@ -2371,13 +2373,13 @@ C<TaskRunID> and its parent transform's C<TransformID>.
 
 =item TransformId => Str
 
-=item [Filter => L<Paws::Glue::TaskRunFilterCriteria>]
+=item [Filter => Glue_TaskRunFilterCriteria]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [Sort => L<Paws::Glue::TaskRunSortCriteria>]
+=item [Sort => Glue_TaskRunSortCriteria]
 
 
 =back
@@ -2421,13 +2423,13 @@ retrieve their metadata by calling C<GetMLTransform>.
 
 =over
 
-=item [Filter => L<Paws::Glue::TransformFilterCriteria>]
+=item [Filter => Glue_TransformFilterCriteria]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [Sort => L<Paws::Glue::TransformSortCriteria>]
+=item [Sort => Glue_TransformSortCriteria]
 
 
 =back
@@ -2482,7 +2484,7 @@ Retrieves information about a specified partition.
 
 =item [NextToken => Str]
 
-=item [Segment => L<Paws::Glue::Segment>]
+=item [Segment => Glue_Segment]
 
 
 =back
@@ -2498,15 +2500,15 @@ Retrieves information about the partitions in a table.
 
 =over
 
-=item Mapping => ArrayRef[L<Paws::Glue::MappingEntry>]
+=item Mapping => ArrayRef[Glue_MappingEntry]
 
-=item Source => L<Paws::Glue::CatalogEntry>
+=item Source => Glue_CatalogEntry
 
 =item [Language => Str]
 
-=item [Location => L<Paws::Glue::Location>]
+=item [Location => Glue_Location]
 
-=item [Sinks => ArrayRef[L<Paws::Glue::CatalogEntry>]]
+=item [Sinks => ArrayRef[Glue_CatalogEntry]]
 
 
 =back
@@ -2857,7 +2859,7 @@ Imports an existing Amazon Athena Data Catalog to AWS Glue
 
 =item [NextToken => Str]
 
-=item [Tags => L<Paws::Glue::TagsMap>]
+=item [Tags => Glue_TagsMap]
 
 
 =back
@@ -2884,7 +2886,7 @@ are retrieved.
 
 =item [NextToken => Str]
 
-=item [Tags => L<Paws::Glue::TagsMap>]
+=item [Tags => Glue_TagsMap]
 
 
 =back
@@ -2912,7 +2914,7 @@ are retrieved.
 
 =item [NextToken => Str]
 
-=item [Tags => L<Paws::Glue::TagsMap>]
+=item [Tags => Glue_TagsMap]
 
 
 =back
@@ -2941,7 +2943,7 @@ are retrieved.
 
 =item [NextToken => Str]
 
-=item [Tags => L<Paws::Glue::TagsMap>]
+=item [Tags => Glue_TagsMap]
 
 
 =back
@@ -2982,7 +2984,7 @@ Lists names of workflows created in the account.
 
 =over
 
-=item DataCatalogEncryptionSettings => L<Paws::Glue::DataCatalogEncryptionSettings>
+=item DataCatalogEncryptionSettings => Glue_DataCatalogEncryptionSettings
 
 =item [CatalogId => Str]
 
@@ -3026,7 +3028,7 @@ Sets the Data Catalog resource policy for access control.
 
 =item RunId => Str
 
-=item RunProperties => L<Paws::Glue::WorkflowRunProperties>
+=item RunProperties => Glue_WorkflowRunProperties
 
 
 =back
@@ -3064,7 +3066,7 @@ Resets a bookmark entry.
 
 =item [CatalogId => Str]
 
-=item [Filters => ArrayRef[L<Paws::Glue::PropertyPredicate>]]
+=item [Filters => ArrayRef[Glue_PropertyPredicate]]
 
 =item [MaxResults => Int]
 
@@ -3072,7 +3074,7 @@ Resets a bookmark entry.
 
 =item [SearchText => Str]
 
-=item [SortCriteria => ArrayRef[L<Paws::Glue::SortCriterion>]]
+=item [SortCriteria => ArrayRef[Glue_SortCriterion]]
 
 
 =back
@@ -3215,13 +3217,13 @@ C<GetMLTaskRun> operation.
 
 =item [AllocatedCapacity => Int]
 
-=item [Arguments => L<Paws::Glue::GenericMap>]
+=item [Arguments => Glue_GenericMap]
 
 =item [JobRunId => Str]
 
 =item [MaxCapacity => Num]
 
-=item [NotificationProperty => L<Paws::Glue::NotificationProperty>]
+=item [NotificationProperty => Glue_NotificationProperty]
 
 =item [NumberOfWorkers => Int]
 
@@ -3387,7 +3389,7 @@ Stops a specified trigger.
 
 =item ResourceArn => Str
 
-=item TagsToAdd => L<Paws::Glue::TagsMap>
+=item TagsToAdd => Glue_TagsMap
 
 
 =back
@@ -3424,13 +3426,13 @@ Removes tags from a resource.
 
 =over
 
-=item [CsvClassifier => L<Paws::Glue::UpdateCsvClassifierRequest>]
+=item [CsvClassifier => Glue_UpdateCsvClassifierRequest]
 
-=item [GrokClassifier => L<Paws::Glue::UpdateGrokClassifierRequest>]
+=item [GrokClassifier => Glue_UpdateGrokClassifierRequest]
 
-=item [JsonClassifier => L<Paws::Glue::UpdateJsonClassifierRequest>]
+=item [JsonClassifier => Glue_UpdateJsonClassifierRequest]
 
-=item [XMLClassifier => L<Paws::Glue::UpdateXMLClassifierRequest>]
+=item [XMLClassifier => Glue_UpdateXMLClassifierRequest]
 
 
 =back
@@ -3448,7 +3450,7 @@ on which field is present).
 
 =over
 
-=item ConnectionInput => L<Paws::Glue::ConnectionInput>
+=item ConnectionInput => Glue_ConnectionInput
 
 =item Name => Str
 
@@ -3484,11 +3486,11 @@ Updates a connection definition in the Data Catalog.
 
 =item [Schedule => Str]
 
-=item [SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>]
+=item [SchemaChangePolicy => Glue_SchemaChangePolicy]
 
 =item [TablePrefix => Str]
 
-=item [Targets => L<Paws::Glue::CrawlerTargets>]
+=item [Targets => Glue_CrawlerTargets]
 
 
 =back
@@ -3523,7 +3525,7 @@ Updates the schedule of a crawler using a C<cron> expression.
 
 =over
 
-=item DatabaseInput => L<Paws::Glue::DatabaseInput>
+=item DatabaseInput => Glue_DatabaseInput
 
 =item Name => Str
 
@@ -3545,11 +3547,11 @@ Updates an existing database definition in a Data Catalog.
 
 =item EndpointName => Str
 
-=item [AddArguments => L<Paws::Glue::MapValue>]
+=item [AddArguments => Glue_MapValue]
 
 =item [AddPublicKeys => ArrayRef[Str|Undef]]
 
-=item [CustomLibraries => L<Paws::Glue::DevEndpointCustomLibraries>]
+=item [CustomLibraries => Glue_DevEndpointCustomLibraries]
 
 =item [DeleteArguments => ArrayRef[Str|Undef]]
 
@@ -3575,7 +3577,7 @@ Updates a specified development endpoint.
 
 =item JobName => Str
 
-=item JobUpdate => L<Paws::Glue::JobUpdate>
+=item JobUpdate => Glue_JobUpdate
 
 
 =back
@@ -3603,7 +3605,7 @@ Updates an existing job definition.
 
 =item [NumberOfWorkers => Int]
 
-=item [Parameters => L<Paws::Glue::TransformParameters>]
+=item [Parameters => Glue_TransformParameters]
 
 =item [Role => Str]
 
@@ -3633,7 +3635,7 @@ machine learning transform, or making it more cost-effective).
 
 =item DatabaseName => Str
 
-=item PartitionInput => L<Paws::Glue::PartitionInput>
+=item PartitionInput => Glue_PartitionInput
 
 =item PartitionValueList => ArrayRef[Str|Undef]
 
@@ -3657,7 +3659,7 @@ Updates a partition.
 
 =item DatabaseName => Str
 
-=item TableInput => L<Paws::Glue::TableInput>
+=item TableInput => Glue_TableInput
 
 =item [CatalogId => Str]
 
@@ -3679,7 +3681,7 @@ Updates a metadata table in the Data Catalog.
 
 =item Name => Str
 
-=item TriggerUpdate => L<Paws::Glue::TriggerUpdate>
+=item TriggerUpdate => Glue_TriggerUpdate
 
 
 =back
@@ -3697,7 +3699,7 @@ Updates a trigger definition.
 
 =item DatabaseName => Str
 
-=item FunctionInput => L<Paws::Glue::UserDefinedFunctionInput>
+=item FunctionInput => Glue_UserDefinedFunctionInput
 
 =item FunctionName => Str
 
@@ -3719,7 +3721,7 @@ Updates an existing function definition in the Data Catalog.
 
 =item Name => Str
 
-=item [DefaultRunProperties => L<Paws::Glue::WorkflowRunProperties>]
+=item [DefaultRunProperties => Glue_WorkflowRunProperties]
 
 =item [Description => Str]
 
@@ -3751,9 +3753,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Glue::GetClassifiersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllConnections(sub { },[CatalogId => Str, Filter => L<Paws::Glue::GetConnectionsFilter>, HidePassword => Bool, MaxResults => Int, NextToken => Str])
+=head2 GetAllConnections(sub { },[CatalogId => Str, Filter => Glue_GetConnectionsFilter, HidePassword => Bool, MaxResults => Int, NextToken => Str])
 
-=head2 GetAllConnections([CatalogId => Str, Filter => L<Paws::Glue::GetConnectionsFilter>, HidePassword => Bool, MaxResults => Int, NextToken => Str])
+=head2 GetAllConnections([CatalogId => Str, Filter => Glue_GetConnectionsFilter, HidePassword => Bool, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -3835,9 +3837,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Glue::GetJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllPartitions(sub { },DatabaseName => Str, TableName => Str, [CatalogId => Str, Expression => Str, MaxResults => Int, NextToken => Str, Segment => L<Paws::Glue::Segment>])
+=head2 GetAllPartitions(sub { },DatabaseName => Str, TableName => Str, [CatalogId => Str, Expression => Str, MaxResults => Int, NextToken => Str, Segment => Glue_Segment])
 
-=head2 GetAllPartitions(DatabaseName => Str, TableName => Str, [CatalogId => Str, Expression => Str, MaxResults => Int, NextToken => Str, Segment => L<Paws::Glue::Segment>])
+=head2 GetAllPartitions(DatabaseName => Str, TableName => Str, [CatalogId => Str, Expression => Str, MaxResults => Int, NextToken => Str, Segment => Glue_Segment])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

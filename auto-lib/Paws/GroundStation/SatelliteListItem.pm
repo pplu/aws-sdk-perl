@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::GroundStation::SatelliteListItem;
-  use Moose;
-  has NoradSatelliteID => (is => 'ro', isa => 'Int', request_name => 'noradSatelliteID', traits => ['NameInRequest']);
-  has SatelliteArn => (is => 'ro', isa => 'Str', request_name => 'satelliteArn', traits => ['NameInRequest']);
-  has SatelliteId => (is => 'ro', isa => 'Str', request_name => 'satelliteId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::GroundStation::Types qw//;
+  has NoradSatelliteID => (is => 'ro', isa => Int);
+  has SatelliteArn => (is => 'ro', isa => Str);
+  has SatelliteId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NoradSatelliteID' => {
+                                       'type' => 'Int'
+                                     },
+               'SatelliteArn' => {
+                                   'type' => 'Str'
+                                 },
+               'SatelliteId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'SatelliteId' => 'satelliteId',
+                       'NoradSatelliteID' => 'noradSatelliteID',
+                       'SatelliteArn' => 'satelliteArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,32 @@
+# Generated from json/callargs_class.tt
 
 package Paws::IoTThingsGraph::UndeploySystemInstance;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has Id => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UndeploySystemInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTThingsGraph::UndeploySystemInstanceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UndeploySystemInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTThingsGraph::UndeploySystemInstanceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Id' => 'id'
+                     },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

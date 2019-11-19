@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::FSX::DataRepositoryConfiguration;
-  use Moose;
-  has ExportPath => (is => 'ro', isa => 'Str');
-  has ImportedFileChunkSize => (is => 'ro', isa => 'Int');
-  has ImportPath => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::FSX::Types qw//;
+  has ExportPath => (is => 'ro', isa => Str);
+  has ImportedFileChunkSize => (is => 'ro', isa => Int);
+  has ImportPath => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImportPath' => {
+                                 'type' => 'Str'
+                               },
+               'ExportPath' => {
+                                 'type' => 'Str'
+                               },
+               'ImportedFileChunkSize' => {
+                                            'type' => 'Int'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

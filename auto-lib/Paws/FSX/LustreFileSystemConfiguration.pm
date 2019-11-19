@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::FSX::LustreFileSystemConfiguration;
-  use Moose;
-  has DataRepositoryConfiguration => (is => 'ro', isa => 'Paws::FSX::DataRepositoryConfiguration');
-  has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::FSX::Types qw/FSX_DataRepositoryConfiguration/;
+  has DataRepositoryConfiguration => (is => 'ro', isa => FSX_DataRepositoryConfiguration);
+  has WeeklyMaintenanceStartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WeeklyMaintenanceStartTime' => {
+                                                 'type' => 'Str'
+                                               },
+               'DataRepositoryConfiguration' => {
+                                                  'type' => 'FSX_DataRepositoryConfiguration',
+                                                  'class' => 'Paws::FSX::DataRepositoryConfiguration'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ The configuration for the Amazon FSx for Lustre file system.
 =head1 ATTRIBUTES
 
 
-=head2 DataRepositoryConfiguration => L<Paws::FSX::DataRepositoryConfiguration>
+=head2 DataRepositoryConfiguration => FSX_DataRepositoryConfiguration
 
   
 

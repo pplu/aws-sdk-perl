@@ -1,17 +1,51 @@
 
 package Paws::CloudDirectory::UpdateTypedLinkFacet;
-  use Moose;
-  has AttributeUpdates => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::TypedLinkFacetAttributeUpdate]', required => 1);
-  has IdentityAttributeOrder => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedLinkFacetAttributeUpdate/;
+  has AttributeUpdates => (is => 'ro', isa => ArrayRef[CloudDirectory_TypedLinkFacetAttributeUpdate], required => 1, predicate => 1);
+  has IdentityAttributeOrder => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SchemaArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTypedLinkFacet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/facet');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::UpdateTypedLinkFacetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateTypedLinkFacet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/facet');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::UpdateTypedLinkFacetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SchemaArn' => {
+                                'type' => 'Str'
+                              },
+               'IdentityAttributeOrder' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'AttributeUpdates' => {
+                                       'type' => 'ArrayRef[CloudDirectory_TypedLinkFacetAttributeUpdate]',
+                                       'class' => 'Paws::CloudDirectory::TypedLinkFacetAttributeUpdate'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'AttributeUpdates' => 1,
+                    'Name' => 1,
+                    'SchemaArn' => 1,
+                    'IdentityAttributeOrder' => 1
+                  },
+  'ParamInHeader' => {
+                       'SchemaArn' => 'x-amz-data-partition'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +112,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::TypedLinkFacetAttributeUpdate>]
+=head2 B<REQUIRED> AttributeUpdates => ArrayRef[CloudDirectory_TypedLinkFacetAttributeUpdate]
 
 Attributes update structure.
 

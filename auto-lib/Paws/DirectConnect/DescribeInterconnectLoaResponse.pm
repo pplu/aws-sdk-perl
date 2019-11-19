@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::DescribeInterconnectLoaResponse;
-  use Moose;
-  has Loa => (is => 'ro', isa => 'Paws::DirectConnect::Loa', traits => ['NameInRequest'], request_name => 'loa' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw/DirectConnect_Loa/;
+  has Loa => (is => 'ro', isa => DirectConnect_Loa);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Loa' => {
+                          'type' => 'DirectConnect_Loa',
+                          'class' => 'Paws::DirectConnect::Loa'
+                        }
+             },
+  'NameInRequest' => {
+                       'Loa' => 'loa'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DirectConnect::DescribeInterconnectLoaResponse
 =head1 ATTRIBUTES
 
 
-=head2 Loa => L<Paws::DirectConnect::Loa>
+=head2 Loa => DirectConnect_Loa
 
 The Letter of Authorization - Connecting Facility Assignment (LOA-CFA).
 

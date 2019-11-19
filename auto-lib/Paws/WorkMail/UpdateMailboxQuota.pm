@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkMail::UpdateMailboxQuota;
-  use Moose;
-  has MailboxQuota => (is => 'ro', isa => 'Int', required => 1);
-  has OrganizationId => (is => 'ro', isa => 'Str', required => 1);
-  has UserId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WorkMail::Types qw//;
+  has MailboxQuota => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has OrganizationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMailboxQuota');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkMail::UpdateMailboxQuotaResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateMailboxQuota');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkMail::UpdateMailboxQuotaResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   },
+               'MailboxQuota' => {
+                                   'type' => 'Int'
+                                 },
+               'UserId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'MailboxQuota' => 1,
+                    'OrganizationId' => 1,
+                    'UserId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

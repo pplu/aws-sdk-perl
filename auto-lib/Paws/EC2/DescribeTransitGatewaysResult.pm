@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeTransitGatewaysResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has TransitGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TransitGateway]', request_name => 'transitGatewaySet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_TransitGateway/;
+  has NextToken => (is => 'ro', isa => Str);
+  has TransitGateways => (is => 'ro', isa => ArrayRef[EC2_TransitGateway]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TransitGateways' => 'transitGatewaySet',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'TransitGateways' => {
+                                      'class' => 'Paws::EC2::TransitGateway',
+                                      'type' => 'ArrayRef[EC2_TransitGateway]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +48,7 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 TransitGateways => ArrayRef[L<Paws::EC2::TransitGateway>]
+=head2 TransitGateways => ArrayRef[EC2_TransitGateway]
 
 Information about the transit gateways.
 

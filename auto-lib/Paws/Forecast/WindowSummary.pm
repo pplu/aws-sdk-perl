@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Forecast::WindowSummary;
-  use Moose;
-  has EvaluationType => (is => 'ro', isa => 'Str');
-  has ItemCount => (is => 'ro', isa => 'Int');
-  has Metrics => (is => 'ro', isa => 'Paws::Forecast::Metrics');
-  has TestWindowEnd => (is => 'ro', isa => 'Str');
-  has TestWindowStart => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Forecast::Types qw/Forecast_Metrics/;
+  has EvaluationType => (is => 'ro', isa => Str);
+  has ItemCount => (is => 'ro', isa => Int);
+  has Metrics => (is => 'ro', isa => Forecast_Metrics);
+  has TestWindowEnd => (is => 'ro', isa => Str);
+  has TestWindowStart => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ItemCount' => {
+                                'type' => 'Int'
+                              },
+               'EvaluationType' => {
+                                     'type' => 'Str'
+                                   },
+               'TestWindowStart' => {
+                                      'type' => 'Str'
+                                    },
+               'Metrics' => {
+                              'type' => 'Forecast_Metrics',
+                              'class' => 'Paws::Forecast::Metrics'
+                            },
+               'TestWindowEnd' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +98,7 @@ C<COMPUTED> - The metrics for the specified window.
   The number of data points within the window.
 
 
-=head2 Metrics => L<Paws::Forecast::Metrics>
+=head2 Metrics => Forecast_Metrics
 
   
 

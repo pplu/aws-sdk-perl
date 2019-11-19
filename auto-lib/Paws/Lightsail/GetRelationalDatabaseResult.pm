@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetRelationalDatabaseResult;
-  use Moose;
-  has RelationalDatabase => (is => 'ro', isa => 'Paws::Lightsail::RelationalDatabase', traits => ['NameInRequest'], request_name => 'relationalDatabase' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_RelationalDatabase/;
+  has RelationalDatabase => (is => 'ro', isa => Lightsail_RelationalDatabase);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RelationalDatabase' => 'relationalDatabase'
+                     },
+  'types' => {
+               'RelationalDatabase' => {
+                                         'type' => 'Lightsail_RelationalDatabase',
+                                         'class' => 'Paws::Lightsail::RelationalDatabase'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Lightsail::GetRelationalDatabaseResult
 =head1 ATTRIBUTES
 
 
-=head2 RelationalDatabase => L<Paws::Lightsail::RelationalDatabase>
+=head2 RelationalDatabase => Lightsail_RelationalDatabase
 
 An object describing the specified database.
 

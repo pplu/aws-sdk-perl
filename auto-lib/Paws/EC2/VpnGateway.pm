@@ -1,12 +1,55 @@
 package Paws::EC2::VpnGateway;
-  use Moose;
-  has AmazonSideAsn => (is => 'ro', isa => 'Int', request_name => 'amazonSideAsn', traits => ['NameInRequest']);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has VpcAttachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcAttachment]', request_name => 'attachments', traits => ['NameInRequest']);
-  has VpnGatewayId => (is => 'ro', isa => 'Str', request_name => 'vpnGatewayId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_VpcAttachment EC2_Tag/;
+  has AmazonSideAsn => (is => 'ro', isa => Int);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has Type => (is => 'ro', isa => Str);
+  has VpcAttachments => (is => 'ro', isa => ArrayRef[EC2_VpcAttachment]);
+  has VpnGatewayId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'VpnGatewayId' => 'vpnGatewayId',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'Type' => 'type',
+                       'AmazonSideAsn' => 'amazonSideAsn',
+                       'Tags' => 'tagSet',
+                       'VpcAttachments' => 'attachments',
+                       'State' => 'state'
+                     },
+  'types' => {
+               'VpcAttachments' => {
+                                     'class' => 'Paws::EC2::VpcAttachment',
+                                     'type' => 'ArrayRef[EC2_VpcAttachment]'
+                                   },
+               'Tags' => {
+                           'type' => 'ArrayRef[EC2_Tag]',
+                           'class' => 'Paws::EC2::Tag'
+                         },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'VpnGatewayId' => {
+                                   'type' => 'Str'
+                                 },
+               'AmazonSideAsn' => {
+                                    'type' => 'Int'
+                                  },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +102,7 @@ applicable. This field may be empty or not returned.
   The current state of the virtual private gateway.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the virtual private gateway.
 
@@ -69,7 +112,7 @@ applicable. This field may be empty or not returned.
   The type of VPN connection the virtual private gateway supports.
 
 
-=head2 VpcAttachments => ArrayRef[L<Paws::EC2::VpcAttachment>]
+=head2 VpcAttachments => ArrayRef[EC2_VpcAttachment]
 
   Any VPCs attached to the virtual private gateway.
 

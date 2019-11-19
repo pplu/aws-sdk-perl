@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::MediaLive::DvbNitSettings;
-  use Moose;
-  has NetworkId => (is => 'ro', isa => 'Int', request_name => 'networkId', traits => ['NameInRequest'], required => 1);
-  has NetworkName => (is => 'ro', isa => 'Str', request_name => 'networkName', traits => ['NameInRequest'], required => 1);
-  has RepInterval => (is => 'ro', isa => 'Int', request_name => 'repInterval', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaLive::Types qw//;
+  has NetworkId => (is => 'ro', isa => Int, required => 1);
+  has NetworkName => (is => 'ro', isa => Str, required => 1);
+  has RepInterval => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NetworkId' => 'networkId',
+                       'RepInterval' => 'repInterval',
+                       'NetworkName' => 'networkName'
+                     },
+  'IsRequired' => {
+                    'NetworkName' => 1,
+                    'NetworkId' => 1
+                  },
+  'types' => {
+               'NetworkId' => {
+                                'type' => 'Int'
+                              },
+               'NetworkName' => {
+                                  'type' => 'Str'
+                                },
+               'RepInterval' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

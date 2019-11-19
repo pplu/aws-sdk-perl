@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::PerformanceInsights::DataPoint;
-  use Moose;
-  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Num', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::PerformanceInsights::Types qw//;
+  has Timestamp => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'Value' => {
+                            'type' => 'Num'
+                          }
+             },
+  'IsRequired' => {
+                    'Timestamp' => 1,
+                    'Value' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

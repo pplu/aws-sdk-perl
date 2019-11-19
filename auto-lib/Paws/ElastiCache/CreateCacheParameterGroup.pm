@@ -1,15 +1,42 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::CreateCacheParameterGroup;
-  use Moose;
-  has CacheParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
-  has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheParameterGroupFamily => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CacheParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCacheParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CreateCacheParameterGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCacheParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCacheParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::CreateCacheParameterGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateCacheParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CacheParameterGroupFamily' => {
+                                                'type' => 'Str'
+                                              },
+               'CacheParameterGroupName' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'IsRequired' => {
+                    'CacheParameterGroupName' => 1,
+                    'CacheParameterGroupFamily' => 1,
+                    'Description' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

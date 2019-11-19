@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glue::CloudWatchEncryption;
-  use Moose;
-  has CloudWatchEncryptionMode => (is => 'ro', isa => 'Str');
-  has KmsKeyArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has CloudWatchEncryptionMode => (is => 'ro', isa => Str);
+  has KmsKeyArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CloudWatchEncryptionMode' => {
+                                               'type' => 'Str'
+                                             },
+               'KmsKeyArn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

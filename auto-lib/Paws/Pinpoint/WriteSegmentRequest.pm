@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::WriteSegmentRequest;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'Paws::Pinpoint::SegmentDimensions');
-  has Name => (is => 'ro', isa => 'Str');
-  has SegmentGroups => (is => 'ro', isa => 'Paws::Pinpoint::SegmentGroupList');
-  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string Pinpoint_SegmentGroupList Pinpoint_SegmentDimensions/;
+  has Dimensions => (is => 'ro', isa => Pinpoint_SegmentDimensions);
+  has Name => (is => 'ro', isa => Str);
+  has SegmentGroups => (is => 'ro', isa => Pinpoint_SegmentGroupList);
+  has Tags => (is => 'ro', isa => Pinpoint_MapOf__string);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::Pinpoint::MapOf__string',
+                           'type' => 'Pinpoint_MapOf__string'
+                         },
+               'Dimensions' => {
+                                 'class' => 'Paws::Pinpoint::SegmentDimensions',
+                                 'type' => 'Pinpoint_SegmentDimensions'
+                               },
+               'SegmentGroups' => {
+                                    'class' => 'Paws::Pinpoint::SegmentGroupList',
+                                    'type' => 'Pinpoint_SegmentGroupList'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +73,7 @@ or a SegmentGroups object, but not both.
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => L<Paws::Pinpoint::SegmentDimensions>
+=head2 Dimensions => Pinpoint_SegmentDimensions
 
   The criteria that define the dimensions for the segment.
 
@@ -51,7 +83,7 @@ or a SegmentGroups object, but not both.
   The name of the segment.
 
 
-=head2 SegmentGroups => L<Paws::Pinpoint::SegmentGroupList>
+=head2 SegmentGroups => Pinpoint_SegmentGroupList
 
   The segment group to use and the dimensions to apply to the group's
 base segments in order to build the segment. A segment group can
@@ -59,7 +91,7 @@ consist of zero or more base segments. Your request can include only
 one segment group.
 
 
-=head2 Tags => L<Paws::Pinpoint::MapOf__string>
+=head2 Tags => Pinpoint_MapOf__string
 
   A string-to-string map of key-value pairs that defines the tags to
 associate with the segment. Each tag consists of a required tag key and

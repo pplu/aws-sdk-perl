@@ -1,13 +1,50 @@
 
 package Paws::ApiGateway::Usage;
-  use Moose;
-  has EndDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endDate');
-  has Items => (is => 'ro', isa => 'Paws::ApiGateway::MapOfKeyUsages', traits => ['NameInRequest'], request_name => 'values');
-  has Position => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'position');
-  has StartDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startDate');
-  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'usagePlanId');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfKeyUsages/;
+  has EndDate => (is => 'ro', isa => Str);
+  has Items => (is => 'ro', isa => ApiGateway_MapOfKeyUsages);
+  has Position => (is => 'ro', isa => Str);
+  has StartDate => (is => 'ro', isa => Str);
+  has UsagePlanId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartDate' => {
+                                'type' => 'Str'
+                              },
+               'Position' => {
+                               'type' => 'Str'
+                             },
+               'Items' => {
+                            'class' => 'Paws::ApiGateway::MapOfKeyUsages',
+                            'type' => 'ApiGateway_MapOfKeyUsages'
+                          },
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'UsagePlanId' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Items' => 'values',
+                       'EndDate' => 'endDate',
+                       'UsagePlanId' => 'usagePlanId',
+                       'StartDate' => 'startDate',
+                       'Position' => 'position'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +61,7 @@ Paws::ApiGateway::Usage
 The ending date of the usage data.
 
 
-=head2 Items => L<Paws::ApiGateway::MapOfKeyUsages>
+=head2 Items => ApiGateway_MapOfKeyUsages
 
 The usage data, as daily logs of used and remaining quotas, over the
 specified time interval indexed over the API keys in a usage plan. For

@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::CloudWatchEvents::BatchArrayProperties;
-  use Moose;
-  has Size => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::CloudWatchEvents::Types qw//;
+  has Size => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Size' => {
+                           'type' => 'Int'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

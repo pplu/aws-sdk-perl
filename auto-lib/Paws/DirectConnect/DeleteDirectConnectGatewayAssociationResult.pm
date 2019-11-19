@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::DeleteDirectConnectGatewayAssociationResult;
-  use Moose;
-  has DirectConnectGatewayAssociation => (is => 'ro', isa => 'Paws::DirectConnect::DirectConnectGatewayAssociation', traits => ['NameInRequest'], request_name => 'directConnectGatewayAssociation' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw/DirectConnect_DirectConnectGatewayAssociation/;
+  has DirectConnectGatewayAssociation => (is => 'ro', isa => DirectConnect_DirectConnectGatewayAssociation);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DirectConnectGatewayAssociation' => {
+                                                      'type' => 'DirectConnect_DirectConnectGatewayAssociation',
+                                                      'class' => 'Paws::DirectConnect::DirectConnectGatewayAssociation'
+                                                    }
+             },
+  'NameInRequest' => {
+                       'DirectConnectGatewayAssociation' => 'directConnectGatewayAssociation'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DirectConnect::DeleteDirectConnectGatewayAssociationResult
 =head1 ATTRIBUTES
 
 
-=head2 DirectConnectGatewayAssociation => L<Paws::DirectConnect::DirectConnectGatewayAssociation>
+=head2 DirectConnectGatewayAssociation => DirectConnect_DirectConnectGatewayAssociation
 
 Information about the deleted association.
 

@@ -1,27 +1,113 @@
+# Generated from default/object.tt
 package Paws::SSM::StepExecution;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has ExecutionEndTime => (is => 'ro', isa => 'Str');
-  has ExecutionStartTime => (is => 'ro', isa => 'Str');
-  has FailureDetails => (is => 'ro', isa => 'Paws::SSM::FailureDetails');
-  has FailureMessage => (is => 'ro', isa => 'Str');
-  has Inputs => (is => 'ro', isa => 'Paws::SSM::NormalStringMap');
-  has IsCritical => (is => 'ro', isa => 'Bool');
-  has IsEnd => (is => 'ro', isa => 'Bool');
-  has MaxAttempts => (is => 'ro', isa => 'Int');
-  has NextStep => (is => 'ro', isa => 'Str');
-  has OnFailure => (is => 'ro', isa => 'Str');
-  has Outputs => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
-  has OverriddenParameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
-  has Response => (is => 'ro', isa => 'Str');
-  has ResponseCode => (is => 'ro', isa => 'Str');
-  has StepExecutionId => (is => 'ro', isa => 'Str');
-  has StepName => (is => 'ro', isa => 'Str');
-  has StepStatus => (is => 'ro', isa => 'Str');
-  has TargetLocation => (is => 'ro', isa => 'Paws::SSM::TargetLocation');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
-  has TimeoutSeconds => (is => 'ro', isa => 'Int');
-  has ValidNextSteps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::SSM::Types qw/SSM_AutomationParameterMap SSM_TargetLocation SSM_NormalStringMap SSM_Target SSM_FailureDetails/;
+  has Action => (is => 'ro', isa => Str);
+  has ExecutionEndTime => (is => 'ro', isa => Str);
+  has ExecutionStartTime => (is => 'ro', isa => Str);
+  has FailureDetails => (is => 'ro', isa => SSM_FailureDetails);
+  has FailureMessage => (is => 'ro', isa => Str);
+  has Inputs => (is => 'ro', isa => SSM_NormalStringMap);
+  has IsCritical => (is => 'ro', isa => Bool);
+  has IsEnd => (is => 'ro', isa => Bool);
+  has MaxAttempts => (is => 'ro', isa => Int);
+  has NextStep => (is => 'ro', isa => Str);
+  has OnFailure => (is => 'ro', isa => Str);
+  has Outputs => (is => 'ro', isa => SSM_AutomationParameterMap);
+  has OverriddenParameters => (is => 'ro', isa => SSM_AutomationParameterMap);
+  has Response => (is => 'ro', isa => Str);
+  has ResponseCode => (is => 'ro', isa => Str);
+  has StepExecutionId => (is => 'ro', isa => Str);
+  has StepName => (is => 'ro', isa => Str);
+  has StepStatus => (is => 'ro', isa => Str);
+  has TargetLocation => (is => 'ro', isa => SSM_TargetLocation);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target]);
+  has TimeoutSeconds => (is => 'ro', isa => Int);
+  has ValidNextSteps => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailureMessage' => {
+                                     'type' => 'Str'
+                                   },
+               'ResponseCode' => {
+                                   'type' => 'Str'
+                                 },
+               'NextStep' => {
+                               'type' => 'Str'
+                             },
+               'StepName' => {
+                               'type' => 'Str'
+                             },
+               'StepExecutionId' => {
+                                      'type' => 'Str'
+                                    },
+               'FailureDetails' => {
+                                     'class' => 'Paws::SSM::FailureDetails',
+                                     'type' => 'SSM_FailureDetails'
+                                   },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'Outputs' => {
+                              'class' => 'Paws::SSM::AutomationParameterMap',
+                              'type' => 'SSM_AutomationParameterMap'
+                            },
+               'Response' => {
+                               'type' => 'Str'
+                             },
+               'IsEnd' => {
+                            'type' => 'Bool'
+                          },
+               'StepStatus' => {
+                                 'type' => 'Str'
+                               },
+               'TargetLocation' => {
+                                     'class' => 'Paws::SSM::TargetLocation',
+                                     'type' => 'SSM_TargetLocation'
+                                   },
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               'MaxAttempts' => {
+                                  'type' => 'Int'
+                                },
+               'ValidNextSteps' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'OnFailure' => {
+                                'type' => 'Str'
+                              },
+               'IsCritical' => {
+                                 'type' => 'Bool'
+                               },
+               'ExecutionEndTime' => {
+                                       'type' => 'Str'
+                                     },
+               'TimeoutSeconds' => {
+                                     'type' => 'Int'
+                                   },
+               'Inputs' => {
+                             'type' => 'SSM_NormalStringMap',
+                             'class' => 'Paws::SSM::NormalStringMap'
+                           },
+               'OverriddenParameters' => {
+                                           'type' => 'SSM_AutomationParameterMap',
+                                           'class' => 'Paws::SSM::AutomationParameterMap'
+                                         },
+               'ExecutionStartTime' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +162,7 @@ ended. If the step has not yet concluded, this field is not populated.
 If the step is in Pending status, this field is not populated.
 
 
-=head2 FailureDetails => L<Paws::SSM::FailureDetails>
+=head2 FailureDetails => SSM_FailureDetails
 
   Information about the Automation failure.
 
@@ -86,7 +172,7 @@ If the step is in Pending status, this field is not populated.
   If a step failed, this message explains why the execution failed.
 
 
-=head2 Inputs => L<Paws::SSM::NormalStringMap>
+=head2 Inputs => SSM_NormalStringMap
 
   Fully-resolved values passed into the step before execution.
 
@@ -119,12 +205,12 @@ value is 1.
   The action to take if the step fails. The default value is Abort.
 
 
-=head2 Outputs => L<Paws::SSM::AutomationParameterMap>
+=head2 Outputs => SSM_AutomationParameterMap
 
   Returned values from the execution of the step.
 
 
-=head2 OverriddenParameters => L<Paws::SSM::AutomationParameterMap>
+=head2 OverriddenParameters => SSM_AutomationParameterMap
 
   A user-specified list of parameters to override when running a step.
 
@@ -155,13 +241,13 @@ value is 1.
 InProgress, Success, Cancelled, Failed, and TimedOut.
 
 
-=head2 TargetLocation => L<Paws::SSM::TargetLocation>
+=head2 TargetLocation => SSM_TargetLocation
 
   The combination of AWS Regions and accounts targeted by the current
 Automation execution.
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
   The targets for the step execution.
 

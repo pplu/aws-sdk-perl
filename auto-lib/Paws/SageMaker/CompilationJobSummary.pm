@@ -1,13 +1,58 @@
+# Generated from default/object.tt
 package Paws::SageMaker::CompilationJobSummary;
-  use Moose;
-  has CompilationEndTime => (is => 'ro', isa => 'Str');
-  has CompilationJobArn => (is => 'ro', isa => 'Str', required => 1);
-  has CompilationJobName => (is => 'ro', isa => 'Str', required => 1);
-  has CompilationJobStatus => (is => 'ro', isa => 'Str', required => 1);
-  has CompilationStartTime => (is => 'ro', isa => 'Str');
-  has CompilationTargetDevice => (is => 'ro', isa => 'Str', required => 1);
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has CompilationEndTime => (is => 'ro', isa => Str);
+  has CompilationJobArn => (is => 'ro', isa => Str, required => 1);
+  has CompilationJobName => (is => 'ro', isa => Str, required => 1);
+  has CompilationJobStatus => (is => 'ro', isa => Str, required => 1);
+  has CompilationStartTime => (is => 'ro', isa => Str);
+  has CompilationTargetDevice => (is => 'ro', isa => Str, required => 1);
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CompilationStartTime' => {
+                                           'type' => 'Str'
+                                         },
+               'CompilationEndTime' => {
+                                         'type' => 'Str'
+                                       },
+               'CompilationJobStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'CompilationTargetDevice' => {
+                                              'type' => 'Str'
+                                            },
+               'CompilationJobName' => {
+                                         'type' => 'Str'
+                                       },
+               'CompilationJobArn' => {
+                                        'type' => 'Str'
+                                      },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'CompilationTargetDevice' => 1,
+                    'CompilationJobStatus' => 1,
+                    'CompilationJobArn' => 1,
+                    'CompilationJobName' => 1,
+                    'CreationTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

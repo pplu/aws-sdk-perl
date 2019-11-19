@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Robomaker::PortForwardingConfig;
-  use Moose;
-  has PortMappings => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::PortMapping]', request_name => 'portMappings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_PortMapping/;
+  has PortMappings => (is => 'ro', isa => ArrayRef[Robomaker_PortMapping]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PortMappings' => 'portMappings'
+                     },
+  'types' => {
+               'PortMappings' => {
+                                   'type' => 'ArrayRef[Robomaker_PortMapping]',
+                                   'class' => 'Paws::Robomaker::PortMapping'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Configuration information for port forwarding.
 =head1 ATTRIBUTES
 
 
-=head2 PortMappings => ArrayRef[L<Paws::Robomaker::PortMapping>]
+=head2 PortMappings => ArrayRef[Robomaker_PortMapping]
 
   The port mappings for the configuration.
 

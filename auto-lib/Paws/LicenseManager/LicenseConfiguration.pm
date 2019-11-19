@@ -1,18 +1,73 @@
+# Generated from default/object.tt
 package Paws::LicenseManager::LicenseConfiguration;
-  use Moose;
-  has ConsumedLicenses => (is => 'ro', isa => 'Int');
-  has ConsumedLicenseSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::ConsumedLicenseSummary]');
-  has Description => (is => 'ro', isa => 'Str');
-  has LicenseConfigurationArn => (is => 'ro', isa => 'Str');
-  has LicenseConfigurationId => (is => 'ro', isa => 'Str');
-  has LicenseCount => (is => 'ro', isa => 'Int');
-  has LicenseCountHardLimit => (is => 'ro', isa => 'Bool');
-  has LicenseCountingType => (is => 'ro', isa => 'Str');
-  has LicenseRules => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ManagedResourceSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::ManagedResourceSummary]');
-  has Name => (is => 'ro', isa => 'Str');
-  has OwnerAccountId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int ArrayRef Str Bool Undef/;
+  use Paws::LicenseManager::Types qw/LicenseManager_ManagedResourceSummary LicenseManager_ConsumedLicenseSummary/;
+  has ConsumedLicenses => (is => 'ro', isa => Int);
+  has ConsumedLicenseSummaryList => (is => 'ro', isa => ArrayRef[LicenseManager_ConsumedLicenseSummary]);
+  has Description => (is => 'ro', isa => Str);
+  has LicenseConfigurationArn => (is => 'ro', isa => Str);
+  has LicenseConfigurationId => (is => 'ro', isa => Str);
+  has LicenseCount => (is => 'ro', isa => Int);
+  has LicenseCountHardLimit => (is => 'ro', isa => Bool);
+  has LicenseCountingType => (is => 'ro', isa => Str);
+  has LicenseRules => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ManagedResourceSummaryList => (is => 'ro', isa => ArrayRef[LicenseManager_ManagedResourceSummary]);
+  has Name => (is => 'ro', isa => Str);
+  has OwnerAccountId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ManagedResourceSummaryList' => {
+                                                 'class' => 'Paws::LicenseManager::ManagedResourceSummary',
+                                                 'type' => 'ArrayRef[LicenseManager_ManagedResourceSummary]'
+                                               },
+               'LicenseCountHardLimit' => {
+                                            'type' => 'Bool'
+                                          },
+               'LicenseCountingType' => {
+                                          'type' => 'Str'
+                                        },
+               'LicenseConfigurationId' => {
+                                             'type' => 'Str'
+                                           },
+               'LicenseConfigurationArn' => {
+                                              'type' => 'Str'
+                                            },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'OwnerAccountId' => {
+                                     'type' => 'Str'
+                                   },
+               'ConsumedLicenseSummaryList' => {
+                                                 'class' => 'Paws::LicenseManager::ConsumedLicenseSummary',
+                                                 'type' => 'ArrayRef[LicenseManager_ConsumedLicenseSummary]'
+                                               },
+               'LicenseRules' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'ConsumedLicenses' => {
+                                       'type' => 'Int'
+                                     },
+               'LicenseCount' => {
+                                   'type' => 'Int'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +114,7 @@ licenses purchased and used.
   Number of licenses consumed.
 
 
-=head2 ConsumedLicenseSummaryList => ArrayRef[L<Paws::LicenseManager::ConsumedLicenseSummary>]
+=head2 ConsumedLicenseSummaryList => ArrayRef[LicenseManager_ConsumedLicenseSummary]
 
   List of summaries for licenses consumed by various resources.
 
@@ -99,7 +154,7 @@ licenses purchased and used.
   Array of configured License Manager rules.
 
 
-=head2 ManagedResourceSummaryList => ArrayRef[L<Paws::LicenseManager::ManagedResourceSummary>]
+=head2 ManagedResourceSummaryList => ArrayRef[LicenseManager_ManagedResourceSummary]
 
   List of summaries for managed resources.
 

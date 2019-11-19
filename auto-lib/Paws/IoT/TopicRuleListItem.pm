@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::IoT::TopicRuleListItem;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has RuleArn => (is => 'ro', isa => 'Str', request_name => 'ruleArn', traits => ['NameInRequest']);
-  has RuleDisabled => (is => 'ro', isa => 'Bool', request_name => 'ruleDisabled', traits => ['NameInRequest']);
-  has RuleName => (is => 'ro', isa => 'Str', request_name => 'ruleName', traits => ['NameInRequest']);
-  has TopicPattern => (is => 'ro', isa => 'Str', request_name => 'topicPattern', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has RuleArn => (is => 'ro', isa => Str);
+  has RuleDisabled => (is => 'ro', isa => Bool);
+  has RuleName => (is => 'ro', isa => Str);
+  has TopicPattern => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CreatedAt' => 'createdAt',
+                       'RuleArn' => 'ruleArn',
+                       'RuleName' => 'ruleName',
+                       'TopicPattern' => 'topicPattern',
+                       'RuleDisabled' => 'ruleDisabled'
+                     },
+  'types' => {
+               'RuleDisabled' => {
+                                   'type' => 'Bool'
+                                 },
+               'TopicPattern' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'RuleArn' => {
+                              'type' => 'Str'
+                            },
+               'RuleName' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

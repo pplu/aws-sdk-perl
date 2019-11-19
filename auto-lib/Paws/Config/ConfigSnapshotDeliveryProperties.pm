@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Config::ConfigSnapshotDeliveryProperties;
-  use Moose;
-  has DeliveryFrequency => (is => 'ro', isa => 'Str', request_name => 'deliveryFrequency', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has DeliveryFrequency => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeliveryFrequency' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'DeliveryFrequency' => 'deliveryFrequency'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

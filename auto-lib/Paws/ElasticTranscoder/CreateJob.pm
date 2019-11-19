@@ -1,21 +1,66 @@
 
 package Paws::ElasticTranscoder::CreateJob;
-  use Moose;
-  has Input => (is => 'ro', isa => 'Paws::ElasticTranscoder::JobInput');
-  has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::JobInput]');
-  has Output => (is => 'ro', isa => 'Paws::ElasticTranscoder::CreateJobOutput');
-  has OutputKeyPrefix => (is => 'ro', isa => 'Str');
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::CreateJobOutput]');
-  has PipelineId => (is => 'ro', isa => 'Str', required => 1);
-  has Playlists => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::CreateJobPlaylist]');
-  has UserMetadata => (is => 'ro', isa => 'Paws::ElasticTranscoder::UserMetadata');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_CreateJobPlaylist ElasticTranscoder_UserMetadata ElasticTranscoder_CreateJobOutput ElasticTranscoder_JobInput/;
+  has Input => (is => 'ro', isa => ElasticTranscoder_JobInput, predicate => 1);
+  has Inputs => (is => 'ro', isa => ArrayRef[ElasticTranscoder_JobInput], predicate => 1);
+  has Output => (is => 'ro', isa => ElasticTranscoder_CreateJobOutput, predicate => 1);
+  has OutputKeyPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has Outputs => (is => 'ro', isa => ArrayRef[ElasticTranscoder_CreateJobOutput], predicate => 1);
+  has PipelineId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Playlists => (is => 'ro', isa => ArrayRef[ElasticTranscoder_CreateJobPlaylist], predicate => 1);
+  has UserMetadata => (is => 'ro', isa => ElasticTranscoder_UserMetadata, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::CreateJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2012-09-25/jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticTranscoder::CreateJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PipelineId' => 1
+                  },
+  'types' => {
+               'Output' => {
+                             'class' => 'Paws::ElasticTranscoder::CreateJobOutput',
+                             'type' => 'ElasticTranscoder_CreateJobOutput'
+                           },
+               'Playlists' => {
+                                'type' => 'ArrayRef[ElasticTranscoder_CreateJobPlaylist]',
+                                'class' => 'Paws::ElasticTranscoder::CreateJobPlaylist'
+                              },
+               'OutputKeyPrefix' => {
+                                      'type' => 'Str'
+                                    },
+               'Input' => {
+                            'class' => 'Paws::ElasticTranscoder::JobInput',
+                            'type' => 'ElasticTranscoder_JobInput'
+                          },
+               'Inputs' => {
+                             'type' => 'ArrayRef[ElasticTranscoder_JobInput]',
+                             'class' => 'Paws::ElasticTranscoder::JobInput'
+                           },
+               'Outputs' => {
+                              'type' => 'ArrayRef[ElasticTranscoder_CreateJobOutput]',
+                              'class' => 'Paws::ElasticTranscoder::CreateJobOutput'
+                            },
+               'UserMetadata' => {
+                                   'type' => 'ElasticTranscoder_UserMetadata',
+                                   'class' => 'Paws::ElasticTranscoder::UserMetadata'
+                                 },
+               'PipelineId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -366,21 +411,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 Input => L<Paws::ElasticTranscoder::JobInput>
+=head2 Input => ElasticTranscoder_JobInput
 
 A section of the request body that provides information about the file
 that is being transcoded.
 
 
 
-=head2 Inputs => ArrayRef[L<Paws::ElasticTranscoder::JobInput>]
+=head2 Inputs => ArrayRef[ElasticTranscoder_JobInput]
 
 A section of the request body that provides information about the files
 that are being transcoded.
 
 
 
-=head2 Output => L<Paws::ElasticTranscoder::CreateJobOutput>
+=head2 Output => ElasticTranscoder_CreateJobOutput
 
 A section of the request body that provides information about the
 transcoded (target) file. We strongly recommend that you use the
@@ -396,7 +441,7 @@ thumbnails, and playlists.
 
 
 
-=head2 Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>]
+=head2 Outputs => ArrayRef[ElasticTranscoder_CreateJobOutput]
 
 A section of the request body that provides information about the
 transcoded (target) files. We recommend that you use the C<Outputs>
@@ -414,7 +459,7 @@ transcoded files.
 
 
 
-=head2 Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>]
+=head2 Playlists => ArrayRef[ElasticTranscoder_CreateJobPlaylist]
 
 If you specify a preset in C<PresetId> for which the value of
 C<Container> is fmp4 (Fragmented MP4) or ts (MPEG-TS), Playlists
@@ -425,7 +470,7 @@ The maximum number of master playlists in a job is 30.
 
 
 
-=head2 UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>
+=head2 UserMetadata => ElasticTranscoder_UserMetadata
 
 User-defined metadata that you want to associate with an Elastic
 Transcoder job. You specify metadata in C<key/value> pairs, and you can

@@ -1,18 +1,76 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::ActivityResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
-  has CampaignId => (is => 'ro', isa => 'Str', required => 1);
-  has End => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Result => (is => 'ro', isa => 'Str');
-  has ScheduledStart => (is => 'ro', isa => 'Str');
-  has Start => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has SuccessfulEndpointCount => (is => 'ro', isa => 'Int');
-  has TimezonesCompletedCount => (is => 'ro', isa => 'Int');
-  has TimezonesTotalCount => (is => 'ro', isa => 'Int');
-  has TotalEndpointCount => (is => 'ro', isa => 'Int');
-  has TreatmentId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has CampaignId => (is => 'ro', isa => Str, required => 1);
+  has End => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Result => (is => 'ro', isa => Str);
+  has ScheduledStart => (is => 'ro', isa => Str);
+  has Start => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has SuccessfulEndpointCount => (is => 'ro', isa => Int);
+  has TimezonesCompletedCount => (is => 'ro', isa => Int);
+  has TimezonesTotalCount => (is => 'ro', isa => Int);
+  has TotalEndpointCount => (is => 'ro', isa => Int);
+  has TreatmentId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CampaignId' => 1,
+                    'Id' => 1,
+                    'ApplicationId' => 1
+                  },
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'CampaignId' => {
+                                 'type' => 'Str'
+                               },
+               'SuccessfulEndpointCount' => {
+                                              'type' => 'Int'
+                                            },
+               'Start' => {
+                            'type' => 'Str'
+                          },
+               'TimezonesCompletedCount' => {
+                                              'type' => 'Int'
+                                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'End' => {
+                          'type' => 'Str'
+                        },
+               'TotalEndpointCount' => {
+                                         'type' => 'Int'
+                                       },
+               'TreatmentId' => {
+                                  'type' => 'Str'
+                                },
+               'ScheduledStart' => {
+                                     'type' => 'Str'
+                                   },
+               'TimezonesTotalCount' => {
+                                          'type' => 'Int'
+                                        },
+               'Result' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

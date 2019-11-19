@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::CreateVPCEConfigurationResult;
-  use Moose;
-  has VpceConfiguration => (is => 'ro', isa => 'Paws::DeviceFarm::VPCEConfiguration', traits => ['NameInRequest'], request_name => 'vpceConfiguration' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_VPCEConfiguration/;
+  has VpceConfiguration => (is => 'ro', isa => DeviceFarm_VPCEConfiguration);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'VpceConfiguration' => 'vpceConfiguration'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VpceConfiguration' => {
+                                        'type' => 'DeviceFarm_VPCEConfiguration',
+                                        'class' => 'Paws::DeviceFarm::VPCEConfiguration'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DeviceFarm::CreateVPCEConfigurationResult
 =head1 ATTRIBUTES
 
 
-=head2 VpceConfiguration => L<Paws::DeviceFarm::VPCEConfiguration>
+=head2 VpceConfiguration => DeviceFarm_VPCEConfiguration
 
 An object containing information about your VPC endpoint configuration.
 

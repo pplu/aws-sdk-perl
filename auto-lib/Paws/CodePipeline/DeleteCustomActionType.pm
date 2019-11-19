@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::DeleteCustomActionType;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'category' , required => 1);
-  has Provider => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'provider' , required => 1);
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has Category => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Provider => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Version => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCustomActionType');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteCustomActionType');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Version' => 1,
+                    'Provider' => 1,
+                    'Category' => 1
+                  },
+  'NameInRequest' => {
+                       'Provider' => 'provider',
+                       'Category' => 'category',
+                       'Version' => 'version'
+                     },
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Provider' => {
+                               'type' => 'Str'
+                             },
+               'Category' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

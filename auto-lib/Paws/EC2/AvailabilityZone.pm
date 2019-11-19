@@ -1,10 +1,44 @@
 package Paws::EC2::AvailabilityZone;
-  use Moose;
-  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AvailabilityZoneMessage]', request_name => 'messageSet', traits => ['NameInRequest']);
-  has RegionName => (is => 'ro', isa => 'Str', request_name => 'regionName', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'zoneState', traits => ['NameInRequest']);
-  has ZoneId => (is => 'ro', isa => 'Str', request_name => 'zoneId', traits => ['NameInRequest']);
-  has ZoneName => (is => 'ro', isa => 'Str', request_name => 'zoneName', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef Str/;
+  use Paws::EC2::Types qw/EC2_AvailabilityZoneMessage/;
+  has Messages => (is => 'ro', isa => ArrayRef[EC2_AvailabilityZoneMessage]);
+  has RegionName => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has ZoneId => (is => 'ro', isa => Str);
+  has ZoneName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegionName' => {
+                                 'type' => 'Str'
+                               },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'ZoneName' => {
+                               'type' => 'Str'
+                             },
+               'Messages' => {
+                               'type' => 'ArrayRef[EC2_AvailabilityZoneMessage]',
+                               'class' => 'Paws::EC2::AvailabilityZoneMessage'
+                             },
+               'ZoneId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Messages' => 'messageSet',
+                       'ZoneId' => 'zoneId',
+                       'ZoneName' => 'zoneName',
+                       'State' => 'zoneState',
+                       'RegionName' => 'regionName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +74,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Messages => ArrayRef[L<Paws::EC2::AvailabilityZoneMessage>]
+=head2 Messages => ArrayRef[EC2_AvailabilityZoneMessage]
 
   Any messages about the Availability Zone.
 

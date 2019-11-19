@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::UpdateTable;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
-  has SkipArchive => (is => 'ro', isa => 'Bool');
-  has TableInput => (is => 'ro', isa => 'Paws::Glue::TableInput', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Glue::Types qw/Glue_TableInput/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SkipArchive => (is => 'ro', isa => Bool, predicate => 1);
+  has TableInput => (is => 'ro', isa => Glue_TableInput, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTable');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::UpdateTableResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateTable');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::UpdateTableResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              },
+               'TableInput' => {
+                                 'class' => 'Paws::Glue::TableInput',
+                                 'type' => 'Glue_TableInput'
+                               },
+               'SkipArchive' => {
+                                  'type' => 'Bool'
+                                }
+             },
+  'IsRequired' => {
+                    'DatabaseName' => 1,
+                    'TableInput' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -142,7 +172,7 @@ C<UpdateTable> does not create the archived version.
 
 
 
-=head2 B<REQUIRED> TableInput => L<Paws::Glue::TableInput>
+=head2 B<REQUIRED> TableInput => Glue_TableInput
 
 An updated C<TableInput> object to define the metadata table in the
 catalog.

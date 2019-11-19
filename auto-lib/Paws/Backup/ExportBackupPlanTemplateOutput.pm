@@ -1,9 +1,26 @@
 
 package Paws::Backup::ExportBackupPlanTemplateOutput;
-  use Moose;
-  has BackupPlanTemplateJson => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw//;
+  has BackupPlanTemplateJson => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupPlanTemplateJson' => {
+                                             'type' => 'Str'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

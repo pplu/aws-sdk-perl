@@ -1,17 +1,48 @@
 
 package Paws::SecurityHub::UpdateInsight;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'Paws::SecurityHub::AwsSecurityFindingFilters');
-  has GroupByAttribute => (is => 'ro', isa => 'Str');
-  has InsightArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InsightArn', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw/SecurityHub_AwsSecurityFindingFilters/;
+  has Filters => (is => 'ro', isa => SecurityHub_AwsSecurityFindingFilters, predicate => 1);
+  has GroupByAttribute => (is => 'ro', isa => Str, predicate => 1);
+  has InsightArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateInsight');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/insights/{InsightArn+}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::UpdateInsightResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateInsight');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/insights/{InsightArn+}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::UpdateInsightResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'InsightArn' => {
+                                 'type' => 'Str'
+                               },
+               'Filters' => {
+                              'class' => 'Paws::SecurityHub::AwsSecurityFindingFilters',
+                              'type' => 'SecurityHub_AwsSecurityFindingFilters'
+                            },
+               'GroupByAttribute' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'InsightArn' => 1
+                  },
+  'ParamInURI' => {
+                    'InsightArn' => 'InsightArn'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -646,7 +677,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
-=head2 Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>
+=head2 Filters => SecurityHub_AwsSecurityFindingFilters
 
 The updated filters that define this insight.
 

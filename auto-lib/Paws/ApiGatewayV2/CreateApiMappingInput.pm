@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::CreateApiMappingInput;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', request_name => 'apiId', traits => ['NameInRequest'], required => 1);
-  has ApiMappingKey => (is => 'ro', isa => 'Str', request_name => 'apiMappingKey', traits => ['NameInRequest']);
-  has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1);
+  has ApiMappingKey => (is => 'ro', isa => Str);
+  has Stage => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ApiId' => 1,
+                    'Stage' => 1
+                  },
+  'NameInRequest' => {
+                       'ApiId' => 'apiId',
+                       'ApiMappingKey' => 'apiMappingKey',
+                       'Stage' => 'stage'
+                     },
+  'types' => {
+               'ApiMappingKey' => {
+                                    'type' => 'Str'
+                                  },
+               'Stage' => {
+                            'type' => 'Str'
+                          },
+               'ApiId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

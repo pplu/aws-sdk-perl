@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceDiscovery::GetInstanceResponse;
-  use Moose;
-  has Instance => (is => 'ro', isa => 'Paws::ServiceDiscovery::Instance');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_Instance/;
+  has Instance => (is => 'ro', isa => ServiceDiscovery_Instance);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Instance' => {
+                               'class' => 'Paws::ServiceDiscovery::Instance',
+                               'type' => 'ServiceDiscovery_Instance'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::ServiceDiscovery::GetInstanceResponse
 =head1 ATTRIBUTES
 
 
-=head2 Instance => L<Paws::ServiceDiscovery::Instance>
+=head2 Instance => ServiceDiscovery_Instance
 
 A complex type that contains information about a specified instance.
 

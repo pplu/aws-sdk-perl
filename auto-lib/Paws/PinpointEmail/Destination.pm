@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::Destination;
-  use Moose;
-  has BccAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CcAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has BccAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CcAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ToAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BccAddresses' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'CcAddresses' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'ToAddresses' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,43 @@
 
 package Paws::IoT::CreatePolicy;
-  use Moose;
-  has PolicyDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyDocument', required => 1);
-  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has PolicyDocument => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PolicyName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePolicy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/policies/{policyName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreatePolicyResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePolicy');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/policies/{policyName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreatePolicyResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'PolicyName' => 'policyName'
+                  },
+  'NameInRequest' => {
+                       'PolicyDocument' => 'policyDocument'
+                     },
+  'IsRequired' => {
+                    'PolicyName' => 1,
+                    'PolicyDocument' => 1
+                  },
+  'types' => {
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::WriteTreatmentResource;
-  use Moose;
-  has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::MessageConfiguration');
-  has Schedule => (is => 'ro', isa => 'Paws::Pinpoint::Schedule');
-  has SizePercent => (is => 'ro', isa => 'Int', required => 1);
-  has TreatmentDescription => (is => 'ro', isa => 'Str');
-  has TreatmentName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_Schedule Pinpoint_MessageConfiguration/;
+  has MessageConfiguration => (is => 'ro', isa => Pinpoint_MessageConfiguration);
+  has Schedule => (is => 'ro', isa => Pinpoint_Schedule);
+  has SizePercent => (is => 'ro', isa => Int, required => 1);
+  has TreatmentDescription => (is => 'ro', isa => Str);
+  has TreatmentName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TreatmentName' => {
+                                    'type' => 'Str'
+                                  },
+               'MessageConfiguration' => {
+                                           'class' => 'Paws::Pinpoint::MessageConfiguration',
+                                           'type' => 'Pinpoint_MessageConfiguration'
+                                         },
+               'TreatmentDescription' => {
+                                           'type' => 'Str'
+                                         },
+               'Schedule' => {
+                               'type' => 'Pinpoint_Schedule',
+                               'class' => 'Paws::Pinpoint::Schedule'
+                             },
+               'SizePercent' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'IsRequired' => {
+                    'SizePercent' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,12 +75,12 @@ variation of a campaign that's used for A/B testing of a campaign.
 =head1 ATTRIBUTES
 
 
-=head2 MessageConfiguration => L<Paws::Pinpoint::MessageConfiguration>
+=head2 MessageConfiguration => Pinpoint_MessageConfiguration
 
   The message configuration settings for the treatment.
 
 
-=head2 Schedule => L<Paws::Pinpoint::Schedule>
+=head2 Schedule => Pinpoint_Schedule
 
   The schedule settings for the treatment.
 

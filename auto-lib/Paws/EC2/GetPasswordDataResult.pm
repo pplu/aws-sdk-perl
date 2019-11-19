@@ -1,11 +1,40 @@
 
 package Paws::EC2::GetPasswordDataResult;
-  use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest',]);
-  has PasswordData => (is => 'ro', isa => 'Str', request_name => 'passwordData', traits => ['NameInRequest',]);
-  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has InstanceId => (is => 'ro', isa => Str);
+  has PasswordData => (is => 'ro', isa => Str);
+  has Timestamp => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'PasswordData' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'PasswordData' => 'passwordData',
+                       'InstanceId' => 'instanceId',
+                       'Timestamp' => 'timestamp'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

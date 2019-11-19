@@ -1,12 +1,46 @@
 
 package Paws::GroundStation::GetDataflowEndpointGroupResponse;
-  use Moose;
-  has DataflowEndpointGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataflowEndpointGroupArn');
-  has DataflowEndpointGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataflowEndpointGroupId');
-  has EndpointsDetails => (is => 'ro', isa => 'ArrayRef[Paws::GroundStation::EndpointDetails]', traits => ['NameInRequest'], request_name => 'endpointsDetails');
-  has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GroundStation::Types qw/GroundStation_EndpointDetails GroundStation_TagsMap/;
+  has DataflowEndpointGroupArn => (is => 'ro', isa => Str);
+  has DataflowEndpointGroupId => (is => 'ro', isa => Str);
+  has EndpointsDetails => (is => 'ro', isa => ArrayRef[GroundStation_EndpointDetails]);
+  has Tags => (is => 'ro', isa => GroundStation_TagsMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::GroundStation::TagsMap',
+                           'type' => 'GroundStation_TagsMap'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'EndpointsDetails' => {
+                                       'type' => 'ArrayRef[GroundStation_EndpointDetails]',
+                                       'class' => 'Paws::GroundStation::EndpointDetails'
+                                     },
+               'DataflowEndpointGroupArn' => {
+                                               'type' => 'Str'
+                                             },
+               'DataflowEndpointGroupId' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'NameInRequest' => {
+                       'DataflowEndpointGroupArn' => 'dataflowEndpointGroupArn',
+                       'EndpointsDetails' => 'endpointsDetails',
+                       'Tags' => 'tags',
+                       'DataflowEndpointGroupId' => 'dataflowEndpointGroupId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -28,12 +62,12 @@ ARN of a dataflow endpoint group.
 UUID of a dataflow endpoint group.
 
 
-=head2 EndpointsDetails => ArrayRef[L<Paws::GroundStation::EndpointDetails>]
+=head2 EndpointsDetails => ArrayRef[GroundStation_EndpointDetails]
 
 Details of a dataflow endpoint.
 
 
-=head2 Tags => L<Paws::GroundStation::TagsMap>
+=head2 Tags => GroundStation_TagsMap
 
 Tags assigned to a dataflow endpoint group.
 

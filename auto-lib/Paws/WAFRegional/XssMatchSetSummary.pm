@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::XssMatchSetSummary;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has XssMatchSetId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has XssMatchSetId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'XssMatchSetId' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'XssMatchSetId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

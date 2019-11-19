@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::CloudWatchEvents::PutPartnerEventsRequestEntry;
-  use Moose;
-  has Detail => (is => 'ro', isa => 'Str');
-  has DetailType => (is => 'ro', isa => 'Str');
-  has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Source => (is => 'ro', isa => 'Str');
-  has Time => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::CloudWatchEvents::Types qw//;
+  has Detail => (is => 'ro', isa => Str);
+  has DetailType => (is => 'ro', isa => Str);
+  has Resources => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Source => (is => 'ro', isa => Str);
+  has Time => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Time' => {
+                           'type' => 'Str'
+                         },
+               'Resources' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Detail' => {
+                             'type' => 'Str'
+                           },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'DetailType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

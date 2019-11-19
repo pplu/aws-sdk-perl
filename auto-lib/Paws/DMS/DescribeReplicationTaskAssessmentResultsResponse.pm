@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::DescribeReplicationTaskAssessmentResultsResponse;
-  use Moose;
-  has BucketName => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has ReplicationTaskAssessmentResults => (is => 'ro', isa => 'ArrayRef[Paws::DMS::ReplicationTaskAssessmentResult]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_ReplicationTaskAssessmentResult/;
+  has BucketName => (is => 'ro', isa => Str);
+  has Marker => (is => 'ro', isa => Str);
+  has ReplicationTaskAssessmentResults => (is => 'ro', isa => ArrayRef[DMS_ReplicationTaskAssessmentResult]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationTaskAssessmentResults' => {
+                                                       'type' => 'ArrayRef[DMS_ReplicationTaskAssessmentResult]',
+                                                       'class' => 'Paws::DMS::ReplicationTaskAssessmentResult'
+                                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -28,7 +53,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-=head2 ReplicationTaskAssessmentResults => ArrayRef[L<Paws::DMS::ReplicationTaskAssessmentResult>]
+=head2 ReplicationTaskAssessmentResults => ArrayRef[DMS_ReplicationTaskAssessmentResult]
 
 The task assessment report.
 

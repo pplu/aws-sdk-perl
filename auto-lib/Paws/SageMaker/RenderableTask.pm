@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::SageMaker::RenderableTask;
-  use Moose;
-  has Input => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has Input => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Input' => 1
+                  },
+  'types' => {
+               'Input' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::GroundStation::SecurityDetails;
-  use Moose;
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest'], required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GroundStation::Types qw//;
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'SecurityGroupIds' => 1,
+                    'SubnetIds' => 1
+                  },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'SubnetIds' => 'subnetIds',
+                       'SecurityGroupIds' => 'securityGroupIds'
+                     },
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

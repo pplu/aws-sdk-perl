@@ -1,15 +1,42 @@
+# Generated from callargs_class.tt
 
 package Paws::ELB::SetLoadBalancerListenerSSLCertificate;
-  use Moose;
-  has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
-  has LoadBalancerPort => (is => 'ro', isa => 'Int', required => 1);
-  has SSLCertificateId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ELB::Types qw//;
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LoadBalancerPort => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has SSLCertificateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerListenerSSLCertificate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::SetLoadBalancerListenerSSLCertificateOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerListenerSSLCertificateResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetLoadBalancerListenerSSLCertificate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELB::SetLoadBalancerListenerSSLCertificateOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'SetLoadBalancerListenerSSLCertificateResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SSLCertificateId' => {
+                                       'type' => 'Str'
+                                     },
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'LoadBalancerPort' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'IsRequired' => {
+                    'LoadBalancerName' => 1,
+                    'LoadBalancerPort' => 1,
+                    'SSLCertificateId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

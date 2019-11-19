@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchLogs::PutDestination;
-  use Moose;
-  has DestinationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationName' , required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
-  has TargetArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has DestinationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutDestination');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::PutDestinationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutDestination');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchLogs::PutDestinationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DestinationName' => {
+                                      'type' => 'Str'
+                                    },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'TargetArn' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'DestinationName' => 1,
+                    'TargetArn' => 1
+                  },
+  'NameInRequest' => {
+                       'TargetArn' => 'targetArn',
+                       'RoleArn' => 'roleArn',
+                       'DestinationName' => 'destinationName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

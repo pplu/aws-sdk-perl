@@ -1,18 +1,75 @@
 
 package Paws::S3::CopyObjectOutput;
-  use Moose;
-  has CopyObjectResult => (is => 'ro', isa => 'Paws::S3::CopyObjectResult');
-  has CopySourceVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-version-id');
-  has Expiration => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-expiration');
-  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
-  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5');
-  has SSEKMSEncryptionContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-context');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_CopyObjectResult/;
+  has CopyObjectResult => (is => 'ro', isa => S3_CopyObjectResult);
+  has CopySourceVersionId => (is => 'ro', isa => Str);
+  has Expiration => (is => 'ro', isa => Str);
+  has RequestCharged => (is => 'ro', isa => Str);
+  has ServerSideEncryption => (is => 'ro', isa => Str);
+  has SSECustomerAlgorithm => (is => 'ro', isa => Str);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => Str);
+  has SSEKMSEncryptionContext => (is => 'ro', isa => Str);
+  has SSEKMSKeyId => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInHeader' => {
+                       'ServerSideEncryption' => 'x-amz-server-side-encryption',
+                       'RequestCharged' => 'x-amz-request-charged',
+                       'Expiration' => 'x-amz-expiration',
+                       'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm',
+                       'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5',
+                       'CopySourceVersionId' => 'x-amz-copy-source-version-id',
+                       'VersionId' => 'x-amz-version-id',
+                       'SSEKMSEncryptionContext' => 'x-amz-server-side-encryption-context',
+                       'SSEKMSKeyId' => 'x-amz-server-side-encryption-aws-kms-key-id'
+                     },
+  'types' => {
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Expiration' => {
+                                 'type' => 'Str'
+                               },
+               'SSECustomerAlgorithm' => {
+                                           'type' => 'Str'
+                                         },
+               'CopySourceVersionId' => {
+                                          'type' => 'Str'
+                                        },
+               'SSEKMSEncryptionContext' => {
+                                              'type' => 'Str'
+                                            },
+               'SSEKMSKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'CopyObjectResult' => {
+                                       'class' => 'Paws::S3::CopyObjectResult',
+                                       'type' => 'S3_CopyObjectResult'
+                                     },
+               'ServerSideEncryption' => {
+                                           'type' => 'Str'
+                                         },
+               'RequestCharged' => {
+                                     'type' => 'Str'
+                                   },
+               'SSECustomerKeyMD5' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +81,7 @@ Paws::S3::CopyObjectOutput
 =head1 ATTRIBUTES
 
 
-=head2 CopyObjectResult => L<Paws::S3::CopyObjectResult>
+=head2 CopyObjectResult => S3_CopyObjectResult
 
 Container for all response elements.
 

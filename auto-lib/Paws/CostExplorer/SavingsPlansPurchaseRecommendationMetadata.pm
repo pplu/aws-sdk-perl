@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::SavingsPlansPurchaseRecommendationMetadata;
-  use Moose;
-  has GenerationTimestamp => (is => 'ro', isa => 'Str');
-  has RecommendationId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has GenerationTimestamp => (is => 'ro', isa => Str);
+  has RecommendationId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GenerationTimestamp' => {
+                                          'type' => 'Str'
+                                        },
+               'RecommendationId' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

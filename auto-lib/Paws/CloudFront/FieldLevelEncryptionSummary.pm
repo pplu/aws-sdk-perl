@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::CloudFront::FieldLevelEncryptionSummary;
-  use Moose;
-  has Comment => (is => 'ro', isa => 'Str');
-  has ContentTypeProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::ContentTypeProfileConfig');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
-  has QueryArgProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::QueryArgProfileConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_ContentTypeProfileConfig CloudFront_QueryArgProfileConfig/;
+  has Comment => (is => 'ro', isa => Str);
+  has ContentTypeProfileConfig => (is => 'ro', isa => CloudFront_ContentTypeProfileConfig);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has LastModifiedTime => (is => 'ro', isa => Str, required => 1);
+  has QueryArgProfileConfig => (is => 'ro', isa => CloudFront_QueryArgProfileConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'ContentTypeProfileConfig' => {
+                                               'class' => 'Paws::CloudFront::ContentTypeProfileConfig',
+                                               'type' => 'CloudFront_ContentTypeProfileConfig'
+                                             },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'QueryArgProfileConfig' => {
+                                            'type' => 'CloudFront_QueryArgProfileConfig',
+                                            'class' => 'Paws::CloudFront::QueryArgProfileConfig'
+                                          }
+             },
+  'IsRequired' => {
+                    'LastModifiedTime' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +80,7 @@ A summary of a field-level encryption item.
   An optional comment about the field-level encryption item.
 
 
-=head2 ContentTypeProfileConfig => L<Paws::CloudFront::ContentTypeProfileConfig>
+=head2 ContentTypeProfileConfig => CloudFront_ContentTypeProfileConfig
 
   A summary of a content type-profile mapping.
 
@@ -61,7 +96,7 @@ A summary of a field-level encryption item.
 modified.
 
 
-=head2 QueryArgProfileConfig => L<Paws::CloudFront::QueryArgProfileConfig>
+=head2 QueryArgProfileConfig => CloudFront_QueryArgProfileConfig
 
   A summary of a query argument-profile mapping.
 

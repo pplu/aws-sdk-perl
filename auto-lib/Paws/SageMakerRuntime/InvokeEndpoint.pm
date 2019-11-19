@@ -1,19 +1,62 @@
 
 package Paws::SageMakerRuntime::InvokeEndpoint;
-  use Moose;
-  has Accept => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Accept');
-  has Body => (is => 'ro', isa => 'Str', required => 1);
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has CustomAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-SageMaker-Custom-Attributes');
-  has EndpointName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'EndpointName', required => 1);
-  has TargetModel => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-SageMaker-Target-Model');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMakerRuntime::Types qw//;
+  has Accept => (is => 'ro', isa => Str, predicate => 1);
+  has Body => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentType => (is => 'ro', isa => Str, predicate => 1);
+  has CustomAttributes => (is => 'ro', isa => Str, predicate => 1);
+  has EndpointName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetModel => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'InvokeEndpoint');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/endpoints/{EndpointName}/invocations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMakerRuntime::InvokeEndpointOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'InvokeEndpoint');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/endpoints/{EndpointName}/invocations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMakerRuntime::InvokeEndpointOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Accept' => {
+                             'type' => 'Str'
+                           },
+               'TargetModel' => {
+                                  'type' => 'Str'
+                                },
+               'EndpointName' => {
+                                   'type' => 'Str'
+                                 },
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'CustomAttributes' => {
+                                       'type' => 'Str'
+                                     },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'EndpointName' => 1,
+                    'Body' => 1
+                  },
+  'ParamInURI' => {
+                    'EndpointName' => 'EndpointName'
+                  },
+  'ParamInHeader' => {
+                       'TargetModel' => 'X-Amzn-SageMaker-Target-Model',
+                       'Accept' => 'Accept',
+                       'CustomAttributes' => 'X-Amzn-SageMaker-Custom-Attributes',
+                       'ContentType' => 'Content-Type'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

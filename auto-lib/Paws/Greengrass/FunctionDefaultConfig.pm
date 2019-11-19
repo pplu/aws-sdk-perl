@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Greengrass::FunctionDefaultConfig;
-  use Moose;
-  has Execution => (is => 'ro', isa => 'Paws::Greengrass::FunctionDefaultExecutionConfig');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Greengrass::Types qw/Greengrass_FunctionDefaultExecutionConfig/;
+  has Execution => (is => 'ro', isa => Greengrass_FunctionDefaultExecutionConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Execution' => {
+                                'type' => 'Greengrass_FunctionDefaultExecutionConfig',
+                                'class' => 'Paws::Greengrass::FunctionDefaultExecutionConfig'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ group. Individual Lambda functions can override these settings.
 =head1 ATTRIBUTES
 
 
-=head2 Execution => L<Paws::Greengrass::FunctionDefaultExecutionConfig>
+=head2 Execution => Greengrass_FunctionDefaultExecutionConfig
 
   
 

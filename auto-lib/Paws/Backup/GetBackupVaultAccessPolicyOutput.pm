@@ -1,11 +1,34 @@
 
 package Paws::Backup::GetBackupVaultAccessPolicyOutput;
-  use Moose;
-  has BackupVaultArn => (is => 'ro', isa => 'Str');
-  has BackupVaultName => (is => 'ro', isa => 'Str');
-  has Policy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw//;
+  has BackupVaultArn => (is => 'ro', isa => Str);
+  has BackupVaultName => (is => 'ro', isa => Str);
+  has Policy => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Policy' => {
+                             'type' => 'Str'
+                           },
+               'BackupVaultName' => {
+                                      'type' => 'Str'
+                                    },
+               'BackupVaultArn' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

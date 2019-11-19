@@ -1,13 +1,28 @@
+# Generated from default/map_enum.tt
 package Paws::MachineLearning::DetailsMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Str/;
+  use Paws::MachineLearning::Types qw//;
+  has Algorithm => (is => 'ro', isa => Str);
+  has PredictiveModelType => (is => 'ro', isa => Str);
 
-  has Algorithm => (is => 'ro', isa => 'Str');
-  has PredictiveModelType => (is => 'ro', isa => 'Str');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Algorithm' => {
+                                          type => 'Str',                                        },
+                               'PredictiveModelType' => {
+                                          type => 'Str',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,10 +58,10 @@ Provides any additional details regarding the prediction.
 =head1 ATTRIBUTES
 
 
-=head2 Algorithm => Str
+=head2 Algorithm => 
 
 
-=head2 PredictiveModelType => Str
+=head2 PredictiveModelType => 
 
 
 

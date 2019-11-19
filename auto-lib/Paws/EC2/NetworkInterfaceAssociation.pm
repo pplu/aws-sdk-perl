@@ -1,10 +1,43 @@
 package Paws::EC2::NetworkInterfaceAssociation;
-  use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest']);
-  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
-  has IpOwnerId => (is => 'ro', isa => 'Str', request_name => 'ipOwnerId', traits => ['NameInRequest']);
-  has PublicDnsName => (is => 'ro', isa => 'Str', request_name => 'publicDnsName', traits => ['NameInRequest']);
-  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has AllocationId => (is => 'ro', isa => Str);
+  has AssociationId => (is => 'ro', isa => Str);
+  has IpOwnerId => (is => 'ro', isa => Str);
+  has PublicDnsName => (is => 'ro', isa => Str);
+  has PublicIp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'PublicIp' => {
+                               'type' => 'Str'
+                             },
+               'IpOwnerId' => {
+                                'type' => 'Str'
+                              },
+               'PublicDnsName' => {
+                                    'type' => 'Str'
+                                  },
+               'AllocationId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'IpOwnerId' => 'ipOwnerId',
+                       'PublicIp' => 'publicIp',
+                       'PublicDnsName' => 'publicDnsName',
+                       'AllocationId' => 'allocationId',
+                       'AssociationId' => 'associationId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

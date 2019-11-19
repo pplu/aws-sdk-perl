@@ -1,16 +1,44 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::ModifyCurrentDBClusterCapacity;
-  use Moose;
-  has Capacity => (is => 'ro', isa => 'Int');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has SecondsBeforeTimeout => (is => 'ro', isa => 'Int');
-  has TimeoutAction => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::RDS::Types qw//;
+  has Capacity => (is => 'ro', isa => Int, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecondsBeforeTimeout => (is => 'ro', isa => Int, predicate => 1);
+  has TimeoutAction => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCurrentDBClusterCapacity');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterCapacityInfo');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyCurrentDBClusterCapacityResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyCurrentDBClusterCapacity');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DBClusterCapacityInfo');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyCurrentDBClusterCapacityResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DBClusterIdentifier' => 1
+                  },
+  'types' => {
+               'SecondsBeforeTimeout' => {
+                                           'type' => 'Int'
+                                         },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'Capacity' => {
+                               'type' => 'Int'
+                             },
+               'TimeoutAction' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,8 +93,13 @@ Constraints:
 
 =item *
 
-Value must be C<1>, C<2>, C<4>, C<8>, C<16>, C<32>, C<64>, C<128>, or
-C<256>.
+For Aurora MySQL, valid capacity values are C<1>, C<2>, C<4>, C<8>,
+C<16>, C<32>, C<64>, C<128>, and C<256>.
+
+=item *
+
+For Aurora PostgreSQL, valid capacity values are C<2>, C<4>, C<8>,
+C<16>, C<32>, C<64>, C<192>, and C<384>.
 
 =back
 

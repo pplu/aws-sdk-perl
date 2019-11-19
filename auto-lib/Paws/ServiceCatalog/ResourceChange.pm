@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ResourceChange;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has Details => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ResourceChangeDetail]');
-  has LogicalResourceId => (is => 'ro', isa => 'Str');
-  has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has Replacement => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Scope => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ResourceChangeDetail/;
+  has Action => (is => 'ro', isa => Str);
+  has Details => (is => 'ro', isa => ArrayRef[ServiceCatalog_ResourceChangeDetail]);
+  has LogicalResourceId => (is => 'ro', isa => Str);
+  has PhysicalResourceId => (is => 'ro', isa => Str);
+  has Replacement => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Scope => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Details' => {
+                              'class' => 'Paws::ServiceCatalog::ResourceChangeDetail',
+                              'type' => 'ArrayRef[ServiceCatalog_ResourceChangeDetail]'
+                            },
+               'Replacement' => {
+                                  'type' => 'Str'
+                                },
+               'PhysicalResourceId' => {
+                                         'type' => 'Str'
+                                       },
+               'LogicalResourceId' => {
+                                        'type' => 'Str'
+                                      },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Scope' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +84,7 @@ executed.
   The change action.
 
 
-=head2 Details => ArrayRef[L<Paws::ServiceCatalog::ResourceChangeDetail>]
+=head2 Details => ArrayRef[ServiceCatalog_ResourceChangeDetail]
 
   Information about the resource changes.
 

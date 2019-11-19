@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::NodeFrameworkAttributes;
-  use Moose;
-  has Fabric => (is => 'ro', isa => 'Paws::ManagedBlockchain::NodeFabricAttributes');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_NodeFabricAttributes/;
+  has Fabric => (is => 'ro', isa => ManagedBlockchain_NodeFabricAttributes);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Fabric' => {
+                             'type' => 'ManagedBlockchain_NodeFabricAttributes',
+                             'class' => 'Paws::ManagedBlockchain::NodeFabricAttributes'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ the blockchain framework that the network uses.
 =head1 ATTRIBUTES
 
 
-=head2 Fabric => L<Paws::ManagedBlockchain::NodeFabricAttributes>
+=head2 Fabric => ManagedBlockchain_NodeFabricAttributes
 
   Attributes of Hyperledger Fabric for a peer node on a Managed
 Blockchain network that uses Hyperledger Fabric.

@@ -1,51 +1,226 @@
+# Generated from default/object.tt
 package Paws::RedShift::Cluster;
-  use Moose;
-  has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has ClusterAvailabilityStatus => (is => 'ro', isa => 'Str');
-  has ClusterCreateTime => (is => 'ro', isa => 'Str');
-  has ClusterIdentifier => (is => 'ro', isa => 'Str');
-  has ClusterNodes => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterNode]');
-  has ClusterParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterParameterGroupStatus]', request_name => 'ClusterParameterGroup', traits => ['NameInRequest']);
-  has ClusterPublicKey => (is => 'ro', isa => 'Str');
-  has ClusterRevisionNumber => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterSecurityGroupMembership]', request_name => 'ClusterSecurityGroup', traits => ['NameInRequest']);
-  has ClusterSnapshotCopyStatus => (is => 'ro', isa => 'Paws::RedShift::ClusterSnapshotCopyStatus');
-  has ClusterStatus => (is => 'ro', isa => 'Str');
-  has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
-  has ClusterVersion => (is => 'ro', isa => 'Str');
-  has DataTransferProgress => (is => 'ro', isa => 'Paws::RedShift::DataTransferProgress');
-  has DBName => (is => 'ro', isa => 'Str');
-  has DeferredMaintenanceWindows => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::DeferredMaintenanceWindow]', request_name => 'DeferredMaintenanceWindow', traits => ['NameInRequest']);
-  has ElasticIpStatus => (is => 'ro', isa => 'Paws::RedShift::ElasticIpStatus');
-  has ElasticResizeNumberOfNodeOptions => (is => 'ro', isa => 'Str');
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has Endpoint => (is => 'ro', isa => 'Paws::RedShift::Endpoint');
-  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
-  has ExpectedNextSnapshotScheduleTime => (is => 'ro', isa => 'Str');
-  has ExpectedNextSnapshotScheduleTimeStatus => (is => 'ro', isa => 'Str');
-  has HsmStatus => (is => 'ro', isa => 'Paws::RedShift::HsmStatus');
-  has IamRoles => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterIamRole]', request_name => 'ClusterIamRole', traits => ['NameInRequest']);
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
-  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has ModifyStatus => (is => 'ro', isa => 'Str');
-  has NextMaintenanceWindowStartTime => (is => 'ro', isa => 'Str');
-  has NodeType => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int');
-  has PendingActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PendingModifiedValues => (is => 'ro', isa => 'Paws::RedShift::PendingModifiedValues');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has ResizeInfo => (is => 'ro', isa => 'Paws::RedShift::ResizeInfo');
-  has RestoreStatus => (is => 'ro', isa => 'Paws::RedShift::RestoreStatus');
-  has SnapshotScheduleIdentifier => (is => 'ro', isa => 'Str');
-  has SnapshotScheduleState => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroup', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Int Str ArrayRef Undef/;
+  use Paws::RedShift::Types qw/RedShift_VpcSecurityGroupMembership RedShift_ClusterNode RedShift_DataTransferProgress RedShift_Tag RedShift_PendingModifiedValues RedShift_ResizeInfo RedShift_HsmStatus RedShift_ClusterIamRole RedShift_ElasticIpStatus RedShift_ClusterSecurityGroupMembership RedShift_RestoreStatus RedShift_Endpoint RedShift_ClusterSnapshotCopyStatus RedShift_DeferredMaintenanceWindow RedShift_ClusterParameterGroupStatus/;
+  has AllowVersionUpgrade => (is => 'ro', isa => Bool);
+  has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => Int);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has ClusterAvailabilityStatus => (is => 'ro', isa => Str);
+  has ClusterCreateTime => (is => 'ro', isa => Str);
+  has ClusterIdentifier => (is => 'ro', isa => Str);
+  has ClusterNodes => (is => 'ro', isa => ArrayRef[RedShift_ClusterNode]);
+  has ClusterParameterGroups => (is => 'ro', isa => ArrayRef[RedShift_ClusterParameterGroupStatus]);
+  has ClusterPublicKey => (is => 'ro', isa => Str);
+  has ClusterRevisionNumber => (is => 'ro', isa => Str);
+  has ClusterSecurityGroups => (is => 'ro', isa => ArrayRef[RedShift_ClusterSecurityGroupMembership]);
+  has ClusterSnapshotCopyStatus => (is => 'ro', isa => RedShift_ClusterSnapshotCopyStatus);
+  has ClusterStatus => (is => 'ro', isa => Str);
+  has ClusterSubnetGroupName => (is => 'ro', isa => Str);
+  has ClusterVersion => (is => 'ro', isa => Str);
+  has DataTransferProgress => (is => 'ro', isa => RedShift_DataTransferProgress);
+  has DBName => (is => 'ro', isa => Str);
+  has DeferredMaintenanceWindows => (is => 'ro', isa => ArrayRef[RedShift_DeferredMaintenanceWindow]);
+  has ElasticIpStatus => (is => 'ro', isa => RedShift_ElasticIpStatus);
+  has ElasticResizeNumberOfNodeOptions => (is => 'ro', isa => Str);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has Endpoint => (is => 'ro', isa => RedShift_Endpoint);
+  has EnhancedVpcRouting => (is => 'ro', isa => Bool);
+  has ExpectedNextSnapshotScheduleTime => (is => 'ro', isa => Str);
+  has ExpectedNextSnapshotScheduleTimeStatus => (is => 'ro', isa => Str);
+  has HsmStatus => (is => 'ro', isa => RedShift_HsmStatus);
+  has IamRoles => (is => 'ro', isa => ArrayRef[RedShift_ClusterIamRole]);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has MaintenanceTrackName => (is => 'ro', isa => Str);
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => Int);
+  has MasterUsername => (is => 'ro', isa => Str);
+  has ModifyStatus => (is => 'ro', isa => Str);
+  has NextMaintenanceWindowStartTime => (is => 'ro', isa => Str);
+  has NodeType => (is => 'ro', isa => Str);
+  has NumberOfNodes => (is => 'ro', isa => Int);
+  has PendingActions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has PendingModifiedValues => (is => 'ro', isa => RedShift_PendingModifiedValues);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has PubliclyAccessible => (is => 'ro', isa => Bool);
+  has ResizeInfo => (is => 'ro', isa => RedShift_ResizeInfo);
+  has RestoreStatus => (is => 'ro', isa => RedShift_RestoreStatus);
+  has SnapshotScheduleIdentifier => (is => 'ro', isa => Str);
+  has SnapshotScheduleState => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag]);
+  has VpcId => (is => 'ro', isa => Str);
+  has VpcSecurityGroups => (is => 'ro', isa => ArrayRef[RedShift_VpcSecurityGroupMembership]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'Tag',
+                       'DeferredMaintenanceWindows' => 'DeferredMaintenanceWindow',
+                       'ClusterParameterGroups' => 'ClusterParameterGroup',
+                       'ClusterSecurityGroups' => 'ClusterSecurityGroup',
+                       'IamRoles' => 'ClusterIamRole',
+                       'VpcSecurityGroups' => 'VpcSecurityGroup'
+                     },
+  'types' => {
+               'ClusterNodes' => {
+                                   'class' => 'Paws::RedShift::ClusterNode',
+                                   'type' => 'ArrayRef[RedShift_ClusterNode]'
+                                 },
+               'DBName' => {
+                             'type' => 'Str'
+                           },
+               'ClusterSubnetGroupName' => {
+                                             'type' => 'Str'
+                                           },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'ClusterPublicKey' => {
+                                       'type' => 'Str'
+                                     },
+               'NextMaintenanceWindowStartTime' => {
+                                                     'type' => 'Str'
+                                                   },
+               'ClusterVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'RestoreStatus' => {
+                                    'type' => 'RedShift_RestoreStatus',
+                                    'class' => 'Paws::RedShift::RestoreStatus'
+                                  },
+               'SnapshotScheduleState' => {
+                                            'type' => 'Str'
+                                          },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'DataTransferProgress' => {
+                                           'type' => 'RedShift_DataTransferProgress',
+                                           'class' => 'Paws::RedShift::DataTransferProgress'
+                                         },
+               'Endpoint' => {
+                               'type' => 'RedShift_Endpoint',
+                               'class' => 'Paws::RedShift::Endpoint'
+                             },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'ClusterSnapshotCopyStatus' => {
+                                                'class' => 'Paws::RedShift::ClusterSnapshotCopyStatus',
+                                                'type' => 'RedShift_ClusterSnapshotCopyStatus'
+                                              },
+               'VpcSecurityGroups' => {
+                                        'class' => 'Paws::RedShift::VpcSecurityGroupMembership',
+                                        'type' => 'ArrayRef[RedShift_VpcSecurityGroupMembership]'
+                                      },
+               'ModifyStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'PendingActions' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'AllowVersionUpgrade' => {
+                                          'type' => 'Bool'
+                                        },
+               'ClusterAvailabilityStatus' => {
+                                                'type' => 'Str'
+                                              },
+               'ExpectedNextSnapshotScheduleTime' => {
+                                                       'type' => 'Str'
+                                                     },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'ResizeInfo' => {
+                                 'type' => 'RedShift_ResizeInfo',
+                                 'class' => 'Paws::RedShift::ResizeInfo'
+                               },
+               'IamRoles' => {
+                               'class' => 'Paws::RedShift::ClusterIamRole',
+                               'type' => 'ArrayRef[RedShift_ClusterIamRole]'
+                             },
+               'ExpectedNextSnapshotScheduleTimeStatus' => {
+                                                             'type' => 'Str'
+                                                           },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'HsmStatus' => {
+                                'class' => 'Paws::RedShift::HsmStatus',
+                                'type' => 'RedShift_HsmStatus'
+                              },
+               'ManualSnapshotRetentionPeriod' => {
+                                                    'type' => 'Int'
+                                                  },
+               'ClusterParameterGroups' => {
+                                             'class' => 'Paws::RedShift::ClusterParameterGroupStatus',
+                                             'type' => 'ArrayRef[RedShift_ClusterParameterGroupStatus]'
+                                           },
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'ElasticIpStatus' => {
+                                      'class' => 'Paws::RedShift::ElasticIpStatus',
+                                      'type' => 'RedShift_ElasticIpStatus'
+                                    },
+               'EnhancedVpcRouting' => {
+                                         'type' => 'Bool'
+                                       },
+               'DeferredMaintenanceWindows' => {
+                                                 'class' => 'Paws::RedShift::DeferredMaintenanceWindow',
+                                                 'type' => 'ArrayRef[RedShift_DeferredMaintenanceWindow]'
+                                               },
+               'ElasticResizeNumberOfNodeOptions' => {
+                                                       'type' => 'Str'
+                                                     },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'NumberOfNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::RedShift::Tag',
+                           'type' => 'ArrayRef[RedShift_Tag]'
+                         },
+               'AutomatedSnapshotRetentionPeriod' => {
+                                                       'type' => 'Int'
+                                                     },
+               'ClusterSecurityGroups' => {
+                                            'type' => 'ArrayRef[RedShift_ClusterSecurityGroupMembership]',
+                                            'class' => 'Paws::RedShift::ClusterSecurityGroupMembership'
+                                          },
+               'PendingModifiedValues' => {
+                                            'class' => 'Paws::RedShift::PendingModifiedValues',
+                                            'type' => 'RedShift_PendingModifiedValues'
+                                          },
+               'NodeType' => {
+                               'type' => 'Str'
+                             },
+               'ClusterCreateTime' => {
+                                        'type' => 'Str'
+                                      },
+               'SnapshotScheduleIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'ClusterStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'MaintenanceTrackName' => {
+                                           'type' => 'Str'
+                                         },
+               'ClusterRevisionNumber' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -141,12 +316,12 @@ Failed - The cluster failed and is not available for queries.
   The unique identifier of the cluster.
 
 
-=head2 ClusterNodes => ArrayRef[L<Paws::RedShift::ClusterNode>]
+=head2 ClusterNodes => ArrayRef[RedShift_ClusterNode]
 
   The nodes in the cluster.
 
 
-=head2 ClusterParameterGroups => ArrayRef[L<Paws::RedShift::ClusterParameterGroupStatus>]
+=head2 ClusterParameterGroups => ArrayRef[RedShift_ClusterParameterGroupStatus]
 
   The list of cluster parameter groups that are associated with this
 cluster. Each parameter group in the list is returned with its status.
@@ -162,7 +337,7 @@ cluster. Each parameter group in the list is returned with its status.
   The specific revision number of the database in the cluster.
 
 
-=head2 ClusterSecurityGroups => ArrayRef[L<Paws::RedShift::ClusterSecurityGroupMembership>]
+=head2 ClusterSecurityGroups => ArrayRef[RedShift_ClusterSecurityGroupMembership]
 
   A list of cluster security group that are associated with the cluster.
 Each security group is represented by an element that contains
@@ -175,7 +350,7 @@ use VPC security groups, which are listed by the B<VpcSecurityGroups>
 parameter.
 
 
-=head2 ClusterSnapshotCopyStatus => L<Paws::RedShift::ClusterSnapshotCopyStatus>
+=head2 ClusterSnapshotCopyStatus => RedShift_ClusterSnapshotCopyStatus
 
   A value that returns the destination region and retention period that
 are configured for cross-region snapshot copy.
@@ -279,7 +454,7 @@ parameter is valid only when the cluster is in a VPC.
 cluster.
 
 
-=head2 DataTransferProgress => L<Paws::RedShift::DataTransferProgress>
+=head2 DataTransferProgress => RedShift_DataTransferProgress
 
   
 
@@ -292,12 +467,12 @@ initial database was not specified, a database named C<dev>dev was
 created by default.
 
 
-=head2 DeferredMaintenanceWindows => ArrayRef[L<Paws::RedShift::DeferredMaintenanceWindow>]
+=head2 DeferredMaintenanceWindows => ArrayRef[RedShift_DeferredMaintenanceWindow]
 
   Describes a group of C<DeferredMaintenanceWindow> objects.
 
 
-=head2 ElasticIpStatus => L<Paws::RedShift::ElasticIpStatus>
+=head2 ElasticIpStatus => RedShift_ElasticIpStatus
 
   The status of the elastic IP (EIP) address.
 
@@ -314,7 +489,7 @@ resize method.
 encrypted at rest.
 
 
-=head2 Endpoint => L<Paws::RedShift::Endpoint>
+=head2 Endpoint => RedShift_Endpoint
 
   The connection endpoint.
 
@@ -359,7 +534,7 @@ Pending - The next snapshot is pending to be taken.
 
 
 
-=head2 HsmStatus => L<Paws::RedShift::HsmStatus>
+=head2 HsmStatus => RedShift_HsmStatus
 
   A value that reports whether the Amazon Redshift cluster has finished
 applying any hardware security module (HSM) settings changes specified
@@ -368,7 +543,7 @@ in a modify cluster command.
 Values: active, applying
 
 
-=head2 IamRoles => ArrayRef[L<Paws::RedShift::ClusterIamRole>]
+=head2 IamRoles => ArrayRef[RedShift_ClusterIamRole]
 
   A list of AWS Identity and Access Management (IAM) roles that can be
 used by the cluster to access other AWS services.
@@ -425,7 +600,7 @@ the database that is specified in the B<DBName> parameter.
   Cluster operations that are waiting to be started.
 
 
-=head2 PendingModifiedValues => L<Paws::RedShift::PendingModifiedValues>
+=head2 PendingModifiedValues => RedShift_PendingModifiedValues
 
   A value that, if present, indicates that changes to the cluster are
 pending. Specific pending changes are identified by subelements.
@@ -443,7 +618,7 @@ which system maintenance can occur.
 accessed from a public network.
 
 
-=head2 ResizeInfo => L<Paws::RedShift::ResizeInfo>
+=head2 ResizeInfo => RedShift_ResizeInfo
 
   Returns the following:
 
@@ -462,7 +637,7 @@ ResizeType: Returns ClassicResize
 
 
 
-=head2 RestoreStatus => L<Paws::RedShift::RestoreStatus>
+=head2 RestoreStatus => RedShift_RestoreStatus
 
   A value that describes the status of a cluster restore action. This
 parameter returns null if the cluster was not created by restoring a
@@ -479,7 +654,7 @@ snapshot.
   The current state of the cluster snapshot schedule.
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
   The list of tags for the cluster.
 
@@ -490,7 +665,7 @@ snapshot.
 VPC.
 
 
-=head2 VpcSecurityGroups => ArrayRef[L<Paws::RedShift::VpcSecurityGroupMembership>]
+=head2 VpcSecurityGroups => ArrayRef[RedShift_VpcSecurityGroupMembership]
 
   A list of Amazon Virtual Private Cloud (Amazon VPC) security groups
 that are associated with the cluster. This parameter is returned only

@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MTurk::ListBonusPaymentsResponse;
-  use Moose;
-  has BonusPayments => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::BonusPayment]');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has NumResults => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::MTurk::Types qw/MTurk_BonusPayment/;
+  has BonusPayments => (is => 'ro', isa => ArrayRef[MTurk_BonusPayment]);
+  has NextToken => (is => 'ro', isa => Str);
+  has NumResults => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumResults' => {
+                                 'type' => 'Int'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BonusPayments' => {
+                                    'class' => 'Paws::MTurk::BonusPayment',
+                                    'type' => 'ArrayRef[MTurk_BonusPayment]'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::MTurk::ListBonusPaymentsResponse
 =head1 ATTRIBUTES
 
 
-=head2 BonusPayments => ArrayRef[L<Paws::MTurk::BonusPayment>]
+=head2 BonusPayments => ArrayRef[MTurk_BonusPayment]
 
 A successful request to the ListBonusPayments operation returns a list
 of BonusPayment objects.

@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::DashEncryption;
-  use Moose;
-  has KeyRotationIntervalSeconds => (is => 'ro', isa => 'Int', request_name => 'keyRotationIntervalSeconds', traits => ['NameInRequest']);
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaPackage::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaPackage::Types qw/MediaPackage_SpekeKeyProvider/;
+  has KeyRotationIntervalSeconds => (is => 'ro', isa => Int);
+  has SpekeKeyProvider => (is => 'ro', isa => MediaPackage_SpekeKeyProvider, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SpekeKeyProvider' => 1
+                  },
+  'NameInRequest' => {
+                       'SpekeKeyProvider' => 'spekeKeyProvider',
+                       'KeyRotationIntervalSeconds' => 'keyRotationIntervalSeconds'
+                     },
+  'types' => {
+               'SpekeKeyProvider' => {
+                                       'class' => 'Paws::MediaPackage::SpekeKeyProvider',
+                                       'type' => 'MediaPackage_SpekeKeyProvider'
+                                     },
+               'KeyRotationIntervalSeconds' => {
+                                                 'type' => 'Int'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +70,7 @@ A Dynamic Adaptive Streaming over HTTP (DASH) encryption configuration.
   Time (in seconds) between each encryption key rotation.
 
 
-=head2 B<REQUIRED> SpekeKeyProvider => L<Paws::MediaPackage::SpekeKeyProvider>
+=head2 B<REQUIRED> SpekeKeyProvider => MediaPackage_SpekeKeyProvider
 
   
 

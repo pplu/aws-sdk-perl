@@ -1,15 +1,34 @@
+# Generated from default/map_enum.tt
 package Paws::SQS::AttributeMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'Name');
   class_has xml_values =>(is => 'ro', default => 'Value');
+  use Types::Standard qw/Str/;
+  use Paws::SQS::Types qw//;
+  has ApproximateFirstReceiveTimestamp => (is => 'ro', isa => Str);
+  has ApproximateReceiveCount => (is => 'ro', isa => Str);
+  has SenderId => (is => 'ro', isa => Str);
+  has SentTimestamp => (is => 'ro', isa => Str);
 
-  has ApproximateFirstReceiveTimestamp => (is => 'ro', isa => 'Str');
-  has ApproximateReceiveCount => (is => 'ro', isa => 'Str');
-  has SenderId => (is => 'ro', isa => 'Str');
-  has SentTimestamp => (is => 'ro', isa => 'Str');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'ApproximateFirstReceiveTimestamp' => {
+                                          type => 'Str',                                        },
+                               'ApproximateReceiveCount' => {
+                                          type => 'Str',                                        },
+                               'SenderId' => {
+                                          type => 'Str',                                        },
+                               'SentTimestamp' => {
+                                          type => 'Str',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,16 +64,16 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ApproximateFirstReceiveTimestamp => Str
+=head2 ApproximateFirstReceiveTimestamp => 
 
 
-=head2 ApproximateReceiveCount => Str
+=head2 ApproximateReceiveCount => 
 
 
-=head2 SenderId => Str
+=head2 SenderId => 
 
 
-=head2 SentTimestamp => Str
+=head2 SentTimestamp => 
 
 
 

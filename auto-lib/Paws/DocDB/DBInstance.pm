@@ -1,31 +1,132 @@
+# Generated from default/object.tt
 package Paws::DocDB::DBInstance;
-  use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CACertificateIdentifier => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has DBInstanceArn => (is => 'ro', isa => 'Str');
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has DBInstanceStatus => (is => 'ro', isa => 'Str');
-  has DbiResourceId => (is => 'ro', isa => 'Str');
-  has DBSubnetGroup => (is => 'ro', isa => 'Paws::DocDB::DBSubnetGroup');
-  has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Endpoint => (is => 'ro', isa => 'Paws::DocDB::Endpoint');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has InstanceCreateTime => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LatestRestorableTime => (is => 'ro', isa => 'Str');
-  has PendingModifiedValues => (is => 'ro', isa => 'Paws::DocDB::PendingModifiedValues');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PromotionTier => (is => 'ro', isa => 'Int');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has StatusInfos => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::DBInstanceStatusInfo]', request_name => 'DBInstanceStatusInfo', traits => ['NameInRequest']);
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str Int Undef ArrayRef/;
+  use Paws::DocDB::Types qw/DocDB_VpcSecurityGroupMembership DocDB_PendingModifiedValues DocDB_Endpoint DocDB_DBInstanceStatusInfo DocDB_DBSubnetGroup/;
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int);
+  has CACertificateIdentifier => (is => 'ro', isa => Str);
+  has DBClusterIdentifier => (is => 'ro', isa => Str);
+  has DBInstanceArn => (is => 'ro', isa => Str);
+  has DBInstanceClass => (is => 'ro', isa => Str);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str);
+  has DBInstanceStatus => (is => 'ro', isa => Str);
+  has DbiResourceId => (is => 'ro', isa => Str);
+  has DBSubnetGroup => (is => 'ro', isa => DocDB_DBSubnetGroup);
+  has EnabledCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Endpoint => (is => 'ro', isa => DocDB_Endpoint);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has InstanceCreateTime => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LatestRestorableTime => (is => 'ro', isa => Str);
+  has PendingModifiedValues => (is => 'ro', isa => DocDB_PendingModifiedValues);
+  has PreferredBackupWindow => (is => 'ro', isa => Str);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has PromotionTier => (is => 'ro', isa => Int);
+  has PubliclyAccessible => (is => 'ro', isa => Bool);
+  has StatusInfos => (is => 'ro', isa => ArrayRef[DocDB_DBInstanceStatusInfo]);
+  has StorageEncrypted => (is => 'ro', isa => Bool);
+  has VpcSecurityGroups => (is => 'ro', isa => ArrayRef[DocDB_VpcSecurityGroupMembership]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'DbiResourceId' => {
+                                    'type' => 'Str'
+                                  },
+               'CACertificateIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'DBInstanceArn' => {
+                                    'type' => 'Str'
+                                  },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'PromotionTier' => {
+                                    'type' => 'Int'
+                                  },
+               'DBSubnetGroup' => {
+                                    'type' => 'DocDB_DBSubnetGroup',
+                                    'class' => 'Paws::DocDB::DBSubnetGroup'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'VpcSecurityGroups' => {
+                                        'class' => 'Paws::DocDB::VpcSecurityGroupMembership',
+                                        'type' => 'ArrayRef[DocDB_VpcSecurityGroupMembership]'
+                                      },
+               'LatestRestorableTime' => {
+                                           'type' => 'Str'
+                                         },
+               'InstanceCreateTime' => {
+                                         'type' => 'Str'
+                                       },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Endpoint' => {
+                               'type' => 'DocDB_Endpoint',
+                               'class' => 'Paws::DocDB::Endpoint'
+                             },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'DBInstanceStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'PendingModifiedValues' => {
+                                            'type' => 'DocDB_PendingModifiedValues',
+                                            'class' => 'Paws::DocDB::PendingModifiedValues'
+                                          },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'EnabledCloudwatchLogsExports' => {
+                                                   'type' => 'ArrayRef[Str|Undef]'
+                                                 },
+               'StatusInfos' => {
+                                  'class' => 'Paws::DocDB::DBInstanceStatusInfo',
+                                  'type' => 'ArrayRef[DocDB_DBInstanceStatusInfo]'
+                                }
+             },
+  'NameInRequest' => {
+                       'StatusInfos' => 'DBInstanceStatusInfo',
+                       'VpcSecurityGroups' => 'VpcSecurityGroupMembership'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -118,7 +219,7 @@ identifier is found in AWS CloudTrail log entries whenever the AWS KMS
 key for the DB instance is accessed.
 
 
-=head2 DBSubnetGroup => L<Paws::DocDB::DBSubnetGroup>
+=head2 DBSubnetGroup => DocDB_DBSubnetGroup
 
   Specifies information on the subnet group that is associated with the
 DB instance, including the name, description, and subnets in the subnet
@@ -131,7 +232,7 @@ group.
 Amazon CloudWatch Logs.
 
 
-=head2 Endpoint => L<Paws::DocDB::Endpoint>
+=head2 Endpoint => DocDB_Endpoint
 
   Specifies the connection endpoint.
 
@@ -164,7 +265,7 @@ encrypted DB instance.
 point-in-time restore.
 
 
-=head2 PendingModifiedValues => L<Paws::DocDB::PendingModifiedValues>
+=head2 PendingModifiedValues => DocDB_PendingModifiedValues
 
   Specifies that changes to the DB instance are pending. This element is
 included only when changes are pending. Specific changes are identified
@@ -197,7 +298,7 @@ primary instance.
 endpoints. The value of C<PubliclyAccessible> is always C<false>.
 
 
-=head2 StatusInfos => ArrayRef[L<Paws::DocDB::DBInstanceStatusInfo>]
+=head2 StatusInfos => ArrayRef[DocDB_DBInstanceStatusInfo]
 
   The status of a read replica. If the instance is not a read replica,
 this is blank.
@@ -208,7 +309,7 @@ this is blank.
   Specifies whether or not the DB instance is encrypted.
 
 
-=head2 VpcSecurityGroups => ArrayRef[L<Paws::DocDB::VpcSecurityGroupMembership>]
+=head2 VpcSecurityGroups => ArrayRef[DocDB_VpcSecurityGroupMembership]
 
   Provides a list of VPC security group elements that the DB instance
 belongs to.

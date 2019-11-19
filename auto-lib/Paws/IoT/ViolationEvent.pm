@@ -1,12 +1,58 @@
+# Generated from default/object.tt
 package Paws::IoT::ViolationEvent;
-  use Moose;
-  has Behavior => (is => 'ro', isa => 'Paws::IoT::Behavior', request_name => 'behavior', traits => ['NameInRequest']);
-  has MetricValue => (is => 'ro', isa => 'Paws::IoT::MetricValue', request_name => 'metricValue', traits => ['NameInRequest']);
-  has SecurityProfileName => (is => 'ro', isa => 'Str', request_name => 'securityProfileName', traits => ['NameInRequest']);
-  has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
-  has ViolationEventTime => (is => 'ro', isa => 'Str', request_name => 'violationEventTime', traits => ['NameInRequest']);
-  has ViolationEventType => (is => 'ro', isa => 'Str', request_name => 'violationEventType', traits => ['NameInRequest']);
-  has ViolationId => (is => 'ro', isa => 'Str', request_name => 'violationId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_Behavior IoT_MetricValue/;
+  has Behavior => (is => 'ro', isa => IoT_Behavior);
+  has MetricValue => (is => 'ro', isa => IoT_MetricValue);
+  has SecurityProfileName => (is => 'ro', isa => Str);
+  has ThingName => (is => 'ro', isa => Str);
+  has ViolationEventTime => (is => 'ro', isa => Str);
+  has ViolationEventType => (is => 'ro', isa => Str);
+  has ViolationId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ViolationEventTime' => {
+                                         'type' => 'Str'
+                                       },
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'Behavior' => {
+                               'type' => 'IoT_Behavior',
+                               'class' => 'Paws::IoT::Behavior'
+                             },
+               'ViolationId' => {
+                                  'type' => 'Str'
+                                },
+               'MetricValue' => {
+                                  'class' => 'Paws::IoT::MetricValue',
+                                  'type' => 'IoT_MetricValue'
+                                },
+               'ViolationEventType' => {
+                                         'type' => 'Str'
+                                       },
+               'SecurityProfileName' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'ViolationEventType' => 'violationEventType',
+                       'SecurityProfileName' => 'securityProfileName',
+                       'Behavior' => 'behavior',
+                       'MetricValue' => 'metricValue',
+                       'ViolationId' => 'violationId',
+                       'ThingName' => 'thingName',
+                       'ViolationEventTime' => 'violationEventTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,12 +89,12 @@ violation.
 =head1 ATTRIBUTES
 
 
-=head2 Behavior => L<Paws::IoT::Behavior>
+=head2 Behavior => IoT_Behavior
 
   The behavior which was violated.
 
 
-=head2 MetricValue => L<Paws::IoT::MetricValue>
+=head2 MetricValue => IoT_MetricValue
 
   The value of the metric (the measurement).
 

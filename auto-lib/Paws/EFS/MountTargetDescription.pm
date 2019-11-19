@@ -1,15 +1,56 @@
 
 package Paws::EFS::MountTargetDescription;
-  use Moose;
-  has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
-  has IpAddress => (is => 'ro', isa => 'Str');
-  has LifeCycleState => (is => 'ro', isa => 'Str', required => 1);
-  has MountTargetId => (is => 'ro', isa => 'Str', required => 1);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str');
-  has OwnerId => (is => 'ro', isa => 'Str');
-  has SubnetId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EFS::Types qw//;
+  has FileSystemId => (is => 'ro', isa => Str, required => 1);
+  has IpAddress => (is => 'ro', isa => Str);
+  has LifeCycleState => (is => 'ro', isa => Str, required => 1);
+  has MountTargetId => (is => 'ro', isa => Str, required => 1);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has OwnerId => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FileSystemId' => 1,
+                    'SubnetId' => 1,
+                    'LifeCycleState' => 1,
+                    'MountTargetId' => 1
+                  },
+  'types' => {
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'LifeCycleState' => {
+                                     'type' => 'Str'
+                                   },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'MountTargetId' => {
+                                    'type' => 'Str'
+                                  },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

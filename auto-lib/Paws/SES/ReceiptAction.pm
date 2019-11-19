@@ -1,12 +1,54 @@
+# Generated from default/object.tt
 package Paws::SES::ReceiptAction;
-  use Moose;
-  has AddHeaderAction => (is => 'ro', isa => 'Paws::SES::AddHeaderAction');
-  has BounceAction => (is => 'ro', isa => 'Paws::SES::BounceAction');
-  has LambdaAction => (is => 'ro', isa => 'Paws::SES::LambdaAction');
-  has S3Action => (is => 'ro', isa => 'Paws::SES::S3Action');
-  has SNSAction => (is => 'ro', isa => 'Paws::SES::SNSAction');
-  has StopAction => (is => 'ro', isa => 'Paws::SES::StopAction');
-  has WorkmailAction => (is => 'ro', isa => 'Paws::SES::WorkmailAction');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SES::Types qw/SES_LambdaAction SES_AddHeaderAction SES_S3Action SES_WorkmailAction SES_BounceAction SES_SNSAction SES_StopAction/;
+  has AddHeaderAction => (is => 'ro', isa => SES_AddHeaderAction);
+  has BounceAction => (is => 'ro', isa => SES_BounceAction);
+  has LambdaAction => (is => 'ro', isa => SES_LambdaAction);
+  has S3Action => (is => 'ro', isa => SES_S3Action);
+  has SNSAction => (is => 'ro', isa => SES_SNSAction);
+  has StopAction => (is => 'ro', isa => SES_StopAction);
+  has WorkmailAction => (is => 'ro', isa => SES_WorkmailAction);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StopAction' => {
+                                 'type' => 'SES_StopAction',
+                                 'class' => 'Paws::SES::StopAction'
+                               },
+               'BounceAction' => {
+                                   'type' => 'SES_BounceAction',
+                                   'class' => 'Paws::SES::BounceAction'
+                                 },
+               'AddHeaderAction' => {
+                                      'type' => 'SES_AddHeaderAction',
+                                      'class' => 'Paws::SES::AddHeaderAction'
+                                    },
+               'SNSAction' => {
+                                'type' => 'SES_SNSAction',
+                                'class' => 'Paws::SES::SNSAction'
+                              },
+               'S3Action' => {
+                               'class' => 'Paws::SES::S3Action',
+                               'type' => 'SES_S3Action'
+                             },
+               'LambdaAction' => {
+                                   'class' => 'Paws::SES::LambdaAction',
+                                   'type' => 'SES_LambdaAction'
+                                 },
+               'WorkmailAction' => {
+                                     'type' => 'SES_WorkmailAction',
+                                     'class' => 'Paws::SES::WorkmailAction'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,42 +90,42 @@ Developer Guide
 =head1 ATTRIBUTES
 
 
-=head2 AddHeaderAction => L<Paws::SES::AddHeaderAction>
+=head2 AddHeaderAction => SES_AddHeaderAction
 
   Adds a header to the received email.
 
 
-=head2 BounceAction => L<Paws::SES::BounceAction>
+=head2 BounceAction => SES_BounceAction
 
   Rejects the received email by returning a bounce response to the sender
 and, optionally, publishes a notification to Amazon Simple Notification
 Service (Amazon SNS).
 
 
-=head2 LambdaAction => L<Paws::SES::LambdaAction>
+=head2 LambdaAction => SES_LambdaAction
 
   Calls an AWS Lambda function, and optionally, publishes a notification
 to Amazon SNS.
 
 
-=head2 S3Action => L<Paws::SES::S3Action>
+=head2 S3Action => SES_S3Action
 
   Saves the received message to an Amazon Simple Storage Service (Amazon
 S3) bucket and, optionally, publishes a notification to Amazon SNS.
 
 
-=head2 SNSAction => L<Paws::SES::SNSAction>
+=head2 SNSAction => SES_SNSAction
 
   Publishes the email content within a notification to Amazon SNS.
 
 
-=head2 StopAction => L<Paws::SES::StopAction>
+=head2 StopAction => SES_StopAction
 
   Terminates the evaluation of the receipt rule set and optionally
 publishes a notification to Amazon SNS.
 
 
-=head2 WorkmailAction => L<Paws::SES::WorkmailAction>
+=head2 WorkmailAction => SES_WorkmailAction
 
   Calls Amazon WorkMail and, optionally, publishes a notification to
 Amazon Amazon SNS.

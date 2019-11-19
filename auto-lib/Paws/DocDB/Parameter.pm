@@ -1,15 +1,59 @@
+# Generated from default/object.tt
 package Paws::DocDB::Parameter;
-  use Moose;
-  has AllowedValues => (is => 'ro', isa => 'Str');
-  has ApplyMethod => (is => 'ro', isa => 'Str');
-  has ApplyType => (is => 'ro', isa => 'Str');
-  has DataType => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has IsModifiable => (is => 'ro', isa => 'Bool');
-  has MinimumEngineVersion => (is => 'ro', isa => 'Str');
-  has ParameterName => (is => 'ro', isa => 'Str');
-  has ParameterValue => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DocDB::Types qw//;
+  has AllowedValues => (is => 'ro', isa => Str);
+  has ApplyMethod => (is => 'ro', isa => Str);
+  has ApplyType => (is => 'ro', isa => Str);
+  has DataType => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IsModifiable => (is => 'ro', isa => Bool);
+  has MinimumEngineVersion => (is => 'ro', isa => Str);
+  has ParameterName => (is => 'ro', isa => Str);
+  has ParameterValue => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterName' => {
+                                    'type' => 'Str'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ParameterValue' => {
+                                     'type' => 'Str'
+                                   },
+               'ApplyType' => {
+                                'type' => 'Str'
+                              },
+               'DataType' => {
+                               'type' => 'Str'
+                             },
+               'IsModifiable' => {
+                                   'type' => 'Bool'
+                                 },
+               'AllowedValues' => {
+                                    'type' => 'Str'
+                                  },
+               'MinimumEngineVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'ApplyMethod' => {
+                                  'type' => 'Str'
+                                },
+               'Source' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

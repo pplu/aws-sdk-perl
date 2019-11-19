@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Forecast::ListDatasetImportJobsResponse;
-  use Moose;
-  has DatasetImportJobs => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::DatasetImportJobSummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Forecast::Types qw/Forecast_DatasetImportJobSummary/;
+  has DatasetImportJobs => (is => 'ro', isa => ArrayRef[Forecast_DatasetImportJobSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DatasetImportJobs' => {
+                                        'class' => 'Paws::Forecast::DatasetImportJobSummary',
+                                        'type' => 'ArrayRef[Forecast_DatasetImportJobSummary]'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Forecast::ListDatasetImportJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 DatasetImportJobs => ArrayRef[L<Paws::Forecast::DatasetImportJobSummary>]
+=head2 DatasetImportJobs => ArrayRef[Forecast_DatasetImportJobSummary]
 
 An array of objects that summarize each dataset import job's
 properties.

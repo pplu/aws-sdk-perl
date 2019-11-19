@@ -1,22 +1,96 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::Interconnect;
-  use Moose;
-  has AwsDevice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDevice' );
-  has AwsDeviceV2 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDeviceV2' );
-  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' );
-  has HasLogicalRedundancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hasLogicalRedundancy' );
-  has InterconnectId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectId' );
-  has InterconnectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectName' );
-  has InterconnectState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectState' );
-  has JumboFrameCapable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'jumboFrameCapable' );
-  has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
-  has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaIssueTime' );
-  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
-  has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
-  has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_Tag/;
+  has AwsDevice => (is => 'ro', isa => Str);
+  has AwsDeviceV2 => (is => 'ro', isa => Str);
+  has Bandwidth => (is => 'ro', isa => Str);
+  has HasLogicalRedundancy => (is => 'ro', isa => Str);
+  has InterconnectId => (is => 'ro', isa => Str);
+  has InterconnectName => (is => 'ro', isa => Str);
+  has InterconnectState => (is => 'ro', isa => Str);
+  has JumboFrameCapable => (is => 'ro', isa => Bool);
+  has LagId => (is => 'ro', isa => Str);
+  has LoaIssueTime => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Str);
+  has ProviderName => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[DirectConnect_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'HasLogicalRedundancy' => 'hasLogicalRedundancy',
+                       'Tags' => 'tags',
+                       'JumboFrameCapable' => 'jumboFrameCapable',
+                       'AwsDevice' => 'awsDevice',
+                       'LagId' => 'lagId',
+                       'InterconnectName' => 'interconnectName',
+                       'Location' => 'location',
+                       'LoaIssueTime' => 'loaIssueTime',
+                       'InterconnectState' => 'interconnectState',
+                       'ProviderName' => 'providerName',
+                       'AwsDeviceV2' => 'awsDeviceV2',
+                       'InterconnectId' => 'interconnectId',
+                       'Bandwidth' => 'bandwidth',
+                       'Region' => 'region'
+                     },
+  'types' => {
+               'Bandwidth' => {
+                                'type' => 'Str'
+                              },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'InterconnectState' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AwsDeviceV2' => {
+                                  'type' => 'Str'
+                                },
+               'ProviderName' => {
+                                   'type' => 'Str'
+                                 },
+               'InterconnectId' => {
+                                     'type' => 'Str'
+                                   },
+               'LagId' => {
+                            'type' => 'Str'
+                          },
+               'InterconnectName' => {
+                                       'type' => 'Str'
+                                     },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'LoaIssueTime' => {
+                                   'type' => 'Str'
+                                 },
+               'HasLogicalRedundancy' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'type' => 'ArrayRef[DirectConnect_Tag]',
+                           'class' => 'Paws::DirectConnect::Tag'
+                         },
+               'JumboFrameCapable' => {
+                                        'type' => 'Bool'
+                                      },
+               'AwsDevice' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -131,7 +205,7 @@ The name of the service provider associated with the interconnect.
 The AWS Region where the connection is located.
 
 
-=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+=head2 Tags => ArrayRef[DirectConnect_Tag]
 
 The tags associated with the interconnect.
 

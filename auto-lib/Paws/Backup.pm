@@ -1,14 +1,15 @@
 package Paws::Backup;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'backup' }
   sub signing_name { 'backup' }
   sub version { '2018-11-15' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -276,9 +277,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bac
 
 =over
 
-=item BackupPlan => L<Paws::Backup::BackupPlanInput>
+=item BackupPlan => Backup_BackupPlanInput
 
-=item [BackupPlanTags => L<Paws::Backup::Tags>]
+=item [BackupPlanTags => Backup_Tags]
 
 =item [CreatorRequestId => Str]
 
@@ -302,7 +303,7 @@ existing C<backupPlanId> is returned.
 
 =item BackupPlanId => Str
 
-=item BackupSelection => L<Paws::Backup::BackupSelection>
+=item BackupSelection => Backup_BackupSelection
 
 =item [CreatorRequestId => Str]
 
@@ -361,7 +362,7 @@ patterns that match are selected for backup.
 
 =item BackupVaultName => Str
 
-=item [BackupVaultTags => L<Paws::Backup::Tags>]
+=item [BackupVaultTags => Backup_Tags]
 
 =item [CreatorRequestId => Str]
 
@@ -1035,9 +1036,9 @@ events.
 
 =item [IdempotencyToken => Str]
 
-=item [Lifecycle => L<Paws::Backup::Lifecycle>]
+=item [Lifecycle => Backup_Lifecycle]
 
-=item [RecoveryPointTags => L<Paws::Backup::Tags>]
+=item [RecoveryPointTags => Backup_Tags]
 
 =item [StartWindowMinutes => Int]
 
@@ -1057,7 +1058,7 @@ Starts a job to create a one-time backup of the specified resource.
 
 =item IamRoleArn => Str
 
-=item Metadata => L<Paws::Backup::Metadata>
+=item Metadata => Backup_Metadata
 
 =item RecoveryPointArn => Str
 
@@ -1102,7 +1103,7 @@ Attempts to cancel a job to create a one-time backup of a resource.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::Backup::Tags>
+=item Tags => Backup_Tags
 
 
 =back
@@ -1138,7 +1139,7 @@ backup vault identified by an Amazon Resource Name (ARN)
 
 =over
 
-=item BackupPlan => L<Paws::Backup::BackupPlanInput>
+=item BackupPlan => Backup_BackupPlanInput
 
 =item BackupPlanId => Str
 
@@ -1162,7 +1163,7 @@ is uniquely identified by a C<VersionId>.
 
 =item RecoveryPointArn => Str
 
-=item [Lifecycle => L<Paws::Backup::Lifecycle>]
+=item [Lifecycle => Backup_Lifecycle]
 
 
 =back

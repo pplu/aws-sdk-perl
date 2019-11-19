@@ -1,10 +1,34 @@
 
 package Paws::LexModels::GetBotAliasesResponse;
-  use Moose;
-  has BotAliases => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BotAliasMetadata]');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LexModels::Types qw/LexModels_BotAliasMetadata/;
+  has BotAliases => (is => 'ro', isa => ArrayRef[LexModels_BotAliasMetadata]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BotAliases' => {
+                                 'type' => 'ArrayRef[LexModels_BotAliasMetadata]',
+                                 'class' => 'Paws::LexModels::BotAliasMetadata'
+                               }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +40,7 @@ Paws::LexModels::GetBotAliasesResponse
 =head1 ATTRIBUTES
 
 
-=head2 BotAliases => ArrayRef[L<Paws::LexModels::BotAliasMetadata>]
+=head2 BotAliases => ArrayRef[LexModels_BotAliasMetadata]
 
 An array of C<BotAliasMetadata> objects, each describing a bot alias.
 

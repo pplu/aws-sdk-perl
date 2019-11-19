@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::Robomaker::RobotApplicationSummary;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RobotSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::RobotSoftwareSuite', request_name => 'robotSoftwareSuite', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw/Robomaker_RobotSoftwareSuite/;
+  has Arn => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RobotSoftwareSuite => (is => 'ro', isa => Robomaker_RobotSoftwareSuite);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'Name' => 'name',
+                       'Version' => 'version',
+                       'Arn' => 'arn',
+                       'RobotSoftwareSuite' => 'robotSoftwareSuite'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'RobotSoftwareSuite' => {
+                                         'type' => 'Robomaker_RobotSoftwareSuite',
+                                         'class' => 'Paws::Robomaker::RobotSoftwareSuite'
+                                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +93,7 @@ was last updated.
   The name of the robot application.
 
 
-=head2 RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
+=head2 RobotSoftwareSuite => Robomaker_RobotSoftwareSuite
 
   Information about a robot software suite.
 

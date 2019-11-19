@@ -1,15 +1,41 @@
 
 package Paws::MQ::DeleteUser;
-  use Moose;
-  has BrokerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'broker-id', required => 1);
-  has Username => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'username', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has BrokerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteUser');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/brokers/{broker-id}/users/{username}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MQ::DeleteUserResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteUser');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/brokers/{broker-id}/users/{username}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MQ::DeleteUserResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'BrokerId' => 'broker-id',
+                    'Username' => 'username'
+                  },
+  'IsRequired' => {
+                    'Username' => 1,
+                    'BrokerId' => 1
+                  },
+  'types' => {
+               'BrokerId' => {
+                               'type' => 'Str'
+                             },
+               'Username' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

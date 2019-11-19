@@ -1,15 +1,40 @@
 
 package Paws::PinpointEmail::PutDedicatedIpWarmupAttributes;
-  use Moose;
-  has Ip => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IP', required => 1);
-  has WarmupPercentage => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::PinpointEmail::Types qw//;
+  has Ip => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WarmupPercentage => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutDedicatedIpWarmupAttributes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/dedicated-ips/{IP}/warmup');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::PutDedicatedIpWarmupAttributesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutDedicatedIpWarmupAttributes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/dedicated-ips/{IP}/warmup');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::PutDedicatedIpWarmupAttributesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Ip' => 'IP'
+                  },
+  'IsRequired' => {
+                    'Ip' => 1,
+                    'WarmupPercentage' => 1
+                  },
+  'types' => {
+               'Ip' => {
+                         'type' => 'Str'
+                       },
+               'WarmupPercentage' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

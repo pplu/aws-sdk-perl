@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::InstanceHealthSummary;
-  use Moose;
-  has Degraded => (is => 'ro', isa => 'Int');
-  has Info => (is => 'ro', isa => 'Int');
-  has NoData => (is => 'ro', isa => 'Int');
-  has Ok => (is => 'ro', isa => 'Int');
-  has Pending => (is => 'ro', isa => 'Int');
-  has Severe => (is => 'ro', isa => 'Int');
-  has Unknown => (is => 'ro', isa => 'Int');
-  has Warning => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has Degraded => (is => 'ro', isa => Int);
+  has Info => (is => 'ro', isa => Int);
+  has NoData => (is => 'ro', isa => Int);
+  has Ok => (is => 'ro', isa => Int);
+  has Pending => (is => 'ro', isa => Int);
+  has Severe => (is => 'ro', isa => Int);
+  has Unknown => (is => 'ro', isa => Int);
+  has Warning => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NoData' => {
+                             'type' => 'Int'
+                           },
+               'Pending' => {
+                              'type' => 'Int'
+                            },
+               'Ok' => {
+                         'type' => 'Int'
+                       },
+               'Info' => {
+                           'type' => 'Int'
+                         },
+               'Severe' => {
+                             'type' => 'Int'
+                           },
+               'Degraded' => {
+                               'type' => 'Int'
+                             },
+               'Unknown' => {
+                              'type' => 'Int'
+                            },
+               'Warning' => {
+                              'type' => 'Int'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,23 @@
 package Paws::DynamoDB::SecondaryIndexesCapacityMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_Capacity/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::Capacity]');
+  has Map => (is => 'ro', isa => HashRef[DynamoDB_Capacity]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[DynamoDB_Capacity]',
+                                          class => 'Paws::DynamoDB::Capacity',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::DynamoDB::Capacity>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

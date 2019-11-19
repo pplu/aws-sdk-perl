@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::Config::ConfigRuleEvaluationStatus;
-  use Moose;
-  has ConfigRuleArn => (is => 'ro', isa => 'Str');
-  has ConfigRuleId => (is => 'ro', isa => 'Str');
-  has ConfigRuleName => (is => 'ro', isa => 'Str');
-  has FirstActivatedTime => (is => 'ro', isa => 'Str');
-  has FirstEvaluationStarted => (is => 'ro', isa => 'Bool');
-  has LastErrorCode => (is => 'ro', isa => 'Str');
-  has LastErrorMessage => (is => 'ro', isa => 'Str');
-  has LastFailedEvaluationTime => (is => 'ro', isa => 'Str');
-  has LastFailedInvocationTime => (is => 'ro', isa => 'Str');
-  has LastSuccessfulEvaluationTime => (is => 'ro', isa => 'Str');
-  has LastSuccessfulInvocationTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Config::Types qw//;
+  has ConfigRuleArn => (is => 'ro', isa => Str);
+  has ConfigRuleId => (is => 'ro', isa => Str);
+  has ConfigRuleName => (is => 'ro', isa => Str);
+  has FirstActivatedTime => (is => 'ro', isa => Str);
+  has FirstEvaluationStarted => (is => 'ro', isa => Bool);
+  has LastErrorCode => (is => 'ro', isa => Str);
+  has LastErrorMessage => (is => 'ro', isa => Str);
+  has LastFailedEvaluationTime => (is => 'ro', isa => Str);
+  has LastFailedInvocationTime => (is => 'ro', isa => Str);
+  has LastSuccessfulEvaluationTime => (is => 'ro', isa => Str);
+  has LastSuccessfulInvocationTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FirstActivatedTime' => {
+                                         'type' => 'Str'
+                                       },
+               'ConfigRuleArn' => {
+                                    'type' => 'Str'
+                                  },
+               'LastFailedEvaluationTime' => {
+                                               'type' => 'Str'
+                                             },
+               'ConfigRuleName' => {
+                                     'type' => 'Str'
+                                   },
+               'FirstEvaluationStarted' => {
+                                             'type' => 'Bool'
+                                           },
+               'LastFailedInvocationTime' => {
+                                               'type' => 'Str'
+                                             },
+               'LastErrorMessage' => {
+                                       'type' => 'Str'
+                                     },
+               'ConfigRuleId' => {
+                                   'type' => 'Str'
+                                 },
+               'LastErrorCode' => {
+                                    'type' => 'Str'
+                                  },
+               'LastSuccessfulInvocationTime' => {
+                                                   'type' => 'Str'
+                                                 },
+               'LastSuccessfulEvaluationTime' => {
+                                                   'type' => 'Str'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

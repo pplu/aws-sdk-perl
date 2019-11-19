@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::ECR::ImageScanningConfiguration;
-  use Moose;
-  has ScanOnPush => (is => 'ro', isa => 'Bool', request_name => 'scanOnPush', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::ECR::Types qw//;
+  has ScanOnPush => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ScanOnPush' => 'scanOnPush'
+                     },
+  'types' => {
+               'ScanOnPush' => {
+                                 'type' => 'Bool'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,12 +1,58 @@
+# Generated from default/object.tt
 package Paws::IoT::ThingDocument;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', request_name => 'attributes', traits => ['NameInRequest']);
-  has Connectivity => (is => 'ro', isa => 'Paws::IoT::ThingConnectivity', request_name => 'connectivity', traits => ['NameInRequest']);
-  has Shadow => (is => 'ro', isa => 'Str', request_name => 'shadow', traits => ['NameInRequest']);
-  has ThingGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'thingGroupNames', traits => ['NameInRequest']);
-  has ThingId => (is => 'ro', isa => 'Str', request_name => 'thingId', traits => ['NameInRequest']);
-  has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
-  has ThingTypeName => (is => 'ro', isa => 'Str', request_name => 'thingTypeName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IoT::Types qw/IoT_Attributes IoT_ThingConnectivity/;
+  has Attributes => (is => 'ro', isa => IoT_Attributes);
+  has Connectivity => (is => 'ro', isa => IoT_ThingConnectivity);
+  has Shadow => (is => 'ro', isa => Str);
+  has ThingGroupNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ThingId => (is => 'ro', isa => Str);
+  has ThingName => (is => 'ro', isa => Str);
+  has ThingTypeName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::IoT::Attributes',
+                                 'type' => 'IoT_Attributes'
+                               },
+               'Connectivity' => {
+                                   'class' => 'Paws::IoT::ThingConnectivity',
+                                   'type' => 'IoT_ThingConnectivity'
+                                 },
+               'ThingGroupNames' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'ThingId' => {
+                              'type' => 'Str'
+                            },
+               'ThingTypeName' => {
+                                    'type' => 'Str'
+                                  },
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'Shadow' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Connectivity' => 'connectivity',
+                       'Attributes' => 'attributes',
+                       'ThingId' => 'thingId',
+                       'ThingGroupNames' => 'thingGroupNames',
+                       'ThingTypeName' => 'thingTypeName',
+                       'ThingName' => 'thingName',
+                       'Shadow' => 'shadow'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,12 +88,12 @@ The thing search index document.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::IoT::Attributes>
+=head2 Attributes => IoT_Attributes
 
   The attributes.
 
 
-=head2 Connectivity => L<Paws::IoT::ThingConnectivity>
+=head2 Connectivity => IoT_ThingConnectivity
 
   Indicates whether the thing is connected to the AWS IoT service.
 

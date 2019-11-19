@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::SSO::RoleCredentials;
-  use Moose;
-  has AccessKeyId => (is => 'ro', isa => 'Str', request_name => 'accessKeyId', traits => ['NameInRequest']);
-  has Expiration => (is => 'ro', isa => 'Int', request_name => 'expiration', traits => ['NameInRequest']);
-  has SecretAccessKey => (is => 'ro', isa => 'Str', request_name => 'secretAccessKey', traits => ['NameInRequest']);
-  has SessionToken => (is => 'ro', isa => 'Str', request_name => 'sessionToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSO::Types qw//;
+  has AccessKeyId => (is => 'ro', isa => Str);
+  has Expiration => (is => 'ro', isa => Int);
+  has SecretAccessKey => (is => 'ro', isa => Str);
+  has SessionToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Expiration' => {
+                                 'type' => 'Int'
+                               },
+               'SessionToken' => {
+                                   'type' => 'Str'
+                                 },
+               'SecretAccessKey' => {
+                                      'type' => 'Str'
+                                    },
+               'AccessKeyId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Expiration' => 'expiration',
+                       'SessionToken' => 'sessionToken',
+                       'AccessKeyId' => 'accessKeyId',
+                       'SecretAccessKey' => 'secretAccessKey'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

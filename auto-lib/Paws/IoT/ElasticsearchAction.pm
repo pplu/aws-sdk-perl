@@ -1,10 +1,53 @@
+# Generated from default/object.tt
 package Paws::IoT::ElasticsearchAction;
-  use Moose;
-  has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest'], required => 1);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has Index => (is => 'ro', isa => 'Str', request_name => 'index', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has Endpoint => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Index => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Endpoint' => 'endpoint',
+                       'Type' => 'type',
+                       'Id' => 'id',
+                       'Index' => 'index',
+                       'RoleArn' => 'roleArn'
+                     },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Index' => 1,
+                    'Id' => 1,
+                    'RoleArn' => 1,
+                    'Endpoint' => 1
+                  },
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Index' => {
+                            'type' => 'Str'
+                          },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

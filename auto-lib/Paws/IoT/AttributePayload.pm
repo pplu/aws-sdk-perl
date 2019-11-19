@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::IoT::AttributePayload;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', request_name => 'attributes', traits => ['NameInRequest']);
-  has Merge => (is => 'ro', isa => 'Bool', request_name => 'merge', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::IoT::Types qw/IoT_Attributes/;
+  has Attributes => (is => 'ro', isa => IoT_Attributes);
+  has Merge => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::IoT::Attributes',
+                                 'type' => 'IoT_Attributes'
+                               },
+               'Merge' => {
+                            'type' => 'Bool'
+                          }
+             },
+  'NameInRequest' => {
+                       'Attributes' => 'attributes',
+                       'Merge' => 'merge'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ The attribute payload.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::IoT::Attributes>
+=head2 Attributes => IoT_Attributes
 
   A JSON string containing up to three key-value pair in JSON format. For
 example:

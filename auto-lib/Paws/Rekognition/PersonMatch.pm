@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::Rekognition::PersonMatch;
-  use Moose;
-  has FaceMatches => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::FaceMatch]');
-  has Person => (is => 'ro', isa => 'Paws::Rekognition::PersonDetail');
-  has Timestamp => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::Rekognition::Types qw/Rekognition_PersonDetail Rekognition_FaceMatch/;
+  has FaceMatches => (is => 'ro', isa => ArrayRef[Rekognition_FaceMatch]);
+  has Person => (is => 'ro', isa => Rekognition_PersonDetail);
+  has Timestamp => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FaceMatches' => {
+                                  'type' => 'ArrayRef[Rekognition_FaceMatch]',
+                                  'class' => 'Paws::Rekognition::FaceMatch'
+                                },
+               'Timestamp' => {
+                                'type' => 'Int'
+                              },
+               'Person' => {
+                             'type' => 'Rekognition_PersonDetail',
+                             'class' => 'Paws::Rekognition::PersonDetail'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,13 +68,13 @@ GetFaceSearch.
 =head1 ATTRIBUTES
 
 
-=head2 FaceMatches => ArrayRef[L<Paws::Rekognition::FaceMatch>]
+=head2 FaceMatches => ArrayRef[Rekognition_FaceMatch]
 
   Information about the faces in the input collection that match the face
 of a person in the video.
 
 
-=head2 Person => L<Paws::Rekognition::PersonDetail>
+=head2 Person => Rekognition_PersonDetail
 
   Information about the matched person.
 

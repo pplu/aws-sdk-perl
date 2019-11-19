@@ -1,7 +1,28 @@
 package Paws::EC2::InstanceUsage;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has UsedInstanceCount => (is => 'ro', isa => 'Int', request_name => 'usedInstanceCount', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has UsedInstanceCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'UsedInstanceCount' => {
+                                        'type' => 'Int'
+                                      }
+             },
+  'NameInRequest' => {
+                       'UsedInstanceCount' => 'usedInstanceCount',
+                       'AccountId' => 'accountId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

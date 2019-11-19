@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Neptune::ValidDBInstanceModificationsMessage;
-  use Moose;
-  has Storage => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::ValidStorageOptions]', request_name => 'ValidStorageOptions', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_ValidStorageOptions/;
+  has Storage => (is => 'ro', isa => ArrayRef[Neptune_ValidStorageOptions]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Storage' => 'ValidStorageOptions'
+                     },
+  'types' => {
+               'Storage' => {
+                              'class' => 'Paws::Neptune::ValidStorageOptions',
+                              'type' => 'ArrayRef[Neptune_ValidStorageOptions]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +60,7 @@ information when you call ModifyDBInstance.
 =head1 ATTRIBUTES
 
 
-=head2 Storage => ArrayRef[L<Paws::Neptune::ValidStorageOptions>]
+=head2 Storage => ArrayRef[Neptune_ValidStorageOptions]
 
   Valid storage options for your DB instance.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaLive::StaticImageDeactivateScheduleActionSettings;
-  use Moose;
-  has FadeOut => (is => 'ro', isa => 'Int', request_name => 'fadeOut', traits => ['NameInRequest']);
-  has Layer => (is => 'ro', isa => 'Int', request_name => 'layer', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaLive::Types qw//;
+  has FadeOut => (is => 'ro', isa => Int);
+  has Layer => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Layer' => 'layer',
+                       'FadeOut' => 'fadeOut'
+                     },
+  'types' => {
+               'Layer' => {
+                            'type' => 'Int'
+                          },
+               'FadeOut' => {
+                              'type' => 'Int'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Chime::VoiceConnectorGroup;
-  use Moose;
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has UpdatedTimestamp => (is => 'ro', isa => 'Str');
-  has VoiceConnectorGroupId => (is => 'ro', isa => 'Str');
-  has VoiceConnectorItems => (is => 'ro', isa => 'ArrayRef[Paws::Chime::VoiceConnectorItem]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Chime::Types qw/Chime_VoiceConnectorItem/;
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has UpdatedTimestamp => (is => 'ro', isa => Str);
+  has VoiceConnectorGroupId => (is => 'ro', isa => Str);
+  has VoiceConnectorItems => (is => 'ro', isa => ArrayRef[Chime_VoiceConnectorItem]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VoiceConnectorItems' => {
+                                          'type' => 'ArrayRef[Chime_VoiceConnectorItem]',
+                                          'class' => 'Paws::Chime::VoiceConnectorItem'
+                                        },
+               'VoiceConnectorGroupId' => {
+                                            'type' => 'Str'
+                                          },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'UpdatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +95,7 @@ format.
   The Amazon Chime Voice Connector group ID.
 
 
-=head2 VoiceConnectorItems => ArrayRef[L<Paws::Chime::VoiceConnectorItem>]
+=head2 VoiceConnectorItems => ArrayRef[Chime_VoiceConnectorItem]
 
   The Amazon Chime Voice Connectors to which to route inbound calls.
 

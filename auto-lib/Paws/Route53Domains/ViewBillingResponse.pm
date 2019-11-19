@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Route53Domains::ViewBillingResponse;
-  use Moose;
-  has BillingRecords => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::BillingRecord]');
-  has NextPageMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53Domains::Types qw/Route53Domains_BillingRecord/;
+  has BillingRecords => (is => 'ro', isa => ArrayRef[Route53Domains_BillingRecord]);
+  has NextPageMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageMarker' => {
+                                     'type' => 'Str'
+                                   },
+               'BillingRecords' => {
+                                     'class' => 'Paws::Route53Domains::BillingRecord',
+                                     'type' => 'ArrayRef[Route53Domains_BillingRecord]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Route53Domains::ViewBillingResponse
 =head1 ATTRIBUTES
 
 
-=head2 BillingRecords => ArrayRef[L<Paws::Route53Domains::BillingRecord>]
+=head2 BillingRecords => ArrayRef[Route53Domains_BillingRecord]
 
 A summary of billing records.
 

@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::EMR::AddInstanceFleet;
-  use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceFleet => (is => 'ro', isa => 'Paws::EMR::InstanceFleetConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_InstanceFleetConfig/;
+  has ClusterId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceFleet => (is => 'ro', isa => EMR_InstanceFleetConfig, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddInstanceFleet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::AddInstanceFleetOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddInstanceFleet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EMR::AddInstanceFleetOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ClusterId' => 1,
+                    'InstanceFleet' => 1
+                  },
+  'types' => {
+               'InstanceFleet' => {
+                                    'type' => 'EMR_InstanceFleetConfig',
+                                    'class' => 'Paws::EMR::InstanceFleetConfig'
+                                  },
+               'ClusterId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,22 +83,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],                                                    # OPTIONAL
               EbsOptimized => 1,                                    # OPTIONAL
             },    # OPTIONAL
-            WeightedCapacity => 1,    # OPTIONAL
+            WeightedCapacity => 1,
           },
           ...
-        ],                            # OPTIONAL
+        ],        # OPTIONAL
         LaunchSpecifications => {
           SpotSpecification => {
             TimeoutAction => 'SWITCH_TO_ON_DEMAND'
-            ,    # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
-            TimeoutDurationMinutes => 1,    # OPTIONAL
-            BlockDurationMinutes   => 1,    # OPTIONAL
+            ,     # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
+            TimeoutDurationMinutes => 1,
+            BlockDurationMinutes   => 1,
           },
 
         },    # OPTIONAL
         Name                   => 'MyXmlStringMaxLen256',    # max: 256
-        TargetOnDemandCapacity => 1,                         # OPTIONAL
-        TargetSpotCapacity     => 1,                         # OPTIONAL
+        TargetOnDemandCapacity => 1,
+        TargetSpotCapacity     => 1,
       },
 
     );
@@ -98,7 +122,7 @@ The unique identifier of the cluster.
 
 
 
-=head2 B<REQUIRED> InstanceFleet => L<Paws::EMR::InstanceFleetConfig>
+=head2 B<REQUIRED> InstanceFleet => EMR_InstanceFleetConfig
 
 Specifies the configuration of the instance fleet.
 

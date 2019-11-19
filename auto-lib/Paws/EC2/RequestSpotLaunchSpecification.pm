@@ -1,21 +1,103 @@
 package Paws::EC2::RequestSpotLaunchSpecification;
-  use Moose;
-  has AddressingType => (is => 'ro', isa => 'Str', request_name => 'addressingType', traits => ['NameInRequest']);
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest']);
-  has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
-  has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfileSpecification', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
-  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has KernelId => (is => 'ro', isa => 'Str', request_name => 'kernelId', traits => ['NameInRequest']);
-  has KeyName => (is => 'ro', isa => 'Str', request_name => 'keyName', traits => ['NameInRequest']);
-  has Monitoring => (is => 'ro', isa => 'Paws::EC2::RunInstancesMonitoringEnabled', request_name => 'monitoring', traits => ['NameInRequest']);
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceNetworkInterfaceSpecification]', request_name => 'NetworkInterface', traits => ['NameInRequest']);
-  has Placement => (is => 'ro', isa => 'Paws::EC2::SpotPlacement', request_name => 'placement', traits => ['NameInRequest']);
-  has RamdiskId => (is => 'ro', isa => 'Str', request_name => 'ramdiskId', traits => ['NameInRequest']);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SecurityGroupId', traits => ['NameInRequest']);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SecurityGroup', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
-  has UserData => (is => 'ro', isa => 'Str', request_name => 'userData', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Bool Undef/;
+  use Paws::EC2::Types qw/EC2_IamInstanceProfileSpecification EC2_InstanceNetworkInterfaceSpecification EC2_BlockDeviceMapping EC2_SpotPlacement EC2_RunInstancesMonitoringEnabled/;
+  has AddressingType => (is => 'ro', isa => Str);
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[EC2_BlockDeviceMapping]);
+  has EbsOptimized => (is => 'ro', isa => Bool);
+  has IamInstanceProfile => (is => 'ro', isa => EC2_IamInstanceProfileSpecification);
+  has ImageId => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has KernelId => (is => 'ro', isa => Str);
+  has KeyName => (is => 'ro', isa => Str);
+  has Monitoring => (is => 'ro', isa => EC2_RunInstancesMonitoringEnabled);
+  has NetworkInterfaces => (is => 'ro', isa => ArrayRef[EC2_InstanceNetworkInterfaceSpecification]);
+  has Placement => (is => 'ro', isa => EC2_SpotPlacement);
+  has RamdiskId => (is => 'ro', isa => Str);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SubnetId => (is => 'ro', isa => Str);
+  has UserData => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 },
+               'Placement' => {
+                                'type' => 'EC2_SpotPlacement',
+                                'class' => 'Paws::EC2::SpotPlacement'
+                              },
+               'UserData' => {
+                               'type' => 'Str'
+                             },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'KeyName' => {
+                              'type' => 'Str'
+                            },
+               'BlockDeviceMappings' => {
+                                          'class' => 'Paws::EC2::BlockDeviceMapping',
+                                          'type' => 'ArrayRef[EC2_BlockDeviceMapping]'
+                                        },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'NetworkInterfaces' => {
+                                        'class' => 'Paws::EC2::InstanceNetworkInterfaceSpecification',
+                                        'type' => 'ArrayRef[EC2_InstanceNetworkInterfaceSpecification]'
+                                      },
+               'RamdiskId' => {
+                                'type' => 'Str'
+                              },
+               'KernelId' => {
+                               'type' => 'Str'
+                             },
+               'Monitoring' => {
+                                 'class' => 'Paws::EC2::RunInstancesMonitoringEnabled',
+                                 'type' => 'EC2_RunInstancesMonitoringEnabled'
+                               },
+               'AddressingType' => {
+                                     'type' => 'Str'
+                                   },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'IamInstanceProfile' => {
+                                         'class' => 'Paws::EC2::IamInstanceProfileSpecification',
+                                         'type' => 'EC2_IamInstanceProfileSpecification'
+                                       }
+             },
+  'NameInRequest' => {
+                       'KernelId' => 'kernelId',
+                       'Monitoring' => 'monitoring',
+                       'AddressingType' => 'addressingType',
+                       'SecurityGroupIds' => 'SecurityGroupId',
+                       'InstanceType' => 'instanceType',
+                       'IamInstanceProfile' => 'iamInstanceProfile',
+                       'RamdiskId' => 'ramdiskId',
+                       'UserData' => 'userData',
+                       'SecurityGroups' => 'SecurityGroup',
+                       'KeyName' => 'keyName',
+                       'ImageId' => 'imageId',
+                       'SubnetId' => 'subnetId',
+                       'BlockDeviceMappings' => 'blockDeviceMapping',
+                       'NetworkInterfaces' => 'NetworkInterface',
+                       'EbsOptimized' => 'ebsOptimized',
+                       'Placement' => 'placement'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +138,7 @@ This class has no description
   Deprecated.
 
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
+=head2 BlockDeviceMappings => ArrayRef[EC2_BlockDeviceMapping]
 
   One or more block device mapping entries. You can't specify both a
 snapshot ID and an encryption value. This is because only blank volumes
@@ -76,7 +158,7 @@ usage charges apply when using an EBS Optimized instance.
 Default: C<false>
 
 
-=head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>
+=head2 IamInstanceProfile => EC2_IamInstanceProfileSpecification
 
   The IAM instance profile.
 
@@ -101,7 +183,7 @@ Default: C<false>
   The name of the key pair.
 
 
-=head2 Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>
+=head2 Monitoring => EC2_RunInstancesMonitoringEnabled
 
   Indicates whether basic or detailed monitoring is enabled for the
 instance.
@@ -109,14 +191,14 @@ instance.
 Default: Disabled
 
 
-=head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
+=head2 NetworkInterfaces => ArrayRef[EC2_InstanceNetworkInterfaceSpecification]
 
   One or more network interfaces. If you specify a network interface, you
 must specify subnet IDs and security group IDs using the network
 interface.
 
 
-=head2 Placement => L<Paws::EC2::SpotPlacement>
+=head2 Placement => EC2_SpotPlacement
 
   The placement information for the instance.
 

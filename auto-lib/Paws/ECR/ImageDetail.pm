@@ -1,13 +1,63 @@
+# Generated from default/object.tt
 package Paws::ECR::ImageDetail;
-  use Moose;
-  has ImageDigest => (is => 'ro', isa => 'Str', request_name => 'imageDigest', traits => ['NameInRequest']);
-  has ImagePushedAt => (is => 'ro', isa => 'Str', request_name => 'imagePushedAt', traits => ['NameInRequest']);
-  has ImageScanFindingsSummary => (is => 'ro', isa => 'Paws::ECR::ImageScanFindingsSummary', request_name => 'imageScanFindingsSummary', traits => ['NameInRequest']);
-  has ImageScanStatus => (is => 'ro', isa => 'Paws::ECR::ImageScanStatus', request_name => 'imageScanStatus', traits => ['NameInRequest']);
-  has ImageSizeInBytes => (is => 'ro', isa => 'Int', request_name => 'imageSizeInBytes', traits => ['NameInRequest']);
-  has ImageTags => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'imageTags', traits => ['NameInRequest']);
-  has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::ECR::Types qw/ECR_ImageScanFindingsSummary ECR_ImageScanStatus/;
+  has ImageDigest => (is => 'ro', isa => Str);
+  has ImagePushedAt => (is => 'ro', isa => Str);
+  has ImageScanFindingsSummary => (is => 'ro', isa => ECR_ImageScanFindingsSummary);
+  has ImageScanStatus => (is => 'ro', isa => ECR_ImageScanStatus);
+  has ImageSizeInBytes => (is => 'ro', isa => Int);
+  has ImageTags => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RegistryId => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'ImagePushedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'ImageScanFindingsSummary' => {
+                                               'class' => 'Paws::ECR::ImageScanFindingsSummary',
+                                               'type' => 'ECR_ImageScanFindingsSummary'
+                                             },
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'ImageDigest' => {
+                                  'type' => 'Str'
+                                },
+               'ImageTags' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'ImageSizeInBytes' => {
+                                       'type' => 'Int'
+                                     },
+               'ImageScanStatus' => {
+                                      'type' => 'ECR_ImageScanStatus',
+                                      'class' => 'Paws::ECR::ImageScanStatus'
+                                    }
+             },
+  'NameInRequest' => {
+                       'ImagePushedAt' => 'imagePushedAt',
+                       'RepositoryName' => 'repositoryName',
+                       'ImageScanFindingsSummary' => 'imageScanFindingsSummary',
+                       'ImageSizeInBytes' => 'imageSizeInBytes',
+                       'ImageDigest' => 'imageDigest',
+                       'RegistryId' => 'registryId',
+                       'ImageTags' => 'imageTags',
+                       'ImageScanStatus' => 'imageScanStatus'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,12 +105,12 @@ operation.
 which the current image was pushed to the repository.
 
 
-=head2 ImageScanFindingsSummary => L<Paws::ECR::ImageScanFindingsSummary>
+=head2 ImageScanFindingsSummary => ECR_ImageScanFindingsSummary
 
   A summary of the last completed image scan.
 
 
-=head2 ImageScanStatus => L<Paws::ECR::ImageScanStatus>
+=head2 ImageScanStatus => ECR_ImageScanStatus
 
   The current state of the scan.
 

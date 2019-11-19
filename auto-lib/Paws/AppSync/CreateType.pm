@@ -1,16 +1,49 @@
 
 package Paws::AppSync::CreateType;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has Definition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'definition', required => 1);
-  has Format => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'format', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Definition => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Format => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateType');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apis/{apiId}/types');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppSync::CreateTypeResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateType');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apis/{apiId}/types');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppSync::CreateTypeResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApiId' => 'apiId'
+                  },
+  'types' => {
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'Definition' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ApiId' => 1,
+                    'Definition' => 1,
+                    'Format' => 1
+                  },
+  'NameInRequest' => {
+                       'Format' => 'format',
+                       'Definition' => 'definition'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,26 +1,97 @@
 
 package Paws::S3::UploadPart;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has PartNumber => (is => 'ro', isa => 'Int', query_name => 'partNumber', traits => ['ParamInQuery'], required => 1);
-  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
-  has SSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key', traits => ['ParamInHeader']);
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
-  has UploadId => (is => 'ro', isa => 'Str', query_name => 'uploadId', traits => ['ParamInQuery'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw//;
+  has Body => (is => 'ro', isa => Str, predicate => 1);
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentLength => (is => 'ro', isa => Int, predicate => 1);
+  has ContentMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PartNumber => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has RequestPayer => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerAlgorithm => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKey => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has UploadId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadPart');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::UploadPartOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UploadPart');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::UploadPartOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   class_has _stream_param => (is => 'ro', default => 'Body');
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'SSECustomerAlgorithm' => {
+                                           'type' => 'Str'
+                                         },
+               'SSECustomerKeyMD5' => {
+                                        'type' => 'Str'
+                                      },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'PartNumber' => {
+                                 'type' => 'Int'
+                               },
+               'RequestPayer' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'ContentMD5' => {
+                                 'type' => 'Str'
+                               },
+               'SSECustomerKey' => {
+                                     'type' => 'Str'
+                                   },
+               'UploadId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'PartNumber' => 1,
+                    'Bucket' => 1,
+                    'UploadId' => 1,
+                    'Key' => 1
+                  },
+  'ParamInQuery' => {
+                      'UploadId' => 'uploadId',
+                      'PartNumber' => 'partNumber'
+                    },
+  'AutoInHeader' => {
+                      'ContentMD5' => {
+                                        'header_name' => 'Content-MD5',
+                                        'auto' => 'MD5'
+                                      }
+                    },
+  'ParamInURI' => {
+                    'Key' => 'Key',
+                    'Bucket' => 'Bucket'
+                  },
+  'ParamInHeader' => {
+                       'ContentLength' => 'Content-Length',
+                       'RequestPayer' => 'x-amz-request-payer',
+                       'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm',
+                       'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5',
+                       'SSECustomerKey' => 'x-amz-server-side-encryption-customer-key'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::IoT::TaskStatisticsForAuditCheck;
-  use Moose;
-  has CanceledFindingsCount => (is => 'ro', isa => 'Int', request_name => 'canceledFindingsCount', traits => ['NameInRequest']);
-  has FailedFindingsCount => (is => 'ro', isa => 'Int', request_name => 'failedFindingsCount', traits => ['NameInRequest']);
-  has SkippedFindingsCount => (is => 'ro', isa => 'Int', request_name => 'skippedFindingsCount', traits => ['NameInRequest']);
-  has SucceededFindingsCount => (is => 'ro', isa => 'Int', request_name => 'succeededFindingsCount', traits => ['NameInRequest']);
-  has TotalFindingsCount => (is => 'ro', isa => 'Int', request_name => 'totalFindingsCount', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::IoT::Types qw//;
+  has CanceledFindingsCount => (is => 'ro', isa => Int);
+  has FailedFindingsCount => (is => 'ro', isa => Int);
+  has SkippedFindingsCount => (is => 'ro', isa => Int);
+  has SucceededFindingsCount => (is => 'ro', isa => Int);
+  has TotalFindingsCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FailedFindingsCount' => 'failedFindingsCount',
+                       'TotalFindingsCount' => 'totalFindingsCount',
+                       'SucceededFindingsCount' => 'succeededFindingsCount',
+                       'SkippedFindingsCount' => 'skippedFindingsCount',
+                       'CanceledFindingsCount' => 'canceledFindingsCount'
+                     },
+  'types' => {
+               'CanceledFindingsCount' => {
+                                            'type' => 'Int'
+                                          },
+               'SkippedFindingsCount' => {
+                                           'type' => 'Int'
+                                         },
+               'SucceededFindingsCount' => {
+                                             'type' => 'Int'
+                                           },
+               'TotalFindingsCount' => {
+                                         'type' => 'Int'
+                                       },
+               'FailedFindingsCount' => {
+                                          'type' => 'Int'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

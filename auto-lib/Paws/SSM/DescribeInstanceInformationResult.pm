@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribeInstanceInformationResult;
-  use Moose;
-  has InstanceInformationList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InstanceInformation]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_InstanceInformation/;
+  has InstanceInformationList => (is => 'ro', isa => ArrayRef[SSM_InstanceInformation]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'InstanceInformationList' => {
+                                              'class' => 'Paws::SSM::InstanceInformation',
+                                              'type' => 'ArrayRef[SSM_InstanceInformation]'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::DescribeInstanceInformationResult
 =head1 ATTRIBUTES
 
 
-=head2 InstanceInformationList => ArrayRef[L<Paws::SSM::InstanceInformation>]
+=head2 InstanceInformationList => ArrayRef[SSM_InstanceInformation]
 
 The instance information list.
 

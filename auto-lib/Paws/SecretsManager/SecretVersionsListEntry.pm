@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::SecretsManager::SecretVersionsListEntry;
-  use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has LastAccessedDate => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
-  has VersionStages => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::SecretsManager::Types qw//;
+  has CreatedDate => (is => 'ro', isa => Str);
+  has LastAccessedDate => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+  has VersionStages => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VersionStages' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'LastAccessedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

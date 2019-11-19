@@ -1,8 +1,23 @@
 package Paws::DynamoDB::BatchGetResponseMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AttributeMap/;
 
-  has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::DynamoDB::AttributeMap]]');
+  has Map => (is => 'ro', isa => HashRef[ArrayRef[DynamoDB_AttributeMap]]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[ArrayRef[DynamoDB_AttributeMap]]',
+                                          class => 'Paws::DynamoDB::AttributeMap',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => ArrayRef[L<Paws::DynamoDB::AttributeMap>]
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

@@ -1,9 +1,31 @@
 
 package Paws::EC2::MonitorInstancesResult;
-  use Moose;
-  has InstanceMonitorings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceMonitoring]', request_name => 'instancesSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_InstanceMonitoring/;
+  has InstanceMonitorings => (is => 'ro', isa => ArrayRef[EC2_InstanceMonitoring]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InstanceMonitorings' => 'instancesSet'
+                     },
+  'types' => {
+               'InstanceMonitorings' => {
+                                          'type' => 'ArrayRef[EC2_InstanceMonitoring]',
+                                          'class' => 'Paws::EC2::InstanceMonitoring'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::MonitorInstancesResult
 =head1 ATTRIBUTES
 
 
-=head2 InstanceMonitorings => ArrayRef[L<Paws::EC2::InstanceMonitoring>]
+=head2 InstanceMonitorings => ArrayRef[EC2_InstanceMonitoring]
 
 The monitoring information.
 

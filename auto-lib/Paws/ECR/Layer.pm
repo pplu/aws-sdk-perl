@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::ECR::Layer;
-  use Moose;
-  has LayerAvailability => (is => 'ro', isa => 'Str', request_name => 'layerAvailability', traits => ['NameInRequest']);
-  has LayerDigest => (is => 'ro', isa => 'Str', request_name => 'layerDigest', traits => ['NameInRequest']);
-  has LayerSize => (is => 'ro', isa => 'Int', request_name => 'layerSize', traits => ['NameInRequest']);
-  has MediaType => (is => 'ro', isa => 'Str', request_name => 'mediaType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ECR::Types qw//;
+  has LayerAvailability => (is => 'ro', isa => Str);
+  has LayerDigest => (is => 'ro', isa => Str);
+  has LayerSize => (is => 'ro', isa => Int);
+  has MediaType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MediaType' => 'mediaType',
+                       'LayerDigest' => 'layerDigest',
+                       'LayerSize' => 'layerSize',
+                       'LayerAvailability' => 'layerAvailability'
+                     },
+  'types' => {
+               'MediaType' => {
+                                'type' => 'Str'
+                              },
+               'LayerDigest' => {
+                                  'type' => 'Str'
+                                },
+               'LayerSize' => {
+                                'type' => 'Int'
+                              },
+               'LayerAvailability' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

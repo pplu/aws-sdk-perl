@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECS::DiscoverPollEndpointResponse;
-  use Moose;
-  has Endpoint => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endpoint' );
-  has TelemetryEndpoint => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'telemetryEndpoint' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has Endpoint => (is => 'ro', isa => Str);
+  has TelemetryEndpoint => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Endpoint' => 'endpoint',
+                       'TelemetryEndpoint' => 'telemetryEndpoint'
+                     },
+  'types' => {
+               'TelemetryEndpoint' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

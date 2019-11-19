@@ -1,15 +1,41 @@
 
 package Paws::GroundStation::GetConfig;
-  use Moose;
-  has ConfigId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'configId', required => 1);
-  has ConfigType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'configType', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw//;
+  has ConfigId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConfigType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetConfig');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/config/{configType}/{configId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GroundStation::GetConfigResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetConfig');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/config/{configType}/{configId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GroundStation::GetConfigResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigType' => {
+                                 'type' => 'Str'
+                               },
+               'ConfigId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'ConfigType' => 1,
+                    'ConfigId' => 1
+                  },
+  'ParamInURI' => {
+                    'ConfigId' => 'configId',
+                    'ConfigType' => 'configType'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

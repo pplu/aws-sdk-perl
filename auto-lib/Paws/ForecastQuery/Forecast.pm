@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::ForecastQuery::Forecast;
-  use Moose;
-  has Predictions => (is => 'ro', isa => 'Paws::ForecastQuery::Predictions');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ForecastQuery::Types qw/ForecastQuery_Predictions/;
+  has Predictions => (is => 'ro', isa => ForecastQuery_Predictions);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Predictions' => {
+                                  'type' => 'ForecastQuery_Predictions',
+                                  'class' => 'Paws::ForecastQuery::Predictions'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ QueryForecast response.
 =head1 ATTRIBUTES
 
 
-=head2 Predictions => L<Paws::ForecastQuery::Predictions>
+=head2 Predictions => ForecastQuery_Predictions
 
   The forecast.
 

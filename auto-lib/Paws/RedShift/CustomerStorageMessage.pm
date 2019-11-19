@@ -1,10 +1,31 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::CustomerStorageMessage;
-  use Moose;
-  has TotalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
-  has TotalProvisionedStorageInMegaBytes => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::RedShift::Types qw//;
+  has TotalBackupSizeInMegaBytes => (is => 'ro', isa => Num);
+  has TotalProvisionedStorageInMegaBytes => (is => 'ro', isa => Num);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TotalBackupSizeInMegaBytes' => {
+                                                 'type' => 'Num'
+                                               },
+               'TotalProvisionedStorageInMegaBytes' => {
+                                                         'type' => 'Num'
+                                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

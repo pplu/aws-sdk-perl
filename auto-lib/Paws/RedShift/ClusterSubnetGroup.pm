@@ -1,11 +1,49 @@
+# Generated from default/object.tt
 package Paws::RedShift::ClusterSubnetGroup;
-  use Moose;
-  has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has SubnetGroupStatus => (is => 'ro', isa => 'Str');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Subnet]', request_name => 'Subnet', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Tag RedShift_Subnet/;
+  has ClusterSubnetGroupName => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has SubnetGroupStatus => (is => 'ro', isa => Str);
+  has Subnets => (is => 'ro', isa => ArrayRef[RedShift_Subnet]);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Subnets' => 'Subnet',
+                       'Tags' => 'Tag'
+                     },
+  'types' => {
+               'Subnets' => {
+                              'type' => 'ArrayRef[RedShift_Subnet]',
+                              'class' => 'Paws::RedShift::Subnet'
+                            },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'ClusterSubnetGroupName' => {
+                                             'type' => 'Str'
+                                           },
+               'Tags' => {
+                           'type' => 'ArrayRef[RedShift_Tag]',
+                           'class' => 'Paws::RedShift::Tag'
+                         },
+               'SubnetGroupStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,12 +95,12 @@ Describes a subnet group.
 C<Complete>, C<Incomplete> and C<Invalid>.
 
 
-=head2 Subnets => ArrayRef[L<Paws::RedShift::Subnet>]
+=head2 Subnets => ArrayRef[RedShift_Subnet]
 
   A list of the VPC Subnet elements.
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
   The list of tags for the cluster subnet group.
 

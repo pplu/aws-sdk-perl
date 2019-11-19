@@ -1,0 +1,31 @@
+package Paws::MarketplaceMetering::Types;
+  use Type::Library qw/-base/;
+  use Type::Utils qw/class_type/;
+
+  class_type MarketplaceMetering_BatchMeterUsageRequest, { class => 'Paws::MarketplaceMetering::BatchMeterUsageRequest' };
+  class_type MarketplaceMetering_BatchMeterUsageResult, { class => 'Paws::MarketplaceMetering::BatchMeterUsageResult' };
+  class_type MarketplaceMetering_CustomerNotEntitledException, { class => 'Paws::MarketplaceMetering::CustomerNotEntitledException' };
+  class_type MarketplaceMetering_DisabledApiException, { class => 'Paws::MarketplaceMetering::DisabledApiException' };
+  class_type MarketplaceMetering_DuplicateRequestException, { class => 'Paws::MarketplaceMetering::DuplicateRequestException' };
+  class_type MarketplaceMetering_ExpiredTokenException, { class => 'Paws::MarketplaceMetering::ExpiredTokenException' };
+  class_type MarketplaceMetering_InternalServiceErrorException, { class => 'Paws::MarketplaceMetering::InternalServiceErrorException' };
+  class_type MarketplaceMetering_InvalidCustomerIdentifierException, { class => 'Paws::MarketplaceMetering::InvalidCustomerIdentifierException' };
+  class_type MarketplaceMetering_InvalidEndpointRegionException, { class => 'Paws::MarketplaceMetering::InvalidEndpointRegionException' };
+  class_type MarketplaceMetering_InvalidProductCodeException, { class => 'Paws::MarketplaceMetering::InvalidProductCodeException' };
+  class_type MarketplaceMetering_InvalidPublicKeyVersionException, { class => 'Paws::MarketplaceMetering::InvalidPublicKeyVersionException' };
+  class_type MarketplaceMetering_InvalidRegionException, { class => 'Paws::MarketplaceMetering::InvalidRegionException' };
+  class_type MarketplaceMetering_InvalidTokenException, { class => 'Paws::MarketplaceMetering::InvalidTokenException' };
+  class_type MarketplaceMetering_InvalidUsageDimensionException, { class => 'Paws::MarketplaceMetering::InvalidUsageDimensionException' };
+  class_type MarketplaceMetering_MeterUsageRequest, { class => 'Paws::MarketplaceMetering::MeterUsageRequest' };
+  class_type MarketplaceMetering_MeterUsageResult, { class => 'Paws::MarketplaceMetering::MeterUsageResult' };
+  class_type MarketplaceMetering_PlatformNotSupportedException, { class => 'Paws::MarketplaceMetering::PlatformNotSupportedException' };
+  class_type MarketplaceMetering_RegisterUsageRequest, { class => 'Paws::MarketplaceMetering::RegisterUsageRequest' };
+  class_type MarketplaceMetering_RegisterUsageResult, { class => 'Paws::MarketplaceMetering::RegisterUsageResult' };
+  class_type MarketplaceMetering_ResolveCustomerRequest, { class => 'Paws::MarketplaceMetering::ResolveCustomerRequest' };
+  class_type MarketplaceMetering_ResolveCustomerResult, { class => 'Paws::MarketplaceMetering::ResolveCustomerResult' };
+  class_type MarketplaceMetering_ThrottlingException, { class => 'Paws::MarketplaceMetering::ThrottlingException' };
+  class_type MarketplaceMetering_TimestampOutOfBoundsException, { class => 'Paws::MarketplaceMetering::TimestampOutOfBoundsException' };
+  class_type MarketplaceMetering_UsageRecord, { class => 'Paws::MarketplaceMetering::UsageRecord' };
+  class_type MarketplaceMetering_UsageRecordResult, { class => 'Paws::MarketplaceMetering::UsageRecordResult' };
+
+1;

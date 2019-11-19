@@ -1,23 +1,84 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudFormation::DescribeTypeOutput;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has DefaultVersionId => (is => 'ro', isa => 'Str');
-  has DeprecatedStatus => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DocumentationUrl => (is => 'ro', isa => 'Str');
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str');
-  has LastUpdated => (is => 'ro', isa => 'Str');
-  has LoggingConfig => (is => 'ro', isa => 'Paws::CloudFormation::LoggingConfig');
-  has ProvisioningType => (is => 'ro', isa => 'Str');
-  has Schema => (is => 'ro', isa => 'Str');
-  has SourceUrl => (is => 'ro', isa => 'Str');
-  has TimeCreated => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has TypeName => (is => 'ro', isa => 'Str');
-  has Visibility => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw/CloudFormation_LoggingConfig/;
+  has Arn => (is => 'ro', isa => Str);
+  has DefaultVersionId => (is => 'ro', isa => Str);
+  has DeprecatedStatus => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DocumentationUrl => (is => 'ro', isa => Str);
+  has ExecutionRoleArn => (is => 'ro', isa => Str);
+  has LastUpdated => (is => 'ro', isa => Str);
+  has LoggingConfig => (is => 'ro', isa => CloudFormation_LoggingConfig);
+  has ProvisioningType => (is => 'ro', isa => Str);
+  has Schema => (is => 'ro', isa => Str);
+  has SourceUrl => (is => 'ro', isa => Str);
+  has TimeCreated => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has TypeName => (is => 'ro', isa => Str);
+  has Visibility => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'LoggingConfig' => {
+                                    'class' => 'Paws::CloudFormation::LoggingConfig',
+                                    'type' => 'CloudFormation_LoggingConfig'
+                                  },
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ProvisioningType' => {
+                                       'type' => 'Str'
+                                     },
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'DefaultVersionId' => {
+                                       'type' => 'Str'
+                                     },
+               'LastUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'DocumentationUrl' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DeprecatedStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'TimeCreated' => {
+                                  'type' => 'Str'
+                                },
+               'SourceUrl' => {
+                                'type' => 'Str'
+                              },
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'Visibility' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +153,7 @@ appropriate credentials.
 When the specified type version was registered.
 
 
-=head2 LoggingConfig => L<Paws::CloudFormation::LoggingConfig>
+=head2 LoggingConfig => CloudFormation_LoggingConfig
 
 Contains logging configuration information for a type.
 

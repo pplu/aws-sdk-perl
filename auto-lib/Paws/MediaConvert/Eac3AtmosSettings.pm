@@ -1,20 +1,96 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Eac3AtmosSettings;
-  use Moose;
-  has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
-  has BitstreamMode => (is => 'ro', isa => 'Str', request_name => 'bitstreamMode', traits => ['NameInRequest']);
-  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
-  has DialogueIntelligence => (is => 'ro', isa => 'Str', request_name => 'dialogueIntelligence', traits => ['NameInRequest']);
-  has DynamicRangeCompressionLine => (is => 'ro', isa => 'Str', request_name => 'dynamicRangeCompressionLine', traits => ['NameInRequest']);
-  has DynamicRangeCompressionRf => (is => 'ro', isa => 'Str', request_name => 'dynamicRangeCompressionRf', traits => ['NameInRequest']);
-  has LoRoCenterMixLevel => (is => 'ro', isa => 'Num', request_name => 'loRoCenterMixLevel', traits => ['NameInRequest']);
-  has LoRoSurroundMixLevel => (is => 'ro', isa => 'Num', request_name => 'loRoSurroundMixLevel', traits => ['NameInRequest']);
-  has LtRtCenterMixLevel => (is => 'ro', isa => 'Num', request_name => 'ltRtCenterMixLevel', traits => ['NameInRequest']);
-  has LtRtSurroundMixLevel => (is => 'ro', isa => 'Num', request_name => 'ltRtSurroundMixLevel', traits => ['NameInRequest']);
-  has MeteringMode => (is => 'ro', isa => 'Str', request_name => 'meteringMode', traits => ['NameInRequest']);
-  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
-  has SpeechThreshold => (is => 'ro', isa => 'Int', request_name => 'speechThreshold', traits => ['NameInRequest']);
-  has StereoDownmix => (is => 'ro', isa => 'Str', request_name => 'stereoDownmix', traits => ['NameInRequest']);
-  has SurroundExMode => (is => 'ro', isa => 'Str', request_name => 'surroundExMode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str Num/;
+  use Paws::MediaConvert::Types qw//;
+  has Bitrate => (is => 'ro', isa => Int);
+  has BitstreamMode => (is => 'ro', isa => Str);
+  has CodingMode => (is => 'ro', isa => Str);
+  has DialogueIntelligence => (is => 'ro', isa => Str);
+  has DynamicRangeCompressionLine => (is => 'ro', isa => Str);
+  has DynamicRangeCompressionRf => (is => 'ro', isa => Str);
+  has LoRoCenterMixLevel => (is => 'ro', isa => Num);
+  has LoRoSurroundMixLevel => (is => 'ro', isa => Num);
+  has LtRtCenterMixLevel => (is => 'ro', isa => Num);
+  has LtRtSurroundMixLevel => (is => 'ro', isa => Num);
+  has MeteringMode => (is => 'ro', isa => Str);
+  has SampleRate => (is => 'ro', isa => Int);
+  has SpeechThreshold => (is => 'ro', isa => Int);
+  has StereoDownmix => (is => 'ro', isa => Str);
+  has SurroundExMode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MeteringMode' => {
+                                   'type' => 'Str'
+                                 },
+               'LtRtCenterMixLevel' => {
+                                         'type' => 'Num'
+                                       },
+               'DialogueIntelligence' => {
+                                           'type' => 'Str'
+                                         },
+               'DynamicRangeCompressionRf' => {
+                                                'type' => 'Str'
+                                              },
+               'SurroundExMode' => {
+                                     'type' => 'Str'
+                                   },
+               'Bitrate' => {
+                              'type' => 'Int'
+                            },
+               'SampleRate' => {
+                                 'type' => 'Int'
+                               },
+               'LoRoCenterMixLevel' => {
+                                         'type' => 'Num'
+                                       },
+               'DynamicRangeCompressionLine' => {
+                                                  'type' => 'Str'
+                                                },
+               'SpeechThreshold' => {
+                                      'type' => 'Int'
+                                    },
+               'LoRoSurroundMixLevel' => {
+                                           'type' => 'Num'
+                                         },
+               'CodingMode' => {
+                                 'type' => 'Str'
+                               },
+               'BitstreamMode' => {
+                                    'type' => 'Str'
+                                  },
+               'LtRtSurroundMixLevel' => {
+                                           'type' => 'Num'
+                                         },
+               'StereoDownmix' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'SpeechThreshold' => 'speechThreshold',
+                       'LoRoSurroundMixLevel' => 'loRoSurroundMixLevel',
+                       'CodingMode' => 'codingMode',
+                       'BitstreamMode' => 'bitstreamMode',
+                       'LtRtSurroundMixLevel' => 'ltRtSurroundMixLevel',
+                       'StereoDownmix' => 'stereoDownmix',
+                       'MeteringMode' => 'meteringMode',
+                       'DynamicRangeCompressionRf' => 'dynamicRangeCompressionRf',
+                       'LtRtCenterMixLevel' => 'ltRtCenterMixLevel',
+                       'DialogueIntelligence' => 'dialogueIntelligence',
+                       'SurroundExMode' => 'surroundExMode',
+                       'Bitrate' => 'bitrate',
+                       'SampleRate' => 'sampleRate',
+                       'LoRoCenterMixLevel' => 'loRoCenterMixLevel',
+                       'DynamicRangeCompressionLine' => 'dynamicRangeCompressionLine'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

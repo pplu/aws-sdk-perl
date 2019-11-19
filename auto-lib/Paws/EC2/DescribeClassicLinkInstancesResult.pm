@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeClassicLinkInstancesResult;
-  use Moose;
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClassicLinkInstance]', request_name => 'instancesSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ClassicLinkInstance/;
+  has Instances => (is => 'ro', isa => ArrayRef[EC2_ClassicLinkInstance]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Instances' => {
+                                'type' => 'ArrayRef[EC2_ClassicLinkInstance]',
+                                'class' => 'Paws::EC2::ClassicLinkInstance'
+                              }
+             },
+  'NameInRequest' => {
+                       'Instances' => 'instancesSet',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeClassicLinkInstancesResult
 =head1 ATTRIBUTES
 
 
-=head2 Instances => ArrayRef[L<Paws::EC2::ClassicLinkInstance>]
+=head2 Instances => ArrayRef[EC2_ClassicLinkInstance]
 
 Information about one or more linked EC2-Classic instances.
 

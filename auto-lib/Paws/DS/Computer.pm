@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::DS::Computer;
-  use Moose;
-  has ComputerAttributes => (is => 'ro', isa => 'ArrayRef[Paws::DS::Attribute]');
-  has ComputerId => (is => 'ro', isa => 'Str');
-  has ComputerName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::DS::Types qw/DS_Attribute/;
+  has ComputerAttributes => (is => 'ro', isa => ArrayRef[DS_Attribute]);
+  has ComputerId => (is => 'ro', isa => Str);
+  has ComputerName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComputerName' => {
+                                   'type' => 'Str'
+                                 },
+               'ComputerAttributes' => {
+                                         'type' => 'ArrayRef[DS_Attribute]',
+                                         'class' => 'Paws::DS::Attribute'
+                                       },
+               'ComputerId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ Contains information about a computer account in a directory.
 =head1 ATTRIBUTES
 
 
-=head2 ComputerAttributes => ArrayRef[L<Paws::DS::Attribute>]
+=head2 ComputerAttributes => ArrayRef[DS_Attribute]
 
   An array of Attribute objects containing the LDAP attributes that
 belong to the computer account.

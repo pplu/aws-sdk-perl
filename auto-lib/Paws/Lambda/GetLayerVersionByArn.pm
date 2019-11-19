@@ -1,14 +1,35 @@
 
 package Paws::Lambda::GetLayerVersionByArn;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Arn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetLayerVersionByArn');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-10-31/layers?find=LayerVersion');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::GetLayerVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetLayerVersionByArn');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2018-10-31/layers?find=LayerVersion');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::GetLayerVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'ParamInQuery' => {
+                      'Arn' => 'Arn'
+                    },
+  'IsRequired' => {
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

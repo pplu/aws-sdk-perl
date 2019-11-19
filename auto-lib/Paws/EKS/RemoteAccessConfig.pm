@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::EKS::RemoteAccessConfig;
-  use Moose;
-  has Ec2SshKey => (is => 'ro', isa => 'Str', request_name => 'ec2SshKey', traits => ['NameInRequest']);
-  has SourceSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'sourceSecurityGroups', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EKS::Types qw//;
+  has Ec2SshKey => (is => 'ro', isa => Str);
+  has SourceSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Ec2SshKey' => 'ec2SshKey',
+                       'SourceSecurityGroups' => 'sourceSecurityGroups'
+                     },
+  'types' => {
+               'SourceSecurityGroups' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'Ec2SshKey' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

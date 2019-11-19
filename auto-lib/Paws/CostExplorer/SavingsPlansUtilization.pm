@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::SavingsPlansUtilization;
-  use Moose;
-  has TotalCommitment => (is => 'ro', isa => 'Str');
-  has UnusedCommitment => (is => 'ro', isa => 'Str');
-  has UsedCommitment => (is => 'ro', isa => 'Str');
-  has UtilizationPercentage => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has TotalCommitment => (is => 'ro', isa => Str);
+  has UnusedCommitment => (is => 'ro', isa => Str);
+  has UsedCommitment => (is => 'ro', isa => Str);
+  has UtilizationPercentage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UtilizationPercentage' => {
+                                            'type' => 'Str'
+                                          },
+               'UsedCommitment' => {
+                                     'type' => 'Str'
+                                   },
+               'UnusedCommitment' => {
+                                       'type' => 'Str'
+                                     },
+               'TotalCommitment' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

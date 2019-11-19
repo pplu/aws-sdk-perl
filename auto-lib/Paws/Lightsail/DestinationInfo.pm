@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Lightsail::DestinationInfo;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Service => (is => 'ro', isa => 'Str', request_name => 'service', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has Id => (is => 'ro', isa => Str);
+  has Service => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Service' => 'service',
+                       'Id' => 'id'
+                     },
+  'types' => {
+               'Service' => {
+                              'type' => 'Str'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

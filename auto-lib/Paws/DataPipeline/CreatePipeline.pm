@@ -1,16 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DataPipeline::CreatePipeline;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has UniqueId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uniqueId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DataPipeline::Types qw/DataPipeline_Tag/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DataPipeline_Tag], predicate => 1);
+  has UniqueId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePipeline');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::CreatePipelineOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePipeline');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataPipeline::CreatePipelineOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'UniqueId' => 1
+                  },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'UniqueId' => 'uniqueId',
+                       'Description' => 'description',
+                       'Tags' => 'tags'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'UniqueId' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'type' => 'ArrayRef[DataPipeline_Tag]',
+                           'class' => 'Paws::DataPipeline::Tag'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +105,7 @@ assigns each pipeline a unique pipeline identifier.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DataPipeline::Tag>]
+=head2 Tags => ArrayRef[DataPipeline_Tag]
 
 A list of tags to associate with the pipeline at creation. Tags let you
 control access to pipelines. For more information, see Controlling User

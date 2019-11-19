@@ -1,23 +1,112 @@
+# Generated from default/object.tt
 package Paws::SavingsPlans::SavingsPlan;
-  use Moose;
-  has Commitment => (is => 'ro', isa => 'Str', request_name => 'commitment', traits => ['NameInRequest']);
-  has Currency => (is => 'ro', isa => 'Str', request_name => 'currency', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Ec2InstanceFamily => (is => 'ro', isa => 'Str', request_name => 'ec2InstanceFamily', traits => ['NameInRequest']);
-  has End => (is => 'ro', isa => 'Str', request_name => 'end', traits => ['NameInRequest']);
-  has OfferingId => (is => 'ro', isa => 'Str', request_name => 'offeringId', traits => ['NameInRequest']);
-  has PaymentOption => (is => 'ro', isa => 'Str', request_name => 'paymentOption', traits => ['NameInRequest']);
-  has ProductTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'productTypes', traits => ['NameInRequest']);
-  has RecurringPaymentAmount => (is => 'ro', isa => 'Str', request_name => 'recurringPaymentAmount', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
-  has SavingsPlanArn => (is => 'ro', isa => 'Str', request_name => 'savingsPlanArn', traits => ['NameInRequest']);
-  has SavingsPlanId => (is => 'ro', isa => 'Str', request_name => 'savingsPlanId', traits => ['NameInRequest']);
-  has SavingsPlanType => (is => 'ro', isa => 'Str', request_name => 'savingsPlanType', traits => ['NameInRequest']);
-  has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::SavingsPlans::TagMap', request_name => 'tags', traits => ['NameInRequest']);
-  has TermDurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'termDurationInSeconds', traits => ['NameInRequest']);
-  has UpfrontPaymentAmount => (is => 'ro', isa => 'Str', request_name => 'upfrontPaymentAmount', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::SavingsPlans::Types qw/SavingsPlans_TagMap/;
+  has Commitment => (is => 'ro', isa => Str);
+  has Currency => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Ec2InstanceFamily => (is => 'ro', isa => Str);
+  has End => (is => 'ro', isa => Str);
+  has OfferingId => (is => 'ro', isa => Str);
+  has PaymentOption => (is => 'ro', isa => Str);
+  has ProductTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RecurringPaymentAmount => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has SavingsPlanArn => (is => 'ro', isa => Str);
+  has SavingsPlanId => (is => 'ro', isa => Str);
+  has SavingsPlanType => (is => 'ro', isa => Str);
+  has Start => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => SavingsPlans_TagMap);
+  has TermDurationInSeconds => (is => 'ro', isa => Int);
+  has UpfrontPaymentAmount => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'UpfrontPaymentAmount' => 'upfrontPaymentAmount',
+                       'SavingsPlanArn' => 'savingsPlanArn',
+                       'SavingsPlanId' => 'savingsPlanId',
+                       'OfferingId' => 'offeringId',
+                       'State' => 'state',
+                       'Ec2InstanceFamily' => 'ec2InstanceFamily',
+                       'PaymentOption' => 'paymentOption',
+                       'ProductTypes' => 'productTypes',
+                       'Region' => 'region',
+                       'Start' => 'start',
+                       'SavingsPlanType' => 'savingsPlanType',
+                       'RecurringPaymentAmount' => 'recurringPaymentAmount',
+                       'TermDurationInSeconds' => 'termDurationInSeconds',
+                       'Tags' => 'tags',
+                       'Currency' => 'currency',
+                       'End' => 'end',
+                       'Description' => 'description',
+                       'Commitment' => 'commitment'
+                     },
+  'types' => {
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'Start' => {
+                            'type' => 'Str'
+                          },
+               'RecurringPaymentAmount' => {
+                                             'type' => 'Str'
+                                           },
+               'SavingsPlanType' => {
+                                      'type' => 'Str'
+                                    },
+               'TermDurationInSeconds' => {
+                                            'type' => 'Int'
+                                          },
+               'Ec2InstanceFamily' => {
+                                        'type' => 'Str'
+                                      },
+               'PaymentOption' => {
+                                    'type' => 'Str'
+                                  },
+               'ProductTypes' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'UpfrontPaymentAmount' => {
+                                           'type' => 'Str'
+                                         },
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               },
+               'SavingsPlanId' => {
+                                    'type' => 'Str'
+                                  },
+               'SavingsPlanArn' => {
+                                     'type' => 'Str'
+                                   },
+               'Commitment' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'End' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'type' => 'SavingsPlans_TagMap',
+                           'class' => 'Paws::SavingsPlans::TagMap'
+                         },
+               'Currency' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -128,7 +217,7 @@ Information about a Savings Plan.
   The state.
 
 
-=head2 Tags => L<Paws::SavingsPlans::TagMap>
+=head2 Tags => SavingsPlans_TagMap
 
   One or more tags.
 

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Snowball;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'snowball' }
   sub signing_name { 'snowball' }
   sub version { '2016-06-30' }
   sub target_prefix { 'AWSIESnowballJobManagementService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -313,7 +315,7 @@ part of the response element data returned.
 
 =over
 
-=item Address => L<Paws::Snowball::Address>
+=item Address => Snowball_Address
 
 
 =back
@@ -336,7 +338,7 @@ the address is invalid or unsupported, then an exception is thrown.
 
 =item JobType => Str
 
-=item Resources => L<Paws::Snowball::JobResource>
+=item Resources => Snowball_JobResource
 
 =item RoleARN => Str
 
@@ -348,7 +350,7 @@ the address is invalid or unsupported, then an exception is thrown.
 
 =item [KmsKeyARN => Str]
 
-=item [Notification => L<Paws::Snowball::Notification>]
+=item [Notification => Snowball_Notification]
 
 =item [SnowballType => Str]
 
@@ -380,9 +382,9 @@ The cluster does not ship until these five node jobs have been created.
 
 =item [KmsKeyARN => Str]
 
-=item [Notification => L<Paws::Snowball::Notification>]
+=item [Notification => Snowball_Notification]
 
-=item [Resources => L<Paws::Snowball::JobResource>]
+=item [Resources => Snowball_JobResource]
 
 =item [RoleARN => Str]
 
@@ -676,9 +678,9 @@ all US regions.
 
 =item [ForwardingAddressId => Str]
 
-=item [Notification => L<Paws::Snowball::Notification>]
+=item [Notification => Snowball_Notification]
 
-=item [Resources => L<Paws::Snowball::JobResource>]
+=item [Resources => Snowball_JobResource]
 
 =item [RoleARN => Str]
 
@@ -710,9 +712,9 @@ available.
 
 =item [ForwardingAddressId => Str]
 
-=item [Notification => L<Paws::Snowball::Notification>]
+=item [Notification => Snowball_Notification]
 
-=item [Resources => L<Paws::Snowball::JobResource>]
+=item [Resources => Snowball_JobResource]
 
 =item [RoleARN => Str]
 

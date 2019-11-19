@@ -1,8 +1,33 @@
 package Paws::EC2::PrefixList;
-  use Moose;
-  has Cidrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'cidrSet', traits => ['NameInRequest']);
-  has PrefixListId => (is => 'ro', isa => 'Str', request_name => 'prefixListId', traits => ['NameInRequest']);
-  has PrefixListName => (is => 'ro', isa => 'Str', request_name => 'prefixListName', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EC2::Types qw//;
+  has Cidrs => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has PrefixListId => (is => 'ro', isa => Str);
+  has PrefixListName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PrefixListName' => 'prefixListName',
+                       'PrefixListId' => 'prefixListId',
+                       'Cidrs' => 'cidrSet'
+                     },
+  'types' => {
+               'PrefixListName' => {
+                                     'type' => 'Str'
+                                   },
+               'PrefixListId' => {
+                                   'type' => 'Str'
+                                 },
+               'Cidrs' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::DAX::Node;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has Endpoint => (is => 'ro', isa => 'Paws::DAX::Endpoint');
-  has NodeCreateTime => (is => 'ro', isa => 'Str');
-  has NodeId => (is => 'ro', isa => 'Str');
-  has NodeStatus => (is => 'ro', isa => 'Str');
-  has ParameterGroupStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DAX::Types qw/DAX_Endpoint/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has Endpoint => (is => 'ro', isa => DAX_Endpoint);
+  has NodeCreateTime => (is => 'ro', isa => Str);
+  has NodeId => (is => 'ro', isa => Str);
+  has NodeStatus => (is => 'ro', isa => Str);
+  has ParameterGroupStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NodeStatus' => {
+                                 'type' => 'Str'
+                               },
+               'NodeId' => {
+                             'type' => 'Str'
+                           },
+               'NodeCreateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'ParameterGroupStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'Endpoint' => {
+                               'class' => 'Paws::DAX::Endpoint',
+                               'type' => 'DAX_Endpoint'
+                             },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +79,7 @@ Represents an individual node within a DAX cluster.
   The Availability Zone (AZ) in which the node has been deployed.
 
 
-=head2 Endpoint => L<Paws::DAX::Endpoint>
+=head2 Endpoint => DAX_Endpoint
 
   The endpoint for the node, consisting of a DNS name and a port number.
 Client applications can connect directly to a node endpoint, if desired

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoT::AuditNotificationTarget;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::IoT::Types qw//;
+  has Enabled => (is => 'ro', isa => Bool);
+  has RoleArn => (is => 'ro', isa => Str);
+  has TargetArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'TargetArn' => {
+                                'type' => 'Str'
+                              },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Enabled' => 'enabled',
+                       'TargetArn' => 'targetArn',
+                       'RoleArn' => 'roleArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::KeysAndAttributes;
-  use Moose;
-  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ConsistentRead => (is => 'ro', isa => 'Bool');
-  has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
-  has Keys => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::Key]', required => 1);
-  has ProjectionExpression => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Undef ArrayRef Str Bool/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ExpressionAttributeNameMap DynamoDB_Key/;
+  has AttributesToGet => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ConsistentRead => (is => 'ro', isa => Bool);
+  has ExpressionAttributeNames => (is => 'ro', isa => DynamoDB_ExpressionAttributeNameMap);
+  has Keys => (is => 'ro', isa => ArrayRef[DynamoDB_Key], required => 1);
+  has ProjectionExpression => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Keys' => 1
+                  },
+  'types' => {
+               'ProjectionExpression' => {
+                                           'type' => 'Str'
+                                         },
+               'ExpressionAttributeNames' => {
+                                               'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
+                                               'type' => 'DynamoDB_ExpressionAttributeNameMap'
+                                             },
+               'AttributesToGet' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'Keys' => {
+                           'class' => 'Paws::DynamoDB::Key',
+                           'type' => 'ArrayRef[DynamoDB_Key]'
+                         },
+               'ConsistentRead' => {
+                                     'type' => 'Bool'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +95,7 @@ consistent read is used; otherwise, an eventually consistent read is
 used.
 
 
-=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
+=head2 ExpressionAttributeNames => DynamoDB_ExpressionAttributeNameMap
 
   One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using C<ExpressionAttributeNames>:
@@ -131,7 +165,7 @@ Attributes
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 B<REQUIRED> Keys => ArrayRef[L<Paws::DynamoDB::Key>]
+=head2 B<REQUIRED> Keys => ArrayRef[DynamoDB_Key]
 
   The primary key attribute values that define the items and the
 attributes associated with the items.

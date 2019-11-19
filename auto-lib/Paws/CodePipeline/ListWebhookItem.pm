@@ -1,12 +1,62 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ListWebhookItem;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Definition => (is => 'ro', isa => 'Paws::CodePipeline::WebhookDefinition', request_name => 'definition', traits => ['NameInRequest'], required => 1);
-  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
-  has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
-  has LastTriggered => (is => 'ro', isa => 'Str', request_name => 'lastTriggered', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', request_name => 'tags', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_WebhookDefinition CodePipeline_Tag/;
+  has Arn => (is => 'ro', isa => Str);
+  has Definition => (is => 'ro', isa => CodePipeline_WebhookDefinition, required => 1);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has LastTriggered => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[CodePipeline_Tag]);
+  has Url => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Definition' => 'definition',
+                       'Url' => 'url',
+                       'LastTriggered' => 'lastTriggered',
+                       'ErrorCode' => 'errorCode',
+                       'Arn' => 'arn',
+                       'ErrorMessage' => 'errorMessage',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Url' => 1,
+                    'Definition' => 1
+                  },
+  'types' => {
+               'Definition' => {
+                                 'type' => 'CodePipeline_WebhookDefinition',
+                                 'class' => 'Paws::CodePipeline::WebhookDefinition'
+                               },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'LastTriggered' => {
+                                    'type' => 'Str'
+                                  },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::CodePipeline::Tag',
+                           'type' => 'ArrayRef[CodePipeline_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +98,7 @@ the webhook URL, the webhook name, and the webhook ARN.
   The Amazon Resource Name (ARN) of the webhook.
 
 
-=head2 B<REQUIRED> Definition => L<Paws::CodePipeline::WebhookDefinition>
+=head2 B<REQUIRED> Definition => CodePipeline_WebhookDefinition
 
   The detail returned for each webhook, such as the webhook
 authentication type and filter rules.
@@ -70,7 +120,7 @@ authentication type and filter rules.
 timestamp format.
 
 
-=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+=head2 Tags => ArrayRef[CodePipeline_Tag]
 
   Specifies the tags applied to the webhook.
 

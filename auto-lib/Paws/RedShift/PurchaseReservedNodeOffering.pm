@@ -1,14 +1,36 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::PurchaseReservedNodeOffering;
-  use Moose;
-  has NodeCount => (is => 'ro', isa => 'Int');
-  has ReservedNodeOfferingId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::RedShift::Types qw//;
+  has NodeCount => (is => 'ro', isa => Int, predicate => 1);
+  has ReservedNodeOfferingId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedNodeOffering');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::PurchaseReservedNodeOfferingResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedNodeOfferingResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PurchaseReservedNodeOffering');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::PurchaseReservedNodeOfferingResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'PurchaseReservedNodeOfferingResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservedNodeOfferingId' => {
+                                             'type' => 'Str'
+                                           },
+               'NodeCount' => {
+                                'type' => 'Int'
+                              }
+             },
+  'IsRequired' => {
+                    'ReservedNodeOfferingId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

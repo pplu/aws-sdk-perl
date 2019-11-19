@@ -1,14 +1,38 @@
 
 package Paws::EC2::DeleteVpcEndpointServiceConfigurations;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has ServiceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ServiceId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::EC2::Types qw//;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has ServiceIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpcEndpointServiceConfigurations');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DeleteVpcEndpointServiceConfigurationsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteVpcEndpointServiceConfigurations');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DeleteVpcEndpointServiceConfigurationsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             },
+  'NameInRequest' => {
+                       'ServiceIds' => 'ServiceId'
+                     },
+  'IsRequired' => {
+                    'ServiceIds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

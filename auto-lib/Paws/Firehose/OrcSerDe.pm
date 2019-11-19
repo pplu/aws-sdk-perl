@@ -1,15 +1,59 @@
+# Generated from default/object.tt
 package Paws::Firehose::OrcSerDe;
-  use Moose;
-  has BlockSizeBytes => (is => 'ro', isa => 'Int');
-  has BloomFilterColumns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has BloomFilterFalsePositiveProbability => (is => 'ro', isa => 'Num');
-  has Compression => (is => 'ro', isa => 'Str');
-  has DictionaryKeyThreshold => (is => 'ro', isa => 'Num');
-  has EnablePadding => (is => 'ro', isa => 'Bool');
-  has FormatVersion => (is => 'ro', isa => 'Str');
-  has PaddingTolerance => (is => 'ro', isa => 'Num');
-  has RowIndexStride => (is => 'ro', isa => 'Int');
-  has StripeSizeBytes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Undef ArrayRef Str Num Bool/;
+  use Paws::Firehose::Types qw//;
+  has BlockSizeBytes => (is => 'ro', isa => Int);
+  has BloomFilterColumns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BloomFilterFalsePositiveProbability => (is => 'ro', isa => Num);
+  has Compression => (is => 'ro', isa => Str);
+  has DictionaryKeyThreshold => (is => 'ro', isa => Num);
+  has EnablePadding => (is => 'ro', isa => Bool);
+  has FormatVersion => (is => 'ro', isa => Str);
+  has PaddingTolerance => (is => 'ro', isa => Num);
+  has RowIndexStride => (is => 'ro', isa => Int);
+  has StripeSizeBytes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RowIndexStride' => {
+                                     'type' => 'Int'
+                                   },
+               'Compression' => {
+                                  'type' => 'Str'
+                                },
+               'EnablePadding' => {
+                                    'type' => 'Bool'
+                                  },
+               'BloomFilterFalsePositiveProbability' => {
+                                                          'type' => 'Num'
+                                                        },
+               'FormatVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'BloomFilterColumns' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'DictionaryKeyThreshold' => {
+                                             'type' => 'Num'
+                                           },
+               'PaddingTolerance' => {
+                                       'type' => 'Num'
+                                     },
+               'BlockSizeBytes' => {
+                                     'type' => 'Int'
+                                   },
+               'StripeSizeBytes' => {
+                                      'type' => 'Int'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

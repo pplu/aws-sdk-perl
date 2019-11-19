@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ServiceQuotas::QuotaPeriod;
-  use Moose;
-  has PeriodUnit => (is => 'ro', isa => 'Str');
-  has PeriodValue => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ServiceQuotas::Types qw//;
+  has PeriodUnit => (is => 'ro', isa => Str);
+  has PeriodValue => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PeriodUnit' => {
+                                 'type' => 'Str'
+                               },
+               'PeriodValue' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

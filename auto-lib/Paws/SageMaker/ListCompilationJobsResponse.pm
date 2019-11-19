@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::ListCompilationJobsResponse;
-  use Moose;
-  has CompilationJobSummaries => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::CompilationJobSummary]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_CompilationJobSummary/;
+  has CompilationJobSummaries => (is => 'ro', isa => ArrayRef[SageMaker_CompilationJobSummary], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'CompilationJobSummaries' => {
+                                              'class' => 'Paws::SageMaker::CompilationJobSummary',
+                                              'type' => 'ArrayRef[SageMaker_CompilationJobSummary]'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'CompilationJobSummaries' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +40,7 @@ Paws::SageMaker::ListCompilationJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CompilationJobSummaries => ArrayRef[L<Paws::SageMaker::CompilationJobSummary>]
+=head2 B<REQUIRED> CompilationJobSummaries => ArrayRef[SageMaker_CompilationJobSummary]
 
 An array of CompilationJobSummary objects, each describing a model
 compilation job.

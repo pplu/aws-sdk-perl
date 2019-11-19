@@ -1,12 +1,39 @@
 
 package Paws::Quicksight::RegisterUserResponse;
-  use Moose;
-  has RequestId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Int');
-  has User => (is => 'ro', isa => 'Paws::Quicksight::User');
-  has UserInvitationUrl => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Quicksight::Types qw/Quicksight_User/;
+  has RequestId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Int);
+  has User => (is => 'ro', isa => Quicksight_User);
+  has UserInvitationUrl => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserInvitationUrl' => {
+                                        'type' => 'Str'
+                                      },
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'User' => {
+                           'class' => 'Paws::Quicksight::User',
+                           'type' => 'Quicksight_User'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Int'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +55,7 @@ The AWS request ID for this operation.
 The http status of the request.
 
 
-=head2 User => L<Paws::Quicksight::User>
+=head2 User => Quicksight_User
 
 The user name.
 

@@ -1,11 +1,36 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListSSHPublicKeysResponse;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
-  has SSHPublicKeys => (is => 'ro', isa => 'ArrayRef[Paws::IAM::SSHPublicKeyMetadata]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::IAM::Types qw/IAM_SSHPublicKeyMetadata/;
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
+  has SSHPublicKeys => (is => 'ro', isa => ArrayRef[IAM_SSHPublicKeyMetadata]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'SSHPublicKeys' => {
+                                    'class' => 'Paws::IAM::SSHPublicKeyMetadata',
+                                    'type' => 'ArrayRef[IAM_SSHPublicKeyMetadata]'
+                                  },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +60,7 @@ the value to use for the C<Marker> parameter in a subsequent pagination
 request.
 
 
-=head2 SSHPublicKeys => ArrayRef[L<Paws::IAM::SSHPublicKeyMetadata>]
+=head2 SSHPublicKeys => ArrayRef[IAM_SSHPublicKeyMetadata]
 
 A list of the SSH public keys assigned to IAM user.
 

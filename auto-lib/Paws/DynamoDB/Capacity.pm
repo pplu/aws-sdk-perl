@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::Capacity;
-  use Moose;
-  has CapacityUnits => (is => 'ro', isa => 'Num');
-  has ReadCapacityUnits => (is => 'ro', isa => 'Num');
-  has WriteCapacityUnits => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::DynamoDB::Types qw//;
+  has CapacityUnits => (is => 'ro', isa => Num);
+  has ReadCapacityUnits => (is => 'ro', isa => Num);
+  has WriteCapacityUnits => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CapacityUnits' => {
+                                    'type' => 'Num'
+                                  },
+               'WriteCapacityUnits' => {
+                                         'type' => 'Num'
+                                       },
+               'ReadCapacityUnits' => {
+                                        'type' => 'Num'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

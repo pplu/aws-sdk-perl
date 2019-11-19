@@ -1,16 +1,49 @@
 
 package Paws::ApiGateway::CreateUsagePlanKey;
-  use Moose;
-  has KeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyId', required => 1);
-  has KeyType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyType', required => 1);
-  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usageplanId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has KeyId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KeyType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UsagePlanId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUsagePlanKey');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/usageplans/{usageplanId}/keys');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::UsagePlanKey');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateUsagePlanKey');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/usageplans/{usageplanId}/keys');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::UsagePlanKey');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'UsagePlanId' => 'usageplanId'
+                  },
+  'types' => {
+               'UsagePlanId' => {
+                                  'type' => 'Str'
+                                },
+               'KeyType' => {
+                              'type' => 'Str'
+                            },
+               'KeyId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'KeyType' => 1,
+                    'KeyId' => 1,
+                    'UsagePlanId' => 1
+                  },
+  'NameInRequest' => {
+                       'KeyType' => 'keyType',
+                       'KeyId' => 'keyId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

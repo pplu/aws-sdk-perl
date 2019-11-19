@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::Difference;
-  use Moose;
-  has AfterBlob => (is => 'ro', isa => 'Paws::CodeCommit::BlobMetadata', request_name => 'afterBlob', traits => ['NameInRequest']);
-  has BeforeBlob => (is => 'ro', isa => 'Paws::CodeCommit::BlobMetadata', request_name => 'beforeBlob', traits => ['NameInRequest']);
-  has ChangeType => (is => 'ro', isa => 'Str', request_name => 'changeType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_BlobMetadata/;
+  has AfterBlob => (is => 'ro', isa => CodeCommit_BlobMetadata);
+  has BeforeBlob => (is => 'ro', isa => CodeCommit_BlobMetadata);
+  has ChangeType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeType' => {
+                                 'type' => 'Str'
+                               },
+               'AfterBlob' => {
+                                'type' => 'CodeCommit_BlobMetadata',
+                                'class' => 'Paws::CodeCommit::BlobMetadata'
+                              },
+               'BeforeBlob' => {
+                                 'class' => 'Paws::CodeCommit::BlobMetadata',
+                                 'type' => 'CodeCommit_BlobMetadata'
+                               }
+             },
+  'NameInRequest' => {
+                       'AfterBlob' => 'afterBlob',
+                       'ChangeType' => 'changeType',
+                       'BeforeBlob' => 'beforeBlob'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +68,13 @@ Returns information about a set of differences for a commit specifier.
 =head1 ATTRIBUTES
 
 
-=head2 AfterBlob => L<Paws::CodeCommit::BlobMetadata>
+=head2 AfterBlob => CodeCommit_BlobMetadata
 
   Information about an C<afterBlob> data type object, including the ID,
 the file mode permission code, and the path.
 
 
-=head2 BeforeBlob => L<Paws::CodeCommit::BlobMetadata>
+=head2 BeforeBlob => CodeCommit_BlobMetadata
 
   Information about a C<beforeBlob> data type object, including the ID,
 the file mode permission code, and the path.

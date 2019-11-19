@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::DescribeSnapshotSchedulesOutputMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has SnapshotSchedules => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SnapshotSchedule]', request_name => 'SnapshotSchedule', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_SnapshotSchedule/;
+  has Marker => (is => 'ro', isa => Str);
+  has SnapshotSchedules => (is => 'ro', isa => ArrayRef[RedShift_SnapshotSchedule]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SnapshotSchedules' => {
+                                        'class' => 'Paws::RedShift::SnapshotSchedule',
+                                        'type' => 'ArrayRef[RedShift_SnapshotSchedule]'
+                                      }
+             },
+  'NameInRequest' => {
+                       'SnapshotSchedules' => 'SnapshotSchedule'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +51,7 @@ the C<marker> field is empty, all response records have been retrieved
 for the request.
 
 
-=head2 SnapshotSchedules => ArrayRef[L<Paws::RedShift::SnapshotSchedule>]
+=head2 SnapshotSchedules => ArrayRef[RedShift_SnapshotSchedule]
 
 A list of SnapshotSchedules.
 

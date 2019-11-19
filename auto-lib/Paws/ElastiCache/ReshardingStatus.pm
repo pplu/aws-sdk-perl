@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::ReshardingStatus;
-  use Moose;
-  has SlotMigration => (is => 'ro', isa => 'Paws::ElastiCache::SlotMigration');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ElastiCache::Types qw/ElastiCache_SlotMigration/;
+  has SlotMigration => (is => 'ro', isa => ElastiCache_SlotMigration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SlotMigration' => {
+                                    'class' => 'Paws::ElastiCache::SlotMigration',
+                                    'type' => 'ElastiCache_SlotMigration'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ The status of an online resharding operation.
 =head1 ATTRIBUTES
 
 
-=head2 SlotMigration => L<Paws::ElastiCache::SlotMigration>
+=head2 SlotMigration => ElastiCache_SlotMigration
 
   Represents the progress of an online resharding operation.
 

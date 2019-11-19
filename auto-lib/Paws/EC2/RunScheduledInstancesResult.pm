@@ -1,9 +1,30 @@
 
 package Paws::EC2::RunScheduledInstancesResult;
-  use Moose;
-  has InstanceIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'instanceIdSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EC2::Types qw//;
+  has InstanceIdSet => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceIdSet' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'InstanceIdSet' => 'instanceIdSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

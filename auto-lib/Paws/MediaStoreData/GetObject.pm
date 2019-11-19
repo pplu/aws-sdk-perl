@@ -1,15 +1,42 @@
 
 package Paws::MediaStoreData::GetObject;
-  use Moose;
-  has Path => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Path', required => 1);
-  has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Range');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaStoreData::Types qw//;
+  has Path => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Range => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetObject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Path+}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaStoreData::GetObjectResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetObject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Path+}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaStoreData::GetObjectResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Path' => 'Path'
+                  },
+  'types' => {
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Range' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'Path' => 1
+                  },
+  'ParamInHeader' => {
+                       'Range' => 'Range'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

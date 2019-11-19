@@ -1,17 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::ListAggregateDiscoveredResources;
-  use Moose;
-  has ConfigurationAggregatorName => (is => 'ro', isa => 'Str', required => 1);
-  has Filters => (is => 'ro', isa => 'Paws::Config::ResourceFilters');
-  has Limit => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Config::Types qw/Config_ResourceFilters/;
+  has ConfigurationAggregatorName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Filters => (is => 'ro', isa => Config_ResourceFilters, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAggregateDiscoveredResources');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::ListAggregateDiscoveredResourcesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAggregateDiscoveredResources');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::ListAggregateDiscoveredResourcesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceType' => 1,
+                    'ConfigurationAggregatorName' => 1
+                  },
+  'types' => {
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'type' => 'Config_ResourceFilters',
+                              'class' => 'Paws::Config::ResourceFilters'
+                            },
+               'ConfigurationAggregatorName' => {
+                                                  'type' => 'Str'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +97,7 @@ The name of the configuration aggregator.
 
 
 
-=head2 Filters => L<Paws::Config::ResourceFilters>
+=head2 Filters => Config_ResourceFilters
 
 Filters the results based on the C<ResourceFilters> object.
 

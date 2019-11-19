@@ -1,15 +1,57 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudFormation::DescribeStackDriftDetectionStatusOutput;
-  use Moose;
-  has DetectionStatus => (is => 'ro', isa => 'Str', required => 1);
-  has DetectionStatusReason => (is => 'ro', isa => 'Str');
-  has DriftedStackResourceCount => (is => 'ro', isa => 'Int');
-  has StackDriftDetectionId => (is => 'ro', isa => 'Str', required => 1);
-  has StackDriftStatus => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str', required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudFormation::Types qw//;
+  has DetectionStatus => (is => 'ro', isa => Str, required => 1);
+  has DetectionStatusReason => (is => 'ro', isa => Str);
+  has DriftedStackResourceCount => (is => 'ro', isa => Int);
+  has StackDriftDetectionId => (is => 'ro', isa => Str, required => 1);
+  has StackDriftStatus => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str, required => 1);
+  has Timestamp => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DetectionStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DetectionStatusReason' => {
+                                            'type' => 'Str'
+                                          },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'StackDriftStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'StackDriftDetectionId' => {
+                                            'type' => 'Str'
+                                          },
+               'DriftedStackResourceCount' => {
+                                                'type' => 'Int'
+                                              }
+             },
+  'IsRequired' => {
+                    'StackDriftDetectionId' => 1,
+                    'StackId' => 1,
+                    'Timestamp' => 1,
+                    'DetectionStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

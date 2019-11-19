@@ -1,9 +1,44 @@
+# Generated from default/object.tt
 package Paws::S3::TopicConfiguration;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Event', traits => ['NameInRequest'], required => 1);
-  has Filter => (is => 'ro', isa => 'Paws::S3::NotificationConfigurationFilter');
-  has Id => (is => 'ro', isa => 'Str');
-  has TopicArn => (is => 'ro', isa => 'Str', request_name => 'Topic', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::S3::Types qw/S3_NotificationConfigurationFilter/;
+  has Events => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Filter => (is => 'ro', isa => S3_NotificationConfigurationFilter);
+  has Id => (is => 'ro', isa => Str);
+  has TopicArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Events' => 1,
+                    'TopicArn' => 1
+                  },
+  'NameInRequest' => {
+                       'Events' => 'Event',
+                       'TopicArn' => 'Topic'
+                     },
+  'types' => {
+               'Events' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'TopicArn' => {
+                               'type' => 'Str'
+                             },
+               'Filter' => {
+                             'class' => 'Paws::S3::NotificationConfigurationFilter',
+                             'type' => 'S3_NotificationConfigurationFilter'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +84,7 @@ information, see Supported Event Types
 in the I<Amazon Simple Storage Service Developer Guide>.
 
 
-=head2 Filter => L<Paws::S3::NotificationConfigurationFilter>
+=head2 Filter => S3_NotificationConfigurationFilter
 
   
 

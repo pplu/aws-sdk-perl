@@ -1,15 +1,77 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes;
-  use Moose;
-  has ActivityId => (is => 'ro', isa => 'Str', request_name => 'activityId', traits => ['NameInRequest'], required => 1);
-  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', request_name => 'activityType', traits => ['NameInRequest'], required => 1);
-  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
-  has HeartbeatTimeout => (is => 'ro', isa => 'Str', request_name => 'heartbeatTimeout', traits => ['NameInRequest']);
-  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
-  has ScheduleToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'scheduleToCloseTimeout', traits => ['NameInRequest']);
-  has ScheduleToStartTimeout => (is => 'ro', isa => 'Str', request_name => 'scheduleToStartTimeout', traits => ['NameInRequest']);
-  has StartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'startToCloseTimeout', traits => ['NameInRequest']);
-  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'taskList', traits => ['NameInRequest']);
-  has TaskPriority => (is => 'ro', isa => 'Str', request_name => 'taskPriority', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_TaskList SimpleWorkflow_ActivityType/;
+  has ActivityId => (is => 'ro', isa => Str, required => 1);
+  has ActivityType => (is => 'ro', isa => SimpleWorkflow_ActivityType, required => 1);
+  has Control => (is => 'ro', isa => Str);
+  has HeartbeatTimeout => (is => 'ro', isa => Str);
+  has Input => (is => 'ro', isa => Str);
+  has ScheduleToCloseTimeout => (is => 'ro', isa => Str);
+  has ScheduleToStartTimeout => (is => 'ro', isa => Str);
+  has StartToCloseTimeout => (is => 'ro', isa => Str);
+  has TaskList => (is => 'ro', isa => SimpleWorkflow_TaskList);
+  has TaskPriority => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartToCloseTimeout' => {
+                                          'type' => 'Str'
+                                        },
+               'HeartbeatTimeout' => {
+                                       'type' => 'Str'
+                                     },
+               'ActivityType' => {
+                                   'type' => 'SimpleWorkflow_ActivityType',
+                                   'class' => 'Paws::SimpleWorkflow::ActivityType'
+                                 },
+               'TaskList' => {
+                               'class' => 'Paws::SimpleWorkflow::TaskList',
+                               'type' => 'SimpleWorkflow_TaskList'
+                             },
+               'ActivityId' => {
+                                 'type' => 'Str'
+                               },
+               'Control' => {
+                              'type' => 'Str'
+                            },
+               'TaskPriority' => {
+                                   'type' => 'Str'
+                                 },
+               'ScheduleToCloseTimeout' => {
+                                             'type' => 'Str'
+                                           },
+               'Input' => {
+                            'type' => 'Str'
+                          },
+               'ScheduleToStartTimeout' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'ActivityType' => 1,
+                    'ActivityId' => 1
+                  },
+  'NameInRequest' => {
+                       'TaskList' => 'taskList',
+                       'ActivityType' => 'activityType',
+                       'HeartbeatTimeout' => 'heartbeatTimeout',
+                       'StartToCloseTimeout' => 'startToCloseTimeout',
+                       'ScheduleToStartTimeout' => 'scheduleToStartTimeout',
+                       'Input' => 'input',
+                       'TaskPriority' => 'taskPriority',
+                       'ScheduleToCloseTimeout' => 'scheduleToCloseTimeout',
+                       'Control' => 'control',
+                       'ActivityId' => 'activityId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -106,7 +168,7 @@ control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
 not contain the literal string C<arn>.
 
 
-=head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
+=head2 B<REQUIRED> ActivityType => SimpleWorkflow_ActivityType
 
   The type of the activity task to schedule.
 
@@ -181,7 +243,7 @@ neither this field is set nor a default start-to-close timeout was
 specified at registration time then a fault is returned.
 
 
-=head2 TaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 TaskList => SimpleWorkflow_TaskList
 
   If set, specifies the name of the task list in which to schedule the
 activity task. If not specified, the C<defaultTaskList> registered with

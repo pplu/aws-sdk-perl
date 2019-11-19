@@ -1,9 +1,30 @@
 
 package Paws::EC2::AcceptReservedInstancesExchangeQuoteResult;
-  use Moose;
-  has ExchangeId => (is => 'ro', isa => 'Str', request_name => 'exchangeId', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has ExchangeId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ExchangeId' => 'exchangeId'
+                     },
+  'types' => {
+               'ExchangeId' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

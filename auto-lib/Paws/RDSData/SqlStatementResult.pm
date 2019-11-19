@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::RDSData::SqlStatementResult;
-  use Moose;
-  has NumberOfRecordsUpdated => (is => 'ro', isa => 'Int', request_name => 'numberOfRecordsUpdated', traits => ['NameInRequest']);
-  has ResultFrame => (is => 'ro', isa => 'Paws::RDSData::ResultFrame', request_name => 'resultFrame', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::RDSData::Types qw/RDSData_ResultFrame/;
+  has NumberOfRecordsUpdated => (is => 'ro', isa => Int);
+  has ResultFrame => (is => 'ro', isa => RDSData_ResultFrame);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumberOfRecordsUpdated' => {
+                                             'type' => 'Int'
+                                           },
+               'ResultFrame' => {
+                                  'type' => 'RDSData_ResultFrame',
+                                  'class' => 'Paws::RDSData::ResultFrame'
+                                }
+             },
+  'NameInRequest' => {
+                       'ResultFrame' => 'resultFrame',
+                       'NumberOfRecordsUpdated' => 'numberOfRecordsUpdated'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +69,7 @@ The result of a SQL statement.
   The number of records updated by a SQL statement.
 
 
-=head2 ResultFrame => L<Paws::RDSData::ResultFrame>
+=head2 ResultFrame => RDSData_ResultFrame
 
   The result set of the SQL statement.
 

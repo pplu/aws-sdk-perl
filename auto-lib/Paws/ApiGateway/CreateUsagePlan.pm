@@ -1,19 +1,64 @@
 
 package Paws::ApiGateway::CreateUsagePlan;
-  use Moose;
-  has ApiStages => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::ApiStage]', traits => ['NameInRequest'], request_name => 'apiStages');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Quota => (is => 'ro', isa => 'Paws::ApiGateway::QuotaSettings', traits => ['NameInRequest'], request_name => 'quota');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
-  has Throttle => (is => 'ro', isa => 'Paws::ApiGateway::ThrottleSettings', traits => ['NameInRequest'], request_name => 'throttle');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_QuotaSettings ApiGateway_ApiStage ApiGateway_ThrottleSettings ApiGateway_MapOfStringToString/;
+  has ApiStages => (is => 'ro', isa => ArrayRef[ApiGateway_ApiStage], predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Quota => (is => 'ro', isa => ApiGateway_QuotaSettings, predicate => 1);
+  has Tags => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has Throttle => (is => 'ro', isa => ApiGateway_ThrottleSettings, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUsagePlan');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/usageplans');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::UsagePlan');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateUsagePlan');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/usageplans');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::UsagePlan');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'NameInRequest' => {
+                       'ApiStages' => 'apiStages',
+                       'Quota' => 'quota',
+                       'Description' => 'description',
+                       'Tags' => 'tags',
+                       'Throttle' => 'throttle',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Tags' => {
+                           'class' => 'Paws::ApiGateway::MapOfStringToString',
+                           'type' => 'ApiGateway_MapOfStringToString'
+                         },
+               'Throttle' => {
+                               'class' => 'Paws::ApiGateway::ThrottleSettings',
+                               'type' => 'ApiGateway_ThrottleSettings'
+                             },
+               'ApiStages' => {
+                                'type' => 'ArrayRef[ApiGateway_ApiStage]',
+                                'class' => 'Paws::ApiGateway::ApiStage'
+                              },
+               'Quota' => {
+                            'type' => 'ApiGateway_QuotaSettings',
+                            'class' => 'Paws::ApiGateway::QuotaSettings'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +124,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 ApiStages => ArrayRef[L<Paws::ApiGateway::ApiStage>]
+=head2 ApiStages => ArrayRef[ApiGateway_ApiStage]
 
 The associated API stages of the usage plan.
 
@@ -97,13 +142,13 @@ The description of the usage plan.
 
 
 
-=head2 Quota => L<Paws::ApiGateway::QuotaSettings>
+=head2 Quota => ApiGateway_QuotaSettings
 
 The quota of the usage plan.
 
 
 
-=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Tags => ApiGateway_MapOfStringToString
 
 The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
@@ -111,7 +156,7 @@ start with C<aws:>. The tag value can be up to 256 characters.
 
 
 
-=head2 Throttle => L<Paws::ApiGateway::ThrottleSettings>
+=head2 Throttle => ApiGateway_ThrottleSettings
 
 The throttling limits of the usage plan.
 

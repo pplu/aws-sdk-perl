@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::ECR::ImageScanFindings;
-  use Moose;
-  has Findings => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageScanFinding]', request_name => 'findings', traits => ['NameInRequest']);
-  has FindingSeverityCounts => (is => 'ro', isa => 'Paws::ECR::FindingSeverityCounts', request_name => 'findingSeverityCounts', traits => ['NameInRequest']);
-  has ImageScanCompletedAt => (is => 'ro', isa => 'Str', request_name => 'imageScanCompletedAt', traits => ['NameInRequest']);
-  has VulnerabilitySourceUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'vulnerabilitySourceUpdatedAt', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ECR::Types qw/ECR_ImageScanFinding ECR_FindingSeverityCounts/;
+  has Findings => (is => 'ro', isa => ArrayRef[ECR_ImageScanFinding]);
+  has FindingSeverityCounts => (is => 'ro', isa => ECR_FindingSeverityCounts);
+  has ImageScanCompletedAt => (is => 'ro', isa => Str);
+  has VulnerabilitySourceUpdatedAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VulnerabilitySourceUpdatedAt' => {
+                                                   'type' => 'Str'
+                                                 },
+               'ImageScanCompletedAt' => {
+                                           'type' => 'Str'
+                                         },
+               'Findings' => {
+                               'type' => 'ArrayRef[ECR_ImageScanFinding]',
+                               'class' => 'Paws::ECR::ImageScanFinding'
+                             },
+               'FindingSeverityCounts' => {
+                                            'class' => 'Paws::ECR::FindingSeverityCounts',
+                                            'type' => 'ECR_FindingSeverityCounts'
+                                          }
+             },
+  'NameInRequest' => {
+                       'ImageScanCompletedAt' => 'imageScanCompletedAt',
+                       'VulnerabilitySourceUpdatedAt' => 'vulnerabilitySourceUpdatedAt',
+                       'FindingSeverityCounts' => 'findingSeverityCounts',
+                       'Findings' => 'findings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,12 +73,12 @@ The details of an image scan.
 =head1 ATTRIBUTES
 
 
-=head2 Findings => ArrayRef[L<Paws::ECR::ImageScanFinding>]
+=head2 Findings => ArrayRef[ECR_ImageScanFinding]
 
   The findings from the image scan.
 
 
-=head2 FindingSeverityCounts => L<Paws::ECR::FindingSeverityCounts>
+=head2 FindingSeverityCounts => ECR_FindingSeverityCounts
 
   The image vulnerability counts, sorted by severity.
 

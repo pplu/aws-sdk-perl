@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::AutoScalingSettingsUpdate;
-  use Moose;
-  has AutoScalingDisabled => (is => 'ro', isa => 'Bool');
-  has AutoScalingRoleArn => (is => 'ro', isa => 'Str');
-  has MaximumUnits => (is => 'ro', isa => 'Int');
-  has MinimumUnits => (is => 'ro', isa => 'Int');
-  has ScalingPolicyUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingPolicyUpdate');
+  use Moo;
+  use Types::Standard qw/Bool Str Int/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AutoScalingPolicyUpdate/;
+  has AutoScalingDisabled => (is => 'ro', isa => Bool);
+  has AutoScalingRoleArn => (is => 'ro', isa => Str);
+  has MaximumUnits => (is => 'ro', isa => Int);
+  has MinimumUnits => (is => 'ro', isa => Int);
+  has ScalingPolicyUpdate => (is => 'ro', isa => DynamoDB_AutoScalingPolicyUpdate);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScalingPolicyUpdate' => {
+                                          'type' => 'DynamoDB_AutoScalingPolicyUpdate',
+                                          'class' => 'Paws::DynamoDB::AutoScalingPolicyUpdate'
+                                        },
+               'MaximumUnits' => {
+                                   'type' => 'Int'
+                                 },
+               'AutoScalingDisabled' => {
+                                          'type' => 'Bool'
+                                        },
+               'MinimumUnits' => {
+                                   'type' => 'Int'
+                                 },
+               'AutoScalingRoleArn' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +93,7 @@ index should be scaled up to.
 index should be scaled down to.
 
 
-=head2 ScalingPolicyUpdate => L<Paws::DynamoDB::AutoScalingPolicyUpdate>
+=head2 ScalingPolicyUpdate => DynamoDB_AutoScalingPolicyUpdate
 
   The scaling policy to apply for scaling target global table or global
 secondary index capacity units.

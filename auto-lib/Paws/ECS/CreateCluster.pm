@@ -1,15 +1,44 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::CreateCluster;
-  use Moose;
-  has ClusterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clusterName' );
-  has Settings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ClusterSetting]', traits => ['NameInRequest'], request_name => 'settings' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECS::Types qw/ECS_Tag ECS_ClusterSetting/;
+  has ClusterName => (is => 'ro', isa => Str, predicate => 1);
+  has Settings => (is => 'ro', isa => ArrayRef[ECS_ClusterSetting], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ECS_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::CreateClusterResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::CreateClusterResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'Settings' => 'settings',
+                       'ClusterName' => 'clusterName'
+                     },
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[ECS_Tag]',
+                           'class' => 'Paws::ECS::Tag'
+                         },
+               'Settings' => {
+                               'class' => 'Paws::ECS::ClusterSetting',
+                               'type' => 'ArrayRef[ECS_ClusterSetting]'
+                             },
+               'ClusterName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +82,7 @@ cluster, you create a cluster named C<default>. Up to 255 letters
 
 
 
-=head2 Settings => ArrayRef[L<Paws::ECS::ClusterSetting>]
+=head2 Settings => ArrayRef[ECS_ClusterSetting]
 
 The setting to use when creating a cluster. This parameter is used to
 enable CloudWatch Container Insights for a cluster. If this value is
@@ -62,7 +91,7 @@ PutAccountSetting or PutAccountSettingDefault.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+=head2 Tags => ArrayRef[ECS_Tag]
 
 The metadata that you apply to the cluster to help you categorize and
 organize them. Each tag consists of a key and an optional value, both

@@ -1,14 +1,15 @@
 package Paws::CloudDirectory;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'clouddirectory' }
   sub signing_name { 'clouddirectory' }
   sub version { '2017-01-11' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -835,11 +836,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/directory-servi
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
-=item SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>
+=item SchemaFacet => CloudDirectory_SchemaFacet
 
-=item [ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]]
+=item [ObjectAttributeList => ArrayRef[CloudDirectory_AttributeKeyAndValue]]
 
 
 =back
@@ -876,13 +877,13 @@ schema.
 
 =over
 
-=item ChildReference => L<Paws::CloudDirectory::ObjectReference>
+=item ChildReference => CloudDirectory_ObjectReference
 
 =item DirectoryArn => Str
 
 =item LinkName => Str
 
-=item ParentReference => L<Paws::CloudDirectory::ObjectReference>
+=item ParentReference => CloudDirectory_ObjectReference
 
 
 =back
@@ -914,9 +915,9 @@ Using C<ObjectIdentifier>
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
-=item PolicyReference => L<Paws::CloudDirectory::ObjectReference>
+=item PolicyReference => CloudDirectory_ObjectReference
 
 
 =back
@@ -935,9 +936,9 @@ limited number of attached policies.
 
 =item DirectoryArn => Str
 
-=item IndexReference => L<Paws::CloudDirectory::ObjectReference>
+=item IndexReference => CloudDirectory_ObjectReference
 
-=item TargetReference => L<Paws::CloudDirectory::ObjectReference>
+=item TargetReference => CloudDirectory_ObjectReference
 
 
 =back
@@ -953,15 +954,15 @@ Attaches the specified object to the specified index.
 
 =over
 
-=item Attributes => ArrayRef[L<Paws::CloudDirectory::AttributeNameAndValue>]
+=item Attributes => ArrayRef[CloudDirectory_AttributeNameAndValue]
 
 =item DirectoryArn => Str
 
-=item SourceObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item SourceObjectReference => CloudDirectory_ObjectReference
 
-=item TargetObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item TargetObjectReference => CloudDirectory_ObjectReference
 
-=item TypedLinkFacet => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>
+=item TypedLinkFacet => CloudDirectory_TypedLinkSchemaAndFacetName
 
 
 =back
@@ -981,7 +982,7 @@ information, see Typed Links
 
 =item DirectoryArn => Str
 
-=item Operations => ArrayRef[L<Paws::CloudDirectory::BatchReadOperation>]
+=item Operations => ArrayRef[CloudDirectory_BatchReadOperation]
 
 =item [ConsistencyLevel => Str]
 
@@ -1001,7 +1002,7 @@ Performs all the read operations in a batch.
 
 =item DirectoryArn => Str
 
-=item Operations => ArrayRef[L<Paws::CloudDirectory::BatchWriteOperation>]
+=item Operations => ArrayRef[CloudDirectory_BatchWriteOperation]
 
 
 =back
@@ -1046,7 +1047,7 @@ in the I<Amazon Cloud Directory Developer Guide>.
 
 =item SchemaArn => Str
 
-=item [Attributes => ArrayRef[L<Paws::CloudDirectory::FacetAttribute>]]
+=item [Attributes => ArrayRef[CloudDirectory_FacetAttribute]]
 
 =item [FacetStyle => Str]
 
@@ -1071,11 +1072,11 @@ development or applied schemas.
 
 =item IsUnique => Bool
 
-=item OrderedIndexedAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKey>]
+=item OrderedIndexedAttributeList => ArrayRef[CloudDirectory_AttributeKey]
 
 =item [LinkName => Str]
 
-=item [ParentReference => L<Paws::CloudDirectory::ObjectReference>]
+=item [ParentReference => CloudDirectory_ObjectReference]
 
 
 =back
@@ -1095,13 +1096,13 @@ for more information.
 
 =item DirectoryArn => Str
 
-=item SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
+=item SchemaFacets => ArrayRef[CloudDirectory_SchemaFacet]
 
 =item [LinkName => Str]
 
-=item [ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]]
+=item [ObjectAttributeList => ArrayRef[CloudDirectory_AttributeKeyAndValue]]
 
-=item [ParentReference => L<Paws::CloudDirectory::ObjectReference>]
+=item [ParentReference => CloudDirectory_ObjectReference]
 
 
 =back
@@ -1161,7 +1162,7 @@ directories.
 
 =over
 
-=item Facet => L<Paws::CloudDirectory::TypedLinkFacet>
+=item Facet => CloudDirectory_TypedLinkFacet
 
 =item SchemaArn => Str
 
@@ -1220,7 +1221,7 @@ allowed deletion.
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
 
 =back
@@ -1278,9 +1279,9 @@ Deletes a TypedLinkFacet. For more information, see Typed Links
 
 =item DirectoryArn => Str
 
-=item IndexReference => L<Paws::CloudDirectory::ObjectReference>
+=item IndexReference => CloudDirectory_ObjectReference
 
-=item TargetReference => L<Paws::CloudDirectory::ObjectReference>
+=item TargetReference => CloudDirectory_ObjectReference
 
 
 =back
@@ -1300,7 +1301,7 @@ Detaches the specified object from the specified index.
 
 =item LinkName => Str
 
-=item ParentReference => L<Paws::CloudDirectory::ObjectReference>
+=item ParentReference => CloudDirectory_ObjectReference
 
 
 =back
@@ -1319,9 +1320,9 @@ be detached from the parent is specified by the link name.
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
-=item PolicyReference => L<Paws::CloudDirectory::ObjectReference>
+=item PolicyReference => CloudDirectory_ObjectReference
 
 
 =back
@@ -1339,7 +1340,7 @@ Detaches a policy from an object.
 
 =item DirectoryArn => Str
 
-=item TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>
+=item TypedLinkSpecifier => CloudDirectory_TypedLinkSpecifier
 
 
 =back
@@ -1449,7 +1450,7 @@ published, development, or applied.
 
 =item DirectoryArn => Str
 
-=item TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>
+=item TypedLinkSpecifier => CloudDirectory_TypedLinkSpecifier
 
 =item [ConsistencyLevel => Str]
 
@@ -1471,9 +1472,9 @@ Retrieves attributes that are associated with a typed link.
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
-=item SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>
+=item SchemaFacet => CloudDirectory_SchemaFacet
 
 =item [ConsistencyLevel => Str]
 
@@ -1493,7 +1494,7 @@ Retrieves attributes within a facet that are associated with an object.
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
 =item [ConsistencyLevel => Str]
 
@@ -1574,7 +1575,7 @@ provided, lists the minor version.
 
 =item DirectoryArn => Str
 
-=item TargetReference => L<Paws::CloudDirectory::ObjectReference>
+=item TargetReference => CloudDirectory_ObjectReference
 
 =item [ConsistencyLevel => Str]
 
@@ -1679,13 +1680,13 @@ Retrieves the names of facets that exist in a schema.
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
 =item [ConsistencyLevel => Str]
 
-=item [FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>]]
+=item [FilterAttributeRanges => ArrayRef[CloudDirectory_TypedLinkAttributeRange]]
 
-=item [FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>]
+=item [FilterTypedLink => CloudDirectory_TypedLinkSchemaAndFacetName]
 
 =item [MaxResults => Int]
 
@@ -1710,7 +1711,7 @@ facet and identity attributes. For more information, see Typed Links
 
 =item DirectoryArn => Str
 
-=item IndexReference => L<Paws::CloudDirectory::ObjectReference>
+=item IndexReference => CloudDirectory_ObjectReference
 
 =item [ConsistencyLevel => Str]
 
@@ -1718,7 +1719,7 @@ facet and identity attributes. For more information, see Typed Links
 
 =item [NextToken => Str]
 
-=item [RangesOnIndexedValues => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeRange>]]
+=item [RangesOnIndexedValues => ArrayRef[CloudDirectory_ObjectAttributeRange]]
 
 
 =back
@@ -1758,11 +1759,11 @@ that family are listed instead.
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
 =item [ConsistencyLevel => Str]
 
-=item [FacetFilter => L<Paws::CloudDirectory::SchemaFacet>]
+=item [FacetFilter => CloudDirectory_SchemaFacet]
 
 =item [MaxResults => Int]
 
@@ -1784,7 +1785,7 @@ Lists all attributes that are associated with an object.
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
 =item [ConsistencyLevel => Str]
 
@@ -1809,7 +1810,7 @@ given object.
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
 =item [MaxResults => Int]
 
@@ -1842,7 +1843,7 @@ directory root are ignored from the target object.
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
 =item [ConsistencyLevel => Str]
 
@@ -1869,7 +1870,7 @@ pagination fashion.
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
 =item [ConsistencyLevel => Str]
 
@@ -1893,13 +1894,13 @@ Returns policies attached to an object in pagination fashion.
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
 =item [ConsistencyLevel => Str]
 
-=item [FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>]]
+=item [FilterAttributeRanges => ArrayRef[CloudDirectory_TypedLinkAttributeRange]]
 
-=item [FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>]
+=item [FilterTypedLink => CloudDirectory_TypedLinkSchemaAndFacetName]
 
 =item [MaxResults => Int]
 
@@ -1924,7 +1925,7 @@ facet and identity attributes. For more information, see Typed Links
 
 =item DirectoryArn => Str
 
-=item PolicyReference => L<Paws::CloudDirectory::ObjectReference>
+=item PolicyReference => CloudDirectory_ObjectReference
 
 =item [ConsistencyLevel => Str]
 
@@ -2039,7 +2040,7 @@ schema. For more information, see Typed Links
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
 =item [MaxResults => Int]
 
@@ -2112,9 +2113,9 @@ for more information.
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
-=item SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>
+=item SchemaFacet => CloudDirectory_SchemaFacet
 
 
 =back
@@ -2132,7 +2133,7 @@ Removes the specified facet from the specified object.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::CloudDirectory::Tag>]
+=item Tags => ArrayRef[CloudDirectory_Tag]
 
 
 =back
@@ -2170,7 +2171,7 @@ An API operation for removing tags from a resource.
 
 =item SchemaArn => Str
 
-=item [AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::FacetAttributeUpdate>]]
+=item [AttributeUpdates => ArrayRef[CloudDirectory_FacetAttributeUpdate]]
 
 =item [ObjectType => Str]
 
@@ -2205,11 +2206,11 @@ Deletes existing C<Attributes>, C<Rules>, or C<ObjectTypes>.
 
 =over
 
-=item AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::LinkAttributeUpdate>]
+=item AttributeUpdates => ArrayRef[CloudDirectory_LinkAttributeUpdate]
 
 =item DirectoryArn => Str
 
-=item TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>
+=item TypedLinkSpecifier => CloudDirectory_TypedLinkSpecifier
 
 
 =back
@@ -2227,11 +2228,11 @@ defined by its C<IdentityAttributeOrder>.
 
 =over
 
-=item AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeUpdate>]
+=item AttributeUpdates => ArrayRef[CloudDirectory_ObjectAttributeUpdate]
 
 =item DirectoryArn => Str
 
-=item ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=item ObjectReference => CloudDirectory_ObjectReference
 
 
 =back
@@ -2266,7 +2267,7 @@ can be updated.
 
 =over
 
-=item AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::TypedLinkFacetAttributeUpdate>]
+=item AttributeUpdates => ArrayRef[CloudDirectory_TypedLinkFacetAttributeUpdate]
 
 =item IdentityAttributeOrder => ArrayRef[Str|Undef]
 
@@ -2352,9 +2353,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudDirectory::ListAppliedSchemaArnsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllAttachedIndices(sub { },DirectoryArn => Str, TargetReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllAttachedIndices(sub { },DirectoryArn => Str, TargetReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllAttachedIndices(DirectoryArn => Str, TargetReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllAttachedIndices(DirectoryArn => Str, TargetReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2412,9 +2413,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudDirectory::ListFacetNamesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllIncomingTypedLinks(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>], FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>, MaxResults => Int, NextToken => Str])
+=head2 ListAllIncomingTypedLinks(sub { },DirectoryArn => Str, ObjectReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[CloudDirectory_TypedLinkAttributeRange], FilterTypedLink => CloudDirectory_TypedLinkSchemaAndFacetName, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllIncomingTypedLinks(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>], FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>, MaxResults => Int, NextToken => Str])
+=head2 ListAllIncomingTypedLinks(DirectoryArn => Str, ObjectReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[CloudDirectory_TypedLinkAttributeRange], FilterTypedLink => CloudDirectory_TypedLinkSchemaAndFacetName, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2424,9 +2425,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudDirectory::ListIncomingTypedLinksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllIndex(sub { },DirectoryArn => Str, IndexReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str, RangesOnIndexedValues => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeRange>]])
+=head2 ListAllIndex(sub { },DirectoryArn => Str, IndexReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str, RangesOnIndexedValues => ArrayRef[CloudDirectory_ObjectAttributeRange]])
 
-=head2 ListAllIndex(DirectoryArn => Str, IndexReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str, RangesOnIndexedValues => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeRange>]])
+=head2 ListAllIndex(DirectoryArn => Str, IndexReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str, RangesOnIndexedValues => ArrayRef[CloudDirectory_ObjectAttributeRange]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2448,9 +2449,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudDirectory::ListManagedSchemaArnsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllObjectAttributes(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FacetFilter => L<Paws::CloudDirectory::SchemaFacet>, MaxResults => Int, NextToken => Str])
+=head2 ListAllObjectAttributes(sub { },DirectoryArn => Str, ObjectReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, FacetFilter => CloudDirectory_SchemaFacet, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllObjectAttributes(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FacetFilter => L<Paws::CloudDirectory::SchemaFacet>, MaxResults => Int, NextToken => Str])
+=head2 ListAllObjectAttributes(DirectoryArn => Str, ObjectReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, FacetFilter => CloudDirectory_SchemaFacet, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2460,9 +2461,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudDirectory::ListObjectAttributesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllObjectParentPaths(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [MaxResults => Int, NextToken => Str])
+=head2 ListAllObjectParentPaths(sub { },DirectoryArn => Str, ObjectReference => CloudDirectory_ObjectReference, [MaxResults => Int, NextToken => Str])
 
-=head2 ListAllObjectParentPaths(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [MaxResults => Int, NextToken => Str])
+=head2 ListAllObjectParentPaths(DirectoryArn => Str, ObjectReference => CloudDirectory_ObjectReference, [MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2472,9 +2473,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudDirectory::ListObjectParentPathsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllObjectPolicies(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllObjectPolicies(sub { },DirectoryArn => Str, ObjectReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllObjectPolicies(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllObjectPolicies(DirectoryArn => Str, ObjectReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2484,9 +2485,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudDirectory::ListObjectPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllOutgoingTypedLinks(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>], FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>, MaxResults => Int, NextToken => Str])
+=head2 ListAllOutgoingTypedLinks(sub { },DirectoryArn => Str, ObjectReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[CloudDirectory_TypedLinkAttributeRange], FilterTypedLink => CloudDirectory_TypedLinkSchemaAndFacetName, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllOutgoingTypedLinks(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>], FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>, MaxResults => Int, NextToken => Str])
+=head2 ListAllOutgoingTypedLinks(DirectoryArn => Str, ObjectReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, FilterAttributeRanges => ArrayRef[CloudDirectory_TypedLinkAttributeRange], FilterTypedLink => CloudDirectory_TypedLinkSchemaAndFacetName, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2496,9 +2497,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudDirectory::ListOutgoingTypedLinksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllPolicyAttachments(sub { },DirectoryArn => Str, PolicyReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllPolicyAttachments(sub { },DirectoryArn => Str, PolicyReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllPolicyAttachments(DirectoryArn => Str, PolicyReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllPolicyAttachments(DirectoryArn => Str, PolicyReference => CloudDirectory_ObjectReference, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2556,9 +2557,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudDirectory::ListTypedLinkFacetNamesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 LookupAllPolicies(sub { },DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [MaxResults => Int, NextToken => Str])
+=head2 LookupAllPolicies(sub { },DirectoryArn => Str, ObjectReference => CloudDirectory_ObjectReference, [MaxResults => Int, NextToken => Str])
 
-=head2 LookupAllPolicies(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [MaxResults => Int, NextToken => Str])
+=head2 LookupAllPolicies(DirectoryArn => Str, ObjectReference => CloudDirectory_ObjectReference, [MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

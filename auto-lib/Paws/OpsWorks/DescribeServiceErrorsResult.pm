@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::OpsWorks::DescribeServiceErrorsResult;
-  use Moose;
-  has ServiceErrors => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::ServiceError]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::OpsWorks::Types qw/OpsWorks_ServiceError/;
+  has ServiceErrors => (is => 'ro', isa => ArrayRef[OpsWorks_ServiceError]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ServiceErrors' => {
+                                    'type' => 'ArrayRef[OpsWorks_ServiceError]',
+                                    'class' => 'Paws::OpsWorks::ServiceError'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::OpsWorks::DescribeServiceErrorsResult
 =head1 ATTRIBUTES
 
 
-=head2 ServiceErrors => ArrayRef[L<Paws::OpsWorks::ServiceError>]
+=head2 ServiceErrors => ArrayRef[OpsWorks_ServiceError]
 
 An array of C<ServiceError> objects that describe the specified service
 errors.

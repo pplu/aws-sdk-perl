@@ -1,10 +1,35 @@
 
 package Paws::MediaPackage::ListChannelsResponse;
-  use Moose;
-  has Channels => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackage::Channel]', traits => ['NameInRequest'], request_name => 'channels');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaPackage::Types qw/MediaPackage_Channel/;
+  has Channels => (is => 'ro', isa => ArrayRef[MediaPackage_Channel]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Channels' => 'channels'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Channels' => {
+                               'type' => 'ArrayRef[MediaPackage_Channel]',
+                               'class' => 'Paws::MediaPackage::Channel'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::MediaPackage::ListChannelsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Channels => ArrayRef[L<Paws::MediaPackage::Channel>]
+=head2 Channels => ArrayRef[MediaPackage_Channel]
 
 A list of Channel records.
 

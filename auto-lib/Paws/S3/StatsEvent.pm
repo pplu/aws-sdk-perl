@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::S3::StatsEvent;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Paws::S3::Stats');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_Stats/;
+  has Details => (is => 'ro', isa => S3_Stats);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Details' => {
+                              'class' => 'Paws::S3::Stats',
+                              'type' => 'S3_Stats'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Container for the Stats Event.
 =head1 ATTRIBUTES
 
 
-=head2 Details => L<Paws::S3::Stats>
+=head2 Details => S3_Stats
 
   The Stats event details.
 

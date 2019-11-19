@@ -1,0 +1,32 @@
+package Paws::IoTEventsData::Types;
+  use Type::Library qw/-base/;
+  use Type::Utils qw/class_type/;
+
+  class_type IoTEventsData_BatchPutMessageErrorEntry, { class => 'Paws::IoTEventsData::BatchPutMessageErrorEntry' };
+  class_type IoTEventsData_BatchPutMessageRequest, { class => 'Paws::IoTEventsData::BatchPutMessageRequest' };
+  class_type IoTEventsData_BatchPutMessageResponse, { class => 'Paws::IoTEventsData::BatchPutMessageResponse' };
+  class_type IoTEventsData_BatchUpdateDetectorErrorEntry, { class => 'Paws::IoTEventsData::BatchUpdateDetectorErrorEntry' };
+  class_type IoTEventsData_BatchUpdateDetectorRequest, { class => 'Paws::IoTEventsData::BatchUpdateDetectorRequest' };
+  class_type IoTEventsData_BatchUpdateDetectorResponse, { class => 'Paws::IoTEventsData::BatchUpdateDetectorResponse' };
+  class_type IoTEventsData_DescribeDetectorRequest, { class => 'Paws::IoTEventsData::DescribeDetectorRequest' };
+  class_type IoTEventsData_DescribeDetectorResponse, { class => 'Paws::IoTEventsData::DescribeDetectorResponse' };
+  class_type IoTEventsData_Detector, { class => 'Paws::IoTEventsData::Detector' };
+  class_type IoTEventsData_DetectorState, { class => 'Paws::IoTEventsData::DetectorState' };
+  class_type IoTEventsData_DetectorStateDefinition, { class => 'Paws::IoTEventsData::DetectorStateDefinition' };
+  class_type IoTEventsData_DetectorStateSummary, { class => 'Paws::IoTEventsData::DetectorStateSummary' };
+  class_type IoTEventsData_DetectorSummary, { class => 'Paws::IoTEventsData::DetectorSummary' };
+  class_type IoTEventsData_InternalFailureException, { class => 'Paws::IoTEventsData::InternalFailureException' };
+  class_type IoTEventsData_InvalidRequestException, { class => 'Paws::IoTEventsData::InvalidRequestException' };
+  class_type IoTEventsData_ListDetectorsRequest, { class => 'Paws::IoTEventsData::ListDetectorsRequest' };
+  class_type IoTEventsData_ListDetectorsResponse, { class => 'Paws::IoTEventsData::ListDetectorsResponse' };
+  class_type IoTEventsData_Message, { class => 'Paws::IoTEventsData::Message' };
+  class_type IoTEventsData_ResourceNotFoundException, { class => 'Paws::IoTEventsData::ResourceNotFoundException' };
+  class_type IoTEventsData_ServiceUnavailableException, { class => 'Paws::IoTEventsData::ServiceUnavailableException' };
+  class_type IoTEventsData_ThrottlingException, { class => 'Paws::IoTEventsData::ThrottlingException' };
+  class_type IoTEventsData_Timer, { class => 'Paws::IoTEventsData::Timer' };
+  class_type IoTEventsData_TimerDefinition, { class => 'Paws::IoTEventsData::TimerDefinition' };
+  class_type IoTEventsData_UpdateDetectorRequest, { class => 'Paws::IoTEventsData::UpdateDetectorRequest' };
+  class_type IoTEventsData_Variable, { class => 'Paws::IoTEventsData::Variable' };
+  class_type IoTEventsData_VariableDefinition, { class => 'Paws::IoTEventsData::VariableDefinition' };
+
+1;

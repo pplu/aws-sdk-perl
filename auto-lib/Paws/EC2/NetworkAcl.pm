@@ -1,12 +1,56 @@
 package Paws::EC2::NetworkAcl;
-  use Moose;
-  has Associations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NetworkAclAssociation]', request_name => 'associationSet', traits => ['NameInRequest']);
-  has Entries => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NetworkAclEntry]', request_name => 'entrySet', traits => ['NameInRequest']);
-  has IsDefault => (is => 'ro', isa => 'Bool', request_name => 'default', traits => ['NameInRequest']);
-  has NetworkAclId => (is => 'ro', isa => 'Str', request_name => 'networkAclId', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef Bool Str/;
+  use Paws::EC2::Types qw/EC2_Tag EC2_NetworkAclAssociation EC2_NetworkAclEntry/;
+  has Associations => (is => 'ro', isa => ArrayRef[EC2_NetworkAclAssociation]);
+  has Entries => (is => 'ro', isa => ArrayRef[EC2_NetworkAclEntry]);
+  has IsDefault => (is => 'ro', isa => Bool);
+  has NetworkAclId => (is => 'ro', isa => Str);
+  has OwnerId => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Entries' => 'entrySet',
+                       'Associations' => 'associationSet',
+                       'NetworkAclId' => 'networkAclId',
+                       'VpcId' => 'vpcId',
+                       'IsDefault' => 'default',
+                       'Tags' => 'tagSet',
+                       'OwnerId' => 'ownerId'
+                     },
+  'types' => {
+               'IsDefault' => {
+                                'type' => 'Bool'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'NetworkAclId' => {
+                                   'type' => 'Str'
+                                 },
+               'Associations' => {
+                                   'class' => 'Paws::EC2::NetworkAclAssociation',
+                                   'type' => 'ArrayRef[EC2_NetworkAclAssociation]'
+                                 },
+               'Entries' => {
+                              'class' => 'Paws::EC2::NetworkAclEntry',
+                              'type' => 'ArrayRef[EC2_NetworkAclEntry]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,12 +86,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Associations => ArrayRef[L<Paws::EC2::NetworkAclAssociation>]
+=head2 Associations => ArrayRef[EC2_NetworkAclAssociation]
 
   Any associations between the network ACL and one or more subnets
 
 
-=head2 Entries => ArrayRef[L<Paws::EC2::NetworkAclEntry>]
+=head2 Entries => ArrayRef[EC2_NetworkAclEntry]
 
   One or more entries (rules) in the network ACL.
 
@@ -67,7 +111,7 @@ This class has no description
   The ID of the AWS account that owns the network ACL.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the network ACL.
 

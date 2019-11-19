@@ -1,17 +1,51 @@
 
 package Paws::Batch::UpdateComputeEnvironment;
-  use Moose;
-  has ComputeEnvironment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeEnvironment', required => 1);
-  has ComputeResources => (is => 'ro', isa => 'Paws::Batch::ComputeResourceUpdate', traits => ['NameInRequest'], request_name => 'computeResources');
-  has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole');
-  has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw/Batch_ComputeResourceUpdate/;
+  has ComputeEnvironment => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ComputeResources => (is => 'ro', isa => Batch_ComputeResourceUpdate, predicate => 1);
+  has ServiceRole => (is => 'ro', isa => Str, predicate => 1);
+  has State => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateComputeEnvironment');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/updatecomputeenvironment');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::UpdateComputeEnvironmentResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateComputeEnvironment');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/updatecomputeenvironment');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Batch::UpdateComputeEnvironmentResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ComputeEnvironment' => 1
+                  },
+  'NameInRequest' => {
+                       'ServiceRole' => 'serviceRole',
+                       'ComputeResources' => 'computeResources',
+                       'State' => 'state',
+                       'ComputeEnvironment' => 'computeEnvironment'
+                     },
+  'types' => {
+               'ComputeEnvironment' => {
+                                         'type' => 'Str'
+                                       },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'ComputeResources' => {
+                                       'type' => 'Batch_ComputeResourceUpdate',
+                                       'class' => 'Paws::Batch::ComputeResourceUpdate'
+                                     },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +94,7 @@ to update.
 
 
 
-=head2 ComputeResources => L<Paws::Batch::ComputeResourceUpdate>
+=head2 ComputeResources => Batch_ComputeResourceUpdate
 
 Details of the compute resources managed by the compute environment.
 Required for a managed compute environment.

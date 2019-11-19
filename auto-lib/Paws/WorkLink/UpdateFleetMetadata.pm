@@ -1,16 +1,40 @@
 
 package Paws::WorkLink::UpdateFleetMetadata;
-  use Moose;
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has FleetArn => (is => 'ro', isa => 'Str', required => 1);
-  has OptimizeForEndUserLocation => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::WorkLink::Types qw//;
+  has DisplayName => (is => 'ro', isa => Str, predicate => 1);
+  has FleetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OptimizeForEndUserLocation => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFleetMetadata');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/UpdateFleetMetadata');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkLink::UpdateFleetMetadataResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFleetMetadata');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/UpdateFleetMetadata');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkLink::UpdateFleetMetadataResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FleetArn' => 1
+                  },
+  'types' => {
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'OptimizeForEndUserLocation' => {
+                                                 'type' => 'Bool'
+                                               },
+               'FleetArn' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

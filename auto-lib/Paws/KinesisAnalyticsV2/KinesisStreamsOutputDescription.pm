@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::KinesisStreamsOutputDescription;
-  use Moose;
-  has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
-  has RoleARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has ResourceARN => (is => 'ro', isa => Str, required => 1);
+  has RoleARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceARN' => 1
+                  },
+  'types' => {
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

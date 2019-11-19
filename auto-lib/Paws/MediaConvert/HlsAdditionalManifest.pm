@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::HlsAdditionalManifest;
-  use Moose;
-  has ManifestNameModifier => (is => 'ro', isa => 'Str', request_name => 'manifestNameModifier', traits => ['NameInRequest']);
-  has SelectedOutputs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'selectedOutputs', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaConvert::Types qw//;
+  has ManifestNameModifier => (is => 'ro', isa => Str);
+  has SelectedOutputs => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ManifestNameModifier' => {
+                                           'type' => 'Str'
+                                         },
+               'SelectedOutputs' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             },
+  'NameInRequest' => {
+                       'SelectedOutputs' => 'selectedOutputs',
+                       'ManifestNameModifier' => 'manifestNameModifier'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

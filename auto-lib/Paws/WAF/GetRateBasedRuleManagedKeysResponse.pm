@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::GetRateBasedRuleManagedKeysResponse;
-  use Moose;
-  has ManagedKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::WAF::Types qw//;
+  has ManagedKeys => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NextMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ManagedKeys' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,13 +1,53 @@
+# Generated from default/object.tt
 package Paws::Organizations::Handshake;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has Arn => (is => 'ro', isa => 'Str');
-  has ExpirationTimestamp => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Parties => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::HandshakeParty]');
-  has RequestedTimestamp => (is => 'ro', isa => 'Str');
-  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::HandshakeResource]');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Organizations::Types qw/Organizations_HandshakeParty Organizations_HandshakeResource/;
+  has Action => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has ExpirationTimestamp => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Parties => (is => 'ro', isa => ArrayRef[Organizations_HandshakeParty]);
+  has RequestedTimestamp => (is => 'ro', isa => Str);
+  has Resources => (is => 'ro', isa => ArrayRef[Organizations_HandshakeResource]);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpirationTimestamp' => {
+                                          'type' => 'Str'
+                                        },
+               'Resources' => {
+                                'type' => 'ArrayRef[Organizations_HandshakeResource]',
+                                'class' => 'Paws::Organizations::HandshakeResource'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'RequestedTimestamp' => {
+                                         'type' => 'Str'
+                                       },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'Parties' => {
+                              'type' => 'ArrayRef[Organizations_HandshakeParty]',
+                              'class' => 'Paws::Organizations::HandshakeParty'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -112,7 +152,7 @@ string requires "h-" followed by from 8 to 32 lower-case letters or
 digits.
 
 
-=head2 Parties => ArrayRef[L<Paws::Organizations::HandshakeParty>]
+=head2 Parties => ArrayRef[Organizations_HandshakeParty]
 
   Information about the two accounts that are participating in the
 handshake.
@@ -123,7 +163,7 @@ handshake.
   The date and time that the handshake request was made.
 
 
-=head2 Resources => ArrayRef[L<Paws::Organizations::HandshakeResource>]
+=head2 Resources => ArrayRef[Organizations_HandshakeResource]
 
   Additional information that is needed to process the handshake.
 

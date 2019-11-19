@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::LoadBalancerDescription;
-  use Moose;
-  has Domain => (is => 'ro', isa => 'Str');
-  has Listeners => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Listener]');
-  has LoadBalancerName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_Listener/;
+  has Domain => (is => 'ro', isa => Str);
+  has Listeners => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_Listener]);
+  has LoadBalancerName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'Listeners' => {
+                                'class' => 'Paws::ElasticBeanstalk::Listener',
+                                'type' => 'ArrayRef[ElasticBeanstalk_Listener]'
+                              },
+               'Domain' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +67,7 @@ Describes the details of a LoadBalancer.
   The domain name of the LoadBalancer.
 
 
-=head2 Listeners => ArrayRef[L<Paws::ElasticBeanstalk::Listener>]
+=head2 Listeners => ArrayRef[ElasticBeanstalk_Listener]
 
   A list of Listeners used by the LoadBalancer.
 

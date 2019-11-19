@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::IoT::Certificate;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
-  has CertificateId => (is => 'ro', isa => 'Str', request_name => 'certificateId', traits => ['NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CertificateId => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'CertificateId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'CertificateArn' => 'certificateArn',
+                       'CertificateId' => 'certificateId',
+                       'CreationDate' => 'creationDate'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

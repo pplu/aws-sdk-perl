@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::RDS::Range;
-  use Moose;
-  has From => (is => 'ro', isa => 'Int');
-  has Step => (is => 'ro', isa => 'Int');
-  has To => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::RDS::Types qw//;
+  has From => (is => 'ro', isa => Int);
+  has Step => (is => 'ro', isa => Int);
+  has To => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Step' => {
+                           'type' => 'Int'
+                         },
+               'To' => {
+                         'type' => 'Int'
+                       },
+               'From' => {
+                           'type' => 'Int'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

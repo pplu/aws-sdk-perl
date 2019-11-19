@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::DeleteLifecycleHook;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LifecycleHookName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLifecycleHook');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::DeleteLifecycleHookAnswer');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLifecycleHookResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteLifecycleHook');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::DeleteLifecycleHookAnswer');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DeleteLifecycleHookResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'LifecycleHookName' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'LifecycleHookName' => 1,
+                    'AutoScalingGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

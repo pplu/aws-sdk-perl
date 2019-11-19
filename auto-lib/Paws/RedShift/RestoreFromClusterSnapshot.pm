@@ -1,38 +1,133 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::RestoreFromClusterSnapshot;
-  use Moose;
-  has AdditionalInfo => (is => 'ro', isa => 'Str');
-  has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
-  has ElasticIp => (is => 'ro', isa => 'Str');
-  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
-  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
-  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
-  has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
-  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has NodeType => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int');
-  has OwnerAccount => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
-  has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has SnapshotScheduleIdentifier => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::RedShift::Types qw//;
+  has AdditionalInfo => (is => 'ro', isa => Str, predicate => 1);
+  has AllowVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has ClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClusterParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has ClusterSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ClusterSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has ElasticIp => (is => 'ro', isa => Str, predicate => 1);
+  has EnhancedVpcRouting => (is => 'ro', isa => Bool, predicate => 1);
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has HsmConfigurationIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has IamRoles => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has MaintenanceTrackName => (is => 'ro', isa => Str, predicate => 1);
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has NodeType => (is => 'ro', isa => Str, predicate => 1);
+  has NumberOfNodes => (is => 'ro', isa => Int, predicate => 1);
+  has OwnerAccount => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has SnapshotClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SnapshotScheduleIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::RestoreFromClusterSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshotResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreFromClusterSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::RestoreFromClusterSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RestoreFromClusterSnapshotResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'ClusterSubnetGroupName' => {
+                                             'type' => 'Str'
+                                           },
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'IamRoles' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'OwnerAccount' => {
+                                   'type' => 'Str'
+                                 },
+               'ManualSnapshotRetentionPeriod' => {
+                                                    'type' => 'Int'
+                                                  },
+               'SnapshotIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'ClusterParameterGroupName' => {
+                                                'type' => 'Str'
+                                              },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'EnhancedVpcRouting' => {
+                                         'type' => 'Bool'
+                                       },
+               'SnapshotClusterIdentifier' => {
+                                                'type' => 'Str'
+                                              },
+               'NumberOfNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'HsmClientCertificateIdentifier' => {
+                                                     'type' => 'Str'
+                                                   },
+               'AutomatedSnapshotRetentionPeriod' => {
+                                                       'type' => 'Int'
+                                                     },
+               'ClusterSecurityGroups' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'ElasticIp' => {
+                                'type' => 'Str'
+                              },
+               'NodeType' => {
+                               'type' => 'Str'
+                             },
+               'SnapshotScheduleIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'MaintenanceTrackName' => {
+                                           'type' => 'Str'
+                                         },
+               'HsmConfigurationIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'AllowVersionUpgrade' => {
+                                          'type' => 'Bool'
+                                        },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'AdditionalInfo' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'ClusterIdentifier' => 1,
+                    'SnapshotIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

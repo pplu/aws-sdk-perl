@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaLive::OutputLocationRef;
-  use Moose;
-  has DestinationRefId => (is => 'ro', isa => 'Str', request_name => 'destinationRefId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has DestinationRefId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DestinationRefId' => 'destinationRefId'
+                     },
+  'types' => {
+               'DestinationRefId' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

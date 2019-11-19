@@ -1,10 +1,35 @@
 
 package Paws::ServerlessRepo::ListApplicationDependenciesResponse;
-  use Moose;
-  has Dependencies => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationDependencySummary]', traits => ['NameInRequest'], request_name => 'dependencies');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServerlessRepo::Types qw/ServerlessRepo_ApplicationDependencySummary/;
+  has Dependencies => (is => 'ro', isa => ArrayRef[ServerlessRepo_ApplicationDependencySummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Dependencies' => 'dependencies'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Dependencies' => {
+                                   'class' => 'Paws::ServerlessRepo::ApplicationDependencySummary',
+                                   'type' => 'ArrayRef[ServerlessRepo_ApplicationDependencySummary]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::ServerlessRepo::ListApplicationDependenciesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Dependencies => ArrayRef[L<Paws::ServerlessRepo::ApplicationDependencySummary>]
+=head2 Dependencies => ArrayRef[ServerlessRepo_ApplicationDependencySummary]
 
 An array of application summaries nested in the application.
 

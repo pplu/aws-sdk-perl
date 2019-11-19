@@ -1,18 +1,54 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::PutConformancePack;
-  use Moose;
-  has ConformancePackInputParameters => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConformancePackInputParameter]');
-  has ConformancePackName => (is => 'ro', isa => 'Str', required => 1);
-  has DeliveryS3Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has DeliveryS3KeyPrefix => (is => 'ro', isa => 'Str');
-  has TemplateBody => (is => 'ro', isa => 'Str');
-  has TemplateS3Uri => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_ConformancePackInputParameter/;
+  has ConformancePackInputParameters => (is => 'ro', isa => ArrayRef[Config_ConformancePackInputParameter], predicate => 1);
+  has ConformancePackName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeliveryS3Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeliveryS3KeyPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateBody => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateS3Uri => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutConformancePack');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::PutConformancePackResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutConformancePack');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::PutConformancePackResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConformancePackName' => {
+                                          'type' => 'Str'
+                                        },
+               'TemplateS3Uri' => {
+                                    'type' => 'Str'
+                                  },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               'DeliveryS3Bucket' => {
+                                       'type' => 'Str'
+                                     },
+               'DeliveryS3KeyPrefix' => {
+                                          'type' => 'Str'
+                                        },
+               'ConformancePackInputParameters' => {
+                                                     'type' => 'ArrayRef[Config_ConformancePackInputParameter]',
+                                                     'class' => 'Paws::Config::ConformancePackInputParameter'
+                                                   }
+             },
+  'IsRequired' => {
+                    'DeliveryS3Bucket' => 1,
+                    'ConformancePackName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head1 ATTRIBUTES
 
 
-=head2 ConformancePackInputParameters => ArrayRef[L<Paws::Config::ConformancePackInputParameter>]
+=head2 ConformancePackInputParameters => ArrayRef[Config_ConformancePackInputParameter]
 
 A list of C<ConformancePackInputParameter> objects.
 

@@ -1,19 +1,48 @@
 
 package Paws::Route53::ListTrafficPolicyInstances;
-  use Moose;
-  has HostedZoneIdMarker => (is => 'ro', isa => 'Str', query_name => 'hostedzoneid', traits => ['ParamInQuery']);
-  has MaxItems => (is => 'ro', isa => 'Str', query_name => 'maxitems', traits => ['ParamInQuery']);
-  has TrafficPolicyInstanceNameMarker => (is => 'ro', isa => 'Str', query_name => 'trafficpolicyinstancename', traits => ['ParamInQuery']);
-  has TrafficPolicyInstanceTypeMarker => (is => 'ro', isa => 'Str', query_name => 'trafficpolicyinstancetype', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw//;
+  has HostedZoneIdMarker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Str, predicate => 1);
+  has TrafficPolicyInstanceNameMarker => (is => 'ro', isa => Str, predicate => 1);
+  has TrafficPolicyInstanceTypeMarker => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTrafficPolicyInstances');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/trafficpolicyinstances');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListTrafficPolicyInstancesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTrafficPolicyInstances');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/trafficpolicyinstances');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::ListTrafficPolicyInstancesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrafficPolicyInstanceTypeMarker' => {
+                                                      'type' => 'Str'
+                                                    },
+               'TrafficPolicyInstanceNameMarker' => {
+                                                      'type' => 'Str'
+                                                    },
+               'MaxItems' => {
+                               'type' => 'Str'
+                             },
+               'HostedZoneIdMarker' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'ParamInQuery' => {
+                      'TrafficPolicyInstanceTypeMarker' => 'trafficpolicyinstancetype',
+                      'TrafficPolicyInstanceNameMarker' => 'trafficpolicyinstancename',
+                      'MaxItems' => 'maxitems',
+                      'HostedZoneIdMarker' => 'hostedzoneid'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

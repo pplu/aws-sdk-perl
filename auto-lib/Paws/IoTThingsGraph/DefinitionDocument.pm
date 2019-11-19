@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoTThingsGraph::DefinitionDocument;
-  use Moose;
-  has Language => (is => 'ro', isa => 'Str', request_name => 'language', traits => ['NameInRequest'], required => 1);
-  has Text => (is => 'ro', isa => 'Str', request_name => 'text', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has Language => (is => 'ro', isa => Str, required => 1);
+  has Text => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Text' => 'text',
+                       'Language' => 'language'
+                     },
+  'IsRequired' => {
+                    'Language' => 1,
+                    'Text' => 1
+                  },
+  'types' => {
+               'Text' => {
+                           'type' => 'Str'
+                         },
+               'Language' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

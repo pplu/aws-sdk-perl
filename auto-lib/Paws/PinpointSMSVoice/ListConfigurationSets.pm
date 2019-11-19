@@ -1,15 +1,37 @@
 
 package Paws::PinpointSMSVoice::ListConfigurationSets;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
-  has PageSize => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PageSize');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointSMSVoice::Types qw//;
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListConfigurationSets');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/sms-voice/configuration-sets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointSMSVoice::ListConfigurationSetsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListConfigurationSets');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/sms-voice/configuration-sets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointSMSVoice::ListConfigurationSetsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'PageSize' => 'PageSize',
+                      'NextToken' => 'NextToken'
+                    },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'PageSize' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

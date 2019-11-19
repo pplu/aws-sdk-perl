@@ -1,19 +1,61 @@
 
 package Paws::IoT::ListViolationEvents;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'endTime', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has SecurityProfileName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'securityProfileName');
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'startTime', required => 1);
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'thingName');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityProfileName => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListViolationEvents');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/violation-events');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListViolationEventsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListViolationEvents');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/violation-events');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListViolationEventsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'EndTime' => 1,
+                    'StartTime' => 1
+                  },
+  'ParamInQuery' => {
+                      'EndTime' => 'endTime',
+                      'StartTime' => 'startTime',
+                      'ThingName' => 'thingName',
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken',
+                      'SecurityProfileName' => 'securityProfileName'
+                    },
+  'types' => {
+               'SecurityProfileName' => {
+                                          'type' => 'Str'
+                                        },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

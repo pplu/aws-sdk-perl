@@ -1,14 +1,35 @@
 
 package Paws::IoT::DescribeMitigationAction;
-  use Moose;
-  has ActionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'actionName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has ActionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMitigationAction');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/mitigationactions/actions/{actionName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DescribeMitigationActionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeMitigationAction');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/mitigationactions/actions/{actionName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DescribeMitigationActionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ActionName' => 'actionName'
+                  },
+  'types' => {
+               'ActionName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ActionName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

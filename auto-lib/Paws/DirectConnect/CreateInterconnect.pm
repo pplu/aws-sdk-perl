@@ -1,18 +1,63 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::CreateInterconnect;
-  use Moose;
-  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' , required => 1);
-  has InterconnectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectName' , required => 1);
-  has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
-  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
-  has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_Tag/;
+  has Bandwidth => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InterconnectName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LagId => (is => 'ro', isa => Str, predicate => 1);
+  has Location => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProviderName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DirectConnect_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInterconnect');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::Interconnect');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateInterconnect');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::Interconnect');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Bandwidth' => 1,
+                    'InterconnectName' => 1,
+                    'Location' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'ProviderName' => 'providerName',
+                       'InterconnectName' => 'interconnectName',
+                       'LagId' => 'lagId',
+                       'Location' => 'location',
+                       'Bandwidth' => 'bandwidth'
+                     },
+  'types' => {
+               'ProviderName' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::DirectConnect::Tag',
+                           'type' => 'ArrayRef[DirectConnect_Tag]'
+                         },
+               'Bandwidth' => {
+                                'type' => 'Str'
+                              },
+               'LagId' => {
+                            'type' => 'Str'
+                          },
+               'InterconnectName' => {
+                                       'type' => 'Str'
+                                     },
+               'Location' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -101,7 +146,7 @@ The name of the service provider associated with the interconnect.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+=head2 Tags => ArrayRef[DirectConnect_Tag]
 
 The tags to associate with the interconnect.
 

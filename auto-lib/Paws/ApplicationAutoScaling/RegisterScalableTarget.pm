@@ -1,19 +1,59 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ApplicationAutoScaling::RegisterScalableTarget;
-  use Moose;
-  has MaxCapacity => (is => 'ro', isa => 'Int');
-  has MinCapacity => (is => 'ro', isa => 'Int');
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
-  has SuspendedState => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::SuspendedState');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ApplicationAutoScaling::Types qw/ApplicationAutoScaling_SuspendedState/;
+  has MaxCapacity => (is => 'ro', isa => Int, predicate => 1);
+  has MinCapacity => (is => 'ro', isa => Int, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleARN => (is => 'ro', isa => Str, predicate => 1);
+  has ScalableDimension => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SuspendedState => (is => 'ro', isa => ApplicationAutoScaling_SuspendedState, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterScalableTarget');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApplicationAutoScaling::RegisterScalableTargetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterScalableTarget');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApplicationAutoScaling::RegisterScalableTargetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'ServiceNamespace' => 1,
+                    'ScalableDimension' => 1
+                  },
+  'types' => {
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'SuspendedState' => {
+                                     'class' => 'Paws::ApplicationAutoScaling::SuspendedState',
+                                     'type' => 'ApplicationAutoScaling_SuspendedState'
+                                   },
+               'MinCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'MaxCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'ScalableDimension' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -238,7 +278,7 @@ in the I<Amazon Web Services General Reference>.
 
 Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">
 
-=head2 SuspendedState => L<Paws::ApplicationAutoScaling::SuspendedState>
+=head2 SuspendedState => ApplicationAutoScaling_SuspendedState
 
 An embedded object that contains attributes and attribute values that
 are used to suspend and resume automatic scaling. Setting the value of

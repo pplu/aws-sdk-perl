@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::GetInstanceProfileResult;
-  use Moose;
-  has InstanceProfile => (is => 'ro', isa => 'Paws::DeviceFarm::InstanceProfile', traits => ['NameInRequest'], request_name => 'instanceProfile' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_InstanceProfile/;
+  has InstanceProfile => (is => 'ro', isa => DeviceFarm_InstanceProfile);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InstanceProfile' => {
+                                      'type' => 'DeviceFarm_InstanceProfile',
+                                      'class' => 'Paws::DeviceFarm::InstanceProfile'
+                                    }
+             },
+  'NameInRequest' => {
+                       'InstanceProfile' => 'instanceProfile'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DeviceFarm::GetInstanceProfileResult
 =head1 ATTRIBUTES
 
 
-=head2 InstanceProfile => L<Paws::DeviceFarm::InstanceProfile>
+=head2 InstanceProfile => DeviceFarm_InstanceProfile
 
 An object containing information about your instance profile.
 

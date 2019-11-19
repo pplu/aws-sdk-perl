@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchLogs::PutRetentionPolicy;
-  use Moose;
-  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
-  has RetentionInDays => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'retentionInDays' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has LogGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RetentionInDays => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutRetentionPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutRetentionPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LogGroupName' => 'logGroupName',
+                       'RetentionInDays' => 'retentionInDays'
+                     },
+  'IsRequired' => {
+                    'RetentionInDays' => 1,
+                    'LogGroupName' => 1
+                  },
+  'types' => {
+               'RetentionInDays' => {
+                                      'type' => 'Int'
+                                    },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::PropertyDifference;
-  use Moose;
-  has ActualValue => (is => 'ro', isa => 'Str', required => 1);
-  has DifferenceType => (is => 'ro', isa => 'Str', required => 1);
-  has ExpectedValue => (is => 'ro', isa => 'Str', required => 1);
-  has PropertyPath => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has ActualValue => (is => 'ro', isa => Str, required => 1);
+  has DifferenceType => (is => 'ro', isa => Str, required => 1);
+  has ExpectedValue => (is => 'ro', isa => Str, required => 1);
+  has PropertyPath => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DifferenceType' => {
+                                     'type' => 'Str'
+                                   },
+               'PropertyPath' => {
+                                   'type' => 'Str'
+                                 },
+               'ActualValue' => {
+                                  'type' => 'Str'
+                                },
+               'ExpectedValue' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ExpectedValue' => 1,
+                    'ActualValue' => 1,
+                    'PropertyPath' => 1,
+                    'DifferenceType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

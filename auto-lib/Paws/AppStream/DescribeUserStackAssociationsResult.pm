@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AppStream::DescribeUserStackAssociationsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has UserStackAssociations => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::UserStackAssociation]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppStream::Types qw/AppStream_UserStackAssociation/;
+  has NextToken => (is => 'ro', isa => Str);
+  has UserStackAssociations => (is => 'ro', isa => ArrayRef[AppStream_UserStackAssociation]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'UserStackAssociations' => {
+                                            'class' => 'Paws::AppStream::UserStackAssociation',
+                                            'type' => 'ArrayRef[AppStream_UserStackAssociation]'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The pagination token to use to retrieve the next page of results for
 this operation. If there are no more pages, this value is null.
 
 
-=head2 UserStackAssociations => ArrayRef[L<Paws::AppStream::UserStackAssociation>]
+=head2 UserStackAssociations => ArrayRef[AppStream_UserStackAssociation]
 
 The UserStackAssociation objects.
 

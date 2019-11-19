@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::HlsSettings;
-  use Moose;
-  has AudioGroupId => (is => 'ro', isa => 'Str', request_name => 'audioGroupId', traits => ['NameInRequest']);
-  has AudioOnlyContainer => (is => 'ro', isa => 'Str', request_name => 'audioOnlyContainer', traits => ['NameInRequest']);
-  has AudioRenditionSets => (is => 'ro', isa => 'Str', request_name => 'audioRenditionSets', traits => ['NameInRequest']);
-  has AudioTrackType => (is => 'ro', isa => 'Str', request_name => 'audioTrackType', traits => ['NameInRequest']);
-  has IFrameOnlyManifest => (is => 'ro', isa => 'Str', request_name => 'iFrameOnlyManifest', traits => ['NameInRequest']);
-  has SegmentModifier => (is => 'ro', isa => 'Str', request_name => 'segmentModifier', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has AudioGroupId => (is => 'ro', isa => Str);
+  has AudioOnlyContainer => (is => 'ro', isa => Str);
+  has AudioRenditionSets => (is => 'ro', isa => Str);
+  has AudioTrackType => (is => 'ro', isa => Str);
+  has IFrameOnlyManifest => (is => 'ro', isa => Str);
+  has SegmentModifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AudioGroupId' => 'audioGroupId',
+                       'IFrameOnlyManifest' => 'iFrameOnlyManifest',
+                       'AudioOnlyContainer' => 'audioOnlyContainer',
+                       'AudioTrackType' => 'audioTrackType',
+                       'SegmentModifier' => 'segmentModifier',
+                       'AudioRenditionSets' => 'audioRenditionSets'
+                     },
+  'types' => {
+               'AudioOnlyContainer' => {
+                                         'type' => 'Str'
+                                       },
+               'AudioTrackType' => {
+                                     'type' => 'Str'
+                                   },
+               'IFrameOnlyManifest' => {
+                                         'type' => 'Str'
+                                       },
+               'AudioGroupId' => {
+                                   'type' => 'Str'
+                                 },
+               'SegmentModifier' => {
+                                      'type' => 'Str'
+                                    },
+               'AudioRenditionSets' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

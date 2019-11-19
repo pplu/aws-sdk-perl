@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::IAM::PolicyGrantingServiceAccess;
-  use Moose;
-  has EntityName => (is => 'ro', isa => 'Str');
-  has EntityType => (is => 'ro', isa => 'Str');
-  has PolicyArn => (is => 'ro', isa => 'Str');
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has EntityName => (is => 'ro', isa => Str);
+  has EntityType => (is => 'ro', isa => Str);
+  has PolicyArn => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str, required => 1);
+  has PolicyType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'PolicyName' => 1,
+                    'PolicyType' => 1
+                  },
+  'types' => {
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyArn' => {
+                                'type' => 'Str'
+                              },
+               'EntityType' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyType' => {
+                                 'type' => 'Str'
+                               },
+               'EntityName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

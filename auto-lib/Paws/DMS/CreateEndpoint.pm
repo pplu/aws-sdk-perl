@@ -1,34 +1,126 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::CreateEndpoint;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has DmsTransferSettings => (is => 'ro', isa => 'Paws::DMS::DmsTransferSettings');
-  has DynamoDbSettings => (is => 'ro', isa => 'Paws::DMS::DynamoDbSettings');
-  has ElasticsearchSettings => (is => 'ro', isa => 'Paws::DMS::ElasticsearchSettings');
-  has EndpointIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointType => (is => 'ro', isa => 'Str', required => 1);
-  has EngineName => (is => 'ro', isa => 'Str', required => 1);
-  has ExternalTableDefinition => (is => 'ro', isa => 'Str');
-  has ExtraConnectionAttributes => (is => 'ro', isa => 'Str');
-  has KinesisSettings => (is => 'ro', isa => 'Paws::DMS::KinesisSettings');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MongoDbSettings => (is => 'ro', isa => 'Paws::DMS::MongoDbSettings');
-  has Password => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has RedshiftSettings => (is => 'ro', isa => 'Paws::DMS::RedshiftSettings');
-  has S3Settings => (is => 'ro', isa => 'Paws::DMS::S3Settings');
-  has ServerName => (is => 'ro', isa => 'Str');
-  has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
-  has SslMode => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
-  has Username => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::DMS::Types qw/DMS_MongoDbSettings DMS_DynamoDbSettings DMS_KinesisSettings DMS_DmsTransferSettings DMS_S3Settings DMS_ElasticsearchSettings DMS_Tag DMS_RedshiftSettings/;
+  has CertificateArn => (is => 'ro', isa => Str, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, predicate => 1);
+  has DmsTransferSettings => (is => 'ro', isa => DMS_DmsTransferSettings, predicate => 1);
+  has DynamoDbSettings => (is => 'ro', isa => DMS_DynamoDbSettings, predicate => 1);
+  has ElasticsearchSettings => (is => 'ro', isa => DMS_ElasticsearchSettings, predicate => 1);
+  has EndpointIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EndpointType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EngineName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExternalTableDefinition => (is => 'ro', isa => Str, predicate => 1);
+  has ExtraConnectionAttributes => (is => 'ro', isa => Str, predicate => 1);
+  has KinesisSettings => (is => 'ro', isa => DMS_KinesisSettings, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has MongoDbSettings => (is => 'ro', isa => DMS_MongoDbSettings, predicate => 1);
+  has Password => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has RedshiftSettings => (is => 'ro', isa => DMS_RedshiftSettings, predicate => 1);
+  has S3Settings => (is => 'ro', isa => DMS_S3Settings, predicate => 1);
+  has ServerName => (is => 'ro', isa => Str, predicate => 1);
+  has ServiceAccessRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has SslMode => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DMS_Tag], predicate => 1);
+  has Username => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEndpoint');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::CreateEndpointResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateEndpoint');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::CreateEndpointResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'ServerName' => {
+                                 'type' => 'Str'
+                               },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'KinesisSettings' => {
+                                      'class' => 'Paws::DMS::KinesisSettings',
+                                      'type' => 'DMS_KinesisSettings'
+                                    },
+               'ExtraConnectionAttributes' => {
+                                                'type' => 'Str'
+                                              },
+               'EndpointIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'ExternalTableDefinition' => {
+                                              'type' => 'Str'
+                                            },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'S3Settings' => {
+                                 'type' => 'DMS_S3Settings',
+                                 'class' => 'Paws::DMS::S3Settings'
+                               },
+               'ElasticsearchSettings' => {
+                                            'class' => 'Paws::DMS::ElasticsearchSettings',
+                                            'type' => 'DMS_ElasticsearchSettings'
+                                          },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'MongoDbSettings' => {
+                                      'class' => 'Paws::DMS::MongoDbSettings',
+                                      'type' => 'DMS_MongoDbSettings'
+                                    },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'DmsTransferSettings' => {
+                                          'class' => 'Paws::DMS::DmsTransferSettings',
+                                          'type' => 'DMS_DmsTransferSettings'
+                                        },
+               'SslMode' => {
+                              'type' => 'Str'
+                            },
+               'RedshiftSettings' => {
+                                       'type' => 'DMS_RedshiftSettings',
+                                       'class' => 'Paws::DMS::RedshiftSettings'
+                                     },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'DynamoDbSettings' => {
+                                       'type' => 'DMS_DynamoDbSettings',
+                                       'class' => 'Paws::DMS::DynamoDbSettings'
+                                     },
+               'EndpointType' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::DMS::Tag',
+                           'type' => 'ArrayRef[DMS_Tag]'
+                         },
+               'ServiceAccessRoleArn' => {
+                                           'type' => 'Str'
+                                         },
+               'EngineName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'EngineName' => 1,
+                    'EndpointIdentifier' => 1,
+                    'EndpointType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -180,7 +272,7 @@ The name of the endpoint database.
 
 
 
-=head2 DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>
+=head2 DmsTransferSettings => DMS_DmsTransferSettings
 
 The settings in JSON format for the DMS transfer type of source
 endpoint.
@@ -215,7 +307,7 @@ JSON syntax for these settings is as follows: C<{
 
 
 
-=head2 DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>
+=head2 DynamoDbSettings => DMS_DynamoDbSettings
 
 Settings in JSON format for the target Amazon DynamoDB endpoint. For
 more information about the available settings, see Using Object Mapping
@@ -225,7 +317,7 @@ in the I<AWS Database Migration Service User Guide.>
 
 
 
-=head2 ElasticsearchSettings => L<Paws::DMS::ElasticsearchSettings>
+=head2 ElasticsearchSettings => DMS_ElasticsearchSettings
 
 Settings in JSON format for the target Elasticsearch endpoint. For more
 information about the available settings, see Extra Connection
@@ -277,7 +369,7 @@ in the I<AWS Database Migration Service User Guide.>
 
 
 
-=head2 KinesisSettings => L<Paws::DMS::KinesisSettings>
+=head2 KinesisSettings => DMS_KinesisSettings
 
 Settings in JSON format for the target Amazon Kinesis Data Streams
 endpoint. For more information about the available settings, see Using
@@ -300,7 +392,7 @@ AWS account has a different default encryption key for each AWS Region.
 
 
 
-=head2 MongoDbSettings => L<Paws::DMS::MongoDbSettings>
+=head2 MongoDbSettings => DMS_MongoDbSettings
 
 Settings in JSON format for the source MongoDB endpoint. For more
 information about the available settings, see the configuration
@@ -323,13 +415,13 @@ The port used by the endpoint database.
 
 
 
-=head2 RedshiftSettings => L<Paws::DMS::RedshiftSettings>
+=head2 RedshiftSettings => DMS_RedshiftSettings
 
 
 
 
 
-=head2 S3Settings => L<Paws::DMS::S3Settings>
+=head2 S3Settings => DMS_S3Settings
 
 Settings in JSON format for the target Amazon S3 endpoint. For more
 information about the available settings, see Extra Connection
@@ -359,7 +451,7 @@ default is C<none>
 
 Valid values are: C<"none">, C<"require">, C<"verify-ca">, C<"verify-full">
 
-=head2 Tags => ArrayRef[L<Paws::DMS::Tag>]
+=head2 Tags => ArrayRef[DMS_Tag]
 
 One or more tags to be assigned to the endpoint.
 

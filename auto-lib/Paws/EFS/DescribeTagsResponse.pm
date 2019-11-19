@@ -1,11 +1,38 @@
 
 package Paws::EFS::DescribeTagsResponse;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EFS::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EFS::Types qw/EFS_Tag/;
+  has Marker => (is => 'ro', isa => Str);
+  has NextMarker => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EFS_Tag], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Tags' => 1
+                  },
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::EFS::Tag',
+                           'type' => 'ArrayRef[EFS_Tag]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +58,7 @@ C<Marker> parameter in your next request to retrieve the next set of
 tags.
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EFS::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[EFS_Tag]
 
 Returns tags associated with the file system as an array of C<Tag>
 objects.

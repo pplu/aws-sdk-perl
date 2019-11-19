@@ -1,9 +1,37 @@
+# Generated from default/object.tt
 package Paws::Comprehend::EntityRecognizerMetadata;
-  use Moose;
-  has EntityTypes => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::EntityRecognizerMetadataEntityTypesListItem]');
-  has EvaluationMetrics => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerEvaluationMetrics');
-  has NumberOfTestDocuments => (is => 'ro', isa => 'Int');
-  has NumberOfTrainedDocuments => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::Comprehend::Types qw/Comprehend_EntityRecognizerEvaluationMetrics Comprehend_EntityRecognizerMetadataEntityTypesListItem/;
+  has EntityTypes => (is => 'ro', isa => ArrayRef[Comprehend_EntityRecognizerMetadataEntityTypesListItem]);
+  has EvaluationMetrics => (is => 'ro', isa => Comprehend_EntityRecognizerEvaluationMetrics);
+  has NumberOfTestDocuments => (is => 'ro', isa => Int);
+  has NumberOfTrainedDocuments => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumberOfTrainedDocuments' => {
+                                               'type' => 'Int'
+                                             },
+               'NumberOfTestDocuments' => {
+                                            'type' => 'Int'
+                                          },
+               'EntityTypes' => {
+                                  'type' => 'ArrayRef[Comprehend_EntityRecognizerMetadataEntityTypesListItem]',
+                                  'class' => 'Paws::Comprehend::EntityRecognizerMetadataEntityTypesListItem'
+                                },
+               'EvaluationMetrics' => {
+                                        'class' => 'Paws::Comprehend::EntityRecognizerEvaluationMetrics',
+                                        'type' => 'Comprehend_EntityRecognizerEvaluationMetrics'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,12 +67,12 @@ Detailed information about an entity recognizer.
 =head1 ATTRIBUTES
 
 
-=head2 EntityTypes => ArrayRef[L<Paws::Comprehend::EntityRecognizerMetadataEntityTypesListItem>]
+=head2 EntityTypes => ArrayRef[Comprehend_EntityRecognizerMetadataEntityTypesListItem]
 
   Entity types from the metadata of an entity recognizer.
 
 
-=head2 EvaluationMetrics => L<Paws::Comprehend::EntityRecognizerEvaluationMetrics>
+=head2 EvaluationMetrics => Comprehend_EntityRecognizerEvaluationMetrics
 
   Detailed information about the accuracy of an entity recognizer.
 

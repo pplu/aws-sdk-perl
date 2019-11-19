@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::XRay::FaultRootCauseService;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has EntityPath => (is => 'ro', isa => 'ArrayRef[Paws::XRay::FaultRootCauseEntity]');
-  has Inferred => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
-  has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool Undef/;
+  use Paws::XRay::Types qw/XRay_FaultRootCauseEntity/;
+  has AccountId => (is => 'ro', isa => Str);
+  has EntityPath => (is => 'ro', isa => ArrayRef[XRay_FaultRootCauseEntity]);
+  has Inferred => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str);
+  has Names => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EntityPath' => {
+                                 'type' => 'ArrayRef[XRay_FaultRootCauseEntity]',
+                                 'class' => 'Paws::XRay::FaultRootCauseEntity'
+                               },
+               'Inferred' => {
+                               'type' => 'Bool'
+                             },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Names' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +80,7 @@ fault.
   The account ID associated to the service.
 
 
-=head2 EntityPath => ArrayRef[L<Paws::XRay::FaultRootCauseEntity>]
+=head2 EntityPath => ArrayRef[XRay_FaultRootCauseEntity]
 
   The path of root cause entities found on the service.
 

@@ -1,22 +1,83 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::RegisterWorkflowType;
-  use Moose;
-  has DefaultChildPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultChildPolicy' );
-  has DefaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultExecutionStartToCloseTimeout' );
-  has DefaultLambdaRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultLambdaRole' );
-  has DefaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'defaultTaskList' );
-  has DefaultTaskPriority => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskPriority' );
-  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskStartToCloseTimeout' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_TaskList/;
+  has DefaultChildPolicy => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultExecutionStartToCloseTimeout => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultLambdaRole => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultTaskList => (is => 'ro', isa => SimpleWorkflow_TaskList, predicate => 1);
+  has DefaultTaskPriority => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Version => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterWorkflowType');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterWorkflowType');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DefaultLambdaRole' => 'defaultLambdaRole',
+                       'DefaultTaskStartToCloseTimeout' => 'defaultTaskStartToCloseTimeout',
+                       'Domain' => 'domain',
+                       'Name' => 'name',
+                       'DefaultTaskPriority' => 'defaultTaskPriority',
+                       'DefaultExecutionStartToCloseTimeout' => 'defaultExecutionStartToCloseTimeout',
+                       'DefaultTaskList' => 'defaultTaskList',
+                       'DefaultChildPolicy' => 'defaultChildPolicy',
+                       'Version' => 'version',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Domain' => 1,
+                    'Version' => 1
+                  },
+  'types' => {
+               'DefaultTaskPriority' => {
+                                          'type' => 'Str'
+                                        },
+               'DefaultExecutionStartToCloseTimeout' => {
+                                                          'type' => 'Str'
+                                                        },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DefaultLambdaRole' => {
+                                        'type' => 'Str'
+                                      },
+               'DefaultTaskStartToCloseTimeout' => {
+                                                     'type' => 'Str'
+                                                   },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'DefaultChildPolicy' => {
+                                         'type' => 'Str'
+                                       },
+               'DefaultTaskList' => {
+                                      'class' => 'Paws::SimpleWorkflow::TaskList',
+                                      'type' => 'SimpleWorkflow_TaskList'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -124,7 +185,7 @@ in the I<Amazon SWF Developer Guide>.
 
 
 
-=head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 DefaultTaskList => SimpleWorkflow_TaskList
 
 If set, specifies the default task list to use for scheduling decision
 tasks for executions of this workflow type. This default is used only

@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::MigrationHub::DiscoveredResource;
-  use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MigrationHub::Types qw//;
+  has ConfigurationId => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfigurationId' => 1
+                  },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ConfigurationId' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

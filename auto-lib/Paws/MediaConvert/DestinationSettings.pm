@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::DestinationSettings;
-  use Moose;
-  has S3Settings => (is => 'ro', isa => 'Paws::MediaConvert::S3DestinationSettings', request_name => 's3Settings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaConvert::Types qw/MediaConvert_S3DestinationSettings/;
+  has S3Settings => (is => 'ro', isa => MediaConvert_S3DestinationSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Settings' => {
+                                 'class' => 'Paws::MediaConvert::S3DestinationSettings',
+                                 'type' => 'MediaConvert_S3DestinationSettings'
+                               }
+             },
+  'NameInRequest' => {
+                       'S3Settings' => 's3Settings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ of destination
 =head1 ATTRIBUTES
 
 
-=head2 S3Settings => L<Paws::MediaConvert::S3DestinationSettings>
+=head2 S3Settings => MediaConvert_S3DestinationSettings
 
   Settings associated with S3 destination
 

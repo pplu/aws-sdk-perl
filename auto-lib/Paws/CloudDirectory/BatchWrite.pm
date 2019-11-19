@@ -1,15 +1,41 @@
 
 package Paws::CloudDirectory::BatchWrite;
-  use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has Operations => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::BatchWriteOperation]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_BatchWriteOperation/;
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Operations => (is => 'ro', isa => ArrayRef[CloudDirectory_BatchWriteOperation], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchWrite');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/batchwrite');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::BatchWriteResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchWrite');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/batchwrite');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::BatchWriteResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Operations' => 1,
+                    'DirectoryArn' => 1
+                  },
+  'types' => {
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'Operations' => {
+                                 'type' => 'ArrayRef[CloudDirectory_BatchWriteOperation]',
+                                 'class' => 'Paws::CloudDirectory::BatchWriteOperation'
+                               }
+             },
+  'ParamInHeader' => {
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ObjectAttributeList => [
               {
                 Key => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
                   Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
@@ -48,16 +74,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                   NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                   StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                },
+                },    # OPTIONAL
 
               },
               ...
             ],
             ObjectReference => {
-              Selector => 'MySelectorObjectReference',            # OPTIONAL
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
             SchemaFacet => {
-              FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
+              FacetName => 'MyFacetName',                 # min: 1, max: 64
               SchemaArn => 'MyArn',
             },
 
@@ -100,16 +126,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                   NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                   StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                },
+                },    # OPTIONAL
 
               },
               ...
             ],
             SourceObjectReference => {
-              Selector => 'MySelectorObjectReference',            # OPTIONAL
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
             TargetObjectReference => {
-              Selector => 'MySelectorObjectReference',            # OPTIONAL
+              Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
             TypedLinkFacet => {
               SchemaArn     => 'MyArn',
@@ -122,7 +148,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             IsUnique                    => 1,
             OrderedIndexedAttributeList => [
               {
-                FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                FacetName => 'MyFacetName',        # min: 1, max: 64
                 Name      => 'MyAttributeName',    # min: 1, max: 230
                 SchemaArn => 'MyArn',
 
@@ -139,7 +165,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ObjectAttributeList => [
               {
                 Key => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
                   Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
@@ -150,14 +176,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                   NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                   StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                },
+                },    # OPTIONAL
 
               },
               ...
             ],
             SchemaFacet => [
               {
-                FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
+                FacetName => 'MyFacetName',    # min: 1, max: 64
                 SchemaArn => 'MyArn',
               },
               ...
@@ -210,16 +236,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                     NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                     StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                  },
+                  },    # OPTIONAL
 
                 },
                 ...
               ],
               SourceObjectReference => {
-                Selector => 'MySelectorObjectReference',            # OPTIONAL
+                Selector => 'MySelectorObjectReference',    # OPTIONAL
               },
               TargetObjectReference => {
-                Selector => 'MySelectorObjectReference',            # OPTIONAL
+                Selector => 'MySelectorObjectReference',    # OPTIONAL
               },
               TypedLinkFacet => {
                 SchemaArn     => 'MyArn',
@@ -235,7 +261,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
             SchemaFacet => {
-              FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
+              FacetName => 'MyFacetName',                 # min: 1, max: 64
               SchemaArn => 'MyArn',
             },
 
@@ -252,10 +278,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                     NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                     StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                  },
+                  },    # OPTIONAL
                 },    # OPTIONAL
                 AttributeKey => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
                   Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
@@ -273,16 +299,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                     NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                     StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                  },
+                  },    # OPTIONAL
 
                 },
                 ...
               ],
               SourceObjectReference => {
-                Selector => 'MySelectorObjectReference',            # OPTIONAL
+                Selector => 'MySelectorObjectReference',    # OPTIONAL
               },
               TargetObjectReference => {
-                Selector => 'MySelectorObjectReference',            # OPTIONAL
+                Selector => 'MySelectorObjectReference',    # OPTIONAL
               },
               TypedLinkFacet => {
                 SchemaArn     => 'MyArn',
@@ -305,10 +331,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
                     NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
                     StringValue   => 'MyStringAttributeValue',      # OPTIONAL
-                  },
+                  },    # OPTIONAL
                 },    # OPTIONAL
                 ObjectAttributeKey => {
-                  FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+                  FacetName => 'MyFacetName',        # min: 1, max: 64
                   Name      => 'MyAttributeName',    # min: 1, max: 230
                   SchemaArn => 'MyArn',
 
@@ -345,7 +371,7 @@ For more information, see arns.
 
 
 
-=head2 B<REQUIRED> Operations => ArrayRef[L<Paws::CloudDirectory::BatchWriteOperation>]
+=head2 B<REQUIRED> Operations => ArrayRef[CloudDirectory_BatchWriteOperation]
 
 A list of operations that are part of the batch.
 

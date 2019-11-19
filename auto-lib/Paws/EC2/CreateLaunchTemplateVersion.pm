@@ -1,19 +1,56 @@
 
 package Paws::EC2::CreateLaunchTemplateVersion;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has LaunchTemplateData => (is => 'ro', isa => 'Paws::EC2::RequestLaunchTemplateData', required => 1);
-  has LaunchTemplateId => (is => 'ro', isa => 'Str');
-  has LaunchTemplateName => (is => 'ro', isa => 'Str');
-  has SourceVersion => (is => 'ro', isa => 'Str');
-  has VersionDescription => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw/EC2_RequestLaunchTemplateData/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has LaunchTemplateData => (is => 'ro', isa => EC2_RequestLaunchTemplateData, required => 1, predicate => 1);
+  has LaunchTemplateId => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchTemplateName => (is => 'ro', isa => Str, predicate => 1);
+  has SourceVersion => (is => 'ro', isa => Str, predicate => 1);
+  has VersionDescription => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLaunchTemplateVersion');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateLaunchTemplateVersionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLaunchTemplateVersion');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateLaunchTemplateVersionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchTemplateData' => {
+                                         'type' => 'EC2_RequestLaunchTemplateData',
+                                         'class' => 'Paws::EC2::RequestLaunchTemplateData'
+                                       },
+               'VersionDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'LaunchTemplateName' => {
+                                         'type' => 'Str'
+                                       },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'SourceVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'LaunchTemplateId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'LaunchTemplateData' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -220,7 +257,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> LaunchTemplateData => L<Paws::EC2::RequestLaunchTemplateData>
+=head2 B<REQUIRED> LaunchTemplateData => EC2_RequestLaunchTemplateData
 
 The information for the launch template.
 

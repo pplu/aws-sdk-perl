@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::ECR::ImageScanFindingsSummary;
-  use Moose;
-  has FindingSeverityCounts => (is => 'ro', isa => 'Paws::ECR::FindingSeverityCounts', request_name => 'findingSeverityCounts', traits => ['NameInRequest']);
-  has ImageScanCompletedAt => (is => 'ro', isa => 'Str', request_name => 'imageScanCompletedAt', traits => ['NameInRequest']);
-  has VulnerabilitySourceUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'vulnerabilitySourceUpdatedAt', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw/ECR_FindingSeverityCounts/;
+  has FindingSeverityCounts => (is => 'ro', isa => ECR_FindingSeverityCounts);
+  has ImageScanCompletedAt => (is => 'ro', isa => Str);
+  has VulnerabilitySourceUpdatedAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FindingSeverityCounts' => {
+                                            'type' => 'ECR_FindingSeverityCounts',
+                                            'class' => 'Paws::ECR::FindingSeverityCounts'
+                                          },
+               'ImageScanCompletedAt' => {
+                                           'type' => 'Str'
+                                         },
+               'VulnerabilitySourceUpdatedAt' => {
+                                                   'type' => 'Str'
+                                                 }
+             },
+  'NameInRequest' => {
+                       'FindingSeverityCounts' => 'findingSeverityCounts',
+                       'ImageScanCompletedAt' => 'imageScanCompletedAt',
+                       'VulnerabilitySourceUpdatedAt' => 'vulnerabilitySourceUpdatedAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ A summary of the last completed image scan.
 =head1 ATTRIBUTES
 
 
-=head2 FindingSeverityCounts => L<Paws::ECR::FindingSeverityCounts>
+=head2 FindingSeverityCounts => ECR_FindingSeverityCounts
 
   The image vulnerability counts, sorted by severity.
 

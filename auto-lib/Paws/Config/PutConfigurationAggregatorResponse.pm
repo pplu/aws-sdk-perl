@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::PutConfigurationAggregatorResponse;
-  use Moose;
-  has ConfigurationAggregator => (is => 'ro', isa => 'Paws::Config::ConfigurationAggregator');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_ConfigurationAggregator/;
+  has ConfigurationAggregator => (is => 'ro', isa => Config_ConfigurationAggregator);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ConfigurationAggregator' => {
+                                              'class' => 'Paws::Config::ConfigurationAggregator',
+                                              'type' => 'Config_ConfigurationAggregator'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Config::PutConfigurationAggregatorResponse
 =head1 ATTRIBUTES
 
 
-=head2 ConfigurationAggregator => L<Paws::Config::ConfigurationAggregator>
+=head2 ConfigurationAggregator => Config_ConfigurationAggregator
 
 Returns a ConfigurationAggregator object.
 

@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Glue::CrawlerNodeDetails;
-  use Moose;
-  has Crawls => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Crawl]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Glue::Types qw/Glue_Crawl/;
+  has Crawls => (is => 'ro', isa => ArrayRef[Glue_Crawl]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Crawls' => {
+                             'type' => 'ArrayRef[Glue_Crawl]',
+                             'class' => 'Paws::Glue::Crawl'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ The details of a Crawler node present in the workflow.
 =head1 ATTRIBUTES
 
 
-=head2 Crawls => ArrayRef[L<Paws::Glue::Crawl>]
+=head2 Crawls => ArrayRef[Glue_Crawl]
 
   A list of crawls represented by the crawl node.
 

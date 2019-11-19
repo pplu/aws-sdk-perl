@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Organizations;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'organizations' }
   sub signing_name { 'organizations' }
   sub version { '2016-11-28' }
   sub target_prefix { 'AWSOrganizationsV20161128' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'TooManyRequestsException' },
   ] });
 
@@ -1611,7 +1613,7 @@ types in the organization, use DescribeOrganization.
 
 =over
 
-=item Target => L<Paws::Organizations::HandshakeParty>
+=item Target => Organizations_HandshakeParty
 
 =item [Notes => Str]
 
@@ -1875,7 +1877,7 @@ account.
 
 =over
 
-=item [Filter => L<Paws::Organizations::HandshakeFilter>]
+=item [Filter => Organizations_HandshakeFilter]
 
 =item [MaxResults => Int]
 
@@ -1908,7 +1910,7 @@ This operation can be called from any account in the organization.
 
 =over
 
-=item [Filter => L<Paws::Organizations::HandshakeFilter>]
+=item [Filter => Organizations_HandshakeFilter]
 
 =item [MaxResults => Int]
 
@@ -2227,7 +2229,7 @@ in the I<AWS Organizations User Guide.>
 
 =item ResourceId => Str
 
-=item Tags => ArrayRef[L<Paws::Organizations::Tag>]
+=item Tags => ArrayRef[Organizations_Tag]
 
 
 =back
@@ -2383,9 +2385,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Organizations::ListCreateAccountStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllHandshakesForAccount(sub { },[Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllHandshakesForAccount(sub { },[Filter => Organizations_HandshakeFilter, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllHandshakesForAccount([Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllHandshakesForAccount([Filter => Organizations_HandshakeFilter, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2395,9 +2397,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Organizations::ListHandshakesForAccountResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllHandshakesForOrganization(sub { },[Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllHandshakesForOrganization(sub { },[Filter => Organizations_HandshakeFilter, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllHandshakesForOrganization([Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllHandshakesForOrganization([Filter => Organizations_HandshakeFilter, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

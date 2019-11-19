@@ -1,24 +1,96 @@
+# Generated from default/object.tt
 package Paws::SSM::InstanceInformation;
-  use Moose;
-  has ActivationId => (is => 'ro', isa => 'Str');
-  has AgentVersion => (is => 'ro', isa => 'Str');
-  has AssociationOverview => (is => 'ro', isa => 'Paws::SSM::InstanceAggregatedAssociationOverview');
-  has AssociationStatus => (is => 'ro', isa => 'Str');
-  has ComputerName => (is => 'ro', isa => 'Str');
-  has IamRole => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has IPAddress => (is => 'ro', isa => 'Str');
-  has IsLatestVersion => (is => 'ro', isa => 'Bool');
-  has LastAssociationExecutionDate => (is => 'ro', isa => 'Str');
-  has LastPingDateTime => (is => 'ro', isa => 'Str');
-  has LastSuccessfulAssociationExecutionDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has PingStatus => (is => 'ro', isa => 'Str');
-  has PlatformName => (is => 'ro', isa => 'Str');
-  has PlatformType => (is => 'ro', isa => 'Str');
-  has PlatformVersion => (is => 'ro', isa => 'Str');
-  has RegistrationDate => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SSM::Types qw/SSM_InstanceAggregatedAssociationOverview/;
+  has ActivationId => (is => 'ro', isa => Str);
+  has AgentVersion => (is => 'ro', isa => Str);
+  has AssociationOverview => (is => 'ro', isa => SSM_InstanceAggregatedAssociationOverview);
+  has AssociationStatus => (is => 'ro', isa => Str);
+  has ComputerName => (is => 'ro', isa => Str);
+  has IamRole => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has IPAddress => (is => 'ro', isa => Str);
+  has IsLatestVersion => (is => 'ro', isa => Bool);
+  has LastAssociationExecutionDate => (is => 'ro', isa => Str);
+  has LastPingDateTime => (is => 'ro', isa => Str);
+  has LastSuccessfulAssociationExecutionDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has PingStatus => (is => 'ro', isa => Str);
+  has PlatformName => (is => 'ro', isa => Str);
+  has PlatformType => (is => 'ro', isa => Str);
+  has PlatformVersion => (is => 'ro', isa => Str);
+  has RegistrationDate => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IamRole' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RegistrationDate' => {
+                                       'type' => 'Str'
+                                     },
+               'PlatformName' => {
+                                   'type' => 'Str'
+                                 },
+               'LastPingDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'LastSuccessfulAssociationExecutionDate' => {
+                                                             'type' => 'Str'
+                                                           },
+               'PlatformType' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'ComputerName' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'IPAddress' => {
+                                'type' => 'Str'
+                              },
+               'ActivationId' => {
+                                   'type' => 'Str'
+                                 },
+               'LastAssociationExecutionDate' => {
+                                                   'type' => 'Str'
+                                                 },
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'AssociationOverview' => {
+                                          'type' => 'SSM_InstanceAggregatedAssociationOverview',
+                                          'class' => 'Paws::SSM::InstanceAggregatedAssociationOverview'
+                                        },
+               'AssociationStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'PingStatus' => {
+                                 'type' => 'Str'
+                               },
+               'AgentVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'IsLatestVersion' => {
+                                      'type' => 'Bool'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +137,7 @@ registered.
   The version of SSM Agent running on your Linux instance.
 
 
-=head2 AssociationOverview => L<Paws::SSM::InstanceAggregatedAssociationOverview>
+=head2 AssociationOverview => SSM_InstanceAggregatedAssociationOverview
 
   Information about the association.
 

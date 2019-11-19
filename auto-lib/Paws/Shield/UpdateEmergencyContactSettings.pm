@@ -1,13 +1,30 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Shield::UpdateEmergencyContactSettings;
-  use Moose;
-  has EmergencyContactList => (is => 'ro', isa => 'ArrayRef[Paws::Shield::EmergencyContact]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Shield::Types qw/Shield_EmergencyContact/;
+  has EmergencyContactList => (is => 'ro', isa => ArrayRef[Shield_EmergencyContact], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEmergencyContactSettings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Shield::UpdateEmergencyContactSettingsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateEmergencyContactSettings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Shield::UpdateEmergencyContactSettingsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EmergencyContactList' => {
+                                           'class' => 'Paws::Shield::EmergencyContact',
+                                           'type' => 'ArrayRef[Shield_EmergencyContact]'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +61,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/shi
 =head1 ATTRIBUTES
 
 
-=head2 EmergencyContactList => ArrayRef[L<Paws::Shield::EmergencyContact>]
+=head2 EmergencyContactList => ArrayRef[Shield_EmergencyContact]
 
 A list of email addresses that the DRT can use to contact you during a
 suspected attack.

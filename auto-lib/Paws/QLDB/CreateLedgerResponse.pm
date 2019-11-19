@@ -1,13 +1,42 @@
 
 package Paws::QLDB::CreateLedgerResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreationDateTime => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::QLDB::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has DeletionProtection => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

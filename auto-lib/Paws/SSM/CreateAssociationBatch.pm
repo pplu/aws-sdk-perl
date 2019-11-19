@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::CreateAssociationBatch;
-  use Moose;
-  has Entries => (is => 'ro', isa => 'ArrayRef[Paws::SSM::CreateAssociationBatchRequestEntry]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_CreateAssociationBatchRequestEntry/;
+  has Entries => (is => 'ro', isa => ArrayRef[SSM_CreateAssociationBatchRequestEntry], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAssociationBatch');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreateAssociationBatchResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateAssociationBatch');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::CreateAssociationBatchResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Entries' => 1
+                  },
+  'types' => {
+               'Entries' => {
+                              'class' => 'Paws::SSM::CreateAssociationBatchRequestEntry',
+                              'type' => 'ArrayRef[SSM_CreateAssociationBatchRequestEntry]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +97,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Entries => ArrayRef[L<Paws::SSM::CreateAssociationBatchRequestEntry>]
+=head2 B<REQUIRED> Entries => ArrayRef[SSM_CreateAssociationBatchRequestEntry]
 
 One or more associations.
 

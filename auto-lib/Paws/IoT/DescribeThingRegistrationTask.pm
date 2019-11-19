@@ -1,14 +1,35 @@
 
 package Paws::IoT::DescribeThingRegistrationTask;
-  use Moose;
-  has TaskId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'taskId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has TaskId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeThingRegistrationTask');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/thing-registration-tasks/{taskId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DescribeThingRegistrationTaskResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeThingRegistrationTask');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/thing-registration-tasks/{taskId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DescribeThingRegistrationTaskResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TaskId' => 1
+                  },
+  'types' => {
+               'TaskId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInURI' => {
+                    'TaskId' => 'taskId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

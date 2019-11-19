@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::Coverage;
-  use Moose;
-  has CoverageCost => (is => 'ro', isa => 'Paws::CostExplorer::CoverageCost');
-  has CoverageHours => (is => 'ro', isa => 'Paws::CostExplorer::CoverageHours');
-  has CoverageNormalizedUnits => (is => 'ro', isa => 'Paws::CostExplorer::CoverageNormalizedUnits');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CostExplorer::Types qw/CostExplorer_CoverageHours CostExplorer_CoverageCost CostExplorer_CoverageNormalizedUnits/;
+  has CoverageCost => (is => 'ro', isa => CostExplorer_CoverageCost);
+  has CoverageHours => (is => 'ro', isa => CostExplorer_CoverageHours);
+  has CoverageNormalizedUnits => (is => 'ro', isa => CostExplorer_CoverageNormalizedUnits);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CoverageCost' => {
+                                   'type' => 'CostExplorer_CoverageCost',
+                                   'class' => 'Paws::CostExplorer::CoverageCost'
+                                 },
+               'CoverageHours' => {
+                                    'type' => 'CostExplorer_CoverageHours',
+                                    'class' => 'Paws::CostExplorer::CoverageHours'
+                                  },
+               'CoverageNormalizedUnits' => {
+                                              'type' => 'CostExplorer_CoverageNormalizedUnits',
+                                              'class' => 'Paws::CostExplorer::CoverageNormalizedUnits'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +64,17 @@ The amount of instance usage that a reservation covered.
 =head1 ATTRIBUTES
 
 
-=head2 CoverageCost => L<Paws::CostExplorer::CoverageCost>
+=head2 CoverageCost => CostExplorer_CoverageCost
 
   The amount of cost that the reservation covered.
 
 
-=head2 CoverageHours => L<Paws::CostExplorer::CoverageHours>
+=head2 CoverageHours => CostExplorer_CoverageHours
 
   The amount of instance usage that the reservation covered, in hours.
 
 
-=head2 CoverageNormalizedUnits => L<Paws::CostExplorer::CoverageNormalizedUnits>
+=head2 CoverageNormalizedUnits => CostExplorer_CoverageNormalizedUnits
 
   The amount of instance usage that the reservation covered, in
 normalized units.

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IAM::ServerCertificate;
-  use Moose;
-  has CertificateBody => (is => 'ro', isa => 'Str', required => 1);
-  has CertificateChain => (is => 'ro', isa => 'Str');
-  has ServerCertificateMetadata => (is => 'ro', isa => 'Paws::IAM::ServerCertificateMetadata', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_ServerCertificateMetadata/;
+  has CertificateBody => (is => 'ro', isa => Str, required => 1);
+  has CertificateChain => (is => 'ro', isa => Str);
+  has ServerCertificateMetadata => (is => 'ro', isa => IAM_ServerCertificateMetadata, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CertificateBody' => 1,
+                    'ServerCertificateMetadata' => 1
+                  },
+  'types' => {
+               'ServerCertificateMetadata' => {
+                                                'class' => 'Paws::IAM::ServerCertificateMetadata',
+                                                'type' => 'IAM_ServerCertificateMetadata'
+                                              },
+               'CertificateBody' => {
+                                      'type' => 'Str'
+                                    },
+               'CertificateChain' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +79,7 @@ GetServerCertificate operation.
   The contents of the public key certificate chain.
 
 
-=head2 B<REQUIRED> ServerCertificateMetadata => L<Paws::IAM::ServerCertificateMetadata>
+=head2 B<REQUIRED> ServerCertificateMetadata => IAM_ServerCertificateMetadata
 
   The meta information of the server certificate, such as its name, path,
 ID, and ARN.

@@ -1,17 +1,54 @@
 
 package Paws::Robomaker::UpdateRobotApplication;
-  use Moose;
-  has Application => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'application', required => 1);
-  has CurrentRevisionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'currentRevisionId');
-  has RobotSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::RobotSoftwareSuite', traits => ['NameInRequest'], request_name => 'robotSoftwareSuite', required => 1);
-  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SourceConfig]', traits => ['NameInRequest'], request_name => 'sources', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_SourceConfig Robomaker_RobotSoftwareSuite/;
+  has Application => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CurrentRevisionId => (is => 'ro', isa => Str, predicate => 1);
+  has RobotSoftwareSuite => (is => 'ro', isa => Robomaker_RobotSoftwareSuite, required => 1, predicate => 1);
+  has Sources => (is => 'ro', isa => ArrayRef[Robomaker_SourceConfig], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRobotApplication');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/updateRobotApplication');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Robomaker::UpdateRobotApplicationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRobotApplication');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/updateRobotApplication');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Robomaker::UpdateRobotApplicationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RobotSoftwareSuite' => 1,
+                    'Sources' => 1,
+                    'Application' => 1
+                  },
+  'NameInRequest' => {
+                       'Application' => 'application',
+                       'CurrentRevisionId' => 'currentRevisionId',
+                       'Sources' => 'sources',
+                       'RobotSoftwareSuite' => 'robotSoftwareSuite'
+                     },
+  'types' => {
+               'Sources' => {
+                              'class' => 'Paws::Robomaker::SourceConfig',
+                              'type' => 'ArrayRef[Robomaker_SourceConfig]'
+                            },
+               'CurrentRevisionId' => {
+                                        'type' => 'Str'
+                                      },
+               'Application' => {
+                                  'type' => 'Str'
+                                },
+               'RobotSoftwareSuite' => {
+                                         'type' => 'Robomaker_RobotSoftwareSuite',
+                                         'class' => 'Paws::Robomaker::RobotSoftwareSuite'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,13 +115,13 @@ The revision id for the robot application.
 
 
 
-=head2 B<REQUIRED> RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
+=head2 B<REQUIRED> RobotSoftwareSuite => Robomaker_RobotSoftwareSuite
 
 The robot software suite used by the robot application.
 
 
 
-=head2 B<REQUIRED> Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
+=head2 B<REQUIRED> Sources => ArrayRef[Robomaker_SourceConfig]
 
 The sources of the robot application.
 

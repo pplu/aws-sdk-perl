@@ -1,17 +1,50 @@
 
 package Paws::PersonalizeRuntime::GetRecommendations;
-  use Moose;
-  has CampaignArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'campaignArn', required => 1);
-  has ItemId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'itemId');
-  has NumResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numResults');
-  has UserId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userId');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::PersonalizeRuntime::Types qw//;
+  has CampaignArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ItemId => (is => 'ro', isa => Str, predicate => 1);
+  has NumResults => (is => 'ro', isa => Int, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRecommendations');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/recommendations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PersonalizeRuntime::GetRecommendationsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetRecommendations');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/recommendations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PersonalizeRuntime::GetRecommendationsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CampaignArn' => 1
+                  },
+  'NameInRequest' => {
+                       'UserId' => 'userId',
+                       'ItemId' => 'itemId',
+                       'CampaignArn' => 'campaignArn',
+                       'NumResults' => 'numResults'
+                     },
+  'types' => {
+               'ItemId' => {
+                             'type' => 'Str'
+                           },
+               'NumResults' => {
+                                 'type' => 'Int'
+                               },
+               'CampaignArn' => {
+                                  'type' => 'Str'
+                                },
+               'UserId' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

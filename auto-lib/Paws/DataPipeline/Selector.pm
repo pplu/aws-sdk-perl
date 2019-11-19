@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::DataPipeline::Selector;
-  use Moose;
-  has FieldName => (is => 'ro', isa => 'Str', request_name => 'fieldName', traits => ['NameInRequest']);
-  has Operator => (is => 'ro', isa => 'Paws::DataPipeline::Operator', request_name => 'operator', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataPipeline::Types qw/DataPipeline_Operator/;
+  has FieldName => (is => 'ro', isa => Str);
+  has Operator => (is => 'ro', isa => DataPipeline_Operator);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FieldName' => {
+                                'type' => 'Str'
+                              },
+               'Operator' => {
+                               'type' => 'DataPipeline_Operator',
+                               'class' => 'Paws::DataPipeline::Operator'
+                             }
+             },
+  'NameInRequest' => {
+                       'Operator' => 'operator',
+                       'FieldName' => 'fieldName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +71,7 @@ definition syntax that is used by the AWS Data Pipeline API. If the
 field is not set on the object, the condition fails.
 
 
-=head2 Operator => L<Paws::DataPipeline::Operator>
+=head2 Operator => DataPipeline_Operator
 
   
 

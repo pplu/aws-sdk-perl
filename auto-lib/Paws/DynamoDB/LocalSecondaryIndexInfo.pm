@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::LocalSecondaryIndexInfo;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str');
-  has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]');
-  has Projection => (is => 'ro', isa => 'Paws::DynamoDB::Projection');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_Projection DynamoDB_KeySchemaElement/;
+  has IndexName => (is => 'ro', isa => Str);
+  has KeySchema => (is => 'ro', isa => ArrayRef[DynamoDB_KeySchemaElement]);
+  has Projection => (is => 'ro', isa => DynamoDB_Projection);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeySchema' => {
+                                'type' => 'ArrayRef[DynamoDB_KeySchemaElement]',
+                                'class' => 'Paws::DynamoDB::KeySchemaElement'
+                              },
+               'Projection' => {
+                                 'class' => 'Paws::DynamoDB::Projection',
+                                 'type' => 'DynamoDB_Projection'
+                               },
+               'IndexName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +69,7 @@ the backup was created.
   Represents the name of the local secondary index.
 
 
-=head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
+=head2 KeySchema => ArrayRef[DynamoDB_KeySchemaElement]
 
   The complete key schema for a local secondary index, which consists of
 one or more pairs of attribute names and key types:
@@ -72,7 +97,7 @@ the same partition key physically close together, in sorted order by
 the sort key value.
 
 
-=head2 Projection => L<Paws::DynamoDB::Projection>
+=head2 Projection => DynamoDB_Projection
 
   Represents attributes that are copied (projected) from the table into
 the global secondary index. These are in addition to the primary key

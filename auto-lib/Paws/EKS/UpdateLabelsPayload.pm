@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::EKS::UpdateLabelsPayload;
-  use Moose;
-  has AddOrUpdateLabels => (is => 'ro', isa => 'Paws::EKS::LabelsMap', request_name => 'addOrUpdateLabels', traits => ['NameInRequest']);
-  has RemoveLabels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'removeLabels', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::EKS::Types qw/EKS_labelsMap/;
+  has AddOrUpdateLabels => (is => 'ro', isa => EKS_labelsMap);
+  has RemoveLabels => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AddOrUpdateLabels' => 'addOrUpdateLabels',
+                       'RemoveLabels' => 'removeLabels'
+                     },
+  'types' => {
+               'AddOrUpdateLabels' => {
+                                        'type' => 'EKS_labelsMap',
+                                        'class' => 'Paws::EKS::LabelsMap'
+                                      },
+               'RemoveLabels' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +63,7 @@ group.
 =head1 ATTRIBUTES
 
 
-=head2 AddOrUpdateLabels => L<Paws::EKS::LabelsMap>
+=head2 AddOrUpdateLabels => EKS_labelsMap
 
   Kubernetes labels to be added or updated.
 

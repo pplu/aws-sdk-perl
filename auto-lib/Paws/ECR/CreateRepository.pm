@@ -1,16 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECR::CreateRepository;
-  use Moose;
-  has ImageScanningConfiguration => (is => 'ro', isa => 'Paws::ECR::ImageScanningConfiguration', traits => ['NameInRequest'], request_name => 'imageScanningConfiguration' );
-  has ImageTagMutability => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageTagMutability' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECR::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECR::Types qw/ECR_ImageScanningConfiguration ECR_Tag/;
+  has ImageScanningConfiguration => (is => 'ro', isa => ECR_ImageScanningConfiguration, predicate => 1);
+  has ImageTagMutability => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ECR_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRepository');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::CreateRepositoryResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRepository');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECR::CreateRepositoryResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImageScanningConfiguration' => {
+                                                 'type' => 'ECR_ImageScanningConfiguration',
+                                                 'class' => 'Paws::ECR::ImageScanningConfiguration'
+                                               },
+               'ImageTagMutability' => {
+                                         'type' => 'Str'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::ECR::Tag',
+                           'type' => 'ArrayRef[ECR_Tag]'
+                         },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'RepositoryName' => 1
+                  },
+  'NameInRequest' => {
+                       'RepositoryName' => 'repositoryName',
+                       'Tags' => 'tags',
+                       'ImageTagMutability' => 'imageTagMutability',
+                       'ImageScanningConfiguration' => 'imageScanningConfiguration'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +83,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 ImageScanningConfiguration => L<Paws::ECR::ImageScanningConfiguration>
+=head2 ImageScanningConfiguration => ECR_ImageScanningConfiguration
 
 The image scanning configuration for the repository. This setting
 determines whether images are scanned for known vulnerabilities after
@@ -74,7 +110,7 @@ C<project-a/nginx-web-app>).
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ECR::Tag>]
+=head2 Tags => ArrayRef[ECR_Tag]
 
 The metadata that you apply to the repository to help you categorize
 and organize them. Each tag consists of a key and an optional value,

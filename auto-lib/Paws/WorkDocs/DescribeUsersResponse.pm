@@ -1,11 +1,35 @@
 
 package Paws::WorkDocs::DescribeUsersResponse;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has TotalNumberOfUsers => (is => 'ro', isa => 'Int');
-  has Users => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::User]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::WorkDocs::Types qw/WorkDocs_User/;
+  has Marker => (is => 'ro', isa => Str);
+  has TotalNumberOfUsers => (is => 'ro', isa => Int);
+  has Users => (is => 'ro', isa => ArrayRef[WorkDocs_User]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Users' => {
+                            'class' => 'Paws::WorkDocs::User',
+                            'type' => 'ArrayRef[WorkDocs_User]'
+                          },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'TotalNumberOfUsers' => {
+                                         'type' => 'Int'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +52,7 @@ no additional results, the string is empty.
 The total number of users included in the results.
 
 
-=head2 Users => ArrayRef[L<Paws::WorkDocs::User>]
+=head2 Users => ArrayRef[WorkDocs_User]
 
 The users.
 

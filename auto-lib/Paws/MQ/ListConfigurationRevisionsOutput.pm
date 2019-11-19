@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::MQ::ListConfigurationRevisionsOutput;
-  use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', request_name => 'configurationId', traits => ['NameInRequest']);
-  has MaxResults => (is => 'ro', isa => 'Int', request_name => 'maxResults', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
-  has Revisions => (is => 'ro', isa => 'ArrayRef[Paws::MQ::ConfigurationRevision]', request_name => 'revisions', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::MQ::Types qw/MQ_ConfigurationRevision/;
+  has ConfigurationId => (is => 'ro', isa => Str);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
+  has Revisions => (is => 'ro', isa => ArrayRef[MQ_ConfigurationRevision]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Revisions' => 'revisions',
+                       'ConfigurationId' => 'configurationId',
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'ConfigurationId' => {
+                                      'type' => 'Str'
+                                    },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Revisions' => {
+                                'class' => 'Paws::MQ::ConfigurationRevision',
+                                'type' => 'ArrayRef[MQ_ConfigurationRevision]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +89,7 @@ page (20 by default). This value must be an integer from 5 to 100.
 return. To request the first page, leave nextToken empty.
 
 
-=head2 Revisions => ArrayRef[L<Paws::MQ::ConfigurationRevision>]
+=head2 Revisions => ArrayRef[MQ_ConfigurationRevision]
 
   The list of all revisions for the specified configuration.
 

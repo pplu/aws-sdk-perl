@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::IoT::KeyPair;
-  use Moose;
-  has PrivateKey => (is => 'ro', isa => 'Str');
-  has PublicKey => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has PrivateKey => (is => 'ro', isa => Str);
+  has PublicKey => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PublicKey' => {
+                                'type' => 'Str'
+                              },
+               'PrivateKey' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

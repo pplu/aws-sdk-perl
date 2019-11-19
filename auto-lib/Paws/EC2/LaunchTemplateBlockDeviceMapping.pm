@@ -1,9 +1,39 @@
 package Paws::EC2::LaunchTemplateBlockDeviceMapping;
-  use Moose;
-  has DeviceName => (is => 'ro', isa => 'Str', request_name => 'deviceName', traits => ['NameInRequest']);
-  has Ebs => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateEbsBlockDevice', request_name => 'ebs', traits => ['NameInRequest']);
-  has NoDevice => (is => 'ro', isa => 'Str', request_name => 'noDevice', traits => ['NameInRequest']);
-  has VirtualName => (is => 'ro', isa => 'Str', request_name => 'virtualName', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_LaunchTemplateEbsBlockDevice/;
+  has DeviceName => (is => 'ro', isa => Str);
+  has Ebs => (is => 'ro', isa => EC2_LaunchTemplateEbsBlockDevice);
+  has NoDevice => (is => 'ro', isa => Str);
+  has VirtualName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ebs' => {
+                          'type' => 'EC2_LaunchTemplateEbsBlockDevice',
+                          'class' => 'Paws::EC2::LaunchTemplateEbsBlockDevice'
+                        },
+               'VirtualName' => {
+                                  'type' => 'Str'
+                                },
+               'NoDevice' => {
+                               'type' => 'Str'
+                             },
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'DeviceName' => 'deviceName',
+                       'NoDevice' => 'noDevice',
+                       'VirtualName' => 'virtualName',
+                       'Ebs' => 'ebs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +74,7 @@ This class has no description
   The device name.
 
 
-=head2 Ebs => L<Paws::EC2::LaunchTemplateEbsBlockDevice>
+=head2 Ebs => EC2_LaunchTemplateEbsBlockDevice
 
   Information about the block device for an EBS volume.
 

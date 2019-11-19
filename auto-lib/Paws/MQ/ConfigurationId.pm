@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MQ::ConfigurationId;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MQ::Types qw//;
+  has Id => (is => 'ro', isa => Str);
+  has Revision => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Revision' => 'revision',
+                       'Id' => 'id'
+                     },
+  'types' => {
+               'Revision' => {
+                               'type' => 'Int'
+                             },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,52 +1,223 @@
 
 package Paws::S3::CopyObject;
-  use Moose;
-  has ACL => (is => 'ro', isa => 'Str', header_name => 'x-amz-acl', traits => ['ParamInHeader']);
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has CacheControl => (is => 'ro', isa => 'Str', header_name => 'Cache-Control', traits => ['ParamInHeader']);
-  has ContentDisposition => (is => 'ro', isa => 'Str', header_name => 'Content-Disposition', traits => ['ParamInHeader']);
-  has ContentEncoding => (is => 'ro', isa => 'Str', header_name => 'Content-Encoding', traits => ['ParamInHeader']);
-  has ContentLanguage => (is => 'ro', isa => 'Str', header_name => 'Content-Language', traits => ['ParamInHeader']);
-  has ContentType => (is => 'ro', isa => 'Str', header_name => 'Content-Type', traits => ['ParamInHeader']);
-  has CopySource => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source', traits => ['ParamInHeader'], required => 1);
-  has CopySourceIfMatch => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-if-match', traits => ['ParamInHeader']);
-  has CopySourceIfModifiedSince => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-if-modified-since', traits => ['ParamInHeader']);
-  has CopySourceIfNoneMatch => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-if-none-match', traits => ['ParamInHeader']);
-  has CopySourceIfUnmodifiedSince => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-if-unmodified-since', traits => ['ParamInHeader']);
-  has CopySourceSSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
-  has CopySourceSSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-server-side-encryption-customer-key', traits => ['ParamInHeader']);
-  has CopySourceSSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
-  has Expires => (is => 'ro', isa => 'Str', header_name => 'Expires', traits => ['ParamInHeader']);
-  has GrantFullControl => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-full-control', traits => ['ParamInHeader']);
-  has GrantRead => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read', traits => ['ParamInHeader']);
-  has GrantReadACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read-acp', traits => ['ParamInHeader']);
-  has GrantWriteACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-write-acp', traits => ['ParamInHeader']);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', header_prefix => 'x-amz-meta-', traits => ['ParamInHeaders']);
-  has MetadataDirective => (is => 'ro', isa => 'Str', header_name => 'x-amz-metadata-directive', traits => ['ParamInHeader']);
-  has ObjectLockLegalHoldStatus => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-legal-hold', traits => ['ParamInHeader']);
-  has ObjectLockMode => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-mode', traits => ['ParamInHeader']);
-  has ObjectLockRetainUntilDate => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-retain-until-date', traits => ['ParamInHeader']);
-  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has ServerSideEncryption => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption', traits => ['ParamInHeader']);
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
-  has SSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key', traits => ['ParamInHeader']);
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
-  has SSEKMSEncryptionContext => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-context', traits => ['ParamInHeader']);
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-aws-kms-key-id', traits => ['ParamInHeader']);
-  has StorageClass => (is => 'ro', isa => 'Str', header_name => 'x-amz-storage-class', traits => ['ParamInHeader']);
-  has Tagging => (is => 'ro', isa => 'Str', header_name => 'x-amz-tagging', traits => ['ParamInHeader']);
-  has TaggingDirective => (is => 'ro', isa => 'Str', header_name => 'x-amz-tagging-directive', traits => ['ParamInHeader']);
-  has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', header_name => 'x-amz-website-redirect-location', traits => ['ParamInHeader']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_Metadata/;
+  has ACL => (is => 'ro', isa => Str, predicate => 1);
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CacheControl => (is => 'ro', isa => Str, predicate => 1);
+  has ContentDisposition => (is => 'ro', isa => Str, predicate => 1);
+  has ContentEncoding => (is => 'ro', isa => Str, predicate => 1);
+  has ContentLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has ContentType => (is => 'ro', isa => Str, predicate => 1);
+  has CopySource => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CopySourceIfMatch => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceIfModifiedSince => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceIfNoneMatch => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceIfUnmodifiedSince => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceSSECustomerAlgorithm => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceSSECustomerKey => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceSSECustomerKeyMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has Expires => (is => 'ro', isa => Str, predicate => 1);
+  has GrantFullControl => (is => 'ro', isa => Str, predicate => 1);
+  has GrantRead => (is => 'ro', isa => Str, predicate => 1);
+  has GrantReadACP => (is => 'ro', isa => Str, predicate => 1);
+  has GrantWriteACP => (is => 'ro', isa => Str, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Metadata => (is => 'ro', isa => S3_Metadata, predicate => 1);
+  has MetadataDirective => (is => 'ro', isa => Str, predicate => 1);
+  has ObjectLockLegalHoldStatus => (is => 'ro', isa => Str, predicate => 1);
+  has ObjectLockMode => (is => 'ro', isa => Str, predicate => 1);
+  has ObjectLockRetainUntilDate => (is => 'ro', isa => Str, predicate => 1);
+  has RequestPayer => (is => 'ro', isa => Str, predicate => 1);
+  has ServerSideEncryption => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerAlgorithm => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKey => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has SSEKMSEncryptionContext => (is => 'ro', isa => Str, predicate => 1);
+  has SSEKMSKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has StorageClass => (is => 'ro', isa => Str, predicate => 1);
+  has Tagging => (is => 'ro', isa => Str, predicate => 1);
+  has TaggingDirective => (is => 'ro', isa => Str, predicate => 1);
+  has WebsiteRedirectLocation => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyObject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::CopyObjectOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopyObject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::CopyObjectOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObjectLockRetainUntilDate' => {
+                                                'type' => 'Str'
+                                              },
+               'TaggingDirective' => {
+                                       'type' => 'Str'
+                                     },
+               'CopySourceSSECustomerAlgorithm' => {
+                                                     'type' => 'Str'
+                                                   },
+               'GrantWriteACP' => {
+                                    'type' => 'Str'
+                                  },
+               'SSEKMSEncryptionContext' => {
+                                              'type' => 'Str'
+                                            },
+               'CopySourceIfMatch' => {
+                                        'type' => 'Str'
+                                      },
+               'GrantReadACP' => {
+                                   'type' => 'Str'
+                                 },
+               'ServerSideEncryption' => {
+                                           'type' => 'Str'
+                                         },
+               'WebsiteRedirectLocation' => {
+                                              'type' => 'Str'
+                                            },
+               'ContentLanguage' => {
+                                      'type' => 'Str'
+                                    },
+               'SSECustomerKeyMD5' => {
+                                        'type' => 'Str'
+                                      },
+               'Expires' => {
+                              'type' => 'Str'
+                            },
+               'MetadataDirective' => {
+                                        'type' => 'Str'
+                                      },
+               'ContentDisposition' => {
+                                         'type' => 'Str'
+                                       },
+               'CopySource' => {
+                                 'type' => 'Str'
+                               },
+               'SSECustomerKey' => {
+                                     'type' => 'Str'
+                                   },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 },
+               'ObjectLockMode' => {
+                                     'type' => 'Str'
+                                   },
+               'SSECustomerAlgorithm' => {
+                                           'type' => 'Str'
+                                         },
+               'RequestPayer' => {
+                                   'type' => 'Str'
+                                 },
+               'Metadata' => {
+                               'class' => 'Paws::S3::Metadata',
+                               'type' => 'S3_Metadata'
+                             },
+               'ACL' => {
+                          'type' => 'Str'
+                        },
+               'SSEKMSKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'CopySourceIfUnmodifiedSince' => {
+                                                  'type' => 'Str'
+                                                },
+               'CopySourceSSECustomerKey' => {
+                                               'type' => 'Str'
+                                             },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'GrantRead' => {
+                                'type' => 'Str'
+                              },
+               'CacheControl' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'CopySourceIfNoneMatch' => {
+                                            'type' => 'Str'
+                                          },
+               'Tagging' => {
+                              'type' => 'Str'
+                            },
+               'ContentEncoding' => {
+                                      'type' => 'Str'
+                                    },
+               'CopySourceIfModifiedSince' => {
+                                                'type' => 'Str'
+                                              },
+               'GrantFullControl' => {
+                                       'type' => 'Str'
+                                     },
+               'ObjectLockLegalHoldStatus' => {
+                                                'type' => 'Str'
+                                              },
+               'CopySourceSSECustomerKeyMD5' => {
+                                                  'type' => 'Str'
+                                                },
+               'Bucket' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'Key' => 1,
+                    'CopySource' => 1
+                  },
+  'ParamInHeaders' => {
+                        'Metadata' => 'x-amz-meta-'
+                      },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket',
+                    'Key' => 'Key'
+                  },
+  'ParamInHeader' => {
+                       'ServerSideEncryption' => 'x-amz-server-side-encryption',
+                       'GrantReadACP' => 'x-amz-grant-read-acp',
+                       'WebsiteRedirectLocation' => 'x-amz-website-redirect-location',
+                       'ContentLanguage' => 'Content-Language',
+                       'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5',
+                       'Expires' => 'Expires',
+                       'ObjectLockRetainUntilDate' => 'x-amz-object-lock-retain-until-date',
+                       'TaggingDirective' => 'x-amz-tagging-directive',
+                       'CopySourceSSECustomerAlgorithm' => 'x-amz-copy-source-server-side-encryption-customer-algorithm',
+                       'GrantWriteACP' => 'x-amz-grant-write-acp',
+                       'SSEKMSEncryptionContext' => 'x-amz-server-side-encryption-context',
+                       'CopySourceIfMatch' => 'x-amz-copy-source-if-match',
+                       'StorageClass' => 'x-amz-storage-class',
+                       'ObjectLockMode' => 'x-amz-object-lock-mode',
+                       'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm',
+                       'MetadataDirective' => 'x-amz-metadata-directive',
+                       'ContentDisposition' => 'Content-Disposition',
+                       'CopySource' => 'x-amz-copy-source',
+                       'SSECustomerKey' => 'x-amz-server-side-encryption-customer-key',
+                       'CopySourceSSECustomerKey' => 'x-amz-copy-source-server-side-encryption-customer-key',
+                       'RequestPayer' => 'x-amz-request-payer',
+                       'ACL' => 'x-amz-acl',
+                       'SSEKMSKeyId' => 'x-amz-server-side-encryption-aws-kms-key-id',
+                       'CopySourceIfUnmodifiedSince' => 'x-amz-copy-source-if-unmodified-since',
+                       'Tagging' => 'x-amz-tagging',
+                       'ContentEncoding' => 'Content-Encoding',
+                       'CopySourceIfModifiedSince' => 'x-amz-copy-source-if-modified-since',
+                       'GrantFullControl' => 'x-amz-grant-full-control',
+                       'ObjectLockLegalHoldStatus' => 'x-amz-object-lock-legal-hold',
+                       'CopySourceSSECustomerKeyMD5' => 'x-amz-copy-source-server-side-encryption-customer-key-MD5',
+                       'GrantRead' => 'x-amz-grant-read',
+                       'CacheControl' => 'Cache-Control',
+                       'ContentType' => 'Content-Type',
+                       'CopySourceIfNoneMatch' => 'x-amz-copy-source-if-none-match'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -263,7 +434,7 @@ The key of the destination object.
 
 
 
-=head2 Metadata => L<Paws::S3::Metadata>
+=head2 Metadata => S3_Metadata
 
 A map of metadata to store with the object in S3.
 

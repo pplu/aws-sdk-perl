@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DS::DescribeDirectoriesResult;
-  use Moose;
-  has DirectoryDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::DS::DirectoryDescription]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DS::Types qw/DS_DirectoryDescription/;
+  has DirectoryDescriptions => (is => 'ro', isa => ArrayRef[DS_DirectoryDescription]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DirectoryDescriptions' => {
+                                            'type' => 'ArrayRef[DS_DirectoryDescription]',
+                                            'class' => 'Paws::DS::DirectoryDescription'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::DS::DescribeDirectoriesResult
 =head1 ATTRIBUTES
 
 
-=head2 DirectoryDescriptions => ArrayRef[L<Paws::DS::DirectoryDescription>]
+=head2 DirectoryDescriptions => ArrayRef[DS_DirectoryDescription]
 
 The list of DirectoryDescription objects that were retrieved.
 

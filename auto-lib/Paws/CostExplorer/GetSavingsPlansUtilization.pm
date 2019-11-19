@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CostExplorer::GetSavingsPlansUtilization;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
-  has Granularity => (is => 'ro', isa => 'Str');
-  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw/CostExplorer_Expression CostExplorer_DateInterval/;
+  has Filter => (is => 'ro', isa => CostExplorer_Expression, predicate => 1);
+  has Granularity => (is => 'ro', isa => Str, predicate => 1);
+  has TimePeriod => (is => 'ro', isa => CostExplorer_DateInterval, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSavingsPlansUtilization');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CostExplorer::GetSavingsPlansUtilizationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSavingsPlansUtilization');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CostExplorer::GetSavingsPlansUtilizationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Granularity' => {
+                                  'type' => 'Str'
+                                },
+               'TimePeriod' => {
+                                 'class' => 'Paws::CostExplorer::DateInterval',
+                                 'type' => 'CostExplorer_DateInterval'
+                               },
+               'Filter' => {
+                             'type' => 'CostExplorer_Expression',
+                             'class' => 'Paws::CostExplorer::Expression'
+                           }
+             },
+  'IsRequired' => {
+                    'TimePeriod' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +92,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::CostExplorer::Expression>
+=head2 Filter => CostExplorer_Expression
 
 Filters Savings Plans utilization coverage data for active Savings
 Plans dimensions. You can filter data with the following dimensions:
@@ -115,7 +142,7 @@ C<MONTHLY> granularities.
 
 Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
-=head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
+=head2 B<REQUIRED> TimePeriod => CostExplorer_DateInterval
 
 The time period that you want the usage and costs for. The C<Start>
 date must be within 13 months. The C<End> date must be after the

@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::TransactWriteItem;
-  use Moose;
-  has ConditionCheck => (is => 'ro', isa => 'Paws::DynamoDB::ConditionCheck');
-  has Delete => (is => 'ro', isa => 'Paws::DynamoDB::Delete');
-  has Put => (is => 'ro', isa => 'Paws::DynamoDB::Put');
-  has Update => (is => 'ro', isa => 'Paws::DynamoDB::Update');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::DynamoDB::Types qw/DynamoDB_Update DynamoDB_ConditionCheck DynamoDB_Delete DynamoDB_Put/;
+  has ConditionCheck => (is => 'ro', isa => DynamoDB_ConditionCheck);
+  has Delete => (is => 'ro', isa => DynamoDB_Delete);
+  has Put => (is => 'ro', isa => DynamoDB_Put);
+  has Update => (is => 'ro', isa => DynamoDB_Update);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Put' => {
+                          'type' => 'DynamoDB_Put',
+                          'class' => 'Paws::DynamoDB::Put'
+                        },
+               'ConditionCheck' => {
+                                     'type' => 'DynamoDB_ConditionCheck',
+                                     'class' => 'Paws::DynamoDB::ConditionCheck'
+                                   },
+               'Delete' => {
+                             'type' => 'DynamoDB_Delete',
+                             'class' => 'Paws::DynamoDB::Delete'
+                           },
+               'Update' => {
+                             'class' => 'Paws::DynamoDB::Update',
+                             'type' => 'DynamoDB_Update'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,22 +70,22 @@ operations on multiple items in one or more tables atomically.
 =head1 ATTRIBUTES
 
 
-=head2 ConditionCheck => L<Paws::DynamoDB::ConditionCheck>
+=head2 ConditionCheck => DynamoDB_ConditionCheck
 
   A request to perform a check item operation.
 
 
-=head2 Delete => L<Paws::DynamoDB::Delete>
+=head2 Delete => DynamoDB_Delete
 
   A request to perform a C<DeleteItem> operation.
 
 
-=head2 Put => L<Paws::DynamoDB::Put>
+=head2 Put => DynamoDB_Put
 
   A request to perform a C<PutItem> operation.
 
 
-=head2 Update => L<Paws::DynamoDB::Update>
+=head2 Update => DynamoDB_Update
 
   A request to perform an C<UpdateItem> operation.
 

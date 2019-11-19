@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsUpdate');
-  has ProvisionedWriteCapacityUnits => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AutoScalingSettingsUpdate/;
+  has IndexName => (is => 'ro', isa => Str, required => 1);
+  has ProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => DynamoDB_AutoScalingSettingsUpdate);
+  has ProvisionedWriteCapacityUnits => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'ProvisionedWriteCapacityAutoScalingSettingsUpdate' => {
+                                                                        'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
+                                                                        'type' => 'DynamoDB_AutoScalingSettingsUpdate'
+                                                                      },
+               'ProvisionedWriteCapacityUnits' => {
+                                                    'type' => 'Int'
+                                                  }
+             },
+  'IsRequired' => {
+                    'IndexName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +72,7 @@ that will be modified.
 all other indexes on this table.
 
 
-=head2 ProvisionedWriteCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>
+=head2 ProvisionedWriteCapacityAutoScalingSettingsUpdate => DynamoDB_AutoScalingSettingsUpdate
 
   Auto scaling settings for managing a global secondary index's write
 capacity units.

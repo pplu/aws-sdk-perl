@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::S3DestinationAccessControl;
-  use Moose;
-  has CannedAcl => (is => 'ro', isa => 'Str', request_name => 'cannedAcl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has CannedAcl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CannedAcl' => 'cannedAcl'
+                     },
+  'types' => {
+               'CannedAcl' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

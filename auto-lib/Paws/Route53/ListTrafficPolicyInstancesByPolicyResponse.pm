@@ -1,14 +1,53 @@
 
 package Paws::Route53::ListTrafficPolicyInstancesByPolicyResponse;
-  use Moose;
-  has HostedZoneIdMarker => (is => 'ro', isa => 'Str');
-  has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has MaxItems => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficPolicyInstanceNameMarker => (is => 'ro', isa => 'Str');
-  has TrafficPolicyInstances => (is => 'ro', isa => 'ArrayRef[Paws::Route53::TrafficPolicyInstance]', required => 1);
-  has TrafficPolicyInstanceTypeMarker => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::Route53::Types qw/Route53_TrafficPolicyInstance/;
+  has HostedZoneIdMarker => (is => 'ro', isa => Str);
+  has IsTruncated => (is => 'ro', isa => Bool, required => 1);
+  has MaxItems => (is => 'ro', isa => Str, required => 1);
+  has TrafficPolicyInstanceNameMarker => (is => 'ro', isa => Str);
+  has TrafficPolicyInstances => (is => 'ro', isa => ArrayRef[Route53_TrafficPolicyInstance], required => 1);
+  has TrafficPolicyInstanceTypeMarker => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MaxItems' => 1,
+                    'TrafficPolicyInstances' => 1,
+                    'IsTruncated' => 1
+                  },
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'HostedZoneIdMarker' => {
+                                         'type' => 'Str'
+                                       },
+               'TrafficPolicyInstanceNameMarker' => {
+                                                      'type' => 'Str'
+                                                    },
+               'TrafficPolicyInstanceTypeMarker' => {
+                                                      'type' => 'Str'
+                                                    },
+               'TrafficPolicyInstances' => {
+                                             'class' => 'Paws::Route53::TrafficPolicyInstance',
+                                             'type' => 'ArrayRef[Route53_TrafficPolicyInstance]'
+                                           },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +95,7 @@ C<MaxItems> traffic policy instances.
 
 
 
-=head2 B<REQUIRED> TrafficPolicyInstances => ArrayRef[L<Paws::Route53::TrafficPolicyInstance>]
+=head2 B<REQUIRED> TrafficPolicyInstances => ArrayRef[Route53_TrafficPolicyInstance]
 
 A list that contains one C<TrafficPolicyInstance> element for each
 traffic policy instance that matches the elements in the request.

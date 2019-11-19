@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::SES::SNSDestination;
-  use Moose;
-  has TopicARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has TopicARN => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TopicARN' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'TopicARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

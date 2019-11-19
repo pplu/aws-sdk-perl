@@ -1,13 +1,54 @@
+# Generated from default/object.tt
 package Paws::Config::OrganizationManagedRuleMetadata;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has InputParameters => (is => 'ro', isa => 'Str');
-  has MaximumExecutionFrequency => (is => 'ro', isa => 'Str');
-  has ResourceIdScope => (is => 'ro', isa => 'Str');
-  has ResourceTypesScope => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RuleIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeyScope => (is => 'ro', isa => 'Str');
-  has TagValueScope => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Config::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has InputParameters => (is => 'ro', isa => Str);
+  has MaximumExecutionFrequency => (is => 'ro', isa => Str);
+  has ResourceIdScope => (is => 'ro', isa => Str);
+  has ResourceTypesScope => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RuleIdentifier => (is => 'ro', isa => Str, required => 1);
+  has TagKeyScope => (is => 'ro', isa => Str);
+  has TagValueScope => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceTypesScope' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'InputParameters' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceIdScope' => {
+                                      'type' => 'Str'
+                                    },
+               'RuleIdentifier' => {
+                                     'type' => 'Str'
+                                   },
+               'TagValueScope' => {
+                                    'type' => 'Str'
+                                  },
+               'TagKeyScope' => {
+                                  'type' => 'Str'
+                                },
+               'MaximumExecutionFrequency' => {
+                                                'type' => 'Str'
+                                              }
+             },
+  'IsRequired' => {
+                    'RuleIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

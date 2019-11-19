@@ -1,16 +1,49 @@
 
 package Paws::IoT::CreateBillingGroup;
-  use Moose;
-  has BillingGroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'billingGroupName', required => 1);
-  has BillingGroupProperties => (is => 'ro', isa => 'Paws::IoT::BillingGroupProperties', traits => ['NameInRequest'], request_name => 'billingGroupProperties');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_Tag IoT_BillingGroupProperties/;
+  has BillingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BillingGroupProperties => (is => 'ro', isa => IoT_BillingGroupProperties, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoT_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBillingGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/billing-groups/{billingGroupName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateBillingGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBillingGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/billing-groups/{billingGroupName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateBillingGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'BillingGroupProperties' => 'billingGroupProperties',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'BillingGroupName' => 1
+                  },
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::IoT::Tag',
+                           'type' => 'ArrayRef[IoT_Tag]'
+                         },
+               'BillingGroupProperties' => {
+                                             'type' => 'IoT_BillingGroupProperties',
+                                             'class' => 'Paws::IoT::BillingGroupProperties'
+                                           },
+               'BillingGroupName' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'ParamInURI' => {
+                    'BillingGroupName' => 'billingGroupName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,13 +97,13 @@ The name you wish to give to the billing group.
 
 
 
-=head2 BillingGroupProperties => L<Paws::IoT::BillingGroupProperties>
+=head2 BillingGroupProperties => IoT_BillingGroupProperties
 
 The properties of the billing group.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+=head2 Tags => ArrayRef[IoT_Tag]
 
 Metadata which can be used to manage the billing group.
 

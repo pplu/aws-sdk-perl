@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SMS::GetAppReplicationConfigurationResponse;
-  use Moose;
-  has ServerGroupReplicationConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ServerGroupReplicationConfiguration]', traits => ['NameInRequest'], request_name => 'serverGroupReplicationConfigurations' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SMS::Types qw/SMS_ServerGroupReplicationConfiguration/;
+  has ServerGroupReplicationConfigurations => (is => 'ro', isa => ArrayRef[SMS_ServerGroupReplicationConfiguration]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ServerGroupReplicationConfigurations' => 'serverGroupReplicationConfigurations'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ServerGroupReplicationConfigurations' => {
+                                                           'class' => 'Paws::SMS::ServerGroupReplicationConfiguration',
+                                                           'type' => 'ArrayRef[SMS_ServerGroupReplicationConfiguration]'
+                                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::SMS::GetAppReplicationConfigurationResponse
 =head1 ATTRIBUTES
 
 
-=head2 ServerGroupReplicationConfigurations => ArrayRef[L<Paws::SMS::ServerGroupReplicationConfiguration>]
+=head2 ServerGroupReplicationConfigurations => ArrayRef[SMS_ServerGroupReplicationConfiguration]
 
 Replication configurations associated with server groups in this
 application.

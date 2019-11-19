@@ -1,14 +1,61 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::InputDescription;
-  use Moose;
-  has InAppStreamNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has InputId => (is => 'ro', isa => 'Str');
-  has InputParallelism => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputParallelism');
-  has InputProcessingConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputProcessingConfigurationDescription');
-  has InputSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema');
-  has InputStartingPositionConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputStartingPositionConfiguration');
-  has KinesisFirehoseInputDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseInputDescription');
-  has KinesisStreamsInputDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisStreamsInputDescription');
-  has NamePrefix => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_InputProcessingConfigurationDescription KinesisAnalytics_KinesisFirehoseInputDescription KinesisAnalytics_KinesisStreamsInputDescription KinesisAnalytics_SourceSchema KinesisAnalytics_InputStartingPositionConfiguration KinesisAnalytics_InputParallelism/;
+  has InAppStreamNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has InputId => (is => 'ro', isa => Str);
+  has InputParallelism => (is => 'ro', isa => KinesisAnalytics_InputParallelism);
+  has InputProcessingConfigurationDescription => (is => 'ro', isa => KinesisAnalytics_InputProcessingConfigurationDescription);
+  has InputSchema => (is => 'ro', isa => KinesisAnalytics_SourceSchema);
+  has InputStartingPositionConfiguration => (is => 'ro', isa => KinesisAnalytics_InputStartingPositionConfiguration);
+  has KinesisFirehoseInputDescription => (is => 'ro', isa => KinesisAnalytics_KinesisFirehoseInputDescription);
+  has KinesisStreamsInputDescription => (is => 'ro', isa => KinesisAnalytics_KinesisStreamsInputDescription);
+  has NamePrefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NamePrefix' => {
+                                 'type' => 'Str'
+                               },
+               'InputParallelism' => {
+                                       'type' => 'KinesisAnalytics_InputParallelism',
+                                       'class' => 'Paws::KinesisAnalytics::InputParallelism'
+                                     },
+               'InputProcessingConfigurationDescription' => {
+                                                              'type' => 'KinesisAnalytics_InputProcessingConfigurationDescription',
+                                                              'class' => 'Paws::KinesisAnalytics::InputProcessingConfigurationDescription'
+                                                            },
+               'InAppStreamNames' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'InputStartingPositionConfiguration' => {
+                                                         'class' => 'Paws::KinesisAnalytics::InputStartingPositionConfiguration',
+                                                         'type' => 'KinesisAnalytics_InputStartingPositionConfiguration'
+                                                       },
+               'KinesisFirehoseInputDescription' => {
+                                                      'type' => 'KinesisAnalytics_KinesisFirehoseInputDescription',
+                                                      'class' => 'Paws::KinesisAnalytics::KinesisFirehoseInputDescription'
+                                                    },
+               'InputSchema' => {
+                                  'type' => 'KinesisAnalytics_SourceSchema',
+                                  'class' => 'Paws::KinesisAnalytics::SourceSchema'
+                                },
+               'InputId' => {
+                              'type' => 'Str'
+                            },
+               'KinesisStreamsInputDescription' => {
+                                                     'class' => 'Paws::KinesisAnalytics::KinesisStreamsInputDescription',
+                                                     'type' => 'KinesisAnalytics_KinesisStreamsInputDescription'
+                                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,32 +106,32 @@ Amazon Kinesis Analytics assigns to each input configuration you add to
 your application.
 
 
-=head2 InputParallelism => L<Paws::KinesisAnalytics::InputParallelism>
+=head2 InputParallelism => KinesisAnalytics_InputParallelism
 
   Describes the configured parallelism (number of in-application streams
 mapped to the streaming source).
 
 
-=head2 InputProcessingConfigurationDescription => L<Paws::KinesisAnalytics::InputProcessingConfigurationDescription>
+=head2 InputProcessingConfigurationDescription => KinesisAnalytics_InputProcessingConfigurationDescription
 
   The description of the preprocessor that executes on records in this
 input before the application's code is run.
 
 
-=head2 InputSchema => L<Paws::KinesisAnalytics::SourceSchema>
+=head2 InputSchema => KinesisAnalytics_SourceSchema
 
   Describes the format of the data in the streaming source, and how each
 data element maps to corresponding columns in the in-application stream
 that is being created.
 
 
-=head2 InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>
+=head2 InputStartingPositionConfiguration => KinesisAnalytics_InputStartingPositionConfiguration
 
   Point at which the application is configured to read from the input
 stream.
 
 
-=head2 KinesisFirehoseInputDescription => L<Paws::KinesisAnalytics::KinesisFirehoseInputDescription>
+=head2 KinesisFirehoseInputDescription => KinesisAnalytics_KinesisFirehoseInputDescription
 
   If an Amazon Kinesis Firehose delivery stream is configured as a
 streaming source, provides the delivery stream's ARN and an IAM role
@@ -92,7 +139,7 @@ that enables Amazon Kinesis Analytics to access the stream on your
 behalf.
 
 
-=head2 KinesisStreamsInputDescription => L<Paws::KinesisAnalytics::KinesisStreamsInputDescription>
+=head2 KinesisStreamsInputDescription => KinesisAnalytics_KinesisStreamsInputDescription
 
   If an Amazon Kinesis stream is configured as streaming source, provides
 Amazon Kinesis stream's Amazon Resource Name (ARN) and an IAM role that

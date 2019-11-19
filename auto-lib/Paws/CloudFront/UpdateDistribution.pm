@@ -1,18 +1,49 @@
 
 package Paws::CloudFront::UpdateDistribution;
-  use Moose;
-  has DistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::DistributionConfig', required => 1);
-  has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
-  has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_DistributionConfig/;
+  has DistributionConfig => (is => 'ro', isa => CloudFront_DistributionConfig, required => 1, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IfMatch => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDistribution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/distribution/{Id}/config');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdateDistributionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDistribution');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2019-03-26/distribution/{Id}/config');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFront::UpdateDistributionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Id' => 'Id'
+                  },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'DistributionConfig' => 1
+                  },
+  'types' => {
+               'DistributionConfig' => {
+                                         'class' => 'Paws::CloudFront::DistributionConfig',
+                                         'type' => 'CloudFront_DistributionConfig'
+                                       },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'IfMatch' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInHeader' => {
+                       'IfMatch' => 'If-Match'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -239,7 +270,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             {
               FailoverCriteria => {
                 StatusCodes => {
-                  Items => [ 1, ... ],     # min: 1
+                  Items    => [ 1, ... ],    # min: 1
                   Quantity => 1,
 
                 },
@@ -301,7 +332,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DistributionConfig => L<Paws::CloudFront::DistributionConfig>
+=head2 B<REQUIRED> DistributionConfig => CloudFront_DistributionConfig
 
 The distribution's configuration information.
 

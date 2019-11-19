@@ -1,16 +1,45 @@
 
 package Paws::Connect::UpdateUserHierarchy;
-  use Moose;
-  has HierarchyGroupId => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceId', required => 1);
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UserId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Connect::Types qw//;
+  has HierarchyGroupId => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUserHierarchy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/users/{InstanceId}/{UserId}/hierarchy');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateUserHierarchy');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/users/{InstanceId}/{UserId}/hierarchy');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'InstanceId' => 'InstanceId',
+                    'UserId' => 'UserId'
+                  },
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'HierarchyGroupId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'UserId' => 1,
+                    'InstanceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

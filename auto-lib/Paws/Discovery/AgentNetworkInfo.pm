@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Discovery::AgentNetworkInfo;
-  use Moose;
-  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
-  has MacAddress => (is => 'ro', isa => 'Str', request_name => 'macAddress', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Discovery::Types qw//;
+  has IpAddress => (is => 'ro', isa => Str);
+  has MacAddress => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'IpAddress' => 'ipAddress',
+                       'MacAddress' => 'macAddress'
+                     },
+  'types' => {
+               'MacAddress' => {
+                                 'type' => 'Str'
+                               },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

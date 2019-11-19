@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::ApplicationAutoScaling::SuspendedState;
-  use Moose;
-  has DynamicScalingInSuspended => (is => 'ro', isa => 'Bool');
-  has DynamicScalingOutSuspended => (is => 'ro', isa => 'Bool');
-  has ScheduledScalingSuspended => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::ApplicationAutoScaling::Types qw//;
+  has DynamicScalingInSuspended => (is => 'ro', isa => Bool);
+  has DynamicScalingOutSuspended => (is => 'ro', isa => Bool);
+  has ScheduledScalingSuspended => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DynamicScalingInSuspended' => {
+                                                'type' => 'Bool'
+                                              },
+               'ScheduledScalingSuspended' => {
+                                                'type' => 'Bool'
+                                              },
+               'DynamicScalingOutSuspended' => {
+                                                 'type' => 'Bool'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::AudioParameters;
-  use Moose;
-  has AudioPackingMode => (is => 'ro', isa => 'Str');
-  has BitRate => (is => 'ro', isa => 'Str');
-  has Channels => (is => 'ro', isa => 'Str');
-  has Codec => (is => 'ro', isa => 'Str');
-  has CodecOptions => (is => 'ro', isa => 'Paws::ElasticTranscoder::AudioCodecOptions');
-  has SampleRate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_AudioCodecOptions/;
+  has AudioPackingMode => (is => 'ro', isa => Str);
+  has BitRate => (is => 'ro', isa => Str);
+  has Channels => (is => 'ro', isa => Str);
+  has Codec => (is => 'ro', isa => Str);
+  has CodecOptions => (is => 'ro', isa => ElasticTranscoder_AudioCodecOptions);
+  has SampleRate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Channels' => {
+                               'type' => 'Str'
+                             },
+               'Codec' => {
+                            'type' => 'Str'
+                          },
+               'BitRate' => {
+                              'type' => 'Str'
+                            },
+               'AudioPackingMode' => {
+                                       'type' => 'Str'
+                                     },
+               'SampleRate' => {
+                                 'type' => 'Str'
+                               },
+               'CodecOptions' => {
+                                   'type' => 'ElasticTranscoder_AudioCodecOptions',
+                                   'class' => 'Paws::ElasticTranscoder::AudioCodecOptions'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -280,7 +313,7 @@ and tracks, see C<Audio:AudioPackingMode>.
 C<flac>, C<mp2>, C<mp3>, C<pcm>, and C<vorbis>.
 
 
-=head2 CodecOptions => L<Paws::ElasticTranscoder::AudioCodecOptions>
+=head2 CodecOptions => ElasticTranscoder_AudioCodecOptions
 
   If you specified C<AAC> for C<Audio:Codec>, this is the C<AAC>
 compression profile to use. Valid values include:

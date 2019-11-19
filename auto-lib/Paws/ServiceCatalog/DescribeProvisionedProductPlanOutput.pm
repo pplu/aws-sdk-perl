@@ -1,11 +1,37 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceCatalog::DescribeProvisionedProductPlanOutput;
-  use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str');
-  has ProvisionedProductPlanDetails => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisionedProductPlanDetails');
-  has ResourceChanges => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ResourceChange]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ResourceChange ServiceCatalog_ProvisionedProductPlanDetails/;
+  has NextPageToken => (is => 'ro', isa => Str);
+  has ProvisionedProductPlanDetails => (is => 'ro', isa => ServiceCatalog_ProvisionedProductPlanDetails);
+  has ResourceChanges => (is => 'ro', isa => ArrayRef[ServiceCatalog_ResourceChange]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceChanges' => {
+                                      'class' => 'Paws::ServiceCatalog::ResourceChange',
+                                      'type' => 'ArrayRef[ServiceCatalog_ResourceChange]'
+                                    },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'ProvisionedProductPlanDetails' => {
+                                                    'type' => 'ServiceCatalog_ProvisionedProductPlanDetails',
+                                                    'class' => 'Paws::ServiceCatalog::ProvisionedProductPlanDetails'
+                                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,12 +48,12 @@ The page token to use to retrieve the next set of results. If there are
 no additional results, this value is null.
 
 
-=head2 ProvisionedProductPlanDetails => L<Paws::ServiceCatalog::ProvisionedProductPlanDetails>
+=head2 ProvisionedProductPlanDetails => ServiceCatalog_ProvisionedProductPlanDetails
 
 Information about the plan.
 
 
-=head2 ResourceChanges => ArrayRef[L<Paws::ServiceCatalog::ResourceChange>]
+=head2 ResourceChanges => ArrayRef[ServiceCatalog_ResourceChange]
 
 Information about the resource changes that will occur when the plan is
 executed.

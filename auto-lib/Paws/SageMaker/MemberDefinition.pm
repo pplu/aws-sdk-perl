@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::SageMaker::MemberDefinition;
-  use Moose;
-  has CognitoMemberDefinition => (is => 'ro', isa => 'Paws::SageMaker::CognitoMemberDefinition');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SageMaker::Types qw/SageMaker_CognitoMemberDefinition/;
+  has CognitoMemberDefinition => (is => 'ro', isa => SageMaker_CognitoMemberDefinition);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CognitoMemberDefinition' => {
+                                              'class' => 'Paws::SageMaker::CognitoMemberDefinition',
+                                              'type' => 'SageMaker_CognitoMemberDefinition'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Defines the Amazon Cognito user group that is part of a work team.
 =head1 ATTRIBUTES
 
 
-=head2 CognitoMemberDefinition => L<Paws::SageMaker::CognitoMemberDefinition>
+=head2 CognitoMemberDefinition => SageMaker_CognitoMemberDefinition
 
   The Amazon Cognito user group that is part of the work team.
 

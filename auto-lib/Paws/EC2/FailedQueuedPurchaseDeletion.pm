@@ -1,7 +1,29 @@
 package Paws::EC2::FailedQueuedPurchaseDeletion;
-  use Moose;
-  has Error => (is => 'ro', isa => 'Paws::EC2::DeleteQueuedReservedInstancesError', request_name => 'error', traits => ['NameInRequest']);
-  has ReservedInstancesId => (is => 'ro', isa => 'Str', request_name => 'reservedInstancesId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_DeleteQueuedReservedInstancesError/;
+  has Error => (is => 'ro', isa => EC2_DeleteQueuedReservedInstancesError);
+  has ReservedInstancesId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ReservedInstancesId' => 'reservedInstancesId',
+                       'Error' => 'error'
+                     },
+  'types' => {
+               'ReservedInstancesId' => {
+                                          'type' => 'Str'
+                                        },
+               'Error' => {
+                            'class' => 'Paws::EC2::DeleteQueuedReservedInstancesError',
+                            'type' => 'EC2_DeleteQueuedReservedInstancesError'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +59,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Error => L<Paws::EC2::DeleteQueuedReservedInstancesError>
+=head2 Error => EC2_DeleteQueuedReservedInstancesError
 
   The error.
 

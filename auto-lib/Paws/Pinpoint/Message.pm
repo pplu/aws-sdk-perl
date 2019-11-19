@@ -1,17 +1,67 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::Message;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has Body => (is => 'ro', isa => 'Str');
-  has ImageIconUrl => (is => 'ro', isa => 'Str');
-  has ImageSmallIconUrl => (is => 'ro', isa => 'Str');
-  has ImageUrl => (is => 'ro', isa => 'Str');
-  has JsonBody => (is => 'ro', isa => 'Str');
-  has MediaUrl => (is => 'ro', isa => 'Str');
-  has RawContent => (is => 'ro', isa => 'Str');
-  has SilentPush => (is => 'ro', isa => 'Bool');
-  has TimeToLive => (is => 'ro', isa => 'Int');
-  has Title => (is => 'ro', isa => 'Str');
-  has Url => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::Pinpoint::Types qw//;
+  has Action => (is => 'ro', isa => Str);
+  has Body => (is => 'ro', isa => Str);
+  has ImageIconUrl => (is => 'ro', isa => Str);
+  has ImageSmallIconUrl => (is => 'ro', isa => Str);
+  has ImageUrl => (is => 'ro', isa => Str);
+  has JsonBody => (is => 'ro', isa => Str);
+  has MediaUrl => (is => 'ro', isa => Str);
+  has RawContent => (is => 'ro', isa => Str);
+  has SilentPush => (is => 'ro', isa => Bool);
+  has TimeToLive => (is => 'ro', isa => Int);
+  has Title => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'ImageSmallIconUrl' => {
+                                        'type' => 'Str'
+                                      },
+               'RawContent' => {
+                                 'type' => 'Str'
+                               },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'ImageIconUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'ImageUrl' => {
+                               'type' => 'Str'
+                             },
+               'MediaUrl' => {
+                               'type' => 'Str'
+                             },
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'SilentPush' => {
+                                 'type' => 'Bool'
+                               },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'TimeToLive' => {
+                                 'type' => 'Int'
+                               },
+               'JsonBody' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

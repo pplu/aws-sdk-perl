@@ -1,18 +1,84 @@
 package Paws::EC2::InstanceNetworkInterfaceSpecification;
-  use Moose;
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool', request_name => 'associatePublicIpAddress', traits => ['NameInRequest']);
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool', request_name => 'deleteOnTermination', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has DeviceIndex => (is => 'ro', isa => 'Int', request_name => 'deviceIndex', traits => ['NameInRequest']);
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SecurityGroupId', traits => ['NameInRequest']);
-  has InterfaceType => (is => 'ro', isa => 'Str');
-  has Ipv6AddressCount => (is => 'ro', isa => 'Int', request_name => 'ipv6AddressCount', traits => ['NameInRequest']);
-  has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6Address]', request_name => 'ipv6AddressesSet', traits => ['NameInRequest']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrivateIpAddressSpecification]', request_name => 'privateIpAddressesSet', traits => ['NameInRequest']);
-  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int', request_name => 'secondaryPrivateIpAddressCount', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool Str Int Undef ArrayRef/;
+  use Paws::EC2::Types qw/EC2_InstanceIpv6Address EC2_PrivateIpAddressSpecification/;
+  has AssociatePublicIpAddress => (is => 'ro', isa => Bool);
+  has DeleteOnTermination => (is => 'ro', isa => Bool);
+  has Description => (is => 'ro', isa => Str);
+  has DeviceIndex => (is => 'ro', isa => Int);
+  has Groups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has InterfaceType => (is => 'ro', isa => Str);
+  has Ipv6AddressCount => (is => 'ro', isa => Int);
+  has Ipv6Addresses => (is => 'ro', isa => ArrayRef[EC2_InstanceIpv6Address]);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+  has PrivateIpAddresses => (is => 'ro', isa => ArrayRef[EC2_PrivateIpAddressSpecification]);
+  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => Int);
+  has SubnetId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DeleteOnTermination' => 'deleteOnTermination',
+                       'SubnetId' => 'subnetId',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'Ipv6Addresses' => 'ipv6AddressesSet',
+                       'Description' => 'description',
+                       'PrivateIpAddress' => 'privateIpAddress',
+                       'DeviceIndex' => 'deviceIndex',
+                       'Groups' => 'SecurityGroupId',
+                       'PrivateIpAddresses' => 'privateIpAddressesSet',
+                       'AssociatePublicIpAddress' => 'associatePublicIpAddress',
+                       'Ipv6AddressCount' => 'ipv6AddressCount',
+                       'SecondaryPrivateIpAddressCount' => 'secondaryPrivateIpAddressCount'
+                     },
+  'types' => {
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Ipv6Addresses' => {
+                                    'class' => 'Paws::EC2::InstanceIpv6Address',
+                                    'type' => 'ArrayRef[EC2_InstanceIpv6Address]'
+                                  },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'DeleteOnTermination' => {
+                                          'type' => 'Bool'
+                                        },
+               'SecondaryPrivateIpAddressCount' => {
+                                                     'type' => 'Int'
+                                                   },
+               'Ipv6AddressCount' => {
+                                       'type' => 'Int'
+                                     },
+               'InterfaceType' => {
+                                    'type' => 'Str'
+                                  },
+               'AssociatePublicIpAddress' => {
+                                               'type' => 'Bool'
+                                             },
+               'PrivateIpAddresses' => {
+                                         'type' => 'ArrayRef[EC2_PrivateIpAddressSpecification]',
+                                         'class' => 'Paws::EC2::PrivateIpAddressSpecification'
+                                       },
+               'Groups' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'DeviceIndex' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -108,7 +174,7 @@ the same request. You can specify this option if you've specified a
 minimum number of instances to launch.
 
 
-=head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]
+=head2 Ipv6Addresses => ArrayRef[EC2_InstanceIpv6Address]
 
   One or more IPv6 addresses to assign to the network interface. You
 cannot specify this option and the option to assign a number of IPv6
@@ -131,7 +197,7 @@ RunInstances
 request.
 
 
-=head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]
+=head2 PrivateIpAddresses => ArrayRef[EC2_PrivateIpAddressSpecification]
 
   One or more private IPv4 addresses to assign to the network interface.
 Only one private IPv4 address can be designated as primary. You cannot

@@ -1,21 +1,69 @@
 
 package Paws::ApiGateway::CreateApiKey;
-  use Moose;
-  has CustomerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customerId');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Enabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enabled');
-  has GenerateDistinctId => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'generateDistinctId');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has StageKeys => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::StageKey]', traits => ['NameInRequest'], request_name => 'stageKeys');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
-  has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_StageKey ApiGateway_MapOfStringToString/;
+  has CustomerId => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Enabled => (is => 'ro', isa => Bool, predicate => 1);
+  has GenerateDistinctId => (is => 'ro', isa => Bool, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has StageKeys => (is => 'ro', isa => ArrayRef[ApiGateway_StageKey], predicate => 1);
+  has Tags => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has Value => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApiKey');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apikeys');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::ApiKey');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApiKey');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/apikeys');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::ApiKey');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Enabled' => 'enabled',
+                       'StageKeys' => 'stageKeys',
+                       'Name' => 'name',
+                       'Tags' => 'tags',
+                       'GenerateDistinctId' => 'generateDistinctId',
+                       'CustomerId' => 'customerId',
+                       'Description' => 'description',
+                       'Value' => 'value'
+                     },
+  'types' => {
+               'StageKeys' => {
+                                'class' => 'Paws::ApiGateway::StageKey',
+                                'type' => 'ArrayRef[ApiGateway_StageKey]'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Tags' => {
+                           'class' => 'Paws::ApiGateway::MapOfStringToString',
+                           'type' => 'ApiGateway_MapOfStringToString'
+                         },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'GenerateDistinctId' => {
+                                         'type' => 'Bool'
+                                       },
+               'CustomerId' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -104,14 +152,14 @@ The name of the ApiKey.
 
 
 
-=head2 StageKeys => ArrayRef[L<Paws::ApiGateway::StageKey>]
+=head2 StageKeys => ArrayRef[ApiGateway_StageKey]
 
 DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
 key.
 
 
 
-=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Tags => ApiGateway_MapOfStringToString
 
 The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not

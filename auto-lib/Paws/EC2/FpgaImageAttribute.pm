@@ -1,10 +1,45 @@
 package Paws::EC2::FpgaImageAttribute;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has FpgaImageId => (is => 'ro', isa => 'Str', request_name => 'fpgaImageId', traits => ['NameInRequest']);
-  has LoadPermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LoadPermission]', request_name => 'loadPermissions', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_LoadPermission EC2_ProductCode/;
+  has Description => (is => 'ro', isa => Str);
+  has FpgaImageId => (is => 'ro', isa => Str);
+  has LoadPermissions => (is => 'ro', isa => ArrayRef[EC2_LoadPermission]);
+  has Name => (is => 'ro', isa => Str);
+  has ProductCodes => (is => 'ro', isa => ArrayRef[EC2_ProductCode]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadPermissions' => {
+                                      'class' => 'Paws::EC2::LoadPermission',
+                                      'type' => 'ArrayRef[EC2_LoadPermission]'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ProductCodes' => {
+                                   'type' => 'ArrayRef[EC2_ProductCode]',
+                                   'class' => 'Paws::EC2::ProductCode'
+                                 },
+               'FpgaImageId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'LoadPermissions' => 'loadPermissions',
+                       'Name' => 'name',
+                       'Description' => 'description',
+                       'ProductCodes' => 'productCodes',
+                       'FpgaImageId' => 'fpgaImageId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +85,7 @@ This class has no description
   The ID of the AFI.
 
 
-=head2 LoadPermissions => ArrayRef[L<Paws::EC2::LoadPermission>]
+=head2 LoadPermissions => ArrayRef[EC2_LoadPermission]
 
   The load permissions.
 
@@ -60,7 +95,7 @@ This class has no description
   The name of the AFI.
 
 
-=head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
+=head2 ProductCodes => ArrayRef[EC2_ProductCode]
 
   The product codes.
 

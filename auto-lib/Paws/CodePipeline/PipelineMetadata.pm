@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::PipelineMetadata;
-  use Moose;
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has PipelineArn => (is => 'ro', isa => 'Str', request_name => 'pipelineArn', traits => ['NameInRequest']);
-  has Updated => (is => 'ro', isa => 'Str', request_name => 'updated', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has Created => (is => 'ro', isa => Str);
+  has PipelineArn => (is => 'ro', isa => Str);
+  has Updated => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'Updated' => {
+                              'type' => 'Str'
+                            },
+               'PipelineArn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Created' => 'created',
+                       'Updated' => 'updated',
+                       'PipelineArn' => 'pipelineArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

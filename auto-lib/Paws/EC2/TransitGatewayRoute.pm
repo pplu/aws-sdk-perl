@@ -1,9 +1,39 @@
 package Paws::EC2::TransitGatewayRoute;
-  use Moose;
-  has DestinationCidrBlock => (is => 'ro', isa => 'Str', request_name => 'destinationCidrBlock', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has TransitGatewayAttachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TransitGatewayRouteAttachment]', request_name => 'transitGatewayAttachments', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_TransitGatewayRouteAttachment/;
+  has DestinationCidrBlock => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has TransitGatewayAttachments => (is => 'ro', isa => ArrayRef[EC2_TransitGatewayRouteAttachment]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TransitGatewayAttachments' => {
+                                                'type' => 'ArrayRef[EC2_TransitGatewayRouteAttachment]',
+                                                'class' => 'Paws::EC2::TransitGatewayRouteAttachment'
+                                              },
+               'DestinationCidrBlock' => {
+                                           'type' => 'Str'
+                                         },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'TransitGatewayAttachments' => 'transitGatewayAttachments',
+                       'DestinationCidrBlock' => 'destinationCidrBlock',
+                       'Type' => 'type',
+                       'State' => 'state'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +79,7 @@ This class has no description
   The state of the route.
 
 
-=head2 TransitGatewayAttachments => ArrayRef[L<Paws::EC2::TransitGatewayRouteAttachment>]
+=head2 TransitGatewayAttachments => ArrayRef[EC2_TransitGatewayRouteAttachment]
 
   The attachments.
 

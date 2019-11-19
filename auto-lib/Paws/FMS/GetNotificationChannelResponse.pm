@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::FMS::GetNotificationChannelResponse;
-  use Moose;
-  has SnsRoleName => (is => 'ro', isa => 'Str');
-  has SnsTopicArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::FMS::Types qw//;
+  has SnsRoleName => (is => 'ro', isa => Str);
+  has SnsTopicArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SnsRoleName' => {
+                                  'type' => 'Str'
+                                },
+               'SnsTopicArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

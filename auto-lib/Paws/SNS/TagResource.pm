@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::SNS::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SNS::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SNS::Types qw/SNS_Tag/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SNS_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::TagResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'TagResourceResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SNS::TagResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'TagResourceResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'ArrayRef[SNS_Tag]',
+                           'class' => 'Paws::SNS::Tag'
+                         }
+             },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'ResourceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +77,7 @@ The ARN of the topic to which to add tags.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::SNS::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[SNS_Tag]
 
 The tags to be added to the specified topic. A tag consists of a
 required key and an optional value.

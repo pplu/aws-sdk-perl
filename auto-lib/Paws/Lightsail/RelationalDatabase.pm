@@ -1,30 +1,152 @@
+# Generated from default/object.tt
 package Paws::Lightsail::RelationalDatabase;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has BackupRetentionEnabled => (is => 'ro', isa => 'Bool', request_name => 'backupRetentionEnabled', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Engine => (is => 'ro', isa => 'Str', request_name => 'engine', traits => ['NameInRequest']);
-  has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
-  has Hardware => (is => 'ro', isa => 'Paws::Lightsail::RelationalDatabaseHardware', request_name => 'hardware', traits => ['NameInRequest']);
-  has LatestRestorableTime => (is => 'ro', isa => 'Str', request_name => 'latestRestorableTime', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
-  has MasterDatabaseName => (is => 'ro', isa => 'Str', request_name => 'masterDatabaseName', traits => ['NameInRequest']);
-  has MasterEndpoint => (is => 'ro', isa => 'Paws::Lightsail::RelationalDatabaseEndpoint', request_name => 'masterEndpoint', traits => ['NameInRequest']);
-  has MasterUsername => (is => 'ro', isa => 'Str', request_name => 'masterUsername', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ParameterApplyStatus => (is => 'ro', isa => 'Str', request_name => 'parameterApplyStatus', traits => ['NameInRequest']);
-  has PendingMaintenanceActions => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::PendingMaintenanceAction]', request_name => 'pendingMaintenanceActions', traits => ['NameInRequest']);
-  has PendingModifiedValues => (is => 'ro', isa => 'Paws::Lightsail::PendingModifiedRelationalDatabaseValues', request_name => 'pendingModifiedValues', traits => ['NameInRequest']);
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str', request_name => 'preferredBackupWindow', traits => ['NameInRequest']);
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str', request_name => 'preferredMaintenanceWindow', traits => ['NameInRequest']);
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool', request_name => 'publiclyAccessible', traits => ['NameInRequest']);
-  has RelationalDatabaseBlueprintId => (is => 'ro', isa => 'Str', request_name => 'relationalDatabaseBlueprintId', traits => ['NameInRequest']);
-  has RelationalDatabaseBundleId => (is => 'ro', isa => 'Str', request_name => 'relationalDatabaseBundleId', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has SecondaryAvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'secondaryAvailabilityZone', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_PendingModifiedRelationalDatabaseValues Lightsail_RelationalDatabaseEndpoint Lightsail_Tag Lightsail_RelationalDatabaseHardware Lightsail_ResourceLocation Lightsail_PendingMaintenanceAction/;
+  has Arn => (is => 'ro', isa => Str);
+  has BackupRetentionEnabled => (is => 'ro', isa => Bool);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has Hardware => (is => 'ro', isa => Lightsail_RelationalDatabaseHardware);
+  has LatestRestorableTime => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Lightsail_ResourceLocation);
+  has MasterDatabaseName => (is => 'ro', isa => Str);
+  has MasterEndpoint => (is => 'ro', isa => Lightsail_RelationalDatabaseEndpoint);
+  has MasterUsername => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ParameterApplyStatus => (is => 'ro', isa => Str);
+  has PendingMaintenanceActions => (is => 'ro', isa => ArrayRef[Lightsail_PendingMaintenanceAction]);
+  has PendingModifiedValues => (is => 'ro', isa => Lightsail_PendingModifiedRelationalDatabaseValues);
+  has PreferredBackupWindow => (is => 'ro', isa => Str);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has PubliclyAccessible => (is => 'ro', isa => Bool);
+  has RelationalDatabaseBlueprintId => (is => 'ro', isa => Str);
+  has RelationalDatabaseBundleId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has SecondaryAvailabilityZone => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has SupportCode => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'BackupRetentionEnabled' => 'backupRetentionEnabled',
+                       'CreatedAt' => 'createdAt',
+                       'Hardware' => 'hardware',
+                       'Location' => 'location',
+                       'Arn' => 'arn',
+                       'SecondaryAvailabilityZone' => 'secondaryAvailabilityZone',
+                       'PubliclyAccessible' => 'publiclyAccessible',
+                       'Engine' => 'engine',
+                       'State' => 'state',
+                       'RelationalDatabaseBundleId' => 'relationalDatabaseBundleId',
+                       'Name' => 'name',
+                       'EngineVersion' => 'engineVersion',
+                       'MasterUsername' => 'masterUsername',
+                       'ParameterApplyStatus' => 'parameterApplyStatus',
+                       'MasterEndpoint' => 'masterEndpoint',
+                       'LatestRestorableTime' => 'latestRestorableTime',
+                       'Tags' => 'tags',
+                       'PendingMaintenanceActions' => 'pendingMaintenanceActions',
+                       'PreferredBackupWindow' => 'preferredBackupWindow',
+                       'MasterDatabaseName' => 'masterDatabaseName',
+                       'ResourceType' => 'resourceType',
+                       'PendingModifiedValues' => 'pendingModifiedValues',
+                       'PreferredMaintenanceWindow' => 'preferredMaintenanceWindow',
+                       'SupportCode' => 'supportCode',
+                       'RelationalDatabaseBlueprintId' => 'relationalDatabaseBlueprintId'
+                     },
+  'types' => {
+               'PendingMaintenanceActions' => {
+                                                'type' => 'ArrayRef[Lightsail_PendingMaintenanceAction]',
+                                                'class' => 'Paws::Lightsail::PendingMaintenanceAction'
+                                              },
+               'MasterDatabaseName' => {
+                                         'type' => 'Str'
+                                       },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'PendingModifiedValues' => {
+                                            'type' => 'Lightsail_PendingModifiedRelationalDatabaseValues',
+                                            'class' => 'Paws::Lightsail::PendingModifiedRelationalDatabaseValues'
+                                          },
+               'SupportCode' => {
+                                  'type' => 'Str'
+                                },
+               'RelationalDatabaseBlueprintId' => {
+                                                    'type' => 'Str'
+                                                  },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'ParameterApplyStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'MasterEndpoint' => {
+                                     'type' => 'Lightsail_RelationalDatabaseEndpoint',
+                                     'class' => 'Paws::Lightsail::RelationalDatabaseEndpoint'
+                                   },
+               'LatestRestorableTime' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'class' => 'Paws::Lightsail::Tag',
+                           'type' => 'ArrayRef[Lightsail_Tag]'
+                         },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'RelationalDatabaseBundleId' => {
+                                                 'type' => 'Str'
+                                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'BackupRetentionEnabled' => {
+                                             'type' => 'Bool'
+                                           },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Hardware' => {
+                               'type' => 'Lightsail_RelationalDatabaseHardware',
+                               'class' => 'Paws::Lightsail::RelationalDatabaseHardware'
+                             },
+               'Location' => {
+                               'type' => 'Lightsail_ResourceLocation',
+                               'class' => 'Paws::Lightsail::ResourceLocation'
+                             },
+               'SecondaryAvailabilityZone' => {
+                                                'type' => 'Str'
+                                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +208,7 @@ enabled for the database.
   The database engine version (for example, C<5.7.23>).
 
 
-=head2 Hardware => L<Paws::Lightsail::RelationalDatabaseHardware>
+=head2 Hardware => Lightsail_RelationalDatabaseHardware
 
   Describes the hardware of the database.
 
@@ -97,7 +219,7 @@ enabled for the database.
 Formatted in Unix time.
 
 
-=head2 Location => L<Paws::Lightsail::ResourceLocation>
+=head2 Location => Lightsail_ResourceLocation
 
   The Region name and Availability Zone where the database is located.
 
@@ -108,7 +230,7 @@ Formatted in Unix time.
 resource is created.
 
 
-=head2 MasterEndpoint => L<Paws::Lightsail::RelationalDatabaseEndpoint>
+=head2 MasterEndpoint => Lightsail_RelationalDatabaseEndpoint
 
   The master endpoint for the database.
 
@@ -128,12 +250,12 @@ resource is created.
   The status of parameter updates for the database.
 
 
-=head2 PendingMaintenanceActions => ArrayRef[L<Paws::Lightsail::PendingMaintenanceAction>]
+=head2 PendingMaintenanceActions => ArrayRef[Lightsail_PendingMaintenanceAction]
 
   Describes the pending maintenance actions for the database.
 
 
-=head2 PendingModifiedValues => L<Paws::Lightsail::PendingModifiedRelationalDatabaseValues>
+=head2 PendingModifiedValues => Lightsail_PendingModifiedRelationalDatabaseValues
 
   Describes pending database value modifications.
 
@@ -198,7 +320,7 @@ code enables our support team to look up your Lightsail information
 more easily.
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
   The tag keys and optional values for the resource. For more information
 about tags in Lightsail, see the Lightsail Dev Guide

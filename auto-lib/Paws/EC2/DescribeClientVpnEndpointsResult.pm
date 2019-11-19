@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeClientVpnEndpointsResult;
-  use Moose;
-  has ClientVpnEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClientVpnEndpoint]', request_name => 'clientVpnEndpoint', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ClientVpnEndpoint/;
+  has ClientVpnEndpoints => (is => 'ro', isa => ArrayRef[EC2_ClientVpnEndpoint]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ClientVpnEndpoints' => {
+                                         'class' => 'Paws::EC2::ClientVpnEndpoint',
+                                         'type' => 'ArrayRef[EC2_ClientVpnEndpoint]'
+                                       },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'ClientVpnEndpoints' => 'clientVpnEndpoint',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeClientVpnEndpointsResult
 =head1 ATTRIBUTES
 
 
-=head2 ClientVpnEndpoints => ArrayRef[L<Paws::EC2::ClientVpnEndpoint>]
+=head2 ClientVpnEndpoints => ArrayRef[EC2_ClientVpnEndpoint]
 
 Information about the Client VPN endpoints.
 

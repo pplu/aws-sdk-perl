@@ -1,11 +1,38 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::DeleteItemOutput;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
-  has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
-  has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetrics');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ItemCollectionMetrics DynamoDB_ConsumedCapacity DynamoDB_AttributeMap/;
+  has Attributes => (is => 'ro', isa => DynamoDB_AttributeMap);
+  has ConsumedCapacity => (is => 'ro', isa => DynamoDB_ConsumedCapacity);
+  has ItemCollectionMetrics => (is => 'ro', isa => DynamoDB_ItemCollectionMetrics);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'type' => 'DynamoDB_AttributeMap',
+                                 'class' => 'Paws::DynamoDB::AttributeMap'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ItemCollectionMetrics' => {
+                                            'type' => 'DynamoDB_ItemCollectionMetrics',
+                                            'class' => 'Paws::DynamoDB::ItemCollectionMetrics'
+                                          },
+               'ConsumedCapacity' => {
+                                       'class' => 'Paws::DynamoDB::ConsumedCapacity',
+                                       'type' => 'DynamoDB_ConsumedCapacity'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +43,7 @@ Paws::DynamoDB::DeleteItemOutput
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::DynamoDB::AttributeMap>
+=head2 Attributes => DynamoDB_AttributeMap
 
 A map of attribute names to C<AttributeValue> objects, representing the
 item as it appeared before the C<DeleteItem> operation. This map
@@ -24,7 +51,7 @@ appears in the response only if C<ReturnValues> was specified as
 C<ALL_OLD> in the request.
 
 
-=head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
+=head2 ConsumedCapacity => DynamoDB_ConsumedCapacity
 
 The capacity units consumed by the C<DeleteItem> operation. The data
 returned includes the total provisioned throughput consumed, along with
@@ -35,7 +62,7 @@ parameter was specified. For more information, see Provisioned Mode
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetrics>
+=head2 ItemCollectionMetrics => DynamoDB_ItemCollectionMetrics
 
 Information about item collections, if any, that were affected by the
 C<DeleteItem> operation. C<ItemCollectionMetrics> is only returned if

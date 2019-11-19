@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECR::PutLifecyclePolicy;
-  use Moose;
-  has LifecyclePolicyText => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lifecyclePolicyText' , required => 1);
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw//;
+  has LifecyclePolicyText => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RegistryId => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutLifecyclePolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::PutLifecyclePolicyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutLifecyclePolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECR::PutLifecyclePolicyResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'LifecyclePolicyText' => {
+                                          'type' => 'Str'
+                                        },
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'RepositoryName' => 1,
+                    'LifecyclePolicyText' => 1
+                  },
+  'NameInRequest' => {
+                       'RepositoryName' => 'repositoryName',
+                       'RegistryId' => 'registryId',
+                       'LifecyclePolicyText' => 'lifecyclePolicyText'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

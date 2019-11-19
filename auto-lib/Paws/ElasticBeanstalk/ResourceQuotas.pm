@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::ResourceQuotas;
-  use Moose;
-  has ApplicationQuota => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ResourceQuota');
-  has ApplicationVersionQuota => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ResourceQuota');
-  has ConfigurationTemplateQuota => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ResourceQuota');
-  has CustomPlatformQuota => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ResourceQuota');
-  has EnvironmentQuota => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ResourceQuota');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_ResourceQuota/;
+  has ApplicationQuota => (is => 'ro', isa => ElasticBeanstalk_ResourceQuota);
+  has ApplicationVersionQuota => (is => 'ro', isa => ElasticBeanstalk_ResourceQuota);
+  has ConfigurationTemplateQuota => (is => 'ro', isa => ElasticBeanstalk_ResourceQuota);
+  has CustomPlatformQuota => (is => 'ro', isa => ElasticBeanstalk_ResourceQuota);
+  has EnvironmentQuota => (is => 'ro', isa => ElasticBeanstalk_ResourceQuota);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationVersionQuota' => {
+                                              'type' => 'ElasticBeanstalk_ResourceQuota',
+                                              'class' => 'Paws::ElasticBeanstalk::ResourceQuota'
+                                            },
+               'CustomPlatformQuota' => {
+                                          'type' => 'ElasticBeanstalk_ResourceQuota',
+                                          'class' => 'Paws::ElasticBeanstalk::ResourceQuota'
+                                        },
+               'ApplicationQuota' => {
+                                       'class' => 'Paws::ElasticBeanstalk::ResourceQuota',
+                                       'type' => 'ElasticBeanstalk_ResourceQuota'
+                                     },
+               'EnvironmentQuota' => {
+                                       'type' => 'ElasticBeanstalk_ResourceQuota',
+                                       'class' => 'Paws::ElasticBeanstalk::ResourceQuota'
+                                     },
+               'ConfigurationTemplateQuota' => {
+                                                 'type' => 'ElasticBeanstalk_ResourceQuota',
+                                                 'class' => 'Paws::ElasticBeanstalk::ResourceQuota'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,27 +76,27 @@ account.
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationQuota => L<Paws::ElasticBeanstalk::ResourceQuota>
+=head2 ApplicationQuota => ElasticBeanstalk_ResourceQuota
 
   The quota for applications in the AWS account.
 
 
-=head2 ApplicationVersionQuota => L<Paws::ElasticBeanstalk::ResourceQuota>
+=head2 ApplicationVersionQuota => ElasticBeanstalk_ResourceQuota
 
   The quota for application versions in the AWS account.
 
 
-=head2 ConfigurationTemplateQuota => L<Paws::ElasticBeanstalk::ResourceQuota>
+=head2 ConfigurationTemplateQuota => ElasticBeanstalk_ResourceQuota
 
   The quota for configuration templates in the AWS account.
 
 
-=head2 CustomPlatformQuota => L<Paws::ElasticBeanstalk::ResourceQuota>
+=head2 CustomPlatformQuota => ElasticBeanstalk_ResourceQuota
 
   The quota for custom platforms in the AWS account.
 
 
-=head2 EnvironmentQuota => L<Paws::ElasticBeanstalk::ResourceQuota>
+=head2 EnvironmentQuota => ElasticBeanstalk_ResourceQuota
 
   The quota for environments in the AWS account.
 

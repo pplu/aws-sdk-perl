@@ -1,14 +1,35 @@
 
 package Paws::SecurityHub::GetInsightResults;
-  use Moose;
-  has InsightArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InsightArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw//;
+  has InsightArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetInsightResults');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/insights/results/{InsightArn+}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::GetInsightResultsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetInsightResults');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/insights/results/{InsightArn+}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::GetInsightResultsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'InsightArn' => 'InsightArn'
+                  },
+  'types' => {
+               'InsightArn' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'InsightArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

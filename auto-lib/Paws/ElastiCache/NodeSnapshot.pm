@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::NodeSnapshot;
-  use Moose;
-  has CacheClusterId => (is => 'ro', isa => 'Str');
-  has CacheNodeCreateTime => (is => 'ro', isa => 'Str');
-  has CacheNodeId => (is => 'ro', isa => 'Str');
-  has CacheSize => (is => 'ro', isa => 'Str');
-  has NodeGroupConfiguration => (is => 'ro', isa => 'Paws::ElastiCache::NodeGroupConfiguration');
-  has NodeGroupId => (is => 'ro', isa => 'Str');
-  has SnapshotCreateTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw/ElastiCache_NodeGroupConfiguration/;
+  has CacheClusterId => (is => 'ro', isa => Str);
+  has CacheNodeCreateTime => (is => 'ro', isa => Str);
+  has CacheNodeId => (is => 'ro', isa => Str);
+  has CacheSize => (is => 'ro', isa => Str);
+  has NodeGroupConfiguration => (is => 'ro', isa => ElastiCache_NodeGroupConfiguration);
+  has NodeGroupId => (is => 'ro', isa => Str);
+  has SnapshotCreateTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CacheNodeId' => {
+                                  'type' => 'Str'
+                                },
+               'NodeGroupConfiguration' => {
+                                             'class' => 'Paws::ElastiCache::NodeGroupConfiguration',
+                                             'type' => 'ElastiCache_NodeGroupConfiguration'
+                                           },
+               'SnapshotCreateTime' => {
+                                         'type' => 'Str'
+                                       },
+               'CacheSize' => {
+                                'type' => 'Str'
+                              },
+               'NodeGroupId' => {
+                                  'type' => 'Str'
+                                },
+               'CacheNodeCreateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'CacheClusterId' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +99,7 @@ cluster.
   The size of the cache on the source cache node.
 
 
-=head2 NodeGroupConfiguration => L<Paws::ElastiCache::NodeGroupConfiguration>
+=head2 NodeGroupConfiguration => ElastiCache_NodeGroupConfiguration
 
   The configuration for the source node group (shard).
 

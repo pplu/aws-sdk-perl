@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Shield::DescribeAttackResponse;
-  use Moose;
-  has Attack => (is => 'ro', isa => 'Paws::Shield::AttackDetail');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Shield::Types qw/Shield_AttackDetail/;
+  has Attack => (is => 'ro', isa => Shield_AttackDetail);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attack' => {
+                             'class' => 'Paws::Shield::AttackDetail',
+                             'type' => 'Shield_AttackDetail'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Shield::DescribeAttackResponse
 =head1 ATTRIBUTES
 
 
-=head2 Attack => L<Paws::Shield::AttackDetail>
+=head2 Attack => Shield_AttackDetail
 
 The attack that is described.
 

@@ -1,8 +1,33 @@
 package Paws::EC2::CancelSpotFleetRequestsSuccessItem;
-  use Moose;
-  has CurrentSpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'currentSpotFleetRequestState', traits => ['NameInRequest']);
-  has PreviousSpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'previousSpotFleetRequestState', traits => ['NameInRequest']);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has CurrentSpotFleetRequestState => (is => 'ro', isa => Str);
+  has PreviousSpotFleetRequestState => (is => 'ro', isa => Str);
+  has SpotFleetRequestId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpotFleetRequestId' => {
+                                         'type' => 'Str'
+                                       },
+               'CurrentSpotFleetRequestState' => {
+                                                   'type' => 'Str'
+                                                 },
+               'PreviousSpotFleetRequestState' => {
+                                                    'type' => 'Str'
+                                                  }
+             },
+  'NameInRequest' => {
+                       'PreviousSpotFleetRequestState' => 'previousSpotFleetRequestState',
+                       'SpotFleetRequestId' => 'spotFleetRequestId',
+                       'CurrentSpotFleetRequestState' => 'currentSpotFleetRequestState'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

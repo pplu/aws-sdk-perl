@@ -1,16 +1,77 @@
+# Generated from default/object.tt
 package Paws::Firehose::RedshiftDestinationConfiguration;
-  use Moose;
-  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
-  has ClusterJDBCURL => (is => 'ro', isa => 'Str', required => 1);
-  has CopyCommand => (is => 'ro', isa => 'Paws::Firehose::CopyCommand', required => 1);
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
-  has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::RedshiftRetryOptions');
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
-  has S3BackupConfiguration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration');
-  has S3BackupMode => (is => 'ro', isa => 'Str');
-  has S3Configuration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration', required => 1);
-  has Username => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw/Firehose_CopyCommand Firehose_CloudWatchLoggingOptions Firehose_ProcessingConfiguration Firehose_S3DestinationConfiguration Firehose_RedshiftRetryOptions/;
+  has CloudWatchLoggingOptions => (is => 'ro', isa => Firehose_CloudWatchLoggingOptions);
+  has ClusterJDBCURL => (is => 'ro', isa => Str, required => 1);
+  has CopyCommand => (is => 'ro', isa => Firehose_CopyCommand, required => 1);
+  has Password => (is => 'ro', isa => Str, required => 1);
+  has ProcessingConfiguration => (is => 'ro', isa => Firehose_ProcessingConfiguration);
+  has RetryOptions => (is => 'ro', isa => Firehose_RedshiftRetryOptions);
+  has RoleARN => (is => 'ro', isa => Str, required => 1);
+  has S3BackupConfiguration => (is => 'ro', isa => Firehose_S3DestinationConfiguration);
+  has S3BackupMode => (is => 'ro', isa => Str);
+  has S3Configuration => (is => 'ro', isa => Firehose_S3DestinationConfiguration, required => 1);
+  has Username => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CopyCommand' => {
+                                  'type' => 'Firehose_CopyCommand',
+                                  'class' => 'Paws::Firehose::CopyCommand'
+                                },
+               'CloudWatchLoggingOptions' => {
+                                               'class' => 'Paws::Firehose::CloudWatchLoggingOptions',
+                                               'type' => 'Firehose_CloudWatchLoggingOptions'
+                                             },
+               'ProcessingConfiguration' => {
+                                              'class' => 'Paws::Firehose::ProcessingConfiguration',
+                                              'type' => 'Firehose_ProcessingConfiguration'
+                                            },
+               'S3Configuration' => {
+                                      'type' => 'Firehose_S3DestinationConfiguration',
+                                      'class' => 'Paws::Firehose::S3DestinationConfiguration'
+                                    },
+               'S3BackupConfiguration' => {
+                                            'class' => 'Paws::Firehose::S3DestinationConfiguration',
+                                            'type' => 'Firehose_S3DestinationConfiguration'
+                                          },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'RetryOptions' => {
+                                   'type' => 'Firehose_RedshiftRetryOptions',
+                                   'class' => 'Paws::Firehose::RedshiftRetryOptions'
+                                 },
+               'S3BackupMode' => {
+                                   'type' => 'Str'
+                                 },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'ClusterJDBCURL' => {
+                                     'type' => 'Str'
+                                   },
+               'Username' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'ClusterJDBCURL' => 1,
+                    'Username' => 1,
+                    'RoleARN' => 1,
+                    'Password' => 1,
+                    'S3Configuration' => 1,
+                    'CopyCommand' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +107,7 @@ Describes the configuration of a destination in Amazon Redshift.
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+=head2 CloudWatchLoggingOptions => Firehose_CloudWatchLoggingOptions
 
   The CloudWatch logging options for your delivery stream.
 
@@ -56,7 +117,7 @@ Describes the configuration of a destination in Amazon Redshift.
   The database connection string.
 
 
-=head2 B<REQUIRED> CopyCommand => L<Paws::Firehose::CopyCommand>
+=head2 B<REQUIRED> CopyCommand => Firehose_CopyCommand
 
   The C<COPY> command.
 
@@ -66,12 +127,12 @@ Describes the configuration of a destination in Amazon Redshift.
   The user password.
 
 
-=head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
+=head2 ProcessingConfiguration => Firehose_ProcessingConfiguration
 
   The data processing configuration.
 
 
-=head2 RetryOptions => L<Paws::Firehose::RedshiftRetryOptions>
+=head2 RetryOptions => Firehose_RedshiftRetryOptions
 
   The retry behavior in case Kinesis Data Firehose is unable to deliver
 documents to Amazon Redshift. Default value is 3600 (60 minutes).
@@ -85,7 +146,7 @@ Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
-=head2 S3BackupConfiguration => L<Paws::Firehose::S3DestinationConfiguration>
+=head2 S3BackupConfiguration => Firehose_S3DestinationConfiguration
 
   The configuration for backup in Amazon S3.
 
@@ -95,7 +156,7 @@ Namespaces
   The Amazon S3 backup mode.
 
 
-=head2 B<REQUIRED> S3Configuration => L<Paws::Firehose::S3DestinationConfiguration>
+=head2 B<REQUIRED> S3Configuration => Firehose_S3DestinationConfiguration
 
   The configuration for the intermediate Amazon S3 location from which
 Amazon Redshift obtains data. Restrictions are described in the topic

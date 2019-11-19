@@ -1,8 +1,33 @@
 package Paws::EC2::SpotInstanceStatus;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has UpdateTime => (is => 'ro', isa => 'Str', request_name => 'updateTime', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Code => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has UpdateTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'UpdateTime' => 'updateTime',
+                       'Code' => 'code',
+                       'Message' => 'message'
+                     },
+  'types' => {
+               'Code' => {
+                           'type' => 'Str'
+                         },
+               'UpdateTime' => {
+                                 'type' => 'Str'
+                               },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

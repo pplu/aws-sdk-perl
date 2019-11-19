@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeHostReservationOfferingsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has OfferingSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HostOffering]', request_name => 'offeringSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_HostOffering/;
+  has NextToken => (is => 'ro', isa => Str);
+  has OfferingSet => (is => 'ro', isa => ArrayRef[EC2_HostOffering]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'OfferingSet' => {
+                                  'type' => 'ArrayRef[EC2_HostOffering]',
+                                  'class' => 'Paws::EC2::HostOffering'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'OfferingSet' => 'offeringSet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +48,7 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 OfferingSet => ArrayRef[L<Paws::EC2::HostOffering>]
+=head2 OfferingSet => ArrayRef[EC2_HostOffering]
 
 Information about the offerings.
 

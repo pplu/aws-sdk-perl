@@ -1,16 +1,49 @@
 
 package Paws::IoTEvents::UpdateInput;
-  use Moose;
-  has InputDefinition => (is => 'ro', isa => 'Paws::IoTEvents::InputDefinition', traits => ['NameInRequest'], request_name => 'inputDefinition', required => 1);
-  has InputDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputDescription');
-  has InputName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'inputName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw/IoTEvents_InputDefinition/;
+  has InputDefinition => (is => 'ro', isa => IoTEvents_InputDefinition, required => 1, predicate => 1);
+  has InputDescription => (is => 'ro', isa => Str, predicate => 1);
+  has InputName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateInput');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/inputs/{inputName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTEvents::UpdateInputResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateInput');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/inputs/{inputName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTEvents::UpdateInputResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'InputName' => 'inputName'
+                  },
+  'types' => {
+               'InputDescription' => {
+                                       'type' => 'Str'
+                                     },
+               'InputDefinition' => {
+                                      'class' => 'Paws::IoTEvents::InputDefinition',
+                                      'type' => 'IoTEvents_InputDefinition'
+                                    },
+               'InputName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'InputDefinition' => 'inputDefinition',
+                       'InputDescription' => 'inputDescription'
+                     },
+  'IsRequired' => {
+                    'InputDefinition' => 1,
+                    'InputName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +89,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InputDefinition => L<Paws::IoTEvents::InputDefinition>
+=head2 B<REQUIRED> InputDefinition => IoTEvents_InputDefinition
 
 The definition of the input.
 

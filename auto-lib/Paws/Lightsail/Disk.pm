@@ -1,22 +1,109 @@
+# Generated from default/object.tt
 package Paws::Lightsail::Disk;
-  use Moose;
-  has AddOns => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AddOn]', request_name => 'addOns', traits => ['NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has AttachedTo => (is => 'ro', isa => 'Str', request_name => 'attachedTo', traits => ['NameInRequest']);
-  has AttachmentState => (is => 'ro', isa => 'Str', request_name => 'attachmentState', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has GbInUse => (is => 'ro', isa => 'Int', request_name => 'gbInUse', traits => ['NameInRequest']);
-  has Iops => (is => 'ro', isa => 'Int', request_name => 'iops', traits => ['NameInRequest']);
-  has IsAttached => (is => 'ro', isa => 'Bool', request_name => 'isAttached', traits => ['NameInRequest']);
-  has IsSystemDisk => (is => 'ro', isa => 'Bool', request_name => 'isSystemDisk', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has SizeInGb => (is => 'ro', isa => 'Int', request_name => 'sizeInGb', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int Bool/;
+  use Paws::Lightsail::Types qw/Lightsail_ResourceLocation Lightsail_AddOn Lightsail_Tag/;
+  has AddOns => (is => 'ro', isa => ArrayRef[Lightsail_AddOn]);
+  has Arn => (is => 'ro', isa => Str);
+  has AttachedTo => (is => 'ro', isa => Str);
+  has AttachmentState => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has GbInUse => (is => 'ro', isa => Int);
+  has Iops => (is => 'ro', isa => Int);
+  has IsAttached => (is => 'ro', isa => Bool);
+  has IsSystemDisk => (is => 'ro', isa => Bool);
+  has Location => (is => 'ro', isa => Lightsail_ResourceLocation);
+  has Name => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has SizeInGb => (is => 'ro', isa => Int);
+  has State => (is => 'ro', isa => Str);
+  has SupportCode => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ResourceType' => 'resourceType',
+                       'IsAttached' => 'isAttached',
+                       'SupportCode' => 'supportCode',
+                       'State' => 'state',
+                       'Name' => 'name',
+                       'IsSystemDisk' => 'isSystemDisk',
+                       'AddOns' => 'addOns',
+                       'GbInUse' => 'gbInUse',
+                       'AttachmentState' => 'attachmentState',
+                       'CreatedAt' => 'createdAt',
+                       'Iops' => 'iops',
+                       'Location' => 'location',
+                       'AttachedTo' => 'attachedTo',
+                       'Arn' => 'arn',
+                       'Tags' => 'tags',
+                       'SizeInGb' => 'sizeInGb',
+                       'Path' => 'path'
+                     },
+  'types' => {
+               'GbInUse' => {
+                              'type' => 'Int'
+                            },
+               'SupportCode' => {
+                                  'type' => 'Str'
+                                },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'AddOns' => {
+                             'class' => 'Paws::Lightsail::AddOn',
+                             'type' => 'ArrayRef[Lightsail_AddOn]'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'IsSystemDisk' => {
+                                   'type' => 'Bool'
+                                 },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'IsAttached' => {
+                                 'type' => 'Bool'
+                               },
+               'Tags' => {
+                           'type' => 'ArrayRef[Lightsail_Tag]',
+                           'class' => 'Paws::Lightsail::Tag'
+                         },
+               'SizeInGb' => {
+                               'type' => 'Int'
+                             },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Location' => {
+                               'class' => 'Paws::Lightsail::ResourceLocation',
+                               'type' => 'Lightsail_ResourceLocation'
+                             },
+               'AttachedTo' => {
+                                 'type' => 'Str'
+                               },
+               'AttachmentState' => {
+                                      'type' => 'Str'
+                                    },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +139,7 @@ Describes a system disk or a block storage disk.
 =head1 ATTRIBUTES
 
 
-=head2 AddOns => ArrayRef[L<Paws::Lightsail::AddOn>]
+=head2 AddOns => ArrayRef[Lightsail_AddOn]
 
   An array of objects representing the add-ons enabled on the disk.
 
@@ -105,7 +192,7 @@ in the API response. It is now deprecated.
 operating system loaded on it).
 
 
-=head2 Location => L<Paws::Lightsail::ResourceLocation>
+=head2 Location => Lightsail_ResourceLocation
 
   The AWS Region and Availability Zone where the disk is located.
 
@@ -143,7 +230,7 @@ code enables our support team to look up your Lightsail information
 more easily.
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
   The tag keys and optional values for the resource. For more information
 about tags in Lightsail, see the Lightsail Dev Guide

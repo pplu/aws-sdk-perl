@@ -1,16 +1,43 @@
 
 package Paws::EC2::ModifyVpcEndpointConnectionNotification;
-  use Moose;
-  has ConnectionEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ConnectionNotificationArn => (is => 'ro', isa => 'Str');
-  has ConnectionNotificationId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::EC2::Types qw//;
+  has ConnectionEvents => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ConnectionNotificationArn => (is => 'ro', isa => Str, predicate => 1);
+  has ConnectionNotificationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVpcEndpointConnectionNotification');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyVpcEndpointConnectionNotificationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyVpcEndpointConnectionNotification');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyVpcEndpointConnectionNotificationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConnectionNotificationArn' => {
+                                                'type' => 'Str'
+                                              },
+               'ConnectionEvents' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ConnectionNotificationId' => {
+                                               'type' => 'Str'
+                                             },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             },
+  'IsRequired' => {
+                    'ConnectionNotificationId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

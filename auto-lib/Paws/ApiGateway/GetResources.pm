@@ -1,17 +1,52 @@
 
 package Paws::ApiGateway::GetResources;
-  use Moose;
-  has Embed => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'embed');
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::ApiGateway::Types qw//;
+  has Embed => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Position => (is => 'ro', isa => Str, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetResources');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Resources');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetResources');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/resources');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::Resources');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'Embed' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'Position' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'RestApiId' => 1
+                  },
+  'ParamInQuery' => {
+                      'Position' => 'position',
+                      'Embed' => 'embed',
+                      'Limit' => 'limit'
+                    },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

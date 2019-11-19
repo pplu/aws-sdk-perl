@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetDomainsResult;
-  use Moose;
-  has Domains => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Domain]', traits => ['NameInRequest'], request_name => 'domains' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_Domain/;
+  has Domains => (is => 'ro', isa => ArrayRef[Lightsail_Domain]);
+  has NextPageToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NextPageToken' => 'nextPageToken',
+                       'Domains' => 'domains'
+                     },
+  'types' => {
+               'Domains' => {
+                              'class' => 'Paws::Lightsail::Domain',
+                              'type' => 'ArrayRef[Lightsail_Domain]'
+                            },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Lightsail::GetDomainsResult
 =head1 ATTRIBUTES
 
 
-=head2 Domains => ArrayRef[L<Paws::Lightsail::Domain>]
+=head2 Domains => ArrayRef[Lightsail_Domain]
 
 An array of key-value pairs containing information about each of the
 domain entries in the user's account.

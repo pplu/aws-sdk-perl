@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::DescribeStorediSCSIVolumesOutput;
-  use Moose;
-  has StorediSCSIVolumes => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::StorediSCSIVolume]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_StorediSCSIVolume/;
+  has StorediSCSIVolumes => (is => 'ro', isa => ArrayRef[StorageGateway_StorediSCSIVolume]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StorediSCSIVolumes' => {
+                                         'type' => 'ArrayRef[StorageGateway_StorediSCSIVolume]',
+                                         'class' => 'Paws::StorageGateway::StorediSCSIVolume'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::StorageGateway::DescribeStorediSCSIVolumesOutput
 =head1 ATTRIBUTES
 
 
-=head2 StorediSCSIVolumes => ArrayRef[L<Paws::StorageGateway::StorediSCSIVolume>]
+=head2 StorediSCSIVolumes => ArrayRef[StorageGateway_StorediSCSIVolume]
 
 Describes a single unit of output from DescribeStorediSCSIVolumes. The
 following fields are returned:

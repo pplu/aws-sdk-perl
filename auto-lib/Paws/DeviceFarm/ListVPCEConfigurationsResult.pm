@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListVPCEConfigurationsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has VpceConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::VPCEConfiguration]', traits => ['NameInRequest'], request_name => 'vpceConfigurations' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_VPCEConfiguration/;
+  has NextToken => (is => 'ro', isa => Str);
+  has VpceConfigurations => (is => 'ro', isa => ArrayRef[DeviceFarm_VPCEConfiguration]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VpceConfigurations' => {
+                                         'class' => 'Paws::DeviceFarm::VPCEConfiguration',
+                                         'type' => 'ArrayRef[DeviceFarm_VPCEConfiguration]'
+                                       },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'VpceConfigurations' => 'vpceConfigurations',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +48,7 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-=head2 VpceConfigurations => ArrayRef[L<Paws::DeviceFarm::VPCEConfiguration>]
+=head2 VpceConfigurations => ArrayRef[DeviceFarm_VPCEConfiguration]
 
 An array of C<VPCEConfiguration> objects containing information about
 your VPC endpoint configuration.

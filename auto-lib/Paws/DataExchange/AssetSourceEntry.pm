@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DataExchange::AssetSourceEntry;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has Key => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1);
+  has Key => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             },
+  'IsRequired' => {
+                    'Key' => 1,
+                    'Bucket' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

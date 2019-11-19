@@ -1,15 +1,33 @@
 
 package Paws::XRay::GetGroup;
-  use Moose;
-  has GroupARN => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::XRay::Types qw//;
+  has GroupARN => (is => 'ro', isa => Str, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/GetGroup');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::XRay::GetGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/GetGroup');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::XRay::GetGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'GroupARN' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

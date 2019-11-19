@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::RedShift::ClusterVersion;
-  use Moose;
-  has ClusterParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has ClusterVersion => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw//;
+  has ClusterParameterGroupFamily => (is => 'ro', isa => Str);
+  has ClusterVersion => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterParameterGroupFamily' => {
+                                                  'type' => 'Str'
+                                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ClusterVersion' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::WorkflowTypeConfiguration;
-  use Moose;
-  has DefaultChildPolicy => (is => 'ro', isa => 'Str', request_name => 'defaultChildPolicy', traits => ['NameInRequest']);
-  has DefaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultExecutionStartToCloseTimeout', traits => ['NameInRequest']);
-  has DefaultLambdaRole => (is => 'ro', isa => 'Str', request_name => 'defaultLambdaRole', traits => ['NameInRequest']);
-  has DefaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'defaultTaskList', traits => ['NameInRequest']);
-  has DefaultTaskPriority => (is => 'ro', isa => 'Str', request_name => 'defaultTaskPriority', traits => ['NameInRequest']);
-  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskStartToCloseTimeout', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_TaskList/;
+  has DefaultChildPolicy => (is => 'ro', isa => Str);
+  has DefaultExecutionStartToCloseTimeout => (is => 'ro', isa => Str);
+  has DefaultLambdaRole => (is => 'ro', isa => Str);
+  has DefaultTaskList => (is => 'ro', isa => SimpleWorkflow_TaskList);
+  has DefaultTaskPriority => (is => 'ro', isa => Str);
+  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DefaultExecutionStartToCloseTimeout' => 'defaultExecutionStartToCloseTimeout',
+                       'DefaultTaskPriority' => 'defaultTaskPriority',
+                       'DefaultLambdaRole' => 'defaultLambdaRole',
+                       'DefaultTaskStartToCloseTimeout' => 'defaultTaskStartToCloseTimeout',
+                       'DefaultChildPolicy' => 'defaultChildPolicy',
+                       'DefaultTaskList' => 'defaultTaskList'
+                     },
+  'types' => {
+               'DefaultTaskPriority' => {
+                                          'type' => 'Str'
+                                        },
+               'DefaultExecutionStartToCloseTimeout' => {
+                                                          'type' => 'Str'
+                                                        },
+               'DefaultLambdaRole' => {
+                                        'type' => 'Str'
+                                      },
+               'DefaultTaskStartToCloseTimeout' => {
+                                                     'type' => 'Str'
+                                                   },
+               'DefaultChildPolicy' => {
+                                         'type' => 'Str'
+                                       },
+               'DefaultTaskList' => {
+                                      'type' => 'SimpleWorkflow_TaskList',
+                                      'class' => 'Paws::SimpleWorkflow::TaskList'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -99,7 +140,7 @@ https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
 in the I<Amazon SWF Developer Guide>.
 
 
-=head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 DefaultTaskList => SimpleWorkflow_TaskList
 
   The default task list, specified when registering the workflow type,
 for decisions tasks scheduled for workflow executions of this type.

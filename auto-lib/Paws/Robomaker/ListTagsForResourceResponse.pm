@@ -1,9 +1,30 @@
 
 package Paws::Robomaker::ListTagsForResourceResponse;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw/Robomaker_TagMap/;
+  has Tags => (is => 'ro', isa => Robomaker_TagMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'types' => {
+               'Tags' => {
+                           'type' => 'Robomaker_TagMap',
+                           'class' => 'Paws::Robomaker::TagMap'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::Robomaker::ListTagsForResourceResponse
 =head1 ATTRIBUTES
 
 
-=head2 Tags => L<Paws::Robomaker::TagMap>
+=head2 Tags => Robomaker_TagMap
 
 The list of all tags added to the specified resource.
 

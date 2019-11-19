@@ -1,18 +1,52 @@
 
 package Paws::ApiGateway::GetApiKeys;
-  use Moose;
-  has CustomerId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'customerId');
-  has IncludeValues => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeValues');
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name');
-  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::ApiGateway::Types qw//;
+  has CustomerId => (is => 'ro', isa => Str, predicate => 1);
+  has IncludeValues => (is => 'ro', isa => Bool, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has NameQuery => (is => 'ro', isa => Str, predicate => 1);
+  has Position => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetApiKeys');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apikeys');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::ApiKeys');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetApiKeys');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/apikeys');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::ApiKeys');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'Position' => 'position',
+                      'NameQuery' => 'name',
+                      'IncludeValues' => 'includeValues',
+                      'CustomerId' => 'customerId',
+                      'Limit' => 'limit'
+                    },
+  'types' => {
+               'Position' => {
+                               'type' => 'Str'
+                             },
+               'IncludeValues' => {
+                                    'type' => 'Bool'
+                                  },
+               'NameQuery' => {
+                                'type' => 'Str'
+                              },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'CustomerId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

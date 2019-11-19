@@ -1,16 +1,45 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::RecordLifecycleActionHeartbeat;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has LifecycleActionToken => (is => 'ro', isa => 'Str');
-  has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, predicate => 1);
+  has LifecycleActionToken => (is => 'ro', isa => Str, predicate => 1);
+  has LifecycleHookName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RecordLifecycleActionHeartbeat');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::RecordLifecycleActionHeartbeatAnswer');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RecordLifecycleActionHeartbeatResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RecordLifecycleActionHeartbeat');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::RecordLifecycleActionHeartbeatAnswer');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RecordLifecycleActionHeartbeatResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'LifecycleHookName' => {
+                                        'type' => 'Str'
+                                      },
+               'LifecycleActionToken' => {
+                                           'type' => 'Str'
+                                         },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'LifecycleHookName' => 1,
+                    'AutoScalingGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

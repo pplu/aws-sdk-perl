@@ -1,16 +1,76 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::ProresSettings;
-  use Moose;
-  has CodecProfile => (is => 'ro', isa => 'Str', request_name => 'codecProfile', traits => ['NameInRequest']);
-  has FramerateControl => (is => 'ro', isa => 'Str', request_name => 'framerateControl', traits => ['NameInRequest']);
-  has FramerateConversionAlgorithm => (is => 'ro', isa => 'Str', request_name => 'framerateConversionAlgorithm', traits => ['NameInRequest']);
-  has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest']);
-  has FramerateNumerator => (is => 'ro', isa => 'Int', request_name => 'framerateNumerator', traits => ['NameInRequest']);
-  has InterlaceMode => (is => 'ro', isa => 'Str', request_name => 'interlaceMode', traits => ['NameInRequest']);
-  has ParControl => (is => 'ro', isa => 'Str', request_name => 'parControl', traits => ['NameInRequest']);
-  has ParDenominator => (is => 'ro', isa => 'Int', request_name => 'parDenominator', traits => ['NameInRequest']);
-  has ParNumerator => (is => 'ro', isa => 'Int', request_name => 'parNumerator', traits => ['NameInRequest']);
-  has SlowPal => (is => 'ro', isa => 'Str', request_name => 'slowPal', traits => ['NameInRequest']);
-  has Telecine => (is => 'ro', isa => 'Str', request_name => 'telecine', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw//;
+  has CodecProfile => (is => 'ro', isa => Str);
+  has FramerateControl => (is => 'ro', isa => Str);
+  has FramerateConversionAlgorithm => (is => 'ro', isa => Str);
+  has FramerateDenominator => (is => 'ro', isa => Int);
+  has FramerateNumerator => (is => 'ro', isa => Int);
+  has InterlaceMode => (is => 'ro', isa => Str);
+  has ParControl => (is => 'ro', isa => Str);
+  has ParDenominator => (is => 'ro', isa => Int);
+  has ParNumerator => (is => 'ro', isa => Int);
+  has SlowPal => (is => 'ro', isa => Str);
+  has Telecine => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FramerateControl' => 'framerateControl',
+                       'SlowPal' => 'slowPal',
+                       'ParDenominator' => 'parDenominator',
+                       'ParControl' => 'parControl',
+                       'FramerateDenominator' => 'framerateDenominator',
+                       'FramerateConversionAlgorithm' => 'framerateConversionAlgorithm',
+                       'ParNumerator' => 'parNumerator',
+                       'CodecProfile' => 'codecProfile',
+                       'FramerateNumerator' => 'framerateNumerator',
+                       'InterlaceMode' => 'interlaceMode',
+                       'Telecine' => 'telecine'
+                     },
+  'types' => {
+               'FramerateDenominator' => {
+                                           'type' => 'Int'
+                                         },
+               'FramerateConversionAlgorithm' => {
+                                                   'type' => 'Str'
+                                                 },
+               'CodecProfile' => {
+                                   'type' => 'Str'
+                                 },
+               'FramerateNumerator' => {
+                                         'type' => 'Int'
+                                       },
+               'ParNumerator' => {
+                                   'type' => 'Int'
+                                 },
+               'Telecine' => {
+                               'type' => 'Str'
+                             },
+               'InterlaceMode' => {
+                                    'type' => 'Str'
+                                  },
+               'FramerateControl' => {
+                                       'type' => 'Str'
+                                     },
+               'SlowPal' => {
+                              'type' => 'Str'
+                            },
+               'ParDenominator' => {
+                                     'type' => 'Int'
+                                   },
+               'ParControl' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

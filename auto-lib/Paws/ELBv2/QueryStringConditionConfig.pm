@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::ELBv2::QueryStringConditionConfig;
-  use Moose;
-  has Values => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::QueryStringKeyValuePair]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::ELBv2::Types qw/ELBv2_QueryStringKeyValuePair/;
+  has Values => (is => 'ro', isa => ArrayRef[ELBv2_QueryStringKeyValuePair]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Values' => {
+                             'type' => 'ArrayRef[ELBv2_QueryStringKeyValuePair]',
+                             'class' => 'Paws::ELBv2::QueryStringKeyValuePair'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +60,7 @@ character can be percentage encoded.
 =head1 ATTRIBUTES
 
 
-=head2 Values => ArrayRef[L<Paws::ELBv2::QueryStringKeyValuePair>]
+=head2 Values => ArrayRef[ELBv2_QueryStringKeyValuePair]
 
   One or more key/value pairs or values to find in the query string. The
 maximum size of each string is 128 characters. The comparison is case

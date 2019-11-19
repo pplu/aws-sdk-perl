@@ -1,12 +1,51 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::DeleteFileOutput;
-  use Moose;
-  has BlobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'blobId' , required => 1);
-  has CommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitId' , required => 1);
-  has FilePath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filePath' , required => 1);
-  has TreeId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'treeId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has BlobId => (is => 'ro', isa => Str, required => 1);
+  has CommitId => (is => 'ro', isa => Str, required => 1);
+  has FilePath => (is => 'ro', isa => Str, required => 1);
+  has TreeId => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CommitId' => {
+                               'type' => 'Str'
+                             },
+               'BlobId' => {
+                             'type' => 'Str'
+                           },
+               'TreeId' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FilePath' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'FilePath' => 'filePath',
+                       'TreeId' => 'treeId',
+                       'BlobId' => 'blobId',
+                       'CommitId' => 'commitId'
+                     },
+  'IsRequired' => {
+                    'TreeId' => 1,
+                    'BlobId' => 1,
+                    'FilePath' => 1,
+                    'CommitId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

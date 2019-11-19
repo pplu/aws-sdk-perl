@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::Target;
-  use Moose;
-  has DestinationReference => (is => 'ro', isa => 'Str', request_name => 'destinationReference', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest'], required => 1);
-  has SourceReference => (is => 'ro', isa => 'Str', request_name => 'sourceReference', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has DestinationReference => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1);
+  has SourceReference => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RepositoryName' => 1,
+                    'SourceReference' => 1
+                  },
+  'NameInRequest' => {
+                       'RepositoryName' => 'repositoryName',
+                       'DestinationReference' => 'destinationReference',
+                       'SourceReference' => 'sourceReference'
+                     },
+  'types' => {
+               'SourceReference' => {
+                                      'type' => 'Str'
+                                    },
+               'DestinationReference' => {
+                                           'type' => 'Str'
+                                         },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

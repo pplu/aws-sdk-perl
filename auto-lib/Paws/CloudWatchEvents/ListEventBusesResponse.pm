@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchEvents::ListEventBusesResponse;
-  use Moose;
-  has EventBuses => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::EventBus]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_EventBus/;
+  has EventBuses => (is => 'ro', isa => ArrayRef[CloudWatchEvents_EventBus]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'EventBuses' => {
+                                 'class' => 'Paws::CloudWatchEvents::EventBus',
+                                 'type' => 'ArrayRef[CloudWatchEvents_EventBus]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::CloudWatchEvents::ListEventBusesResponse
 =head1 ATTRIBUTES
 
 
-=head2 EventBuses => ArrayRef[L<Paws::CloudWatchEvents::EventBus>]
+=head2 EventBuses => ArrayRef[CloudWatchEvents_EventBus]
 
 This list of event buses.
 

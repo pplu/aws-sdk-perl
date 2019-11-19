@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::GetApplicationSettingsResponse;
-  use Moose;
-  has ApplicationSettingsResource => (is => 'ro', isa => 'Paws::Pinpoint::ApplicationSettingsResource', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_ApplicationSettingsResource/;
+  has ApplicationSettingsResource => (is => 'ro', isa => Pinpoint_ApplicationSettingsResource, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ApplicationSettingsResource' => 1
+                  },
+  'types' => {
+               'ApplicationSettingsResource' => {
+                                                  'type' => 'Pinpoint_ApplicationSettingsResource',
+                                                  'class' => 'Paws::Pinpoint::ApplicationSettingsResource'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ApplicationSettingsResource => L<Paws::Pinpoint::ApplicationSettingsResource>
+=head2 B<REQUIRED> ApplicationSettingsResource => Pinpoint_ApplicationSettingsResource
 
   
 

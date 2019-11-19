@@ -1,14 +1,51 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetAccountAuthorizationDetailsResponse;
-  use Moose;
-  has GroupDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::GroupDetail]');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
-  has Policies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ManagedPolicyDetail]');
-  has RoleDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::RoleDetail]');
-  has UserDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::UserDetail]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::IAM::Types qw/IAM_ManagedPolicyDetail IAM_RoleDetail IAM_UserDetail IAM_GroupDetail/;
+  has GroupDetailList => (is => 'ro', isa => ArrayRef[IAM_GroupDetail]);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
+  has Policies => (is => 'ro', isa => ArrayRef[IAM_ManagedPolicyDetail]);
+  has RoleDetailList => (is => 'ro', isa => ArrayRef[IAM_RoleDetail]);
+  has UserDetailList => (is => 'ro', isa => ArrayRef[IAM_UserDetail]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupDetailList' => {
+                                      'class' => 'Paws::IAM::GroupDetail',
+                                      'type' => 'ArrayRef[IAM_GroupDetail]'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Policies' => {
+                               'type' => 'ArrayRef[IAM_ManagedPolicyDetail]',
+                               'class' => 'Paws::IAM::ManagedPolicyDetail'
+                             },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'UserDetailList' => {
+                                     'type' => 'ArrayRef[IAM_UserDetail]',
+                                     'class' => 'Paws::IAM::UserDetail'
+                                   },
+               'RoleDetailList' => {
+                                     'class' => 'Paws::IAM::RoleDetail',
+                                     'type' => 'ArrayRef[IAM_RoleDetail]'
+                                   },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +57,7 @@ Paws::IAM::GetAccountAuthorizationDetailsResponse
 =head1 ATTRIBUTES
 
 
-=head2 GroupDetailList => ArrayRef[L<Paws::IAM::GroupDetail>]
+=head2 GroupDetailList => ArrayRef[IAM_GroupDetail]
 
 A list containing information about IAM groups.
 
@@ -43,17 +80,17 @@ the value to use for the C<Marker> parameter in a subsequent pagination
 request.
 
 
-=head2 Policies => ArrayRef[L<Paws::IAM::ManagedPolicyDetail>]
+=head2 Policies => ArrayRef[IAM_ManagedPolicyDetail]
 
 A list containing information about managed policies.
 
 
-=head2 RoleDetailList => ArrayRef[L<Paws::IAM::RoleDetail>]
+=head2 RoleDetailList => ArrayRef[IAM_RoleDetail]
 
 A list containing information about IAM roles.
 
 
-=head2 UserDetailList => ArrayRef[L<Paws::IAM::UserDetail>]
+=head2 UserDetailList => ArrayRef[IAM_UserDetail]
 
 A list containing information about IAM users.
 

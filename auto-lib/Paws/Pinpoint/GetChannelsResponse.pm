@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::GetChannelsResponse;
-  use Moose;
-  has ChannelsResponse => (is => 'ro', isa => 'Paws::Pinpoint::ChannelsResponse', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_ChannelsResponse/;
+  has ChannelsResponse => (is => 'ro', isa => Pinpoint_ChannelsResponse, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ChannelsResponse' => 1
+                  },
+  'types' => {
+               'ChannelsResponse' => {
+                                       'type' => 'Pinpoint_ChannelsResponse',
+                                       'class' => 'Paws::Pinpoint::ChannelsResponse'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ChannelsResponse => L<Paws::Pinpoint::ChannelsResponse>
+=head2 B<REQUIRED> ChannelsResponse => Pinpoint_ChannelsResponse
 
   
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Glue::EvaluationMetrics;
-  use Moose;
-  has FindMatchesMetrics => (is => 'ro', isa => 'Paws::Glue::FindMatchesMetrics');
-  has TransformType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_FindMatchesMetrics/;
+  has FindMatchesMetrics => (is => 'ro', isa => Glue_FindMatchesMetrics);
+  has TransformType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FindMatchesMetrics' => {
+                                         'class' => 'Paws::Glue::FindMatchesMetrics',
+                                         'type' => 'Glue_FindMatchesMetrics'
+                                       },
+               'TransformType' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'TransformType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ learning transform.
 =head1 ATTRIBUTES
 
 
-=head2 FindMatchesMetrics => L<Paws::Glue::FindMatchesMetrics>
+=head2 FindMatchesMetrics => Glue_FindMatchesMetrics
 
   The evaluation metrics for the find matches algorithm.
 

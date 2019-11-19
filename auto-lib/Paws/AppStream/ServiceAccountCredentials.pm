@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::AppStream::ServiceAccountCredentials;
-  use Moose;
-  has AccountName => (is => 'ro', isa => 'Str', required => 1);
-  has AccountPassword => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppStream::Types qw//;
+  has AccountName => (is => 'ro', isa => Str, required => 1);
+  has AccountPassword => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AccountName' => 1,
+                    'AccountPassword' => 1
+                  },
+  'types' => {
+               'AccountPassword' => {
+                                      'type' => 'Str'
+                                    },
+               'AccountName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

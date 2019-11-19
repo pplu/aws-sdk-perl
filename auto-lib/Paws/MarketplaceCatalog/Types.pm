@@ -1,0 +1,34 @@
+package Paws::MarketplaceCatalog::Types;
+  use Type::Library qw/-base/;
+  use Type::Utils qw/class_type/;
+
+  class_type MarketplaceCatalog_AccessDeniedException, { class => 'Paws::MarketplaceCatalog::AccessDeniedException' };
+  class_type MarketplaceCatalog_CancelChangeSetRequest, { class => 'Paws::MarketplaceCatalog::CancelChangeSetRequest' };
+  class_type MarketplaceCatalog_CancelChangeSetResponse, { class => 'Paws::MarketplaceCatalog::CancelChangeSetResponse' };
+  class_type MarketplaceCatalog_Change, { class => 'Paws::MarketplaceCatalog::Change' };
+  class_type MarketplaceCatalog_ChangeSetSummaryListItem, { class => 'Paws::MarketplaceCatalog::ChangeSetSummaryListItem' };
+  class_type MarketplaceCatalog_ChangeSummary, { class => 'Paws::MarketplaceCatalog::ChangeSummary' };
+  class_type MarketplaceCatalog_DescribeChangeSetRequest, { class => 'Paws::MarketplaceCatalog::DescribeChangeSetRequest' };
+  class_type MarketplaceCatalog_DescribeChangeSetResponse, { class => 'Paws::MarketplaceCatalog::DescribeChangeSetResponse' };
+  class_type MarketplaceCatalog_DescribeEntityRequest, { class => 'Paws::MarketplaceCatalog::DescribeEntityRequest' };
+  class_type MarketplaceCatalog_DescribeEntityResponse, { class => 'Paws::MarketplaceCatalog::DescribeEntityResponse' };
+  class_type MarketplaceCatalog_Entity, { class => 'Paws::MarketplaceCatalog::Entity' };
+  class_type MarketplaceCatalog_EntitySummary, { class => 'Paws::MarketplaceCatalog::EntitySummary' };
+  class_type MarketplaceCatalog_ErrorDetail, { class => 'Paws::MarketplaceCatalog::ErrorDetail' };
+  class_type MarketplaceCatalog_Filter, { class => 'Paws::MarketplaceCatalog::Filter' };
+  class_type MarketplaceCatalog_InternalServiceException, { class => 'Paws::MarketplaceCatalog::InternalServiceException' };
+  class_type MarketplaceCatalog_ListChangeSetsRequest, { class => 'Paws::MarketplaceCatalog::ListChangeSetsRequest' };
+  class_type MarketplaceCatalog_ListChangeSetsResponse, { class => 'Paws::MarketplaceCatalog::ListChangeSetsResponse' };
+  class_type MarketplaceCatalog_ListEntitiesRequest, { class => 'Paws::MarketplaceCatalog::ListEntitiesRequest' };
+  class_type MarketplaceCatalog_ListEntitiesResponse, { class => 'Paws::MarketplaceCatalog::ListEntitiesResponse' };
+  class_type MarketplaceCatalog_ResourceInUseException, { class => 'Paws::MarketplaceCatalog::ResourceInUseException' };
+  class_type MarketplaceCatalog_ResourceNotFoundException, { class => 'Paws::MarketplaceCatalog::ResourceNotFoundException' };
+  class_type MarketplaceCatalog_ResourceNotSupportedException, { class => 'Paws::MarketplaceCatalog::ResourceNotSupportedException' };
+  class_type MarketplaceCatalog_ServiceQuotaExceededException, { class => 'Paws::MarketplaceCatalog::ServiceQuotaExceededException' };
+  class_type MarketplaceCatalog_Sort, { class => 'Paws::MarketplaceCatalog::Sort' };
+  class_type MarketplaceCatalog_StartChangeSetRequest, { class => 'Paws::MarketplaceCatalog::StartChangeSetRequest' };
+  class_type MarketplaceCatalog_StartChangeSetResponse, { class => 'Paws::MarketplaceCatalog::StartChangeSetResponse' };
+  class_type MarketplaceCatalog_ThrottlingException, { class => 'Paws::MarketplaceCatalog::ThrottlingException' };
+  class_type MarketplaceCatalog_ValidationException, { class => 'Paws::MarketplaceCatalog::ValidationException' };
+
+1;

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CognitoIdentity;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'cognito-identity' }
   sub signing_name { 'cognito-identity' }
   sub version { '2014-06-30' }
   sub target_prefix { 'AWSCognitoIdentityService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -211,17 +213,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/cognito/>
 
 =item [AllowClassicFlow => Bool]
 
-=item [CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]]
+=item [CognitoIdentityProviders => ArrayRef[CognitoIdentity_CognitoIdentityProvider]]
 
 =item [DeveloperProviderName => Str]
 
-=item [IdentityPoolTags => L<Paws::CognitoIdentity::IdentityPoolTagsType>]
+=item [IdentityPoolTags => CognitoIdentity_IdentityPoolTagsType]
 
 =item [OpenIdConnectProviderARNs => ArrayRef[Str|Undef]]
 
 =item [SamlProviderARNs => ArrayRef[Str|Undef]]
 
-=item [SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>]
+=item [SupportedLoginProviders => CognitoIdentity_IdentityProviders]
 
 
 =back
@@ -345,7 +347,7 @@ You must use AWS Developer credentials to call this API.
 
 =item [CustomRoleArn => Str]
 
-=item [Logins => L<Paws::CognitoIdentity::LoginsMap>]
+=item [Logins => CognitoIdentity_LoginsMap]
 
 
 =back
@@ -370,7 +372,7 @@ This is a public API. You do not need any credentials to call this API.
 
 =item [AccountId => Str]
 
-=item [Logins => L<Paws::CognitoIdentity::LoginsMap>]
+=item [Logins => CognitoIdentity_LoginsMap]
 
 
 =back
@@ -409,7 +411,7 @@ You must use AWS Developer credentials to call this API.
 
 =item IdentityId => Str
 
-=item [Logins => L<Paws::CognitoIdentity::LoginsMap>]
+=item [Logins => CognitoIdentity_LoginsMap]
 
 
 =back
@@ -433,7 +435,7 @@ This is a public API. You do not need any credentials to call this API.
 
 =item IdentityPoolId => Str
 
-=item Logins => L<Paws::CognitoIdentity::LoginsMap>
+=item Logins => CognitoIdentity_LoginsMap
 
 =item [IdentityId => Str]
 
@@ -616,9 +618,9 @@ You must use AWS Developer credentials to call this API.
 
 =item IdentityPoolId => Str
 
-=item Roles => L<Paws::CognitoIdentity::RolesMap>
+=item Roles => CognitoIdentity_RolesMap
 
-=item [RoleMappings => L<Paws::CognitoIdentity::RoleMappingMap>]
+=item [RoleMappings => CognitoIdentity_RoleMappingMap]
 
 
 =back
@@ -639,7 +641,7 @@ You must use AWS Developer credentials to call this API.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::CognitoIdentity::IdentityPoolTagsType>
+=item Tags => CognitoIdentity_IdentityPoolTagsType
 
 
 =back
@@ -704,7 +706,7 @@ You must use AWS Developer credentials to call this API.
 
 =item IdentityId => Str
 
-=item Logins => L<Paws::CognitoIdentity::LoginsMap>
+=item Logins => CognitoIdentity_LoginsMap
 
 =item LoginsToRemove => ArrayRef[Str|Undef]
 
@@ -753,17 +755,17 @@ can use this action up to 5 times per second, per account
 
 =item [AllowClassicFlow => Bool]
 
-=item [CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]]
+=item [CognitoIdentityProviders => ArrayRef[CognitoIdentity_CognitoIdentityProvider]]
 
 =item [DeveloperProviderName => Str]
 
-=item [IdentityPoolTags => L<Paws::CognitoIdentity::IdentityPoolTagsType>]
+=item [IdentityPoolTags => CognitoIdentity_IdentityPoolTagsType]
 
 =item [OpenIdConnectProviderARNs => ArrayRef[Str|Undef]]
 
 =item [SamlProviderARNs => ArrayRef[Str|Undef]]
 
-=item [SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>]
+=item [SupportedLoginProviders => CognitoIdentity_IdentityProviders]
 
 
 =back

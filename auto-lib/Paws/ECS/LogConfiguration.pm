@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::ECS::LogConfiguration;
-  use Moose;
-  has LogDriver => (is => 'ro', isa => 'Str', request_name => 'logDriver', traits => ['NameInRequest'], required => 1);
-  has Options => (is => 'ro', isa => 'Paws::ECS::LogConfigurationOptionsMap', request_name => 'options', traits => ['NameInRequest']);
-  has SecretOptions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Secret]', request_name => 'secretOptions', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECS::Types qw/ECS_Secret ECS_LogConfigurationOptionsMap/;
+  has LogDriver => (is => 'ro', isa => Str, required => 1);
+  has Options => (is => 'ro', isa => ECS_LogConfigurationOptionsMap);
+  has SecretOptions => (is => 'ro', isa => ArrayRef[ECS_Secret]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogDriver' => {
+                                'type' => 'Str'
+                              },
+               'Options' => {
+                              'class' => 'Paws::ECS::LogConfigurationOptionsMap',
+                              'type' => 'ECS_LogConfigurationOptionsMap'
+                            },
+               'SecretOptions' => {
+                                    'type' => 'ArrayRef[ECS_Secret]',
+                                    'class' => 'Paws::ECS::Secret'
+                                  }
+             },
+  'NameInRequest' => {
+                       'SecretOptions' => 'secretOptions',
+                       'Options' => 'options',
+                       'LogDriver' => 'logDriver'
+                     },
+  'IsRequired' => {
+                    'LogDriver' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +110,7 @@ and run the following command: C<sudo docker version --format
 '{{.Server.APIVersion}}'>
 
 
-=head2 Options => L<Paws::ECS::LogConfigurationOptionsMap>
+=head2 Options => ECS_LogConfigurationOptionsMap
 
   The configuration options to send to the log driver. This parameter
 requires version 1.19 of the Docker Remote API or greater on your
@@ -87,7 +120,7 @@ following command: C<sudo docker version --format
 '{{.Server.APIVersion}}'>
 
 
-=head2 SecretOptions => ArrayRef[L<Paws::ECS::Secret>]
+=head2 SecretOptions => ArrayRef[ECS_Secret]
 
   The secrets to pass to the log configuration. For more information, see
 Specifying Sensitive Data

@@ -1,12 +1,58 @@
+# Generated from default/object.tt
 package Paws::IoT1ClickDevices::DeviceDescription;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Attributes => (is => 'ro', isa => 'Paws::IoT1ClickDevices::DeviceAttributes', request_name => 'attributes', traits => ['NameInRequest']);
-  has DeviceId => (is => 'ro', isa => 'Str', request_name => 'deviceId', traits => ['NameInRequest']);
-  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
-  has RemainingLife => (is => 'ro', isa => 'Num', request_name => 'remainingLife', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::IoT1ClickDevices::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool Num/;
+  use Paws::IoT1ClickDevices::Types qw/IoT1ClickDevices___mapOf__string IoT1ClickDevices_DeviceAttributes/;
+  has Arn => (is => 'ro', isa => Str);
+  has Attributes => (is => 'ro', isa => IoT1ClickDevices_DeviceAttributes);
+  has DeviceId => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has RemainingLife => (is => 'ro', isa => Num);
+  has Tags => (is => 'ro', isa => IoT1ClickDevices___mapOf__string);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'RemainingLife' => 'remainingLife',
+                       'Arn' => 'arn',
+                       'Enabled' => 'enabled',
+                       'Attributes' => 'attributes',
+                       'DeviceId' => 'deviceId',
+                       'Type' => 'type'
+                     },
+  'types' => {
+               'Tags' => {
+                           'type' => 'IoT1ClickDevices___mapOf__string',
+                           'class' => 'Paws::IoT1ClickDevices::__mapOf__string'
+                         },
+               'RemainingLife' => {
+                                    'type' => 'Num'
+                                  },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Attributes' => {
+                                 'class' => 'Paws::IoT1ClickDevices::DeviceAttributes',
+                                 'type' => 'IoT1ClickDevices_DeviceAttributes'
+                               },
+               'DeviceId' => {
+                               'type' => 'Str'
+                             },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +93,7 @@ This class has no description
   The ARN of the device.
 
 
-=head2 Attributes => L<Paws::IoT1ClickDevices::DeviceAttributes>
+=head2 Attributes => IoT1ClickDevices_DeviceAttributes
 
   An array of zero or more elements of DeviceAttribute objects providing
 user specified device attributes.
@@ -69,7 +115,7 @@ user specified device attributes.
 remaining for the device.
 
 
-=head2 Tags => L<Paws::IoT1ClickDevices::__mapOf__string>
+=head2 Tags => IoT1ClickDevices___mapOf__string
 
   The tags currently associated with the AWS IoT 1-Click device.
 

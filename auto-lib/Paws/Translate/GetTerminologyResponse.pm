@@ -1,10 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Translate::GetTerminologyResponse;
-  use Moose;
-  has TerminologyDataLocation => (is => 'ro', isa => 'Paws::Translate::TerminologyDataLocation');
-  has TerminologyProperties => (is => 'ro', isa => 'Paws::Translate::TerminologyProperties');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Translate::Types qw/Translate_TerminologyProperties Translate_TerminologyDataLocation/;
+  has TerminologyDataLocation => (is => 'ro', isa => Translate_TerminologyDataLocation);
+  has TerminologyProperties => (is => 'ro', isa => Translate_TerminologyProperties);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TerminologyDataLocation' => {
+                                              'class' => 'Paws::Translate::TerminologyDataLocation',
+                                              'type' => 'Translate_TerminologyDataLocation'
+                                            },
+               'TerminologyProperties' => {
+                                            'type' => 'Translate_TerminologyProperties',
+                                            'class' => 'Paws::Translate::TerminologyProperties'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,14 +38,14 @@ Paws::Translate::GetTerminologyResponse
 =head1 ATTRIBUTES
 
 
-=head2 TerminologyDataLocation => L<Paws::Translate::TerminologyDataLocation>
+=head2 TerminologyDataLocation => Translate_TerminologyDataLocation
 
 The data location of the custom terminology being retrieved. The custom
 terminology file is returned in a presigned url that has a 30 minute
 expiration.
 
 
-=head2 TerminologyProperties => L<Paws::Translate::TerminologyProperties>
+=head2 TerminologyProperties => Translate_TerminologyProperties
 
 The properties of the custom terminology being retrieved.
 

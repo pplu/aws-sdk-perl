@@ -1,15 +1,41 @@
 
 package Paws::Connect::DescribeUserHierarchyGroup;
-  use Moose;
-  has HierarchyGroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'HierarchyGroupId', required => 1);
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Connect::Types qw//;
+  has HierarchyGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUserHierarchyGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/user-hierarchy-groups/{InstanceId}/{HierarchyGroupId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Connect::DescribeUserHierarchyGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeUserHierarchyGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/user-hierarchy-groups/{InstanceId}/{HierarchyGroupId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Connect::DescribeUserHierarchyGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'InstanceId' => 'InstanceId',
+                    'HierarchyGroupId' => 'HierarchyGroupId'
+                  },
+  'types' => {
+               'HierarchyGroupId' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'HierarchyGroupId' => 1,
+                    'InstanceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

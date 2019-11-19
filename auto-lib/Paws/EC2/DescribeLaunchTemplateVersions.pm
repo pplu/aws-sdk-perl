@@ -1,21 +1,65 @@
 
 package Paws::EC2::DescribeLaunchTemplateVersions;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has LaunchTemplateId => (is => 'ro', isa => 'Str');
-  has LaunchTemplateName => (is => 'ro', isa => 'Str');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has MaxVersion => (is => 'ro', isa => 'Str');
-  has MinVersion => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Versions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'LaunchTemplateVersion' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int Undef/;
+  use Paws::EC2::Types qw/EC2_Filter/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
+  has LaunchTemplateId => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchTemplateName => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has MaxVersion => (is => 'ro', isa => Str, predicate => 1);
+  has MinVersion => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Versions => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLaunchTemplateVersions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeLaunchTemplateVersionsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeLaunchTemplateVersions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeLaunchTemplateVersionsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxVersion' => {
+                                 'type' => 'Str'
+                               },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'MinVersion' => {
+                                 'type' => 'Str'
+                               },
+               'Versions' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'LaunchTemplateId' => {
+                                       'type' => 'Str'
+                                     },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::EC2::Filter',
+                              'type' => 'ArrayRef[EC2_Filter]'
+                            },
+               'LaunchTemplateName' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'Filters' => 'Filter',
+                       'Versions' => 'LaunchTemplateVersion'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -40,18 +84,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
+      ],                           # OPTIONAL
       LaunchTemplateId   => 'MyString',                # OPTIONAL
       LaunchTemplateName => 'MyLaunchTemplateName',    # OPTIONAL
       MaxResults         => 1,                         # OPTIONAL
       MaxVersion         => 'MyString',                # OPTIONAL
       MinVersion         => 'MyString',                # OPTIONAL
       NextToken          => 'MyString',                # OPTIONAL
-      Versions           => [ 'MyString', ... ],       # OPTIONAL
+      Versions           => [
+        'MyString', ...                                # OPTIONAL
+      ],                                               # OPTIONAL
       );
 
     # Results:
@@ -76,7 +124,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+=head2 Filters => ArrayRef[EC2_Filter]
 
 One or more filters.
 

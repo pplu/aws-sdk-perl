@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::ElasticIp;
-  use Moose;
-  has Domain => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has Ip => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw//;
+  has Domain => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has Ip => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'Ip' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

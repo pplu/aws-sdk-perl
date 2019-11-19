@@ -1,9 +1,27 @@
 
 package Paws::Chime::CreatePhoneNumberOrderResponse;
-  use Moose;
-  has PhoneNumberOrder => (is => 'ro', isa => 'Paws::Chime::PhoneNumberOrder');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw/Chime_PhoneNumberOrder/;
+  has PhoneNumberOrder => (is => 'ro', isa => Chime_PhoneNumberOrder);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PhoneNumberOrder' => {
+                                       'type' => 'Chime_PhoneNumberOrder',
+                                       'class' => 'Paws::Chime::PhoneNumberOrder'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::Chime::CreatePhoneNumberOrderResponse
 =head1 ATTRIBUTES
 
 
-=head2 PhoneNumberOrder => L<Paws::Chime::PhoneNumberOrder>
+=head2 PhoneNumberOrder => Chime_PhoneNumberOrder
 
 The phone number order details.
 

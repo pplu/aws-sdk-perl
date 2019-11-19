@@ -1,25 +1,99 @@
+# Generated from default/object.tt
 package Paws::DMS::S3Settings;
-  use Moose;
-  has BucketFolder => (is => 'ro', isa => 'Str');
-  has BucketName => (is => 'ro', isa => 'Str');
-  has CdcInsertsOnly => (is => 'ro', isa => 'Bool');
-  has CompressionType => (is => 'ro', isa => 'Str');
-  has CsvDelimiter => (is => 'ro', isa => 'Str');
-  has CsvRowDelimiter => (is => 'ro', isa => 'Str');
-  has DataFormat => (is => 'ro', isa => 'Str');
-  has DataPageSize => (is => 'ro', isa => 'Int');
-  has DictPageSizeLimit => (is => 'ro', isa => 'Int');
-  has EnableStatistics => (is => 'ro', isa => 'Bool');
-  has EncodingType => (is => 'ro', isa => 'Str');
-  has EncryptionMode => (is => 'ro', isa => 'Str');
-  has ExternalTableDefinition => (is => 'ro', isa => 'Str');
-  has IncludeOpForFullLoad => (is => 'ro', isa => 'Bool');
-  has ParquetTimestampInMillisecond => (is => 'ro', isa => 'Bool');
-  has ParquetVersion => (is => 'ro', isa => 'Str');
-  has RowGroupLength => (is => 'ro', isa => 'Int');
-  has ServerSideEncryptionKmsKeyId => (is => 'ro', isa => 'Str');
-  has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
-  has TimestampColumnName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::DMS::Types qw//;
+  has BucketFolder => (is => 'ro', isa => Str);
+  has BucketName => (is => 'ro', isa => Str);
+  has CdcInsertsOnly => (is => 'ro', isa => Bool);
+  has CompressionType => (is => 'ro', isa => Str);
+  has CsvDelimiter => (is => 'ro', isa => Str);
+  has CsvRowDelimiter => (is => 'ro', isa => Str);
+  has DataFormat => (is => 'ro', isa => Str);
+  has DataPageSize => (is => 'ro', isa => Int);
+  has DictPageSizeLimit => (is => 'ro', isa => Int);
+  has EnableStatistics => (is => 'ro', isa => Bool);
+  has EncodingType => (is => 'ro', isa => Str);
+  has EncryptionMode => (is => 'ro', isa => Str);
+  has ExternalTableDefinition => (is => 'ro', isa => Str);
+  has IncludeOpForFullLoad => (is => 'ro', isa => Bool);
+  has ParquetTimestampInMillisecond => (is => 'ro', isa => Bool);
+  has ParquetVersion => (is => 'ro', isa => Str);
+  has RowGroupLength => (is => 'ro', isa => Int);
+  has ServerSideEncryptionKmsKeyId => (is => 'ro', isa => Str);
+  has ServiceAccessRoleArn => (is => 'ro', isa => Str);
+  has TimestampColumnName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BucketFolder' => {
+                                   'type' => 'Str'
+                                 },
+               'ServiceAccessRoleArn' => {
+                                           'type' => 'Str'
+                                         },
+               'DataPageSize' => {
+                                   'type' => 'Int'
+                                 },
+               'EncryptionMode' => {
+                                     'type' => 'Str'
+                                   },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'IncludeOpForFullLoad' => {
+                                           'type' => 'Bool'
+                                         },
+               'EnableStatistics' => {
+                                       'type' => 'Bool'
+                                     },
+               'CdcInsertsOnly' => {
+                                     'type' => 'Bool'
+                                   },
+               'CompressionType' => {
+                                      'type' => 'Str'
+                                    },
+               'CsvDelimiter' => {
+                                   'type' => 'Str'
+                                 },
+               'CsvRowDelimiter' => {
+                                      'type' => 'Str'
+                                    },
+               'DataFormat' => {
+                                 'type' => 'Str'
+                               },
+               'TimestampColumnName' => {
+                                          'type' => 'Str'
+                                        },
+               'ExternalTableDefinition' => {
+                                              'type' => 'Str'
+                                            },
+               'ParquetTimestampInMillisecond' => {
+                                                    'type' => 'Bool'
+                                                  },
+               'DictPageSizeLimit' => {
+                                        'type' => 'Int'
+                                      },
+               'ServerSideEncryptionKmsKeyId' => {
+                                                   'type' => 'Str'
+                                                 },
+               'EncodingType' => {
+                                   'type' => 'Str'
+                                 },
+               'RowGroupLength' => {
+                                     'type' => 'Int'
+                                   },
+               'ParquetVersion' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

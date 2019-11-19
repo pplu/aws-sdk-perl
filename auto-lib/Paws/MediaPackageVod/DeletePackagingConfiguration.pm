@@ -1,14 +1,35 @@
 
 package Paws::MediaPackageVod::DeletePackagingConfiguration;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackageVod::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeletePackagingConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/packaging_configurations/{id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaPackageVod::DeletePackagingConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeletePackagingConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/packaging_configurations/{id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaPackageVod::DeletePackagingConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Id' => 'id'
+                  },
+  'IsRequired' => {
+                    'Id' => 1
+                  },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

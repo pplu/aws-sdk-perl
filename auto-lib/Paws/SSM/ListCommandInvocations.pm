@@ -1,18 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::ListCommandInvocations;
-  use Moose;
-  has CommandId => (is => 'ro', isa => 'Str');
-  has Details => (is => 'ro', isa => 'Bool');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::CommandFilter]');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::SSM::Types qw/SSM_CommandFilter/;
+  has CommandId => (is => 'ro', isa => Str, predicate => 1);
+  has Details => (is => 'ro', isa => Bool, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[SSM_CommandFilter], predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListCommandInvocations');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::ListCommandInvocationsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListCommandInvocations');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::ListCommandInvocationsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Details' => {
+                              'type' => 'Bool'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Filters' => {
+                              'type' => 'ArrayRef[SSM_CommandFilter]',
+                              'class' => 'Paws::SSM::CommandFilter'
+                            },
+               'CommandId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +106,7 @@ and any command output. By default this is set to False.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::SSM::CommandFilter>]
+=head2 Filters => ArrayRef[SSM_CommandFilter]
 
 (Optional) One or more filters. Use a filter to return a more specific
 list of results. Note that the C<DocumentName> filter is not supported

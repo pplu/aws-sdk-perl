@@ -1,21 +1,79 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::CreateDiskFromSnapshot;
-  use Moose;
-  has AddOns => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AddOnRequest]', traits => ['NameInRequest'], request_name => 'addOns' );
-  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
-  has DiskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskName' , required => 1);
-  has DiskSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskSnapshotName' );
-  has RestoreDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'restoreDate' );
-  has SizeInGb => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'sizeInGb' , required => 1);
-  has SourceDiskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceDiskName' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has UseLatestRestorableAutoSnapshot => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'useLatestRestorableAutoSnapshot' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Bool/;
+  use Paws::Lightsail::Types qw/Lightsail_AddOnRequest Lightsail_Tag/;
+  has AddOns => (is => 'ro', isa => ArrayRef[Lightsail_AddOnRequest], predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DiskName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DiskSnapshotName => (is => 'ro', isa => Str, predicate => 1);
+  has RestoreDate => (is => 'ro', isa => Str, predicate => 1);
+  has SizeInGb => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has SourceDiskName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag], predicate => 1);
+  has UseLatestRestorableAutoSnapshot => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDiskFromSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::CreateDiskFromSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDiskFromSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::CreateDiskFromSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestoreDate' => {
+                                  'type' => 'Str'
+                                },
+               'AddOns' => {
+                             'class' => 'Paws::Lightsail::AddOnRequest',
+                             'type' => 'ArrayRef[Lightsail_AddOnRequest]'
+                           },
+               'DiskSnapshotName' => {
+                                       'type' => 'Str'
+                                     },
+               'SizeInGb' => {
+                               'type' => 'Int'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::Lightsail::Tag',
+                           'type' => 'ArrayRef[Lightsail_Tag]'
+                         },
+               'DiskName' => {
+                               'type' => 'Str'
+                             },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'UseLatestRestorableAutoSnapshot' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'SourceDiskName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'RestoreDate' => 'restoreDate',
+                       'AddOns' => 'addOns',
+                       'SizeInGb' => 'sizeInGb',
+                       'DiskSnapshotName' => 'diskSnapshotName',
+                       'Tags' => 'tags',
+                       'DiskName' => 'diskName',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'UseLatestRestorableAutoSnapshot' => 'useLatestRestorableAutoSnapshot',
+                       'SourceDiskName' => 'sourceDiskName'
+                     },
+  'IsRequired' => {
+                    'SizeInGb' => 1,
+                    'AvailabilityZone' => 1,
+                    'DiskName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +130,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 =head1 ATTRIBUTES
 
 
-=head2 AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]
+=head2 AddOns => ArrayRef[Lightsail_AddOnRequest]
 
 An array of objects that represent the add-ons to enable for the new
 disk.
@@ -157,7 +215,7 @@ snapshot. For more information, see the Lightsail Dev Guide
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
 The tag keys and optional values to add to the resource during create.
 

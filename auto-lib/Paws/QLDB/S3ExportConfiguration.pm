@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::QLDB::S3ExportConfiguration;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has EncryptionConfiguration => (is => 'ro', isa => 'Paws::QLDB::S3EncryptionConfiguration', required => 1);
-  has Prefix => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::QLDB::Types qw/QLDB_S3EncryptionConfiguration/;
+  has Bucket => (is => 'ro', isa => Str, required => 1);
+  has EncryptionConfiguration => (is => 'ro', isa => QLDB_S3EncryptionConfiguration, required => 1);
+  has Prefix => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'EncryptionConfiguration' => {
+                                              'class' => 'Paws::QLDB::S3EncryptionConfiguration',
+                                              'type' => 'QLDB_S3EncryptionConfiguration'
+                                            }
+             },
+  'IsRequired' => {
+                    'EncryptionConfiguration' => 1,
+                    'Bucket' => 1,
+                    'Prefix' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +80,7 @@ Limitations
 in the I<Amazon S3 Developer Guide>.
 
 
-=head2 B<REQUIRED> EncryptionConfiguration => L<Paws::QLDB::S3EncryptionConfiguration>
+=head2 B<REQUIRED> EncryptionConfiguration => QLDB_S3EncryptionConfiguration
 
   The encryption settings that are used by a journal export job to write
 data in an Amazon S3 bucket.

@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Route53::GeoLocationDetails;
-  use Moose;
-  has ContinentCode => (is => 'ro', isa => 'Str');
-  has ContinentName => (is => 'ro', isa => 'Str');
-  has CountryCode => (is => 'ro', isa => 'Str');
-  has CountryName => (is => 'ro', isa => 'Str');
-  has SubdivisionCode => (is => 'ro', isa => 'Str');
-  has SubdivisionName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw//;
+  has ContinentCode => (is => 'ro', isa => Str);
+  has ContinentName => (is => 'ro', isa => Str);
+  has CountryCode => (is => 'ro', isa => Str);
+  has CountryName => (is => 'ro', isa => Str);
+  has SubdivisionCode => (is => 'ro', isa => Str);
+  has SubdivisionName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CountryCode' => {
+                                  'type' => 'Str'
+                                },
+               'SubdivisionCode' => {
+                                      'type' => 'Str'
+                                    },
+               'ContinentName' => {
+                                    'type' => 'Str'
+                                  },
+               'CountryName' => {
+                                  'type' => 'Str'
+                                },
+               'SubdivisionName' => {
+                                      'type' => 'Str'
+                                    },
+               'ContinentCode' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

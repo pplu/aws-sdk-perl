@@ -1,19 +1,67 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Personalize::CreateSolution;
-  use Moose;
-  has DatasetGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'datasetGroupArn' , required => 1);
-  has EventType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'eventType' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has PerformAutoML => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'performAutoML' );
-  has PerformHPO => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'performHPO' );
-  has RecipeArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'recipeArn' );
-  has SolutionConfig => (is => 'ro', isa => 'Paws::Personalize::SolutionConfig', traits => ['NameInRequest'], request_name => 'solutionConfig' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Personalize::Types qw/Personalize_SolutionConfig/;
+  has DatasetGroupArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EventType => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PerformAutoML => (is => 'ro', isa => Bool, predicate => 1);
+  has PerformHPO => (is => 'ro', isa => Bool, predicate => 1);
+  has RecipeArn => (is => 'ro', isa => Str, predicate => 1);
+  has SolutionConfig => (is => 'ro', isa => Personalize_SolutionConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSolution');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Personalize::CreateSolutionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSolution');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Personalize::CreateSolutionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'DatasetGroupArn' => 1
+                  },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'EventType' => 'eventType',
+                       'DatasetGroupArn' => 'datasetGroupArn',
+                       'RecipeArn' => 'recipeArn',
+                       'SolutionConfig' => 'solutionConfig',
+                       'PerformHPO' => 'performHPO',
+                       'PerformAutoML' => 'performAutoML'
+                     },
+  'types' => {
+               'PerformHPO' => {
+                                 'type' => 'Bool'
+                               },
+               'SolutionConfig' => {
+                                     'type' => 'Personalize_SolutionConfig',
+                                     'class' => 'Paws::Personalize::SolutionConfig'
+                                   },
+               'RecipeArn' => {
+                                'type' => 'Str'
+                              },
+               'PerformAutoML' => {
+                                    'type' => 'Bool'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'EventType' => {
+                                'type' => 'Str'
+                              },
+               'DatasetGroupArn' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +91,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SolutionConfig  => {
         AlgorithmHyperParameters => {
           'MyParameterName' =>
-            'MyParameterValue',            # key: max: 256, value: max: 1000
+            'MyParameterValue',    # key: max: 256; OPTIONAL, value: max: 1000
         },    # max: 100; OPTIONAL
         AutoMLConfig => {
           MetricName => 'MyMetricName',    # max: 256; OPTIONAL
@@ -54,13 +102,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         EventValueThreshold => 'MyEventValueThreshold',    # max: 256; OPTIONAL
         FeatureTransformationParameters => {
           'MyParameterName' =>
-            'MyParameterValue',    # key: max: 256, value: max: 1000
+            'MyParameterValue',    # key: max: 256; OPTIONAL, value: max: 1000
         },    # max: 100; OPTIONAL
         HpoConfig => {
           AlgorithmHyperParameterRanges => {
             CategoricalHyperParameterRanges => [
               {
-                Name   => 'MyParameterName',    # max: 256
+                Name   => 'MyParameterName',    # max: 256; OPTIONAL
                 Values => [
                   'MyCategoricalValue', ...     # max: 1000
                 ],                              # max: 100; OPTIONAL
@@ -71,7 +119,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 MaxValue => 1,                    # min: -1000000; OPTIONAL
                 MinValue => 1,                    # min: -1000000; OPTIONAL
-                Name     => 'MyParameterName',    # max: 256
+                Name     => 'MyParameterName',    # max: 256; OPTIONAL
               },
               ...
             ],                                    # max: 100; OPTIONAL
@@ -79,7 +127,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 MaxValue => 1,                    # max: 1000000; OPTIONAL
                 MinValue => 1,                    # min: -1000000; OPTIONAL
-                Name     => 'MyParameterName',    # max: 256
+                Name     => 'MyParameterName',    # max: 256; OPTIONAL
               },
               ...
             ],                                    # max: 100; OPTIONAL
@@ -160,7 +208,7 @@ C<performAutoML> is false.
 
 
 
-=head2 SolutionConfig => L<Paws::Personalize::SolutionConfig>
+=head2 SolutionConfig => Personalize_SolutionConfig
 
 The configuration to use with the solution. When C<performAutoML> is
 set to true, Amazon Personalize only evaluates the C<autoMLConfig>

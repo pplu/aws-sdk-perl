@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::WorkLink::DomainSummary;
-  use Moose;
-  has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has DomainStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has CreatedTime => (is => 'ro', isa => Str, required => 1);
+  has DisplayName => (is => 'ro', isa => Str);
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has DomainStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CreatedTime' => 1,
+                    'DomainName' => 1,
+                    'DomainStatus' => 1
+                  },
+  'types' => {
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'DomainStatus' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

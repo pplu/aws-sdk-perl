@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::Deployment;
-  use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Int');
-  has DeploymentTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has VersionLabel => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has DeploymentId => (is => 'ro', isa => Int);
+  has DeploymentTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has VersionLabel => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'VersionLabel' => {
+                                   'type' => 'Str'
+                                 },
+               'DeploymentTime' => {
+                                     'type' => 'Str'
+                                   },
+               'DeploymentId' => {
+                                   'type' => 'Int'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

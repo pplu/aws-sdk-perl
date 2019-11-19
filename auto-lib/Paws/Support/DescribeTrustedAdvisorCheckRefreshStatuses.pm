@@ -1,13 +1,35 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses;
-  use Moose;
-  has CheckIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'checkIds' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Support::Types qw//;
+  has CheckIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTrustedAdvisorCheckRefreshStatuses');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTrustedAdvisorCheckRefreshStatuses');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CheckIds' => 'checkIds'
+                     },
+  'IsRequired' => {
+                    'CheckIds' => 1
+                  },
+  'types' => {
+               'CheckIds' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

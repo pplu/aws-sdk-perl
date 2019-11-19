@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::ChangeSetSummary;
-  use Moose;
-  has ChangeSetId => (is => 'ro', isa => 'Str');
-  has ChangeSetName => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExecutionStatus => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
-  has StackName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusReason => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has ChangeSetId => (is => 'ro', isa => Str);
+  has ChangeSetName => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ExecutionStatus => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+  has StackName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackName' => {
+                                'type' => 'Str'
+                              },
+               'ExecutionStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ChangeSetId' => {
+                                  'type' => 'Str'
+                                },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'ChangeSetName' => {
+                                    'type' => 'Str'
+                                  },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

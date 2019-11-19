@@ -1,31 +1,134 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::CacheCluster;
-  use Moose;
-  has AtRestEncryptionEnabled => (is => 'ro', isa => 'Bool');
-  has AuthTokenEnabled => (is => 'ro', isa => 'Bool');
-  has AuthTokenLastModifiedDate => (is => 'ro', isa => 'Str');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
-  has CacheClusterId => (is => 'ro', isa => 'Str');
-  has CacheClusterStatus => (is => 'ro', isa => 'Str');
-  has CacheNodes => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNode]', request_name => 'CacheNode', traits => ['NameInRequest']);
-  has CacheNodeType => (is => 'ro', isa => 'Str');
-  has CacheParameterGroup => (is => 'ro', isa => 'Paws::ElastiCache::CacheParameterGroupStatus');
-  has CacheSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSecurityGroupMembership]', request_name => 'CacheSecurityGroup', traits => ['NameInRequest']);
-  has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
-  has ClientDownloadLandingPage => (is => 'ro', isa => 'Str');
-  has ConfigurationEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has NotificationConfiguration => (is => 'ro', isa => 'Paws::ElastiCache::NotificationConfiguration');
-  has NumCacheNodes => (is => 'ro', isa => 'Int');
-  has PendingModifiedValues => (is => 'ro', isa => 'Paws::ElastiCache::PendingModifiedValues');
-  has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::SecurityGroupMembership]');
-  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
-  has SnapshotWindow => (is => 'ro', isa => 'Str');
-  has TransitEncryptionEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef Int/;
+  use Paws::ElastiCache::Types qw/ElastiCache_CacheParameterGroupStatus ElastiCache_Endpoint ElastiCache_NotificationConfiguration ElastiCache_CacheNode ElastiCache_PendingModifiedValues ElastiCache_CacheSecurityGroupMembership ElastiCache_SecurityGroupMembership/;
+  has AtRestEncryptionEnabled => (is => 'ro', isa => Bool);
+  has AuthTokenEnabled => (is => 'ro', isa => Bool);
+  has AuthTokenLastModifiedDate => (is => 'ro', isa => Str);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool);
+  has CacheClusterCreateTime => (is => 'ro', isa => Str);
+  has CacheClusterId => (is => 'ro', isa => Str);
+  has CacheClusterStatus => (is => 'ro', isa => Str);
+  has CacheNodes => (is => 'ro', isa => ArrayRef[ElastiCache_CacheNode]);
+  has CacheNodeType => (is => 'ro', isa => Str);
+  has CacheParameterGroup => (is => 'ro', isa => ElastiCache_CacheParameterGroupStatus);
+  has CacheSecurityGroups => (is => 'ro', isa => ArrayRef[ElastiCache_CacheSecurityGroupMembership]);
+  has CacheSubnetGroupName => (is => 'ro', isa => Str);
+  has ClientDownloadLandingPage => (is => 'ro', isa => Str);
+  has ConfigurationEndpoint => (is => 'ro', isa => ElastiCache_Endpoint);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has NotificationConfiguration => (is => 'ro', isa => ElastiCache_NotificationConfiguration);
+  has NumCacheNodes => (is => 'ro', isa => Int);
+  has PendingModifiedValues => (is => 'ro', isa => ElastiCache_PendingModifiedValues);
+  has PreferredAvailabilityZone => (is => 'ro', isa => Str);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has ReplicationGroupId => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[ElastiCache_SecurityGroupMembership]);
+  has SnapshotRetentionLimit => (is => 'ro', isa => Int);
+  has SnapshotWindow => (is => 'ro', isa => Str);
+  has TransitEncryptionEnabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CacheNodes' => 'CacheNode',
+                       'CacheSecurityGroups' => 'CacheSecurityGroup'
+                     },
+  'types' => {
+               'CacheNodeType' => {
+                                    'type' => 'Str'
+                                  },
+               'CacheParameterGroup' => {
+                                          'type' => 'ElastiCache_CacheParameterGroupStatus',
+                                          'class' => 'Paws::ElastiCache::CacheParameterGroupStatus'
+                                        },
+               'NumCacheNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'CacheClusterCreateTime' => {
+                                             'type' => 'Str'
+                                           },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'AtRestEncryptionEnabled' => {
+                                              'type' => 'Bool'
+                                            },
+               'ConfigurationEndpoint' => {
+                                            'type' => 'ElastiCache_Endpoint',
+                                            'class' => 'Paws::ElastiCache::Endpoint'
+                                          },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'CacheSubnetGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'CacheNodes' => {
+                                 'class' => 'Paws::ElastiCache::CacheNode',
+                                 'type' => 'ArrayRef[ElastiCache_CacheNode]'
+                               },
+               'CacheClusterId' => {
+                                     'type' => 'Str'
+                                   },
+               'SnapshotWindow' => {
+                                     'type' => 'Str'
+                                   },
+               'AuthTokenEnabled' => {
+                                       'type' => 'Bool'
+                                     },
+               'AuthTokenLastModifiedDate' => {
+                                                'type' => 'Str'
+                                              },
+               'CacheSecurityGroups' => {
+                                          'type' => 'ArrayRef[ElastiCache_CacheSecurityGroupMembership]',
+                                          'class' => 'Paws::ElastiCache::CacheSecurityGroupMembership'
+                                        },
+               'ClientDownloadLandingPage' => {
+                                                'type' => 'Str'
+                                              },
+               'PreferredAvailabilityZone' => {
+                                                'type' => 'Str'
+                                              },
+               'PendingModifiedValues' => {
+                                            'type' => 'ElastiCache_PendingModifiedValues',
+                                            'class' => 'Paws::ElastiCache::PendingModifiedValues'
+                                          },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'SnapshotRetentionLimit' => {
+                                             'type' => 'Int'
+                                           },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[ElastiCache_SecurityGroupMembership]',
+                                     'class' => 'Paws::ElastiCache::SecurityGroupMembership'
+                                   },
+               'CacheClusterStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'TransitEncryptionEnabled' => {
+                                               'type' => 'Bool'
+                                             },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'NotificationConfiguration' => {
+                                                'class' => 'Paws::ElastiCache::NotificationConfiguration',
+                                                'type' => 'ElastiCache_NotificationConfiguration'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -112,7 +215,7 @@ C<incompatible-network>, C<modifying>, C<rebooting cluster nodes>,
 C<restore-failed>, or C<snapshotting>.
 
 
-=head2 CacheNodes => ArrayRef[L<Paws::ElastiCache::CacheNode>]
+=head2 CacheNodes => ArrayRef[ElastiCache_CacheNode]
 
   A list of cache nodes that are members of the cluster.
 
@@ -235,12 +338,12 @@ supported on Redis version 2.8.22 and later.
 
 
 
-=head2 CacheParameterGroup => L<Paws::ElastiCache::CacheParameterGroupStatus>
+=head2 CacheParameterGroup => ElastiCache_CacheParameterGroupStatus
 
   Status of the cache parameter group.
 
 
-=head2 CacheSecurityGroups => ArrayRef[L<Paws::ElastiCache::CacheSecurityGroupMembership>]
+=head2 CacheSecurityGroups => ArrayRef[ElastiCache_CacheSecurityGroupMembership]
 
   A list of cache security group elements, composed of name and status
 sub-elements.
@@ -257,7 +360,7 @@ sub-elements.
 client library.
 
 
-=head2 ConfigurationEndpoint => L<Paws::ElastiCache::Endpoint>
+=head2 ConfigurationEndpoint => ElastiCache_Endpoint
 
   Represents a Memcached cluster endpoint which, if Automatic Discovery
 is enabled on the cluster, can be used by an application to connect to
@@ -278,7 +381,7 @@ this cluster.
   The version of the cache engine that is used in this cluster.
 
 
-=head2 NotificationConfiguration => L<Paws::ElastiCache::NotificationConfiguration>
+=head2 NotificationConfiguration => ElastiCache_NotificationConfiguration
 
   Describes a notification topic and its status. Notification topics are
 used for publishing ElastiCache events to subscribers using Amazon
@@ -293,7 +396,7 @@ For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.
 
 
-=head2 PendingModifiedValues => L<Paws::ElastiCache::PendingModifiedValues>
+=head2 PendingModifiedValues => ElastiCache_PendingModifiedValues
 
   
 
@@ -355,7 +458,7 @@ Example: C<sun:23:00-mon:01:30>
 empty, the cluster is not associated with any replication group.
 
 
-=head2 SecurityGroups => ArrayRef[L<Paws::ElastiCache::SecurityGroupMembership>]
+=head2 SecurityGroups => ArrayRef[ElastiCache_SecurityGroupMembership]
 
   A list of VPC Security Groups associated with the cluster.
 

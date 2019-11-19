@@ -1,16 +1,42 @@
 
 package Paws::DataExchange::ListDataSets;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has Origin => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'origin');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DataExchange::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Origin => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDataSets');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/data-sets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataExchange::ListDataSetsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDataSets');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/data-sets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataExchange::ListDataSetsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInQuery' => {
+                      'Origin' => 'origin',
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken'
+                    },
+  'types' => {
+               'Origin' => {
+                             'type' => 'Str'
+                           },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

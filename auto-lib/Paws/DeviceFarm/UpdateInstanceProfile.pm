@@ -1,18 +1,60 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::UpdateInstanceProfile;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has ExcludeAppPackagesFromCleanup => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'excludeAppPackagesFromCleanup' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
-  has PackageCleanup => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'packageCleanup' );
-  has RebootAfterUse => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'rebootAfterUse' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::DeviceFarm::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has ExcludeAppPackagesFromCleanup => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has PackageCleanup => (is => 'ro', isa => Bool, predicate => 1);
+  has RebootAfterUse => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateInstanceProfile');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::UpdateInstanceProfileResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateInstanceProfile');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::UpdateInstanceProfileResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'RebootAfterUse' => 'rebootAfterUse',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'Arn' => 'arn',
+                       'PackageCleanup' => 'packageCleanup',
+                       'ExcludeAppPackagesFromCleanup' => 'excludeAppPackagesFromCleanup'
+                     },
+  'IsRequired' => {
+                    'Arn' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'ExcludeAppPackagesFromCleanup' => {
+                                                    'type' => 'ArrayRef[Str|Undef]'
+                                                  },
+               'PackageCleanup' => {
+                                     'type' => 'Bool'
+                                   },
+               'RebootAfterUse' => {
+                                     'type' => 'Bool'
+                                   },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

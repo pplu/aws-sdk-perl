@@ -1,17 +1,48 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::RevokeDBSecurityGroupIngress;
-  use Moose;
-  has CIDRIP => (is => 'ro', isa => 'Str');
-  has DBSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has EC2SecurityGroupId => (is => 'ro', isa => 'Str');
-  has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
-  has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has CIDRIP => (is => 'ro', isa => Str, predicate => 1);
+  has DBSecurityGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EC2SecurityGroupId => (is => 'ro', isa => Str, predicate => 1);
+  has EC2SecurityGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has EC2SecurityGroupOwnerId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeDBSecurityGroupIngress');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RevokeDBSecurityGroupIngressResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeDBSecurityGroupIngressResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RevokeDBSecurityGroupIngress');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::RevokeDBSecurityGroupIngressResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RevokeDBSecurityGroupIngressResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EC2SecurityGroupOwnerId' => {
+                                              'type' => 'Str'
+                                            },
+               'EC2SecurityGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'DBSecurityGroupName' => {
+                                          'type' => 'Str'
+                                        },
+               'EC2SecurityGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'CIDRIP' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'DBSecurityGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

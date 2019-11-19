@@ -1,22 +1,84 @@
 
 package Paws::IoT::CreateOTAUpdate;
-  use Moose;
-  has AdditionalParameters => (is => 'ro', isa => 'Paws::IoT::AdditionalParameterMap', traits => ['NameInRequest'], request_name => 'additionalParameters');
-  has AwsJobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::AwsJobExecutionsRolloutConfig', traits => ['NameInRequest'], request_name => 'awsJobExecutionsRolloutConfig');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Files => (is => 'ro', isa => 'ArrayRef[Paws::IoT::OTAUpdateFile]', traits => ['NameInRequest'], request_name => 'files', required => 1);
-  has OtaUpdateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'otaUpdateId', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targets', required => 1);
-  has TargetSelection => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetSelection');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IoT::Types qw/IoT_AwsJobExecutionsRolloutConfig IoT_AdditionalParameterMap IoT_OTAUpdateFile IoT_Tag/;
+  has AdditionalParameters => (is => 'ro', isa => IoT_AdditionalParameterMap, predicate => 1);
+  has AwsJobExecutionsRolloutConfig => (is => 'ro', isa => IoT_AwsJobExecutionsRolloutConfig, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Files => (is => 'ro', isa => ArrayRef[IoT_OTAUpdateFile], required => 1, predicate => 1);
+  has OtaUpdateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoT_Tag], predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has TargetSelection => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateOTAUpdate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/otaUpdates/{otaUpdateId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateOTAUpdateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateOTAUpdate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/otaUpdates/{otaUpdateId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateOTAUpdateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AwsJobExecutionsRolloutConfig' => {
+                                                    'class' => 'Paws::IoT::AwsJobExecutionsRolloutConfig',
+                                                    'type' => 'IoT_AwsJobExecutionsRolloutConfig'
+                                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'TargetSelection' => {
+                                      'type' => 'Str'
+                                    },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Targets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'AdditionalParameters' => {
+                                           'class' => 'Paws::IoT::AdditionalParameterMap',
+                                           'type' => 'IoT_AdditionalParameterMap'
+                                         },
+               'Tags' => {
+                           'class' => 'Paws::IoT::Tag',
+                           'type' => 'ArrayRef[IoT_Tag]'
+                         },
+               'Files' => {
+                            'class' => 'Paws::IoT::OTAUpdateFile',
+                            'type' => 'ArrayRef[IoT_OTAUpdateFile]'
+                          },
+               'OtaUpdateId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Targets' => 1,
+                    'OtaUpdateId' => 1,
+                    'RoleArn' => 1,
+                    'Files' => 1
+                  },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'AdditionalParameters' => 'additionalParameters',
+                       'Files' => 'files',
+                       'Description' => 'description',
+                       'AwsJobExecutionsRolloutConfig' => 'awsJobExecutionsRolloutConfig',
+                       'Targets' => 'targets',
+                       'RoleArn' => 'roleArn',
+                       'TargetSelection' => 'targetSelection'
+                     },
+  'ParamInURI' => {
+                    'OtaUpdateId' => 'otaUpdateId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -118,13 +180,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalParameters => L<Paws::IoT::AdditionalParameterMap>
+=head2 AdditionalParameters => IoT_AdditionalParameterMap
 
 A list of additional OTA update parameters which are name-value pairs.
 
 
 
-=head2 AwsJobExecutionsRolloutConfig => L<Paws::IoT::AwsJobExecutionsRolloutConfig>
+=head2 AwsJobExecutionsRolloutConfig => IoT_AwsJobExecutionsRolloutConfig
 
 Configuration for the rollout of OTA updates.
 
@@ -136,7 +198,7 @@ The description of the OTA update.
 
 
 
-=head2 B<REQUIRED> Files => ArrayRef[L<Paws::IoT::OTAUpdateFile>]
+=head2 B<REQUIRED> Files => ArrayRef[IoT_OTAUpdateFile]
 
 The files to be streamed by the OTA update.
 
@@ -154,7 +216,7 @@ The IAM role that allows access to the AWS IoT Jobs service.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+=head2 Tags => ArrayRef[IoT_Tag]
 
 Metadata which can be used to manage updates.
 

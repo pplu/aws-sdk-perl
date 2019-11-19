@@ -1,10 +1,36 @@
 
 package Paws::Route53::GetHostedZoneLimitResponse;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', required => 1);
-  has Limit => (is => 'ro', isa => 'Paws::Route53::HostedZoneLimit', required => 1);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Int/;
+  use Paws::Route53::Types qw/Route53_HostedZoneLimit/;
+  has Count => (is => 'ro', isa => Int, required => 1);
+  has Limit => (is => 'ro', isa => Route53_HostedZoneLimit, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Count' => 1,
+                    'Limit' => 1
+                  },
+  'types' => {
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'Limit' => {
+                            'class' => 'Paws::Route53::HostedZoneLimit',
+                            'type' => 'Route53_HostedZoneLimit'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +51,7 @@ of records that you have created in the specified hosted zone.
 
 
 
-=head2 B<REQUIRED> Limit => L<Paws::Route53::HostedZoneLimit>
+=head2 B<REQUIRED> Limit => Route53_HostedZoneLimit
 
 The current setting for the specified limit. For example, if you
 specified C<MAX_RRSETS_BY_ZONE> for the value of C<Type> in the

@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::AWSSessionCredentials;
-  use Moose;
-  has AccessKeyId => (is => 'ro', isa => 'Str', request_name => 'accessKeyId', traits => ['NameInRequest'], required => 1);
-  has SecretAccessKey => (is => 'ro', isa => 'Str', request_name => 'secretAccessKey', traits => ['NameInRequest'], required => 1);
-  has SessionToken => (is => 'ro', isa => 'Str', request_name => 'sessionToken', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has AccessKeyId => (is => 'ro', isa => Str, required => 1);
+  has SecretAccessKey => (is => 'ro', isa => Str, required => 1);
+  has SessionToken => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SecretAccessKey' => 'secretAccessKey',
+                       'AccessKeyId' => 'accessKeyId',
+                       'SessionToken' => 'sessionToken'
+                     },
+  'IsRequired' => {
+                    'SessionToken' => 1,
+                    'AccessKeyId' => 1,
+                    'SecretAccessKey' => 1
+                  },
+  'types' => {
+               'AccessKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'SecretAccessKey' => {
+                                      'type' => 'Str'
+                                    },
+               'SessionToken' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

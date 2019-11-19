@@ -1,17 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::ListSkills;
-  use Moose;
-  has EnablementType => (is => 'ro', isa => 'Str');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SkillGroupArn => (is => 'ro', isa => 'Str');
-  has SkillType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has EnablementType => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SkillGroupArn => (is => 'ro', isa => Str, predicate => 1);
+  has SkillType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSkills');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::ListSkillsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListSkills');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::ListSkillsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SkillGroupArn' => {
+                                    'type' => 'Str'
+                                  },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'EnablementType' => {
+                                     'type' => 'Str'
+                                   },
+               'SkillType' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

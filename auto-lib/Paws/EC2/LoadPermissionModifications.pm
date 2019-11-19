@@ -1,7 +1,26 @@
 package Paws::EC2::LoadPermissionModifications;
-  use Moose;
-  has Add => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LoadPermissionRequest]');
-  has Remove => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LoadPermissionRequest]');
+  use Moo;  use Types::Standard qw/ArrayRef/;
+  use Paws::EC2::Types qw/EC2_LoadPermissionRequest/;
+  has Add => (is => 'ro', isa => ArrayRef[EC2_LoadPermissionRequest]);
+  has Remove => (is => 'ro', isa => ArrayRef[EC2_LoadPermissionRequest]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Remove' => {
+                             'type' => 'ArrayRef[EC2_LoadPermissionRequest]',
+                             'class' => 'Paws::EC2::LoadPermissionRequest'
+                           },
+               'Add' => {
+                          'class' => 'Paws::EC2::LoadPermissionRequest',
+                          'type' => 'ArrayRef[EC2_LoadPermissionRequest]'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +56,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Add => ArrayRef[L<Paws::EC2::LoadPermissionRequest>]
+=head2 Add => ArrayRef[EC2_LoadPermissionRequest]
 
   The load permissions to add.
 
 
-=head2 Remove => ArrayRef[L<Paws::EC2::LoadPermissionRequest>]
+=head2 Remove => ArrayRef[EC2_LoadPermissionRequest]
 
   The load permissions to remove.
 

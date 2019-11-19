@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::StepFunctions::MapStateStartedEventDetails;
-  use Moose;
-  has Length => (is => 'ro', isa => 'Int', request_name => 'length', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::StepFunctions::Types qw//;
+  has Length => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Length' => 'length'
+                     },
+  'types' => {
+               'Length' => {
+                             'type' => 'Int'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,47 @@
 
 package Paws::Greengrass::ListBulkDeploymentDetailedReports;
-  use Moose;
-  has BulkDeploymentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'BulkDeploymentId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MaxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has BulkDeploymentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListBulkDeploymentDetailedReports');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/bulk/deployments/{BulkDeploymentId}/detailed-reports');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::ListBulkDeploymentDetailedReportsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListBulkDeploymentDetailedReports');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/bulk/deployments/{BulkDeploymentId}/detailed-reports');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::ListBulkDeploymentDetailedReportsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BulkDeploymentId' => {
+                                       'type' => 'Str'
+                                     },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'BulkDeploymentId' => 1
+                  },
+  'ParamInQuery' => {
+                      'MaxResults' => 'MaxResults',
+                      'NextToken' => 'NextToken'
+                    },
+  'ParamInURI' => {
+                    'BulkDeploymentId' => 'BulkDeploymentId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

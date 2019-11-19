@@ -1,12 +1,49 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::SchemaAttributeType;
-  use Moose;
-  has AttributeDataType => (is => 'ro', isa => 'Str');
-  has DeveloperOnlyAttribute => (is => 'ro', isa => 'Bool');
-  has Mutable => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
-  has NumberAttributeConstraints => (is => 'ro', isa => 'Paws::CognitoIdp::NumberAttributeConstraintsType');
-  has Required => (is => 'ro', isa => 'Bool');
-  has StringAttributeConstraints => (is => 'ro', isa => 'Paws::CognitoIdp::StringAttributeConstraintsType');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_StringAttributeConstraintsType CognitoIdp_NumberAttributeConstraintsType/;
+  has AttributeDataType => (is => 'ro', isa => Str);
+  has DeveloperOnlyAttribute => (is => 'ro', isa => Bool);
+  has Mutable => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str);
+  has NumberAttributeConstraints => (is => 'ro', isa => CognitoIdp_NumberAttributeConstraintsType);
+  has Required => (is => 'ro', isa => Bool);
+  has StringAttributeConstraints => (is => 'ro', isa => CognitoIdp_StringAttributeConstraintsType);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeveloperOnlyAttribute' => {
+                                             'type' => 'Bool'
+                                           },
+               'StringAttributeConstraints' => {
+                                                 'type' => 'CognitoIdp_StringAttributeConstraintsType',
+                                                 'class' => 'Paws::CognitoIdp::StringAttributeConstraintsType'
+                                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Mutable' => {
+                              'type' => 'Bool'
+                            },
+               'NumberAttributeConstraints' => {
+                                                 'class' => 'Paws::CognitoIdp::NumberAttributeConstraintsType',
+                                                 'type' => 'CognitoIdp_NumberAttributeConstraintsType'
+                                               },
+               'AttributeDataType' => {
+                                        'type' => 'Str'
+                                      },
+               'Required' => {
+                               'type' => 'Bool'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +108,7 @@ for Your User Pool
   A schema attribute of the name type.
 
 
-=head2 NumberAttributeConstraints => L<Paws::CognitoIdp::NumberAttributeConstraintsType>
+=head2 NumberAttributeConstraints => CognitoIdp_NumberAttributeConstraintsType
 
   Specifies the constraints for an attribute of the number type.
 
@@ -83,7 +120,7 @@ is required and the user does not provide a value, registration or
 sign-in will fail.
 
 
-=head2 StringAttributeConstraints => L<Paws::CognitoIdp::StringAttributeConstraintsType>
+=head2 StringAttributeConstraints => CognitoIdp_StringAttributeConstraintsType
 
   Specifies the constraints for an attribute of the string type.
 

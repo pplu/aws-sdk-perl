@@ -1,18 +1,54 @@
 
 package Paws::EC2::DescribeScheduledInstances;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ScheduledInstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ScheduledInstanceId' );
-  has SlotStartTimeRange => (is => 'ro', isa => 'Paws::EC2::SlotStartTimeRangeRequest');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int Undef/;
+  use Paws::EC2::Types qw/EC2_SlotStartTimeRangeRequest EC2_Filter/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ScheduledInstanceIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SlotStartTimeRange => (is => 'ro', isa => EC2_SlotStartTimeRangeRequest, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeScheduledInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeScheduledInstancesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeScheduledInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeScheduledInstancesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Filters' => 'Filter',
+                       'ScheduledInstanceIds' => 'ScheduledInstanceId'
+                     },
+  'types' => {
+               'SlotStartTimeRange' => {
+                                         'type' => 'EC2_SlotStartTimeRangeRequest',
+                                         'class' => 'Paws::EC2::SlotStartTimeRangeRequest'
+                                       },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ScheduledInstanceIds' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'type' => 'ArrayRef[EC2_Filter]',
+                              'class' => 'Paws::EC2::Filter'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +94,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+=head2 Filters => ArrayRef[EC2_Filter]
 
 The filters.
 
@@ -108,7 +144,7 @@ The Scheduled Instance IDs.
 
 
 
-=head2 SlotStartTimeRange => L<Paws::EC2::SlotStartTimeRangeRequest>
+=head2 SlotStartTimeRange => EC2_SlotStartTimeRangeRequest
 
 The time period for the first schedule to start.
 

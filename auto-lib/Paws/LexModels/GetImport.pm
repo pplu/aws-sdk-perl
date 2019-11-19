@@ -1,14 +1,35 @@
 
 package Paws::LexModels::GetImport;
-  use Moose;
-  has ImportId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'importId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw//;
+  has ImportId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetImport');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/imports/{importId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetImportResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetImport');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/imports/{importId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::GetImportResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ImportId' => 1
+                  },
+  'types' => {
+               'ImportId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'ImportId' => 'importId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::Chime::StreamingConfiguration;
-  use Moose;
-  has DataRetentionInHours => (is => 'ro', isa => 'Int', required => 1);
-  has Disabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Int Bool/;
+  use Paws::Chime::Types qw//;
+  has DataRetentionInHours => (is => 'ro', isa => Int, required => 1);
+  has Disabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DataRetentionInHours' => 1
+                  },
+  'types' => {
+               'Disabled' => {
+                               'type' => 'Bool'
+                             },
+               'DataRetentionInHours' => {
+                                           'type' => 'Int'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

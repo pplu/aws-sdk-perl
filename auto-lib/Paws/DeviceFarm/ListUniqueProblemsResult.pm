@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListUniqueProblemsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has UniqueProblems => (is => 'ro', isa => 'Paws::DeviceFarm::UniqueProblemsByExecutionResultMap', traits => ['NameInRequest'], request_name => 'uniqueProblems' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_UniqueProblemsByExecutionResultMap/;
+  has NextToken => (is => 'ro', isa => Str);
+  has UniqueProblems => (is => 'ro', isa => DeviceFarm_UniqueProblemsByExecutionResultMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'UniqueProblems' => {
+                                     'class' => 'Paws::DeviceFarm::UniqueProblemsByExecutionResultMap',
+                                     'type' => 'DeviceFarm_UniqueProblemsByExecutionResultMap'
+                                   }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'UniqueProblems' => 'uniqueProblems'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +49,7 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
-=head2 UniqueProblems => L<Paws::DeviceFarm::UniqueProblemsByExecutionResultMap>
+=head2 UniqueProblems => DeviceFarm_UniqueProblemsByExecutionResultMap
 
 Information about the unique problems.
 

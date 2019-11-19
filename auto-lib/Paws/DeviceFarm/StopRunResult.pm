@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::StopRunResult;
-  use Moose;
-  has Run => (is => 'ro', isa => 'Paws::DeviceFarm::Run', traits => ['NameInRequest'], request_name => 'run' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Run/;
+  has Run => (is => 'ro', isa => DeviceFarm_Run);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Run' => 'run'
+                     },
+  'types' => {
+               'Run' => {
+                          'type' => 'DeviceFarm_Run',
+                          'class' => 'Paws::DeviceFarm::Run'
+                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DeviceFarm::StopRunResult
 =head1 ATTRIBUTES
 
 
-=head2 Run => L<Paws::DeviceFarm::Run>
+=head2 Run => DeviceFarm_Run
 
 The run that was stopped.
 

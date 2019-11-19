@@ -1,27 +1,112 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::RegisterTaskDefinition;
-  use Moose;
-  has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', traits => ['NameInRequest'], request_name => 'containerDefinitions' , required => 1);
-  has Cpu => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cpu' );
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionRoleArn' );
-  has Family => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'family' , required => 1);
-  has InferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::ECS::InferenceAccelerator]', traits => ['NameInRequest'], request_name => 'inferenceAccelerators' );
-  has IpcMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ipcMode' );
-  has Memory => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'memory' );
-  has NetworkMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkMode' );
-  has PidMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pidMode' );
-  has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
-  has ProxyConfiguration => (is => 'ro', isa => 'Paws::ECS::ProxyConfiguration', traits => ['NameInRequest'], request_name => 'proxyConfiguration' );
-  has RequiresCompatibilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'requiresCompatibilities' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has TaskRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskRoleArn' );
-  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]', traits => ['NameInRequest'], request_name => 'volumes' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ECS::Types qw/ECS_InferenceAccelerator ECS_Volume ECS_ProxyConfiguration ECS_ContainerDefinition ECS_Tag ECS_TaskDefinitionPlacementConstraint/;
+  has ContainerDefinitions => (is => 'ro', isa => ArrayRef[ECS_ContainerDefinition], required => 1, predicate => 1);
+  has Cpu => (is => 'ro', isa => Str, predicate => 1);
+  has ExecutionRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has Family => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InferenceAccelerators => (is => 'ro', isa => ArrayRef[ECS_InferenceAccelerator], predicate => 1);
+  has IpcMode => (is => 'ro', isa => Str, predicate => 1);
+  has Memory => (is => 'ro', isa => Str, predicate => 1);
+  has NetworkMode => (is => 'ro', isa => Str, predicate => 1);
+  has PidMode => (is => 'ro', isa => Str, predicate => 1);
+  has PlacementConstraints => (is => 'ro', isa => ArrayRef[ECS_TaskDefinitionPlacementConstraint], predicate => 1);
+  has ProxyConfiguration => (is => 'ro', isa => ECS_ProxyConfiguration, predicate => 1);
+  has RequiresCompatibilities => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ECS_Tag], predicate => 1);
+  has TaskRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has Volumes => (is => 'ro', isa => ArrayRef[ECS_Volume], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterTaskDefinition');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::RegisterTaskDefinitionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterTaskDefinition');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::RegisterTaskDefinitionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ContainerDefinitions' => 1,
+                    'Family' => 1
+                  },
+  'NameInRequest' => {
+                       'Memory' => 'memory',
+                       'Family' => 'family',
+                       'TaskRoleArn' => 'taskRoleArn',
+                       'IpcMode' => 'ipcMode',
+                       'NetworkMode' => 'networkMode',
+                       'Cpu' => 'cpu',
+                       'PidMode' => 'pidMode',
+                       'ContainerDefinitions' => 'containerDefinitions',
+                       'ExecutionRoleArn' => 'executionRoleArn',
+                       'ProxyConfiguration' => 'proxyConfiguration',
+                       'PlacementConstraints' => 'placementConstraints',
+                       'RequiresCompatibilities' => 'requiresCompatibilities',
+                       'InferenceAccelerators' => 'inferenceAccelerators',
+                       'Volumes' => 'volumes',
+                       'Tags' => 'tags'
+                     },
+  'types' => {
+               'PidMode' => {
+                              'type' => 'Str'
+                            },
+               'Cpu' => {
+                          'type' => 'Str'
+                        },
+               'Family' => {
+                             'type' => 'Str'
+                           },
+               'TaskRoleArn' => {
+                                  'type' => 'Str'
+                                },
+               'IpcMode' => {
+                              'type' => 'Str'
+                            },
+               'NetworkMode' => {
+                                  'type' => 'Str'
+                                },
+               'Memory' => {
+                             'type' => 'Str'
+                           },
+               'InferenceAccelerators' => {
+                                            'type' => 'ArrayRef[ECS_InferenceAccelerator]',
+                                            'class' => 'Paws::ECS::InferenceAccelerator'
+                                          },
+               'Tags' => {
+                           'class' => 'Paws::ECS::Tag',
+                           'type' => 'ArrayRef[ECS_Tag]'
+                         },
+               'Volumes' => {
+                              'type' => 'ArrayRef[ECS_Volume]',
+                              'class' => 'Paws::ECS::Volume'
+                            },
+               'PlacementConstraints' => {
+                                           'type' => 'ArrayRef[ECS_TaskDefinitionPlacementConstraint]',
+                                           'class' => 'Paws::ECS::TaskDefinitionPlacementConstraint'
+                                         },
+               'ProxyConfiguration' => {
+                                         'type' => 'ECS_ProxyConfiguration',
+                                         'class' => 'Paws::ECS::ProxyConfiguration'
+                                       },
+               'RequiresCompatibilities' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'ContainerDefinitions' => {
+                                           'type' => 'ArrayRef[ECS_ContainerDefinition]',
+                                           'class' => 'Paws::ECS::ContainerDefinition'
+                                         },
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +158,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>]
+=head2 B<REQUIRED> ContainerDefinitions => ArrayRef[ECS_ContainerDefinition]
 
 A list of container definitions in JSON format that describe the
 different containers that make up your task.
@@ -148,7 +233,7 @@ and lowercase), numbers, and hyphens are allowed.
 
 
 
-=head2 InferenceAccelerators => ArrayRef[L<Paws::ECS::InferenceAccelerator>]
+=head2 InferenceAccelerators => ArrayRef[ECS_InferenceAccelerator]
 
 The Elastic Inference accelerators to use for the containers in the
 task.
@@ -319,7 +404,7 @@ the Fargate launch type.
 
 Valid values are: C<"host">, C<"task">
 
-=head2 PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]
+=head2 PlacementConstraints => ArrayRef[ECS_TaskDefinitionPlacementConstraint]
 
 An array of placement constraint objects to use for the task. You can
 specify a maximum of 10 constraints per task (this limit includes
@@ -327,7 +412,7 @@ constraints in the task definition and those specified at runtime).
 
 
 
-=head2 ProxyConfiguration => L<Paws::ECS::ProxyConfiguration>
+=head2 ProxyConfiguration => ECS_ProxyConfiguration
 
 
 
@@ -340,7 +425,7 @@ defaults to C<EC2>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+=head2 Tags => ArrayRef[ECS_Tag]
 
 The metadata that you apply to the task definition to help you
 categorize and organize them. Each tag consists of a key and an
@@ -403,7 +488,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
-=head2 Volumes => ArrayRef[L<Paws::ECS::Volume>]
+=head2 Volumes => ArrayRef[ECS_Volume]
 
 A list of volume definitions in JSON format that containers in your
 task may use.

@@ -1,24 +1,91 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudFormation::DescribeChangeSetOutput;
-  use Moose;
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Changes => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Change]');
-  has ChangeSetId => (is => 'ro', isa => 'Str');
-  has ChangeSetName => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExecutionStatus => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
-  has StackId => (is => 'ro', isa => 'Str');
-  has StackName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusReason => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_Change CloudFormation_Parameter CloudFormation_Tag CloudFormation_RollbackConfiguration/;
+  has Capabilities => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Changes => (is => 'ro', isa => ArrayRef[CloudFormation_Change]);
+  has ChangeSetId => (is => 'ro', isa => Str);
+  has ChangeSetName => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ExecutionStatus => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has NotificationARNs => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Parameters => (is => 'ro', isa => ArrayRef[CloudFormation_Parameter]);
+  has RollbackConfiguration => (is => 'ro', isa => CloudFormation_RollbackConfiguration);
+  has StackId => (is => 'ro', isa => Str);
+  has StackName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[CloudFormation_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RollbackConfiguration' => {
+                                            'type' => 'CloudFormation_RollbackConfiguration',
+                                            'class' => 'Paws::CloudFormation::RollbackConfiguration'
+                                          },
+               'Tags' => {
+                           'type' => 'ArrayRef[CloudFormation_Tag]',
+                           'class' => 'Paws::CloudFormation::Tag'
+                         },
+               'ExecutionStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'Capabilities' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'ChangeSetName' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ChangeSetId' => {
+                                  'type' => 'Str'
+                                },
+               'StackName' => {
+                                'type' => 'Str'
+                              },
+               'NotificationARNs' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Changes' => {
+                              'class' => 'Paws::CloudFormation::Change',
+                              'type' => 'ArrayRef[CloudFormation_Change]'
+                            },
+               'Parameters' => {
+                                 'class' => 'Paws::CloudFormation::Parameter',
+                                 'type' => 'ArrayRef[CloudFormation_Parameter]'
+                               },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +103,7 @@ If you execute the change set, the list of capabilities that were
 explicitly acknowledged when the change set was created.
 
 
-=head2 Changes => ArrayRef[L<Paws::CloudFormation::Change>]
+=head2 Changes => ArrayRef[CloudFormation_Change]
 
 A list of C<Change> structures that describes the resources AWS
 CloudFormation changes if you execute the change set.
@@ -83,7 +150,7 @@ The ARNs of the Amazon Simple Notification Service (Amazon SNS) topics
 that will be associated with the stack if you execute the change set.
 
 
-=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
+=head2 Parameters => ArrayRef[CloudFormation_Parameter]
 
 A list of C<Parameter> structures that describes the input parameters
 and their values used to create the change set. For more information,
@@ -92,7 +159,7 @@ see the Parameter
 data type.
 
 
-=head2 RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>
+=head2 RollbackConfiguration => CloudFormation_RollbackConfiguration
 
 The rollback triggers for AWS CloudFormation to monitor during stack
 creation and updating operations, and for the specified monitoring
@@ -122,7 +189,7 @@ to create a change set failed, AWS CloudFormation shows the error
 message.
 
 
-=head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
+=head2 Tags => ArrayRef[CloudFormation_Tag]
 
 If you execute the change set, the tags that will be associated with
 the stack.

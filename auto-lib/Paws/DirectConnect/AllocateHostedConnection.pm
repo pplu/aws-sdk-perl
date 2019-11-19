@@ -1,18 +1,65 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::AllocateHostedConnection;
-  use Moose;
-  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' , required => 1);
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
-  has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' , required => 1);
-  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has Vlan => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'vlan' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::DirectConnect::Types qw/DirectConnect_Tag/;
+  has Bandwidth => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConnectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConnectionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OwnerAccount => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DirectConnect_Tag], predicate => 1);
+  has Vlan => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AllocateHostedConnection');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::Connection');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AllocateHostedConnection');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::Connection');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'OwnerAccount' => 1,
+                    'ConnectionId' => 1,
+                    'Vlan' => 1,
+                    'ConnectionName' => 1,
+                    'Bandwidth' => 1
+                  },
+  'NameInRequest' => {
+                       'Vlan' => 'vlan',
+                       'Bandwidth' => 'bandwidth',
+                       'OwnerAccount' => 'ownerAccount',
+                       'ConnectionName' => 'connectionName',
+                       'Tags' => 'tags',
+                       'ConnectionId' => 'connectionId'
+                     },
+  'types' => {
+               'Vlan' => {
+                           'type' => 'Int'
+                         },
+               'Bandwidth' => {
+                                'type' => 'Str'
+                              },
+               'OwnerAccount' => {
+                                   'type' => 'Str'
+                                 },
+               'ConnectionName' => {
+                                     'type' => 'Str'
+                                   },
+               'Tags' => {
+                           'class' => 'Paws::DirectConnect::Tag',
+                           'type' => 'ArrayRef[DirectConnect_Tag]'
+                         },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -102,7 +149,7 @@ The ID of the AWS account ID of the customer for the connection.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+=head2 Tags => ArrayRef[DirectConnect_Tag]
 
 The tags associated with the connection.
 

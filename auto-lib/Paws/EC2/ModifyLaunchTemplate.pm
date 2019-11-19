@@ -1,17 +1,47 @@
 
 package Paws::EC2::ModifyLaunchTemplate;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has DefaultVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'SetDefaultVersion' );
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has LaunchTemplateId => (is => 'ro', isa => 'Str');
-  has LaunchTemplateName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultVersion => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has LaunchTemplateId => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchTemplateName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyLaunchTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyLaunchTemplateResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyLaunchTemplate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyLaunchTemplateResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DefaultVersion' => 'SetDefaultVersion'
+                     },
+  'types' => {
+               'DefaultVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'LaunchTemplateId' => {
+                                       'type' => 'Str'
+                                     },
+               'LaunchTemplateName' => {
+                                         'type' => 'Str'
+                                       },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

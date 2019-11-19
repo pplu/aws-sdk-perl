@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaLive::TeletextSourceSettings;
-  use Moose;
-  has PageNumber => (is => 'ro', isa => 'Str', request_name => 'pageNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has PageNumber => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PageNumber' => 'pageNumber'
+                     },
+  'types' => {
+               'PageNumber' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

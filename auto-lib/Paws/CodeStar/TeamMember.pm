@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::CodeStar::TeamMember;
-  use Moose;
-  has ProjectRole => (is => 'ro', isa => 'Str', request_name => 'projectRole', traits => ['NameInRequest'], required => 1);
-  has RemoteAccessAllowed => (is => 'ro', isa => 'Bool', request_name => 'remoteAccessAllowed', traits => ['NameInRequest']);
-  has UserArn => (is => 'ro', isa => 'Str', request_name => 'userArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeStar::Types qw//;
+  has ProjectRole => (is => 'ro', isa => Str, required => 1);
+  has RemoteAccessAllowed => (is => 'ro', isa => Bool);
+  has UserArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProjectRole' => {
+                                  'type' => 'Str'
+                                },
+               'RemoteAccessAllowed' => {
+                                          'type' => 'Bool'
+                                        },
+               'UserArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'ProjectRole' => 1,
+                    'UserArn' => 1
+                  },
+  'NameInRequest' => {
+                       'ProjectRole' => 'projectRole',
+                       'RemoteAccessAllowed' => 'remoteAccessAllowed',
+                       'UserArn' => 'userArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

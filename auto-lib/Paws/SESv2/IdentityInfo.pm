@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SESv2::IdentityInfo;
-  use Moose;
-  has IdentityName => (is => 'ro', isa => 'Str');
-  has IdentityType => (is => 'ro', isa => 'Str');
-  has SendingEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SESv2::Types qw//;
+  has IdentityName => (is => 'ro', isa => Str);
+  has IdentityType => (is => 'ro', isa => Str);
+  has SendingEnabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IdentityName' => {
+                                   'type' => 'Str'
+                                 },
+               'IdentityType' => {
+                                   'type' => 'Str'
+                                 },
+               'SendingEnabled' => {
+                                     'type' => 'Bool'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

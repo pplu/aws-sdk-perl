@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Kinesis::PutRecords;
-  use Moose;
-  has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::PutRecordsRequestEntry]', required => 1);
-  has StreamName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Kinesis::Types qw/Kinesis_PutRecordsRequestEntry/;
+  has Records => (is => 'ro', isa => ArrayRef[Kinesis_PutRecordsRequestEntry], required => 1, predicate => 1);
+  has StreamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutRecords');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kinesis::PutRecordsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutRecords');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Kinesis::PutRecordsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Records' => 1,
+                    'StreamName' => 1
+                  },
+  'types' => {
+               'Records' => {
+                              'class' => 'Paws::Kinesis::PutRecordsRequestEntry',
+                              'type' => 'ArrayRef[Kinesis_PutRecordsRequestEntry]'
+                            },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +78,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Records => ArrayRef[L<Paws::Kinesis::PutRecordsRequestEntry>]
+=head2 B<REQUIRED> Records => ArrayRef[Kinesis_PutRecordsRequestEntry]
 
 The records associated with the request.
 

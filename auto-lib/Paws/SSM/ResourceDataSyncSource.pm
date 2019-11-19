@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::SSM::ResourceDataSyncSource;
-  use Moose;
-  has AwsOrganizationsSource => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncAwsOrganizationsSource');
-  has IncludeFutureRegions => (is => 'ro', isa => 'Bool');
-  has SourceRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has SourceType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::SSM::Types qw/SSM_ResourceDataSyncAwsOrganizationsSource/;
+  has AwsOrganizationsSource => (is => 'ro', isa => SSM_ResourceDataSyncAwsOrganizationsSource);
+  has IncludeFutureRegions => (is => 'ro', isa => Bool);
+  has SourceRegions => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has SourceType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceRegions' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'IncludeFutureRegions' => {
+                                           'type' => 'Bool'
+                                         },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'AwsOrganizationsSource' => {
+                                             'class' => 'Paws::SSM::ResourceDataSyncAwsOrganizationsSource',
+                                             'type' => 'SSM_ResourceDataSyncAwsOrganizationsSource'
+                                           }
+             },
+  'IsRequired' => {
+                    'SourceRegions' => 1,
+                    'SourceType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +71,7 @@ sync.
 =head1 ATTRIBUTES
 
 
-=head2 AwsOrganizationsSource => L<Paws::SSM::ResourceDataSyncAwsOrganizationsSource>
+=head2 AwsOrganizationsSource => SSM_ResourceDataSyncAwsOrganizationsSource
 
   The field name in C<SyncSource> for the
 C<ResourceDataSyncAwsOrganizationsSource> type.

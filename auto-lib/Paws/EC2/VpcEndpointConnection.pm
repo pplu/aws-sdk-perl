@@ -1,12 +1,54 @@
 package Paws::EC2::VpcEndpointConnection;
-  use Moose;
-  has CreationTimestamp => (is => 'ro', isa => 'Str', request_name => 'creationTimestamp', traits => ['NameInRequest']);
-  has DnsEntries => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DnsEntry]', request_name => 'dnsEntrySet', traits => ['NameInRequest']);
-  has NetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'networkLoadBalancerArnSet', traits => ['NameInRequest']);
-  has ServiceId => (is => 'ro', isa => 'Str', request_name => 'serviceId', traits => ['NameInRequest']);
-  has VpcEndpointId => (is => 'ro', isa => 'Str', request_name => 'vpcEndpointId', traits => ['NameInRequest']);
-  has VpcEndpointOwner => (is => 'ro', isa => 'Str', request_name => 'vpcEndpointOwner', traits => ['NameInRequest']);
-  has VpcEndpointState => (is => 'ro', isa => 'Str', request_name => 'vpcEndpointState', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_DnsEntry/;
+  has CreationTimestamp => (is => 'ro', isa => Str);
+  has DnsEntries => (is => 'ro', isa => ArrayRef[EC2_DnsEntry]);
+  has NetworkLoadBalancerArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ServiceId => (is => 'ro', isa => Str);
+  has VpcEndpointId => (is => 'ro', isa => Str);
+  has VpcEndpointOwner => (is => 'ro', isa => Str);
+  has VpcEndpointState => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'NetworkLoadBalancerArns' => 'networkLoadBalancerArnSet',
+                       'DnsEntries' => 'dnsEntrySet',
+                       'VpcEndpointState' => 'vpcEndpointState',
+                       'ServiceId' => 'serviceId',
+                       'CreationTimestamp' => 'creationTimestamp',
+                       'VpcEndpointId' => 'vpcEndpointId',
+                       'VpcEndpointOwner' => 'vpcEndpointOwner'
+                     },
+  'types' => {
+               'VpcEndpointState' => {
+                                       'type' => 'Str'
+                                     },
+               'DnsEntries' => {
+                                 'type' => 'ArrayRef[EC2_DnsEntry]',
+                                 'class' => 'Paws::EC2::DnsEntry'
+                               },
+               'NetworkLoadBalancerArns' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'VpcEndpointOwner' => {
+                                       'type' => 'Str'
+                                     },
+               'VpcEndpointId' => {
+                                    'type' => 'Str'
+                                  },
+               'CreationTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'ServiceId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +89,7 @@ This class has no description
   The date and time the VPC endpoint was created.
 
 
-=head2 DnsEntries => ArrayRef[L<Paws::EC2::DnsEntry>]
+=head2 DnsEntries => ArrayRef[EC2_DnsEntry]
 
   The DNS entries for the VPC endpoint.
 

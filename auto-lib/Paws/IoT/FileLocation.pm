@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::IoT::FileLocation;
-  use Moose;
-  has S3Location => (is => 'ro', isa => 'Paws::IoT::S3Location', request_name => 's3Location', traits => ['NameInRequest']);
-  has Stream => (is => 'ro', isa => 'Paws::IoT::Stream', request_name => 'stream', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoT::Types qw/IoT_S3Location IoT_Stream/;
+  has S3Location => (is => 'ro', isa => IoT_S3Location);
+  has Stream => (is => 'ro', isa => IoT_Stream);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Stream' => 'stream',
+                       'S3Location' => 's3Location'
+                     },
+  'types' => {
+               'Stream' => {
+                             'class' => 'Paws::IoT::Stream',
+                             'type' => 'IoT_Stream'
+                           },
+               'S3Location' => {
+                                 'class' => 'Paws::IoT::S3Location',
+                                 'type' => 'IoT_S3Location'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ The location of the OTA update.
 =head1 ATTRIBUTES
 
 
-=head2 S3Location => L<Paws::IoT::S3Location>
+=head2 S3Location => IoT_S3Location
 
   The location of the updated firmware in S3.
 
 
-=head2 Stream => L<Paws::IoT::Stream>
+=head2 Stream => IoT_Stream
 
   The stream that contains the OTA update.
 

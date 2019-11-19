@@ -1,17 +1,52 @@
 
 package Paws::WorkDocs::UpdateDocumentVersion;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId', required => 1);
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'VersionId', required => 1);
-  has VersionStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VersionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VersionStatus => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDocumentVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/documents/{DocumentId}/versions/{VersionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDocumentVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/documents/{DocumentId}/versions/{VersionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'VersionId' => 'VersionId',
+                    'DocumentId' => 'DocumentId'
+                  },
+  'IsRequired' => {
+                    'VersionId' => 1,
+                    'DocumentId' => 1
+                  },
+  'types' => {
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'VersionStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'DocumentId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

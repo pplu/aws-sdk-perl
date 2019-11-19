@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::TypedLinkFacet;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::TypedLinkAttributeDefinition]', required => 1);
-  has IdentityAttributeOrder => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Undef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedLinkAttributeDefinition/;
+  has Attributes => (is => 'ro', isa => ArrayRef[CloudDirectory_TypedLinkAttributeDefinition], required => 1);
+  has IdentityAttributeOrder => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Attributes' => 1,
+                    'IdentityAttributeOrder' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::CloudDirectory::TypedLinkAttributeDefinition',
+                                 'type' => 'ArrayRef[CloudDirectory_TypedLinkAttributeDefinition]'
+                               },
+               'IdentityAttributeOrder' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +68,7 @@ link facet, use the CreateTypedLinkFacet API.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeDefinition>]
+=head2 B<REQUIRED> Attributes => ArrayRef[CloudDirectory_TypedLinkAttributeDefinition]
 
   A set of key-value pairs associated with the typed link. Typed link
 attributes are used when you have data values that are related to the

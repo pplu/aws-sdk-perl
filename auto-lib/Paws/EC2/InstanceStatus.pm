@@ -1,11 +1,52 @@
 package Paws::EC2::InstanceStatus;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceStatusEvent]', request_name => 'eventsSet', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has InstanceState => (is => 'ro', isa => 'Paws::EC2::InstanceState', request_name => 'instanceState', traits => ['NameInRequest']);
-  has InstanceStatus => (is => 'ro', isa => 'Paws::EC2::InstanceStatusSummary', request_name => 'instanceStatus', traits => ['NameInRequest']);
-  has SystemStatus => (is => 'ro', isa => 'Paws::EC2::InstanceStatusSummary', request_name => 'systemStatus', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_InstanceStatusSummary EC2_InstanceStatusEvent EC2_InstanceState/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has Events => (is => 'ro', isa => ArrayRef[EC2_InstanceStatusEvent]);
+  has InstanceId => (is => 'ro', isa => Str);
+  has InstanceState => (is => 'ro', isa => EC2_InstanceState);
+  has InstanceStatus => (is => 'ro', isa => EC2_InstanceStatusSummary);
+  has SystemStatus => (is => 'ro', isa => EC2_InstanceStatusSummary);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AvailabilityZone' => 'availabilityZone',
+                       'InstanceState' => 'instanceState',
+                       'InstanceId' => 'instanceId',
+                       'SystemStatus' => 'systemStatus',
+                       'Events' => 'eventsSet',
+                       'InstanceStatus' => 'instanceStatus'
+                     },
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceState' => {
+                                    'type' => 'EC2_InstanceState',
+                                    'class' => 'Paws::EC2::InstanceState'
+                                  },
+               'InstanceStatus' => {
+                                     'type' => 'EC2_InstanceStatusSummary',
+                                     'class' => 'Paws::EC2::InstanceStatusSummary'
+                                   },
+               'Events' => {
+                             'class' => 'Paws::EC2::InstanceStatusEvent',
+                             'type' => 'ArrayRef[EC2_InstanceStatusEvent]'
+                           },
+               'SystemStatus' => {
+                                   'class' => 'Paws::EC2::InstanceStatusSummary',
+                                   'type' => 'EC2_InstanceStatusSummary'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +87,7 @@ This class has no description
   The Availability Zone of the instance.
 
 
-=head2 Events => ArrayRef[L<Paws::EC2::InstanceStatusEvent>]
+=head2 Events => ArrayRef[EC2_InstanceStatusEvent]
 
   Any scheduled events associated with the instance.
 
@@ -56,19 +97,19 @@ This class has no description
   The ID of the instance.
 
 
-=head2 InstanceState => L<Paws::EC2::InstanceState>
+=head2 InstanceState => EC2_InstanceState
 
   The intended state of the instance. DescribeInstanceStatus requires
 that an instance be in the C<running> state.
 
 
-=head2 InstanceStatus => L<Paws::EC2::InstanceStatusSummary>
+=head2 InstanceStatus => EC2_InstanceStatusSummary
 
   Reports impaired functionality that stems from issues internal to the
 instance, such as impaired reachability.
 
 
-=head2 SystemStatus => L<Paws::EC2::InstanceStatusSummary>
+=head2 SystemStatus => EC2_InstanceStatusSummary
 
   Reports impaired functionality that stems from issues related to the
 systems that support an instance, such as hardware failures and network

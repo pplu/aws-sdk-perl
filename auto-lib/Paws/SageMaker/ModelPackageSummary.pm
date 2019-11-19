@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ModelPackageSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has ModelPackageArn => (is => 'ro', isa => 'Str', required => 1);
-  has ModelPackageDescription => (is => 'ro', isa => 'Str');
-  has ModelPackageName => (is => 'ro', isa => 'Str', required => 1);
-  has ModelPackageStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has ModelPackageArn => (is => 'ro', isa => Str, required => 1);
+  has ModelPackageDescription => (is => 'ro', isa => Str);
+  has ModelPackageName => (is => 'ro', isa => Str, required => 1);
+  has ModelPackageStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ModelPackageArn' => 1,
+                    'ModelPackageName' => 1,
+                    'CreationTime' => 1,
+                    'ModelPackageStatus' => 1
+                  },
+  'types' => {
+               'ModelPackageStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ModelPackageDescription' => {
+                                              'type' => 'Str'
+                                            },
+               'ModelPackageName' => {
+                                       'type' => 'Str'
+                                     },
+               'ModelPackageArn' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

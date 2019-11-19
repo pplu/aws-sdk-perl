@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::GameLift::ResourceCreationLimitPolicy;
-  use Moose;
-  has NewGameSessionsPerCreator => (is => 'ro', isa => 'Int');
-  has PolicyPeriodInMinutes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::GameLift::Types qw//;
+  has NewGameSessionsPerCreator => (is => 'ro', isa => Int);
+  has PolicyPeriodInMinutes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyPeriodInMinutes' => {
+                                            'type' => 'Int'
+                                          },
+               'NewGameSessionsPerCreator' => {
+                                                'type' => 'Int'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

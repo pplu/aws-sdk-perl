@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::ListKeyPhrasesDetectionJobsResponse;
-  use Moose;
-  has KeyPhrasesDetectionJobPropertiesList => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::KeyPhrasesDetectionJobProperties]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_KeyPhrasesDetectionJobProperties/;
+  has KeyPhrasesDetectionJobPropertiesList => (is => 'ro', isa => ArrayRef[Comprehend_KeyPhrasesDetectionJobProperties]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'KeyPhrasesDetectionJobPropertiesList' => {
+                                                           'class' => 'Paws::Comprehend::KeyPhrasesDetectionJobProperties',
+                                                           'type' => 'ArrayRef[Comprehend_KeyPhrasesDetectionJobProperties]'
+                                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Comprehend::ListKeyPhrasesDetectionJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 KeyPhrasesDetectionJobPropertiesList => ArrayRef[L<Paws::Comprehend::KeyPhrasesDetectionJobProperties>]
+=head2 KeyPhrasesDetectionJobPropertiesList => ArrayRef[Comprehend_KeyPhrasesDetectionJobProperties]
 
 A list containing the properties of each job that is returned.
 

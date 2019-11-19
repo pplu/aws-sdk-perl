@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Route53Domains::DeleteTagsForDomain;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has TagsToDelete => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Route53Domains::Types qw//;
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagsToDelete => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTagsForDomain');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::DeleteTagsForDomainResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteTagsForDomain');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53Domains::DeleteTagsForDomainResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DomainName' => 1,
+                    'TagsToDelete' => 1
+                  },
+  'types' => {
+               'TagsToDelete' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

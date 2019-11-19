@@ -1,16 +1,47 @@
 
 package Paws::Amplify::UpdateWebhook;
-  use Moose;
-  has BranchName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchName');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has WebhookId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'webhookId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw//;
+  has BranchName => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has WebhookId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateWebhook');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/webhooks/{webhookId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Amplify::UpdateWebhookResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateWebhook');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/webhooks/{webhookId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Amplify::UpdateWebhookResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'WebhookId' => 'webhookId'
+                  },
+  'types' => {
+               'BranchName' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'WebhookId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'BranchName' => 'branchName'
+                     },
+  'IsRequired' => {
+                    'WebhookId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

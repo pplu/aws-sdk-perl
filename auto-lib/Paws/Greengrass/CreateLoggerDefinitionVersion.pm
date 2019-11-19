@@ -1,16 +1,47 @@
 
 package Paws::Greengrass::CreateLoggerDefinitionVersion;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has LoggerDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionId', required => 1);
-  has Loggers => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Logger]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_Logger/;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has LoggerDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Loggers => (is => 'ro', isa => ArrayRef[Greengrass_Logger], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoggerDefinitionVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/loggers/{LoggerDefinitionId}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateLoggerDefinitionVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLoggerDefinitionVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/loggers/{LoggerDefinitionId}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::CreateLoggerDefinitionVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'LoggerDefinitionId' => 'LoggerDefinitionId'
+                  },
+  'types' => {
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    },
+               'Loggers' => {
+                              'class' => 'Paws::Greengrass::Logger',
+                              'type' => 'ArrayRef[Greengrass_Logger]'
+                            },
+               'LoggerDefinitionId' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'LoggerDefinitionId' => 1
+                  },
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +104,7 @@ The ID of the logger definition.
 
 
 
-=head2 Loggers => ArrayRef[L<Paws::Greengrass::Logger>]
+=head2 Loggers => ArrayRef[Greengrass_Logger]
 
 A list of loggers.
 

@@ -1,14 +1,15 @@
 package Paws::IoT;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'iot' }
   sub signing_name { 'execute-api' }
   sub version { '2015-05-28' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -2129,7 +2130,7 @@ Cancels a job.
 
 =item [Force => Bool]
 
-=item [StatusDetails => L<Paws::IoT::DetailsMap>]
+=item [StatusDetails => IoT_DetailsMap]
 
 
 =back
@@ -2185,7 +2186,7 @@ own or have access to the endpoint.
 
 =item TokenKeyName => Str
 
-=item TokenSigningPublicKeys => L<Paws::IoT::PublicKeyMap>
+=item TokenSigningPublicKeys => IoT_PublicKeyMap
 
 =item [Status => Str]
 
@@ -2205,9 +2206,9 @@ Creates an authorizer.
 
 =item BillingGroupName => Str
 
-=item [BillingGroupProperties => L<Paws::IoT::BillingGroupProperties>]
+=item [BillingGroupProperties => IoT_BillingGroupProperties]
 
-=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+=item [Tags => ArrayRef[IoT_Tag]]
 
 
 =back
@@ -2294,9 +2295,9 @@ create-certificate-from-csr --certificate-signing-request file://@path"
 
 =item [QueryVersion => Str]
 
-=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+=item [Tags => ArrayRef[IoT_Tag]]
 
-=item [ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>]
+=item [ThingGroupProperties => IoT_ThingGroupProperties]
 
 
 =back
@@ -2316,7 +2317,7 @@ Creates a dynamic thing group.
 
 =item Targets => ArrayRef[Str|Undef]
 
-=item [AbortConfig => L<Paws::IoT::AbortConfig>]
+=item [AbortConfig => IoT_AbortConfig]
 
 =item [Description => Str]
 
@@ -2324,15 +2325,15 @@ Creates a dynamic thing group.
 
 =item [DocumentSource => Str]
 
-=item [JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>]
+=item [JobExecutionsRolloutConfig => IoT_JobExecutionsRolloutConfig]
 
-=item [PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>]
+=item [PresignedUrlConfig => IoT_PresignedUrlConfig]
 
-=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+=item [Tags => ArrayRef[IoT_Tag]]
 
 =item [TargetSelection => Str]
 
-=item [TimeoutConfig => L<Paws::IoT::TimeoutConfig>]
+=item [TimeoutConfig => IoT_TimeoutConfig]
 
 
 =back
@@ -2370,11 +2371,11 @@ certificate, so it is important to keep it in a secure location.
 
 =item ActionName => Str
 
-=item ActionParams => L<Paws::IoT::MitigationActionParams>
+=item ActionParams => IoT_MitigationActionParams
 
 =item RoleArn => Str
 
-=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+=item [Tags => ArrayRef[IoT_Tag]]
 
 
 =back
@@ -2392,7 +2393,7 @@ one type of change.
 
 =over
 
-=item Files => ArrayRef[L<Paws::IoT::OTAUpdateFile>]
+=item Files => ArrayRef[IoT_OTAUpdateFile]
 
 =item OtaUpdateId => Str
 
@@ -2400,13 +2401,13 @@ one type of change.
 
 =item Targets => ArrayRef[Str|Undef]
 
-=item [AdditionalParameters => L<Paws::IoT::AdditionalParameterMap>]
+=item [AdditionalParameters => IoT_AdditionalParameterMap]
 
-=item [AwsJobExecutionsRolloutConfig => L<Paws::IoT::AwsJobExecutionsRolloutConfig>]
+=item [AwsJobExecutionsRolloutConfig => IoT_AwsJobExecutionsRolloutConfig]
 
 =item [Description => Str]
 
-=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+=item [Tags => ArrayRef[IoT_Tag]]
 
 =item [TargetSelection => Str]
 
@@ -2505,7 +2506,7 @@ Creates a role alias.
 
 =item [DayOfWeek => Str]
 
-=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+=item [Tags => ArrayRef[IoT_Tag]]
 
 
 =back
@@ -2525,13 +2526,13 @@ Creates a scheduled audit that is run at a specified time interval.
 
 =item [AdditionalMetricsToRetain => ArrayRef[Str|Undef]]
 
-=item [AlertTargets => L<Paws::IoT::AlertTargets>]
+=item [AlertTargets => IoT_AlertTargets]
 
-=item [Behaviors => ArrayRef[L<Paws::IoT::Behavior>]]
+=item [Behaviors => ArrayRef[IoT_Behavior]]
 
 =item [SecurityProfileDescription => Str]
 
-=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+=item [Tags => ArrayRef[IoT_Tag]]
 
 
 =back
@@ -2547,7 +2548,7 @@ Creates a Device Defender security profile.
 
 =over
 
-=item Files => ArrayRef[L<Paws::IoT::StreamFile>]
+=item Files => ArrayRef[IoT_StreamFile]
 
 =item RoleArn => Str
 
@@ -2555,7 +2556,7 @@ Creates a Device Defender security profile.
 
 =item [Description => Str]
 
-=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+=item [Tags => ArrayRef[IoT_Tag]]
 
 
 =back
@@ -2576,7 +2577,7 @@ associated with a stream.
 
 =item ThingName => Str
 
-=item [AttributePayload => L<Paws::IoT::AttributePayload>]
+=item [AttributePayload => IoT_AttributePayload]
 
 =item [BillingGroupName => Str]
 
@@ -2607,9 +2608,9 @@ for information about authorizing control plane actions.
 
 =item [ParentGroupName => Str]
 
-=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+=item [Tags => ArrayRef[IoT_Tag]]
 
-=item [ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>]
+=item [ThingGroupProperties => IoT_ThingGroupProperties]
 
 
 =back
@@ -2631,9 +2632,9 @@ for information about authorizing control plane actions.
 
 =item ThingTypeName => Str
 
-=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+=item [Tags => ArrayRef[IoT_Tag]]
 
-=item [ThingTypeProperties => L<Paws::IoT::ThingTypeProperties>]
+=item [ThingTypeProperties => IoT_ThingTypeProperties]
 
 
 =back
@@ -2651,7 +2652,7 @@ Creates a new thing type.
 
 =item RuleName => Str
 
-=item TopicRulePayload => L<Paws::IoT::TopicRulePayload>
+=item TopicRulePayload => IoT_TopicRulePayload
 
 =item [Tags => Str]
 
@@ -2671,7 +2672,7 @@ processed by the rule.
 
 =over
 
-=item DestinationConfiguration => L<Paws::IoT::TopicRuleDestinationConfiguration>
+=item DestinationConfiguration => IoT_TopicRuleDestinationConfiguration
 
 
 =back
@@ -3936,7 +3937,7 @@ Lists the policies attached to the specified thing group.
 
 =item [NextToken => Str]
 
-=item [ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>]
+=item [ResourceIdentifier => IoT_ResourceIdentifier]
 
 =item [StartTime => Str]
 
@@ -4856,7 +4857,7 @@ thing (device).
 
 =item [AllowAutoRegistration => Bool]
 
-=item [RegistrationConfig => L<Paws::IoT::RegistrationConfig>]
+=item [RegistrationConfig => IoT_RegistrationConfig]
 
 =item [SetAsActive => Bool]
 
@@ -4908,7 +4909,7 @@ registered.
 
 =item TemplateBody => Str
 
-=item [Parameters => L<Paws::IoT::Parameters>]
+=item [Parameters => IoT_Parameters]
 
 
 =back
@@ -4997,7 +4998,7 @@ Remove the specified thing from the specified group.
 
 =item RuleName => Str
 
-=item TopicRulePayload => L<Paws::IoT::TopicRulePayload>
+=item TopicRulePayload => IoT_TopicRulePayload
 
 
 =back
@@ -5078,7 +5079,7 @@ attached to, use the ListPrincipalPolicy API.
 
 =over
 
-=item LoggingOptionsPayload => L<Paws::IoT::LoggingOptionsPayload>
+=item LoggingOptionsPayload => IoT_LoggingOptionsPayload
 
 
 =back
@@ -5099,7 +5100,7 @@ C<SetV2LoggingOptions> instead.
 
 =item LogLevel => Str
 
-=item LogTarget => L<Paws::IoT::LogTarget>
+=item LogTarget => IoT_LogTarget
 
 
 =back
@@ -5135,11 +5136,11 @@ Sets the logging options for the V2 logging service.
 
 =over
 
-=item AuditCheckToActionsMapping => L<Paws::IoT::AuditCheckToActionsMapping>
+=item AuditCheckToActionsMapping => IoT_AuditCheckToActionsMapping
 
 =item ClientRequestToken => Str
 
-=item Target => L<Paws::IoT::AuditMitigationActionsTaskTarget>
+=item Target => IoT_AuditMitigationActionsTaskTarget
 
 =item TaskId => Str
 
@@ -5214,7 +5215,7 @@ Cancels a bulk thing provisioning task.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::IoT::Tag>]
+=item Tags => ArrayRef[IoT_Tag]
 
 
 =back
@@ -5231,7 +5232,7 @@ which can be used to manage a resource.
 
 =over
 
-=item AuthInfos => ArrayRef[L<Paws::IoT::AuthInfo>]
+=item AuthInfos => ArrayRef[IoT_AuthInfo]
 
 =item [ClientId => Str]
 
@@ -5331,9 +5332,9 @@ Removes the given tags (metadata) from the resource.
 
 =over
 
-=item [AuditCheckConfigurations => L<Paws::IoT::AuditCheckConfigurations>]
+=item [AuditCheckConfigurations => IoT_AuditCheckConfigurations]
 
-=item [AuditNotificationTargetConfigurations => L<Paws::IoT::AuditNotificationTargetConfigurations>]
+=item [AuditNotificationTargetConfigurations => IoT_AuditNotificationTargetConfigurations]
 
 =item [RoleArn => Str]
 
@@ -5361,7 +5362,7 @@ audit checks are enabled or disabled.
 
 =item [TokenKeyName => Str]
 
-=item [TokenSigningPublicKeys => L<Paws::IoT::PublicKeyMap>]
+=item [TokenSigningPublicKeys => IoT_PublicKeyMap]
 
 
 =back
@@ -5379,7 +5380,7 @@ Updates an authorizer.
 
 =item BillingGroupName => Str
 
-=item BillingGroupProperties => L<Paws::IoT::BillingGroupProperties>
+=item BillingGroupProperties => IoT_BillingGroupProperties
 
 =item [ExpectedVersion => Int]
 
@@ -5403,7 +5404,7 @@ Updates information about the billing group.
 
 =item [NewStatus => Str]
 
-=item [RegistrationConfig => L<Paws::IoT::RegistrationConfig>]
+=item [RegistrationConfig => IoT_RegistrationConfig]
 
 =item [RemoveAutoRegistration => Bool]
 
@@ -5449,7 +5450,7 @@ IoT using a certificate.
 
 =item ThingGroupName => Str
 
-=item ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>
+=item ThingGroupProperties => IoT_ThingGroupProperties
 
 =item [ExpectedVersion => Int]
 
@@ -5473,7 +5474,7 @@ Updates a dynamic thing group.
 
 =over
 
-=item [EventConfigurations => L<Paws::IoT::EventConfigurations>]
+=item [EventConfigurations => IoT_EventConfigurations]
 
 
 =back
@@ -5489,9 +5490,9 @@ Updates the event configurations.
 
 =over
 
-=item [ThingGroupIndexingConfiguration => L<Paws::IoT::ThingGroupIndexingConfiguration>]
+=item [ThingGroupIndexingConfiguration => IoT_ThingGroupIndexingConfiguration]
 
-=item [ThingIndexingConfiguration => L<Paws::IoT::ThingIndexingConfiguration>]
+=item [ThingIndexingConfiguration => IoT_ThingIndexingConfiguration]
 
 
 =back
@@ -5509,15 +5510,15 @@ Updates the search configuration.
 
 =item JobId => Str
 
-=item [AbortConfig => L<Paws::IoT::AbortConfig>]
+=item [AbortConfig => IoT_AbortConfig]
 
 =item [Description => Str]
 
-=item [JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>]
+=item [JobExecutionsRolloutConfig => IoT_JobExecutionsRolloutConfig]
 
-=item [PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>]
+=item [PresignedUrlConfig => IoT_PresignedUrlConfig]
 
-=item [TimeoutConfig => L<Paws::IoT::TimeoutConfig>]
+=item [TimeoutConfig => IoT_TimeoutConfig]
 
 
 =back
@@ -5535,7 +5536,7 @@ Updates supported fields of the specified job.
 
 =item ActionName => Str
 
-=item [ActionParams => L<Paws::IoT::MitigationActionParams>]
+=item [ActionParams => IoT_MitigationActionParams]
 
 =item [RoleArn => Str]
 
@@ -5602,9 +5603,9 @@ often the audit takes place.
 
 =item [AdditionalMetricsToRetain => ArrayRef[Str|Undef]]
 
-=item [AlertTargets => L<Paws::IoT::AlertTargets>]
+=item [AlertTargets => IoT_AlertTargets]
 
-=item [Behaviors => ArrayRef[L<Paws::IoT::Behavior>]]
+=item [Behaviors => ArrayRef[IoT_Behavior]]
 
 =item [DeleteAdditionalMetricsToRetain => Bool]
 
@@ -5634,7 +5635,7 @@ Updates a Device Defender security profile.
 
 =item [Description => Str]
 
-=item [Files => ArrayRef[L<Paws::IoT::StreamFile>]]
+=item [Files => ArrayRef[IoT_StreamFile]]
 
 =item [RoleArn => Str]
 
@@ -5655,7 +5656,7 @@ one.
 
 =item ThingName => Str
 
-=item [AttributePayload => L<Paws::IoT::AttributePayload>]
+=item [AttributePayload => IoT_AttributePayload]
 
 =item [ExpectedVersion => Int]
 
@@ -5679,7 +5680,7 @@ Updates the data for a thing.
 
 =item ThingGroupName => Str
 
-=item ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>
+=item ThingGroupProperties => IoT_ThingGroupProperties
 
 =item [ExpectedVersion => Int]
 
@@ -5738,7 +5739,7 @@ endpoint URL, or confirmation URL of the destination.
 
 =over
 
-=item Behaviors => ArrayRef[L<Paws::IoT::Behavior>]
+=item Behaviors => ArrayRef[IoT_Behavior]
 
 
 =back
@@ -5780,9 +5781,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoT::ListAttachedPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllAuditFindings(sub { },[CheckName => Str, EndTime => Str, MaxResults => Int, NextToken => Str, ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>, StartTime => Str, TaskId => Str])
+=head2 ListAllAuditFindings(sub { },[CheckName => Str, EndTime => Str, MaxResults => Int, NextToken => Str, ResourceIdentifier => IoT_ResourceIdentifier, StartTime => Str, TaskId => Str])
 
-=head2 ListAllAuditFindings([CheckName => Str, EndTime => Str, MaxResults => Int, NextToken => Str, ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>, StartTime => Str, TaskId => Str])
+=head2 ListAllAuditFindings([CheckName => Str, EndTime => Str, MaxResults => Int, NextToken => Str, ResourceIdentifier => IoT_ResourceIdentifier, StartTime => Str, TaskId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

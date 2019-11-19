@@ -1,15 +1,71 @@
+# Generated from default/object.tt
 package Paws::ApiGateway::MethodSetting;
-  use Moose;
-  has CacheDataEncrypted => (is => 'ro', isa => 'Bool', request_name => 'cacheDataEncrypted', traits => ['NameInRequest']);
-  has CacheTtlInSeconds => (is => 'ro', isa => 'Int', request_name => 'cacheTtlInSeconds', traits => ['NameInRequest']);
-  has CachingEnabled => (is => 'ro', isa => 'Bool', request_name => 'cachingEnabled', traits => ['NameInRequest']);
-  has DataTraceEnabled => (is => 'ro', isa => 'Bool', request_name => 'dataTraceEnabled', traits => ['NameInRequest']);
-  has LoggingLevel => (is => 'ro', isa => 'Str', request_name => 'loggingLevel', traits => ['NameInRequest']);
-  has MetricsEnabled => (is => 'ro', isa => 'Bool', request_name => 'metricsEnabled', traits => ['NameInRequest']);
-  has RequireAuthorizationForCacheControl => (is => 'ro', isa => 'Bool', request_name => 'requireAuthorizationForCacheControl', traits => ['NameInRequest']);
-  has ThrottlingBurstLimit => (is => 'ro', isa => 'Int', request_name => 'throttlingBurstLimit', traits => ['NameInRequest']);
-  has ThrottlingRateLimit => (is => 'ro', isa => 'Num', request_name => 'throttlingRateLimit', traits => ['NameInRequest']);
-  has UnauthorizedCacheControlHeaderStrategy => (is => 'ro', isa => 'Str', request_name => 'unauthorizedCacheControlHeaderStrategy', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Int Str Num/;
+  use Paws::ApiGateway::Types qw//;
+  has CacheDataEncrypted => (is => 'ro', isa => Bool);
+  has CacheTtlInSeconds => (is => 'ro', isa => Int);
+  has CachingEnabled => (is => 'ro', isa => Bool);
+  has DataTraceEnabled => (is => 'ro', isa => Bool);
+  has LoggingLevel => (is => 'ro', isa => Str);
+  has MetricsEnabled => (is => 'ro', isa => Bool);
+  has RequireAuthorizationForCacheControl => (is => 'ro', isa => Bool);
+  has ThrottlingBurstLimit => (is => 'ro', isa => Int);
+  has ThrottlingRateLimit => (is => 'ro', isa => Num);
+  has UnauthorizedCacheControlHeaderStrategy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CacheTtlInSeconds' => 'cacheTtlInSeconds',
+                       'UnauthorizedCacheControlHeaderStrategy' => 'unauthorizedCacheControlHeaderStrategy',
+                       'DataTraceEnabled' => 'dataTraceEnabled',
+                       'ThrottlingRateLimit' => 'throttlingRateLimit',
+                       'CachingEnabled' => 'cachingEnabled',
+                       'LoggingLevel' => 'loggingLevel',
+                       'MetricsEnabled' => 'metricsEnabled',
+                       'CacheDataEncrypted' => 'cacheDataEncrypted',
+                       'RequireAuthorizationForCacheControl' => 'requireAuthorizationForCacheControl',
+                       'ThrottlingBurstLimit' => 'throttlingBurstLimit'
+                     },
+  'types' => {
+               'LoggingLevel' => {
+                                   'type' => 'Str'
+                                 },
+               'MetricsEnabled' => {
+                                     'type' => 'Bool'
+                                   },
+               'CachingEnabled' => {
+                                     'type' => 'Bool'
+                                   },
+               'ThrottlingRateLimit' => {
+                                          'type' => 'Num'
+                                        },
+               'CacheTtlInSeconds' => {
+                                        'type' => 'Int'
+                                      },
+               'DataTraceEnabled' => {
+                                       'type' => 'Bool'
+                                     },
+               'UnauthorizedCacheControlHeaderStrategy' => {
+                                                             'type' => 'Str'
+                                                           },
+               'RequireAuthorizationForCacheControl' => {
+                                                          'type' => 'Bool'
+                                                        },
+               'ThrottlingBurstLimit' => {
+                                           'type' => 'Int'
+                                         },
+               'CacheDataEncrypted' => {
+                                         'type' => 'Bool'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

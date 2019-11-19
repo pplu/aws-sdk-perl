@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::ES::LogPublishingOptionsStatus;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
-  has Status => (is => 'ro', isa => 'Paws::ES::OptionStatus');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ES::Types qw/ES_LogPublishingOptions ES_OptionStatus/;
+  has Options => (is => 'ro', isa => ES_LogPublishingOptions);
+  has Status => (is => 'ro', isa => ES_OptionStatus);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'ES_OptionStatus',
+                             'class' => 'Paws::ES::OptionStatus'
+                           },
+               'Options' => {
+                              'class' => 'Paws::ES::LogPublishingOptions',
+                              'type' => 'ES_LogPublishingOptions'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +60,12 @@ status.
 =head1 ATTRIBUTES
 
 
-=head2 Options => L<Paws::ES::LogPublishingOptions>
+=head2 Options => ES_LogPublishingOptions
 
   The log publishing options configured for the Elasticsearch domain.
 
 
-=head2 Status => L<Paws::ES::OptionStatus>
+=head2 Status => ES_OptionStatus
 
   The status of the log publishing options for the Elasticsearch domain.
 See C<OptionStatus> for the status information that's included.

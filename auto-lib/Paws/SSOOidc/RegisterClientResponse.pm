@@ -1,14 +1,54 @@
 
 package Paws::SSOOidc::RegisterClientResponse;
-  use Moose;
-  has AuthorizationEndpoint => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizationEndpoint');
-  has ClientId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientId');
-  has ClientIdIssuedAt => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'clientIdIssuedAt');
-  has ClientSecret => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientSecret');
-  has ClientSecretExpiresAt => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'clientSecretExpiresAt');
-  has TokenEndpoint => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'tokenEndpoint');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSOOidc::Types qw//;
+  has AuthorizationEndpoint => (is => 'ro', isa => Str);
+  has ClientId => (is => 'ro', isa => Str);
+  has ClientIdIssuedAt => (is => 'ro', isa => Int);
+  has ClientSecret => (is => 'ro', isa => Str);
+  has ClientSecretExpiresAt => (is => 'ro', isa => Int);
+  has TokenEndpoint => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TokenEndpoint' => 'tokenEndpoint',
+                       'AuthorizationEndpoint' => 'authorizationEndpoint',
+                       'ClientId' => 'clientId',
+                       'ClientSecretExpiresAt' => 'clientSecretExpiresAt',
+                       'ClientSecret' => 'clientSecret',
+                       'ClientIdIssuedAt' => 'clientIdIssuedAt'
+                     },
+  'types' => {
+               'ClientSecretExpiresAt' => {
+                                            'type' => 'Int'
+                                          },
+               'ClientSecret' => {
+                                   'type' => 'Str'
+                                 },
+               'ClientIdIssuedAt' => {
+                                       'type' => 'Int'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AuthorizationEndpoint' => {
+                                            'type' => 'Str'
+                                          },
+               'TokenEndpoint' => {
+                                    'type' => 'Str'
+                                  },
+               'ClientId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

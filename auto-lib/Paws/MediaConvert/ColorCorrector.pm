@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::ColorCorrector;
-  use Moose;
-  has Brightness => (is => 'ro', isa => 'Int', request_name => 'brightness', traits => ['NameInRequest']);
-  has ColorSpaceConversion => (is => 'ro', isa => 'Str', request_name => 'colorSpaceConversion', traits => ['NameInRequest']);
-  has Contrast => (is => 'ro', isa => 'Int', request_name => 'contrast', traits => ['NameInRequest']);
-  has Hdr10Metadata => (is => 'ro', isa => 'Paws::MediaConvert::Hdr10Metadata', request_name => 'hdr10Metadata', traits => ['NameInRequest']);
-  has Hue => (is => 'ro', isa => 'Int', request_name => 'hue', traits => ['NameInRequest']);
-  has Saturation => (is => 'ro', isa => 'Int', request_name => 'saturation', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_Hdr10Metadata/;
+  has Brightness => (is => 'ro', isa => Int);
+  has ColorSpaceConversion => (is => 'ro', isa => Str);
+  has Contrast => (is => 'ro', isa => Int);
+  has Hdr10Metadata => (is => 'ro', isa => MediaConvert_Hdr10Metadata);
+  has Hue => (is => 'ro', isa => Int);
+  has Saturation => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Contrast' => {
+                               'type' => 'Int'
+                             },
+               'ColorSpaceConversion' => {
+                                           'type' => 'Str'
+                                         },
+               'Brightness' => {
+                                 'type' => 'Int'
+                               },
+               'Hue' => {
+                          'type' => 'Int'
+                        },
+               'Hdr10Metadata' => {
+                                    'type' => 'MediaConvert_Hdr10Metadata',
+                                    'class' => 'Paws::MediaConvert::Hdr10Metadata'
+                                  },
+               'Saturation' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'Hdr10Metadata' => 'hdr10Metadata',
+                       'Saturation' => 'saturation',
+                       'Contrast' => 'contrast',
+                       'ColorSpaceConversion' => 'colorSpaceConversion',
+                       'Brightness' => 'brightness',
+                       'Hue' => 'hue'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +101,7 @@ an HDR format, but visually appears the same as an unconverted output.
   Contrast level.
 
 
-=head2 Hdr10Metadata => L<Paws::MediaConvert::Hdr10Metadata>
+=head2 Hdr10Metadata => MediaConvert_Hdr10Metadata
 
   Use these settings when you convert to the HDR 10 color space. Specify
 the SMPTE ST 2086 Mastering Display Color Volume static metadata that

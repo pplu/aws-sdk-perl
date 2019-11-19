@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::AssetShallow;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has PackagingGroupId => (is => 'ro', isa => 'Str', request_name => 'packagingGroupId', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has SourceArn => (is => 'ro', isa => 'Str', request_name => 'sourceArn', traits => ['NameInRequest']);
-  has SourceRoleArn => (is => 'ro', isa => 'Str', request_name => 'sourceRoleArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackageVod::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has PackagingGroupId => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has SourceArn => (is => 'ro', isa => Str);
+  has SourceRoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceArn' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'PackagingGroupId' => {
+                                       'type' => 'Str'
+                                     },
+               'SourceRoleArn' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'PackagingGroupId' => 'packagingGroupId',
+                       'SourceRoleArn' => 'sourceRoleArn',
+                       'SourceArn' => 'sourceArn',
+                       'ResourceId' => 'resourceId',
+                       'Id' => 'id',
+                       'Arn' => 'arn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::S3Control::JobManifestLocation;
-  use Moose;
-  has ETag => (is => 'ro', isa => 'Str', required => 1);
-  has ObjectArn => (is => 'ro', isa => 'Str', required => 1);
-  has ObjectVersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3Control::Types qw//;
+  has ETag => (is => 'ro', isa => Str, required => 1);
+  has ObjectArn => (is => 'ro', isa => Str, required => 1);
+  has ObjectVersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObjectArn' => {
+                                'type' => 'Str'
+                              },
+               'ObjectVersionId' => {
+                                      'type' => 'Str'
+                                    },
+               'ETag' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'ETag' => 1,
+                    'ObjectArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

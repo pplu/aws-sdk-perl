@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration;
-  use Moose;
-  has AdjustmentType => (is => 'ro', isa => 'Str');
-  has Cooldown => (is => 'ro', isa => 'Int');
-  has MetricAggregationType => (is => 'ro', isa => 'Str');
-  has MinAdjustmentMagnitude => (is => 'ro', isa => 'Int');
-  has StepAdjustments => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationAutoScaling::StepAdjustment]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::ApplicationAutoScaling::Types qw/ApplicationAutoScaling_StepAdjustment/;
+  has AdjustmentType => (is => 'ro', isa => Str);
+  has Cooldown => (is => 'ro', isa => Int);
+  has MetricAggregationType => (is => 'ro', isa => Str);
+  has MinAdjustmentMagnitude => (is => 'ro', isa => Int);
+  has StepAdjustments => (is => 'ro', isa => ArrayRef[ApplicationAutoScaling_StepAdjustment]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricAggregationType' => {
+                                            'type' => 'Str'
+                                          },
+               'AdjustmentType' => {
+                                     'type' => 'Str'
+                                   },
+               'Cooldown' => {
+                               'type' => 'Int'
+                             },
+               'StepAdjustments' => {
+                                      'class' => 'Paws::ApplicationAutoScaling::StepAdjustment',
+                                      'type' => 'ArrayRef[ApplicationAutoScaling_StepAdjustment]'
+                                    },
+               'MinAdjustmentMagnitude' => {
+                                             'type' => 'Int'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +126,7 @@ specified a C<MinAdjustmentMagnitude> of 2, Application Auto Scaling
 scales out the service by 2 tasks.
 
 
-=head2 StepAdjustments => ArrayRef[L<Paws::ApplicationAutoScaling::StepAdjustment>]
+=head2 StepAdjustments => ArrayRef[ApplicationAutoScaling_StepAdjustment]
 
   A set of adjustments that enable you to scale based on the size of the
 alarm breach.

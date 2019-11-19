@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Comprehend::EntityRecognizerDocuments;
-  use Moose;
-  has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw//;
+  has S3Uri => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'S3Uri' => 1
+                  },
+  'types' => {
+               'S3Uri' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

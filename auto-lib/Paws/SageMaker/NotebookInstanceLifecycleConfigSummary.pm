@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::SageMaker::NotebookInstanceLifecycleConfigSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has NotebookInstanceLifecycleConfigArn => (is => 'ro', isa => 'Str', required => 1);
-  has NotebookInstanceLifecycleConfigName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has NotebookInstanceLifecycleConfigArn => (is => 'ro', isa => Str, required => 1);
+  has NotebookInstanceLifecycleConfigName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotebookInstanceLifecycleConfigName' => {
+                                                          'type' => 'Str'
+                                                        },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'NotebookInstanceLifecycleConfigArn' => {
+                                                         'type' => 'Str'
+                                                       },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'NotebookInstanceLifecycleConfigName' => 1,
+                    'NotebookInstanceLifecycleConfigArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

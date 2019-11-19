@@ -1,15 +1,41 @@
 
 package Paws::Amplify::GetDomainAssociation;
-  use Moose;
-  has AppId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'appId', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw//;
+  has AppId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDomainAssociation');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apps/{appId}/domains/{domainName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Amplify::GetDomainAssociationResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDomainAssociation');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/apps/{appId}/domains/{domainName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Amplify::GetDomainAssociationResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DomainName' => 1,
+                    'AppId' => 1
+                  },
+  'types' => {
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'AppId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'ParamInURI' => {
+                    'AppId' => 'appId',
+                    'DomainName' => 'domainName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

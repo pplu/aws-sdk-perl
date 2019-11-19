@@ -1,16 +1,49 @@
 
 package Paws::IoTData::Publish;
-  use Moose;
-  has Payload => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'payload');
-  has Qos => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'qos');
-  has Topic => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'topic', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTData::Types qw//;
+  has Payload => (is => 'ro', isa => Str, predicate => 1);
+  has Qos => (is => 'ro', isa => Int, predicate => 1);
+  has Topic => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Payload');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Publish');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/topics/{topic}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Publish');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/topics/{topic}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Topic' => 1
+                  },
+  'ParamInQuery' => {
+                      'Qos' => 'qos'
+                    },
+  'NameInRequest' => {
+                       'Payload' => 'payload'
+                     },
+  'types' => {
+               'Payload' => {
+                              'type' => 'Str'
+                            },
+               'Qos' => {
+                          'type' => 'Int'
+                        },
+               'Topic' => {
+                            'type' => 'Str'
+                          }
+             },
+  'ParamInURI' => {
+                    'Topic' => 'topic'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

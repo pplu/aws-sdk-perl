@@ -1,29 +1,113 @@
 
 package Paws::MQ::CreateBroker;
-  use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'autoMinorVersionUpgrade');
-  has BrokerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'brokerName');
-  has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', traits => ['NameInRequest'], request_name => 'configuration');
-  has CreatorRequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creatorRequestId');
-  has DeploymentMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentMode');
-  has EncryptionOptions => (is => 'ro', isa => 'Paws::MQ::EncryptionOptions', traits => ['NameInRequest'], request_name => 'encryptionOptions');
-  has EngineType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineType');
-  has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
-  has HostInstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostInstanceType');
-  has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', traits => ['NameInRequest'], request_name => 'logs');
-  has MaintenanceWindowStartTime => (is => 'ro', isa => 'Paws::MQ::WeeklyStartTime', traits => ['NameInRequest'], request_name => 'maintenanceWindowStartTime');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'subnetIds');
-  has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
-  has Users => (is => 'ro', isa => 'ArrayRef[Paws::MQ::User]', traits => ['NameInRequest'], request_name => 'users');
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::MQ::Types qw/MQ_ConfigurationId MQ___mapOf__string MQ_WeeklyStartTime MQ_User MQ_Logs MQ_EncryptionOptions/;
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has BrokerName => (is => 'ro', isa => Str, predicate => 1);
+  has Configuration => (is => 'ro', isa => MQ_ConfigurationId, predicate => 1);
+  has CreatorRequestId => (is => 'ro', isa => Str, predicate => 1);
+  has DeploymentMode => (is => 'ro', isa => Str, predicate => 1);
+  has EncryptionOptions => (is => 'ro', isa => MQ_EncryptionOptions, predicate => 1);
+  has EngineType => (is => 'ro', isa => Str, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has HostInstanceType => (is => 'ro', isa => Str, predicate => 1);
+  has Logs => (is => 'ro', isa => MQ_Logs, predicate => 1);
+  has MaintenanceWindowStartTime => (is => 'ro', isa => MQ_WeeklyStartTime, predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Tags => (is => 'ro', isa => MQ___mapOf__string, predicate => 1);
+  has Users => (is => 'ro', isa => ArrayRef[MQ_User], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBroker');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/brokers');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MQ::CreateBrokerResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBroker');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/brokers');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MQ::CreateBrokerResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'CreatorRequestId' => 'creatorRequestId',
+                       'Configuration' => 'configuration',
+                       'EncryptionOptions' => 'encryptionOptions',
+                       'SubnetIds' => 'subnetIds',
+                       'SecurityGroups' => 'securityGroups',
+                       'PubliclyAccessible' => 'publiclyAccessible',
+                       'EngineType' => 'engineType',
+                       'AutoMinorVersionUpgrade' => 'autoMinorVersionUpgrade',
+                       'Tags' => 'tags',
+                       'Users' => 'users',
+                       'EngineVersion' => 'engineVersion',
+                       'Logs' => 'logs',
+                       'DeploymentMode' => 'deploymentMode',
+                       'BrokerName' => 'brokerName',
+                       'HostInstanceType' => 'hostInstanceType',
+                       'MaintenanceWindowStartTime' => 'maintenanceWindowStartTime'
+                     },
+  'types' => {
+               'EncryptionOptions' => {
+                                        'class' => 'Paws::MQ::EncryptionOptions',
+                                        'type' => 'MQ_EncryptionOptions'
+                                      },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Configuration' => {
+                                    'class' => 'Paws::MQ::ConfigurationId',
+                                    'type' => 'MQ_ConfigurationId'
+                                  },
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     },
+               'Users' => {
+                            'type' => 'ArrayRef[MQ_User]',
+                            'class' => 'Paws::MQ::User'
+                          },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'BrokerName' => {
+                                 'type' => 'Str'
+                               },
+               'Logs' => {
+                           'class' => 'Paws::MQ::Logs',
+                           'type' => 'MQ_Logs'
+                         },
+               'DeploymentMode' => {
+                                     'type' => 'Str'
+                                   },
+               'MaintenanceWindowStartTime' => {
+                                                 'type' => 'MQ_WeeklyStartTime',
+                                                 'class' => 'Paws::MQ::WeeklyStartTime'
+                                               },
+               'HostInstanceType' => {
+                                       'type' => 'Str'
+                                     },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'EngineType' => {
+                                 'type' => 'Str'
+                               },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::MQ::__mapOf__string',
+                           'type' => 'MQ___mapOf__string'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -113,7 +197,7 @@ wildcard characters, or special characters.
 
 
 
-=head2 Configuration => L<Paws::MQ::ConfigurationId>
+=head2 Configuration => MQ_ConfigurationId
 
 A list of information about the configuration.
 
@@ -135,7 +219,7 @@ Required. The deployment mode of the broker.
 
 Valid values are: C<"SINGLE_INSTANCE">, C<"ACTIVE_STANDBY_MULTI_AZ">
 
-=head2 EncryptionOptions => L<Paws::MQ::EncryptionOptions>
+=head2 EncryptionOptions => MQ_EncryptionOptions
 
 Encryption options for the broker.
 
@@ -162,13 +246,13 @@ Required. The broker's instance type.
 
 
 
-=head2 Logs => L<Paws::MQ::Logs>
+=head2 Logs => MQ_Logs
 
 Enables Amazon CloudWatch logging for brokers.
 
 
 
-=head2 MaintenanceWindowStartTime => L<Paws::MQ::WeeklyStartTime>
+=head2 MaintenanceWindowStartTime => MQ_WeeklyStartTime
 
 The parameters that determine the WeeklyStartTime.
 
@@ -197,13 +281,13 @@ ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.
 
 
 
-=head2 Tags => L<Paws::MQ::__mapOf__string>
+=head2 Tags => MQ___mapOf__string
 
 Create tags when creating the broker.
 
 
 
-=head2 Users => ArrayRef[L<Paws::MQ::User>]
+=head2 Users => ArrayRef[MQ_User]
 
 Required. The list of ActiveMQ users (persons or applications) who can
 access queues and topics. This value can contain only alphanumeric

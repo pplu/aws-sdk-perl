@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::Route53::TrafficPolicySummary;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LatestVersion => (is => 'ro', isa => 'Int', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficPolicyCount => (is => 'ro', isa => 'Int', required => 1);
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Route53::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has LatestVersion => (is => 'ro', isa => Int, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has TrafficPolicyCount => (is => 'ro', isa => Int, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TrafficPolicyCount' => 1,
+                    'LatestVersion' => 1,
+                    'Name' => 1,
+                    'Type' => 1,
+                    'Id' => 1
+                  },
+  'types' => {
+               'TrafficPolicyCount' => {
+                                         'type' => 'Int'
+                                       },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'LatestVersion' => {
+                                    'type' => 'Int'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

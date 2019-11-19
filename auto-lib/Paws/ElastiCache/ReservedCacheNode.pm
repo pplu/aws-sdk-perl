@@ -1,18 +1,75 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::ReservedCacheNode;
-  use Moose;
-  has CacheNodeCount => (is => 'ro', isa => 'Int');
-  has CacheNodeType => (is => 'ro', isa => 'Str');
-  has Duration => (is => 'ro', isa => 'Int');
-  has FixedPrice => (is => 'ro', isa => 'Num');
-  has OfferingType => (is => 'ro', isa => 'Str');
-  has ProductDescription => (is => 'ro', isa => 'Str');
-  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::RecurringCharge]', request_name => 'RecurringCharge', traits => ['NameInRequest']);
-  has ReservationARN => (is => 'ro', isa => 'Str');
-  has ReservedCacheNodeId => (is => 'ro', isa => 'Str');
-  has ReservedCacheNodesOfferingId => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has UsagePrice => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Int Str Num ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_RecurringCharge/;
+  has CacheNodeCount => (is => 'ro', isa => Int);
+  has CacheNodeType => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has FixedPrice => (is => 'ro', isa => Num);
+  has OfferingType => (is => 'ro', isa => Str);
+  has ProductDescription => (is => 'ro', isa => Str);
+  has RecurringCharges => (is => 'ro', isa => ArrayRef[ElastiCache_RecurringCharge]);
+  has ReservationARN => (is => 'ro', isa => Str);
+  has ReservedCacheNodeId => (is => 'ro', isa => Str);
+  has ReservedCacheNodesOfferingId => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has UsagePrice => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservationARN' => {
+                                     'type' => 'Str'
+                                   },
+               'RecurringCharges' => {
+                                       'class' => 'Paws::ElastiCache::RecurringCharge',
+                                       'type' => 'ArrayRef[ElastiCache_RecurringCharge]'
+                                     },
+               'ReservedCacheNodesOfferingId' => {
+                                                   'type' => 'Str'
+                                                 },
+               'CacheNodeCount' => {
+                                     'type' => 'Int'
+                                   },
+               'OfferingType' => {
+                                   'type' => 'Str'
+                                 },
+               'FixedPrice' => {
+                                 'type' => 'Num'
+                               },
+               'ReservedCacheNodeId' => {
+                                          'type' => 'Str'
+                                        },
+               'CacheNodeType' => {
+                                    'type' => 'Str'
+                                  },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'ProductDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'UsagePrice' => {
+                                 'type' => 'Num'
+                               }
+             },
+  'NameInRequest' => {
+                       'RecurringCharges' => 'RecurringCharge'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -192,7 +249,7 @@ supported on Redis version 2.8.22 and later.
   The description of the reserved cache node.
 
 
-=head2 RecurringCharges => ArrayRef[L<Paws::ElastiCache::RecurringCharge>]
+=head2 RecurringCharges => ArrayRef[ElastiCache_RecurringCharge]
 
   The recurring price charged to run this reserved cache node.
 

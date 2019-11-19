@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::SelfservicePermissions;
-  use Moose;
-  has ChangeComputeType => (is => 'ro', isa => 'Str');
-  has IncreaseVolumeSize => (is => 'ro', isa => 'Str');
-  has RebuildWorkspace => (is => 'ro', isa => 'Str');
-  has RestartWorkspace => (is => 'ro', isa => 'Str');
-  has SwitchRunningMode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkSpaces::Types qw//;
+  has ChangeComputeType => (is => 'ro', isa => Str);
+  has IncreaseVolumeSize => (is => 'ro', isa => Str);
+  has RebuildWorkspace => (is => 'ro', isa => Str);
+  has RestartWorkspace => (is => 'ro', isa => Str);
+  has SwitchRunningMode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IncreaseVolumeSize' => {
+                                         'type' => 'Str'
+                                       },
+               'RestartWorkspace' => {
+                                       'type' => 'Str'
+                                     },
+               'ChangeComputeType' => {
+                                        'type' => 'Str'
+                                      },
+               'RebuildWorkspace' => {
+                                       'type' => 'Str'
+                                     },
+               'SwitchRunningMode' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

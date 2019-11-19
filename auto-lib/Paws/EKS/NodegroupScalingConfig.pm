@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::EKS::NodegroupScalingConfig;
-  use Moose;
-  has DesiredSize => (is => 'ro', isa => 'Int', request_name => 'desiredSize', traits => ['NameInRequest']);
-  has MaxSize => (is => 'ro', isa => 'Int', request_name => 'maxSize', traits => ['NameInRequest']);
-  has MinSize => (is => 'ro', isa => 'Int', request_name => 'minSize', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::EKS::Types qw//;
+  has DesiredSize => (is => 'ro', isa => Int);
+  has MaxSize => (is => 'ro', isa => Int);
+  has MinSize => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MinSize' => {
+                              'type' => 'Int'
+                            },
+               'DesiredSize' => {
+                                  'type' => 'Int'
+                                },
+               'MaxSize' => {
+                              'type' => 'Int'
+                            }
+             },
+  'NameInRequest' => {
+                       'MinSize' => 'minSize',
+                       'DesiredSize' => 'desiredSize',
+                       'MaxSize' => 'maxSize'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

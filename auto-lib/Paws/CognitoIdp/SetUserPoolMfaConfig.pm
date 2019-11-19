@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::SetUserPoolMfaConfig;
-  use Moose;
-  has MfaConfiguration => (is => 'ro', isa => 'Str');
-  has SmsMfaConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsMfaConfigType');
-  has SoftwareTokenMfaConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SoftwareTokenMfaConfigType');
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_SmsMfaConfigType CognitoIdp_SoftwareTokenMfaConfigType/;
+  has MfaConfiguration => (is => 'ro', isa => Str, predicate => 1);
+  has SmsMfaConfiguration => (is => 'ro', isa => CognitoIdp_SmsMfaConfigType, predicate => 1);
+  has SoftwareTokenMfaConfiguration => (is => 'ro', isa => CognitoIdp_SoftwareTokenMfaConfigType, predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetUserPoolMfaConfig');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::SetUserPoolMfaConfigResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetUserPoolMfaConfig');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::SetUserPoolMfaConfigResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SmsMfaConfiguration' => {
+                                          'type' => 'CognitoIdp_SmsMfaConfigType',
+                                          'class' => 'Paws::CognitoIdp::SmsMfaConfigType'
+                                        },
+               'SoftwareTokenMfaConfiguration' => {
+                                                    'type' => 'CognitoIdp_SoftwareTokenMfaConfigType',
+                                                    'class' => 'Paws::CognitoIdp::SoftwareTokenMfaConfigType'
+                                                  },
+               'MfaConfiguration' => {
+                                       'type' => 'Str'
+                                     },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'UserPoolId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -85,13 +115,13 @@ MFA factor enabled.
 
 Valid values are: C<"OFF">, C<"ON">, C<"OPTIONAL">
 
-=head2 SmsMfaConfiguration => L<Paws::CognitoIdp::SmsMfaConfigType>
+=head2 SmsMfaConfiguration => CognitoIdp_SmsMfaConfigType
 
 The SMS text message MFA configuration.
 
 
 
-=head2 SoftwareTokenMfaConfiguration => L<Paws::CognitoIdp::SoftwareTokenMfaConfigType>
+=head2 SoftwareTokenMfaConfiguration => CognitoIdp_SoftwareTokenMfaConfigType
 
 The software token MFA configuration.
 

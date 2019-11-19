@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AppStream::CreateDirectoryConfig;
-  use Moose;
-  has DirectoryName => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationalUnitDistinguishedNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has ServiceAccountCredentials => (is => 'ro', isa => 'Paws::AppStream::ServiceAccountCredentials', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::AppStream::Types qw/AppStream_ServiceAccountCredentials/;
+  has DirectoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OrganizationalUnitDistinguishedNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has ServiceAccountCredentials => (is => 'ro', isa => AppStream_ServiceAccountCredentials, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDirectoryConfig');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppStream::CreateDirectoryConfigResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDirectoryConfig');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppStream::CreateDirectoryConfigResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DirectoryName' => 1,
+                    'OrganizationalUnitDistinguishedNames' => 1,
+                    'ServiceAccountCredentials' => 1
+                  },
+  'types' => {
+               'DirectoryName' => {
+                                    'type' => 'Str'
+                                  },
+               'ServiceAccountCredentials' => {
+                                                'type' => 'AppStream_ServiceAccountCredentials',
+                                                'class' => 'Paws::AppStream::ServiceAccountCredentials'
+                                              },
+               'OrganizationalUnitDistinguishedNames' => {
+                                                           'type' => 'ArrayRef[Str|Undef]'
+                                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +95,7 @@ accounts.
 
 
 
-=head2 B<REQUIRED> ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>
+=head2 B<REQUIRED> ServiceAccountCredentials => AppStream_ServiceAccountCredentials
 
 The credentials for the service account used by the fleet or image
 builder to connect to the directory.

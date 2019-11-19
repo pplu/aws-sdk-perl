@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Scte35SpliceInsertScheduleActionSettings;
-  use Moose;
-  has Duration => (is => 'ro', isa => 'Int', request_name => 'duration', traits => ['NameInRequest']);
-  has SpliceEventId => (is => 'ro', isa => 'Int', request_name => 'spliceEventId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaLive::Types qw//;
+  has Duration => (is => 'ro', isa => Int);
+  has SpliceEventId => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SpliceEventId' => 1
+                  },
+  'NameInRequest' => {
+                       'Duration' => 'duration',
+                       'SpliceEventId' => 'spliceEventId'
+                     },
+  'types' => {
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'SpliceEventId' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

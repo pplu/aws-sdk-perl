@@ -1,10 +1,34 @@
 
 package Paws::SESv2::CreateDeliverabilityTestReportResponse;
-  use Moose;
-  has DeliverabilityTestStatus => (is => 'ro', isa => 'Str', required => 1);
-  has ReportId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw//;
+  has DeliverabilityTestStatus => (is => 'ro', isa => Str, required => 1);
+  has ReportId => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeliverabilityTestStatus' => {
+                                               'type' => 'Str'
+                                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ReportId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'ReportId' => 1,
+                    'DeliverabilityTestStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

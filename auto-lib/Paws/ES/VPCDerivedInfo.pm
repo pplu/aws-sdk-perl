@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ES::VPCDerivedInfo;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has VPCId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ES::Types qw//;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has VPCId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'VPCId' => {
+                            'type' => 'Str'
+                          },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

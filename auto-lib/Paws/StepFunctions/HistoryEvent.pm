@@ -1,41 +1,238 @@
+# Generated from default/object.tt
 package Paws::StepFunctions::HistoryEvent;
-  use Moose;
-  has ActivityFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::ActivityFailedEventDetails', request_name => 'activityFailedEventDetails', traits => ['NameInRequest']);
-  has ActivityScheduledEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::ActivityScheduledEventDetails', request_name => 'activityScheduledEventDetails', traits => ['NameInRequest']);
-  has ActivityScheduleFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::ActivityScheduleFailedEventDetails', request_name => 'activityScheduleFailedEventDetails', traits => ['NameInRequest']);
-  has ActivityStartedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::ActivityStartedEventDetails', request_name => 'activityStartedEventDetails', traits => ['NameInRequest']);
-  has ActivitySucceededEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::ActivitySucceededEventDetails', request_name => 'activitySucceededEventDetails', traits => ['NameInRequest']);
-  has ActivityTimedOutEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::ActivityTimedOutEventDetails', request_name => 'activityTimedOutEventDetails', traits => ['NameInRequest']);
-  has ExecutionAbortedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::ExecutionAbortedEventDetails', request_name => 'executionAbortedEventDetails', traits => ['NameInRequest']);
-  has ExecutionFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::ExecutionFailedEventDetails', request_name => 'executionFailedEventDetails', traits => ['NameInRequest']);
-  has ExecutionStartedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::ExecutionStartedEventDetails', request_name => 'executionStartedEventDetails', traits => ['NameInRequest']);
-  has ExecutionSucceededEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::ExecutionSucceededEventDetails', request_name => 'executionSucceededEventDetails', traits => ['NameInRequest']);
-  has ExecutionTimedOutEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::ExecutionTimedOutEventDetails', request_name => 'executionTimedOutEventDetails', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Int', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has LambdaFunctionFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::LambdaFunctionFailedEventDetails', request_name => 'lambdaFunctionFailedEventDetails', traits => ['NameInRequest']);
-  has LambdaFunctionScheduledEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::LambdaFunctionScheduledEventDetails', request_name => 'lambdaFunctionScheduledEventDetails', traits => ['NameInRequest']);
-  has LambdaFunctionScheduleFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::LambdaFunctionScheduleFailedEventDetails', request_name => 'lambdaFunctionScheduleFailedEventDetails', traits => ['NameInRequest']);
-  has LambdaFunctionStartFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::LambdaFunctionStartFailedEventDetails', request_name => 'lambdaFunctionStartFailedEventDetails', traits => ['NameInRequest']);
-  has LambdaFunctionSucceededEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::LambdaFunctionSucceededEventDetails', request_name => 'lambdaFunctionSucceededEventDetails', traits => ['NameInRequest']);
-  has LambdaFunctionTimedOutEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::LambdaFunctionTimedOutEventDetails', request_name => 'lambdaFunctionTimedOutEventDetails', traits => ['NameInRequest']);
-  has MapIterationAbortedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::MapIterationEventDetails', request_name => 'mapIterationAbortedEventDetails', traits => ['NameInRequest']);
-  has MapIterationFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::MapIterationEventDetails', request_name => 'mapIterationFailedEventDetails', traits => ['NameInRequest']);
-  has MapIterationStartedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::MapIterationEventDetails', request_name => 'mapIterationStartedEventDetails', traits => ['NameInRequest']);
-  has MapIterationSucceededEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::MapIterationEventDetails', request_name => 'mapIterationSucceededEventDetails', traits => ['NameInRequest']);
-  has MapStateStartedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::MapStateStartedEventDetails', request_name => 'mapStateStartedEventDetails', traits => ['NameInRequest']);
-  has PreviousEventId => (is => 'ro', isa => 'Int', request_name => 'previousEventId', traits => ['NameInRequest']);
-  has StateEnteredEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::StateEnteredEventDetails', request_name => 'stateEnteredEventDetails', traits => ['NameInRequest']);
-  has StateExitedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::StateExitedEventDetails', request_name => 'stateExitedEventDetails', traits => ['NameInRequest']);
-  has TaskFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskFailedEventDetails', request_name => 'taskFailedEventDetails', traits => ['NameInRequest']);
-  has TaskScheduledEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskScheduledEventDetails', request_name => 'taskScheduledEventDetails', traits => ['NameInRequest']);
-  has TaskStartedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskStartedEventDetails', request_name => 'taskStartedEventDetails', traits => ['NameInRequest']);
-  has TaskStartFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskStartFailedEventDetails', request_name => 'taskStartFailedEventDetails', traits => ['NameInRequest']);
-  has TaskSubmitFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskSubmitFailedEventDetails', request_name => 'taskSubmitFailedEventDetails', traits => ['NameInRequest']);
-  has TaskSubmittedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskSubmittedEventDetails', request_name => 'taskSubmittedEventDetails', traits => ['NameInRequest']);
-  has TaskSucceededEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskSucceededEventDetails', request_name => 'taskSucceededEventDetails', traits => ['NameInRequest']);
-  has TaskTimedOutEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::TaskTimedOutEventDetails', request_name => 'taskTimedOutEventDetails', traits => ['NameInRequest']);
-  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::StepFunctions::Types qw/StepFunctions_MapIterationEventDetails StepFunctions_TaskScheduledEventDetails StepFunctions_StateExitedEventDetails StepFunctions_ActivityScheduleFailedEventDetails StepFunctions_MapStateStartedEventDetails StepFunctions_TaskTimedOutEventDetails StepFunctions_LambdaFunctionScheduledEventDetails StepFunctions_TaskSubmitFailedEventDetails StepFunctions_ActivityTimedOutEventDetails StepFunctions_ExecutionStartedEventDetails StepFunctions_ExecutionTimedOutEventDetails StepFunctions_TaskSubmittedEventDetails StepFunctions_ExecutionSucceededEventDetails StepFunctions_LambdaFunctionFailedEventDetails StepFunctions_LambdaFunctionScheduleFailedEventDetails StepFunctions_TaskFailedEventDetails StepFunctions_ActivityScheduledEventDetails StepFunctions_ExecutionFailedEventDetails StepFunctions_LambdaFunctionSucceededEventDetails StepFunctions_StateEnteredEventDetails StepFunctions_LambdaFunctionTimedOutEventDetails StepFunctions_ActivityStartedEventDetails StepFunctions_TaskStartFailedEventDetails StepFunctions_ExecutionAbortedEventDetails StepFunctions_ActivitySucceededEventDetails StepFunctions_TaskSucceededEventDetails StepFunctions_LambdaFunctionStartFailedEventDetails StepFunctions_TaskStartedEventDetails StepFunctions_ActivityFailedEventDetails/;
+  has ActivityFailedEventDetails => (is => 'ro', isa => StepFunctions_ActivityFailedEventDetails);
+  has ActivityScheduledEventDetails => (is => 'ro', isa => StepFunctions_ActivityScheduledEventDetails);
+  has ActivityScheduleFailedEventDetails => (is => 'ro', isa => StepFunctions_ActivityScheduleFailedEventDetails);
+  has ActivityStartedEventDetails => (is => 'ro', isa => StepFunctions_ActivityStartedEventDetails);
+  has ActivitySucceededEventDetails => (is => 'ro', isa => StepFunctions_ActivitySucceededEventDetails);
+  has ActivityTimedOutEventDetails => (is => 'ro', isa => StepFunctions_ActivityTimedOutEventDetails);
+  has ExecutionAbortedEventDetails => (is => 'ro', isa => StepFunctions_ExecutionAbortedEventDetails);
+  has ExecutionFailedEventDetails => (is => 'ro', isa => StepFunctions_ExecutionFailedEventDetails);
+  has ExecutionStartedEventDetails => (is => 'ro', isa => StepFunctions_ExecutionStartedEventDetails);
+  has ExecutionSucceededEventDetails => (is => 'ro', isa => StepFunctions_ExecutionSucceededEventDetails);
+  has ExecutionTimedOutEventDetails => (is => 'ro', isa => StepFunctions_ExecutionTimedOutEventDetails);
+  has Id => (is => 'ro', isa => Int, required => 1);
+  has LambdaFunctionFailedEventDetails => (is => 'ro', isa => StepFunctions_LambdaFunctionFailedEventDetails);
+  has LambdaFunctionScheduledEventDetails => (is => 'ro', isa => StepFunctions_LambdaFunctionScheduledEventDetails);
+  has LambdaFunctionScheduleFailedEventDetails => (is => 'ro', isa => StepFunctions_LambdaFunctionScheduleFailedEventDetails);
+  has LambdaFunctionStartFailedEventDetails => (is => 'ro', isa => StepFunctions_LambdaFunctionStartFailedEventDetails);
+  has LambdaFunctionSucceededEventDetails => (is => 'ro', isa => StepFunctions_LambdaFunctionSucceededEventDetails);
+  has LambdaFunctionTimedOutEventDetails => (is => 'ro', isa => StepFunctions_LambdaFunctionTimedOutEventDetails);
+  has MapIterationAbortedEventDetails => (is => 'ro', isa => StepFunctions_MapIterationEventDetails);
+  has MapIterationFailedEventDetails => (is => 'ro', isa => StepFunctions_MapIterationEventDetails);
+  has MapIterationStartedEventDetails => (is => 'ro', isa => StepFunctions_MapIterationEventDetails);
+  has MapIterationSucceededEventDetails => (is => 'ro', isa => StepFunctions_MapIterationEventDetails);
+  has MapStateStartedEventDetails => (is => 'ro', isa => StepFunctions_MapStateStartedEventDetails);
+  has PreviousEventId => (is => 'ro', isa => Int);
+  has StateEnteredEventDetails => (is => 'ro', isa => StepFunctions_StateEnteredEventDetails);
+  has StateExitedEventDetails => (is => 'ro', isa => StepFunctions_StateExitedEventDetails);
+  has TaskFailedEventDetails => (is => 'ro', isa => StepFunctions_TaskFailedEventDetails);
+  has TaskScheduledEventDetails => (is => 'ro', isa => StepFunctions_TaskScheduledEventDetails);
+  has TaskStartedEventDetails => (is => 'ro', isa => StepFunctions_TaskStartedEventDetails);
+  has TaskStartFailedEventDetails => (is => 'ro', isa => StepFunctions_TaskStartFailedEventDetails);
+  has TaskSubmitFailedEventDetails => (is => 'ro', isa => StepFunctions_TaskSubmitFailedEventDetails);
+  has TaskSubmittedEventDetails => (is => 'ro', isa => StepFunctions_TaskSubmittedEventDetails);
+  has TaskSucceededEventDetails => (is => 'ro', isa => StepFunctions_TaskSucceededEventDetails);
+  has TaskTimedOutEventDetails => (is => 'ro', isa => StepFunctions_TaskTimedOutEventDetails);
+  has Timestamp => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Id' => 1,
+                    'Timestamp' => 1
+                  },
+  'NameInRequest' => {
+                       'LambdaFunctionStartFailedEventDetails' => 'lambdaFunctionStartFailedEventDetails',
+                       'MapIterationSucceededEventDetails' => 'mapIterationSucceededEventDetails',
+                       'StateEnteredEventDetails' => 'stateEnteredEventDetails',
+                       'ActivityStartedEventDetails' => 'activityStartedEventDetails',
+                       'TaskSubmitFailedEventDetails' => 'taskSubmitFailedEventDetails',
+                       'ExecutionStartedEventDetails' => 'executionStartedEventDetails',
+                       'ActivityTimedOutEventDetails' => 'activityTimedOutEventDetails',
+                       'LambdaFunctionScheduledEventDetails' => 'lambdaFunctionScheduledEventDetails',
+                       'LambdaFunctionFailedEventDetails' => 'lambdaFunctionFailedEventDetails',
+                       'StateExitedEventDetails' => 'stateExitedEventDetails',
+                       'ExecutionAbortedEventDetails' => 'executionAbortedEventDetails',
+                       'MapIterationStartedEventDetails' => 'mapIterationStartedEventDetails',
+                       'ActivitySucceededEventDetails' => 'activitySucceededEventDetails',
+                       'TaskSucceededEventDetails' => 'taskSucceededEventDetails',
+                       'ExecutionFailedEventDetails' => 'executionFailedEventDetails',
+                       'TaskStartFailedEventDetails' => 'taskStartFailedEventDetails',
+                       'LambdaFunctionScheduleFailedEventDetails' => 'lambdaFunctionScheduleFailedEventDetails',
+                       'ActivityFailedEventDetails' => 'activityFailedEventDetails',
+                       'Timestamp' => 'timestamp',
+                       'Id' => 'id',
+                       'ActivityScheduledEventDetails' => 'activityScheduledEventDetails',
+                       'LambdaFunctionTimedOutEventDetails' => 'lambdaFunctionTimedOutEventDetails',
+                       'ExecutionSucceededEventDetails' => 'executionSucceededEventDetails',
+                       'TaskTimedOutEventDetails' => 'taskTimedOutEventDetails',
+                       'ActivityScheduleFailedEventDetails' => 'activityScheduleFailedEventDetails',
+                       'PreviousEventId' => 'previousEventId',
+                       'ExecutionTimedOutEventDetails' => 'executionTimedOutEventDetails',
+                       'Type' => 'type',
+                       'TaskStartedEventDetails' => 'taskStartedEventDetails',
+                       'MapStateStartedEventDetails' => 'mapStateStartedEventDetails',
+                       'TaskSubmittedEventDetails' => 'taskSubmittedEventDetails',
+                       'TaskScheduledEventDetails' => 'taskScheduledEventDetails',
+                       'TaskFailedEventDetails' => 'taskFailedEventDetails',
+                       'MapIterationFailedEventDetails' => 'mapIterationFailedEventDetails',
+                       'MapIterationAbortedEventDetails' => 'mapIterationAbortedEventDetails',
+                       'LambdaFunctionSucceededEventDetails' => 'lambdaFunctionSucceededEventDetails'
+                     },
+  'types' => {
+               'TaskStartedEventDetails' => {
+                                              'type' => 'StepFunctions_TaskStartedEventDetails',
+                                              'class' => 'Paws::StepFunctions::TaskStartedEventDetails'
+                                            },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ExecutionTimedOutEventDetails' => {
+                                                    'class' => 'Paws::StepFunctions::ExecutionTimedOutEventDetails',
+                                                    'type' => 'StepFunctions_ExecutionTimedOutEventDetails'
+                                                  },
+               'PreviousEventId' => {
+                                      'type' => 'Int'
+                                    },
+               'ActivityScheduleFailedEventDetails' => {
+                                                         'class' => 'Paws::StepFunctions::ActivityScheduleFailedEventDetails',
+                                                         'type' => 'StepFunctions_ActivityScheduleFailedEventDetails'
+                                                       },
+               'ExecutionSucceededEventDetails' => {
+                                                     'type' => 'StepFunctions_ExecutionSucceededEventDetails',
+                                                     'class' => 'Paws::StepFunctions::ExecutionSucceededEventDetails'
+                                                   },
+               'TaskTimedOutEventDetails' => {
+                                               'type' => 'StepFunctions_TaskTimedOutEventDetails',
+                                               'class' => 'Paws::StepFunctions::TaskTimedOutEventDetails'
+                                             },
+               'Id' => {
+                         'type' => 'Int'
+                       },
+               'ActivityScheduledEventDetails' => {
+                                                    'type' => 'StepFunctions_ActivityScheduledEventDetails',
+                                                    'class' => 'Paws::StepFunctions::ActivityScheduledEventDetails'
+                                                  },
+               'LambdaFunctionTimedOutEventDetails' => {
+                                                         'type' => 'StepFunctions_LambdaFunctionTimedOutEventDetails',
+                                                         'class' => 'Paws::StepFunctions::LambdaFunctionTimedOutEventDetails'
+                                                       },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'ActivityFailedEventDetails' => {
+                                                 'class' => 'Paws::StepFunctions::ActivityFailedEventDetails',
+                                                 'type' => 'StepFunctions_ActivityFailedEventDetails'
+                                               },
+               'LambdaFunctionScheduleFailedEventDetails' => {
+                                                               'class' => 'Paws::StepFunctions::LambdaFunctionScheduleFailedEventDetails',
+                                                               'type' => 'StepFunctions_LambdaFunctionScheduleFailedEventDetails'
+                                                             },
+               'LambdaFunctionSucceededEventDetails' => {
+                                                          'type' => 'StepFunctions_LambdaFunctionSucceededEventDetails',
+                                                          'class' => 'Paws::StepFunctions::LambdaFunctionSucceededEventDetails'
+                                                        },
+               'MapIterationAbortedEventDetails' => {
+                                                      'class' => 'Paws::StepFunctions::MapIterationEventDetails',
+                                                      'type' => 'StepFunctions_MapIterationEventDetails'
+                                                    },
+               'MapIterationFailedEventDetails' => {
+                                                     'type' => 'StepFunctions_MapIterationEventDetails',
+                                                     'class' => 'Paws::StepFunctions::MapIterationEventDetails'
+                                                   },
+               'TaskFailedEventDetails' => {
+                                             'type' => 'StepFunctions_TaskFailedEventDetails',
+                                             'class' => 'Paws::StepFunctions::TaskFailedEventDetails'
+                                           },
+               'TaskScheduledEventDetails' => {
+                                                'type' => 'StepFunctions_TaskScheduledEventDetails',
+                                                'class' => 'Paws::StepFunctions::TaskScheduledEventDetails'
+                                              },
+               'TaskSubmittedEventDetails' => {
+                                                'type' => 'StepFunctions_TaskSubmittedEventDetails',
+                                                'class' => 'Paws::StepFunctions::TaskSubmittedEventDetails'
+                                              },
+               'MapStateStartedEventDetails' => {
+                                                  'type' => 'StepFunctions_MapStateStartedEventDetails',
+                                                  'class' => 'Paws::StepFunctions::MapStateStartedEventDetails'
+                                                },
+               'ActivityTimedOutEventDetails' => {
+                                                   'class' => 'Paws::StepFunctions::ActivityTimedOutEventDetails',
+                                                   'type' => 'StepFunctions_ActivityTimedOutEventDetails'
+                                                 },
+               'ExecutionStartedEventDetails' => {
+                                                   'type' => 'StepFunctions_ExecutionStartedEventDetails',
+                                                   'class' => 'Paws::StepFunctions::ExecutionStartedEventDetails'
+                                                 },
+               'TaskSubmitFailedEventDetails' => {
+                                                   'class' => 'Paws::StepFunctions::TaskSubmitFailedEventDetails',
+                                                   'type' => 'StepFunctions_TaskSubmitFailedEventDetails'
+                                                 },
+               'ActivityStartedEventDetails' => {
+                                                  'type' => 'StepFunctions_ActivityStartedEventDetails',
+                                                  'class' => 'Paws::StepFunctions::ActivityStartedEventDetails'
+                                                },
+               'StateEnteredEventDetails' => {
+                                               'class' => 'Paws::StepFunctions::StateEnteredEventDetails',
+                                               'type' => 'StepFunctions_StateEnteredEventDetails'
+                                             },
+               'MapIterationSucceededEventDetails' => {
+                                                        'class' => 'Paws::StepFunctions::MapIterationEventDetails',
+                                                        'type' => 'StepFunctions_MapIterationEventDetails'
+                                                      },
+               'LambdaFunctionStartFailedEventDetails' => {
+                                                            'type' => 'StepFunctions_LambdaFunctionStartFailedEventDetails',
+                                                            'class' => 'Paws::StepFunctions::LambdaFunctionStartFailedEventDetails'
+                                                          },
+               'TaskStartFailedEventDetails' => {
+                                                  'class' => 'Paws::StepFunctions::TaskStartFailedEventDetails',
+                                                  'type' => 'StepFunctions_TaskStartFailedEventDetails'
+                                                },
+               'TaskSucceededEventDetails' => {
+                                                'class' => 'Paws::StepFunctions::TaskSucceededEventDetails',
+                                                'type' => 'StepFunctions_TaskSucceededEventDetails'
+                                              },
+               'ExecutionFailedEventDetails' => {
+                                                  'class' => 'Paws::StepFunctions::ExecutionFailedEventDetails',
+                                                  'type' => 'StepFunctions_ExecutionFailedEventDetails'
+                                                },
+               'ActivitySucceededEventDetails' => {
+                                                    'class' => 'Paws::StepFunctions::ActivitySucceededEventDetails',
+                                                    'type' => 'StepFunctions_ActivitySucceededEventDetails'
+                                                  },
+               'MapIterationStartedEventDetails' => {
+                                                      'type' => 'StepFunctions_MapIterationEventDetails',
+                                                      'class' => 'Paws::StepFunctions::MapIterationEventDetails'
+                                                    },
+               'ExecutionAbortedEventDetails' => {
+                                                   'type' => 'StepFunctions_ExecutionAbortedEventDetails',
+                                                   'class' => 'Paws::StepFunctions::ExecutionAbortedEventDetails'
+                                                 },
+               'StateExitedEventDetails' => {
+                                              'class' => 'Paws::StepFunctions::StateExitedEventDetails',
+                                              'type' => 'StepFunctions_StateExitedEventDetails'
+                                            },
+               'LambdaFunctionFailedEventDetails' => {
+                                                       'type' => 'StepFunctions_LambdaFunctionFailedEventDetails',
+                                                       'class' => 'Paws::StepFunctions::LambdaFunctionFailedEventDetails'
+                                                     },
+               'LambdaFunctionScheduledEventDetails' => {
+                                                          'type' => 'StepFunctions_LambdaFunctionScheduledEventDetails',
+                                                          'class' => 'Paws::StepFunctions::LambdaFunctionScheduledEventDetails'
+                                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,58 +268,58 @@ Contains details about the events of an execution.
 =head1 ATTRIBUTES
 
 
-=head2 ActivityFailedEventDetails => L<Paws::StepFunctions::ActivityFailedEventDetails>
+=head2 ActivityFailedEventDetails => StepFunctions_ActivityFailedEventDetails
 
   
 
 
-=head2 ActivityScheduledEventDetails => L<Paws::StepFunctions::ActivityScheduledEventDetails>
+=head2 ActivityScheduledEventDetails => StepFunctions_ActivityScheduledEventDetails
 
   
 
 
-=head2 ActivityScheduleFailedEventDetails => L<Paws::StepFunctions::ActivityScheduleFailedEventDetails>
+=head2 ActivityScheduleFailedEventDetails => StepFunctions_ActivityScheduleFailedEventDetails
 
   Contains details about an activity schedule event that failed during an
 execution.
 
 
-=head2 ActivityStartedEventDetails => L<Paws::StepFunctions::ActivityStartedEventDetails>
+=head2 ActivityStartedEventDetails => StepFunctions_ActivityStartedEventDetails
 
   
 
 
-=head2 ActivitySucceededEventDetails => L<Paws::StepFunctions::ActivitySucceededEventDetails>
+=head2 ActivitySucceededEventDetails => StepFunctions_ActivitySucceededEventDetails
 
   
 
 
-=head2 ActivityTimedOutEventDetails => L<Paws::StepFunctions::ActivityTimedOutEventDetails>
+=head2 ActivityTimedOutEventDetails => StepFunctions_ActivityTimedOutEventDetails
 
   
 
 
-=head2 ExecutionAbortedEventDetails => L<Paws::StepFunctions::ExecutionAbortedEventDetails>
+=head2 ExecutionAbortedEventDetails => StepFunctions_ExecutionAbortedEventDetails
 
   
 
 
-=head2 ExecutionFailedEventDetails => L<Paws::StepFunctions::ExecutionFailedEventDetails>
+=head2 ExecutionFailedEventDetails => StepFunctions_ExecutionFailedEventDetails
 
   
 
 
-=head2 ExecutionStartedEventDetails => L<Paws::StepFunctions::ExecutionStartedEventDetails>
+=head2 ExecutionStartedEventDetails => StepFunctions_ExecutionStartedEventDetails
 
   
 
 
-=head2 ExecutionSucceededEventDetails => L<Paws::StepFunctions::ExecutionSucceededEventDetails>
+=head2 ExecutionSucceededEventDetails => StepFunctions_ExecutionSucceededEventDetails
 
   
 
 
-=head2 ExecutionTimedOutEventDetails => L<Paws::StepFunctions::ExecutionTimedOutEventDetails>
+=head2 ExecutionTimedOutEventDetails => StepFunctions_ExecutionTimedOutEventDetails
 
   
 
@@ -132,59 +329,59 @@ execution.
   The id of the event. Events are numbered sequentially, starting at one.
 
 
-=head2 LambdaFunctionFailedEventDetails => L<Paws::StepFunctions::LambdaFunctionFailedEventDetails>
+=head2 LambdaFunctionFailedEventDetails => StepFunctions_LambdaFunctionFailedEventDetails
 
   
 
 
-=head2 LambdaFunctionScheduledEventDetails => L<Paws::StepFunctions::LambdaFunctionScheduledEventDetails>
+=head2 LambdaFunctionScheduledEventDetails => StepFunctions_LambdaFunctionScheduledEventDetails
 
   
 
 
-=head2 LambdaFunctionScheduleFailedEventDetails => L<Paws::StepFunctions::LambdaFunctionScheduleFailedEventDetails>
+=head2 LambdaFunctionScheduleFailedEventDetails => StepFunctions_LambdaFunctionScheduleFailedEventDetails
 
   
 
 
-=head2 LambdaFunctionStartFailedEventDetails => L<Paws::StepFunctions::LambdaFunctionStartFailedEventDetails>
+=head2 LambdaFunctionStartFailedEventDetails => StepFunctions_LambdaFunctionStartFailedEventDetails
 
   Contains details about a lambda function that failed to start during an
 execution.
 
 
-=head2 LambdaFunctionSucceededEventDetails => L<Paws::StepFunctions::LambdaFunctionSucceededEventDetails>
+=head2 LambdaFunctionSucceededEventDetails => StepFunctions_LambdaFunctionSucceededEventDetails
 
   Contains details about a lambda function that terminated successfully
 during an execution.
 
 
-=head2 LambdaFunctionTimedOutEventDetails => L<Paws::StepFunctions::LambdaFunctionTimedOutEventDetails>
+=head2 LambdaFunctionTimedOutEventDetails => StepFunctions_LambdaFunctionTimedOutEventDetails
 
   
 
 
-=head2 MapIterationAbortedEventDetails => L<Paws::StepFunctions::MapIterationEventDetails>
+=head2 MapIterationAbortedEventDetails => StepFunctions_MapIterationEventDetails
 
   Contains details about an iteration of a Map state that was aborted.
 
 
-=head2 MapIterationFailedEventDetails => L<Paws::StepFunctions::MapIterationEventDetails>
+=head2 MapIterationFailedEventDetails => StepFunctions_MapIterationEventDetails
 
   Contains details about an iteration of a Map state that failed.
 
 
-=head2 MapIterationStartedEventDetails => L<Paws::StepFunctions::MapIterationEventDetails>
+=head2 MapIterationStartedEventDetails => StepFunctions_MapIterationEventDetails
 
   Contains details about an iteration of a Map state that was started.
 
 
-=head2 MapIterationSucceededEventDetails => L<Paws::StepFunctions::MapIterationEventDetails>
+=head2 MapIterationSucceededEventDetails => StepFunctions_MapIterationEventDetails
 
   Contains details about an iteration of a Map state that succeeded.
 
 
-=head2 MapStateStartedEventDetails => L<Paws::StepFunctions::MapStateStartedEventDetails>
+=head2 MapStateStartedEventDetails => StepFunctions_MapStateStartedEventDetails
 
   Contains details about Map state that was started.
 
@@ -194,52 +391,52 @@ during an execution.
   The id of the previous event.
 
 
-=head2 StateEnteredEventDetails => L<Paws::StepFunctions::StateEnteredEventDetails>
+=head2 StateEnteredEventDetails => StepFunctions_StateEnteredEventDetails
 
   
 
 
-=head2 StateExitedEventDetails => L<Paws::StepFunctions::StateExitedEventDetails>
+=head2 StateExitedEventDetails => StepFunctions_StateExitedEventDetails
 
   
 
 
-=head2 TaskFailedEventDetails => L<Paws::StepFunctions::TaskFailedEventDetails>
+=head2 TaskFailedEventDetails => StepFunctions_TaskFailedEventDetails
 
   Contains details about the failure of a task.
 
 
-=head2 TaskScheduledEventDetails => L<Paws::StepFunctions::TaskScheduledEventDetails>
+=head2 TaskScheduledEventDetails => StepFunctions_TaskScheduledEventDetails
 
   Contains details about a task that was scheduled.
 
 
-=head2 TaskStartedEventDetails => L<Paws::StepFunctions::TaskStartedEventDetails>
+=head2 TaskStartedEventDetails => StepFunctions_TaskStartedEventDetails
 
   Contains details about a task that was started.
 
 
-=head2 TaskStartFailedEventDetails => L<Paws::StepFunctions::TaskStartFailedEventDetails>
+=head2 TaskStartFailedEventDetails => StepFunctions_TaskStartFailedEventDetails
 
   Contains details about a task that failed to start.
 
 
-=head2 TaskSubmitFailedEventDetails => L<Paws::StepFunctions::TaskSubmitFailedEventDetails>
+=head2 TaskSubmitFailedEventDetails => StepFunctions_TaskSubmitFailedEventDetails
 
   Contains details about a task that where the submit failed.
 
 
-=head2 TaskSubmittedEventDetails => L<Paws::StepFunctions::TaskSubmittedEventDetails>
+=head2 TaskSubmittedEventDetails => StepFunctions_TaskSubmittedEventDetails
 
   Contains details about a submitted task.
 
 
-=head2 TaskSucceededEventDetails => L<Paws::StepFunctions::TaskSucceededEventDetails>
+=head2 TaskSucceededEventDetails => StepFunctions_TaskSucceededEventDetails
 
   Contains details about a task that succeeded.
 
 
-=head2 TaskTimedOutEventDetails => L<Paws::StepFunctions::TaskTimedOutEventDetails>
+=head2 TaskTimedOutEventDetails => StepFunctions_TaskTimedOutEventDetails
 
   Contains details about a task that timed out.
 

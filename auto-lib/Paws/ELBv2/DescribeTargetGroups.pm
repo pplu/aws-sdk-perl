@@ -1,17 +1,45 @@
+# Generated from callargs_class.tt
 
 package Paws::ELBv2::DescribeTargetGroups;
-  use Moose;
-  has LoadBalancerArn => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PageSize => (is => 'ro', isa => 'Int');
-  has TargetGroupArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int/;
+  use Paws::ELBv2::Types qw//;
+  has LoadBalancerArn => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has Names => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has TargetGroupArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTargetGroups');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELBv2::DescribeTargetGroupsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTargetGroupsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTargetGroups');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELBv2::DescribeTargetGroupsOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeTargetGroupsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerArn' => {
+                                      'type' => 'Str'
+                                    },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'TargetGroupArns' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'Names' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

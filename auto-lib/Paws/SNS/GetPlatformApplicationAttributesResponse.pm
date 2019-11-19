@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::SNS::GetPlatformApplicationAttributesResponse;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SNS::Types qw/SNS_MapStringToString/;
+  has Attributes => (is => 'ro', isa => SNS_MapStringToString);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::SNS::MapStringToString',
+                                 'type' => 'SNS_MapStringToString'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::SNS::GetPlatformApplicationAttributesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SNS::MapStringToString>
+=head2 Attributes => SNS_MapStringToString
 
 Attributes include the following:
 

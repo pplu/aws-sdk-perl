@@ -1,12 +1,55 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::Update;
-  use Moose;
-  has ConditionExpression => (is => 'ro', isa => 'Str');
-  has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
-  has ExpressionAttributeValues => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeValueMap');
-  has Key => (is => 'ro', isa => 'Paws::DynamoDB::Key', required => 1);
-  has ReturnValuesOnConditionCheckFailure => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
-  has UpdateExpression => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ExpressionAttributeNameMap DynamoDB_Key DynamoDB_ExpressionAttributeValueMap/;
+  has ConditionExpression => (is => 'ro', isa => Str);
+  has ExpressionAttributeNames => (is => 'ro', isa => DynamoDB_ExpressionAttributeNameMap);
+  has ExpressionAttributeValues => (is => 'ro', isa => DynamoDB_ExpressionAttributeValueMap);
+  has Key => (is => 'ro', isa => DynamoDB_Key, required => 1);
+  has ReturnValuesOnConditionCheckFailure => (is => 'ro', isa => Str);
+  has TableName => (is => 'ro', isa => Str, required => 1);
+  has UpdateExpression => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Key' => 1,
+                    'TableName' => 1,
+                    'UpdateExpression' => 1
+                  },
+  'types' => {
+               'ConditionExpression' => {
+                                          'type' => 'Str'
+                                        },
+               'ReturnValuesOnConditionCheckFailure' => {
+                                                          'type' => 'Str'
+                                                        },
+               'Key' => {
+                          'type' => 'DynamoDB_Key',
+                          'class' => 'Paws::DynamoDB::Key'
+                        },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'UpdateExpression' => {
+                                       'type' => 'Str'
+                                     },
+               'ExpressionAttributeNames' => {
+                                               'type' => 'DynamoDB_ExpressionAttributeNameMap',
+                                               'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap'
+                                             },
+               'ExpressionAttributeValues' => {
+                                                'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
+                                                'type' => 'DynamoDB_ExpressionAttributeValueMap'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,17 +91,17 @@ Represents a request to perform an C<UpdateItem> operation.
 succeed.
 
 
-=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
+=head2 ExpressionAttributeNames => DynamoDB_ExpressionAttributeNameMap
 
   One or more substitution tokens for attribute names in an expression.
 
 
-=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
+=head2 ExpressionAttributeValues => DynamoDB_ExpressionAttributeValueMap
 
   One or more values that can be substituted in an expression.
 
 
-=head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
+=head2 B<REQUIRED> Key => DynamoDB_Key
 
   The primary key of the item to be updated. Each element consists of an
 attribute name and a value for that attribute.

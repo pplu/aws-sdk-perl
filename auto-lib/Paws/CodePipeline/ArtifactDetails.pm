@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ArtifactDetails;
-  use Moose;
-  has MaximumCount => (is => 'ro', isa => 'Int', request_name => 'maximumCount', traits => ['NameInRequest'], required => 1);
-  has MinimumCount => (is => 'ro', isa => 'Int', request_name => 'minimumCount', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::CodePipeline::Types qw//;
+  has MaximumCount => (is => 'ro', isa => Int, required => 1);
+  has MinimumCount => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaximumCount' => {
+                                   'type' => 'Int'
+                                 },
+               'MinimumCount' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'IsRequired' => {
+                    'MinimumCount' => 1,
+                    'MaximumCount' => 1
+                  },
+  'NameInRequest' => {
+                       'MinimumCount' => 'minimumCount',
+                       'MaximumCount' => 'maximumCount'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

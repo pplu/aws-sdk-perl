@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::ReplaceContentEntry;
-  use Moose;
-  has Content => (is => 'ro', isa => 'Str', request_name => 'content', traits => ['NameInRequest']);
-  has FileMode => (is => 'ro', isa => 'Str', request_name => 'fileMode', traits => ['NameInRequest']);
-  has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest'], required => 1);
-  has ReplacementType => (is => 'ro', isa => 'Str', request_name => 'replacementType', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has Content => (is => 'ro', isa => Str);
+  has FileMode => (is => 'ro', isa => Str);
+  has FilePath => (is => 'ro', isa => Str, required => 1);
+  has ReplacementType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileMode' => {
+                               'type' => 'Str'
+                             },
+               'FilePath' => {
+                               'type' => 'Str'
+                             },
+               'ReplacementType' => {
+                                      'type' => 'Str'
+                                    },
+               'Content' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'ReplacementType' => 'replacementType',
+                       'Content' => 'content',
+                       'FilePath' => 'filePath',
+                       'FileMode' => 'fileMode'
+                     },
+  'IsRequired' => {
+                    'ReplacementType' => 1,
+                    'FilePath' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

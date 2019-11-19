@@ -1,19 +1,68 @@
 
 package Paws::DataExchange::CreateDataSetResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has AssetType => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Origin => (is => 'ro', isa => 'Str');
-  has OriginDetails => (is => 'ro', isa => 'Paws::DataExchange::OriginDetails');
-  has SourceId => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::DataExchange::MapOf__string');
-  has UpdatedAt => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw/DataExchange_OriginDetails DataExchange_MapOf__string/;
+  has Arn => (is => 'ro', isa => Str);
+  has AssetType => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Origin => (is => 'ro', isa => Str);
+  has OriginDetails => (is => 'ro', isa => DataExchange_OriginDetails);
+  has SourceId => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => DataExchange_MapOf__string);
+  has UpdatedAt => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::DataExchange::MapOf__string',
+                           'type' => 'DataExchange_MapOf__string'
+                         },
+               'AssetType' => {
+                                'type' => 'Str'
+                              },
+               'Origin' => {
+                             'type' => 'Str'
+                           },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'OriginDetails' => {
+                                    'type' => 'DataExchange_OriginDetails',
+                                    'class' => 'Paws::DataExchange::OriginDetails'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'SourceId' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +111,7 @@ A property that defines the data set as OWNED by the account (for
 providers) or ENTITLED to the account (for subscribers).
 
 Valid values are: C<"OWNED">, C<"ENTITLED">
-=head2 OriginDetails => L<Paws::DataExchange::OriginDetails>
+=head2 OriginDetails => DataExchange_OriginDetails
 
 If the origin of this data set is ENTITLED, includes the details for
 the product on AWS Marketplace.
@@ -75,7 +124,7 @@ data set being viewed. This parameter is returned when a data set owner
 is viewing the entitled copy of its owned data set.
 
 
-=head2 Tags => L<Paws::DataExchange::MapOf__string>
+=head2 Tags => DataExchange_MapOf__string
 
 The tags for the data set.
 

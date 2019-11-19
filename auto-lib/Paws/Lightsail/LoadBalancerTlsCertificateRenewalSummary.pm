@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::Lightsail::LoadBalancerTlsCertificateRenewalSummary;
-  use Moose;
-  has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::LoadBalancerTlsCertificateDomainValidationOption]', request_name => 'domainValidationOptions', traits => ['NameInRequest']);
-  has RenewalStatus => (is => 'ro', isa => 'Str', request_name => 'renewalStatus', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Lightsail::Types qw/Lightsail_LoadBalancerTlsCertificateDomainValidationOption/;
+  has DomainValidationOptions => (is => 'ro', isa => ArrayRef[Lightsail_LoadBalancerTlsCertificateDomainValidationOption]);
+  has RenewalStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RenewalStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'DomainValidationOptions' => {
+                                              'class' => 'Paws::Lightsail::LoadBalancerTlsCertificateDomainValidationOption',
+                                              'type' => 'ArrayRef[Lightsail_LoadBalancerTlsCertificateDomainValidationOption]'
+                                            }
+             },
+  'NameInRequest' => {
+                       'DomainValidationOptions' => 'domainValidationOptions',
+                       'RenewalStatus' => 'renewalStatus'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +63,7 @@ for the certificate.
 =head1 ATTRIBUTES
 
 
-=head2 DomainValidationOptions => ArrayRef[L<Paws::Lightsail::LoadBalancerTlsCertificateDomainValidationOption>]
+=head2 DomainValidationOptions => ArrayRef[Lightsail_LoadBalancerTlsCertificateDomainValidationOption]
 
   Contains information about the validation of each domain name in the
 certificate, as it pertains to Lightsail's managed renewal. This is

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::EMR::EbsBlockDeviceConfig;
-  use Moose;
-  has VolumeSpecification => (is => 'ro', isa => 'Paws::EMR::VolumeSpecification', required => 1);
-  has VolumesPerInstance => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::EMR::Types qw/EMR_VolumeSpecification/;
+  has VolumeSpecification => (is => 'ro', isa => EMR_VolumeSpecification, required => 1);
+  has VolumesPerInstance => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'VolumeSpecification' => 1
+                  },
+  'types' => {
+               'VolumesPerInstance' => {
+                                         'type' => 'Int'
+                                       },
+               'VolumeSpecification' => {
+                                          'type' => 'EMR_VolumeSpecification',
+                                          'class' => 'Paws::EMR::VolumeSpecification'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ instance.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> VolumeSpecification => L<Paws::EMR::VolumeSpecification>
+=head2 B<REQUIRED> VolumeSpecification => EMR_VolumeSpecification
 
   EBS volume specifications such as volume type, IOPS, and size (GiB)
 that will be requested for the EBS volume attached to an EC2 instance

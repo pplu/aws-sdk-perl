@@ -1,9 +1,38 @@
 package Paws::EC2::PlacementGroup;
-  use Moose;
-  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
-  has PartitionCount => (is => 'ro', isa => 'Int', request_name => 'partitionCount', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Strategy => (is => 'ro', isa => 'Str', request_name => 'strategy', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw//;
+  has GroupName => (is => 'ro', isa => Str);
+  has PartitionCount => (is => 'ro', isa => Int);
+  has State => (is => 'ro', isa => Str);
+  has Strategy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PartitionCount' => 'partitionCount',
+                       'Strategy' => 'strategy',
+                       'GroupName' => 'groupName',
+                       'State' => 'state'
+                     },
+  'types' => {
+               'Strategy' => {
+                               'type' => 'Str'
+                             },
+               'PartitionCount' => {
+                                     'type' => 'Int'
+                                   },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'GroupName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

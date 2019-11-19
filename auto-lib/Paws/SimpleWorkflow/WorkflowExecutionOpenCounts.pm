@@ -1,10 +1,52 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::WorkflowExecutionOpenCounts;
-  use Moose;
-  has OpenActivityTasks => (is => 'ro', isa => 'Int', request_name => 'openActivityTasks', traits => ['NameInRequest'], required => 1);
-  has OpenChildWorkflowExecutions => (is => 'ro', isa => 'Int', request_name => 'openChildWorkflowExecutions', traits => ['NameInRequest'], required => 1);
-  has OpenDecisionTasks => (is => 'ro', isa => 'Int', request_name => 'openDecisionTasks', traits => ['NameInRequest'], required => 1);
-  has OpenLambdaFunctions => (is => 'ro', isa => 'Int', request_name => 'openLambdaFunctions', traits => ['NameInRequest']);
-  has OpenTimers => (is => 'ro', isa => 'Int', request_name => 'openTimers', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has OpenActivityTasks => (is => 'ro', isa => Int, required => 1);
+  has OpenChildWorkflowExecutions => (is => 'ro', isa => Int, required => 1);
+  has OpenDecisionTasks => (is => 'ro', isa => Int, required => 1);
+  has OpenLambdaFunctions => (is => 'ro', isa => Int);
+  has OpenTimers => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'OpenActivityTasks' => 1,
+                    'OpenTimers' => 1,
+                    'OpenDecisionTasks' => 1,
+                    'OpenChildWorkflowExecutions' => 1
+                  },
+  'NameInRequest' => {
+                       'OpenTimers' => 'openTimers',
+                       'OpenLambdaFunctions' => 'openLambdaFunctions',
+                       'OpenActivityTasks' => 'openActivityTasks',
+                       'OpenChildWorkflowExecutions' => 'openChildWorkflowExecutions',
+                       'OpenDecisionTasks' => 'openDecisionTasks'
+                     },
+  'types' => {
+               'OpenDecisionTasks' => {
+                                        'type' => 'Int'
+                                      },
+               'OpenChildWorkflowExecutions' => {
+                                                  'type' => 'Int'
+                                                },
+               'OpenActivityTasks' => {
+                                        'type' => 'Int'
+                                      },
+               'OpenLambdaFunctions' => {
+                                          'type' => 'Int'
+                                        },
+               'OpenTimers' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

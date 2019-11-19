@@ -1,7 +1,29 @@
 package Paws::EC2::ReservedInstancesModificationResult;
-  use Moose;
-  has ReservedInstancesId => (is => 'ro', isa => 'Str', request_name => 'reservedInstancesId', traits => ['NameInRequest']);
-  has TargetConfiguration => (is => 'ro', isa => 'Paws::EC2::ReservedInstancesConfiguration', request_name => 'targetConfiguration', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ReservedInstancesConfiguration/;
+  has ReservedInstancesId => (is => 'ro', isa => Str);
+  has TargetConfiguration => (is => 'ro', isa => EC2_ReservedInstancesConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TargetConfiguration' => 'targetConfiguration',
+                       'ReservedInstancesId' => 'reservedInstancesId'
+                     },
+  'types' => {
+               'TargetConfiguration' => {
+                                          'type' => 'EC2_ReservedInstancesConfiguration',
+                                          'class' => 'Paws::EC2::ReservedInstancesConfiguration'
+                                        },
+               'ReservedInstancesId' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +66,7 @@ modification request. This field is only available when the
 modification is fulfilled.
 
 
-=head2 TargetConfiguration => L<Paws::EC2::ReservedInstancesConfiguration>
+=head2 TargetConfiguration => EC2_ReservedInstancesConfiguration
 
   The target Reserved Instances configurations supplied as part of the
 modification request.

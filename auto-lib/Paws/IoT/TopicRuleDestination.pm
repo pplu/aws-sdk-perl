@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::IoT::TopicRuleDestination;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has HttpUrlProperties => (is => 'ro', isa => 'Paws::IoT::HttpUrlDestinationProperties', request_name => 'httpUrlProperties', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_HttpUrlDestinationProperties/;
+  has Arn => (is => 'ro', isa => Str);
+  has HttpUrlProperties => (is => 'ro', isa => IoT_HttpUrlDestinationProperties);
+  has Status => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'HttpUrlProperties' => {
+                                        'class' => 'Paws::IoT::HttpUrlDestinationProperties',
+                                        'type' => 'IoT_HttpUrlDestinationProperties'
+                                      },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'Status' => 'status',
+                       'StatusReason' => 'statusReason',
+                       'HttpUrlProperties' => 'httpUrlProperties'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +77,7 @@ A topic rule destination.
   The topic rule destination URL.
 
 
-=head2 HttpUrlProperties => L<Paws::IoT::HttpUrlDestinationProperties>
+=head2 HttpUrlProperties => IoT_HttpUrlDestinationProperties
 
   Properties of the HTTP URL.
 

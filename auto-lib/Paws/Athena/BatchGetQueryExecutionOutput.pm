@@ -1,10 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Athena::BatchGetQueryExecutionOutput;
-  use Moose;
-  has QueryExecutions => (is => 'ro', isa => 'ArrayRef[Paws::Athena::QueryExecution]');
-  has UnprocessedQueryExecutionIds => (is => 'ro', isa => 'ArrayRef[Paws::Athena::UnprocessedQueryExecutionId]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Athena::Types qw/Athena_UnprocessedQueryExecutionId Athena_QueryExecution/;
+  has QueryExecutions => (is => 'ro', isa => ArrayRef[Athena_QueryExecution]);
+  has UnprocessedQueryExecutionIds => (is => 'ro', isa => ArrayRef[Athena_UnprocessedQueryExecutionId]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UnprocessedQueryExecutionIds' => {
+                                                   'type' => 'ArrayRef[Athena_UnprocessedQueryExecutionId]',
+                                                   'class' => 'Paws::Athena::UnprocessedQueryExecutionId'
+                                                 },
+               'QueryExecutions' => {
+                                      'type' => 'ArrayRef[Athena_QueryExecution]',
+                                      'class' => 'Paws::Athena::QueryExecution'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,12 +38,12 @@ Paws::Athena::BatchGetQueryExecutionOutput
 =head1 ATTRIBUTES
 
 
-=head2 QueryExecutions => ArrayRef[L<Paws::Athena::QueryExecution>]
+=head2 QueryExecutions => ArrayRef[Athena_QueryExecution]
 
 Information about a query execution.
 
 
-=head2 UnprocessedQueryExecutionIds => ArrayRef[L<Paws::Athena::UnprocessedQueryExecutionId>]
+=head2 UnprocessedQueryExecutionIds => ArrayRef[Athena_UnprocessedQueryExecutionId]
 
 Information about the query executions that failed to run.
 

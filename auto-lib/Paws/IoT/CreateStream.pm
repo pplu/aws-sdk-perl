@@ -1,18 +1,61 @@
 
 package Paws::IoT::CreateStream;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Files => (is => 'ro', isa => 'ArrayRef[Paws::IoT::StreamFile]', traits => ['NameInRequest'], request_name => 'files', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
-  has StreamId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'streamId', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_Tag IoT_StreamFile/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Files => (is => 'ro', isa => ArrayRef[IoT_StreamFile], required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StreamId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoT_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStream');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/streams/{streamId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateStreamResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateStream');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/streams/{streamId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateStreamResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'Files' => 1,
+                    'StreamId' => 1
+                  },
+  'NameInRequest' => {
+                       'Files' => 'files',
+                       'RoleArn' => 'roleArn',
+                       'Tags' => 'tags',
+                       'Description' => 'description'
+                     },
+  'types' => {
+               'Files' => {
+                            'class' => 'Paws::IoT::StreamFile',
+                            'type' => 'ArrayRef[IoT_StreamFile]'
+                          },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'ArrayRef[IoT_Tag]',
+                           'class' => 'Paws::IoT::Tag'
+                         },
+               'StreamId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'StreamId' => 'streamId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +119,7 @@ A description of the stream.
 
 
 
-=head2 B<REQUIRED> Files => ArrayRef[L<Paws::IoT::StreamFile>]
+=head2 B<REQUIRED> Files => ArrayRef[IoT_StreamFile]
 
 The files to stream.
 
@@ -95,7 +138,7 @@ The stream ID.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+=head2 Tags => ArrayRef[IoT_Tag]
 
 Metadata which can be used to manage streams.
 

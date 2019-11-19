@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::PasswordPolicyType;
-  use Moose;
-  has MinimumLength => (is => 'ro', isa => 'Int');
-  has RequireLowercase => (is => 'ro', isa => 'Bool');
-  has RequireNumbers => (is => 'ro', isa => 'Bool');
-  has RequireSymbols => (is => 'ro', isa => 'Bool');
-  has RequireUppercase => (is => 'ro', isa => 'Bool');
-  has TemporaryPasswordValidityDays => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Bool/;
+  use Paws::CognitoIdp::Types qw//;
+  has MinimumLength => (is => 'ro', isa => Int);
+  has RequireLowercase => (is => 'ro', isa => Bool);
+  has RequireNumbers => (is => 'ro', isa => Bool);
+  has RequireSymbols => (is => 'ro', isa => Bool);
+  has RequireUppercase => (is => 'ro', isa => Bool);
+  has TemporaryPasswordValidityDays => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MinimumLength' => {
+                                    'type' => 'Int'
+                                  },
+               'TemporaryPasswordValidityDays' => {
+                                                    'type' => 'Int'
+                                                  },
+               'RequireUppercase' => {
+                                       'type' => 'Bool'
+                                     },
+               'RequireSymbols' => {
+                                     'type' => 'Bool'
+                                   },
+               'RequireNumbers' => {
+                                     'type' => 'Bool'
+                                   },
+               'RequireLowercase' => {
+                                       'type' => 'Bool'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

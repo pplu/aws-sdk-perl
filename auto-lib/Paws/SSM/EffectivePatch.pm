@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::SSM::EffectivePatch;
-  use Moose;
-  has Patch => (is => 'ro', isa => 'Paws::SSM::Patch');
-  has PatchStatus => (is => 'ro', isa => 'Paws::SSM::PatchStatus');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SSM::Types qw/SSM_Patch SSM_PatchStatus/;
+  has Patch => (is => 'ro', isa => SSM_Patch);
+  has PatchStatus => (is => 'ro', isa => SSM_PatchStatus);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Patch' => {
+                            'type' => 'SSM_Patch',
+                            'class' => 'Paws::SSM::Patch'
+                          },
+               'PatchStatus' => {
+                                  'type' => 'SSM_PatchStatus',
+                                  'class' => 'Paws::SSM::PatchStatus'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,14 +63,14 @@ or explicitly rejected and the date the patch was or will be approved.
 =head1 ATTRIBUTES
 
 
-=head2 Patch => L<Paws::SSM::Patch>
+=head2 Patch => SSM_Patch
 
   Provides metadata for a patch, including information such as the KB ID,
 severity, classification and a URL for where more information can be
 obtained about the patch.
 
 
-=head2 PatchStatus => L<Paws::SSM::PatchStatus>
+=head2 PatchStatus => SSM_PatchStatus
 
   The status of the patch in a patch baseline. This includes information
 about whether the patch is currently approved, due to be approved by a

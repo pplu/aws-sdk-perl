@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackSetOperationResultSummary;
-  use Moose;
-  has Account => (is => 'ro', isa => 'Str');
-  has AccountGateResult => (is => 'ro', isa => 'Paws::CloudFormation::AccountGateResult');
-  has Region => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusReason => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw/CloudFormation_AccountGateResult/;
+  has Account => (is => 'ro', isa => Str);
+  has AccountGateResult => (is => 'ro', isa => CloudFormation_AccountGateResult);
+  has Region => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Account' => {
+                              'type' => 'Str'
+                            },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'AccountGateResult' => {
+                                        'class' => 'Paws::CloudFormation::AccountGateResult',
+                                        'type' => 'CloudFormation_AccountGateResult'
+                                      },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +76,7 @@ results for a given account in a given region.
   The name of the AWS account for this operation result.
 
 
-=head2 AccountGateResult => L<Paws::CloudFormation::AccountGateResult>
+=head2 AccountGateResult => CloudFormation_AccountGateResult
 
   The results of the account gate function AWS CloudFormation invokes, if
 present, before proceeding with stack set operations in an account

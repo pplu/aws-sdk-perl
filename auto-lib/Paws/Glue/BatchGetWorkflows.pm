@@ -1,14 +1,36 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::BatchGetWorkflows;
-  use Moose;
-  has IncludeGraph => (is => 'ro', isa => 'Bool');
-  has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::Glue::Types qw//;
+  has IncludeGraph => (is => 'ro', isa => Bool, predicate => 1);
+  has Names => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchGetWorkflows');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::BatchGetWorkflowsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchGetWorkflows');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::BatchGetWorkflowsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Names' => 1
+                  },
+  'types' => {
+               'IncludeGraph' => {
+                                   'type' => 'Bool'
+                                 },
+               'Names' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

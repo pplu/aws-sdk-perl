@@ -1,13 +1,32 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::DeleteDBClusterEndpoint;
-  use Moose;
-  has DBClusterEndpointIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has DBClusterEndpointIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBClusterEndpoint');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterEndpoint');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBClusterEndpointResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteDBClusterEndpoint');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DBClusterEndpoint');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DeleteDBClusterEndpointResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'DBClusterEndpointIdentifier' => 1
+                  },
+  'types' => {
+               'DBClusterEndpointIdentifier' => {
+                                                  'type' => 'Str'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

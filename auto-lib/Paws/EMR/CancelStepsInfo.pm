@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::EMR::CancelStepsInfo;
-  use Moose;
-  has Reason => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StepId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw//;
+  has Reason => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StepId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StepId' => {
+                             'type' => 'Str'
+                           },
+               'Reason' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

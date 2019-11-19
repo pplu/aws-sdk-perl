@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::DescribeReplicationInstanceTaskLogsResponse;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has ReplicationInstanceArn => (is => 'ro', isa => 'Str');
-  has ReplicationInstanceTaskLogs => (is => 'ro', isa => 'ArrayRef[Paws::DMS::ReplicationInstanceTaskLog]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_ReplicationInstanceTaskLog/;
+  has Marker => (is => 'ro', isa => Str);
+  has ReplicationInstanceArn => (is => 'ro', isa => Str);
+  has ReplicationInstanceTaskLogs => (is => 'ro', isa => ArrayRef[DMS_ReplicationInstanceTaskLog]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationInstanceTaskLogs' => {
+                                                  'class' => 'Paws::DMS::ReplicationInstanceTaskLog',
+                                                  'type' => 'ArrayRef[DMS_ReplicationInstanceTaskLog]'
+                                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'ReplicationInstanceArn' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -28,7 +53,7 @@ marker, up to the value specified by C<MaxRecords>.
 The Amazon Resource Name (ARN) of the replication instance.
 
 
-=head2 ReplicationInstanceTaskLogs => ArrayRef[L<Paws::DMS::ReplicationInstanceTaskLog>]
+=head2 ReplicationInstanceTaskLogs => ArrayRef[DMS_ReplicationInstanceTaskLog]
 
 An array of replication task log metadata. Each member of the array
 contains the replication task name, ARN, and task log size (in bytes).

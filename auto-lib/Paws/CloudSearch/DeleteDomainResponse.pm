@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudSearch::DeleteDomainResponse;
-  use Moose;
-  has DomainStatus => (is => 'ro', isa => 'Paws::CloudSearch::DomainStatus');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearch::Types qw/CloudSearch_DomainStatus/;
+  has DomainStatus => (is => 'ro', isa => CloudSearch_DomainStatus);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DomainStatus' => {
+                                   'type' => 'CloudSearch_DomainStatus',
+                                   'class' => 'Paws::CloudSearch::DomainStatus'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::CloudSearch::DeleteDomainResponse
 =head1 ATTRIBUTES
 
 
-=head2 DomainStatus => L<Paws::CloudSearch::DomainStatus>
+=head2 DomainStatus => CloudSearch_DomainStatus
 
 
 

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Rekognition;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'rekognition' }
   sub signing_name { 'rekognition' }
   sub version { '2016-06-27' }
   sub target_prefix { 'RekognitionService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -299,9 +301,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 
 =over
 
-=item SourceImage => L<Paws::Rekognition::Image>
+=item SourceImage => Rekognition_Image
 
-=item TargetImage => L<Paws::Rekognition::Image>
+=item TargetImage => Rekognition_Image
 
 =item [SimilarityThreshold => Num]
 
@@ -393,15 +395,15 @@ C<rekognition:CreateCollection> action.
 
 =over
 
-=item Input => L<Paws::Rekognition::StreamProcessorInput>
+=item Input => Rekognition_StreamProcessorInput
 
 =item Name => Str
 
-=item Output => L<Paws::Rekognition::StreamProcessorOutput>
+=item Output => Rekognition_StreamProcessorOutput
 
 =item RoleArn => Str
 
-=item Settings => L<Paws::Rekognition::StreamProcessorSettings>
+=item Settings => Rekognition_StreamProcessorSettings
 
 
 =back
@@ -538,7 +540,7 @@ performed, and the current status of the stream processor.
 
 =over
 
-=item Image => L<Paws::Rekognition::Image>
+=item Image => Rekognition_Image
 
 =item [Attributes => ArrayRef[Str|Undef]]
 
@@ -578,7 +580,7 @@ C<rekognition:DetectFaces> action.
 
 =over
 
-=item Image => L<Paws::Rekognition::Image>
+=item Image => Rekognition_Image
 
 =item [MaxLabels => Int]
 
@@ -669,7 +671,7 @@ C<rekognition:DetectLabels> action.
 
 =over
 
-=item Image => L<Paws::Rekognition::Image>
+=item Image => Rekognition_Image
 
 =item [MinConfidence => Num]
 
@@ -701,7 +703,7 @@ supported. The image must be either a PNG or JPEG formatted file.
 
 =over
 
-=item Image => L<Paws::Rekognition::Image>
+=item Image => Rekognition_Image
 
 
 =back
@@ -1112,7 +1114,7 @@ C<GetPersonTracking>.
 
 =item CollectionId => Str
 
-=item Image => L<Paws::Rekognition::Image>
+=item Image => Rekognition_Image
 
 =item [DetectionAttributes => ArrayRef[Str|Undef]]
 
@@ -1330,7 +1332,7 @@ CreateStreamProcessor.
 
 =over
 
-=item Image => L<Paws::Rekognition::Image>
+=item Image => Rekognition_Image
 
 
 =back
@@ -1423,7 +1425,7 @@ C<rekognition:SearchFaces> action.
 
 =item CollectionId => Str
 
-=item Image => L<Paws::Rekognition::Image>
+=item Image => Rekognition_Image
 
 =item [FaceMatchThreshold => Num]
 
@@ -1474,13 +1476,13 @@ C<rekognition:SearchFacesByImage> action.
 
 =over
 
-=item Video => L<Paws::Rekognition::Video>
+=item Video => Rekognition_Video
 
 =item [ClientRequestToken => Str]
 
 =item [JobTag => Str]
 
-=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+=item [NotificationChannel => Rekognition_NotificationChannel]
 
 
 =back
@@ -1511,7 +1513,7 @@ Rekognition Developer Guide.
 
 =over
 
-=item Video => L<Paws::Rekognition::Video>
+=item Video => Rekognition_Video
 
 =item [ClientRequestToken => Str]
 
@@ -1519,7 +1521,7 @@ Rekognition Developer Guide.
 
 =item [MinConfidence => Num]
 
-=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+=item [NotificationChannel => Rekognition_NotificationChannel]
 
 
 =back
@@ -1551,7 +1553,7 @@ Rekognition Developer Guide.
 
 =over
 
-=item Video => L<Paws::Rekognition::Video>
+=item Video => Rekognition_Video
 
 =item [ClientRequestToken => Str]
 
@@ -1559,7 +1561,7 @@ Rekognition Developer Guide.
 
 =item [JobTag => Str]
 
-=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+=item [NotificationChannel => Rekognition_NotificationChannel]
 
 
 =back
@@ -1592,7 +1594,7 @@ Amazon Rekognition Developer Guide.
 
 =item CollectionId => Str
 
-=item Video => L<Paws::Rekognition::Video>
+=item Video => Rekognition_Video
 
 =item [ClientRequestToken => Str]
 
@@ -1600,7 +1602,7 @@ Amazon Rekognition Developer Guide.
 
 =item [JobTag => Str]
 
-=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+=item [NotificationChannel => Rekognition_NotificationChannel]
 
 
 =back
@@ -1629,7 +1631,7 @@ procedure-person-search-videos.
 
 =over
 
-=item Video => L<Paws::Rekognition::Video>
+=item Video => Rekognition_Video
 
 =item [ClientRequestToken => Str]
 
@@ -1637,7 +1639,7 @@ procedure-person-search-videos.
 
 =item [MinConfidence => Num]
 
-=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+=item [NotificationChannel => Rekognition_NotificationChannel]
 
 
 =back
@@ -1671,13 +1673,13 @@ the initial call to C<StartLabelDetection>.
 
 =over
 
-=item Video => L<Paws::Rekognition::Video>
+=item Video => Rekognition_Video
 
 =item [ClientRequestToken => Str]
 
 =item [JobTag => Str]
 
-=item [NotificationChannel => L<Paws::Rekognition::NotificationChannel>]
+=item [NotificationChannel => Rekognition_NotificationChannel]
 
 
 =back

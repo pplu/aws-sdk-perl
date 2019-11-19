@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::CreateRuleResponse;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str');
-  has Rule => (is => 'ro', isa => 'Paws::WAF::Rule');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_Rule/;
+  has ChangeToken => (is => 'ro', isa => Str);
+  has Rule => (is => 'ro', isa => WAF_Rule);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Rule' => {
+                           'class' => 'Paws::WAF::Rule',
+                           'type' => 'WAF_Rule'
+                         },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ You can also use this value to query the status of the request. For
 more information, see GetChangeTokenStatus.
 
 
-=head2 Rule => L<Paws::WAF::Rule>
+=head2 Rule => WAF_Rule
 
 The Rule returned in the C<CreateRule> response.
 

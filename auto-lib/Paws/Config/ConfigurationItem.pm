@@ -1,23 +1,114 @@
+# Generated from default/object.tt
 package Paws::Config::ConfigurationItem;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest']);
-  has Configuration => (is => 'ro', isa => 'Str', request_name => 'configuration', traits => ['NameInRequest']);
-  has ConfigurationItemCaptureTime => (is => 'ro', isa => 'Str', request_name => 'configurationItemCaptureTime', traits => ['NameInRequest']);
-  has ConfigurationItemMD5Hash => (is => 'ro', isa => 'Str', request_name => 'configurationItemMD5Hash', traits => ['NameInRequest']);
-  has ConfigurationItemStatus => (is => 'ro', isa => 'Str', request_name => 'configurationItemStatus', traits => ['NameInRequest']);
-  has ConfigurationStateId => (is => 'ro', isa => 'Str', request_name => 'configurationStateId', traits => ['NameInRequest']);
-  has RelatedEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'relatedEvents', traits => ['NameInRequest']);
-  has Relationships => (is => 'ro', isa => 'ArrayRef[Paws::Config::Relationship]', request_name => 'relationships', traits => ['NameInRequest']);
-  has ResourceCreationTime => (is => 'ro', isa => 'Str', request_name => 'resourceCreationTime', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has ResourceName => (is => 'ro', isa => 'Str', request_name => 'resourceName', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has SupplementaryConfiguration => (is => 'ro', isa => 'Paws::Config::SupplementaryConfiguration', request_name => 'supplementaryConfiguration', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::Config::Tags', request_name => 'tags', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Config::Types qw/Config_Tags Config_Relationship Config_SupplementaryConfiguration/;
+  has AccountId => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has AwsRegion => (is => 'ro', isa => Str);
+  has Configuration => (is => 'ro', isa => Str);
+  has ConfigurationItemCaptureTime => (is => 'ro', isa => Str);
+  has ConfigurationItemMD5Hash => (is => 'ro', isa => Str);
+  has ConfigurationItemStatus => (is => 'ro', isa => Str);
+  has ConfigurationStateId => (is => 'ro', isa => Str);
+  has RelatedEvents => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Relationships => (is => 'ro', isa => ArrayRef[Config_Relationship]);
+  has ResourceCreationTime => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceName => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has SupplementaryConfiguration => (is => 'ro', isa => Config_SupplementaryConfiguration);
+  has Tags => (is => 'ro', isa => Config_Tags);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ConfigurationItemMD5Hash' => 'configurationItemMD5Hash',
+                       'RelatedEvents' => 'relatedEvents',
+                       'Version' => 'version',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'Arn' => 'arn',
+                       'AccountId' => 'accountId',
+                       'Tags' => 'tags',
+                       'ConfigurationItemCaptureTime' => 'configurationItemCaptureTime',
+                       'Relationships' => 'relationships',
+                       'ConfigurationItemStatus' => 'configurationItemStatus',
+                       'SupplementaryConfiguration' => 'supplementaryConfiguration',
+                       'ResourceCreationTime' => 'resourceCreationTime',
+                       'AwsRegion' => 'awsRegion',
+                       'ResourceType' => 'resourceType',
+                       'ConfigurationStateId' => 'configurationStateId',
+                       'ResourceName' => 'resourceName',
+                       'ResourceId' => 'resourceId',
+                       'Configuration' => 'configuration'
+                     },
+  'types' => {
+               'ResourceName' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'Configuration' => {
+                                    'type' => 'Str'
+                                  },
+               'SupplementaryConfiguration' => {
+                                                 'type' => 'Config_SupplementaryConfiguration',
+                                                 'class' => 'Paws::Config::SupplementaryConfiguration'
+                                               },
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'ResourceCreationTime' => {
+                                           'type' => 'Str'
+                                         },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ConfigurationStateId' => {
+                                           'type' => 'Str'
+                                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'type' => 'Config_Tags',
+                           'class' => 'Paws::Config::Tags'
+                         },
+               'ConfigurationItemCaptureTime' => {
+                                                   'type' => 'Str'
+                                                 },
+               'ConfigurationItemStatus' => {
+                                              'type' => 'Str'
+                                            },
+               'Relationships' => {
+                                    'class' => 'Paws::Config::Relationship',
+                                    'type' => 'ArrayRef[Config_Relationship]'
+                                  },
+               'ConfigurationItemMD5Hash' => {
+                                               'type' => 'Str'
+                                             },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'RelatedEvents' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -115,7 +206,7 @@ An empty field indicates that the current configuration was not
 initiated by any event.
 
 
-=head2 Relationships => ArrayRef[L<Paws::Config::Relationship>]
+=head2 Relationships => ArrayRef[Config_Relationship]
 
   A list of related AWS resources.
 
@@ -140,14 +231,14 @@ initiated by any event.
   The type of AWS resource.
 
 
-=head2 SupplementaryConfiguration => L<Paws::Config::SupplementaryConfiguration>
+=head2 SupplementaryConfiguration => Config_SupplementaryConfiguration
 
   Configuration attributes that AWS Config returns for certain resource
 types to supplement the information returned for the C<configuration>
 parameter.
 
 
-=head2 Tags => L<Paws::Config::Tags>
+=head2 Tags => Config_Tags
 
   A mapping of key value tags associated with the resource.
 

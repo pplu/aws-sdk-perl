@@ -1,11 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudWatch::GetDashboardOutput;
-  use Moose;
-  has DashboardArn => (is => 'ro', isa => 'Str');
-  has DashboardBody => (is => 'ro', isa => 'Str');
-  has DashboardName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatch::Types qw//;
+  has DashboardArn => (is => 'ro', isa => Str);
+  has DashboardBody => (is => 'ro', isa => Str);
+  has DashboardName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DashboardBody' => {
+                                    'type' => 'Str'
+                                  },
+               'DashboardName' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DashboardArn' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

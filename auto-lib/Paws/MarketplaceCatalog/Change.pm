@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::MarketplaceCatalog::Change;
-  use Moose;
-  has ChangeType => (is => 'ro', isa => 'Str', required => 1);
-  has Details => (is => 'ro', isa => 'Str', required => 1);
-  has Entity => (is => 'ro', isa => 'Paws::MarketplaceCatalog::Entity', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MarketplaceCatalog::Types qw/MarketplaceCatalog_Entity/;
+  has ChangeType => (is => 'ro', isa => Str, required => 1);
+  has Details => (is => 'ro', isa => Str, required => 1);
+  has Entity => (is => 'ro', isa => MarketplaceCatalog_Entity, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Entity' => {
+                             'class' => 'Paws::MarketplaceCatalog::Entity',
+                             'type' => 'MarketplaceCatalog_Entity'
+                           },
+               'ChangeType' => {
+                                 'type' => 'Str'
+                               },
+               'Details' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'Entity' => 1,
+                    'Details' => 1,
+                    'ChangeType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +80,7 @@ in the change's scope.
 requested change.
 
 
-=head2 B<REQUIRED> Entity => L<Paws::MarketplaceCatalog::Entity>
+=head2 B<REQUIRED> Entity => MarketplaceCatalog_Entity
 
   The entity to be changed.
 

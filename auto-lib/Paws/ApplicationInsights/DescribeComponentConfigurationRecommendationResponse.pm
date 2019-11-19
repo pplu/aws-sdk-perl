@@ -1,9 +1,27 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ApplicationInsights::DescribeComponentConfigurationRecommendationResponse;
-  use Moose;
-  has ComponentConfiguration => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationInsights::Types qw//;
+  has ComponentConfiguration => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComponentConfiguration' => {
+                                             'type' => 'Str'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

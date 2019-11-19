@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoT1ClickDevices::DeviceMethod;
-  use Moose;
-  has DeviceType => (is => 'ro', isa => 'Str', request_name => 'deviceType', traits => ['NameInRequest']);
-  has MethodName => (is => 'ro', isa => 'Str', request_name => 'methodName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickDevices::Types qw//;
+  has DeviceType => (is => 'ro', isa => Str);
+  has MethodName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MethodName' => 'methodName',
+                       'DeviceType' => 'deviceType'
+                     },
+  'types' => {
+               'MethodName' => {
+                                 'type' => 'Str'
+                               },
+               'DeviceType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

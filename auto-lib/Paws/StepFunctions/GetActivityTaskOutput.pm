@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StepFunctions::GetActivityTaskOutput;
-  use Moose;
-  has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' );
-  has TaskToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskToken' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has Input => (is => 'ro', isa => Str);
+  has TaskToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TaskToken' => {
+                                'type' => 'Str'
+                              },
+               'Input' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'TaskToken' => 'taskToken',
+                       'Input' => 'input'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

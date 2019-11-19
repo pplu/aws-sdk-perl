@@ -1,19 +1,57 @@
 
 package Paws::PinpointEmail::CreateConfigurationSet;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', required => 1);
-  has DeliveryOptions => (is => 'ro', isa => 'Paws::PinpointEmail::DeliveryOptions');
-  has ReputationOptions => (is => 'ro', isa => 'Paws::PinpointEmail::ReputationOptions');
-  has SendingOptions => (is => 'ro', isa => 'Paws::PinpointEmail::SendingOptions');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::Tag]');
-  has TrackingOptions => (is => 'ro', isa => 'Paws::PinpointEmail::TrackingOptions');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_SendingOptions PinpointEmail_TrackingOptions PinpointEmail_DeliveryOptions PinpointEmail_Tag PinpointEmail_ReputationOptions/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeliveryOptions => (is => 'ro', isa => PinpointEmail_DeliveryOptions, predicate => 1);
+  has ReputationOptions => (is => 'ro', isa => PinpointEmail_ReputationOptions, predicate => 1);
+  has SendingOptions => (is => 'ro', isa => PinpointEmail_SendingOptions, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[PinpointEmail_Tag], predicate => 1);
+  has TrackingOptions => (is => 'ro', isa => PinpointEmail_TrackingOptions, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConfigurationSet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/configuration-sets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::CreateConfigurationSetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateConfigurationSet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/configuration-sets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::CreateConfigurationSetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1
+                  },
+  'types' => {
+               'DeliveryOptions' => {
+                                      'class' => 'Paws::PinpointEmail::DeliveryOptions',
+                                      'type' => 'PinpointEmail_DeliveryOptions'
+                                    },
+               'ReputationOptions' => {
+                                        'class' => 'Paws::PinpointEmail::ReputationOptions',
+                                        'type' => 'PinpointEmail_ReputationOptions'
+                                      },
+               'SendingOptions' => {
+                                     'class' => 'Paws::PinpointEmail::SendingOptions',
+                                     'type' => 'PinpointEmail_SendingOptions'
+                                   },
+               'Tags' => {
+                           'type' => 'ArrayRef[PinpointEmail_Tag]',
+                           'class' => 'Paws::PinpointEmail::Tag'
+                         },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'TrackingOptions' => {
+                                      'type' => 'PinpointEmail_TrackingOptions',
+                                      'class' => 'Paws::PinpointEmail::TrackingOptions'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,14 +110,14 @@ The name of the configuration set.
 
 
 
-=head2 DeliveryOptions => L<Paws::PinpointEmail::DeliveryOptions>
+=head2 DeliveryOptions => PinpointEmail_DeliveryOptions
 
 An object that defines the dedicated IP pool that is used to send
 emails that you send using the configuration set.
 
 
 
-=head2 ReputationOptions => L<Paws::PinpointEmail::ReputationOptions>
+=head2 ReputationOptions => PinpointEmail_ReputationOptions
 
 An object that defines whether or not Amazon Pinpoint collects
 reputation metrics for the emails that you send that use the
@@ -87,21 +125,21 @@ configuration set.
 
 
 
-=head2 SendingOptions => L<Paws::PinpointEmail::SendingOptions>
+=head2 SendingOptions => PinpointEmail_SendingOptions
 
 An object that defines whether or not Amazon Pinpoint can send email
 that you send using the configuration set.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+=head2 Tags => ArrayRef[PinpointEmail_Tag]
 
 An array of objects that define the tags (keys and values) that you
 want to associate with the configuration set.
 
 
 
-=head2 TrackingOptions => L<Paws::PinpointEmail::TrackingOptions>
+=head2 TrackingOptions => PinpointEmail_TrackingOptions
 
 An object that defines the open and click tracking options for emails
 that you send using the configuration set.

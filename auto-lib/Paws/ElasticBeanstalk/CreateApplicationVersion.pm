@@ -1,21 +1,69 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::CreateApplicationVersion;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has AutoCreateApplication => (is => 'ro', isa => 'Bool');
-  has BuildConfiguration => (is => 'ro', isa => 'Paws::ElasticBeanstalk::BuildConfiguration');
-  has Description => (is => 'ro', isa => 'Str');
-  has Process => (is => 'ro', isa => 'Bool');
-  has SourceBuildInformation => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SourceBuildInformation');
-  has SourceBundle => (is => 'ro', isa => 'Paws::ElasticBeanstalk::S3Location');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Tag]');
-  has VersionLabel => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_SourceBuildInformation ElasticBeanstalk_BuildConfiguration ElasticBeanstalk_Tag ElasticBeanstalk_S3Location/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AutoCreateApplication => (is => 'ro', isa => Bool, predicate => 1);
+  has BuildConfiguration => (is => 'ro', isa => ElasticBeanstalk_BuildConfiguration, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Process => (is => 'ro', isa => Bool, predicate => 1);
+  has SourceBuildInformation => (is => 'ro', isa => ElasticBeanstalk_SourceBuildInformation, predicate => 1);
+  has SourceBundle => (is => 'ro', isa => ElasticBeanstalk_S3Location, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_Tag], predicate => 1);
+  has VersionLabel => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplicationVersion');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateApplicationVersionResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApplicationVersion');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateApplicationVersionResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'BuildConfiguration' => {
+                                         'class' => 'Paws::ElasticBeanstalk::BuildConfiguration',
+                                         'type' => 'ElasticBeanstalk_BuildConfiguration'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::ElasticBeanstalk::Tag',
+                           'type' => 'ArrayRef[ElasticBeanstalk_Tag]'
+                         },
+               'VersionLabel' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceBuildInformation' => {
+                                             'type' => 'ElasticBeanstalk_SourceBuildInformation',
+                                             'class' => 'Paws::ElasticBeanstalk::SourceBuildInformation'
+                                           },
+               'SourceBundle' => {
+                                   'class' => 'Paws::ElasticBeanstalk::S3Location',
+                                   'type' => 'ElasticBeanstalk_S3Location'
+                                 },
+               'Process' => {
+                              'type' => 'Bool'
+                            },
+               'AutoCreateApplication' => {
+                                            'type' => 'Bool'
+                                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'VersionLabel' => 1,
+                    'ApplicationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +126,7 @@ doesn't already exist.
 
 
 
-=head2 BuildConfiguration => L<Paws::ElasticBeanstalk::BuildConfiguration>
+=head2 BuildConfiguration => ElasticBeanstalk_BuildConfiguration
 
 Settings for an AWS CodeBuild build.
 
@@ -107,14 +155,14 @@ server or Docker configuration.
 
 
 
-=head2 SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>
+=head2 SourceBuildInformation => ElasticBeanstalk_SourceBuildInformation
 
 Specify a commit in an AWS CodeCommit Git repository to use as the
 source code for the application version.
 
 
 
-=head2 SourceBundle => L<Paws::ElasticBeanstalk::S3Location>
+=head2 SourceBundle => ElasticBeanstalk_S3Location
 
 The Amazon S3 bucket and key that identify the location of the source
 bundle for this version.
@@ -128,7 +176,7 @@ Beanstalk uses a sample application.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
+=head2 Tags => ArrayRef[ElasticBeanstalk_Tag]
 
 Specifies the tags applied to the application version.
 

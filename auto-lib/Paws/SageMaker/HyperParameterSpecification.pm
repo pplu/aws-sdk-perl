@@ -1,12 +1,52 @@
+# Generated from default/object.tt
 package Paws::SageMaker::HyperParameterSpecification;
-  use Moose;
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has IsRequired => (is => 'ro', isa => 'Bool');
-  has IsTunable => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Range => (is => 'ro', isa => 'Paws::SageMaker::ParameterRange');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SageMaker::Types qw/SageMaker_ParameterRange/;
+  has DefaultValue => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IsRequired => (is => 'ro', isa => Bool);
+  has IsTunable => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Range => (is => 'ro', isa => SageMaker_ParameterRange);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'IsTunable' => {
+                                'type' => 'Bool'
+                              },
+               'DefaultValue' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'IsRequired' => {
+                                 'type' => 'Bool'
+                               },
+               'Range' => {
+                            'class' => 'Paws::SageMaker::ParameterRange',
+                            'type' => 'SageMaker_ParameterRange'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +109,7 @@ tuning job.
   The name of this hyperparameter. The name must be unique.
 
 
-=head2 Range => L<Paws::SageMaker::ParameterRange>
+=head2 Range => SageMaker_ParameterRange
 
   The allowed range for this hyperparameter.
 

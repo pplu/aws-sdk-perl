@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::Batch::Ulimit;
-  use Moose;
-  has HardLimit => (is => 'ro', isa => 'Int', request_name => 'hardLimit', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has SoftLimit => (is => 'ro', isa => 'Int', request_name => 'softLimit', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Batch::Types qw//;
+  has HardLimit => (is => 'ro', isa => Int, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has SoftLimit => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'HardLimit' => {
+                                'type' => 'Int'
+                              },
+               'SoftLimit' => {
+                                'type' => 'Int'
+                              }
+             },
+  'IsRequired' => {
+                    'HardLimit' => 1,
+                    'Name' => 1,
+                    'SoftLimit' => 1
+                  },
+  'NameInRequest' => {
+                       'SoftLimit' => 'softLimit',
+                       'HardLimit' => 'hardLimit',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

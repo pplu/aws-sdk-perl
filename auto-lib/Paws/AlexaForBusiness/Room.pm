@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::Room;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has ProfileArn => (is => 'ro', isa => 'Str');
-  has ProviderCalendarId => (is => 'ro', isa => 'Str');
-  has RoomArn => (is => 'ro', isa => 'Str');
-  has RoomName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has ProfileArn => (is => 'ro', isa => Str);
+  has ProviderCalendarId => (is => 'ro', isa => Str);
+  has RoomArn => (is => 'ro', isa => Str);
+  has RoomName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProviderCalendarId' => {
+                                         'type' => 'Str'
+                                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ProfileArn' => {
+                                 'type' => 'Str'
+                               },
+               'RoomName' => {
+                               'type' => 'Str'
+                             },
+               'RoomArn' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

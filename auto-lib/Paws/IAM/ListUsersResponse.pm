@@ -1,11 +1,39 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListUsersResponse;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
-  has Users => (is => 'ro', isa => 'ArrayRef[Paws::IAM::User]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::IAM::Types qw/IAM_User/;
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
+  has Users => (is => 'ro', isa => ArrayRef[IAM_User], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'Users' => {
+                            'type' => 'ArrayRef[IAM_User]',
+                            'class' => 'Paws::IAM::User'
+                          }
+             },
+  'IsRequired' => {
+                    'Users' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +63,7 @@ the value to use for the C<Marker> parameter in a subsequent pagination
 request.
 
 
-=head2 B<REQUIRED> Users => ArrayRef[L<Paws::IAM::User>]
+=head2 B<REQUIRED> Users => ArrayRef[IAM_User]
 
 A list of users.
 

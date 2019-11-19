@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::CloudSearchDomain::Hits;
-  use Moose;
-  has Cursor => (is => 'ro', isa => 'Str', request_name => 'cursor', traits => ['NameInRequest']);
-  has Found => (is => 'ro', isa => 'Int', request_name => 'found', traits => ['NameInRequest']);
-  has Hit => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::Hit]', request_name => 'hit', traits => ['NameInRequest']);
-  has Start => (is => 'ro', isa => 'Int', request_name => 'start', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::CloudSearchDomain::Types qw/CloudSearchDomain_Hit/;
+  has Cursor => (is => 'ro', isa => Str);
+  has Found => (is => 'ro', isa => Int);
+  has Hit => (is => 'ro', isa => ArrayRef[CloudSearchDomain_Hit]);
+  has Start => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Hit' => 'hit',
+                       'Start' => 'start',
+                       'Cursor' => 'cursor',
+                       'Found' => 'found'
+                     },
+  'types' => {
+               'Start' => {
+                            'type' => 'Int'
+                          },
+               'Hit' => {
+                          'class' => 'Paws::CloudSearchDomain::Hit',
+                          'type' => 'ArrayRef[CloudSearchDomain_Hit]'
+                        },
+               'Found' => {
+                            'type' => 'Int'
+                          },
+               'Cursor' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +83,7 @@ documents when you want to page through a large result set.
   The total number of documents that match the search request.
 
 
-=head2 Hit => ArrayRef[L<Paws::CloudSearchDomain::Hit>]
+=head2 Hit => ArrayRef[CloudSearchDomain_Hit]
 
   A document that matches the search request.
 

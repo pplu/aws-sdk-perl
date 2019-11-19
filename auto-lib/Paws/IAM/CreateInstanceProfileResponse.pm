@@ -1,9 +1,31 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::CreateInstanceProfileResponse;
-  use Moose;
-  has InstanceProfile => (is => 'ro', isa => 'Paws::IAM::InstanceProfile', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_InstanceProfile/;
+  has InstanceProfile => (is => 'ro', isa => IAM_InstanceProfile, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'InstanceProfile' => 1
+                  },
+  'types' => {
+               'InstanceProfile' => {
+                                      'class' => 'Paws::IAM::InstanceProfile',
+                                      'type' => 'IAM_InstanceProfile'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::IAM::CreateInstanceProfileResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InstanceProfile => L<Paws::IAM::InstanceProfile>
+=head2 B<REQUIRED> InstanceProfile => IAM_InstanceProfile
 
 A structure containing details about the new instance profile.
 

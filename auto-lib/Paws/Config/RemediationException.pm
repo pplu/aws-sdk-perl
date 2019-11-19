@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::Config::RemediationException;
-  use Moose;
-  has ConfigRuleName => (is => 'ro', isa => 'Str', required => 1);
-  has ExpirationTime => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has ConfigRuleName => (is => 'ro', isa => Str, required => 1);
+  has ExpirationTime => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str, required => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ResourceType' => 1,
+                    'ConfigRuleName' => 1,
+                    'ResourceId' => 1
+                  },
+  'types' => {
+               'ConfigRuleName' => {
+                                     'type' => 'Str'
+                                   },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ExpirationTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

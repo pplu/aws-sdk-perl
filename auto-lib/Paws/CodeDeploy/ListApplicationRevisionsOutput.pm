@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::ListApplicationRevisionsOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Revisions => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::RevisionLocation]', traits => ['NameInRequest'], request_name => 'revisions' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_RevisionLocation/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Revisions => (is => 'ro', isa => ArrayRef[CodeDeploy_RevisionLocation]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Revisions' => {
+                                'class' => 'Paws::CodeDeploy::RevisionLocation',
+                                'type' => 'ArrayRef[CodeDeploy_RevisionLocation]'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Revisions' => 'revisions'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +48,7 @@ returned. It can be used in a subsequent list application revisions
 call to return the next set of application revisions in the list.
 
 
-=head2 Revisions => ArrayRef[L<Paws::CodeDeploy::RevisionLocation>]
+=head2 Revisions => ArrayRef[CodeDeploy_RevisionLocation]
 
 A list of locations that contain the matching revisions.
 

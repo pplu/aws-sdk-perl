@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::PullRequestStatusChangedEventMetadata;
-  use Moose;
-  has PullRequestStatus => (is => 'ro', isa => 'Str', request_name => 'pullRequestStatus', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has PullRequestStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PullRequestStatus' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'PullRequestStatus' => 'pullRequestStatus'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

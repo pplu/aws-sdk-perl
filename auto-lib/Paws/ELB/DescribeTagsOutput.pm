@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::ELB::DescribeTagsOutput;
-  use Moose;
-  has TagDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELB::TagDescription]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELB::Types qw/ELB_TagDescription/;
+  has TagDescriptions => (is => 'ro', isa => ArrayRef[ELB_TagDescription]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagDescriptions' => {
+                                      'type' => 'ArrayRef[ELB_TagDescription]',
+                                      'class' => 'Paws::ELB::TagDescription'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::ELB::DescribeTagsOutput
 =head1 ATTRIBUTES
 
 
-=head2 TagDescriptions => ArrayRef[L<Paws::ELB::TagDescription>]
+=head2 TagDescriptions => ArrayRef[ELB_TagDescription]
 
 Information about the tags.
 

@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Scte35TimeSignalScheduleActionSettings;
-  use Moose;
-  has Scte35Descriptors => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::Scte35Descriptor]', request_name => 'scte35Descriptors', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_Scte35Descriptor/;
+  has Scte35Descriptors => (is => 'ro', isa => ArrayRef[MediaLive_Scte35Descriptor], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Scte35Descriptors' => {
+                                        'type' => 'ArrayRef[MediaLive_Scte35Descriptor]',
+                                        'class' => 'Paws::MediaLive::Scte35Descriptor'
+                                      }
+             },
+  'IsRequired' => {
+                    'Scte35Descriptors' => 1
+                  },
+  'NameInRequest' => {
+                       'Scte35Descriptors' => 'scte35Descriptors'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ Settings for a SCTE-35 time_signal.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Scte35Descriptors => ArrayRef[L<Paws::MediaLive::Scte35Descriptor>]
+=head2 B<REQUIRED> Scte35Descriptors => ArrayRef[MediaLive_Scte35Descriptor]
 
   The list of SCTE-35 descriptors accompanying the SCTE-35 time_signal.
 

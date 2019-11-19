@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::Output;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has ExportName => (is => 'ro', isa => 'Str');
-  has OutputKey => (is => 'ro', isa => 'Str');
-  has OutputValue => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has ExportName => (is => 'ro', isa => Str);
+  has OutputKey => (is => 'ro', isa => Str);
+  has OutputValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ExportName' => {
+                                 'type' => 'Str'
+                               },
+               'OutputValue' => {
+                                  'type' => 'Str'
+                                },
+               'OutputKey' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

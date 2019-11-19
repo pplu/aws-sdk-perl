@@ -1,17 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::PutJobSuccessResult;
-  use Moose;
-  has ContinuationToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'continuationToken' );
-  has CurrentRevision => (is => 'ro', isa => 'Paws::CodePipeline::CurrentRevision', traits => ['NameInRequest'], request_name => 'currentRevision' );
-  has ExecutionDetails => (is => 'ro', isa => 'Paws::CodePipeline::ExecutionDetails', traits => ['NameInRequest'], request_name => 'executionDetails' );
-  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
-  has OutputVariables => (is => 'ro', isa => 'Paws::CodePipeline::OutputVariablesMap', traits => ['NameInRequest'], request_name => 'outputVariables' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ExecutionDetails CodePipeline_OutputVariablesMap CodePipeline_CurrentRevision/;
+  has ContinuationToken => (is => 'ro', isa => Str, predicate => 1);
+  has CurrentRevision => (is => 'ro', isa => CodePipeline_CurrentRevision, predicate => 1);
+  has ExecutionDetails => (is => 'ro', isa => CodePipeline_ExecutionDetails, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OutputVariables => (is => 'ro', isa => CodePipeline_OutputVariablesMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutJobSuccessResult');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutJobSuccessResult');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ContinuationToken' => 'continuationToken',
+                       'ExecutionDetails' => 'executionDetails',
+                       'OutputVariables' => 'outputVariables',
+                       'CurrentRevision' => 'currentRevision',
+                       'JobId' => 'jobId'
+                     },
+  'IsRequired' => {
+                    'JobId' => 1
+                  },
+  'types' => {
+               'ContinuationToken' => {
+                                        'type' => 'Str'
+                                      },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'OutputVariables' => {
+                                      'type' => 'CodePipeline_OutputVariablesMap',
+                                      'class' => 'Paws::CodePipeline::OutputVariablesMap'
+                                    },
+               'ExecutionDetails' => {
+                                       'type' => 'CodePipeline_ExecutionDetails',
+                                       'class' => 'Paws::CodePipeline::ExecutionDetails'
+                                     },
+               'CurrentRevision' => {
+                                      'class' => 'Paws::CodePipeline::CurrentRevision',
+                                      'type' => 'CodePipeline_CurrentRevision'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,14 +107,14 @@ continuation token should be supplied.
 
 
 
-=head2 CurrentRevision => L<Paws::CodePipeline::CurrentRevision>
+=head2 CurrentRevision => CodePipeline_CurrentRevision
 
 The ID of the current revision of the artifact successfully worked on
 by the job.
 
 
 
-=head2 ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>
+=head2 ExecutionDetails => CodePipeline_ExecutionDetails
 
 The execution details of the successful job, such as the actions taken
 by the job worker.
@@ -87,7 +128,7 @@ same ID returned from C<PollForJobs>.
 
 
 
-=head2 OutputVariables => L<Paws::CodePipeline::OutputVariablesMap>
+=head2 OutputVariables => CodePipeline_OutputVariablesMap
 
 Key-value pairs produced as output by a job worker that can be made
 available to a downstream action configuration. C<outputVariables> can

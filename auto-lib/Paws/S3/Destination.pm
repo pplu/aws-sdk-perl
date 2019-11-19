@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::S3::Destination;
-  use Moose;
-  has AccessControlTranslation => (is => 'ro', isa => 'Paws::S3::AccessControlTranslation');
-  has Account => (is => 'ro', isa => 'Str');
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has EncryptionConfiguration => (is => 'ro', isa => 'Paws::S3::EncryptionConfiguration');
-  has StorageClass => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_AccessControlTranslation S3_EncryptionConfiguration/;
+  has AccessControlTranslation => (is => 'ro', isa => S3_AccessControlTranslation);
+  has Account => (is => 'ro', isa => Str);
+  has Bucket => (is => 'ro', isa => Str, required => 1);
+  has EncryptionConfiguration => (is => 'ro', isa => S3_EncryptionConfiguration);
+  has StorageClass => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Bucket' => 1
+                  },
+  'types' => {
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'AccessControlTranslation' => {
+                                               'type' => 'S3_AccessControlTranslation',
+                                               'class' => 'Paws::S3::AccessControlTranslation'
+                                             },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 },
+               'Account' => {
+                              'type' => 'Str'
+                            },
+               'EncryptionConfiguration' => {
+                                              'class' => 'Paws::S3::EncryptionConfiguration',
+                                              'type' => 'S3_EncryptionConfiguration'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +75,7 @@ results for an Amazon S3 bucket.
 =head1 ATTRIBUTES
 
 
-=head2 AccessControlTranslation => L<Paws::S3::AccessControlTranslation>
+=head2 AccessControlTranslation => S3_AccessControlTranslation
 
   Specify this only in a cross-account scenario (where source and
 destination bucket owners are not the same), and you want to change
@@ -68,7 +102,7 @@ in the I<Amazon Simple Storage Service Developer Guide>.
 to store the results.
 
 
-=head2 EncryptionConfiguration => L<Paws::S3::EncryptionConfiguration>
+=head2 EncryptionConfiguration => S3_EncryptionConfiguration
 
   A container that provides information about encryption. If
 C<SourceSelectionCriteria> is specified, you must specify this element.

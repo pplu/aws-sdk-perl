@@ -1,18 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Datasync::CreateAgent;
-  use Moose;
-  has ActivationKey => (is => 'ro', isa => 'Str', required => 1);
-  has AgentName => (is => 'ro', isa => 'Str');
-  has SecurityGroupArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SubnetArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TagListEntry]');
-  has VpcEndpointId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Datasync::Types qw/Datasync_TagListEntry/;
+  has ActivationKey => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AgentName => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroupArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SubnetArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Datasync_TagListEntry], predicate => 1);
+  has VpcEndpointId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAgent');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Datasync::CreateAgentResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateAgent');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Datasync::CreateAgentResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityGroupArns' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'SubnetArns' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'ActivationKey' => {
+                                    'type' => 'Str'
+                                  },
+               'AgentName' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::Datasync::TagListEntry',
+                           'type' => 'ArrayRef[Datasync_TagListEntry]'
+                         },
+               'VpcEndpointId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ActivationKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -107,7 +142,7 @@ these four network interfaces.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]
+=head2 Tags => ArrayRef[Datasync_TagListEntry]
 
 The key-value pair that represents the tag that you want to associate
 with the agent. The value can be an empty string. This value helps you

@@ -1,13 +1,63 @@
+# Generated from default/object.tt
 package Paws::SavingsPlans::SavingsPlanOfferingRate;
-  use Moose;
-  has Operation => (is => 'ro', isa => 'Str', request_name => 'operation', traits => ['NameInRequest']);
-  has ProductType => (is => 'ro', isa => 'Str', request_name => 'productType', traits => ['NameInRequest']);
-  has Properties => (is => 'ro', isa => 'ArrayRef[Paws::SavingsPlans::SavingsPlanOfferingRateProperty]', request_name => 'properties', traits => ['NameInRequest']);
-  has Rate => (is => 'ro', isa => 'Str', request_name => 'rate', traits => ['NameInRequest']);
-  has SavingsPlanOffering => (is => 'ro', isa => 'Paws::SavingsPlans::ParentSavingsPlanOffering', request_name => 'savingsPlanOffering', traits => ['NameInRequest']);
-  has ServiceCode => (is => 'ro', isa => 'Str', request_name => 'serviceCode', traits => ['NameInRequest']);
-  has Unit => (is => 'ro', isa => 'Str', request_name => 'unit', traits => ['NameInRequest']);
-  has UsageType => (is => 'ro', isa => 'Str', request_name => 'usageType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SavingsPlans::Types qw/SavingsPlans_ParentSavingsPlanOffering SavingsPlans_SavingsPlanOfferingRateProperty/;
+  has Operation => (is => 'ro', isa => Str);
+  has ProductType => (is => 'ro', isa => Str);
+  has Properties => (is => 'ro', isa => ArrayRef[SavingsPlans_SavingsPlanOfferingRateProperty]);
+  has Rate => (is => 'ro', isa => Str);
+  has SavingsPlanOffering => (is => 'ro', isa => SavingsPlans_ParentSavingsPlanOffering);
+  has ServiceCode => (is => 'ro', isa => Str);
+  has Unit => (is => 'ro', isa => Str);
+  has UsageType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Rate' => 'rate',
+                       'ProductType' => 'productType',
+                       'Operation' => 'operation',
+                       'UsageType' => 'usageType',
+                       'SavingsPlanOffering' => 'savingsPlanOffering',
+                       'Unit' => 'unit',
+                       'Properties' => 'properties',
+                       'ServiceCode' => 'serviceCode'
+                     },
+  'types' => {
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'UsageType' => {
+                                'type' => 'Str'
+                              },
+               'SavingsPlanOffering' => {
+                                          'type' => 'SavingsPlans_ParentSavingsPlanOffering',
+                                          'class' => 'Paws::SavingsPlans::ParentSavingsPlanOffering'
+                                        },
+               'Operation' => {
+                                'type' => 'Str'
+                              },
+               'ProductType' => {
+                                  'type' => 'Str'
+                                },
+               'Rate' => {
+                           'type' => 'Str'
+                         },
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                },
+               'Properties' => {
+                                 'type' => 'ArrayRef[SavingsPlans_SavingsPlanOfferingRateProperty]',
+                                 'class' => 'Paws::SavingsPlans::SavingsPlanOfferingRateProperty'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +103,7 @@ Information about a Savings Plan offering rate.
   The product type.
 
 
-=head2 Properties => ArrayRef[L<Paws::SavingsPlans::SavingsPlanOfferingRateProperty>]
+=head2 Properties => ArrayRef[SavingsPlans_SavingsPlanOfferingRateProperty]
 
   The properties.
 
@@ -63,7 +113,7 @@ Information about a Savings Plan offering rate.
   The Savings Plan rate.
 
 
-=head2 SavingsPlanOffering => L<Paws::SavingsPlans::ParentSavingsPlanOffering>
+=head2 SavingsPlanOffering => SavingsPlans_ParentSavingsPlanOffering
 
   The Savings Plan offering.
 

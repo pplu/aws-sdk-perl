@@ -1,13 +1,22 @@
 
 package Paws::Backup::GetSupportedResourceTypes;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw//;
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSupportedResourceTypes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/supported-resource-types');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::GetSupportedResourceTypesOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSupportedResourceTypes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/supported-resource-types');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::GetSupportedResourceTypesOutput');
+
+    sub params_map {
+    our $Params_map ||= {}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Robomaker::S3KeyOutput;
-  use Moose;
-  has Etag => (is => 'ro', isa => 'Str', request_name => 'etag', traits => ['NameInRequest']);
-  has S3Key => (is => 'ro', isa => 'Str', request_name => 's3Key', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw//;
+  has Etag => (is => 'ro', isa => Str);
+  has S3Key => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Key' => {
+                            'type' => 'Str'
+                          },
+               'Etag' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Etag' => 'etag',
+                       'S3Key' => 's3Key'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

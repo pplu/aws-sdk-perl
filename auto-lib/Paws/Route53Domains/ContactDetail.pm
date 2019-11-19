@@ -1,19 +1,76 @@
+# Generated from default/object.tt
 package Paws::Route53Domains::ContactDetail;
-  use Moose;
-  has AddressLine1 => (is => 'ro', isa => 'Str');
-  has AddressLine2 => (is => 'ro', isa => 'Str');
-  has City => (is => 'ro', isa => 'Str');
-  has ContactType => (is => 'ro', isa => 'Str');
-  has CountryCode => (is => 'ro', isa => 'Str');
-  has Email => (is => 'ro', isa => 'Str');
-  has ExtraParams => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::ExtraParam]');
-  has Fax => (is => 'ro', isa => 'Str');
-  has FirstName => (is => 'ro', isa => 'Str');
-  has LastName => (is => 'ro', isa => 'Str');
-  has OrganizationName => (is => 'ro', isa => 'Str');
-  has PhoneNumber => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has ZipCode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53Domains::Types qw/Route53Domains_ExtraParam/;
+  has AddressLine1 => (is => 'ro', isa => Str);
+  has AddressLine2 => (is => 'ro', isa => Str);
+  has City => (is => 'ro', isa => Str);
+  has ContactType => (is => 'ro', isa => Str);
+  has CountryCode => (is => 'ro', isa => Str);
+  has Email => (is => 'ro', isa => Str);
+  has ExtraParams => (is => 'ro', isa => ArrayRef[Route53Domains_ExtraParam]);
+  has Fax => (is => 'ro', isa => Str);
+  has FirstName => (is => 'ro', isa => Str);
+  has LastName => (is => 'ro', isa => Str);
+  has OrganizationName => (is => 'ro', isa => Str);
+  has PhoneNumber => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has ZipCode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExtraParams' => {
+                                  'type' => 'ArrayRef[Route53Domains_ExtraParam]',
+                                  'class' => 'Paws::Route53Domains::ExtraParam'
+                                },
+               'CountryCode' => {
+                                  'type' => 'Str'
+                                },
+               'AddressLine1' => {
+                                   'type' => 'Str'
+                                 },
+               'OrganizationName' => {
+                                       'type' => 'Str'
+                                     },
+               'City' => {
+                           'type' => 'Str'
+                         },
+               'Email' => {
+                            'type' => 'Str'
+                          },
+               'ZipCode' => {
+                              'type' => 'Str'
+                            },
+               'LastName' => {
+                               'type' => 'Str'
+                             },
+               'AddressLine2' => {
+                                   'type' => 'Str'
+                                 },
+               'Fax' => {
+                          'type' => 'Str'
+                        },
+               'FirstName' => {
+                                'type' => 'Str'
+                              },
+               'ContactType' => {
+                                  'type' => 'Str'
+                                },
+               'PhoneNumber' => {
+                                  'type' => 'Str'
+                                },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +139,7 @@ protection for the contact.
   Email address of the contact.
 
 
-=head2 ExtraParams => ArrayRef[L<Paws::Route53Domains::ExtraParam>]
+=head2 ExtraParams => ArrayRef[Route53Domains_ExtraParam]
 
   A list of name-value pairs for parameters required by certain top-level
 domains.

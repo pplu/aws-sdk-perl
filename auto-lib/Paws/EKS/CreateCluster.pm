@@ -1,20 +1,70 @@
 
 package Paws::EKS::CreateCluster;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
-  has Logging => (is => 'ro', isa => 'Paws::EKS::Logging', traits => ['NameInRequest'], request_name => 'logging');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has ResourcesVpcConfig => (is => 'ro', isa => 'Paws::EKS::VpcConfigRequest', traits => ['NameInRequest'], request_name => 'resourcesVpcConfig', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::EKS::TagMap', traits => ['NameInRequest'], request_name => 'tags');
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EKS::Types qw/EKS_VpcConfigRequest EKS_TagMap EKS_Logging/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Logging => (is => 'ro', isa => EKS_Logging, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourcesVpcConfig => (is => 'ro', isa => EKS_VpcConfigRequest, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => EKS_TagMap, predicate => 1);
+  has Version => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clusters');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EKS::CreateClusterResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCluster');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clusters');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EKS::CreateClusterResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Logging' => 'logging',
+                       'ResourcesVpcConfig' => 'resourcesVpcConfig',
+                       'Tags' => 'tags',
+                       'Version' => 'version',
+                       'RoleArn' => 'roleArn',
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'ResourcesVpcConfig' => 1,
+                    'Name' => 1,
+                    'RoleArn' => 1
+                  },
+  'types' => {
+               'Logging' => {
+                              'type' => 'EKS_Logging',
+                              'class' => 'Paws::EKS::Logging'
+                            },
+               'ResourcesVpcConfig' => {
+                                         'class' => 'Paws::EKS::VpcConfigRequest',
+                                         'type' => 'EKS_VpcConfigRequest'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::EKS::TagMap',
+                           'type' => 'EKS_TagMap'
+                         },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +130,7 @@ idempotency of the request.
 
 
 
-=head2 Logging => L<Paws::EKS::Logging>
+=head2 Logging => EKS_Logging
 
 Enable or disable exporting the Kubernetes control plane logs for your
 cluster to CloudWatch Logs. By default, cluster control plane logs
@@ -101,7 +151,7 @@ The unique name to give to your cluster.
 
 
 
-=head2 B<REQUIRED> ResourcesVpcConfig => L<Paws::EKS::VpcConfigRequest>
+=head2 B<REQUIRED> ResourcesVpcConfig => EKS_VpcConfigRequest
 
 The VPC configuration used by the cluster control plane. Amazon EKS VPC
 resources have specific requirements to work properly with Kubernetes.
@@ -125,7 +175,7 @@ in the I< I<Amazon EKS User Guide> >.
 
 
 
-=head2 Tags => L<Paws::EKS::TagMap>
+=head2 Tags => EKS_TagMap
 
 The metadata to apply to the cluster to assist with categorization and
 organization. Each tag consists of a key and an optional value, both of

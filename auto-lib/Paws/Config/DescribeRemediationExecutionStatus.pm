@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::DescribeRemediationExecutionStatus;
-  use Moose;
-  has ConfigRuleName => (is => 'ro', isa => 'Str', required => 1);
-  has Limit => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ResourceKeys => (is => 'ro', isa => 'ArrayRef[Paws::Config::ResourceKey]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::Config::Types qw/Config_ResourceKey/;
+  has ConfigRuleName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceKeys => (is => 'ro', isa => ArrayRef[Config_ResourceKey], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRemediationExecutionStatus');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::DescribeRemediationExecutionStatusResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeRemediationExecutionStatus');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::DescribeRemediationExecutionStatusResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConfigRuleName' => 1
+                  },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ConfigRuleName' => {
+                                     'type' => 'Str'
+                                   },
+               'ResourceKeys' => {
+                                   'type' => 'ArrayRef[Config_ResourceKey]',
+                                   'class' => 'Paws::Config::ResourceKey'
+                                 },
+               'Limit' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +109,7 @@ the next page of results in a paginated response.
 
 
 
-=head2 ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]
+=head2 ResourceKeys => ArrayRef[Config_ResourceKey]
 
 A list of resource keys to be processed with the current request. Each
 element in the list consists of the resource type and resource ID.

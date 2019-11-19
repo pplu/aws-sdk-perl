@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::IndexFieldStatus;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Paws::CloudSearch::IndexField', required => 1);
-  has Status => (is => 'ro', isa => 'Paws::CloudSearch::OptionStatus', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudSearch::Types qw/CloudSearch_OptionStatus CloudSearch_IndexField/;
+  has Options => (is => 'ro', isa => CloudSearch_IndexField, required => 1);
+  has Status => (is => 'ro', isa => CloudSearch_OptionStatus, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Status' => 1,
+                    'Options' => 1
+                  },
+  'types' => {
+               'Options' => {
+                              'type' => 'CloudSearch_IndexField',
+                              'class' => 'Paws::CloudSearch::IndexField'
+                            },
+               'Status' => {
+                             'class' => 'Paws::CloudSearch::OptionStatus',
+                             'type' => 'CloudSearch_OptionStatus'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ The value of an C<IndexField> and its current status.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Options => L<Paws::CloudSearch::IndexField>
+=head2 B<REQUIRED> Options => CloudSearch_IndexField
 
   
 
 
-=head2 B<REQUIRED> Status => L<Paws::CloudSearch::OptionStatus>
+=head2 B<REQUIRED> Status => CloudSearch_OptionStatus
 
   
 

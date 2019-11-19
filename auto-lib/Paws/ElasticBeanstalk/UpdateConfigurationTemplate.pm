@@ -1,17 +1,51 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::UpdateConfigurationTemplate;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
-  has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]');
-  has TemplateName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_OptionSpecification ElasticBeanstalk_ConfigurationOptionSetting/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has OptionSettings => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting], predicate => 1);
+  has OptionsToRemove => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_OptionSpecification], predicate => 1);
+  has TemplateName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ConfigurationSettingsDescription');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationTemplateResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateConfigurationTemplate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::ConfigurationSettingsDescription');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateConfigurationTemplateResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'OptionSettings' => {
+                                     'type' => 'ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]',
+                                     'class' => 'Paws::ElasticBeanstalk::ConfigurationOptionSetting'
+                                   },
+               'OptionsToRemove' => {
+                                      'type' => 'ArrayRef[ElasticBeanstalk_OptionSpecification]',
+                                      'class' => 'Paws::ElasticBeanstalk::OptionSpecification'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'TemplateName' => 1,
+                    'ApplicationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -81,14 +115,14 @@ A new description for the configuration.
 
 
 
-=head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
+=head2 OptionSettings => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]
 
 A list of configuration option settings to update with the new
 specified option value.
 
 
 
-=head2 OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
+=head2 OptionsToRemove => ArrayRef[ElasticBeanstalk_OptionSpecification]
 
 A list of configuration options to remove from the configuration set.
 

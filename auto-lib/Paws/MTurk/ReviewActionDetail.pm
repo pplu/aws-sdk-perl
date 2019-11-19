@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::MTurk::ReviewActionDetail;
-  use Moose;
-  has ActionId => (is => 'ro', isa => 'Str');
-  has ActionName => (is => 'ro', isa => 'Str');
-  has CompleteTime => (is => 'ro', isa => 'Str');
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has Result => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TargetId => (is => 'ro', isa => 'Str');
-  has TargetType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw//;
+  has ActionId => (is => 'ro', isa => Str);
+  has ActionName => (is => 'ro', isa => Str);
+  has CompleteTime => (is => 'ro', isa => Str);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has Result => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TargetId => (is => 'ro', isa => Str);
+  has TargetType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CompleteTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'ActionName' => {
+                                 'type' => 'Str'
+                               },
+               'ActionId' => {
+                               'type' => 'Str'
+                             },
+               'TargetId' => {
+                               'type' => 'Str'
+                             },
+               'Result' => {
+                             'type' => 'Str'
+                           },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

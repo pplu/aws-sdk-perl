@@ -1,14 +1,36 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MTurk::AcceptQualificationRequest;
-  use Moose;
-  has IntegerValue => (is => 'ro', isa => 'Int');
-  has QualificationRequestId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MTurk::Types qw//;
+  has IntegerValue => (is => 'ro', isa => Int, predicate => 1);
+  has QualificationRequestId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AcceptQualificationRequest');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MTurk::AcceptQualificationRequestResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AcceptQualificationRequest');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MTurk::AcceptQualificationRequestResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'QualificationRequestId' => 1
+                  },
+  'types' => {
+               'IntegerValue' => {
+                                   'type' => 'Int'
+                                 },
+               'QualificationRequestId' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

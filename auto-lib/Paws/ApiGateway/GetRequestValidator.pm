@@ -1,15 +1,41 @@
 
 package Paws::ApiGateway::GetRequestValidator;
-  use Moose;
-  has RequestValidatorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'requestvalidator_id', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has RequestValidatorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRequestValidator');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::RequestValidator');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetRequestValidator');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::RequestValidator');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'RequestValidatorId' => 'requestvalidator_id',
+                    'RestApiId' => 'restapi_id'
+                  },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'RequestValidatorId' => 1
+                  },
+  'types' => {
+               'RequestValidatorId' => {
+                                         'type' => 'Str'
+                                       },
+               'RestApiId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

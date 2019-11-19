@@ -1,13 +1,66 @@
+# Generated from default/object.tt
 package Paws::Inspector::AssetAttributes;
-  use Moose;
-  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest']);
-  has AmiId => (is => 'ro', isa => 'Str', request_name => 'amiId', traits => ['NameInRequest']);
-  has AutoScalingGroup => (is => 'ro', isa => 'Str', request_name => 'autoScalingGroup', traits => ['NameInRequest']);
-  has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest']);
-  has Ipv4Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipv4Addresses', traits => ['NameInRequest']);
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
-  has SchemaVersion => (is => 'ro', isa => 'Int', request_name => 'schemaVersion', traits => ['NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Int/;
+  use Paws::Inspector::Types qw/Inspector_NetworkInterface Inspector_Tag/;
+  has AgentId => (is => 'ro', isa => Str);
+  has AmiId => (is => 'ro', isa => Str);
+  has AutoScalingGroup => (is => 'ro', isa => Str);
+  has Hostname => (is => 'ro', isa => Str);
+  has Ipv4Addresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NetworkInterfaces => (is => 'ro', isa => ArrayRef[Inspector_NetworkInterface]);
+  has SchemaVersion => (is => 'ro', isa => Int, required => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Inspector_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AmiId' => 'amiId',
+                       'SchemaVersion' => 'schemaVersion',
+                       'Hostname' => 'hostname',
+                       'NetworkInterfaces' => 'networkInterfaces',
+                       'Tags' => 'tags',
+                       'AgentId' => 'agentId',
+                       'Ipv4Addresses' => 'ipv4Addresses',
+                       'AutoScalingGroup' => 'autoScalingGroup'
+                     },
+  'IsRequired' => {
+                    'SchemaVersion' => 1
+                  },
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::Inspector::Tag',
+                           'type' => 'ArrayRef[Inspector_Tag]'
+                         },
+               'NetworkInterfaces' => {
+                                        'type' => 'ArrayRef[Inspector_NetworkInterface]',
+                                        'class' => 'Paws::Inspector::NetworkInterface'
+                                      },
+               'Hostname' => {
+                               'type' => 'Str'
+                             },
+               'AgentId' => {
+                              'type' => 'Str'
+                            },
+               'AutoScalingGroup' => {
+                                       'type' => 'Str'
+                                     },
+               'Ipv4Addresses' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'AmiId' => {
+                            'type' => 'Str'
+                          },
+               'SchemaVersion' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +126,7 @@ generated.
 generated.
 
 
-=head2 NetworkInterfaces => ArrayRef[L<Paws::Inspector::NetworkInterface>]
+=head2 NetworkInterfaces => ArrayRef[Inspector_NetworkInterface]
 
   An array of the network interfaces interacting with the EC2 instance
 where the finding is generated.
@@ -84,7 +137,7 @@ where the finding is generated.
   The schema version of this data type.
 
 
-=head2 Tags => ArrayRef[L<Paws::Inspector::Tag>]
+=head2 Tags => ArrayRef[Inspector_Tag]
 
   The tags related to the EC2 instance where the finding is generated.
 

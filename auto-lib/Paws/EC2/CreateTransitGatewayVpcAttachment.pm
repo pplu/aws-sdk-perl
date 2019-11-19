@@ -1,18 +1,55 @@
 
 package Paws::EC2::CreateTransitGatewayVpcAttachment;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Options => (is => 'ro', isa => 'Paws::EC2::CreateTransitGatewayVpcAttachmentRequestOptions');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]');
-  has TransitGatewayId => (is => 'ro', isa => 'Str', required => 1);
-  has VpcId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::EC2::Types qw/EC2_CreateTransitGatewayVpcAttachmentRequestOptions EC2_TagSpecification/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Options => (is => 'ro', isa => EC2_CreateTransitGatewayVpcAttachmentRequestOptions, predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_TagSpecification], predicate => 1);
+  has TransitGatewayId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VpcId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTransitGatewayVpcAttachment');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateTransitGatewayVpcAttachmentResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTransitGatewayVpcAttachment');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateTransitGatewayVpcAttachmentResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'Options' => {
+                              'type' => 'EC2_CreateTransitGatewayVpcAttachmentRequestOptions',
+                              'class' => 'Paws::EC2::CreateTransitGatewayVpcAttachmentRequestOptions'
+                            },
+               'TagSpecifications' => {
+                                        'type' => 'ArrayRef[EC2_TagSpecification]',
+                                        'class' => 'Paws::EC2::TagSpecification'
+                                      },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'TransitGatewayId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'VpcId' => 1,
+                    'TransitGatewayId' => 1,
+                    'SubnetIds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +116,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Options => L<Paws::EC2::CreateTransitGatewayVpcAttachmentRequestOptions>
+=head2 Options => EC2_CreateTransitGatewayVpcAttachmentRequestOptions
 
 The VPC attachment options.
 
@@ -94,7 +131,7 @@ transit gateway uses one IP address from each specified subnet.
 
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_TagSpecification]
 
 The tags to apply to the VPC attachment.
 

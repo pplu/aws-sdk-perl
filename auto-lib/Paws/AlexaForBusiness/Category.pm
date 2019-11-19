@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::Category;
-  use Moose;
-  has CategoryId => (is => 'ro', isa => 'Int');
-  has CategoryName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has CategoryId => (is => 'ro', isa => Int);
+  has CategoryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CategoryId' => {
+                                 'type' => 'Int'
+                               },
+               'CategoryName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,48 @@
+# Generated from default/object.tt
 package Paws::ECS::DockerVolumeConfiguration;
-  use Moose;
-  has Autoprovision => (is => 'ro', isa => 'Bool', request_name => 'autoprovision', traits => ['NameInRequest']);
-  has Driver => (is => 'ro', isa => 'Str', request_name => 'driver', traits => ['NameInRequest']);
-  has DriverOpts => (is => 'ro', isa => 'Paws::ECS::StringMap', request_name => 'driverOpts', traits => ['NameInRequest']);
-  has Labels => (is => 'ro', isa => 'Paws::ECS::StringMap', request_name => 'labels', traits => ['NameInRequest']);
-  has Scope => (is => 'ro', isa => 'Str', request_name => 'scope', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::ECS::Types qw/ECS_StringMap/;
+  has Autoprovision => (is => 'ro', isa => Bool);
+  has Driver => (is => 'ro', isa => Str);
+  has DriverOpts => (is => 'ro', isa => ECS_StringMap);
+  has Labels => (is => 'ro', isa => ECS_StringMap);
+  has Scope => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DriverOpts' => 'driverOpts',
+                       'Scope' => 'scope',
+                       'Driver' => 'driver',
+                       'Labels' => 'labels',
+                       'Autoprovision' => 'autoprovision'
+                     },
+  'types' => {
+               'Autoprovision' => {
+                                    'type' => 'Bool'
+                                  },
+               'Labels' => {
+                             'type' => 'ECS_StringMap',
+                             'class' => 'Paws::ECS::StringMap'
+                           },
+               'Driver' => {
+                             'type' => 'Str'
+                           },
+               'Scope' => {
+                            'type' => 'Str'
+                          },
+               'DriverOpts' => {
+                                 'class' => 'Paws::ECS::StringMap',
+                                 'type' => 'ECS_StringMap'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +107,7 @@ to docker volume create
 (https://docs.docker.com/engine/reference/commandline/volume_create/).
 
 
-=head2 DriverOpts => L<Paws::ECS::StringMap>
+=head2 DriverOpts => ECS_StringMap
 
   A map of Docker driver-specific options passed through. This parameter
 maps to C<DriverOpts> in the Create a volume
@@ -80,7 +118,7 @@ docker volume create
 (https://docs.docker.com/engine/reference/commandline/volume_create/).
 
 
-=head2 Labels => L<Paws::ECS::StringMap>
+=head2 Labels => ECS_StringMap
 
   Custom metadata to add to your Docker volume. This parameter maps to
 C<Labels> in the Create a volume

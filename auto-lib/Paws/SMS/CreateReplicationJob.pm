@@ -1,22 +1,81 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SMS::CreateReplicationJob;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has Encrypted => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'encrypted' );
-  has Frequency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'frequency' );
-  has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kmsKeyId' );
-  has LicenseType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'licenseType' );
-  has NumberOfRecentAmisToKeep => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfRecentAmisToKeep' );
-  has RoleName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleName' );
-  has RunOnce => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'runOnce' );
-  has SeedReplicationTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'seedReplicationTime' , required => 1);
-  has ServerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serverId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::SMS::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Encrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has Frequency => (is => 'ro', isa => Int, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has LicenseType => (is => 'ro', isa => Str, predicate => 1);
+  has NumberOfRecentAmisToKeep => (is => 'ro', isa => Int, predicate => 1);
+  has RoleName => (is => 'ro', isa => Str, predicate => 1);
+  has RunOnce => (is => 'ro', isa => Bool, predicate => 1);
+  has SeedReplicationTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateReplicationJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SMS::CreateReplicationJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateReplicationJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SMS::CreateReplicationJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LicenseType' => {
+                                  'type' => 'Str'
+                                },
+               'RunOnce' => {
+                              'type' => 'Bool'
+                            },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'ServerId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'SeedReplicationTime' => {
+                                          'type' => 'Str'
+                                        },
+               'NumberOfRecentAmisToKeep' => {
+                                               'type' => 'Int'
+                                             },
+               'Frequency' => {
+                                'type' => 'Int'
+                              }
+             },
+  'IsRequired' => {
+                    'ServerId' => 1,
+                    'SeedReplicationTime' => 1
+                  },
+  'NameInRequest' => {
+                       'LicenseType' => 'licenseType',
+                       'RunOnce' => 'runOnce',
+                       'ServerId' => 'serverId',
+                       'KmsKeyId' => 'kmsKeyId',
+                       'Description' => 'description',
+                       'Encrypted' => 'encrypted',
+                       'RoleName' => 'roleName',
+                       'NumberOfRecentAmisToKeep' => 'numberOfRecentAmisToKeep',
+                       'SeedReplicationTime' => 'seedReplicationTime',
+                       'Frequency' => 'frequency'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

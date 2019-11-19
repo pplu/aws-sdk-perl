@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::EventDescription;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str');
-  has EnvironmentName => (is => 'ro', isa => 'Str');
-  has EventDate => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has PlatformArn => (is => 'ro', isa => 'Str');
-  has RequestId => (is => 'ro', isa => 'Str');
-  has Severity => (is => 'ro', isa => 'Str');
-  has TemplateName => (is => 'ro', isa => 'Str');
-  has VersionLabel => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ApplicationName => (is => 'ro', isa => Str);
+  has EnvironmentName => (is => 'ro', isa => Str);
+  has EventDate => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has PlatformArn => (is => 'ro', isa => Str);
+  has RequestId => (is => 'ro', isa => Str);
+  has Severity => (is => 'ro', isa => Str);
+  has TemplateName => (is => 'ro', isa => Str);
+  has VersionLabel => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EnvironmentName' => {
+                                      'type' => 'Str'
+                                    },
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'EventDate' => {
+                                'type' => 'Str'
+                              },
+               'Severity' => {
+                               'type' => 'Str'
+                             },
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'VersionLabel' => {
+                                   'type' => 'Str'
+                                 },
+               'PlatformArn' => {
+                                  'type' => 'Str'
+                                },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

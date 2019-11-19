@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::StepFunctions::TaskSubmittedEventDetails;
-  use Moose;
-  has Output => (is => 'ro', isa => 'Str', request_name => 'output', traits => ['NameInRequest']);
-  has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest'], required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has Output => (is => 'ro', isa => Str);
+  has Resource => (is => 'ro', isa => Str, required => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Resource' => 1,
+                    'ResourceType' => 1
+                  },
+  'NameInRequest' => {
+                       'ResourceType' => 'resourceType',
+                       'Resource' => 'resource',
+                       'Output' => 'output'
+                     },
+  'types' => {
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Resource' => {
+                               'type' => 'Str'
+                             },
+               'Output' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

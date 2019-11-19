@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::Amplify::ProductionBranch;
-  use Moose;
-  has BranchName => (is => 'ro', isa => 'Str', request_name => 'branchName', traits => ['NameInRequest']);
-  has LastDeployTime => (is => 'ro', isa => 'Str', request_name => 'lastDeployTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has ThumbnailUrl => (is => 'ro', isa => 'Str', request_name => 'thumbnailUrl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw//;
+  has BranchName => (is => 'ro', isa => Str);
+  has LastDeployTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has ThumbnailUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ThumbnailUrl' => 'thumbnailUrl',
+                       'LastDeployTime' => 'lastDeployTime',
+                       'BranchName' => 'branchName',
+                       'Status' => 'status'
+                     },
+  'types' => {
+               'ThumbnailUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'LastDeployTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'BranchName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

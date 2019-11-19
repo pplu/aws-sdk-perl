@@ -1,12 +1,57 @@
+# Generated from default/object.tt
 package Paws::CloudFront::StreamingDistribution;
-  use Moose;
-  has ActiveTrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::ActiveTrustedSigners', required => 1);
-  has ARN => (is => 'ro', isa => 'Str', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has StreamingDistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistributionConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_StreamingDistributionConfig CloudFront_ActiveTrustedSigners/;
+  has ActiveTrustedSigners => (is => 'ro', isa => CloudFront_ActiveTrustedSigners, required => 1);
+  has ARN => (is => 'ro', isa => Str, required => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has StreamingDistributionConfig => (is => 'ro', isa => CloudFront_StreamingDistributionConfig, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamingDistributionConfig' => {
+                                                  'type' => 'CloudFront_StreamingDistributionConfig',
+                                                  'class' => 'Paws::CloudFront::StreamingDistributionConfig'
+                                                },
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               'ActiveTrustedSigners' => {
+                                           'type' => 'CloudFront_ActiveTrustedSigners',
+                                           'class' => 'Paws::CloudFront::ActiveTrustedSigners'
+                                         },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'IsRequired' => {
+                    'ActiveTrustedSigners' => 1,
+                    'DomainName' => 1,
+                    'StreamingDistributionConfig' => 1,
+                    'ARN' => 1,
+                    'Id' => 1,
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +89,7 @@ content delivery.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ActiveTrustedSigners => L<Paws::CloudFront::ActiveTrustedSigners>
+=head2 B<REQUIRED> ActiveTrustedSigners => CloudFront_ActiveTrustedSigners
 
   A complex type that lists the AWS accounts, if any, that you included
 in the C<TrustedSigners> complex type for this distribution. These are
@@ -94,7 +139,7 @@ C<Deployed>, the distribution's information is propagated to all
 CloudFront edge locations.
 
 
-=head2 B<REQUIRED> StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
+=head2 B<REQUIRED> StreamingDistributionConfig => CloudFront_StreamingDistributionConfig
 
   The current configuration information for the RTMP distribution.
 

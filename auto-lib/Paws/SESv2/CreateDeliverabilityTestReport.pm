@@ -1,17 +1,47 @@
 
 package Paws::SESv2::CreateDeliverabilityTestReport;
-  use Moose;
-  has Content => (is => 'ro', isa => 'Paws::SESv2::EmailContent', required => 1);
-  has FromEmailAddress => (is => 'ro', isa => 'Str', required => 1);
-  has ReportName => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SESv2::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SESv2::Types qw/SESv2_EmailContent SESv2_Tag/;
+  has Content => (is => 'ro', isa => SESv2_EmailContent, required => 1, predicate => 1);
+  has FromEmailAddress => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReportName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SESv2_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeliverabilityTestReport');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/deliverability-dashboard/test');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::CreateDeliverabilityTestReportResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDeliverabilityTestReport');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/deliverability-dashboard/test');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::CreateDeliverabilityTestReportResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[SESv2_Tag]',
+                           'class' => 'Paws::SESv2::Tag'
+                         },
+               'ReportName' => {
+                                 'type' => 'Str'
+                               },
+               'FromEmailAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'Content' => {
+                              'type' => 'SESv2_EmailContent',
+                              'class' => 'Paws::SESv2::EmailContent'
+                            }
+             },
+  'IsRequired' => {
+                    'Content' => 1,
+                    'FromEmailAddress' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +115,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Content => L<Paws::SESv2::EmailContent>
+=head2 B<REQUIRED> Content => SESv2_EmailContent
 
 The HTML body of the message that you sent when you performed the
 predictive inbox placement test.
@@ -106,7 +136,7 @@ test when you retrieve the results.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SESv2::Tag>]
+=head2 Tags => ArrayRef[SESv2_Tag]
 
 An array of objects that define the tags (keys and values) that you
 want to associate with the predictive inbox placement test.

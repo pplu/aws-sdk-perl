@@ -1,14 +1,34 @@
+# Generated from json/callargs_class.tt
 
 package Paws::EMR::ModifyInstanceGroups;
-  use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str');
-  has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Paws::EMR::InstanceGroupModifyConfig]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EMR::Types qw/EMR_InstanceGroupModifyConfig/;
+  has ClusterId => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceGroups => (is => 'ro', isa => ArrayRef[EMR_InstanceGroupModifyConfig], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyInstanceGroups');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyInstanceGroups');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceGroups' => {
+                                     'type' => 'ArrayRef[EMR_InstanceGroupModifyConfig]',
+                                     'class' => 'Paws::EMR::InstanceGroupModifyConfig'
+                                   },
+               'ClusterId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -35,18 +55,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           InstanceGroupId => 'MyXmlStringMaxLen256',    # max: 256
           Configurations  => [
             {
-              Classification => 'MyString',             # OPTIONAL
+              Classification => 'MyString',
               Configurations => <ConfigurationList>,
-              Properties     => {
-                'MyString' => 'MyString',    # key: OPTIONAL, value: OPTIONAL
-              },    # OPTIONAL
+              Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
-          EC2InstanceIdsToTerminate => [ 'MyInstanceId', ... ],    # OPTIONAL
-          InstanceCount             => 1,                          # OPTIONAL
+          ],                                                      # OPTIONAL
+          EC2InstanceIdsToTerminate => [ 'MyInstanceId', ... ],   # OPTIONAL
+          InstanceCount             => 1,                         # OPTIONAL
           ShrinkPolicy              => {
-            DecommissionTimeout  => 1,                             # OPTIONAL
+            DecommissionTimeout  => 1,                            # OPTIONAL
             InstanceResizePolicy => {
               InstanceTerminationTimeout => 1,                        # OPTIONAL
               InstancesToProtect         => [ 'MyInstanceId', ... ],  # OPTIONAL
@@ -70,7 +88,7 @@ The ID of the cluster to which the instance group belongs.
 
 
 
-=head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupModifyConfig>]
+=head2 InstanceGroups => ArrayRef[EMR_InstanceGroupModifyConfig]
 
 Instance groups to change.
 

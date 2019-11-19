@@ -1,18 +1,52 @@
 
 package Paws::IoT::ListThingGroups;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NamePrefixFilter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'namePrefixFilter');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has ParentGroup => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'parentGroup');
-  has Recursive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'recursive');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::IoT::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NamePrefixFilter => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ParentGroup => (is => 'ro', isa => Str, predicate => 1);
+  has Recursive => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListThingGroups');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/thing-groups');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListThingGroupsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListThingGroups');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/thing-groups');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListThingGroupsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Recursive' => {
+                                'type' => 'Bool'
+                              },
+               'ParentGroup' => {
+                                  'type' => 'Str'
+                                },
+               'NamePrefixFilter' => {
+                                       'type' => 'Str'
+                                     },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInQuery' => {
+                      'NamePrefixFilter' => 'namePrefixFilter',
+                      'MaxResults' => 'maxResults',
+                      'NextToken' => 'nextToken',
+                      'Recursive' => 'recursive',
+                      'ParentGroup' => 'parentGroup'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::SearchRooms;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Filter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SortCriteria => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Sort]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_Sort AlexaForBusiness_Filter/;
+  has Filters => (is => 'ro', isa => ArrayRef[AlexaForBusiness_Filter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SortCriteria => (is => 'ro', isa => ArrayRef[AlexaForBusiness_Sort], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SearchRooms');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::SearchRoomsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SearchRooms');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::SearchRoomsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SortCriteria' => {
+                                   'class' => 'Paws::AlexaForBusiness::Sort',
+                                   'type' => 'ArrayRef[AlexaForBusiness_Sort]'
+                                 },
+               'Filters' => {
+                              'type' => 'ArrayRef[AlexaForBusiness_Filter]',
+                              'class' => 'Paws::AlexaForBusiness::Filter'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +93,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]
+=head2 Filters => ArrayRef[AlexaForBusiness_Filter]
 
 The filters to use to list a specified set of rooms. The supported
 filter keys are RoomName and ProfileName.
@@ -91,7 +118,7 @@ specified by C<MaxResults>.
 
 
 
-=head2 SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]
+=head2 SortCriteria => ArrayRef[AlexaForBusiness_Sort]
 
 The sort order to use in listing the specified set of rooms. The
 supported sort keys are RoomName and ProfileName.

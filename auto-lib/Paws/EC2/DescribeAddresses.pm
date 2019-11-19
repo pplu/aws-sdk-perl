@@ -1,16 +1,47 @@
 
 package Paws::EC2::DescribeAddresses;
-  use Moose;
-  has AllocationIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AllocationId' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has PublicIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'PublicIp' );
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_Filter/;
+  has AllocationIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
+  has PublicIps => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAddresses');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeAddressesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAddresses');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeAddressesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'AllocationIds' => 'AllocationId',
+                       'Filters' => 'Filter',
+                       'PublicIps' => 'PublicIp'
+                     },
+  'types' => {
+               'PublicIps' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'AllocationIds' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Filters' => {
+                              'class' => 'Paws::EC2::Filter',
+                              'type' => 'ArrayRef[EC2_Filter]'
+                            },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +125,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+=head2 Filters => ArrayRef[EC2_Filter]
 
 One or more filters. Filter names and values are case-sensitive.
 

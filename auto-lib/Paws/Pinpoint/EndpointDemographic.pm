@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EndpointDemographic;
-  use Moose;
-  has AppVersion => (is => 'ro', isa => 'Str');
-  has Locale => (is => 'ro', isa => 'Str');
-  has Make => (is => 'ro', isa => 'Str');
-  has Model => (is => 'ro', isa => 'Str');
-  has ModelVersion => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
-  has PlatformVersion => (is => 'ro', isa => 'Str');
-  has Timezone => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has AppVersion => (is => 'ro', isa => Str);
+  has Locale => (is => 'ro', isa => Str);
+  has Make => (is => 'ro', isa => Str);
+  has Model => (is => 'ro', isa => Str);
+  has ModelVersion => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has PlatformVersion => (is => 'ro', isa => Str);
+  has Timezone => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ModelVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'Make' => {
+                           'type' => 'Str'
+                         },
+               'AppVersion' => {
+                                 'type' => 'Str'
+                               },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'Model' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

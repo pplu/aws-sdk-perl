@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListJobsResult;
-  use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Job]', traits => ['NameInRequest'], request_name => 'jobs' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Job/;
+  has Jobs => (is => 'ro', isa => ArrayRef[DeviceFarm_Job]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Jobs' => {
+                           'class' => 'Paws::DeviceFarm::Job',
+                           'type' => 'ArrayRef[DeviceFarm_Job]'
+                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Jobs' => 'jobs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::DeviceFarm::ListJobsResult
 =head1 ATTRIBUTES
 
 
-=head2 Jobs => ArrayRef[L<Paws::DeviceFarm::Job>]
+=head2 Jobs => ArrayRef[DeviceFarm_Job]
 
 Information about the jobs.
 

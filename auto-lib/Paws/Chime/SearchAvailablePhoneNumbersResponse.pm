@@ -1,9 +1,26 @@
 
 package Paws::Chime::SearchAvailablePhoneNumbersResponse;
-  use Moose;
-  has E164PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Chime::Types qw//;
+  has E164PhoneNumbers => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'E164PhoneNumbers' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

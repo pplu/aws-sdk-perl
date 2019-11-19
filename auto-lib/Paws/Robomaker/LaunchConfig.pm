@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::Robomaker::LaunchConfig;
-  use Moose;
-  has EnvironmentVariables => (is => 'ro', isa => 'Paws::Robomaker::EnvironmentVariableMap', request_name => 'environmentVariables', traits => ['NameInRequest']);
-  has LaunchFile => (is => 'ro', isa => 'Str', request_name => 'launchFile', traits => ['NameInRequest'], required => 1);
-  has PackageName => (is => 'ro', isa => 'Str', request_name => 'packageName', traits => ['NameInRequest'], required => 1);
-  has PortForwardingConfig => (is => 'ro', isa => 'Paws::Robomaker::PortForwardingConfig', request_name => 'portForwardingConfig', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw/Robomaker_EnvironmentVariableMap Robomaker_PortForwardingConfig/;
+  has EnvironmentVariables => (is => 'ro', isa => Robomaker_EnvironmentVariableMap);
+  has LaunchFile => (is => 'ro', isa => Str, required => 1);
+  has PackageName => (is => 'ro', isa => Str, required => 1);
+  has PortForwardingConfig => (is => 'ro', isa => Robomaker_PortForwardingConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchFile' => {
+                                 'type' => 'Str'
+                               },
+               'PackageName' => {
+                                  'type' => 'Str'
+                                },
+               'EnvironmentVariables' => {
+                                           'class' => 'Paws::Robomaker::EnvironmentVariableMap',
+                                           'type' => 'Robomaker_EnvironmentVariableMap'
+                                         },
+               'PortForwardingConfig' => {
+                                           'class' => 'Paws::Robomaker::PortForwardingConfig',
+                                           'type' => 'Robomaker_PortForwardingConfig'
+                                         }
+             },
+  'IsRequired' => {
+                    'PackageName' => 1,
+                    'LaunchFile' => 1
+                  },
+  'NameInRequest' => {
+                       'EnvironmentVariables' => 'environmentVariables',
+                       'PortForwardingConfig' => 'portForwardingConfig',
+                       'LaunchFile' => 'launchFile',
+                       'PackageName' => 'packageName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +77,7 @@ Information about a launch configuration.
 =head1 ATTRIBUTES
 
 
-=head2 EnvironmentVariables => L<Paws::Robomaker::EnvironmentVariableMap>
+=head2 EnvironmentVariables => Robomaker_EnvironmentVariableMap
 
   The environment variables for the application launch.
 
@@ -54,7 +92,7 @@ Information about a launch configuration.
   The package name.
 
 
-=head2 PortForwardingConfig => L<Paws::Robomaker::PortForwardingConfig>
+=head2 PortForwardingConfig => Robomaker_PortForwardingConfig
 
   The port forwarding configuration.
 

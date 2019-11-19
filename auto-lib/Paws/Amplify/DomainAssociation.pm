@@ -1,12 +1,65 @@
+# Generated from default/object.tt
 package Paws::Amplify::DomainAssociation;
-  use Moose;
-  has CertificateVerificationDNSRecord => (is => 'ro', isa => 'Str', request_name => 'certificateVerificationDNSRecord', traits => ['NameInRequest']);
-  has DomainAssociationArn => (is => 'ro', isa => 'Str', request_name => 'domainAssociationArn', traits => ['NameInRequest'], required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', request_name => 'domainName', traits => ['NameInRequest'], required => 1);
-  has DomainStatus => (is => 'ro', isa => 'Str', request_name => 'domainStatus', traits => ['NameInRequest'], required => 1);
-  has EnableAutoSubDomain => (is => 'ro', isa => 'Bool', request_name => 'enableAutoSubDomain', traits => ['NameInRequest'], required => 1);
-  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest'], required => 1);
-  has SubDomains => (is => 'ro', isa => 'ArrayRef[Paws::Amplify::SubDomain]', request_name => 'subDomains', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::Amplify::Types qw/Amplify_SubDomain/;
+  has CertificateVerificationDNSRecord => (is => 'ro', isa => Str);
+  has DomainAssociationArn => (is => 'ro', isa => Str, required => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has DomainStatus => (is => 'ro', isa => Str, required => 1);
+  has EnableAutoSubDomain => (is => 'ro', isa => Bool, required => 1);
+  has StatusReason => (is => 'ro', isa => Str, required => 1);
+  has SubDomains => (is => 'ro', isa => ArrayRef[Amplify_SubDomain], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SubDomains' => 1,
+                    'StatusReason' => 1,
+                    'DomainStatus' => 1,
+                    'EnableAutoSubDomain' => 1,
+                    'DomainAssociationArn' => 1,
+                    'DomainName' => 1
+                  },
+  'NameInRequest' => {
+                       'CertificateVerificationDNSRecord' => 'certificateVerificationDNSRecord',
+                       'DomainAssociationArn' => 'domainAssociationArn',
+                       'EnableAutoSubDomain' => 'enableAutoSubDomain',
+                       'SubDomains' => 'subDomains',
+                       'DomainName' => 'domainName',
+                       'DomainStatus' => 'domainStatus',
+                       'StatusReason' => 'statusReason'
+                     },
+  'types' => {
+               'CertificateVerificationDNSRecord' => {
+                                                       'type' => 'Str'
+                                                     },
+               'EnableAutoSubDomain' => {
+                                          'type' => 'Bool'
+                                        },
+               'DomainAssociationArn' => {
+                                           'type' => 'Str'
+                                         },
+               'SubDomains' => {
+                                 'type' => 'ArrayRef[Amplify_SubDomain]',
+                                 'class' => 'Paws::Amplify::SubDomain'
+                               },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'DomainStatus' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +127,7 @@ supported)
   Reason for the current status of the Domain Association.
 
 
-=head2 B<REQUIRED> SubDomains => ArrayRef[L<Paws::Amplify::SubDomain>]
+=head2 B<REQUIRED> SubDomains => ArrayRef[Amplify_SubDomain]
 
   Subdomains for the Domain Association.
 

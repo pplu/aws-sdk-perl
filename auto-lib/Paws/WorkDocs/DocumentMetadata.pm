@@ -1,13 +1,52 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::DocumentMetadata;
-  use Moose;
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has CreatorId => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has LatestVersionMetadata => (is => 'ro', isa => 'Paws::WorkDocs::DocumentVersionMetadata');
-  has ModifiedTimestamp => (is => 'ro', isa => 'Str');
-  has ParentFolderId => (is => 'ro', isa => 'Str');
-  has ResourceState => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::WorkDocs::Types qw/WorkDocs_DocumentVersionMetadata/;
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has CreatorId => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Labels => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LatestVersionMetadata => (is => 'ro', isa => WorkDocs_DocumentVersionMetadata);
+  has ModifiedTimestamp => (is => 'ro', isa => Str);
+  has ParentFolderId => (is => 'ro', isa => Str);
+  has ResourceState => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatorId' => {
+                                'type' => 'Str'
+                              },
+               'ModifiedTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'ParentFolderId' => {
+                                     'type' => 'Str'
+                                   },
+               'LatestVersionMetadata' => {
+                                            'type' => 'WorkDocs_DocumentVersionMetadata',
+                                            'class' => 'Paws::WorkDocs::DocumentVersionMetadata'
+                                          },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'Labels' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'ResourceState' => {
+                                    'type' => 'Str'
+                                  },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +102,7 @@ Describes the document.
   List of labels on the document.
 
 
-=head2 LatestVersionMetadata => L<Paws::WorkDocs::DocumentVersionMetadata>
+=head2 LatestVersionMetadata => WorkDocs_DocumentVersionMetadata
 
   The latest version of the document.
 

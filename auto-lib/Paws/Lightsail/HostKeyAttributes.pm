@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::Lightsail::HostKeyAttributes;
-  use Moose;
-  has Algorithm => (is => 'ro', isa => 'Str', request_name => 'algorithm', traits => ['NameInRequest']);
-  has FingerprintSHA1 => (is => 'ro', isa => 'Str', request_name => 'fingerprintSHA1', traits => ['NameInRequest']);
-  has FingerprintSHA256 => (is => 'ro', isa => 'Str', request_name => 'fingerprintSHA256', traits => ['NameInRequest']);
-  has NotValidAfter => (is => 'ro', isa => 'Str', request_name => 'notValidAfter', traits => ['NameInRequest']);
-  has NotValidBefore => (is => 'ro', isa => 'Str', request_name => 'notValidBefore', traits => ['NameInRequest']);
-  has PublicKey => (is => 'ro', isa => 'Str', request_name => 'publicKey', traits => ['NameInRequest']);
-  has WitnessedAt => (is => 'ro', isa => 'Str', request_name => 'witnessedAt', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has Algorithm => (is => 'ro', isa => Str);
+  has FingerprintSHA1 => (is => 'ro', isa => Str);
+  has FingerprintSHA256 => (is => 'ro', isa => Str);
+  has NotValidAfter => (is => 'ro', isa => Str);
+  has NotValidBefore => (is => 'ro', isa => Str);
+  has PublicKey => (is => 'ro', isa => Str);
+  has WitnessedAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotValidAfter' => {
+                                    'type' => 'Str'
+                                  },
+               'WitnessedAt' => {
+                                  'type' => 'Str'
+                                },
+               'FingerprintSHA1' => {
+                                      'type' => 'Str'
+                                    },
+               'PublicKey' => {
+                                'type' => 'Str'
+                              },
+               'Algorithm' => {
+                                'type' => 'Str'
+                              },
+               'NotValidBefore' => {
+                                     'type' => 'Str'
+                                   },
+               'FingerprintSHA256' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'NotValidBefore' => 'notValidBefore',
+                       'FingerprintSHA256' => 'fingerprintSHA256',
+                       'WitnessedAt' => 'witnessedAt',
+                       'FingerprintSHA1' => 'fingerprintSHA1',
+                       'NotValidAfter' => 'notValidAfter',
+                       'Algorithm' => 'algorithm',
+                       'PublicKey' => 'publicKey'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

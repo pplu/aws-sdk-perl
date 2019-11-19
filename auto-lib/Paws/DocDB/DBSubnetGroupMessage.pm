@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::DocDB::DBSubnetGroupMessage;
-  use Moose;
-  has DBSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::DBSubnetGroup]', request_name => 'DBSubnetGroup', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DocDB::Types qw/DocDB_DBSubnetGroup/;
+  has DBSubnetGroups => (is => 'ro', isa => ArrayRef[DocDB_DBSubnetGroup]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DBSubnetGroups' => 'DBSubnetGroup'
+                     },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DBSubnetGroups' => {
+                                     'type' => 'ArrayRef[DocDB_DBSubnetGroup]',
+                                     'class' => 'Paws::DocDB::DBSubnetGroup'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::DocDB::DBSubnetGroupMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBSubnetGroups => ArrayRef[L<Paws::DocDB::DBSubnetGroup>]
+=head2 DBSubnetGroups => ArrayRef[DocDB_DBSubnetGroup]
 
 Detailed information about one or more DB subnet groups.
 

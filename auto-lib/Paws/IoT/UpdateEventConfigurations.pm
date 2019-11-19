@@ -1,14 +1,33 @@
 
 package Paws::IoT::UpdateEventConfigurations;
-  use Moose;
-  has EventConfigurations => (is => 'ro', isa => 'Paws::IoT::EventConfigurations', traits => ['NameInRequest'], request_name => 'eventConfigurations');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_EventConfigurations/;
+  has EventConfigurations => (is => 'ro', isa => IoT_EventConfigurations, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEventConfigurations');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/event-configurations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::UpdateEventConfigurationsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateEventConfigurations');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/event-configurations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::UpdateEventConfigurationsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EventConfigurations' => 'eventConfigurations'
+                     },
+  'types' => {
+               'EventConfigurations' => {
+                                          'type' => 'IoT_EventConfigurations',
+                                          'class' => 'Paws::IoT::EventConfigurations'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +61,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 EventConfigurations => L<Paws::IoT::EventConfigurations>
+=head2 EventConfigurations => IoT_EventConfigurations
 
 The new event configuration values.
 

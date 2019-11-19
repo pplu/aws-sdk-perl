@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Mp2Settings;
-  use Moose;
-  has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
-  has Channels => (is => 'ro', isa => 'Int', request_name => 'channels', traits => ['NameInRequest']);
-  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has Bitrate => (is => 'ro', isa => Int);
+  has Channels => (is => 'ro', isa => Int);
+  has SampleRate => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Bitrate' => {
+                              'type' => 'Int'
+                            },
+               'Channels' => {
+                               'type' => 'Int'
+                             },
+               'SampleRate' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'Bitrate' => 'bitrate',
+                       'Channels' => 'channels',
+                       'SampleRate' => 'sampleRate'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,59 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::CacheNodeTypeSpecificParameter;
-  use Moose;
-  has AllowedValues => (is => 'ro', isa => 'Str');
-  has CacheNodeTypeSpecificValues => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificValue]', request_name => 'CacheNodeTypeSpecificValue', traits => ['NameInRequest']);
-  has ChangeType => (is => 'ro', isa => 'Str');
-  has DataType => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has IsModifiable => (is => 'ro', isa => 'Bool');
-  has MinimumEngineVersion => (is => 'ro', isa => 'Str');
-  has ParameterName => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::ElastiCache::Types qw/ElastiCache_CacheNodeTypeSpecificValue/;
+  has AllowedValues => (is => 'ro', isa => Str);
+  has CacheNodeTypeSpecificValues => (is => 'ro', isa => ArrayRef[ElastiCache_CacheNodeTypeSpecificValue]);
+  has ChangeType => (is => 'ro', isa => Str);
+  has DataType => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IsModifiable => (is => 'ro', isa => Bool);
+  has MinimumEngineVersion => (is => 'ro', isa => Str);
+  has ParameterName => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'MinimumEngineVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'AllowedValues' => {
+                                    'type' => 'Str'
+                                  },
+               'ChangeType' => {
+                                 'type' => 'Str'
+                               },
+               'IsModifiable' => {
+                                   'type' => 'Bool'
+                                 },
+               'DataType' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CacheNodeTypeSpecificValues' => {
+                                                  'type' => 'ArrayRef[ElastiCache_CacheNodeTypeSpecificValue]',
+                                                  'class' => 'Paws::ElastiCache::CacheNodeTypeSpecificValue'
+                                                },
+               'ParameterName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'CacheNodeTypeSpecificValues' => 'CacheNodeTypeSpecificValue'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +97,7 @@ C<cache.m1.small> type.
   The valid range of values for the parameter.
 
 
-=head2 CacheNodeTypeSpecificValues => ArrayRef[L<Paws::ElastiCache::CacheNodeTypeSpecificValue>]
+=head2 CacheNodeTypeSpecificValues => ArrayRef[ElastiCache_CacheNodeTypeSpecificValue]
 
   A list of cache node types and their corresponding values for this
 parameter.

@@ -1,15 +1,39 @@
 
 package Paws::SESv2::PutConfigurationSetTrackingOptions;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ConfigurationSetName', required => 1);
-  has CustomRedirectDomain => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw//;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CustomRedirectDomain => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutConfigurationSetTrackingOptions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/configuration-sets/{ConfigurationSetName}/tracking-options');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::PutConfigurationSetTrackingOptionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutConfigurationSetTrackingOptions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/configuration-sets/{ConfigurationSetName}/tracking-options');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::PutConfigurationSetTrackingOptionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ConfigurationSetName' => 'ConfigurationSetName'
+                  },
+  'types' => {
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'CustomRedirectDomain' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

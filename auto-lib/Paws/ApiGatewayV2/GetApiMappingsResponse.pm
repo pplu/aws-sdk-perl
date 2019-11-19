@@ -1,10 +1,35 @@
 
 package Paws::ApiGatewayV2::GetApiMappingsResponse;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::ApiMapping]', traits => ['NameInRequest'], request_name => 'items');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_ApiMapping/;
+  has Items => (is => 'ro', isa => ArrayRef[ApiGatewayV2_ApiMapping]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Items' => 'items',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Items' => {
+                            'type' => 'ArrayRef[ApiGatewayV2_ApiMapping]',
+                            'class' => 'Paws::ApiGatewayV2::ApiMapping'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::ApiGatewayV2::GetApiMappingsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::ApiGatewayV2::ApiMapping>]
+=head2 Items => ArrayRef[ApiGatewayV2_ApiMapping]
 
 The elements from this collection.
 

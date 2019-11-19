@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Personalize::ListBatchInferenceJobsResponse;
-  use Moose;
-  has BatchInferenceJobs => (is => 'ro', isa => 'ArrayRef[Paws::Personalize::BatchInferenceJobSummary]', traits => ['NameInRequest'], request_name => 'batchInferenceJobs' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Personalize::Types qw/Personalize_BatchInferenceJobSummary/;
+  has BatchInferenceJobs => (is => 'ro', isa => ArrayRef[Personalize_BatchInferenceJobSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'BatchInferenceJobs' => {
+                                         'class' => 'Paws::Personalize::BatchInferenceJobSummary',
+                                         'type' => 'ArrayRef[Personalize_BatchInferenceJobSummary]'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'BatchInferenceJobs' => 'batchInferenceJobs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Personalize::ListBatchInferenceJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 BatchInferenceJobs => ArrayRef[L<Paws::Personalize::BatchInferenceJobSummary>]
+=head2 BatchInferenceJobs => ArrayRef[Personalize_BatchInferenceJobSummary]
 
 A list containing information on each job that is returned.
 

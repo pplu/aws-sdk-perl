@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::XRay::ResponseTimeRootCause;
-  use Moose;
-  has Services => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ResponseTimeRootCauseService]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::XRay::Types qw/XRay_ResponseTimeRootCauseService/;
+  has Services => (is => 'ro', isa => ArrayRef[XRay_ResponseTimeRootCauseService]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Services' => {
+                               'class' => 'Paws::XRay::ResponseTimeRootCauseService',
+                               'type' => 'ArrayRef[XRay_ResponseTimeRootCauseService]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ The root cause information for a response time warning.
 =head1 ATTRIBUTES
 
 
-=head2 Services => ArrayRef[L<Paws::XRay::ResponseTimeRootCauseService>]
+=head2 Services => ArrayRef[XRay_ResponseTimeRootCauseService]
 
   A list of corresponding services. A service identifies a segment and
 contains a name, account ID, type, and inferred flag.

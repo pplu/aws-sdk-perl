@@ -1,17 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Datasync::UpdateTask;
-  use Moose;
-  has CloudWatchLogGroupArn => (is => 'ro', isa => 'Str');
-  has Excludes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
-  has Name => (is => 'ro', isa => 'Str');
-  has Options => (is => 'ro', isa => 'Paws::Datasync::Options');
-  has TaskArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Datasync::Types qw/Datasync_Options Datasync_FilterRule/;
+  has CloudWatchLogGroupArn => (is => 'ro', isa => Str, predicate => 1);
+  has Excludes => (is => 'ro', isa => ArrayRef[Datasync_FilterRule], predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Options => (is => 'ro', isa => Datasync_Options, predicate => 1);
+  has TaskArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Datasync::UpdateTaskResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Datasync::UpdateTaskResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Options' => {
+                              'class' => 'Paws::Datasync::Options',
+                              'type' => 'Datasync_Options'
+                            },
+               'Excludes' => {
+                               'type' => 'ArrayRef[Datasync_FilterRule]',
+                               'class' => 'Paws::Datasync::FilterRule'
+                             },
+               'CloudWatchLogGroupArn' => {
+                                            'type' => 'Str'
+                                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'TaskArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +106,7 @@ LogGroup.
 
 
 
-=head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
+=head2 Excludes => ArrayRef[Datasync_FilterRule]
 
 A list of filter rules that determines which files to exclude from a
 task. The list should contain a single filter string that consists of
@@ -88,7 +121,7 @@ The name of the task to update.
 
 
 
-=head2 Options => L<Paws::Datasync::Options>
+=head2 Options => Datasync_Options
 
 
 

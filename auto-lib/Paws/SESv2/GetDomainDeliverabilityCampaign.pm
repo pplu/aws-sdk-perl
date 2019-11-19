@@ -1,14 +1,35 @@
 
 package Paws::SESv2::GetDomainDeliverabilityCampaign;
-  use Moose;
-  has CampaignId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CampaignId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw//;
+  has CampaignId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDomainDeliverabilityCampaign');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/email/deliverability-dashboard/campaigns/{CampaignId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SESv2::GetDomainDeliverabilityCampaignResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDomainDeliverabilityCampaign');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/email/deliverability-dashboard/campaigns/{CampaignId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SESv2::GetDomainDeliverabilityCampaignResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'CampaignId' => 'CampaignId'
+                  },
+  'types' => {
+               'CampaignId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'CampaignId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

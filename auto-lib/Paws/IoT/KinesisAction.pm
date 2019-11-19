@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::IoT::KinesisAction;
-  use Moose;
-  has PartitionKey => (is => 'ro', isa => 'Str', request_name => 'partitionKey', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has PartitionKey => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has StreamName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StreamName' => 1,
+                    'RoleArn' => 1
+                  },
+  'NameInRequest' => {
+                       'StreamName' => 'streamName',
+                       'PartitionKey' => 'partitionKey',
+                       'RoleArn' => 'roleArn'
+                     },
+  'types' => {
+               'StreamName' => {
+                                 'type' => 'Str'
+                               },
+               'PartitionKey' => {
+                                   'type' => 'Str'
+                                 },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

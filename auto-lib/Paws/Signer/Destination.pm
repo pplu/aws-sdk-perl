@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Signer::Destination;
-  use Moose;
-  has S3 => (is => 'ro', isa => 'Paws::Signer::S3Destination', request_name => 's3', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Signer::Types qw/Signer_S3Destination/;
+  has S3 => (is => 'ro', isa => Signer_S3Destination);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3' => {
+                         'type' => 'Signer_S3Destination',
+                         'class' => 'Paws::Signer::S3Destination'
+                       }
+             },
+  'NameInRequest' => {
+                       'S3' => 's3'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ your S3 bucket.
 =head1 ATTRIBUTES
 
 
-=head2 S3 => L<Paws::Signer::S3Destination>
+=head2 S3 => Signer_S3Destination
 
   The C<S3Destination> object.
 

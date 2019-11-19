@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::MediaTailor::TagsModel;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::MediaTailor::__mapOf__string', request_name => 'tags', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaTailor::Types qw/MediaTailor___mapOf__string/;
+  has Tags => (is => 'ro', isa => MediaTailor___mapOf__string, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'MediaTailor___mapOf__string',
+                           'class' => 'Paws::MediaTailor::__mapOf__string'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ A set of tags assigned to a resource.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Tags => L<Paws::MediaTailor::__mapOf__string>
+=head2 B<REQUIRED> Tags => MediaTailor___mapOf__string
 
   A comma-separated list of tag key:value pairs. For example: { "Key1":
 "Value1", "Key2": "Value2" }

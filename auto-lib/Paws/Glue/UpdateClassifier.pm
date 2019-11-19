@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::UpdateClassifier;
-  use Moose;
-  has CsvClassifier => (is => 'ro', isa => 'Paws::Glue::UpdateCsvClassifierRequest');
-  has GrokClassifier => (is => 'ro', isa => 'Paws::Glue::UpdateGrokClassifierRequest');
-  has JsonClassifier => (is => 'ro', isa => 'Paws::Glue::UpdateJsonClassifierRequest');
-  has XMLClassifier => (is => 'ro', isa => 'Paws::Glue::UpdateXMLClassifierRequest');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_UpdateGrokClassifierRequest Glue_UpdateXMLClassifierRequest Glue_UpdateJsonClassifierRequest Glue_UpdateCsvClassifierRequest/;
+  has CsvClassifier => (is => 'ro', isa => Glue_UpdateCsvClassifierRequest, predicate => 1);
+  has GrokClassifier => (is => 'ro', isa => Glue_UpdateGrokClassifierRequest, predicate => 1);
+  has JsonClassifier => (is => 'ro', isa => Glue_UpdateJsonClassifierRequest, predicate => 1);
+  has XMLClassifier => (is => 'ro', isa => Glue_UpdateXMLClassifierRequest, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateClassifier');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::UpdateClassifierResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateClassifier');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::UpdateClassifierResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'XMLClassifier' => {
+                                    'class' => 'Paws::Glue::UpdateXMLClassifierRequest',
+                                    'type' => 'Glue_UpdateXMLClassifierRequest'
+                                  },
+               'CsvClassifier' => {
+                                    'class' => 'Paws::Glue::UpdateCsvClassifierRequest',
+                                    'type' => 'Glue_UpdateCsvClassifierRequest'
+                                  },
+               'JsonClassifier' => {
+                                     'class' => 'Paws::Glue::UpdateJsonClassifierRequest',
+                                     'type' => 'Glue_UpdateJsonClassifierRequest'
+                                   },
+               'GrokClassifier' => {
+                                     'type' => 'Glue_UpdateGrokClassifierRequest',
+                                     'class' => 'Paws::Glue::UpdateGrokClassifierRequest'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,25 +95,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head1 ATTRIBUTES
 
 
-=head2 CsvClassifier => L<Paws::Glue::UpdateCsvClassifierRequest>
+=head2 CsvClassifier => Glue_UpdateCsvClassifierRequest
 
 A C<CsvClassifier> object with updated fields.
 
 
 
-=head2 GrokClassifier => L<Paws::Glue::UpdateGrokClassifierRequest>
+=head2 GrokClassifier => Glue_UpdateGrokClassifierRequest
 
 A C<GrokClassifier> object with updated fields.
 
 
 
-=head2 JsonClassifier => L<Paws::Glue::UpdateJsonClassifierRequest>
+=head2 JsonClassifier => Glue_UpdateJsonClassifierRequest
 
 A C<JsonClassifier> object with updated fields.
 
 
 
-=head2 XMLClassifier => L<Paws::Glue::UpdateXMLClassifierRequest>
+=head2 XMLClassifier => Glue_UpdateXMLClassifierRequest
 
 An C<XMLClassifier> object with updated fields.
 

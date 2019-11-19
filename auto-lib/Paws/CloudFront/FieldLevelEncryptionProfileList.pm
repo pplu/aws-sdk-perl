@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::CloudFront::FieldLevelEncryptionProfileList;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::FieldLevelEncryptionProfileSummary]', request_name => 'FieldLevelEncryptionProfileSummary', traits => ['NameInRequest']);
-  has MaxItems => (is => 'ro', isa => 'Int', required => 1);
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Str/;
+  use Paws::CloudFront::Types qw/CloudFront_FieldLevelEncryptionProfileSummary/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_FieldLevelEncryptionProfileSummary]);
+  has MaxItems => (is => 'ro', isa => Int, required => 1);
+  has NextMarker => (is => 'ro', isa => Str);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'MaxItems' => 1,
+                    'Quantity' => 1
+                  },
+  'NameInRequest' => {
+                       'Items' => 'FieldLevelEncryptionProfileSummary'
+                     },
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::CloudFront::FieldLevelEncryptionProfileSummary',
+                            'type' => 'ArrayRef[CloudFront_FieldLevelEncryptionProfileSummary]'
+                          },
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +73,7 @@ List of field-level encryption profiles.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::FieldLevelEncryptionProfileSummary>]
+=head2 Items => ArrayRef[CloudFront_FieldLevelEncryptionProfileSummary]
 
   The field-level encryption profile items.
 

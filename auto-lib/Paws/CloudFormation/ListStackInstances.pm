@@ -1,17 +1,48 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::ListStackInstances;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StackInstanceAccount => (is => 'ro', isa => 'Str');
-  has StackInstanceRegion => (is => 'ro', isa => 'Str');
-  has StackSetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudFormation::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StackInstanceAccount => (is => 'ro', isa => Str, predicate => 1);
+  has StackInstanceRegion => (is => 'ro', isa => Str, predicate => 1);
+  has StackSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListStackInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::ListStackInstancesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListStackInstancesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListStackInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::ListStackInstancesOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListStackInstancesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StackSetName' => 1
+                  },
+  'types' => {
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'StackInstanceAccount' => {
+                                           'type' => 'Str'
+                                         },
+               'StackInstanceRegion' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

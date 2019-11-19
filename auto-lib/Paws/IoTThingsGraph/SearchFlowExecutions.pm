@@ -1,18 +1,60 @@
+# Generated from json/callargs_class.tt
 
 package Paws::IoTThingsGraph::SearchFlowExecutions;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime' );
-  has FlowExecutionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'flowExecutionId' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' );
-  has SystemInstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'systemInstanceId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has FlowExecutionId => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
+  has SystemInstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SearchFlowExecutions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTThingsGraph::SearchFlowExecutionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SearchFlowExecutions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTThingsGraph::SearchFlowExecutionsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SystemInstanceId' => 1
+                  },
+  'NameInRequest' => {
+                       'StartTime' => 'startTime',
+                       'SystemInstanceId' => 'systemInstanceId',
+                       'FlowExecutionId' => 'flowExecutionId',
+                       'EndTime' => 'endTime',
+                       'MaxResults' => 'maxResults',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'SystemInstanceId' => {
+                                       'type' => 'Str'
+                                     },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'FlowExecutionId' => {
+                                      'type' => 'Str'
+                                    },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

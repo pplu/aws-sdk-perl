@@ -1,6 +1,23 @@
 package Paws::EC2::CertificateAuthentication;
-  use Moose;
-  has ClientRootCertificateChain => (is => 'ro', isa => 'Str', request_name => 'clientRootCertificateChain', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has ClientRootCertificateChain => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ClientRootCertificateChain' => 'clientRootCertificateChain'
+                     },
+  'types' => {
+               'ClientRootCertificateChain' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

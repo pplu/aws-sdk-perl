@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Rectangle;
-  use Moose;
-  has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
-  has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
-  has X => (is => 'ro', isa => 'Int', request_name => 'x', traits => ['NameInRequest']);
-  has Y => (is => 'ro', isa => 'Int', request_name => 'y', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has Height => (is => 'ro', isa => Int);
+  has Width => (is => 'ro', isa => Int);
+  has X => (is => 'ro', isa => Int);
+  has Y => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Height' => {
+                             'type' => 'Int'
+                           },
+               'Width' => {
+                            'type' => 'Int'
+                          },
+               'X' => {
+                        'type' => 'Int'
+                      },
+               'Y' => {
+                        'type' => 'Int'
+                      }
+             },
+  'NameInRequest' => {
+                       'Y' => 'y',
+                       'Height' => 'height',
+                       'Width' => 'width',
+                       'X' => 'x'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

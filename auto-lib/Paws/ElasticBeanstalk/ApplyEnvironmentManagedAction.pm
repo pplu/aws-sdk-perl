@@ -1,15 +1,40 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::ApplyEnvironmentManagedAction;
-  use Moose;
-  has ActionId => (is => 'ro', isa => 'Str', required => 1);
-  has EnvironmentId => (is => 'ro', isa => 'Str');
-  has EnvironmentName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ActionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EnvironmentId => (is => 'ro', isa => Str, predicate => 1);
+  has EnvironmentName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ApplyEnvironmentManagedAction');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ApplyEnvironmentManagedActionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ApplyEnvironmentManagedActionResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ApplyEnvironmentManagedAction');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::ApplyEnvironmentManagedActionResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ApplyEnvironmentManagedActionResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ActionId' => 1
+                  },
+  'types' => {
+               'EnvironmentName' => {
+                                      'type' => 'Str'
+                                    },
+               'EnvironmentId' => {
+                                    'type' => 'Str'
+                                  },
+               'ActionId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

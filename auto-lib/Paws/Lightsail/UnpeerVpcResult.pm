@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::UnpeerVpcResult;
-  use Moose;
-  has Operation => (is => 'ro', isa => 'Paws::Lightsail::Operation', traits => ['NameInRequest'], request_name => 'operation' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_Operation/;
+  has Operation => (is => 'ro', isa => Lightsail_Operation);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Operation' => {
+                                'class' => 'Paws::Lightsail::Operation',
+                                'type' => 'Lightsail_Operation'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Operation' => 'operation'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Lightsail::UnpeerVpcResult
 =head1 ATTRIBUTES
 
 
-=head2 Operation => L<Paws::Lightsail::Operation>
+=head2 Operation => Lightsail_Operation
 
 An array of key-value pairs containing information about the request
 operation.

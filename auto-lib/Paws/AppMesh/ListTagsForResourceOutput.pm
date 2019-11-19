@@ -1,10 +1,38 @@
 
 package Paws::AppMesh::ListTagsForResourceOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::TagRef]', traits => ['NameInRequest'], request_name => 'tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppMesh::Types qw/AppMesh_TagRef/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[AppMesh_TagRef], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::AppMesh::TagRef',
+                           'type' => 'ArrayRef[AppMesh_TagRef]'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'NextToken' => 'nextToken'
+                     },
+  'IsRequired' => {
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +52,7 @@ C<limit>, you can use this value to retrieve the next page of results.
 This value is C<null> when there are no more results to return.
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::AppMesh::TagRef>]
+=head2 B<REQUIRED> Tags => ArrayRef[AppMesh_TagRef]
 
 The tags for the resource.
 

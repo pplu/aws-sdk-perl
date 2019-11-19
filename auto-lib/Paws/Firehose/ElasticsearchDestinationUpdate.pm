@@ -1,16 +1,68 @@
+# Generated from default/object.tt
 package Paws::Firehose::ElasticsearchDestinationUpdate;
-  use Moose;
-  has BufferingHints => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchBufferingHints');
-  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
-  has ClusterEndpoint => (is => 'ro', isa => 'Str');
-  has DomainARN => (is => 'ro', isa => 'Str');
-  has IndexName => (is => 'ro', isa => 'Str');
-  has IndexRotationPeriod => (is => 'ro', isa => 'Str');
-  has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
-  has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchRetryOptions');
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has S3Update => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
-  has TypeName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw/Firehose_S3DestinationUpdate Firehose_ProcessingConfiguration Firehose_CloudWatchLoggingOptions Firehose_ElasticsearchRetryOptions Firehose_ElasticsearchBufferingHints/;
+  has BufferingHints => (is => 'ro', isa => Firehose_ElasticsearchBufferingHints);
+  has CloudWatchLoggingOptions => (is => 'ro', isa => Firehose_CloudWatchLoggingOptions);
+  has ClusterEndpoint => (is => 'ro', isa => Str);
+  has DomainARN => (is => 'ro', isa => Str);
+  has IndexName => (is => 'ro', isa => Str);
+  has IndexRotationPeriod => (is => 'ro', isa => Str);
+  has ProcessingConfiguration => (is => 'ro', isa => Firehose_ProcessingConfiguration);
+  has RetryOptions => (is => 'ro', isa => Firehose_ElasticsearchRetryOptions);
+  has RoleARN => (is => 'ro', isa => Str);
+  has S3Update => (is => 'ro', isa => Firehose_S3DestinationUpdate);
+  has TypeName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProcessingConfiguration' => {
+                                              'type' => 'Firehose_ProcessingConfiguration',
+                                              'class' => 'Paws::Firehose::ProcessingConfiguration'
+                                            },
+               'BufferingHints' => {
+                                     'class' => 'Paws::Firehose::ElasticsearchBufferingHints',
+                                     'type' => 'Firehose_ElasticsearchBufferingHints'
+                                   },
+               'IndexRotationPeriod' => {
+                                          'type' => 'Str'
+                                        },
+               'CloudWatchLoggingOptions' => {
+                                               'type' => 'Firehose_CloudWatchLoggingOptions',
+                                               'class' => 'Paws::Firehose::CloudWatchLoggingOptions'
+                                             },
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'RetryOptions' => {
+                                   'class' => 'Paws::Firehose::ElasticsearchRetryOptions',
+                                   'type' => 'Firehose_ElasticsearchRetryOptions'
+                                 },
+               'ClusterEndpoint' => {
+                                      'type' => 'Str'
+                                    },
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'S3Update' => {
+                               'class' => 'Paws::Firehose::S3DestinationUpdate',
+                               'type' => 'Firehose_S3DestinationUpdate'
+                             },
+               'DomainARN' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,13 +98,13 @@ Describes an update for a destination in Amazon ES.
 =head1 ATTRIBUTES
 
 
-=head2 BufferingHints => L<Paws::Firehose::ElasticsearchBufferingHints>
+=head2 BufferingHints => Firehose_ElasticsearchBufferingHints
 
   The buffering options. If no value is specified,
 C<ElasticsearchBufferingHints> object default values are used.
 
 
-=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+=head2 CloudWatchLoggingOptions => Firehose_CloudWatchLoggingOptions
 
   The CloudWatch logging options for your delivery stream.
 
@@ -89,12 +141,12 @@ more information, see Index Rotation for the Amazon ES Destination
 Default value is C<OneDay>.
 
 
-=head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
+=head2 ProcessingConfiguration => Firehose_ProcessingConfiguration
 
   The data processing configuration.
 
 
-=head2 RetryOptions => L<Paws::Firehose::ElasticsearchRetryOptions>
+=head2 RetryOptions => Firehose_ElasticsearchRetryOptions
 
   The retry behavior in case Kinesis Data Firehose is unable to deliver
 documents to Amazon ES. The default value is 300 (5 minutes).
@@ -111,7 +163,7 @@ and Amazon Resource Names (ARNs) and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
-=head2 S3Update => L<Paws::Firehose::S3DestinationUpdate>
+=head2 S3Update => Firehose_S3DestinationUpdate
 
   The Amazon S3 destination.
 

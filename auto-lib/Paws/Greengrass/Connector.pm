@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Greengrass::Connector;
-  use Moose;
-  has ConnectorArn => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::Greengrass::__mapOf__string');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass___mapOf__string/;
+  has ConnectorArn => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Parameters => (is => 'ro', isa => Greengrass___mapOf__string);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ConnectorArn' => 1,
+                    'Id' => 1
+                  },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Parameters' => {
+                                 'class' => 'Paws::Greengrass::__mapOf__string',
+                                 'type' => 'Greengrass___mapOf__string'
+                               },
+               'ConnectorArn' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +80,7 @@ unique within the connector definition version. Max length is 128
 characters with pattern [a-zA-Z0-9:_-]+.
 
 
-=head2 Parameters => L<Paws::Greengrass::__mapOf__string>
+=head2 Parameters => Greengrass___mapOf__string
 
   The parameters or configuration that the connector uses.
 

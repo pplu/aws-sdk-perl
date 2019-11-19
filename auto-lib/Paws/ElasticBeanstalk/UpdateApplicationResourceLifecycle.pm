@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::UpdateApplicationResourceLifecycle;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceLifecycleConfig => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_ApplicationResourceLifecycleConfig/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceLifecycleConfig => (is => 'ro', isa => ElasticBeanstalk_ApplicationResourceLifecycleConfig, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplicationResourceLifecycle');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleDescriptionMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateApplicationResourceLifecycleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateApplicationResourceLifecycle');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleDescriptionMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateApplicationResourceLifecycleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ApplicationName' => 1,
+                    'ResourceLifecycleConfig' => 1
+                  },
+  'types' => {
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'ResourceLifecycleConfig' => {
+                                              'class' => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig',
+                                              'type' => 'ElasticBeanstalk_ApplicationResourceLifecycleConfig'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +93,7 @@ The name of the application.
 
 
 
-=head2 B<REQUIRED> ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>
+=head2 B<REQUIRED> ResourceLifecycleConfig => ElasticBeanstalk_ApplicationResourceLifecycleConfig
 
 The lifecycle configuration.
 

@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::ReferenceDataSourceUpdate;
-  use Moose;
-  has ReferenceId => (is => 'ro', isa => 'Str', required => 1);
-  has ReferenceSchemaUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema');
-  has S3ReferenceDataSourceUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::S3ReferenceDataSourceUpdate');
-  has TableNameUpdate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_S3ReferenceDataSourceUpdate KinesisAnalytics_SourceSchema/;
+  has ReferenceId => (is => 'ro', isa => Str, required => 1);
+  has ReferenceSchemaUpdate => (is => 'ro', isa => KinesisAnalytics_SourceSchema);
+  has S3ReferenceDataSourceUpdate => (is => 'ro', isa => KinesisAnalytics_S3ReferenceDataSourceUpdate);
+  has TableNameUpdate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ReferenceId' => 1
+                  },
+  'types' => {
+               'TableNameUpdate' => {
+                                      'type' => 'Str'
+                                    },
+               'ReferenceSchemaUpdate' => {
+                                            'type' => 'KinesisAnalytics_SourceSchema',
+                                            'class' => 'Paws::KinesisAnalytics::SourceSchema'
+                                          },
+               'S3ReferenceDataSourceUpdate' => {
+                                                  'class' => 'Paws::KinesisAnalytics::S3ReferenceDataSourceUpdate',
+                                                  'type' => 'KinesisAnalytics_S3ReferenceDataSourceUpdate'
+                                                },
+               'ReferenceId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,14 +83,14 @@ DescribeApplication
 operation to get this value.
 
 
-=head2 ReferenceSchemaUpdate => L<Paws::KinesisAnalytics::SourceSchema>
+=head2 ReferenceSchemaUpdate => KinesisAnalytics_SourceSchema
 
   Describes the format of the data in the streaming source, and how each
 data element maps to corresponding columns created in the
 in-application stream.
 
 
-=head2 S3ReferenceDataSourceUpdate => L<Paws::KinesisAnalytics::S3ReferenceDataSourceUpdate>
+=head2 S3ReferenceDataSourceUpdate => KinesisAnalytics_S3ReferenceDataSourceUpdate
 
   Describes the S3 bucket name, object key name, and IAM role that Amazon
 Kinesis Analytics can assume to read the Amazon S3 object on your

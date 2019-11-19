@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::DescribeInstancesOutput;
-  use Moose;
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Instance]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_Instance/;
+  has Instances => (is => 'ro', isa => ArrayRef[GameLift_Instance]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Instances' => {
+                                'type' => 'ArrayRef[GameLift_Instance]',
+                                'class' => 'Paws::GameLift::Instance'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::GameLift::DescribeInstancesOutput
 =head1 ATTRIBUTES
 
 
-=head2 Instances => ArrayRef[L<Paws::GameLift::Instance>]
+=head2 Instances => ArrayRef[GameLift_Instance]
 
 Collection of objects containing properties for each instance returned.
 

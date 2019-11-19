@@ -1,14 +1,32 @@
 
 package Paws::IoT::DescribeEndpoint;
-  use Moose;
-  has EndpointType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'endpointType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has EndpointType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEndpoint');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/endpoint');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DescribeEndpointResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEndpoint');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/endpoint');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DescribeEndpointResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndpointType' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInQuery' => {
+                      'EndpointType' => 'endpointType'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

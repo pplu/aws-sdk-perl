@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ES::DomainEndpointOptions;
-  use Moose;
-  has EnforceHTTPS => (is => 'ro', isa => 'Bool');
-  has TLSSecurityPolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::ES::Types qw//;
+  has EnforceHTTPS => (is => 'ro', isa => Bool);
+  has TLSSecurityPolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EnforceHTTPS' => {
+                                   'type' => 'Bool'
+                                 },
+               'TLSSecurityPolicy' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

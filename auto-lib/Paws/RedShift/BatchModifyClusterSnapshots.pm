@@ -1,15 +1,40 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::BatchModifyClusterSnapshots;
-  use Moose;
-  has Force => (is => 'ro', isa => 'Bool');
-  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has SnapshotIdentifierList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::RedShift::Types qw//;
+  has Force => (is => 'ro', isa => Bool, predicate => 1);
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has SnapshotIdentifierList => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchModifyClusterSnapshots');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::BatchModifyClusterSnapshotsOutputMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'BatchModifyClusterSnapshotsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchModifyClusterSnapshots');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::BatchModifyClusterSnapshotsOutputMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'BatchModifyClusterSnapshotsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SnapshotIdentifierList' => 1
+                  },
+  'types' => {
+               'SnapshotIdentifierList' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'ManualSnapshotRetentionPeriod' => {
+                                                    'type' => 'Int'
+                                                  },
+               'Force' => {
+                            'type' => 'Bool'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

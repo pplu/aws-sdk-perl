@@ -1,12 +1,49 @@
+# Generated from default/object.tt
 package Paws::ELBv2::Listener;
-  use Moose;
-  has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Certificate]');
-  has DefaultActions => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Action]');
-  has ListenerArn => (is => 'ro', isa => 'Str');
-  has LoadBalancerArn => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has Protocol => (is => 'ro', isa => 'Str');
-  has SslPolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int/;
+  use Paws::ELBv2::Types qw/ELBv2_Certificate ELBv2_Action/;
+  has Certificates => (is => 'ro', isa => ArrayRef[ELBv2_Certificate]);
+  has DefaultActions => (is => 'ro', isa => ArrayRef[ELBv2_Action]);
+  has ListenerArn => (is => 'ro', isa => Str);
+  has LoadBalancerArn => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has Protocol => (is => 'ro', isa => Str);
+  has SslPolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerArn' => {
+                                      'type' => 'Str'
+                                    },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'Certificates' => {
+                                   'type' => 'ArrayRef[ELBv2_Certificate]',
+                                   'class' => 'Paws::ELBv2::Certificate'
+                                 },
+               'DefaultActions' => {
+                                     'class' => 'Paws::ELBv2::Action',
+                                     'type' => 'ArrayRef[ELBv2_Action]'
+                                   },
+               'SslPolicy' => {
+                                'type' => 'Str'
+                              },
+               'ListenerArn' => {
+                                  'type' => 'Str'
+                                },
+               'Protocol' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,12 +79,12 @@ Information about a listener.
 =head1 ATTRIBUTES
 
 
-=head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
+=head2 Certificates => ArrayRef[ELBv2_Certificate]
 
   [HTTPS or TLS listener] The default certificate for the listener.
 
 
-=head2 DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
+=head2 DefaultActions => ArrayRef[ELBv2_Action]
 
   The default actions for the listener.
 

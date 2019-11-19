@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DS::GetSnapshotLimitsResult;
-  use Moose;
-  has SnapshotLimits => (is => 'ro', isa => 'Paws::DS::SnapshotLimits');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DS::Types qw/DS_SnapshotLimits/;
+  has SnapshotLimits => (is => 'ro', isa => DS_SnapshotLimits);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshotLimits' => {
+                                     'class' => 'Paws::DS::SnapshotLimits',
+                                     'type' => 'DS_SnapshotLimits'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DS::GetSnapshotLimitsResult
 =head1 ATTRIBUTES
 
 
-=head2 SnapshotLimits => L<Paws::DS::SnapshotLimits>
+=head2 SnapshotLimits => DS_SnapshotLimits
 
 A SnapshotLimits object that contains the manual snapshot limits for
 the specified directory.

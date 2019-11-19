@@ -1,24 +1,77 @@
 
 package Paws::EC2::ImportImage;
-  use Moose;
-  has Architecture => (is => 'ro', isa => 'Str');
-  has ClientData => (is => 'ro', isa => 'Paws::EC2::ClientData');
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DiskContainers => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImageDiskContainer]', traits => ['NameInRequest'], request_name => 'DiskContainer' );
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has Hypervisor => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LicenseType => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
-  has RoleName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_ImageDiskContainer EC2_ClientData/;
+  has Architecture => (is => 'ro', isa => Str, predicate => 1);
+  has ClientData => (is => 'ro', isa => EC2_ClientData, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DiskContainers => (is => 'ro', isa => ArrayRef[EC2_ImageDiskContainer], predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Encrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has Hypervisor => (is => 'ro', isa => Str, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has LicenseType => (is => 'ro', isa => Str, predicate => 1);
+  has Platform => (is => 'ro', isa => Str, predicate => 1);
+  has RoleName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportImage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ImportImageResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportImage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ImportImageResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DiskContainers' => 'DiskContainer'
+                     },
+  'types' => {
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'Hypervisor' => {
+                                 'type' => 'Str'
+                               },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'DiskContainers' => {
+                                     'type' => 'ArrayRef[EC2_ImageDiskContainer]',
+                                     'class' => 'Paws::EC2::ImageDiskContainer'
+                                   },
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'LicenseType' => {
+                                  'type' => 'Str'
+                                },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'ClientData' => {
+                                 'class' => 'Paws::EC2::ClientData',
+                                 'type' => 'EC2_ClientData'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -102,7 +155,7 @@ Valid values: C<i386> | C<x86_64> | C<arm64>
 
 
 
-=head2 ClientData => L<Paws::EC2::ClientData>
+=head2 ClientData => EC2_ClientData
 
 The client-specific data.
 
@@ -120,7 +173,7 @@ A description string for the import image task.
 
 
 
-=head2 DiskContainers => ArrayRef[L<Paws::EC2::ImageDiskContainer>]
+=head2 DiskContainers => ArrayRef[EC2_ImageDiskContainer]
 
 Information about the disk containers.
 

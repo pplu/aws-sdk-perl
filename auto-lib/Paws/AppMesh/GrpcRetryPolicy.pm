@@ -1,10 +1,51 @@
+# Generated from default/object.tt
 package Paws::AppMesh::GrpcRetryPolicy;
-  use Moose;
-  has GrpcRetryEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'grpcRetryEvents', traits => ['NameInRequest']);
-  has HttpRetryEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'httpRetryEvents', traits => ['NameInRequest']);
-  has MaxRetries => (is => 'ro', isa => 'Int', request_name => 'maxRetries', traits => ['NameInRequest'], required => 1);
-  has PerRetryTimeout => (is => 'ro', isa => 'Paws::AppMesh::Duration', request_name => 'perRetryTimeout', traits => ['NameInRequest'], required => 1);
-  has TcpRetryEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'tcpRetryEvents', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::AppMesh::Types qw/AppMesh_Duration/;
+  has GrpcRetryEvents => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has HttpRetryEvents => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has MaxRetries => (is => 'ro', isa => Int, required => 1);
+  has PerRetryTimeout => (is => 'ro', isa => AppMesh_Duration, required => 1);
+  has TcpRetryEvents => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TcpRetryEvents' => 'tcpRetryEvents',
+                       'MaxRetries' => 'maxRetries',
+                       'GrpcRetryEvents' => 'grpcRetryEvents',
+                       'PerRetryTimeout' => 'perRetryTimeout',
+                       'HttpRetryEvents' => 'httpRetryEvents'
+                     },
+  'IsRequired' => {
+                    'PerRetryTimeout' => 1,
+                    'MaxRetries' => 1
+                  },
+  'types' => {
+               'GrpcRetryEvents' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'PerRetryTimeout' => {
+                                      'class' => 'Paws::AppMesh::Duration',
+                                      'type' => 'AppMesh_Duration'
+                                    },
+               'HttpRetryEvents' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'TcpRetryEvents' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'MaxRetries' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +120,7 @@ B<stream-error> E<ndash> Retry on refused stream
   The maximum number of retry attempts.
 
 
-=head2 B<REQUIRED> PerRetryTimeout => L<Paws::AppMesh::Duration>
+=head2 B<REQUIRED> PerRetryTimeout => AppMesh_Duration
 
   An object that represents a duration of time.
 

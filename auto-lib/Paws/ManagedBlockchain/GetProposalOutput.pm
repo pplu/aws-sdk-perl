@@ -1,9 +1,27 @@
 
 package Paws::ManagedBlockchain::GetProposalOutput;
-  use Moose;
-  has Proposal => (is => 'ro', isa => 'Paws::ManagedBlockchain::Proposal');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_Proposal/;
+  has Proposal => (is => 'ro', isa => ManagedBlockchain_Proposal);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Proposal' => {
+                               'class' => 'Paws::ManagedBlockchain::Proposal',
+                               'type' => 'ManagedBlockchain_Proposal'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::ManagedBlockchain::GetProposalOutput
 =head1 ATTRIBUTES
 
 
-=head2 Proposal => L<Paws::ManagedBlockchain::Proposal>
+=head2 Proposal => ManagedBlockchain_Proposal
 
 Information about a proposal.
 

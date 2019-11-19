@@ -1,13 +1,63 @@
+# Generated from default/object.tt
 package Paws::Lightsail::ExportSnapshotRecordSourceInfo;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has DiskSnapshotInfo => (is => 'ro', isa => 'Paws::Lightsail::DiskSnapshotInfo', request_name => 'diskSnapshotInfo', traits => ['NameInRequest']);
-  has FromResourceArn => (is => 'ro', isa => 'Str', request_name => 'fromResourceArn', traits => ['NameInRequest']);
-  has FromResourceName => (is => 'ro', isa => 'Str', request_name => 'fromResourceName', traits => ['NameInRequest']);
-  has InstanceSnapshotInfo => (is => 'ro', isa => 'Paws::Lightsail::InstanceSnapshotInfo', request_name => 'instanceSnapshotInfo', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_DiskSnapshotInfo Lightsail_InstanceSnapshotInfo/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DiskSnapshotInfo => (is => 'ro', isa => Lightsail_DiskSnapshotInfo);
+  has FromResourceArn => (is => 'ro', isa => Str);
+  has FromResourceName => (is => 'ro', isa => Str);
+  has InstanceSnapshotInfo => (is => 'ro', isa => Lightsail_InstanceSnapshotInfo);
+  has Name => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'FromResourceArn' => 'fromResourceArn',
+                       'DiskSnapshotInfo' => 'diskSnapshotInfo',
+                       'ResourceType' => 'resourceType',
+                       'FromResourceName' => 'fromResourceName',
+                       'CreatedAt' => 'createdAt',
+                       'InstanceSnapshotInfo' => 'instanceSnapshotInfo',
+                       'Arn' => 'arn',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'InstanceSnapshotInfo' => {
+                                           'class' => 'Paws::Lightsail::InstanceSnapshotInfo',
+                                           'type' => 'Lightsail_InstanceSnapshotInfo'
+                                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DiskSnapshotInfo' => {
+                                       'class' => 'Paws::Lightsail::DiskSnapshotInfo',
+                                       'type' => 'Lightsail_DiskSnapshotInfo'
+                                     },
+               'FromResourceArn' => {
+                                      'type' => 'Str'
+                                    },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'FromResourceName' => {
+                                       'type' => 'Str'
+                                     },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +103,7 @@ Describes the source of an export snapshot record.
   The date when the source instance or disk snapshot was created.
 
 
-=head2 DiskSnapshotInfo => L<Paws::Lightsail::DiskSnapshotInfo>
+=head2 DiskSnapshotInfo => Lightsail_DiskSnapshotInfo
 
   A list of objects describing a disk snapshot.
 
@@ -69,7 +119,7 @@ disk.
   The name of the snapshot's source instance or disk.
 
 
-=head2 InstanceSnapshotInfo => L<Paws::Lightsail::InstanceSnapshotInfo>
+=head2 InstanceSnapshotInfo => Lightsail_InstanceSnapshotInfo
 
   A list of objects describing an instance snapshot.
 

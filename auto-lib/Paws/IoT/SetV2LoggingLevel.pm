@@ -1,15 +1,42 @@
 
 package Paws::IoT::SetV2LoggingLevel;
-  use Moose;
-  has LogLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logLevel', required => 1);
-  has LogTarget => (is => 'ro', isa => 'Paws::IoT::LogTarget', traits => ['NameInRequest'], request_name => 'logTarget', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_LogTarget/;
+  has LogLevel => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LogTarget => (is => 'ro', isa => IoT_LogTarget, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetV2LoggingLevel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2LoggingLevel');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetV2LoggingLevel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2LoggingLevel');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'LogTarget' => 'logTarget',
+                       'LogLevel' => 'logLevel'
+                     },
+  'IsRequired' => {
+                    'LogTarget' => 1,
+                    'LogLevel' => 1
+                  },
+  'types' => {
+               'LogLevel' => {
+                               'type' => 'Str'
+                             },
+               'LogTarget' => {
+                                'type' => 'IoT_LogTarget',
+                                'class' => 'Paws::IoT::LogTarget'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +77,7 @@ The log level.
 
 Valid values are: C<"DEBUG">, C<"INFO">, C<"ERROR">, C<"WARN">, C<"DISABLED">
 
-=head2 B<REQUIRED> LogTarget => L<Paws::IoT::LogTarget>
+=head2 B<REQUIRED> LogTarget => IoT_LogTarget
 
 The log target.
 

@@ -1,16 +1,41 @@
 
 package Paws::WorkLink::UpdateIdentityProviderConfiguration;
-  use Moose;
-  has FleetArn => (is => 'ro', isa => 'Str', required => 1);
-  has IdentityProviderSamlMetadata => (is => 'ro', isa => 'Str');
-  has IdentityProviderType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has FleetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityProviderSamlMetadata => (is => 'ro', isa => Str, predicate => 1);
+  has IdentityProviderType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateIdentityProviderConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/updateIdentityProviderConfiguration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkLink::UpdateIdentityProviderConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateIdentityProviderConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/updateIdentityProviderConfiguration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkLink::UpdateIdentityProviderConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'FleetArn' => 1,
+                    'IdentityProviderType' => 1
+                  },
+  'types' => {
+               'FleetArn' => {
+                               'type' => 'Str'
+                             },
+               'IdentityProviderType' => {
+                                           'type' => 'Str'
+                                         },
+               'IdentityProviderSamlMetadata' => {
+                                                   'type' => 'Str'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

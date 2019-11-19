@@ -1,18 +1,49 @@
 
 package Paws::EC2::DescribeHostReservationOfferings;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]');
-  has MaxDuration => (is => 'ro', isa => 'Int');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has MinDuration => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has OfferingId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::EC2::Types qw/EC2_Filter/;
+  has Filter => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
+  has MaxDuration => (is => 'ro', isa => Int, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has MinDuration => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has OfferingId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeHostReservationOfferings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeHostReservationOfferingsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeHostReservationOfferings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeHostReservationOfferingsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filter' => {
+                             'type' => 'ArrayRef[EC2_Filter]',
+                             'class' => 'Paws::EC2::Filter'
+                           },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MinDuration' => {
+                                  'type' => 'Int'
+                                },
+               'MaxDuration' => {
+                                  'type' => 'Int'
+                                },
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,16 +67,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->DescribeHostReservationOfferings(
       Filter => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      MaxDuration => 1,                     # OPTIONAL
-      MaxResults  => 1,                     # OPTIONAL
-      MinDuration => 1,                     # OPTIONAL
-      NextToken   => 'MyString',            # OPTIONAL
-      OfferingId  => 'MyString',            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxDuration => 1,            # OPTIONAL
+      MaxResults  => 1,            # OPTIONAL
+      MinDuration => 1,            # OPTIONAL
+      NextToken   => 'MyString',   # OPTIONAL
+      OfferingId  => 'MyString',   # OPTIONAL
       );
 
     # Results:
@@ -60,7 +93,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 Filter => ArrayRef[L<Paws::EC2::Filter>]
+=head2 Filter => ArrayRef[EC2_Filter]
 
 The filters.
 

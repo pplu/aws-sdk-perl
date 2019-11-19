@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::CloudWatch::MetricDataQuery;
-  use Moose;
-  has Expression => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Label => (is => 'ro', isa => 'Str');
-  has MetricStat => (is => 'ro', isa => 'Paws::CloudWatch::MetricStat');
-  has Period => (is => 'ro', isa => 'Int');
-  has ReturnData => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::CloudWatch::Types qw/CloudWatch_MetricStat/;
+  has Expression => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Label => (is => 'ro', isa => Str);
+  has MetricStat => (is => 'ro', isa => CloudWatch_MetricStat);
+  has Period => (is => 'ro', isa => Int);
+  has ReturnData => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Id' => 1
+                  },
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Period' => {
+                             'type' => 'Int'
+                           },
+               'MetricStat' => {
+                                 'class' => 'Paws::CloudWatch::MetricStat',
+                                 'type' => 'CloudWatch_MetricStat'
+                               },
+               'Label' => {
+                            'type' => 'Str'
+                          },
+               'ReturnData' => {
+                                 'type' => 'Bool'
+                               },
+               'Expression' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -106,7 +142,7 @@ dashboard widget, the label is shown. If Label is omitted, CloudWatch
 generates a default.
 
 
-=head2 MetricStat => L<Paws::CloudWatch::MetricStat>
+=head2 MetricStat => CloudWatch_MetricStat
 
   The metric to be returned, along with statistics, period, and units.
 Use this parameter only if this object is retrieving a metric and not

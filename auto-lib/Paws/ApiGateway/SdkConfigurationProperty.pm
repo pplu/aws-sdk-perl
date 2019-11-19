@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::ApiGateway::SdkConfigurationProperty;
-  use Moose;
-  has DefaultValue => (is => 'ro', isa => 'Str', request_name => 'defaultValue', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has FriendlyName => (is => 'ro', isa => 'Str', request_name => 'friendlyName', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Required => (is => 'ro', isa => 'Bool', request_name => 'required', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApiGateway::Types qw//;
+  has DefaultValue => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has FriendlyName => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Required => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'DefaultValue' => 'defaultValue',
+                       'FriendlyName' => 'friendlyName',
+                       'Required' => 'required',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'DefaultValue' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Required' => {
+                               'type' => 'Bool'
+                             },
+               'FriendlyName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::DescribeApplicationVersions;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has VersionLabels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ApplicationName => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has VersionLabels => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeApplicationVersions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeApplicationVersionsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeApplicationVersions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeApplicationVersionsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'VersionLabels' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

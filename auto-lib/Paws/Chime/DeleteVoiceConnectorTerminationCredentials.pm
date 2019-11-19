@@ -1,15 +1,39 @@
 
 package Paws::Chime::DeleteVoiceConnectorTerminationCredentials;
-  use Moose;
-  has Usernames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has VoiceConnectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'voiceConnectorId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Chime::Types qw//;
+  has Usernames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has VoiceConnectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVoiceConnectorTerminationCredentials');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/voice-connectors/{voiceConnectorId}/termination/credentials?operation=delete');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteVoiceConnectorTerminationCredentials');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/voice-connectors/{voiceConnectorId}/termination/credentials?operation=delete');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'VoiceConnectorId' => 'voiceConnectorId'
+                  },
+  'types' => {
+               'Usernames' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'VoiceConnectorId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'VoiceConnectorId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

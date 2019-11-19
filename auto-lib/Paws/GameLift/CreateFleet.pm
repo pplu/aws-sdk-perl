@@ -1,30 +1,105 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::CreateFleet;
-  use Moose;
-  has BuildId => (is => 'ro', isa => 'Str');
-  has CertificateConfiguration => (is => 'ro', isa => 'Paws::GameLift::CertificateConfiguration');
-  has Description => (is => 'ro', isa => 'Str');
-  has EC2InboundPermissions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::IpPermission]');
-  has EC2InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has FleetType => (is => 'ro', isa => 'Str');
-  has InstanceRoleArn => (is => 'ro', isa => 'Str');
-  has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MetricGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
-  has PeerVpcAwsAccountId => (is => 'ro', isa => 'Str');
-  has PeerVpcId => (is => 'ro', isa => 'Str');
-  has ResourceCreationLimitPolicy => (is => 'ro', isa => 'Paws::GameLift::ResourceCreationLimitPolicy');
-  has RuntimeConfiguration => (is => 'ro', isa => 'Paws::GameLift::RuntimeConfiguration');
-  has ScriptId => (is => 'ro', isa => 'Str');
-  has ServerLaunchParameters => (is => 'ro', isa => 'Str');
-  has ServerLaunchPath => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GameLift::Types qw/GameLift_CertificateConfiguration GameLift_RuntimeConfiguration GameLift_IpPermission GameLift_ResourceCreationLimitPolicy/;
+  has BuildId => (is => 'ro', isa => Str, predicate => 1);
+  has CertificateConfiguration => (is => 'ro', isa => GameLift_CertificateConfiguration, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has EC2InboundPermissions => (is => 'ro', isa => ArrayRef[GameLift_IpPermission], predicate => 1);
+  has EC2InstanceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FleetType => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has LogPaths => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MetricGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NewGameSessionProtectionPolicy => (is => 'ro', isa => Str, predicate => 1);
+  has PeerVpcAwsAccountId => (is => 'ro', isa => Str, predicate => 1);
+  has PeerVpcId => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceCreationLimitPolicy => (is => 'ro', isa => GameLift_ResourceCreationLimitPolicy, predicate => 1);
+  has RuntimeConfiguration => (is => 'ro', isa => GameLift_RuntimeConfiguration, predicate => 1);
+  has ScriptId => (is => 'ro', isa => Str, predicate => 1);
+  has ServerLaunchParameters => (is => 'ro', isa => Str, predicate => 1);
+  has ServerLaunchPath => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFleet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::CreateFleetOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFleet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::CreateFleetOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceRoleArn' => {
+                                      'type' => 'Str'
+                                    },
+               'ServerLaunchParameters' => {
+                                             'type' => 'Str'
+                                           },
+               'BuildId' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'PeerVpcAwsAccountId' => {
+                                          'type' => 'Str'
+                                        },
+               'RuntimeConfiguration' => {
+                                           'type' => 'GameLift_RuntimeConfiguration',
+                                           'class' => 'Paws::GameLift::RuntimeConfiguration'
+                                         },
+               'ServerLaunchPath' => {
+                                       'type' => 'Str'
+                                     },
+               'FleetType' => {
+                                'type' => 'Str'
+                              },
+               'LogPaths' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'EC2InstanceType' => {
+                                      'type' => 'Str'
+                                    },
+               'EC2InboundPermissions' => {
+                                            'type' => 'ArrayRef[GameLift_IpPermission]',
+                                            'class' => 'Paws::GameLift::IpPermission'
+                                          },
+               'ResourceCreationLimitPolicy' => {
+                                                  'type' => 'GameLift_ResourceCreationLimitPolicy',
+                                                  'class' => 'Paws::GameLift::ResourceCreationLimitPolicy'
+                                                },
+               'NewGameSessionProtectionPolicy' => {
+                                                     'type' => 'Str'
+                                                   },
+               'PeerVpcId' => {
+                                'type' => 'Str'
+                              },
+               'CertificateConfiguration' => {
+                                               'type' => 'GameLift_CertificateConfiguration',
+                                               'class' => 'Paws::GameLift::CertificateConfiguration'
+                                             },
+               'MetricGroups' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'ScriptId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'EC2InstanceType' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -116,7 +191,7 @@ changed once the fleet is created.
 
 
 
-=head2 CertificateConfiguration => L<Paws::GameLift::CertificateConfiguration>
+=head2 CertificateConfiguration => GameLift_CertificateConfiguration
 
 
 
@@ -128,7 +203,7 @@ Human-readable description of a fleet.
 
 
 
-=head2 EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>]
+=head2 EC2InboundPermissions => ArrayRef[GameLift_IpPermission]
 
 Range of IP addresses and port settings that permit inbound traffic to
 access game sessions that running on the fleet. For fleets using a
@@ -249,14 +324,14 @@ Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets
 
 
 
-=head2 ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>
+=head2 ResourceCreationLimitPolicy => GameLift_ResourceCreationLimitPolicy
 
 Policy that limits the number of game sessions an individual player can
 create over a span of time for this fleet.
 
 
 
-=head2 RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>
+=head2 RuntimeConfiguration => GameLift_RuntimeConfiguration
 
 Instructions for launching server processes on each instance in the
 fleet. Server processes run either a custom game build executable or a

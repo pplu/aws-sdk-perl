@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DeltaTime;
-  use Moose;
-  has OffsetSeconds => (is => 'ro', isa => 'Int', request_name => 'offsetSeconds', traits => ['NameInRequest'], required => 1);
-  has TimeExpression => (is => 'ro', isa => 'Str', request_name => 'timeExpression', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has OffsetSeconds => (is => 'ro', isa => Int, required => 1);
+  has TimeExpression => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OffsetSeconds' => {
+                                    'type' => 'Int'
+                                  },
+               'TimeExpression' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'TimeExpression' => 1,
+                    'OffsetSeconds' => 1
+                  },
+  'NameInRequest' => {
+                       'OffsetSeconds' => 'offsetSeconds',
+                       'TimeExpression' => 'timeExpression'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

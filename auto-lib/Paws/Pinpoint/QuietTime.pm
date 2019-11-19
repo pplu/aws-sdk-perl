@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::QuietTime;
-  use Moose;
-  has End => (is => 'ro', isa => 'Str');
-  has Start => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has End => (is => 'ro', isa => Str);
+  has Start => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Start' => {
+                            'type' => 'Str'
+                          },
+               'End' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

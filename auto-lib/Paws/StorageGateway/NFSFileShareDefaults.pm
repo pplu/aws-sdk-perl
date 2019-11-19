@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::NFSFileShareDefaults;
-  use Moose;
-  has DirectoryMode => (is => 'ro', isa => 'Str');
-  has FileMode => (is => 'ro', isa => 'Str');
-  has GroupId => (is => 'ro', isa => 'Int');
-  has OwnerId => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::StorageGateway::Types qw//;
+  has DirectoryMode => (is => 'ro', isa => Str);
+  has FileMode => (is => 'ro', isa => Str);
+  has GroupId => (is => 'ro', isa => Int);
+  has OwnerId => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupId' => {
+                              'type' => 'Int'
+                            },
+               'OwnerId' => {
+                              'type' => 'Int'
+                            },
+               'FileMode' => {
+                               'type' => 'Str'
+                             },
+               'DirectoryMode' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

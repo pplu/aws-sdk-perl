@@ -1,20 +1,63 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudHSM::CreateHsm;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has EniIp => (is => 'ro', isa => 'Str');
-  has ExternalId => (is => 'ro', isa => 'Str');
-  has IamRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has SshKey => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetId => (is => 'ro', isa => 'Str', required => 1);
-  has SubscriptionType => (is => 'ro', isa => 'Str', required => 1);
-  has SyslogIp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudHSM::Types qw//;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has EniIp => (is => 'ro', isa => Str, predicate => 1);
+  has ExternalId => (is => 'ro', isa => Str, predicate => 1);
+  has IamRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SshKey => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubnetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubscriptionType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SyslogIp => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHsm');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::CreateHsmResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateHsm');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudHSM::CreateHsmResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'ExternalId' => {
+                                 'type' => 'Str'
+                               },
+               'SyslogIp' => {
+                               'type' => 'Str'
+                             },
+               'SshKey' => {
+                             'type' => 'Str'
+                           },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'SubscriptionType' => {
+                                       'type' => 'Str'
+                                     },
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'EniIp' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'SshKey' => 1,
+                    'SubscriptionType' => 1,
+                    'IamRoleArn' => 1,
+                    'SubnetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

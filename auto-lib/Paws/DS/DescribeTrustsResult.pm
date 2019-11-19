@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DS::DescribeTrustsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Trusts => (is => 'ro', isa => 'ArrayRef[Paws::DS::Trust]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DS::Types qw/DS_Trust/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Trusts => (is => 'ro', isa => ArrayRef[DS_Trust]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Trusts' => {
+                             'class' => 'Paws::DS::Trust',
+                             'type' => 'ArrayRef[DS_Trust]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ I<NextToken> parameter in a subsequent call to DescribeTrusts to
 retrieve the next set of items.
 
 
-=head2 Trusts => ArrayRef[L<Paws::DS::Trust>]
+=head2 Trusts => ArrayRef[DS_Trust]
 
 The list of Trust objects that were retrieved.
 

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::GetLoggingConfigurationResponse;
-  use Moose;
-  has LoggingConfiguration => (is => 'ro', isa => 'Paws::WAF::LoggingConfiguration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_LoggingConfiguration/;
+  has LoggingConfiguration => (is => 'ro', isa => WAF_LoggingConfiguration);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LoggingConfiguration' => {
+                                           'type' => 'WAF_LoggingConfiguration',
+                                           'class' => 'Paws::WAF::LoggingConfiguration'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::WAF::GetLoggingConfigurationResponse
 =head1 ATTRIBUTES
 
 
-=head2 LoggingConfiguration => L<Paws::WAF::LoggingConfiguration>
+=head2 LoggingConfiguration => WAF_LoggingConfiguration
 
 The LoggingConfiguration for the specified web ACL.
 

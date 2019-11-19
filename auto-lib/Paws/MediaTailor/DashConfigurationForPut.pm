@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaTailor::DashConfigurationForPut;
-  use Moose;
-  has MpdLocation => (is => 'ro', isa => 'Str');
-  has OriginManifestType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaTailor::Types qw//;
+  has MpdLocation => (is => 'ro', isa => Str);
+  has OriginManifestType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OriginManifestType' => {
+                                         'type' => 'Str'
+                                       },
+               'MpdLocation' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

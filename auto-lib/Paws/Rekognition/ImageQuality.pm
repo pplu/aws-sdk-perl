@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Rekognition::ImageQuality;
-  use Moose;
-  has Brightness => (is => 'ro', isa => 'Num');
-  has Sharpness => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Rekognition::Types qw//;
+  has Brightness => (is => 'ro', isa => Num);
+  has Sharpness => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Brightness' => {
+                                 'type' => 'Num'
+                               },
+               'Sharpness' => {
+                                'type' => 'Num'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::AssetList;
-  use Moose;
-  has Assets => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::AssetShallow]', request_name => 'assets', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_AssetShallow/;
+  has Assets => (is => 'ro', isa => ArrayRef[MediaPackageVod_AssetShallow]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Assets' => {
+                             'class' => 'Paws::MediaPackageVod::AssetShallow',
+                             'type' => 'ArrayRef[MediaPackageVod_AssetShallow]'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Assets' => 'assets'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ A collection of MediaPackage VOD Asset resources.
 =head1 ATTRIBUTES
 
 
-=head2 Assets => ArrayRef[L<Paws::MediaPackageVod::AssetShallow>]
+=head2 Assets => ArrayRef[MediaPackageVod_AssetShallow]
 
   A list of MediaPackage VOD Asset resources.
 

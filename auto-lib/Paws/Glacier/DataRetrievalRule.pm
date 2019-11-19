@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glacier::DataRetrievalRule;
-  use Moose;
-  has BytesPerHour => (is => 'ro', isa => 'Int');
-  has Strategy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Glacier::Types qw//;
+  has BytesPerHour => (is => 'ro', isa => Int);
+  has Strategy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Strategy' => {
+                               'type' => 'Str'
+                             },
+               'BytesPerHour' => {
+                                   'type' => 'Int'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

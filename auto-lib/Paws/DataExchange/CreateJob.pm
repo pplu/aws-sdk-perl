@@ -1,15 +1,38 @@
 
 package Paws::DataExchange::CreateJob;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Paws::DataExchange::RequestDetails', required => 1);
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw/DataExchange_RequestDetails/;
+  has Details => (is => 'ro', isa => DataExchange_RequestDetails, required => 1, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataExchange::CreateJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataExchange::CreateJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Details' => {
+                              'class' => 'Paws::DataExchange::RequestDetails',
+                              'type' => 'DataExchange_RequestDetails'
+                            }
+             },
+  'IsRequired' => {
+                    'Details' => 1,
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +117,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Details => L<Paws::DataExchange::RequestDetails>
+=head2 B<REQUIRED> Details => DataExchange_RequestDetails
 
 The details for the CreateJob request.
 

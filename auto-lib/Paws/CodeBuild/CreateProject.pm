@@ -1,30 +1,134 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeBuild::CreateProject;
-  use Moose;
-  has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::ProjectArtifacts', traits => ['NameInRequest'], request_name => 'artifacts' , required => 1);
-  has BadgeEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'badgeEnabled' );
-  has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', traits => ['NameInRequest'], request_name => 'cache' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has EncryptionKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionKey' );
-  has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', traits => ['NameInRequest'], request_name => 'environment' , required => 1);
-  has LogsConfig => (is => 'ro', isa => 'Paws::CodeBuild::LogsConfig', traits => ['NameInRequest'], request_name => 'logsConfig' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has QueuedTimeoutInMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'queuedTimeoutInMinutes' );
-  has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', traits => ['NameInRequest'], request_name => 'secondaryArtifacts' );
-  has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', traits => ['NameInRequest'], request_name => 'secondarySources' );
-  has SecondarySourceVersions => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSourceVersion]', traits => ['NameInRequest'], request_name => 'secondarySourceVersions' );
-  has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole' , required => 1);
-  has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', traits => ['NameInRequest'], request_name => 'source' , required => 1);
-  has SourceVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceVersion' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has TimeoutInMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMinutes' );
-  has VpcConfig => (is => 'ro', isa => 'Paws::CodeBuild::VpcConfig', traits => ['NameInRequest'], request_name => 'vpcConfig' );
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::CodeBuild::Types qw/CodeBuild_Tag CodeBuild_VpcConfig CodeBuild_ProjectEnvironment CodeBuild_ProjectSourceVersion CodeBuild_ProjectCache CodeBuild_LogsConfig CodeBuild_ProjectArtifacts CodeBuild_ProjectSource/;
+  has Artifacts => (is => 'ro', isa => CodeBuild_ProjectArtifacts, required => 1, predicate => 1);
+  has BadgeEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has Cache => (is => 'ro', isa => CodeBuild_ProjectCache, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has EncryptionKey => (is => 'ro', isa => Str, predicate => 1);
+  has Environment => (is => 'ro', isa => CodeBuild_ProjectEnvironment, required => 1, predicate => 1);
+  has LogsConfig => (is => 'ro', isa => CodeBuild_LogsConfig, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has QueuedTimeoutInMinutes => (is => 'ro', isa => Int, predicate => 1);
+  has SecondaryArtifacts => (is => 'ro', isa => ArrayRef[CodeBuild_ProjectArtifacts], predicate => 1);
+  has SecondarySources => (is => 'ro', isa => ArrayRef[CodeBuild_ProjectSource], predicate => 1);
+  has SecondarySourceVersions => (is => 'ro', isa => ArrayRef[CodeBuild_ProjectSourceVersion], predicate => 1);
+  has ServiceRole => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Source => (is => 'ro', isa => CodeBuild_ProjectSource, required => 1, predicate => 1);
+  has SourceVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CodeBuild_Tag], predicate => 1);
+  has TimeoutInMinutes => (is => 'ro', isa => Int, predicate => 1);
+  has VpcConfig => (is => 'ro', isa => CodeBuild_VpcConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateProject');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeBuild::CreateProjectOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateProject');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeBuild::CreateProjectOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EncryptionKey' => {
+                                    'type' => 'Str'
+                                  },
+               'SecondarySources' => {
+                                       'class' => 'Paws::CodeBuild::ProjectSource',
+                                       'type' => 'ArrayRef[CodeBuild_ProjectSource]'
+                                     },
+               'BadgeEnabled' => {
+                                   'type' => 'Bool'
+                                 },
+               'Artifacts' => {
+                                'type' => 'CodeBuild_ProjectArtifacts',
+                                'class' => 'Paws::CodeBuild::ProjectArtifacts'
+                              },
+               'SourceVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Cache' => {
+                            'type' => 'CodeBuild_ProjectCache',
+                            'class' => 'Paws::CodeBuild::ProjectCache'
+                          },
+               'SecondaryArtifacts' => {
+                                         'class' => 'Paws::CodeBuild::ProjectArtifacts',
+                                         'type' => 'ArrayRef[CodeBuild_ProjectArtifacts]'
+                                       },
+               'Environment' => {
+                                  'type' => 'CodeBuild_ProjectEnvironment',
+                                  'class' => 'Paws::CodeBuild::ProjectEnvironment'
+                                },
+               'Source' => {
+                             'type' => 'CodeBuild_ProjectSource',
+                             'class' => 'Paws::CodeBuild::ProjectSource'
+                           },
+               'Tags' => {
+                           'class' => 'Paws::CodeBuild::Tag',
+                           'type' => 'ArrayRef[CodeBuild_Tag]'
+                         },
+               'LogsConfig' => {
+                                 'class' => 'Paws::CodeBuild::LogsConfig',
+                                 'type' => 'CodeBuild_LogsConfig'
+                               },
+               'SecondarySourceVersions' => {
+                                              'class' => 'Paws::CodeBuild::ProjectSourceVersion',
+                                              'type' => 'ArrayRef[CodeBuild_ProjectSourceVersion]'
+                                            },
+               'VpcConfig' => {
+                                'type' => 'CodeBuild_VpcConfig',
+                                'class' => 'Paws::CodeBuild::VpcConfig'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'TimeoutInMinutes' => {
+                                       'type' => 'Int'
+                                     },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'QueuedTimeoutInMinutes' => {
+                                             'type' => 'Int'
+                                           }
+             },
+  'IsRequired' => {
+                    'ServiceRole' => 1,
+                    'Artifacts' => 1,
+                    'Name' => 1,
+                    'Environment' => 1,
+                    'Source' => 1
+                  },
+  'NameInRequest' => {
+                       'Environment' => 'environment',
+                       'SecondaryArtifacts' => 'secondaryArtifacts',
+                       'Cache' => 'cache',
+                       'BadgeEnabled' => 'badgeEnabled',
+                       'EncryptionKey' => 'encryptionKey',
+                       'SecondarySources' => 'secondarySources',
+                       'Artifacts' => 'artifacts',
+                       'Name' => 'name',
+                       'SourceVersion' => 'sourceVersion',
+                       'Description' => 'description',
+                       'SecondarySourceVersions' => 'secondarySourceVersions',
+                       'VpcConfig' => 'vpcConfig',
+                       'QueuedTimeoutInMinutes' => 'queuedTimeoutInMinutes',
+                       'TimeoutInMinutes' => 'timeoutInMinutes',
+                       'ServiceRole' => 'serviceRole',
+                       'Tags' => 'tags',
+                       'Source' => 'source',
+                       'LogsConfig' => 'logsConfig'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -199,7 +303,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Artifacts => L<Paws::CodeBuild::ProjectArtifacts>
+=head2 B<REQUIRED> Artifacts => CodeBuild_ProjectArtifacts
 
 Information about the build output artifacts for the build project.
 
@@ -212,7 +316,7 @@ project's build badge.
 
 
 
-=head2 Cache => L<Paws::CodeBuild::ProjectCache>
+=head2 Cache => CodeBuild_ProjectCache
 
 Stores recently used information so that it can be quickly accessed at
 a later time.
@@ -238,13 +342,13 @@ available, the CMK's alias (using the format C<alias/I<alias-name> >).
 
 
 
-=head2 B<REQUIRED> Environment => L<Paws::CodeBuild::ProjectEnvironment>
+=head2 B<REQUIRED> Environment => CodeBuild_ProjectEnvironment
 
 Information about the build environment for the build project.
 
 
 
-=head2 LogsConfig => L<Paws::CodeBuild::LogsConfig>
+=head2 LogsConfig => CodeBuild_LogsConfig
 
 Information about logs for the build project. These can be logs in
 Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or
@@ -265,19 +369,19 @@ out.
 
 
 
-=head2 SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]
+=head2 SecondaryArtifacts => ArrayRef[CodeBuild_ProjectArtifacts]
 
 An array of C<ProjectArtifacts> objects.
 
 
 
-=head2 SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]
+=head2 SecondarySources => ArrayRef[CodeBuild_ProjectSource]
 
 An array of C<ProjectSource> objects.
 
 
 
-=head2 SecondarySourceVersions => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]
+=head2 SecondarySourceVersions => ArrayRef[CodeBuild_ProjectSourceVersion]
 
 An array of C<ProjectSourceVersion> objects. If
 C<secondarySourceVersions> is specified at the build level, then they
@@ -294,7 +398,7 @@ of the AWS account.
 
 
 
-=head2 B<REQUIRED> Source => L<Paws::CodeBuild::ProjectSource>
+=head2 B<REQUIRED> Source => CodeBuild_ProjectSource
 
 Information about the build input source code for the build project.
 
@@ -343,7 +447,7 @@ in the I<AWS CodeBuild User Guide>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::CodeBuild::Tag>]
+=head2 Tags => ArrayRef[CodeBuild_Tag]
 
 A set of tags for this build project.
 
@@ -360,7 +464,7 @@ completed. The default is 60 minutes.
 
 
 
-=head2 VpcConfig => L<Paws::CodeBuild::VpcConfig>
+=head2 VpcConfig => CodeBuild_VpcConfig
 
 VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
 

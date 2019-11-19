@@ -1,12 +1,43 @@
 
 package Paws::S3::ListBucketMetricsConfigurationsOutput;
-  use Moose;
-  has ContinuationToken => (is => 'ro', isa => 'Str');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has MetricsConfigurationList => (is => 'ro', isa => 'ArrayRef[Paws::S3::MetricsConfiguration]', traits => ['NameInRequest'], request_name => 'MetricsConfiguration');
-  has NextContinuationToken => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::S3::Types qw/S3_MetricsConfiguration/;
+  has ContinuationToken => (is => 'ro', isa => Str);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has MetricsConfigurationList => (is => 'ro', isa => ArrayRef[S3_MetricsConfiguration]);
+  has NextContinuationToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'MetricsConfigurationList' => 'MetricsConfiguration'
+                     },
+  'types' => {
+               'MetricsConfigurationList' => {
+                                               'type' => 'ArrayRef[S3_MetricsConfiguration]',
+                                               'class' => 'Paws::S3::MetricsConfiguration'
+                                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ContinuationToken' => {
+                                        'type' => 'Str'
+                                      },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'NextContinuationToken' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -34,7 +65,7 @@ the NextContinuationToken will be provided for a subsequent request.
 
 
 
-=head2 MetricsConfigurationList => ArrayRef[L<Paws::S3::MetricsConfiguration>]
+=head2 MetricsConfigurationList => ArrayRef[S3_MetricsConfiguration]
 
 The list of metrics configurations for a bucket.
 

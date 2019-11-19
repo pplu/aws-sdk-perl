@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::MssManifest;
-  use Moose;
-  has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
-  has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackageVod::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_StreamSelection/;
+  has ManifestName => (is => 'ro', isa => Str);
+  has StreamSelection => (is => 'ro', isa => MediaPackageVod_StreamSelection);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamSelection' => {
+                                      'class' => 'Paws::MediaPackageVod::StreamSelection',
+                                      'type' => 'MediaPackageVod_StreamSelection'
+                                    },
+               'ManifestName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'StreamSelection' => 'streamSelection',
+                       'ManifestName' => 'manifestName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ A Microsoft Smooth Streaming (MSS) manifest configuration.
   An optional string to include in the name of the manifest.
 
 
-=head2 StreamSelection => L<Paws::MediaPackageVod::StreamSelection>
+=head2 StreamSelection => MediaPackageVod_StreamSelection
 
   
 

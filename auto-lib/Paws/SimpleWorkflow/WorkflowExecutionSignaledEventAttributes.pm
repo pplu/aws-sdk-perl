@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes;
-  use Moose;
-  has ExternalInitiatedEventId => (is => 'ro', isa => 'Int', request_name => 'externalInitiatedEventId', traits => ['NameInRequest']);
-  has ExternalWorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'externalWorkflowExecution', traits => ['NameInRequest']);
-  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
-  has SignalName => (is => 'ro', isa => 'Str', request_name => 'signalName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowExecution/;
+  has ExternalInitiatedEventId => (is => 'ro', isa => Int);
+  has ExternalWorkflowExecution => (is => 'ro', isa => SimpleWorkflow_WorkflowExecution);
+  has Input => (is => 'ro', isa => Str);
+  has SignalName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Input' => 'input',
+                       'ExternalWorkflowExecution' => 'externalWorkflowExecution',
+                       'SignalName' => 'signalName',
+                       'ExternalInitiatedEventId' => 'externalInitiatedEventId'
+                     },
+  'IsRequired' => {
+                    'SignalName' => 1
+                  },
+  'types' => {
+               'SignalName' => {
+                                 'type' => 'Str'
+                               },
+               'ExternalInitiatedEventId' => {
+                                               'type' => 'Int'
+                                             },
+               'ExternalWorkflowExecution' => {
+                                                'class' => 'Paws::SimpleWorkflow::WorkflowExecution',
+                                                'type' => 'SimpleWorkflow_WorkflowExecution'
+                                              },
+               'Input' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +86,7 @@ leading up to this event. This field is set only if the signal was
 initiated by another workflow execution.
 
 
-=head2 ExternalWorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=head2 ExternalWorkflowExecution => SimpleWorkflow_WorkflowExecution
 
   The workflow execution that sent the signal. This is set only of the
 signal was sent by another workflow execution.

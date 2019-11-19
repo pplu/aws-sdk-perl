@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::StorageRuleType;
-  use Moose;
-  has StorageAllocatedInBytes => (is => 'ro', isa => 'Int');
-  has StorageType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::WorkDocs::Types qw//;
+  has StorageAllocatedInBytes => (is => 'ro', isa => Int);
+  has StorageType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'StorageAllocatedInBytes' => {
+                                              'type' => 'Int'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

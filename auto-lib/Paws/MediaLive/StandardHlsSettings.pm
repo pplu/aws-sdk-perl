@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::MediaLive::StandardHlsSettings;
-  use Moose;
-  has AudioRenditionSets => (is => 'ro', isa => 'Str', request_name => 'audioRenditionSets', traits => ['NameInRequest']);
-  has M3u8Settings => (is => 'ro', isa => 'Paws::MediaLive::M3u8Settings', request_name => 'm3u8Settings', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_M3u8Settings/;
+  has AudioRenditionSets => (is => 'ro', isa => Str);
+  has M3u8Settings => (is => 'ro', isa => MediaLive_M3u8Settings, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AudioRenditionSets' => {
+                                         'type' => 'Str'
+                                       },
+               'M3u8Settings' => {
+                                   'class' => 'Paws::MediaLive::M3u8Settings',
+                                   'type' => 'MediaLive_M3u8Settings'
+                                 }
+             },
+  'IsRequired' => {
+                    'M3u8Settings' => 1
+                  },
+  'NameInRequest' => {
+                       'AudioRenditionSets' => 'audioRenditionSets',
+                       'M3u8Settings' => 'm3u8Settings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +72,7 @@ Input all the audio GROUP-IDs that are associated to the video,
 separate by ','.
 
 
-=head2 B<REQUIRED> M3u8Settings => L<Paws::MediaLive::M3u8Settings>
+=head2 B<REQUIRED> M3u8Settings => MediaLive_M3u8Settings
 
   
 

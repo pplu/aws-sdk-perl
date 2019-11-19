@@ -1,13 +1,32 @@
+# Generated from callargs_class.tt
 
 package Paws::SNS::GetSMSAttributes;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'attributes' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SNS::Types qw//;
+  has Attributes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSMSAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::GetSMSAttributesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSMSAttributesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSMSAttributes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SNS::GetSMSAttributesResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetSMSAttributesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'NameInRequest' => {
+                       'Attributes' => 'attributes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,20 +1,52 @@
 
 package Paws::Route53::CreateHostedZone;
-  use Moose;
-  has CallerReference => (is => 'ro', isa => 'Str', required => 1);
-  has DelegationSetId => (is => 'ro', isa => 'Str');
-  has HostedZoneConfig => (is => 'ro', isa => 'Paws::Route53::HostedZoneConfig');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has VPC => (is => 'ro', isa => 'Paws::Route53::VPC');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw/Route53_HostedZoneConfig Route53_VPC/;
+  has CallerReference => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DelegationSetId => (is => 'ro', isa => Str, predicate => 1);
+  has HostedZoneConfig => (is => 'ro', isa => Route53_HostedZoneConfig, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VPC => (is => 'ro', isa => Route53_VPC, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHostedZone');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/hostedzone');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::CreateHostedZoneResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateHostedZone');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/hostedzone');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::CreateHostedZoneResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'CallerReference' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'VPC' => {
+                          'class' => 'Paws::Route53::VPC',
+                          'type' => 'Route53_VPC'
+                        },
+               'HostedZoneConfig' => {
+                                       'class' => 'Paws::Route53::HostedZoneConfig',
+                                       'type' => 'Route53_HostedZoneConfig'
+                                     },
+               'CallerReference' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DelegationSetId' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +117,7 @@ sets, see CreateReusableDelegationSet
 
 
 
-=head2 HostedZoneConfig => L<Paws::Route53::HostedZoneConfig>
+=head2 HostedZoneConfig => Route53_HostedZoneConfig
 
 (Optional) A complex type that contains the following optional values:
 
@@ -122,7 +154,7 @@ C<DelegationSet>.
 
 
 
-=head2 VPC => L<Paws::Route53::VPC>
+=head2 VPC => Route53_VPC
 
 (Private hosted zones only) A complex type that contains information
 about the Amazon VPC that you're associating with this hosted zone.

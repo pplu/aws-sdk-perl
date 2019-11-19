@@ -1,11 +1,40 @@
 
 package Paws::Route53::ListVPCAssociationAuthorizationsResponse;
-  use Moose;
-  has HostedZoneId => (is => 'ro', isa => 'Str', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
-  has VPCs => (is => 'ro', isa => 'ArrayRef[Paws::Route53::VPC]', required => 1);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53::Types qw/Route53_VPC/;
+  has HostedZoneId => (is => 'ro', isa => Str, required => 1);
+  has NextToken => (is => 'ro', isa => Str);
+  has VPCs => (is => 'ro', isa => ArrayRef[Route53_VPC], required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'HostedZoneId' => 1,
+                    'VPCs' => 1
+                  },
+  'types' => {
+               'VPCs' => {
+                           'type' => 'ArrayRef[Route53_VPC]',
+                           'class' => 'Paws::Route53::VPC'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -33,7 +62,7 @@ response in the C<nexttoken> request parameter.
 
 
 
-=head2 B<REQUIRED> VPCs => ArrayRef[L<Paws::Route53::VPC>]
+=head2 B<REQUIRED> VPCs => ArrayRef[Route53_VPC]
 
 The list of VPCs that are authorized to be associated with the
 specified hosted zone.

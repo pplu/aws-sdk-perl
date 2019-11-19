@@ -1,12 +1,50 @@
+# Generated from default/object.tt
 package Paws::Transfer::ListedServer;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointType => (is => 'ro', isa => 'Str');
-  has IdentityProviderType => (is => 'ro', isa => 'Str');
-  has LoggingRole => (is => 'ro', isa => 'Str');
-  has ServerId => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has UserCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Transfer::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has EndpointType => (is => 'ro', isa => Str);
+  has IdentityProviderType => (is => 'ro', isa => Str);
+  has LoggingRole => (is => 'ro', isa => Str);
+  has ServerId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has UserCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndpointType' => {
+                                   'type' => 'Str'
+                                 },
+               'IdentityProviderType' => {
+                                           'type' => 'Str'
+                                         },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'LoggingRole' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'UserCount' => {
+                                'type' => 'Int'
+                              },
+               'ServerId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

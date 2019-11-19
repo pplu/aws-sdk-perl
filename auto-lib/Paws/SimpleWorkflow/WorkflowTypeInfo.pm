@@ -1,10 +1,52 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::WorkflowTypeInfo;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest'], required => 1);
-  has DeprecationDate => (is => 'ro', isa => 'Str', request_name => 'deprecationDate', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
-  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', request_name => 'workflowType', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowType/;
+  has CreationDate => (is => 'ro', isa => Str, required => 1);
+  has DeprecationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has WorkflowType => (is => 'ro', isa => SimpleWorkflow_WorkflowType, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeprecationDate' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'WorkflowType' => {
+                                   'type' => 'SimpleWorkflow_WorkflowType',
+                                   'class' => 'Paws::SimpleWorkflow::WorkflowType'
+                                 },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'Description' => 'description',
+                       'DeprecationDate' => 'deprecationDate',
+                       'WorkflowType' => 'workflowType',
+                       'CreationDate' => 'creationDate'
+                     },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'WorkflowType' => 1,
+                    'CreationDate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +103,7 @@ type was deprecated.
   The current status of the workflow type.
 
 
-=head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=head2 B<REQUIRED> WorkflowType => SimpleWorkflow_WorkflowType
 
   The workflow type this information is about.
 

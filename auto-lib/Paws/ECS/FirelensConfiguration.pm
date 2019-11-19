@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::ECS::FirelensConfiguration;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Paws::ECS::FirelensConfigurationOptionsMap', request_name => 'options', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw/ECS_FirelensConfigurationOptionsMap/;
+  has Options => (is => 'ro', isa => ECS_FirelensConfigurationOptionsMap);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Options' => {
+                              'type' => 'ECS_FirelensConfigurationOptionsMap',
+                              'class' => 'Paws::ECS::FirelensConfigurationOptionsMap'
+                            },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Options' => 'options',
+                       'Type' => 'type'
+                     },
+  'IsRequired' => {
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +69,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =head1 ATTRIBUTES
 
 
-=head2 Options => L<Paws::ECS::FirelensConfigurationOptionsMap>
+=head2 Options => ECS_FirelensConfigurationOptionsMap
 
   The options to use when configuring the log router. This field is
 optional and can be used to add additional metadata, such as the task,

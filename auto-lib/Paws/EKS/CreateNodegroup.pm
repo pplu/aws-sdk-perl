@@ -1,27 +1,109 @@
 
 package Paws::EKS::CreateNodegroup;
-  use Moose;
-  has AmiType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'amiType');
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
-  has ClusterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has DiskSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'diskSize');
-  has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceTypes');
-  has Labels => (is => 'ro', isa => 'Paws::EKS::LabelsMap', traits => ['NameInRequest'], request_name => 'labels');
-  has NodegroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nodegroupName', required => 1);
-  has NodeRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nodeRole', required => 1);
-  has ReleaseVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'releaseVersion');
-  has RemoteAccess => (is => 'ro', isa => 'Paws::EKS::RemoteAccessConfig', traits => ['NameInRequest'], request_name => 'remoteAccess');
-  has ScalingConfig => (is => 'ro', isa => 'Paws::EKS::NodegroupScalingConfig', traits => ['NameInRequest'], request_name => 'scalingConfig');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'subnets', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::EKS::TagMap', traits => ['NameInRequest'], request_name => 'tags');
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::EKS::Types qw/EKS_NodegroupScalingConfig EKS_TagMap EKS_labelsMap EKS_RemoteAccessConfig/;
+  has AmiType => (is => 'ro', isa => Str, predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has ClusterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DiskSize => (is => 'ro', isa => Int, predicate => 1);
+  has InstanceTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Labels => (is => 'ro', isa => EKS_labelsMap, predicate => 1);
+  has NodegroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NodeRole => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReleaseVersion => (is => 'ro', isa => Str, predicate => 1);
+  has RemoteAccess => (is => 'ro', isa => EKS_RemoteAccessConfig, predicate => 1);
+  has ScalingConfig => (is => 'ro', isa => EKS_NodegroupScalingConfig, predicate => 1);
+  has Subnets => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => EKS_TagMap, predicate => 1);
+  has Version => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNodegroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clusters/{name}/node-groups');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EKS::CreateNodegroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateNodegroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clusters/{name}/node-groups');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EKS::CreateNodegroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Subnets' => 1,
+                    'NodegroupName' => 1,
+                    'ClusterName' => 1,
+                    'NodeRole' => 1
+                  },
+  'NameInRequest' => {
+                       'Version' => 'version',
+                       'InstanceTypes' => 'instanceTypes',
+                       'Tags' => 'tags',
+                       'DiskSize' => 'diskSize',
+                       'ReleaseVersion' => 'releaseVersion',
+                       'Subnets' => 'subnets',
+                       'NodegroupName' => 'nodegroupName',
+                       'ScalingConfig' => 'scalingConfig',
+                       'Labels' => 'labels',
+                       'AmiType' => 'amiType',
+                       'RemoteAccess' => 'remoteAccess',
+                       'NodeRole' => 'nodeRole',
+                       'ClientRequestToken' => 'clientRequestToken'
+                     },
+  'types' => {
+               'Subnets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'ReleaseVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'NodegroupName' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::EKS::TagMap',
+                           'type' => 'EKS_TagMap'
+                         },
+               'DiskSize' => {
+                               'type' => 'Int'
+                             },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'InstanceTypes' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'AmiType' => {
+                              'type' => 'Str'
+                            },
+               'RemoteAccess' => {
+                                   'type' => 'EKS_RemoteAccessConfig',
+                                   'class' => 'Paws::EKS::RemoteAccessConfig'
+                                 },
+               'Labels' => {
+                             'class' => 'Paws::EKS::LabelsMap',
+                             'type' => 'EKS_labelsMap'
+                           },
+               'NodeRole' => {
+                               'type' => 'Str'
+                             },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'ScalingConfig' => {
+                                    'class' => 'Paws::EKS::NodegroupScalingConfig',
+                                    'type' => 'EKS_NodegroupScalingConfig'
+                                  },
+               'ClusterName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'ClusterName' => 'name'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -119,7 +201,7 @@ sure to specify the C<AL2_x86_64_GPU> with the C<amiType> parameter.
 
 
 
-=head2 Labels => L<Paws::EKS::LabelsMap>
+=head2 Labels => EKS_labelsMap
 
 The Kubernetes labels to be applied to the nodes in the node group when
 they are created.
@@ -157,13 +239,13 @@ in the I<Amazon EKS User Guide>.
 
 
 
-=head2 RemoteAccess => L<Paws::EKS::RemoteAccessConfig>
+=head2 RemoteAccess => EKS_RemoteAccessConfig
 
 The remote access (SSH) configuration to use with your node group.
 
 
 
-=head2 ScalingConfig => L<Paws::EKS::NodegroupScalingConfig>
+=head2 ScalingConfig => EKS_NodegroupScalingConfig
 
 The scaling configuration details for the AutoScaling group that is
 created for your node group.
@@ -179,7 +261,7 @@ C<CLUSTER_NAME> is replaced with the name of your cluster.
 
 
 
-=head2 Tags => L<Paws::EKS::TagMap>
+=head2 Tags => EKS_TagMap
 
 The metadata to apply to the node group to assist with categorization
 and organization. Each tag consists of a key and an optional value,

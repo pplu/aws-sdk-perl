@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StepFunctions::ListActivitiesOutput;
-  use Moose;
-  has Activities => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::ActivityListItem]', traits => ['NameInRequest'], request_name => 'activities' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StepFunctions::Types qw/StepFunctions_ActivityListItem/;
+  has Activities => (is => 'ro', isa => ArrayRef[StepFunctions_ActivityListItem], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Activities' => {
+                                 'type' => 'ArrayRef[StepFunctions_ActivityListItem]',
+                                 'class' => 'Paws::StepFunctions::ActivityListItem'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Activities' => 1
+                  },
+  'NameInRequest' => {
+                       'Activities' => 'activities',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +44,7 @@ Paws::StepFunctions::ListActivitiesOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Activities => ArrayRef[L<Paws::StepFunctions::ActivityListItem>]
+=head2 B<REQUIRED> Activities => ArrayRef[StepFunctions_ActivityListItem]
 
 The list of activities.
 

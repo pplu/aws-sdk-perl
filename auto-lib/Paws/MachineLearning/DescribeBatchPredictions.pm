@@ -1,23 +1,69 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MachineLearning::DescribeBatchPredictions;
-  use Moose;
-  has EQ => (is => 'ro', isa => 'Str');
-  has FilterVariable => (is => 'ro', isa => 'Str');
-  has GE => (is => 'ro', isa => 'Str');
-  has GT => (is => 'ro', isa => 'Str');
-  has LE => (is => 'ro', isa => 'Str');
-  has Limit => (is => 'ro', isa => 'Int');
-  has LT => (is => 'ro', isa => 'Str');
-  has NE => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has SortOrder => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MachineLearning::Types qw//;
+  has EQ => (is => 'ro', isa => Str, predicate => 1);
+  has FilterVariable => (is => 'ro', isa => Str, predicate => 1);
+  has GE => (is => 'ro', isa => Str, predicate => 1);
+  has GT => (is => 'ro', isa => Str, predicate => 1);
+  has LE => (is => 'ro', isa => Str, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has LT => (is => 'ro', isa => Str, predicate => 1);
+  has NE => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Prefix => (is => 'ro', isa => Str, predicate => 1);
+  has SortOrder => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBatchPredictions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::DescribeBatchPredictionsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeBatchPredictions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MachineLearning::DescribeBatchPredictionsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SortOrder' => {
+                                'type' => 'Str'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'LE' => {
+                         'type' => 'Str'
+                       },
+               'GT' => {
+                         'type' => 'Str'
+                       },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'NE' => {
+                         'type' => 'Str'
+                       },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'FilterVariable' => {
+                                     'type' => 'Str'
+                                   },
+               'GE' => {
+                         'type' => 'Str'
+                       },
+               'LT' => {
+                         'type' => 'Str'
+                       },
+               'EQ' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::S3::ProgressEvent;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Paws::S3::Progress');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_Progress/;
+  has Details => (is => 'ro', isa => S3_Progress);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Details' => {
+                              'class' => 'Paws::S3::Progress',
+                              'type' => 'S3_Progress'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ operation.
 =head1 ATTRIBUTES
 
 
-=head2 Details => L<Paws::S3::Progress>
+=head2 Details => S3_Progress
 
   The Progress event details.
 

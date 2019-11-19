@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::ES::ElasticsearchClusterConfigStatus;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig', required => 1);
-  has Status => (is => 'ro', isa => 'Paws::ES::OptionStatus', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ES::Types qw/ES_ElasticsearchClusterConfig ES_OptionStatus/;
+  has Options => (is => 'ro', isa => ES_ElasticsearchClusterConfig, required => 1);
+  has Status => (is => 'ro', isa => ES_OptionStatus, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Options' => {
+                              'class' => 'Paws::ES::ElasticsearchClusterConfig',
+                              'type' => 'ES_ElasticsearchClusterConfig'
+                            },
+               'Status' => {
+                             'type' => 'ES_OptionStatus',
+                             'class' => 'Paws::ES::OptionStatus'
+                           }
+             },
+  'IsRequired' => {
+                    'Options' => 1,
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +64,13 @@ domain.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Options => L<Paws::ES::ElasticsearchClusterConfig>
+=head2 B<REQUIRED> Options => ES_ElasticsearchClusterConfig
 
   Specifies the cluster configuration for the specified Elasticsearch
 domain.
 
 
-=head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
+=head2 B<REQUIRED> Status => ES_OptionStatus
 
   Specifies the status of the configuration for the specified
 Elasticsearch domain.

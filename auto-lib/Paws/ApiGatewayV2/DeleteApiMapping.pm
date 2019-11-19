@@ -1,15 +1,41 @@
 
 package Paws::ApiGatewayV2::DeleteApiMapping;
-  use Moose;
-  has ApiMappingId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiMappingId', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ApiMappingId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApiMapping');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/domainnames/{domainName}/apimappings/{apiMappingId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteApiMapping');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/domainnames/{domainName}/apimappings/{apiMappingId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'DomainName' => 'domainName',
+                    'ApiMappingId' => 'apiMappingId'
+                  },
+  'IsRequired' => {
+                    'ApiMappingId' => 1,
+                    'DomainName' => 1
+                  },
+  'types' => {
+               'ApiMappingId' => {
+                                   'type' => 'Str'
+                                 },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

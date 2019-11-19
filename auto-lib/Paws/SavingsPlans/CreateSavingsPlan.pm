@@ -1,18 +1,57 @@
 
 package Paws::SavingsPlans::CreateSavingsPlan;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has Commitment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitment', required => 1);
-  has SavingsPlanOfferingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'savingsPlanOfferingId', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::SavingsPlans::TagMap', traits => ['NameInRequest'], request_name => 'tags');
-  has UpfrontPaymentAmount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'upfrontPaymentAmount');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SavingsPlans::Types qw/SavingsPlans_TagMap/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Commitment => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SavingsPlanOfferingId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => SavingsPlans_TagMap, predicate => 1);
+  has UpfrontPaymentAmount => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSavingsPlan');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/CreateSavingsPlan');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SavingsPlans::CreateSavingsPlanResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSavingsPlan');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/CreateSavingsPlan');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SavingsPlans::CreateSavingsPlanResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Commitment' => 1,
+                    'SavingsPlanOfferingId' => 1
+                  },
+  'NameInRequest' => {
+                       'SavingsPlanOfferingId' => 'savingsPlanOfferingId',
+                       'Commitment' => 'commitment',
+                       'ClientToken' => 'clientToken',
+                       'Tags' => 'tags',
+                       'UpfrontPaymentAmount' => 'upfrontPaymentAmount'
+                     },
+  'types' => {
+               'SavingsPlanOfferingId' => {
+                                            'type' => 'Str'
+                                          },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'Commitment' => {
+                                 'type' => 'Str'
+                               },
+               'UpfrontPaymentAmount' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'type' => 'SavingsPlans_TagMap',
+                           'class' => 'Paws::SavingsPlans::TagMap'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +111,7 @@ The ID of the offering.
 
 
 
-=head2 Tags => L<Paws::SavingsPlans::TagMap>
+=head2 Tags => SavingsPlans_TagMap
 
 One or more tags.
 

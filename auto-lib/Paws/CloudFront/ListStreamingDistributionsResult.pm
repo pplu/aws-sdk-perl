@@ -1,11 +1,30 @@
 
 package Paws::CloudFront::ListStreamingDistributionsResult;
-  use Moose;
-  has StreamingDistributionList => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistributionList');
+  use Moo;
 
-  use MooseX::ClassAttribute;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_StreamingDistributionList/;
+  has StreamingDistributionList => (is => 'ro', isa => CloudFront_StreamingDistributionList);
+
+  use MooX::ClassAttribute;
   class_has _payload => (is => 'ro', default => 'StreamingDistributionList');
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamingDistributionList' => {
+                                                'type' => 'CloudFront_StreamingDistributionList',
+                                                'class' => 'Paws::CloudFront::StreamingDistributionList'
+                                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +36,7 @@ Paws::CloudFront::ListStreamingDistributionsResult
 =head1 ATTRIBUTES
 
 
-=head2 StreamingDistributionList => L<Paws::CloudFront::StreamingDistributionList>
+=head2 StreamingDistributionList => CloudFront_StreamingDistributionList
 
 The C<StreamingDistributionList> type.
 

@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DatasetSummary;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetActionSummary]', request_name => 'actions', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has DatasetName => (is => 'ro', isa => 'Str', request_name => 'datasetName', traits => ['NameInRequest']);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetTrigger]', request_name => 'triggers', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_DatasetActionSummary IoTAnalytics_DatasetTrigger/;
+  has Actions => (is => 'ro', isa => ArrayRef[IoTAnalytics_DatasetActionSummary]);
+  has CreationTime => (is => 'ro', isa => Str);
+  has DatasetName => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Triggers => (is => 'ro', isa => ArrayRef[IoTAnalytics_DatasetTrigger]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                },
+               'Triggers' => {
+                               'class' => 'Paws::IoTAnalytics::DatasetTrigger',
+                               'type' => 'ArrayRef[IoTAnalytics_DatasetTrigger]'
+                             },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Actions' => {
+                              'type' => 'ArrayRef[IoTAnalytics_DatasetActionSummary]',
+                              'class' => 'Paws::IoTAnalytics::DatasetActionSummary'
+                            }
+             },
+  'NameInRequest' => {
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'CreationTime' => 'creationTime',
+                       'Actions' => 'actions',
+                       'Status' => 'status',
+                       'DatasetName' => 'datasetName',
+                       'Triggers' => 'triggers'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +83,7 @@ A summary of information about a data set.
 =head1 ATTRIBUTES
 
 
-=head2 Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetActionSummary>]
+=head2 Actions => ArrayRef[IoTAnalytics_DatasetActionSummary]
 
   A list of "DataActionSummary" objects.
 
@@ -66,7 +108,7 @@ A summary of information about a data set.
   The status of the data set.
 
 
-=head2 Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]
+=head2 Triggers => ArrayRef[IoTAnalytics_DatasetTrigger]
 
   A list of triggers. A trigger causes data set content to be populated
 at a specified time interval or when another data set is populated. The

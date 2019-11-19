@@ -1,24 +1,79 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::CreateAssociation;
-  use Moose;
-  has AssociationName => (is => 'ro', isa => 'Str');
-  has AutomationTargetParameterName => (is => 'ro', isa => 'Str');
-  has ComplianceSeverity => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has MaxConcurrency => (is => 'ro', isa => 'Str');
-  has MaxErrors => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has OutputLocation => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputLocation');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
-  has ScheduleExpression => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Parameters SSM_Target SSM_InstanceAssociationOutputLocation/;
+  has AssociationName => (is => 'ro', isa => Str, predicate => 1);
+  has AutomationTargetParameterName => (is => 'ro', isa => Str, predicate => 1);
+  has ComplianceSeverity => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentVersion => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, predicate => 1);
+  has MaxConcurrency => (is => 'ro', isa => Str, predicate => 1);
+  has MaxErrors => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OutputLocation => (is => 'ro', isa => SSM_InstanceAssociationOutputLocation, predicate => 1);
+  has Parameters => (is => 'ro', isa => SSM_Parameters, predicate => 1);
+  has ScheduleExpression => (is => 'ro', isa => Str, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAssociation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreateAssociationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateAssociation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::CreateAssociationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               'Parameters' => {
+                                 'type' => 'SSM_Parameters',
+                                 'class' => 'Paws::SSM::Parameters'
+                               },
+               'MaxErrors' => {
+                                'type' => 'Str'
+                              },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'ScheduleExpression' => {
+                                         'type' => 'Str'
+                                       },
+               'ComplianceSeverity' => {
+                                         'type' => 'Str'
+                                       },
+               'MaxConcurrency' => {
+                                     'type' => 'Str'
+                                   },
+               'AutomationTargetParameterName' => {
+                                                    'type' => 'Str'
+                                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'AssociationName' => {
+                                      'type' => 'Str'
+                                    },
+               'OutputLocation' => {
+                                     'class' => 'Paws::SSM::InstanceAssociationOutputLocation',
+                                     'type' => 'SSM_InstanceAssociationOutputLocation'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -178,14 +233,14 @@ C<AWS-ApplyPatchBaseline> or C<My-Document>.
 
 
 
-=head2 OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>
+=head2 OutputLocation => SSM_InstanceAssociationOutputLocation
 
 An Amazon S3 bucket where you want to store the output details of the
 request.
 
 
 
-=head2 Parameters => L<Paws::SSM::Parameters>
+=head2 Parameters => SSM_Parameters
 
 The parameters for the runtime configuration of the document.
 
@@ -198,7 +253,7 @@ target(s).
 
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
 The targets (either instances or tags) for the association. You must
 specify a value for C<Targets> if you don't specify a value for

@@ -1,34 +1,121 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudWatch::PutMetricAlarm;
-  use Moose;
-  has ActionsEnabled => (is => 'ro', isa => 'Bool');
-  has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AlarmDescription => (is => 'ro', isa => 'Str');
-  has AlarmName => (is => 'ro', isa => 'Str', required => 1);
-  has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
-  has DatapointsToAlarm => (is => 'ro', isa => 'Int');
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
-  has EvaluateLowSampleCountPercentile => (is => 'ro', isa => 'Str');
-  has EvaluationPeriods => (is => 'ro', isa => 'Int', required => 1);
-  has ExtendedStatistic => (is => 'ro', isa => 'Str');
-  has InsufficientDataActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MetricName => (is => 'ro', isa => 'Str');
-  has Metrics => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::MetricDataQuery]');
-  has Namespace => (is => 'ro', isa => 'Str');
-  has OKActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Period => (is => 'ro', isa => 'Int');
-  has Statistic => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Tag]');
-  has Threshold => (is => 'ro', isa => 'Num');
-  has ThresholdMetricId => (is => 'ro', isa => 'Str');
-  has TreatMissingData => (is => 'ro', isa => 'Str');
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef Int Num/;
+  use Paws::CloudWatch::Types qw/CloudWatch_MetricDataQuery CloudWatch_Tag CloudWatch_Dimension/;
+  has ActionsEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has AlarmActions => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has AlarmDescription => (is => 'ro', isa => Str, predicate => 1);
+  has AlarmName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ComparisonOperator => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DatapointsToAlarm => (is => 'ro', isa => Int, predicate => 1);
+  has Dimensions => (is => 'ro', isa => ArrayRef[CloudWatch_Dimension], predicate => 1);
+  has EvaluateLowSampleCountPercentile => (is => 'ro', isa => Str, predicate => 1);
+  has EvaluationPeriods => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has ExtendedStatistic => (is => 'ro', isa => Str, predicate => 1);
+  has InsufficientDataActions => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, predicate => 1);
+  has Metrics => (is => 'ro', isa => ArrayRef[CloudWatch_MetricDataQuery], predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, predicate => 1);
+  has OKActions => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Period => (is => 'ro', isa => Int, predicate => 1);
+  has Statistic => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CloudWatch_Tag], predicate => 1);
+  has Threshold => (is => 'ro', isa => Num, predicate => 1);
+  has ThresholdMetricId => (is => 'ro', isa => Str, predicate => 1);
+  has TreatMissingData => (is => 'ro', isa => Str, predicate => 1);
+  has Unit => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutMetricAlarm');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutMetricAlarm');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[CloudWatch_Tag]',
+                           'class' => 'Paws::CloudWatch::Tag'
+                         },
+               'ExtendedStatistic' => {
+                                        'type' => 'Str'
+                                      },
+               'Statistic' => {
+                                'type' => 'Str'
+                              },
+               'InsufficientDataActions' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'OKActions' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'AlarmActions' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'Period' => {
+                             'type' => 'Int'
+                           },
+               'TreatMissingData' => {
+                                       'type' => 'Str'
+                                     },
+               'EvaluateLowSampleCountPercentile' => {
+                                                       'type' => 'Str'
+                                                     },
+               'AlarmName' => {
+                                'type' => 'Str'
+                              },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'AlarmDescription' => {
+                                       'type' => 'Str'
+                                     },
+               'Dimensions' => {
+                                 'class' => 'Paws::CloudWatch::Dimension',
+                                 'type' => 'ArrayRef[CloudWatch_Dimension]'
+                               },
+               'ActionsEnabled' => {
+                                     'type' => 'Bool'
+                                   },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       },
+               'ThresholdMetricId' => {
+                                        'type' => 'Str'
+                                      },
+               'Threshold' => {
+                                'type' => 'Num'
+                              },
+               'Metrics' => {
+                              'class' => 'Paws::CloudWatch::MetricDataQuery',
+                              'type' => 'ArrayRef[CloudWatch_MetricDataQuery]'
+                            },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'DatapointsToAlarm' => {
+                                        'type' => 'Int'
+                                      },
+               'EvaluationPeriods' => {
+                                        'type' => 'Int'
+                                      }
+             },
+  'IsRequired' => {
+                    'AlarmName' => 1,
+                    'ComparisonOperator' => 1,
+                    'EvaluationPeriods' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -91,12 +178,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               MetricName => 'MyMetricName',       # min: 1, max: 255
               Namespace  => 'MyNamespace',        # min: 1, max: 255; OPTIONAL
             },
-            Period => 1,                          # min: 1
+            Period => 1,                          # min: 1; OPTIONAL
             Stat   => 'MyStat',
             Unit   => 'Seconds'
             , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
           },    # OPTIONAL
-          Period     => 1,    # min: 1
+          Period     => 1,    # min: 1; OPTIONAL
           ReturnData => 1,    # OPTIONAL
         },
         ...
@@ -192,7 +279,7 @@ in the I<Amazon CloudWatch User Guide>.
 
 
 
-=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
+=head2 Dimensions => ArrayRef[CloudWatch_Dimension]
 
 The dimensions for the metric specified in C<MetricName>.
 
@@ -271,7 +358,7 @@ Instead, you specify all this information in the C<Metrics> array.
 
 
 
-=head2 Metrics => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>]
+=head2 Metrics => ArrayRef[CloudWatch_MetricDataQuery]
 
 An array of C<MetricDataQuery> structures that enable you to create an
 alarm based on the result of a metric math expression. For each
@@ -359,7 +446,7 @@ specify either C<Statistic> or C<ExtendedStatistic,> but not both.
 
 Valid values are: C<"SampleCount">, C<"Average">, C<"Sum">, C<"Minimum">, C<"Maximum">
 
-=head2 Tags => ArrayRef[L<Paws::CloudWatch::Tag>]
+=head2 Tags => ArrayRef[CloudWatch_Tag]
 
 A list of key-value pairs to associate with the alarm. You can
 associate as many as 50 tags with an alarm.

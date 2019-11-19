@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::ELBv2::ModifyTargetGroupAttributesOutput;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::TargetGroupAttribute]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELBv2::Types qw/ELBv2_TargetGroupAttribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[ELBv2_TargetGroupAttribute]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Attributes' => {
+                                 'type' => 'ArrayRef[ELBv2_TargetGroupAttribute]',
+                                 'class' => 'Paws::ELBv2::TargetGroupAttribute'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::ELBv2::ModifyTargetGroupAttributesOutput
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::ELBv2::TargetGroupAttribute>]
+=head2 Attributes => ArrayRef[ELBv2_TargetGroupAttribute]
 
 Information about the attributes.
 

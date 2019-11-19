@@ -1,10 +1,35 @@
 
 package Paws::SavingsPlans::DescribeSavingsPlansOfferingRatesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has SearchResults => (is => 'ro', isa => 'ArrayRef[Paws::SavingsPlans::SavingsPlanOfferingRate]', traits => ['NameInRequest'], request_name => 'searchResults');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SavingsPlans::Types qw/SavingsPlans_SavingsPlanOfferingRate/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SearchResults => (is => 'ro', isa => ArrayRef[SavingsPlans_SavingsPlanOfferingRate]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SearchResults' => 'searchResults',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SearchResults' => {
+                                    'type' => 'ArrayRef[SavingsPlans_SavingsPlanOfferingRate]',
+                                    'class' => 'Paws::SavingsPlans::SavingsPlanOfferingRate'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +47,7 @@ The token to use to retrieve the next page of results. This value is
 null when there are no more results to return.
 
 
-=head2 SearchResults => ArrayRef[L<Paws::SavingsPlans::SavingsPlanOfferingRate>]
+=head2 SearchResults => ArrayRef[SavingsPlans_SavingsPlanOfferingRate]
 
 Information about the Savings Plans offering rates.
 

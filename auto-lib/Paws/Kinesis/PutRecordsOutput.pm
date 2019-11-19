@@ -1,11 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Kinesis::PutRecordsOutput;
-  use Moose;
-  has EncryptionType => (is => 'ro', isa => 'Str');
-  has FailedRecordCount => (is => 'ro', isa => 'Int');
-  has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::PutRecordsResultEntry]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::Kinesis::Types qw/Kinesis_PutRecordsResultEntry/;
+  has EncryptionType => (is => 'ro', isa => Str);
+  has FailedRecordCount => (is => 'ro', isa => Int);
+  has Records => (is => 'ro', isa => ArrayRef[Kinesis_PutRecordsResultEntry], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Records' => 1
+                  },
+  'types' => {
+               'Records' => {
+                              'type' => 'ArrayRef[Kinesis_PutRecordsResultEntry]',
+                              'class' => 'Paws::Kinesis::PutRecordsResultEntry'
+                            },
+               'EncryptionType' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FailedRecordCount' => {
+                                        'type' => 'Int'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -42,7 +70,7 @@ The number of unsuccessfully processed records in a C<PutRecords>
 request.
 
 
-=head2 B<REQUIRED> Records => ArrayRef[L<Paws::Kinesis::PutRecordsResultEntry>]
+=head2 B<REQUIRED> Records => ArrayRef[Kinesis_PutRecordsResultEntry]
 
 An array of successfully and unsuccessfully processed record results,
 correlated with the request by natural ordering. A record that is

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribePatchGroupsResult;
-  use Moose;
-  has Mappings => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchGroupPatchBaselineMapping]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_PatchGroupPatchBaselineMapping/;
+  has Mappings => (is => 'ro', isa => ArrayRef[SSM_PatchGroupPatchBaselineMapping]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Mappings' => {
+                               'type' => 'ArrayRef[SSM_PatchGroupPatchBaselineMapping]',
+                               'class' => 'Paws::SSM::PatchGroupPatchBaselineMapping'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::DescribePatchGroupsResult
 =head1 ATTRIBUTES
 
 
-=head2 Mappings => ArrayRef[L<Paws::SSM::PatchGroupPatchBaselineMapping>]
+=head2 Mappings => ArrayRef[SSM_PatchGroupPatchBaselineMapping]
 
 Each entry in the array contains:
 

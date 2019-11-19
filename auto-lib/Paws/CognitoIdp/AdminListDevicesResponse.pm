@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::AdminListDevicesResponse;
-  use Moose;
-  has Devices => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::DeviceType]');
-  has PaginationToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_DeviceType/;
+  has Devices => (is => 'ro', isa => ArrayRef[CognitoIdp_DeviceType]);
+  has PaginationToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Devices' => {
+                              'class' => 'Paws::CognitoIdp::DeviceType',
+                              'type' => 'ArrayRef[CognitoIdp_DeviceType]'
+                            },
+               'PaginationToken' => {
+                                      'type' => 'Str'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::CognitoIdp::AdminListDevicesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Devices => ArrayRef[L<Paws::CognitoIdp::DeviceType>]
+=head2 Devices => ArrayRef[CognitoIdp_DeviceType]
 
 The devices in the list of devices response.
 

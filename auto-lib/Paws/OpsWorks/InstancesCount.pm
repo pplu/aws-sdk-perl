@@ -1,25 +1,99 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::InstancesCount;
-  use Moose;
-  has Assigning => (is => 'ro', isa => 'Int');
-  has Booting => (is => 'ro', isa => 'Int');
-  has ConnectionLost => (is => 'ro', isa => 'Int');
-  has Deregistering => (is => 'ro', isa => 'Int');
-  has Online => (is => 'ro', isa => 'Int');
-  has Pending => (is => 'ro', isa => 'Int');
-  has Rebooting => (is => 'ro', isa => 'Int');
-  has Registered => (is => 'ro', isa => 'Int');
-  has Registering => (is => 'ro', isa => 'Int');
-  has Requested => (is => 'ro', isa => 'Int');
-  has RunningSetup => (is => 'ro', isa => 'Int');
-  has SetupFailed => (is => 'ro', isa => 'Int');
-  has ShuttingDown => (is => 'ro', isa => 'Int');
-  has StartFailed => (is => 'ro', isa => 'Int');
-  has StopFailed => (is => 'ro', isa => 'Int');
-  has Stopped => (is => 'ro', isa => 'Int');
-  has Stopping => (is => 'ro', isa => 'Int');
-  has Terminated => (is => 'ro', isa => 'Int');
-  has Terminating => (is => 'ro', isa => 'Int');
-  has Unassigning => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::OpsWorks::Types qw//;
+  has Assigning => (is => 'ro', isa => Int);
+  has Booting => (is => 'ro', isa => Int);
+  has ConnectionLost => (is => 'ro', isa => Int);
+  has Deregistering => (is => 'ro', isa => Int);
+  has Online => (is => 'ro', isa => Int);
+  has Pending => (is => 'ro', isa => Int);
+  has Rebooting => (is => 'ro', isa => Int);
+  has Registered => (is => 'ro', isa => Int);
+  has Registering => (is => 'ro', isa => Int);
+  has Requested => (is => 'ro', isa => Int);
+  has RunningSetup => (is => 'ro', isa => Int);
+  has SetupFailed => (is => 'ro', isa => Int);
+  has ShuttingDown => (is => 'ro', isa => Int);
+  has StartFailed => (is => 'ro', isa => Int);
+  has StopFailed => (is => 'ro', isa => Int);
+  has Stopped => (is => 'ro', isa => Int);
+  has Stopping => (is => 'ro', isa => Int);
+  has Terminated => (is => 'ro', isa => Int);
+  has Terminating => (is => 'ro', isa => Int);
+  has Unassigning => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Stopping' => {
+                               'type' => 'Int'
+                             },
+               'StartFailed' => {
+                                  'type' => 'Int'
+                                },
+               'Booting' => {
+                              'type' => 'Int'
+                            },
+               'Registered' => {
+                                 'type' => 'Int'
+                               },
+               'Unassigning' => {
+                                  'type' => 'Int'
+                                },
+               'Deregistering' => {
+                                    'type' => 'Int'
+                                  },
+               'Terminated' => {
+                                 'type' => 'Int'
+                               },
+               'Assigning' => {
+                                'type' => 'Int'
+                              },
+               'Online' => {
+                             'type' => 'Int'
+                           },
+               'Stopped' => {
+                              'type' => 'Int'
+                            },
+               'Pending' => {
+                              'type' => 'Int'
+                            },
+               'ConnectionLost' => {
+                                     'type' => 'Int'
+                                   },
+               'StopFailed' => {
+                                 'type' => 'Int'
+                               },
+               'ShuttingDown' => {
+                                   'type' => 'Int'
+                                 },
+               'Rebooting' => {
+                                'type' => 'Int'
+                              },
+               'Terminating' => {
+                                  'type' => 'Int'
+                                },
+               'RunningSetup' => {
+                                   'type' => 'Int'
+                                 },
+               'Registering' => {
+                                  'type' => 'Int'
+                                },
+               'Requested' => {
+                                'type' => 'Int'
+                              },
+               'SetupFailed' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

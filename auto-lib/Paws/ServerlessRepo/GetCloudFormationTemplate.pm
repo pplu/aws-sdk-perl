@@ -1,15 +1,41 @@
 
 package Paws::ServerlessRepo::GetCloudFormationTemplate;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
-  has TemplateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'templateId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServerlessRepo::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TemplateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCloudFormationTemplate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/applications/{applicationId}/templates/{templateId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServerlessRepo::GetCloudFormationTemplateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetCloudFormationTemplate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/applications/{applicationId}/templates/{templateId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServerlessRepo::GetCloudFormationTemplateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateId' => {
+                                 'type' => 'Str'
+                               },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'TemplateId' => 1,
+                    'ApplicationId' => 1
+                  },
+  'ParamInURI' => {
+                    'ApplicationId' => 'applicationId',
+                    'TemplateId' => 'templateId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

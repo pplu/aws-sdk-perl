@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceQuotas::ListAWSDefaultServiceQuotasResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Quotas => (is => 'ro', isa => 'ArrayRef[Paws::ServiceQuotas::ServiceQuota]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceQuotas::Types qw/ServiceQuotas_ServiceQuota/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Quotas => (is => 'ro', isa => ArrayRef[ServiceQuotas_ServiceQuota]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Quotas' => {
+                             'type' => 'ArrayRef[ServiceQuotas_ServiceQuota]',
+                             'class' => 'Paws::ServiceQuotas::ServiceQuota'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +46,7 @@ previous call's C<NextToken> response to indicate where the output
 should continue from.
 
 
-=head2 Quotas => ArrayRef[L<Paws::ServiceQuotas::ServiceQuota>]
+=head2 Quotas => ArrayRef[ServiceQuotas_ServiceQuota]
 
 A list of the quotas in the account with the AWS default values.
 

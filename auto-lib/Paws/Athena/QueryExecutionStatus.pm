@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Athena::QueryExecutionStatus;
-  use Moose;
-  has CompletionDateTime => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has StateChangeReason => (is => 'ro', isa => 'Str');
-  has SubmissionDateTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Athena::Types qw//;
+  has CompletionDateTime => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has StateChangeReason => (is => 'ro', isa => Str);
+  has SubmissionDateTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubmissionDateTime' => {
+                                         'type' => 'Str'
+                                       },
+               'StateChangeReason' => {
+                                        'type' => 'Str'
+                                      },
+               'CompletionDateTime' => {
+                                         'type' => 'Str'
+                                       },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

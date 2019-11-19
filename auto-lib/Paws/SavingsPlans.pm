@@ -1,14 +1,15 @@
 package Paws::SavingsPlans;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'savingsplans' }
   sub signing_name { 'savingsplans' }
   sub version { '2019-06-28' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -107,7 +108,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sav
 
 =item [ClientToken => Str]
 
-=item [Tags => L<Paws::SavingsPlans::TagMap>]
+=item [Tags => SavingsPlans_TagMap]
 
 =item [UpfrontPaymentAmount => Str]
 
@@ -127,7 +128,7 @@ Creates a Savings Plan.
 
 =item SavingsPlanId => Str
 
-=item [Filters => ArrayRef[L<Paws::SavingsPlans::SavingsPlanRateFilter>]]
+=item [Filters => ArrayRef[SavingsPlans_SavingsPlanRateFilter]]
 
 =item [MaxResults => Int]
 
@@ -147,7 +148,7 @@ Describes the specified Savings Plans rates.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SavingsPlans::SavingsPlanFilter>]]
+=item [Filters => ArrayRef[SavingsPlans_SavingsPlanFilter]]
 
 =item [MaxResults => Int]
 
@@ -173,7 +174,7 @@ Describes the specified Savings Plans.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::SavingsPlans::SavingsPlanOfferingRateFilterElement>]]
+=item [Filters => ArrayRef[SavingsPlans_SavingsPlanOfferingRateFilterElement]]
 
 =item [MaxResults => Int]
 
@@ -213,7 +214,7 @@ Describes the specified Savings Plans offering rates.
 
 =item [Durations => ArrayRef[Int]]
 
-=item [Filters => ArrayRef[L<Paws::SavingsPlans::SavingsPlanOfferingFilterElement>]]
+=item [Filters => ArrayRef[SavingsPlans_SavingsPlanOfferingFilterElement]]
 
 =item [MaxResults => Int]
 
@@ -265,7 +266,7 @@ Lists the tags for the specified resource.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::SavingsPlans::TagMap>
+=item Tags => SavingsPlans_TagMap
 
 
 =back

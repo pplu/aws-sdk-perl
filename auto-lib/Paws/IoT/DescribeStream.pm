@@ -1,14 +1,35 @@
 
 package Paws::IoT::DescribeStream;
-  use Moose;
-  has StreamId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'streamId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has StreamId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStream');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/streams/{streamId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DescribeStreamResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeStream');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/streams/{streamId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DescribeStreamResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'StreamId' => 1
+                  },
+  'types' => {
+               'StreamId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'StreamId' => 'streamId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

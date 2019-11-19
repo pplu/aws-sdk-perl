@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::Neptune::ValidStorageOptions;
-  use Moose;
-  has IopsToStorageRatio => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DoubleRange]', request_name => 'DoubleRange', traits => ['NameInRequest']);
-  has ProvisionedIops => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Range]', request_name => 'Range', traits => ['NameInRequest']);
-  has StorageSize => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Range]', request_name => 'Range', traits => ['NameInRequest']);
-  has StorageType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Neptune::Types qw/Neptune_DoubleRange Neptune_Range/;
+  has IopsToStorageRatio => (is => 'ro', isa => ArrayRef[Neptune_DoubleRange]);
+  has ProvisionedIops => (is => 'ro', isa => ArrayRef[Neptune_Range]);
+  has StorageSize => (is => 'ro', isa => ArrayRef[Neptune_Range]);
+  has StorageType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IopsToStorageRatio' => {
+                                         'class' => 'Paws::Neptune::DoubleRange',
+                                         'type' => 'ArrayRef[Neptune_DoubleRange]'
+                                       },
+               'ProvisionedIops' => {
+                                      'class' => 'Paws::Neptune::Range',
+                                      'type' => 'ArrayRef[Neptune_Range]'
+                                    },
+               'StorageSize' => {
+                                  'type' => 'ArrayRef[Neptune_Range]',
+                                  'class' => 'Paws::Neptune::Range'
+                                },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'StorageSize' => 'Range',
+                       'ProvisionedIops' => 'Range',
+                       'IopsToStorageRatio' => 'DoubleRange'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,19 +77,19 @@ DescribeValidDBInstanceModifications action.
 =head1 ATTRIBUTES
 
 
-=head2 IopsToStorageRatio => ArrayRef[L<Paws::Neptune::DoubleRange>]
+=head2 IopsToStorageRatio => ArrayRef[Neptune_DoubleRange]
 
   The valid range of Provisioned IOPS to gibibytes of storage multiplier.
 For example, 3-10, which means that provisioned IOPS can be between 3
 and 10 times storage.
 
 
-=head2 ProvisionedIops => ArrayRef[L<Paws::Neptune::Range>]
+=head2 ProvisionedIops => ArrayRef[Neptune_Range]
 
   The valid range of provisioned IOPS. For example, 1000-20000.
 
 
-=head2 StorageSize => ArrayRef[L<Paws::Neptune::Range>]
+=head2 StorageSize => ArrayRef[Neptune_Range]
 
   The valid range of storage in gibibytes. For example, 100 to 16384.
 

@@ -1,7 +1,28 @@
 package Paws::EC2::InstanceCount;
-  use Moose;
-  has InstanceCount => (is => 'ro', isa => 'Int', request_name => 'instanceCount', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str/;
+  use Paws::EC2::Types qw//;
+  has InstanceCount => (is => 'ro', isa => Int);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'State' => 'state',
+                       'InstanceCount' => 'instanceCount'
+                     },
+  'types' => {
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

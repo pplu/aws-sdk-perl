@@ -1,7 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::DetectorModelDefinition;
-  use Moose;
-  has InitialStateName => (is => 'ro', isa => 'Str', request_name => 'initialStateName', traits => ['NameInRequest'], required => 1);
-  has States => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::State]', request_name => 'states', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTEvents::Types qw/IoTEvents_State/;
+  has InitialStateName => (is => 'ro', isa => Str, required => 1);
+  has States => (is => 'ro', isa => ArrayRef[IoTEvents_State], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InitialStateName' => {
+                                       'type' => 'Str'
+                                     },
+               'States' => {
+                             'class' => 'Paws::IoTEvents::State',
+                             'type' => 'ArrayRef[IoTEvents_State]'
+                           }
+             },
+  'IsRequired' => {
+                    'States' => 1,
+                    'InitialStateName' => 1
+                  },
+  'NameInRequest' => {
+                       'InitialStateName' => 'initialStateName',
+                       'States' => 'states'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +71,7 @@ Information that defines how a detector operates.
   The state that is entered at the creation of each detector (instance).
 
 
-=head2 B<REQUIRED> States => ArrayRef[L<Paws::IoTEvents::State>]
+=head2 B<REQUIRED> States => ArrayRef[IoTEvents_State]
 
   Information about the states of the detector.
 

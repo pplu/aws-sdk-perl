@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::S3::Object;
-  use Moose;
-  has ETag => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
-  has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
-  has Size => (is => 'ro', isa => 'Int');
-  has StorageClass => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw/S3_Owner/;
+  has ETag => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
+  has Owner => (is => 'ro', isa => S3_Owner);
+  has Size => (is => 'ro', isa => Int);
+  has StorageClass => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Owner' => {
+                            'type' => 'S3_Owner',
+                            'class' => 'Paws::S3::Owner'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +91,7 @@ retrieve the object.
   The date the Object was Last Modified
 
 
-=head2 Owner => L<Paws::S3::Owner>
+=head2 Owner => S3_Owner
 
   The owner of the object
 

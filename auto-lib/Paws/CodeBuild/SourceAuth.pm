@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::SourceAuth;
-  use Moose;
-  has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeBuild::Types qw//;
+  has Resource => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Resource' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'Type' => 1
+                  },
+  'NameInRequest' => {
+                       'Resource' => 'resource',
+                       'Type' => 'type'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

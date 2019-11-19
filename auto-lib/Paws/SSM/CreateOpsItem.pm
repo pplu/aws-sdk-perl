@@ -1,22 +1,74 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::CreateOpsItem;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsItemNotification]');
-  has OperationalData => (is => 'ro', isa => 'Paws::SSM::OpsItemOperationalData');
-  has Priority => (is => 'ro', isa => 'Int');
-  has RelatedOpsItems => (is => 'ro', isa => 'ArrayRef[Paws::SSM::RelatedOpsItem]');
-  has Severity => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
-  has Title => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::SSM::Types qw/SSM_RelatedOpsItem SSM_Tag SSM_OpsItemNotification SSM_OpsItemOperationalData/;
+  has Category => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Notifications => (is => 'ro', isa => ArrayRef[SSM_OpsItemNotification], predicate => 1);
+  has OperationalData => (is => 'ro', isa => SSM_OpsItemOperationalData, predicate => 1);
+  has Priority => (is => 'ro', isa => Int, predicate => 1);
+  has RelatedOpsItems => (is => 'ro', isa => ArrayRef[SSM_RelatedOpsItem], predicate => 1);
+  has Severity => (is => 'ro', isa => Str, predicate => 1);
+  has Source => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SSM_Tag], predicate => 1);
+  has Title => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateOpsItem');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreateOpsItemResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateOpsItem');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::CreateOpsItemResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Title' => 1,
+                    'Description' => 1,
+                    'Source' => 1
+                  },
+  'types' => {
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'Notifications' => {
+                                    'type' => 'ArrayRef[SSM_OpsItemNotification]',
+                                    'class' => 'Paws::SSM::OpsItemNotification'
+                                  },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Severity' => {
+                               'type' => 'Str'
+                             },
+               'OperationalData' => {
+                                      'type' => 'SSM_OpsItemOperationalData',
+                                      'class' => 'Paws::SSM::OpsItemOperationalData'
+                                    },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'RelatedOpsItems' => {
+                                      'class' => 'Paws::SSM::RelatedOpsItem',
+                                      'type' => 'ArrayRef[SSM_RelatedOpsItem]'
+                                    },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'Tags' => {
+                           'class' => 'Paws::SSM::Tag',
+                           'type' => 'ArrayRef[SSM_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -96,14 +148,14 @@ Information about the OpsItem.
 
 
 
-=head2 Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]
+=head2 Notifications => ArrayRef[SSM_OpsItemNotification]
 
 The Amazon Resource Name (ARN) of an SNS topic where notifications are
 sent when this OpsItem is edited or changed.
 
 
 
-=head2 OperationalData => L<Paws::SSM::OpsItemOperationalData>
+=head2 OperationalData => SSM_OpsItemOperationalData
 
 Operational data is custom data that provides useful reference details
 about the OpsItem. For example, you can specify log files, error
@@ -138,7 +190,7 @@ system.
 
 
 
-=head2 RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]
+=head2 RelatedOpsItems => ArrayRef[SSM_RelatedOpsItem]
 
 One or more OpsItems that share something in common with the current
 OpsItems. For example, related OpsItems can include OpsItems with
@@ -159,7 +211,7 @@ The origin of the OpsItem, such as Amazon EC2 or AWS Systems Manager.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+=head2 Tags => ArrayRef[SSM_Tag]
 
 Optional metadata that you assign to a resource. You can restrict
 access to OpsItems by using an inline IAM policy that specifies tags.

@@ -1,15 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ComprehendMedical::ListPHIDetectionJobs;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::ComprehendMedical::ComprehendMedicalAsyncJobFilter');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ComprehendMedical::Types qw/ComprehendMedical_ComprehendMedicalAsyncJobFilter/;
+  has Filter => (is => 'ro', isa => ComprehendMedical_ComprehendMedicalAsyncJobFilter, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListPHIDetectionJobs');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ComprehendMedical::ListPHIDetectionJobsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListPHIDetectionJobs');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ComprehendMedical::ListPHIDetectionJobsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filter' => {
+                             'class' => 'Paws::ComprehendMedical::ComprehendMedicalAsyncJobFilter',
+                             'type' => 'ComprehendMedical_ComprehendMedicalAsyncJobFilter'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/com
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::ComprehendMedical::ComprehendMedicalAsyncJobFilter>
+=head2 Filter => ComprehendMedical_ComprehendMedicalAsyncJobFilter
 
 Filters the jobs that are returned. You can filter jobs based on their
 names, status, or the date and time that they were submitted. You can

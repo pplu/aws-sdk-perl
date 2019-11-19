@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::EMR::EbsConfiguration;
-  use Moose;
-  has EbsBlockDeviceConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EMR::EbsBlockDeviceConfig]');
-  has EbsOptimized => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/ArrayRef Bool/;
+  use Paws::EMR::Types qw/EMR_EbsBlockDeviceConfig/;
+  has EbsBlockDeviceConfigs => (is => 'ro', isa => ArrayRef[EMR_EbsBlockDeviceConfig]);
+  has EbsOptimized => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EbsBlockDeviceConfigs' => {
+                                            'type' => 'ArrayRef[EMR_EbsBlockDeviceConfig]',
+                                            'class' => 'Paws::EMR::EbsBlockDeviceConfig'
+                                          },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ The Amazon EBS configuration of a cluster instance.
 =head1 ATTRIBUTES
 
 
-=head2 EbsBlockDeviceConfigs => ArrayRef[L<Paws::EMR::EbsBlockDeviceConfig>]
+=head2 EbsBlockDeviceConfigs => ArrayRef[EMR_EbsBlockDeviceConfig]
 
   An array of Amazon EBS volume specifications attached to a cluster
 instance.

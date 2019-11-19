@@ -1,26 +1,126 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Eac3Settings;
-  use Moose;
-  has AttenuationControl => (is => 'ro', isa => 'Str', request_name => 'attenuationControl', traits => ['NameInRequest']);
-  has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
-  has BitstreamMode => (is => 'ro', isa => 'Str', request_name => 'bitstreamMode', traits => ['NameInRequest']);
-  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
-  has DcFilter => (is => 'ro', isa => 'Str', request_name => 'dcFilter', traits => ['NameInRequest']);
-  has Dialnorm => (is => 'ro', isa => 'Int', request_name => 'dialnorm', traits => ['NameInRequest']);
-  has DynamicRangeCompressionLine => (is => 'ro', isa => 'Str', request_name => 'dynamicRangeCompressionLine', traits => ['NameInRequest']);
-  has DynamicRangeCompressionRf => (is => 'ro', isa => 'Str', request_name => 'dynamicRangeCompressionRf', traits => ['NameInRequest']);
-  has LfeControl => (is => 'ro', isa => 'Str', request_name => 'lfeControl', traits => ['NameInRequest']);
-  has LfeFilter => (is => 'ro', isa => 'Str', request_name => 'lfeFilter', traits => ['NameInRequest']);
-  has LoRoCenterMixLevel => (is => 'ro', isa => 'Num', request_name => 'loRoCenterMixLevel', traits => ['NameInRequest']);
-  has LoRoSurroundMixLevel => (is => 'ro', isa => 'Num', request_name => 'loRoSurroundMixLevel', traits => ['NameInRequest']);
-  has LtRtCenterMixLevel => (is => 'ro', isa => 'Num', request_name => 'ltRtCenterMixLevel', traits => ['NameInRequest']);
-  has LtRtSurroundMixLevel => (is => 'ro', isa => 'Num', request_name => 'ltRtSurroundMixLevel', traits => ['NameInRequest']);
-  has MetadataControl => (is => 'ro', isa => 'Str', request_name => 'metadataControl', traits => ['NameInRequest']);
-  has PassthroughControl => (is => 'ro', isa => 'Str', request_name => 'passthroughControl', traits => ['NameInRequest']);
-  has PhaseControl => (is => 'ro', isa => 'Str', request_name => 'phaseControl', traits => ['NameInRequest']);
-  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
-  has StereoDownmix => (is => 'ro', isa => 'Str', request_name => 'stereoDownmix', traits => ['NameInRequest']);
-  has SurroundExMode => (is => 'ro', isa => 'Str', request_name => 'surroundExMode', traits => ['NameInRequest']);
-  has SurroundMode => (is => 'ro', isa => 'Str', request_name => 'surroundMode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::MediaConvert::Types qw//;
+  has AttenuationControl => (is => 'ro', isa => Str);
+  has Bitrate => (is => 'ro', isa => Int);
+  has BitstreamMode => (is => 'ro', isa => Str);
+  has CodingMode => (is => 'ro', isa => Str);
+  has DcFilter => (is => 'ro', isa => Str);
+  has Dialnorm => (is => 'ro', isa => Int);
+  has DynamicRangeCompressionLine => (is => 'ro', isa => Str);
+  has DynamicRangeCompressionRf => (is => 'ro', isa => Str);
+  has LfeControl => (is => 'ro', isa => Str);
+  has LfeFilter => (is => 'ro', isa => Str);
+  has LoRoCenterMixLevel => (is => 'ro', isa => Num);
+  has LoRoSurroundMixLevel => (is => 'ro', isa => Num);
+  has LtRtCenterMixLevel => (is => 'ro', isa => Num);
+  has LtRtSurroundMixLevel => (is => 'ro', isa => Num);
+  has MetadataControl => (is => 'ro', isa => Str);
+  has PassthroughControl => (is => 'ro', isa => Str);
+  has PhaseControl => (is => 'ro', isa => Str);
+  has SampleRate => (is => 'ro', isa => Int);
+  has StereoDownmix => (is => 'ro', isa => Str);
+  has SurroundExMode => (is => 'ro', isa => Str);
+  has SurroundMode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Dialnorm' => 'dialnorm',
+                       'SampleRate' => 'sampleRate',
+                       'SurroundExMode' => 'surroundExMode',
+                       'Bitrate' => 'bitrate',
+                       'AttenuationControl' => 'attenuationControl',
+                       'LtRtCenterMixLevel' => 'ltRtCenterMixLevel',
+                       'DynamicRangeCompressionRf' => 'dynamicRangeCompressionRf',
+                       'LfeControl' => 'lfeControl',
+                       'StereoDownmix' => 'stereoDownmix',
+                       'MetadataControl' => 'metadataControl',
+                       'LtRtSurroundMixLevel' => 'ltRtSurroundMixLevel',
+                       'LfeFilter' => 'lfeFilter',
+                       'PassthroughControl' => 'passthroughControl',
+                       'DynamicRangeCompressionLine' => 'dynamicRangeCompressionLine',
+                       'LoRoCenterMixLevel' => 'loRoCenterMixLevel',
+                       'SurroundMode' => 'surroundMode',
+                       'BitstreamMode' => 'bitstreamMode',
+                       'DcFilter' => 'dcFilter',
+                       'LoRoSurroundMixLevel' => 'loRoSurroundMixLevel',
+                       'PhaseControl' => 'phaseControl',
+                       'CodingMode' => 'codingMode'
+                     },
+  'types' => {
+               'LoRoCenterMixLevel' => {
+                                         'type' => 'Num'
+                                       },
+               'DynamicRangeCompressionLine' => {
+                                                  'type' => 'Str'
+                                                },
+               'PhaseControl' => {
+                                   'type' => 'Str'
+                                 },
+               'LoRoSurroundMixLevel' => {
+                                           'type' => 'Num'
+                                         },
+               'CodingMode' => {
+                                 'type' => 'Str'
+                               },
+               'SurroundMode' => {
+                                   'type' => 'Str'
+                                 },
+               'BitstreamMode' => {
+                                    'type' => 'Str'
+                                  },
+               'DcFilter' => {
+                               'type' => 'Str'
+                             },
+               'LtRtCenterMixLevel' => {
+                                         'type' => 'Num'
+                                       },
+               'DynamicRangeCompressionRf' => {
+                                                'type' => 'Str'
+                                              },
+               'LfeControl' => {
+                                 'type' => 'Str'
+                               },
+               'SurroundExMode' => {
+                                     'type' => 'Str'
+                                   },
+               'Bitrate' => {
+                              'type' => 'Int'
+                            },
+               'AttenuationControl' => {
+                                         'type' => 'Str'
+                                       },
+               'Dialnorm' => {
+                               'type' => 'Int'
+                             },
+               'SampleRate' => {
+                                 'type' => 'Int'
+                               },
+               'LfeFilter' => {
+                                'type' => 'Str'
+                              },
+               'PassthroughControl' => {
+                                         'type' => 'Str'
+                                       },
+               'LtRtSurroundMixLevel' => {
+                                           'type' => 'Num'
+                                         },
+               'StereoDownmix' => {
+                                    'type' => 'Str'
+                                  },
+               'MetadataControl' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

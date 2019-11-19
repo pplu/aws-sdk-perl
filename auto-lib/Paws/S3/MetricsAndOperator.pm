@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::S3::MetricsAndOperator;
-  use Moose;
-  has Prefix => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::S3::Tag]', request_name => 'Tag', request_name => 'Tag', traits => ['NameInRequest','NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::S3::Types qw/S3_Tag/;
+  has Prefix => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[S3_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Tags' => {
+                           'class' => 'Paws::S3::Tag',
+                           'type' => 'ArrayRef[S3_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'Tag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +69,7 @@ apply.
   The prefix used when evaluating an AND predicate.
 
 
-=head2 Tags => ArrayRef[L<Paws::S3::Tag>]
+=head2 Tags => ArrayRef[S3_Tag]
 
   The list of tags used when evaluating an AND predicate.
 

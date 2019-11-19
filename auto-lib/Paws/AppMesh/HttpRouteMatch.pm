@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::AppMesh::HttpRouteMatch;
-  use Moose;
-  has Headers => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::HttpRouteHeader]', request_name => 'headers', traits => ['NameInRequest']);
-  has Method => (is => 'ro', isa => 'Str', request_name => 'method', traits => ['NameInRequest']);
-  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest'], required => 1);
-  has Scheme => (is => 'ro', isa => 'Str', request_name => 'scheme', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::AppMesh::Types qw/AppMesh_HttpRouteHeader/;
+  has Headers => (is => 'ro', isa => ArrayRef[AppMesh_HttpRouteHeader]);
+  has Method => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str, required => 1);
+  has Scheme => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Headers' => {
+                              'type' => 'ArrayRef[AppMesh_HttpRouteHeader]',
+                              'class' => 'Paws::AppMesh::HttpRouteHeader'
+                            },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Method' => {
+                             'type' => 'Str'
+                           },
+               'Scheme' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Prefix' => 1
+                  },
+  'NameInRequest' => {
+                       'Method' => 'method',
+                       'Scheme' => 'scheme',
+                       'Headers' => 'headers',
+                       'Prefix' => 'prefix'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +76,7 @@ requests for a virtual router.
 =head1 ATTRIBUTES
 
 
-=head2 Headers => ArrayRef[L<Paws::AppMesh::HttpRouteHeader>]
+=head2 Headers => ArrayRef[AppMesh_HttpRouteHeader]
 
   An object that represents the client request headers to match on.
 

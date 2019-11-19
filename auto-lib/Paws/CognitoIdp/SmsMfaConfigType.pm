@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::SmsMfaConfigType;
-  use Moose;
-  has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
-  has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_SmsConfigurationType/;
+  has SmsAuthenticationMessage => (is => 'ro', isa => Str);
+  has SmsConfiguration => (is => 'ro', isa => CognitoIdp_SmsConfigurationType);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SmsConfiguration' => {
+                                       'class' => 'Paws::CognitoIdp::SmsConfigurationType',
+                                       'type' => 'CognitoIdp_SmsConfigurationType'
+                                     },
+               'SmsAuthenticationMessage' => {
+                                               'type' => 'Str'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +67,7 @@ E<lsquo>{####}E<rsquo> placeholder, which will be replaced with the
 code. If the message is not included, and default message will be used.
 
 
-=head2 SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>
+=head2 SmsConfiguration => CognitoIdp_SmsConfigurationType
 
   The SMS configuration.
 

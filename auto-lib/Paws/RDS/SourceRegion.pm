@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::RDS::SourceRegion;
-  use Moose;
-  has Endpoint => (is => 'ro', isa => 'Str');
-  has RegionName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has Endpoint => (is => 'ro', isa => Str);
+  has RegionName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             },
+               'RegionName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

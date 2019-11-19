@@ -1,32 +1,112 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorksCM::CreateServer;
-  use Moose;
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
-  has BackupId => (is => 'ro', isa => 'Str');
-  has BackupRetentionCount => (is => 'ro', isa => 'Int');
-  has CustomCertificate => (is => 'ro', isa => 'Str');
-  has CustomDomain => (is => 'ro', isa => 'Str');
-  has CustomPrivateKey => (is => 'ro', isa => 'Str');
-  has DisableAutomatedBackup => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineAttributes => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::EngineAttribute]');
-  has EngineModel => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has InstanceProfileArn => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has KeyPair => (is => 'ro', isa => 'Str');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ServerName => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::OpsWorksCM::Types qw/OpsWorksCM_EngineAttribute/;
+  has AssociatePublicIpAddress => (is => 'ro', isa => Bool, predicate => 1);
+  has BackupId => (is => 'ro', isa => Str, predicate => 1);
+  has BackupRetentionCount => (is => 'ro', isa => Int, predicate => 1);
+  has CustomCertificate => (is => 'ro', isa => Str, predicate => 1);
+  has CustomDomain => (is => 'ro', isa => Str, predicate => 1);
+  has CustomPrivateKey => (is => 'ro', isa => Str, predicate => 1);
+  has DisableAutomatedBackup => (is => 'ro', isa => Bool, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, predicate => 1);
+  has EngineAttributes => (is => 'ro', isa => ArrayRef[OpsWorksCM_EngineAttribute], predicate => 1);
+  has EngineModel => (is => 'ro', isa => Str, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceProfileArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KeyPair => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ServerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServiceRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateServer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorksCM::CreateServerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateServer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::OpsWorksCM::CreateServerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupId' => {
+                               'type' => 'Str'
+                             },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'InstanceProfileArn' => {
+                                         'type' => 'Str'
+                                       },
+               'CustomDomain' => {
+                                   'type' => 'Str'
+                                 },
+               'EngineModel' => {
+                                  'type' => 'Str'
+                                },
+               'EngineAttributes' => {
+                                       'class' => 'Paws::OpsWorksCM::EngineAttribute',
+                                       'type' => 'ArrayRef[OpsWorksCM_EngineAttribute]'
+                                     },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'DisableAutomatedBackup' => {
+                                             'type' => 'Bool'
+                                           },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'BackupRetentionCount' => {
+                                           'type' => 'Int'
+                                         },
+               'ServerName' => {
+                                 'type' => 'Str'
+                               },
+               'ServiceRoleArn' => {
+                                     'type' => 'Str'
+                                   },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'CustomCertificate' => {
+                                        'type' => 'Str'
+                                      },
+               'CustomPrivateKey' => {
+                                       'type' => 'Str'
+                                     },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'KeyPair' => {
+                              'type' => 'Str'
+                            },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'AssociatePublicIpAddress' => {
+                                               'type' => 'Bool'
+                                             }
+             },
+  'IsRequired' => {
+                    'InstanceProfileArn' => 1,
+                    'InstanceType' => 1,
+                    'ServerName' => 1,
+                    'ServiceRoleArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -189,7 +269,7 @@ C<ChefAutomate> and C<Puppet>.
 
 
 
-=head2 EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
+=head2 EngineAttributes => ArrayRef[OpsWorksCM_EngineAttribute]
 
 Optional engine attributes on a specified server.
 

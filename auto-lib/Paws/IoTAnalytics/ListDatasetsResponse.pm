@@ -1,10 +1,35 @@
 
 package Paws::IoTAnalytics::ListDatasetsResponse;
-  use Moose;
-  has DatasetSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetSummary]', traits => ['NameInRequest'], request_name => 'datasetSummaries');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_DatasetSummary/;
+  has DatasetSummaries => (is => 'ro', isa => ArrayRef[IoTAnalytics_DatasetSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'DatasetSummaries' => 'datasetSummaries',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DatasetSummaries' => {
+                                       'type' => 'ArrayRef[IoTAnalytics_DatasetSummary]',
+                                       'class' => 'Paws::IoTAnalytics::DatasetSummary'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::IoTAnalytics::ListDatasetsResponse
 =head1 ATTRIBUTES
 
 
-=head2 DatasetSummaries => ArrayRef[L<Paws::IoTAnalytics::DatasetSummary>]
+=head2 DatasetSummaries => ArrayRef[IoTAnalytics_DatasetSummary]
 
 A list of "DatasetSummary" objects.
 

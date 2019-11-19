@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::DescribeGameSessionDetailsOutput;
-  use Moose;
-  has GameSessionDetails => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameSessionDetail]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_GameSessionDetail/;
+  has GameSessionDetails => (is => 'ro', isa => ArrayRef[GameLift_GameSessionDetail]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'GameSessionDetails' => {
+                                         'type' => 'ArrayRef[GameLift_GameSessionDetail]',
+                                         'class' => 'Paws::GameLift::GameSessionDetail'
+                                       },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::GameLift::DescribeGameSessionDetailsOutput
 =head1 ATTRIBUTES
 
 
-=head2 GameSessionDetails => ArrayRef[L<Paws::GameLift::GameSessionDetail>]
+=head2 GameSessionDetails => ArrayRef[GameLift_GameSessionDetail]
 
 Collection of objects containing game session properties and the
 protection policy currently in force for each session matching the

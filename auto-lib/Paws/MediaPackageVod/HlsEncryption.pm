@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::HlsEncryption;
-  use Moose;
-  has ConstantInitializationVector => (is => 'ro', isa => 'Str', request_name => 'constantInitializationVector', traits => ['NameInRequest']);
-  has EncryptionMethod => (is => 'ro', isa => 'Str', request_name => 'encryptionMethod', traits => ['NameInRequest']);
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaPackageVod::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_SpekeKeyProvider/;
+  has ConstantInitializationVector => (is => 'ro', isa => Str);
+  has EncryptionMethod => (is => 'ro', isa => Str);
+  has SpekeKeyProvider => (is => 'ro', isa => MediaPackageVod_SpekeKeyProvider, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConstantInitializationVector' => {
+                                                   'type' => 'Str'
+                                                 },
+               'EncryptionMethod' => {
+                                       'type' => 'Str'
+                                     },
+               'SpekeKeyProvider' => {
+                                       'class' => 'Paws::MediaPackageVod::SpekeKeyProvider',
+                                       'type' => 'MediaPackageVod_SpekeKeyProvider'
+                                     }
+             },
+  'IsRequired' => {
+                    'SpekeKeyProvider' => 1
+                  },
+  'NameInRequest' => {
+                       'SpekeKeyProvider' => 'spekeKeyProvider',
+                       'EncryptionMethod' => 'encryptionMethod',
+                       'ConstantInitializationVector' => 'constantInitializationVector'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +81,7 @@ specified the initialization vector will be periodically rotated.
   The encryption method to use.
 
 
-=head2 B<REQUIRED> SpekeKeyProvider => L<Paws::MediaPackageVod::SpekeKeyProvider>
+=head2 B<REQUIRED> SpekeKeyProvider => MediaPackageVod_SpekeKeyProvider
 
   
 

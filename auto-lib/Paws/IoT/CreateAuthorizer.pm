@@ -1,18 +1,61 @@
 
 package Paws::IoT::CreateAuthorizer;
-  use Moose;
-  has AuthorizerFunctionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerFunctionArn', required => 1);
-  has AuthorizerName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizerName', required => 1);
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has TokenKeyName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'tokenKeyName', required => 1);
-  has TokenSigningPublicKeys => (is => 'ro', isa => 'Paws::IoT::PublicKeyMap', traits => ['NameInRequest'], request_name => 'tokenSigningPublicKeys', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_PublicKeyMap/;
+  has AuthorizerFunctionArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AuthorizerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
+  has TokenKeyName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TokenSigningPublicKeys => (is => 'ro', isa => IoT_PublicKeyMap, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAuthorizer');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/authorizer/{authorizerName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateAuthorizerResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateAuthorizer');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/authorizer/{authorizerName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateAuthorizerResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'AuthorizerName' => 'authorizerName'
+                  },
+  'types' => {
+               'TokenKeyName' => {
+                                   'type' => 'Str'
+                                 },
+               'AuthorizerName' => {
+                                     'type' => 'Str'
+                                   },
+               'TokenSigningPublicKeys' => {
+                                             'type' => 'IoT_PublicKeyMap',
+                                             'class' => 'Paws::IoT::PublicKeyMap'
+                                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'AuthorizerFunctionArn' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'IsRequired' => {
+                    'AuthorizerFunctionArn' => 1,
+                    'TokenSigningPublicKeys' => 1,
+                    'AuthorizerName' => 1,
+                    'TokenKeyName' => 1
+                  },
+  'NameInRequest' => {
+                       'TokenSigningPublicKeys' => 'tokenSigningPublicKeys',
+                       'TokenKeyName' => 'tokenKeyName',
+                       'Status' => 'status',
+                       'AuthorizerFunctionArn' => 'authorizerFunctionArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +122,7 @@ headers.
 
 
 
-=head2 B<REQUIRED> TokenSigningPublicKeys => L<Paws::IoT::PublicKeyMap>
+=head2 B<REQUIRED> TokenSigningPublicKeys => IoT_PublicKeyMap
 
 The public keys used to verify the digital signature returned by your
 custom authentication service.

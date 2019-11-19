@@ -1,14 +1,38 @@
 
 package Paws::EC2::DeleteQueuedReservedInstances;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Undef ArrayRef/;
+  use Paws::EC2::Types qw//;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has ReservedInstancesIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteQueuedReservedInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DeleteQueuedReservedInstancesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteQueuedReservedInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DeleteQueuedReservedInstancesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ReservedInstancesIds' => 1
+                  },
+  'NameInRequest' => {
+                       'ReservedInstancesIds' => 'ReservedInstancesId'
+                     },
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ReservedInstancesIds' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

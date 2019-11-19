@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::AppMesh::VirtualRouterListener;
-  use Moose;
-  has PortMapping => (is => 'ro', isa => 'Paws::AppMesh::PortMapping', request_name => 'portMapping', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_PortMapping/;
+  has PortMapping => (is => 'ro', isa => AppMesh_PortMapping, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'PortMapping' => 'portMapping'
+                     },
+  'IsRequired' => {
+                    'PortMapping' => 1
+                  },
+  'types' => {
+               'PortMapping' => {
+                                  'type' => 'AppMesh_PortMapping',
+                                  'class' => 'Paws::AppMesh::PortMapping'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ An object that represents a virtual router listener.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> PortMapping => L<Paws::AppMesh::PortMapping>
+=head2 B<REQUIRED> PortMapping => AppMesh_PortMapping
 
   
 

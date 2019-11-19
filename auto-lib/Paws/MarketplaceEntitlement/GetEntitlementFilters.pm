@@ -1,13 +1,28 @@
+# Generated from default/map_enum.tt
 package Paws::MarketplaceEntitlement::GetEntitlementFilters;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MarketplaceEntitlement::Types qw//;
+  has CUSTOMER_IDENTIFIER => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DIMENSION => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has CUSTOMER_IDENTIFIER => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DIMENSION => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'CUSTOMER_IDENTIFIER' => {
+                                          type => 'ArrayRef[Str|Undef]',                                        },
+                               'DIMENSION' => {
+                                          type => 'ArrayRef[Str|Undef]',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,10 +58,10 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 CUSTOMER_IDENTIFIER => ArrayRef[Str|Undef]
+=head2 CUSTOMER_IDENTIFIER => 
 
 
-=head2 DIMENSION => ArrayRef[Str|Undef]
+=head2 DIMENSION => 
 
 
 

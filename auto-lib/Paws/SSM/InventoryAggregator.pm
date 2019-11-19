@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::SSM::InventoryAggregator;
-  use Moose;
-  has Aggregators => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryAggregator]');
-  has Expression => (is => 'ro', isa => 'Str');
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryGroup]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::SSM::Types qw/SSM_InventoryAggregator SSM_InventoryGroup/;
+  has Aggregators => (is => 'ro', isa => ArrayRef[SSM_InventoryAggregator]);
+  has Expression => (is => 'ro', isa => Str);
+  has Groups => (is => 'ro', isa => ArrayRef[SSM_InventoryGroup]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Groups' => {
+                             'class' => 'Paws::SSM::InventoryGroup',
+                             'type' => 'ArrayRef[SSM_InventoryGroup]'
+                           },
+               'Expression' => {
+                                 'type' => 'Str'
+                               },
+               'Aggregators' => {
+                                  'type' => 'ArrayRef[SSM_InventoryAggregator]',
+                                  'class' => 'Paws::SSM::InventoryAggregator'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +64,7 @@ execution.
 =head1 ATTRIBUTES
 
 
-=head2 Aggregators => ArrayRef[L<Paws::SSM::InventoryAggregator>]
+=head2 Aggregators => ArrayRef[SSM_InventoryAggregator]
 
   Nested aggregators to further refine aggregation for an inventory type.
 
@@ -49,7 +74,7 @@ execution.
   The inventory type and attribute name for aggregation.
 
 
-=head2 Groups => ArrayRef[L<Paws::SSM::InventoryGroup>]
+=head2 Groups => ArrayRef[SSM_InventoryGroup]
 
   A user-defined set of one or more filters on which to aggregate
 inventory data. Groups return a count of resources that match and don't

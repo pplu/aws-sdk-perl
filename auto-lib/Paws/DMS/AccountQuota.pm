@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::DMS::AccountQuota;
-  use Moose;
-  has AccountQuotaName => (is => 'ro', isa => 'Str');
-  has Max => (is => 'ro', isa => 'Int');
-  has Used => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DMS::Types qw//;
+  has AccountQuotaName => (is => 'ro', isa => Str);
+  has Max => (is => 'ro', isa => Int);
+  has Used => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Used' => {
+                           'type' => 'Int'
+                         },
+               'Max' => {
+                          'type' => 'Int'
+                        },
+               'AccountQuotaName' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

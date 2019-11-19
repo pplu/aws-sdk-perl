@@ -1,7 +1,36 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttributes;
-  use Moose;
-  has InitiatedEventId => (is => 'ro', isa => 'Int', request_name => 'initiatedEventId', traits => ['NameInRequest'], required => 1);
-  has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'workflowExecution', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowExecution/;
+  has InitiatedEventId => (is => 'ro', isa => Int, required => 1);
+  has WorkflowExecution => (is => 'ro', isa => SimpleWorkflow_WorkflowExecution, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InitiatedEventId' => {
+                                       'type' => 'Int'
+                                     },
+               'WorkflowExecution' => {
+                                        'type' => 'SimpleWorkflow_WorkflowExecution',
+                                        'class' => 'Paws::SimpleWorkflow::WorkflowExecution'
+                                      }
+             },
+  'NameInRequest' => {
+                       'WorkflowExecution' => 'workflowExecution',
+                       'InitiatedEventId' => 'initiatedEventId'
+                     },
+  'IsRequired' => {
+                    'InitiatedEventId' => 1,
+                    'WorkflowExecution' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +76,7 @@ useful for diagnosing problems by tracing back the chain of events
 leading up to this event.
 
 
-=head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=head2 B<REQUIRED> WorkflowExecution => SimpleWorkflow_WorkflowExecution
 
   The external workflow execution to which the cancellation request was
 delivered.

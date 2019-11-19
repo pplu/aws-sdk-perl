@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::SavingsPlansUtilizationDetail;
-  use Moose;
-  has AmortizedCommitment => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansAmortizedCommitment');
-  has Attributes => (is => 'ro', isa => 'Paws::CostExplorer::Attributes');
-  has Savings => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansSavings');
-  has SavingsPlanArn => (is => 'ro', isa => 'Str');
-  has Utilization => (is => 'ro', isa => 'Paws::CostExplorer::SavingsPlansUtilization');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw/CostExplorer_SavingsPlansAmortizedCommitment CostExplorer_SavingsPlansUtilization CostExplorer_Attributes CostExplorer_SavingsPlansSavings/;
+  has AmortizedCommitment => (is => 'ro', isa => CostExplorer_SavingsPlansAmortizedCommitment);
+  has Attributes => (is => 'ro', isa => CostExplorer_Attributes);
+  has Savings => (is => 'ro', isa => CostExplorer_SavingsPlansSavings);
+  has SavingsPlanArn => (is => 'ro', isa => Str);
+  has Utilization => (is => 'ro', isa => CostExplorer_SavingsPlansUtilization);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Savings' => {
+                              'type' => 'CostExplorer_SavingsPlansSavings',
+                              'class' => 'Paws::CostExplorer::SavingsPlansSavings'
+                            },
+               'SavingsPlanArn' => {
+                                     'type' => 'Str'
+                                   },
+               'Attributes' => {
+                                 'class' => 'Paws::CostExplorer::Attributes',
+                                 'type' => 'CostExplorer_Attributes'
+                               },
+               'AmortizedCommitment' => {
+                                          'type' => 'CostExplorer_SavingsPlansAmortizedCommitment',
+                                          'class' => 'Paws::CostExplorer::SavingsPlansAmortizedCommitment'
+                                        },
+               'Utilization' => {
+                                  'class' => 'Paws::CostExplorer::SavingsPlansUtilization',
+                                  'type' => 'CostExplorer_SavingsPlansUtilization'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,18 +76,18 @@ possible dimension values.
 =head1 ATTRIBUTES
 
 
-=head2 AmortizedCommitment => L<Paws::CostExplorer::SavingsPlansAmortizedCommitment>
+=head2 AmortizedCommitment => CostExplorer_SavingsPlansAmortizedCommitment
 
   The total amortized commitment for a Savings Plans. Includes the sum of
 the upfront and recurring Savings Plans fees.
 
 
-=head2 Attributes => L<Paws::CostExplorer::Attributes>
+=head2 Attributes => CostExplorer_Attributes
 
   The attribute that applies to a specific C<Dimension>.
 
 
-=head2 Savings => L<Paws::CostExplorer::SavingsPlansSavings>
+=head2 Savings => CostExplorer_SavingsPlansSavings
 
   The amount saved by using existing Savings Plans. Savings returns both
 net savings from savings plans as well as the C<onDemandCostEquivalent>
@@ -66,7 +99,7 @@ of the Savings Plans when considering the utilization rate.
   The unique Amazon Resource Name (ARN) for a particular Savings Plan.
 
 
-=head2 Utilization => L<Paws::CostExplorer::SavingsPlansUtilization>
+=head2 Utilization => CostExplorer_SavingsPlansUtilization
 
   A ratio of your effectiveness of using existing Savings Plans to apply
 to workloads that are Savings Plans eligible.

@@ -1,19 +1,58 @@
 
 package Paws::EC2::ExportImage;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DiskImageFormat => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has ImageId => (is => 'ro', isa => 'Str', required => 1);
-  has RoleName => (is => 'ro', isa => 'Str');
-  has S3ExportLocation => (is => 'ro', isa => 'Paws::EC2::ExportTaskS3LocationRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw/EC2_ExportTaskS3LocationRequest/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DiskImageFormat => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has ImageId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleName => (is => 'ro', isa => Str, predicate => 1);
+  has S3ExportLocation => (is => 'ro', isa => EC2_ExportTaskS3LocationRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExportImage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ExportImageResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ExportImage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ExportImageResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ImageId' => 1,
+                    'DiskImageFormat' => 1,
+                    'S3ExportLocation' => 1
+                  },
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'S3ExportLocation' => {
+                                       'type' => 'EC2_ExportTaskS3LocationRequest',
+                                       'class' => 'Paws::EC2::ExportTaskS3LocationRequest'
+                                     },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DiskImageFormat' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -107,7 +146,7 @@ default role is named 'vmimport'.
 
 
 
-=head2 B<REQUIRED> S3ExportLocation => L<Paws::EC2::ExportTaskS3LocationRequest>
+=head2 B<REQUIRED> S3ExportLocation => EC2_ExportTaskS3LocationRequest
 
 Information about the destination S3 bucket. The bucket must exist and
 grant WRITE and READ_ACP permissions to the AWS account

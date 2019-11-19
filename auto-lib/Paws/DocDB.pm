@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::DocDB;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'rds' }
   sub signing_name { 'rds' }
   sub version { '2014-10-31' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -424,7 +426,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =item ResourceName => Str
 
-=item Tags => ArrayRef[L<Paws::DocDB::Tag>]
+=item Tags => ArrayRef[DocDB_Tag]
 
 
 =back
@@ -470,7 +472,7 @@ DB instance).
 
 =item TargetDBClusterParameterGroupIdentifier => Str
 
-=item [Tags => ArrayRef[L<Paws::DocDB::Tag>]]
+=item [Tags => ArrayRef[DocDB_Tag]]
 
 
 =back
@@ -496,7 +498,7 @@ Copies the specified DB cluster parameter group.
 
 =item [PreSignedUrl => Str]
 
-=item [Tags => ArrayRef[L<Paws::DocDB::Tag>]]
+=item [Tags => ArrayRef[DocDB_Tag]]
 
 
 =back
@@ -552,7 +554,7 @@ while that DB cluster snapshot is in the I<copying> status.
 
 =item [StorageEncrypted => Bool]
 
-=item [Tags => ArrayRef[L<Paws::DocDB::Tag>]]
+=item [Tags => ArrayRef[DocDB_Tag]]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -576,7 +578,7 @@ Creates a new Amazon DocumentDB DB cluster.
 
 =item Description => Str
 
-=item [Tags => ArrayRef[L<Paws::DocDB::Tag>]]
+=item [Tags => ArrayRef[DocDB_Tag]]
 
 
 =back
@@ -617,7 +619,7 @@ parameter.
 
 =item DBClusterSnapshotIdentifier => Str
 
-=item [Tags => ArrayRef[L<Paws::DocDB::Tag>]]
+=item [Tags => ArrayRef[DocDB_Tag]]
 
 
 =back
@@ -649,7 +651,7 @@ Creates a snapshot of a DB cluster.
 
 =item [PromotionTier => Int]
 
-=item [Tags => ArrayRef[L<Paws::DocDB::Tag>]]
+=item [Tags => ArrayRef[DocDB_Tag]]
 
 
 =back
@@ -671,7 +673,7 @@ Creates a new DB instance.
 
 =item SubnetIds => ArrayRef[Str|Undef]
 
-=item [Tags => ArrayRef[L<Paws::DocDB::Tag>]]
+=item [Tags => ArrayRef[DocDB_Tag]]
 
 
 =back
@@ -785,7 +787,7 @@ instances.
 
 =item [CertificateIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [Marker => Str]
 
@@ -808,7 +810,7 @@ Amazon RDS for this AWS account.
 
 =item [DBClusterParameterGroupName => Str]
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [Marker => Str]
 
@@ -833,7 +835,7 @@ group.
 
 =item DBClusterParameterGroupName => Str
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [Marker => Str]
 
@@ -858,7 +860,7 @@ parameter group.
 
 =item [DBClusterIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [Marker => Str]
 
@@ -907,7 +909,7 @@ snapshot is public and can be copied or restored by all AWS accounts.
 
 =item [DBClusterSnapshotIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [IncludePublic => Bool]
 
@@ -942,7 +944,7 @@ supports pagination.
 
 =item [EngineVersion => Str]
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [ListSupportedCharacterSets => Bool]
 
@@ -968,7 +970,7 @@ Returns a list of the available DB engines.
 
 =item [DBInstanceIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [Marker => Str]
 
@@ -991,7 +993,7 @@ API supports pagination.
 
 =item [DBSubnetGroupName => Str]
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [Marker => Str]
 
@@ -1015,7 +1017,7 @@ descriptions of the specified C<DBSubnetGroup>.
 
 =item DBParameterGroupFamily => Str
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [Marker => Str]
 
@@ -1036,7 +1038,7 @@ cluster database engine.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [SourceType => Str]
 
@@ -1061,7 +1063,7 @@ specified, for a specified source type.
 
 =item [EventCategories => ArrayRef[Str|Undef]]
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [Marker => Str]
 
@@ -1097,7 +1099,7 @@ By default, the events of the past hour are returned.
 
 =item [EngineVersion => Str]
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [LicenseModel => Str]
 
@@ -1122,7 +1124,7 @@ engine.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 =item [Marker => Str]
 
@@ -1174,7 +1176,7 @@ testing.
 
 =item ResourceName => Str
 
-=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+=item [Filters => ArrayRef[DocDB_Filter]]
 
 
 =back
@@ -1196,7 +1198,7 @@ Lists all tags on an Amazon DocumentDB resource.
 
 =item [BackupRetentionPeriod => Int]
 
-=item [CloudwatchLogsExportConfiguration => L<Paws::DocDB::CloudwatchLogsExportConfiguration>]
+=item [CloudwatchLogsExportConfiguration => DocDB_CloudwatchLogsExportConfiguration]
 
 =item [DBClusterParameterGroupName => Str]
 
@@ -1234,7 +1236,7 @@ parameters and the new values in the request.
 
 =item DBClusterParameterGroupName => Str
 
-=item Parameters => ArrayRef[L<Paws::DocDB::Parameter>]
+=item Parameters => ArrayRef[DocDB_Parameter]
 
 
 =back
@@ -1400,7 +1402,7 @@ Removes metadata tags from an Amazon DocumentDB resource.
 
 =item DBClusterParameterGroupName => Str
 
-=item [Parameters => ArrayRef[L<Paws::DocDB::Parameter>]]
+=item [Parameters => ArrayRef[DocDB_Parameter]]
 
 =item [ResetAllParameters => Bool]
 
@@ -1446,7 +1448,7 @@ effect on the next DB instance reboot.
 
 =item [Port => Int]
 
-=item [Tags => ArrayRef[L<Paws::DocDB::Tag>]]
+=item [Tags => ArrayRef[DocDB_Tag]]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -1489,7 +1491,7 @@ created with the default security group.
 
 =item [RestoreToTime => Str]
 
-=item [Tags => ArrayRef[L<Paws::DocDB::Tag>]]
+=item [Tags => ArrayRef[DocDB_Tag]]
 
 =item [UseLatestRestorableTime => Bool]
 
@@ -1554,9 +1556,9 @@ see Stopping and Starting an Amazon DocumentDB Cluster
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllDBClusters(sub { },[DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::DocDB::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusters(sub { },[DBClusterIdentifier => Str, Filters => ArrayRef[DocDB_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::DocDB::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[DocDB_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1566,9 +1568,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DocDB::DBClusterMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBEngineVersions(sub { },[DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::DocDB::Filter>], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBEngineVersions(sub { },[DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[DocDB_Filter], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::DocDB::Filter>], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[DocDB_Filter], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1578,9 +1580,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DocDB::DBEngineVersionMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBInstances(sub { },[DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::DocDB::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBInstances(sub { },[DBInstanceIdentifier => Str, Filters => ArrayRef[DocDB_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBInstances([DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::DocDB::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBInstances([DBInstanceIdentifier => Str, Filters => ArrayRef[DocDB_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1590,9 +1592,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DocDB::DBInstanceMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBSubnetGroups(sub { },[DBSubnetGroupName => Str, Filters => ArrayRef[L<Paws::DocDB::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBSubnetGroups(sub { },[DBSubnetGroupName => Str, Filters => ArrayRef[DocDB_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBSubnetGroups([DBSubnetGroupName => Str, Filters => ArrayRef[L<Paws::DocDB::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBSubnetGroups([DBSubnetGroupName => Str, Filters => ArrayRef[DocDB_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1602,9 +1604,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DocDB::DBSubnetGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::DocDB::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[DocDB_Filter], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
 
-=head2 DescribeAllEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::DocDB::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeAllEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[DocDB_Filter], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1614,9 +1616,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DocDB::EventsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllOrderableDBInstanceOptions(sub { },Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::DocDB::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
+=head2 DescribeAllOrderableDBInstanceOptions(sub { },Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[DocDB_Filter], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
 
-=head2 DescribeAllOrderableDBInstanceOptions(Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::DocDB::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
+=head2 DescribeAllOrderableDBInstanceOptions(Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[DocDB_Filter], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

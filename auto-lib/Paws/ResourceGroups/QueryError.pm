@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ResourceGroups::QueryError;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ResourceGroups::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

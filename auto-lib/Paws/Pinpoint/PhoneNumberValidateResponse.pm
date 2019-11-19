@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::PhoneNumberValidateResponse;
-  use Moose;
-  has NumberValidateResponse => (is => 'ro', isa => 'Paws::Pinpoint::NumberValidateResponse', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_NumberValidateResponse/;
+  has NumberValidateResponse => (is => 'ro', isa => Pinpoint_NumberValidateResponse, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'NumberValidateResponse' => 1
+                  },
+  'types' => {
+               'NumberValidateResponse' => {
+                                             'type' => 'Pinpoint_NumberValidateResponse',
+                                             'class' => 'Paws::Pinpoint::NumberValidateResponse'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> NumberValidateResponse => L<Paws::Pinpoint::NumberValidateResponse>
+=head2 B<REQUIRED> NumberValidateResponse => Pinpoint_NumberValidateResponse
 
   
 

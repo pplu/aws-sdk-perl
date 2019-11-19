@@ -1,11 +1,51 @@
 package Paws::EC2::TrafficMirrorFilter;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has EgressFilterRules => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TrafficMirrorFilterRule]', request_name => 'egressFilterRuleSet', traits => ['NameInRequest']);
-  has IngressFilterRules => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TrafficMirrorFilterRule]', request_name => 'ingressFilterRuleSet', traits => ['NameInRequest']);
-  has NetworkServices => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'networkServiceSet', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has TrafficMirrorFilterId => (is => 'ro', isa => 'Str', request_name => 'trafficMirrorFilterId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_Tag EC2_TrafficMirrorFilterRule/;
+  has Description => (is => 'ro', isa => Str);
+  has EgressFilterRules => (is => 'ro', isa => ArrayRef[EC2_TrafficMirrorFilterRule]);
+  has IngressFilterRules => (is => 'ro', isa => ArrayRef[EC2_TrafficMirrorFilterRule]);
+  has NetworkServices => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has TrafficMirrorFilterId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'IngressFilterRules' => 'ingressFilterRuleSet',
+                       'EgressFilterRules' => 'egressFilterRuleSet',
+                       'Tags' => 'tagSet',
+                       'NetworkServices' => 'networkServiceSet',
+                       'TrafficMirrorFilterId' => 'trafficMirrorFilterId'
+                     },
+  'types' => {
+               'EgressFilterRules' => {
+                                        'type' => 'ArrayRef[EC2_TrafficMirrorFilterRule]',
+                                        'class' => 'Paws::EC2::TrafficMirrorFilterRule'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'NetworkServices' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'IngressFilterRules' => {
+                                         'type' => 'ArrayRef[EC2_TrafficMirrorFilterRule]',
+                                         'class' => 'Paws::EC2::TrafficMirrorFilterRule'
+                                       },
+               'TrafficMirrorFilterId' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -46,13 +86,13 @@ This class has no description
   The description of the Traffic Mirror filter.
 
 
-=head2 EgressFilterRules => ArrayRef[L<Paws::EC2::TrafficMirrorFilterRule>]
+=head2 EgressFilterRules => ArrayRef[EC2_TrafficMirrorFilterRule]
 
   Information about the egress rules that are associated with the Traffic
 Mirror filter.
 
 
-=head2 IngressFilterRules => ArrayRef[L<Paws::EC2::TrafficMirrorFilterRule>]
+=head2 IngressFilterRules => ArrayRef[EC2_TrafficMirrorFilterRule]
 
   Information about the ingress rules that are associated with the
 Traffic Mirror filter.
@@ -64,7 +104,7 @@ Traffic Mirror filter.
 filter.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   The tags assigned to the Traffic Mirror filter.
 

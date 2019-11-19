@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::SageMaker::AlgorithmValidationProfile;
-  use Moose;
-  has ProfileName => (is => 'ro', isa => 'Str', required => 1);
-  has TrainingJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::TrainingJobDefinition', required => 1);
-  has TransformJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::TransformJobDefinition');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_TrainingJobDefinition SageMaker_TransformJobDefinition/;
+  has ProfileName => (is => 'ro', isa => Str, required => 1);
+  has TrainingJobDefinition => (is => 'ro', isa => SageMaker_TrainingJobDefinition, required => 1);
+  has TransformJobDefinition => (is => 'ro', isa => SageMaker_TransformJobDefinition);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProfileName' => {
+                                  'type' => 'Str'
+                                },
+               'TrainingJobDefinition' => {
+                                            'class' => 'Paws::SageMaker::TrainingJobDefinition',
+                                            'type' => 'SageMaker_TrainingJobDefinition'
+                                          },
+               'TransformJobDefinition' => {
+                                             'class' => 'Paws::SageMaker::TransformJobDefinition',
+                                             'type' => 'SageMaker_TransformJobDefinition'
+                                           }
+             },
+  'IsRequired' => {
+                    'TrainingJobDefinition' => 1,
+                    'ProfileName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,13 +77,13 @@ buyers on AWS Marketplace.
 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).
 
 
-=head2 B<REQUIRED> TrainingJobDefinition => L<Paws::SageMaker::TrainingJobDefinition>
+=head2 B<REQUIRED> TrainingJobDefinition => SageMaker_TrainingJobDefinition
 
   The C<TrainingJobDefinition> object that describes the training job
 that Amazon SageMaker runs to validate your algorithm.
 
 
-=head2 TransformJobDefinition => L<Paws::SageMaker::TransformJobDefinition>
+=head2 TransformJobDefinition => SageMaker_TransformJobDefinition
 
   The C<TransformJobDefinition> object that describes the transform job
 that Amazon SageMaker runs to validate your algorithm.

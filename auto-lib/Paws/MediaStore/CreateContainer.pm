@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MediaStore::CreateContainer;
-  use Moose;
-  has ContainerName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::MediaStore::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaStore::Types qw/MediaStore_Tag/;
+  has ContainerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[MediaStore_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateContainer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaStore::CreateContainerOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateContainer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaStore::CreateContainerOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContainerName' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'type' => 'ArrayRef[MediaStore_Tag]',
+                           'class' => 'Paws::MediaStore::Tag'
+                         }
+             },
+  'IsRequired' => {
+                    'ContainerName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +83,7 @@ with that name.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::MediaStore::Tag>]
+=head2 Tags => ArrayRef[MediaStore_Tag]
 
 An array of key:value pairs that you define. These values can be
 anything that you want. Typically, the tag key represents a category

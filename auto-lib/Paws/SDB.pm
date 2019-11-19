@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::SDB;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'sdb' }
   sub signing_name { 'sdb' }
   sub version { '2009-04-15' }
   sub flattened_arrays { 1 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller';
@@ -189,7 +191,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/simpledb/>
 
 =item DomainName => Str
 
-=item Items => ArrayRef[L<Paws::SDB::DeletableItem>]
+=item Items => ArrayRef[SDB_DeletableItem]
 
 
 =back
@@ -220,7 +222,7 @@ The following limitations are enforced for this operation:
 
 =item DomainName => Str
 
-=item Items => ArrayRef[L<Paws::SDB::ReplaceableItem>]
+=item Items => ArrayRef[SDB_ReplaceableItem]
 
 
 =back
@@ -321,9 +323,9 @@ http://aws.amazon.com/contact-us/simpledb-limit-request/
 
 =item ItemName => Str
 
-=item [Attributes => ArrayRef[L<Paws::SDB::DeletableAttribute>]]
+=item [Attributes => ArrayRef[SDB_DeletableAttribute]]
 
-=item [Expected => L<Paws::SDB::UpdateCondition>]
+=item [Expected => SDB_UpdateCondition]
 
 
 =back
@@ -437,13 +439,13 @@ each successive operation call.
 
 =over
 
-=item Attributes => ArrayRef[L<Paws::SDB::ReplaceableAttribute>]
+=item Attributes => ArrayRef[SDB_ReplaceableAttribute]
 
 =item DomainName => Str
 
 =item ItemName => Str
 
-=item [Expected => L<Paws::SDB::UpdateCondition>]
+=item [Expected => SDB_UpdateCondition]
 
 
 =back

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ELBv2::LoadBalancerAddress;
-  use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str');
-  has IpAddress => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ELBv2::Types qw//;
+  has AllocationId => (is => 'ro', isa => Str);
+  has IpAddress => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'AllocationId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

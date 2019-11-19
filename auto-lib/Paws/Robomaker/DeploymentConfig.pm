@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::Robomaker::DeploymentConfig;
-  use Moose;
-  has ConcurrentDeploymentPercentage => (is => 'ro', isa => 'Int', request_name => 'concurrentDeploymentPercentage', traits => ['NameInRequest']);
-  has DownloadConditionFile => (is => 'ro', isa => 'Paws::Robomaker::S3Object', request_name => 'downloadConditionFile', traits => ['NameInRequest']);
-  has FailureThresholdPercentage => (is => 'ro', isa => 'Int', request_name => 'failureThresholdPercentage', traits => ['NameInRequest']);
-  has RobotDeploymentTimeoutInSeconds => (is => 'ro', isa => 'Int', request_name => 'robotDeploymentTimeoutInSeconds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Robomaker::Types qw/Robomaker_S3Object/;
+  has ConcurrentDeploymentPercentage => (is => 'ro', isa => Int);
+  has DownloadConditionFile => (is => 'ro', isa => Robomaker_S3Object);
+  has FailureThresholdPercentage => (is => 'ro', isa => Int);
+  has RobotDeploymentTimeoutInSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailureThresholdPercentage' => {
+                                                 'type' => 'Int'
+                                               },
+               'RobotDeploymentTimeoutInSeconds' => {
+                                                      'type' => 'Int'
+                                                    },
+               'DownloadConditionFile' => {
+                                            'type' => 'Robomaker_S3Object',
+                                            'class' => 'Paws::Robomaker::S3Object'
+                                          },
+               'ConcurrentDeploymentPercentage' => {
+                                                     'type' => 'Int'
+                                                   }
+             },
+  'NameInRequest' => {
+                       'RobotDeploymentTimeoutInSeconds' => 'robotDeploymentTimeoutInSeconds',
+                       'FailureThresholdPercentage' => 'failureThresholdPercentage',
+                       'DownloadConditionFile' => 'downloadConditionFile',
+                       'ConcurrentDeploymentPercentage' => 'concurrentDeploymentPercentage'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +77,7 @@ Information about a deployment configuration.
   The percentage of robots receiving the deployment at the same time.
 
 
-=head2 DownloadConditionFile => L<Paws::Robomaker::S3Object>
+=head2 DownloadConditionFile => Robomaker_S3Object
 
   The download condition file.
 

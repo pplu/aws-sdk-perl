@@ -1,16 +1,48 @@
 
 package Paws::EKS::UpdateClusterVersion;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EKS::Types qw//;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Version => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateClusterVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clusters/{name}/updates');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EKS::UpdateClusterVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateClusterVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clusters/{name}/updates');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EKS::UpdateClusterVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Version' => 'version',
+                       'ClientRequestToken' => 'clientRequestToken'
+                     },
+  'IsRequired' => {
+                    'Version' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'ParamInURI' => {
+                    'Name' => 'name'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::MediaLive::HlsOutputSettings;
-  use Moose;
-  has HlsSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsSettings', request_name => 'hlsSettings', traits => ['NameInRequest'], required => 1);
-  has NameModifier => (is => 'ro', isa => 'Str', request_name => 'nameModifier', traits => ['NameInRequest']);
-  has SegmentModifier => (is => 'ro', isa => 'Str', request_name => 'segmentModifier', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_HlsSettings/;
+  has HlsSettings => (is => 'ro', isa => MediaLive_HlsSettings, required => 1);
+  has NameModifier => (is => 'ro', isa => Str);
+  has SegmentModifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'HlsSettings' => 1
+                  },
+  'NameInRequest' => {
+                       'NameModifier' => 'nameModifier',
+                       'HlsSettings' => 'hlsSettings',
+                       'SegmentModifier' => 'segmentModifier'
+                     },
+  'types' => {
+               'SegmentModifier' => {
+                                      'type' => 'Str'
+                                    },
+               'HlsSettings' => {
+                                  'type' => 'MediaLive_HlsSettings',
+                                  'class' => 'Paws::MediaLive::HlsSettings'
+                                },
+               'NameModifier' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +70,7 @@ Hls Output Settings
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HlsSettings => L<Paws::MediaLive::HlsSettings>
+=head2 B<REQUIRED> HlsSettings => MediaLive_HlsSettings
 
   Settings regarding the underlying stream. These settings are different
 for audio-only outputs.

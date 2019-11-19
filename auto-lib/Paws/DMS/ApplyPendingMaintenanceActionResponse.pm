@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::ApplyPendingMaintenanceActionResponse;
-  use Moose;
-  has ResourcePendingMaintenanceActions => (is => 'ro', isa => 'Paws::DMS::ResourcePendingMaintenanceActions');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw/DMS_ResourcePendingMaintenanceActions/;
+  has ResourcePendingMaintenanceActions => (is => 'ro', isa => DMS_ResourcePendingMaintenanceActions);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourcePendingMaintenanceActions' => {
+                                                        'class' => 'Paws::DMS::ResourcePendingMaintenanceActions',
+                                                        'type' => 'DMS_ResourcePendingMaintenanceActions'
+                                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DMS::ApplyPendingMaintenanceActionResponse
 =head1 ATTRIBUTES
 
 
-=head2 ResourcePendingMaintenanceActions => L<Paws::DMS::ResourcePendingMaintenanceActions>
+=head2 ResourcePendingMaintenanceActions => DMS_ResourcePendingMaintenanceActions
 
 The AWS DMS resource that the pending maintenance action will be
 applied to.

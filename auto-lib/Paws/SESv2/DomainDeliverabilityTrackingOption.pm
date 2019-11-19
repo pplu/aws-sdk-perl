@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::SESv2::DomainDeliverabilityTrackingOption;
-  use Moose;
-  has Domain => (is => 'ro', isa => 'Str');
-  has InboxPlacementTrackingOption => (is => 'ro', isa => 'Paws::SESv2::InboxPlacementTrackingOption');
-  has SubscriptionStartDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SESv2::Types qw/SESv2_InboxPlacementTrackingOption/;
+  has Domain => (is => 'ro', isa => Str);
+  has InboxPlacementTrackingOption => (is => 'ro', isa => SESv2_InboxPlacementTrackingOption);
+  has SubscriptionStartDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'SubscriptionStartDate' => {
+                                            'type' => 'Str'
+                                          },
+               'InboxPlacementTrackingOption' => {
+                                                   'type' => 'SESv2_InboxPlacementTrackingOption',
+                                                   'class' => 'Paws::SESv2::InboxPlacementTrackingOption'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +73,7 @@ domain.
 currently has an active Deliverability dashboard subscription.
 
 
-=head2 InboxPlacementTrackingOption => L<Paws::SESv2::InboxPlacementTrackingOption>
+=head2 InboxPlacementTrackingOption => SESv2_InboxPlacementTrackingOption
 
   An object that contains information about the inbox placement data
 settings for the domain.

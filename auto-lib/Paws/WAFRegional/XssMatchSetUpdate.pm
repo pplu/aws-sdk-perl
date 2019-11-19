@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::XssMatchSetUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has XssMatchTuple => (is => 'ro', isa => 'Paws::WAFRegional::XssMatchTuple', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_XssMatchTuple/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has XssMatchTuple => (is => 'ro', isa => WAFRegional_XssMatchTuple, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'XssMatchTuple' => {
+                                    'class' => 'Paws::WAFRegional::XssMatchTuple',
+                                    'type' => 'WAFRegional_XssMatchTuple'
+                                  }
+             },
+  'IsRequired' => {
+                    'XssMatchTuple' => 1,
+                    'Action' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +70,7 @@ specification to an XssMatchSet or delete it from an C<XssMatchSet>.
 C<DELETE> to remove an C<XssMatchSetUpdate> from an C<XssMatchSet>.
 
 
-=head2 B<REQUIRED> XssMatchTuple => L<Paws::WAFRegional::XssMatchTuple>
+=head2 B<REQUIRED> XssMatchTuple => WAFRegional_XssMatchTuple
 
   Specifies the part of a web request that you want AWS WAF to inspect
 for cross-site scripting attacks and, if you want AWS WAF to inspect a

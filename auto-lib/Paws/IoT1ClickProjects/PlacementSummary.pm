@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::IoT1ClickProjects::PlacementSummary;
-  use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest'], required => 1);
-  has PlacementName => (is => 'ro', isa => 'Str', request_name => 'placementName', traits => ['NameInRequest'], required => 1);
-  has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest'], required => 1);
-  has UpdatedDate => (is => 'ro', isa => 'Str', request_name => 'updatedDate', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickProjects::Types qw//;
+  has CreatedDate => (is => 'ro', isa => Str, required => 1);
+  has PlacementName => (is => 'ro', isa => Str, required => 1);
+  has ProjectName => (is => 'ro', isa => Str, required => 1);
+  has UpdatedDate => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlacementName' => {
+                                    'type' => 'Str'
+                                  },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'UpdatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ProjectName' => 1,
+                    'UpdatedDate' => 1,
+                    'CreatedDate' => 1,
+                    'PlacementName' => 1
+                  },
+  'NameInRequest' => {
+                       'ProjectName' => 'projectName',
+                       'PlacementName' => 'placementName',
+                       'CreatedDate' => 'createdDate',
+                       'UpdatedDate' => 'updatedDate'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::LinkAttributeAction;
-  use Moose;
-  has AttributeActionType => (is => 'ro', isa => 'Str');
-  has AttributeUpdateValue => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedAttributeValue/;
+  has AttributeActionType => (is => 'ro', isa => Str);
+  has AttributeUpdateValue => (is => 'ro', isa => CloudDirectory_TypedAttributeValue);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeActionType' => {
+                                          'type' => 'Str'
+                                        },
+               'AttributeUpdateValue' => {
+                                           'type' => 'CloudDirectory_TypedAttributeValue',
+                                           'class' => 'Paws::CloudDirectory::TypedAttributeValue'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +65,7 @@ identity.
   A type that can be either C<UPDATE_OR_CREATE> or C<DELETE>.
 
 
-=head2 AttributeUpdateValue => L<Paws::CloudDirectory::TypedAttributeValue>
+=head2 AttributeUpdateValue => CloudDirectory_TypedAttributeValue
 
   The value that you want to update to.
 

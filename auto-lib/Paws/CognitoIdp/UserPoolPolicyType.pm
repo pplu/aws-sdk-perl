@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::UserPoolPolicyType;
-  use Moose;
-  has PasswordPolicy => (is => 'ro', isa => 'Paws::CognitoIdp::PasswordPolicyType');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_PasswordPolicyType/;
+  has PasswordPolicy => (is => 'ro', isa => CognitoIdp_PasswordPolicyType);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PasswordPolicy' => {
+                                     'type' => 'CognitoIdp_PasswordPolicyType',
+                                     'class' => 'Paws::CognitoIdp::PasswordPolicyType'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ The policy associated with a user pool.
 =head1 ATTRIBUTES
 
 
-=head2 PasswordPolicy => L<Paws::CognitoIdp::PasswordPolicyType>
+=head2 PasswordPolicy => CognitoIdp_PasswordPolicyType
 
   The password policy.
 

@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::IoT::Behavior;
-  use Moose;
-  has Criteria => (is => 'ro', isa => 'Paws::IoT::BehaviorCriteria', request_name => 'criteria', traits => ['NameInRequest']);
-  has Metric => (is => 'ro', isa => 'Str', request_name => 'metric', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_BehaviorCriteria/;
+  has Criteria => (is => 'ro', isa => IoT_BehaviorCriteria);
+  has Metric => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Criteria' => 'criteria',
+                       'Metric' => 'metric'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  },
+  'types' => {
+               'Metric' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Criteria' => {
+                               'type' => 'IoT_BehaviorCriteria',
+                               'class' => 'Paws::IoT::BehaviorCriteria'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +70,7 @@ A Device Defender security profile behavior.
 =head1 ATTRIBUTES
 
 
-=head2 Criteria => L<Paws::IoT::BehaviorCriteria>
+=head2 Criteria => IoT_BehaviorCriteria
 
   The criteria that determine if a device is behaving normally in regard
 to the C<metric>.

@@ -1,17 +1,67 @@
+# Generated from default/object.tt
 package Paws::MTurk::Assignment;
-  use Moose;
-  has AcceptTime => (is => 'ro', isa => 'Str');
-  has Answer => (is => 'ro', isa => 'Str');
-  has ApprovalTime => (is => 'ro', isa => 'Str');
-  has AssignmentId => (is => 'ro', isa => 'Str');
-  has AssignmentStatus => (is => 'ro', isa => 'Str');
-  has AutoApprovalTime => (is => 'ro', isa => 'Str');
-  has Deadline => (is => 'ro', isa => 'Str');
-  has HITId => (is => 'ro', isa => 'Str');
-  has RejectionTime => (is => 'ro', isa => 'Str');
-  has RequesterFeedback => (is => 'ro', isa => 'Str');
-  has SubmitTime => (is => 'ro', isa => 'Str');
-  has WorkerId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw//;
+  has AcceptTime => (is => 'ro', isa => Str);
+  has Answer => (is => 'ro', isa => Str);
+  has ApprovalTime => (is => 'ro', isa => Str);
+  has AssignmentId => (is => 'ro', isa => Str);
+  has AssignmentStatus => (is => 'ro', isa => Str);
+  has AutoApprovalTime => (is => 'ro', isa => Str);
+  has Deadline => (is => 'ro', isa => Str);
+  has HITId => (is => 'ro', isa => Str);
+  has RejectionTime => (is => 'ro', isa => Str);
+  has RequesterFeedback => (is => 'ro', isa => Str);
+  has SubmitTime => (is => 'ro', isa => Str);
+  has WorkerId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubmitTime' => {
+                                 'type' => 'Str'
+                               },
+               'HITId' => {
+                            'type' => 'Str'
+                          },
+               'WorkerId' => {
+                               'type' => 'Str'
+                             },
+               'Answer' => {
+                             'type' => 'Str'
+                           },
+               'AutoApprovalTime' => {
+                                       'type' => 'Str'
+                                     },
+               'AssignmentId' => {
+                                   'type' => 'Str'
+                                 },
+               'AcceptTime' => {
+                                 'type' => 'Str'
+                               },
+               'Deadline' => {
+                               'type' => 'Str'
+                             },
+               'RequesterFeedback' => {
+                                        'type' => 'Str'
+                                      },
+               'RejectionTime' => {
+                                    'type' => 'Str'
+                                  },
+               'ApprovalTime' => {
+                                   'type' => 'Str'
+                                 },
+               'AssignmentStatus' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

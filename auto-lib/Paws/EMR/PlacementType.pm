@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::EMR::PlacementType;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::EMR::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

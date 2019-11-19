@@ -1,10 +1,43 @@
 package Paws::EC2::ProvisionedBandwidth;
-  use Moose;
-  has Provisioned => (is => 'ro', isa => 'Str', request_name => 'provisioned', traits => ['NameInRequest']);
-  has ProvisionTime => (is => 'ro', isa => 'Str', request_name => 'provisionTime', traits => ['NameInRequest']);
-  has Requested => (is => 'ro', isa => 'Str', request_name => 'requested', traits => ['NameInRequest']);
-  has RequestTime => (is => 'ro', isa => 'Str', request_name => 'requestTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Provisioned => (is => 'ro', isa => Str);
+  has ProvisionTime => (is => 'ro', isa => Str);
+  has Requested => (is => 'ro', isa => Str);
+  has RequestTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'RequestTime' => 'requestTime',
+                       'ProvisionTime' => 'provisionTime',
+                       'Requested' => 'requested',
+                       'Provisioned' => 'provisioned'
+                     },
+  'types' => {
+               'Provisioned' => {
+                                  'type' => 'Str'
+                                },
+               'RequestTime' => {
+                                  'type' => 'Str'
+                                },
+               'Requested' => {
+                                'type' => 'Str'
+                              },
+               'ProvisionTime' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

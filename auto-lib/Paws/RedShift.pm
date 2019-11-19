@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::RedShift;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'redshift' }
   sub signing_name { 'redshift' }
   sub version { '2012-12-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -1115,7 +1117,7 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =over
 
-=item Identifiers => ArrayRef[L<Paws::RedShift::DeleteClusterSnapshotMessage>]
+=item Identifiers => ArrayRef[RedShift_DeleteClusterSnapshotMessage]
 
 
 =back
@@ -1259,7 +1261,7 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =item [SnapshotScheduleIdentifier => Str]
 
-=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+=item [Tags => ArrayRef[RedShift_Tag]]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -1291,7 +1293,7 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =item ParameterGroupName => Str
 
-=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+=item [Tags => ArrayRef[RedShift_Tag]]
 
 
 =back
@@ -1322,7 +1324,7 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =item Description => Str
 
-=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+=item [Tags => ArrayRef[RedShift_Tag]]
 
 
 =back
@@ -1350,7 +1352,7 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =item [ManualSnapshotRetentionPeriod => Int]
 
-=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+=item [Tags => ArrayRef[RedShift_Tag]]
 
 
 =back
@@ -1378,7 +1380,7 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =item SubnetIds => ArrayRef[Str|Undef]
 
-=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+=item [Tags => ArrayRef[RedShift_Tag]]
 
 
 =back
@@ -1415,7 +1417,7 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =item [SourceType => Str]
 
-=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+=item [Tags => ArrayRef[RedShift_Tag]]
 
 
 =back
@@ -1456,7 +1458,7 @@ if you specify a source ID.
 
 =item HsmClientCertificateIdentifier => Str
 
-=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+=item [Tags => ArrayRef[RedShift_Tag]]
 
 
 =back
@@ -1494,7 +1496,7 @@ in the Amazon Redshift Cluster Management Guide.
 
 =item HsmServerPublicCertificate => Str
 
-=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+=item [Tags => ArrayRef[RedShift_Tag]]
 
 
 =back
@@ -1524,7 +1526,7 @@ in the Amazon Redshift Cluster Management Guide.
 
 =item [KmsKeyId => Str]
 
-=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+=item [Tags => ArrayRef[RedShift_Tag]]
 
 
 =back
@@ -1557,7 +1559,7 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =item [ScheduleIdentifier => Str]
 
-=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+=item [Tags => ArrayRef[RedShift_Tag]]
 
 
 =back
@@ -1575,7 +1577,7 @@ Creates a new snapshot schedule.
 
 =item ResourceName => Str
 
-=item Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=item Tags => ArrayRef[RedShift_Tag]
 
 
 =back
@@ -2036,7 +2038,7 @@ associated with them.
 
 =item [SnapshotType => Str]
 
-=item [SortingEntities => ArrayRef[L<Paws::RedShift::SnapshotSortingEntity>]]
+=item [SortingEntities => ArrayRef[RedShift_SnapshotSortingEntity]]
 
 =item [StartTime => Str]
 
@@ -2367,7 +2369,7 @@ is being logged for the specified Amazon Redshift cluster.
 
 =item ActionType => Str
 
-=item [Filters => ArrayRef[L<Paws::RedShift::NodeConfigurationOptionsFilter>]]
+=item [Filters => ArrayRef[RedShift_NodeConfigurationOptionsFilter]]
 
 =item [Marker => Str]
 
@@ -2957,7 +2959,7 @@ defer a maintenance window. You can also update or cancel a deferment.
 
 =item ParameterGroupName => Str
 
-=item Parameters => ArrayRef[L<Paws::RedShift::Parameter>]
+=item Parameters => ArrayRef[RedShift_Parameter]
 
 
 =back
@@ -3167,7 +3169,7 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =item ParameterGroupName => Str
 
-=item [Parameters => ArrayRef[L<Paws::RedShift::Parameter>]]
+=item [Parameters => ArrayRef[RedShift_Parameter]]
 
 =item [ResetAllParameters => Bool]
 
@@ -3511,9 +3513,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RedShift::ClusterSecurityGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllClusterSnapshots(sub { },[ClusterExists => Bool, ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, SortingEntities => ArrayRef[L<Paws::RedShift::SnapshotSortingEntity>], StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeAllClusterSnapshots(sub { },[ClusterExists => Bool, ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, SortingEntities => ArrayRef[RedShift_SnapshotSortingEntity], StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllClusterSnapshots([ClusterExists => Bool, ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, SortingEntities => ArrayRef[L<Paws::RedShift::SnapshotSortingEntity>], StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeAllClusterSnapshots([ClusterExists => Bool, ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, SortingEntities => ArrayRef[RedShift_SnapshotSortingEntity], StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -3619,9 +3621,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RedShift::HsmConfigurationMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllNodeConfigurationOptions(sub { },ActionType => Str, [Filters => ArrayRef[L<Paws::RedShift::NodeConfigurationOptionsFilter>], Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str])
+=head2 DescribeAllNodeConfigurationOptions(sub { },ActionType => Str, [Filters => ArrayRef[RedShift_NodeConfigurationOptionsFilter], Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str])
 
-=head2 DescribeAllNodeConfigurationOptions(ActionType => Str, [Filters => ArrayRef[L<Paws::RedShift::NodeConfigurationOptionsFilter>], Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str])
+=head2 DescribeAllNodeConfigurationOptions(ActionType => Str, [Filters => ArrayRef[RedShift_NodeConfigurationOptionsFilter], Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

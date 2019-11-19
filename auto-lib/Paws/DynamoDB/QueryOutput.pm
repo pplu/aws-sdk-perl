@@ -1,13 +1,46 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::QueryOutput;
-  use Moose;
-  has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
-  has Count => (is => 'ro', isa => 'Int');
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeMap]');
-  has LastEvaluatedKey => (is => 'ro', isa => 'Paws::DynamoDB::Key');
-  has ScannedCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AttributeMap DynamoDB_Key DynamoDB_ConsumedCapacity/;
+  has ConsumedCapacity => (is => 'ro', isa => DynamoDB_ConsumedCapacity);
+  has Count => (is => 'ro', isa => Int);
+  has Items => (is => 'ro', isa => ArrayRef[DynamoDB_AttributeMap]);
+  has LastEvaluatedKey => (is => 'ro', isa => DynamoDB_Key);
+  has ScannedCount => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScannedCount' => {
+                                   'type' => 'Int'
+                                 },
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Items' => {
+                            'class' => 'Paws::DynamoDB::AttributeMap',
+                            'type' => 'ArrayRef[DynamoDB_AttributeMap]'
+                          },
+               'LastEvaluatedKey' => {
+                                       'class' => 'Paws::DynamoDB::Key',
+                                       'type' => 'DynamoDB_Key'
+                                     },
+               'ConsumedCapacity' => {
+                                       'type' => 'DynamoDB_ConsumedCapacity',
+                                       'class' => 'Paws::DynamoDB::ConsumedCapacity'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -18,7 +51,7 @@ Paws::DynamoDB::QueryOutput
 =head1 ATTRIBUTES
 
 
-=head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
+=head2 ConsumedCapacity => DynamoDB_ConsumedCapacity
 
 The capacity units consumed by the C<Query> operation. The data
 returned includes the total provisioned throughput consumed, along with
@@ -43,14 +76,14 @@ If you did not use a filter in the request, then C<Count> and
 C<ScannedCount> are the same.
 
 
-=head2 Items => ArrayRef[L<Paws::DynamoDB::AttributeMap>]
+=head2 Items => ArrayRef[DynamoDB_AttributeMap]
 
 An array of item attributes that match the query criteria. Each element
 in this array consists of an attribute name and the value for that
 attribute.
 
 
-=head2 LastEvaluatedKey => L<Paws::DynamoDB::Key>
+=head2 LastEvaluatedKey => DynamoDB_Key
 
 The primary key of the item where the operation stopped, inclusive of
 the previous result set. Use this value to start a new operation,

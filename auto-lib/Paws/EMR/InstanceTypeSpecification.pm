@@ -1,12 +1,49 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceTypeSpecification;
-  use Moose;
-  has BidPrice => (is => 'ro', isa => 'Str');
-  has BidPriceAsPercentageOfOnDemandPrice => (is => 'ro', isa => 'Num');
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
-  has EbsBlockDevices => (is => 'ro', isa => 'ArrayRef[Paws::EMR::EbsBlockDevice]');
-  has EbsOptimized => (is => 'ro', isa => 'Bool');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has WeightedCapacity => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Num ArrayRef Bool Int/;
+  use Paws::EMR::Types qw/EMR_EbsBlockDevice EMR_Configuration/;
+  has BidPrice => (is => 'ro', isa => Str);
+  has BidPriceAsPercentageOfOnDemandPrice => (is => 'ro', isa => Num);
+  has Configurations => (is => 'ro', isa => ArrayRef[EMR_Configuration]);
+  has EbsBlockDevices => (is => 'ro', isa => ArrayRef[EMR_EbsBlockDevice]);
+  has EbsOptimized => (is => 'ro', isa => Bool);
+  has InstanceType => (is => 'ro', isa => Str);
+  has WeightedCapacity => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BidPriceAsPercentageOfOnDemandPrice' => {
+                                                          'type' => 'Num'
+                                                        },
+               'BidPrice' => {
+                               'type' => 'Str'
+                             },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 },
+               'EbsBlockDevices' => {
+                                      'type' => 'ArrayRef[EMR_EbsBlockDevice]',
+                                      'class' => 'Paws::EMR::EbsBlockDevice'
+                                    },
+               'Configurations' => {
+                                     'type' => 'ArrayRef[EMR_Configuration]',
+                                     'class' => 'Paws::EMR::Configuration'
+                                   },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'WeightedCapacity' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,14 +96,14 @@ instance as defined by C<InstanceType>. Expressed as a number (for
 example, 20 specifies 20%).
 
 
-=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
+=head2 Configurations => ArrayRef[EMR_Configuration]
 
   A configuration classification that applies when provisioning cluster
 instances, which can include configurations for applications and
 software bundled with Amazon EMR.
 
 
-=head2 EbsBlockDevices => ArrayRef[L<Paws::EMR::EbsBlockDevice>]
+=head2 EbsBlockDevices => ArrayRef[EMR_EbsBlockDevice]
 
   The configuration of Amazon Elastic Block Storage (EBS) attached to
 each instance as defined by C<InstanceType>.

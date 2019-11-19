@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::Suggester;
-  use Moose;
-  has DocumentSuggesterOptions => (is => 'ro', isa => 'Paws::CloudSearch::DocumentSuggesterOptions', required => 1);
-  has SuggesterName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearch::Types qw/CloudSearch_DocumentSuggesterOptions/;
+  has DocumentSuggesterOptions => (is => 'ro', isa => CloudSearch_DocumentSuggesterOptions, required => 1);
+  has SuggesterName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SuggesterName' => {
+                                    'type' => 'Str'
+                                  },
+               'DocumentSuggesterOptions' => {
+                                               'class' => 'Paws::CloudSearch::DocumentSuggesterOptions',
+                                               'type' => 'CloudSearch_DocumentSuggesterOptions'
+                                             }
+             },
+  'IsRequired' => {
+                    'SuggesterName' => 1,
+                    'DocumentSuggesterOptions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +65,7 @@ C<FuzzyMatching>, C<SortExpression>.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DocumentSuggesterOptions => L<Paws::CloudSearch::DocumentSuggesterOptions>
+=head2 B<REQUIRED> DocumentSuggesterOptions => CloudSearch_DocumentSuggesterOptions
 
   
 

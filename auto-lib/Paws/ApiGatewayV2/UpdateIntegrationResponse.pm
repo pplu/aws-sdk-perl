@@ -1,21 +1,76 @@
 
 package Paws::ApiGatewayV2::UpdateIntegrationResponse;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has ContentHandlingStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandlingStrategy');
-  has IntegrationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'integrationId', required => 1);
-  has IntegrationResponseId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'integrationResponseId', required => 1);
-  has IntegrationResponseKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationResponseKey');
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::IntegrationParameters', traits => ['NameInRequest'], request_name => 'responseParameters');
-  has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGatewayV2::TemplateMap', traits => ['NameInRequest'], request_name => 'responseTemplates');
-  has TemplateSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateSelectionExpression');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_TemplateMap ApiGatewayV2_IntegrationParameters/;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentHandlingStrategy => (is => 'ro', isa => Str, predicate => 1);
+  has IntegrationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IntegrationResponseId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IntegrationResponseKey => (is => 'ro', isa => Str, predicate => 1);
+  has ResponseParameters => (is => 'ro', isa => ApiGatewayV2_IntegrationParameters, predicate => 1);
+  has ResponseTemplates => (is => 'ro', isa => ApiGatewayV2_TemplateMap, predicate => 1);
+  has TemplateSelectionExpression => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateIntegrationResponse');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/integrations/{integrationId}/integrationresponses/{integrationResponseId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::UpdateIntegrationResponseResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateIntegrationResponse');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/apis/{apiId}/integrations/{integrationId}/integrationresponses/{integrationResponseId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::UpdateIntegrationResponseResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ApiId' => 'apiId',
+                    'IntegrationResponseId' => 'integrationResponseId',
+                    'IntegrationId' => 'integrationId'
+                  },
+  'NameInRequest' => {
+                       'ContentHandlingStrategy' => 'contentHandlingStrategy',
+                       'TemplateSelectionExpression' => 'templateSelectionExpression',
+                       'ResponseTemplates' => 'responseTemplates',
+                       'IntegrationResponseKey' => 'integrationResponseKey',
+                       'ResponseParameters' => 'responseParameters'
+                     },
+  'IsRequired' => {
+                    'ApiId' => 1,
+                    'IntegrationId' => 1,
+                    'IntegrationResponseId' => 1
+                  },
+  'types' => {
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'IntegrationId' => {
+                                    'type' => 'Str'
+                                  },
+               'ResponseParameters' => {
+                                         'class' => 'Paws::ApiGatewayV2::IntegrationParameters',
+                                         'type' => 'ApiGatewayV2_IntegrationParameters'
+                                       },
+               'IntegrationResponseId' => {
+                                            'type' => 'Str'
+                                          },
+               'ResponseTemplates' => {
+                                        'class' => 'Paws::ApiGatewayV2::TemplateMap',
+                                        'type' => 'ApiGatewayV2_TemplateMap'
+                                      },
+               'IntegrationResponseKey' => {
+                                             'type' => 'Str'
+                                           },
+               'TemplateSelectionExpression' => {
+                                                  'type' => 'Str'
+                                                },
+               'ContentHandlingStrategy' => {
+                                              'type' => 'Str'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -113,7 +168,7 @@ The integration response key.
 
 
 
-=head2 ResponseParameters => L<Paws::ApiGatewayV2::IntegrationParameters>
+=head2 ResponseParameters => ApiGatewayV2_IntegrationParameters
 
 A key-value map specifying response parameters that are passed to the
 method response from the backend. The key is a method response header
@@ -129,7 +184,7 @@ expression without the $ prefix.
 
 
 
-=head2 ResponseTemplates => L<Paws::ApiGatewayV2::TemplateMap>
+=head2 ResponseTemplates => ApiGatewayV2_TemplateMap
 
 The collection of response templates for the integration response as a
 string-to-string map of key-value pairs. Response templates are

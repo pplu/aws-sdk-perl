@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::DLM::LifecyclePolicySummary;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has PolicyId => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::DLM::TagMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DLM::Types qw/DLM_TagMap/;
+  has Description => (is => 'ro', isa => Str);
+  has PolicyId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => DLM_TagMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::DLM::TagMap',
+                           'type' => 'DLM_TagMap'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'PolicyId' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +81,7 @@ Summary information about a lifecycle policy.
   The activation state of the lifecycle policy.
 
 
-=head2 Tags => L<Paws::DLM::TagMap>
+=head2 Tags => DLM_TagMap
 
   The tags.
 

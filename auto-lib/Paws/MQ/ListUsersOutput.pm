@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::MQ::ListUsersOutput;
-  use Moose;
-  has BrokerId => (is => 'ro', isa => 'Str', request_name => 'brokerId', traits => ['NameInRequest']);
-  has MaxResults => (is => 'ro', isa => 'Int', request_name => 'maxResults', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
-  has Users => (is => 'ro', isa => 'ArrayRef[Paws::MQ::UserSummary]', request_name => 'users', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::MQ::Types qw/MQ_UserSummary/;
+  has BrokerId => (is => 'ro', isa => Str);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
+  has Users => (is => 'ro', isa => ArrayRef[MQ_UserSummary]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BrokerId' => {
+                               'type' => 'Str'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Users' => {
+                            'type' => 'ArrayRef[MQ_UserSummary]',
+                            'class' => 'Paws::MQ::UserSummary'
+                          }
+             },
+  'NameInRequest' => {
+                       'BrokerId' => 'brokerId',
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults',
+                       'Users' => 'users'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +89,7 @@ page (20 by default). This value must be an integer from 5 to 100.
 return. To request the first page, leave nextToken empty.
 
 
-=head2 Users => ArrayRef[L<Paws::MQ::UserSummary>]
+=head2 Users => ArrayRef[MQ_UserSummary]
 
   Required. The list of all ActiveMQ usernames for the specified broker.
 

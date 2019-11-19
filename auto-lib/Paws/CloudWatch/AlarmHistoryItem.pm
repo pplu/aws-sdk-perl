@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::CloudWatch::AlarmHistoryItem;
-  use Moose;
-  has AlarmName => (is => 'ro', isa => 'Str');
-  has HistoryData => (is => 'ro', isa => 'Str');
-  has HistoryItemType => (is => 'ro', isa => 'Str');
-  has HistorySummary => (is => 'ro', isa => 'Str');
-  has Timestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatch::Types qw//;
+  has AlarmName => (is => 'ro', isa => Str);
+  has HistoryData => (is => 'ro', isa => Str);
+  has HistoryItemType => (is => 'ro', isa => Str);
+  has HistorySummary => (is => 'ro', isa => Str);
+  has Timestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AlarmName' => {
+                                'type' => 'Str'
+                              },
+               'HistorySummary' => {
+                                     'type' => 'Str'
+                                   },
+               'HistoryItemType' => {
+                                      'type' => 'Str'
+                                    },
+               'HistoryData' => {
+                                  'type' => 'Str'
+                                },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

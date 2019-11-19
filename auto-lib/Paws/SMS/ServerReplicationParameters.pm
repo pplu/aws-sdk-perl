@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::SMS::ServerReplicationParameters;
-  use Moose;
-  has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest']);
-  has Frequency => (is => 'ro', isa => 'Int', request_name => 'frequency', traits => ['NameInRequest']);
-  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
-  has LicenseType => (is => 'ro', isa => 'Str', request_name => 'licenseType', traits => ['NameInRequest']);
-  has NumberOfRecentAmisToKeep => (is => 'ro', isa => 'Int', request_name => 'numberOfRecentAmisToKeep', traits => ['NameInRequest']);
-  has RunOnce => (is => 'ro', isa => 'Bool', request_name => 'runOnce', traits => ['NameInRequest']);
-  has SeedTime => (is => 'ro', isa => 'Str', request_name => 'seedTime', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Int Str/;
+  use Paws::SMS::Types qw//;
+  has Encrypted => (is => 'ro', isa => Bool);
+  has Frequency => (is => 'ro', isa => Int);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LicenseType => (is => 'ro', isa => Str);
+  has NumberOfRecentAmisToKeep => (is => 'ro', isa => Int);
+  has RunOnce => (is => 'ro', isa => Bool);
+  has SeedTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'NumberOfRecentAmisToKeep' => {
+                                               'type' => 'Int'
+                                             },
+               'Frequency' => {
+                                'type' => 'Int'
+                              },
+               'SeedTime' => {
+                               'type' => 'Str'
+                             },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'LicenseType' => {
+                                  'type' => 'Str'
+                                },
+               'RunOnce' => {
+                              'type' => 'Bool'
+                            }
+             },
+  'NameInRequest' => {
+                       'RunOnce' => 'runOnce',
+                       'LicenseType' => 'licenseType',
+                       'SeedTime' => 'seedTime',
+                       'KmsKeyId' => 'kmsKeyId',
+                       'NumberOfRecentAmisToKeep' => 'numberOfRecentAmisToKeep',
+                       'Frequency' => 'frequency',
+                       'Encrypted' => 'encrypted'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

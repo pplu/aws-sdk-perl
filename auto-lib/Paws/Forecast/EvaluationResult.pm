@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Forecast::EvaluationResult;
-  use Moose;
-  has AlgorithmArn => (is => 'ro', isa => 'Str');
-  has TestWindows => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::WindowSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Forecast::Types qw/Forecast_WindowSummary/;
+  has AlgorithmArn => (is => 'ro', isa => Str);
+  has TestWindows => (is => 'ro', isa => ArrayRef[Forecast_WindowSummary]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AlgorithmArn' => {
+                                   'type' => 'Str'
+                                 },
+               'TestWindows' => {
+                                  'type' => 'ArrayRef[Forecast_WindowSummary]',
+                                  'class' => 'Paws::Forecast::WindowSummary'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ GetAccuracyMetrics response.
   The Amazon Resource Name (ARN) of the algorithm that was evaluated.
 
 
-=head2 TestWindows => ArrayRef[L<Paws::Forecast::WindowSummary>]
+=head2 TestWindows => ArrayRef[Forecast_WindowSummary]
 
   The array of test windows used for evaluating the algorithm. The
 C<NumberOfBacktestWindows> from the EvaluationParameters object

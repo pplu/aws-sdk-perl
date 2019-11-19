@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::FlinkApplicationConfiguration;
-  use Moose;
-  has CheckpointConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::CheckpointConfiguration');
-  has MonitoringConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::MonitoringConfiguration');
-  has ParallelismConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ParallelismConfiguration');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_ParallelismConfiguration KinesisAnalyticsV2_MonitoringConfiguration KinesisAnalyticsV2_CheckpointConfiguration/;
+  has CheckpointConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_CheckpointConfiguration);
+  has MonitoringConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_MonitoringConfiguration);
+  has ParallelismConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_ParallelismConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParallelismConfiguration' => {
+                                               'class' => 'Paws::KinesisAnalyticsV2::ParallelismConfiguration',
+                                               'type' => 'KinesisAnalyticsV2_ParallelismConfiguration'
+                                             },
+               'CheckpointConfiguration' => {
+                                              'type' => 'KinesisAnalyticsV2_CheckpointConfiguration',
+                                              'class' => 'Paws::KinesisAnalyticsV2::CheckpointConfiguration'
+                                            },
+               'MonitoringConfiguration' => {
+                                              'type' => 'KinesisAnalyticsV2_MonitoringConfiguration',
+                                              'class' => 'Paws::KinesisAnalyticsV2::MonitoringConfiguration'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +65,7 @@ Analytics application.
 =head1 ATTRIBUTES
 
 
-=head2 CheckpointConfiguration => L<Paws::KinesisAnalyticsV2::CheckpointConfiguration>
+=head2 CheckpointConfiguration => KinesisAnalyticsV2_CheckpointConfiguration
 
   Describes an application's checkpointing configuration. Checkpointing
 is the process of persisting application state for fault tolerance. For
@@ -49,13 +75,13 @@ in the Apache Flink Documentation
 (https://ci.apache.org/projects/flink/flink-docs-release-1.6/).
 
 
-=head2 MonitoringConfiguration => L<Paws::KinesisAnalyticsV2::MonitoringConfiguration>
+=head2 MonitoringConfiguration => KinesisAnalyticsV2_MonitoringConfiguration
 
   Describes configuration parameters for Amazon CloudWatch logging for an
 application.
 
 
-=head2 ParallelismConfiguration => L<Paws::KinesisAnalyticsV2::ParallelismConfiguration>
+=head2 ParallelismConfiguration => KinesisAnalyticsV2_ParallelismConfiguration
 
   Describes parameters for how an application executes multiple tasks
 simultaneously.

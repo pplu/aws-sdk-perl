@@ -1,18 +1,83 @@
+# Generated from default/object.tt
 package Paws::CloudFront::CacheBehavior;
-  use Moose;
-  has AllowedMethods => (is => 'ro', isa => 'Paws::CloudFront::AllowedMethods');
-  has Compress => (is => 'ro', isa => 'Bool');
-  has DefaultTTL => (is => 'ro', isa => 'Int');
-  has FieldLevelEncryptionId => (is => 'ro', isa => 'Str');
-  has ForwardedValues => (is => 'ro', isa => 'Paws::CloudFront::ForwardedValues', required => 1);
-  has LambdaFunctionAssociations => (is => 'ro', isa => 'Paws::CloudFront::LambdaFunctionAssociations');
-  has MaxTTL => (is => 'ro', isa => 'Int');
-  has MinTTL => (is => 'ro', isa => 'Int', required => 1);
-  has PathPattern => (is => 'ro', isa => 'Str', required => 1);
-  has SmoothStreaming => (is => 'ro', isa => 'Bool');
-  has TargetOriginId => (is => 'ro', isa => 'Str', required => 1);
-  has TrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::TrustedSigners', required => 1);
-  has ViewerProtocolPolicy => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Int Str/;
+  use Paws::CloudFront::Types qw/CloudFront_TrustedSigners CloudFront_LambdaFunctionAssociations CloudFront_ForwardedValues CloudFront_AllowedMethods/;
+  has AllowedMethods => (is => 'ro', isa => CloudFront_AllowedMethods);
+  has Compress => (is => 'ro', isa => Bool);
+  has DefaultTTL => (is => 'ro', isa => Int);
+  has FieldLevelEncryptionId => (is => 'ro', isa => Str);
+  has ForwardedValues => (is => 'ro', isa => CloudFront_ForwardedValues, required => 1);
+  has LambdaFunctionAssociations => (is => 'ro', isa => CloudFront_LambdaFunctionAssociations);
+  has MaxTTL => (is => 'ro', isa => Int);
+  has MinTTL => (is => 'ro', isa => Int, required => 1);
+  has PathPattern => (is => 'ro', isa => Str, required => 1);
+  has SmoothStreaming => (is => 'ro', isa => Bool);
+  has TargetOriginId => (is => 'ro', isa => Str, required => 1);
+  has TrustedSigners => (is => 'ro', isa => CloudFront_TrustedSigners, required => 1);
+  has ViewerProtocolPolicy => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetOriginId' => {
+                                     'type' => 'Str'
+                                   },
+               'LambdaFunctionAssociations' => {
+                                                 'class' => 'Paws::CloudFront::LambdaFunctionAssociations',
+                                                 'type' => 'CloudFront_LambdaFunctionAssociations'
+                                               },
+               'PathPattern' => {
+                                  'type' => 'Str'
+                                },
+               'SmoothStreaming' => {
+                                      'type' => 'Bool'
+                                    },
+               'ViewerProtocolPolicy' => {
+                                           'type' => 'Str'
+                                         },
+               'Compress' => {
+                               'type' => 'Bool'
+                             },
+               'AllowedMethods' => {
+                                     'class' => 'Paws::CloudFront::AllowedMethods',
+                                     'type' => 'CloudFront_AllowedMethods'
+                                   },
+               'TrustedSigners' => {
+                                     'class' => 'Paws::CloudFront::TrustedSigners',
+                                     'type' => 'CloudFront_TrustedSigners'
+                                   },
+               'DefaultTTL' => {
+                                 'type' => 'Int'
+                               },
+               'MaxTTL' => {
+                             'type' => 'Int'
+                           },
+               'MinTTL' => {
+                             'type' => 'Int'
+                           },
+               'FieldLevelEncryptionId' => {
+                                             'type' => 'Str'
+                                           },
+               'ForwardedValues' => {
+                                      'class' => 'Paws::CloudFront::ForwardedValues',
+                                      'type' => 'CloudFront_ForwardedValues'
+                                    }
+             },
+  'IsRequired' => {
+                    'PathPattern' => 1,
+                    'MinTTL' => 1,
+                    'ForwardedValues' => 1,
+                    'TargetOriginId' => 1,
+                    'ViewerProtocolPolicy' => 1,
+                    'TrustedSigners' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +142,7 @@ in the I<Amazon CloudFront Developer Guide>.
 =head1 ATTRIBUTES
 
 
-=head2 AllowedMethods => L<Paws::CloudFront::AllowedMethods>
+=head2 AllowedMethods => CloudFront_AllowedMethods
 
   
 
@@ -111,13 +176,13 @@ you want CloudFront to use for encrypting specific fields of data for a
 cache behavior or for the default cache behavior in your distribution.
 
 
-=head2 B<REQUIRED> ForwardedValues => L<Paws::CloudFront::ForwardedValues>
+=head2 B<REQUIRED> ForwardedValues => CloudFront_ForwardedValues
 
   A complex type that specifies how CloudFront handles query strings and
 cookies.
 
 
-=head2 LambdaFunctionAssociations => L<Paws::CloudFront::LambdaFunctionAssociations>
+=head2 LambdaFunctionAssociations => CloudFront_LambdaFunctionAssociations
 
   A complex type that contains zero or more Lambda function associations
 for a cache behavior.
@@ -188,7 +253,7 @@ requests to when a request matches the path pattern either for a cache
 behavior or for the default cache behavior in your distribution.
 
 
-=head2 B<REQUIRED> TrustedSigners => L<Paws::CloudFront::TrustedSigners>
+=head2 B<REQUIRED> TrustedSigners => CloudFront_TrustedSigners
 
   A complex type that specifies the AWS accounts, if any, that you want
 to allow to create signed URLs for private content.

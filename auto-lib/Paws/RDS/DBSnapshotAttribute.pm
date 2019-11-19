@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::RDS::DBSnapshotAttribute;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str');
-  has AttributeValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AttributeValue', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::RDS::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str);
+  has AttributeValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AttributeValues' => 'AttributeValue'
+                     },
+  'types' => {
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  },
+               'AttributeValues' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

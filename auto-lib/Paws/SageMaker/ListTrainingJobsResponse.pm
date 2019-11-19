@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::ListTrainingJobsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has TrainingJobSummaries => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::TrainingJobSummary]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_TrainingJobSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has TrainingJobSummaries => (is => 'ro', isa => ArrayRef[SageMaker_TrainingJobSummary], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'TrainingJobSummaries' => 1
+                  },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'TrainingJobSummaries' => {
+                                           'type' => 'ArrayRef[SageMaker_TrainingJobSummary]',
+                                           'class' => 'Paws::SageMaker::TrainingJobSummary'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +47,7 @@ retrieve the next set of training jobs, use it in the subsequent
 request.
 
 
-=head2 B<REQUIRED> TrainingJobSummaries => ArrayRef[L<Paws::SageMaker::TrainingJobSummary>]
+=head2 B<REQUIRED> TrainingJobSummaries => ArrayRef[SageMaker_TrainingJobSummary]
 
 An array of C<TrainingJobSummary> objects, each listing a training job.
 

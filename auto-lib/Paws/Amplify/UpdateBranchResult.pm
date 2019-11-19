@@ -1,9 +1,33 @@
 
 package Paws::Amplify::UpdateBranchResult;
-  use Moose;
-  has Branch => (is => 'ro', isa => 'Paws::Amplify::Branch', traits => ['NameInRequest'], request_name => 'branch', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw/Amplify_Branch/;
+  has Branch => (is => 'ro', isa => Amplify_Branch, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Branch' => {
+                             'type' => 'Amplify_Branch',
+                             'class' => 'Paws::Amplify::Branch'
+                           }
+             },
+  'IsRequired' => {
+                    'Branch' => 1
+                  },
+  'NameInRequest' => {
+                       'Branch' => 'branch'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +39,7 @@ Paws::Amplify::UpdateBranchResult
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Branch => L<Paws::Amplify::Branch>
+=head2 B<REQUIRED> Branch => Amplify_Branch
 
 Branch structure for an Amplify App.
 

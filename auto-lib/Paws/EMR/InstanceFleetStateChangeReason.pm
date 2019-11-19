@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceFleetStateChangeReason;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw//;
+  has Code => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Code' => {
+                           'type' => 'Str'
+                         },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

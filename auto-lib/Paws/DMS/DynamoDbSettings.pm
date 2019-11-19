@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::DMS::DynamoDbSettings;
-  use Moose;
-  has ServiceAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw//;
+  has ServiceAccessRoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceAccessRoleArn' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'ServiceAccessRoleArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

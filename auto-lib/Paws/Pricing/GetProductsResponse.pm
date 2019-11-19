@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Pricing::GetProductsResponse;
-  use Moose;
-  has FormatVersion => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PriceList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Pricing::Types qw//;
+  has FormatVersion => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has PriceList => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FormatVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'PriceList' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

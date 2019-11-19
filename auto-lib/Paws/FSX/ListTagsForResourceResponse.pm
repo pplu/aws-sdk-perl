@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::FSX::ListTagsForResourceResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::FSX::Types qw/FSX_Tag/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[FSX_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::FSX::Tag',
+                           'type' => 'ArrayRef[FSX_Tag]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ This is present if there are more tags than returned in the response
 fetch the tags.
 
 
-=head2 Tags => ArrayRef[L<Paws::FSX::Tag>]
+=head2 Tags => ArrayRef[FSX_Tag]
 
 A list of tags on the resource.
 

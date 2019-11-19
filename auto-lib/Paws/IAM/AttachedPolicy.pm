@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::IAM::AttachedPolicy;
-  use Moose;
-  has PolicyArn => (is => 'ro', isa => 'Str');
-  has PolicyName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has PolicyArn => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyArn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

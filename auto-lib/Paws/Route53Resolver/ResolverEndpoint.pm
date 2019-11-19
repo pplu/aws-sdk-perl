@@ -1,17 +1,67 @@
+# Generated from default/object.tt
 package Paws::Route53Resolver::ResolverEndpoint;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has CreatorRequestId => (is => 'ro', isa => 'Str');
-  has Direction => (is => 'ro', isa => 'Str');
-  has HostVPCId => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has IpAddressCount => (is => 'ro', isa => 'Int');
-  has ModificationTime => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::Route53Resolver::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has CreatorRequestId => (is => 'ro', isa => Str);
+  has Direction => (is => 'ro', isa => Str);
+  has HostVPCId => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has IpAddressCount => (is => 'ro', isa => Int);
+  has ModificationTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'HostVPCId' => {
+                                'type' => 'Str'
+                              },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     },
+               'ModificationTime' => {
+                                       'type' => 'Str'
+                                     },
+               'IpAddressCount' => {
+                                     'type' => 'Int'
+                                   },
+               'Direction' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

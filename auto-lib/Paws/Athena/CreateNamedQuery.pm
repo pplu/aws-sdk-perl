@@ -1,18 +1,54 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Athena::CreateNamedQuery;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has Database => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has QueryString => (is => 'ro', isa => 'Str', required => 1);
-  has WorkGroup => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Athena::Types qw//;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Database => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has QueryString => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WorkGroup => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNamedQuery');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Athena::CreateNamedQueryOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateNamedQuery');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Athena::CreateNamedQueryOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'QueryString' => 1,
+                    'Database' => 1,
+                    'Name' => 1
+                  },
+  'types' => {
+               'WorkGroup' => {
+                                'type' => 'Str'
+                              },
+               'Database' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'QueryString' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

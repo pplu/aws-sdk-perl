@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::Health::EventDetails;
-  use Moose;
-  has Event => (is => 'ro', isa => 'Paws::Health::Event', request_name => 'event', traits => ['NameInRequest']);
-  has EventDescription => (is => 'ro', isa => 'Paws::Health::EventDescription', request_name => 'eventDescription', traits => ['NameInRequest']);
-  has EventMetadata => (is => 'ro', isa => 'Paws::Health::EventMetadata', request_name => 'eventMetadata', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Health::Types qw/Health_EventDescription Health_Event Health_eventMetadata/;
+  has Event => (is => 'ro', isa => Health_Event);
+  has EventDescription => (is => 'ro', isa => Health_EventDescription);
+  has EventMetadata => (is => 'ro', isa => Health_eventMetadata);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EventMetadata' => 'eventMetadata',
+                       'EventDescription' => 'eventDescription',
+                       'Event' => 'event'
+                     },
+  'types' => {
+               'EventMetadata' => {
+                                    'type' => 'Health_eventMetadata',
+                                    'class' => 'Paws::Health::EventMetadata'
+                                  },
+               'EventDescription' => {
+                                       'type' => 'Health_EventDescription',
+                                       'class' => 'Paws::Health::EventDescription'
+                                     },
+               'Event' => {
+                            'class' => 'Paws::Health::Event',
+                            'type' => 'Health_Event'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,17 +71,17 @@ Returned by the DescribeEventDetails operation.
 =head1 ATTRIBUTES
 
 
-=head2 Event => L<Paws::Health::Event>
+=head2 Event => Health_Event
 
   Summary information about the event.
 
 
-=head2 EventDescription => L<Paws::Health::EventDescription>
+=head2 EventDescription => Health_EventDescription
 
   The most recent description of the event.
 
 
-=head2 EventMetadata => L<Paws::Health::EventMetadata>
+=head2 EventMetadata => Health_eventMetadata
 
   Additional metadata about the event.
 

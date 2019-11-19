@@ -1,17 +1,68 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::DeviceData;
-  use Moose;
-  has DeviceArn => (is => 'ro', isa => 'Str');
-  has DeviceName => (is => 'ro', isa => 'Str');
-  has DeviceSerialNumber => (is => 'ro', isa => 'Str');
-  has DeviceStatus => (is => 'ro', isa => 'Str');
-  has DeviceStatusInfo => (is => 'ro', isa => 'Paws::AlexaForBusiness::DeviceStatusInfo');
-  has DeviceType => (is => 'ro', isa => 'Str');
-  has MacAddress => (is => 'ro', isa => 'Str');
-  has NetworkProfileArn => (is => 'ro', isa => 'Str');
-  has NetworkProfileName => (is => 'ro', isa => 'Str');
-  has RoomArn => (is => 'ro', isa => 'Str');
-  has RoomName => (is => 'ro', isa => 'Str');
-  has SoftwareVersion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_DeviceStatusInfo/;
+  has DeviceArn => (is => 'ro', isa => Str);
+  has DeviceName => (is => 'ro', isa => Str);
+  has DeviceSerialNumber => (is => 'ro', isa => Str);
+  has DeviceStatus => (is => 'ro', isa => Str);
+  has DeviceStatusInfo => (is => 'ro', isa => AlexaForBusiness_DeviceStatusInfo);
+  has DeviceType => (is => 'ro', isa => Str);
+  has MacAddress => (is => 'ro', isa => Str);
+  has NetworkProfileArn => (is => 'ro', isa => Str);
+  has NetworkProfileName => (is => 'ro', isa => Str);
+  has RoomArn => (is => 'ro', isa => Str);
+  has RoomName => (is => 'ro', isa => Str);
+  has SoftwareVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'DeviceType' => {
+                                 'type' => 'Str'
+                               },
+               'DeviceStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'NetworkProfileArn' => {
+                                        'type' => 'Str'
+                                      },
+               'RoomArn' => {
+                              'type' => 'Str'
+                            },
+               'NetworkProfileName' => {
+                                         'type' => 'Str'
+                                       },
+               'DeviceStatusInfo' => {
+                                       'type' => 'AlexaForBusiness_DeviceStatusInfo',
+                                       'class' => 'Paws::AlexaForBusiness::DeviceStatusInfo'
+                                     },
+               'MacAddress' => {
+                                 'type' => 'Str'
+                               },
+               'DeviceSerialNumber' => {
+                                         'type' => 'Str'
+                                       },
+               'SoftwareVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'RoomName' => {
+                               'type' => 'Str'
+                             },
+               'DeviceArn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +118,7 @@ Device attributes.
   The status of a device.
 
 
-=head2 DeviceStatusInfo => L<Paws::AlexaForBusiness::DeviceStatusInfo>
+=head2 DeviceStatusInfo => AlexaForBusiness_DeviceStatusInfo
 
   Detailed information about a device's status.
 

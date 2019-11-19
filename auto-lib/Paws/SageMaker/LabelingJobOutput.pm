@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::SageMaker::LabelingJobOutput;
-  use Moose;
-  has FinalActiveLearningModelArn => (is => 'ro', isa => 'Str');
-  has OutputDatasetS3Uri => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has FinalActiveLearningModelArn => (is => 'ro', isa => Str);
+  has OutputDatasetS3Uri => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'OutputDatasetS3Uri' => 1
+                  },
+  'types' => {
+               'FinalActiveLearningModelArn' => {
+                                                  'type' => 'Str'
+                                                },
+               'OutputDatasetS3Uri' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

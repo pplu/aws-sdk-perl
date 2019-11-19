@@ -1,20 +1,64 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::RestoreTableToPointInTime;
-  use Moose;
-  has BillingModeOverride => (is => 'ro', isa => 'Str');
-  has GlobalSecondaryIndexOverride => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndex]');
-  has LocalSecondaryIndexOverride => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndex]');
-  has ProvisionedThroughputOverride => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
-  has RestoreDateTime => (is => 'ro', isa => 'Str');
-  has SourceTableName => (is => 'ro', isa => 'Str', required => 1);
-  has TargetTableName => (is => 'ro', isa => 'Str', required => 1);
-  has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::DynamoDB::Types qw/DynamoDB_LocalSecondaryIndex DynamoDB_GlobalSecondaryIndex DynamoDB_ProvisionedThroughput/;
+  has BillingModeOverride => (is => 'ro', isa => Str, predicate => 1);
+  has GlobalSecondaryIndexOverride => (is => 'ro', isa => ArrayRef[DynamoDB_GlobalSecondaryIndex], predicate => 1);
+  has LocalSecondaryIndexOverride => (is => 'ro', isa => ArrayRef[DynamoDB_LocalSecondaryIndex], predicate => 1);
+  has ProvisionedThroughputOverride => (is => 'ro', isa => DynamoDB_ProvisionedThroughput, predicate => 1);
+  has RestoreDateTime => (is => 'ro', isa => Str, predicate => 1);
+  has SourceTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UseLatestRestorableTime => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreTableToPointInTime');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::RestoreTableToPointInTimeOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreTableToPointInTime');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::RestoreTableToPointInTimeOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GlobalSecondaryIndexOverride' => {
+                                                   'class' => 'Paws::DynamoDB::GlobalSecondaryIndex',
+                                                   'type' => 'ArrayRef[DynamoDB_GlobalSecondaryIndex]'
+                                                 },
+               'LocalSecondaryIndexOverride' => {
+                                                  'class' => 'Paws::DynamoDB::LocalSecondaryIndex',
+                                                  'type' => 'ArrayRef[DynamoDB_LocalSecondaryIndex]'
+                                                },
+               'BillingModeOverride' => {
+                                          'type' => 'Str'
+                                        },
+               'ProvisionedThroughputOverride' => {
+                                                    'class' => 'Paws::DynamoDB::ProvisionedThroughput',
+                                                    'type' => 'DynamoDB_ProvisionedThroughput'
+                                                  },
+               'TargetTableName' => {
+                                      'type' => 'Str'
+                                    },
+               'RestoreDateTime' => {
+                                      'type' => 'Str'
+                                    },
+               'UseLatestRestorableTime' => {
+                                              'type' => 'Bool'
+                                            },
+               'SourceTableName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'SourceTableName' => 1,
+                    'TargetTableName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -110,7 +154,7 @@ The billing mode of the restored table.
 
 Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
 
-=head2 GlobalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]
+=head2 GlobalSecondaryIndexOverride => ArrayRef[DynamoDB_GlobalSecondaryIndex]
 
 List of global secondary indexes for the restored table. The indexes
 provided should match existing secondary indexes. You can choose to
@@ -118,7 +162,7 @@ exclude some or all of the indexes at the time of restore.
 
 
 
-=head2 LocalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]
+=head2 LocalSecondaryIndexOverride => ArrayRef[DynamoDB_LocalSecondaryIndex]
 
 List of local secondary indexes for the restored table. The indexes
 provided should match existing secondary indexes. You can choose to
@@ -126,7 +170,7 @@ exclude some or all of the indexes at the time of restore.
 
 
 
-=head2 ProvisionedThroughputOverride => L<Paws::DynamoDB::ProvisionedThroughput>
+=head2 ProvisionedThroughputOverride => DynamoDB_ProvisionedThroughput
 
 Provisioned throughput settings for the restored table.
 

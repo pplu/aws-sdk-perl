@@ -1,6 +1,20 @@
 package Paws::EC2::LaunchTemplateHibernationOptionsRequest;
-  use Moose;
-  has Configured => (is => 'ro', isa => 'Bool');
+  use Moo;  use Types::Standard qw/Bool/;
+  use Paws::EC2::Types qw//;
+  has Configured => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configured' => {
+                                 'type' => 'Bool'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

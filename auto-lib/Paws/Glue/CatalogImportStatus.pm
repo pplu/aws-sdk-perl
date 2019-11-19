@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Glue::CatalogImportStatus;
-  use Moose;
-  has ImportCompleted => (is => 'ro', isa => 'Bool');
-  has ImportedBy => (is => 'ro', isa => 'Str');
-  has ImportTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::Glue::Types qw//;
+  has ImportCompleted => (is => 'ro', isa => Bool);
+  has ImportedBy => (is => 'ro', isa => Str);
+  has ImportTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImportCompleted' => {
+                                      'type' => 'Bool'
+                                    },
+               'ImportedBy' => {
+                                 'type' => 'Str'
+                               },
+               'ImportTime' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

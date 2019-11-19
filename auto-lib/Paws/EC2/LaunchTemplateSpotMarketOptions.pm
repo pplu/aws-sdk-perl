@@ -1,10 +1,43 @@
 package Paws::EC2::LaunchTemplateSpotMarketOptions;
-  use Moose;
-  has BlockDurationMinutes => (is => 'ro', isa => 'Int', request_name => 'blockDurationMinutes', traits => ['NameInRequest']);
-  has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInterruptionBehavior', traits => ['NameInRequest']);
-  has MaxPrice => (is => 'ro', isa => 'Str', request_name => 'maxPrice', traits => ['NameInRequest']);
-  has SpotInstanceType => (is => 'ro', isa => 'Str', request_name => 'spotInstanceType', traits => ['NameInRequest']);
-  has ValidUntil => (is => 'ro', isa => 'Str', request_name => 'validUntil', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str/;
+  use Paws::EC2::Types qw//;
+  has BlockDurationMinutes => (is => 'ro', isa => Int);
+  has InstanceInterruptionBehavior => (is => 'ro', isa => Str);
+  has MaxPrice => (is => 'ro', isa => Str);
+  has SpotInstanceType => (is => 'ro', isa => Str);
+  has ValidUntil => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpotInstanceType' => {
+                                       'type' => 'Str'
+                                     },
+               'ValidUntil' => {
+                                 'type' => 'Str'
+                               },
+               'MaxPrice' => {
+                               'type' => 'Str'
+                             },
+               'InstanceInterruptionBehavior' => {
+                                                   'type' => 'Str'
+                                                 },
+               'BlockDurationMinutes' => {
+                                           'type' => 'Int'
+                                         }
+             },
+  'NameInRequest' => {
+                       'ValidUntil' => 'validUntil',
+                       'SpotInstanceType' => 'spotInstanceType',
+                       'MaxPrice' => 'maxPrice',
+                       'InstanceInterruptionBehavior' => 'instanceInterruptionBehavior',
+                       'BlockDurationMinutes' => 'blockDurationMinutes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::XRay::ServiceId;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::XRay::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Names => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Names' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

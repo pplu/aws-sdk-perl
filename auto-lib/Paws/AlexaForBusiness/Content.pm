@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::Content;
-  use Moose;
-  has AudioList => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Audio]');
-  has SsmlList => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Ssml]');
-  has TextList => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Text]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_Text AlexaForBusiness_Audio AlexaForBusiness_Ssml/;
+  has AudioList => (is => 'ro', isa => ArrayRef[AlexaForBusiness_Audio]);
+  has SsmlList => (is => 'ro', isa => ArrayRef[AlexaForBusiness_Ssml]);
+  has TextList => (is => 'ro', isa => ArrayRef[AlexaForBusiness_Text]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AudioList' => {
+                                'type' => 'ArrayRef[AlexaForBusiness_Audio]',
+                                'class' => 'Paws::AlexaForBusiness::Audio'
+                              },
+               'TextList' => {
+                               'class' => 'Paws::AlexaForBusiness::Text',
+                               'type' => 'ArrayRef[AlexaForBusiness_Text]'
+                             },
+               'SsmlList' => {
+                               'class' => 'Paws::AlexaForBusiness::Ssml',
+                               'type' => 'ArrayRef[AlexaForBusiness_Ssml]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,17 +65,17 @@ list object.
 =head1 ATTRIBUTES
 
 
-=head2 AudioList => ArrayRef[L<Paws::AlexaForBusiness::Audio>]
+=head2 AudioList => ArrayRef[AlexaForBusiness_Audio]
 
   The list of audio messages.
 
 
-=head2 SsmlList => ArrayRef[L<Paws::AlexaForBusiness::Ssml>]
+=head2 SsmlList => ArrayRef[AlexaForBusiness_Ssml]
 
   The list of SSML messages.
 
 
-=head2 TextList => ArrayRef[L<Paws::AlexaForBusiness::Text>]
+=head2 TextList => ArrayRef[AlexaForBusiness_Text]
 
   The list of text messages.
 

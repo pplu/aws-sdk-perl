@@ -1,17 +1,52 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudWatch::PutAnomalyDetector;
-  use Moose;
-  has Configuration => (is => 'ro', isa => 'Paws::CloudWatch::AnomalyDetectorConfiguration');
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', required => 1);
-  has Stat => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatch::Types qw/CloudWatch_Dimension CloudWatch_AnomalyDetectorConfiguration/;
+  has Configuration => (is => 'ro', isa => CloudWatch_AnomalyDetectorConfiguration, predicate => 1);
+  has Dimensions => (is => 'ro', isa => ArrayRef[CloudWatch_Dimension], predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Stat => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutAnomalyDetector');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatch::PutAnomalyDetectorOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PutAnomalyDetectorResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutAnomalyDetector');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatch::PutAnomalyDetectorOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'PutAnomalyDetectorResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Stat' => {
+                           'type' => 'Str'
+                         },
+               'Dimensions' => {
+                                 'class' => 'Paws::CloudWatch::Dimension',
+                                 'type' => 'ArrayRef[CloudWatch_Dimension]'
+                               },
+               'Configuration' => {
+                                    'class' => 'Paws::CloudWatch::AnomalyDetectorConfiguration',
+                                    'type' => 'CloudWatch_AnomalyDetectorConfiguration'
+                                  },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'Stat' => 1,
+                    'Namespace' => 1,
+                    'MetricName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +97,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head1 ATTRIBUTES
 
 
-=head2 Configuration => L<Paws::CloudWatch::AnomalyDetectorConfiguration>
+=head2 Configuration => CloudWatch_AnomalyDetectorConfiguration
 
 The configuration specifies details about how the anomaly detection
 model is to be trained, including time ranges to exclude when training
@@ -74,7 +109,7 @@ You can in
 
 
 
-=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
+=head2 Dimensions => ArrayRef[CloudWatch_Dimension]
 
 The metric dimensions to create the anomaly detection model for.
 

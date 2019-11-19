@@ -1,15 +1,42 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::ApplyPendingMaintenanceAction;
-  use Moose;
-  has ApplyAction => (is => 'ro', isa => 'Str', required => 1);
-  has OptInType => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Neptune::Types qw//;
+  has ApplyAction => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OptInType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ApplyPendingMaintenanceAction');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::ApplyPendingMaintenanceActionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ApplyPendingMaintenanceActionResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ApplyPendingMaintenanceAction');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::ApplyPendingMaintenanceActionResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ApplyPendingMaintenanceActionResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'OptInType' => 1,
+                    'ApplyAction' => 1,
+                    'ResourceIdentifier' => 1
+                  },
+  'types' => {
+               'ApplyAction' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'OptInType' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

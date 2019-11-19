@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetDevEndpointsResponse;
-  use Moose;
-  has DevEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::Glue::DevEndpoint]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_DevEndpoint/;
+  has DevEndpoints => (is => 'ro', isa => ArrayRef[Glue_DevEndpoint]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DevEndpoints' => {
+                                   'class' => 'Paws::Glue::DevEndpoint',
+                                   'type' => 'ArrayRef[Glue_DevEndpoint]'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Glue::GetDevEndpointsResponse
 =head1 ATTRIBUTES
 
 
-=head2 DevEndpoints => ArrayRef[L<Paws::Glue::DevEndpoint>]
+=head2 DevEndpoints => ArrayRef[Glue_DevEndpoint]
 
 A list of C<DevEndpoint> definitions.
 

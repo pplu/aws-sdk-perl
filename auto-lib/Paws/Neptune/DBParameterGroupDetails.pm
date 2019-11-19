@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::Neptune::DBParameterGroupDetails;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Parameter]', request_name => 'Parameter', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_Parameter/;
+  has Marker => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => ArrayRef[Neptune_Parameter]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Parameters' => 'Parameter'
+                     },
+  'types' => {
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'Parameters' => {
+                                 'class' => 'Paws::Neptune::Parameter',
+                                 'type' => 'ArrayRef[Neptune_Parameter]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +48,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-=head2 Parameters => ArrayRef[L<Paws::Neptune::Parameter>]
+=head2 Parameters => ArrayRef[Neptune_Parameter]
 
 A list of Parameter values.
 

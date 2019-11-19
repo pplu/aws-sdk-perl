@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CloudFront::Aliases;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'CNAME', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::CloudFront::Types qw//;
+  has Items => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Items' => 'CNAME'
+                     },
+  'IsRequired' => {
+                    'Quantity' => 1
+                  },
+  'types' => {
+               'Items' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Quantity' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

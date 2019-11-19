@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeStar::ListTagsForProjectResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Tags => (is => 'ro', isa => 'Paws::CodeStar::Tags', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStar::Types qw/CodeStar_Tags/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => CodeStar_Tags);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'type' => 'CodeStar_Tags',
+                           'class' => 'Paws::CodeStar::Tags'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +46,7 @@ Paws::CodeStar::ListTagsForProjectResult
 Reserved for future use.
 
 
-=head2 Tags => L<Paws::CodeStar::Tags>
+=head2 Tags => CodeStar_Tags
 
 The tags for the project.
 

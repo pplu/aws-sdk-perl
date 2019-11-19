@@ -1,14 +1,67 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionExecution;
-  use Moose;
-  has ErrorDetails => (is => 'ro', isa => 'Paws::CodePipeline::ErrorDetails', request_name => 'errorDetails', traits => ['NameInRequest']);
-  has ExternalExecutionId => (is => 'ro', isa => 'Str', request_name => 'externalExecutionId', traits => ['NameInRequest']);
-  has ExternalExecutionUrl => (is => 'ro', isa => 'Str', request_name => 'externalExecutionUrl', traits => ['NameInRequest']);
-  has LastStatusChange => (is => 'ro', isa => 'Str', request_name => 'lastStatusChange', traits => ['NameInRequest']);
-  has LastUpdatedBy => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedBy', traits => ['NameInRequest']);
-  has PercentComplete => (is => 'ro', isa => 'Int', request_name => 'percentComplete', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Summary => (is => 'ro', isa => 'Str', request_name => 'summary', traits => ['NameInRequest']);
-  has Token => (is => 'ro', isa => 'Str', request_name => 'token', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ErrorDetails/;
+  has ErrorDetails => (is => 'ro', isa => CodePipeline_ErrorDetails);
+  has ExternalExecutionId => (is => 'ro', isa => Str);
+  has ExternalExecutionUrl => (is => 'ro', isa => Str);
+  has LastStatusChange => (is => 'ro', isa => Str);
+  has LastUpdatedBy => (is => 'ro', isa => Str);
+  has PercentComplete => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has Summary => (is => 'ro', isa => Str);
+  has Token => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Token' => 'token',
+                       'Summary' => 'summary',
+                       'ErrorDetails' => 'errorDetails',
+                       'LastStatusChange' => 'lastStatusChange',
+                       'LastUpdatedBy' => 'lastUpdatedBy',
+                       'PercentComplete' => 'percentComplete',
+                       'Status' => 'status',
+                       'ExternalExecutionId' => 'externalExecutionId',
+                       'ExternalExecutionUrl' => 'externalExecutionUrl'
+                     },
+  'types' => {
+               'Token' => {
+                            'type' => 'Str'
+                          },
+               'Summary' => {
+                              'type' => 'Str'
+                            },
+               'ErrorDetails' => {
+                                   'type' => 'CodePipeline_ErrorDetails',
+                                   'class' => 'Paws::CodePipeline::ErrorDetails'
+                                 },
+               'LastStatusChange' => {
+                                       'type' => 'Str'
+                                     },
+               'LastUpdatedBy' => {
+                                    'type' => 'Str'
+                                  },
+               'PercentComplete' => {
+                                      'type' => 'Int'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ExternalExecutionId' => {
+                                          'type' => 'Str'
+                                        },
+               'ExternalExecutionUrl' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +97,7 @@ Represents information about the run of an action.
 =head1 ATTRIBUTES
 
 
-=head2 ErrorDetails => L<Paws::CodePipeline::ErrorDetails>
+=head2 ErrorDetails => CodePipeline_ErrorDetails
 
   The details of an error returned by a URL external to AWS.
 

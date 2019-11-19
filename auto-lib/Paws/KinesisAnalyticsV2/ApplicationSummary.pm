@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::ApplicationSummary;
-  use Moose;
-  has ApplicationARN => (is => 'ro', isa => 'Str', required => 1);
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has ApplicationStatus => (is => 'ro', isa => 'Str', required => 1);
-  has ApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
-  has RuntimeEnvironment => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has ApplicationARN => (is => 'ro', isa => Str, required => 1);
+  has ApplicationName => (is => 'ro', isa => Str, required => 1);
+  has ApplicationStatus => (is => 'ro', isa => Str, required => 1);
+  has ApplicationVersionId => (is => 'ro', isa => Int, required => 1);
+  has RuntimeEnvironment => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'ApplicationARN' => 1,
+                    'RuntimeEnvironment' => 1,
+                    'ApplicationName' => 1,
+                    'ApplicationStatus' => 1,
+                    'ApplicationVersionId' => 1
+                  },
+  'types' => {
+               'RuntimeEnvironment' => {
+                                         'type' => 'Str'
+                                       },
+               'ApplicationARN' => {
+                                     'type' => 'Str'
+                                   },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'ApplicationStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'ApplicationVersionId' => {
+                                           'type' => 'Int'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

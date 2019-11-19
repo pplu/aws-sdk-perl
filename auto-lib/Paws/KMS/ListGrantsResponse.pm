@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KMS::ListGrantsResponse;
-  use Moose;
-  has Grants => (is => 'ro', isa => 'ArrayRef[Paws::KMS::GrantListEntry]');
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Truncated => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::KMS::Types qw/KMS_GrantListEntry/;
+  has Grants => (is => 'ro', isa => ArrayRef[KMS_GrantListEntry]);
+  has NextMarker => (is => 'ro', isa => Str);
+  has Truncated => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Truncated' => {
+                                'type' => 'Bool'
+                              },
+               'Grants' => {
+                             'class' => 'Paws::KMS::GrantListEntry',
+                             'type' => 'ArrayRef[KMS_GrantListEntry]'
+                           },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::KMS::ListGrantsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Grants => ArrayRef[L<Paws::KMS::GrantListEntry>]
+=head2 Grants => ArrayRef[KMS_GrantListEntry]
 
 A list of grants.
 

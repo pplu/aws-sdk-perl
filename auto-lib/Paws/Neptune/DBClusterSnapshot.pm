@@ -1,25 +1,102 @@
+# Generated from default/object.tt
 package Paws::Neptune::DBClusterSnapshot;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
-  has ClusterCreateTime => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has DBClusterSnapshotArn => (is => 'ro', isa => 'Str');
-  has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has PercentProgress => (is => 'ro', isa => 'Int');
-  has Port => (is => 'ro', isa => 'Int');
-  has SnapshotCreateTime => (is => 'ro', isa => 'Str');
-  has SnapshotType => (is => 'ro', isa => 'Str');
-  has SourceDBClusterSnapshotArn => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Undef ArrayRef Str Bool/;
+  use Paws::Neptune::Types qw//;
+  has AllocatedStorage => (is => 'ro', isa => Int);
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ClusterCreateTime => (is => 'ro', isa => Str);
+  has DBClusterIdentifier => (is => 'ro', isa => Str);
+  has DBClusterSnapshotArn => (is => 'ro', isa => Str);
+  has DBClusterSnapshotIdentifier => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => Bool);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LicenseModel => (is => 'ro', isa => Str);
+  has MasterUsername => (is => 'ro', isa => Str);
+  has PercentProgress => (is => 'ro', isa => Int);
+  has Port => (is => 'ro', isa => Int);
+  has SnapshotCreateTime => (is => 'ro', isa => Str);
+  has SnapshotType => (is => 'ro', isa => Str);
+  has SourceDBClusterSnapshotArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StorageEncrypted => (is => 'ro', isa => Bool);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'AvailabilityZones' => 'AvailabilityZone'
+                     },
+  'types' => {
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'PercentProgress' => {
+                                      'type' => 'Int'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SourceDBClusterSnapshotArn' => {
+                                                 'type' => 'Str'
+                                               },
+               'ClusterCreateTime' => {
+                                        'type' => 'Str'
+                                      },
+               'DBClusterSnapshotIdentifier' => {
+                                                  'type' => 'Str'
+                                                },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'SnapshotCreateTime' => {
+                                         'type' => 'Str'
+                                       },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'SnapshotType' => {
+                                   'type' => 'Str'
+                                 },
+               'IAMDatabaseAuthenticationEnabled' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'DBClusterSnapshotArn' => {
+                                           'type' => 'Str'
+                                         },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Port' => {
+                           'type' => 'Int'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::RedShift::ClusterParameterGroup;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has ParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has ParameterGroupName => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Tag/;
+  has Description => (is => 'ro', isa => Str);
+  has ParameterGroupFamily => (is => 'ro', isa => Str);
+  has ParameterGroupName => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'Tag'
+                     },
+  'types' => {
+               'ParameterGroupName' => {
+                                         'type' => 'Str'
+                                       },
+               'ParameterGroupFamily' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'type' => 'ArrayRef[RedShift_Tag]',
+                           'class' => 'Paws::RedShift::Tag'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +85,7 @@ parameter group is compatible with.
   The name of the cluster parameter group.
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
   The list of tags for the cluster parameter group.
 

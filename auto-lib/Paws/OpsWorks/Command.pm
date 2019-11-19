@@ -1,15 +1,59 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::Command;
-  use Moose;
-  has AcknowledgedAt => (is => 'ro', isa => 'Str');
-  has CommandId => (is => 'ro', isa => 'Str');
-  has CompletedAt => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has DeploymentId => (is => 'ro', isa => 'Str');
-  has ExitCode => (is => 'ro', isa => 'Int');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has LogUrl => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::OpsWorks::Types qw//;
+  has AcknowledgedAt => (is => 'ro', isa => Str);
+  has CommandId => (is => 'ro', isa => Str);
+  has CompletedAt => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DeploymentId => (is => 'ro', isa => Str);
+  has ExitCode => (is => 'ro', isa => Int);
+  has InstanceId => (is => 'ro', isa => Str);
+  has LogUrl => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CommandId' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'LogUrl' => {
+                             'type' => 'Str'
+                           },
+               'CompletedAt' => {
+                                  'type' => 'Str'
+                                },
+               'ExitCode' => {
+                               'type' => 'Int'
+                             },
+               'AcknowledgedAt' => {
+                                     'type' => 'Str'
+                                   },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

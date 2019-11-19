@@ -1,16 +1,47 @@
 
 package Paws::ApiGateway::GetTags;
-  use Moose;
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource_arn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ApiGateway::Types qw//;
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Position => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetTags');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tags/{resource_arn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Tags');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetTags');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tags/{resource_arn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::Tags');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'ResourceArn' => 'resource_arn'
+                  },
+  'ParamInQuery' => {
+                      'Position' => 'position',
+                      'Limit' => 'limit'
+                    },
+  'IsRequired' => {
+                    'ResourceArn' => 1
+                  },
+  'types' => {
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'Position' => {
+                               'type' => 'Str'
+                             },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

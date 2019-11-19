@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::Forecast::Statistics;
-  use Moose;
-  has Avg => (is => 'ro', isa => 'Num');
-  has Count => (is => 'ro', isa => 'Int');
-  has CountDistinct => (is => 'ro', isa => 'Int');
-  has CountNan => (is => 'ro', isa => 'Int');
-  has CountNull => (is => 'ro', isa => 'Int');
-  has Max => (is => 'ro', isa => 'Str');
-  has Min => (is => 'ro', isa => 'Str');
-  has Stddev => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num Int Str/;
+  use Paws::Forecast::Types qw//;
+  has Avg => (is => 'ro', isa => Num);
+  has Count => (is => 'ro', isa => Int);
+  has CountDistinct => (is => 'ro', isa => Int);
+  has CountNan => (is => 'ro', isa => Int);
+  has CountNull => (is => 'ro', isa => Int);
+  has Max => (is => 'ro', isa => Str);
+  has Min => (is => 'ro', isa => Str);
+  has Stddev => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CountNull' => {
+                                'type' => 'Int'
+                              },
+               'CountDistinct' => {
+                                    'type' => 'Int'
+                                  },
+               'Stddev' => {
+                             'type' => 'Num'
+                           },
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'Min' => {
+                          'type' => 'Str'
+                        },
+               'CountNan' => {
+                               'type' => 'Int'
+                             },
+               'Max' => {
+                          'type' => 'Str'
+                        },
+               'Avg' => {
+                          'type' => 'Num'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

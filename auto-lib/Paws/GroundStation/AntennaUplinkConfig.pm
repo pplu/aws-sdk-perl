@@ -1,7 +1,37 @@
+# Generated from default/object.tt
 package Paws::GroundStation::AntennaUplinkConfig;
-  use Moose;
-  has SpectrumConfig => (is => 'ro', isa => 'Paws::GroundStation::UplinkSpectrumConfig', request_name => 'spectrumConfig', traits => ['NameInRequest'], required => 1);
-  has TargetEirp => (is => 'ro', isa => 'Paws::GroundStation::Eirp', request_name => 'targetEirp', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::GroundStation::Types qw/GroundStation_Eirp GroundStation_UplinkSpectrumConfig/;
+  has SpectrumConfig => (is => 'ro', isa => GroundStation_UplinkSpectrumConfig, required => 1);
+  has TargetEirp => (is => 'ro', isa => GroundStation_Eirp, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'TargetEirp' => 'targetEirp',
+                       'SpectrumConfig' => 'spectrumConfig'
+                     },
+  'IsRequired' => {
+                    'SpectrumConfig' => 1,
+                    'TargetEirp' => 1
+                  },
+  'types' => {
+               'SpectrumConfig' => {
+                                     'type' => 'GroundStation_UplinkSpectrumConfig',
+                                     'class' => 'Paws::GroundStation::UplinkSpectrumConfig'
+                                   },
+               'TargetEirp' => {
+                                 'class' => 'Paws::GroundStation::Eirp',
+                                 'type' => 'GroundStation_Eirp'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +67,12 @@ Information about the uplink C<Config> of an antenna.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SpectrumConfig => L<Paws::GroundStation::UplinkSpectrumConfig>
+=head2 B<REQUIRED> SpectrumConfig => GroundStation_UplinkSpectrumConfig
 
   Information about the uplink spectral C<Config>.
 
 
-=head2 B<REQUIRED> TargetEirp => L<Paws::GroundStation::Eirp>
+=head2 B<REQUIRED> TargetEirp => GroundStation_Eirp
 
   EIRP of the target.
 

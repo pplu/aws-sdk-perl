@@ -1,14 +1,47 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::LoggingStatus;
-  use Moose;
-  has BucketName => (is => 'ro', isa => 'Str');
-  has LastFailureMessage => (is => 'ro', isa => 'Str');
-  has LastFailureTime => (is => 'ro', isa => 'Str');
-  has LastSuccessfulDeliveryTime => (is => 'ro', isa => 'Str');
-  has LoggingEnabled => (is => 'ro', isa => 'Bool');
-  has S3KeyPrefix => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::RedShift::Types qw//;
+  has BucketName => (is => 'ro', isa => Str);
+  has LastFailureMessage => (is => 'ro', isa => Str);
+  has LastFailureTime => (is => 'ro', isa => Str);
+  has LastSuccessfulDeliveryTime => (is => 'ro', isa => Str);
+  has LoggingEnabled => (is => 'ro', isa => Bool);
+  has S3KeyPrefix => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastFailureTime' => {
+                                      'type' => 'Str'
+                                    },
+               'LastFailureMessage' => {
+                                         'type' => 'Str'
+                                       },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'LoggingEnabled' => {
+                                     'type' => 'Bool'
+                                   },
+               'LastSuccessfulDeliveryTime' => {
+                                                 'type' => 'Str'
+                                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'S3KeyPrefix' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

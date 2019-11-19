@@ -1,19 +1,86 @@
+# Generated from default/object.tt
 package Paws::AutoScalingPlans::ScalingInstruction;
-  use Moose;
-  has CustomizedLoadMetricSpecification => (is => 'ro', isa => 'Paws::AutoScalingPlans::CustomizedLoadMetricSpecification');
-  has DisableDynamicScaling => (is => 'ro', isa => 'Bool');
-  has MaxCapacity => (is => 'ro', isa => 'Int', required => 1);
-  has MinCapacity => (is => 'ro', isa => 'Int', required => 1);
-  has PredefinedLoadMetricSpecification => (is => 'ro', isa => 'Paws::AutoScalingPlans::PredefinedLoadMetricSpecification');
-  has PredictiveScalingMaxCapacityBehavior => (is => 'ro', isa => 'Str');
-  has PredictiveScalingMaxCapacityBuffer => (is => 'ro', isa => 'Int');
-  has PredictiveScalingMode => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
-  has ScalingPolicyUpdateBehavior => (is => 'ro', isa => 'Str');
-  has ScheduledActionBufferTime => (is => 'ro', isa => 'Int');
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
-  has TargetTrackingConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::AutoScalingPlans::TargetTrackingConfiguration]', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Int Str ArrayRef/;
+  use Paws::AutoScalingPlans::Types qw/AutoScalingPlans_CustomizedLoadMetricSpecification AutoScalingPlans_TargetTrackingConfiguration AutoScalingPlans_PredefinedLoadMetricSpecification/;
+  has CustomizedLoadMetricSpecification => (is => 'ro', isa => AutoScalingPlans_CustomizedLoadMetricSpecification);
+  has DisableDynamicScaling => (is => 'ro', isa => Bool);
+  has MaxCapacity => (is => 'ro', isa => Int, required => 1);
+  has MinCapacity => (is => 'ro', isa => Int, required => 1);
+  has PredefinedLoadMetricSpecification => (is => 'ro', isa => AutoScalingPlans_PredefinedLoadMetricSpecification);
+  has PredictiveScalingMaxCapacityBehavior => (is => 'ro', isa => Str);
+  has PredictiveScalingMaxCapacityBuffer => (is => 'ro', isa => Int);
+  has PredictiveScalingMode => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str, required => 1);
+  has ScalableDimension => (is => 'ro', isa => Str, required => 1);
+  has ScalingPolicyUpdateBehavior => (is => 'ro', isa => Str);
+  has ScheduledActionBufferTime => (is => 'ro', isa => Int);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1);
+  has TargetTrackingConfigurations => (is => 'ro', isa => ArrayRef[AutoScalingPlans_TargetTrackingConfiguration], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'PredictiveScalingMaxCapacityBehavior' => {
+                                                           'type' => 'Str'
+                                                         },
+               'PredefinedLoadMetricSpecification' => {
+                                                        'type' => 'AutoScalingPlans_PredefinedLoadMetricSpecification',
+                                                        'class' => 'Paws::AutoScalingPlans::PredefinedLoadMetricSpecification'
+                                                      },
+               'MaxCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'PredictiveScalingMaxCapacityBuffer' => {
+                                                         'type' => 'Int'
+                                                       },
+               'MinCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'DisableDynamicScaling' => {
+                                            'type' => 'Bool'
+                                          },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ScheduledActionBufferTime' => {
+                                                'type' => 'Int'
+                                              },
+               'TargetTrackingConfigurations' => {
+                                                   'type' => 'ArrayRef[AutoScalingPlans_TargetTrackingConfiguration]',
+                                                   'class' => 'Paws::AutoScalingPlans::TargetTrackingConfiguration'
+                                                 },
+               'ScalingPolicyUpdateBehavior' => {
+                                                  'type' => 'Str'
+                                                },
+               'ScalableDimension' => {
+                                        'type' => 'Str'
+                                      },
+               'CustomizedLoadMetricSpecification' => {
+                                                        'class' => 'Paws::AutoScalingPlans::CustomizedLoadMetricSpecification',
+                                                        'type' => 'AutoScalingPlans_CustomizedLoadMetricSpecification'
+                                                      },
+               'PredictiveScalingMode' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'MinCapacity' => 1,
+                    'TargetTrackingConfigurations' => 1,
+                    'MaxCapacity' => 1,
+                    'ScalableDimension' => 1,
+                    'ServiceNamespace' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +143,7 @@ For more information, see Getting Started with AWS Auto Scaling
 =head1 ATTRIBUTES
 
 
-=head2 CustomizedLoadMetricSpecification => L<Paws::AutoScalingPlans::CustomizedLoadMetricSpecification>
+=head2 CustomizedLoadMetricSpecification => AutoScalingPlans_CustomizedLoadMetricSpecification
 
   The customized load metric to use for predictive scaling. This
 parameter or a B<PredefinedLoadMetricSpecification> is required when
@@ -104,7 +171,7 @@ B<PredictiveScalingMaxCapacityBehavior>.
   The minimum capacity of the resource.
 
 
-=head2 PredefinedLoadMetricSpecification => L<Paws::AutoScalingPlans::PredefinedLoadMetricSpecification>
+=head2 PredefinedLoadMetricSpecification => AutoScalingPlans_PredefinedLoadMetricSpecification
 
   The predefined load metric to use for predictive scaling. This
 parameter or a B<CustomizedLoadMetricSpecification> is required when
@@ -303,7 +370,7 @@ Only valid when configuring predictive scaling.
   The namespace of the AWS service.
 
 
-=head2 B<REQUIRED> TargetTrackingConfigurations => ArrayRef[L<Paws::AutoScalingPlans::TargetTrackingConfiguration>]
+=head2 B<REQUIRED> TargetTrackingConfigurations => ArrayRef[AutoScalingPlans_TargetTrackingConfiguration]
 
   The structure that defines new target tracking configurations (up to
 10). Each of these structures includes a specific scaling metric and a

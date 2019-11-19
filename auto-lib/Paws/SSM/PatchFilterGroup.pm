@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::SSM::PatchFilterGroup;
-  use Moose;
-  has PatchFilters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchFilter]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::SSM::Types qw/SSM_PatchFilter/;
+  has PatchFilters => (is => 'ro', isa => ArrayRef[SSM_PatchFilter], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PatchFilters' => {
+                                   'class' => 'Paws::SSM::PatchFilter',
+                                   'type' => 'ArrayRef[SSM_PatchFilter]'
+                                 }
+             },
+  'IsRequired' => {
+                    'PatchFilters' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ A set of patch filters, typically used for approval rules.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> PatchFilters => ArrayRef[L<Paws::SSM::PatchFilter>]
+=head2 B<REQUIRED> PatchFilters => ArrayRef[SSM_PatchFilter]
 
   The set of patch filters that make up the group.
 

@@ -1,9 +1,30 @@
 
 package Paws::ServerlessRepo::PutApplicationPolicyResponse;
-  use Moose;
-  has Statements => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationPolicyStatement]', traits => ['NameInRequest'], request_name => 'statements');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServerlessRepo::Types qw/ServerlessRepo_ApplicationPolicyStatement/;
+  has Statements => (is => 'ro', isa => ArrayRef[ServerlessRepo_ApplicationPolicyStatement]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Statements' => 'statements'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Statements' => {
+                                 'type' => 'ArrayRef[ServerlessRepo_ApplicationPolicyStatement]',
+                                 'class' => 'Paws::ServerlessRepo::ApplicationPolicyStatement'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::ServerlessRepo::PutApplicationPolicyResponse
 =head1 ATTRIBUTES
 
 
-=head2 Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]
+=head2 Statements => ArrayRef[ServerlessRepo_ApplicationPolicyStatement]
 
 An array of policy statements applied to the application.
 

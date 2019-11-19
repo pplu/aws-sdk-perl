@@ -1,43 +1,212 @@
+# Generated from default/object.tt
 package Paws::MediaLive::H264Settings;
-  use Moose;
-  has AdaptiveQuantization => (is => 'ro', isa => 'Str', request_name => 'adaptiveQuantization', traits => ['NameInRequest']);
-  has AfdSignaling => (is => 'ro', isa => 'Str', request_name => 'afdSignaling', traits => ['NameInRequest']);
-  has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
-  has BufFillPct => (is => 'ro', isa => 'Int', request_name => 'bufFillPct', traits => ['NameInRequest']);
-  has BufSize => (is => 'ro', isa => 'Int', request_name => 'bufSize', traits => ['NameInRequest']);
-  has ColorMetadata => (is => 'ro', isa => 'Str', request_name => 'colorMetadata', traits => ['NameInRequest']);
-  has ColorSpaceSettings => (is => 'ro', isa => 'Paws::MediaLive::H264ColorSpaceSettings', request_name => 'colorSpaceSettings', traits => ['NameInRequest']);
-  has EntropyEncoding => (is => 'ro', isa => 'Str', request_name => 'entropyEncoding', traits => ['NameInRequest']);
-  has FixedAfd => (is => 'ro', isa => 'Str', request_name => 'fixedAfd', traits => ['NameInRequest']);
-  has FlickerAq => (is => 'ro', isa => 'Str', request_name => 'flickerAq', traits => ['NameInRequest']);
-  has FramerateControl => (is => 'ro', isa => 'Str', request_name => 'framerateControl', traits => ['NameInRequest']);
-  has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest']);
-  has FramerateNumerator => (is => 'ro', isa => 'Int', request_name => 'framerateNumerator', traits => ['NameInRequest']);
-  has GopBReference => (is => 'ro', isa => 'Str', request_name => 'gopBReference', traits => ['NameInRequest']);
-  has GopClosedCadence => (is => 'ro', isa => 'Int', request_name => 'gopClosedCadence', traits => ['NameInRequest']);
-  has GopNumBFrames => (is => 'ro', isa => 'Int', request_name => 'gopNumBFrames', traits => ['NameInRequest']);
-  has GopSize => (is => 'ro', isa => 'Num', request_name => 'gopSize', traits => ['NameInRequest']);
-  has GopSizeUnits => (is => 'ro', isa => 'Str', request_name => 'gopSizeUnits', traits => ['NameInRequest']);
-  has Level => (is => 'ro', isa => 'Str', request_name => 'level', traits => ['NameInRequest']);
-  has LookAheadRateControl => (is => 'ro', isa => 'Str', request_name => 'lookAheadRateControl', traits => ['NameInRequest']);
-  has MaxBitrate => (is => 'ro', isa => 'Int', request_name => 'maxBitrate', traits => ['NameInRequest']);
-  has MinIInterval => (is => 'ro', isa => 'Int', request_name => 'minIInterval', traits => ['NameInRequest']);
-  has NumRefFrames => (is => 'ro', isa => 'Int', request_name => 'numRefFrames', traits => ['NameInRequest']);
-  has ParControl => (is => 'ro', isa => 'Str', request_name => 'parControl', traits => ['NameInRequest']);
-  has ParDenominator => (is => 'ro', isa => 'Int', request_name => 'parDenominator', traits => ['NameInRequest']);
-  has ParNumerator => (is => 'ro', isa => 'Int', request_name => 'parNumerator', traits => ['NameInRequest']);
-  has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
-  has QvbrQualityLevel => (is => 'ro', isa => 'Int', request_name => 'qvbrQualityLevel', traits => ['NameInRequest']);
-  has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
-  has ScanType => (is => 'ro', isa => 'Str', request_name => 'scanType', traits => ['NameInRequest']);
-  has SceneChangeDetect => (is => 'ro', isa => 'Str', request_name => 'sceneChangeDetect', traits => ['NameInRequest']);
-  has Slices => (is => 'ro', isa => 'Int', request_name => 'slices', traits => ['NameInRequest']);
-  has Softness => (is => 'ro', isa => 'Int', request_name => 'softness', traits => ['NameInRequest']);
-  has SpatialAq => (is => 'ro', isa => 'Str', request_name => 'spatialAq', traits => ['NameInRequest']);
-  has SubgopLength => (is => 'ro', isa => 'Str', request_name => 'subgopLength', traits => ['NameInRequest']);
-  has Syntax => (is => 'ro', isa => 'Str', request_name => 'syntax', traits => ['NameInRequest']);
-  has TemporalAq => (is => 'ro', isa => 'Str', request_name => 'temporalAq', traits => ['NameInRequest']);
-  has TimecodeInsertion => (is => 'ro', isa => 'Str', request_name => 'timecodeInsertion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::MediaLive::Types qw/MediaLive_H264ColorSpaceSettings/;
+  has AdaptiveQuantization => (is => 'ro', isa => Str);
+  has AfdSignaling => (is => 'ro', isa => Str);
+  has Bitrate => (is => 'ro', isa => Int);
+  has BufFillPct => (is => 'ro', isa => Int);
+  has BufSize => (is => 'ro', isa => Int);
+  has ColorMetadata => (is => 'ro', isa => Str);
+  has ColorSpaceSettings => (is => 'ro', isa => MediaLive_H264ColorSpaceSettings);
+  has EntropyEncoding => (is => 'ro', isa => Str);
+  has FixedAfd => (is => 'ro', isa => Str);
+  has FlickerAq => (is => 'ro', isa => Str);
+  has FramerateControl => (is => 'ro', isa => Str);
+  has FramerateDenominator => (is => 'ro', isa => Int);
+  has FramerateNumerator => (is => 'ro', isa => Int);
+  has GopBReference => (is => 'ro', isa => Str);
+  has GopClosedCadence => (is => 'ro', isa => Int);
+  has GopNumBFrames => (is => 'ro', isa => Int);
+  has GopSize => (is => 'ro', isa => Num);
+  has GopSizeUnits => (is => 'ro', isa => Str);
+  has Level => (is => 'ro', isa => Str);
+  has LookAheadRateControl => (is => 'ro', isa => Str);
+  has MaxBitrate => (is => 'ro', isa => Int);
+  has MinIInterval => (is => 'ro', isa => Int);
+  has NumRefFrames => (is => 'ro', isa => Int);
+  has ParControl => (is => 'ro', isa => Str);
+  has ParDenominator => (is => 'ro', isa => Int);
+  has ParNumerator => (is => 'ro', isa => Int);
+  has Profile => (is => 'ro', isa => Str);
+  has QvbrQualityLevel => (is => 'ro', isa => Int);
+  has RateControlMode => (is => 'ro', isa => Str);
+  has ScanType => (is => 'ro', isa => Str);
+  has SceneChangeDetect => (is => 'ro', isa => Str);
+  has Slices => (is => 'ro', isa => Int);
+  has Softness => (is => 'ro', isa => Int);
+  has SpatialAq => (is => 'ro', isa => Str);
+  has SubgopLength => (is => 'ro', isa => Str);
+  has Syntax => (is => 'ro', isa => Str);
+  has TemporalAq => (is => 'ro', isa => Str);
+  has TimecodeInsertion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumRefFrames' => {
+                                   'type' => 'Int'
+                                 },
+               'ColorMetadata' => {
+                                    'type' => 'Str'
+                                  },
+               'LookAheadRateControl' => {
+                                           'type' => 'Str'
+                                         },
+               'GopBReference' => {
+                                    'type' => 'Str'
+                                  },
+               'BufFillPct' => {
+                                 'type' => 'Int'
+                               },
+               'FramerateDenominator' => {
+                                           'type' => 'Int'
+                                         },
+               'SubgopLength' => {
+                                   'type' => 'Str'
+                                 },
+               'ColorSpaceSettings' => {
+                                         'type' => 'MediaLive_H264ColorSpaceSettings',
+                                         'class' => 'Paws::MediaLive::H264ColorSpaceSettings'
+                                       },
+               'MaxBitrate' => {
+                                 'type' => 'Int'
+                               },
+               'Softness' => {
+                               'type' => 'Int'
+                             },
+               'ParDenominator' => {
+                                     'type' => 'Int'
+                                   },
+               'Slices' => {
+                             'type' => 'Int'
+                           },
+               'Bitrate' => {
+                              'type' => 'Int'
+                            },
+               'GopNumBFrames' => {
+                                    'type' => 'Int'
+                                  },
+               'ScanType' => {
+                               'type' => 'Str'
+                             },
+               'Profile' => {
+                              'type' => 'Str'
+                            },
+               'RateControlMode' => {
+                                      'type' => 'Str'
+                                    },
+               'TemporalAq' => {
+                                 'type' => 'Str'
+                               },
+               'GopClosedCadence' => {
+                                       'type' => 'Int'
+                                     },
+               'AdaptiveQuantization' => {
+                                           'type' => 'Str'
+                                         },
+               'GopSize' => {
+                              'type' => 'Num'
+                            },
+               'QvbrQualityLevel' => {
+                                       'type' => 'Int'
+                                     },
+               'GopSizeUnits' => {
+                                   'type' => 'Str'
+                                 },
+               'BufSize' => {
+                              'type' => 'Int'
+                            },
+               'Syntax' => {
+                             'type' => 'Str'
+                           },
+               'EntropyEncoding' => {
+                                      'type' => 'Str'
+                                    },
+               'MinIInterval' => {
+                                   'type' => 'Int'
+                                 },
+               'SpatialAq' => {
+                                'type' => 'Str'
+                              },
+               'SceneChangeDetect' => {
+                                        'type' => 'Str'
+                                      },
+               'FixedAfd' => {
+                               'type' => 'Str'
+                             },
+               'ParNumerator' => {
+                                   'type' => 'Int'
+                                 },
+               'FramerateNumerator' => {
+                                         'type' => 'Int'
+                                       },
+               'TimecodeInsertion' => {
+                                        'type' => 'Str'
+                                      },
+               'Level' => {
+                            'type' => 'Str'
+                          },
+               'FlickerAq' => {
+                                'type' => 'Str'
+                              },
+               'FramerateControl' => {
+                                       'type' => 'Str'
+                                     },
+               'ParControl' => {
+                                 'type' => 'Str'
+                               },
+               'AfdSignaling' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'SceneChangeDetect' => 'sceneChangeDetect',
+                       'SpatialAq' => 'spatialAq',
+                       'MinIInterval' => 'minIInterval',
+                       'EntropyEncoding' => 'entropyEncoding',
+                       'Syntax' => 'syntax',
+                       'BufSize' => 'bufSize',
+                       'QvbrQualityLevel' => 'qvbrQualityLevel',
+                       'GopSizeUnits' => 'gopSizeUnits',
+                       'GopSize' => 'gopSize',
+                       'GopClosedCadence' => 'gopClosedCadence',
+                       'AdaptiveQuantization' => 'adaptiveQuantization',
+                       'AfdSignaling' => 'afdSignaling',
+                       'ParControl' => 'parControl',
+                       'Level' => 'level',
+                       'FramerateControl' => 'framerateControl',
+                       'FlickerAq' => 'flickerAq',
+                       'TimecodeInsertion' => 'timecodeInsertion',
+                       'FramerateNumerator' => 'framerateNumerator',
+                       'ParNumerator' => 'parNumerator',
+                       'FixedAfd' => 'fixedAfd',
+                       'ParDenominator' => 'parDenominator',
+                       'Softness' => 'softness',
+                       'MaxBitrate' => 'maxBitrate',
+                       'SubgopLength' => 'subgopLength',
+                       'ColorSpaceSettings' => 'colorSpaceSettings',
+                       'BufFillPct' => 'bufFillPct',
+                       'FramerateDenominator' => 'framerateDenominator',
+                       'GopBReference' => 'gopBReference',
+                       'LookAheadRateControl' => 'lookAheadRateControl',
+                       'ColorMetadata' => 'colorMetadata',
+                       'NumRefFrames' => 'numRefFrames',
+                       'TemporalAq' => 'temporalAq',
+                       'Profile' => 'profile',
+                       'RateControlMode' => 'rateControlMode',
+                       'GopNumBFrames' => 'gopNumBFrames',
+                       'ScanType' => 'scanType',
+                       'Bitrate' => 'bitrate',
+                       'Slices' => 'slices'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -112,7 +281,7 @@ model).
   Includes colorspace metadata in the output.
 
 
-=head2 ColorSpaceSettings => L<Paws::MediaLive::H264ColorSpaceSettings>
+=head2 ColorSpaceSettings => MediaLive_H264ColorSpaceSettings
 
   Color Space settings
 

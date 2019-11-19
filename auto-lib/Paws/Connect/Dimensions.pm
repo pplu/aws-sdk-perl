@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Connect::Dimensions;
-  use Moose;
-  has Channel => (is => 'ro', isa => 'Str');
-  has Queue => (is => 'ro', isa => 'Paws::Connect::QueueReference');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Connect::Types qw/Connect_QueueReference/;
+  has Channel => (is => 'ro', isa => Str);
+  has Queue => (is => 'ro', isa => Connect_QueueReference);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Queue' => {
+                            'type' => 'Connect_QueueReference',
+                            'class' => 'Paws::Connect::QueueReference'
+                          },
+               'Channel' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Contains information about the dimensions for a set of metrics.
   The channel used for grouping and filters.
 
 
-=head2 Queue => L<Paws::Connect::QueueReference>
+=head2 Queue => Connect_QueueReference
 
   Information about the queue for which metrics are returned.
 

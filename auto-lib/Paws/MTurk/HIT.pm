@@ -1,26 +1,104 @@
+# Generated from default/object.tt
 package Paws::MTurk::HIT;
-  use Moose;
-  has AssignmentDurationInSeconds => (is => 'ro', isa => 'Int');
-  has AutoApprovalDelayInSeconds => (is => 'ro', isa => 'Int');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Expiration => (is => 'ro', isa => 'Str');
-  has HITGroupId => (is => 'ro', isa => 'Str');
-  has HITId => (is => 'ro', isa => 'Str');
-  has HITLayoutId => (is => 'ro', isa => 'Str');
-  has HITReviewStatus => (is => 'ro', isa => 'Str');
-  has HITStatus => (is => 'ro', isa => 'Str');
-  has HITTypeId => (is => 'ro', isa => 'Str');
-  has Keywords => (is => 'ro', isa => 'Str');
-  has MaxAssignments => (is => 'ro', isa => 'Int');
-  has NumberOfAssignmentsAvailable => (is => 'ro', isa => 'Int');
-  has NumberOfAssignmentsCompleted => (is => 'ro', isa => 'Int');
-  has NumberOfAssignmentsPending => (is => 'ro', isa => 'Int');
-  has QualificationRequirements => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::QualificationRequirement]');
-  has Question => (is => 'ro', isa => 'Str');
-  has RequesterAnnotation => (is => 'ro', isa => 'Str');
-  has Reward => (is => 'ro', isa => 'Str');
-  has Title => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef/;
+  use Paws::MTurk::Types qw/MTurk_QualificationRequirement/;
+  has AssignmentDurationInSeconds => (is => 'ro', isa => Int);
+  has AutoApprovalDelayInSeconds => (is => 'ro', isa => Int);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Expiration => (is => 'ro', isa => Str);
+  has HITGroupId => (is => 'ro', isa => Str);
+  has HITId => (is => 'ro', isa => Str);
+  has HITLayoutId => (is => 'ro', isa => Str);
+  has HITReviewStatus => (is => 'ro', isa => Str);
+  has HITStatus => (is => 'ro', isa => Str);
+  has HITTypeId => (is => 'ro', isa => Str);
+  has Keywords => (is => 'ro', isa => Str);
+  has MaxAssignments => (is => 'ro', isa => Int);
+  has NumberOfAssignmentsAvailable => (is => 'ro', isa => Int);
+  has NumberOfAssignmentsCompleted => (is => 'ro', isa => Int);
+  has NumberOfAssignmentsPending => (is => 'ro', isa => Int);
+  has QualificationRequirements => (is => 'ro', isa => ArrayRef[MTurk_QualificationRequirement]);
+  has Question => (is => 'ro', isa => Str);
+  has RequesterAnnotation => (is => 'ro', isa => Str);
+  has Reward => (is => 'ro', isa => Str);
+  has Title => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HITGroupId' => {
+                                 'type' => 'Str'
+                               },
+               'HITId' => {
+                            'type' => 'Str'
+                          },
+               'NumberOfAssignmentsCompleted' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Expiration' => {
+                                 'type' => 'Str'
+                               },
+               'MaxAssignments' => {
+                                     'type' => 'Int'
+                                   },
+               'AutoApprovalDelayInSeconds' => {
+                                                 'type' => 'Int'
+                                               },
+               'RequesterAnnotation' => {
+                                          'type' => 'Str'
+                                        },
+               'NumberOfAssignmentsPending' => {
+                                                 'type' => 'Int'
+                                               },
+               'AssignmentDurationInSeconds' => {
+                                                  'type' => 'Int'
+                                                },
+               'HITReviewStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'Question' => {
+                               'type' => 'Str'
+                             },
+               'Keywords' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'HITStatus' => {
+                                'type' => 'Str'
+                              },
+               'HITLayoutId' => {
+                                  'type' => 'Str'
+                                },
+               'HITTypeId' => {
+                                'type' => 'Str'
+                              },
+               'QualificationRequirements' => {
+                                                'type' => 'ArrayRef[MTurk_QualificationRequirement]',
+                                                'class' => 'Paws::MTurk::QualificationRequirement'
+                                              },
+               'NumberOfAssignmentsAvailable' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Reward' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -151,7 +229,7 @@ been accepted by Workers, but have not yet been submitted, returned, or
 abandoned.
 
 
-=head2 QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>]
+=head2 QualificationRequirements => ArrayRef[MTurk_QualificationRequirement]
 
   Conditions that a Worker's Qualifications must meet in order to accept
 the HIT. A HIT can have between zero and ten Qualification

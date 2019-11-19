@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::InputLogEvent;
-  use Moose;
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest'], required => 1);
-  has Timestamp => (is => 'ro', isa => 'Int', request_name => 'timestamp', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has Message => (is => 'ro', isa => Str, required => 1);
+  has Timestamp => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Timestamp' => {
+                                'type' => 'Int'
+                              }
+             },
+  'IsRequired' => {
+                    'Timestamp' => 1,
+                    'Message' => 1
+                  },
+  'NameInRequest' => {
+                       'Timestamp' => 'timestamp',
+                       'Message' => 'message'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

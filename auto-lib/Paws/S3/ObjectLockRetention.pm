@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::S3::ObjectLockRetention;
-  use Moose;
-  has Mode => (is => 'ro', isa => 'Str');
-  has RetainUntilDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has Mode => (is => 'ro', isa => Str);
+  has RetainUntilDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Mode' => {
+                           'type' => 'Str'
+                         },
+               'RetainUntilDate' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

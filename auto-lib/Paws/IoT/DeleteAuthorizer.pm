@@ -1,14 +1,35 @@
 
 package Paws::IoT::DeleteAuthorizer;
-  use Moose;
-  has AuthorizerName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizerName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has AuthorizerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAuthorizer');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/authorizer/{authorizerName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DeleteAuthorizerResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteAuthorizer');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/authorizer/{authorizerName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DeleteAuthorizerResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AuthorizerName' => 1
+                  },
+  'types' => {
+               'AuthorizerName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'ParamInURI' => {
+                    'AuthorizerName' => 'authorizerName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

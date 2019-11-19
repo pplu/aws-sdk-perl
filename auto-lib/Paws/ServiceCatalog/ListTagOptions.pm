@@ -1,15 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::ListTagOptions;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'Paws::ServiceCatalog::ListTagOptionsFilters');
-  has PageSize => (is => 'ro', isa => 'Int');
-  has PageToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ListTagOptionsFilters/;
+  has Filters => (is => 'ro', isa => ServiceCatalog_ListTagOptionsFilters, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has PageToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTagOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::ListTagOptionsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTagOptions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::ListTagOptionsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PageToken' => {
+                                'type' => 'Str'
+                              },
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'Filters' => {
+                              'class' => 'Paws::ServiceCatalog::ListTagOptionsFilters',
+                              'type' => 'ServiceCatalog_ListTagOptionsFilters'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +74,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 =head1 ATTRIBUTES
 
 
-=head2 Filters => L<Paws::ServiceCatalog::ListTagOptionsFilters>
+=head2 Filters => ServiceCatalog_ListTagOptionsFilters
 
 The search filters. If no search filters are specified, the output
 includes all TagOptions.

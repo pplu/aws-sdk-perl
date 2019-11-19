@@ -1,12 +1,54 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::TreatmentResource;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::MessageConfiguration');
-  has Schedule => (is => 'ro', isa => 'Paws::Pinpoint::Schedule');
-  has SizePercent => (is => 'ro', isa => 'Int', required => 1);
-  has State => (is => 'ro', isa => 'Paws::Pinpoint::CampaignState');
-  has TreatmentDescription => (is => 'ro', isa => 'Str');
-  has TreatmentName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MessageConfiguration Pinpoint_Schedule Pinpoint_CampaignState/;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has MessageConfiguration => (is => 'ro', isa => Pinpoint_MessageConfiguration);
+  has Schedule => (is => 'ro', isa => Pinpoint_Schedule);
+  has SizePercent => (is => 'ro', isa => Int, required => 1);
+  has State => (is => 'ro', isa => Pinpoint_CampaignState);
+  has TreatmentDescription => (is => 'ro', isa => Str);
+  has TreatmentName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'SizePercent' => 1,
+                    'Id' => 1
+                  },
+  'types' => {
+               'Schedule' => {
+                               'type' => 'Pinpoint_Schedule',
+                               'class' => 'Paws::Pinpoint::Schedule'
+                             },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'State' => {
+                            'type' => 'Pinpoint_CampaignState',
+                            'class' => 'Paws::Pinpoint::CampaignState'
+                          },
+               'SizePercent' => {
+                                  'type' => 'Int'
+                                },
+               'MessageConfiguration' => {
+                                           'class' => 'Paws::Pinpoint::MessageConfiguration',
+                                           'type' => 'Pinpoint_MessageConfiguration'
+                                         },
+               'TreatmentName' => {
+                                    'type' => 'Str'
+                                  },
+               'TreatmentDescription' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,12 +90,12 @@ variation of a campaign that's used for A/B testing of a campaign.
   The unique identifier for the treatment.
 
 
-=head2 MessageConfiguration => L<Paws::Pinpoint::MessageConfiguration>
+=head2 MessageConfiguration => Pinpoint_MessageConfiguration
 
   The message configuration settings for the treatment.
 
 
-=head2 Schedule => L<Paws::Pinpoint::Schedule>
+=head2 Schedule => Pinpoint_Schedule
 
   The schedule settings for the treatment.
 
@@ -64,7 +106,7 @@ variation of a campaign that's used for A/B testing of a campaign.
 is sent to.
 
 
-=head2 State => L<Paws::Pinpoint::CampaignState>
+=head2 State => Pinpoint_CampaignState
 
   The status of the treatment.
 

@@ -1,15 +1,73 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::Service;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Paws::GuardDuty::Action', request_name => 'action', traits => ['NameInRequest']);
-  has Archived => (is => 'ro', isa => 'Bool', request_name => 'archived', traits => ['NameInRequest']);
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
-  has DetectorId => (is => 'ro', isa => 'Str', request_name => 'detectorId', traits => ['NameInRequest']);
-  has EventFirstSeen => (is => 'ro', isa => 'Str', request_name => 'eventFirstSeen', traits => ['NameInRequest']);
-  has EventLastSeen => (is => 'ro', isa => 'Str', request_name => 'eventLastSeen', traits => ['NameInRequest']);
-  has Evidence => (is => 'ro', isa => 'Paws::GuardDuty::Evidence', request_name => 'evidence', traits => ['NameInRequest']);
-  has ResourceRole => (is => 'ro', isa => 'Str', request_name => 'resourceRole', traits => ['NameInRequest']);
-  has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
-  has UserFeedback => (is => 'ro', isa => 'Str', request_name => 'userFeedback', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Int Str/;
+  use Paws::GuardDuty::Types qw/GuardDuty_Evidence GuardDuty_Action/;
+  has Action => (is => 'ro', isa => GuardDuty_Action);
+  has Archived => (is => 'ro', isa => Bool);
+  has Count => (is => 'ro', isa => Int);
+  has DetectorId => (is => 'ro', isa => Str);
+  has EventFirstSeen => (is => 'ro', isa => Str);
+  has EventLastSeen => (is => 'ro', isa => Str);
+  has Evidence => (is => 'ro', isa => GuardDuty_Evidence);
+  has ResourceRole => (is => 'ro', isa => Str);
+  has ServiceName => (is => 'ro', isa => Str);
+  has UserFeedback => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'EventFirstSeen' => 'eventFirstSeen',
+                       'Evidence' => 'evidence',
+                       'Archived' => 'archived',
+                       'Count' => 'count',
+                       'ServiceName' => 'serviceName',
+                       'DetectorId' => 'detectorId',
+                       'UserFeedback' => 'userFeedback',
+                       'Action' => 'action',
+                       'ResourceRole' => 'resourceRole',
+                       'EventLastSeen' => 'eventLastSeen'
+                     },
+  'types' => {
+               'EventFirstSeen' => {
+                                     'type' => 'Str'
+                                   },
+               'Evidence' => {
+                               'class' => 'Paws::GuardDuty::Evidence',
+                               'type' => 'GuardDuty_Evidence'
+                             },
+               'Archived' => {
+                               'type' => 'Bool'
+                             },
+               'ResourceRole' => {
+                                   'type' => 'Str'
+                                 },
+               'Action' => {
+                             'class' => 'Paws::GuardDuty::Action',
+                             'type' => 'GuardDuty_Action'
+                           },
+               'EventLastSeen' => {
+                                    'type' => 'Str'
+                                  },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'UserFeedback' => {
+                                   'type' => 'Str'
+                                 },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +103,7 @@ Contains additional information about the generated finding.
 =head1 ATTRIBUTES
 
 
-=head2 Action => L<Paws::GuardDuty::Action>
+=head2 Action => GuardDuty_Action
 
   Information about the activity described in a finding.
 
@@ -77,7 +135,7 @@ generate this finding.
 this finding.
 
 
-=head2 Evidence => L<Paws::GuardDuty::Evidence>
+=head2 Evidence => GuardDuty_Evidence
 
   An evidence object associated with the service.
 

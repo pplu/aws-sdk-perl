@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::Evidence;
-  use Moose;
-  has ThreatIntelligenceDetails => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::ThreatIntelligenceDetail]', request_name => 'threatIntelligenceDetails', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::GuardDuty::Types qw/GuardDuty_ThreatIntelligenceDetail/;
+  has ThreatIntelligenceDetails => (is => 'ro', isa => ArrayRef[GuardDuty_ThreatIntelligenceDetail]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThreatIntelligenceDetails' => {
+                                                'class' => 'Paws::GuardDuty::ThreatIntelligenceDetail',
+                                                'type' => 'ArrayRef[GuardDuty_ThreatIntelligenceDetail]'
+                                              }
+             },
+  'NameInRequest' => {
+                       'ThreatIntelligenceDetails' => 'threatIntelligenceDetails'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Contains information about the reason that the finding was generated.
 =head1 ATTRIBUTES
 
 
-=head2 ThreatIntelligenceDetails => ArrayRef[L<Paws::GuardDuty::ThreatIntelligenceDetail>]
+=head2 ThreatIntelligenceDetails => ArrayRef[GuardDuty_ThreatIntelligenceDetail]
 
   A list of threat intelligence details related to the evidence.
 

@@ -1,9 +1,48 @@
+# Generated from default/object.tt
 package Paws::MediaLive::UdpOutputSettings;
-  use Moose;
-  has BufferMsec => (is => 'ro', isa => 'Int', request_name => 'bufferMsec', traits => ['NameInRequest']);
-  has ContainerSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpContainerSettings', request_name => 'containerSettings', traits => ['NameInRequest'], required => 1);
-  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
-  has FecOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::FecOutputSettings', request_name => 'fecOutputSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaLive::Types qw/MediaLive_OutputLocationRef MediaLive_UdpContainerSettings MediaLive_FecOutputSettings/;
+  has BufferMsec => (is => 'ro', isa => Int);
+  has ContainerSettings => (is => 'ro', isa => MediaLive_UdpContainerSettings, required => 1);
+  has Destination => (is => 'ro', isa => MediaLive_OutputLocationRef, required => 1);
+  has FecOutputSettings => (is => 'ro', isa => MediaLive_FecOutputSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Destination' => {
+                                  'class' => 'Paws::MediaLive::OutputLocationRef',
+                                  'type' => 'MediaLive_OutputLocationRef'
+                                },
+               'FecOutputSettings' => {
+                                        'type' => 'MediaLive_FecOutputSettings',
+                                        'class' => 'Paws::MediaLive::FecOutputSettings'
+                                      },
+               'BufferMsec' => {
+                                 'type' => 'Int'
+                               },
+               'ContainerSettings' => {
+                                        'class' => 'Paws::MediaLive::UdpContainerSettings',
+                                        'type' => 'MediaLive_UdpContainerSettings'
+                                      }
+             },
+  'IsRequired' => {
+                    'Destination' => 1,
+                    'ContainerSettings' => 1
+                  },
+  'NameInRequest' => {
+                       'Destination' => 'destination',
+                       'FecOutputSettings' => 'fecOutputSettings',
+                       'BufferMsec' => 'bufferMsec',
+                       'ContainerSettings' => 'containerSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,19 +87,19 @@ clock recovery, input switching, input disruptions, picture reordering,
 etc.
 
 
-=head2 B<REQUIRED> ContainerSettings => L<Paws::MediaLive::UdpContainerSettings>
+=head2 B<REQUIRED> ContainerSettings => MediaLive_UdpContainerSettings
 
   
 
 
-=head2 B<REQUIRED> Destination => L<Paws::MediaLive::OutputLocationRef>
+=head2 B<REQUIRED> Destination => MediaLive_OutputLocationRef
 
   Destination address and port number for RTP or UDP packets. Can be
 unicast or multicast RTP or UDP (eg. rtp://239.10.10.10:5001 or
 udp://10.100.100.100:5002).
 
 
-=head2 FecOutputSettings => L<Paws::MediaLive::FecOutputSettings>
+=head2 FecOutputSettings => MediaLive_FecOutputSettings
 
   Settings for enabling and adjusting Forward Error Correction on UDP
 outputs.

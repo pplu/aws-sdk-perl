@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::DeleteDirectConnectGatewayResult;
-  use Moose;
-  has DirectConnectGateway => (is => 'ro', isa => 'Paws::DirectConnect::DirectConnectGateway', traits => ['NameInRequest'], request_name => 'directConnectGateway' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw/DirectConnect_DirectConnectGateway/;
+  has DirectConnectGateway => (is => 'ro', isa => DirectConnect_DirectConnectGateway);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DirectConnectGateway' => {
+                                           'type' => 'DirectConnect_DirectConnectGateway',
+                                           'class' => 'Paws::DirectConnect::DirectConnectGateway'
+                                         }
+             },
+  'NameInRequest' => {
+                       'DirectConnectGateway' => 'directConnectGateway'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DirectConnect::DeleteDirectConnectGatewayResult
 =head1 ATTRIBUTES
 
 
-=head2 DirectConnectGateway => L<Paws::DirectConnect::DirectConnectGateway>
+=head2 DirectConnectGateway => DirectConnect_DirectConnectGateway
 
 The Direct Connect gateway.
 

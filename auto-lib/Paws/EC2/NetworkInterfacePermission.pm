@@ -1,11 +1,49 @@
 package Paws::EC2::NetworkInterfacePermission;
-  use Moose;
-  has AwsAccountId => (is => 'ro', isa => 'Str', request_name => 'awsAccountId', traits => ['NameInRequest']);
-  has AwsService => (is => 'ro', isa => 'Str', request_name => 'awsService', traits => ['NameInRequest']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
-  has NetworkInterfacePermissionId => (is => 'ro', isa => 'Str', request_name => 'networkInterfacePermissionId', traits => ['NameInRequest']);
-  has Permission => (is => 'ro', isa => 'Str', request_name => 'permission', traits => ['NameInRequest']);
-  has PermissionState => (is => 'ro', isa => 'Paws::EC2::NetworkInterfacePermissionState', request_name => 'permissionState', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_NetworkInterfacePermissionState/;
+  has AwsAccountId => (is => 'ro', isa => Str);
+  has AwsService => (is => 'ro', isa => Str);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has NetworkInterfacePermissionId => (is => 'ro', isa => Str);
+  has Permission => (is => 'ro', isa => Str);
+  has PermissionState => (is => 'ro', isa => EC2_NetworkInterfacePermissionState);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AwsService' => {
+                                 'type' => 'Str'
+                               },
+               'NetworkInterfacePermissionId' => {
+                                                   'type' => 'Str'
+                                                 },
+               'PermissionState' => {
+                                      'type' => 'EC2_NetworkInterfacePermissionState',
+                                      'class' => 'Paws::EC2::NetworkInterfacePermissionState'
+                                    },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'AwsAccountId' => {
+                                   'type' => 'Str'
+                                 },
+               'Permission' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Permission' => 'permission',
+                       'AwsAccountId' => 'awsAccountId',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'PermissionState' => 'permissionState',
+                       'NetworkInterfacePermissionId' => 'networkInterfacePermissionId',
+                       'AwsService' => 'awsService'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +104,7 @@ This class has no description
   The type of permission.
 
 
-=head2 PermissionState => L<Paws::EC2::NetworkInterfacePermissionState>
+=head2 PermissionState => EC2_NetworkInterfacePermissionState
 
   Information about the state of the permission.
 

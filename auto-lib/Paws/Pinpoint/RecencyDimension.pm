@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::RecencyDimension;
-  use Moose;
-  has Duration => (is => 'ro', isa => 'Str', required => 1);
-  has RecencyType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has Duration => (is => 'ro', isa => Str, required => 1);
+  has RecencyType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Duration' => {
+                               'type' => 'Str'
+                             },
+               'RecencyType' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'RecencyType' => 1,
+                    'Duration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

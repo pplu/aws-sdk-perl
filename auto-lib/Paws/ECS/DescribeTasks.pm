@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::DescribeTasks;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has Include => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'include' );
-  has Tasks => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'tasks' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ECS::Types qw//;
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has Include => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Tasks => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTasks');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DescribeTasksResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTasks');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::DescribeTasksResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Cluster' => 'cluster',
+                       'Tasks' => 'tasks',
+                       'Include' => 'include'
+                     },
+  'IsRequired' => {
+                    'Tasks' => 1
+                  },
+  'types' => {
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'Tasks' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Include' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

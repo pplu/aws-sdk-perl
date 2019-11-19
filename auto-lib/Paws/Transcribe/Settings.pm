@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Transcribe::Settings;
-  use Moose;
-  has ChannelIdentification => (is => 'ro', isa => 'Bool');
-  has MaxSpeakerLabels => (is => 'ro', isa => 'Int');
-  has ShowSpeakerLabels => (is => 'ro', isa => 'Bool');
-  has VocabularyName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Int Str/;
+  use Paws::Transcribe::Types qw//;
+  has ChannelIdentification => (is => 'ro', isa => Bool);
+  has MaxSpeakerLabels => (is => 'ro', isa => Int);
+  has ShowSpeakerLabels => (is => 'ro', isa => Bool);
+  has VocabularyName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxSpeakerLabels' => {
+                                       'type' => 'Int'
+                                     },
+               'ChannelIdentification' => {
+                                            'type' => 'Bool'
+                                          },
+               'ShowSpeakerLabels' => {
+                                        'type' => 'Bool'
+                                      },
+               'VocabularyName' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

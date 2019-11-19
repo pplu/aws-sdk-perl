@@ -1,7 +1,28 @@
 package Paws::EC2::IcmpTypeCode;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Int', request_name => 'code', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Int', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int/;
+  use Paws::EC2::Types qw//;
+  has Code => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Code' => 'code',
+                       'Type' => 'type'
+                     },
+  'types' => {
+               'Type' => {
+                           'type' => 'Int'
+                         },
+               'Code' => {
+                           'type' => 'Int'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

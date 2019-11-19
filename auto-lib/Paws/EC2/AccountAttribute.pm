@@ -1,7 +1,29 @@
 package Paws::EC2::AccountAttribute;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', request_name => 'attributeName', traits => ['NameInRequest']);
-  has AttributeValues => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AccountAttributeValue]', request_name => 'attributeValueSet', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_AccountAttributeValue/;
+  has AttributeName => (is => 'ro', isa => Str);
+  has AttributeValues => (is => 'ro', isa => ArrayRef[EC2_AccountAttributeValue]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  },
+               'AttributeValues' => {
+                                      'type' => 'ArrayRef[EC2_AccountAttributeValue]',
+                                      'class' => 'Paws::EC2::AccountAttributeValue'
+                                    }
+             },
+  'NameInRequest' => {
+                       'AttributeValues' => 'attributeValueSet',
+                       'AttributeName' => 'attributeName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +64,7 @@ This class has no description
   The name of the account attribute.
 
 
-=head2 AttributeValues => ArrayRef[L<Paws::EC2::AccountAttributeValue>]
+=head2 AttributeValues => ArrayRef[EC2_AccountAttributeValue]
 
   The values for the account attribute.
 

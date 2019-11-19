@@ -1,12 +1,43 @@
 
 package Paws::S3::ListBucketInventoryConfigurationsOutput;
-  use Moose;
-  has ContinuationToken => (is => 'ro', isa => 'Str');
-  has InventoryConfigurationList => (is => 'ro', isa => 'ArrayRef[Paws::S3::InventoryConfiguration]', traits => ['NameInRequest'], request_name => 'InventoryConfiguration');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has NextContinuationToken => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::S3::Types qw/S3_InventoryConfiguration/;
+  has ContinuationToken => (is => 'ro', isa => Str);
+  has InventoryConfigurationList => (is => 'ro', isa => ArrayRef[S3_InventoryConfiguration]);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has NextContinuationToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'InventoryConfigurationList' => 'InventoryConfiguration'
+                     },
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InventoryConfigurationList' => {
+                                                 'type' => 'ArrayRef[S3_InventoryConfiguration]',
+                                                 'class' => 'Paws::S3::InventoryConfiguration'
+                                               },
+               'ContinuationToken' => {
+                                        'type' => 'Str'
+                                      },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'NextContinuationToken' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +56,7 @@ this inventory configuration list response.
 
 
 
-=head2 InventoryConfigurationList => ArrayRef[L<Paws::S3::InventoryConfiguration>]
+=head2 InventoryConfigurationList => ArrayRef[S3_InventoryConfiguration]
 
 The list of inventory configurations for a bucket.
 

@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::ClusterParameterGroupDetails;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Parameter]', request_name => 'Parameter', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Parameter/;
+  has Marker => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => ArrayRef[RedShift_Parameter]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Parameters' => 'Parameter'
+                     },
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::RedShift::Parameter',
+                                 'type' => 'ArrayRef[RedShift_Parameter]'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +51,7 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-=head2 Parameters => ArrayRef[L<Paws::RedShift::Parameter>]
+=head2 Parameters => ArrayRef[RedShift_Parameter]
 
 A list of Parameter instances. Each instance lists the parameters of
 one cluster parameter group.

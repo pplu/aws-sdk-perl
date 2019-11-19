@@ -1,12 +1,40 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KinesisAnalytics::DiscoverInputSchemaResponse;
-  use Moose;
-  has InputSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema');
-  has ParsedInputRecords => (is => 'ro', isa => 'ArrayRef[ArrayRef[Str|Undef]]');
-  has ProcessedInputRecords => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RawInputRecords => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_SourceSchema/;
+  has InputSchema => (is => 'ro', isa => KinesisAnalytics_SourceSchema);
+  has ParsedInputRecords => (is => 'ro', isa => ArrayRef[ArrayRef[Str|Undef]]);
+  has ProcessedInputRecords => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RawInputRecords => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InputSchema' => {
+                                  'class' => 'Paws::KinesisAnalytics::SourceSchema',
+                                  'type' => 'KinesisAnalytics_SourceSchema'
+                                },
+               'RawInputRecords' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'ParsedInputRecords' => {
+                                         'type' => 'ArrayRef[ArrayRef[Str|Undef]]'
+                                       },
+               'ProcessedInputRecords' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -17,7 +45,7 @@ Paws::KinesisAnalytics::DiscoverInputSchemaResponse
 =head1 ATTRIBUTES
 
 
-=head2 InputSchema => L<Paws::KinesisAnalytics::SourceSchema>
+=head2 InputSchema => KinesisAnalytics_SourceSchema
 
 Schema inferred from the streaming source. It identifies the format of
 the data in the streaming source and how each data element maps to

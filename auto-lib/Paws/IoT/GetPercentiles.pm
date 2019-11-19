@@ -1,18 +1,55 @@
 
 package Paws::IoT::GetPercentiles;
-  use Moose;
-  has AggregationField => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'aggregationField');
-  has IndexName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'indexName');
-  has Percents => (is => 'ro', isa => 'ArrayRef[Num]', traits => ['NameInRequest'], request_name => 'percents');
-  has QueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryString', required => 1);
-  has QueryVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryVersion');
+  use Moo;
+  use Types::Standard qw/Str Num ArrayRef/;
+  use Paws::IoT::Types qw//;
+  has AggregationField => (is => 'ro', isa => Str, predicate => 1);
+  has IndexName => (is => 'ro', isa => Str, predicate => 1);
+  has Percents => (is => 'ro', isa => ArrayRef[Num], predicate => 1);
+  has QueryString => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has QueryVersion => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetPercentiles');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/indices/percentiles');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::GetPercentilesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetPercentiles');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/indices/percentiles');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::GetPercentilesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Percents' => {
+                               'type' => 'ArrayRef[Num]'
+                             },
+               'AggregationField' => {
+                                       'type' => 'Str'
+                                     },
+               'QueryString' => {
+                                  'type' => 'Str'
+                                },
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'QueryVersion' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'QueryVersion' => 'queryVersion',
+                       'IndexName' => 'indexName',
+                       'Percents' => 'percents',
+                       'AggregationField' => 'aggregationField',
+                       'QueryString' => 'queryString'
+                     },
+  'IsRequired' => {
+                    'QueryString' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::BranchInfo;
-  use Moose;
-  has BranchName => (is => 'ro', isa => 'Str', request_name => 'branchName', traits => ['NameInRequest']);
-  has CommitId => (is => 'ro', isa => 'Str', request_name => 'commitId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has BranchName => (is => 'ro', isa => Str);
+  has CommitId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'BranchName' => 'branchName',
+                       'CommitId' => 'commitId'
+                     },
+  'types' => {
+               'BranchName' => {
+                                 'type' => 'Str'
+                               },
+               'CommitId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

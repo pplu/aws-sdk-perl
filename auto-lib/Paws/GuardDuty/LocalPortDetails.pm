@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::LocalPortDetails;
-  use Moose;
-  has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
-  has PortName => (is => 'ro', isa => 'Str', request_name => 'portName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::GuardDuty::Types qw//;
+  has Port => (is => 'ro', isa => Int);
+  has PortName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PortName' => {
+                               'type' => 'Str'
+                             },
+               'Port' => {
+                           'type' => 'Int'
+                         }
+             },
+  'NameInRequest' => {
+                       'PortName' => 'portName',
+                       'Port' => 'port'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

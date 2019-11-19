@@ -1,18 +1,56 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::DeleteStackInstances;
-  use Moose;
-  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has OperationId => (is => 'ro', isa => 'Str');
-  has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
-  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has RetainStacks => (is => 'ro', isa => 'Bool', required => 1);
-  has StackSetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef Bool/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackSetOperationPreferences/;
+  has Accounts => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has OperationId => (is => 'ro', isa => Str, predicate => 1);
+  has OperationPreferences => (is => 'ro', isa => CloudFormation_StackSetOperationPreferences, predicate => 1);
+  has Regions => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has RetainStacks => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has StackSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteStackInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::DeleteStackInstancesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteStackInstancesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteStackInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::DeleteStackInstancesOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DeleteStackInstancesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Accounts' => 1,
+                    'RetainStacks' => 1,
+                    'Regions' => 1,
+                    'StackSetName' => 1
+                  },
+  'types' => {
+               'Accounts' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'OperationPreferences' => {
+                                           'class' => 'Paws::CloudFormation::StackSetOperationPreferences',
+                                           'type' => 'CloudFormation_StackSetOperationPreferences'
+                                         },
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 },
+               'Regions' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'OperationId' => {
+                                  'type' => 'Str'
+                                },
+               'RetainStacks' => {
+                                   'type' => 'Bool'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +120,7 @@ stack instances whose status is C<OUTDATED>.
 
 
 
-=head2 OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>
+=head2 OperationPreferences => CloudFormation_StackSetOperationPreferences
 
 Preferences for how AWS CloudFormation performs this stack set
 operation.

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Health::DateTimeRange;
-  use Moose;
-  has From => (is => 'ro', isa => 'Str', request_name => 'from', traits => ['NameInRequest']);
-  has To => (is => 'ro', isa => 'Str', request_name => 'to', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Health::Types qw//;
+  has From => (is => 'ro', isa => Str);
+  has To => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'From' => {
+                           'type' => 'Str'
+                         },
+               'To' => {
+                         'type' => 'Str'
+                       }
+             },
+  'NameInRequest' => {
+                       'From' => 'from',
+                       'To' => 'to'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

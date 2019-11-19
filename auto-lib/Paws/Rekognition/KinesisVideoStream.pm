@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::Rekognition::KinesisVideoStream;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Rekognition::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

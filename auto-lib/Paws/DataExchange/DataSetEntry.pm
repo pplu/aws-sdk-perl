@@ -1,15 +1,70 @@
+# Generated from default/object.tt
 package Paws::DataExchange::DataSetEntry;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has AssetType => (is => 'ro', isa => 'Str', required => 1);
-  has CreatedAt => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Origin => (is => 'ro', isa => 'Str', required => 1);
-  has OriginDetails => (is => 'ro', isa => 'Paws::DataExchange::OriginDetails');
-  has SourceId => (is => 'ro', isa => 'Str');
-  has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataExchange::Types qw/DataExchange_OriginDetails/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has AssetType => (is => 'ro', isa => Str, required => 1);
+  has CreatedAt => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Origin => (is => 'ro', isa => Str, required => 1);
+  has OriginDetails => (is => 'ro', isa => DataExchange_OriginDetails);
+  has SourceId => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Arn' => 1,
+                    'Id' => 1,
+                    'AssetType' => 1,
+                    'UpdatedAt' => 1,
+                    'CreatedAt' => 1,
+                    'Origin' => 1,
+                    'Description' => 1
+                  },
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'OriginDetails' => {
+                                    'class' => 'Paws::DataExchange::OriginDetails',
+                                    'type' => 'DataExchange_OriginDetails'
+                                  },
+               'SourceId' => {
+                               'type' => 'Str'
+                             },
+               'Origin' => {
+                             'type' => 'Str'
+                           },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'AssetType' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +137,7 @@ type is S3_SNAPSHOT.
 providers) or ENTITLED to the account (for subscribers).
 
 
-=head2 OriginDetails => L<Paws::DataExchange::OriginDetails>
+=head2 OriginDetails => DataExchange_OriginDetails
 
   If the origin of this data set is ENTITLED, includes the details for
 the product on AWS Marketplace.

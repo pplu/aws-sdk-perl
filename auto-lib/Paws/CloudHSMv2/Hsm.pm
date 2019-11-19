@@ -1,13 +1,54 @@
+# Generated from default/object.tt
 package Paws::CloudHSMv2::Hsm;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has ClusterId => (is => 'ro', isa => 'Str');
-  has EniId => (is => 'ro', isa => 'Str');
-  has EniIp => (is => 'ro', isa => 'Str');
-  has HsmId => (is => 'ro', isa => 'Str', required => 1);
-  has State => (is => 'ro', isa => 'Str');
-  has StateMessage => (is => 'ro', isa => 'Str');
-  has SubnetId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudHSMv2::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has ClusterId => (is => 'ro', isa => Str);
+  has EniId => (is => 'ro', isa => Str);
+  has EniIp => (is => 'ro', isa => Str);
+  has HsmId => (is => 'ro', isa => Str, required => 1);
+  has State => (is => 'ro', isa => Str);
+  has StateMessage => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StateMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'EniId' => {
+                            'type' => 'Str'
+                          },
+               'EniIp' => {
+                            'type' => 'Str'
+                          },
+               'ClusterId' => {
+                                'type' => 'Str'
+                              },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'HsmId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'HsmId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

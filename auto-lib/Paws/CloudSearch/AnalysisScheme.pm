@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::AnalysisScheme;
-  use Moose;
-  has AnalysisOptions => (is => 'ro', isa => 'Paws::CloudSearch::AnalysisOptions');
-  has AnalysisSchemeLanguage => (is => 'ro', isa => 'Str', required => 1);
-  has AnalysisSchemeName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearch::Types qw/CloudSearch_AnalysisOptions/;
+  has AnalysisOptions => (is => 'ro', isa => CloudSearch_AnalysisOptions);
+  has AnalysisSchemeLanguage => (is => 'ro', isa => Str, required => 1);
+  has AnalysisSchemeName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'AnalysisSchemeName' => 1,
+                    'AnalysisSchemeLanguage' => 1
+                  },
+  'types' => {
+               'AnalysisSchemeLanguage' => {
+                                             'type' => 'Str'
+                                           },
+               'AnalysisOptions' => {
+                                      'type' => 'CloudSearch_AnalysisOptions',
+                                      'class' => 'Paws::CloudSearch::AnalysisOptions'
+                                    },
+               'AnalysisSchemeName' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +70,7 @@ C<JapaneseTokenizationDictionary> and C<AlgorithmicStemming>.
 =head1 ATTRIBUTES
 
 
-=head2 AnalysisOptions => L<Paws::CloudSearch::AnalysisOptions>
+=head2 AnalysisOptions => CloudSearch_AnalysisOptions
 
   
 

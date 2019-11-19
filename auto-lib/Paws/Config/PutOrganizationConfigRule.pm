@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::PutOrganizationConfigRule;
-  use Moose;
-  has ExcludedAccounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has OrganizationConfigRuleName => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationCustomRuleMetadata => (is => 'ro', isa => 'Paws::Config::OrganizationCustomRuleMetadata');
-  has OrganizationManagedRuleMetadata => (is => 'ro', isa => 'Paws::Config::OrganizationManagedRuleMetadata');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::Config::Types qw/Config_OrganizationCustomRuleMetadata Config_OrganizationManagedRuleMetadata/;
+  has ExcludedAccounts => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has OrganizationConfigRuleName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OrganizationCustomRuleMetadata => (is => 'ro', isa => Config_OrganizationCustomRuleMetadata, predicate => 1);
+  has OrganizationManagedRuleMetadata => (is => 'ro', isa => Config_OrganizationManagedRuleMetadata, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutOrganizationConfigRule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::PutOrganizationConfigRuleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutOrganizationConfigRule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::PutOrganizationConfigRuleResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExcludedAccounts' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'OrganizationConfigRuleName' => {
+                                                 'type' => 'Str'
+                                               },
+               'OrganizationManagedRuleMetadata' => {
+                                                      'class' => 'Paws::Config::OrganizationManagedRuleMetadata',
+                                                      'type' => 'Config_OrganizationManagedRuleMetadata'
+                                                    },
+               'OrganizationCustomRuleMetadata' => {
+                                                     'class' => 'Paws::Config::OrganizationCustomRuleMetadata',
+                                                     'type' => 'Config_OrganizationCustomRuleMetadata'
+                                                   }
+             },
+  'IsRequired' => {
+                    'OrganizationConfigRuleName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,13 +124,13 @@ The name that you assign to an organization config rule.
 
 
 
-=head2 OrganizationCustomRuleMetadata => L<Paws::Config::OrganizationCustomRuleMetadata>
+=head2 OrganizationCustomRuleMetadata => Config_OrganizationCustomRuleMetadata
 
 An C<OrganizationCustomRuleMetadata> object.
 
 
 
-=head2 OrganizationManagedRuleMetadata => L<Paws::Config::OrganizationManagedRuleMetadata>
+=head2 OrganizationManagedRuleMetadata => Config_OrganizationManagedRuleMetadata
 
 An C<OrganizationManagedRuleMetadata> object.
 

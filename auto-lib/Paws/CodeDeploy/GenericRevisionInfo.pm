@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::GenericRevisionInfo;
-  use Moose;
-  has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'deploymentGroups', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has FirstUsedTime => (is => 'ro', isa => 'Str', request_name => 'firstUsedTime', traits => ['NameInRequest']);
-  has LastUsedTime => (is => 'ro', isa => 'Str', request_name => 'lastUsedTime', traits => ['NameInRequest']);
-  has RegisterTime => (is => 'ro', isa => 'Str', request_name => 'registerTime', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has DeploymentGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Description => (is => 'ro', isa => Str);
+  has FirstUsedTime => (is => 'ro', isa => Str);
+  has LastUsedTime => (is => 'ro', isa => Str);
+  has RegisterTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'LastUsedTime' => {
+                                   'type' => 'Str'
+                                 },
+               'DeploymentGroups' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'RegisterTime' => {
+                                   'type' => 'Str'
+                                 },
+               'FirstUsedTime' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'FirstUsedTime' => 'firstUsedTime',
+                       'DeploymentGroups' => 'deploymentGroups',
+                       'RegisterTime' => 'registerTime',
+                       'Description' => 'description',
+                       'LastUsedTime' => 'lastUsedTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

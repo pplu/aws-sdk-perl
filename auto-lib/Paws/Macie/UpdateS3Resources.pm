@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Macie::UpdateS3Resources;
-  use Moose;
-  has MemberAccountId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'memberAccountId' );
-  has S3ResourcesUpdate => (is => 'ro', isa => 'ArrayRef[Paws::Macie::S3ResourceClassificationUpdate]', traits => ['NameInRequest'], request_name => 's3ResourcesUpdate' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Macie::Types qw/Macie_S3ResourceClassificationUpdate/;
+  has MemberAccountId => (is => 'ro', isa => Str, predicate => 1);
+  has S3ResourcesUpdate => (is => 'ro', isa => ArrayRef[Macie_S3ResourceClassificationUpdate], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateS3Resources');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Macie::UpdateS3ResourcesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateS3Resources');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Macie::UpdateS3ResourcesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MemberAccountId' => {
+                                      'type' => 'Str'
+                                    },
+               'S3ResourcesUpdate' => {
+                                        'type' => 'ArrayRef[Macie_S3ResourceClassificationUpdate]',
+                                        'class' => 'Paws::Macie::S3ResourceClassificationUpdate'
+                                      }
+             },
+  'NameInRequest' => {
+                       'MemberAccountId' => 'memberAccountId',
+                       'S3ResourcesUpdate' => 's3ResourcesUpdate'
+                     },
+  'IsRequired' => {
+                    'S3ResourcesUpdate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +88,7 @@ classification types you want to update.
 
 
 
-=head2 B<REQUIRED> S3ResourcesUpdate => ArrayRef[L<Paws::Macie::S3ResourceClassificationUpdate>]
+=head2 B<REQUIRED> S3ResourcesUpdate => ArrayRef[Macie_S3ResourceClassificationUpdate]
 
 The S3 resources whose classification types you want to update.
 

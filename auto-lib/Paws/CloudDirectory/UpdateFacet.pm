@@ -1,17 +1,49 @@
 
 package Paws::CloudDirectory::UpdateFacet;
-  use Moose;
-  has AttributeUpdates => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::FacetAttributeUpdate]');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ObjectType => (is => 'ro', isa => 'Str');
-  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_FacetAttributeUpdate/;
+  has AttributeUpdates => (is => 'ro', isa => ArrayRef[CloudDirectory_FacetAttributeUpdate], predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ObjectType => (is => 'ro', isa => Str, predicate => 1);
+  has SchemaArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFacet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/facet');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::UpdateFacetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFacet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/facet');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::UpdateFacetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SchemaArn' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AttributeUpdates' => {
+                                       'type' => 'ArrayRef[CloudDirectory_FacetAttributeUpdate]',
+                                       'class' => 'Paws::CloudDirectory::FacetAttributeUpdate'
+                                     },
+               'ObjectType' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'SchemaArn' => 1,
+                    'Name' => 1
+                  },
+  'ParamInHeader' => {
+                       'SchemaArn' => 'x-amz-data-partition'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -81,7 +113,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::FacetAttributeUpdate>]
+=head2 AttributeUpdates => ArrayRef[CloudDirectory_FacetAttributeUpdate]
 
 List of attributes that need to be updated in a given schema Facet.
 Each attribute is followed by C<AttributeAction>, which specifies the

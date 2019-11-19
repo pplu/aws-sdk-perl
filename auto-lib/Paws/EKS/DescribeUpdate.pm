@@ -1,16 +1,48 @@
 
 package Paws::EKS::DescribeUpdate;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has NodegroupName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nodegroupName');
-  has UpdateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'updateId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EKS::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NodegroupName => (is => 'ro', isa => Str, predicate => 1);
+  has UpdateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUpdate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clusters/{name}/updates/{updateId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EKS::DescribeUpdateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeUpdate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clusters/{name}/updates/{updateId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EKS::DescribeUpdateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'Name' => 'name',
+                    'UpdateId' => 'updateId'
+                  },
+  'ParamInQuery' => {
+                      'NodegroupName' => 'nodegroupName'
+                    },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'UpdateId' => 1
+                  },
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'UpdateId' => {
+                               'type' => 'Str'
+                             },
+               'NodegroupName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

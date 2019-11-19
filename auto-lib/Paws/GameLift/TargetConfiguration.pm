@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::GameLift::TargetConfiguration;
-  use Moose;
-  has TargetValue => (is => 'ro', isa => 'Num', required => 1);
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::GameLift::Types qw//;
+  has TargetValue => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetValue' => {
+                                  'type' => 'Num'
+                                }
+             },
+  'IsRequired' => {
+                    'TargetValue' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::SQS::ChangeMessageVisibilityBatchRequestEntry;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has ReceiptHandle => (is => 'ro', isa => 'Str', required => 1);
-  has VisibilityTimeout => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SQS::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has ReceiptHandle => (is => 'ro', isa => Str, required => 1);
+  has VisibilityTimeout => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReceiptHandle' => {
+                                    'type' => 'Str'
+                                  },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'VisibilityTimeout' => {
+                                        'type' => 'Int'
+                                      }
+             },
+  'IsRequired' => {
+                    'ReceiptHandle' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,19 +1,75 @@
+# Generated from default/object.tt
 package Paws::Snowball::Address;
-  use Moose;
-  has AddressId => (is => 'ro', isa => 'Str');
-  has City => (is => 'ro', isa => 'Str');
-  has Company => (is => 'ro', isa => 'Str');
-  has Country => (is => 'ro', isa => 'Str');
-  has IsRestricted => (is => 'ro', isa => 'Bool');
-  has Landmark => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has PhoneNumber => (is => 'ro', isa => 'Str');
-  has PostalCode => (is => 'ro', isa => 'Str');
-  has PrefectureOrDistrict => (is => 'ro', isa => 'Str');
-  has StateOrProvince => (is => 'ro', isa => 'Str');
-  has Street1 => (is => 'ro', isa => 'Str');
-  has Street2 => (is => 'ro', isa => 'Str');
-  has Street3 => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Snowball::Types qw//;
+  has AddressId => (is => 'ro', isa => Str);
+  has City => (is => 'ro', isa => Str);
+  has Company => (is => 'ro', isa => Str);
+  has Country => (is => 'ro', isa => Str);
+  has IsRestricted => (is => 'ro', isa => Bool);
+  has Landmark => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has PhoneNumber => (is => 'ro', isa => Str);
+  has PostalCode => (is => 'ro', isa => Str);
+  has PrefectureOrDistrict => (is => 'ro', isa => Str);
+  has StateOrProvince => (is => 'ro', isa => Str);
+  has Street1 => (is => 'ro', isa => Str);
+  has Street2 => (is => 'ro', isa => Str);
+  has Street3 => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PhoneNumber' => {
+                                  'type' => 'Str'
+                                },
+               'Country' => {
+                              'type' => 'Str'
+                            },
+               'StateOrProvince' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Company' => {
+                              'type' => 'Str'
+                            },
+               'Street1' => {
+                              'type' => 'Str'
+                            },
+               'Street3' => {
+                              'type' => 'Str'
+                            },
+               'IsRestricted' => {
+                                   'type' => 'Bool'
+                                 },
+               'AddressId' => {
+                                'type' => 'Str'
+                              },
+               'PrefectureOrDistrict' => {
+                                           'type' => 'Str'
+                                         },
+               'Landmark' => {
+                               'type' => 'Str'
+                             },
+               'PostalCode' => {
+                                 'type' => 'Str'
+                               },
+               'City' => {
+                           'type' => 'Str'
+                         },
+               'Street2' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

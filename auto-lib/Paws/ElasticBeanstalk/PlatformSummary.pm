@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::PlatformSummary;
-  use Moose;
-  has OperatingSystemName => (is => 'ro', isa => 'Str');
-  has OperatingSystemVersion => (is => 'ro', isa => 'Str');
-  has PlatformArn => (is => 'ro', isa => 'Str');
-  has PlatformCategory => (is => 'ro', isa => 'Str');
-  has PlatformOwner => (is => 'ro', isa => 'Str');
-  has PlatformStatus => (is => 'ro', isa => 'Str');
-  has SupportedAddonList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SupportedTierList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has OperatingSystemName => (is => 'ro', isa => Str);
+  has OperatingSystemVersion => (is => 'ro', isa => Str);
+  has PlatformArn => (is => 'ro', isa => Str);
+  has PlatformCategory => (is => 'ro', isa => Str);
+  has PlatformOwner => (is => 'ro', isa => Str);
+  has PlatformStatus => (is => 'ro', isa => Str);
+  has SupportedAddonList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SupportedTierList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlatformArn' => {
+                                  'type' => 'Str'
+                                },
+               'PlatformCategory' => {
+                                       'type' => 'Str'
+                                     },
+               'SupportedAddonList' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'OperatingSystemName' => {
+                                          'type' => 'Str'
+                                        },
+               'PlatformStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'OperatingSystemVersion' => {
+                                             'type' => 'Str'
+                                           },
+               'SupportedTierList' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'PlatformOwner' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

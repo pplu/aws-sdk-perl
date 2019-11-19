@@ -1,15 +1,41 @@
 
 package Paws::EKS::DeleteNodegroup;
-  use Moose;
-  has ClusterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has NodegroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'nodegroupName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EKS::Types qw//;
+  has ClusterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NodegroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteNodegroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clusters/{name}/node-groups/{nodegroupName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EKS::DeleteNodegroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteNodegroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clusters/{name}/node-groups/{nodegroupName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EKS::DeleteNodegroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterName' => {
+                                  'type' => 'Str'
+                                },
+               'NodegroupName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ClusterName' => 1,
+                    'NodegroupName' => 1
+                  },
+  'ParamInURI' => {
+                    'ClusterName' => 'name',
+                    'NodegroupName' => 'nodegroupName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

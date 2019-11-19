@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudTrail::LookupAttribute;
-  use Moose;
-  has AttributeKey => (is => 'ro', isa => 'Str', required => 1);
-  has AttributeValue => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudTrail::Types qw//;
+  has AttributeKey => (is => 'ro', isa => Str, required => 1);
+  has AttributeValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeKey' => {
+                                   'type' => 'Str'
+                                 },
+               'AttributeValue' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'AttributeValue' => 1,
+                    'AttributeKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

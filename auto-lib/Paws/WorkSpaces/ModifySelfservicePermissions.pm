@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::ModifySelfservicePermissions;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has SelfservicePermissions => (is => 'ro', isa => 'Paws::WorkSpaces::SelfservicePermissions', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_SelfservicePermissions/;
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SelfservicePermissions => (is => 'ro', isa => WorkSpaces_SelfservicePermissions, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifySelfservicePermissions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::ModifySelfservicePermissionsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifySelfservicePermissions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::ModifySelfservicePermissionsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'SelfservicePermissions' => {
+                                             'type' => 'WorkSpaces_SelfservicePermissions',
+                                             'class' => 'Paws::WorkSpaces::SelfservicePermissions'
+                                           }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'SelfservicePermissions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +77,7 @@ The identifier of the directory.
 
 
 
-=head2 B<REQUIRED> SelfservicePermissions => L<Paws::WorkSpaces::SelfservicePermissions>
+=head2 B<REQUIRED> SelfservicePermissions => WorkSpaces_SelfservicePermissions
 
 The permissions to enable or disable self-service capabilities.
 

@@ -1,14 +1,47 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Route53Domains::GetOperationDetailResponse;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has OperationId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has SubmittedDate => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53Domains::Types qw//;
+  has DomainName => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has OperationId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has SubmittedDate => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'OperationId' => {
+                                  'type' => 'Str'
+                                },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'SubmittedDate' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,22 +1,74 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::ProvisionProduct;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has NotificationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PathId => (is => 'ro', isa => 'Str');
-  has ProductId => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisionedProductName => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisioningParameters => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisioningParameter]');
-  has ProvisioningPreferences => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningPreferences');
-  has ProvisionToken => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_Tag ServiceCatalog_ProvisioningPreferences ServiceCatalog_ProvisioningParameter/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has PathId => (is => 'ro', isa => Str, predicate => 1);
+  has ProductId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProvisionedProductName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProvisioningArtifactId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProvisioningParameters => (is => 'ro', isa => ArrayRef[ServiceCatalog_ProvisioningParameter], predicate => 1);
+  has ProvisioningPreferences => (is => 'ro', isa => ServiceCatalog_ProvisioningPreferences, predicate => 1);
+  has ProvisionToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ServiceCatalog_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ProvisionProduct');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::ProvisionProductOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ProvisionProduct');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::ProvisionProductOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'type' => 'ArrayRef[ServiceCatalog_Tag]',
+                           'class' => 'Paws::ServiceCatalog::Tag'
+                         },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'ProvisioningPreferences' => {
+                                              'class' => 'Paws::ServiceCatalog::ProvisioningPreferences',
+                                              'type' => 'ServiceCatalog_ProvisioningPreferences'
+                                            },
+               'PathId' => {
+                             'type' => 'Str'
+                           },
+               'NotificationArns' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ProvisionedProductName' => {
+                                             'type' => 'Str'
+                                           },
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'ProvisionToken' => {
+                                     'type' => 'Str'
+                                   },
+               'ProvisioningArtifactId' => {
+                                             'type' => 'Str'
+                                           },
+               'ProvisioningParameters' => {
+                                             'type' => 'ArrayRef[ServiceCatalog_ProvisioningParameter]',
+                                             'class' => 'Paws::ServiceCatalog::ProvisioningParameter'
+                                           }
+             },
+  'IsRequired' => {
+                    'ProvisioningArtifactId' => 1,
+                    'ProvisionToken' => 1,
+                    'ProvisionedProductName' => 1,
+                    'ProductId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,8 +106,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                   # OPTIONAL
       ProvisioningPreferences => {
-        StackSetAccounts => [ 'MyAccountId', ... ],    # OPTIONAL
-        StackSetFailureToleranceCount => 1,            # OPTIONAL
+        StackSetAccounts              => [ 'MyAccountId', ... ],    # OPTIONAL
+        StackSetFailureToleranceCount => 1,                         # OPTIONAL
         StackSetFailureTolerancePercentage => 1,    # max: 100; OPTIONAL
         StackSetMaxConcurrencyCount        => 1,    # min: 1; OPTIONAL
         StackSetMaxConcurrencyPercentage   => 1,    # min: 1, max: 100; OPTIONAL
@@ -140,14 +192,14 @@ The identifier of the provisioning artifact.
 
 
 
-=head2 ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::ProvisioningParameter>]
+=head2 ProvisioningParameters => ArrayRef[ServiceCatalog_ProvisioningParameter]
 
 Parameters specified by the administrator that are required for
 provisioning the product.
 
 
 
-=head2 ProvisioningPreferences => L<Paws::ServiceCatalog::ProvisioningPreferences>
+=head2 ProvisioningPreferences => ServiceCatalog_ProvisioningPreferences
 
 An object that contains information about the provisioning preferences
 for a stack set.
@@ -160,7 +212,7 @@ An idempotency token that uniquely identifies the provisioning request.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
+=head2 Tags => ArrayRef[ServiceCatalog_Tag]
 
 One or more tags.
 

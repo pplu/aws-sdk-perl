@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::DeleteRelationalDatabase;
-  use Moose;
-  has FinalRelationalDatabaseSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'finalRelationalDatabaseSnapshotName' );
-  has RelationalDatabaseName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseName' , required => 1);
-  has SkipFinalSnapshot => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'skipFinalSnapshot' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Lightsail::Types qw//;
+  has FinalRelationalDatabaseSnapshotName => (is => 'ro', isa => Str, predicate => 1);
+  has RelationalDatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SkipFinalSnapshot => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRelationalDatabase');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::DeleteRelationalDatabaseResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteRelationalDatabase');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::DeleteRelationalDatabaseResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'SkipFinalSnapshot' => 'skipFinalSnapshot',
+                       'RelationalDatabaseName' => 'relationalDatabaseName',
+                       'FinalRelationalDatabaseSnapshotName' => 'finalRelationalDatabaseSnapshotName'
+                     },
+  'IsRequired' => {
+                    'RelationalDatabaseName' => 1
+                  },
+  'types' => {
+               'FinalRelationalDatabaseSnapshotName' => {
+                                                          'type' => 'Str'
+                                                        },
+               'RelationalDatabaseName' => {
+                                             'type' => 'Str'
+                                           },
+               'SkipFinalSnapshot' => {
+                                        'type' => 'Bool'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

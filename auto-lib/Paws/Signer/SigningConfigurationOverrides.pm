@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Signer::SigningConfigurationOverrides;
-  use Moose;
-  has EncryptionAlgorithm => (is => 'ro', isa => 'Str', request_name => 'encryptionAlgorithm', traits => ['NameInRequest']);
-  has HashAlgorithm => (is => 'ro', isa => 'Str', request_name => 'hashAlgorithm', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Signer::Types qw//;
+  has EncryptionAlgorithm => (is => 'ro', isa => Str);
+  has HashAlgorithm => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'HashAlgorithm' => 'hashAlgorithm',
+                       'EncryptionAlgorithm' => 'encryptionAlgorithm'
+                     },
+  'types' => {
+               'EncryptionAlgorithm' => {
+                                          'type' => 'Str'
+                                        },
+               'HashAlgorithm' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

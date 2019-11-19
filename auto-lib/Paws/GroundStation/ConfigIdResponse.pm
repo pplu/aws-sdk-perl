@@ -1,11 +1,39 @@
 
 package Paws::GroundStation::ConfigIdResponse;
-  use Moose;
-  has ConfigArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'configArn');
-  has ConfigId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'configId');
-  has ConfigType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'configType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw//;
+  has ConfigArn => (is => 'ro', isa => Str);
+  has ConfigId => (is => 'ro', isa => Str);
+  has ConfigType => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ConfigType' => 'configType',
+                       'ConfigArn' => 'configArn',
+                       'ConfigId' => 'configId'
+                     },
+  'types' => {
+               'ConfigArn' => {
+                                'type' => 'Str'
+                              },
+               'ConfigId' => {
+                               'type' => 'Str'
+                             },
+               'ConfigType' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

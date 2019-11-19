@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::MediaLive::HlsMediaStoreSettings;
-  use Moose;
-  has ConnectionRetryInterval => (is => 'ro', isa => 'Int', request_name => 'connectionRetryInterval', traits => ['NameInRequest']);
-  has FilecacheDuration => (is => 'ro', isa => 'Int', request_name => 'filecacheDuration', traits => ['NameInRequest']);
-  has MediaStoreStorageClass => (is => 'ro', isa => 'Str', request_name => 'mediaStoreStorageClass', traits => ['NameInRequest']);
-  has NumRetries => (is => 'ro', isa => 'Int', request_name => 'numRetries', traits => ['NameInRequest']);
-  has RestartDelay => (is => 'ro', isa => 'Int', request_name => 'restartDelay', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaLive::Types qw//;
+  has ConnectionRetryInterval => (is => 'ro', isa => Int);
+  has FilecacheDuration => (is => 'ro', isa => Int);
+  has MediaStoreStorageClass => (is => 'ro', isa => Str);
+  has NumRetries => (is => 'ro', isa => Int);
+  has RestartDelay => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ConnectionRetryInterval' => 'connectionRetryInterval',
+                       'FilecacheDuration' => 'filecacheDuration',
+                       'MediaStoreStorageClass' => 'mediaStoreStorageClass',
+                       'NumRetries' => 'numRetries',
+                       'RestartDelay' => 'restartDelay'
+                     },
+  'types' => {
+               'ConnectionRetryInterval' => {
+                                              'type' => 'Int'
+                                            },
+               'FilecacheDuration' => {
+                                        'type' => 'Int'
+                                      },
+               'MediaStoreStorageClass' => {
+                                             'type' => 'Str'
+                                           },
+               'RestartDelay' => {
+                                   'type' => 'Int'
+                                 },
+               'NumRetries' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

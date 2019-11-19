@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::LakeFormation;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'lakeformation' }
   sub signing_name { 'lakeformation' }
   sub version { '2017-03-31' }
   sub target_prefix { 'AWSLakeFormation' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -124,7 +126,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lak
 
 =over
 
-=item Entries => ArrayRef[L<Paws::LakeFormation::BatchPermissionsRequestEntry>]
+=item Entries => ArrayRef[LakeFormation_BatchPermissionsRequestEntry]
 
 =item [CatalogId => Str]
 
@@ -142,7 +144,7 @@ Batch operation to grant permissions to the principal.
 
 =over
 
-=item Entries => ArrayRef[L<Paws::LakeFormation::BatchPermissionsRequestEntry>]
+=item Entries => ArrayRef[LakeFormation_BatchPermissionsRequestEntry]
 
 =item [CatalogId => Str]
 
@@ -237,9 +239,9 @@ located at a path in Amazon S3.
 
 =item Permissions => ArrayRef[Str|Undef]
 
-=item Principal => L<Paws::LakeFormation::DataLakePrincipal>
+=item Principal => LakeFormation_DataLakePrincipal
 
-=item Resource => L<Paws::LakeFormation::Resource>
+=item Resource => LakeFormation_Resource
 
 =item [CatalogId => Str]
 
@@ -271,9 +273,9 @@ Metadata and Data
 
 =item [NextToken => Str]
 
-=item [Principal => L<Paws::LakeFormation::DataLakePrincipal>]
+=item [Principal => LakeFormation_DataLakePrincipal]
 
-=item [Resource => L<Paws::LakeFormation::Resource>]
+=item [Resource => LakeFormation_Resource]
 
 =item [ResourceType => Str]
 
@@ -301,7 +303,7 @@ Metadata and Data
 
 =over
 
-=item [FilterConditionList => ArrayRef[L<Paws::LakeFormation::FilterCondition>]]
+=item [FilterConditionList => ArrayRef[LakeFormation_FilterCondition]]
 
 =item [MaxResults => Int]
 
@@ -321,7 +323,7 @@ Lists the resources registered to be managed by the Data Catalog.
 
 =over
 
-=item DataLakeSettings => L<Paws::LakeFormation::DataLakeSettings>
+=item DataLakeSettings => LakeFormation_DataLakeSettings
 
 =item [CatalogId => Str]
 
@@ -370,9 +372,9 @@ Formation adds the path to the existing policy.
 
 =item Permissions => ArrayRef[Str|Undef]
 
-=item Principal => L<Paws::LakeFormation::DataLakePrincipal>
+=item Principal => LakeFormation_DataLakePrincipal
 
-=item Resource => L<Paws::LakeFormation::Resource>
+=item Resource => LakeFormation_Resource
 
 =item [CatalogId => Str]
 

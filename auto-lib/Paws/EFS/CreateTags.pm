@@ -1,15 +1,41 @@
 
 package Paws::EFS::CreateTags;
-  use Moose;
-  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FileSystemId', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EFS::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EFS::Types qw/EFS_Tag/;
+  has FileSystemId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[EFS_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTags');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/create-tags/{FileSystemId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTags');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-02-01/create-tags/{FileSystemId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'FileSystemId' => 1
+                  },
+  'types' => {
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::EFS::Tag',
+                           'type' => 'ArrayRef[EFS_Tag]'
+                         }
+             },
+  'ParamInURI' => {
+                    'FileSystemId' => 'FileSystemId'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +82,7 @@ operation modifies the tags only, not the file system.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EFS::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[EFS_Tag]
 
 An array of C<Tag> objects to add. Each C<Tag> object is a key-value
 pair.

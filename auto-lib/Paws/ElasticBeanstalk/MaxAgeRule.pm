@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::MaxAgeRule;
-  use Moose;
-  has DeleteSourceFromS3 => (is => 'ro', isa => 'Bool');
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has MaxAgeInDays => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Bool Int/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has DeleteSourceFromS3 => (is => 'ro', isa => Bool);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has MaxAgeInDays => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeleteSourceFromS3' => {
+                                         'type' => 'Bool'
+                                       },
+               'MaxAgeInDays' => {
+                                   'type' => 'Int'
+                                 },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             },
+  'IsRequired' => {
+                    'Enabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

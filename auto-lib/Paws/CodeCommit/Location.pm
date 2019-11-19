@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::Location;
-  use Moose;
-  has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest']);
-  has FilePosition => (is => 'ro', isa => 'Int', request_name => 'filePosition', traits => ['NameInRequest']);
-  has RelativeFileVersion => (is => 'ro', isa => 'Str', request_name => 'relativeFileVersion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodeCommit::Types qw//;
+  has FilePath => (is => 'ro', isa => Str);
+  has FilePosition => (is => 'ro', isa => Int);
+  has RelativeFileVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FilePosition' => {
+                                   'type' => 'Int'
+                                 },
+               'FilePath' => {
+                               'type' => 'Str'
+                             },
+               'RelativeFileVersion' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'FilePosition' => 'filePosition',
+                       'FilePath' => 'filePath',
+                       'RelativeFileVersion' => 'relativeFileVersion'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

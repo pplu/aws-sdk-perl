@@ -1,14 +1,76 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::Version;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest'], required => 1);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest'], required => 1);
-  has ParameterDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ParameterDefinition]', request_name => 'parameterDefinitions', traits => ['NameInRequest'], required => 1);
-  has RequiredCapabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'requiredCapabilities', traits => ['NameInRequest'], required => 1);
-  has ResourcesSupported => (is => 'ro', isa => 'Bool', request_name => 'resourcesSupported', traits => ['NameInRequest'], required => 1);
-  has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest'], required => 1);
-  has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeArchiveUrl', traits => ['NameInRequest']);
-  has SourceCodeUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeUrl', traits => ['NameInRequest']);
-  has TemplateUrl => (is => 'ro', isa => 'Str', request_name => 'templateUrl', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::ServerlessRepo::Types qw/ServerlessRepo_ParameterDefinition/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has ParameterDefinitions => (is => 'ro', isa => ArrayRef[ServerlessRepo_ParameterDefinition], required => 1);
+  has RequiredCapabilities => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has ResourcesSupported => (is => 'ro', isa => Bool, required => 1);
+  has SemanticVersion => (is => 'ro', isa => Str, required => 1);
+  has SourceCodeArchiveUrl => (is => 'ro', isa => Str);
+  has SourceCodeUrl => (is => 'ro', isa => Str);
+  has TemplateUrl => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'ApplicationId' => 'applicationId',
+                       'ResourcesSupported' => 'resourcesSupported',
+                       'TemplateUrl' => 'templateUrl',
+                       'SourceCodeUrl' => 'sourceCodeUrl',
+                       'ParameterDefinitions' => 'parameterDefinitions',
+                       'SemanticVersion' => 'semanticVersion',
+                       'CreationTime' => 'creationTime',
+                       'SourceCodeArchiveUrl' => 'sourceCodeArchiveUrl',
+                       'RequiredCapabilities' => 'requiredCapabilities'
+                     },
+  'IsRequired' => {
+                    'RequiredCapabilities' => 1,
+                    'ParameterDefinitions' => 1,
+                    'TemplateUrl' => 1,
+                    'CreationTime' => 1,
+                    'ResourcesSupported' => 1,
+                    'SemanticVersion' => 1,
+                    'ApplicationId' => 1
+                  },
+  'types' => {
+               'ResourcesSupported' => {
+                                         'type' => 'Bool'
+                                       },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'ParameterDefinitions' => {
+                                           'type' => 'ArrayRef[ServerlessRepo_ParameterDefinition]',
+                                           'class' => 'Paws::ServerlessRepo::ParameterDefinition'
+                                         },
+               'SourceCodeUrl' => {
+                                    'type' => 'Str'
+                                  },
+               'TemplateUrl' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceCodeArchiveUrl' => {
+                                           'type' => 'Str'
+                                         },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'RequiredCapabilities' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +116,7 @@ Application version details.
   The date and time this resource was created.
 
 
-=head2 B<REQUIRED> ParameterDefinitions => ArrayRef[L<Paws::ServerlessRepo::ParameterDefinition>]
+=head2 B<REQUIRED> ParameterDefinitions => ArrayRef[ServerlessRepo_ParameterDefinition]
 
   An array of parameter types supported by the application.
 

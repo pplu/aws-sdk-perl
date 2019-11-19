@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ComprehendMedical::DescribeEntitiesDetectionV2JobResponse;
-  use Moose;
-  has ComprehendMedicalAsyncJobProperties => (is => 'ro', isa => 'Paws::ComprehendMedical::ComprehendMedicalAsyncJobProperties');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ComprehendMedical::Types qw/ComprehendMedical_ComprehendMedicalAsyncJobProperties/;
+  has ComprehendMedicalAsyncJobProperties => (is => 'ro', isa => ComprehendMedical_ComprehendMedicalAsyncJobProperties);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComprehendMedicalAsyncJobProperties' => {
+                                                          'type' => 'ComprehendMedical_ComprehendMedicalAsyncJobProperties',
+                                                          'class' => 'Paws::ComprehendMedical::ComprehendMedicalAsyncJobProperties'
+                                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::ComprehendMedical::DescribeEntitiesDetectionV2JobResponse
 =head1 ATTRIBUTES
 
 
-=head2 ComprehendMedicalAsyncJobProperties => L<Paws::ComprehendMedical::ComprehendMedicalAsyncJobProperties>
+=head2 ComprehendMedicalAsyncJobProperties => ComprehendMedical_ComprehendMedicalAsyncJobProperties
 
 An object that contains the properties associated with a detection job.
 

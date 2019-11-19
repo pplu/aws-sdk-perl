@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AlexaForBusiness::GetContactResponse;
-  use Moose;
-  has Contact => (is => 'ro', isa => 'Paws::AlexaForBusiness::Contact');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_Contact/;
+  has Contact => (is => 'ro', isa => AlexaForBusiness_Contact);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Contact' => {
+                              'class' => 'Paws::AlexaForBusiness::Contact',
+                              'type' => 'AlexaForBusiness_Contact'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::AlexaForBusiness::GetContactResponse
 =head1 ATTRIBUTES
 
 
-=head2 Contact => L<Paws::AlexaForBusiness::Contact>
+=head2 Contact => AlexaForBusiness_Contact
 
 The details of the requested contact.
 

@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Budgets::CreateBudget;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', required => 1);
-  has Budget => (is => 'ro', isa => 'Paws::Budgets::Budget', required => 1);
-  has NotificationsWithSubscribers => (is => 'ro', isa => 'ArrayRef[Paws::Budgets::NotificationWithSubscribers]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Budgets::Types qw/Budgets_NotificationWithSubscribers Budgets_Budget/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Budget => (is => 'ro', isa => Budgets_Budget, required => 1, predicate => 1);
+  has NotificationsWithSubscribers => (is => 'ro', isa => ArrayRef[Budgets_NotificationWithSubscribers], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBudget');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Budgets::CreateBudgetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBudget');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Budgets::CreateBudgetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotificationsWithSubscribers' => {
+                                                   'type' => 'ArrayRef[Budgets_NotificationWithSubscribers]',
+                                                   'class' => 'Paws::Budgets::NotificationWithSubscribers'
+                                                 },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Budget' => {
+                             'type' => 'Budgets_Budget',
+                             'class' => 'Paws::Budgets::Budget'
+                           }
+             },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'Budget' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -40,18 +68,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Amount => 'MyNumericValue',    # min: 1, max: 2147483647
           Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-        },    # OPTIONAL
+        },
         CalculatedSpend => {
           ActualSpend => {
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },    # OPTIONAL
+          },
           ForecastedSpend => {
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },    # OPTIONAL
+          },
         },    # OPTIONAL
         CostFilters => {
           'MyGenericString' => [
@@ -77,7 +105,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },    # key: max: 2147483647, value: OPTIONAL
+          },    # key: max: 2147483647
         },    # OPTIONAL
         TimePeriod => {
           End   => '1970-01-01T01:00:00',    # OPTIONAL
@@ -121,13 +149,13 @@ The C<accountId> that is associated with the budget.
 
 
 
-=head2 B<REQUIRED> Budget => L<Paws::Budgets::Budget>
+=head2 B<REQUIRED> Budget => Budgets_Budget
 
 The budget object that you want to create.
 
 
 
-=head2 NotificationsWithSubscribers => ArrayRef[L<Paws::Budgets::NotificationWithSubscribers>]
+=head2 NotificationsWithSubscribers => ArrayRef[Budgets_NotificationWithSubscribers]
 
 A notification that you want to associate with a budget. A budget can
 have up to five notifications, and each notification can have one SNS

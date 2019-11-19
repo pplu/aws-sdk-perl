@@ -1,15 +1,43 @@
 
 package Paws::IoT::AttachSecurityProfile;
-  use Moose;
-  has SecurityProfileName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'securityProfileName', required => 1);
-  has SecurityProfileTargetArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'securityProfileTargetArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has SecurityProfileName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecurityProfileTargetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachSecurityProfile');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/security-profiles/{securityProfileName}/targets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::AttachSecurityProfileResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AttachSecurityProfile');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/security-profiles/{securityProfileName}/targets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::AttachSecurityProfileResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'ParamInURI' => {
+                    'SecurityProfileName' => 'securityProfileName'
+                  },
+  'types' => {
+               'SecurityProfileTargetArn' => {
+                                               'type' => 'Str'
+                                             },
+               'SecurityProfileName' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'SecurityProfileName' => 1,
+                    'SecurityProfileTargetArn' => 1
+                  },
+  'ParamInQuery' => {
+                      'SecurityProfileTargetArn' => 'securityProfileTargetArn'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

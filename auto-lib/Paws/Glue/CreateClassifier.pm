@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::CreateClassifier;
-  use Moose;
-  has CsvClassifier => (is => 'ro', isa => 'Paws::Glue::CreateCsvClassifierRequest');
-  has GrokClassifier => (is => 'ro', isa => 'Paws::Glue::CreateGrokClassifierRequest');
-  has JsonClassifier => (is => 'ro', isa => 'Paws::Glue::CreateJsonClassifierRequest');
-  has XMLClassifier => (is => 'ro', isa => 'Paws::Glue::CreateXMLClassifierRequest');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_CreateGrokClassifierRequest Glue_CreateCsvClassifierRequest Glue_CreateXMLClassifierRequest Glue_CreateJsonClassifierRequest/;
+  has CsvClassifier => (is => 'ro', isa => Glue_CreateCsvClassifierRequest, predicate => 1);
+  has GrokClassifier => (is => 'ro', isa => Glue_CreateGrokClassifierRequest, predicate => 1);
+  has JsonClassifier => (is => 'ro', isa => Glue_CreateJsonClassifierRequest, predicate => 1);
+  has XMLClassifier => (is => 'ro', isa => Glue_CreateXMLClassifierRequest, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClassifier');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::CreateClassifierResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateClassifier');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::CreateClassifierResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GrokClassifier' => {
+                                     'class' => 'Paws::Glue::CreateGrokClassifierRequest',
+                                     'type' => 'Glue_CreateGrokClassifierRequest'
+                                   },
+               'XMLClassifier' => {
+                                    'class' => 'Paws::Glue::CreateXMLClassifierRequest',
+                                    'type' => 'Glue_CreateXMLClassifierRequest'
+                                  },
+               'CsvClassifier' => {
+                                    'class' => 'Paws::Glue::CreateCsvClassifierRequest',
+                                    'type' => 'Glue_CreateCsvClassifierRequest'
+                                  },
+               'JsonClassifier' => {
+                                     'type' => 'Glue_CreateJsonClassifierRequest',
+                                     'class' => 'Paws::Glue::CreateJsonClassifierRequest'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,25 +96,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head1 ATTRIBUTES
 
 
-=head2 CsvClassifier => L<Paws::Glue::CreateCsvClassifierRequest>
+=head2 CsvClassifier => Glue_CreateCsvClassifierRequest
 
 A C<CsvClassifier> object specifying the classifier to create.
 
 
 
-=head2 GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>
+=head2 GrokClassifier => Glue_CreateGrokClassifierRequest
 
 A C<GrokClassifier> object specifying the classifier to create.
 
 
 
-=head2 JsonClassifier => L<Paws::Glue::CreateJsonClassifierRequest>
+=head2 JsonClassifier => Glue_CreateJsonClassifierRequest
 
 A C<JsonClassifier> object specifying the classifier to create.
 
 
 
-=head2 XMLClassifier => L<Paws::Glue::CreateXMLClassifierRequest>
+=head2 XMLClassifier => Glue_CreateXMLClassifierRequest
 
 An C<XMLClassifier> object specifying the classifier to create.
 

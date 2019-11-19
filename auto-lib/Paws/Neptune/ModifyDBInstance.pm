@@ -1,48 +1,173 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::ModifyDBInstance;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AllowMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has ApplyImmediately => (is => 'ro', isa => 'Bool');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CACertificateIdentifier => (is => 'ro', isa => 'Str');
-  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::Neptune::CloudwatchLogsExportConfiguration');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBPortNumber => (is => 'ro', isa => 'Int');
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Domain => (is => 'ro', isa => 'Str');
-  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has MonitoringInterval => (is => 'ro', isa => 'Int');
-  has MonitoringRoleArn => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has NewDBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PromotionTier => (is => 'ro', isa => 'Int');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has StorageType => (is => 'ro', isa => 'Str');
-  has TdeCredentialArn => (is => 'ro', isa => 'Str');
-  has TdeCredentialPassword => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int Bool Undef ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_CloudwatchLogsExportConfiguration/;
+  has AllocatedStorage => (is => 'ro', isa => Int, predicate => 1);
+  has AllowMajorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has ApplyImmediately => (is => 'ro', isa => Bool, predicate => 1);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has CACertificateIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => Neptune_CloudwatchLogsExportConfiguration, predicate => 1);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has DBInstanceClass => (is => 'ro', isa => Str, predicate => 1);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBPortNumber => (is => 'ro', isa => Int, predicate => 1);
+  has DBSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, predicate => 1);
+  has DomainIAMRoleName => (is => 'ro', isa => Str, predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has EnablePerformanceInsights => (is => 'ro', isa => Bool, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Iops => (is => 'ro', isa => Int, predicate => 1);
+  has LicenseModel => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, predicate => 1);
+  has MonitoringInterval => (is => 'ro', isa => Int, predicate => 1);
+  has MonitoringRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has MultiAZ => (is => 'ro', isa => Bool, predicate => 1);
+  has NewDBInstanceIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PromotionTier => (is => 'ro', isa => Int, predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has StorageType => (is => 'ro', isa => Str, predicate => 1);
+  has TdeCredentialArn => (is => 'ro', isa => Str, predicate => 1);
+  has TdeCredentialPassword => (is => 'ro', isa => Str, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::ModifyDBInstanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBInstanceResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyDBInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::ModifyDBInstanceResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyDBInstanceResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'DomainIAMRoleName' => {
+                                        'type' => 'Str'
+                                      },
+               'DBPortNumber' => {
+                                   'type' => 'Int'
+                                 },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'PromotionTier' => {
+                                    'type' => 'Int'
+                                  },
+               'PerformanceInsightsKMSKeyId' => {
+                                                  'type' => 'Str'
+                                                },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'CACertificateIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'CloudwatchLogsExportConfiguration' => {
+                                                        'class' => 'Paws::Neptune::CloudwatchLogsExportConfiguration',
+                                                        'type' => 'Neptune_CloudwatchLogsExportConfiguration'
+                                                      },
+               'MonitoringInterval' => {
+                                         'type' => 'Int'
+                                       },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'EnablePerformanceInsights' => {
+                                                'type' => 'Bool'
+                                              },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'NewDBInstanceIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'TdeCredentialPassword' => {
+                                            'type' => 'Str'
+                                          },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'MonitoringRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'TdeCredentialArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'DBSecurityGroups' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'AllowMajorVersionUpgrade' => {
+                                               'type' => 'Bool'
+                                             },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'IsRequired' => {
+                    'DBInstanceIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -180,7 +305,7 @@ instance.
 
 
 
-=head2 CloudwatchLogsExportConfiguration => L<Paws::Neptune::CloudwatchLogsExportConfiguration>
+=head2 CloudwatchLogsExportConfiguration => Neptune_CloudwatchLogsExportConfiguration
 
 The configuration setting for the log types to be enabled for export to
 CloudWatch Logs for a specific DB instance or DB cluster.

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::AppMesh::Duration;
-  use Moose;
-  has Unit => (is => 'ro', isa => 'Str', request_name => 'unit', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Int', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AppMesh::Types qw//;
+  has Unit => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Value' => 'value',
+                       'Unit' => 'unit'
+                     },
+  'types' => {
+               'Value' => {
+                            'type' => 'Int'
+                          },
+               'Unit' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

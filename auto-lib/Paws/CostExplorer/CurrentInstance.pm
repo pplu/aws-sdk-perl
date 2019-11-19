@@ -1,15 +1,62 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::CurrentInstance;
-  use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str');
-  has MonthlyCost => (is => 'ro', isa => 'Str');
-  has OnDemandHoursInLookbackPeriod => (is => 'ro', isa => 'Str');
-  has ReservationCoveredHoursInLookbackPeriod => (is => 'ro', isa => 'Str');
-  has ResourceDetails => (is => 'ro', isa => 'Paws::CostExplorer::ResourceDetails');
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has ResourceUtilization => (is => 'ro', isa => 'Paws::CostExplorer::ResourceUtilization');
-  has SavingsPlansCoveredHoursInLookbackPeriod => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::TagValues]');
-  has TotalRunningHoursInLookbackPeriod => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CostExplorer::Types qw/CostExplorer_ResourceUtilization CostExplorer_ResourceDetails CostExplorer_TagValues/;
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has MonthlyCost => (is => 'ro', isa => Str);
+  has OnDemandHoursInLookbackPeriod => (is => 'ro', isa => Str);
+  has ReservationCoveredHoursInLookbackPeriod => (is => 'ro', isa => Str);
+  has ResourceDetails => (is => 'ro', isa => CostExplorer_ResourceDetails);
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceUtilization => (is => 'ro', isa => CostExplorer_ResourceUtilization);
+  has SavingsPlansCoveredHoursInLookbackPeriod => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[CostExplorer_TagValues]);
+  has TotalRunningHoursInLookbackPeriod => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'TotalRunningHoursInLookbackPeriod' => {
+                                                        'type' => 'Str'
+                                                      },
+               'SavingsPlansCoveredHoursInLookbackPeriod' => {
+                                                               'type' => 'Str'
+                                                             },
+               'ResourceUtilization' => {
+                                          'class' => 'Paws::CostExplorer::ResourceUtilization',
+                                          'type' => 'CostExplorer_ResourceUtilization'
+                                        },
+               'Tags' => {
+                           'type' => 'ArrayRef[CostExplorer_TagValues]',
+                           'class' => 'Paws::CostExplorer::TagValues'
+                         },
+               'OnDemandHoursInLookbackPeriod' => {
+                                                    'type' => 'Str'
+                                                  },
+               'ReservationCoveredHoursInLookbackPeriod' => {
+                                                              'type' => 'Str'
+                                                            },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceDetails' => {
+                                      'class' => 'Paws::CostExplorer::ResourceDetails',
+                                      'type' => 'CostExplorer_ResourceDetails'
+                                    },
+               'MonthlyCost' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +113,7 @@ for this instance.
   Number of hours during the lookback period covered by reservations.
 
 
-=head2 ResourceDetails => L<Paws::CostExplorer::ResourceDetails>
+=head2 ResourceDetails => CostExplorer_ResourceDetails
 
   Details about the resource and utilization.
 
@@ -76,7 +123,7 @@ for this instance.
   Resource ID of the current instance.
 
 
-=head2 ResourceUtilization => L<Paws::CostExplorer::ResourceUtilization>
+=head2 ResourceUtilization => CostExplorer_ResourceUtilization
 
   Utilization information of the current instance during the lookback
 period.
@@ -87,7 +134,7 @@ period.
   Number of hours during the lookback period covered by Savings Plans.
 
 
-=head2 Tags => ArrayRef[L<Paws::CostExplorer::TagValues>]
+=head2 Tags => ArrayRef[CostExplorer_TagValues]
 
   Cost allocation resource tags applied to the instance.
 

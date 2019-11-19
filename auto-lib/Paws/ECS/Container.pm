@@ -1,21 +1,103 @@
+# Generated from default/object.tt
 package Paws::ECS::Container;
-  use Moose;
-  has ContainerArn => (is => 'ro', isa => 'Str', request_name => 'containerArn', traits => ['NameInRequest']);
-  has Cpu => (is => 'ro', isa => 'Str', request_name => 'cpu', traits => ['NameInRequest']);
-  has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
-  has GpuIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'gpuIds', traits => ['NameInRequest']);
-  has HealthStatus => (is => 'ro', isa => 'Str', request_name => 'healthStatus', traits => ['NameInRequest']);
-  has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
-  has ImageDigest => (is => 'ro', isa => 'Str', request_name => 'imageDigest', traits => ['NameInRequest']);
-  has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
-  has Memory => (is => 'ro', isa => 'Str', request_name => 'memory', traits => ['NameInRequest']);
-  has MemoryReservation => (is => 'ro', isa => 'Str', request_name => 'memoryReservation', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', request_name => 'networkBindings', traits => ['NameInRequest']);
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
-  has RuntimeId => (is => 'ro', isa => 'Str', request_name => 'runtimeId', traits => ['NameInRequest']);
-  has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Undef ArrayRef/;
+  use Paws::ECS::Types qw/ECS_NetworkInterface ECS_NetworkBinding/;
+  has ContainerArn => (is => 'ro', isa => Str);
+  has Cpu => (is => 'ro', isa => Str);
+  has ExitCode => (is => 'ro', isa => Int);
+  has GpuIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has HealthStatus => (is => 'ro', isa => Str);
+  has Image => (is => 'ro', isa => Str);
+  has ImageDigest => (is => 'ro', isa => Str);
+  has LastStatus => (is => 'ro', isa => Str);
+  has Memory => (is => 'ro', isa => Str);
+  has MemoryReservation => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has NetworkBindings => (is => 'ro', isa => ArrayRef[ECS_NetworkBinding]);
+  has NetworkInterfaces => (is => 'ro', isa => ArrayRef[ECS_NetworkInterface]);
+  has Reason => (is => 'ro', isa => Str);
+  has RuntimeId => (is => 'ro', isa => Str);
+  has TaskArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HealthStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            },
+               'ContainerArn' => {
+                                   'type' => 'Str'
+                                 },
+               'NetworkInterfaces' => {
+                                        'type' => 'ArrayRef[ECS_NetworkInterface]',
+                                        'class' => 'Paws::ECS::NetworkInterface'
+                                      },
+               'LastStatus' => {
+                                 'type' => 'Str'
+                               },
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'MemoryReservation' => {
+                                        'type' => 'Str'
+                                      },
+               'NetworkBindings' => {
+                                      'class' => 'Paws::ECS::NetworkBinding',
+                                      'type' => 'ArrayRef[ECS_NetworkBinding]'
+                                    },
+               'ExitCode' => {
+                               'type' => 'Int'
+                             },
+               'Memory' => {
+                             'type' => 'Str'
+                           },
+               'ImageDigest' => {
+                                  'type' => 'Str'
+                                },
+               'Cpu' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RuntimeId' => {
+                                'type' => 'Str'
+                              },
+               'Image' => {
+                            'type' => 'Str'
+                          },
+               'GpuIds' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             },
+  'NameInRequest' => {
+                       'Cpu' => 'cpu',
+                       'Name' => 'name',
+                       'RuntimeId' => 'runtimeId',
+                       'Image' => 'image',
+                       'GpuIds' => 'gpuIds',
+                       'MemoryReservation' => 'memoryReservation',
+                       'ExitCode' => 'exitCode',
+                       'NetworkBindings' => 'networkBindings',
+                       'Memory' => 'memory',
+                       'ImageDigest' => 'imageDigest',
+                       'NetworkInterfaces' => 'networkInterfaces',
+                       'LastStatus' => 'lastStatus',
+                       'Reason' => 'reason',
+                       'HealthStatus' => 'healthStatus',
+                       'TaskArn' => 'taskArn',
+                       'ContainerArn' => 'containerArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -113,12 +195,12 @@ hosted in Amazon ECR, otherwise it is omitted.
   The name of the container.
 
 
-=head2 NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>]
+=head2 NetworkBindings => ArrayRef[ECS_NetworkBinding]
 
   The network bindings associated with the container.
 
 
-=head2 NetworkInterfaces => ArrayRef[L<Paws::ECS::NetworkInterface>]
+=head2 NetworkInterfaces => ArrayRef[ECS_NetworkInterface]
 
   The network interfaces associated with the container.
 

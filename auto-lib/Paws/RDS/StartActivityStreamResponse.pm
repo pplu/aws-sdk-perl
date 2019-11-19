@@ -1,13 +1,43 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::StartActivityStreamResponse;
-  use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Bool');
-  has KinesisStreamName => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has Mode => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::RDS::Types qw//;
+  has ApplyImmediately => (is => 'ro', isa => Bool);
+  has KinesisStreamName => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has Mode => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Mode' => {
+                           'type' => 'Str'
+                         },
+               'KinesisStreamName' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

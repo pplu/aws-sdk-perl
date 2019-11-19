@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::RdsDbInstance;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Str');
-  has DbInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has DbPassword => (is => 'ro', isa => 'Str');
-  has DbUser => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has MissingOnRds => (is => 'ro', isa => 'Bool');
-  has RdsDbInstanceArn => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::OpsWorks::Types qw//;
+  has Address => (is => 'ro', isa => Str);
+  has DbInstanceIdentifier => (is => 'ro', isa => Str);
+  has DbPassword => (is => 'ro', isa => Str);
+  has DbUser => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has MissingOnRds => (is => 'ro', isa => Bool);
+  has RdsDbInstanceArn => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DbInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'DbPassword' => {
+                                 'type' => 'Str'
+                               },
+               'RdsDbInstanceArn' => {
+                                       'type' => 'Str'
+                                     },
+               'MissingOnRds' => {
+                                   'type' => 'Bool'
+                                 },
+               'DbUser' => {
+                             'type' => 'Str'
+                           },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'Address' => {
+                              'type' => 'Str'
+                            },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

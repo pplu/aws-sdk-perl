@@ -1,17 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Pricing::GetProducts;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Pricing::Filter]');
-  has FormatVersion => (is => 'ro', isa => 'Str');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ServiceCode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Pricing::Types qw/Pricing_Filter/;
+  has Filters => (is => 'ro', isa => ArrayRef[Pricing_Filter], predicate => 1);
+  has FormatVersion => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ServiceCode => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetProducts');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pricing::GetProductsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetProducts');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pricing::GetProductsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FormatVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filters' => {
+                              'class' => 'Paws::Pricing::Filter',
+                              'type' => 'ArrayRef[Pricing_Filter]'
+                            },
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +89,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::Pricing::Filter>]
+=head2 Filters => ArrayRef[Pricing_Filter]
 
 The list of filters that limit the returned products. only products
 that match all filters are returned.

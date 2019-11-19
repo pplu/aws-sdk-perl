@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::ProjectBadge;
-  use Moose;
-  has BadgeEnabled => (is => 'ro', isa => 'Bool', request_name => 'badgeEnabled', traits => ['NameInRequest']);
-  has BadgeRequestUrl => (is => 'ro', isa => 'Str', request_name => 'badgeRequestUrl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::CodeBuild::Types qw//;
+  has BadgeEnabled => (is => 'ro', isa => Bool);
+  has BadgeRequestUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'BadgeEnabled' => 'badgeEnabled',
+                       'BadgeRequestUrl' => 'badgeRequestUrl'
+                     },
+  'types' => {
+               'BadgeRequestUrl' => {
+                                      'type' => 'Str'
+                                    },
+               'BadgeEnabled' => {
+                                   'type' => 'Bool'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

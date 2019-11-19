@@ -1,17 +1,53 @@
 
 package Paws::IoTAnalytics::CreateDatastore;
-  use Moose;
-  has DatastoreName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'datastoreName', required => 1);
-  has DatastoreStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastoreStorage', traits => ['NameInRequest'], request_name => 'datastoreStorage');
-  has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Tag]', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_RetentionPeriod IoTAnalytics_DatastoreStorage IoTAnalytics_Tag/;
+  has DatastoreName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DatastoreStorage => (is => 'ro', isa => IoTAnalytics_DatastoreStorage, predicate => 1);
+  has RetentionPeriod => (is => 'ro', isa => IoTAnalytics_RetentionPeriod, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoTAnalytics_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDatastore');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/datastores');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTAnalytics::CreateDatastoreResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDatastore');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/datastores');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTAnalytics::CreateDatastoreResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'DatastoreStorage' => 'datastoreStorage',
+                       'RetentionPeriod' => 'retentionPeriod',
+                       'DatastoreName' => 'datastoreName'
+                     },
+  'IsRequired' => {
+                    'DatastoreName' => 1
+                  },
+  'types' => {
+               'DatastoreStorage' => {
+                                       'class' => 'Paws::IoTAnalytics::DatastoreStorage',
+                                       'type' => 'IoTAnalytics_DatastoreStorage'
+                                     },
+               'Tags' => {
+                           'type' => 'ArrayRef[IoTAnalytics_Tag]',
+                           'class' => 'Paws::IoTAnalytics::Tag'
+                         },
+               'DatastoreName' => {
+                                    'type' => 'Str'
+                                  },
+               'RetentionPeriod' => {
+                                      'class' => 'Paws::IoTAnalytics::RetentionPeriod',
+                                      'type' => 'IoTAnalytics_RetentionPeriod'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +112,7 @@ The name of the data store.
 
 
 
-=head2 DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>
+=head2 DatastoreStorage => IoTAnalytics_DatastoreStorage
 
 Where data store data is stored. You may choose one of
 "serviceManagedS3" or "customerManagedS3" storage. If not specified,
@@ -85,14 +121,14 @@ data store is created.
 
 
 
-=head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
+=head2 RetentionPeriod => IoTAnalytics_RetentionPeriod
 
 How long, in days, message data is kept for the data store. When
 "customerManagedS3" storage is selected, this parameter is ignored.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]
+=head2 Tags => ArrayRef[IoTAnalytics_Tag]
 
 Metadata which can be used to manage the data store.
 

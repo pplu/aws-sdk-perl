@@ -1,17 +1,47 @@
 
 package Paws::EC2::ModifyVpnConnection;
-  use Moose;
-  has CustomerGatewayId => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has TransitGatewayId => (is => 'ro', isa => 'Str');
-  has VpnConnectionId => (is => 'ro', isa => 'Str', required => 1);
-  has VpnGatewayId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has CustomerGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has TransitGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has VpnConnectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VpnGatewayId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVpnConnection');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyVpnConnectionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyVpnConnection');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyVpnConnectionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'IsRequired' => {
+                    'VpnConnectionId' => 1
+                  },
+  'types' => {
+               'VpnGatewayId' => {
+                                   'type' => 'Str'
+                                 },
+               'CustomerGatewayId' => {
+                                        'type' => 'Str'
+                                      },
+               'VpnConnectionId' => {
+                                      'type' => 'Str'
+                                    },
+               'TransitGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

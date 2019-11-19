@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::ProposalSummary;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExpirationDate => (is => 'ro', isa => 'Str');
-  has ProposalId => (is => 'ro', isa => 'Str');
-  has ProposedByMemberId => (is => 'ro', isa => 'Str');
-  has ProposedByMemberName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ExpirationDate => (is => 'ro', isa => Str);
+  has ProposalId => (is => 'ro', isa => Str);
+  has ProposedByMemberId => (is => 'ro', isa => Str);
+  has ProposedByMemberName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProposalId' => {
+                                 'type' => 'Str'
+                               },
+               'ProposedByMemberName' => {
+                                           'type' => 'Str'
+                                         },
+               'ExpirationDate' => {
+                                     'type' => 'Str'
+                                   },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ProposedByMemberId' => {
+                                         'type' => 'Str'
+                                       },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

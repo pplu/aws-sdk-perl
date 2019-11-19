@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Kafka::ConfigurationInfo;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Kafka::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has Revision => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Revision' => {
+                               'type' => 'Int'
+                             }
+             },
+  'IsRequired' => {
+                    'Revision' => 1,
+                    'Arn' => 1
+                  },
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'Revision' => 'revision'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

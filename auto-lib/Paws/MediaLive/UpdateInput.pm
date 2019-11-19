@@ -1,19 +1,60 @@
 
 package Paws::MediaLive::UpdateInput;
-  use Moose;
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestinationRequest]', traits => ['NameInRequest'], request_name => 'destinations');
-  has InputSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'inputSecurityGroups');
-  has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlowRequest]', traits => ['NameInRequest'], request_name => 'mediaConnectFlows');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
-  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSourceRequest]', traits => ['NameInRequest'], request_name => 'sources');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaLive::Types qw/MediaLive_InputDestinationRequest MediaLive_MediaConnectFlowRequest MediaLive_InputSourceRequest/;
+  has Destinations => (is => 'ro', isa => ArrayRef[MediaLive_InputDestinationRequest], predicate => 1);
+  has InputSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MediaConnectFlows => (is => 'ro', isa => ArrayRef[MediaLive_MediaConnectFlowRequest], predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has Sources => (is => 'ro', isa => ArrayRef[MediaLive_InputSourceRequest], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateInput');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/inputs/{inputId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::UpdateInputResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateInput');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/inputs/{inputId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::UpdateInputResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Sources' => 'sources',
+                       'MediaConnectFlows' => 'mediaConnectFlows',
+                       'RoleArn' => 'roleArn',
+                       'InputSecurityGroups' => 'inputSecurityGroups',
+                       'Destinations' => 'destinations',
+                       'Name' => 'name'
+                     },
+  'types' => {
+               'Destinations' => {
+                                   'class' => 'Paws::MediaLive::InputDestinationRequest',
+                                   'type' => 'ArrayRef[MediaLive_InputDestinationRequest]'
+                                 },
+               'InputSecurityGroups' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Sources' => {
+                              'class' => 'Paws::MediaLive::InputSourceRequest',
+                              'type' => 'ArrayRef[MediaLive_InputSourceRequest]'
+                            },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'MediaConnectFlows' => {
+                                        'class' => 'Paws::MediaLive::MediaConnectFlowRequest',
+                                        'type' => 'ArrayRef[MediaLive_MediaConnectFlowRequest]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +113,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head1 ATTRIBUTES
 
 
-=head2 Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]
+=head2 Destinations => ArrayRef[MediaLive_InputDestinationRequest]
 
 Destination settings for PUSH type inputs.
 
@@ -84,7 +125,7 @@ A list of security groups referenced by IDs to attach to the input.
 
 
 
-=head2 MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlowRequest>]
+=head2 MediaConnectFlows => ArrayRef[MediaLive_MediaConnectFlowRequest]
 
 A list of the MediaConnect Flow ARNs that you want to use as the source
 of the input. You can specify as few as one Flow and presently, as many
@@ -107,7 +148,7 @@ and after creation.
 
 
 
-=head2 Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>]
+=head2 Sources => ArrayRef[MediaLive_InputSourceRequest]
 
 The source URLs for a PULL-type input. Every PULL type input needs
 exactly two source URLs for redundancy. Only specify sources for PULL

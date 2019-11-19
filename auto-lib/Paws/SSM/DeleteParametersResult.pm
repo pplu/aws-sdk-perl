@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DeleteParametersResult;
-  use Moose;
-  has DeletedParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has InvalidParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Undef ArrayRef/;
+  use Paws::SSM::Types qw//;
+  has DeletedParameters => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has InvalidParameters => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InvalidParameters' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'DeletedParameters' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

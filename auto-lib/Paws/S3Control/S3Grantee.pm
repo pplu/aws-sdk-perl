@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::S3Control::S3Grantee;
-  use Moose;
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has Identifier => (is => 'ro', isa => 'Str');
-  has TypeIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3Control::Types qw//;
+  has DisplayName => (is => 'ro', isa => Str);
+  has Identifier => (is => 'ro', isa => Str);
+  has TypeIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Identifier' => {
+                                 'type' => 'Str'
+                               },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'TypeIdentifier' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListSamplesResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Samples => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Sample]', traits => ['NameInRequest'], request_name => 'samples' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Sample/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Samples => (is => 'ro', isa => ArrayRef[DeviceFarm_Sample]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'NameInRequest' => {
+                       'Samples' => 'samples',
+                       'NextToken' => 'nextToken'
+                     },
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Samples' => {
+                              'class' => 'Paws::DeviceFarm::Sample',
+                              'type' => 'ArrayRef[DeviceFarm_Sample]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +49,7 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
-=head2 Samples => ArrayRef[L<Paws::DeviceFarm::Sample>]
+=head2 Samples => ArrayRef[DeviceFarm_Sample]
 
 Information about the samples.
 
